@@ -86,6 +86,7 @@ class DocumentTestCase(TestCase):
 class DocumentSearchTestCase(TestCase):
     def setUp(self):
         from ocr.parsers import parse_document_page
+
         self.document_type = DocumentType(name='test doc type')
         self.document_type.save()
 
@@ -147,7 +148,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
         self.client = Client()
 
     def test_upload_a_document(self):
-        from sources.models import WebForm
+        from sources.models import WebFormSource
         from sources.literals import SOURCE_CHOICE_WEB_FORM
 
         # Login the admin user
@@ -157,7 +158,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
 
         # Create new webform source
         response = self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
-        self.assertEqual(WebForm.objects.count(), 1)
+        self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
@@ -179,7 +180,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
         self.assertEqual(Document.objects.count(), 0)
 
     def test_issue_25(self):
-        from sources.models import WebForm
+        from sources.models import WebFormSource
         from sources.literals import SOURCE_CHOICE_WEB_FORM
 
         # Login the admin user
@@ -189,7 +190,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
 
         # Create new webform source
         response = self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
-        self.assertEqual(WebForm.objects.count(), 1)
+        self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
@@ -289,7 +290,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
     """
 
     def setUp(self):
-        from sources.models import WebForm
+        from sources.models import WebFormSource
         from sources.literals import SOURCE_CHOICE_WEB_FORM
 
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
@@ -300,7 +301,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         self.assertTrue(self.admin_user.is_authenticated())
         # Create new webform source
         response = self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
-        self.assertEqual(WebForm.objects.count(), 1)
+        self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
@@ -393,9 +394,9 @@ class Issue46TestCase(TestCase):
         self.assertEqual(result_count, self.document_count)
 
         # Funcitonal test for the first page of advanced results
-        response = self.client.get(reverse('results'), {'versions__filename': 'png'})
-        self.assertTrue('List of results (1 - 20 out of 30) (Page 1 of 2)' in response.content)
+        response = self.client.get(reverse('search:results'), {'versions__filename': 'png'})
+        self.assertTrue('results (1 - 20 out of 30) (Page 1 of 2)' in response.content)
 
         # Functional test for the second page of advanced results
-        response = self.client.get(reverse('results'), {'versions__filename': 'png', 'page': 2})
-        self.assertTrue('List of results (21 - 30 out of 30) (Page 2 of 2)' in response.content)
+        response = self.client.get(reverse('search:results'), {'versions__filename': 'png', 'page': 2})
+        self.assertTrue('results (21 - 30 out of 30) (Page 2 of 2)' in response.content)
