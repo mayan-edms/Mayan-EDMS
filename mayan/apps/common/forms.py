@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+import warnings
 import os
 
 from django import forms
@@ -11,7 +12,7 @@ from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
 from .utils import return_attrib
-from .widgets import EmailInput, DetailSelectMultiple, PlainWidget
+from .widgets import DetailSelectMultiple, EmailInput, PlainWidget
 
 
 class DetailForm(forms.ModelForm):

@@ -6,6 +6,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics
 from taggit.models import Tag
 
+from acls.models import AccessEntry
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -14,7 +13,6 @@ class Migration(SchemaMigration):
         # Deleting field 'WebForm.icon'
         db.delete_column(u'sources_webform', 'icon')
 
-
     def backwards(self, orm):
         # Adding field 'StagingFolder.icon'
         db.add_column(u'sources_stagingfolder', 'icon',
@@ -25,7 +23,6 @@ class Migration(SchemaMigration):
         db.add_column(u'sources_webform', 'icon',
                       self.gf('django.db.models.fields.CharField')(max_length=24, null=True, blank=True),
                       keep_default=False)
-
 
     models = {
         u'contenttypes.contenttype': {

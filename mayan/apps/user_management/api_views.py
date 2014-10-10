@@ -7,9 +7,8 @@ from rest_framework import generics
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
-from .permissions import (PERMISSION_USER_CREATE,
-                          PERMISSION_USER_DELETE, PERMISSION_USER_EDIT,
-                          PERMISSION_USER_VIEW)
+from .permissions import (PERMISSION_USER_CREATE, PERMISSION_USER_DELETE,
+                          PERMISSION_USER_EDIT, PERMISSION_USER_VIEW)
 from .serializers import UserSerializer
 
 

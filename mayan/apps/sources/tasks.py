@@ -6,7 +6,7 @@ from django.core.files import File
 from mayan.celery import app
 
 from documents.exceptions import NewDocumentVersionNotAllowed
-from documents.models import DocumentType
+from documents.models import Document, DocumentType
 
 from .models import Source
 
@@ -49,5 +49,3 @@ def task_upload_document(source_id, file_path, filename=None, use_file_name=Fals
 
         #    if result['is_compressed'] is False:
         #        messages.warning(request, _(u'File was not a compressed file, uploaded as it was.'))
-
-

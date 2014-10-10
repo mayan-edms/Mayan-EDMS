@@ -1,12 +1,12 @@
 from __future__ import absolute_import
 
 import csv
+from optparse import make_option
 import os
 import sys
-from optparse import make_option
 
-from django.core.management.base import CommandError, LabelCommand
 from django.contrib.auth.models import User
+from django.core.management.base import CommandError, LabelCommand
 from django.db.utils import IntegrityError
 
 
@@ -29,12 +29,12 @@ class Command(LabelCommand):
     help = 'Import users from a CSV file with the field order: username, firstname, lastname, email.'
     option_list = LabelCommand.option_list + (
         make_option('--noinput', action='store_false', dest='interactive',
-            default=True, help='Do not ask the user for confirmation before '
-                'starting.'),
+                    default=True, help='Do not ask the user for confirmation before '
+                    'starting.'),
         make_option('--password', action='store', dest='password',
-            help='The default password to assign to each new user.'),
+                    help='The default password to assign to each new user.'),
         make_option('--skip-repeated', action='store_true', dest='skip_repeated',
-            default=False, help='Don\'t exit if the user already exists.'),
+                    default=False, help='Don\'t exit if the user already exists.'),
     )
 
     def handle_label(self, label, **options):

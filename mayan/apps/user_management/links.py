@@ -2,9 +2,10 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from .permissions import (PERMISSION_USER_CREATE, PERMISSION_USER_EDIT,
-    PERMISSION_USER_VIEW, PERMISSION_USER_DELETE, PERMISSION_GROUP_CREATE,
-    PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW, PERMISSION_GROUP_DELETE)
+from .permissions import (PERMISSION_GROUP_CREATE, PERMISSION_GROUP_DELETE,
+                          PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW,
+                          PERMISSION_USER_CREATE, PERMISSION_USER_DELETE,
+                          PERMISSION_USER_EDIT, PERMISSION_USER_VIEW)
 
 user_list = {'text': _(u'User list'), 'view': 'user_management:user_list', 'famfam': 'user', 'permissions': [PERMISSION_USER_VIEW]}
 user_setup = {'text': _(u'Users'), 'view': 'user_management:user_list', 'famfam': 'user', 'icon': 'user.png', 'permissions': [PERMISSION_USER_VIEW], 'children_view_regex': [r'^user_']}

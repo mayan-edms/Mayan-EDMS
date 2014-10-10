@@ -16,7 +16,6 @@ from acls.utils import apply_default_acls
 from common.compressed_files import CompressedFile, NotACompressedFile
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
-from document_indexing.api import update_indexes
 from documents.events import HISTORY_DOCUMENT_CREATED
 from documents.models import Document
 from history.api import create_history
@@ -27,7 +26,7 @@ from .literals import (SOURCE_CHOICES, SOURCE_CHOICES_PLURAL,
                        SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
                        SOURCE_CHOICE_WEB_FORM,
                        SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
-                       SOURCE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICE_Y)
+                       SOURCE_UNCOMPRESS_CHOICES)
 from .managers import SourceTransformationManager
 
 logger = logging.getLogger(__name__)
@@ -212,13 +211,6 @@ class WatchFolderSource(OutOfProcessSource):
     uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'Delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
     interval = models.PositiveIntegerField(verbose_name=_(u'Interval'), help_text=_(u'Inverval in seconds where the watch folder path is checked for new documents.'))
-
-    def execute(self, source_id):
-        if self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
-            expand = True
-        else:
-            expand = False
-        print 'execute: %s' % self.internal_name()
 
     class Meta:
         verbose_name = _(u'Watch folder')

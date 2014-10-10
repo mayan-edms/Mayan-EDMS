@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -70,7 +69,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'sources', ['StagingFolderSource'])
 
-
     def backwards(self, orm):
         # Adding model 'StagingFolder'
         db.create_table(u'sources_stagingfolder', (
@@ -139,7 +137,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'StagingFolderSource'
         db.delete_table(u'sources_stagingfoldersource')
-
 
     models = {
         u'contenttypes.contenttype': {

@@ -71,9 +71,6 @@ class APIStagingSourceFileImageView(generics.GenericAPIView):
 
         zoom = int(request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
 
-        if request.GET.get('as_base64', False):
-            base64_version = True
-
         if zoom < ZOOM_MIN_LEVEL:
             zoom = ZOOM_MIN_LEVEL
 

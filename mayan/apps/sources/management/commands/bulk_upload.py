@@ -7,23 +7,24 @@ import sys
 
 from django.core.management.base import CommandError, LabelCommand
 
-from documents.models import DocumentType
 from common.compressed_files import NotACompressedFile
+from documents.models import DocumentType
 from metadata.api import convert_dict_to_dict_list
 
 from ...models import OutOfProcess
+
 
 class Command(LabelCommand):
     args = '<filename>'
     help = 'Upload documents from a compressed file in to the database.'
     option_list = LabelCommand.option_list + (
         make_option('--noinput', action='store_false', dest='interactive',
-            default=True, help='Do not ask the user for confirmation before '
-                'starting.'),
+                    default=True, help='Do not ask the user for confirmation before '
+                    'starting.'),
         make_option('--metadata', action='store', dest='metadata',
-            help='A metadata dictionary list to apply to the documents.'),
+                    help='A metadata dictionary list to apply to the documents.'),
         make_option('--document_type', action='store', dest='document_type_name',
-            help='The document type to apply to the uploaded documents.'),
+                    help='The document type to apply to the uploaded documents.'),
     )
 
     def handle_label(self, label, **options):
@@ -60,8 +61,7 @@ class Command(LabelCommand):
             source = OutOfProcess()
             fd = open(label)
             try:
-                result = source.upload_file(fd, filename=None, use_file_name=False, document_type=document_type, expand=True, metadata_dict_list=metadata_dict_list, user=None, document=None, new_version_data=None, command_line=True)
-                pass
+                source.upload_file(fd, filename=None, use_file_name=False, document_type=document_type, expand=True, metadata_dict_list=metadata_dict_list, user=None, document=None, new_version_data=None, command_line=True)
             except NotACompressedFile:
                 print '%s is not a compressed file.' % label
             else:
@@ -76,5 +76,5 @@ def _confirm(interactive):
     if not interactive:
         return 'yes'
     return raw_input('You have requested to bulk upload a number of documents from a compressed file.\n'
-            'Are you sure you want to do this?\n'
-            'Type \'yes\' to continue, or any other value to cancel: ')
+                     'Are you sure you want to do this?\n'
+                     'Type \'yes\' to continue, or any other value to cancel: ')

@@ -4,8 +4,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.permissions import ACLS_VIEW_ACL
 
-from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_DELETE,
-                          PERMISSION_TAG_ATTACH, PERMISSION_TAG_EDIT,
+from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_CREATE,
+                          PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
                           PERMISSION_TAG_REMOVE)
 
 tag_list = {'text': _(u'Tag list'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'}

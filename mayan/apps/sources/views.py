@@ -149,7 +149,8 @@ def upload_interactive(request, source_id=None, document_pk=None):
         context['source'] = source
 
         if request.method == 'POST':
-            form = form_class(request.POST, request.FILES,
+            form = form_class(
+                request.POST, request.FILES,
                 document_type=document_type,
                 show_expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
                 source=source,
@@ -319,7 +320,7 @@ def upload_interactive(request, source_id=None, document_pk=None):
         )
 
     return render_to_response('main/generic_form.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def get_form_filename(form):
@@ -384,7 +385,7 @@ def setup_source_list(request, source_type):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def setup_source_edit(request, source_id):
@@ -420,8 +421,7 @@ def setup_source_edit(request, source_id):
         'next': next,
         'object_name': _(u'Source'),
         'source_type': source.source_type,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def setup_source_delete(request, source_id):
@@ -464,7 +464,7 @@ def setup_source_delete(request, source_id):
     }
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def setup_source_create(request, source_type):
@@ -497,8 +497,7 @@ def setup_source_create(request, source_type):
         'form': form,
         'source_type': source_type,
         'navigation_object_name': 'source',
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def setup_source_transformation_list(request, source_id):
@@ -523,7 +522,7 @@ def setup_source_transformation_list(request, source_id):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def setup_source_transformation_edit(request, transformation_id):
@@ -555,8 +554,7 @@ def setup_source_transformation_edit(request, transformation_id):
             {'object': 'transformation', 'name': _(u'Transformation')}
         ],
         'next': next,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def setup_source_transformation_delete(request, transformation_id):
@@ -589,8 +587,7 @@ def setup_source_transformation_delete(request, transformation_id):
         },
         'previous': previous,
         'form_icon': u'shape_square_delete.png',
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def setup_source_transformation_create(request, source_id):
