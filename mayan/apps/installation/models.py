@@ -164,8 +164,8 @@ class Installation(SingletonModel):
 
             try:
                 requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: Property.get_reportable(as_json=True)}, timeout=TIMEOUT)
-            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
-                pass
+            except Exception:
+                raise
             else:
                 self.is_first_run = False
                 self.save()
