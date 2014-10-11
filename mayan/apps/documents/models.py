@@ -279,7 +279,7 @@ class Document(models.Model):
 
     @property
     def page_count(self):
-        return self.pages.count()
+        return self.latest_version.page_count
 
     @property
     def latest_version(self):
@@ -313,6 +313,7 @@ class DocumentVersion(models.Model):
     """
     _pre_open_hooks = {}
     _post_save_hooks = {}
+    _page_counts = {}
 
     @staticmethod
     def get_version_update_choices(document_version):
@@ -456,6 +457,8 @@ class DocumentVersion(models.Model):
         if save:
             self.save()
 
+        self.__class__._page_counts[self.pk] = self.pages.count()
+
         return detected_pages
 
     def apply_default_transformations(self, transformations):
@@ -496,6 +499,11 @@ class DocumentVersion(models.Model):
 
     def delete(self, *args, **kwargs):
         self.file.storage.delete(self.file.path)
+        # Invalidate page count cache
+        self.__class__._page_counts[self.pk] = None
+        # Invalidate parent document's latest version cache
+        Document._latest_versions[self.document.pk] = None
+
         return super(DocumentVersion, self).delete(*args, **kwargs)
 
     def exists(self):
@@ -554,6 +562,13 @@ class DocumentVersion(models.Model):
 
         self.filename = u''.join([new_filename, extension])
         self.save()
+
+    @property
+    def page_count(self):
+        if self.pk not in self.__class__._page_counts:
+            self.__class__._page_counts[self.pk] = self.pages.count()
+
+        return self.__class__._page_counts[self.pk]
 
 
 class DocumentTypeFilename(models.Model):
