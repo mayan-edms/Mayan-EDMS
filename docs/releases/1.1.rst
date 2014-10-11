@@ -9,12 +9,38 @@ Welcome to Mayan EDMS v1.1
 Overview
 ========
 
+
 What's new in Mayan EDMS v1.1
 =============================
 
-*  Removal of the MAIN_SIDE_BAR_SEARCH
-*  Views namespaces
-*  German language translation updates
+* Celery
+* Removal of the MAIN_SIDE_BAR_SEARCH
+* Removal of THEMES and themes support
+* Removal of VERBOSE_LOGIN
+* Removal of graphics backend supported file format list
+* Removal of the MAIN_DISABLE_ICONS
+* Removal of specialized Sentry support
+* Removal of English only names capitalization support
+* Removal of the MAIN_ENABLE_SCROLL_JS
+* Views namespaces
+* Language translation updates
+* Removal of the splash screen
+* Sending documents via email
+* Remove hardcoded root (/) redirections
+* Proper capitalization of messages
+* Removal of APSCheduler as a requirement
+* Removal of the signales, job_processing and scheduler apps
+* Removal of the scheduled jobs view
+* Removal of the web_theme app
+* Removal of the sources icon selection support
+* Removal of the in-app help panes
+* Improved method for custom settings
+* Update to Django 1.6.7
+* More API endpoints
+* Improvement of the existing API endpoints
+* Improve sources app model sub classes and inheritance handling
+* Deprecation of Python 2.6 support
+* Add CORS support to the API
 
 
 Upgrading from a previous version
