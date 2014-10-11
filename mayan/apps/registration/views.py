@@ -7,7 +7,6 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from .exceptions import AlreadyRegistered
 from .forms import RegistrationForm
 from .models import RegistrationSingleton
 from .tasks import task_registration_register
@@ -16,18 +15,16 @@ from .tasks import task_registration_register
 def form_view(request):
     registration = RegistrationSingleton.objects.get()
 
+    if registration.registered:
+        messages.error(request, _(u'Your copy is already registered.'))
+        return HttpResponseRedirect(reverse('main:home'))
+
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            try:
-                task_registration_register.apply_async(args=[form.cleaned_data], queue='tools')
-                messages.success(request, _(u'Thank you for registering.'))
-                return HttpResponseRedirect(reverse('main:home'))
-            except AlreadyRegistered:
-                messages.error(request, _(u'Your copy is already registered.'))
-                return HttpResponseRedirect(reverse('main:home'))
-            except Exception as exception:
-                messages.error(request, _(u'Error submiting form; %s.') % exception)
+            task_registration_register.apply_async(args=[form.cleaned_data], queue='tools')
+            messages.success(request, _(u'Thank you for registering.'))
+            return HttpResponseRedirect(reverse('main:home'))
     else:
         form = RegistrationForm()
 
