@@ -6,7 +6,7 @@ from documents.models import Document
 from mayan.celery import app
 
 
-@app.task
+@app.task(ignore_result=True)
 def task_send_document(subject_text, body_text_content, sender, recipient, document_ids=None):
     email_msg = EmailMultiAlternatives(subject_text, body_text_content, sender, [recipient])
 

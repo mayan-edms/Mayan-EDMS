@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 LOCK_EXPIRE = 60 * 10  # Adjust to worst case scenario
 
 
-@app.task
+@app.task(ignore_result=True)
 def task_do_ocr(document_pk):
     lock_id = u'task_do_ocr_doc-%d' % document_pk
     try:
