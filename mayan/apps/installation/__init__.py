@@ -13,6 +13,7 @@ from project_tools.api import register_tool
 from .classes import Property, PropertyNamespace
 from .links import link_menu_link, link_namespace_details, link_namespace_list
 from .models import Installation
+from .tasks import task_details_submit
 
 
 @receiver(post_migrate, dispatch_uid='create_installation_instance')
@@ -29,7 +30,7 @@ def check_first_run():
         pass
     else:
         if details.is_first_run:
-            details.submit()
+            task_details_submit.apply_async(queue='tools')
 
 
 register_model_list_columns(PropertyNamespace, [
@@ -54,9 +55,7 @@ register_model_list_columns(Property, [
     }
 ])
 
+check_first_run()
 register_links(PropertyNamespace, [link_namespace_details])
 register_links(['installation:namespace_list', PropertyNamespace], [link_namespace_list], menu_name='secondary_menu')
-
 register_tool(link_menu_link)
-
-check_first_run()
