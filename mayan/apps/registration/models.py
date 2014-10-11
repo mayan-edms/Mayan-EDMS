@@ -8,9 +8,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from solo.models import SingletonModel
 
+from installation.models import Installation
 from lock_manager import Lock, LockError
 
-from .literals import FORM_SUBMIT_URL, FORM_KEY, FORM_RECEIVER_FIELD, TIMEOUT
+from .literals import FORM_KEY, FORM_RECEIVER_FIELD, FORM_SUBMIT_URL, TIMEOUT
 from .exceptions import AlreadyRegistered
 
 
@@ -51,15 +52,13 @@ class RegistrationSingleton(SingletonModel):
     def is_registered(self):
         return self.registered
 
-    def register(self, form):
-        from installation.models import Installation
-
+    def register(self, form_data):
         if self.is_registered:
             raise AlreadyRegistered
 
         installation = Installation.objects.get()
         dictionary = {}
-        dictionary.update(form.cleaned_data)
+        dictionary.update(form_data)
         dictionary.update({
             'uuid': installation.uuid
         })
@@ -75,8 +74,8 @@ class RegistrationSingleton(SingletonModel):
         else:
             try:
                 requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: self.registration_data}, timeout=TIMEOUT)
-            except (requests.exceptions.Timeout, requests.exceptions.ConnectionError):
-                pass
+            except Exception:
+                raise
             else:
                 self.registered = True
                 self.save()

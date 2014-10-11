@@ -10,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 from .exceptions import AlreadyRegistered
 from .forms import RegistrationForm
 from .models import RegistrationSingleton
+from .tasks import task_registration_register
 
 
 def form_view(request):
@@ -19,7 +20,7 @@ def form_view(request):
         form = RegistrationForm(request.POST)
         if form.is_valid():
             try:
-                registration.register(form)
+                task_registration_register.apply_async(args=[form.cleaned_data], queue='tools')
                 messages.success(request, _(u'Thank you for registering.'))
                 return HttpResponseRedirect(reverse('main:home'))
             except AlreadyRegistered:
