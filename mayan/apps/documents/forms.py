@@ -87,7 +87,7 @@ class DocumentPreviewForm(forms.Form):
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = document
         try:
-            self.fields['preview'].label = _(u'Document pages (%d)') % document.pages.count()
+            self.fields['preview'].label = _(u'Document pages (%d)') % document.page_count
         except AttributeError:
             self.fields['preview'].label = _(u'Document pages (%d)') % 0
 
