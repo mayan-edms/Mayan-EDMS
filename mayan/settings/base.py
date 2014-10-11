@@ -190,6 +190,7 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
     'django.core.context_processors.static',
     'django.core.context_processors.request',
@@ -214,6 +215,7 @@ WEB_THEME_ENABLE_SCROLL_JS = False
 # --------- Django -------------------
 LOGIN_URL = 'common:login_view'
 LOGIN_REDIRECT_URL = 'main:home'
+INTERNAL_IPS = ('127.0.0.1',)
 # -------- LoginRequiredMiddleware ----------
 LOGIN_EXEMPT_URLS = (
     r'^favicon\.ico$',
