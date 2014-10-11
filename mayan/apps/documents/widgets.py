@@ -54,7 +54,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     gallery_name='document_pages',
                     fancybox_class='fancybox-noscaling',
                     image_class='lazy-load-carousel',
-                    title=ugettext(u'Page %(page_num)d of %(total_pages)d') % {'page_num': page.page_number, 'total_pages': len(value.pages.all())},
+                    title=ugettext(u'Page %(page_num)d of %(total_pages)d') % {'page_num': page.page_number, 'total_pages': value.page_count},
                     size=MULTIPAGE_PREVIEW_SIZE,
                 )
             )
