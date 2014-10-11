@@ -78,6 +78,8 @@ class Document(models.Model):
     """
     Defines a single document with it's fields and properties
     """
+    _latest_versions = {}
+
     uuid = models.CharField(max_length=48, blank=True, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'), related_name='documents', null=True, blank=True)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'Description'))
@@ -216,6 +218,8 @@ class Document(models.Model):
             new_version.save()
 
         logger.debug('new_version saved')
+        self.__class__._latest_versions[self.pk] = new_version
+
         return new_version
 
     # Proxy methods
@@ -279,7 +283,10 @@ class Document(models.Model):
 
     @property
     def latest_version(self):
-        return self.versions.order_by('timestamp').last()
+        if self.pk not in self.__class__._latest_versions:
+            self.__class__._latest_versions[self.pk] = self.versions.order_by('timestamp').last()
+
+        return self.__class__._latest_versions[self.pk]
 
     @property
     def first_version(self):
