@@ -299,10 +299,12 @@ class Document(models.Model):
         version = self.latest_version
         return version.rename(new_name)
 
-    def _get_filename(self):
+    @property
+    def filename(self):
         return self.latest_version.filename
 
-    def _set_filename(self, value):
+    @filename.setter
+    def filename(self, value):
         version = self.latest_version
         version.filename = value
         return version.save()
@@ -310,8 +312,6 @@ class Document(models.Model):
     def document_save_to_temp_dir(self, filename, buffer_size=1024 * 1024):
         temporary_path = os.path.join(TEMPORARY_DIRECTORY, filename)
         return self.save_to_file(temporary_path, buffer_size)
-
-    filename = property(_get_filename, _set_filename)
 
 
 class DocumentVersion(models.Model):
