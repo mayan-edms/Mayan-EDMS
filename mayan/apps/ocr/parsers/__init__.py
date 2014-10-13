@@ -12,7 +12,6 @@ from converter import office_converter
 from converter.exceptions import OfficeConversionError
 from converter.office_converter import (CONVERTER_OFFICE_FILE_MIMETYPES,
                                         OfficeConverter)
-from documents.utils import document_save_to_temp_dir
 
 from ..settings import PDFTOTEXT_PATH
 
@@ -103,7 +102,7 @@ class OfficeParser(Parser):
         logger.debug('executing')
         try:
             office_converter = OfficeConverter()
-            document_file = document_save_to_temp_dir(document_page.document, document_page.document.checksum)
+            document_file = document_page.document.document_save_to_temp_dir(document_page.document.checksum)
             logger.debug('document_file: %s', document_file)
 
             office_converter.convert(document_file, mimetype=document_page.document.file_mimetype)
@@ -141,7 +140,7 @@ class PopplerParser(Parser):
             copyfile(descriptor, temp_filepath)
             document_file = temp_filepath
         else:
-            document_file = document_save_to_temp_dir(document_page.document, document_page.document.checksum)
+            document_file = document_page.document.document_save_to_temp_dir(document_page.document.checksum)
 
         logger.debug('document_file: %s', document_file)
 

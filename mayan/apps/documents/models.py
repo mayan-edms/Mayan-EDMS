@@ -20,6 +20,7 @@ from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
 from acls.utils import apply_default_acls
+from common.settings import TEMPORARY_DIRECTORY
 from converter.api import (convert, get_page_count,
                            get_available_transformations_choices)
 from converter.exceptions import UnknownFileFormat
@@ -38,7 +39,6 @@ from .managers import (DocumentPageTransformationManager, DocumentTypeManager,
 from .runtime import storage_backend
 from .settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE,
                        UUID_FUNCTION, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
-from .utils import document_save_to_temp_dir
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
 logger = logging.getLogger(__name__)
@@ -138,7 +138,7 @@ class Document(models.Model):
             return cache_file_path
         else:
             document_version = DocumentVersion.objects.get(pk=version)
-            document_file = document_save_to_temp_dir(document_version, document_version.checksum)
+            document_file = document_version.document.document_save_to_temp_dir(document_version.checksum)
             return convert(input_filepath=document_file, output_filepath=cache_file_path, page=page, transformations=transformations, mimetype=self.file_mimetype)
 
     def get_valid_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, version=None):
@@ -306,6 +306,10 @@ class Document(models.Model):
         version = self.latest_version
         version.filename = value
         return version.save()
+
+    def document_save_to_temp_dir(self, filename, buffer_size=1024 * 1024):
+        temporary_path = os.path.join(TEMPORARY_DIRECTORY, filename)
+        return self.save_to_file(temporary_path, buffer_size)
 
     filename = property(_get_filename, _set_filename)
 
