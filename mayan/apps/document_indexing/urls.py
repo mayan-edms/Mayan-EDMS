@@ -1,5 +1,8 @@
 from django.conf.urls import patterns, url
 
+from .api_views import (APIIndexView, APIIndexListView,
+                        APIIndexNodeInstanceDocumentListView)
+
 urlpatterns = patterns('document_indexing.views',
     url(r'^setup/index/list/$', 'index_setup_list', (), 'index_setup_list'),
     url(r'^setup/index/create/$', 'index_setup_create', (), 'index_setup_create'),
@@ -17,4 +20,11 @@ urlpatterns = patterns('document_indexing.views',
 
     url(r'^rebuild/all/$', 'rebuild_index_instances', (), 'rebuild_index_instances'),
     url(r'^list/for/document/(?P<document_id>\d+)/$', 'document_index_list', (), 'document_index_list'),
+)
+
+api_urls = patterns('',
+    url(r'^index/node/(?P<pk>[0-9]+)/documents/$', APIIndexNodeInstanceDocumentListView.as_view(), name='index-node-documents'),
+    url(r'^indexes/(?P<pk>[0-9]+)/$', APIIndexView.as_view(), name='index-detail'),
+    url(r'^indexes/$', APIIndexListView.as_view(), name='index-list'),
+    #url(r'^document/(?P<pk>[0-9]+)/folders/$', APIDocumentFolderListView.as_view(), name='document-folder-list'),
 )

@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+import logging
+
 from django.db.models import Q
 from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext
@@ -15,6 +17,7 @@ from .models import Index, IndexInstanceNode, DocumentRenameCount
 from .settings import (AVAILABLE_INDEXING_FUNCTIONS, MAX_SUFFIX_COUNT,
                        SLUGIFY_PATHS)
 
+logger = logging.getLogger(__name__)
 if SLUGIFY_PATHS:
     SLUGIFY_FUNCTION = slugify
 else:
@@ -52,7 +55,7 @@ def delete_indexes(document):
 
     warnings = []
 
-    for index_instance in document.indexinstancenode_set.all():
+    for index_instance in document.index_instance_nodes.all():
         index_warnings = cascade_document_remove(document, index_instance)
         warnings.extend(index_warnings)
 
@@ -85,8 +88,10 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
         try:
             result = eval(template_node.expression, eval_dict, AVAILABLE_INDEXING_FUNCTIONS)
         except Exception as exception:
-            warnings.append(_(u'Error in document indexing update expression: %(expression)s; %(exception)s') % {
-                'expression': template_node.expression, 'exception': exception})
+            error_message = _(u'Error in document indexing update expression: %(expression)s; %(exception)s') % {
+                'expression': template_node.expression, 'exception': exception}
+            warnings.append(error_message)
+            logger.debug(error_message)
         else:
             if result:
                 index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node, value=result, parent=parent_index_instance)
@@ -109,8 +114,10 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
                     try:
                         fs_create_document_link(index_instance, document, suffix)
                     except Exception as exception:
-                        warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
-                            'expression': template_node.expression, 'exception': exception})
+                        error_message = _(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
+                            'expression': template_node.expression, 'exception': exception}
+                        warnings.append(error_message)
+                        logger.debug(error_message)
 
                     index_instance.documents.add(document)
 

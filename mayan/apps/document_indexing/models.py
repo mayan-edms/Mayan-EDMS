@@ -24,11 +24,11 @@ class Index(models.Model):
 
     @property
     def template_root(self):
-        return self.indextemplatenode_set.get(parent=None)
+        return self.template_nodes.get(parent=None)
 
     @property
     def instance_root(self):
-        return self.template_root.node_instance
+        return self.template_root.node_instance.get()
 
     def __unicode__(self):
         return self.title
@@ -41,6 +41,7 @@ class Index(models.Model):
         return DocumentType.objects.exclude(pk__in=self.document_types.all())
 
     def save(self, *args, **kwargs):
+        """Automatically create the root index template node"""
         super(Index, self).save(*args, **kwargs)
         index_template_node_root, created = IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
@@ -56,14 +57,18 @@ class Index(models.Model):
         except IndexInstanceNode.DoesNotExist:
             return 0
 
+    @property
+    def node_instances(self):
+        return [template_node.node_instance.get() for template_node in self.template_nodes.all()]
+
     class Meta:
         verbose_name = _(u'Index')
         verbose_name_plural = _(u'Indexes')
 
 
 class IndexTemplateNode(MPTTModel):
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='index_template_node')
-    index = models.ForeignKey(Index, verbose_name=_(u'Index'))
+    parent = TreeForeignKey('self', null=True, blank=True)
+    index = models.ForeignKey(Index, verbose_name=_(u'Index'), related_name='template_nodes')
     expression = models.CharField(max_length=128, verbose_name=_(u'Indexing expression'), help_text=_(u'Enter a python string expression to be evaluated.'))
     # % available_indexing_functions_string)
     enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'), help_text=_(u'Causes this node to be visible and updated when document data changes.'))
@@ -72,23 +77,22 @@ class IndexTemplateNode(MPTTModel):
     def __unicode__(self):
         return self.expression
 
-    @property
-    def node_instance(self):
-        return self.indexinstancenode_set.get()
-
     class Meta:
         verbose_name = _(u'Index template node')
         verbose_name_plural = _(u'Indexes template nodes')
 
 
 class IndexInstanceNode(MPTTModel):
-    parent = TreeForeignKey('self', null=True, blank=True, related_name='index_instance_node')
-    index_template_node = models.ForeignKey(IndexTemplateNode, verbose_name=_(u'Index template node'))
+    parent = TreeForeignKey('self', null=True, blank=True)
+    index_template_node = models.ForeignKey(IndexTemplateNode, related_name='node_instance', verbose_name=_(u'Index template node'))
     value = models.CharField(max_length=128, blank=True, verbose_name=_(u'Value'))
-    documents = models.ManyToManyField(Document, verbose_name=_(u'Documents'))
+    documents = models.ManyToManyField(Document, related_name='index_instance_nodes', verbose_name=_(u'Documents'))
 
     def __unicode__(self):
         return self.value
+
+    def index(self):
+        return self.index_template_node.index
 
     @models.permalink
     def get_absolute_url(self):
