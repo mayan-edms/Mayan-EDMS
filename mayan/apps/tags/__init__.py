@@ -8,18 +8,39 @@ from taggit.models import Tag
 from acls.api import class_permissions
 from common.utils import encapsulate
 from documents.models import Document
-from navigation.api import (register_links, register_top_menu,
-    register_model_list_columns, register_multi_item_links)
+from navigation.api import (register_links, register_model_list_columns,
+                            register_multi_item_links, register_top_menu)
 from rest_api.classes import APIEndPoint
 
-from .links import (tag_list, tag_create, tag_attach,
-    tag_document_list, tag_delete, tag_edit, tag_tagged_item_list,
-    tag_multiple_delete, tag_acl_list, tag_multiple_attach,
-    single_document_multiple_tag_remove, multiple_documents_selection_tag_remove)
-from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
-    PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW)
+from .links import (multiple_documents_selection_tag_remove,
+                    single_document_multiple_tag_remove, tag_acl_list,
+                    tag_attach, tag_create, tag_delete, tag_document_list,
+                    tag_edit, tag_list, tag_multiple_attach,
+                    tag_multiple_delete, tag_tagged_item_list)
+from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_DELETE,
+                          PERMISSION_TAG_EDIT, PERMISSION_TAG_REMOVE,
+                          PERMISSION_TAG_VIEW)
 from .urls import api_urls
 from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
+
+
+def tag_documents(self):
+    return Document.objects.filter(tags__in=[self])
+
+
+Document.add_to_class('tags', TaggableManager())
+Tag.add_to_class('documents', property(tag_documents))
+
+class_permissions(Document, [
+    PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
+])
+class_permissions(Tag, [
+    PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW,
+])
+
+endpoint = APIEndPoint('tags')
+endpoint.register_urls(api_urls)
+endpoint.add_endpoint('tag-list', _(u'Returns a list of all the tags.'))
 
 register_model_list_columns(Tag, [
     {
@@ -49,21 +70,3 @@ register_links(['tags:document_tags', 'tags:tag_remove', 'tag_multiple_remove', 
 register_multi_item_links(['document_tags'], [single_document_multiple_tag_remove])
 
 register_multi_item_links(['documents:document_find_duplicates', 'folders:folder_view', 'indexes:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'linking:document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [tag_multiple_attach, multiple_documents_selection_tag_remove])
-
-class_permissions(Document, [
-    PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
-])
-
-class_permissions(Tag, [
-    PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW,
-])
-
-def tag_documents(self):
-    return Document.objects.filter(tags__in=[self])
-
-Document.add_to_class('tags', TaggableManager())
-Tag.add_to_class('documents', property(tag_documents))
-
-endpoint = APIEndPoint('tags')
-endpoint.register_urls(api_urls)
-endpoint.add_endpoint('tag-list', _(u'Returns a list of all the tags.'))

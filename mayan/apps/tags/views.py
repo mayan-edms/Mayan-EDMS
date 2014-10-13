@@ -7,7 +7,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
@@ -21,11 +21,11 @@ from documents.views import DocumentListView
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
 
-from .forms import TagListForm, TagForm
+from .forms import TagForm, TagListForm
 from .models import TagProperties
-from .permissions import (PERMISSION_TAG_CREATE, PERMISSION_TAG_ATTACH,
-    PERMISSION_TAG_REMOVE, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
-    PERMISSION_TAG_VIEW)
+from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_CREATE,
+                          PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
+                          PERMISSION_TAG_REMOVE, PERMISSION_TAG_VIEW)
 
 logger = logging.getLogger(__name__)
 
@@ -111,7 +111,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
         context['title'] = _(u'Attach tag to documents: %s.') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_form.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def tag_multiple_attach(request):
@@ -140,7 +140,7 @@ def tag_list(request, queryset=None, extra_context=None):
     context['object_list'] = queryset
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def tag_delete(request, tag_id=None, tag_id_list=None):
@@ -191,7 +191,7 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         context['message'] = _('Will be removed from all documents.')
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def tag_multiple_delete(request):
@@ -349,7 +349,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
         return HttpResponseRedirect(next)
     else:
         return render_to_response(template, context,
-            context_instance=RequestContext(request))
+                                  context_instance=RequestContext(request))
 
 
 def single_document_multiple_tag_remove(request, document_id):
