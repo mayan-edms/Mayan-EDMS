@@ -1,24 +1,25 @@
 from __future__ import absolute_import
 
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group, User
 from django.core.urlresolvers import reverse
-from django.conf import settings
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import generate_choices_w_labels, encapsulate
+from common.utils import encapsulate, generate_choices_w_labels
 from common.views import assign_remove
 from common.widgets import two_state_template
 from permissions.models import Permission
 
-from .forms import UserForm, PasswordForm, GroupForm
-from .permissions import (PERMISSION_USER_CREATE, PERMISSION_USER_EDIT,
-    PERMISSION_USER_VIEW, PERMISSION_USER_DELETE, PERMISSION_GROUP_CREATE,
-    PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW, PERMISSION_GROUP_DELETE)
+from .forms import GroupForm, PasswordForm, UserForm
+from .permissions import (PERMISSION_GROUP_CREATE, PERMISSION_GROUP_DELETE,
+                          PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW,
+                          PERMISSION_USER_CREATE, PERMISSION_USER_DELETE,
+                          PERMISSION_USER_EDIT, PERMISSION_USER_VIEW)
 
 
 def user_list(request):
@@ -50,7 +51,7 @@ def user_list(request):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def user_edit(request, user_id):
@@ -143,7 +144,7 @@ def user_delete(request, user_id=None, user_id_list=None):
         context['title'] = _(u'Are you sure you wish to delete the users: %s?') % ', '.join([unicode(d) for d in users])
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def user_multiple_delete(request):
@@ -205,7 +206,7 @@ def user_set_password(request, user_id=None, user_id_list=None):
         context['title'] = _(u'Reseting password for users: %s') % ', '.join([unicode(d) for d in users])
 
     return render_to_response('main/generic_form.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def user_multiple_set_password(request):
@@ -260,7 +261,7 @@ def group_list(request):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def group_edit(request, group_id):
@@ -281,8 +282,7 @@ def group_edit(request, group_id):
         'form': form,
         'object': group,
         'object_name': _(u'Group'),
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))
 
 
 def group_add(request):
@@ -345,7 +345,7 @@ def group_delete(request, group_id=None, group_id_list=None):
         context['title'] = _(u'Are you sure you wish to delete the groups: %s?') % ', '.join([unicode(d) for d in groups])
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def group_multiple_delete(request):

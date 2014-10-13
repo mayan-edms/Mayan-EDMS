@@ -80,6 +80,7 @@ class Command(LabelCommand):
 def _confirm(interactive):
     if not interactive:
         return 'yes'
+
     return raw_input('You have requested to import a number of users from a CSV file.\n'
-            'Are you sure you want to do this?\n'
-            'Type \'yes\' to continue, or any other value to cancel: ')
+                     'Are you sure you want to do this?\n'
+                     'Type \'yes\' to continue, or any other value to cancel: ')
