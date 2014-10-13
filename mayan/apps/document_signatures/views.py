@@ -16,7 +16,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
 from django_gpg.literals import SIGNATURE_STATE_NONE, SIGNATURE_STATES
-from documents.models import Document, RecentDocument
+from documents.models import Document
 from filetransfers.api import serve_file
 from permissions.models import Permission
 
@@ -38,7 +38,7 @@ def document_verify(request, document_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VERIFY, request.user, document)
 
-    RecentDocument.objects.add_document_for_user(request.user, document)
+    document.add_as_recent_document_for_user(request.user)
 
     try:
         signature = DocumentVersionSignature.objects.verify_signature(document)
@@ -91,7 +91,7 @@ def document_signature_upload(request, document_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_SIGNATURE_UPLOAD, request.user, document)
 
-    RecentDocument.objects.add_document_for_user(request.user, document)
+    document.add_as_recent_document_for_user(request.user)
 
     post_action_redirect = None
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
@@ -152,7 +152,7 @@ def document_signature_delete(request, document_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_SIGNATURE_DELETE, request.user, document)
 
-    RecentDocument.objects.add_document_for_user(request.user, document)
+    document.add_as_recent_document_for_user(request.user)
 
     post_action_redirect = None
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))

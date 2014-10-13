@@ -102,7 +102,7 @@ def document_view(request, document_id, advanced=False):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
-    RecentDocument.objects.add_document_for_user(request.user, document)
+    document.add_as_recent_document_for_user(request.user)
 
     subtemplates_list = []
 
@@ -245,7 +245,7 @@ def document_edit(request, document_id):
 
             document.save()
             create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user, 'diff': return_diff(old_document, document, ['filename', 'description'])})
-            RecentDocument.objects.add_document_for_user(request.user, document)
+            document.add_as_recent_document_for_user(request.user)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)
 
@@ -794,7 +794,7 @@ def document_print(request, document_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
-    RecentDocument.objects.add_document_for_user(request.user, document)
+    document.add_as_recent_document_for_user(request.user)
 
     post_redirect = None
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or document.get_absolute_url())))
@@ -837,7 +837,7 @@ def document_hard_copy(request, document_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
-    RecentDocument.objects.add_document_for_user(request.user, document)
+    document.add_as_recent_document_for_user(request.user)
 
     page_range = request.GET.get('page_range', u'')
     if page_range:
@@ -1115,7 +1115,7 @@ def document_version_list(request, document_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
-    RecentDocument.objects.add_document_for_user(request.user, document)
+    document.add_as_recent_document_for_user(request.user)
 
     context = {
         'object_list': document.versions.order_by('-timestamp'),

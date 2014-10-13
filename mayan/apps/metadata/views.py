@@ -10,7 +10,7 @@ from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
-from documents.models import Document, RecentDocument, DocumentType
+from documents.models import Document, DocumentType
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from permissions.models import Permission
 
@@ -61,7 +61,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
 
     metadata = {}
     for document in documents:
-        RecentDocument.objects.add_document_for_user(request.user, document)
+        document.add_as_recent_document_for_user(request.user)
 
         for item in document.metadata.all():
             value = item.value
@@ -136,7 +136,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     for document in documents:
-        RecentDocument.objects.add_document_for_user(request.user, document)
+        document.add_as_recent_document_for_user(request.user)
 
     post_action_redirect = reverse('documents:document_list_recent')
 
@@ -212,7 +212,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
     metadata = {}
     for document in documents:
-        RecentDocument.objects.add_document_for_user(request.user, document)
+        document.add_as_recent_document_for_user(request.user)
 
         for item in document.metadata.all():
             value = item.value

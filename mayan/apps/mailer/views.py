@@ -11,7 +11,7 @@ from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
-from documents.models import Document, RecentDocument
+from documents.models import Document
 from permissions.models import Permission
 
 from .forms import DocumentMailForm
@@ -45,7 +45,7 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
 
     for document in documents:
-        RecentDocument.objects.add_document_for_user(request.user, document)
+        document.add_as_recent_document_for_user(request.user)
 
     if request.method == 'POST':
         form = DocumentMailForm(request.POST, as_attachment=as_attachment)
