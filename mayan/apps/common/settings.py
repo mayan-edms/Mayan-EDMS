@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 from smart_settings.api import register_setting
 
-from common.literals import PAGE_SIZE_LETTER, PAGE_ORIENTATION_PORTRAIT
+from common.literals import PAGE_ORIENTATION_PORTRAIT
 
 TEMPORARY_DIRECTORY = register_setting(
     namespace=u'common',
@@ -15,14 +15,6 @@ TEMPORARY_DIRECTORY = register_setting(
     default=u'/tmp',
     description=_(u'Temporary directory used site wide to store thumbnails, previews and temporary files.  If none is specified, one will be created using tempfile.mkdtemp()'),
     exists=True
-)
-
-DEFAULT_PAPER_SIZE = register_setting(
-    namespace=u'common',
-    module=u'common.settings',
-    name=u'DEFAULT_PAPER_SIZE',
-    global_name=u'COMMON_DEFAULT_PAPER_SIZE',
-    default=PAGE_SIZE_LETTER,
 )
 
 DEFAULT_PAGE_ORIENTATION = register_setting(

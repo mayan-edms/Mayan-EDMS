@@ -18,9 +18,7 @@ import sendfile
 
 from acls.models import AccessEntry
 from common.compressed_files import CompressedFile
-from common.literals import (PAGE_ORIENTATION_LANDSCAPE, PAGE_ORIENTATION_PORTRAIT,
-                             PAGE_SIZE_DIMENSIONS)
-from common.settings import DEFAULT_PAPER_SIZE
+from common.literals import PAGE_ORIENTATION_LANDSCAPE, PAGE_ORIENTATION_PORTRAIT
 from common.utils import (encapsulate, pretty_size, parse_range, return_diff,
                           urlquote)
 from common.views import SingleObjectListView
@@ -841,14 +839,6 @@ def document_hard_copy(request, document_id):
 
     RecentDocument.objects.add_document_for_user(request.user, document)
 
-    # Extract dimension values ignoring any unit
-    page_width = request.GET.get('page_width', dict(PAGE_SIZE_DIMENSIONS)[DEFAULT_PAPER_SIZE][0])
-    page_height = request.GET.get('page_height', dict(PAGE_SIZE_DIMENSIONS)[DEFAULT_PAPER_SIZE][1])
-
-    # TODO: Replace with regex to extact numeric portion
-    width = float(page_width.split('i')[0].split('c')[0].split('m')[0])
-    height = float(page_height.split('i')[0].split('c')[0].split('m')[0])
-
     page_range = request.GET.get('page_range', u'')
     if page_range:
         page_range = parse_range(page_range)
@@ -859,13 +849,7 @@ def document_hard_copy(request, document_id):
 
     return render_to_response('document_print.html', {
         'object': document,
-        'page_aspect': width / height,
-        'page_orientation': PAGE_ORIENTATION_LANDSCAPE if width / height > 1 else PAGE_ORIENTATION_PORTRAIT,
-        'page_orientation_landscape': True if width / height > 1 else False,
-        'page_orientation_portrait': False if width / height > 1 else True,
         'page_range': page_range,
-        'page_width': page_width,
-        'page_height': page_height,
         'pages': pages,
     }, context_instance=RequestContext(request))
 
