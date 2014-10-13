@@ -248,17 +248,15 @@ def group_list(request):
 
     context = {
         'object_list': Group.objects.all(),
-        'extra_context': {
-            'title': _(u'Groups'),
-            'hide_link': True,
-            'extra_columns': [
-                {
-                    'name': _(u'Members'),
-                    'attribute': 'user_set.count'
-                },
-            ],
-            'multi_select_as_buttons': True,
-        }
+        'title': _(u'Groups'),
+        'hide_link': True,
+        'extra_columns': [
+            {
+                'name': _(u'Members'),
+                'attribute': 'user_set.count'
+            },
+        ],
+        'multi_select_as_buttons': True,
     }
 
     return render_to_response('main/generic_list.html', context,
