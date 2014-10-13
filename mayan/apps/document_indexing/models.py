@@ -37,11 +37,8 @@ class Index(models.Model):
     def get_absolute_url(self):
         return ('indexing:index_instance_node_view', [self.instance_root.pk])
 
-    def get_index_document_types(self):
-        return self.document_types.all()
-
     def get_document_types_not_in_index(self):
-        return DocumentType.objects.exclude(pk__in=self.get_index_document_types())
+        return DocumentType.objects.exclude(pk__in=self.document_types.all())
 
     def save(self, *args, **kwargs):
         super(Index, self).save(*args, **kwargs)

@@ -183,7 +183,7 @@ def index_setup_document_types(request, index_pk):
     return assign_remove(
         request,
         left_list=lambda: generate_choices_w_labels(index.get_document_types_not_in_index(), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(index.get_index_document_types(), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(index.document_types.all(), display_object_type=False),
         add_method=lambda x: index.document_types.add(x),
         remove_method=lambda x: index.document_types.remove(x),
         left_list_title=_(u'Document types not in index: %s') % index,
