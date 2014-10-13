@@ -37,7 +37,7 @@ from .widgets import index_instance_item_link, get_breadcrumbs, node_level
 
 def index_setup_list(request):
     context = {
-        'title': _(u'indexes'),
+        'title': _(u'Indexes'),
         'hide_object': True,
         'list_object_variable_name': 'index',
         'extra_columns': [
