@@ -410,7 +410,7 @@ def document_index_list(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
     object_list = []
 
-    queryset = document.indexinstancenode_set.all()
+    queryset = document.node_instances.all()
     try:
         # TODO: should be AND not OR
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])

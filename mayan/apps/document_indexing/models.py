@@ -24,7 +24,7 @@ class Index(models.Model):
 
     @property
     def template_root(self):
-        return self.template_nodes.get(parent=None)
+        return self.node_templates.get(parent=None)
 
     @property
     def instance_root(self):
@@ -59,7 +59,7 @@ class Index(models.Model):
 
     @property
     def node_instances(self):
-        return [template_node.node_instance.get() for template_node in self.template_nodes.all()]
+        return [template_node.node_instance.get() for template_node in self.node_templates.all()]
 
     class Meta:
         verbose_name = _(u'Index')
@@ -68,7 +68,7 @@ class Index(models.Model):
 
 class IndexTemplateNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True)
-    index = models.ForeignKey(Index, verbose_name=_(u'Index'), related_name='template_nodes')
+    index = models.ForeignKey(Index, verbose_name=_(u'Index'), related_name='node_templates')
     expression = models.CharField(max_length=128, verbose_name=_(u'Indexing expression'), help_text=_(u'Enter a python string expression to be evaluated.'))
     # % available_indexing_functions_string)
     enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'), help_text=_(u'Causes this node to be visible and updated when document data changes.'))
@@ -86,7 +86,7 @@ class IndexInstanceNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True)
     index_template_node = models.ForeignKey(IndexTemplateNode, related_name='node_instance', verbose_name=_(u'Index template node'))
     value = models.CharField(max_length=128, blank=True, verbose_name=_(u'Value'))
-    documents = models.ManyToManyField(Document, related_name='index_instance_nodes', verbose_name=_(u'Documents'))
+    documents = models.ManyToManyField(Document, related_name='node_instances', verbose_name=_(u'Documents'))
 
     def __unicode__(self):
         return self.value

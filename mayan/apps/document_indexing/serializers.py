@@ -20,7 +20,7 @@ class IndexTemplateNodeSerializer(serializers.ModelSerializer):
 
 
 class IndexSerializer(serializers.ModelSerializer):
-    template_nodes = IndexTemplateNodeSerializer(read_only=True, many=True)
+    node_templates = IndexTemplateNodeSerializer(read_only=True, many=True)
     node_instances = IndexInstanceNodeSerializer(read_only=True, many=True)
 
     class Meta:
