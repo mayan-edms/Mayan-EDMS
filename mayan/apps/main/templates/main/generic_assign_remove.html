@@ -9,7 +9,7 @@
         #id_right_list,#id_left_list { min-width: 28em; min-height: 13em; }
     </style>
     <div class="content">
-    <h2 class="title">{{ title|safe }}</h2>
+    <h2 class="title">{{ title }}</h2>
 
     <form method='POST' action='' id='assign_remove'>{% csrf_token %}
         <input name='action' value='' type='hidden' />
