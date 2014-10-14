@@ -15,7 +15,7 @@ from rest_api.permissions import MayanPermission
 from .models import Index, IndexInstanceNode
 from .permissions import (PERMISSION_DOCUMENT_INDEXING_CREATE,
                           PERMISSION_DOCUMENT_INDEXING_VIEW)
-from .serializers import IndexSerializer
+from .serializers import IndexInstanceNodeSerializer, IndexSerializer
 
 
 class APIIndexView(generics.RetrieveAPIView):
@@ -62,3 +62,23 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
             AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_VIEW, self.request.user, index_node_instance.index)
 
         return index_node_instance.documents.all()
+
+
+class APIDocumentIndexListView(generics.ListAPIView):
+    """
+    Returns a list of all the indexes to which a document belongs.
+    """
+
+    serializer_class = IndexInstanceNodeSerializer
+
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_INDEXING_VIEW]}
+
+    def get_queryset(self):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+        try:
+            Permission.objects.check_permissions(self.request.user, [PERMISSION_DOCUMENT_VIEW])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, self.request.user, document)
+
+        return document.node_instances.all()
