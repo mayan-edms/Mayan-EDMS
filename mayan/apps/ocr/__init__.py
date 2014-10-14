@@ -13,7 +13,6 @@ from documents.models import Document, DocumentVersion
 from main.api import register_maintenance_links
 from navigation.api import register_links, register_multi_item_links
 from project_tools.api import register_tool
-from statistics.classes import StatisticNamespace
 
 from .links import (all_document_ocr_cleanup, ocr_tool_link,
                     queue_document_list, queue_document_multiple_delete,
@@ -22,7 +21,6 @@ from .links import (all_document_ocr_cleanup, ocr_tool_link,
 from .models import DocumentQueue
 from .permissions import PERMISSION_OCR_DOCUMENT
 from .settings import AUTOMATIC_OCR
-from .statistics import OCRStatistics
 from .tasks import task_do_ocr
 
 logger = logging.getLogger(__name__)
@@ -57,8 +55,5 @@ def create_default_queue_signal_handler(sender, **kwargs):
 Document.add_to_class('submit_for_ocr', document_ocr_submit)
 
 class_permissions(Document, [PERMISSION_OCR_DOCUMENT])
-
-namespace = StatisticNamespace(name='ocr', label=_(u'OCR'))
-namespace.add_statistic(OCRStatistics(name='ocr_stats', label=_(u'OCR queue statistics')))
 
 register_tool(ocr_tool_link)
