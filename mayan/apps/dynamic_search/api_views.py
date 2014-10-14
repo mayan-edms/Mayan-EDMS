@@ -4,6 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics, status
+from rest_framework.exceptions import ParseError
 from rest_framework.response import Response
 
 from acls.models import AccessEntry
@@ -54,13 +55,16 @@ class APISearchView(generics.ListAPIView):
         self.serializer_class = document_search.serializer
         self.mayan_object_permissions = {'GET': [document_search.permission]}
 
-        if 'q' in self.request.GET:
-            # Simple query
-            query_string = self.request.GET.get('q', u'').strip()
-            queryset, ids, timedelta = document_search.simple_search(query_string)
-        else:
-            # Advanced search
-            queryset, ids, timedelta = document_search.advanced_search(self.request.GET)
+        try:
+            if 'q' in self.request.GET:
+                # Simple query
+                query_string = self.request.GET.get('q', u'').strip()
+                queryset, ids, timedelta = document_search.simple_search(query_string)
+            else:
+                # Advanced search
+                queryset, ids, timedelta = document_search.advanced_search(self.request.GET)
+        except Exception as exception:
+            raise ParseError(unicode(exception))
 
         RecentSearch.objects.add_query_for_user(self.request.user, self.request.GET, len(ids))
 
