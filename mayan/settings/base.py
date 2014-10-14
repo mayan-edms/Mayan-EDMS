@@ -51,7 +51,6 @@ INSTALLED_APPS = (
     'mptt',
     'rest_framework',
     'rest_framework.authtoken',
-    'rest_framework_swagger',
     'solo',
     'south',
     'taggit',
@@ -93,6 +92,8 @@ INSTALLED_APPS = (
     'statistics',
     'storage',
     'tags',
+    # Placed after rest_api to allow template overriding
+    'rest_framework_swagger',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -266,3 +267,7 @@ CELERY_ENABLE_UTC = True
 CELERY_ALWAYS_EAGER = True
 # ------------ CORS ------------
 CORS_ORIGIN_ALLOW_ALL = True
+# ------ Django REST Swagger -----
+SWAGGER_SETTINGS = {
+    "api_version": '0',  # Specify your API's version
+}
