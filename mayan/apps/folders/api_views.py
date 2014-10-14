@@ -8,6 +8,7 @@ from rest_framework import generics
 from acls.models import AccessEntry
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
+from documents.serializers import DocumentSerializer
 from permissions.models import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
@@ -56,10 +57,7 @@ class APIFolderDocumentListView(generics.ListAPIView):
 
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
-
-    def get_serializer_class(self):
-        from documents.serializers import DocumentSerializer
-        return DocumentSerializer
+    serializer_class = FolderSerializer
 
     def get_queryset(self):
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
