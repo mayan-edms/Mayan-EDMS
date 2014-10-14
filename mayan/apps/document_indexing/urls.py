@@ -26,5 +26,4 @@ api_urls = patterns('',
     url(r'^index/node/(?P<pk>[0-9]+)/documents/$', APIIndexNodeInstanceDocumentListView.as_view(), name='index-node-documents'),
     url(r'^indexes/(?P<pk>[0-9]+)/$', APIIndexView.as_view(), name='index-detail'),
     url(r'^indexes/$', APIIndexListView.as_view(), name='index-list'),
-    #url(r'^document/(?P<pk>[0-9]+)/folders/$', APIDocumentFolderListView.as_view(), name='document-folder-list'),
 )
