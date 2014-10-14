@@ -44,9 +44,12 @@ class APISearchView(generics.ListAPIView):
     q -- Term that will be used for the search.
     """
 
+    filter_backends = (MayanObjectPermissionsFilter,)
+
     def get_queryset(self):
         document_search = SearchModel.get('documents.Document')
         self.serializer_class = document_search.serializer
+        self.mayan_object_permissions = {'GET': [document_search.permission]}
 
         if 'q' in self.request.GET:
             # Simple query

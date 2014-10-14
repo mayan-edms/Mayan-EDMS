@@ -23,13 +23,14 @@ class SearchModel(object):
     def get(cls, full_name):
         return cls.registry[full_name]
 
-    def __init__(self, app_label, model_name, serializer, label=None):
+    def __init__(self, app_label, model_name, serializer, label=None, permission=None):
         self.app_label = app_label
         self.model_name = model_name
         self.search_fields = {}
         self.model = get_model(app_label, model_name)
         self.label = label or self.model._meta.verbose_name
         self.serializer = serializer
+        self.permission = permission
         self.__class__.registry[self.get_full_name()] = self
 
     def get_full_name(self):

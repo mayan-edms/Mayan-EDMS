@@ -3,11 +3,15 @@ from __future__ import absolute_import
 import logging
 import urlparse
 
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
+
+from acls.models import AccessEntry
+from permissions.models import Permission
 
 from .classes import SearchModel
 from .forms import SearchForm, AdvancedSearchForm
@@ -39,6 +43,12 @@ def results(request, extra_context=None):
             # Advanced search
             logger.debug('advanced search')
             queryset, ids, timedelta = document_search.advanced_search(request.GET)
+
+        if document_search.permission:
+            try:
+                Permission.objects.check_permissions(request.user, [document_search.permission])
+            except PermissionDenied:
+                queryset = AccessEntry.objects.filter_objects_by_access(document_search.permission, request.user, queryset)
 
         # Update the context with the search results
         context.update({
@@ -77,27 +87,21 @@ def search(request, advanced=False):
             }, context_instance=RequestContext(request)
         )
     else:
-        if request.GET.get('source') != 'sidebar':
-            # Don't include a form a top of the results if the search
-            # was originated from the sidebar search form
-            extra_context = {
-                'submit_label': _(u'Search'),
-                'submit_icon_famfam': 'zoom',
-                'form_title': _(u'Search'),
-                'form_hide_required_text': True,
-            }
-            if ('q' in request.GET) and request.GET['q'].strip():
-                query_string = request.GET['q']
-                form = SearchForm(initial={'q': query_string})
-                extra_context.update({'form': form})
-                return results(request, extra_context=extra_context)
-            else:
-                form = SearchForm()
-                extra_context.update({'form': form})
-                return results(request, extra_context=extra_context)
+        extra_context = {
+            'submit_label': _(u'Search'),
+            'submit_icon_famfam': 'zoom',
+            'form_title': _(u'Search'),
+            'form_hide_required_text': True,
+        }
+        if ('q' in request.GET) and request.GET['q'].strip():
+            query_string = request.GET['q']
+            form = SearchForm(initial={'q': query_string})
+            extra_context.update({'form': form})
+            return results(request, extra_context=extra_context)
         else:
-            # Already has a form with data, go to results
-            return results(request)
+            form = SearchForm()
+            extra_context.update({'form': form})
+            return results(request, extra_context=extra_context)
 
 
 def search_again(request):

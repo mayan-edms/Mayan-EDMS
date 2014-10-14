@@ -142,7 +142,7 @@ class_permissions(Document, [PERMISSION_DOCUMENT_DELETE,
                              PERMISSION_DOCUMENT_VIEW,
                              PERMISSION_HISTORY_VIEW])
 
-document_search = SearchModel('documents', 'Document', serializer=DocumentSerializer)
+document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer=DocumentSerializer)
 document_search.add_model_field('document_type__name', label=_(u'Document type'))
 
 # TODO: move these to their respective apps
