@@ -9,3 +9,7 @@ class RecentSearchSerializer(serializers.ModelSerializer):
     class Meta:
         model = RecentSearch
         read_only_fields = ('user', 'query', 'datetime_created', 'hits')
+
+
+class SearchSerializer(serializers.Serializer):
+    results = serializers.CharField()

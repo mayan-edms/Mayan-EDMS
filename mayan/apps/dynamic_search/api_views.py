@@ -13,7 +13,7 @@ from rest_api.permissions import MayanPermission
 
 from .classes import SearchModel
 from .models import RecentSearch
-from .serializers import RecentSearchSerializer
+from .serializers import RecentSearchSerializer, SearchSerializer
 
 
 class APIRecentSearchListView(generics.ListAPIView):
@@ -45,6 +45,9 @@ class APISearchView(generics.ListAPIView):
     """
 
     filter_backends = (MayanObjectPermissionsFilter,)
+
+    # Placeholder serializer to avoid errors with Django REST swagger
+    serializer_class = SearchSerializer
 
     def get_queryset(self):
         document_search = SearchModel.get('documents.Document')
