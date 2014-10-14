@@ -57,4 +57,4 @@ register_top_menu('indexes', document_index_main_menu_link)
 
 endpoint = APIEndPoint('indexes')
 endpoint.register_urls(api_urls)
-endpoint.add_endpoint('indexes-list', _(u'Returns a list of all the indexes.'))
+endpoint.add_endpoint('index-list', _(u'Returns a list of all the indexes.'))
