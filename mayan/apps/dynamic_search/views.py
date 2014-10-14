@@ -34,36 +34,28 @@ def results(request, extra_context=None):
             # Simple query
             logger.debug('simple search')
             query_string = request.GET.get('q', u'').strip()
-            model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.simple_search(query_string)
+            queryset, ids, timedelta = document_search.simple_search(query_string)
         else:
             # Advanced search
             logger.debug('advanced search')
-            model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.advanced_search(request.GET)
-
-        if shown_result_count != result_count:
-            title = _(u'Results, (showing only %(shown_result_count)s out of %(result_count)s)') % {
-                'shown_result_count': shown_result_count,
-                'result_count': result_count}
-
-        else:
-            title = _(u'Results')
+            queryset, ids, timedelta = document_search.advanced_search(request.GET)
 
         # Update the context with the search results
         context.update({
-            'found_entries': model_list,
-            'object_list': flat_list,
-            'title': title,
-            'time_delta': elapsed_time,
+            'object_list': queryset,
+            'time_delta': timedelta,
+            'title': _(u'Results'),
         })
 
-        RecentSearch.objects.add_query_for_user(request.user, request.GET, result_count)
+        RecentSearch.objects.add_query_for_user(request.user, request.GET, len(ids))
 
     if extra_context:
         context.update(extra_context)
 
     if SHOW_OBJECT_TYPE:
-        context.update({'extra_columns':
-            [{'name': _(u'Type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]})
+        context.update({
+            'extra_columns': [{'name': _(u'Type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]
+        })
 
     return render_to_response('search_results.html', context,
                               context_instance=RequestContext(request))
@@ -72,7 +64,8 @@ def results(request, extra_context=None):
 def search(request, advanced=False):
     if advanced:
         form = AdvancedSearchForm(data=request.GET, search_model=document_search)
-        return render_to_response('main/generic_form.html',
+        return render_to_response(
+            'main/generic_form.html',
             {
                 'form': form,
                 'title': _(u'Advanced search'),

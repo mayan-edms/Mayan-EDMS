@@ -18,7 +18,12 @@ class RecentSearch(models.Model):
     """
     Keeps a list of the n most recent search keywords for a given user
     """
-    user = models.ForeignKey(User, verbose_name=_(u'User'), editable=False)
+    user = models.ForeignKey(User, verbose_name=_(u'User'), editable=True)
+    # Setting editable to True to workaround Django REST framework issue
+    # 1604 - https://github.com/tomchristie/django-rest-framework/issues/1604
+    # Should be fixed by DRF v2.4.4
+    # TODO: Fix after upgrade to DRF v2.4.4
+
     query = models.TextField(verbose_name=_(u'Query'), editable=False)
     datetime_created = models.DateTimeField(verbose_name=_(u'Datetime created'), editable=False)
     hits = models.IntegerField(verbose_name=_(u'Hits'), editable=False)

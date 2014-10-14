@@ -23,12 +23,13 @@ class SearchModel(object):
     def get(cls, full_name):
         return cls.registry[full_name]
 
-    def __init__(self, app_label, model_name, label=None):
+    def __init__(self, app_label, model_name, serializer, label=None):
         self.app_label = app_label
         self.model_name = model_name
         self.search_fields = {}
         self.model = get_model(app_label, model_name)
         self.label = label or self.model._meta.verbose_name
+        self.serializer = serializer
         self.__class__.registry[self.get_full_name()] = self
 
     def get_full_name(self):
@@ -126,12 +127,9 @@ class SearchModel(object):
         return self.execute_search(search_dict, global_and_search=True)
 
     def execute_search(self, search_dict, global_and_search=False):
-        model_list = {}
-        flat_list = []
-        result_count = 0
-        shown_result_count = 0
         elapsed_time = 0
         start_time = datetime.datetime.now()
+        result_set = set()
 
         for model, data in search_dict.items():
             logger.debug('model: %s' % model)
@@ -175,30 +173,11 @@ class SearchModel(object):
                 else:
                     model_result_set |= field_result_set
 
-                logger.debug('model_result_set: %s' % model_result_set)
-
-            # Update the search result total count
-            result_count += len(model_result_set)
-
-            # Search the field results return values (PK) in the SearchModel's model
-            results = self.model.objects.in_bulk(list(model_result_set)[: LIMIT]).values()
-            logger.debug('query model_result_set: %s' % model_result_set)
-
-            # Update the search result visible count (limited by LIMIT config option)
-            shown_result_count += len(results)
-
-            if results:
-                model_list[data['label']] = results
-                for result in results:
-                    if result not in flat_list:
-                        flat_list.append(result)
-
-            logger.debug('model_list: %s' % model_list)
-            logger.debug('flat_list: %s' % flat_list)
+            result_set = result_set | model_result_set
 
         elapsed_time = unicode(datetime.datetime.now() - start_time).split(':')[2]
 
-        return model_list, flat_list, shown_result_count, result_count, elapsed_time
+        return self.model.objects.in_bulk(list(result_set)[: LIMIT]).values(), result_set, elapsed_time
 
     def assemble_query(self, terms, search_fields):
         """

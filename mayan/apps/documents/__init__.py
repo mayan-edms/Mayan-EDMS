@@ -58,6 +58,7 @@ from .permissions import (PERMISSION_DOCUMENT_DELETE,
                           PERMISSION_DOCUMENT_VERSION_REVERT,
                           PERMISSION_DOCUMENT_VIEW)
 from .settings import THUMBNAIL_SIZE
+from .serializers import DocumentSerializer
 from .statistics import DocumentStatistics, DocumentUsageStatistics
 from .urls import api_urls
 from .widgets import document_thumbnail
@@ -141,7 +142,7 @@ class_permissions(Document, [PERMISSION_DOCUMENT_DELETE,
                              PERMISSION_DOCUMENT_VIEW,
                              PERMISSION_HISTORY_VIEW])
 
-document_search = SearchModel('documents', 'Document')
+document_search = SearchModel('documents', 'Document', serializer=DocumentSerializer)
 document_search.add_model_field('document_type__name', label=_(u'Document type'))
 
 # TODO: move these to their respective apps
