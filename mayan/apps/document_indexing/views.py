@@ -415,7 +415,7 @@ def document_index_list(request, document_id):
         # TODO: should be AND not OR
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
     except PermissionDenied:
-        queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, queryset)
+        queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, queryset, related='index')
 
     for index_instance in queryset:
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
