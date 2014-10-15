@@ -21,7 +21,7 @@ class Folder(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('folder_view', [self.pk])
+        return ('folders:folder_view', [self.pk])
 
     @property
     def documents(self):
