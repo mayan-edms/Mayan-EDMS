@@ -55,8 +55,8 @@ def delete_indexes(document):
 
     warnings = []
 
-    for index_instance in document.index_instance_nodes.all():
-        index_warnings = cascade_document_remove(document, index_instance)
+    for index_node in document.node_instances.all():
+        index_warnings = cascade_document_remove(document, index_node)
         warnings.extend(index_warnings)
 
     return warnings
