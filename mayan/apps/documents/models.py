@@ -288,13 +288,6 @@ class Document(models.Model):
 
         return self.__class__._latest_versions[self.pk]
 
-    @property
-    def first_version(self):
-        if self.pk not in self.__class__._first_versions:
-            self.__class__._first_versions[self.pk] = self.versions.order_by('timestamp').first()
-
-        return self.__class__._first_versions[self.pk]
-
     def rename(self, new_name):
         version = self.latest_version
         return version.rename(new_name)
@@ -510,7 +503,6 @@ class DocumentVersion(models.Model):
         self.__class__._page_counts[self.pk] = None
         # Invalidate parent document's latest version cache
         Document._latest_versions[self.document.pk] = None
-        Document._first_versions[self.document.pk] = None
 
         return super(DocumentVersion, self).delete(*args, **kwargs)
 
