@@ -78,8 +78,8 @@ class IndexTemplateNode(MPTTModel):
         return self.expression
 
     class Meta:
-        verbose_name = _(u'Index template node')
-        verbose_name_plural = _(u'Indexes template nodes')
+        verbose_name = _(u'Index node template')
+        verbose_name_plural = _(u'Indexes node template')
 
 
 class IndexInstanceNode(MPTTModel):
@@ -99,8 +99,8 @@ class IndexInstanceNode(MPTTModel):
         return ('indexing:index_instance_node_view', [self.pk])
 
     class Meta:
-        verbose_name = _(u'Index instance node')
-        verbose_name_plural = _(u'Indexes instance nodes')
+        verbose_name = _(u'Index node instance')
+        verbose_name_plural = _(u'Indexes node instances')
 
 
 class DocumentRenameCount(models.Model):
