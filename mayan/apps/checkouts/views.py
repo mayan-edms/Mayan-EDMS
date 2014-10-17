@@ -18,11 +18,11 @@ from permissions.models import Permission
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckoutForm
+from .literals import STATE_LABELS
 from .models import DocumentCheckout
 from .permissions import (PERMISSION_DOCUMENT_CHECKIN,
                           PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
                           PERMISSION_DOCUMENT_CHECKOUT)
-from .widgets import checkout_widget
 
 
 def checkout_list(request):
@@ -47,7 +47,7 @@ def checkout_info(request, document_pk):
     except PermissionDenied:
         AccessEntry.objects.check_accesses([PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN], request.user, document)
 
-    paragraphs = [checkout_widget(document)]
+    paragraphs = [_(u'Document status: %s') % STATE_LABELS[document.checkout_state()]]
 
     if document.is_checked_out():
         checkout_info = document.checkout_info()
@@ -82,10 +82,10 @@ def checkout_document(request, document_pk):
                     messages.error(request, _(u'Error trying to check out document; %s') % exception)
                 else:
                     messages.success(request, _(u'Document "%s" checked out successfully.') % document)
-                    return HttpResponseRedirect(reverse('checkout_info', args=[document.pk]))
+                    return HttpResponseRedirect(reverse('checkouts:checkout_info', args=[document.pk]))
         except DocumentAlreadyCheckedOut:
             messages.error(request, _(u'Document already checked out.'))
-            return HttpResponseRedirect(reverse('checkout_info', args=[document.pk]))
+            return HttpResponseRedirect(reverse('checkouts:checkout_info', args=[document.pk]))
     else:
         form = DocumentCheckoutForm(initial={'document': document})
 
@@ -98,7 +98,7 @@ def checkout_document(request, document_pk):
 
 def checkin_document(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
-    post_action_redirect = reverse('checkout_info', args=[document.pk])
+    post_action_redirect = reverse('checkouts:checkout_info', args=[document.pk])
 
     # If the user trying to check in the document is the same as the check out
     # user just check for the normal permission otherwise check for the forceful
