@@ -8,10 +8,9 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.template.defaultfilters import force_escape
-from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
@@ -48,13 +47,7 @@ def document_verify(request, document_pk):
     else:
         signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
 
-    widget = (u'<img style="vertical-align: middle;" src="%simages/icons/%s" />' % (settings.STATIC_URL, signature_state['icon']))
-    paragraphs = [
-        _(u'Signature status: %(widget)s %(text)s') % {
-            'widget': mark_safe(widget),
-            'text': signature_state['text']
-        },
-    ]
+    paragraphs = [_(u'Signature status: %s') % signature_state['text']]
 
     try:
         if DocumentVersionSignature.objects.has_embedded_signature(document):
