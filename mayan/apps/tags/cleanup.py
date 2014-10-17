@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from taggit.models import Tag
+from .models import Tag
 
 
 def cleanup():

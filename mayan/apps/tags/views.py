@@ -11,8 +11,6 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from taggit.models import Tag
-
 from acls.models import AccessEntry
 from acls.views import acl_list_for
 from acls.utils import apply_default_acls
@@ -22,7 +20,7 @@ from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
 
 from .forms import TagForm, TagListForm
-from .models import TagProperties
+from .models import Tag
 from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_CREATE,
                           PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
                           PERMISSION_TAG_REMOVE, PERMISSION_TAG_VIEW)
@@ -38,15 +36,7 @@ def tag_create(request):
     if request.method == 'POST':
         form = TagForm(request.POST)
         if form.is_valid():
-            tag_name = form.cleaned_data['name']
-
-            if tag_name in Tag.objects.values_list('name', flat=True):
-                messages.error(request, _(u'Tag already exists.'))
-                return HttpResponseRedirect(previous)
-
-            tag = Tag(name=tag_name)
-            tag.save()
-            TagProperties(tag=tag, color=form.cleaned_data['color']).save()
+            tag = form.save()
             apply_default_acls(tag, request.user)
 
             messages.success(request, _(u'Tag created succesfully.'))
@@ -89,7 +79,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
                         'document': document, 'tag': tag}
                     )
                 else:
-                    document.tags.add(tag)
+                    tag.documents.add(document)
                     messages.success(request, _(u'Tag "%(tag)s" attached successfully to document "%(document)s".') % {
                         'document': document, 'tag': tag}
                     )
@@ -209,20 +199,13 @@ def tag_edit(request, tag_id):
         AccessEntry.objects.check_access(PERMISSION_TAG_EDIT, request.user, tag)
 
     if request.method == 'POST':
-        form = TagForm(request.POST)
+        form = TagForm(data=request.POST, instance=tag)
         if form.is_valid():
-            tag.name = form.cleaned_data['name']
-            tag.save()
-            tag_properties = tag.properties.get()
-            tag_properties.color = form.cleaned_data['color']
-            tag_properties.save()
+            form.save()
             messages.success(request, _(u'Tag updated succesfully.'))
             return HttpResponseRedirect(reverse('tags:tag_list'))
     else:
-        form = TagForm(initial={
-            'name': tag.name,
-            'color': tag.properties.get().color
-        })
+        form = TagForm(instance=tag)
 
     return render_to_response('main/generic_form.html', {
         'title': _(u'Edit tag: %s') % tag,

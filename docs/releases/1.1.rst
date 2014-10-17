@@ -58,6 +58,7 @@ Next upgrade/add the new requirements::
 
 Migrate existing database schema with::
 
+    $ mayan-edms.py migrate tags 0001 --fake
     $ mayan-edms.py migrate
 
 Add new static media::

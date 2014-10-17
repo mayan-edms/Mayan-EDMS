@@ -3,7 +3,6 @@ from __future__ import absolute_import
 from django.utils.translation import ugettext_lazy as _
 
 from taggit.managers import TaggableManager
-from taggit.models import Tag
 
 from acls.api import class_permissions
 from common.utils import encapsulate
@@ -17,6 +16,7 @@ from .links import (multiple_documents_selection_tag_remove,
                     tag_attach, tag_create, tag_delete, tag_document_list,
                     tag_edit, tag_list, tag_multiple_attach,
                     tag_multiple_delete, tag_tagged_item_list)
+from .models import Tag
 from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_DELETE,
                           PERMISSION_TAG_EDIT, PERMISSION_TAG_REMOVE,
                           PERMISSION_TAG_VIEW)
@@ -24,12 +24,11 @@ from .urls import api_urls
 from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
 
 
-def tag_documents(self):
-    return Document.objects.filter(tags__in=[self])
+def document_tags(self):
+    return Tag.objects.filter(documents=self)
 
 
-Document.add_to_class('tags', TaggableManager())
-Tag.add_to_class('documents', property(tag_documents))
+Document.add_to_class('tags', property(document_tags))
 
 class_permissions(Document, [
     PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
@@ -49,7 +48,7 @@ register_model_list_columns(Tag, [
     },
     {
         'name': _(u'Tagged items'),
-        'attribute': encapsulate(lambda x: x.taggit_taggeditem_items.count())
+        'attribute': encapsulate(lambda x: x.documents.count())
     }
 ])
 

@@ -1,18 +1,16 @@
 from django.test import TestCase
 
-from taggit.models import Tag
-
 from .literals import COLOR_RED
-from .models import TagProperties
+from .models import Tag
 
 
 class TagTestCase(TestCase):
     def setUp(self):
-        self.tag = Tag(name='test')
+        self.tag = Tag(label='test', color=COLOR_RED)
         self.tag.save()
-        self.tp = TagProperties(tag=self.tag, color=COLOR_RED)
-        self.tp.save()
 
     def runTest(self):
-        self.failUnlessEqual(self.tag.name, 'test')
-        self.failUnlessEqual(self.tp.get_color_code(), 'red')
+        self.failUnlessEqual(self.tag.label, 'test')
+        self.failUnlessEqual(self.tag.get_color_code(), 'red')
+
+# TODO: Add test for attaching and removing documents to a tag
