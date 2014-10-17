@@ -324,7 +324,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
                         'document': document, 'tag': tag}
                     )
                 else:
-                    document.tags.remove(tag)
+                    tag.documents.remove(document)
                     messages.success(request, _(u'Tag "%(tag)s" removed successfully from document "%(document)s".') % {
                         'document': document, 'tag': tag}
                     )
