@@ -5,7 +5,6 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework import generics, status
 from rest_framework.response import Response
-from taggit.models import Tag
 
 from acls.models import AccessEntry
 from documents.models import Document
@@ -14,11 +13,12 @@ from permissions.models import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
+from .models import Tag
 from .permissions import PERMISSION_TAG_REMOVE, PERMISSION_TAG_VIEW
 from .serializers import TagSerializer
 
 
-class APITagView(generics.RetrieveAPIView):
+class APITagView(generics.RetrieveUpdateDestroyAPIView):
     """
     Details of the selected tag.
     """
@@ -29,7 +29,7 @@ class APITagView(generics.RetrieveAPIView):
     mayan_object_permissions = {'GET': [PERMISSION_TAG_VIEW]}
 
 
-class APITagListView(generics.ListAPIView):
+class APITagListView(generics.ListCreateAPIView):
     """
     Returns a list of all the tags.
     """
