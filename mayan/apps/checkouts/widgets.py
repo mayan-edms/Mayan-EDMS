@@ -3,13 +3,9 @@ from __future__ import absolute_import
 import datetime
 
 from django import forms
-from django.conf import settings
 from django.core import validators
-from django.utils.safestring import mark_safe
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
-
-from .literals import STATE_ICONS, STATE_LABELS
 
 
 class SplitDeltaWidget(forms.widgets.MultiWidget):

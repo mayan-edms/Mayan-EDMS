@@ -11,8 +11,9 @@ from documents.models import Document
 from history.api import create_history
 from permissions.models import Permission
 
-from .events import (HISTORY_DOCUMENT_CHECKED_IN, HISTORY_DOCUMENT_AUTO_CHECKED_IN,
-    HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
+from .events import (HISTORY_DOCUMENT_AUTO_CHECKED_IN,
+                     HISTORY_DOCUMENT_CHECKED_IN,
+                     HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
 from .exceptions import DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
 from .permissions import PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE
