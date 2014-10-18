@@ -14,7 +14,8 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import Tag
-from .permissions import PERMISSION_TAG_REMOVE, PERMISSION_TAG_VIEW
+from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
+                          PERMISSION_TAG_VIEW)
 from .serializers import TagSerializer
 
 
@@ -105,9 +106,34 @@ class APIDocumentTagRemoveView(generics.DestroyAPIView):
         tag = self.get_object()
         document = self.get_document()
 
-        document.tags.remove(tag)
+        tag.documents.remove(document)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
     def get_queryset(self):
         document = self.get_document()
         return document.tags.all()
+
+
+class APIDocumentTagAddView(generics.CreateAPIView):
+    """
+    Attach a tag to a document.
+    """
+
+    queryset = Tag.objects.all()
+    serializer_class = TagSerializer
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
+        try:
+            Permission.objects.check_permissions(self.request.user, [PERMISSION_TAG_ATTACH])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_TAG_ATTACH, self.request.user, document)
+
+        return document
+
+    def post(self, request, *args, **kwargs):
+        tag = self.get_object()
+        document = self.get_document()
+
+        tag.documents.add(document)
+        return Response(status=status.HTTP_201_CREATED)
