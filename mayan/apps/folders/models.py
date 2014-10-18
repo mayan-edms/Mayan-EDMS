@@ -4,6 +4,7 @@ from django.utils.timezone import now
 from django.utils.translation import ugettext as _
 
 from documents.models import Document
+# TODO: Simplify this model by adding a M2M field called documents
 
 
 class Folder(models.Model):
