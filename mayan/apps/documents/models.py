@@ -30,8 +30,7 @@ from mimetype.api import get_mimetype
 
 from .events import HISTORY_DOCUMENT_CREATED
 from .exceptions import NewDocumentVersionNotAllowed
-from .literals import (RELEASE_LEVEL_CHOICES, RELEASE_LEVEL_FINAL,
-                       VERSION_UPDATE_MAJOR, VERSION_UPDATE_MICRO,
+from .literals import (VERSION_UPDATE_MAJOR, VERSION_UPDATE_MICRO,
                        VERSION_UPDATE_MINOR)
 from .managers import (DocumentPageTransformationManager, DocumentTypeManager,
                        RecentDocumentManager)
@@ -187,7 +186,7 @@ class Document(models.Model):
     def size(self):
         return self.latest_version.size
 
-    def new_version(self, file, user=None, comment=None, version_update=None, release_level=None, serial=None):
+    def new_version(self, file, user=None, comment=None, version_update=None):
         logger.debug('creating new document version')
         # TODO: move this restriction to a signal processor of the checkouts app
         if not self.is_new_versions_allowed(user=user):
@@ -202,8 +201,6 @@ class Document(models.Model):
                 major=new_version_dict.get('major'),
                 minor=new_version_dict.get('minor'),
                 micro=new_version_dict.get('micro'),
-                release_level=release_level,
-                serial=serial,
                 comment=comment,
             )
             new_version.save()
@@ -316,8 +313,8 @@ class DocumentVersion(models.Model):
     @staticmethod
     def get_version_update_choices(document_version):
         return (
-            (VERSION_UPDATE_MAJOR, _(u'Major %(major)i.%(minor)i, (new release)') % document_version.get_new_version_dict(VERSION_UPDATE_MAJOR)),
-            (VERSION_UPDATE_MINOR, _(u'Minor %(major)i.%(minor)i, (some updates)') % document_version.get_new_version_dict(VERSION_UPDATE_MINOR)),
+            (VERSION_UPDATE_MAJOR, _(u'Major %(major)i.%(minor)i.%(micro)i, (new release)') % document_version.get_new_version_dict(VERSION_UPDATE_MAJOR)),
+            (VERSION_UPDATE_MINOR, _(u'Minor %(major)i.%(minor)i.%(micro)i, (some updates)') % document_version.get_new_version_dict(VERSION_UPDATE_MINOR)),
             (VERSION_UPDATE_MICRO, _(u'Micro %(major)i.%(minor)i.%(micro)i, (fixes)') % document_version.get_new_version_dict(VERSION_UPDATE_MICRO))
         )
 
@@ -333,8 +330,6 @@ class DocumentVersion(models.Model):
     major = models.PositiveIntegerField(verbose_name=_(u'Mayor'), default=1)
     minor = models.PositiveIntegerField(verbose_name=_(u'Minor'), default=0)
     micro = models.PositiveIntegerField(verbose_name=_(u'Micro'), default=0)
-    release_level = models.PositiveIntegerField(choices=RELEASE_LEVEL_CHOICES, default=RELEASE_LEVEL_FINAL, verbose_name=_(u'Release level'))
-    serial = models.PositiveIntegerField(verbose_name=_(u'Serial'), default=0)
     timestamp = models.DateTimeField(verbose_name=_(u'Timestamp'), auto_now_add=True)
     comment = models.TextField(blank=True, verbose_name=_(u'Comment'))
 
@@ -346,7 +341,7 @@ class DocumentVersion(models.Model):
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'Checksum'), editable=False)
 
     class Meta:
-        unique_together = ('document', 'major', 'minor', 'micro', 'release_level', 'serial')
+        unique_together = ('document', 'major', 'minor', 'micro')
         verbose_name = _(u'Document version')
         verbose_name_plural = _(u'Document version')
 
@@ -379,13 +374,7 @@ class DocumentVersion(models.Model):
         """
         Return the formatted version information
         """
-        vers = [u'%i.%i' % (self.major, self.minor), ]
-
-        if self.micro:
-            vers.append(u'.%i' % self.micro)
-        if self.release_level != RELEASE_LEVEL_FINAL:
-            vers.append(u'%s%i' % (self.get_release_level_display(), self.serial))
-        return u''.join(vers)
+        return u'%i.%i.%i' % (self.major, self.minor, self.micro)
 
     def save(self, *args, **kwargs):
         """

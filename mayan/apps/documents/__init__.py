@@ -143,16 +143,16 @@ class_permissions(Document, [PERMISSION_DOCUMENT_DELETE,
                              PERMISSION_HISTORY_VIEW])
 
 document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer=DocumentSerializer)
-document_search.add_model_field('document_type__name', label=_(u'Document type'))
 
 # TODO: move these to their respective apps
+# Moving these to other apps cause an ImportError; circular import?
+document_search.add_model_field('document_type__name', label=_(u'Document type'))
 document_search.add_model_field('versions__mimetype', label=_(u'MIME type'))
 document_search.add_model_field('versions__filename', label=_(u'Filename'))
 document_search.add_model_field('metadata__metadata_type__name', label=_(u'Metadata type'))
 document_search.add_model_field('metadata__value', label=_(u'Metadata value'))
 document_search.add_model_field('versions__pages__content', label=_(u'Content'))
 document_search.add_model_field('description', label=_(u'Description'))
-document_search.add_related_field('comments', 'Comment', 'comment', 'object_pk', label=_(u'Comments'))
 
 namespace = StatisticNamespace(name='documents', label=_(u'Documents'))
 namespace.add_statistic(DocumentStatistics(name='document_stats', label=_(u'Document tendencies')))

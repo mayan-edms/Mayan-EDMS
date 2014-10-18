@@ -93,14 +93,12 @@ class APIDocumentVersionCreateView(generics.CreateAPIView):
                     major=serializer.object.major,
                     minor=serializer.object.minor,
                     micro=serializer.object.micro,
-                    release_level=serializer.object.release_level,
-                    serial=serializer.object.serial
                 )
             except DocumentVersion.DoesNotExist:
                 self.object = serializer.save(force_insert=True)
             else:
                 return Response(
-                    {'non_field_errors': 'A version with the same major, minor, micro, release_level and serial values already exist for this document.'},
+                    {'non_field_errors': 'A version with the same major, minor and micro values already exist for this document.'},
                     status=status.HTTP_400_BAD_REQUEST
                 )
 

@@ -13,8 +13,7 @@ from common.widgets import TextAreaDiv
 from .models import (Document, DocumentType, DocumentPage,
                      DocumentPageTransformation, DocumentTypeFilename,
                      DocumentVersion)
-from .literals import (DEFAULT_ZIP_FILENAME, RELEASE_LEVEL_CHOICES,
-                       RELEASE_LEVEL_FINAL)
+from .literals import DEFAULT_ZIP_FILENAME
 from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
 
 
@@ -143,20 +142,6 @@ class DocumentForm(forms.ModelForm):
             choices=DocumentVersion.get_version_update_choices(document.latest_version)
         )
 
-        self.fields['release_level'] = forms.ChoiceField(
-            label=_(u'Release level'),
-            choices=RELEASE_LEVEL_CHOICES,
-            initial=RELEASE_LEVEL_FINAL,
-        )
-
-        self.fields['serial'] = forms.IntegerField(
-            label=_(u'Release level serial'),
-            initial=0,
-            widget=forms.widgets.TextInput(
-                attrs={'style': 'width: auto;'}
-            ),
-        )
-
         self.fields['comment'] = forms.CharField(
             label=_(u'Comment'),
             required=False,
@@ -172,8 +157,6 @@ class DocumentForm(forms.ModelForm):
         cleaned_data['new_version_data'] = {
             'comment': self.cleaned_data.get('comment'),
             'version_update': self.cleaned_data.get('version_update'),
-            'release_level': self.cleaned_data.get('release_level'),
-            'serial': self.cleaned_data.get('serial'),
         }
 
         # Always return the full collection of cleaned data.
@@ -191,8 +174,6 @@ class DocumentForm_edit(DocumentForm):
     def __init__(self, *args, **kwargs):
         super(DocumentForm_edit, self).__init__(*args, **kwargs)
         if kwargs['instance'].latest_version:
-            self.fields.pop('serial')
-            self.fields.pop('release_level')
             self.fields.pop('version_update')
             self.fields.pop('comment')
         else:

@@ -13,7 +13,7 @@ from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from .literals import VERSION_UPDATE_MAJOR, RELEASE_LEVEL_FINAL
+from .literals import VERSION_UPDATE_MAJOR
 from .models import Document, DocumentType
 
 TEST_ADMIN_PASSWORD = 'test_admin_password'
@@ -59,8 +59,6 @@ class DocumentTestCase(TestCase):
             new_version_data = {
                 'comment': 'test comment 1',
                 'version_update': VERSION_UPDATE_MAJOR,
-                'release_level': RELEASE_LEVEL_FINAL,
-                'serial': 0,
             }
 
             new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
@@ -70,8 +68,6 @@ class DocumentTestCase(TestCase):
         new_version_data = {
             'comment': 'test comment 2',
             'version_update': VERSION_UPDATE_MAJOR,
-            'release_level': RELEASE_LEVEL_FINAL,
-            'serial': 0,
         }
         with open(TEST_DOCUMENT_PATH) as file_object:
             new_version = self.document.new_version(file=File(file_object), **new_version_data)

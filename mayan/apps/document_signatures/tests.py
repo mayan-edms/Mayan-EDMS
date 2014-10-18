@@ -6,7 +6,7 @@ from django.conf import settings
 from django.core.files.base import File
 from django.test import TestCase
 
-from documents.literals import VERSION_UPDATE_MAJOR, RELEASE_LEVEL_FINAL
+from documents.literals import VERSION_UPDATE_MAJOR
 from documents.models import Document, DocumentType
 from django_gpg.literals import SIGNATURE_STATE_VALID
 from django_gpg.runtime import gpg
@@ -44,8 +44,6 @@ class DocumentTestCase(TestCase):
             new_version_data = {
                 'comment': 'test comment 1',
                 'version_update': VERSION_UPDATE_MAJOR,
-                'release_level': RELEASE_LEVEL_FINAL,
-                'serial': 0,
             }
 
             self.document.new_version(file=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
@@ -57,8 +55,6 @@ class DocumentTestCase(TestCase):
         new_version_data = {
             'comment': 'test comment 2',
             'version_update': VERSION_UPDATE_MAJOR,
-            'release_level': RELEASE_LEVEL_FINAL,
-            'serial': 0,
         }
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document.new_version(file=File(file_object), **new_version_data)
