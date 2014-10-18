@@ -2,8 +2,6 @@ from __future__ import absolute_import
 
 from django.utils.translation import ugettext_lazy as _
 
-from taggit.managers import TaggableManager
-
 from acls.api import class_permissions
 from common.utils import encapsulate
 from documents.models import Document
