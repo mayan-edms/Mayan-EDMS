@@ -4,8 +4,6 @@ from south.db import db
 from south.v2 import DataMigration
 from django.db import models
 
-from taggit.models import Tag as TaggitModel
-
 
 class Migration(DataMigration):
     def forwards(self, orm):
@@ -14,9 +12,14 @@ class Migration(DataMigration):
         # Use orm.ModelName to refer to models in this application,
         # and orm['appname.ModelName'] for models in other applications.
 
-        for tag in TaggitModel.objects.all():
-            color = orm.TagProperties.objects.get(tag=tag).color
-            orm.Tag.objects.create(label=tag.name, color=color)
+        try:
+            from taggit.models import Tag as TaggitModel
+        except ImportError:
+            pass
+        else:
+            for tag in TaggitModel.objects.all():
+                color = orm.TagProperties.objects.get(tag=tag).color
+                orm.Tag.objects.create(label=tag.name, color=color)
 
     def backwards(self, orm):
         "Write your backwards methods here."
