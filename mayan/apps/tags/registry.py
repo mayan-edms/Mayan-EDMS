@@ -4,12 +4,8 @@ from .cleanup import cleanup
 
 bootstrap_models = [
     {
-        'name': 'taggit.tag',
-        'sanitize': False,
-    },
-    {
-        'name': 'tagproperties',
-        'dependencies': ['taggit.tag']
+        'name': 'tag',
+        'dependencies': ['documents.document']
     }
 ]
 cleanup_functions = [cleanup]
