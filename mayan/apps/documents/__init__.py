@@ -152,7 +152,6 @@ document_search.add_model_field('metadata__metadata_type__name', label=_(u'Metad
 document_search.add_model_field('metadata__value', label=_(u'Metadata value'))
 document_search.add_model_field('versions__pages__content', label=_(u'Content'))
 document_search.add_model_field('description', label=_(u'Description'))
-document_search.add_model_field('tags__name', label=_(u'Tags'))
 document_search.add_related_field('comments', 'Comment', 'comment', 'object_pk', label=_(u'Comments'))
 
 namespace = StatisticNamespace(name='documents', label=_(u'Documents'))
