@@ -9,7 +9,7 @@ class Folder(models.Model):
     title = models.CharField(max_length=128, verbose_name=_(u'Title'), db_index=True)
     user = models.ForeignKey(User, verbose_name=_(u'User'))
     datetime_created = models.DateTimeField(verbose_name=_(u'Datetime created'), auto_now_add=True)
-    documents = models.ManyToManyField(Document, verbose_name=_('Documents'))
+    documents = models.ManyToManyField(Document, related_name='folders', verbose_name=_('Documents'))
 
     def __unicode__(self):
         return self.title

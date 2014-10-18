@@ -22,11 +22,6 @@ from .permissions import (PERMISSION_FOLDER_ADD_DOCUMENT,
                           PERMISSION_FOLDER_VIEW)
 from .urls import api_urls
 
-
-def document_folders(self):
-    return Folder.objects.filter(documents=self)
-
-
 register_links(Document, [document_folder_list], menu_name='form_header')
 register_links(Folder, [folder_view, folder_edit, folder_delete, folder_acl_list])
 register_links([Folder, 'folders:folder_list', 'folders:folder_create'], [folder_list, folder_create], menu_name='secondary_menu')
@@ -48,8 +43,6 @@ register_model_list_columns(Folder, [
     {'name': _(u'Created'), 'attribute': 'datetime_created'},
     {'name': _(u'Documents'), 'attribute': encapsulate(lambda x: x.documents.count())},
 ])
-
-Document.add_to_class('folders', property(document_folders))
 
 endpoint = APIEndPoint('folders')
 endpoint.register_urls(api_urls)
