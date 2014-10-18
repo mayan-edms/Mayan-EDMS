@@ -24,7 +24,7 @@ from .urls import api_urls
 
 
 def document_folders(self):
-    return Folder.objects.filter(folderdocument__document=self)
+    return Folder.objects.filter(documents=self)
 
 
 register_links(Document, [document_folder_list], menu_name='form_header')

@@ -141,7 +141,7 @@ class FolderDetailView(DocumentListView):
         return folder
 
     def get_queryset(self):
-        return self.get_folder().documents
+        return self.get_folder().documents.all()
 
     def get_extra_context(self):
         return {
@@ -177,7 +177,8 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         if form.is_valid():
             folder = form.cleaned_data['folder']
             for document in documents:
-                if folder.add_document(document):
+                if document.pk not in folder.documents.values_list('pk', flat=True):
+                    folder.documents.add(document)
                     messages.success(request, _(u'Document: %(document)s added to folder: %(folder)s successfully.') % {
                         'document': document, 'folder': folder})
                 else:
@@ -260,7 +261,7 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
     if request.method == 'POST':
         for folder_document in folder_documents:
             try:
-                folder.remove_document(folder_document)
+                folder.documents.remove(folder_document)
                 messages.success(request, _(u'Document: %s removed successfully.') % folder_document)
             except Exception as exception:
                 messages.error(request, _(u'Document: %(document)s delete error: %(error)s') % {
