@@ -14,7 +14,6 @@ except ImportError:
 from django.core import management
 from django.core.files.uploadedfile import SimpleUploadedFile
 from django.db import models
-from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import BootstrapModel, FixtureMetadata
@@ -32,7 +31,7 @@ class BootstrapSetup(models.Model):
     description = models.TextField(verbose_name=_(u'Description'), blank=True)
     fixture = models.TextField(verbose_name=_(u'Fixture'), help_text=_(u'These are the actual database structure creation instructions.'))
     type = models.CharField(max_length=16, verbose_name=_(u'Type'), choices=FIXTURE_TYPES_CHOICES)
-    created = models.DateTimeField(verbose_name=_('Creation date and time'), default=lambda: now(), editable=False)
+    created = models.DateTimeField(verbose_name=_('Creation date and time'), auto_now_add=True)
 
     objects = BootstrapSetupManager()
 
