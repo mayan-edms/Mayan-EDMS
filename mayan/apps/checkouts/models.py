@@ -22,7 +22,7 @@ class DocumentCheckout(models.Model):
     Model to store the state and information of a document checkout
     """
     document = models.ForeignKey(Document, verbose_name=_(u'Document'), unique=True)
-    checkout_datetime = models.DateTimeField(verbose_name=_(u'Check out date and time'), blank=True, null=True)
+    checkout_datetime = models.DateTimeField(verbose_name=_(u'Check out date and time'), auto_now_add=True)
     expiration_datetime = models.DateTimeField(verbose_name=_(u'Check out expiration date and time'), help_text=_(u'Amount of time to hold the document checked out in minutes.'))
     user_content_type = models.ForeignKey(ContentType, null=True, blank=True)  # blank and null added for ease of db migration
     user_object_id = models.PositiveIntegerField(null=True, blank=True)
@@ -40,8 +40,6 @@ class DocumentCheckout(models.Model):
         return unicode(self.document)
 
     def save(self, *args, **kwargs):
-        if not self.pk:
-            self.checkout_datetime = now()
         result = super(DocumentCheckout, self).save(*args, **kwargs)
         create_history(HISTORY_DOCUMENT_CHECKED_OUT, source_object=self.document, data={'user': self.user_object, 'document': self.document})
         return result
