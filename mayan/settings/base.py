@@ -55,7 +55,6 @@ INSTALLED_APPS = (
     'rest_framework.authtoken',
     'solo',
     'south',
-    'taggit',
     # Base generic
     'acls',
     'common',
