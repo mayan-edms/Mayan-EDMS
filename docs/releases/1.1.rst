@@ -65,6 +65,11 @@ Add new static media::
 
     $ mayan-edms.py collectstatic --noinput
 
+Remove unused dependencies::
+
+    $ pip uninstall django-taggit
+
+
 The upgrade procedure is now complete.
 
 
