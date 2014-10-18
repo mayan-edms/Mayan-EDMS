@@ -31,7 +31,6 @@ def setting_list(request):
         'hide_object': True,
         'extra_columns': [
             {'name': _(u'Name'), 'attribute': encapsulate(lambda x: mark_safe(u'<span style="font-weight: bold;">%s</span><br />%s' % (x.get('global_name'), x.get('description'))))},
-            {'name': _(u'Default'), 'attribute': encapsulate(lambda x: return_type(x['default']))},
             {
                 'name': _(u'Value'), 'attribute': encapsulate(lambda x: mark_safe(u'<div class="nowrap">%s&nbsp;%s</div>' % (
                     return_type(getattr(x['module'], x['name'])),
