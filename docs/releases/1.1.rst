@@ -59,6 +59,7 @@ Next upgrade/add the new requirements::
 Migrate existing database schema with::
 
     $ mayan-edms.py migrate dynamic_search 0001 --fake
+    $ mayan-edms.py migrate history 0001 --fake
     $ mayan-edms.py migrate lock_manager 0001 --fake
     $ mayan-edms.py migrate tags 0001 --fake
     $ mayan-edms.py migrate
