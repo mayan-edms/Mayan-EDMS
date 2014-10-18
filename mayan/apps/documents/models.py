@@ -15,7 +15,6 @@ except ImportError:
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.utils.timezone import now
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
@@ -83,7 +82,7 @@ class Document(models.Model):
     uuid = models.CharField(max_length=48, blank=True, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'), related_name='documents', null=True, blank=True)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'Description'))
-    date_added = models.DateTimeField(verbose_name=_(u'Added'), db_index=True, editable=False)
+    date_added = models.DateTimeField(verbose_name=_(u'Added'), auto_now_add=True)
 
     @staticmethod
     def clear_image_cache():
@@ -113,7 +112,6 @@ class Document(models.Model):
         new_document = not self.pk
         if new_document:
             self.uuid = UUID_FUNCTION()
-            self.date_added = now()
         super(Document, self).save(*args, **kwargs)
 
         if new_document:
@@ -337,7 +335,7 @@ class DocumentVersion(models.Model):
     micro = models.PositiveIntegerField(verbose_name=_(u'Micro'), default=0)
     release_level = models.PositiveIntegerField(choices=RELEASE_LEVEL_CHOICES, default=RELEASE_LEVEL_FINAL, verbose_name=_(u'Release level'))
     serial = models.PositiveIntegerField(verbose_name=_(u'Serial'), default=0)
-    timestamp = models.DateTimeField(verbose_name=_(u'Timestamp'), editable=False, db_index=True)
+    timestamp = models.DateTimeField(verbose_name=_(u'Timestamp'), auto_now_add=True)
     comment = models.TextField(blank=True, verbose_name=_(u'Comment'))
 
     # File related fields
@@ -395,8 +393,6 @@ class DocumentVersion(models.Model):
         mimetype, page count and transformation when created
         """
         new_document = not self.pk
-        if not self.pk:
-            self.timestamp = now()
 
         # Only do this for new documents
         transformations = kwargs.pop('transformations', None)
@@ -672,7 +668,7 @@ class RecentDocument(models.Model):
     """
     user = models.ForeignKey(User, verbose_name=_(u'User'), editable=False)
     document = models.ForeignKey(Document, verbose_name=_(u'Document'), editable=False)
-    datetime_accessed = models.DateTimeField(verbose_name=_(u'Accessed'), default=lambda: now(), db_index=True)
+    datetime_accessed = models.DateTimeField(verbose_name=_(u'Accessed'), auto_now=True, db_index=True)
 
     objects = RecentDocumentManager()
 
