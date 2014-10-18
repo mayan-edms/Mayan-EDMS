@@ -27,7 +27,7 @@ register_links(Folder, [folder_view, folder_edit, folder_delete, folder_acl_list
 register_links([Folder, 'folders:folder_list', 'folders:folder_create'], [folder_list, folder_create], menu_name='secondary_menu')
 register_links(['folders:document_folder_list', 'folders:folder_add_document'], [folder_add_document], menu_name="sidebar")
 
-register_multi_item_links(['documents:document_find_duplicates', 'folders:folder_view', 'indexes:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'indexing:document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [folder_add_multiple_documents])
+register_multi_item_links(['folders:folder_view', 'indexes:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'indexing:document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [folder_add_multiple_documents])
 register_multi_item_links(['folders:folder_view'], [folder_document_multiple_remove])
 
 register_top_menu(name='folders', link=folders_main_menu_link, children_views=['folders:folder_list', 'folders:folder_create', 'folders:folder_edit', 'folders:folder_delete', 'folders:folder_view', 'folders:folder_document_multiple_remove'])

@@ -398,60 +398,6 @@ def document_multiple_download(request):
     )
 
 
-def document_find_duplicates(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
-
-    extra_context = {
-        'title': _(u'Duplicates of: %s') % document,
-        'object': document,
-    }
-    return _find_duplicate_list(request, [document], include_source=True, confirmation=False, extra_context=extra_context)
-
-
-def _find_duplicate_list(request, source_document_list=Document.objects.all(), include_source=False, confirmation=True, extra_context=None):
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    if confirmation and request.method != 'POST':
-        return render_to_response('main/generic_confirm.html', {
-            'previous': previous,
-            'title': _(u'Are you sure you wish to find all duplicates?'),
-            'message': _(u'On large databases this operation may take some time to execute.'),
-            'form_icon': u'page_refresh.png',
-        }, context_instance=RequestContext(request))
-    else:
-        duplicated = []
-        for document in source_document_list:
-            if document.pk not in duplicated:
-                results = DocumentVersion.objects.filter(checksum=document.latest_version.checksum).exclude(id__in=duplicated).exclude(pk=document.pk).values_list('document__pk', flat=True)
-                duplicated.extend(results)
-
-                if include_source and results:
-                    duplicated.append(document.pk)
-        context = {
-            'hide_links': True,
-            'multi_select_as_buttons': True,
-        }
-
-        if extra_context:
-            context.update(extra_context)
-
-        return document_list(
-            request,
-            object_list=Document.objects.filter(pk__in=duplicated),
-            title=_(u'Duplicated documents'),
-            extra_context=context
-        )
-
-
-def document_find_all_duplicates(request):
-    return _find_duplicate_list(request, include_source=True)
-
-
 def document_update_page_count(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TOOLS])
 

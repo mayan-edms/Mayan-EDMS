@@ -26,7 +26,6 @@ urlpatterns = patterns('documents.views',
 
     url(r'^(?P<document_id>\d+)/download/$', 'document_download', (), 'document_download'),
     url(r'^multiple/download/$', 'document_multiple_download', (), 'document_multiple_download'),
-    url(r'^(?P<document_id>\d+)/find_duplicates/$', 'document_find_duplicates', (), 'document_find_duplicates'),
     url(r'^(?P<document_id>\d+)/clear_transformations/$', 'document_clear_transformations', (), 'document_clear_transformations'),
 
     url(r'^(?P<document_pk>\d+)/version/all/$', 'document_version_list', (), 'document_version_list'),
@@ -34,7 +33,6 @@ urlpatterns = patterns('documents.views',
     url(r'^document/version/(?P<document_version_pk>\d+)/revert/$', 'document_version_revert', (), 'document_version_revert'),
 
     url(r'^multiple/clear_transformations/$', 'document_multiple_clear_transformations', (), 'document_multiple_clear_transformations'),
-    url(r'^duplicates/list/$', 'document_find_all_duplicates', (), 'document_find_all_duplicates'),
     url(r'^maintenance/update_page_count/$', 'document_update_page_count', (), 'document_update_page_count'),
     url(r'^maintenance/clear_image_cache/$', 'document_clear_image_cache', (), 'document_clear_image_cache'),
 

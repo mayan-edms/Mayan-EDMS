@@ -60,6 +60,6 @@ register_links(Document, [tag_document_list], menu_name='form_header')
 register_links(['tags:document_tags', 'tags:tag_remove', 'tag_multiple_remove', 'tag_attach'], [tag_attach], menu_name='sidebar')
 register_multi_item_links(['document_tags'], [single_document_multiple_tag_remove])
 
-register_multi_item_links(['documents:document_find_duplicates', 'folders:folder_view', 'indexes:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'linking:document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [tag_multiple_attach, multiple_documents_selection_tag_remove])
+register_multi_item_links(['folders:folder_view', 'indexes:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'linking:document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [tag_multiple_attach, multiple_documents_selection_tag_remove])
 
 document_search.add_model_field('tags__label', label=_(u'Tags'))
