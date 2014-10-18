@@ -3,7 +3,8 @@ from __future__ import absolute_import
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics
+from rest_framework import generics, status, views
+from rest_framework.response import Response
 
 from acls.models import AccessEntry
 from documents.models import Document
@@ -13,8 +14,11 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import Folder
-from .permissions import (PERMISSION_FOLDER_CREATE, PERMISSION_FOLDER_DELETE,
-                          PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_VIEW)
+from .permissions import (PERMISSION_FOLDER_ADD_DOCUMENT,
+                          PERMISSION_FOLDER_CREATE, PERMISSION_FOLDER_DELETE,
+                          PERMISSION_FOLDER_EDIT,
+                          PERMISSION_FOLDER_REMOVE_DOCUMENT,
+                          PERMISSION_FOLDER_VIEW)
 from .serializers import FolderSerializer
 
 
@@ -91,3 +95,33 @@ class APIDocumentFolderListView(generics.ListAPIView):
 
         queryset = document.folders.all()
         return queryset
+
+
+class APIFolderDocumentView(generics.GenericAPIView):
+    """
+    Add or Remove a document from a folder.
+    """
+
+    serializer_class = FolderSerializer
+    queryset = Folder.objects.all()
+
+    permission_classes = (MayanPermission,)
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {
+        'DELETE': [PERMISSION_FOLDER_REMOVE_DOCUMENT],
+        'POST': [PERMISSION_FOLDER_ADD_DOCUMENT]
+    }
+
+    def delete(self, request, *args, **kwargs):
+        folder = self.get_object()
+        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
+
+        folder.documents.remove(document)
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+    def post(self, request, *args, **kwargs):
+        folder = self.get_object()
+        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
+
+        folder.documents.add(document)
+        return Response(status=status.HTTP_201_CREATED)
