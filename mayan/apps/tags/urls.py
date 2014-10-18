@@ -2,9 +2,8 @@ from __future__ import absolute_import
 
 from django.conf.urls import patterns, url
 
-from .api_views import (APIDocumentTagAddView, APIDocumentTagRemoveView,
-                        APIDocumentTagListView, APITagDocumentListView,
-                        APITagListView, APITagView)
+from .api_views import (APIDocumentTagView, APIDocumentTagListView,
+                        APITagDocumentListView, APITagListView, APITagView)
 from .views import TagTaggedItemListView
 
 urlpatterns = patterns('tags.views',
@@ -31,6 +30,5 @@ api_urls = patterns('',
     url(r'^tags/(?P<pk>[0-9]+)/$', APITagView.as_view(), name='tag-detail'),
     url(r'^tags/$', APITagListView.as_view(), name='tag-list'),
     url(r'^document/(?P<pk>[0-9]+)/tags/$', APIDocumentTagListView.as_view(), name='document-tag-list'),
-    url(r'^document/(?P<document_pk>[0-9]+)/tags/(?P<pk>[0-9]+)/remove/$', APIDocumentTagRemoveView.as_view(), name='document-tag-remove'),
-    url(r'^document/(?P<document_pk>[0-9]+)/tags/(?P<pk>[0-9]+)/add/$', APIDocumentTagAddView.as_view(), name='document-tag-add'),
+    url(r'^document/(?P<document_pk>[0-9]+)/tags/(?P<pk>[0-9]+)/$', APIDocumentTagView.as_view(), name='document-tag'),
 )

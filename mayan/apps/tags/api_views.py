@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics, status
+from rest_framework import generics, status, views
 from rest_framework.response import Response
 
 from acls.models import AccessEntry
@@ -86,54 +86,37 @@ class APIDocumentTagListView(generics.ListAPIView):
         return queryset
 
 
-class APIDocumentTagRemoveView(generics.DestroyAPIView):
+class APIDocumentTagView(views.APIView):
     """
-    Remove a tag from a document.
+    Add or Remove a tag to a document.
     """
 
-    serializer_class = TagSerializer
+    def delete(self, request, *args, **kwargs):
+        """
+        Remove a tag from a document.
+        """
 
-    def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         try:
             Permission.objects.check_permissions(self.request.user, [PERMISSION_TAG_REMOVE])
         except PermissionDenied:
             AccessEntry.objects.check_access(PERMISSION_TAG_REMOVE, self.request.user, document)
 
-        return document
-
-    def delete(self, request, *args, **kwargs):
-        tag = self.get_object()
-        document = self.get_document()
-
+        tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
         tag.documents.remove(document)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-    def get_queryset(self):
-        document = self.get_document()
-        return document.tags.all()
+    def post(self, request, *args, **kwargs):
+        """
+        Attach a tag to a document.
+        """
 
-
-class APIDocumentTagAddView(generics.CreateAPIView):
-    """
-    Attach a tag to a document.
-    """
-
-    queryset = Tag.objects.all()
-    serializer_class = TagSerializer
-
-    def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         try:
             Permission.objects.check_permissions(self.request.user, [PERMISSION_TAG_ATTACH])
         except PermissionDenied:
             AccessEntry.objects.check_access(PERMISSION_TAG_ATTACH, self.request.user, document)
 
-        return document
-
-    def post(self, request, *args, **kwargs):
-        tag = self.get_object()
-        document = self.get_document()
-
+        tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
         tag.documents.add(document)
         return Response(status=status.HTTP_201_CREATED)
