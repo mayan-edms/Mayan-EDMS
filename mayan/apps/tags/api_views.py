@@ -20,26 +20,43 @@ from .serializers import TagSerializer
 
 
 class APITagView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    Details of the selected tag.
-    """
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {'GET': [PERMISSION_TAG_VIEW]}
 
+    def delete(self, *args, **kwargs):
+        """Delete the selected tag."""
+        return super(APITagView, self).delete(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        """Return the details of the selected tag."""
+        return super(APITagView, self).get(*args, **kwargs)
+
+    def patch(self, *args, **kwargs):
+        """Edit the selected tag."""
+        return super(APITagView, self).patch(*args, **kwargs)
+
+    def put(self, *args, **kwargs):
+        """Edit the selected tag."""
+        return super(APITagView, self).put(*args, **kwargs)
+
 
 class APITagListView(generics.ListCreateAPIView):
-    """
-    Returns a list of all the tags.
-    """
-
     serializer_class = TagSerializer
     queryset = Tag.objects.all()
 
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': [PERMISSION_TAG_VIEW]}
+
+    def get(self, *args, **kwargs):
+        """Returns a list of all the tags."""
+        return super(APITagListView, self).get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        """Create a new tag."""
+        return super(APITagListView, self).get(*args, **kwargs)
 
 
 class APITagDocumentListView(generics.ListAPIView):
@@ -87,10 +104,6 @@ class APIDocumentTagListView(generics.ListAPIView):
 
 
 class APIDocumentTagView(views.APIView):
-    """
-    Add or Remove a tag to a document.
-    """
-
     def delete(self, request, *args, **kwargs):
         """
         Remove a tag from a document.
