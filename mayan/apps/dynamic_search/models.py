@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import smart_str, smart_unicode
-from django.utils.timezone import now
 from django.utils.translation import ugettext as _
 
 from .classes import SearchModel
@@ -25,7 +24,7 @@ class RecentSearch(models.Model):
     # TODO: Fix after upgrade to DRF v2.4.4
 
     query = models.TextField(verbose_name=_(u'Query'), editable=False)
-    datetime_created = models.DateTimeField(verbose_name=_(u'Datetime created'), editable=False)
+    datetime_created = models.DateTimeField(verbose_name=_(u'Datetime created'), auto_now=True, db_index=True)
     hits = models.IntegerField(verbose_name=_(u'Hits'), editable=False)
 
     objects = RecentSearchManager()
@@ -51,7 +50,6 @@ class RecentSearch(models.Model):
         return u'%s (%s)' % (display_string, self.hits)
 
     def save(self, *args, **kwargs):
-        self.datetime_created = now()
         super(RecentSearch, self).save(*args, **kwargs)
 
     def url(self):
