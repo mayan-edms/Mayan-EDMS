@@ -72,11 +72,10 @@ def folder_edit(request, folder_id):
         AccessEntry.objects.check_access(PERMISSION_FOLDER_EDIT, request.user, folder)
 
     if request.method == 'POST':
-        form = FolderForm(request.POST)
+        form = FolderForm(data=request.POST, instance=folder)
         if form.is_valid():
-            folder.title = form.cleaned_data['title']
             try:
-                folder.save()
+                form.save()
                 messages.success(request, _(u'Folder edited successfully'))
                 return HttpResponseRedirect(reverse('folders:folder_list'))
             except Exception as exception:
