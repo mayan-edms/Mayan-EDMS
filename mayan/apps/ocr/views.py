@@ -19,7 +19,6 @@ from .models import DocumentQueue, QueueDocument
 from .permissions import (PERMISSION_OCR_CLEAN_ALL_PAGES,
                           PERMISSION_OCR_DOCUMENT,
                           PERMISSION_OCR_DOCUMENT_DELETE)
-from .tasks import task_do_ocr
 
 
 def queue_document_list(request, queue_name='default'):

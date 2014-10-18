@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from django.db import models
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils.timezone import now
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
