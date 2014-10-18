@@ -5,7 +5,6 @@ import logging
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
-from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
@@ -40,8 +39,10 @@ class DocumentCheckout(models.Model):
         return unicode(self.document)
 
     def save(self, *args, **kwargs):
+        new_checkout = not self.pk
         result = super(DocumentCheckout, self).save(*args, **kwargs)
-        create_history(HISTORY_DOCUMENT_CHECKED_OUT, source_object=self.document, data={'user': self.user_object, 'document': self.document})
+        if new_checkout:
+            create_history(HISTORY_DOCUMENT_CHECKED_OUT, source_object=self.document, data={'user': self.user_object, 'document': self.document})
         return result
 
     @models.permalink
