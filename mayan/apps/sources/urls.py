@@ -15,7 +15,7 @@ urlpatterns = patterns('sources.views',
     url(r'^upload/document/new/interactive/(?P<source_id>\d+)/$', 'upload_interactive', (), 'upload_interactive'),
     url(r'^upload/document/new/interactive/$', 'upload_interactive', (), 'upload_interactive'),
 
-    url(r'^upload/document/(?P<document_pk>\d+)/version/interactive/(?P<source_type>\w+)/(?P<source_id>\d+)/$', 'upload_interactive', (), 'upload_version'),
+    url(r'^upload/document/(?P<document_pk>\d+)/version/interactive/(?P<source_id>\d+)/$', 'upload_interactive', (), 'upload_version'),
     url(r'^upload/document/(?P<document_pk>\d+)/version/interactive/$', 'upload_interactive', (), 'upload_version'),
 
     # Setup views
