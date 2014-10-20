@@ -111,6 +111,7 @@ def upload_interactive(request, source_id=None, document_pk=None):
 
     context = {}
 
+    # TODO: use InteractiveSource.objects.count() instead
     if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0:
         source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('sources:setup_web_form_list'), ugettext(u'Here')))
         subtemplates_list.append(
@@ -285,7 +286,7 @@ def upload_interactive(request, source_id=None, document_pk=None):
         'subtemplates_list': subtemplates_list,
         'temporary_navigation_links': {
             'form_header': {
-                'upload_version': {
+                'sources:upload_version': {
                     'links': results['tab_links']
                 },
                 'sources:upload_interactive': {
