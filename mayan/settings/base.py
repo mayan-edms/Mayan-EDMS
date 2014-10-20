@@ -49,6 +49,7 @@ INSTALLED_APPS = (
     # 3rd party
     'compressor',
     'corsheaders',
+    'djcelery',
     'filetransfers',
     'mptt',
     'rest_framework',
@@ -266,6 +267,7 @@ REST_FRAMEWORK = {
 CELERY_TIMEZONE = 'UTC'
 CELERY_ENABLE_UTC = True
 CELERY_ALWAYS_EAGER = True
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 # ------------ CORS ------------
 CORS_ORIGIN_ALLOW_ALL = True
 # ------ Django REST Swagger -----

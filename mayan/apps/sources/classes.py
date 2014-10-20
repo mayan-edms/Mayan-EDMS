@@ -10,6 +10,21 @@ from converter.api import convert
 from mimetype.api import get_mimetype
 
 
+class PseudoFile(File):
+    def __init__(self, file, name):
+        self.name = name
+        self.file = file
+        self.file.seek(0, os.SEEK_END)
+        self.size = self.file.tell()
+        self.file.seek(0)
+
+
+class Attachment(File):
+    def __init__(self, part, name):
+        self.name = name
+        self.file = PseudoFile(StringIO(part.get_payload(decode=True)), name=name)
+
+
 class StagingFile(object):
     """
     Simple class to extend the File class to add preview capabilities
