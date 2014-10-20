@@ -5,7 +5,8 @@ from django.conf.urls import patterns, url
 from .api_views import (APIDocumentCreateView, APIStagingSourceFileView,
                         APIStagingSourceFileImageView, APIStagingSourceListView,
                         APIStagingSourceView)
-from .literals import (SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
+from .literals import (SOURCE_CHOICE_EMAIL_POP3, SOURCE_CHOICE_EMAIL_IMAP,
+                       SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
                        SOURCE_CHOICE_WEB_FORM)
 from .wizards import DocumentCreateWizard
 
@@ -23,6 +24,8 @@ urlpatterns = patterns('sources.views',
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_WEB_FORM, 'setup_source_list', {'source_type': SOURCE_CHOICE_WEB_FORM}, 'setup_web_form_list'),
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_STAGING, 'setup_source_list', {'source_type': SOURCE_CHOICE_STAGING}, 'setup_staging_folder_list'),
     url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_WATCH, 'setup_source_list', {'source_type': SOURCE_CHOICE_WATCH}, 'setup_watch_folder_list'),
+    url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_EMAIL_POP3, 'setup_source_list', {'source_type': SOURCE_CHOICE_EMAIL_POP3}, 'setup_pop3_email_list'),
+    url(r'^setup/interactive/%s/list/$' % SOURCE_CHOICE_EMAIL_IMAP, 'setup_source_list', {'source_type': SOURCE_CHOICE_EMAIL_IMAP}, 'setup_imap_email_list'),
 
     url(r'^setup/interactive/(?P<source_type>\w+)/list/$', 'setup_source_list', (), 'setup_source_list'),
     url(r'^setup/interactive/(?P<source_id>\d+)/edit/$', 'setup_source_edit', (), 'setup_source_edit'),

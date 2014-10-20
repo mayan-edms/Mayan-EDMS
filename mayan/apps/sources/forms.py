@@ -8,8 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.forms import DocumentForm
 
-from .models import (SourceTransformation, StagingFolderSource, WebFormSource,
-                     WatchFolderSource)
+from .models import (IMAPEmail, POP3Email, SourceTransformation,
+                     StagingFolderSource, WebFormSource, WatchFolderSource)
 from .utils import validate_whitelist_blacklist
 
 logger = logging.getLogger(__name__)
@@ -83,6 +83,16 @@ class WebFormSetupForm(forms.ModelForm):
 class StagingFolderSetupForm(forms.ModelForm):
     class Meta:
         model = StagingFolderSource
+
+
+class POP3EmailSetupForm(forms.ModelForm):
+    class Meta:
+        model = POP3Email
+
+
+class IMAPEmailSetupForm(forms.ModelForm):
+    class Meta:
+        model = IMAPEmail
 
 
 class WatchFolderSetupForm(forms.ModelForm):

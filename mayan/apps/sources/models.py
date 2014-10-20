@@ -204,13 +204,13 @@ class IntervalBaseModel(OutOfProcessSource):
         super(IntervalBaseModel, self).save(*args, **kwargs)
         periodic_task_name = 'check_interval_source-%i' % self.pk
         if new_source:
-            interval_instance = IntervalSchedule.objects.create(every=self.interval)
+            interval_instance = IntervalSchedule.objects.create(every=self.interval, period='seconds')
             PeriodicTask.objects.create(
                 name=periodic_task_name,
                 interval=interval_instance,
                 task='sources.tasks.task_check_interval_source',
                 queue='mailing',
-                args=json.dump({'source_id': self.pk})
+                kwargs=json.dumps({'source_id': self.pk})
             )
         else:
             periodic_task = PeriodicTask.objects.get(name=periodic_task_name)
@@ -219,8 +219,8 @@ class IntervalBaseModel(OutOfProcessSource):
             periodic_task.save()
 
     def delete(self, *args, **kwargs):
-        super(IntervalBaseModel, self).delete(*args, **kwargs)
         periodic_task_name = 'check_interval_source-%i' % self.pk
+        super(IntervalBaseModel, self).delete(*args, **kwargs)
         periodic_task = PeriodicTask.objects.get(name=periodic_task_name)
         interval_instance = periodic_task.interval
         periodic_task.delete()
@@ -303,11 +303,9 @@ class POP3Email(EmailBaseModel):
                 mailbox.dele(message_number)
 
             mailbox.quit()
-            #SourceLog.objects.save_status(source=self, status='Successful connection.')
-
         except Exception as exception:
             logger.error('Unhandled exception: %s' % exception)
-            #SourceLog.objects.save_status(source=self, status='Error: %s' % exc)
+            # TODO: Add user notification
 
     class Meta:
         verbose_name = _('POP email')
@@ -348,10 +346,9 @@ class IMAPEmail(EmailBaseModel):
             mailbox.expunge()
             mailbox.close()
             mailbox.logout()
-            #SourceLog.objects.save_status(source=self, status='Successful connection.')
         except Exception as exception:
             logger.error('Unhandled exception: %s' % exc)
-            #SourceLog.objects.save_status(source=self, status='Error: %s' % exc)
+            # TODO: Add user notification
 
     class Meta:
         verbose_name = _('IMAP email')

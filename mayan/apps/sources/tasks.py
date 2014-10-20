@@ -14,6 +14,12 @@ logger = logging.getLogger(__name__)
 
 
 @app.task(ignore_result=True)
+def task_check_interval_source(source_id):
+    source = Source.objects.get_subclass(pk=source_id)
+    source.fetch_mail()
+
+
+@app.task(ignore_result=True)
 def task_upload_document(source_id, file_path, filename=None, use_file_name=False, document_type_id=None, expand=False, metadata_dict_list=None, user_id=None, document_id=None, new_version_data=None, command_line=False, description=None):
     source = Source.objects.get_subclass(pk=source_id)
 

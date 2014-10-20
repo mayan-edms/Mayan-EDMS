@@ -5,7 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
                                    PERMISSION_DOCUMENT_NEW_VERSION)
 
-from .models import StagingFolderSource, WatchFolderSource, WebFormSource
+from .models import (IMAPEmail, POP3Email, StagingFolderSource,
+                     WatchFolderSource, WebFormSource)
 from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_DELETE,
                           PERMISSION_SOURCES_SETUP_EDIT,
@@ -20,6 +21,8 @@ setup_sources = {'text': _(u'Sources'), 'view': 'sources:setup_web_form_list', '
 setup_web_form_list = {'text': _(u'Web forms'), 'view': 'sources:setup_web_form_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'children_classes': [WebFormSource], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
 setup_staging_folder_list = {'text': _(u'Staging folders'), 'view': 'sources:setup_staging_folder_list', 'famfam': 'folder_camera', 'children_classes': [StagingFolderSource], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
 setup_watch_folder_list = {'text': _(u'Watch folders'), 'view': 'sources:setup_watch_folder_list', 'famfam': 'folder_magnify', 'children_classes': [WatchFolderSource], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
+setup_pop3_email_list = {'text': _(u'POP3 emails'), 'view': 'sources:setup_pop3_email_list', 'famfam': 'email', 'children_classes': [POP3Email], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
+setup_imap_email_list = {'text': _(u'IMAP emails'), 'view': 'sources:setup_imap_email_list', 'famfam': 'email', 'children_classes': [IMAPEmail], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
 
 setup_source_edit = {'text': _(u'Edit'), 'view': 'sources:setup_source_edit', 'args': ['source.pk'], 'famfam': 'application_form_edit', 'permissions': [PERMISSION_SOURCES_SETUP_EDIT]}
 setup_source_delete = {'text': _(u'Delete'), 'view': 'sources:setup_source_delete', 'args': ['source.pk'], 'famfam': 'application_form_delete', 'permissions': [PERMISSION_SOURCES_SETUP_DELETE]}
