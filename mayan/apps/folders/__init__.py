@@ -23,7 +23,7 @@ from .permissions import (PERMISSION_FOLDER_ADD_DOCUMENT,
 from .urls import api_urls
 
 register_links(Document, [document_folder_list], menu_name='form_header')
-register_links(Folder, [folder_view, folder_edit, folder_delete, folder_acl_list])
+register_links(Folder, [folder_view, folder_edit, folder_acl_list, folder_delete])
 register_links([Folder, 'folders:folder_list', 'folders:folder_create'], [folder_list, folder_create], menu_name='secondary_menu')
 register_links(['folders:document_folder_list', 'folders:folder_add_document'], [folder_add_document], menu_name="sidebar")
 

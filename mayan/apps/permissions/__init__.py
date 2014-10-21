@@ -13,8 +13,8 @@ from .links import (permission_grant, permission_revoke, role_create,
                     role_permissions)
 from .settings import DEFAULT_ROLES
 
-register_links(Role, [role_delete, role_edit, role_members, role_permissions])
-register_links([Role, 'permissions:role_create', 'permissions:role_list'], [role_create, role_list], menu_name='secondary_menu')
+register_links(Role, [role_edit, role_members, role_permissions, role_delete])
+register_links([Role, 'permissions:role_create', 'permissions:role_list'], [role_list, role_create], menu_name='secondary_menu')
 register_multi_item_links(['permissions:role_permissions'], [permission_grant, permission_revoke])
 
 permission_views = ['permissions:role_list', 'permissions:role_create', 'permissions:role_edit', 'permissions:role_members', 'permissions:role_permissions', 'permissions:role_delete']
