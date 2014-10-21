@@ -14,16 +14,16 @@ from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_VIEW)
 
 document_create_multiple = {'text': _(u'Upload new documents'), 'view': 'sources:document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE], 'children_view_regex': [r'upload_interactive']}
-document_create_siblings = {'text': _(u'Clone metadata'), 'view': 'sources:document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
+document_create_siblings = {'text': _(u'Clone'), 'view': 'sources:document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 
 staging_file_delete = {'text': _(u'Delete'), 'view': 'sources:staging_file_delete', 'args': ['source.pk', 'object.encoded_filename'], 'famfam': 'delete', 'keep_query': True, 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE]}
 
 setup_sources = {'text': _(u'Sources'), 'view': 'sources:setup_source_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'permissions': [PERMISSION_SOURCES_SETUP_VIEW], 'children_view_regex': [r'setup_web_form', r'setup_staging_folder', r'setup_source_']}
-setup_source_create_webform = {'text': _(u'Add new webform source'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WEB_FORM, 'famfam': 'application_form_add', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
-setup_source_create_staging_folder = {'text': _(u'Add new staging folders'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_STAGING, 'famfam': 'folder_camera', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
-setup_source_create_watch_folder_list = {'text': _(u'Add new watch folders'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WATCH, 'famfam': 'folder_magnify', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
-setup_source_create_pop3_email = {'text': _(u'Add new POP3 emails'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_EMAIL_POP3, 'famfam': 'email', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
-setup_source_create_imap_email = {'text': _(u'Add new IMAP emails'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_EMAIL_IMAP, 'famfam': 'email', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
+setup_source_create_webform = {'text': _(u'Add new webform source'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WEB_FORM, 'famfam': 'application_form_add', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context['source_type'] == SOURCE_CHOICE_WEB_FORM}
+setup_source_create_staging_folder = {'text': _(u'Add new staging folders'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_STAGING, 'famfam': 'folder_camera', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context['source_type'] == SOURCE_CHOICE_STAGING}
+setup_source_create_watch_folder_list = {'text': _(u'Add new watch folders'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WATCH, 'famfam': 'folder_magnify', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context['source_type'] == SOURCE_CHOICE_WATCH}
+setup_source_create_pop3_email = {'text': _(u'Add new POP3 emails'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_EMAIL_POP3, 'famfam': 'email', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context['source_type'] == SOURCE_CHOICE_EMAIL_POP3}
+setup_source_create_imap_email = {'text': _(u'Add new IMAP emails'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_EMAIL_IMAP, 'famfam': 'email', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context['source_type'] == SOURCE_CHOICE_EMAIL_IMAP}
 setup_source_delete = {'text': _(u'Delete'), 'view': 'sources:setup_source_delete', 'args': ['source.pk'], 'famfam': 'application_form_delete', 'permissions': [PERMISSION_SOURCES_SETUP_DELETE]}
 setup_source_edit = {'text': _(u'Edit'), 'view': 'sources:setup_source_edit', 'args': ['source.pk'], 'famfam': 'application_form_edit', 'permissions': [PERMISSION_SOURCES_SETUP_EDIT]}
 
