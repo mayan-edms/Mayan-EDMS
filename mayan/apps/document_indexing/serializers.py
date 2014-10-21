@@ -5,7 +5,6 @@ from rest_framework import serializers
 from .models import Index, IndexInstanceNode, IndexTemplateNode
 
 
-
 class IndexInstanceNodeSerializer(serializers.ModelSerializer):
     documents = serializers.HyperlinkedIdentityField(view_name='index-node-documents')
 

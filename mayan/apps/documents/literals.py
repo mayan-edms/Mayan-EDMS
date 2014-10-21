@@ -1,5 +1,3 @@
-from django.utils.translation import ugettext_lazy as _
-
 PICTURE_ERROR_SMALL = u'picture_error.png'
 PICTURE_ERROR_MEDIUM = u'1297211435_error.png'
 PICTURE_UNKNOWN_SMALL = u'1299549572_unknown2.png'

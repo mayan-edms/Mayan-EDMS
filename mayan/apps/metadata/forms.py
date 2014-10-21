@@ -4,9 +4,7 @@ from django import forms
 from django.forms.formsets import formset_factory
 from django.utils.translation import ugettext_lazy as _
 
-from common.widgets import ScrollableCheckboxSelectMultiple
-
-from .models import DocumentTypeDefaults, MetadataType
+from .models import MetadataType
 from .settings import AVAILABLE_FUNCTIONS, AVAILABLE_MODELS, AVAILABLE_VALIDATORS
 
 

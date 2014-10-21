@@ -87,7 +87,7 @@ def return_attrib(obj, attrib, arguments=None):
 # http://snippets.dzone.com/posts/show/5434
 # http://snippets.dzone.com/user/jakob
 def pretty_size(size, suffixes=None):
-    suffixes = suffixes if not suffixes is None else [
+    suffixes = suffixes or [
         (u'B', 1024L), (u'K', 1048576L), (u'M', 1073741824L),
         (u'G', 1099511627776L), (u'T', 1125899906842624L)
     ]

@@ -1,5 +1,3 @@
-import re
-
 from .forms import (POP3EmailSetupForm, IMAPEmailSetupForm,
                     StagingFolderSetupForm, WatchFolderSetupForm,
                     WebFormSetupForm)

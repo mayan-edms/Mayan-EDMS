@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -11,7 +10,6 @@ class Migration(SchemaMigration):
         # Deleting model 'TagProperties'
         db.delete_table(u'tags_tagproperties')
 
-
     def backwards(self, orm):
         # Adding model 'TagProperties'
         db.create_table(u'tags_tagproperties', (
@@ -20,7 +18,6 @@ class Migration(SchemaMigration):
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
         ))
         db.send_create_signal(u'tags', ['TagProperties'])
-
 
     models = {
         u'documents.document': {

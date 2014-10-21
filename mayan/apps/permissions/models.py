@@ -195,8 +195,8 @@ class StoredPermission(models.Model):
 class PermissionHolder(models.Model):
     permission = models.ForeignKey(StoredPermission, verbose_name=_(u'Permission'))
     holder_type = models.ForeignKey(ContentType,
-        related_name='permission_holder',
-        limit_choices_to={'model__in': ('user', 'group', 'role')})
+                                    related_name='permission_holder',
+                                    limit_choices_to={'model__in': ('user', 'group', 'role')})
     holder_id = models.PositiveIntegerField()
     holder_object = generic.GenericForeignKey(ct_field='holder_type', fk_field='holder_id')
 
@@ -246,7 +246,8 @@ class Role(models.Model):
 
 class RoleMember(models.Model):
     role = models.ForeignKey(Role, verbose_name=_(u'Role'))
-    member_type = models.ForeignKey(ContentType,
+    member_type = models.ForeignKey(
+        ContentType,
         related_name='role_member',
         limit_choices_to={
             'model__in': (

@@ -14,7 +14,7 @@ from documents.models import Document, DocumentType
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from permissions.models import Permission
 
-from common.utils import encapsulate, generate_choices_w_labels, get_object_name
+from common.utils import get_object_name
 from common.views import assign_remove
 
 from .api import save_metadata_list

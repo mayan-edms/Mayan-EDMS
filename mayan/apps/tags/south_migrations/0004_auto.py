@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -20,7 +19,6 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['tag_id', 'document_id'])
 
-
     def backwards(self, orm):
         # Adding M2M table for field document on 'Tag'
         m2m_table_name = db.shorten_name(u'tags_tag_document')
@@ -33,7 +31,6 @@ class Migration(SchemaMigration):
 
         # Removing M2M table for field documents on 'Tag'
         db.delete_table(db.shorten_name(u'tags_tag_documents'))
-
 
     models = {
         u'documents.document': {

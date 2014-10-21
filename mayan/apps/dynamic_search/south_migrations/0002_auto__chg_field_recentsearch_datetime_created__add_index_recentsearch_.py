@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -14,11 +13,9 @@ class Migration(SchemaMigration):
         # Adding index on 'RecentSearch', fields ['datetime_created']
         db.create_index(u'dynamic_search_recentsearch', ['datetime_created'])
 
-
     def backwards(self, orm):
         # Removing index on 'RecentSearch', fields ['datetime_created']
         db.delete_index(u'dynamic_search_recentsearch', ['datetime_created'])
-
 
         # Changing field 'RecentSearch.datetime_created'
         db.alter_column(u'dynamic_search_recentsearch', 'datetime_created', self.gf('django.db.models.fields.DateTimeField')())

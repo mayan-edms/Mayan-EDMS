@@ -9,6 +9,7 @@ from .models import Lock
 
 # Notice: StaleLock exception and tests are not available until more changes are
 # backported.
+# TODO: backport stale lock code
 
 
 class LockTestCase(TestCase):

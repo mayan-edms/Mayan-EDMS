@@ -12,10 +12,12 @@ def role_permission_link(requester, permission, permission_list):
     if permission in permission_list:
         return mark_safe(template % {
             'url': reverse('permission_revoke',
-                args=[permission.pk, ct.app_label, ct.model, requester.pk]),
+                           args=[permission.pk, ct.app_label, ct.model,
+                           requester.pk]),
             'icon': u'key_delete', 'text': ugettext(u'Revoke')})
     else:
         return mark_safe(template % {
             'url': reverse('permission_grant',
-                args=[permission.pk, ct.app_label, ct.model, requester.pk]),
+                           args=[permission.pk, ct.app_label, ct.model,
+                           requester.pk]),
             'icon': u'key_add', 'text': ugettext(u'Grant')})

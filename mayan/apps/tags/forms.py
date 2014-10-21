@@ -9,7 +9,6 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessEntry
 from permissions.models import Permission
 
-from .literals import COLOR_CHOICES
 from .models import Tag
 from .permissions import PERMISSION_TAG_VIEW
 

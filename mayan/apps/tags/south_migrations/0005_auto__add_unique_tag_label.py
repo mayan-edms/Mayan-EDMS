@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -11,11 +10,9 @@ class Migration(SchemaMigration):
         # Adding unique constraint on 'Tag', fields ['label']
         db.create_unique(u'tags_tag', ['label'])
 
-
     def backwards(self, orm):
         # Removing unique constraint on 'Tag', fields ['label']
         db.delete_unique(u'tags_tag', ['label'])
-
 
     models = {
         u'documents.document': {

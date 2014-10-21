@@ -18,7 +18,6 @@ import sendfile
 
 from acls.models import AccessEntry
 from common.compressed_files import CompressedFile
-from common.literals import PAGE_ORIENTATION_LANDSCAPE, PAGE_ORIENTATION_PORTRAIT
 from common.utils import (encapsulate, pretty_size, parse_range, return_diff,
                           urlquote)
 from common.views import SingleObjectListView

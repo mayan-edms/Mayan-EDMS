@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -25,7 +24,6 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['tag_id', 'document_id'])
 
-
         # Changing field 'TagProperties.tag'
         db.alter_column(u'tags_tagproperties', 'tag_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['tags.Tag']))
 
@@ -35,7 +33,6 @@ class Migration(SchemaMigration):
 
         # Removing M2M table for field document on 'Tag'
         db.delete_table(db.shorten_name(u'tags_tag_document'))
-
 
         # Changing field 'TagProperties.tag'
         db.alter_column(u'tags_tagproperties', 'tag_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['taggit.Tag']))
