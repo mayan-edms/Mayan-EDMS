@@ -56,7 +56,7 @@ class APITagListView(generics.ListCreateAPIView):
 
     def post(self, *args, **kwargs):
         """Create a new tag."""
-        return super(APITagListView, self).get(*args, **kwargs)
+        return super(APITagListView, self).post(*args, **kwargs)
 
 
 class APITagDocumentListView(generics.ListAPIView):
