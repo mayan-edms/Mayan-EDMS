@@ -80,24 +80,6 @@ class MetadataRemoveForm(MetadataForm):
     update = forms.BooleanField(initial=False, label=_(u'Remove'), required=False)
 
 
-class MetadataSelectionForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        super(MetadataSelectionForm, self).__init__(*args, **kwargs)
-        document_type = getattr(self, 'initial', {}).get('document_type', None)
-        if document_type:
-            try:
-                defaults = document_type.documenttypedefaults_set.get()
-                self.fields['metadata_types'].initial = defaults.default_metadata.all()
-            except DocumentTypeDefaults.DoesNotExist:
-                pass
-
-    metadata_types = forms.ModelMultipleChoiceField(
-        queryset=MetadataType.objects.all(),
-        label=_(u'Metadata'),
-        required=False,
-        widget=ScrollableCheckboxSelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
-    )
-
 MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)
 
 

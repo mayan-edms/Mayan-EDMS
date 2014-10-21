@@ -24,6 +24,17 @@ from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_DOCUMENT_VIEW)
 from .urls import api_urls
 
+
+@property
+def document_type_metadata(self):
+    try:
+        return self.documenttypedefaults_set.get().default_metadata
+    except self.documenttypedefaults_set.model.DoesNotExist:
+        return MetadataType.objects.none()
+
+
+DocumentType.add_to_class('metadata', document_type_metadata)
+
 register_links(['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
 register_links(Document, [metadata_view], menu_name='form_header')
 register_links(DocumentType, [setup_document_type_metadata])

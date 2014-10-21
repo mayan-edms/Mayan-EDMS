@@ -9,53 +9,43 @@ from django.utils.translation import ugettext_lazy as _
 from common.views import MayanPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
 from documents.permissions import PERMISSION_DOCUMENT_CREATE
-from metadata.forms import MetadataFormSet, MetadataSelectionForm
+from metadata.forms import MetadataFormSet
 
 
 class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
-    form_list = [DocumentTypeSelectForm, MetadataSelectionForm, MetadataFormSet]
+    form_list = [DocumentTypeSelectForm, MetadataFormSet]
     template_name = 'main/generic_wizard.html'
     extra_context = {}
     permissions_required = [PERMISSION_DOCUMENT_CREATE]
 
     @staticmethod
-    def has_metadata_types(wizard):
-        # Skip the 3rd step if no metadata types or sets are selected
+    def _has_metadata_types(wizard):
+        # Skip the 2nd step if document type has no associated metadata
         try:
-            return wizard.get_cleaned_data_for_step('1')['metadata_types']
+            return wizard.get_cleaned_data_for_step('0')['document_type'].metadata.count()
         except TypeError:
             return False
-
-    def generate_metadata_initial_values(self):
-        initial = []
-
-        for metadata_type in self.get_cleaned_data_for_step('1')['metadata_types']:
-            initial.append({
-                'metadata_type': metadata_type,
-            })
-
-        return initial
 
     def __init__(self, *args, **kwargs):
         super(DocumentCreateWizard, self).__init__(*args, **kwargs)
 
-        self.condition_dict = {'2': DocumentCreateWizard.has_metadata_types}
+        self.condition_dict = {'1': DocumentCreateWizard._has_metadata_types}
 
         self.step_titles = [
-            _(u'Step 1 of 3: Document type'),
-            _(u'Step 2 of 3: Metadata selection'),
-            _(u'Step 3 of 3: Document metadata'),
+            _(u'Step 1 of 2: Select document type'),
+            _(u'Step 2 of 2: Enter document metadata'),
         ]
 
     def get_form_initial(self, step):
         if step == '1':
-            try:
-                return {'document_type': self.get_cleaned_data_for_step('0')['document_type']}
-            except TypeError:
-                return {}
-        elif step == '2':
-            return self.generate_metadata_initial_values()
+            initial = []
 
+            for metadata_type in self.get_cleaned_data_for_step('0')['document_type'].metadata.all():
+                initial.append({
+                    'metadata_type': metadata_type,
+                })
+
+            return initial
         return self.initial_dict.get(step, {})
 
     def get_context_data(self, form, **kwargs):
@@ -75,7 +65,7 @@ class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
             pass
 
         try:
-            for identifier, metadata in enumerate(self.get_cleaned_data_for_step('2')):
+            for identifier, metadata in enumerate(self.get_cleaned_data_for_step('1')):
                 query_dict['metadata%s_id' % identifier] = metadata['id']
                 query_dict['metadata%s_value' % identifier] = metadata['value']
         except TypeError:
