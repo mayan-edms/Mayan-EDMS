@@ -8,7 +8,7 @@ from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_CREATE,
                           PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
                           PERMISSION_TAG_REMOVE)
 
-tag_list = {'text': _(u'Tag list'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'}
+tag_list = {'text': _(u'Tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'}
 tag_create = {'text': _(u'Create new tag'), 'view': 'tags:tag_create', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_CREATE]}
 
 tag_attach = {'text': _(u'Attach tag'), 'view': 'tags:tag_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_ATTACH]}

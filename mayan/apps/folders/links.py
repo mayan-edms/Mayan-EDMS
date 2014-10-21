@@ -10,7 +10,7 @@ from .permissions import (PERMISSION_FOLDER_ADD_DOCUMENT,
                           PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_VIEW,
                           PERMISSION_FOLDER_REMOVE_DOCUMENT)
 
-folder_list = {'text': _(u'Folder list'), 'view': 'folders:folder_list', 'famfam': 'folder_user'}
+folder_list = {'text': _(u'Folders'), 'view': 'folders:folder_list', 'famfam': 'folder_user'}
 folder_create = {'text': _('Create folder'), 'view': 'folders:folder_create', 'famfam': 'folder_add', 'permissions': [PERMISSION_FOLDER_CREATE]}
 folder_edit = {'text': _('Edit'), 'view': 'folders:folder_edit', 'args': 'object.pk', 'famfam': 'folder_edit', 'permissions': [PERMISSION_FOLDER_EDIT]}
 folder_delete = {'text': _('Delete'), 'view': 'folders:folder_delete', 'args': 'object.pk', 'famfam': 'folder_delete', 'permissions': [PERMISSION_FOLDER_DELETE]}

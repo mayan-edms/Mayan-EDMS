@@ -80,7 +80,7 @@ document_version_list = {'text': _(u'Versions'), 'view': 'documents:document_ver
 document_version_revert = {'text': _(u'Revert'), 'view': 'documents:document_version_revert', 'args': 'object.pk', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VERSION_REVERT], 'conditional_disable': is_current_version}
 
 # Document type related links
-document_type_list = {'text': _(u'Document type list'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
+document_type_list = {'text': _(u'Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
 document_type_setup = {'text': _(u'Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'icon': 'layout.png', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW], 'children_view_regex': [r'^document_type_']}
 document_type_edit = {'text': _(u'Edit'), 'view': 'documents:document_type_edit', 'args': 'document_type.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 document_type_delete = {'text': _(u'Delete'), 'view': 'documents:document_type_delete', 'args': 'document_type.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}

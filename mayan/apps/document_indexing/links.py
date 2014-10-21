@@ -21,7 +21,7 @@ def is_not_root_node(context):
 
 
 index_setup = {'text': _(u'Indexes'), 'view': 'indexing:index_setup_list', 'icon': 'tab.png', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP], 'children_view_regex': [r'^index_setup', r'^template_node']}
-index_setup_list = {'text': _(u'Index list'), 'view': 'indexing:index_setup_list', 'famfam': 'tab', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP]}
+index_setup_list = {'text': _(u'Indexes'), 'view': 'indexing:index_setup_list', 'famfam': 'tab', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP]}
 index_setup_create = {'text': _(u'Create index'), 'view': 'indexing:index_setup_create', 'famfam': 'tab_add', 'permissions': [PERMISSION_DOCUMENT_INDEXING_CREATE]}
 index_setup_edit = {'text': _(u'Edit'), 'view': 'indexing:index_setup_edit', 'args': 'index.pk', 'famfam': 'tab_edit', 'permissions': [PERMISSION_DOCUMENT_INDEXING_EDIT]}
 index_setup_delete = {'text': _(u'Delete'), 'view': 'indexing:index_setup_delete', 'args': 'index.pk', 'famfam': 'tab_delete', 'permissions': [PERMISSION_DOCUMENT_INDEXING_DELETE]}
