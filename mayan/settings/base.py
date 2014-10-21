@@ -73,7 +73,6 @@ INSTALLED_APPS = (
     'user_management',
     # Mayan EDMS
     'app_registry',
-    'bootstrap',
     'checkouts',
     'document_acls',
     'document_comments',
@@ -244,10 +243,6 @@ LOGIN_EXEMPT_URLS = (
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 # ---------- Search ------------------
 SEARCH_SHOW_OBJECT_TYPE = False
-
-SERIALIZATION_MODULES = {
-    'better_yaml': 'common.serializers.better_yaml',
-}
 # --------- Taggit ------------
 SOUTH_MIGRATION_MODULES = {
     'taggit': 'taggit.south_migrations',
