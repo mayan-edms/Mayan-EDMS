@@ -222,7 +222,7 @@ class Role(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('role_list',)
+        return ('permissions:role_list',)
 
     def add_member(self, member):
         member = AnonymousUserSingleton.objects.passthru_check(member)
