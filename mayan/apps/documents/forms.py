@@ -100,6 +100,8 @@ class DocumentForm(forms.ModelForm):
     """
     class Meta:
         model = Document
+        # TODO: Don't use exclude here, use fields, this app shouldn't know
+        # anything about tags
         exclude = ('tags', 'document_type')
 
     def __init__(self, *args, **kwargs):
@@ -224,7 +226,7 @@ class DocumentTypeSelectForm(forms.Form):
     Form to select the document type of a document to be created, used
     as form #1 in the document creation wizard
     """
-    document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=(u'Document type'), required=False)
+    document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=(u'Document type'))
 
 
 class PrintForm(forms.Form):

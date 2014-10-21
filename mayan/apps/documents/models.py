@@ -79,7 +79,7 @@ class Document(models.Model):
     _latest_versions = {}
 
     uuid = models.CharField(max_length=48, blank=True, editable=False)
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'), related_name='documents', null=True, blank=True)
+    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'), related_name='documents')
     description = models.TextField(blank=True, null=True, verbose_name=_(u'Description'))
     date_added = models.DateTimeField(verbose_name=_(u'Added'), auto_now_add=True)
 
