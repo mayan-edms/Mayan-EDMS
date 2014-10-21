@@ -4,6 +4,11 @@ import base64
 import os
 import urllib
 
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
+
 from django.core.files import File
 
 from converter.api import convert
