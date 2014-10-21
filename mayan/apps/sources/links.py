@@ -5,8 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
                                    PERMISSION_DOCUMENT_NEW_VERSION)
 
-from .models import (IMAPEmail, POP3Email, StagingFolderSource,
-                     WatchFolderSource, WebFormSource)
+from .literals import (SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_EMAIL_IMAP,
+                       SOURCE_CHOICE_EMAIL_POP3, SOURCE_CHOICE_STAGING,
+                       SOURCE_CHOICE_WATCH)
 from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_DELETE,
                           PERMISSION_SOURCES_SETUP_EDIT,
@@ -17,16 +18,14 @@ document_create_siblings = {'text': _(u'Clone metadata'), 'view': 'sources:docum
 
 staging_file_delete = {'text': _(u'Delete'), 'view': 'sources:staging_file_delete', 'args': ['source.pk', 'object.encoded_filename'], 'famfam': 'delete', 'keep_query': True, 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE]}
 
-setup_sources = {'text': _(u'Sources'), 'view': 'sources:setup_web_form_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'children_classes': [WebFormSource], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW], 'children_view_regex': [r'setup_web_form', r'setup_staging_folder', r'setup_source_']}
-setup_web_form_list = {'text': _(u'Web forms'), 'view': 'sources:setup_web_form_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'children_classes': [WebFormSource], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
-setup_staging_folder_list = {'text': _(u'Staging folders'), 'view': 'sources:setup_staging_folder_list', 'famfam': 'folder_camera', 'children_classes': [StagingFolderSource], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
-setup_watch_folder_list = {'text': _(u'Watch folders'), 'view': 'sources:setup_watch_folder_list', 'famfam': 'folder_magnify', 'children_classes': [WatchFolderSource], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
-setup_pop3_email_list = {'text': _(u'POP3 emails'), 'view': 'sources:setup_pop3_email_list', 'famfam': 'email', 'children_classes': [POP3Email], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
-setup_imap_email_list = {'text': _(u'IMAP emails'), 'view': 'sources:setup_imap_email_list', 'famfam': 'email', 'children_classes': [IMAPEmail], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
-
-setup_source_edit = {'text': _(u'Edit'), 'view': 'sources:setup_source_edit', 'args': ['source.pk'], 'famfam': 'application_form_edit', 'permissions': [PERMISSION_SOURCES_SETUP_EDIT]}
+setup_sources = {'text': _(u'Sources'), 'view': 'sources:setup_source_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'permissions': [PERMISSION_SOURCES_SETUP_VIEW], 'children_view_regex': [r'setup_web_form', r'setup_staging_folder', r'setup_source_']}
+setup_source_create_webform = {'text': _(u'Add new webform source'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WEB_FORM, 'famfam': 'application_form_add', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
+setup_source_create_staging_folder = {'text': _(u'Add new staging folders'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_STAGING, 'famfam': 'folder_camera', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
+setup_source_create_watch_folder_list = {'text': _(u'Add new watch folders'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WATCH, 'famfam': 'folder_magnify', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
+setup_source_create_pop3_email = {'text': _(u'Add new POP3 emails'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_EMAIL_POP3, 'famfam': 'email', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
+setup_source_create_imap_email = {'text': _(u'Add new IMAP emails'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_EMAIL_IMAP, 'famfam': 'email', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
 setup_source_delete = {'text': _(u'Delete'), 'view': 'sources:setup_source_delete', 'args': ['source.pk'], 'famfam': 'application_form_delete', 'permissions': [PERMISSION_SOURCES_SETUP_DELETE]}
-setup_source_create = {'text': _(u'Add new source'), 'view': 'sources:setup_source_create', 'args': 'source_type', 'famfam': 'application_form_add', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE]}
+setup_source_edit = {'text': _(u'Edit'), 'view': 'sources:setup_source_edit', 'args': ['source.pk'], 'famfam': 'application_form_edit', 'permissions': [PERMISSION_SOURCES_SETUP_EDIT]}
 
 setup_source_transformation_list = {'text': _(u'Transformations'), 'view': 'sources:setup_source_transformation_list', 'args': ['source.pk'], 'famfam': 'shape_move_front', 'permissions': [PERMISSION_SOURCES_SETUP_EDIT]}
 setup_source_transformation_create = {'text': _(u'Add transformation'), 'view': 'sources:setup_source_transformation_create', 'args': ['source.pk'], 'famfam': 'shape_square_add', 'permissions': [PERMISSION_SOURCES_SETUP_EDIT]}

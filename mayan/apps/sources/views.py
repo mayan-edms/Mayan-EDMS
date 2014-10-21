@@ -114,20 +114,10 @@ def get_active_tab_links(document=None):
     for staging_folder in staging_folders:
         tab_links.append(get_tab_link_for_source(staging_folder, document))
 
-    pop3_emails = POP3Email.objects.filter(enabled=True)
-    for source_instance in pop3_emails:
-        tab_links.append(get_tab_link_for_source(source_instance, document))
-
-    imap_emails = IMAPEmail.objects.filter(enabled=True)
-    for source_instance in imap_emails:
-        tab_links.append(get_tab_link_for_source(source_instance, document))
-
     return {
         'tab_links': tab_links,
         SOURCE_CHOICE_WEB_FORM: web_forms,
         SOURCE_CHOICE_STAGING: staging_folders,
-        SOURCE_CHOICE_EMAIL_POP3: pop3_emails,
-        SOURCE_CHOICE_EMAIL_IMAP: imap_emails
     }
 
 
@@ -151,7 +141,7 @@ def upload_interactive(request, source_id=None, document_pk=None):
 
     # TODO: use InteractiveSource.objects.count() instead
     if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0:
-        source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('sources:setup_web_form_list'), ugettext(u'Here')))
+        source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('sources:setup_source_list'), ugettext(u'Here')))
         subtemplates_list.append(
             {
                 'name': 'main/generic_subtemplate.html',
@@ -405,18 +395,20 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
 
 
 # Setup views
-def setup_source_list(request, source_type):
+def setup_source_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
 
-    cls = get_class(source_type)
-
-    # TODO: remove plurals
     context = {
-        'object_list': cls.objects.all(),
-        'title': cls.class_fullname_plural(),
+        'object_list': Source.objects.select_subclasses(),
+        'title': _('Sources'),
         'hide_link': True,
         'list_object_variable_name': 'source',
-        'source_type': source_type,
+        'extra_columns': [
+            {
+                'name': _('Type'),
+                'attribute': encapsulate(lambda x: x.class_fullname())
+            },
+        ]
     }
 
     return render_to_response('main/generic_list.html', context,
@@ -457,23 +449,7 @@ def setup_source_edit(request, source_id):
 def setup_source_delete(request, source_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_DELETE])
     source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
-    redirect_view = reverse('sources:setup_source_list', args=[source.source_type])
-
-    if isinstance(source, WebFormSource):
-        form_icon = u'application_form_delete.png'
-        redirect_view = 'sources:setup_web_form_list'
-    elif isinstance(source, StagingFolderSource):
-        form_icon = u'folder_delete.png'
-        redirect_view = 'sources:setup_staging_folder_list'
-    elif isinstance(source, WatchFolderSource):
-        form_icon = u'folder_delete.png'
-        redirect_view = 'sources:setup_watch_folder_list'
-    elif isinstance(source, POP3Email):
-        form_icon = u'folder_delete.png'
-        redirect_view = 'sources:setup_pop3_email_list'
-    elif isinstance(source, IMAPEmail):
-        form_icon = u'folder_delete.png'
-        redirect_view = 'sources:setup_imap_email_list'
+    redirect_view = reverse('sources:setup_source_list')
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
 
@@ -494,7 +470,6 @@ def setup_source_delete(request, source_id):
         'navigation_object_name': 'source',
         'delete_view': True,
         'previous': previous,
-        'form_icon': form_icon,
         'source_type': source.source_type,
     }
 
@@ -514,7 +489,7 @@ def setup_source_create(request, source_type):
             try:
                 form.save()
                 messages.success(request, _(u'Source created successfully'))
-                return HttpResponseRedirect(reverse('sources:setup_web_form_list'))
+                return HttpResponseRedirect(reverse('sources:setup_source_list'))
             except Exception as exception:
                 messages.error(request, _(u'Error creating source; %s') % exception)
     else:

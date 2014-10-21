@@ -10,49 +10,30 @@ from rest_api.classes import APIEndPoint
 
 from .classes import StagingFile
 from .links import (document_create_multiple, document_create_siblings,
-                    setup_imap_email_list, setup_pop3_email_list,
-                    setup_sources, setup_web_form_list, setup_source_create,
+                    setup_sources, setup_source_create_imap_email,
+                    setup_source_create_pop3_email,
+                    setup_source_create_webform,
+                    setup_source_create_staging_folder,
                     setup_source_delete, setup_source_edit,
                     setup_source_transformation_create,
                     setup_source_transformation_delete,
                     setup_source_transformation_edit,
                     setup_source_transformation_list,
-                    setup_staging_folder_list, setup_watch_folder_list,
                     staging_file_delete, upload_version)
-from .models import (IMAPEmail, POP3Email, SourceTransformation,
-                     StagingFolderSource, WatchFolderSource, WebFormSource)
+from .models import Source, SourceTransformation
 from .urls import api_urls
 from .widgets import staging_file_thumbnail
 
 register_links([StagingFile], [staging_file_delete])
 
+register_links([Source, 'sources:setup_source_list', 'sources:setup_source_create'], [setup_sources, setup_source_create_webform, setup_source_create_staging_folder, setup_source_create_pop3_email, setup_source_create_imap_email], menu_name='secondary_menu')
+register_links([Source], [setup_source_edit, setup_source_delete, setup_source_transformation_list])
+
 register_links(SourceTransformation, [setup_source_transformation_edit, setup_source_transformation_delete])
-
-register_links(['sources:setup_imap_email_list', 'sources:setup_pop3_email_list', 'sources:setup_web_form_list', 'sources:setup_staging_folder_list', 'sources:setup_watch_folder_list', 'sources:setup_source_create'], [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-
-register_links(WebFormSource, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-register_links(WebFormSource, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
-
-register_links(['sources:setup_imap_email_list', 'sources:setup_pop3_email_list', 'sources:setup_web_form_list', 'sources:setup_staging_folder_list', 'sources:setup_watch_folder_list', 'sources:setup_source_edit', 'sources:setup_source_delete', 'sources:setup_source_create'], [setup_sources, setup_source_create], menu_name='sidebar')
-
-register_links(StagingFolderSource, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-register_links(StagingFolderSource, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
-
-register_links(POP3Email, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-register_links(POP3Email, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
-
-register_links(IMAPEmail, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-register_links(IMAPEmail, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
-
-register_links(WatchFolderSource, [setup_web_form_list, setup_staging_folder_list, setup_pop3_email_list, setup_imap_email_list], menu_name='form_header')
-register_links(WatchFolderSource, [setup_source_transformation_list, setup_source_edit, setup_source_delete])
+register_links(['sources:setup_source_transformation_create', 'sources:setup_source_transformation_edit', 'sources:setup_source_transformation_delete', 'sources:setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
 
 # Document version
 register_links(['documents:document_version_list', 'documents:upload_version', 'documents:document_version_revert'], [upload_version], menu_name='sidebar')
-
-register_links(['sources:setup_source_transformation_create', 'sources:setup_source_transformation_edit', 'sources:setup_source_transformation_delete', 'sources:setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
-
-source_views = ['sources:setup_imap_email_list', 'sources:setup_pop3_email_list', 'sources:setup_web_form_list', 'sources:setup_staging_folder_list', 'sources:setup_watch_folder_list', 'sources:setup_source_edit', 'sources:setup_source_delete', 'sources:setup_source_create', 'sources:setup_source_transformation_list', 'sources:setup_source_transformation_edit', 'sources:setup_source_transformation_delete', 'sources:setup_source_transformation_create']
 
 register_model_list_columns(StagingFile, [
     {

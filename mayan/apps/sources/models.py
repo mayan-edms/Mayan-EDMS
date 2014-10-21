@@ -27,8 +27,8 @@ from metadata.api import save_metadata_list
 from .classes import Attachment, StagingFile
 from .literals import (DEFAULT_INTERVAL, DEFAULT_POP3_TIMEOUT,
                        DEFAULT_IMAP_MAILBOX, SOURCE_CHOICES,
-                       SOURCE_CHOICES_PLURAL, SOURCE_CHOICE_STAGING,
-                       SOURCE_CHOICE_WATCH, SOURCE_CHOICE_WEB_FORM,
+                       SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
+                       SOURCE_CHOICE_WEB_FORM,
                        SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
                        SOURCE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICE_Y,
                        SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3)
@@ -49,10 +49,6 @@ class Source(models.Model):
     @classmethod
     def class_fullname(cls):
         return unicode(dict(SOURCE_CHOICES).get(cls.source_type))
-
-    @classmethod
-    def class_fullname_plural(cls):
-        return unicode(dict(SOURCE_CHOICES_PLURAL).get(cls.source_type))
 
     def __unicode__(self):
         return u'%s' % self.title
@@ -296,7 +292,7 @@ class POP3Email(EmailBaseModel):
             if self.ssl:
                 mailbox = poplib.POP3_SSL(self.host, self.port)
             else:
-                mailbox = poplib.POP3(self.host, self.port, timeout=POP3_TIMEOUT)
+                mailbox = poplib.POP3(self.host, self.port, timeout=self.timeout)
 
             mailbox.getwelcome()
             mailbox.user(self.username)
