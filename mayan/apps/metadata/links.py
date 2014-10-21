@@ -8,10 +8,6 @@ from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_DOCUMENT_EDIT,
                           PERMISSION_METADATA_DOCUMENT_REMOVE,
                           PERMISSION_METADATA_DOCUMENT_VIEW,
-                          PERMISSION_METADATA_SET_CREATE,
-                          PERMISSION_METADATA_SET_DELETE,
-                          PERMISSION_METADATA_SET_EDIT,
-                          PERMISSION_METADATA_SET_VIEW,
                           PERMISSION_METADATA_TYPE_CREATE,
                           PERMISSION_METADATA_TYPE_DELETE,
                           PERMISSION_METADATA_TYPE_EDIT,
@@ -27,12 +23,6 @@ metadata_remove = {'text': _(u'Remove metadata'), 'view': 'metadata:metadata_rem
 metadata_multiple_remove = {'text': _(u'Remove metadata'), 'view': 'metadata:metadata_multiple_remove', 'famfam': 'xhtml_delete', 'permissions': [PERMISSION_METADATA_DOCUMENT_REMOVE]}
 
 setup_document_type_metadata = {'text': _(u'Default metadata'), 'view': 'metadata:setup_document_type_metadata', 'args': 'document_type.pk', 'famfam': 'xhtml', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-
-setup_metadata_set_list = {'text': _(u'Metadata sets'), 'view': 'metadata:setup_metadata_set_list', 'famfam': 'table', 'icon': 'table.png', 'permissions': [PERMISSION_METADATA_SET_VIEW]}
-setup_metadata_set_edit = {'text': _(u'Edit'), 'view': 'metadata:setup_metadata_set_edit', 'args': 'object.pk', 'famfam': 'table_edit', 'permissions': [PERMISSION_METADATA_SET_EDIT]}
-setup_metadata_set_members = {'text': _(u'Members'), 'view': 'metadata:setup_metadata_set_members', 'args': 'object.pk', 'famfam': 'table_link', 'permissions': [PERMISSION_METADATA_SET_EDIT]}
-setup_metadata_set_delete = {'text': _(u'Delete'), 'view': 'metadata:setup_metadata_set_delete', 'args': 'object.pk', 'famfam': 'table_delete', 'permissions': [PERMISSION_METADATA_SET_DELETE]}
-setup_metadata_set_create = {'text': _(u'Create new'), 'view': 'metadata:setup_metadata_set_create', 'famfam': 'table_add', 'permissions': [PERMISSION_METADATA_SET_CREATE]}
 
 setup_metadata_type_list = {'text': _(u'Metadata types'), 'view': 'metadata:setup_metadata_type_list', 'famfam': 'xhtml_go', 'icon': 'xhtml.png', 'permissions': [PERMISSION_METADATA_TYPE_VIEW]}
 setup_metadata_type_edit = {'text': _(u'Edit'), 'view': 'metadata:setup_metadata_type_edit', 'args': 'object.pk', 'famfam': 'xhtml', 'permissions': [PERMISSION_METADATA_TYPE_EDIT]}

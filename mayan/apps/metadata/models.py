@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
 
-from .managers import MetadataSetManager, MetadataTypeManager
+from .managers import MetadataTypeManager
 
 
 class MetadataType(models.Model):
@@ -39,43 +39,6 @@ class MetadataType(models.Model):
         verbose_name_plural = _(u'Metadata types')
 
 
-class MetadataSet(models.Model):
-    """
-    Define a group of metadata types
-    """
-    title = models.CharField(max_length=48, verbose_name=_(u'Title'), unique=True)
-
-    objects = MetadataSetManager()
-
-    def __unicode__(self):
-        return self.title
-
-    def natural_key(self):
-        return (self.title,)
-
-    class Meta:
-        ordering = ('title',)
-        verbose_name = _(u'Metadata set')
-        verbose_name_plural = _(u'Metadata set')
-
-
-class MetadataSetItem(models.Model):
-    """
-    Define the set of metadata that relates to a set or group of
-    metadata fields
-    """
-    # TODO: is the metadata set model really necessary?
-    metadata_set = models.ForeignKey(MetadataSet, verbose_name=_(u'Metadata set'))
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'Metadata type'))
-
-    def __unicode__(self):
-        return unicode(self.metadata_type)
-
-    class Meta:
-        verbose_name = _(u'Metadata set item')
-        verbose_name_plural = _(u'Metadata set items')
-
-
 class DocumentMetadata(models.Model):
     """
     Link a document to a specific instance of a metadata type with it's
@@ -95,12 +58,10 @@ class DocumentMetadata(models.Model):
 
 class DocumentTypeDefaults(models.Model):
     """
-    Default preselected metadata types and metadata set per document
-    type
+    Default preselected metadata types per document type
     """
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'))
-    default_metadata_sets = models.ManyToManyField(MetadataSet, blank=True, verbose_name=_(u'Default metadata sets'))
-    default_metadata = models.ManyToManyField(MetadataType, blank=True, verbose_name=_(u'Default metadata'))
+    default_metadata = models.ManyToManyField(MetadataType, blank=True, verbose_name=_(u'Metadata'))
 
     def __unicode__(self):
         return unicode(self.document_type)

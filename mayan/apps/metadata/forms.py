@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.widgets import ScrollableCheckboxSelectMultiple
 
-from .models import DocumentTypeDefaults, MetadataSet, MetadataType
+from .models import DocumentTypeDefaults, MetadataType
 from .settings import AVAILABLE_FUNCTIONS, AVAILABLE_MODELS, AVAILABLE_VALIDATORS
 
 
@@ -87,17 +87,9 @@ class MetadataSelectionForm(forms.Form):
         if document_type:
             try:
                 defaults = document_type.documenttypedefaults_set.get()
-                self.fields['metadata_sets'].initial = defaults.default_metadata_sets.all()
                 self.fields['metadata_types'].initial = defaults.default_metadata.all()
             except DocumentTypeDefaults.DoesNotExist:
                 pass
-
-    metadata_sets = forms.ModelMultipleChoiceField(
-        queryset=MetadataSet.objects.all(),
-        label=_(u'Metadata sets'),
-        required=False,
-        widget=ScrollableCheckboxSelectMultiple(attrs={'size': 10, 'class': 'choice_form'})
-    )
 
     metadata_types = forms.ModelMultipleChoiceField(
         queryset=MetadataType.objects.all(),
@@ -112,8 +104,3 @@ MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)
 class MetadataTypeForm(forms.ModelForm):
     class Meta:
         model = MetadataType
-
-
-class MetadataSetForm(forms.ModelForm):
-    class Meta:
-        model = MetadataSet

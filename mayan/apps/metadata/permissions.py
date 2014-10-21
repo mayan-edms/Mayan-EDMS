@@ -15,8 +15,3 @@ PERMISSION_METADATA_TYPE_EDIT = Permission.objects.register(metadata_setup_names
 PERMISSION_METADATA_TYPE_CREATE = Permission.objects.register(metadata_setup_namespace, 'metadata_type_create', _(u'Create new metadata types'))
 PERMISSION_METADATA_TYPE_DELETE = Permission.objects.register(metadata_setup_namespace, 'metadata_type_delete', _(u'Delete metadata types'))
 PERMISSION_METADATA_TYPE_VIEW = Permission.objects.register(metadata_setup_namespace, 'metadata_type_view', _(u'View metadata types'))
-
-PERMISSION_METADATA_SET_EDIT = Permission.objects.register(metadata_setup_namespace, 'metadata_set_edit', _(u'Edit metadata sets'))
-PERMISSION_METADATA_SET_CREATE = Permission.objects.register(metadata_setup_namespace, 'metadata_set_create', _(u'Create new metadata sets'))
-PERMISSION_METADATA_SET_DELETE = Permission.objects.register(metadata_setup_namespace, 'metadata_set_delete', _(u'Delete metadata sets'))
-PERMISSION_METADATA_SET_VIEW = Permission.objects.register(metadata_setup_namespace, 'metadata_set_view', _(u'View metadata sets'))

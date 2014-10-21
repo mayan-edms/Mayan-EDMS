@@ -20,17 +20,12 @@ from common.views import assign_remove
 from .api import save_metadata_list
 from .classes import MetadataObjectWrapper
 from .forms import (AddMetadataForm, MetadataFormSet, MetadataRemoveFormSet,
-                    MetadataSetForm, MetadataTypeForm)
-from .models import (DocumentMetadata, DocumentTypeDefaults, MetadataSet,
-                     MetadataSetItem, MetadataType)
+                    MetadataTypeForm)
+from .models import DocumentMetadata, DocumentTypeDefaults, MetadataType
 from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_DOCUMENT_EDIT,
                           PERMISSION_METADATA_DOCUMENT_REMOVE,
                           PERMISSION_METADATA_DOCUMENT_VIEW,
-                          PERMISSION_METADATA_SET_CREATE,
-                          PERMISSION_METADATA_SET_DELETE,
-                          PERMISSION_METADATA_SET_EDIT,
-                          PERMISSION_METADATA_SET_VIEW,
                           PERMISSION_METADATA_TYPE_CREATE,
                           PERMISSION_METADATA_TYPE_DELETE,
                           PERMISSION_METADATA_TYPE_EDIT,
@@ -383,197 +378,43 @@ def setup_metadata_type_delete(request, metadatatype_id):
                               context_instance=RequestContext(request))
 
 
-def setup_metadata_set_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_VIEW])
-
-    context = {
-        'object_list': MetadataSet.objects.all(),
-        'title': _(u'Metadata sets'),
-        'hide_link': True,
-        'extra_columns': [
-            {
-                'name': _(u'Members'),
-                'attribute': encapsulate(lambda x: x.metadatasetitem_set.count()),
-            },
-        ]
-    }
-
-    return render_to_response('main/generic_list.html', context,
-                              context_instance=RequestContext(request))
-
-
-def setup_metadata_set_edit(request, metadata_set_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_EDIT])
-
-    metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)
-
-    if request.method == 'POST':
-        form = MetadataSetForm(instance=metadata_set, data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _(u'Metadata set edited successfully'))
-                return HttpResponseRedirect(reverse('metadata:setup_metadata_set_list'))
-            except Exception as exception:
-                messages.error(request, _(u'Error editing metadata set; %s') % exception)
-            pass
-    else:
-        form = MetadataSetForm(instance=metadata_set)
-
-    return render_to_response('main/generic_form.html', {
-        'title': _(u'Edit metadata set: %s') % metadata_set,
-        'form': form,
-        'object': metadata_set,
-        'object_name': _(u'Metadata set'),
-    }, context_instance=RequestContext(request))
-
-
-def get_set_members(metadata_set):
-    return [item.metadata_type for item in metadata_set.metadatasetitem_set.all()]
-
-
-def get_non_set_members(metadata_set):
-    return MetadataType.objects.exclude(pk__in=[member.pk for member in get_set_members(metadata_set)])
-
-
-def add_set_member(metadata_set, selection):
-    model, pk = selection.split(u',')
-    metadata_type = get_object_or_404(MetadataType, pk=pk)
-    new_member, created = MetadataSetItem.objects.get_or_create(metadata_set=metadata_set, metadata_type=metadata_type)
-    if not created:
-        raise Exception
-
-
-def remove_set_member(metadata_set, selection):
-    model, pk = selection.split(u',')
-    metadata_type = get_object_or_404(MetadataType, pk=pk)
-    member = MetadataSetItem.objects.get(metadata_type=metadata_type, metadata_set=metadata_set)
-    member.delete()
-
-
-def setup_metadata_set_members(request, metadata_set_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_EDIT])
-
-    metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)
-
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(get_non_set_members(metadata_set), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(get_set_members(metadata_set), display_object_type=False),
-        add_method=lambda x: add_set_member(metadata_set, x),
-        remove_method=lambda x: remove_set_member(metadata_set, x),
-        left_list_title=_(u'Non members of metadata set: %s') % metadata_set,
-        right_list_title=_(u'Members of metadata set: %s') % metadata_set,
-        extra_context={
-            'object': metadata_set,
-            'object_name': _(u'Metadata set'),
-        }
-    )
-
-
-def setup_metadata_set_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_CREATE])
-
-    if request.method == 'POST':
-        form = MetadataSetForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _(u'Metadata set created successfully'))
-            return HttpResponseRedirect(reverse('metadata:setup_metadata_set_list'))
-    else:
-        form = MetadataSetForm()
-
-    return render_to_response('main/generic_form.html', {
-        'title': _(u'Create metadata set'),
-        'form': form,
-    }, context_instance=RequestContext(request))
-
-
-def setup_metadata_set_delete(request, metadata_set_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_SET_DELETE])
-
-    metadata_set = get_object_or_404(MetadataSet, pk=metadata_set_id)
-
-    post_action_redirect = reverse('metadata:setup_metadata_set_list')
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_action_redirect)))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
-
-    if request.method == 'POST':
-        try:
-            metadata_set.delete()
-            messages.success(request, _(u'Metadata set: %s deleted successfully.') % metadata_set)
-            return HttpResponseRedirect(post_action_redirect)
-        except Exception as exception:
-            messages.error(request, _(u'Metadata set: %(metadata_set)s delete error: %(error)s') % {
-                'metadata_set': metadata_set, 'error': exception})
-            return HttpResponseRedirect(previous)
-
-    context = {
-        'object_name': _(u'Metadata set'),
-        'delete_view': True,
-        'next': next,
-        'previous': previous,
-        'object': metadata_set,
-        'title': _(u'Are you sure you wish to delete the metadata set: %s?') % metadata_set,
-        'form_icon': u'application_form_delete.png',
-    }
-
-    return render_to_response('main/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
-
-
 def _as_choice_list(items):
     return sorted([(MetadataObjectWrapper.encapsulate(item).gid, get_object_name(item, display_object_type=False)) for item in items], key=lambda x: x[1])
 
 
 def get_document_type_metadata_non_members(document_type):
-    metadata_types, metadata_sets = get_document_type_metadata_members(document_type, separate=True)
+    metadata_types = get_document_type_metadata_members(document_type, separate=True)
     metadata_types = set(MetadataType.objects.all()) - set(metadata_types)
-    metadata_sets = set(MetadataSet.objects.all()) - set(metadata_sets)
 
     non_members = []
     if metadata_types:
         non_members.append((_(u'Metadata types'), _as_choice_list(list(metadata_types))))
-
-    if metadata_sets:
-        non_members.append((_(u'Metadata sets'), _as_choice_list(list(metadata_sets))))
 
     return non_members
 
 
 def get_document_type_metadata_members(document_type, separate=False):
     metadata_types = set(document_type.documenttypedefaults_set.get().default_metadata.all())
-    metadata_sets = set(document_type.documenttypedefaults_set.get().default_metadata_sets.all())
 
     if separate:
-        return metadata_types, metadata_sets
+        return metadata_types
     else:
         members = []
 
         if metadata_types:
             members.append((_(u'Metadata types'), _as_choice_list(list(metadata_types))))
 
-        if metadata_sets:
-            members.append((_(u'Metadata sets'), _as_choice_list(list(metadata_sets))))
-
         return members
 
 
 def add_document_type_metadata(document_type, selection):
     metadata_object = MetadataObjectWrapper.get(selection).source_object
-    try:
-        document_type.documenttypedefaults_set.get().default_metadata.add(metadata_object)
-    except TypeError:
-        document_type.documenttypedefaults_set.get().default_metadata_sets.add(metadata_object)
+    document_type.documenttypedefaults_set.get().default_metadata.add(metadata_object)
 
 
 def remove_document_type_metadata(document_type, selection):
     metadata_object = MetadataObjectWrapper.get(selection).source_object
-    if isinstance(metadata_object, MetadataType):
-        document_type.documenttypedefaults_set.get().default_metadata.remove(metadata_object)
-    else:
-        document_type.documenttypedefaults_set.get().default_metadata_sets.remove(metadata_object)
+    document_type.documenttypedefaults_set.get().default_metadata.remove(metadata_object)
 
 
 def setup_document_type_metadata(request, document_type_id):

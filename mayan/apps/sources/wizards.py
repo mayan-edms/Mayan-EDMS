@@ -22,7 +22,7 @@ class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
     def has_metadata_types(wizard):
         # Skip the 3rd step if no metadata types or sets are selected
         try:
-            return wizard.get_cleaned_data_for_step('1')['metadata_sets'] or wizard.get_cleaned_data_for_step('1')['metadata_types']
+            return wizard.get_cleaned_data_for_step('1')['metadata_types']
         except TypeError:
             return False
 
@@ -33,14 +33,6 @@ class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
             initial.append({
                 'metadata_type': metadata_type,
             })
-
-        for metadata_set in self.get_cleaned_data_for_step('1')['metadata_sets']:
-            for metadata_set_item in metadata_set.metadatasetitem_set.all():
-                data = {
-                    'metadata_type': metadata_set_item.metadata_type,
-                }
-                if data not in initial:
-                    initial.append(data)
 
         return initial
 
