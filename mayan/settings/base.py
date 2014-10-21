@@ -243,10 +243,6 @@ LOGIN_EXEMPT_URLS = (
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 # ---------- Search ------------------
 SEARCH_SHOW_OBJECT_TYPE = False
-# --------- Taggit ------------
-SOUTH_MIGRATION_MODULES = {
-    'taggit': 'taggit.south_migrations',
-}
 # ---------- Django REST framework -----------
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10,
