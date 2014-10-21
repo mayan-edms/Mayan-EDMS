@@ -23,47 +23,18 @@ from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 
-from .forms import (POP3EmailSetupForm, IMAPEmailSetupForm, StagingDocumentForm,
-                    StagingFolderSetupForm, SourceTransformationForm,
-                    SourceTransformationForm_create, WatchFolderSetupForm,
-                    WebFormForm, WebFormSetupForm)
-from .literals import (SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,
-                       SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
-                       SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_ASK,
-                       SOURCE_UNCOMPRESS_CHOICE_Y)
-from .models import (IMAPEmail, POP3Email, Source, StagingFolderSource,
-                     SourceTransformation, WatchFolderSource, WebFormSource)
+from .forms import (StagingDocumentForm, SourceTransformationForm,
+                    SourceTransformationForm_create, WebFormForm)
+from .literals import (SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM,
+                       SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y)
+from .models import (Source, StagingFolderSource, SourceTransformation,
+                     WebFormSource)
 from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_DELETE,
                           PERMISSION_SOURCES_SETUP_EDIT,
                           PERMISSION_SOURCES_SETUP_VIEW)
 from .tasks import task_upload_document
-
-
-def get_class(source_type):
-    if source_type == SOURCE_CHOICE_WEB_FORM:
-        return WebFormSource
-    elif source_type == SOURCE_CHOICE_STAGING:
-        return StagingFolderSource
-    elif source_type == SOURCE_CHOICE_WATCH:
-        return WatchFolderSource
-    elif source_type == SOURCE_CHOICE_EMAIL_POP3:
-        return POP3Email
-    elif source_type == SOURCE_CHOICE_EMAIL_IMAP:
-        return IMAPEmail
-
-
-def get_form_class(source_type):
-    if source_type == SOURCE_CHOICE_WEB_FORM:
-        return WebFormSetupForm
-    elif source_type == SOURCE_CHOICE_STAGING:
-        return StagingFolderSetupForm
-    elif source_type == SOURCE_CHOICE_WATCH:
-        return WatchFolderSetupForm
-    elif source_type == SOURCE_CHOICE_EMAIL_POP3:
-        return POP3EmailSetupForm
-    elif source_type == SOURCE_CHOICE_EMAIL_IMAP:
-        return IMAPEmailSetupForm
+from .utils import get_class, get_form_class
 
 
 def document_create_siblings(request, document_id):

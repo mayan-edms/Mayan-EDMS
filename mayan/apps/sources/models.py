@@ -40,9 +40,6 @@ logger = logging.getLogger(__name__)
 class Source(models.Model):
     title = models.CharField(max_length=64, verbose_name=_(u'Title'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'))
-    # TODO: remove whitelist and blacklists
-    whitelist = models.TextField(blank=True, verbose_name=_(u'Whitelist'), editable=False)
-    blacklist = models.TextField(blank=True, verbose_name=_(u'Blacklist'), editable=False)
 
     objects = InheritanceManager()
 

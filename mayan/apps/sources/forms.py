@@ -10,7 +10,6 @@ from documents.forms import DocumentForm
 
 from .models import (IMAPEmail, POP3Email, SourceTransformation,
                      StagingFolderSource, WebFormSource, WatchFolderSource)
-from .utils import validate_whitelist_blacklist
 
 logger = logging.getLogger(__name__)
 
@@ -70,8 +69,6 @@ class WebFormForm(DocumentForm):
 
     def clean_file(self):
         data = self.cleaned_data['file']
-        validate_whitelist_blacklist(data.name, self.source.whitelist.split(','), self.source.blacklist.split(','))
-
         return data
 
 
