@@ -108,6 +108,9 @@ register_model_list_columns(Document, [
         'name': _(u'Thumbnail'), 'attribute':
         encapsulate(lambda x: document_thumbnail(x, gallery_name='documents:document_list', title=getattr(x, 'filename', None), size=THUMBNAIL_SIZE))
     },
+    {
+        'name': _(u'Type'), 'attribute': 'document_type'
+    }
 ])
 
 register_top_menu(
