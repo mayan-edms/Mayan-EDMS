@@ -20,7 +20,6 @@ from .links import (all_document_ocr_cleanup, ocr_tool_link,
                     submit_document_multiple)
 from .models import DocumentQueue
 from .permissions import PERMISSION_OCR_DOCUMENT
-from .settings import AUTOMATIC_OCR
 from .tasks import task_do_ocr
 
 logger = logging.getLogger(__name__)
@@ -42,7 +41,7 @@ def document_post_save(sender, instance, **kwargs):
     logger.debug('received post save signal')
     logger.debug('instance: %s' % instance)
     if kwargs.get('created', False):
-        if AUTOMATIC_OCR:
+        if instance.document.document_type.ocr:
             instance.document.submit_for_ocr()
 
 

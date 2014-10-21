@@ -57,6 +57,7 @@ class DocumentType(models.Model):
     properties can be attached
     """
     name = models.CharField(max_length=32, verbose_name=_(u'Name'), unique=True)
+    ocr = models.BooleanField(default=True, verbose_name=_(u'Automatically queue newly created documents for OCR.'))
 
     objects = DocumentTypeManager()
 

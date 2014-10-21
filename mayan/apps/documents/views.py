@@ -808,6 +808,10 @@ def document_type_list(request):
         'title': _(u'Document types'),
         'hide_link': True,
         'list_object_variable_name': 'document_type',
+        'extra_columns': [
+            {'name': _('OCR'), 'attribute': 'ocr'},
+            {'name': _('Documents'), 'attribute': encapsulate(lambda x: x.documents.count())}
+        ]
     }
 
     return render_to_response('main/generic_list.html', context,
@@ -853,7 +857,6 @@ def document_type_delete(request, document_type_id):
 
     if request.method == 'POST':
         try:
-            Document.objects.filter(document_type=document_type).update(document_type=None)
             document_type.delete()
             messages.success(request, _(u'Document type: %s deleted successfully.') % document_type)
         except Exception as exception:
@@ -870,7 +873,7 @@ def document_type_delete(request, document_type_id):
         'object_name': _(u'Document type'),
         'previous': previous,
         'title': _(u'Are you sure you wish to delete the document type: %s?') % document_type,
-        'message': _(u'The document type of all documents using this document type will be set to none.'),
+        'message': _(u'All documents of this type will be deleted too.'),
         'form_icon': u'layout_delete.png',
     }
 

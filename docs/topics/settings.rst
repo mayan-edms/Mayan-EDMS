@@ -288,16 +288,6 @@ Default: ``eng``
 Language code passed to the ``tesseract`` executable.
 
 
-.. setting:: OCR_AUTOMATIC_OCR
-
-**OCR_AUTOMATIC_OCR**
-
-Default: ``True``
-
-Automatically queue newly created documents or newly uploaded versions
-of existing documents for OCR.
-
-
 .. setting:: OCR_UNPAPER_PATH
 
 **OCR_UNPAPER_PATH**
