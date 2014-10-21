@@ -29,7 +29,7 @@ def checkout_list(request):
     return document_list(
         request,
         object_list=DocumentCheckout.objects.checked_out_documents(),
-        title=_(u'checked out documents'),
+        title=_(u'Documents checked out'),
         extra_context={
             'extra_columns': [
                 {'name': _(u'Checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user_object, display_object_type=False))},
