@@ -23,19 +23,47 @@ from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 
-from .forms import (StagingDocumentForm, StagingFolderSetupForm,
-                    SourceTransformationForm, SourceTransformationForm_create,
-                    WatchFolderSetupForm, WebFormForm, WebFormSetupForm)
-from .literals import (SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
+from .forms import (POP3EmailSetupForm, IMAPEmailSetupForm, StagingDocumentForm,
+                    StagingFolderSetupForm, SourceTransformationForm,
+                    SourceTransformationForm_create, WatchFolderSetupForm,
+                    WebFormForm, WebFormSetupForm)
+from .literals import (SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,
+                       SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
                        SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_ASK,
                        SOURCE_UNCOMPRESS_CHOICE_Y)
-from .models import (Source, StagingFolderSource, SourceTransformation,
-                     WatchFolderSource, WebFormSource)
+from .models import (IMAPEmail, POP3Email, Source, StagingFolderSource,
+                     SourceTransformation, WatchFolderSource, WebFormSource)
 from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_DELETE,
                           PERMISSION_SOURCES_SETUP_EDIT,
                           PERMISSION_SOURCES_SETUP_VIEW)
 from .tasks import task_upload_document
+
+
+def get_class(source_type):
+    if source_type == SOURCE_CHOICE_WEB_FORM:
+        return WebFormSource
+    elif source_type == SOURCE_CHOICE_STAGING:
+        return StagingFolderSource
+    elif source_type == SOURCE_CHOICE_WATCH:
+        return WatchFolderSource
+    elif source_type == SOURCE_CHOICE_EMAIL_POP3:
+        return POP3Email
+    elif source_type == SOURCE_CHOICE_EMAIL_IMAP:
+        return IMAPEmail
+
+
+def get_form_class(source_type):
+    if source_type == SOURCE_CHOICE_WEB_FORM:
+        return WebFormSetupForm
+    elif source_type == SOURCE_CHOICE_STAGING:
+        return StagingFolderSetupForm
+    elif source_type == SOURCE_CHOICE_WATCH:
+        return WatchFolderSetupForm
+    elif source_type == SOURCE_CHOICE_EMAIL_POP3:
+        return POP3EmailSetupForm
+    elif source_type == SOURCE_CHOICE_EMAIL_IMAP:
+        return IMAPEmailSetupForm
 
 
 def document_create_siblings(request, document_id):
@@ -86,10 +114,20 @@ def get_active_tab_links(document=None):
     for staging_folder in staging_folders:
         tab_links.append(get_tab_link_for_source(staging_folder, document))
 
+    pop3_emails = POP3Email.objects.filter(enabled=True)
+    for source_instance in pop3_emails:
+        tab_links.append(get_tab_link_for_source(source_instance, document))
+
+    imap_emails = IMAPEmail.objects.filter(enabled=True)
+    for source_instance in imap_emails:
+        tab_links.append(get_tab_link_for_source(source_instance, document))
+
     return {
         'tab_links': tab_links,
         SOURCE_CHOICE_WEB_FORM: web_forms,
-        SOURCE_CHOICE_STAGING: staging_folders
+        SOURCE_CHOICE_STAGING: staging_folders,
+        SOURCE_CHOICE_EMAIL_POP3: pop3_emails,
+        SOURCE_CHOICE_EMAIL_IMAP: imap_emails
     }
 
 
@@ -370,13 +408,9 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
 def setup_source_list(request, source_type):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
 
-    if source_type == SOURCE_CHOICE_WEB_FORM:
-        cls = WebFormSource
-    elif source_type == SOURCE_CHOICE_STAGING:
-        cls = StagingFolderSource
-    elif source_type == SOURCE_CHOICE_WATCH:
-        cls = WatchFolderSource
+    cls = get_class(source_type)
 
+    # TODO: remove plurals
     context = {
         'object_list': cls.objects.all(),
         'title': cls.class_fullname_plural(),
@@ -393,12 +427,7 @@ def setup_source_edit(request, source_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
 
     source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
-    if isinstance(source, WebFormSource):
-        form_class = WebFormSetupForm
-    elif isinstance(source, StagingFolderSource):
-        form_class = StagingFolderSetupForm
-    elif isinstance(source, WatchFolderSource):
-        form_class = WatchFolderSetupForm
+    form_class = get_form_class(source.source_type)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -439,6 +468,12 @@ def setup_source_delete(request, source_id):
     elif isinstance(source, WatchFolderSource):
         form_icon = u'folder_delete.png'
         redirect_view = 'sources:setup_watch_folder_list'
+    elif isinstance(source, POP3Email):
+        form_icon = u'folder_delete.png'
+        redirect_view = 'sources:setup_pop3_email_list'
+    elif isinstance(source, IMAPEmail):
+        form_icon = u'folder_delete.png'
+        redirect_view = 'sources:setup_imap_email_list'
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
 
@@ -450,8 +485,7 @@ def setup_source_delete(request, source_id):
             messages.error(request, _(u'Error deleting source "%(source)s": %(error)s') % {
                 'source': source, 'error': exception
             })
-
-        return HttpResponseRedirect(redirect_view)
+        return HttpResponseRedirect(reverse(redirect_view))
 
     context = {
         'title': _(u'Are you sure you wish to delete the source: %s?') % source.fullname(),
@@ -471,15 +505,8 @@ def setup_source_delete(request, source_id):
 def setup_source_create(request, source_type):
     Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_CREATE])
 
-    if source_type == SOURCE_CHOICE_WEB_FORM:
-        cls = WebFormSource
-        form_class = WebFormSetupForm
-    elif source_type == SOURCE_CHOICE_STAGING:
-        cls = WebFormSource
-        form_class = StagingFolderSetupForm
-    elif source_type == SOURCE_CHOICE_WATCH:
-        cls = WebFormSource
-        form_class = WatchFolderSetupForm
+    cls = get_class(source_type)
+    form_class = get_form_class(source_type)
 
     if request.method == 'POST':
         form = form_class(data=request.POST)

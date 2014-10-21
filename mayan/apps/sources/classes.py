@@ -4,10 +4,30 @@ import base64
 import os
 import urllib
 
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
+
 from django.core.files import File
 
 from converter.api import convert
 from mimetype.api import get_mimetype
+
+
+class PseudoFile(File):
+    def __init__(self, file, name):
+        self.name = name
+        self.file = file
+        self.file.seek(0, os.SEEK_END)
+        self.size = self.file.tell()
+        self.file.seek(0)
+
+
+class Attachment(File):
+    def __init__(self, part, name):
+        self.name = name
+        self.file = PseudoFile(StringIO(part.get_payload(decode=True)), name=name)
 
 
 class StagingFile(object):
