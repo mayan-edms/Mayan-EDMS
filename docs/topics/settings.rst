@@ -339,20 +339,6 @@ and temporary files. If none is specified, one will be created
 using tempfile.mkdtemp()
 
 
-.. setting:: COMMON_DEFAULT_PAPER_SIZE
-
-**COMMON_DEFAULT_PAPER_SIZE**
-
-Default: ``Letter``
-
-
-.. setting:: COMMON_DEFAULT_PAGE_ORIENTATION
-
-**COMMON_DEFAULT_PAGE_ORIENTATION**
-
-Default: ``Portrait``
-
-
 .. setting:: COMMON_AUTO_CREATE_ADMIN
 
 **COMMON_AUTO_CREATE_ADMIN**

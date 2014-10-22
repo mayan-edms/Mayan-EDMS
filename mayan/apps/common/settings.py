@@ -5,8 +5,6 @@ from django.contrib.auth.models import User
 
 from smart_settings.api import register_setting
 
-from common.literals import PAGE_ORIENTATION_PORTRAIT
-
 TEMPORARY_DIRECTORY = register_setting(
     namespace=u'common',
     module=u'common.settings',
@@ -15,14 +13,6 @@ TEMPORARY_DIRECTORY = register_setting(
     default=u'/tmp',
     description=_(u'Temporary directory used site wide to store thumbnails, previews and temporary files.  If none is specified, one will be created using tempfile.mkdtemp()'),
     exists=True
-)
-
-DEFAULT_PAGE_ORIENTATION = register_setting(
-    namespace=u'common',
-    module=u'common.settings',
-    name=u'DEFAULT_PAGE_ORIENTATION',
-    global_name=u'COMMON_DEFAULT_PAGE_ORIENTATION',
-    default=PAGE_ORIENTATION_PORTRAIT,
 )
 
 register_setting(
