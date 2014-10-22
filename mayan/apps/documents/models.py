@@ -12,6 +12,8 @@ try:
 except ImportError:
     from StringIO import StringIO
 
+import pycountry
+
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -35,7 +37,7 @@ from .literals import (VERSION_UPDATE_MAJOR, VERSION_UPDATE_MICRO,
 from .managers import (DocumentPageTransformationManager, DocumentTypeManager,
                        RecentDocumentManager)
 from .runtime import storage_backend
-from .settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE,
+from .settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE, LANGUAGE,
                        UUID_FUNCTION, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
@@ -83,6 +85,10 @@ class Document(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'), related_name='documents')
     description = models.TextField(blank=True, null=True, verbose_name=_(u'Description'))
     date_added = models.DateTimeField(verbose_name=_(u'Added'), auto_now_add=True)
+    language = models.CharField(
+        choices=[(i.bibliographic, i.name) for i in list(pycountry.languages)],
+        default=LANGUAGE, max_length=8, verbose_name=_('Language')
+    )
 
     @staticmethod
     def clear_image_cache():
@@ -338,6 +344,8 @@ class DocumentVersion(models.Model):
     file = models.FileField(upload_to=get_filename_from_uuid, storage=storage_backend, verbose_name=_(u'File'))
     mimetype = models.CharField(max_length=255, null=True, blank=True, editable=False)
     encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
+
+    # TODO: move filename to Document model, is should not be a version's field
     filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'Checksum'), editable=False)
 

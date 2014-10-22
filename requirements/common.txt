@@ -21,6 +21,7 @@ Pillow==2.5.0
 PyYAML==3.11
 pdfminer==20110227
 psutil==2.1.1
+pycountry==1.8
 pytz==2014.4
 python-gnupg==0.3.6
 python-hkp==0.1.3

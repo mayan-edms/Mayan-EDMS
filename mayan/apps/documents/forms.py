@@ -178,6 +178,7 @@ class DocumentForm_edit(DocumentForm):
         if kwargs['instance'].latest_version:
             self.fields.pop('version_update')
             self.fields.pop('comment')
+            self.fields['language'].initial = kwargs['instance'].language
         else:
             self.fields.pop('new_filename')
 
@@ -190,7 +191,7 @@ class DocumentPropertiesForm(DetailForm):
     """
     class Meta:
         model = Document
-        fields = ('document_type', 'description',)
+        fields = ('document_type', 'description', 'language')
 
 
 class DocumentContentForm(forms.Form):

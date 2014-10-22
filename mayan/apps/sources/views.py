@@ -217,6 +217,7 @@ def upload_interactive(request, source_id=None, document_pk=None):
                         document_id=document_id,
                         new_version_data=form.cleaned_data.get('new_version_data'),
                         description=form.cleaned_data.get('description'),
+                        language=form.cleaned_data.get('language')
                     ), queue='uploads')
 
                     # TODO: Notify user

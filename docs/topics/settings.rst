@@ -127,6 +127,15 @@ Default: ``image_cache`` (inside the `media` folder)
 The path where the visual representations of the documents are stored for fast display.
 
 
+.. setting:: DOCUMENTS_LANGUAGE
+
+**DOCUMENTS_LANGUAGE**
+
+Default: ``eng``
+
+Default language selection when creating a document.
+
+
 Converter
 =========
 .. setting:: CONVERTER_GRAPHICS_BACKEND
@@ -277,15 +286,6 @@ Default: ``/bin/tesseract``
 
 File path to the ``tesseract`` executable, used to perform OCR on document
 page's images.
-
-
-.. setting:: OCR_TESSERACT_LANGUAGE
-
-**OCR_TESSERACT_LANGUAGE**
-
-Default: ``eng``
-
-Language code passed to the ``tesseract`` executable.
 
 
 .. setting:: OCR_UNPAPER_PATH

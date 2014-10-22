@@ -237,6 +237,7 @@ def document_edit(request, document_id):
         if form.is_valid():
             document.filename = form.cleaned_data['new_filename']
             document.description = form.cleaned_data['description']
+            document.language = form.cleaned_data['language']
 
             if 'document_type_available_filenames' in form.cleaned_data:
                 if form.cleaned_data['document_type_available_filenames']:

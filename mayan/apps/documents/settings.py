@@ -42,5 +42,6 @@ register_settings(
         {'name': u'ROTATION_STEP', 'global_name': u'DOCUMENTS_ROTATION_STEP', 'default': 90, 'description': _(u'Amount in degrees to rotate a document page per user interaction.')},
         #
         {'name': u'CACHE_PATH', 'global_name': u'DOCUMENTS_CACHE_PATH', 'default': os.path.join(settings.MEDIA_ROOT, 'image_cache'), 'exists': True},
+        {'name': u'LANGUAGE', 'global_name': u'DOCUMENTS_LANGUAGE', 'default': u'eng', 'description': _('Default documents language (in ISO639-2 format).')},
     ]
 )

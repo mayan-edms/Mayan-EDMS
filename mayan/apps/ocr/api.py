@@ -9,7 +9,7 @@ import sh
 from django.utils.translation import ugettext as _
 
 from common.settings import TEMPORARY_DIRECTORY
-from common.utils import fs_cleanup
+from common.utils import fs_cleanup, load_backend
 from converter.api import convert
 from documents.models import DocumentPage
 
@@ -18,8 +18,8 @@ from .literals import (DEFAULT_OCR_FILE_EXTENSION, DEFAULT_OCR_FILE_FORMAT,
                        UNPAPER_FILE_FORMAT)
 from .parsers import parse_document_page
 from .parsers.exceptions import ParserError, ParserUnknownFile
-from .runtime import language_backend, ocr_backend
-from .settings import UNPAPER_PATH, LANGUAGE
+from .runtime import ocr_backend
+from .settings import UNPAPER_PATH
 
 logger = logging.getLogger(__name__)
 
@@ -68,9 +68,9 @@ def do_document_ocr(document):
 
             os.rename(pre_ocr_filepath, pre_ocr_filepath_w_ext)
             try:
-                ocr_text = ocr_backend.execute(pre_ocr_filepath_w_ext, LANGUAGE)
+                ocr_text = ocr_backend.execute(pre_ocr_filepath_w_ext, document.language)
 
-                document_page.content = ocr_cleanup(ocr_text)
+                document_page.content = ocr_cleanup(document.language, ocr_text)
                 document_page.page_label = _(u'Text from OCR')
                 document_page.save()
             finally:
@@ -80,11 +80,15 @@ def do_document_ocr(document):
                 fs_cleanup(unpaper_output)
 
 
-def ocr_cleanup(text):
+def ocr_cleanup(language, text):
     """
     Cleanup the OCR's output passing it thru the selected language's
     cleanup filter
     """
+    try:
+        language_backend = load_backend(u'.'.join([u'ocr', u'lang', language, u'LanguageBackend']))()
+    except ImportError:
+        language_backend = None
 
     output = []
     for line in text.splitlines():
@@ -108,7 +112,7 @@ def clean_pages():
     """
     for page in DocumentPage.objects.all():
         if page.content:
-            page.content = ocr_cleanup(page.content)
+            page.content = ocr_cleanup(document.language, page.content)
             page.save()
 
 
