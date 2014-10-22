@@ -1,44 +1,46 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:10-0400\n"
+"POT-Creation-Date: 2014-10-22 15:45-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Switzerland) (http://www.transifex.com/projects/p/mayan-edms/language/de_CH/)\n"
+"Language-Team: German (Switzerland) (http://www.transifex.com/projects/p/"
+"mayan-edms/language/de_CH/)\n"
+"Language: de_CH\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_CH\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:48
+#: __init__.py:43
 msgid "Created"
 msgstr ""
 
-#: __init__.py:49
+#: __init__.py:44 links.py:18 models.py:12
 msgid "Documents"
 msgstr ""
 
-#: __init__.py:56
+#: __init__.py:49
 msgid "Returns a list of all the folders."
 msgstr ""
 
-#: forms.py:38 models.py:41 models.py:46 views.py:93 views.py:122 views.py:155
+#: forms.py:38 models.py:24 views.py:90 views.py:118 views.py:151
 msgid "Folder"
 msgstr ""
 
-#: links.py:13
-msgid "Folder list"
+#: links.py:13 links.py:21 links.py:24 models.py:25 permissions.py:7
+#: views.py:38
+msgid "Folders"
 msgstr ""
 
-#: links.py:14 views.py:62
+#: links.py:14 views.py:61
 msgid "Create folder"
 msgstr ""
 
@@ -54,10 +56,6 @@ msgstr ""
 msgid "Remove from folder"
 msgstr ""
 
-#: links.py:18
-msgid "Folder documents"
-msgstr ""
-
 #: links.py:19
 msgid "Add to a folder"
 msgstr ""
@@ -66,36 +64,20 @@ msgstr ""
 msgid "Add to folder"
 msgstr ""
 
-#: links.py:21 links.py:24 models.py:42 permissions.py:7 views.py:39
-msgid "Folders"
-msgstr ""
-
 #: links.py:23
 msgid "ACLs"
 msgstr ""
 
-#: models.py:10
+#: models.py:9
 msgid "Title"
 msgstr ""
 
-#: models.py:11
+#: models.py:10
 msgid "User"
 msgstr ""
 
-#: models.py:12
+#: models.py:11
 msgid "Datetime created"
-msgstr ""
-
-#: models.py:47 views.py:195
-msgid "Document"
-msgstr ""
-
-#: models.py:53 views.py:275
-msgid "Folder document"
-msgstr ""
-
-#: models.py:54
-msgid "Folders documents"
 msgstr ""
 
 #: permissions.py:9
@@ -122,104 +104,112 @@ msgstr ""
 msgid "Add documents to existing folders"
 msgstr ""
 
-#: views.py:54
+#: views.py:53
 msgid "Folder created successfully"
 msgstr ""
 
-#: views.py:57
+#: views.py:56
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr ""
 
-#: views.py:82
+#: views.py:79
 msgid "Folder edited successfully"
 msgstr ""
 
-#: views.py:85
+#: views.py:82
 #, python-format
 msgid "Error editing folder; %s"
 msgstr ""
 
-#: views.py:90
+#: views.py:87
 #, python-format
 msgid "Edit folder: %s"
 msgstr ""
 
-#: views.py:114
+#: views.py:110
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr ""
 
-#: views.py:116
+#: views.py:112
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr ""
 
-#: views.py:127
+#: views.py:123
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr ""
 
-#: views.py:151
+#: views.py:147
 #, python-format
 msgid "Documents in folder: %s"
 msgstr ""
 
-#: views.py:166
+#: views.py:162
 msgid "Must provide at least one document."
 msgstr ""
 
-#: views.py:184
+#: views.py:181
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr ""
 
-#: views.py:187
+#: views.py:184
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr ""
 
-#: views.py:203
+#: views.py:192
+msgid "Document"
+msgstr ""
+
+#: views.py:200
 #, python-format
 msgid "Add document: %s to folder."
 msgstr ""
 
-#: views.py:205
+#: views.py:202
 #, python-format
 msgid "Add documents: %s to folder."
 msgstr ""
 
-#: views.py:220
+#: views.py:217
 #, python-format
 msgid "Folders containing: %s"
 msgstr ""
 
-#: views.py:249
+#: views.py:246
 msgid "Must provide at least one folder document."
 msgstr ""
 
-#: views.py:267
+#: views.py:264
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr ""
 
-#: views.py:269
+#: views.py:266
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr ""
 
-#: views.py:283
+#: views.py:272
+msgid "Folder document"
+msgstr ""
+
+#: views.py:280
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
 msgstr ""
 
-#: views.py:286
+#: views.py:283
 #, python-format
 msgid ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder"
-" \"%(folder)s\"?"
+"Are you sure you wish to remove the documents: %(documents)s from the folder "
+"\"%(folder)s\"?"
 msgstr ""
 
 #: templatetags/folder_tags.py:17
@@ -242,12 +232,12 @@ msgstr ""
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to let "
-#~ "individual users create their own document organization methods.  Folders "
-#~ "created by one user and the documents contained by them don't affect any "
-#~ "other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to "
+#~ "let individual users create their own document organization methods.  "
+#~ "Folders created by one user and the documents contained by them don't "
+#~ "affect any other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to let "
-#~ "individual users create their own document organization methods.  Folders "
-#~ "created by one user and the documents contained by them don't affect any "
-#~ "other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to "
+#~ "let individual users create their own document organization methods.  "
+#~ "Folders created by one user and the documents contained by them don't "
+#~ "affect any other user folders or documents."

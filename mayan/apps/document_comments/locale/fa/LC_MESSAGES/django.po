@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:44-0400\n"
 "PO-Revision-Date: 2014-10-03 12:39+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -20,31 +20,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:24
-msgid "date"
-msgstr "تاریخ"
-
-#: __init__.py:28
-msgid "user"
-msgstr "کاربر"
-
 #: __init__.py:32
-msgid "comment"
-msgstr "توصیح"
+msgid "Date"
+msgstr ""
+
+#: __init__.py:36
+msgid "User"
+msgstr ""
+
+#: __init__.py:40
+#, fuzzy
+msgid "Comment"
+msgstr "توضیحات"
 
 #: links.py:8 links.py:9
-msgid "delete"
+#, fuzzy
+msgid "Delete"
 msgstr "حذف"
 
 #: links.py:10
-msgid "add comment"
+#, fuzzy
+msgid "Add comment"
 msgstr "اضافه کردن توضیح"
 
-#: links.py:11
-msgid "comments"
-msgstr "توضیحات"
-
-#: permissions.py:7
+#: links.py:11 permissions.py:7
 msgid "Comments"
 msgstr "توضیحات"
 
@@ -60,40 +59,55 @@ msgstr "حذف توضیحات"
 msgid "View comments"
 msgstr "بازبینی توضیحات"
 
-#: views.py:36
+#: views.py:37
 msgid "Must provide at least one comment."
 msgstr "حداقل یک توضیح ارایه شود."
 
-#: views.py:46
+#: views.py:47
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
 msgstr "جذف موفق توضیحات  %s"
 
-#: views.py:48
+#: views.py:49
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "خطا %(error)s  حذف توضیحات \"%(comment)s\""
 
-#: views.py:62
+#: views.py:63
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
 msgstr "آیا از حذف توضیحات %s مطمئن هستید؟"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
 msgstr "آیا از حذف توضیحات %s مطمئن هستید؟"
 
-#: views.py:98
+#: views.py:99
 msgid "Comment added successfully."
 msgstr "توضیحات با موفقیت اضافه شد."
 
-#: views.py:105
+#: views.py:106
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "اضافه کردن توضیحات به سند: %s"
 
-#: views.py:125
-#, python-format
-msgid "comments: %s"
-msgstr "توضیحات: %s"
+#: views.py:126
+#, fuzzy, python-format
+msgid "Comments for document: %s"
+msgstr "اضافه کردن توضیحات به سند: %s"
+
+#~ msgid "date"
+#~ msgstr "تاریخ"
+
+#~ msgid "user"
+#~ msgstr "کاربر"
+
+#~ msgid "comment"
+#~ msgstr "توصیح"
+
+#~ msgid "comments"
+#~ msgstr "توضیحات"
+
+#~ msgid "comments: %s"
+#~ msgstr "توضیحات: %s"

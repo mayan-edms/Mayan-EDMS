@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:45-0400\n"
 "PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: Trung Phan Minh <navmobile@gmail.com>\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
@@ -20,31 +20,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:24
-msgid "date"
-msgstr "ngày"
-
-#: __init__.py:28
-msgid "user"
-msgstr "ngưới dùng"
-
 #: __init__.py:32
-msgid "comment"
-msgstr "chú thích"
+msgid "Date"
+msgstr ""
+
+#: __init__.py:36
+msgid "User"
+msgstr ""
+
+#: __init__.py:40
+#, fuzzy
+msgid "Comment"
+msgstr "Chú thích"
 
 #: links.py:8 links.py:9
-msgid "delete"
+#, fuzzy
+msgid "Delete"
 msgstr "xóa"
 
 #: links.py:10
-msgid "add comment"
+#, fuzzy
+msgid "Add comment"
 msgstr "thêm tài liệu"
 
-#: links.py:11
-msgid "comments"
-msgstr "chú thích"
-
-#: permissions.py:7
+#: links.py:11 permissions.py:7
 msgid "Comments"
 msgstr "Chú thích"
 
@@ -60,40 +59,55 @@ msgstr "Xóa chú thích"
 msgid "View comments"
 msgstr "Xem chú thích"
 
-#: views.py:36
+#: views.py:37
 msgid "Must provide at least one comment."
 msgstr "Cần cung cấp ít nhất một chú thích"
 
-#: views.py:46
+#: views.py:47
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
 msgstr "Chú thích \"%s\" đã xóa thành công."
 
-#: views.py:48
+#: views.py:49
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "Lỗi xóa chú thích  \"%(comment)s\": %(error)s"
 
-#: views.py:62
+#: views.py:63
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
 msgstr "Bạn có chắc chắn muốn xóa thú thích: %s?"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
 msgstr "Bạn có chắc chắn muốn xóa thú thích: %s?"
 
-#: views.py:98
+#: views.py:99
 msgid "Comment added successfully."
 msgstr "Chú thích được tạo thành công."
 
-#: views.py:105
+#: views.py:106
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Thêm chú thích cho tài liệu: %s"
 
-#: views.py:125
-#, python-format
-msgid "comments: %s"
-msgstr "chú thích: %s"
+#: views.py:126
+#, fuzzy, python-format
+msgid "Comments for document: %s"
+msgstr "Thêm chú thích cho tài liệu: %s"
+
+#~ msgid "date"
+#~ msgstr "ngày"
+
+#~ msgid "user"
+#~ msgstr "ngưới dùng"
+
+#~ msgid "comment"
+#~ msgstr "chú thích"
+
+#~ msgid "comments"
+#~ msgstr "chú thích"
+
+#~ msgid "comments: %s"
+#~ msgstr "chú thích: %s"

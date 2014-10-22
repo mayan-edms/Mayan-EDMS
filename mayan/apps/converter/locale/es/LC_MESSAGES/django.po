@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2013-2014
@@ -10,19 +10,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:44-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-
-#: links.py:8
-msgid "file formats"
-msgstr "formatos de archivo"
 
 #: literals.py:19
 msgid "Resize"
@@ -33,11 +30,13 @@ msgid "Resize."
 msgstr "Cambiar el tamaño."
 
 #: literals.py:22 literals.py:37
-msgid "width"
+#, fuzzy
+msgid "Width"
 msgstr "ancho"
 
 #: literals.py:23 literals.py:38
-msgid "height"
+#, fuzzy
+msgid "Height"
 msgstr "alto"
 
 #: literals.py:27
@@ -49,7 +48,8 @@ msgid "Rotate by n degress."
 msgstr "Girar n grados."
 
 #: literals.py:30
-msgid "degrees"
+#, fuzzy
+msgid "Degrees"
 msgstr "grados"
 
 #: literals.py:34
@@ -69,7 +69,8 @@ msgid "Zoom by n percent."
 msgstr "Zoom en n tanto por ciento."
 
 #: literals.py:45
-msgid "percent"
+#, fuzzy
+msgid "Percent"
 msgstr "por ciento"
 
 #: settings.py:11
@@ -86,11 +87,13 @@ msgstr "Ruta de archivo al programa graphicsmagick."
 
 #: settings.py:15
 msgid ""
-"Graphics conversion backend to use.  Options are: "
-"converter.backends.imagemagick.ImageMagick, "
-"converter.backends.graphicsmagick.GraphicsMagick and "
-"converter.backends.python.Python"
-msgstr "Aplicación de conversión de gráficos a utilizar. Las opciones son:\nconverter.backends.imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick y converter.backends.python.Python"
+"Graphics conversion backend to use.  Options are: converter.backends."
+"imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
+"and converter.backends.python.Python"
+msgstr ""
+"Aplicación de conversión de gráficos a utilizar. Las opciones son:\n"
+"converter.backends.imagemagick.ImageMagick, converter.backends."
+"graphicsmagick.GraphicsMagick y converter.backends.python.Python"
 
 #: settings.py:16
 msgid "Path to the libreoffice program."
@@ -105,7 +108,12 @@ msgstr "Ayuda"
 msgid ""
 "These are the file formats supported by the currently selected converter "
 "backend.  In this case: '%(backend)s'"
-msgstr "Estos son los formatos de archivo soportados por el servidor del convertidor seleccionado.  En este caso: '%(backend)s'"
+msgstr ""
+"Estos son los formatos de archivo soportados por el servidor del convertidor "
+"seleccionado.  En este caso: '%(backend)s'"
+
+#~ msgid "file formats"
+#~ msgstr "formatos de archivo"
 
 #~ msgid "Hasselblad Photo RAW, CFV/H3D39II"
 #~ msgstr "Hasselblad Photo RAW, CFV/H3D39II"
@@ -408,9 +416,11 @@ msgstr "Estos son los formatos de archivo soportados por el servidor del convert
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -526,7 +536,8 @@ msgstr "Estos son los formatos de archivo soportados por el servidor del convert
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid ""
+#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

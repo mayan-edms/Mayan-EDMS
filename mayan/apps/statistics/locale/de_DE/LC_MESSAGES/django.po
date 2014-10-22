@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -10,35 +10,35 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"POT-Creation-Date: 2014-10-22 15:48-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: links.py:10
-msgid "execute"
+#, fuzzy
+msgid "Execute"
 msgstr "Ausführen"
 
 #: links.py:11
-msgid "details"
+#, fuzzy
+msgid "Details"
 msgstr "Details"
 
 #: links.py:12
-msgid "namespace list"
+#, fuzzy
+msgid "Namespace list"
 msgstr "Namensraumliste"
 
-#: links.py:13 registry.py:7
+#: links.py:13
 msgid "Statistics"
 msgstr "Statistiken"
-
-#: registry.py:8
-msgid "Central place to store and display app statistics."
-msgstr "Zentraler Ort für die Speicherung und Darstellung von Anwendungsstatistiken."
 
 #: views.py:18
 msgid "Statistics namespaces"
@@ -50,14 +50,24 @@ msgid "Namespace details for: %s"
 msgstr ""
 
 #: views.py:35 views.py:49
-msgid "namespace"
+#, fuzzy
+msgid "Namespace"
 msgstr "Namensraum"
 
 #: views.py:50
-msgid "statistic"
-msgstr "Statistik"
+#, fuzzy
+msgid "Statistic"
+msgstr "Statistiken"
 
 #: views.py:54
 #, python-format
 msgid "Results for: %s"
 msgstr ""
+
+#~ msgid "Central place to store and display app statistics."
+#~ msgstr ""
+#~ "Zentraler Ort für die Speicherung und Darstellung von "
+#~ "Anwendungsstatistiken."
+
+#~ msgid "statistic"
+#~ msgstr "Statistik"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -10,39 +10,48 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:45-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:44 links.py:23 links.py:38 links.py:40 models.py:64
-#: views.py:305
+#: __init__.py:46 links.py:23 links.py:24 links.py:38 links.py:40 models.py:66
+#: views.py:40 views.py:305
 msgid "Indexes"
 msgstr "Índices"
 
-#: api.py:73
+#: __init__.py:60
+msgid "Returns a list of all the indexes."
+msgstr ""
+
+#: api.py:76
 #, python-format
 msgid "Maximum suffix (%s) count reached."
 msgstr "Cuenta máxima de sufijo (%s) alcanzada."
 
-#: api.py:88
+#: api.py:91
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr "Error en la expresión de actualización de indexación: %(expression)s; %(exception)s "
+msgstr ""
+"Error en la expresión de actualización de indexación: %(expression)s; "
+"%(exception)s "
 
-#: api.py:97 api.py:112
+#: api.py:102 api.py:117
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
-msgstr "Error actualizando el índice de documento, expresión: %(expression)s; %(exception)s "
+msgstr ""
+"Error actualizando el índice de documento, expresión: %(expression)s; "
+"%(exception)s "
 
-#: api.py:155
+#: api.py:162
 #, python-format
 msgid "Unable to delete document indexing node; %s"
 msgstr "No se puede eliminar el nodo de indexación de documento; %s"
@@ -57,7 +66,9 @@ msgstr "No se puede crear el directorio de indexación; %s"
 msgid ""
 "Unable to create symbolic link, file exists and could not be deleted: "
 "%(filepath)s; %(exception)s"
-msgstr "No se ha podido crear el enlace simbólico, el fichero existe y no se ha podido borrar: %(filepath)s; %(exception)s"
+msgstr ""
+"No se ha podido crear el enlace simbólico, el fichero existe y no se ha "
+"podido borrar: %(filepath)s; %(exception)s"
 
 #: filesystem.py:71
 #, python-format
@@ -73,10 +84,6 @@ msgstr "No se puede eliminar enlace simbólico de documento; %s"
 #, python-format
 msgid "Unable to delete indexing directory; %s"
 msgstr "No se puede eliminar el directorio de indexación; %s"
-
-#: links.py:24 links.py:35
-msgid "Index list"
-msgstr ""
 
 #: links.py:25 views.py:77
 msgid "Create index"
@@ -100,6 +107,10 @@ msgstr ""
 
 #: links.py:31
 msgid "New child node"
+msgstr ""
+
+#: links.py:35
+msgid "Index list"
 msgstr ""
 
 #: links.py:37
@@ -135,79 +146,88 @@ msgstr ""
 msgid "The name that will be visible to users."
 msgstr "El nombre que será visible para los usuarios."
 
-#: models.py:20 models.py:72 views.py:46 views.py:166
+#: models.py:20 models.py:74 views.py:46 views.py:166
 msgid "Enabled"
 msgstr ""
 
 #: models.py:20
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Hace que este índice sea visible y actualizado cuando los datos de documentos cambien."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Hace que este índice sea visible y actualizado cuando los datos de "
+"documentos cambien."
 
-#: models.py:63 models.py:69 views.py:103 views.py:133 views.py:159
+#: models.py:65 models.py:71 views.py:103 views.py:133 views.py:159
 #: views.py:195 views.py:222 views.py:251 views.py:290
 msgid "Index"
 msgstr ""
 
-#: models.py:70
+#: models.py:72
 msgid "Indexing expression"
 msgstr ""
 
-#: models.py:70
+#: models.py:72
 msgid "Enter a python string expression to be evaluated."
 msgstr "Introduzca una expresión de python para ser evaluada."
 
-#: models.py:72
+#: models.py:74
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Hace que este nodo sea visible y actualizado cuando los datos de los documentos son cambiados."
+msgstr ""
+"Hace que este nodo sea visible y actualizado cuando los datos de los "
+"documentos son cambiados."
 
-#: models.py:73
+#: models.py:75
 msgid "Link documents"
 msgstr ""
 
-#: models.py:73
+#: models.py:75
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Marque esta opción para que el nodo actúe como un contenedor de documentos y no como un padre para otros nodos secundarios."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Marque esta opción para que el nodo actúe como un contenedor de documentos y "
+"no como un padre para otros nodos secundarios."
 
-#: models.py:83 models.py:89
+#: models.py:81
+msgid "Index node template"
+msgstr ""
+
+#: models.py:82
+msgid "Indexes node template"
+msgstr ""
+
+#: models.py:87
 msgid "Index template node"
 msgstr ""
 
-#: models.py:84
-msgid "Indexes template nodes"
-msgstr ""
-
-#: models.py:90
+#: models.py:88
 msgid "Value"
 msgstr ""
 
-#: models.py:91
+#: models.py:89
 msgid "Documents"
 msgstr ""
 
-#: models.py:101
-msgid "Index instance node"
-msgstr ""
-
 #: models.py:102
-msgid "Indexes instance nodes"
+msgid "Index node instance"
 msgstr ""
 
-#: models.py:106
-msgid "Index instance"
+#: models.py:103
+msgid "Indexes node instances"
 msgstr ""
 
 #: models.py:107
+msgid "Index instance"
+msgstr ""
+
+#: models.py:108
 msgid "Document"
 msgstr ""
 
-#: models.py:114
+#: models.py:115
 msgid "Document rename count"
 msgstr ""
 
-#: models.py:115
+#: models.py:116
 msgid "Documents rename count"
 msgstr ""
 
@@ -241,17 +261,11 @@ msgstr "Generar índices de documentos"
 
 #: settings.py:20
 msgid ""
-"A dictionary that maps the index name and where on the filesystem that index"
-" will be mirrored."
-msgstr "Un diccionario que asigna el nombre del índice y en qué parte del sistema de archivos dicho índice se va a replicar."
-
-#: utils.py:19
-msgid "document indexes"
-msgstr "índices de documentos"
-
-#: views.py:40
-msgid "indexes"
-msgstr "índices"
+"A dictionary that maps the index name and where on the filesystem that index "
+"will be mirrored."
+msgstr ""
+"Un diccionario que asigna el nombre del índice y en qué parte del sistema de "
+"archivos dicho índice se va a replicar."
 
 #: views.py:71
 msgid "Index created successfully."
@@ -359,7 +373,9 @@ msgstr "¿Está seguro que desea reconstruir todos los índices?"
 
 #: views.py:388
 msgid "On large databases this operation may take some time to execute."
-msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
+msgstr ""
+"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
+"ejecutarse."
 
 #: views.py:394
 msgid "Index rebuild completed successfully."
@@ -378,6 +394,12 @@ msgstr ""
 #: widgets.py:85
 msgid "Root"
 msgstr ""
+
+#~ msgid "document indexes"
+#~ msgstr "índices de documentos"
+
+#~ msgid "indexes"
+#~ msgstr "índices"
 
 #~ msgid "edit"
 #~ msgstr "edit"

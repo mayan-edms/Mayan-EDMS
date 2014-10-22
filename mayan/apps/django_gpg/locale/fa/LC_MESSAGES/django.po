@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:44-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: api.py:92
@@ -31,11 +32,11 @@ msgstr "ترم Term"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "نام، ایمیل، شناسه کلید ویا اثرانگشت کلید برای چستچو."
 
-#: links.py:6
+#: links.py:6 views.py:67
 msgid "Private keys"
 msgstr ""
 
-#: links.py:7
+#: links.py:7 views.py:70
 msgid "Public keys"
 msgstr ""
 
@@ -119,101 +120,110 @@ msgstr "لیست سرور کلیدها برای پرسش درباره کلید �
 msgid "Home directory used to store keys as well as configuration files."
 msgstr "ریشه دایرکتوری جهت نگهداری کلیدها بهمراه فایلهای پیکربندی."
 
-#: views.py:37
+#: views.py:38
 #, python-format
 msgid "Key: %s, imported successfully."
 msgstr "کلید: %s, بصورت موفقیت آمیز وارد شد."
 
-#: views.py:42
+#: views.py:43
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgstr "فادر نبودن در وارد کردن کلید با شناسه: %(key_id)s , خطای  %(error)s"
 
-#: views.py:51
+#: views.py:52
 msgid "Import key"
 msgstr "وارد کردن کلید"
 
-#: views.py:52
+#: views.py:53
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "آیا از ورود کلیدی با شناسه: %s مطمئن هستید؟"
 
-#: views.py:66
-msgid "private keys"
-msgstr "کلید خصوصی"
-
-#: views.py:69
-msgid "public keys"
-msgstr "کلید عمومی"
-
-#: views.py:77
+#: views.py:78
 msgid "Key ID"
 msgstr "شناسه کلید"
 
-#: views.py:81
+#: views.py:82
 msgid "Owner"
 msgstr "صاحب"
 
-#: views.py:101
+#: views.py:102
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "کلید: %s با موفقیت حذف شد."
 
-#: views.py:108
+#: views.py:109
 msgid "Delete key"
 msgstr "حذف کلید"
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr "آیا از حذف کلید: %s مطمئن هستید؟ درصورت حذف کلید عمومی مرتبط با کلید خصوصی، کلیدخصوصی بطور اتوماتیک حذف خواهد شد."
+msgstr ""
+"آیا از حذف کلید: %s مطمئن هستید؟ درصورت حذف کلید عمومی مرتبط با کلید خصوصی، "
+"کلیدخصوصی بطور اتوماتیک حذف خواهد شد."
 
-#: views.py:128
+#: views.py:129
 msgid "Query key server"
 msgstr "پرسش از سرور کلید"
 
-#: views.py:141
+#: views.py:142
 msgid "results"
 msgstr "نتایج"
 
-#: views.py:146
+#: views.py:147
 msgid "ID"
 msgstr "شناسه"
 
-#: views.py:150
-msgid "type"
-msgstr "نوع"
+#: views.py:151
+msgid "Type"
+msgstr ""
 
-#: views.py:154
-msgid "creation date"
+#: views.py:155
+#, fuzzy
+msgid "Creation date"
 msgstr "زمان ایجاد"
 
-#: views.py:158
-msgid "disabled"
+#: views.py:159
+#, fuzzy
+msgid "Disabled"
 msgstr "عیر فعال"
 
-#: views.py:162
-msgid "expiration date"
+#: views.py:163
+#, fuzzy
+msgid "Expiration date"
 msgstr "تاریخ انقضا"
 
-#: views.py:166
-msgid "expired"
+#: views.py:167
+#, fuzzy
+msgid "Expired"
 msgstr "منقضی شده"
 
-#: views.py:170
-msgid "length"
+#: views.py:171
+#, fuzzy
+msgid "Length"
 msgstr "طول"
 
-#: views.py:174
-msgid "revoked"
+#: views.py:175
+#, fuzzy
+msgid "Revoked"
 msgstr "لغو شده"
 
-#: views.py:179
+#: views.py:180
 msgid "Identifies"
 msgstr "شناسایی کردن."
+
+#~ msgid "private keys"
+#~ msgstr "کلید خصوصی"
+
+#~ msgid "public keys"
+#~ msgstr "کلید عمومی"
+
+#~ msgid "type"
+#~ msgstr "نوع"
 
 #~ msgid "query keyservers"
 #~ msgstr "query keyservers"

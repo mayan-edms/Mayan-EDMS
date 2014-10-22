@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -10,23 +10,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:11-0400\n"
+"POT-Creation-Date: 2014-10-22 15:47-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:36 __init__.py:58 links.py:19 permissions.py:7
+#: __init__.py:32 links.py:19 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
-
-#: __init__.py:59
-msgid "OCR queue statistics"
-msgstr "Estadísticas de la cola OCR"
 
 #: api.py:74
 msgid "Text from OCR"
@@ -52,53 +49,55 @@ msgstr ""
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
-msgstr "Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR del contenido de las paginas del documento."
+msgstr ""
+"Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR "
+"del contenido de las paginas del documento."
 
 #: links.py:18
 msgid "Queue document list"
 msgstr ""
 
-#: models.py:15
+#: models.py:12
 msgid "Name"
 msgstr ""
 
-#: models.py:16
+#: models.py:13
 msgid "Label"
 msgstr ""
 
-#: models.py:19 models.py:27 views.py:35
+#: models.py:16 models.py:24 views.py:34
 msgid "Document queue"
 msgstr ""
 
-#: models.py:20
+#: models.py:17
 msgid "Document queues"
 msgstr ""
 
-#: models.py:28 views.py:39
+#: models.py:25 views.py:38
 msgid "Document"
 msgstr ""
 
-#: models.py:29
+#: models.py:26
 msgid "Date time submitted"
 msgstr ""
 
-#: models.py:30 views.py:43
+#: models.py:27 views.py:42
 msgid "Result"
 msgstr ""
 
-#: models.py:31
+#: models.py:28
 msgid "Node name"
 msgstr ""
 
-#: models.py:35
+#: models.py:32
 msgid "Queue document"
 msgstr ""
 
-#: models.py:36
+#: models.py:33
 msgid "Queue documents"
 msgstr ""
 
-#: models.py:53 views.py:39
+#: models.py:39 views.py:38
 msgid "Missing document."
 msgstr "Documento no encontrado."
 
@@ -118,125 +117,130 @@ msgstr "Se puede ejecutar limpieza de OCR en todas las páginas de documentos"
 msgid "Can edit an OCR queue properties"
 msgstr "Puede editar las propiedades de un cola de OCR"
 
-#: settings.py:13
-msgid "Automatically queue newly created documents for OCR."
-msgstr "Agregar automáticamente a la cola de OCR los documentos creados."
-
-#: settings.py:14
+#: settings.py:12
 msgid "File path to unpaper program."
 msgstr "La ruta de archivo del programa unpaper."
 
-#: settings.py:15
+#: settings.py:13
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
-msgstr "Ruta de acceso al programa de poppler llamado pdftotext utilizado para extraer texto de archivos PDF."
+"File path to poppler's pdftotext program used to extract text from PDF files."
+msgstr ""
+"Ruta de acceso al programa de poppler llamado pdftotext utilizado para "
+"extraer texto de archivos PDF."
 
-#: settings.py:16
+#: settings.py:14
 msgid "Full path to the backend to be used to do OCR."
 msgstr "Ruta completa a la aplicación que se usará para OCR."
 
-#: statistics.py:15
-#, python-format
-msgid "Document queues: %d"
-msgstr "Colas de documentos: %d"
-
-#: statistics.py:16
-#, python-format
-msgid "Queued documents: %d"
-msgstr "Documentos en la cola: %d"
-
-#: views.py:32
+#: views.py:31
 #, python-format
 msgid "Documents in queue: %s"
 msgstr ""
 
-#: views.py:40
+#: views.py:39
 msgid "Thumbnail"
 msgstr ""
 
-#: views.py:41
+#: views.py:40
 msgid "Added"
 msgstr ""
 
-#: views.py:42
+#: views.py:41
 msgid "Node"
 msgstr ""
 
-#: views.py:60 views.py:140
+#: views.py:59 views.py:139
 msgid "Must provide at least one queue document."
 msgstr "Debe proveer al menos un documento en cola."
 
-#: views.py:70
+#: views.py:69
 #, python-format
 msgid "Queue document: %(document)s deleted successfully."
 msgstr "Documento de la cola: %(document)s eliminado exitosamente."
 
-#: views.py:74
+#: views.py:73
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Error al eliminar el documento: %(document)s; %(error)s "
 
-#: views.py:87
+#: views.py:86
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
 msgstr "¿Está seguro que desea eliminar de la cola el documento: %s?"
 
-#: views.py:89
+#: views.py:88
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
 msgstr "¿Está seguro que desea eliminar de la cola los documentos: %s?"
 
-#: views.py:124
+#: views.py:123
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr ""
 
-#: views.py:152
-#, python-format
-msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgstr "Documento: %(document)s fue puesto de vuelta en la cola de OCR: %(queue)s "
+#: views.py:151
+#, fuzzy, python-format
+msgid "Document: %(document)s was re-queued for OCR."
+msgstr "Document: %(document)s is already queued."
 
-#: views.py:158
+#: views.py:156
 #, python-format
 msgid "Document id#: %d, no longer exists."
 msgstr "Documento de #: %d, ya no existe."
 
-#: views.py:162
-#, python-format
-msgid "Document: %s is already being processed and can't be re-queded."
-msgstr "El documento: %s ya está en proceso y no se puede volver a agregar a la cola."
-
-#: views.py:174
+#: views.py:167
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
 msgstr "¿Está seguro desea volver a agregar a la cola el documento: %s?"
 
-#: views.py:176
+#: views.py:169
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr "¿Está seguro desea volver a agregar a la cola los documento: %s?"
 
-#: views.py:196
+#: views.py:189
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "¿Está seguro que desea limpiar el contenido de todas las páginas?"
 
-#: views.py:197
+#: views.py:190
 msgid "On large databases this operation may take some time to execute."
-msgstr "En grandes bases de datos esta operación puede tardar algún tiempo en ejecutarse."
+msgstr ""
+"En grandes bases de datos esta operación puede tardar algún tiempo en "
+"ejecutarse."
 
-#: views.py:203
+#: views.py:196
 msgid "Document pages content clean up complete."
 msgstr "Limpieza de contenido completada."
 
-#: views.py:205
+#: views.py:198
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Error en limpieza de contenido: %s"
 
-#: parsers/__init__.py:94 parsers/__init__.py:171
+#: parsers/__init__.py:93 parsers/__init__.py:170
 msgid "Text extracted from PDF"
 msgstr "Texto extraído de PDF"
+
+#~ msgid "OCR queue statistics"
+#~ msgstr "Estadísticas de la cola OCR"
+
+#~ msgid "Automatically queue newly created documents for OCR."
+#~ msgstr "Agregar automáticamente a la cola de OCR los documentos creados."
+
+#~ msgid "Document queues: %d"
+#~ msgstr "Colas de documentos: %d"
+
+#~ msgid "Queued documents: %d"
+#~ msgstr "Documentos en la cola: %d"
+
+#~ msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+#~ msgstr ""
+#~ "Documento: %(document)s fue puesto de vuelta en la cola de OCR: %(queue)s "
+
+#~ msgid "Document: %s is already being processed and can't be re-queded."
+#~ msgstr ""
+#~ "El documento: %s ya está en proceso y no se puede volver a agregar a la "
+#~ "cola."
 
 #~ msgid "Checks the OCR queue for pending documents."
 #~ msgstr "Checks the OCR queue for pending documents."
@@ -283,9 +287,6 @@ msgstr "Texto extraído de PDF"
 #~ msgid "Document: %s is being processed and can't be deleted."
 #~ msgstr "Document: %s is being processed and can't be deleted."
 
-#~ msgid "Document: %(document)s is already queued."
-#~ msgstr "Document: %(document)s is already queued."
-
 #~ msgid "Document queue: %s, already stopped."
 #~ msgstr "Document queue: %s, already stopped."
 
@@ -305,11 +306,11 @@ msgstr "Texto extraído de PDF"
 #~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
-#~ "replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's "
+#~ "storage replication overhead."
 #~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
-#~ "replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's "
+#~ "storage replication overhead."
 
 #~ msgid "Maximum amount of concurrent document OCRs a node can perform."
 #~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
@@ -366,9 +367,11 @@ msgstr "Texto extraído de PDF"
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
+#~ "\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
+#~ "\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

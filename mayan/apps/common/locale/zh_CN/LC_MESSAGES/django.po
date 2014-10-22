@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:44-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: forms.py:97
@@ -57,49 +58,9 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: links.py:15 views.py:234
+#: links.py:15 views.py:233
 msgid "License"
 msgstr "许可证"
-
-#: literals.py:24
-msgid "A5"
-msgstr "A5"
-
-#: literals.py:25
-msgid "A4"
-msgstr "A4"
-
-#: literals.py:26
-msgid "A3"
-msgstr "A3"
-
-#: literals.py:27
-msgid "B5"
-msgstr "B5"
-
-#: literals.py:28
-msgid "B4"
-msgstr "B4"
-
-#: literals.py:29
-msgid "Letter"
-msgstr "Letter"
-
-#: literals.py:30
-msgid "Legal"
-msgstr "Legal"
-
-#: literals.py:31
-msgid "Ledger"
-msgstr "Ledger"
-
-#: literals.py:38
-msgid "Portrait"
-msgstr "Portrait"
-
-#: literals.py:39
-msgid "Landscape"
-msgstr "Landscape"
 
 #: models.py:17 models.py:20
 msgid "Anonymous user"
@@ -117,139 +78,172 @@ msgstr ""
 msgid "Auto admin properties"
 msgstr ""
 
-#: settings.py:16
+#: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+msgstr ""
+"站点范围的临时目录用于存储缩略图，预览和临时文件。如果没有设置，将缺省使用"
 "tempfile.mkdtemp()"
-msgstr "站点范围的临时目录用于存储缩略图，预览和临时文件。如果没有设置，将缺省使用tempfile.mkdtemp()"
 
-#: settings.py:66
+#: settings.py:48
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
 msgstr "控制验证用户的机制。可选项有：username, email"
 
-#: settings.py:75
+#: settings.py:57
 msgid "Allow non authenticated users, access to all views"
 msgstr "允许非授权用户访问所有的视图"
 
-#: utils.py:117
-msgid "function found"
+#: utils.py:116
+#, fuzzy
+msgid "Function found"
 msgstr "功能已存在"
 
-#: views.py:40
+#: views.py:41
 msgid "No action selected."
 msgstr "请选择一个操作"
 
-#: views.py:44
+#: views.py:45
 msgid "Must select at least one item."
 msgstr "至少需要选择一项"
 
-#: views.py:92
+#: views.py:93
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr "%(selection)s成功添加到 %(right_list_title)s."
 
-#: views.py:98 views.py:125
+#: views.py:99 views.py:126
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr "不能添加%(selection)s到%(right_list_title)s."
 
-#: views.py:119
+#: views.py:120
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr "%(selection)s 成功从%(right_list_title)s.移除"
 
-#: views.py:140
+#: views.py:139
 msgid "Add"
 msgstr "新增"
 
-#: views.py:151
+#: views.py:150
 msgid "Remove"
 msgstr "移除"
 
-#: views.py:174
+#: views.py:173
 msgid "current user details"
 msgstr "当前用户详细信息"
 
-#: views.py:191
+#: views.py:190
 msgid "E-mail conflict, another user has that same email."
 msgstr "电子邮箱冲突，另外用户已经使用此邮箱"
 
-#: views.py:194
+#: views.py:193
 msgid "Current user's details updated."
 msgstr "当前用户信息已经更新"
 
-#: views.py:203
+#: views.py:202
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:243
+#: views.py:242
 msgid "Current user password change"
 msgstr "当前用户密码修改"
 
-#: views.py:258
+#: views.py:257
 msgid "Your password has been successfully changed."
 msgstr "你的密码已经修改成功"
 
-#: views.py:312
+#: views.py:311
 #, python-format
 msgid "Error saving %s details."
 msgstr "保存 %s 详细信息出错。"
 
-#: views.py:314
+#: views.py:313
 msgid "Error saving details."
 msgstr "保存详细信息出错"
 
-#: views.py:322
+#: views.py:321
 #, python-format
 msgid "%s details saved successfully."
 msgstr "%s的详单成功保存"
 
-#: views.py:324
+#: views.py:323
 msgid "Details saved successfully."
 msgstr "详单保存成功"
 
-#: views.py:336
+#: views.py:335
 #, python-format
 msgid "Error creating new %s."
 msgstr "创建新 %s的时候出错。"
 
-#: views.py:338
+#: views.py:337
 msgid "Error creating object."
 msgstr "创建对象的时候出错"
 
-#: views.py:345
+#: views.py:344
 #, python-format
 msgid "%s created successfully."
 msgstr "创建%s成功"
 
-#: views.py:347
+#: views.py:346
 msgid "New object created successfully."
 msgstr "新对象创建成功"
 
-#: views.py:365
+#: views.py:364
 #, python-format
 msgid "Error deleting %s."
 msgstr "删除%s时候出错。"
 
-#: views.py:367
+#: views.py:366
 msgid "Error deleting object."
 msgstr "删除对象时候出错。"
 
-#: views.py:372
+#: views.py:371
 #, python-format
 msgid "%s deleted successfully."
 msgstr "删除%s成功。"
 
-#: views.py:374
+#: views.py:373
 msgid "Object deleted successfully."
 msgstr "对象删除成功"
 
 #: widgets.py:58
 msgid "None"
 msgstr "无"
+
+#~ msgid "A5"
+#~ msgstr "A5"
+
+#~ msgid "A4"
+#~ msgstr "A4"
+
+#~ msgid "A3"
+#~ msgstr "A3"
+
+#~ msgid "B5"
+#~ msgstr "B5"
+
+#~ msgid "B4"
+#~ msgstr "B4"
+
+#~ msgid "Letter"
+#~ msgstr "Letter"
+
+#~ msgid "Legal"
+#~ msgstr "Legal"
+
+#~ msgid "Ledger"
+#~ msgstr "Ledger"
+
+#~ msgid "Portrait"
+#~ msgstr "Portrait"
+
+#~ msgid "Landscape"
+#~ msgstr "Landscape"
 
 #~ msgid "license"
 #~ msgstr "license"

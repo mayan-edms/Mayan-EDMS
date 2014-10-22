@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:44-0400\n"
 "PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,31 +19,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:24
-msgid "date"
-msgstr "data"
-
-#: __init__.py:28
-msgid "user"
-msgstr "utente"
-
 #: __init__.py:32
-msgid "comment"
-msgstr "commento"
+msgid "Date"
+msgstr ""
+
+#: __init__.py:36
+msgid "User"
+msgstr ""
+
+#: __init__.py:40
+#, fuzzy
+msgid "Comment"
+msgstr "Commenti"
 
 #: links.py:8 links.py:9
-msgid "delete"
+#, fuzzy
+msgid "Delete"
 msgstr "cancella"
 
 #: links.py:10
-msgid "add comment"
+#, fuzzy
+msgid "Add comment"
 msgstr "aggiungi commento"
 
-#: links.py:11
-msgid "comments"
-msgstr "commenti"
-
-#: permissions.py:7
+#: links.py:11 permissions.py:7
 msgid "Comments"
 msgstr "Commenti"
 
@@ -59,40 +58,55 @@ msgstr "Cancella commenti"
 msgid "View comments"
 msgstr "Visualizza commenti"
 
-#: views.py:36
+#: views.py:37
 msgid "Must provide at least one comment."
 msgstr "Devi almeno fornire un commento"
 
-#: views.py:46
+#: views.py:47
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
 msgstr "Commento \"%s\" cancellato con sucesso."
 
-#: views.py:48
+#: views.py:49
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "Erroro nel cancellare il commento \"%(comment)s\": %(error)s"
 
-#: views.py:62
+#: views.py:63
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
 msgstr "Sei sicuro di voler cancellare questo commento: %s?"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
 msgstr "Sei sicuro di voler cancellare questi commenti: %s?"
 
-#: views.py:98
+#: views.py:99
 msgid "Comment added successfully."
 msgstr "Commento aggiunto con successo."
 
-#: views.py:105
+#: views.py:106
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Aggiungi un comento al documento: %s"
 
-#: views.py:125
-#, python-format
-msgid "comments: %s"
-msgstr "commenti: %s"
+#: views.py:126
+#, fuzzy, python-format
+msgid "Comments for document: %s"
+msgstr "Aggiungi un comento al documento: %s"
+
+#~ msgid "date"
+#~ msgstr "data"
+
+#~ msgid "user"
+#~ msgstr "utente"
+
+#~ msgid "comment"
+#~ msgstr "commento"
+
+#~ msgid "comments"
+#~ msgstr "commenti"
+
+#~ msgid "comments: %s"
+#~ msgstr "commenti: %s"

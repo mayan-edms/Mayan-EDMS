@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:11-0400\n"
+"POT-Creation-Date: 2014-10-22 15:46-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: links.py:8
@@ -64,79 +65,79 @@ msgstr "Versión"
 msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr "Copyright &copy; 2011 Roberto Rosario."
 
-#: templates/main/base.html:147
+#: templates/main/base.html:146
 msgid "(DEBUG)"
 msgstr "(DEBUG)"
 
-#: templates/main/base.html:166
+#: templates/main/base.html:165
 msgid "User"
 msgstr "Usuario"
 
-#: templates/main/base.html:168
+#: templates/main/base.html:167
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/main/base.html:171
+#: templates/main/base.html:170
 msgid "User details"
 msgstr "Detalles de usuario"
 
-#: templates/main/base.html:188 templates/main/login.html:16
+#: templates/main/base.html:187 templates/main/login.html:16
 #: templates/main/login.html.py:54 templates/main/login.html:62
 msgid "Login"
 msgstr "Iniciar sesión"
 
-#: templates/main/base.html:188
+#: templates/main/base.html:187
 msgid "Logout"
 msgstr "Desconectarse"
 
-#: templates/main/base.html:202
+#: templates/main/base.html:201
 msgid "dismiss all notifications"
 msgstr ""
 
-#: templates/main/base.html:202
+#: templates/main/base.html:201
 msgid "close all"
 msgstr ""
 
-#: templates/main/base.html:203
+#: templates/main/base.html:202
 msgid "dismiss this notification"
 msgstr ""
 
-#: templates/main/base.html:203
+#: templates/main/base.html:202
 msgid "close"
 msgstr ""
 
-#: templates/main/base.html:264
+#: templates/main/base.html:263
 msgid "Secondary menu"
 msgstr "Menú secundario"
 
-#: templates/main/base.html:280
+#: templates/main/base.html:279
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Acciones para %(name)s: %(navigation_object)s "
 
-#: templates/main/base.html:282 templates/main/base.html.py:325
+#: templates/main/base.html:281 templates/main/base.html.py:324
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Acciones para: %(navigation_object)s "
 
-#: templates/main/base.html:285
+#: templates/main/base.html:284
 msgid "Available actions"
 msgstr "Acciones disponibles"
 
-#: templates/main/base.html:297 templates/main/base.html.py:340
+#: templates/main/base.html:296 templates/main/base.html.py:339
 msgid "Related actions"
 msgstr "Acciones relacionadas"
 
-#: templates/main/base.html:308 templates/main/base.html.py:353
+#: templates/main/base.html:307 templates/main/base.html.py:352
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"
 
-#: templates/main/base.html:323
+#: templates/main/base.html:322
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "Acciones para %(object_name)s: %(navigation_object)s "
 
-#: templates/main/base.html:328
+#: templates/main/base.html:327
 msgid "Actions"
 msgstr "Acciones"
 
@@ -328,7 +329,10 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr "Gestor documental libre y de código abierto, basado en Django con metadatos personalizados, indexación, etiquetado, integración de servicio de archivos, apoyo de firmas digitales y capacidades de OCR"
+msgstr ""
+"Gestor documental libre y de código abierto, basado en Django con metadatos "
+"personalizados, indexación, etiquetado, integración de servicio de archivos, "
+"apoyo de firmas digitales y capacidades de OCR"
 
 #: templates/main/project_description.html:22
 msgid "Released under the Apache 2.0 License"
@@ -357,11 +361,11 @@ msgstr ""
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget or"
-#~ " by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget or"
-#~ " by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

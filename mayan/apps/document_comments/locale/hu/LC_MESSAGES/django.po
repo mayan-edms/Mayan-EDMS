@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:44-0400\n"
 "PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: Dezső József <dejo60@gmail.com>\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,31 +19,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:24
-msgid "date"
-msgstr "dátum"
-
-#: __init__.py:28
-msgid "user"
-msgstr "felhasználó"
-
 #: __init__.py:32
-msgid "comment"
-msgstr "megjegyzés"
+msgid "Date"
+msgstr ""
+
+#: __init__.py:36
+msgid "User"
+msgstr ""
+
+#: __init__.py:40
+#, fuzzy
+msgid "Comment"
+msgstr "Hozzászólás"
 
 #: links.py:8 links.py:9
-msgid "delete"
+#, fuzzy
+msgid "Delete"
 msgstr "törlés"
 
 #: links.py:10
-msgid "add comment"
+#, fuzzy
+msgid "Add comment"
 msgstr "megjegyzést fűz hozzá"
 
-#: links.py:11
-msgid "comments"
-msgstr "hozzászólás"
-
-#: permissions.py:7
+#: links.py:11 permissions.py:7
 msgid "Comments"
 msgstr "Hozzászólás"
 
@@ -59,40 +58,55 @@ msgstr "hozzászólás törlése"
 msgid "View comments"
 msgstr "hozzászólás megtekintése"
 
-#: views.py:36
+#: views.py:37
 msgid "Must provide at least one comment."
 msgstr "Legalább egy megjegyzés szükséges!"
 
-#: views.py:46
+#: views.py:47
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
 msgstr "A megjegyzés \"%s\" törlése sikerült."
 
-#: views.py:48
+#: views.py:49
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "A megjegyzés \"%(comment)s\": a %(error)s hiba miatt sikertelen."
 
-#: views.py:62
+#: views.py:63
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
 msgstr "Valóban törölni akarja a következő megjegyzést: %s?"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
 msgstr "Biztos, hogy törölni szeretné a hozzászólást: %s?"
 
-#: views.py:98
+#: views.py:99
 msgid "Comment added successfully."
 msgstr "Megjegyzés hozzáfűzése sikeres."
 
-#: views.py:105
+#: views.py:106
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Megjegyzés fűzése a %s dokumentumhoz."
 
-#: views.py:125
-#, python-format
-msgid "comments: %s"
-msgstr "hozzászólás: %s"
+#: views.py:126
+#, fuzzy, python-format
+msgid "Comments for document: %s"
+msgstr "Megjegyzés fűzése a %s dokumentumhoz."
+
+#~ msgid "date"
+#~ msgstr "dátum"
+
+#~ msgid "user"
+#~ msgstr "felhasználó"
+
+#~ msgid "comment"
+#~ msgstr "megjegyzés"
+
+#~ msgid "comments"
+#~ msgstr "hozzászólás"
+
+#~ msgid "comments: %s"
+#~ msgstr "hozzászólás: %s"

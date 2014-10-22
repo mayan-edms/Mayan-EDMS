@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:11-0400\n"
+"POT-Creation-Date: 2014-10-22 15:46-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: links.py:8
@@ -63,79 +64,79 @@ msgstr "版本"
 msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr "版权归 &copy; 2011 Roberto Rosario所有."
 
-#: templates/main/base.html:147
+#: templates/main/base.html:146
 msgid "(DEBUG)"
 msgstr "(调试)"
 
-#: templates/main/base.html:166
+#: templates/main/base.html:165
 msgid "User"
 msgstr "用户"
 
-#: templates/main/base.html:168
+#: templates/main/base.html:167
 msgid "Anonymous"
 msgstr "匿名用户"
 
-#: templates/main/base.html:171
+#: templates/main/base.html:170
 msgid "User details"
 msgstr "用户信息"
 
-#: templates/main/base.html:188 templates/main/login.html:16
+#: templates/main/base.html:187 templates/main/login.html:16
 #: templates/main/login.html.py:54 templates/main/login.html:62
 msgid "Login"
 msgstr "登录"
 
-#: templates/main/base.html:188
+#: templates/main/base.html:187
 msgid "Logout"
 msgstr "退出"
 
-#: templates/main/base.html:202
+#: templates/main/base.html:201
 msgid "dismiss all notifications"
 msgstr ""
 
-#: templates/main/base.html:202
+#: templates/main/base.html:201
 msgid "close all"
 msgstr ""
 
-#: templates/main/base.html:203
+#: templates/main/base.html:202
 msgid "dismiss this notification"
 msgstr ""
 
-#: templates/main/base.html:203
+#: templates/main/base.html:202
 msgid "close"
 msgstr ""
 
-#: templates/main/base.html:264
+#: templates/main/base.html:263
 msgid "Secondary menu"
 msgstr "二级菜单"
 
-#: templates/main/base.html:280
+#: templates/main/base.html:279
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "%(name)s的操作是：%(navigation_object)s"
 
-#: templates/main/base.html:282 templates/main/base.html.py:325
+#: templates/main/base.html:281 templates/main/base.html.py:324
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "%(navigation_object)s的操作"
 
-#: templates/main/base.html:285
+#: templates/main/base.html:284
 msgid "Available actions"
 msgstr "有效操作"
 
-#: templates/main/base.html:297 templates/main/base.html.py:340
+#: templates/main/base.html:296 templates/main/base.html.py:339
 msgid "Related actions"
 msgstr "相关操作"
 
-#: templates/main/base.html:308 templates/main/base.html.py:353
+#: templates/main/base.html:307 templates/main/base.html.py:352
 msgid "Other available actions"
 msgstr "其他有效操作"
 
-#: templates/main/base.html:323
+#: templates/main/base.html:322
 #, python-format
 msgid "Actions for %(object_name)s: %(navigation_object)s"
 msgstr "%(object_name)s的操作是：%(navigation_object)s"
 
-#: templates/main/base.html:328
+#: templates/main/base.html:327
 msgid "Actions"
 msgstr "操作"
 
@@ -327,7 +328,9 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr "开源，基于Django的电子文档管理，支持自定义元数据，索引，标签，集成文件服务，数字签名以及OCR。"
+msgstr ""
+"开源，基于Django的电子文档管理，支持自定义元数据，索引，标签，集成文件服务，"
+"数字签名以及OCR。"
 
 #: templates/main/project_description.html:22
 msgid "Released under the Apache 2.0 License"
@@ -356,11 +359,11 @@ msgstr ""
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget or"
-#~ " by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget or"
-#~ " by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:44-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,10 +18,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: links.py:8
-msgid "file formats"
-msgstr "file formats"
-
 #: literals.py:19
 msgid "Resize"
 msgstr "Resize"
@@ -31,11 +27,13 @@ msgid "Resize."
 msgstr "Resize."
 
 #: literals.py:22 literals.py:37
-msgid "width"
+#, fuzzy
+msgid "Width"
 msgstr "width"
 
 #: literals.py:23 literals.py:38
-msgid "height"
+#, fuzzy
+msgid "Height"
 msgstr "height"
 
 #: literals.py:27
@@ -47,7 +45,8 @@ msgid "Rotate by n degress."
 msgstr "Rotate by n degress."
 
 #: literals.py:30
-msgid "degrees"
+#, fuzzy
+msgid "Degrees"
 msgstr "degrees"
 
 #: literals.py:34
@@ -67,7 +66,8 @@ msgid "Zoom by n percent."
 msgstr "Zoom by n percent."
 
 #: literals.py:45
-msgid "percent"
+#, fuzzy
+msgid "Percent"
 msgstr "percent"
 
 #: settings.py:11
@@ -108,6 +108,9 @@ msgid ""
 msgstr ""
 "These are the file formats supported by the currently selected converter "
 "backend.  In this case: '%(backend)s'"
+
+#~ msgid "file formats"
+#~ msgstr "file formats"
 
 #~ msgid "Hasselblad Photo RAW, CFV/H3D39II"
 #~ msgstr "Hasselblad Photo RAW, CFV/H3D39II"

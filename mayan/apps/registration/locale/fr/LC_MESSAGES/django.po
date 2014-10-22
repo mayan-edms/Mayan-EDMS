@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"POT-Creation-Date: 2014-10-22 15:48-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: forms.py:13
@@ -51,39 +52,37 @@ msgstr "Autres informations:"
 msgid "Registration"
 msgstr "Inscription"
 
-#: models.py:21
+#: models.py:22
 msgid "Registered"
 msgstr ""
 
-#: models.py:22
+#: models.py:23
 msgid "Registration data"
 msgstr ""
 
-#: models.py:48
+#: models.py:49
 msgid "No name"
 msgstr "Pas de nom"
 
-#: models.py:87
+#: models.py:86
 msgid "Registration properties"
 msgstr ""
 
-#: views.py:22
-msgid "Thank you for registering."
-msgstr "Merci de vous être inscrit."
-
-#: views.py:25
+#: views.py:19
 msgid "Your copy is already registered."
 msgstr "Votre copie est déjà enregistrée."
 
-#: views.py:28
-#, python-format
-msgid "Error submiting form; %s."
-msgstr "Erreur lors de l'envoi du formulaire; %s."
+#: views.py:26
+msgid "Thank you for registering."
+msgstr "Merci de vous être inscrit."
 
-#: views.py:33
-msgid "registration form"
+#: views.py:32
+#, fuzzy
+msgid "Registration form"
 msgstr "formulaire d'inscription"
 
-#: templatetags/registration_tags.py:16
-msgid "Unregistered"
-msgstr "Non inscrit"
+#~ msgid "Error submiting form; %s."
+#~ msgstr "Erreur lors de l'envoi du formulaire; %s."
+
+#~ msgid "Unregistered"
+#~ msgstr "Non inscrit"

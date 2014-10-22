@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:44-0400\n"
 "PO-Revision-Date: 2011-09-30 04:33+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Croatian (Croatia) (http://www.transifex.com/projects/p/mayan-"
@@ -19,31 +19,27 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: __init__.py:24
-msgid "date"
-msgstr ""
-
-#: __init__.py:28
-msgid "user"
-msgstr ""
-
 #: __init__.py:32
-msgid "comment"
+msgid "Date"
+msgstr ""
+
+#: __init__.py:36
+msgid "User"
+msgstr ""
+
+#: __init__.py:40
+msgid "Comment"
 msgstr ""
 
 #: links.py:8 links.py:9
-msgid "delete"
+msgid "Delete"
 msgstr ""
 
 #: links.py:10
-msgid "add comment"
+msgid "Add comment"
 msgstr ""
 
-#: links.py:11
-msgid "comments"
-msgstr ""
-
-#: permissions.py:7
+#: links.py:11 permissions.py:7
 msgid "Comments"
 msgstr ""
 
@@ -59,40 +55,40 @@ msgstr ""
 msgid "View comments"
 msgstr ""
 
-#: views.py:36
+#: views.py:37
 msgid "Must provide at least one comment."
 msgstr ""
 
-#: views.py:46
+#: views.py:47
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
 msgstr ""
 
-#: views.py:48
+#: views.py:49
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr ""
 
-#: views.py:62
+#: views.py:63
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
 msgstr ""
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
 msgstr ""
 
-#: views.py:98
+#: views.py:99
 msgid "Comment added successfully."
 msgstr ""
 
-#: views.py:105
+#: views.py:106
 #, python-format
 msgid "Add comment to document: %s"
 msgstr ""
 
-#: views.py:125
+#: views.py:126
 #, python-format
-msgid "comments: %s"
+msgid "Comments for document: %s"
 msgstr ""

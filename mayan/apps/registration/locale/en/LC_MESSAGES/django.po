@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"POT-Creation-Date: 2014-10-22 15:48-0400\n"
 "PO-Revision-Date: 2012-10-10 13:43+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -50,42 +50,40 @@ msgstr "Other information:"
 msgid "Registration"
 msgstr "Registration"
 
-#: models.py:21
+#: models.py:22
 #, fuzzy
 msgid "Registered"
 msgstr "registered"
 
-#: models.py:22
+#: models.py:23
 #, fuzzy
 msgid "Registration data"
 msgstr "registration data"
 
-#: models.py:48
+#: models.py:49
 msgid "No name"
 msgstr "No name"
 
-#: models.py:87
+#: models.py:86
 #, fuzzy
 msgid "Registration properties"
 msgstr "registration properties"
 
-#: views.py:22
-msgid "Thank you for registering."
-msgstr "Thank you for registering."
-
-#: views.py:25
+#: views.py:19
 msgid "Your copy is already registered."
 msgstr "Your copy is already registered."
 
-#: views.py:28
-#, python-format
-msgid "Error submiting form; %s."
-msgstr "Error submiting form; %s."
+#: views.py:26
+msgid "Thank you for registering."
+msgstr "Thank you for registering."
 
-#: views.py:33
-msgid "registration form"
+#: views.py:32
+#, fuzzy
+msgid "Registration form"
 msgstr "registration form"
 
-#: templatetags/registration_tags.py:16
-msgid "Unregistered"
-msgstr "Unregistered"
+#~ msgid "Error submiting form; %s."
+#~ msgstr "Error submiting form; %s."
+
+#~ msgid "Unregistered"
+#~ msgstr "Unregistered"

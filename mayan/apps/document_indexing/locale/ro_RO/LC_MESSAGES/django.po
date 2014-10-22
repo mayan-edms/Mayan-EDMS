@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
@@ -9,39 +9,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:45-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
-#: __init__.py:44 links.py:23 links.py:38 links.py:40 models.py:64
-#: views.py:305
+#: __init__.py:46 links.py:23 links.py:24 links.py:38 links.py:40 models.py:66
+#: views.py:40 views.py:305
 msgid "Indexes"
 msgstr "Indexuri"
 
-#: api.py:73
+#: __init__.py:60
+msgid "Returns a list of all the indexes."
+msgstr ""
+
+#: api.py:76
 #, python-format
 msgid "Maximum suffix (%s) count reached."
 msgstr "Maximum suffix (%s) atins."
 
-#: api.py:88
+#: api.py:91
 #, python-format
 msgid ""
 "Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr "Eroare în exprimare actualizare documentul de indexare: %(expression)s; %(exception)s"
+msgstr ""
+"Eroare în exprimare actualizare documentul de indexare: %(expression)s; "
+"%(exception)s"
 
-#: api.py:97 api.py:112
+#: api.py:102 api.py:117
 #, python-format
 msgid ""
 "Error updating document index, expression: %(expression)s; %(exception)s"
-msgstr "Eroare la actualizarea indicele documentului, expresia: %(expression)s; %(exception)s"
+msgstr ""
+"Eroare la actualizarea indicele documentului, expresia: %(expression)s; "
+"%(exception)s"
 
-#: api.py:155
+#: api.py:162
 #, python-format
 msgid "Unable to delete document indexing node; %s"
 msgstr "Imposibil de șters indexarea nod document;% s"
@@ -73,10 +83,6 @@ msgstr "Imposibil de șters link de document simbolic;% s"
 msgid "Unable to delete indexing directory; %s"
 msgstr "Imposibil de șters directorul indexare;% s"
 
-#: links.py:24 links.py:35
-msgid "Index list"
-msgstr ""
-
 #: links.py:25 views.py:77
 msgid "Create index"
 msgstr ""
@@ -99,6 +105,10 @@ msgstr ""
 
 #: links.py:31
 msgid "New child node"
+msgstr ""
+
+#: links.py:35
+msgid "Index list"
 msgstr ""
 
 #: links.py:37
@@ -134,79 +144,88 @@ msgstr ""
 msgid "The name that will be visible to users."
 msgstr "Numele care va fi vizibil pentru utilizatori."
 
-#: models.py:20 models.py:72 views.py:46 views.py:166
+#: models.py:20 models.py:74 views.py:46 views.py:166
 msgid "Enabled"
 msgstr ""
 
 #: models.py:20
-msgid ""
-"Causes this index to be visible and updated when document data changes."
-msgstr "Cauză pentru acest index să fie vizibil și actualizat când documentul suferă schimbări."
+msgid "Causes this index to be visible and updated when document data changes."
+msgstr ""
+"Cauză pentru acest index să fie vizibil și actualizat când documentul suferă "
+"schimbări."
 
-#: models.py:63 models.py:69 views.py:103 views.py:133 views.py:159
+#: models.py:65 models.py:71 views.py:103 views.py:133 views.py:159
 #: views.py:195 views.py:222 views.py:251 views.py:290
 msgid "Index"
 msgstr ""
 
-#: models.py:70
+#: models.py:72
 msgid "Indexing expression"
 msgstr ""
 
-#: models.py:70
+#: models.py:72
 msgid "Enter a python string expression to be evaluated."
 msgstr "Introduceți o expresie șir python care urmează să fie evaluate."
 
-#: models.py:72
+#: models.py:74
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Cauză pentru ca acest nod să fie vizibil și actualizat atunci când datele documentului se modifică."
+msgstr ""
+"Cauză pentru ca acest nod să fie vizibil și actualizat atunci când datele "
+"documentului se modifică."
 
-#: models.py:73
+#: models.py:75
 msgid "Link documents"
 msgstr ""
 
-#: models.py:73
+#: models.py:75
 msgid ""
-"Check this option to have this node act as a container for documents and not"
-" as a parent for further nodes."
-msgstr "Bifați această opțiune pentru a avea acest nod ca un container pentru documente și nu ca un părinte pentru nodurile suplimentare."
+"Check this option to have this node act as a container for documents and not "
+"as a parent for further nodes."
+msgstr ""
+"Bifați această opțiune pentru a avea acest nod ca un container pentru "
+"documente și nu ca un părinte pentru nodurile suplimentare."
 
-#: models.py:83 models.py:89
+#: models.py:81
+msgid "Index node template"
+msgstr ""
+
+#: models.py:82
+msgid "Indexes node template"
+msgstr ""
+
+#: models.py:87
 msgid "Index template node"
 msgstr ""
 
-#: models.py:84
-msgid "Indexes template nodes"
-msgstr ""
-
-#: models.py:90
+#: models.py:88
 msgid "Value"
 msgstr ""
 
-#: models.py:91
+#: models.py:89
 msgid "Documents"
 msgstr ""
 
-#: models.py:101
-msgid "Index instance node"
-msgstr ""
-
 #: models.py:102
-msgid "Indexes instance nodes"
+msgid "Index node instance"
 msgstr ""
 
-#: models.py:106
-msgid "Index instance"
+#: models.py:103
+msgid "Indexes node instances"
 msgstr ""
 
 #: models.py:107
+msgid "Index instance"
+msgstr ""
+
+#: models.py:108
 msgid "Document"
 msgstr ""
 
-#: models.py:114
+#: models.py:115
 msgid "Document rename count"
 msgstr ""
 
-#: models.py:115
+#: models.py:116
 msgid "Documents rename count"
 msgstr ""
 
@@ -240,17 +259,11 @@ msgstr "Reconstruire index documente"
 
 #: settings.py:20
 msgid ""
-"A dictionary that maps the index name and where on the filesystem that index"
-" will be mirrored."
-msgstr "Un dicționar care mapează numele index și în cazul în care sistemul de fișiere pe care indicele va fi oglindit."
-
-#: utils.py:19
-msgid "document indexes"
-msgstr "indexuri documente"
-
-#: views.py:40
-msgid "indexes"
-msgstr "index"
+"A dictionary that maps the index name and where on the filesystem that index "
+"will be mirrored."
+msgstr ""
+"Un dicționar care mapează numele index și în cazul în care sistemul de "
+"fișiere pe care indicele va fi oglindit."
 
 #: views.py:71
 msgid "Index created successfully."
@@ -358,7 +371,8 @@ msgstr "Sunteți sigur că doriți să reconstruiți toate indexurile?"
 
 #: views.py:388
 msgid "On large databases this operation may take some time to execute."
-msgstr "Pe baze de date mari, această operație poate dura ceva timp pentru a executa."
+msgstr ""
+"Pe baze de date mari, această operație poate dura ceva timp pentru a executa."
 
 #: views.py:394
 msgid "Index rebuild completed successfully."
@@ -377,6 +391,12 @@ msgstr ""
 #: widgets.py:85
 msgid "Root"
 msgstr ""
+
+#~ msgid "document indexes"
+#~ msgstr "indexuri documente"
+
+#~ msgid "indexes"
+#~ msgstr "index"
 
 #~ msgid "edit"
 #~ msgstr "edit"

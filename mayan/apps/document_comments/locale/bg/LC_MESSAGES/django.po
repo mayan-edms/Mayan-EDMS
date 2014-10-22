@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:44-0400\n"
 "PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,31 +19,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:24
-msgid "date"
-msgstr "дата"
-
-#: __init__.py:28
-msgid "user"
-msgstr "потребител"
-
 #: __init__.py:32
-msgid "comment"
-msgstr "коментар"
+msgid "Date"
+msgstr ""
+
+#: __init__.py:36
+msgid "User"
+msgstr ""
+
+#: __init__.py:40
+#, fuzzy
+msgid "Comment"
+msgstr "Коментари"
 
 #: links.py:8 links.py:9
-msgid "delete"
+#, fuzzy
+msgid "Delete"
 msgstr "изтриване"
 
 #: links.py:10
-msgid "add comment"
+#, fuzzy
+msgid "Add comment"
 msgstr "добави коментар"
 
-#: links.py:11
-msgid "comments"
-msgstr "коментари"
-
-#: permissions.py:7
+#: links.py:11 permissions.py:7
 msgid "Comments"
 msgstr "Коментари"
 
@@ -59,40 +58,55 @@ msgstr "Изтриване на коментари"
 msgid "View comments"
 msgstr "Преглед на коментари"
 
-#: views.py:36
+#: views.py:37
 msgid "Must provide at least one comment."
 msgstr "Трябва да направите поне един коментар."
 
-#: views.py:46
+#: views.py:47
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
 msgstr "Коментарът \"%s\" е изтрит успешно."
 
-#: views.py:48
+#: views.py:49
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "Грешка при изтриване на коментар \"%(comment)s\": %(error)s"
 
-#: views.py:62
+#: views.py:63
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете коментара: %s?"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете коментарите: %s?"
 
-#: views.py:98
+#: views.py:99
 msgid "Comment added successfully."
 msgstr "Коментарът е добавен узпешно."
 
-#: views.py:105
+#: views.py:106
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Добавяне на коментар към документ:  %s"
 
-#: views.py:125
-#, python-format
-msgid "comments: %s"
-msgstr "коментари: %s"
+#: views.py:126
+#, fuzzy, python-format
+msgid "Comments for document: %s"
+msgstr "Добавяне на коментар към документ:  %s"
+
+#~ msgid "date"
+#~ msgstr "дата"
+
+#~ msgid "user"
+#~ msgstr "потребител"
+
+#~ msgid "comment"
+#~ msgstr "коментар"
+
+#~ msgid "comments"
+#~ msgstr "коментари"
+
+#~ msgid "comments: %s"
+#~ msgstr "коментари: %s"

@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:09-0400\n"
+"POT-Creation-Date: 2014-10-22 15:44-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Croatian (Croatia) (http://www.transifex.com/projects/p/mayan-edms/language/hr_HR/)\n"
+"Language-Team: Croatian (Croatia) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/hr_HR/)\n"
+"Language: hr_HR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hr_HR\n"
-"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
 #: api.py:92
 msgid "Unknown"
@@ -30,11 +32,11 @@ msgstr ""
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
 
-#: links.py:6
+#: links.py:6 views.py:67
 msgid "Private keys"
 msgstr ""
 
-#: links.py:7
+#: links.py:7 views.py:70
 msgid "Public keys"
 msgstr ""
 
@@ -118,51 +120,43 @@ msgstr ""
 msgid "Home directory used to store keys as well as configuration files."
 msgstr ""
 
-#: views.py:37
+#: views.py:38
 #, python-format
 msgid "Key: %s, imported successfully."
 msgstr ""
 
-#: views.py:42
+#: views.py:43
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgstr ""
 
-#: views.py:51
+#: views.py:52
 msgid "Import key"
 msgstr ""
 
-#: views.py:52
+#: views.py:53
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr ""
 
-#: views.py:66
-msgid "private keys"
-msgstr ""
-
-#: views.py:69
-msgid "public keys"
-msgstr ""
-
-#: views.py:77
+#: views.py:78
 msgid "Key ID"
 msgstr ""
 
-#: views.py:81
+#: views.py:82
 msgid "Owner"
 msgstr ""
 
-#: views.py:101
+#: views.py:102
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr ""
 
-#: views.py:108
+#: views.py:109
 msgid "Delete key"
 msgstr ""
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -170,47 +164,47 @@ msgid ""
 "well."
 msgstr ""
 
-#: views.py:128
+#: views.py:129
 msgid "Query key server"
 msgstr ""
 
-#: views.py:141
+#: views.py:142
 msgid "results"
 msgstr ""
 
-#: views.py:146
+#: views.py:147
 msgid "ID"
 msgstr ""
 
-#: views.py:150
-msgid "type"
+#: views.py:151
+msgid "Type"
 msgstr ""
 
-#: views.py:154
-msgid "creation date"
+#: views.py:155
+msgid "Creation date"
 msgstr ""
 
-#: views.py:158
-msgid "disabled"
+#: views.py:159
+msgid "Disabled"
 msgstr ""
 
-#: views.py:162
-msgid "expiration date"
+#: views.py:163
+msgid "Expiration date"
 msgstr ""
 
-#: views.py:166
-msgid "expired"
+#: views.py:167
+msgid "Expired"
 msgstr ""
 
-#: views.py:170
-msgid "length"
+#: views.py:171
+msgid "Length"
 msgstr ""
 
-#: views.py:174
-msgid "revoked"
+#: views.py:175
+msgid "Revoked"
 msgstr ""
 
-#: views.py:179
+#: views.py:180
 msgid "Identifies"
 msgstr ""
 

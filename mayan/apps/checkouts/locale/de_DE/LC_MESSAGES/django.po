@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -13,14 +13,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"POT-Creation-Date: 2014-10-22 15:43-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: events.py:5
@@ -75,48 +76,49 @@ msgstr ""
 msgid "Check in/out"
 msgstr ""
 
-#: literals.py:14
-msgid "checked out"
+#: literals.py:9
+#, fuzzy
+msgid "Checked out"
 msgstr "Ausgebucht"
 
-#: literals.py:15
-msgid "checked in/available"
+#: literals.py:10
+#, fuzzy
+msgid "Checked in/available"
 msgstr "Eingebucht/Verfügbar"
 
-#: models.py:24
-msgid "document"
-msgstr "Dokument"
+#: models.py:23 views.py:132
+msgid "Document"
+msgstr ""
 
-#: models.py:25
-msgid "check out date and time"
+#: models.py:24
+#, fuzzy
+msgid "Check out date and time"
 msgstr "Datum und Uhrzeit Ausbuchung"
 
-#: models.py:26
-msgid "check out expiration date and time"
-msgstr "Ablauf-Datum und Zeit Ausbuchung"
+#: models.py:25 widgets.py:79
+msgid "Check out expiration date and time"
+msgstr "Ablauf-Datum und -Zeit Ausbuchung"
 
-#: models.py:26
+#: models.py:25
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Zeitraum für die Ausbuchung des Dokuments (in Minuten)."
 
-#: models.py:31
-msgid "block new version upload"
+#: models.py:30
+#, fuzzy
+msgid "Block new version upload"
 msgstr "Hochladen neuer Versionen blockieren"
 
-#: models.py:31
+#: models.py:30
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Hochladen einer neuen Version dieses Dokuments verweigern."
 
-#: models.py:54
-msgid "document checkout"
+#: models.py:53 permissions.py:7
+msgid "Document checkout"
 msgstr "Dokumentausbuchung"
 
-#: models.py:55
-msgid "document checkouts"
-msgstr "Dokumentausbuchungen"
-
-#: permissions.py:7
-msgid "Document checkout"
+#: models.py:54
+#, fuzzy
+msgid "Document checkouts"
 msgstr "Dokumentausbuchung"
 
 #: permissions.py:9
@@ -136,8 +138,9 @@ msgid "Allow overriding check out restrictions"
 msgstr "Außerkraftsetzung von Ausbuchungsbeschränkungen erlauben"
 
 #: views.py:32
-msgid "checked out documents"
-msgstr "Ausgebuchte Dokumente"
+#, fuzzy
+msgid "Documents checked out"
+msgstr "Dokument ausgebucht"
 
 #: views.py:35
 msgid "Checkout user"
@@ -150,6 +153,11 @@ msgstr ""
 #: views.py:37
 msgid "Checkout expiration"
 msgstr ""
+
+#: views.py:50
+#, fuzzy, python-format
+msgid "Document status: %s"
+msgstr "Dokumentenstatus: %(widget)s %(text)s"
 
 #: views.py:54
 #, python-format
@@ -172,12 +180,13 @@ msgid "New versions allowed: %s"
 msgstr "Neue Versionen erlaubt: %s"
 
 #: views.py:57
-msgid "yes"
+#, fuzzy
+msgid "Yes"
 msgstr "Ja"
 
 #: views.py:57
-msgid "no"
-msgstr "Nein"
+msgid "No"
+msgstr ""
 
 #: views.py:62
 #, python-format
@@ -217,64 +226,72 @@ msgstr "Fehler beim Versuch das Dokument %s auszubuchen."
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokument \"%s\" erfolgreich eingebucht."
 
-#: views.py:132
-msgid "Document"
-msgstr ""
-
 #: views.py:141
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr "Sie haben dieses Dokument ursprünglich nicht ausgebucht. Sind Sie sicher, dass Sie die Einbuchung von Dokument %s erzwingen wollen?"
+msgstr ""
+"Sie haben dieses Dokument ursprünglich nicht ausgebucht. Sind Sie sicher, "
+"dass Sie die Einbuchung von Dokument %s erzwingen wollen?"
 
 #: views.py:143
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "Sind sie sicher, dass Sie Dokument %s einbuchen wollen?"
 
-#: widgets.py:19
-#, python-format
-msgid "Document status: %(widget)s %(text)s"
-msgstr "Dokumentenstatus: %(widget)s %(text)s"
-
-#: widgets.py:31
+#: widgets.py:17
 msgid "Days"
 msgstr "Tage"
 
-#: widgets.py:32
+#: widgets.py:18
 msgid "Hours"
 msgstr "Stunden"
 
-#: widgets.py:33
+#: widgets.py:19
 msgid "Minutes"
 msgstr "Minuten"
 
-#: widgets.py:63
+#: widgets.py:49
 msgid "Enter a valid number of days."
 msgstr "Eine gültige Anzahl an Tagen ist erforderlich."
 
-#: widgets.py:64
+#: widgets.py:50
 msgid "Enter a valid number of hours."
 msgstr "Eine gültige Anzahl an Stunden ist erforderlich."
 
-#: widgets.py:65
+#: widgets.py:51
 msgid "Enter a valid number of minutes."
 msgstr "Eine gültige Anzahl an Minuten ist erforderlich."
 
-#: widgets.py:66
+#: widgets.py:52
 msgid "Enter a valid time difference."
 msgstr "Eine gültige Zeitdifferenz ist erforderlich."
 
-#: widgets.py:92
+#: widgets.py:78
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr "Zeitdauer der Ausbuchung des Dokuments (in Tagen, Stunden und/oder Minuten)."
+msgstr ""
+"Zeitdauer der Ausbuchung des Dokuments (in Tagen, Stunden und/oder Minuten)."
 
-#: widgets.py:93
-msgid "Check out expiration date and time"
-msgstr "Ablauf-Datum und -Zeit Ausbuchung"
+#~ msgid "document"
+#~ msgstr "Dokument"
+
+#~ msgid "check out expiration date and time"
+#~ msgstr "Ablauf-Datum und Zeit Ausbuchung"
+
+#~ msgid "document checkout"
+#~ msgstr "Dokumentausbuchung"
+
+#~ msgid "document checkouts"
+#~ msgstr "Dokumentausbuchungen"
+
+#~ msgid "checked out documents"
+#~ msgstr "Ausgebuchte Dokumente"
+
+#~ msgid "no"
+#~ msgstr "Nein"
 
 #~ msgid "Check expired check out documents and checks them in."
 #~ msgstr "Check expired check out documents and checks them in."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"POT-Creation-Date: 2014-10-22 15:47-0400\n"
 "PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -27,15 +27,14 @@ msgstr "settings"
 msgid "Name"
 msgstr ""
 
-#: views.py:34
-#, fuzzy
-msgid "Default"
-msgstr "default"
-
-#: views.py:36
+#: views.py:35
 #, fuzzy
 msgid "Value"
 msgstr "value"
+
+#, fuzzy
+#~ msgid "Default"
+#~ msgstr "default"
 
 #~ msgid "name"
 #~ msgstr "name"

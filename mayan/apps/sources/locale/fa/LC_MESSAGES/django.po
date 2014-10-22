@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -10,89 +10,94 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:12-0400\n"
+"POT-Creation-Date: 2014-10-22 15:47-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:52
+#: __init__.py:40
 msgid "Thumbnail"
 msgstr ""
 
-#: __init__.py:64
+#: __init__.py:52
 msgid "Returns a list of all the staging folders and the files they contain."
 msgstr "بازگرداندن لیستی از پرونده های مرحله ای و پرونده های درون آن."
 
-#: forms.py:38 forms.py:63
+#: forms.py:37 forms.py:62
 msgid "Expand compressed files"
 msgstr "بازگشایی فایلهای فشرده"
 
-#: forms.py:39 forms.py:64
+#: forms.py:38 forms.py:63
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "آپلود فایل فشرده شامل فایل اصلی سند."
 
-#: forms.py:47
+#: forms.py:46
 msgid "Staging file"
 msgstr "پرونده مرحله ای"
 
-#: forms.py:54
+#: forms.py:53
 msgid "File"
 msgstr "پرونده"
 
-#: links.py:14
+#: links.py:16
 msgid "Upload new documents"
 msgstr ""
 
-#: links.py:15
-msgid "Clone metadata"
+#: links.py:17
+msgid "Clone"
 msgstr ""
 
-#: links.py:17 links.py:25 links.py:31
+#: links.py:19 links.py:27 links.py:33
 msgid "Delete"
 msgstr ""
 
-#: links.py:19 models.py:145
+#: links.py:21 models.py:136 views.py:375
 msgid "Sources"
 msgstr ""
 
-#: links.py:20 literals.py:29 models.py:196
-msgid "Web forms"
+#: links.py:22
+msgid "Add new webform source"
 msgstr ""
 
-#: links.py:21 models.py:184
-msgid "Staging folders"
+#: links.py:23
+msgid "Add new staging folders"
 msgstr ""
 
-#: links.py:22 models.py:225
-msgid "Watch folders"
+#: links.py:24
+msgid "Add new watch folders"
 msgstr ""
 
-#: links.py:24 links.py:30
-msgid "Edit"
+#: links.py:25
+msgid "Add new POP3 emails"
 msgstr ""
 
 #: links.py:26
-msgid "Add new source"
+msgid "Add new IMAP emails"
 msgstr ""
 
-#: links.py:28
+#: links.py:28 links.py:32
+msgid "Edit"
+msgstr ""
+
+#: links.py:30
 msgid "Transformations"
 msgstr ""
 
-#: links.py:29
+#: links.py:31
 msgid "Add transformation"
 msgstr ""
 
-#: links.py:33
+#: links.py:35
 msgid "Document sources"
 msgstr "سورسهای سند"
 
-#: links.py:35
+#: links.py:37
 msgid "Upload new version"
 msgstr ""
 
@@ -108,148 +113,235 @@ msgstr "هرگز"
 msgid "Ask user"
 msgstr "پرسیدن از کاربر"
 
-#: literals.py:23 models.py:195
+#: literals.py:25 models.py:186
 msgid "Web form"
 msgstr ""
 
-#: literals.py:24
+#: literals.py:26
 msgid "Server staging folder"
 msgstr ""
 
-#: literals.py:25
+#: literals.py:27
 msgid "Server watch folder"
 msgstr ""
 
-#: literals.py:30
-msgid "Server staging folders"
+#: literals.py:28
+msgid "POP3 email"
 msgstr ""
 
-#: literals.py:31
-msgid "Server watch folders"
+#: literals.py:29 models.py:365 models.py:366
+msgid "IMAP email"
 msgstr ""
 
-#: models.py:37
+#: models.py:41
 msgid "Title"
 msgstr ""
 
-#: models.py:38
+#: models.py:42
 msgid "Enabled"
 msgstr ""
 
-#: models.py:39
-msgid "Whitelist"
-msgstr ""
-
-#: models.py:40
-msgid "Blacklist"
-msgstr ""
-
-#: models.py:144 views.py:419 views.py:456 views.py:511 views.py:552
-#: views.py:582 views.py:618
+#: models.py:135 views.py:416 views.py:441 views.py:487 views.py:528
+#: views.py:557 views.py:592
 msgid "Source"
 msgstr ""
 
-#: models.py:150
+#: models.py:141
 msgid "Interactive source"
 msgstr ""
 
-#: models.py:151
+#: models.py:142
 msgid "Interactive sources"
 msgstr ""
 
-#: models.py:158 models.py:211
+#: models.py:149 models.py:372
 msgid "Folder path"
 msgstr ""
 
-#: models.py:158 models.py:211
+#: models.py:149 models.py:372
 msgid "Server side filesystem path."
 msgstr "محل قرارگیری برروی سیستم فایل سمت سرور"
 
-#: models.py:159
+#: models.py:150
 msgid "Preview width"
 msgstr ""
 
-#: models.py:159
+#: models.py:150
 msgid "Width value to be passed to the converter backend."
 msgstr "مقداری که به مبدل جهت عرض ارسال خواهد شد."
 
-#: models.py:160
+#: models.py:151
 msgid "Preview height"
 msgstr ""
 
-#: models.py:160
+#: models.py:151
 msgid "Height value to be passed to the converter backend."
 msgstr "مقداری که به مبدل جهت ارتفاع ارسال خواهد شد."
 
-#: models.py:161 models.py:191 models.py:212
+#: models.py:152 models.py:182 models.py:201 models.py:373
 msgid "Uncompress"
 msgstr ""
 
-#: models.py:161 models.py:191 models.py:212
+#: models.py:152 models.py:182 models.py:373
 msgid "Whether to expand or not compressed archives."
 msgstr "گسترش و یا آرشیوهای غیر فشرده"
 
-#: models.py:162 models.py:213
+#: models.py:153 models.py:374
 msgid "Delete after upload"
 msgstr ""
 
-#: models.py:162 models.py:213
+#: models.py:153 models.py:374
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "حدف فایل پس از آپلود موفق آن."
 
-#: models.py:180
+#: models.py:171
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr "قادر به گرفتن لیست فایلهای مرحله ای نیست. %s"
 
-#: models.py:183
+#: models.py:174
 msgid "Staging folder"
 msgstr ""
 
-#: models.py:203 models.py:204
+#: models.py:175
+msgid "Staging folders"
+msgstr ""
+
+#: models.py:187
+msgid "Web forms"
+msgstr ""
+
+#: models.py:194 models.py:195
 msgid "Out of process"
 msgstr ""
 
-#: models.py:214
+#: models.py:199 models.py:375
 msgid "Interval"
 msgstr ""
 
-#: models.py:214
+#: models.py:199
+msgid "Interval in seconds between document downloads from this source."
+msgstr ""
+
+#: models.py:200
+#, fuzzy
+msgid "Document type"
+msgstr "نوع سند فعلی"
+
+#: models.py:200
+msgid "Assign a document type to documents uploaded from this source."
+msgstr ""
+
+#: models.py:201
+#, fuzzy
+msgid "Whether to expand or not, compressed archives."
+msgstr "گسترش و یا آرشیوهای غیر فشرده"
+
+#: models.py:240
+msgid "Interval source"
+msgstr ""
+
+#: models.py:241
+#, fuzzy
+msgid "Interval sources"
+msgstr "سورسهای سند"
+
+#: models.py:245
+msgid "Host"
+msgstr ""
+
+#: models.py:246
+msgid "SSL"
+msgstr ""
+
+#: models.py:247
+msgid "Port"
+msgstr ""
+
+#: models.py:247
 msgid ""
-"Inverval in seconds where the watch folder path is checked for new "
-"documents."
+"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
+"for IMAP over SSL."
+msgstr ""
+
+#: models.py:248
+msgid "Username"
+msgstr ""
+
+#: models.py:249
+msgid "Password"
+msgstr ""
+
+#: models.py:268
+#, python-format
+msgid "attachment-%i"
+msgstr ""
+
+#: models.py:277
+#, fuzzy
+msgid "Email source"
+msgstr "آپلود سورس"
+
+#: models.py:278
+#, fuzzy
+msgid "Email sources"
+msgstr "آپلود سورس"
+
+#: models.py:284
+msgid "Timeout"
+msgstr ""
+
+#: models.py:322 models.py:323
+msgid "POP email"
+msgstr ""
+
+#: models.py:329
+msgid "Mailbox"
+msgstr ""
+
+#: models.py:329
+msgid "Mail from which to check for messages with attached documents."
+msgstr ""
+
+#: models.py:375
+msgid ""
+"Inverval in seconds where the watch folder path is checked for new documents."
 msgstr "فاصله زمانی به ثانیه جهت برسی پرونده برای دریافت سند جدید"
 
-#: models.py:224
+#: models.py:378
 msgid "Watch folder"
 msgstr ""
 
-#: models.py:229
+#: models.py:379
+msgid "Watch folders"
+msgstr ""
+
+#: models.py:383
 msgid "Enter a valid value."
 msgstr "یک مقدار معتبر وارد کنید."
 
-#: models.py:257 views.py:515
+#: models.py:411 views.py:491
 msgid "Order"
 msgstr ""
 
-#: models.py:258 views.py:516 views.py:553 views.py:583
+#: models.py:412 views.py:492 views.py:529 views.py:558
 msgid "Transformation"
 msgstr ""
 
-#: models.py:259 views.py:517
+#: models.py:413 views.py:493
 msgid "Arguments"
 msgstr ""
 
-#: models.py:259
+#: models.py:413
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr "استفاده از لغت نامه جهت تشخیص، بعنوان مثال : %s"
 
-#: models.py:269
+#: models.py:423
 msgid "Document source transformation"
 msgstr ""
 
-#: models.py:270
+#: models.py:424
 msgid "Document source transformations"
 msgstr ""
 
@@ -273,10 +365,6 @@ msgstr "ویرایش سورس سند"
 msgid "View existing document sources"
 msgstr "دیدن سورس اسناد موجود"
 
-#: utils.py:35
-msgid "Whitelist Blacklist validation error."
-msgstr "خطای اعتبار سنجی لیست سیاه و سفید"
-
 #: views.py:115
 msgid "Here"
 msgstr ""
@@ -295,142 +383,145 @@ msgstr "هیج سندی با سورس محاوره ای تعریف ویا فعا
 msgid "Click %(setup_link)s to add or enable some document sources."
 msgstr "جهت اضافه و یا فعال کردن سورس سند برروی  %(setup_link)s  کلیک کنید."
 
-#: views.py:221
+#: views.py:225
 msgid "New document queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:224
-msgid ""
-"New document version queued for uploaded and will be available shortly."
+#: views.py:228
+msgid "New document version queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:230
+#: views.py:234
 #, python-format
 msgid "Unhandled exception: %s"
 msgstr "خطای گرفته نشده: %s"
 
-#: views.py:240
+#: views.py:244
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr ""
 
-#: views.py:242
+#: views.py:246
 #, python-format
 msgid "Upload a local document from source: %s"
 msgstr ""
 
-#: views.py:270
+#: views.py:274
 msgid "Files in staging path"
 msgstr ""
 
-#: views.py:302
+#: views.py:306
 msgid "Current document type"
 msgstr "نوع سند فعلی"
 
-#: views.py:303
+#: views.py:307
 msgid "None"
 msgstr "هیچ"
 
-#: views.py:310
+#: views.py:314
 msgid "Current metadata"
 msgstr "متادیتا فعلی"
 
-#: views.py:347
+#: views.py:351
 msgid "Staging file delete successfully."
 msgstr "حذف موفق فایل مرحله ای."
 
-#: views.py:349
+#: views.py:353
 #, python-format
 msgid "Staging file delete error; %s."
 msgstr "خطای %s در حذف فایل مرحله ای."
 
-#: views.py:406
+#: views.py:380
+msgid "Type"
+msgstr ""
+
+#: views.py:403
 msgid "Source edited successfully"
 msgstr "ویرایش موفق سورس"
 
-#: views.py:409
+#: views.py:406
 #, python-format
 msgid "Error editing source; %s"
 msgstr "خطا %s در ویرایش سورس."
 
-#: views.py:414
+#: views.py:411
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:445
+#: views.py:431
 #, python-format
 msgid "Source \"%s\" deleted successfully."
 msgstr "حذف موفق سورس: %s"
 
-#: views.py:447
+#: views.py:433
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
 msgstr "خطای حذف سورس  \"%(source)s\": %(error)s"
 
-#: views.py:454
+#: views.py:439
 #, python-format
 msgid "Are you sure you wish to delete the source: %s?"
 msgstr "آیا از حذف سورس %s مطمئن هستید؟"
 
-#: views.py:486
+#: views.py:463
 msgid "Source created successfully"
 msgstr "سورس با موفقیت ایجاد شد."
 
-#: views.py:489
+#: views.py:466
 #, python-format
 msgid "Error creating source; %s"
 msgstr "خطای ایجاد سورس: %s"
 
-#: views.py:494
+#: views.py:471
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "ایجاد سورس جدید از نوع %s."
 
-#: views.py:509
+#: views.py:485
 #, python-format
 msgid "Transformations for: %s"
 msgstr ""
 
-#: views.py:539
+#: views.py:515
 msgid "Source transformation edited successfully"
 msgstr "تبدیلات سورس با موفقیت اجام شد."
 
-#: views.py:542
+#: views.py:518
 #, python-format
 msgid "Error editing source transformation; %s"
 msgstr "خطا در ویرایش تبدیلات سورس: %s"
 
-#: views.py:547
+#: views.py:523
 #, python-format
 msgid "Edit transformation: %s"
 msgstr "ویرایش تبدیلات: %s"
 
-#: views.py:570
+#: views.py:545
 msgid "Source transformation deleted successfully."
 msgstr "تبدیلات سورس با موفقیت حذف شد."
 
-#: views.py:572
+#: views.py:547
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
 msgstr "خطا در حذف تبدیلات سورس:  %(error)s"
 
-#: views.py:585
+#: views.py:560
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
 msgstr "آیا از حذف تبدیلات  \"%(transformation)s\" مطمئن هستید؟"
 
-#: views.py:608
+#: views.py:582
 msgid "Source transformation created successfully"
 msgstr "سورس تبدیلات با موفقیت انجام شد."
 
-#: views.py:611
+#: views.py:585
 #, python-format
 msgid "Error creating source transformation; %s"
 msgstr "خطای ایجاد تبدیلات سورس. %s"
 
-#: views.py:620
+#: views.py:594
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr "ایجاد تبدیلات جدیدبرای سورس: %s"
@@ -439,21 +530,20 @@ msgstr "ایجاد تبدیلات جدیدبرای سورس: %s"
 msgid "Staging file page image"
 msgstr ""
 
-#: wizards.py:53
-msgid "Step 1 of 3: Document type"
+#: wizards.py:35
+msgid "Step 1 of 2: Select document type"
 msgstr ""
 
-#: wizards.py:54
-msgid "Step 2 of 3: Metadata selection"
+#: wizards.py:36
+msgid "Step 2 of 2: Enter document metadata"
 msgstr ""
 
 #: wizards.py:55
-msgid "Step 3 of 3: Document metadata"
-msgstr ""
-
-#: wizards.py:73
 msgid "Next step"
 msgstr "مرحله بعدی"
+
+#~ msgid "Whitelist Blacklist validation error."
+#~ msgstr "خطای اعتبار سنجی لیست سیاه و سفید"
 
 #~ msgid "edit"
 #~ msgstr "edit"

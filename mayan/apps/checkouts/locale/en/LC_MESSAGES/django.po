@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-08 17:08-0400\n"
+"POT-Creation-Date: 2014-10-22 15:43-0400\n"
 "PO-Revision-Date: 2012-07-10 15:47+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -74,48 +74,50 @@ msgstr "Check in documents"
 msgid "Check in/out"
 msgstr "check in/out"
 
-#: literals.py:14
-msgid "checked out"
+#: literals.py:9
+#, fuzzy
+msgid "Checked out"
 msgstr "checked out"
 
-#: literals.py:15
-msgid "checked in/available"
+#: literals.py:10
+#, fuzzy
+msgid "Checked in/available"
 msgstr "checked in/available"
 
-#: models.py:24
-msgid "document"
+#: models.py:23 views.py:132
+#, fuzzy
+msgid "Document"
 msgstr "document"
 
-#: models.py:25
-msgid "check out date and time"
+#: models.py:24
+#, fuzzy
+msgid "Check out date and time"
 msgstr "check out date and time"
 
-#: models.py:26
-msgid "check out expiration date and time"
-msgstr "check out expiration date and time"
+#: models.py:25 widgets.py:79
+msgid "Check out expiration date and time"
+msgstr "Check out expiration date and time"
 
-#: models.py:26
+#: models.py:25
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Amount of time to hold the document checked out in minutes."
 
-#: models.py:31
-msgid "block new version upload"
+#: models.py:30
+#, fuzzy
+msgid "Block new version upload"
 msgstr "block new version upload"
 
-#: models.py:31
+#: models.py:30
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Do not allow new version of this document to be uploaded."
 
-#: models.py:54
-msgid "document checkout"
-msgstr "document checkout"
-
-#: models.py:55
-msgid "document checkouts"
-msgstr "document checkouts"
-
-#: permissions.py:7
+#: models.py:53 permissions.py:7
 msgid "Document checkout"
+msgstr "Document checkout"
+
+#: models.py:54
+#, fuzzy
+msgid "Document checkouts"
 msgstr "Document checkout"
 
 #: permissions.py:9
@@ -135,8 +137,9 @@ msgid "Allow overriding check out restrictions"
 msgstr "Allow overriding check out restrictions"
 
 #: views.py:32
-msgid "checked out documents"
-msgstr "checked out documents"
+#, fuzzy
+msgid "Documents checked out"
+msgstr "Document checked out"
 
 #: views.py:35
 #, fuzzy
@@ -152,6 +155,11 @@ msgstr "checkout time and date"
 #, fuzzy
 msgid "Checkout expiration"
 msgstr "checkout expiration"
+
+#: views.py:50
+#, fuzzy, python-format
+msgid "Document status: %s"
+msgstr "Document status: %(widget)s %(text)s"
 
 #: views.py:54
 #, python-format
@@ -174,12 +182,13 @@ msgid "New versions allowed: %s"
 msgstr "New versions allowed: %s"
 
 #: views.py:57
-msgid "yes"
+#, fuzzy
+msgid "Yes"
 msgstr "yes"
 
 #: views.py:57
-msgid "no"
-msgstr "no"
+msgid "No"
+msgstr ""
 
 #: views.py:62
 #, python-format
@@ -219,11 +228,6 @@ msgstr "Error trying to check in document; %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Document \"%s\" checked in successfully."
 
-#: views.py:132
-#, fuzzy
-msgid "Document"
-msgstr "document"
-
 #: views.py:141
 #, python-format
 msgid ""
@@ -238,40 +242,35 @@ msgstr ""
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "Are you sure you wish to check in document: %s?"
 
-#: widgets.py:19
-#, python-format
-msgid "Document status: %(widget)s %(text)s"
-msgstr "Document status: %(widget)s %(text)s"
-
-#: widgets.py:31
+#: widgets.py:17
 msgid "Days"
 msgstr "Days"
 
-#: widgets.py:32
+#: widgets.py:18
 msgid "Hours"
 msgstr "Hours"
 
-#: widgets.py:33
+#: widgets.py:19
 msgid "Minutes"
 msgstr "Minutes"
 
-#: widgets.py:63
+#: widgets.py:49
 msgid "Enter a valid number of days."
 msgstr "Enter a valid number of days."
 
-#: widgets.py:64
+#: widgets.py:50
 msgid "Enter a valid number of hours."
 msgstr "Enter a valid number of hours."
 
-#: widgets.py:65
+#: widgets.py:51
 msgid "Enter a valid number of minutes."
 msgstr "Enter a valid number of minutes."
 
-#: widgets.py:66
+#: widgets.py:52
 msgid "Enter a valid time difference."
 msgstr "Enter a valid time difference."
 
-#: widgets.py:92
+#: widgets.py:78
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
@@ -279,9 +278,23 @@ msgstr ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
 
-#: widgets.py:93
-msgid "Check out expiration date and time"
-msgstr "Check out expiration date and time"
+#~ msgid "document"
+#~ msgstr "document"
+
+#~ msgid "check out expiration date and time"
+#~ msgstr "check out expiration date and time"
+
+#~ msgid "document checkout"
+#~ msgstr "document checkout"
+
+#~ msgid "document checkouts"
+#~ msgstr "document checkouts"
+
+#~ msgid "checked out documents"
+#~ msgstr "checked out documents"
+
+#~ msgid "no"
+#~ msgstr "no"
 
 #~ msgid "Check expired check out documents and checks them in."
 #~ msgstr "Check expired check out documents and checks them in."
