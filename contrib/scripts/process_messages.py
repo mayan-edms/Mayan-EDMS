@@ -5,7 +5,7 @@ import optparse
 
 import sh
 
-APP_LIST = ('acls', 'bootstrap', 'checkouts', 'common', 'converter', 'django_gpg', 'documents',
+APP_LIST = ('acls', 'checkouts', 'common', 'converter', 'django_gpg', 'documents',
     'document_comments', 'document_indexing', 'document_signatures', 'dynamic_search',
     'folders', 'history', 'installation', 'linking', 'mailer', 'main', 'metadata', 'navigation',
     'ocr', 'permissions', 'project_setup', 'project_tools', 'smart_settings',
