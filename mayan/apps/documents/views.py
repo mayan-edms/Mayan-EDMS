@@ -50,7 +50,7 @@ from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
 from .runtime import storage_backend
 from .settings import (PREVIEW_SIZE, RECENT_COUNT, ROTATION_STEP,
                        ZOOM_PERCENT_STEP, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
-from .tasks import task_get_document_image
+from .tasks import task_clear_image_cache, task_get_document_image
 
 logger = logging.getLogger(__name__)
 
@@ -1041,11 +1041,8 @@ def document_clear_image_cache(request):
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
-        try:
-            Document.clear_image_cache()
-            messages.success(request, _(u'Document image cache cleared successfully'))
-        except Exception as exception:
-            messages.error(request, _(u'Error clearing document image cache; %s') % exception)
+        task_clear_image_cache.apply_async(queue='tools')
+        messages.success(request, _(u'Document image cache clearing queued successfully.'))
 
         return HttpResponseRedirect(previous)
 
