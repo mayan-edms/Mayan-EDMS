@@ -26,7 +26,8 @@ from .links import (document_clear_image_cache,
                     document_list_recent, document_missing_list,
                     document_multiple_delete,
                     document_multiple_clear_transformations,
-                    document_multiple_download, document_page_edit,
+                    document_multiple_download,
+                    document_multiple_update_page_count, document_page_edit,
                     document_page_navigation_first,
                     document_page_navigation_last,
                     document_page_navigation_next,
@@ -74,8 +75,8 @@ register_links(['documents:setup_document_type_metadata', 'documents:document_ty
 register_links([DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
-register_links(Document, [document_view_simple, document_edit, document_print, document_delete, document_download, document_clear_transformations])
-register_multi_item_links(['folders:folder_view', 'index_instance_node_view', 'search', 'results', 'document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download])
+register_links(Document, [document_view_simple, document_edit, document_print, document_delete, document_download, document_clear_transformations, document_update_page_count])
+register_multi_item_links(['folders:folder_view', 'index_instance_node_view', 'search', 'results', 'document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count])
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])
@@ -102,7 +103,7 @@ register_links('documents:document_page_transformation_create', [document_page_t
 register_links(['documents:document_page_transformation_edit', 'documents:document_page_transformation_delete'], [document_page_transformation_create], menu_name='sidebar')
 
 register_diagnostic('documents', _(u'Documents'), document_missing_list)
-register_maintenance_links([document_update_page_count, document_clear_image_cache], namespace='documents', title=_(u'Documents'))
+register_maintenance_links([document_clear_image_cache], namespace='documents', title=_(u'Documents'))
 register_model_list_columns(Document, [
     {
         'name': _(u'Thumbnail'), 'attribute':

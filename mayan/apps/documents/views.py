@@ -12,7 +12,7 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.http import urlencode
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 
 import sendfile
 
@@ -50,7 +50,8 @@ from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
 from .runtime import storage_backend
 from .settings import (PREVIEW_SIZE, RECENT_COUNT, ROTATION_STEP,
                        ZOOM_PERCENT_STEP, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
-from .tasks import task_clear_image_cache, task_get_document_image
+from .tasks import (task_clear_image_cache, task_get_document_image,
+                    task_update_page_count)
 
 logger = logging.getLogger(__name__)
 
@@ -398,35 +399,58 @@ def document_multiple_download(request):
     )
 
 
-def document_update_page_count(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TOOLS])
+def document_update_page_count(request, document_id=None, document_id_list=None):
+    if document_id:
+        documents = [get_object_or_404(Document.objects, pk=document_id)]
+        post_redirect = reverse('documents:document_view_simple', args=[documents[0].pk])
+    elif document_id_list:
+        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        post_redirect = None
+    else:
+        messages.error(request, _(u'Must provide at least one document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
-    office_converter = OfficeConverter()
-    qs = DocumentVersion.objects.exclude(filename__iendswith='dxf').filter(mimetype__in=office_converter.mimetypes())
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TOOLS])
+    except PermissionDenied:
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_TOOLS, request.user, documents, exception_on_empty=True)
+
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
-        updated = 0
-        processed = 0
-        for document_version in qs:
-            old_page_count = document_version.pages.count()
-            document_version.update_page_count()
-            processed += 1
-            if old_page_count != document_version.pages.count():
-                updated += 1
+        for document in documents:
+            task_update_page_count.apply_async(kwargs={'version_id': document.latest_version.pk}, queue='tools')
 
-        messages.success(request, _(u'Page count update complete.  Documents processed: %(total)d, documents with changed page count: %(change)d') % {
-            'total': processed,
-            'change': updated
-        })
+        messages.success(request,
+            ungettext(
+                _(u'Document queued for page count reset.'),
+                _(u'Documents queued for page count reset.'),
+                len(documents)
+            )
+        )
         return HttpResponseRedirect(previous)
 
-    return render_to_response('main/generic_confirm.html', {
+    title = ungettext(
+        _(u'Are you sure you wish to reset the page count of this document?'),
+        _(u'Are you sure you wish to reset the page count of these documents?'),
+        len(documents)
+    )
+
+    context = {
         'previous': previous,
-        'title': _(u'Are you sure you wish to update the page count for the office documents (%d)?') % qs.count(),
-        'message': _(u'On large databases this operation may take some time to execute.'),
+        'title': title,
         'form_icon': u'page_white_csharp.png',
-    }, context_instance=RequestContext(request))
+    }
+
+    if len(documents) == 1:
+        context['object'] = documents[0]
+
+    return render_to_response('main/generic_confirm.html', context,
+                              context_instance=RequestContext(request))
+
+
+def document_multiple_update_page_count(request):
+    return document_update_page_count(request, document_id_list=request.GET.get('id_list', []))
 
 
 def document_clear_transformations(request, document_id=None, document_id_list=None):

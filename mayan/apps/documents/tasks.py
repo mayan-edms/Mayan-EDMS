@@ -2,7 +2,7 @@ import logging
 
 from mayan.celery import app
 
-from .models import Document
+from .models import Document, DocumentVersion
 
 logger = logging.getLogger(__name__)
 
@@ -20,3 +20,9 @@ def task_clear_image_cache():
     Document.clear_image_cache()
     # except Exception as exception:
     #    messages.error(request, _(u'Error clearing document image cache; %s') % exception)
+
+
+@app.task
+def task_update_page_count(version_id):
+    document_version = DocumentVersion.objects.get(pk=version_id)
+    document_version.update_page_count()

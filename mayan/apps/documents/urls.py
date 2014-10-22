@@ -20,6 +20,8 @@ urlpatterns = patterns('documents.views',
     url(r'^(?P<document_id>\d+)/edit/$', 'document_edit', (), 'document_edit'),
     url(r'^(?P<document_id>\d+)/print/$', 'document_print', (), 'document_print'),
     url(r'^(?P<document_id>\d+)/hard_copy/$', 'document_hard_copy', (), 'document_hard_copy'),
+    url(r'^(?P<document_id>\d+)/reset_page_count/$', 'document_update_page_count', (), 'document_update_page_count'),
+    url(r'^multiple/reset_page_count/$', 'document_multiple_update_page_count', (), 'document_multiple_update_page_count'),
 
     url(r'^(?P<document_id>\d+)/display/$', 'get_document_image', {'size': DISPLAY_SIZE}, 'document_display'),
     url(r'^(?P<document_id>\d+)/display/print/$', 'get_document_image', {'size': PRINT_SIZE}, 'document_display_print'),
@@ -33,7 +35,6 @@ urlpatterns = patterns('documents.views',
     url(r'^document/version/(?P<document_version_pk>\d+)/revert/$', 'document_version_revert', (), 'document_version_revert'),
 
     url(r'^multiple/clear_transformations/$', 'document_multiple_clear_transformations', (), 'document_multiple_clear_transformations'),
-    url(r'^maintenance/update_page_count/$', 'document_update_page_count', (), 'document_update_page_count'),
     url(r'^maintenance/clear_image_cache/$', 'document_clear_image_cache', (), 'document_clear_image_cache'),
 
     url(r'^page/(?P<document_page_id>\d+)/$', 'document_page_view', (), 'document_page_view'),
