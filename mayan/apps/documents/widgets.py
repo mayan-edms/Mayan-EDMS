@@ -43,6 +43,10 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         except AttributeError:
             document_pages = []
 
+        # Reuse expensive values
+        latest_version_pk = value.latest_version.pk
+        page_count = value.page_count
+
         for page in document_pages:
             output.append(u'<div style="display: inline-block; margin: 5px 10px 10px 10px;">')
             output.append(u'<div class="tc">%(page_string)s %(page)s</div>' % {'page_string': ugettext(u'Page'), 'page': page.page_number})
@@ -54,8 +58,9 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     gallery_name='document_pages',
                     fancybox_class='fancybox-noscaling',
                     image_class='lazy-load-carousel',
-                    title=ugettext(u'Page %(page_num)d of %(total_pages)d') % {'page_num': page.page_number, 'total_pages': value.page_count},
+                    title=ugettext(u'Page %(page_num)d of %(total_pages)d') % {'page_num': page.page_number, 'total_pages': page_count},
                     size=MULTIPAGE_PREVIEW_SIZE,
+                    version=latest_version_pk
                 )
             )
             output.append(u'<div class="tc">')
