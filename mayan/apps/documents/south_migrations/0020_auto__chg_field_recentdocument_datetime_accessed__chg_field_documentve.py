@@ -17,12 +17,10 @@ class Migration(SchemaMigration):
         # Removing index on 'DocumentVersion', fields ['timestamp']
         db.delete_index(u'documents_documentversion', ['timestamp'])
 
-
         # Changing field 'Document.date_added'
         db.alter_column(u'documents_document', 'date_added', self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True))
         # Removing index on 'Document', fields ['date_added']
         db.delete_index(u'documents_document', ['date_added'])
-
 
     def backwards(self, orm):
         # Adding index on 'Document', fields ['date_added']
@@ -30,7 +28,6 @@ class Migration(SchemaMigration):
 
         # Adding index on 'DocumentVersion', fields ['timestamp']
         db.create_index(u'documents_documentversion', ['timestamp'])
-
 
         # Changing field 'RecentDocument.datetime_accessed'
         db.alter_column(u'documents_recentdocument', 'datetime_accessed', self.gf('django.db.models.fields.DateTimeField')())
