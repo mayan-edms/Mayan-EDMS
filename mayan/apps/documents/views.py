@@ -114,7 +114,6 @@ def document_view(request, document_id, advanced=False):
         ]
         if document.latest_version:
             document_fields.extend([
-                {'label': _(u'Filename'), 'field': 'filename'},
                 {'label': _(u'File mimetype'), 'field': lambda x: x.file_mimetype or _(u'None')},
                 {'label': _(u'File mime encoding'), 'field': lambda x: x.file_mime_encoding or _(u'None')},
                 {'label': _(u'File size'), 'field': lambda x: pretty_size(x.size) if x.size else '-'},
@@ -233,31 +232,25 @@ def document_edit(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_PROPERTIES_EDIT, request.user, document)
 
     if request.method == 'POST':
-        old_document = copy.copy(document)
         form = DocumentForm_edit(request.POST, instance=document)
         if form.is_valid():
-            document.filename = form.cleaned_data['new_filename']
+            document.label = form.cleaned_data['label']
             document.description = form.cleaned_data['description']
             document.language = form.cleaned_data['language']
 
             if 'document_type_available_filenames' in form.cleaned_data:
                 if form.cleaned_data['document_type_available_filenames']:
-                    document.filename = form.cleaned_data['document_type_available_filenames'].filename
+                    document.label = form.cleaned_data['document_type_available_filenames'].filename
 
             document.save()
-            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user, 'diff': return_diff(old_document, document, ['filename', 'description'])})
+            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user})
             document.add_as_recent_document_for_user(request.user)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)
 
             return HttpResponseRedirect(document.get_absolute_url())
     else:
-        if document.latest_version:
-            form = DocumentForm_edit(instance=document, initial={
-                'new_filename': document.filename, 'description': document.description})
-        else:
-            form = DocumentForm_edit(instance=document, initial={
-                'description': document.description})
+        form = DocumentForm_edit(instance=document)
 
     return render_to_response('main/generic_form.html', {
         'form': form,
@@ -335,7 +328,7 @@ def document_download(request, document_id=None, document_id_list=None, document
                     compressed_file = CompressedFile()
                     for document_version in document_versions:
                         descriptor = document_version.open()
-                        compressed_file.add_file(descriptor, arcname=document_version.filename)
+                        compressed_file.add_file(descriptor, arcname=document_version.document.label)
                         descriptor.close()
 
                     compressed_file.close()
@@ -361,7 +354,7 @@ def document_download(request, document_id=None, document_id_list=None, document
                     return serve_file(
                         request,
                         document_versions[0].file,
-                        save_as=u'"%s"' % document_versions[0].filename,
+                        save_as=u'"%s"' % document_versions[0].document.label,
                         content_type=document_versions[0].mimetype if document_versions[0].mimetype else 'application/octet-stream'
                     )
                 except Exception as exception:
@@ -1110,10 +1103,6 @@ def document_version_list(request, document_pk):
             {
                 'name': _(u'Encoding'),
                 'attribute': 'encoding',
-            },
-            {
-                'name': _(u'Filename'),
-                'attribute': 'filename',
             },
             {
                 'name': _(u'Comment'),

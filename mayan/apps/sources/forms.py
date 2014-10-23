@@ -14,15 +14,31 @@ from .models import (IMAPEmail, POP3Email, SourceTransformation,
 logger = logging.getLogger(__name__)
 
 
-class StagingDocumentForm(DocumentForm):
+class NewDocumentForm(DocumentForm):
+    class Meta(DocumentForm.Meta):
+        exclude = ('label',)
+
+
+class UploadBaseForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        show_expand = kwargs.pop('show_expand', False)
+        self.source = kwargs.pop('source')
+        super(UploadBaseForm, self).__init__(*args, **kwargs)
+
+        if show_expand:
+            self.fields['expand'] = forms.BooleanField(
+                label=_(u'Expand compressed files'), required=False,
+                help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
+            )
+
+
+class StagingUploadForm(UploadBaseForm):
     """
     Form that show all the files in the staging folder specified by the
     StagingFile class passed as 'cls' argument
     """
     def __init__(self, *args, **kwargs):
-        show_expand = kwargs.pop('show_expand', False)
-        self.source = kwargs.pop('source')
-        super(StagingDocumentForm, self).__init__(*args, **kwargs)
+        super(StagingUploadForm, self).__init__(*args, **kwargs)
 
         try:
             self.fields['staging_file_id'].choices = [
@@ -32,12 +48,6 @@ class StagingDocumentForm(DocumentForm):
             logger.error('exception: %s' % exception)
             pass
 
-        if show_expand:
-            self.fields['expand'] = forms.BooleanField(
-                label=_(u'Expand compressed files'), required=False,
-                help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
-            )
-
         # Put staging_list field first in the field order list
         staging_list_index = self.fields.keyOrder.index('staging_file_id')
         staging_list = self.fields.keyOrder.pop(staging_list_index)
@@ -45,31 +55,16 @@ class StagingDocumentForm(DocumentForm):
 
     staging_file_id = forms.ChoiceField(label=_(u'Staging file'))
 
-    class Meta(DocumentForm.Meta):
-        exclude = ('description', 'file', 'document_type', 'tags')
 
-
-class WebFormForm(DocumentForm):
+class WebFormUploadForm(UploadBaseForm):
     file = forms.FileField(label=_(u'File'))
 
     def __init__(self, *args, **kwargs):
-        show_expand = kwargs.pop('show_expand', False)
-        self.source = kwargs.pop('source')
-        super(WebFormForm, self).__init__(*args, **kwargs)
-
-        if show_expand:
-            self.fields['expand'] = forms.BooleanField(
-                label=_(u'Expand compressed files'), required=False,
-                help_text=ugettext(u'Upload a compressed file\'s contained files as individual documents')
-            )
+        super(WebFormUploadForm, self).__init__(*args, **kwargs)
 
         # Move the file filed to the top
         self.fields.keyOrder.remove('file')
         self.fields.keyOrder.insert(0, 'file')
-
-    def clean_file(self):
-        data = self.cleaned_data['file']
-        return data
 
 
 class WebFormSetupForm(forms.ModelForm):

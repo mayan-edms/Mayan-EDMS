@@ -59,7 +59,7 @@ class Source(models.Model):
     def get_transformation_list(self):
         return SourceTransformation.transformations.get_for_object_as_list(self)
 
-    def upload_file(self, file_object, filename=None, use_file_name=False, document_type=None, expand=False, metadata_dict_list=None, user=None, document=None, new_version_data=None, command_line=False, description=None, language=None):
+    def upload_document(self, file_object, document_type, label, expand=False, metadata_dict_list=None, user=None, document=None, command_line=False, description=None, language=None):
         is_compressed = None
 
         if expand:
@@ -69,7 +69,7 @@ class Source(models.Model):
                 for fp in cf.children():
                     if command_line:
                         print 'Uploading file #%d: %s' % (count, fp)
-                    self.upload_single_file(file_object=fp, filename=None, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user, description=description, language=language)
+                    self.upload_single_document(file_object=fp, label=unicode(fp), document_type=document_type, metadata_dict_list=metadata_dict_list, user=user, description=description, language=language)
                     fp.close()
                     count += 1
 
@@ -78,57 +78,29 @@ class Source(models.Model):
                 logging.debug('Exception: NotACompressedFile')
                 if command_line:
                     raise
-                self.upload_single_file(file_object=file_object, filename=filename, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user, description=description, language=language)
+                self.upload_single_document(file_object=file_object, label=label, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user, description=description, language=language)
             else:
                 is_compressed = True
         else:
-            self.upload_single_file(file_object, filename, use_file_name, document_type, metadata_dict_list, user, document, new_version_data, description=description, language=language)
+            self.upload_single_document(file_object=file_object, label=label, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user, description=description, language=language)
 
         file_object.close()
-        return {'is_compressed': is_compressed}
 
-    @transaction.atomic
-    def upload_single_file(self, file_object, filename=None, use_file_name=False, document_type=None, metadata_dict_list=None, user=None, document=None, new_version_data=None, description=None, language=None):
-        new_document = not document
+    def upload_single_document(self, file_object, label, document_type, metadata_dict_list=None, user=None, description=None, language=None):
+        new_version = Document.objects.new_document(file_object=file_object, document_type=document_type, label=label, description=description, language=language, user=user)
 
-        if new_document:
-            document = Document()
-            if document_type:
-                document.document_type = document_type
+        transformations, errors = self.get_transformation_list()
+        new_version.apply_default_transformations(transformations)
 
-            if description:
-                document.description = description
+        if metadata_dict_list:
+            save_metadata_list(metadata_dict_list, document, create=True)
 
-            if language:
-                document.language = language
-
-            document.save(user=user)
-        else:
-            if use_file_name:
-                filename = None
-            else:
-                filename = filename if filename else document.latest_version.filename
-
-            if description:
-                document.description = description
-                document.save()
-
+    def upload_new_version(self, file_object, document, user, new_version_data=None, comment=None):
         if not new_version_data:
             new_version_data = {}
 
-        new_version = document.new_version(file=file_object, user=user, **new_version_data)
-
-        if filename:
-            document.rename(filename)
-
-        transformations, errors = self.get_transformation_list()
-
-        new_version.apply_default_transformations(transformations)
         # TODO: new HISTORY for version updates
-
-        if metadata_dict_list and new_document:
-            # Only do for new documents
-            save_metadata_list(metadata_dict_list, document, create=True)
+        new_version = document.new_version(file=file_object, user=user, **new_version_data)
 
     class Meta:
         ordering = ('title',)
@@ -137,6 +109,8 @@ class Source(models.Model):
 
 
 class InteractiveSource(Source):
+    objects = InheritanceManager()
+
     class Meta:
         verbose_name = _(u'Interactive source')
         verbose_name_plural = _(u'Interactive sources')

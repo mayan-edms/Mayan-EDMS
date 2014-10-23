@@ -23,8 +23,8 @@ from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 
-from .forms import (StagingDocumentForm, SourceTransformationForm,
-                    SourceTransformationForm_create, WebFormForm)
+from .forms import (NewDocumentForm, SourceTransformationForm,
+                    SourceTransformationForm_create)
 from .literals import (SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM,
                        SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y)
 from .models import (InteractiveSource, Source, StagingFolderSource,
@@ -34,7 +34,7 @@ from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_EDIT,
                           PERMISSION_SOURCES_SETUP_VIEW)
 from .tasks import task_upload_document
-from .utils import get_class, get_form_class
+from .utils import get_class, get_form_class, get_upload_form_class
 
 
 def document_create_siblings(request, document_id):
@@ -46,8 +46,7 @@ def document_create_siblings(request, document_id):
         query_dict['metadata%s_id' % pk] = metadata.metadata_type_id
         query_dict['metadata%s_value' % pk] = metadata.value
 
-    if document.document_type_id:
-        query_dict['document_type_id'] = document.document_type_id
+    query_dict['document_type_id'] = document.document_type_id
 
     url = reverse('sources:upload_interactive')
     return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
@@ -92,25 +91,33 @@ def get_active_tab_links(document=None):
     }
 
 
-def upload_interactive(request, source_id=None, document_pk=None):
+def upload_new_version(request, document_id):
+    document = get_object_or_404(Document, pk=document_pk)
+    #    try:
+    #        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_NEW_VERSION])
+    #    except PermissionDenied:
+    #        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_NEW_VERSION, request.user, document)
+    #    results = get_active_tab_links(document)
+
+    #    messages.success(request, _(u'New document version queued for uploaded and will be available shortly.'))
+    #    return HttpResponseRedirect(reverse('documents:document_version_list', args=[document.pk]))
+
+    #    title = _(u'Upload a new version from source: %s') % source.title
+    # TODO: move to version upload
+    #if document:
+    #context['object'] = document
+    pass
+
+
+def upload_interactive(request, source_id=None):
     subtemplates_list = []
 
-    if document_pk:
-        document = get_object_or_404(Document, pk=document_pk)
-        try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_NEW_VERSION])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_NEW_VERSION, request.user, document)
-
-        results = get_active_tab_links(document)
-    else:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
-        document = None
-        results = get_active_tab_links()
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+    results = get_active_tab_links()
 
     context = {}
 
-    if InteractiveSource.objects.count() == 0:
+    if InteractiveSource.objects.filter(enabled=True).count() == 0:
         subtemplates_list.append(
             {
                 'name': 'main/generic_subtemplate.html',
@@ -122,68 +129,47 @@ def upload_interactive(request, source_id=None, document_pk=None):
                 }
             })
 
-    document_type_id = request.GET.get('document_type_id', None)
-    if document_type_id:
-        document_type = get_object_or_404(DocumentType, pk=document_type_id)
-    else:
-        document_type = None
-
-    # TODO: Use InteractiveSource subclasses query
-    if source_id is None:
-        if results[SOURCE_CHOICE_WEB_FORM].count():
-            source_id = results[SOURCE_CHOICE_WEB_FORM][0].pk
-        elif results[SOURCE_CHOICE_STAGING].count():
-            source_id = results[SOURCE_CHOICE_STAGING][0].pk
+    document_type = get_object_or_404(DocumentType, pk=request.GET['document_type_id'])
 
     if source_id:
-        source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
-        if isinstance(source, WebFormSource):
-            form_class = WebFormForm
-        else:
-            form_class = StagingDocumentForm
+        source = get_object_or_404(Source.objects.filter(enabled=True).select_subclasses(), pk=source_id)
+    else:
+        source = InteractiveSource.objects.filter(enabled=True).select_subclasses().first()
+
+    if source:
+        upload_form_class = get_upload_form_class(source.source_type)
 
         context['source'] = source
 
         if request.method == 'POST':
-            form = form_class(
+            upload_form = upload_form_class(
                 request.POST, request.FILES,
-                document_type=document_type,
-                show_expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
+                show_expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
                 source=source,
-                instance=document
+                prefix='source'
             )
+            document_form = NewDocumentForm(
+                data=request.POST,
+                document_type=document_type,
+                prefix='document')
 
-            if form.is_valid():
+            if upload_form.is_valid() and document_form.is_valid():
                 try:
-                    if document:
-                        expand = False
+                    if source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
+                        expand = upload_form.cleaned_data.get('expand')
                     else:
-                        if source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
-                            expand = form.cleaned_data.get('expand')
+                        if source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
+                            expand = True
                         else:
-                            if source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y:
-                                expand = True
-                            else:
-                                expand = False
+                            expand = False
 
-                    new_filename = get_form_filename(form)
-
+                    # TODO: move this to model: "get_file_object(request, upload_form)"
                     if isinstance(source, WebFormSource):
-                        file_object = request.FILES['file']
                         staging_file = None
+                        file_object = request.FILES['source-file']
                     else:
-                        staging_file = source.get_file(encoded_filename=form.cleaned_data['staging_file_id'])
+                        staging_file = source.get_file(encoded_filename=upload_form.cleaned_data['staging_file_id'])
                         file_object = staging_file.as_file()
-
-                    if document_type:
-                        document_type_id = document_type.pk
-                    else:
-                        document_type_id = None
-
-                    if document:
-                        document_id = document.pk
-                    else:
-                        document_id = None
 
                     temporary_file = tempfile.NamedTemporaryFile(delete=False)
                     for chunk in file_object.chunks():
@@ -192,62 +178,55 @@ def upload_interactive(request, source_id=None, document_pk=None):
                     temporary_file.close()
                     file_object.close()
 
+                    # TODO: move this to model: "post_upload(request)"
                     if isinstance(source, StagingFolderSource):
                         if source.delete_after_upload:
-                            staging_file.delete()
+                            try:
+                                staging_file.delete()
+                            except Exception as exception:
+                                messages.error(request, _(u'Error deleting staging file; %s') % exception)
 
                     if not request.user.is_anonymous():
                         user_id = request.user.pk
                     else:
                         user_id = None
 
+                    # Determine how to name the new document
+                    label = file_object.name
+
+                    if 'document_type_available_filenames' in document_form.cleaned_data:
+                        if document_form.cleaned_data['document_type_available_filenames']:
+                            label = document_form.cleaned_data['document_type_available_filenames'].filename
+
                     task_upload_document.apply_async(kwargs=dict(
                         source_id=source.pk,
                         file_path=temporary_file.name,
-                        filename=new_filename or file_object.name,
-                        use_file_name=form.cleaned_data.get('use_file_name', False),
-                        document_type_id=document_type_id,
+                        label=label,
+                        document_type_id=document_type.pk,
                         expand=expand,
                         metadata_dict_list=decode_metadata_from_url(request.GET),
                         user_id=user_id,
-                        document_id=document_id,
-                        new_version_data=form.cleaned_data.get('new_version_data'),
-                        description=form.cleaned_data.get('description'),
-                        language=form.cleaned_data.get('language')
+                        description=document_form.cleaned_data.get('description'),
+                        language=document_form.cleaned_data.get('language')
                     ), queue='uploads')
 
-                    # TODO: Notify user
-                    if document:
-                        messages.success(request, _(u'New document queued for uploaded and will be available shortly.'))
-                        return HttpResponseRedirect(reverse('documents:document_version_list', args=[document.pk]))
-                    else:
-                        messages.success(request, _(u'New document version queued for uploaded and will be available shortly.'))
-
-                        return HttpResponseRedirect(request.get_full_path())
+                    messages.success(request, _(u'New document queued for uploaded and will be available shortly.'))
+                    return HttpResponseRedirect(request.get_full_path())
                 except Exception as exception:
                     if settings.DEBUG:
                         raise
                     messages.error(request, _(u'Unhandled exception: %s') % exception)
         else:
-            form = form_class(
-                show_expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK) and not document,
-                document_type=document_type,
+            upload_form = upload_form_class(
+                show_expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
                 source=source,
-                instance=document
+                prefix='source',
             )
+            document_form = NewDocumentForm(
+                document_type=document_type,
+                prefix='document')
 
-        if document:
-            title = _(u'Upload a new version from source: %s') % source.title
-        else:
-            title = _(u'Upload a local document from source: %s') % source.title
-
-        subtemplates_list.append({
-            'name': 'main/generic_form_subtemplate.html',
-            'context': {
-                'form': form,
-                'title': title,
-            },
-        })
+        title = _(u'Upload a local document from source: %s') % source.title
 
         if isinstance(source, StagingFolderSource):
             try:
@@ -258,9 +237,9 @@ def upload_interactive(request, source_id=None, document_pk=None):
             finally:
                 subtemplates_list = [
                     {
-                        'name': 'main/generic_form_subtemplate.html',
+                        'name': 'main/generic_multiform_subtemplate.html',
                         'context': {
-                            'form': form,
+                            'forms': [upload_form, document_form],
                             'title': title,
                         }
                     },
@@ -273,12 +252,18 @@ def upload_interactive(request, source_id=None, document_pk=None):
                         }
                     },
                 ]
-
-    if document:
-        context['object'] = document
+        else:
+            subtemplates_list.append({
+                'name': 'main/generic_multiform_subtemplate.html',
+                'context': {
+                    'forms': [upload_form, document_form],
+                    'title': title,
+                    'is_multipart': True
+                },
+            })
 
     context.update({
-        'document_type_id': document_type_id,
+        'document_type_id': document_type.pk,
         'subtemplates_list': subtemplates_list,
         'temporary_navigation_links': {
             'form_header': {
@@ -292,45 +277,31 @@ def upload_interactive(request, source_id=None, document_pk=None):
         },
     })
 
-    if not document:
-        context.update(
-            {
-                'sidebar_subtemplates_list': [
-                    {
-                        'name': 'main/generic_subtemplate.html',
-                        'context': {
-                            'title': _(u'Current document type'),
-                            'paragraphs': [document_type if document_type else _(u'None')],
-                            'side_bar': True,
-                        }
-                    },
-                    {
-                        'name': 'main/generic_subtemplate.html',
-                        'context': {
-                            'title': _(u'Current metadata'),
-                            'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET)),
-                            'side_bar': True,
-                        }
+    context.update(
+        {
+            'sidebar_subtemplates_list': [
+                {
+                    'name': 'main/generic_subtemplate.html',
+                    'context': {
+                        'title': _(u'Current document type'),
+                        'paragraphs': [document_type if document_type else _(u'None')],
+                        'side_bar': True,
                     }
-                ],
-            }
-        )
+                },
+                {
+                    'name': 'main/generic_subtemplate.html',
+                    'context': {
+                        'title': _(u'Current metadata'),
+                        'paragraphs': metadata_repr_as_list(decode_metadata_from_url(request.GET)),
+                        'side_bar': True,
+                    }
+                }
+            ],
+        }
+    )
 
     return render_to_response('main/generic_form.html', context,
                               context_instance=RequestContext(request))
-
-
-def get_form_filename(form):
-    filename = None
-    if form:
-        if form.cleaned_data['new_filename']:
-            return form.cleaned_data['new_filename']
-
-    if form and 'document_type_available_filenames' in form.cleaned_data:
-        if form.cleaned_data['document_type_available_filenames']:
-            return form.cleaned_data['document_type_available_filenames'].filename
-
-    return filename
 
 
 def staging_file_delete(request, staging_folder_pk, encoded_filename):

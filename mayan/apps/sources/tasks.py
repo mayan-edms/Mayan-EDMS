@@ -21,18 +21,9 @@ def task_check_interval_source(source_id):
 
 
 @app.task(ignore_result=True)
-def task_upload_document(source_id, file_path, filename=None, use_file_name=False, document_type_id=None, expand=False, metadata_dict_list=None, user_id=None, document_id=None, new_version_data=None, command_line=False, description=None, language=None):
+def task_upload_document(source_id, file_path, label, document_type_id=None, expand=False, metadata_dict_list=None, user_id=None, command_line=False, description=None, language=None):
     source = Source.objects.get_subclass(pk=source_id)
-
-    if document_type_id:
-        document_type = DocumentType.objects.get(pk=document_type_id)
-    else:
-        document_type = None
-
-    if document_id:
-        document = Document.objects.get(pk=document_id)
-    else:
-        document = None
+    document_type = DocumentType.objects.get(pk=document_type_id)
 
     if user_id:
         user = User.objects.get(pk=user_id)
@@ -41,7 +32,7 @@ def task_upload_document(source_id, file_path, filename=None, use_file_name=Fals
 
     with File(file=open(file_path, mode='rb')) as file_object:
         #try:
-        result = source.upload_file(file_object, filename=filename, use_file_name=use_file_name, document_type=document_type, expand=expand, metadata_dict_list=metadata_dict_list, user=user, document=document, new_version_data=new_version_data, command_line=command_line, description=description, language=language)
+        result = source.upload_document(file_object, label=label, document_type=document_type, expand=expand, metadata_dict_list=metadata_dict_list, user=user, command_line=command_line, description=description, language=language)
         #except NewDocumentVersionNotAllowed:
         #    messages.error(request, _(u'New version uploads are not allowed for this document.'))
 

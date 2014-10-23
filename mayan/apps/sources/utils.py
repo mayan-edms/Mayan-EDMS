@@ -1,6 +1,6 @@
 from .forms import (POP3EmailSetupForm, IMAPEmailSetupForm,
-                    StagingFolderSetupForm, WatchFolderSetupForm,
-                    WebFormSetupForm)
+                    StagingFolderSetupForm, StagingUploadForm,
+                    WatchFolderSetupForm, WebFormSetupForm, WebFormUploadForm)
 from .literals import (SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,
                        SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
                        SOURCE_CHOICE_WEB_FORM)
@@ -32,3 +32,10 @@ def get_form_class(source_type):
         return POP3EmailSetupForm
     elif source_type == SOURCE_CHOICE_EMAIL_IMAP:
         return IMAPEmailSetupForm
+
+
+def get_upload_form_class(source_type):
+    if source_type == SOURCE_CHOICE_WEB_FORM:
+        return WebFormUploadForm
+    elif source_type == SOURCE_CHOICE_STAGING:
+        return StagingUploadForm

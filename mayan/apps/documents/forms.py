@@ -94,37 +94,15 @@ class DocumentPreviewForm(forms.Form):
 
 
 class DocumentForm(forms.ModelForm):
-    """
-    Baseform for document creation, and editing, made generic enough to
-    be used by document creation from staging files
-    """
     class Meta:
         model = Document
-        # TODO: Don't use exclude here, use fields, this app shouldn't know
-        # anything about tags
-        exclude = ('tags', 'document_type')
+        fields = ('label', 'description', 'language')
 
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type', None)
         instance = kwargs.pop('instance', None)
 
         super(DocumentForm, self).__init__(*args, **kwargs)
-
-        if 'document_type' in self.fields:
-            # To allow merging with DocumentForm_edit
-            self.fields['document_type'].widget = forms.HiddenInput()
-
-        if instance:
-            self.fields['use_file_name'] = forms.BooleanField(
-                label=_(u'Use the new version filename as the document filename'),
-                initial=False,
-                required=False,
-            )
-
-        # Instance's document_type overrides the passed document_type
-        if instance:
-            if hasattr(instance, 'document_type'):
-                document_type = instance.document_type
 
         if document_type:
             filenames_qs = document_type.documenttypefilename_set.filter(enabled=True)
@@ -134,55 +112,26 @@ class DocumentForm(forms.ModelForm):
                     required=False,
                     label=_(u'Quick document rename'))
 
-        if instance:
-            if instance.latest_version:
-                self.version_fields(instance)
 
-    def version_fields(self, document):
-        self.fields['version_update'] = forms.ChoiceField(
-            label=_(u'Version update'),
-            choices=DocumentVersion.get_version_update_choices(document.latest_version)
-        )
-
-        self.fields['comment'] = forms.CharField(
-            label=_(u'Comment'),
-            required=False,
-            widget=forms.widgets.Textarea(attrs={'rows': 4}),
-        )
-
-    new_filename = forms.CharField(
-        label=_('New document filename'), required=False
-    )
-
-    def clean(self):
-        cleaned_data = self.cleaned_data
-        cleaned_data['new_version_data'] = {
-            'comment': self.cleaned_data.get('comment'),
-            'version_update': self.cleaned_data.get('version_update'),
-        }
-
-        # Always return the full collection of cleaned data.
-        return cleaned_data
-
-
-class DocumentForm_edit(DocumentForm):
+# TODO: merge DocumentForm and DocumentForm_edit
+class DocumentForm_edit(forms.ModelForm):
     """
     Form sub classes from DocumentForm used only when editing a document
     """
+
     class Meta:
         model = Document
-        exclude = ('file', 'document_type', 'tags')
+        fields = ('label', 'description', 'language')
 
     def __init__(self, *args, **kwargs):
         super(DocumentForm_edit, self).__init__(*args, **kwargs)
-        if kwargs['instance'].latest_version:
-            self.fields.pop('version_update')
-            self.fields.pop('comment')
-            self.fields['language'].initial = kwargs['instance'].language
-        else:
-            self.fields.pop('new_filename')
 
-        self.fields.pop('use_file_name')
+        filenames_qs = self.instance.document_type.documenttypefilename_set.filter(enabled=True)
+        if filenames_qs.count() > 0:
+            self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
+                queryset=filenames_qs,
+                required=False,
+                label=_(u'Quick document rename'))
 
 
 class DocumentPropertiesForm(DetailForm):
@@ -270,3 +219,36 @@ class DocumentDownloadForm(forms.Form):
         if len(self.document_versions) > 1:
             self.fields['compressed'].initial = True
             self.fields['compressed'].widget.attrs.update({'disabled': True})
+
+
+class NewVersionForm(forms.ModelForm):
+    class Meta:
+        model = DocumentVersion
+
+    '''
+    def version_fields(self, document):
+        self.fields['version_update'] = forms.ChoiceField(
+            label=_(u'Version update'),
+            choices=DocumentVersion.get_version_update_choices(document.latest_version)
+        )
+
+        self.fields['comment'] = forms.CharField(
+            label=_(u'Comment'),
+            required=False,
+            widget=forms.widgets.Textarea(attrs={'rows': 4}),
+        )
+
+    new_filename = forms.CharField(
+        label=_('New document filename'), required=False
+    )
+
+    def clean(self):
+        cleaned_data = self.cleaned_data
+        cleaned_data['new_version_data'] = {
+            'comment': self.cleaned_data.get('comment'),
+            'version_update': self.cleaned_data.get('version_update'),
+        }
+
+        # Always return the full collection of cleaned data.
+        return cleaned_data
+    '''
