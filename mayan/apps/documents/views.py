@@ -262,6 +262,7 @@ def document_edit(request, document_id):
     return render_to_response('main/generic_form.html', {
         'form': form,
         'object': document,
+        'title': _('Edit properties of: %s') % document,
     }, context_instance=RequestContext(request))
 
 
