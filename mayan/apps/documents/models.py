@@ -34,8 +34,8 @@ from .events import HISTORY_DOCUMENT_CREATED
 from .exceptions import NewDocumentVersionNotAllowed
 from .literals import (VERSION_UPDATE_MAJOR, VERSION_UPDATE_MICRO,
                        VERSION_UPDATE_MINOR)
-from .managers import (DocumentPageTransformationManager, DocumentTypeManager,
-                       RecentDocumentManager)
+from .managers import (DocumentManager, DocumentPageTransformationManager,
+                       DocumentTypeManager, RecentDocumentManager)
 from .runtime import storage_backend
 from .settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE, LANGUAGE,
                        UUID_FUNCTION, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
@@ -59,6 +59,8 @@ class DocumentType(models.Model):
     properties can be attached
     """
     name = models.CharField(max_length=32, verbose_name=_(u'Name'), unique=True)
+
+    # TODO: find a way to move this to the ocr app
     ocr = models.BooleanField(default=True, verbose_name=_(u'Automatically queue newly created documents for OCR.'))
 
     objects = DocumentTypeManager()
@@ -82,12 +84,15 @@ class Document(models.Model):
 
     uuid = models.CharField(default=lambda: UUID_FUNCTION(), max_length=48, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'), related_name='documents')
+    label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True)
     description = models.TextField(blank=True, null=True, verbose_name=_(u'Description'))
     date_added = models.DateTimeField(verbose_name=_(u'Added'), auto_now_add=True)
     language = models.CharField(
         choices=[(i.bibliographic, i.name) for i in list(pycountry.languages)],
         default=LANGUAGE, max_length=8, verbose_name=_('Language')
     )
+
+    objects = DocumentManager()
 
     @staticmethod
     def clear_image_cache():
@@ -102,11 +107,7 @@ class Document(models.Model):
         ordering = ['-date_added']
 
     def __unicode__(self):
-        try:
-            return self.latest_version.filename
-        except AttributeError:
-            # Document has no version yet, let's return a place holder text
-            return ugettext(u'Uninitialized document')
+        return self.label
 
     @models.permalink
     def get_absolute_url(self):
@@ -283,20 +284,6 @@ class Document(models.Model):
     def latest_version(self):
         return self.versions.order_by('timestamp').last()
 
-    def rename(self, new_name):
-        version = self.latest_version
-        return version.rename(new_name)
-
-    @property
-    def filename(self):
-        return self.latest_version.filename
-
-    @filename.setter
-    def filename(self, value):
-        version = self.latest_version
-        version.filename = value
-        return version.save()
-
     def document_save_to_temp_dir(self, filename, buffer_size=1024 * 1024):
         temporary_path = os.path.join(TEMPORARY_DIRECTORY, filename)
         return self.save_to_file(temporary_path, buffer_size)
@@ -337,8 +324,6 @@ class DocumentVersion(models.Model):
     mimetype = models.CharField(max_length=255, null=True, blank=True, editable=False)
     encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
 
-    # TODO: move filename to Document model, is should not be a version's field
-    filename = models.CharField(max_length=255, default=u'', editable=False, db_index=True)
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'Checksum'), editable=False)
 
     class Meta:
@@ -446,6 +431,7 @@ class DocumentVersion(models.Model):
 
         return detected_pages
 
+    # TODO: remove from here and move to converter app
     def apply_default_transformations(self, transformations):
         # Only apply default transformations on new documents
         if reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.pages.all()]) == 0:
@@ -474,7 +460,7 @@ class DocumentVersion(models.Model):
         """
         if self.exists():
             try:
-                self.mimetype, self.encoding = get_mimetype(self.open(), self.filename)
+                self.mimetype, self.encoding = get_mimetype(self.open(), self.document.label)
             except:
                 self.mimetype = u''
                 self.encoding = u''
