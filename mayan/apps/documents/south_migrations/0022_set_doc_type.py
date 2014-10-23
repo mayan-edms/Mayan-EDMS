@@ -5,6 +5,15 @@ from south.v2 import DataMigration
 from django.db import models
 
 
+def fake_get_or_create(model, *args, **kwargs):
+    try:
+        obj = model.objects.get(**kwargs)
+    except model.DoesNotExist:
+        obj = model(**kwargs)
+        obj.save()
+    return obj
+
+
 class Migration(DataMigration):
 
     def forwards(self, orm):
@@ -12,7 +21,7 @@ class Migration(DataMigration):
         # Note: Don't use "from appname.models import ModelName".
         # Use orm.ModelName to refer to models in this application,
         # and orm['appname.ModelName'] for models in other applications.
-        orphan_doc_type, created = orm.DocumentType.objects.get_or_create(name='_orphan_document_')
+        orphan_doc_type = fake_get_or_create(orm.DocumentType, name='_orphan_document_')
         orm.Document.objects.filter(document_type__isnull=True).update(document_type=orphan_doc_type)
 
     def backwards(self, orm):
