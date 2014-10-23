@@ -1,6 +1,8 @@
 from django.conf.urls import patterns, url
 
 from .api_views import (APIDocumentMetadataListView, APIDocumentMetadataView,
+                        APIDocumentTypeMetadataTypeListView,
+                        APIDocumentTypeMetadataTypeView,
                         APIMetadataTypeListView, APIMetadataTypeView)
 
 urlpatterns = patterns('metadata.views',
@@ -23,6 +25,8 @@ urlpatterns = patterns('metadata.views',
 api_urls = patterns('',
     url(r'^metadatatypes/$', APIMetadataTypeListView.as_view(), name='metadatatype-list'),
     url(r'^metadatatypes/(?P<pk>[0-9]+)/$', APIMetadataTypeView.as_view(), name='metadatatype-detail'),
-    url(r'^document/(?P<pk>[0-9]+)/metadata/$', APIDocumentMetadataListView.as_view(), name='documentmetadata-list'),
+    url(r'^document/(?P<document_pk>[0-9]+)/metadata/$', APIDocumentMetadataListView.as_view(), name='documentmetadata-list'),
     url(r'^document/(?P<document_pk>[0-9]+)/metadata/(?P<pk>[0-9]+)/$', APIDocumentMetadataView.as_view(), name='documentmetadata-detail'),
+    url(r'^document_type/(?P<document_type_pk>[0-9]+)/metadatatypes/$', APIDocumentTypeMetadataTypeListView.as_view(), name='documenttypemetadatatype-list'),
+    url(r'^document_type/(?P<document_type_pk>[0-9]+)/metadatatypes/(?P<metadata_type_pk>[0-9]+)/$', APIDocumentTypeMetadataTypeView.as_view(), name='documenttypemetadatatype-detail'),
 )
