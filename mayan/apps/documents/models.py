@@ -79,7 +79,6 @@ class Document(models.Model):
     """
     Defines a single document with it's fields and properties
     """
-    _latest_versions = {}
 
     uuid = models.CharField(default=lambda: UUID_FUNCTION(), max_length=48, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'), related_name='documents')
@@ -218,7 +217,6 @@ class Document(models.Model):
             new_version.save()
 
         logger.debug('new_version saved')
-        self.__class__._latest_versions[self.pk] = new_version
 
         return new_version
 
@@ -283,10 +281,7 @@ class Document(models.Model):
 
     @property
     def latest_version(self):
-        if self.pk not in self.__class__._latest_versions:
-            self.__class__._latest_versions[self.pk] = self.versions.order_by('timestamp').last()
-
-        return self.__class__._latest_versions[self.pk]
+        return self.versions.order_by('timestamp').last()
 
     def rename(self, new_name):
         version = self.latest_version
@@ -313,7 +308,6 @@ class DocumentVersion(models.Model):
     """
     _pre_open_hooks = {}
     _post_save_hooks = {}
-    _page_counts = {}
 
     @staticmethod
     def get_version_update_choices(document_version):
@@ -403,6 +397,7 @@ class DocumentVersion(models.Model):
             self.update_mimetype(save=False)
             self.save()
             self.update_page_count(save=False)
+
             if transformations:
                 self.apply_default_transformations(transformations)
 
@@ -449,8 +444,6 @@ class DocumentVersion(models.Model):
         if save:
             self.save()
 
-        self.__class__._page_counts[self.pk] = self.pages.count()
-
         return detected_pages
 
     def apply_default_transformations(self, transformations):
@@ -491,11 +484,6 @@ class DocumentVersion(models.Model):
 
     def delete(self, *args, **kwargs):
         self.file.storage.delete(self.file.path)
-        # Invalidate page count cache
-        self.__class__._page_counts[self.pk] = None
-        # Invalidate parent document's latest version cache
-        Document._latest_versions[self.document.pk] = None
-
         return super(DocumentVersion, self).delete(*args, **kwargs)
 
     def exists(self):
@@ -557,10 +545,7 @@ class DocumentVersion(models.Model):
 
     @property
     def page_count(self):
-        if self.pk not in self.__class__._page_counts:
-            self.__class__._page_counts[self.pk] = self.pages.count()
-
-        return self.__class__._page_counts[self.pk]
+        return self.pages.count()
 
 
 class DocumentTypeFilename(models.Model):
