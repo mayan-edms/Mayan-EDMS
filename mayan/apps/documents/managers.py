@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from ast import literal_eval
 
-from django.db import models
+from django.db import models, transaction
 
 from .settings import RECENT_COUNT
 
@@ -51,3 +51,12 @@ class RecentDocumentManager(models.Manager):
 class DocumentTypeManager(models.Manager):
     def get_by_natural_key(self, name):
         return self.get(name=name)
+
+
+class DocumentManager(models.Manager):
+    @transaction.atomic
+    def new_document(self, file_object, document_type, label, user=None, description=None, language=None):
+        document = self.model(document_type=document_type, label=label,
+                              description=description, language=language)
+        document.save(user=user)
+        return document.new_version(file=file_object, user=user)
