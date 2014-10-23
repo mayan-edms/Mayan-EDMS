@@ -27,8 +27,8 @@ from .forms import (StagingDocumentForm, SourceTransformationForm,
                     SourceTransformationForm_create, WebFormForm)
 from .literals import (SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM,
                        SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y)
-from .models import (Source, StagingFolderSource, SourceTransformation,
-                     WebFormSource)
+from .models import (InteractiveSource, Source, StagingFolderSource,
+                     SourceTransformation, WebFormSource)
 from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_DELETE,
                           PERMISSION_SOURCES_SETUP_EDIT,
@@ -110,9 +110,7 @@ def upload_interactive(request, source_id=None, document_pk=None):
 
     context = {}
 
-    # TODO: use InteractiveSource.objects.count() instead
-    if results[SOURCE_CHOICE_WEB_FORM].count() == 0 and results[SOURCE_CHOICE_STAGING].count() == 0:
-        source_setup_link = mark_safe('<a href="%s">%s</a>' % (reverse('sources:setup_source_list'), ugettext(u'Here')))
+    if InteractiveSource.objects.count() == 0:
         subtemplates_list.append(
             {
                 'name': 'main/generic_subtemplate.html',
@@ -120,9 +118,6 @@ def upload_interactive(request, source_id=None, document_pk=None):
                     'title': _(u'Upload sources'),
                     'paragraphs': [
                         _(u'No interactive document sources have been defined or none have been enabled.'),
-                        _(u'Click %(setup_link)s to add or enable some document sources.') % {
-                            'setup_link': source_setup_link
-                        }
                     ],
                 }
             })
@@ -133,6 +128,7 @@ def upload_interactive(request, source_id=None, document_pk=None):
     else:
         document_type = None
 
+    # TODO: Use InteractiveSource subclasses query
     if source_id is None:
         if results[SOURCE_CHOICE_WEB_FORM].count():
             source_id = results[SOURCE_CHOICE_WEB_FORM][0].pk
