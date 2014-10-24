@@ -7,6 +7,7 @@ from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
 from documents.forms import DocumentForm
+from documents.models import DocumentVersion
 
 from .models import (IMAPEmail, POP3Email, SourceTransformation,
                      StagingFolderSource, WebFormSource, WatchFolderSource)
@@ -17,6 +18,31 @@ logger = logging.getLogger(__name__)
 class NewDocumentForm(DocumentForm):
     class Meta(DocumentForm.Meta):
         exclude = ('label',)
+
+
+class NewVersionForm(forms.Form):
+    def __init__(self, *args, **kwargs):
+        document = kwargs.pop('document')
+        super(NewVersionForm, self).__init__(*args, **kwargs)
+        self.fields['version_update'] = forms.ChoiceField(
+            label=_(u'Version update'),
+            choices=DocumentVersion.get_version_update_choices(document.latest_version)
+        )
+
+        self.fields['comment'] = forms.CharField(
+            label=_(u'Comment'),
+            required=False,
+            widget=forms.widgets.Textarea(attrs={'rows': 4}),
+        )
+
+    #def clean(self):
+    #    cleaned_data = self.cleaned_data
+    #    cleaned_data['new_version_data'] = {
+    #        'comment': self.cleaned_data.get('comment'),
+    #        'version_update': self.cleaned_data.get('version_update'),
+    #    }
+        # Always return the full collection of cleaned data.
+        #return cleaned_data
 
 
 class UploadBaseForm(forms.Form):
