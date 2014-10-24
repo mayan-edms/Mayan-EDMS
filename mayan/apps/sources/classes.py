@@ -24,6 +24,13 @@ class PseudoFile(File):
         self.file.seek(0)
 
 
+class SourceUploadedFile(File):
+    def __init__(self, source, file, extra_data=None):
+        self.file = file
+        self.source = source
+        self.extra_data = extra_data
+
+
 class Attachment(File):
     def __init__(self, part, name):
         self.name = name

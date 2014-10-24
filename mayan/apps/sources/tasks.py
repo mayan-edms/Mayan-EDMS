@@ -21,7 +21,7 @@ def task_check_interval_source(source_id):
 
 
 @app.task(ignore_result=True)
-def task_upload_document(source_id, file_path, label, document_type_id=None, expand=False, metadata_dict_list=None, user_id=None, command_line=False, description=None, language=None):
+def task_upload_document(source_id, file_path, label, document_type_id, expand=False, metadata_dict_list=None, user_id=None, command_line=False, description=None, language=None):
     source = Source.objects.get_subclass(pk=source_id)
     document_type = DocumentType.objects.get(pk=document_type_id)
 

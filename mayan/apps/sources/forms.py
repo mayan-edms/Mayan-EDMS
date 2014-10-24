@@ -23,6 +23,7 @@ class UploadBaseForm(forms.Form):
     def __init__(self, *args, **kwargs):
         show_expand = kwargs.pop('show_expand', False)
         self.source = kwargs.pop('source')
+
         super(UploadBaseForm, self).__init__(*args, **kwargs)
 
         if show_expand:

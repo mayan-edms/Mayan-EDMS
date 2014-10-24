@@ -24,7 +24,7 @@ from djcelery.models import PeriodicTask, IntervalSchedule
 from documents.models import Document, DocumentType
 from metadata.api import save_metadata_list
 
-from .classes import Attachment, StagingFile
+from .classes import Attachment, SourceUploadedFile, StagingFile
 from .literals import (DEFAULT_INTERVAL, DEFAULT_POP3_TIMEOUT,
                        DEFAULT_IMAP_MAILBOX, SOURCE_CHOICES,
                        SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
@@ -52,9 +52,6 @@ class Source(models.Model):
 
     def fullname(self):
         return u' '.join([self.class_fullname(), '"%s"' % self.title])
-
-    def internal_name(self):
-        return u'%s_%d' % (self.source_type, self.pk)
 
     def get_transformation_list(self):
         return SourceTransformation.transformations.get_for_object_as_list(self)
@@ -93,7 +90,7 @@ class Source(models.Model):
         new_version.apply_default_transformations(transformations)
 
         if metadata_dict_list:
-            save_metadata_list(metadata_dict_list, document, create=True)
+            save_metadata_list(metadata_dict_list, new_version.document, create=True)
 
     def upload_new_version(self, file_object, document, user, new_version_data=None, comment=None):
         if not new_version_data:
@@ -101,6 +98,12 @@ class Source(models.Model):
 
         # TODO: new HISTORY for version updates
         new_version = document.new_version(file=file_object, user=user, **new_version_data)
+
+    def get_upload_file_object(self, request, form):
+        pass
+
+    def clean_up_upload_file(self, upload_file_object):
+        pass
 
     class Meta:
         ordering = ('title',)
@@ -144,6 +147,17 @@ class StagingFolderSource(InteractiveSource):
         except OSError as exception:
             raise Exception(_(u'Unable get list of staging files: %s') % exception)
 
+    def get_upload_file_object(self, request, form):
+        staging_file = self.get_file(encoded_filename=form.cleaned_data['staging_file_id'])
+        return SourceUploadedFile(source=self, file=staging_file.as_file(), extra_data=staging_file)
+
+    def clean_up_upload_file(self, upload_file_object):
+        if self.delete_after_upload:
+            try:
+                upload_file_object.extra_data.delete()
+            except Exception as exception:
+                raise Exception(_(u'Error deleting staging file; %s') % exception)
+
     class Meta:
         verbose_name = _(u'Staging folder')
         verbose_name_plural = _(u'Staging folders')
@@ -153,8 +167,12 @@ class WebFormSource(InteractiveSource):
     is_interactive = True
     source_type = SOURCE_CHOICE_WEB_FORM
 
+    # TODO: unify uncompress as an InteractiveSource field
     uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     # Default path
+
+    def get_upload_file_object(self, request, form):
+        return SourceUploadedFile(source=self, file=form.cleaned_data['file'])
 
     class Meta:
         verbose_name = _(u'Web form')

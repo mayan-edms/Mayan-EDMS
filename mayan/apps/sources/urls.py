@@ -5,13 +5,14 @@ from django.conf.urls import patterns, url
 from .api_views import (APIDocumentCreateView, APIStagingSourceFileView,
                         APIStagingSourceFileImageView, APIStagingSourceListView,
                         APIStagingSourceView)
+from .views import UploadInteractiveView
 from .wizards import DocumentCreateWizard
 
 urlpatterns = patterns('sources.views',
     url(r'^staging_file/(?P<staging_folder_pk>\d+)/(?P<encoded_filename>.+)/delete/$', 'staging_file_delete', name='staging_file_delete'),
 
-    url(r'^upload/document/new/interactive/(?P<source_id>\d+)/$', 'upload_interactive', (), 'upload_interactive'),
-    url(r'^upload/document/new/interactive/$', 'upload_interactive', (), 'upload_interactive'),
+    url(r'^upload/document/new/interactive/(?P<source_id>\d+)/$', UploadInteractiveView.as_view(), name='upload_interactive'),
+    url(r'^upload/document/new/interactive/$', UploadInteractiveView.as_view(), name='upload_interactive'),
 
     url(r'^upload/document/(?P<document_pk>\d+)/version/interactive/(?P<source_id>\d+)/$', 'upload_new_version', (), 'upload_version'),
     url(r'^upload/document/(?P<document_pk>\d+)/version/interactive/$', 'upload_new_version', (), 'upload_version'),

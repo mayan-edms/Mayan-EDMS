@@ -11,7 +11,7 @@
             <form method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="form">
         {% endif %}
 
-        {% for form in forms %}
+        {% for form_name, form in forms.items %}
             {% if submit_method != 'GET' and submit_method != 'get' %}
                 {% csrf_token %}
             {% endif %}
