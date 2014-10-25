@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}
 
 {% load i18n %}
+{% load static %}
 
 {% block title %} :: {% trans 'Confirm' %} {{ title }}{% endblock %}
 
@@ -30,7 +31,7 @@
                 {% endif %}
 
                 <div style="float: left; margin-right: 10px;">
-                    <img style="margin-top: 12px;" src="{{ STATIC_URL }}images/icons/{{ form_icon|default:'question.png' }}" alt="{% trans 'form icon' %}" />
+                    <img style="margin-top: 12px;" src="{% static 'images/icons/question.png' %}" alt="{% trans 'question bubble' %}" />
                 </div>
                 <div style="float: left; width: 90%;">
                 {% if title %}

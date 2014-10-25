@@ -209,7 +209,6 @@ def acl_grant(request):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'key_add.png',
     }
 
     context['title'] = title_prefix % {
@@ -302,7 +301,6 @@ def acl_revoke(request):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'key_delete.png',
     }
 
     context['title'] = title_prefix % {
@@ -549,7 +547,6 @@ def acl_class_multiple_grant(request):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'key_add.png',
     }
 
     context['title'] = title_prefix % {
@@ -628,7 +625,6 @@ def acl_class_multiple_revoke(request):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'key_delete.png',
     }
 
     context['title'] = title_prefix % {

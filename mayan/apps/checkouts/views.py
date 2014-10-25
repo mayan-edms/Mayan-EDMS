@@ -133,7 +133,6 @@ def checkin_document(request, document_pk):
         'delete_view': False,
         'previous': previous,
         'next': next,
-        'form_icon': u'basket_remove.png',
         'object': document,
     }
 

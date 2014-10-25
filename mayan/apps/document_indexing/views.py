@@ -136,7 +136,6 @@ def index_setup_delete(request, index_pk):
         'previous': previous,
         'next': next,
         'title': _(u'Are you sure you with to delete the index: %s?') % index,
-        'form_icon': u'tab_delete.png',
     }
 
     return render_to_response('main/generic_confirm.html', context,
@@ -282,7 +281,6 @@ def template_node_delete(request, node_pk):
         'previous': previous,
         'next': next,
         'title': _(u'Are you sure you with to delete the index template node: %s?') % node,
-        'form_icon': u'textfield_delete.png',
         'index': node.index,
         'node': node,
 
@@ -386,7 +384,6 @@ def rebuild_index_instances(request):
             'next': next,
             'title': _(u'Are you sure you wish to rebuild all indexes?'),
             'message': _(u'On large databases this operation may take some time to execute.'),
-            'form_icon': u'folder_page.png',
         }, context_instance=RequestContext(request))
     else:
         try:

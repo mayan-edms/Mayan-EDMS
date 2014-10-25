@@ -206,7 +206,6 @@ def document_delete(request, document_id=None, document_id_list=None):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'page_delete.png',
     }
     if len(documents) == 1:
         context['object'] = documents[0]
@@ -433,7 +432,6 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
     context = {
         'previous': previous,
         'title': title,
-        'form_icon': u'page_white_csharp.png',
     }
 
     if len(documents) == 1:
@@ -485,7 +483,6 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'page_paintbrush.png',
     }
 
     if len(documents) == 1:
@@ -892,7 +889,6 @@ def document_type_delete(request, document_type_id):
         'previous': previous,
         'title': _(u'Are you sure you wish to delete the document type: %s?') % document_type,
         'message': _(u'All documents of this type will be deleted too.'),
-        'form_icon': u'layout_delete.png',
     }
 
     return render_to_response('main/generic_confirm.html', context,
@@ -1013,7 +1009,6 @@ def document_type_filename_delete(request, document_type_filename_id):
         'title': _(u'Are you sure you wish to delete the filename: %(filename)s, from document type "%(document_type)s"?') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
         },
-        'form_icon': u'database_delete.png',
     }
 
     return render_to_response('main/generic_confirm.html', context,
@@ -1067,7 +1062,6 @@ def document_clear_image_cache(request):
     return render_to_response('main/generic_confirm.html', {
         'previous': previous,
         'title': _(u'Are you sure you wish to clear the document image cache?'),
-        'form_icon': u'camera_delete.png',
     }, context_instance=RequestContext(request))
 
 
@@ -1139,7 +1133,6 @@ def document_version_revert(request, document_version_pk):
         'object': document_version.document,
         'title': _(u'Are you sure you wish to revert to this version?'),
         'message': _(u'All later version after this one will be deleted too.'),
-        'form_icon': u'page_refresh.png',
     }, context_instance=RequestContext(request))
 
 
@@ -1264,5 +1257,4 @@ def document_page_transformation_delete(request, document_page_transformation_id
             'document_page': document_page_transformation.document_page},
         'web_theme_hide_menus': True,
         'previous': previous,
-        'form_icon': u'pencil_delete.png',
     }, context_instance=RequestContext(request))

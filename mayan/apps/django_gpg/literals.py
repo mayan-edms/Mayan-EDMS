@@ -33,26 +33,20 @@ SIGNATURE_STATE_VALID = 'signature valid'
 SIGNATURE_STATES = {
     SIGNATURE_STATE_BAD: {
         'text': _('Bad signature.'),
-        'icon': 'cross.png'
     },
     SIGNATURE_STATE_NONE: {
         'text': _('Document not signed or invalid signature.'),
-        'icon': 'cross.png'
     },
     SIGNATURE_STATE_ERROR: {
         'text': _('Signature error.'),
-        'icon': 'cross.png'
     },
     SIGNATURE_STATE_NO_PUBLIC_KEY: {
         'text': _('Document is signed but no public key is available for verification.'),
-        'icon': 'user_silhouette.png'
     },
     SIGNATURE_STATE_GOOD: {
         'text': _('Document is signed, and signature is good.'),
-        'icon': 'document_signature.png'
     },
     SIGNATURE_STATE_VALID: {
         'text': _('Document is signed with a valid signature.'),
-        'icon': 'document_signature.png'
     },
 }

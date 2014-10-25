@@ -78,7 +78,6 @@ def queue_document_delete(request, queue_document_id=None, queue_document_id_lis
         'next': next,
         'previous': previous,
         'delete_view': True,
-        'form_icon': u'hourglass_delete.png',
     }
 
     if len(queue_documents) == 1:
@@ -159,7 +158,6 @@ def re_queue_document(request, queue_document_id=None, queue_document_id_list=No
     context = {
         'next': next,
         'previous': previous,
-        'form_icon': u'hourglass_add.png',
     }
 
     if len(queue_documents) == 1:
@@ -188,7 +186,6 @@ def all_document_ocr_cleanup(request):
             'next': next,
             'title': _(u'Are you sure you wish to clean up all the pages content?'),
             'message': _(u'On large databases this operation may take some time to execute.'),
-            'form_icon': u'text_strikethroungh.png',
         }, context_instance=RequestContext(request))
     else:
         try:

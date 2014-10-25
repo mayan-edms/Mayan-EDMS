@@ -371,7 +371,6 @@ def setup_metadata_type_delete(request, metadatatype_id):
         'previous': previous,
         'object': metadata_type,
         'title': _(u'Are you sure you wish to delete the metadata type: %s?') % metadata_type,
-        'form_icon': u'xhtml_delete.png',
     }
 
     return render_to_response('main/generic_confirm.html', context,

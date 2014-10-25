@@ -104,7 +104,6 @@ def document_signature_upload(request, document_pk):
 
     return render_to_response('main/generic_form.html', {
         'title': _(u'Upload detached signature for: %s') % document,
-        'form_icon': 'key_delete.png',
         'next': next,
         'form': form,
         'previous': previous,
@@ -161,7 +160,6 @@ def document_signature_delete(request, document_pk):
 
     return render_to_response('main/generic_confirm.html', {
         'title': _(u'Are you sure you wish to delete the detached signature from document: %s?') % document,
-        'form_icon': 'pencil_delete.png',
         'next': next,
         'previous': previous,
         'object': document,

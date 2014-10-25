@@ -211,7 +211,6 @@ def smart_link_delete(request, smart_link_pk):
         'title': _(u'Are you sure you wish to delete smart link: %s?') % smart_link,
         'next': next,
         'previous': previous,
-        'form_icon': u'link_delete.png',
     }, context_instance=RequestContext(request))
 
 
@@ -331,7 +330,6 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
         'title': _(u'Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
         'next': next,
         'previous': previous,
-        'form_icon': u'cog_delete.png',
     }, context_instance=RequestContext(request))
 
 

@@ -121,7 +121,6 @@ def folder_delete(request, folder_id):
         'next': next,
         'object': folder,
         'title': _(u'Are you sure you with to delete the folder: %s?') % folder,
-        'form_icon': u'folder_delete.png',
     }
 
     return render_to_response('main/generic_confirm.html', context,
@@ -272,7 +271,6 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
         'object_name': _(u'Folder document'),
         'previous': previous,
         'next': next,
-        'form_icon': u'delete.png',
         'object': folder
     }
     if len(folder_documents) == 1:

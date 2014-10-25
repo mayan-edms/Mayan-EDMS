@@ -170,7 +170,6 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'tag_blue_delete.png',
     }
     if len(tags) == 1:
         context['object'] = tags[0]
@@ -271,7 +270,6 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
     context = {
         'previous': previous,
         'next': next,
-        'form_icon': u'tag_blue_delete.png',
     }
 
     template = 'main/generic_confirm.html'

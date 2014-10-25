@@ -43,7 +43,6 @@ class RoleDeleteView(SingleObjectDeleteView):
     permissions_required = [PERMISSION_ROLE_DELETE]
     extra_context = {
         'object_name': _(u'Role'),
-        'form_icon': u'medal_gold_delete.png'
     }
     success_url = reverse_lazy('permissions:role_list')
 
@@ -155,7 +154,6 @@ def permission_grant(request):
     context = {
         'previous': previous,
         'next': next,
-        'form_icon': u'key_add.png',
     }
 
     context['title'] = _(u'Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?') % {
@@ -217,7 +215,6 @@ def permission_revoke(request):
     context = {
         'previous': previous,
         'next': next,
-        'form_icon': u'key_delete.png',
     }
 
     context['title'] = _(u'Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?') % {
