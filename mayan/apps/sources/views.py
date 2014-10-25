@@ -427,7 +427,7 @@ def setup_source_edit(request, source_id):
         form = form_class(instance=source)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'Edit source: %s') % source.fullname(),
+        'title': _(u'Edit source: %s') % source,
         'form': form,
         'source': source,
         'navigation_object_name': 'source',
@@ -455,7 +455,7 @@ def setup_source_delete(request, source_id):
         return HttpResponseRedirect(reverse(redirect_view))
 
     context = {
-        'title': _(u'Are you sure you wish to delete the source: %s?') % source.fullname(),
+        'title': _(u'Are you sure you wish to delete the source: %s?') % source,
         'source': source,
         'object_name': _(u'Source'),
         'navigation_object_name': 'source',

@@ -12,6 +12,7 @@ import poplib
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
+from django.core.files import File
 from django.db import models, transaction
 from django.utils.translation import ugettext_lazy as _
 
@@ -181,8 +182,9 @@ class OutOfProcessSource(Source):
 
 
 class IntervalBaseModel(OutOfProcessSource):
-    interval = models.PositiveIntegerField(default=DEFAULT_INTERVAL, verbose_name=_('Interval'), help_text=_('Interval in seconds between document downloads from this source.'))
-    document_type = models.ForeignKey(DocumentType, verbose_name=_('Document type'), help_text=_('Assign a document type to documents uploaded from this source.'))
+    interval = models.PositiveIntegerField(default=DEFAULT_INTERVAL, verbose_name=_('Interval'), help_text=_('Interval in seconds between checks for new documents.'))
+    # TEMP: Until migration problem is fixed
+    #document_type = models.ForeignKey(DocumentType, null=True, verbose_name=_('Document type'), help_text=_('Assign a document type to documents uploaded from this source.'))
     uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_('Uncompress'), help_text=_('Whether to expand or not, compressed archives.'))
 
     def _get_periodic_task_name(self, pk=None):
@@ -212,7 +214,7 @@ class IntervalBaseModel(OutOfProcessSource):
             name=self._get_periodic_task_name(),
             interval=interval_instance,
             task='sources.tasks.task_check_interval_source',
-            queue='mailing',
+            queue='uploads',
             kwargs=json.dumps({'source_id': self.pk})
         )
 
@@ -268,7 +270,7 @@ class POP3Email(EmailBaseModel):
 
     timeout = models.PositiveIntegerField(default=DEFAULT_POP3_TIMEOUT, verbose_name=_('Timeout'))
 
-    def fetch_mail(self):
+    def check_source(self):
         try:
             logger.debug('Starting POP3 email fetch')
             logger.debug('host: %s' % self.host)
@@ -314,7 +316,7 @@ class IMAPEmail(EmailBaseModel):
     mailbox = models.CharField(max_length=64, default=DEFAULT_IMAP_MAILBOX, verbose_name=_('Mailbox'), help_text=_('Mail from which to check for messages with attached documents.'))
 
     # http://www.doughellmann.com/PyMOTW/imaplib/
-    def fetch_mail(self):
+    def check_source(self):
         try:
             logger.debug('Starting IMAP email fetch')
             logger.debug('host: %s' % self.host)
@@ -351,13 +353,26 @@ class IMAPEmail(EmailBaseModel):
         verbose_name_plural = _('IMAP email')
 
 
-class WatchFolderSource(OutOfProcessSource):
+class WatchFolderSource(IntervalBaseModel):
     source_type = SOURCE_CHOICE_WATCH
 
     folder_path = models.CharField(max_length=255, verbose_name=_(u'Folder path'), help_text=_(u'Server side filesystem path.'))
-    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    # TODO: remove delete_after_upload
     delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'Delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
-    interval = models.PositiveIntegerField(verbose_name=_(u'Interval'), help_text=_(u'Inverval in seconds where the watch folder path is checked for new documents.'))
+
+    def check_source(self):
+        # TEMP: until default document language problem is fixed
+        from documents.settings import LANGUAGE
+
+        for file_name in os.listdir(self.folder_path):
+            full_path = os.path.join(self.folder_path, file_name)
+            if os.path.isfile(full_path):
+
+                with File(file=open(full_path, mode='rb')) as file_object:
+                    # TEMP: Until migration document type problem is fixed
+                    document_type = DocumentType.objects.all()[0]
+                    self.upload_document(file_object, label=file_name, document_type=document_type, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), language=LANGUAGE)
+                    os.unlink(full_path)
 
     class Meta:
         verbose_name = _(u'Watch folder')

@@ -12,6 +12,7 @@ from .classes import StagingFile
 from .links import (document_create_multiple, document_create_siblings,
                     setup_sources, setup_source_create_imap_email,
                     setup_source_create_pop3_email,
+                    setup_source_create_watch_folder,
                     setup_source_create_webform,
                     setup_source_create_staging_folder,
                     setup_source_delete, setup_source_edit,
@@ -26,7 +27,7 @@ from .widgets import staging_file_thumbnail
 
 register_links([StagingFile], [staging_file_delete])
 
-register_links([Source, 'sources:setup_source_list', 'sources:setup_source_create'], [setup_sources, setup_source_create_webform, setup_source_create_staging_folder, setup_source_create_pop3_email, setup_source_create_imap_email], menu_name='secondary_menu')
+register_links([Source, 'sources:setup_source_list', 'sources:setup_source_create'], [setup_sources, setup_source_create_webform, setup_source_create_staging_folder, setup_source_create_pop3_email, setup_source_create_imap_email, setup_source_create_watch_folder], menu_name='secondary_menu')
 register_links([Source], [setup_source_edit, setup_source_transformation_list, setup_source_delete])
 
 register_links(SourceTransformation, [setup_source_transformation_edit, setup_source_transformation_delete])

@@ -23,8 +23,8 @@ SOURCE_CHOICE_EMAIL_IMAP = 'imap'
 
 SOURCE_CHOICES = (
     (SOURCE_CHOICE_WEB_FORM, _(u'Web form')),
-    (SOURCE_CHOICE_STAGING, _(u'Server staging folder')),
-    (SOURCE_CHOICE_WATCH, _(u'Server watch folder')),
+    (SOURCE_CHOICE_STAGING, _(u'Staging folder')),
+    (SOURCE_CHOICE_WATCH, _(u'Watch folder')),
     (SOURCE_CHOICE_EMAIL_POP3, _(u'POP3 email')),
     (SOURCE_CHOICE_EMAIL_IMAP, _(u'IMAP email')),
 )

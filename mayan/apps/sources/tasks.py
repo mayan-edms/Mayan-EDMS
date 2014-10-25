@@ -17,7 +17,7 @@ logger = logging.getLogger(__name__)
 def task_check_interval_source(source_id):
     source = Source.objects.get_subclass(pk=source_id)
     if source.enabled:
-        source.fetch_mail()
+        source.check_source()
 
 
 @app.task(ignore_result=True)
