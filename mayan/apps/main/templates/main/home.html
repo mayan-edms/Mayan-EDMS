@@ -1,13 +1,14 @@
 {% extends 'main/base.html' %}
 
 {% load i18n %}
+{% load static %}
 
 {% load project_tags %}
 
 {% block content %}
     <div class="content tc">
         <h1>{% project_name %}</h1>
-        <img src="{{ STATIC_URL }}images/1068504_92921456.jpg" />
+        <img src="{% static 'images/1068504_92921456.jpg' %}" />
         <h2>{% trans 'Django based open source document management system' %}</h2><hr>
     </div>
 {% endblock %}

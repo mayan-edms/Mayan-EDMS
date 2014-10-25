@@ -1,6 +1,7 @@
 {% extends 'main/base.html' %}
 
 {% load i18n %}
+{% load static %}
 
 {% load autoadmin_tags %}
 {% load project_tags %}
@@ -59,7 +60,7 @@
                                 <input type="hidden" name="next" value="{{ next|escape }}" />
                                 <div class="group navform wat-cf">
                                 <button class="button" type="submit">
-                                    <img src="{{ STATIC_URL }}web_theme_media/images/icons/key.png" alt="Save" /> {% trans 'Login' %}
+                                    <img src="{% static 'web_theme_media/images/icons/key.png' %}" alt="Save" /> {% trans 'Login' %}
                                 </button>
                             </div>
                         </form>

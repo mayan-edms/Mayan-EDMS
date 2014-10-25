@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load static %}
 
 {% load attribute_tags %}
 {% load pagination_tags %}
@@ -44,7 +45,7 @@
                     {% endwith %}
                     <div class="group navform wat-cf">
                         <button class="button" type="submit" name="{{ form.prefix }}-submit">
-                            <img src="{{ STATIC_URL }}web_theme_media/images/icons/tick.png" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}
+                            <img src="{% static 'web_theme_media/images/icons/tick.png' %}" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}
                         </button>
                     </div>
                 {% endif %}
@@ -82,7 +83,7 @@
                     {% endwith %}
                     <div class="group navform wat-cf">
                         <button class="button" type="submit" name="{{ form.prefix }}-submit">
-                            <img src="{{ STATIC_URL }}web_theme_media/images/icons/tick.png" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}
+                            <img src="{% static 'web_theme_media/images/icons/tick.png' %}" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}
                         </button>
                     </div>
                 {% endif %}

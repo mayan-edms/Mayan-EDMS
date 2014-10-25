@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load static %}
 
 {% if side_bar %}
     <div class="block">
@@ -80,20 +81,20 @@
                 {% if submit_icon_famfam %}
                     <span class="famfam active famfam-{{ submit_icon_famfam|default:'tick' }}"></span>
                 {% else %}
-                    <img src="{{ STATIC_URL }}web_theme_media/images/icons/tick.png" alt="{% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}" />
+                    <img src="{% static 'web_theme_media/images/icons/tick.png' %}" alt="{% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}" />
                 {% endif %}
                 {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
             </button>
 
               {% if previous %}
                   <a href="#header" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}' class="button">
-                    <img src="{{ STATIC_URL }}web_theme_media/images/icons/cross.png"  alt="{% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}"/> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
+                    <img src="{% static 'web_theme_media/images/icons/cross.png' %}"  alt="{% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}"/> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
                   </a>
               {% endif %}
 
             {% comment %}
             <a href="#header" class="button">
-                <img src="{{ STATIC_URL }}web_theme_media/images/icons/cross.png" alt="{% trans 'Cancel' %}"/> {% trans 'Cancel' %}
+                <img src="{% static 'web_theme_media/images/icons/cross.png' %}" alt="{% trans 'Cancel' %}"/> {% trans 'Cancel' %}
             </a>
             {% endcomment %}
         </div>
