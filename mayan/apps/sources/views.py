@@ -381,7 +381,6 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
         'object': staging_file,
         'next': next,
         'previous': previous,
-        'form_icon': u'delete.png',
         'temporary_navigation_links': {'form_header': {'staging_file_delete': {'links': results['tab_links']}}},
     }, context_instance=RequestContext(request))
 
@@ -581,7 +580,6 @@ def setup_source_transformation_delete(request, transformation_id):
             'transformation': source_transformation.get_transformation_display(),
         },
         'previous': previous,
-        'form_icon': u'shape_square_delete.png',
     }, context_instance=RequestContext(request))
 
 
