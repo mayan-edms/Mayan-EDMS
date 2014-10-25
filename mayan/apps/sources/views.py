@@ -34,7 +34,7 @@ from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_DELETE,
                           PERMISSION_SOURCES_SETUP_EDIT,
                           PERMISSION_SOURCES_SETUP_VIEW)
-from .tasks import task_upload_document
+from .tasks import task_upload_document, task_upload_new_version
 from .utils import get_class, get_form_class, get_upload_form_class
 
 
@@ -317,19 +317,15 @@ class UploadInteractiveVersionView(UploadBaseView):
         else:
             user_id = None
 
-        '''
-        task_upload_document.apply_async(kwargs=dict(
+        task_upload_new_version.apply_async(kwargs=dict(
             source_id=self.source.pk,
             file_path=temporary_file.name,
-            label=file_object.name,
-            document_type_id=self.document_type.pk,
-            expand=expand,
-            metadata_dict_list=decode_metadata_from_url(self.request.GET),
+            document_id=self.document.pk,
             user_id=user_id,
-            description=forms['document_form'].cleaned_data.get('description'),
-            language=forms['document_form'].cleaned_data.get('language')
+            version_update=forms['document_form'].cleaned_data.get('version_update'),
+            comment=forms['document_form'].cleaned_data.get('comment')
         ), queue='uploads')
-        '''
+
         messages.success(self.request, _(u'New document version queued for uploaded and will be available shortly.'))
         return HttpResponseRedirect(reverse('documents:document_version_list', args=[self.document.pk]))
 
