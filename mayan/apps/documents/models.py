@@ -219,6 +219,8 @@ class Document(models.Model):
 
         logger.debug('new_version saved')
 
+        # TODO: new HISTORY for version updates
+
         return new_version
 
     # Proxy methods
