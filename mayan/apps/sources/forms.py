@@ -35,15 +35,6 @@ class NewVersionForm(forms.Form):
             widget=forms.widgets.Textarea(attrs={'rows': 4}),
         )
 
-    #def clean(self):
-    #    cleaned_data = self.cleaned_data
-    #    cleaned_data['new_version_data'] = {
-    #        'comment': self.cleaned_data.get('comment'),
-    #        'version_update': self.cleaned_data.get('version_update'),
-    #    }
-        # Always return the full collection of cleaned data.
-        #return cleaned_data
-
 
 class UploadBaseForm(forms.Form):
     def __init__(self, *args, **kwargs):
