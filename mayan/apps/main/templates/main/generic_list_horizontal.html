@@ -1,11 +1,9 @@
 {% extends 'main/base.html' %}
 
-{% load i18n %}
-
 {% load navigation_tags %}
 {% load subtemplates_tags %}
 
-{% block title %} :: {% blocktrans with title as title %}{{ title }}{% endblocktrans %}{% endblock %}
+{% block title %} :: {{ title }}{% endblock %}
 
 {% block sidebar %}
     {% for subtemplate in sidebar_subtemplates_list %}
