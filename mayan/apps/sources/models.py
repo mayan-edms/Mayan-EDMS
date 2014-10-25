@@ -183,8 +183,7 @@ class OutOfProcessSource(Source):
 
 class IntervalBaseModel(OutOfProcessSource):
     interval = models.PositiveIntegerField(default=DEFAULT_INTERVAL, verbose_name=_('Interval'), help_text=_('Interval in seconds between checks for new documents.'))
-    # TEMP: Until migration problem is fixed
-    #document_type = models.ForeignKey(DocumentType, null=True, verbose_name=_('Document type'), help_text=_('Assign a document type to documents uploaded from this source.'))
+    document_type = models.ForeignKey(DocumentType, verbose_name=_('Document type'), help_text=_('Assign a document type to documents uploaded from this source.'))
     uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_('Uncompress'), help_text=_('Whether to expand or not, compressed archives.'))
 
     def _get_periodic_task_name(self, pk=None):
@@ -369,9 +368,7 @@ class WatchFolderSource(IntervalBaseModel):
             if os.path.isfile(full_path):
 
                 with File(file=open(full_path, mode='rb')) as file_object:
-                    # TEMP: Until migration document type problem is fixed
-                    document_type = DocumentType.objects.all()[0]
-                    self.upload_document(file_object, label=file_name, document_type=document_type, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), language=LANGUAGE)
+                    self.upload_document(file_object, label=file_name, document_type=self.document_type, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), language=LANGUAGE)
                     os.unlink(full_path)
 
     class Meta:
