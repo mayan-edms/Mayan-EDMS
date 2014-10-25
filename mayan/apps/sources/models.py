@@ -92,13 +92,6 @@ class Source(models.Model):
         if metadata_dict_list:
             save_metadata_list(metadata_dict_list, new_version.document, create=True)
 
-    def upload_new_version(self, file_object, document, user, new_version_data=None, comment=None):
-        if not new_version_data:
-            new_version_data = {}
-
-        # TODO: new HISTORY for version updates
-        new_version = document.new_version(file=file_object, user=user, **new_version_data)
-
     def get_upload_file_object(self, request, form):
         pass
 
