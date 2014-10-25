@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -33,11 +33,11 @@ msgstr "Pojam"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Ime, e-mail, ID ključ ili otisak ključa potražiti."
 
-#: links.py:6 views.py:67
+#: links.py:6 views.py:66
 msgid "Private keys"
 msgstr ""
 
-#: links.py:7 views.py:70
+#: links.py:7 views.py:69
 msgid "Public keys"
 msgstr ""
 
@@ -81,23 +81,23 @@ msgstr "Elgamal"
 msgid "Bad signature."
 msgstr "Loš potpis."
 
-#: literals.py:39
+#: literals.py:38
 msgid "Document not signed or invalid signature."
 msgstr "Dokument nije potpisan, ili nevažeći potpis."
 
-#: literals.py:43
+#: literals.py:41
 msgid "Signature error."
 msgstr "Greška potpisa."
 
-#: literals.py:47
+#: literals.py:44
 msgid "Document is signed but no public key is available for verification."
 msgstr "Dokument je potpisan, ali  javni ključ nije dostupan za provjeru."
 
-#: literals.py:51
+#: literals.py:47
 msgid "Document is signed, and signature is good."
 msgstr "Dokument je potpisan, a potpis je dobar."
 
-#: literals.py:55
+#: literals.py:50
 msgid "Document is signed with a valid signature."
 msgstr "Dokument je potpisan sa važećim potpisom."
 
@@ -142,24 +142,24 @@ msgstr "Importuj ključ"
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "Jeste li sigurni da želite importovati id ključa: %s?"
 
-#: views.py:78
+#: views.py:77
 msgid "Key ID"
 msgstr "ID ključa"
 
-#: views.py:82
+#: views.py:81
 msgid "Owner"
 msgstr "Vlasnik"
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Ključ: %s, uspješno obrisan."
 
-#: views.py:109
+#: views.py:108
 msgid "Delete key"
 msgstr "Obriši ključ"
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -170,53 +170,53 @@ msgstr ""
 "ključ koji je dio javnog/privatnog para privatni ključ će biti izbrisan, "
 "takođe."
 
-#: views.py:129
+#: views.py:127
 msgid "Query key server"
 msgstr "Upit servera ključeva"
 
-#: views.py:142
+#: views.py:140
 msgid "results"
 msgstr "rezultati"
 
-#: views.py:147
+#: views.py:145
 msgid "ID"
 msgstr "ID"
 
-#: views.py:151
+#: views.py:149
 msgid "Type"
 msgstr ""
 
-#: views.py:155
+#: views.py:153
 #, fuzzy
 msgid "Creation date"
 msgstr "datum kreiranja"
 
-#: views.py:159
+#: views.py:157
 #, fuzzy
 msgid "Disabled"
 msgstr "onemogućen"
 
-#: views.py:163
+#: views.py:161
 #, fuzzy
 msgid "Expiration date"
 msgstr "datum isteka"
 
-#: views.py:167
+#: views.py:165
 #, fuzzy
 msgid "Expired"
 msgstr "istekao"
 
-#: views.py:171
+#: views.py:169
 #, fuzzy
 msgid "Length"
 msgstr "dužina"
 
-#: views.py:175
+#: views.py:173
 #, fuzzy
 msgid "Revoked"
 msgstr "ukinut"
 
-#: views.py:180
+#: views.py:178
 msgid "Identifies"
 msgstr "Identificira"
 

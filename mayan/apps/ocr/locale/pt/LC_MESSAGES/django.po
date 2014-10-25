@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:47-0400\n"
+"POT-Creation-Date: 2014-10-25 02:35-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
@@ -150,7 +150,7 @@ msgstr ""
 msgid "Node"
 msgstr ""
 
-#: views.py:59 views.py:139
+#: views.py:59 views.py:138
 msgid "Must provide at least one queue document."
 msgstr "Deve fornecer pelo menos um documento da fila."
 
@@ -164,55 +164,55 @@ msgstr "Documento da fila: %(document)s  excluído com sucesso."
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Erro ao excluir documento: %(document)s; %(error)s "
 
-#: views.py:86
+#: views.py:85
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
 msgstr "Tem a certeza de que deseja excluir o documento da fila: %s?"
 
-#: views.py:88
+#: views.py:87
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
 msgstr "Tem a certeza de que deseja excluir os documentos da fila: %s?"
 
-#: views.py:123
+#: views.py:122
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr ""
 
-#: views.py:151
+#: views.py:150
 #, fuzzy, python-format
 msgid "Document: %(document)s was re-queued for OCR."
 msgstr "Document: %(document)s is already queued."
 
-#: views.py:156
+#: views.py:155
 #, python-format
 msgid "Document id#: %d, no longer exists."
 msgstr "O documento com id nº: %d, já não existe."
 
-#: views.py:167
+#: views.py:165
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
 msgstr "Tem a certeza de que deseja reenviar o documento: %s para a fila?"
 
-#: views.py:169
+#: views.py:167
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr "Tem a certeza de que deseja reenviar para a fila os documentos: %s?"
 
-#: views.py:189
+#: views.py:187
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Tem a certeza de que deseja limpar todo o conteúdo das páginas?"
 
-#: views.py:190
+#: views.py:188
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 "Esta operação pode levar algum tempo a executar em bases de dados grandes ."
 
-#: views.py:196
+#: views.py:193
 msgid "Document pages content clean up complete."
 msgstr "Limpeza do conteúdo das páginas do documento completa."
 
-#: views.py:198
+#: views.py:195
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Erro ao limpar o conteúdo das páginas do documento: %s"

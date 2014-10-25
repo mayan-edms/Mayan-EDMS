@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:43-0400\n"
+"POT-Creation-Date: 2014-10-25 02:31-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -223,7 +223,7 @@ msgstr "خطا در زمان خروج و یا checkout سند: %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "سند \"%s\" با موفقیت وارد و یا  checked in شد."
 
-#: views.py:141
+#: views.py:140
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
@@ -232,7 +232,7 @@ msgstr ""
 "شما خارج و یا checkout کننده اصلی این سند : %s نیستید. آیا از ورود و یا "
 "check in اجباری این سند مطمئن هستید؟"
 
-#: views.py:143
+#: views.py:142
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "آیا از ورود ویا check in این سند: %s مطمئن هستید؟"

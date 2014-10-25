@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
@@ -33,11 +33,11 @@ msgstr "Termen"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Nume, e-mail, ID-ul de cheie sau amprenta cheii pentru a căuta."
 
-#: links.py:6 views.py:67
+#: links.py:6 views.py:66
 msgid "Private keys"
 msgstr ""
 
-#: links.py:7 views.py:70
+#: links.py:7 views.py:69
 msgid "Public keys"
 msgstr ""
 
@@ -81,25 +81,25 @@ msgstr "Elgamal"
 msgid "Bad signature."
 msgstr "Semnătură nereuşită."
 
-#: literals.py:39
+#: literals.py:38
 msgid "Document not signed or invalid signature."
 msgstr "Documentul nu e semnat sau semnătură invalidă."
 
-#: literals.py:43
+#: literals.py:41
 msgid "Signature error."
 msgstr "Eroare semnătură."
 
-#: literals.py:47
+#: literals.py:44
 msgid "Document is signed but no public key is available for verification."
 msgstr ""
 "Documentul este semnat, dar nici o cheie publică nu este disponibilă pentru "
 "verificare."
 
-#: literals.py:51
+#: literals.py:47
 msgid "Document is signed, and signature is good."
 msgstr "Documentul este semnat, iar semnătura este bună."
 
-#: literals.py:55
+#: literals.py:50
 msgid "Document is signed with a valid signature."
 msgstr "Documentul este semnat cu o semnătură validă."
 
@@ -145,24 +145,24 @@ msgstr "Import cheie"
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "Sunteți sigur că doriți să importați ID-cheie:% s?"
 
-#: views.py:78
+#: views.py:77
 msgid "Key ID"
 msgstr "ID cheie"
 
-#: views.py:82
+#: views.py:81
 msgid "Owner"
 msgstr "Proprietar"
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Cheie :% s, elimină cu succes."
 
-#: views.py:109
+#: views.py:108
 msgid "Delete key"
 msgstr "Ștergeți-cheie"
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -173,53 +173,53 @@ msgstr ""
 "cheie publică, care este parte dintr-o pereche publi /privat cheia privată "
 "va fi șterse de asemenea."
 
-#: views.py:129
+#: views.py:127
 msgid "Query key server"
 msgstr "Interogare cheie serverul"
 
-#: views.py:142
+#: views.py:140
 msgid "results"
 msgstr "rezultate"
 
-#: views.py:147
+#: views.py:145
 msgid "ID"
 msgstr "ID-ul"
 
-#: views.py:151
+#: views.py:149
 msgid "Type"
 msgstr ""
 
-#: views.py:155
+#: views.py:153
 #, fuzzy
 msgid "Creation date"
 msgstr "data creării"
 
-#: views.py:159
+#: views.py:157
 #, fuzzy
 msgid "Disabled"
 msgstr "invalid"
 
-#: views.py:163
+#: views.py:161
 #, fuzzy
 msgid "Expiration date"
 msgstr "dată de expirare"
 
-#: views.py:167
+#: views.py:165
 #, fuzzy
 msgid "Expired"
 msgstr "expirat"
 
-#: views.py:171
+#: views.py:169
 #, fuzzy
 msgid "Length"
 msgstr "lungime"
 
-#: views.py:175
+#: views.py:173
 #, fuzzy
 msgid "Revoked"
 msgstr "revocată"
 
-#: views.py:180
+#: views.py:178
 msgid "Identifies"
 msgstr "Identifică"
 

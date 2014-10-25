@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:47-0400\n"
+"POT-Creation-Date: 2014-10-25 02:35-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -149,7 +149,7 @@ msgstr ""
 msgid "Node"
 msgstr ""
 
-#: views.py:59 views.py:139
+#: views.py:59 views.py:138
 msgid "Must provide at least one queue document."
 msgstr "Должна быть хотя бы одна очередь документов."
 
@@ -163,56 +163,56 @@ msgstr "Очередь документов: %(document)s успешно уда�
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Ошибка при удалении документа:%(document)s; %(error)s"
 
-#: views.py:86
+#: views.py:85
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
 msgstr "Вы действительно хотите удалить очередь документа: %s?"
 
-#: views.py:88
+#: views.py:87
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
 msgstr "Вы действительно хотите удалить очереди документов: %s?"
 
-#: views.py:123
+#: views.py:122
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr ""
 
-#: views.py:151
+#: views.py:150
 #, fuzzy, python-format
 msgid "Document: %(document)s was re-queued for OCR."
 msgstr "Document: %(document)s is already queued."
 
-#: views.py:156
+#: views.py:155
 #, python-format
 msgid "Document id#: %d, no longer exists."
 msgstr "Документ №: %d больше не существует."
 
-#: views.py:167
+#: views.py:165
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
 msgstr "Вы действительно хотите повторно добавить документ в очередь: %s?"
 
-#: views.py:169
+#: views.py:167
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr "Вы действительно хотите повторно добавить документы в очередь: %s?"
 
-#: views.py:189
+#: views.py:187
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Вы уверены, что хотите очистить все содержимое страниц?"
 
-#: views.py:190
+#: views.py:188
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 "В больших базах данных эта операция может занять некоторое время для "
 "выполнения."
 
-#: views.py:196
+#: views.py:193
 msgid "Document pages content clean up complete."
 msgstr "Чистка содержимого страниц документа завершена."
 
-#: views.py:198
+#: views.py:195
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Ошибка:%s при чистка содержимого страниц документа"

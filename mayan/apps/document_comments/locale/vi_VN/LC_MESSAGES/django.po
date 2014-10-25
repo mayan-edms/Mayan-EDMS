@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:45-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: Trung Phan Minh <navmobile@gmail.com>\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
@@ -73,26 +73,26 @@ msgstr "Chú thích \"%s\" đã xóa thành công."
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "Lỗi xóa chú thích  \"%(comment)s\": %(error)s"
 
-#: views.py:63
+#: views.py:62
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
 msgstr "Bạn có chắc chắn muốn xóa thú thích: %s?"
 
-#: views.py:65
+#: views.py:64
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
 msgstr "Bạn có chắc chắn muốn xóa thú thích: %s?"
 
-#: views.py:99
+#: views.py:98
 msgid "Comment added successfully."
 msgstr "Chú thích được tạo thành công."
 
-#: views.py:106
+#: views.py:105
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Thêm chú thích cho tài liệu: %s"
 
-#: views.py:126
+#: views.py:125
 #, fuzzy, python-format
 msgid "Comments for document: %s"
 msgstr "Thêm chú thích cho tài liệu: %s"

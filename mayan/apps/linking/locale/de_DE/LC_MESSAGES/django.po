@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:46-0400\n"
+"POT-Creation-Date: 2014-10-25 02:34-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
@@ -159,11 +159,11 @@ msgstr ""
 "werden. Die Dokument-Metadaten sind verfügbar als Variable `metadata` und "
 "Dokumenteneigenschaften als Variable `document`. "
 
-#: models.py:13 models.py:32 views.py:135 views.py:230
+#: models.py:13 models.py:32 views.py:135 views.py:229
 msgid "Enabled"
 msgstr ""
 
-#: models.py:21 models.py:26 views.py:294 views.py:328
+#: models.py:21 models.py:26 views.py:293 views.py:327
 msgid "Smart link"
 msgstr ""
 
@@ -285,47 +285,47 @@ msgid "Are you sure you wish to delete smart link: %s?"
 msgstr ""
 "Sind Sie sicher, dass Sie die intelligente Verknüpfung %s löschen möchten?"
 
-#: views.py:227
+#: views.py:226
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr ""
 
-#: views.py:252
+#: views.py:251
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "Bedingung für Intelligente Verknüpfung \"%s\" erfolgreich erstellt."
 
-#: views.py:259
+#: views.py:258
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Neue Bedingungen zu Intelligenter Verknüpfung \"%s\" hinzufügen"
 
-#: views.py:281
+#: views.py:280
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "Bedingung für Intelligente Verknüpfung: \"%s\" erfolgreich bearbeitet."
 
-#: views.py:288
+#: views.py:287
 msgid "Edit smart link condition"
 msgstr "Bedingung für Intelligente Verknüpfung bearbeiten"
 
-#: views.py:295 views.py:329
+#: views.py:294 views.py:328
 msgid "Condition"
 msgstr ""
 
-#: views.py:315
+#: views.py:314
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "Bedingung für Intelligente Verknüpfung: \"%s\" erfolgreich gelöscht."
 
-#: views.py:317
+#: views.py:316
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr ""
 "Fehler beim Löschen der Bedingung: %(smart_link_condition)s ; %(exception)s ."
 
-#: views.py:331
+#: views.py:330
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr "Sind Sie sicher, dass Sie die Bedingung \"%s\" löschen möchten?"

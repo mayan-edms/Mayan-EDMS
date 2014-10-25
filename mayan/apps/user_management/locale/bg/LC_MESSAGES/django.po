@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:48-0400\n"
+"POT-Creation-Date: 2014-10-25 02:36-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -52,15 +52,15 @@ msgstr ""
 msgid "Reset password"
 msgstr ""
 
-#: links.py:18 links.py:20 links.py:21 views.py:252
+#: links.py:18 links.py:20 links.py:21 views.py:251
 msgid "Groups"
 msgstr ""
 
-#: links.py:23 views.py:301
+#: links.py:23 views.py:300
 msgid "Create new group"
 msgstr ""
 
-#: links.py:26 views.py:256
+#: links.py:26 views.py:255
 msgid "Members"
 msgstr ""
 
@@ -134,7 +134,7 @@ msgstr "Потребител \"%s\" е обновен успешно"
 msgid "Edit user: %s"
 msgstr ""
 
-#: views.py:78 views.py:134 views.py:197 views.py:241
+#: views.py:78 views.py:134 views.py:196 views.py:240
 msgid "User"
 msgstr ""
 
@@ -143,7 +143,7 @@ msgstr ""
 msgid "User \"%s\" created successfully."
 msgstr "Потребител \"%s\" е създаден успешно."
 
-#: views.py:112 views.py:166
+#: views.py:112 views.py:165
 msgid "Must provide at least one user."
 msgstr "Трябва да изберете поне един потребител."
 
@@ -165,21 +165,21 @@ msgstr "Потребител \"%s\" е изтрит успешно."
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Грешка при изтриването на потребител \"%(user)s\": %(error)s"
 
-#: views.py:142
+#: views.py:141
 #, python-format
 msgid "Are you sure you wish to delete the user: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете потребителят %s?"
 
-#: views.py:144
+#: views.py:143
 #, python-format
 msgid "Are you sure you wish to delete the users: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете потребителите %s?"
 
-#: views.py:177
+#: views.py:176
 msgid "Passwords do not match, try again."
 msgstr "Паролата не съвпада. Опитайте отново."
 
-#: views.py:182
+#: views.py:181
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
@@ -187,85 +187,85 @@ msgstr ""
 "Промяна на парола на потребители от супер потребител и служител не е "
 "разрешено. Използвайте администраторския модул за тези случаи."
 
-#: views.py:186
+#: views.py:185
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "Успешна промяна на парола на потребител %s."
 
-#: views.py:188
+#: views.py:187
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Грешка при промяна на парола на потребител \"%(user)s\": %(error)s"
 
-#: views.py:204
+#: views.py:203
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr "Промяна на парола на потребител %s"
 
-#: views.py:206
+#: views.py:205
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr "Промяна на парола на потребители %s"
 
-#: views.py:236
+#: views.py:235
 #, python-format
 msgid "Non groups of user: %s"
 msgstr ""
 
-#: views.py:237
+#: views.py:236
 #, python-format
 msgid "Groups of user: %s"
 msgstr ""
 
-#: views.py:275
+#: views.py:274
 #, python-format
 msgid "Group \"%s\" updated successfully."
 msgstr "Групата \"%s\" е обновена успешно."
 
-#: views.py:281
+#: views.py:280
 #, python-format
 msgid "Edit group: %s"
 msgstr ""
 
-#: views.py:284 views.py:335 views.py:380
+#: views.py:283 views.py:334 views.py:378
 msgid "Group"
 msgstr ""
 
-#: views.py:295
+#: views.py:294
 #, python-format
 msgid "Group \"%s\" created successfully."
 msgstr "Групата \"%s\" е създадена успешно."
 
-#: views.py:316
+#: views.py:315
 msgid "Must provide at least one group."
 msgstr "Необходимо е да се включи поне една група."
 
-#: views.py:326
+#: views.py:325
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr "Групата \"%s\" е изтрита успешно."
 
-#: views.py:328
+#: views.py:327
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr "Грешка при изтриването на група \"%(group)s\": %(error)s"
 
-#: views.py:343
+#: views.py:341
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете групата %s?"
 
-#: views.py:345
+#: views.py:343
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете групите %s?"
 
-#: views.py:375
+#: views.py:373
 #, python-format
 msgid "Non members of group: %s"
 msgstr ""
 
-#: views.py:376
+#: views.py:374
 #, python-format
 msgid "Members of group: %s"
 msgstr ""

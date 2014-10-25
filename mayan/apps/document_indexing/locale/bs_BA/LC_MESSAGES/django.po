@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:45-0400\n"
+"POT-Creation-Date: 2014-10-25 02:33-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -22,7 +22,7 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: __init__.py:46 links.py:23 links.py:24 links.py:38 links.py:40 models.py:66
-#: views.py:40 views.py:305
+#: views.py:40 views.py:303
 msgid "Indexes"
 msgstr "Indeksi"
 
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Tree template"
 msgstr ""
 
-#: links.py:29 models.py:21 views.py:309
+#: links.py:29 models.py:21 views.py:307
 msgid "Document types"
 msgstr ""
 
@@ -143,7 +143,7 @@ msgstr ""
 msgid "The name that will be visible to users."
 msgstr "Ime koje će biti vidljivo korisnicima."
 
-#: models.py:20 models.py:74 views.py:46 views.py:166
+#: models.py:20 models.py:74 views.py:46 views.py:165
 msgid "Enabled"
 msgstr ""
 
@@ -153,8 +153,8 @@ msgstr ""
 "Uzrokuje da će ovaj indeks biti vidljiv i update-ovan kad se promjene podaci "
 "dokumenta."
 
-#: models.py:65 models.py:71 views.py:103 views.py:133 views.py:159
-#: views.py:195 views.py:222 views.py:251 views.py:290
+#: models.py:65 models.py:71 views.py:103 views.py:133 views.py:158
+#: views.py:194 views.py:221 views.py:250 views.py:288
 msgid "Index"
 msgstr ""
 
@@ -292,96 +292,96 @@ msgstr "Indeks: %(index)s greška brisanja: %(error)s"
 msgid "Are you sure you with to delete the index: %s?"
 msgstr "Jeste li sigurni da želite izbrisati indeks: %s?"
 
-#: views.py:162
+#: views.py:161
 #, python-format
 msgid "Tree template nodes for index: %s"
 msgstr ""
 
-#: views.py:165
+#: views.py:164
 msgid "Level"
 msgstr ""
 
-#: views.py:167
+#: views.py:166
 msgid "Has document links?"
 msgstr ""
 
-#: views.py:189
+#: views.py:188
 #, python-format
 msgid "Document types not in index: %s"
 msgstr ""
 
-#: views.py:190
+#: views.py:189
 #, python-format
 msgid "Document types for index: %s"
 msgstr ""
 
-#: views.py:213
+#: views.py:212
 msgid "Index template node created successfully."
 msgstr "Nod predložaka indeksa uspješno kreiran."
 
-#: views.py:219
+#: views.py:218
 msgid "Create child node"
 msgstr ""
 
-#: views.py:239
+#: views.py:238
 msgid "Index template node edited successfully"
 msgstr "Nod predložaka indeksa uspješno izmjenjen."
 
-#: views.py:245
+#: views.py:244
 #, python-format
 msgid "Edit index template node: %s"
 msgstr ""
 
-#: views.py:252 views.py:291 views.py:358
+#: views.py:251 views.py:289 views.py:356
 msgid "Node"
 msgstr ""
 
-#: views.py:273
+#: views.py:272
 #, python-format
 msgid "Node: %s deleted successfully."
 msgstr "Nod: %s uspješno obrisan."
 
-#: views.py:275
+#: views.py:274
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
 msgstr "Nod: %(node)s greška brisanja: %(error)s"
 
-#: views.py:284
+#: views.py:283
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
 msgstr "Jeste li sigurni da želite izbrisati nod predložaka ineksa:% s?"
 
-#: views.py:308
+#: views.py:306
 msgid "Nodes"
 msgstr ""
 
-#: views.py:340
+#: views.py:338
 #, python-format
 msgid "Contents for index: %s"
 msgstr ""
 
-#: views.py:362
+#: views.py:360
 msgid "Items"
 msgstr ""
 
-#: views.py:387
+#: views.py:385
 msgid "Are you sure you wish to rebuild all indexes?"
 msgstr "Jeste li sigurni da želite obnoviti sve indekse?"
 
-#: views.py:388
+#: views.py:386
 msgid "On large databases this operation may take some time to execute."
 msgstr "Na velikim bazama podataka ove operacije mogu potrajati neko vrijeme."
 
-#: views.py:394
+#: views.py:391
 msgid "Index rebuild completed successfully."
 msgstr "Obnova indeksa uspješno završena."
 
-#: views.py:401
+#: views.py:398
 #, python-format
 msgid "Index rebuild error: %s"
 msgstr "Greška obnove indeksa: %s"
 
-#: views.py:424
+#: views.py:421
 #, python-format
 msgid "Indexes containing: %s"
 msgstr ""

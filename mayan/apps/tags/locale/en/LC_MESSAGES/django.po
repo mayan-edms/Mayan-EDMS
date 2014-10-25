@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:47-0400\n"
+"POT-Creation-Date: 2014-10-25 02:35-0400\n"
 "PO-Revision-Date: 2012-12-12 06:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -124,7 +124,7 @@ msgstr ""
 msgid "Color"
 msgstr "Color"
 
-#: models.py:17 views.py:169 views.py:214 views.py:231
+#: models.py:17 views.py:169 views.py:213 views.py:230
 #, fuzzy
 msgid "Tag"
 msgstr "Tags"
@@ -205,54 +205,54 @@ msgstr "Tag \"%s\" deleted successfully."
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Error deleting tag \"%(tag)s\": %(error)s"
 
-#: views.py:177
+#: views.py:176
 #, python-format
 msgid "Are you sure you wish to delete the tag: %s?"
 msgstr "Are you sure you wish to delete the tag: %s?"
 
-#: views.py:178 views.py:181
+#: views.py:177 views.py:180
 msgid "Will be removed from all documents."
 msgstr "Will be removed from all documents."
 
-#: views.py:180
+#: views.py:179
 #, python-format
 msgid "Are you sure you wish to delete the tags: %s?"
 msgstr "Are you sure you wish to delete the tags: %s?"
 
-#: views.py:205
+#: views.py:204
 msgid "Tag updated succesfully."
 msgstr "Tag updated succesfully."
 
-#: views.py:211
+#: views.py:210
 #, fuzzy, python-format
 msgid "Edit tag: %s"
 msgstr "edit tag: %s"
 
-#: views.py:227
+#: views.py:226
 #, fuzzy, python-format
 msgid "Documents with the tag \"%s\""
 msgstr "documents with the tag \"%s\""
 
-#: views.py:246
+#: views.py:245
 #, fuzzy, python-format
 msgid "Tags for: %s"
 msgstr "tags for: %s"
 
-#: views.py:258
+#: views.py:257
 msgid "Must provide at least one tagged document."
 msgstr "Must provide at least one tagged document."
 
-#: views.py:297
+#: views.py:295
 #, python-format
 msgid "Remove tag from document: %s."
 msgstr "Remove tag from document: %s."
 
-#: views.py:299
+#: views.py:297
 #, python-format
 msgid "Remove tag from documents: %s."
 msgstr "Remove tag from documents: %s."
 
-#: views.py:305
+#: views.py:303
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
@@ -261,7 +261,7 @@ msgstr ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
 
-#: views.py:308
+#: views.py:306
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
@@ -270,7 +270,7 @@ msgstr ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
 
-#: views.py:313
+#: views.py:311
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
@@ -279,7 +279,7 @@ msgstr ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
 
-#: views.py:316
+#: views.py:314
 #, fuzzy, python-format
 msgid ""
 "Are you sure you wish to remove the tags %(tags)s from the documents: "
@@ -288,12 +288,12 @@ msgstr ""
 "Are you sure you wish to remove the tags %(tag)s from the documents: "
 "%(documents)s?"
 
-#: views.py:323
+#: views.py:321
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 
-#: views.py:328
+#: views.py:326
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."

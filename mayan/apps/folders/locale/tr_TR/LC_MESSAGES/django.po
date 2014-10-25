@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:45-0400\n"
+"POT-Creation-Date: 2014-10-25 02:33-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/mayan-"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Returns a list of all the folders."
 msgstr ""
 
-#: forms.py:38 models.py:24 views.py:90 views.py:118 views.py:151
+#: forms.py:38 models.py:24 views.py:90 views.py:118 views.py:150
 msgid "Folder"
 msgstr ""
 
@@ -142,70 +142,70 @@ msgstr ""
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr ""
 
-#: views.py:147
+#: views.py:146
 #, python-format
 msgid "Documents in folder: %s"
 msgstr ""
 
-#: views.py:162
+#: views.py:161
 msgid "Must provide at least one document."
 msgstr ""
 
-#: views.py:181
+#: views.py:180
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr ""
 
-#: views.py:184
+#: views.py:183
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr ""
 
-#: views.py:192
+#: views.py:191
 msgid "Document"
 msgstr ""
 
-#: views.py:200
+#: views.py:199
 #, python-format
 msgid "Add document: %s to folder."
 msgstr ""
 
-#: views.py:202
+#: views.py:201
 #, python-format
 msgid "Add documents: %s to folder."
 msgstr ""
 
-#: views.py:217
+#: views.py:216
 #, python-format
 msgid "Folders containing: %s"
 msgstr ""
 
-#: views.py:246
+#: views.py:245
 msgid "Must provide at least one folder document."
 msgstr ""
 
-#: views.py:264
+#: views.py:263
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr ""
 
-#: views.py:266
+#: views.py:265
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr ""
 
-#: views.py:272
+#: views.py:271
 msgid "Folder document"
 msgstr ""
 
-#: views.py:280
+#: views.py:278
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
 msgstr ""
 
-#: views.py:283
+#: views.py:281
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

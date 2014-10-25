@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
@@ -32,11 +32,11 @@ msgstr "Term"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Name, e-mail, key ID or key fingerprint to look for."
 
-#: links.py:6 views.py:67
+#: links.py:6 views.py:66
 msgid "Private keys"
 msgstr ""
 
-#: links.py:7 views.py:70
+#: links.py:7 views.py:69
 msgid "Public keys"
 msgstr ""
 
@@ -80,23 +80,23 @@ msgstr "Elgamal"
 msgid "Bad signature."
 msgstr "Bad signature."
 
-#: literals.py:39
+#: literals.py:38
 msgid "Document not signed or invalid signature."
 msgstr "Tài liệu không được kí hoặc chữ kí không hợp lệ."
 
-#: literals.py:43
+#: literals.py:41
 msgid "Signature error."
 msgstr "Signature error."
 
-#: literals.py:47
+#: literals.py:44
 msgid "Document is signed but no public key is available for verification."
 msgstr "Document is signed but no public key is available for verification."
 
-#: literals.py:51
+#: literals.py:47
 msgid "Document is signed, and signature is good."
 msgstr "Document is signed, and signature is good."
 
-#: literals.py:55
+#: literals.py:50
 msgid "Document is signed with a valid signature."
 msgstr "Document is signed, and signature is good."
 
@@ -139,24 +139,24 @@ msgstr "Import key"
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "Are you sure you wish to import key id: %s?"
 
-#: views.py:78
+#: views.py:77
 msgid "Key ID"
 msgstr "Key ID"
 
-#: views.py:82
+#: views.py:81
 msgid "Owner"
 msgstr "Nhười sở hữu"
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Khóa: %s, đã xóa thành công."
 
-#: views.py:109
+#: views.py:108
 msgid "Delete key"
 msgstr " Xóa khóa"
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -167,53 +167,53 @@ msgstr ""
 "that is part of a public/private pair the private key will be deleted as "
 "well."
 
-#: views.py:129
+#: views.py:127
 msgid "Query key server"
 msgstr "Query key server"
 
-#: views.py:142
+#: views.py:140
 msgid "results"
 msgstr "Kết quả"
 
-#: views.py:147
+#: views.py:145
 msgid "ID"
 msgstr "ID"
 
-#: views.py:151
+#: views.py:149
 msgid "Type"
 msgstr ""
 
-#: views.py:155
+#: views.py:153
 #, fuzzy
 msgid "Creation date"
 msgstr "ngày tạo"
 
-#: views.py:159
+#: views.py:157
 #, fuzzy
 msgid "Disabled"
 msgstr "vô hiệu hóa"
 
-#: views.py:163
+#: views.py:161
 #, fuzzy
 msgid "Expiration date"
 msgstr "ngày hết hạn"
 
-#: views.py:167
+#: views.py:165
 #, fuzzy
 msgid "Expired"
 msgstr "đã hết hạn"
 
-#: views.py:171
+#: views.py:169
 #, fuzzy
 msgid "Length"
 msgstr "chiều dài"
 
-#: views.py:175
+#: views.py:173
 #, fuzzy
 msgid "Revoked"
 msgstr "bị thu hồi"
 
-#: views.py:180
+#: views.py:178
 msgid "Identifies"
 msgstr "Identifies"
 

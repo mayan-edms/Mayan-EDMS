@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
@@ -60,7 +60,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: links.py:15 views.py:233
+#: links.py:15 views.py:234
 msgid "License"
 msgstr "Licença"
 
@@ -104,112 +104,112 @@ msgstr "Permitir acesso a todas as vistas aos utilizadores não autenticados"
 msgid "Function found"
 msgstr "função encontrada"
 
-#: views.py:41
+#: views.py:42
 msgid "No action selected."
 msgstr "Nenhuma ação selecionada."
 
-#: views.py:45
+#: views.py:46
 msgid "Must select at least one item."
 msgstr "Deve selecionar pelo menos um item."
 
-#: views.py:93
+#: views.py:94
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr "%(selection)s adicionadas com sucesso a %(right_list_title)s ."
 
-#: views.py:99 views.py:126
+#: views.py:100 views.py:127
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr "Não foi possível adicionar %(selection)s  a %(right_list_title)s ."
 
-#: views.py:120
+#: views.py:121
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr " %(selection)s  removido com sucesso de %(right_list_title)s."
 
-#: views.py:139
+#: views.py:140
 msgid "Add"
 msgstr "Adicionar"
 
-#: views.py:150
+#: views.py:151
 msgid "Remove"
 msgstr "Remover"
 
-#: views.py:173
+#: views.py:174
 msgid "current user details"
 msgstr "detalhes do utilizador atual"
 
-#: views.py:190
+#: views.py:191
 msgid "E-mail conflict, another user has that same email."
 msgstr "Conflito de E-mail; outro utilizador tem o mesmo e-mail."
 
-#: views.py:193
+#: views.py:194
 msgid "Current user's details updated."
 msgstr "Detalhes do utilizador atual atualizados."
 
-#: views.py:202
+#: views.py:203
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:242
+#: views.py:243
 msgid "Current user password change"
 msgstr "Alteração da senha do utilizador atual"
 
-#: views.py:257
+#: views.py:258
 msgid "Your password has been successfully changed."
 msgstr "A sua senha foi alterada com êxito."
 
-#: views.py:311
+#: views.py:312
 #, python-format
 msgid "Error saving %s details."
 msgstr ""
 
-#: views.py:313
+#: views.py:314
 msgid "Error saving details."
 msgstr ""
 
-#: views.py:321
+#: views.py:322
 #, python-format
 msgid "%s details saved successfully."
 msgstr ""
 
-#: views.py:323
+#: views.py:324
 msgid "Details saved successfully."
 msgstr ""
 
-#: views.py:335
+#: views.py:336
 #, python-format
 msgid "Error creating new %s."
 msgstr ""
 
-#: views.py:337
+#: views.py:338
 msgid "Error creating object."
 msgstr ""
 
-#: views.py:344
+#: views.py:345
 #, python-format
 msgid "%s created successfully."
 msgstr ""
 
-#: views.py:346
+#: views.py:347
 msgid "New object created successfully."
 msgstr ""
 
-#: views.py:364
+#: views.py:365
 #, python-format
 msgid "Error deleting %s."
 msgstr ""
 
-#: views.py:366
+#: views.py:367
 msgid "Error deleting object."
 msgstr ""
 
-#: views.py:371
+#: views.py:372
 #, python-format
 msgid "%s deleted successfully."
 msgstr ""
 
-#: views.py:373
+#: views.py:374
 msgid "Object deleted successfully."
 msgstr ""
 

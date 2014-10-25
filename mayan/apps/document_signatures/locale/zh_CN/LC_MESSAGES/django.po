@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:45-0400\n"
+"POT-Creation-Date: 2014-10-25 02:33-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
@@ -132,16 +132,16 @@ msgstr "分离的签名上传成功"
 msgid "Upload detached signature for: %s"
 msgstr "上传分离的签名：%s"
 
-#: views.py:156
+#: views.py:155
 msgid "Detached signature deleted successfully."
 msgstr "分离的签名删除成功"
 
-#: views.py:159
+#: views.py:158
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr "删除分离的签名：%s 出错"
 
-#: views.py:163
+#: views.py:162
 #, python-format
 msgid ""
 "Are you sure you wish to delete the detached signature from document: %s?"

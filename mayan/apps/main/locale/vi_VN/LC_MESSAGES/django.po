@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:46-0400\n"
+"POT-Creation-Date: 2014-10-25 02:34-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
@@ -60,7 +60,7 @@ msgstr "Về chương trình"
 msgid "Version"
 msgstr "Phiên bản"
 
-#: templates/main/about.html:20 templates/main/home.html:17
+#: templates/main/about.html:20 templates/main/home.html:18
 msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr ""
 
@@ -80,8 +80,8 @@ msgstr "Anonymous"
 msgid "User details"
 msgstr "Chi tiết người dùng"
 
-#: templates/main/base.html:187 templates/main/login.html:16
-#: templates/main/login.html.py:54 templates/main/login.html:62
+#: templates/main/base.html:187 templates/main/login.html:17
+#: templates/main/login.html.py:55 templates/main/login.html:63
 msgid "Login"
 msgstr "Đăng nhập"
 
@@ -174,61 +174,67 @@ msgstr ""
 msgid "Assign %(title)s %(object)s"
 msgstr ""
 
-#: templates/main/generic_confirm.html:5
-#: templates/main/generic_confirm.html:19
+#: templates/main/generic_confirm.html:6
+#: templates/main/generic_confirm.html:20
 msgid "Confirm"
 msgstr ""
 
-#: templates/main/generic_confirm.html:17
+#: templates/main/generic_confirm.html:18
 msgid "Confirm delete"
 msgstr ""
 
-#: templates/main/generic_confirm.html:33
-msgid "form icon"
+#: templates/main/generic_confirm.html:34
+msgid "question bubble"
 msgstr ""
 
-#: templates/main/generic_confirm.html:41
+#: templates/main/generic_confirm.html:42
 #, python-format
 msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
 msgstr ""
 
-#: templates/main/generic_confirm.html:43
+#: templates/main/generic_confirm.html:44
 #, python-format
 msgid "Are you sure you wish to delete: %(object)s?"
 msgstr ""
 
-#: templates/main/generic_confirm.html:51
+#: templates/main/generic_confirm.html:52
 msgid "Yes"
 msgstr ""
 
-#: templates/main/generic_confirm.html:55
+#: templates/main/generic_confirm.html:56
 msgid "No"
 msgstr ""
 
 #: templates/main/generic_form_instance.html:40
-#: templates/main/generic_form_subtemplate.html:59
+#: templates/main/generic_form_subtemplate.html:60
+#: templates/main/generic_multiform_subtemplate.html:42
 msgid "required"
 msgstr ""
 
-#: templates/main/generic_form_subtemplate.html:83
-#: templates/main/generic_form_subtemplate.html:85
-#: templates/main/generic_list_horizontal_subtemplate.html:47
-#: templates/main/generic_list_horizontal_subtemplate.html:85
-#: templates/main/generic_list_subtemplate.html:50
-#: templates/main/generic_list_subtemplate.html:170
+#: templates/main/generic_form_subtemplate.html:84
+#: templates/main/generic_form_subtemplate.html:86
+#: templates/main/generic_list_horizontal_subtemplate.html:48
+#: templates/main/generic_list_horizontal_subtemplate.html:86
+#: templates/main/generic_list_subtemplate.html:51
+#: templates/main/generic_list_subtemplate.html:171
+#: templates/main/generic_multiform_subtemplate.html:67
+#: templates/main/generic_multiform_subtemplate.html:69
 msgid "Save"
 msgstr ""
 
-#: templates/main/generic_form_subtemplate.html:83
-#: templates/main/generic_form_subtemplate.html:85
-#: templates/main/generic_list_horizontal_subtemplate.html:47
-#: templates/main/generic_list_horizontal_subtemplate.html:85
-#: templates/main/generic_list_subtemplate.html:50
-#: templates/main/generic_list_subtemplate.html:170
+#: templates/main/generic_form_subtemplate.html:84
+#: templates/main/generic_form_subtemplate.html:86
+#: templates/main/generic_list_horizontal_subtemplate.html:48
+#: templates/main/generic_list_horizontal_subtemplate.html:86
+#: templates/main/generic_list_subtemplate.html:51
+#: templates/main/generic_list_subtemplate.html:171
+#: templates/main/generic_multiform_subtemplate.html:67
+#: templates/main/generic_multiform_subtemplate.html:69
 msgid "Submit"
 msgstr ""
 
-#: templates/main/generic_form_subtemplate.html:90
+#: templates/main/generic_form_subtemplate.html:91
+#: templates/main/generic_multiform_subtemplate.html:74
 msgid "Cancel"
 msgstr ""
 
@@ -237,77 +243,77 @@ msgstr ""
 msgid "%(title)s"
 msgstr ""
 
-#: templates/main/generic_list_horizontal_subtemplate.html:21
-#: templates/main/generic_list_subtemplate.html:22
+#: templates/main/generic_list_horizontal_subtemplate.html:22
+#: templates/main/generic_list_subtemplate.html:23
 #, python-format
 msgid ""
 "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr ""
 
-#: templates/main/generic_list_horizontal_subtemplate.html:23
-#: templates/main/generic_list_subtemplate.html:24
+#: templates/main/generic_list_horizontal_subtemplate.html:24
+#: templates/main/generic_list_subtemplate.html:25
 #, python-format
 msgid "%(title)s (%(total)s)"
 msgstr ""
 
-#: templates/main/generic_list_subtemplate.html:70
+#: templates/main/generic_list_subtemplate.html:71
 msgid "Identifier"
 msgstr ""
 
-#: templates/main/generic_list_subtemplate.html:144
+#: templates/main/generic_list_subtemplate.html:145
 msgid "No results"
 msgstr ""
 
-#: templates/main/home.html:11
+#: templates/main/home.html:12
 msgid "Django based open source document management system"
 msgstr ""
 
-#: templates/main/login.html:22
+#: templates/main/login.html:23
 msgid "You are already logged in"
 msgstr ""
 
-#: templates/main/login.html:25
+#: templates/main/login.html:26
 msgid "Redirecting you to the website entry point in 5 seconds."
 msgstr ""
 
-#: templates/main/login.html:28
+#: templates/main/login.html:29
 #, python-format
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
 msgstr ""
 
-#: templates/main/login.html:39
+#: templates/main/login.html:40
 msgid "First time login"
 msgstr ""
 
-#: templates/main/login.html:41
+#: templates/main/login.html:42
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
 msgstr ""
 
-#: templates/main/login.html:42
-msgid "Login using the following credentials:"
-msgstr ""
-
 #: templates/main/login.html:43
-#, python-format
-msgid "Username: <strong>%(account)s</strong>"
+msgid "Login using the following credentials:"
 msgstr ""
 
 #: templates/main/login.html:44
 #, python-format
-msgid "Email: <strong>%(email)s</strong>"
+msgid "Username: <strong>%(account)s</strong>"
 msgstr ""
 
 #: templates/main/login.html:45
 #, python-format
-msgid "Password: <strong>%(password)s</strong>"
+msgid "Email: <strong>%(email)s</strong>"
 msgstr ""
 
 #: templates/main/login.html:46
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr ""
+
+#: templates/main/login.html:47
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
@@ -323,14 +329,14 @@ msgstr ""
 msgid "Your password has been successfully changed."
 msgstr ""
 
-#: templates/main/project_description.html:7
+#: templates/main/project_description.html:8
 msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
 msgstr ""
 
-#: templates/main/project_description.html:22
+#: templates/main/project_description.html:23
 msgid "Released under the Apache 2.0 License"
 msgstr ""
 

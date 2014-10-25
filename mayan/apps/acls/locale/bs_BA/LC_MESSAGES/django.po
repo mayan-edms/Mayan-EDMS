@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:43-0400\n"
+"POT-Creation-Date: 2014-10-25 02:31-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -61,7 +61,7 @@ msgstr ""
 msgid "Default ACLs"
 msgstr "Difoltne ACLs"
 
-#: links.py:13 views.py:382
+#: links.py:13 views.py:380
 msgid "Classes"
 msgstr ""
 
@@ -123,11 +123,11 @@ msgstr "Pregledati difoltne ACLs klase"
 msgid "Access control lists for: %s"
 msgstr ""
 
-#: views.py:48 views.py:405
+#: views.py:48 views.py:403
 msgid "Holder"
 msgstr ""
 
-#: views.py:49 views.py:406
+#: views.py:49 views.py:404
 msgid "Permissions"
 msgstr ""
 
@@ -136,103 +136,103 @@ msgstr ""
 msgid "Permissions available to: %(actor)s for %(obj)s"
 msgstr ""
 
-#: views.py:103 views.py:437
+#: views.py:103 views.py:435
 msgid "Namespace"
 msgstr ""
 
-#: views.py:104 views.py:438
+#: views.py:104 views.py:436
 msgid "Label"
 msgstr ""
 
-#: views.py:106 views.py:440
+#: views.py:106 views.py:438
 msgid "Has permission"
 msgstr ""
 
-#: views.py:180 views.py:273 views.py:520 views.py:599
+#: views.py:180 views.py:272 views.py:518 views.py:596
 msgid ", "
 msgstr ", "
 
-#: views.py:181 views.py:274 views.py:521 views.py:600
+#: views.py:181 views.py:273 views.py:519 views.py:597
 #, python-format
 msgid " for %s"
 msgstr " za %s"
 
-#: views.py:182 views.py:522
+#: views.py:182 views.py:520
 #, python-format
 msgid " to %s"
 msgstr " prema %s"
 
-#: views.py:185 views.py:525
+#: views.py:185 views.py:523
 #, python-format
 msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
 msgstr "Jeste li sigurni da želite odobriti dozvolu %(title_suffix)s?"
 
-#: views.py:187 views.py:527
+#: views.py:187 views.py:525
 #, python-format
 msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
 msgstr "Jeste li sigurni da želite odobriti dozvole %(title_suffix)s?"
 
-#: views.py:194 views.py:534
+#: views.py:194 views.py:532
 #, python-format
 msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgstr "Dozvola \"%(permission)s\" odobrena za %(actor)s prema %(object)s."
 
-#: views.py:200 views.py:540
+#: views.py:200 views.py:538
 #, python-format
 msgid ""
 "%(actor)s, already had the permission \"%(permission)s\" granted for "
 "%(object)s."
 msgstr "%(actor)s, već ima dozvolu \"%(permission)s\" prema %(object)s."
 
-#: views.py:275 views.py:601
+#: views.py:274 views.py:598
 #, python-format
 msgid " from %s"
 msgstr " od %s"
 
-#: views.py:278 views.py:604
+#: views.py:277 views.py:601
 #, python-format
 msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
 msgstr "Jeste li sigurni da želite ukinuti dozvolu %(title_suffix)s?"
 
-#: views.py:280 views.py:606
+#: views.py:279 views.py:603
 #, python-format
 msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
 msgstr "Jeste li sigurni da želite ukinuti dozvole %(title_suffix)s?"
 
-#: views.py:287 views.py:613
+#: views.py:286 views.py:610
 #, python-format
 msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 msgstr "Dozvola \"%(permission)s\" povučena za %(actor)s prema %(object)s."
 
-#: views.py:293 views.py:619
+#: views.py:292 views.py:616
 #, python-format
 msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 msgstr "%(actor)s, nije imao/la dozvolu \"%(permission)s\" prema %(object)s."
 
-#: views.py:349
+#: views.py:347
 #, python-format
 msgid "Add new holder for: %s"
 msgstr ""
 
-#: views.py:350 views.py:481
+#: views.py:348 views.py:479
 msgid "Select"
 msgstr "Odabrati"
 
-#: views.py:384
+#: views.py:382
 msgid "Class"
 msgstr ""
 
-#: views.py:403
+#: views.py:401
 #, python-format
 msgid "Default access control lists for class: %s"
 msgstr ""
 
-#: views.py:431
+#: views.py:429
 #, python-format
 msgid "Permissions available to: %(actor)s for class %(class)s"
 msgstr ""
 
-#: views.py:479
+#: views.py:477
 #, python-format
 msgid "Add new holder for class: %s"
 msgstr ""

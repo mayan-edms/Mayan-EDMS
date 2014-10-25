@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2014-10-03 12:39+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -73,26 +73,26 @@ msgstr "جذف موفق توضیحات  %s"
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "خطا %(error)s  حذف توضیحات \"%(comment)s\""
 
-#: views.py:63
+#: views.py:62
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
 msgstr "آیا از حذف توضیحات %s مطمئن هستید؟"
 
-#: views.py:65
+#: views.py:64
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
 msgstr "آیا از حذف توضیحات %s مطمئن هستید؟"
 
-#: views.py:99
+#: views.py:98
 msgid "Comment added successfully."
 msgstr "توضیحات با موفقیت اضافه شد."
 
-#: views.py:106
+#: views.py:105
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "اضافه کردن توضیحات به سند: %s"
 
-#: views.py:126
+#: views.py:125
 #, fuzzy, python-format
 msgid "Comments for document: %s"
 msgstr "اضافه کردن توضیحات به سند: %s"

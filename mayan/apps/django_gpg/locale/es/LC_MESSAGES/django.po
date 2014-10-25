@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -35,11 +35,11 @@ msgstr ""
 "Nombre, dirección de correo electrónico, identificador de clave o huella "
 "digital de clave a buscar."
 
-#: links.py:6 views.py:67
+#: links.py:6 views.py:66
 msgid "Private keys"
 msgstr ""
 
-#: links.py:7 views.py:70
+#: links.py:7 views.py:69
 msgid "Public keys"
 msgstr ""
 
@@ -83,25 +83,25 @@ msgstr "Elgamal"
 msgid "Bad signature."
 msgstr "Firma inválida."
 
-#: literals.py:39
+#: literals.py:38
 msgid "Document not signed or invalid signature."
 msgstr "Documento no firmado o firma inválida."
 
-#: literals.py:43
+#: literals.py:41
 msgid "Signature error."
 msgstr "Error de firma."
 
-#: literals.py:47
+#: literals.py:44
 msgid "Document is signed but no public key is available for verification."
 msgstr ""
 "El documento ha sido firmado pero no hay clave pública disponible para "
 "verificación."
 
-#: literals.py:51
+#: literals.py:47
 msgid "Document is signed, and signature is good."
 msgstr "El documento ha sido firmado y la firma está en buen estado."
 
-#: literals.py:55
+#: literals.py:50
 msgid "Document is signed with a valid signature."
 msgstr "El documento ha sido firmado y la firma ha sido validada."
 
@@ -148,24 +148,24 @@ msgstr "Importar clave"
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "¿Esta seguro que desea importar la clave: %s?"
 
-#: views.py:78
+#: views.py:77
 msgid "Key ID"
 msgstr "Identificador de clave"
 
-#: views.py:82
+#: views.py:81
 msgid "Owner"
 msgstr "Propietario"
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Clave: %s, borrada con éxito."
 
-#: views.py:109
+#: views.py:108
 msgid "Delete key"
 msgstr "Borrar clave"
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -176,53 +176,53 @@ msgstr ""
 "pública que es parte de un par público/privado la clave privada será borrada "
 "también."
 
-#: views.py:129
+#: views.py:127
 msgid "Query key server"
 msgstr "Consultar servidor de claves"
 
-#: views.py:142
+#: views.py:140
 msgid "results"
 msgstr "resultados"
 
-#: views.py:147
+#: views.py:145
 msgid "ID"
 msgstr "ID"
 
-#: views.py:151
+#: views.py:149
 msgid "Type"
 msgstr ""
 
-#: views.py:155
+#: views.py:153
 #, fuzzy
 msgid "Creation date"
 msgstr "fecha de creación"
 
-#: views.py:159
+#: views.py:157
 #, fuzzy
 msgid "Disabled"
 msgstr "desactivada"
 
-#: views.py:163
+#: views.py:161
 #, fuzzy
 msgid "Expiration date"
 msgstr "fecha de expiración"
 
-#: views.py:167
+#: views.py:165
 #, fuzzy
 msgid "Expired"
 msgstr "expirada"
 
-#: views.py:171
+#: views.py:169
 #, fuzzy
 msgid "Length"
 msgstr "tamaño"
 
-#: views.py:175
+#: views.py:173
 #, fuzzy
 msgid "Revoked"
 msgstr "revocada"
 
-#: views.py:180
+#: views.py:178
 msgid "Identifies"
 msgstr "Identifica a"
 

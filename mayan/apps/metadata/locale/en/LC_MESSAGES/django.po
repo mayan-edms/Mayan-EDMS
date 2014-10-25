@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:46-0400\n"
+"POT-Creation-Date: 2014-10-25 02:34-0400\n"
 "PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -76,7 +76,7 @@ msgstr "add metadata"
 msgid "Remove metadata"
 msgstr "remove metadata"
 
-#: links.py:27 models.py:39 views.py:289 views.py:391 views.py:405
+#: links.py:27 models.py:39 views.py:289 views.py:390 views.py:404
 msgid "Metadata types"
 msgstr "Metadata types"
 
@@ -137,7 +137,7 @@ msgstr ""
 msgid "Document metadata"
 msgstr "document metadata"
 
-#: models.py:63 views.py:439
+#: models.py:63 views.py:438
 #, fuzzy
 msgid "Document type"
 msgstr "document type"
@@ -314,12 +314,12 @@ msgstr "Metadata type: %(metadata_type)s delete error: %(error)s"
 msgid "Are you sure you wish to delete the metadata type: %s?"
 msgstr "Are you sure you wish to delete the metadata type: %s?"
 
-#: views.py:434
+#: views.py:433
 #, fuzzy, python-format
 msgid "Non members of document type: %s"
 msgstr "non members of document type: %s"
 
-#: views.py:435
+#: views.py:434
 #, fuzzy, python-format
 msgid "Members of document type: %s"
 msgstr "members of document type: %s"

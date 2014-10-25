@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:47-0400\n"
+"POT-Creation-Date: 2014-10-25 02:35-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -28,21 +28,29 @@ msgstr ""
 msgid "Returns a list of all the staging folders and the files they contain."
 msgstr ""
 
-#: forms.py:37 forms.py:62
+#: forms.py:28
+msgid "Version update"
+msgstr ""
+
+#: forms.py:33
+msgid "Comment"
+msgstr ""
+
+#: forms.py:48
 msgid "Expand compressed files"
 msgstr "Kembangkan berkas-berkas terkompresi"
 
-#: forms.py:38 forms.py:63
+#: forms.py:49
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr ""
 "Unggah berkas terkompresi yang mengandung berkas-berkas sebagai dokumen-"
 "dokumen individual"
 
-#: forms.py:46
+#: forms.py:74
 msgid "Staging file"
 msgstr ""
 
-#: forms.py:53
+#: forms.py:78
 msgid "File"
 msgstr ""
 
@@ -58,7 +66,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: links.py:21 models.py:136 views.py:375
+#: links.py:21 models.py:104 views.py:394
 msgid "Sources"
 msgstr ""
 
@@ -114,7 +122,7 @@ msgstr "Tidak pernah"
 msgid "Ask user"
 msgstr "Tanya pengguna"
 
-#: literals.py:25 models.py:186
+#: literals.py:25 models.py:171
 msgid "Web form"
 msgstr ""
 
@@ -130,7 +138,7 @@ msgstr ""
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:29 models.py:365 models.py:366
+#: literals.py:29 models.py:350 models.py:351
 msgid "IMAP email"
 msgstr ""
 
@@ -142,207 +150,212 @@ msgstr ""
 msgid "Enabled"
 msgstr ""
 
-#: models.py:135 views.py:416 views.py:441 views.py:487 views.py:528
-#: views.py:557 views.py:592
+#: models.py:103 views.py:435 views.py:460 views.py:506 views.py:547
+#: views.py:576 views.py:610
 msgid "Source"
 msgstr ""
 
-#: models.py:141
+#: models.py:111
 msgid "Interactive source"
 msgstr ""
 
-#: models.py:142
+#: models.py:112
 msgid "Interactive sources"
 msgstr ""
 
-#: models.py:149 models.py:372
+#: models.py:119 models.py:357
 msgid "Folder path"
 msgstr ""
 
-#: models.py:149 models.py:372
+#: models.py:119 models.py:357
 msgid "Server side filesystem path."
 msgstr ""
 
-#: models.py:150
+#: models.py:120
 msgid "Preview width"
 msgstr ""
 
-#: models.py:150
+#: models.py:120
 msgid "Width value to be passed to the converter backend."
 msgstr ""
 
-#: models.py:151
+#: models.py:121
 msgid "Preview height"
 msgstr ""
 
-#: models.py:151
+#: models.py:121
 msgid "Height value to be passed to the converter backend."
 msgstr ""
 
-#: models.py:152 models.py:182 models.py:201 models.py:373
+#: models.py:122 models.py:164 models.py:186 models.py:358
 msgid "Uncompress"
 msgstr ""
 
-#: models.py:152 models.py:182 models.py:373
+#: models.py:122 models.py:164 models.py:358
 msgid "Whether to expand or not compressed archives."
 msgstr "Apakah mengembangkan atau tidak mengkompresi arsip-arsip."
 
-#: models.py:153 models.py:374
+#: models.py:123 models.py:359
 msgid "Delete after upload"
 msgstr ""
 
-#: models.py:153 models.py:374
+#: models.py:123 models.py:359
 msgid "Delete the file after is has been successfully uploaded."
 msgstr "Hapus berkas setelah berhasil di unggah."
 
-#: models.py:171
+#: models.py:141
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr ""
 
-#: models.py:174
+#: models.py:152
+#, fuzzy, python-format
+msgid "Error deleting staging file; %s"
+msgstr "Unable to delete staging file: %s"
+
+#: models.py:155
 msgid "Staging folder"
 msgstr ""
 
-#: models.py:175
+#: models.py:156
 msgid "Staging folders"
 msgstr ""
 
-#: models.py:187
+#: models.py:172
 msgid "Web forms"
 msgstr ""
 
-#: models.py:194 models.py:195
+#: models.py:179 models.py:180
 msgid "Out of process"
 msgstr ""
 
-#: models.py:199 models.py:375
+#: models.py:184 models.py:360
 msgid "Interval"
 msgstr ""
 
-#: models.py:199
+#: models.py:184
 msgid "Interval in seconds between document downloads from this source."
 msgstr ""
 
-#: models.py:200
+#: models.py:185
 #, fuzzy
 msgid "Document type"
 msgstr "Sumber-sumber dokumen"
 
-#: models.py:200
+#: models.py:185
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
-#: models.py:201
+#: models.py:186
 #, fuzzy
 msgid "Whether to expand or not, compressed archives."
 msgstr "Apakah mengembangkan atau tidak mengkompresi arsip-arsip."
 
-#: models.py:240
+#: models.py:225
 msgid "Interval source"
 msgstr ""
 
-#: models.py:241
+#: models.py:226
 #, fuzzy
 msgid "Interval sources"
 msgstr "Sumber-sumber dokumen"
 
-#: models.py:245
+#: models.py:230
 msgid "Host"
 msgstr ""
 
-#: models.py:246
+#: models.py:231
 msgid "SSL"
 msgstr ""
 
-#: models.py:247
+#: models.py:232
 msgid "Port"
 msgstr ""
 
-#: models.py:247
+#: models.py:232
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr ""
 
-#: models.py:248
+#: models.py:233
 msgid "Username"
 msgstr ""
 
-#: models.py:249
+#: models.py:234
 msgid "Password"
 msgstr ""
 
-#: models.py:268
+#: models.py:253
 #, python-format
 msgid "attachment-%i"
 msgstr ""
 
-#: models.py:277
+#: models.py:262
 #, fuzzy
 msgid "Email source"
 msgstr "Sumber-sumber unggah"
 
-#: models.py:278
+#: models.py:263
 #, fuzzy
 msgid "Email sources"
 msgstr "Sumber-sumber unggah"
 
-#: models.py:284
+#: models.py:269
 msgid "Timeout"
 msgstr ""
 
-#: models.py:322 models.py:323
+#: models.py:307 models.py:308
 msgid "POP email"
 msgstr ""
 
-#: models.py:329
+#: models.py:314
 msgid "Mailbox"
 msgstr ""
 
-#: models.py:329
+#: models.py:314
 msgid "Mail from which to check for messages with attached documents."
 msgstr ""
 
-#: models.py:375
+#: models.py:360
 msgid ""
 "Inverval in seconds where the watch folder path is checked for new documents."
 msgstr ""
 
-#: models.py:378
+#: models.py:363
 msgid "Watch folder"
 msgstr ""
 
-#: models.py:379
+#: models.py:364
 msgid "Watch folders"
 msgstr ""
 
-#: models.py:383
+#: models.py:368
 msgid "Enter a valid value."
 msgstr "Masukkan nilai yang sesuai"
 
-#: models.py:411 views.py:491
+#: models.py:396 views.py:510
 msgid "Order"
 msgstr ""
 
-#: models.py:412 views.py:492 views.py:529 views.py:558
+#: models.py:397 views.py:511 views.py:548 views.py:577
 msgid "Transformation"
 msgstr ""
 
-#: models.py:413 views.py:493
+#: models.py:398 views.py:512
 msgid "Arguments"
 msgstr ""
 
-#: models.py:413
+#: models.py:398
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr "Pergunakan kamus untuk mengidentifikasi argumen, misalnya: %s"
 
-#: models.py:423
+#: models.py:408
 msgid "Document source transformation"
 msgstr ""
 
-#: models.py:424
+#: models.py:409
 msgid "Document source transformations"
 msgstr ""
 
@@ -366,167 +379,152 @@ msgstr "Sunting sumber-sumber dokumen"
 msgid "View existing document sources"
 msgstr "Lihat sumber-sumber dokumen yang telah ada"
 
-#: views.py:115
-msgid "Here"
-msgstr ""
-
-#: views.py:120
+#: views.py:118
 msgid "Upload sources"
 msgstr "Sumber-sumber unggah"
 
-#: views.py:122
+#: views.py:120
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
 msgstr ""
 "Tidak ada sumber-sumber dokumen interaktif yang telah ditentukan atau tidak "
 "ada yang telah diaktifkan."
 
-#: views.py:123
-#, python-format
-msgid "Click %(setup_link)s to add or enable some document sources."
+#: views.py:142
+msgid "Files in staging path"
 msgstr ""
-"Klik %(setup_link)s untuk menambah atau mengaktifkan sumber-sumber dokumen."
 
-#: views.py:225
+#: views.py:232
 msgid "New document queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:228
-msgid "New document version queued for uploaded and will be available shortly."
-msgstr ""
-
-#: views.py:234
-#, python-format
-msgid "Unhandled exception: %s"
-msgstr ""
-
-#: views.py:244
-#, python-format
-msgid "Upload a new version from source: %s"
-msgstr ""
-
-#: views.py:246
+#: views.py:257
 #, python-format
 msgid "Upload a local document from source: %s"
 msgstr ""
 
-#: views.py:274
-msgid "Files in staging path"
-msgstr ""
-
-#: views.py:306
+#: views.py:265
 msgid "Current document type"
 msgstr ""
 
-#: views.py:307
+#: views.py:266
 msgid "None"
 msgstr ""
 
-#: views.py:314
+#: views.py:273
 msgid "Current metadata"
 msgstr "Metadata saat ini"
 
-#: views.py:351
+#: views.py:329
+msgid "New document version queued for uploaded and will be available shortly."
+msgstr ""
+
+#: views.py:355
+#, python-format
+msgid "Upload a new version from source: %s"
+msgstr ""
+
+#: views.py:371
 msgid "Staging file delete successfully."
 msgstr ""
 
-#: views.py:353
+#: views.py:373
 #, python-format
 msgid "Staging file delete error; %s."
 msgstr ""
 
-#: views.py:380
+#: views.py:399
 msgid "Type"
 msgstr ""
 
-#: views.py:403
+#: views.py:422
 msgid "Source edited successfully"
 msgstr "Sumber berhasil disunting"
 
-#: views.py:406
+#: views.py:425
 #, python-format
 msgid "Error editing source; %s"
 msgstr "Masalah dalam menyunting sumber; %s"
 
-#: views.py:411
+#: views.py:430
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:431
+#: views.py:450
 #, python-format
 msgid "Source \"%s\" deleted successfully."
 msgstr "Sumber \"%s\" berhasil dihapus."
 
-#: views.py:433
+#: views.py:452
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
 msgstr "Masalah dalam menghapus sumber \"%(source)s\": %(error)s"
 
-#: views.py:439
+#: views.py:458
 #, python-format
 msgid "Are you sure you wish to delete the source: %s?"
 msgstr "Apakah anda yakin untuk menghapus sumber: %s?"
 
-#: views.py:463
+#: views.py:482
 msgid "Source created successfully"
 msgstr "Sumber berhasil dibuat"
 
-#: views.py:466
+#: views.py:485
 #, python-format
 msgid "Error creating source; %s"
 msgstr "Masalah dalam membuat sumber; %s"
 
-#: views.py:471
+#: views.py:490
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Membuat sumber baru dengan jenis: %s"
 
-#: views.py:485
+#: views.py:504
 #, python-format
 msgid "Transformations for: %s"
 msgstr ""
 
-#: views.py:515
+#: views.py:534
 msgid "Source transformation edited successfully"
 msgstr "Transformasi sumber berhasil disunting"
 
-#: views.py:518
+#: views.py:537
 #, python-format
 msgid "Error editing source transformation; %s"
 msgstr "Masalah dalam menyunting transformasi sumber; %s"
 
-#: views.py:523
+#: views.py:542
 #, python-format
 msgid "Edit transformation: %s"
 msgstr "Sunting transformasi: %s"
 
-#: views.py:545
+#: views.py:564
 msgid "Source transformation deleted successfully."
 msgstr "Transformasi sumber berhasil dihapus."
 
-#: views.py:547
+#: views.py:566
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
 msgstr "Masalah dalam menghapus transformasi sumber; %(error)s"
 
-#: views.py:560
+#: views.py:579
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
 msgstr ""
 "Apakah anda yakin untuk menghapus transformasi sumber \"%(transformation)s\""
 
-#: views.py:582
+#: views.py:600
 msgid "Source transformation created successfully"
 msgstr "Transformasi sumber berhasil dibuat"
 
-#: views.py:585
+#: views.py:603
 #, python-format
 msgid "Error creating source transformation; %s"
 msgstr ""
 
-#: views.py:594
+#: views.py:612
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr ""
@@ -546,6 +544,11 @@ msgstr ""
 #: wizards.py:55
 msgid "Next step"
 msgstr ""
+
+#~ msgid "Click %(setup_link)s to add or enable some document sources."
+#~ msgstr ""
+#~ "Klik %(setup_link)s untuk menambah atau mengaktifkan sumber-sumber "
+#~ "dokumen."
 
 #~ msgid "edit"
 #~ msgstr "edit"
@@ -631,9 +634,6 @@ msgstr ""
 
 #~ msgid "Unable to upload staging file: %s"
 #~ msgstr "Unable to upload staging file: %s"
-
-#~ msgid "Unable to delete staging file: %s"
-#~ msgstr "Unable to delete staging file: %s"
 
 #~ msgid "Staging file transformation error: %(error)s"
 #~ msgstr "Staging file transformation error: %(error)s"

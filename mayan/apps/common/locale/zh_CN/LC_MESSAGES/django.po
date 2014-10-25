@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
@@ -58,7 +58,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: links.py:15 views.py:233
+#: links.py:15 views.py:234
 msgid "License"
 msgstr "许可证"
 
@@ -102,112 +102,112 @@ msgstr "允许非授权用户访问所有的视图"
 msgid "Function found"
 msgstr "功能已存在"
 
-#: views.py:41
+#: views.py:42
 msgid "No action selected."
 msgstr "请选择一个操作"
 
-#: views.py:45
+#: views.py:46
 msgid "Must select at least one item."
 msgstr "至少需要选择一项"
 
-#: views.py:93
+#: views.py:94
 #, python-format
 msgid "%(selection)s added successfully added to %(right_list_title)s."
 msgstr "%(selection)s成功添加到 %(right_list_title)s."
 
-#: views.py:99 views.py:126
+#: views.py:100 views.py:127
 #, python-format
 msgid "Unable to add %(selection)s to %(right_list_title)s."
 msgstr "不能添加%(selection)s到%(right_list_title)s."
 
-#: views.py:120
+#: views.py:121
 #, python-format
 msgid "%(selection)s added successfully removed from %(right_list_title)s."
 msgstr "%(selection)s 成功从%(right_list_title)s.移除"
 
-#: views.py:139
+#: views.py:140
 msgid "Add"
 msgstr "新增"
 
-#: views.py:150
+#: views.py:151
 msgid "Remove"
 msgstr "移除"
 
-#: views.py:173
+#: views.py:174
 msgid "current user details"
 msgstr "当前用户详细信息"
 
-#: views.py:190
+#: views.py:191
 msgid "E-mail conflict, another user has that same email."
 msgstr "电子邮箱冲突，另外用户已经使用此邮箱"
 
-#: views.py:193
+#: views.py:194
 msgid "Current user's details updated."
 msgstr "当前用户信息已经更新"
 
-#: views.py:202
+#: views.py:203
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:242
+#: views.py:243
 msgid "Current user password change"
 msgstr "当前用户密码修改"
 
-#: views.py:257
+#: views.py:258
 msgid "Your password has been successfully changed."
 msgstr "你的密码已经修改成功"
 
-#: views.py:311
+#: views.py:312
 #, python-format
 msgid "Error saving %s details."
 msgstr "保存 %s 详细信息出错。"
 
-#: views.py:313
+#: views.py:314
 msgid "Error saving details."
 msgstr "保存详细信息出错"
 
-#: views.py:321
+#: views.py:322
 #, python-format
 msgid "%s details saved successfully."
 msgstr "%s的详单成功保存"
 
-#: views.py:323
+#: views.py:324
 msgid "Details saved successfully."
 msgstr "详单保存成功"
 
-#: views.py:335
+#: views.py:336
 #, python-format
 msgid "Error creating new %s."
 msgstr "创建新 %s的时候出错。"
 
-#: views.py:337
+#: views.py:338
 msgid "Error creating object."
 msgstr "创建对象的时候出错"
 
-#: views.py:344
+#: views.py:345
 #, python-format
 msgid "%s created successfully."
 msgstr "创建%s成功"
 
-#: views.py:346
+#: views.py:347
 msgid "New object created successfully."
 msgstr "新对象创建成功"
 
-#: views.py:364
+#: views.py:365
 #, python-format
 msgid "Error deleting %s."
 msgstr "删除%s时候出错。"
 
-#: views.py:366
+#: views.py:367
 msgid "Error deleting object."
 msgstr "删除对象时候出错。"
 
-#: views.py:371
+#: views.py:372
 #, python-format
 msgid "%s deleted successfully."
 msgstr "删除%s成功。"
 
-#: views.py:373
+#: views.py:374
 msgid "Object deleted successfully."
 msgstr "对象删除成功"
 

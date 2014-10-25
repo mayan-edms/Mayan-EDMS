@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -32,11 +32,11 @@ msgstr "ترم Term"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "نام، ایمیل، شناسه کلید ویا اثرانگشت کلید برای چستچو."
 
-#: links.py:6 views.py:67
+#: links.py:6 views.py:66
 msgid "Private keys"
 msgstr ""
 
-#: links.py:7 views.py:70
+#: links.py:7 views.py:69
 msgid "Public keys"
 msgstr ""
 
@@ -80,23 +80,23 @@ msgstr "الگمال Elgmal"
 msgid "Bad signature."
 msgstr "امضای اشتباه"
 
-#: literals.py:39
+#: literals.py:38
 msgid "Document not signed or invalid signature."
 msgstr "سند امضا نشده و یا امضا قابل قبول نییست"
 
-#: literals.py:43
+#: literals.py:41
 msgid "Signature error."
 msgstr "خطا در امضا"
 
-#: literals.py:47
+#: literals.py:44
 msgid "Document is signed but no public key is available for verification."
 msgstr "سند امضا شده است ولیکن کلید عمومی جهت بررسی صحت امضا وجود ندارد."
 
-#: literals.py:51
+#: literals.py:47
 msgid "Document is signed, and signature is good."
 msgstr "سند امضا شده است و امضا مورد تایید میباشد."
 
-#: literals.py:55
+#: literals.py:50
 msgid "Document is signed with a valid signature."
 msgstr "سند با امضای مورد تایید امضا شده است."
 
@@ -139,24 +139,24 @@ msgstr "وارد کردن کلید"
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "آیا از ورود کلیدی با شناسه: %s مطمئن هستید؟"
 
-#: views.py:78
+#: views.py:77
 msgid "Key ID"
 msgstr "شناسه کلید"
 
-#: views.py:82
+#: views.py:81
 msgid "Owner"
 msgstr "صاحب"
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "کلید: %s با موفقیت حذف شد."
 
-#: views.py:109
+#: views.py:108
 msgid "Delete key"
 msgstr "حذف کلید"
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -166,53 +166,53 @@ msgstr ""
 "آیا از حذف کلید: %s مطمئن هستید؟ درصورت حذف کلید عمومی مرتبط با کلید خصوصی، "
 "کلیدخصوصی بطور اتوماتیک حذف خواهد شد."
 
-#: views.py:129
+#: views.py:127
 msgid "Query key server"
 msgstr "پرسش از سرور کلید"
 
-#: views.py:142
+#: views.py:140
 msgid "results"
 msgstr "نتایج"
 
-#: views.py:147
+#: views.py:145
 msgid "ID"
 msgstr "شناسه"
 
-#: views.py:151
+#: views.py:149
 msgid "Type"
 msgstr ""
 
-#: views.py:155
+#: views.py:153
 #, fuzzy
 msgid "Creation date"
 msgstr "زمان ایجاد"
 
-#: views.py:159
+#: views.py:157
 #, fuzzy
 msgid "Disabled"
 msgstr "عیر فعال"
 
-#: views.py:163
+#: views.py:161
 #, fuzzy
 msgid "Expiration date"
 msgstr "تاریخ انقضا"
 
-#: views.py:167
+#: views.py:165
 #, fuzzy
 msgid "Expired"
 msgstr "منقضی شده"
 
-#: views.py:171
+#: views.py:169
 #, fuzzy
 msgid "Length"
 msgstr "طول"
 
-#: views.py:175
+#: views.py:173
 #, fuzzy
 msgid "Revoked"
 msgstr "لغو شده"
 
-#: views.py:180
+#: views.py:178
 msgid "Identifies"
 msgstr "شناسایی کردن."
 

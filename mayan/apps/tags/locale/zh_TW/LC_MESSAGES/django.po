@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:48-0400\n"
+"POT-Creation-Date: 2014-10-25 02:36-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/mayan-"
@@ -116,7 +116,7 @@ msgstr ""
 msgid "Color"
 msgstr ""
 
-#: models.py:17 views.py:169 views.py:214 views.py:231
+#: models.py:17 views.py:169 views.py:213 views.py:230
 msgid "Tag"
 msgstr ""
 
@@ -194,87 +194,87 @@ msgstr ""
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr ""
 
-#: views.py:177
+#: views.py:176
 #, python-format
 msgid "Are you sure you wish to delete the tag: %s?"
 msgstr ""
 
-#: views.py:178 views.py:181
+#: views.py:177 views.py:180
 msgid "Will be removed from all documents."
 msgstr ""
 
-#: views.py:180
+#: views.py:179
 #, python-format
 msgid "Are you sure you wish to delete the tags: %s?"
 msgstr ""
 
-#: views.py:205
+#: views.py:204
 msgid "Tag updated succesfully."
 msgstr ""
 
-#: views.py:211
+#: views.py:210
 #, python-format
 msgid "Edit tag: %s"
 msgstr ""
 
-#: views.py:227
+#: views.py:226
 #, python-format
 msgid "Documents with the tag \"%s\""
 msgstr ""
 
-#: views.py:246
+#: views.py:245
 #, python-format
 msgid "Tags for: %s"
 msgstr ""
 
-#: views.py:258
+#: views.py:257
 msgid "Must provide at least one tagged document."
 msgstr ""
 
-#: views.py:297
+#: views.py:295
 #, python-format
 msgid "Remove tag from document: %s."
 msgstr ""
 
-#: views.py:299
+#: views.py:297
 #, python-format
 msgid "Remove tag from documents: %s."
 msgstr ""
 
-#: views.py:305
+#: views.py:303
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
 msgstr ""
 
-#: views.py:308
+#: views.py:306
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
 msgstr ""
 
-#: views.py:313
+#: views.py:311
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
 msgstr ""
 
-#: views.py:316
+#: views.py:314
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags %(tags)s from the documents: "
 "%(documents)s?"
 msgstr ""
 
-#: views.py:323
+#: views.py:321
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr ""
 
-#: views.py:328
+#: views.py:326
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""

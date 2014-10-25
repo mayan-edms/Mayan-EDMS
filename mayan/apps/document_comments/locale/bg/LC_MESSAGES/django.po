@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -72,26 +72,26 @@ msgstr "Коментарът \"%s\" е изтрит успешно."
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "Грешка при изтриване на коментар \"%(comment)s\": %(error)s"
 
-#: views.py:63
+#: views.py:62
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете коментара: %s?"
 
-#: views.py:65
+#: views.py:64
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
 msgstr "Сигурни ли сте, че искате да изтриете коментарите: %s?"
 
-#: views.py:99
+#: views.py:98
 msgid "Comment added successfully."
 msgstr "Коментарът е добавен узпешно."
 
-#: views.py:106
+#: views.py:105
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Добавяне на коментар към документ:  %s"
 
-#: views.py:126
+#: views.py:125
 #, fuzzy, python-format
 msgid "Comments for document: %s"
 msgstr "Добавяне на коментар към документ:  %s"

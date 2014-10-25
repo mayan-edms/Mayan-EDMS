@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:43-0400\n"
+"POT-Creation-Date: 2014-10-25 02:31-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
@@ -215,14 +215,14 @@ msgstr ""
 msgid "Document \"%s\" checked in successfully."
 msgstr ""
 
-#: views.py:141
+#: views.py:140
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
 msgstr ""
 
-#: views.py:143
+#: views.py:142
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr ""

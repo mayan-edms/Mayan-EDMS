@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
@@ -32,11 +32,11 @@ msgstr "术语"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "要查找的名称，邮件，密钥ID或者密钥指纹"
 
-#: links.py:6 views.py:67
+#: links.py:6 views.py:66
 msgid "Private keys"
 msgstr ""
 
-#: links.py:7 views.py:70
+#: links.py:7 views.py:69
 msgid "Public keys"
 msgstr ""
 
@@ -80,23 +80,23 @@ msgstr "Elgamal"
 msgid "Bad signature."
 msgstr "无效签名"
 
-#: literals.py:39
+#: literals.py:38
 msgid "Document not signed or invalid signature."
 msgstr "文档未签名或者无效签名"
 
-#: literals.py:43
+#: literals.py:41
 msgid "Signature error."
 msgstr "签名出错。"
 
-#: literals.py:47
+#: literals.py:44
 msgid "Document is signed but no public key is available for verification."
 msgstr "文档已经签名，但是没法验证公钥。"
 
-#: literals.py:51
+#: literals.py:47
 msgid "Document is signed, and signature is good."
 msgstr "文档已签名，并且是有效的。"
 
-#: literals.py:55
+#: literals.py:50
 msgid "Document is signed with a valid signature."
 msgstr "文档使用有效签名进行签名"
 
@@ -139,24 +139,24 @@ msgstr "导入密钥"
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "确定要导入密钥id: %s么?"
 
-#: views.py:78
+#: views.py:77
 msgid "Key ID"
 msgstr "密钥ID"
 
-#: views.py:82
+#: views.py:81
 msgid "Owner"
 msgstr "持有者"
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "密钥: %s,删除成功"
 
-#: views.py:109
+#: views.py:108
 msgid "Delete key"
 msgstr "删除密钥"
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -166,53 +166,53 @@ msgstr ""
 "确定要删除密钥%s么？如果你试图删除一个带有共／私配对的公钥，那么私钥也将被删"
 "除。"
 
-#: views.py:129
+#: views.py:127
 msgid "Query key server"
 msgstr "查询密钥服务器"
 
-#: views.py:142
+#: views.py:140
 msgid "results"
 msgstr "结果"
 
-#: views.py:147
+#: views.py:145
 msgid "ID"
 msgstr "ID"
 
-#: views.py:151
+#: views.py:149
 msgid "Type"
 msgstr ""
 
-#: views.py:155
+#: views.py:153
 #, fuzzy
 msgid "Creation date"
 msgstr "创建日期"
 
-#: views.py:159
+#: views.py:157
 #, fuzzy
 msgid "Disabled"
 msgstr "无效"
 
-#: views.py:163
+#: views.py:161
 #, fuzzy
 msgid "Expiration date"
 msgstr "过期时间"
 
-#: views.py:167
+#: views.py:165
 #, fuzzy
 msgid "Expired"
 msgstr "过期的"
 
-#: views.py:171
+#: views.py:169
 #, fuzzy
 msgid "Length"
 msgstr "长度"
 
-#: views.py:175
+#: views.py:173
 #, fuzzy
 msgid "Revoked"
 msgstr "撤销"
 
-#: views.py:180
+#: views.py:178
 msgid "Identifies"
 msgstr "标识"
 

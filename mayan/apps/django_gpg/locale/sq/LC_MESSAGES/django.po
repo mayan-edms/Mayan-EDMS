@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-22 15:44-0400\n"
+"POT-Creation-Date: 2014-10-25 02:32-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Albanian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -31,11 +31,11 @@ msgstr ""
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
 
-#: links.py:6 views.py:67
+#: links.py:6 views.py:66
 msgid "Private keys"
 msgstr ""
 
-#: links.py:7 views.py:70
+#: links.py:7 views.py:69
 msgid "Public keys"
 msgstr ""
 
@@ -79,23 +79,23 @@ msgstr ""
 msgid "Bad signature."
 msgstr ""
 
-#: literals.py:39
+#: literals.py:38
 msgid "Document not signed or invalid signature."
 msgstr ""
 
-#: literals.py:43
+#: literals.py:41
 msgid "Signature error."
 msgstr ""
 
-#: literals.py:47
+#: literals.py:44
 msgid "Document is signed but no public key is available for verification."
 msgstr ""
 
-#: literals.py:51
+#: literals.py:47
 msgid "Document is signed, and signature is good."
 msgstr ""
 
-#: literals.py:55
+#: literals.py:50
 msgid "Document is signed with a valid signature."
 msgstr ""
 
@@ -138,24 +138,24 @@ msgstr ""
 msgid "Are you sure you wish to import key id: %s?"
 msgstr ""
 
-#: views.py:78
+#: views.py:77
 msgid "Key ID"
 msgstr ""
 
-#: views.py:82
+#: views.py:81
 msgid "Owner"
 msgstr ""
 
-#: views.py:102
+#: views.py:101
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr ""
 
-#: views.py:109
+#: views.py:108
 msgid "Delete key"
 msgstr ""
 
-#: views.py:111
+#: views.py:110
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -163,47 +163,47 @@ msgid ""
 "well."
 msgstr ""
 
-#: views.py:129
+#: views.py:127
 msgid "Query key server"
 msgstr ""
 
-#: views.py:142
+#: views.py:140
 msgid "results"
 msgstr ""
 
-#: views.py:147
+#: views.py:145
 msgid "ID"
 msgstr ""
 
-#: views.py:151
+#: views.py:149
 msgid "Type"
 msgstr ""
 
-#: views.py:155
+#: views.py:153
 msgid "Creation date"
 msgstr ""
 
-#: views.py:159
+#: views.py:157
 msgid "Disabled"
 msgstr ""
 
-#: views.py:163
+#: views.py:161
 msgid "Expiration date"
 msgstr ""
 
-#: views.py:167
+#: views.py:165
 msgid "Expired"
 msgstr ""
 
-#: views.py:171
+#: views.py:169
 msgid "Length"
 msgstr ""
 
-#: views.py:175
+#: views.py:173
 msgid "Revoked"
 msgstr ""
 
-#: views.py:180
+#: views.py:178
 msgid "Identifies"
 msgstr ""
 
