@@ -13,7 +13,7 @@ def task_get_document_image(document_id, *args, **kwargs):
     return document.get_image(*args, **kwargs)
 
 
-@app.task
+@app.task(ignore_result=True)
 def task_clear_image_cache():
     # TODO: Error logging
     #try:
@@ -22,7 +22,7 @@ def task_clear_image_cache():
     #    messages.error(request, _(u'Error clearing document image cache; %s') % exception)
 
 
-@app.task
+@app.task(ignore_result=True)
 def task_update_page_count(version_id):
     document_version = DocumentVersion.objects.get(pk=version_id)
     document_version.update_page_count()
