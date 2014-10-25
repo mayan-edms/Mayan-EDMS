@@ -115,7 +115,7 @@ def document_view(request, document_id, advanced=False):
         if document.latest_version:
             document_fields.extend([
                 {'label': _(u'File mimetype'), 'field': lambda x: x.file_mimetype or _(u'None')},
-                {'label': _(u'File mime encoding'), 'field': lambda x: x.file_mime_encoding or _(u'None')},
+                {'label': _(u'File encoding'), 'field': lambda x: x.file_mime_encoding or _(u'None')},
                 {'label': _(u'File size'), 'field': lambda x: pretty_size(x.size) if x.size else '-'},
                 {'label': _(u'Exists in storage'), 'field': 'exists'},
                 {'label': _(u'File path in storage'), 'field': 'file'},
