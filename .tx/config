@@ -7,12 +7,6 @@ source_lang = en
 source_file = mayan/apps/acls/locale/en/LC_MESSAGES/django.po
 type = PO
 
-[mayan-edms.apps-bootstrap]
-file_filter = mayan/apps/bootstrap/locale/<lang>/LC_MESSAGES/django.po
-source_lang = en
-source_file = mayan/apps/bootstrap/locale/en/LC_MESSAGES/django.po
-type = PO
-
 [mayan-edms.apps-checkouts]
 file_filter = mayan/apps/checkouts/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
