@@ -49,6 +49,13 @@ When using ``MySQL`` and doing OCR on languages other than English
   - Ref: 2- http://markmail.org/message/bqajx2utvmtriixi
 
 
+**Q: Error "django.db.utils.IntegrityError IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`...`.`...`, CONSTRAINT `..._refs_id_b0252274` FOREIGN KEY (`...`) REFERENCES `...` (`...`))')
+
+* Solution:
+
+  - Convert all MySQL tables to the same type, either all MyISAM or InnoDB
+
+
 Document sharing
 ----------------
 
