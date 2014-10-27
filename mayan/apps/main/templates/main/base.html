@@ -358,13 +358,6 @@
                             </div>
                         {% endif %}
 
-                        {% get_sidebar_templates as sidebar_templates %}
-                        {% for template in sidebar_templates %}
-                            {% with 'true' as side_bar %}
-                                {% include template %}
-                            {% endwith %}
-                        {% endfor %}
-
                         {% block sidebar %}{% endblock %}
                     </div><!--end #sidebar-->
                 </div><!--end #wrapper .wat-cf-->
