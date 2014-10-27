@@ -32,14 +32,19 @@
         <form action="{% url 'common:multi_object_action_view' %}" class="form multi_select" method="get">
             {% get_multi_item_links_form %}
             {% if multi_item_actions %}
-                {% with multi_item_form as form %}
-                    {% include 'main/generic_form_instance.html' %}
-                {% endwith %}
+                <div>
+                    <div style="float: left;">
+                            {% with multi_item_form as form %}
+                                {% include 'main/generic_form_instance.html' %}
+                            {% endwith %}
+                    </div>
+                    <div style="float: left; padding-top:10px; padding-left:10px;" >
 
-                <div class="group navform wat-cf">
-                    <button class="button" type="submit" name="{{ form.prefix }}-submit">
-                        <img src="{% static 'web_theme_media/images/icons/tick.png' %}" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}
-                    </button>
+                        <button class="button" type="submit" name="{{ form.prefix }}-submit">
+                            <img src="{% static 'web_theme_media/images/icons/tick.png' %}" alt="{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}" /> {% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}
+                        </button>
+
+                    </div>
                 </div>
             {% endif %}
 
