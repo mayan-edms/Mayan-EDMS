@@ -62,7 +62,6 @@ class APINewDocumentView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.DATA, files=request.FILES)
 
         if serializer.is_valid():
-            print serializer.data
             temporary_file = tempfile.NamedTemporaryFile(delete=False)
             source_file = request.FILES['file']
             for chunk in source_file.chunks():
@@ -75,7 +74,7 @@ class APINewDocumentView(generics.GenericAPIView):
                 document_type_id=serializer.data['document_type'],
                 description=serializer.data['description'],
                 expand=serializer.data['expand'],
-                label=serializer.data['label'],
+                label=serializer.data['label'] or serializer.data['file'],
                 language=serializer.data['language'],
                 user_id=serializer.data['user']
             ), queue='uploads')

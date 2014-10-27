@@ -51,6 +51,6 @@ class NewDocumentSerializer(serializers.Serializer):
     document_type = serializers.ChoiceField(choices=[(document_type.pk, document_type) for document_type in DocumentType.objects.all()])
     expand = serializers.BooleanField(default=False)
     file = serializers.FileField()
-    label = serializers.CharField()
+    label = serializers.CharField(required=False)
     language = serializers.ChoiceField(choices=LANGUAGE_CHOICES, blank_display_value=None, required=False)
     user = serializers.ChoiceField(required=False, choices=[(user.pk, user) for user in User.objects.all()])
