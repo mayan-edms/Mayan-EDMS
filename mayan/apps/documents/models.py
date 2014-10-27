@@ -12,8 +12,6 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-import pycountry
-
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
@@ -32,8 +30,8 @@ from mimetype.api import get_mimetype
 
 from .events import HISTORY_DOCUMENT_CREATED
 from .exceptions import NewDocumentVersionNotAllowed
-from .literals import (VERSION_UPDATE_MAJOR, VERSION_UPDATE_MICRO,
-                       VERSION_UPDATE_MINOR)
+from .literals import (LANGUAGE_CHOICES, VERSION_UPDATE_MAJOR,
+                       VERSION_UPDATE_MICRO, VERSION_UPDATE_MINOR)
 from .managers import (DocumentManager, DocumentPageTransformationManager,
                        DocumentTypeManager, RecentDocumentManager)
 from .runtime import storage_backend
@@ -84,12 +82,10 @@ class Document(models.Model):
 
     uuid = models.CharField(default=lambda: UUID_FUNCTION(), max_length=48, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'), related_name='documents')
-    label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True)
+    label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True, verbose_name=_('Label'))
     description = models.TextField(blank=True, null=True, verbose_name=_(u'Description'))
     date_added = models.DateTimeField(verbose_name=_(u'Added'), auto_now_add=True)
-    language = models.CharField(
-        choices=[(i.bibliographic, i.name) for i in list(pycountry.languages)],
-        default=LANGUAGE, max_length=8, verbose_name=_('Language')
+    language = models.CharField(choices=LANGUAGE_CHOICES, default=LANGUAGE, max_length=8, verbose_name=_('Language')
     )
 
     objects = DocumentManager()
