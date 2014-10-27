@@ -108,6 +108,7 @@ def smart_link_instances_for_document(request, document_id):
         subtemplates_list = [{
             'name': 'main/generic_subtemplate.html',
             'context': {
+                'title': _(u'Smart links (0)'),
                 'content': _(u'There are no defined smart links for the current document.'),
             }
         }]
