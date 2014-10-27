@@ -11,7 +11,7 @@ from history.api import register_history_type
 from history.permissions import PERMISSION_HISTORY_VIEW
 from main.api import register_diagnostic, register_maintenance_links
 from navigation.api import (register_links, register_model_list_columns,
-                            register_multi_item_links, register_top_menu)
+                            register_top_menu)
 from navigation.links import link_spacer
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
@@ -77,7 +77,7 @@ register_links([DocumentTypeFilename, 'documents:document_type_filename_list', '
 
 # Register document links
 register_links(Document, [document_view_simple, document_edit, document_print, document_delete, document_download, document_clear_transformations, document_update_page_count])
-register_multi_item_links(['folders:folder_view', 'index_instance_node_view', 'search', 'results', 'document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [link_spacer, document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count])
+register_links([Document], [link_spacer, document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count], menu_name='multi_item_links')
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])

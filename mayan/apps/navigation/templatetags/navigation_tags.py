@@ -11,12 +11,10 @@ from django.template import (TemplateSyntaxError, Library,
     VariableDoesNotExist, Node, Variable)
 from django.utils.encoding import smart_str, smart_unicode
 from django.utils.text import unescape_string_literal
-from django.utils.translation import ugettext as _
 
 from common.utils import urlquote
 
-from ..api import (object_navigation, multi_object_navigation,
-    top_menu_entries, sidebar_templates)
+from ..api import object_navigation, top_menu_entries
 from ..forms import MultiItemForm
 from ..utils import resolve_to_name
 
@@ -164,7 +162,7 @@ def get_navigation_object(context):
     return obj, object_name
 
 
-def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
+def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation, obj=None):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
@@ -197,7 +195,8 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
     except KeyError:
         pass
 
-    obj, object_name = get_navigation_object(context)
+    if not obj:
+        obj, object_name = get_navigation_object(context)
 
     # Match context navigation object links
     for source, data in links_dict[menu_name].items():
@@ -256,20 +255,13 @@ def object_navigation_template(context):
     return new_context
 
 
-@register.tag
-def get_multi_item_links(parser, token):
-    tag_name, arg = token.contents.split(None, 1)
-    m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
-    if not m:
-        raise TemplateSyntaxError('%r tag had invalid arguments' % tag_name)
-
-    menu_name, var_name = m.groups()
-    return GetNavigationLinks(menu_name=menu_name, links_dict=multi_object_navigation, var_name=var_name)
-
-
 @register.simple_tag(takes_context=True)
-def get_multi_item_links_form(context):
-    actions = [(link['url'], link['text']) for link in _get_object_navigation_links(context, links_dict=multi_object_navigation)]
+def get_multi_item_links_form(context, object_list=None):
+    if object_list:
+        first_object = object_list[0]
+    else:
+        first_object = None
+    actions = [(link['url'], link['text']) for link in _get_object_navigation_links(context, menu_name='multi_item_links', obj=first_object)]
     form = MultiItemForm(actions=actions)
     context.update({'multi_item_form': form, 'multi_item_actions': actions})
     return ''

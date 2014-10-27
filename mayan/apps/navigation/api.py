@@ -1,24 +1,6 @@
 object_navigation = {}
-multi_object_navigation = {}
 model_list_columns = {}
-sidebar_templates = {}
 top_menu_entries = []
-
-
-def register_multi_item_links(src, links, menu_name=None):
-    """
-    Register a multiple item action action to be displayed in the
-    generic list template
-    """
-
-    multi_object_navigation.setdefault(menu_name, {})
-    if hasattr(src, '__iter__'):
-        for one_src in src:
-            multi_object_navigation[menu_name].setdefault(one_src, {'links': []})
-            multi_object_navigation[menu_name][one_src]['links'].extend(links)
-    else:
-        multi_object_navigation[menu_name].setdefault(src, {'links': []})
-        multi_object_navigation[menu_name][src]['links'].extend(links)
 
 
 def register_links(src, links, menu_name=None, position=None):

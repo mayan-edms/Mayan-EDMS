@@ -5,8 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from acls.api import class_permissions
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
-from navigation.api import (register_links, register_model_list_columns,
-                            register_multi_item_links)
+from navigation.api import register_links, register_model_list_columns
 from navigation.links import link_spacer
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
@@ -41,7 +40,8 @@ register_links(Document, [metadata_view], menu_name='form_header')
 register_links(DocumentType, [setup_document_type_metadata])
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
 register_links([MetadataType, 'metadata:setup_metadata_type_list', 'metadata:setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
-register_multi_item_links(['folders:folder_view', 'indexes:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'linking:document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [link_spacer, metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove])
+register_links([Document], [link_spacer, metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove], menu_name='multi_item_links')
+
 
 register_setup(setup_metadata_type_list)
 

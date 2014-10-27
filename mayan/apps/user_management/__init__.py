@@ -3,7 +3,7 @@ from __future__ import absolute_import
 from django.contrib.auth.models import User, Group
 from django.utils.translation import ugettext_lazy as _
 
-from navigation.api import register_links, register_multi_item_links
+from navigation.api import register_links
 from navigation.links import link_spacer
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
@@ -17,11 +17,11 @@ from .urls import api_urls
 
 register_links(User, [user_edit, user_set_password, user_groups, user_delete])
 register_links([User, 'user_management:user_multiple_set_password', 'user_management:user_multiple_delete', 'user_management:user_list', 'user_management:user_add'], [user_list, user_add], menu_name=u'secondary_menu')
-register_multi_item_links(['user_management:user_list'], [link_spacer, user_multiple_set_password, user_multiple_delete])
+register_links(['user_management:user_list'], [link_spacer, user_multiple_set_password, user_multiple_delete], menu_name='multi_item_links')
 
 register_links(Group, [group_edit, group_members, group_delete])
 register_links(['user_management:group_multiple_delete', 'user_management:group_delete', 'user_management:group_edit', 'user_management:group_list', 'user_management:group_add', 'user_management:group_members'], [group_list, group_add], menu_name=u'secondary_menu')
-register_multi_item_links(['user_management:group_list'], [link_spacer, group_multiple_delete])
+register_links(['user_management:group_list'], [link_spacer, group_multiple_delete], menu_name='multi_item_links')
 
 user_management_views = [
     'user_management:user_list', 'user_management:user_edit', 'user_management:user_add', 'user_management:user_delete',

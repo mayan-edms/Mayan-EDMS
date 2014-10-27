@@ -11,7 +11,7 @@ from acls.api import class_permissions
 from documents.models import Document, DocumentVersion
 from documents.signals import post_version_upload
 from main.api import register_maintenance_links
-from navigation.api import register_links, register_multi_item_links
+from navigation.api import register_links
 from navigation.links import link_spacer
 from project_tools.api import register_tool
 
@@ -26,8 +26,8 @@ from .tasks import task_do_ocr
 logger = logging.getLogger(__name__)
 
 register_links(Document, [submit_document])
-register_multi_item_links(['folders:folder_view', 'indexing:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'linking:document_group_view', 'documents:document_list', 'document:document_list_recent', 'tags:tag_tagged_item_list'], [link_spacer, submit_document_multiple])
-register_multi_item_links(['ocr:queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
+register_links([Document], [link_spacer, submit_document_multiple], menu_name='multi_item_links')
+register_links(['ocr:queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 register_links(['ocr:queue_document_list'], [queue_document_list], menu_name='secondary_menu')
 
 register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
