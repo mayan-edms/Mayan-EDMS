@@ -10,4 +10,4 @@ class MultiItemForm(forms.Form):
         choices.extend([(action[0], action[1]) for action in actions])
         self.fields['action'].choices = choices
 
-    action = forms.ChoiceField(label=_(u'Action'), required=False)
+    action = forms.ChoiceField(label=_(u'Actions'), required=False)
