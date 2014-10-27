@@ -109,6 +109,22 @@ class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
         'DELETE': [PERMISSION_DOCUMENT_DELETE]
     }
 
+    def delete(self, *args, **kwargs):
+        """Delete the selected document."""
+        return super(APIDocumentView, self).delete(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        """Return the details of the selected document."""
+        return super(APIDocumentView, self).get(*args, **kwargs)
+
+    def patch(self, *args, **kwargs):
+        """Edit the properties of the selected document."""
+        return super(APIDocumentView, self).patch(*args, **kwargs)
+
+    def put(self, *args, **kwargs):
+        """Edit the properties of the selected document."""
+        return super(APIDocumentView, self).put(*args, **kwargs)
+
 
 class APIDocumentVersionCreateView(generics.CreateAPIView):
     """
@@ -232,12 +248,20 @@ class APIDocumentPageView(generics.RetrieveUpdateAPIView):
     }
     mayan_permission_attribute_check = 'document'
 
+    def get(self, *args, **kwargs):
+        """Returns the selected document page details."""
+        return super(APIDocumentPageView, self).get(*args, **kwargs)
+
+    def patch(self, *args, **kwargs):
+        """Edit the selected document page."""
+        return super(APIDocumentPageView, self).patch(*args, **kwargs)
+
+    def put(self, *args, **kwargs):
+        """Edit the selected document page."""
+        return super(APIDocumentPageView, self).put(*args, **kwargs)
+
 
 class APIDocumentTypeListView(generics.ListCreateAPIView):
-    """
-    Returns a list of all the document types.
-    """
-
     serializer_class = DocumentTypeSerializer
     queryset = DocumentType.objects.all()
 
@@ -245,6 +269,14 @@ class APIDocumentTypeListView(generics.ListCreateAPIView):
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_TYPE_VIEW]}
     mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_TYPE_CREATE]}
+
+    def get(self, *args, **kwargs):
+        """Returns a list of all the document types."""
+        return super(APIDocumentTypeListView, self).delete(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        """Create a new document type."""
+        return super(APIDocumentTypeListView, self).get(*args, **kwargs)
 
 
 class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
@@ -262,6 +294,22 @@ class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': [PERMISSION_DOCUMENT_TYPE_EDIT],
         'DELETE': [PERMISSION_DOCUMENT_TYPE_DELETE]
     }
+
+    def delete(self, *args, **kwargs):
+        """Delete the selected document type."""
+        return super(APIDocumentTypeView, self).delete(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        """Return the details of the selected document type."""
+        return super(APIDocumentTypeView, self).get(*args, **kwargs)
+
+    def patch(self, *args, **kwargs):
+        """Edit the properties of the selected document type."""
+        return super(APIDocumentTypeView, self).patch(*args, **kwargs)
+
+    def put(self, *args, **kwargs):
+        """Edit the properties of the selected document type."""
+        return super(APIDocumentTypeView, self).put(*args, **kwargs)
 
 
 class APIDocumentTypeDocumentListView(generics.ListAPIView):
