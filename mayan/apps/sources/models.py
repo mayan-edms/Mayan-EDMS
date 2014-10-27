@@ -356,8 +356,6 @@ class WatchFolderSource(IntervalBaseModel):
     source_type = SOURCE_CHOICE_WATCH
 
     folder_path = models.CharField(max_length=255, verbose_name=_(u'Folder path'), help_text=_(u'Server side filesystem path.'))
-    # TODO: remove delete_after_upload
-    delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'Delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
 
     def check_source(self):
         # TEMP: until default document language problem is fixed
