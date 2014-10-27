@@ -6,8 +6,8 @@ class MultiItemForm(forms.Form):
     def __init__(self, *args, **kwargs):
         actions = kwargs.pop('actions', [])
         super(MultiItemForm, self).__init__(*args, **kwargs)
-        choices = [('', '------')]
+        choices = []
         choices.extend([(action[0], action[1]) for action in actions])
         self.fields['action'].choices = choices
 
-    action = forms.ChoiceField(label=_(u'Multi item action'))
+    action = forms.ChoiceField(label=_(u'Action'), required=False)

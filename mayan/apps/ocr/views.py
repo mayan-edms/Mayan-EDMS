@@ -41,7 +41,6 @@ def queue_document_list(request, queue_name='default'):
             {'name': _('Node'), 'attribute': 'node_name'},
             {'name': _('Result'), 'attribute': 'result'},
         ],
-        'multi_select_as_buttons': True,
     }
 
     return render_to_response('main/generic_list.html', context,

@@ -36,7 +36,6 @@ class FolderListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'title': _(u'Folders'),
-            'multi_select_as_buttons': True,
             'hide_link': True,
         }
 
@@ -145,7 +144,6 @@ class FolderDetailView(DocumentListView):
         return {
             'title': _(u'Documents in folder: %s') % self.get_folder(),
             'hide_links': True,
-            'multi_select_as_buttons': True,
             'object': self.get_folder(),
             'object_name': _(u'Folder'),
         }
@@ -215,7 +213,6 @@ def document_folder_list(request, document_id):
     context = {
         'title': _(u'Folders containing: %s') % document,
         'object': document,
-        'multi_select_as_buttons': True,
         'hide_link': True,
     }
 

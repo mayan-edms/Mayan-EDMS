@@ -8,6 +8,7 @@ from documents import document_search
 from documents.models import Document
 from navigation.api import (register_links, register_model_list_columns,
                             register_multi_item_links, register_top_menu)
+from navigation.links import link_spacer
 from rest_api.classes import APIEndPoint
 
 from .links import (multiple_documents_selection_tag_remove,
@@ -52,14 +53,14 @@ register_model_list_columns(Document, [
 ])
 
 register_links(Tag, [tag_tagged_item_list, tag_edit, tag_acl_list, tag_delete])
-register_multi_item_links(['tags:tag_list'], [tag_multiple_delete])
+register_multi_item_links(['tags:tag_list'], [link_spacer, tag_multiple_delete])
 register_links([Tag, 'tags:tag_list', 'tags:tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
 register_top_menu('tags', link={'text': _(u'Tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'}, children_view_regex=[r'^tag_(list|create|delete|edit|tagged|acl)'])
 
 register_links(Document, [tag_document_list], menu_name='form_header')
 register_links(['tags:document_tags', 'tags:tag_remove', 'tag_multiple_remove', 'tag_attach'], [tag_attach], menu_name='sidebar')
-register_multi_item_links(['document_tags'], [single_document_multiple_tag_remove])
+register_multi_item_links(['tags:document_tags'], [link_spacer, single_document_multiple_tag_remove])
 
-register_multi_item_links(['folders:folder_view', 'indexes:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'linking:document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [tag_multiple_attach, multiple_documents_selection_tag_remove])
+register_multi_item_links(['folders:folder_view', 'indexes:index_instance_node_view', 'documents:document_type_document_list', 'search:search', 'search:results', 'linking:document_group_view', 'documents:document_list', 'documents:document_list_recent', 'tags:tag_tagged_item_list'], [link_spacer, tag_multiple_attach, multiple_documents_selection_tag_remove])
 
 document_search.add_model_field('tags__label', label=_(u'Tags'))

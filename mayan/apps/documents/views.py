@@ -62,7 +62,6 @@ class DocumentListView(SingleObjectListView):
 
     extra_context = {
         'title': _(u'All documents'),
-        'multi_select_as_buttons': True,
         'hide_links': True,
     }
 
@@ -84,7 +83,6 @@ def document_list(request, object_list=None, title=None, extra_context=None):
     context = {
         'object_list': final_object_list,
         'title': title if title else _(u'documents'),
-        'multi_select_as_buttons': True,
         'hide_links': True,
     }
     if extra_context:

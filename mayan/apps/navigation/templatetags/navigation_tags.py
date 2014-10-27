@@ -267,16 +267,12 @@ def get_multi_item_links(parser, token):
     return GetNavigationLinks(menu_name=menu_name, links_dict=multi_object_navigation, var_name=var_name)
 
 
-@register.inclusion_tag('main/generic_form_instance.html', takes_context=True)
+@register.simple_tag(takes_context=True)
 def get_multi_item_links_form(context):
-    new_context = copy.copy(context)
-    new_context.update({
-        'form': MultiItemForm(actions=[(link['url'], link['text']) for link in _get_object_navigation_links(context, links_dict=multi_object_navigation)]),
-        'title': _(u'Selected item actions:'),
-        'form_action': reverse('common:multi_object_action_view'),
-        'submit_method': 'get',
-    })
-    return new_context
+    actions = [(link['url'], link['text']) for link in _get_object_navigation_links(context, links_dict=multi_object_navigation)]
+    form = MultiItemForm(actions=actions)
+    context.update({'multi_item_form': form, 'multi_item_actions': actions})
+    return ''
 
 
 class GetSidebarTemplatesNone(Node):

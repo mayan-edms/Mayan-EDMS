@@ -26,7 +26,6 @@ def results(request, extra_context=None):
     context = {
         'query_string': request.GET,
         'hide_links': True,
-        'multi_select_as_buttons': True,
         'search_results_limit': LIMIT,
     }
 

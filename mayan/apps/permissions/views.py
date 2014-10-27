@@ -97,7 +97,6 @@ def role_permissions(request, role_id):
         'object': role,
         'object_name': _(u'Role'),
         'subtemplates_list': subtemplates_list,
-        'multi_select_as_buttons': True,
         'multi_select_item_properties': {
             'permission_id': lambda x: x.pk,
             'requester_id': lambda x: role.pk,

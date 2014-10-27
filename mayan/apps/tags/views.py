@@ -114,7 +114,6 @@ def tag_list(request, queryset=None, extra_context=None):
     context = {
         'title': _(u'Tags'),
         'hide_link': True,
-        'multi_select_as_buttons': True,
         'hide_object': True,
     }
     if extra_context:
@@ -225,7 +224,6 @@ class TagTaggedItemListView(DocumentListView):
         return {
             'title': _(u'Documents with the tag "%s"') % self.get_tag(),
             'hide_links': True,
-            'multi_select_as_buttons': True,
             'object': self.get_tag(),
             'object_name': _(u'Tag'),
         }

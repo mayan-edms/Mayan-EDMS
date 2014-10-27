@@ -47,7 +47,6 @@ def user_list(request):
                 'attribute': encapsulate(lambda x: two_state_template(x.has_usable_password())),
             },
         ],
-        'multi_select_as_buttons': True,
     }
 
     return render_to_response('main/generic_list.html', context,
@@ -256,7 +255,6 @@ def group_list(request):
                 'attribute': 'user_set.count'
             },
         ],
-        'multi_select_as_buttons': True,
     }
 
     return render_to_response('main/generic_list.html', context,
