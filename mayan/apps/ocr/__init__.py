@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 import logging
 
-from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
@@ -10,6 +9,7 @@ from south.signals import post_migrate
 
 from acls.api import class_permissions
 from documents.models import Document, DocumentVersion
+from documents.signals import post_version_upload
 from main.api import register_maintenance_links
 from navigation.api import register_links, register_multi_item_links
 from project_tools.api import register_tool
@@ -36,13 +36,12 @@ def document_ocr_submit(self):
     task_do_ocr.apply_async(args=[self.pk], queue='ocr')
 
 
-@receiver(post_save, dispatch_uid='document_post_save', sender=DocumentVersion)
-def document_post_save(sender, instance, **kwargs):
-    logger.debug('received post save signal')
+@receiver(post_version_upload, dispatch_uid='post_version_upload_ocr', sender=DocumentVersion)
+def post_version_upload_ocr(sender, instance, **kwargs):
+    logger.debug('received post_version_upload')
     logger.debug('instance: %s' % instance)
-    if kwargs.get('created', False):
-        if instance.document.document_type.ocr:
-            instance.document.submit_for_ocr()
+    if instance.document.document_type.ocr:
+        instance.document.submit_for_ocr()
 
 
 @receiver(post_migrate, dispatch_uid='create_default_queue')

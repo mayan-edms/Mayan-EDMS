@@ -37,6 +37,7 @@ from .managers import (DocumentManager, DocumentPageTransformationManager,
 from .runtime import storage_backend
 from .settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE, LANGUAGE,
                        UUID_FUNCTION, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
+from .signals import post_version_upload
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
 logger = logging.getLogger(__name__)
@@ -365,7 +366,7 @@ class DocumentVersion(models.Model):
         Overloaded save method that updates the document version's checksum,
         mimetype, page count and transformation when created
         """
-        new_document = not self.pk
+        new_document_version = not self.pk
 
         # Only do this for new documents
         transformations = kwargs.pop('transformations', None)
@@ -374,7 +375,7 @@ class DocumentVersion(models.Model):
         for key in sorted(DocumentVersion._post_save_hooks):
             DocumentVersion._post_save_hooks[key](self)
 
-        if new_document:
+        if new_document_version:
             # Only do this for new documents
             self.update_checksum(save=False)
             self.update_mimetype(save=False)
@@ -383,6 +384,8 @@ class DocumentVersion(models.Model):
 
             if transformations:
                 self.apply_default_transformations(transformations)
+
+            post_version_upload.send(sender=self.__class__, instance=self)
 
     def update_checksum(self, save=True):
         """
