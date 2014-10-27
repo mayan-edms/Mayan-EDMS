@@ -17,8 +17,6 @@ register_links(Role, [role_edit, role_members, role_permissions, role_delete])
 register_links([Role, 'permissions:role_create', 'permissions:role_list'], [role_list, role_create], menu_name='secondary_menu')
 register_links(['permissions:role_permissions'], [permission_grant, permission_revoke], menu_name='multi_item_links')
 
-permission_views = ['permissions:role_list', 'permissions:role_create', 'permissions:role_edit', 'permissions:role_members', 'permissions:role_permissions', 'permissions:role_delete']
-
 
 def user_post_save(sender, instance, **kwargs):
     if kwargs.get('created', False):

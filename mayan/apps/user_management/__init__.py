@@ -23,13 +23,6 @@ register_links(Group, [group_edit, group_members, group_delete])
 register_links(['user_management:group_multiple_delete', 'user_management:group_delete', 'user_management:group_edit', 'user_management:group_list', 'user_management:group_add', 'user_management:group_members'], [group_list, group_add], menu_name=u'secondary_menu')
 register_links(['user_management:group_list'], [link_spacer, group_multiple_delete], menu_name='multi_item_links')
 
-user_management_views = [
-    'user_management:user_list', 'user_management:user_edit', 'user_management:user_add', 'user_management:user_delete',
-    'user_management:user_multiple_delete', 'user_management:user_set_password',
-    'user_management:user_multiple_set_password', 'user_management:group_list', 'user_management:group_edit', 'user_management:group_add',
-    'user_management:group_delete', 'user_management:group_multiple_delete', 'user_management:group_members'
-]
-
 register_setup(user_setup)
 register_setup(group_setup)
 
