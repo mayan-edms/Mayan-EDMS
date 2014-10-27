@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, url
 
-from .api_views import APICurrentUserView, APIUserListView, APIUserView
+from .api_views import (APICurrentUserView, APIGroupListView, APIGroupView,
+                        APIUserListView, APIUserView)
 
 urlpatterns = patterns('user_management.views',
     url(r'^user/list/$', 'user_list', (), 'user_list'),
@@ -21,6 +22,8 @@ urlpatterns = patterns('user_management.views',
 )
 
 api_urls = patterns('',
+    url(r'^groups/$', APIGroupListView.as_view(), name='group-list'),
+    url(r'^groups/(?P<pk>[0-9]+)/$', APIGroupView.as_view(), name='group-detail'),
     url(r'^users/$', APIUserListView.as_view(), name='user-list'),
     url(r'^users/(?P<pk>[0-9]+)/$', APIUserView.as_view(), name='user-detail'),
     url(r'^users/current/$', APICurrentUserView.as_view(), name='user-current'),

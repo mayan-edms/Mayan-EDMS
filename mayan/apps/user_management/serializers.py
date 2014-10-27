@@ -1,6 +1,6 @@
 from __future__ import absolute_import
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Group, User
 
 from rest_framework import serializers
 
@@ -15,3 +15,9 @@ class UserSerializer(serializers.ModelSerializer):
         user = super(UserSerializer, self).restore_object(attrs, instance)
         user.set_password(attrs['password'])
         return user
+
+
+class GroupSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('id', 'name')
+        model = Group
