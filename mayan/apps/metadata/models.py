@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from django.core.exceptions import ValidationError
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
@@ -50,6 +51,12 @@ class DocumentMetadata(models.Model):
 
     def __unicode__(self):
         return unicode(self.metadata_type)
+
+    def save(self, *args, **kwargs):
+        if self.metadata_type not in self.document.document_type.metadata.all():
+            raise ValidationError(_('Metadata type is not valid for this document type.'))
+
+        return super(DocumentMetadata, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = _(u'Document metadata')
