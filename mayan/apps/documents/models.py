@@ -37,7 +37,7 @@ from .managers import (DocumentManager, DocumentPageTransformationManager,
 from .runtime import storage_backend
 from .settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE, LANGUAGE,
                        UUID_FUNCTION, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
-from .signals import post_version_upload
+from .signals import post_version_upload, post_document_type_change
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
 logger = logging.getLogger(__name__)
@@ -86,10 +86,25 @@ class Document(models.Model):
     label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True, verbose_name=_('Label'))
     description = models.TextField(blank=True, null=True, verbose_name=_(u'Description'))
     date_added = models.DateTimeField(verbose_name=_(u'Added'), auto_now_add=True)
-    language = models.CharField(choices=LANGUAGE_CHOICES, default=LANGUAGE, max_length=8, verbose_name=_('Language')
-    )
+    language = models.CharField(choices=LANGUAGE_CHOICES, default=LANGUAGE, max_length=8, verbose_name=_('Language'))
 
     objects = DocumentManager()
+
+    class Meta:
+        verbose_name = _(u'Document')
+        verbose_name_plural = _(u'Documents')
+        ordering = ['-date_added']
+
+    def set_document_type(self, document_type, force=False):
+        has_changed = self.document_type != document_type
+        print 'has_changed', has_changed
+        print 'self.document_type != document_type', self.document_type, document_type
+
+        self.document_type = document_type
+        self.save()
+        if has_changed or force:
+            print 'sending!'
+            post_document_type_change.send(sender=self.__class__, instance=self)
 
     @staticmethod
     def clear_image_cache():
@@ -97,11 +112,6 @@ class Document(models.Model):
             file_path = os.path.join(CACHE_PATH, the_file)
             if os.path.isfile(file_path):
                 os.unlink(file_path)
-
-    class Meta:
-        verbose_name = _(u'Document')
-        verbose_name_plural = _(u'Documents')
-        ordering = ['-date_added']
 
     def __unicode__(self):
         return self.label
