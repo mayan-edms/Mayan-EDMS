@@ -44,8 +44,7 @@ class Link(object):
 
     def __init__(self, text, view, klass=None, args=None, icon=None,
                  permissions=None, condition=None, conditional_disable=None,
-                 description=None, dont_mark_active=False, children_view_regex=None,
-                 keep_query=False, children_classes=None, children_views=None,
+                 description=None, dont_mark_active=False, keep_query=False,
                  conditional_highlight=None):
 
         self.text = text
@@ -61,9 +60,6 @@ class Link(object):
         self.klass = klass
         self.keep_query = keep_query
         self.conditional_highlight = conditional_highlight  # Used by dynamic sources
-        self.children_views = children_views or []
-        self.children_classes = children_classes or []
-        self.children_view_regex = children_view_regex
 
     def resolve(self, context, request=None, current_path=None, current_view=None, resolved_object=None):
         # Don't calculate these if passed in an argument
@@ -144,13 +140,7 @@ class Link(object):
             else:
                 resolved_link.disabled = False
 
-            if current_view in self.children_views:
-                resolved_link.active = True
-
             # TODO: add tree base main menu support to auto activate parent links
-
-            if self.children_view_regex and re.compile(self.children_view_regex).match(current_view):
-                resolved_link.active = True
 
             return resolved_link
 

@@ -12,7 +12,7 @@ from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
                           PERMISSION_METADATA_TYPE_VIEW)
 
 metadata_edit = {'text': _(u'Edit metadata'), 'view': 'metadata:metadata_edit', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT]}
-metadata_view = {'text': _(u'Metadata'), 'view': 'metadata:metadata_view', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_VIEW], 'children_view_regex': ['metadata']}
+metadata_view = {'text': _(u'Metadata'), 'view': 'metadata:metadata_view', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_VIEW]}
 metadata_multiple_edit = {'text': _(u'Edit metadata'), 'view': 'metadata:metadata_multiple_edit', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT]}
 
 setup_document_type_metadata = {'text': _(u'Metadata'), 'view': 'metadata:setup_document_type_metadata', 'args': 'document_type.pk', 'famfam': 'xhtml', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}

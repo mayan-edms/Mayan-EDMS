@@ -29,7 +29,7 @@ register_links(['folders:document_folder_list', 'folders:folder_add_document'], 
 register_links(Document, [document_folder_list], menu_name='form_header')
 register_links([Document], [link_spacer, folder_add_multiple_documents, folder_document_multiple_remove], menu_name='multi_item_links')
 
-register_top_menu(name='folders', link=folders_main_menu_link, children_views=['folders:folder_list', 'folders:folder_create', 'folders:folder_edit', 'folders:folder_delete', 'folders:folder_view', 'folders:folder_document_multiple_remove'])
+register_top_menu(name='folders', link=folders_main_menu_link)
 
 class_permissions(Folder, [ACLS_EDIT_ACL, ACLS_VIEW_ACL,
                            PERMISSION_FOLDER_DELETE, PERMISSION_FOLDER_EDIT,

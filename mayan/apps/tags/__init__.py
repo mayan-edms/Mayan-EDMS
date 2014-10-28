@@ -52,7 +52,7 @@ register_model_list_columns(Document, [
     },
 ])
 
-register_top_menu('tags', link={'text': _(u'Tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'}, children_view_regex=[r'^tag_(list|create|delete|edit|tagged|acl)'])
+register_top_menu('tags', link={'text': _(u'Tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'})
 
 register_links(Tag, [tag_tagged_item_list, tag_edit, tag_acl_list, tag_delete])
 register_links([Tag], [link_spacer, tag_multiple_delete], menu_name='multi_item_links')

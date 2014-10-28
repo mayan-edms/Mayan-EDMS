@@ -17,7 +17,7 @@ tag_multiple_attach = {'text': _(u'Attach tag'), 'view': 'tags:tag_multiple_atta
 multiple_documents_selection_tag_remove = {'text': _(u'Remove tag'), 'view': 'tags:multiple_documents_selection_tag_remove', 'famfam': 'tag_blue_delete'}
 single_document_multiple_tag_remove = {'text': _(u'Remove tags'), 'view': 'tags:single_document_multiple_tag_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
 
-tag_document_list = {'text': _(u'Tags'), 'view': 'tags:document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE, PERMISSION_TAG_ATTACH], 'children_view_regex': ['tag']}
+tag_document_list = {'text': _(u'Tags'), 'view': 'tags:document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE, PERMISSION_TAG_ATTACH]}
 tag_delete = {'text': _(u'Delete'), 'view': 'tags:tag_delete', 'args': 'object.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_DELETE]}
 tag_edit = {'text': _(u'Edit'), 'view': 'tags:tag_edit', 'args': 'object.id', 'famfam': 'tag_blue_edit', 'permissions': [PERMISSION_TAG_EDIT]}
 tag_tagged_item_list = {'text': _(u'Documents'), 'view': 'tags:tag_tagged_item_list', 'args': 'object.id', 'famfam': 'page'}

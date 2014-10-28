@@ -30,18 +30,6 @@ class TopMenuNavigationNode(Node):
         all_menu_links = [entry.get('link', {}) for entry in top_menu_entries]
         menu_links = resolve_links(context, all_menu_links, current_view, current_path)
 
-        for index, link in enumerate(top_menu_entries):
-            if current_view in link.get('children_views', []):
-                menu_links[index]['active'] = True
-
-            for child_path_regex in link.get('children_path_regex', []):
-                if re.compile(child_path_regex).match(current_path.lstrip('/')):
-                    menu_links[index]['active'] = True
-
-            for children_view_regex in link.get('children_view_regex', []):
-                if re.compile(children_view_regex).match(current_view):
-                    menu_links[index]['active'] = True
-
         context['menu_links'] = menu_links
         return ''
 
@@ -127,22 +115,6 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                 new_link['disabled'] = link['conditional_disable'](context)
             else:
                 new_link['disabled'] = False
-
-            if current_view in link.get('children_views', []):
-                new_link['active'] = True
-
-            for child_url_regex in link.get('children_url_regex', []):
-                if re.compile(child_url_regex).match(current_path.lstrip('/')):
-                    new_link['active'] = True
-
-            for children_view_regex in link.get('children_view_regex', []):
-                if re.compile(children_view_regex).match(current_view):
-                    new_link['active'] = True
-
-            for cls in link.get('children_classes', []):
-                obj, object_name = get_navigation_object(context)
-                if type(obj) == cls or obj == cls:
-                    new_link['active'] = True
 
             context_links.append(new_link)
     return context_links

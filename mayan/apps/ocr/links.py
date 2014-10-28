@@ -16,4 +16,4 @@ queue_document_multiple_delete = {'text': _(u'Delete'), 'view': 'ocr:queue_docum
 all_document_ocr_cleanup = {'text': _(u'Clean up pages content'), 'view': 'ocr:all_document_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES], 'description': _(u'Runs a language filter to remove common OCR mistakes from document pages content.')}
 
 queue_document_list = {'text': _(u'Queue document list'), 'view': 'ocr:queue_document_list', 'famfam': 'hourglass', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-ocr_tool_link = {'text': _(u'OCR'), 'view': 'ocr:queue_document_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT], 'children_view_regex': [r'queue_', r'document_queue']}
+ocr_tool_link = {'text': _(u'OCR'), 'view': 'ocr:queue_document_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT]}

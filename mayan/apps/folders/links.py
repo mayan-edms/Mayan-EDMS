@@ -18,7 +18,7 @@ folder_document_multiple_remove = {'text': _('Remove from folder'), 'view': 'fol
 folder_view = {'text': _(u'Documents'), 'view': 'folders:folder_view', 'args': 'object.pk', 'famfam': 'page', 'permissions': [PERMISSION_FOLDER_VIEW]}
 folder_add_document = {'text': _('Add to a folder'), 'view': 'folders:folder_add_document', 'args': 'object.pk', 'famfam': 'folder_add', 'permissions': [PERMISSION_FOLDER_ADD_DOCUMENT]}
 folder_add_multiple_documents = {'text': _('Add to folder'), 'view': 'folders:folder_add_multiple_documents', 'famfam': 'folder_add'}
-document_folder_list = {'text': _(u'Folders'), 'view': 'folders:document_folder_list', 'args': 'object.pk', 'famfam': 'folder_user', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'children_view_regex': [r'folder']}
+document_folder_list = {'text': _(u'Folders'), 'view': 'folders:document_folder_list', 'args': 'object.pk', 'famfam': 'folder_user', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
 folder_acl_list = {'text': _(u'ACLs'), 'view': 'folders:folder_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
 folders_main_menu_link = {'text': _('Folders'), 'famfam': 'folder_user', 'view': 'folders:folder_list'}

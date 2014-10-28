@@ -13,12 +13,12 @@ from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_EDIT,
                           PERMISSION_SOURCES_SETUP_VIEW)
 
-document_create_multiple = {'text': _(u'Upload new documents'), 'view': 'sources:document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE], 'children_view_regex': [r'upload_interactive']}
+document_create_multiple = {'text': _(u'Upload new documents'), 'view': 'sources:document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_create_siblings = {'text': _(u'Clone'), 'view': 'sources:document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 
 staging_file_delete = {'text': _(u'Delete'), 'view': 'sources:staging_file_delete', 'args': ['source.pk', 'object.encoded_filename'], 'famfam': 'delete', 'keep_query': True, 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE]}
 
-setup_sources = {'text': _(u'Sources'), 'view': 'sources:setup_source_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'permissions': [PERMISSION_SOURCES_SETUP_VIEW], 'children_view_regex': [r'setup_web_form', r'setup_staging_folder', r'setup_source_']}
+setup_sources = {'text': _(u'Sources'), 'view': 'sources:setup_source_list', 'famfam': 'application_form', 'icon': 'application_form.png', 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
 setup_source_create_webform = {'text': _(u'Add new webform source'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WEB_FORM, 'famfam': 'application_form_add', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context.get('source_type') == SOURCE_CHOICE_WEB_FORM and 'source' not in context}
 setup_source_create_staging_folder = {'text': _(u'Add new staging folder'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_STAGING, 'famfam': 'folder_camera', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context.get('source_type') == SOURCE_CHOICE_STAGING and 'source' not in context}
 setup_source_create_watch_folder = {'text': _(u'Add new watch folder'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WATCH, 'famfam': 'folder_magnify', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context.get('source_type') == SOURCE_CHOICE_WATCH and 'source' not in context}
@@ -32,6 +32,6 @@ setup_source_transformation_create = {'text': _(u'Add transformation'), 'view': 
 setup_source_transformation_edit = {'text': _(u'Edit'), 'view': 'sources:setup_source_transformation_edit', 'args': 'transformation.pk', 'famfam': 'shape_square_edit', 'permissions': [PERMISSION_SOURCES_SETUP_EDIT]}
 setup_source_transformation_delete = {'text': _(u'Delete'), 'view': 'sources:setup_source_transformation_delete', 'args': 'transformation.pk', 'famfam': 'shape_square_delete', 'permissions': [PERMISSION_SOURCES_SETUP_EDIT]}
 
-source_list = {'text': _(u'Document sources'), 'view': 'sources:setup_web_form_list', 'famfam': 'page_add', 'children_url_regex': [r'sources/setup'], 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
+source_list = {'text': _(u'Document sources'), 'view': 'sources:setup_web_form_list', 'famfam': 'page_add', 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
 
 upload_version = {'text': _(u'Upload new version'), 'view': 'sources:upload_version', 'args': 'object.pk', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION]}

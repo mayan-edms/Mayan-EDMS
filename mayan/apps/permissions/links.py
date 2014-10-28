@@ -13,6 +13,6 @@ permission_revoke = {'text': _(u'Revoke'), 'view': 'permissions:permission_multi
 role_create = {'text': _(u'Create new role'), 'view': 'permissions:role_create', 'famfam': 'medal_gold_add', 'permissions': [PERMISSION_ROLE_CREATE]}
 role_delete = {'text': _(u'Delete'), 'view': 'permissions:role_delete', 'args': 'object.id', 'famfam': 'medal_gold_delete', 'permissions': [PERMISSION_ROLE_DELETE]}
 role_edit = {'text': _(u'Edit'), 'view': 'permissions:role_edit', 'args': 'object.id', 'famfam': 'medal_gold_1', 'permissions': [PERMISSION_ROLE_EDIT]}
-role_list = {'text': _(u'Roles'), 'view': 'permissions:role_list', 'famfam': 'medal_gold_1', 'icon': 'medal_gold_red.png', 'permissions': [PERMISSION_ROLE_VIEW], 'children_view_regex': [r'^permission_', r'^role_']}
+role_list = {'text': _(u'Roles'), 'view': 'permissions:role_list', 'famfam': 'medal_gold_1', 'icon': 'medal_gold_red.png', 'permissions': [PERMISSION_ROLE_VIEW]}
 role_members = {'text': _(u'Members'), 'view': 'permissions:role_members', 'args': 'object.id', 'famfam': 'group_key', 'permissions': [PERMISSION_ROLE_EDIT]}
 role_permissions = {'text': _(u'Role permissions'), 'view': 'permissions:role_permissions', 'args': 'object.id', 'famfam': 'key_go', 'permissions': [PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE]}

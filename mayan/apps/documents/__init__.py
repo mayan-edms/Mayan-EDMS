@@ -118,11 +118,6 @@ register_model_list_columns(Document, [
 register_top_menu(
     'documents',
     link={'famfam': 'page', 'text': _(u'Documents'), 'view': 'documents:document_list_recent'},
-    children_path_regex=[
-        r'^documents/[^t]', r'^metadata/[^s]', r'comments', r'tags/document', r'grouping/[^s]', r'history/list/for_object/documents',
-    ],
-    children_view_regex=[r'documents:document_acl', r'smart_link_instance'],
-    children_views=['documents:document_folder_list', 'folders:folder_add_document', 'documents:document_index_list', 'documents:upload_version', ],
     position=1
 )
 
