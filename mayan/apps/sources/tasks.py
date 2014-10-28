@@ -5,7 +5,6 @@ from django.core.files import File
 
 from mayan.celery import app
 
-from documents.exceptions import NewDocumentVersionNotAllowed
 from documents.models import Document, DocumentType
 
 from .models import Source
