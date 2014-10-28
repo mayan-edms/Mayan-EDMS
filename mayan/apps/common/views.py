@@ -171,7 +171,7 @@ def current_user_details(request):
     return render_to_response(
         'main/generic_form.html', {
             'form': form,
-            'title': _(u'current user details'),
+            'title': _(u'Current user details'),
             'read_only': True,
         },
         context_instance=RequestContext(request))
