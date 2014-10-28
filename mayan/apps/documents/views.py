@@ -920,7 +920,7 @@ def document_type_filename_list(request, document_type_id):
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 
     context = {
-        'object_list': document_type.documenttypefilename_set.all(),
+        'object_list': document_type.filenames.all(),
         'title': _(u'filenames for document type: %s') % document_type,
         'object_name': _(u'Document type'),
         'navigation_object_name': 'document_type',

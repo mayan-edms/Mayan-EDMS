@@ -540,7 +540,7 @@ class DocumentTypeFilename(models.Model):
     List of filenames available to a specific document type for the
     quick rename functionality
     """
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'))
+    document_type = models.ForeignKey(DocumentType, related_name='filenames', verbose_name=_(u'Document type'))
     filename = models.CharField(max_length=128, verbose_name=_(u'Filename'), db_index=True)
     enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'))
 
