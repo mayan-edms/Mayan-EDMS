@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:35-0400\n"
+"POT-Creation-Date: 2014-10-28 02:41-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
@@ -20,11 +20,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:40
+#: __init__.py:41
 msgid "Thumbnail"
 msgstr ""
 
-#: __init__.py:52
+#: __init__.py:53
 msgid "Returns a list of all the staging folders and the files they contain."
 msgstr ""
 
@@ -64,7 +64,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: links.py:21 models.py:104 views.py:394
+#: links.py:21 models.py:105 views.py:393
 msgid "Sources"
 msgstr ""
 
@@ -73,19 +73,19 @@ msgid "Add new webform source"
 msgstr ""
 
 #: links.py:23
-msgid "Add new staging folders"
+msgid "Add new staging folder"
 msgstr ""
 
 #: links.py:24
-msgid "Add new watch folders"
+msgid "Add new watch folder"
 msgstr ""
 
 #: links.py:25
-msgid "Add new POP3 emails"
+msgid "Add new POP3 email"
 msgstr ""
 
 #: links.py:26
-msgid "Add new IMAP emails"
+msgid "Add new IMAP email"
 msgstr ""
 
 #: links.py:28 links.py:32
@@ -120,238 +120,224 @@ msgstr "Không bao giờ"
 msgid "Ask user"
 msgstr "Hỏi người dùng"
 
-#: literals.py:25 models.py:171
+#: literals.py:25 models.py:172
 msgid "Web form"
 msgstr ""
 
-#: literals.py:26
-msgid "Server staging folder"
+#: literals.py:26 models.py:156
+msgid "Staging folder"
 msgstr ""
 
-#: literals.py:27
-msgid "Server watch folder"
+#: literals.py:27 models.py:373
+msgid "Watch folder"
 msgstr ""
 
 #: literals.py:28
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:29 models.py:350 models.py:351
+#: literals.py:29 models.py:351 models.py:352
 msgid "IMAP email"
 msgstr ""
 
-#: models.py:41
+#: models.py:42
 msgid "Title"
 msgstr ""
 
-#: models.py:42
+#: models.py:43
 msgid "Enabled"
 msgstr ""
 
-#: models.py:103 views.py:435 views.py:460 views.py:506 views.py:547
-#: views.py:576 views.py:610
+#: models.py:104 views.py:543 views.py:572
 msgid "Source"
 msgstr ""
 
-#: models.py:111
+#: models.py:112
 msgid "Interactive source"
 msgstr ""
 
-#: models.py:112
+#: models.py:113
 msgid "Interactive sources"
 msgstr ""
 
-#: models.py:119 models.py:357
+#: models.py:120 models.py:358
 msgid "Folder path"
 msgstr ""
 
-#: models.py:119 models.py:357
+#: models.py:120 models.py:358
 msgid "Server side filesystem path."
 msgstr "đường dẫn hệ thống phía Server"
 
-#: models.py:120
+#: models.py:121
 msgid "Preview width"
 msgstr ""
 
-#: models.py:120
+#: models.py:121
 msgid "Width value to be passed to the converter backend."
 msgstr ""
 
-#: models.py:121
+#: models.py:122
 msgid "Preview height"
 msgstr ""
 
-#: models.py:121
+#: models.py:122
 msgid "Height value to be passed to the converter backend."
 msgstr ""
 
-#: models.py:122 models.py:164 models.py:186 models.py:358
+#: models.py:123 models.py:165 models.py:187
 msgid "Uncompress"
 msgstr ""
 
-#: models.py:122 models.py:164 models.py:358
+#: models.py:123 models.py:165
 msgid "Whether to expand or not compressed archives."
 msgstr ""
 
-#: models.py:123 models.py:359
+#: models.py:124
 msgid "Delete after upload"
 msgstr ""
 
-#: models.py:123 models.py:359
+#: models.py:124
 msgid "Delete the file after is has been successfully uploaded."
 msgstr ""
 
-#: models.py:141
+#: models.py:142
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr ""
 
-#: models.py:152
+#: models.py:153
 #, fuzzy, python-format
 msgid "Error deleting staging file; %s"
 msgstr "Unable to delete staging file: %s"
 
-#: models.py:155
-msgid "Staging folder"
-msgstr ""
-
-#: models.py:156
+#: models.py:157
 msgid "Staging folders"
 msgstr ""
 
-#: models.py:172
+#: models.py:173
 msgid "Web forms"
 msgstr ""
 
-#: models.py:179 models.py:180
+#: models.py:180 models.py:181
 msgid "Out of process"
 msgstr ""
 
-#: models.py:184 models.py:360
+#: models.py:185
 msgid "Interval"
 msgstr ""
 
-#: models.py:184
-msgid "Interval in seconds between document downloads from this source."
+#: models.py:185
+msgid "Interval in seconds between checks for new documents."
 msgstr ""
 
-#: models.py:185
+#: models.py:186
 #, fuzzy
 msgid "Document type"
 msgstr "Kiểu tài liệu hiện tại"
 
-#: models.py:185
+#: models.py:186
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
-#: models.py:186
+#: models.py:187
 msgid "Whether to expand or not, compressed archives."
 msgstr ""
 
-#: models.py:225
+#: models.py:226
 msgid "Interval source"
 msgstr ""
 
-#: models.py:226
+#: models.py:227
 #, fuzzy
 msgid "Interval sources"
 msgstr "Các nguồn tài liệu"
 
-#: models.py:230
+#: models.py:231
 msgid "Host"
 msgstr ""
 
-#: models.py:231
+#: models.py:232
 msgid "SSL"
 msgstr ""
 
-#: models.py:232
+#: models.py:233
 msgid "Port"
 msgstr ""
 
-#: models.py:232
+#: models.py:233
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr ""
 
-#: models.py:233
+#: models.py:234
 msgid "Username"
 msgstr ""
 
-#: models.py:234
+#: models.py:235
 msgid "Password"
 msgstr ""
 
-#: models.py:253
+#: models.py:254
 #, python-format
 msgid "attachment-%i"
 msgstr ""
 
-#: models.py:262
+#: models.py:263
 msgid "Email source"
 msgstr ""
 
-#: models.py:263
+#: models.py:264
 #, fuzzy
 msgid "Email sources"
 msgstr "Các nguồn tài liệu"
 
-#: models.py:269
+#: models.py:270
 msgid "Timeout"
 msgstr ""
 
-#: models.py:307 models.py:308
+#: models.py:308 models.py:309
 msgid "POP email"
 msgstr ""
 
-#: models.py:314
+#: models.py:315
 msgid "Mailbox"
 msgstr ""
 
-#: models.py:314
+#: models.py:315
 msgid "Mail from which to check for messages with attached documents."
 msgstr ""
 
-#: models.py:360
-msgid ""
-"Inverval in seconds where the watch folder path is checked for new documents."
-msgstr ""
-
-#: models.py:363
-msgid "Watch folder"
-msgstr ""
-
-#: models.py:364
+#: models.py:374
 msgid "Watch folders"
 msgstr ""
 
-#: models.py:368
+#: models.py:378
 msgid "Enter a valid value."
 msgstr ""
 
-#: models.py:396 views.py:510
+#: models.py:406 views.py:506
 msgid "Order"
 msgstr ""
 
-#: models.py:397 views.py:511 views.py:548 views.py:577
+#: models.py:407 views.py:507 views.py:544 views.py:573
 msgid "Transformation"
 msgstr ""
 
-#: models.py:398 views.py:512
+#: models.py:408 views.py:508
 msgid "Arguments"
 msgstr ""
 
-#: models.py:398
+#: models.py:408
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr ""
 
-#: models.py:408
+#: models.py:418
 msgid "Document source transformation"
 msgstr ""
 
-#: models.py:409
+#: models.py:419
 msgid "Document source transformations"
 msgstr ""
 
@@ -375,149 +361,149 @@ msgstr "Sửa các nguồn tài liệu"
 msgid "View existing document sources"
 msgstr "Xem các nguồn tài liệu đang tồn tại"
 
-#: views.py:118
+#: views.py:116
 msgid "Upload sources"
 msgstr ""
 
-#: views.py:120
+#: views.py:118
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
 msgstr ""
 
-#: views.py:142
+#: views.py:140
 msgid "Files in staging path"
 msgstr ""
 
-#: views.py:232
+#: views.py:231
 msgid "New document queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:257
+#: views.py:256
 #, python-format
 msgid "Upload a local document from source: %s"
 msgstr ""
 
-#: views.py:265
+#: views.py:264
 msgid "Current document type"
 msgstr "Kiểu tài liệu hiện tại"
 
-#: views.py:266
+#: views.py:265
 msgid "None"
 msgstr "Không có gì"
 
-#: views.py:273
+#: views.py:272
 msgid "Current metadata"
 msgstr ""
 
-#: views.py:329
+#: views.py:328
 msgid "New document version queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:355
+#: views.py:354
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr ""
 
-#: views.py:371
+#: views.py:370
 msgid "Staging file delete successfully."
 msgstr ""
 
-#: views.py:373
+#: views.py:372
 #, python-format
 msgid "Staging file delete error; %s."
 msgstr ""
 
-#: views.py:399
+#: views.py:398
 msgid "Type"
 msgstr ""
 
-#: views.py:422
+#: views.py:421
 msgid "Source edited successfully"
 msgstr ""
 
-#: views.py:425
+#: views.py:424
 #, python-format
 msgid "Error editing source; %s"
 msgstr ""
 
-#: views.py:430
+#: views.py:429
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:450
+#: views.py:448
 #, python-format
 msgid "Source \"%s\" deleted successfully."
 msgstr ""
 
-#: views.py:452
+#: views.py:450
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
 msgstr ""
 
-#: views.py:458
+#: views.py:456
 #, python-format
 msgid "Are you sure you wish to delete the source: %s?"
 msgstr ""
 
-#: views.py:482
+#: views.py:479
 msgid "Source created successfully"
 msgstr ""
 
-#: views.py:485
+#: views.py:482
 #, python-format
 msgid "Error creating source; %s"
 msgstr ""
 
-#: views.py:490
+#: views.py:487
 #, python-format
 msgid "Create new source of type: %s"
 msgstr ""
 
-#: views.py:504
+#: views.py:501
 #, python-format
 msgid "Transformations for: %s"
 msgstr ""
 
-#: views.py:534
+#: views.py:530
 msgid "Source transformation edited successfully"
 msgstr "Chuyển đổi nguồn được sửa thành công"
 
-#: views.py:537
+#: views.py:533
 #, python-format
 msgid "Error editing source transformation; %s"
 msgstr "Lỗi sửa chuyển đổi nguồn; %s"
 
-#: views.py:542
+#: views.py:538
 #, python-format
 msgid "Edit transformation: %s"
 msgstr "Sửa chuyển đổi: %s"
 
-#: views.py:564
+#: views.py:560
 msgid "Source transformation deleted successfully."
 msgstr "Chuyển đổi nguồn xóa thành công"
 
-#: views.py:566
+#: views.py:562
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
 msgstr "Lỗi xóa chuyển đổi nguồn: %(error)s"
 
-#: views.py:579
+#: views.py:575
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
 msgstr "Bạn có chắc chắn muốn xóa chuyển đổi nguồn \"%(transformation)s\""
 
-#: views.py:600
+#: views.py:596
 msgid "Source transformation created successfully"
 msgstr "Chuyển đổi nguồn được tạo thành công"
 
-#: views.py:603
+#: views.py:599
 #, python-format
 msgid "Error creating source transformation; %s"
 msgstr "Lỗi tạo chuyển đổi nguồn: %s"
 
-#: views.py:612
+#: views.py:607
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr "Tạo chuyển đổi nguồn mới: %s"

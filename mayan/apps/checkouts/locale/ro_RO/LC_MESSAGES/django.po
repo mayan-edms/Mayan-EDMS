@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:31-0400\n"
+"POT-Creation-Date: 2014-10-28 02:37-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
@@ -84,7 +84,7 @@ msgstr "de aprobat "
 msgid "Checked in/available"
 msgstr "aprobare disponibilă"
 
-#: models.py:23 views.py:132
+#: models.py:23
 msgid "Document"
 msgstr ""
 
@@ -225,7 +225,7 @@ msgstr "Eroare la încercarea de aprobare a documentului; % s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Documentul  \"%s\" aprobat cu succes."
 
-#: views.py:140
+#: views.py:139
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
@@ -234,7 +234,7 @@ msgstr ""
 "Tu nu ai aprobat inițial acest document. Sunteți sigur că doriți să aprobaţi "
 "forţat documentul:% s?"
 
-#: views.py:142
+#: views.py:141
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "Sunteți sigur că doriți să aprobaţi documentul în:% s?"

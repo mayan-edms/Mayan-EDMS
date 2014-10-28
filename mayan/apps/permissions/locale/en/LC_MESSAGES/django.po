@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:35-0400\n"
+"POT-Creation-Date: 2014-10-28 02:41-0400\n"
 "PO-Revision-Date: 2012-02-02 18:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -40,7 +40,7 @@ msgstr "delete"
 msgid "Edit"
 msgstr ""
 
-#: links.py:16 models.py:218 views.py:61
+#: links.py:16 models.py:218 views.py:56
 #, fuzzy
 msgid "Roles"
 msgstr "roles"
@@ -59,21 +59,21 @@ msgstr "role permissions"
 msgid "Insufficient permissions."
 msgstr "Insufficient permissions."
 
-#: models.py:126 views.py:82
+#: models.py:126 views.py:77
 #, fuzzy
 msgid "Namespace"
 msgstr "namespace"
 
-#: models.py:127 views.py:83
+#: models.py:127 views.py:78
 msgid "Name"
 msgstr ""
 
-#: models.py:134 models.py:196 views.py:139
+#: models.py:134 models.py:196 views.py:132
 #, fuzzy
 msgid "Permission"
 msgstr "Permissions"
 
-#: models.py:135 permissions.py:7 views.py:79 views.py:141
+#: models.py:135 permissions.py:7 views.py:74 views.py:134
 msgid "Permissions"
 msgstr "Permissions"
 
@@ -92,8 +92,7 @@ msgstr "permission holders"
 msgid "Label"
 msgstr "label"
 
-#: models.py:217 models.py:248 views.py:34 views.py:45 views.py:51 views.py:98
-#: views.py:314
+#: models.py:217 models.py:248
 msgid "Role"
 msgstr ""
 
@@ -139,80 +138,80 @@ msgstr ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
 
-#: views.py:85
+#: views.py:80
 #, fuzzy
 msgid "Has permission"
 msgstr "has permission"
 
-#: views.py:136 views.py:197
+#: views.py:129 views.py:190
 msgid " and "
 msgstr " and "
 
-#: views.py:136 views.py:197
+#: views.py:129 views.py:190
 #, python-format
 msgid "%(permissions)s to %(requester)s"
 msgstr "%(permissions)s to %(requester)s"
 
-#: views.py:146
+#: views.py:139
 #, python-format
 msgid "Permission \"%(permission)s\" granted to: %(requester)s."
 msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
 
-#: views.py:149
+#: views.py:142
 #, python-format
 msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
 msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
 
-#: views.py:159
+#: views.py:152
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 msgstr ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 
-#: views.py:200
+#: views.py:193
 msgid "permission"
 msgstr "permission"
 
-#: views.py:202
+#: views.py:195
 msgid "permissions"
 msgstr "permissions"
 
-#: views.py:207
+#: views.py:200
 #, python-format
 msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
 msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
 
-#: views.py:210
+#: views.py:203
 #, python-format
 msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 
-#: views.py:220
+#: views.py:213
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 msgstr ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 
-#: views.py:255 views.py:279
+#: views.py:248 views.py:272
 msgid "Users"
 msgstr "Users"
 
-#: views.py:258 views.py:282
+#: views.py:251 views.py:275
 msgid "Groups"
 msgstr "Groups"
 
-#: views.py:261 views.py:285
+#: views.py:254 views.py:278
 msgid "Special"
 msgstr "Special"
 
-#: views.py:310
+#: views.py:303
 #, fuzzy, python-format
 msgid "Non members of role: %s"
 msgstr "non members of role: %s"
 
-#: views.py:311
+#: views.py:304
 #, fuzzy, python-format
 msgid "Members of role: %s"
 msgstr "members of role: %s"

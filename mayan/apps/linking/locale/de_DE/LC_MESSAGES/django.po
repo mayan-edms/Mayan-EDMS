@@ -16,7 +16,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:34-0400\n"
+"POT-Creation-Date: 2014-10-28 02:39-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
@@ -45,11 +45,11 @@ msgid "Smart links actions"
 msgstr ""
 
 #: links.py:13 links.py:15 links.py:16 models.py:22 permissions.py:7
-#: views.py:131
+#: views.py:132
 msgid "Smart links"
 msgstr "Intelligente Verknüpfungen"
 
-#: links.py:17 views.py:158
+#: links.py:17 views.py:159
 msgid "Create new smart link"
 msgstr "Intelligente Verknüpfung erstellen"
 
@@ -145,7 +145,7 @@ msgstr "ist in regulärem Ausdruck (ohne Groß/Kleinschreibung)"
 msgid "Title"
 msgstr ""
 
-#: models.py:12 views.py:134
+#: models.py:12 views.py:135
 msgid "Dynamic title"
 msgstr ""
 
@@ -159,11 +159,11 @@ msgstr ""
 "werden. Die Dokument-Metadaten sind verfügbar als Variable `metadata` und "
 "Dokumenteneigenschaften als Variable `document`. "
 
-#: models.py:13 models.py:32 views.py:135 views.py:229
+#: models.py:13 models.py:32 views.py:136 views.py:230
 msgid "Enabled"
 msgstr ""
 
-#: models.py:21 models.py:26 views.py:293 views.py:327
+#: models.py:21 models.py:26 views.py:294 views.py:328
 msgid "Smart link"
 msgstr ""
 
@@ -249,83 +249,88 @@ msgstr ""
 
 #: views.py:111
 #, fuzzy
+msgid "Smart links (0)"
+msgstr "Intelligente Verknüpfungen"
+
+#: views.py:112
+#, fuzzy
 msgid "There are no defined smart links for the current document."
 msgstr "Keine Intelligenten Verknüpfungen für das aktuelle Dokument definiert."
 
-#: views.py:151
+#: views.py:152
 #, python-format
 msgid "Smart link: %s created successfully."
 msgstr "Intelligente Verknüpfung %s erfolgreich erstellt."
 
-#: views.py:174
+#: views.py:175
 #, python-format
 msgid "Smart link: %s edited successfully."
 msgstr "intelligente Verknüpfung %s erfolgreich bearbeitet."
 
-#: views.py:182
+#: views.py:183
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Intelligente Verknüpfung bearbeiten: %s"
 
-#: views.py:200
+#: views.py:201
 #, python-format
 msgid "Smart link: %s deleted successfully."
 msgstr "Intelligente Verknüpfung %s erfolgreich gelöscht."
 
-#: views.py:202
+#: views.py:203
 #, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
 msgstr ""
 "Fehler beim Löschen der intelligenten Verknüpfung: %(smart_link)s ; "
 "%(exception)s ."
 
-#: views.py:211
+#: views.py:212
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
 msgstr ""
 "Sind Sie sicher, dass Sie die intelligente Verknüpfung %s löschen möchten?"
 
-#: views.py:226
+#: views.py:227
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr ""
 
-#: views.py:251
+#: views.py:252
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "Bedingung für Intelligente Verknüpfung \"%s\" erfolgreich erstellt."
 
-#: views.py:258
+#: views.py:259
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Neue Bedingungen zu Intelligenter Verknüpfung \"%s\" hinzufügen"
 
-#: views.py:280
+#: views.py:281
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "Bedingung für Intelligente Verknüpfung: \"%s\" erfolgreich bearbeitet."
 
-#: views.py:287
+#: views.py:288
 msgid "Edit smart link condition"
 msgstr "Bedingung für Intelligente Verknüpfung bearbeiten"
 
-#: views.py:294 views.py:328
+#: views.py:295 views.py:329
 msgid "Condition"
 msgstr ""
 
-#: views.py:314
+#: views.py:315
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "Bedingung für Intelligente Verknüpfung: \"%s\" erfolgreich gelöscht."
 
-#: views.py:316
+#: views.py:317
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr ""
 "Fehler beim Löschen der Bedingung: %(smart_link_condition)s ; %(exception)s ."
 
-#: views.py:330
+#: views.py:331
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr "Sind Sie sicher, dass Sie die Bedingung \"%s\" löschen möchten?"

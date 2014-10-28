@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:31-0400\n"
+"POT-Creation-Date: 2014-10-28 02:37-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -83,7 +83,7 @@ msgstr "забронировано"
 msgid "Checked in/available"
 msgstr "освобожден/доступен"
 
-#: models.py:23 views.py:132
+#: models.py:23
 msgid "Document"
 msgstr ""
 
@@ -223,14 +223,14 @@ msgstr "Ошибка освобождения документа %s"
 msgid "Document \"%s\" checked in successfully."
 msgstr "Документ \"%s\" освобожден."
 
-#: views.py:140
+#: views.py:139
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
 msgstr "Документ был забронирован не вами. Освободить насильно %s?"
 
-#: views.py:142
+#: views.py:141
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "Освободить документ %s?"

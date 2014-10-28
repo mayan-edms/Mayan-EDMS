@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:31-0400\n"
+"POT-Creation-Date: 2014-10-28 02:37-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
@@ -86,7 +86,7 @@ msgstr "Ausgebucht"
 msgid "Checked in/available"
 msgstr "Eingebucht/Verfügbar"
 
-#: models.py:23 views.py:132
+#: models.py:23
 msgid "Document"
 msgstr ""
 
@@ -226,7 +226,7 @@ msgstr "Fehler beim Versuch das Dokument %s auszubuchen."
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokument \"%s\" erfolgreich eingebucht."
 
-#: views.py:140
+#: views.py:139
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
@@ -235,7 +235,7 @@ msgstr ""
 "Sie haben dieses Dokument ursprünglich nicht ausgebucht. Sind Sie sicher, "
 "dass Sie die Einbuchung von Dokument %s erzwingen wollen?"
 
-#: views.py:142
+#: views.py:141
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "Sind sie sicher, dass Sie Dokument %s einbuchen wollen?"

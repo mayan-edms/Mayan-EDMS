@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:33-0400\n"
+"POT-Creation-Date: 2014-10-28 02:39-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,19 +21,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:43
+#: __init__.py:42
 msgid "Created"
 msgstr ""
 
-#: __init__.py:44 links.py:18 models.py:12
+#: __init__.py:43 links.py:18 models.py:12
 msgid "Documents"
 msgstr ""
 
-#: __init__.py:49
+#: __init__.py:48
 msgid "Returns a list of all the folders."
 msgstr ""
 
-#: forms.py:38 models.py:24 views.py:90 views.py:118 views.py:150
+#: forms.py:38 models.py:24
 msgid "Folder"
 msgstr "Папка"
 
@@ -42,7 +42,7 @@ msgstr "Папка"
 msgid "Folders"
 msgstr "Папки"
 
-#: links.py:14 views.py:61
+#: links.py:14 views.py:60
 msgid "Create folder"
 msgstr ""
 
@@ -106,101 +106,93 @@ msgstr "Просмотр существующих папок"
 msgid "Add documents to existing folders"
 msgstr "Добавление документов в существующие папки"
 
-#: views.py:53
+#: views.py:52
 msgid "Folder created successfully"
 msgstr "Папка успешно создана"
 
-#: views.py:56
+#: views.py:55
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Папку с именем %s уже существует."
 
-#: views.py:79
+#: views.py:78
 msgid "Folder edited successfully"
 msgstr "Папка успешно изменена"
 
-#: views.py:82
+#: views.py:81
 #, python-format
 msgid "Error editing folder; %s"
 msgstr "Ошибка редактирования папки; %s."
 
-#: views.py:87
+#: views.py:86
 #, python-format
 msgid "Edit folder: %s"
 msgstr ""
 
-#: views.py:110
+#: views.py:108
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Папка %s успешно удалена."
 
-#: views.py:112
+#: views.py:110
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "При удалении папки %(folder)s произошла ошибка: %(error)s"
 
-#: views.py:123
+#: views.py:120
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "Вы хотите удалить папку %s?"
 
-#: views.py:146
+#: views.py:143
 #, python-format
 msgid "Documents in folder: %s"
 msgstr ""
 
-#: views.py:161
+#: views.py:156
 msgid "Must provide at least one document."
 msgstr "Необходимо указатьть хотя бы один документ."
 
-#: views.py:180
+#: views.py:175
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Документ: %(document)s добавлен в папку: %(folder)s успешно."
 
-#: views.py:183
+#: views.py:178
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Документ: %(document)s is already in folder: %(folder)s."
 
-#: views.py:191
-msgid "Document"
-msgstr ""
-
-#: views.py:199
+#: views.py:193
 #, python-format
 msgid "Add document: %s to folder."
 msgstr "Добавить документ %s в папку"
 
-#: views.py:201
+#: views.py:195
 #, python-format
 msgid "Add documents: %s to folder."
 msgstr "Добавить документы %s в папку"
 
-#: views.py:216
+#: views.py:210
 #, python-format
 msgid "Folders containing: %s"
 msgstr ""
 
-#: views.py:245
+#: views.py:238
 msgid "Must provide at least one folder document."
 msgstr "Должна быть хотя бы одна папка документов."
 
-#: views.py:263
+#: views.py:256
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Документ: %s успешно удален."
 
-#: views.py:265
+#: views.py:258
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Документ:%(document)s ошибка удаления: %(error)s"
 
-#: views.py:271
-msgid "Folder document"
-msgstr ""
-
-#: views.py:278
+#: views.py:270
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
@@ -209,7 +201,7 @@ msgstr ""
 "Вы действительно хотите удалить документ: %(document)s из папки \"%(folder)s "
 "\"?"
 
-#: views.py:281
+#: views.py:273
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

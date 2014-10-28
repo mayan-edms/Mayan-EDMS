@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:35-0400\n"
+"POT-Creation-Date: 2014-10-28 02:40-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,7 +22,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:32 links.py:19 permissions.py:7
+#: __init__.py:33 links.py:19 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
@@ -66,7 +66,7 @@ msgstr ""
 msgid "Label"
 msgstr ""
 
-#: models.py:16 models.py:24 views.py:34
+#: models.py:16 models.py:24
 msgid "Document queue"
 msgstr ""
 
@@ -74,7 +74,7 @@ msgstr ""
 msgid "Document queues"
 msgstr ""
 
-#: models.py:25 views.py:38
+#: models.py:25 views.py:37
 msgid "Document"
 msgstr ""
 
@@ -82,7 +82,7 @@ msgstr ""
 msgid "Date time submitted"
 msgstr ""
 
-#: models.py:27 views.py:42
+#: models.py:27 views.py:41
 msgid "Result"
 msgstr ""
 
@@ -98,7 +98,7 @@ msgstr ""
 msgid "Queue documents"
 msgstr ""
 
-#: models.py:39 views.py:38
+#: models.py:39 views.py:37
 msgid "Missing document."
 msgstr "Documento em falta."
 
@@ -138,81 +138,81 @@ msgstr ""
 msgid "Documents in queue: %s"
 msgstr ""
 
-#: views.py:39
+#: views.py:38
 msgid "Thumbnail"
 msgstr ""
 
-#: views.py:40
+#: views.py:39
 msgid "Added"
 msgstr ""
 
-#: views.py:41
+#: views.py:40
 msgid "Node"
 msgstr ""
 
-#: views.py:59 views.py:138
+#: views.py:57 views.py:136
 msgid "Must provide at least one queue document."
 msgstr "Deve fornecer pelo menos um documento da fila."
 
-#: views.py:69
+#: views.py:67
 #, python-format
 msgid "Queue document: %(document)s deleted successfully."
 msgstr "Documento da fila: %(document)s  excluído com sucesso."
 
-#: views.py:73
+#: views.py:71
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Erro ao excluir documento: %(document)s; %(error)s "
 
-#: views.py:85
+#: views.py:83
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
 msgstr "Tem a certeza de que deseja excluir o documento da fila: %s?"
 
-#: views.py:87
+#: views.py:85
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
 msgstr "Tem a certeza de que deseja excluir os documentos da fila: %s?"
 
-#: views.py:122
+#: views.py:120
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr ""
 
-#: views.py:150
+#: views.py:148
 #, fuzzy, python-format
 msgid "Document: %(document)s was re-queued for OCR."
 msgstr "Document: %(document)s is already queued."
 
-#: views.py:155
+#: views.py:153
 #, python-format
 msgid "Document id#: %d, no longer exists."
 msgstr "O documento com id nº: %d, já não existe."
 
-#: views.py:165
+#: views.py:163
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
 msgstr "Tem a certeza de que deseja reenviar o documento: %s para a fila?"
 
-#: views.py:167
+#: views.py:165
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr "Tem a certeza de que deseja reenviar para a fila os documentos: %s?"
 
-#: views.py:187
+#: views.py:185
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Tem a certeza de que deseja limpar todo o conteúdo das páginas?"
 
-#: views.py:188
+#: views.py:186
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 "Esta operação pode levar algum tempo a executar em bases de dados grandes ."
 
-#: views.py:193
+#: views.py:191
 msgid "Document pages content clean up complete."
 msgstr "Limpeza do conteúdo das páginas do documento completa."
 
-#: views.py:195
+#: views.py:193
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Erro ao limpar o conteúdo das páginas do documento: %s"

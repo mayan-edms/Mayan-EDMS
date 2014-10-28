@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:35-0400\n"
+"POT-Creation-Date: 2014-10-28 02:40-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:32 links.py:19 permissions.py:7
+#: __init__.py:33 links.py:19 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
@@ -68,7 +68,7 @@ msgstr ""
 msgid "Label"
 msgstr "label"
 
-#: models.py:16 models.py:24 views.py:34
+#: models.py:16 models.py:24
 #, fuzzy
 msgid "Document queue"
 msgstr "document queue"
@@ -78,7 +78,7 @@ msgstr "document queue"
 msgid "Document queues"
 msgstr "document queues"
 
-#: models.py:25 views.py:38
+#: models.py:25 views.py:37
 #, fuzzy
 msgid "Document"
 msgstr "document"
@@ -88,7 +88,7 @@ msgstr "document"
 msgid "Date time submitted"
 msgstr "date time submitted"
 
-#: models.py:27 views.py:42
+#: models.py:27 views.py:41
 #, fuzzy
 msgid "Result"
 msgstr "result"
@@ -108,7 +108,7 @@ msgstr "queue document"
 msgid "Queue documents"
 msgstr "queue documents"
 
-#: models.py:39 views.py:38
+#: models.py:39 views.py:37
 msgid "Missing document."
 msgstr "Missing document."
 
@@ -147,81 +147,81 @@ msgstr ""
 msgid "Documents in queue: %s"
 msgstr "documents in queue: %s"
 
-#: views.py:39
+#: views.py:38
 #, fuzzy
 msgid "Thumbnail"
 msgstr "thumbnail"
 
-#: views.py:40
+#: views.py:39
 msgid "Added"
 msgstr ""
 
-#: views.py:41
+#: views.py:40
 msgid "Node"
 msgstr ""
 
-#: views.py:59 views.py:138
+#: views.py:57 views.py:136
 msgid "Must provide at least one queue document."
 msgstr "Must provide at least one queue document."
 
-#: views.py:69
+#: views.py:67
 #, python-format
 msgid "Queue document: %(document)s deleted successfully."
 msgstr "Queue document: %(document)s deleted successfully."
 
-#: views.py:73
+#: views.py:71
 #, python-format
 msgid "Error deleting document: %(document)s; %(error)s"
 msgstr "Error deleting document: %(document)s; %(error)s"
 
-#: views.py:85
+#: views.py:83
 #, python-format
 msgid "Are you sure you wish to delete queue document: %s?"
 msgstr "Are you sure you wish to delete queue document: %s?"
 
-#: views.py:87
+#: views.py:85
 #, python-format
 msgid "Are you sure you wish to delete queue documents: %s?"
 msgstr "Are you sure you wish to delete queue documents: %s?"
 
-#: views.py:122
+#: views.py:120
 #, fuzzy, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Document: %(document)s was added to the OCR queue: %(queue)s."
 
-#: views.py:150
+#: views.py:148
 #, fuzzy, python-format
 msgid "Document: %(document)s was re-queued for OCR."
 msgstr "Document: %(document)s is already queued."
 
-#: views.py:155
+#: views.py:153
 #, python-format
 msgid "Document id#: %d, no longer exists."
 msgstr "Document id#: %d, no longer exists."
 
-#: views.py:165
+#: views.py:163
 #, python-format
 msgid "Are you sure you wish to re-queue document: %s?"
 msgstr "Are you sure you wish to re-queue document: %s?"
 
-#: views.py:167
+#: views.py:165
 #, python-format
 msgid "Are you sure you wish to re-queue documents: %s?"
 msgstr "Are you sure you wish to re-queue documents: %s?"
 
-#: views.py:187
+#: views.py:185
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Are you sure you wish to clean up all the pages content?"
 
-#: views.py:188
+#: views.py:186
 msgid "On large databases this operation may take some time to execute."
 msgstr "On large databases this operation may take some time to execute."
 
-#: views.py:193
+#: views.py:191
 msgid "Document pages content clean up complete."
 msgstr "Document pages content clean up complete."
 
-#: views.py:195
+#: views.py:193
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Document pages content clean up error: %s"

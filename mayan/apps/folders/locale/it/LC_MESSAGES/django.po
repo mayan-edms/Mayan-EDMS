@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:33-0400\n"
+"POT-Creation-Date: 2014-10-28 02:39-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -24,19 +24,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:43
+#: __init__.py:42
 msgid "Created"
 msgstr ""
 
-#: __init__.py:44 links.py:18 models.py:12
+#: __init__.py:43 links.py:18 models.py:12
 msgid "Documents"
 msgstr ""
 
-#: __init__.py:49
+#: __init__.py:48
 msgid "Returns a list of all the folders."
 msgstr ""
 
-#: forms.py:38 models.py:24 views.py:90 views.py:118 views.py:150
+#: forms.py:38 models.py:24
 msgid "Folder"
 msgstr "Cartella"
 
@@ -45,7 +45,7 @@ msgstr "Cartella"
 msgid "Folders"
 msgstr "Cartelle"
 
-#: links.py:14 views.py:61
+#: links.py:14 views.py:60
 msgid "Create folder"
 msgstr ""
 
@@ -109,102 +109,94 @@ msgstr "Visualizza cartelle esistenti"
 msgid "Add documents to existing folders"
 msgstr "Aggiungere documenti a cartelle esistenti"
 
-#: views.py:53
+#: views.py:52
 msgid "Folder created successfully"
 msgstr "Cartella creata con successo"
 
-#: views.py:56
+#: views.py:55
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Il nome cartella: %s, già esiste."
 
-#: views.py:79
+#: views.py:78
 msgid "Folder edited successfully"
 msgstr "Cartella modificata con successo"
 
-#: views.py:82
+#: views.py:81
 #, python-format
 msgid "Error editing folder; %s"
 msgstr "Errore modificando la cartella; %s"
 
-#: views.py:87
+#: views.py:86
 #, python-format
 msgid "Edit folder: %s"
 msgstr ""
 
-#: views.py:110
+#: views.py:108
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Cartella : %s cancellata con successo."
 
-#: views.py:112
+#: views.py:110
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Cartella: %(folder)s errore di cancellazione: %(error)s"
 
-#: views.py:123
+#: views.py:120
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "Sei sicuro di voler cancellare la cartella: %s?"
 
-#: views.py:146
+#: views.py:143
 #, python-format
 msgid "Documents in folder: %s"
 msgstr ""
 
-#: views.py:161
+#: views.py:156
 msgid "Must provide at least one document."
 msgstr "Bisogna fornire almeno un documento."
 
-#: views.py:180
+#: views.py:175
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr ""
 "Documento: %(document)s aggiunto alla cartella: %(folder)s successfully."
 
-#: views.py:183
+#: views.py:178
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Documento: %(document)s è già nella cartella: %(folder)s."
 
-#: views.py:191
-msgid "Document"
-msgstr ""
-
-#: views.py:199
+#: views.py:193
 #, python-format
 msgid "Add document: %s to folder."
 msgstr "Aggiungi documento: %s alla cartella."
 
-#: views.py:201
+#: views.py:195
 #, python-format
 msgid "Add documents: %s to folder."
 msgstr "Aggiungi documenti: %s alla cartella."
 
-#: views.py:216
+#: views.py:210
 #, python-format
 msgid "Folders containing: %s"
 msgstr ""
 
-#: views.py:245
+#: views.py:238
 msgid "Must provide at least one folder document."
 msgstr "Devi almeno indicare una cartella documenti."
 
-#: views.py:263
+#: views.py:256
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Documento: %s cancellato con successo."
 
-#: views.py:265
+#: views.py:258
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Documento: %(document)s errore di cancellazione: %(error)s"
 
-#: views.py:271
-msgid "Folder document"
-msgstr ""
-
-#: views.py:278
+#: views.py:270
 #, python-format
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
@@ -213,7 +205,7 @@ msgstr ""
 "Sei sicuro di voler rimuovere il documento: %(document)s dalla cartella "
 "\"%(folder)s\"?"
 
-#: views.py:281
+#: views.py:273
 #, python-format
 msgid ""
 "Are you sure you wish to remove the documents: %(documents)s from the folder "

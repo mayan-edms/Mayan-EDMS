@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:33-0400\n"
+"POT-Creation-Date: 2014-10-28 02:39-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
@@ -32,12 +32,12 @@ msgstr ""
 msgid "Search terms"
 msgstr ""
 
-#: links.py:3 links.py:6 views.py:85 views.py:91 views.py:93
+#: links.py:3 links.py:6 views.py:84 views.py:90 views.py:92
 #: templatetags/search_tags.py:19 templatetags/search_tags.py:20
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: links.py:4 views.py:81
+#: links.py:4 views.py:80
 msgid "Advanced search"
 msgstr ""
 
@@ -77,12 +77,12 @@ msgstr ""
 msgid "Maximum number of search queries to remember per user."
 msgstr "Số truy vấn lớn nhất cần nhớ cho mỗi người dùng"
 
-#: views.py:57
+#: views.py:56
 #, fuzzy
 msgid "Results"
 msgstr "kết quả"
 
-#: views.py:67
+#: views.py:66
 msgid "Type"
 msgstr ""
 

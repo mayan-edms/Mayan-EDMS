@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:33-0400\n"
+"POT-Creation-Date: 2014-10-28 02:39-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -34,12 +34,12 @@ msgstr ""
 msgid "Search terms"
 msgstr "Cerca termini "
 
-#: links.py:3 links.py:6 views.py:85 views.py:91 views.py:93
+#: links.py:3 links.py:6 views.py:84 views.py:90 views.py:92
 #: templatetags/search_tags.py:19 templatetags/search_tags.py:20
 msgid "Search"
 msgstr "Cerca"
 
-#: links.py:4 views.py:81
+#: links.py:4 views.py:80
 msgid "Advanced search"
 msgstr ""
 
@@ -79,12 +79,12 @@ msgstr "Massimo numero ricerca risultati da recuperare e visualizzare. "
 msgid "Maximum number of search queries to remember per user."
 msgstr "Numero massimo di query di ricerca da ricordare per utente."
 
-#: views.py:57
+#: views.py:56
 #, fuzzy
 msgid "Results"
 msgstr "risultati "
 
-#: views.py:67
+#: views.py:66
 msgid "Type"
 msgstr ""
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-25 02:31-0400\n"
+"POT-Creation-Date: 2014-10-28 02:37-0400\n"
 "PO-Revision-Date: 2012-02-02 18:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -61,7 +61,7 @@ msgstr "revoke"
 msgid "Default ACLs"
 msgstr "Default ACLs"
 
-#: links.py:13 views.py:380
+#: links.py:13 views.py:379
 #, fuzzy
 msgid "Classes"
 msgstr "classes"
@@ -128,12 +128,12 @@ msgstr "View class default ACLs"
 msgid "Access control lists for: %s"
 msgstr "access control lists for: %s"
 
-#: views.py:48 views.py:403
+#: views.py:48 views.py:402
 #, fuzzy
 msgid "Holder"
 msgstr "holder"
 
-#: views.py:49 views.py:404
+#: views.py:49 views.py:403
 #, fuzzy
 msgid "Permissions"
 msgstr "permissions"
@@ -143,51 +143,51 @@ msgstr "permissions"
 msgid "Permissions available to: %(actor)s for %(obj)s"
 msgstr "permissions available to: %(actor)s for %(obj)s"
 
-#: views.py:103 views.py:435
+#: views.py:103 views.py:434
 #, fuzzy
 msgid "Namespace"
 msgstr "namespace"
 
-#: views.py:104 views.py:436
+#: views.py:104 views.py:435
 #, fuzzy
 msgid "Label"
 msgstr "label"
 
-#: views.py:106 views.py:438
+#: views.py:106 views.py:437
 #, fuzzy
 msgid "Has permission"
 msgstr "has permission"
 
-#: views.py:180 views.py:272 views.py:518 views.py:596
+#: views.py:179 views.py:271 views.py:516 views.py:594
 msgid ", "
 msgstr ", "
 
-#: views.py:181 views.py:273 views.py:519 views.py:597
+#: views.py:180 views.py:272 views.py:517 views.py:595
 #, python-format
 msgid " for %s"
 msgstr " for %s"
 
-#: views.py:182 views.py:520
+#: views.py:181 views.py:518
 #, python-format
 msgid " to %s"
 msgstr " to %s"
 
-#: views.py:185 views.py:523
+#: views.py:184 views.py:521
 #, python-format
 msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
 msgstr "Are you sure you wish to grant the permission %(title_suffix)s?"
 
-#: views.py:187 views.py:525
+#: views.py:186 views.py:523
 #, python-format
 msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
 msgstr "Are you sure you wish to grant the permissions %(title_suffix)s?"
 
-#: views.py:194 views.py:532
+#: views.py:193 views.py:530
 #, python-format
 msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
 msgstr "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
 
-#: views.py:200 views.py:538
+#: views.py:199 views.py:536
 #, python-format
 msgid ""
 "%(actor)s, already had the permission \"%(permission)s\" granted for "
@@ -196,57 +196,57 @@ msgstr ""
 "%(actor)s, already had the permission \"%(permission)s\" granted for "
 "%(object)s."
 
-#: views.py:274 views.py:598
+#: views.py:273 views.py:596
 #, python-format
 msgid " from %s"
 msgstr " from %s"
 
-#: views.py:277 views.py:601
+#: views.py:276 views.py:599
 #, python-format
 msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
 msgstr "Are you sure you wish to revoke the permission %(title_suffix)s?"
 
-#: views.py:279 views.py:603
+#: views.py:278 views.py:601
 #, python-format
 msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
 msgstr "Are you sure you wish to revoke the permissions %(title_suffix)s?"
 
-#: views.py:286 views.py:610
+#: views.py:285 views.py:608
 #, python-format
 msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#: views.py:292 views.py:616
+#: views.py:291 views.py:614
 #, python-format
 msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 msgstr ""
 "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
-#: views.py:347
+#: views.py:346
 #, fuzzy, python-format
 msgid "Add new holder for: %s"
 msgstr "add new holder for: %s"
 
-#: views.py:348 views.py:479
+#: views.py:347 views.py:477
 msgid "Select"
 msgstr "Select"
 
-#: views.py:382
+#: views.py:381
 #, fuzzy
 msgid "Class"
 msgstr "class"
 
-#: views.py:401
+#: views.py:400
 #, fuzzy, python-format
 msgid "Default access control lists for class: %s"
 msgstr "default access control lists for class: %s"
 
-#: views.py:429
+#: views.py:428
 #, fuzzy, python-format
 msgid "Permissions available to: %(actor)s for class %(class)s"
 msgstr "permissions available to: %(actor)s for class %(class)s"
 
-#: views.py:477
+#: views.py:475
 #, fuzzy, python-format
 msgid "Add new holder for class: %s"
 msgstr "add new holder for class: %s"
