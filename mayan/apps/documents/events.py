@@ -12,10 +12,9 @@ HISTORY_DOCUMENT_EDITED = {
     'namespace': 'documents', 'name': 'document_edited',
     'label': _(u'Document edited'),
     'summary': _(u'Document "%(content_object)s" edited by %(fullname)s.'),
-    'details': _(u'Document "%(content_object)s" was edited on %(datetime)s by %(fullname)s.  The following changes took place: %(changes)s.'),
+    'details': _(u'Document "%(content_object)s" was edited on %(datetime)s by %(fullname)s.'),
     'expressions': {
         'fullname': 'user[0]["fields"]["username"] if isinstance(user, list) else user.get_full_name() if user.get_full_name() else user.username',
-        'changes': 'u\', \'.join([\'"%s": "%s" -> "%s"\' % (key, value[\'old_value\'], value[\'new_value\']) for key, value in diff.items()])'
     }
 }
 
