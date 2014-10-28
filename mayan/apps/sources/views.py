@@ -211,6 +211,7 @@ class UploadInteractiveView(UploadBaseView):
         else:
             user_id = None
 
+        label = file_object.name
         if 'document_type_available_filenames' in forms['document_form'].cleaned_data:
             if forms['document_form'].cleaned_data['document_type_available_filenames']:
                 label = forms['document_form'].cleaned_data['document_type_available_filenames'].filename
@@ -218,7 +219,7 @@ class UploadInteractiveView(UploadBaseView):
         task_upload_document.apply_async(kwargs=dict(
             source_id=self.source.pk,
             file_path=temporary_file.name,
-            label=label or file_object.name,
+            label=label,
             document_type_id=self.document_type.pk,
             expand=expand,
             metadata_dict_list=decode_metadata_from_url(self.request.GET),
