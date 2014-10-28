@@ -22,7 +22,7 @@ from .events import (HISTORY_DOCUMENT_CREATED,
                      HISTORY_DOCUMENT_DELETED, HISTORY_DOCUMENT_EDITED)
 from .links import (document_clear_image_cache,
                     document_clear_transformations, document_delete,
-                    document_download, document_edit,
+                    document_document_type, document_download, document_edit,
                     document_history_view, document_list,
                     document_list_recent, document_missing_list,
                     document_multiple_delete,
@@ -76,7 +76,7 @@ register_links(['documents:setup_document_type_metadata', 'documents:document_ty
 register_links([DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
-register_links(Document, [document_view_simple, document_edit, document_print, document_delete, document_download, document_clear_transformations, document_update_page_count])
+register_links(Document, [document_view_simple, document_edit, document_document_type, document_print, document_delete, document_download, document_clear_transformations, document_update_page_count])
 register_links([Document], [link_spacer, document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count], menu_name='multi_item_links')
 
 # Document Version links

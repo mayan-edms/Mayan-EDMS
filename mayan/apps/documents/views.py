@@ -31,12 +31,13 @@ from navigation.utils import resolve_to_name
 from permissions.models import Permission
 
 from .events import HISTORY_DOCUMENT_EDITED
-from .forms import (DocumentForm, DocumentPropertiesForm,
-                    DocumentPreviewForm, DocumentPageForm,
-                    DocumentPageTransformationForm, DocumentContentForm,
-                    DocumentPageForm_edit, DocumentPageForm_text, PrintForm,
+from .forms import (DocumentContentForm, DocumentDownloadForm, DocumentForm,
+                    DocumentPageForm, DocumentPageForm_edit,
+                    DocumentPageForm_text, DocumentPageTransformationForm,
+                    DocumentPreviewForm, DocumentPropertiesForm,
                     DocumentTypeForm, DocumentTypeFilenameForm,
-                    DocumentTypeFilenameForm_create, DocumentDownloadForm)
+                    DocumentTypeFilenameForm_create, DocumentTypeSelectForm,
+                    PrintForm)
 from .models import (Document, DocumentType, DocumentPage,
                      DocumentPageTransformation, DocumentTypeFilename,
                      DocumentVersion, RecentDocument)
@@ -253,6 +254,35 @@ def document_edit(request, document_id):
         'form': form,
         'object': document,
         'title': _('Edit properties of: %s') % document,
+    }, context_instance=RequestContext(request))
+
+
+def document_document_type(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_PROPERTIES_EDIT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_PROPERTIES_EDIT, request.user, document)
+
+    if request.method == 'POST':
+        form = DocumentTypeSelectForm(request.POST)
+        if form.is_valid():
+            document.set_document_type(form.cleaned_data['document_type'])
+            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user})
+            document.add_as_recent_document_for_user(request.user)
+
+            messages.success(request, _(u'Document type for document "%s" changed successfully.') % document)
+
+            return HttpResponseRedirect(document.get_absolute_url())
+    else:
+        form = DocumentTypeSelectForm(initial={'document_type': document.document_type})
+
+    return render_to_response('main/generic_form.html', {
+        'form': form,
+        'object': document,
+        'title': _('Change document type of: %s') % document,
+        'submit_label': _('Submit'),
     }, context_instance=RequestContext(request))
 
 
