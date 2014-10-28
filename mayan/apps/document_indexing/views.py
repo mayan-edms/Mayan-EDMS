@@ -100,7 +100,6 @@ def index_setup_edit(request, index_pk):
         'title': _(u'Edit index: %s') % index,
         'form': form,
         'index': index,
-        'object_name': _(u'Index'),
         'navigation_object_name': 'index',
     }, context_instance=RequestContext(request))
 
@@ -130,7 +129,6 @@ def index_setup_delete(request, index_pk):
 
     context = {
         'index': index,
-        'object_name': _(u'Index'),
         'navigation_object_name': 'index',
         'delete_view': True,
         'previous': previous,
@@ -155,7 +153,6 @@ def index_setup_view(request, index_pk):
     context = {
         'object_list': object_list,
         'index': index,
-        'object_name': _(u'Index'),
         'list_object_variable_name': 'node',
         'navigation_object_name': 'index',
         'title': _(u'Tree template nodes for index: %s') % index,
@@ -191,7 +188,6 @@ def index_setup_document_types(request, index_pk):
         extra_context={
             'navigation_object_name': 'index',
             'index': index,
-            'object_name': _(u'Index'),
         }
     )
 
@@ -218,7 +214,6 @@ def template_node_create(request, parent_pk):
         'title': _(u'Create child node'),
         'form': form,
         'index': parent_node.index,
-        'object_name': _(u'Index'),
         'navigation_object_name': 'index',
     }, context_instance=RequestContext(request))
 

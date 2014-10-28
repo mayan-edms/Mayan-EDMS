@@ -38,11 +38,7 @@
                     <h3>{{ title }}</h3>
                 {% else %}
                     {% if delete_view %}
-                        {% if object_name %}
-                            <h3>{% blocktrans %}Are you sure you wish to delete {{ object_name }}: {{ object }}?{% endblocktrans %}</h3>
-                        {% else %}
-                            <h3>{% blocktrans %}Are you sure you wish to delete: {{ object }}?{% endblocktrans %}</h3>
-                        {% endif %}
+                        <h3>{% blocktrans %}Are you sure you wish to delete: {{ object }}?{% endblocktrans %}</h3>
                     {% endif %}
                 {% endif %}
                 <h4>{{ message }}</h4>

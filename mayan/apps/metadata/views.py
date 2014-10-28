@@ -172,7 +172,6 @@ def setup_metadata_type_edit(request, metadatatype_id):
         'title': _(u'Edit metadata type: %s') % metadata_type,
         'form': form,
         'object': metadata_type,
-        'object_name': _(u'Metadata type'),
     }, context_instance=RequestContext(request))
 
 
@@ -215,7 +214,6 @@ def setup_metadata_type_delete(request, metadatatype_id):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'Metadata type'),
         'delete_view': True,
         'next': next,
         'previous': previous,
@@ -285,7 +283,6 @@ def setup_document_type_metadata(request, document_type_id):
         extra_context={
             'document_type': document_type,
             'navigation_object_name': 'document_type',
-            'object_name': _(u'Document type'),
         },
         grouped=True,
     )

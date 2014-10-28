@@ -32,7 +32,6 @@ def namespace_details(request, namespace_id):
         'object_list': namespace.statistics,
         'hide_link': True,
         'title': _(u'Namespace details for: %s') % namespace,
-        'object_name': _(u'Namespace'),
     }, context_instance=RequestContext(request))
 
 

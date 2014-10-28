@@ -31,7 +31,6 @@ def queue_document_list(request, queue_name='default'):
         'title': _(u'Documents in queue: %s') % document_queue,
         'hide_object': True,
         'queue': document_queue,
-        'object_name': _(u'Document queue'),
         'navigation_object_name': 'queue',
         'list_object_variable_name': 'queue_document',
         'extra_columns': [

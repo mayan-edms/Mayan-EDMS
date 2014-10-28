@@ -4,24 +4,12 @@
     {{ title }}
 {% else %}
     {% if read_only %}
-        {% if object_name %}
-            {% blocktrans %}Details for {{ object_name }}: {{ object }}{% endblocktrans %}
-        {% else %}
-            {% blocktrans %}Details for: {{ object }}{% endblocktrans %}
-        {% endif %}
+        {% blocktrans %}Details for: {{ object }}{% endblocktrans %}
     {% else %}
         {% if object %}
-            {% if object_name %}
-                {% blocktrans with object as object and object_name as object_name %}Edit {{ object_name }}: {{ object }}{% endblocktrans %}
-            {% else %}
-                {% blocktrans with object as object %}Edit: {{ object }}{% endblocktrans %}
-            {% endif %}
+            {% blocktrans with object as object %}Edit: {{ object }}{% endblocktrans %}
         {% else %}
-            {% if object_name %}
-                {% blocktrans %}Create new {{ object_name }}{% endblocktrans %}
-            {% else %}
-                {% trans 'Create' %}
-            {% endif %}
+            {% trans 'Create' %}
         {% endif %}
     {% endif %}
 {% endif %}

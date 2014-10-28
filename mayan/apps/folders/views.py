@@ -86,7 +86,6 @@ def folder_edit(request, folder_id):
         'title': _(u'Edit folder: %s') % folder,
         'form': form,
         'object': folder,
-        'object_name': _(u'Folder'),
     }, context_instance=RequestContext(request))
 
 
@@ -114,7 +113,6 @@ def folder_delete(request, folder_id):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'Folder'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -145,7 +143,6 @@ class FolderDetailView(DocumentListView):
             'title': _(u'Documents in folder: %s') % self.get_folder(),
             'hide_links': True,
             'object': self.get_folder(),
-            'object_name': _(u'Folder'),
         }
 
 
@@ -186,7 +183,6 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         form = FolderListForm(user=request.user)
 
     context = {
-        'object_name': _(u'Document'),
         'form': form,
         'previous': previous,
         'next': next,
@@ -265,7 +261,6 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'Folder document'),
         'previous': previous,
         'next': next,
         'object': folder

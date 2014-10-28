@@ -129,7 +129,6 @@ def checkin_document(request, document_pk):
             return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'Document'),
         'delete_view': False,
         'previous': previous,
         'next': next,

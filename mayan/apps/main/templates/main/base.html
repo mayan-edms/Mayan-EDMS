@@ -318,11 +318,7 @@
                             {% if object_navigation_links %}
                                 <div class="block">
                                     {% if navigation_object %}
-                                        {% if object_name %}
-                                            <h3>{% blocktrans %}Actions for {{ object_name }}: {{ navigation_object }}{% endblocktrans %}</h3>
-                                        {% else %}
-                                            <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
-                                        {% endif %}
+                                        <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
                                     {% else %}
                                         <h3>{% trans 'Actions' %}</h3>
                                     {% endif %}

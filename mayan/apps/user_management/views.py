@@ -74,7 +74,6 @@ def user_edit(request, user_id):
         'title': _(u'Edit user: %s') % user,
         'form': form,
         'object': user,
-        'object_name': _(u'User'),
     }, context_instance=RequestContext(request))
 
 
@@ -130,7 +129,6 @@ def user_delete(request, user_id=None, user_id_list=None):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'User'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -192,7 +190,6 @@ def user_set_password(request, user_id=None, user_id_list=None):
         form = PasswordForm()
 
     context = {
-        'object_name': _(u'User'),
         'next': next,
         'form': form,
     }
@@ -236,7 +233,6 @@ def user_groups(request, user_id):
         decode_content_type=True,
         extra_context={
             'object': user,
-            'object_name': _(u'User'),
         }
     )
 
@@ -278,7 +274,6 @@ def group_edit(request, group_id):
         'title': _(u'Edit group: %s') % group,
         'form': form,
         'object': group,
-        'object_name': _(u'Group'),
     }, context_instance=RequestContext(request))
 
 
@@ -329,7 +324,6 @@ def group_delete(request, group_id=None, group_id_list=None):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'Group'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -373,6 +367,5 @@ def group_members(request, group_id):
         decode_content_type=True,
         extra_context={
             'object': group,
-            'object_name': _(u'Group'),
         }
     )

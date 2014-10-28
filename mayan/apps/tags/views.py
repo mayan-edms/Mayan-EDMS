@@ -88,7 +88,6 @@ def tag_attach(request, document_id=None, document_id_list=None):
         form = TagListForm(user=request.user)
 
     context = {
-        'object_name': _(u'Document'),
         'form': form,
         'previous': previous,
         'next': next,
@@ -165,7 +164,6 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'Tag'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -209,7 +207,6 @@ def tag_edit(request, tag_id):
         'title': _(u'Edit tag: %s') % tag,
         'form': form,
         'object': tag,
-        'object_name': _(u'Tag'),
     }, context_instance=RequestContext(request))
 
 
@@ -225,7 +222,6 @@ class TagTaggedItemListView(DocumentListView):
             'title': _(u'Documents with the tag "%s"') % self.get_tag(),
             'hide_links': True,
             'object': self.get_tag(),
-            'object_name': _(u'Tag'),
         }
 
 

@@ -201,7 +201,6 @@ def document_delete(request, document_id=None, document_id_list=None):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'document'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -507,7 +506,6 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'Document transformation'),
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -882,7 +880,6 @@ def document_type_edit(request, document_type_id):
     return render_to_response('main/generic_form.html', {
         'title': _(u'Edit document type: %s') % document_type,
         'form': form,
-        'object_name': _(u'Document type'),
         'navigation_object_name': 'document_type',
         'document_type': document_type,
         'next': next
@@ -913,7 +910,6 @@ def document_type_delete(request, document_type_id):
         'delete_view': True,
         'navigation_object_name': 'document_type',
         'next': next,
-        'object_name': _(u'Document type'),
         'previous': previous,
         'title': _(u'Are you sure you wish to delete the document type: %s?') % document_type,
         'message': _(u'All documents of this type will be deleted too.'),
@@ -952,7 +948,6 @@ def document_type_filename_list(request, document_type_id):
     context = {
         'object_list': document_type.filenames.all(),
         'title': _(u'filenames for document type: %s') % document_type,
-        'object_name': _(u'Document type'),
         'navigation_object_name': 'document_type',
         'document_type': document_type,
         'list_object_variable_name': 'filename',
@@ -1024,7 +1019,6 @@ def document_type_filename_delete(request, document_type_filename_id):
         return HttpResponseRedirect(next)
 
     context = {
-        'object_name': _(u'Document type filename'),
         'delete_view': True,
         'previous': previous,
         'next': next,

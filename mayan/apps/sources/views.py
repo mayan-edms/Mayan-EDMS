@@ -431,7 +431,6 @@ def setup_source_edit(request, source_id):
         'source': source,
         'navigation_object_name': 'source',
         'next': next,
-        'object_name': _(u'Source'),
         'source_type': source.source_type,
     }, context_instance=RequestContext(request))
 
@@ -456,7 +455,6 @@ def setup_source_delete(request, source_id):
     context = {
         'title': _(u'Are you sure you wish to delete the source: %s?') % source,
         'source': source,
-        'object_name': _(u'Source'),
         'navigation_object_name': 'source',
         'delete_view': True,
         'previous': previous,
@@ -502,7 +500,6 @@ def setup_source_transformation_list(request, source_id):
         'object_list': SourceTransformation.transformations.get_for_object(source),
         'title': _(u'Transformations for: %s') % source.fullname(),
         'source': source,
-        'object_name': _(u'Source'),
         'navigation_object_name': 'source',
         'list_object_variable_name': 'transformation',
         'extra_columns': [
@@ -606,7 +603,6 @@ def setup_source_transformation_create(request, source_id):
     return render_to_response('main/generic_form.html', {
         'form': form,
         'source': source,
-        'object_name': _(u'Source'),
         'navigation_object_name': 'source',
         'title': _(u'Create new transformation for source: %s') % source,
     }, context_instance=RequestContext(request))
