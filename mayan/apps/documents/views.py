@@ -31,7 +31,7 @@ from navigation.utils import resolve_to_name
 from permissions.models import Permission
 
 from .events import HISTORY_DOCUMENT_EDITED
-from .forms import (DocumentForm_edit, DocumentPropertiesForm,
+from .forms import (DocumentForm, DocumentPropertiesForm,
                     DocumentPreviewForm, DocumentPageForm,
                     DocumentPageTransformationForm, DocumentContentForm,
                     DocumentPageForm_edit, DocumentPageForm_text, PrintForm,
@@ -229,7 +229,7 @@ def document_edit(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_PROPERTIES_EDIT, request.user, document)
 
     if request.method == 'POST':
-        form = DocumentForm_edit(request.POST, instance=document)
+        form = DocumentForm(request.POST, instance=document)
         if form.is_valid():
             document.label = form.cleaned_data['label']
             document.description = form.cleaned_data['description']
@@ -247,7 +247,7 @@ def document_edit(request, document_id):
 
             return HttpResponseRedirect(document.get_absolute_url())
     else:
-        form = DocumentForm_edit(instance=document)
+        form = DocumentForm(instance=document)
 
     return render_to_response('main/generic_form.html', {
         'form': form,

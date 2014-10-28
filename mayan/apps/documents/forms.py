@@ -94,40 +94,24 @@ class DocumentPreviewForm(forms.Form):
 
 
 class DocumentForm(forms.ModelForm):
+    """
+    Form sub classes from DocumentForm used only when editing a document
+    """
     class Meta:
         model = Document
         fields = ('label', 'description', 'language')
 
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type', None)
-        instance = kwargs.pop('instance', None)
 
         super(DocumentForm, self).__init__(*args, **kwargs)
 
-        if document_type:
-            filenames_qs = document_type.documenttypefilename_set.filter(enabled=True)
-            if filenames_qs.count() > 0:
-                self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
-                    queryset=filenames_qs,
-                    required=False,
-                    label=_(u'Quick document rename'))
+        # Is a document (documents app edit) and has been saved (sources app upload)?
+        if self.instance and self.instance.pk:
+            document_type = self.instance.document_type
 
-
-# TODO: merge DocumentForm and DocumentForm_edit
-class DocumentForm_edit(forms.ModelForm):
-    """
-    Form sub classes from DocumentForm used only when editing a document
-    """
-
-    class Meta:
-        model = Document
-        fields = ('label', 'description', 'language')
-
-    def __init__(self, *args, **kwargs):
-        super(DocumentForm_edit, self).__init__(*args, **kwargs)
-
-        filenames_qs = self.instance.document_type.documenttypefilename_set.filter(enabled=True)
-        if filenames_qs.count() > 0:
+        filenames_qs = document_type.filenames.filter(enabled=True)
+        if filenames_qs.count():
             self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
                 queryset=filenames_qs,
                 required=False,
