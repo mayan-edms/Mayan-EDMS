@@ -93,4 +93,5 @@ class DocumentManager(models.Manager):
         document = self.model(description=description, document_type=document_type, language=language, label=label)
         document.save(user=user)
         document.new_version(file=file_object, user=user)
+        self.set_document_type(document_type, force=True)
         return document
