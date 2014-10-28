@@ -1,10 +1,14 @@
 from __future__ import absolute_import
 
+import logging
+
+from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
+from documents.signals import post_document_type_change
 from navigation.api import register_links, register_model_list_columns
 from navigation.links import link_spacer
 from project_setup.api import register_setup
@@ -24,6 +28,8 @@ from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_DOCUMENT_VIEW)
 from .urls import api_urls
 
+logger = logging.getLogger(__name__)
+
 
 @property
 def document_type_metadata(self):
@@ -31,6 +37,19 @@ def document_type_metadata(self):
         return self.documenttypedefaults_set.get().default_metadata
     except self.documenttypedefaults_set.model.DoesNotExist:
         return MetadataType.objects.none()
+
+
+@receiver(post_document_type_change, dispatch_uid='post_post_document_type_change_metadata', sender=Document)
+def post_post_document_type_change_metadata(sender, instance, **kwargs):
+    logger.debug('received post_document_type_change')
+    logger.debug('instance: %s' % instance)
+    # Delete existing document metadata
+    for metadata in instance.metadata.all():
+        metadata.delete()
+
+    # Add new document type metadata types to document
+    for metadata_type in instance.document_type.metadata.all():
+        instance.metadata.create(metadata_type=metadata_type, value=None)
 
 
 DocumentType.add_to_class('metadata', document_type_metadata)
@@ -41,7 +60,6 @@ register_links(DocumentType, [setup_document_type_metadata])
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
 register_links([MetadataType, 'metadata:setup_metadata_type_list', 'metadata:setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
 register_links([Document], [link_spacer, metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove], menu_name='multi_item_links')
-
 
 register_setup(setup_metadata_type_list)
 
