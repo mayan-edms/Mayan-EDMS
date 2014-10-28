@@ -15,16 +15,12 @@ from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 
 from .api import get_metadata_string
-from .links import (metadata_add, metadata_edit, metadata_multiple_add,
-                    metadata_multiple_edit, metadata_multiple_remove,
-                    metadata_remove, metadata_view,
+from .links import (metadata_edit, metadata_multiple_edit, metadata_view,
                     setup_document_type_metadata, setup_metadata_type_create,
                     setup_metadata_type_delete, setup_metadata_type_edit,
                     setup_metadata_type_list)
 from .models import MetadataType
-from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
-                          PERMISSION_METADATA_DOCUMENT_EDIT,
-                          PERMISSION_METADATA_DOCUMENT_REMOVE,
+from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
                           PERMISSION_METADATA_DOCUMENT_VIEW)
 from .urls import api_urls
 
@@ -54,18 +50,16 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
 
 DocumentType.add_to_class('metadata', document_type_metadata)
 
-register_links(['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
+register_links(['metadata:metadata_edit', 'metadata:metadata_view'], [metadata_edit], menu_name='sidebar')
 register_links(Document, [metadata_view], menu_name='form_header')
 register_links(DocumentType, [setup_document_type_metadata])
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
 register_links([MetadataType, 'metadata:setup_metadata_type_list', 'metadata:setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
-register_links([Document], [link_spacer, metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove], menu_name='multi_item_links')
 
 register_setup(setup_metadata_type_list)
 
 class_permissions(Document, [
-    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,
-    PERMISSION_METADATA_DOCUMENT_REMOVE, PERMISSION_METADATA_DOCUMENT_VIEW,
+    PERMISSION_METADATA_DOCUMENT_EDIT, PERMISSION_METADATA_DOCUMENT_VIEW,
 ])
 
 register_model_list_columns(Document, [

@@ -4,23 +4,16 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 
-from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
-                          PERMISSION_METADATA_DOCUMENT_EDIT,
-                          PERMISSION_METADATA_DOCUMENT_REMOVE,
+from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
                           PERMISSION_METADATA_DOCUMENT_VIEW,
                           PERMISSION_METADATA_TYPE_CREATE,
                           PERMISSION_METADATA_TYPE_DELETE,
                           PERMISSION_METADATA_TYPE_EDIT,
                           PERMISSION_METADATA_TYPE_VIEW)
 
-
 metadata_edit = {'text': _(u'Edit metadata'), 'view': 'metadata:metadata_edit', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT]}
 metadata_view = {'text': _(u'Metadata'), 'view': 'metadata:metadata_view', 'args': 'object.pk', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_VIEW], 'children_view_regex': ['metadata']}
 metadata_multiple_edit = {'text': _(u'Edit metadata'), 'view': 'metadata:metadata_multiple_edit', 'famfam': 'xhtml_go', 'permissions': [PERMISSION_METADATA_DOCUMENT_EDIT]}
-metadata_add = {'text': _(u'Add metadata'), 'view': 'metadata:metadata_add', 'args': 'object.pk', 'famfam': 'xhtml_add', 'permissions': [PERMISSION_METADATA_DOCUMENT_ADD]}
-metadata_multiple_add = {'text': _(u'Add metadata'), 'view': 'metadata:metadata_multiple_add', 'famfam': 'xhtml_add', 'permissions': [PERMISSION_METADATA_DOCUMENT_ADD]}
-metadata_remove = {'text': _(u'Remove metadata'), 'view': 'metadata:metadata_remove', 'args': 'object.pk', 'famfam': 'xhtml_delete', 'permissions': [PERMISSION_METADATA_DOCUMENT_REMOVE]}
-metadata_multiple_remove = {'text': _(u'Remove metadata'), 'view': 'metadata:metadata_multiple_remove', 'famfam': 'xhtml_delete', 'permissions': [PERMISSION_METADATA_DOCUMENT_REMOVE]}
 
 setup_document_type_metadata = {'text': _(u'Metadata'), 'view': 'metadata:setup_document_type_metadata', 'args': 'document_type.pk', 'famfam': 'xhtml', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 

@@ -16,9 +16,7 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import DocumentMetadata, MetadataType
-from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
-                          PERMISSION_METADATA_DOCUMENT_REMOVE,
-                          PERMISSION_METADATA_DOCUMENT_EDIT,
+from .permissions import (PERMISSION_METADATA_DOCUMENT_EDIT,
                           PERMISSION_METADATA_DOCUMENT_VIEW,
                           PERMISSION_METADATA_TYPE_CREATE,
                           PERMISSION_METADATA_TYPE_DELETE,
@@ -74,15 +72,8 @@ class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
         return super(APIMetadataTypeView, self).put(*args, **kwargs)
 
 
-class APIDocumentMetadataListView(generics.ListCreateAPIView):
-    """
-    Returns a list of all the metadata of a document.
-    """
-
+class APIDocumentMetadataListView(generics.ListAPIView):
     serializer_class = DocumentMetadataSerializer
-    permission_classes = (MayanPermission,)
-
-    mayan_view_permissions = {'POST': [PERMISSION_METADATA_DOCUMENT_ADD]}
 
     def get_queryset(self):
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
@@ -98,16 +89,8 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         """Returns a list of selected document's metadata types and values."""
         return super(APIDocumentMetadataListView, self).get(*args, **kwargs)
 
-    def post(self, *args, **kwargs):
-        """Add an existing metadata type and value to the selected document."""
-        return super(APIDocumentMetadataListView, self).post(*args, **kwargs)
 
-
-class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    Returns the selected document metadata details.
-    """
-
+class APIDocumentMetadataView(generics.RetrieveUpdateAPIView):
     serializer_class = DocumentMetadataSerializer
     queryset = DocumentMetadata.objects.all()
 
@@ -116,12 +99,7 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
         'GET': [PERMISSION_METADATA_DOCUMENT_VIEW],
         'PUT': [PERMISSION_METADATA_DOCUMENT_EDIT],
         'PATCH': [PERMISSION_METADATA_DOCUMENT_EDIT],
-        'DELETE': [PERMISSION_METADATA_DOCUMENT_REMOVE]
     }
-
-    def delete(self, *args, **kwargs):
-        """Delete the selected document metadata type and value."""
-        return super(APIDocumentMetadataView, self).delete(*args, **kwargs)
 
     def get(self, *args, **kwargs):
         """Return the details of the selected document metadata type and value."""
