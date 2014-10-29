@@ -42,7 +42,7 @@ class DocumentAdmin(admin.ModelAdmin):
     inlines = [
         DocumentVersionInline
     ]
-    list_display = ('uuid', 'file_filename',)
+    list_display = ('uuid', 'label',)
 
 
 class RecentDocumentAdmin(admin.ModelAdmin):
