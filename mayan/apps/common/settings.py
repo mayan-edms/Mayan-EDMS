@@ -56,3 +56,13 @@ register_setting(
     default=False,
     description=_(u'Allow non authenticated users, access to all views'),
 )
+
+register_setting(
+    namespace=u'common',
+    module=u'common.settings',
+    name=u'SHARED_STORAGE',
+    global_name=u'COMMON_SHARED_STORAGE',
+    default='storage.backends.filebasedstorage.FileBasedStorage',
+    description=_(u'A storage backend that all workers can use to share files.'),
+)
+

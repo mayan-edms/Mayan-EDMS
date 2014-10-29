@@ -8,6 +8,14 @@ from django.contrib.auth.models import User
 from solo.models import SingletonModel
 
 from .managers import AnonymousUserSingletonManager
+from .runtime import shared_storage_backend
+
+SHARED_UPLOADED_FILE_PATH = 'shared_uploads'
+
+
+def upload_to(instance, filename):
+    instance.filename = filename
+    return u'/'.join([SHARED_UPLOADED_FILE_PATH, filename])
 
 
 class AnonymousUserSingleton(SingletonModel):
@@ -27,3 +35,20 @@ class AutoAdminSingleton(SingletonModel):
 
     class Meta:
         verbose_name = verbose_name_plural = _(u'Auto admin properties')
+
+
+class SharedUploadedFile(models.Model):
+    file = models.FileField(upload_to=upload_to, storage=shared_storage_backend, verbose_name=_(u'File'))
+    filename = models.CharField(max_length=255, verbose_name=_('Filename'))
+    datatime = models.DateTimeField(auto_now_add=True, verbose_name=_('Date time'))
+
+    class Meta:
+        verbose_name = _(u'Shared uploaded file')
+        verbose_name_plural = _(u'Shared uploaded files')
+
+    def __unicode__(self):
+        return self.filename
+
+    def delete(self, *args, **kwargs):
+        self.file.storage.delete(self.file.path)
+        return super(SharedUploadedFile, self).delete(*args, **kwargs)
