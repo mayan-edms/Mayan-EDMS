@@ -43,6 +43,7 @@ HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache 
 logger = logging.getLogger(__name__)
 
 
+# TODO :Remove, use lambda: UUID_FUNCTION()
 def get_filename_from_uuid(instance, filename):
     """
     Store the orignal filename of the uploaded file and replace it with
@@ -97,13 +98,10 @@ class Document(models.Model):
 
     def set_document_type(self, document_type, force=False):
         has_changed = self.document_type != document_type
-        print 'has_changed', has_changed
-        print 'self.document_type != document_type', self.document_type, document_type
 
         self.document_type = document_type
         self.save()
         if has_changed or force:
-            print 'sending!'
             post_document_type_change.send(sender=self.__class__, instance=self)
 
     @staticmethod
@@ -198,31 +196,30 @@ class Document(models.Model):
     def size(self):
         return self.latest_version.size
 
-    def new_version(self, file, user=None, comment=None, version_update=None):
+    def new_version(self, file_object, user=None, comment=None, version_update=None):
         logger.debug('creating new document version')
         # TODO: move this restriction to a signal processor of the checkouts app
         if not self.is_new_versions_allowed(user=user):
             raise NewDocumentVersionNotAllowed
 
         if version_update:
+            # TODO: remove get_new_version_dict and just past the major, minor
+            # and micro values
             new_version_dict = self.latest_version.get_new_version_dict(version_update)
-            logger.debug('new_version_dict: %s' % new_version_dict)
-            new_version = DocumentVersion(
-                document=self,
-                file=file,
-                major=new_version_dict.get('major'),
-                minor=new_version_dict.get('minor'),
-                micro=new_version_dict.get('micro'),
-                comment=comment,
-            )
-            new_version.save()
         else:
             new_version_dict = {}
-            new_version = DocumentVersion(
-                document=self,
-                file=file,
-            )
-            new_version.save()
+
+        logger.debug('new_version_dict: %s' % new_version_dict)
+
+        new_version = DocumentVersion(
+            document=self,
+            file=file_object,
+            major=new_version_dict.get('major') or 1,
+            minor=new_version_dict.get('minor') or 0,
+            micro=new_version_dict.get('micro') or 0,
+            comment=comment or '',
+        )
+        new_version.save()
 
         logger.debug('new_version saved')
 
@@ -257,10 +254,12 @@ class Document(models.Model):
     def file_mimetype(self):
         return self.latest_version.mimetype
 
+    # TODO: rename to file_encoding
     @property
     def file_mime_encoding(self):
         return self.latest_version.encoding
 
+    # TODO: Remove
     @property
     def file_filename(self):
         return self.latest_version.filename
@@ -529,6 +528,7 @@ class DocumentVersion(models.Model):
         else:
             return None
 
+    # TODO: Remove
     def rename(self, new_name):
         new_filename, new_extension = os.path.splitext(new_name)
         name, extension = os.path.splitext(self.filename)
