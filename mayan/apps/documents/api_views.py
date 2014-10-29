@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-import tempfile
-
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
@@ -10,6 +8,7 @@ from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
 from acls.models import AccessEntry
+from common.models import SharedUploadedFile
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.literals import (DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
                                 DEFAULT_ZOOM_LEVEL)
@@ -62,15 +61,10 @@ class APINewDocumentView(generics.GenericAPIView):
         serializer = self.get_serializer(data=request.DATA, files=request.FILES)
 
         if serializer.is_valid():
-            temporary_file = tempfile.NamedTemporaryFile(delete=False)
-            source_file = request.FILES['file']
-            for chunk in source_file.chunks():
-                temporary_file.write(chunk)
-            temporary_file.close()
-            source_file.close()
+            shared_uploaded_file = SharedUploadedFile.objects.create(file=request.FILES['file'])
 
             task_new_document.apply_async(kwargs=dict(
-                file_path=temporary_file.name,
+                shared_uploaded_file_id=shared_uploaded_file.pk,
                 document_type_id=serializer.data['document_type'],
                 description=serializer.data['description'],
                 expand=serializer.data['expand'],
@@ -78,7 +72,6 @@ class APINewDocumentView(generics.GenericAPIView):
                 language=serializer.data['language'],
                 user_id=serializer.data['user']
             ), queue='uploads')
-
 
             headers = self.get_success_headers(serializer.data)
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED,
