@@ -5,6 +5,8 @@ from django.core.files import File
 
 from mayan.celery import app
 
+from common.models import SharedUploadedFile
+
 from .models import Document, DocumentType, DocumentVersion
 
 logger = logging.getLogger(__name__)
@@ -18,11 +20,8 @@ def task_get_document_image(document_id, *args, **kwargs):
 
 @app.task(ignore_result=True)
 def task_clear_image_cache():
-    # TODO: Error logging
-    #try:
+    # TODO: Error logging / notification
     Document.clear_image_cache()
-    # except Exception as exception:
-    #    messages.error(request, _(u'Error clearing document image cache; %s') % exception)
 
 
 @app.task(ignore_result=True)
@@ -32,7 +31,8 @@ def task_update_page_count(version_id):
 
 
 @app.task(ignore_result=True)
-def task_new_document(document_type_id, file_path, label, description=None, expand=False, language=None, user_id=None):
+def task_new_document(document_type_id, shared_uploaded_file_id, label, description=None, expand=False, language=None, user_id=None):
+    shared_uploaded_file = SharedUploadedFile.objects.get(pk=shared_uploaded_file_id)
     document_type = DocumentType.objects.get(pk=document_type_id)
 
     if user_id:
@@ -40,8 +40,10 @@ def task_new_document(document_type_id, file_path, label, description=None, expa
     else:
         user = None
 
-    with File(file=open(file_path, mode='rb')) as file_object:
+    with File(file=shared_uploaded_file.file) as file_object:
         new_version = Document.objects.new_document(document_type=document_type, expand=expand, file_object=file_object, label=label, description=description, language=language, user=user)
+
+    shared_uploaded_file.delete()
 
     # TODO: Report/record how was file uploaded
     #    if result['is_compressed'] is None:
@@ -52,3 +54,19 @@ def task_new_document(document_type_id, file_path, label, description=None, expa
 
     #    if result['is_compressed'] is False:
     #        messages.warning(request, _(u'File was not a compressed file, uploaded as it was.'))
+
+
+@app.task(ignore_result=True)
+def task_upload_new_version(document_id, shared_uploaded_file_id, user_id, comment=None, version_update=None):
+    shared_file = SharedUploadedFile.objects.get(pk=shared_uploaded_file_id)
+    document = Document.objects.get(pk=document_id)
+
+    if user_id:
+        user = User.objects.get(pk=user_id)
+    else:
+        user = None
+
+    with File(file=shared_file.file) as file_object:
+        document.new_version(comment=comment, file_object=file_object, user=user, version_update=version_update)
+
+    shared_file.delete()
