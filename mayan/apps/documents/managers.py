@@ -7,7 +7,7 @@ from django.db import models, transaction
 
 from common.compressed_files import CompressedFile, NotACompressedFile
 
-from .settings import RECENT_COUNT
+from .settings import RECENT_COUNT, LANGUAGE
 
 logger = logging.getLogger(__name__)
 
@@ -59,8 +59,9 @@ class DocumentTypeManager(models.Manager):
 
 
 class DocumentManager(models.Manager):
+    @transaction.atomic
     def new_document(self, document_type, file_object, label, command_line=False, description=None, expand=False, language=None, user=None):
-        documents_created = []
+        versions_created = []
         is_compressed = None
 
         if expand:
@@ -69,8 +70,8 @@ class DocumentManager(models.Manager):
                 count = 1
                 for compressed_file_child in compressed_file.children():
                     if command_line:
-                        print 'Uploading file #%d: %s' % (count, fp)
-                    documents_created.append(self.upload_single_document(document_type=document_type, file_object=compressed_file_child, description=description, label=unicode(fp), language=language, user=user))
+                        print 'Uploading file #%d: %s' % (count, compressed_file_child)
+                    versions_created.append(self.upload_single_document(document_type=document_type, file_object=compressed_file_child, description=description, label=unicode(compressed_file_child), language=language or LANGUAGE, user=user))
                     compressed_file_child.close()
                     count += 1
 
@@ -79,19 +80,18 @@ class DocumentManager(models.Manager):
                 logging.debug('Exception: NotACompressedFile')
                 if command_line:
                     raise
-                documents_created.append(self.upload_single_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language, user=user))
+                versions_created.append(self.upload_single_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or LANGUAGE, user=user))
             else:
                 is_compressed = True
         else:
-            documents_created.append(self.upload_single_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language, user=user))
+            versions_created.append(self.upload_single_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or LANGUAGE, user=user))
 
-        file_object.close()
-        return documents_created
+        return versions_created
 
     @transaction.atomic
     def upload_single_document(self, document_type, file_object, label, description=None, language=None, user=None):
         document = self.model(description=description, document_type=document_type, language=language, label=label)
         document.save(user=user)
-        document.new_version(file=file_object, user=user)
-        self.set_document_type(document_type, force=True)
-        return document
+        version = document.new_version(file_object=file_object, user=user)
+        document.set_document_type(document_type, force=True)
+        return version
