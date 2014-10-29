@@ -2,9 +2,8 @@ from __future__ import absolute_import
 
 from django.conf.urls import patterns, url
 
-from .api_views import (APIDocumentCreateView, APIStagingSourceFileView,
-                        APIStagingSourceFileImageView, APIStagingSourceListView,
-                        APIStagingSourceView)
+from .api_views import (APIStagingSourceFileView, APIStagingSourceFileImageView,
+                        APIStagingSourceListView, APIStagingSourceView)
 from .views import UploadInteractiveVersionView, UploadInteractiveView
 from .wizards import DocumentCreateWizard
 
@@ -36,7 +35,6 @@ urlpatterns = patterns('sources.views',
 )
 
 api_urls = patterns('',
-    url(r'^document/create/$', APIDocumentCreateView.as_view(), name='document-create-view'),
     url(r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/image/$', APIStagingSourceFileImageView.as_view(), name='stagingfolderfile-image-view'),
     url(r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/$', APIStagingSourceFileView.as_view(), name='stagingfolderfile-detail'),
     url(r'^staging_folders/$', APIStagingSourceListView.as_view(), name='stagingfolder-list'),

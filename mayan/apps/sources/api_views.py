@@ -20,7 +20,7 @@ from .serializers import (NewDocumentSerializer, StagingFolderFileSerializer,
                           StagingFolderSerializer,
                           StagingSourceFileImageSerializer,
                           WebFormSourceSerializer)
-from .tasks import task_upload_document
+from .tasks import task_source_upload_document
 
 
 class APIStagingSourceFileView(generics.GenericAPIView):
@@ -88,56 +88,3 @@ class APIStagingSourceFileImageView(generics.GenericAPIView):
             return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})
         except UnkownConvertError as exception:
             return Response({'status': 'error', 'detail': 'converter_error', 'message': unicode(exception)})
-
-
-class APIDocumentCreateView(generics.CreateAPIView):
-    """
-    Create a new document from an uploaded file.
-    """
-
-    serializer_class = NewDocumentSerializer
-
-    permission_classes = (MayanPermission,)
-    mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_CREATE]}
-
-    def get_serializer_class(self):
-        return NewDocumentSerializer
-
-    def create(self, request):
-        # TODO: use serializer instance instead of raw request
-        request = self.request.POST
-
-        if self.request.FILES:
-            temporary_file = tempfile.NamedTemporaryFile(delete=False)
-            for chunk in self.request.FILES['file'].chunks():
-                temporary_file.write(chunk)
-
-            temporary_file.close()
-            self.request.FILES['file'].close()
-        else:
-            return Response({
-                'status': 'error',
-                'message': 'No file provided.'
-            })
-
-        if not self.request.user.is_anonymous():
-            user_id = self.request.user.pk
-        else:
-            user_id = None
-
-        task_upload_document.apply_async(kwargs=dict(
-            source_id=int(request.get('source')),
-            file_path=temporary_file.name,
-            filename=request.get('filename', self.request.FILES['file'].name),
-            use_file_name=request.get('use_file_name', False),
-            document_type_id=int(request.get('document_type', 0)) or None,
-            expand=request.get('expand', False),
-            metadata_dict_list={},
-            user_id=user_id,
-            description=request.get('description', None),
-        ), queue='uploads')
-
-        return Response({
-            'status': 'success',
-            'message': 'New document creation queued.'
-        })

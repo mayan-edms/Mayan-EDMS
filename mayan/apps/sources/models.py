@@ -18,7 +18,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
-from common.compressed_files import CompressedFile, NotACompressedFile
 from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
 from djcelery.models import PeriodicTask, IntervalSchedule
@@ -57,43 +56,25 @@ class Source(models.Model):
     def get_transformation_list(self):
         return SourceTransformation.transformations.get_for_object_as_list(self)
 
-    def upload_document(self, file_object, document_type, label, expand=False, metadata_dict_list=None, user=None, document=None, command_line=False, description=None, language=None):
-        is_compressed = None
-
-        if expand:
-            try:
-                cf = CompressedFile(file_object)
-                count = 1
-                for fp in cf.children():
-                    if command_line:
-                        print 'Uploading file #%d: %s' % (count, fp)
-                    self.upload_single_document(file_object=fp, label=unicode(fp), document_type=document_type, metadata_dict_list=metadata_dict_list, user=user, description=description, language=language)
-                    fp.close()
-                    count += 1
-
-            except NotACompressedFile:
-                is_compressed = False
-                logging.debug('Exception: NotACompressedFile')
-                if command_line:
-                    raise
-                self.upload_single_document(file_object=file_object, label=label, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user, description=description, language=language)
-            else:
-                is_compressed = True
-        else:
-            self.upload_single_document(file_object=file_object, label=label, document_type=document_type, metadata_dict_list=metadata_dict_list, user=user, description=description, language=language)
-
-        file_object.close()
-
-    def upload_single_document(self, file_object, label, document_type, metadata_dict_list=None, user=None, description=None, language=None):
-        new_version = Document.objects.new_document(file_object=file_object, document_type=document_type, label=label, description=description, language=language, user=user)
+    def upload_document(self, file_object, label, description=None, document_type=None, expand=False, language=None, metadata_dict_list=None, user=None):
+        new_versions = Document.objects.new_document(
+            description=description,
+            document_type=document_type or self.document_type,
+            expand=expand,
+            file_object=file_object,
+            label=label,
+            language=language,
+            user=user
+        )
 
         transformations, errors = self.get_transformation_list()
-        new_version.apply_default_transformations(transformations)
+        for new_version in new_versions:
+            new_version.apply_default_transformations(transformations)
 
-        if metadata_dict_list:
-            save_metadata_list(metadata_dict_list, new_version.document, create=True)
+            if metadata_dict_list:
+                save_metadata_list(metadata_dict_list, new_version.document, create=True)
 
-    def get_upload_file_object(self, request, form):
+    def get_upload_file_object(self, form_data):
         pass
 
     def clean_up_upload_file(self, upload_file_object):
@@ -141,8 +122,8 @@ class StagingFolderSource(InteractiveSource):
         except OSError as exception:
             raise Exception(_(u'Unable get list of staging files: %s') % exception)
 
-    def get_upload_file_object(self, request, form):
-        staging_file = self.get_file(encoded_filename=form.cleaned_data['staging_file_id'])
+    def get_upload_file_object(self, form_data):
+        staging_file = self.get_file(encoded_filename=form_data['staging_file_id'])
         return SourceUploadedFile(source=self, file=staging_file.as_file(), extra_data=staging_file)
 
     def clean_up_upload_file(self, upload_file_object):
@@ -165,8 +146,8 @@ class WebFormSource(InteractiveSource):
     uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
     # Default path
 
-    def get_upload_file_object(self, request, form):
-        return SourceUploadedFile(source=self, file=form.cleaned_data['file'])
+    def get_upload_file_object(self, form_data):
+        return SourceUploadedFile(source=self, file=form_data['file'])
 
     class Meta:
         verbose_name = _(u'Web form')
@@ -256,8 +237,8 @@ class EmailBaseModel(IntervalBaseModel):
 
                 logger.debug('filename: %s' % filename)
 
-                document_file = Attachment(part, name=filename)
-                source.upload_file(document_file, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
+                file_object = Attachment(part, name=filename)
+                source.upload_file(file_object, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
 
     class Meta:
         verbose_name = _('Email source')
@@ -358,15 +339,12 @@ class WatchFolderSource(IntervalBaseModel):
     folder_path = models.CharField(max_length=255, verbose_name=_(u'Folder path'), help_text=_(u'Server side filesystem path.'))
 
     def check_source(self):
-        # TEMP: until default document language problem is fixed
-        from documents.settings import LANGUAGE
-
         for file_name in os.listdir(self.folder_path):
             full_path = os.path.join(self.folder_path, file_name)
             if os.path.isfile(full_path):
 
                 with File(file=open(full_path, mode='rb')) as file_object:
-                    self.upload_document(file_object, label=file_name, document_type=self.document_type, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), language=LANGUAGE)
+                    self.upload_document(file_object, label=file_name, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y))
                     os.unlink(full_path)
 
     class Meta:

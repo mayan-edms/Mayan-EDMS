@@ -5,6 +5,7 @@ from django.core.files import File
 
 from mayan.celery import app
 
+from common.models import SharedUploadedFile
 from documents.models import Document, DocumentType
 
 from .models import Source
@@ -20,7 +21,8 @@ def task_check_interval_source(source_id):
 
 
 @app.task(ignore_result=True)
-def task_upload_document(source_id, file_path, label, document_type_id, expand=False, metadata_dict_list=None, user_id=None, command_line=False, description=None, language=None):
+def task_source_upload_document(label, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, language=None, metadata_dict_list=None, user_id=None):
+    shared_uploaded_file = SharedUploadedFile.objects.get(pk=shared_uploaded_file_id)
     source = Source.objects.get_subclass(pk=source_id)
     document_type = DocumentType.objects.get(pk=document_type_id)
 
@@ -29,10 +31,10 @@ def task_upload_document(source_id, file_path, label, document_type_id, expand=F
     else:
         user = None
 
-    with File(file=open(file_path, mode='rb')) as file_object:
-        source.upload_document(file_object, label=label, document_type=document_type, expand=expand, metadata_dict_list=metadata_dict_list, user=user, command_line=command_line, description=description, language=language)
+    with File(file=shared_uploaded_file.file) as file_object:
+        source.upload_document(description=description, document_type=document_type, expand=expand, file_object=file_object, label=label, language=language, metadata_dict_list=metadata_dict_list, user=user)
 
-    # TODO: delete temporary_file
+    shared_uploaded_file.delete()
 
     # TODO: Report/record how was file uploaded
     #    if result['is_compressed'] is None:
@@ -43,20 +45,3 @@ def task_upload_document(source_id, file_path, label, document_type_id, expand=F
 
     #    if result['is_compressed'] is False:
     #        messages.warning(request, _(u'File was not a compressed file, uploaded as it was.'))
-
-
-@app.task(ignore_result=True)
-def task_upload_new_version(source_id, file_path, document_id, user_id, version_update=None, comment=None):
-    source = Source.objects.get_subclass(pk=source_id)
-    document = Document.objects.get(pk=document_id)
-
-    if user_id:
-        user = User.objects.get(pk=user_id)
-    else:
-        user = None
-
-    # Use File class otherwise we get error:
-    # 'file' object has no attribute '_committed'
-
-    with File(file=open(file_path, mode='rb')) as file_object:
-        document.new_version(file=file_object, user=user, version_update=version_update, comment=comment)

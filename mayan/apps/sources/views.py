@@ -14,11 +14,13 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
+from common.models import SharedUploadedFile
 from common.utils import encapsulate
 from common.views import MultiFormView
 from documents.models import DocumentType, Document
 from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
                                    PERMISSION_DOCUMENT_NEW_VERSION)
+from documents.tasks import task_new_document, task_upload_new_version
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 
@@ -32,7 +34,7 @@ from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
                           PERMISSION_SOURCES_SETUP_DELETE,
                           PERMISSION_SOURCES_SETUP_EDIT,
                           PERMISSION_SOURCES_SETUP_VIEW)
-from .tasks import task_upload_document, task_upload_new_version
+from .tasks import task_source_upload_document
 from .utils import get_class, get_form_class, get_upload_form_class
 
 
@@ -191,41 +193,35 @@ class UploadInteractiveView(UploadBaseView):
             else:
                 expand = False
 
-        uploaded_file = self.source.get_upload_file_object(self.request, forms['source_form'])
+        uploaded_file = self.source.get_upload_file_object(forms['source_form'].cleaned_data)
 
-        file_object = uploaded_file.file
-        temporary_file = tempfile.NamedTemporaryFile(delete=False)
-        for chunk in file_object.chunks():
-            temporary_file.write(chunk)
+        shared_uploaded_file = SharedUploadedFile.objects.create(file=uploaded_file.file)
 
-        temporary_file.close()
-        file_object.close()
-
-        try:
-            self.source.clean_up_upload_file(uploaded_file)
-        except Exception as exception:
-            messages.error(self.request, exception)
+        label = shared_uploaded_file.filename
+        if 'document_type_available_filenames' in forms['document_form'].cleaned_data:
+            if forms['document_form'].cleaned_data['document_type_available_filenames']:
+                label = forms['document_form'].cleaned_data['document_type_available_filenames'].filename
 
         if not self.request.user.is_anonymous():
             user_id = self.request.user.pk
         else:
             user_id = None
 
-        label = file_object.name
-        if 'document_type_available_filenames' in forms['document_form'].cleaned_data:
-            if forms['document_form'].cleaned_data['document_type_available_filenames']:
-                label = forms['document_form'].cleaned_data['document_type_available_filenames'].filename
+        try:
+            self.source.clean_up_upload_file(uploaded_file)
+        except Exception as exception:
+            messages.error(self.request, exception)
 
-        task_upload_document.apply_async(kwargs=dict(
-            source_id=self.source.pk,
-            file_path=temporary_file.name,
-            label=label,
+        task_source_upload_document.apply_async(kwargs=dict(
+            description=forms['document_form'].cleaned_data.get('description'),
             document_type_id=self.document_type.pk,
             expand=expand,
+            label=label,
+            language=forms['document_form'].cleaned_data.get('language'),
             metadata_dict_list=decode_metadata_from_url(self.request.GET),
+            shared_uploaded_file_id=shared_uploaded_file.pk,
+            source_id=self.source.pk,
             user_id=user_id,
-            description=forms['document_form'].cleaned_data.get('description'),
-            language=forms['document_form'].cleaned_data.get('language')
         ), queue='uploads')
 
         messages.success(self.request, _(u'New document queued for uploaded and will be available shortly.'))
@@ -296,15 +292,9 @@ class UploadInteractiveVersionView(UploadBaseView):
         return super(UploadInteractiveVersionView, self).dispatch(request, *args, **kwargs)
 
     def forms_valid(self, forms):
-        uploaded_file = self.source.get_upload_file_object(self.request, forms['source_form'])
+        uploaded_file = self.source.get_upload_file_object(forms['source_form'].cleaned_data)
 
-        file_object = uploaded_file.file
-        temporary_file = tempfile.NamedTemporaryFile(delete=False)
-        for chunk in file_object.chunks():
-            temporary_file.write(chunk)
-
-        temporary_file.close()
-        file_object.close()
+        shared_uploaded_file = SharedUploadedFile.objects.create(file=uploaded_file.file)
 
         try:
             self.source.clean_up_upload_file(uploaded_file)
@@ -317,8 +307,7 @@ class UploadInteractiveVersionView(UploadBaseView):
             user_id = None
 
         task_upload_new_version.apply_async(kwargs=dict(
-            source_id=self.source.pk,
-            file_path=temporary_file.name,
+            shared_uploaded_file_id=shared_uploaded_file.pk,
             document_id=self.document.pk,
             user_id=user_id,
             version_update=forms['document_form'].cleaned_data.get('version_update'),
@@ -397,6 +386,10 @@ def setup_source_list(request):
             {
                 'name': _('Type'),
                 'attribute': encapsulate(lambda x: x.class_fullname())
+            },
+            {
+                'name': _('Enabled'),
+                'attribute': encapsulate(lambda x: _('Yes') if x.enabled else _('No'))
             },
         ]
     }
