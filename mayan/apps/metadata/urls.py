@@ -19,7 +19,8 @@ urlpatterns = patterns('metadata.views',
     url(r'^setup/type/(?P<metadatatype_id>\d+)/edit/$', 'setup_metadata_type_edit', (), 'setup_metadata_type_edit'),
     url(r'^setup/type/(?P<metadatatype_id>\d+)/delete/$', 'setup_metadata_type_delete', (), 'setup_metadata_type_delete'),
 
-    url(r'^setup/document/type/(?P<document_type_id>\d+)/metadata/default/edit/$', 'setup_document_type_metadata', (), 'setup_document_type_metadata'),
+    url(r'^setup/document/type/(?P<document_type_id>\d+)/metadata/edit/$', 'setup_document_type_metadata', (), 'setup_document_type_metadata'),
+    url(r'^setup/document/type/(?P<document_type_id>\d+)/metadata/edit/required/$', 'setup_document_type_metadata_required', (), 'setup_document_type_metadata_required'),
 )
 
 api_urls = patterns('',

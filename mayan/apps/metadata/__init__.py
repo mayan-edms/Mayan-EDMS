@@ -15,10 +15,13 @@ from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 
 from .api import get_metadata_string
+from .classes import DocumentTypeMetadataTypeManager
 from .links import (metadata_add, metadata_edit, metadata_multiple_add,
                     metadata_multiple_edit, metadata_multiple_remove,
                     metadata_remove, metadata_view,
-                    setup_document_type_metadata, setup_metadata_type_create,
+                    setup_document_type_metadata,
+                    setup_document_type_metadata_required,
+                    setup_metadata_type_create,
                     setup_metadata_type_delete, setup_metadata_type_edit,
                     setup_metadata_type_list)
 from .models import MetadataType
@@ -29,14 +32,6 @@ from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
 from .urls import api_urls
 
 logger = logging.getLogger(__name__)
-
-
-@property
-def document_type_metadata(self):
-    try:
-        return self.documenttypedefaults_set.get().default_metadata
-    except self.documenttypedefaults_set.model.DoesNotExist:
-        return MetadataType.objects.none()
 
 
 @receiver(post_document_type_change, dispatch_uid='post_post_document_type_change_metadata', sender=Document)
@@ -52,11 +47,11 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
         instance.metadata.create(metadata_type=metadata_type, value=None)
 
 
-DocumentType.add_to_class('metadata', document_type_metadata)
+DocumentType.add_to_class('metadata_type', DocumentTypeMetadataTypeManager.factory)
 
 register_links(['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
 register_links(Document, [metadata_view], menu_name='form_header')
-register_links(DocumentType, [setup_document_type_metadata])
+register_links(DocumentType, [setup_document_type_metadata, setup_document_type_metadata_required])
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
 register_links([MetadataType, 'metadata:setup_metadata_type_list', 'metadata:setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
 register_links([Document], [link_spacer, metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove], menu_name='multi_item_links')

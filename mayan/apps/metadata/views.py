@@ -14,14 +14,14 @@ from documents.models import Document, DocumentType
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from permissions.models import Permission
 
-from common.utils import get_object_name
+from common.utils import get_object_name, generate_choices_w_labels
 from common.views import assign_remove
 
 from .api import save_metadata_list
 from .classes import MetadataObjectWrapper
 from .forms import (AddMetadataForm, MetadataFormSet, MetadataRemoveFormSet,
                     MetadataTypeForm)
-from .models import DocumentMetadata, DocumentTypeDefaults, MetadataType
+from .models import DocumentMetadata, MetadataType
 from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_DOCUMENT_EDIT,
                           PERMISSION_METADATA_DOCUMENT_REMOVE,
@@ -375,64 +375,41 @@ def setup_metadata_type_delete(request, metadatatype_id):
                               context_instance=RequestContext(request))
 
 
-def _as_choice_list(items):
-    return sorted([(MetadataObjectWrapper.encapsulate(item).gid, get_object_name(item, display_object_type=False)) for item in items], key=lambda x: x[1])
-
-
-def get_document_type_metadata_non_members(document_type):
-    metadata_types = get_document_type_metadata_members(document_type, separate=True)
-    metadata_types = set(MetadataType.objects.all()) - set(metadata_types)
-
-    non_members = []
-    if metadata_types:
-        non_members.append((_(u'Metadata types'), _as_choice_list(list(metadata_types))))
-
-    return non_members
-
-
-def get_document_type_metadata_members(document_type, separate=False):
-    metadata_types = set(document_type.documenttypedefaults_set.get().default_metadata.all())
-
-    if separate:
-        return metadata_types
-    else:
-        members = []
-
-        if metadata_types:
-            members.append((_(u'Metadata types'), _as_choice_list(list(metadata_types))))
-
-        return members
-
-
-def add_document_type_metadata(document_type, selection):
-    metadata_object = MetadataObjectWrapper.get(selection).source_object
-    document_type.documenttypedefaults_set.get().default_metadata.add(metadata_object)
-
-
-def remove_document_type_metadata(document_type, selection):
-    metadata_object = MetadataObjectWrapper.get(selection).source_object
-    document_type.documenttypedefaults_set.get().default_metadata.remove(metadata_object)
-
-
 def setup_document_type_metadata(request, document_type_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
 
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 
-    # Initialize defaults
-    DocumentTypeDefaults.objects.get_or_create(document_type=document_type)
-
     return assign_remove(
         request,
-        left_list=lambda: get_document_type_metadata_non_members(document_type),
-        right_list=lambda: get_document_type_metadata_members(document_type),
-        add_method=lambda x: add_document_type_metadata(document_type, x),
-        remove_method=lambda x: remove_document_type_metadata(document_type, x),
-        left_list_title=_(u'Non members of document type: %s') % document_type,
-        right_list_title=_(u'Members of document type: %s') % document_type,
+        left_list=lambda: generate_choices_w_labels(set(MetadataType.objects.all()) - set(document_type.metadata_type.filter(required=False)) - set(document_type.metadata_type.filter(required=True)), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(document_type.metadata_type.filter(required=False), display_object_type=False),
+        add_method=lambda x: document_type.metadata_type.add(x, required=False),
+        remove_method=lambda x: document_type.metadata_type.remove(x),
         extra_context={
             'document_type': document_type,
             'navigation_object_name': 'document_type',
+            'title': _(u'Optional metadata types for document type: %s') % document_type,
         },
-        grouped=True,
+        decode_content_type=True,
+    )
+
+
+def setup_document_type_metadata_required(request, document_type_id):
+    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+
+    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+
+    return assign_remove(
+        request,
+        left_list=lambda: generate_choices_w_labels(set(MetadataType.objects.all()) - set(document_type.metadata_type.filter(required=False)) - set(document_type.metadata_type.filter(required=True)), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(document_type.metadata_type.filter(required=True), display_object_type=False),
+        add_method=lambda x: document_type.metadata_type.add(x, required=True),
+        remove_method=lambda x: document_type.metadata_type.remove(x),
+        extra_context={
+            'document_type': document_type,
+            'navigation_object_name': 'document_type',
+            'title': _('Required metadata types for document type: %s') % document_type,
+        },
+        decode_content_type=True,
     )
