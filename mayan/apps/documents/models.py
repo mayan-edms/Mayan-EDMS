@@ -43,16 +43,6 @@ HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache 
 logger = logging.getLogger(__name__)
 
 
-# TODO :Remove, use lambda: UUID_FUNCTION()
-def get_filename_from_uuid(instance, filename):
-    """
-    Store the orignal filename of the uploaded file and replace it with
-    a UUID
-    """
-    instance.filename = filename
-    return UUID_FUNCTION()
-
-
 class DocumentType(models.Model):
     """
     Define document types or classes to which a specific set of
@@ -259,11 +249,6 @@ class Document(models.Model):
     def file_mime_encoding(self):
         return self.latest_version.encoding
 
-    # TODO: Remove
-    @property
-    def file_filename(self):
-        return self.latest_version.filename
-
     @property
     def date_updated(self):
         return self.latest_version.timestamp
@@ -328,7 +313,7 @@ class DocumentVersion(models.Model):
     comment = models.TextField(blank=True, verbose_name=_(u'Comment'))
 
     # File related fields
-    file = models.FileField(upload_to=get_filename_from_uuid, storage=storage_backend, verbose_name=_(u'File'))
+    file = models.FileField(upload_to=lambda: UUID_FUNCTION(), storage=storage_backend, verbose_name=_(u'File'))
     mimetype = models.CharField(max_length=255, null=True, blank=True, editable=False)
     encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
 
