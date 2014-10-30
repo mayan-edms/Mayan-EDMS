@@ -147,13 +147,18 @@ def metadata_add(request, document_id=None, document_id_list=None):
         if form.is_valid():
             metadata_type = form.cleaned_data['metadata_type']
             for document in documents:
-                document_metadata, created = DocumentMetadata.objects.get_or_create(document=document, metadata_type=metadata_type, defaults={'value': u''})
-                if created:
-                    messages.success(request, _(u'Metadata type: %(metadata_type)s successfully added to document %(document)s.') % {
-                        'metadata_type': metadata_type, 'document': document})
+                try:
+                    document_metadata, created = DocumentMetadata.objects.get_or_create(document=document, metadata_type=metadata_type, defaults={'value': u''})
+                except Exception as exception:
+                    messages.error(request, _(u'Error adding metadata type "%(metadata_type)s" to document: %(document)s; %(exception)s') % {
+                        'metadata_type': metadata_type, 'document': document, 'exception': ', '.join(exception.messages)})
                 else:
-                    messages.warning(request, _(u'Metadata type: %(metadata_type)s already present in document %(document)s.') % {
-                        'metadata_type': metadata_type, 'document': document})
+                    if created:
+                        messages.success(request, _(u'Metadata type: %(metadata_type)s successfully added to document %(document)s.') % {
+                            'metadata_type': metadata_type, 'document': document})
+                    else:
+                        messages.warning(request, _(u'Metadata type: %(metadata_type)s already present in document %(document)s.') % {
+                            'metadata_type': metadata_type, 'document': document})
 
             if len(documents) == 1:
                 return HttpResponseRedirect(u'%s?%s' % (
