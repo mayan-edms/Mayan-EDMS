@@ -61,7 +61,7 @@ class DocumentTestCase(TestCase):
                 'version_update': VERSION_UPDATE_MAJOR,
             }
 
-            new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
+            new_version = self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '2.0')
 
@@ -70,7 +70,7 @@ class DocumentTestCase(TestCase):
             'version_update': VERSION_UPDATE_MAJOR,
         }
         with open(TEST_DOCUMENT_PATH) as file_object:
-            new_version = self.document.new_version(file=File(file_object), **new_version_data)
+            new_version = self.document.new_version(file_object=File(file_object), **new_version_data)
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '3.0')
 
@@ -93,7 +93,7 @@ class DocumentSearchTestCase(TestCase):
         self.document.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
+            new_version = self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf'))
 
         # Text extraction on the first page only
         parse_document_page(self.document.latest_version.pages.all()[0])

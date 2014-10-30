@@ -26,7 +26,7 @@ class DocumentSearchTestCase(TestCase):
         self.document.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file=File(file_object, name='title_page.png'))
+            self.document.new_version(file_object=File(file_object, name='title_page.png'))
 
         # Clear OCR queue
         QueueDocument.objects.all().delete()
