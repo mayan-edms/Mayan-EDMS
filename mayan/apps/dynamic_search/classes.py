@@ -18,20 +18,18 @@ class SearchModel(object):
     registry = {}
 
     @classmethod
-    def get_all(cls):
-        return cls.registry.values()
-
-    @classmethod
     def get(cls, full_name):
-        return cls.registry[full_name]
+        result = cls.registry[full_name]
+        result.serializer = load_backend(self.serializer_string)
+        return result
 
-    def __init__(self, app_label, model_name, serializer, label=None, permission=None):
+    def __init__(self, app_label, model_name, serializer_string, label=None, permission=None):
         self.app_label = app_label
         self.model_name = model_name
         self.search_fields = {}
         self.model = get_model(app_label, model_name)
         self.label = label or self.model._meta.verbose_name
-        self.serializer = load_backend(serializer)
+        self.serializer_string = serializer_string
         self.permission = permission
         self.__class__.registry[self.get_full_name()] = self
 

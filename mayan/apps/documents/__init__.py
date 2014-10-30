@@ -139,7 +139,7 @@ class_permissions(Document, [PERMISSION_DOCUMENT_DELETE,
                              PERMISSION_DOCUMENT_VIEW,
                              PERMISSION_HISTORY_VIEW])
 
-document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer='documents.serializers.DocumentSerializer')
+document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer_string='documents.serializers.DocumentSerializer')
 
 # TODO: move these to their respective apps
 # Moving these to other apps cause an ImportError; circular import?
