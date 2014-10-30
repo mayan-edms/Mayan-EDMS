@@ -41,7 +41,6 @@
                                     <th>
                                         {{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}
                                     </th>
-                                {#{% if field.help_text %}<span class="description">{{ field.help_text }}</span>{% endif %}#}
                                 {% endfor %}
                             </tr>
                     {% endif %}

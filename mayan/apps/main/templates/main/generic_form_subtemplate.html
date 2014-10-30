@@ -59,7 +59,6 @@
                                 <th>
                                     {{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}
                                 </th>
-                            {#{% if field.help_text %}<span class="description">{{ field.help_text }}</span>{% endif %}#}
                             {% endfor %}
                         </tr>
                 {% endif %}
@@ -91,12 +90,6 @@
                     <img src="{% static 'web_theme_media/images/icons/cross.png' %}"  alt="{% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}"/> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
                   </a>
               {% endif %}
-
-            {% comment %}
-            <a href="#header" class="button">
-                <img src="{% static 'web_theme_media/images/icons/cross.png' %}" alt="{% trans 'Cancel' %}"/> {% trans 'Cancel' %}
-            </a>
-            {% endcomment %}
         </div>
         {% endif %}
     </form>
