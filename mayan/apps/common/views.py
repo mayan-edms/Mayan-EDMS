@@ -66,7 +66,7 @@ def get_obj_from_content_type_string(string):
     return ct.get_object_for_this_type(pk=pk)
 
 
-def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title, right_list_title, decode_content_type=False, extra_context=None, grouped=False):
+def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title=None, right_list_title=None, decode_content_type=False, extra_context=None, grouped=False):
     left_list_name = u'left_list'
     right_list_name = u'right_list'
 
@@ -91,13 +91,11 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                         selection_obj = selection
                     try:
                         add_method(selection_obj)
-                        messages.success(request, _(u'%(selection)s added successfully added to %(right_list_title)s.') % {
-                            'selection': label, 'right_list_title': right_list_title})
                     except:
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
+                            messages.error(request, _(u'Unable to remove %(selection)s.') % {
                                 'selection': label, 'right_list_title': right_list_title})
 
         elif u'%s-submit' % right_list_name in request.POST.keys():
@@ -118,13 +116,11 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                         selection = get_obj_from_content_type_string(selection)
                     try:
                         remove_method(selection)
-                        messages.success(request, _(u'%(selection)s added successfully removed from %(right_list_title)s.') % {
-                            'selection': label, 'right_list_title': right_list_title})
                     except:
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
+                            messages.error(request, _(u'Unable to add %(selection)s.') % {
                                 'selection': label, 'right_list_title': right_list_title})
     unselected_list = ChoiceForm(prefix=left_list_name, choices=left_list())
     selected_list = ChoiceForm(prefix=right_list_name, choices=right_list())
@@ -136,7 +132,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 'grid': 6,
                 'context': {
                     'form': unselected_list,
-                    'title': left_list_title,
+                    'title': left_list_title or ' ',
                     'submit_label': _(u'Add'),
                     'submit_icon_famfam': 'add'
                 }
@@ -147,7 +143,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 'grid_clear': True,
                 'context': {
                     'form': selected_list,
-                    'title': right_list_title,
+                    'title': right_list_title or ' ',
                     'submit_label': _(u'Remove'),
                     'submit_icon_famfam': 'delete'
                 }
