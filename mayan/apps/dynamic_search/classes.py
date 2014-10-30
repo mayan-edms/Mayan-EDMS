@@ -7,6 +7,8 @@ import re
 from django.db.models import Q
 from django.db.models.loading import get_model
 
+from common.utils import load_backend
+
 from .settings import LIMIT
 
 logger = logging.getLogger(__name__)
@@ -29,7 +31,7 @@ class SearchModel(object):
         self.search_fields = {}
         self.model = get_model(app_label, model_name)
         self.label = label or self.model._meta.verbose_name
-        self.serializer = serializer
+        self.serializer = load_backend(serializer)
         self.permission = permission
         self.__class__.registry[self.get_full_name()] = self
 
