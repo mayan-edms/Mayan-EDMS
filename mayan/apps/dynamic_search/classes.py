@@ -20,7 +20,9 @@ class SearchModel(object):
     @classmethod
     def get(cls, full_name):
         result = cls.registry[full_name]
-        result.serializer = load_backend(self.serializer_string)
+        if not hasattr(result, 'serializer'):
+            result.serializer = load_backend(result.serializer_string)
+
         return result
 
     def __init__(self, app_label, model_name, serializer_string, label=None, permission=None):
