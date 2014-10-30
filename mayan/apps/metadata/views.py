@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
@@ -90,8 +91,11 @@ def metadata_edit(request, document_id=None, document_id_list=None):
 
                 if errors:
                     for error in errors:
-                        messages.error(request, _(u'Error editing metadata for document %(document)s; %(error)s.') % {
-                            'document': document, 'error': error})
+                        if settings.DEBUG:
+                            raise
+                        else:
+                            messages.error(request, _(u'Error editing metadata for document %(document)s; %(error)s.') % {
+                                'document': document, 'error': error})
                 else:
                     messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
 
