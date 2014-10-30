@@ -43,7 +43,7 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
         metadata.delete()
 
     # Add new document type metadata types to document
-    for metadata_type in instance.document_type.metadata.all():
+    for metadata_type in instance.document_type.metadata_type.filter(required=True):
         instance.metadata.create(metadata_type=metadata_type, value=None)
 
 
