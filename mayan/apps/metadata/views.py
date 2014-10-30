@@ -14,7 +14,7 @@ from documents.models import Document, DocumentType
 from documents.permissions import PERMISSION_DOCUMENT_TYPE_EDIT
 from permissions.models import Permission
 
-from common.utils import get_object_name, generate_choices_w_labels
+from common.utils import encapsulate, generate_choices_w_labels
 from common.views import assign_remove
 
 from .api import save_metadata_list
@@ -70,12 +70,13 @@ def metadata_edit(request, document_id=None, document_id_list=None):
     for key, value in metadata.items():
         initial.append({
             'metadata_type': key,
-            'value': u', '.join(value)
+            'value': u', '.join(value) if value else '',
+            'required': key in document.document_type.metadata_type.filter(required=True),
         })
 
     formset = MetadataFormSet(initial=initial)
     if request.method == 'POST':
-        formset = MetadataFormSet(request.POST)
+        formset = MetadataFormSet(data=request.POST, initial=initial)
         if formset.is_valid():
             for document in documents:
 
@@ -236,11 +237,11 @@ def metadata_remove(request, document_id=None, document_id_list=None):
                         try:
                             document_metadata = DocumentMetadata.objects.get(document=document, metadata_type=metadata_type)
                             document_metadata.delete()
-                            messages.success(request, _(u'Successfully remove metadata type: %(metadata_type)s from document: %(document)s.') % {
+                            messages.success(request, _(u'Successfully remove metadata type "%(metadata_type)s" from document: %(document)s.') % {
                                 'metadata_type': metadata_type, 'document': document})
-                        except:
-                            messages.error(request, _(u'Error removing metadata type: %(metadata_type)s from document: %(document)s.') % {
-                                'metadata_type': metadata_type, 'document': document})
+                        except Exception as exception:
+                            messages.error(request, _(u'Error removing metadata type "%(metadata_type)s" from document: %(document)s; %(exception)s') % {
+                                'metadata_type': metadata_type, 'document': document, 'exception': ', '.join(exception.messages)})
 
             return HttpResponseRedirect(next)
 
@@ -274,7 +275,10 @@ def metadata_view(request, document_id):
     return render_to_response('main/generic_list.html', {
         'title': _(u'Metadata for: %s') % document,
         'object_list': document.metadata.all(),
-        'extra_columns': [{'name': _(u'Value'), 'attribute': 'value'}],
+        'extra_columns': [
+            {'name': _(u'Value'), 'attribute': 'value'},
+            {'name': _(u'Required'), 'attribute': encapsulate(lambda x: x.metadata_type in document.document_type.metadata_type.filter(required=True))}
+        ],
         'hide_link': True,
         'object': document,
     }, context_instance=RequestContext(request))
