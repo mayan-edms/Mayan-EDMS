@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-28 02:38-0400\n"
+"POT-Creation-Date: 2014-10-30 11:33-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/projects/p/"
@@ -22,8 +22,8 @@ msgstr ""
 "Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
 "%100==4 ? 2 : 3);\n"
 
-#: __init__.py:106 __init__.py:107 __init__.py:120 __init__.py:161
-#: models.py:95 permissions.py:7 views.py:854
+#: __init__.py:106 __init__.py:107 __init__.py:120 __init__.py:156
+#: models.py:96 permissions.py:7 views.py:854
 msgid "Documents"
 msgstr "Dokumenti"
 
@@ -35,48 +35,48 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: __init__.py:153 models.py:74 models.py:85 models.py:553 views.py:996
+#: __init__.py:148 models.py:75 models.py:86 models.py:553 views.py:996
 #: views.py:1028 views.py:1068
 msgid "Document type"
 msgstr "Tip dokumenta"
 
-#: __init__.py:154
+#: __init__.py:149
 msgid "MIME type"
 msgstr "MIME tip"
 
-#: __init__.py:155 models.py:554
+#: __init__.py:150 models.py:554
 msgid "Filename"
 msgstr "Ime datoteke"
 
-#: __init__.py:156
+#: __init__.py:151
 msgid "Metadata type"
 msgstr "Tip metapodatkov"
 
-#: __init__.py:157
+#: __init__.py:152
 msgid "Metadata value"
 msgstr "Vrednost metapodatkov"
 
-#: __init__.py:158 models.py:571
+#: __init__.py:153 models.py:571
 msgid "Content"
 msgstr "Vsebina"
 
-#: __init__.py:159 models.py:87
+#: __init__.py:154 models.py:88
 msgid "Description"
 msgstr "Opis"
 
-#: __init__.py:162
+#: __init__.py:157
 msgid "Document tendencies"
 msgstr ""
 
-#: __init__.py:163
+#: __init__.py:158
 msgid "Document usage"
 msgstr ""
 
-#: __init__.py:167
+#: __init__.py:162
 msgid "Returns a list of all the documents."
 msgstr ""
 
-#: __init__.py:168
+#: __init__.py:163
 msgid "Returns a list of all the document types."
 msgstr ""
 
@@ -320,86 +320,86 @@ msgstr ""
 msgid "Add filename to document type"
 msgstr ""
 
-#: models.py:60
+#: models.py:61
 msgid "Name"
 msgstr ""
 
-#: models.py:63
+#: models.py:64
 msgid "Automatically queue newly created documents for OCR."
 msgstr ""
 
-#: models.py:75
+#: models.py:76
 msgid "Documents types"
 msgstr ""
 
-#: models.py:86
+#: models.py:87
 msgid "Uninitialized document"
 msgstr ""
 
-#: models.py:86
+#: models.py:87
 msgid "Label"
 msgstr ""
 
-#: models.py:88
+#: models.py:89
 msgid "Added"
 msgstr ""
 
-#: models.py:89
+#: models.py:90
 msgid "Language"
 msgstr ""
 
-#: models.py:94 models.py:324 models.py:648 views.py:342
+#: models.py:95 models.py:323 models.py:648 views.py:342
 msgid "Document"
 msgstr ""
 
-#: models.py:311
+#: models.py:310
 #, fuzzy, python-format
 msgid "Major %(major)i.%(minor)i.%(micro)i, (new release)"
 msgstr "Glavni %(major)i.%(minor)i, (nova izdaja)"
 
-#: models.py:312
+#: models.py:311
 #, fuzzy, python-format
 msgid "Minor %(major)i.%(minor)i.%(micro)i, (some updates)"
 msgstr "Manjši %(major)i.%(minor)i, (nekatere posodobitve)"
 
-#: models.py:313
+#: models.py:312
 #, python-format
 msgid "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
 msgstr "Mikro %(major)i.%(minor)i.%(micro)i, (popravki)"
 
-#: models.py:325
+#: models.py:324
 msgid "Mayor"
 msgstr ""
 
-#: models.py:326
+#: models.py:325
 msgid "Minor"
 msgstr ""
 
-#: models.py:327
+#: models.py:326
 msgid "Micro"
 msgstr ""
 
-#: models.py:328
+#: models.py:327
 msgid "Timestamp"
 msgstr ""
 
-#: models.py:329 views.py:1124
+#: models.py:328 views.py:1124
 msgid "Comment"
 msgstr "Komentar"
 
-#: models.py:332
+#: models.py:331
 msgid "File"
 msgstr ""
 
-#: models.py:336 views.py:121
+#: models.py:335 views.py:121
 msgid "Checksum"
 msgstr "Nadzorna vsota"
 
-#: models.py:340 models.py:341 models.py:570
+#: models.py:339 models.py:340 models.py:570
 msgid "Document version"
 msgstr ""
 
-#: models.py:424
+#: models.py:423
 msgid ""
 "This document's file format is not known, the page count has therefore "
 "defaulted to 1."

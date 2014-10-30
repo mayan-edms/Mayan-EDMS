@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-28 02:40-0400\n"
+"POT-Creation-Date: 2014-10-30 11:35-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -67,8 +67,8 @@ msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr ""
 
 #: templates/main/base.html:146
-msgid "(DEBUG)"
-msgstr "(DEBUG)"
+msgid "(Debug mode)"
+msgstr ""
 
 #: templates/main/base.html:165
 msgid "User"
@@ -151,11 +151,6 @@ msgstr ""
 msgid "Create"
 msgstr ""
 
-#: templates/main/generic_assign_remove.html:5
-#, python-format
-msgid "Assign %(title)s %(object)s"
-msgstr ""
-
 #: templates/main/generic_confirm.html:6
 #: templates/main/generic_confirm.html:20
 msgid "Confirm"
@@ -188,23 +183,23 @@ msgstr ""
 msgid "required"
 msgstr ""
 
-#: templates/main/generic_form_subtemplate.html:84
-#: templates/main/generic_form_subtemplate.html:86
-#: templates/main/generic_multiform_subtemplate.html:67
-#: templates/main/generic_multiform_subtemplate.html:69
+#: templates/main/generic_form_subtemplate.html:83
+#: templates/main/generic_form_subtemplate.html:85
+#: templates/main/generic_multiform_subtemplate.html:66
+#: templates/main/generic_multiform_subtemplate.html:68
 msgid "Save"
 msgstr ""
 
-#: templates/main/generic_form_subtemplate.html:84
-#: templates/main/generic_form_subtemplate.html:86
+#: templates/main/generic_form_subtemplate.html:83
+#: templates/main/generic_form_subtemplate.html:85
 #: templates/main/generic_list_subtemplate.html:44
-#: templates/main/generic_multiform_subtemplate.html:67
-#: templates/main/generic_multiform_subtemplate.html:69
+#: templates/main/generic_multiform_subtemplate.html:66
+#: templates/main/generic_multiform_subtemplate.html:68
 msgid "Submit"
 msgstr ""
 
-#: templates/main/generic_form_subtemplate.html:91
-#: templates/main/generic_multiform_subtemplate.html:74
+#: templates/main/generic_form_subtemplate.html:90
+#: templates/main/generic_multiform_subtemplate.html:73
 msgid "Cancel"
 msgstr ""
 
@@ -312,6 +307,9 @@ msgstr ""
 #: templates/pagination/pagination.html:28
 msgid "Next"
 msgstr ""
+
+#~ msgid "(DEBUG)"
+#~ msgstr "(DEBUG)"
 
 #~ msgid "home"
 #~ msgstr "home"

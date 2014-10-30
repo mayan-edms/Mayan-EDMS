@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-28 02:37-0400\n"
+"POT-Creation-Date: 2014-10-30 11:32-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -29,7 +29,7 @@ msgstr "انتخاب"
 msgid "Email"
 msgstr "پست الکترونیک"
 
-#: forms.py:131 models.py:25
+#: forms.py:131 models.py:33
 msgid "Password"
 msgstr "رمزعبور"
 
@@ -61,24 +61,44 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: links.py:15 views.py:234
+#: links.py:15 views.py:230
 msgid "License"
 msgstr "لیسانس"
 
-#: models.py:17 models.py:20
+#: models.py:25 models.py:28
 msgid "Anonymous user"
 msgstr "کاربر ناشناس anonymous"
 
-#: models.py:24
+#: models.py:32
 msgid "Account"
 msgstr ""
 
-#: models.py:26
+#: models.py:34
 msgid "Password hash"
 msgstr ""
 
-#: models.py:29
+#: models.py:37
 msgid "Auto admin properties"
+msgstr ""
+
+#: models.py:41
+msgid "File"
+msgstr ""
+
+#: models.py:42
+msgid "Filename"
+msgstr ""
+
+#: models.py:43
+msgid "Date time"
+msgstr ""
+
+#: models.py:46
+msgid "Shared uploaded file"
+msgstr ""
+
+#: models.py:47
+msgid "Shared uploaded files"
 msgstr ""
 
 #: settings.py:14
@@ -100,6 +120,10 @@ msgstr "روش کنترل اعتبار سنجی کاربران، انتخابه�
 msgid "Allow non authenticated users, access to all views"
 msgstr "اجازه دادن به کاربران اعتبار سنجی نشده، جهت بازبینی و یا Viewها."
 
+#: settings.py:66
+msgid "A storage backend that all workers can use to share files."
+msgstr ""
+
 #: utils.py:116
 #, fuzzy
 msgid "Function found"
@@ -113,110 +137,112 @@ msgstr "هیچ عملیاتی action انتخاب نشده است."
 msgid "Must select at least one item."
 msgstr "حداقل یک مورد انتخاب شود."
 
-#: views.py:94
-#, python-format
-msgid "%(selection)s added successfully added to %(right_list_title)s."
-msgstr "%(selection)s با موفقیت به %(right_list_title)s اضافه شد."
-
-#: views.py:100 views.py:127
-#, python-format
-msgid "Unable to add %(selection)s to %(right_list_title)s."
+#: views.py:98
+#, fuzzy, python-format
+msgid "Unable to remove %(selection)s."
 msgstr "قادر نبودن در اضافه کردن %(selection)s  به %(right_list_title)s."
 
-#: views.py:121
-#, python-format
-msgid "%(selection)s added successfully removed from %(right_list_title)s."
-msgstr "%(selection)s  با موفقیت از %(right_list_title)s حذف شد."
+#: views.py:123
+#, fuzzy, python-format
+msgid "Unable to add %(selection)s."
+msgstr "قادر نبودن در اضافه کردن %(selection)s  به %(right_list_title)s."
 
-#: views.py:140
+#: views.py:136
 msgid "Add"
 msgstr "افزودن"
 
-#: views.py:151
+#: views.py:147
 msgid "Remove"
 msgstr "حذف"
 
-#: views.py:174
-msgid "current user details"
+#: views.py:170
+#, fuzzy
+msgid "Current user details"
 msgstr "جزئیات کابر فعلی"
 
-#: views.py:191
+#: views.py:187
 msgid "E-mail conflict, another user has that same email."
 msgstr "این ایمیل با ایمیل کاربر دیگری یکسان است."
 
-#: views.py:194
+#: views.py:190
 msgid "Current user's details updated."
 msgstr "کزئیات کاربر فعلی بروزرسانی شد."
 
-#: views.py:203
+#: views.py:199
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:243
+#: views.py:239
 msgid "Current user password change"
 msgstr "تغییر کلمه عبور کاربر"
 
-#: views.py:258
+#: views.py:254
 msgid "Your password has been successfully changed."
 msgstr "کلمه عبور شما با موفقیت تغییر کرد."
 
-#: views.py:312
+#: views.py:308
 #, python-format
 msgid "Error saving %s details."
 msgstr "خطا در ثبت چزئیات %s."
 
-#: views.py:314
+#: views.py:310
 msgid "Error saving details."
 msgstr "خطا در ثبت چزئیات ."
 
-#: views.py:322
+#: views.py:318
 #, python-format
 msgid "%s details saved successfully."
 msgstr "جزئیات %s با موفقیت ثبت شد."
 
-#: views.py:324
+#: views.py:320
 msgid "Details saved successfully."
 msgstr "جزییات با موفقیت ثبت شد."
 
-#: views.py:336
+#: views.py:332
 #, python-format
 msgid "Error creating new %s."
 msgstr "خطا در زمان ایجاد %s."
 
-#: views.py:338
+#: views.py:334
 msgid "Error creating object."
 msgstr "خطا در زمان ایجاد شی"
 
-#: views.py:345
+#: views.py:341
 #, python-format
 msgid "%s created successfully."
 msgstr "%s با موفقیت ایجاد شد."
 
-#: views.py:347
+#: views.py:343
 msgid "New object created successfully."
 msgstr "شی جدید با موفقیت ساخته شد."
 
-#: views.py:365
+#: views.py:361
 #, python-format
 msgid "Error deleting %s."
 msgstr "خطا در زمان حذف %s."
 
-#: views.py:367
+#: views.py:363
 msgid "Error deleting object."
 msgstr "خطا در حذف شی."
 
-#: views.py:372
+#: views.py:368
 #, python-format
 msgid "%s deleted successfully."
 msgstr "%s با موفقیت حذف شد."
 
-#: views.py:374
+#: views.py:370
 msgid "Object deleted successfully."
 msgstr "شی با موفقیت حذف شد."
 
 #: widgets.py:58
 msgid "None"
 msgstr "هیچکدام."
+
+#~ msgid "%(selection)s added successfully added to %(right_list_title)s."
+#~ msgstr "%(selection)s با موفقیت به %(right_list_title)s اضافه شد."
+
+#~ msgid "%(selection)s added successfully removed from %(right_list_title)s."
+#~ msgstr "%(selection)s  با موفقیت از %(right_list_title)s حذف شد."
 
 #~ msgid "A5"
 #~ msgstr "A5"
