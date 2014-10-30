@@ -71,8 +71,8 @@ register_history_type(HISTORY_DOCUMENT_DELETED)
 
 # Register document type links
 register_links(DocumentType, [document_type_edit, document_type_filename_list, document_type_delete])
+register_links([DocumentType, 'documents:document_type_create', 'documents:document_type_list'], [document_type_list, document_type_create], menu_name='secondary_menu')
 register_links(DocumentTypeFilename, [document_type_filename_edit, document_type_filename_delete])
-register_links(['documents:setup_document_type_metadata', 'documents:document_type_filename_delete', 'documents:document_type_create', 'documents:document_type_filename_create', 'documents:document_type_filename_edit', 'documents:document_type_filename_list', 'documents:document_type_list', 'documents:document_type_edit', 'documents:document_type_delete'], [document_type_list, document_type_create], menu_name='secondary_menu')
 register_links([DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
