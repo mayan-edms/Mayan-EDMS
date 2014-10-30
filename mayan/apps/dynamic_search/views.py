@@ -19,10 +19,11 @@ from .models import RecentSearch
 from .settings import LIMIT, SHOW_OBJECT_TYPE
 
 logger = logging.getLogger(__name__)
-document_search = SearchModel.get('documents.Document')
 
 
 def results(request, extra_context=None):
+    document_search = SearchModel.get('documents.Document')
+
     context = {
         'query_string': request.GET,
         'hide_links': True,
@@ -71,6 +72,8 @@ def results(request, extra_context=None):
 
 
 def search(request, advanced=False):
+    document_search = SearchModel.get('documents.Document')
+
     if advanced:
         form = AdvancedSearchForm(data=request.GET, search_model=document_search)
         return render_to_response(
