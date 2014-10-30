@@ -19,7 +19,6 @@ from .links import (document_index_list, document_index_main_menu_link,
                     rebuild_index_instances, template_node_create,
                     template_node_delete, template_node_edit)
 from .models import Index, IndexTemplateNode, IndexInstanceNode
-from .urls import api_urls
 
 
 @receiver(pre_delete, dispatch_uid='document_index_delete', sender=Document)
@@ -55,6 +54,4 @@ register_setup(index_setup)
 
 register_top_menu('indexes', document_index_main_menu_link)
 
-endpoint = APIEndPoint('indexes')
-endpoint.register_urls(api_urls)
-endpoint.add_endpoint('index-list', _(u'Returns a list of all the indexes.'))
+APIEndPoint('indexes')

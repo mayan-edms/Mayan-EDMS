@@ -20,8 +20,7 @@ from .models import Tag
 from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_DELETE,
                           PERMISSION_TAG_EDIT, PERMISSION_TAG_REMOVE,
                           PERMISSION_TAG_VIEW)
-from .urls import api_urls
-from .widgets import (get_tags_inline_widget_simple, single_tag_widget)
+from .widgets import get_tags_inline_widget_simple, single_tag_widget
 
 class_permissions(Document, [
     PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
@@ -30,9 +29,7 @@ class_permissions(Tag, [
     PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW,
 ])
 
-endpoint = APIEndPoint('tags')
-endpoint.register_urls(api_urls)
-endpoint.add_endpoint('tag-list', _(u'Returns a list of all the tags.'))
+APIEndPoint('tags')
 
 register_model_list_columns(Tag, [
     {

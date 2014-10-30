@@ -22,7 +22,6 @@ from .links import (document_create_multiple, document_create_siblings,
                     setup_source_transformation_list,
                     staging_file_delete, upload_version)
 from .models import Source, SourceTransformation
-from .urls import api_urls
 from .widgets import staging_file_thumbnail
 
 register_links([StagingFile], [staging_file_delete])
@@ -48,6 +47,4 @@ register_setup(setup_sources)
 register_links([Document, 'documents:document_list_recent', 'documents:document_list', 'sources:document_create', 'sources:document_create_multiple', 'sources:upload_interactive', 'sources:staging_file_delete'], [document_create_multiple], menu_name='secondary_menu')
 register_links(Document, [document_create_siblings])
 
-endpoint = APIEndPoint('sources')
-endpoint.register_urls(api_urls)
-endpoint.add_endpoint('stagingfolder-list', _(u'Returns a list of all the staging folders and the files they contain.'))
+APIEndPoint('sources')

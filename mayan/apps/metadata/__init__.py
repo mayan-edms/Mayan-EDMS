@@ -29,7 +29,6 @@ from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_DOCUMENT_EDIT,
                           PERMISSION_METADATA_DOCUMENT_REMOVE,
                           PERMISSION_METADATA_DOCUMENT_VIEW)
-from .urls import api_urls
 
 logger = logging.getLogger(__name__)
 
@@ -69,6 +68,4 @@ register_model_list_columns(Document, [
     },
 ])
 
-endpoint = APIEndPoint('metadata')
-endpoint.register_urls(api_urls)
-endpoint.add_endpoint('metadatatype-list', _(u'Returns a list of all the metadata types.'))
+APIEndPoint('metadata')

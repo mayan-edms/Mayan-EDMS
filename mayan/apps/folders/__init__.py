@@ -21,7 +21,6 @@ from .permissions import (PERMISSION_FOLDER_ADD_DOCUMENT,
                           PERMISSION_FOLDER_DELETE, PERMISSION_FOLDER_EDIT,
                           PERMISSION_FOLDER_REMOVE_DOCUMENT,
                           PERMISSION_FOLDER_VIEW)
-from .urls import api_urls
 
 register_links(Folder, [folder_view, folder_edit, folder_acl_list, folder_delete])
 register_links([Folder, 'folders:folder_list', 'folders:folder_create'], [folder_list, folder_create], menu_name='secondary_menu')
@@ -43,6 +42,4 @@ register_model_list_columns(Folder, [
     {'name': _(u'Documents'), 'attribute': encapsulate(lambda x: x.documents.count())},
 ])
 
-endpoint = APIEndPoint('folders')
-endpoint.register_urls(api_urls)
-endpoint.add_endpoint('folder-list', _(u'Returns a list of all the folders.'))
+APIEndPoint('folders')

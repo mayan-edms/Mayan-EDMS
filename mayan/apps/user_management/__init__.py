@@ -13,7 +13,6 @@ from .links import (group_add, group_delete, group_edit, group_list,
                     user_add, user_delete, user_edit, user_groups, user_list,
                     user_multiple_delete, user_multiple_set_password,
                     user_set_password, user_setup)
-from .urls import api_urls
 
 register_links(User, [user_edit, user_set_password, user_groups, user_delete])
 register_links([User, 'user_management:user_multiple_set_password', 'user_management:user_multiple_delete', 'user_management:user_list', 'user_management:user_add'], [user_list, user_add], menu_name=u'secondary_menu')
@@ -26,7 +25,4 @@ register_links(['user_management:group_list'], [link_spacer, group_multiple_dele
 register_setup(user_setup)
 register_setup(group_setup)
 
-endpoint = APIEndPoint('users')
-endpoint.register_urls(api_urls)
-endpoint.add_endpoint('user-list', _(u'Returns a list of all the users.'))
-endpoint.add_endpoint('group-list', _(u'Returns a list of all the groups.'))
+APIEndPoint('users', app_name='user_management')
