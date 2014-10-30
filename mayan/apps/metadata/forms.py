@@ -27,16 +27,13 @@ class MetadataForm(forms.Form):
         # Set form fields initial values
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
-            # FIXME:
-            # required = self.document_type.documenttypemetadatatype_set.get(metadata_type=self.metadata_type).required
-            required = False
+            required = kwargs['initial'].pop('required', None)
             required_string = u''
 
             if required:
                 self.fields['value'].required = True
-                required_string = ' (%s)' % _(u'Required')
+                required_string = u' (%s)' % _('Required')
             else:
-                # TODO: FIXME: not working correctly
                 self.fields['value'].required = False
 
             self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
