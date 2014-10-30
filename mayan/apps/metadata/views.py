@@ -143,7 +143,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
 
     if request.method == 'POST':
-        form = AddMetadataForm(request.POST)
+        form = AddMetadataForm(data=request.POST, document_type=document.document_type)
         if form.is_valid():
             metadata_type = form.cleaned_data['metadata_type']
             for document in documents:
@@ -172,7 +172,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
                 )
 
     else:
-        form = AddMetadataForm()
+        form = AddMetadataForm(document_type=document.document_type)
 
     context = {
         'form': form,
