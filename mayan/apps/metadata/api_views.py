@@ -176,7 +176,7 @@ class APIDocumentTypeMetadataTypeView(views.APIView):
         """
         Add a metadata type to a document type.
         """
-
+        # TODO: Change to be a POST method of APIDocumentTypeMetadataTypeListView
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['document_type_pk'])
         try:
             Permission.objects.check_permissions(self.request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
@@ -184,5 +184,6 @@ class APIDocumentTypeMetadataTypeView(views.APIView):
             AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TYPE_EDIT, self.request.user, document_type)
 
         metadata_type = get_object_or_404(MetadataType, pk=self.kwargs['metadata_type_pk'])
+        # TODO: set required flag
         document_type.metadata.add(metadata_type)
         return Response(status=status.HTTP_201_CREATED)
