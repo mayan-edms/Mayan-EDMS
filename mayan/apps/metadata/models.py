@@ -63,16 +63,12 @@ class DocumentMetadata(models.Model):
         verbose_name_plural = _(u'Document metadata')
 
 
-class DocumentTypeDefaults(models.Model):
-    """
-    Default preselected metadata types per document type
-    """
+class DocumentTypeMetadataType(models.Model):
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'))
-    default_metadata = models.ManyToManyField(MetadataType, blank=True, verbose_name=_(u'Metadata'))
-
-    def __unicode__(self):
-        return unicode(self.document_type)
+    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'Metadata type'))
+    required = models.BooleanField(default=False, verbose_name=_('Required'))
 
     class Meta:
-        verbose_name = _(u'Document type defaults')
-        verbose_name_plural = _(u'Document types defaults')
+        unique_together = ('document_type', 'metadata_type')
+        verbose_name = _(u'Document type metadata type options')
+        verbose_name_plural = _(u'Document type metadata types options')
