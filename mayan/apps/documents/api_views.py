@@ -265,11 +265,11 @@ class APIDocumentTypeListView(generics.ListCreateAPIView):
 
     def get(self, *args, **kwargs):
         """Returns a list of all the document types."""
-        return super(APIDocumentTypeListView, self).delete(*args, **kwargs)
+        return super(APIDocumentTypeListView, self).get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
         """Create a new document type."""
-        return super(APIDocumentTypeListView, self).get(*args, **kwargs)
+        return super(APIDocumentTypeListView, self).post(*args, **kwargs)
 
 
 class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
