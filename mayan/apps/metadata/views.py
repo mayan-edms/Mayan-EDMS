@@ -389,7 +389,7 @@ def setup_document_type_metadata(request, document_type_id):
         extra_context={
             'document_type': document_type,
             'navigation_object_name': 'document_type',
-            'title': _(u'Optional metadata types for document type: %s') % document_type,
+            'main_title': _(u'Optional metadata types for document type: %s') % document_type,
         },
         decode_content_type=True,
     )
@@ -409,7 +409,7 @@ def setup_document_type_metadata_required(request, document_type_id):
         extra_context={
             'document_type': document_type,
             'navigation_object_name': 'document_type',
-            'title': _('Required metadata types for document type: %s') % document_type,
+            'main_title': _('Required metadata types for document type: %s') % document_type,
         },
         decode_content_type=True,
     )
