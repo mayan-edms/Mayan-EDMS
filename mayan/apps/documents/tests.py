@@ -19,26 +19,20 @@ from .models import Document, DocumentType
 TEST_ADMIN_PASSWORD = 'test_admin_password'
 TEST_ADMIN_USERNAME = 'test_admin'
 TEST_ADMIN_EMAIL = 'admin@admin.com'
+TEST_SMALL_DOCUMENT_FILENAME = 'title_page.png'
 TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
 TEST_SIGNED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg')
-TEST_SMALL_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'title_page.png')
+TEST_SMALL_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_SMALL_DOCUMENT_FILENAME)
 TEST_DOCUMENT_DESCRIPTION = 'test description'
 TEST_DOCUMENT_TYPE = 'test_document_type'
 
 
 class DocumentTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType(name='test doc type')
-        self.document_type.save()
-
-        self.document = Document(
-            document_type=self.document_type,
-            description='description',
-        )
-        self.document.save()
+        self.document_type = DocumentType.objects.create(name='test doc type')
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            new_version = self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
+            self.document = Document.objects.new_document(file_object=File(file_object), label='mayan_11_1.pdf', document_type=self.document_type)[0].document
 
     def test_document_creation(self):
         self.failUnlessEqual(self.document_type.name, 'test doc type')
@@ -48,31 +42,31 @@ class DocumentTestCase(TestCase):
 
         self.failUnlessEqual(self.document.file_mimetype, 'application/pdf')
         self.failUnlessEqual(self.document.file_mime_encoding, 'binary')
-        self.failUnlessEqual(self.document.file_filename, 'mayan_11_1.pdf')
+        self.failUnlessEqual(self.document.label, 'mayan_11_1.pdf')
         self.failUnlessEqual(self.document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
         self.failUnlessEqual(self.document.page_count, 47)
 
-        self.failUnlessEqual(self.document.latest_version.get_formated_version(), '1.0')
+        self.failUnlessEqual(self.document.latest_version.get_formated_version(), '1.0.0')
         # self.failUnlessEqual(self.document.has_detached_signature(), False)
 
-        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             new_version_data = {
                 'comment': 'test comment 1',
                 'version_update': VERSION_UPDATE_MAJOR,
             }
 
-            new_version = self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
+            new_version = self.document.new_version(file_object=File(file_object), **new_version_data)
 
-        self.failUnlessEqual(self.document.latest_version.get_formated_version(), '2.0')
+        self.failUnlessEqual(self.document.latest_version.get_formated_version(), '2.0.0')
 
         new_version_data = {
             'comment': 'test comment 2',
             'version_update': VERSION_UPDATE_MAJOR,
         }
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             new_version = self.document.new_version(file_object=File(file_object), **new_version_data)
 
-        self.failUnlessEqual(self.document.latest_version.get_formated_version(), '3.0')
+        self.failUnlessEqual(self.document.latest_version.get_formated_version(), '3.0.0')
 
     def tearDown(self):
         self.document.delete()
@@ -106,27 +100,27 @@ class DocumentSearchTestCase(TestCase):
 
         from . import document_search
 
-        model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.simple_search('Mayan')
-        self.assertEqual(result_count, 1)
-        self.assertEqual(flat_list, [self.document])
+        model_list, result_set, elapsed_time = document_search.simple_search('Mayan')
+        self.assertEqual(len(result_set), 1)
+        self.assertEqual(model_list, [self.document])
 
     def test_advanced_search_after_related_name_change(self):
         from . import document_search
         # Test versions__filename
-        model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.advanced_search({'versions__filename': self.document.filename})
-        self.assertEqual(result_count, 1)
-        self.assertEqual(flat_list, [self.document])
+        model_list, result_set, elapsed_time = document_search.advanced_search({'label': self.document.label})
+        self.assertEqual(len(result_set), 1)
+        self.assertEqual(model_list, [self.document])
 
         # Test versions__mimetype
-        model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.advanced_search({'versions__mimetype': self.document.file_mimetype})
-        self.assertEqual(result_count, 1)
-        self.assertEqual(flat_list, [self.document])
+        model_list, result_set, elapsed_time = document_search.advanced_search({'versions__mimetype': self.document.file_mimetype})
+        self.assertEqual(len(result_set), 1)
+        self.assertEqual(model_list, [self.document])
 
         # Test versions__pages__content
         # Search by the first 20 characters of the content of the first page of the uploaded document
-        model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.advanced_search({'versions__pages__content': self.document.latest_version.pages.all()[0].content[0:20]})
-        self.assertEqual(result_count, 1)
-        self.assertEqual(flat_list, [self.document])
+        model_list, result_set, elapsed_time = document_search.advanced_search({'versions__pages__content': self.document.latest_version.pages.all()[0].content[0:20]})
+        self.assertEqual(len(result_set), 1)
+        self.assertEqual(model_list, [self.document])
 
     def tearDown(self):
         self.document.delete()
@@ -140,6 +134,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
     """
 
     def setUp(self):
+        self.document_type = DocumentType.objects.create(name='test doc type')
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
         self.client = Client()
 
@@ -158,7 +153,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
 
         # Upload the test document
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor})
+            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'document_type_id': self.document_type.pk})
         self.assertEqual(Document.objects.count(), 1)
 
         self.document = Document.objects.all().first()
@@ -190,7 +185,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
 
         # Upload the test document
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'description': TEST_DOCUMENT_DESCRIPTION})
+            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'label': 'test document', 'description': TEST_DOCUMENT_DESCRIPTION, 'document_type_id': self.document_type.pk})
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.all().first()
@@ -217,6 +212,7 @@ class DocumentAPICreateDocumentTestCase(TestCase):
 
     def setUp(self):
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
+        self.document_type = DocumentType.objects.create(name='test doc type')
 
     def test_uploading_a_document_using_token_auth(self):
         # Get the an user token
@@ -235,7 +231,8 @@ class DocumentAPICreateDocumentTestCase(TestCase):
         document_client = APIClient()
 
         # Create a blank document with no token in the header
-        response = document_client.post(reverse('document-list'), {'description': 'test document'})
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
+            response = document_client.post(reverse('newdocument-view'), {'document_type': self.document_type, 'label': 'test document', 'file': file_descriptor})
 
         # Make sure toke authentication is working, should fail
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
@@ -243,7 +240,8 @@ class DocumentAPICreateDocumentTestCase(TestCase):
         document_client.credentials(HTTP_AUTHORIZATION='Token ' + token)
 
         # Create a blank document
-        document_response = document_client.post(reverse('document-list'), {'description': 'test document'})
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
+            document_response = document_client.post(reverse('newdocument-view'), {'document_type': self.document_type, 'label': 'test document', 'file': file_descriptor})
         self.assertEqual(document_response.status_code, status.HTTP_201_CREATED)
 
         # The document was created in the DB?
@@ -289,6 +287,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         from sources.models import WebFormSource
         from sources.literals import SOURCE_CHOICE_WEB_FORM
 
+        self.document_type = DocumentType.objects.create(name='test doc type')
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
         self.client = Client()
         # Login the admin user
@@ -300,8 +299,8 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
-        with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor})
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
+            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'document_type_id': self.document_type.pk})
         self.assertEqual(Document.objects.count(), 1)
         self.document = Document.objects.first()
 
@@ -313,12 +312,12 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         # test document simple view
         response = self.client.get(reverse('documents:document_view_simple', args=[self.document.pk]))
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('Details for: mayan_11_1.pdf' in response.content)
+        self.assertTrue('Details for' in response.content)
 
         # test document advanced view
         response = self.client.get(reverse('documents:document_view_advanced', args=[self.document.pk]))
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('ocument properties for: mayan_11_1.pdf' in response.content)
+        self.assertTrue('ocument properties for' in response.content)
 
     def test_document_type_views(self):
         # Check that there are no document types
@@ -373,26 +372,28 @@ class Issue46TestCase(TestCase):
 
         self.document_count = 30
 
+        self.document_type = DocumentType.objects.create(name='test doc type')
+
         # Upload 30 instances of the same test document
         for i in range(self.document_count):
-            document = Document(
-            )
-            document.save()
-
             with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-                document.new_version(file=File(file_object))
+                Document.objects.new_document(
+                    file_object=File(file_object),
+                    label='test document',
+                    document_type=self.document_type
+                )
 
     def test_advanced_search_past_first_page(self):
         from . import document_search
 
         # Make sure all documents are returned by the search
-        model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.advanced_search({'versions__filename': 'png'})
-        self.assertEqual(result_count, self.document_count)
+        model_list, result_set, elapsed_time = document_search.advanced_search({'label': 'test document'})
+        self.assertEqual(len(result_set), self.document_count)
 
         # Funcitonal test for the first page of advanced results
-        response = self.client.get(reverse('search:results'), {'versions__filename': 'png'})
+        response = self.client.get(reverse('search:results'), {'label': 'png'})
         self.assertTrue('results (1 - 20 out of 30) (Page 1 of 2)' in response.content)
 
         # Functional test for the second page of advanced results
-        response = self.client.get(reverse('search:results'), {'versions__filename': 'png', 'page': 2})
+        response = self.client.get(reverse('search:results'), {'label': 'png', 'page': 2})
         self.assertTrue('results (21 - 30 out of 30) (Page 2 of 2)' in response.content)
