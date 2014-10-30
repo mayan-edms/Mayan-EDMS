@@ -59,9 +59,7 @@ from .permissions import (PERMISSION_DOCUMENT_DELETE,
                           PERMISSION_DOCUMENT_VERSION_REVERT,
                           PERMISSION_DOCUMENT_VIEW)
 from .settings import THUMBNAIL_SIZE
-from .serializers import DocumentSerializer
 from .statistics import DocumentStatistics, DocumentUsageStatistics
-from .urls import api_urls
 from .widgets import document_thumbnail
 
 # History setup
@@ -141,7 +139,7 @@ class_permissions(Document, [PERMISSION_DOCUMENT_DELETE,
                              PERMISSION_DOCUMENT_VIEW,
                              PERMISSION_HISTORY_VIEW])
 
-document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer=DocumentSerializer)
+document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer='documents.serializers.DocumentSerializer')
 
 # TODO: move these to their respective apps
 # Moving these to other apps cause an ImportError; circular import?
@@ -157,7 +155,4 @@ namespace = StatisticNamespace(name='documents', label=_(u'Documents'))
 namespace.add_statistic(DocumentStatistics(name='document_stats', label=_(u'Document tendencies')))
 namespace.add_statistic(DocumentUsageStatistics(name='document_usage', label=_(u'Document usage')))
 
-endpoint = APIEndPoint('documents')
-endpoint.register_urls(api_urls)
-endpoint.add_endpoint('document-list', _(u'Returns a list of all the documents.'))
-endpoint.add_endpoint('documenttype-list', _(u'Returns a list of all the document types.'))
+APIEndPoint('documents')
