@@ -21,6 +21,12 @@
 {% endblock %}
 
 {% block content %}
+    {% if title %}
+        <div class="content">
+            <h2 class="title">{{ title }}</h2>
+        </div>
+    {% endif %}
+
     {% if form %}
         <div class="generic_subform">
             {% include "main/generic_form_subtemplate.html" %}
