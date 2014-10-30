@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 
+from django.contrib import messages
 from django.contrib.formtools.wizard.views import SessionWizardView
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
@@ -10,6 +11,8 @@ from common.views import MayanPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
 from documents.permissions import PERMISSION_DOCUMENT_CREATE
 from metadata.forms import MetadataFormSet
+
+from .models import InteractiveSource
 
 
 class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
@@ -25,6 +28,12 @@ class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
             return wizard.get_cleaned_data_for_step('0')['document_type'].metadata_type.all().count()
         except TypeError:
             return False
+
+    def dispatch(self, request, *args, **kwargs):
+        if InteractiveSource.objects.filter(enabled=True).count() == 0:
+            messages.error(request, _(u'No interactive document sources have been defined or none have been enabled, create one before proceeding.'))
+            return HttpResponseRedirect(reverse('sources:setup_source_list'))
+        return super(DocumentCreateWizard, self).dispatch(request, *args, **kwargs)
 
     def __init__(self, *args, **kwargs):
         super(DocumentCreateWizard, self).__init__(*args, **kwargs)

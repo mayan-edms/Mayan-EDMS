@@ -102,6 +102,10 @@ class UploadBaseView(MultiFormView):
         else:
             self.source = InteractiveSource.objects.filter(enabled=True).select_subclasses().first()
 
+        if InteractiveSource.objects.filter(enabled=True).count() == 0:
+            messages.error(request, _(u'No interactive document sources have been defined or none have been enabled, create one before proceeding.'))
+            return HttpResponseRedirect(reverse('sources:setup_source_list'))
+
         return super(UploadBaseView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -109,18 +113,6 @@ class UploadBaseView(MultiFormView):
         subtemplates_list = []
 
         context['source'] = self.source
-
-        if InteractiveSource.objects.filter(enabled=True).count() == 0:
-            subtemplates_list.append(
-                {
-                    'name': 'main/generic_subtemplate.html',
-                    'context': {
-                        'title': _(u'Upload sources'),
-                        'paragraphs': [
-                            _(u'No interactive document sources have been defined or none have been enabled.'),
-                        ],
-                    }
-                })
 
         if isinstance(self.source, StagingFolderSource):
             try:
@@ -443,7 +435,7 @@ def setup_source_delete(request, source_id):
             messages.error(request, _(u'Error deleting source "%(source)s": %(error)s') % {
                 'source': source, 'error': exception
             })
-        return HttpResponseRedirect(reverse(redirect_view))
+        return HttpResponseRedirect(redirect_view)
 
     context = {
         'title': _(u'Are you sure you wish to delete the source: %s?') % source,
