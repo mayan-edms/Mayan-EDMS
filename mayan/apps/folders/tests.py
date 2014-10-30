@@ -53,7 +53,7 @@ class FolderTestCase(TestCase):
         self.assertEqual(folder.documents.count(), 1)
         self.assertEqual(list(folder.documents.all()), [self.document])
 
-        folder.remove_document(self.document)
+        folder.documents.remove(self.document)
 
         self.assertEqual(folder.documents.count(), 0)
         self.assertEqual(list(folder.documents.all()), [])
