@@ -145,7 +145,7 @@ document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOC
 # Moving these to other apps cause an ImportError; circular import?
 document_search.add_model_field('document_type__name', label=_(u'Document type'))
 document_search.add_model_field('versions__mimetype', label=_(u'MIME type'))
-document_search.add_model_field('versions__filename', label=_(u'Filename'))
+document_search.add_model_field('label', label=_(u'Label'))
 document_search.add_model_field('metadata__metadata_type__name', label=_(u'Metadata type'))
 document_search.add_model_field('metadata__value', label=_(u'Metadata value'))
 document_search.add_model_field('versions__pages__content', label=_(u'Content'))
