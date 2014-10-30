@@ -53,10 +53,16 @@ class DocumentMetadata(models.Model):
         return unicode(self.metadata_type)
 
     def save(self, *args, **kwargs):
-        if self.metadata_type not in self.document.document_type.metadata.all():
+        if self.metadata_type not in self.document.document_type.metadata_type.all():
             raise ValidationError(_('Metadata type is not valid for this document type.'))
 
         return super(DocumentMetadata, self).save(*args, **kwargs)
+
+    def delete(self, *args, **kwargs):
+        if self.metadata_type in self.document.document_type.metadata_type.filter(required=True):
+            raise ValidationError(_('Metadata type required if for this document type.'))
+
+        return super(DocumentMetadata, self).delete(*args, **kwargs)
 
     class Meta:
         verbose_name = _(u'Document metadata')
