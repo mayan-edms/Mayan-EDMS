@@ -67,10 +67,10 @@ def find_lowest_available_suffix(index_instance, document):
     index_instance_documents = DocumentRenameCount.objects.filter(index_instance_node=index_instance)
     files_list = []
     for index_instance_document in index_instance_documents:
-        files_list.append(assemble_suffixed_filename(index_instance_document.document.file_filename, index_instance_document.suffix))
+        files_list.append(assemble_suffixed_filename(index_instance_document.document.label, index_instance_document.suffix))
 
     for suffix in xrange(MAX_SUFFIX_COUNT):
-        if assemble_suffixed_filename(document.file_filename, suffix) not in files_list:
+        if assemble_suffixed_filename(document.label, suffix) not in files_list:
             return suffix
 
     raise MaxSuffixCountReached(ugettext(u'Maximum suffix (%s) count reached.') % MAX_SUFFIX_COUNT)
