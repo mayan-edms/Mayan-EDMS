@@ -19,7 +19,7 @@ class DocumentVersionSignature(models.Model):
     Model that describes a document version signature properties
     """
     document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'Document version'), editable=False)
-    signature_file = models.FileField(blank=True, null=True, upload_to=lambda: UUID_FUNCTION(), storage=storage_backend, verbose_name=_(u'Signature file'), editable=False)
+    signature_file = models.FileField(blank=True, null=True, upload_to=lambda instance, filename: UUID_FUNCTION(), storage=storage_backend, verbose_name=_(u'Signature file'), editable=False)
     has_embedded_signature = models.BooleanField(default=False, verbose_name=_(u'Has embedded signature'), editable=False)
 
     objects = DocumentVersionSignatureManager()

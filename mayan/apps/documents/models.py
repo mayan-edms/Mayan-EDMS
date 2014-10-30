@@ -313,7 +313,7 @@ class DocumentVersion(models.Model):
     comment = models.TextField(blank=True, verbose_name=_(u'Comment'))
 
     # File related fields
-    file = models.FileField(upload_to=lambda: UUID_FUNCTION(), storage=storage_backend, verbose_name=_(u'File'))
+    file = models.FileField(upload_to=lambda instance, filename: UUID_FUNCTION(), storage=storage_backend, verbose_name=_(u'File'))
     mimetype = models.CharField(max_length=255, null=True, blank=True, editable=False)
     encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
 
