@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:32-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: forms.py:97
@@ -101,11 +100,9 @@ msgstr ""
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"站点范围的临时目录用于存储缩略图，预览和临时文件。如果没有设置，将缺省使用"
+"temporary files.  If none is specified, one will be created using "
 "tempfile.mkdtemp()"
+msgstr "站点范围的临时目录用于存储缩略图，预览和临时文件。如果没有设置，将缺省使用tempfile.mkdtemp()"
 
 #: settings.py:48
 msgid ""
@@ -122,9 +119,8 @@ msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
 #: utils.py:116
-#, fuzzy
 msgid "Function found"
-msgstr "功能已存在"
+msgstr ""
 
 #: views.py:42
 msgid "No action selected."
@@ -135,14 +131,14 @@ msgid "Must select at least one item."
 msgstr "至少需要选择一项"
 
 #: views.py:98
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to remove %(selection)s."
-msgstr "不能添加%(selection)s到%(right_list_title)s."
+msgstr ""
 
 #: views.py:123
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to add %(selection)s."
-msgstr "不能添加%(selection)s到%(right_list_title)s."
+msgstr ""
 
 #: views.py:136
 msgid "Add"
@@ -153,9 +149,8 @@ msgid "Remove"
 msgstr "移除"
 
 #: views.py:170
-#, fuzzy
 msgid "Current user details"
-msgstr "当前用户详细信息"
+msgstr ""
 
 #: views.py:187
 msgid "E-mail conflict, another user has that same email."
@@ -236,10 +231,10 @@ msgid "None"
 msgstr "无"
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
-#~ msgstr "%(selection)s成功添加到 %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully added to %(right_list_title)s."
 
 #~ msgid "%(selection)s added successfully removed from %(right_list_title)s."
-#~ msgstr "%(selection)s 成功从%(right_list_title)s.移除"
+#~ msgstr "%(selection)s added successfully removed from %(right_list_title)s."
 
 #~ msgid "A5"
 #~ msgstr "A5"

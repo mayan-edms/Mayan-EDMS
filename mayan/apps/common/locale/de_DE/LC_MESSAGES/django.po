@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -14,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:32-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:97
@@ -40,9 +39,7 @@ msgstr "Passwort"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass "
-"das Passwortfeld Groß- und Kleinschreibung unterscheidet."
+msgstr "Bitte geben Sie Ihre E-Mailadresse und ein Passwort an. Beachten Sie, dass das Passwortfeld Groß- und Kleinschreibung unterscheidet."
 
 #: forms.py:136
 msgid "This account is inactive."
@@ -107,20 +104,15 @@ msgstr ""
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschau "
-"und temporären Dateien. Falls keines angegeben wurde, wird es mit tempfile."
-"mkdtemp() erzeugt."
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschau und temporären Dateien. Falls keines angegeben wurde, wird es mit tempfile.mkdtemp() erzeugt."
 
 #: settings.py:48
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Authentifizierungs-Mechanismus für die Benutzer. Optionen: Benutzername, E-"
-"Mailadresse"
+msgstr "Authentifizierungs-Mechanismus für die Benutzer. Optionen: Benutzername, E-Mailadresse"
 
 #: settings.py:57
 msgid "Allow non authenticated users, access to all views"
@@ -131,9 +123,8 @@ msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
 #: utils.py:116
-#, fuzzy
 msgid "Function found"
-msgstr "Funktion gefunden"
+msgstr ""
 
 #: views.py:42
 msgid "No action selected."
@@ -144,16 +135,14 @@ msgid "Must select at least one item."
 msgstr "Es muss mindestens ein Element ausgewählt werden."
 
 #: views.py:98
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to remove %(selection)s."
 msgstr ""
-"%(selection)s konnte nicht zu %(right_list_title)s hinzuzugefügt werden."
 
 #: views.py:123
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to add %(selection)s."
 msgstr ""
-"%(selection)s konnte nicht zu %(right_list_title)s hinzuzugefügt werden."
 
 #: views.py:136
 msgid "Add"
@@ -164,9 +153,8 @@ msgid "Remove"
 msgstr "Entfernen"
 
 #: views.py:170
-#, fuzzy
 msgid "Current user details"
-msgstr "Details des aktuellen Nutzers"
+msgstr ""
 
 #: views.py:187
 msgid "E-mail conflict, another user has that same email."
@@ -247,10 +235,10 @@ msgid "None"
 msgstr "Kein(e)"
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
-#~ msgstr "%(selection)s erfolgreich hinzugefügt zu %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully added to %(right_list_title)s."
 
 #~ msgid "%(selection)s added successfully removed from %(right_list_title)s."
-#~ msgstr "%(selection)s erfolgreich entfernt von %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully removed from %(right_list_title)s."
 
 #~ msgid "A5"
 #~ msgstr "A5"
@@ -277,10 +265,10 @@ msgstr "Kein(e)"
 #~ msgstr "Ledger"
 
 #~ msgid "Portrait"
-#~ msgstr "Hochformat"
+#~ msgstr "Portrait"
 
 #~ msgid "Landscape"
-#~ msgstr "Querformat"
+#~ msgstr "Landscape"
 
 #~ msgid "license"
 #~ msgstr "license"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:34-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"projects/p/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/projects/p/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: links.py:8
 msgid "Maintenance"
@@ -291,10 +289,7 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr ""
-"Open source, Django bazirani electronic document manager sa prilagodljivim "
-"metadata podacima, indeksiranjem, tagovanjem, integracijom datoteka, "
-"podrškom za digitalni potpis i OCR mogućnostima"
+msgstr "Open source, Django bazirani electronic document manager sa prilagodljivim metadata podacima, indeksiranjem, tagovanjem, integracijom datoteka, podrškom za digitalni potpis i OCR mogućnostima"
 
 #: templates/main/project_description.html:23
 msgid "Released under the Apache 2.0 License"
@@ -314,7 +309,16 @@ msgstr ""
 #~ msgstr "(DEBUG)"
 
 #~ msgid "Actions for %(object_name)s: %(navigation_object)s"
-#~ msgstr "Akcije za %(object_name)s: %(navigation_object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Details for %(object_name)s: %(object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Edit %(object_name)s: %(object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
 
 #~ msgid "home"
 #~ msgstr "home"
@@ -329,11 +333,11 @@ msgstr ""
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:36-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"PO-Revision-Date: 2014-10-30 15:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:41
@@ -176,8 +175,7 @@ msgstr ""
 
 #: models.py:102
 msgid "Width value to be passed to the converter backend."
-msgstr ""
-"valore della larghezza da passare per le operazioni di conversione in backend"
+msgstr "valore della larghezza da passare per le operazioni di conversione in backend"
 
 #: models.py:103
 msgid "Preview height"
@@ -185,8 +183,7 @@ msgstr ""
 
 #: models.py:103
 msgid "Height value to be passed to the converter backend."
-msgstr ""
-"valore dell'altezza da passare per le operazioni di conversione in backend"
+msgstr "valore dell'altezza da passare per le operazioni di conversione in backend"
 
 #: models.py:104 models.py:146 models.py:168
 msgid "Uncompress"
@@ -210,9 +207,9 @@ msgid "Unable get list of staging files: %s"
 msgstr "Impossibile ottenere lista dei file di gestione temporanea: %s"
 
 #: models.py:134
-#, fuzzy, python-format
+#, python-format
 msgid "Error deleting staging file; %s"
-msgstr "Unable to delete staging file: %s"
+msgstr ""
 
 #: models.py:138
 msgid "Staging folders"
@@ -231,34 +228,28 @@ msgid "Interval"
 msgstr ""
 
 #: models.py:166
-#, fuzzy
 msgid "Interval in seconds between checks for new documents."
 msgstr ""
-"Invervallo di pochi secondi in cui viene controllato il percorso cartella di "
-"controllo per i nuovi documenti."
 
 #: models.py:167
-#, fuzzy
 msgid "Document type"
-msgstr "Tipo di documento corrente"
+msgstr ""
 
 #: models.py:167
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
 #: models.py:168
-#, fuzzy
 msgid "Whether to expand or not, compressed archives."
-msgstr "Se espandere o meno degli archivi compressi."
+msgstr ""
 
 #: models.py:207
 msgid "Interval source"
 msgstr ""
 
 #: models.py:208
-#, fuzzy
 msgid "Interval sources"
-msgstr "Sorgente del documento"
+msgstr ""
 
 #: models.py:212
 msgid "Host"
@@ -292,14 +283,12 @@ msgid "attachment-%i"
 msgstr ""
 
 #: models.py:244
-#, fuzzy
 msgid "Email source"
-msgstr "Sorgenti caricamento"
+msgstr ""
 
 #: models.py:245
-#, fuzzy
 msgid "Email sources"
-msgstr "Sorgenti caricamento"
+msgstr ""
 
 #: models.py:251
 msgid "Timeout"
@@ -377,9 +366,7 @@ msgstr "Sorgenti caricamento"
 #: views.py:120
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
-msgstr ""
-"Nessuna fonte interattiva dei documenti sono state definite o non ne sono "
-"state attivate."
+msgstr "Nessuna fonte interattiva dei documenti sono state definite o non ne sono state attivate."
 
 #: views.py:142
 msgid "Files in staging path"
@@ -407,7 +394,8 @@ msgid "Current metadata"
 msgstr "Metadati correnti"
 
 #: views.py:317
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:343
@@ -433,9 +421,8 @@ msgid "Yes"
 msgstr ""
 
 #: views.py:392
-#, fuzzy
 msgid "No"
-msgstr "Nessuno"
+msgstr ""
 
 #: views.py:414
 msgid "Source edited successfully"
@@ -506,16 +493,13 @@ msgstr "Sorgente per la trasformazione cancellata con successo."
 #: views.py:555
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
-msgstr ""
-"Erroro nella cancellazione della sorgente per la trasformazione; %(error)s"
+msgstr "Erroro nella cancellazione della sorgente per la trasformazione; %(error)s"
 
 #: views.py:568
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"Sei sicuro di voler cancellare la sorgente di trasformazione "
-"\"%(transformation)s\""
+msgstr "Sei sicuro di voler cancellare la sorgente di trasformazione \"%(transformation)s\""
 
 #: views.py:589
 msgid "Source transformation created successfully"
@@ -547,15 +531,29 @@ msgstr ""
 msgid "Next step"
 msgstr ""
 
+#~ msgid "Server staging folder"
+#~ msgstr "server staging folder"
+
+#~ msgid "Server watch folder"
+#~ msgstr "server watch folder"
+
 #~ msgid "Click %(setup_link)s to add or enable some document sources."
-#~ msgstr ""
-#~ "Click %(setup_link)s per aggiungere o abilitare una sorgente documenti."
+#~ msgstr "Click %(setup_link)s to add or enable some document sources."
 
 #~ msgid "Unhandled exception: %s"
-#~ msgstr "Eccezione non gestita: %s"
+#~ msgstr "Unhandled exception: %s"
+
+#~ msgid "Clone metadata"
+#~ msgstr "Current metadata"
+
+#~ msgid "Whitelist"
+#~ msgstr "whitelist"
+
+#~ msgid "Blacklist"
+#~ msgstr "blacklist"
 
 #~ msgid "Whitelist Blacklist validation error."
-#~ msgstr "Errori di validazione nelle Whitelist e Blacklist."
+#~ msgstr "Whitelist Blacklist validation error."
 
 #~ msgid "edit"
 #~ msgstr "edit"

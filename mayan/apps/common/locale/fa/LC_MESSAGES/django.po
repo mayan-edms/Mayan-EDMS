@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:32-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: forms.py:97
@@ -37,9 +36,7 @@ msgstr "رمزعبور"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور case-"
-"sensitive است."
+msgstr "لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور case-sensitive است."
 
 #: forms.py:136
 msgid "This account is inactive."
@@ -47,19 +44,19 @@ msgstr "اکانت غیرفعال است."
 
 #: links.py:10
 msgid "Change password"
-msgstr ""
+msgstr "تغییر کلمه عبور"
 
 #: links.py:11
 msgid "User details"
-msgstr ""
+msgstr "جزئیات کاربر"
 
 #: links.py:12
 msgid "Edit details"
-msgstr ""
+msgstr "ویرایش جزئیات"
 
 #: links.py:14
 msgid "About"
-msgstr ""
+msgstr "درباره"
 
 #: links.py:15 views.py:230
 msgid "License"
@@ -71,15 +68,15 @@ msgstr "کاربر ناشناس anonymous"
 
 #: models.py:32
 msgid "Account"
-msgstr ""
+msgstr "حساب"
 
 #: models.py:34
 msgid "Password hash"
-msgstr ""
+msgstr "هش کلمه عبور"
 
 #: models.py:37
 msgid "Auto admin properties"
-msgstr ""
+msgstr "خصوصیات مدبر خودکار"
 
 #: models.py:41
 msgid "File"
@@ -104,11 +101,9 @@ msgstr ""
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"دایرکتوری موقت جهت نگهداری فایلهای موقت، اگر دایرکتوری مشخص نگردد یکی بوسیله "
-"tempfile.mkdtemp() ساخته خواهد شد."
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "دایرکتوری موقت جهت نگهداری فایلهای موقت، اگر دایرکتوری مشخص نگردد یکی بوسیله tempfile.mkdtemp() ساخته خواهد شد."
 
 #: settings.py:48
 msgid ""
@@ -125,9 +120,8 @@ msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
 #: utils.py:116
-#, fuzzy
 msgid "Function found"
-msgstr "فانکشن function پیدا شد"
+msgstr "فانکشن و یا تابع پیدا شد."
 
 #: views.py:42
 msgid "No action selected."
@@ -138,14 +132,14 @@ msgid "Must select at least one item."
 msgstr "حداقل یک مورد انتخاب شود."
 
 #: views.py:98
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to remove %(selection)s."
-msgstr "قادر نبودن در اضافه کردن %(selection)s  به %(right_list_title)s."
+msgstr ""
 
 #: views.py:123
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to add %(selection)s."
-msgstr "قادر نبودن در اضافه کردن %(selection)s  به %(right_list_title)s."
+msgstr ""
 
 #: views.py:136
 msgid "Add"
@@ -156,9 +150,8 @@ msgid "Remove"
 msgstr "حذف"
 
 #: views.py:170
-#, fuzzy
 msgid "Current user details"
-msgstr "جزئیات کابر فعلی"
+msgstr ""
 
 #: views.py:187
 msgid "E-mail conflict, another user has that same email."
@@ -170,7 +163,7 @@ msgstr "کزئیات کاربر فعلی بروزرسانی شد."
 
 #: views.py:199
 msgid "Edit current user details"
-msgstr ""
+msgstr "یرایش جزئیات کاربر کنونی"
 
 #: views.py:239
 msgid "Current user password change"
@@ -239,10 +232,10 @@ msgid "None"
 msgstr "هیچکدام."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
-#~ msgstr "%(selection)s با موفقیت به %(right_list_title)s اضافه شد."
+#~ msgstr "%(selection)s added successfully added to %(right_list_title)s."
 
 #~ msgid "%(selection)s added successfully removed from %(right_list_title)s."
-#~ msgstr "%(selection)s  با موفقیت از %(right_list_title)s حذف شد."
+#~ msgstr "%(selection)s added successfully removed from %(right_list_title)s."
 
 #~ msgid "A5"
 #~ msgstr "A5"
@@ -260,19 +253,19 @@ msgstr "هیچکدام."
 #~ msgstr "B4"
 
 #~ msgid "Letter"
-#~ msgstr "نامه"
+#~ msgstr "Letter"
 
 #~ msgid "Legal"
-#~ msgstr "حقوقی"
+#~ msgstr "Legal"
 
 #~ msgid "Ledger"
-#~ msgstr "دفتر"
+#~ msgstr "Ledger"
 
 #~ msgid "Portrait"
-#~ msgstr "پرتره"
+#~ msgstr "Portrait"
 
 #~ msgid "Landscape"
-#~ msgstr "چشم انداز ویا Landscape"
+#~ msgstr "Landscape"
 
 #~ msgid "license"
 #~ msgstr "license"

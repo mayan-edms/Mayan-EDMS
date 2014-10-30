@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:35-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: __init__.py:68 links.py:18 permissions.py:7
 msgid "Metadata"
@@ -67,24 +65,20 @@ msgid "Edit metadata"
 msgstr ""
 
 #: links.py:20 links.py:21
-#, fuzzy
 msgid "Add metadata"
-msgstr "metadata"
+msgstr ""
 
 #: links.py:22 links.py:23
-#, fuzzy
 msgid "Remove metadata"
-msgstr "metadata"
+msgstr ""
 
 #: links.py:25
-#, fuzzy
 msgid "Optional metadata"
-msgstr "metadata"
+msgstr ""
 
 #: links.py:26
-#, fuzzy
 msgid "Required metadata"
-msgstr "metadata"
+msgstr ""
 
 #: links.py:28 models.py:40 views.py:293
 msgid "Metadata types"
@@ -135,14 +129,12 @@ msgid "Type"
 msgstr ""
 
 #: models.py:57
-#, fuzzy
 msgid "Metadata type is not valid for this document type."
-msgstr "Adauga tipul de metadate în document:% s"
+msgstr ""
 
 #: models.py:63
-#, fuzzy
 msgid "Metadata type required if for this document type."
-msgstr "Adauga tipul de metadate în document:% s"
+msgstr ""
 
 #: models.py:68 models.py:69
 msgid "Document metadata"
@@ -153,14 +145,12 @@ msgid "Document type"
 msgstr ""
 
 #: models.py:79
-#, fuzzy
 msgid "Document type metadata type options"
-msgstr "Ștergeți tipuri de metadate"
+msgstr ""
 
 #: models.py:80
-#, fuzzy
 msgid "Document type metadata types options"
-msgstr "Ștergeți tipuri de metadate"
+msgstr ""
 
 #: permissions.py:8
 msgid "Edit a document's metadata"
@@ -168,11 +158,11 @@ msgstr "Editați metadatele unui document"
 
 #: permissions.py:9
 msgid "Add metadata to a document"
-msgstr "Adaugă metadate la un document"
+msgstr ""
 
 #: permissions.py:10
 msgid "Remove metadata from a document"
-msgstr "Eliminarea metadatelor dintr-un document"
+msgstr ""
 
 #: permissions.py:11
 msgid "View metadata from a document"
@@ -229,56 +219,49 @@ msgstr "Edita metadatele pentru documente:% s"
 #: views.py:148
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
-msgstr ""
-"Tipul de metadate:%(metadata_type)s au fost adăugate cu succes documentul "
+"Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
+msgstr ""
 
 #: views.py:151
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr ""
-"Tipul de metadate:%(metadata_type)s e deja prezent în documentul "
-"%(document)s."
 
 #: views.py:174
-#, fuzzy, python-format
+#, python-format
 msgid "Add metadata type to document: %s"
-msgstr "Adauga tipul de metadate la documente:% s"
+msgstr ""
 
 #: views.py:176
 #, python-format
 msgid "Add metadata type to documents: %s"
-msgstr "Adauga tipul de metadate la documente:% s"
+msgstr ""
 
 #: views.py:240
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
 msgstr ""
-"Elimina cu succes tipul de metadate:%(metadata_type)s din documentul : "
-"%(document)s."
 
 #: views.py:243
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
 msgstr ""
-"Eroare la eliminarea tipul de metadate: %(metadata_type)s  din document: "
-"%(document)s."
 
 #: views.py:255
 #, python-format
 msgid "Remove metadata types from document: %s"
-msgstr "Scoateți tipuri de metadate din document:% s"
+msgstr ""
 
 #: views.py:257
 #, python-format
 msgid "Remove metadata types from documents: %s"
-msgstr "Scoateți tipuri de metadate din documente:% s"
+msgstr ""
 
 #: views.py:276
 #, python-format
@@ -327,50 +310,95 @@ msgid "Are you sure you wish to delete the metadata type: %s?"
 msgstr "Sunteți sigur că doriți să ștergeți tipul de metadate:% s?"
 
 #: views.py:396
-#, fuzzy, python-format
+#, python-format
 msgid "Optional metadata types for document type: %s"
-msgstr "Scoateți tipuri de metadate din document:% s"
+msgstr ""
 
 #: views.py:416
-#, fuzzy, python-format
+#, python-format
 msgid "Required metadata types for document type: %s"
-msgstr "Scoateți tipuri de metadate din document:% s"
+msgstr ""
+
+#~ msgid "Document type defaults"
+#~ msgstr "document type defaults"
+
+#~ msgid "Document types defaults"
+#~ msgstr "document types defaults"
+
+#~ msgid "Non members of document type: %s"
+#~ msgstr "non members of document type: %s"
+
+#~ msgid "Members of document type: %s"
+#~ msgstr "members of document type: %s"
 
 #~ msgid "id"
 #~ msgstr "id"
 
 #~ msgid "Metadata sets"
-#~ msgstr "Metadate seturi"
+#~ msgstr "Metadata sets"
+
+#~ msgid "Members"
+#~ msgstr "members"
+
+#~ msgid "Default metadata"
+#~ msgstr "default metadata"
+
+#~ msgid "Metadata set"
+#~ msgstr "Metadata sets"
+
+#~ msgid "Metadata set item"
+#~ msgstr "metadata set item"
+
+#~ msgid "Metadata set items"
+#~ msgstr "metadata set items"
+
+#~ msgid "Default metadata sets"
+#~ msgstr "default metadata sets"
 
 #~ msgid "Edit metadata sets"
-#~ msgstr "Editați seturi de metadate"
+#~ msgstr "Edit metadata sets"
 
 #~ msgid "Create new metadata sets"
-#~ msgstr "A crea seturi de metadate noi"
+#~ msgstr "Create new metadata sets"
 
 #~ msgid "Delete metadata sets"
-#~ msgstr "Ștergeți seturi de metadate"
+#~ msgstr "Delete metadata sets"
 
 #~ msgid "View metadata sets"
-#~ msgstr "Vezi seturi de metadate"
+#~ msgstr "View metadata sets"
 
 #~ msgid "Metadata set edited successfully"
-#~ msgstr "Set de metadate fost editat cu succes"
+#~ msgstr "Metadata set edited successfully"
 
 #~ msgid "Error editing metadata set; %s"
-#~ msgstr "Editare eroare setul de metadate;% s"
+#~ msgstr "Error editing metadata set; %s"
+
+#~ msgid "Edit metadata set: %s"
+#~ msgstr "edit metadata set: %s"
+
+#~ msgid "Non members of metadata set: %s"
+#~ msgstr "non members of metadata set: %s"
+
+#~ msgid "Members of metadata set: %s"
+#~ msgstr "members of metadata set: %s"
 
 #~ msgid "Metadata set created successfully"
-#~ msgstr "Set de metadate creat cu succes"
+#~ msgstr "Metadata set created successfully"
+
+#~ msgid "Create metadata set"
+#~ msgstr "create metadata set"
 
 #~ msgid "Metadata set: %s deleted successfully."
-#~ msgstr "Set de metadate:% s eliminat cu succes."
+#~ msgstr "Metadata set: %s deleted successfully."
 
 #~ msgid "Metadata set: %(metadata_set)s delete error: %(error)s"
-#~ msgstr "eroare de ștergere: %(error)s set de metadate: %(metadata_set)s"
+#~ msgstr "Metadata set: %(metadata_set)s delete error: %(error)s"
 
 #~ msgid "Are you sure you wish to delete the metadata set: %s?"
-#~ msgstr "Sunteți sigur că doriți să ștergeți set de metadate:% s?"
+#~ msgstr "Are you sure you wish to delete the metadata set: %s?"
+
+#~ msgid "metadata"
+#~ msgstr "metadata"
 
 #~ msgid "metadata types"
 #~ msgstr "metadata types"
@@ -400,37 +428,37 @@ msgstr "Scoateți tipuri de metadate din document:% s"
 #~ msgstr "What are metadata sets?"
 
 #~ msgid ""
-#~ "A metadata set is a group of one or more metadata types.  Metadata sets "
-#~ "are useful when creating new documents; selecing a metadata set "
-#~ "automatically attaches it's member metadata types to said document."
+#~ "A metadata set is a group of one or more metadata types.  Metadata sets are "
+#~ "useful when creating new documents; selecing a metadata set automatically "
+#~ "attaches it's member metadata types to said document."
 #~ msgstr ""
-#~ "A metadata set is a group of one or more metadata types.  Metadata sets "
-#~ "are useful when creating new documents; selecing a metadata set "
-#~ "automatically attaches it's member metadata types to said document."
+#~ "A metadata set is a group of one or more metadata types.  Metadata sets are "
+#~ "useful when creating new documents; selecing a metadata set automatically "
+#~ "attaches it's member metadata types to said document."
 
 #~ msgid "What are metadata types?"
 #~ msgstr "What are metadata types?"
 
 #~ msgid ""
-#~ "A metadata type defines the characteristics of a value of some kind that "
-#~ "can be attached to a document.  Examples of metadata types are: a client "
-#~ "name, a date, or a project to which several documents belong.  A metadata "
-#~ "type's name is the internal identifier with which it can be referenced to "
-#~ "by other modules such as the indexing module, the title is the value that "
-#~ "is shown to the users, the default value is the value an instance of this "
-#~ "metadata type will have initially, and the lookup value turns an instance "
-#~ "of a metadata of this type into a choice list which options are the "
-#~ "result of the lookup's code execution."
+#~ "A metadata type defines the characteristics of a value of some kind that can"
+#~ " be attached to a document.  Examples of metadata types are: a client name, "
+#~ "a date, or a project to which several documents belong.  A metadata type's "
+#~ "name is the internal identifier with which it can be referenced to by other "
+#~ "modules such as the indexing module, the title is the value that is shown to"
+#~ " the users, the default value is the value an instance of this metadata type"
+#~ " will have initially, and the lookup value turns an instance of a metadata "
+#~ "of this type into a choice list which options are the result of the lookup's"
+#~ " code execution."
 #~ msgstr ""
-#~ "A metadata type defines the characteristics of a value of some kind that "
-#~ "can be attached to a document.  Examples of metadata types are: a client "
-#~ "name, a date, or a project to which several documents belong.  A metadata "
-#~ "type's name is the internal identifier with which it can be referenced to "
-#~ "by other modules such as the indexing module, the title is the value that "
-#~ "is shown to the users, the default value is the value an instance of this "
-#~ "metadata type will have initially, and the lookup value turns an instance "
-#~ "of a metadata of this type into a choice list which options are the "
-#~ "result of the lookup's code execution."
+#~ "A metadata type defines the characteristics of a value of some kind that can"
+#~ " be attached to a document.  Examples of metadata types are: a client name, "
+#~ "a date, or a project to which several documents belong.  A metadata type's "
+#~ "name is the internal identifier with which it can be referenced to by other "
+#~ "modules such as the indexing module, the title is the value that is shown to"
+#~ " the users, the default value is the value an instance of this metadata type"
+#~ " will have initially, and the lookup value turns an instance of a metadata "
+#~ "of this type into a choice list which options are the result of the lookup's"
+#~ " code execution."
 
 #~ msgid " Available models: %s"
 #~ msgstr " Available models: %s"
@@ -439,11 +467,11 @@ msgstr "Scoateți tipuri de metadate din document:% s"
 #~ msgstr " Available functions: %s"
 
 #~ msgid ""
-#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user "
-#~ "in User.objects.all()].%s"
+#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
+#~ "User.objects.all()].%s"
 #~ msgstr ""
-#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user "
-#~ "in User.objects.all()].%s"
+#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
+#~ "User.objects.all()].%s"
 
 #~ msgid "Error deleting document indexes; %s"
 #~ msgstr "Error deleting document indexes; %s"

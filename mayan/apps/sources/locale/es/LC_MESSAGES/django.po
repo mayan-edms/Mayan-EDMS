@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:36-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"PO-Revision-Date: 2014-10-30 15:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:41
@@ -27,9 +26,7 @@ msgstr ""
 
 #: __init__.py:53
 msgid "Returns a list of all the staging folders and the files they contain."
-msgstr ""
-"Devuelve la lista de todas las carpetas provisionales y de los ficheros que "
-"contienen."
+msgstr "Devuelve la lista de todas las carpetas provisionales y de los ficheros que contienen."
 
 #: forms.py:28
 msgid "Version update"
@@ -45,8 +42,7 @@ msgstr "Expandir archivos comprimidos"
 
 #: forms.py:49
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Subir los archivos de un archivo comprimido como documentos individuales"
+msgstr "Subir los archivos de un archivo comprimido como documentos individuales"
 
 #: forms.py:74
 msgid "Staging file"
@@ -210,9 +206,9 @@ msgid "Unable get list of staging files: %s"
 msgstr "No es posible obtener la lista de los archivos provisionales: %s"
 
 #: models.py:134
-#, fuzzy, python-format
+#, python-format
 msgid "Error deleting staging file; %s"
-msgstr "Unable to delete staging file: %s"
+msgstr ""
 
 #: models.py:138
 msgid "Staging folders"
@@ -231,34 +227,28 @@ msgid "Interval"
 msgstr ""
 
 #: models.py:166
-#, fuzzy
 msgid "Interval in seconds between checks for new documents."
 msgstr ""
-"Invervalo en segundos, donde se comprueba la ruta de la carpeta para "
-"detectar nuevos documentos."
 
 #: models.py:167
-#, fuzzy
 msgid "Document type"
-msgstr "Tipo de documento actual"
+msgstr ""
 
 #: models.py:167
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
 #: models.py:168
-#, fuzzy
 msgid "Whether to expand or not, compressed archives."
-msgstr "La posibilidad de ampliar o no archivos comprimidos."
+msgstr ""
 
 #: models.py:207
 msgid "Interval source"
 msgstr ""
 
 #: models.py:208
-#, fuzzy
 msgid "Interval sources"
-msgstr "Fuentes de documentos"
+msgstr ""
 
 #: models.py:212
 msgid "Host"
@@ -292,14 +282,12 @@ msgid "attachment-%i"
 msgstr ""
 
 #: models.py:244
-#, fuzzy
 msgid "Email source"
-msgstr "Fuentes desde las que subir archivos"
+msgstr ""
 
 #: models.py:245
-#, fuzzy
 msgid "Email sources"
-msgstr "Fuentes desde las que subir archivos"
+msgstr ""
 
 #: models.py:251
 msgid "Timeout"
@@ -377,9 +365,7 @@ msgstr "Fuentes desde las que subir archivos"
 #: views.py:120
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
-msgstr ""
-"No hay fuentes de documentos interactivos definidos o ninguna de ellas ha "
-"sido activada."
+msgstr "No hay fuentes de documentos interactivos definidos o ninguna de ellas ha sido activada."
 
 #: views.py:142
 msgid "Files in staging path"
@@ -407,7 +393,8 @@ msgid "Current metadata"
 msgstr "Metadatos actuales"
 
 #: views.py:317
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:343
@@ -433,9 +420,8 @@ msgid "Yes"
 msgstr ""
 
 #: views.py:392
-#, fuzzy
 msgid "No"
-msgstr "Ninguno"
+msgstr ""
 
 #: views.py:414
 msgid "Source edited successfully"
@@ -512,9 +498,7 @@ msgstr "Error borrando la transformación de la fuente; %(error)s"
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"¿Está seguro que desea eliminar la transformación de la fuente "
-"\"%(transformation)s\""
+msgstr "¿Está seguro que desea eliminar la transformación de la fuente \"%(transformation)s\""
 
 #: views.py:589
 msgid "Source transformation created successfully"
@@ -546,16 +530,29 @@ msgstr ""
 msgid "Next step"
 msgstr "Siguiente paso"
 
+#~ msgid "Server staging folder"
+#~ msgstr "server staging folder"
+
+#~ msgid "Server watch folder"
+#~ msgstr "server watch folder"
+
 #~ msgid "Click %(setup_link)s to add or enable some document sources."
-#~ msgstr ""
-#~ "Haga clic en %(setup_link)s para agregar o habilitar algunas fuentes de "
-#~ "documentos."
+#~ msgstr "Click %(setup_link)s to add or enable some document sources."
 
 #~ msgid "Unhandled exception: %s"
-#~ msgstr "Excepción sin manejar: %s"
+#~ msgstr "Unhandled exception: %s"
+
+#~ msgid "Clone metadata"
+#~ msgstr "Current metadata"
+
+#~ msgid "Whitelist"
+#~ msgstr "whitelist"
+
+#~ msgid "Blacklist"
+#~ msgstr "blacklist"
 
 #~ msgid "Whitelist Blacklist validation error."
-#~ msgstr "Error de validación de Lista Negra Lista Blanca"
+#~ msgstr "Whitelist Blacklist validation error."
 
 #~ msgid "edit"
 #~ msgstr "edit"

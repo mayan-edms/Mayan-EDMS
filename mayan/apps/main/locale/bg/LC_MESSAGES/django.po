@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:34-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: links.py:8
@@ -224,8 +223,7 @@ msgstr ""
 
 #: templates/main/home.html:12
 msgid "Django based open source document management system"
-msgstr ""
-"Django базирана система за управление на електронни документи, с отворен код"
+msgstr "Django базирана система за управление на електронни документи, с отворен код"
 
 #: templates/main/login.html:23
 msgid "You are already logged in"
@@ -292,10 +290,7 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr ""
-"Django базирана система с отворен код, за електронно управление на "
-"документи, със специфична metadata, индексиране, тагове, файлови услуги, "
-"поддръжка на цифрови подписи/сигнатури и OCR възможности"
+msgstr "Django базирана система с отворен код, за електронно управление на документи, със специфична metadata, индексиране, тагове, файлови услуги, поддръжка на цифрови подписи/сигнатури и OCR възможности"
 
 #: templates/main/project_description.html:23
 msgid "Released under the Apache 2.0 License"
@@ -314,6 +309,18 @@ msgstr ""
 #~ msgid "(DEBUG)"
 #~ msgstr "(DEBUG)"
 
+#~ msgid "Actions for %(object_name)s: %(navigation_object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Details for %(object_name)s: %(object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Edit %(object_name)s: %(object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
 #~ msgid "home"
 #~ msgstr "home"
 
@@ -327,11 +334,11 @@ msgstr ""
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

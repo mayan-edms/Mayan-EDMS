@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # mic, 2012
@@ -13,16 +13,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:32-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: forms.py:97
 msgid "Selection"
@@ -105,8 +103,8 @@ msgstr ""
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
 msgstr ""
 
 #: settings.py:48
@@ -124,9 +122,8 @@ msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
 #: utils.py:116
-#, fuzzy
 msgid "Function found"
-msgstr "znaleźć funkcję"
+msgstr ""
 
 #: views.py:42
 msgid "No action selected."
@@ -137,14 +134,14 @@ msgid "Must select at least one item."
 msgstr "Musisz wybrać co najmniej jeden element."
 
 #: views.py:98
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to remove %(selection)s."
-msgstr "Nie można dodać %(selection)s  do %(right_list_title)s."
+msgstr ""
 
 #: views.py:123
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to add %(selection)s."
-msgstr "Nie można dodać %(selection)s  do %(right_list_title)s."
+msgstr ""
 
 #: views.py:136
 msgid "Add"
@@ -155,9 +152,8 @@ msgid "Remove"
 msgstr "Usuń"
 
 #: views.py:170
-#, fuzzy
 msgid "Current user details"
-msgstr "aktualne dane użytkownika"
+msgstr ""
 
 #: views.py:187
 msgid "E-mail conflict, another user has that same email."
@@ -238,10 +234,10 @@ msgid "None"
 msgstr "Brak"
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
-#~ msgstr " %(selection)s  pomyślnie dodana  do %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully added to %(right_list_title)s."
 
 #~ msgid "%(selection)s added successfully removed from %(right_list_title)s."
-#~ msgstr " %(selection)s  pomyślnie dodana usunięty z %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully removed from %(right_list_title)s."
 
 #~ msgid "A5"
 #~ msgstr "A5"

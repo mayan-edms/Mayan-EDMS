@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:35-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"POT-Creation-Date: 2014-10-30 11:34-0400\n"
+"PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: links.py:8
@@ -290,9 +289,7 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr ""
-"开源，基于Django的电子文档管理，支持自定义元数据，索引，标签，集成文件服务，"
-"数字签名以及OCR。"
+msgstr "开源，基于Django的电子文档管理，支持自定义元数据，索引，标签，集成文件服务，数字签名以及OCR。"
 
 #: templates/main/project_description.html:23
 msgid "Released under the Apache 2.0 License"
@@ -309,10 +306,19 @@ msgid "Next"
 msgstr ""
 
 #~ msgid "(DEBUG)"
-#~ msgstr "(调试)"
+#~ msgstr "(DEBUG)"
 
 #~ msgid "Actions for %(object_name)s: %(navigation_object)s"
-#~ msgstr "%(object_name)s的操作是：%(navigation_object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Details for %(object_name)s: %(object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Edit %(object_name)s: %(object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
 
 #~ msgid "home"
 #~ msgstr "home"
@@ -327,11 +333,11 @@ msgstr ""
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

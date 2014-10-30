@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Sehat <sehat75@yahoo.com>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:36-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"PO-Revision-Date: 2014-10-30 15:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"Language-Team: Indonesian (http://www.transifex.com/projects/p/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: __init__.py:41
@@ -42,9 +41,7 @@ msgstr "Kembangkan berkas-berkas terkompresi"
 
 #: forms.py:49
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Unggah berkas terkompresi yang mengandung berkas-berkas sebagai dokumen-"
-"dokumen individual"
+msgstr "Unggah berkas terkompresi yang mengandung berkas-berkas sebagai dokumen-dokumen individual"
 
 #: forms.py:74
 msgid "Staging file"
@@ -208,9 +205,9 @@ msgid "Unable get list of staging files: %s"
 msgstr ""
 
 #: models.py:134
-#, fuzzy, python-format
+#, python-format
 msgid "Error deleting staging file; %s"
-msgstr "Unable to delete staging file: %s"
+msgstr ""
 
 #: models.py:138
 msgid "Staging folders"
@@ -233,27 +230,24 @@ msgid "Interval in seconds between checks for new documents."
 msgstr ""
 
 #: models.py:167
-#, fuzzy
 msgid "Document type"
-msgstr "Sumber-sumber dokumen"
+msgstr ""
 
 #: models.py:167
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
 #: models.py:168
-#, fuzzy
 msgid "Whether to expand or not, compressed archives."
-msgstr "Apakah mengembangkan atau tidak mengkompresi arsip-arsip."
+msgstr ""
 
 #: models.py:207
 msgid "Interval source"
 msgstr ""
 
 #: models.py:208
-#, fuzzy
 msgid "Interval sources"
-msgstr "Sumber-sumber dokumen"
+msgstr ""
 
 #: models.py:212
 msgid "Host"
@@ -287,14 +281,12 @@ msgid "attachment-%i"
 msgstr ""
 
 #: models.py:244
-#, fuzzy
 msgid "Email source"
-msgstr "Sumber-sumber unggah"
+msgstr ""
 
 #: models.py:245
-#, fuzzy
 msgid "Email sources"
-msgstr "Sumber-sumber unggah"
+msgstr ""
 
 #: models.py:251
 msgid "Timeout"
@@ -372,9 +364,7 @@ msgstr "Sumber-sumber unggah"
 #: views.py:120
 msgid ""
 "No interactive document sources have been defined or none have been enabled."
-msgstr ""
-"Tidak ada sumber-sumber dokumen interaktif yang telah ditentukan atau tidak "
-"ada yang telah diaktifkan."
+msgstr "Tidak ada sumber-sumber dokumen interaktif yang telah ditentukan atau tidak ada yang telah diaktifkan."
 
 #: views.py:142
 msgid "Files in staging path"
@@ -402,7 +392,8 @@ msgid "Current metadata"
 msgstr "Metadata saat ini"
 
 #: views.py:317
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:343
@@ -506,8 +497,7 @@ msgstr "Masalah dalam menghapus transformasi sumber; %(error)s"
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"Apakah anda yakin untuk menghapus transformasi sumber \"%(transformation)s\""
+msgstr "Apakah anda yakin untuk menghapus transformasi sumber \"%(transformation)s\""
 
 #: views.py:589
 msgid "Source transformation created successfully"
@@ -539,10 +529,29 @@ msgstr ""
 msgid "Next step"
 msgstr ""
 
+#~ msgid "Server staging folder"
+#~ msgstr "server staging folder"
+
+#~ msgid "Server watch folder"
+#~ msgstr "server watch folder"
+
 #~ msgid "Click %(setup_link)s to add or enable some document sources."
-#~ msgstr ""
-#~ "Klik %(setup_link)s untuk menambah atau mengaktifkan sumber-sumber "
-#~ "dokumen."
+#~ msgstr "Click %(setup_link)s to add or enable some document sources."
+
+#~ msgid "Unhandled exception: %s"
+#~ msgstr "Unhandled exception: %s"
+
+#~ msgid "Clone metadata"
+#~ msgstr "Current metadata"
+
+#~ msgid "Whitelist"
+#~ msgstr "whitelist"
+
+#~ msgid "Blacklist"
+#~ msgstr "blacklist"
+
+#~ msgid "Whitelist Blacklist validation error."
+#~ msgstr "Whitelist Blacklist validation error."
 
 #~ msgid "edit"
 #~ msgstr "edit"

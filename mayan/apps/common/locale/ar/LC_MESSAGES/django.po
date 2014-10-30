@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-10-30 11:32-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: forms.py:97
 msgid "Selection"
@@ -102,20 +100,15 @@ msgstr ""
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "Temporary directory used site wide to store thumbnails, previews and temporary files.  If none is specified, one will be created using tempfile.mkdtemp()"
 
 #: settings.py:48
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"التحكم في آلية التحقق من هوية المستخدم. الخيارات المتاحة هي: اسم المستخدم أو "
-"البريد الإلكتروني"
+msgstr "التحكم في آلية التحقق من هوية المستخدم. الخيارات المتاحة هي: اسم المستخدم أو البريد الإلكتروني"
 
 #: settings.py:57
 msgid "Allow non authenticated users, access to all views"
@@ -126,9 +119,8 @@ msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
 #: utils.py:116
-#, fuzzy
 msgid "Function found"
-msgstr "function found"
+msgstr ""
 
 #: views.py:42
 msgid "No action selected."
@@ -139,14 +131,14 @@ msgid "Must select at least one item."
 msgstr "يجب اختيار غرض واحد عالأقل."
 
 #: views.py:98
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to remove %(selection)s."
-msgstr "غير قادر على ادخال %(selection)s إلى %(right_list_title)s."
+msgstr ""
 
 #: views.py:123
-#, fuzzy, python-format
+#, python-format
 msgid "Unable to add %(selection)s."
-msgstr "غير قادر على ادخال %(selection)s إلى %(right_list_title)s."
+msgstr ""
 
 #: views.py:136
 msgid "Add"
@@ -157,9 +149,8 @@ msgid "Remove"
 msgstr "إزالة"
 
 #: views.py:170
-#, fuzzy
 msgid "Current user details"
-msgstr "تفاصيل المستخدم الحالي"
+msgstr ""
 
 #: views.py:187
 msgid "E-mail conflict, another user has that same email."
@@ -240,10 +231,10 @@ msgid "None"
 msgstr "لا شيء"
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
-#~ msgstr "%(selection)s تم الادخال بنجاح إلى %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully added to %(right_list_title)s."
 
 #~ msgid "%(selection)s added successfully removed from %(right_list_title)s."
-#~ msgstr "%(selection)s تمت الإزالة بنجاح من %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully removed from %(right_list_title)s."
 
 #~ msgid "A5"
 #~ msgstr "A5"
