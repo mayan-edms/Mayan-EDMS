@@ -11,8 +11,6 @@ from documents.models import Document, DocumentType
 from .managers import IndexManager
 from .settings import AVAILABLE_INDEXING_FUNCTIONS
 
-available_indexing_functions_string = (_(u'Available functions: %s') % u','.join([u'%s()' % name for name, function in AVAILABLE_INDEXING_FUNCTIONS.items()])) if AVAILABLE_INDEXING_FUNCTIONS else u''
-
 
 class Index(models.Model):
     name = models.CharField(unique=True, max_length=64, verbose_name=_(u'Name'), help_text=_(u'Internal name used to reference this index.'))
@@ -43,7 +41,7 @@ class Index(models.Model):
     def save(self, *args, **kwargs):
         """Automatically create the root index template node"""
         super(Index, self).save(*args, **kwargs)
-        index_template_node_root, created = IndexTemplateNode.objects.get_or_create(parent=None, index=self)
+        IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
     def get_document_types_names(self):
         return u', '.join([unicode(document_type) for document_type in self.document_types.all()] or [u'All'])
@@ -70,7 +68,6 @@ class IndexTemplateNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True)
     index = models.ForeignKey(Index, verbose_name=_(u'Index'), related_name='node_templates')
     expression = models.CharField(max_length=128, verbose_name=_(u'Indexing expression'), help_text=_(u'Enter a python string expression to be evaluated.'))
-    # % available_indexing_functions_string)
     enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'), help_text=_(u'Causes this node to be visible and updated when document data changes.'))
     link_documents = models.BooleanField(default=False, verbose_name=_(u'Link documents'), help_text=_(u'Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
 

@@ -110,14 +110,14 @@ class APIDocumentFolderListView(generics.ListAPIView):
 
 
 class APIFolderDocumentView(views.APIView):
-    def delete(self, request, *args, **kwargs):
+    def delete(self, request):
         """Remove a document from the selected folder."""
 
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_FOLDER_REMOVE_DOCUMENT])
+            Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_REMOVE_DOCUMENT])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_FOLDER_REMOVE_DOCUMENT, self.request.user, folder)
+            AccessEntry.objects.check_access(PERMISSION_FOLDER_REMOVE_DOCUMENT, request.user, folder)
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         folder.documents.remove(document)
@@ -128,9 +128,9 @@ class APIFolderDocumentView(views.APIView):
 
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_FOLDER_ADD_DOCUMENT])
+            Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_ADD_DOCUMENT])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_FOLDER_ADD_DOCUMENT, self.request.user, folder)
+            AccessEntry.objects.check_access(PERMISSION_FOLDER_ADD_DOCUMENT, request.user, folder)
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         folder.documents.add(document)

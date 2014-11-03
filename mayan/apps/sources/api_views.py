@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-import tempfile
-
 from django.shortcuts import get_object_or_404
 
 from converter.exceptions import UnkownConvertError, UnknownFileFormat

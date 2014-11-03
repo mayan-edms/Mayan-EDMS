@@ -111,9 +111,9 @@ class APIDocumentTagView(views.APIView):
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_TAG_REMOVE])
+            Permission.objects.check_permissions(request.user, [PERMISSION_TAG_REMOVE])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_TAG_REMOVE, self.request.user, document)
+            AccessEntry.objects.check_access(PERMISSION_TAG_REMOVE, request.user, document)
 
         tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
         tag.documents.remove(document)
@@ -126,9 +126,9 @@ class APIDocumentTagView(views.APIView):
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_TAG_ATTACH])
+            Permission.objects.check_permissions(request.user, [PERMISSION_TAG_ATTACH])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_TAG_ATTACH, self.request.user, document)
+            AccessEntry.objects.check_access(PERMISSION_TAG_ATTACH, request.user, document)
 
         tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
         tag.documents.add(document)

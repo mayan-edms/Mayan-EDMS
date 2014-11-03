@@ -174,7 +174,8 @@ def validate_path(path):
         # If doesn't exist try to create it
         try:
             os.mkdir(path)
-        except:
+        except Exception as exception:
+            logger.debug('unhandled exception: %s', exception)
             return False
 
     # Check if it is writable
@@ -182,7 +183,8 @@ def validate_path(path):
         fd, test_filepath = tempfile.mkstemp(dir=path)
         os.close(fd)
         os.unlink(test_filepath)
-    except:
+    except Exception as exception:
+        logger.debug('unhandled exception: %s', exception)
         return False
 
     return True
