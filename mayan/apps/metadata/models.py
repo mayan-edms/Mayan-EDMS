@@ -58,9 +58,9 @@ class DocumentMetadata(models.Model):
 
         return super(DocumentMetadata, self).save(*args, **kwargs)
 
-    def delete(self, *args, **kwargs):
-        if self.metadata_type in self.document.document_type.metadata_type.filter(required=True):
-            raise ValidationError(_('Metadata type required if for this document type.'))
+    def delete(self, enforce_required=True, *args, **kwargs):
+        if enforce_required and self.metadata_type in self.document.document_type.metadata_type.filter(required=True):
+            raise ValidationError(_('Metadata type is required for this document type.'))
 
         return super(DocumentMetadata, self).delete(*args, **kwargs)
 
