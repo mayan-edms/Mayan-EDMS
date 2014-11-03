@@ -63,6 +63,11 @@ class APINewDocumentView(generics.GenericAPIView):
         if serializer.is_valid():
             shared_uploaded_file = SharedUploadedFile.objects.create(file=request.FILES['file'])
 
+            if request.user.is_anonymous():
+                user_id = None
+            else:
+                user_id = request.user.pk
+
             task_new_document.apply_async(kwargs=dict(
                 shared_uploaded_file_id=shared_uploaded_file.pk,
                 document_type_id=serializer.data['document_type'],
@@ -70,7 +75,7 @@ class APINewDocumentView(generics.GenericAPIView):
                 expand=serializer.data['expand'],
                 label=serializer.data['label'] or serializer.data['file'],
                 language=serializer.data['language'],
-                user_id=serializer.data['user']
+                user_id=user_id
             ), queue='uploads')
 
             headers = self.get_success_headers(serializer.data)

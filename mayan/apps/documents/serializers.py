@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-from django.contrib.auth.models import User
-
 from rest_framework import serializers
 
 from .literals import LANGUAGE_CHOICES
@@ -53,4 +51,3 @@ class NewDocumentSerializer(serializers.Serializer):
     file = serializers.FileField()
     label = serializers.CharField(required=False)
     language = serializers.ChoiceField(choices=LANGUAGE_CHOICES, blank_display_value=None, required=False)
-    user = serializers.ChoiceField(required=False, choices=[(user.pk, user) for user in User.objects.all()])
