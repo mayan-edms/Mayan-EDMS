@@ -27,7 +27,7 @@ class DocumentCheckoutManager(models.Manager):
 
     def expired_check_outs(self):
         expired_list = Document.objects.filter(pk__in=self.model.objects.filter(expiration_datetime__lte=now()).values_list('document__pk', flat=True))
-        logger.debug('expired_list: %s' % expired_list)
+        logger.debug('expired_list: %s', expired_list)
         return expired_list
 
     def check_in_expired_check_outs(self):

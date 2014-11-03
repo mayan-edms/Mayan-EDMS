@@ -6,14 +6,14 @@ from django.contrib.contenttypes.models import ContentType
 
 from common.models import AnonymousUserSingleton
 
-from .models import AccessEntry, DefaultAccessEntry, CreatorSingleton
 from .classes import get_source_object
+from .models import AccessEntry, CreatorSingleton, DefaultAccessEntry
 
 logger = logging.getLogger(__name__)
 
 
 def apply_default_acls(obj, actor=None):
-    logger.debug('actor, init: %s' % actor)
+    logger.debug('actor, init: %s', actor)
     obj = get_source_object(obj)
 
     if actor:

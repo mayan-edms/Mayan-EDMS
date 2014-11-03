@@ -110,7 +110,7 @@ class OfficeConverterBackendDirect(object):
         self.libreoffice_path = LIBREOFFICE_PATH
         if not os.path.exists(self.libreoffice_path):
             raise OfficeBackendError('cannot find LibreOffice executable')
-        logger.debug('self.libreoffice_path: %s' % self.libreoffice_path)
+        logger.debug('self.libreoffice_path: %s', self.libreoffice_path)
 
     def convert(self, input_filepath, output_filepath):
         """
@@ -129,24 +129,24 @@ class OfficeConverterBackendDirect(object):
         command.append(u'--outdir')
         command.append(TEMPORARY_DIRECTORY)
 
-        logger.debug('command: %s' % command)
+        logger.debug('command: %s', command)
 
         try:
             os.environ['HOME'] = TEMPORARY_DIRECTORY
             proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
             return_code = proc.wait()
-            logger.debug('return_code: %s' % return_code)
+            logger.debug('return_code: %s', return_code)
 
             readline = proc.stderr.readline()
-            logger.debug('stderr: %s' % readline)
+            logger.debug('stderr: %s', readline)
             if return_code != 0:
                 raise OfficeBackendError(readline)
             filename, extension = os.path.splitext(os.path.basename(self.input_filepath))
-            logger.debug('filename: %s' % filename)
-            logger.debug('extension: %s' % extension)
+            logger.debug('filename: %s', filename)
+            logger.debug('extension: %s', extension)
 
             converted_output = os.path.join(TEMPORARY_DIRECTORY, os.path.extsep.join([filename, 'pdf']))
-            logger.debug('converted_output: %s' % converted_output)
+            logger.debug('converted_output: %s', converted_output)
 
             os.rename(converted_output, self.output_filepath)
         except OSError as exception:

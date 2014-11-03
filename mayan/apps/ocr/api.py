@@ -46,25 +46,25 @@ def do_document_ocr(document):
 
             document_filepath = document_page.document.get_image_cache_name(page=document_page.page_number, version=document_page.document_version.pk)
 
-            logger.debug('document_filepath: %s' % document_filepath)
+            logger.debug('document_filepath: %s', document_filepath)
 
             unpaper_input = convert(document_filepath, file_format=UNPAPER_FILE_FORMAT)
 
-            logger.debug('unpaper_input: %s' % unpaper_input)
+            logger.debug('unpaper_input: %s', unpaper_input)
 
             unpaper_output = execute_unpaper(input_filepath=unpaper_input)
 
-            logger.debug('unpaper_output: %s' % unpaper_output)
+            logger.debug('unpaper_output: %s', unpaper_output)
 
             # Convert to TIFF
             pre_ocr_filepath = convert(input_filepath=unpaper_output, file_format=DEFAULT_OCR_FILE_FORMAT)
 
-            logger.debug('pre_ocr_filepath: %s' % pre_ocr_filepath)
+            logger.debug('pre_ocr_filepath: %s', pre_ocr_filepath)
 
             # Tesseract needs an explicit file extension
             pre_ocr_filepath_w_ext = os.extsep.join([pre_ocr_filepath, DEFAULT_OCR_FILE_EXTENSION])
 
-            logger.debug('pre_ocr_filepath_w_ext: %s' % pre_ocr_filepath_w_ext)
+            logger.debug('pre_ocr_filepath_w_ext: %s', pre_ocr_filepath_w_ext)
 
             os.rename(pre_ocr_filepath, pre_ocr_filepath_w_ext)
             try:

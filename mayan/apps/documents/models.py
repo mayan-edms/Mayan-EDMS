@@ -143,7 +143,7 @@ class Document(models.Model):
             version = self.latest_version.pk
         image_cache_name = self.get_image_cache_name(page=page, version=version)
 
-        logger.debug('image_cache_name: %s' % image_cache_name)
+        logger.debug('image_cache_name: %s', image_cache_name)
 
         return convert(input_filepath=image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
 
@@ -157,7 +157,7 @@ class Document(models.Model):
         rotation = rotation % 360
 
         file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version)
-        logger.debug('file_path: %s' % file_path)
+        logger.debug('file_path: %s', file_path)
 
         if as_base64:
             mimetype = get_mimetype(open(file_path, 'r'), file_path, mimetype_only=True)[0]
@@ -199,7 +199,7 @@ class Document(models.Model):
         else:
             new_version_dict = {}
 
-        logger.debug('new_version_dict: %s' % new_version_dict)
+        logger.debug('new_version_dict: %s', new_version_dict)
 
         new_version = DocumentVersion(
             document=self,
@@ -328,7 +328,7 @@ class DocumentVersion(models.Model):
         return self.get_formated_version()
 
     def get_new_version_dict(self, version_update_type):
-        logger.debug('version_update_type: %s' % version_update_type)
+        logger.debug('version_update_type: %s', version_update_type)
 
         if version_update_type == VERSION_UPDATE_MAJOR:
             return {

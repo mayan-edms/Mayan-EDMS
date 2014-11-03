@@ -28,7 +28,7 @@ class TagForm(forms.ModelForm):
 class TagListForm(forms.Form):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
-        logger.debug('user: %s' % user)
+        logger.debug('user: %s', user)
         super(TagListForm, self).__init__(*args, **kwargs)
 
         queryset = Tag.objects.all()

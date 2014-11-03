@@ -18,16 +18,16 @@ class CheckAccessNode(Node):
 
     def render(self, context):
         permission_list = Variable(self.permission_list).resolve(context)
-        logger.debug('permission_list: %s' % u','.join([unicode(p) for p in permission_list]))
+        logger.debug('permission_list: %s', u','.join([unicode(p) for p in permission_list]))
 
         try:
             # Check access_object, useful for document_page views
             obj = Variable('access_object').resolve(context)
-            logger.debug('access_object: %s' % obj)
+            logger.debug('access_object: %s', obj)
         except VariableDoesNotExist:
             try:
                 obj = Variable(self.obj).resolve(context)
-                logger.debug('obj: %s' % obj)
+                logger.debug('obj: %s', obj)
             except VariableDoesNotExist:
                 context[u'access'] = False
                 logger.debug('no obj, access False')
@@ -40,7 +40,7 @@ class CheckAccessNode(Node):
             return u''
 
         requester = Variable(self.requester).resolve(context)
-        logger.debug('requester: %s' % requester)
+        logger.debug('requester: %s', requester)
 
         if obj:
             try:

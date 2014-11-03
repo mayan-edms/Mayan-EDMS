@@ -130,7 +130,7 @@ class AccessEntryManager(models.Manager):
         raise PermissionDenied(ugettext(u'Insufficient access.'))
 
     def get_allowed_class_objects(self, permission, actor, cls, related=None):
-        logger.debug('related: %s' % related)
+        logger.debug('related: %s', related)
 
         actor = AnonymousUserSingleton.objects.passthru_check(actor)
         actor_type = ContentType.objects.get_for_model(actor)
@@ -169,7 +169,7 @@ class AccessEntryManager(models.Manager):
         if related:
             actor_query = Q(holder_type=actor_type, holder_id=actor.pk, permission=permission.get_stored_permission)
             master_list = [obj.content_object for obj in self.model.objects.select_related().filter(actor_query | total_queries)]
-            logger.debug('master_list: %s' % master_list)
+            logger.debug('master_list: %s', master_list)
             # TODO: update to use Q objects and check performance diff
             # kwargs = {'%s__in' % related: master_list}
             # Q(**kwargs)
@@ -204,8 +204,8 @@ class AccessEntryManager(models.Manager):
         Returns a list of actors that hold at least one permission for
         a specific object
         """
-        logger.debug('obj: %s' % obj)
-        logger.debug('actor: %s' % actor)
+        logger.debug('obj: %s', obj)
+        logger.debug('actor: %s', actor)
 
         if isinstance(actor, User) and not db_only:
             if actor.is_superuser or actor.is_staff:
@@ -220,8 +220,8 @@ class AccessEntryManager(models.Manager):
         Filter a list of objects or a QuerySet elements depending on
         whether the actor holds the specified permission
         """
-        logger.debug('exception_on_empty: %s' % exception_on_empty)
-        logger.debug('object_list: %s' % object_list)
+        logger.debug('exception_on_empty: %s', exception_on_empty)
+        logger.debug('object_list: %s', object_list)
 
         if isinstance(actor, User):
             if actor.is_superuser or actor.is_staff:
@@ -238,7 +238,7 @@ class AccessEntryManager(models.Manager):
         try:
             # Try to process as a QuerySet
             qs = object_list.filter(pk__in=[obj.pk for obj in self.get_allowed_class_objects(permission, actor, object_list[0].__class__, related)])
-            logger.debug('qs: %s' % qs)
+            logger.debug('qs: %s', qs)
 
             if qs.count() == 0 and exception_on_empty:
                 raise PermissionDenied
@@ -247,7 +247,7 @@ class AccessEntryManager(models.Manager):
         except AttributeError:
             # Fallback to a filtered list
             object_list = list(set(object_list) & set(self.get_allowed_class_objects(permission, actor, object_list[0].__class__, related)))
-            logger.debug('object_list: %s' % object_list)
+            logger.debug('object_list: %s', object_list)
             if len(object_list) == 0 and exception_on_empty:
                 raise PermissionDenied
 

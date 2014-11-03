@@ -336,7 +336,7 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
 
 def smart_link_acl_list(request, smart_link_pk):
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
-    logger.debug('smart_link: %s' % smart_link)
+    logger.debug('smart_link: %s', smart_link)
 
     return acl_list_for(
         request,

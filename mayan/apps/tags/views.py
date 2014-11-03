@@ -337,7 +337,7 @@ def multiple_documents_selection_tag_remove(request):
 
 def tag_acl_list(request, tag_pk):
     tag = get_object_or_404(Tag, pk=tag_pk)
-    logger.debug('tag: %s' % tag)
+    logger.debug('tag: %s', tag)
 
     return acl_list_for(
         request,

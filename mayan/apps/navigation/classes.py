@@ -239,7 +239,6 @@ class Link(object):
                 objects.setdefault(resolved_object, {})
                 objects[resolved_object]['label'] = object_label
 
-        #logger.debug('objects: %s' % objects)
         return objects
 
     @classmethod

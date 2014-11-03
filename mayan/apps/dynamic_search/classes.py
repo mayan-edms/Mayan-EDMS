@@ -100,7 +100,7 @@ class SearchModel(object):
                 }
             )
 
-        logger.debug('search_dict: %s' % search_dict)
+        logger.debug('search_dict: %s', search_dict)
 
         return self.execute_search(search_dict, global_and_search=False)
 
@@ -108,14 +108,14 @@ class SearchModel(object):
         search_dict = {}
 
         for key, value in dictionary.items():
-            logger.debug('key: %s' % key)
-            logger.debug('value: %s' % value)
+            logger.debug('key: %s', key)
+            logger.debug('value: %s', value)
 
             if key == 'page':
                 continue
             if value:
                 search_field = self.get_search_field(key)
-                logger.debug('search_field: %s' % search_field)
+                logger.debug('search_field: %s', search_field)
                 search_dict.setdefault(search_field.get_model(), {
                     'searches': [],
                     'label': search_field.label,
@@ -128,7 +128,7 @@ class SearchModel(object):
                     }
                 )
 
-        logger.debug('search_dict: %s' % search_dict)
+        logger.debug('search_dict: %s', search_dict)
 
         return self.execute_search(search_dict, global_and_search=True)
 
@@ -138,7 +138,7 @@ class SearchModel(object):
         result_set = set()
 
         for model, data in search_dict.items():
-            logger.debug('model: %s' % model)
+            logger.debug('model: %s', model)
 
             # Initialize per model result set
             model_result_set = set()
@@ -147,14 +147,14 @@ class SearchModel(object):
                 # Fashion a list of queries for a field for each term
                 field_query_list = self.assemble_query(query_entry['terms'], query_entry['field_name'])
 
-                logger.debug('field_query_list: %s' % field_query_list)
+                logger.debug('field_query_list: %s', field_query_list)
 
                 # Initialize per field result set
                 field_result_set = set()
 
                 # Get results per search field
                 for query in field_query_list:
-                    logger.debug('query: %s' % query)
+                    logger.debug('query: %s', query)
                     term_query_result_set = set(model.objects.filter(query).values_list(data['return_value'], flat=True))
 
                     # Convert the QuerySet to a Python set and perform the
@@ -168,8 +168,8 @@ class SearchModel(object):
                     else:
                         field_result_set &= term_query_result_set
 
-                    logger.debug('term_query_result_set: %s' % term_query_result_set)
-                    logger.debug('field_result_set: %s' % field_result_set)
+                    logger.debug('term_query_result_set: %s', term_query_result_set)
+                    logger.debug('field_result_set: %s', field_result_set)
 
                 if global_and_search:
                     if not model_result_set:

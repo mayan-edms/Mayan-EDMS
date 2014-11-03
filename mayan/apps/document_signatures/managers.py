@@ -43,7 +43,7 @@ class DocumentVersionSignatureManager(models.Manager):
                 return False
 
     def has_embedded_signature(self, document):
-        logger.debug('document: %s' % document)
+        logger.debug('document: %s', document)
 
         try:
             document_signature = self.get_document_signature(document)

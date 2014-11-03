@@ -261,13 +261,13 @@ def _lazy_load(fn):
 
 
 def load_backend(backend_string):
-    logger.debug('loading: %s' % backend_string)
+    logger.debug('loading: %s', backend_string)
     module_name, klass = backend_string.rsplit('.', 1)
 
     try:
         return getattr(import_module(module_name), klass)
     except ImportError as exception:
-        logger.debug('error importing: %s; %s' % (backend_string, exception))
+        logger.debug('error importing: %s; %s', backend_string, exception)
         raise
 
 

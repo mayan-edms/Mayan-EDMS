@@ -148,7 +148,7 @@ class GPG(object):
         else:
             verify = self.gpg.verify_file(input_descriptor)
 
-        logger.debug('verify.status: %s' % getattr(verify, 'status', None))
+        logger.debug('verify.status: %s', getattr(verify, 'status', None))
         if verify:
             logger.debug('verify ok')
             return verify
@@ -278,7 +278,7 @@ class GPG(object):
 
     def import_key(self, key_data):
         import_result = self.gpg.import_keys(key_data)
-        logger.debug('import_result: %s' % import_result)
+        logger.debug('import_result: %s', import_result)
 
         if import_result:
             return Key.get(self, import_result.fingerprints[0], secret=False)

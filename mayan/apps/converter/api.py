@@ -101,11 +101,11 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
 
 
 def get_page_count(input_filepath):
-    logger.debug('office_converter: %s' % office_converter)
+    logger.debug('office_converter: %s', office_converter)
     if office_converter:
         try:
             office_converter.convert(input_filepath)
-            logger.debug('office_converter.exists: %s' % office_converter.exists)
+            logger.debug('office_converter.exists: %s', office_converter.exists)
             if office_converter.exists:
                 input_filepath = office_converter.output_filepath
 

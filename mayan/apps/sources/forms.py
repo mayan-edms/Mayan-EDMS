@@ -63,7 +63,7 @@ class StagingUploadForm(UploadBaseForm):
                 (staging_file.encoded_filename, unicode(staging_file)) for staging_file in self.source.get_files()
             ]
         except Exception as exception:
-            logger.error('exception: %s' % exception)
+            logger.error('exception: %s', exception)
             pass
 
         # Put staging_list field first in the field order list

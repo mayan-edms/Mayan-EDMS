@@ -224,7 +224,7 @@ class EmailBaseModel(IntervalBaseModel):
 
         for part in email.walk():
             disposition = part.get('Content-Disposition', 'none')
-            logger.debug('Disposition: %s' % disposition)
+            logger.debug('Disposition: %s', disposition)
 
             if disposition.startswith('attachment'):
                 raw_filename = part.get_filename()
@@ -235,7 +235,7 @@ class EmailBaseModel(IntervalBaseModel):
                     filename = _('attachment-%i') % counter
                     counter += 1
 
-                logger.debug('filename: %s' % filename)
+                logger.debug('filename: %s', filename)
 
                 file_object = Attachment(part, name=filename)
                 source.upload_file(file_object, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
@@ -253,8 +253,8 @@ class POP3Email(EmailBaseModel):
     def check_source(self):
         try:
             logger.debug('Starting POP3 email fetch')
-            logger.debug('host: %s' % self.host)
-            logger.debug('ssl: %s' % self.ssl)
+            logger.debug('host: %s', self.host)
+            logger.debug('ssl: %s', self.ssl)
 
             if self.ssl:
                 mailbox = poplib.POP3_SSL(self.host, self.port)
@@ -268,12 +268,12 @@ class POP3Email(EmailBaseModel):
 
             logger.debug('messages_info:')
             logger.debug(messages_info)
-            logger.debug('messages count: %s' % len(messages_info[1]))
+            logger.debug('messages count: %s', len(messages_info[1]))
 
             for message_info in messages_info[1]:
                 message_number, message_size = message_info.split()
-                logger.debug('message_number: %s' % message_number)
-                logger.debug('message_size: %s' % message_size)
+                logger.debug('message_number: %s', message_number)
+                logger.debug('message_size: %s', message_size)
 
                 complete_message = '\n'.join(mailbox.retr(message_number)[1])
 
@@ -282,7 +282,7 @@ class POP3Email(EmailBaseModel):
 
             mailbox.quit()
         except Exception as exception:
-            logger.error('Unhandled exception: %s' % exception)
+            logger.error('Unhandled exception: %s', exception)
             # TODO: Add user notification
 
     class Meta:
@@ -299,8 +299,8 @@ class IMAPEmail(EmailBaseModel):
     def check_source(self):
         try:
             logger.debug('Starting IMAP email fetch')
-            logger.debug('host: %s' % self.host)
-            logger.debug('ssl: %s' % self.ssl)
+            logger.debug('host: %s', self.host)
+            logger.debug('ssl: %s', self.ssl)
 
             if self.ssl:
                 mailbox = imaplib.IMAP4_SSL(self.host, self.port)
@@ -313,10 +313,10 @@ class IMAPEmail(EmailBaseModel):
             status, data = mailbox.search(None, 'NOT', 'DELETED')
             if data:
                 messages_info = data[0].split()
-                logger.debug('messages count: %s' % len(messages_info))
+                logger.debug('messages count: %s', len(messages_info))
 
                 for message_number in messages_info:
-                    logger.debug('message_number: %s' % message_number)
+                    logger.debug('message_number: %s', message_number)
                     status, data = mailbox.fetch(message_number, '(RFC822)')
                     EmailBaseModel.process_message(source=self, message=data[0][1])
                     mailbox.store(message_number, '+FLAGS', '\\Deleted')
@@ -325,7 +325,7 @@ class IMAPEmail(EmailBaseModel):
             mailbox.close()
             mailbox.logout()
         except Exception as exception:
-            logger.error('Unhandled exception: %s' % exception)
+            logger.error('Unhandled exception: %s', exception)
             # TODO: Add user notification
 
     class Meta:

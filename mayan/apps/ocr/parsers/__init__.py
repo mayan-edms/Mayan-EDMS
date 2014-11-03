@@ -36,8 +36,8 @@ def register_parser(mimetypes, parsers):
 
 def parse_document_page(document_page, descriptor=None, mimetype=None):
     logger.debug('executing')
-    logger.debug('document_page: %s' % document_page)
-    logger.debug('document mimetype: %s' % document_page.document.file_mimetype)
+    logger.debug('document_page: %s', document_page)
+    logger.debug('document mimetype: %s', document_page.document.file_mimetype)
 
     if not mimetype:
         mimetype = document_page.document.file_mimetype
@@ -45,7 +45,7 @@ def parse_document_page(document_page, descriptor=None, mimetype=None):
         if mimetype not in CONVERTER_OFFICE_FILE_MIMETYPES:
             mimetype = 'text/plain'
             logger.debug('fallback to mimetype text/plain')
-    logger.debug('used mimetype: %s' % mimetype)
+    logger.debug('used mimetype: %s', mimetype)
 
     try:
         for parser in mimetype_registry[mimetype]:
@@ -70,7 +70,7 @@ class Parser(object):
     """
 
     def parse(self, document_page, descriptor=None):
-        raise NotImplementedError("Your %s class has not defined a parse() method, which is required." % self.__class__.__name__)
+        raise NotImplementedError('Your %s class has not defined a parse() method, which is required.', self.__class__.__name__)
 
 
 class SlateParser(Parser):
@@ -129,7 +129,7 @@ class PopplerParser(Parser):
         self.pdftotext_path = PDFTOTEXT_PATH if PDFTOTEXT_PATH else u'/usr/bin/pdftotext'
         if not os.path.exists(self.pdftotext_path):
             raise ParserError('cannot find pdftotext executable')
-        logger.debug('self.pdftotext_path: %s' % self.pdftotext_path)
+        logger.debug('self.pdftotext_path: %s', self.pdftotext_path)
 
     def parse(self, document_page, descriptor=None):
         logger.debug('parsing PDF with PopplerParser')
@@ -144,7 +144,7 @@ class PopplerParser(Parser):
 
         logger.debug('document_file: %s', document_file)
 
-        logger.debug('parsing PDF page %s' % pagenum)
+        logger.debug('parsing PDF page %s', pagenum)
 
         command = []
         command.append(self.pdftotext_path)

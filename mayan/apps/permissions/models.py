@@ -151,7 +151,7 @@ class StoredPermission(models.Model):
 
     def requester_has_this(self, actor):
         actor = AnonymousUserSingleton.objects.passthru_check(actor)
-        logger.debug('actor: %s' % actor)
+        logger.debug('actor: %s', actor)
         if isinstance(actor, User):
             if actor.is_superuser or actor.is_staff:
                 return True

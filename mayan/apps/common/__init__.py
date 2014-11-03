@@ -49,7 +49,7 @@ def create_superuser_and_anonymous_user(sender, **kwargs):
             try:
                 auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
             except auth_models.User.DoesNotExist:
-                logger.info('Creating super admin user -- login: %s, password: %s' % (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD))
+                logger.info('Creating super admin user -- login: %s, password: %s', AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD)
                 assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'autoadmin@autoadmin.com', AUTO_ADMIN_PASSWORD)
                 admin = auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
                 # Store the auto admin password properties to display the first login message
@@ -59,7 +59,7 @@ def create_superuser_and_anonymous_user(sender, **kwargs):
                 auto_admin_properties.password_hash = admin.password
                 auto_admin_properties.save()
             else:
-                logger.info('Super admin user already exists. -- login: %s' % AUTO_ADMIN_USERNAME)
+                logger.info('Super admin user already exists. -- login: %s', AUTO_ADMIN_USERNAME)
 
 
 @receiver(post_save, dispatch_uid='auto_admin_account_passwd_change', sender=User)

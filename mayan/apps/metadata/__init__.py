@@ -36,7 +36,7 @@ logger = logging.getLogger(__name__)
 @receiver(post_document_type_change, dispatch_uid='post_post_document_type_change_metadata', sender=Document)
 def post_post_document_type_change_metadata(sender, instance, **kwargs):
     logger.debug('received post_document_type_change')
-    logger.debug('instance: %s' % instance)
+    logger.debug('instance: %s', instance)
     # Delete existing document metadata
     for metadata in instance.metadata.all():
         metadata.delete()
