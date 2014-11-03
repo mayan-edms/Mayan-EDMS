@@ -51,7 +51,7 @@ class Statistic(object):
         return unicode(self.label)
 
     def get_results(self, *args, **kwargs):
-        return NotImplemented
+        return NotImplementedError
 
     @property
     def id(self):

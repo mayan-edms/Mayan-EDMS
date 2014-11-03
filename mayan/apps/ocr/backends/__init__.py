@@ -1,3 +1,3 @@
 class BackendBase(object):
-    def execute(input_filename, language=None):
-        raise NotImplemented
+    def execute(input_filename, language=None):  # NOQA
+        raise NotImplementedError
