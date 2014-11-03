@@ -39,6 +39,21 @@ class APIFolderListView(generics.ListCreateAPIView):
         """Create a new folder."""
         return super(APIFolderListView, self).post(*args, **kwargs)
 
+    def create(self, request, *args, **kwargs):
+        data = request.DATA
+        serializer = self.get_serializer(data=request.DATA, files=request.FILES)
+
+        if serializer.is_valid():
+            serializer.object.user = request.user
+            self.pre_save(serializer.object)
+            self.object = serializer.save(force_insert=True)
+            self.post_save(self.object, created=True)
+            headers = self.get_success_headers(serializer.data)
+            return Response(serializer.data, status=status.HTTP_201_CREATED,
+                            headers=headers)
+
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class APIFolderView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = FolderSerializer
@@ -86,8 +101,7 @@ class APIFolderDocumentListView(generics.ListAPIView):
         except PermissionDenied:
             AccessEntry.objects.check_access(PERMISSION_FOLDER_VIEW, self.request.user, folder)
 
-        queryset = folder.documents.all()
-        return queryset
+        return folder.documents.all()
 
 
 class APIDocumentFolderListView(generics.ListAPIView):
@@ -123,6 +137,7 @@ class APIFolderDocumentView(views.APIView):
         folder.documents.remove(document)
         return Response(status=status.HTTP_204_NO_CONTENT)
 
+    # TODO: move this method as post of APIFolderDocumentListView
     def post(self, request, *args, **kwargs):
         """Add a document to the selected folder."""
 
