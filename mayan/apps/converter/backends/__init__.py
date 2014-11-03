@@ -14,5 +14,5 @@ class ConverterBase(object):
     def get_available_transformations(self):
         raise NotImplementedError("Your %s class has not defined a get_available_transformations() method, which is required." % self.__class__.__name__)
 
-    def get_page_count(self):
+    def get_page_count(self, input_filepath):
         raise NotImplementedError("Your %s class has not defined a get_page_count() method, which is required." % self.__class__.__name__)
