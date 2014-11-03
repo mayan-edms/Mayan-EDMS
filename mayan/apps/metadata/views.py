@@ -93,8 +93,8 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(request, _(u'Error editing metadata for document %(document)s; %(error)s.') % {
-                                'document': document, 'error': error})
+                            messages.error(request, _(u'Error editing metadata for document %(document)s; %(exception)s.') % {
+                                'document': document, 'exception': ', '.join(exception.messages)})
                 else:
                     messages.success(request, _(u'Metadata for document %s edited successfully.') % document)
 
