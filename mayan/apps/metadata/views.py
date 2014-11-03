@@ -39,7 +39,10 @@ def metadata_edit(request, document_id=None, document_id_list=None):
             messages.warning(request, _(u'The selected document doesn\'t have any metadata.'))
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        documents = [get_object_or_404(Document.objects.select_related('document_type'), pk=document_id) for document_id in document_id_list.split(',')]
+        if len(set([document.document_type.pk for document in documents])) > 1:
+            messages.error(request, _(u'Only select documents of the same type.'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
@@ -55,6 +58,8 @@ def metadata_edit(request, document_id=None, document_id_list=None):
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
 
     metadata = {}
+    initial = []
+
     for document in documents:
         document.add_as_recent_document_for_user(request.user)
 
@@ -66,7 +71,6 @@ def metadata_edit(request, document_id=None, document_id_list=None):
             else:
                 metadata[item.metadata_type] = [value] if value else []
 
-    initial = []
     for key, value in metadata.items():
         initial.append({
             'metadata_type': key,
@@ -123,7 +127,10 @@ def metadata_add(request, document_id=None, document_id_list=None):
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        documents = [get_object_or_404(Document.objects.select_related('document_type'), pk=document_id) for document_id in document_id_list.split(',')]
+        if len(set([document.document_type.pk for document in documents])) > 1:
+            messages.error(request, _(u'Only select documents of the same type.'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
@@ -199,7 +206,10 @@ def metadata_remove(request, document_id=None, document_id_list=None):
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        documents = [get_object_or_404(Document.objects.select_related('document_type'), pk=document_id) for document_id in document_id_list.split(',')]
+        if len(set([document.document_type.pk for document in documents])) > 1:
+            messages.error(request, _(u'Only select documents of the same type.'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
