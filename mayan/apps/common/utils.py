@@ -169,22 +169,6 @@ def get_object_name(obj, display_object_type=True):
         return u'%s' % (label)
 
 
-def return_diff(old_obj, new_obj, attrib_list=None):
-    diff_dict = {}
-    if not attrib_list:
-        attrib_list = old_obj.__dict__.keys()
-    for attrib in attrib_list:
-        old_val = getattr(old_obj, attrib)
-        new_val = getattr(new_obj, attrib)
-        if old_val != new_val:
-            diff_dict[attrib] = {
-                'old_value': old_val,
-                'new_value': new_val
-            }
-
-    return diff_dict
-
-
 def validate_path(path):
     if not os.path.exists(path):
         # If doesn't exist try to create it
@@ -209,10 +193,6 @@ def encapsulate(function):
     # Changeset 16045
     # http://stackoverflow.com/questions/6861601/cannot-resolve-callable-context-variable/6955045#6955045
     return lambda: function
-
-
-def id_generator(size=6, chars=string.ascii_uppercase + string.digits):
-    return ''.join(random.choice(chars) for x in range(size))
 
 
 def get_descriptor(file_input, read=True):
@@ -248,16 +228,6 @@ def copyfile(source, destination, buffer_size=1024 * 1024):
 
     source_descriptor.close()
     destination_descriptor.close()
-
-
-def _lazy_load(fn):
-    _cached = []
-
-    def _decorated():
-        if not _cached:
-            _cached.append(fn())
-        return _cached[0]
-    return _decorated
 
 
 def load_backend(backend_string):
