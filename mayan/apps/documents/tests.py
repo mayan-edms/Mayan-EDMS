@@ -64,7 +64,7 @@ class DocumentTestCase(TestCase):
             'version_update': VERSION_UPDATE_MAJOR,
         }
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            new_version = self.document.new_version(file_object=File(file_object), **new_version_data)
+            self.document.new_version(file_object=File(file_object), **new_version_data)
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '3.0.0')
 

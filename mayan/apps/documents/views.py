@@ -422,7 +422,6 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
         post_redirect = reverse('documents:document_view_simple', args=[documents[0].pk])
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-        post_redirect = None
     else:
         messages.error(request, _(u'Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
