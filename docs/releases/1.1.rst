@@ -71,6 +71,7 @@ Add new static media::
 
 Remove unused dependencies::
 
+    $ pip uninstall APScheduler
     $ pip uninstall django-taggit
 
 
