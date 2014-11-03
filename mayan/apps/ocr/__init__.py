@@ -14,6 +14,7 @@ from main.api import register_maintenance_links
 from navigation.api import register_links
 from navigation.links import link_spacer
 from project_tools.api import register_tool
+from rest_api.classes import APIEndPoint
 
 from .links import (all_document_ocr_cleanup, ocr_tool_link,
                     queue_document_list, queue_document_multiple_delete,
@@ -56,3 +57,5 @@ Document.add_to_class('submit_for_ocr', document_ocr_submit)
 class_permissions(Document, [PERMISSION_OCR_DOCUMENT])
 
 register_tool(ocr_tool_link)
+
+APIEndPoint('ocr')
