@@ -153,7 +153,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
 
         # Upload the test document
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'document_type_id': self.document_type.pk})
+            self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'document_type_id': self.document_type.pk})
         self.assertEqual(Document.objects.count(), 1)
 
         self.document = Document.objects.all().first()
@@ -185,7 +185,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
 
         # Upload the test document
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'label': 'test document', 'description': TEST_DOCUMENT_DESCRIPTION, 'document_type_id': self.document_type.pk})
+            self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'label': 'test document', 'description': TEST_DOCUMENT_DESCRIPTION, 'document_type_id': self.document_type.pk})
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.all().first()
