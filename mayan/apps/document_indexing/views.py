@@ -28,9 +28,8 @@ from .permissions import (PERMISSION_DOCUMENT_INDEXING_CREATE,
                           PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
                           PERMISSION_DOCUMENT_INDEXING_SETUP,
                           PERMISSION_DOCUMENT_INDEXING_VIEW)
-from .tools import do_rebuild_all_indexes
+from .tasks import task_do_rebuild_all_indexes
 from .widgets import index_instance_item_link, get_breadcrumbs, node_level
-
 
 # Setup views
 
@@ -381,17 +380,8 @@ def rebuild_index_instances(request):
             'message': _(u'On large databases this operation may take some time to execute.'),
         }, context_instance=RequestContext(request))
     else:
-        try:
-            warnings = do_rebuild_all_indexes()
-            messages.success(request, _(u'Index rebuild completed successfully.'))
-            for warning in warnings:
-                messages.warning(request, warning)
-
-        except Exception as exception:
-            if settings.DEBUG:
-                raise
-            messages.error(request, _(u'Index rebuild error: %s') % exception)
-
+        task_do_rebuild_all_indexes.apply_async(queue='tools')
+        messages.success(request, _(u'Index rebuild queued successfully.'))
         return HttpResponseRedirect(next)
 
 

@@ -15,5 +15,3 @@ def do_rebuild_all_indexes():
     DocumentRenameCount.objects.all().delete()
     for document in Document.objects.all():
         update_indexes(document)
-
-    return []  # Warnings - None

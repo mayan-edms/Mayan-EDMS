@@ -11,7 +11,6 @@ from navigation.api import register_links, register_top_menu
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 
-from .api import update_indexes, delete_indexes
 from .links import (document_index_list, document_index_main_menu_link,
                     index_parent, index_setup, index_setup_create,
                     index_setup_document_types, index_setup_delete,
@@ -19,27 +18,28 @@ from .links import (document_index_list, document_index_main_menu_link,
                     rebuild_index_instances, template_node_create,
                     template_node_delete, template_node_edit)
 from .models import Index, IndexTemplateNode, IndexInstanceNode
+from .tasks import task_delete_indexes, task_update_indexes
 
 
 @receiver(pre_delete, dispatch_uid='document_index_delete', sender=Document)
 def document_index_delete(sender, **kwargs):
-    delete_indexes(kwargs['instance'])
+    task_delete_indexes.apply_async(kwargs=dict(document_id=kwargs['instance'].pk), queue='indexing')
 
 
 @receiver(post_save, dispatch_uid='document_metadata_index_update', sender=DocumentMetadata)
 def document_metadata_index_update(sender, **kwargs):
-    delete_indexes(kwargs['instance'].document)
-    update_indexes(kwargs['instance'].document)
+    task_delete_indexes.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
+    task_update_indexes.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
 
 
 @receiver(pre_delete, dispatch_uid='document_metadata_index_delete', sender=DocumentMetadata)
 def document_metadata_index_delete(sender, **kwargs):
-    delete_indexes(kwargs['instance'].document)
+    task_delete_indexes.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
 
 
 @receiver(post_delete, dispatch_uid='document_metadata_index_post_delete', sender=DocumentMetadata)
 def document_metadata_index_post_delete(sender, **kwargs):
-    update_indexes(kwargs['instance'].document)
+    task_update_indexes.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
 
 
 register_maintenance_links([rebuild_index_instances], namespace='document_indexing', title=_(u'Indexes'))
