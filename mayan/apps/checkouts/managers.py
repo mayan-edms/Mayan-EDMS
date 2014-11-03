@@ -83,7 +83,7 @@ class DocumentCheckoutManager(models.Manager):
 
                 if user == checkout_info.user_object:
                     # Allow anything to the user who checked out this document
-                    True
+                    return True
                 else:
                     # If not original user check to see if user has global or this document's PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE permission
                     try:
