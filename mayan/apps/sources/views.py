@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-import tempfile
-
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
@@ -10,7 +8,6 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.http import urlencode
-from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
@@ -20,7 +17,7 @@ from common.views import MultiFormView
 from documents.models import DocumentType, Document
 from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
                                    PERMISSION_DOCUMENT_NEW_VERSION)
-from documents.tasks import task_new_document, task_upload_new_version
+from documents.tasks import task_upload_new_version
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 

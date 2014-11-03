@@ -35,8 +35,8 @@ class SplitHiddenDeltaWidget(forms.widgets.SplitDateTimeWidget):
     """
     is_hidden = True
 
-    def __init__(self, attrs=None):
-        super(SplitHiddenDeltaWidget, self).__init__(attrs, date_format, time_format)
+    def __init__(self, *args, **kwargs):
+        super(SplitHiddenDeltaWidget, self).__init__(*args, **kwargs)
         for widget in self.widgets:
             widget.input_type = 'hidden'
             widget.is_hidden = True

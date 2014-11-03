@@ -19,7 +19,6 @@ from common.utils import encapsulate, generate_choices_w_labels
 from common.views import assign_remove
 
 from .api import save_metadata_list
-from .classes import MetadataObjectWrapper
 from .forms import (AddMetadataForm, MetadataFormSet, MetadataRemoveFormSet,
                     MetadataTypeForm)
 from .models import DocumentMetadata, MetadataType

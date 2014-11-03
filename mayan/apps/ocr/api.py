@@ -112,7 +112,7 @@ def clean_pages():
     """
     for page in DocumentPage.objects.all():
         if page.content:
-            page.content = ocr_cleanup(document.language, page.content)
+            page.content = ocr_cleanup(page.document.language, page.content)
             page.save()
 
 

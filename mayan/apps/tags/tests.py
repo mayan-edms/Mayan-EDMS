@@ -1,7 +1,6 @@
 import os
 
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.core.files.base import File
 from django.test import TestCase
 

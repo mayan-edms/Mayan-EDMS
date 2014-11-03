@@ -53,8 +53,6 @@ class APIAppView(generics.GenericAPIView):
     serializer_class = APIAppSerializer
 
     def get(self, request, app_name, format=None):
-        result = []
-
         api_app = APIEndPoint.get(app_name)
 
         return Response({

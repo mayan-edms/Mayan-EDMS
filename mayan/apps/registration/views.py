@@ -31,5 +31,4 @@ def form_view(request):
     return render_to_response('main/generic_form.html', {
         'title': _(u'Registration form'),
         'form': form,
-    },
-    context_instance=RequestContext(request))
+    }, context_instance=RequestContext(request))

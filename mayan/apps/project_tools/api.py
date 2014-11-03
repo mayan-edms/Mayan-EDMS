@@ -1,7 +1,5 @@
 from __future__ import absolute_import
 
-from . import tool_link
-
 tool_items = []
 
 

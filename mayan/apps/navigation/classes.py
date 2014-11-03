@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 import inspect
 import logging
-import re
 import urllib
 import urlparse
 
@@ -257,7 +256,7 @@ class Link(object):
         args = []
         kwargs = {}
 
-        if type(src_args) == type([]):
+        if isinstance(src_args, list):
             for i in src_args:
                 try:
                     # Try to execute as a function
@@ -268,7 +267,7 @@ class Link(object):
                         args.append(val)
                 else:
                     args.append(val)
-        elif type(src_args) == type({}):
+        elif isinstance(src_args, dict):
             for key, value in src_args.items():
                 try:
                     # Try to execute as a function

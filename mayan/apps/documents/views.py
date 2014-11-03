@@ -1,6 +1,5 @@
 from __future__ import absolute_import
 
-import copy
 import logging
 import urlparse
 
@@ -18,13 +17,11 @@ import sendfile
 
 from acls.models import AccessEntry
 from common.compressed_files import CompressedFile
-from common.utils import (encapsulate, pretty_size, parse_range, return_diff,
-                          urlquote)
+from common.utils import encapsulate, pretty_size, parse_range, urlquote
 from common.views import SingleObjectListView
 from common.widgets import two_state_template
 from converter.literals import (DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER,
                                 DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL)
-from converter.office_converter import OfficeConverter
 from filetransfers.api import serve_file
 from history.api import create_history
 from navigation.utils import resolve_to_name

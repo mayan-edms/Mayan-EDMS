@@ -11,8 +11,7 @@ from common.forms import DetailForm
 from common.widgets import TextAreaDiv
 
 from .models import (Document, DocumentType, DocumentPage,
-                     DocumentPageTransformation, DocumentTypeFilename,
-                     DocumentVersion)
+                     DocumentPageTransformation, DocumentTypeFilename)
 from .literals import DEFAULT_ZIP_FILENAME
 from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
 

@@ -1,7 +1,6 @@
 from __future__ import absolute_import
 
 from django.conf.urls import include, patterns, url
-from django.utils.importlib import import_module
 
 from common.utils import load_backend
 
@@ -25,7 +24,7 @@ class APIEndPoint(object):
         self.endpoints = []
         try:
             api_urls = load_backend('{}.urls.api_urls'.format(app_name or name))
-        except Exception as exception:
+        except Exception:
             # Ignore import time errors
             pass
         else:

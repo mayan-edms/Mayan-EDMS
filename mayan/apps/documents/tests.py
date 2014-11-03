@@ -167,7 +167,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
         self.failUnlessEqual(self.document.page_count, 47)
 
         # Delete the document
-        response = self.client.post(reverse('documents:document_delete', args=[self.document.pk]))
+        self.client.post(reverse('documents:document_delete', args=[self.document.pk]))
         self.assertEqual(Document.objects.count(), 0)
 
     def test_issue_25(self):
@@ -198,7 +198,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
         self.failUnlessEqual(document.description, '')
 
         # Test for issue 25 during editing
-        response = self.client.post(reverse('documents:document_edit', args=[document.pk]), {'description': TEST_DOCUMENT_DESCRIPTION})
+        self.client.post(reverse('documents:document_edit', args=[document.pk]), {'description': TEST_DOCUMENT_DESCRIPTION})
         # Fetch document again and test description
         document = Document.objects.all().first()
         self.failUnlessEqual(document.description, TEST_DOCUMENT_DESCRIPTION)
@@ -300,7 +300,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
 
         # Upload the test document
         with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
-            response = self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'document_type_id': self.document_type.pk})
+            self.client.post(reverse('sources:upload_interactive'), {'file': file_descriptor, 'document_type_id': self.document_type.pk})
         self.assertEqual(Document.objects.count(), 1)
         self.document = Document.objects.first()
 

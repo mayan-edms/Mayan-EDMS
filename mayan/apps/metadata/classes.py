@@ -43,7 +43,7 @@ class DocumentTypeMetadataTypeManager(object):
             return MetadataType.objects.none()
 
     def add(self, metadata_type, required=False):
-        DocumentTypeMetadataType.objects.create(document_type=self.document_type, metadata_type= metadata_type, required=required)
+        DocumentTypeMetadataType.objects.create(document_type=self.document_type, metadata_type=metadata_type, required=required)
 
     def remove(self, metadata_type):
-        DocumentTypeMetadataType.objects.get(document_type=self.document_type, metadata_type= metadata_type).delete()
+        DocumentTypeMetadataType.objects.get(document_type=self.document_type, metadata_type=metadata_type).delete()

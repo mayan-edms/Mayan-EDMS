@@ -6,7 +6,7 @@ from django.core.files import File
 from mayan.celery import app
 
 from common.models import SharedUploadedFile
-from documents.models import Document, DocumentType
+from documents.models import DocumentType
 
 from .models import Source
 

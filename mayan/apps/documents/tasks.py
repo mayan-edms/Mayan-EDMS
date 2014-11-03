@@ -41,7 +41,7 @@ def task_new_document(document_type_id, shared_uploaded_file_id, label, descript
         user = None
 
     with File(file=shared_uploaded_file.file) as file_object:
-        new_version = Document.objects.new_document(document_type=document_type, expand=expand, file_object=file_object, label=label, description=description, language=language, user=user)
+        Document.objects.new_document(document_type=document_type, expand=expand, file_object=file_object, label=label, description=description, language=language, user=user)
 
     shared_uploaded_file.delete()
 
