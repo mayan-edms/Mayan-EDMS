@@ -165,9 +165,7 @@ class Link(object):
         # TODO: improve name to 'injected...'
         # TODO: remove, only used by staging files
         try:
-            """
-            Check for and inject a temporary navigation dictionary
-            """
+            # Check for and inject a temporary navigation dictionary
             temp_navigation_links = Variable('temporary_navigation_links').resolve(context)
             if temp_navigation_links:
                 links_dict.update(temp_navigation_links)
