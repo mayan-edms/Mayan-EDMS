@@ -6,6 +6,7 @@ from django.db.models.signals import post_save
 
 from navigation.api import register_links
 from project_setup.api import register_setup
+from rest_api.classes import APIEndPoint
 
 from .models import Role
 from .links import (permission_grant, permission_revoke, role_create,
@@ -36,3 +37,5 @@ def user_post_save(sender, instance, **kwargs):
 post_save.connect(user_post_save, sender=User)
 
 register_setup(role_list)
+
+APIEndPoint('permissions')

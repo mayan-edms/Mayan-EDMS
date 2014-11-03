@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 from django.conf.urls import patterns, url
 
+from .api_views import APIRoleListView, APIRoleView
 from .views import RoleCreateView, RoleDeleteView, RoleEditView
 
 urlpatterns = patterns('permissions.views',
@@ -14,4 +15,9 @@ urlpatterns = patterns('permissions.views',
 
     url(r'^permissions/multiple/grant/$', 'permission_grant', (), 'permission_multiple_grant'),
     url(r'^permissions/multiple/revoke/$', 'permission_revoke', (), 'permission_multiple_revoke'),
+)
+
+api_urls = patterns('',
+    url(r'^roles/$', APIRoleListView.as_view(), name='role-list'),
+    url(r'^roles/(?P<pk>[0-9]+)/$', APIRoleView.as_view(), name='role-detail'),
 )
