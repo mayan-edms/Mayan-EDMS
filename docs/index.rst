@@ -20,7 +20,7 @@ Mayan EDMS documentation
 Getting help
 ============
 
-* Try the :doc:`FAQ <faq/index>` -- it's got answers to many common questions.
+* Try the :doc:`FAQ <topics/faq>` -- it's got answers to many common questions.
 
 * Search for information in the `archives of the mayan-edms mailing list`_, or
   `post a question`_.  If you prefer news servers, use the gateway provided by Gname_.
@@ -35,11 +35,11 @@ Getting help
 First steps
 ===========
 
-  :doc:`Overview <intro/overview>` |
-  :doc:`Features <intro/features>` |
-  :doc:`Requirements <intro/requirements>` |
-  :doc:`Installation <intro/installation>` |
-  :doc:`Getting started <intro/getting_started>`
+  :doc:`Overview <topics/overview>` |
+  :doc:`Features <topics/features>` |
+  :doc:`Requirements <topics/requirements>` |
+  :doc:`Installation <topics/installation>` |
+  :doc:`Getting started <topics/getting_started>`
 
 Understanding Mayan EDMS
 ========================
@@ -73,8 +73,5 @@ For developers
 Credits
 =======
 
-  :doc:`Contributors <credits/contributors>` |
-  :doc:`Licensing <credits/license>`
-
-
-
+  :doc:`Contributors <topics/contributors>` |
+  :doc:`Licensing <topics/license>`

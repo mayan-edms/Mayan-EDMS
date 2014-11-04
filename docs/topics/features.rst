@@ -14,7 +14,7 @@ Features
 
 * Collaboration tools.
 
-  * Discuss documents, comment on new version of a document.
+  * Discuss documents, or comment on new versions of a document.
 
 * Office document format support.
 
@@ -23,22 +23,22 @@ Features
 * User defined metadata fields and meta data sets.
 
   * Metadata fields can be grouped into sets per technical, legal or structural requirements such as the `Dublin core`_.
-    
+
 * Dynamic default values for metadata.
-    
+
   * Metadata fields can have an initial value, which can be static or determined by an user provided Python code snippet.
 
 * Filesystem integration.
-    
+
   * If enabled, the document database index can be mirrored in the filesystem of the host and shared via Samba_ or any other sharing method to client computers on a network.
-    
+
 * User defined document unique identifier and checksum algorithms.
-    
+
   * Users can alter the default method used to uniquely indentify documents.
 
 * Documents can be uploaded from different sources.
 
-  * Local file or server side file uploads.
+  * Local file or server side file uploads, multifunctional copier, or even via email.
 
 * Batch upload many documents with the same metadata.
 
@@ -53,7 +53,7 @@ Features
   * Documents can be searched by their text content, their metadata or any other file attribute such as name, extension, etc.
 
 * Configurable document grouping.
-    
+
   * Automatic linking of documents based on metadata values or document properties.
 
 * :doc:`Roles support <../topics/permissions>`.
@@ -72,7 +72,7 @@ Features
 
   * The task of transcribing text from documents via OCR can be distributed among several physical or virtual computers to decrease load and increase availability.
 
-* Multilingual user interface (English, Spanish, Portuguese, Russian, Polish).
+* Multilingual user interface.
 
   * **Mayan EDMS** is written using the Django_ framework, which natively supports Unicode. Together with the use of text templates **Mayan EDMS** can be translated to practically any language spoken in the world.
     For a list of translated languages have a look at Transifex_.
@@ -81,21 +81,13 @@ Features
 
   * Multilingual OCR is provided as supported by the available language backends of the OCR engine tesseract.
 
-* Search of duplicates.
-
-  * Duplicate documents can easily be searched.
-
 * :doc:`Plugable storage backends <../topics/file_storage>` (File based and GridFS included).
-    
+
   * Very easy to use 3rd party plugins such as the ones available for Amazon EC2.
 
 * Color coded tagging.
 
   * Labeled and color coded tags can be assigned for intuitive recognition.
-
-* Staging folders to receive scanned documents directly from network attached scanners.
-
-  * Preview scanned files even before uploading them.
 
 
 .. _`Dublin core`: http://dublincore.org/metadata-basics/

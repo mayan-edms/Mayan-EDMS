@@ -12,8 +12,5 @@ Mayan EDMS documentation contents
 .. toctree::
     :maxdepth: 3
 
-    intro/index
     topics/index
-    credits/index
     releases/index
-    faq/index

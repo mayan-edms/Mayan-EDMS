@@ -59,7 +59,7 @@ Contribute
 .. _Mailing list (via Google Groups): http://groups.google.com/group/mayan-edms
 .. _Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0.txt
 .. _`the repository`: http://github.com/mayan-edms/mayan-edms
-.. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/master/docs/credits/contributors.rst
+.. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/master/docs/topics/contributors.rst
 
 .. |Build Status| image:: http://img.shields.io/travis/mayan-edms/mayan-edms/master.svg?style=flat
    :target: https://travis-ci.org/mayan-edms/mayan-edms

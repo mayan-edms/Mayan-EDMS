@@ -6,18 +6,26 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
 .. toctree::
    :maxdepth: 1
 
-   file_storage
-   initial_import
-   permissions
-   transformations
-   document_visualization
-   versioning
-   signatures
-   indexes
-   smart_links
-   tags
-   ocr
-   settings
+   contributors
    development
    documentation
+   document_visualization
+   faq
+   features
+   file_storage
+   getting_started
+   indexes
+   initial_import
+   installation
+   license
+   ocr
+   overview
+   permissions
+   requirements
+   settings
+   signatures
+   smart_links
+   tags
+   transformations
    translations
+   versioning
