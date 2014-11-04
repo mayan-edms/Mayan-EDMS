@@ -11,6 +11,8 @@ Being a Django_ and a Python_ project familiarity with these technologies is
 required to understand why **Mayan EDMS** does some of the things it does the way
 it does them.
 
+Before installing **Mayan EDMS**, the :doc:`binary requirements <requirements>` must be installed first:
+
 If using a Debian_ or Ubuntu_ based Linux distribution getting the executable requirements is as easy as::
 
     $ sudo apt-get install python-dev gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils -y
@@ -71,13 +73,9 @@ corresponding python database drivers and add the corresponding database setting
 to your settings file (see above) as shown here: https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-DATABASES
 
 
-.. _`vendor lock-in`: https://secure.wikimedia.org/wikipedia/en/wiki/Vendor_lock-in
 .. _Python: http://www.python.org/
 .. _Django: http://www.djangoproject.com/
-.. _OCR: https://secure.wikimedia.org/wikipedia/en/wiki/Optical_character_recognition
-.. _`Open source`: https://secure.wikimedia.org/wikipedia/en/wiki/Open_source
 .. _Django: http://www.djangoproject.com/
-.. _Apache: https://www.apache.org/
 .. _Debian: http://www.debian.org/
 .. _Ubuntu: http://www.ubuntu.com/
 .. _Download: https://github.com/mayan-edms/mayan-edms/archives/master
