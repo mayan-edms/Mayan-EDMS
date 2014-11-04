@@ -48,6 +48,20 @@ When submitting patches, please place your feature/change in its own branch prio
 .. _Downloads:  https://github.com/mayan-edms/mayan-edms/archives/master
 
 
+Steps to deploy a development version
+-------------------------------------
+.. code-block:: bash
+
+    $ git clone https://github.com/mayan-edms/mayan-edms.git
+    $ cd mayan-edms
+    $ git checkout development
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install -r requirements.txt
+    $ ./manage.py initialsetup
+    $ ./manage.py runserver
+
+
 Contributing changes
 --------------------
 Once your have create and committed some new code or feature, submit a Pull Request.
