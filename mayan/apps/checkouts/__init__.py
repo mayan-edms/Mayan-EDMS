@@ -7,6 +7,7 @@ from documents.models import Document
 from mayan.celery import app
 from history.api import register_history_type
 from navigation.api import register_links, register_top_menu
+from rest_api.classes import APIEndPoint
 
 from .events import (HISTORY_DOCUMENT_AUTO_CHECKED_IN,
                      HISTORY_DOCUMENT_CHECKED_OUT,
@@ -55,3 +56,5 @@ register_history_type(HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
 register_links(Document, [checkout_info], menu_name='form_header')
 register_links(['checkouts:checkout_info', 'checkouts:checkout_document', 'checkouts:checkin_document'], [checkout_document, checkin_document], menu_name="sidebar")
 register_top_menu(name='checkouts', link=checkout_list)
+
+APIEndPoint('checkouts')
