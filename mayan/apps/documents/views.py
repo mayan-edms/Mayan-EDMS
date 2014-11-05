@@ -253,33 +253,59 @@ def document_edit(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def document_document_type(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
+def document_document_type_edit(request, document_id=None, document_id_list=None):
+    post_action_redirect = None
+
+    if document_id:
+        documents = [get_object_or_404(Document, pk=document_id)]
+        post_action_redirect = reverse('documents:document_list_recent')
+    elif document_id_list:
+        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+    else:
+        messages.error(request, _(u'Must provide at least one document.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_PROPERTIES_EDIT])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_PROPERTIES_EDIT, request.user, document)
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_PROPERTIES_EDIT, request.user, documents, exception_on_empty=True)
+
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         form = DocumentTypeSelectForm(request.POST)
         if form.is_valid():
-            document.set_document_type(form.cleaned_data['document_type'])
-            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user})
-            document.add_as_recent_document_for_user(request.user)
 
-            messages.success(request, _(u'Document type for document "%s" changed successfully.') % document)
+            for document in documents:
+                document.set_document_type(form.cleaned_data['document_type'])
+                create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user})
+                document.add_as_recent_document_for_user(request.user)
 
-            return HttpResponseRedirect(document.get_absolute_url())
+            messages.success(request, _(u'Document type changed successfully.'))
+            return HttpResponseRedirect(next)
     else:
-        form = DocumentTypeSelectForm(initial={'document_type': document.document_type})
+        form = DocumentTypeSelectForm(initial={'document_type': documents[0].document_type})
 
-    return render_to_response('main/generic_form.html', {
+    context = {
         'form': form,
-        'object': document,
-        'title': _('Change document type of: %s') % document,
         'submit_label': _('Submit'),
-    }, context_instance=RequestContext(request))
+    }
+
+    if len(documents) == 1:
+        context['object'] = documents[0]
+        context['title'] = _(u'Are you sure you wish to change the type of the document: %s?') % ', '.join([unicode(d) for d in documents])
+    elif len(documents) > 1:
+        context['title'] = _(u'Are you sure you wish to change the type of the documents: %s?') % ', '.join([unicode(d) for d in documents])
+
+    return render_to_response('main/generic_form.html', context,
+                              context_instance=RequestContext(request))
+
+
+def document_multiple_document_type_edit(request):
+    return document_document_type_edit(
+        request, document_id_list=request.GET.get('id_list', [])
+    )
 
 
 # TODO: Get rid of this view and convert widget to use API and base64 only images

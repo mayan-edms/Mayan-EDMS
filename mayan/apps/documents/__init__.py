@@ -22,8 +22,9 @@ from .events import (HISTORY_DOCUMENT_CREATED,
                      HISTORY_DOCUMENT_DELETED, HISTORY_DOCUMENT_EDITED)
 from .links import (document_clear_image_cache,
                     document_clear_transformations, document_delete,
-                    document_document_type, document_download, document_edit,
-                    document_history_view, document_list,
+                    document_document_type_edit,
+                    document_multiple_document_type_edit, document_download,
+                    document_edit, document_history_view, document_list,
                     document_list_recent, document_missing_list,
                     document_multiple_delete,
                     document_multiple_clear_transformations,
@@ -74,12 +75,13 @@ register_links(DocumentTypeFilename, [document_type_filename_edit, document_type
 register_links([DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
-register_links(Document, [document_view_simple, document_edit, document_document_type, document_print, document_delete, document_download, document_clear_transformations, document_update_page_count])
-register_links([Document], [link_spacer, document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count], menu_name='multi_item_links')
+register_links(Document, [document_view_simple, document_edit, document_document_type_edit, document_print, document_delete, document_download, document_clear_transformations, document_update_page_count])
+register_links([Document], [link_spacer, document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count, document_multiple_document_type_edit], menu_name='multi_item_links')
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])
 secondary_menu_links = [document_list_recent, document_list]
+# TODO: register this at sources app too
 register_links(['documents:document_list_recent', 'documents:document_list', 'sources:document_create', 'sources:document_create_multiple', 'sources:upload_interactive', 'sources:staging_file_delete'], secondary_menu_links, menu_name='secondary_menu')
 register_links(Document, secondary_menu_links, menu_name='secondary_menu')
 

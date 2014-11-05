@@ -41,7 +41,7 @@ from .settings import (CACHE_PATH, DISPLAY_SIZE, LANGUAGE, ZOOM_MAX_LEVEL,
 from .signals import post_version_upload, post_document_type_change
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
-UUID_FUNCTION = lambda x: unicode(uuid.uuid4())
+UUID_FUNCTION = lambda: unicode(uuid.uuid4())
 logger = logging.getLogger(__name__)
 
 
