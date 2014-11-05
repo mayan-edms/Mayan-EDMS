@@ -32,10 +32,6 @@ Features
 
   * If enabled, the document database index can be mirrored in the filesystem of the host and shared via Samba_ or any other sharing method to client computers on a network.
 
-* User defined document unique identifier algorithms.
-
-  * Users can alter the default method used to uniquely indentify documents.
-
 * Documents can be uploaded from different sources.
 
   * Local file or server side file uploads, multifunctional copier, or even via email.

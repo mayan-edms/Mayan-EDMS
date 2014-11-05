@@ -8,15 +8,6 @@ different server configurations.
 Documents
 =========
 
-.. setting:: DOCUMENTS_UUID_FUNCTION
-
-**DOCUMENTS_UUID_FUNCTION**
-
-Default: ``unicode(uuid.uuid4())``
-
-The function that will be used to internally identify each uploaded document.
-
-
 .. setting:: DOCUMENTS_STORAGE_BACKEND
 
 **DOCUMENTS_STORAGE_BACKEND**

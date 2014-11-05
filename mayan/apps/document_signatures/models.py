@@ -1,5 +1,6 @@
 from __future__ import absolute_import
 import logging
+import uuid
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -7,10 +8,10 @@ from django.utils.translation import ugettext_lazy as _
 from django_gpg.runtime import gpg
 from documents.models import DocumentVersion
 from documents.runtime import storage_backend
-from documents.settings import UUID_FUNCTION
 
 from .managers import DocumentVersionSignatureManager
 
+UUID_FUNCTION = lambda x: unicode(uuid.uuid4())
 logger = logging.getLogger(__name__)
 
 
