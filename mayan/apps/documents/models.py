@@ -35,8 +35,8 @@ from .literals import (LANGUAGE_CHOICES, VERSION_UPDATE_MAJOR,
 from .managers import (DocumentManager, DocumentPageTransformationManager,
                        DocumentTypeManager, RecentDocumentManager)
 from .runtime import storage_backend
-from .settings import (CACHE_PATH, CHECKSUM_FUNCTION, DISPLAY_SIZE, LANGUAGE,
-                       UUID_FUNCTION, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
+from .settings import (CACHE_PATH, DISPLAY_SIZE, LANGUAGE, UUID_FUNCTION,
+                       ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
 from .signals import post_version_upload, post_document_type_change
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
@@ -388,7 +388,7 @@ class DocumentVersion(models.Model):
         """
         if self.exists():
             source = self.open()
-            self.checksum = unicode(CHECKSUM_FUNCTION(source.read()))
+            self.checksum = unicode(HASH_FUNCTION(source.read()))
             source.close()
             if save:
                 self.save()

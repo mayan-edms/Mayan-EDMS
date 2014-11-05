@@ -8,15 +8,6 @@ different server configurations.
 Documents
 =========
 
-.. setting:: DOCUMENTS_CHECKSUM_FUNCTION
-
-**DOCUMENTS_CHECKSUM_FUNCTION**
-
-Default: ``hashlib.sha256(x).hexdigest()``
-
-The function that will be used to calculate the hash value of each uploaded document.
-
-
 .. setting:: DOCUMENTS_UUID_FUNCTION
 
 **DOCUMENTS_UUID_FUNCTION**
