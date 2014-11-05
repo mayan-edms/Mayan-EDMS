@@ -24,7 +24,7 @@ from .links import (metadata_add, metadata_edit, metadata_multiple_add,
                     setup_metadata_type_create,
                     setup_metadata_type_delete, setup_metadata_type_edit,
                     setup_metadata_type_list)
-from .models import MetadataType
+from .models import DocumentMetadata, MetadataType
 from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_DOCUMENT_EDIT,
                           PERMISSION_METADATA_DOCUMENT_REMOVE,
@@ -43,7 +43,7 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
 
     # Add new document type metadata types to document
     for metadata_type in instance.document_type.metadata_type.filter(required=True):
-        instance.metadata.create(metadata_type=metadata_type, value=None)
+        DocumentMetadata.objects.create(document=instance, metadata_type=metadata_type, value=None)
 
 
 @property
