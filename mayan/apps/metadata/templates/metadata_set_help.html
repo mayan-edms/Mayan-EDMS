@@ -1,5 +1,17 @@
+{% extends 'generic_help.html' %}
+
 {% load i18n %}
-<div class="block notice">
-<h4>{% trans "What are metadata sets?" %}</h4>
-<p>{% blocktrans %}A metadata set is a group of one or more metadata types.  Metadata sets are useful when creating new documents; selecing a metadata set automatically attaches it's member metadata types to said document.{% endblocktrans %}</p>
-</div>
+
+{% block help_title %}
+  {% trans "What are metadata sets?" %}
+{% endblock %}
+
+{% block help_text %}
+<p>
+{% blocktrans %}
+A metadata set is a group of one or more metadata types.  Metadata sets
+are useful when creating new documents; selecing a metadata set
+automatically attaches it's member metadata types to said document.
+{% endblocktrans %}
+</p>
+{% endblock %}

@@ -1,5 +1,16 @@
+{% extends 'generic_help.html' %}
+
 {% load i18n %}
-<div class="block notice">
-<h4>{% trans "What are recent documents?" %}</h4>
-<p>{% blocktrans %}Here you will find the latest {{ recent_count }} documents you have either created or edited in any way.{% endblocktrans %}</p>
-</div>
+
+{% block help_title %}
+  {% trans "What are recent documents?" %}
+{% endblock %}
+
+{% block help_text %}
+  <p>
+  {% blocktrans %}
+    Here you will find the latest {{ recent_count }} documents you have either
+    created or edited in any way.
+  {% endblocktrans %}
+  </p>
+{% endblock %}
