@@ -13,7 +13,8 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessEntry
 from acls.utils import apply_default_acls
 from acls.views import acl_list_for
-from common.utils import encapsulate
+from common.utils import encapsulate, generate_choices_w_labels
+from common.views import assign_remove
 from common.widgets import two_state_template
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
@@ -52,7 +53,7 @@ def smart_link_instance_view(request, document_id, smart_link_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_SMART_LINK_VIEW, request.user, smart_link)
 
-    object_list, errors = SmartLink.objects.get_smart_link_instances_for(document, smart_link)
+    object_list, errors = SmartLink.objects.get_for(document, smart_link)
 
     return document_list(
         request,
@@ -69,7 +70,7 @@ def smart_link_instance_view(request, document_id, smart_link_pk):
 def smart_link_instances_for_document(request, document_id):
     subtemplates_list = []
     document = get_object_or_404(Document, pk=document_id)
-    smart_link_instances, errors = SmartLink.objects.get_smart_link_instances_for(document)
+    smart_link_instances, errors = SmartLink.objects.get_for(document)
     if (request.user.is_staff or request.user.is_superuser) and errors:
         for error in errors:
             messages.warning(request, _(u'Smart link query error: %s' % error))
@@ -215,6 +216,30 @@ def smart_link_delete(request, smart_link_pk):
     }, context_instance=RequestContext(request))
 
 
+def smart_link_document_types(request, smart_link_pk):
+    smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_EDIT])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_SMART_LINK_EDIT, request.user, smart_link)
+
+    return assign_remove(
+        request,
+        left_list=lambda: generate_choices_w_labels(smart_link.get_document_types_not_selected(), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(smart_link.document_types.all(), display_object_type=False),
+        add_method=lambda x: smart_link.document_types.add(x),
+        remove_method=lambda x: smart_link.document_types.remove(x),
+        #left_list_title=_(u'Document types not in index: %s') % smart_link,
+        #right_list_title=_(u'Document types for index: %s') % smart_link,
+        decode_content_type=True,
+        extra_context={
+            'main_title': _('Document type for which to enable smart link: %s') % smart_link,
+            'object': smart_link,
+        }
+    )
+
+
 def smart_link_condition_list(request, smart_link_pk):
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
 
@@ -244,7 +269,7 @@ def smart_link_condition_create(request, smart_link_pk):
         AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT], request.user, smart_link)
 
     if request.method == 'POST':
-        form = SmartLinkConditionForm(request.POST)
+        form = SmartLinkConditionForm(data=request.POST, smart_link=smart_link)
         if form.is_valid():
             new_smart_link_condition = form.save(commit=False)
             new_smart_link_condition.smart_link = smart_link
@@ -252,7 +277,7 @@ def smart_link_condition_create(request, smart_link_pk):
             messages.success(request, _(u'Smart link condition: "%s" created successfully.') % new_smart_link_condition)
             return HttpResponseRedirect(reverse('linking:smart_link_condition_list', args=[smart_link.pk]))
     else:
-        form = SmartLinkConditionForm(initial={'smart_link': smart_link})
+        form = SmartLinkConditionForm(smart_link=smart_link)
 
     return render_to_response('main/generic_form.html', {
         'form': form,
@@ -273,15 +298,13 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
-        form = SmartLinkConditionForm(request.POST, instance=smart_link_condition)
+        form = SmartLinkConditionForm(request.POST, smart_link=smart_link_condition.smart_link, instance=smart_link_condition)
         if form.is_valid():
-            new_smart_link_condition = form.save(commit=False)
-            new_smart_link_condition.smart_link = smart_link_condition.smart_link
-            new_smart_link_condition.save()
-            messages.success(request, _(u'Smart link condition: "%s" edited successfully.') % new_smart_link_condition)
+            smart_link_condition = form.save()
+            messages.success(request, _(u'Smart link condition: "%s" edited successfully.') % smart_link_condition)
             return HttpResponseRedirect(next)
     else:
-        form = SmartLinkConditionForm(instance=smart_link_condition)
+        form = SmartLinkConditionForm(smart_link=smart_link_condition.smart_link, instance=smart_link_condition)
 
     return render_to_response('main/generic_form.html', {
         'form': form,

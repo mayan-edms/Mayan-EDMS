@@ -17,6 +17,7 @@ smart_link_list = {'text': _(u'Smart links'), 'view': 'linking:smart_link_list',
 smart_link_create = {'text': _(u'Create new smart link'), 'view': 'linking:smart_link_create', 'famfam': 'link_add', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 smart_link_edit = {'text': _(u'Edit'), 'view': 'linking:smart_link_edit', 'args': 'object.pk', 'famfam': 'link_edit', 'permissions': [PERMISSION_SMART_LINK_EDIT]}
 smart_link_delete = {'text': _(u'Delete'), 'view': 'linking:smart_link_delete', 'args': 'object.pk', 'famfam': 'link_delete', 'permissions': [PERMISSION_SMART_LINK_DELETE]}
+smart_link_document_types = {'text': _('Document types'), 'view': 'linking:smart_link_document_types', 'args': 'object.pk', 'famfam': 'layout', 'permissions': [PERMISSION_SMART_LINK_EDIT]}
 
 smart_link_condition_list = {'text': _(u'Conditions'), 'view': 'linking:smart_link_condition_list', 'args': 'object.pk', 'famfam': 'cog', 'permissions': [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_CREATE]}
 smart_link_condition_create = {'text': _(u'Create condition'), 'view': 'linking:smart_link_condition_create', 'args': 'object.pk', 'famfam': 'cog_add', 'permissions': [PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT]}

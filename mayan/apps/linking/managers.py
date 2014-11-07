@@ -20,10 +20,12 @@ class SmartLinkManager(models.Manager):
         eval_dict['document'] = document
         eval_dict['metadata'] = MetadataClass(metadata_dict)
 
+        smart_link_qs = self.model.objects.filter(enabled=True)
+
         if smart_link_obj:
-            smart_link_qs = self.model.objects.filter(Q(enabled=True) & Q(pk=smart_link_obj.pk))
-        else:
-            smart_link_qs = self.model.objects.filter(enabled=True)
+            smart_link_qs= smart_link_qs.filter(pk=smart_link_obj.pk)
+
+        smart_link_qs = smart_link_qs.filter(document_types=document.document_type)
 
         for smart_link in smart_link_qs:
             total_query = Q()
