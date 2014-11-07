@@ -1,5 +1,15 @@
+{% extends 'generic_help.html' %}
+
 {% load i18n %}
-<div class="block notice">
-<h4>{% trans "What are indexes?" %}</h4>
-<p>{% blocktrans %}Indexes group documents into a tree like hierarchical structure.{% endblocktrans %}</p>
-</div>
+
+{% block help_title %}
+  {% trans "What are indexes?" %}
+{% endblock %}
+
+{% block help_text %}
+  <p>
+  {% blocktrans %}
+    Indexes group documents into a tree like hierarchical structure.
+  {% endblocktrans %}
+  </p>
+{% endblock %}

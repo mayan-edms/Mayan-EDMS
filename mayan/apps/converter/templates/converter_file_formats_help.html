@@ -1,5 +1,16 @@
+{% extends 'generic_help.html' %}
+
 {% load i18n %}
-<div class="block notice">
-<h4>{% trans "Help" %}</h4>
-<p>{% blocktrans %}These are the file formats supported by the currently selected converter backend.  In this case: '{{ backend }}'{% endblocktrans %}</p>
-</div>
+
+{% block help_title %}
+  {% trans "Help" %}
+{% endblock %}
+
+{% block help_text %}
+  <p>
+  {% blocktrans %}
+    These are the file formats supported by the currently selected
+    converter backend.  In this case: '{{ backend }}'
+  {% endblocktrans %}
+  </p>
+{% endblock %}
