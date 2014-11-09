@@ -16,10 +16,6 @@ class MetadataClass(object):
             raise AttributeError(_(u'\'metadata\' object has no attribute \'%s\'') % name)
 
 
-class MetadataObjectWrapper(EncapsulatedObject):
-    source_object_name = u'metadata_object'
-
-
 class DocumentTypeMetadataTypeManager(object):
     @staticmethod
     @property
