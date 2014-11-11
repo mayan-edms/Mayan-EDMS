@@ -4,7 +4,10 @@ from django import forms
 from django.core.urlresolvers import reverse
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _
 
+from common.classes import ModelAttribute
+from documents.models import Document
 from documents.widgets import document_html_widget
 from documents.settings import MULTIPAGE_PREVIEW_SIZE
 from tags.widgets import get_tags_inline_widget
@@ -14,10 +17,17 @@ from .models import SmartLink, SmartLinkCondition
 
 class SmartLinkForm(forms.ModelForm):
     class Meta:
+        fields = ('title', 'dynamic_title', 'enabled')
         model = SmartLink
 
 
 class SmartLinkConditionForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        smart_link = kwargs.pop('smart_link', None)
+        super(SmartLinkConditionForm, self).__init__(*args, **kwargs)
+        self.fields['foreign_document_data'] = forms.ChoiceField(choices=ModelAttribute.get_choices_for(Document, type_names=['field', 'query']), label=_('Foreign document attribute'))
+        self.fields['expression'].help_text = ' '.join([self.fields['expression'].help_text, ModelAttribute.help_text_for(Document, type_names=['field', 'related', 'property'])])
+
     class Meta:
         model = SmartLinkCondition
         exclude = ('smart_link',)
