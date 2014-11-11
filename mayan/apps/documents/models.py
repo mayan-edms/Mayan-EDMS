@@ -76,7 +76,7 @@ class Document(models.Model):
 
     uuid = models.CharField(default=lambda: UUID_FUNCTION(), max_length=48, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'), related_name='documents')
-    label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True, verbose_name=_('Label'))
+    label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True, help_text=_('The name of the document'), verbose_name=_('Label'))
     description = models.TextField(blank=True, null=True, verbose_name=_(u'Description'))
     date_added = models.DateTimeField(verbose_name=_(u'Added'), auto_now_add=True)
     language = models.CharField(choices=LANGUAGE_CHOICES, default=LANGUAGE, max_length=8, verbose_name=_('Language'))
