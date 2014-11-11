@@ -14,7 +14,7 @@ from .managers import SmartLinkManager
 
 class SmartLink(models.Model):
     title = models.CharField(max_length=96, verbose_name=_(u'Title'))
-    dynamic_title = models.CharField(blank=True, max_length=96, verbose_name=_(u'Dynamic title'), help_text=_(u'This expression will be evaluated against the current selected document.  The document metadata is available as variables `metadata` and document properties under the variable `document`.'))
+    dynamic_title = models.CharField(blank=True, max_length=96, verbose_name=_(u'Dynamic title'), help_text=ugettext(u'This expression will be evaluated against the current selected document.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'))
     document_types = models.ManyToManyField(DocumentType, verbose_name=_(u'Document types'))
 
@@ -22,6 +22,15 @@ class SmartLink(models.Model):
 
     def __unicode__(self):
         return self.title
+
+    def get_dynamic_title(self, document):
+        if self.dynamic_title:
+            try:
+                return eval(self.dynamic_title, {'document': document})
+            except Exception as exception:
+                return Exception(_('Error generating dynamic title; %s' % unicode(exception)))
+        else:
+            return self.title
 
     def get_linked_document_for(self, document):
         if document.document_type.pk not in self.document_types.values_list('pk', flat=True):

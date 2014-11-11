@@ -49,7 +49,7 @@ def smart_link_instance_view(request, document_id, smart_link_pk):
 
     return document_list(
         request,
-        title=_(u'Documents in smart link: %s') % smart_link,
+        title=_(u'Documents in smart link: %s') % smart_link.get_dynamic_title(document),
         object_list=object_list,
         extra_context={
             'object': document
@@ -75,8 +75,8 @@ def smart_link_instances_for_document(request, document_id):
         'object_list': smart_links,
         'title': _(u'Smart links for: %s') % document,
         'extra_columns': [
-            {'name': _('Indentifier'), 'attribute': 'smart_link'},
-            {'name': _('Documents'), 'attribute': encapsulate(lambda smart_link: smart_link.queryset.count())}
+            {'name': _('Indentifier'), 'attribute': encapsulate(lambda resolved_smart_link: resolved_smart_link.smart_link.get_dynamic_title(document))},
+            {'name': _('Documents'), 'attribute': encapsulate(lambda resolved_smart_link: resolved_smart_link.queryset.count())}
         ],
         'extra_navigation_links': {
             SmartLink: {
