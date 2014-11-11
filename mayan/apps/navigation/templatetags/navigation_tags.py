@@ -149,8 +149,8 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
     parsed_query_string = urlparse.parse_qs(query_string)
 
     try:
-        # Check for and inject a temporary navigation dictionary
-        temp_navigation_links = Variable('temporary_navigation_links').resolve(context)
+        # Check for an inject temporary navigation dictionary
+        temp_navigation_links = Variable('extra_navigation_links').resolve(context)
     except VariableDoesNotExist:
         pass
     else:

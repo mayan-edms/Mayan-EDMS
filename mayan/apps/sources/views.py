@@ -145,7 +145,7 @@ class UploadBaseView(MultiFormView):
 
         context.update({
             'subtemplates_list': subtemplates_list,
-            'temporary_navigation_links': {
+            'extra_navigation_links': {
                 'form_header': {
                     'sources:upload_version': {
                         'links': self.tab_links['tab_links']
@@ -358,7 +358,7 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
         'object': staging_file,
         'next': next,
         'previous': previous,
-        'temporary_navigation_links': {'form_header': {'staging_file_delete': {'links': results['tab_links']}}},
+        'extra_navigation_links': {'form_header': {'staging_file_delete': {'links': results['tab_links']}}},
     }, context_instance=RequestContext(request))
 
 
