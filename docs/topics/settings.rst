@@ -194,19 +194,6 @@ Default: ``/usr/bin/libreoffice``
 Path to the libreoffice binary used to call LibreOffice for office document conversion.
 
 
-
-Linking
-=======
-
-.. setting:: LINKING_SHOW_EMPTY_SMART_LINKS
-
-**LINKING_SHOW_EMPTY_SMART_LINKS**
-
-Default: ``True``
-
-Show smart links even when they don't return any documents.
-
-
 Storage
 =======
 

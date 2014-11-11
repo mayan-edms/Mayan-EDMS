@@ -1,12 +1,14 @@
 from __future__ import absolute_import
 
 from django.db import models
+from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 from django.utils.translation import ugettext
 
-from documents.models import DocumentType
+from documents.models import Document, DocumentType
 
-from .literals import INCLUSION_AND, INCLUSION_CHOICES, OPERATOR_CHOICES
+from .literals import (INCLUSION_AND, INCLUSION_CHOICES, INCLUSION_OR,
+                       OPERATOR_CHOICES)
 from .managers import SmartLinkManager
 
 
@@ -18,11 +20,31 @@ class SmartLink(models.Model):
 
     objects = SmartLinkManager()
 
-    def get_document_types_not_selected(self):
-        return DocumentType.objects.exclude(pk__in=self.document_types.all())
-
     def __unicode__(self):
         return self.title
+
+    def get_linked_document_for(self, document):
+        if document.document_type.pk not in self.document_types.values_list('pk', flat=True):
+            raise Exception(_('This smart link is not allowed for the selected document\'s type.'))
+
+        smart_link_query = Q()
+
+        for condition in self.conditions.filter(enabled=True):
+            condition_query = Q(**{
+                '%s__%s' % (condition.foreign_document_data, condition.operator): eval(condition.expression, {'document': document})
+            })
+            if condition.negated:
+                condition_query = ~condition_query
+
+            if condition.inclusion == INCLUSION_AND:
+                smart_link_query &= condition_query
+            elif condition.inclusion == INCLUSION_OR:
+                smart_link_query |= condition_query
+
+        if smart_link_query:
+            return Document.objects.filter(smart_link_query)
+        else:
+            return Document.objects.none()
 
     class Meta:
         verbose_name = _(u'Smart link')
@@ -30,7 +52,7 @@ class SmartLink(models.Model):
 
 
 class SmartLinkCondition(models.Model):
-    smart_link = models.ForeignKey(SmartLink, verbose_name=_(u'Smart link'))
+    smart_link = models.ForeignKey(SmartLink, related_name='conditions', verbose_name=_(u'Smart link'))
     inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_(u'The inclusion is ignored for the first item.'))
     foreign_document_data = models.CharField(max_length=128, verbose_name=_(u'Foreign document attribute'), help_text=_(u'This represents the metadata of all other documents.'))
     operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
