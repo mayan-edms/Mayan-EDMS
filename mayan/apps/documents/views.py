@@ -290,6 +290,8 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
     context = {
         'form': form,
         'submit_label': _('Submit'),
+        'previous': previous,
+        'next': next,
     }
 
     if len(documents) == 1:
@@ -463,7 +465,8 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
         for document in documents:
             task_update_page_count.apply_async(kwargs={'version_id': document.latest_version.pk}, queue='tools')
 
-        messages.success(request,
+        messages.success(
+            request,
             ungettext(
                 _(u'Document queued for page count reset.'),
                 _(u'Documents queued for page count reset.'),

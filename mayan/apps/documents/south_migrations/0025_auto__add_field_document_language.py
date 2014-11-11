@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -13,11 +12,9 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.CharField')(default=u'eng', max_length=8),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Deleting field 'Document.language'
         db.delete_column(u'documents_document', 'language')
-
 
     models = {
         u'auth.group': {

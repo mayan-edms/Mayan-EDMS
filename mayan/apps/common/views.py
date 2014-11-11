@@ -454,7 +454,6 @@ class MultiFormView(FormView):
 
     def post(self, request, *args, **kwargs):
         form_classes = self.get_form_classes()
-        form_name = request.POST.get('action')
         forms = self.get_forms(form_classes)
 
         if all([form.is_valid() for form in forms.values()]):

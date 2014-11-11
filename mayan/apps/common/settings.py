@@ -65,4 +65,3 @@ register_setting(
     default='storage.backends.filebasedstorage.FileBasedStorage',
     description=_(u'A storage backend that all workers can use to share files.'),
 )
-

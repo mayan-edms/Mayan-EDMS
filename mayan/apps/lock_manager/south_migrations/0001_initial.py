@@ -17,11 +17,9 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'lock_manager', ['Lock'])
 
-
     def backwards(self, orm):
         # Deleting model 'Lock'
         db.delete_table(u'lock_manager_lock')
-
 
     models = {
         u'lock_manager.lock': {

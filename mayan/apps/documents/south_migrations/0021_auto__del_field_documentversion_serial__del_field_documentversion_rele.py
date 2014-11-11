@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -20,7 +19,6 @@ class Migration(SchemaMigration):
         # Adding unique constraint on 'DocumentVersion', fields ['document', 'major', 'minor', 'micro']
         db.create_unique(u'documents_documentversion', ['document_id', 'major', 'minor', 'micro'])
 
-
     def backwards(self, orm):
         # Removing unique constraint on 'DocumentVersion', fields ['document', 'major', 'minor', 'micro']
         db.delete_unique(u'documents_documentversion', ['document_id', 'major', 'minor', 'micro'])
@@ -37,7 +35,6 @@ class Migration(SchemaMigration):
 
         # Adding unique constraint on 'DocumentVersion', fields ['document', 'major', 'minor', 'micro', 'release_level', 'serial']
         db.create_unique(u'documents_documentversion', ['document_id', 'major', 'minor', 'micro', 'release_level', 'serial'])
-
 
     models = {
         u'auth.group': {

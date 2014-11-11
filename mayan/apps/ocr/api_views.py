@@ -10,7 +10,6 @@ from rest_framework.settings import api_settings
 from acls.models import AccessEntry
 from documents.models import Document
 from permissions.models import Permission
-from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .permissions import PERMISSION_OCR_DOCUMENT

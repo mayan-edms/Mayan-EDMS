@@ -45,7 +45,6 @@ class DocumentTypeSerializer(serializers.ModelSerializer):
 
 class NewDocumentSerializer(serializers.Serializer):
     description = serializers.CharField(required=False)
-    document_type = DocumentTypeSerializer()
     document_type = serializers.ChoiceField(choices=[(document_type.pk, document_type) for document_type in DocumentType.objects.all()])
     expand = serializers.BooleanField(default=False)
     file = serializers.FileField()

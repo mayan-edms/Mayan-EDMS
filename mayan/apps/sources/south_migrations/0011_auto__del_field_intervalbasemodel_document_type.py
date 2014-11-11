@@ -11,17 +11,15 @@ class Migration(SchemaMigration):
         # Deleting field 'IntervalBaseModel.document_type'
         db.delete_column(u'sources_intervalbasemodel', 'document_type_id')
 
-
     def backwards(self, orm):
 
         # User chose to not deal with backwards NULL issues for 'IntervalBaseModel.document_type'
         raise RuntimeError("Cannot reverse this migration. 'IntervalBaseModel.document_type' and its values cannot be restored.")
-        
+
         # The following code is provided here to aid in writing a correct migration        # Adding field 'IntervalBaseModel.document_type'
         db.add_column(u'sources_intervalbasemodel', 'document_type',
                       self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.DocumentType']),
                       keep_default=False)
-
 
     models = {
         u'contenttypes.contenttype': {

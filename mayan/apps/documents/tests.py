@@ -55,7 +55,7 @@ class DocumentTestCase(TestCase):
                 'version_update': VERSION_UPDATE_MAJOR,
             }
 
-            new_version = self.document.new_version(file_object=File(file_object), **new_version_data)
+            self.document.new_version(file_object=File(file_object), **new_version_data)
 
         self.failUnlessEqual(self.document.latest_version.get_formated_version(), '2.0.0')
 
@@ -87,7 +87,7 @@ class DocumentSearchTestCase(TestCase):
         self.document.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            new_version = self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf'))
+            self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf'))
 
         # Text extraction on the first page only
         parse_document_page(self.document.latest_version.pages.all()[0])
@@ -148,7 +148,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
         self.assertTrue(self.admin_user.is_authenticated())
 
         # Create new webform source
-        response = self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
+        self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
@@ -180,7 +180,7 @@ class DocumentUploadFunctionalTestCase(TestCase):
         self.assertTrue(self.admin_user.is_authenticated())
 
         # Create new webform source
-        response = self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
+        self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
@@ -295,7 +295,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         self.assertTrue(logged_in)
         self.assertTrue(self.admin_user.is_authenticated())
         # Create new webform source
-        response = self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
+        self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document

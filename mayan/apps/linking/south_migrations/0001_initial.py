@@ -30,14 +30,12 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'linking', ['SmartLinkCondition'])
 
-
     def backwards(self, orm):
         # Deleting model 'SmartLink'
         db.delete_table(u'linking_smartlink')
 
         # Deleting model 'SmartLinkCondition'
         db.delete_table(u'linking_smartlinkcondition')
-
 
     models = {
         u'linking.smartlink': {

@@ -40,7 +40,6 @@ class APIFolderListView(generics.ListCreateAPIView):
         return super(APIFolderListView, self).post(*args, **kwargs)
 
     def create(self, request, *args, **kwargs):
-        data = request.DATA
         serializer = self.get_serializer(data=request.DATA, files=request.FILES)
 
         if serializer.is_valid():

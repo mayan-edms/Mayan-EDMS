@@ -13,11 +13,9 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.DocumentType'], null=True),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Deleting field 'IntervalBaseModel.document_type'
         db.delete_column(u'sources_intervalbasemodel', 'document_type_id')
-
 
     models = {
         u'contenttypes.contenttype': {

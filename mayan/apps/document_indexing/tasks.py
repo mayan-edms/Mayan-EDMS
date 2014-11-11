@@ -1,8 +1,5 @@
 import logging
 
-from django.contrib.auth.models import User
-from django.core.files import File
-
 from mayan.celery import app
 from documents.models import Document
 

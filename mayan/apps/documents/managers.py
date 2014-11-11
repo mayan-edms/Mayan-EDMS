@@ -62,7 +62,6 @@ class DocumentManager(models.Manager):
     @transaction.atomic
     def new_document(self, document_type, file_object, label, command_line=False, description=None, expand=False, language=None, user=None):
         versions_created = []
-        is_compressed = None
 
         if expand:
             try:
@@ -76,13 +75,10 @@ class DocumentManager(models.Manager):
                     count += 1
 
             except NotACompressedFile:
-                is_compressed = False
                 logging.debug('Exception: NotACompressedFile')
                 if command_line:
                     raise
                 versions_created.append(self.upload_single_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or LANGUAGE, user=user))
-            else:
-                is_compressed = True
         else:
             versions_created.append(self.upload_single_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or LANGUAGE, user=user))
 

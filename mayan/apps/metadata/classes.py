@@ -1,8 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from acls.classes import EncapsulatedObject
-
-from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
+from .models import DocumentTypeMetadataType, MetadataType
 
 
 class DocumentTypeMetadataTypeHelper(object):

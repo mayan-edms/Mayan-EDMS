@@ -14,7 +14,6 @@ class Migration(SchemaMigration):
         # Deleting field 'Source.blacklist'
         db.delete_column(u'sources_source', 'blacklist')
 
-
     def backwards(self, orm):
         # Adding field 'Source.whitelist'
         db.add_column(u'sources_source', 'whitelist',
@@ -25,7 +24,6 @@ class Migration(SchemaMigration):
         db.add_column(u'sources_source', 'blacklist',
                       self.gf('django.db.models.fields.TextField')(default='', blank=True),
                       keep_default=False)
-
 
     models = {
         u'contenttypes.contenttype': {

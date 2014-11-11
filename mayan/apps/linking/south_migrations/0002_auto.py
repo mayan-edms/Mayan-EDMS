@@ -17,11 +17,9 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['smartlink_id', 'documenttype_id'])
 
-
     def backwards(self, orm):
         # Removing M2M table for field document_types on 'SmartLink'
         db.delete_table(db.shorten_name(u'linking_smartlink_document_types'))
-
 
     models = {
         u'documents.documenttype': {

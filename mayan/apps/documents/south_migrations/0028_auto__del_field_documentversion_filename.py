@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -11,13 +10,11 @@ class Migration(SchemaMigration):
         # Deleting field 'DocumentVersion.filename'
         db.delete_column(u'documents_documentversion', 'filename')
 
-
     def backwards(self, orm):
         # Adding field 'DocumentVersion.filename'
         db.add_column(u'documents_documentversion', 'filename',
                       self.gf('django.db.models.fields.CharField')(default=u'', max_length=255, db_index=True),
                       keep_default=False)
-
 
     models = {
         u'auth.group': {

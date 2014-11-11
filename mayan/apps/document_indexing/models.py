@@ -9,7 +9,6 @@ from mptt.models import MPTTModel
 from documents.models import Document, DocumentType
 
 from .managers import IndexManager
-from .settings import AVAILABLE_INDEXING_FUNCTIONS
 
 
 class Index(models.Model):

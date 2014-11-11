@@ -3,7 +3,6 @@ from __future__ import absolute_import
 import tempfile
 
 from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
 
 from acls.api import class_permissions
 from common.classes import ModelAttribute

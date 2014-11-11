@@ -60,7 +60,6 @@ class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
                     'metadata_type': metadata_type,
                 })
 
-
             return initial
         return self.initial_dict.get(step, {})
 

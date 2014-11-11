@@ -269,7 +269,7 @@ def smart_link_condition_create(request, smart_link_pk):
         AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_EDIT], request.user, smart_link)
 
     if request.method == 'POST':
-        form = SmartLinkConditionForm(data=request.POST, smart_link=smart_link)
+        form = SmartLinkConditionForm(data=request.POST)
         if form.is_valid():
             new_smart_link_condition = form.save(commit=False)
             new_smart_link_condition.smart_link = smart_link
@@ -277,7 +277,7 @@ def smart_link_condition_create(request, smart_link_pk):
             messages.success(request, _(u'Smart link condition: "%s" created successfully.') % new_smart_link_condition)
             return HttpResponseRedirect(reverse('linking:smart_link_condition_list', args=[smart_link.pk]))
     else:
-        form = SmartLinkConditionForm(smart_link=smart_link)
+        form = SmartLinkConditionForm()
 
     return render_to_response('main/generic_form.html', {
         'form': form,
@@ -298,13 +298,13 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
-        form = SmartLinkConditionForm(request.POST, smart_link=smart_link_condition.smart_link, instance=smart_link_condition)
+        form = SmartLinkConditionForm(request.POST, instance=smart_link_condition)
         if form.is_valid():
             smart_link_condition = form.save()
             messages.success(request, _(u'Smart link condition: "%s" edited successfully.') % smart_link_condition)
             return HttpResponseRedirect(next)
     else:
-        form = SmartLinkConditionForm(smart_link=smart_link_condition.smart_link, instance=smart_link_condition)
+        form = SmartLinkConditionForm(instance=smart_link_condition)
 
     return render_to_response('main/generic_form.html', {
         'form': form,

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -17,11 +16,9 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['folder_id', 'document_id'])
 
-
     def backwards(self, orm):
         # Removing M2M table for field documents on 'Folder'
         db.delete_table(db.shorten_name(u'folders_folder_documents'))
-
 
     models = {
         u'auth.group': {

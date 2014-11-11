@@ -12,14 +12,11 @@ class SmartLinkManager(models.Manager):
     def get_for(self, document, smart_link_obj=None):
         errors = []
         result = {}
-        metadata_dict = {}
-        for document_metadata in document.document_metadata.all():
-            metadata_dict[document_metadata.metadata_type.name] = document_metadata.value
 
         smart_link_qs = self.model.objects.filter(enabled=True)
 
         if smart_link_obj:
-            smart_link_qs= smart_link_qs.filter(pk=smart_link_obj.pk)
+            smart_link_qs = smart_link_qs.filter(pk=smart_link_obj.pk)
 
         smart_link_qs = smart_link_qs.filter(document_types=document.document_type)
 
