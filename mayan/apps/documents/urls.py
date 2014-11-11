@@ -59,8 +59,6 @@ urlpatterns = patterns('documents.views',
     url(r'^page/transformation/(?P<document_page_transformation_id>\d+)/edit/$', 'document_page_transformation_edit', (), 'document_page_transformation_edit'),
     url(r'^page/transformation/(?P<document_page_transformation_id>\d+)/delete/$', 'document_page_transformation_delete', (), 'document_page_transformation_delete'),
 
-    url(r'^missing/list/$', 'document_missing_list', (), 'document_missing_list'),
-
     # Admin views
     url(r'^type/list/$', 'document_type_list', (), 'document_type_list'),
     url(r'^type/create/$', 'document_type_create', (), 'document_type_create'),

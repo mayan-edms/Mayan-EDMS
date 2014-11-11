@@ -550,28 +550,6 @@ def document_multiple_clear_transformations(request):
     return document_clear_transformations(request, document_id_list=request.GET.get('id_list', []))
 
 
-def document_missing_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    if request.method != 'POST':
-        return render_to_response('main/generic_confirm.html', {
-            'previous': previous,
-            'message': _(u'On large databases this operation may take some time to execute.'),
-        }, context_instance=RequestContext(request))
-    else:
-        missing_id_list = []
-        for document in Document.objects.only('id',):
-            if not storage_backend.exists(document.file):
-                missing_id_list.append(document.pk)
-
-        return render_to_response('main/generic_list.html', {
-            'object_list': Document.objects.in_bulk(missing_id_list).values(),
-            'title': _(u'Missing documents'),
-        }, context_instance=RequestContext(request))
-
-
 def document_page_view(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 

@@ -10,7 +10,7 @@ from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
 from history.api import register_history_type
 from history.permissions import PERMISSION_HISTORY_VIEW
-from main.api import register_diagnostic, register_maintenance_links
+from main.api import register_maintenance_links
 from navigation.api import (register_links, register_model_list_columns,
                             register_top_menu)
 from navigation.links import link_spacer
@@ -26,8 +26,7 @@ from .links import (document_clear_image_cache,
                     document_document_type_edit,
                     document_multiple_document_type_edit, document_download,
                     document_edit, document_history_view, document_list,
-                    document_list_recent, document_missing_list,
-                    document_multiple_delete,
+                    document_list_recent, document_multiple_delete,
                     document_multiple_clear_transformations,
                     document_multiple_download,
                     document_multiple_update_page_count, document_page_edit,
@@ -104,7 +103,6 @@ register_links('documents:document_page_transformation_list', [document_page_tra
 register_links('documents:document_page_transformation_create', [document_page_transformation_create], menu_name='sidebar')
 register_links(['documents:document_page_transformation_edit', 'documents:document_page_transformation_delete'], [document_page_transformation_create], menu_name='sidebar')
 
-register_diagnostic('documents', _(u'Documents'), document_missing_list)
 register_maintenance_links([document_clear_image_cache], namespace='documents', title=_(u'Documents'))
 register_model_list_columns(Document, [
     {

@@ -6,5 +6,4 @@ def is_superuser(context):
 
 
 maintenance_menu = {'text': _(u'Maintenance'), 'view': 'main:maintenance_menu', 'famfam': 'wrench', 'icon': 'wrench.png'}
-diagnostics = {'text': _(u'Diagnostics'), 'view': 'main:diagnostics', 'famfam': 'pill', 'icon': 'pill.png'}
 admin_site = {'text': _(u'Admin site'), 'view': 'admin:index', 'famfam': 'keyboard', 'icon': 'keyboard.png', 'condition': is_superuser}
