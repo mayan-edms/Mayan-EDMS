@@ -6,6 +6,7 @@ from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
+from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
 from documents.signals import post_document_type_change
@@ -15,15 +16,14 @@ from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 
 from .api import get_metadata_string
-from .classes import DocumentTypeMetadataTypeManager
+from .classes import DocumentMetadataHelper, DocumentTypeMetadataTypeHelper
 from .links import (metadata_add, metadata_edit, metadata_multiple_add,
                     metadata_multiple_edit, metadata_multiple_remove,
                     metadata_remove, metadata_view,
                     setup_document_type_metadata,
                     setup_document_type_metadata_required,
-                    setup_metadata_type_create,
-                    setup_metadata_type_delete, setup_metadata_type_edit,
-                    setup_metadata_type_list)
+                    setup_metadata_type_create, setup_metadata_type_delete,
+                    setup_metadata_type_edit, setup_metadata_type_list)
 from .models import DocumentMetadata, MetadataType
 from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_DOCUMENT_EDIT,
@@ -51,15 +51,16 @@ def document_metadata(document):
     return document.document_metadata.select_related('metadata_type')
 
 
-DocumentType.add_to_class('metadata_type', DocumentTypeMetadataTypeManager.factory)
+DocumentType.add_to_class('metadata_type', DocumentTypeMetadataTypeHelper.constructor)
 Document.add_to_class('metadata', document_metadata)
+Document.add_to_class('metadata_value_of', DocumentMetadataHelper.constructor)
 
 register_links(['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
 register_links(Document, [metadata_view], menu_name='form_header')
+register_links([Document], [link_spacer, metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove], menu_name='multi_item_links')
 register_links(DocumentType, [setup_document_type_metadata, setup_document_type_metadata_required])
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
 register_links([MetadataType, 'metadata:setup_metadata_type_list', 'metadata:setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
-register_links([Document], [link_spacer, metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove], menu_name='multi_item_links')
 
 register_setup(setup_metadata_type_list)
 
@@ -75,3 +76,7 @@ register_model_list_columns(Document, [
 ])
 
 APIEndPoint('metadata')
+ModelAttribute(Document, 'document_metadata__metadata_type__name', label=_('Metadata type name'), type_name='query')
+ModelAttribute(Document, 'document_metadata__value', label=_('Metadata type value'), type_name='query')
+ModelAttribute(Document, 'document_metadata', type_name='related', description=_('Queryset containing a MetadataType instance reference and a value for that metadata type'))
+ModelAttribute(Document, 'metadata_value_of', label=_('Value of a metadata'), description=_('Return the value of a specific document metadata'), type_name=['property', 'indexing'])
