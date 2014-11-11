@@ -9,7 +9,7 @@ def register_links(src, links, menu_name=None, position=None):
     """
 
     object_navigation.setdefault(menu_name, {})
-    if hasattr(src, '__iter__'):
+    if isinstance(src, list):
         for one_src in src:
             object_navigation[menu_name].setdefault(one_src, {'links': []})
             if position is not None:
