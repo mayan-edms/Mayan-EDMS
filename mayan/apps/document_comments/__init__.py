@@ -5,6 +5,7 @@ from django.contrib.contenttypes import generic
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
+from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document
 from navigation.api import register_links, register_model_list_columns
@@ -45,3 +46,5 @@ register_model_list_columns(Comment, [
 register_links(['comments:comments_for_document', 'comments:comment_add', 'comments:comment_delete', 'comments:comment_multiple_delete'], [comment_add], menu_name='sidebar')
 register_links(Comment, [comment_delete])
 register_links(Document, [comments_for_document], menu_name='form_header')
+
+ModelAttribute(Document, label=_('Comments'), name='comments', type_name='related')
