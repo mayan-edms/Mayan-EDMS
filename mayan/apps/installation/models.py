@@ -32,8 +32,7 @@ from lock_manager import Lock, LockError
 from ocr.settings import PDFTOTEXT_PATH, TESSERACT_PATH, UNPAPER_PATH
 
 from .classes import PIPNotFound, Property, PropertyNamespace, VirtualEnv
-from .literals import (FABFILE_MARKER, FORM_KEY, FORM_RECEIVER_FIELD,
-                       FORM_SUBMIT_URL, TIMEOUT)
+from .literals import FORM_KEY, FORM_RECEIVER_FIELD, FORM_SUBMIT_URL, TIMEOUT
 
 
 class Installation(SingletonModel):
@@ -106,7 +105,6 @@ class Installation(SingletonModel):
 
         namespace.add_property('uuid', _(u'UUID'), self.uuid, report=True)
         namespace.add_property('mayan_version', _(u'Mayan EDMS version'), mayan_version, report=True)
-        namespace.add_property('fabfile', _(u'Installed via fabfile'), os.path.exists(FABFILE_MARKER), report=True)
 
     def git_properties(self):
         namespace = PropertyNamespace('git', _(u'Git repository'))
