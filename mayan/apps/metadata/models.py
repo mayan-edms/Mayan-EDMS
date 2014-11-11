@@ -14,7 +14,7 @@ class MetadataType(models.Model):
     Define a type of metadata
     """
     name = models.CharField(unique=True, max_length=48, verbose_name=_(u'Name'), help_text=_(u'Do not use python reserved words, or spaces.'))
-    title = models.CharField(max_length=48, verbose_name=_(u'Title'), blank=True, null=True)
+    title = models.CharField(max_length=48, verbose_name=_(u'Title'))
     default = models.CharField(max_length=128, blank=True, null=True,
                                verbose_name=_(u'Default'),
                                help_text=_(u'Enter a string to be evaluated.'))
@@ -29,7 +29,7 @@ class MetadataType(models.Model):
     objects = MetadataTypeManager()
 
     def __unicode__(self):
-        return self.title if self.title else self.name
+        return self.title
 
     def natural_key(self):
         return (self.name,)
