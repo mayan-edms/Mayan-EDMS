@@ -4,21 +4,17 @@ from django.db import models
 from django.db.models import Q
 
 from documents.models import Document
-from metadata.classes import MetadataClass
 
 from .literals import INCLUSION_AND, INCLUSION_OR
 
 
 class SmartLinkManager(models.Manager):
-    def get_smart_link_instances_for(self, document, smart_link_obj=None):
+    def get_for(self, document, smart_link_obj=None):
         errors = []
         result = {}
         metadata_dict = {}
-        for document_metadata in document.metadata.all():
+        for document_metadata in document.document_metadata.all():
             metadata_dict[document_metadata.metadata_type.name] = document_metadata.value
-        eval_dict = {}
-        eval_dict['document'] = document
-        eval_dict['metadata'] = MetadataClass(metadata_dict)
 
         smart_link_qs = self.model.objects.filter(enabled=True)
 
@@ -30,36 +26,18 @@ class SmartLinkManager(models.Manager):
         for smart_link in smart_link_qs:
             total_query = Q()
             for condition in smart_link.smartlinkcondition_set.filter(enabled=True):
-                cls, attribute = condition.foreign_document_data.lower().split(u'.')
-                try:
-                    if cls == u'metadata':
-                        value_query = Q(**{'metadata__value__%s' % condition.operator: eval(condition.expression, eval_dict)})
-                        if condition.negated:
-                            query = (Q(metadata__metadata_type__name=attribute) & ~value_query)
-                        else:
-                            query = (Q(metadata__metadata_type__name=attribute) & value_query)
-                        if condition.inclusion == INCLUSION_AND:
-                            total_query &= query
-                        elif condition.inclusion == INCLUSION_OR:
-                            total_query |= query
+                value_query = Q(**{
+                    '%s__%s' % (condition.foreign_document_data, condition.operator): eval(condition.expression, {'document': document})
+                })
+                if condition.negated:
+                    query = ~value_query
+                else:
+                    query = value_query
+                if condition.inclusion == INCLUSION_AND:
+                    total_query &= query
+                elif condition.inclusion == INCLUSION_OR:
+                    total_query |= query
 
-                    elif cls == u'document':
-                        value_query = Q(**{
-                            '%s__%s' % (attribute, condition.operator): eval(condition.expression, eval_dict)
-                        })
-                        if condition.negated:
-                            query = ~value_query
-                        else:
-                            query = value_query
-                        if condition.inclusion == INCLUSION_AND:
-                            total_query &= query
-                        elif condition.inclusion == INCLUSION_OR:
-                            total_query |= query
-
-                except Exception as exception:
-                    errors.append(exception)
-                    value_query = Q()
-                    query = Q()
             if total_query:
                 try:
                     document_qs = Document.objects.filter(total_query)
@@ -72,7 +50,7 @@ class SmartLinkManager(models.Manager):
 
             if smart_link.dynamic_title:
                 try:
-                    result[smart_link]['title'] = eval(smart_link.dynamic_title, eval_dict)
+                    result[smart_link]['title'] = eval(smart_link.dynamic_title, {'document': document})
                 except Exception as exception:
                     result[smart_link]['title'] = 'Error; %s' % exception
             else:
