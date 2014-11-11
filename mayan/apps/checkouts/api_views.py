@@ -4,15 +4,13 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 import pytz
-from rest_framework import generics, status, views
+from rest_framework import generics, status
 from rest_framework.response import Response
 
 from acls.models import AccessEntry
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from permissions.models import Permission
-from rest_api.filters import MayanObjectPermissionsFilter
-from rest_api.permissions import MayanPermission
 
 from .models import DocumentCheckout
 from .permissions import PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE
@@ -36,14 +34,13 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
         else:
             filtered_documents = documents
 
-        return DocumentCheckout.objects.filter(document__pk__in=documents.values_list('pk', flat=True))
+        return DocumentCheckout.objects.filter(document__pk__in=filtered_documents.values_list('pk', flat=True))
 
     def get(self, request, *args, **kwargs):
         """
         Returns a list of all the documents that are currently checked out.
         """
         return super(APICheckedoutDocumentListView, self).get(request, *args, **kwargs)
-
 
     def post(self, request, *args, **kwargs):
         """
@@ -89,7 +86,7 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
             else:
                 filtered_documents = documents
 
-            return DocumentCheckout.objects.filter(document__pk__in=documents.values_list('pk', flat=True))
+            return DocumentCheckout.objects.filter(document__pk__in=filtered_documents.values_list('pk', flat=True))
         elif self.request.method == 'DELETE':
             return DocumentCheckout.objects.all()
 
