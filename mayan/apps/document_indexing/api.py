@@ -7,8 +7,6 @@ from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from metadata.classes import MetadataClass
-
 from .exceptions import MaxSuffixCountReached
 from .filesystem import (assemble_suffixed_filename, fs_create_index_directory,
                          fs_create_document_link, fs_delete_document_link,
@@ -33,16 +31,13 @@ def update_indexes(document):
 
     warnings = []
 
-    eval_dict = {}
     document_metadata_dict = dict([(metadata.metadata_type.name, metadata.value) for metadata in document.metadata.all() if metadata.value])
-    eval_dict['document'] = document
-    eval_dict['metadata'] = MetadataClass(document_metadata_dict)
 
     # Only update indexes where the document type is found or that do not have any document type specified
     for index in Index.objects.filter(Q(enabled=True) & (Q(document_types=None) | Q(document_types=document.document_type))):
         root_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=index.template_root, parent=None)
         for template_node in index.template_root.get_children():
-            index_warnings = cascade_eval(eval_dict, document, template_node, root_instance)
+            index_warnings = cascade_eval(document, template_node, root_instance)
             warnings.extend(index_warnings)
 
     return warnings
@@ -76,7 +71,7 @@ def find_lowest_available_suffix(index_instance, document):
     raise MaxSuffixCountReached(ugettext(u'Maximum suffix (%s) count reached.') % MAX_SUFFIX_COUNT)
 
 
-def cascade_eval(eval_dict, document, template_node, parent_index_instance=None):
+def cascade_eval(document, template_node, parent_index_instance=None):
     """
     Evaluate an enabled index expression and update or create all the
     related index instances also recursively calling itself to evaluate
@@ -86,7 +81,7 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
     warnings = []
     if template_node.enabled:
         try:
-            result = eval(template_node.expression, eval_dict, AVAILABLE_INDEXING_FUNCTIONS)
+            result = eval(template_node.expression, {'document': document}, AVAILABLE_INDEXING_FUNCTIONS)
         except Exception as exception:
             error_message = _(u'Error in document indexing update expression: %(expression)s; %(exception)s') % {
                 'expression': template_node.expression, 'exception': exception}
@@ -123,7 +118,6 @@ def cascade_eval(eval_dict, document, template_node, parent_index_instance=None)
 
                 for child in template_node.get_children():
                     children_warnings = cascade_eval(
-                        eval_dict=eval_dict,
                         document=document,
                         template_node=child,
                         parent_index_instance=index_instance
