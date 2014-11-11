@@ -25,7 +25,7 @@ What's new in Mayan EDMS v1.1
 * Views namespaces
 * Language translation updates
 * Removal of the splash screen
-* Sending documents via email
+* Sending and receiving documents via email
 * Remove hardcoded root (/) redirections
 * Proper capitalization of messages
 * Removal of APSCheduler as a requirement
@@ -39,8 +39,11 @@ What's new in Mayan EDMS v1.1
 * More API endpoints
 * Improvement of the existing API endpoints
 * Improve sources app model sub classes and inheritance handling
-* Deprecation of Python 2.6 support
+* Drop support for Python 2.6
 * Add CORS support to the API
+* Bulk document type change
+* Watch folders
+* Removal of the duplicate document search support
 
 
 Upgrading from a previous version
