@@ -3,8 +3,10 @@ from __future__ import absolute_import
 import tempfile
 
 from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext
 
 from acls.api import class_permissions
+from common.classes import ModelAttribute
 from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
 from history.api import register_history_type
@@ -158,3 +160,5 @@ namespace.add_statistic(DocumentStatistics(name='document_stats', label=_(u'Docu
 namespace.add_statistic(DocumentUsageStatistics(name='document_usage', label=_(u'Document usage')))
 
 APIEndPoint('documents')
+
+ModelAttribute(Document, label=_('Label'), name='label', type_name='field')
