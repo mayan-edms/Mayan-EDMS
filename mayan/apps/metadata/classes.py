@@ -1,6 +1,7 @@
 from django.utils.translation import ugettext_lazy as _
 
 from .models import DocumentTypeMetadataType, MetadataType
+from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 
 
 class DocumentTypeMetadataTypeHelper(object):
@@ -26,9 +27,12 @@ class DocumentTypeMetadataTypeHelper(object):
 
     def add(self, metadata_type, required=False):
         DocumentTypeMetadataType.objects.create(document_type=self.instance, metadata_type=metadata_type, required=required)
+        if required:
+            task_add_required_metadata_type.apply_async(kwargs={'metadata_type_id': metadata_type.pk, 'document_type_id': self.instance.pk}, queue='metadata')
 
     def remove(self, metadata_type):
         DocumentTypeMetadataType.objects.get(document_type=self.instance, metadata_type=metadata_type).delete()
+        task_remove_metadata_type.apply_async(kwargs={'metadata_type_id': metadata_type.pk, 'document_type_id': self.instance.pk}, queue='metadata')
 
 
 class DocumentMetadataHelper(object):
@@ -45,4 +49,3 @@ class DocumentMetadataHelper(object):
             return self.instance.metadata.get(metadata_type__name=name).value
         except MetadataType.DoesNotExist:
             raise AttributeError(_(u'\'metadata\' object has no attribute \'%s\'') % name)
-
