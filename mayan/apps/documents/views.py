@@ -90,7 +90,7 @@ def document_list(request, object_list=None, title=None, extra_context=None):
                               context_instance=RequestContext(request))
 
 
-def document_view(request, document_id, advanced=False):
+def document_properties(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
@@ -100,67 +100,70 @@ def document_view(request, document_id, advanced=False):
 
     document.add_as_recent_document_for_user(request.user)
 
-    subtemplates_list = []
 
-    if advanced:
-        document_fields = [
-            {'label': _(u'Date added'), 'field': lambda x: x.date_added.date()},
-            {'label': _(u'Time added'), 'field': lambda x: unicode(x.date_added.time()).split('.')[0]},
-            {'label': _(u'UUID'), 'field': 'uuid'},
-        ]
-        if document.latest_version:
-            document_fields.extend([
-                {'label': _(u'File mimetype'), 'field': lambda x: x.file_mimetype or _(u'None')},
-                {'label': _(u'File encoding'), 'field': lambda x: x.file_mime_encoding or _(u'None')},
-                {'label': _(u'File size'), 'field': lambda x: pretty_size(x.size) if x.size else '-'},
-                {'label': _(u'Exists in storage'), 'field': 'exists'},
-                {'label': _(u'File path in storage'), 'field': 'file'},
-                {'label': _(u'Checksum'), 'field': 'checksum'},
-                {'label': _(u'Pages'), 'field': 'page_count'},
-            ])
+    document_fields = [
+        {'label': _(u'Date added'), 'field': lambda x: x.date_added.date()},
+        {'label': _(u'Time added'), 'field': lambda x: unicode(x.date_added.time()).split('.')[0]},
+        {'label': _(u'UUID'), 'field': 'uuid'},
+    ]
+    if document.latest_version:
+        document_fields.extend([
+            {'label': _(u'File mimetype'), 'field': lambda x: x.file_mimetype or _(u'None')},
+            {'label': _(u'File encoding'), 'field': lambda x: x.file_mime_encoding or _(u'None')},
+            {'label': _(u'File size'), 'field': lambda x: pretty_size(x.size) if x.size else '-'},
+            {'label': _(u'Exists in storage'), 'field': 'exists'},
+            {'label': _(u'File path in storage'), 'field': 'file'},
+            {'label': _(u'Checksum'), 'field': 'checksum'},
+            {'label': _(u'Pages'), 'field': 'page_count'},
+        ])
 
-        document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=document_fields)
-
-        subtemplates_list.append(
-            {
-                'name': 'main/generic_form_subtemplate.html',
-                'context': {
-                    'form': document_properties_form,
-                    'object': document,
-                    'title': _(u'Document properties for: %s') % document,
-                }
-            },
-        )
-    else:
-        preview_form = DocumentPreviewForm(document=document)
-        subtemplates_list.append(
-            {
-                'name': 'main/generic_form_subtemplate.html',
-                'context': {
-                    'form': preview_form,
-                    'object': document,
-                }
-            },
-        )
-
-        content_form = DocumentContentForm(document=document)
-
-        subtemplates_list.append(
-            {
-                'name': 'main/generic_form_subtemplate.html',
-                'context': {
-                    'title': _(u'Document data'),
-                    'form': content_form,
-                    'object': document,
-                },
-            }
-        )
+    document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=document_fields)
 
     return render_to_response('main/generic_detail.html', {
-        'object': document,
+        'form': document_properties_form,
         'document': document,
-        'subtemplates_list': subtemplates_list,
-        'disable_auto_focus': True,
+        'object': document,
+        'title': _(u'Document properties'),
+    }, context_instance=RequestContext(request))
+
+
+def document_preview(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
+
+    document.add_as_recent_document_for_user(request.user)
+
+    preview_form = DocumentPreviewForm(document=document)
+
+    return render_to_response('main/generic_detail.html', {
+        'document': document,
+        'form': preview_form,
+        'object': document,
+        'title': _(u'Document preview'),
+    }, context_instance=RequestContext(request))
+
+
+def document_content(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
+
+    document.add_as_recent_document_for_user(request.user)
+
+    content_form = DocumentContentForm(document=document)
+
+    return render_to_response('main/generic_detail.html', {
+        'document': document,
+        'form': content_form,
+        'object': document,
+        'title': _(u'Document content'),
     }, context_instance=RequestContext(request))
 
 
@@ -447,7 +450,7 @@ def document_multiple_download(request):
 def document_update_page_count(request, document_id=None, document_id_list=None):
     if document_id:
         documents = [get_object_or_404(Document.objects, pk=document_id)]
-        post_redirect = reverse('documents:document_view_simple', args=[documents[0].pk])
+        post_redirect = documents[0].get_absolute_url()
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
@@ -500,7 +503,7 @@ def document_multiple_update_page_count(request):
 def document_clear_transformations(request, document_id=None, document_id_list=None):
     if document_id:
         documents = [get_object_or_404(Document.objects, pk=document_id)]
-        post_redirect = reverse('documents:document_view_simple', args=[documents[0].pk])
+        post_redirect = document[0].get_absolute_url()
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
         post_redirect = None

@@ -53,7 +53,7 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
 
             for document in documents:
                 context = Context({
-                    'link': 'http://%s%s' % (Site.objects.get_current().domain, reverse('documents:document_view_simple', args=[document.pk])),
+                    'link': 'http://%s%s' % (Site.objects.get_current().domain, document.get_absolute_url()),
                     'document': document
                 })
                 body_template = Template(form.cleaned_data['body'])

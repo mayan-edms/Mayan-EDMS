@@ -38,8 +38,9 @@ def is_current_version(context):
 
 document_list = {'text': _(u'All documents'), 'view': 'documents:document_list', 'famfam': 'page'}
 document_list_recent = {'text': _(u'Recent documents'), 'view': 'documents:document_list_recent', 'famfam': 'page'}
-document_view_simple = {'text': _(u'Details'), 'view': 'documents:document_view_simple', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_view_advanced = {'text': _(u'Properties'), 'view': 'documents:document_view_advanced', 'args': 'object.id', 'famfam': 'page_gear', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_preview = {'text': _(u'Preview'), 'view': 'documents:document_preview', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_content = {'text': _(u'Content'), 'view': 'documents:document_content', 'args': 'object.id', 'famfam': 'page_white_text', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+document_properties = {'text': _(u'Properties'), 'view': 'documents:document_properties', 'args': 'object.id', 'famfam': 'page_gear', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_delete = {'text': _(u'Delete'), 'view': 'documents:document_delete', 'args': 'object.id', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}
 document_multiple_delete = {'text': _(u'Delete'), 'view': 'documents:document_multiple_delete', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}
 document_edit = {'text': _(u'Edit properties'), 'view': 'documents:document_edit', 'args': 'object.id', 'famfam': 'page_edit', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}

@@ -108,7 +108,7 @@ class Document(models.Model):
 
     @models.permalink
     def get_absolute_url(self):
-        return ('documents:document_view_simple', [self.pk])
+        return ('documents:document_preview', [self.pk])
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('user', None)

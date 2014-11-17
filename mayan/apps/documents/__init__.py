@@ -22,7 +22,8 @@ from documents import settings as document_settings
 from .events import (HISTORY_DOCUMENT_CREATED,
                      HISTORY_DOCUMENT_DELETED, HISTORY_DOCUMENT_EDITED)
 from .links import (document_clear_image_cache,
-                    document_clear_transformations, document_delete,
+                    document_clear_transformations, document_content,
+                    document_delete,
                     document_document_type_edit,
                     document_multiple_document_type_edit, document_download,
                     document_edit, document_history_view, document_list,
@@ -40,15 +41,15 @@ from .links import (document_clear_image_cache,
                     document_page_transformation_edit,
                     document_page_transformation_delete, document_page_view,
                     document_page_view_reset, document_page_zoom_in,
-                    document_page_zoom_out, document_print,
-                    document_type_create, document_type_delete,
-                    document_type_edit, document_type_filename_create,
-                    document_type_filename_delete,
-                    document_type_filename_edit, document_type_filename_list,
-                    document_type_list, document_type_setup,
-                    document_update_page_count, document_version_download,
-                    document_version_list, document_version_revert,
-                    document_view_advanced, document_view_simple)
+                    document_page_zoom_out, document_preview, document_print,
+                    document_properties, document_type_create,
+                    document_type_delete, document_type_edit,
+                    document_type_filename_create,
+                    document_type_filename_delete, document_type_filename_edit,
+                    document_type_filename_list, document_type_list,
+                    document_type_setup, document_update_page_count,
+                    document_version_download, document_version_list,
+                    document_version_revert)
 from .models import (Document, DocumentPage, DocumentPageTransformation,
                      DocumentType, DocumentTypeFilename, DocumentVersion)
 from .permissions import (PERMISSION_DOCUMENT_DELETE,
@@ -75,8 +76,13 @@ register_links(DocumentTypeFilename, [document_type_filename_edit, document_type
 register_links([DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
 
 # Register document links
-register_links(Document, [document_view_simple, document_edit, document_document_type_edit, document_print, document_delete, document_download, document_clear_transformations, document_update_page_count])
+register_links(Document, [document_edit, document_document_type_edit, document_print, document_delete, document_download, document_clear_transformations, document_update_page_count])
 register_links([Document], [link_spacer, document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count, document_multiple_document_type_edit], menu_name='multi_item_links')
+register_links(Document, [document_preview], menu_name='form_header', position=0)
+register_links(Document, [document_content], menu_name='form_header', position=1)
+register_links(Document, [document_properties], menu_name='form_header', position=2)
+register_links(Document, [document_history_view], menu_name='form_header')
+register_links(Document, [document_version_list], menu_name='form_header')
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])
@@ -119,11 +125,6 @@ register_top_menu(
     link={'famfam': 'page', 'text': _(u'Documents'), 'view': 'documents:document_list_recent'},
     position=1
 )
-
-register_links(Document, [document_view_simple], menu_name='form_header', position=0)
-register_links(Document, [document_view_advanced], menu_name='form_header', position=1)
-register_links(Document, [document_history_view], menu_name='form_header')
-register_links(Document, [document_version_list], menu_name='form_header')
 
 if (not validate_path(document_settings.CACHE_PATH)) or (not document_settings.CACHE_PATH):
     setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())

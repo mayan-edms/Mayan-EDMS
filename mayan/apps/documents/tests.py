@@ -310,7 +310,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         self.assertTrue('ocuments (1)' in response.content)
 
         # test document simple view
-        response = self.client.get(reverse('documents:document_view_simple', args=[self.document.pk]))
+        response = self.client.get(reverse('documents:document_properties', args=[self.document.pk]))
         self.assertEqual(response.status_code, 200)
         self.assertTrue('Details for' in response.content)
 
