@@ -36,7 +36,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
     """
     def render(self, name, value, attrs=None):
         output = []
-        output.append(u'<div class="carousel-container" style="white-space:nowrap; overflow: auto;">')
+        output.append(u'<div id="carousel-container" style="overflow-x: scroll; height: 500px;">')
 
         try:
             document_pages = value.pages.all()
@@ -48,7 +48,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         page_count = value.page_count
 
         for page in document_pages:
-            output.append(u'<div style="display: inline-block; margin: 5px 10px 10px 10px;">')
+            output.append(u'<div style="margin: 5px 10px 10px 10px;">')
             output.append(u'<div class="tc">%(page_string)s %(page)s</div>' % {'page_string': ugettext(u'Page'), 'page': page.page_number})
             output.append(
                 document_html_widget(
@@ -124,8 +124,7 @@ def document_html_widget(document, click_view=None, page=DEFAULT_PAGE_NUMBER, zo
     if nolazyload:
         result.append(u'<img style="border: 1px solid black;" src="%s" alt="%s" />' % (preview_view, alt_text))
     else:
-        result.append(u'<img class="thin_border %s" data-src="%s" src="%simages/ajax-loader.gif" alt="%s" />' % (image_class, preview_view, settings.STATIC_URL, alt_text))
-        result.append(u'<noscript><img style="border: 1px solid black;" src="%s" alt="%s" /></noscript>' % (preview_view, alt_text))
+        result.append(u'<img class="thin_border %s" data-src="%s" src="%smain/icons/hourglass.png" alt="%s" />' % (image_class, preview_view, settings.STATIC_URL, alt_text))
 
     if click_view:
         result.append(u'</a>')
