@@ -32,24 +32,6 @@
         {% compress css %}
             <link rel="stylesheet" href="{% static 'web_theme_media/stylesheets/base.css' %}" type="text/css" media="screen" />
             <link rel="stylesheet" href="{% static 'web_theme_media/stylesheets/themes/activo/style.css' %}" type="text/css" media="screen" />
-            <style type="text/css">
-                .message span.dismiss {
-                    padding:0 5px;
-                    cursor:pointer;
-                    float:right;
-                    margin-right:10px;
-                }
-                .message span.dismiss-all {
-                    padding:0 5px;
-                    cursor:pointer;
-                    float:right;
-                    margin-right:10px;
-                }
-                .message a {
-                    text-decoration:none;
-                    font-weight:bold
-                }
-            </style>
             <link rel="stylesheet" href="{% static 'packages/animate-custom.css' %}" type="text/css" media="screen" />
             <link rel="stylesheet" href="{% static 'css/famfamfam-silk-sprite.css' %}" type="text/css" media="screen" />
             <link rel="stylesheet" href="{% static 'css/960-fluid.css' %}" type="text/css" media="screen" />
@@ -129,6 +111,28 @@
                 .thin_border {
                     border: 1px solid black;
                 }
+
+                .message span.dismiss {
+                    padding:0 5px;
+                    cursor:pointer;
+                    float:right;
+                    margin-right:10px;
+                }
+                .message span.dismiss-all {
+                    padding:0 5px;
+                    cursor:pointer;
+                    float:right;
+                    margin-right:10px;
+                }
+                .message a {
+                    text-decoration:none;
+                    font-weight:bold
+                }
+
+                .lazy-load-carousel-loaded {
+                    width: 100%;
+                }
+
             </style>
             {% block stylesheets %}{% endblock %}
 
@@ -460,9 +464,10 @@
                 }
 
                 function load_document_image(image) {
-                    $.get( image.attr('data-src'), function( result ) {
+                    $.get( image.attr('data-src'), function(result) {
                         if (result.status == 'success') {
                             image.attr('src', result.data);
+                            image.addClass(image.attr('data-post-load-class'));
                         } else if (result.detail == 'unknown_file_format') {
                             image.attr('src', "{% static 'images/mimetypes/unknown.png' %}");
                             set_image_noninteractive(image);

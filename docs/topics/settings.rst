@@ -33,13 +33,6 @@ Size of the document list and recent document list previews.
 Default: ``1400``
 
 
-.. setting:: DOCUMENTS_MULTIPAGE_PREVIEW_SIZE
-
-**DOCUMENTS_MULTIPAGE_PREVIEW_SIZE**
-
-Default: ``160x120``
-
-
 .. setting:: DOCUMENTS_THUMBNAIL_SIZE
 
 **DOCUMENTS_THUMBNAIL_SIZE**

@@ -55,7 +55,6 @@ def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NU
         result.append(u'<img style="border: 1px solid black;" src="%s" alt="%s" />' % (preview_view, alt_text))
     else:
         result.append(u'<img class="thin_border %s" data-src="%s" src="%smain/icons/hourglass.png" alt="%s" />' % (image_class, preview_view, settings.STATIC_URL, alt_text))
-        result.append(u'<noscript><img style="border: 1px solid black;" src="%s" alt="%s" /></noscript>' % (preview_view, alt_text))
 
     if click_view:
         result.append(u'</a>')
