@@ -16,7 +16,6 @@ django-suit==0.2.11
 djangorestframework==2.4.3
 
 GitPython==0.3.2.RC1
-ghostscript==0.4.1
 
 Pillow==2.6.1
 pdfminer==20110227
