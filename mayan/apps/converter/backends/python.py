@@ -1,33 +1,30 @@
 from __future__ import absolute_import
 
+import io
 import logging
 import os
 import tempfile
-
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
 
 import slate
 from PIL import Image
 import sh
 
-try:
-    pdftoppm = sh.Command('/usr/bin/pdftoppm')
-except sh.CommandNotFound:
-    pdftoppm = None
-else:
-    pdftoppm = pdftoppm.bake('-png')
-
 from common.utils import fs_cleanup
 from mimetype.api import get_mimetype
 
 from . import ConverterBase
-from ..exceptions import UnknownFileFormat
+from ..exceptions import ConvertError, UnknownFileFormat
 from ..literals import (DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER,
                         TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
                         TRANSFORMATION_ZOOM)
+from ..settings import PDFTOPPM_PATH
+
+try:
+    pdftoppm = sh.Command(PDFTOPPM_PATH)
+except sh.CommandNotFound:
+    pdftoppm = None
+else:
+    pdftoppm = pdftoppm.bake('-png')
 
 Image.init()
 logger = logging.getLogger(__name__)
@@ -72,7 +69,7 @@ class Python(ConverterBase):
 
         try:
             if mimetype == 'application/pdf' and pdftoppm:
-                image_buffer = StringIO()
+                image_buffer = io.BytesIO()
                 pdftoppm(input_filepath, f=page, l=page, _out=image_buffer)
                 image_buffer.seek(0)
                 im = Image.open(image_buffer)
@@ -81,6 +78,8 @@ class Python(ConverterBase):
         except Exception as exception:
             logger.error('Error converting image; %s', exception)
             # Python Imaging Library doesn't recognize it as an image
+            raise ConvertError
+        except IOError:  # cannot identify image file
             raise UnknownFileFormat
         finally:
             if tmpfile:

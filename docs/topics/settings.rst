@@ -187,6 +187,13 @@ Default: ``/usr/bin/libreoffice``
 Path to the libreoffice binary used to call LibreOffice for office document conversion.
 
 
+**CONVERTER_PDFTOPPM_PATH**
+
+Default: ``/usr/bin/pdftoppm``
+
+Path to the Popple program pdftoppm.
+
+
 Storage
 =======
 

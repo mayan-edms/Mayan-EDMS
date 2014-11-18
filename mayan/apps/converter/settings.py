@@ -14,5 +14,6 @@ register_settings(
         {'name': u'GM_SETTINGS', 'global_name': u'CONVERTER_GM_SETTINGS', 'default': u''},
         {'name': u'GRAPHICS_BACKEND', 'global_name': u'CONVERTER_GRAPHICS_BACKEND', 'default': u'converter.backends.python.Python', 'description': _(u'Graphics conversion backend to use.  Options are: converter.backends.imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick and converter.backends.python.Python')},
         {'name': u'LIBREOFFICE_PATH', 'global_name': u'CONVERTER_LIBREOFFICE_PATH', 'default': u'/usr/bin/libreoffice', 'exists': True, 'description': _(u'Path to the libreoffice program.')},
+        {'name': u'PDFTOPPM_PATH', 'global_name': u'CONVERTER_PDFTOPPM_PATH', 'default': u'/usr/bin/pdftoppm', 'exists': True, 'description': _(u'Path to the Popple program pdftoppm.')},
     ]
 )
