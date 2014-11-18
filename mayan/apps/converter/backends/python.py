@@ -1,16 +1,24 @@
 from __future__ import absolute_import
 
+import logging
 import os
 import tempfile
 
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
+
 import slate
 from PIL import Image
+import sh
 
 try:
-    import ghostscript
-    USE_GHOSTSCRIPT = True
-except RuntimeError:
-    USE_GHOSTSCRIPT = False
+    pdftoppm = sh.Command('/usr/bin/pdftoppm')
+except sh.CommandNotFound:
+    pdftoppm = None
+else:
+    pdftoppm = pdftoppm.bake('-png')
 
 from common.utils import fs_cleanup
 from mimetype.api import get_mimetype
@@ -22,6 +30,7 @@ from ..literals import (DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER,
                         TRANSFORMATION_ZOOM)
 
 Image.init()
+logger = logging.getLogger(__name__)
 
 
 class Python(ConverterBase):
@@ -46,7 +55,7 @@ class Python(ConverterBase):
             raise UnknownFileFormat
 
         try:
-            while 1:
+            while True:
                 im.seek(im.tell() + 1)
                 page_count += 1
                 # do something to im
@@ -61,38 +70,16 @@ class Python(ConverterBase):
         if not mimetype:
             mimetype, encoding = get_mimetype(open(input_filepath, 'rb'), input_filepath, mimetype_only=True)
 
-        if mimetype == 'application/pdf' and USE_GHOSTSCRIPT:
-            # If file is a PDF open it with ghostscript and convert it to
-            # TIFF
-            first_page_tmpl = '-dFirstPage=%d' % page
-            last_page_tmpl = '-dLastPage=%d' % page
-            fd, tmpfile = tempfile.mkstemp()
-            os.close(fd)
-            output_file_tmpl = '-sOutputFile=%s' % tmpfile
-            input_file_tmpl = '-f%s' % input_filepath
-            args = [
-                'gs', '-q', '-dQUIET', '-dSAFER', '-dBATCH',
-                '-dNOPAUSE', '-dNOPROMPT',
-                first_page_tmpl, last_page_tmpl,
-                '-sDEVICE=jpeg', '-dJPEGQ=95',
-                '-r150', output_file_tmpl,
-                input_file_tmpl,
-                '-c "60000000 setvmthreshold"',  # use 30MB
-                '-dNOGC',  # No garbage collection
-                '-dMaxBitmap=500000000',
-                '-dAlignToPixels=0',
-                '-dGridFitTT=0',
-                '-dTextAlphaBits=4',
-                '-dGraphicsAlphaBits=4',
-            ]
-
-            ghostscript.Ghostscript(*args)
-            page = 1  # Don't execute the following while loop
-            input_filepath = tmpfile
-
         try:
-            im = Image.open(input_filepath)
-        except Exception:
+            if mimetype == 'application/pdf' and pdftoppm:
+                image_buffer = StringIO()
+                pdftoppm(input_filepath, f=page, l=page, _out=image_buffer)
+                image_buffer.seek(0)
+                im = Image.open(image_buffer)
+            else:
+                im = Image.open(input_filepath)
+        except Exception as exception:
+            logger.error('Error converting image; %s', exception)
             # Python Imaging Library doesn't recognize it as an image
             raise UnknownFileFormat
         finally:
