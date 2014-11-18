@@ -6,16 +6,20 @@ from django.core.files import File
 from mayan.celery import app
 
 from common.models import SharedUploadedFile
+from converter.exceptions import ConvertError
 
 from .models import Document, DocumentType, DocumentVersion
 
 logger = logging.getLogger(__name__)
 
 
-@app.task
-def task_get_document_image(document_id, *args, **kwargs):
+@app.task(bind=True, max_retries=3, default_retry_delay=1, compression='zlib')
+def task_get_document_image(self, document_id, *args, **kwargs):
     document = Document.objects.get(pk=document_id)
-    return document.get_image(*args, **kwargs)
+    try:
+        return document.get_image(*args, **kwargs)
+    except ConvertError as exception:
+        raise self.retry(exc=exception)
 
 
 @app.task(ignore_result=True)
