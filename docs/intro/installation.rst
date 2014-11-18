@@ -34,6 +34,52 @@ it very easy to start using **Mayan EDMS**. Populate the database with the proje
 Point your browser to http://127.0.0.1:8000. If everything was installed
 correctly you should see the login screen and panel showing a randomly generated admin password.
 
+Mac OSX
+-------
+
+**Mayan EDMS** is dependant on a number of binary packages and the recommended way is
+to use a package manager such as `MacPorts <https://www.macports.org/>`_.
+
+
+Use MacPorts to install binary dependencies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With MacPorts installed run the command:
+
+.. code-block:: bash
+
+    sudo port install python-dev gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils
+
+**Mayan EDMS** can use either Pillow, ImageMagick or GraphicsMagick as the backend to
+convert images so in addition you can install GraphicsMagick ...
+
+.. code-block:: bash
+
+    sudo port install graphicsmagick
+
+Set the Binary paths
+~~~~~~~~~~~~~~~~~~~~
+
+**Mayan EDMS** by default will look in /usr/bin/ for the binary files it needs
+so either you can symlink the binaries installed via MacPorts in /opt/local/bin/
+to /usr/bin/ with ...
+
+.. code-block:: bash
+
+    sudo ln -s /opt/local/bin/tesseract /usr/bin/tesseract  && \
+    sudo ln -s /opt/local/bin/identify /usr/bin/identify && \
+    sudo ln -s /opt/local/bin/gs /usr/bin/gs
+
+... alternatively set the paths in the ``settings/locals.py``
+
+.. code-block:: python
+
+    # document converters
+    CONVERTER_IM_CONVERT_PATH = '/opt/local/bin/convert'
+    IM_IDENTIFY_PATH = '/opt/local/bin/identify'
+    GRAPHICS_BACKEND = 'converter.backends.graphicsmagick.GraphicsMagick'
+    GM_PATH = '/opt/local/bin/gm'
+    LIBREOFFICE_PATH = '/Applications/LibreOffice.app/Contents/MacOS/soffice'
 
 Production use
 --------------
@@ -57,6 +103,7 @@ After making sure everything is running correctly, stop the runserver command.
 Deploy **Mayan EDMS** using the webserver of your preference. For more information
 on deployment instructions and examples checkout Django's official documentation
 on the topic https://docs.djangoproject.com/en/1.6/howto/deployment/
+
 
 
 Other database managers
