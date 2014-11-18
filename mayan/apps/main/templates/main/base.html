@@ -373,9 +373,6 @@
 
         <script type="text/javascript">
             jQuery(document).ready(function() {
-                {% if not disable_auto_focus %}
-                    $("input:text:visible:not(#livesearch):not([readonly]):enabled:first").focus();
-                {% endif %}
                 $('form').submit(function(){
                     $('button', this).click(function() {
                         return false;

@@ -428,7 +428,6 @@ def document_download(request, document_id=None, document_id_list=None, document
         'submit_label': _(u'Download'),
         'previous': previous,
         'cancel_label': _(u'Return'),
-        'disable_auto_focus': True,
     }
 
     if len(document_versions) == 1:
