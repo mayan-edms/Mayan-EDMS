@@ -60,7 +60,7 @@ Release notes
 =============
   :doc:`Release notes and upgrading instructions <releases/index>`
 
-Customization and fine tunning
+Customization and fine-tuning
 ==============================
 
   :doc:`Settings <topics/settings>` | :doc:`Customization <topics/customization>`
