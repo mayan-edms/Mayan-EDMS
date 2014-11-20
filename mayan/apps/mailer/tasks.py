@@ -14,7 +14,7 @@ def task_send_document(subject_text, body_text_content, sender, recipient, docum
         documents = [Document.objects.get(pk=document_id) for document_id in document_ids]
         for document in documents:
             descriptor = document.open()
-            email_msg.attach(document.filename, descriptor.read(), document.file_mimetype)
+            email_msg.attach(document.label, descriptor.read(), document.file_mimetype)
             descriptor.close()
 
     email_msg.send()
