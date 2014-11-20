@@ -216,7 +216,8 @@ class EmailBaseModel(IntervalBaseModel):
     password = models.CharField(max_length=96, verbose_name=_('Password'))
 
     # From: http://bookmarks.honewatson.com/2009/08/11/python-gmail-imaplib-search-subject-get-attachments/
-    # TODO: Add lock to avoid being running more than once concurrent
+    # TODO: Add lock to avoid running more than once concurrent same document download
+    # TODO: Use message ID for lock
     @staticmethod
     def process_message(source, message):
         email = message_from_string(message)
@@ -238,7 +239,7 @@ class EmailBaseModel(IntervalBaseModel):
                 logger.debug('filename: %s', filename)
 
                 file_object = Attachment(part, name=filename)
-                source.upload_file(file_object, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
+                source.upload_document(file_object=file_object, label=filename, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
 
     class Meta:
         verbose_name = _('Email source')
