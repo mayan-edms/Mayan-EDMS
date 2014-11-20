@@ -28,6 +28,7 @@ def update_indexes(document):
     """
     Update or create all the index instances related to a document
     """
+    # TODO: convert this fuction into a manager method
 
     warnings = []
 
@@ -47,6 +48,8 @@ def delete_indexes(document):
     """
     Delete all the index instances related to a document
     """
+
+    # TODO: convert this fuction into a manager method
 
     warnings = []
 
