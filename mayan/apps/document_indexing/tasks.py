@@ -12,13 +12,13 @@ logger = logging.getLogger(__name__)
 @app.task(ignore_result=True)
 def task_delete_indexes(document_id):
     document = Document.objects.get(pk=document_id)
-    update_indexes(document)
+    delete_indexes(document)
 
 
 @app.task(ignore_result=True)
 def task_update_indexes(document_id):
     document = Document.objects.get(pk=document_id)
-    delete_indexes(document)
+    update_indexes(document)
 
 
 @app.task(ignore_result=True)
