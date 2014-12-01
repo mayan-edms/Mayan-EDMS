@@ -26,9 +26,10 @@ class DocumentTypeMetadataTypeHelper(object):
             return MetadataType.objects.none()
 
     def add(self, metadata_type, required=False):
-        DocumentTypeMetadataType.objects.create(document_type=self.instance, metadata_type=metadata_type, required=required)
-        if required:
-            task_add_required_metadata_type.apply_async(kwargs={'metadata_type_id': metadata_type.pk, 'document_type_id': self.instance.pk}, queue='metadata')
+        if metadata_type not in self.instance.metadata_type.all():
+            DocumentTypeMetadataType.objects.create(document_type=self.instance, metadata_type=metadata_type, required=required)
+            if required:
+                task_add_required_metadata_type.apply_async(kwargs={'metadata_type_id': metadata_type.pk, 'document_type_id': self.instance.pk}, queue='metadata')
 
     def remove(self, metadata_type):
         DocumentTypeMetadataType.objects.get(document_type=self.instance, metadata_type=metadata_type).delete()
