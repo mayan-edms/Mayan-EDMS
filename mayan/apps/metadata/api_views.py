@@ -154,7 +154,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
         return document_type.metadata_type.filter(required=self.required_metadata)
 
     def get(self, *args, **kwargs):
-        """Returns a list of selected document type allowed metadata types."""
+        """Returns a list of selected document type's optional metadata types."""
         return super(APIDocumentTypeMetadataTypeOptionalListView, self).get(*args, **kwargs)
 
     def get_serializer_class(self):
@@ -165,7 +165,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
 
     def post(self, request, *args, **kwargs):
         """
-        Add a metadata type to a document type.
+        Add an optional metadata type to a document type.
         """
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['document_type_pk'])
 
@@ -184,6 +184,17 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
 
 class APIDocumentTypeMetadataTypeRequiredListView(APIDocumentTypeMetadataTypeOptionalListView):
     required_metadata = True
+
+    def get(self, *args, **kwargs):
+        """Returns a list of the selected document type's required metadata types."""
+        return super(APIDocumentTypeMetadataTypeRequiredListView, self).get(*args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        """
+        Add a required metadata type to a document type.
+        """
+        return super(APIDocumentTypeMetadataTypeRequiredListView, self).get(*args, **kwargs)
+
 
 
 class APIDocumentTypeMetadataTypeRequiredView(views.APIView):
