@@ -13,11 +13,19 @@ class MetadataTypeSerializer(serializers.ModelSerializer):
         model = MetadataType
 
 
-class DocumentMetadataSerializer(serializers.ModelSerializer):
+class DocumentMetadataNestedSerializer(serializers.ModelSerializer):
+    metadata_type = MetadataTypeSerializer()
+
     class Meta:
-        fields = ('id', 'document', 'metadata_type', 'value')
+        fields = ('id', 'metadata_type', 'value')
         model = DocumentMetadata
 
 
-class DocumentTypeNewMetadataType(serializers.Serializer):
+class DocumentMetadataSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('id', 'metadata_type', 'value')
+        model = DocumentMetadata
+
+
+class DocumentTypeNewMetadataTypeSerializer(serializers.Serializer):
     metadata_type_pk = serializers.IntegerField(help_text=_('Primary key of the metadata type to be added.'))

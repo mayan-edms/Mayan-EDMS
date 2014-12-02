@@ -25,7 +25,9 @@ from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_TYPE_EDIT,
                           PERMISSION_METADATA_TYPE_VIEW)
 from .serializers import (DocumentMetadataSerializer,
-                          DocumentTypeNewMetadataType, MetadataTypeSerializer)
+                          DocumentMetadataNestedSerializer,
+                          DocumentTypeNewMetadataTypeSerializer,
+                          MetadataTypeSerializer)
 
 
 class APIMetadataTypeListView(generics.ListCreateAPIView):
@@ -76,11 +78,6 @@ class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
 
 
 class APIDocumentMetadataListView(generics.ListCreateAPIView):
-    """
-    Returns a list of all the metadata of a document.
-    """
-
-    serializer_class = DocumentMetadataSerializer
     permission_classes = (MayanPermission,)
 
     mayan_view_permissions = {'POST': [PERMISSION_METADATA_DOCUMENT_ADD]}
@@ -95,20 +92,40 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         queryset = document.metadata.all()
         return queryset
 
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentMetadataNestedSerializer
+        elif self.request.method == 'POST':
+            return DocumentMetadataSerializer
+
     def get(self, *args, **kwargs):
         """Returns a list of selected document's metadata types and values."""
         return super(APIDocumentMetadataListView, self).get(*args, **kwargs)
 
-    def post(self, *args, **kwargs):
+    def post(self, request, *args, **kwargs):
         """Add an existing metadata type and value to the selected document."""
-        return super(APIDocumentMetadataListView, self).post(*args, **kwargs)
+
+        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
+        try:
+            Permission.objects.check_permissions(self.request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_ADD, self.request.user, document)
+
+        serializer = self.get_serializer(data=self.request.POST)
+
+        if serializer.is_valid():
+            metadata_type = get_object_or_404(MetadataType, pk=serializer.data['metadata_type'])
+            try:
+                document.document_metadata.create(metadata_type=metadata_type, value=serializer.data['value'])
+            except Exception as exception:
+                return Response(status=status.HTTP_400_BAD_REQUEST)
+            else:
+                return Response(status=status.HTTP_201_CREATED)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
-    """
-    Returns the selected document metadata details.
-    """
-
     serializer_class = DocumentMetadataSerializer
     queryset = DocumentMetadata.objects.all()
 
@@ -122,7 +139,10 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
 
     def delete(self, *args, **kwargs):
         """Delete the selected document metadata type and value."""
-        return super(APIDocumentMetadataView, self).delete(*args, **kwargs)
+        try:
+            return super(APIDocumentMetadataView, self).delete(*args, **kwargs)
+        except Exception as exception:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
     def get(self, *args, **kwargs):
         """Return the details of the selected document metadata type and value."""
@@ -180,6 +200,8 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
             metadata_type = get_object_or_404(MetadataType, pk=serializer.data['metadata_type_pk'])
             document_type.metadata_type.add(metadata_type, required=self.required_metadata)
             return Response(status=status.HTTP_201_CREATED)
+        else:
+            return Response(status=status.HTTP_400_BAD_REQUEST)
 
 
 class APIDocumentTypeMetadataTypeRequiredListView(APIDocumentTypeMetadataTypeOptionalListView):
@@ -194,7 +216,6 @@ class APIDocumentTypeMetadataTypeRequiredListView(APIDocumentTypeMetadataTypeOpt
         Add a required metadata type to a document type.
         """
         return super(APIDocumentTypeMetadataTypeRequiredListView, self).get(*args, **kwargs)
-
 
 
 class APIDocumentTypeMetadataTypeRequiredView(views.APIView):
