@@ -65,6 +65,7 @@ class DocumentMetadata(models.Model):
         return super(DocumentMetadata, self).delete(*args, **kwargs)
 
     class Meta:
+        unique_together = ('document', 'metadata_type')
         verbose_name = _(u'Document metadata')
         verbose_name_plural = _(u'Document metadata')
 
