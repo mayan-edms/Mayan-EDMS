@@ -53,13 +53,13 @@ class DocumentMetadata(models.Model):
         return unicode(self.metadata_type)
 
     def save(self, *args, **kwargs):
-        if self.metadata_type not in self.document.document_type.metadata_type.all():
+        if self.metadata_type.pk not in self.document.document_type.metadata.values_list('metadata_type', flat=True):
             raise ValidationError(_('Metadata type is not valid for this document type.'))
 
         return super(DocumentMetadata, self).save(*args, **kwargs)
 
     def delete(self, enforce_required=True, *args, **kwargs):
-        if enforce_required and self.metadata_type in self.document.document_type.metadata_type.filter(required=True):
+        if enforce_required and self.metadata_type.pk in self.document.document_type.metadata.filter(required=True).values_list('metadata_type', flat=True):
             raise ValidationError(_('Metadata type is required for this document type.'))
 
         return super(DocumentMetadata, self).delete(*args, **kwargs)
@@ -74,6 +74,9 @@ class DocumentTypeMetadataType(models.Model):
     document_type = models.ForeignKey(DocumentType, related_name='metadata', verbose_name=_(u'Document type'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'Metadata type'))
     required = models.BooleanField(default=False, verbose_name=_('Required'))
+
+    def __unicode__(self):
+        return unicode(self.metadata_type)
 
     class Meta:
         unique_together = ('document_type', 'metadata_type')
