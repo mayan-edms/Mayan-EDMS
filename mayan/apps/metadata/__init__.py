@@ -46,13 +46,7 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
         DocumentMetadata.objects.create(document=instance, metadata_type=metadata_type, value=None)
 
 
-@property
-def document_metadata(document):
-    return document.document_metadata.select_related('metadata_type')
-
-
 DocumentType.add_to_class('metadata_type', DocumentTypeMetadataTypeHelper.constructor)
-Document.add_to_class('metadata', document_metadata)
 Document.add_to_class('metadata_value_of', DocumentMetadataHelper.constructor)
 
 register_links(['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
