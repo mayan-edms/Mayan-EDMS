@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 import logging
 
+from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
@@ -16,7 +17,7 @@ from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 
 from .api import get_metadata_string
-from .classes import DocumentMetadataHelper, DocumentTypeMetadataTypeHelper
+from .classes import DocumentMetadataHelper
 from .links import (metadata_add, metadata_edit, metadata_multiple_add,
                     metadata_multiple_edit, metadata_multiple_remove,
                     metadata_remove, metadata_view,
@@ -24,13 +25,28 @@ from .links import (metadata_add, metadata_edit, metadata_multiple_add,
                     setup_document_type_metadata_required,
                     setup_metadata_type_create, setup_metadata_type_delete,
                     setup_metadata_type_edit, setup_metadata_type_list)
-from .models import DocumentMetadata, MetadataType
+from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
 from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_DOCUMENT_EDIT,
                           PERMISSION_METADATA_DOCUMENT_REMOVE,
                           PERMISSION_METADATA_DOCUMENT_VIEW)
+from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 
 logger = logging.getLogger(__name__)
+
+
+@receiver(post_save, dispatch_uid='post_document_type_metadata_type_add', sender=DocumentTypeMetadataType)
+def post_document_type_metadata_type_add(sender, instance, created, **kwargs):
+    logger.debug('instance: %s', instance)
+
+    if created and instance.required:
+        task_add_required_metadata_type.apply_async(kwargs={'document_type_id': instance.document_type.pk, 'metadata_type_id': instance.metadata_type.pk}, queue='metadata')
+
+
+@receiver(post_delete, dispatch_uid='post_document_type_metadata_type_delete', sender=DocumentTypeMetadataType)
+def post_document_type_metadata_type_delete(sender, instance, **kwargs):
+    logger.debug('instance: %s', instance)
+    task_remove_metadata_type.apply_async(kwargs={'document_type_id': instance.document_type.pk, 'metadata_type_id': instance.metadata_type.pk}, queue='metadata')
 
 
 @receiver(post_document_type_change, dispatch_uid='post_post_document_type_change_metadata', sender=Document)
@@ -46,7 +62,6 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
         DocumentMetadata.objects.create(document=instance, metadata_type=metadata_type, value=None)
 
 
-DocumentType.add_to_class('metadata_type', DocumentTypeMetadataTypeHelper.constructor)
 Document.add_to_class('metadata_value_of', DocumentMetadataHelper.constructor)
 
 register_links(['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
