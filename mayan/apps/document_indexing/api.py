@@ -32,8 +32,6 @@ def update_indexes(document):
 
     warnings = []
 
-    document_metadata_dict = dict([(metadata.metadata_type.name, metadata.value) for metadata in document.metadata.all() if metadata.value])
-
     # Only update indexes where the document type is found or that do not have any document type specified
     for index in Index.objects.filter(Q(enabled=True) & (Q(document_types=None) | Q(document_types=document.document_type))):
         root_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=index.template_root, parent=None)
