@@ -16,8 +16,8 @@ def task_remove_metadata_type(document_type_id, metadata_type_id):
 
 @app.task(ignore_result=True)
 def task_add_required_metadata_type(document_type_id, metadata_type_id):
-    document_type = DocumentType.objects.get(pk=document_type_id)
     metadata_type = MetadataType.objects.get(pk=metadata_type_id)
 
-    for document in document_type.documents.all():
-        DocumentMetadata.objects.create(document=document, metadata_type=metadata_type)
+    for document in DocumentType.objects.get(pk=document_type_id).documents.all():
+        document.metadata.create(metadata_type=metadata_type)
+
