@@ -21,7 +21,7 @@ class DocumentTypeMetadataTypeHelper(object):
 
     def get_query_set(self, **kwargs):
         try:
-            return MetadataType.objects.filter(pk__in=self.instance.documenttypemetadatatype_set.filter(**kwargs).values_list('metadata_type', flat=True))
+            return MetadataType.objects.filter(pk__in=self.instance.metadata.filter(**kwargs).values_list('metadata_type', flat=True))
         except MetadataType.DoesNotExist:
             return MetadataType.objects.none()
 
