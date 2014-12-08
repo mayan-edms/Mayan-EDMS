@@ -295,7 +295,7 @@ def metadata_view(request, document_id):
         'object_list': document.metadata.all(),
         'extra_columns': [
             {'name': _(u'Value'), 'attribute': 'value'},
-            {'name': _(u'Required'), 'attribute': encapsulate(lambda x: x.metadata_type in document.document_type.metadata_type.filter(required=True))}
+            {'name': _(u'Required'), 'attribute': encapsulate(lambda x: x.metadata_type in document.document_type.metadata.filter(required=True))}
         ],
         'hide_link': True,
         'object': document,
@@ -404,10 +404,10 @@ def setup_document_type_metadata(request, document_type_id):
 
     return assign_remove(
         request,
-        left_list=lambda: generate_choices_w_labels(set(MetadataType.objects.all()) - set(document_type.metadata_type.filter(required=False)) - set(document_type.metadata_type.filter(required=True)), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(document_type.metadata_type.filter(required=False), display_object_type=False),
-        add_method=lambda x: document_type.metadata_type.add(x, required=False),
-        remove_method=lambda x: document_type.metadata_type.remove(x),
+        left_list=lambda: generate_choices_w_labels(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=document_type.metadata.values_list('metadata_type', flat=True))), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(document_type.metadata.filter(required=False), display_object_type=False),
+        add_method=lambda x: document_type.metadata.create(metadata_type=x, required=False),
+        remove_method=lambda x: x.delete(),
         extra_context={
             'document_type': document_type,
             'navigation_object_name': 'document_type',
@@ -424,10 +424,10 @@ def setup_document_type_metadata_required(request, document_type_id):
 
     return assign_remove(
         request,
-        left_list=lambda: generate_choices_w_labels(set(MetadataType.objects.all()) - set(document_type.metadata_type.filter(required=False)) - set(document_type.metadata_type.filter(required=True)), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(document_type.metadata_type.filter(required=True), display_object_type=False),
-        add_method=lambda x: document_type.metadata_type.add(x, required=True),
-        remove_method=lambda x: document_type.metadata_type.remove(x),
+        left_list=lambda: generate_choices_w_labels(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=document_type.metadata.values_list('metadata_type', flat=True))), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(document_type.metadata.filter(required=True), display_object_type=False),
+        add_method=lambda x: document_type.metadata.create(metadata_type=x, required=True),
+        remove_method=lambda x: x.delete(),
         extra_context={
             'document_type': document_type,
             'navigation_object_name': 'document_type',
