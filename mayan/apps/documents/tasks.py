@@ -61,7 +61,7 @@ def task_new_document(document_type_id, shared_uploaded_file_id, label, descript
 
 
 @app.task(ignore_result=True)
-def task_upload_new_version(document_id, shared_uploaded_file_id, user_id, comment=None, version_update=None):
+def task_upload_new_version(document_id, shared_uploaded_file_id, user_id, comment=None):
     shared_file = SharedUploadedFile.objects.get(pk=shared_uploaded_file_id)
     document = Document.objects.get(pk=document_id)
 
@@ -71,6 +71,6 @@ def task_upload_new_version(document_id, shared_uploaded_file_id, user_id, comme
         user = None
 
     with File(file=shared_file.file) as file_object:
-        document.new_version(comment=comment, file_object=file_object, user=user, version_update=version_update)
+        document.new_version(comment=comment, file_object=file_object, user=user)
 
     shared_file.delete()

@@ -167,7 +167,7 @@ class UploadInteractiveView(UploadBaseView):
 
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
 
-        self.document_type = get_object_or_404(DocumentType, pk=self.request.GET['document_type_id'])
+        self.document_type = get_object_or_404(DocumentType, pk=self.request.GET.get('document_type_id', self.request.POST.get('document_type_id')))
 
         self.tab_links = get_active_tab_links()
 
@@ -212,7 +212,6 @@ class UploadInteractiveView(UploadBaseView):
             source_id=self.source.pk,
             user_id=user_id,
         ), queue='uploads')
-
         messages.success(self.request, _(u'New document queued for uploaded and will be available shortly.'))
         return HttpResponseRedirect(self.request.get_full_path())
 
@@ -299,7 +298,6 @@ class UploadInteractiveVersionView(UploadBaseView):
             shared_uploaded_file_id=shared_uploaded_file.pk,
             document_id=self.document.pk,
             user_id=user_id,
-            version_update=forms['document_form'].cleaned_data.get('version_update'),
             comment=forms['document_form'].cleaned_data.get('comment')
         ), queue='uploads')
 

@@ -139,33 +139,15 @@ class APIDocumentVersionCreateView(generics.CreateAPIView):
         serializer = self.get_serializer(data=request.DATA, files=request.FILES)
 
         if serializer.is_valid():
-            self.pre_save(serializer.object)
             # Nested resource we take the document pk from the URL and insert it
             # so that it needs not to be specified by the user, we mark it as
             # a read only field in the serializer
-            serializer.object.document = get_object_or_404(Document, pk=kwargs['pk'])
+            document = get_object_or_404(Document, pk=kwargs['pk'])
 
-            try:
-                # Check the uniqueness of this version for this document instead
-                # of letting Django explode with an IntegrityError
-                DocumentVersion.objects.get(
-                    document=serializer.object.document,
-                    major=serializer.object.major,
-                    minor=serializer.object.minor,
-                    micro=serializer.object.micro,
-                )
-            except DocumentVersion.DoesNotExist:
-                self.object = serializer.save(force_insert=True)
-            else:
-                return Response(
-                    {'non_field_errors': 'A version with the same major, minor and micro values already exist for this document.'},
-                    status=status.HTTP_400_BAD_REQUEST
-                )
+            document.new_version(file_object=serializer.object.file, user=request.user, comment=serializer.object.comment)
 
-            self.post_save(self.object, created=True)
             headers = self.get_success_headers(serializer.data)
-            return Response(serializer.data, status=status.HTTP_201_CREATED,
-                            headers=headers)
+            return Response(status=status.HTTP_202_ACCEPTED, headers=headers)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 

@@ -31,8 +31,7 @@ from mimetype.api import get_mimetype
 
 from .events import HISTORY_DOCUMENT_CREATED
 from .exceptions import NewDocumentVersionNotAllowed
-from .literals import (LANGUAGE_CHOICES, VERSION_UPDATE_MAJOR,
-                       VERSION_UPDATE_MICRO, VERSION_UPDATE_MINOR)
+from .literals import LANGUAGE_CHOICES
 from .managers import (DocumentManager, DocumentPageTransformationManager,
                        DocumentTypeManager, RecentDocumentManager)
 from .runtime import storage_backend
@@ -188,27 +187,15 @@ class Document(models.Model):
     def size(self):
         return self.latest_version.size
 
-    def new_version(self, file_object, user=None, comment=None, version_update=None):
+    def new_version(self, file_object, user=None, comment=None):
         logger.debug('creating new document version')
         # TODO: move this restriction to a signal processor of the checkouts app
         if not self.is_new_versions_allowed(user=user):
             raise NewDocumentVersionNotAllowed
 
-        if version_update:
-            # TODO: remove get_new_version_dict and just past the major, minor
-            # and micro values
-            new_version_dict = self.latest_version.get_new_version_dict(version_update)
-        else:
-            new_version_dict = {}
-
-        logger.debug('new_version_dict: %s', new_version_dict)
-
         new_version = DocumentVersion(
             document=self,
             file=file_object,
-            major=new_version_dict.get('major') or 1,
-            minor=new_version_dict.get('minor') or 0,
-            micro=new_version_dict.get('micro') or 0,
             comment=comment or '',
         )
         new_version.save()
@@ -291,14 +278,6 @@ class DocumentVersion(models.Model):
     _pre_open_hooks = {}
     _post_save_hooks = {}
 
-    @staticmethod
-    def get_version_update_choices(document_version):
-        return (
-            (VERSION_UPDATE_MAJOR, _(u'Major %(major)i.%(minor)i.%(micro)i, (new release)') % document_version.get_new_version_dict(VERSION_UPDATE_MAJOR)),
-            (VERSION_UPDATE_MINOR, _(u'Minor %(major)i.%(minor)i.%(micro)i, (some updates)') % document_version.get_new_version_dict(VERSION_UPDATE_MINOR)),
-            (VERSION_UPDATE_MICRO, _(u'Micro %(major)i.%(minor)i.%(micro)i, (fixes)') % document_version.get_new_version_dict(VERSION_UPDATE_MICRO))
-        )
-
     @classmethod
     def register_pre_open_hook(cls, order, func):
         cls._pre_open_hooks[order] = func
@@ -308,9 +287,6 @@ class DocumentVersion(models.Model):
         cls._post_save_hooks[order] = func
 
     document = models.ForeignKey(Document, verbose_name=_(u'Document'), related_name='versions')
-    major = models.PositiveIntegerField(verbose_name=_(u'Mayor'), default=1)
-    minor = models.PositiveIntegerField(verbose_name=_(u'Minor'), default=0)
-    micro = models.PositiveIntegerField(verbose_name=_(u'Micro'), default=0)
     timestamp = models.DateTimeField(verbose_name=_(u'Timestamp'), auto_now_add=True)
     comment = models.TextField(blank=True, verbose_name=_(u'Comment'))
 
@@ -322,40 +298,11 @@ class DocumentVersion(models.Model):
     checksum = models.TextField(blank=True, null=True, verbose_name=_(u'Checksum'), editable=False)
 
     class Meta:
-        unique_together = ('document', 'major', 'minor', 'micro')
         verbose_name = _(u'Document version')
         verbose_name_plural = _(u'Document version')
 
     def __unicode__(self):
         return self.get_formated_version()
-
-    def get_new_version_dict(self, version_update_type):
-        logger.debug('version_update_type: %s', version_update_type)
-
-        if version_update_type == VERSION_UPDATE_MAJOR:
-            return {
-                'major': self.major + 1,
-                'minor': 0,
-                'micro': 0,
-            }
-        elif version_update_type == VERSION_UPDATE_MINOR:
-            return {
-                'major': self.major,
-                'minor': self.minor + 1,
-                'micro': 0,
-            }
-        elif version_update_type == VERSION_UPDATE_MICRO:
-            return {
-                'major': self.major,
-                'minor': self.minor,
-                'micro': self.micro + 1,
-            }
-
-    def get_formated_version(self):
-        """
-        Return the formatted version information
-        """
-        return u'%i.%i.%i' % (self.major, self.minor, self.micro)
 
     def save(self, *args, **kwargs):
         """

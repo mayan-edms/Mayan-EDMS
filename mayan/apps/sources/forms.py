@@ -24,10 +24,6 @@ class NewVersionForm(forms.Form):
     def __init__(self, *args, **kwargs):
         document = kwargs.pop('document')
         super(NewVersionForm, self).__init__(*args, **kwargs)
-        self.fields['version_update'] = forms.ChoiceField(
-            label=_(u'Version update'),
-            choices=DocumentVersion.get_version_update_choices(document.latest_version)
-        )
 
         self.fields['comment'] = forms.CharField(
             label=_(u'Comment'),

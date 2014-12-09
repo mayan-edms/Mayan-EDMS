@@ -1110,10 +1110,6 @@ def document_version_list(request, document_pk):
         'access_object': document,
         'extra_columns': [
             {
-                'name': _(u'Version'),
-                'attribute': 'get_formated_version',
-            },
-            {
                 'name': _(u'Time and date'),
                 'attribute': 'timestamp',
             },
