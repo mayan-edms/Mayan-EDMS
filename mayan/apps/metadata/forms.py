@@ -27,7 +27,7 @@ class MetadataForm(forms.Form):
         # Set form fields initial values
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
-            required = kwargs['initial'].pop('required', None)
+            required = kwargs['initial'].pop('required', False)
             required_string = u''
 
             if required:
