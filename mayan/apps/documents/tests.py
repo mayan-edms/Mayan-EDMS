@@ -146,7 +146,7 @@ class DocumentAPICreateDocumentTestCase(TestCase):
 
         # Create a blank document with no token in the header
         with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
-            response = document_client.post(reverse('newdocument-view'), {'document_type': self.document_type.pk, 'file': file_descriptor})
+            response = document_client.post(reverse('document-list'), {'document_type': self.document_type.pk, 'file': file_descriptor})
 
         # Make sure toke authentication is working, should fail
         self.assertEqual(response.status_code, status.HTTP_401_UNAUTHORIZED)
@@ -155,7 +155,7 @@ class DocumentAPICreateDocumentTestCase(TestCase):
 
         # Create a blank document
         with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
-            document_response = document_client.post(reverse('newdocument-view'), {'document_type': self.document_type.pk, 'file': file_descriptor})
+            document_response = document_client.post(reverse('document-list'), {'document_type': self.document_type.pk, 'file': file_descriptor})
 
         self.assertEqual(document_response.status_code, status.HTTP_202_ACCEPTED)
 

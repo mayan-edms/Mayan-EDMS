@@ -41,19 +41,18 @@ class APIDocumentListView(generics.ListAPIView):
     Returns a list of all the documents.
     """
 
-    serializer_class = DocumentSerializer
     queryset = Document.objects.all()
 
     permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
+    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW],
+                                'POST': [PERMISSION_DOCUMENT_CREATE]}
 
-
-class APINewDocumentView(generics.GenericAPIView):
-    serializer_class = NewDocumentSerializer
-
-    permission_classes = (MayanPermission,)
-    mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_CREATE]}
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentSerializer
+        elif self.request.method == 'POST':
+            return NewDocumentSerializer
 
     def post(self, request, *args, **kwargs):
         """Create a new document."""
