@@ -58,8 +58,8 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
         metadata.delete(enforce_required=False)
 
     # Add new document type metadata types to document
-    for metadata_type in instance.document_type.metadata.filter(required=True):
-        DocumentMetadata.objects.create(document=instance, metadata_type=metadata_type, value=None)
+    for document_type_metadata_type in instance.document_type.metadata.filter(required=True):
+        DocumentMetadata.objects.create(document=instance, metadata_type=document_type_metadata_type.metadata_type, value=None)
 
 
 Document.add_to_class('metadata_value_of', DocumentMetadataHelper.constructor)
