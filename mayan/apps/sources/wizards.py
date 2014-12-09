@@ -25,7 +25,7 @@ class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
     def _has_metadata_types(wizard):
         # Skip the 2nd step if document type has no associated metadata
         try:
-            return wizard.get_cleaned_data_for_step('0')['document_type'].metadata_type.all().count()
+            return wizard.get_cleaned_data_for_step('0')['document_type'].metadata.all().count()
         except TypeError:
             return False
 
@@ -49,15 +49,10 @@ class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
         if step == '1':
             initial = []
 
-            for metadata_type in self.get_cleaned_data_for_step('0')['document_type'].metadata_type.filter(required=True):
+            for document_type_metadata_type in self.get_cleaned_data_for_step('0')['document_type'].metadata.all():
                 initial.append({
-                    'metadata_type': metadata_type,
-                    'required': True,
-                })
-
-            for metadata_type in self.get_cleaned_data_for_step('0')['document_type'].metadata_type.filter(required=False):
-                initial.append({
-                    'metadata_type': metadata_type,
+                    'metadata_type': document_type_metadata_type.metadata_type,
+                    'required': document_type_metadata_type.required,
                 })
 
             return initial
