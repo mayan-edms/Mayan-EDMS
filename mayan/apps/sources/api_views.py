@@ -18,7 +18,6 @@ from .serializers import (NewDocumentSerializer, StagingFolderFileSerializer,
                           StagingFolderSerializer,
                           StagingSourceFileImageSerializer,
                           WebFormSourceSerializer)
-from .tasks import task_source_upload_document
 
 
 class APIStagingSourceFileView(generics.GenericAPIView):
