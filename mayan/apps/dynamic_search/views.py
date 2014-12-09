@@ -44,12 +44,6 @@ def results(request, extra_context=None):
             logger.debug('advanced search')
             queryset, ids, timedelta = document_search.advanced_search(request.GET)
 
-        if document_search.permission:
-            try:
-                Permission.objects.check_permissions(request.user, [document_search.permission])
-            except PermissionDenied:
-                queryset = AccessEntry.objects.filter_objects_by_access(document_search.permission, request.user, queryset)
-
         # Update the context with the search results
         context.update({
             'object_list': queryset,
@@ -57,7 +51,7 @@ def results(request, extra_context=None):
             'title': _(u'Results'),
         })
 
-        RecentSearch.objects.add_query_for_user(request.user, request.GET, len(ids))
+        RecentSearch.objects.add_query_for_user(request.user, document_search, request.GET, len(ids))
 
     if extra_context:
         context.update(extra_context)

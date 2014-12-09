@@ -4,10 +4,13 @@ import datetime
 import logging
 import re
 
+from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.db.models.loading import get_model
 
+from acls.models import AccessEntry
 from common.utils import load_backend
+from permissions.models import Permission
 
 from .settings import LIMIT
 
@@ -84,7 +87,7 @@ class SearchModel(object):
         """
         return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
 
-    def simple_search(self, query_string):
+    def simple_search(self, query_string, user):
         search_dict = {}
 
         for search_field in self.get_all_search_fields():
@@ -102,9 +105,9 @@ class SearchModel(object):
 
         logger.debug('search_dict: %s', search_dict)
 
-        return self.execute_search(search_dict, global_and_search=False)
+        return self.execute_search(search_dict, user=user, global_and_search=False)
 
-    def advanced_search(self, dictionary):
+    def advanced_search(self, dictionary, user):
         search_dict = {}
 
         for key, value in dictionary.items():
@@ -130,9 +133,9 @@ class SearchModel(object):
 
         logger.debug('search_dict: %s', search_dict)
 
-        return self.execute_search(search_dict, global_and_search=True)
+        return self.execute_search(search_dict, user=user, global_and_search=True)
 
-    def execute_search(self, search_dict, global_and_search=False):
+    def execute_search(self, search_dict, user, global_and_search=False):
         elapsed_time = 0
         start_time = datetime.datetime.now()
         result_set = set()
@@ -183,7 +186,15 @@ class SearchModel(object):
 
         elapsed_time = unicode(datetime.datetime.now() - start_time).split(':')[2]
 
-        return self.model.objects.in_bulk(list(result_set)[: LIMIT]).values(), result_set, elapsed_time
+        queryset = self.model.objects.in_bulk(list(result_set)[: LIMIT]).values()
+
+        if self.permission:
+            try:
+                Permission.objects.check_permissions(user, [self.permission])
+            except PermissionDenied:
+                queryset = AccessEntry.objects.filter_objects_by_access(self.permission, user, queryset)
+
+        return queryset, result_set, elapsed_time
 
     def assemble_query(self, terms, search_fields):
         """
