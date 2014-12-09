@@ -7,7 +7,6 @@ from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
 
-from documents.literals import VERSION_UPDATE_MAJOR
 from documents.models import Document, DocumentType
 from sources.literals import SOURCE_CHOICE_WEB_FORM
 from sources.models import WebFormSource
