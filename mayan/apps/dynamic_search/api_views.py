@@ -49,16 +49,8 @@ class APISearchView(generics.ListAPIView):
         self.mayan_object_permissions = {'GET': [document_search.permission]}
 
         try:
-            if 'q' in self.request.GET:
-                # Simple query
-                query_string = self.request.GET.get('q', u'').strip()
-                queryset, ids, timedelta = document_search.simple_search(query_string)
-            else:
-                # Advanced search
-                queryset, ids, timedelta = document_search.advanced_search(self.request.GET)
+            queryset, ids, timedelta = document_search.search(self.request.GET, self.request.user)
         except Exception as exception:
             raise ParseError(unicode(exception))
-
-        RecentSearch.objects.add_query_for_user(self.request.user, self.request.GET, len(ids))
 
         return queryset
