@@ -9,7 +9,6 @@ from django.db import models
 from django.utils.encoding import smart_str, smart_unicode
 from django.utils.translation import ugettext as _
 
-from .classes import SearchModel
 from .managers import RecentSearchManager
 
 
@@ -30,6 +29,8 @@ class RecentSearch(models.Model):
     objects = RecentSearchManager()
 
     def __unicode__(self):
+        # TODO: Fix this hack, store the search model name in the recent search entry
+        from .classes import SearchModel
         document_search = SearchModel.get('documents.Document')
 
         query_dict = urlparse.parse_qs(urllib.unquote_plus(smart_str(self.query)))
@@ -38,9 +39,8 @@ class RecentSearch(models.Model):
             # Advanced search
             advanced_string = []
             for key, value in query_dict.items():
-                if key != 'page':
-                    search_field = document_search.get_search_field(key)
-                    advanced_string.append(u'%s: %s' % (search_field.label, smart_unicode(' '.join(value))))
+                search_field = document_search.get_search_field(key)
+                advanced_string.append(u'%s: %s' % (search_field.label, smart_unicode(' '.join(value))))
 
             display_string = u', '.join(advanced_string)
         else:

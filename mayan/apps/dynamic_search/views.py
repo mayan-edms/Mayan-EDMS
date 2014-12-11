@@ -34,21 +34,7 @@ def results(request, extra_context=None):
         # Only do search if there is user input, otherwise just render
         # the template with the extra_context
 
-        if 'q' in request.GET:
-            # Simple query
-            logger.debug('simple search')
-            query_string = request.GET.get('q', u'').strip()
-            queryset, ids, timedelta = document_search.simple_search(query_string)
-        else:
-            # Advanced search
-            logger.debug('advanced search')
-            queryset, ids, timedelta = document_search.advanced_search(request.GET)
-
-        if document_search.permission:
-            try:
-                Permission.objects.check_permissions(request.user, [document_search.permission])
-            except PermissionDenied:
-                queryset = AccessEntry.objects.filter_objects_by_access(document_search.permission, request.user, queryset)
+        queryset, ids, timedelta = document_search.search(request.GET, request.user)
 
         # Update the context with the search results
         context.update({
@@ -56,8 +42,6 @@ def results(request, extra_context=None):
             'time_delta': timedelta,
             'title': _(u'Results'),
         })
-
-        RecentSearch.objects.add_query_for_user(request.user, request.GET, len(ids))
 
     if extra_context:
         context.update(extra_context)

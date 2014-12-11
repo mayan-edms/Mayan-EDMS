@@ -4,11 +4,15 @@ import datetime
 import logging
 import re
 
+from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.db.models.loading import get_model
 
+from acls.models import AccessEntry
 from common.utils import load_backend
+from permissions.models import Permission
 
+from .models import RecentSearch
 from .settings import LIMIT
 
 logger = logging.getLogger(__name__)
@@ -64,14 +68,6 @@ class SearchModel(object):
         search_field = SearchField(self, *args, **kwargs)
         self.search_fields[search_field.get_full_name()] = search_field
 
-    def add_related_field(self, *args, **kwargs):
-        """
-        Add a search field that will search content in a related field in
-        a separate model
-        """
-        search_field = RelatedSearchField(self, *args, **kwargs)
-        self.search_fields[search_field.get_full_name()] = search_field
-
     def normalize_query(self, query_string,
                         findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
                         normspace=re.compile(r'\s{2,}').sub):
@@ -84,38 +80,15 @@ class SearchModel(object):
         """
         return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
 
-    def simple_search(self, query_string):
+    def search(self, query_string, user, global_and_search=False):
+        elapsed_time = 0
+        start_time = datetime.datetime.now()
+        result_set = set()
         search_dict = {}
 
-        for search_field in self.get_all_search_fields():
-            search_dict.setdefault(search_field.get_model(), {
-                'searches': [],
-                'label': search_field.label,
-                'return_value': search_field.return_value
-            })
-            search_dict[search_field.get_model()]['searches'].append(
-                {
-                    'field_name': [search_field.field],
-                    'terms': self.normalize_query(query_string)
-                }
-            )
-
-        logger.debug('search_dict: %s', search_dict)
-
-        return self.execute_search(search_dict, global_and_search=False)
-
-    def advanced_search(self, dictionary):
-        search_dict = {}
-
-        for key, value in dictionary.items():
-            logger.debug('key: %s', key)
-            logger.debug('value: %s', value)
-
-            if key == 'page':
-                continue
-            if value:
-                search_field = self.get_search_field(key)
-                logger.debug('search_field: %s', search_field)
+        if 'q' in query_string:
+            # Simple search
+            for search_field in self.get_all_search_fields():
                 search_dict.setdefault(search_field.get_model(), {
                     'searches': [],
                     'label': search_field.label,
@@ -124,18 +97,24 @@ class SearchModel(object):
                 search_dict[search_field.get_model()]['searches'].append(
                     {
                         'field_name': [search_field.field],
-                        'terms': self.normalize_query(value)
+                        'terms': self.normalize_query(query_string.get('q', u'').strip())
                     }
                 )
+        else:
 
-        logger.debug('search_dict: %s', search_dict)
-
-        return self.execute_search(search_dict, global_and_search=True)
-
-    def execute_search(self, search_dict, global_and_search=False):
-        elapsed_time = 0
-        start_time = datetime.datetime.now()
-        result_set = set()
+            for search_field in self.get_all_search_fields():
+                if search_field.field in query_string and query_string[search_field.field]:
+                    search_dict.setdefault(search_field.get_model(), {
+                        'searches': [],
+                        'label': search_field.label,
+                        'return_value': search_field.return_value
+                    })
+                    search_dict[search_field.get_model()]['searches'].append(
+                        {
+                            'field_name': [search_field.field],
+                            'terms': self.normalize_query(query_string[search_field.field])
+                        }
+                    )
 
         for model, data in search_dict.items():
             logger.debug('model: %s', model)
@@ -183,7 +162,17 @@ class SearchModel(object):
 
         elapsed_time = unicode(datetime.datetime.now() - start_time).split(':')[2]
 
-        return self.model.objects.in_bulk(list(result_set)[: LIMIT]).values(), result_set, elapsed_time
+        queryset = self.model.objects.in_bulk(list(result_set)[: LIMIT]).values()
+
+        if self.permission:
+            try:
+                Permission.objects.check_permissions(user, [self.permission])
+            except PermissionDenied:
+                queryset = AccessEntry.objects.filter_objects_by_access(self.permission, user, queryset)
+
+        RecentSearch.objects.add_query_for_user(user, query_string, len(result_set))
+
+        return queryset, result_set, elapsed_time
 
     def assemble_query(self, terms, search_fields):
         """
@@ -220,23 +209,3 @@ class SearchField(object):
 
     def get_model(self):
         return self.search_model.model
-
-
-class RelatedSearchField(object):
-    """
-    Search for terms in fields that are related to the parent SearchModel
-    """
-    def __init__(self, search_model, app_label, model_name, field, return_value, label):
-        self.search_model = search_model
-        self.app_label = app_label
-        self.model_name = model_name
-        self.field = field
-        self.return_value = return_value
-        self.model = get_model(app_label, model_name)
-        self.label = label
-
-    def get_full_name(self):
-        return '%s.%s.%s' % (self.app_label, self.model_name, self.field)
-
-    def get_model(self):
-        return self.model
