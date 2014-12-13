@@ -24,23 +24,24 @@ class DocumentImageSerializer(serializers.Serializer):
     data = serializers.CharField()
 
 
-class DocumentSerializer(serializers.HyperlinkedModelSerializer):
-    versions = DocumentVersionSerializer(many=True, read_only=True)
-    # TODO: Deprecate, move this as an entry point of DocumentVersion's pages
-    image = serializers.HyperlinkedIdentityField(view_name='document-image')
-    new_version = serializers.HyperlinkedIdentityField(view_name='document-new-version')
-
-    class Meta:
-        fields = ('id', 'url', 'label', 'image', 'new_version', 'uuid', 'document_type', 'description', 'date_added', 'versions')
-        model = Document
-
-
 class DocumentTypeSerializer(serializers.ModelSerializer):
     documents = serializers.HyperlinkedIdentityField(view_name='documenttype-document-list')
 
     class Meta:
         model = DocumentType
         fields = ('id', 'name', 'documents')
+
+
+class DocumentSerializer(serializers.ModelSerializer):
+    versions = DocumentVersionSerializer(many=True, read_only=True)
+    # TODO: Deprecate, move this as an entry point of DocumentVersion's pages
+    image = serializers.HyperlinkedIdentityField(view_name='document-image')
+    new_version = serializers.HyperlinkedIdentityField(view_name='document-new-version')
+    document_type = DocumentTypeSerializer()
+
+    class Meta:
+        fields = ('id', 'label', 'image', 'new_version', 'uuid', 'document_type', 'description', 'date_added', 'versions')
+        model = Document
 
 
 class NewDocumentSerializer(serializers.Serializer):
