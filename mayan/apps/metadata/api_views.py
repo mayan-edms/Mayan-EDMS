@@ -25,7 +25,7 @@ from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
                           PERMISSION_METADATA_TYPE_EDIT,
                           PERMISSION_METADATA_TYPE_VIEW)
 from .serializers import (DocumentMetadataSerializer,
-                          DocumentMetadataNestedSerializer,
+                          DocumentNewMetadataSerializer,
                           DocumentTypeNewMetadataTypeSerializer,
                           MetadataTypeSerializer)
 
@@ -94,9 +94,9 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
-            return DocumentMetadataNestedSerializer
-        elif self.request.method == 'POST':
             return DocumentMetadataSerializer
+        elif self.request.method == 'POST':
+            return DocumentNewMetadataSerializer
 
     def get(self, *args, **kwargs):
         """Returns a list of selected document's metadata types and values."""
@@ -114,15 +114,15 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         serializer = self.get_serializer(data=self.request.POST)
 
         if serializer.is_valid():
-            metadata_type = get_object_or_404(MetadataType, pk=serializer.data['metadata_type'])
+            metadata_type = get_object_or_404(MetadataType, pk=serializer.data['metadata_type_pk'])
             try:
-                document.document_metadata.create(metadata_type=metadata_type, value=serializer.data['value'])
+                document.metadata.create(metadata_type=metadata_type, value=serializer.data['value'])
             except Exception as exception:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
+                return Response(status=status.HTTP_400_BAD_REQUEST, data={'non_field_errors': unicode(exception)})
             else:
                 return Response(status=status.HTTP_201_CREATED)
         else:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
 
 
 class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
@@ -142,7 +142,7 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
         try:
             return super(APIDocumentMetadataView, self).delete(*args, **kwargs)
         except Exception as exception:
-            return Response(status=status.HTTP_400_BAD_REQUEST)
+            return Response(status=status.HTTP_400_BAD_REQUEST, data={'non_fields_errors': unicode(exception)})
 
     def get(self, *args, **kwargs):
         """Return the details of the selected document metadata type and value."""
@@ -150,11 +150,18 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
 
     def patch(self, *args, **kwargs):
         """Edit the selected document metadata type and value."""
-        return super(APIDocumentMetadataView, self).patch(*args, **kwargs)
+        try:
+            return super(APIDocumentMetadataView, self).patch(*args, **kwargs)
+        except Exception as exception:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data={'non_fields_errors': unicode(exception)})
 
     def put(self, *args, **kwargs):
         """Edit the selected document metadata type and value."""
-        return super(APIDocumentMetadataView, self).put(*args, **kwargs)
+        try:
+            return super(APIDocumentMetadataView, self).put(*args, **kwargs)
+        except Exception as exception:
+            return Response(status=status.HTTP_400_BAD_REQUEST, data={'non_fields_errors': unicode(exception)})
+
 
 
 class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
