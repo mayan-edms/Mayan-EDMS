@@ -301,9 +301,6 @@ class DocumentVersion(models.Model):
         verbose_name = _(u'Document version')
         verbose_name_plural = _(u'Document version')
 
-    def __unicode__(self):
-        return self.get_formated_version()
-
     def save(self, *args, **kwargs):
         """
         Overloaded save method that updates the document version's checksum,
