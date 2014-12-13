@@ -4,7 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from common.utils import encapsulate
-from documents import document_search
 from documents.models import Document
 from navigation.api import (register_links, register_model_list_columns,
                             register_top_menu)
@@ -59,5 +58,3 @@ register_links(Document, [tag_document_list], menu_name='form_header')
 register_links(['tags:document_tags', 'tags:tag_remove', 'tags:tag_multiple_remove', 'tags:tag_attach'], [tag_attach], menu_name='sidebar')
 register_links(['tags:document_tags'], [link_spacer, single_document_multiple_tag_remove], menu_name='multi_item_links')
 register_links([Document], [link_spacer, tag_multiple_attach, multiple_documents_selection_tag_remove], menu_name='multi_item_links')
-
-document_search.add_model_field('tags__label', label=_(u'Tags'))
