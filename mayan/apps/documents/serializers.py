@@ -25,11 +25,14 @@ class DocumentImageSerializer(serializers.Serializer):
 
 
 class DocumentTypeSerializer(serializers.ModelSerializer):
-    documents = serializers.HyperlinkedIdentityField(view_name='documenttype-document-list')
+    documents = serializers.SerializerMethodField('get_documents_count')
 
     class Meta:
         model = DocumentType
         fields = ('id', 'name', 'documents')
+
+    def get_documents_count(self, obj):
+        return obj.documents.count()
 
 
 class DocumentSerializer(serializers.ModelSerializer):
