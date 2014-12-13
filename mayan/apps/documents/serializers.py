@@ -3,7 +3,8 @@ from __future__ import absolute_import
 from rest_framework import serializers
 
 from .literals import LANGUAGE_CHOICES
-from .models import Document, DocumentVersion, DocumentPage, DocumentType
+from .models import (Document, DocumentVersion, DocumentPage, DocumentType,
+                     RecentDocument)
 
 
 class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
@@ -54,3 +55,9 @@ class NewDocumentSerializer(serializers.Serializer):
     file = serializers.FileField()
     label = serializers.CharField(required=False)
     language = serializers.ChoiceField(choices=LANGUAGE_CHOICES, blank_display_value=None, required=False)
+
+
+class RecentDocumentSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('document', 'datetime_accessed')
+        model = RecentDocument

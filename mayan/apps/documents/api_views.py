@@ -1,5 +1,7 @@
 from __future__ import absolute_import
 
+# TODO: Improve API methods docstrings
+
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
@@ -16,7 +18,8 @@ from permissions.models import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
-from .models import Document, DocumentPage, DocumentType, DocumentVersion
+from .models import (Document, DocumentPage, DocumentType, DocumentVersion,
+                     RecentDocument)
 from .permissions import (PERMISSION_DOCUMENT_CREATE,
                           PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_EDIT,
                           PERMISSION_DOCUMENT_NEW_VERSION,
@@ -28,7 +31,8 @@ from .permissions import (PERMISSION_DOCUMENT_CREATE,
                           PERMISSION_DOCUMENT_TYPE_VIEW)
 from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
                           DocumentSerializer, DocumentTypeSerializer,
-                          DocumentVersionSerializer, NewDocumentSerializer)
+                          DocumentVersionSerializer, NewDocumentSerializer,
+                          RecentDocumentSerializer)
 from .settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .tasks import task_get_document_image, task_new_document
 
@@ -311,3 +315,14 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
             AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TYPE_VIEW, self.request.user, document_type)
 
         return document_type.documents.all()
+
+
+class APIRecentDocumentListView(generics.ListAPIView):
+    serializer_class = RecentDocumentSerializer
+
+    def get_queryset(self):
+        return RecentDocument.objects.filter(user=self.request.user)
+
+    def get(self, *args, **kwargs):
+        """Return a list of the recent documents for the current user."""
+        return super(APIRecentDocumentListView, self).get(*args, **kwargs)
