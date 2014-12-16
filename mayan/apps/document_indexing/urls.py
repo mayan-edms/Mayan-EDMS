@@ -1,8 +1,10 @@
 from django.conf.urls import patterns, url
 
 from .api_views import (APIDocumentIndexListView,
-                        APIIndexNodeInstanceDocumentListView, APIIndexListView,
+                        APIIndexListView, APIIndexNodeInstanceDocumentListView,
+                        APIIndexTemplateListView, APIIndexTemplateView,
                         APIIndexView)
+
 
 urlpatterns = patterns('document_indexing.views',
     url(r'^setup/index/list/$', 'index_setup_list', (), 'index_setup_list'),
@@ -25,7 +27,9 @@ urlpatterns = patterns('document_indexing.views',
 
 api_urls = patterns('',
     url(r'^index/node/(?P<pk>[0-9]+)/documents/$', APIIndexNodeInstanceDocumentListView.as_view(), name='index-node-documents'),
+    url(r'^index/template/(?P<pk>[0-9]+)/$', APIIndexTemplateView.as_view(), name='index-template-detail'),
     url(r'^indexes/(?P<pk>[0-9]+)/$', APIIndexView.as_view(), name='index-detail'),
+    url(r'^index/(?P<pk>[0-9]+)/template/$', APIIndexTemplateListView.as_view(), name='index-template-detail'),
     url(r'^indexes/$', APIIndexListView.as_view(), name='index-list'),
     url(r'^document/(?P<pk>[0-9]+)/indexes/$', APIDocumentIndexListView.as_view(), name='document-index-list'),
 )

@@ -54,4 +54,4 @@ register_setup(index_setup)
 
 register_top_menu('indexes', document_index_main_menu_link)
 
-APIEndPoint('indexes')
+APIEndPoint('indexes', app_name='document_indexing')

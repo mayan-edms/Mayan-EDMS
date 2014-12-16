@@ -320,7 +320,7 @@ def index_instance_node_view(request, index_instance_node_pk):
     of documents
     """
     index_instance = get_object_or_404(IndexInstanceNode, pk=index_instance_node_pk)
-    index_instance_list = [index for index in index_instance.get_children().order_by('value')]
+    index_instance_list = index_instance.get_children().order_by('value')
     breadcrumbs = get_breadcrumbs(index_instance)
 
     try:

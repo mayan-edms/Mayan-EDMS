@@ -54,10 +54,6 @@ class Index(models.Model):
         except IndexInstanceNode.DoesNotExist:
             return 0
 
-    @property
-    def node_instances(self):
-        return [template_node.node_instance.get() for template_node in self.node_templates.all()]
-
     class Meta:
         verbose_name = _(u'Index')
         verbose_name_plural = _(u'Indexes')
@@ -93,6 +89,11 @@ class IndexInstanceNode(MPTTModel):
     @models.permalink
     def get_absolute_url(self):
         return ('indexing:index_instance_node_view', [self.pk])
+
+    @property
+    def children(self):
+        # Convenience method for serializer
+        return self.get_children()
 
     class Meta:
         verbose_name = _(u'Index node instance')
