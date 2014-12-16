@@ -54,7 +54,7 @@ class APIGroupView(generics.RetrieveUpdateDestroyAPIView):
         return super(APIGroupView, self).get(*args, **kwargs)
 
     def patch(self, *args, **kwargs):
-        """Edit the selected group."""
+        """Partially edit the selected group."""
         return super(APIGroupView, self).patch(*args, **kwargs)
 
     def put(self, *args, **kwargs):
@@ -101,7 +101,7 @@ class APIUserView(generics.RetrieveUpdateDestroyAPIView):
         return super(APIUserView, self).get(*args, **kwargs)
 
     def patch(self, *args, **kwargs):
-        """Edit the selected user."""
+        """Partially edit the selected user."""
         return super(APIUserView, self).patch(*args, **kwargs)
 
     def put(self, *args, **kwargs):
@@ -109,9 +109,24 @@ class APIUserView(generics.RetrieveUpdateDestroyAPIView):
         return super(APIUserView, self).put(*args, **kwargs)
 
 
-class APICurrentUserView(views.APIView):
-    def get(self, request):
-        """Return the details of the current user."""
+class APICurrentUserView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = UserSerializer
 
-        serializer = UserSerializer(request.user, context={'request': request})
-        return Response(serializer.data)
+    def get_object(self):
+        return self.request.user
+
+    def delete(self, *args, **kwargs):
+        """Delete the current user."""
+        return super(APICurrentUserView, self).delete(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        """Return the details of the current user."""
+        return super(APICurrentUserView, self).get(*args, **kwargs)
+
+    def patch(self, *args, **kwargs):
+        """Partially edit the current user."""
+        return super(APICurrentUserView, self).patch(*args, **kwargs)
+
+    def put(self, *args, **kwargs):
+        """Edit the current user."""
+        return super(APICurrentUserView, self).put(*args, **kwargs)
