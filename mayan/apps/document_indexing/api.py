@@ -22,6 +22,7 @@ def update_indexes(document):
     warnings = []
 
     # Only update indexes where the document type is found or that do not have any document type specified
+    # TODO: explicit document type selection, none != all
     for index in Index.objects.filter(Q(enabled=True) & (Q(document_types=None) | Q(document_types=document.document_type))):
         root_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=index.template_root, parent=None)
         for template_node in index.template_root.get_children():
@@ -29,20 +30,6 @@ def update_indexes(document):
             warnings.extend(index_warnings)
 
     return warnings
-
-
-# Internal functions
-def find_lowest_available_suffix(index_instance, document):
-    index_instance_documents = DocumentRenameCount.objects.filter(index_instance_node=index_instance)
-    files_list = []
-    for index_instance_document in index_instance_documents:
-        files_list.append(assemble_suffixed_filename(index_instance_document.document.label, index_instance_document.suffix))
-
-    for suffix in xrange(MAX_SUFFIX_COUNT):
-        if assemble_suffixed_filename(document.label, suffix) not in files_list:
-            return suffix
-
-    raise MaxSuffixCountReached(ugettext(u'Maximum suffix (%s) count reached.') % MAX_SUFFIX_COUNT)
 
 
 def cascade_eval(document, template_node, parent_index_instance=None):
@@ -66,13 +53,6 @@ def cascade_eval(document, template_node, parent_index_instance=None):
                 index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node, value=result, parent=parent_index_instance)
 
                 if template_node.link_documents:
-                    suffix = find_lowest_available_suffix(index_instance, document)
-                    document_count = DocumentRenameCount(
-                        index_instance_node=index_instance,
-                        document=document,
-                        suffix=suffix
-                    )
-                    document_count.save()
                     index_instance.documents.add(document)
 
                 for child in template_node.get_children():

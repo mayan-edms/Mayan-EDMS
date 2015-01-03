@@ -13,6 +13,7 @@ from .managers import IndexManager
 
 class Index(models.Model):
     name = models.CharField(unique=True, max_length=64, verbose_name=_(u'Name'), help_text=_(u'Internal name used to reference this index.'))
+    # TODO: normalize 'title' to 'label'
     title = models.CharField(unique=True, max_length=128, verbose_name=_(u'Title'), help_text=_(u'The name that will be visible to users.'))
     enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'), help_text=_(u'Causes this index to be visible and updated when document data changes.'))
     document_types = models.ManyToManyField(DocumentType, verbose_name=_(u'Document types'))
@@ -43,6 +44,7 @@ class Index(models.Model):
         IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
     def get_document_types_names(self):
+        # TODO: explicit document type selection, none != all
         return u', '.join([unicode(document_type) for document_type in self.document_types.all()] or [u'All'])
 
     def natural_key(self):
