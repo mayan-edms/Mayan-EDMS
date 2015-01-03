@@ -14,6 +14,7 @@ class MetadataType(models.Model):
     Define a type of metadata
     """
     name = models.CharField(unique=True, max_length=48, verbose_name=_(u'Name'), help_text=_(u'Do not use python reserved words, or spaces.'))
+    # TODO: normalize 'title' to 'label'
     title = models.CharField(max_length=48, verbose_name=_(u'Title'))
     default = models.CharField(max_length=128, blank=True, null=True,
                                verbose_name=_(u'Default'),
