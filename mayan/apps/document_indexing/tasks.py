@@ -4,7 +4,7 @@ from mayan.celery import app
 from documents.models import Document
 from lock_manager import Lock, LockError
 
-from .api import update_indexes, delete_empty_index_nodes
+from .api import index_document, delete_empty_index_nodes
 from .tools import do_rebuild_all_indexes
 
 logger = logging.getLogger(__name__)
@@ -17,7 +17,7 @@ def task_delete_empty_index_nodes():
 
 
 @app.task(bind=True, ignore_result=True)
-def task_update_indexes(self, document_id):
+def task_index_document(self, document_id):
     # TODO: Add concurrent task control
     try:
         lock = Lock.acquire_lock('document_indexing_task_update_index_document_%d' % document_id)
@@ -31,7 +31,9 @@ def task_update_indexes(self, document_id):
             # Document was deleted before we could execute, abort about updating
             pass
         else:
-            update_indexes(document)
+            index_document(document)
+        finally:
+            lock.release()
 
 
 @app.task(ignore_result=True)
