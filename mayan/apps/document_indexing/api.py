@@ -13,13 +13,16 @@ logger = logging.getLogger(__name__)
 
 
 # External functions
-def update_indexes(document):
+def index_document(document):
     """
     Update or create all the index instances related to a document
     """
     # TODO: convert this fuction into a manager method
 
     warnings = []
+
+    for index_node in IndexInstanceNode.objects.filter(documents=document):
+        index_node.documents.remove(document)
 
     # Only update indexes where the document type is found or that do not have any document type specified
     # TODO: explicit document type selection, none != all
@@ -86,4 +89,4 @@ def task_delete_empty_index_nodes_recursive(instance_node):
         # same conditions
         parent = instance_node.parent
         instance_node.delete()
-        delete_empty_indexes(parent)
+        task_delete_empty_index_nodes_recursive(parent)
