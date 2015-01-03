@@ -3,15 +3,16 @@ from __future__ import absolute_import
 from documents.models import Document
 
 from .api import update_indexes
-from .filesystem import fs_delete_directory_recusive
-from .models import Index, IndexInstanceNode, DocumentRenameCount
+from .models import Index, IndexInstanceNode
 
 
 def do_rebuild_all_indexes():
-    for index in Index.objects.all():
-        fs_delete_directory_recusive(index)
+    for instance_node in IndexInstanceNode.objects.all():
+        instance_node.delete()
 
-    IndexInstanceNode.objects.all().delete()
-    DocumentRenameCount.objects.all().delete()
+    for index in Index.objects.all():
+        index.delete()
+
     for document in Document.objects.all():
+        # TODO: Launch all concurrently as background tasks
         update_indexes(document)

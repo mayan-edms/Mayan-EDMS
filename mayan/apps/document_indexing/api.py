@@ -3,24 +3,13 @@ from __future__ import absolute_import
 import logging
 
 from django.db.models import Q
-from django.template.defaultfilters import slugify
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from .exceptions import MaxSuffixCountReached
-from .filesystem import (assemble_suffixed_filename, fs_create_index_directory,
-                         fs_create_document_link, fs_delete_document_link,
-                         fs_delete_index_directory)
-from .models import Index, IndexInstanceNode, DocumentRenameCount
-from .settings import (AVAILABLE_INDEXING_FUNCTIONS, MAX_SUFFIX_COUNT,
-                       SLUGIFY_PATHS)
+from .models import Index, IndexInstanceNode
+from .settings import AVAILABLE_INDEXING_FUNCTIONS
 
 logger = logging.getLogger(__name__)
-if SLUGIFY_PATHS:
-    SLUGIFY_FUNCTION = slugify
-else:
-    # Do not slugify path or filenames and extensions
-    SLUGIFY_FUNCTION = lambda x: x
 
 
 # External functions
@@ -38,22 +27,6 @@ def update_indexes(document):
         for template_node in index.template_root.get_children():
             index_warnings = cascade_eval(document, template_node, root_instance)
             warnings.extend(index_warnings)
-
-    return warnings
-
-
-def delete_indexes(document):
-    """
-    Delete all the index instances related to a document
-    """
-
-    # TODO: convert this fuction into a manager method
-
-    warnings = []
-
-    for index_node in document.node_instances.all():
-        index_warnings = cascade_document_remove(document, index_node)
-        warnings.extend(index_warnings)
 
     return warnings
 
@@ -84,19 +57,13 @@ def cascade_eval(document, template_node, parent_index_instance=None):
         try:
             result = eval(template_node.expression, {'document': document}, AVAILABLE_INDEXING_FUNCTIONS)
         except Exception as exception:
-            error_message = _(u'Error in document indexing update expression: %(expression)s; %(exception)s') % {
-                'expression': template_node.expression, 'exception': exception}
+            error_message = _(u'Error indexing document: %(document)s; expression: %(expression)s; %(exception)s') % {
+                'document': document, 'expression': template_node.expression, 'exception': exception}
             warnings.append(error_message)
             logger.debug(error_message)
         else:
             if result:
                 index_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=template_node, value=result, parent=parent_index_instance)
-                # if created:
-                try:
-                    fs_create_index_directory(index_instance)
-                except Exception as exception:
-                    warnings.append(_(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
-                        'expression': template_node.expression, 'exception': exception})
 
                 if template_node.link_documents:
                     suffix = find_lowest_available_suffix(index_instance, document)
@@ -106,15 +73,6 @@ def cascade_eval(document, template_node, parent_index_instance=None):
                         suffix=suffix
                     )
                     document_count.save()
-
-                    try:
-                        fs_create_document_link(index_instance, document, suffix)
-                    except Exception as exception:
-                        error_message = _(u'Error updating document index, expression: %(expression)s; %(exception)s') % {
-                            'expression': template_node.expression, 'exception': exception}
-                        warnings.append(error_message)
-                        logger.debug(error_message)
-
                     index_instance.documents.add(document)
 
                 for child in template_node.get_children():
@@ -128,32 +86,24 @@ def cascade_eval(document, template_node, parent_index_instance=None):
     return warnings
 
 
-def cascade_document_remove(document, index_instance):
+def delete_empty_index_nodes():
     """
-    Delete a documents reference from an index instance and call itself
-    recusively deleting documents and empty index instances up to the
-    root of the tree
+    Delete empty index instance nodes
     """
 
-    warnings = []
-    try:
-        document_rename_count = DocumentRenameCount.objects.get(index_instance_node=index_instance, document=document)
-        fs_delete_document_link(index_instance, document, document_rename_count.suffix)
-        document_rename_count.delete()
-        index_instance.documents.remove(document)
-        if index_instance.documents.count() == 0 and index_instance.get_children().count() == 0:
-            # if there are no more documents and no children, delete
-            # node and check parent for the same conditions
-            parent = index_instance.parent
-            fs_delete_index_directory(index_instance)
-            index_instance.delete()
-            parent_warnings = cascade_document_remove(
-                document, parent
-            )
-            warnings.extend(parent_warnings)
-    except DocumentRenameCount.DoesNotExist:
-        return warnings
-    except Exception as exception:
-        warnings.append(_(u'Unable to delete document indexing node; %s') % exception)
+    for instance_node in IndexInstanceNode.objects.filter(documents__isnull=True):
+        task_delete_empty_index_nodes_recursive(instance_node)
 
-    return warnings
+
+
+def task_delete_empty_index_nodes_recursive(instance_node):
+    """
+    Calls itself recursively deleting empty index instance nodes up to root
+    """
+
+    if instance_node.get_children().count() == 0:
+        # if there are no children, delete node and check parent for the
+        # same conditions
+        parent = instance_node.parent
+        instance_node.delete()
+        delete_empty_indexes(parent)

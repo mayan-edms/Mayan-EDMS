@@ -98,16 +98,3 @@ class IndexInstanceNode(MPTTModel):
     class Meta:
         verbose_name = _(u'Index node instance')
         verbose_name_plural = _(u'Indexes node instances')
-
-
-class DocumentRenameCount(models.Model):
-    index_instance_node = models.ForeignKey(IndexInstanceNode, verbose_name=_(u'Index instance'))
-    document = models.ForeignKey(Document, verbose_name=_(u'Document'))
-    suffix = models.PositiveIntegerField(blank=True, verbose_name=(u'Suffix'))
-
-    def __unicode__(self):
-        return u'%s - %s - %s' % (self.index_instance_node, self.document, self.suffix or u'0')
-
-    class Meta:
-        verbose_name = _(u'Document rename count')
-        verbose_name_plural = _(u'Documents rename count')
