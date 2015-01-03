@@ -502,7 +502,7 @@ def document_multiple_update_page_count(request):
 def document_clear_transformations(request, document_id=None, document_id_list=None):
     if document_id:
         documents = [get_object_or_404(Document.objects, pk=document_id)]
-        post_redirect = document[0].get_absolute_url()
+        post_redirect = documents[0].get_absolute_url()
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
         post_redirect = None
