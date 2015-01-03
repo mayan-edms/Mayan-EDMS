@@ -18,7 +18,7 @@ from .links import (document_index_list, document_index_main_menu_link,
                     rebuild_index_instances, template_node_create,
                     template_node_delete, template_node_edit)
 from .models import Index, IndexTemplateNode, IndexInstanceNode
-from .tasks import task_delete_empty_index_nodes, task_update_indexes
+from .tasks import task_delete_empty_index_nodes, task_index_document
 
 
 @receiver(post_delete, dispatch_uid='document_index_delete', sender=Document)
@@ -28,18 +28,14 @@ def document_index_delete(sender, **kwargs):
 
 @receiver(post_save, dispatch_uid='document_metadata_index_update', sender=DocumentMetadata)
 def document_metadata_index_update(sender, **kwargs):
-    task_update_indexes.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
+    task_index_document.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
     task_delete_empty_index_nodes.apply_async(queue='indexing')
-
-
-@receiver(post_delete, dispatch_uid='document_metadata_index_delete', sender=DocumentMetadata)
-def document_metadata_index_delete(sender, **kwargs):
-    task_delete_empty_index_nodes.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
 
 
 @receiver(post_delete, dispatch_uid='document_metadata_index_post_delete', sender=DocumentMetadata)
 def document_metadata_index_post_delete(sender, **kwargs):
-    task_update_indexes.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
+    task_index_document.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
+    task_delete_empty_index_nodes.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
 
 
 register_maintenance_links([rebuild_index_instances], namespace='document_indexing', title=_(u'Indexes'))
