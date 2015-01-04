@@ -60,7 +60,7 @@ class DocumentTypeManager(models.Manager):
 
 class DocumentManager(models.Manager):
     @transaction.atomic
-    def new_document(self, document_type, file_object, label, command_line=False, description=None, expand=False, language=None, user=None):
+    def new_document(self, document_type, file_object, label=None, command_line=False, description=None, expand=False, language=None, user=None):
         versions_created = []
 
         if expand:
@@ -85,8 +85,8 @@ class DocumentManager(models.Manager):
         return versions_created
 
     @transaction.atomic
-    def upload_single_document(self, document_type, file_object, label, description=None, language=None, user=None):
-        document = self.model(description=description, document_type=document_type, language=language, label=label)
+    def upload_single_document(self, document_type, file_object, label=None, description=None, language=None, user=None):
+        document = self.model(description=description, document_type=document_type, language=language, label=label or unicode(file_object))
         document.save(user=user)
         version = document.new_version(file_object=file_object, user=user)
         document.set_document_type(document_type, force=True)
