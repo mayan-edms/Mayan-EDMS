@@ -8,7 +8,7 @@ before_install:
 install:
   - "pip install -r requirements/testing.txt"
 script:
-  - coverage run --source=document_indexing,documents,document_signatures,lock_manager,folders,ocr,tags manage.py test document_indexing documents lock_manager document_signatures folders ocr tags
+  - coverage run --source=document_indexing,documents,document_signatures,dynamic_search,lock_manager,folders,ocr,tags manage.py test document_indexing documents dynamic_search lock_manager document_signatures folders ocr tags
 after_success:
   - coveralls
 branches:
