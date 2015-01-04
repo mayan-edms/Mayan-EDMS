@@ -89,4 +89,5 @@ def task_delete_empty_index_nodes_recursive(instance_node):
         # same conditions
         parent = instance_node.parent
         instance_node.delete()
-        task_delete_empty_index_nodes_recursive(parent)
+        if parent:
+            task_delete_empty_index_nodes_recursive(parent)
