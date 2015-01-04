@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 from documents.models import Document
 
-from .api import update_indexes
+from .api import index_document
 from .models import Index, IndexInstanceNode
 
 
@@ -15,4 +15,4 @@ def do_rebuild_all_indexes():
 
     for document in Document.objects.all():
         # TODO: Launch all concurrently as background tasks
-        update_indexes(document)
+        index_document(document)
