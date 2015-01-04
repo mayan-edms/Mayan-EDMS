@@ -48,3 +48,29 @@ class IndexTestCase(TestCase):
         # Add document metadata value to trigger index node instance creation
         self.document.metadata.create(metadata_type=metadata_type, value='0001')
         self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u'', u'0001'])
+
+        # Check that document is in instance node
+        instance_node = IndexInstanceNode.objects.get(value='0001')
+        self.failUnlessEqual(list(instance_node.documents.all()), [self.document])
+
+        # Change document metadata value to trigger index node instance update
+        document_metadata = self.document.metadata.get(metadata_type=metadata_type)
+        document_metadata.value = '0002'
+        document_metadata.save()
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u'', u'0002'])
+
+        # Check that document is in new instance node
+        instance_node = IndexInstanceNode.objects.get(value='0002')
+        self.failUnlessEqual(list(instance_node.documents.all()), [self.document])
+
+        # Check node instance is destoyed when no metadata is available
+        self.document.metadata.get(metadata_type=metadata_type).delete()
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [])
+
+        # Add document metadata value again to trigger index node instance creation
+        self.document.metadata.create(metadata_type=metadata_type, value='0003')
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u'', u'0003'])
+
+        # Check node instance is destoyed when no documents are contained
+        self.document.delete()
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [])
