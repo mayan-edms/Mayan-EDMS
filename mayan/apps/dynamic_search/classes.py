@@ -12,7 +12,6 @@ from acls.models import AccessEntry
 from common.utils import load_backend
 from permissions.models import Permission
 
-from .models import RecentSearch
 from .settings import LIMIT
 
 logger = logging.getLogger(__name__)
@@ -81,6 +80,8 @@ class SearchModel(object):
         return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
 
     def search(self, query_string, user, global_and_search=False):
+        from .models import RecentSearch
+
         elapsed_time = 0
         start_time = datetime.datetime.now()
         result_set = set()
