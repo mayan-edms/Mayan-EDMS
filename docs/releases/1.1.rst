@@ -35,7 +35,7 @@ What's new in Mayan EDMS v1.1
 * Removal of the sources icon selection support
 * Removal of the in-app help panes
 * Improved method for custom settings
-* Update to Django 1.6.7
+* Update to Django 1.6.8
 * More API endpoints
 * Improvement of the existing API endpoints
 * Improve sources app model sub classes and inheritance handling
@@ -44,6 +44,7 @@ What's new in Mayan EDMS v1.1
 * Bulk document type change
 * Watch folders
 * Removal of the duplicate document search support
+* Removal of filesystem document indexes mirroring
 
 
 Upgrading from a previous version
