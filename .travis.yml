@@ -2,9 +2,6 @@ language: python
 python:
   - 2.6
   - 2.7
-  - 3.2
-  - 3.3
-  - 3.4
 env:
   global:
    - TEST_APPS="document_indexing documents dynamic_search lock_manager document_signatures folders ocr tags"
@@ -39,10 +36,3 @@ notifications:
     - roberto.rosario@mayan-edms.com
     on_success: never
     on_failure: always
-matrix:
-  allow_failures:
-    - python: 3.2
-    - python: 3.3
-    - python: 3.4
-
-
