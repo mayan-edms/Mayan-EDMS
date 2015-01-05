@@ -6,7 +6,7 @@ from django.db import models
 
 class Migration(SchemaMigration):
     depends_on = (
-        ('permissions', '0002_auto__add_storedpermission__add_unique_storedpermission_namespace_name.py'),
+        ('permissions', '0002_auto__add_storedpermission__add_unique_storedpermission_namespace_name'),
     )
 
     def forwards(self, orm):
