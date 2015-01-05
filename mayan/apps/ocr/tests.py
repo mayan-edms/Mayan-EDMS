@@ -18,6 +18,8 @@ class DocumentOCRTestCase(TransactionTestCase):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = Document.objects.new_document(file_object=File(file_object), document_type=self.document_type)[0].document
 
+        DocumentQueue.objects.get_or_create(name='default')
+
         # Clear OCR queue
         QueueDocument.objects.all().delete()
 
