@@ -75,7 +75,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         initial.append({
             'metadata_type': key,
             'value': u', '.join(value) if value else '',
-            'required': key in document.document_type.metadata_type.filter(required=True),
+            'required': key in document.document_type.metadata.filter(required=True),
         })
 
     formset = MetadataFormSet(initial=initial)

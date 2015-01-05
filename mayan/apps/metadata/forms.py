@@ -71,7 +71,7 @@ class AddMetadataForm(forms.Form):
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type')
         super(AddMetadataForm, self).__init__(*args, **kwargs)
-        self.fields['metadata_type'].queryset = document_type.metadata_type.all()
+        self.fields['metadata_type'].queryset = document_type.metadata.all()
 
     metadata_type = forms.ModelChoiceField(queryset=MetadataType.objects.all(), label=_(u'Metadata type'))
 
