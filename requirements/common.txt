@@ -30,7 +30,7 @@ requests==2.4.3
 
 sh==1.09
 slate==0.3
-South==1.0.1
+South==1.0.2
 
 unicode-slugify==0.1.1
 
