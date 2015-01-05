@@ -10,18 +10,11 @@ from django.test.client import Client
 from django.test import TestCase
 
 from documents.models import Document, DocumentType
+from documents.tests import (TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
+                             TEST_ADMIN_EMAIL, TEST_DOCUMENT_PATH,
+                             TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH)
 
 from .classes import SearchModel
-
-TEST_ADMIN_PASSWORD = 'test_admin_password'
-TEST_ADMIN_USERNAME = 'test_admin'
-TEST_ADMIN_EMAIL = 'admin@admin.com'
-TEST_SMALL_DOCUMENT_FILENAME = 'title_page.png'
-TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
-TEST_SIGNED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg')
-TEST_SMALL_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_SMALL_DOCUMENT_FILENAME)
-TEST_DOCUMENT_DESCRIPTION = 'test description'
-TEST_DOCUMENT_TYPE = 'test_document_type'
 
 document_search = SearchModel.get('documents.Document')
 
@@ -40,9 +33,6 @@ class DocumentSearchTestCase(TestCase):
 
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf'))
-
-        # Text extraction on the first page only
-        parse_document_page(self.document.latest_version.pages.all()[0])
 
     def test_simple_search_after_related_name_change(self):
         """
