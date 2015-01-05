@@ -19,7 +19,9 @@ install:
 before_script:
   - mysql -e 'create database mayan_edms;'
   - psql -c 'create database mayan_edms;' -U postgres
-  - "python manage.py initialsetup"
+  - if [[ $DB == mysql ]]; then python manage.py initialsetup --settings=mayan.settings.travis.db_mysql; fi
+  - if [[ $DB == postgres ]]; then python manage.py initialsetup --settings=mayan.settings.travis.db_postgres; fi
+  - if [[ $DB == sqlite ]]; then python manage.py initialsetup; fi
 script:
   - if [[ $DB == mysql ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.db_mysql; fi
   - if [[ $DB == postgres ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.db_postgres; fi
