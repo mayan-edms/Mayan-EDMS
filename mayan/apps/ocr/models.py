@@ -25,7 +25,7 @@ class QueueDocument(models.Model):
     document = models.ForeignKey(Document, verbose_name=_(u'Document'))
     datetime_submitted = models.DateTimeField(verbose_name=_(u'Date time submitted'), auto_now=True, db_index=True)
     result = models.TextField(blank=True, null=True, verbose_name=_(u'Result'))
-    node_name = models.CharField(max_length=32, verbose_name=_(u'Node name'), blank=True, null=True)
+    node_name = models.CharField(max_length=256, verbose_name=_(u'Node name'), blank=True, null=True)
 
     class Meta:
         ordering = ('datetime_submitted',)
