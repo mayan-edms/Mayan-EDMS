@@ -27,7 +27,7 @@ class IndexTemplateNodeSerializer(serializers.ModelSerializer):
 
 class IndexSerializer(serializers.ModelSerializer):
     node_templates = IndexTemplateNodeSerializer(read_only=True, many=True)
-    instance_root = IndexInstanceNodeSerializer(read_only=True)#, many=False)
+    instance_root = IndexInstanceNodeSerializer(read_only=True)
 
     class Meta:
         fields = ('id', 'name', 'title', 'enabled', 'document_types', 'node_templates', 'instance_root')

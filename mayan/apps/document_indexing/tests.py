@@ -1,29 +1,18 @@
 from __future__ import absolute_import
 
-from json import loads
-import os
-
-from django.conf import settings
-from django.contrib.auth.models import User
 from django.core.files.base import File
-from django.core.urlresolvers import reverse
-from django.test.client import Client
 from django.test import TestCase
 
-from rest_framework import status
-from rest_framework.test import APIClient
-
 from documents.models import Document, DocumentType
-from documents.tests import (TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
-                             TEST_DOCUMENT_TYPE)
-from metadata.models import (MetadataType, DocumentMetadata,
-                             DocumentTypeMetadataType)
+from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from metadata.models import MetadataType, DocumentTypeMetadataType
+
 from .models import Index, IndexInstanceNode, IndexTemplateNode
 
 
 class IndexTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(name=TEST_DOCUMENT_DESCRIPTION)
+        self.document_type = DocumentType.objects.create(name=TEST_DOCUMENT_TYPE)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = Document.objects.new_document(file_object=File(file_object), document_type=self.document_type)[0].document

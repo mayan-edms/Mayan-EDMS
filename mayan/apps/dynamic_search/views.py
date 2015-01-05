@@ -3,19 +3,14 @@ from __future__ import absolute_import
 import logging
 import urlparse
 
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
-from permissions.models import Permission
-
 from .classes import SearchModel
 from .forms import SearchForm, AdvancedSearchForm
-from .models import RecentSearch
 from .settings import LIMIT, SHOW_OBJECT_TYPE
 
 logger = logging.getLogger(__name__)

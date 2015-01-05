@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 import io
 import logging
-import os
 import tempfile
 
 import slate

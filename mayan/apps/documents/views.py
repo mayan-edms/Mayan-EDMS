@@ -45,7 +45,6 @@ from .permissions import (PERMISSION_DOCUMENT_PROPERTIES_EDIT,
                           PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_TYPE_EDIT,
                           PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_CREATE,
                           PERMISSION_DOCUMENT_TYPE_VIEW)
-from .runtime import storage_backend
 from .settings import (PREVIEW_SIZE, RECENT_COUNT, ROTATION_STEP,
                        ZOOM_PERCENT_STEP, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
 from .tasks import (task_clear_image_cache, task_get_document_image,
@@ -99,7 +98,6 @@ def document_properties(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
-
 
     document_fields = [
         {'label': _(u'Date added'), 'field': lambda x: x.date_added.date()},

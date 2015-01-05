@@ -45,7 +45,6 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
 
         # Reuse expensive values
         latest_version_pk = value.latest_version.pk
-        page_count = value.page_count
 
         for page in document_pages:
             output.append(u'<div style="margin: 5px 10px 10px 10px;">')

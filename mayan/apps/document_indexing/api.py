@@ -3,7 +3,6 @@ from __future__ import absolute_import
 import logging
 
 from django.db.models import Q
-from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Index, IndexInstanceNode

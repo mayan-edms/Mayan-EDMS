@@ -1,7 +1,5 @@
 """Configuration options for the document_indexing app"""
 
-from django.utils.translation import ugettext_lazy as _
-
 from smart_settings.api import register_settings
 
 available_indexing_functions = {

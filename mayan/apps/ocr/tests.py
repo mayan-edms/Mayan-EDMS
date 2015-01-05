@@ -1,13 +1,11 @@
 from __future__ import absolute_import
 
-from django.conf import settings
 from django.core.files.base import File
 from django.test import TransactionTestCase
 
 from documents.models import Document, DocumentType
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
-from .api import do_document_ocr
 from .models import DocumentQueue, QueueDocument
 
 

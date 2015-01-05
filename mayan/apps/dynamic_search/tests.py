@@ -9,11 +9,7 @@ from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
 
-from rest_framework import status
-from rest_framework.test import APIClient
-
 from documents.models import Document, DocumentType
-from ocr.parsers import parse_document_page
 
 from .classes import SearchModel
 

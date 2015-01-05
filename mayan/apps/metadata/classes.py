@@ -1,7 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
 
-from .models import DocumentTypeMetadataType, MetadataType
-from .tasks import task_add_required_metadata_type, task_remove_metadata_type
+from .models import MetadataType
 
 
 class DocumentMetadataHelper(object):

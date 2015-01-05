@@ -2,8 +2,7 @@ from __future__ import absolute_import
 
 from django.contrib.auth.models import Group, User
 
-from rest_framework import generics, views
-from rest_framework.response import Response
+from rest_framework import generics
 
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
