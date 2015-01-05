@@ -11,7 +11,7 @@ from .api import do_document_ocr
 from .models import DocumentQueue, QueueDocument
 
 
-class DocumentSearchTestCase(TestCase):
+class DocumentOCRTestCase(TestCase):
     def setUp(self):
         self.document_type = DocumentType.objects.create(name=TEST_DOCUMENT_TYPE, ocr=False)
 
@@ -39,10 +39,16 @@ class DocumentSearchTestCase(TestCase):
         # Make sure content was extracted
         self.assertTrue(result in self.document.pages.first().content)
 
-    def test_ocr_language_backends(self):
+    def test_ocr_language_backends_deu(self):
         self._test_ocr_language_issue_16('deu', 'Mayan EDMS')
+
+    def test_ocr_language_backends_end(self):
         self._test_ocr_language_issue_16('eng', 'Mayan EDMS')
+
+    def test_ocr_language_backends_spa(self):
         self._test_ocr_language_issue_16('spa', 'Mayan EDMS')
+
+    def test_ocr_language_backends_rus(self):
         self._test_ocr_language_issue_16('rus', '')
 
     def tearDown(self):
