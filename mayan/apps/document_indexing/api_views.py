@@ -89,28 +89,15 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
         return index_node_instance.documents.all()
 
 
-class APIIndexTemplateListView(generics.ListCreateAPIView):
+class APIIndexTemplateListView(generics.ListAPIView):
     serializer_class = IndexTemplateNodeSerializer
 
     filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_INDEXING_VIEW]}
 
-    def get_queryset(self):
-        index = get_object_or_404(Index, pk=self.kwargs['pk'])
-        try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, self.request.user, index_node_instance.index)
-
-        return index.node_templates.all()
-
     def get(self, *args, **kwargs):
         """Returns a list of all the template nodes for the selected index."""
         return super(APIIndexTemplateListView, self).get(*args, **kwargs)
-
-    def post(self, *args, **kwargs):
-        """Create a new template node for the selected new index."""
-        return super(APIIndexTemplateListView, self).post(*args, **kwargs)
 
 
 class APIIndexTemplateView(generics.RetrieveUpdateDestroyAPIView):
