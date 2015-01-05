@@ -95,7 +95,11 @@ def ocr_cleanup(language, text):
         line = line.strip()
         for word in line.split():
             if language_backend:
-                result = language_backend.check_word(word)
+                try:
+                    result = language_backend.check_word(word)
+                except Exception as exception:
+                    logger.error(exception)
+                    raise Exception('ocr_cleanup() %s' % unicode(exception))
             else:
                 result = word
             if result:
