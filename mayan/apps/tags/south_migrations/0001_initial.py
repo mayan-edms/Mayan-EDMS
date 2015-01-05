@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
         # Adding model 'TagProperties'
         db.create_table(u'tags_tagproperties', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('tag', self.gf('django.db.models.fields.IntegerField')()),
+            ('tag_id', self.gf('django.db.models.fields.IntegerField')()),
             ('color', self.gf('django.db.models.fields.CharField')(max_length=3)),
         ))
         db.send_create_signal(u'tags', ['TagProperties'])
@@ -30,7 +30,7 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'TagProperties'},
             'color': ('django.db.models.fields.CharField', [], {'max_length': '3'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'tag': ('django.db.models.fields.IntegerField', [], {})
+            'tag_id': ('django.db.models.fields.IntegerField', [], {})
         }
     }
 

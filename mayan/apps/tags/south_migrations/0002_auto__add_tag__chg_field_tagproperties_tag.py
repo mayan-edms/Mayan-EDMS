@@ -35,7 +35,7 @@ class Migration(SchemaMigration):
         db.delete_table(db.shorten_name(u'tags_tag_document'))
 
         # Changing field 'TagProperties.tag'
-        db.alter_column(u'tags_tagproperties', 'tag_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['taggit.Tag']))
+        db.alter_column(u'tags_tagproperties', 'tag_id', self.gf('django.db.models.fields.IntegerField')())
 
     models = {
         u'documents.document': {
