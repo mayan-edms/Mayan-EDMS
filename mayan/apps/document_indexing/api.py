@@ -76,9 +76,8 @@ def delete_empty_index_nodes():
     Delete empty index instance nodes
     """
 
-    for instance_node in IndexInstanceNode.objects.filter(documents__isnull=True):
+    for instance_node in IndexInstanceNode.objects.filter(documents__isnull=True, parent__isnull=False):
         task_delete_empty_index_nodes_recursive(instance_node)
-
 
 
 def task_delete_empty_index_nodes_recursive(instance_node):

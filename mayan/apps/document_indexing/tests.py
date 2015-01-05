@@ -65,12 +65,12 @@ class IndexTestCase(TestCase):
 
         # Check node instance is destoyed when no metadata is available
         self.document.metadata.get(metadata_type=metadata_type).delete()
-        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [])
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u''])
 
         # Add document metadata value again to trigger index node instance creation
         self.document.metadata.create(metadata_type=metadata_type, value='0003')
         self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u'', u'0003'])
 
-        # Check node instance is destoyed when no documents are contained
+        # Check node instance is destroyed when no documents are contained
         self.document.delete()
-        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [])
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u''])
