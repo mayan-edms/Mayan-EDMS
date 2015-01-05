@@ -26,10 +26,11 @@ class Lock(models.Model):
     def release(self):
         try:
             lock = Lock.objects.get(name=self.name, creation_datetime=self.creation_datetime)
-            lock.delete()
         except Lock.DoesNotExist:
             # Our lock has expired and was reassigned
             pass
+        else:
+            lock.delete()
 
     class Meta:
         verbose_name = _(u'Lock')

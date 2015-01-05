@@ -20,8 +20,6 @@ class LockManager(models.Manager):
         try:
             with transaction.atomic():
                 lock.save(force_insert=True)
-                logger.debug('acquired lock: %s', name)
-                return lock
         except IntegrityError as exception:
             logger.debug('IntegrityError: %s', exception)
             # There is already an existing lock
@@ -43,3 +41,6 @@ class LockManager(models.Manager):
             else:
                 logger.debug('unable to acquire lock: %s', name)
                 raise LockError('Unable to acquire lock')
+        else:
+            logger.debug('acquired lock: %s', name)
+            return lock
