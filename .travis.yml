@@ -5,6 +5,9 @@ python:
   - 3.2
   - 3.3
   - 3.4
+env:
+  global:
+   - TEST_APPS="document_indexing documents dynamic_search lock_manager document_signatures folders ocr tags"
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq python-dev gcc tesseract-ocr unpaper ghostscript libjpeg-dev libpng-dev poppler-utils
@@ -13,7 +16,7 @@ install:
 before_script:
   - "python manage.py initialsetup"
 script:
-  - coverage run --source=document_indexing,documents,document_signatures,dynamic_search,lock_manager,folders,ocr,tags manage.py test document_indexing documents dynamic_search lock_manager document_signatures folders ocr tags
+  - coverage run manage.py test $TEST_APPS
 after_success:
   - coveralls
 branches:
