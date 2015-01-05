@@ -29,7 +29,7 @@ TEST_DOCUMENT_TYPE = 'test_document_type'
 
 document_search = SearchModel.get('documents.Document')
 
-'''
+
 class DocumentSearchTestCase(TestCase):
     def setUp(self):
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
@@ -78,7 +78,7 @@ class DocumentSearchTestCase(TestCase):
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
-'''
+
 
 class Issue46TestCase(TestCase):
     """
