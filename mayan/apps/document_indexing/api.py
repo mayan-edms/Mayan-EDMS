@@ -24,6 +24,8 @@ def index_document(document):
     for index_node in IndexInstanceNode.objects.filter(documents=document):
         index_node.documents.remove(document)
 
+    delete_empty_index_nodes()
+
     # Only update indexes where the document type is found or that do not have any document type specified
     # TODO: explicit document type selection, none != all
     for index in Index.objects.filter(Q(enabled=True) & (Q(document_types=None) | Q(document_types=document.document_type))):

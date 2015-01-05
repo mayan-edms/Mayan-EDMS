@@ -29,13 +29,11 @@ def document_index_delete(sender, **kwargs):
 @receiver(post_save, dispatch_uid='document_metadata_index_update', sender=DocumentMetadata)
 def document_metadata_index_update(sender, **kwargs):
     task_index_document.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
-    task_delete_empty_index_nodes.apply_async(queue='indexing')
 
 
 @receiver(post_delete, dispatch_uid='document_metadata_index_post_delete', sender=DocumentMetadata)
 def document_metadata_index_post_delete(sender, **kwargs):
     task_index_document.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
-    task_delete_empty_index_nodes.apply_async(queue='indexing')
 
 
 register_maintenance_links([rebuild_index_instances], namespace='document_indexing', title=_(u'Indexes'))
