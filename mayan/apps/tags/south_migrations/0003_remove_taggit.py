@@ -12,7 +12,7 @@ class Migration(DataMigration):
         # and orm['appname.ModelName'] for models in other applications.
 
         try:
-            from taggit.models import Tag as TaggitModel
+            from orm.TaggitModel import Tag as TaggitModel
         except ImportError:
             pass
         else:
