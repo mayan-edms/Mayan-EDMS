@@ -490,6 +490,7 @@ class DocumentTypeFilename(models.Model):
 
     class Meta:
         ordering = ['filename']
+        unique_together = ('document_type', 'filename')
         verbose_name = _(u'Document type quick rename filename')
         verbose_name_plural = _(u'Document types quick rename filenames')
 
