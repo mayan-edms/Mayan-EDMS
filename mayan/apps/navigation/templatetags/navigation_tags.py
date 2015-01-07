@@ -91,6 +91,14 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                     else:
                         new_link['url'] = reverse(link['view'], args=args)
                         if link.get('keep_query', False):
+                            try:
+                                for key in link.get('remove_from_query', []):
+                                    del parsed_query_string[key]
+                            except KeyError:
+                                # We were asked to remove a key not found in the
+                                # query string, that is not fatal
+                                pass
+
                             new_link['url'] = urlquote(new_link['url'], parsed_query_string)
                 except NoReverseMatch as exception:
                     new_link['url'] = '#'
@@ -104,6 +112,14 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                 else:
                     new_link['url'] = link['url'] % args
                     if link.get('keep_query', False):
+                        try:
+                            for key in link.get('remove_from_query', []):
+                                del parsed_query_string[key]
+                        except KeyError:
+                            # We were asked to remove a key not found in the
+                            # query string, that is not fatal
+                            pass
+
                         new_link['url'] = urlquote(new_link['url'], parsed_query_string)
             else:
                 new_link['active'] = False
