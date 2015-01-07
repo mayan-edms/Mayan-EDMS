@@ -11,8 +11,7 @@ from dynamic_search.classes import SearchModel
 from history.api import register_history_type
 from history.permissions import PERMISSION_HISTORY_VIEW
 from main.api import register_maintenance_links
-from navigation.api import (register_links, register_model_list_columns,
-                            register_top_menu)
+from navigation.api import (register_links, register_model_list_columns)
 from navigation.links import link_spacer
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
@@ -119,12 +118,6 @@ register_model_list_columns(Document, [
         'name': _(u'Type'), 'attribute': 'document_type'
     }
 ])
-
-register_top_menu(
-    'documents',
-    link={'famfam': 'page', 'text': _(u'Documents'), 'view': 'documents:document_list_recent'},
-    position=1
-)
 
 if (not validate_path(document_settings.CACHE_PATH)) or (not document_settings.CACHE_PATH):
     setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())

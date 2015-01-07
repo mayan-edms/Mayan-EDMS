@@ -7,13 +7,32 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
+from dynamic_search.classes import SearchModel
 from permissions.models import Permission
 
 from .api import diagnostics, tools
 
 
 def home(request):
-    return HttpResponseRedirect(reverse('documents:document_list_recent'))
+    document_search = SearchModel.get('documents.Document')
+
+    context = {
+        'query_string': request.GET,
+        'hide_links': True,
+        'search_results_limit': 100,
+    }
+
+    if request.GET:
+        queryset, ids, timedelta = document_search.search(request.GET, request.user)
+
+        # Update the context with the search results
+        context.update({
+            'object_list': queryset,
+            'time_delta': timedelta,
+            'title': _(u'Results'),
+        })
+
+    return render_to_response('main/home.html', context, context_instance=RequestContext(request))
 
 
 def maintenance_menu(request):
