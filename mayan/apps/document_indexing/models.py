@@ -44,8 +44,7 @@ class Index(models.Model):
         IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
     def get_document_types_names(self):
-        # TODO: explicit document type selection, none != all
-        return u', '.join([unicode(document_type) for document_type in self.document_types.all()] or [u'All'])
+        return u', '.join([unicode(document_type) for document_type in self.document_types.all()] or [u'None'])
 
     def natural_key(self):
         return (self.name,)

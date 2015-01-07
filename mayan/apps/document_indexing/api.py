@@ -25,9 +25,8 @@ def index_document(document):
 
     delete_empty_index_nodes()
 
-    # Only update indexes where the document type is found or that do not have any document type specified
-    # TODO: explicit document type selection, none != all
-    for index in Index.objects.filter(Q(enabled=True) & (Q(document_types=None) | Q(document_types=document.document_type))):
+    # Only update indexes where the document type is found
+    for index in Index.objects.filter(enabled=True, document_types=document.document_type):
         root_instance, created = IndexInstanceNode.objects.get_or_create(index_template_node=index.template_root, parent=None)
         for template_node in index.template_root.get_children():
             index_warnings = cascade_eval(document, template_node, root_instance)

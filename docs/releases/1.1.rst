@@ -45,6 +45,8 @@ What's new in Mayan EDMS v1.1
 * Watch folders
 * Removal of the duplicate document search support
 * Removal of filesystem document indexes mirroring
+* New home view
+* Explicit document types needed per index
 
 
 Upgrading from a previous version
