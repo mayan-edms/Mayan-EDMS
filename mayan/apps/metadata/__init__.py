@@ -85,7 +85,7 @@ register_model_list_columns(Document, [
 ])
 
 APIEndPoint('metadata')
-ModelAttribute(Document, 'document_metadata__metadata_type__name', label=_('Metadata type name'), type_name='query')
-ModelAttribute(Document, 'document_metadata__value', label=_('Metadata type value'), type_name='query')
-ModelAttribute(Document, 'document_metadata', type_name='related', description=_('Queryset containing a MetadataType instance reference and a value for that metadata type'))
+ModelAttribute(Document, 'metadata__metadata_type__name', label=_('Metadata type name'), type_name='query')
+ModelAttribute(Document, 'metadata__value', label=_('Metadata type value'), type_name='query')
+ModelAttribute(Document, 'metadata', type_name='related', description=_('Queryset containing a MetadataType instance reference and a value for that metadata type'))
 ModelAttribute(Document, 'metadata_value_of', label=_('Value of a metadata'), description=_('Return the value of a specific document metadata'), type_name=['property', 'indexing'])
