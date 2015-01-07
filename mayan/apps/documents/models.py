@@ -459,18 +459,6 @@ class DocumentVersion(models.Model):
         else:
             return None
 
-    # TODO: Remove
-    def rename(self, new_name):
-        new_filename, new_extension = os.path.splitext(new_name)
-        name, extension = os.path.splitext(self.filename)
-
-        # Preserve existing extension if new name doesn't has one
-        if new_extension:
-            extension = new_extension
-
-        self.filename = u''.join([new_filename, extension])
-        self.save()
-
     @property
     def page_count(self):
         return self.pages.count()
