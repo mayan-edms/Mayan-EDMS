@@ -950,7 +950,7 @@ def document_type_filename_list(request, document_type_id):
 
     context = {
         'object_list': document_type.filenames.all(),
-        'title': _(u'filenames for document type: %s') % document_type,
+        'title': _(u'Filenames for document type: %s') % document_type,
         'navigation_object_name': 'document_type',
         'document_type': document_type,
         'list_object_variable_name': 'filename',
