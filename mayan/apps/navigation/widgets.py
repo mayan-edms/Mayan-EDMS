@@ -40,7 +40,13 @@ def render_widget(request, link):
     links = resolve_links(context, [link], current_view, current_path, parsed_query_string)
     if links:
         link = links[0]
-        return mark_safe(u'<a style="text-decoration:none; margin-right: 10px;" href="%(url)s"><button style="vertical-align: top; padding: 1px; width: 110px; height: 100px; margin: 10px;"><img src="%(static_url)s" alt="%(image_alt)s" /><p style="margin: 0px 0px 0px 0px;">%(string)s</p></button></a>' % {
+        return mark_safe(u'\
+            <a class="pure-button mayan-button-big" href="%(url)s">\
+                <p>\
+                    <img src="%(static_url)s"><br>\
+                    %(string)s\
+                </p>\
+            </a>' % {
             'url': reverse(link['view']) if 'view' in link else link['url'],
             'static_url': staticfiles_storage.url('main/icons/{0}'.format(link.get('icon', 'link_button.png'))),
             'string': link['text'],

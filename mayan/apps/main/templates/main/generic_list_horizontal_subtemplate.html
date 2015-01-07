@@ -3,11 +3,11 @@
         {{ title }}
     </h2>
 
-    <div class="inner">
-        <div class="group navform wat-cf">
-            {% for object in object_list %}
+    <div class="pure-g tc">
+        {% for object in object_list %}
+            <div class="pure-u-4-24">
                 {{ object }}
-            {% endfor %}
-        </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
