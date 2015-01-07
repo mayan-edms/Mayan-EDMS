@@ -60,7 +60,13 @@ def smart_link_instance_view(request, document_id, smart_link_pk):
 def smart_link_instances_for_document(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
-    queryset = SmartLink.objects.get_for(document)
+    try:
+        queryset = SmartLink.objects.get_for(document)
+    except Exception as exception:
+        queryset = []
+        messages.error(request, _(u'Error calculating smart link for: %(document)s; %(exception)s.') %
+            {'document': document, 'exception': exception}
+        )
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_VIEW])
