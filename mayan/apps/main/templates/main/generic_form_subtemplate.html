@@ -20,9 +20,9 @@
     <div class="inner">
 {% endif %}
     {% if form.is_multipart %}
-        <form name="{{ form.prefix }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="form">
+        <form name="{{ form.prefix }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="{{ form_class|default:'form' }}">
     {% else %}
-        <form name="{{ form.prefix }}" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="form">
+        <form name="{{ form.prefix }}" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="{{ form_class|default:'form' }}">
     {% endif %}
 
         {{ wizard.management_form }}
