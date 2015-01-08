@@ -144,7 +144,7 @@ class DocumentContentForm(forms.Form):
         for page in document_pages:
             if page.content:
                 content.append(conditional_escape(force_unicode(page.content)))
-                content.append(u'\n\n\n<hr/><div class="document-page-content-divider">- %s %s -</div><hr/>\n\n\n' % (ugettext(u'Page'), page.page_number))
+                content.append(u'\n\n\n<hr/><div class="document-page-content-divider">- %s -</div><hr/>\n\n\n' % (ugettext(u'Page %(page_number)d') % {'page_number': page.page_number}))
 
         self.fields['contents'].initial = mark_safe(u''.join(content))
 
