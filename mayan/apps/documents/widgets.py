@@ -61,7 +61,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     post_load_class='lazy-load-carousel-loaded',
                 )
             )
-            output.append(u'<div class="tc">%s</div>' % ugettext(u'Page %(page_number)d') % {'page_number': page.page_number})
+            output.append(u'<div class="carousel-item-page-number">%s</div>' % ugettext(u'Page %(page_number)d') % {'page_number': page.page_number})
             output.append(u'</div>')
 
         output.append(u'</div>')
@@ -116,7 +116,7 @@ def document_html_widget(document, click_view=None, click_view_arguments=None, p
         result.append(u'<a %s class="%s" href="%s" %s>' % (gallery_template, fancybox_class, u'%s?%s' % (reverse(click_view, args=click_view_arguments or [document.pk]), query_string), title_template))
 
     if nolazyload:
-        result.append(u'<img style="border: 1px solid black;" src="%s" alt="%s" />' % (preview_view, alt_text))
+        result.append(u'<img class="img-nolazyload" src="%s" alt="%s" />' % (preview_view, alt_text))
     else:
         result.append(u'<img class="thin_border %s" data-src="%s" data-post-load-class="%s" src="%smain/icons/hourglass.png" alt="%s" />' % (image_class, preview_view, post_load_class, settings.STATIC_URL, alt_text))
 
