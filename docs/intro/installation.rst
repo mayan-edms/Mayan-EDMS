@@ -38,7 +38,7 @@ Mac OSX
 -------
 
 **Mayan EDMS** is dependant on a number of binary packages and the recommended way is
-to use a package manager such as `MacPorts <https://www.macports.org/>`_.
+to use a package manager such as `MacPorts <https://www.macports.org/>`_ or `Homebrew <http://brew.sh/>`.
 
 
 Use MacPorts to install binary dependencies
@@ -58,7 +58,7 @@ convert images so in addition you can install GraphicsMagick ...
     sudo port install graphicsmagick
 
 Set the Binary paths
-~~~~~~~~~~~~~~~~~~~~
+********************
 
 **Mayan EDMS** by default will look in /usr/bin/ for the binary files it needs
 so either you can symlink the binaries installed via MacPorts in /opt/local/bin/
@@ -69,7 +69,7 @@ to /usr/bin/ with ...
     sudo ln -s /opt/local/bin/tesseract /usr/bin/tesseract  && \
     sudo ln -s /opt/local/bin/identify /usr/bin/identify && \
     sudo ln -s /opt/local/bin/gs /usr/bin/gs
-
+    
 ... alternatively set the paths in the ``settings/locals.py``
 
 .. code-block:: python
@@ -79,6 +79,41 @@ to /usr/bin/ with ...
     IM_IDENTIFY_PATH = '/opt/local/bin/identify'
     GRAPHICS_BACKEND = 'converter.backends.graphicsmagick.GraphicsMagick'
     GM_PATH = '/opt/local/bin/gm'
+    LIBREOFFICE_PATH = '/Applications/LibreOffice.app/Contents/MacOS/soffice'
+
+Or Use Homebrew
+~~~~~~~~~~~~~~~
+
+With Homebrew installed run the command:
+
+.. code-block:: bash
+
+    brew install python gcc tesseract unpaper poppler libpng graphicsmagick postgresql
+
+Set the Binary paths
+********************
+
+**Mayan EDMS** by default will look in /usr/bin/ for the binary files it needs
+so either you can symlink the binaries installed via brew in /usr/local/bin/
+to /usr/bin/ with ...
+
+.. code-block:: bash
+
+    sudo ln -s /usr/local/bin/tesseract /usr/bin/tesseract  && \
+    sudo ln -s /usr/local/bin/identify /usr/bin/identify && \
+    sudo ln -s /usr/local/bin/unpaper /usr/bin/unpaper && \
+    sudo ln -s /usr/local/bin/pdftotext /usr/bin/pdftotext && \
+    sudo ln -s /usr/local/bin/gs /usr/bin/gs && \
+    
+... alternatively set the paths in the ``settings/locals.py``
+
+.. code-block:: python
+
+    # document converters
+    CONVERTER_IM_CONVERT_PATH = '/usr/local/bin/convert'
+    IM_IDENTIFY_PATH = '/usr/local/bin/identify'
+    GRAPHICS_BACKEND = 'converter.backends.graphicsmagick.GraphicsMagick'
+    GM_PATH = '/usr/local/bin/gm'
     LIBREOFFICE_PATH = '/Applications/LibreOffice.app/Contents/MacOS/soffice'
 
 Production use
