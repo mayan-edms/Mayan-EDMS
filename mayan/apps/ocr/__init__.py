@@ -27,7 +27,7 @@ from .tasks import task_do_ocr
 logger = logging.getLogger(__name__)
 
 register_links(Document, [submit_document])
-register_links([Document], [link_spacer, submit_document_multiple], menu_name='multi_item_links')
+register_links([Document], [submit_document_multiple, link_spacer], menu_name='multi_item_links')
 register_links(['ocr:queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
 register_links(['ocr:queue_document_list'], [queue_document_list], menu_name='secondary_menu')
 

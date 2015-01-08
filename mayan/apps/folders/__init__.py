@@ -26,7 +26,7 @@ register_links(Folder, [folder_view, folder_edit, folder_acl_list, folder_delete
 register_links([Folder, 'folders:folder_list', 'folders:folder_create'], [folder_list, folder_create], menu_name='secondary_menu')
 register_links(['folders:document_folder_list', 'folders:folder_add_document'], [folder_add_document], menu_name="sidebar")
 register_links(Document, [document_folder_list], menu_name='form_header')
-register_links([Document], [link_spacer, folder_add_multiple_documents, folder_document_multiple_remove], menu_name='multi_item_links')
+register_links([Document], [folder_add_multiple_documents, folder_document_multiple_remove, link_spacer], menu_name='multi_item_links')
 
 register_top_menu(name='folders', link=folders_main_menu_link)
 

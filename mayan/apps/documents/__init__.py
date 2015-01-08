@@ -76,7 +76,7 @@ register_links([DocumentTypeFilename, 'documents:document_type_filename_list', '
 
 # Register document links
 register_links(Document, [document_edit, document_document_type_edit, document_print, document_delete, document_download, document_clear_transformations, document_update_page_count])
-register_links([Document], [link_spacer, document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count, document_multiple_document_type_edit], menu_name='multi_item_links')
+register_links([Document], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count, document_multiple_document_type_edit, link_spacer], menu_name='multi_item_links')
 register_links(Document, [document_preview], menu_name='form_header', position=0)
 register_links(Document, [document_content], menu_name='form_header', position=1)
 register_links(Document, [document_properties], menu_name='form_header', position=2)

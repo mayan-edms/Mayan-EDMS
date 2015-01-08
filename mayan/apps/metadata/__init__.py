@@ -66,7 +66,7 @@ Document.add_to_class('metadata_value_of', DocumentMetadataHelper.constructor)
 
 register_links(['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
 register_links(Document, [metadata_view], menu_name='form_header')
-register_links([Document], [link_spacer, metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove], menu_name='multi_item_links')
+register_links([Document], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove, link_spacer], menu_name='multi_item_links')
 register_links(DocumentType, [setup_document_type_metadata, setup_document_type_metadata_required])
 register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
 register_links([MetadataType, 'metadata:setup_metadata_type_list', 'metadata:setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
