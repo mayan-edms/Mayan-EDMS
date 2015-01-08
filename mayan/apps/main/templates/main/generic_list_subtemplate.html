@@ -28,23 +28,17 @@
 
     <div class="inner">
 {% endif %}
-
-        <form action="{% url 'common:multi_object_action_view' %}" class="form multi_select" method="get">
+        <form action="{% url 'common:multi_object_action_view' %}" class="pure-form" method="get">
             {% if object_list %}
                 {% get_multi_item_links_form object_list %}
                 {% if multi_item_actions %}
-                    <div>
-                        <div style="float: left;">
-                            {% with multi_item_form as form %}
-                                {% include 'main/generic_form_instance.html' %}
-                            {% endwith %}
-                        </div>
-                        <div style="float: left; padding-top:10px; padding-left:10px;" >
-                            <button class="button" type="submit" name="{{ form.prefix }}-submit">
-                                <img src="{% static 'web_theme_media/images/icons/tick.png' %}" alt="{% trans 'Submit' %}" /> {% trans 'Submit' %}
+                    <fieldset>
+                        {{ multi_item_form }}
+                            &nbsp;<button class="pure-button mayan-button" type="submit" name="{{ form.prefix }}-submit">
+                                <span class="famfam active famfam-tick"></span> {% trans 'Submit' %}
                             </button>
-                        </div>
-                    </div>
+
+                    </fieldset>
                 {% endif %}
             {% endif %}
 
