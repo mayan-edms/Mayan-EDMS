@@ -61,7 +61,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     post_load_class='lazy-load-carousel-loaded',
                 )
             )
-            output.append(u'<div class="tc">%(page_string)s %(page)s</div>' % {'page_string': ugettext(u'Page'), 'page': page.page_number})
+            output.append(u'<div class="tc">%s</div>' % ugettext(u'Page %(page_number)d') % {'page_number': page.page_number})
             output.append(u'</div>')
 
         output.append(u'</div>')
