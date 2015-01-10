@@ -47,6 +47,7 @@ What's new in Mayan EDMS v1.1
 * Removal of filesystem document indexes mirroring
 * New home view
 * Explicit document types needed per index
+* Events app
 
 
 Upgrading from a previous version
