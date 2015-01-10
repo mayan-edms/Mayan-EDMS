@@ -1,4 +1,10 @@
+from __future__ import absolute_import
+
 from django.utils.translation import ugettext_lazy as _
+
+from events.classes import Event
+
+event_document_create = Event(name='documents_document_create', label=_('Document created'))
 
 HISTORY_DOCUMENT_CREATED = {
     'namespace': 'documents', 'name': 'document_created',
@@ -8,6 +14,8 @@ HISTORY_DOCUMENT_CREATED = {
     'expressions': {'fullname': 'user[0]["fields"]["username"] if isinstance(user, list) else user.get_full_name() if user.get_full_name() else user.username'}
 }
 
+event_document_edited = Event(name='documents_document_edit', label=_('Document edited'))
+
 HISTORY_DOCUMENT_EDITED = {
     'namespace': 'documents', 'name': 'document_edited',
     'label': _(u'Document edited'),
@@ -16,12 +24,4 @@ HISTORY_DOCUMENT_EDITED = {
     'expressions': {
         'fullname': 'user[0]["fields"]["username"] if isinstance(user, list) else user.get_full_name() if user.get_full_name() else user.username',
     }
-}
-
-HISTORY_DOCUMENT_DELETED = {
-    'namespace': 'documents', 'name': 'document_deleted',
-    'label': _(u'Document deleted'),
-    'summary': _(u'Document "%(document)s" deleted by %(fullname)s.'),
-    'details': _(u'Document "%(document)s" deleted on %(datetime)s by %(fullname)s.'),
-    'expressions': {'fullname': 'user.get_full_name() if user.get_full_name() else user.username'}
 }

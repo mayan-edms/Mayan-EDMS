@@ -8,9 +8,8 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
-from history.api import create_history
 
-from .events import HISTORY_DOCUMENT_CHECKED_OUT
+from .events import event_document_check_out
 from .exceptions import DocumentAlreadyCheckedOut
 from .managers import DocumentCheckoutManager
 
@@ -48,7 +47,7 @@ class DocumentCheckout(models.Model):
 
         result = super(DocumentCheckout, self).save(*args, **kwargs)
         if new_checkout:
-            create_history(HISTORY_DOCUMENT_CHECKED_OUT, source_object=self.document, data={'user': self.user_object, 'document': self.document})
+            event_document_check_out.commit(actor=self.user_object, target=self.document)
         return result
 
     @models.permalink

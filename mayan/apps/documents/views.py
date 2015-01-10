@@ -23,11 +23,10 @@ from common.widgets import two_state_template
 from converter.literals import (DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER,
                                 DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL)
 from filetransfers.api import serve_file
-from history.api import create_history
 from navigation.utils import resolve_to_name
 from permissions.models import Permission
 
-from .events import HISTORY_DOCUMENT_EDITED
+from .events import event_document_edited
 from .forms import (DocumentContentForm, DocumentDownloadForm, DocumentForm,
                     DocumentPageForm, DocumentPageForm_edit,
                     DocumentPageForm_text, DocumentPageTransformationForm,
@@ -238,7 +237,7 @@ def document_edit(request, document_id):
                     document.label = form.cleaned_data['document_type_available_filenames'].filename
 
             document.save()
-            create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user})
+            event_document_edited.commit(actor=request.user)
             document.add_as_recent_document_for_user(request.user)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)
@@ -280,7 +279,7 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
 
             for document in documents:
                 document.set_document_type(form.cleaned_data['document_type'])
-                create_history(HISTORY_DOCUMENT_EDITED, document, {'user': request.user})
+                event_document_edited.commit(actor=request.user)
                 document.add_as_recent_document_for_user(request.user)
 
             messages.success(request, _(u'Document type changed successfully.'))

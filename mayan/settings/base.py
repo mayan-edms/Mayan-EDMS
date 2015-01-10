@@ -34,7 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    # Mayan EDMS
+    # 3rd party
     'suit',
     # Django
     'django.contrib.admin',
@@ -78,6 +78,7 @@ INSTALLED_APPS = (
     'document_indexing',
     'document_signatures',
     'documents',
+    'events',
     'folders',
     'history',
     'installation',
@@ -94,6 +95,9 @@ INSTALLED_APPS = (
     'tags',
     # Placed after rest_api to allow template overriding
     'rest_framework_swagger',
+    # Must be last on Django < 1.7 as per documentation
+    # https://django-activity-stream.readthedocs.org/en/latest/installation.html
+    'actstream',
 )
 
 MIDDLEWARE_CLASSES = (

@@ -10,7 +10,7 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.core.urlresolvers import reverse
 
-from .runtime_data import history_types_dict
+#from .runtime_data import history_types_dict
 
 
 class HistoryType(models.Model):
@@ -18,10 +18,11 @@ class HistoryType(models.Model):
     name = models.CharField(max_length=64, verbose_name=_(u'Name'))
 
     def __unicode__(self):
-        try:
-            return unicode(history_types_dict[self.namespace][self.name]['label'])
-        except KeyError:
-            return u'Obsolete history type: %s - %s' % (self.namespace, self.name)
+        return '{0}.{1}'.format(self.namespace, self.name)
+    #    try:
+    #        return unicode(history_types_dict[self.namespace][self.name]['label'])
+    #    except KeyError:
+    #        return u'Obsolete history type: %s - %s' % (self.namespace, self.name)
 
     def get_absolute_url(self):
         return reverse('history:history_type_list', args=[self.pk])

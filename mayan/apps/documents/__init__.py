@@ -8,7 +8,6 @@ from acls.api import class_permissions
 from common.classes import ModelAttribute
 from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
-from history.api import register_history_type
 from history.permissions import PERMISSION_HISTORY_VIEW
 from main.api import register_maintenance_links
 from navigation.api import (register_links, register_model_list_columns)
@@ -18,8 +17,6 @@ from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
 
 from documents import settings as document_settings
-from .events import (HISTORY_DOCUMENT_CREATED,
-                     HISTORY_DOCUMENT_DELETED, HISTORY_DOCUMENT_EDITED)
 from .links import (document_clear_image_cache,
                     document_clear_transformations, document_content,
                     document_delete,
@@ -62,11 +59,6 @@ from .permissions import (PERMISSION_DOCUMENT_DELETE,
 from .settings import THUMBNAIL_SIZE
 from .statistics import DocumentStatistics, DocumentUsageStatistics
 from .widgets import document_thumbnail
-
-# History setup
-register_history_type(HISTORY_DOCUMENT_CREATED)
-register_history_type(HISTORY_DOCUMENT_EDITED)
-register_history_type(HISTORY_DOCUMENT_DELETED)
 
 # Register document type links
 register_links(DocumentType, [document_type_edit, document_type_filename_list, document_type_delete])

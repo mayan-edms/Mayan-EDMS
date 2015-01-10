@@ -19,6 +19,8 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
+from actstream import registry
+
 from acls.utils import apply_default_acls
 from common.settings import TEMPORARY_DIRECTORY
 from converter.api import (convert, get_page_count,
@@ -26,10 +28,9 @@ from converter.api import (convert, get_page_count,
 from converter.exceptions import UnknownFileFormat
 from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
                                 DEFAULT_PAGE_NUMBER)
-from history.api import create_history
 from mimetype.api import get_mimetype
 
-from .events import HISTORY_DOCUMENT_CREATED
+from .events import event_document_create
 from .exceptions import NewDocumentVersionNotAllowed
 from .literals import LANGUAGE_CHOICES
 from .managers import (DocumentManager, DocumentPageTransformationManager,
@@ -119,9 +120,9 @@ class Document(models.Model):
 
             if user:
                 self.add_as_recent_document_for_user(user)
-                create_history(HISTORY_DOCUMENT_CREATED, self, {'user': user})
+                event_document_create.commit(actor=user, target=self)
             else:
-                create_history(HISTORY_DOCUMENT_CREATED, self)
+                event_document_create.commit(target=self)
 
     def get_cached_image_name(self, page, version):
         document_version = DocumentVersion.objects.get(pk=version)
@@ -582,3 +583,5 @@ class RecentDocument(models.Model):
 # Quick hack to break the DocumentPage and DocumentPageTransformation circular dependency
 # Can be remove once the transformations are moved to the converter app
 DocumentPage.add_to_class('get_transformation_list', lambda document_page: DocumentPageTransformation.objects.get_for_document_page_as_list(document_page))
+
+registry.register(Document)
