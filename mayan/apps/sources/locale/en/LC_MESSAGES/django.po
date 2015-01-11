@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:36-0400\n"
+"POT-Creation-Date: 2015-01-11 18:00-0400\n"
 "PO-Revision-Date: 2013-11-20 13:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,36 +18,28 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:41
+#: __init__.py:40
 #, fuzzy
 msgid "Thumbnail"
 msgstr "thumbnail"
 
-#: __init__.py:53
-msgid "Returns a list of all the staging folders and the files they contain."
-msgstr ""
-
-#: forms.py:28
-msgid "Version update"
-msgstr ""
-
-#: forms.py:33
+#: forms.py:29
 msgid "Comment"
 msgstr ""
 
-#: forms.py:48
+#: forms.py:44
 msgid "Expand compressed files"
 msgstr "Expand compressed files"
 
-#: forms.py:49
+#: forms.py:45
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr "Upload a compressed file's contained files as individual documents"
 
-#: forms.py:74
+#: forms.py:70
 msgid "Staging file"
 msgstr "Staging file"
 
-#: forms.py:78
+#: forms.py:74
 msgid "File"
 msgstr "File"
 
@@ -65,7 +57,7 @@ msgstr ""
 msgid "Delete"
 msgstr "delete"
 
-#: links.py:21 models.py:86 views.py:382
+#: links.py:21 models.py:86 views.py:370
 #, fuzzy
 msgid "Sources"
 msgstr "sources"
@@ -138,7 +130,7 @@ msgstr "web form"
 msgid "Staging folder"
 msgstr "staging folder"
 
-#: literals.py:27 models.py:351
+#: literals.py:27 models.py:352
 #, fuzzy
 msgid "Watch folder"
 msgstr "watch folder"
@@ -147,7 +139,7 @@ msgstr "watch folder"
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:29 models.py:332 models.py:333
+#: literals.py:29 models.py:333 models.py:334
 msgid "IMAP email"
 msgstr ""
 
@@ -156,12 +148,12 @@ msgstr ""
 msgid "Title"
 msgstr "title"
 
-#: models.py:42 views.py:391
+#: models.py:42 views.py:379
 #, fuzzy
 msgid "Enabled"
 msgstr "enabled"
 
-#: models.py:85 views.py:536 views.py:565
+#: models.py:85 views.py:524 views.py:553
 #, fuzzy
 msgid "Source"
 msgstr "source"
@@ -174,12 +166,12 @@ msgstr ""
 msgid "Interactive sources"
 msgstr ""
 
-#: models.py:101 models.py:339
+#: models.py:101 models.py:340
 #, fuzzy
 msgid "Folder path"
 msgstr "folder path"
 
-#: models.py:101 models.py:339
+#: models.py:101 models.py:340
 msgid "Server side filesystem path."
 msgstr "Server side filesystem path."
 
@@ -305,72 +297,72 @@ msgstr ""
 msgid "Password"
 msgstr ""
 
-#: models.py:235
+#: models.py:236
 #, python-format
 msgid "attachment-%i"
 msgstr ""
 
-#: models.py:244
+#: models.py:245
 #, fuzzy
 msgid "Email source"
 msgstr "edit source: %s"
 
-#: models.py:245
+#: models.py:246
 #, fuzzy
 msgid "Email sources"
 msgstr "edit source: %s"
 
-#: models.py:251
+#: models.py:252
 msgid "Timeout"
 msgstr ""
 
-#: models.py:289 models.py:290
+#: models.py:290 models.py:291
 msgid "POP email"
 msgstr ""
 
-#: models.py:296
+#: models.py:297
 msgid "Mailbox"
 msgstr ""
 
-#: models.py:296
+#: models.py:297
 msgid "Mail from which to check for messages with attached documents."
 msgstr ""
 
-#: models.py:352
+#: models.py:353
 #, fuzzy
 msgid "Watch folders"
 msgstr "watch folders"
 
-#: models.py:356
+#: models.py:357
 msgid "Enter a valid value."
 msgstr "Enter a valid value."
 
-#: models.py:384 views.py:499
+#: models.py:385 views.py:487
 #, fuzzy
 msgid "Order"
 msgstr "order"
 
-#: models.py:385 views.py:500 views.py:537 views.py:566
+#: models.py:386 views.py:488 views.py:525 views.py:554
 #, fuzzy
 msgid "Transformation"
 msgstr "transformation"
 
-#: models.py:386 views.py:501
+#: models.py:387 views.py:489
 #, fuzzy
 msgid "Arguments"
 msgstr "arguments"
 
-#: models.py:386
+#: models.py:387
 #, python-format
 msgid "Use dictionaries to indentify arguments, example: %s"
 msgstr "Use dictionaries to indentify arguments, example: %s"
 
-#: models.py:396
+#: models.py:397
 #, fuzzy
 msgid "Document source transformation"
 msgstr "document source transformation"
 
-#: models.py:397
+#: models.py:398
 #, fuzzy
 msgid "Document source transformations"
 msgstr "document source transformations"
@@ -395,162 +387,160 @@ msgstr "Edit document sources"
 msgid "View existing document sources"
 msgstr "View existing document sources"
 
-#: views.py:118
-msgid "Upload sources"
-msgstr "Upload sources"
-
-#: views.py:120
+#: views.py:104 wizards.py:34
+#, fuzzy
 msgid ""
-"No interactive document sources have been defined or none have been enabled."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 "No interactive document sources have been defined or none have been enabled."
 
-#: views.py:142
+#: views.py:132
 #, fuzzy
 msgid "Files in staging path"
 msgstr "files in staging path"
 
-#: views.py:227
+#: views.py:216
 msgid "New document queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:252
+#: views.py:241
 #, fuzzy, python-format
 msgid "Upload a local document from source: %s"
 msgstr "upload a local document from source: %s"
 
-#: views.py:260
+#: views.py:249
 msgid "Current document type"
 msgstr "Current document type"
 
-#: views.py:261
+#: views.py:250
 msgid "None"
 msgstr "None"
 
-#: views.py:268
+#: views.py:257
 msgid "Current metadata"
 msgstr "Current metadata"
 
-#: views.py:317
+#: views.py:305
 #, fuzzy
 msgid "New document version queued for uploaded and will be available shortly."
 msgstr "New document version uploaded successfully."
 
-#: views.py:343
+#: views.py:331
 #, fuzzy, python-format
 msgid "Upload a new version from source: %s"
 msgstr "upload a new version from source: %s"
 
-#: views.py:359
+#: views.py:347
 msgid "Staging file delete successfully."
 msgstr "Staging file delete successfully."
 
-#: views.py:361
+#: views.py:349
 #, python-format
 msgid "Staging file delete error; %s."
 msgstr "Staging file delete error; %s."
 
-#: views.py:387
+#: views.py:375
 msgid "Type"
 msgstr ""
 
-#: views.py:392
+#: views.py:380
 msgid "Yes"
 msgstr ""
 
-#: views.py:392
+#: views.py:380
 #, fuzzy
 msgid "No"
 msgstr "None"
 
-#: views.py:414
+#: views.py:402
 msgid "Source edited successfully"
 msgstr "Source edited successfully"
 
-#: views.py:417
+#: views.py:405
 #, python-format
 msgid "Error editing source; %s"
 msgstr "Error editing source; %s"
 
-#: views.py:422
+#: views.py:410
 #, fuzzy, python-format
 msgid "Edit source: %s"
 msgstr "edit source: %s"
 
-#: views.py:441
+#: views.py:429
 #, python-format
 msgid "Source \"%s\" deleted successfully."
 msgstr "Source \"%s\" deleted successfully."
 
-#: views.py:443
+#: views.py:431
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
 msgstr "Error deleting source \"%(source)s\": %(error)s"
 
-#: views.py:449
+#: views.py:437
 #, python-format
 msgid "Are you sure you wish to delete the source: %s?"
 msgstr "Are you sure you wish to delete the source: %s?"
 
-#: views.py:472
+#: views.py:460
 msgid "Source created successfully"
 msgstr "Source created successfully"
 
-#: views.py:475
+#: views.py:463
 #, python-format
 msgid "Error creating source; %s"
 msgstr "Error creating source; %s"
 
-#: views.py:480
+#: views.py:468
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Create new source of type: %s"
 
-#: views.py:494
+#: views.py:482
 #, fuzzy, python-format
 msgid "Transformations for: %s"
 msgstr "transformations for: %s"
 
-#: views.py:523
+#: views.py:511
 msgid "Source transformation edited successfully"
 msgstr "Source transformation edited successfully"
 
-#: views.py:526
+#: views.py:514
 #, python-format
 msgid "Error editing source transformation; %s"
 msgstr "Error editing source transformation; %s"
 
-#: views.py:531
+#: views.py:519
 #, python-format
 msgid "Edit transformation: %s"
 msgstr "Edit transformation: %s"
 
-#: views.py:553
+#: views.py:541
 msgid "Source transformation deleted successfully."
 msgstr "Source transformation deleted successfully."
 
-#: views.py:555
+#: views.py:543
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
 msgstr "Error deleting source transformation; %(error)s"
 
-#: views.py:568
+#: views.py:556
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
 msgstr ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
-#: views.py:589
+#: views.py:577
 msgid "Source transformation created successfully"
 msgstr "Source transformation created successfully"
 
-#: views.py:592
+#: views.py:580
 #, python-format
 msgid "Error creating source transformation; %s"
 msgstr "Error creating source transformation; %s"
 
-#: views.py:600
+#: views.py:588
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr "Create new transformation for source: %s"
@@ -560,17 +550,20 @@ msgstr "Create new transformation for source: %s"
 msgid "Staging file page image"
 msgstr "Staging file"
 
-#: wizards.py:35
+#: wizards.py:44
 msgid "Step 1 of 2: Select document type"
 msgstr ""
 
-#: wizards.py:36
+#: wizards.py:45
 msgid "Step 2 of 2: Enter document metadata"
 msgstr ""
 
-#: wizards.py:62
+#: wizards.py:65
 msgid "Next step"
 msgstr ""
+
+#~ msgid "Upload sources"
+#~ msgstr "Upload sources"
 
 #, fuzzy
 #~ msgid "Server staging folder"

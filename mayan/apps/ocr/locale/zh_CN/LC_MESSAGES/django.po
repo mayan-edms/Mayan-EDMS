@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:35-0400\n"
+"POT-Creation-Date: 2015-01-11 17:59-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:33 links.py:19 permissions.py:7
+#: __init__.py:34 links.py:19 permissions.py:7
 msgid "OCR"
 msgstr "扫描输入"
 
@@ -109,10 +109,6 @@ msgstr "从OCR队列中删除文档"
 #: permissions.py:10
 msgid "Can execute the OCR clean up on all document pages"
 msgstr "可以执行所有文档页的ORC清除"
-
-#: permissions.py:11
-msgid "Can edit an OCR queue properties"
-msgstr "可以编辑OCR队列属性"
 
 #: settings.py:12
 msgid "File path to unpaper program."
@@ -213,6 +209,9 @@ msgstr "文档页面内容清除出错：%s"
 #: parsers/__init__.py:93 parsers/__init__.py:170
 msgid "Text extracted from PDF"
 msgstr "从PDF中提取的文本"
+
+#~ msgid "Can edit an OCR queue properties"
+#~ msgstr "可以编辑OCR队列属性"
 
 #~ msgid "OCR queue statistics"
 #~ msgstr "扫描输入队列统计"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:32-0400\n"
+"POT-Creation-Date: 2015-01-11 17:56-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
@@ -24,41 +24,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: events.py:5
+#: events.py:7
 msgid "Document checked out"
 msgstr "Dokument ausgebucht"
 
-#: events.py:6
-#, python-format
-msgid "Document \"%(document)s\" checked out by %(fullname)s."
-msgstr "Dokument \"%(document)s\" von %(fullname)s ausgebucht."
-
-#: events.py:12
+#: events.py:8
 msgid "Document checked in"
 msgstr "Dokument eingebucht"
 
-#: events.py:13
-#, python-format
-msgid "Document \"%(document)s\" checked in by %(fullname)s."
-msgstr "Dokument \"%(document)s\" von %(fullname)s eingebucht."
-
-#: events.py:19
+#: events.py:9
 msgid "Document automatically checked in"
 msgstr "Dokument automatisch eingebucht"
 
-#: events.py:20
-#, python-format
-msgid "Document \"%(document)s\" automatically checked in."
-msgstr "Dokument \"%(document)s\" automatisch eingebucht."
-
-#: events.py:25
+#: events.py:10
 msgid "Document forcefully checked in"
 msgstr "Dokument zwingend eingebucht"
 
-#: events.py:26
-#, python-format
-msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-msgstr "Dokument \" %(document)s \" zwingend durch %(fullname)s eingebucht."
+#: exceptions.py:16 views.py:82
+msgid "Document already checked out."
+msgstr "Dokument bereits ausgebucht."
 
 #: links.py:16
 msgid "Checkouts"
@@ -103,20 +87,20 @@ msgstr "Ablauf-Datum und -Zeit Ausbuchung"
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Zeitraum für die Ausbuchung des Dokuments (in Minuten)."
 
-#: models.py:30
+#: models.py:32
 #, fuzzy
 msgid "Block new version upload"
 msgstr "Hochladen neuer Versionen blockieren"
 
-#: models.py:30
+#: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Hochladen einer neuen Version dieses Dokuments verweigern."
 
-#: models.py:53 permissions.py:7
+#: models.py:58 permissions.py:7
 msgid "Document checkout"
 msgstr "Dokumentausbuchung"
 
-#: models.py:54
+#: models.py:59
 #, fuzzy
 msgid "Document checkouts"
 msgstr "Dokumentausbuchung"
@@ -193,40 +177,36 @@ msgstr ""
 msgid "Check out details for document: %s"
 msgstr "Ausbuchungsdetails für Dokument %s"
 
-#: views.py:82
+#: views.py:85
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "Fehler beim Versuch das Dokument %s auszubuchen"
 
-#: views.py:84
+#: views.py:87
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Dokument \"%s\" erfolgreich ausgebucht."
-
-#: views.py:87
-msgid "Document already checked out."
-msgstr "Dokument bereits ausgebucht."
 
 #: views.py:95
 #, python-format
 msgid "Check out document: %s"
 msgstr "Dokument ausgebucht: %s"
 
-#: views.py:124
+#: views.py:107 views.py:128
 msgid "Document has not been checked out."
 msgstr "Dokument wurde nicht ausgebucht."
 
-#: views.py:126
+#: views.py:130
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "Fehler beim Versuch das Dokument %s auszubuchen."
 
-#: views.py:128
+#: views.py:132
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Dokument \"%s\" erfolgreich eingebucht."
 
-#: views.py:139
+#: views.py:143
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
@@ -235,7 +215,7 @@ msgstr ""
 "Sie haben dieses Dokument ursprünglich nicht ausgebucht. Sind Sie sicher, "
 "dass Sie die Einbuchung von Dokument %s erzwingen wollen?"
 
-#: views.py:141
+#: views.py:145
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "Sind sie sicher, dass Sie Dokument %s einbuchen wollen?"
@@ -274,6 +254,18 @@ msgid ""
 "and/or minutes."
 msgstr ""
 "Zeitdauer der Ausbuchung des Dokuments (in Tagen, Stunden und/oder Minuten)."
+
+#~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
+#~ msgstr "Dokument \"%(document)s\" von %(fullname)s ausgebucht."
+
+#~ msgid "Document \"%(document)s\" checked in by %(fullname)s."
+#~ msgstr "Dokument \"%(document)s\" von %(fullname)s eingebucht."
+
+#~ msgid "Document \"%(document)s\" automatically checked in."
+#~ msgstr "Dokument \"%(document)s\" automatisch eingebucht."
+
+#~ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
+#~ msgstr "Dokument \" %(document)s \" zwingend durch %(fullname)s eingebucht."
 
 #~ msgid "document"
 #~ msgstr "Dokument"

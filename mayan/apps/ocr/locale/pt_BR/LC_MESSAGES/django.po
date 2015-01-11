@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:35-0400\n"
+"POT-Creation-Date: 2015-01-11 17:59-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: __init__.py:33 links.py:19 permissions.py:7
+#: __init__.py:34 links.py:19 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
@@ -112,10 +112,6 @@ msgstr "Excluir documentos da fila de OCR"
 #: permissions.py:10
 msgid "Can execute the OCR clean up on all document pages"
 msgstr "Pode executar o limpador OCR em todas as páginas do documento"
-
-#: permissions.py:11
-msgid "Can edit an OCR queue properties"
-msgstr "Pode editar uma lista de propriedades OCR"
 
 #: settings.py:12
 msgid "File path to unpaper program."
@@ -219,6 +215,9 @@ msgstr "Erro ao limpar o conteúdo das páginas do documento: %s"
 #: parsers/__init__.py:93 parsers/__init__.py:170
 msgid "Text extracted from PDF"
 msgstr "Texto extraído de PDF"
+
+#~ msgid "Can edit an OCR queue properties"
+#~ msgstr "Pode editar uma lista de propriedades OCR"
 
 #~ msgid "Automatically queue newly created documents for OCR."
 #~ msgstr "Listar automaticamente os novos documentos criados para OCR "

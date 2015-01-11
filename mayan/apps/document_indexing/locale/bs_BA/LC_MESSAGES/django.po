@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:33-0400\n"
+"POT-Creation-Date: 2015-01-11 17:57-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -21,68 +21,20 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:46 links.py:23 links.py:24 links.py:38 links.py:40 models.py:66
-#: views.py:40 views.py:298
+#: __init__.py:39 links.py:23 links.py:24 links.py:38 links.py:40 models.py:60
+#: views.py:38 views.py:296
 msgid "Indexes"
 msgstr "Indeksi"
 
-#: __init__.py:60
-msgid "Returns a list of all the indexes."
-msgstr ""
-
-#: api.py:76
-#, python-format
-msgid "Maximum suffix (%s) count reached."
-msgstr "Maksimalni sufiks (%s) broj dostignut."
-
-#: api.py:91
-#, python-format
+#: api.py:50
+#, fuzzy, python-format
 msgid ""
-"Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr ""
-"Greška u izrazu update-a indeksiranja dokumenta: %(expression)s; "
+"Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-
-#: api.py:102 api.py:117
-#, python-format
-msgid ""
-"Error updating document index, expression: %(expression)s; %(exception)s"
 msgstr ""
 "Greška kod update-a indeksa dokumenta, izraz: %(expression)s; %(exception)s"
 
-#: api.py:162
-#, python-format
-msgid "Unable to delete document indexing node; %s"
-msgstr "Nije moguće obrisati nod indeksiranja dokumenta; %s"
-
-#: filesystem.py:51
-#, python-format
-msgid "Unable to create indexing directory; %s"
-msgstr "Nije moguće kreirati direktorij indeksa; %s"
-
-#: filesystem.py:69
-#, python-format
-msgid ""
-"Unable to create symbolic link, file exists and could not be deleted: "
-"%(filepath)s; %(exception)s"
-msgstr ""
-
-#: filesystem.py:71
-#, python-format
-msgid "Unable to create symbolic link: %(filepath)s; %(exception)s"
-msgstr ""
-
-#: filesystem.py:84
-#, python-format
-msgid "Unable to delete document symbolic link; %s"
-msgstr "Nije moguće obrisati simbolički link dokumenta; %s"
-
-#: filesystem.py:96
-#, python-format
-msgid "Unable to delete indexing directory; %s"
-msgstr "Nije moguće obrisati direktorij indeksiranja; %s"
-
-#: links.py:25 views.py:77
+#: links.py:25 views.py:75
 msgid "Create index"
 msgstr ""
 
@@ -98,7 +50,7 @@ msgstr ""
 msgid "Tree template"
 msgstr ""
 
-#: links.py:29 models.py:21 views.py:302
+#: links.py:29 models.py:19 views.py:300
 msgid "Document types"
 msgstr ""
 
@@ -122,60 +74,55 @@ msgstr ""
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Briše i nanovo kreira indekse svih dokumenata."
 
-#: models.py:14
-#, python-format
-msgid "Available functions: %s"
-msgstr "Dostupne funkcije: %s"
-
-#: models.py:18 views.py:44
+#: models.py:15 views.py:42
 msgid "Name"
 msgstr ""
 
-#: models.py:18
+#: models.py:15
 msgid "Internal name used to reference this index."
 msgstr "Interno ime upotrebljeno za referenciranje ovog noda."
 
-#: models.py:19 views.py:45
+#: models.py:17 views.py:43
 msgid "Title"
 msgstr ""
 
-#: models.py:19
+#: models.py:17
 msgid "The name that will be visible to users."
 msgstr "Ime koje će biti vidljivo korisnicima."
 
-#: models.py:20 models.py:74 views.py:46 views.py:162
+#: models.py:18 models.py:67 views.py:44 views.py:160
 msgid "Enabled"
 msgstr ""
 
-#: models.py:20
+#: models.py:18
 msgid "Causes this index to be visible and updated when document data changes."
 msgstr ""
 "Uzrokuje da će ovaj indeks biti vidljiv i update-ovan kad se promjene podaci "
 "dokumenta."
 
-#: models.py:65 models.py:71 views.py:245 views.py:283
+#: models.py:59 models.py:65 views.py:243 views.py:281
 msgid "Index"
 msgstr ""
 
-#: models.py:72
+#: models.py:66
 msgid "Indexing expression"
 msgstr ""
 
-#: models.py:72
+#: models.py:66
 msgid "Enter a python string expression to be evaluated."
 msgstr "Unesite Python string izraz za evaluaciju."
 
-#: models.py:74
+#: models.py:67
 msgid "Causes this node to be visible and updated when document data changes."
 msgstr ""
 "Uzrokuje da će ovaj nod biti vidljiv i update-ovan kad se promjene podaci "
 "dokumenta."
 
-#: models.py:75
+#: models.py:68
 msgid "Link documents"
 msgstr ""
 
-#: models.py:75
+#: models.py:68
 msgid ""
 "Check this option to have this node act as a container for documents and not "
 "as a parent for further nodes."
@@ -183,48 +130,32 @@ msgstr ""
 "Označite ovu opciju da ovaj nod služi kao kontejner za dokumente a ne kao "
 "parent za buduće nodove."
 
-#: models.py:81
+#: models.py:74
 msgid "Index node template"
 msgstr ""
 
-#: models.py:82
+#: models.py:75
 msgid "Indexes node template"
 msgstr ""
 
-#: models.py:87
+#: models.py:80
 msgid "Index template node"
 msgstr ""
 
-#: models.py:88
+#: models.py:81
 msgid "Value"
 msgstr ""
 
-#: models.py:89
+#: models.py:82
 msgid "Documents"
 msgstr ""
 
-#: models.py:102
+#: models.py:100
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:103
+#: models.py:101
 msgid "Indexes node instances"
-msgstr ""
-
-#: models.py:107
-msgid "Index instance"
-msgstr ""
-
-#: models.py:108
-msgid "Document"
-msgstr ""
-
-#: models.py:115
-msgid "Document rename count"
-msgstr ""
-
-#: models.py:116
-msgid "Documents rename count"
 msgstr ""
 
 #: permissions.py:7
@@ -255,132 +186,120 @@ msgstr "Pregledaj indekse dokumenata"
 msgid "Rebuild document indexes"
 msgstr " Obnovi indekse dokumenata"
 
-#: settings.py:20
-msgid ""
-"A dictionary that maps the index name and where on the filesystem that index "
-"will be mirrored."
-msgstr ""
-"A rječnik koji mapira ime indeksa i gdje na datotečnom sistemu će taj indeks "
-"biti preslikan."
-
-#: views.py:71
+#: views.py:69
 msgid "Index created successfully."
 msgstr "Indeks uspješno kreiran."
 
-#: views.py:94
+#: views.py:92
 msgid "Index edited successfully"
 msgstr "Indeks uspješno izmjenjen"
 
-#: views.py:100
+#: views.py:98
 #, python-format
 msgid "Edit index: %s"
 msgstr ""
 
-#: views.py:123
+#: views.py:121
 #, python-format
 msgid "Index: %s deleted successfully."
 msgstr "Indeks: %s uspješno obrisan."
 
-#: views.py:125
+#: views.py:123
 #, python-format
 msgid "Index: %(index)s delete error: %(error)s"
 msgstr "Indeks: %(index)s greška brisanja: %(error)s"
 
-#: views.py:136
+#: views.py:134
 #, python-format
 msgid "Are you sure you with to delete the index: %s?"
 msgstr "Jeste li sigurni da želite izbrisati indeks: %s?"
 
-#: views.py:158
+#: views.py:156
 #, python-format
 msgid "Tree template nodes for index: %s"
 msgstr ""
 
-#: views.py:161
+#: views.py:159
 msgid "Level"
 msgstr ""
 
-#: views.py:163
+#: views.py:161
 msgid "Has document links?"
 msgstr ""
 
-#: views.py:185
+#: views.py:183
 #, python-format
 msgid "Document types not in index: %s"
 msgstr ""
 
-#: views.py:186
+#: views.py:184
 #, python-format
 msgid "Document types for index: %s"
 msgstr ""
 
-#: views.py:208
+#: views.py:206
 msgid "Index template node created successfully."
 msgstr "Nod predložaka indeksa uspješno kreiran."
 
-#: views.py:214
+#: views.py:212
 msgid "Create child node"
 msgstr ""
 
-#: views.py:233
+#: views.py:231
 msgid "Index template node edited successfully"
 msgstr "Nod predložaka indeksa uspješno izmjenjen."
 
-#: views.py:239
+#: views.py:237
 #, python-format
 msgid "Edit index template node: %s"
 msgstr ""
 
-#: views.py:246 views.py:284 views.py:351
+#: views.py:244 views.py:282 views.py:349
 msgid "Node"
 msgstr ""
 
-#: views.py:267
+#: views.py:265
 #, python-format
 msgid "Node: %s deleted successfully."
 msgstr "Nod: %s uspješno obrisan."
 
-#: views.py:269
+#: views.py:267
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
 msgstr "Nod: %(node)s greška brisanja: %(error)s"
 
-#: views.py:278
+#: views.py:276
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
 msgstr "Jeste li sigurni da želite izbrisati nod predložaka ineksa:% s?"
 
-#: views.py:301
+#: views.py:299
 msgid "Nodes"
 msgstr ""
 
-#: views.py:333
+#: views.py:331
 #, python-format
 msgid "Contents for index: %s"
 msgstr ""
 
-#: views.py:355
+#: views.py:353
 msgid "Items"
 msgstr ""
 
-#: views.py:380
+#: views.py:378
 msgid "Are you sure you wish to rebuild all indexes?"
 msgstr "Jeste li sigurni da želite obnoviti sve indekse?"
 
-#: views.py:381
+#: views.py:379
 msgid "On large databases this operation may take some time to execute."
 msgstr "Na velikim bazama podataka ove operacije mogu potrajati neko vrijeme."
 
-#: views.py:386
-msgid "Index rebuild completed successfully."
+#: views.py:383
+#, fuzzy
+msgid "Index rebuild queued successfully."
 msgstr "Obnova indeksa uspješno završena."
 
-#: views.py:393
-#, python-format
-msgid "Index rebuild error: %s"
-msgstr "Greška obnove indeksa: %s"
-
-#: views.py:416
+#: views.py:405
 #, python-format
 msgid "Indexes containing: %s"
 msgstr ""
@@ -388,6 +307,41 @@ msgstr ""
 #: widgets.py:85
 msgid "Root"
 msgstr ""
+
+#~ msgid "Maximum suffix (%s) count reached."
+#~ msgstr "Maksimalni sufiks (%s) broj dostignut."
+
+#~ msgid ""
+#~ "Error in document indexing update expression: %(expression)s; "
+#~ "%(exception)s"
+#~ msgstr ""
+#~ "Greška u izrazu update-a indeksiranja dokumenta: %(expression)s; "
+#~ "%(exception)s"
+
+#~ msgid "Unable to delete document indexing node; %s"
+#~ msgstr "Nije moguće obrisati nod indeksiranja dokumenta; %s"
+
+#~ msgid "Unable to create indexing directory; %s"
+#~ msgstr "Nije moguće kreirati direktorij indeksa; %s"
+
+#~ msgid "Unable to delete document symbolic link; %s"
+#~ msgstr "Nije moguće obrisati simbolički link dokumenta; %s"
+
+#~ msgid "Unable to delete indexing directory; %s"
+#~ msgstr "Nije moguće obrisati direktorij indeksiranja; %s"
+
+#~ msgid "Available functions: %s"
+#~ msgstr "Dostupne funkcije: %s"
+
+#~ msgid ""
+#~ "A dictionary that maps the index name and where on the filesystem that "
+#~ "index will be mirrored."
+#~ msgstr ""
+#~ "A rječnik koji mapira ime indeksa i gdje na datotečnom sistemu će taj "
+#~ "indeks biti preslikan."
+
+#~ msgid "Index rebuild error: %s"
+#~ msgstr "Greška obnove indeksa: %s"
 
 #~ msgid "document indexes"
 #~ msgstr "indeksi dokumenata"

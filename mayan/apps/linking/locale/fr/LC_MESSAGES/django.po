@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:34-0400\n"
+"POT-Creation-Date: 2015-01-11 17:58-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,48 +21,44 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: forms.py:49
-msgid "Pages"
-msgstr "Pages"
-
-#: forms.py:55
-msgid "Select"
-msgstr "Sélectionner"
-
-#: forms.py:62
-msgid "Click on the image for full size view of the first page."
-msgstr "Cliquer l'image pour visualiser la première page en taille réelle"
-
-#: links.py:12
-msgid "Smart links actions"
+#: forms.py:25 models.py:66
+msgid "Foreign document attribute"
 msgstr ""
 
-#: links.py:13 links.py:15 links.py:16 models.py:22 permissions.py:7
-#: views.py:132
+#: links.py:13 links.py:14 links.py:20 models.py:60 permissions.py:7
+#: views.py:112
 msgid "Smart links"
 msgstr "Liens intelligents"
 
-#: links.py:17 views.py:159
+#: links.py:15 views.py:139
 msgid "Create new smart link"
 msgstr "Céer un nouveau lien intelligent"
 
-#: links.py:18 links.py:23
+#: links.py:16 links.py:25
 msgid "Edit"
 msgstr ""
 
-#: links.py:19 links.py:24
+#: links.py:17 links.py:26
 msgid "Delete"
 msgstr ""
 
-#: links.py:21
+#: links.py:18 models.py:19
+msgid "Document types"
+msgstr ""
+
+#: links.py:21 views.py:85
+msgid "Documents"
+msgstr ""
+
+#: links.py:23
 msgid "Conditions"
 msgstr ""
 
-#: links.py:22
+#: links.py:24
 msgid "Create condition"
 msgstr ""
 
-#: links.py:26
+#: links.py:28
 msgid "ACLs"
 msgstr "ACLs"
 
@@ -134,69 +130,70 @@ msgstr "est une expression régulière"
 msgid "is in regular expression (case insensitive)"
 msgstr "est une expression régulière (insensible à la casse)"
 
-#: models.py:11
+#: models.py:16
 msgid "Title"
 msgstr ""
 
-#: models.py:12 views.py:135
+#: models.py:17 views.py:115
 msgid "Dynamic title"
 msgstr ""
 
-#: models.py:12 models.py:30
+#: models.py:17
 msgid ""
-"This expression will be evaluated against the current selected document.  "
-"The document metadata is available as variables `metadata` and document "
-"properties under the variable `document`."
+"This expression will be evaluated against the current selected document."
 msgstr ""
-"Cette expression sera évaluée sur le document sélectionné.  Les métadonnées "
-"du document sont accessibles en tant que variables `metadata` et les "
-"propriétés d'un document sous la variable `document`."
 
-#: models.py:13 models.py:32 views.py:136 views.py:230
+#: models.py:18 models.py:70 views.py:116 views.py:232
 msgid "Enabled"
 msgstr ""
 
-#: models.py:21 models.py:26 views.py:294 views.py:328
+#: models.py:31
+#, python-format
+msgid "Error generating dynamic title; %s"
+msgstr ""
+
+#: models.py:37
+msgid "This smart link is not allowed for the selected document's type."
+msgstr ""
+
+#: models.py:59 models.py:64 views.py:294 views.py:328
 msgid "Smart link"
 msgstr ""
 
-#: models.py:27
+#: models.py:65
 msgid "The inclusion is ignored for the first item."
 msgstr "Ignorer l'inclusion sur le premier élément"
 
-#: models.py:28
-msgid "Foreign document data"
+#: models.py:66
+msgid "This represents the metadata of all other documents."
 msgstr ""
 
-#: models.py:28
-msgid ""
-"This represents the metadata of all other documents.  Available objects: "
-"`document.<attribute>` and `metadata.<metadata_type_name>`."
-msgstr ""
-"Ceci représente les métadonnées de tous les autres documents.  Eléments "
-"disponibles: `document.<attribute>` et `metadata.<metadata_type_name>`."
-
-#: models.py:30
+#: models.py:68
 msgid "Expression"
 msgstr ""
 
-#: models.py:31
+#: models.py:68
+#, fuzzy
+msgid "This expression will be evaluated against the current document."
+msgstr "Aucun lien intelligent n'est défini sur le document courant."
+
+#: models.py:69
 msgid "Negated"
 msgstr ""
 
-#: models.py:31
+#: models.py:69
 msgid "Inverts the logic of the operator."
 msgstr "Inverser l'opérateur logique"
 
-#: models.py:35
+#: models.py:73
 msgid "not"
 msgstr "ne pas"
 
-#: models.py:38
+#: models.py:76
 msgid "Link condition"
 msgstr ""
 
-#: models.py:39
+#: models.py:77
 msgid "Link conditions"
 msgstr ""
 
@@ -216,83 +213,80 @@ msgstr "Supprimer les liens intelligents"
 msgid "Edit smart links"
 msgstr "Modifier les liens intelligents"
 
-#: settings.py:11
-msgid "Show smart link that don't return any documents."
-msgstr ""
-"Afficher les liens intelligents dont le requêtage ne renvoie aucun document"
-
-#: views.py:40
-msgid "No action selected."
-msgstr "Aucune action sélectionnée."
-
-#: views.py:59
-#, python-format
-msgid "Documents in smart link: %(group)s"
-msgstr ""
-
-#: views.py:75
+#: views.py:48
 #, python-format
 msgid "Smart link query error: %s"
 msgstr "Erreur de requête sur lien intelligent:%s"
 
-#: views.py:97
-#, python-format
-msgid "Smart links (%s)"
+#: views.py:52
+#, fuzzy, python-format
+msgid "Documents in smart link: %s"
+msgstr "Modifier le lien intelligent:%s"
+
+#: views.py:67
+#, fuzzy, python-format
+msgid "Error calculating smart link for: %(document)s; %(exception)s."
+msgstr ""
+"Erreur lors de la suppression du lien intelligent: %(smart_link)s; "
+"%(exception)s."
+
+#: views.py:82
+#, fuzzy, python-format
+msgid "Smart links for: %s"
+msgstr "Erreur de requête sur lien intelligent:%s"
+
+#: views.py:84
+msgid "Indentifier"
 msgstr ""
 
-#: views.py:111
-#, fuzzy
-msgid "Smart links (0)"
-msgstr "Liens intelligents"
-
-#: views.py:112
-#, fuzzy
-msgid "There are no defined smart links for the current document."
-msgstr "Aucun lien intelligent n'est défini sur le document courant."
-
-#: views.py:152
+#: views.py:132
 #, python-format
 msgid "Smart link: %s created successfully."
 msgstr "Création du lien intelligent:%s avec succès."
 
-#: views.py:175
+#: views.py:155
 #, python-format
 msgid "Smart link: %s edited successfully."
 msgstr "Lien intelligent:%s modifié avec succès."
 
-#: views.py:183
+#: views.py:163
 #, python-format
 msgid "Edit smart link: %s"
 msgstr "Modifier le lien intelligent:%s"
 
-#: views.py:201
+#: views.py:181
 #, python-format
 msgid "Smart link: %s deleted successfully."
 msgstr "Lien intelligent:%s supprimé avec succès"
 
-#: views.py:203
+#: views.py:183
 #, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
 msgstr ""
 "Erreur lors de la suppression du lien intelligent: %(smart_link)s; "
 "%(exception)s."
 
-#: views.py:212
+#: views.py:192
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
 msgstr "Êtes vous certain de vouloir supprimer le lien intelligent:%s?"
 
-#: views.py:227
+#: views.py:214
+#, fuzzy, python-format
+msgid "Document type for which to enable smart link: %s"
+msgstr "Êtes vous certain de vouloir supprimer le lien intelligent:%s?"
+
+#: views.py:229
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr ""
 
-#: views.py:252
+#: views.py:254
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "Condition sur le lien intelligent:\"%s\" créé avec succès."
 
-#: views.py:259
+#: views.py:261
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Ajouter une nouvelle condition au lien intelligent:\"%s\""
@@ -329,6 +323,43 @@ msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr ""
 "Êtes vous certain de vouloir supprimer la condition sur le lien intelligent:"
 "\"%s\"?"
+
+#~ msgid "Pages"
+#~ msgstr "Pages"
+
+#~ msgid "Select"
+#~ msgstr "Sélectionner"
+
+#~ msgid "Click on the image for full size view of the first page."
+#~ msgstr "Cliquer l'image pour visualiser la première page en taille réelle"
+
+#~ msgid ""
+#~ "This expression will be evaluated against the current selected document.  "
+#~ "The document metadata is available as variables `metadata` and document "
+#~ "properties under the variable `document`."
+#~ msgstr ""
+#~ "Cette expression sera évaluée sur le document sélectionné.  Les "
+#~ "métadonnées du document sont accessibles en tant que variables `metadata` "
+#~ "et les propriétés d'un document sous la variable `document`."
+
+#~ msgid ""
+#~ "This represents the metadata of all other documents.  Available objects: "
+#~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
+#~ msgstr ""
+#~ "Ceci représente les métadonnées de tous les autres documents.  Eléments "
+#~ "disponibles: `document.<attribute>` et `metadata.<metadata_type_name>`."
+
+#~ msgid "Show smart link that don't return any documents."
+#~ msgstr ""
+#~ "Afficher les liens intelligents dont le requêtage ne renvoie aucun "
+#~ "document"
+
+#~ msgid "No action selected."
+#~ msgstr "Aucune action sélectionnée."
+
+#, fuzzy
+#~ msgid "Smart links (0)"
+#~ msgstr "Liens intelligents"
 
 #~ msgid "smart links"
 #~ msgstr "smart links"

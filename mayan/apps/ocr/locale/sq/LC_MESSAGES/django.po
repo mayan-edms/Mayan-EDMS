@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:35-0400\n"
+"POT-Creation-Date: 2015-01-11 17:59-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Albanian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:33 links.py:19 permissions.py:7
+#: __init__.py:34 links.py:19 permissions.py:7
 msgid "OCR"
 msgstr ""
 
@@ -107,10 +107,6 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Can execute the OCR clean up on all document pages"
-msgstr ""
-
-#: permissions.py:11
-msgid "Can edit an OCR queue properties"
 msgstr ""
 
 #: settings.py:12

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:32-0400\n"
+"POT-Creation-Date: 2015-01-11 17:56-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,41 +21,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: events.py:5
+#: events.py:7
 msgid "Document checked out"
 msgstr "سند خارج شد."
 
-#: events.py:6
-#, python-format
-msgid "Document \"%(document)s\" checked out by %(fullname)s."
-msgstr "سند \"%(document)s\"  بوسیله %(fullname)s خارج شده است."
-
-#: events.py:12
+#: events.py:8
 msgid "Document checked in"
 msgstr "سند وارد شد."
 
-#: events.py:13
-#, python-format
-msgid "Document \"%(document)s\" checked in by %(fullname)s."
-msgstr "سند \"%(document)s\"  بوسیله %(fullname)s وارد شد."
-
-#: events.py:19
+#: events.py:9
 msgid "Document automatically checked in"
 msgstr "سند بصورت اتوماتیک وارد شده است."
 
-#: events.py:20
-#, python-format
-msgid "Document \"%(document)s\" automatically checked in."
-msgstr "سند \"%(document)s\" بصورت اتوماتیک وارد شده است."
-
-#: events.py:25
+#: events.py:10
 msgid "Document forcefully checked in"
 msgstr "سند طبق دستور وارد شد."
 
-#: events.py:26
-#, python-format
-msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-msgstr "سند \"%(document)s\" بوسیله %(fullname)s بالاجبار وارد شد."
+#: exceptions.py:16 views.py:82
+msgid "Document already checked out."
+msgstr "سند در حال حاضر خارج و یا checked out شده است."
 
 #: links.py:16
 msgid "Checkouts"
@@ -100,20 +84,20 @@ msgstr "انقضای مهلت خروج و یا Check out تاریخ و زمان"
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "مدت زمان مجاز برای خارج نگه داشتن سند به دقیقه."
 
-#: models.py:30
+#: models.py:32
 #, fuzzy
 msgid "Block new version upload"
 msgstr "جلوگیری از بارگذاری نسخه جدید"
 
-#: models.py:30
+#: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "از بارگذاری نسخه جدید این سند جلوگیری کنید."
 
-#: models.py:53 permissions.py:7
+#: models.py:58 permissions.py:7
 msgid "Document checkout"
 msgstr "خروج و یا checkout سند"
 
-#: models.py:54
+#: models.py:59
 #, fuzzy
 msgid "Document checkouts"
 msgstr "خروج و یا checkout سند"
@@ -190,40 +174,36 @@ msgstr ""
 msgid "Check out details for document: %s"
 msgstr "جزئیات خروج و یا Checkout سند: %s"
 
-#: views.py:82
+#: views.py:85
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "خطا در زمان خارج ویا checkout کردن سند: %s "
 
-#: views.py:84
+#: views.py:87
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "سند \"%s\" بالاجبار خارج ویا checked out شد."
-
-#: views.py:87
-msgid "Document already checked out."
-msgstr "سند در حال حاضر خارج و یا checked out شده است."
 
 #: views.py:95
 #, python-format
 msgid "Check out document: %s"
 msgstr "خروج و یا check out سند: %s"
 
-#: views.py:124
+#: views.py:107 views.py:128
 msgid "Document has not been checked out."
 msgstr "سند خارج و یا checked out نشده است."
 
-#: views.py:126
+#: views.py:130
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "خطا در زمان خروج و یا checkout سند: %s"
 
-#: views.py:128
+#: views.py:132
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "سند \"%s\" با موفقیت وارد و یا  checked in شد."
 
-#: views.py:139
+#: views.py:143
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
@@ -232,7 +212,7 @@ msgstr ""
 "شما خارج و یا checkout کننده اصلی این سند : %s نیستید. آیا از ورود و یا "
 "check in اجباری این سند مطمئن هستید؟"
 
-#: views.py:141
+#: views.py:145
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "آیا از ورود ویا check in این سند: %s مطمئن هستید؟"
@@ -272,6 +252,18 @@ msgid ""
 msgstr ""
 "مدت زمان مجاز جهت نگهداری در وضعیت خروج و یا checked out به روز، ساعت و "
 "دقیقه."
+
+#~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
+#~ msgstr "سند \"%(document)s\"  بوسیله %(fullname)s خارج شده است."
+
+#~ msgid "Document \"%(document)s\" checked in by %(fullname)s."
+#~ msgstr "سند \"%(document)s\"  بوسیله %(fullname)s وارد شد."
+
+#~ msgid "Document \"%(document)s\" automatically checked in."
+#~ msgstr "سند \"%(document)s\" بصورت اتوماتیک وارد شده است."
+
+#~ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
+#~ msgstr "سند \"%(document)s\" بوسیله %(fullname)s بالاجبار وارد شد."
 
 #~ msgid "document"
 #~ msgstr "سند"

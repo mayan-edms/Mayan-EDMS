@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:33-0400\n"
+"POT-Creation-Date: 2015-01-11 17:58-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,24 +18,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:18
-msgid "Returns a list of all recent searches."
-msgstr ""
-
-#: __init__.py:19
-msgid "Perform a search operaton."
-msgstr ""
-
 #: forms.py:8
 msgid "Search terms"
 msgstr "Search terms"
 
-#: links.py:3 links.py:6 views.py:84 views.py:90 views.py:92
+#: links.py:3 views.py:66 views.py:72 views.py:74
 #: templatetags/search_tags.py:19 templatetags/search_tags.py:20
 msgid "Search"
 msgstr "Search"
 
-#: links.py:4 views.py:80
+#: links.py:4 views.py:62
 #, fuzzy
 msgid "Advanced search"
 msgstr "advanced search"
@@ -45,21 +37,21 @@ msgstr "advanced search"
 msgid "Search again"
 msgstr "search again"
 
-#: models.py:20
+#: models.py:19
 msgid "User"
 msgstr ""
 
-#: models.py:26
+#: models.py:25
 #, fuzzy
 msgid "Query"
 msgstr "query"
 
-#: models.py:27
+#: models.py:26
 #, fuzzy
 msgid "Datetime created"
 msgstr "datetime created"
 
-#: models.py:28
+#: models.py:27
 msgid "Hits"
 msgstr ""
 
@@ -81,12 +73,12 @@ msgstr "Maximum amount search hits to fetch and display."
 msgid "Maximum number of search queries to remember per user."
 msgstr "Maximum number of search queries to remember per user."
 
-#: views.py:56
+#: views.py:38
 #, fuzzy
 msgid "Results"
 msgstr "results"
 
-#: views.py:66
+#: views.py:46
 msgid "Type"
 msgstr ""
 

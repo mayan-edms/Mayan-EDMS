@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:35-0400\n"
+"POT-Creation-Date: 2015-01-11 17:59-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: __init__.py:33 links.py:19 permissions.py:7
+#: __init__.py:34 links.py:19 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
@@ -112,10 +112,6 @@ msgstr "Delete documents from OCR queue"
 #: permissions.py:10
 msgid "Can execute the OCR clean up on all document pages"
 msgstr "Can execute the OCR clean up on all document pages"
-
-#: permissions.py:11
-msgid "Can edit an OCR queue properties"
-msgstr "Can edit an OCR queue properties"
 
 #: settings.py:12
 msgid "File path to unpaper program."
@@ -217,6 +213,9 @@ msgstr "Document pages content clean up error: %s"
 #: parsers/__init__.py:93 parsers/__init__.py:170
 msgid "Text extracted from PDF"
 msgstr "Text extracted from PDF"
+
+#~ msgid "Can edit an OCR queue properties"
+#~ msgstr "Can edit an OCR queue properties"
 
 #~ msgid "Automatically queue newly created documents for OCR."
 #~ msgstr "Automatically queue newly created documents for OCR."

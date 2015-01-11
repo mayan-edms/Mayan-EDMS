@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -10,35 +10,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:32-0400\n"
+"POT-Creation-Date: 2015-01-11 17:57-0400\n"
 "PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: forms.py:97
+#: classes.py:38
+msgid "Available attributes: "
+msgstr ""
+
+#: forms.py:98
 msgid "Selection"
 msgstr "انتخاب"
 
-#: forms.py:128
+#: forms.py:143
 msgid "Email"
 msgstr "پست الکترونیک"
 
-#: forms.py:131 models.py:33
+#: forms.py:146 models.py:36
 msgid "Password"
 msgstr "رمزعبور"
 
-#: forms.py:134
+#: forms.py:149
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr "لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور case-sensitive است."
+msgstr ""
+"لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور case-"
+"sensitive است."
 
-#: forms.py:136
+#: forms.py:151
 msgid "This account is inactive."
 msgstr "اکانت غیرفعال است."
 
@@ -58,52 +65,82 @@ msgstr "ویرایش جزئیات"
 msgid "About"
 msgstr "درباره"
 
-#: links.py:15 views.py:230
+#: links.py:15 views.py:278
 msgid "License"
 msgstr "لیسانس"
 
-#: models.py:25 models.py:28
+#: links.py:17
+msgid "Locale profile"
+msgstr ""
+
+#: links.py:18
+msgid "Edit locale profile"
+msgstr ""
+
+#: models.py:28 models.py:31
 msgid "Anonymous user"
 msgstr "کاربر ناشناس anonymous"
 
-#: models.py:32
+#: models.py:35
 msgid "Account"
 msgstr "حساب"
 
-#: models.py:34
+#: models.py:37
 msgid "Password hash"
 msgstr "هش کلمه عبور"
 
-#: models.py:37
+#: models.py:40
 msgid "Auto admin properties"
 msgstr "خصوصیات مدبر خودکار"
 
-#: models.py:41
+#: models.py:44
 msgid "File"
 msgstr ""
 
-#: models.py:42
+#: models.py:45
 msgid "Filename"
 msgstr ""
 
-#: models.py:43
+#: models.py:46
 msgid "Date time"
 msgstr ""
 
-#: models.py:46
+#: models.py:49
 msgid "Shared uploaded file"
 msgstr ""
 
-#: models.py:47
+#: models.py:50
 msgid "Shared uploaded files"
+msgstr ""
+
+#: models.py:61
+msgid "User"
+msgstr ""
+
+#: models.py:63
+msgid "Timezone"
+msgstr ""
+
+#: models.py:64
+msgid "Language"
+msgstr ""
+
+#: models.py:70
+msgid "User locale profile"
+msgstr ""
+
+#: models.py:71
+msgid "User locale profiles"
 msgstr ""
 
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
-"tempfile.mkdtemp()"
-msgstr "دایرکتوری موقت جهت نگهداری فایلهای موقت، اگر دایرکتوری مشخص نگردد یکی بوسیله tempfile.mkdtemp() ساخته خواهد شد."
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+msgstr ""
+"دایرکتوری موقت جهت نگهداری فایلهای موقت، اگر دایرکتوری مشخص نگردد یکی بوسیله "
+"tempfile.mkdtemp() ساخته خواهد شد."
 
 #: settings.py:48
 msgid ""
@@ -119,111 +156,126 @@ msgstr "اجازه دادن به کاربران اعتبار سنجی نشده،
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
-#: utils.py:116
+#: utils.py:114
 msgid "Function found"
 msgstr "فانکشن و یا تابع پیدا شد."
 
-#: views.py:42
+#: views.py:43
 msgid "No action selected."
 msgstr "هیچ عملیاتی action انتخاب نشده است."
 
-#: views.py:46
+#: views.py:47
 msgid "Must select at least one item."
 msgstr "حداقل یک مورد انتخاب شود."
 
-#: views.py:98
+#: views.py:99
 #, python-format
 msgid "Unable to remove %(selection)s."
 msgstr ""
 
-#: views.py:123
+#: views.py:124
 #, python-format
 msgid "Unable to add %(selection)s."
 msgstr ""
 
-#: views.py:136
+#: views.py:137
 msgid "Add"
 msgstr "افزودن"
 
-#: views.py:147
+#: views.py:148
 msgid "Remove"
 msgstr "حذف"
 
-#: views.py:170
+#: views.py:171
 msgid "Current user details"
 msgstr ""
 
-#: views.py:187
+#: views.py:186
+#, fuzzy
+msgid "Current user locale profile details"
+msgstr "یرایش جزئیات کاربر کنونی"
+
+#: views.py:203
 msgid "E-mail conflict, another user has that same email."
 msgstr "این ایمیل با ایمیل کاربر دیگری یکسان است."
 
-#: views.py:190
+#: views.py:206
 msgid "Current user's details updated."
 msgstr "کزئیات کاربر فعلی بروزرسانی شد."
 
-#: views.py:199
+#: views.py:215
 msgid "Edit current user details"
 msgstr "یرایش جزئیات کاربر کنونی"
 
-#: views.py:239
+#: views.py:238
+#, fuzzy
+msgid "Current user's locale profile details updated."
+msgstr "کزئیات کاربر فعلی بروزرسانی شد."
+
+#: views.py:247
+#, fuzzy
+msgid "Edit current user locale profile details"
+msgstr "یرایش جزئیات کاربر کنونی"
+
+#: views.py:287
 msgid "Current user password change"
 msgstr "تغییر کلمه عبور کاربر"
 
-#: views.py:254
+#: views.py:302
 msgid "Your password has been successfully changed."
 msgstr "کلمه عبور شما با موفقیت تغییر کرد."
 
-#: views.py:308
+#: views.py:356
 #, python-format
 msgid "Error saving %s details."
 msgstr "خطا در ثبت چزئیات %s."
 
-#: views.py:310
+#: views.py:358
 msgid "Error saving details."
 msgstr "خطا در ثبت چزئیات ."
 
-#: views.py:318
+#: views.py:366
 #, python-format
 msgid "%s details saved successfully."
 msgstr "جزئیات %s با موفقیت ثبت شد."
 
-#: views.py:320
+#: views.py:368
 msgid "Details saved successfully."
 msgstr "جزییات با موفقیت ثبت شد."
 
-#: views.py:332
+#: views.py:380
 #, python-format
 msgid "Error creating new %s."
 msgstr "خطا در زمان ایجاد %s."
 
-#: views.py:334
+#: views.py:382
 msgid "Error creating object."
 msgstr "خطا در زمان ایجاد شی"
 
-#: views.py:341
+#: views.py:389
 #, python-format
 msgid "%s created successfully."
 msgstr "%s با موفقیت ایجاد شد."
 
-#: views.py:343
+#: views.py:391
 msgid "New object created successfully."
 msgstr "شی جدید با موفقیت ساخته شد."
 
-#: views.py:361
+#: views.py:409
 #, python-format
 msgid "Error deleting %s."
 msgstr "خطا در زمان حذف %s."
 
-#: views.py:363
+#: views.py:411
 msgid "Error deleting object."
 msgstr "خطا در حذف شی."
 
-#: views.py:368
+#: views.py:416
 #, python-format
 msgid "%s deleted successfully."
 msgstr "%s با موفقیت حذف شد."
 
-#: views.py:370
+#: views.py:418
 msgid "Object deleted successfully."
 msgstr "شی با موفقیت حذف شد."
 

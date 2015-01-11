@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:32-0400\n"
+"POT-Creation-Date: 2015-01-11 17:56-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -20,41 +20,25 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: events.py:5
+#: events.py:7
 msgid "Document checked out"
 msgstr "Документът е проверен."
 
-#: events.py:6
-#, python-format
-msgid "Document \"%(document)s\" checked out by %(fullname)s."
-msgstr "Докумнетът \"%(document)s\" е проверен от %(fullname)s."
-
-#: events.py:12
+#: events.py:8
 msgid "Document checked in"
 msgstr "Докъментът е регистриран"
 
-#: events.py:13
-#, python-format
-msgid "Document \"%(document)s\" checked in by %(fullname)s."
-msgstr "Документът \"%(document)s\" е регистриран от %(fullname)s."
-
-#: events.py:19
+#: events.py:9
 msgid "Document automatically checked in"
 msgstr "Автоматично регистрирани документи"
 
-#: events.py:20
-#, python-format
-msgid "Document \"%(document)s\" automatically checked in."
-msgstr "Документ \"%(document)s\" е автоматично регистриран."
-
-#: events.py:25
+#: events.py:10
 msgid "Document forcefully checked in"
 msgstr "Документът е принудително регистриран"
 
-#: events.py:26
-#, python-format
-msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-msgstr "Документът \"%(document)s\" принудително регистриран от %(fullname)s."
+#: exceptions.py:16 views.py:82
+msgid "Document already checked out."
+msgstr "Документът вече е проверен."
 
 #: links.py:16
 msgid "Checkouts"
@@ -99,20 +83,20 @@ msgstr "Проверете срока на валидност"
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Време за задържане на проверения документ в минути."
 
-#: models.py:30
+#: models.py:32
 #, fuzzy
 msgid "Block new version upload"
 msgstr "блокиране качването на нова версия"
 
-#: models.py:30
+#: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Забранете качването на нова версия на този документ."
 
-#: models.py:53 permissions.py:7
+#: models.py:58 permissions.py:7
 msgid "Document checkout"
 msgstr "Проверка на документ"
 
-#: models.py:54
+#: models.py:59
 #, fuzzy
 msgid "Document checkouts"
 msgstr "Проверка на документ"
@@ -189,40 +173,36 @@ msgstr ""
 msgid "Check out details for document: %s"
 msgstr "Данни от проверката на документ: %s"
 
-#: views.py:82
+#: views.py:85
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "Грешка при проверка на документ; %s"
 
-#: views.py:84
+#: views.py:87
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Документ \"%s\" проверен успешно."
-
-#: views.py:87
-msgid "Document already checked out."
-msgstr "Документът вече е проверен."
 
 #: views.py:95
 #, python-format
 msgid "Check out document: %s"
 msgstr "Провери документ: %s"
 
-#: views.py:124
+#: views.py:107 views.py:128
 msgid "Document has not been checked out."
 msgstr "Документът не е проверяван."
 
-#: views.py:126
+#: views.py:130
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "Грешка при регистрация на документ; %s"
 
-#: views.py:128
+#: views.py:132
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Документ \"%s\" е регистриран успешно."
 
-#: views.py:139
+#: views.py:143
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
@@ -231,7 +211,7 @@ msgstr ""
 "Проверката на този документ не е извършвана от Вас. Сигурни ли сте, че "
 "искате принудително да регистрирате документа: %s?"
 
-#: views.py:141
+#: views.py:145
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "Сигурни ли сте, че искате да регистрирате този документ: %s?"
@@ -271,6 +251,19 @@ msgid ""
 msgstr ""
 "Време за задържане на документа в състояние проверен, в дни, часове и/или "
 "минути."
+
+#~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
+#~ msgstr "Докумнетът \"%(document)s\" е проверен от %(fullname)s."
+
+#~ msgid "Document \"%(document)s\" checked in by %(fullname)s."
+#~ msgstr "Документът \"%(document)s\" е регистриран от %(fullname)s."
+
+#~ msgid "Document \"%(document)s\" automatically checked in."
+#~ msgstr "Документ \"%(document)s\" е автоматично регистриран."
+
+#~ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
+#~ msgstr ""
+#~ "Документът \"%(document)s\" принудително регистриран от %(fullname)s."
 
 #~ msgid "document"
 #~ msgstr "документ"

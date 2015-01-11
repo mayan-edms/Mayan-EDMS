@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2013
@@ -10,31 +10,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:34-0400\n"
+"POT-Creation-Date: 2015-01-11 17:59-0400\n"
 "PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
+
+#: __init__.py:11
+msgid "Home"
+msgstr ""
 
 #: links.py:8
 msgid "Maintenance"
 msgstr ""
 
-#: links.py:9 views.py:43
-msgid "Diagnostics"
-msgstr "Diagnostyka"
-
-#: links.py:10
+#: links.py:9
 msgid "Admin site"
 msgstr ""
 
-#: views.py:36
+#: views.py:32
+msgid "Results"
+msgstr ""
+
+#: views.py:55
 msgid "Maintenance menu"
 msgstr ""
+
+#: views.py:62
+msgid "Diagnostics"
+msgstr "Diagnostyka"
 
 #: templates/main/403.html:5 templates/main/403.html.py:9
 msgid "Insufficient permissions"
@@ -60,78 +70,74 @@ msgstr "Informacje o Mayan EDMS"
 msgid "Version"
 msgstr "Wersja"
 
-#: templates/main/about.html:20 templates/main/home.html:18
+#: templates/main/about.html:20
 msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr ""
 
-#: templates/main/base.html:146
+#: templates/main/base.html:198
 msgid "(Debug mode)"
 msgstr ""
 
-#: templates/main/base.html:165
-msgid "User"
-msgstr "Użytkownik"
-
-#: templates/main/base.html:167
+#: templates/main/base.html:219
 msgid "Anonymous"
 msgstr "Anonimowy"
 
-#: templates/main/base.html:170
+#: templates/main/base.html:221
 msgid "User details"
 msgstr "Dane użytkownika"
 
-#: templates/main/base.html:187 templates/main/login.html:17
+#: templates/main/base.html:226 templates/main/login.html:17
 #: templates/main/login.html.py:55 templates/main/login.html:63
 msgid "Login"
 msgstr "Login"
 
-#: templates/main/base.html:187
+#: templates/main/base.html:226
 msgid "Logout"
 msgstr "Wyloguj"
 
-#: templates/main/base.html:201
+#: templates/main/base.html:240
 msgid "dismiss all notifications"
 msgstr ""
 
-#: templates/main/base.html:201
+#: templates/main/base.html:240
 msgid "close all"
 msgstr ""
 
-#: templates/main/base.html:202
+#: templates/main/base.html:241
 msgid "dismiss this notification"
 msgstr ""
 
-#: templates/main/base.html:202
+#: templates/main/base.html:241
 msgid "close"
 msgstr ""
 
-#: templates/main/base.html:263
+#: templates/main/base.html:305 templates/main/base.html.py:318
 msgid "Secondary menu"
 msgstr "Dodatkowe menu"
 
-#: templates/main/base.html:279
+#: templates/main/base.html:336
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/main/base.html:281 templates/main/base.html.py:321
+#: templates/main/base.html:338 templates/main/base.html.py:378
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr ""
 
-#: templates/main/base.html:284
+#: templates/main/base.html:341
 msgid "Available actions"
 msgstr ""
 
-#: templates/main/base.html:296 templates/main/base.html.py:335
+#: templates/main/base.html:353 templates/main/base.html.py:392
 msgid "Related actions"
 msgstr ""
 
-#: templates/main/base.html:307 templates/main/base.html.py:348
+#: templates/main/base.html:364 templates/main/base.html.py:405
 msgid "Other available actions"
 msgstr ""
 
-#: templates/main/base.html:323
+#: templates/main/base.html:380
 msgid "Actions"
 msgstr ""
 
@@ -181,23 +187,19 @@ msgstr ""
 msgid "required"
 msgstr ""
 
-#: templates/main/generic_form_subtemplate.html:83
-#: templates/main/generic_form_subtemplate.html:85
-#: templates/main/generic_multiform_subtemplate.html:66
-#: templates/main/generic_multiform_subtemplate.html:68
+#: templates/main/generic_form_subtemplate.html:82
+#: templates/main/generic_multiform_subtemplate.html:64
 msgid "Save"
 msgstr ""
 
-#: templates/main/generic_form_subtemplate.html:83
-#: templates/main/generic_form_subtemplate.html:85
-#: templates/main/generic_list_subtemplate.html:44
-#: templates/main/generic_multiform_subtemplate.html:66
-#: templates/main/generic_multiform_subtemplate.html:68
+#: templates/main/generic_form_subtemplate.html:82
+#: templates/main/generic_list_subtemplate.html:38
+#: templates/main/generic_multiform_subtemplate.html:64
 msgid "Submit"
 msgstr ""
 
-#: templates/main/generic_form_subtemplate.html:90
-#: templates/main/generic_multiform_subtemplate.html:73
+#: templates/main/generic_form_subtemplate.html:87
+#: templates/main/generic_multiform_subtemplate.html:69
 msgid "Cancel"
 msgstr ""
 
@@ -213,17 +215,38 @@ msgstr ""
 msgid "%(title)s (%(total)s)"
 msgstr ""
 
-#: templates/main/generic_list_subtemplate.html:64
+#: templates/main/generic_list_subtemplate.html:58
 msgid "Identifier"
 msgstr ""
 
-#: templates/main/generic_list_subtemplate.html:139
+#: templates/main/generic_list_subtemplate.html:133
 msgid "No results"
 msgstr ""
 
-#: templates/main/home.html:12
-msgid "Django based open source document management system"
-msgstr "Django based open source document management system"
+#: templates/main/home.html:17
+msgid "Upload documents"
+msgstr ""
+
+#: templates/main/home.html:26
+msgid "Recent Documents"
+msgstr ""
+
+#: templates/main/home.html:35
+msgid "All Documents"
+msgstr ""
+
+#: templates/main/home.html:44
+msgid "Space separated terms"
+msgstr ""
+
+#: templates/main/home.html:45
+#, fuzzy
+msgid "Search"
+msgstr "search"
+
+#: templates/main/home.html:46
+msgid "Advanced search"
+msgstr ""
 
 #: templates/main/login.html:23
 msgid "You are already logged in"
@@ -306,6 +329,12 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
+#~ msgid "User"
+#~ msgstr "Użytkownik"
+
+#~ msgid "Django based open source document management system"
+#~ msgstr "Django based open source document management system"
+
 #~ msgid "(DEBUG)"
 #~ msgstr "(DEBUG)"
 
@@ -324,9 +353,6 @@ msgstr ""
 #~ msgid "home"
 #~ msgstr "home"
 
-#~ msgid "search"
-#~ msgstr "search"
-
 #~ msgid "diagnostics"
 #~ msgstr "diagnostics"
 
@@ -334,11 +360,11 @@ msgstr ""
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget or"
-#~ " by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget or"
-#~ " by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -10,35 +10,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:32-0400\n"
+"POT-Creation-Date: 2015-01-11 17:57-0400\n"
 "PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:97
+#: classes.py:38
+msgid "Available attributes: "
+msgstr ""
+
+#: forms.py:98
 msgid "Selection"
 msgstr "Selección"
 
-#: forms.py:128
+#: forms.py:143
 msgid "Email"
 msgstr "E-mail"
 
-#: forms.py:131 models.py:33
+#: forms.py:146 models.py:36
 msgid "Password"
 msgstr "Contraseña"
 
-#: forms.py:134
+#: forms.py:149
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr "Introduzca una dirección de correo y contraseña válidos. Recuerde que la contraseña es sensible a mayúsculas."
+msgstr ""
+"Introduzca una dirección de correo y contraseña válidos. Recuerde que la "
+"contraseña es sensible a mayúsculas."
 
-#: forms.py:136
+#: forms.py:151
 msgid "This account is inactive."
 msgstr "Esta cuenta está inactiva."
 
@@ -58,58 +65,91 @@ msgstr "Editar detalles"
 msgid "About"
 msgstr "Acerca de"
 
-#: links.py:15 views.py:230
+#: links.py:15 views.py:278
 msgid "License"
 msgstr "Licencia"
 
-#: models.py:25 models.py:28
+#: links.py:17
+msgid "Locale profile"
+msgstr ""
+
+#: links.py:18
+msgid "Edit locale profile"
+msgstr ""
+
+#: models.py:28 models.py:31
 msgid "Anonymous user"
 msgstr "Usuario anónimo"
 
-#: models.py:32
+#: models.py:35
 msgid "Account"
 msgstr "Cuenta"
 
-#: models.py:34
+#: models.py:37
 msgid "Password hash"
 msgstr "Hash de la contraseña"
 
-#: models.py:37
+#: models.py:40
 msgid "Auto admin properties"
 msgstr ""
 
-#: models.py:41
+#: models.py:44
 msgid "File"
 msgstr ""
 
-#: models.py:42
+#: models.py:45
 msgid "Filename"
 msgstr ""
 
-#: models.py:43
+#: models.py:46
 msgid "Date time"
 msgstr ""
 
-#: models.py:46
+#: models.py:49
 msgid "Shared uploaded file"
 msgstr ""
 
-#: models.py:47
+#: models.py:50
 msgid "Shared uploaded files"
+msgstr ""
+
+#: models.py:61
+msgid "User"
+msgstr ""
+
+#: models.py:63
+msgid "Timezone"
+msgstr ""
+
+#: models.py:64
+msgid "Language"
+msgstr ""
+
+#: models.py:70
+msgid "User locale profile"
+msgstr ""
+
+#: models.py:71
+msgid "User locale profiles"
 msgstr ""
 
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+msgstr ""
+"El directorio temporal se usa para almacenar miniaturas, previsualizaciones "
+"y archivos temporales.  Si no se especifica ninguno, se creará utilizando "
 "tempfile.mkdtemp()"
-msgstr "El directorio temporal se usa para almacenar miniaturas, previsualizaciones y archivos temporales.  Si no se especifica ninguno, se creará utilizando tempfile.mkdtemp()"
 
 #: settings.py:48
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr "Controla el mecanismo utilizado para el usuario autenticado. Las opciones son: 'username' nombre de usuario, 'email' correo electrónico"
+msgstr ""
+"Controla el mecanismo utilizado para el usuario autenticado. Las opciones "
+"son: 'username' nombre de usuario, 'email' correo electrónico"
 
 #: settings.py:57
 msgid "Allow non authenticated users, access to all views"
@@ -119,111 +159,128 @@ msgstr "Permita a los usuarios no autenticados el acceso a todas las pantallas"
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
-#: utils.py:116
+#: utils.py:114
 msgid "Function found"
 msgstr ""
 
-#: views.py:42
+#: views.py:43
 msgid "No action selected."
 msgstr "Ninguna acción seleccionada."
 
-#: views.py:46
+#: views.py:47
 msgid "Must select at least one item."
 msgstr "Debe seleccionar al menos un artículo."
 
-#: views.py:98
+#: views.py:99
 #, python-format
 msgid "Unable to remove %(selection)s."
 msgstr ""
 
-#: views.py:123
+#: views.py:124
 #, python-format
 msgid "Unable to add %(selection)s."
 msgstr ""
 
-#: views.py:136
+#: views.py:137
 msgid "Add"
 msgstr "Agregar"
 
-#: views.py:147
+#: views.py:148
 msgid "Remove"
 msgstr "Eliminar"
 
-#: views.py:170
+#: views.py:171
 msgid "Current user details"
 msgstr ""
 
-#: views.py:187
-msgid "E-mail conflict, another user has that same email."
-msgstr "Conflicto de correo electrónico, otro usuario tiene ese mismo correo electrónico."
+#: views.py:186
+#, fuzzy
+msgid "Current user locale profile details"
+msgstr "Editar los detalles del usuario actual"
 
-#: views.py:190
+#: views.py:203
+msgid "E-mail conflict, another user has that same email."
+msgstr ""
+"Conflicto de correo electrónico, otro usuario tiene ese mismo correo "
+"electrónico."
+
+#: views.py:206
 msgid "Current user's details updated."
 msgstr "Datos del usuario actual actualizados."
 
-#: views.py:199
+#: views.py:215
 msgid "Edit current user details"
 msgstr "Editar los detalles del usuario actual"
 
-#: views.py:239
+#: views.py:238
+#, fuzzy
+msgid "Current user's locale profile details updated."
+msgstr "Datos del usuario actual actualizados."
+
+#: views.py:247
+#, fuzzy
+msgid "Edit current user locale profile details"
+msgstr "Editar los detalles del usuario actual"
+
+#: views.py:287
 msgid "Current user password change"
 msgstr "Cambio de contraseña de usuario actual"
 
-#: views.py:254
+#: views.py:302
 msgid "Your password has been successfully changed."
 msgstr "Su contraseña se ha modificado correctamente."
 
-#: views.py:308
+#: views.py:356
 #, python-format
 msgid "Error saving %s details."
 msgstr "Error al salvar los detalles %s."
 
-#: views.py:310
+#: views.py:358
 msgid "Error saving details."
 msgstr "Error al salvar los detalles."
 
-#: views.py:318
+#: views.py:366
 #, python-format
 msgid "%s details saved successfully."
 msgstr "Los detalles %s se han guardado con éxito."
 
-#: views.py:320
+#: views.py:368
 msgid "Details saved successfully."
 msgstr "Detalles guardados con éxito."
 
-#: views.py:332
+#: views.py:380
 #, python-format
 msgid "Error creating new %s."
 msgstr "Error al crear nuevo %s."
 
-#: views.py:334
+#: views.py:382
 msgid "Error creating object."
 msgstr "Error al crear objeto."
 
-#: views.py:341
+#: views.py:389
 #, python-format
 msgid "%s created successfully."
 msgstr "%s creado con éxito."
 
-#: views.py:343
+#: views.py:391
 msgid "New object created successfully."
 msgstr "Nuevo objeto creado con éxito."
 
-#: views.py:361
+#: views.py:409
 #, python-format
 msgid "Error deleting %s."
 msgstr "Error al borrar %s."
 
-#: views.py:363
+#: views.py:411
 msgid "Error deleting object."
 msgstr "Error al borrar objeto."
 
-#: views.py:368
+#: views.py:416
 #, python-format
 msgid "%s deleted successfully."
 msgstr "%s borrado con éxito."
 
-#: views.py:370
+#: views.py:418
 msgid "Object deleted successfully."
 msgstr "Objeto borrado con éxito."
 

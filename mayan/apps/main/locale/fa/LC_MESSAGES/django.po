@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -10,31 +10,41 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:34-0400\n"
+"POT-Creation-Date: 2015-01-11 17:59-0400\n"
 "PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:11
+msgid "Home"
+msgstr ""
 
 #: links.py:8
 msgid "Maintenance"
 msgstr "نگهداری"
 
-#: links.py:9 views.py:43
-msgid "Diagnostics"
-msgstr "تشخیص"
-
-#: links.py:10
+#: links.py:9
 msgid "Admin site"
 msgstr "سایت مدیر"
 
-#: views.py:36
+#: views.py:32
+#, fuzzy
+msgid "Results"
+msgstr "بی جواب و یا بی جواب"
+
+#: views.py:55
 msgid "Maintenance menu"
 msgstr "ئنوی پشتیبانی"
+
+#: views.py:62
+msgid "Diagnostics"
+msgstr "تشخیص"
 
 #: templates/main/403.html:5 templates/main/403.html.py:9
 msgid "Insufficient permissions"
@@ -60,78 +70,74 @@ msgstr "درباره‌ی این برنامه"
 msgid "Version"
 msgstr "نسخه"
 
-#: templates/main/about.html:20 templates/main/home.html:18
+#: templates/main/about.html:20
 msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr "حق کپی &copy; 2011 Roberto Rosario."
 
-#: templates/main/base.html:146
+#: templates/main/base.html:198
 msgid "(Debug mode)"
 msgstr ""
 
-#: templates/main/base.html:165
-msgid "User"
-msgstr "کاربر"
-
-#: templates/main/base.html:167
+#: templates/main/base.html:219
 msgid "Anonymous"
 msgstr "ناشناس"
 
-#: templates/main/base.html:170
+#: templates/main/base.html:221
 msgid "User details"
 msgstr "جزئیات کاربر"
 
-#: templates/main/base.html:187 templates/main/login.html:17
+#: templates/main/base.html:226 templates/main/login.html:17
 #: templates/main/login.html.py:55 templates/main/login.html:63
 msgid "Login"
 msgstr "لاگین"
 
-#: templates/main/base.html:187
+#: templates/main/base.html:226
 msgid "Logout"
 msgstr "خروج"
 
-#: templates/main/base.html:201
+#: templates/main/base.html:240
 msgid "dismiss all notifications"
 msgstr "حذف کلیه اطلاعیه ها"
 
-#: templates/main/base.html:201
+#: templates/main/base.html:240
 msgid "close all"
 msgstr "بستن همه"
 
-#: templates/main/base.html:202
+#: templates/main/base.html:241
 msgid "dismiss this notification"
 msgstr "حذف این اطلاعیه"
 
-#: templates/main/base.html:202
+#: templates/main/base.html:241
 msgid "close"
 msgstr "بسته"
 
-#: templates/main/base.html:263
+#: templates/main/base.html:305 templates/main/base.html.py:318
 msgid "Secondary menu"
 msgstr "دومین منوی"
 
-#: templates/main/base.html:279
+#: templates/main/base.html:336
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Actions for %(name)s: %(navigation_object)s"
 
-#: templates/main/base.html:281 templates/main/base.html.py:321
+#: templates/main/base.html:338 templates/main/base.html.py:378
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Actions for: %(navigation_object)s"
 
-#: templates/main/base.html:284
+#: templates/main/base.html:341
 msgid "Available actions"
 msgstr "عملیات موجود"
 
-#: templates/main/base.html:296 templates/main/base.html.py:335
+#: templates/main/base.html:353 templates/main/base.html.py:392
 msgid "Related actions"
 msgstr "عملیات مرتبط"
 
-#: templates/main/base.html:307 templates/main/base.html.py:348
+#: templates/main/base.html:364 templates/main/base.html.py:405
 msgid "Other available actions"
 msgstr "عملیات موجود دیگر"
 
-#: templates/main/base.html:323
+#: templates/main/base.html:380
 msgid "Actions"
 msgstr "عملیات"
 
@@ -181,23 +187,19 @@ msgstr "خیر"
 msgid "required"
 msgstr "الزامی"
 
-#: templates/main/generic_form_subtemplate.html:83
-#: templates/main/generic_form_subtemplate.html:85
-#: templates/main/generic_multiform_subtemplate.html:66
-#: templates/main/generic_multiform_subtemplate.html:68
+#: templates/main/generic_form_subtemplate.html:82
+#: templates/main/generic_multiform_subtemplate.html:64
 msgid "Save"
 msgstr "ذخیره"
 
-#: templates/main/generic_form_subtemplate.html:83
-#: templates/main/generic_form_subtemplate.html:85
-#: templates/main/generic_list_subtemplate.html:44
-#: templates/main/generic_multiform_subtemplate.html:66
-#: templates/main/generic_multiform_subtemplate.html:68
+#: templates/main/generic_form_subtemplate.html:82
+#: templates/main/generic_list_subtemplate.html:38
+#: templates/main/generic_multiform_subtemplate.html:64
 msgid "Submit"
 msgstr "ارسال"
 
-#: templates/main/generic_form_subtemplate.html:90
-#: templates/main/generic_multiform_subtemplate.html:73
+#: templates/main/generic_form_subtemplate.html:87
+#: templates/main/generic_multiform_subtemplate.html:69
 msgid "Cancel"
 msgstr "لغو"
 
@@ -206,24 +208,47 @@ msgstr "لغو"
 msgid ""
 "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of %(total_pages)s)"
+msgstr ""
+"%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
+"%(total_pages)s)"
 
 #: templates/main/generic_list_subtemplate.html:25
 #, python-format
 msgid "%(title)s (%(total)s)"
 msgstr "%(title)s (%(total)s)"
 
-#: templates/main/generic_list_subtemplate.html:64
+#: templates/main/generic_list_subtemplate.html:58
 msgid "Identifier"
 msgstr "مشخصه Identifier"
 
-#: templates/main/generic_list_subtemplate.html:139
+#: templates/main/generic_list_subtemplate.html:133
 msgid "No results"
 msgstr "بی جواب و یا بی جواب"
 
-#: templates/main/home.html:12
-msgid "Django based open source document management system"
-msgstr "Django based open source document management system"
+#: templates/main/home.html:17
+msgid "Upload documents"
+msgstr ""
+
+#: templates/main/home.html:26
+msgid "Recent Documents"
+msgstr ""
+
+#: templates/main/home.html:35
+msgid "All Documents"
+msgstr ""
+
+#: templates/main/home.html:44
+msgid "Space separated terms"
+msgstr ""
+
+#: templates/main/home.html:45
+#, fuzzy
+msgid "Search"
+msgstr "search"
+
+#: templates/main/home.html:46
+msgid "Advanced search"
+msgstr ""
 
 #: templates/main/login.html:23
 msgid "You are already logged in"
@@ -238,7 +263,9 @@ msgstr "تا 5 ثانیه دیگر به نقطه ورودی وب سایت ارج
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
-msgstr "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't work."
+msgstr ""
+"Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
+"work."
 
 #: templates/main/login.html:40
 msgid "First time login"
@@ -248,7 +275,9 @@ msgstr "دفعه اول لاگین "
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr "You have just finished installing <strong>Mayan EDMS</strong>, congratulations!"
+msgstr ""
+"You have just finished installing <strong>Mayan EDMS</strong>, "
+"congratulations!"
 
 #: templates/main/login.html:43
 msgid "Login using the following credentials:"
@@ -290,7 +319,9 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr "سیستم مدیریت اسناد الکترونیکی به همراه ocr و متادیتا، اندیس گذاری و برچسب گذاری فایلها"
+msgstr ""
+"سیستم مدیریت اسناد الکترونیکی به همراه ocr و متادیتا، اندیس گذاری و برچسب "
+"گذاری فایلها"
 
 #: templates/main/project_description.html:23
 msgid "Released under the Apache 2.0 License"
@@ -305,6 +336,12 @@ msgstr "قبلی"
 #: templates/pagination/pagination.html:28
 msgid "Next"
 msgstr "بعدی"
+
+#~ msgid "User"
+#~ msgstr "کاربر"
+
+#~ msgid "Django based open source document management system"
+#~ msgstr "Django based open source document management system"
 
 #~ msgid "(DEBUG)"
 #~ msgstr "(DEBUG)"
@@ -324,9 +361,6 @@ msgstr "بعدی"
 #~ msgid "home"
 #~ msgstr "home"
 
-#~ msgid "search"
-#~ msgstr "search"
-
 #~ msgid "diagnostics"
 #~ msgstr "diagnostics"
 
@@ -334,11 +368,11 @@ msgstr "بعدی"
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget or"
-#~ " by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget or"
-#~ " by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

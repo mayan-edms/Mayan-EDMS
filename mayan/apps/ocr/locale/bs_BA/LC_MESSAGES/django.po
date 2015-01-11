@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:35-0400\n"
+"POT-Creation-Date: 2015-01-11 17:59-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:33 links.py:19 permissions.py:7
+#: __init__.py:34 links.py:19 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
@@ -112,10 +112,6 @@ msgstr "Brisati dokumente iz OCR reda"
 #: permissions.py:10
 msgid "Can execute the OCR clean up on all document pages"
 msgstr "Može izvršiti OCR čišćenje u svim stranicama dokumenta"
-
-#: permissions.py:11
-msgid "Can edit an OCR queue properties"
-msgstr "Mogu se urediti osobine OCR reda"
 
 #: settings.py:12
 msgid "File path to unpaper program."
@@ -217,6 +213,9 @@ msgstr "Greška brisanja stranica: %s"
 #: parsers/__init__.py:93 parsers/__init__.py:170
 msgid "Text extracted from PDF"
 msgstr "Tekst izvađen iz PDF"
+
+#~ msgid "Can edit an OCR queue properties"
+#~ msgstr "Mogu se urediti osobine OCR reda"
 
 #~ msgid "Automatically queue newly created documents for OCR."
 #~ msgstr "Novi kreirani dokumenti se automatski stavljaju u red za OCR."

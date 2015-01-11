@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:34-0400\n"
+"POT-Creation-Date: 2015-01-11 17:58-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -23,16 +23,12 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:42
+#: __init__.py:41
 msgid "Created"
 msgstr ""
 
-#: __init__.py:43 links.py:18 models.py:12
+#: __init__.py:42 links.py:18 models.py:12
 msgid "Documents"
-msgstr ""
-
-#: __init__.py:48
-msgid "Returns a list of all the folders."
 msgstr ""
 
 #: forms.py:38 models.py:24

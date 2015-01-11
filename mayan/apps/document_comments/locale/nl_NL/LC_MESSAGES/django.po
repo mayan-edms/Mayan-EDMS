@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:33-0400\n"
+"POT-Creation-Date: 2015-01-11 17:57-0400\n"
 "PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
@@ -19,17 +19,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:32
+#: __init__.py:33
 msgid "Date"
 msgstr ""
 
-#: __init__.py:36
+#: __init__.py:37
 msgid "User"
 msgstr ""
 
-#: __init__.py:40
+#: __init__.py:41
 #, fuzzy
 msgid "Comment"
+msgstr "Commentaar"
+
+#: __init__.py:50 links.py:11 permissions.py:7
+msgid "Comments"
 msgstr "Commentaar"
 
 #: links.py:8 links.py:9
@@ -41,10 +45,6 @@ msgstr "Verwijderen"
 #, fuzzy
 msgid "Add comment"
 msgstr "Toevoegen opmerking"
-
-#: links.py:11 permissions.py:7
-msgid "Comments"
-msgstr "Commentaar"
 
 #: permissions.py:9
 msgid "Create new comments"

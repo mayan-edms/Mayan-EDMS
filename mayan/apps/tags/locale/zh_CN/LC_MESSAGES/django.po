@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:36-0400\n"
+"POT-Creation-Date: 2015-01-11 18:00-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
@@ -22,19 +22,15 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: __init__.py:35
-msgid "Returns a list of all the tags."
-msgstr "返回所有标签列表"
-
-#: __init__.py:39
 msgid "Preview"
 msgstr ""
 
-#: __init__.py:43
+#: __init__.py:39
 msgid "Tagged items"
 msgstr ""
 
-#: __init__.py:50 __init__.py:55 __init__.py:66 forms.py:42 links.py:11
-#: links.py:20 models.py:18 permissions.py:7 views.py:114
+#: __init__.py:46 __init__.py:51 forms.py:42 links.py:11 links.py:20
+#: models.py:18 permissions.py:7 views.py:114
 msgid "Tags"
 msgstr "标签"
 
@@ -280,6 +276,9 @@ msgstr "标签\"%(tag)s\"成功从文档\"%(document)s\"移除"
 #: templatetags/tags_tags.py:18
 msgid "Add tag to document"
 msgstr "添加标签到文档"
+
+#~ msgid "Returns a list of all the tags."
+#~ msgstr "返回所有标签列表"
 
 #~ msgid "Name"
 #~ msgstr "名称"

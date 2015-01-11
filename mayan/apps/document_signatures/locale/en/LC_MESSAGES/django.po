@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:33-0400\n"
+"POT-Creation-Date: 2015-01-11 17:58-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:7 models.py:21
+#: forms.py:7 models.py:22
 msgid "Signature file"
 msgstr "Signature file"
 
@@ -42,22 +42,22 @@ msgstr "upload signature"
 msgid "Signatures"
 msgstr "signatures"
 
-#: models.py:20
+#: models.py:21
 #, fuzzy
 msgid "Document version"
 msgstr "document version"
 
-#: models.py:22
+#: models.py:23
 #, fuzzy
 msgid "Has embedded signature"
 msgstr "has embedded signature"
 
-#: models.py:37
+#: models.py:38
 #, fuzzy
 msgid "Document version signature"
 msgstr "document version signature"
 
-#: models.py:38
+#: models.py:39
 #, fuzzy
 msgid "Document version signatures"
 msgstr "document version signatures"

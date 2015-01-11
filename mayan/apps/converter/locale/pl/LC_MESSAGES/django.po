@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-10-30 11:32-0400\n"
+"POT-Creation-Date: 2015-01-11 17:57-0400\n"
 "PO-Revision-Date: 2014-10-08 21:13+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -93,6 +93,10 @@ msgstr ""
 
 #: settings.py:16
 msgid "Path to the libreoffice program."
+msgstr ""
+
+#: settings.py:17
+msgid "Path to the Popple program pdftoppm."
 msgstr ""
 
 #: templates/converter_file_formats_help.html:3
