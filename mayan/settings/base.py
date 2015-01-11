@@ -109,6 +109,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'common.middleware.timezone.TimezoneMiddleware',
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'common.middleware.login_required_middleware.LoginRequiredMiddleware',
     'permissions.middleware.permission_denied_middleware.PermissionDeniedMiddleware',

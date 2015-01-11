@@ -12,6 +12,9 @@ urlpatterns = patterns('common.views',
     url(r'^user/$', 'current_user_details', (), name='current_user_details'),
     url(r'^user/edit/$', 'current_user_edit', (), name='current_user_edit'),
 
+    url(r'^user/locale/$', 'current_user_locale_profile_details', (), name='current_user_locale_profile_details'),
+    url(r'^user/locale/edit/$', 'current_user_locale_profile_edit', (), name='current_user_locale_profile_edit'),
+
     url(r'^login/$', 'login_view', (), name='login_view'),
     url(r'^password/change/$', 'password_change_view', (), name='password_change_view'),
 )

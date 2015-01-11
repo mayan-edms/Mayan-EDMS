@@ -13,3 +13,6 @@ link_current_user_edit = {'text': _(u'Edit details'), 'view': 'common:current_us
 
 link_about = {'text': _(u'About'), 'view': 'common:about_view', 'famfam': 'information'}
 link_license = {'text': _(u'License'), 'view': 'common:license_view', 'famfam': 'script'}
+
+link_current_user_locale_profile_details = {'text': _(u'Locale profile'), 'view': 'common:current_user_locale_profile_details', 'famfam': 'world'}
+link_current_user_locale_profile_edit = {'text': _(u'Edit locale profile'), 'view': 'common:current_user_locale_profile_edit', 'famfam': 'world_edit'}

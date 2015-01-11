@@ -22,7 +22,8 @@ from acls.models import AccessEntry
 from permissions.models import Permission
 
 from .forms import (ChoiceForm, EmailAuthenticationForm, LicenseForm,
-                    UserForm, UserForm_view)
+                    LocaleProfileForm, LocaleProfileForm_view, UserForm,
+                    UserForm_view)
 from .settings import LOGIN_METHOD
 
 
@@ -173,6 +174,21 @@ def current_user_details(request):
         context_instance=RequestContext(request))
 
 
+def current_user_locale_profile_details(request):
+    """
+    Display the current user's locale profile details
+    """
+    form = LocaleProfileForm_view(instance=request.user.locale_profile)
+
+    return render_to_response(
+        'main/generic_form.html', {
+            'form': form,
+            'title': _(u'Current user locale profile details'),
+            'read_only': True,
+        },
+        context_instance=RequestContext(request))
+
+
 def current_user_edit(request):
     """
     Allow an user to edit his own details
@@ -197,6 +213,38 @@ def current_user_edit(request):
             'form': form,
             'next': next,
             'title': _(u'Edit current user details'),
+        },
+        context_instance=RequestContext(request))
+
+
+def current_user_locale_profile_edit(request):
+    """
+    Allow an user to edit his own locale profile
+    """
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('common:current_user_locale_profile_details'))))
+
+    if request.method == 'POST':
+        form = LocaleProfileForm(instance=request.user.locale_profile, data=request.POST)
+        if form.is_valid():
+            form.save()
+
+            if hasattr(request, 'session'):
+                request.session['django_language'] = form.cleaned_data['language']
+                request.session['django_timezone'] = form.cleaned_data['timezone']
+            else:
+                request.set_cookie(settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language'])
+
+            messages.success(request, _(u'Current user\'s locale profile details updated.'))
+            return HttpResponseRedirect(next)
+    else:
+        form = LocaleProfileForm(instance=request.user.locale_profile)
+
+    return render_to_response(
+        'main/generic_form.html', {
+            'form': form,
+            'next': next,
+            'title': _(u'Edit current user locale profile details'),
         },
         context_instance=RequestContext(request))
 

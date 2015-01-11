@@ -11,6 +11,7 @@ from django.db import models
 from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
+from .models import UserLocaleProfile
 from .utils import return_attrib
 from .widgets import DetailSelectMultiple, EmailInput, PlainWidget
 
@@ -107,6 +108,7 @@ class UserForm_view(DetailForm):
     """
     Form used to display an user's public details
     """
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'is_staff', 'is_superuser', 'last_login', 'date_joined', 'groups')
@@ -116,9 +118,22 @@ class UserForm(forms.ModelForm):
     """
     Form used to edit an user's mininal fields by the user himself
     """
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email')
+
+
+class LocaleProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserLocaleProfile
+        fields = ('language', 'timezone')
+
+
+class LocaleProfileForm_view(DetailForm):
+    class Meta:
+        model = UserLocaleProfile
+        fields = ('language', 'timezone')
 
 
 class EmailAuthenticationForm(forms.Form):

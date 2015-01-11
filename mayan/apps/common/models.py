@@ -1,9 +1,12 @@
 from __future__ import absolute_import
 
+from pytz import common_timezones
+
+from django.conf import settings
+from django.contrib.auth.models import User
 from django.db import models
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
-from django.contrib.auth.models import User
 
 from solo.models import SingletonModel
 
@@ -52,3 +55,17 @@ class SharedUploadedFile(models.Model):
     def delete(self, *args, **kwargs):
         self.file.storage.delete(self.file.path)
         return super(SharedUploadedFile, self).delete(*args, **kwargs)
+
+
+class UserLocaleProfile(models.Model):
+    user = models.OneToOneField(User, related_name='locale_profile', verbose_name=_('User'))
+
+    timezone = models.CharField(choices=zip(common_timezones, common_timezones), max_length=48, verbose_name=_('Timezone'))
+    language = models.CharField(choices=settings.LANGUAGES, max_length=8, verbose_name=_('Language'))
+
+    def __unicode__(self):
+        return unicode(self.user)
+
+    class Meta:
+        verbose_name = _(u'User locale profile')
+        verbose_name_plural = _(u'User locale profiles')
