@@ -4,30 +4,38 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
 
-from .managers import EventTypeManager
+from actstream.models import Action
+
+from common.utils import encapsulate
+from navigation.api import register_model_list_columns
+
+from .classes import Event
+from .widgets import event_type_link
 
 
 @python_2_unicode_compatible
 class EventType(models.Model):
-    _labels = {}
-
     name = models.CharField(max_length=64, unique=True, verbose_name=_('Name'))
 
-    objects = EventTypeManager()
-
     def __str__(self):
-        return unicode(self.get_label())
-
-    def get_label(self):
-        try:
-            return self.__class__._labels[self.name]
-        except KeyError:
-            return _('Unknown or obsolete event type: {0}'.format(self.name))
-
-    #@models.permalink
-    #def get_absolute_url(self):
-    #    return ('history_type_list', [self.pk])
+        return unicode(Event.get_label(self.name))
 
     class Meta:
         verbose_name = _('Event type')
         verbose_name_plural = _('Event types')
+
+
+register_model_list_columns(Action, [
+    {
+        'name': _('Timestamp'),
+        'attribute': 'timestamp'
+    },
+    {
+        'name': _('Actor'),
+        'attribute': 'actor',
+    },
+    {
+        'name': _(u'Verb'),
+        'attribute': encapsulate(lambda entry: event_type_link(entry))
+    },
+])

@@ -237,7 +237,7 @@ def document_edit(request, document_id):
                     document.label = form.cleaned_data['document_type_available_filenames'].filename
 
             document.save()
-            event_document_edited.commit(actor=request.user)
+            event_document_edited.commit(actor=request.user, target=document)
             document.add_as_recent_document_for_user(request.user)
 
             messages.success(request, _(u'Document "%s" edited successfully.') % document)
@@ -279,7 +279,7 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
 
             for document in documents:
                 document.set_document_type(form.cleaned_data['document_type'])
-                event_document_edited.commit(actor=request.user)
+                event_document_edited.commit(actor=request.user, target=document)
                 document.add_as_recent_document_for_user(request.user)
 
             messages.success(request, _(u'Document type changed successfully.'))

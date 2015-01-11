@@ -8,7 +8,7 @@ from acls.api import class_permissions
 from common.classes import ModelAttribute
 from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
-from history.permissions import PERMISSION_HISTORY_VIEW
+from events.permissions import PERMISSION_EVENTS_VIEW
 from main.api import register_maintenance_links
 from navigation.api import (register_links, register_model_list_columns)
 from navigation.links import link_spacer
@@ -21,8 +21,9 @@ from .links import (document_clear_image_cache,
                     document_clear_transformations, document_content,
                     document_delete,
                     document_document_type_edit,
+                    document_events_view,
                     document_multiple_document_type_edit, document_download,
-                    document_edit, document_history_view, document_list,
+                    document_edit, document_list,
                     document_list_recent, document_multiple_delete,
                     document_multiple_clear_transformations,
                     document_multiple_download,
@@ -72,8 +73,7 @@ register_links([Document], [document_multiple_clear_transformations, document_mu
 register_links(Document, [document_preview], menu_name='form_header', position=0)
 register_links(Document, [document_content], menu_name='form_header', position=1)
 register_links(Document, [document_properties], menu_name='form_header', position=2)
-register_links(Document, [document_history_view], menu_name='form_header')
-register_links(Document, [document_version_list], menu_name='form_header')
+register_links(Document, [document_events_view, document_version_list], menu_name='form_header')
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])
@@ -124,7 +124,7 @@ class_permissions(Document, [PERMISSION_DOCUMENT_DELETE,
                              PERMISSION_DOCUMENT_TRANSFORM,
                              PERMISSION_DOCUMENT_VERSION_REVERT,
                              PERMISSION_DOCUMENT_VIEW,
-                             PERMISSION_HISTORY_VIEW])
+                             PERMISSION_EVENTS_VIEW])
 
 document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer_string='documents.serializers.DocumentSerializer')
 

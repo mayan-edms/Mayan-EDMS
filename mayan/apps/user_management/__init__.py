@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 from django.contrib.auth.models import User, Group
 
-from actstream import registry
 
 from navigation.api import register_links
 from navigation.links import link_spacer
@@ -28,5 +27,4 @@ register_setup(group_setup)
 
 APIEndPoint('users', app_name='user_management')
 
-registry.register(User)
-registry.register(Group)
+
