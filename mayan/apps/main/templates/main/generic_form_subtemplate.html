@@ -84,7 +84,7 @@
 
               {% if previous %}
                   &nbsp;<a href="#header" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}' class="pure-button mayan-button">
-                    {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
+                    <span class="famfam active famfam-cross"></span>{% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
                   </a>
               {% endif %}
         </div>
