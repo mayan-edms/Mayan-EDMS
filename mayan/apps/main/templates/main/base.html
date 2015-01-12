@@ -221,9 +221,6 @@
                                         <a href="{% url 'common:current_user_details' %}" title="{% trans 'User details' %}">{{ user.get_full_name|default:user }} <span class="famfam active famfam-vcard"></span></a>
                                     {% endif %}
                                 </li>
-
-                                {% get_setting "LOGIN_URL" as login_url %}
-                                <li><a class="logout" href="{% if not user.is_authenticated %}{% url 'common:login_view' %}?next=/{% else %}{% url 'common:logout_view' %}{% endif %}">{% if not user.is_authenticated %}{% trans 'Login' %}{% else %}{% trans 'Logout' %}{% endif %}</a></li>
                             </ul>
                         </div>
                     </div>

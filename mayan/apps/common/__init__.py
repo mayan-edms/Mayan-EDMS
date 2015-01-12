@@ -20,7 +20,7 @@ from .links import (link_about, link_current_user_details,
                     link_current_user_edit,
                     link_current_user_locale_profile_details,
                     link_current_user_locale_profile_edit, link_license,
-                    link_password_change)
+                    link_logout, link_password_change)
 from .models import (AnonymousUserSingleton, AutoAdminSingleton,
                      UserLocaleProfile)
 from .settings import (AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD,
@@ -29,7 +29,7 @@ from .utils import validate_path
 
 logger = logging.getLogger(__name__)
 
-register_links(['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'common:password_change_view'], [link_current_user_details, link_current_user_edit, link_current_user_locale_profile_details, link_current_user_locale_profile_edit, link_password_change], menu_name='secondary_menu')
+register_links(['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'common:password_change_view'], [link_current_user_details, link_current_user_edit, link_current_user_locale_profile_details, link_current_user_locale_profile_edit, link_password_change, link_logout], menu_name='secondary_menu')
 register_links(['common:about_view', 'common:license_view', 'registration:form_view'], [link_about, link_license], menu_name='secondary_menu')
 
 register_top_menu('about', link_about, position=-1)

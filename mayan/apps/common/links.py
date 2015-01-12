@@ -16,3 +16,5 @@ link_license = {'text': _(u'License'), 'view': 'common:license_view', 'famfam': 
 
 link_current_user_locale_profile_details = {'text': _(u'Locale profile'), 'view': 'common:current_user_locale_profile_details', 'famfam': 'world'}
 link_current_user_locale_profile_edit = {'text': _(u'Edit locale profile'), 'view': 'common:current_user_locale_profile_edit', 'famfam': 'world_edit'}
+
+link_logout = {'text': _(u'Logout'), 'view': 'common:logout_view', 'famfam': 'door_out'}
