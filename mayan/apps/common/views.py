@@ -24,6 +24,9 @@ from permissions.models import Permission
 from .forms import (ChoiceForm, EmailAuthenticationForm, LicenseForm,
                     LocaleProfileForm, LocaleProfileForm_view, UserForm,
                     UserForm_view)
+from .mixins import (ExtraContextMixin, ObjectListPermissionFilterMixin,
+                     ObjectPermissionCheckMixin, RedirectionMixin,
+                     ViewPermissionCheckMixin)
 from .settings import LOGIN_METHOD
 
 
@@ -303,50 +306,8 @@ def password_change_done(request):
     return redirect('common:current_user_details')
 
 
-class MayanPermissionCheckMixin(object):
-    permissions_required = None
 
-    def dispatch(self, request, *args, **kwargs):
-        if self.permissions_required:
-            Permission.objects.check_permissions(self.request.user, self.permissions_required)
-
-        return super(MayanPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
-
-
-class ExtraContextMixin(object):
-    extra_context = {}
-
-    def get_extra_context(self):
-        return self.extra_context
-
-    def get_context_data(self, **kwargs):
-        context = super(ExtraContextMixin, self).get_context_data(**kwargs)
-        context.update(self.get_extra_context())
-        return context
-
-
-class MayanViewMixin(object):
-    post_action_redirect = None
-
-    def dispatch(self, request, *args, **kwargs):
-        self.next_url = self.request.POST.get('next', self.request.GET.get('next', self.post_action_redirect if self.post_action_redirect else self.request.META.get('HTTP_REFERER', reverse('main:home'))))
-        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', self.request.META.get('HTTP_REFERER', reverse('main:home'))))
-
-        return super(MayanViewMixin, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(MayanViewMixin, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'next': self.next_url,
-                'previous': self.previous_url
-            }
-        )
-
-        return context
-
-
-class SingleObjectEditView(MayanPermissionCheckMixin, ExtraContextMixin, MayanViewMixin, UpdateView):
+class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
     template_name = 'main/generic_form.html'
 
     def form_invalid(self, form):
@@ -370,7 +331,7 @@ class SingleObjectEditView(MayanPermissionCheckMixin, ExtraContextMixin, MayanVi
         return result
 
 
-class SingleObjectCreateView(MayanPermissionCheckMixin, ExtraContextMixin, MayanViewMixin, CreateView):
+class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
     template_name = 'main/generic_form.html'
 
     def form_invalid(self, form):
@@ -393,7 +354,7 @@ class SingleObjectCreateView(MayanPermissionCheckMixin, ExtraContextMixin, Mayan
         return result
 
 
-class SingleObjectDeleteView(MayanPermissionCheckMixin, ExtraContextMixin, MayanViewMixin, DeleteView):
+class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
     template_name = 'main/generic_confirm.html'
 
     def get_context_data(self, **kwargs):
@@ -420,25 +381,8 @@ class SingleObjectDeleteView(MayanPermissionCheckMixin, ExtraContextMixin, Mayan
             return result
 
 
-class SingleObjectListView(MayanPermissionCheckMixin, ExtraContextMixin, MayanViewMixin, ListView):
+class SingleObjectListView(ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
     template_name = 'main/generic_list.html'
-    object_permission = None
-
-    def get_queryset(self):
-        queryset = super(SingleObjectListView, self).get_queryset()
-
-        if self.object_permission:
-            try:
-                # Check to see if the user has the permissions globally
-                Permission.objects.check_permissions(self.request.user, [self.object_permission])
-            except PermissionDenied:
-                # No global permission, filter ther queryset per object + permission
-                return AccessEntry.objects.filter_objects_by_access(self.object_permission, self.request.user, queryset)
-            else:
-                # Has the permission globally, return all results
-                return queryset
-        else:
-            return queryset
 
 
 class MultiFormView(FormView):

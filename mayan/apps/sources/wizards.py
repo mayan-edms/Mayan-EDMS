@@ -7,7 +7,7 @@ from django.http import HttpResponseRedirect
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
-from common.views import MayanPermissionCheckMixin
+from common.mixins import ViewPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
 from documents.permissions import PERMISSION_DOCUMENT_CREATE
 from metadata.forms import MetadataFormSet
@@ -15,7 +15,7 @@ from metadata.forms import MetadataFormSet
 from .models import InteractiveSource
 
 
-class DocumentCreateWizard(MayanPermissionCheckMixin, SessionWizardView):
+class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
     form_list = [DocumentTypeSelectForm, MetadataFormSet]
     template_name = 'main/generic_wizard.html'
     extra_context = {}
