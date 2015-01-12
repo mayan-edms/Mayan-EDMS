@@ -69,6 +69,7 @@ def get_tab_link_for_source(source, document=None):
         'keep_query': True,
         'remove_from_query': ['page'],
         'conditional_highlight': conditional_highlight_factory(source),
+        'famfam': 'application_form',
     }
 
 
