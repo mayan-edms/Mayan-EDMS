@@ -19,7 +19,7 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
     form_list = [DocumentTypeSelectForm, MetadataFormSet]
     template_name = 'main/generic_wizard.html'
     extra_context = {}
-    permissions_required = [PERMISSION_DOCUMENT_CREATE]
+    view_permission = PERMISSION_DOCUMENT_CREATE
 
     @staticmethod
     def _has_metadata_types(wizard):

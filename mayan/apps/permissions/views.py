@@ -33,19 +33,19 @@ from .permissions import (PERMISSION_PERMISSION_GRANT,
 class RoleCreateView(SingleObjectCreateView):
     form_class = RoleForm
     model = Role
-    permissions_required = [PERMISSION_ROLE_CREATE]
+    view_permission = PERMISSION_ROLE_CREATE
     success_url = reverse_lazy('permissions:role_list')
 
 
 class RoleDeleteView(SingleObjectDeleteView):
     model = Role
-    permissions_required = [PERMISSION_ROLE_DELETE]
+    view_permission = PERMISSION_ROLE_DELETE
     success_url = reverse_lazy('permissions:role_list')
 
 
 class RoleEditView(SingleObjectEditView):
     model = Role
-    permissions_required = [PERMISSION_ROLE_EDIT]
+    view_permission = PERMISSION_ROLE_EDIT
 
 
 def role_list(request):

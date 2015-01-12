@@ -75,12 +75,11 @@ class RedirectionMixin(object):
         return context
 
 class ViewPermissionCheckMixin(object):
-    permissions_required = None
-    # TODO: rename this to view_permission
+    view_permission = None
 
     def dispatch(self, request, *args, **kwargs):
-        if self.permissions_required:
-            Permission.objects.check_permissions(self.request.user, self.permissions_required)
+        if self.view_permission:
+            Permission.objects.check_permissions(self.request.user, [self.view_permission])
 
         return super(ViewPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
 
