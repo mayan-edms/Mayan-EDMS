@@ -29,3 +29,5 @@ setup_metadata_type_list = {'text': _(u'Metadata types'), 'view': 'metadata:setu
 setup_metadata_type_edit = {'text': _(u'Edit'), 'view': 'metadata:setup_metadata_type_edit', 'args': 'object.pk', 'famfam': 'xhtml', 'permissions': [PERMISSION_METADATA_TYPE_EDIT]}
 setup_metadata_type_delete = {'text': _(u'Delete'), 'view': 'metadata:setup_metadata_type_delete', 'args': 'object.pk', 'famfam': 'xhtml_delete', 'permissions': [PERMISSION_METADATA_TYPE_DELETE]}
 setup_metadata_type_create = {'text': _(u'Create new'), 'view': 'metadata:setup_metadata_type_create', 'famfam': 'xhtml_add', 'permissions': [PERMISSION_METADATA_TYPE_CREATE]}
+
+link_documents_missing_required_metadata = {'text': _(u'Missing metadata'), 'view': 'metadata:documents_missing_required_metadata', 'icon': 'to_do_list.png'}
