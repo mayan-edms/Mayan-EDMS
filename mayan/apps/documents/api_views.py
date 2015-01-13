@@ -18,6 +18,7 @@ from permissions.models import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
+from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (Document, DocumentPage, DocumentType, DocumentVersion,
                      RecentDocument)
 from .permissions import (PERMISSION_DOCUMENT_CREATE,
@@ -35,9 +36,6 @@ from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
                           RecentDocumentSerializer)
 from .settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .tasks import task_get_document_image, task_new_document
-
-
-DOCUMENT_IMAGE_TASK_TIMEOUT = 10
 
 
 class APIDocumentListView(generics.ListAPIView):
