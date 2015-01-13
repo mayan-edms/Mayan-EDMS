@@ -77,6 +77,7 @@ INSTALLED_APPS = (
     'document_comments',
     'document_indexing',
     'document_signatures',
+    'document_states',
     'documents',
     'events',
     'folders',

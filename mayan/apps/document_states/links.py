@@ -1,0 +1,14 @@
+from __future__ import unicode_literals
+
+from django.utils.translation import ugettext_lazy as _
+
+link_setup_workflow_list = {'text': _('Workflows'), 'view': 'document_states:setup_workflow_list', 'famfam': 'table', 'icon': 'table.png'}
+link_setup_workflow_create = {'text': _('Create'), 'view': 'document_states:setup_workflow_create', 'famfam': 'table_add'}
+link_setup_workflow_delete = {'text': _('Delete'), 'view': 'document_states:setup_workflow_delete', 'args': 'object.pk', 'famfam': 'table_delete'}
+link_setup_workflow_edit = {'text': _('Edit'), 'view': 'document_states:setup_workflow_edit', 'args': 'object.pk', 'famfam': 'table_edit'}
+
+link_setup_workflow_states = {'text': _('States'), 'view': 'document_states:setup_workflow_states', 'args': 'object.pk', 'famfam': 'style'}
+link_setup_workflow_states_create = {'text': _('Create state'), 'view': 'document_states:setup_workflow_states_create', 'args': 'object.pk', 'famfam': 'style_add'}
+
+link_setup_workflow_transitions = {'text': _('Transitions'), 'view': 'document_states:setup_workflow_transitions', 'args': 'object.pk', 'famfam': 'lightning'}
+link_setup_workflow_transitions_create = {'text': _('Create transition'), 'view': 'document_states:setup_workflow_transitions_create', 'args': 'object.pk', 'famfam': 'lightning_add'}
