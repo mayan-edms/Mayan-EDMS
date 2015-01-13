@@ -21,3 +21,4 @@ gpg_home/
 static_collected/
 *egg-info*
 mayan/settings/local.py
+.vagrant
