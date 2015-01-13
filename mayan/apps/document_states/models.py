@@ -6,19 +6,30 @@ from django.utils.translation import ugettext as _
 
 from documents.models import Document, DocumentType
 
+from .managers import WorkflowManager
+
 
 @python_2_unicode_compatible
 class Workflow(models.Model):
     label = models.CharField(max_length=255, unique=True, verbose_name=_('Label'))
+    document_types = models.ManyToManyField(DocumentType, related_name='workflows', verbose_name=_('Document types'))
+
+    objects = WorkflowManager()
 
     def __str__(self):
         return self.label
+
+    def get_document_types_not_in_workflow(self):
+        return DocumentType.objects.exclude(pk__in=self.document_types.all())
 
     def get_initial_state(self):
         try:
             return self.states.get(initial=True)
         except self.states.model.DoesNotExist:
             return None
+
+    def launch_for(self, document):
+        self.instances.create(document=document)
 
     class Meta:
         verbose_name = _('Workflow')
@@ -63,23 +74,9 @@ class WorkflowTransition(models.Model):
 
 
 @python_2_unicode_compatible
-class DocumentTypeWorkflow(models.Model):
-    document_type = models.ForeignKey(DocumentType, verbose_name=_('Document type'))
-    workflow = models.ForeignKey(Workflow, verbose_name=_('Workflow'))
-
-    def __str__(self):
-        return self.label
-
-    class Meta:
-        unique_together = ('document_type', 'workflow')
-        verbose_name = _('Document type workflow')
-        verbose_name_plural = _('Document type workflow')
-
-
-@python_2_unicode_compatible
 class WorkflowInstance(models.Model):
-    workflow = models.ForeignKey(Workflow, verbose_name=_('Workflow'))
-    document = models.ForeignKey(Document, verbose_name=_('Document'))
+    workflow = models.ForeignKey(Workflow, related_name='instances', verbose_name=_('Workflow'))
+    document = models.ForeignKey(Document, related_name='workflows', verbose_name=_('Document'))
 
     def do_transition(self, transition):
         try:
@@ -91,12 +88,18 @@ class WorkflowInstance(models.Model):
 
     def get_current_state(self):
         try:
-            return self.log_entries.order_by('datetime').last().transition.destination_state
+            return self.get_last_transition().destination_state
         except AttributeError:
             return self.workflow.get_initial_state()
 
+    def get_last_transition(self):
+        try:
+            return self.log_entries.order_by('datetime').last().transition
+        except AttributeError:
+            return None
+
     def __str__(self):
-        return self.label
+        return self.workflow
 
     class Meta:
         unique_together = ('document', 'workflow')

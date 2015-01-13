@@ -3,7 +3,8 @@ from django.conf.urls import patterns, url
 from .views import (SetupWorkflowCreateView, SetupWorkflowDeleteView,
                     SetupWorkflowEditView, SetupWorkflowListView,
                     SetupWorkflowStateListView, SetupWorkflowStateCreateView,
-                    SetupWorkflowTransitionListView, SetupWorkflowTransitionCreateView)
+                    SetupWorkflowTransitionListView, SetupWorkflowTransitionCreateView,
+                    DocumentWorkflowListView)
 
 urlpatterns = patterns('',
     url(r'^setup/all/$', SetupWorkflowListView.as_view(), name='setup_workflow_list'),
@@ -15,4 +16,12 @@ urlpatterns = patterns('',
 
     url(r'^setup/(?P<pk>\d+)/transitions/$', SetupWorkflowTransitionListView.as_view(), name='setup_workflow_transitions'),
     url(r'^setup/(?P<pk>\d+)/transitions/create/$', SetupWorkflowTransitionCreateView.as_view(), name='setup_workflow_transitions_create'),
+
+    url(r'^document/(?P<pk>\d+)/workflows/$', DocumentWorkflowListView.as_view(), name='document_workflow_list'),
 )
+
+urlpatterns += patterns('document_states.views',
+    url(r'^setup/(?P<pk>\d+)/document_types/$', 'setup_workflow_document_types', name='setup_workflow_document_types'),
+)
+
+

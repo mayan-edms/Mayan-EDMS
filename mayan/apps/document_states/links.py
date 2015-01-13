@@ -12,3 +12,7 @@ link_setup_workflow_states_create = {'text': _('Create state'), 'view': 'documen
 
 link_setup_workflow_transitions = {'text': _('Transitions'), 'view': 'document_states:setup_workflow_transitions', 'args': 'object.pk', 'famfam': 'lightning'}
 link_setup_workflow_transitions_create = {'text': _('Create transition'), 'view': 'document_states:setup_workflow_transitions_create', 'args': 'object.pk', 'famfam': 'lightning_add'}
+
+link_setup_workflow_document_types = {'text': _('Document types'), 'view': 'document_states:setup_workflow_document_types', 'args': 'object.pk', 'famfam': 'layout'}
+
+link_document_workflow_list = {'text': _('Workflows'), 'view': 'document_states:document_workflow_list', 'args': 'object.pk', 'famfam': 'table'}
