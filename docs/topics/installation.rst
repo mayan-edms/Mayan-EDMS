@@ -40,7 +40,6 @@ it very easy to start using **Mayan EDMS**. Populate the database with the proje
 Point your browser to http://127.0.0.1:8000. If everything was installed
 correctly you should see the login screen and panel showing a randomly generated admin password.
 
-=======
 Mac OSX
 -------
 
@@ -76,7 +75,7 @@ to /usr/bin/ with ...
     sudo ln -s /opt/local/bin/tesseract /usr/bin/tesseract  && \
     sudo ln -s /opt/local/bin/identify /usr/bin/identify && \
     sudo ln -s /opt/local/bin/gs /usr/bin/gs
-    
+
 ... alternatively set the paths in the ``settings/locals.py``
 
 .. code-block:: python
@@ -111,7 +110,7 @@ to /usr/bin/ with ...
     sudo ln -s /usr/local/bin/unpaper /usr/bin/unpaper && \
     sudo ln -s /usr/local/bin/pdftotext /usr/bin/pdftotext && \
     sudo ln -s /usr/local/bin/gs /usr/bin/gs && \
-    
+
 ... alternatively set the paths in the ``settings/locals.py``
 
 .. code-block:: python
