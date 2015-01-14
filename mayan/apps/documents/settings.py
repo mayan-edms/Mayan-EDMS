@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from smart_settings.api import register_settings
 
-LANGUAGE_CHOICES = [(i.bibliographic, i.name) for i in list(pycountry.languages)]
+LANGUAGE_CHOICES = [(i.bibliographic, _(i.name)) for i in list(pycountry.languages)]
 
 register_settings(
     namespace=u'documents',
