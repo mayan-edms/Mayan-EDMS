@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 import sys
 
+from django.utils.translation import ugettext_lazy as _
+
 _file_path = os.path.abspath(os.path.dirname(__file__)).split('/')
 
 BASE_DIR = '/'.join(_file_path[0:-2])
@@ -149,32 +151,30 @@ USE_TZ = True
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
 
-ugettext = lambda s: s
-
 LANGUAGES = (
-    ('ar', ugettext('Arabic')),
-    ('bg', ugettext('Bulgarian')),
-    ('bs', ugettext('Bosnian (Bosnia and Herzegovina)')),
-    ('da', ugettext('Danish')),
-    ('de', ugettext('German (Germany)')),
-    ('en', ugettext('English')),
-    ('es', ugettext('Spanish')),
-    ('fa', ugettext('Persian')),
-    ('fr', ugettext('French')),
-    ('hu', ugettext('Hungarian')),
-    ('hr', ugettext('Croatian')),
-    ('id', ugettext('Indonesian')),
-    ('it', ugettext('Italian')),
-    ('nl', ugettext('Dutch (Nethherlands)')),
-    ('pl', ugettext('Polish')),
-    ('pt', ugettext('Portuguese')),
-    ('pt-br', ugettext('Portuguese (Brazil)')),
-    ('ro', ugettext('Romanian (Romania)')),
-    ('ru', ugettext('Russian')),
-    ('sl', ugettext('Slovenian')),
-    ('tr', ugettext('Turkish')),
-    ('vi', ugettext('Vietnamese (Viet Nam)')),
-    ('zh-cn', ugettext('Chinese (China)')),
+    ('ar', _('Arabic')),
+    ('bg', _('Bulgarian')),
+    ('bs', _('Bosnian (Bosnia and Herzegovina)')),
+    ('da', _('Danish')),
+    ('de', _('German (Germany)')),
+    ('en', _('English')),
+    ('es', _('Spanish')),
+    ('fa', _('Persian')),
+    ('fr', _('French')),
+    ('hu', _('Hungarian')),
+    ('hr', _('Croatian')),
+    ('id', _('Indonesian')),
+    ('it', _('Italian')),
+    ('nl', _('Dutch (Nethherlands)')),
+    ('pl', _('Polish')),
+    ('pt', _('Portuguese')),
+    ('pt-br', _('Portuguese (Brazil)')),
+    ('ro', _('Romanian (Romania)')),
+    ('ru', _('Russian')),
+    ('sl', _('Slovenian')),
+    ('tr', _('Turkish')),
+    ('vi', _('Vietnamese (Viet Nam)')),
+    ('zh-cn', _('Chinese (China)')),
 )
 
 SITE_ID = 1

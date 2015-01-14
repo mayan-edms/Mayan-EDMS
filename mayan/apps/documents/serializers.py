@@ -2,9 +2,9 @@ from __future__ import absolute_import
 
 from rest_framework import serializers
 
-from .literals import LANGUAGE_CHOICES
 from .models import (Document, DocumentVersion, DocumentPage, DocumentType,
                      RecentDocument)
+from .settings import LANGUAGE_CHOICES
 
 
 class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):

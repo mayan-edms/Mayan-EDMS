@@ -653,7 +653,7 @@ def document_page_navigation_next(request, document_page_id):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
     else:
         document_page = get_object_or_404(document_page.siblings, page_number=document_page.page_number + 1)
-        return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
+        return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=[document_page.pk]), request.GET.urlencode()))
 
 
 def document_page_navigation_previous(request, document_page_id):
@@ -671,7 +671,7 @@ def document_page_navigation_previous(request, document_page_id):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
     else:
         document_page = get_object_or_404(document_page.siblings, page_number=document_page.page_number - 1)
-        return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
+        return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=[document_page.pk]), request.GET.urlencode()))
 
 
 def document_page_navigation_first(request, document_page_id):
@@ -685,7 +685,7 @@ def document_page_navigation_first(request, document_page_id):
 
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path)
 
-    return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
+    return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=[document_page.pk]), request.GET.urlencode()))
 
 
 def document_page_navigation_last(request, document_page_id):
@@ -699,7 +699,7 @@ def document_page_navigation_last(request, document_page_id):
 
     view = resolve_to_name(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path)
 
-    return HttpResponseRedirect(reverse(view, args=[document_page.pk]))
+    return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=[document_page.pk]), request.GET.urlencode()))
 
 
 def document_list_recent(request):
