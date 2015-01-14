@@ -1,11 +1,14 @@
 """Configuration options for the documents app"""
 
 import os
+import pycountry
 
 from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from smart_settings.api import register_settings
+
+LANGUAGE_CHOICES = [(i.bibliographic, i.name) for i in list(pycountry.languages)]
 
 register_settings(
     namespace=u'documents',
@@ -27,5 +30,6 @@ register_settings(
         #
         {'name': u'CACHE_PATH', 'global_name': u'DOCUMENTS_CACHE_PATH', 'default': os.path.join(settings.MEDIA_ROOT, 'image_cache'), 'exists': True},
         {'name': u'LANGUAGE', 'global_name': u'DOCUMENTS_LANGUAGE', 'default': u'eng', 'description': _('Default documents language (in ISO639-2 format).')},
+        {'name': u'LANGUAGE_CHOICES', 'global_name': u'DOCUMENTS_LANGUAGE_CHOICES', 'default': LANGUAGE_CHOICES, 'description': _('List of supported document languages.')},
     ]
 )
