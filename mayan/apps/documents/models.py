@@ -193,12 +193,11 @@ class Document(models.Model):
         if not self.is_new_versions_allowed(user=user):
             raise NewDocumentVersionNotAllowed
 
-        new_version = DocumentVersion(
+        new_version = DocumentVersion.objects.create(
             document=self,
             file=file_object,
             comment=comment or '',
         )
-        new_version.save()
 
         logger.debug('new_version saved')
 
