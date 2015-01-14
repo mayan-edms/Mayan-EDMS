@@ -12,10 +12,10 @@ from lock_manager import Lock, LockError
 from mayan.celery import app
 
 from .api import do_document_ocr
+from .literals import LOCK_EXPIRE
 from .models import DocumentQueue, QueueDocument
 
 logger = logging.getLogger(__name__)
-LOCK_EXPIRE = 60 * 10  # Adjust to worst case scenario
 
 
 @app.task(ignore_result=True)
