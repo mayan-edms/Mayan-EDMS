@@ -68,16 +68,20 @@ MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
 
 class AddMetadataForm(forms.Form):
+    metadata_type = forms.ModelChoiceField(queryset=MetadataType.objects.all(), label=_(u'Metadata type'))
+
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type')
         super(AddMetadataForm, self).__init__(*args, **kwargs)
         self.fields['metadata_type'].queryset = document_type.metadata.all()
 
-    metadata_type = forms.ModelChoiceField(queryset=MetadataType.objects.all(), label=_(u'Metadata type'))
-
 
 class MetadataRemoveForm(MetadataForm):
     update = forms.BooleanField(initial=False, label=_(u'Remove'), required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(MetadataRemoveForm, self).__init__(*args, **kwargs)
+        self.fields.pop('value')
 
 
 MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)
