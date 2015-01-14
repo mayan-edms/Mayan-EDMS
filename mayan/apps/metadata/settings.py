@@ -1,10 +1,11 @@
 """Configuration options for the metadata app"""
 
+from dateutil.parser import parse
+
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 
 from smart_settings.api import register_settings
-
 
 default_available_functions = {
     'current_date': now().date,
@@ -15,6 +16,7 @@ default_available_models = {
 }
 
 default_available_validators = {
+    'parse_date': lambda input: parse(input).isoformat()
 }
 
 register_settings(
