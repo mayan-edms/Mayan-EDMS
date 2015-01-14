@@ -41,7 +41,7 @@ def document_ocr_submit(self):
 @receiver(post_version_upload, dispatch_uid='post_version_upload_ocr', sender=DocumentVersion)
 def post_version_upload_ocr(sender, instance, **kwargs):
     logger.debug('received post_version_upload')
-    logger.debug('instance: %s', instance)
+    logger.debug('instance.document: %s', instance.document)
     if instance.document.document_type.ocr:
         instance.document.submit_for_ocr()
 
