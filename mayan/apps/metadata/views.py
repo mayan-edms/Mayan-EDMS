@@ -156,7 +156,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
             metadata_type = form.cleaned_data['metadata_type']
             for document in documents:
                 try:
-                    document_metadata, created = DocumentMetadata.objects.get_or_create(document=document, metadata_type=metadata_type, defaults={'value': u''})
+                    document_metadata, created = DocumentMetadata.objects.get_or_create(document=document, metadata_type=metadata_type.metadata_type, defaults={'value': u''})
                 except Exception as exception:
                     if getattr(settings, 'DEBUG', False):
                         raise
