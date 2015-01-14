@@ -1,6 +1,7 @@
 from __future__ import absolute_import
 
 from django import forms
+from django.core.exceptions import ValidationError
 from django.forms.formsets import formset_factory
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,15 +12,42 @@ from .settings import AVAILABLE_FUNCTIONS, AVAILABLE_MODELS, AVAILABLE_VALIDATOR
 class MetadataForm(forms.Form):
 
     def clean_value(self):
-        value = self.cleaned_data['value']
-        metadata_id = self.cleaned_data['id']
-        metadata_type = MetadataType.objects.get(pk=metadata_id)
-        if metadata_type.lookup and metadata_type.lookup in AVAILABLE_VALIDATORS:
-            val_func = AVAILABLE_VALIDATORS[metadata_type.lookup]
-            new_value = val_func(value)
-            if new_value:
-                value = new_value
-        return value
+        metadata_type = MetadataType.objects.get(pk=self.cleaned_data['id'])
+
+        try:
+            validation_function = AVAILABLE_VALIDATORS[metadata_type.validation]
+        except KeyError:
+            # User entered a validation function name, but was not found
+            # Return value entered as is
+            return self.cleaned_data['value']
+        else:
+            try:
+                # If it is a parsing function we should get a value
+                # If it is a validation function we get nothing on success
+                result = validation_function(self.cleaned_data['value'])
+            except Exception as exception:
+                # If it is a validation function and an exception is raise
+                # we wrap that into a new ValidationError exception
+                # If the function exception is a ValidationError itself the
+                # error messages will be in a 'messages' property, so we
+                # contatenate them.
+                # Otherwise we extract whatever single message the exception
+                # included.
+                try:
+                    message = u', '.join(exception.messages)
+                except AttributeError:
+                    message = unicode(exception)
+
+                raise ValidationError(_('Invalid value: %(message)s'), params={'message': message}, code='invalid')
+            else:
+                # Return the result if it was a parsing function
+                # If it was a validation function and passed correctly we return
+                # the original input value
+                return result or self.cleaned_data['value']
+
+        # If a validation function was never specified we return the original
+        # value
+        return self.cleaned_data['value']
 
     def __init__(self, *args, **kwargs):
         super(MetadataForm, self).__init__(*args, **kwargs)
@@ -39,7 +67,7 @@ class MetadataForm(forms.Form):
             self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
             self.fields['id'].initial = self.metadata_type.pk
 
-            if self.metadata_type.lookup and self.metadata_type.lookup not in AVAILABLE_VALIDATORS:
+            if self.metadata_type.lookup:
                 try:
                     choices = eval(self.metadata_type.lookup, AVAILABLE_MODELS)
                     self.fields['value'] = forms.ChoiceField(label=self.fields['value'].label)
@@ -68,16 +96,20 @@ MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
 
 class AddMetadataForm(forms.Form):
+    metadata_type = forms.ModelChoiceField(queryset=MetadataType.objects.all(), label=_(u'Metadata type'))
+
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type')
         super(AddMetadataForm, self).__init__(*args, **kwargs)
         self.fields['metadata_type'].queryset = document_type.metadata.all()
 
-    metadata_type = forms.ModelChoiceField(queryset=MetadataType.objects.all(), label=_(u'Metadata type'))
-
 
 class MetadataRemoveForm(MetadataForm):
     update = forms.BooleanField(initial=False, label=_(u'Remove'), required=False)
+
+    def __init__(self, *args, **kwargs):
+        super(MetadataRemoveForm, self).__init__(*args, **kwargs)
+        self.fields.pop('value')
 
 
 MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)
@@ -85,5 +117,5 @@ MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)
 
 class MetadataTypeForm(forms.ModelForm):
     class Meta:
-        fields = ('name', 'title', 'default', 'lookup')
+        fields = ('name', 'title', 'default', 'lookup', 'validation')
         model = MetadataType

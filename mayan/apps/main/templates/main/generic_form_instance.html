@@ -17,16 +17,26 @@
 {% endif %}
 
 {% if form_display_mode_table %}
+    <div class="flash">
+        {% for field in form.visible_fields %}
+                {% for error in field.errors %}
+                    <div class="message error">
+                        <p>{{ error }}</p>
+                    </div>
+              {% endfor %}
+        {% endfor %}
+    </div>
+
     {% for field in form.hidden_fields %}
         {{ field }}
     {% endfor %}
     <tr class="{% cycle 'odd' 'even2' %}">
     {% for field in form.visible_fields %}
-            <td title="{% if field.errors %}{% for error in field.errors %}{{ error }}{% if not forloop.last %} | {% endif %}{% endfor %}{% else %}{{ field.help_text }}{% endif %}">
-            {% if field.errors %}<div class="flash"><div class="error">{% endif %}
+        <td title="{% if field.errors %}{% for error in field.errors %}{{ error }}{% if not forloop.last %} | {% endif %}{% endfor %}{% else %}{{ field.help_text }}{% endif %}">
+            {% if field.errors %}<div class="error">{% endif %}
               {{ field }}
-            {% if field.errors %}</div></div>{% endif %}
-            </td>
+            {% if field.errors %}</div>{% endif %}
+        </td>
     {% endfor %}
     </tr>
 {% else %}
