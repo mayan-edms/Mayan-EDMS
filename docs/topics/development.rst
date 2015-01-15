@@ -99,7 +99,7 @@ Then on a separate console launch a celery worker from the same provisioned Vagr
     $ vagrant ssh
     vagrant@vagrant-ubuntu-trusty-32:~$ cd ~/mayan-edms/
     vagrant@vagrant-ubuntu-trusty-32:~$ source venv/bin/activate
-    vagrant@vagrant-ubuntu-trusty-32:~$ DJANGO_SETTINGS_MODULE='mayan.settings.celery_redis' celery -A mayan worker -l DEBUG -Q checkouts,mailing,uploads,converter,ocr,tools,indexing,metadata -Ofair
+    vagrant@vagrant-ubuntu-trusty-32:~$ DJANGO_SETTINGS_MODULE='mayan.settings.celery_redis' celery -A mayan worker -l DEBUG -Q checkouts,mailing,uploads,converter,ocr,tools,indexing,metadata -Ofair -B
 
 
 Contributing changes
