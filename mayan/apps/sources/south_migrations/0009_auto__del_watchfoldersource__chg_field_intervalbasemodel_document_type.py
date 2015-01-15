@@ -14,6 +14,10 @@ def fake_get_or_create(model, *args, **kwargs):
 
 
 class Migration(SchemaMigration):
+    depends_on = (
+        ('documents', '0024_auto__add_field_documenttype_ocr'),
+    )
+
     needed_by = (
         ('documents', '0031_remove_orphan_documents'),
     )
