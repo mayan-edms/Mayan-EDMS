@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import codecs
 import errno
@@ -20,11 +20,11 @@ class Tesseract(BackendBase):
         """
         fd, filepath = tempfile.mkstemp()
         os.close(fd)
-        ocr_output = os.extsep.join([filepath, u'txt'])
+        ocr_output = os.extsep.join([filepath, 'txt'])
         command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(filepath)]
 
         if language is not None:
-            command.extend([u'-l', language])
+            command.extend(['-l', language])
 
         try:
             proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
