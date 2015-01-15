@@ -300,6 +300,9 @@ class DocumentVersion(models.Model):
         verbose_name = _(u'Document version')
         verbose_name_plural = _(u'Document version')
 
+    def __unicode__(self):
+        return u'{0} - {1}'.format(self.document, self.timestamp)
+
     def save(self, *args, **kwargs):
         """
         Overloaded save method that updates the document version's checksum,
