@@ -207,11 +207,18 @@ def metadata_add(request, document_id=None, document_id_list=None):
         'form': form,
         'next': next,
     }
+
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _(u'Add metadata type to document: %s') % ', '.join([unicode(d) for d in documents])
-    elif len(documents) > 1:
-        context['title'] = _(u'Add metadata type to documents: %s') % ', '.join([unicode(d) for d in documents])
+
+    context['title'] = ungettext(
+        u'Add metadata types to document: %(document)s',
+        u'Add metadata types to the %(count)d selected documents',
+        len(documents)
+    ) % {
+        u'count': len(documents),
+        u'document': documents[0],
+    }
 
     return render_to_response('main/generic_form.html', context,
                               context_instance=RequestContext(request))
