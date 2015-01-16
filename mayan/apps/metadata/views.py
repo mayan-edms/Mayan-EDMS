@@ -125,9 +125,15 @@ def metadata_edit(request, document_id=None, document_id_list=None):
 
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _(u'Edit metadata for document: %s') % ', '.join([unicode(d) for d in documents])
-    elif len(documents) > 1:
-        context['title'] = _(u'Edit metadata for documents: %s') % ', '.join([unicode(d) for d in documents])
+
+    context['title'] = ungettext(
+        u'Edit metadata for document: %(document)s',
+        u'Edit metadata for the %(count)d selected documents',
+        len(documents)
+    ) % {
+        u'count': len(documents),
+        u'document': documents[0],
+    }
 
     return render_to_response('main/generic_form.html', context,
                               context_instance=RequestContext(request))
