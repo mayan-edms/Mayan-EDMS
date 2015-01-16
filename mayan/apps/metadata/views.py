@@ -223,24 +223,33 @@ def metadata_multiple_add(request):
 
 def metadata_remove(request, document_id=None, document_id_list=None):
     if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
-        if documents[0].metadata.count() == 0:
-            messages.warning(request, _(u'The selected document doesn\'t have any metadata.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        document_id_list = unicode(document_id)
 
-    elif document_id_list:
-        documents = [get_object_or_404(Document.objects.select_related('document_type'), pk=document_id) for document_id in document_id_list.split(',')]
-        if len(set([document.document_type.pk for document in documents])) > 1:
-            messages.error(request, _(u'Only select documents of the same type.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+    documents = Document.objects.select_related('metadata').filter(pk__in=document_id_list.split(','))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
+        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_REMOVE, request.user, documents)
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_EDIT, request.user, documents)
 
     if not documents:
-        messages.error(request, _(u'Must provide at least one document.'))
+        if document_id:
+            raise Http404
+        else:
+            messages.error(request, _(u'Must provide at least one document.'))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+
+    if len(set([document.document_type.pk for document in documents])) > 1:
+        messages.error(request, _(u'Only select documents of the same type.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+
+    if set(documents.values_list('metadata__value' ,flat=True)) == set([None]):
+        message = ungettext(
+            u'The selected document doesn\'t have any metadata.',
+            u'The selected documents doesn\'t have any metadata.',
+            len(documents)
+        )
+        messages.warning(request, message)
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     post_action_redirect = reverse('documents:document_list_recent')
@@ -291,11 +300,18 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         'form': formset,
         'next': next,
     }
+
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _(u'Remove metadata types from document: %s') % ', '.join([unicode(d) for d in documents])
-    elif len(documents) > 1:
-        context['title'] = _(u'Remove metadata types from documents: %s') % ', '.join([unicode(d) for d in documents])
+
+    context['title'] = ungettext(
+        u'Remove metadata types from document: %(document)s',
+        u'Remove metadata types from the %(count)d selected documents',
+        len(documents)
+    ) % {
+        u'count': len(documents),
+        u'document': documents[0],
+    }
 
     return render_to_response('main/generic_form.html', context,
                               context_instance=RequestContext(request))
