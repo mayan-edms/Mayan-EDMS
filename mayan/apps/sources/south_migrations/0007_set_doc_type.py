@@ -13,6 +13,9 @@ def fake_get_or_create(model, *args, **kwargs):
 
 
 class Migration(DataMigration):
+    needed_by = (
+        ('documents', '0024_auto__add_field_documenttype_ocr'),
+    )
 
     def forwards(self, orm):
         "Write your forwards methods here."

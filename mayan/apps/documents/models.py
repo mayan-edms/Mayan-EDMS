@@ -193,12 +193,11 @@ class Document(models.Model):
         if not self.is_new_versions_allowed(user=user):
             raise NewDocumentVersionNotAllowed
 
-        new_version = DocumentVersion(
+        new_version = DocumentVersion.objects.create(
             document=self,
             file=file_object,
             comment=comment or '',
         )
-        new_version.save()
 
         logger.debug('new_version saved')
 
@@ -300,6 +299,9 @@ class DocumentVersion(models.Model):
     class Meta:
         verbose_name = _(u'Document version')
         verbose_name_plural = _(u'Document version')
+
+    def __unicode__(self):
+        return u'{0} - {1}'.format(self.document, self.timestamp)
 
     def save(self, *args, **kwargs):
         """

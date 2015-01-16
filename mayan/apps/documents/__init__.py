@@ -77,10 +77,8 @@ register_links(Document, [document_events_view, document_version_list], menu_nam
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])
-secondary_menu_links = [document_list_recent, document_list]
-# TODO: register this at sources app too
-register_links(['documents:document_list_recent', 'documents:document_list', 'sources:document_create', 'sources:document_create_multiple', 'sources:upload_interactive', 'sources:staging_file_delete'], secondary_menu_links, menu_name='secondary_menu')
-register_links(Document, secondary_menu_links, menu_name='secondary_menu')
+register_links(['documents:document_list_recent', 'documents:document_list'], [document_list_recent, document_list], menu_name='secondary_menu')
+register_links(Document, [document_list_recent, document_list], menu_name='secondary_menu')
 
 # Document page links
 register_links(DocumentPage, [

@@ -1,20 +1,13 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import DocumentQueue, QueueDocument
+from .models import DocumentVersionOCRError
 
 
-class QueueDocumentInline(admin.StackedInline):
-    model = QueueDocument
-    extra = 1
-    classes = ('collapse-open',)
-    allow_add = True
+class DocumentVersionOCRErrorAdmin(admin.ModelAdmin):
+    list_display = ('document_version', 'datetime_submitted')
+    readonly_fields = ('document_version', 'datetime_submitted', 'result')
 
 
-class DocumentQueueAdmin(admin.ModelAdmin):
-    inlines = [QueueDocumentInline]
-    list_display = ('name', 'label')
-
-
-admin.site.register(DocumentQueue, DocumentQueueAdmin)
+admin.site.register(DocumentVersionOCRError, DocumentVersionOCRErrorAdmin)

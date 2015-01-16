@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
@@ -8,33 +8,33 @@ from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
 from acls.models import AccessEntry
-from documents.models import Document
+from documents.models import DocumentVersion
 from permissions.models import Permission
 from rest_api.permissions import MayanPermission
 
 from .permissions import PERMISSION_OCR_DOCUMENT
-from .serializers import DocumentOCRSerializer
+from .serializers import DocumentVersionOCRSerializer
 
 
-class DocumentOCRView(generics.GenericAPIView):
-    serializer_class = DocumentOCRSerializer
+class DocumentVersionOCRView(generics.GenericAPIView):
+    serializer_class = DocumentVersionOCRSerializer
 
     permission_classes = (MayanPermission,)
 
     def post(self, request, *args, **kwargs):
-        """Submit document OCR queue."""
+        """Submit document version for OCR."""
 
         serializer = self.get_serializer(data=request.DATA, files=request.FILES)
 
         if serializer.is_valid():
-            document = get_object_or_404(Document, pk=serializer.data['document_id'])
+            document_version = get_object_or_404(DocumentVersion, pk=serializer.data['document_version_id'])
 
             try:
                 Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
             except PermissionDenied:
-                AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document)
+                AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document_version.document)
 
-            document.submit_for_ocr()
+            document_version.submit_for_ocr()
 
             headers = self.get_success_headers(serializer.data)
             return Response(serializer.data, status=status.HTTP_202_ACCEPTED,
