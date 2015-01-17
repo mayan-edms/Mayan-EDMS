@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-11 17:59-0400\n"
+"POT-Creation-Date: 2015-01-17 02:56-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,9 +18,23 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:34 links.py:19 permissions.py:7
+#: __init__.py:37 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
+
+#: __init__.py:67
+#, fuzzy
+msgid "Document"
+msgstr "document"
+
+#: __init__.py:70
+msgid "Added"
+msgstr ""
+
+#: __init__.py:73 models.py:14
+#, fuzzy
+msgid "Result"
+msgstr "result"
 
 #: api.py:74
 msgid "Text from OCR"
@@ -55,62 +69,26 @@ msgstr ""
 "content."
 
 #: links.py:18
-#, fuzzy
-msgid "Queue document list"
-msgstr "queue document list"
-
-#: models.py:12
-msgid "Name"
+msgid "OCR Errors"
 msgstr ""
 
-#: models.py:13
+#: models.py:12
 #, fuzzy
-msgid "Label"
-msgstr "label"
-
-#: models.py:16 models.py:24
-#, fuzzy
-msgid "Document queue"
-msgstr "document queue"
-
-#: models.py:17
-#, fuzzy
-msgid "Document queues"
+msgid "Document version"
 msgstr "document queues"
 
-#: models.py:25 views.py:37
-#, fuzzy
-msgid "Document"
-msgstr "document"
-
-#: models.py:26
+#: models.py:13
 #, fuzzy
 msgid "Date time submitted"
 msgstr "date time submitted"
 
-#: models.py:27 views.py:41
-#, fuzzy
-msgid "Result"
-msgstr "result"
+#: models.py:21
+msgid "Document Version OCR Error"
+msgstr ""
 
-#: models.py:28
-#, fuzzy
-msgid "Node name"
-msgstr "node name"
-
-#: models.py:32
-#, fuzzy
-msgid "Queue document"
-msgstr "queue document"
-
-#: models.py:33
-#, fuzzy
-msgid "Queue documents"
-msgstr "queue documents"
-
-#: models.py:39 views.py:37
-msgid "Missing document."
-msgstr "Missing document."
+#: models.py:22
+msgid "Document Version OCR Errors"
+msgstr ""
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -140,91 +118,114 @@ msgstr ""
 
 #: views.py:31
 #, fuzzy, python-format
-msgid "Documents in queue: %s"
-msgstr "documents in queue: %s"
-
-#: views.py:38
-#, fuzzy
-msgid "Thumbnail"
-msgstr "thumbnail"
-
-#: views.py:39
-msgid "Added"
-msgstr ""
-
-#: views.py:40
-msgid "Node"
-msgstr ""
-
-#: views.py:57 views.py:136
-msgid "Must provide at least one queue document."
-msgstr "Must provide at least one queue document."
-
-#: views.py:67
-#, python-format
-msgid "Queue document: %(document)s deleted successfully."
-msgstr "Queue document: %(document)s deleted successfully."
-
-#: views.py:71
-#, python-format
-msgid "Error deleting document: %(document)s; %(error)s"
-msgstr "Error deleting document: %(document)s; %(error)s"
-
-#: views.py:83
-#, python-format
-msgid "Are you sure you wish to delete queue document: %s?"
-msgstr "Are you sure you wish to delete queue document: %s?"
-
-#: views.py:85
-#, python-format
-msgid "Are you sure you wish to delete queue documents: %s?"
-msgstr "Are you sure you wish to delete queue documents: %s?"
-
-#: views.py:120
-#, fuzzy, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Document: %(document)s was added to the OCR queue: %(queue)s."
 
-#: views.py:148
-#, fuzzy, python-format
-msgid "Document: %(document)s was re-queued for OCR."
-msgstr "Document: %(document)s is already queued."
-
-#: views.py:153
-#, python-format
-msgid "Document id#: %d, no longer exists."
-msgstr "Document id#: %d, no longer exists."
-
-#: views.py:163
-#, python-format
-msgid "Are you sure you wish to re-queue document: %s?"
-msgstr "Are you sure you wish to re-queue document: %s?"
-
-#: views.py:165
-#, python-format
-msgid "Are you sure you wish to re-queue documents: %s?"
-msgstr "Are you sure you wish to re-queue documents: %s?"
-
-#: views.py:185
+#: views.py:55
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Are you sure you wish to clean up all the pages content?"
 
-#: views.py:186
+#: views.py:56
 msgid "On large databases this operation may take some time to execute."
 msgstr "On large databases this operation may take some time to execute."
 
-#: views.py:191
+#: views.py:62
 msgid "Document pages content clean up complete."
 msgstr "Document pages content clean up complete."
 
-#: views.py:193
+#: views.py:64
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Document pages content clean up error: %s"
 
-#: parsers/__init__.py:93 parsers/__init__.py:170
+#: views.py:74
+#, fuzzy
+msgid "OCR errors"
+msgstr "error"
+
+#: views.py:90 views.py:142
+#, fuzzy
+msgid "Make at least one selection."
+msgstr "Must provide at least one queue document."
+
+#: views.py:100
+#, fuzzy, python-format
+msgid "Entry: %(entry)s deleted successfully."
+msgstr "Queue document: %(document)s deleted successfully."
+
+#: views.py:104
+#, fuzzy, python-format
+msgid "Error entry: %(entry)s; %(error)s"
+msgstr "Error deleting document: %(document)s; %(error)s"
+
+#: views.py:118
+#, fuzzy, python-format
+msgid "Are you sure you wish to delete the entry: %(entry)s?"
+msgid_plural "Are you sure you wish to delete these %(count)d entries."
+msgstr[0] "Are you sure you wish to delete queue document: %s?"
+msgstr[1] "Are you sure you wish to delete queue document: %s?"
+
+#: views.py:154
+#, fuzzy, python-format
+msgid "Entry: %(entry)s was re-queued for OCR."
+msgstr "Document: %(document)s is already queued."
+
+#: views.py:159
+#, fuzzy, python-format
+msgid "Document version id#: %d, no longer exists."
+msgstr "Document id#: %d, no longer exists."
+
+#: views.py:171
+#, fuzzy, python-format
+msgid "Are you sure you wish to re-queue the entry: %(entry)s?"
+msgid_plural "Are you sure you wish to re-queue these %(count)d entries."
+msgstr[0] "Are you sure you wish to re-queue document: %s?"
+msgstr[1] "Are you sure you wish to re-queue document: %s?"
+
+#: parsers/__init__.py:95 parsers/__init__.py:172
 msgid "Text extracted from PDF"
 msgstr "Text extracted from PDF"
+
+#, fuzzy
+#~ msgid "Queue document list"
+#~ msgstr "queue document list"
+
+#, fuzzy
+#~ msgid "Label"
+#~ msgstr "label"
+
+#, fuzzy
+#~ msgid "Document queue"
+#~ msgstr "document queue"
+
+#, fuzzy
+#~ msgid "Node name"
+#~ msgstr "node name"
+
+#, fuzzy
+#~ msgid "Queue document"
+#~ msgstr "queue document"
+
+#, fuzzy
+#~ msgid "Queue documents"
+#~ msgstr "queue documents"
+
+#~ msgid "Missing document."
+#~ msgstr "Missing document."
+
+#, fuzzy
+#~ msgid "Documents in queue: %s"
+#~ msgstr "documents in queue: %s"
+
+#, fuzzy
+#~ msgid "Thumbnail"
+#~ msgstr "thumbnail"
+
+#~ msgid "Are you sure you wish to delete queue documents: %s?"
+#~ msgstr "Are you sure you wish to delete queue documents: %s?"
+
+#~ msgid "Are you sure you wish to re-queue documents: %s?"
+#~ msgstr "Are you sure you wish to re-queue documents: %s?"
 
 #~ msgid "Can edit an OCR queue properties"
 #~ msgstr "Can edit an OCR queue properties"
@@ -268,9 +269,6 @@ msgstr "Text extracted from PDF"
 
 #~ msgid "processing"
 #~ msgstr "processing"
-
-#~ msgid "error"
-#~ msgstr "error"
 
 #~ msgid "name"
 #~ msgstr "name"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-11 18:00-0400\n"
+"POT-Creation-Date: 2015-01-17 02:57-0400\n"
 "PO-Revision-Date: 2014-10-30 15:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:40
+#: __init__.py:30
 msgid "Thumbnail"
 msgstr "اندازه کوچک"
 
@@ -57,7 +57,7 @@ msgstr "کپی کامل Clone"
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:21 models.py:86 views.py:370
+#: links.py:21 models.py:86 views.py:371
 msgid "Sources"
 msgstr "سورس"
 
@@ -139,11 +139,11 @@ msgstr "ایمیل IMAP"
 msgid "Title"
 msgstr "لقب"
 
-#: models.py:42 views.py:379
+#: models.py:42 views.py:380
 msgid "Enabled"
 msgstr "فعال شده"
 
-#: models.py:85 views.py:524 views.py:553
+#: models.py:85 views.py:525 views.py:554
 msgid "Source"
 msgstr "سورس"
 
@@ -310,15 +310,15 @@ msgstr "پرونده تحت نظر"
 msgid "Enter a valid value."
 msgstr "یک مقدار معتبر وارد کنید."
 
-#: models.py:385 views.py:487
+#: models.py:385 views.py:488
 msgid "Order"
 msgstr "ترتیب"
 
-#: models.py:386 views.py:488 views.py:525 views.py:554
+#: models.py:386 views.py:489 views.py:526 views.py:555
 msgid "Transformation"
 msgstr "تبدیلات"
 
-#: models.py:387 views.py:489
+#: models.py:387 views.py:490
 msgid "Arguments"
 msgstr "آرگومانها"
 
@@ -355,155 +355,155 @@ msgstr "ویرایش سورس سند"
 msgid "View existing document sources"
 msgstr "دیدن سورس اسناد موجود"
 
-#: views.py:104 wizards.py:34
+#: views.py:105 wizards.py:34
 #, fuzzy
 msgid ""
 "No interactive document sources have been defined or none have been enabled, "
 "create one before proceeding."
 msgstr "هیج سندی با سورس محاوره ای تعریف ویا فعال نشده است."
 
-#: views.py:132
+#: views.py:133
 msgid "Files in staging path"
 msgstr "فایلهای درون راه مرحله ای"
 
-#: views.py:216
+#: views.py:217
 msgid "New document queued for uploaded and will be available shortly."
 msgstr "سند جدیدی که در صف آپلود است بزودی قابل دسترس خواهد بود."
 
-#: views.py:241
+#: views.py:242
 #, python-format
 msgid "Upload a local document from source: %s"
 msgstr "آپلود کردن فایل محلی از اصل:%s"
 
-#: views.py:249
+#: views.py:250
 msgid "Current document type"
 msgstr "نوع سند فعلی"
 
-#: views.py:250
+#: views.py:251
 msgid "None"
 msgstr "هیچ"
 
-#: views.py:257
+#: views.py:258
 msgid "Current metadata"
 msgstr "متادیتا فعلی"
 
-#: views.py:305
+#: views.py:306
 msgid "New document version queued for uploaded and will be available shortly."
 msgstr "نسخه سند جدید که جهت آپلود وارد صف شد بزودی قابل دسترس خواهد بود."
 
-#: views.py:331
+#: views.py:332
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr "آپلود نسخه ای جدید از اصل : %s"
 
-#: views.py:347
+#: views.py:348
 msgid "Staging file delete successfully."
 msgstr "حذف موفق فایل مرحله ای."
 
-#: views.py:349
+#: views.py:350
 #, python-format
 msgid "Staging file delete error; %s."
 msgstr "خطای %s در حذف فایل مرحله ای."
 
-#: views.py:375
+#: views.py:376
 msgid "Type"
 msgstr "نوع"
 
-#: views.py:380
+#: views.py:381
 msgid "Yes"
 msgstr ""
 
-#: views.py:380
+#: views.py:381
 msgid "No"
 msgstr ""
 
-#: views.py:402
+#: views.py:403
 msgid "Source edited successfully"
 msgstr "ویرایش موفق سورس"
 
-#: views.py:405
+#: views.py:406
 #, python-format
 msgid "Error editing source; %s"
 msgstr "خطا %s در ویرایش سورس."
 
-#: views.py:410
+#: views.py:411
 #, python-format
 msgid "Edit source: %s"
 msgstr "ویرایش اصل : %s"
 
-#: views.py:429
+#: views.py:430
 #, python-format
 msgid "Source \"%s\" deleted successfully."
 msgstr "حذف موفق سورس: %s"
 
-#: views.py:431
+#: views.py:432
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
 msgstr "خطای حذف سورس  \"%(source)s\": %(error)s"
 
-#: views.py:437
+#: views.py:438
 #, python-format
 msgid "Are you sure you wish to delete the source: %s?"
 msgstr "آیا از حذف سورس %s مطمئن هستید؟"
 
-#: views.py:460
+#: views.py:461
 msgid "Source created successfully"
 msgstr "سورس با موفقیت ایجاد شد."
 
-#: views.py:463
+#: views.py:464
 #, python-format
 msgid "Error creating source; %s"
 msgstr "خطای ایجاد سورس: %s"
 
-#: views.py:468
+#: views.py:469
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "ایجاد سورس جدید از نوع %s."
 
-#: views.py:482
+#: views.py:483
 #, python-format
 msgid "Transformations for: %s"
 msgstr "تبدیلات برای : %s"
 
-#: views.py:511
+#: views.py:512
 msgid "Source transformation edited successfully"
 msgstr "تبدیلات سورس با موفقیت اجام شد."
 
-#: views.py:514
+#: views.py:515
 #, python-format
 msgid "Error editing source transformation; %s"
 msgstr "خطا در ویرایش تبدیلات سورس: %s"
 
-#: views.py:519
+#: views.py:520
 #, python-format
 msgid "Edit transformation: %s"
 msgstr "ویرایش تبدیلات: %s"
 
-#: views.py:541
+#: views.py:542
 msgid "Source transformation deleted successfully."
 msgstr "تبدیلات سورس با موفقیت حذف شد."
 
-#: views.py:543
+#: views.py:544
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
 msgstr "خطا در حذف تبدیلات سورس:  %(error)s"
 
-#: views.py:556
+#: views.py:557
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
 msgstr "آیا از حذف تبدیلات  \"%(transformation)s\" مطمئن هستید؟"
 
-#: views.py:577
+#: views.py:578
 msgid "Source transformation created successfully"
 msgstr "سورس تبدیلات با موفقیت انجام شد."
 
-#: views.py:580
+#: views.py:581
 #, python-format
 msgid "Error creating source transformation; %s"
 msgstr "خطای ایجاد تبدیلات سورس. %s"
 
-#: views.py:588
+#: views.py:589
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr "ایجاد تبدیلات جدیدبرای سورس: %s"

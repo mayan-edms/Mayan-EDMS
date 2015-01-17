@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-11 17:59-0400\n"
+"POT-Creation-Date: 2015-01-17 02:56-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
@@ -20,9 +20,21 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:34 links.py:19 permissions.py:7
+#: __init__.py:37 permissions.py:7
 msgid "OCR"
 msgstr "扫描输入"
+
+#: __init__.py:67
+msgid "Document"
+msgstr ""
+
+#: __init__.py:70
+msgid "Added"
+msgstr ""
+
+#: __init__.py:73 models.py:14
+msgid "Result"
+msgstr ""
 
 #: api.py:74
 msgid "Text from OCR"
@@ -51,52 +63,25 @@ msgid ""
 msgstr "执行一个语言过滤器，来移除文档页面内容中那些通用OCR错误。"
 
 #: links.py:18
-msgid "Queue document list"
+msgid "OCR Errors"
 msgstr ""
 
 #: models.py:12
-msgid "Name"
-msgstr ""
+#, fuzzy
+msgid "Document version"
+msgstr "文档队列：%d"
 
 #: models.py:13
-msgid "Label"
-msgstr ""
-
-#: models.py:16 models.py:24
-msgid "Document queue"
-msgstr ""
-
-#: models.py:17
-msgid "Document queues"
-msgstr ""
-
-#: models.py:25 views.py:37
-msgid "Document"
-msgstr ""
-
-#: models.py:26
 msgid "Date time submitted"
 msgstr ""
 
-#: models.py:27 views.py:41
-msgid "Result"
+#: models.py:21
+msgid "Document Version OCR Error"
 msgstr ""
 
-#: models.py:28
-msgid "Node name"
+#: models.py:22
+msgid "Document Version OCR Errors"
 msgstr ""
-
-#: models.py:32
-msgid "Queue document"
-msgstr ""
-
-#: models.py:33
-msgid "Queue documents"
-msgstr ""
-
-#: models.py:39 views.py:37
-msgid "Missing document."
-msgstr "缺失的文档"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -125,90 +110,80 @@ msgstr "用于执行OCR后台应用的全路径。"
 
 #: views.py:31
 #, python-format
-msgid "Documents in queue: %s"
-msgstr ""
-
-#: views.py:38
-msgid "Thumbnail"
-msgstr ""
-
-#: views.py:39
-msgid "Added"
-msgstr ""
-
-#: views.py:40
-msgid "Node"
-msgstr ""
-
-#: views.py:57 views.py:136
-msgid "Must provide at least one queue document."
-msgstr "必须至少提供一个队列文档"
-
-#: views.py:67
-#, python-format
-msgid "Queue document: %(document)s deleted successfully."
-msgstr "队列文档：%(document)s删除成功"
-
-#: views.py:71
-#, python-format
-msgid "Error deleting document: %(document)s; %(error)s"
-msgstr "删除文档%(document)s出错：%(error)s"
-
-#: views.py:83
-#, python-format
-msgid "Are you sure you wish to delete queue document: %s?"
-msgstr "确定要删除队列文档：%s么?"
-
-#: views.py:85
-#, python-format
-msgid "Are you sure you wish to delete queue documents: %s?"
-msgstr "确定要删除队列文档：%s么?"
-
-#: views.py:120
-#, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr ""
 
-#: views.py:148
-#, fuzzy, python-format
-msgid "Document: %(document)s was re-queued for OCR."
-msgstr "Document: %(document)s is already queued."
-
-#: views.py:153
-#, python-format
-msgid "Document id#: %d, no longer exists."
-msgstr "文档 id#: %d不存在。"
-
-#: views.py:163
-#, python-format
-msgid "Are you sure you wish to re-queue document: %s?"
-msgstr "确定要重新排队文档： %s么?"
-
-#: views.py:165
-#, python-format
-msgid "Are you sure you wish to re-queue documents: %s?"
-msgstr "确定要重新排队文档： %s么?"
-
-#: views.py:185
+#: views.py:55
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "确定要清除所有的页面内容么？"
 
-#: views.py:186
+#: views.py:56
 msgid "On large databases this operation may take some time to execute."
 msgstr "在大数据库中，此操作可能比较耗时。"
 
-#: views.py:191
+#: views.py:62
 msgid "Document pages content clean up complete."
 msgstr "文档页面内容完全清除。"
 
-#: views.py:193
+#: views.py:64
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "文档页面内容清除出错：%s"
 
-#: parsers/__init__.py:93 parsers/__init__.py:170
+#: views.py:74
+#, fuzzy
+msgid "OCR errors"
+msgstr "error"
+
+#: views.py:90 views.py:142
+#, fuzzy
+msgid "Make at least one selection."
+msgstr "必须至少提供一个队列文档"
+
+#: views.py:100
+#, fuzzy, python-format
+msgid "Entry: %(entry)s deleted successfully."
+msgstr "队列文档：%(document)s删除成功"
+
+#: views.py:104
+#, fuzzy, python-format
+msgid "Error entry: %(entry)s; %(error)s"
+msgstr "删除文档%(document)s出错：%(error)s"
+
+#: views.py:118
+#, fuzzy, python-format
+msgid "Are you sure you wish to delete the entry: %(entry)s?"
+msgid_plural "Are you sure you wish to delete these %(count)d entries."
+msgstr[0] "确定要删除队列文档：%s么?"
+
+#: views.py:154
+#, fuzzy, python-format
+msgid "Entry: %(entry)s was re-queued for OCR."
+msgstr "Document: %(document)s is already queued."
+
+#: views.py:159
+#, fuzzy, python-format
+msgid "Document version id#: %d, no longer exists."
+msgstr "文档 id#: %d不存在。"
+
+#: views.py:171
+#, fuzzy, python-format
+msgid "Are you sure you wish to re-queue the entry: %(entry)s?"
+msgid_plural "Are you sure you wish to re-queue these %(count)d entries."
+msgstr[0] "确定要重新排队文档： %s么?"
+
+#: parsers/__init__.py:95 parsers/__init__.py:172
 msgid "Text extracted from PDF"
 msgstr "从PDF中提取的文本"
+
+#~ msgid "Missing document."
+#~ msgstr "缺失的文档"
+
+#~ msgid "Are you sure you wish to delete queue documents: %s?"
+#~ msgstr "确定要删除队列文档：%s么?"
+
+#~ msgid "Are you sure you wish to re-queue documents: %s?"
+#~ msgstr "确定要重新排队文档： %s么?"
 
 #~ msgid "Can edit an OCR queue properties"
 #~ msgstr "可以编辑OCR队列属性"
@@ -218,9 +193,6 @@ msgstr "从PDF中提取的文本"
 
 #~ msgid "Automatically queue newly created documents for OCR."
 #~ msgstr "自动将扫描输入作为新建文档队列"
-
-#~ msgid "Document queues: %d"
-#~ msgstr "文档队列：%d"
 
 #~ msgid "Queued documents: %d"
 #~ msgstr "队列文档：%d"
@@ -251,9 +223,6 @@ msgstr "从PDF中提取的文本"
 
 #~ msgid "processing"
 #~ msgstr "processing"
-
-#~ msgid "error"
-#~ msgstr "error"
 
 #~ msgid "name"
 #~ msgstr "name"

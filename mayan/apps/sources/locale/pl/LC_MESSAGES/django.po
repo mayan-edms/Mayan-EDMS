@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-11 18:00-0400\n"
+"POT-Creation-Date: 2015-01-17 02:57-0400\n"
 "PO-Revision-Date: 2014-10-30 15:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,7 +22,7 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:40
+#: __init__.py:30
 msgid "Thumbnail"
 msgstr ""
 
@@ -58,7 +58,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: links.py:21 models.py:86 views.py:370
+#: links.py:21 models.py:86 views.py:371
 msgid "Sources"
 msgstr ""
 
@@ -138,11 +138,11 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: models.py:42 views.py:379
+#: models.py:42 views.py:380
 msgid "Enabled"
 msgstr ""
 
-#: models.py:85 views.py:524 views.py:553
+#: models.py:85 views.py:525 views.py:554
 msgid "Source"
 msgstr ""
 
@@ -307,15 +307,15 @@ msgstr ""
 msgid "Enter a valid value."
 msgstr "Wprowadź poprawną wartość."
 
-#: models.py:385 views.py:487
+#: models.py:385 views.py:488
 msgid "Order"
 msgstr ""
 
-#: models.py:386 views.py:488 views.py:525 views.py:554
+#: models.py:386 views.py:489 views.py:526 views.py:555
 msgid "Transformation"
 msgstr ""
 
-#: models.py:387 views.py:489
+#: models.py:387 views.py:490
 msgid "Arguments"
 msgstr ""
 
@@ -352,154 +352,154 @@ msgstr ""
 msgid "View existing document sources"
 msgstr ""
 
-#: views.py:104 wizards.py:34
+#: views.py:105 wizards.py:34
 msgid ""
 "No interactive document sources have been defined or none have been enabled, "
 "create one before proceeding."
 msgstr ""
 
-#: views.py:132
+#: views.py:133
 msgid "Files in staging path"
 msgstr ""
 
-#: views.py:216
+#: views.py:217
 msgid "New document queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:241
+#: views.py:242
 #, python-format
 msgid "Upload a local document from source: %s"
 msgstr ""
 
-#: views.py:249
+#: views.py:250
 msgid "Current document type"
 msgstr ""
 
-#: views.py:250
+#: views.py:251
 msgid "None"
 msgstr "Brak"
 
-#: views.py:257
+#: views.py:258
 msgid "Current metadata"
 msgstr ""
 
-#: views.py:305
+#: views.py:306
 msgid "New document version queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:331
+#: views.py:332
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr ""
 
-#: views.py:347
+#: views.py:348
 msgid "Staging file delete successfully."
 msgstr ""
 
-#: views.py:349
+#: views.py:350
 #, python-format
 msgid "Staging file delete error; %s."
 msgstr ""
 
-#: views.py:375
+#: views.py:376
 msgid "Type"
 msgstr ""
 
-#: views.py:380
+#: views.py:381
 msgid "Yes"
 msgstr ""
 
-#: views.py:380
+#: views.py:381
 msgid "No"
 msgstr ""
 
-#: views.py:402
+#: views.py:403
 msgid "Source edited successfully"
 msgstr ""
 
-#: views.py:405
+#: views.py:406
 #, python-format
 msgid "Error editing source; %s"
 msgstr ""
 
-#: views.py:410
+#: views.py:411
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:429
+#: views.py:430
 #, python-format
 msgid "Source \"%s\" deleted successfully."
 msgstr "Źródło \"%s\" zostało usunięte."
 
-#: views.py:431
+#: views.py:432
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
 msgstr ""
 
-#: views.py:437
+#: views.py:438
 #, python-format
 msgid "Are you sure you wish to delete the source: %s?"
 msgstr "Czy na pewno chcesz usunąć źródło:%s?"
 
-#: views.py:460
+#: views.py:461
 msgid "Source created successfully"
 msgstr "Źródło pomyślnie utworzone"
 
-#: views.py:463
+#: views.py:464
 #, python-format
 msgid "Error creating source; %s"
 msgstr "Błąd podczas tworzenia źródła;%s"
 
-#: views.py:468
+#: views.py:469
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Utwórz nowe typ źródło:%s"
 
-#: views.py:482
+#: views.py:483
 #, python-format
 msgid "Transformations for: %s"
 msgstr ""
 
-#: views.py:511
+#: views.py:512
 msgid "Source transformation edited successfully"
 msgstr ""
 
-#: views.py:514
+#: views.py:515
 #, python-format
 msgid "Error editing source transformation; %s"
 msgstr ""
 
-#: views.py:519
+#: views.py:520
 #, python-format
 msgid "Edit transformation: %s"
 msgstr ""
 
-#: views.py:541
+#: views.py:542
 msgid "Source transformation deleted successfully."
 msgstr ""
 
-#: views.py:543
+#: views.py:544
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
 msgstr ""
 
-#: views.py:556
+#: views.py:557
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
 msgstr ""
 
-#: views.py:577
+#: views.py:578
 msgid "Source transformation created successfully"
 msgstr ""
 
-#: views.py:580
+#: views.py:581
 #, python-format
 msgid "Error creating source transformation; %s"
 msgstr ""
 
-#: views.py:588
+#: views.py:589
 #, python-format
 msgid "Create new transformation for source: %s"
 msgstr ""

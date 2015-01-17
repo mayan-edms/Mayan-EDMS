@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-11 17:57-0400\n"
+"POT-Creation-Date: 2015-01-17 02:54-0400\n"
 "PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
@@ -64,7 +64,7 @@ msgstr ""
 msgid "About"
 msgstr ""
 
-#: links.py:15 views.py:278
+#: links.py:15 views.py:281
 msgid "License"
 msgstr "Licença"
 
@@ -74,6 +74,10 @@ msgstr ""
 
 #: links.py:18
 msgid "Edit locale profile"
+msgstr ""
+
+#: links.py:20
+msgid "Logout"
 msgstr ""
 
 #: models.py:28 models.py:31
@@ -159,121 +163,121 @@ msgstr ""
 msgid "Function found"
 msgstr ""
 
-#: views.py:43
+#: views.py:46
 msgid "No action selected."
 msgstr "Nenhuma ação selecionada."
 
-#: views.py:47
+#: views.py:50
 msgid "Must select at least one item."
 msgstr "Deve selecionar pelo menos um item."
 
-#: views.py:99
+#: views.py:102
 #, python-format
 msgid "Unable to remove %(selection)s."
 msgstr ""
 
-#: views.py:124
+#: views.py:127
 #, python-format
 msgid "Unable to add %(selection)s."
 msgstr ""
 
-#: views.py:137
+#: views.py:140
 msgid "Add"
 msgstr "Adicionar"
 
-#: views.py:148
+#: views.py:151
 msgid "Remove"
 msgstr "Remover"
 
-#: views.py:171
+#: views.py:174
 msgid "Current user details"
 msgstr ""
 
-#: views.py:186
+#: views.py:189
 #, fuzzy
 msgid "Current user locale profile details"
 msgstr "Detalhes do utilizador atual atualizados."
 
-#: views.py:203
+#: views.py:206
 msgid "E-mail conflict, another user has that same email."
 msgstr "Conflito de E-mail; outro utilizador tem o mesmo e-mail."
 
-#: views.py:206
+#: views.py:209
 msgid "Current user's details updated."
 msgstr "Detalhes do utilizador atual atualizados."
 
-#: views.py:215
+#: views.py:218
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:238
+#: views.py:241
 #, fuzzy
 msgid "Current user's locale profile details updated."
 msgstr "Detalhes do utilizador atual atualizados."
 
-#: views.py:247
+#: views.py:250
 msgid "Edit current user locale profile details"
 msgstr ""
 
-#: views.py:287
+#: views.py:290
 msgid "Current user password change"
 msgstr "Alteração da senha do utilizador atual"
 
-#: views.py:302
+#: views.py:305
 msgid "Your password has been successfully changed."
 msgstr "A sua senha foi alterada com êxito."
 
-#: views.py:356
+#: views.py:317
 #, python-format
 msgid "Error saving %s details."
 msgstr ""
 
-#: views.py:358
+#: views.py:319
 msgid "Error saving details."
 msgstr ""
 
-#: views.py:366
+#: views.py:327
 #, python-format
 msgid "%s details saved successfully."
 msgstr ""
 
-#: views.py:368
+#: views.py:329
 msgid "Details saved successfully."
 msgstr ""
 
-#: views.py:380
+#: views.py:341
 #, python-format
 msgid "Error creating new %s."
 msgstr ""
 
-#: views.py:382
+#: views.py:343
 msgid "Error creating object."
 msgstr ""
 
-#: views.py:389
+#: views.py:350
 #, python-format
 msgid "%s created successfully."
 msgstr ""
 
-#: views.py:391
+#: views.py:352
 msgid "New object created successfully."
 msgstr ""
 
-#: views.py:409
+#: views.py:370
 #, python-format
 msgid "Error deleting %s."
 msgstr ""
 
-#: views.py:411
+#: views.py:372
 msgid "Error deleting object."
 msgstr ""
 
-#: views.py:416
+#: views.py:377
 #, python-format
 msgid "%s deleted successfully."
 msgstr ""
 
-#: views.py:418
+#: views.py:379
 msgid "Object deleted successfully."
 msgstr ""
 

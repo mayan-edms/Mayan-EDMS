@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-11 17:59-0400\n"
+"POT-Creation-Date: 2015-01-17 02:56-0400\n"
 "PO-Revision-Date: 2014-10-30 15:43+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Albanian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -83,58 +83,45 @@ msgstr ""
 msgid "User details"
 msgstr ""
 
-#: templates/main/base.html:226 templates/main/login.html:17
-#: templates/main/login.html.py:55 templates/main/login.html:63
-msgid "Login"
-msgstr ""
-
-#: templates/main/base.html:226
-msgid "Logout"
-msgstr ""
-
-#: templates/main/base.html:240
+#: templates/main/base.html:237
 msgid "dismiss all notifications"
 msgstr ""
 
-#: templates/main/base.html:240
+#: templates/main/base.html:237
 msgid "close all"
 msgstr ""
 
-#: templates/main/base.html:241
+#: templates/main/base.html:238
 msgid "dismiss this notification"
 msgstr ""
 
-#: templates/main/base.html:241
+#: templates/main/base.html:238
 msgid "close"
 msgstr ""
 
-#: templates/main/base.html:305 templates/main/base.html.py:318
+#: templates/main/base.html:302 templates/main/base.html.py:315
 msgid "Secondary menu"
 msgstr ""
 
-#: templates/main/base.html:336
+#: templates/main/base.html:333
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr ""
 
-#: templates/main/base.html:338 templates/main/base.html.py:378
+#: templates/main/base.html:335 templates/main/base.html.py:364
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr ""
 
-#: templates/main/base.html:341
+#: templates/main/base.html:338
 msgid "Available actions"
 msgstr ""
 
-#: templates/main/base.html:353 templates/main/base.html.py:392
-msgid "Related actions"
-msgstr ""
-
-#: templates/main/base.html:364 templates/main/base.html.py:405
+#: templates/main/base.html:350 templates/main/base.html.py:378
 msgid "Other available actions"
 msgstr ""
 
-#: templates/main/base.html:380
+#: templates/main/base.html:366
 msgid "Actions"
 msgstr ""
 
@@ -178,7 +165,7 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: templates/main/generic_form_instance.html:40
+#: templates/main/generic_form_instance.html:50
 #: templates/main/generic_form_subtemplate.html:60
 #: templates/main/generic_multiform_subtemplate.html:42
 msgid "required"
@@ -243,6 +230,11 @@ msgstr "search"
 
 #: templates/main/home.html:46
 msgid "Advanced search"
+msgstr ""
+
+#: templates/main/login.html:17 templates/main/login.html.py:55
+#: templates/main/login.html:63
+msgid "Login"
 msgstr ""
 
 #: templates/main/login.html:23
