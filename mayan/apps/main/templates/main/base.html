@@ -372,18 +372,17 @@
                                     </ul>
                                 </div>
                             {% endif %}
-                        {% endif %}
-
-                        {% get_object_navigation_links "sidebar" as object_navigation_links %}
-                            {% if object_navigation_links %}
-                            <div class="block">
-                                <h3>{% trans "Other available actions" %}</h3>
-                                <ul class="navigation">
-                                    {% with 'true' as as_li %}
-                                        {% include 'generic_navigation.html' %}
-                                    {% endwith %}
-                                </ul>
-                            </div>
+                            {% get_object_navigation_links "sidebar" as object_navigation_links %}
+                                {% if object_navigation_links %}
+                                <div class="block">
+                                    <h3>{% trans "Other available actions" %}</h3>
+                                    <ul class="navigation">
+                                        {% with 'true' as as_li %}
+                                            {% include 'generic_navigation.html' %}
+                                        {% endwith %}
+                                    </ul>
+                                </div>
+                            {% endif %}
                         {% endif %}
 
                         {% block sidebar %}{% endblock %}
