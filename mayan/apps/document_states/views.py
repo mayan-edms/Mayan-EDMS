@@ -91,8 +91,8 @@ class WorkflowInstanceDetailView(SingleObjectListView):
             'object': self.get_workflow_instance().document,
             'workflow_instance': self.get_workflow_instance(),
             'navigation_object_list': [
-                {'object': 'object', 'name': _('Index')},
-                {'object': 'workflow_instance', 'name': _('Node')}
+                {'object': 'object'},
+                {'object': 'workflow_instance'}
             ],
             'title': _('Detail of workflow: %(workflow)s - %(document)s') % {
                 'workflow': self.get_workflow_instance(), 'document': self.get_workflow_instance().document
