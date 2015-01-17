@@ -22,6 +22,7 @@ from documents.models import Document
 from permissions.models import Permission
 
 from .forms import (
+    WorkflowForm,
     WorkflowInstanceDetailForm, WorkflowInstanceTransitionForm,
     WorkflowStateForm, WorkflowTransitionForm
 )
@@ -176,12 +177,14 @@ class SetupWorkflowListView(SingleObjectListView):
 
 
 class SetupWorkflowCreateView(SingleObjectCreateView):
+    form_class = WorkflowForm
     model = Workflow
     view_permission = PERMISSION_WORKFLOW_CREATE
     success_url = reverse_lazy('document_states:setup_workflow_list')
 
 
 class SetupWorkflowEditView(SingleObjectEditView):
+    form_class = WorkflowForm
     model = Workflow
     object_permission = PERMISSION_WORKFLOW_EDIT
     success_url = reverse_lazy('document_states:setup_workflow_list')

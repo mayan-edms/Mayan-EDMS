@@ -5,7 +5,13 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.forms import DetailForm
 
-from .models import WorkflowState, WorkflowInstance, WorkflowTransition
+from .models import Workflow, WorkflowState, WorkflowInstance, WorkflowTransition
+
+
+class WorkflowForm(forms.ModelForm):
+    class Meta:
+        fields = ('label',)
+        model = Workflow
 
 
 class WorkflowStateForm(forms.ModelForm):
