@@ -263,6 +263,30 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
         return super(SetupWorkflowStateCreateView, self).form_valid(form)
 
 
+class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
+    model = WorkflowState
+    view_permission = PERMISSION_WORKFLOW_DELETE
+
+    def get_context_data(self, **kwargs):
+        context = super(SetupWorkflowStateDeleteView, self).get_context_data(**kwargs)
+
+        context.update(
+            {
+                'object': self.get_object().workflow,
+                'workflow_instance': self.get_object(),
+                'navigation_object_list': [
+                    {'object': 'object'},
+                    {'object': 'workflow_instance'}
+                ],
+            }
+        )
+
+        return context
+
+    def get_success_url(self):
+        return reverse('document_states:setup_workflow_States', args=[self.get_object().workflow.pk])
+
+
 class SetupWorkflowStateEditView(SingleObjectEditView):
     form_class = WorkflowStateForm
     model = WorkflowState
@@ -364,6 +388,30 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
             return super(SetupWorkflowTransitionCreateView, self).form_invalid(form)
         else:
             return HttpResponseRedirect(self.get_success_url())
+
+
+class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
+    model = WorkflowTransition
+    view_permission = PERMISSION_WORKFLOW_DELETE
+
+    def get_context_data(self, **kwargs):
+        context = super(SetupWorkflowTransitionDeleteView, self).get_context_data(**kwargs)
+
+        context.update(
+            {
+                'object': self.get_object().workflow,
+                'workflow_instance': self.get_object(),
+                'navigation_object_list': [
+                    {'object': 'object'},
+                    {'object': 'workflow_instance'}
+                ],
+            }
+        )
+
+        return context
+
+    def get_success_url(self):
+        return reverse('document_states:setup_workflow_transitions', args=[self.get_object().workflow.pk])
 
 
 class SetupWorkflowTransitionEditView(SingleObjectEditView):
