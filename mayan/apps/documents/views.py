@@ -366,7 +366,9 @@ def document_download(request, document_id=None, document_id_list=None, document
                 'scrollable_content_height': '200px',
                 'extra_columns': [
                     {'name': _(u'Document'), 'attribute': 'document'},
-                    {'name': _(u'Version'), 'attribute': encapsulate(lambda x: x.get_formated_version())},
+                    {'name': _(u'Date and time'), 'attribute': 'timestamp'},
+                    {'name': _(u'MIME type'), 'attribute': 'mimetype'},
+                    {'name': _(u'Encoding'), 'attribute': 'encoding'},
                 ],
             }
         }
