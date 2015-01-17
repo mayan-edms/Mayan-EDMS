@@ -55,6 +55,12 @@ source_lang = en
 source_file = mayan/apps/document_signatures/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.apps-document_states]
+file_filter = mayan/apps/document_states/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/document_states/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.apps-dynamic_search]
 file_filter = mayan/apps/dynamic_search/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
