@@ -1114,7 +1114,7 @@ def document_version_list(request, document_pk):
                 'attribute': 'timestamp',
             },
             {
-                'name': _(u'Mimetype'),
+                'name': _(u'MIME type'),
                 'attribute': 'mimetype',
             },
             {
