@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
+# Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:53-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: events.py:7
@@ -57,23 +56,20 @@ msgid "Check in/out"
 msgstr ""
 
 #: literals.py:9
-#, fuzzy
 msgid "Checked out"
-msgstr "verrouillé"
+msgstr ""
 
 #: literals.py:10
-#, fuzzy
 msgid "Checked in/available"
-msgstr "déverrouillé/disponible"
+msgstr ""
 
 #: models.py:23
 msgid "Document"
 msgstr ""
 
 #: models.py:24
-#, fuzzy
 msgid "Check out date and time"
-msgstr "date et heure du verrouillage"
+msgstr ""
 
 #: models.py:25 widgets.py:79
 msgid "Check out expiration date and time"
@@ -84,9 +80,8 @@ msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Durée en minutes pendant laquelle le document doit être verrouillé"
 
 #: models.py:32
-#, fuzzy
 msgid "Block new version upload"
-msgstr "empêcher import nouvelle version"
+msgstr ""
 
 #: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
@@ -97,9 +92,8 @@ msgid "Document checkout"
 msgstr "Verrouillage du document"
 
 #: models.py:59
-#, fuzzy
 msgid "Document checkouts"
-msgstr "Verrouillage du document"
+msgstr ""
 
 #: permissions.py:9
 msgid "Check out documents"
@@ -118,9 +112,8 @@ msgid "Allow overriding check out restrictions"
 msgstr "Permettre de révoquer le verrouillage"
 
 #: views.py:32
-#, fuzzy
 msgid "Documents checked out"
-msgstr "Documents verrouillés"
+msgstr ""
 
 #: views.py:35
 msgid "Checkout user"
@@ -135,9 +128,9 @@ msgid "Checkout expiration"
 msgstr ""
 
 #: views.py:50
-#, fuzzy, python-format
+#, python-format
 msgid "Document status: %s"
-msgstr "Etat du document:%(widget)s %(text)s"
+msgstr ""
 
 #: views.py:54
 #, python-format
@@ -160,9 +153,8 @@ msgid "New versions allowed: %s"
 msgstr "Nouvelles versions autorisées: %s"
 
 #: views.py:57
-#, fuzzy
 msgid "Yes"
-msgstr "oui"
+msgstr ""
 
 #: views.py:57
 msgid "No"
@@ -207,9 +199,7 @@ msgstr "Document \"%s\" déverrouillé avec succès."
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr ""
-"Ce n'est pas vous qui avec posé le verrou sur ce document. Êtes vous certain "
-"de vouloir forcer le déverrouillage de: %s?"
+msgstr "Ce n'est pas vous qui avec posé le verrou sur ce document. Êtes vous certain de vouloir forcer le déverrouillage de: %s?"
 
 #: views.py:145
 #, python-format
@@ -248,39 +238,37 @@ msgstr "Saisissez un intervalle de temps valide."
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr ""
-"Durée pendant laquelle conserver le verrou sur le document en jours, heures "
-"et/ou minutes."
+msgstr "Durée pendant laquelle conserver le verrou sur le document en jours, heures et/ou minutes."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
-#~ msgstr "Document \"%(document)s\" verrouillé par %(fullname)s."
+#~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."
 
 #~ msgid "Document \"%(document)s\" checked in by %(fullname)s."
-#~ msgstr "Documents \"%(document)s\" déverrouillés par %(fullname)s."
+#~ msgstr "Document \"%(document)s\" checked in by %(fullname)s."
 
 #~ msgid "Document \"%(document)s\" automatically checked in."
-#~ msgstr "Document \"%(document)s\" déverrouillé automatiquement."
+#~ msgstr "Document \"%(document)s\" automatically checked in."
 
 #~ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-#~ msgstr "Document \"%(document)s\" dévérouillé de force par %(fullname)s."
+#~ msgstr "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 
 #~ msgid "document"
 #~ msgstr "document"
 
 #~ msgid "check out expiration date and time"
-#~ msgstr "date d'expiration du verrouillage"
+#~ msgstr "check out expiration date and time"
 
 #~ msgid "document checkout"
-#~ msgstr "verrouillage du document"
+#~ msgstr "document checkout"
 
 #~ msgid "document checkouts"
-#~ msgstr "verrouillages du document"
+#~ msgstr "document checkouts"
 
 #~ msgid "checked out documents"
-#~ msgstr "documents verrouillés"
+#~ msgstr "checked out documents"
 
 #~ msgid "no"
-#~ msgstr "non"
+#~ msgstr "no"
 
 #~ msgid "Check expired check out documents and checks them in."
 #~ msgstr "Check expired check out documents and checks them in."

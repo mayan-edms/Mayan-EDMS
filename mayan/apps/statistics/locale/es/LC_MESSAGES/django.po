@@ -1,39 +1,36 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2013-2014
+# Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:57-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-01-13 15:41+0000\n"
+"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: links.py:10
-#, fuzzy
 msgid "Execute"
-msgstr "ejecutar"
+msgstr "Ejecutar"
 
 #: links.py:11
-#, fuzzy
 msgid "Details"
-msgstr "detalles"
+msgstr "Detalles"
 
 #: links.py:12
-#, fuzzy
 msgid "Namespace list"
-msgstr "lista de categorías"
+msgstr "Lista de espacios nombrados"
 
 #: links.py:13
 msgid "Statistics"
@@ -41,31 +38,22 @@ msgstr "Estadísticas"
 
 #: views.py:18
 msgid "Statistics namespaces"
-msgstr ""
+msgstr "Estadísticas de espacios nombrados"
 
 #: views.py:34
 #, python-format
 msgid "Namespace details for: %s"
-msgstr ""
+msgstr "Detalles para espacios nombrados: %s"
 
 #: views.py:48
-#, fuzzy
 msgid "Namespace"
-msgstr "categoría"
+msgstr "Espacios nombrados"
 
 #: views.py:49
-#, fuzzy
 msgid "Statistic"
-msgstr "Estadísticas"
+msgstr "Estadística"
 
 #: views.py:53
 #, python-format
 msgid "Results for: %s"
-msgstr ""
-
-#~ msgid "Central place to store and display app statistics."
-#~ msgstr ""
-#~ "Lugar principal para almacenar y mostrar estadísticas de la aplicación."
-
-#~ msgid "statistic"
-#~ msgstr "estadística"
+msgstr "Resultados para: %s"

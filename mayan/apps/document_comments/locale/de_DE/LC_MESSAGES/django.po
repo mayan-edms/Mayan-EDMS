@@ -1,23 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
+# tetjarediske <tetja.rediske@googlemail.com>, 2012
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-03-12 16:11+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2014-10-25 07:18+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:33
@@ -29,23 +30,20 @@ msgid "User"
 msgstr ""
 
 #: __init__.py:41
-#, fuzzy
 msgid "Comment"
-msgstr "Kommentare"
+msgstr ""
 
 #: __init__.py:50 links.py:11 permissions.py:7
 msgid "Comments"
 msgstr "Kommentare"
 
 #: links.py:8 links.py:9
-#, fuzzy
 msgid "Delete"
-msgstr "Löschen"
+msgstr ""
 
 #: links.py:10
-#, fuzzy
 msgid "Add comment"
-msgstr "Kommentar hinzufügen"
+msgstr ""
 
 #: permissions.py:9
 msgid "Create new comments"
@@ -93,21 +91,21 @@ msgid "Add comment to document: %s"
 msgstr "Kommentar zu Dokument %s hinzufügen"
 
 #: views.py:125
-#, fuzzy, python-format
+#, python-format
 msgid "Comments for document: %s"
-msgstr "Kommentar zu Dokument %s hinzufügen"
+msgstr ""
 
 #~ msgid "date"
-#~ msgstr "Datum"
+#~ msgstr "date"
 
 #~ msgid "user"
-#~ msgstr "Benutzer"
+#~ msgstr "user"
 
 #~ msgid "comment"
-#~ msgstr "Kommentar"
+#~ msgstr "comment"
 
 #~ msgid "comments"
-#~ msgstr "Kommentare"
+#~ msgstr "comments"
 
 #~ msgid "comments: %s"
-#~ msgstr "Kommentare: %s"
+#~ msgstr "comments: %s"

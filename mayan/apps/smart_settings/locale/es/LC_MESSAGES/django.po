@@ -1,36 +1,39 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:57-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-01-12 19:37+0000\n"
+"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: links.py:8 views.py:28
 msgid "Settings"
-msgstr ""
+msgstr "Ajustes"
 
 #: views.py:33
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: views.py:35
 msgid "Value"
-msgstr ""
+msgstr "Valor"
+
+#~ msgid "Default"
+#~ msgstr "default"
 
 #~ msgid "name"
 #~ msgstr "name"

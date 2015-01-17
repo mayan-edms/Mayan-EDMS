@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
+# Genlin Jiao <jiaogl@pkusz.edu.cn>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:53-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/zh_CN/)\n"
-"Language: zh_CN\n"
+"PO-Revision-Date: 2015-01-07 02:01+0000\n"
+"Last-Translator: Genlin Jiao <jiaogl@pkusz.edu.cn>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: forms.py:25 links.py:10 links.py:16
@@ -46,15 +46,15 @@ msgstr "访问控制列表"
 
 #: links.py:7 links.py:15
 msgid "Details"
-msgstr ""
+msgstr "细节"
 
 #: links.py:8 links.py:17
 msgid "Grant"
-msgstr ""
+msgstr " 授予"
 
 #: links.py:9 links.py:18
 msgid "Revoke"
-msgstr ""
+msgstr "撤回"
 
 #: links.py:12
 msgid "Default ACLs"
@@ -62,36 +62,35 @@ msgstr "默认访问控制"
 
 #: links.py:13 views.py:379
 msgid "Classes"
-msgstr ""
+msgstr "类"
 
 #: links.py:14
 msgid "ACLs for class"
-msgstr "访问控制类"
+msgstr "类访问控制列表"
 
 #: managers.py:118 managers.py:130
 msgid "Insufficient access."
 msgstr "权限不足"
 
 #: models.py:26 models.py:68
-#, fuzzy
 msgid "Permission"
-msgstr "权限"
+msgstr "许可"
 
 #: models.py:52
 msgid "Access entry"
-msgstr ""
+msgstr "访问入口"
 
 #: models.py:53
 msgid "Access entries"
-msgstr ""
+msgstr "多个访问入口"
 
 #: models.py:89
 msgid "Default access entry"
-msgstr ""
+msgstr "默认访问入口"
 
 #: models.py:90
 msgid "Default access entries"
-msgstr ""
+msgstr "默认多个访问入口"
 
 #: models.py:109 models.py:112 models.py:113
 msgid "Creator"
@@ -237,7 +236,10 @@ msgid "Add new holder for class: %s"
 msgstr ""
 
 #~ msgid "List of classes"
-#~ msgstr "类列表"
+#~ msgstr "List of classes"
+
+#~ msgid "permission"
+#~ msgstr "permission"
 
 #~ msgid "creator"
 #~ msgstr "creator"

@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
+# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
+# Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:57-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: forms.py:13
@@ -31,35 +31,35 @@ msgstr "Confirmer le mot de passe"
 
 #: links.py:10 links.py:11 views.py:30
 msgid "Users"
-msgstr ""
+msgstr "Utilisateurs"
 
 #: links.py:12 links.py:22
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 #: links.py:13 views.py:95
 msgid "Create new user"
-msgstr ""
+msgstr "créer un nouvel utilisateur"
 
 #: links.py:14 links.py:15 links.py:24 links.py:25
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: links.py:16 links.py:17
 msgid "Reset password"
-msgstr ""
+msgstr "Reinitialiser le mot de passe"
 
 #: links.py:18 links.py:20 links.py:21 views.py:246
 msgid "Groups"
-msgstr ""
+msgstr "Groupes"
 
 #: links.py:23 views.py:293
 msgid "Create new group"
-msgstr ""
+msgstr "Créer un nouveau groupe"
 
 #: links.py:26 views.py:250
 msgid "Members"
-msgstr ""
+msgstr "Membres"
 
 #: permissions.py:7
 msgid "User management"
@@ -99,27 +99,25 @@ msgstr "Supprimer les groupes existant"
 
 #: views.py:34
 msgid "Full name"
-msgstr ""
+msgstr "Nom complet"
 
 #: views.py:38
 msgid "Email"
-msgstr ""
+msgstr "Courriel"
 
 #: views.py:42
 msgid "Active"
-msgstr ""
+msgstr "Actif"
 
 #: views.py:46
 msgid "Has usable password?"
-msgstr ""
+msgstr "Possède un mot de passe utilisable?"
 
 #: views.py:61
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"La modification des comptes super utilisateur et staff n'est pas autorisée "
-"ici, veuillez le faire via l'interface d'admin."
+msgstr "La modification des comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'admin."
 
 #: views.py:68
 #, python-format
@@ -129,7 +127,7 @@ msgstr "Utilisateur \"%s\" mis à jour avec succès."
 #: views.py:74
 #, python-format
 msgid "Edit user: %s"
-msgstr ""
+msgstr "Modifier l'utilisateur: %s"
 
 #: views.py:89
 #, python-format
@@ -144,9 +142,7 @@ msgstr "Vous devez fournir au moins un utilisateur."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"La suppression des comptes super utilisateur et staff n'est pas autorisée "
-"ici, veuillez le faire via l'interface d'admin."
+msgstr "La suppression des comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'admin."
 
 #: views.py:123
 #, python-format
@@ -176,9 +172,7 @@ msgstr "Les mots de passe ne correspondent pas, veuillez réessayer."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"La réinitialisation des mots de passe pour les comptes super utilisateur et "
-"staff n'est pas autorisée ici, veuillez le faire via l'interface d'admin."
+msgstr "La réinitialisation des mots de passe pour les comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'admin."
 
 #: views.py:182
 #, python-format
@@ -188,9 +182,7 @@ msgstr "Mot de passe ré-initialisé avec succès pour l'utilisateur: %s."
 #: views.py:184
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur "
-"\"%(user)s\": %(error)s"
+msgstr "Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur \"%(user)s\": %(error)s"
 
 #: views.py:199
 #, python-format
@@ -205,12 +197,12 @@ msgstr "Ré-initialisation du mote de passe pour les utilisateur: %s"
 #: views.py:231
 #, python-format
 msgid "Non groups of user: %s"
-msgstr ""
+msgstr "Membres absents du groupe: %s"
 
 #: views.py:232
 #, python-format
 msgid "Groups of user: %s"
-msgstr ""
+msgstr "Membre des groupes: %s"
 
 #: views.py:268
 #, python-format
@@ -220,7 +212,7 @@ msgstr "Le groupe \"%s\" a été mis à jour avec succès."
 #: views.py:274
 #, python-format
 msgid "Edit group: %s"
-msgstr ""
+msgstr "Modification du groupe: %s"
 
 #: views.py:287
 #, python-format
@@ -254,12 +246,21 @@ msgstr "Êtes vous certain de vouloir supprimer les groupes: %s?"
 #: views.py:365
 #, python-format
 msgid "Non members of group: %s"
-msgstr ""
+msgstr "Non membres des groupes: %s"
 
 #: views.py:366
 #, python-format
 msgid "Members of group: %s"
-msgstr ""
+msgstr "Membres du groupe: %s"
+
+#~ msgid "Group"
+#~ msgstr "group"
+
+#~ msgid "User list"
+#~ msgstr "user list"
+
+#~ msgid "Group list"
+#~ msgstr "group list"
 
 #~ msgid "edit"
 #~ msgstr "edit"

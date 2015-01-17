@@ -1,9 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Igor Támara <igor@tamarapatino.org>, 2015
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Roberto Rosario, 2012,2014
 msgid ""
@@ -11,39 +12,38 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:55-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:38 __init__.py:49
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: __init__.py:42
 msgid "Items"
-msgstr ""
+msgstr "Elementos"
 
 #: __init__.py:53
 msgid "Value"
-msgstr ""
+msgstr "Valor"
 
 #: links.py:7 models.py:174
 msgid "Installation details"
-msgstr ""
+msgstr "Detalles de instalación"
 
 #: links.py:8 views.py:21
 msgid "Installation property namespaces"
-msgstr ""
+msgstr "categorías de propiedades de instalación"
 
 #: links.py:9
 msgid "Details"
-msgstr ""
+msgstr "Detalles"
 
 #: models.py:52
 msgid "Operating system"
@@ -208,10 +208,10 @@ msgstr "Ver detalles del entorno de instalación"
 #: views.py:33
 #, python-format
 msgid "Installation namespace details for: %s"
-msgstr ""
+msgstr "categorias de detalles de instalación para: %s"
 
 #~ msgid "Installed via fabfile"
-#~ msgstr "Instalado a través de fabfile"
+#~ msgstr "Installed via fabfile"
 
 #~ msgid "Installation environment details"
 #~ msgstr "Installation environment details"

@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
+# Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2011-2012,2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:56-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-01-13 15:57+0000\n"
+"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: links.py:10 widgets.py:23
@@ -31,27 +31,27 @@ msgstr "Revocar"
 
 #: links.py:13
 msgid "Create new role"
-msgstr ""
+msgstr "Crear nuevo rol"
 
 #: links.py:14
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: links.py:15
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: links.py:16 models.py:218 views.py:56
 msgid "Roles"
-msgstr ""
+msgstr "Roles"
 
 #: links.py:17
 msgid "Members"
-msgstr ""
+msgstr "Miembros"
 
 #: links.py:18
 msgid "Role permissions"
-msgstr ""
+msgstr "Autorizaciones por rol"
 
 #: models.py:51
 msgid "Insufficient permissions."
@@ -59,15 +59,15 @@ msgstr "Permisos insuficientes."
 
 #: models.py:126 views.py:77
 msgid "Namespace"
-msgstr ""
+msgstr "Espacio nombrado"
 
 #: models.py:127 views.py:78
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: models.py:134 models.py:196 views.py:132
 msgid "Permission"
-msgstr ""
+msgstr "Permiso"
 
 #: models.py:135 permissions.py:7 views.py:74 views.py:134
 msgid "Permissions"
@@ -75,27 +75,27 @@ msgstr "Permisos"
 
 #: models.py:204
 msgid "Permission holder"
-msgstr ""
+msgstr "Tenedor de permiso"
 
 #: models.py:205
 msgid "Permission holders"
-msgstr ""
+msgstr "Tenedores de permiso"
 
 #: models.py:213
 msgid "Label"
-msgstr ""
+msgstr "Etiqueta"
 
 #: models.py:217 models.py:248
 msgid "Role"
-msgstr ""
+msgstr "Rol"
 
 #: models.py:264
 msgid "Role member"
-msgstr ""
+msgstr "Miembro de rol"
 
 #: models.py:265
 msgid "Role members"
-msgstr ""
+msgstr "Miembros de rol"
 
 #: permissions.py:9
 msgid "View roles"
@@ -125,13 +125,11 @@ msgstr "Revocar permisos"
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
-msgstr ""
-"Una lista de roles existentes que se asignan automáticamente a los usuarios "
-"nuevos"
+msgstr "Una lista de roles existentes que se asignan automáticamente a los usuarios nuevos"
 
 #: views.py:80
 msgid "Has permission"
-msgstr ""
+msgstr "Tiene permiso"
 
 #: views.py:129 views.py:190
 msgid " and "
@@ -156,8 +154,7 @@ msgstr "%(requester)s, ya tenía el permiso \"%(permission)s\" concedido."
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"¿Está seguro que desea otorgar el %(permissions_label)s %(title_suffix)s?"
+msgstr "¿Está seguro que desea otorgar el %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:193
 msgid "permission"
@@ -181,8 +178,7 @@ msgstr "%(requester)s, no tiene el permiso \"%(permission)s\" concedido."
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"¿Está seguro que quiere revocar el %(permissions_label)s %(title_suffix)s?"
+msgstr "¿Está seguro que quiere revocar el %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:248 views.py:272
 msgid "Users"
@@ -199,12 +195,12 @@ msgstr "Especial"
 #: views.py:303
 #, python-format
 msgid "Non members of role: %s"
-msgstr ""
+msgstr "Miembros excluidos del rol: %s"
 
 #: views.py:304
 #, python-format
 msgid "Members of role: %s"
-msgstr ""
+msgstr "Miembros del rol: %s"
 
 #~ msgid "edit"
 #~ msgstr "edit"

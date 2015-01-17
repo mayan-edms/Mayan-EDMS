@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:57-0400\n"
-"PO-Revision-Date: 2014-10-30 15:44+0000\n"
+"PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: __init__.py:30
@@ -352,11 +351,10 @@ msgid "View existing document sources"
 msgstr "查看存在数据源"
 
 #: views.py:105 wizards.py:34
-#, fuzzy
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr "无可交互的文档数据源或者数据源都无效。"
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr ""
 
 #: views.py:133
 msgid "Files in staging path"
@@ -384,7 +382,8 @@ msgid "Current metadata"
 msgstr "当前元数据"
 
 #: views.py:306
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:332
@@ -520,12 +519,8 @@ msgstr ""
 msgid "Next step"
 msgstr "下一步"
 
-#~ msgid ""
-#~ "Returns a list of all the staging folders and the files they contain."
-#~ msgstr "返回所有暂存目录及其文件的列表"
-
 #~ msgid "Upload sources"
-#~ msgstr "上传数据源"
+#~ msgstr "Upload sources"
 
 #~ msgid "Server staging folder"
 #~ msgstr "server staging folder"

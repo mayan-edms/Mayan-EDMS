@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -17,14 +17,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:55-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:25 models.py:66
@@ -179,9 +178,8 @@ msgid "Expression"
 msgstr ""
 
 #: models.py:68
-#, fuzzy
 msgid "This expression will be evaluated against the current document."
-msgstr "Keine Intelligenten Verknüpfungen für das aktuelle Dokument definiert."
+msgstr ""
 
 #: models.py:69
 msgid "Negated"
@@ -225,21 +223,19 @@ msgid "Smart link query error: %s"
 msgstr "Abfragefehler in intelligenter Verknüpfung: %s"
 
 #: views.py:52
-#, fuzzy, python-format
+#, python-format
 msgid "Documents in smart link: %s"
-msgstr "Intelligente Verknüpfung bearbeiten: %s"
+msgstr ""
 
 #: views.py:67
-#, fuzzy, python-format
+#, python-format
 msgid "Error calculating smart link for: %(document)s; %(exception)s."
 msgstr ""
-"Fehler beim Löschen der intelligenten Verknüpfung: %(smart_link)s ; "
-"%(exception)s ."
 
 #: views.py:82
-#, fuzzy, python-format
+#, python-format
 msgid "Smart links for: %s"
-msgstr "Abfragefehler in intelligenter Verknüpfung: %s"
+msgstr ""
 
 #: views.py:84
 msgid "Indentifier"
@@ -268,21 +264,17 @@ msgstr "Intelligente Verknüpfung %s erfolgreich gelöscht."
 #: views.py:183
 #, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgstr ""
-"Fehler beim Löschen der intelligenten Verknüpfung: %(smart_link)s ; "
-"%(exception)s ."
+msgstr "Fehler beim Löschen der intelligenten Verknüpfung: %(smart_link)s ; %(exception)s ."
 
 #: views.py:192
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
-msgstr ""
-"Sind Sie sicher, dass Sie die intelligente Verknüpfung %s löschen möchten?"
+msgstr "Sind Sie sicher, dass Sie die intelligente Verknüpfung %s löschen möchten?"
 
 #: views.py:214
-#, fuzzy, python-format
+#, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr ""
-"Sind Sie sicher, dass Sie die intelligente Verknüpfung %s löschen möchten?"
 
 #: views.py:229
 #, python-format
@@ -320,9 +312,9 @@ msgstr "Bedingung für Intelligente Verknüpfung: \"%s\" erfolgreich gelöscht."
 #: views.py:317
 #, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
-msgstr ""
-"Fehler beim Löschen der Bedingung: %(smart_link_condition)s ; %(exception)s ."
+"Error deleting smart link condition: %(smart_link_condition)s; "
+"%(exception)s."
+msgstr "Fehler beim Löschen der Bedingung: %(smart_link_condition)s ; %(exception)s ."
 
 #: views.py:331
 #, python-format
@@ -330,41 +322,44 @@ msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr "Sind Sie sicher, dass Sie die Bedingung \"%s\" löschen möchten?"
 
 #~ msgid "Pages"
-#~ msgstr "Seiten"
+#~ msgstr "Pages"
 
 #~ msgid "Select"
-#~ msgstr "Auswählen"
+#~ msgstr "Select"
 
 #~ msgid "Click on the image for full size view of the first page."
-#~ msgstr ""
-#~ "Klicken Sie auf das Bild um die erste Seite in voller Größe anzuzeigen."
+#~ msgstr "Click on the image for full size view of the first page."
+
+#~ msgid "Smart links actions"
+#~ msgstr "smart links actions"
 
 #~ msgid ""
 #~ "This expression will be evaluated against the current selected document.  "
 #~ "The document metadata is available as variables `metadata` and document "
 #~ "properties under the variable `document`."
 #~ msgstr ""
-#~ "Dieser Ausdruck wird gegen das aktuell ausgewählte Dokument ausgewertet "
-#~ "werden. Die Dokument-Metadaten sind verfügbar als Variable `metadata` und "
-#~ "Dokumenteneigenschaften als Variable `document`. "
+#~ "This expression will be evaluated against the current selected document.  "
+#~ "The document metadata is available as variables `metadata` and document "
+#~ "properties under the variable `document`."
 
 #~ msgid ""
 #~ "This represents the metadata of all other documents.  Available objects: "
 #~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
 #~ msgstr ""
-#~ "Dies stellt die Metadaten aller anderen Dokumenten dar. Verfügbare "
-#~ "Objekte: `document.<attribute> ` und ` metadata.<metadata_type_name> `."
+#~ "This represents the metadata of all other documents.  Available objects: "
+#~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
 
 #~ msgid "Show smart link that don't return any documents."
-#~ msgstr ""
-#~ "Intelligente Verknüpfungen anzeigen, die auf keine Dokumente verweisen."
+#~ msgstr "Show smart link that don't return any documents."
 
 #~ msgid "No action selected."
-#~ msgstr "Keine Aktion ausgewählt."
+#~ msgstr "No action selected."
 
-#, fuzzy
 #~ msgid "Smart links (0)"
-#~ msgstr "Intelligente Verknüpfungen"
+#~ msgstr "smart links (%s)"
+
+#~ msgid "Smart links list"
+#~ msgstr "smart links list"
 
 #~ msgid "smart links"
 #~ msgstr "smart links"
@@ -382,14 +377,14 @@ msgstr "Sind Sie sicher, dass Sie die Bedingung \"%s\" löschen möchten?"
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

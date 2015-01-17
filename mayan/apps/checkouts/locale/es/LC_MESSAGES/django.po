@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
+# Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:53-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-01-14 16:12+0000\n"
+"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: events.py:7
@@ -43,38 +43,35 @@ msgstr "El documento ya está reservado."
 
 #: links.py:16
 msgid "Checkouts"
-msgstr ""
+msgstr "reservaciones"
 
 #: links.py:17
 msgid "Check out document"
-msgstr ""
+msgstr "reservar documento"
 
 #: links.py:18
 msgid "Check in document"
-msgstr ""
+msgstr "devolver documento"
 
 #: links.py:19
 msgid "Check in/out"
-msgstr ""
+msgstr "reservas"
 
 #: literals.py:9
-#, fuzzy
 msgid "Checked out"
 msgstr "reservado"
 
 #: literals.py:10
-#, fuzzy
 msgid "Checked in/available"
 msgstr "devuelto/disponible"
 
 #: models.py:23
 msgid "Document"
-msgstr ""
+msgstr "documento"
 
 #: models.py:24
-#, fuzzy
 msgid "Check out date and time"
-msgstr "fecha y hora de la reserva"
+msgstr "fecha y hora de la reservación"
 
 #: models.py:25 widgets.py:79
 msgid "Check out expiration date and time"
@@ -85,7 +82,6 @@ msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Cantidad de tiempo para mantener el documento reservado, en minutos."
 
 #: models.py:32
-#, fuzzy
 msgid "Block new version upload"
 msgstr "restringir la subida de nuevas versiones"
 
@@ -98,9 +94,8 @@ msgid "Document checkout"
 msgstr "Reserva de documentos"
 
 #: models.py:59
-#, fuzzy
 msgid "Document checkouts"
-msgstr "Reserva de documentos"
+msgstr "reservaciones de documentos"
 
 #: permissions.py:9
 msgid "Check out documents"
@@ -119,26 +114,25 @@ msgid "Allow overriding check out restrictions"
 msgstr "Ignorar las restricciones de documentos reservados"
 
 #: views.py:32
-#, fuzzy
 msgid "Documents checked out"
-msgstr "Documento reservado"
+msgstr "Documentos reservados"
 
 #: views.py:35
 msgid "Checkout user"
-msgstr ""
+msgstr "Usuario que reserva"
 
 #: views.py:36
 msgid "Checkout time and date"
-msgstr ""
+msgstr "fecha y hora de reservación"
 
 #: views.py:37
 msgid "Checkout expiration"
-msgstr ""
+msgstr "expiración de la reservación"
 
 #: views.py:50
-#, fuzzy, python-format
+#, python-format
 msgid "Document status: %s"
-msgstr "Estado del documento: %(widget)s %(text)s"
+msgstr "Estado de documento: %s"
 
 #: views.py:54
 #, python-format
@@ -161,13 +155,12 @@ msgid "New versions allowed: %s"
 msgstr "Nuevas versiones permitidas: %s"
 
 #: views.py:57
-#, fuzzy
 msgid "Yes"
-msgstr "sí"
+msgstr "Si"
 
 #: views.py:57
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: views.py:62
 #, python-format
@@ -208,9 +201,7 @@ msgstr "Documento \"%s\" devuelto con éxito."
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr ""
-"Usted no reservó inicialmente este documento.  ¿Está seguro que desea "
-"devolver forzosamente el documento: %s?"
+msgstr "Usted no reservó inicialmente este documento.  ¿Está seguro que desea devolver forzosamente el documento: %s?"
 
 #: views.py:145
 #, python-format
@@ -249,35 +240,34 @@ msgstr "Introduzca una diferencia de tiempo válida."
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr ""
-"Cantidad de tiempo para reservar el documento, en días, horas y / o minutos."
+msgstr "Cantidad de tiempo para reservar el documento, en días, horas y / o minutos."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
-#~ msgstr "Documento \"%(document)s\" reservado por %(fullname)s."
+#~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."
 
 #~ msgid "Document \"%(document)s\" checked in by %(fullname)s."
-#~ msgstr "Documento \"%(document)s\" devuelto por %(fullname)s."
+#~ msgstr "Document \"%(document)s\" checked in by %(fullname)s."
 
 #~ msgid "Document \"%(document)s\" automatically checked in."
-#~ msgstr "Documento \"%(document)s\" devuelto automáticamente."
+#~ msgstr "Document \"%(document)s\" automatically checked in."
 
 #~ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-#~ msgstr "Documento \"%(document)s\" devuelto forzosamente por %(fullname)s."
+#~ msgstr "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 
 #~ msgid "document"
-#~ msgstr "documento"
+#~ msgstr "document"
 
 #~ msgid "check out expiration date and time"
-#~ msgstr "fecha y hora de expiración de reserva"
+#~ msgstr "check out expiration date and time"
 
 #~ msgid "document checkout"
-#~ msgstr "reserva de documento"
+#~ msgstr "document checkout"
 
 #~ msgid "document checkouts"
-#~ msgstr "reservas de documentos"
+#~ msgstr "document checkouts"
 
 #~ msgid "checked out documents"
-#~ msgstr "documentos reservados"
+#~ msgstr "checked out documents"
 
 #~ msgid "no"
 #~ msgstr "no"

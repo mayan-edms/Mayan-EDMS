@@ -1,33 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
+# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
+# Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:55-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:41
 msgid "Created"
-msgstr ""
+msgstr "Créé"
 
 #: __init__.py:42 links.py:18 models.py:12
 msgid "Documents"
-msgstr ""
+msgstr "Documents"
 
 #: forms.py:38 models.py:24
 msgid "Folder"
@@ -40,27 +40,27 @@ msgstr "Répertoires"
 
 #: links.py:14 views.py:60
 msgid "Create folder"
-msgstr ""
+msgstr "Créer un dossier"
 
 #: links.py:15
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 #: links.py:16
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: links.py:17
 msgid "Remove from folder"
-msgstr ""
+msgstr "Supprimer du dossier"
 
 #: links.py:19
 msgid "Add to a folder"
-msgstr ""
+msgstr "Ajouter à un dossier"
 
 #: links.py:20
 msgid "Add to folder"
-msgstr ""
+msgstr "Ajouter au dossier"
 
 #: links.py:23
 msgid "ACLs"
@@ -68,15 +68,15 @@ msgstr "ACLs"
 
 #: models.py:9
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: models.py:10
 msgid "User"
-msgstr ""
+msgstr "Utilisateur"
 
 #: models.py:11
 msgid "Datetime created"
-msgstr ""
+msgstr "Date et heure de création"
 
 #: permissions.py:9
 msgid "Create new folders"
@@ -123,7 +123,7 @@ msgstr "Erreur lors de la modification du répertoire; %s"
 #: views.py:86
 #, python-format
 msgid "Edit folder: %s"
-msgstr ""
+msgstr "Modifier le répertoire: %s"
 
 #: views.py:108
 #, python-format
@@ -143,7 +143,7 @@ msgstr "Êtes vous certain de vouloir supprimer le répertoire: %s?"
 #: views.py:143
 #, python-format
 msgid "Documents in folder: %s"
-msgstr ""
+msgstr "Documents du dossier: %s"
 
 #: views.py:156
 msgid "Must provide at least one document."
@@ -157,8 +157,7 @@ msgstr "Document: %(document)s ajouté avec succès au répertoire: %(folder)s."
 #: views.py:178
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
-msgstr ""
-"Document: %(document)s est déjà présent dans le répertoire: %(folder)s."
+msgstr "Document: %(document)s est déjà présent dans le répertoire: %(folder)s."
 
 #: views.py:193
 #, python-format
@@ -173,7 +172,7 @@ msgstr "Ajouter les documents: %s au répertoire."
 #: views.py:210
 #, python-format
 msgid "Folders containing: %s"
-msgstr ""
+msgstr "Dossiers contenant: %s"
 
 #: views.py:238
 msgid "Must provide at least one folder document."
@@ -194,22 +193,33 @@ msgstr "Document: %(document)s erreur de suppression: %(error)s"
 msgid ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
-msgstr ""
-"Êtes vous certain de vouloir supprimer le document: %(document)s du  "
-"répertoire \"%(folder)s\"?"
+msgstr "Êtes vous certain de vouloir supprimer le document: %(document)s du  répertoire \"%(folder)s\"?"
 
 #: views.py:273
 #, python-format
 msgid ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
-msgstr ""
-"Êtes vous certain de vouloir retirer les documents: %(documents)s du "
-"répertoire \"%(folder)s\"?"
+"Are you sure you wish to remove the documents: %(documents)s from the folder"
+" \"%(folder)s\"?"
+msgstr "Êtes vous certain de vouloir retirer les documents: %(documents)s du répertoire \"%(folder)s\"?"
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"
 msgstr "Ajouter un document au répertoire"
+
+#~ msgid "Document"
+#~ msgstr "document"
+
+#~ msgid "Folder document"
+#~ msgstr "folder document"
+
+#~ msgid "Folder list"
+#~ msgstr "folder list"
+
+#~ msgid "Folder documents"
+#~ msgstr "folder documents"
+
+#~ msgid "Folders documents"
+#~ msgstr "folders documents"
 
 #~ msgid "edit"
 #~ msgstr "edit"
@@ -227,12 +237,12 @@ msgstr "Ajouter un document au répertoire"
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

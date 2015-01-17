@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
+# Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2011,2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:55-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-01-14 20:21+0000\n"
+"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:8
@@ -32,35 +32,35 @@ msgstr "Búsqueda"
 
 #: links.py:4 views.py:62
 msgid "Advanced search"
-msgstr ""
+msgstr "Búsqueda avanzada"
 
 #: links.py:5
 msgid "Search again"
-msgstr ""
+msgstr "Volver a buscar"
 
 #: models.py:19
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 #: models.py:25
 msgid "Query"
-msgstr ""
+msgstr "Consulta"
 
 #: models.py:26
 msgid "Datetime created"
-msgstr ""
+msgstr "fecha y hora creados"
 
 #: models.py:27
 msgid "Hits"
-msgstr ""
+msgstr "accesos"
 
 #: models.py:64
 msgid "Recent search"
-msgstr ""
+msgstr "Búsqueda reciente"
 
 #: models.py:65
 msgid "Recent searches"
-msgstr ""
+msgstr "Búsquedas recientes."
 
 #: settings.py:12
 msgid "Maximum amount search hits to fetch and display."
@@ -71,13 +71,12 @@ msgid "Maximum number of search queries to remember per user."
 msgstr "El número máximo de consultas de búsqueda para recordar por usuario."
 
 #: views.py:38
-#, fuzzy
 msgid "Results"
-msgstr "resultados"
+msgstr "Resultados"
 
 #: views.py:46
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: templates/search_results.html:3
 msgid "Search results"
@@ -91,7 +90,11 @@ msgstr "Tiempo transcurrido: %(time_delta)s segundos"
 #: templatetags/search_tags.py:37
 #, python-format
 msgid "Recent searches (maximum of %d)"
-msgstr ""
+msgstr "Búsquedas recientes (máximo de %d)"
+
+#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgstr ""
+#~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 
 #~ msgid "search"
 #~ msgstr "search"

@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
+# Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:57-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-01-14 16:06+0000\n"
+"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:13
@@ -31,35 +31,35 @@ msgstr "Confirmar contraseña"
 
 #: links.py:10 links.py:11 views.py:30
 msgid "Users"
-msgstr ""
+msgstr "Usuarios"
 
 #: links.py:12 links.py:22
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: links.py:13 views.py:95
 msgid "Create new user"
-msgstr ""
+msgstr "Crear nuevo usuario"
 
 #: links.py:14 links.py:15 links.py:24 links.py:25
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: links.py:16 links.py:17
 msgid "Reset password"
-msgstr ""
+msgstr "Reestablecer contraseña"
 
 #: links.py:18 links.py:20 links.py:21 views.py:246
 msgid "Groups"
-msgstr ""
+msgstr "Grupos"
 
 #: links.py:23 views.py:293
 msgid "Create new group"
-msgstr ""
+msgstr "Crear nuevo grupo"
 
 #: links.py:26 views.py:250
 msgid "Members"
-msgstr ""
+msgstr "Miembros"
 
 #: permissions.py:7
 msgid "User management"
@@ -99,27 +99,25 @@ msgstr "Eliminar grupos existentes"
 
 #: views.py:34
 msgid "Full name"
-msgstr ""
+msgstr "Nombre completo"
 
 #: views.py:38
 msgid "Email"
-msgstr ""
+msgstr "Correo electrónico"
 
 #: views.py:42
 msgid "Active"
-msgstr ""
+msgstr "Activo"
 
 #: views.py:46
 msgid "Has usable password?"
-msgstr ""
+msgstr "¿Tiene contraseña utilizable?"
 
 #: views.py:61
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"No se permite editar el super usuario y el usuario de personal. Use la "
-"interfaz de administración para estos casos."
+msgstr "No se permite editar el super usuario y el usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:68
 #, python-format
@@ -129,7 +127,7 @@ msgstr "Usuario \"%s\" actualizado con éxito."
 #: views.py:74
 #, python-format
 msgid "Edit user: %s"
-msgstr ""
+msgstr "Editar usuario: %s"
 
 #: views.py:89
 #, python-format
@@ -144,9 +142,7 @@ msgstr "Debe indicar al menos un usuario."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"No se permite eliminar el super usuario y usuario de personal. Use la "
-"interfaz de administración para estos casos."
+msgstr "No se permite eliminar el super usuario y usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:123
 #, python-format
@@ -176,9 +172,7 @@ msgstr "Las contraseñas no coinciden. Vuelva a intentarlo."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"No se permite cambiar la contraseña del super usuario y del usuario de "
-"personal. Use la interfaz de administración para estos casos."
+msgstr "No se permite cambiar la contraseña del super usuario y del usuario de personal. Use la interfaz de administración para estos casos."
 
 #: views.py:182
 #, python-format
@@ -188,8 +182,7 @@ msgstr "Contraseña restablecida para el usuario: %s."
 #: views.py:184
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Error de restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
+msgstr "Error de restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
 
 #: views.py:199
 #, python-format
@@ -209,7 +202,7 @@ msgstr ""
 #: views.py:232
 #, python-format
 msgid "Groups of user: %s"
-msgstr ""
+msgstr "Grupos de usuario: %s"
 
 #: views.py:268
 #, python-format
@@ -219,7 +212,7 @@ msgstr "Grupo \"%s\" actualizado con éxito."
 #: views.py:274
 #, python-format
 msgid "Edit group: %s"
-msgstr ""
+msgstr "Editar grupo: %s"
 
 #: views.py:287
 #, python-format
@@ -258,7 +251,16 @@ msgstr ""
 #: views.py:366
 #, python-format
 msgid "Members of group: %s"
-msgstr ""
+msgstr "Miembros del grupo: %s"
+
+#~ msgid "Group"
+#~ msgstr "group"
+
+#~ msgid "User list"
+#~ msgstr "user list"
+
+#~ msgid "Group list"
+#~ msgstr "group list"
 
 #~ msgid "edit"
 #~ msgstr "edit"

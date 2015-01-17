@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2014-10-30 11:09+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: forms.py:7 models.py:22
@@ -26,35 +25,35 @@ msgstr "فایل امضا"
 
 #: links.py:22
 msgid "Delete signature"
-msgstr ""
+msgstr "حذف امضا"
 
 #: links.py:23
 msgid "Download signature"
-msgstr ""
+msgstr "دانلود امضا"
 
 #: links.py:24
 msgid "Upload signature"
-msgstr ""
+msgstr "آپلود امضا"
 
 #: links.py:25
 msgid "Signatures"
-msgstr ""
+msgstr "امضاها"
 
 #: models.py:21
 msgid "Document version"
-msgstr ""
+msgstr "نسخه سند"
 
 #: models.py:23
 msgid "Has embedded signature"
-msgstr ""
+msgstr "دارای امضا داخلی و یا جاسازی شده"
 
 #: models.py:38
 msgid "Document version signature"
-msgstr ""
+msgstr "امضای نسخه سند"
 
 #: models.py:39
 msgid "Document version signatures"
-msgstr ""
+msgstr "امضاهای نسخه سند"
 
 #: permissions.py:7
 msgid "Document signatures"
@@ -77,17 +76,17 @@ msgid "Upload detached signatures"
 msgstr "آپلود امضاهای جدا شده"
 
 #: views.py:49
-#, fuzzy, python-format
+#, python-format
 msgid "Signature status: %s"
-msgstr "نوع امضا : %s"
+msgstr "وضعیت امضا : %s"
 
 #: views.py:53
 msgid "Embedded"
-msgstr ""
+msgstr "داخلی و یا جا سازی شده"
 
 #: views.py:55
 msgid "Detached"
-msgstr ""
+msgstr "جدا شده"
 
 #: views.py:57
 msgid "None"
@@ -121,7 +120,7 @@ msgstr "امضا کننده: %s"
 #: views.py:71
 #, python-format
 msgid "Signature properties for: %s"
-msgstr ""
+msgstr "خصوصیات امضا برای : %s"
 
 #: views.py:97
 msgid "Detached signature uploaded successfully."
@@ -148,7 +147,7 @@ msgid ""
 msgstr "آیا از حذف امضای جدا شده از سند %s مطمئن هستید؟"
 
 #~ msgid "Signature status: %(widget)s %(text)s"
-#~ msgstr "وضعیت امضا : %(widget)s %(text)s"
+#~ msgstr "Signature status: %(widget)s %(text)s"
 
 #~ msgid "signature file"
 #~ msgstr "signature file"

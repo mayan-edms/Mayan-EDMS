@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2014-10-25 07:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: api.py:92
@@ -162,9 +161,7 @@ msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr ""
-"确定要删除密钥%s么？如果你试图删除一个带有共／私配对的公钥，那么私钥也将被删"
-"除。"
+msgstr "确定要删除密钥%s么？如果你试图删除一个带有共／私配对的公钥，那么私钥也将被删除。"
 
 #: views.py:127
 msgid "Query key server"
@@ -183,47 +180,41 @@ msgid "Type"
 msgstr ""
 
 #: views.py:153
-#, fuzzy
 msgid "Creation date"
-msgstr "创建日期"
+msgstr ""
 
 #: views.py:157
-#, fuzzy
 msgid "Disabled"
-msgstr "无效"
+msgstr ""
 
 #: views.py:161
-#, fuzzy
 msgid "Expiration date"
-msgstr "过期时间"
+msgstr ""
 
 #: views.py:165
-#, fuzzy
 msgid "Expired"
-msgstr "过期的"
+msgstr ""
 
 #: views.py:169
-#, fuzzy
 msgid "Length"
-msgstr "长度"
+msgstr ""
 
 #: views.py:173
-#, fuzzy
 msgid "Revoked"
-msgstr "撤销"
+msgstr ""
 
 #: views.py:178
 msgid "Identifies"
 msgstr "标识"
 
 #~ msgid "private keys"
-#~ msgstr "私钥"
+#~ msgstr "private keys"
 
 #~ msgid "public keys"
-#~ msgstr "公钥"
+#~ msgstr "public keys"
 
 #~ msgid "type"
-#~ msgstr "类型"
+#~ msgstr "type"
 
 #~ msgid "query keyservers"
 #~ msgstr "query keyservers"

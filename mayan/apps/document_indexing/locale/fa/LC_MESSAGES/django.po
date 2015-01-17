@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -10,63 +10,62 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: __init__.py:39 links.py:23 links.py:24 links.py:38 links.py:40 models.py:60
 #: views.py:38 views.py:296
 msgid "Indexes"
-msgstr "ایندکس ها"
+msgstr "اندیس ها"
 
 #: api.py:50
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "خطای بروز رسانی %(exception)s ایندکس سند عبارت %(expression)s;"
+msgstr ""
 
 #: links.py:25 views.py:75
 msgid "Create index"
-msgstr ""
+msgstr "ایجاد اندیس"
 
 #: links.py:26 links.py:32
 msgid "Edit"
-msgstr ""
+msgstr "ویرایش"
 
 #: links.py:27 links.py:33
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: links.py:28
 msgid "Tree template"
-msgstr ""
+msgstr "الگوی درخت"
 
 #: links.py:29 models.py:19 views.py:300
 msgid "Document types"
-msgstr ""
+msgstr "انواع سند"
 
 #: links.py:31
 msgid "New child node"
-msgstr ""
+msgstr "گره فرزند جدید"
 
 #: links.py:35
 msgid "Index list"
-msgstr ""
+msgstr "لیست اندیس"
 
 #: links.py:37
 msgid "Go up one level"
-msgstr ""
+msgstr "بالا رفتن یک سطح"
 
 #: links.py:42
 msgid "Rebuild indexes"
-msgstr ""
+msgstr "بازسازی اندیس ها"
 
 #: links.py:42
 msgid "Deletes and creates from scratch all the document indexes."
@@ -74,7 +73,7 @@ msgstr "کلیه ایندکس ها پاک شده و از اول بازسازی �
 
 #: models.py:15 views.py:42
 msgid "Name"
-msgstr ""
+msgstr "نام"
 
 #: models.py:15
 msgid "Internal name used to reference this index."
@@ -82,7 +81,7 @@ msgstr "نام داخلی برای دسترسی به این ایندکس."
 
 #: models.py:17 views.py:43
 msgid "Title"
-msgstr ""
+msgstr "لقب"
 
 #: models.py:17
 msgid "The name that will be visible to users."
@@ -90,21 +89,20 @@ msgstr "نامی که بوسیله کاربر قابل مشاهده است."
 
 #: models.py:18 models.py:67 views.py:44 views.py:160
 msgid "Enabled"
-msgstr ""
+msgstr "فعال شده"
 
 #: models.py:18
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"باعث میشود که این ایندکس قابل رویت شود و در زمان تغییر داده سند بروز رسانی "
-"شود."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "باعث میشود که این ایندکس قابل رویت شود و در زمان تغییر داده سند بروز رسانی شود."
 
 #: models.py:59 models.py:65 views.py:243 views.py:281
 msgid "Index"
-msgstr ""
+msgstr "اندیس"
 
 #: models.py:66
 msgid "Indexing expression"
-msgstr ""
+msgstr "عبارت اندیس گذاری"
 
 #: models.py:66
 msgid "Enter a python string expression to be evaluated."
@@ -112,47 +110,45 @@ msgstr "یک رشته عبارت که قابل ارزیابی باشد وارد 
 
 #: models.py:67
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"باعث میشود که این ایندکس قابل رویت شود و در زمان تغییر داده سند بروز رسانی "
-"شود."
+msgstr "باعث میشود که این ایندکس قابل رویت شود و در زمان تغییر داده سند بروز رسانی شود."
 
 #: models.py:68
 msgid "Link documents"
-msgstr ""
+msgstr "اسناد پیوند"
 
 #: models.py:68
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr "بررسی شود که اینکه این گره ظرفی برای اسناد است و نه پدر گره های دیگر."
 
 #: models.py:74
 msgid "Index node template"
-msgstr ""
+msgstr "الگوی گره اندیس"
 
 #: models.py:75
 msgid "Indexes node template"
-msgstr ""
+msgstr "الگوی گره اندیس ها"
 
 #: models.py:80
 msgid "Index template node"
-msgstr ""
+msgstr "گره الگوی اندیس"
 
 #: models.py:81
 msgid "Value"
-msgstr ""
+msgstr "مقدار"
 
 #: models.py:82
 msgid "Documents"
-msgstr ""
+msgstr "اسناد"
 
 #: models.py:100
 msgid "Index node instance"
-msgstr ""
+msgstr "موردی ازگره اندیس"
 
 #: models.py:101
 msgid "Indexes node instances"
-msgstr ""
+msgstr "موارد گره اندیس ها"
 
 #: permissions.py:7
 msgid "Indexing"
@@ -193,7 +189,7 @@ msgstr "ویرایش موفق ایندکس"
 #: views.py:98
 #, python-format
 msgid "Edit index: %s"
-msgstr ""
+msgstr "ویرایش اندیس %s"
 
 #: views.py:121
 #, python-format
@@ -213,25 +209,25 @@ msgstr "از حذف ایندکس %s مطمئن هستید؟"
 #: views.py:156
 #, python-format
 msgid "Tree template nodes for index: %s"
-msgstr ""
+msgstr "گره الگوی درخت اندیس  %s"
 
 #: views.py:159
 msgid "Level"
-msgstr ""
+msgstr "سطح"
 
 #: views.py:161
 msgid "Has document links?"
-msgstr ""
+msgstr "آیا سند دارای پیوند است؟"
 
 #: views.py:183
 #, python-format
 msgid "Document types not in index: %s"
-msgstr ""
+msgstr "نوع سند در اندیس نیست : %s"
 
 #: views.py:184
 #, python-format
 msgid "Document types for index: %s"
-msgstr ""
+msgstr "نوع سند برای اندیس %s"
 
 #: views.py:206
 msgid "Index template node created successfully."
@@ -239,7 +235,7 @@ msgstr "ایجاد موفق گره الگوی ایندکس"
 
 #: views.py:212
 msgid "Create child node"
-msgstr ""
+msgstr "ایجاد گره فرزند"
 
 #: views.py:231
 msgid "Index template node edited successfully"
@@ -248,11 +244,11 @@ msgstr "ویرایش موفق گره الگوی ایندکس."
 #: views.py:237
 #, python-format
 msgid "Edit index template node: %s"
-msgstr ""
+msgstr "ویرایش الگوی گره اندیس: %s"
 
 #: views.py:244 views.py:282 views.py:349
 msgid "Node"
-msgstr ""
+msgstr "گره"
 
 #: views.py:265
 #, python-format
@@ -271,16 +267,16 @@ msgstr "آیا از حذف گره %s الگوی ایندکس مطمئن هستی
 
 #: views.py:299
 msgid "Nodes"
-msgstr ""
+msgstr "گره ها"
 
 #: views.py:331
 #, python-format
 msgid "Contents for index: %s"
-msgstr ""
+msgstr "محتوا برای اندیس : %s"
 
 #: views.py:353
 msgid "Items"
-msgstr ""
+msgstr "اقلام"
 
 #: views.py:378
 msgid "Are you sure you wish to rebuild all indexes?"
@@ -291,65 +287,84 @@ msgid "On large databases this operation may take some time to execute."
 msgstr "در پایگاه داده بزرگ این عملیات مدت زیادی بطول خواهد انجامید."
 
 #: views.py:383
-#, fuzzy
 msgid "Index rebuild queued successfully."
-msgstr "بازسازی موفق ایندکسها"
+msgstr ""
 
 #: views.py:405
 #, python-format
 msgid "Indexes containing: %s"
-msgstr ""
+msgstr "اندیسها شامل : %s"
 
 #: widgets.py:85
 msgid "Root"
-msgstr ""
+msgstr "ریشه"
 
 #~ msgid "Maximum suffix (%s) count reached."
-#~ msgstr "حداکثر تعداد پسوندها(%s) رسید."
+#~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
-#~ msgstr "خطای %(exception)s  در بروزرسانی عبارت ایندکس %(expression)s سند"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ msgstr ""
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
-#~ msgstr "نمیتوان گره  ایندکس گذاری سند را حذف کرد: %s"
+#~ msgstr "Unable to delete document indexing node; %s"
 
 #~ msgid "Unable to create indexing directory; %s"
-#~ msgstr "خطای ایجاد دایرکتوری ایندکس گذاری: %s"
+#~ msgstr "Unable to create indexing directory; %s"
 
 #~ msgid ""
 #~ "Unable to create symbolic link, file exists and could not be deleted: "
 #~ "%(filepath)s; %(exception)s"
 #~ msgstr ""
-#~ "خطا در ایجاد پیوند نمادی، فایل موجود است و قابل حذف نیست:%(filepath)s; "
-#~ "%(exception)s"
+#~ "Unable to create symbolic link, file exists and could not be deleted: "
+#~ "%(filepath)s; %(exc)s"
 
 #~ msgid "Unable to create symbolic link: %(filepath)s; %(exception)s"
-#~ msgstr "خطا در ایجاد پیوند نمادی : %(filepath)s; %(exception)s"
+#~ msgstr "Unable to create symbolic link: %(filepath)s; %(exc)s"
 
 #~ msgid "Unable to delete document symbolic link; %s"
-#~ msgstr "خطای حذف پیوند نمادی: %s"
+#~ msgstr "Unable to delete document symbolic link; %s"
 
 #~ msgid "Unable to delete indexing directory; %s"
-#~ msgstr "خطای حذف دایرکتوری ایندکس گذاری: %s"
+#~ msgstr "Unable to delete indexing directory; %s"
 
 #~ msgid "Available functions: %s"
-#~ msgstr "فانکشنهای موجود: %s"
+#~ msgstr "Available functions: %s"
+
+#~ msgid "Index instance"
+#~ msgstr "index instance"
+
+#~ msgid "Document"
+#~ msgstr "document"
+
+#~ msgid "Document rename count"
+#~ msgstr "document rename count"
+
+#~ msgid "Documents rename count"
+#~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
-#~ msgstr "سند مشخص کننده نام ایندکس و محل کپی شده آن در فایل سیستم."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
+#~ msgstr ""
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
-#~ msgstr "خطای بازسازی:  %s"
+#~ msgstr "Index rebuild error: %s"
+
+#~ msgid "Index instance node"
+#~ msgstr "index instance node"
+
+#~ msgid "Indexes instance nodes"
+#~ msgstr "indexes instance nodes"
 
 #~ msgid "document indexes"
-#~ msgstr "ایندکسهای سند"
+#~ msgstr "document indexes"
 
 #~ msgid "indexes"
-#~ msgstr "ایندکس ها"
+#~ msgstr "indexes"
 
 #~ msgid "edit"
 #~ msgstr "edit"

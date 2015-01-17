@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
+# Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2011-2012,2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:57-0400\n"
-"PO-Revision-Date: 2014-10-30 15:44+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-01-14 16:04+0000\n"
+"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:30
@@ -27,7 +27,7 @@ msgstr ""
 
 #: forms.py:29
 msgid "Comment"
-msgstr ""
+msgstr "Comentario"
 
 #: forms.py:44
 msgid "Expand compressed files"
@@ -35,8 +35,7 @@ msgstr "Expandir archivos comprimidos"
 
 #: forms.py:45
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Subir los archivos de un archivo comprimido como documentos individuales"
+msgstr "Subir los archivos de un archivo comprimido como documentos individuales"
 
 #: forms.py:70
 msgid "Staging file"
@@ -48,51 +47,51 @@ msgstr "Archivo"
 
 #: links.py:16
 msgid "Upload new documents"
-msgstr ""
+msgstr "Subir documentos nuevos"
 
 #: links.py:17
 msgid "Clone"
-msgstr ""
+msgstr "Clon"
 
 #: links.py:19 links.py:27 links.py:33
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: links.py:21 models.py:86 views.py:371
 msgid "Sources"
-msgstr ""
+msgstr "Fuentes"
 
 #: links.py:22
 msgid "Add new webform source"
-msgstr ""
+msgstr "Añadir nueva fuente en formato web"
 
 #: links.py:23
 msgid "Add new staging folder"
-msgstr ""
+msgstr "Añadir nueva carpeta de ensayo"
 
 #: links.py:24
 msgid "Add new watch folder"
-msgstr ""
+msgstr "Añadir nueva carpeta observada"
 
 #: links.py:25
 msgid "Add new POP3 email"
-msgstr ""
+msgstr "Añadir nuevo correo electrónico POP3"
 
 #: links.py:26
 msgid "Add new IMAP email"
-msgstr ""
+msgstr "Añadir nuevo correo electrónico IMAP"
 
 #: links.py:28 links.py:32
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: links.py:30
 msgid "Transformations"
-msgstr ""
+msgstr "Transformaciones"
 
 #: links.py:31
 msgid "Add transformation"
-msgstr ""
+msgstr "Añadir transformaciones"
 
 #: links.py:35
 msgid "Document sources"
@@ -100,7 +99,7 @@ msgstr "Fuentes de documentos"
 
 #: links.py:37
 msgid "Upload new version"
-msgstr ""
+msgstr "Subir versión nueva"
 
 #: literals.py:8 literals.py:13
 msgid "Always"
@@ -116,47 +115,47 @@ msgstr "Preguntar al usuario"
 
 #: literals.py:25 models.py:153
 msgid "Web form"
-msgstr ""
+msgstr "Formulario web"
 
 #: literals.py:26 models.py:137
 msgid "Staging folder"
-msgstr ""
+msgstr "Archivos provisionales"
 
 #: literals.py:27 models.py:352
 msgid "Watch folder"
-msgstr ""
+msgstr "Carpeta observada"
 
 #: literals.py:28
 msgid "POP3 email"
-msgstr ""
+msgstr "Correo electrónico POP3"
 
 #: literals.py:29 models.py:333 models.py:334
 msgid "IMAP email"
-msgstr ""
+msgstr "Correo electrónico IMAP"
 
 #: models.py:41
 msgid "Title"
-msgstr ""
+msgstr "Título"
 
 #: models.py:42 views.py:380
 msgid "Enabled"
-msgstr ""
+msgstr "Habilitado"
 
 #: models.py:85 views.py:525 views.py:554
 msgid "Source"
-msgstr ""
+msgstr "Fuente"
 
 #: models.py:93
 msgid "Interactive source"
-msgstr ""
+msgstr "Fuente interactiva"
 
 #: models.py:94
 msgid "Interactive sources"
-msgstr ""
+msgstr "Fuentes interactivas"
 
 #: models.py:101 models.py:340
 msgid "Folder path"
-msgstr ""
+msgstr "Ruta de la carpeta"
 
 #: models.py:101 models.py:340
 msgid "Server side filesystem path."
@@ -164,7 +163,7 @@ msgstr "Ruta a los archivos en el servidor."
 
 #: models.py:102
 msgid "Preview width"
-msgstr ""
+msgstr "Ancho de muestra"
 
 #: models.py:102
 msgid "Width value to be passed to the converter backend."
@@ -172,7 +171,7 @@ msgstr "Valor de la anchura que se pasa al backend convertidor."
 
 #: models.py:103
 msgid "Preview height"
-msgstr ""
+msgstr "Alto de muestra"
 
 #: models.py:103
 msgid "Height value to be passed to the converter backend."
@@ -180,7 +179,7 @@ msgstr "Valor de la altura que se pasa al backend convertidor."
 
 #: models.py:104 models.py:146 models.py:168
 msgid "Uncompress"
-msgstr ""
+msgstr "Decomprimir"
 
 #: models.py:104 models.py:146
 msgid "Whether to expand or not compressed archives."
@@ -188,7 +187,7 @@ msgstr "La posibilidad de ampliar o no archivos comprimidos."
 
 #: models.py:105
 msgid "Delete after upload"
-msgstr ""
+msgstr "Borrar después de subir"
 
 #: models.py:105
 msgid "Delete the file after is has been successfully uploaded."
@@ -202,47 +201,47 @@ msgstr "No es posible obtener la lista de los archivos provisionales: %s"
 #: models.py:134
 #, python-format
 msgid "Error deleting staging file; %s"
-msgstr ""
+msgstr "Error al borrar archivo de ensayo; %s"
 
 #: models.py:138
 msgid "Staging folders"
-msgstr ""
+msgstr "Archivos provisionales"
 
 #: models.py:154
 msgid "Web forms"
-msgstr ""
+msgstr "Formularios web"
 
 #: models.py:161 models.py:162
 msgid "Out of process"
-msgstr ""
+msgstr "Fuera de proceso"
 
 #: models.py:166
 msgid "Interval"
-msgstr ""
+msgstr "Intérvalo"
 
 #: models.py:166
 msgid "Interval in seconds between checks for new documents."
-msgstr ""
+msgstr "Intérvalo en segudos entre cotejos para documentos nuevos"
 
 #: models.py:167
 msgid "Document type"
-msgstr ""
+msgstr "Tipo de documento"
 
 #: models.py:167
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
+msgstr "Asignar un tipo de documento a los documentos subidos desde esta fuente"
 
 #: models.py:168
 msgid "Whether to expand or not, compressed archives."
-msgstr ""
+msgstr "Expandir o no archivos comprimidos."
 
 #: models.py:207
 msgid "Interval source"
-msgstr ""
+msgstr "Fuente de intérvalo"
 
 #: models.py:208
 msgid "Interval sources"
-msgstr ""
+msgstr "Fuentes de intérvalos"
 
 #: models.py:212
 msgid "Host"
@@ -250,11 +249,11 @@ msgstr ""
 
 #: models.py:213
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: models.py:214
 msgid "Port"
-msgstr ""
+msgstr "Puerto"
 
 #: models.py:214
 msgid ""
@@ -264,36 +263,36 @@ msgstr ""
 
 #: models.py:215
 msgid "Username"
-msgstr ""
+msgstr "Usuario"
 
 #: models.py:216
 msgid "Password"
-msgstr ""
+msgstr "Contraseña"
 
 #: models.py:236
 #, python-format
 msgid "attachment-%i"
-msgstr ""
+msgstr "Anejo-%i"
 
 #: models.py:245
 msgid "Email source"
-msgstr ""
+msgstr "Fuente de correo electrónico"
 
 #: models.py:246
 msgid "Email sources"
-msgstr ""
+msgstr "Fuentes de correo electrónico"
 
 #: models.py:252
 msgid "Timeout"
-msgstr ""
+msgstr "Tiempo de espera"
 
 #: models.py:290 models.py:291
 msgid "POP email"
-msgstr ""
+msgstr "Correo electrónico POP"
 
 #: models.py:297
 msgid "Mailbox"
-msgstr ""
+msgstr "Buzón"
 
 #: models.py:297
 msgid "Mail from which to check for messages with attached documents."
@@ -301,7 +300,7 @@ msgstr ""
 
 #: models.py:353
 msgid "Watch folders"
-msgstr ""
+msgstr "Carpetas observadas"
 
 #: models.py:357
 msgid "Enter a valid value."
@@ -309,15 +308,15 @@ msgstr "Introduzca un valor válido."
 
 #: models.py:385 views.py:488
 msgid "Order"
-msgstr ""
+msgstr "Orden"
 
 #: models.py:386 views.py:489 views.py:526 views.py:555
 msgid "Transformation"
-msgstr ""
+msgstr "Transformación"
 
 #: models.py:387 views.py:490
 msgid "Arguments"
-msgstr ""
+msgstr "Argumentos"
 
 #: models.py:387
 #, python-format
@@ -326,11 +325,11 @@ msgstr "Utilizar diccionarios para identificar argumentos, por ejemplo: %s"
 
 #: models.py:397
 msgid "Document source transformation"
-msgstr ""
+msgstr "Transformación de la fuente del documento"
 
 #: models.py:398
 msgid "Document source transformations"
-msgstr ""
+msgstr "Transformaciones de la fuente del documento"
 
 #: permissions.py:7
 msgid "Sources setup"
@@ -353,13 +352,10 @@ msgid "View existing document sources"
 msgstr "Ver fuentes de documento existentes"
 
 #: views.py:105 wizards.py:34
-#, fuzzy
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
-"No hay fuentes de documentos interactivos definidos o ninguna de ellas ha "
-"sido activada."
 
 #: views.py:133
 msgid "Files in staging path"
@@ -372,7 +368,7 @@ msgstr ""
 #: views.py:242
 #, python-format
 msgid "Upload a local document from source: %s"
-msgstr ""
+msgstr "Subir documento local desde la fuente: %s"
 
 #: views.py:250
 msgid "Current document type"
@@ -387,7 +383,8 @@ msgid "Current metadata"
 msgstr "Metadatos actuales"
 
 #: views.py:306
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:332
@@ -406,15 +403,15 @@ msgstr "Error al borrar archivo provisional; %s."
 
 #: views.py:376
 msgid "Type"
-msgstr ""
+msgstr "Tipo"
 
 #: views.py:381
 msgid "Yes"
-msgstr ""
+msgstr "Si"
 
 #: views.py:381
 msgid "No"
-msgstr ""
+msgstr "No"
 
 #: views.py:403
 msgid "Source edited successfully"
@@ -428,7 +425,7 @@ msgstr "Error editando fuente; %s"
 #: views.py:411
 #, python-format
 msgid "Edit source: %s"
-msgstr ""
+msgstr "Editar fuente: %s"
 
 #: views.py:430
 #, python-format
@@ -462,7 +459,7 @@ msgstr "Crear nuevo tipo de fuente: %s"
 #: views.py:483
 #, python-format
 msgid "Transformations for: %s"
-msgstr ""
+msgstr "Transformaciones para: %s"
 
 #: views.py:512
 msgid "Source transformation edited successfully"
@@ -491,9 +488,7 @@ msgstr "Error borrando la transformación de la fuente; %(error)s"
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"¿Está seguro que desea eliminar la transformación de la fuente "
-"\"%(transformation)s\""
+msgstr "¿Está seguro que desea eliminar la transformación de la fuente \"%(transformation)s\""
 
 #: views.py:578
 msgid "Source transformation created successfully"
@@ -511,28 +506,22 @@ msgstr "Crear una nueva transformación para la fuente: %s"
 
 #: widgets.py:20
 msgid "Staging file page image"
-msgstr ""
+msgstr "Imagen de página de archivo provisional"
 
 #: wizards.py:44
 msgid "Step 1 of 2: Select document type"
-msgstr ""
+msgstr "Paso 1 de 2: Seleccionar tipo de documento"
 
 #: wizards.py:45
 msgid "Step 2 of 2: Enter document metadata"
-msgstr ""
+msgstr "Paso 2 de 2: Entrar la metadata del documento"
 
 #: wizards.py:65
 msgid "Next step"
 msgstr "Siguiente paso"
 
-#~ msgid ""
-#~ "Returns a list of all the staging folders and the files they contain."
-#~ msgstr ""
-#~ "Devuelve la lista de todas las carpetas provisionales y de los ficheros "
-#~ "que contienen."
-
 #~ msgid "Upload sources"
-#~ msgstr "Fuentes desde las que subir archivos"
+#~ msgstr "Upload sources"
 
 #~ msgid "Server staging folder"
 #~ msgstr "server staging folder"

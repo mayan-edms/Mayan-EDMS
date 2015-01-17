@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:55-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: forms.py:25 models.py:66
@@ -32,15 +31,15 @@ msgstr "پیوند هوشمند"
 
 #: links.py:15 views.py:139
 msgid "Create new smart link"
-msgstr ""
+msgstr "ایجاد پیوند هوشمند جدید"
 
 #: links.py:16 links.py:25
 msgid "Edit"
-msgstr ""
+msgstr "ویرایش"
 
 #: links.py:17 links.py:26
 msgid "Delete"
-msgstr ""
+msgstr "حذف"
 
 #: links.py:18 models.py:19
 msgid "Document types"
@@ -52,11 +51,11 @@ msgstr ""
 
 #: links.py:23
 msgid "Conditions"
-msgstr ""
+msgstr "شرایط"
 
 #: links.py:24
 msgid "Create condition"
-msgstr ""
+msgstr "ایجاد شرط"
 
 #: links.py:28
 msgid "ACLs"
@@ -132,11 +131,11 @@ msgstr "موجود در عبارات منظم  (case insensitive)"
 
 #: models.py:16
 msgid "Title"
-msgstr ""
+msgstr "لقب"
 
 #: models.py:17 views.py:115
 msgid "Dynamic title"
-msgstr ""
+msgstr "لقب پویا"
 
 #: models.py:17
 msgid ""
@@ -145,7 +144,7 @@ msgstr ""
 
 #: models.py:18 models.py:70 views.py:116 views.py:232
 msgid "Enabled"
-msgstr ""
+msgstr "فعال شده"
 
 #: models.py:31
 #, python-format
@@ -158,11 +157,11 @@ msgstr ""
 
 #: models.py:59 models.py:64 views.py:294 views.py:328
 msgid "Smart link"
-msgstr ""
+msgstr "پیوند هوشمند"
 
 #: models.py:65
 msgid "The inclusion is ignored for the first item."
-msgstr ""
+msgstr "ورود اولین آیتم در نطر گرفته نشد."
 
 #: models.py:66
 msgid "This represents the metadata of all other documents."
@@ -170,7 +169,7 @@ msgstr ""
 
 #: models.py:68
 msgid "Expression"
-msgstr ""
+msgstr "عبارت"
 
 #: models.py:68
 msgid "This expression will be evaluated against the current document."
@@ -178,11 +177,11 @@ msgstr ""
 
 #: models.py:69
 msgid "Negated"
-msgstr ""
+msgstr "منفی شده"
 
 #: models.py:69
 msgid "Inverts the logic of the operator."
-msgstr ""
+msgstr "منطق عملگر را برعکس میکند."
 
 #: models.py:73
 msgid "not"
@@ -190,11 +189,11 @@ msgstr "نه "
 
 #: models.py:76
 msgid "Link condition"
-msgstr ""
+msgstr "شرط پیوند"
 
 #: models.py:77
 msgid "Link conditions"
-msgstr ""
+msgstr "شرایط پیوند"
 
 #: permissions.py:9
 msgid "View existing smart links"
@@ -215,12 +214,12 @@ msgstr "ویرایش پیوند هوشمند "
 #: views.py:48
 #, python-format
 msgid "Smart link query error: %s"
-msgstr ""
+msgstr "خطای پرسش query از پیوند هوشمند : %s"
 
 #: views.py:52
-#, fuzzy, python-format
+#, python-format
 msgid "Documents in smart link: %s"
-msgstr "حذف پیوند هوشمند "
+msgstr ""
 
 #: views.py:67
 #, python-format
@@ -228,9 +227,9 @@ msgid "Error calculating smart link for: %(document)s; %(exception)s."
 msgstr ""
 
 #: views.py:82
-#, fuzzy, python-format
+#, python-format
 msgid "Smart links for: %s"
-msgstr "پیوند هوشمند"
+msgstr ""
 
 #: views.py:84
 msgid "Indentifier"
@@ -239,32 +238,32 @@ msgstr ""
 #: views.py:132
 #, python-format
 msgid "Smart link: %s created successfully."
-msgstr ""
+msgstr "ایجاد موفق پیوند هوشمند %s"
 
 #: views.py:155
 #, python-format
 msgid "Smart link: %s edited successfully."
-msgstr ""
+msgstr "ویرایش موفق پیوند هوشمند %s"
 
 #: views.py:163
 #, python-format
 msgid "Edit smart link: %s"
-msgstr ""
+msgstr "ویرایش پیوند هوشمند %s"
 
 #: views.py:181
 #, python-format
 msgid "Smart link: %s deleted successfully."
-msgstr ""
+msgstr "حذف موفق پیوند هوشمند %s"
 
 #: views.py:183
 #, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgstr ""
+msgstr "خطا در حذف پیوند هوشمند %(smart_link)s; %(exception)s."
 
 #: views.py:192
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
-msgstr ""
+msgstr "از حذف پیوند هوشمند مطمئن هستید : %s"
 
 #: views.py:214
 #, python-format
@@ -274,62 +273,87 @@ msgstr ""
 #: views.py:229
 #, python-format
 msgid "Conditions for smart link: %s"
-msgstr ""
+msgstr "شرایط پیوند هوشمند : %s"
 
 #: views.py:254
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
-msgstr ""
+msgstr "ایجاد موفق پیوند هوشمند \"%s\""
 
 #: views.py:261
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
-msgstr ""
+msgstr "اضافه کردن شرط جدید به پیوند هوشمند \"%s\""
 
 #: views.py:281
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
-msgstr ""
+msgstr "ویرایش موفق پیوند هوشمند \"%s\""
 
 #: views.py:288
 msgid "Edit smart link condition"
-msgstr ""
+msgstr "ویرایش شرط پیوند هوشمند \"%s\""
 
 #: views.py:295 views.py:329
 msgid "Condition"
-msgstr ""
+msgstr "شرط"
 
 #: views.py:315
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
-msgstr ""
+msgstr "حذف موفق شرط پیوند هوشمند \"%s\""
 
 #: views.py:317
 #, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
-msgstr ""
+"Error deleting smart link condition: %(smart_link_condition)s; "
+"%(exception)s."
+msgstr "خطا در حذف شرط پیوند هوشمند : %(smart_link_condition)s; %(exception)s."
 
 #: views.py:331
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-msgstr ""
+msgstr "آیا از حذف شرط پیوند هوشمند مطمئن هستید \"%s\"؟"
 
 #~ msgid "Pages"
-#~ msgstr "صفحه‌ها"
+#~ msgstr "Pages"
 
 #~ msgid "Select"
-#~ msgstr "انتخاب"
+#~ msgstr "Select"
 
 #~ msgid "Click on the image for full size view of the first page."
-#~ msgstr "برای نمایش تصویر دریک صفحه کامل کلیک کنید."
+#~ msgstr "Click on the image for full size view of the first page."
+
+#~ msgid "Smart links actions"
+#~ msgstr "smart links actions"
+
+#~ msgid ""
+#~ "This expression will be evaluated against the current selected document.  "
+#~ "The document metadata is available as variables `metadata` and document "
+#~ "properties under the variable `document`."
+#~ msgstr ""
+#~ "This expression will be evaluated against the current selected document.  "
+#~ "The document metadata is available as variables `metadata` and document "
+#~ "properties under the variable `document`."
+
+#~ msgid ""
+#~ "This represents the metadata of all other documents.  Available objects: "
+#~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
+#~ msgstr ""
+#~ "This represents the metadata of all other documents.  Available objects: "
+#~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
+
+#~ msgid "Show smart link that don't return any documents."
+#~ msgstr "Show smart link that don't return any documents."
 
 #~ msgid "No action selected."
-#~ msgstr "هیچ عملکردی انتخاب نشد"
+#~ msgstr "No action selected."
 
-#, fuzzy
 #~ msgid "Smart links (0)"
-#~ msgstr "پیوند هوشمند"
+#~ msgstr "smart links (%s)"
+
+#~ msgid "Smart links list"
+#~ msgstr "smart links list"
 
 #~ msgid "smart links"
 #~ msgstr "smart links"
@@ -347,14 +371,14 @@ msgstr ""
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

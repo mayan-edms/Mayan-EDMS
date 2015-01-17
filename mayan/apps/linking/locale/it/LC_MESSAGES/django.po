@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:55-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:25 models.py:66
@@ -173,9 +172,8 @@ msgid "Expression"
 msgstr ""
 
 #: models.py:68
-#, fuzzy
 msgid "This expression will be evaluated against the current document."
-msgstr "Non ci sono link intelligenti per questo documento."
+msgstr ""
 
 #: models.py:69
 msgid "Negated"
@@ -219,9 +217,9 @@ msgid "Smart link query error: %s"
 msgstr "Interrogazione dei link intelligenti, errore: %s"
 
 #: views.py:52
-#, fuzzy, python-format
+#, python-format
 msgid "Documents in smart link: %s"
-msgstr "Modifica il link intelligente: %s"
+msgstr ""
 
 #: views.py:67
 #, python-format
@@ -229,9 +227,9 @@ msgid "Error calculating smart link for: %(document)s; %(exception)s."
 msgstr ""
 
 #: views.py:82
-#, fuzzy, python-format
+#, python-format
 msgid "Smart links for: %s"
-msgstr "Interrogazione dei link intelligenti, errore: %s"
+msgstr ""
 
 #: views.py:84
 msgid "Indentifier"
@@ -268,9 +266,9 @@ msgid "Are you sure you wish to delete smart link: %s?"
 msgstr "Sei sicuro di voler cancella questo link intelligente: %s?"
 
 #: views.py:214
-#, fuzzy, python-format
+#, python-format
 msgid "Document type for which to enable smart link: %s"
-msgstr "Sei sicuro di voler cancella questo link intelligente: %s?"
+msgstr ""
 
 #: views.py:229
 #, python-format
@@ -308,50 +306,54 @@ msgstr "Condizioni per il link intelligente: \"%s\" cancellato con successo."
 #: views.py:317
 #, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
+"Error deleting smart link condition: %(smart_link_condition)s; "
+"%(exception)s."
 msgstr ""
 
 #: views.py:331
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-msgstr ""
-"Sei sicuro di voler cancellare le condizioni per il link intelligente : \"%s"
-"\"?"
+msgstr "Sei sicuro di voler cancellare le condizioni per il link intelligente : \"%s\"?"
 
 #~ msgid "Pages"
-#~ msgstr "Pagine"
+#~ msgstr "Pages"
 
 #~ msgid "Select"
-#~ msgstr "Seleziona"
+#~ msgstr "Select"
 
 #~ msgid "Click on the image for full size view of the first page."
-#~ msgstr "Click sull'immagine per vedere la prima pagina"
+#~ msgstr "Click on the image for full size view of the first page."
+
+#~ msgid "Smart links actions"
+#~ msgstr "smart links actions"
 
 #~ msgid ""
 #~ "This expression will be evaluated against the current selected document.  "
 #~ "The document metadata is available as variables `metadata` and document "
 #~ "properties under the variable `document`."
 #~ msgstr ""
-#~ "Questa espressione sarà valutata per il documento corrente selezionato. I "
-#~ "metadati del documento sono disponibile come variabili `metadati` e le "
-#~ "proprietà dei documenti sotto la variabile `documento`."
+#~ "This expression will be evaluated against the current selected document.  "
+#~ "The document metadata is available as variables `metadata` and document "
+#~ "properties under the variable `document`."
 
 #~ msgid ""
 #~ "This represents the metadata of all other documents.  Available objects: "
 #~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
 #~ msgstr ""
-#~ "Questo rappresenta i metadati di tutti gli altri documenti. Oggetti "
-#~ "disponibili: `document.<attribute>` e `metadata.<metadata_type_name>`."
+#~ "This represents the metadata of all other documents.  Available objects: "
+#~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
 
 #~ msgid "Show smart link that don't return any documents."
-#~ msgstr "Mostra i link intelligenti che non restituiscono documenti"
+#~ msgstr "Show smart link that don't return any documents."
 
 #~ msgid "No action selected."
-#~ msgstr "Nessuna azione selezionata "
+#~ msgstr "No action selected."
 
-#, fuzzy
 #~ msgid "Smart links (0)"
-#~ msgstr "Link intelligenti"
+#~ msgstr "smart links (%s)"
+
+#~ msgid "Smart links list"
+#~ msgstr "smart links list"
 
 #~ msgid "smart links"
 #~ msgstr "smart links"
@@ -369,14 +371,14 @@ msgstr ""
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

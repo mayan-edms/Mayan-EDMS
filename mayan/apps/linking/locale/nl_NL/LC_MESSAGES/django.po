@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Lucas Weel <ljj.weel@gmail.com>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:55-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:25 models.py:66
@@ -172,9 +171,8 @@ msgid "Expression"
 msgstr ""
 
 #: models.py:68
-#, fuzzy
 msgid "This expression will be evaluated against the current document."
-msgstr "Er zijn geen gedefinieerde 'smartlinks' voor het huidige document"
+msgstr ""
 
 #: models.py:69
 msgid "Negated"
@@ -218,9 +216,9 @@ msgid "Smart link query error: %s"
 msgstr "'smartlink' zoek fout: %s"
 
 #: views.py:52
-#, fuzzy, python-format
+#, python-format
 msgid "Documents in smart link: %s"
-msgstr "'smartlink': %s bewerken."
+msgstr ""
 
 #: views.py:67
 #, python-format
@@ -228,9 +226,9 @@ msgid "Error calculating smart link for: %(document)s; %(exception)s."
 msgstr ""
 
 #: views.py:82
-#, fuzzy, python-format
+#, python-format
 msgid "Smart links for: %s"
-msgstr "'smartlink' zoek fout: %s"
+msgstr ""
 
 #: views.py:84
 msgid "Indentifier"
@@ -267,9 +265,9 @@ msgid "Are you sure you wish to delete smart link: %s?"
 msgstr "Bent u er zeker van dat u 'smartlink': %s wilt verwijderen?"
 
 #: views.py:214
-#, fuzzy, python-format
+#, python-format
 msgid "Document type for which to enable smart link: %s"
-msgstr "Bent u er zeker van dat u 'smartlink': %s wilt verwijderen?"
+msgstr ""
 
 #: views.py:229
 #, python-format
@@ -307,51 +305,54 @@ msgstr "'smartlink' conditie: \"%s\" verwijdert"
 #: views.py:317
 #, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
+"Error deleting smart link condition: %(smart_link_condition)s; "
+"%(exception)s."
 msgstr ""
 
 #: views.py:331
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-msgstr ""
-"Bent u er zeker van dat u 'smartlink'-conditie: \"%s\" wilt verwijderen?"
+msgstr "Bent u er zeker van dat u 'smartlink'-conditie: \"%s\" wilt verwijderen?"
 
 #~ msgid "Pages"
-#~ msgstr "Pagina's"
+#~ msgstr "Pages"
 
 #~ msgid "Select"
-#~ msgstr "Selecteer"
+#~ msgstr "Select"
 
 #~ msgid "Click on the image for full size view of the first page."
-#~ msgstr ""
-#~ "Klik op de afbeelding om de eerste pagina op ware grootte te kunnen "
-#~ "inzien."
+#~ msgstr "Click on the image for full size view of the first page."
+
+#~ msgid "Smart links actions"
+#~ msgstr "smart links actions"
 
 #~ msgid ""
 #~ "This expression will be evaluated against the current selected document.  "
 #~ "The document metadata is available as variables `metadata` and document "
 #~ "properties under the variable `document`."
 #~ msgstr ""
-#~ "Deze expressie zal worden geevalueerd tegen het huidige geselecteerde "
-#~ "document. De metadata van het document is beschikbaar onder variabelen: "
-#~ "'metadata' en document eigenschappen onder de variabele 'document'."
+#~ "This expression will be evaluated against the current selected document.  "
+#~ "The document metadata is available as variables `metadata` and document "
+#~ "properties under the variable `document`."
 
 #~ msgid ""
 #~ "This represents the metadata of all other documents.  Available objects: "
 #~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
 #~ msgstr ""
-#~ "Dit representeerd de metadata van alle andere documenten. Beschikbare "
-#~ "objecten: 'document.<attribute>' and 'metadata.<metadata_type_name>'."
+#~ "This represents the metadata of all other documents.  Available objects: "
+#~ "`document.<attribute>` and `metadata.<metadata_type_name>`."
 
 #~ msgid "Show smart link that don't return any documents."
-#~ msgstr "Geef 'smartlinks' die niet naar documenten verwijzen."
+#~ msgstr "Show smart link that don't return any documents."
 
 #~ msgid "No action selected."
-#~ msgstr "Geen actie geselecteerd"
+#~ msgstr "No action selected."
 
-#, fuzzy
 #~ msgid "Smart links (0)"
-#~ msgstr "'Smartlinks'"
+#~ msgstr "smart links (%s)"
+
+#~ msgid "Smart links list"
+#~ msgstr "smart links list"
 
 #~ msgid "smart links"
 #~ msgstr "smart links"
@@ -369,14 +370,14 @@ msgstr ""
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

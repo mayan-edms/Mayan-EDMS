@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:53-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: events.py:7
@@ -57,23 +56,20 @@ msgid "Check in/out"
 msgstr ""
 
 #: literals.py:9
-#, fuzzy
 msgid "Checked out"
-msgstr "проверен"
+msgstr ""
 
 #: literals.py:10
-#, fuzzy
 msgid "Checked in/available"
-msgstr "регистриран/наличен"
+msgstr ""
 
 #: models.py:23
 msgid "Document"
 msgstr ""
 
 #: models.py:24
-#, fuzzy
 msgid "Check out date and time"
-msgstr "дата и час на проверка"
+msgstr ""
 
 #: models.py:25 widgets.py:79
 msgid "Check out expiration date and time"
@@ -84,9 +80,8 @@ msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Време за задържане на проверения документ в минути."
 
 #: models.py:32
-#, fuzzy
 msgid "Block new version upload"
-msgstr "блокиране качването на нова версия"
+msgstr ""
 
 #: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
@@ -97,9 +92,8 @@ msgid "Document checkout"
 msgstr "Проверка на документ"
 
 #: models.py:59
-#, fuzzy
 msgid "Document checkouts"
-msgstr "Проверка на документ"
+msgstr ""
 
 #: permissions.py:9
 msgid "Check out documents"
@@ -118,9 +112,8 @@ msgid "Allow overriding check out restrictions"
 msgstr "Разреши проверки незвисимо от забрана"
 
 #: views.py:32
-#, fuzzy
 msgid "Documents checked out"
-msgstr "Документът е проверен."
+msgstr ""
 
 #: views.py:35
 msgid "Checkout user"
@@ -135,9 +128,9 @@ msgid "Checkout expiration"
 msgstr ""
 
 #: views.py:50
-#, fuzzy, python-format
+#, python-format
 msgid "Document status: %s"
-msgstr "Статус на документа: %(widget)s %(text)s"
+msgstr ""
 
 #: views.py:54
 #, python-format
@@ -160,9 +153,8 @@ msgid "New versions allowed: %s"
 msgstr "Разрешени нови версии: %s"
 
 #: views.py:57
-#, fuzzy
 msgid "Yes"
-msgstr "да"
+msgstr ""
 
 #: views.py:57
 msgid "No"
@@ -207,9 +199,7 @@ msgstr "Документ \"%s\" е регистриран успешно."
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr ""
-"Проверката на този документ не е извършвана от Вас. Сигурни ли сте, че "
-"искате принудително да регистрирате документа: %s?"
+msgstr "Проверката на този документ не е извършвана от Вас. Сигурни ли сте, че искате принудително да регистрирате документа: %s?"
 
 #: views.py:145
 #, python-format
@@ -248,40 +238,37 @@ msgstr "Въведете валидна времева разлика."
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr ""
-"Време за задържане на документа в състояние проверен, в дни, часове и/или "
-"минути."
+msgstr "Време за задържане на документа в състояние проверен, в дни, часове и/или минути."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
-#~ msgstr "Докумнетът \"%(document)s\" е проверен от %(fullname)s."
+#~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."
 
 #~ msgid "Document \"%(document)s\" checked in by %(fullname)s."
-#~ msgstr "Документът \"%(document)s\" е регистриран от %(fullname)s."
+#~ msgstr "Document \"%(document)s\" checked in by %(fullname)s."
 
 #~ msgid "Document \"%(document)s\" automatically checked in."
-#~ msgstr "Документ \"%(document)s\" е автоматично регистриран."
+#~ msgstr "Document \"%(document)s\" automatically checked in."
 
 #~ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-#~ msgstr ""
-#~ "Документът \"%(document)s\" принудително регистриран от %(fullname)s."
+#~ msgstr "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 
 #~ msgid "document"
-#~ msgstr "документ"
+#~ msgstr "document"
 
 #~ msgid "check out expiration date and time"
-#~ msgstr "проверка на срока на валидност, дата и час"
+#~ msgstr "check out expiration date and time"
 
 #~ msgid "document checkout"
-#~ msgstr "проверка на документ"
+#~ msgstr "document checkout"
 
 #~ msgid "document checkouts"
-#~ msgstr "проверки на документ"
+#~ msgstr "document checkouts"
 
 #~ msgid "checked out documents"
-#~ msgstr "проверени документи"
+#~ msgstr "checked out documents"
 
 #~ msgid "no"
-#~ msgstr "не"
+#~ msgstr "no"
 
 #~ msgid "Check expired check out documents and checks them in."
 #~ msgstr "Check expired check out documents and checks them in."

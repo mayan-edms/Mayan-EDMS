@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Pierre Lhoste <peter.cathbad.host@gmail.com>, 2012
+# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
+# Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:56-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2014-11-07 18:14+0000\n"
+"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: links.py:10 widgets.py:23
@@ -30,27 +30,27 @@ msgstr "Retirer"
 
 #: links.py:13
 msgid "Create new role"
-msgstr ""
+msgstr "Créer un nouveau rôle"
 
 #: links.py:14
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: links.py:15
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 #: links.py:16 models.py:218 views.py:56
 msgid "Roles"
-msgstr ""
+msgstr "Rôles"
 
 #: links.py:17
 msgid "Members"
-msgstr ""
+msgstr "Membres"
 
 #: links.py:18
 msgid "Role permissions"
-msgstr ""
+msgstr "Autorisations du rôle"
 
 #: models.py:51
 msgid "Insufficient permissions."
@@ -58,15 +58,15 @@ msgstr "Droits insuffisants"
 
 #: models.py:126 views.py:77
 msgid "Namespace"
-msgstr ""
+msgstr "Espace de nommage"
 
 #: models.py:127 views.py:78
 msgid "Name"
-msgstr ""
+msgstr "Nom"
 
 #: models.py:134 models.py:196 views.py:132
 msgid "Permission"
-msgstr ""
+msgstr "Autorisation"
 
 #: models.py:135 permissions.py:7 views.py:74 views.py:134
 msgid "Permissions"
@@ -74,27 +74,27 @@ msgstr "Droits"
 
 #: models.py:204
 msgid "Permission holder"
-msgstr ""
+msgstr "Propriétaire du droit"
 
 #: models.py:205
 msgid "Permission holders"
-msgstr ""
+msgstr "Propriétaires du droit"
 
 #: models.py:213
 msgid "Label"
-msgstr ""
+msgstr "Étiquette"
 
 #: models.py:217 models.py:248
 msgid "Role"
-msgstr ""
+msgstr "Rôle"
 
 #: models.py:264
 msgid "Role member"
-msgstr ""
+msgstr "Membre du rôle"
 
 #: models.py:265
 msgid "Role members"
-msgstr ""
+msgstr "membres du rôle"
 
 #: permissions.py:9
 msgid "View roles"
@@ -124,13 +124,11 @@ msgstr "Retirer des droits"
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
-msgstr ""
-"Une liste des rôles existant qui sont automatiquement attribués aux comptes "
-"utilisateurs nouvellement créés"
+msgstr "Une liste des rôles existant qui sont automatiquement attribués aux comptes utilisateurs nouvellement créés"
 
 #: views.py:80
 msgid "Has permission"
-msgstr ""
+msgstr "Possède le droit"
 
 #: views.py:129 views.py:190
 msgid " and "
@@ -155,9 +153,7 @@ msgstr "%(requester)s, a déjà le droit \"%(permission)s\" d'attribué."
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"Êtes vous certain de vouloir attribuer le droit %(permissions_label)s "
-"%(title_suffix)s?"
+msgstr "Êtes vous certain de vouloir attribuer le droit %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:193
 msgid "permission"
@@ -181,9 +177,7 @@ msgstr "%(requester)s, n'a pas le droit \"%(permission)s\" d'attribué."
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"Êtes vous certain de vouloir supprimer le droit %(permissions_label)s "
-"%(title_suffix)s?"
+msgstr "Êtes vous certain de vouloir supprimer le droit %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:248 views.py:272
 msgid "Users"
@@ -200,12 +194,12 @@ msgstr "Spécial"
 #: views.py:303
 #, python-format
 msgid "Non members of role: %s"
-msgstr ""
+msgstr "Membres exclus du rôle:%s"
 
 #: views.py:304
 #, python-format
 msgid "Members of role: %s"
-msgstr ""
+msgstr "Membres du rôle:%s"
 
 #~ msgid "edit"
 #~ msgstr "edit"

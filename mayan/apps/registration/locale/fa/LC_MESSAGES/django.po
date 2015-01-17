@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:56-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2014-10-25 08:35+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: forms.py:13
@@ -55,11 +54,11 @@ msgstr "تبت نام"
 
 #: models.py:22
 msgid "Registered"
-msgstr ""
+msgstr "ثبت شده"
 
 #: models.py:23
 msgid "Registration data"
-msgstr ""
+msgstr "داداه های ثبت نام"
 
 #: models.py:49
 msgid "No name"
@@ -67,7 +66,7 @@ msgstr "بدون نام"
 
 #: models.py:86
 msgid "Registration properties"
-msgstr ""
+msgstr "خصوصیات ثبت نام"
 
 #: views.py:19
 msgid "Your copy is already registered."
@@ -78,12 +77,11 @@ msgid "Thank you for registering."
 msgstr "با سپاس از ثبت نام شما"
 
 #: views.py:32
-#, fuzzy
 msgid "Registration form"
 msgstr "فرم ثبت نام"
 
 #~ msgid "Error submiting form; %s."
-#~ msgstr "خطا در ارسال فرم؛ %s."
+#~ msgstr "Error submiting form; %s."
 
 #~ msgid "Unregistered"
-#~ msgstr "ثبت نشده"
+#~ msgstr "Unregistered"

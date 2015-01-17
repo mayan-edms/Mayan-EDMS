@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:57-0400\n"
-"PO-Revision-Date: 2014-10-30 15:44+0000\n"
+"PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/da/)\n"
-"Language: da\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:30
@@ -351,13 +350,10 @@ msgid "View existing document sources"
 msgstr "Se eksisterende dokument kilder"
 
 #: views.py:105 wizards.py:34
-#, fuzzy
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
-"Ingen interaktive dokument kilder er blevet defineret eller ingen er blevet "
-"aktiveret."
 
 #: views.py:133
 msgid "Files in staging path"
@@ -385,7 +381,8 @@ msgid "Current metadata"
 msgstr "Nuværende metadata"
 
 #: views.py:306
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:332
@@ -489,8 +486,7 @@ msgstr "Fejl ved sletning af kilde transformation; %(error)s"
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"Er du sikker på at du vil slette kilde transformation \"%(transformation)s\""
+msgstr "Er du sikker på at du vil slette kilde transformation \"%(transformation)s\""
 
 #: views.py:578
 msgid "Source transformation created successfully"
@@ -523,7 +519,7 @@ msgid "Next step"
 msgstr ""
 
 #~ msgid "Upload sources"
-#~ msgstr "Upload kilder"
+#~ msgstr "Upload sources"
 
 #~ msgid "Server staging folder"
 #~ msgstr "server staging folder"

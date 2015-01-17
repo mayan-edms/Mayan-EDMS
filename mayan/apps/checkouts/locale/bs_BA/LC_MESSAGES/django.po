@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:53-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"projects/p/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/projects/p/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: events.py:7
 msgid "Document checked out"
@@ -58,23 +56,20 @@ msgid "Check in/out"
 msgstr ""
 
 #: literals.py:9
-#, fuzzy
 msgid "Checked out"
-msgstr "odjavljeno"
+msgstr ""
 
 #: literals.py:10
-#, fuzzy
 msgid "Checked in/available"
-msgstr "prijavljeno/dostupno"
+msgstr ""
 
 #: models.py:23
 msgid "Document"
 msgstr ""
 
 #: models.py:24
-#, fuzzy
 msgid "Check out date and time"
-msgstr "datum i vrijeme odjave"
+msgstr ""
 
 #: models.py:25 widgets.py:79
 msgid "Check out expiration date and time"
@@ -85,9 +80,8 @@ msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Vrijeme zadržavanja odjavljenog dokumenta u minutama "
 
 #: models.py:32
-#, fuzzy
 msgid "Block new version upload"
-msgstr "blokirati upload nove verzije"
+msgstr ""
 
 #: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
@@ -98,9 +92,8 @@ msgid "Document checkout"
 msgstr "Odjava dokumenta"
 
 #: models.py:59
-#, fuzzy
 msgid "Document checkouts"
-msgstr "Odjava dokumenta"
+msgstr ""
 
 #: permissions.py:9
 msgid "Check out documents"
@@ -119,9 +112,8 @@ msgid "Allow overriding check out restrictions"
 msgstr "Dozvoliti zanemarivanje ograničenja odjavljivanja"
 
 #: views.py:32
-#, fuzzy
 msgid "Documents checked out"
-msgstr "Dokument odjavljen"
+msgstr ""
 
 #: views.py:35
 msgid "Checkout user"
@@ -136,9 +128,9 @@ msgid "Checkout expiration"
 msgstr ""
 
 #: views.py:50
-#, fuzzy, python-format
+#, python-format
 msgid "Document status: %s"
-msgstr "Status dokumenta: %(widget)s %(text)s"
+msgstr ""
 
 #: views.py:54
 #, python-format
@@ -161,9 +153,8 @@ msgid "New versions allowed: %s"
 msgstr "Nove verzije dozvoljene: %s"
 
 #: views.py:57
-#, fuzzy
 msgid "Yes"
-msgstr "da"
+msgstr ""
 
 #: views.py:57
 msgid "No"
@@ -208,9 +199,7 @@ msgstr "Dokument \"%s\" uspješno prijavljen."
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr ""
-"Vi niste odjavili ovaj dokument. Jeste li sigurni da želite prisilno "
-"prijaviti dokument: %s?"
+msgstr "Vi niste odjavili ovaj dokument. Jeste li sigurni da želite prisilno prijaviti dokument: %s?"
 
 #: views.py:145
 #, python-format
@@ -249,39 +238,37 @@ msgstr "Unesite važeću vremensku razliku."
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr ""
-"Vremenski period zadržavanja dokumenta u odjavljenom stanju u danima, satima "
-"i/ili minutama."
+msgstr "Vremenski period zadržavanja dokumenta u odjavljenom stanju u danima, satima i/ili minutama."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
-#~ msgstr "Dokument \"%(document)s\" odjavio/la %(fullname)s."
+#~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."
 
 #~ msgid "Document \"%(document)s\" checked in by %(fullname)s."
-#~ msgstr "Dokument \"%(document)s\" prijavio/la %(fullname)s."
+#~ msgstr "Document \"%(document)s\" checked in by %(fullname)s."
 
 #~ msgid "Document \"%(document)s\" automatically checked in."
-#~ msgstr "Dokument \"%(document)s\" je automatski prijavljen."
+#~ msgstr "Document \"%(document)s\" automatically checked in."
 
 #~ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-#~ msgstr "Dokument \"%(document)s\" prisilno prijavio/la %(fullname)s."
+#~ msgstr "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 
 #~ msgid "document"
-#~ msgstr "dokument"
+#~ msgstr "document"
 
 #~ msgid "check out expiration date and time"
-#~ msgstr "datum i vrijeme istjecanja prijave"
+#~ msgstr "check out expiration date and time"
 
 #~ msgid "document checkout"
-#~ msgstr "odjava dokumenta"
+#~ msgstr "document checkout"
 
 #~ msgid "document checkouts"
-#~ msgstr "odjave dokumenta"
+#~ msgstr "document checkouts"
 
 #~ msgid "checked out documents"
-#~ msgstr "odjavljeni dokumenti"
+#~ msgstr "checked out documents"
 
 #~ msgid "no"
-#~ msgstr "ne"
+#~ msgstr "no"
 
 #~ msgid "Check expired check out documents and checks them in."
 #~ msgstr "Check expired check out documents and checks them in."

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: __init__.py:39 links.py:23 links.py:24 links.py:38 links.py:40 models.py:60
@@ -26,11 +25,11 @@ msgid "Indexes"
 msgstr "索引"
 
 #: api.py:50
-#, fuzzy, python-format
+#, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "更新文档索引出错，表达式：%(expression)s，异常：%(exception)s"
+msgstr ""
 
 #: links.py:25 views.py:75
 msgid "Create index"
@@ -93,7 +92,8 @@ msgid "Enabled"
 msgstr ""
 
 #: models.py:18
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr "当文档数据变化时，将导致索引被更新和可见。"
 
 #: models.py:59 models.py:65 views.py:243 views.py:281
@@ -118,8 +118,8 @@ msgstr ""
 
 #: models.py:68
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr "检查当前节点是否为文档容器，而不是作为别处节点的父节点。"
 
 #: models.py:74
@@ -287,9 +287,8 @@ msgid "On large databases this operation may take some time to execute."
 msgstr "在大数据库中，此操作将比较耗时。"
 
 #: views.py:383
-#, fuzzy
 msgid "Index rebuild queued successfully."
-msgstr "索引重建成功。"
+msgstr ""
 
 #: views.py:405
 #, python-format
@@ -301,51 +300,71 @@ msgid "Root"
 msgstr ""
 
 #~ msgid "Maximum suffix (%s) count reached."
-#~ msgstr "后缀(%s)已达到最大数。"
+#~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
-#~ msgstr "在文档索引时，更新表达式%(expression)s 出错：%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ msgstr ""
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
-#~ msgstr "不能删除文档索引节点： %s"
+#~ msgstr "Unable to delete document indexing node; %s"
 
 #~ msgid "Unable to create indexing directory; %s"
-#~ msgstr "不能创建索引目录：%s"
+#~ msgstr "Unable to create indexing directory; %s"
 
 #~ msgid ""
 #~ "Unable to create symbolic link, file exists and could not be deleted: "
 #~ "%(filepath)s; %(exception)s"
 #~ msgstr ""
-#~ "不能创建符号连接，文件%(filepath)s已存在，并且不能被删除，异常："
-#~ "%(exception)s"
+#~ "Unable to create symbolic link, file exists and could not be deleted: "
+#~ "%(filepath)s; %(exc)s"
 
 #~ msgid "Unable to create symbolic link: %(filepath)s; %(exception)s"
-#~ msgstr "不能创建符号连接：%(filepath)s，异常：%(exception)s"
+#~ msgstr "Unable to create symbolic link: %(filepath)s; %(exc)s"
 
 #~ msgid "Unable to delete document symbolic link; %s"
-#~ msgstr "不能删除文档符号连接：%s"
+#~ msgstr "Unable to delete document symbolic link; %s"
 
 #~ msgid "Unable to delete indexing directory; %s"
-#~ msgstr "不能删除索引目录：%s"
+#~ msgstr "Unable to delete indexing directory; %s"
 
 #~ msgid "Available functions: %s"
-#~ msgstr "有效的功能：%s"
+#~ msgstr "Available functions: %s"
+
+#~ msgid "Index instance"
+#~ msgstr "index instance"
+
+#~ msgid "Document"
+#~ msgstr "document"
+
+#~ msgid "Document rename count"
+#~ msgstr "document rename count"
+
+#~ msgid "Documents rename count"
+#~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
-#~ msgstr "字典将索引名字映射成文件系统所在的位置。"
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
+#~ msgstr ""
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
-#~ msgstr "索引重建错误：%s"
+#~ msgstr "Index rebuild error: %s"
+
+#~ msgid "Index instance node"
+#~ msgstr "index instance node"
+
+#~ msgid "Indexes instance nodes"
+#~ msgstr "indexes instance nodes"
 
 #~ msgid "document indexes"
-#~ msgstr "文档索引"
+#~ msgstr "document indexes"
 
 #~ msgid "indexes"
-#~ msgstr "索引"
+#~ msgstr "indexes"
 
 #~ msgid "edit"
 #~ msgstr "edit"

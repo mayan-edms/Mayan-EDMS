@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
@@ -15,14 +15,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2014-10-25 07:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:7 models.py:22
@@ -82,9 +81,9 @@ msgid "Upload detached signatures"
 msgstr "Separate Unterschriften hochladen"
 
 #: views.py:49
-#, fuzzy, python-format
+#, python-format
 msgid "Signature status: %s"
-msgstr "Unterschriftstyp: %s"
+msgstr ""
 
 #: views.py:53
 msgid "Embedded"
@@ -153,7 +152,7 @@ msgid ""
 msgstr "Separate Unterschrift zu Dokument %s wirklich löschen?"
 
 #~ msgid "Signature status: %(widget)s %(text)s"
-#~ msgstr "Unterschriftsstatus: %(widget)s %(text)s"
+#~ msgstr "Signature status: %(widget)s %(text)s"
 
 #~ msgid "signature file"
 #~ msgstr "signature file"

@@ -1,7 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
 msgid ""
@@ -9,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2013-11-20 11:56+0000\n"
+"PO-Revision-Date: 2014-10-25 07:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:33
@@ -28,23 +28,20 @@ msgid "User"
 msgstr ""
 
 #: __init__.py:41
-#, fuzzy
 msgid "Comment"
-msgstr "Commenti"
+msgstr ""
 
 #: __init__.py:50 links.py:11 permissions.py:7
 msgid "Comments"
 msgstr "Commenti"
 
 #: links.py:8 links.py:9
-#, fuzzy
 msgid "Delete"
-msgstr "cancella"
+msgstr ""
 
 #: links.py:10
-#, fuzzy
 msgid "Add comment"
-msgstr "aggiungi commento"
+msgstr ""
 
 #: permissions.py:9
 msgid "Create new comments"
@@ -92,21 +89,21 @@ msgid "Add comment to document: %s"
 msgstr "Aggiungi un comento al documento: %s"
 
 #: views.py:125
-#, fuzzy, python-format
+#, python-format
 msgid "Comments for document: %s"
-msgstr "Aggiungi un comento al documento: %s"
+msgstr ""
 
 #~ msgid "date"
-#~ msgstr "data"
+#~ msgstr "date"
 
 #~ msgid "user"
-#~ msgstr "utente"
+#~ msgstr "user"
 
 #~ msgid "comment"
-#~ msgstr "commento"
+#~ msgstr "comment"
 
 #~ msgid "comments"
-#~ msgstr "commenti"
+#~ msgstr "comments"
 
 #~ msgid "comments: %s"
-#~ msgstr "commenti: %s"
+#~ msgstr "comments: %s"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: literals.py:19
@@ -29,12 +28,10 @@ msgid "Resize."
 msgstr "تغییر اندازه"
 
 #: literals.py:22 literals.py:37
-#, fuzzy
 msgid "Width"
 msgstr "عرض"
 
 #: literals.py:23 literals.py:38
-#, fuzzy
 msgid "Height"
 msgstr "ارتفاع"
 
@@ -47,7 +44,6 @@ msgid "Rotate by n degress."
 msgstr "چرخاندن با n درجه"
 
 #: literals.py:30
-#, fuzzy
 msgid "Degrees"
 msgstr "درجه"
 
@@ -68,7 +64,6 @@ msgid "Zoom by n percent."
 msgstr "بزرگ/کوچک نمایی با درصد"
 
 #: literals.py:45
-#, fuzzy
 msgid "Percent"
 msgstr "درصد"
 
@@ -86,22 +81,19 @@ msgstr "File path to graphicsmagick's program."
 
 #: settings.py:15
 msgid ""
-"Graphics conversion backend to use.  Options are: converter.backends."
-"imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-"and converter.backends.python.Python"
-msgstr ""
-"Graphics conversion backend to use. Options are: converter.backends."
-"imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-"and converter.backends.python.Pytho"
+"Graphics conversion backend to use.  Options are: "
+"converter.backends.imagemagick.ImageMagick, "
+"converter.backends.graphicsmagick.GraphicsMagick and "
+"converter.backends.python.Python"
+msgstr "Graphics conversion backend to use. Options are: converter.backends.imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick and converter.backends.python.Pytho"
 
 #: settings.py:16
 msgid "Path to the libreoffice program."
 msgstr "Path to the libreoffice program."
 
 #: settings.py:17
-#, fuzzy
 msgid "Path to the Popple program pdftoppm."
-msgstr "Path to the libreoffice program."
+msgstr ""
 
 #: templates/converter_file_formats_help.html:3
 msgid "Help"
@@ -115,7 +107,7 @@ msgid ""
 msgstr "فرمت فایلهای پشتیبانی شده. عبارتند از: \"%(backend)s\""
 
 #~ msgid "file formats"
-#~ msgstr "فرمت فایل"
+#~ msgstr "file formats"
 
 #~ msgid "Hasselblad Photo RAW, CFV/H3D39II"
 #~ msgstr "Hasselblad Photo RAW, CFV/H3D39II"
@@ -418,11 +410,9 @@ msgstr "فرمت فایلهای پشتیبانی شده. عبارتند از: \"
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -538,8 +528,7 @@ msgstr "فرمت فایلهای پشتیبانی شده. عبارتند از: \"
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
