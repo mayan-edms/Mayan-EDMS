@@ -49,6 +49,7 @@ What's new in Mayan EDMS v1.1
 * Explicit document types needed per index
 * Events app
 * Vagrant file included
+* Document states
 
 
 Upgrading from a previous version
