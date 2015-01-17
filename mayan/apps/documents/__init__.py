@@ -90,7 +90,7 @@ register_links(DocumentPage, [
 register_links(DocumentPage, [
     document_page_navigation_first, document_page_navigation_previous,
     document_page_navigation_next, document_page_navigation_last
-], menu_name='related')
+], menu_name='sidebar')
 
 register_links(['documents:document_page_view'], [document_page_rotate_left, document_page_rotate_right, document_page_zoom_in, document_page_zoom_out, document_page_view_reset], menu_name='form_header')
 register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])

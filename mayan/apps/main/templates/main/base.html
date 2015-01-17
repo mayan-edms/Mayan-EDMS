@@ -344,17 +344,6 @@
                                         </ul>
                                     </div>
                                 {% endif %}
-                                {% get_object_navigation_links "related" as object_navigation_links %}
-                                    {% if object_navigation_links %}
-                                    <div class="block">
-                                        <h3>{% trans "Related actions" %}</h3>
-                                        <ul class="navigation">
-                                            {% with 'true' as as_li %}
-                                                {% include 'generic_navigation.html' %}
-                                            {% endwith %}
-                                        </ul>
-                                    </div>
-                                {% endif %}
                                 {% get_object_navigation_links "sidebar" as object_navigation_links %}
                                 {% if object_navigation_links %}
                                 <div class="block">
@@ -376,17 +365,6 @@
                                     {% else %}
                                         <h3>{% trans 'Actions' %}</h3>
                                     {% endif %}
-                                    <ul class="navigation">
-                                        {% with 'true' as as_li %}
-                                            {% include 'generic_navigation.html' %}
-                                        {% endwith %}
-                                    </ul>
-                                </div>
-                            {% endif %}
-                            {% get_object_navigation_links "related" as object_navigation_links %}
-                                {% if object_navigation_links %}
-                                <div class="block">
-                                    <h3>{% trans 'Related actions' %}</h3>
                                     <ul class="navigation">
                                         {% with 'true' as as_li %}
                                             {% include 'generic_navigation.html' %}
