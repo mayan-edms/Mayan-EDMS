@@ -51,10 +51,10 @@ register_model_list_columns(Document, [
 register_top_menu('tags', link={'text': _(u'Tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'})
 
 register_links(Tag, [tag_tagged_item_list, tag_edit, tag_acl_list, tag_delete])
-register_links([Tag], [tag_multiple_delete, link_spacer], menu_name='multi_item_links')
+register_links([Tag], [tag_multiple_delete], menu_name='multi_item_links')
 register_links([Tag, 'tags:tag_list', 'tags:tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
 
 register_links(Document, [tag_document_list], menu_name='form_header')
 register_links(['tags:document_tags', 'tags:tag_remove', 'tags:tag_multiple_remove', 'tags:tag_attach'], [tag_attach], menu_name='sidebar')
-register_links(['tags:document_tags'], [single_document_multiple_tag_remove, link_spacer], menu_name='multi_item_links')
+register_links(['tags:document_tags'], [single_document_multiple_tag_remove], menu_name='multi_item_links')
 register_links([Document], [tag_multiple_attach, multiple_documents_selection_tag_remove, link_spacer], menu_name='multi_item_links')

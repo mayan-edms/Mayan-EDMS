@@ -31,7 +31,7 @@ logger = logging.getLogger(__name__)
 register_links(Document, [link_document_submit])
 register_links([Document], [link_document_submit_multiple, link_spacer], menu_name='multi_item_links')
 
-register_links([DocumentVersionOCRError], [link_entry_re_queue_multiple, link_entry_delete_multiple, link_spacer], menu_name='multi_item_links')
+register_links([DocumentVersionOCRError], [link_entry_re_queue_multiple, link_entry_delete_multiple], menu_name='multi_item_links')
 register_links([DocumentVersionOCRError], [link_entry_re_queue, link_entry_delete])
 register_links(['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError], [link_entry_list], menu_name='secondary_menu')
 register_maintenance_links([link_document_all_ocr_cleanup], namespace='ocr', title=_('OCR'))
