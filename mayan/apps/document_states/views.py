@@ -26,7 +26,7 @@ from .forms import (
     WorkflowInstanceDetailForm, WorkflowInstanceTransitionForm,
     WorkflowStateForm, WorkflowTransitionForm
 )
-from .models import Workflow, WorkflowInstance
+from .models import Workflow, WorkflowInstance, WorkflowState, WorkflowTransition
 from .permissions import (
     PERMISSION_WORKFLOW_CREATE, PERMISSION_WORKFLOW_DELETE,
     PERMISSION_WORKFLOW_EDIT, PERMISSION_WORKFLOW_VIEW,
@@ -151,8 +151,8 @@ class WorkflowInstanceTransitionView(FormView):
                 'object': self.get_workflow_instance().document,
                 'workflow_instance': self.get_workflow_instance(),
                 'navigation_object_list': [
-                    {'object': 'object', 'name': _('Index')},
-                    {'object': 'workflow_instance', 'name': _('Node')}
+                    {'object': 'object'},
+                    {'object': 'workflow_instance'}
                 ],
                 'title': _('Do transition for workflow: %s') % self.get_workflow_instance(),
                 'submit_label': _('Submit'),
@@ -186,13 +186,13 @@ class SetupWorkflowCreateView(SingleObjectCreateView):
 class SetupWorkflowEditView(SingleObjectEditView):
     form_class = WorkflowForm
     model = Workflow
-    object_permission = PERMISSION_WORKFLOW_EDIT
+    view_permission = PERMISSION_WORKFLOW_EDIT
     success_url = reverse_lazy('document_states:setup_workflow_list')
 
 
 class SetupWorkflowDeleteView(SingleObjectDeleteView):
     model = Workflow
-    object_permission = PERMISSION_WORKFLOW_DELETE
+    view_permission = PERMISSION_WORKFLOW_DELETE
     success_url = reverse_lazy('document_states:setup_workflow_list')
 
 
@@ -263,7 +263,33 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
         return super(SetupWorkflowStateCreateView, self).form_valid(form)
 
 
+class SetupWorkflowStateEditView(SingleObjectEditView):
+    form_class = WorkflowStateForm
+    model = WorkflowState
+    view_permission = PERMISSION_WORKFLOW_EDIT
+
+    def get_context_data(self, **kwargs):
+        context = super(SetupWorkflowStateEditView, self).get_context_data(**kwargs)
+
+        context.update(
+            {
+                'object': self.get_object().workflow,
+                'workflow_instance': self.get_object(),
+                'navigation_object_list': [
+                    {'object': 'object'},
+                    {'object': 'workflow_instance'}
+                ],
+            }
+        )
+
+        return context
+
+    def get_success_url(self):
+        return reverse('document_states:setup_workflow_states', args=[self.get_object().workflow.pk])
+
+
 # Transitions
+
 
 class SetupWorkflowTransitionListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
@@ -338,6 +364,36 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
             return super(SetupWorkflowTransitionCreateView, self).form_invalid(form)
         else:
             return HttpResponseRedirect(self.get_success_url())
+
+
+class SetupWorkflowTransitionEditView(SingleObjectEditView):
+    form_class = WorkflowTransitionForm
+    model = WorkflowTransition
+    view_permission = PERMISSION_WORKFLOW_EDIT
+
+    def get_context_data(self, **kwargs):
+        context = super(SetupWorkflowTransitionEditView, self).get_context_data(**kwargs)
+
+        context.update(
+            {
+                'object': self.get_object().workflow,
+                'workflow_instance': self.get_object(),
+                'navigation_object_list': [
+                    {'object': 'object'},
+                    {'object': 'workflow_instance'}
+                ],
+            }
+        )
+
+        return context
+
+    def get_form_kwargs(self):
+        kwargs = super(SetupWorkflowTransitionEditView, self).get_form_kwargs()
+        kwargs['workflow'] = self.get_object().workflow
+        return kwargs
+
+    def get_success_url(self):
+        return reverse('document_states:setup_workflow_transitions', args=[self.get_object().workflow.pk])
 
 
 def setup_workflow_document_types(request, pk):
