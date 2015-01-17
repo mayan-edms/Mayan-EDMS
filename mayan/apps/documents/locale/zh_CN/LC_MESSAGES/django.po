@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: __init__.py:101 __init__.py:140 models.py:87 permissions.py:7 views.py:859
@@ -64,7 +63,7 @@ msgstr "描述"
 
 #: __init__.py:138
 msgid "Tags"
-msgstr "标签"
+msgstr ""
 
 #: __init__.py:141
 msgid "Document tendencies"
@@ -75,9 +74,8 @@ msgid "Document usage"
 msgstr "文档使用情况"
 
 #: events.py:7
-#, fuzzy
 msgid "Document created"
-msgstr "文档创建"
+msgstr ""
 
 #: events.py:8
 msgid "Document edited"
@@ -101,9 +99,9 @@ msgid "Quick document rename"
 msgstr "快速文档重命名"
 
 #: forms.py:147 widgets.py:64
-#, fuzzy, python-format
+#, python-format
 msgid "Page %(page_number)d"
-msgstr "页数 %(page_num)d / %(total_pages)d"
+msgstr ""
 
 #: forms.py:166
 msgid "Page range"
@@ -118,9 +116,7 @@ msgid ""
 "Download the document in the original format or in a compressed manner.  "
 "This option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"以原始格式或者压缩方式下载文档。此选项仅仅在下载一个文档时候有效，对多个文"
-"档，总是以压缩文件方式下载。"
+msgstr "以原始格式或者压缩方式下载文档。此选项仅仅在下载一个文档时候有效，对多个文档，总是以压缩文件方式下载。"
 
 #: forms.py:197
 msgid "Compressed filename"
@@ -141,9 +137,8 @@ msgid "Recent documents"
 msgstr ""
 
 #: links.py:41
-#, fuzzy
 msgid "Preview"
-msgstr "preview"
+msgstr ""
 
 #: links.py:43
 msgid "Properties"
@@ -154,9 +149,8 @@ msgid "Delete"
 msgstr ""
 
 #: links.py:46
-#, fuzzy
 msgid "Edit properties"
-msgstr "编辑文档属性"
+msgstr ""
 
 #: links.py:47 links.py:48
 msgid "Change type"
@@ -289,9 +283,8 @@ msgid "Uninitialized document"
 msgstr "未初始化的文档"
 
 #: models.py:78
-#, fuzzy
 msgid "The name of the document"
-msgstr "创建文档"
+msgstr ""
 
 #: models.py:80
 msgid "Added"
@@ -470,8 +463,8 @@ msgstr "创建文档类型"
 
 #: settings.py:25
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
 msgstr "记住每个用户近期文档的最大数(新建, 编辑, 查看)"
 
 #: settings.py:26
@@ -535,10 +528,9 @@ msgstr "存储中文档数：%d"
 #: statistics.py:72
 #, python-format
 msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
-"bytes"
-msgstr ""
-"存储使用空间：%(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d字节"
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
+" bytes"
+msgstr "存储使用空间：%(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d字节"
 
 #: statistics.py:81
 #, python-format
@@ -570,9 +562,8 @@ msgid "None"
 msgstr "无"
 
 #: views.py:110
-#, fuzzy
 msgid "File encoding"
-msgstr "文件mime编码"
+msgstr ""
 
 #: views.py:111
 msgid "File size"
@@ -591,19 +582,16 @@ msgid "Pages"
 msgstr "页面"
 
 #: views.py:124
-#, fuzzy
 msgid "Document properties"
-msgstr "编辑文档属性"
+msgstr ""
 
 #: views.py:144
-#, fuzzy
 msgid "Document preview"
-msgstr "文档编辑"
+msgstr ""
 
 #: views.py:164
-#, fuzzy
 msgid "Document content"
-msgstr "文档类型"
+msgstr ""
 
 #: views.py:177 views.py:266 views.py:456 views.py:510
 msgid "Must provide at least one document."
@@ -634,37 +622,35 @@ msgid "Document \"%s\" edited successfully."
 msgstr "文档\"%s\"编辑成功。"
 
 #: views.py:253
-#, fuzzy, python-format
+#, python-format
 msgid "Edit properties of: %s"
-msgstr "编辑文档属性"
+msgstr ""
 
 #: views.py:286
-#, fuzzy
 msgid "Document type changed successfully."
-msgstr "文档类型创建成功"
+msgstr ""
 
 #: views.py:293
 msgid "Submit"
 msgstr ""
 
 #: views.py:300
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you wish to change the type of the document: %s?"
-msgstr "确定要删除文档%s么？"
+msgstr ""
 
 #: views.py:302
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you wish to change the type of the documents: %s?"
-msgstr "确定要删除文档：%s么？"
+msgstr ""
 
 #: views.py:360
 msgid "Documents to be downloaded"
 msgstr ""
 
 #: views.py:369
-#, fuzzy
 msgid "Date and time"
-msgstr "添加日期"
+msgstr ""
 
 #: views.py:371 views.py:1121
 msgid "Encoding"
@@ -683,14 +669,12 @@ msgid "Documents queued for page count reset."
 msgstr ""
 
 #: views.py:481
-#, fuzzy
 msgid "Are you sure you wish to reset the page count of this document?"
-msgstr "确定要更新办公文档的页数(%d)么？"
+msgstr ""
 
 #: views.py:482
-#, fuzzy
 msgid "Are you sure you wish to reset the page count of these documents?"
-msgstr "确定要更新办公文档的页数(%d)么？"
+msgstr ""
 
 #: views.py:528
 #, python-format
@@ -709,7 +693,8 @@ msgstr "删除文档: %(document)s变换页数失败%(error)s"
 #: views.py:543
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for document: %s?"
+"Are you sure you wish to clear all the page transformations for document: "
+"%s?"
 msgstr "确定要清除文档: %s的所有变换页么？"
 
 #: views.py:545
@@ -780,9 +765,8 @@ msgid "Are you sure you wish to delete the document type: %s?"
 msgstr "确定要删除文档类型: %s么？"
 
 #: views.py:920
-#, fuzzy
 msgid "All documents of this type will be deleted too."
-msgstr "此版本以后的所有版本将被删除"
+msgstr ""
 
 #: views.py:935
 msgid "Document type created successfully"
@@ -794,9 +778,9 @@ msgid "Error creating document type; %(error)s"
 msgstr "创建文档类型失败 %(error)s"
 
 #: views.py:955
-#, fuzzy, python-format
+#, python-format
 msgid "Filenames for document type: %s"
-msgstr "文档类型: %s的文件名"
+msgstr ""
 
 #: views.py:985
 msgid "Document type filename edited successfully"
@@ -849,9 +833,8 @@ msgid "Create filename for document type: %s"
 msgstr ""
 
 #: views.py:1085
-#, fuzzy
 msgid "Document image cache clearing queued successfully."
-msgstr "清除文档图像缓存成功"
+msgstr ""
 
 #: views.py:1091
 msgid "Are you sure you wish to clear the document image cache?"
@@ -921,125 +904,191 @@ msgstr "确定要删除文档页: %(document_page)s的变换 \"%(transformation)
 msgid "Document page image"
 msgstr ""
 
-#~ msgid "Returns a list of all the documents."
-#~ msgstr "返回全部文档列表"
+#~ msgid "Version"
+#~ msgstr "version"
+
+#~ msgid "Mimetype"
+#~ msgstr "mimetype"
+
+#~ msgid "Returns a list of all the document types."
+#~ msgstr "Are you sure you wish to delete the document type: %s?"
 
 #~ msgid "Document \"%(content_object)s\" created by %(fullname)s."
-#~ msgstr "文档\"%(content_object)s\"由%(fullname)s创建"
+#~ msgstr "Document \"%(content_object)s\" created by %(fullname)s."
 
-#~ msgid ""
-#~ "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
-#~ msgstr "文档 \"%(content_object)s\" 由 %(fullname)s 于 %(datetime)s  创建"
+#~ msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+#~ msgstr "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 
 #~ msgid "Document \"%(content_object)s\" edited by %(fullname)s."
-#~ msgstr "文档 \"%(content_object)s\"由%(fullname)s编辑"
+#~ msgstr "Document \"%(content_object)s\" edited by %(fullname)s."
 
-#, fuzzy
 #~ msgid ""
-#~ "Document \"%(content_object)s\" was edited on %(datetime)s by "
-#~ "%(fullname)s."
-#~ msgstr "文档 \"%(content_object)s\" 由 %(fullname)s 于 %(datetime)s  创建"
+#~ "Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+#~ msgstr "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 
 #~ msgid "Document deleted"
-#~ msgstr "文档删除"
+#~ msgstr "Document deleted"
 
 #~ msgid "Document \"%(document)s\" deleted by %(fullname)s."
-#~ msgstr "文档 \"%(document)s\"被%(fullname)s删除。"
+#~ msgstr "Document \"%(document)s\" deleted by %(fullname)s."
 
 #~ msgid "Document \"%(document)s\" deleted on %(datetime)s by %(fullname)s."
-#~ msgstr "%(fullname)s于%(datetime)s删除文档 \"%(document)s\"。"
+#~ msgstr "Document \"%(document)s\" deleted on %(datetime)s by %(fullname)s."
 
 #~ msgid "Page"
-#~ msgstr "页面"
+#~ msgstr "Page"
 
 #~ msgid "Details"
-#~ msgstr "详细"
+#~ msgstr "Details"
+
+#~ msgid "History"
+#~ msgstr "history"
 
 #~ msgid "Find missing document files"
-#~ msgstr "找缺少的文档"
+#~ msgstr "Find missing document files"
 
-#, fuzzy
 #~ msgid "Major %(major)i.%(minor)i.%(micro)i, (new release)"
-#~ msgstr "主版本 %(major)i.%(minor)i, (新发布)"
+#~ msgstr "Major %(major)i.%(minor)i, (new release)"
 
-#, fuzzy
 #~ msgid "Minor %(major)i.%(minor)i.%(micro)i, (some updates)"
-#~ msgstr "次版本 %(major)i.%(minor)i, (部分更新)"
+#~ msgstr "Minor %(major)i.%(minor)i, (some updates)"
 
 #~ msgid "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
-#~ msgstr "微版本 %(major)i.%(minor)i.%(micro)i, (修复)"
+#~ msgstr "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
 
-#, fuzzy
+#~ msgid "Mayor"
+#~ msgstr "mayor"
+
+#~ msgid "Minor"
+#~ msgstr "minor"
+
+#~ msgid "Micro"
+#~ msgstr "micro"
+
+#~ msgid "Document properties for: %s"
+#~ msgstr "document properties for: %s"
+
+#~ msgid "Document data"
+#~ msgstr "document data"
+
 #~ msgid "Document type for document \"%s\" changed successfully."
-#~ msgstr "文档类型: %s删除成功"
+#~ msgstr "Document type: %s deleted successfully."
 
-#, fuzzy
 #~ msgid "Change document type of: %s"
-#~ msgstr "创建文档类型"
+#~ msgstr "Create document types"
 
 #~ msgid "On large databases this operation may take some time to execute."
-#~ msgstr "在大数据中，此操作将比较耗时。"
+#~ msgstr "On large databases this operation may take some time to execute."
+
+#~ msgid "Missing documents"
+#~ msgstr "missing documents"
+
+#~ msgid "Page %(page_num)d of %(total_pages)d"
+#~ msgstr "Page %(page_num)d out of %(total_pages)d of %(document)s"
 
 #~ msgid "Click on the image for full size preview"
-#~ msgstr "点击图像预览实际尺寸"
+#~ msgstr "Click on the image for full size preview"
 
 #~ msgid ""
-#~ "Document \"%(content_object)s\" was edited on %(datetime)s by "
-#~ "%(fullname)s.  The following changes took place: %(changes)s."
+#~ "Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+#~ "  The following changes took place: %(changes)s."
 #~ msgstr ""
-#~ "%(fullname)s于%(datetime)s编辑文档\"%(content_object)s\"。修改如下："
-#~ "%(changes)s"
+#~ "Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+#~ "  The following changes took place: %(changes)s."
 
 #~ msgid "document"
-#~ msgstr "文档"
+#~ msgstr "document"
+
+#~ msgid "Document transformation"
+#~ msgstr "document transformation"
 
 #~ msgid "Use the new version filename as the document filename"
-#~ msgstr "使用新版本文件名作为文档名称"
+#~ msgstr "Use the new version filename as the document filename"
 
 #~ msgid "Version update"
-#~ msgstr "版本更新"
+#~ msgstr "Version update"
 
 #~ msgid "New document filename"
-#~ msgstr "新文档文件名"
+#~ msgstr "New document filename"
+
+#~ msgid "Update office documents' page count"
+#~ msgstr "update office documents' page count"
 
 #~ msgid ""
 #~ "Update the page count of the office type documents.  This is useful when "
 #~ "enabling office document support after there were already office type "
 #~ "documents in the database."
-#~ msgstr "更新办公类型文档的页数。当支持办公文档存在于数据库时，将是有用的。"
+#~ msgstr ""
+#~ "Update the page count of the office type documents.  This is useful when "
+#~ "enabling office document support after there were already office type "
+#~ "documents in the database."
 
 #~ msgid ""
-#~ "Page count update complete.  Documents processed: %(total)d, documents "
-#~ "with changed page count: %(change)d"
-#~ msgstr "页数更新完成。文档处理了%(total)d，其中变化页数的文档: %(change)d"
+#~ "Page count update complete.  Documents processed: %(total)d, documents with "
+#~ "changed page count: %(change)d"
+#~ msgstr ""
+#~ "Page count update complete.  Documents processed: %(total)d, documents with "
+#~ "changed page count: %(change)d"
 
 #~ msgid "Error clearing document image cache; %s"
-#~ msgstr "清除文档图像缓存失败 %s"
+#~ msgstr "Error clearing document image cache; %s"
 
 #~ msgid "Comments"
-#~ msgstr "评论"
+#~ msgstr "Comments"
 
 #~ msgid "Release level"
-#~ msgstr "发布级别"
+#~ msgstr "Release level"
 
 #~ msgid "Release level serial"
-#~ msgstr "发布级别序列号"
+#~ msgstr "Release level serial"
+
+#~ msgid "Find duplicates"
+#~ msgstr "find duplicates"
+
+#~ msgid "Find all duplicates"
+#~ msgstr "find all duplicates"
 
 #~ msgid ""
-#~ "Search all the documents' checksums and return a list of the exact "
-#~ "matches."
-#~ msgstr "搜索全部文档的校验码，并且返回精确匹配列表。"
+#~ "Search all the documents' checksums and return a list of the exact matches."
+#~ msgstr ""
+#~ "Search all the documents' checksums and return a list of the exact matches."
+
+#~ msgid "Document type list"
+#~ msgstr "document type list"
+
+#~ msgid "Final"
+#~ msgstr "final"
+
+#~ msgid "Alpha"
+#~ msgstr "alpha"
+
+#~ msgid "Release candidate"
+#~ msgstr "release candidate"
+
+#~ msgid "Hotfix"
+#~ msgstr "hotfix"
 
 #~ msgid "release level"
-#~ msgstr "发布级别"
+#~ msgstr "release level"
+
+#~ msgid "Serial"
+#~ msgstr "serial"
+
+#~ msgid "Duplicates of: %s"
+#~ msgstr "duplicates of: %s"
 
 #~ msgid "Are you sure you wish to find all duplicates?"
-#~ msgstr "确定要查找所有重复么？"
+#~ msgstr "Are you sure you wish to find all duplicates?"
+
+#~ msgid "Duplicated documents"
+#~ msgstr "duplicated documents"
 
 #~ msgid ""
-#~ "The document type of all documents using this document type will be set "
-#~ "to none."
-#~ msgstr "使用这个文档类型的所有文档的文档类型将被置为NONE"
+#~ "The document type of all documents using this document type will be set to "
+#~ "none."
+#~ msgstr ""
+#~ "The document type of all documents using this document type will be set to "
+#~ "none."
 
 #~ msgid "details"
 #~ msgstr "details"
@@ -1096,17 +1145,15 @@ msgstr ""
 #~ msgstr "What are document types?"
 
 #~ msgid ""
-#~ "Document types define a class that represents a broard group of "
-#~ "documents, such as: invoices, regulations or manuals.  The advantage of "
-#~ "using document types are: assigning a list of typical filenames for quick "
-#~ "renaming during creation, as well as assigning default metadata types and "
-#~ "sets to it."
+#~ "Document types define a class that represents a broard group of documents, "
+#~ "such as: invoices, regulations or manuals.  The advantage of using document "
+#~ "types are: assigning a list of typical filenames for quick renaming during "
+#~ "creation, as well as assigning default metadata types and sets to it."
 #~ msgstr ""
-#~ "Document types define a class that represents a broard group of "
-#~ "documents, such as: invoices, regulations or manuals.  The advantage of "
-#~ "using document types are: assigning a list of typical filenames for quick "
-#~ "renaming during creation, as well as assigning default metadata types and "
-#~ "sets to it."
+#~ "Document types define a class that represents a broard group of documents, "
+#~ "such as: invoices, regulations or manuals.  The advantage of using document "
+#~ "types are: assigning a list of typical filenames for quick renaming during "
+#~ "creation, as well as assigning default metadata types and sets to it."
 
 #~ msgid "What are recent documents?"
 #~ msgstr "What are recent documents?"

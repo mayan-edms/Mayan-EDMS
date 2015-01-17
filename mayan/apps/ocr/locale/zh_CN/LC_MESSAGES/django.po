@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:56-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"PO-Revision-Date: 2015-01-17 07:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: __init__.py:37 permissions.py:7
@@ -67,9 +66,8 @@ msgid "OCR Errors"
 msgstr ""
 
 #: models.py:12
-#, fuzzy
 msgid "Document version"
-msgstr "文档队列：%d"
+msgstr ""
 
 #: models.py:13
 msgid "Date time submitted"
@@ -101,7 +99,8 @@ msgstr "程序unpaper的文件路径"
 
 #: settings.py:13
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr "程序pdftotext文件路径，用以从PDF文件中提取文本。"
 
 #: settings.py:14
@@ -131,77 +130,102 @@ msgid "Document pages content clean up error: %s"
 msgstr "文档页面内容清除出错：%s"
 
 #: views.py:74
-#, fuzzy
 msgid "OCR errors"
-msgstr "error"
+msgstr ""
 
 #: views.py:90 views.py:142
-#, fuzzy
 msgid "Make at least one selection."
-msgstr "必须至少提供一个队列文档"
+msgstr ""
 
 #: views.py:100
-#, fuzzy, python-format
+#, python-format
 msgid "Entry: %(entry)s deleted successfully."
-msgstr "队列文档：%(document)s删除成功"
+msgstr ""
 
 #: views.py:104
-#, fuzzy, python-format
+#, python-format
 msgid "Error entry: %(entry)s; %(error)s"
-msgstr "删除文档%(document)s出错：%(error)s"
+msgstr ""
 
 #: views.py:118
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you wish to delete the entry: %(entry)s?"
 msgid_plural "Are you sure you wish to delete these %(count)d entries."
-msgstr[0] "确定要删除队列文档：%s么?"
+msgstr[0] ""
 
 #: views.py:154
-#, fuzzy, python-format
+#, python-format
 msgid "Entry: %(entry)s was re-queued for OCR."
-msgstr "Document: %(document)s is already queued."
+msgstr ""
 
 #: views.py:159
-#, fuzzy, python-format
+#, python-format
 msgid "Document version id#: %d, no longer exists."
-msgstr "文档 id#: %d不存在。"
+msgstr ""
 
 #: views.py:171
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you wish to re-queue the entry: %(entry)s?"
 msgid_plural "Are you sure you wish to re-queue these %(count)d entries."
-msgstr[0] "确定要重新排队文档： %s么?"
+msgstr[0] ""
 
 #: parsers/__init__.py:95 parsers/__init__.py:172
 msgid "Text extracted from PDF"
 msgstr "从PDF中提取的文本"
 
+#~ msgid "Queue document list"
+#~ msgstr "queue document list"
+
+#~ msgid "Label"
+#~ msgstr "label"
+
+#~ msgid "Document queue"
+#~ msgstr "document queue"
+
+#~ msgid "Node name"
+#~ msgstr "node name"
+
+#~ msgid "Queue document"
+#~ msgstr "queue document"
+
+#~ msgid "Queue documents"
+#~ msgstr "queue documents"
+
 #~ msgid "Missing document."
-#~ msgstr "缺失的文档"
+#~ msgstr "Missing document."
+
+#~ msgid "Documents in queue: %s"
+#~ msgstr "documents in queue: %s"
+
+#~ msgid "Thumbnail"
+#~ msgstr "thumbnail"
 
 #~ msgid "Are you sure you wish to delete queue documents: %s?"
-#~ msgstr "确定要删除队列文档：%s么?"
+#~ msgstr "Are you sure you wish to delete queue documents: %s?"
 
 #~ msgid "Are you sure you wish to re-queue documents: %s?"
-#~ msgstr "确定要重新排队文档： %s么?"
+#~ msgstr "Are you sure you wish to re-queue documents: %s?"
 
 #~ msgid "Can edit an OCR queue properties"
-#~ msgstr "可以编辑OCR队列属性"
+#~ msgstr "Can edit an OCR queue properties"
 
 #~ msgid "OCR queue statistics"
-#~ msgstr "扫描输入队列统计"
+#~ msgstr "OCR statistics"
 
 #~ msgid "Automatically queue newly created documents for OCR."
-#~ msgstr "自动将扫描输入作为新建文档队列"
+#~ msgstr "Automatically queue newly created documents for OCR."
+
+#~ msgid "Document queues: %d"
+#~ msgstr "Document queues: %d"
 
 #~ msgid "Queued documents: %d"
-#~ msgstr "队列文档：%d"
+#~ msgstr "Queued documents: %d"
 
 #~ msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-#~ msgstr "文档：%(document)s 被重新加入OCR队列：%(queue)s中"
+#~ msgstr "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
 
 #~ msgid "Document: %s is already being processed and can't be re-queded."
-#~ msgstr "文档：%s已经在处理中，不能再加入队列"
+#~ msgstr "Document: %s is already being processed and can't be re-queded."
 
 #~ msgid "Checks the OCR queue for pending documents."
 #~ msgstr "Checks the OCR queue for pending documents."
@@ -264,11 +288,11 @@ msgstr "从PDF中提取的文本"
 #~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 #~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 
 #~ msgid "Maximum amount of concurrent document OCRs a node can perform."
 #~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
@@ -325,11 +349,9 @@ msgstr "从PDF中提取的文本"
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

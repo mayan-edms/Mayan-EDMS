@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Sehat <sehat75@yahoo.com>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-08 21:13+0000\n"
+"PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"Language-Team: Indonesian (http://www.transifex.com/projects/p/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: __init__.py:101 __init__.py:140 models.py:87 permissions.py:7 views.py:859
@@ -74,9 +73,8 @@ msgid "Document usage"
 msgstr ""
 
 #: events.py:7
-#, fuzzy
 msgid "Document created"
-msgstr "Pembuatan dokumen"
+msgstr ""
 
 #: events.py:8
 msgid "Document edited"
@@ -117,10 +115,7 @@ msgid ""
 "Download the document in the original format or in a compressed manner.  "
 "This option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
-"Mengunduh dokumen-dokumen dalam bentuk asli atau dalam bentuk kompresi. "
-"Pilihan ini hanya bisa dipilih saat mengunduh satu dokumen, untuk dokumen "
-"lebih dari satu, bundel selalu diunduh dalam bentuk berkas terkompresi."
+msgstr "Mengunduh dokumen-dokumen dalam bentuk asli atau dalam bentuk kompresi. Pilihan ini hanya bisa dipilih saat mengunduh satu dokumen, untuk dokumen lebih dari satu, bundel selalu diunduh dalam bentuk berkas terkompresi."
 
 #: forms.py:197
 msgid "Compressed filename"
@@ -130,9 +125,7 @@ msgstr "Nama berkas terkompresi"
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
-msgstr ""
-"Nama berkas dari berkas terkompresi yang mengandung dokumen-dokumen yang "
-"akan diunduh, bila pilihan sebelumnya terpilih."
+msgstr "Nama berkas dari berkas terkompresi yang mengandung dokumen-dokumen yang akan diunduh, bila pilihan sebelumnya terpilih."
 
 #: links.py:39 views.py:61
 msgid "All documents"
@@ -143,9 +136,8 @@ msgid "Recent documents"
 msgstr ""
 
 #: links.py:41
-#, fuzzy
 msgid "Preview"
-msgstr "preview"
+msgstr ""
 
 #: links.py:43
 msgid "Properties"
@@ -156,9 +148,8 @@ msgid "Delete"
 msgstr ""
 
 #: links.py:46
-#, fuzzy
 msgid "Edit properties"
-msgstr "Sunting dokumen"
+msgstr ""
 
 #: links.py:47 links.py:48
 msgid "Change type"
@@ -192,9 +183,7 @@ msgstr "Bersihkan penyimpanan sementara dokumen"
 msgid ""
 "Clear the graphics representations used to speed up the documents' display "
 "and interactive transformations results."
-msgstr ""
-"Bersihkan representasi gambar-gambar yang dipergunakan untuk mempercepat "
-"menampilkan dokumen dan hasil transformasi interaktif."
+msgstr "Bersihkan representasi gambar-gambar yang dipergunakan untuk mempercepat menampilkan dokumen dan hasil transformasi interaktif."
 
 #: links.py:63
 msgid "Page transformations"
@@ -293,9 +282,8 @@ msgid "Uninitialized document"
 msgstr ""
 
 #: models.py:78
-#, fuzzy
 msgid "The name of the document"
-msgstr "Buat dokumen"
+msgstr ""
 
 #: models.py:80
 msgid "Added"
@@ -333,9 +321,7 @@ msgstr ""
 msgid ""
 "This document's file format is not known, the page count has therefore "
 "defaulted to 1."
-msgstr ""
-"Format berkas dokumen ini tidak dikenal, oleh karena itu jumlah layar "
-"dianggap sebagai 1."
+msgstr "Format berkas dokumen ini tidak dikenal, oleh karena itu jumlah layar dianggap sebagai 1."
 
 #: models.py:475
 msgid "Filename"
@@ -476,38 +462,29 @@ msgstr "Buat jenis dokumen"
 
 #: settings.py:25
 msgid ""
-"Maximum number of recent (created, edited, viewed) documents to remember per "
-"user."
-msgstr ""
-"Jumlah maksimal dokumen-dokumen (dibuat, disunting, dilihat) baru-baru ini "
-"per pengguna."
+"Maximum number of recent (created, edited, viewed) documents to remember per"
+" user."
+msgstr "Jumlah maksimal dokumen-dokumen (dibuat, disunting, dilihat) baru-baru ini per pengguna."
 
 #: settings.py:26
 msgid "Amount in percent zoom in or out a document page per user interaction."
-msgstr ""
-"Satuan dalam persen untuk memperbesar atau memperkecil tampilan halaman "
-"dokumen per interaksi pengguna."
+msgstr "Satuan dalam persen untuk memperbesar atau memperkecil tampilan halaman dokumen per interaksi pengguna."
 
 #: settings.py:27
 msgid ""
 "Maximum amount in percent (%) to allow user to zoom in a document page "
 "interactively."
-msgstr ""
-"Jumlah maksimal dalam persen (%) yang diperbolehkan bagi pengguna untuk "
-"memperbesar tampilan halaman dokumen secara interaktif"
+msgstr "Jumlah maksimal dalam persen (%) yang diperbolehkan bagi pengguna untuk memperbesar tampilan halaman dokumen secara interaktif"
 
 #: settings.py:28
 msgid ""
 "Minimum amount in percent (%) to allow user to zoom out a document page "
 "interactively."
-msgstr ""
-"Jumlah minimal dalam persen (%) yang diperbolehkan bagi pengguna untuk "
-"memperkecil tampilan halaman dokumen secara interaktif."
+msgstr "Jumlah minimal dalam persen (%) yang diperbolehkan bagi pengguna untuk memperkecil tampilan halaman dokumen secara interaktif."
 
 #: settings.py:29
 msgid "Amount in degrees to rotate a document page per user interaction."
-msgstr ""
-"Jumlah dalam derajat untuk memutar halaman dokumen per interaksi pengguna."
+msgstr "Jumlah dalam derajat untuk memutar halaman dokumen per interaksi pengguna."
 
 #: settings.py:32
 msgid "Default documents language (in ISO639-2 format)."
@@ -550,11 +527,9 @@ msgstr "Dokumen-dokumen di penyimpanan: %d"
 #: statistics.py:72
 #, python-format
 msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
-"bytes"
-msgstr ""
-"Ruang terpakai di penyimpanan: %(base_2)s (base 2), %(base_10)s (base 10), "
-"%(bytes)d bytes"
+"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d"
+" bytes"
+msgstr "Ruang terpakai di penyimpanan: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes"
 
 #: statistics.py:81
 #, python-format
@@ -606,19 +581,16 @@ msgid "Pages"
 msgstr "Halaman-halaman"
 
 #: views.py:124
-#, fuzzy
 msgid "Document properties"
-msgstr "Pembuatan dokumen"
+msgstr ""
 
 #: views.py:144
-#, fuzzy
 msgid "Document preview"
-msgstr "Dokumen telah disunting"
+msgstr ""
 
 #: views.py:164
-#, fuzzy
 msgid "Document content"
-msgstr "Jenis dokumen"
+msgstr ""
 
 #: views.py:177 views.py:266 views.py:456 views.py:510
 msgid "Must provide at least one document."
@@ -654,32 +626,30 @@ msgid "Edit properties of: %s"
 msgstr ""
 
 #: views.py:286
-#, fuzzy
 msgid "Document type changed successfully."
-msgstr "Jenis dokumen berhasil dibuat"
+msgstr ""
 
 #: views.py:293
 msgid "Submit"
 msgstr ""
 
 #: views.py:300
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you wish to change the type of the document: %s?"
-msgstr "Apakah anda yakin ingin menghapus dokumen: %s?"
+msgstr ""
 
 #: views.py:302
-#, fuzzy, python-format
+#, python-format
 msgid "Are you sure you wish to change the type of the documents: %s?"
-msgstr "Apakah anda yakin ingin menghapus dokumen-dokumen: %s?"
+msgstr ""
 
 #: views.py:360
 msgid "Documents to be downloaded"
 msgstr ""
 
 #: views.py:369
-#, fuzzy
 msgid "Date and time"
-msgstr "Tanggal ditambahkan"
+msgstr ""
 
 #: views.py:371 views.py:1121
 msgid "Encoding"
@@ -698,53 +668,40 @@ msgid "Documents queued for page count reset."
 msgstr ""
 
 #: views.py:481
-#, fuzzy
 msgid "Are you sure you wish to reset the page count of this document?"
 msgstr ""
-"Apakah Anda yakin untuk memperbaharui jumlah halaman untuk dokumen-dokumen "
-"kantor (%d)?"
 
 #: views.py:482
-#, fuzzy
 msgid "Are you sure you wish to reset the page count of these documents?"
 msgstr ""
-"Apakah Anda yakin untuk memperbaharui jumlah halaman untuk dokumen-dokumen "
-"kantor (%d)?"
 
 #: views.py:528
 #, python-format
 msgid ""
 "All the page transformations for document: %s, have been deleted "
 "successfully."
-msgstr ""
-"Semua transformasi-transformasi halaman untuk dokumen: %s, telah berhasil "
-"dihapus."
+msgstr "Semua transformasi-transformasi halaman untuk dokumen: %s, telah berhasil dihapus."
 
 #: views.py:530
 #, python-format
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
-msgstr ""
-"Masalah dalam menghapus transformasi-transformasi untuk halaman: "
-"%(document)s; %(error)s."
+msgstr "Masalah dalam menghapus transformasi-transformasi untuk halaman: %(document)s; %(error)s."
 
 #: views.py:543
 #, python-format
 msgid ""
-"Are you sure you wish to clear all the page transformations for document: %s?"
-msgstr ""
-"Apakah anda yakin untuk membersihkan semua transformasi halaman untuk "
-"dokumen: %s?"
+"Are you sure you wish to clear all the page transformations for document: "
+"%s?"
+msgstr "Apakah anda yakin untuk membersihkan semua transformasi halaman untuk dokumen: %s?"
 
 #: views.py:545
 #, python-format
 msgid ""
 "Are you sure you wish to clear all the page transformations for documents: "
 "%s?"
-msgstr ""
-"Apakah anda yakin untuk menghapus semua transformasi-transformasi halaman "
-"untuk dokumen-dokumen: %s?"
+msgstr "Apakah anda yakin untuk menghapus semua transformasi-transformasi halaman untuk dokumen-dokumen: %s?"
 
 #: views.py:567 views.py:609
 #, python-format
@@ -807,9 +764,8 @@ msgid "Are you sure you wish to delete the document type: %s?"
 msgstr "Apakah anda yakin untuk menghapus jenis dokumen: %s?"
 
 #: views.py:920
-#, fuzzy
 msgid "All documents of this type will be deleted too."
-msgstr "Semua versi sebelum versi yang ini akan ikut dihapus juga."
+msgstr ""
 
 #: views.py:935
 msgid "Document type created successfully"
@@ -821,9 +777,9 @@ msgid "Error creating document type; %(error)s"
 msgstr "Masalah dalam membuat jenis dokumen; %(error)s"
 
 #: views.py:955
-#, fuzzy, python-format
+#, python-format
 msgid "Filenames for document type: %s"
-msgstr "nama berkas untuk jenis dokumen: %s"
+msgstr ""
 
 #: views.py:985
 msgid "Document type filename edited successfully"
@@ -852,18 +808,14 @@ msgstr "Nama berkas jenis dokumen: %s berhasil dihapus."
 #, python-format
 msgid ""
 "Document type filename: %(document_type_filename)s delete error: %(error)s"
-msgstr ""
-"Nama berkas jenis dokumen: %(document_type_filename)s masalah dalam "
-"menghapus: %(error)s"
+msgstr "Nama berkas jenis dokumen: %(document_type_filename)s masalah dalam menghapus: %(error)s"
 
 #: views.py:1036
 #, python-format
 msgid ""
 "Are you sure you wish to delete the filename: %(filename)s, from document "
 "type \"%(document_type)s\"?"
-msgstr ""
-"Apakah anda yakin untuk menghapus nama berkas: %(filename)s, dari jenis "
-"dokumen \"%(document_type)s\"?"
+msgstr "Apakah anda yakin untuk menghapus nama berkas: %(filename)s, dari jenis dokumen \"%(document_type)s\"?"
 
 #: views.py:1060
 msgid "Document type filename created successfully"
@@ -880,14 +832,12 @@ msgid "Create filename for document type: %s"
 msgstr ""
 
 #: views.py:1085
-#, fuzzy
 msgid "Document image cache clearing queued successfully."
-msgstr "Penyimpanan sementara gambar dokumen berhasil dibersihkan"
+msgstr ""
 
 #: views.py:1091
 msgid "Are you sure you wish to clear the document image cache?"
-msgstr ""
-"Apakah anda yakin untuk membersihkan penyimpanan sementara gambar dokumen?"
+msgstr "Apakah anda yakin untuk membersihkan penyimpanan sementara gambar dokumen?"
 
 #: views.py:1107
 #, python-format
@@ -927,8 +877,7 @@ msgstr "Transformasi halaman dokumen berhasil dibuat."
 #: views.py:1215
 #, python-format
 msgid "Create new transformation for page: %(page)s of document: %(document)s"
-msgstr ""
-"Buat transformasi baru untuk halaman: %(page)s dari dokumen: %(document)s"
+msgstr "Buat transformasi baru untuk halaman: %(page)s dari dokumen: %(document)s"
 
 #: views.py:1234
 msgid "Document page transformation edited successfully."
@@ -948,118 +897,197 @@ msgstr "Transformasi halaman dokumen berhasil dihapus."
 msgid ""
 "Are you sure you wish to delete transformation \"%(transformation)s\" for: "
 "%(document_page)s"
-msgstr ""
-"Apakah anda yakin untuk menghapus transformasi \"%(transformation)s\" untuk: "
-"%(document_page)s"
+msgstr "Apakah anda yakin untuk menghapus transformasi \"%(transformation)s\" untuk: %(document_page)s"
 
 #: widgets.py:83
 msgid "Document page image"
 msgstr ""
 
-#~ msgid "Document \"%(content_object)s\" created by %(fullname)s."
-#~ msgstr "Dokumen \"%(content_object)s\" dibuat oleh %(fullname)s."
+#~ msgid "Version"
+#~ msgstr "version"
 
-#~ msgid ""
-#~ "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
-#~ msgstr ""
-#~ "Dokumen \"%(content_object)s\" dibuat oleh pada %(datetime)s oleh "
-#~ "%(fullname)s"
+#~ msgid "Mimetype"
+#~ msgstr "mimetype"
+
+#~ msgid "Returns a list of all the document types."
+#~ msgstr "Are you sure you wish to delete the document type: %s?"
+
+#~ msgid "Document \"%(content_object)s\" created by %(fullname)s."
+#~ msgstr "Document \"%(content_object)s\" created by %(fullname)s."
+
+#~ msgid "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
+#~ msgstr "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 
 #~ msgid "Document \"%(content_object)s\" edited by %(fullname)s."
-#~ msgstr "Dokumen \"%(content_object)s\" disunting oleh %(fullname)s"
+#~ msgstr "Document \"%(content_object)s\" edited by %(fullname)s."
 
-#, fuzzy
 #~ msgid ""
-#~ "Document \"%(content_object)s\" was edited on %(datetime)s by "
-#~ "%(fullname)s."
-#~ msgstr ""
-#~ "Dokumen \"%(content_object)s\" dibuat oleh pada %(datetime)s oleh "
-#~ "%(fullname)s"
+#~ "Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+#~ msgstr "Document \"%(content_object)s\" created on %(datetime)s by %(fullname)s."
 
 #~ msgid "Document deleted"
-#~ msgstr "Dokumen telah dihapus"
+#~ msgstr "Document deleted"
 
 #~ msgid "Document \"%(document)s\" deleted by %(fullname)s."
-#~ msgstr "Dokumen \"%(document)s\" deleteled by %(fullname)s."
+#~ msgstr "Document \"%(document)s\" deleted by %(fullname)s."
 
 #~ msgid "Document \"%(document)s\" deleted on %(datetime)s by %(fullname)s."
-#~ msgstr ""
-#~ "Dokumen \"%(document)s\" dihapus pada %(datetime)s oleh %(fullname)s."
+#~ msgstr "Document \"%(document)s\" deleted on %(datetime)s by %(fullname)s."
 
 #~ msgid "Page"
-#~ msgstr "Halaman"
+#~ msgstr "Page"
 
 #~ msgid "Details"
-#~ msgstr "Detail"
+#~ msgstr "Details"
+
+#~ msgid "History"
+#~ msgstr "history"
 
 #~ msgid "Find missing document files"
-#~ msgstr "temukan dokumen-dokumen yang hilang"
+#~ msgstr "Find missing document files"
 
-#, fuzzy
 #~ msgid "Major %(major)i.%(minor)i.%(micro)i, (new release)"
-#~ msgstr "Mayor %(major)i.%(minor)i, (release baru)"
+#~ msgstr "Major %(major)i.%(minor)i, (new release)"
 
-#, fuzzy
 #~ msgid "Minor %(major)i.%(minor)i.%(micro)i, (some updates)"
-#~ msgstr "Minor %(major)i.%(minor)i, (beberapa pembaharuan)"
+#~ msgstr "Minor %(major)i.%(minor)i, (some updates)"
 
 #~ msgid "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
-#~ msgstr "Mikro %(major)i.%(minor)i.%(micro)i, (perbaikan-perbaikan)"
+#~ msgstr "Micro %(major)i.%(minor)i.%(micro)i, (fixes)"
 
-#, fuzzy
+#~ msgid "Mayor"
+#~ msgstr "mayor"
+
+#~ msgid "Minor"
+#~ msgstr "minor"
+
+#~ msgid "Micro"
+#~ msgstr "micro"
+
+#~ msgid "Document properties for: %s"
+#~ msgstr "document properties for: %s"
+
+#~ msgid "Document data"
+#~ msgstr "document data"
+
 #~ msgid "Document type for document \"%s\" changed successfully."
-#~ msgstr "Jenis dokumen: %s berhasil dihapus."
+#~ msgstr "Document type: %s deleted successfully."
 
-#, fuzzy
 #~ msgid "Change document type of: %s"
-#~ msgstr "Buat jenis dokumen"
+#~ msgstr "Create document types"
 
 #~ msgid "On large databases this operation may take some time to execute."
-#~ msgstr ""
-#~ "Pada database yang besar pekerjaan berikut mungkin akan membutuhkan waktu "
-#~ "untuk dilaksanakan."
+#~ msgstr "On large databases this operation may take some time to execute."
+
+#~ msgid "Missing documents"
+#~ msgstr "missing documents"
+
+#~ msgid "Page %(page_num)d of %(total_pages)d"
+#~ msgstr "Page %(page_num)d out of %(total_pages)d of %(document)s"
 
 #~ msgid "Click on the image for full size preview"
-#~ msgstr "Klik pada gambar untuk melihat ukuran penuh"
+#~ msgstr "Click on the image for full size preview"
+
+#~ msgid ""
+#~ "Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+#~ "  The following changes took place: %(changes)s."
+#~ msgstr ""
+#~ "Document \"%(content_object)s\" was edited on %(datetime)s by %(fullname)s."
+#~ "  The following changes took place: %(changes)s."
 
 #~ msgid "document"
-#~ msgstr "dokumen"
+#~ msgstr "document"
+
+#~ msgid "Document transformation"
+#~ msgstr "document transformation"
 
 #~ msgid "Use the new version filename as the document filename"
-#~ msgstr "Gunakan nama berkas versi baru sebagai nama berkas dokumen"
+#~ msgstr "Use the new version filename as the document filename"
 
 #~ msgid "Version update"
-#~ msgstr "Pembaharuan versi"
+#~ msgstr "Version update"
 
 #~ msgid "New document filename"
-#~ msgstr "Nama berkas untuk dokumen baru"
+#~ msgstr "New document filename"
+
+#~ msgid "Update office documents' page count"
+#~ msgstr "update office documents' page count"
 
 #~ msgid ""
-#~ "Page count update complete.  Documents processed: %(total)d, documents "
-#~ "with changed page count: %(change)d"
+#~ "Update the page count of the office type documents.  This is useful when "
+#~ "enabling office document support after there were already office type "
+#~ "documents in the database."
 #~ msgstr ""
-#~ "Pembaharuan jumlah halaman selesai. Jumlah dokumen diproses: %(total)d, "
-#~ "dokumen-dokumen yang diperbaharui: %(change)d"
+#~ "Update the page count of the office type documents.  This is useful when "
+#~ "enabling office document support after there were already office type "
+#~ "documents in the database."
+
+#~ msgid ""
+#~ "Page count update complete.  Documents processed: %(total)d, documents with "
+#~ "changed page count: %(change)d"
+#~ msgstr ""
+#~ "Page count update complete.  Documents processed: %(total)d, documents with "
+#~ "changed page count: %(change)d"
 
 #~ msgid "Error clearing document image cache; %s"
-#~ msgstr "Masalah dalam membersihkan penyimpanan sementara gambar dokumen; %s"
+#~ msgstr "Error clearing document image cache; %s"
 
 #~ msgid "Comments"
-#~ msgstr "Komentar-komentar"
+#~ msgstr "Comments"
+
+#~ msgid "Release level"
+#~ msgstr "Release level"
+
+#~ msgid "Release level serial"
+#~ msgstr "Release level serial"
+
+#~ msgid "Find duplicates"
+#~ msgstr "find duplicates"
+
+#~ msgid "Find all duplicates"
+#~ msgstr "find all duplicates"
 
 #~ msgid ""
-#~ "Search all the documents' checksums and return a list of the exact "
-#~ "matches."
+#~ "Search all the documents' checksums and return a list of the exact matches."
 #~ msgstr ""
-#~ "cari 'checksum' semua dokumen dan perlihatkan hasil dalam bentuk daftar "
-#~ "dokumen yang sama persis"
+#~ "Search all the documents' checksums and return a list of the exact matches."
+
+#~ msgid "Document type list"
+#~ msgstr "document type list"
+
+#~ msgid "Final"
+#~ msgstr "final"
+
+#~ msgid "Alpha"
+#~ msgstr "alpha"
+
+#~ msgid "Release candidate"
+#~ msgstr "release candidate"
+
+#~ msgid "Hotfix"
+#~ msgstr "hotfix"
+
+#~ msgid "release level"
+#~ msgstr "release level"
+
+#~ msgid "Serial"
+#~ msgstr "serial"
+
+#~ msgid "Duplicates of: %s"
+#~ msgstr "duplicates of: %s"
+
+#~ msgid "Are you sure you wish to find all duplicates?"
+#~ msgstr "Are you sure you wish to find all duplicates?"
+
+#~ msgid "Duplicated documents"
+#~ msgstr "duplicated documents"
 
 #~ msgid ""
-#~ "The document type of all documents using this document type will be set "
-#~ "to none."
+#~ "The document type of all documents using this document type will be set to "
+#~ "none."
 #~ msgstr ""
-#~ "Jenis dokumen dari semua dokumen yang menggunakan jenis dokumen ini akan "
-#~ "dibuat menjadi 'none'."
+#~ "The document type of all documents using this document type will be set to "
+#~ "none."
 
 #~ msgid "details"
 #~ msgstr "details"
@@ -1116,17 +1144,15 @@ msgstr ""
 #~ msgstr "What are document types?"
 
 #~ msgid ""
-#~ "Document types define a class that represents a broard group of "
-#~ "documents, such as: invoices, regulations or manuals.  The advantage of "
-#~ "using document types are: assigning a list of typical filenames for quick "
-#~ "renaming during creation, as well as assigning default metadata types and "
-#~ "sets to it."
+#~ "Document types define a class that represents a broard group of documents, "
+#~ "such as: invoices, regulations or manuals.  The advantage of using document "
+#~ "types are: assigning a list of typical filenames for quick renaming during "
+#~ "creation, as well as assigning default metadata types and sets to it."
 #~ msgstr ""
-#~ "Document types define a class that represents a broard group of "
-#~ "documents, such as: invoices, regulations or manuals.  The advantage of "
-#~ "using document types are: assigning a list of typical filenames for quick "
-#~ "renaming during creation, as well as assigning default metadata types and "
-#~ "sets to it."
+#~ "Document types define a class that represents a broard group of documents, "
+#~ "such as: invoices, regulations or manuals.  The advantage of using document "
+#~ "types are: assigning a list of typical filenames for quick renaming during "
+#~ "creation, as well as assigning default metadata types and sets to it."
 
 #~ msgid "What are recent documents?"
 #~ msgstr "What are recent documents?"

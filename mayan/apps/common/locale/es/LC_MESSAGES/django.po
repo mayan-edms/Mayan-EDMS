@@ -1,29 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
-# Roberto Rosario, 2011-2012
+# Lory977 <helga.carrero@gmail.com>, 2015
+# Roberto Rosario, 2011-2012,2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-30 15:43+0000\n"
+"PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: classes.py:38
 msgid "Available attributes: "
-msgstr ""
+msgstr "Atributos disponibles"
 
 #: forms.py:98
 msgid "Selection"
@@ -41,9 +41,7 @@ msgstr "Contraseña"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"Introduzca una dirección de correo y contraseña válidos. Recuerde que la "
-"contraseña es sensible a mayúsculas."
+msgstr "Introduzca una dirección de correo y contraseña válidos. Recuerde que la contraseña es sensible a mayúsculas."
 
 #: forms.py:151
 msgid "This account is inactive."
@@ -71,11 +69,11 @@ msgstr "Licencia"
 
 #: links.py:17
 msgid "Locale profile"
-msgstr ""
+msgstr "Localizar perfil"
 
 #: links.py:18
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Editar perfil local"
 
 #: links.py:20
 msgid "Logout"
@@ -95,65 +93,60 @@ msgstr "Hash de la contraseña"
 
 #: models.py:40
 msgid "Auto admin properties"
-msgstr ""
+msgstr "propiedades de administrador automático"
 
 #: models.py:44
 msgid "File"
-msgstr ""
+msgstr "Carpeta"
 
 #: models.py:45
 msgid "Filename"
-msgstr ""
+msgstr "Nombre del archivo"
 
 #: models.py:46
 msgid "Date time"
-msgstr ""
+msgstr "Fecha y hora"
 
 #: models.py:49
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Compartir archivo cargado"
 
 #: models.py:50
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Compartir archivos cargados"
 
 #: models.py:61
 msgid "User"
-msgstr ""
+msgstr "Usuario"
 
 #: models.py:63
 msgid "Timezone"
-msgstr ""
+msgstr "Zona horaria"
 
 #: models.py:64
 msgid "Language"
-msgstr ""
+msgstr "Lenguaje"
 
 #: models.py:70
 msgid "User locale profile"
-msgstr ""
+msgstr "Perfil de usuario local"
 
 #: models.py:71
 msgid "User locale profiles"
-msgstr ""
+msgstr "Perfil de usuario local"
 
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"El directorio temporal se usa para almacenar miniaturas, previsualizaciones "
-"y archivos temporales.  Si no se especifica ninguno, se creará utilizando "
+"temporary files.  If none is specified, one will be created using "
 "tempfile.mkdtemp()"
+msgstr "El directorio temporal se usa para almacenar miniaturas, previsualizaciones y archivos temporales.  Si no se especifica ninguno, se creará utilizando tempfile.mkdtemp()"
 
 #: settings.py:48
 msgid ""
 "Controls the mechanism used to authenticated user.  Options are: username, "
 "email"
-msgstr ""
-"Controla el mecanismo utilizado para el usuario autenticado. Las opciones "
-"son: 'username' nombre de usuario, 'email' correo electrónico"
+msgstr "Controla el mecanismo utilizado para el usuario autenticado. Las opciones son: 'username' nombre de usuario, 'email' correo electrónico"
 
 #: settings.py:57
 msgid "Allow non authenticated users, access to all views"
@@ -165,7 +158,7 @@ msgstr ""
 
 #: utils.py:114
 msgid "Function found"
-msgstr ""
+msgstr "función encontrada"
 
 #: views.py:46
 msgid "No action selected."
@@ -178,12 +171,12 @@ msgstr "Debe seleccionar al menos un artículo."
 #: views.py:102
 #, python-format
 msgid "Unable to remove %(selection)s."
-msgstr ""
+msgstr "No se puede remover %(selection)s."
 
 #: views.py:127
 #, python-format
 msgid "Unable to add %(selection)s."
-msgstr ""
+msgstr "No se puede agregar %(selection)s."
 
 #: views.py:140
 msgid "Add"
@@ -195,18 +188,15 @@ msgstr "Eliminar"
 
 #: views.py:174
 msgid "Current user details"
-msgstr ""
+msgstr "detalles del usuario corriente"
 
 #: views.py:189
-#, fuzzy
 msgid "Current user locale profile details"
-msgstr "Editar los detalles del usuario actual"
+msgstr ""
 
 #: views.py:206
 msgid "E-mail conflict, another user has that same email."
-msgstr ""
-"Conflicto de correo electrónico, otro usuario tiene ese mismo correo "
-"electrónico."
+msgstr "Conflicto de correo electrónico, otro usuario tiene ese mismo correo electrónico."
 
 #: views.py:209
 msgid "Current user's details updated."
@@ -217,14 +207,12 @@ msgid "Edit current user details"
 msgstr "Editar los detalles del usuario actual"
 
 #: views.py:241
-#, fuzzy
 msgid "Current user's locale profile details updated."
-msgstr "Datos del usuario actual actualizados."
+msgstr "Datos del usuario corriente actualizados."
 
 #: views.py:250
-#, fuzzy
 msgid "Edit current user locale profile details"
-msgstr "Editar los detalles del usuario actual"
+msgstr "Editar los detalles del perfil del usuario local"
 
 #: views.py:290
 msgid "Current user password change"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-17 02:56-0400\n"
-"PO-Revision-Date: 2014-10-30 15:43+0000\n"
+"POT-Creation-Date: 2015-01-17 02:55-0400\n"
+"PO-Revision-Date: 2015-01-17 07:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: __init__.py:11
@@ -34,9 +33,8 @@ msgid "Admin site"
 msgstr "سایت مدیر"
 
 #: views.py:32
-#, fuzzy
 msgid "Results"
-msgstr "بی جواب و یا بی جواب"
+msgstr ""
 
 #: views.py:55
 msgid "Maintenance menu"
@@ -76,7 +74,7 @@ msgstr "حق کپی &copy; 2011 Roberto Rosario."
 
 #: templates/main/base.html:198
 msgid "(Debug mode)"
-msgstr ""
+msgstr "(حالت خطایابی)"
 
 #: templates/main/base.html:219
 msgid "Anonymous"
@@ -195,9 +193,7 @@ msgstr "لغو"
 msgid ""
 "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
-"%(total_pages)s)"
+msgstr "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of %(total_pages)s)"
 
 #: templates/main/generic_list_subtemplate.html:25
 #, python-format
@@ -229,9 +225,8 @@ msgid "Space separated terms"
 msgstr ""
 
 #: templates/main/home.html:45
-#, fuzzy
 msgid "Search"
-msgstr "search"
+msgstr ""
 
 #: templates/main/home.html:46
 msgid "Advanced search"
@@ -255,9 +250,7 @@ msgstr "تا 5 ثانیه دیگر به نقطه ورودی وب سایت ارج
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
-msgstr ""
-"Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
-"work."
+msgstr "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't work."
 
 #: templates/main/login.html:40
 msgid "First time login"
@@ -267,9 +260,7 @@ msgstr "دفعه اول لاگین "
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr ""
-"You have just finished installing <strong>Mayan EDMS</strong>, "
-"congratulations!"
+msgstr "You have just finished installing <strong>Mayan EDMS</strong>, congratulations!"
 
 #: templates/main/login.html:43
 msgid "Login using the following credentials:"
@@ -311,9 +302,7 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr ""
-"سیستم مدیریت اسناد الکترونیکی به همراه ocr و متادیتا، اندیس گذاری و برچسب "
-"گذاری فایلها"
+msgstr "سیستم مدیریت اسناد الکترونیکی به همراه ocr و متادیتا، اندیس گذاری و برچسب گذاری فایلها"
 
 #: templates/main/project_description.html:23
 msgid "Released under the Apache 2.0 License"
@@ -330,13 +319,13 @@ msgid "Next"
 msgstr "بعدی"
 
 #~ msgid "Logout"
-#~ msgstr "خروج"
+#~ msgstr "Logout"
 
 #~ msgid "Related actions"
-#~ msgstr "عملیات مرتبط"
+#~ msgstr "Related actions"
 
 #~ msgid "User"
-#~ msgstr "کاربر"
+#~ msgstr "User"
 
 #~ msgid "Django based open source document management system"
 #~ msgstr "Django based open source document management system"
@@ -366,11 +355,11 @@ msgstr "بعدی"
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

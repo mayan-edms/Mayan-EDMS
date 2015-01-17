@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-30 15:43+0000\n"
+"PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: classes.py:38
@@ -41,9 +40,7 @@ msgstr "رمزعبور"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور case-"
-"sensitive است."
+msgstr "لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور case-sensitive است."
 
 #: forms.py:151
 msgid "This account is inactive."
@@ -99,23 +96,23 @@ msgstr "خصوصیات مدبر خودکار"
 
 #: models.py:44
 msgid "File"
-msgstr ""
+msgstr "فایل"
 
 #: models.py:45
 msgid "Filename"
-msgstr ""
+msgstr "نام فایل"
 
 #: models.py:46
 msgid "Date time"
-msgstr ""
+msgstr "تاریخ زمان"
 
 #: models.py:49
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "فایل آپلود شده اشتراکی"
 
 #: models.py:50
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "فایلهای آپلود شده اشتراکی"
 
 #: models.py:61
 msgid "User"
@@ -140,11 +137,9 @@ msgstr ""
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"دایرکتوری موقت جهت نگهداری فایلهای موقت، اگر دایرکتوری مشخص نگردد یکی بوسیله "
-"tempfile.mkdtemp() ساخته خواهد شد."
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "دایرکتوری موقت جهت نگهداری فایلهای موقت، اگر دایرکتوری مشخص نگردد یکی بوسیله tempfile.mkdtemp() ساخته خواهد شد."
 
 #: settings.py:48
 msgid ""
@@ -158,7 +153,7 @@ msgstr "اجازه دادن به کاربران اعتبار سنجی نشده،
 
 #: settings.py:66
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "محلی که کلیه کاربران جهت به اشتراک گذاری فایل میتوانند استفاه کنند."
 
 #: utils.py:114
 msgid "Function found"
@@ -175,12 +170,12 @@ msgstr "حداقل یک مورد انتخاب شود."
 #: views.py:102
 #, python-format
 msgid "Unable to remove %(selection)s."
-msgstr ""
+msgstr "عیر قابل حذف و یا برداشتن %(selection)s."
 
 #: views.py:127
 #, python-format
 msgid "Unable to add %(selection)s."
-msgstr ""
+msgstr "نمیتوان برداشت: %(selection)s."
 
 #: views.py:140
 msgid "Add"
@@ -192,12 +187,11 @@ msgstr "حذف"
 
 #: views.py:174
 msgid "Current user details"
-msgstr ""
+msgstr "جزئیاتا کاربر فعلی"
 
 #: views.py:189
-#, fuzzy
 msgid "Current user locale profile details"
-msgstr "یرایش جزئیات کاربر کنونی"
+msgstr ""
 
 #: views.py:206
 msgid "E-mail conflict, another user has that same email."
@@ -212,14 +206,12 @@ msgid "Edit current user details"
 msgstr "یرایش جزئیات کاربر کنونی"
 
 #: views.py:241
-#, fuzzy
 msgid "Current user's locale profile details updated."
-msgstr "کزئیات کاربر فعلی بروزرسانی شد."
+msgstr ""
 
 #: views.py:250
-#, fuzzy
 msgid "Edit current user locale profile details"
-msgstr "یرایش جزئیات کاربر کنونی"
+msgstr ""
 
 #: views.py:290
 msgid "Current user password change"

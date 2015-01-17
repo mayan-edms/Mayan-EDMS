@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # woei <root@ipaddr.nl>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:54-0400\n"
-"PO-Revision-Date: 2014-10-30 15:43+0000\n"
+"PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: classes.py:38
@@ -40,9 +39,7 @@ msgstr "Wachtwoord"
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
-"Gelieve een correct email adres en wachtwoord invoeren. Let er op dat het "
-"wachtwoord veld hoofdletter gevoelig is."
+msgstr "Gelieve een correct email adres en wachtwoord invoeren. Let er op dat het wachtwoord veld hoofdletter gevoelig is."
 
 #: forms.py:151
 msgid "This account is inactive."
@@ -139,8 +136,8 @@ msgstr ""
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
 msgstr ""
 
 #: settings.py:48
@@ -192,9 +189,8 @@ msgid "Current user details"
 msgstr ""
 
 #: views.py:189
-#, fuzzy
 msgid "Current user locale profile details"
-msgstr "Gegevens van huidige gerbuiker aangepast."
+msgstr ""
 
 #: views.py:206
 msgid "E-mail conflict, another user has that same email."
@@ -209,9 +205,8 @@ msgid "Edit current user details"
 msgstr ""
 
 #: views.py:241
-#, fuzzy
 msgid "Current user's locale profile details updated."
-msgstr "Gegevens van huidige gerbuiker aangepast."
+msgstr ""
 
 #: views.py:250
 msgid "Edit current user locale profile details"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-17 02:55-0400\n"
-"PO-Revision-Date: 2014-10-30 15:43+0000\n"
+"PO-Revision-Date: 2015-01-17 07:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Switzerland) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/de_CH/)\n"
-"Language: de_CH\n"
+"Language-Team: German (Switzerland) (http://www.transifex.com/projects/p/mayan-edms/language/de_CH/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_CH\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:11
@@ -224,9 +223,8 @@ msgid "Space separated terms"
 msgstr ""
 
 #: templates/main/home.html:45
-#, fuzzy
 msgid "Search"
-msgstr "search"
+msgstr ""
 
 #: templates/main/home.html:46
 msgid "Advanced search"
@@ -318,6 +316,18 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
+#~ msgid "Logout"
+#~ msgstr "Logout"
+
+#~ msgid "Related actions"
+#~ msgstr "Related actions"
+
+#~ msgid "User"
+#~ msgstr "User"
+
+#~ msgid "Django based open source document management system"
+#~ msgstr "Django based open source document management system"
+
 #~ msgid "(DEBUG)"
 #~ msgstr "(DEBUG)"
 
@@ -343,11 +353,11 @@ msgstr ""
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"
