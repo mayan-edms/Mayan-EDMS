@@ -41,8 +41,9 @@ class ObjectListPermissionFilterMixin(object):
 
 
 class ObjectPermissionCheckMixin(object):
+    object_permission = None
+
     def dispatch(self, request, *args, **kwargs):
-        object_permission = None
 
         if self.object_permission:
             try:
