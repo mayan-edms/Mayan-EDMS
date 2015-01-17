@@ -1,0 +1,54 @@
+{% extends 'main/base.html' %}
+
+{% load subtemplates_tags %}
+
+{% block title %} :: {% include 'main/calculate_form_title.html' %}{% endblock %}
+
+{% block sidebar %}
+    {% for subtemplate in sidebar_subtemplates_list %}
+        {% if subtemplate.form %}
+            {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+                <div class="generic_subform">
+                    {{ rendered_subtemplate }}
+                </div>
+        {% else %}
+            {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+            {{ rendered_subtemplate }}
+        {% endif %}
+            {% if subtemplate.grid_clear or not subtemplate.grid %}
+            {% endif %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    {% if main_title %}
+        <div class="content">
+            <h2 class="title">{{ main_title }}</h2>
+        </div>
+    {% endif %}
+
+    <div class="pure-g">
+
+        {% for subtemplate in subtemplates_list %}
+
+            {% if subtemplate.grid %}
+                <div class="pure-u-{{ subtemplate.grid }}-24">
+            {% else %}
+                <div class="pure-u-1">
+            {% endif %}
+                {% if subtemplate.form %}
+                    {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+                        <div class="generic_subform">
+                            {{ rendered_subtemplate }}
+                        </div>
+                {% else %}
+                    {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
+                    {{ rendered_subtemplate }}
+                {% endif %}
+            </div>
+            {% if subtemplate.grid_clear or not subtemplate.grid %}
+                <div class="clear"></div>
+            {% endif %}
+         {% endfor %}
+    </div>
+{% endblock %}

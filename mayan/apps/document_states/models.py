@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext as _
@@ -61,8 +62,8 @@ class WorkflowTransition(models.Model):
     workflow = models.ForeignKey(Workflow, related_name='transitions', verbose_name=_('Workflow'))
     label = models.CharField(max_length=255, verbose_name=_('Label'))
 
-    origin_state = models.ForeignKey(WorkflowState, related_name='origins', verbose_name=_('Origin state'))
-    destination_state = models.ForeignKey(WorkflowState, related_name='destinations', verbose_name=_('Destination state'))
+    origin_state = models.ForeignKey(WorkflowState, related_name='origin_transitions', verbose_name=_('Origin state'))
+    destination_state = models.ForeignKey(WorkflowState, related_name='destination_transitions', verbose_name=_('Destination state'))
 
     def __str__(self):
         return self.label
@@ -78,9 +79,12 @@ class WorkflowInstance(models.Model):
     workflow = models.ForeignKey(Workflow, related_name='instances', verbose_name=_('Workflow'))
     document = models.ForeignKey(Document, related_name='workflows', verbose_name=_('Document'))
 
+    def get_absolute_url(self):
+        return reverse('document_states:workflow_instance_detail', args=[str(self.pk)])
+
     def do_transition(self, transition):
         try:
-            if transition in self.get_current_state().origins:
+            if transition in self.get_current_state().origin_transitions.all():
                 self.log_entries.create(transition=transition)
         except AttributeError:
             # No initial state has been set for this workflow
@@ -94,12 +98,21 @@ class WorkflowInstance(models.Model):
 
     def get_last_transition(self):
         try:
-            return self.log_entries.order_by('datetime').last().transition
+            return self.get_last_log_entry().transition
         except AttributeError:
             return None
 
+    def get_last_log_entry(self):
+        try:
+            return self.log_entries.order_by('datetime').last()
+        except AttributeError:
+            return None
+
+    def get_transition_choices(self):
+        return self.get_current_state().origin_transitions.all()
+
     def __str__(self):
-        return self.workflow
+        return unicode(self.workflow)
 
     class Meta:
         unique_together = ('document', 'workflow')
@@ -114,7 +127,7 @@ class WorkflowInstanceLogEntry(models.Model):
     transition = models.ForeignKey(WorkflowTransition, verbose_name=_('Transition'))
 
     def __str__(self):
-        return self.label
+        return unicode(self.transition)
 
     class Meta:
         verbose_name = _('Workflow instance log entry')

@@ -1,10 +1,12 @@
 from django.conf.urls import patterns, url
 
-from .views import (SetupWorkflowCreateView, SetupWorkflowDeleteView,
-                    SetupWorkflowEditView, SetupWorkflowListView,
-                    SetupWorkflowStateListView, SetupWorkflowStateCreateView,
-                    SetupWorkflowTransitionListView, SetupWorkflowTransitionCreateView,
-                    DocumentWorkflowListView)
+from .views import (
+    SetupWorkflowCreateView, SetupWorkflowDeleteView, SetupWorkflowEditView,
+    SetupWorkflowListView, SetupWorkflowStateListView,
+    SetupWorkflowStateCreateView, SetupWorkflowTransitionListView,
+    SetupWorkflowTransitionCreateView, DocumentWorkflowInstanceListView,
+    WorkflowInstanceDetailView, WorkflowInstanceTransitionView
+)
 
 urlpatterns = patterns('',
     url(r'^setup/all/$', SetupWorkflowListView.as_view(), name='setup_workflow_list'),
@@ -17,7 +19,9 @@ urlpatterns = patterns('',
     url(r'^setup/(?P<pk>\d+)/transitions/$', SetupWorkflowTransitionListView.as_view(), name='setup_workflow_transitions'),
     url(r'^setup/(?P<pk>\d+)/transitions/create/$', SetupWorkflowTransitionCreateView.as_view(), name='setup_workflow_transitions_create'),
 
-    url(r'^document/(?P<pk>\d+)/workflows/$', DocumentWorkflowListView.as_view(), name='document_workflow_list'),
+    url(r'^document/(?P<pk>\d+)/workflows/$', DocumentWorkflowInstanceListView.as_view(), name='document_workflow_instance_list'),
+    url(r'^document/workflows/(?P<pk>\d+)/$', WorkflowInstanceDetailView.as_view(), name='workflow_instance_detail'),
+    url(r'^document/workflows/(?P<pk>\d+)/transition/$', WorkflowInstanceTransitionView.as_view(), name='workflow_instance_transition'),
 )
 
 urlpatterns += patterns('document_states.views',
