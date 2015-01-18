@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2011-2012
+# Roberto Rosario, 2011-2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-17 02:55-0400\n"
-"PO-Revision-Date: 2015-01-17 07:07+0000\n"
+"POT-Creation-Date: 2015-01-18 01:57-0400\n"
+"PO-Revision-Date: 2015-01-17 23:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:11
@@ -31,7 +32,7 @@ msgstr "Mantenimiento"
 
 #: links.py:9
 msgid "Admin site"
-msgstr "sitio administrativo"
+msgstr "Sitio administrativo"
 
 #: views.py:32
 msgid "Results"
@@ -71,11 +72,11 @@ msgstr "Versión"
 
 #: templates/main/about.html:20
 msgid "Copyright &copy; 2011 Roberto Rosario."
-msgstr "Copyright &copy; 2011 Roberto Rosario."
+msgstr "Todos los derechos reservados &copy; 2011 Roberto Rosario."
 
 #: templates/main/base.html:198
 msgid "(Debug mode)"
-msgstr ""
+msgstr "(Modo de prueba)"
 
 #: templates/main/base.html:219
 msgid "Anonymous"
@@ -179,7 +180,7 @@ msgid "Save"
 msgstr "Guardar"
 
 #: templates/main/generic_form_subtemplate.html:82
-#: templates/main/generic_list_subtemplate.html:38
+#: templates/main/generic_list_subtemplate.html:42
 #: templates/main/generic_multiform_subtemplate.html:64
 msgid "Submit"
 msgstr "Someter"
@@ -189,23 +190,23 @@ msgstr "Someter"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/main/generic_list_subtemplate.html:23
+#: templates/main/generic_list_subtemplate.html:27
 #, python-format
 msgid ""
 "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr ""
 
-#: templates/main/generic_list_subtemplate.html:25
+#: templates/main/generic_list_subtemplate.html:29
 #, python-format
 msgid "%(title)s (%(total)s)"
 msgstr "%(title)s (%(total)s)"
 
-#: templates/main/generic_list_subtemplate.html:58
+#: templates/main/generic_list_subtemplate.html:62
 msgid "Identifier"
 msgstr "Identificador"
 
-#: templates/main/generic_list_subtemplate.html:133
+#: templates/main/generic_list_subtemplate.html:137
 msgid "No results"
 msgstr "Ningún resultado"
 
@@ -261,7 +262,9 @@ msgstr "Primer inicio de sesión"
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr "¡Felicitaciones! Usted acaba de terminar de instalar <strong>Mayan EDMS</strong>"
+msgstr ""
+"¡Felicitaciones! Usted acaba de terminar de instalar <strong>Mayan EDMS</"
+"strong>"
 
 #: templates/main/login.html:43
 msgid "Login using the following credentials:"
@@ -286,7 +289,9 @@ msgstr "Contraseña: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Asegúrese de cambiar su contraseña para aumentar la seguridad y para desactivar este mensaje"
+msgstr ""
+"Asegúrese de cambiar su contraseña para aumentar la seguridad y para "
+"desactivar este mensaje"
 
 #: templates/main/password_change_done.html:5
 #: templates/main/password_change_form.html:5
@@ -303,7 +308,10 @@ msgid ""
 "Open source, Django based electronic document manager with custom metadata, "
 "indexing, tagging, file serving integration, digital signature support and "
 "OCR capabilities"
-msgstr "Gestor documental libre y de código abierto, basado en Django con metadatos personalizados, indexación, etiquetado, integración de servicio de archivos, apoyo de firmas digitales y capacidades de OCR"
+msgstr ""
+"Gestor documental libre y de código abierto, basado en Django con metadatos "
+"personalizados, indexación, etiquetado, integración de servicio de archivos, "
+"apoyo de firmas digitales y capacidades de OCR"
 
 #: templates/main/project_description.html:23
 msgid "Released under the Apache 2.0 License"
@@ -356,11 +364,11 @@ msgstr "Próximo"
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget or"
-#~ " by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget or"
-#~ " by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"
