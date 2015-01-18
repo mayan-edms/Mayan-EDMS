@@ -55,7 +55,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
             {
                 'hide_link': True,
                 'object': self.get_document(),
-                'title': _('Workflows of document: %s') % self.get_document(),
+                'title': _('Document workflows'),
                 'list_object_variable_name': 'workflow_instance',
             }
         )
@@ -94,8 +94,8 @@ class WorkflowInstanceDetailView(SingleObjectListView):
                 {'object': 'object'},
                 {'object': 'workflow_instance'}
             ],
-            'title': _('Detail of workflow: %(workflow)s - %(document)s') % {
-                'workflow': self.get_workflow_instance(), 'document': self.get_workflow_instance().document
+            'title': _('Detail of workflow: %(workflow)s') % {
+                'workflow': self.get_workflow_instance()
             },
             'subtemplates_list': [
                 {

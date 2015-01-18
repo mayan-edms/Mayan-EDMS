@@ -252,7 +252,7 @@ def document_edit(request, document_id):
     return render_to_response('main/generic_form.html', {
         'form': form,
         'object': document,
-        'title': _('Edit properties of: %s') % document,
+        'title': _('Edit document properties'),
     }, context_instance=RequestContext(request))
 
 
@@ -1106,7 +1106,7 @@ def document_version_list(request, document_pk):
 
     context = {
         'object_list': document.versions.order_by('-timestamp'),
-        'title': _(u'Versions for document: %s') % document,
+        'title': _(u'Document versions'),
         'hide_object': True,
         'object': document,
         'access_object': document,

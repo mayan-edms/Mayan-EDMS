@@ -9,7 +9,7 @@ from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessEntry
 from acls.views import acl_list_for
@@ -91,13 +91,15 @@ def tag_attach(request, document_id=None, document_id_list=None):
         'form': form,
         'previous': previous,
         'next': next,
+        'title': ungettext(
+            u'Attach tag to document',
+            u'Attach tag to documents',
+            len(documents)
+        )
     }
 
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _(u'Attach tag to document: %s.') % ', '.join([unicode(d) for d in documents])
-    elif len(documents) > 1:
-        context['title'] = _(u'Attach tag to documents: %s.') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_form.html', context,
                               context_instance=RequestContext(request))
@@ -236,7 +238,7 @@ def document_tags(request, document_id):
     context = {
         'object': document,
         'document': document,
-        'title': _(u'Tags for: %s') % document,
+        'title': _(u'Document tags'),
     }
 
     return tag_list(request, queryset=document.tags.all(), extra_context=context)

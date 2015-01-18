@@ -102,7 +102,7 @@ def comment_add(request, document_id):
 
     return render_to_response('main/generic_form.html', {
         'form': form,
-        'title': _(u'Add comment to document: %s') % document,
+        'title': _(u'Add comment to document'),
         'next': next,
         'object': document,
     }, context_instance=RequestContext(request))
@@ -122,7 +122,7 @@ def comments_for_document(request, document_id):
     return render_to_response('main/generic_list.html', {
         'object': document,
         'access_object': document,
-        'title': _(u'Comments for document: %s') % document,
+        'title': _(u'Document comments'),
         'object_list': Comment.objects.for_model(document).order_by('-submit_date'),
         'hide_link': True,
         'hide_object': True,

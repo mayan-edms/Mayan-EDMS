@@ -402,7 +402,7 @@ def document_index_list(request, document_id):
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
 
     return render_to_response('main/generic_list.html', {
-        'title': _(u'Indexes containing: %s') % document,
+        'title': _(u'Indexes containing this document'),
         'object_list': object_list,
         'hide_link': True,
         'object': document

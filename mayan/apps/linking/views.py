@@ -79,7 +79,7 @@ def smart_link_instances_for_document(request, document_id):
         'document': document,
         'object': document,
         'object_list': smart_links,
-        'title': _(u'Smart links for: %s') % document,
+        'title': _(u'Document smart links'),
         'extra_columns': [
             {'name': _('Indentifier'), 'attribute': encapsulate(lambda resolved_smart_link: resolved_smart_link.smart_link.get_dynamic_title(document))},
             {'name': _('Documents'), 'attribute': encapsulate(lambda resolved_smart_link: resolved_smart_link.queryset.count())}

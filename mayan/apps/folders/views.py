@@ -207,7 +207,7 @@ def document_folder_list(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
     context = {
-        'title': _(u'Folders containing: %s') % document,
+        'title': _(u'Folders containing this document'),
         'object': document,
         'hide_link': True,
     }
