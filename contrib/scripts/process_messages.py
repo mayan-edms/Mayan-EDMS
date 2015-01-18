@@ -8,7 +8,7 @@ import sh
 APP_LIST = ('acls', 'checkouts', 'common', 'converter', 'django_gpg', 'documents',
     'document_comments', 'document_indexing', 'document_signatures', 'document_states', 'dynamic_search',
     'events', 'folders', 'installation', 'linking', 'mailer', 'main', 'metadata', 'navigation',
-    'ocr', 'permissions', 'project_setup', 'project_tools', 'registration',
+    'ocr', 'permissions', 'project_setup', 'project_tools', 'registration', 'rest_api',
     'smart_settings', 'sources', 'statistics', 'tags', 'user_management')
 LANGUAGE_LIST = ('ar', 'bg', 'bs_BA', 'da', 'de_CH', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu', 'hr_HR', 'id', 'it', 'lv', 'nb', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'sq', 'tr_TR', 'vi_VN', 'zh_CN', 'zh_TW')
 
