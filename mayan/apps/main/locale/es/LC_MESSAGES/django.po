@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 01:57-0400\n"
+"POT-Creation-Date: 2015-01-18 02:20-0400\n"
 "PO-Revision-Date: 2015-01-17 23:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -180,7 +180,7 @@ msgid "Save"
 msgstr "Guardar"
 
 #: templates/main/generic_form_subtemplate.html:82
-#: templates/main/generic_list_subtemplate.html:42
+#: templates/main/generic_list_subtemplate.html:38
 #: templates/main/generic_multiform_subtemplate.html:64
 msgid "Submit"
 msgstr "Someter"
@@ -190,23 +190,23 @@ msgstr "Someter"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/main/generic_list_subtemplate.html:27
+#: templates/main/generic_list_subtemplate.html:23
 #, python-format
 msgid ""
 "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr ""
 
-#: templates/main/generic_list_subtemplate.html:29
+#: templates/main/generic_list_subtemplate.html:25
 #, python-format
 msgid "%(title)s (%(total)s)"
 msgstr "%(title)s (%(total)s)"
 
-#: templates/main/generic_list_subtemplate.html:62
+#: templates/main/generic_list_subtemplate.html:58
 msgid "Identifier"
 msgstr "Identificador"
 
-#: templates/main/generic_list_subtemplate.html:137
+#: templates/main/generic_list_subtemplate.html:133
 msgid "No results"
 msgstr "Ningún resultado"
 

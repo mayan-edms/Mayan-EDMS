@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Lucas Weel <ljj.weel@gmail.com>, 2012
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-17 02:57-0400\n"
+"POT-Creation-Date: 2015-01-18 02:21-0400\n"
 "PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
+"mayan-edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:30
@@ -33,7 +34,8 @@ msgstr "Uitpakken gecomprimeerde bestanden"
 
 #: forms.py:45
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr "Upload een gecomprimeerd archief van bestanden als individuele documenten"
+msgstr ""
+"Upload een gecomprimeerd archief van bestanden als individuele documenten"
 
 #: forms.py:70
 msgid "Staging file"
@@ -194,7 +196,9 @@ msgstr "Verwijder het bestand nadat de 'upload' succesvol is voltooid."
 #: models.py:123
 #, python-format
 msgid "Unable get list of staging files: %s"
-msgstr "Het is niet mogelijk om een lijst met tijdelijke bestanden aan te maken. Foutmelding: %s"
+msgstr ""
+"Het is niet mogelijk om een lijst met tijdelijke bestanden aan te maken. "
+"Foutmelding: %s"
 
 #: models.py:134
 #, python-format
@@ -351,8 +355,8 @@ msgstr "Bekijk bestaande documentbronnen"
 
 #: views.py:105 wizards.py:34
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
 #: views.py:133
@@ -381,8 +385,7 @@ msgid "Current metadata"
 msgstr "Huidige 'metadata'"
 
 #: views.py:306
-msgid ""
-"New document version queued for uploaded and will be available shortly."
+msgid "New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:332
@@ -433,7 +436,8 @@ msgstr "Documentbron \"%s\" succesvol verwijderd."
 #: views.py:432
 #, python-format
 msgid "Error deleting source \"%(source)s\": %(error)s"
-msgstr "Fout bij verwijderen documentbron \"%(source)s\". Foutmelding: %(error)s"
+msgstr ""
+"Fout bij verwijderen documentbron \"%(source)s\". Foutmelding: %(error)s"
 
 #: views.py:438
 #, python-format
@@ -480,13 +484,16 @@ msgstr "Documentbron transformatie succesvol verwijderd."
 #: views.py:544
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
-msgstr "Fout bij verwijderen van documentbron transformatie. Foutmelding: %(error)s"
+msgstr ""
+"Fout bij verwijderen van documentbron transformatie. Foutmelding: %(error)s"
 
 #: views.py:557
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr "Bent u er zeker van dat u de documentbron transformatie: , \"%(transformation)s\" wenst te verwijderen."
+msgstr ""
+"Bent u er zeker van dat u de documentbron transformatie: , "
+"\"%(transformation)s\" wenst te verwijderen."
 
 #: views.py:578
 msgid "Source transformation created successfully"

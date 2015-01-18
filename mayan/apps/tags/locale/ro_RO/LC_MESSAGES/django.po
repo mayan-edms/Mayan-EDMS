@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-17 02:57-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"POT-Creation-Date: 2015-01-18 02:21-0400\n"
+"PO-Revision-Date: 2015-01-18 06:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
@@ -32,6 +32,14 @@ msgstr ""
 #: models.py:18 permissions.py:7 views.py:114
 msgid "Tags"
 msgstr "Etichete"
+
+#: events.py:7
+msgid "Document created"
+msgstr ""
+
+#: events.py:8
+msgid "Document properties edited"
+msgstr ""
 
 #: links.py:12
 msgid "Create new tag"
@@ -275,9 +283,6 @@ msgstr "Eticheta \"%(tag)s\" a fost eliminată cu succes din documentul \"%(docu
 #: templatetags/tags_tags.py:18
 msgid "Add tag to document"
 msgstr "Adaugă etichetă la un document"
-
-#~ msgid "Document"
-#~ msgstr "document"
 
 #~ msgid "Name"
 #~ msgstr "Name"

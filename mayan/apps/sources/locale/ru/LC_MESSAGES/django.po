@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2011-2012
@@ -9,15 +9,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-17 02:57-0400\n"
+"POT-Creation-Date: 2015-01-18 02:21-0400\n"
 "PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/ru/)\n"
+"Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: __init__.py:30
 msgid "Thumbnail"
@@ -351,8 +353,8 @@ msgstr "Просмотр существующих источников доку�
 
 #: views.py:105 wizards.py:34
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
 #: views.py:133
@@ -381,8 +383,7 @@ msgid "Current metadata"
 msgstr "Действующие метаданные"
 
 #: views.py:306
-msgid ""
-"New document version queued for uploaded and will be available shortly."
+msgid "New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:332
@@ -486,7 +487,8 @@ msgstr "Ошибка при удалении преобразования ист
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr "Вы действительно хотите удалить источник трансформации \"%(transformation)s\""
+msgstr ""
+"Вы действительно хотите удалить источник трансформации \"%(transformation)s\""
 
 #: views.py:578
 msgid "Source transformation created successfully"

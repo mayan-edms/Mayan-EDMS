@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-17 02:57-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"POT-Creation-Date: 2015-01-18 02:21-0400\n"
+"PO-Revision-Date: 2015-01-18 06:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/projects/p/mayan-edms/language/lv/)\n"
 "MIME-Version: 1.0\n"
@@ -29,6 +29,14 @@ msgstr ""
 #: __init__.py:46 __init__.py:51 forms.py:42 links.py:11 links.py:20
 #: models.py:18 permissions.py:7 views.py:114
 msgid "Tags"
+msgstr ""
+
+#: events.py:7
+msgid "Document created"
+msgstr ""
+
+#: events.py:8
+msgid "Document properties edited"
 msgstr ""
 
 #: links.py:12
@@ -273,9 +281,6 @@ msgstr ""
 #: templatetags/tags_tags.py:18
 msgid "Add tag to document"
 msgstr ""
-
-#~ msgid "Document"
-#~ msgstr "document"
 
 #~ msgid "Name"
 #~ msgstr "Name"
