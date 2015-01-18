@@ -127,13 +127,10 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         context['object'] = documents[0]
 
     context['title'] = ungettext(
-        u'Edit metadata for document: %(document)s',
-        u'Edit metadata for the %(count)d selected documents',
+        u'Edit document metadata',
+        u'Edit documents metadata',
         len(documents)
-    ) % {
-        u'count': len(documents),
-        u'document': documents[0],
-    }
+    )
 
     return render_to_response('main/generic_form.html', context,
                               context_instance=RequestContext(request))
@@ -212,13 +209,10 @@ def metadata_add(request, document_id=None, document_id_list=None):
         context['object'] = documents[0]
 
     context['title'] = ungettext(
-        u'Add metadata types to document: %(document)s',
-        u'Add metadata types to the %(count)d selected documents',
+        u'Add metadata types to document',
+        u'Add metadata types to documents',
         len(documents)
-    ) % {
-        u'count': len(documents),
-        u'document': documents[0],
-    }
+    )
 
     return render_to_response('main/generic_form.html', context,
                               context_instance=RequestContext(request))
@@ -312,13 +306,10 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         context['object'] = documents[0]
 
     context['title'] = ungettext(
-        u'Remove metadata types from document: %(document)s',
-        u'Remove metadata types from the %(count)d selected documents',
+        u'Remove metadata types from the document',
+        u'Remove metadata types from the documents',
         len(documents)
-    ) % {
-        u'count': len(documents),
-        u'document': documents[0],
-    }
+    )
 
     return render_to_response('main/generic_form.html', context,
                               context_instance=RequestContext(request))
@@ -337,7 +328,7 @@ def metadata_view(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_VIEW, request.user, document)
 
     return render_to_response('main/generic_list.html', {
-        'title': _(u'Metadata for: %s') % document,
+        'title': _(u'Document metadata'),
         'object_list': document.metadata.all(),
         'extra_columns': [
             {'name': _(u'Value'), 'attribute': 'value'},
@@ -370,7 +361,6 @@ def documents_missing_required_metadata(request):
 
     return document_list(
         request,
-        #object_list=
         extra_context=context
     )
 
