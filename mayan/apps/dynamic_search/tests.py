@@ -100,8 +100,8 @@ class Issue46TestCase(TestCase):
 
         # Funcitonal test for the first page of advanced results
         response = self.client.get(reverse('search:results'), {'label': 'test'})
-        self.assertTrue('esults (1 - 20 out of 30) (Page 1 of 2)' in response.content)
+        self.assertContains(response, 'esults (1 - 20 out of 30) (Page 1 of 2)', status_code=200)
 
         # Functional test for the second page of advanced results
         response = self.client.get(reverse('search:results'), {'label': 'test', 'page': 2})
-        self.assertTrue('esults (21 - 30 out of 30) (Page 2 of 2)' in response.content)
+        self.assertContains(response, 'esults (21 - 30 out of 30) (Page 2 of 2)', status_code=200)

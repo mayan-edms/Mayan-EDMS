@@ -176,19 +176,16 @@ class DocumentsViewsFunctionalTestCase(TestCase):
 
     def test_document_view(self):
         response = self.client.get(reverse('documents:document_list'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue('ocuments (1)' in response.content)
+        self.assertContains(response, 'ocuments (1)', status_code=200)
 
         # test document simple view
         response = self.client.get(reverse('documents:document_properties', args=[self.document.pk]))
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue('ocument properties' in response.content)
+        self.assertContains(response, 'ocument properties', status_code=200)
 
     def test_document_type_views(self):
         # Check that there are no document types
         response = self.client.get(reverse('documents:document_type_list'))
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue('ocument types (1)' in response.content)
+        self.assertContains(response, 'ocument types (1)', status_code=200)
 
         # Create a document type
         response = self.client.post(reverse('documents:document_type_create'), data={'name': TEST_DOCUMENT_TYPE}, follow=True)
@@ -206,18 +203,16 @@ class DocumentsViewsFunctionalTestCase(TestCase):
 
         # Edit the document type
         response = self.client.post(reverse('documents:document_type_edit', args=[document_type.pk]), data={'name': TEST_DOCUMENT_TYPE + 'partial'}, follow=True)
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue('Document type edited successfully' in response.content)
+        self.assertContains(response, 'Document type edited successfully', status_code=200)
 
         document_type = DocumentType.objects.first()
         self.assertEqual(document_type.name, TEST_DOCUMENT_TYPE + 'partial')
 
         # Delete the document type
         response = self.client.post(reverse('documents:document_type_delete', args=[document_type.pk]), follow=True)
-        self.assertEqual(response.status_code, 200)
-        self.assertTrue('Document type: {0} deleted successfully'.format(document_type.name) in response.content)
+        self.assertContains(response, 'Document type: {0} deleted successfully'.format(document_type.name), status_code=200)
 
         # Check that there are no document types
         response = self.client.get(reverse('documents:document_type_list'))
         self.assertEqual(response.status_code, 200)
-        self.assertTrue('ocument types (0)' in response.content)
+        self.assertContains(response, 'ocument types (0)', status_code=200)
