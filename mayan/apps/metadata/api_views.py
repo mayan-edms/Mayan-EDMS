@@ -4,6 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics, status, views
+from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 
 from acls.models import AccessEntry
@@ -25,7 +26,8 @@ from .permissions import (
 )
 from .serializers import (
     DocumentMetadataSerializer, DocumentNewMetadataSerializer,
-    DocumentTypeNewMetadataTypeSerializer, MetadataTypeSerializer
+    DocumentTypeNewMetadataTypeSerializer, MetadataTypeSerializer,
+    DocumentTypeMetadataTypeSerializer
 )
 
 
@@ -113,13 +115,13 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         serializer = self.get_serializer(data=self.request.POST)
 
         if serializer.is_valid():
-            metadata_type = get_object_or_404(MetadataType, pk=serializer.data['metadata_type_pk'])
+            metadata_type = get_object_or_404(MetadataType, pk=serializer.data['metadata_type'])
             try:
                 document.metadata.create(metadata_type=metadata_type, value=serializer.data['value'])
             except Exception as exception:
                 return Response(status=status.HTTP_400_BAD_REQUEST, data={'non_field_errors': unicode(exception)})
             else:
-                return Response(status=status.HTTP_201_CREATED)
+                return Response(status=status.HTTP_201_CREATED, )
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
 
@@ -177,7 +179,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
         except PermissionDenied:
             AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TYPE_VIEW, self.request.user, document_type)
 
-        return document_type.metadata_type.filter(required=self.required_metadata)
+        return document_type.metadata.filter(required=self.required_metadata)
 
     def get(self, *args, **kwargs):
         """Returns a list of selected document type's optional metadata types."""
@@ -185,9 +187,9 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
-            return MetadataTypeSerializer
+            return DocumentTypeMetadataTypeSerializer
         elif self.request.method == 'POST':
-            return DocumentTypeNewMetadataType
+            return DocumentTypeNewMetadataTypeSerializer
 
     def post(self, request, *args, **kwargs):
         """
