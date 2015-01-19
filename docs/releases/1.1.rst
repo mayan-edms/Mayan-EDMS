@@ -2,7 +2,7 @@
 Mayan EDMS v1.1 release notes
 =============================
 
-*? 2014*
+Released: Not yet
 
 Welcome to Mayan EDMS v1.1
 
@@ -50,6 +50,7 @@ What's new in Mayan EDMS v1.1
 * Events app
 * Vagrant file included
 * Document states
+* User locale profile (language and timezone)
 
 
 Upgrading from a previous version
