@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
@@ -35,4 +35,4 @@ class FolderListForm(forms.Form):
 
         self.fields['folder'] = forms.ModelChoiceField(
             queryset=queryset,
-            label=_(u'Folder'))
+            label=_('Folder'))

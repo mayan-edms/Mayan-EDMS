@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 import tempfile
@@ -6,16 +6,15 @@ import tempfile
 from django.conf import settings
 from django.contrib.auth import models as auth_models
 from django.contrib.auth.models import User
+from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from django.contrib.auth.signals import user_logged_in
-
 from south.signals import post_migrate
 
+from common import settings as common_settings
 from navigation.api import register_links, register_top_menu
 
-from common import settings as common_settings
 from .links import (link_about, link_current_user_details,
                     link_current_user_edit,
                     link_current_user_locale_profile_details,

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 
@@ -10,32 +10,32 @@ logger = logging.getLogger(__name__)
 
 class RegistrationForm(forms.Form):
     name = forms.CharField(
-        label=_(u'Your name:'),
+        label=_('Your name:'),
         required=True
     )
 
     email = forms.CharField(
-        label=_(u'Your email:'),
+        label=_('Your email:'),
         required=True
     )
 
     company = forms.CharField(
-        label=_(u'Company name:'),
+        label=_('Company name:'),
         required=False
     )
 
     industry = forms.CharField(
-        label=_(u'Industry:'),
+        label=_('Industry:'),
         required=False
     )
 
     website = forms.CharField(
-        label=_(u'Company website:'),
+        label=_('Company website:'),
         required=False
     )
 
     country = forms.CharField(
-        label=_(u'Country:'),
+        label=_('Country:'),
         required=False
     )
 
@@ -43,6 +43,6 @@ class RegistrationForm(forms.Form):
         widget=forms.widgets.Textarea(
             attrs={'rows': 2},
         ),
-        label=_(u'Other information:'),
+        label=_('Other information:'),
         required=False
     )

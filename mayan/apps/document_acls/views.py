@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.shortcuts import get_object_or_404
 
 from acls.views import acl_list_for

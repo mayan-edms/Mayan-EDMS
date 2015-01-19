@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import subprocess
 
@@ -10,15 +10,15 @@ from ..literals import (DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER,
                         DIMENSION_SEPARATOR)
 from ..settings import GM_PATH, GM_SETTINGS
 
-CONVERTER_ERROR_STARTS_WITH = u'starts with'
-CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
+CONVERTER_ERROR_STARTS_WITH = 'starts with'
+CONVERTER_ERROR_STRING_NO_DECODER = 'No decode delegate for this image format'
 
 
 class GraphicsMagick(ConverterBase):
     def identify_file(self, input_filepath, arguments=None):
         command = []
         command.append(unicode(GM_PATH))
-        command.append(u'identify')
+        command.append('identify')
         if arguments:
             command.extend(arguments)
         command.append(unicode(input_filepath))
@@ -39,32 +39,32 @@ class GraphicsMagick(ConverterBase):
                         dimensions.append(unicode(transformation['arguments']['width']))
                         if 'height' in transformation['arguments']:
                             dimensions.append(unicode(transformation['arguments']['height']))
-                        arguments.append(u'-resize')
-                        arguments.append(u'%s' % DIMENSION_SEPARATOR.join(dimensions))
+                        arguments.append('-resize')
+                        arguments.append('%s' % DIMENSION_SEPARATOR.join(dimensions))
 
                     elif transformation['transformation'] == TRANSFORMATION_ZOOM:
-                        arguments.append(u'-resize')
-                        arguments.append(u'%d%%' % transformation['arguments']['percent'])
+                        arguments.append('-resize')
+                        arguments.append('%d%%' % transformation['arguments']['percent'])
 
                     elif transformation['transformation'] == TRANSFORMATION_ROTATE:
-                        arguments.append(u'-rotate')
-                        arguments.append(u'%s' % transformation['arguments']['degrees'])
+                        arguments.append('-rotate')
+                        arguments.append('%s' % transformation['arguments']['degrees'])
         except:
             pass
 
-        if file_format.lower() == u'jpeg' or file_format.lower() == u'jpg':
-            arguments.append(u'-quality')
-            arguments.append(u'85')
+        if file_format.lower() == 'jpeg' or file_format.lower() == 'jpg':
+            arguments.append('-quality')
+            arguments.append('85')
 
         # Graphicsmagick page number is 0 base
-        input_arg = u'%s[%d]' % (input_filepath, page - 1)
+        input_arg = '%s[%d]' % (input_filepath, page - 1)
 
         # Specify the file format next to the output filename
-        output_filepath = u'%s:%s' % (file_format, output_filepath)
+        output_filepath = '%s:%s' % (file_format, output_filepath)
 
         command = []
         command.append(unicode(GM_PATH))
-        command.append(u'convert')
+        command.append('convert')
         command.extend(unicode(GM_SETTINGS).split())
         command.append(unicode(input_arg))
         if arguments:

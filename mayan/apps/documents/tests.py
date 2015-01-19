@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from json import loads
 import os
@@ -83,7 +83,7 @@ class DocumentAPICreateDocumentTestCase(TestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         # Make sure a token was returned
-        self.assertTrue(u'token' in response.content)
+        self.assertTrue('token' in response.content)
 
         token = loads(response.content)['token']
 

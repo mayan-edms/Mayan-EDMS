@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from django.db.models.signals import post_save, post_delete
 from django.dispatch import receiver
@@ -36,7 +36,7 @@ def document_metadata_index_post_delete(sender, **kwargs):
     task_index_document.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
 
 
-register_maintenance_links([rebuild_index_instances], namespace='document_indexing', title=_(u'Indexes'))
+register_maintenance_links([rebuild_index_instances], namespace='document_indexing', title=_('Indexes'))
 
 register_links(Document, [document_index_list], menu_name='form_header')
 register_links([Index, 'indexing:index_setup_list', 'indexing:index_setup_create'], [index_setup_list, index_setup_create], menu_name='secondary_menu')

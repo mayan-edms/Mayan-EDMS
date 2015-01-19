@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -10,24 +10,21 @@ from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 
 from .classes import StagingFile
-from .links import (document_create_multiple, document_create_siblings,
-                    setup_sources, setup_source_create_imap_email,
-                    setup_source_create_pop3_email,
-                    setup_source_create_watch_folder,
-                    setup_source_create_webform,
-                    setup_source_create_staging_folder,
-                    setup_source_delete, setup_source_edit,
-                    setup_source_transformation_create,
-                    setup_source_transformation_delete,
-                    setup_source_transformation_edit,
-                    setup_source_transformation_list,
-                    staging_file_delete, upload_version)
+from .links import (
+    document_create_multiple, document_create_siblings, setup_sources,
+    setup_source_create_imap_email, setup_source_create_pop3_email,
+    setup_source_create_watch_folder, setup_source_create_webform,
+    setup_source_create_staging_folder, setup_source_delete, setup_source_edit,
+    setup_source_transformation_create, setup_source_transformation_delete,
+    setup_source_transformation_edit, setup_source_transformation_list,
+    staging_file_delete, upload_version
+)
 from .models import Source, SourceTransformation
 from .widgets import staging_file_thumbnail
 
 register_model_list_columns(StagingFile, [
     {
-        'name': _(u'Thumbnail'), 'attribute':
+        'name': _('Thumbnail'), 'attribute':
         encapsulate(lambda x: staging_file_thumbnail(x, gallery_name='sources:staging_list', title=x.filename, size='100'))
     },
 ])

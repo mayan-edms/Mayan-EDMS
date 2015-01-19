@@ -35,7 +35,7 @@ register_model_list_columns(Action, [
         'attribute': 'actor',
     },
     {
-        'name': _(u'Verb'),
+        'name': _('Verb'),
         'attribute': encapsulate(lambda entry: event_type_link(entry))
     },
 ])

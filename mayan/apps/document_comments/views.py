@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.contrib.comments.models import Comment
@@ -16,8 +16,10 @@ from documents.models import Document
 from permissions.models import Permission
 
 from .forms import CommentForm
-from .permissions import (PERMISSION_COMMENT_CREATE, PERMISSION_COMMENT_DELETE,
-                          PERMISSION_COMMENT_VIEW)
+from .permissions import (
+    PERMISSION_COMMENT_CREATE, PERMISSION_COMMENT_DELETE,
+    PERMISSION_COMMENT_VIEW
+)
 
 
 def comment_delete(request, comment_id=None, comment_id_list=None):
@@ -34,7 +36,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         comments = AccessEntry.objects.filter_objects_by_access(PERMISSION_COMMENT_DELETE, request.user, comments, related='content_object')
 
     if not comments:
-        messages.error(request, _(u'Must provide at least one comment.'))
+        messages.error(request, _('Must provide at least one comment.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
@@ -44,9 +46,9 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         for comment in comments:
             try:
                 comment.delete()
-                messages.success(request, _(u'Comment "%s" deleted successfully.') % comment)
+                messages.success(request, _('Comment "%s" deleted successfully.') % comment)
             except Exception as exception:
-                messages.error(request, _(u'Error deleting comment "%(comment)s": %(error)s') % {
+                messages.error(request, _('Error deleting comment "%(comment)s": %(error)s') % {
                     'comment': comment, 'error': exception
                 })
 
@@ -59,9 +61,9 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
     }
     if len(comments) == 1:
         context['object'] = comments[0].content_object
-        context['title'] = _(u'Are you sure you wish to delete the comment: %s?') % ', '.join([unicode(d) for d in comments])
+        context['title'] = _('Are you sure you wish to delete the comment: %s?') % ', '.join([unicode(d) for d in comments])
     elif len(comments) > 1:
-        context['title'] = _(u'Are you sure you wish to delete the comments: %s?') % ', '.join([unicode(d) for d in comments])
+        context['title'] = _('Are you sure you wish to delete the comments: %s?') % ', '.join([unicode(d) for d in comments])
 
     return render_to_response('main/generic_confirm.html', context,
                               context_instance=RequestContext(request))
@@ -95,14 +97,14 @@ def comment_add(request, document_id):
             comment.site = Site.objects.get_current()
             comment.save()
 
-            messages.success(request, _(u'Comment added successfully.'))
+            messages.success(request, _('Comment added successfully.'))
             return HttpResponseRedirect(next)
     else:
         form = CommentForm()
 
     return render_to_response('main/generic_form.html', {
         'form': form,
-        'title': _(u'Add comment to document'),
+        'title': _('Add comment to document'),
         'next': next,
         'object': document,
     }, context_instance=RequestContext(request))
@@ -122,7 +124,7 @@ def comments_for_document(request, document_id):
     return render_to_response('main/generic_list.html', {
         'object': document,
         'access_object': document,
-        'title': _(u'Document comments'),
+        'title': _('Document comments'),
         'object_list': Comment.objects.for_model(document).order_by('-submit_date'),
         'hide_link': True,
         'hide_object': True,

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
@@ -39,4 +39,4 @@ class TagListForm(forms.Form):
 
         self.fields['tag'] = forms.ModelChoiceField(
             queryset=queryset,
-            label=_(u'Tags'))
+            label=_('Tags'))

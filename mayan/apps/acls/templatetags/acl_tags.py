@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import logging
 
 from django.core.exceptions import PermissionDenied
@@ -18,7 +20,7 @@ class CheckAccessNode(Node):
 
     def render(self, context):
         permission_list = Variable(self.permission_list).resolve(context)
-        logger.debug('permission_list: %s', u','.join([unicode(p) for p in permission_list]))
+        logger.debug('permission_list: %s', ','.join([unicode(p) for p in permission_list]))
 
         try:
             # Check access_object, useful for document_page views
@@ -29,15 +31,15 @@ class CheckAccessNode(Node):
                 obj = Variable(self.obj).resolve(context)
                 logger.debug('obj: %s', obj)
             except VariableDoesNotExist:
-                context[u'access'] = False
+                context['access'] = False
                 logger.debug('no obj, access False')
-                return u''
+                return ''
 
         if not permission_list:
             # There is no permissions list to check against which means
             # this link is available for all
-            context[u'access'] = True
-            return u''
+            context['access'] = True
+            return ''
 
         requester = Variable(self.requester).resolve(context)
         logger.debug('requester: %s', requester)
@@ -46,17 +48,17 @@ class CheckAccessNode(Node):
             try:
                 AccessEntry.objects.check_accesses(permission_list, requester, obj)
             except PermissionDenied:
-                context[u'access'] = False
+                context['access'] = False
                 logger.debug('access: False')
-                return u''
+                return ''
             else:
-                context[u'access'] = True
+                context['access'] = True
                 logger.debug('access: True')
-                return u''
+                return ''
         else:
-            context[u'access'] = False
+            context['access'] = False
             logger.debug('No object, access: False')
-            return u''
+            return ''
 
 
 @register.tag
@@ -65,6 +67,6 @@ def check_access(parser, token):
         # Splitting by None == splitting by spaces.
         tag_name, args = token.contents.split(None, 1)
     except ValueError:
-        raise TemplateSyntaxError(u'%r tag requires arguments' % token.contents.split()[0])
+        raise TemplateSyntaxError('%r tag requires arguments' % token.contents.split()[0])
 
     return CheckAccessNode(*args.split())

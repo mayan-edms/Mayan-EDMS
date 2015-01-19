@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import datetime
 
@@ -14,9 +14,9 @@ class SplitDeltaWidget(forms.widgets.MultiWidget):
     """
     def __init__(self, attrs=None):
         widgets = (
-            forms.widgets.TextInput(attrs={'maxlength': 3, 'style': 'width: 5em;', 'placeholder': _(u'Days')}),
-            forms.widgets.TextInput(attrs={'maxlength': 4, 'style': 'width: 5em;', 'placeholder': _(u'Hours')}),
-            forms.widgets.TextInput(attrs={'maxlength': 5, 'style': 'width: 5em;', 'placeholder': _(u'Minutes')}),
+            forms.widgets.TextInput(attrs={'maxlength': 3, 'style': 'width: 5em;', 'placeholder': _('Days')}),
+            forms.widgets.TextInput(attrs={'maxlength': 4, 'style': 'width: 5em;', 'placeholder': _('Hours')}),
+            forms.widgets.TextInput(attrs={'maxlength': 5, 'style': 'width: 5em;', 'placeholder': _('Minutes')}),
         )
         super(SplitDeltaWidget, self).__init__(widgets, attrs)
 
@@ -46,10 +46,10 @@ class SplitTimeDeltaField(forms.MultiValueField):
     widget = SplitDeltaWidget
     hidden_widget = SplitHiddenDeltaWidget
     default_error_messages = {
-        'invalid_days': _(u'Enter a valid number of days.'),
-        'invalid_hours': _(u'Enter a valid number of hours.'),
-        'invalid_minutes': _(u'Enter a valid number of minutes.'),
-        'invalid_timedelta': _(u'Enter a valid time difference.'),
+        'invalid_days': _('Enter a valid number of days.'),
+        'invalid_hours': _('Enter a valid number of hours.'),
+        'invalid_minutes': _('Enter a valid number of minutes.'),
+        'invalid_timedelta': _('Enter a valid time difference.'),
     }
 
     def __init__(self, *args, **kwargs):
@@ -75,7 +75,7 @@ class SplitTimeDeltaField(forms.MultiValueField):
             ),
         )
         super(SplitTimeDeltaField, self).__init__(fields, *args, **kwargs)
-        self.help_text = _(u'Amount of time to hold the document in the checked out state in days, hours and/or minutes.')
+        self.help_text = _('Amount of time to hold the document in the checked out state in days, hours and/or minutes.')
         self.label = _('Check out expiration date and time')
 
     def compress(self, data_list):

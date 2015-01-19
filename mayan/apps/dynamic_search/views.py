@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 import urlparse
@@ -35,7 +35,7 @@ def results(request, extra_context=None):
         context.update({
             'object_list': queryset,
             'time_delta': timedelta,
-            'title': _(u'Results'),
+            'title': _('Results'),
         })
 
     if extra_context:
@@ -43,7 +43,7 @@ def results(request, extra_context=None):
 
     if SHOW_OBJECT_TYPE:
         context.update({
-            'extra_columns': [{'name': _(u'Type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]
+            'extra_columns': [{'name': _('Type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]
         })
 
     return render_to_response('search_results.html', context,
@@ -59,19 +59,19 @@ def search(request, advanced=False):
             'main/generic_form.html',
             {
                 'form': form,
-                'title': _(u'Advanced search'),
+                'title': _('Advanced search'),
                 'form_action': reverse('search:results'),
                 'submit_method': 'GET',
                 'search_results_limit': LIMIT,
-                'submit_label': _(u'Search'),
+                'submit_label': _('Search'),
                 'submit_icon_famfam': 'zoom',
             }, context_instance=RequestContext(request)
         )
     else:
         extra_context = {
-            'submit_label': _(u'Search'),
+            'submit_label': _('Search'),
             'submit_icon_famfam': 'zoom',
-            'form_title': _(u'Search'),
+            'form_title': _('Search'),
             'form_hide_required_text': True,
         }
         if ('q' in request.GET) and request.GET['q'].strip():

@@ -1,6 +1,6 @@
 # original code from:
 # http://www.julienphalip.com/blog/2008/08/16/adding-search-django-site-snap/
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import datetime
 import re
@@ -41,11 +41,11 @@ def get_query(terms, search_fields):
         or_query = None
         for field in search_fields:
             if isinstance(field, types.StringTypes):
-                comparison = u'icontains'
+                comparison = 'icontains'
                 field_name = field
             elif isinstance(field, types.DictType):
-                comparison = field.get('comparison', u'icontains')
-                field_name = field.get('field_name', u'')
+                comparison = field.get('comparison', 'icontains')
+                field_name = field.get('field_name', '')
 
             if field_name:
                 q = Q(**{'%s__%s' % (field_name, comparison): term})
@@ -69,7 +69,7 @@ def perform_search(query_string, field_list=None):
     search_dict = {}
 
     if query_string:
-        simple_query_string = query_string.get('q', u'').strip()
+        simple_query_string = query_string.get('q', '').strip()
         if simple_query_string:
             for model, values in registered_search_dict.items():
                 search_dict.setdefault(values['model'], {'query_entries': [], 'title': values['title']})

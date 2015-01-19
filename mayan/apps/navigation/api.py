@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 object_navigation = {}
 model_list_columns = {}
 top_menu_entries = []

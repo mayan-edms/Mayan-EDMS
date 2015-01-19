@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import logging
 
 from django.contrib.auth.models import User
@@ -51,13 +53,13 @@ def task_new_document(document_type_id, shared_uploaded_file_id, label, descript
 
     # TODO: Report/record how was file uploaded
     #    if result['is_compressed'] is None:
-    #        messages.success(request, _(u'File uploaded successfully.'))
+    #        messages.success(request, _('File uploaded successfully.'))
 
     #    if result['is_compressed'] is True:
-    #        messages.success(request, _(u'File uncompressed successfully and uploaded as individual files.'))
+    #        messages.success(request, _('File uncompressed successfully and uploaded as individual files.'))
 
     #    if result['is_compressed'] is False:
-    #        messages.warning(request, _(u'File was not a compressed file, uploaded as it was.'))
+    #        messages.warning(request, _('File was not a compressed file, uploaded as it was.'))
 
 
 @app.task(ignore_result=True)

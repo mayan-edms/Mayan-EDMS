@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.core.exceptions import ValidationError
 from django.db import models
@@ -14,18 +14,18 @@ class MetadataType(models.Model):
     """
     Define a type of metadata
     """
-    name = models.CharField(unique=True, max_length=48, verbose_name=_(u'Name'), help_text=_(u'Do not use python reserved words, or spaces.'))
+    name = models.CharField(unique=True, max_length=48, verbose_name=_('Name'), help_text=_('Do not use python reserved words, or spaces.'))
     # TODO: normalize 'title' to 'label'
-    title = models.CharField(max_length=48, verbose_name=_(u'Title'))
+    title = models.CharField(max_length=48, verbose_name=_('Title'))
     default = models.CharField(max_length=128, blank=True, null=True,
-                               verbose_name=_(u'Default'),
-                               help_text=_(u'Enter a string to be evaluated.'))
+                               verbose_name=_('Default'),
+                               help_text=_('Enter a string to be evaluated.'))
     # TODO: Add enable_lookup boolean to allow users to switch the lookup on and
     # off without losing the lookup expression
     lookup = models.TextField(blank=True, null=True,
-                              verbose_name=_(u'Lookup'),
-                              help_text=_(u'Enter a string to be evaluated that returns an iterable.'))
-    validation = models.CharField(blank=True, choices=zip(AVAILABLE_VALIDATORS, AVAILABLE_VALIDATORS), max_length=64, verbose_name=_(u'Validation function name'))
+                              verbose_name=_('Lookup'),
+                              help_text=_('Enter a string to be evaluated that returns an iterable.'))
+    validation = models.CharField(blank=True, choices=zip(AVAILABLE_VALIDATORS, AVAILABLE_VALIDATORS), max_length=64, verbose_name=_('Validation function name'))
     # TODO: Find a different way to let users know what models and functions are
     # available now that we removed these from the help_text
     objects = MetadataTypeManager()
@@ -38,8 +38,8 @@ class MetadataType(models.Model):
 
     class Meta:
         ordering = ('title',)
-        verbose_name = _(u'Metadata type')
-        verbose_name_plural = _(u'Metadata types')
+        verbose_name = _('Metadata type')
+        verbose_name_plural = _('Metadata types')
 
 
 class DocumentMetadata(models.Model):
@@ -47,9 +47,9 @@ class DocumentMetadata(models.Model):
     Link a document to a specific instance of a metadata type with it's
     current value
     """
-    document = models.ForeignKey(Document, related_name='metadata', verbose_name=_(u'Document'))
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'Type'))
-    value = models.CharField(max_length=255, blank=True, null=True, verbose_name=_(u'Value'), db_index=True)
+    document = models.ForeignKey(Document, related_name='metadata', verbose_name=_('Document'))
+    metadata_type = models.ForeignKey(MetadataType, verbose_name=_('Type'))
+    value = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Value'), db_index=True)
 
     def __unicode__(self):
         return unicode(self.metadata_type)
@@ -68,13 +68,13 @@ class DocumentMetadata(models.Model):
 
     class Meta:
         unique_together = ('document', 'metadata_type')
-        verbose_name = _(u'Document metadata')
-        verbose_name_plural = _(u'Document metadata')
+        verbose_name = _('Document metadata')
+        verbose_name_plural = _('Document metadata')
 
 
 class DocumentTypeMetadataType(models.Model):
-    document_type = models.ForeignKey(DocumentType, related_name='metadata', verbose_name=_(u'Document type'))
-    metadata_type = models.ForeignKey(MetadataType, verbose_name=_(u'Metadata type'))
+    document_type = models.ForeignKey(DocumentType, related_name='metadata', verbose_name=_('Document type'))
+    metadata_type = models.ForeignKey(MetadataType, verbose_name=_('Metadata type'))
     required = models.BooleanField(default=False, verbose_name=_('Required'))
 
     def __unicode__(self):
@@ -82,5 +82,5 @@ class DocumentTypeMetadataType(models.Model):
 
     class Meta:
         unique_together = ('document_type', 'metadata_type')
-        verbose_name = _(u'Document type metadata type options')
-        verbose_name_plural = _(u'Document type metadata types options')
+        verbose_name = _('Document type metadata type options')
+        verbose_name_plural = _('Document type metadata types options')

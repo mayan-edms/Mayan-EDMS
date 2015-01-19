@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from navigation.api import register_links
 from rest_api.classes import APIEndPoint

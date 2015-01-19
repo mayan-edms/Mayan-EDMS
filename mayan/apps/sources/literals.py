@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.utils.translation import ugettext_lazy as _
 
 SOURCE_UNCOMPRESS_CHOICE_Y = 'y'
@@ -5,14 +7,14 @@ SOURCE_UNCOMPRESS_CHOICE_N = 'n'
 SOURCE_UNCOMPRESS_CHOICE_ASK = 'a'
 
 SOURCE_UNCOMPRESS_CHOICES = (
-    (SOURCE_UNCOMPRESS_CHOICE_Y, _(u'Always')),
-    (SOURCE_UNCOMPRESS_CHOICE_N, _(u'Never')),
+    (SOURCE_UNCOMPRESS_CHOICE_Y, _('Always')),
+    (SOURCE_UNCOMPRESS_CHOICE_N, _('Never')),
 )
 
 SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES = (
-    (SOURCE_UNCOMPRESS_CHOICE_Y, _(u'Always')),
-    (SOURCE_UNCOMPRESS_CHOICE_N, _(u'Never')),
-    (SOURCE_UNCOMPRESS_CHOICE_ASK, _(u'Ask user'))
+    (SOURCE_UNCOMPRESS_CHOICE_Y, _('Always')),
+    (SOURCE_UNCOMPRESS_CHOICE_N, _('Never')),
+    (SOURCE_UNCOMPRESS_CHOICE_ASK, _('Ask user'))
 )
 
 SOURCE_CHOICE_WEB_FORM = 'webform'
@@ -22,11 +24,11 @@ SOURCE_CHOICE_EMAIL_POP3 = 'pop3'
 SOURCE_CHOICE_EMAIL_IMAP = 'imap'
 
 SOURCE_CHOICES = (
-    (SOURCE_CHOICE_WEB_FORM, _(u'Web form')),
-    (SOURCE_CHOICE_STAGING, _(u'Staging folder')),
-    (SOURCE_CHOICE_WATCH, _(u'Watch folder')),
-    (SOURCE_CHOICE_EMAIL_POP3, _(u'POP3 email')),
-    (SOURCE_CHOICE_EMAIL_IMAP, _(u'IMAP email')),
+    (SOURCE_CHOICE_WEB_FORM, _('Web form')),
+    (SOURCE_CHOICE_STAGING, _('Staging folder')),
+    (SOURCE_CHOICE_WATCH, _('Watch folder')),
+    (SOURCE_CHOICE_EMAIL_POP3, _('POP3 email')),
+    (SOURCE_CHOICE_EMAIL_IMAP, _('IMAP email')),
 )
 
 DEFAULT_INTERVAL = 60

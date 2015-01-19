@@ -1,9 +1,9 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.db import models
 from django.core.exceptions import PermissionDenied
+from django.db import models
 from django.utils.timezone import now
 
 from acls.models import AccessEntry

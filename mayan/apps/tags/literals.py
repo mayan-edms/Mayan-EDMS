@@ -1,40 +1,40 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-COLOR_RED = u'red'
-COLOR_BLUE = u'blu'
-COLOR_MAGENTA = u'mag'
-COLOR_CYAN = u'cya'
-COLOR_YELLOW = u'yel'
-COLOR_GREENYELLOW = u'gry'
-COLOR_CORAL = u'crl'
-COLOR_KHAKI = u'kki'
-COLOR_LIGHTGREY = u'lig'
-COLOR_ORANGE = u'org'
+COLOR_RED = 'red'
+COLOR_BLUE = 'blu'
+COLOR_MAGENTA = 'mag'
+COLOR_CYAN = 'cya'
+COLOR_YELLOW = 'yel'
+COLOR_GREENYELLOW = 'gry'
+COLOR_CORAL = 'crl'
+COLOR_KHAKI = 'kki'
+COLOR_LIGHTGREY = 'lig'
+COLOR_ORANGE = 'org'
 
 COLOR_CHOICES = (
-    (COLOR_BLUE, _(u'Blue')),
-    (COLOR_CYAN, _(u'Cyan')),
-    (COLOR_CORAL, _(u'Coral')),
-    (COLOR_GREENYELLOW, _(u'Green-Yellow')),
-    (COLOR_KHAKI, _(u'Khaki')),
-    (COLOR_LIGHTGREY, _(u'LightGrey')),
-    (COLOR_MAGENTA, _(u'Magenta')),
-    (COLOR_RED, _(u'Red')),
-    (COLOR_ORANGE, _(u'Orange')),
-    (COLOR_YELLOW, _(u'Yellow'))
+    (COLOR_BLUE, _('Blue')),
+    (COLOR_CYAN, _('Cyan')),
+    (COLOR_CORAL, _('Coral')),
+    (COLOR_GREENYELLOW, _('Green-Yellow')),
+    (COLOR_KHAKI, _('Khaki')),
+    (COLOR_LIGHTGREY, _('LightGrey')),
+    (COLOR_MAGENTA, _('Magenta')),
+    (COLOR_RED, _('Red')),
+    (COLOR_ORANGE, _('Orange')),
+    (COLOR_YELLOW, _('Yellow'))
 )
 
 COLOR_CODES = (
-    (COLOR_RED, u'red'),
-    (COLOR_BLUE, u'blue'),
-    (COLOR_MAGENTA, u'magenta'),
-    (COLOR_CYAN, u'cyan'),
-    (COLOR_YELLOW, u'yellow'),
-    (COLOR_GREENYELLOW, u'greenyellow '),
-    (COLOR_CORAL, u'coral'),
-    (COLOR_KHAKI, u'khaki'),
-    (COLOR_ORANGE, u'orange'),
-    (COLOR_LIGHTGREY, u'lightgrey'),
+    (COLOR_RED, 'red'),
+    (COLOR_BLUE, 'blue'),
+    (COLOR_MAGENTA, 'magenta'),
+    (COLOR_CYAN, 'cyan'),
+    (COLOR_YELLOW, 'yellow'),
+    (COLOR_GREENYELLOW, 'greenyellow '),
+    (COLOR_CORAL, 'coral'),
+    (COLOR_KHAKI, 'khaki'),
+    (COLOR_ORANGE, 'orange'),
+    (COLOR_LIGHTGREY, 'lightgrey'),
 )

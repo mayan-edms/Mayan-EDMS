@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import inspect
 import logging
@@ -113,7 +113,7 @@ class Link(object):
                     else:
                         resolved_link.url = reverse(self.view, args=args)
                         if self.keep_query:
-                            resolved_link.url = u'%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
+                            resolved_link.url = '%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
 
                 except NoReverseMatch, exc:
                     resolved_link.url = '#'
@@ -127,7 +127,7 @@ class Link(object):
                 else:
                     resolved_link.url = self.url % args
                     if self.keep_query:
-                        resolved_link.url = u'%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
+                        resolved_link.url = '%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
             else:
                 resolved_link.active = False
 

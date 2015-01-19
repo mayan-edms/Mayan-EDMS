@@ -14,7 +14,7 @@ class CopyNode(Node):
     def render(self, context):
         context[Variable(self.var_name).resolve(context)] = Variable(self.source_variable).resolve(context)
         if self.delete_old:
-            context[Variable(self.source_variable).resolve(context)] = u''
+            context[Variable(self.source_variable).resolve(context)] = ''
         return ''
 
 

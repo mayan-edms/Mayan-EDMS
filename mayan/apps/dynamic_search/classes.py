@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import datetime
 import logging
@@ -98,7 +98,7 @@ class SearchModel(object):
                 search_dict[search_field.get_model()]['searches'].append(
                     {
                         'field_name': [search_field.field],
-                        'terms': self.normalize_query(query_string.get('q', u'').strip())
+                        'terms': self.normalize_query(query_string.get('q', '').strip())
                     }
                 )
         else:

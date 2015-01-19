@@ -1,5 +1,4 @@
-"""Metadata handling commonalities"""
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from urllib import unquote_plus
 
@@ -83,7 +82,7 @@ def metadata_repr(metadata_list):
     """
     Return a printable representation of a metadata list
     """
-    return u', '.join(metadata_repr_as_list(metadata_list))
+    return ', '.join(metadata_repr_as_list(metadata_list))
 
 
 def metadata_repr_as_list(metadata_list):
@@ -93,7 +92,7 @@ def metadata_repr_as_list(metadata_list):
     output = []
     for metadata_dict in metadata_list:
         try:
-            output.append(u'%s - %s' % (MetadataType.objects.get(
+            output.append('%s - %s' % (MetadataType.objects.get(
                 pk=metadata_dict['id']), metadata_dict.get('value', '')))
         except:
             pass
@@ -105,7 +104,7 @@ def get_metadata_string(document):
     """
     Return a formated representation of a document's metadata values
     """
-    return u', '.join([u'%s - %s' % (document_metadata.metadata_type, document_metadata.value) for document_metadata in document.metadata.all()])
+    return ', '.join(['%s - %s' % (document_metadata.metadata_type, document_metadata.value) for document_metadata in document.metadata.all()])
 
 
 def convert_dict_to_dict_list(dictionary):

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.utils.safestring import mark_safe
 from django.contrib.contenttypes.models import ContentType
@@ -8,7 +8,7 @@ from .literals import CONTENT_TYPE_ICON_MAP
 
 
 def content_type_icon(content_type):
-    return mark_safe(u'<span class="famfam active famfam-%s"></span>' % CONTENT_TYPE_ICON_MAP.get('%s.%s' % (content_type.app_label, content_type.model), 'help'))
+    return mark_safe('<span class="famfam active famfam-%s"></span>' % CONTENT_TYPE_ICON_MAP.get('%s.%s' % (content_type.app_label, content_type.model), 'help'))
 
 
 def object_w_content_type_icon(obj):

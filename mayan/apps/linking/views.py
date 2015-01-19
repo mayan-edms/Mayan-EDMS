@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
@@ -22,10 +22,10 @@ from permissions.models import Permission
 
 from .forms import SmartLinkConditionForm, SmartLinkForm
 from .models import SmartLink, SmartLinkCondition
-from .permissions import (PERMISSION_SMART_LINK_CREATE,
-                          PERMISSION_SMART_LINK_DELETE,
-                          PERMISSION_SMART_LINK_EDIT,
-                          PERMISSION_SMART_LINK_VIEW)
+from .permissions import (
+    PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,
+    PERMISSION_SMART_LINK_EDIT, PERMISSION_SMART_LINK_VIEW
+)
 
 logger = logging.getLogger(__name__)
 
@@ -45,11 +45,11 @@ def smart_link_instance_view(request, document_id, smart_link_pk):
         object_list = []
 
         if request.user.is_staff or request.user.is_superuser:
-            messages.error(request, _(u'Smart link query error: %s' % exception))
+            messages.error(request, _('Smart link query error: %s' % exception))
 
     return document_list(
         request,
-        title=_(u'Documents in smart link: %s') % smart_link.get_dynamic_title(document),
+        title=_('Documents in smart link: %s') % smart_link.get_dynamic_title(document),
         object_list=object_list,
         extra_context={
             'object': document
@@ -64,7 +64,7 @@ def smart_link_instances_for_document(request, document_id):
         queryset = SmartLink.objects.get_for(document)
     except Exception as exception:
         queryset = []
-        messages.error(request, _(u'Error calculating smart link for: %(document)s; %(exception)s.') %
+        messages.error(request, _('Error calculating smart link for: %(document)s; %(exception)s.') %
             {'document': document, 'exception': exception}
         )
 
@@ -79,7 +79,7 @@ def smart_link_instances_for_document(request, document_id):
         'document': document,
         'object': document,
         'object_list': smart_links,
-        'title': _(u'Document smart links'),
+        'title': _('Document smart links'),
         'extra_columns': [
             {'name': _('Indentifier'), 'attribute': encapsulate(lambda resolved_smart_link: resolved_smart_link.smart_link.get_dynamic_title(document))},
             {'name': _('Documents'), 'attribute': encapsulate(lambda resolved_smart_link: resolved_smart_link.queryset.count())}
@@ -109,11 +109,11 @@ def smart_link_list(request):
         qs = AccessEntry.objects.filter_objects_by_access(PERMISSION_SMART_LINK_VIEW, request.user, qs)
 
     return render_to_response('main/generic_list.html', {
-        'title': _(u'Smart links'),
+        'title': _('Smart links'),
         'object_list': qs,
         'extra_columns': [
-            {'name': _(u'Dynamic title'), 'attribute': 'dynamic_title'},
-            {'name': _(u'Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _('Dynamic title'), 'attribute': 'dynamic_title'},
+            {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ],
         'hide_link': True,
         'list_object_variable_name': 'smart_link',
@@ -129,14 +129,14 @@ def smart_link_create(request):
         if form.is_valid():
             document_group = form.save()
             apply_default_acls(document_group, request.user)
-            messages.success(request, _(u'Smart link: %s created successfully.') % document_group)
+            messages.success(request, _('Smart link: %s created successfully.') % document_group)
             return HttpResponseRedirect(reverse('linking:smart_link_list'))
     else:
         form = SmartLinkForm()
 
     return render_to_response('main/generic_form.html', {
         'form': form,
-        'title': _(u'Create new smart link')
+        'title': _('Create new smart link')
     }, context_instance=RequestContext(request))
 
 
@@ -152,7 +152,7 @@ def smart_link_edit(request, smart_link_pk):
         form = SmartLinkForm(request.POST, instance=smart_link)
         if form.is_valid():
             smart_link = form.save()
-            messages.success(request, _(u'Smart link: %s edited successfully.') % smart_link)
+            messages.success(request, _('Smart link: %s edited successfully.') % smart_link)
             return HttpResponseRedirect(reverse('linking:smart_link_list'))
     else:
         form = SmartLinkForm(instance=smart_link)
@@ -160,7 +160,7 @@ def smart_link_edit(request, smart_link_pk):
     return render_to_response('main/generic_form.html', {
         'object': smart_link,
         'form': form,
-        'title': _(u'Edit smart link: %s') % smart_link
+        'title': _('Edit smart link: %s') % smart_link
     }, context_instance=RequestContext(request))
 
 
@@ -178,9 +178,9 @@ def smart_link_delete(request, smart_link_pk):
     if request.method == 'POST':
         try:
             smart_link.delete()
-            messages.success(request, _(u'Smart link: %s deleted successfully.') % smart_link)
+            messages.success(request, _('Smart link: %s deleted successfully.') % smart_link)
         except Exception as exception:
-            messages.error(request, _(u'Error deleting smart link: %(smart_link)s; %(exception)s.') % {
+            messages.error(request, _('Error deleting smart link: %(smart_link)s; %(exception)s.') % {
                 'smart_link': smart_link,
                 'exception': exception
             })
@@ -189,7 +189,7 @@ def smart_link_delete(request, smart_link_pk):
     return render_to_response('main/generic_confirm.html', {
         'delete_view': True,
         'object': smart_link,
-        'title': _(u'Are you sure you wish to delete smart link: %s?') % smart_link,
+        'title': _('Are you sure you wish to delete smart link: %s?') % smart_link,
         'next': next,
         'previous': previous,
     }, context_instance=RequestContext(request))
@@ -226,10 +226,10 @@ def smart_link_condition_list(request, smart_link_pk):
         AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_EDIT], request.user, smart_link)
 
     return render_to_response('main/generic_list.html', {
-        'title': _(u'Conditions for smart link: %s') % smart_link,
+        'title': _('Conditions for smart link: %s') % smart_link,
         'object_list': smart_link.conditions.all(),
         'extra_columns': [
-            {'name': _(u'Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ],
         'hide_link': True,
         'object': smart_link,
@@ -251,14 +251,14 @@ def smart_link_condition_create(request, smart_link_pk):
             new_smart_link_condition = form.save(commit=False)
             new_smart_link_condition.smart_link = smart_link
             new_smart_link_condition.save()
-            messages.success(request, _(u'Smart link condition: "%s" created successfully.') % new_smart_link_condition)
+            messages.success(request, _('Smart link condition: "%s" created successfully.') % new_smart_link_condition)
             return HttpResponseRedirect(reverse('linking:smart_link_condition_list', args=[smart_link.pk]))
     else:
         form = SmartLinkConditionForm()
 
     return render_to_response('main/generic_form.html', {
         'form': form,
-        'title': _(u'Add new conditions to smart link: "%s"') % smart_link,
+        'title': _('Add new conditions to smart link: "%s"') % smart_link,
         'object': smart_link,
     }, context_instance=RequestContext(request))
 
@@ -278,21 +278,21 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
         form = SmartLinkConditionForm(request.POST, instance=smart_link_condition)
         if form.is_valid():
             smart_link_condition = form.save()
-            messages.success(request, _(u'Smart link condition: "%s" edited successfully.') % smart_link_condition)
+            messages.success(request, _('Smart link condition: "%s" edited successfully.') % smart_link_condition)
             return HttpResponseRedirect(next)
     else:
         form = SmartLinkConditionForm(instance=smart_link_condition)
 
     return render_to_response('main/generic_form.html', {
         'form': form,
-        'title': _(u'Edit smart link condition'),
+        'title': _('Edit smart link condition'),
         'next': next,
         'previous': previous,
         'condition': smart_link_condition,
         'object': smart_link_condition.smart_link,
         'navigation_object_list': [
-            {'object': 'object', 'name': _(u'Smart link')},
-            {'object': 'condition', 'name': _(u'Condition')}
+            {'object': 'object', 'name': _('Smart link')},
+            {'object': 'condition', 'name': _('Condition')}
         ],
 
     }, context_instance=RequestContext(request))
@@ -312,9 +312,9 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
     if request.method == 'POST':
         try:
             smart_link_condition.delete()
-            messages.success(request, _(u'Smart link condition: "%s" deleted successfully.') % smart_link_condition)
+            messages.success(request, _('Smart link condition: "%s" deleted successfully.') % smart_link_condition)
         except Exception as exception:
-            messages.error(request, _(u'Error deleting smart link condition: %(smart_link_condition)s; %(exception)s.') % {
+            messages.error(request, _('Error deleting smart link condition: %(smart_link_condition)s; %(exception)s.') % {
                 'smart_link_condition': smart_link_condition,
                 'exception': exception
             })
@@ -325,10 +325,10 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
         'condition': smart_link_condition,
         'object': smart_link_condition.smart_link,
         'navigation_object_list': [
-            {'object': 'object', 'name': _(u'Smart link')},
-            {'object': 'condition', 'name': _(u'Condition')}
+            {'object': 'object', 'name': _('Smart link')},
+            {'object': 'condition', 'name': _('Condition')}
         ],
-        'title': _(u'Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
+        'title': _('Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
         'next': next,
         'previous': previous,
     }, context_instance=RequestContext(request))

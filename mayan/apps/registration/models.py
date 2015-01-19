@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from json import dumps, loads
 import requests
@@ -20,7 +20,7 @@ class RegistrationSingleton(SingletonModel):
     _registered = None
 
     registered = models.BooleanField(default=False, verbose_name=_('Registered'))
-    registration_data = models.TextField(verbose_name=_(u'Registration data'), blank=True)
+    registration_data = models.TextField(verbose_name=_('Registration data'), blank=True)
 
     @classmethod
     def registration_state(cls):
@@ -46,7 +46,7 @@ class RegistrationSingleton(SingletonModel):
             if name_value:
                 cls._cached_name = name_value
 
-            return name_value or _(u'No name')
+            return name_value or _('No name')
 
     @property
     def is_registered(self):
@@ -83,4 +83,4 @@ class RegistrationSingleton(SingletonModel):
                 lock.release()
 
     class Meta:
-        verbose_name = verbose_name_plural = _(u'Registration properties')
+        verbose_name = verbose_name_plural = _('Registration properties')

@@ -1,10 +1,12 @@
+from __future__ import unicode_literals
+
 from django.conf import settings as django_settings
 from django.utils.importlib import import_module
 
 settings = {}
 
 
-def register_setting(namespace, module, name, global_name, default, exists=False, description=u'', hidden=False):
+def register_setting(namespace, module, name, global_name, default, exists=False, description='', hidden=False):
     # Create namespace if it doesn't exists
     settings.setdefault(namespace, [])
 
@@ -43,6 +45,6 @@ def register_settings(namespace, module, settings):
             setting['global_name'],
             setting['default'],
             setting.get('exists', False),
-            setting.get('description', u''),
+            setting.get('description', ''),
             setting.get('hidden', False),
         )

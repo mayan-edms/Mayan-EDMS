@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import render_to_response
@@ -15,7 +15,7 @@ def namespace_list(request):
     return render_to_response('main/generic_list.html', {
         'object_list': StatisticNamespace.get_all(),
         'hide_link': True,
-        'title': _(u'Statistics namespaces'),
+        'title': _('Statistics namespaces'),
         'list_object_variable_name': 'namespace',
     }, context_instance=RequestContext(request))
 
@@ -31,7 +31,7 @@ def namespace_details(request, namespace_id):
         'namespace': namespace,
         'object_list': namespace.statistics,
         'hide_link': True,
-        'title': _(u'Namespace details for: %s') % namespace,
+        'title': _('Namespace details for: %s') % namespace,
     }, context_instance=RequestContext(request))
 
 
@@ -45,10 +45,10 @@ def execute(request, statistic_id):
         'object': statictic,
         'namespace': statictic.namespace,
         'navigation_object_list': [
-            {'object': 'namespace', 'name': _(u'Namespace')},
-            {'object': 'object', 'name': _(u'Statistic')},
+            {'object': 'namespace', 'name': _('Namespace')},
+            {'object': 'object', 'name': _('Statistic')},
         ],
         'object_list': statictic.get_results(),
         'hide_link': True,
-        'title': _(u'Results for: %s') % statictic,
+        'title': _('Results for: %s') % statictic,
     }, context_instance=RequestContext(request))

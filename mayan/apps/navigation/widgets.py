@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import urlparse
 
@@ -22,7 +22,7 @@ def button_navigation_widget(request, link):
             Permission.objects.check_permissions(request.user, link['permissions'])
             return render_widget(request, link)
         except PermissionDenied:
-            return u''
+            return ''
     else:
         return render_widget(request, link)
 
@@ -40,7 +40,7 @@ def render_widget(request, link):
     links = resolve_links(context, [link], current_view, current_path, parsed_query_string)
     if links:
         link = links[0]
-        return mark_safe(u'\
+        return mark_safe('\
             <a class="pure-button mayan-button-big" href="%(url)s">\
                 <p>\
                     <img src="%(static_url)s"><br>\
@@ -50,7 +50,7 @@ def render_widget(request, link):
             'url': reverse(link['view']) if 'view' in link else link['url'],
             'static_url': staticfiles_storage.url('main/icons/{0}'.format(link.get('icon', 'link_button.png'))),
             'string': link['text'],
-            'image_alt': _(u'Icon'),
+            'image_alt': _('Icon'),
         })
     else:
-        return u''
+        return ''

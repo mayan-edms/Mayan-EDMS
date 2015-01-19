@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 
@@ -47,7 +47,7 @@ def cascade_eval(document, template_node, parent_index_instance=None):
         try:
             result = eval(template_node.expression, {'document': document}, AVAILABLE_INDEXING_FUNCTIONS)
         except Exception as exception:
-            error_message = _(u'Error indexing document: %(document)s; expression: %(expression)s; %(exception)s') % {
+            error_message = _('Error indexing document: %(document)s; expression: %(expression)s; %(exception)s') % {
                 'document': document, 'expression': template_node.expression, 'exception': exception}
             warnings.append(error_message)
             logger.debug(error_message)

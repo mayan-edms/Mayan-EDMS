@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import base64
 import os
@@ -69,7 +69,7 @@ class StagingFile(object):
             image = open(converted_file_path, 'r')
             base64_data = base64.b64encode(image.read())
             image.close()
-            return u'data:%s;base64,%s' % (mimetype, base64_data)
+            return 'data:%s;base64,%s' % (mimetype, base64_data)
         else:
             return converted_file_path
 

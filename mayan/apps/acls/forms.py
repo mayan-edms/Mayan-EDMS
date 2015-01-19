@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from django import forms
 from django.contrib.auth.models import User, Group
@@ -22,7 +22,7 @@ def _as_choice_list(holders):
 
 class BaseHolderSelectionForm(forms.Form):
     holder_gid = forms.ChoiceField(
-        label=_(u'New holder')
+        label=_('New holder')
     )
 
     def __init__(self, *args, **kwargs):
@@ -39,16 +39,16 @@ class BaseHolderSelectionForm(forms.Form):
 
         non_holder_list = []
         if users:
-            non_holder_list.append((_(u'Users'), _as_choice_list(list(users))))
+            non_holder_list.append((_('Users'), _as_choice_list(list(users))))
 
         if groups:
-            non_holder_list.append((_(u'Groups'), _as_choice_list(list(groups))))
+            non_holder_list.append((_('Groups'), _as_choice_list(list(groups))))
 
         if roles:
-            non_holder_list.append((_(u'Roles'), _as_choice_list(list(roles))))
+            non_holder_list.append((_('Roles'), _as_choice_list(list(roles))))
 
         if special:
-            non_holder_list.append((_(u'Special'), _as_choice_list(list(special))))
+            non_holder_list.append((_('Special'), _as_choice_list(list(special))))
 
         super(BaseHolderSelectionForm, self).__init__(*args, **kwargs)
         self.fields['holder_gid'].choices = non_holder_list

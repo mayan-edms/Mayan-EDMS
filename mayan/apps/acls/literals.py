@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 
 # Content type <-> fam fam icon mapping
 CONTENT_TYPE_ICON_MAP = {

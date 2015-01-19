@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from ast import literal_eval
 from email.Utils import collapse_rfc2231_value
@@ -25,21 +25,21 @@ from documents.models import Document, DocumentType
 from metadata.api import save_metadata_list
 
 from .classes import Attachment, SourceUploadedFile, StagingFile
-from .literals import (DEFAULT_INTERVAL, DEFAULT_POP3_TIMEOUT,
-                       DEFAULT_IMAP_MAILBOX, SOURCE_CHOICES,
-                       SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
-                       SOURCE_CHOICE_WEB_FORM,
-                       SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
-                       SOURCE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICE_Y,
-                       SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3)
+from .literals import (
+    DEFAULT_INTERVAL, DEFAULT_POP3_TIMEOUT, DEFAULT_IMAP_MAILBOX,
+    SOURCE_CHOICES, SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
+    SOURCE_CHOICE_WEB_FORM, SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
+    SOURCE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICE_Y,
+    SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3
+)
 from .managers import SourceTransformationManager
 
 logger = logging.getLogger(__name__)
 
 
 class Source(models.Model):
-    title = models.CharField(max_length=64, verbose_name=_(u'Title'))
-    enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'))
+    title = models.CharField(max_length=64, verbose_name=_('Title'))
+    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
     objects = InheritanceManager()
 
@@ -48,10 +48,10 @@ class Source(models.Model):
         return unicode(dict(SOURCE_CHOICES).get(cls.source_type))
 
     def __unicode__(self):
-        return u'%s' % self.title
+        return '%s' % self.title
 
     def fullname(self):
-        return u' '.join([self.class_fullname(), '"%s"' % self.title])
+        return ' '.join([self.class_fullname(), '"%s"' % self.title])
 
     def get_transformation_list(self):
         return SourceTransformation.transformations.get_for_object_as_list(self)
@@ -82,27 +82,27 @@ class Source(models.Model):
 
     class Meta:
         ordering = ('title',)
-        verbose_name = _(u'Source')
-        verbose_name_plural = _(u'Sources')
+        verbose_name = _('Source')
+        verbose_name_plural = _('Sources')
 
 
 class InteractiveSource(Source):
     objects = InheritanceManager()
 
     class Meta:
-        verbose_name = _(u'Interactive source')
-        verbose_name_plural = _(u'Interactive sources')
+        verbose_name = _('Interactive source')
+        verbose_name_plural = _('Interactive sources')
 
 
 class StagingFolderSource(InteractiveSource):
     is_interactive = True
     source_type = SOURCE_CHOICE_STAGING
 
-    folder_path = models.CharField(max_length=255, verbose_name=_(u'Folder path'), help_text=_(u'Server side filesystem path.'))
-    preview_width = models.IntegerField(verbose_name=_(u'Preview width'), help_text=_(u'Width value to be passed to the converter backend.'))
-    preview_height = models.IntegerField(blank=True, null=True, verbose_name=_(u'Preview height'), help_text=_(u'Height value to be passed to the converter backend.'))
-    uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
-    delete_after_upload = models.BooleanField(default=True, verbose_name=_(u'Delete after upload'), help_text=_(u'Delete the file after is has been successfully uploaded.'))
+    folder_path = models.CharField(max_length=255, verbose_name=_('Folder path'), help_text=_('Server side filesystem path.'))
+    preview_width = models.IntegerField(verbose_name=_('Preview width'), help_text=_('Width value to be passed to the converter backend.'))
+    preview_height = models.IntegerField(blank=True, null=True, verbose_name=_('Preview height'), help_text=_('Height value to be passed to the converter backend.'))
+    uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_('Uncompress'), help_text=_('Whether to expand or not compressed archives.'))
+    delete_after_upload = models.BooleanField(default=True, verbose_name=_('Delete after upload'), help_text=_('Delete the file after is has been successfully uploaded.'))
 
     def get_preview_size(self):
         dimensions = []
@@ -120,7 +120,7 @@ class StagingFolderSource(InteractiveSource):
             for entry in sorted([os.path.normcase(f) for f in os.listdir(self.folder_path) if os.path.isfile(os.path.join(self.folder_path, f))]):
                 yield self.get_file(filename=entry)
         except OSError as exception:
-            raise Exception(_(u'Unable get list of staging files: %s') % exception)
+            raise Exception(_('Unable get list of staging files: %s') % exception)
 
     def get_upload_file_object(self, form_data):
         staging_file = self.get_file(encoded_filename=form_data['staging_file_id'])
@@ -131,11 +131,11 @@ class StagingFolderSource(InteractiveSource):
             try:
                 upload_file_object.extra_data.delete()
             except Exception as exception:
-                raise Exception(_(u'Error deleting staging file; %s') % exception)
+                raise Exception(_('Error deleting staging file; %s') % exception)
 
     class Meta:
-        verbose_name = _(u'Staging folder')
-        verbose_name_plural = _(u'Staging folders')
+        verbose_name = _('Staging folder')
+        verbose_name_plural = _('Staging folders')
 
 
 class WebFormSource(InteractiveSource):
@@ -143,23 +143,23 @@ class WebFormSource(InteractiveSource):
     source_type = SOURCE_CHOICE_WEB_FORM
 
     # TODO: unify uncompress as an InteractiveSource field
-    uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_(u'Uncompress'), help_text=_(u'Whether to expand or not compressed archives.'))
+    uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_('Uncompress'), help_text=_('Whether to expand or not compressed archives.'))
     # Default path
 
     def get_upload_file_object(self, form_data):
         return SourceUploadedFile(source=self, file=form_data['file'])
 
     class Meta:
-        verbose_name = _(u'Web form')
-        verbose_name_plural = _(u'Web forms')
+        verbose_name = _('Web form')
+        verbose_name_plural = _('Web forms')
 
 
 class OutOfProcessSource(Source):
     is_interactive = False
 
     class Meta:
-        verbose_name = _(u'Out of process')
-        verbose_name_plural = _(u'Out of process')
+        verbose_name = _('Out of process')
+        verbose_name_plural = _('Out of process')
 
 
 class IntervalBaseModel(OutOfProcessSource):
@@ -337,7 +337,7 @@ class IMAPEmail(EmailBaseModel):
 class WatchFolderSource(IntervalBaseModel):
     source_type = SOURCE_CHOICE_WATCH
 
-    folder_path = models.CharField(max_length=255, verbose_name=_(u'Folder path'), help_text=_(u'Server side filesystem path.'))
+    folder_path = models.CharField(max_length=255, verbose_name=_('Folder path'), help_text=_('Server side filesystem path.'))
 
     def check_source(self):
         for file_name in os.listdir(self.folder_path):
@@ -349,12 +349,12 @@ class WatchFolderSource(IntervalBaseModel):
                     os.unlink(full_path)
 
     class Meta:
-        verbose_name = _(u'Watch folder')
-        verbose_name_plural = _(u'Watch folders')
+        verbose_name = _('Watch folder')
+        verbose_name_plural = _('Watch folders')
 
 
 class ArgumentsValidator(object):
-    message = _(u'Enter a valid value.')
+    message = _('Enter a valid value.')
     code = 'invalid'
 
     def __init__(self, message=None, code=None):
@@ -382,9 +382,9 @@ class SourceTransformation(models.Model):
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
-    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'Order'), db_index=True)
-    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'Transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'Arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: %s') % u'{\'degrees\':90}', validators=[ArgumentsValidator()])
+    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_('Order'), db_index=True)
+    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
+    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: %s') % '{\'degrees\':90}', validators=[ArgumentsValidator()])
 
     objects = models.Manager()
     transformations = SourceTransformationManager()
@@ -394,5 +394,5 @@ class SourceTransformation(models.Model):
 
     class Meta:
         ordering = ('order',)
-        verbose_name = _(u'Document source transformation')
-        verbose_name_plural = _(u'Document source transformations')
+        verbose_name = _('Document source transformation')
+        verbose_name_plural = _('Document source transformations')

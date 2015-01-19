@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes import generic
@@ -11,8 +11,10 @@ from documents.models import Document
 from navigation.api import register_links, register_model_list_columns
 
 from .links import comment_add, comment_delete, comments_for_document
-from .permissions import (PERMISSION_COMMENT_CREATE,
-                          PERMISSION_COMMENT_DELETE, PERMISSION_COMMENT_VIEW)
+from .permissions import (
+    PERMISSION_COMMENT_CREATE, PERMISSION_COMMENT_DELETE,
+    PERMISSION_COMMENT_VIEW
+)
 
 
 Document.add_to_class(
@@ -30,15 +32,15 @@ class_permissions(Document, [PERMISSION_COMMENT_CREATE,
 
 register_model_list_columns(Comment, [
     {
-        'name': _(u'Date'),
+        'name': _('Date'),
         'attribute': 'submit_date'
     },
     {
-        'name': _(u'User'),
+        'name': _('User'),
         'attribute': encapsulate(lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user)
     },
     {
-        'name': _(u'Comment'),
+        'name': _('Comment'),
         'attribute': 'comment'
     }
 ])

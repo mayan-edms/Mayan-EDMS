@@ -1,11 +1,15 @@
-from .forms import (POP3EmailSetupForm, IMAPEmailSetupForm,
-                    StagingFolderSetupForm, StagingUploadForm,
-                    WatchFolderSetupForm, WebFormSetupForm, WebFormUploadForm)
-from .literals import (SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,
-                       SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
-                       SOURCE_CHOICE_WEB_FORM)
-from .models import (IMAPEmail, POP3Email, StagingFolderSource,
-                     WatchFolderSource, WebFormSource)
+from .forms import (
+    POP3EmailSetupForm, IMAPEmailSetupForm,
+    StagingFolderSetupForm, StagingUploadForm, WatchFolderSetupForm,
+    WebFormSetupForm, WebFormUploadForm
+)
+from .literals import (
+    SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3, SOURCE_CHOICE_STAGING,
+    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_WEB_FORM
+)
+from .models import (
+    IMAPEmail, POP3Email, StagingFolderSource, WatchFolderSource, WebFormSource
+)
 
 
 def get_class(source_type):

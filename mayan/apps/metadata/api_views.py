@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
@@ -8,26 +8,25 @@ from rest_framework.response import Response
 
 from acls.models import AccessEntry
 from documents.models import Document, DocumentType
-from documents.permissions import (PERMISSION_DOCUMENT_TYPE_VIEW,
-                                   PERMISSION_DOCUMENT_TYPE_EDIT)
+from documents.permissions import (
+    PERMISSION_DOCUMENT_TYPE_VIEW, PERMISSION_DOCUMENT_TYPE_EDIT
+)
 
 from permissions.models import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import DocumentMetadata, MetadataType
-from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
-                          PERMISSION_METADATA_DOCUMENT_REMOVE,
-                          PERMISSION_METADATA_DOCUMENT_EDIT,
-                          PERMISSION_METADATA_DOCUMENT_VIEW,
-                          PERMISSION_METADATA_TYPE_CREATE,
-                          PERMISSION_METADATA_TYPE_DELETE,
-                          PERMISSION_METADATA_TYPE_EDIT,
-                          PERMISSION_METADATA_TYPE_VIEW)
-from .serializers import (DocumentMetadataSerializer,
-                          DocumentNewMetadataSerializer,
-                          DocumentTypeNewMetadataTypeSerializer,
-                          MetadataTypeSerializer)
+from .permissions import (
+    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_REMOVE,
+    PERMISSION_METADATA_DOCUMENT_EDIT, PERMISSION_METADATA_DOCUMENT_VIEW,
+    PERMISSION_METADATA_TYPE_CREATE, PERMISSION_METADATA_TYPE_DELETE,
+    PERMISSION_METADATA_TYPE_EDIT, PERMISSION_METADATA_TYPE_VIEW
+)
+from .serializers import (
+    DocumentMetadataSerializer, DocumentNewMetadataSerializer,
+    DocumentTypeNewMetadataTypeSerializer, MetadataTypeSerializer
+)
 
 
 class APIMetadataTypeListView(generics.ListCreateAPIView):

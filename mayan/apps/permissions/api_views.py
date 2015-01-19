@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from rest_framework import generics, views
 
 from rest_api.filters import MayanObjectPermissionsFilter

@@ -14,9 +14,10 @@ from django.views.generic import FormView
 
 from acls.models import AccessEntry
 from common.utils import encapsulate, generate_choices_w_labels
-from common.views import (SingleObjectCreateView, SingleObjectDeleteView,
-                          SingleObjectEditView, SingleObjectListView,
-                          assign_remove)
+from common.views import (
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
+    SingleObjectListView, assign_remove
+)
 from common.widgets import two_state_template
 from documents.models import Document
 from permissions.models import Permission
@@ -460,7 +461,7 @@ def setup_workflow_document_types(request, pk):
         remove_method=lambda x: workflow.document_types.remove(x),
         decode_content_type=True,
         extra_context={
-            'main_title': _(u'Document types assigned the workflow: %s') % workflow,
+            'main_title': _('Document types assigned the workflow: %s') % workflow,
             'object': workflow,
         }
     )

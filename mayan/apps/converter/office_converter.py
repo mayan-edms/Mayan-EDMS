@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 import os
@@ -10,53 +10,53 @@ from mimetype.api import get_mimetype
 from .exceptions import OfficeBackendError, UnknownFileFormat
 from .settings import LIBREOFFICE_PATH
 
-CACHED_FILE_SUFFIX = u'_office_converter'
+CACHED_FILE_SUFFIX = '_office_converter'
 
 CONVERTER_OFFICE_FILE_MIMETYPES = [
-    u'application/msword',
-    u'application/mswrite',
-    u'application/mspowerpoint',
-    u'application/msexcel',
-    u'application/pgp-keys',
-    u'application/vnd.ms-excel',
-    u'application/vnd.ms-excel.addin.macroEnabled.12',
-    u'application/vnd.ms-excel.sheet.binary.macroEnabled.12',
-    u'application/vnd.ms-powerpoint',
-    u'application/vnd.oasis.opendocument.chart',
-    u'application/vnd.oasis.opendocument.chart-template',
-    u'application/vnd.oasis.opendocument.formula',
-    u'application/vnd.oasis.opendocument.formula-template',
-    u'application/vnd.oasis.opendocument.graphics',
-    u'application/vnd.oasis.opendocument.graphics-template',
-    u'application/vnd.oasis.opendocument.image',
-    u'application/vnd.oasis.opendocument.image-template',
-    u'application/vnd.oasis.opendocument.presentation',
-    u'application/vnd.oasis.opendocument.presentation-template',
-    u'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    u'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
-    u'application/vnd.openxmlformats-officedocument.presentationml.template',
-    u'application/vnd.openxmlformats-officedocument.presentationml.slideshow',
-    u'application/vnd.openxmlformats-officedocument.presentationml.presentation',
-    u'application/vnd.openxmlformats-officedocument.presentationml.slide',
-    u'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
-    u'application/vnd.openxmlformats-officedocument.wordprocessingml.template',
-    u'application/vnd.oasis.opendocument.spreadsheet',
-    u'application/vnd.oasis.opendocument.spreadsheet-template',
-    u'application/vnd.oasis.opendocument.text',
-    u'application/vnd.oasis.opendocument.text-master',
-    u'application/vnd.oasis.opendocument.text-template',
-    u'application/vnd.oasis.opendocument.text-web',
-    u'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-    u'application/vnd.ms-office',
-    u'application/xml',
-    u'text/x-c',
-    u'text/x-c++',
-    u'text/x-pascal',
-    u'text/x-msdos-batch',
-    u'text/x-python',
-    u'text/x-shellscript',
-    u'text/plain',
-    u'text/rtf',
+    'application/msword',
+    'application/mswrite',
+    'application/mspowerpoint',
+    'application/msexcel',
+    'application/pgp-keys',
+    'application/vnd.ms-excel',
+    'application/vnd.ms-excel.addin.macroEnabled.12',
+    'application/vnd.ms-excel.sheet.binary.macroEnabled.12',
+    'application/vnd.ms-powerpoint',
+    'application/vnd.oasis.opendocument.chart',
+    'application/vnd.oasis.opendocument.chart-template',
+    'application/vnd.oasis.opendocument.formula',
+    'application/vnd.oasis.opendocument.formula-template',
+    'application/vnd.oasis.opendocument.graphics',
+    'application/vnd.oasis.opendocument.graphics-template',
+    'application/vnd.oasis.opendocument.image',
+    'application/vnd.oasis.opendocument.image-template',
+    'application/vnd.oasis.opendocument.presentation',
+    'application/vnd.oasis.opendocument.presentation-template',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.template',
+    'application/vnd.openxmlformats-officedocument.presentationml.template',
+    'application/vnd.openxmlformats-officedocument.presentationml.slideshow',
+    'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+    'application/vnd.openxmlformats-officedocument.presentationml.slide',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    'application/vnd.openxmlformats-officedocument.wordprocessingml.template',
+    'application/vnd.oasis.opendocument.spreadsheet',
+    'application/vnd.oasis.opendocument.spreadsheet-template',
+    'application/vnd.oasis.opendocument.text',
+    'application/vnd.oasis.opendocument.text-master',
+    'application/vnd.oasis.opendocument.text-template',
+    'application/vnd.oasis.opendocument.text-web',
+    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    'application/vnd.ms-office',
+    'application/xml',
+    'text/x-c',
+    'text/x-c++',
+    'text/x-pascal',
+    'text/x-msdos-batch',
+    'text/x-python',
+    'text/x-shellscript',
+    'text/plain',
+    'text/rtf',
 ]
 
 logger = logging.getLogger(__name__)
@@ -88,7 +88,7 @@ class OfficeConverter(object):
 
         if self.mimetype in CONVERTER_OFFICE_FILE_MIMETYPES:
             # Cache results of conversion
-            self.output_filepath = os.path.join(TEMPORARY_DIRECTORY, u''.join([self.input_filepath, CACHED_FILE_SUFFIX]))
+            self.output_filepath = os.path.join(TEMPORARY_DIRECTORY, ''.join([self.input_filepath, CACHED_FILE_SUFFIX]))
             self.exists = os.path.exists(self.output_filepath)
             if not self.exists:
                 try:
@@ -122,11 +122,11 @@ class OfficeConverterBackendDirect(object):
         command = []
         command.append(self.libreoffice_path)
 
-        command.append(u'--headless')
-        command.append(u'--convert-to')
-        command.append(u'pdf')
+        command.append('--headless')
+        command.append('--convert-to')
+        command.append('pdf')
         command.append(self.input_filepath)
-        command.append(u'--outdir')
+        command.append('--outdir')
         command.append(TEMPORARY_DIRECTORY)
 
         logger.debug('command: %s', command)

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import hashlib
 import logging
@@ -31,7 +31,7 @@ def cache_cleanup(input_filepath, *args, **kwargs):
 
 def create_image_cache_filename(input_filepath, *args, **kwargs):
     if input_filepath:
-        hash_value = HASH_FUNCTION(u''.join([HASH_FUNCTION(smart_str(input_filepath)), unicode(args), unicode(kwargs)]))
+        hash_value = HASH_FUNCTION(''.join([HASH_FUNCTION(smart_str(input_filepath)), unicode(args), unicode(kwargs)]))
         return os.path.join(TEMPORARY_DIRECTORY, hash_value)
     else:
         return None
@@ -71,7 +71,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
         transformations.append(
             {
                 'transformation': TRANSFORMATION_RESIZE,
-                'arguments': dict(zip([u'width', u'height'], size.split(DIMENSION_SEPARATOR)))
+                'arguments': dict(zip(['width', 'height'], size.split(DIMENSION_SEPARATOR)))
             }
         )
 

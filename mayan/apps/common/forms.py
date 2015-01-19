@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import warnings
 import os
@@ -95,7 +95,7 @@ class ChoiceForm(forms.Form):
     """
     def __init__(self, *args, **kwargs):
         choices = kwargs.pop('choices', [])
-        label = kwargs.pop('label', _(u'Selection'))
+        label = kwargs.pop('label', _('Selection'))
         super(ChoiceForm, self).__init__(*args, **kwargs)
         self.fields['selection'].choices = choices
         self.fields['selection'].label = label
@@ -140,15 +140,15 @@ class EmailAuthenticationForm(forms.Form):
     """
     A form to use email address authentication
     """
-    email = forms.CharField(label=_(u'Email'), max_length=254,
+    email = forms.CharField(label=_('Email'), max_length=254,
         widget=EmailInput()
     )
-    password = forms.CharField(label=_(u'Password'), widget=forms.PasswordInput)
+    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
 
     error_messages = {
-        'invalid_login': _(u'Please enter a correct email and password. '
-                           u'Note that the password field is case-sensitive.'),
-        'inactive': _(u'This account is inactive.'),
+        'invalid_login': _('Please enter a correct email and password. '
+                           'Note that the password field is case-sensitive.'),
+        'inactive': _('This account is inactive.'),
     }
 
     def __init__(self, request=None, *args, **kwargs):
@@ -193,7 +193,7 @@ class EmailAuthenticationForm(forms.Form):
 
 class FileDisplayForm(forms.Form):
     text = forms.CharField(
-        label='',  # _(u'Text'),
+        label='',  # _('Text'),
         widget=forms.widgets.Textarea(
             attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
         )
@@ -208,5 +208,5 @@ class FileDisplayForm(forms.Form):
 
 
 class LicenseForm(FileDisplayForm):
-    FILENAME = u'LICENSE'
+    FILENAME = 'LICENSE'
     DIRECTORY = []

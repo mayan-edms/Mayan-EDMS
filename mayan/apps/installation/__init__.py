@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.db.utils import DatabaseError
 from django.dispatch import receiver
@@ -35,22 +35,22 @@ def check_first_run():
 
 register_model_list_columns(PropertyNamespace, [
     {
-        'name': _(u'Label'),
+        'name': _('Label'),
         'attribute': 'label'
     },
     {
-        'name': _(u'Items'),
+        'name': _('Items'),
         'attribute': encapsulate(lambda entry: len(entry.get_properties()))
     }
 ])
 
 register_model_list_columns(Property, [
     {
-        'name': _(u'Label'),
+        'name': _('Label'),
         'attribute': 'label'
     },
     {
-        'name': _(u'Value'),
+        'name': _('Value'),
         'attribute': 'value'
     }
 ])

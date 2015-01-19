@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from ast import literal_eval
 
 from django.contrib.contenttypes.models import ContentType

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 
@@ -19,19 +19,19 @@ from rest_api.classes import APIEndPoint
 
 from .api import get_metadata_string
 from .classes import DocumentMetadataHelper
-from .links import (metadata_add, metadata_edit, metadata_multiple_add,
-                    metadata_multiple_edit, metadata_multiple_remove,
-                    metadata_remove, metadata_view,
-                    setup_document_type_metadata,
-                    setup_document_type_metadata_required,
-                    setup_metadata_type_create, setup_metadata_type_delete,
-                    setup_metadata_type_edit, setup_metadata_type_list,
-                    link_documents_missing_required_metadata)
+from .links import (
+    metadata_add, metadata_edit, metadata_multiple_add, metadata_multiple_edit,
+    metadata_multiple_remove, metadata_remove, metadata_view,
+    setup_document_type_metadata, setup_document_type_metadata_required,
+    setup_metadata_type_create, setup_metadata_type_delete,
+    setup_metadata_type_edit, setup_metadata_type_list,
+    link_documents_missing_required_metadata
+)
 from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
-from .permissions import (PERMISSION_METADATA_DOCUMENT_ADD,
-                          PERMISSION_METADATA_DOCUMENT_EDIT,
-                          PERMISSION_METADATA_DOCUMENT_REMOVE,
-                          PERMISSION_METADATA_DOCUMENT_VIEW)
+from .permissions import (
+    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,
+    PERMISSION_METADATA_DOCUMENT_REMOVE, PERMISSION_METADATA_DOCUMENT_VIEW
+)
 from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 
 logger = logging.getLogger(__name__)
@@ -83,7 +83,7 @@ class_permissions(Document, [
 
 register_model_list_columns(Document, [
     {
-        'name': _(u'Metadata'), 'attribute': encapsulate(lambda x: get_metadata_string(x))
+        'name': _('Metadata'), 'attribute': encapsulate(lambda x: get_metadata_string(x))
     },
 ])
 

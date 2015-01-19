@@ -1,17 +1,18 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django import forms
 from django.utils.encoding import force_unicode
 from django.utils.html import conditional_escape
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
+from django.utils.translation import ugettext_lazy as _, ugettext
 
 from common.forms import DetailForm
 from common.widgets import TextAreaDiv
 
-from .models import (Document, DocumentType, DocumentPage,
-                     DocumentPageTransformation, DocumentTypeFilename)
+from .models import (
+    Document, DocumentType, DocumentPage, DocumentPageTransformation,
+    DocumentTypeFilename
+)
 from .literals import DEFAULT_ZIP_FILENAME
 from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
 
@@ -42,7 +43,7 @@ class DocumentPageForm(DetailForm):
         })
 
     page_image = forms.CharField(
-        label=_(u'Page image'), widget=DocumentPageImageWidget()
+        label=_('Page image'), widget=DocumentPageImageWidget()
     )
 
 
@@ -52,7 +53,7 @@ class DocumentPageForm_text(DetailForm):
         fields = ('page_label', 'content')
 
     content = forms.CharField(
-        label=_(u'Contents'),
+        label=_('Contents'),
         widget=forms.widgets.Textarea(attrs={
             'rows': 18, 'cols': 80, 'readonly': 'readonly'
         }))
@@ -85,9 +86,9 @@ class DocumentPreviewForm(forms.Form):
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = document
         try:
-            self.fields['preview'].label = _(u'Document pages (%d)') % document.page_count
+            self.fields['preview'].label = _('Document pages (%d)') % document.page_count
         except AttributeError:
-            self.fields['preview'].label = _(u'Document pages (%d)') % 0
+            self.fields['preview'].label = _('Document pages (%d)') % 0
 
     preview = forms.CharField(widget=DocumentPagesCarouselWidget())
 
@@ -114,7 +115,7 @@ class DocumentForm(forms.ModelForm):
             self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
                 queryset=filenames_qs,
                 required=False,
-                label=_(u'Quick document rename'))
+                label=_('Quick document rename'))
 
 
 class DocumentPropertiesForm(DetailForm):
@@ -135,7 +136,7 @@ class DocumentContentForm(forms.Form):
         self.document = kwargs.pop('document', None)
         super(DocumentContentForm, self).__init__(*args, **kwargs)
         content = []
-        self.fields['contents'].initial = u''
+        self.fields['contents'].initial = ''
         try:
             document_pages = self.document.pages.all()
         except AttributeError:
@@ -144,12 +145,12 @@ class DocumentContentForm(forms.Form):
         for page in document_pages:
             if page.content:
                 content.append(conditional_escape(force_unicode(page.content)))
-                content.append(u'\n\n\n<hr/><div class="document-page-content-divider">- %s -</div><hr/>\n\n\n' % (ugettext(u'Page %(page_number)d') % {'page_number': page.page_number}))
+                content.append('\n\n\n<hr/><div class="document-page-content-divider">- %s -</div><hr/>\n\n\n' % (ugettext('Page %(page_number)d') % {'page_number': page.page_number}))
 
-        self.fields['contents'].initial = mark_safe(u''.join(content))
+        self.fields['contents'].initial = mark_safe(''.join(content))
 
     contents = forms.CharField(
-        label=_(u'Contents'),
+        label=_('Contents'),
         widget=TextAreaDiv()
     )
 
@@ -159,11 +160,11 @@ class DocumentTypeSelectForm(forms.Form):
     Form to select the document type of a document to be created, used
     as form #1 in the document creation wizard
     """
-    document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=(u'Document type'))
+    document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=('Document type'))
 
 
 class PrintForm(forms.Form):
-    page_range = forms.CharField(label=_(u'Page range'), required=False)
+    page_range = forms.CharField(label=_('Page range'), required=False)
 
 
 class DocumentTypeForm(forms.ModelForm):
@@ -193,8 +194,8 @@ class DocumentTypeFilenameForm_create(forms.ModelForm):
 
 
 class DocumentDownloadForm(forms.Form):
-    compressed = forms.BooleanField(label=_(u'Compress'), required=False, help_text=_(u'Download the document in the original format or in a compressed manner.  This option is selectable only when downloading one document, for multiple documents, the bundle will always be downloads as a compressed file.'))
-    zip_filename = forms.CharField(initial=DEFAULT_ZIP_FILENAME, label=_(u'Compressed filename'), required=False, help_text=_(u'The filename of the compressed file that will contain the documents to be downloaded, if the previous option is selected.'))
+    compressed = forms.BooleanField(label=_('Compress'), required=False, help_text=_('Download the document in the original format or in a compressed manner.  This option is selectable only when downloading one document, for multiple documents, the bundle will always be downloads as a compressed file.'))
+    zip_filename = forms.CharField(initial=DEFAULT_ZIP_FILENAME, label=_('Compressed filename'), required=False, help_text=_('The filename of the compressed file that will contain the documents to be downloaded, if the previous option is selected.'))
 
     def __init__(self, *args, **kwargs):
         self.document_versions = kwargs.pop('document_versions', None)

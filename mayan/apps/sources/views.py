@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.contrib import messages
@@ -15,22 +15,29 @@ from common.models import SharedUploadedFile
 from common.utils import encapsulate
 from common.views import MultiFormView
 from documents.models import DocumentType, Document
-from documents.permissions import (PERMISSION_DOCUMENT_CREATE,
-                                   PERMISSION_DOCUMENT_NEW_VERSION)
+from documents.permissions import (
+    PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION
+)
 from documents.tasks import task_upload_new_version
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
 from permissions.models import Permission
 
-from .forms import (NewDocumentForm, NewVersionForm, SourceTransformationForm,
-                    SourceTransformationForm_create)
-from .literals import (SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM,
-                       SOURCE_UNCOMPRESS_CHOICE_ASK, SOURCE_UNCOMPRESS_CHOICE_Y)
-from .models import (InteractiveSource, Source, StagingFolderSource,
-                     SourceTransformation, WebFormSource)
-from .permissions import (PERMISSION_SOURCES_SETUP_CREATE,
-                          PERMISSION_SOURCES_SETUP_DELETE,
-                          PERMISSION_SOURCES_SETUP_EDIT,
-                          PERMISSION_SOURCES_SETUP_VIEW)
+from .forms import (
+    NewDocumentForm, NewVersionForm, SourceTransformationForm,
+    SourceTransformationForm_create
+)
+from .literals import (
+    SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_ASK,
+    SOURCE_UNCOMPRESS_CHOICE_Y
+)
+from .models import (
+    InteractiveSource, Source, StagingFolderSource, SourceTransformation,
+    WebFormSource
+)
+from .permissions import (
+    PERMISSION_SOURCES_SETUP_CREATE, PERMISSION_SOURCES_SETUP_DELETE,
+    PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_VIEW
+)
 from .tasks import task_source_upload_document
 from .utils import get_class, get_form_class, get_upload_form_class
 
@@ -56,10 +63,10 @@ def conditional_highlight_factory(obj):
 
 def get_tab_link_for_source(source, document=None):
     if document:
-        view = u'sources:upload_version'
+        view = 'sources:upload_version'
         args = [document.pk, source.pk]
     else:
-        view = u'sources:upload_interactive'
+        view = 'sources:upload_interactive'
         args = [source.pk]
 
     return {
@@ -102,7 +109,7 @@ class UploadBaseView(MultiFormView):
             self.source = InteractiveSource.objects.filter(enabled=True).select_subclasses().first()
 
         if InteractiveSource.objects.filter(enabled=True).count() == 0:
-            messages.error(request, _(u'No interactive document sources have been defined or none have been enabled, create one before proceeding.'))
+            messages.error(request, _('No interactive document sources have been defined or none have been enabled, create one before proceeding.'))
             return HttpResponseRedirect(reverse('sources:setup_source_list'))
 
         return super(UploadBaseView, self).dispatch(request, *args, **kwargs)
@@ -130,7 +137,7 @@ class UploadBaseView(MultiFormView):
                     {
                         'name': 'main/generic_list_subtemplate.html',
                         'context': {
-                            'title': _(u'Files in staging path'),
+                            'title': _('Files in staging path'),
                             'object_list': staging_filelist,
                             'hide_link': True,
                         }
@@ -214,7 +221,7 @@ class UploadInteractiveView(UploadBaseView):
             source_id=self.source.pk,
             user_id=user_id,
         ), queue='uploads')
-        messages.success(self.request, _(u'New document queued for uploaded and will be available shortly.'))
+        messages.success(self.request, _('New document queued for uploaded and will be available shortly.'))
         return HttpResponseRedirect(self.request.get_full_path())
 
     def create_source_form_form(self, **kwargs):
@@ -239,7 +246,7 @@ class UploadInteractiveView(UploadBaseView):
 
     def get_context_data(self, **kwargs):
         context = super(UploadInteractiveView, self).get_context_data(**kwargs)
-        context['title'] = _(u'Upload a local document from source: %s') % self.source.title
+        context['title'] = _('Upload a local document from source: %s') % self.source.title
 
         context.update(
             {
@@ -247,15 +254,15 @@ class UploadInteractiveView(UploadBaseView):
                     {
                         'name': 'main/generic_subtemplate.html',
                         'context': {
-                            'title': _(u'Current document type'),
-                            'paragraphs': [self.document_type if self.document_type else _(u'None')],
+                            'title': _('Current document type'),
+                            'paragraphs': [self.document_type if self.document_type else _('None')],
                             'side_bar': True,
                         }
                     },
                     {
                         'name': 'main/generic_subtemplate.html',
                         'context': {
-                            'title': _(u'Current metadata'),
+                            'title': _('Current metadata'),
                             'paragraphs': metadata_repr_as_list(decode_metadata_from_url(self.request.GET)),
                             'side_bar': True,
                         }
@@ -303,7 +310,7 @@ class UploadInteractiveVersionView(UploadBaseView):
             comment=forms['document_form'].cleaned_data.get('comment')
         ), queue='uploads')
 
-        messages.success(self.request, _(u'New document version queued for uploaded and will be available shortly.'))
+        messages.success(self.request, _('New document version queued for uploaded and will be available shortly.'))
         return HttpResponseRedirect(reverse('documents:document_version_list', args=[self.document.pk]))
 
     def create_source_form_form(self, **kwargs):
@@ -329,7 +336,7 @@ class UploadInteractiveVersionView(UploadBaseView):
     def get_context_data(self, **kwargs):
         context = super(UploadInteractiveVersionView, self).get_context_data(**kwargs)
         context['object'] = self.document
-        context['title'] = _(u'Upload a new version from source: %s') % self.source.title
+        context['title'] = _('Upload a new version from source: %s') % self.source.title
 
         return context
 
@@ -345,9 +352,9 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
     if request.method == 'POST':
         try:
             staging_file.delete()
-            messages.success(request, _(u'Staging file delete successfully.'))
+            messages.success(request, _('Staging file delete successfully.'))
         except Exception as exception:
-            messages.error(request, _(u'Staging file delete error; %s.') % exception)
+            messages.error(request, _('Staging file delete error; %s.') % exception)
         return HttpResponseRedirect(next)
 
     results = get_active_tab_links()
@@ -400,15 +407,15 @@ def setup_source_edit(request, source_id):
         if form.is_valid():
             try:
                 form.save()
-                messages.success(request, _(u'Source edited successfully'))
+                messages.success(request, _('Source edited successfully'))
                 return HttpResponseRedirect(next)
             except Exception as exception:
-                messages.error(request, _(u'Error editing source; %s') % exception)
+                messages.error(request, _('Error editing source; %s') % exception)
     else:
         form = form_class(instance=source)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'Edit source: %s') % source,
+        'title': _('Edit source: %s') % source,
         'form': form,
         'source': source,
         'navigation_object_name': 'source',
@@ -427,15 +434,15 @@ def setup_source_delete(request, source_id):
     if request.method == 'POST':
         try:
             source.delete()
-            messages.success(request, _(u'Source "%s" deleted successfully.') % source)
+            messages.success(request, _('Source "%s" deleted successfully.') % source)
         except Exception as exception:
-            messages.error(request, _(u'Error deleting source "%(source)s": %(error)s') % {
+            messages.error(request, _('Error deleting source "%(source)s": %(error)s') % {
                 'source': source, 'error': exception
             })
         return HttpResponseRedirect(redirect_view)
 
     context = {
-        'title': _(u'Are you sure you wish to delete the source: %s?') % source,
+        'title': _('Are you sure you wish to delete the source: %s?') % source,
         'source': source,
         'navigation_object_name': 'source',
         'delete_view': True,
@@ -458,15 +465,15 @@ def setup_source_create(request, source_type):
         if form.is_valid():
             try:
                 form.save()
-                messages.success(request, _(u'Source created successfully'))
+                messages.success(request, _('Source created successfully'))
                 return HttpResponseRedirect(reverse('sources:setup_source_list'))
             except Exception as exception:
-                messages.error(request, _(u'Error creating source; %s') % exception)
+                messages.error(request, _('Error creating source; %s') % exception)
     else:
         form = form_class()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'Create new source of type: %s') % cls.class_fullname(),
+        'title': _('Create new source of type: %s') % cls.class_fullname(),
         'form': form,
         'source_type': source_type,
         'navigation_object_name': 'source',
@@ -480,14 +487,14 @@ def setup_source_transformation_list(request, source_id):
 
     context = {
         'object_list': SourceTransformation.transformations.get_for_object(source),
-        'title': _(u'Transformations for: %s') % source.fullname(),
+        'title': _('Transformations for: %s') % source.fullname(),
         'source': source,
         'navigation_object_name': 'source',
         'list_object_variable_name': 'transformation',
         'extra_columns': [
-            {'name': _(u'Order'), 'attribute': 'order'},
-            {'name': _(u'Transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
-            {'name': _(u'Arguments'), 'attribute': 'arguments'}
+            {'name': _('Order'), 'attribute': 'order'},
+            {'name': _('Transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
+            {'name': _('Arguments'), 'attribute': 'arguments'}
         ],
         'hide_link': True,
         'hide_object': True,
@@ -509,21 +516,21 @@ def setup_source_transformation_edit(request, transformation_id):
         if form.is_valid():
             try:
                 form.save()
-                messages.success(request, _(u'Source transformation edited successfully'))
+                messages.success(request, _('Source transformation edited successfully'))
                 return HttpResponseRedirect(next)
             except Exception as exception:
-                messages.error(request, _(u'Error editing source transformation; %s') % exception)
+                messages.error(request, _('Error editing source transformation; %s') % exception)
     else:
         form = SourceTransformationForm(instance=source_transformation)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'Edit transformation: %s') % source_transformation,
+        'title': _('Edit transformation: %s') % source_transformation,
         'form': form,
         'source': source_transformation.content_object,
         'transformation': source_transformation,
         'navigation_object_list': [
-            {'object': 'source', 'name': _(u'Source')},
-            {'object': 'transformation', 'name': _(u'Transformation')}
+            {'object': 'source', 'name': _('Source')},
+            {'object': 'transformation', 'name': _('Transformation')}
         ],
         'next': next,
     }, context_instance=RequestContext(request))
@@ -539,9 +546,9 @@ def setup_source_transformation_delete(request, transformation_id):
     if request.method == 'POST':
         try:
             source_transformation.delete()
-            messages.success(request, _(u'Source transformation deleted successfully.'))
+            messages.success(request, _('Source transformation deleted successfully.'))
         except Exception as exception:
-            messages.error(request, _(u'Error deleting source transformation; %(error)s') % {
+            messages.error(request, _('Error deleting source transformation; %(error)s') % {
                 'error': exception}
             )
         return HttpResponseRedirect(redirect_view)
@@ -551,10 +558,10 @@ def setup_source_transformation_delete(request, transformation_id):
         'transformation': source_transformation,
         'source': source_transformation.content_object,
         'navigation_object_list': [
-            {'object': 'source', 'name': _(u'Source')},
-            {'object': 'transformation', 'name': _(u'Transformation')}
+            {'object': 'source', 'name': _('Source')},
+            {'object': 'transformation', 'name': _('Transformation')}
         ],
-        'title': _(u'Are you sure you wish to delete source transformation "%(transformation)s"') % {
+        'title': _('Are you sure you wish to delete source transformation "%(transformation)s"') % {
             'transformation': source_transformation.get_transformation_display(),
         },
         'previous': previous,
@@ -575,10 +582,10 @@ def setup_source_transformation_create(request, source_id):
                 source_tranformation = form.save(commit=False)
                 source_tranformation.content_object = source
                 source_tranformation.save()
-                messages.success(request, _(u'Source transformation created successfully'))
+                messages.success(request, _('Source transformation created successfully'))
                 return HttpResponseRedirect(redirect_view)
             except Exception as exception:
-                messages.error(request, _(u'Error creating source transformation; %s') % exception)
+                messages.error(request, _('Error creating source transformation; %s') % exception)
     else:
         form = SourceTransformationForm_create()
 
@@ -586,5 +593,5 @@ def setup_source_transformation_create(request, source_id):
         'form': form,
         'source': source,
         'navigation_object_name': 'source',
-        'title': _(u'Create new transformation for source: %s') % source,
+        'title': _('Create new transformation for source: %s') % source,
     }, context_instance=RequestContext(request))

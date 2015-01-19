@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 import os
@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 
 
 def urlquote(link=None, get=None):
-    u"""
+    """
     This method does both: urlquote() and urlencode()
 
     urlqoute(): Quote special characters in 'link'
@@ -44,7 +44,7 @@ def urlquote(link=None, get=None):
         assert not get, get
         get = link
         link = ''
-    assert isinstance(get, dict), u'wrong type "%s", dict required' % type(get)
+    assert isinstance(get, dict), 'wrong type "%s", dict required' % type(get)
     # assert not (link.startswith('http://') or link.startswith('https://')), \
     #    'This method should only quote the url path.
     #    It should not start with http(s)://  (%s)' % (
@@ -54,8 +54,8 @@ def urlquote(link=None, get=None):
         if isinstance(get, MultiValueDict):
             get = get.lists()
         if link:
-            link = u'%s?' % django_urlquote(link)
-        return u'%s%s' % (link, django_urlencode(get, doseq=True))
+            link = '%s?' % django_urlquote(link)
+        return '%s%s' % (link, django_urlencode(get, doseq=True))
     else:
         return django_urlquote(link)
 
@@ -67,7 +67,7 @@ def return_attrib(obj, attrib, arguments=None):
         elif isinstance(obj, types.DictType) or isinstance(obj, types.DictionaryType):
             return obj[attrib]
         else:
-            result = reduce(getattr, attrib.split(u'.'), obj)
+            result = reduce(getattr, attrib.split('.'), obj)
             if isinstance(result, types.MethodType):
                 if arguments:
                     return result(**arguments)
@@ -86,8 +86,8 @@ def return_attrib(obj, attrib, arguments=None):
 # http://snippets.dzone.com/user/jakob
 def pretty_size(size, suffixes=None):
     suffixes = suffixes or [
-        (u'B', 1024L), (u'K', 1048576L), (u'M', 1073741824L),
-        (u'G', 1099511627776L), (u'T', 1125899906842624L)
+        ('B', 1024L), ('K', 1048576L), ('M', 1073741824L),
+        ('G', 1099511627776L), ('T', 1125899906842624L)
     ]
 
     for suf, lim in suffixes:
@@ -104,20 +104,20 @@ def pretty_size_10(size):
     return pretty_size(
         size,
         suffixes=[
-            (u'B', 1000L), (u'K', 1000000L), (u'M', 1000000000L),
-            (u'G', 1000000000000L), (u'T', 1000000000000000L)
+            ('B', 1000L), ('K', 1000000L), ('M', 1000000000L),
+            ('G', 1000000000000L), ('T', 1000000000000000L)
         ])
 
 
 def return_type(value):
     if isinstance(value, types.FunctionType):
-        return value.__doc__ if value.__doc__ else _(u'Function found')
+        return value.__doc__ if value.__doc__ else _('Function found')
     elif isinstance(value, types.ClassType):
-        return u'%s.%s' % (value.__class__.__module__, value.__class__.__name__)
+        return '%s.%s' % (value.__class__.__module__, value.__class__.__name__)
     elif isinstance(value, types.TypeType):
-        return u'%s.%s' % (value.__module__, value.__name__)
+        return '%s.%s' % (value.__module__, value.__name__)
     elif isinstance(value, types.DictType) or isinstance(value, types.DictionaryType):
-        return u', '.join(list(value))
+        return ', '.join(list(value))
     else:
         return value
 
@@ -125,8 +125,8 @@ def return_type(value):
 # http://stackoverflow.com/questions/4248399/page-range-for-printing-algorithm
 def parse_range(astr):
     result = set()
-    for part in astr.split(u','):
-        x = part.split(u'-')
+    for part in astr.split(','):
+        x = part.split('-')
         result.update(range(int(x[0]), int(x[-1]) + 1))
     return sorted(result)
 
@@ -140,10 +140,10 @@ def generate_choices_w_labels(choices, display_object_type=True):
             label = choice.get_full_name() if choice.get_full_name() else choice
 
         if display_object_type:
-            verbose_name = unicode(getattr(choice._meta, u'verbose_name', ct.name))
-            results.append((u'%s,%s' % (ct.model, choice.pk), u'%s: %s' % (verbose_name, label)))
+            verbose_name = unicode(getattr(choice._meta, 'verbose_name', ct.name))
+            results.append(('%s,%s' % (ct.model, choice.pk), '%s: %s' % (verbose_name, label)))
         else:
-            results.append((u'%s,%s' % (ct.model, choice.pk), u'%s' % (label)))
+            results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
 
     # Sort results by the label not the key value
     return sorted(results, key=lambda x: x[1])
@@ -162,9 +162,9 @@ def get_object_name(obj, display_object_type=True):
         except AttributeError:
             verbose_name = ct_label
 
-        return u'%s: %s' % (verbose_name, label)
+        return '%s: %s' % (verbose_name, label)
     else:
-        return u'%s' % (label)
+        return '%s' % (label)
 
 
 def validate_path(path):

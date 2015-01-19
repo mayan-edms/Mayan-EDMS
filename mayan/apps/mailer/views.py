@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.contrib.sites.models import Site
@@ -15,8 +15,9 @@ from documents.models import Document
 from permissions.models import Permission
 
 from .forms import DocumentMailForm
-from .permissions import (PERMISSION_MAILING_LINK,
-                          PERMISSION_MAILING_SEND_DOCUMENT)
+from .permissions import (
+    PERMISSION_MAILING_LINK, PERMISSION_MAILING_SEND_DOCUMENT
+)
 from .tasks import task_send_document
 
 

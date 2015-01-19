@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
@@ -12,8 +12,7 @@ from documents.models import Document
 from documents.views import document_list
 
 from acls.models import AccessEntry
-from common.utils import get_object_name
-from common.utils import encapsulate
+from common.utils import encapsulate, get_object_name
 from permissions.models import Permission
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
@@ -29,12 +28,12 @@ def checkout_list(request):
     return document_list(
         request,
         object_list=DocumentCheckout.objects.checked_out_documents(),
-        title=_(u'Documents checked out'),
+        title=_('Documents checked out'),
         extra_context={
             'extra_columns': [
-                {'name': _(u'Checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user_object, display_object_type=False))},
-                {'name': _(u'Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
-                {'name': _(u'Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
+                {'name': _('Checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user_object, display_object_type=False))},
+                {'name': _('Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
+                {'name': _('Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
             ],
         }
     )
@@ -47,19 +46,19 @@ def checkout_info(request, document_pk):
     except PermissionDenied:
         AccessEntry.objects.check_accesses([PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN], request.user, document)
 
-    paragraphs = [_(u'Document status: %s') % STATE_LABELS[document.checkout_state()]]
+    paragraphs = [_('Document status: %s') % STATE_LABELS[document.checkout_state()]]
 
     if document.is_checked_out():
         checkout_info = document.checkout_info()
-        paragraphs.append(_(u'User: %s') % get_object_name(checkout_info.user_object, display_object_type=False))
-        paragraphs.append(_(u'Check out time: %s') % checkout_info.checkout_datetime)
-        paragraphs.append(_(u'Check out expiration: %s') % checkout_info.expiration_datetime)
-        paragraphs.append(_(u'New versions allowed: %s') % (_(u'Yes') if not checkout_info.block_new_version else _(u'No')))
+        paragraphs.append(_('User: %s') % get_object_name(checkout_info.user_object, display_object_type=False))
+        paragraphs.append(_('Check out time: %s') % checkout_info.checkout_datetime)
+        paragraphs.append(_('Check out expiration: %s') % checkout_info.expiration_datetime)
+        paragraphs.append(_('New versions allowed: %s') % (_('Yes') if not checkout_info.block_new_version else _('No')))
 
     return render_to_response('main/generic_template.html', {
         'paragraphs': paragraphs,
         'object': document,
-        'title': _(u'Document check out details')
+        'title': _('Document check out details')
     }, context_instance=RequestContext(request))
 
 
@@ -79,12 +78,12 @@ def checkout_document(request, document_pk):
                 document_checkout.document = document
                 document_checkout.save()
             except DocumentAlreadyCheckedOut:
-                messages.error(request, _(u'Document already checked out.'))
+                messages.error(request, _('Document already checked out.'))
                 return HttpResponseRedirect(reverse('checkouts:checkout_info', args=[document.pk]))
             except Exception as exception:
-                messages.error(request, _(u'Error trying to check out document; %s') % exception)
+                messages.error(request, _('Error trying to check out document; %s') % exception)
             else:
-                messages.success(request, _(u'Document "%s" checked out successfully.') % document)
+                messages.success(request, _('Document "%s" checked out successfully.') % document)
                 return HttpResponseRedirect(reverse('checkouts:checkout_info', args=[document.pk]))
     else:
         form = DocumentCheckoutForm(initial={'document': document})
@@ -92,7 +91,7 @@ def checkout_document(request, document_pk):
     return render_to_response('main/generic_form.html', {
         'form': form,
         'object': document,
-        'title': _(u'Document check out')
+        'title': _('Document check out')
     }, context_instance=RequestContext(request))
 
 
@@ -104,7 +103,7 @@ def checkin_document(request, document_pk):
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if not document.is_checked_out():
-        messages.error(request, _(u'Document has not been checked out.'))
+        messages.error(request, _('Document has not been checked out.'))
         return HttpResponseRedirect(previous)
 
     # If the user trying to check in the document is the same as the check out
@@ -125,11 +124,11 @@ def checkin_document(request, document_pk):
         try:
             document.check_in(user=request.user)
         except DocumentNotCheckedOut:
-            messages.error(request, _(u'Document has not been checked out.'))
+            messages.error(request, _('Document has not been checked out.'))
         except Exception as exception:
-            messages.error(request, _(u'Error trying to check in document; %s') % exception)
+            messages.error(request, _('Error trying to check in document; %s') % exception)
         else:
-            messages.success(request, _(u'Document "%s" checked in successfully.') % document)
+            messages.success(request, _('Document "%s" checked in successfully.') % document)
             return HttpResponseRedirect(next)
 
     context = {
@@ -140,9 +139,9 @@ def checkin_document(request, document_pk):
     }
 
     if document.checkout_info().user_object != request.user:
-        context['title'] = _(u'You didn\'t originally checked out this document.  Are you sure you wish to forcefully check in document: %s?') % document
+        context['title'] = _('You didn\'t originally checked out this document.  Are you sure you wish to forcefully check in document: %s?') % document
     else:
-        context['title'] = _(u'Are you sure you wish to check in document: %s?') % document
+        context['title'] = _('Are you sure you wish to check in document: %s?') % document
 
     return render_to_response('main/generic_confirm.html', context,
                               context_instance=RequestContext(request))

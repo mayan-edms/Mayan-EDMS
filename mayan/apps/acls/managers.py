@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
@@ -115,7 +115,7 @@ class AccessEntryManager(models.Manager):
         if self.has_access(permission, actor, obj):
             return True
         else:
-            raise PermissionDenied(ugettext(u'Insufficient access.'))
+            raise PermissionDenied(ugettext('Insufficient access.'))
 
     def check_accesses(self, permission_list, actor, obj):
         """
@@ -127,7 +127,7 @@ class AccessEntryManager(models.Manager):
             if self.has_access(permission, actor, obj):
                 return True
 
-        raise PermissionDenied(ugettext(u'Insufficient access.'))
+        raise PermissionDenied(ugettext('Insufficient access.'))
 
     def get_allowed_class_objects(self, permission, actor, cls, related=None):
         logger.debug('related: %s', related)

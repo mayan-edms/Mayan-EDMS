@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import re
 
 from django.template import (Context, Library, Node, TemplateSyntaxError,

@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from django.core.mail import EmailMultiAlternatives
 
 from documents.models import Document

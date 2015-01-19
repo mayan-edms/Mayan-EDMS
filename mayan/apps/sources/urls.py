@@ -1,9 +1,11 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .api_views import (APIStagingSourceFileView, APIStagingSourceFileImageView,
-                        APIStagingSourceListView, APIStagingSourceView)
+from .api_views import (
+    APIStagingSourceFileView, APIStagingSourceFileImageView,
+    APIStagingSourceListView, APIStagingSourceView
+)
 from .views import UploadInteractiveVersionView, UploadInteractiveView
 from .wizards import DocumentCreateWizard
 

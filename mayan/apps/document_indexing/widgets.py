@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext
 
 from .models import IndexInstanceNode
 
-FOLDER_W_DOCUMENTS = u'folder_page'
-FOLDER_ICON = u'folder'
+FOLDER_W_DOCUMENTS = 'folder_page'
+FOLDER_ICON = 'folder'
 
 
 def index_instance_item_link(index_instance_item):
@@ -17,8 +17,8 @@ def index_instance_item_link(index_instance_item):
         else:
             icon = FOLDER_ICON
     else:
-        icon = u''
-    icon_template = u'<span class="famfam active famfam-%s"></span>' % icon if icon else u''
+        icon = ''
+    icon_template = '<span class="famfam active famfam-%s"></span>' % icon if icon else ''
     return mark_safe('%(icon_template)s<a href="%(url)s">%(text)s</a>' % {
         'url': index_instance_item.get_absolute_url(),
         'icon_template': icon_template,
@@ -34,9 +34,9 @@ def get_instance_link(index_instance_node, text=None, simple=False):
     if simple:
         # Just display the instance's value or overrided text, no
         # HTML anchor
-        template = u'%(value)s'
+        template = '%(value)s'
     else:
-        template = u'<a href="%(url)s">%(value)s</a>'
+        template = '<a href="%(url)s">%(value)s</a>'
 
     return template % {
         'url': index_instance_node.get_absolute_url(),
@@ -62,15 +62,15 @@ def get_breadcrumbs(index_instance, simple=False, single_link=False, include_cou
     output = []
 
     if include_count:
-        output.append(u'(%d)' % index_instance.documents.count())
+        output.append('(%d)' % index_instance.documents.count())
 
     if single_link:
         # Return the entire breadcrumb path as a single HTML anchor
-        output.insert(0, get_instance_link(index_instance_node=index_instance, text=(u' / '.join(result))))
-        return mark_safe(u' '.join(output))
+        output.insert(0, get_instance_link(index_instance_node=index_instance, text=(' / '.join(result))))
+        return mark_safe(' '.join(output))
     else:
-        output.insert(0, u' / '.join(result))
-        return mark_safe(u' '.join(output))
+        output.insert(0, ' / '.join(result))
+        return mark_safe(' '.join(output))
 
 
 def node_level(x):
@@ -78,10 +78,10 @@ def node_level(x):
     Render an indented tree like output for a specific node
     """
     return mark_safe(
-        u''.join(
+        ''.join(
             [
-                u'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (getattr(x, x._mptt_meta.level_attr) - 1),
-                u'' if x.is_root_node() else u'',
+                '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (getattr(x, x._mptt_meta.level_attr) - 1),
+                '' if x.is_root_node() else '',
                 ugettext('Root') if x.is_root_node() else unicode(x)
             ]
         )

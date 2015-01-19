@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from json import dumps, loads
 
@@ -39,15 +39,15 @@ def multi_object_action_view(request):
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     action = request.GET.get('action', None)
-    id_list = u','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
+    id_list = ','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
     items_property_list = [loads(key[11:]) for key in request.GET.keys() if key.startswith('properties_')]
 
     if not action:
-        messages.error(request, _(u'No action selected.'))
+        messages.error(request, _('No action selected.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     if not id_list and not items_property_list:
-        messages.error(request, _(u'Must select at least one item.'))
+        messages.error(request, _('Must select at least one item.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     # Separate redirects to keep backwards compatibility with older
@@ -65,17 +65,17 @@ def multi_object_action_view(request):
 
 
 def get_obj_from_content_type_string(string):
-    model, pk = string.split(u',')
+    model, pk = string.split(',')
     ct = ContentType.objects.get(model=model)
     return ct.get_object_for_this_type(pk=pk)
 
 
 def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title=None, right_list_title=None, decode_content_type=False, extra_context=None, grouped=False):
-    left_list_name = u'left_list'
-    right_list_name = u'right_list'
+    left_list_name = 'left_list'
+    right_list_name = 'right_list'
 
     if request.method == 'POST':
-        if u'%s-submit' % left_list_name in request.POST.keys():
+        if '%s-submit' % left_list_name in request.POST.keys():
             unselected_list = ChoiceForm(request.POST,
                                          prefix=left_list_name,
                                          choices=left_list())
@@ -99,10 +99,10 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(request, _(u'Unable to remove %(selection)s.') % {
+                            messages.error(request, _('Unable to remove %(selection)s.') % {
                                 'selection': label, 'right_list_title': right_list_title})
 
-        elif u'%s-submit' % right_list_name in request.POST.keys():
+        elif '%s-submit' % right_list_name in request.POST.keys():
             selected_list = ChoiceForm(request.POST,
                                        prefix=right_list_name,
                                        choices=right_list())
@@ -124,7 +124,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(request, _(u'Unable to add %(selection)s.') % {
+                            messages.error(request, _('Unable to add %(selection)s.') % {
                                 'selection': label, 'right_list_title': right_list_title})
     unselected_list = ChoiceForm(prefix=left_list_name, choices=left_list())
     selected_list = ChoiceForm(prefix=right_list_name, choices=right_list())
@@ -137,7 +137,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 'context': {
                     'form': unselected_list,
                     'title': left_list_title or ' ',
-                    'submit_label': _(u'Add'),
+                    'submit_label': _('Add'),
                     'submit_icon_famfam': 'add'
                 }
             },
@@ -148,7 +148,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 'context': {
                     'form': selected_list,
                     'title': right_list_title or ' ',
-                    'submit_label': _(u'Remove'),
+                    'submit_label': _('Remove'),
                     'submit_icon_famfam': 'delete'
                 }
             },
@@ -171,7 +171,7 @@ def current_user_details(request):
     return render_to_response(
         'main/generic_form.html', {
             'form': form,
-            'title': _(u'Current user details'),
+            'title': _('Current user details'),
             'read_only': True,
         },
         context_instance=RequestContext(request))
@@ -186,7 +186,7 @@ def current_user_locale_profile_details(request):
     return render_to_response(
         'main/generic_form.html', {
             'form': form,
-            'title': _(u'Current user locale profile details'),
+            'title': _('Current user locale profile details'),
             'read_only': True,
         },
         context_instance=RequestContext(request))
@@ -203,10 +203,10 @@ def current_user_edit(request):
         form = UserForm(instance=request.user, data=request.POST)
         if form.is_valid():
             if User.objects.filter(email=form.cleaned_data['email']).exclude(pk=request.user.pk).count():
-                messages.error(request, _(u'E-mail conflict, another user has that same email.'))
+                messages.error(request, _('E-mail conflict, another user has that same email.'))
             else:
                 form.save()
-                messages.success(request, _(u'Current user\'s details updated.'))
+                messages.success(request, _('Current user\'s details updated.'))
                 return HttpResponseRedirect(next)
     else:
         form = UserForm(instance=request.user)
@@ -215,7 +215,7 @@ def current_user_edit(request):
         'main/generic_form.html', {
             'form': form,
             'next': next,
-            'title': _(u'Edit current user details'),
+            'title': _('Edit current user details'),
         },
         context_instance=RequestContext(request))
 
@@ -238,7 +238,7 @@ def current_user_locale_profile_edit(request):
             else:
                 request.set_cookie(settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language'])
 
-            messages.success(request, _(u'Current user\'s locale profile details updated.'))
+            messages.success(request, _('Current user\'s locale profile details updated.'))
             return HttpResponseRedirect(next)
     else:
         form = LocaleProfileForm(instance=request.user.locale_profile)
@@ -247,7 +247,7 @@ def current_user_locale_profile_edit(request):
         'main/generic_form.html', {
             'form': form,
             'next': next,
-            'title': _(u'Edit current user locale profile details'),
+            'title': _('Edit current user locale profile details'),
         },
         context_instance=RequestContext(request))
 
@@ -278,7 +278,7 @@ def license_view(request):
     return render_to_response(
         'main/generic_detail.html', {
             'form': form,
-            'title': _(u'License'),
+            'title': _('License'),
         },
         context_instance=RequestContext(request))
 
@@ -287,7 +287,7 @@ def password_change_view(request):
     """
     Password change wrapper for better control
     """
-    context = {'title': _(u'Current user password change')}
+    context = {'title': _('Current user password change')}
 
     return password_change(
         request,
@@ -302,7 +302,7 @@ def password_change_done(request):
     View called when the new user password has been accepted
     """
 
-    messages.success(request, _(u'Your password has been successfully changed.'))
+    messages.success(request, _('Your password has been successfully changed.'))
     return redirect('common:current_user_details')
 
 

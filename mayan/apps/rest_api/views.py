@@ -1,5 +1,4 @@
-"""Views file for the rest_api app"""
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 

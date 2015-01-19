@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from documents.models import Document
 
 from .api import index_document

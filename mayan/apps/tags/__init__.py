@@ -1,24 +1,27 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from common.utils import encapsulate
 from documents.models import Document
-from navigation.api import (register_links, register_model_list_columns,
-                            register_top_menu)
+from navigation.api import (
+    register_links, register_model_list_columns, register_top_menu
+)
 from navigation.links import link_spacer
 from rest_api.classes import APIEndPoint
 
-from .links import (multiple_documents_selection_tag_remove,
-                    single_document_multiple_tag_remove, tag_acl_list,
-                    tag_attach, tag_create, tag_delete, tag_document_list,
-                    tag_edit, tag_list, tag_multiple_attach,
-                    tag_multiple_delete, tag_tagged_item_list)
+from .links import (
+    multiple_documents_selection_tag_remove,
+    single_document_multiple_tag_remove, tag_acl_list, tag_attach, tag_create,
+    tag_delete, tag_document_list, tag_edit, tag_list, tag_multiple_attach,
+    tag_multiple_delete, tag_tagged_item_list
+)
 from .models import Tag
-from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_DELETE,
-                          PERMISSION_TAG_EDIT, PERMISSION_TAG_REMOVE,
-                          PERMISSION_TAG_VIEW)
+from .permissions import (
+    PERMISSION_TAG_ATTACH, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
+    PERMISSION_TAG_REMOVE, PERMISSION_TAG_VIEW
+)
 from .widgets import get_tags_inline_widget_simple, single_tag_widget
 
 class_permissions(Document, [
@@ -32,23 +35,23 @@ APIEndPoint('tags')
 
 register_model_list_columns(Tag, [
     {
-        'name': _(u'Preview'),
+        'name': _('Preview'),
         'attribute': encapsulate(lambda x: single_tag_widget(x))
     },
     {
-        'name': _(u'Tagged items'),
+        'name': _('Tagged items'),
         'attribute': encapsulate(lambda x: x.documents.count())
     }
 ])
 
 register_model_list_columns(Document, [
     {
-        'name': _(u'Tags'), 'attribute':
+        'name': _('Tags'), 'attribute':
         encapsulate(lambda x: get_tags_inline_widget_simple(x))
     },
 ])
 
-register_top_menu('tags', link={'text': _(u'Tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'})
+register_top_menu('tags', link={'text': _('Tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'})
 
 register_links(Tag, [tag_tagged_item_list, tag_edit, tag_acl_list, tag_delete])
 register_links([Tag], [tag_multiple_delete], menu_name='multi_item_links')

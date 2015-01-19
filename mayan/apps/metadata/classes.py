@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.utils.translation import ugettext_lazy as _
 
 from .models import MetadataType
@@ -16,4 +18,4 @@ class DocumentMetadataHelper(object):
         try:
             return self.instance.metadata.get(metadata_type__name=name).value
         except MetadataType.DoesNotExist:
-            raise AttributeError(_(u'\'metadata\' object has no attribute \'%s\'') % name)
+            raise AttributeError(_('\'metadata\' object has no attribute \'%s\'') % name)

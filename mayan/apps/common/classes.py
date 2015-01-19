@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.db import models
 from django.utils.translation import ugettext
 
@@ -39,7 +41,7 @@ class ModelAttribute(object):
 
     def get_display(self, show_name=False):
         if self.description:
-            return u'{} - {}'.format(self.name if show_name else self.label, self.description)
+            return '{} - {}'.format(self.name if show_name else self.label, self.description)
         else:
             return unicode(self.name if show_name else self.label)
 

@@ -1,9 +1,11 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .api_views import (APIDocumentTagView, APIDocumentTagListView,
-                        APITagDocumentListView, APITagListView, APITagView)
+from .api_views import (
+    APIDocumentTagView, APIDocumentTagListView, APITagDocumentListView,
+    APITagListView, APITagView
+)
 from .views import TagTaggedItemListView
 
 urlpatterns = patterns('tags.views',

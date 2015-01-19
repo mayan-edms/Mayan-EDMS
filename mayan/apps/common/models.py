@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from pytz import common_timezones
 
@@ -18,7 +18,7 @@ SHARED_UPLOADED_FILE_PATH = 'shared_uploads'
 
 def upload_to(instance, filename):
     instance.filename = filename
-    return u'/'.join([SHARED_UPLOADED_FILE_PATH, filename])
+    return '/'.join([SHARED_UPLOADED_FILE_PATH, filename])
 
 
 class AnonymousUserSingleton(SingletonModel):
@@ -28,26 +28,26 @@ class AnonymousUserSingleton(SingletonModel):
         return ugettext('Anonymous user')
 
     class Meta:
-        verbose_name = verbose_name_plural = _(u'Anonymous user')
+        verbose_name = verbose_name_plural = _('Anonymous user')
 
 
 class AutoAdminSingleton(SingletonModel):
-    account = models.ForeignKey(User, null=True, blank=True, related_name='auto_admin_account', verbose_name=_(u'Account'))
-    password = models.CharField(null=True, blank=True, verbose_name=_(u'Password'), max_length=128)
-    password_hash = models.CharField(null=True, blank=True, verbose_name=_(u'Password hash'), max_length=128)
+    account = models.ForeignKey(User, null=True, blank=True, related_name='auto_admin_account', verbose_name=_('Account'))
+    password = models.CharField(null=True, blank=True, verbose_name=_('Password'), max_length=128)
+    password_hash = models.CharField(null=True, blank=True, verbose_name=_('Password hash'), max_length=128)
 
     class Meta:
-        verbose_name = verbose_name_plural = _(u'Auto admin properties')
+        verbose_name = verbose_name_plural = _('Auto admin properties')
 
 
 class SharedUploadedFile(models.Model):
-    file = models.FileField(upload_to=upload_to, storage=shared_storage_backend, verbose_name=_(u'File'))
+    file = models.FileField(upload_to=upload_to, storage=shared_storage_backend, verbose_name=_('File'))
     filename = models.CharField(max_length=255, verbose_name=_('Filename'))
     datatime = models.DateTimeField(auto_now_add=True, verbose_name=_('Date time'))
 
     class Meta:
-        verbose_name = _(u'Shared uploaded file')
-        verbose_name_plural = _(u'Shared uploaded files')
+        verbose_name = _('Shared uploaded file')
+        verbose_name_plural = _('Shared uploaded files')
 
     def __unicode__(self):
         return self.filename
@@ -67,5 +67,5 @@ class UserLocaleProfile(models.Model):
         return unicode(self.user)
 
     class Meta:
-        verbose_name = _(u'User locale profile')
-        verbose_name_plural = _(u'User locale profiles')
+        verbose_name = _('User locale profile')
+        verbose_name_plural = _('User locale profiles')

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from rest_framework import generics
 from rest_framework.exceptions import ParseError

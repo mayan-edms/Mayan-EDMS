@@ -1,7 +1,11 @@
+from __future__ import unicode_literals
+
 from django.conf.urls import patterns, url
 
-from .api_views import (APICurrentUserView, APIGroupListView, APIGroupView,
-                        APIUserListView, APIUserView)
+from .api_views import (
+    APICurrentUserView, APIGroupListView, APIGroupView, APIUserListView,
+    APIUserView
+)
 
 urlpatterns = patterns('user_management.views',
     url(r'^user/list/$', 'user_list', (), 'user_list'),

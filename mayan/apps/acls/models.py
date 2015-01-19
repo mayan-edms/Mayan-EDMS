@@ -1,20 +1,19 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.db import models
-from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
-from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.models import ContentType
+from django.db import models
+from django.utils.translation import ugettext_lazy as _, ugettext
 
 from solo.models import SingletonModel
 
 from permissions.models import StoredPermission
 
-from .managers import AccessEntryManager, DefaultAccessEntryManager
-from .classes import AccessObjectClass
 from .api import get_classes
+from .classes import AccessObjectClass
+from .managers import AccessEntryManager, DefaultAccessEntryManager
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +22,7 @@ class AccessEntry(models.Model):
     """
     Model that hold the permission, object, actor relationship
     """
-    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'Permission'))
+    permission = models.ForeignKey(StoredPermission, verbose_name=_('Permission'))
 
     holder_type = models.ForeignKey(
         ContentType,
@@ -49,11 +48,11 @@ class AccessEntry(models.Model):
     objects = AccessEntryManager()
 
     class Meta:
-        verbose_name = _(u'Access entry')
-        verbose_name_plural = _(u'Access entries')
+        verbose_name = _('Access entry')
+        verbose_name_plural = _('Access entries')
 
     def __unicode__(self):
-        return u'%s: %s' % (self.content_type, self.content_object)
+        return '%s: %s' % (self.content_type, self.content_object)
 
 
 class DefaultAccessEntry(models.Model):
@@ -65,7 +64,7 @@ class DefaultAccessEntry(models.Model):
     def get_classes(cls):
         return [AccessObjectClass.encapsulate(cls) for cls in get_classes()]
 
-    permission = models.ForeignKey(StoredPermission, verbose_name=_(u'Permission'))
+    permission = models.ForeignKey(StoredPermission, verbose_name=_('Permission'))
 
     holder_type = models.ForeignKey(
         ContentType,
@@ -86,11 +85,11 @@ class DefaultAccessEntry(models.Model):
     objects = DefaultAccessEntryManager()
 
     class Meta:
-        verbose_name = _(u'Default access entry')
-        verbose_name_plural = _(u'Default access entries')
+        verbose_name = _('Default access entry')
+        verbose_name_plural = _('Default access entries')
 
     def __unicode__(self):
-        return u'%s: %s' % (self.content_type, self.content_object)
+        return '%s: %s' % (self.content_type, self.content_object)
 
 
 class CreatorSingletonManager(models.Manager):
@@ -109,5 +108,5 @@ class CreatorSingleton(SingletonModel):
         return ugettext('Creator')
 
     class Meta:
-        verbose_name = _(u'Creator')
-        verbose_name_plural = _(u'Creator')
+        verbose_name = _('Creator')
+        verbose_name_plural = _('Creator')

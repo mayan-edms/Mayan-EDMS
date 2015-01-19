@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
@@ -8,9 +8,9 @@ from .settings import DEFAULT_LOCK_TIMEOUT
 
 
 class Lock(models.Model):
-    creation_datetime = models.DateTimeField(verbose_name=_(u'Creation datetime'), auto_now_add=True)
-    timeout = models.IntegerField(default=DEFAULT_LOCK_TIMEOUT, verbose_name=_(u'Timeout'))
-    name = models.CharField(max_length=48, verbose_name=_(u'Name'), unique=True)
+    creation_datetime = models.DateTimeField(verbose_name=_('Creation datetime'), auto_now_add=True)
+    timeout = models.IntegerField(default=DEFAULT_LOCK_TIMEOUT, verbose_name=_('Timeout'))
+    name = models.CharField(max_length=48, verbose_name=_('Name'), unique=True)
 
     objects = LockManager()
 
@@ -33,5 +33,5 @@ class Lock(models.Model):
             lock.delete()
 
     class Meta:
-        verbose_name = _(u'Lock')
-        verbose_name_plural = _(u'Locks')
+        verbose_name = _('Lock')
+        verbose_name_plural = _('Locks')

@@ -1,4 +1,5 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
+
 import logging
 import uuid
 
@@ -18,9 +19,9 @@ class DocumentVersionSignature(models.Model):
     """
     Model that describes a document version signature properties
     """
-    document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'Document version'), editable=False)
-    signature_file = models.FileField(blank=True, null=True, upload_to=lambda instance, filename: unicode(uuid.uuid4()), storage=storage_backend, verbose_name=_(u'Signature file'), editable=False)
-    has_embedded_signature = models.BooleanField(default=False, verbose_name=_(u'Has embedded signature'), editable=False)
+    document_version = models.ForeignKey(DocumentVersion, verbose_name=_('Document version'), editable=False)
+    signature_file = models.FileField(blank=True, null=True, upload_to=lambda instance, filename: unicode(uuid.uuid4()), storage=storage_backend, verbose_name=_('Signature file'), editable=False)
+    has_embedded_signature = models.BooleanField(default=False, verbose_name=_('Has embedded signature'), editable=False)
 
     objects = DocumentVersionSignatureManager()
 
@@ -35,5 +36,5 @@ class DocumentVersionSignature(models.Model):
         super(DocumentVersionSignature, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = _(u'Document version signature')
-        verbose_name_plural = _(u'Document version signatures')
+        verbose_name = _('Document version signature')
+        verbose_name_plural = _('Document version signatures')

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.core.files.base import File
 from django.test import TestCase
@@ -32,11 +32,11 @@ class IndexTestCase(TestCase):
         # Create simple index template
         root = index.template_root
         index.node_templates.create(parent=root, expression='document.metadata_value_of.test', link_documents=True)
-        self.failUnlessEqual(list(IndexTemplateNode.objects.values_list('expression', flat=True)), [u'', u'document.metadata_value_of.test'])
+        self.failUnlessEqual(list(IndexTemplateNode.objects.values_list('expression', flat=True)), ['', 'document.metadata_value_of.test'])
 
         # Add document metadata value to trigger index node instance creation
         self.document.metadata.create(metadata_type=metadata_type, value='0001')
-        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u'', u'0001'])
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), ['', '0001'])
 
         # Check that document is in instance node
         instance_node = IndexInstanceNode.objects.get(value='0001')
@@ -46,7 +46,7 @@ class IndexTestCase(TestCase):
         document_metadata = self.document.metadata.get(metadata_type=metadata_type)
         document_metadata.value = '0002'
         document_metadata.save()
-        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u'', u'0002'])
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), ['', '0002'])
 
         # Check that document is in new instance node
         instance_node = IndexInstanceNode.objects.get(value='0002')
@@ -54,12 +54,12 @@ class IndexTestCase(TestCase):
 
         # Check node instance is destoyed when no metadata is available
         self.document.metadata.get(metadata_type=metadata_type).delete()
-        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u''])
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [''])
 
         # Add document metadata value again to trigger index node instance creation
         self.document.metadata.create(metadata_type=metadata_type, value='0003')
-        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u'', u'0003'])
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), ['', '0003'])
 
         # Check node instance is destroyed when no documents are contained
         self.document.delete()
-        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [u''])
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [''])

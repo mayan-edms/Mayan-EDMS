@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django import forms
 from django.core.exceptions import ValidationError
@@ -34,7 +34,7 @@ class MetadataForm(forms.Form):
                 # Otherwise we extract whatever single message the exception
                 # included.
                 try:
-                    message = u', '.join(exception.messages)
+                    message = ', '.join(exception.messages)
                 except AttributeError:
                     message = unicode(exception)
 
@@ -56,11 +56,11 @@ class MetadataForm(forms.Form):
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
             required = kwargs['initial'].pop('required', False)
-            required_string = u''
+            required_string = ''
 
             if required:
                 self.fields['value'].required = True
-                required_string = u' (%s)' % _('Required')
+                required_string = ' (%s)' % _('Required')
             else:
                 self.fields['value'].required = False
 
@@ -86,17 +86,17 @@ class MetadataForm(forms.Form):
                 except Exception as exception:
                     self.fields['value'].initial = exception
 
-    id = forms.CharField(label=_(u'ID'), widget=forms.HiddenInput)
+    id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
 
-    name = forms.CharField(label=_(u'Name'), required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
-    value = forms.CharField(label=_(u'Value'), required=False)
-    update = forms.BooleanField(initial=True, label=_(u'Update'), required=False)
+    name = forms.CharField(label=_('Name'), required=False, widget=forms.TextInput(attrs={'readonly': 'readonly'}))
+    value = forms.CharField(label=_('Value'), required=False)
+    update = forms.BooleanField(initial=True, label=_('Update'), required=False)
 
 MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
 
 class AddMetadataForm(forms.Form):
-    metadata_type = forms.ModelChoiceField(queryset=MetadataType.objects.all(), label=_(u'Metadata type'))
+    metadata_type = forms.ModelChoiceField(queryset=MetadataType.objects.all(), label=_('Metadata type'))
 
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type')
@@ -105,7 +105,7 @@ class AddMetadataForm(forms.Form):
 
 
 class MetadataRemoveForm(MetadataForm):
-    update = forms.BooleanField(initial=False, label=_(u'Remove'), required=False)
+    update = forms.BooleanField(initial=False, label=_('Remove'), required=False)
 
     def __init__(self, *args, **kwargs):
         super(MetadataRemoveForm, self).__init__(*args, **kwargs)

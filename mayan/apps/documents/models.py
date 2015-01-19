@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from ast import literal_eval
 import base64
@@ -49,10 +49,10 @@ class DocumentType(models.Model):
     Define document types or classes to which a specific set of
     properties can be attached
     """
-    name = models.CharField(max_length=32, verbose_name=_(u'Name'), unique=True)
+    name = models.CharField(max_length=32, verbose_name=_('Name'), unique=True)
 
     # TODO: find a way to move this to the ocr app
-    ocr = models.BooleanField(default=True, verbose_name=_(u'Automatically queue newly created documents for OCR.'))
+    ocr = models.BooleanField(default=True, verbose_name=_('Automatically queue newly created documents for OCR.'))
 
     objects = DocumentTypeManager()
 
@@ -63,8 +63,8 @@ class DocumentType(models.Model):
         return (self.name,)
 
     class Meta:
-        verbose_name = _(u'Document type')
-        verbose_name_plural = _(u'Documents types')
+        verbose_name = _('Document type')
+        verbose_name_plural = _('Documents types')
         ordering = ['name']
 
 
@@ -74,17 +74,17 @@ class Document(models.Model):
     """
 
     uuid = models.CharField(default=lambda: UUID_FUNCTION(), max_length=48, editable=False)
-    document_type = models.ForeignKey(DocumentType, verbose_name=_(u'Document type'), related_name='documents')
+    document_type = models.ForeignKey(DocumentType, verbose_name=_('Document type'), related_name='documents')
     label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True, help_text=_('The name of the document'), verbose_name=_('Label'))
-    description = models.TextField(blank=True, null=True, verbose_name=_(u'Description'))
-    date_added = models.DateTimeField(verbose_name=_(u'Added'), auto_now_add=True)
+    description = models.TextField(blank=True, null=True, verbose_name=_('Description'))
+    date_added = models.DateTimeField(verbose_name=_('Added'), auto_now_add=True)
     language = models.CharField(choices=LANGUAGE_CHOICES, default=LANGUAGE, max_length=8, verbose_name=_('Language'))
 
     objects = DocumentManager()
 
     class Meta:
-        verbose_name = _(u'Document')
-        verbose_name_plural = _(u'Documents')
+        verbose_name = _('Document')
+        verbose_name_plural = _('Documents')
         ordering = ['-date_added']
 
     def set_document_type(self, document_type, force=False):
@@ -127,7 +127,7 @@ class Document(models.Model):
         document_version = DocumentVersion.objects.get(pk=version)
         document_page = document_version.pages.get(page_number=page)
         transformations, warnings = document_page.get_transformation_list()
-        hash_value = HASH_FUNCTION(u''.join([document_version.checksum, unicode(page), unicode(transformations)]))
+        hash_value = HASH_FUNCTION(''.join([document_version.checksum, unicode(page), unicode(transformations)]))
         return os.path.join(CACHE_PATH, hash_value), transformations
 
     def get_image_cache_name(self, page, version):
@@ -165,7 +165,7 @@ class Document(models.Model):
             image = open(file_path, 'r')
             base64_data = base64.b64encode(image.read())
             image.close()
-            return u'data:%s;base64,%s' % (mimetype, base64_data)
+            return 'data:%s;base64,%s' % (mimetype, base64_data)
         else:
             return file_path
 
@@ -285,23 +285,23 @@ class DocumentVersion(models.Model):
     def register_post_save_hook(cls, order, func):
         cls._post_save_hooks[order] = func
 
-    document = models.ForeignKey(Document, verbose_name=_(u'Document'), related_name='versions')
-    timestamp = models.DateTimeField(verbose_name=_(u'Timestamp'), auto_now_add=True)
-    comment = models.TextField(blank=True, verbose_name=_(u'Comment'))
+    document = models.ForeignKey(Document, verbose_name=_('Document'), related_name='versions')
+    timestamp = models.DateTimeField(verbose_name=_('Timestamp'), auto_now_add=True)
+    comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
     # File related fields
-    file = models.FileField(upload_to=lambda instance, filename: UUID_FUNCTION(), storage=storage_backend, verbose_name=_(u'File'))
+    file = models.FileField(upload_to=lambda instance, filename: UUID_FUNCTION(), storage=storage_backend, verbose_name=_('File'))
     mimetype = models.CharField(max_length=255, null=True, blank=True, editable=False)
     encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
 
-    checksum = models.TextField(blank=True, null=True, verbose_name=_(u'Checksum'), editable=False)
+    checksum = models.TextField(blank=True, null=True, verbose_name=_('Checksum'), editable=False)
 
     class Meta:
-        verbose_name = _(u'Document version')
-        verbose_name_plural = _(u'Document version')
+        verbose_name = _('Document version')
+        verbose_name_plural = _('Document version')
 
     def __unicode__(self):
-        return u'{0} - {1}'.format(self.document, self.timestamp)
+        return '{0} - {1}'.format(self.document, self.timestamp)
 
     def save(self, *args, **kwargs):
         """
@@ -353,7 +353,7 @@ class DocumentVersion(models.Model):
             # If converter backend doesn't understand the format,
             # use 1 as the total page count
             detected_pages = 1
-            self.description = ugettext(u'This document\'s file format is not known, the page count has therefore defaulted to 1.')
+            self.description = ugettext('This document\'s file format is not known, the page count has therefore defaulted to 1.')
             self.save()
         try:
             os.remove(filepath)
@@ -405,8 +405,8 @@ class DocumentVersion(models.Model):
             try:
                 self.mimetype, self.encoding = get_mimetype(self.open(), self.document.label)
             except:
-                self.mimetype = u''
-                self.encoding = u''
+                self.mimetype = ''
+                self.encoding = ''
             finally:
                 if save:
                     self.save()
@@ -471,9 +471,9 @@ class DocumentTypeFilename(models.Model):
     List of filenames available to a specific document type for the
     quick rename functionality
     """
-    document_type = models.ForeignKey(DocumentType, related_name='filenames', verbose_name=_(u'Document type'))
-    filename = models.CharField(max_length=128, verbose_name=_(u'Filename'), db_index=True)
-    enabled = models.BooleanField(default=True, verbose_name=_(u'Enabled'))
+    document_type = models.ForeignKey(DocumentType, related_name='filenames', verbose_name=_('Document type'))
+    filename = models.CharField(max_length=128, verbose_name=_('Filename'), db_index=True)
+    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
     def __unicode__(self):
         return self.filename
@@ -481,21 +481,21 @@ class DocumentTypeFilename(models.Model):
     class Meta:
         ordering = ['filename']
         unique_together = ('document_type', 'filename')
-        verbose_name = _(u'Document type quick rename filename')
-        verbose_name_plural = _(u'Document types quick rename filenames')
+        verbose_name = _('Document type quick rename filename')
+        verbose_name_plural = _('Document types quick rename filenames')
 
 
 class DocumentPage(models.Model):
     """
     Model that describes a document version page including it's content
     """
-    document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'Document version'), related_name='pages')
-    content = models.TextField(blank=True, null=True, verbose_name=_(u'Content'))
-    page_label = models.CharField(max_length=40, blank=True, null=True, verbose_name=_(u'Page label'))
-    page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_(u'Page number'), db_index=True)
+    document_version = models.ForeignKey(DocumentVersion, verbose_name=_('Document version'), related_name='pages')
+    content = models.TextField(blank=True, null=True, verbose_name=_('Content'))
+    page_label = models.CharField(max_length=40, blank=True, null=True, verbose_name=_('Page label'))
+    page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_('Page number'), db_index=True)
 
     def __unicode__(self):
-        return _(u'Page %(page_num)d out of %(total_pages)d of %(document)s') % {
+        return _('Page %(page_num)d out of %(total_pages)d of %(document)s') % {
             'document': unicode(self.document),
             'page_num': self.page_number,
             'total_pages': self.document_version.pages.count()
@@ -503,8 +503,8 @@ class DocumentPage(models.Model):
 
     class Meta:
         ordering = ['page_number']
-        verbose_name = _(u'Document page')
-        verbose_name_plural = _(u'Document pages')
+        verbose_name = _('Document page')
+        verbose_name_plural = _('Document pages')
 
     @models.permalink
     def get_absolute_url(self):
@@ -521,7 +521,7 @@ class DocumentPage(models.Model):
 
 
 class ArgumentsValidator(object):
-    message = _(u'Enter a valid value.')
+    message = _('Enter a valid value.')
     code = 'invalid'
 
     def __init__(self, message=None, code=None):
@@ -546,10 +546,10 @@ class DocumentPageTransformation(models.Model):
     Model that stores the transformation and transformation arguments
     for a given document page
     """
-    document_page = models.ForeignKey(DocumentPage, verbose_name=_(u'Document page'))
-    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_(u'Order'), db_index=True)
-    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_(u'Transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_(u'Arguments'), help_text=_(u'Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[ArgumentsValidator()])
+    document_page = models.ForeignKey(DocumentPage, verbose_name=_('Document page'))
+    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_('Order'), db_index=True)
+    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
+    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[ArgumentsValidator()])
     objects = DocumentPageTransformationManager()
 
     def __unicode__(self):
@@ -557,8 +557,8 @@ class DocumentPageTransformation(models.Model):
 
     class Meta:
         ordering = ('order',)
-        verbose_name = _(u'Document page transformation')
-        verbose_name_plural = _(u'Document page transformations')
+        verbose_name = _('Document page transformation')
+        verbose_name_plural = _('Document page transformations')
 
 
 class RecentDocument(models.Model):
@@ -566,9 +566,9 @@ class RecentDocument(models.Model):
     Keeps a list of the n most recent accessed or created document for
     a given user
     """
-    user = models.ForeignKey(User, verbose_name=_(u'User'), editable=False)
-    document = models.ForeignKey(Document, verbose_name=_(u'Document'), editable=False)
-    datetime_accessed = models.DateTimeField(verbose_name=_(u'Accessed'), auto_now=True, db_index=True)
+    user = models.ForeignKey(User, verbose_name=_('User'), editable=False)
+    document = models.ForeignKey(Document, verbose_name=_('Document'), editable=False)
+    datetime_accessed = models.DateTimeField(verbose_name=_('Accessed'), auto_now=True, db_index=True)
 
     objects = RecentDocumentManager()
 
@@ -577,8 +577,8 @@ class RecentDocument(models.Model):
 
     class Meta:
         ordering = ('-datetime_accessed',)
-        verbose_name = _(u'Recent document')
-        verbose_name_plural = _(u'Recent documents')
+        verbose_name = _('Recent document')
+        verbose_name_plural = _('Recent documents')
 
 
 # Quick hack to break the DocumentPage and DocumentPageTransformation circular dependency

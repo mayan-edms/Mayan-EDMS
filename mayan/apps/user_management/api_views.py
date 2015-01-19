@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.contrib.auth.models import Group, User
 
@@ -7,10 +7,11 @@ from rest_framework import generics
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
-from .permissions import (PERMISSION_GROUP_CREATE, PERMISSION_GROUP_DELETE,
-                          PERMISSION_GROUP_EDIT, PERMISSION_GROUP_VIEW,
-                          PERMISSION_USER_CREATE, PERMISSION_USER_DELETE,
-                          PERMISSION_USER_EDIT, PERMISSION_USER_VIEW)
+from .permissions import (
+    PERMISSION_GROUP_CREATE, PERMISSION_GROUP_DELETE, PERMISSION_GROUP_EDIT,
+    PERMISSION_GROUP_VIEW, PERMISSION_USER_CREATE, PERMISSION_USER_DELETE,
+    PERMISSION_USER_EDIT, PERMISSION_USER_VIEW
+)
 from .serializers import GroupSerializer, UserSerializer
 
 

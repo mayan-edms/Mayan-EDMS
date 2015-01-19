@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -12,7 +12,7 @@ from .api import tool_items
 def tools_list(request):
     context = {
         'object_list': [button_navigation_widget(request, item) for item in tool_items],
-        'title': _(u'Tools'),
+        'title': _('Tools'),
     }
 
     return render_to_response('main/generic_list_horizontal.html', context,

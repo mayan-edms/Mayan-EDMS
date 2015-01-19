@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from datetime import datetime
 import logging
@@ -20,10 +20,10 @@ from permissions.models import Permission
 
 from .forms import DetachedSignatureForm
 from .models import DocumentVersionSignature
-from .permissions import (PERMISSION_DOCUMENT_VERIFY,
-                          PERMISSION_SIGNATURE_UPLOAD,
-                          PERMISSION_SIGNATURE_DOWNLOAD,
-                          PERMISSION_SIGNATURE_DELETE)
+from .permissions import (
+    PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,
+    PERMISSION_SIGNATURE_DOWNLOAD, PERMISSION_SIGNATURE_DELETE
+)
 
 logger = logging.getLogger(__name__)
 
@@ -46,29 +46,29 @@ def document_verify(request, document_pk):
     else:
         signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
 
-    paragraphs = [_(u'Signature status: %s') % signature_state['text']]
+    paragraphs = [_('Signature status: %s') % signature_state['text']]
 
     try:
         if DocumentVersionSignature.objects.has_embedded_signature(document):
-            signature_type = _(u'Embedded')
+            signature_type = _('Embedded')
         else:
-            signature_type = _(u'Detached')
+            signature_type = _('Detached')
     except ValueError:
-        signature_type = _(u'None')
+        signature_type = _('None')
 
     if signature:
         paragraphs.extend(
             [
-                _(u'Signature ID: %s') % signature.signature_id,
-                _(u'Signature type: %s') % signature_type,
-                _(u'Key ID: %s') % signature.key_id,
-                _(u'Timestamp: %s') % datetime.fromtimestamp(int(signature.sig_timestamp)),
-                _(u'Signee: %s') % force_escape(getattr(signature, 'username', u'')),
+                _('Signature ID: %s') % signature.signature_id,
+                _('Signature type: %s') % signature_type,
+                _('Key ID: %s') % signature.key_id,
+                _('Timestamp: %s') % datetime.fromtimestamp(int(signature.sig_timestamp)),
+                _('Signee: %s') % force_escape(getattr(signature, 'username', '')),
             ]
         )
 
     return render_to_response('main/generic_template.html', {
-        'title': _(u'Document signature properties'),
+        'title': _('Document signature properties'),
         'object': document,
         'document': document,
         'paragraphs': paragraphs,
@@ -94,7 +94,7 @@ def document_signature_upload(request, document_pk):
         if form.is_valid():
             try:
                 DocumentVersionSignature.objects.add_detached_signature(document, request.FILES['file'])
-                messages.success(request, _(u'Detached signature uploaded successfully.'))
+                messages.success(request, _('Detached signature uploaded successfully.'))
                 return HttpResponseRedirect(next)
             except Exception as exception:
                 messages.error(request, exception)
@@ -103,7 +103,7 @@ def document_signature_upload(request, document_pk):
         form = DetachedSignatureForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'Upload detached signature'),
+        'title': _('Upload detached signature'),
         'next': next,
         'form': form,
         'previous': previous,
@@ -125,8 +125,8 @@ def document_signature_download(request, document_pk):
             return serve_file(
                 request,
                 signature,
-                save_as=u'"%s.sig"' % document.filename,
-                content_type=u'application/octet-stream'
+                save_as='"%s.sig"' % document.filename,
+                content_type='application/octet-stream'
             )
     except Exception as exception:
         messages.error(request, exception)
@@ -152,14 +152,14 @@ def document_signature_delete(request, document_pk):
     if request.method == 'POST':
         try:
             DocumentVersionSignature.objects.clear_detached_signature(document)
-            messages.success(request, _(u'Detached signature deleted successfully.'))
+            messages.success(request, _('Detached signature deleted successfully.'))
             return HttpResponseRedirect(next)
         except Exception as exception:
-            messages.error(request, _(u'Error while deleting the detached signature; %s') % exception)
+            messages.error(request, _('Error while deleting the detached signature; %s') % exception)
             return HttpResponseRedirect(previous)
 
     return render_to_response('main/generic_confirm.html', {
-        'title': _(u'Are you sure you wish to delete the detached signature from document: %s?') % document,
+        'title': _('Are you sure you wish to delete the detached signature from document: %s?') % document,
         'next': next,
         'previous': previous,
         'object': document,

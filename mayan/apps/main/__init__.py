@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
@@ -8,6 +8,6 @@ from project_tools.api import register_tool
 
 from .links import admin_site, maintenance_menu
 
-register_top_menu('home', link={'text': _(u'Home'), 'view': 'main:home', 'famfam': 'house'}, position=0)
+register_top_menu('home', link={'text': _('Home'), 'view': 'main:home', 'famfam': 'house'}, position=0)
 register_setup(admin_site)
 register_tool(maintenance_menu)

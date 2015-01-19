@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 
@@ -13,13 +13,15 @@ from django_gpg.runtime import gpg
 from documents.models import Document, DocumentVersion
 from navigation.api import register_links
 
-from .links import (document_signature_delete, document_signature_download,
-                    document_signature_upload, document_verify)
+from .links import (
+    document_signature_delete, document_signature_download,
+     document_signature_upload, document_verify
+)
 from .models import DocumentVersionSignature
-from .permissions import (PERMISSION_DOCUMENT_VERIFY,
-                          PERMISSION_SIGNATURE_DELETE,
-                          PERMISSION_SIGNATURE_DOWNLOAD,
-                          PERMISSION_SIGNATURE_UPLOAD)
+from .permissions import (
+    PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_DELETE,
+    PERMISSION_SIGNATURE_DOWNLOAD, PERMISSION_SIGNATURE_UPLOAD
+)
 
 logger = logging.getLogger(__name__)
 

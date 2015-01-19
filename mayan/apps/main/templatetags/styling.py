@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django import forms
 from django.template import Library, Node, Variable
 
@@ -14,16 +16,16 @@ class StylingNode(Node):
 
             if isinstance(field.widget, forms.widgets.TextInput):
                 # Don't overwrite any existing CSS class, append
-                css_class = field.widget.attrs.get('class', u'text_field')
-                field.widget.attrs['class'] = u' '.join([css_class, 'text_field'])
+                css_class = field.widget.attrs.get('class', 'text_field')
+                field.widget.attrs['class'] = ' '.join([css_class, 'text_field'])
             elif isinstance(field.widget, forms.widgets.PasswordInput):
                 # Don't overwrite any existing CSS class, append
-                css_class = field.widget.attrs.get('class', u'text_field')
-                field.widget.attrs['class'] = u' '.join([css_class, 'text_field'])
+                css_class = field.widget.attrs.get('class', 'text_field')
+                field.widget.attrs['class'] = ' '.join([css_class, 'text_field'])
             elif isinstance(field.widget, forms.widgets.Textarea):
                 # Don't overwrite any existing CSS class, append
-                css_class = field.widget.attrs.get('class', u'text_area')
-                field.widget.attrs['class'] = u' '.join([css_class, 'text_area'])
+                css_class = field.widget.attrs.get('class', 'text_area')
+                field.widget.attrs['class'] = ' '.join([css_class, 'text_area'])
 
         context[self.form_name] = form
         return ''

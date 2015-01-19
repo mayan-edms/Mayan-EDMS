@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
@@ -21,9 +21,10 @@ from permissions.models import Permission
 
 from .forms import TagForm, TagListForm
 from .models import Tag
-from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_CREATE,
-                          PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
-                          PERMISSION_TAG_REMOVE, PERMISSION_TAG_VIEW)
+from .permissions import (
+    PERMISSION_TAG_ATTACH, PERMISSION_TAG_CREATE, PERMISSION_TAG_DELETE,
+    PERMISSION_TAG_EDIT, PERMISSION_TAG_REMOVE, PERMISSION_TAG_VIEW
+)
 
 logger = logging.getLogger(__name__)
 
@@ -39,13 +40,13 @@ def tag_create(request):
             tag = form.save()
             apply_default_acls(tag, request.user)
 
-            messages.success(request, _(u'Tag created succesfully.'))
+            messages.success(request, _('Tag created succesfully.'))
             return HttpResponseRedirect(redirect_url)
     else:
         form = TagForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'Create tag'),
+        'title': _('Create tag'),
         'form': form,
     }, context_instance=RequestContext(request))
 
@@ -57,7 +58,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
-        messages.error(request, _(u'Must provide at least one document.'))
+        messages.error(request, _('Must provide at least one document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
@@ -75,12 +76,12 @@ def tag_attach(request, document_id=None, document_id_list=None):
             tag = form.cleaned_data['tag']
             for document in documents:
                 if tag in document.tags.all():
-                    messages.warning(request, _(u'Document "%(document)s" is already tagged as "%(tag)s"') % {
+                    messages.warning(request, _('Document "%(document)s" is already tagged as "%(tag)s"') % {
                         'document': document, 'tag': tag}
                     )
                 else:
                     tag.documents.add(document)
-                    messages.success(request, _(u'Tag "%(tag)s" attached successfully to document "%(document)s".') % {
+                    messages.success(request, _('Tag "%(tag)s" attached successfully to document "%(document)s".') % {
                         'document': document, 'tag': tag}
                     )
             return HttpResponseRedirect(next)
@@ -92,8 +93,8 @@ def tag_attach(request, document_id=None, document_id_list=None):
         'previous': previous,
         'next': next,
         'title': ungettext(
-            u'Attach tag to document',
-            u'Attach tag to documents',
+            'Attach tag to document',
+            'Attach tag to documents',
             len(documents)
         )
     }
@@ -113,7 +114,7 @@ def tag_multiple_attach(request):
 
 def tag_list(request, queryset=None, extra_context=None):
     context = {
-        'title': _(u'Tags'),
+        'title': _('Tags'),
         'hide_link': True,
         'hide_object': True,
     }
@@ -142,7 +143,7 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
     elif tag_id_list:
         tags = [get_object_or_404(Tag, pk=tag_id) for tag_id in tag_id_list.split(',')]
     else:
-        messages.error(request, _(u'Must provide at least one tag.'))
+        messages.error(request, _('Must provide at least one tag.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
@@ -157,9 +158,9 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         for tag in tags:
             try:
                 tag.delete()
-                messages.success(request, _(u'Tag "%s" deleted successfully.') % tag)
+                messages.success(request, _('Tag "%s" deleted successfully.') % tag)
             except Exception as exception:
-                messages.error(request, _(u'Error deleting tag "%(tag)s": %(error)s') % {
+                messages.error(request, _('Error deleting tag "%(tag)s": %(error)s') % {
                     'tag': tag, 'error': exception
                 })
 
@@ -172,10 +173,10 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
     }
     if len(tags) == 1:
         context['object'] = tags[0]
-        context['title'] = _(u'Are you sure you wish to delete the tag: %s?') % ', '.join([unicode(d) for d in tags])
+        context['title'] = _('Are you sure you wish to delete the tag: %s?') % ', '.join([unicode(d) for d in tags])
         context['message'] = _('Will be removed from all documents.')
     elif len(tags) > 1:
-        context['title'] = _(u'Are you sure you wish to delete the tags: %s?') % ', '.join([unicode(d) for d in tags])
+        context['title'] = _('Are you sure you wish to delete the tags: %s?') % ', '.join([unicode(d) for d in tags])
         context['message'] = _('Will be removed from all documents.')
 
     return render_to_response('main/generic_confirm.html', context,
@@ -200,13 +201,13 @@ def tag_edit(request, tag_id):
         form = TagForm(data=request.POST, instance=tag)
         if form.is_valid():
             form.save()
-            messages.success(request, _(u'Tag updated succesfully.'))
+            messages.success(request, _('Tag updated succesfully.'))
             return HttpResponseRedirect(reverse('tags:tag_list'))
     else:
         form = TagForm(instance=tag)
 
     return render_to_response('main/generic_form.html', {
-        'title': _(u'Edit tag: %s') % tag,
+        'title': _('Edit tag: %s') % tag,
         'form': form,
         'object': tag,
     }, context_instance=RequestContext(request))
@@ -221,7 +222,7 @@ class TagTaggedItemListView(DocumentListView):
 
     def get_extra_context(self):
         return {
-            'title': _(u'Documents with the tag "%s"') % self.get_tag(),
+            'title': _('Documents with the tag "%s"') % self.get_tag(),
             'hide_links': True,
             'object': self.get_tag(),
         }
@@ -238,7 +239,7 @@ def document_tags(request, document_id):
     context = {
         'object': document,
         'document': document,
-        'title': _(u'Document tags'),
+        'title': _('Document tags'),
     }
 
     return tag_list(request, queryset=document.tags.all(), extra_context=context)
@@ -250,7 +251,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
-        messages.error(request, _(u'Must provide at least one tagged document.'))
+        messages.error(request, _('Must provide at least one tagged document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
@@ -288,38 +289,38 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
         context['form'] = form
         if len(documents) == 1:
             context['object'] = documents[0]
-            context['title'] = _(u'Remove tag from document: %s.') % ', '.join([unicode(d) for d in documents])
+            context['title'] = _('Remove tag from document: %s.') % ', '.join([unicode(d) for d in documents])
         elif len(documents) > 1:
-            context['title'] = _(u'Remove tag from documents: %s.') % ', '.join([unicode(d) for d in documents])
+            context['title'] = _('Remove tag from documents: %s.') % ', '.join([unicode(d) for d in documents])
 
     if tags:
         if len(tags) == 1:
             if len(documents) == 1:
                 context['object'] = documents[0]
-                context['title'] = _(u'Are you sure you wish to remove the tag "%(tag)s" from the document: %(document)s?') % {
+                context['title'] = _('Are you sure you wish to remove the tag "%(tag)s" from the document: %(document)s?') % {
                     'tag': ', '.join([unicode(d) for d in tags]), 'document': ', '.join([unicode(d) for d in documents])}
             else:
-                context['title'] = _(u'Are you sure you wish to remove the tag "%(tag)s" from the documents: %(documents)s?') % {
+                context['title'] = _('Are you sure you wish to remove the tag "%(tag)s" from the documents: %(documents)s?') % {
                     'tag': ', '.join([unicode(d) for d in tags]), 'documents': ', '.join([unicode(d) for d in documents])}
         elif len(tags) > 1:
             if len(documents) == 1:
                 context['object'] = documents[0]
-                context['title'] = _(u'Are you sure you wish to remove the tags: %(tags)s from the document: %(document)s?') % {
+                context['title'] = _('Are you sure you wish to remove the tags: %(tags)s from the document: %(document)s?') % {
                     'tags': ', '.join([unicode(d) for d in tags]), 'document': ', '.join([unicode(d) for d in documents])}
             else:
-                context['title'] = _(u'Are you sure you wish to remove the tags %(tags)s from the documents: %(documents)s?') % {
+                context['title'] = _('Are you sure you wish to remove the tags %(tags)s from the documents: %(documents)s?') % {
                     'tags': ', '.join([unicode(d) for d in tags]), 'documents': ', '.join([unicode(d) for d in documents])}
 
     if request.method == 'POST':
         for document in documents:
             for tag in tags:
                 if tag not in document.tags.all():
-                    messages.warning(request, _(u'Document "%(document)s" wasn\'t tagged as "%(tag)s"') % {
+                    messages.warning(request, _('Document "%(document)s" wasn\'t tagged as "%(tag)s"') % {
                         'document': document, 'tag': tag}
                     )
                 else:
                     tag.documents.remove(document)
-                    messages.success(request, _(u'Tag "%(tag)s" removed successfully from document "%(document)s".') % {
+                    messages.success(request, _('Tag "%(tag)s" removed successfully from document "%(document)s".') % {
                         'document': document, 'tag': tag}
                     )
 

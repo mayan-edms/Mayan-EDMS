@@ -1,8 +1,4 @@
-PICTURE_ERROR_SMALL = u'picture_error.png'
-PICTURE_ERROR_MEDIUM = u'1297211435_error.png'
-PICTURE_UNKNOWN_SMALL = u'1299549572_unknown2.png'
-PICTURE_UNKNOWN_MEDIUM = u'1299549805_unknown.png'
+from __future__ import unicode_literals
 
-DEFAULT_ZIP_FILENAME = u'document_bundle.zip'
-
+DEFAULT_ZIP_FILENAME = 'document_bundle.zip'
 DOCUMENT_IMAGE_TASK_TIMEOUT = 20
