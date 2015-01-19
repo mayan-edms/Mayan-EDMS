@@ -28,4 +28,4 @@ setup_metadata_type_edit = {'text': _('Edit'), 'view': 'metadata:setup_metadata_
 setup_metadata_type_delete = {'text': _('Delete'), 'view': 'metadata:setup_metadata_type_delete', 'args': 'object.pk', 'famfam': 'xhtml_delete', 'permissions': [PERMISSION_METADATA_TYPE_DELETE]}
 setup_metadata_type_create = {'text': _('Create new'), 'view': 'metadata:setup_metadata_type_create', 'famfam': 'xhtml_add', 'permissions': [PERMISSION_METADATA_TYPE_CREATE]}
 
-link_documents_missing_required_metadata = {'text': _('Missing metadata'), 'view': 'metadata:documents_missing_required_metadata', 'icon': 'to_do_list.png'}
+link_documents_missing_required_metadata = {'text': _('Missing required metadata'), 'view': 'metadata:documents_missing_required_metadata', 'icon': 'to_do_list.png'}
