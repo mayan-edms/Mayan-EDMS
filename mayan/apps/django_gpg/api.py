@@ -2,6 +2,7 @@ from __future__ import absolute_import
 
 import logging
 import os
+import sys
 import tempfile
 
 try:
@@ -14,9 +15,11 @@ import gnupg
 
 from django.utils.translation import ugettext_lazy as _
 
-from .exceptions import (GPGVerificationError, GPGSigningError,
-                         GPGDecryptionError, KeyDeleteError, KeyGenerationError,
-                         KeyFetchingError, KeyDoesNotExist, KeyImportError)
+from .exceptions import (
+    GPGException, GPGVerificationError, GPGSigningError, GPGDecryptionError,
+    KeyDeleteError, KeyGenerationError, KeyFetchingError, KeyDoesNotExist,
+    KeyImportError
+)
 from .literals import KEY_TYPES
 
 logger = logging.getLogger(__name__)
@@ -123,7 +126,10 @@ class GPG(object):
 
         self.keyservers = keyservers
 
-        self.gpg = gnupg.GPG(**kwargs)
+        try:
+            self.gpg = gnupg.GPG(**kwargs)
+        except Exception as exception:
+            raise GPGException(u'ERROR: GPG initialization error; %s' % exception)
 
     def verify_file(self, file_input, detached_signature=None, fetch_key=False):
         """
