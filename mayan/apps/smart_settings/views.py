@@ -24,9 +24,10 @@ def setting_list(request):
                     'exists': sub_setting.get('exists', False),
                     'default': sub_setting['default'],
                 })
+
     context = {
         'title': _(u'Settings'),
-        'object_list': new_settings,
+        'object_list': sorted(new_settings, key=lambda entry: entry['global_name']),
         'hide_link': True,
         'hide_object': True,
         'extra_columns': [
