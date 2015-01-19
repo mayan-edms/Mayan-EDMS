@@ -68,7 +68,7 @@ class DocumentVersionSignatureManager(models.Manager):
             args = (document_descriptor,)
 
         try:
-            return gpg.verify_file(*args, fetch_key=True)
+            return gpg.verify_file(*args, fetch_key=False)
         except GPGVerificationError:
             return None
         finally:
