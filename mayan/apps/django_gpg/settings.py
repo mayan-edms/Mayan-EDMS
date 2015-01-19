@@ -14,6 +14,6 @@ register_settings(
     settings=[
         {'name': u'KEYSERVERS', 'global_name': u'SIGNATURES_KEYSERVERS', 'default': ['pool.sks-keyservers.net'], 'description': _(u'List of keyservers to be queried for unknown keys.')},
         {'name': u'GPG_HOME', 'global_name': u'SIGNATURES_GPG_HOME', 'default': os.path.join(settings.MEDIA_ROOT, u'gpg_home'), 'description': _(u'Home directory used to store keys as well as configuration files.')},
-        {'name': u'GPG_PATH', 'global_name': u'SIGNATURES_GPG_PATH', 'default': u'/usr/bin/gpgs', 'description': _(u'Path to the GPG binary.')},
+        {'name': u'GPG_PATH', 'global_name': u'SIGNATURES_GPG_PATH', 'default': u'/usr/bin/gpg', 'description': _(u'Path to the GPG binary.')},
     ]
 )
