@@ -80,50 +80,14 @@ class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
 
 class APIDocumentMetadataListView(generics.ListCreateAPIView):
     permission_classes = (MayanPermission,)
-
+    serializer_class = DocumentMetadataSerializer
     mayan_view_permissions = {'POST': [PERMISSION_METADATA_DOCUMENT_ADD]}
 
     def get_queryset(self):
-        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
-        try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_METADATA_DOCUMENT_VIEW])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_VIEW, self.request.user, document)
+        return DocumentMetadata.objects.filter(document=self.kwargs['document_pk'])
 
-        queryset = document.metadata.all()
-        return queryset
-
-    def get_serializer_class(self):
-        if self.request.method == 'GET':
-            return DocumentMetadataSerializer
-        elif self.request.method == 'POST':
-            return DocumentNewMetadataSerializer
-
-    def get(self, *args, **kwargs):
-        """Returns a list of selected document's metadata types and values."""
-        return super(APIDocumentMetadataListView, self).get(*args, **kwargs)
-
-    def post(self, request, *args, **kwargs):
-        """Add an existing metadata type and value to the selected document."""
-
-        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
-        try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_ADD, self.request.user, document)
-
-        serializer = self.get_serializer(data=self.request.POST)
-
-        if serializer.is_valid():
-            metadata_type = get_object_or_404(MetadataType, pk=serializer.data['metadata_type'])
-            try:
-                document.metadata.create(metadata_type=metadata_type, value=serializer.data['value'])
-            except Exception as exception:
-                return Response(status=status.HTTP_400_BAD_REQUEST, data={'non_field_errors': unicode(exception)})
-            else:
-                return Response(status=status.HTTP_201_CREATED, )
-        else:
-            return Response(status=status.HTTP_400_BAD_REQUEST, data=serializer.errors)
+    def pre_save(self, serializer):
+        serializer.document = Document.objects.get(pk=self.kwargs['document_pk'])
 
 
 class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
