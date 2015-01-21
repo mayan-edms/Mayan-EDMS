@@ -142,7 +142,7 @@ class Installation(SingletonModel):
         self.os_properties()
         self.binary_dependencies()
         self.mayan_properties()
-        self.git_properties()
+#        self.git_properties()
         self.virtualenv_properties()
 
     def __getattr__(self, name):

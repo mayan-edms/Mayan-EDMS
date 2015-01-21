@@ -123,7 +123,8 @@ class APIDocumentFolderListView(generics.ListAPIView):
 
 
 class APIFolderDocumentView(views.APIView):
-    def delete(self, request):
+
+    def delete(self, request, *args, **kwargs):
         """Remove a document from the selected folder."""
 
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
