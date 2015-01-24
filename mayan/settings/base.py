@@ -68,7 +68,6 @@ INSTALLED_APPS = (
     'lock_manager',
     'mimetype',
     'navigation',
-    'pagination',
     'permissions',
     'project_setup',
     'project_tools',
@@ -102,6 +101,9 @@ INSTALLED_APPS = (
     # Must be last on Django < 1.7 as per documentation
     # https://django-activity-stream.readthedocs.org/en/latest/installation.html
     'actstream',
+    # Pagination app must go after the main app so that the main app can
+    # override the default pagination template
+    'pagination',
 )
 
 MIDDLEWARE_CLASSES = (
