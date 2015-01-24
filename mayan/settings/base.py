@@ -120,6 +120,7 @@ MIDDLEWARE_CLASSES = (
     'common.middleware.login_required_middleware.LoginRequiredMiddleware',
     'permissions.middleware.permission_denied_middleware.PermissionDeniedMiddleware',
     'pagination.middleware.PaginationMiddleware',
+    'common.middleware.ajax_redirect.AjaxRedirect',
 )
 
 ROOT_URLCONF = 'mayan.urls'
