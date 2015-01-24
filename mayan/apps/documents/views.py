@@ -147,6 +147,7 @@ def document_preview(request, document_id):
     return render_to_response('main/generic_detail.html', {
         'document': document,
         'form': preview_form,
+        'hide_labels': True,
         'object': document,
         'title': _('Document preview'),
     }, context_instance=RequestContext(request))
@@ -167,6 +168,7 @@ def document_content(request, document_id):
     return render_to_response('main/generic_detail.html', {
         'document': document,
         'form': content_form,
+        'hide_labels': True,
         'object': document,
         'title': _('Document content'),
     }, context_instance=RequestContext(request))
