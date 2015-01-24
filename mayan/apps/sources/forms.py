@@ -93,13 +93,20 @@ class StagingFolderSetupForm(forms.ModelForm):
         model = StagingFolderSource
 
 
-class POP3EmailSetupForm(forms.ModelForm):
+class EmailSetupBaseForm(forms.ModelForm):
     class Meta:
+        widgets = {
+            'password': forms.widgets.PasswordInput()
+        }
+
+
+class POP3EmailSetupForm(EmailSetupBaseForm):
+    class Meta(EmailSetupBaseForm.Meta):
         model = POP3Email
 
 
-class IMAPEmailSetupForm(forms.ModelForm):
-    class Meta:
+class IMAPEmailSetupForm(EmailSetupBaseForm):
+    class Meta(EmailSetupBaseForm.Meta):
         model = IMAPEmail
 
 
