@@ -114,18 +114,22 @@ class Installation(SingletonModel):
         except:
             namespace.add_property('is_git_repo', _('Running from a Git repository'), False)
         else:
-            repo.config_reader()
-            headcommit = repo.active_branch.commit
-            namespace.add_property('is_git_repo', _('Running from a Git repository'), True)
-            namespace.add_property('repo_remotes', _('Repository remotes'), ', '.join([unicode(remote) for remote in repo.remotes]), report=True)
-            namespace.add_property('repo_remotes_urls', _('Repository remotes URLs'), ', '.join([unicode(remote.url) for remote in repo.remotes]), report=True)
-            namespace.add_property('repo_head_reference', _('Branch'), repo.head.reference, report=True)
-            namespace.add_property('headcommit_hexsha', _('HEAD commit hex SHA'), headcommit.hexsha, report=True)
-            namespace.add_property('headcommit_author', _('HEAD commit author'), headcommit.author)
-            namespace.add_property('headcommit_authored_date', _('HEAD commit authored date'), time.asctime(time.gmtime(headcommit.authored_date)), report=True)
-            namespace.add_property('headcommit_committer', _('HEAD commit committer'), headcommit.committer)
-            namespace.add_property('headcommit_committed_date', _('HEAD commit committed date'), time.asctime(time.gmtime(headcommit.committed_date)), report=True)
-            namespace.add_property('headcommit_message', _('HEAD commit message'), headcommit.message, report=True)
+            try:
+                repo.config_reader()
+                headcommit = repo.active_branch.commit
+                namespace.add_property('is_git_repo', _('Running from a Git repository'), True)
+                namespace.add_property('repo_remotes', _('Repository remotes'), ', '.join([unicode(remote) for remote in repo.remotes]), report=True)
+                namespace.add_property('repo_remotes_urls', _('Repository remotes URLs'), ', '.join([unicode(remote.url) for remote in repo.remotes]), report=True)
+                namespace.add_property('repo_head_reference', _('Branch'), repo.head.reference, report=True)
+                namespace.add_property('headcommit_hexsha', _('HEAD commit hex SHA'), headcommit.hexsha, report=True)
+                namespace.add_property('headcommit_author', _('HEAD commit author'), headcommit.author)
+                namespace.add_property('headcommit_authored_date', _('HEAD commit authored date'), time.asctime(time.gmtime(headcommit.authored_date)), report=True)
+                namespace.add_property('headcommit_committer', _('HEAD commit committer'), headcommit.committer)
+                namespace.add_property('headcommit_committed_date', _('HEAD commit committed date'), time.asctime(time.gmtime(headcommit.committed_date)), report=True)
+                namespace.add_property('headcommit_message', _('HEAD commit message'), headcommit.message, report=True)
+            except:
+                # Error getting git information, leave blank
+                pass
 
     def virtualenv_properties(self):
         namespace = PropertyNamespace('venv', _('VirtualEnv'))
