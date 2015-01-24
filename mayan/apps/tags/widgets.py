@@ -4,24 +4,6 @@ from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
 
-def get_tags_inline_widget(document):
-    """
-    A tag widget that includes the total tag count for a given document
-    """
-    # TODO: merge widgets
-    tags_template = []
-    tag_count = document.tags.count()
-    if tag_count:
-        tags_template.append('<div class="tc">')
-
-        for tag in document.tags.all():
-            tags_template.append('<ul class="tags"><li style="background: %s;">%s</li></ul>' % (tag.get_color_code(), escape(tag.label)))
-
-        tags_template.append('<div style="clear:both;"></div>')
-        tags_template.append('</div>')
-    return mark_safe(''.join(tags_template))
-
-
 def get_tags_inline_widget_simple(document):
     """
     A tag widget that displays the tags for the given document
