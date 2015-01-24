@@ -1,8 +1,7 @@
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.conf.urls import patterns, url
-from django.views.generic import RedirectView, TemplateView
+from django.views.generic import TemplateView
 
 
 urlpatterns = patterns('common.views',
@@ -28,8 +27,6 @@ urlpatterns += patterns('',
     url(r'^password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', {'template_name': 'main/password_reset_confirm.html', 'post_reset_redirect': '/password/reset/complete/'}, name='password_reset_confirm_view'),
     url(r'^password/reset/complete/$', 'django.contrib.auth.views.password_reset_complete', {'template_name': 'main/password_reset_complete.html'}, name='password_reset_complete_view'),
     url(r'^password/reset/done/$', 'django.contrib.auth.views.password_reset_done', {'template_name': 'main/password_reset_done.html'}, name='password_reset_done_view'),
-
-    (r'^favicon\.ico$', RedirectView.as_view(url='%s%s' % (settings.STATIC_URL, 'images/favicon.ico'))),
 )
 
 urlpatterns += patterns('',
