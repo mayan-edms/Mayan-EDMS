@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -41,7 +42,7 @@ class Workflow(models.Model):
 class WorkflowState(models.Model):
     workflow = models.ForeignKey(Workflow, related_name='states', verbose_name=_('Workflow'))
     label = models.CharField(max_length=255, verbose_name=_('Label'))
-    initial = models.BooleanField(default=False, verbose_name=_('Initial'))
+    initial = models.BooleanField(default=False, help_text=_('Select if this will be the state with which you want the workflow to start in. Only one state can be the initial state.'), verbose_name=_('Initial'))
 
     def __str__(self):
         return self.label
@@ -82,10 +83,10 @@ class WorkflowInstance(models.Model):
     def get_absolute_url(self):
         return reverse('document_states:workflow_instance_detail', args=[str(self.pk)])
 
-    def do_transition(self, transition):
+    def do_transition(self, comment, transition, user):
         try:
             if transition in self.get_current_state().origin_transitions.all():
-                self.log_entries.create(transition=transition)
+                self.log_entries.create(comment=comment, transition=transition, user=user)
         except AttributeError:
             # No initial state has been set for this workflow
             pass
@@ -123,8 +124,10 @@ class WorkflowInstance(models.Model):
 @python_2_unicode_compatible
 class WorkflowInstanceLogEntry(models.Model):
     workflow_instance = models.ForeignKey(WorkflowInstance, related_name='log_entries', verbose_name=_('Workflow instance'))
-    datetime = models.DateTimeField(auto_now_add=True, verbose_name=_('Datetime'))
+    datetime = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_('Datetime'))
     transition = models.ForeignKey(WorkflowTransition, verbose_name=_('Transition'))
+    user = models.ForeignKey(User, verbose_name=_('User'))
+    comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
     def __str__(self):
         return unicode(self.transition)

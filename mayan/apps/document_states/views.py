@@ -79,7 +79,7 @@ class WorkflowInstanceDetailView(SingleObjectListView):
         return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
 
     def get_queryset(self):
-        return self.get_workflow_instance().log_entries.all()
+        return self.get_workflow_instance().log_entries.order_by('-datetime')
 
     def get_context_data(self, **kwargs):
         form = WorkflowInstanceDetailForm(instance=self.get_workflow_instance(), extra_fields=[
@@ -133,7 +133,7 @@ class WorkflowInstanceTransitionView(FormView):
 
     def form_valid(self, form):
         transition = self.get_workflow_instance().workflow.transitions.get(pk=form.cleaned_data['transition'])
-        self.get_workflow_instance().do_transition(transition)
+        self.get_workflow_instance().do_transition(comment=form.cleaned_data['comment'], transition=transition, user=self.request.user)
         return HttpResponseRedirect(self.get_success_url())
 
     def get_form_kwargs(self):

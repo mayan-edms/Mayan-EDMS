@@ -53,6 +53,10 @@ register_model_list_columns(WorkflowInstance, [
         'attribute': 'get_current_state'
     },
     {
+        'name': _('User'),
+        'attribute': encapsulate(lambda workflow: getattr(workflow.get_last_log_entry(), 'user', _('None')))
+    },
+    {
         'name': _('Last transition'),
         'attribute': 'get_last_transition'
     },
@@ -79,8 +83,16 @@ register_model_list_columns(WorkflowInstanceLogEntry, [
         'attribute': 'datetime'
     },
     {
+        'name': _('User'),
+        'attribute': 'user'
+    },
+    {
         'name': _('Transition'),
         'attribute': 'transition'
+    },
+    {
+        'name': _('Comment'),
+        'attribute': 'comment'
     },
 ])
 
