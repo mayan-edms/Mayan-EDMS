@@ -171,13 +171,21 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         'previous': previous,
         'next': next,
     }
-    if len(tags) == 1:
+
+    context = {
+        'form': form,
+        'previous': previous,
+        'message': _('Will be removed from all documents.'),
+        'next': next,
+        'title': ungettext(
+            'Are you sure you wish to delete the selected tag?',
+            'Are you sure you wish to delete the selected tags?',
+            len(tags)
+        )
+    }
+
+    if len(documents) == 1:
         context['object'] = tags[0]
-        context['title'] = _('Are you sure you wish to delete the tag: %s?') % ', '.join([unicode(d) for d in tags])
-        context['message'] = _('Will be removed from all documents.')
-    elif len(tags) > 1:
-        context['title'] = _('Are you sure you wish to delete the tags: %s?') % ', '.join([unicode(d) for d in tags])
-        context['message'] = _('Will be removed from all documents.')
 
     return render_to_response('main/generic_confirm.html', context,
                               context_instance=RequestContext(request))
@@ -222,7 +230,7 @@ class TagTaggedItemListView(DocumentListView):
 
     def get_extra_context(self):
         return {
-            'title': _('Documents with the tag "%s"') % self.get_tag(),
+            'title': _('Documents with the tag: %s') % self.get_tag(),
             'hide_links': True,
             'object': self.get_tag(),
         }
@@ -239,7 +247,7 @@ def document_tags(request, document_id):
     context = {
         'object': document,
         'document': document,
-        'title': _('Document tags'),
+        'title': _('Tags for document: %s') % document,
     }
 
     return tag_list(request, queryset=document.tags.all(), extra_context=context)

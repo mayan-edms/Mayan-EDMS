@@ -68,10 +68,10 @@ def document_verify(request, document_pk):
         )
 
     return render_to_response('main/generic_template.html', {
-        'title': _('Document signature properties'),
-        'object': document,
         'document': document,
+        'object': document,
         'paragraphs': paragraphs,
+        'title': _('Signature properties for document: %s') % document,
     }, context_instance=RequestContext(request))
 
 
@@ -103,11 +103,11 @@ def document_signature_upload(request, document_pk):
         form = DetachedSignatureForm()
 
     return render_to_response('main/generic_form.html', {
-        'title': _('Upload detached signature'),
-        'next': next,
         'form': form,
-        'previous': previous,
+        'next': next,
         'object': document,
+        'previous': previous,
+        'title': _('Upload detached signature for document: %s') % document,
     }, context_instance=RequestContext(request))
 
 

@@ -327,7 +327,7 @@ def metadata_view(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_VIEW, request.user, document)
 
     return render_to_response('main/generic_list.html', {
-        'title': _('Document metadata'),
+        'title': _('Metadata for document: %s') % document,
         'object_list': document.metadata.all(),
         'extra_columns': [
             {'name': _('Value'), 'attribute': 'value'},

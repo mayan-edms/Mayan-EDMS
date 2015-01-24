@@ -56,7 +56,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
             {
                 'hide_link': True,
                 'object': self.get_document(),
-                'title': _('Document workflows'),
+                'title': _('Workflows for document: %s') % self.get_document(),
                 'list_object_variable_name': 'workflow_instance',
             }
         )

@@ -128,7 +128,7 @@ def document_properties(request, document_id):
         'form': document_properties_form,
         'document': document,
         'object': document,
-        'title': _('Document properties'),
+        'title': _('Properties for document: %s') % document,
     }, context_instance=RequestContext(request))
 
 
@@ -149,7 +149,7 @@ def document_preview(request, document_id):
         'form': preview_form,
         'hide_labels': True,
         'object': document,
-        'title': _('Document preview'),
+        'title': _('Preview of document: %s') % document,
     }, context_instance=RequestContext(request))
 
 
@@ -170,7 +170,7 @@ def document_content(request, document_id):
         'form': content_form,
         'hide_labels': True,
         'object': document,
-        'title': _('Document content'),
+        'title': _('Content of document: %s') % document,
     }, context_instance=RequestContext(request))
 
 
@@ -258,7 +258,7 @@ def document_edit(request, document_id):
     return render_to_response('main/generic_form.html', {
         'form': form,
         'object': document,
-        'title': _('Edit document properties'),
+        'title': _('Edit properties of document: %s') % document,
     }, context_instance=RequestContext(request))
 
 
@@ -1111,10 +1111,6 @@ def document_version_list(request, document_pk):
     document.add_as_recent_document_for_user(request.user)
 
     context = {
-        'object_list': document.versions.order_by('-timestamp'),
-        'title': _('Document versions'),
-        'hide_object': True,
-        'object': document,
         'access_object': document,
         'extra_columns': [
             {
@@ -1133,7 +1129,11 @@ def document_version_list(request, document_pk):
                 'name': _('Comment'),
                 'attribute': 'comment',
             },
-        ]
+        ],
+        'hide_object': True,
+        'object': document,
+        'object_list': document.versions.order_by('-timestamp'),
+        'title': _('Versions of document: %s') % document,
     }
 
     return render_to_response('main/generic_list.html', context,

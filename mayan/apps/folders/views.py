@@ -8,7 +8,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessEntry
 from acls.utils import apply_default_acls
@@ -191,9 +191,12 @@ def folder_add_document(request, document_id=None, document_id_list=None):
 
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _('Add document: %s to folder.') % documents[0]
-    elif len(documents) > 1:
-        context['title'] = _('Add documents: %s to folder.') % ', '.join([unicode(d) for d in documents])
+
+    context['title'] = ungettext(
+        'Add document to folder',
+        'Add documents to folder',
+        len(documents)
+    )
 
     return render_to_response('main/generic_form.html', context,
                               context_instance=RequestContext(request))
@@ -208,9 +211,9 @@ def document_folder_list(request, document_id):
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
     context = {
-        'title': _('Folders containing this document'),
-        'object': document,
         'hide_link': True,
+        'object': document,
+        'title': _('Folders containing document: %s') % document,
     }
 
     queryset = document.folders.all()

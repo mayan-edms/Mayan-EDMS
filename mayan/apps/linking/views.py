@@ -77,9 +77,6 @@ def smart_link_instances_for_document(request, document_id):
 
     context = {
         'document': document,
-        'object': document,
-        'object_list': smart_links,
-        'title': _('Document smart links'),
         'extra_columns': [
             {'name': _('Indentifier'), 'attribute': encapsulate(lambda resolved_smart_link: resolved_smart_link.smart_link.get_dynamic_title(document))},
             {'name': _('Documents'), 'attribute': encapsulate(lambda resolved_smart_link: resolved_smart_link.queryset.count())}
@@ -94,6 +91,9 @@ def smart_link_instances_for_document(request, document_id):
         },
         'hide_object': True,
         'hide_link': True,
+        'object': document,
+        'object_list': smart_links,
+        'title': _('Smart links for document: %s') % document,
     }
 
     return render_to_response('main/generic_list.html', context,

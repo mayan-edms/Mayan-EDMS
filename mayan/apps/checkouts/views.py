@@ -58,7 +58,7 @@ def checkout_info(request, document_pk):
     return render_to_response('main/generic_template.html', {
         'paragraphs': paragraphs,
         'object': document,
-        'title': _('Document check out details')
+        'title': _('Check out details for document: %s') % document
     }, context_instance=RequestContext(request))
 
 
@@ -91,7 +91,7 @@ def checkout_document(request, document_pk):
     return render_to_response('main/generic_form.html', {
         'form': form,
         'object': document,
-        'title': _('Document check out')
+        'title': _('Check out document: %s') % document
     }, context_instance=RequestContext(request))
 
 

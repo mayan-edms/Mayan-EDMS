@@ -402,8 +402,8 @@ def document_index_list(request, document_id):
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
 
     return render_to_response('main/generic_list.html', {
-        'title': _('Indexes containing this document'),
         'object_list': object_list,
+        'object': document,
         'hide_link': True,
-        'object': document
+        'title': _('Indexes containing document: %s') % document,
     }, context_instance=RequestContext(request))
