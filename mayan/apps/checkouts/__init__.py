@@ -8,13 +8,14 @@ from mayan.celery import app
 from navigation.api import register_links, register_top_menu
 from rest_api.classes import APIEndPoint
 
-from .links import (checkin_document, checkout_document, checkout_info,
-                    checkout_list)
+from .links import (
+    checkin_document, checkout_document, checkout_info, checkout_list
+)
 from .models import DocumentCheckout
-from .permissions import (PERMISSION_DOCUMENT_CHECKIN,
-                          PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
-                          PERMISSION_DOCUMENT_CHECKOUT,
-                          PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE)
+from .permissions import (
+    PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
+    PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE
+)
 
 CHECK_EXPIRED_CHECK_OUTS_INTERVAL = 60  # Lowest check out expiration allowed
 

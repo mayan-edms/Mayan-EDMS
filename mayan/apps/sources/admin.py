@@ -1,7 +1,9 @@
 from django.contrib import admin
 
-from .models import (SourceTransformation, StagingFolderSource,
-                     WatchFolderSource, WebFormSource)
+from .models import (
+    SourceTransformation, StagingFolderSource, WatchFolderSource,
+    WebFormSource
+)
 
 admin.site.register(SourceTransformation)
 admin.site.register(StagingFolderSource)

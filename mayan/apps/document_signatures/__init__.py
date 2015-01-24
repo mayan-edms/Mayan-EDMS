@@ -15,7 +15,7 @@ from navigation.api import register_links
 
 from .links import (
     document_signature_delete, document_signature_download,
-     document_signature_upload, document_verify
+    document_signature_upload, document_verify
 )
 from .models import DocumentVersionSignature
 from .permissions import (

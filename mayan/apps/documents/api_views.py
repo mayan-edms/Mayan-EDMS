@@ -12,28 +12,29 @@ from rest_framework.settings import api_settings
 from acls.models import AccessEntry
 from common.models import SharedUploadedFile
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
-from converter.literals import (DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
-                                DEFAULT_ZOOM_LEVEL)
+from converter.literals import (
+    DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+)
 from permissions.models import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
-from .models import (Document, DocumentPage, DocumentType, DocumentVersion,
-                     RecentDocument)
-from .permissions import (PERMISSION_DOCUMENT_CREATE,
-                          PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_EDIT,
-                          PERMISSION_DOCUMENT_NEW_VERSION,
-                          PERMISSION_DOCUMENT_PROPERTIES_EDIT,
-                          PERMISSION_DOCUMENT_VIEW,
-                          PERMISSION_DOCUMENT_TYPE_CREATE,
-                          PERMISSION_DOCUMENT_TYPE_DELETE,
-                          PERMISSION_DOCUMENT_TYPE_EDIT,
-                          PERMISSION_DOCUMENT_TYPE_VIEW)
-from .serializers import (DocumentImageSerializer, DocumentPageSerializer,
-                          DocumentSerializer, DocumentTypeSerializer,
-                          DocumentVersionSerializer, NewDocumentSerializer,
-                          RecentDocumentSerializer)
+from .models import (
+    Document, DocumentPage, DocumentType, DocumentVersion, RecentDocument
+)
+from .permissions import (
+    PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_DELETE,
+    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_NEW_VERSION,
+    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
+    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_DELETE,
+    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_VIEW
+)
+from .serializers import (
+    DocumentImageSerializer, DocumentPageSerializer, DocumentSerializer,
+    DocumentTypeSerializer, DocumentVersionSerializer, NewDocumentSerializer,
+    RecentDocumentSerializer
+)
 from .settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 from .tasks import task_get_document_image, task_new_document
 

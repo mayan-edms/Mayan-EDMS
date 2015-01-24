@@ -14,8 +14,9 @@ from converter.api import convert
 from documents.models import DocumentPage
 
 from .exceptions import UnpaperError
-from .literals import (DEFAULT_OCR_FILE_EXTENSION, DEFAULT_OCR_FILE_FORMAT,
-                       UNPAPER_FILE_FORMAT)
+from .literals import (
+    DEFAULT_OCR_FILE_EXTENSION, DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT
+)
 from .parsers import parse_document_page
 from .parsers.exceptions import ParserError, ParserUnknownFile
 from .runtime import ocr_backend

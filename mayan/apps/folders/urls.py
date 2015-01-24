@@ -2,9 +2,10 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .api_views import (APIDocumentFolderListView, APIFolderDocumentListView,
-                        APIFolderDocumentView, APIFolderListView,
-                        APIFolderView)
+from .api_views import (
+    APIDocumentFolderListView, APIFolderDocumentListView,
+    APIFolderDocumentView, APIFolderListView, APIFolderView
+)
 from .views import FolderDetailView, FolderListView
 
 urlpatterns = patterns('folders.views',

@@ -21,12 +21,14 @@ from django.views.generic.list import ListView
 from acls.models import AccessEntry
 from permissions.models import Permission
 
-from .forms import (ChoiceForm, EmailAuthenticationForm, LicenseForm,
-                    LocaleProfileForm, LocaleProfileForm_view, UserForm,
-                    UserForm_view)
-from .mixins import (ExtraContextMixin, ObjectListPermissionFilterMixin,
-                     ObjectPermissionCheckMixin, RedirectionMixin,
-                     ViewPermissionCheckMixin)
+from .forms import (
+    ChoiceForm, EmailAuthenticationForm, LicenseForm, LocaleProfileForm,
+    LocaleProfileForm_view, UserForm, UserForm_view
+)
+from .mixins import (
+    ExtraContextMixin, ObjectListPermissionFilterMixin,
+    ObjectPermissionCheckMixin, RedirectionMixin, ViewPermissionCheckMixin
+)
 from .settings import LOGIN_METHOD
 
 

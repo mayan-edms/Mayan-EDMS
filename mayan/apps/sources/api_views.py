@@ -9,15 +9,17 @@ from rest_framework import generics
 from rest_framework.response import Response
 
 from documents.permissions import PERMISSION_DOCUMENT_CREATE
-from documents.settings import (DISPLAY_SIZE, ZOOM_MAX_LEVEL,
-                                ZOOM_MIN_LEVEL)
+from documents.settings import (
+    DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
+)
 from rest_api.permissions import MayanPermission
 
 from .models import StagingFolderSource, WatchFolderSource
-from .serializers import (NewDocumentSerializer, StagingFolderFileSerializer,
-                          StagingFolderSerializer,
-                          StagingSourceFileImageSerializer,
-                          WebFormSourceSerializer)
+from .serializers import (
+    NewDocumentSerializer, StagingFolderFileSerializer,
+    StagingFolderSerializer, StagingSourceFileImageSerializer,
+    WebFormSourceSerializer
+)
 
 
 class APIStagingSourceFileView(generics.GenericAPIView):

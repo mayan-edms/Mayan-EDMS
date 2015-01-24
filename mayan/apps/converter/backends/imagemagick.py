@@ -4,9 +4,10 @@ import subprocess
 
 from . import ConverterBase
 from ..exceptions import ConvertError, IdentifyError, UnknownFileFormat
-from ..literals import (DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER,
-                        DIMENSION_SEPARATOR, TRANSFORMATION_RESIZE,
-                        TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM)
+from ..literals import (
+    DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER, DIMENSION_SEPARATOR,
+    TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
+)
 from ..settings import IM_CONVERT_PATH, IM_IDENTIFY_PATH
 
 CONVERTER_ERROR_STRING_NO_DECODER = 'no decode delegate for this image format'

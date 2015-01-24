@@ -2,11 +2,13 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .api_views import (APIDocumentMetadataListView, APIDocumentMetadataView,
-                        APIDocumentTypeMetadataTypeOptionalListView,
-                        APIDocumentTypeMetadataTypeRequiredListView,
-                        APIDocumentTypeMetadataTypeRequiredView,
-                        APIMetadataTypeListView, APIMetadataTypeView)
+from .api_views import (
+    APIDocumentMetadataListView, APIDocumentMetadataView,
+    APIDocumentTypeMetadataTypeOptionalListView,
+    APIDocumentTypeMetadataTypeRequiredListView,
+    APIDocumentTypeMetadataTypeRequiredView, APIMetadataTypeListView,
+    APIMetadataTypeView
+)
 
 urlpatterns = patterns('metadata.views',
     url(r'^(?P<document_id>\d+)/edit/$', 'metadata_edit', (), 'metadata_edit'),

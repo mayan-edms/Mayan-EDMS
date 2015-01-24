@@ -4,10 +4,12 @@ import subprocess
 
 from . import ConverterBase
 from ..exceptions import ConvertError, IdentifyError, UnknownFileFormat
-from ..literals import (TRANSFORMATION_RESIZE,
-                        TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM)
-from ..literals import (DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER,
-                        DIMENSION_SEPARATOR)
+from ..literals import (
+    TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
+)
+from ..literals import (
+    DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER, DIMENSION_SEPARATOR
+)
 from ..settings import GM_PATH, GM_SETTINGS
 
 CONVERTER_ERROR_STARTS_WITH = 'starts with'

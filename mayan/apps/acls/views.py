@@ -18,12 +18,14 @@ from common.widgets import two_state_template
 from permissions.models import Permission
 
 from .api import get_class_permissions_for
-from .classes import (AccessHolder, AccessObject, AccessObjectClass,
-                      ClassAccessHolder)
+from .classes import (
+    AccessHolder, AccessObject, AccessObjectClass, ClassAccessHolder
+)
 from .forms import ClassHolderSelectionForm, HolderSelectionForm
 from .models import AccessEntry, DefaultAccessEntry
-from .permissions import (ACLS_EDIT_ACL, ACLS_CLASS_EDIT_ACL,
-                          ACLS_CLASS_VIEW_ACL, ACLS_VIEW_ACL)
+from .permissions import (
+    ACLS_EDIT_ACL, ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL, ACLS_VIEW_ACL
+)
 from .widgets import object_w_content_type_icon
 
 logger = logging.getLogger(__name__)

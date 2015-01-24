@@ -2,9 +2,10 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import (Document, DocumentPage, DocumentPageTransformation,
-                     DocumentType, DocumentTypeFilename, DocumentVersion,
-                     RecentDocument)
+from .models import (
+    Document, DocumentPage, DocumentPageTransformation, DocumentType,
+    DocumentTypeFilename, DocumentVersion, RecentDocument
+)
 
 
 class DocumentPageInline(admin.StackedInline):

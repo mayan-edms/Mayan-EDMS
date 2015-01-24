@@ -14,9 +14,10 @@ from permissions.models import Permission
 
 from .api import clean_pages
 from .models import DocumentVersionOCRError
-from .permissions import (PERMISSION_OCR_CLEAN_ALL_PAGES,
-                          PERMISSION_OCR_DOCUMENT,
-                          PERMISSION_OCR_DOCUMENT_DELETE)
+from .permissions import (
+    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_DOCUMENT,
+    PERMISSION_OCR_DOCUMENT_DELETE
+)
 
 
 def document_submit(request, pk):

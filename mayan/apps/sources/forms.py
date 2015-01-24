@@ -9,8 +9,10 @@ from django.utils.translation import ugettext_lazy as _
 from documents.forms import DocumentForm
 from documents.models import DocumentVersion
 
-from .models import (IMAPEmail, POP3Email, SourceTransformation,
-                     StagingFolderSource, WebFormSource, WatchFolderSource)
+from .models import (
+    IMAPEmail, POP3Email, SourceTransformation, StagingFolderSource,
+    WebFormSource, WatchFolderSource
+)
 
 logger = logging.getLogger(__name__)
 

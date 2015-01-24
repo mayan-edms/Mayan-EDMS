@@ -2,8 +2,9 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from .permissions import (ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL,
-                          ACLS_EDIT_ACL, ACLS_VIEW_ACL)
+from .permissions import (
+    ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL, ACLS_EDIT_ACL, ACLS_VIEW_ACL
+)
 
 acl_list = {'text': _('ACLs'), 'view': 'acls:acl_list', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
 acl_detail = {'text': _('Details'), 'view': 'acls:acl_detail', 'args': ['access_object.gid', 'object.gid'], 'famfam': 'key_go', 'permissions': [ACLS_VIEW_ACL]}

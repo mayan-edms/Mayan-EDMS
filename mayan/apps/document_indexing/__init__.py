@@ -11,12 +11,13 @@ from navigation.api import register_links, register_top_menu
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 
-from .links import (document_index_list, document_index_main_menu_link,
-                    index_parent, index_setup, index_setup_create,
-                    index_setup_document_types, index_setup_delete,
-                    index_setup_edit, index_setup_list, index_setup_view,
-                    rebuild_index_instances, template_node_create,
-                    template_node_delete, template_node_edit)
+from .links import (
+    document_index_list, document_index_main_menu_link, index_parent,
+    index_setup, index_setup_create, index_setup_document_types,
+    index_setup_delete, index_setup_edit, index_setup_list, index_setup_view,
+    rebuild_index_instances, template_node_create, template_node_delete,
+    template_node_edit
+)
 from .models import Index, IndexTemplateNode, IndexInstanceNode
 from .tasks import task_delete_empty_index_nodes, task_index_document
 

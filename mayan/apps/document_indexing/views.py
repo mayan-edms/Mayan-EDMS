@@ -21,12 +21,12 @@ from permissions.models import Permission
 
 from .forms import IndexForm, IndexTemplateNodeForm
 from .models import Index, IndexInstanceNode, IndexTemplateNode
-from .permissions import (PERMISSION_DOCUMENT_INDEXING_CREATE,
-                          PERMISSION_DOCUMENT_INDEXING_DELETE,
-                          PERMISSION_DOCUMENT_INDEXING_EDIT,
-                          PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
-                          PERMISSION_DOCUMENT_INDEXING_SETUP,
-                          PERMISSION_DOCUMENT_INDEXING_VIEW)
+from .permissions import (
+    PERMISSION_DOCUMENT_INDEXING_CREATE, PERMISSION_DOCUMENT_INDEXING_DELETE,
+    PERMISSION_DOCUMENT_INDEXING_EDIT,
+    PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
+    PERMISSION_DOCUMENT_INDEXING_SETUP, PERMISSION_DOCUMENT_INDEXING_VIEW
+)
 from .tasks import task_do_rebuild_all_indexes
 from .widgets import index_instance_item_link, get_breadcrumbs, node_level
 

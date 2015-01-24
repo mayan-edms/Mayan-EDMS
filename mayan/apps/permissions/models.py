@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.models import AnonymousUserSingleton
 
-from .managers import (RoleMemberManager, StoredPermissionManager)
+from .managers import RoleMemberManager, StoredPermissionManager
 
 logger = logging.getLogger(__name__)
 

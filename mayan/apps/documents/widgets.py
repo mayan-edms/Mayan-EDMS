@@ -10,8 +10,9 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from converter.literals import (DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
-                                DEFAULT_ZOOM_LEVEL)
+from converter.literals import (
+    DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+)
 
 from .settings import DISPLAY_SIZE, THUMBNAIL_SIZE
 

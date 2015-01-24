@@ -2,11 +2,13 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .api_views import (APIDocumentView, APIDocumentImageView, APIDocumentListView,
-                        APIDocumentPageView, APIDocumentTypeDocumentListView,
-                        APIDocumentTypeListView, APIDocumentTypeView,
-                        APIDocumentVersionCreateView, APIDocumentVersionView,
-                        APIRecentDocumentListView)
+from .api_views import (
+    APIDocumentView, APIDocumentImageView, APIDocumentListView,
+    APIDocumentPageView, APIDocumentTypeDocumentListView,
+    APIDocumentTypeListView, APIDocumentTypeView,
+    APIDocumentVersionCreateView, APIDocumentVersionView,
+    APIRecentDocumentListView
+)
 from .settings import PRINT_SIZE, DISPLAY_SIZE
 from .views import DocumentListView
 

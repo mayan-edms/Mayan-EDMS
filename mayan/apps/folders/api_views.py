@@ -14,11 +14,11 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import Folder
-from .permissions import (PERMISSION_FOLDER_ADD_DOCUMENT,
-                          PERMISSION_FOLDER_CREATE, PERMISSION_FOLDER_DELETE,
-                          PERMISSION_FOLDER_EDIT,
-                          PERMISSION_FOLDER_REMOVE_DOCUMENT,
-                          PERMISSION_FOLDER_VIEW)
+from .permissions import (
+    PERMISSION_FOLDER_ADD_DOCUMENT, PERMISSION_FOLDER_CREATE,
+    PERMISSION_FOLDER_DELETE, PERMISSION_FOLDER_EDIT,
+    PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW
+)
 from .serializers import FolderSerializer
 
 

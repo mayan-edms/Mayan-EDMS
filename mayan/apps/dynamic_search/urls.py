@@ -2,8 +2,9 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .api_views import (APIRecentSearchListView, APIRecentSearchView,
-                        APISearchView)
+from .api_views import (
+    APIRecentSearchListView, APIRecentSearchView, APISearchView
+)
 
 urlpatterns = patterns('dynamic_search.views',
     url(r'^$', 'search', (), 'search'),

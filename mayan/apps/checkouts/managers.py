@@ -10,9 +10,10 @@ from acls.models import AccessEntry
 from documents.models import Document
 from permissions.models import Permission
 
-from .events import (event_document_auto_check_in,
-                     event_document_check_in,
-                     event_document_forceful_check_in)
+from .events import (
+    event_document_auto_check_in, event_document_check_in,
+    event_document_forceful_check_in
+)
 from .exceptions import DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
 from .permissions import PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE

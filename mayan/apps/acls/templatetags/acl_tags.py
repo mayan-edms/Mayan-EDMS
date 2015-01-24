@@ -3,8 +3,9 @@ from __future__ import unicode_literals
 import logging
 
 from django.core.exceptions import PermissionDenied
-from django.template import (Library, Node, TemplateSyntaxError, Variable,
-                             VariableDoesNotExist)
+from django.template import (
+    Library, Node, TemplateSyntaxError, Variable, VariableDoesNotExist
+)
 
 from acls.models import AccessEntry
 

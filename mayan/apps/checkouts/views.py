@@ -19,9 +19,10 @@ from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckoutForm
 from .literals import STATE_LABELS
 from .models import DocumentCheckout
-from .permissions import (PERMISSION_DOCUMENT_CHECKIN,
-                          PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
-                          PERMISSION_DOCUMENT_CHECKOUT)
+from .permissions import (
+    PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
+    PERMISSION_DOCUMENT_CHECKOUT
+)
 
 
 def checkout_list(request):

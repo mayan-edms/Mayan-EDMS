@@ -14,8 +14,9 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import Tag
-from .permissions import (PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
-                          PERMISSION_TAG_VIEW)
+from .permissions import (
+    PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE, PERMISSION_TAG_VIEW
+)
 from .serializers import TagSerializer
 
 
