@@ -409,10 +409,11 @@
                     });
                 });
                 $('.scrollable').scrollview();
-                $('.full-height').height($(window).height() - 230);
+                $('.full-height').height($(window).height() - $('.full-height').data('heightDifference'));
                 $(window).resize(function() {
-                    $('.full-height').height($(window).height() - 230);
+                    $('.full-height').height($(window).height() - $('.full-height').data('heightDifference'));
                 });
+
                 $('.no-parent-history', this).click(function() {
                     location.replace(this.href);
                     return false;

@@ -23,7 +23,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         rotation = final_attrs.get('rotation', 0)
         if value:
             output = []
-            output.append('<div class="full-height scrollable mayan-page-wrapper-interactive">')
+            output.append('<div class="full-height scrollable mayan-page-wrapper-interactive" data-height-difference=230>')
             output.append(document_html_widget(value.document, page=value.page_number, zoom=zoom, rotation=rotation, image_class='lazy-load-interactive', nolazyload=False, size=DISPLAY_SIZE))
             output.append('</div>')
             return mark_safe(''.join(output))
@@ -37,7 +37,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
     """
     def render(self, name, value, attrs=None):
         output = []
-        output.append('<div id="carousel-container">')
+        output.append('<div id="carousel-container" class="full-height scrollable" data-height-difference=360>')
 
         try:
             document_pages = value.pages.all()

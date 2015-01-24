@@ -151,7 +151,7 @@ class DocumentContentForm(forms.Form):
 
     contents = forms.CharField(
         label=_('Contents'),
-        widget=TextAreaDiv()
+        widget=TextAreaDiv(attrs={'class': 'text_area_div full-height', 'data-height-difference': 360})
     )
 
 
