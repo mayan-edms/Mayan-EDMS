@@ -344,7 +344,7 @@ def index_instance_node_view(request, index_instance_node_pk):
 
     return render_to_response('main/generic_list.html', {
         'object_list': index_instance_list,
-        'extra_columns_preffixed': [
+        'extra_columns': [
             {
                 'name': _('Node'),
                 'attribute': encapsulate(lambda x: index_instance_item_link(x))

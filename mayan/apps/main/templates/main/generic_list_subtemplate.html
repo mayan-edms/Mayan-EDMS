@@ -58,10 +58,6 @@
                                 <th>{% trans 'Identifier' %}</th>
                             {% endif %}
 
-                            {% for column in extra_columns_preffixed %}
-                                <th>{{ column.name }}</th>
-                            {% endfor %}
-
                             {% for column in object_list.0|get_model_list_columns %}
                                 <th>{{ column.name }}</th>
                             {% endfor %}
@@ -96,16 +92,7 @@
                                 <td>{% if not hide_link %}<a href="{{ object.get_absolute_url }}">{{ object }}</a>{% else %}{{ object }}{% endif %}</td>
                             {% endif %}
                         {% endif %}
-                        {% for column in extra_columns_preffixed %}
-                            {% if column.keep_together %}
-                                <td>
-                                    {{ object|object_property:column.attribute|make_non_breakable }}
-                                </td>
-                            {% else %}
-                                <td>{{ object|object_property:column.attribute }}</td>
-                            {% endif %}
-                        {% endfor %}
-                        {% if not hide_columns %}
+                         {% if not hide_columns %}
                             {% for column in object|get_model_list_columns %}
                                 <td>{{ object|object_property:column.attribute }}</td>
                             {% endfor %}
