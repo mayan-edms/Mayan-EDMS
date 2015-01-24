@@ -110,12 +110,12 @@ class Installation(SingletonModel):
         namespace = PropertyNamespace('git', _('Git repository'))
 
         try:
-            repo = Repo(os.path.abspath(os.path.join(settings.BASE_DIR, '..')))
+            repo = Repo(os.path.abspath(settings.BASE_DIR))
         except:
             namespace.add_property('is_git_repo', _('Running from a Git repository'), False)
         else:
             repo.config_reader()
-            headcommit = repo.head.commit
+            headcommit = repo.active_branch.commit
             namespace.add_property('is_git_repo', _('Running from a Git repository'), True)
             namespace.add_property('repo_remotes', _('Repository remotes'), ', '.join([unicode(remote) for remote in repo.remotes]), report=True)
             namespace.add_property('repo_remotes_urls', _('Repository remotes URLs'), ', '.join([unicode(remote.url) for remote in repo.remotes]), report=True)
@@ -142,7 +142,7 @@ class Installation(SingletonModel):
         self.os_properties()
         self.binary_dependencies()
         self.mayan_properties()
-#        self.git_properties()
+        self.git_properties()
         self.virtualenv_properties()
 
     def __getattr__(self, name):
