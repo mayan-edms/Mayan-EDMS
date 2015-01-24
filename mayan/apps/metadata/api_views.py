@@ -81,13 +81,40 @@ class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
 class APIDocumentMetadataListView(generics.ListCreateAPIView):
     permission_classes = (MayanPermission,)
     serializer_class = DocumentMetadataSerializer
-    mayan_view_permissions = {'POST': [PERMISSION_METADATA_DOCUMENT_ADD]}
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['document_pk'])
 
     def get_queryset(self):
-        return DocumentMetadata.objects.filter(document=self.kwargs['document_pk'])
+        document = self.get_document()
+
+        if self.request == 'GET':
+            # Make sure the use has the permission to see the metadata for this document
+            try:
+                Permission.objects.check_permissions(self.request.user, [PERMISSION_METADATA_DOCUMENT_VIEW])
+            except PermissionDenied:
+                AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_VIEW, self.request.user, document)
+            else:
+                return document.metadata.all()
+        elif self.request == 'POST':
+            # Make sure the use has the permission to add metadata to this document
+            try:
+                Permission.objects.check_permissions(self.request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
+            except PermissionDenied:
+                AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_ADD, self.request.user, document)
+            else:
+                return document.metadata.all()
 
     def pre_save(self, serializer):
-        serializer.document = Document.objects.get(pk=self.kwargs['document_pk'])
+        serializer.document = self.get_document()
+
+    def get(self, *args, **kwargs):
+        """Returns a list of selected document's metadata types and values."""
+        return super(APIDocumentMetadataListView, self).get(*args, **kwargs)
+
+    def post(self, *args, **kwargs):
+        """Add an existing metadata type and value to the selected document."""
+        return super(APIDocumentMetadataListView, self).post(*args, **kwargs)
 
 
 class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
