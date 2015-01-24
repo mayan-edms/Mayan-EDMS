@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django import forms
 from django.conf import settings
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.urlresolvers import reverse
 from django.utils.html import strip_tags
 from django.utils.http import urlencode
@@ -118,7 +119,7 @@ def document_html_widget(document, click_view=None, click_view_arguments=None, p
     if nolazyload:
         result.append('<img class="img-nolazyload" src="%s" alt="%s" />' % (preview_view, alt_text))
     else:
-        result.append('<img class="thin_border %s" data-src="%s" data-post-load-class="%s" src="%smain/icons/hourglass.png" alt="%s" />' % (image_class, preview_view, post_load_class, settings.STATIC_URL, alt_text))
+        result.append('<img class="thin_border %s" data-src="%s" data-post-load-class="%s" src="%s" alt="%s" />' % (image_class, preview_view, post_load_class, static('main/icons/hourglass.png'), alt_text))
 
     if click_view:
         result.append('</a>')

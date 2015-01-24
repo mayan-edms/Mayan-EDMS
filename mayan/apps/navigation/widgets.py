@@ -3,11 +3,11 @@ from __future__ import absolute_import, unicode_literals
 import urlparse
 
 from django.conf import settings
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.template import RequestContext, Variable
 from django.utils.safestring import mark_safe
-from django.contrib.staticfiles.storage import staticfiles_storage
 from django.utils.translation import ugettext_lazy as _
 
 from permissions.models import Permission
@@ -48,7 +48,7 @@ def render_widget(request, link):
                 </p>\
             </a>' % {
             'url': reverse(link['view']) if 'view' in link else link['url'],
-            'static_url': staticfiles_storage.url('main/icons/{0}'.format(link.get('icon', 'link_button.png'))),
+            'static_url': static('main/icons/{0}'.format(link.get('icon', 'link_button.png'))),
             'string': link['text'],
             'image_alt': _('Icon'),
         })

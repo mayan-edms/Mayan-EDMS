@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
+from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.urlresolvers import reverse
 from django.utils.html import strip_tags
 from django.utils.http import urlencode
@@ -56,7 +57,7 @@ def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NU
     if nolazyload:
         result.append('<img style="border: 1px solid black;" src="%s" alt="%s" />' % (preview_view, alt_text))
     else:
-        result.append('<img class="thin_border %s" data-src="%s" src="%smain/icons/hourglass.png" alt="%s" />' % (image_class, preview_view, settings.STATIC_URL, alt_text))
+        result.append('<img class="thin_border %s" data-src="%s" src="%s" alt="%s" />' % (image_class, preview_view, static('main/icons/hourglass.png'), alt_text))
 
     if click_view:
         result.append('</a>')
