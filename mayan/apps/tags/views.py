@@ -169,12 +169,6 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
     context = {
         'delete_view': True,
         'previous': previous,
-        'next': next,
-    }
-
-    context = {
-        'form': form,
-        'previous': previous,
         'message': _('Will be removed from all documents.'),
         'next': next,
         'title': ungettext(
@@ -184,7 +178,7 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         )
     }
 
-    if len(documents) == 1:
+    if len(tags) == 1:
         context['object'] = tags[0]
 
     return render_to_response('main/generic_confirm.html', context,

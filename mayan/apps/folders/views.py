@@ -265,17 +265,18 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
         return HttpResponseRedirect(next)
 
     context = {
-        'previous': previous,
         'next': next,
-        'object': folder
+        'object': folder,
+        'previous': previous,
+        'title': ungettext(
+            'Are you sure you wish to remove the selected document from the folder: %(folder)s?',
+            'Are you sure you wish to remove the selected documents from the folder: %(folder)s?',
+            len(folder_documents)
+        ) % {'folder': folder}
     }
+
     if len(folder_documents) == 1:
         context['object'] = folder_documents[0]
-        context['title'] = _('Are you sure you wish to remove the document: %(document)s from the folder "%(folder)s"?') % {
-            'document': ', '.join([unicode(d) for d in folder_documents]), 'folder': folder}
-    elif len(folder_documents) > 1:
-        context['title'] = _('Are you sure you wish to remove the documents: %(documents)s from the folder "%(folder)s"?') % {
-            'documents': ', '.join([unicode(d) for d in folder_documents]), 'folder': folder}
 
     return render_to_response('main/generic_confirm.html', context,
                               context_instance=RequestContext(request))

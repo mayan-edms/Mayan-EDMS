@@ -210,12 +210,15 @@ def document_delete(request, document_id=None, document_id_list=None):
         'delete_view': True,
         'previous': previous,
         'next': next,
+        'title': ungettext(
+            'Are you sure you wish to delete the selected document?',
+            'Are you sure you wish to delete the selected documents?',
+            len(documents)
+        )
     }
+
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _('Are you sure you wish to delete the document: %s?') % ', '.join([unicode(d) for d in documents])
-    elif len(documents) > 1:
-        context['title'] = _('Are you sure you wish to delete the documents: %s?') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_confirm.html', context,
                               context_instance=RequestContext(request))
@@ -301,13 +304,15 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
         'submit_label': _('Submit'),
         'previous': previous,
         'next': next,
+        'title': ungettext(
+            'Change the type of the selected document.',
+            'Change the type of the selected documents.',
+            len(documents)
+        )
     }
 
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _('Are you sure you wish to change the type of the document: %s?') % ', '.join([unicode(d) for d in documents])
-    elif len(documents) > 1:
-        context['title'] = _('Are you sure you wish to change the type of the documents: %s?') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_form.html', context,
                               context_instance=RequestContext(request))
@@ -485,15 +490,13 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
         )
         return HttpResponseRedirect(previous)
 
-    title = ungettext(
-        _('Are you sure you wish to reset the page count of this document?'),
-        _('Are you sure you wish to reset the page count of these documents?'),
-        len(documents)
-    )
-
     context = {
         'previous': previous,
-        'title': title,
+        'title': ungettext(
+            'Are you sure you wish to reset the page count of the selected document?',
+            'Are you sure you wish to reset the page count of the selected documents?',
+            len(documents)
+        )
     }
 
     if len(documents) == 1:
@@ -542,15 +545,17 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
 
     context = {
         'delete_view': True,
-        'previous': previous,
         'next': next,
+        'previous': previous,
+        'title': ungettext(
+            'Are you sure you wish to clear all the page transformations for the selected document?',
+            'Are you sure you wish to clear all the page transformations for the selected documents?',
+            len(documents)
+        )
     }
 
     if len(documents) == 1:
         context['object'] = documents[0]
-        context['title'] = _('Are you sure you wish to clear all the page transformations for document: %s?') % ', '.join([unicode(d) for d in documents])
-    elif len(documents) > 1:
-        context['title'] = _('Are you sure you wish to clear all the page transformations for documents: %s?') % ', '.join([unicode(d) for d in documents])
 
     return render_to_response('main/generic_confirm.html', context,
                               context_instance=RequestContext(request))
