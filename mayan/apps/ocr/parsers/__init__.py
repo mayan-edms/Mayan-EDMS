@@ -88,7 +88,7 @@ class SlateParser(Parser):
         pdf_pages = slate.PDF(descriptor)
         descriptor.close()
 
-        if unicode(pdf_pages[document_page.page_number - 1]) == '\u000c':
+        if pdf_pages[document_page.page_number - 1] == b'\x0c':
             raise ParserError
 
         document_page.content = pdf_pages[document_page.page_number - 1]
@@ -164,7 +164,7 @@ class PopplerParser(Parser):
             raise ParserError
 
         output = proc.stdout.read()
-        if unicode(output) == '\u000c':
+        if output == b'\x0c':
             logger.debug('Parser didn\'t any output')
             raise ParserError('No output')
 
