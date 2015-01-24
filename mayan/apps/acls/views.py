@@ -205,7 +205,6 @@ def acl_grant(request):
         return HttpResponseRedirect(next)
 
     context = {
-        'delete_view': True,
         'previous': previous,
         'next': next,
     }
@@ -297,7 +296,6 @@ def acl_revoke(request):
         return HttpResponseRedirect(next)
 
     context = {
-        'delete_view': True,
         'previous': previous,
         'next': next,
     }
@@ -542,7 +540,6 @@ def acl_class_multiple_grant(request):
         return HttpResponseRedirect(next)
 
     context = {
-        'delete_view': True,
         'previous': previous,
         'next': next,
     }
@@ -620,7 +617,6 @@ def acl_class_multiple_revoke(request):
         return HttpResponseRedirect(next)
 
     context = {
-        'delete_view': True,
         'previous': previous,
         'next': next,
     }
