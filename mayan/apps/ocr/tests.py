@@ -32,17 +32,18 @@ class DocumentOCRTestCase(TransactionTestCase):
         # Make sure content was extracted
         self.assertTrue(result in self.document.pages.first().content)
 
-    def test_ocr_language_backends_deu(self):
-        self._test_ocr_language_issue_16('deu', 'Mayan EDMS')
-
     def test_ocr_language_backends_end(self):
         self._test_ocr_language_issue_16('eng', 'Mayan EDMS')
 
-    def test_ocr_language_backends_spa(self):
-        self._test_ocr_language_issue_16('spa', 'Mayan EDMS')
+    # TODO: Add documents with for the corresponding language
+    # def test_ocr_language_backends_deu(self):
+    #    self._test_ocr_language_issue_16('deu', 'Mayan EDMS')
 
-    def test_ocr_language_backends_rus(self):
-        self._test_ocr_language_issue_16('rus', '')
+    # def test_ocr_language_backends_spa(self):
+    #    self._test_ocr_language_issue_16('spa', 'Mayan EDMS')
+
+    # def test_ocr_language_backends_rus(self):
+    #    self._test_ocr_language_issue_16('rus', '')
 
     def tearDown(self):
         self.document.delete()
