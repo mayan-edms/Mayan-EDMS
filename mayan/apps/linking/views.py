@@ -64,7 +64,8 @@ def smart_link_instances_for_document(request, document_id):
         queryset = SmartLink.objects.get_for(document)
     except Exception as exception:
         queryset = []
-        messages.error(request, _('Error calculating smart link for: %(document)s; %(exception)s.') %
+        messages.error(
+            request, _('Error calculating smart link for: %(document)s; %(exception)s.') %
             {'document': document, 'exception': exception}
         )
 

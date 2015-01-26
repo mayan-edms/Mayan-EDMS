@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -11,11 +10,9 @@ class Migration(SchemaMigration):
         # Adding index on 'WorkflowInstanceLogEntry', fields ['datetime']
         db.create_index(u'document_states_workflowinstancelogentry', ['datetime'])
 
-
     def backwards(self, orm):
         # Removing index on 'WorkflowInstanceLogEntry', fields ['datetime']
         db.delete_index(u'document_states_workflowinstancelogentry', ['datetime'])
-
 
     models = {
         u'auth.group': {

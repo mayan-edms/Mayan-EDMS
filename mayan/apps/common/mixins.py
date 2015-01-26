@@ -19,7 +19,6 @@ class ExtraContextMixin(object):
         return context
 
 
-
 class ObjectListPermissionFilterMixin(object):
     object_permission = None
 
@@ -54,7 +53,6 @@ class ObjectPermissionCheckMixin(object):
         return super(ObjectPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
 
 
-
 class RedirectionMixin(object):
     post_action_redirect = None
 
@@ -75,6 +73,7 @@ class RedirectionMixin(object):
 
         return context
 
+
 class ViewPermissionCheckMixin(object):
     view_permission = None
 
@@ -83,4 +82,3 @@ class ViewPermissionCheckMixin(object):
             Permission.objects.check_permissions(self.request.user, [self.view_permission])
 
         return super(ViewPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
-

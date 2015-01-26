@@ -1,10 +1,6 @@
 from __future__ import unicode_literals
 
-from json import loads
-
-from django.conf import settings
 from django.contrib.auth.models import User
-from django.core.files.base import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
@@ -13,11 +9,12 @@ from documents.models import Document, DocumentType
 from sources.literals import SOURCE_CHOICE_WEB_FORM
 from sources.models import WebFormSource
 
-from documents.tests import (TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
-                             TEST_ADMIN_EMAIL, TEST_SMALL_DOCUMENT_FILENAME,
-                             TEST_DOCUMENT_PATH, TEST_SIGNED_DOCUMENT_PATH,
-                             TEST_SMALL_DOCUMENT_PATH,
-                             TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE)
+from documents.tests import (
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH,
+    TEST_SIGNED_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
+    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE
+)
 
 
 class UploadDocumentTestCase(TestCase):

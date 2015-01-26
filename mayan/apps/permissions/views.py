@@ -61,7 +61,7 @@ def role_list(request):
     }
 
     return render_to_response('main/generic_list.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def role_permissions(request, role_id):
@@ -106,7 +106,6 @@ def role_permissions(request, role_id):
 def permission_grant(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_PERMISSION_GRANT])
     items_property_list = loads(request.GET.get('items_property_list', []))
-    post_action_redirect = None
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -161,13 +160,12 @@ def permission_grant(request):
         context['object'] = grouped_items[0][0]
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 def permission_revoke(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_PERMISSION_REVOKE])
     items_property_list = loads(request.GET.get('items_property_list', []))
-    post_action_redirect = None
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
@@ -222,7 +220,7 @@ def permission_revoke(request):
         context['object'] = grouped_items[0][0]
 
     return render_to_response('main/generic_confirm.html', context,
-        context_instance=RequestContext(request))
+                              context_instance=RequestContext(request))
 
 
 class Member(EncapsulatedObject):

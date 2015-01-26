@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -30,7 +29,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'history', ['History'])
 
-
     def backwards(self, orm):
         # Removing unique constraint on 'HistoryType', fields ['namespace', 'name']
         db.delete_unique(u'history_historytype', ['namespace', 'name'])
@@ -40,7 +38,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'History'
         db.delete_table(u'history_history')
-
 
     models = {
         u'contenttypes.contenttype': {

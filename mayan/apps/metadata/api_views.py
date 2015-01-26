@@ -4,7 +4,6 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics, status, views
-from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
 
 from acls.models import AccessEntry
@@ -12,7 +11,6 @@ from documents.models import Document, DocumentType
 from documents.permissions import (
     PERMISSION_DOCUMENT_TYPE_VIEW, PERMISSION_DOCUMENT_TYPE_EDIT
 )
-
 from permissions.models import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
@@ -25,9 +23,8 @@ from .permissions import (
     PERMISSION_METADATA_TYPE_EDIT, PERMISSION_METADATA_TYPE_VIEW
 )
 from .serializers import (
-    DocumentMetadataSerializer, DocumentNewMetadataSerializer,
-    DocumentTypeNewMetadataTypeSerializer, MetadataTypeSerializer,
-    DocumentTypeMetadataTypeSerializer
+    DocumentMetadataSerializer, DocumentTypeNewMetadataTypeSerializer,
+    MetadataTypeSerializer, DocumentTypeMetadataTypeSerializer
 )
 
 
@@ -153,7 +150,6 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
             return super(APIDocumentMetadataView, self).put(*args, **kwargs)
         except Exception as exception:
             return Response(status=status.HTTP_400_BAD_REQUEST, data={'non_fields_errors': unicode(exception)})
-
 
 
 class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):

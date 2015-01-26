@@ -1,13 +1,15 @@
 from __future__ import unicode_literals
 
-from rest_framework import generics, views
+from rest_framework import generics
 
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import Role
-from .permissions import (PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
-                          PERMISSION_ROLE_EDIT, PERMISSION_ROLE_VIEW)
+from .permissions import (
+    PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, PERMISSION_ROLE_EDIT,
+    PERMISSION_ROLE_VIEW
+)
 from .serializers import RoleSerializer
 
 

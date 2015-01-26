@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -11,7 +10,6 @@ class Migration(SchemaMigration):
         # Deleting model 'DocumentRenameCount'
         db.delete_table(u'document_indexing_documentrenamecount')
 
-
     def backwards(self, orm):
         # Adding model 'DocumentRenameCount'
         db.create_table(u'document_indexing_documentrenamecount', (
@@ -21,7 +19,6 @@ class Migration(SchemaMigration):
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
         ))
         db.send_create_signal('document_indexing', ['DocumentRenameCount'])
-
 
     models = {
         u'document_indexing.index': {

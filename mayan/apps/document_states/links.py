@@ -22,6 +22,3 @@ link_setup_workflow_document_types = {'text': _('Document types'), 'view': 'docu
 link_document_workflow_instance_list = {'text': _('Workflows'), 'view': 'document_states:document_workflow_instance_list', 'args': 'object.pk', 'famfam': 'table'}
 link_workflow_instance_detail = {'text': _('Detail'), 'view': 'document_states:workflow_instance_detail', 'args': 'workflow_instance.pk', 'famfam': 'table'}
 link_workflow_instance_transition = {'text': _('Transition'), 'view': 'document_states:workflow_instance_transition', 'args': 'workflow_instance.pk', 'famfam': 'table_lightning'}
-
-
-

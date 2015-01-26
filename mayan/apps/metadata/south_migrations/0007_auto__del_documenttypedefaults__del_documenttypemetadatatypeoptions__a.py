@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -23,7 +22,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'metadata', ['DocumentTypeMetadataType'])
 
-
     def backwards(self, orm):
         # Adding model 'DocumentTypeDefaults'
         db.create_table(u'metadata_documenttypedefaults', (
@@ -43,7 +41,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'DocumentTypeMetadataType'
         db.delete_table(u'metadata_documenttypemetadatatype')
-
 
     models = {
         u'documents.document': {

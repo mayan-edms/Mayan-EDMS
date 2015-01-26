@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -23,7 +22,6 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['workflow_id', 'documenttype_id'])
 
-
     def backwards(self, orm):
         # Adding model 'DocumentTypeWorkflow'
         db.create_table(u'document_states_documenttypeworkflow', (
@@ -38,7 +36,6 @@ class Migration(SchemaMigration):
 
         # Removing M2M table for field document_types on 'Workflow'
         db.delete_table(db.shorten_name(u'document_states_workflow_document_types'))
-
 
     models = {
         u'document_states.workflow': {

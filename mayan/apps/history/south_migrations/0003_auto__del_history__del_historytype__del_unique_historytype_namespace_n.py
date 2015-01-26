@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -19,7 +18,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'HistoryType'
         db.delete_table(u'history_historytype')
-
 
     def backwards(self, orm):
         # Adding model 'History'
@@ -44,9 +42,6 @@ class Migration(SchemaMigration):
         # Adding unique constraint on 'HistoryType', fields ['namespace', 'name']
         db.create_unique(u'history_historytype', ['namespace', 'name'])
 
-
-    models = {
-
-    }
+    models = {}
 
     complete_apps = ['history']

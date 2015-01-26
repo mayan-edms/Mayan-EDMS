@@ -1,24 +1,20 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
-from django.utils.http import urlencode
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.shortcuts import get_object_or_404
+from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView
 
 from acls.models import AccessEntry
-from common.utils import encapsulate, generate_choices_w_labels
+from common.utils import generate_choices_w_labels
 from common.views import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
     SingleObjectListView, assign_remove
 )
-from common.widgets import two_state_template
 from documents.models import Document
 from permissions.models import Permission
 
@@ -82,7 +78,8 @@ class WorkflowInstanceDetailView(SingleObjectListView):
         return self.get_workflow_instance().log_entries.order_by('-datetime')
 
     def get_context_data(self, **kwargs):
-        form = WorkflowInstanceDetailForm(instance=self.get_workflow_instance(), extra_fields=[
+        form = WorkflowInstanceDetailForm(
+            instance=self.get_workflow_instance(), extra_fields=[
                 {'label': _('Current state'), 'field': 'get_current_state'},
                 {'label': _('Last transition'), 'field': 'get_last_transition'},
             ]

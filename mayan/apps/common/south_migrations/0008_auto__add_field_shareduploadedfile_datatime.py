@@ -13,11 +13,9 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.DateTimeField')(auto_now_add=True, default=datetime.datetime(2014, 10, 29, 0, 0), blank=True),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Deleting field 'SharedUploadedFile.datatime'
         db.delete_column(u'common_shareduploadedfile', 'datatime')
-
 
     models = {
         u'auth.group': {

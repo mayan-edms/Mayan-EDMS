@@ -32,7 +32,6 @@ logger = logging.getLogger(__name__)
 def tag_create(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_TAG_CREATE])
     redirect_url = reverse('tags:tag_list')
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_url)))
 
     if request.method == 'POST':
         form = TagForm(request.POST)

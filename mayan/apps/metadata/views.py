@@ -5,16 +5,16 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import (get_list_or_404, get_object_or_404,
-                              render_to_response)
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessEntry
 from documents.models import Document, DocumentType
-from documents.permissions import (PERMISSION_DOCUMENT_TYPE_EDIT,
-                                   PERMISSION_DOCUMENT_VIEW)
+from documents.permissions import (
+    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_VIEW
+)
 from documents.views import document_list
 from permissions.models import Permission
 
@@ -56,7 +56,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         messages.error(request, _('Only select documents of the same type.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
-    if set(documents.values_list('metadata__value' ,flat=True)) == set([None]):
+    if set(documents.values_list('metadata__value', flat=True)) == set([None]):
         message = ungettext(
             'The selected document doesn\'t have any metadata.',
             'The selected documents don\'t have any metadata.',
@@ -228,9 +228,9 @@ def metadata_remove(request, document_id=None, document_id_list=None):
     documents = Document.objects.select_related('metadata').filter(pk__in=document_id_list.split(','))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
+        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_EDIT, request.user, documents)
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_REMOVE, request.user, documents)
 
     if not documents:
         if document_id:
@@ -243,7 +243,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         messages.error(request, _('Only select documents of the same type.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
-    if set(documents.values_list('metadata__value' ,flat=True)) == set([None]):
+    if set(documents.values_list('metadata__value', flat=True)) == set([None]):
         message = ungettext(
             'The selected document doesn\'t have any metadata.',
             'The selected documents doesn\'t have any metadata.',

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -14,14 +13,12 @@ class Migration(SchemaMigration):
         # Adding unique constraint on 'WorkflowState', fields ['workflow', 'label']
         db.create_unique(u'document_states_workflowstate', ['workflow_id', 'label'])
 
-
     def backwards(self, orm):
         # Removing unique constraint on 'WorkflowState', fields ['workflow', 'label']
         db.delete_unique(u'document_states_workflowstate', ['workflow_id', 'label'])
 
         # Adding unique constraint on 'WorkflowState', fields ['label']
         db.create_unique(u'document_states_workflowstate', ['label'])
-
 
     models = {
         u'document_states.documenttypeworkflow': {

@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import logging
 
-from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Index, IndexInstanceNode

@@ -2,9 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib.auth.models import User, Group
 
-
 from navigation.api import register_links
-from navigation.links import link_spacer
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 
@@ -27,5 +25,3 @@ register_setup(user_setup)
 register_setup(group_setup)
 
 APIEndPoint('users', app_name='user_management')
-
-

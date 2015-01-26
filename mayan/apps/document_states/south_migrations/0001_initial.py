@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -64,7 +63,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'document_states', ['WorkflowInstanceLogEntry'])
 
-
     def backwards(self, orm):
         # Removing unique constraint on 'WorkflowInstance', fields ['document', 'workflow']
         db.delete_unique(u'document_states_workflowinstance', ['document_id', 'workflow_id'])
@@ -89,7 +87,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'WorkflowInstanceLogEntry'
         db.delete_table(u'document_states_workflowinstancelogentry')
-
 
     models = {
         u'document_states.documenttypeworkflow': {

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -13,11 +12,9 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['document_states.Workflow']),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Deleting field 'WorkflowTransition.workflow'
         db.delete_column(u'document_states_workflowtransition', 'workflow_id')
-
 
     models = {
         u'document_states.documenttypeworkflow': {

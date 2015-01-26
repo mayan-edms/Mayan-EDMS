@@ -7,7 +7,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.views import login, password_change
 from django.contrib.contenttypes.models import ContentType
 from django.conf import settings
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response
@@ -17,9 +16,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
-
-from acls.models import AccessEntry
-from permissions.models import Permission
 
 from .forms import (
     ChoiceForm, EmailAuthenticationForm, LicenseForm, LocaleProfileForm,
@@ -306,7 +302,6 @@ def password_change_done(request):
 
     messages.success(request, _('Your password has been successfully changed.'))
     return redirect('common:current_user_details')
-
 
 
 class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):

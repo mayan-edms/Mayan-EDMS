@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -42,7 +41,6 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'sources', ['EmailBaseModel'])
 
-
     def backwards(self, orm):
         # Deleting model 'IMAPEmail'
         db.delete_table(u'sources_imapemail')
@@ -55,7 +53,6 @@ class Migration(SchemaMigration):
 
         # Deleting model 'EmailBaseModel'
         db.delete_table(u'sources_emailbasemodel')
-
 
     models = {
         u'contenttypes.contenttype': {

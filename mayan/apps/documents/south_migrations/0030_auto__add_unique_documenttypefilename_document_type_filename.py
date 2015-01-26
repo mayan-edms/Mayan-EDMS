@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -11,11 +10,9 @@ class Migration(SchemaMigration):
         # Adding unique constraint on 'DocumentTypeFilename', fields ['document_type', 'filename']
         db.create_unique(u'documents_documenttypefilename', ['document_type_id', 'filename'])
 
-
     def backwards(self, orm):
         # Removing unique constraint on 'DocumentTypeFilename', fields ['document_type', 'filename']
         db.delete_unique(u'documents_documenttypefilename', ['document_type_id', 'filename'])
-
 
     models = {
         u'auth.group': {

@@ -7,7 +7,6 @@ from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
 from documents.forms import DocumentForm
-from documents.models import DocumentVersion
 
 from .models import (
     IMAPEmail, POP3Email, SourceTransformation, StagingFolderSource,
@@ -24,7 +23,6 @@ class NewDocumentForm(DocumentForm):
 
 class NewVersionForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        document = kwargs.pop('document')
         super(NewVersionForm, self).__init__(*args, **kwargs)
 
         self.fields['comment'] = forms.CharField(

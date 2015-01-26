@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -15,11 +14,9 @@ class Migration(SchemaMigration):
         ))
         db.send_create_signal(u'common', ['SharedUploadedFile'])
 
-
     def backwards(self, orm):
         # Deleting model 'SharedUploadedFile'
         db.delete_table(u'common_shareduploadedfile')
-
 
     models = {
         u'auth.group': {

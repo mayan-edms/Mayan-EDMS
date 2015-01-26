@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -16,7 +15,6 @@ class Migration(SchemaMigration):
 
         # Removing M2M table for field default_metadata_sets on 'DocumentTypeDefaults'
         db.delete_table(db.shorten_name(u'metadata_documenttypedefaults_default_metadata_sets'))
-
 
         # Changing field 'DocumentMetadata.value'
         db.alter_column(u'metadata_documentmetadata', 'value', self.gf('django.db.models.fields.CharField')(max_length=255))
@@ -45,7 +43,6 @@ class Migration(SchemaMigration):
             ('metadataset', models.ForeignKey(orm['metadata.metadataset'], null=False))
         ))
         db.create_unique(m2m_table_name, ['documenttypedefaults_id', 'metadataset_id'])
-
 
         # Changing field 'DocumentMetadata.value'
         db.alter_column(u'metadata_documentmetadata', 'value', self.gf('django.db.models.fields.CharField')(max_length=256))

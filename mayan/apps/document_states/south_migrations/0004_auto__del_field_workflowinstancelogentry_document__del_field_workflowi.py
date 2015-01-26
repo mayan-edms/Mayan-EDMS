@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -24,12 +23,11 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.related.ForeignKey')(default=1, to=orm['document_states.WorkflowTransition']),
                       keep_default=False)
 
-
     def backwards(self, orm):
 
         # User chose to not deal with backwards NULL issues for 'WorkflowInstanceLogEntry.document'
         raise RuntimeError("Cannot reverse this migration. 'WorkflowInstanceLogEntry.document' and its values cannot be restored.")
-        
+
         # The following code is provided here to aid in writing a correct migration        # Adding field 'WorkflowInstanceLogEntry.document'
         db.add_column(u'document_states_workflowinstancelogentry', 'document',
                       self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.Document']),
@@ -38,7 +36,7 @@ class Migration(SchemaMigration):
 
         # User chose to not deal with backwards NULL issues for 'WorkflowInstanceLogEntry.workflow_instace'
         raise RuntimeError("Cannot reverse this migration. 'WorkflowInstanceLogEntry.workflow_instace' and its values cannot be restored.")
-        
+
         # The following code is provided here to aid in writing a correct migration        # Adding field 'WorkflowInstanceLogEntry.workflow_instace'
         db.add_column(u'document_states_workflowinstancelogentry', 'workflow_instace',
                       self.gf('django.db.models.fields.related.ForeignKey')(to=orm['document_states.WorkflowInstance']),
@@ -49,7 +47,6 @@ class Migration(SchemaMigration):
 
         # Deleting field 'WorkflowInstanceLogEntry.transition'
         db.delete_column(u'document_states_workflowinstancelogentry', 'transition_id')
-
 
     models = {
         u'document_states.documenttypeworkflow': {

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -11,11 +10,9 @@ class Migration(SchemaMigration):
         # Adding unique constraint on 'DocumentTypeMetadataType', fields ['document_type', 'metadata_type']
         db.create_unique(u'metadata_documenttypemetadatatype', ['document_type_id', 'metadata_type_id'])
 
-
     def backwards(self, orm):
         # Removing unique constraint on 'DocumentTypeMetadataType', fields ['document_type', 'metadata_type']
         db.delete_unique(u'metadata_documenttypemetadatatype', ['document_type_id', 'metadata_type_id'])
-
 
     models = {
         u'documents.document': {

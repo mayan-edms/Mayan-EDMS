@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from south.utils import datetime_utils as datetime
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
@@ -20,7 +19,6 @@ class Migration(SchemaMigration):
         # Removing M2M table for field default_metadata on 'DocumentTypeDefaults'
         db.delete_table(db.shorten_name(u'metadata_documenttypedefaults_default_metadata'))
 
-
     def backwards(self, orm):
         # Deleting model 'DocumentTypeMetadataTypeOptions'
         db.delete_table(u'metadata_documenttypemetadatatypeoptions')
@@ -33,7 +31,6 @@ class Migration(SchemaMigration):
             ('metadatatype', models.ForeignKey(orm[u'metadata.metadatatype'], null=False))
         ))
         db.create_unique(m2m_table_name, ['documenttypedefaults_id', 'metadatatype_id'])
-
 
     models = {
         u'documents.document': {
