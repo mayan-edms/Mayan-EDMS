@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from common.utils import encapsulate
 from documents.links import document_list_recent, document_list
 from documents.models import Document
+from main import FrontPageButton
 from navigation.api import register_links, register_model_list_columns
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
@@ -42,3 +43,5 @@ register_links(['sources:document_create', 'sources:document_create_multiple', '
 register_setup(setup_sources)
 
 APIEndPoint('sources')
+
+FrontPageButton(link=document_create_multiple)

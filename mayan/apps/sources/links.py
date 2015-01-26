@@ -15,7 +15,7 @@ from .permissions import (
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_VIEW
 )
 
-document_create_multiple = {'text': _('Upload new documents'), 'view': 'sources:document_create_multiple', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
+document_create_multiple = {'text': _('Upload new documents'), 'view': 'sources:document_create_multiple', 'icon': 'main/icons/page_add.png', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_create_siblings = {'text': _('Clone'), 'view': 'sources:document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 
 staging_file_delete = {'text': _('Delete'), 'view': 'sources:staging_file_delete', 'args': ['source.pk', 'object.encoded_filename'], 'famfam': 'delete', 'keep_query': True, 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE]}

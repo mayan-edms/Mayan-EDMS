@@ -10,32 +10,11 @@
 
 {% block content %}
     <div class="pure-g tc">
-        <div class="pure-u-1-3">
-            <a class="pure-button mayan-button-big" href="{% url 'sources:document_create_multiple' %}">
-                <p>
-                    <img src="{% static 'main/icons/page_add.png' %}"><br>
-                    {% trans 'Upload documents' %}
-                </p>
-            </a>
-        </div>
-
-        <div class="pure-u-1-3">
-            <a class="pure-button mayan-button-big" href="{% url 'documents:document_list_recent' %}">
-                <p>
-                    <img src="{% static 'main/icons/page.png' %}"><br>
-                    {% trans 'Recent Documents' %}
-                </p>
-            </a>
-        </div>
-
-        <div class="pure-u-1-3">
-            <a class="pure-button mayan-button-big" href="{% url 'documents:document_list' %}">
-                <p>
-                    <img src="{% static 'main/icons/page.png' %}"><br>
-                    {% trans 'All Documents' %}
-                </p>
-            </a>
-        </div>
+        {% with 'navigation/large_button_link.html' as link_template %}
+        {% with 8 as button_link_columns %}
+            {% include 'generic_navigation.html' %}
+        {% endwith %}
+        {% endwith %}
 
         <div class="pure-u-24-24">
             <form class="pure-form" id="home-form-search" method="get" action="{% url 'main:home' %}">

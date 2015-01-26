@@ -9,6 +9,7 @@ from common.classes import ModelAttribute
 from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
 from events.permissions import PERMISSION_EVENTS_VIEW
+from main import FrontPageButton
 from main.api import register_maintenance_links
 from navigation.api import register_links, register_model_list_columns
 from navigation.links import link_spacer
@@ -134,3 +135,6 @@ namespace.add_statistic(DocumentUsageStatistics(name='document_usage', label=_('
 APIEndPoint('documents')
 
 ModelAttribute(Document, label=_('Label'), name='label', type_name='field')
+
+FrontPageButton(link=document_list_recent)
+FrontPageButton(link=document_list)

@@ -37,8 +37,8 @@ def is_current_version(context):
     return context['object'].document.latest_version.timestamp == context['object'].timestamp
 
 
-document_list = {'text': _('All documents'), 'view': 'documents:document_list', 'famfam': 'page'}
-document_list_recent = {'text': _('Recent documents'), 'view': 'documents:document_list_recent', 'famfam': 'page'}
+document_list = {'text': _('All documents'), 'view': 'documents:document_list', 'famfam': 'page', 'icon': 'main/icons/page.png'}
+document_list_recent = {'text': _('Recent documents'), 'view': 'documents:document_list_recent', 'famfam': 'page', 'icon': 'main/icons/page.png'}
 document_preview = {'text': _('Preview'), 'view': 'documents:document_preview', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_content = {'text': _('Content'), 'view': 'documents:document_content', 'args': 'object.id', 'famfam': 'page_white_text', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_properties = {'text': _('Properties'), 'view': 'documents:document_properties', 'args': 'object.id', 'famfam': 'page_gear', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
