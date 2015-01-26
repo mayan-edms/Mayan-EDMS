@@ -46,7 +46,7 @@ def results(request, extra_context=None):
             'extra_columns': [{'name': _('Type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]
         })
 
-    return render_to_response('search_results.html', context,
+    return render_to_response('dynamic_search/search_results.html', context,
                               context_instance=RequestContext(request))
 
 

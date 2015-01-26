@@ -4,7 +4,7 @@
 
 {% block content %}
     {% if form %}
-            {% include 'search_results_subtemplate.html' %}
+            {% include 'dynamic_search/search_results_subtemplate.html' %}
     {% endif %}
     {% if query_string %}
         {% include 'main/generic_list_subtemplate.html' %}
