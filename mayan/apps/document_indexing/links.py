@@ -20,7 +20,7 @@ def is_not_root_node(context):
     return not context['node'].is_root_node()
 
 
-index_setup = {'text': _('Indexes'), 'view': 'indexing:index_setup_list', 'icon': 'tab.png', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP]}
+index_setup = {'text': _('Indexes'), 'view': 'indexing:index_setup_list', 'icon': 'main/icons/tab.png', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP]}
 index_setup_list = {'text': _('Indexes'), 'view': 'indexing:index_setup_list', 'famfam': 'tab', 'permissions': [PERMISSION_DOCUMENT_INDEXING_SETUP]}
 index_setup_create = {'text': _('Create index'), 'view': 'indexing:index_setup_create', 'famfam': 'tab_add', 'permissions': [PERMISSION_DOCUMENT_INDEXING_CREATE]}
 index_setup_edit = {'text': _('Edit'), 'view': 'indexing:index_setup_edit', 'args': 'index.pk', 'famfam': 'tab_edit', 'permissions': [PERMISSION_DOCUMENT_INDEXING_EDIT]}

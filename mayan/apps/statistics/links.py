@@ -10,4 +10,4 @@ def is_superuser(context):
 link_execute = {'text': _('Execute'), 'view': 'statistics:execute', 'args': 'object.id', 'famfam': 'lightning', 'condition': is_superuser}
 link_namespace_details = {'text': _('Details'), 'view': 'statistics:namespace_details', 'args': 'namespace.id', 'famfam': 'chart_curve_go', 'condition': is_superuser}
 link_namespace_list = {'text': _('Namespace list'), 'view': 'statistics:namespace_list', 'famfam': 'chart_curve', 'condition': is_superuser}
-link_statistics = {'text': _('Statistics'), 'view': 'statistics:namespace_list', 'famfam': 'table', 'icon': 'blackboard_sum.png', 'condition': is_superuser}
+link_statistics = {'text': _('Statistics'), 'view': 'statistics:namespace_list', 'famfam': 'table', 'icon': 'main/icons/blackboard_sum.png', 'condition': is_superuser}

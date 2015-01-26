@@ -85,7 +85,7 @@ document_version_revert = {'text': _('Revert'), 'view': 'documents:document_vers
 
 # Document type related links
 document_type_list = {'text': _('Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
-document_type_setup = {'text': _('Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'icon': 'layout.png', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
+document_type_setup = {'text': _('Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'icon': 'main/icons/layout.png', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
 document_type_edit = {'text': _('Edit'), 'view': 'documents:document_type_edit', 'args': 'document_type.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 document_type_delete = {'text': _('Delete'), 'view': 'documents:document_type_delete', 'args': 'document_type.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
 document_type_create = {'text': _('Create document type'), 'view': 'documents:document_type_create', 'famfam': 'layout_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_CREATE]}

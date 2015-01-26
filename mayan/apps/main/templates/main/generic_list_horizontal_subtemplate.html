@@ -5,9 +5,7 @@
 </div>
 
 <div class="pure-g tc">
-    {% for object in object_list %}
-        <div class="pure-u-4-24">
-            {{ object }}
-        </div>
-    {% endfor %}
+    {% with 'navigation/large_button_link.html' as link_template %}
+        {% include 'generic_navigation.html' %}
+    {% endwith %}
 </div>

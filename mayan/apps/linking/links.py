@@ -10,7 +10,7 @@ from .permissions import (
     PERMISSION_SMART_LINK_EDIT, PERMISSION_SMART_LINK_VIEW
 )
 
-smart_link_setup = {'text': _('Smart links'), 'view': 'linking:smart_link_list', 'icon': 'link.png', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
+smart_link_setup = {'text': _('Smart links'), 'view': 'linking:smart_link_list', 'icon': 'main/icons/link.png', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 smart_link_list = {'text': _('Smart links'), 'view': 'linking:smart_link_list', 'famfam': 'link', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 smart_link_create = {'text': _('Create new smart link'), 'view': 'linking:smart_link_create', 'famfam': 'link_add', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 smart_link_edit = {'text': _('Edit'), 'view': 'linking:smart_link_edit', 'args': 'object.pk', 'famfam': 'link_edit', 'permissions': [PERMISSION_SMART_LINK_EDIT]}

@@ -16,4 +16,4 @@ link_entry_delete_multiple = {'text': _('Delete'), 'view': 'ocr:entry_delete_mul
 
 link_document_all_ocr_cleanup = {'text': _('Clean up pages content'), 'view': 'ocr:document_all_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES], 'description': _('Runs a language filter to remove common OCR mistakes from document pages content.')}
 
-link_entry_list = {'text': _('OCR Errors'), 'view': 'ocr:entry_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT]}
+link_entry_list = {'text': _('OCR Errors'), 'view': 'ocr:entry_list', 'famfam': 'hourglass', 'icon': 'main/icons/text.png', 'permissions': [PERMISSION_OCR_DOCUMENT]}
