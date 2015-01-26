@@ -23,20 +23,26 @@ from actstream import registry
 
 from acls.utils import apply_default_acls
 from common.settings import TEMPORARY_DIRECTORY
-from converter.api import (convert, get_page_count,
-                           get_available_transformations_choices)
+from converter.api import (
+    convert, get_page_count, get_available_transformations_choices
+)
 from converter.exceptions import UnknownFileFormat
-from converter.literals import (DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
-                                DEFAULT_PAGE_NUMBER)
+from converter.literals import (
+    DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_PAGE_NUMBER
+)
 from mimetype.api import get_mimetype
 
 from .events import event_document_create
 from .exceptions import NewDocumentVersionNotAllowed
-from .managers import (DocumentManager, DocumentPageTransformationManager,
-                       DocumentTypeManager, RecentDocumentManager)
+from .managers import (
+    DocumentManager, DocumentPageTransformationManager, DocumentTypeManager,
+    RecentDocumentManager
+)
 from .runtime import storage_backend
-from .settings import (CACHE_PATH, DISPLAY_SIZE, LANGUAGE, LANGUAGE_CHOICES,
-                       ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL)
+from .settings import (
+    CACHE_PATH, DISPLAY_SIZE, LANGUAGE, LANGUAGE_CHOICES, ZOOM_MAX_LEVEL,
+    ZOOM_MIN_LEVEL
+)
 from .signals import post_version_upload, post_document_type_change
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
