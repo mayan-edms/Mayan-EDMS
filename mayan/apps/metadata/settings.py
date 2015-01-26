@@ -16,7 +16,9 @@ default_available_models = {
 }
 
 default_available_validators = {
-    'parse_date': lambda input: parse(input).isoformat()
+    'Parse date and time': lambda input: parse(input).isoformat(),
+    'Parse date': lambda input: parse(input).date().isoformat(),
+    'Parse time': lambda input: parse(input).time().isoformat()
 }
 
 register_settings(
