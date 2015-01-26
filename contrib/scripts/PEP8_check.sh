@@ -1,0 +1,1 @@
+flake8 --ignore=E501 mayan/apps  | grep -v "F401 'models' imported but unused" | grep -v "F811 redefinition of unused 'models'"| grep -v "F401 'db' imported but unused" | grep -v "F812 list comprehension redefines 'user_id'" | grep -v "F812 list comprehension redefines 'document_id'" |less
