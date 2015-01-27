@@ -296,7 +296,7 @@ def index_list(request):
         'title': _('Indexes'),
         'hide_links': True,
         'extra_columns': [
-            {'name': _('Nodes'), 'attribute': 'get_instance_node_count'},
+            {'name': _('Items'), 'attribute': encapsulate(lambda x: x.instance_root.documents.count() if x.template_root.link_documents else x.instance_root.get_children().count())},
             {'name': _('Document types'), 'attribute': 'get_document_types_names'},
         ],
     }
