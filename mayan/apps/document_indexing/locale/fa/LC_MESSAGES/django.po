@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -9,23 +9,22 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:18-0400\n"
-"PO-Revision-Date: 2015-01-11 22:05+0000\n"
+"POT-Creation-Date: 2015-01-27 15:58-0400\n"
+"PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:39 links.py:23 links.py:24 links.py:38 links.py:40 models.py:60
+#: __init__.py:40 links.py:23 links.py:24 links.py:38 links.py:40 models.py:60
 #: views.py:38 views.py:296
 msgid "Indexes"
 msgstr "اندیس ها"
 
-#: api.py:50
+#: api.py:49
 #, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
@@ -93,10 +92,9 @@ msgid "Enabled"
 msgstr "فعال شده"
 
 #: models.py:18
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"باعث میشود که این ایندکس قابل رویت شود و در زمان تغییر داده سند بروز رسانی "
-"شود."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "باعث میشود که این ایندکس قابل رویت شود و در زمان تغییر داده سند بروز رسانی شود."
 
 #: models.py:59 models.py:65 views.py:243 views.py:281
 msgid "Index"
@@ -112,9 +110,7 @@ msgstr "یک رشته عبارت که قابل ارزیابی باشد وارد 
 
 #: models.py:67
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"باعث میشود که این ایندکس قابل رویت شود و در زمان تغییر داده سند بروز رسانی "
-"شود."
+msgstr "باعث میشود که این ایندکس قابل رویت شود و در زمان تغییر داده سند بروز رسانی شود."
 
 #: models.py:68
 msgid "Link documents"
@@ -122,8 +118,8 @@ msgstr "اسناد پیوند"
 
 #: models.py:68
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr "بررسی شود که اینکه این گره ظرفی برای اسناد است و نه پدر گره های دیگر."
 
 #: models.py:74
@@ -294,10 +290,10 @@ msgstr "در پایگاه داده بزرگ این عملیات مدت زیاد�
 msgid "Index rebuild queued successfully."
 msgstr ""
 
-#: views.py:405
+#: views.py:408
 #, python-format
-msgid "Indexes containing: %s"
-msgstr "اندیسها شامل : %s"
+msgid "Indexes containing document: %s"
+msgstr ""
 
 #: widgets.py:85
 msgid "Root"
@@ -307,11 +303,9 @@ msgstr "ریشه"
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -351,11 +345,11 @@ msgstr "ریشه"
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:18-0400\n"
+"POT-Creation-Date: 2015-01-27 15:57-0400\n"
 "PO-Revision-Date: 2014-10-25 07:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,27 +21,27 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:33
+#: __init__.py:35
 msgid "Date"
 msgstr ""
 
-#: __init__.py:37
+#: __init__.py:39
 msgid "User"
 msgstr ""
 
-#: __init__.py:41
+#: __init__.py:43
 msgid "Comment"
 msgstr ""
 
-#: __init__.py:50 links.py:11 permissions.py:7
+#: __init__.py:52 links.py:13 permissions.py:7
 msgid "Comments"
 msgstr "Комментарии"
 
-#: links.py:8 links.py:9
+#: links.py:10 links.py:11
 msgid "Delete"
 msgstr ""
 
-#: links.py:10
+#: links.py:12
 msgid "Add comment"
 msgstr ""
 
@@ -57,40 +57,40 @@ msgstr "Удалить комментарии"
 msgid "View comments"
 msgstr "Просмотр комментариев"
 
-#: views.py:37
+#: views.py:39
 msgid "Must provide at least one comment."
 msgstr "Должен быть хотя бы один комментарий."
 
-#: views.py:47
+#: views.py:49
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
 msgstr "Комментарий \"%s\" удален."
 
-#: views.py:49
+#: views.py:51
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "Ошибка при удалении комментариев \"%(comment)s\": %(error)s"
 
-#: views.py:62
+#: views.py:64
 #, python-format
 msgid "Are you sure you wish to delete the comment: %s?"
 msgstr "Вы действительно хотите удалить комментарий %s?"
 
-#: views.py:64
+#: views.py:66
 #, python-format
 msgid "Are you sure you wish to delete the comments: %s?"
 msgstr "Вы действительно хотите удалить комментарии %s?"
 
-#: views.py:98
+#: views.py:100
 msgid "Comment added successfully."
 msgstr "Комментарий добавлен."
 
-#: views.py:105
+#: views.py:107
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Добавить комментарий на документ: %s"
 
-#: views.py:125
+#: views.py:127
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""

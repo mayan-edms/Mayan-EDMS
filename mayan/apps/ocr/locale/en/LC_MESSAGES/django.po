@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:20-0400\n"
+"POT-Creation-Date: 2015-01-27 15:59-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -36,31 +36,31 @@ msgstr ""
 msgid "Result"
 msgstr "result"
 
-#: api.py:74
+#: api.py:75
 msgid "Text from OCR"
 msgstr "Text from OCR"
 
-#: links.py:9 links.py:10
+#: links.py:10 links.py:11
 #, fuzzy
 msgid "Submit to OCR queue"
 msgstr "submit to OCR queue"
 
-#: links.py:11 links.py:12
+#: links.py:12 links.py:13
 #, fuzzy
 msgid "Re-queue"
 msgstr "re-queue"
 
-#: links.py:13 links.py:14
+#: links.py:14 links.py:15
 #, fuzzy
 msgid "Delete"
 msgstr "delete"
 
-#: links.py:16
+#: links.py:17
 #, fuzzy
 msgid "Clean up pages content"
 msgstr "clean up pages content"
 
-#: links.py:16
+#: links.py:17
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
@@ -68,7 +68,7 @@ msgstr ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
 
-#: links.py:18
+#: links.py:19
 msgid "OCR Errors"
 msgstr ""
 
@@ -116,73 +116,73 @@ msgstr ""
 msgid "Full path to the backend to be used to do OCR."
 msgstr ""
 
-#: views.py:31
+#: views.py:32
 #, fuzzy, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Document: %(document)s was added to the OCR queue: %(queue)s."
 
-#: views.py:55
+#: views.py:56
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Are you sure you wish to clean up all the pages content?"
 
-#: views.py:56
+#: views.py:57
 msgid "On large databases this operation may take some time to execute."
 msgstr "On large databases this operation may take some time to execute."
 
-#: views.py:62
+#: views.py:63
 msgid "Document pages content clean up complete."
 msgstr "Document pages content clean up complete."
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Document pages content clean up error: %s"
 
-#: views.py:74
+#: views.py:75
 #, fuzzy
 msgid "OCR errors"
 msgstr "error"
 
-#: views.py:90 views.py:142
+#: views.py:91 views.py:143
 #, fuzzy
 msgid "Make at least one selection."
 msgstr "Must provide at least one queue document."
 
-#: views.py:100
+#: views.py:101
 #, fuzzy, python-format
 msgid "Entry: %(entry)s deleted successfully."
 msgstr "Queue document: %(document)s deleted successfully."
 
-#: views.py:104
+#: views.py:105
 #, fuzzy, python-format
 msgid "Error entry: %(entry)s; %(error)s"
 msgstr "Error deleting document: %(document)s; %(error)s"
 
-#: views.py:118
+#: views.py:119
 #, fuzzy, python-format
 msgid "Are you sure you wish to delete the entry: %(entry)s?"
 msgid_plural "Are you sure you wish to delete these %(count)d entries."
 msgstr[0] "Are you sure you wish to delete queue document: %s?"
 msgstr[1] "Are you sure you wish to delete queue document: %s?"
 
-#: views.py:154
+#: views.py:155
 #, fuzzy, python-format
 msgid "Entry: %(entry)s was re-queued for OCR."
 msgstr "Document: %(document)s is already queued."
 
-#: views.py:159
+#: views.py:160
 #, fuzzy, python-format
 msgid "Document version id#: %d, no longer exists."
 msgstr "Document id#: %d, no longer exists."
 
-#: views.py:171
+#: views.py:172
 #, fuzzy, python-format
 msgid "Are you sure you wish to re-queue the entry: %(entry)s?"
 msgid_plural "Are you sure you wish to re-queue these %(count)d entries."
 msgstr[0] "Are you sure you wish to re-queue document: %s?"
 msgstr[1] "Are you sure you wish to re-queue document: %s?"
 
-#: parsers/__init__.py:95 parsers/__init__.py:172
+#: parsers/__init__.py:94 parsers/__init__.py:171
 msgid "Text extracted from PDF"
 msgstr "Text extracted from PDF"
 

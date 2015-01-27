@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:20-0400\n"
+"POT-Creation-Date: 2015-01-27 15:59-0400\n"
 "PO-Revision-Date: 2015-01-06 19:16+0000\n"
 "Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:21
+#: forms.py:23
 msgid "Email address"
 msgstr "Ел. поща адрес"
 
-#: forms.py:22
+#: forms.py:24
 msgid "Subject"
 msgstr "Относно"
 
-#: forms.py:23
+#: forms.py:25
 msgid "Body"
 msgstr "Съдържание"
 
@@ -101,34 +101,34 @@ msgstr ""
 msgid "Template for the document email form body line."
 msgstr ""
 
-#: views.py:40
+#: views.py:41
 msgid "Must provide at least one document."
 msgstr "Трябва да посочите поне един документ."
 
-#: views.py:69
+#: views.py:70
 msgid "Successfully queued for delivery via email."
 msgstr "Успешно наредено за изпращане чрез ел.поща."
 
-#: views.py:77
+#: views.py:78
 msgid "Send"
 msgstr "Изпрати"
 
-#: views.py:83
+#: views.py:84
 #, python-format
 msgid "Email document: %s"
 msgstr ""
 
-#: views.py:85
+#: views.py:86
 #, python-format
 msgid "Email link for document: %s"
 msgstr ""
 
-#: views.py:88
+#: views.py:89
 #, python-format
 msgid "Email documents: %s"
 msgstr ""
 
-#: views.py:90
+#: views.py:91
 #, python-format
 msgid "Email links for documents: %s"
 msgstr ""

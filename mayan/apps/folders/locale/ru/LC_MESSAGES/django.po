@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2012-2013
@@ -9,72 +9,70 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:19-0400\n"
-"PO-Revision-Date: 2015-01-11 22:05+0000\n"
+"POT-Creation-Date: 2015-01-27 15:58-0400\n"
+"PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:41
+#: __init__.py:46
 msgid "Created"
 msgstr ""
 
-#: __init__.py:42 links.py:18 models.py:12
+#: __init__.py:47 links.py:19 models.py:14
 msgid "Documents"
 msgstr ""
 
-#: forms.py:38 models.py:24
+#: forms.py:38 models.py:26
 msgid "Folder"
 msgstr "Папка"
 
-#: links.py:13 links.py:21 links.py:24 models.py:25 permissions.py:7
-#: views.py:38
+#: links.py:14 links.py:22 links.py:25 models.py:27 permissions.py:7
+#: views.py:39
 msgid "Folders"
 msgstr "Папки"
 
-#: links.py:14 views.py:60
+#: links.py:15 views.py:61
 msgid "Create folder"
 msgstr ""
 
-#: links.py:15
+#: links.py:16
 msgid "Edit"
 msgstr ""
 
-#: links.py:16
+#: links.py:17
 msgid "Delete"
 msgstr ""
 
-#: links.py:17
+#: links.py:18
 msgid "Remove from folder"
 msgstr ""
 
-#: links.py:19
+#: links.py:20
 msgid "Add to a folder"
 msgstr ""
 
-#: links.py:20
+#: links.py:21
 msgid "Add to folder"
 msgstr ""
 
-#: links.py:23
+#: links.py:24
 msgid "ACLs"
 msgstr "ACLs"
 
-#: models.py:9
+#: models.py:11
 msgid "Title"
 msgstr ""
 
-#: models.py:10
+#: models.py:12
 msgid "User"
 msgstr ""
 
-#: models.py:11
+#: models.py:13
 msgid "Datetime created"
 msgstr ""
 
@@ -102,113 +100,117 @@ msgstr "Просмотр существующих папок"
 msgid "Add documents to existing folders"
 msgstr "Добавление документов в существующие папки"
 
-#: views.py:52
+#: views.py:53
 msgid "Folder created successfully"
 msgstr "Папка успешно создана"
 
-#: views.py:55
+#: views.py:56
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Папку с именем %s уже существует."
 
-#: views.py:78
+#: views.py:79
 msgid "Folder edited successfully"
 msgstr "Папка успешно изменена"
 
-#: views.py:81
+#: views.py:82
 #, python-format
 msgid "Error editing folder; %s"
 msgstr "Ошибка редактирования папки; %s."
 
-#: views.py:86
+#: views.py:87
 #, python-format
 msgid "Edit folder: %s"
 msgstr ""
 
-#: views.py:108
+#: views.py:109
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Папка %s успешно удалена."
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "При удалении папки %(folder)s произошла ошибка: %(error)s"
 
-#: views.py:120
+#: views.py:121
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr "Вы хотите удалить папку %s?"
 
-#: views.py:143
+#: views.py:144
 #, python-format
 msgid "Documents in folder: %s"
 msgstr ""
 
-#: views.py:156
+#: views.py:157
 msgid "Must provide at least one document."
 msgstr "Необходимо указатьть хотя бы один документ."
 
-#: views.py:175
+#: views.py:176
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Документ: %(document)s добавлен в папку: %(folder)s успешно."
 
-#: views.py:178
+#: views.py:179
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Документ: %(document)s is already in folder: %(folder)s."
 
-#: views.py:193
-#, python-format
-msgid "Add document: %s to folder."
-msgstr "Добавить документ %s в папку"
+#: views.py:196
+msgid "Add document to folder"
+msgid_plural "Add documents to folder"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: views.py:195
+#: views.py:216
 #, python-format
-msgid "Add documents: %s to folder."
-msgstr "Добавить документы %s в папку"
-
-#: views.py:210
-#, python-format
-msgid "Folders containing: %s"
+msgid "Folders containing document: %s"
 msgstr ""
 
-#: views.py:238
+#: views.py:242
 msgid "Must provide at least one folder document."
 msgstr "Должна быть хотя бы одна папка документов."
 
-#: views.py:256
+#: views.py:260
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Документ: %s успешно удален."
 
-#: views.py:258
+#: views.py:262
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Документ:%(document)s ошибка удаления: %(error)s"
 
-#: views.py:270
+#: views.py:272
 #, python-format
 msgid ""
-"Are you sure you wish to remove the document: %(document)s from the folder "
-"\"%(folder)s\"?"
-msgstr ""
-"Вы действительно хотите удалить документ: %(document)s из папки \"%(folder)s "
-"\"?"
-
-#: views.py:273
-#, python-format
-msgid ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
-msgstr ""
-"Вы действительно хотите удалить документы: %(documents)s из папки "
-"\"%(folder)s\"?"
+"Are you sure you wish to remove the selected document from the folder: "
+"%(folder)s?"
+msgid_plural ""
+"Are you sure you wish to remove the selected documents from the folder: "
+"%(folder)s?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"
 msgstr "Добавить документ в папку"
+
+#~ msgid "Add document: %s to folder."
+#~ msgstr "Add document: %s to folder."
+
+#~ msgid "Add documents: %s to folder."
+#~ msgstr "Add documents: %s to folder."
+
+#~ msgid ""
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -241,12 +243,12 @@ msgstr "Добавить документ в папку"
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

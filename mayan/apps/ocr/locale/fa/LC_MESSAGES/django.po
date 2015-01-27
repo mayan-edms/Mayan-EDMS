@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:20-0400\n"
+"POT-Creation-Date: 2015-01-27 15:59-0400\n"
 "PO-Revision-Date: 2015-01-17 07:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -36,33 +36,33 @@ msgstr "اضافه شده"
 msgid "Result"
 msgstr "جواب"
 
-#: api.py:74
+#: api.py:75
 msgid "Text from OCR"
 msgstr "متن خروجی از OCR"
 
-#: links.py:9 links.py:10
+#: links.py:10 links.py:11
 msgid "Submit to OCR queue"
 msgstr "ارسال به صف OCR"
 
-#: links.py:11 links.py:12
+#: links.py:12 links.py:13
 msgid "Re-queue"
 msgstr "صف سازی دوباره"
 
-#: links.py:13 links.py:14
+#: links.py:14 links.py:15
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:16
+#: links.py:17
 msgid "Clean up pages content"
 msgstr "تمییز کردن محتوای صفحات"
 
-#: links.py:16
+#: links.py:17
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
 msgstr "برای رفع خطاهای معمول در OCR فیلتر زبان را برروی محتوا اجرا میکند."
 
-#: links.py:18
+#: links.py:19
 msgid "OCR Errors"
 msgstr ""
 
@@ -107,69 +107,69 @@ msgstr "محل فایل POPPLER جهت استخراج TEXT از PDF"
 msgid "Full path to the backend to be used to do OCR."
 msgstr "محل اجرای نرم افزار OCR"
 
-#: views.py:31
+#: views.py:32
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "سند :  %(document)s  جهت ocr وارد صف شد."
 
-#: views.py:55
+#: views.py:56
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "از تمییز سازی محتوای صفحات مطمئن هستید؟"
 
-#: views.py:56
+#: views.py:57
 msgid "On large databases this operation may take some time to execute."
 msgstr "برروی پایگاه داده ای بزرگ این عملیات ممکن است طولانی شود."
 
-#: views.py:62
+#: views.py:63
 msgid "Document pages content clean up complete."
 msgstr "تمییزسازی محتوای صفحات پایان یافت."
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "خطا در تمیز کردن محتوای صفحات: %s"
 
-#: views.py:74
+#: views.py:75
 msgid "OCR errors"
 msgstr ""
 
-#: views.py:90 views.py:142
+#: views.py:91 views.py:143
 msgid "Make at least one selection."
 msgstr ""
 
-#: views.py:100
+#: views.py:101
 #, python-format
 msgid "Entry: %(entry)s deleted successfully."
 msgstr ""
 
-#: views.py:104
+#: views.py:105
 #, python-format
 msgid "Error entry: %(entry)s; %(error)s"
 msgstr ""
 
-#: views.py:118
+#: views.py:119
 #, python-format
 msgid "Are you sure you wish to delete the entry: %(entry)s?"
 msgid_plural "Are you sure you wish to delete these %(count)d entries."
 msgstr[0] ""
 
-#: views.py:154
+#: views.py:155
 #, python-format
 msgid "Entry: %(entry)s was re-queued for OCR."
 msgstr ""
 
-#: views.py:159
+#: views.py:160
 #, python-format
 msgid "Document version id#: %d, no longer exists."
 msgstr ""
 
-#: views.py:171
+#: views.py:172
 #, python-format
 msgid "Are you sure you wish to re-queue the entry: %(entry)s?"
 msgid_plural "Are you sure you wish to re-queue these %(count)d entries."
 msgstr[0] ""
 
-#: parsers/__init__.py:95 parsers/__init__.py:172
+#: parsers/__init__.py:94 parsers/__init__.py:171
 msgid "Text extracted from PDF"
 msgstr "text استخراج شده از pdf"
 

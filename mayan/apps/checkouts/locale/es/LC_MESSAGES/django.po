@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:17-0400\n"
+"POT-Creation-Date: 2015-01-27 15:56-0400\n"
 "PO-Revision-Date: 2015-01-17 23:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -38,23 +38,23 @@ msgstr "Documento devuelto automáticamente"
 msgid "Document forcefully checked in"
 msgstr "Documento devuelto forzosamente"
 
-#: exceptions.py:16 views.py:82
+#: exceptions.py:18 views.py:82
 msgid "Document already checked out."
 msgstr "El documento ya está reservado."
 
-#: links.py:16
+#: links.py:19
 msgid "Checkouts"
 msgstr "Reservaciones"
 
-#: links.py:17
+#: links.py:20
 msgid "Check out document"
 msgstr "Reservar documento"
 
-#: links.py:18
+#: links.py:21
 msgid "Check in document"
 msgstr "Devolver documento"
 
-#: links.py:19
+#: links.py:22
 msgid "Check in/out"
 msgstr "Reservas"
 

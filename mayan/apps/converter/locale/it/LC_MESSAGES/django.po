@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
@@ -9,62 +9,61 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:18-0400\n"
-"PO-Revision-Date: 2015-01-11 22:05+0000\n"
+"POT-Creation-Date: 2015-01-27 15:57-0400\n"
+"PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: literals.py:19
+#: literals.py:21
 msgid "Resize"
 msgstr "Ridimensiona"
 
-#: literals.py:20
+#: literals.py:22
 msgid "Resize."
 msgstr "Ridimensiona"
 
-#: literals.py:22 literals.py:37
+#: literals.py:24 literals.py:39
 msgid "Width"
 msgstr ""
 
-#: literals.py:23 literals.py:38
+#: literals.py:25 literals.py:40
 msgid "Height"
 msgstr ""
 
-#: literals.py:27
+#: literals.py:29
 msgid "Rotate"
 msgstr "Ruotare"
 
-#: literals.py:28
+#: literals.py:30
 msgid "Rotate by n degress."
 msgstr "Ruotate di n gradi"
 
-#: literals.py:30
+#: literals.py:32
 msgid "Degrees"
 msgstr ""
 
-#: literals.py:34
+#: literals.py:36
 msgid "Density"
 msgstr "Densità"
 
-#: literals.py:35
+#: literals.py:37
 msgid "Change the resolution (ie: DPI) without resizing."
 msgstr "Cambia risoluzione (ie:DPi) senza ridimensionare"
 
-#: literals.py:42
+#: literals.py:44
 msgid "Zoom"
 msgstr "Zoom"
 
-#: literals.py:43
+#: literals.py:45
 msgid "Zoom by n percent."
 msgstr "Zoom in percentuale"
 
-#: literals.py:45
+#: literals.py:47
 msgid "Percent"
 msgstr ""
 
@@ -82,9 +81,10 @@ msgstr "File path per il progarmma "
 
 #: settings.py:15
 msgid ""
-"Graphics conversion backend to use.  Options are: converter.backends."
-"imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-"and converter.backends.python.Python"
+"Graphics conversion backend to use.  Options are: "
+"converter.backends.imagemagick.ImageMagick, "
+"converter.backends.graphicsmagick.GraphicsMagick and "
+"converter.backends.python.Python"
 msgstr ""
 
 #: settings.py:16
@@ -95,18 +95,15 @@ msgstr ""
 msgid "Path to the Popple program pdftoppm."
 msgstr ""
 
-#: templates/converter_file_formats_help.html:3
-msgid "Help"
-msgstr "Aiuto"
+#~ msgid "Help"
+#~ msgstr "Help"
 
-#: templates/converter_file_formats_help.html:4
-#, python-format
-msgid ""
-"These are the file formats supported by the currently selected converter "
-"backend.  In this case: '%(backend)s'"
-msgstr ""
-"Questi sono il formati file supportati dal backend selezionato.In questo "
-"caso : '%(backend)s'"
+#~ msgid ""
+#~ "These are the file formats supported by the currently selected converter "
+#~ "backend.  In this case: '%(backend)s'"
+#~ msgstr ""
+#~ "These are the file formats supported by the currently selected converter "
+#~ "backend.  In this case: '%(backend)s'"
 
 #~ msgid "file formats"
 #~ msgstr "file formats"
@@ -412,11 +409,9 @@ msgstr ""
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -532,8 +527,7 @@ msgstr ""
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:18-0400\n"
+"POT-Creation-Date: 2015-01-27 15:57-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,54 +18,54 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: literals.py:19
+#: literals.py:21
 msgid "Resize"
 msgstr "Resize"
 
-#: literals.py:20
+#: literals.py:22
 msgid "Resize."
 msgstr "Resize."
 
-#: literals.py:22 literals.py:37
+#: literals.py:24 literals.py:39
 #, fuzzy
 msgid "Width"
 msgstr "width"
 
-#: literals.py:23 literals.py:38
+#: literals.py:25 literals.py:40
 #, fuzzy
 msgid "Height"
 msgstr "height"
 
-#: literals.py:27
+#: literals.py:29
 msgid "Rotate"
 msgstr "Rotate"
 
-#: literals.py:28
+#: literals.py:30
 msgid "Rotate by n degress."
 msgstr "Rotate by n degress."
 
-#: literals.py:30
+#: literals.py:32
 #, fuzzy
 msgid "Degrees"
 msgstr "degrees"
 
-#: literals.py:34
+#: literals.py:36
 msgid "Density"
 msgstr "Density"
 
-#: literals.py:35
+#: literals.py:37
 msgid "Change the resolution (ie: DPI) without resizing."
 msgstr "Change the resolution (ie: DPI) without resizing."
 
-#: literals.py:42
+#: literals.py:44
 msgid "Zoom"
 msgstr "Zoom"
 
-#: literals.py:43
+#: literals.py:45
 msgid "Zoom by n percent."
 msgstr "Zoom by n percent."
 
-#: literals.py:45
+#: literals.py:47
 #, fuzzy
 msgid "Percent"
 msgstr "percent"
@@ -101,18 +101,15 @@ msgstr "Path to the libreoffice program."
 msgid "Path to the Popple program pdftoppm."
 msgstr "Path to the libreoffice program."
 
-#: templates/converter_file_formats_help.html:3
-msgid "Help"
-msgstr "Help"
+#~ msgid "Help"
+#~ msgstr "Help"
 
-#: templates/converter_file_formats_help.html:4
-#, python-format
-msgid ""
-"These are the file formats supported by the currently selected converter "
-"backend.  In this case: '%(backend)s'"
-msgstr ""
-"These are the file formats supported by the currently selected converter "
-"backend.  In this case: '%(backend)s'"
+#~ msgid ""
+#~ "These are the file formats supported by the currently selected converter "
+#~ "backend.  In this case: '%(backend)s'"
+#~ msgstr ""
+#~ "These are the file formats supported by the currently selected converter "
+#~ "backend.  In this case: '%(backend)s'"
 
 #~ msgid "file formats"
 #~ msgstr "file formats"

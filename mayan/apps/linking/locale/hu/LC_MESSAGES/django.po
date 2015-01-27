@@ -1,22 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:19-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"POT-Creation-Date: 2015-01-27 15:59-0400\n"
+"PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"Language-Team: Hungarian (http://www.transifex.com/projects/p/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:25 models.py:66
@@ -24,11 +23,11 @@ msgid "Foreign document attribute"
 msgstr ""
 
 #: links.py:13 links.py:14 links.py:20 models.py:60 permissions.py:7
-#: views.py:112
+#: views.py:113
 msgid "Smart links"
 msgstr ""
 
-#: links.py:15 views.py:139
+#: links.py:15 views.py:140
 msgid "Create new smart link"
 msgstr ""
 
@@ -44,7 +43,7 @@ msgstr ""
 msgid "Document types"
 msgstr ""
 
-#: links.py:21 views.py:85
+#: links.py:21 views.py:83
 msgid "Documents"
 msgstr ""
 
@@ -60,71 +59,71 @@ msgstr ""
 msgid "ACLs"
 msgstr ""
 
-#: literals.py:7
+#: literals.py:9
 msgid "and"
 msgstr ""
 
-#: literals.py:8
+#: literals.py:10
 msgid "or"
 msgstr ""
 
-#: literals.py:12
+#: literals.py:14
 msgid "is equal to"
 msgstr ""
 
-#: literals.py:13
+#: literals.py:15
 msgid "is equal to (case insensitive)"
 msgstr ""
 
-#: literals.py:14
+#: literals.py:16
 msgid "contains"
 msgstr ""
 
-#: literals.py:15
+#: literals.py:17
 msgid "contains (case insensitive)"
 msgstr ""
 
-#: literals.py:16
+#: literals.py:18
 msgid "is in"
 msgstr ""
 
-#: literals.py:17
+#: literals.py:19
 msgid "is greater than"
 msgstr ""
 
-#: literals.py:18
+#: literals.py:20
 msgid "is greater than or equal to"
 msgstr ""
 
-#: literals.py:19
+#: literals.py:21
 msgid "is less than"
 msgstr ""
 
-#: literals.py:20
+#: literals.py:22
 msgid "is less than or equal to"
 msgstr ""
 
-#: literals.py:21
+#: literals.py:23
 msgid "starts with"
 msgstr ""
 
-#: literals.py:22
+#: literals.py:24
 msgid "starts with (case insensitive)"
 msgstr ""
 
-#: literals.py:23
+#: literals.py:25
 msgid "ends with"
 msgstr ""
 
-#: literals.py:24
+#: literals.py:26
 msgid "ends with (case insensitive)"
 msgstr ""
 
-#: literals.py:25
+#: literals.py:27
 msgid "is in regular expression"
 msgstr ""
 
-#: literals.py:26
+#: literals.py:28
 msgid "is in regular expression (case insensitive)"
 msgstr ""
 
@@ -132,7 +131,7 @@ msgstr ""
 msgid "Title"
 msgstr ""
 
-#: models.py:17 views.py:115
+#: models.py:17 views.py:116
 msgid "Dynamic title"
 msgstr ""
 
@@ -141,7 +140,7 @@ msgid ""
 "This expression will be evaluated against the current selected document."
 msgstr ""
 
-#: models.py:18 models.py:70 views.py:116 views.py:232
+#: models.py:18 models.py:70 views.py:117 views.py:233
 msgid "Enabled"
 msgstr ""
 
@@ -154,7 +153,7 @@ msgstr ""
 msgid "This smart link is not allowed for the selected document's type."
 msgstr ""
 
-#: models.py:59 models.py:64 views.py:294 views.py:328
+#: models.py:59 models.py:64 views.py:295 views.py:329
 msgid "Smart link"
 msgstr ""
 
@@ -220,95 +219,96 @@ msgstr ""
 msgid "Documents in smart link: %s"
 msgstr ""
 
-#: views.py:67
+#: views.py:68
 #, python-format
 msgid "Error calculating smart link for: %(document)s; %(exception)s."
 msgstr ""
 
 #: views.py:82
-#, python-format
-msgid "Smart links for: %s"
-msgstr ""
-
-#: views.py:84
 msgid "Indentifier"
 msgstr ""
 
-#: views.py:132
+#: views.py:97
+#, python-format
+msgid "Smart links for document: %s"
+msgstr ""
+
+#: views.py:133
 #, python-format
 msgid "Smart link: %s created successfully."
 msgstr ""
 
-#: views.py:155
+#: views.py:156
 #, python-format
 msgid "Smart link: %s edited successfully."
 msgstr ""
 
-#: views.py:163
+#: views.py:164
 #, python-format
 msgid "Edit smart link: %s"
 msgstr ""
 
-#: views.py:181
+#: views.py:182
 #, python-format
 msgid "Smart link: %s deleted successfully."
 msgstr ""
 
-#: views.py:183
+#: views.py:184
 #, python-format
 msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
 msgstr ""
 
-#: views.py:192
+#: views.py:193
 #, python-format
 msgid "Are you sure you wish to delete smart link: %s?"
 msgstr ""
 
-#: views.py:214
+#: views.py:215
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr ""
 
-#: views.py:229
+#: views.py:230
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr ""
 
-#: views.py:254
+#: views.py:255
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr ""
 
-#: views.py:261
+#: views.py:262
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr ""
 
-#: views.py:281
+#: views.py:282
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr ""
 
-#: views.py:288
+#: views.py:289
 msgid "Edit smart link condition"
 msgstr ""
 
-#: views.py:295 views.py:329
+#: views.py:296 views.py:330
 msgid "Condition"
 msgstr ""
 
-#: views.py:315
+#: views.py:316
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr ""
 
-#: views.py:317
+#: views.py:318
 #, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
+"Error deleting smart link condition: %(smart_link_condition)s; "
+"%(exception)s."
 msgstr ""
 
-#: views.py:331
+#: views.py:332
 #, python-format
 msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
 msgstr ""
@@ -369,14 +369,14 @@ msgstr ""
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

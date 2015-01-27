@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -10,26 +10,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:20-0400\n"
-"PO-Revision-Date: 2015-01-17 07:07+0000\n"
+"POT-Creation-Date: 2015-01-27 15:59-0400\n"
+"PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:11
+#: __init__.py:12
 msgid "Home"
 msgstr ""
 
-#: links.py:8
+#: links.py:10
 msgid "Maintenance"
 msgstr "نگهداری"
 
-#: links.py:9
+#: links.py:11
 msgid "Admin site"
 msgstr "سایت مدیر"
 
@@ -61,15 +60,23 @@ msgstr "صفحه پیدا نشد."
 msgid "Sorry, but the requested page could not be found."
 msgstr "متاسفانه صفحه درخواستی پیدا نشد."
 
-#: templates/main/about.html:8
+#: templates/main/about.html:9
 msgid "About this program"
 msgstr "درباره‌ی این برنامه"
 
-#: templates/main/about.html:12
+#: templates/main/about.html:13
 msgid "Version"
 msgstr "نسخه"
 
-#: templates/main/about.html:20
+#: templates/main/about.html:15
+msgid "Open Source Electronic Document Manager System"
+msgstr ""
+
+#: templates/main/about.html:31
+msgid "Released under the Apache 2.0 License"
+msgstr "تحت لیسانس Apache 2.0"
+
+#: templates/main/about.html:42
 msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr "حق کپی &copy; 2011 Roberto Rosario."
 
@@ -194,9 +201,7 @@ msgstr "لغو"
 msgid ""
 "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
-"%(total_pages)s)"
+msgstr "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of %(total_pages)s)"
 
 #: templates/main/generic_list_subtemplate.html:25
 #, python-format
@@ -207,31 +212,19 @@ msgstr "%(title)s (%(total)s)"
 msgid "Identifier"
 msgstr "مشخصه Identifier"
 
-#: templates/main/generic_list_subtemplate.html:133
+#: templates/main/generic_list_subtemplate.html:120
 msgid "No results"
 msgstr "بی جواب و یا بی جواب"
 
-#: templates/main/home.html:17
-msgid "Upload documents"
-msgstr ""
-
-#: templates/main/home.html:26
-msgid "Recent Documents"
-msgstr ""
-
-#: templates/main/home.html:35
-msgid "All Documents"
-msgstr ""
-
-#: templates/main/home.html:44
+#: templates/main/home.html:23
 msgid "Space separated terms"
 msgstr ""
 
-#: templates/main/home.html:45
+#: templates/main/home.html:24
 msgid "Search"
 msgstr ""
 
-#: templates/main/home.html:46
+#: templates/main/home.html:25
 msgid "Advanced search"
 msgstr ""
 
@@ -253,9 +246,7 @@ msgstr "تا 5 ثانیه دیگر به نقطه ورودی وب سایت ارج
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
-msgstr ""
-"Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
-"work."
+msgstr "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't work."
 
 #: templates/main/login.html:40
 msgid "First time login"
@@ -265,9 +256,7 @@ msgstr "دفعه اول لاگین "
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr ""
-"You have just finished installing <strong>Mayan EDMS</strong>, "
-"congratulations!"
+msgstr "You have just finished installing <strong>Mayan EDMS</strong>, congratulations!"
 
 #: templates/main/login.html:43
 msgid "Login using the following credentials:"
@@ -304,19 +293,6 @@ msgstr "تغییر کلمه عبور ویا پسورد"
 msgid "Your password has been successfully changed."
 msgstr "تغییر موفق کلمه عبور"
 
-#: templates/main/project_description.html:8
-msgid ""
-"Open source, Django based electronic document manager with custom metadata, "
-"indexing, tagging, file serving integration, digital signature support and "
-"OCR capabilities"
-msgstr ""
-"سیستم مدیریت اسناد الکترونیکی به همراه ocr و متادیتا، اندیس گذاری و برچسب "
-"گذاری فایلها"
-
-#: templates/main/project_description.html:23
-msgid "Released under the Apache 2.0 License"
-msgstr "تحت لیسانس Apache 2.0"
-
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8
 msgid "Previous"
@@ -326,6 +302,15 @@ msgstr "قبلی"
 #: templates/pagination/pagination.html:28
 msgid "Next"
 msgstr "بعدی"
+
+#~ msgid ""
+#~ "Open source, Django based electronic document manager with custom metadata, "
+#~ "indexing, tagging, file serving integration, digital signature support and "
+#~ "OCR capabilities"
+#~ msgstr ""
+#~ "Open source, Django based electronic document manager with custom metadata, "
+#~ "indexing, tagging, file serving integration, digital signature support and "
+#~ "OCR capabilities"
 
 #~ msgid "Logout"
 #~ msgstr "Logout"
@@ -364,11 +349,11 @@ msgstr "بعدی"
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:18-0400\n"
+"POT-Creation-Date: 2015-01-27 15:58-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,12 +18,12 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:39 links.py:23 links.py:24 links.py:38 links.py:40 models.py:60
+#: __init__.py:40 links.py:23 links.py:24 links.py:38 links.py:40 models.py:60
 #: views.py:38 views.py:296
 msgid "Indexes"
 msgstr "Indexes"
 
-#: api.py:50
+#: api.py:49
 #, fuzzy, python-format
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
@@ -318,9 +318,9 @@ msgstr "On large databases this operation may take some time to execute."
 msgid "Index rebuild queued successfully."
 msgstr "Index rebuild completed successfully."
 
-#: views.py:405
+#: views.py:408
 #, fuzzy, python-format
-msgid "Indexes containing: %s"
+msgid "Indexes containing document: %s"
 msgstr "indexes containing: %s"
 
 #: widgets.py:85

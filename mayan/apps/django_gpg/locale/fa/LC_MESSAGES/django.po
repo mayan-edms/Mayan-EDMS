@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -9,50 +9,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:18-0400\n"
-"PO-Revision-Date: 2014-10-25 17:28+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"POT-Creation-Date: 2015-01-27 15:57-0400\n"
+"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: api.py:92
+#: api.py:94
 msgid "Unknown"
 msgstr "ناشناخته"
 
-#: forms.py:7
+#: forms.py:9
 msgid "Term"
 msgstr "ترم Term"
 
-#: forms.py:8
+#: forms.py:10
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "نام، ایمیل، شناسه کلید ویا اثرانگشت کلید برای چستچو."
 
-#: links.py:6 views.py:66
+#: links.py:10 views.py:68
 msgid "Private keys"
 msgstr "کلید شخصی"
 
-#: links.py:7 views.py:69
+#: links.py:11 views.py:71
 msgid "Public keys"
 msgstr "کلید عمومی"
 
-#: links.py:8
+#: links.py:12
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:9 permissions.py:11
+#: links.py:13 permissions.py:11
 msgid "Query keyservers"
 msgstr "پرسش و یا query از سرورهای کلید"
 
-#: links.py:10
+#: links.py:14
 msgid "Import"
 msgstr "وارد کردن"
 
-#: links.py:11 permissions.py:7
+#: links.py:15 permissions.py:7
 msgid "Key management"
 msgstr "مدیریت کلید"
 
@@ -112,101 +111,103 @@ msgstr "پاک و یا حذف کلیدها"
 msgid "Import keys from keyservers"
 msgstr "وارد کردن کلیده از سرور کلیدها"
 
-#: settings.py:15
+#: settings.py:14
 msgid "List of keyservers to be queried for unknown keys."
 msgstr "لیست سرور کلیدها برای پرسش درباره کلید های ناشناس."
 
-#: settings.py:16
+#: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
 msgstr "ریشه دایرکتوری جهت نگهداری کلیدها بهمراه فایلهای پیکربندی."
 
-#: views.py:38
+#: settings.py:16
+msgid "Path to the GPG binary."
+msgstr ""
+
+#: views.py:40
 #, python-format
 msgid "Key: %s, imported successfully."
 msgstr "کلید: %s, بصورت موفقیت آمیز وارد شد."
 
-#: views.py:43
+#: views.py:45
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgstr "فادر نبودن در وارد کردن کلید با شناسه: %(key_id)s , خطای  %(error)s"
 
-#: views.py:52
+#: views.py:54
 msgid "Import key"
 msgstr "وارد کردن کلید"
 
-#: views.py:53
+#: views.py:55
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "آیا از ورود کلیدی با شناسه: %s مطمئن هستید؟"
 
-#: views.py:77
+#: views.py:79
 msgid "Key ID"
 msgstr "شناسه کلید"
 
-#: views.py:81
+#: views.py:83
 msgid "Owner"
 msgstr "صاحب"
 
-#: views.py:101
+#: views.py:103
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "کلید: %s با موفقیت حذف شد."
 
-#: views.py:108
+#: views.py:110
 msgid "Delete key"
 msgstr "حذف کلید"
 
-#: views.py:110
+#: views.py:112
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr ""
-"آیا از حذف کلید: %s مطمئن هستید؟ درصورت حذف کلید عمومی مرتبط با کلید خصوصی، "
-"کلیدخصوصی بطور اتوماتیک حذف خواهد شد."
+msgstr "آیا از حذف کلید: %s مطمئن هستید؟ درصورت حذف کلید عمومی مرتبط با کلید خصوصی، کلیدخصوصی بطور اتوماتیک حذف خواهد شد."
 
-#: views.py:127
+#: views.py:129
 msgid "Query key server"
 msgstr "پرسش از سرور کلید"
 
-#: views.py:140
+#: views.py:142
 msgid "results"
 msgstr "نتایج"
 
-#: views.py:145
+#: views.py:147
 msgid "ID"
 msgstr "شناسه"
 
-#: views.py:149
+#: views.py:151
 msgid "Type"
 msgstr "نوع"
 
-#: views.py:153
+#: views.py:155
 msgid "Creation date"
 msgstr "تاریخ ایجاد"
 
-#: views.py:157
+#: views.py:159
 msgid "Disabled"
 msgstr "غیر فعال"
 
-#: views.py:161
+#: views.py:163
 msgid "Expiration date"
 msgstr "تاریخ انقضا"
 
-#: views.py:165
+#: views.py:167
 msgid "Expired"
 msgstr "منقضی ویا تاریخ گذشته"
 
-#: views.py:169
+#: views.py:171
 msgid "Length"
 msgstr "طول"
 
-#: views.py:173
+#: views.py:175
 msgid "Revoked"
 msgstr "لغو شده"
 
-#: views.py:178
+#: views.py:180
 msgid "Identifies"
 msgstr "شناسایی کردن."
 

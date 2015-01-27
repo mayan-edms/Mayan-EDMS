@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:19-0400\n"
+"POT-Creation-Date: 2015-01-27 15:58-0400\n"
 "PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/mayan-"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Value"
 msgstr ""
 
-#: links.py:7 models.py:174
+#: links.py:7 models.py:178
 msgid "Installation details"
 msgstr ""
 
@@ -147,51 +147,51 @@ msgstr ""
 msgid "Git repository"
 msgstr ""
 
-#: models.py:115 models.py:119
+#: models.py:115 models.py:120
 msgid "Running from a Git repository"
 msgstr ""
 
-#: models.py:120
+#: models.py:121
 msgid "Repository remotes"
 msgstr ""
 
-#: models.py:121
+#: models.py:122
 msgid "Repository remotes URLs"
 msgstr ""
 
-#: models.py:122
+#: models.py:123
 msgid "Branch"
 msgstr ""
 
-#: models.py:123
+#: models.py:124
 msgid "HEAD commit hex SHA"
 msgstr ""
 
-#: models.py:124
+#: models.py:125
 msgid "HEAD commit author"
 msgstr ""
 
-#: models.py:125
+#: models.py:126
 msgid "HEAD commit authored date"
 msgstr ""
 
-#: models.py:126
+#: models.py:127
 msgid "HEAD commit committer"
 msgstr ""
 
-#: models.py:127
+#: models.py:128
 msgid "HEAD commit committed date"
 msgstr ""
 
-#: models.py:128
+#: models.py:129
 msgid "HEAD commit message"
 msgstr ""
 
-#: models.py:131
+#: models.py:135
 msgid "VirtualEnv"
 msgstr ""
 
-#: models.py:135
+#: models.py:139
 msgid "pip not found."
 msgstr ""
 

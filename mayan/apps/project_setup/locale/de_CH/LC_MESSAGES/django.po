@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:21-0400\n"
+"POT-Creation-Date: 2015-01-27 16:00-0400\n"
 "PO-Revision-Date: 2014-10-08 21:14+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Switzerland) (http://www.transifex.com/projects/p/"
@@ -19,10 +19,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: links.py:3
+#: links.py:5
 msgid "Setup"
 msgstr ""
 
-#: views.py:15
+#: views.py:13
 msgid "Setup items"
 msgstr ""

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:18-0400\n"
+"POT-Creation-Date: 2015-01-27 15:57-0400\n"
 "PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,7 +21,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: classes.py:38
+#: classes.py:40
 msgid "Available attributes: "
 msgstr ""
 
@@ -65,7 +65,7 @@ msgstr "ویرایش جزئیات"
 msgid "About"
 msgstr "درباره"
 
-#: links.py:15 views.py:281
+#: links.py:15 views.py:279
 msgid "License"
 msgstr "لیسانس"
 
@@ -164,123 +164,123 @@ msgstr "محلی که کلیه کاربران جهت به اشتراک گذار�
 msgid "Function found"
 msgstr "فانکشن و یا تابع پیدا شد."
 
-#: views.py:46
+#: views.py:44
 msgid "No action selected."
 msgstr "هیچ عملیاتی action انتخاب نشده است."
 
-#: views.py:50
+#: views.py:48
 msgid "Must select at least one item."
 msgstr "حداقل یک مورد انتخاب شود."
 
-#: views.py:102
+#: views.py:100
 #, python-format
 msgid "Unable to remove %(selection)s."
 msgstr "عیر قابل حذف و یا برداشتن %(selection)s."
 
-#: views.py:127
+#: views.py:125
 #, python-format
 msgid "Unable to add %(selection)s."
 msgstr "نمیتوان برداشت: %(selection)s."
 
-#: views.py:140
+#: views.py:138
 msgid "Add"
 msgstr "افزودن"
 
-#: views.py:151
+#: views.py:149
 msgid "Remove"
 msgstr "حذف"
 
-#: views.py:174
+#: views.py:172
 msgid "Current user details"
 msgstr "جزئیاتا کاربر فعلی"
 
-#: views.py:189
+#: views.py:187
 msgid "Current user locale profile details"
 msgstr ""
 
-#: views.py:206
+#: views.py:204
 msgid "E-mail conflict, another user has that same email."
 msgstr "این ایمیل با ایمیل کاربر دیگری یکسان است."
 
-#: views.py:209
+#: views.py:207
 msgid "Current user's details updated."
 msgstr "کزئیات کاربر فعلی بروزرسانی شد."
 
-#: views.py:218
+#: views.py:216
 msgid "Edit current user details"
 msgstr "یرایش جزئیات کاربر کنونی"
 
-#: views.py:241
+#: views.py:239
 msgid "Current user's locale profile details updated."
 msgstr ""
 
-#: views.py:250
+#: views.py:248
 msgid "Edit current user locale profile details"
 msgstr ""
 
-#: views.py:290
+#: views.py:288
 msgid "Current user password change"
 msgstr "تغییر کلمه عبور کاربر"
 
-#: views.py:305
+#: views.py:303
 msgid "Your password has been successfully changed."
 msgstr "کلمه عبور شما با موفقیت تغییر کرد."
 
-#: views.py:317
+#: views.py:314
 #, python-format
 msgid "Error saving %s details."
 msgstr "خطا در ثبت چزئیات %s."
 
-#: views.py:319
+#: views.py:316
 msgid "Error saving details."
 msgstr "خطا در ثبت چزئیات ."
 
-#: views.py:327
+#: views.py:324
 #, python-format
 msgid "%s details saved successfully."
 msgstr "جزئیات %s با موفقیت ثبت شد."
 
-#: views.py:329
+#: views.py:326
 msgid "Details saved successfully."
 msgstr "جزییات با موفقیت ثبت شد."
 
-#: views.py:341
+#: views.py:338
 #, python-format
 msgid "Error creating new %s."
 msgstr "خطا در زمان ایجاد %s."
 
-#: views.py:343
+#: views.py:340
 msgid "Error creating object."
 msgstr "خطا در زمان ایجاد شی"
 
-#: views.py:350
+#: views.py:347
 #, python-format
 msgid "%s created successfully."
 msgstr "%s با موفقیت ایجاد شد."
 
-#: views.py:352
+#: views.py:349
 msgid "New object created successfully."
 msgstr "شی جدید با موفقیت ساخته شد."
 
-#: views.py:370
+#: views.py:367
 #, python-format
 msgid "Error deleting %s."
 msgstr "خطا در زمان حذف %s."
 
-#: views.py:372
+#: views.py:369
 msgid "Error deleting object."
 msgstr "خطا در حذف شی."
 
-#: views.py:377
+#: views.py:374
 #, python-format
 msgid "%s deleted successfully."
 msgstr "%s با موفقیت حذف شد."
 
-#: views.py:379
+#: views.py:376
 msgid "Object deleted successfully."
 msgstr "شی با موفقیت حذف شد."
 
-#: widgets.py:58
+#: widgets.py:60
 msgid "None"
 msgstr "هیچکدام."
 

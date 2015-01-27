@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:20-0400\n"
+"POT-Creation-Date: 2015-01-27 16:00-0400\n"
 "PO-Revision-Date: 2014-10-25 08:37+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,35 +21,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: links.py:10 widgets.py:23
+#: links.py:11 widgets.py:25
 msgid "Grant"
 msgstr "دادن"
 
-#: links.py:11 widgets.py:17
+#: links.py:12 widgets.py:19
 msgid "Revoke"
 msgstr "لغو"
 
-#: links.py:13
+#: links.py:14
 msgid "Create new role"
 msgstr "ایجاد نقش role جدید"
 
-#: links.py:14
+#: links.py:15
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:15
+#: links.py:16
 msgid "Edit"
 msgstr "ویرایش"
 
-#: links.py:16 models.py:218 views.py:56
+#: links.py:17 models.py:218 views.py:59
 msgid "Roles"
 msgstr "نقش ها"
 
-#: links.py:17
+#: links.py:18
 msgid "Members"
 msgstr "اعضا"
 
-#: links.py:18
+#: links.py:19
 msgid "Role permissions"
 msgstr "مجوزهای نقش"
 
@@ -57,19 +57,19 @@ msgstr "مجوزهای نقش"
 msgid "Insufficient permissions."
 msgstr "اجازه ناکافی"
 
-#: models.py:126 views.py:77
+#: models.py:126 views.py:80
 msgid "Namespace"
 msgstr "فضای نام"
 
-#: models.py:127 views.py:78
+#: models.py:127 views.py:81
 msgid "Name"
 msgstr "نام"
 
-#: models.py:134 models.py:196 views.py:132
+#: models.py:134 models.py:196 views.py:134
 msgid "Permission"
 msgstr "مجوز"
 
-#: models.py:135 permissions.py:7 views.py:74 views.py:134
+#: models.py:135 permissions.py:7 views.py:77 views.py:136
 msgid "Permissions"
 msgstr "مجوزها"
 
@@ -121,83 +121,83 @@ msgstr "دادن مجوز"
 msgid "Revoke permissions"
 msgstr "لغو مجوز"
 
-#: settings.py:10
+#: settings.py:11
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
 msgstr "نقش های پیش فرضی که در زمان ایجاد کاربر جدید داده میشود."
 
-#: views.py:80
+#: views.py:83
 msgid "Has permission"
 msgstr "دارای مجوز"
 
-#: views.py:129 views.py:190
+#: views.py:131 views.py:191
 msgid " and "
 msgstr "و"
 
-#: views.py:129 views.py:190
+#: views.py:131 views.py:191
 #, python-format
 msgid "%(permissions)s to %(requester)s"
 msgstr "%(permissions)s به %(requester)s"
 
-#: views.py:139
+#: views.py:141
 #, python-format
 msgid "Permission \"%(permission)s\" granted to: %(requester)s."
 msgstr "مجوز  \"%(permission)s\" داده شده به %(requester)s"
 
-#: views.py:142
+#: views.py:144
 #, python-format
 msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
 msgstr "%(requester)s دارای مجوز \"%(permission)s\" میباشد."
 
-#: views.py:152
+#: views.py:154
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 msgstr "آیا از دادن مجوز مطمئن هستید  %(permissions_label)s %(title_suffix)s؟"
 
-#: views.py:193
+#: views.py:194
 msgid "permission"
 msgstr "اجازه"
 
-#: views.py:195
+#: views.py:196
 msgid "permissions"
 msgstr "اجازه ها"
 
-#: views.py:200
+#: views.py:201
 #, python-format
 msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
 msgstr "مجوز \"%(permission)s\" از %(requester)s پس گرفته شد."
 
-#: views.py:203
+#: views.py:204
 #, python-format
 msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 msgstr "%(requester)s دارای مجوز  \"%(permission)s\" نیست."
 
-#: views.py:213
+#: views.py:214
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 msgstr "آیا از لغو مجوز %(permissions_label)s %(title_suffix)s مطئمن هستید؟"
 
-#: views.py:248 views.py:272
+#: views.py:249 views.py:273
 msgid "Users"
 msgstr "کاربران"
 
-#: views.py:251 views.py:275
+#: views.py:252 views.py:276
 msgid "Groups"
 msgstr "گروه‌ها"
 
-#: views.py:254 views.py:278
+#: views.py:255 views.py:279
 msgid "Special"
 msgstr "مخصوص"
 
-#: views.py:303
+#: views.py:304
 #, python-format
 msgid "Non members of role: %s"
 msgstr "عضو نقش نیستند : %s"
 
-#: views.py:304
+#: views.py:305
 #, python-format
 msgid "Members of role: %s"
 msgstr "اعشای نقش : %s"

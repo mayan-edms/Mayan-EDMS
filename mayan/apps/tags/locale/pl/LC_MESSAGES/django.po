@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:21-0400\n"
-"PO-Revision-Date: 2015-01-18 06:25+0000\n"
+"POT-Creation-Date: 2015-01-27 16:01-0400\n"
+"PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -19,56 +19,48 @@ msgstr ""
 "Language: pl\n"
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:35
+#: __init__.py:38
 msgid "Preview"
 msgstr ""
 
-#: __init__.py:39
+#: __init__.py:42
 msgid "Tagged items"
 msgstr ""
 
-#: __init__.py:46 __init__.py:51 forms.py:42 links.py:11 links.py:20
-#: models.py:18 permissions.py:7 views.py:114
+#: __init__.py:49 __init__.py:54 forms.py:42 links.py:12 links.py:21
+#: models.py:18 permissions.py:7 views.py:116
 msgid "Tags"
 msgstr "Tagi"
 
-#: events.py:7
-msgid "Document created"
-msgstr ""
-
-#: events.py:8
-msgid "Document properties edited"
-msgstr ""
-
-#: links.py:12
+#: links.py:13
 msgid "Create new tag"
 msgstr ""
 
-#: links.py:14 links.py:15
+#: links.py:15 links.py:16
 msgid "Attach tag"
 msgstr ""
 
-#: links.py:17
+#: links.py:18
 msgid "Remove tag"
 msgstr ""
 
-#: links.py:18
+#: links.py:19
 msgid "Remove tags"
 msgstr ""
 
-#: links.py:21 links.py:24
+#: links.py:22 links.py:25
 msgid "Delete"
 msgstr ""
 
-#: links.py:22
+#: links.py:23
 msgid "Edit"
 msgstr ""
 
-#: links.py:23 models.py:14
+#: links.py:24 models.py:14
 msgid "Documents"
 msgstr ""
 
-#: links.py:25
+#: links.py:26
 msgid "ACLs"
 msgstr ""
 
@@ -170,111 +162,105 @@ msgstr ""
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr ""
 
-#: views.py:98
-#, python-format
-msgid "Attach tag to document: %s."
-msgstr ""
+#: views.py:95
+msgid "Attach tag to document"
+msgid_plural "Attach tag to documents"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: views.py:100
-#, python-format
-msgid "Attach tag to documents: %s."
-msgstr ""
-
-#: views.py:143
+#: views.py:145
 msgid "Must provide at least one tag."
-msgstr ""
-
-#: views.py:158
-#, python-format
-msgid "Tag \"%s\" deleted successfully."
 msgstr ""
 
 #: views.py:160
 #, python-format
+msgid "Tag \"%s\" deleted successfully."
+msgstr ""
+
+#: views.py:162
+#, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr ""
 
-#: views.py:173
-#, python-format
-msgid "Are you sure you wish to delete the tag: %s?"
-msgstr ""
-
-#: views.py:174 views.py:177
+#: views.py:171
 msgid "Will be removed from all documents."
 msgstr ""
 
-#: views.py:176
-#, python-format
-msgid "Are you sure you wish to delete the tags: %s?"
-msgstr ""
+#: views.py:174
+msgid "Are you sure you wish to delete the selected tag?"
+msgid_plural "Are you sure you wish to delete the selected tags?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
-#: views.py:201
+#: views.py:205
 msgid "Tag updated succesfully."
 msgstr ""
 
-#: views.py:207
+#: views.py:211
 #, python-format
 msgid "Edit tag: %s"
 msgstr ""
 
-#: views.py:222
+#: views.py:226
 #, python-format
-msgid "Documents with the tag \"%s\""
+msgid "Documents with the tag: %s"
 msgstr ""
 
-#: views.py:239
+#: views.py:243
 #, python-format
-msgid "Tags for: %s"
+msgid "Tags for document: %s"
 msgstr ""
 
-#: views.py:251
+#: views.py:255
 msgid "Must provide at least one tagged document."
 msgstr ""
 
-#: views.py:289
+#: views.py:293
 #, python-format
 msgid "Remove tag from document: %s."
 msgstr ""
 
-#: views.py:291
+#: views.py:295
 #, python-format
 msgid "Remove tag from documents: %s."
 msgstr ""
 
-#: views.py:297
+#: views.py:301
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
 msgstr ""
 
-#: views.py:300
+#: views.py:304
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
 msgstr ""
 
-#: views.py:305
+#: views.py:309
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
 msgstr ""
 
-#: views.py:308
+#: views.py:312
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags %(tags)s from the documents: "
 "%(documents)s?"
 msgstr ""
 
-#: views.py:315
+#: views.py:319
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr ""
 
-#: views.py:320
+#: views.py:324
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""
@@ -282,6 +268,18 @@ msgstr ""
 #: templatetags/tags_tags.py:18
 msgid "Add tag to document"
 msgstr ""
+
+#~ msgid "Document created"
+#~ msgstr "document"
+
+#~ msgid "Attach tag to document: %s."
+#~ msgstr "Attach tag to document: %s."
+
+#~ msgid "Attach tag to documents: %s."
+#~ msgstr "Attach tag to documents: %s."
+
+#~ msgid "Are you sure you wish to delete the tags: %s?"
+#~ msgstr "Are you sure you wish to delete the tags: %s?"
 
 #~ msgid "Name"
 #~ msgstr "Name"

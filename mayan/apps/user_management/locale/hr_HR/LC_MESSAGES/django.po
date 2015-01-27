@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:22-0400\n"
+"POT-Creation-Date: 2015-01-27 16:01-0400\n"
 "PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Croatian (Croatia) (http://www.transifex.com/projects/p/mayan-"
@@ -20,43 +20,43 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: forms.py:13
+#: forms.py:15
 msgid "New password"
 msgstr ""
 
-#: forms.py:14
+#: forms.py:16
 msgid "Confirm password"
 msgstr ""
 
-#: links.py:10 links.py:11 views.py:30
+#: links.py:11 links.py:12 views.py:31
 msgid "Users"
 msgstr ""
 
-#: links.py:12 links.py:22
+#: links.py:13 links.py:23
 msgid "Edit"
 msgstr ""
 
-#: links.py:13 views.py:95
+#: links.py:14 views.py:96
 msgid "Create new user"
 msgstr ""
 
-#: links.py:14 links.py:15 links.py:24 links.py:25
+#: links.py:15 links.py:16 links.py:25 links.py:26
 msgid "Delete"
 msgstr ""
 
-#: links.py:16 links.py:17
+#: links.py:17 links.py:18
 msgid "Reset password"
 msgstr ""
 
-#: links.py:18 links.py:20 links.py:21 views.py:246
+#: links.py:19 links.py:21 links.py:22 views.py:247
 msgid "Groups"
 msgstr ""
 
-#: links.py:23 views.py:293
+#: links.py:24 views.py:294
 msgid "Create new group"
 msgstr ""
 
-#: links.py:26 views.py:250
+#: links.py:27 views.py:251
 msgid "Members"
 msgstr ""
 
@@ -96,158 +96,158 @@ msgstr ""
 msgid "Delete existing groups"
 msgstr ""
 
-#: views.py:34
+#: views.py:35
 msgid "Full name"
 msgstr ""
 
-#: views.py:38
+#: views.py:39
 msgid "Email"
 msgstr ""
 
-#: views.py:42
+#: views.py:43
 msgid "Active"
 msgstr ""
 
-#: views.py:46
+#: views.py:47
 msgid "Has usable password?"
 msgstr ""
 
-#: views.py:61
+#: views.py:62
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
 msgstr ""
 
-#: views.py:68
+#: views.py:69
 #, python-format
 msgid "User \"%s\" updated successfully."
 msgstr ""
 
-#: views.py:74
+#: views.py:75
 #, python-format
 msgid "Edit user: %s"
 msgstr ""
 
-#: views.py:89
+#: views.py:90
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr ""
 
-#: views.py:110 views.py:162
+#: views.py:111 views.py:163
 msgid "Must provide at least one user."
 msgstr ""
 
-#: views.py:120
+#: views.py:121
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 msgstr ""
 
-#: views.py:123
+#: views.py:124
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr ""
 
-#: views.py:125
+#: views.py:126
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr ""
 
-#: views.py:138
+#: views.py:139
 #, python-format
 msgid "Are you sure you wish to delete the user: %s?"
 msgstr ""
 
-#: views.py:140
+#: views.py:141
 #, python-format
 msgid "Are you sure you wish to delete the users: %s?"
 msgstr ""
 
-#: views.py:173
+#: views.py:174
 msgid "Passwords do not match, try again."
 msgstr ""
 
-#: views.py:178
+#: views.py:179
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr ""
 
-#: views.py:182
+#: views.py:183
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr ""
 
-#: views.py:184
+#: views.py:185
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr ""
 
-#: views.py:199
+#: views.py:200
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr ""
 
-#: views.py:201
+#: views.py:202
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr ""
 
-#: views.py:231
+#: views.py:232
 #, python-format
 msgid "Non groups of user: %s"
 msgstr ""
 
-#: views.py:232
+#: views.py:233
 #, python-format
 msgid "Groups of user: %s"
 msgstr ""
 
-#: views.py:268
+#: views.py:269
 #, python-format
 msgid "Group \"%s\" updated successfully."
 msgstr ""
 
-#: views.py:274
+#: views.py:275
 #, python-format
 msgid "Edit group: %s"
 msgstr ""
 
-#: views.py:287
+#: views.py:288
 #, python-format
 msgid "Group \"%s\" created successfully."
 msgstr ""
 
-#: views.py:308
+#: views.py:309
 msgid "Must provide at least one group."
 msgstr ""
 
-#: views.py:318
+#: views.py:319
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr ""
 
-#: views.py:320
+#: views.py:321
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr ""
 
-#: views.py:333
+#: views.py:334
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr ""
 
-#: views.py:335
+#: views.py:336
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr ""
 
-#: views.py:365
+#: views.py:366
 #, python-format
 msgid "Non members of group: %s"
 msgstr ""
 
-#: views.py:366
+#: views.py:367
 #, python-format
 msgid "Members of group: %s"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:20-0400\n"
+"POT-Creation-Date: 2015-01-27 15:59-0400\n"
 "PO-Revision-Date: 2015-01-14 19:51+0000\n"
 "Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:21
+#: forms.py:23
 msgid "Email address"
 msgstr "Dirección de correo electrónico"
 
-#: forms.py:22
+#: forms.py:24
 msgid "Subject"
 msgstr "Tema"
 
-#: forms.py:23
+#: forms.py:25
 msgid "Body"
 msgstr "Cuerpo"
 
@@ -92,36 +92,36 @@ msgstr ""
 msgid "Template for the document email form body line."
 msgstr ""
 
-#: views.py:40
+#: views.py:41
 msgid "Must provide at least one document."
 msgstr "Debe proveer al menos un documento"
 
-#: views.py:69
+#: views.py:70
 msgid "Successfully queued for delivery via email."
 msgstr ""
 "Añadido de forma exitosa a la lista de espera para envío de correo "
 "electrónico"
 
-#: views.py:77
+#: views.py:78
 msgid "Send"
 msgstr "Enviar"
 
-#: views.py:83
+#: views.py:84
 #, python-format
 msgid "Email document: %s"
 msgstr "Enviar documento: %s"
 
-#: views.py:85
+#: views.py:86
 #, python-format
 msgid "Email link for document: %s"
 msgstr "Enviar enlace para el documento: %s"
 
-#: views.py:88
+#: views.py:89
 #, python-format
 msgid "Email documents: %s"
 msgstr "Enviar documentos: %s"
 
-#: views.py:90
+#: views.py:91
 #, python-format
 msgid "Email links for documents: %s"
 msgstr "Enviar enlaces para documentos: %s"

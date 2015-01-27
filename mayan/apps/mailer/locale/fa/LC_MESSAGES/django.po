@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:20-0400\n"
+"POT-Creation-Date: 2015-01-27 15:59-0400\n"
 "PO-Revision-Date: 2014-10-28 06:43+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: forms.py:21
+#: forms.py:23
 msgid "Email address"
 msgstr "پست الکترونیکی"
 
-#: forms.py:22
+#: forms.py:24
 msgid "Subject"
 msgstr "موضوع"
 
-#: forms.py:23
+#: forms.py:25
 msgid "Body"
 msgstr "بدنه"
 
@@ -99,34 +99,34 @@ msgstr ""
 msgid "Template for the document email form body line."
 msgstr "الگوی ارسال سند از داخل بدنه"
 
-#: views.py:40
+#: views.py:41
 msgid "Must provide at least one document."
 msgstr "حداقل یک سند بایست ارایه گردد."
 
-#: views.py:69
+#: views.py:70
 msgid "Successfully queued for delivery via email."
 msgstr "ورود موفق به صف ارسال از طریق ایمیل"
 
-#: views.py:77
+#: views.py:78
 msgid "Send"
 msgstr "ارسال"
 
-#: views.py:83
+#: views.py:84
 #, python-format
 msgid "Email document: %s"
 msgstr "ایمیل سند: %s"
 
-#: views.py:85
+#: views.py:86
 #, python-format
 msgid "Email link for document: %s"
 msgstr "پیوند ایمیل برای سند: %s"
 
-#: views.py:88
+#: views.py:89
 #, python-format
 msgid "Email documents: %s"
 msgstr "ایمیل اسناد: %s"
 
-#: views.py:90
+#: views.py:91
 #, python-format
 msgid "Email links for documents: %s"
 msgstr "پیوند ایمیل برای اسناد: %s"

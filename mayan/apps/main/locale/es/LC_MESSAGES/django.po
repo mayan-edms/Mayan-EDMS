@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -11,26 +11,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:20-0400\n"
-"PO-Revision-Date: 2015-01-17 23:31+0000\n"
+"POT-Creation-Date: 2015-01-27 15:59-0400\n"
+"PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:11
+#: __init__.py:12
 msgid "Home"
 msgstr "inicio"
 
-#: links.py:8
+#: links.py:10
 msgid "Maintenance"
 msgstr "Mantenimiento"
 
-#: links.py:9
+#: links.py:11
 msgid "Admin site"
 msgstr "Sitio administrativo"
 
@@ -62,15 +61,23 @@ msgstr "La página no se encuentra"
 msgid "Sorry, but the requested page could not be found."
 msgstr "Lo sentimos, la página solicitada no se encuentra"
 
-#: templates/main/about.html:8
+#: templates/main/about.html:9
 msgid "About this program"
 msgstr "Acerca de este programa"
 
-#: templates/main/about.html:12
+#: templates/main/about.html:13
 msgid "Version"
 msgstr "Versión"
 
-#: templates/main/about.html:20
+#: templates/main/about.html:15
+msgid "Open Source Electronic Document Manager System"
+msgstr ""
+
+#: templates/main/about.html:31
+msgid "Released under the Apache 2.0 License"
+msgstr "Distribuido bajo licencia Apache 2.0 License"
+
+#: templates/main/about.html:42
 msgid "Copyright &copy; 2011 Roberto Rosario."
 msgstr "Todos los derechos reservados &copy; 2011 Roberto Rosario."
 
@@ -206,31 +213,19 @@ msgstr "%(title)s (%(total)s)"
 msgid "Identifier"
 msgstr "Identificador"
 
-#: templates/main/generic_list_subtemplate.html:133
+#: templates/main/generic_list_subtemplate.html:120
 msgid "No results"
 msgstr "Ningún resultado"
 
-#: templates/main/home.html:17
-msgid "Upload documents"
-msgstr "Subir documentos"
-
-#: templates/main/home.html:26
-msgid "Recent Documents"
-msgstr "Documentos recientes"
-
-#: templates/main/home.html:35
-msgid "All Documents"
-msgstr "Todos los documentos"
-
-#: templates/main/home.html:44
+#: templates/main/home.html:23
 msgid "Space separated terms"
 msgstr "Términos separados por espacios"
 
-#: templates/main/home.html:45
+#: templates/main/home.html:24
 msgid "Search"
 msgstr "Búsqueda"
 
-#: templates/main/home.html:46
+#: templates/main/home.html:25
 msgid "Advanced search"
 msgstr "Búsqueda avanzada"
 
@@ -262,9 +257,7 @@ msgstr "Primer inicio de sesión"
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr ""
-"¡Felicitaciones! Usted acaba de terminar de instalar <strong>Mayan EDMS</"
-"strong>"
+msgstr "¡Felicitaciones! Usted acaba de terminar de instalar <strong>Mayan EDMS</strong>"
 
 #: templates/main/login.html:43
 msgid "Login using the following credentials:"
@@ -289,9 +282,7 @@ msgstr "Contraseña: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
-"Asegúrese de cambiar su contraseña para aumentar la seguridad y para "
-"desactivar este mensaje"
+msgstr "Asegúrese de cambiar su contraseña para aumentar la seguridad y para desactivar este mensaje"
 
 #: templates/main/password_change_done.html:5
 #: templates/main/password_change_form.html:5
@@ -303,20 +294,6 @@ msgstr "Cambiar contraseña"
 msgid "Your password has been successfully changed."
 msgstr "Su contraseña ha sido cambiada de forma exitosa"
 
-#: templates/main/project_description.html:8
-msgid ""
-"Open source, Django based electronic document manager with custom metadata, "
-"indexing, tagging, file serving integration, digital signature support and "
-"OCR capabilities"
-msgstr ""
-"Gestor documental libre y de código abierto, basado en Django con metadatos "
-"personalizados, indexación, etiquetado, integración de servicio de archivos, "
-"apoyo de firmas digitales y capacidades de OCR"
-
-#: templates/main/project_description.html:23
-msgid "Released under the Apache 2.0 License"
-msgstr "Distribuido bajo licencia Apache 2.0 License"
-
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8
 msgid "Previous"
@@ -326,6 +303,15 @@ msgstr "Previo"
 #: templates/pagination/pagination.html:28
 msgid "Next"
 msgstr "Próximo"
+
+#~ msgid ""
+#~ "Open source, Django based electronic document manager with custom metadata, "
+#~ "indexing, tagging, file serving integration, digital signature support and "
+#~ "OCR capabilities"
+#~ msgstr ""
+#~ "Open source, Django based electronic document manager with custom metadata, "
+#~ "indexing, tagging, file serving integration, digital signature support and "
+#~ "OCR capabilities"
 
 #~ msgid "Logout"
 #~ msgstr "Logout"
@@ -364,11 +350,11 @@ msgstr "Próximo"
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

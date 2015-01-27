@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:19-0400\n"
+"POT-Creation-Date: 2015-01-27 15:58-0400\n"
 "PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -25,16 +25,16 @@ msgstr ""
 msgid "Search terms"
 msgstr "Pojmovi pretrage"
 
-#: links.py:3 views.py:66 views.py:72 views.py:74
-#: templatetags/search_tags.py:19 templatetags/search_tags.py:20
+#: links.py:5 views.py:66 views.py:72 views.py:74
+#: templatetags/search_tags.py:20 templatetags/search_tags.py:21
 msgid "Search"
 msgstr "Pretraga"
 
-#: links.py:4 views.py:62
+#: links.py:6 views.py:62
 msgid "Advanced search"
 msgstr ""
 
-#: links.py:5
+#: links.py:7
 msgid "Search again"
 msgstr ""
 
@@ -78,11 +78,11 @@ msgstr ""
 msgid "Type"
 msgstr ""
 
-#: templates/search_results.html:3
+#: templates/dynamic_search/search_results.html:3
 msgid "Search results"
 msgstr "Rezultati pretrage"
 
-#: templates/search_results.html:19
+#: templates/dynamic_search/search_results.html:19
 #, python-format
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Potrošeno vrijeme: %(time_delta)s sekundi"

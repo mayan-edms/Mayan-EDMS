@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:18-0400\n"
+"POT-Creation-Date: 2015-01-27 15:57-0400\n"
 "PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
@@ -35,23 +35,23 @@ msgstr ""
 msgid "Document forcefully checked in"
 msgstr ""
 
-#: exceptions.py:16 views.py:82
+#: exceptions.py:18 views.py:82
 msgid "Document already checked out."
 msgstr ""
 
-#: links.py:16
+#: links.py:19
 msgid "Checkouts"
 msgstr ""
 
-#: links.py:17
+#: links.py:20
 msgid "Check out document"
 msgstr ""
 
-#: links.py:18
+#: links.py:21
 msgid "Check in document"
 msgstr ""
 
-#: links.py:19
+#: links.py:22
 msgid "Check in/out"
 msgstr ""
 

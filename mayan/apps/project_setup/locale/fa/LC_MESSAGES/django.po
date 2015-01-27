@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-18 02:21-0400\n"
+"POT-Creation-Date: 2015-01-27 16:00-0400\n"
 "PO-Revision-Date: 2014-10-23 06:49+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,10 +21,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: links.py:3
+#: links.py:5
 msgid "Setup"
 msgstr "نصب"
 
-#: views.py:15
+#: views.py:13
 msgid "Setup items"
 msgstr "اقلام نصب"
