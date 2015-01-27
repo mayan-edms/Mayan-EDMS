@@ -180,7 +180,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
 
         # test document simple view
         response = self.client.get(reverse('documents:document_properties', args=[self.document.pk]))
-        self.assertContains(response, 'ocument properties', status_code=200)
+        self.assertContains(response, 'roperties for document', status_code=200)
 
     def test_document_type_views(self):
         # Check that there are no document types
