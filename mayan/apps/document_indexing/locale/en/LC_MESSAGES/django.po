@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-27 15:58-0400\n"
+"POT-Creation-Date: 2015-01-27 19:51-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -290,20 +290,15 @@ msgstr "Node: %(node)s delete error: %(error)s"
 msgid "Are you sure you with to delete the index template node: %s?"
 msgstr "Are you sure you with to delete the index template node: %s?"
 
-#: views.py:299
+#: views.py:299 views.py:353
 #, fuzzy
-msgid "Nodes"
-msgstr "nodes"
+msgid "Items"
+msgstr "items"
 
 #: views.py:331
 #, fuzzy, python-format
 msgid "Contents for index: %s"
 msgstr "contents for index: %s"
-
-#: views.py:353
-#, fuzzy
-msgid "Items"
-msgstr "items"
 
 #: views.py:378
 msgid "Are you sure you wish to rebuild all indexes?"
@@ -326,6 +321,10 @@ msgstr "indexes containing: %s"
 #: widgets.py:85
 msgid "Root"
 msgstr ""
+
+#, fuzzy
+#~ msgid "Nodes"
+#~ msgstr "nodes"
 
 #~ msgid "Maximum suffix (%s) count reached."
 #~ msgstr "Maximum suffix (%s) count reached."
