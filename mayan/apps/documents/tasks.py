@@ -15,13 +15,10 @@ from .models import Document, DocumentType, DocumentVersion
 logger = logging.getLogger(__name__)
 
 
-@app.task(bind=True, max_retries=3, default_retry_delay=1, compression='zlib')
-def task_get_document_image(self, document_id, *args, **kwargs):
+@app.task(compression='zlib')
+def task_get_document_image(document_id, *args, **kwargs):
     document = Document.objects.get(pk=document_id)
-    try:
-        return document.get_image(*args, **kwargs)
-    except ConvertError as exception:
-        raise self.retry(exc=exception)
+    return document.get_image(*args, **kwargs)
 
 
 @app.task(ignore_result=True)
