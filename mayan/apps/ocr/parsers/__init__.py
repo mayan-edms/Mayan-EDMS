@@ -90,7 +90,8 @@ class SlateParser(Parser):
         descriptor.close()
 
         if pdf_pages[document_page.page_number - 1] == b'\x0c':
-            raise ParserError
+            logger.debug('The Slate parser didn\'t return any output')
+            raise ParserError('No output')
 
         document_page.content = pdf_pages[document_page.page_number - 1]
         document_page.page_label = _('Text extracted from PDF')
@@ -166,7 +167,7 @@ class PopplerParser(Parser):
 
         output = proc.stdout.read()
         if output == b'\x0c':
-            logger.debug('Parser didn\'t any output')
+            logger.debug('Parser didn\'t return any output')
             raise ParserError('No output')
 
         document_page.content = output
