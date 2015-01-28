@@ -98,12 +98,6 @@ class OfficeConverter(object):
                     # convert exception so that at least the mime type icon is displayed
                     raise UnknownFileFormat(exception)
 
-    def __unicode__(self):
-        return getattr(self, 'output_filepath', None)
-
-    def __str__(self):
-        return str(self.__unicode__())
-
 
 class OfficeConverterBackendDirect(object):
     def __init__(self):
