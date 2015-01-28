@@ -14,8 +14,8 @@ EOF
 
 # Update sources
 echo -e "\n -> Running apt-get update & upgrade \n"
-#sudo apt-get -qq update
-#sudo apt-get -y upgrade
+sudo apt-get -qq update
+sudo apt-get -y upgrade
 
 echo -e "\n -> Installing core binaries \n"
 sudo apt-get -y install git-core python-virtualenv gcc python-dev libjpeg-dev libpng-dev libtiff-dev tesseract-ocr poppler-utils unpaper libreoffice
@@ -52,3 +52,21 @@ mysql -u root -p$DB_PASSWORD -e "SET PASSWORD = PASSWORD('');"
 mysql -u root -e "CREATE USER 'travis'@'localhost' IDENTIFIED BY '';GRANT ALL PRIVILEGES ON * . * TO 'travis'@'localhost';FLUSH PRIVILEGES;"
 mysql -u travis -e "CREATE DATABASE $DB_NAME;"
 pip install mysql-python
+
+echo -e "\n -> Installing PostgreSQL \n"
+sudo apt-get install -y postgresql postgresql-server-dev-all
+sudo -u postgres psql -c 'create database mayan_edms;' -U postgres
+sudo cat > /etc/postgresql/9.3/main/pg_hba.conf << EOF
+local   all             postgres                                trust
+
+# TYPE  DATABASE        USER            ADDRESS                 METHOD
+
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+# IPv4 local connections:
+host    all             all             127.0.0.1/32            md5
+# IPv6 local connections:
+host    all             all             ::1/128                 md5
+EOF
+
+pip install -q psycopg2
