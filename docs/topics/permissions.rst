@@ -16,10 +16,6 @@ this method could be thought out as a global permission granting level.
 Example: Roles being granted the ``Document view`` permission will be able to view
 **all** documents in existance.
 
-.. image:: ../_static/permissions.png
- :alt: 2-tier permission diagram
-
-
 3 tier access control
 =====================
 
@@ -29,9 +25,6 @@ used.  Under this level, actors are granted a
 permission but only in relation to a selected object.  Example: Granting user
 ``Joe`` the ``Document view`` access control for document ``Payroll``,
 would allow him to view this document only.
-
-.. image:: ../_static/ACL.png
- :alt: 3-tier access control diagram
 
 The permission system enforces inheritance by first checking if the user
 has a global permission, is a member of a group or a role that has a global

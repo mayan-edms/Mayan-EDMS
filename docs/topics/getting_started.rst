@@ -10,8 +10,7 @@ The easy 2 step setup
 
 Document sources
 ----------------
-|Setup tab| |Right arrow| |Sources button| |Right arrow| |Web form tab|
- 
+
 Before anything else you must define from where you will feed **Mayan EDMS**
 documents for it to process and store.  To do this first go to the ``Setup`` tab
 then to the ``Sources`` button.  To obtain the fastest working setup, create a
@@ -22,30 +21,15 @@ compressed files uploaded from this source will be automatically decompressed an
 their content treated as individual documents.
 
 
-Quickly bootstraping your Mayan EDMS install
---------------------------------------------
-|Setup tab| |Right arrow| |Bootstrap button|
-
-**Mayan EDMS** includes an app called ``Bootstrap``.  This app stores
-scripted configurations, that when executed will setup your installation of **Mayan EDMS**.
-From there you can then fine tune this setup to your needs.  To use this
-app go to the ``Setup`` area and launch the app using the ``Bootstrap`` button.
-
-.. hint:: Predefined sample setups can be downloaded from the
-        `Official bootstrap setup repository for Mayan EDMS`_. If you want to use
-        one of the available setups for testing or as a starting point, choose one
-        and import it with ``Import from URL``. Finally execute it on an empty database.
-
 The longer custom setup
 =======================
 
 Setting your document types
 ---------------------------
-|Setup tab| |Right arrow| |Document types button|
 
 If none of the available bootstrap setups fit your needs and your wish to
-setup **Mayan EDMS** from scratch, the first thing to consider is what your document 
-types will be. Examples of document types are: ``Legal documents``, 
+setup **Mayan EDMS** from scratch, the first thing to consider is what your document
+types will be. Examples of document types are: ``Legal documents``,
 ``Internal documents``, ``Medical records``, ``Designing specifications``, ``Permits``.
 A document type represents a group, a type, a class of documents which share some
 common properties.  A good indicator that can help you determine you document types
@@ -54,7 +38,6 @@ is what kind of information or ``metadata`` is attached to the documents.
 
 Defining metadata
 -----------------
-|Setup tab| |Right arrow| |Metadata types button|
 
 With your document types defined it should be much easier now to define the required
 ``metadata`` for each of these document types.  When creating ``metadata`` types,
@@ -67,15 +50,15 @@ can have default values to speed up data entry, default static values are enclos
 quotes, ie::
 
     "Building A"
-    
+
 or::
 
     "Storage room 1"
-    
+
 Default values can also be defined as ``Python`` statements or functions such as::
 
     current_date()
-    
+
 If you want to restrict or standardize the values for a metadata type, use the ``Lookup`` field to
 define the list of options that are allowed.  Define the lookup list using a ``Python``
 list of quoted values, for example::
@@ -96,37 +79,5 @@ this type, the related metadata types for this document type will be preselected
 
 After defining all your metadata types you can also define your indexes to
 let **Mayan EDMS** automatically categorize your documents based on their metadata.
-Refer to the chapter named :doc:`Indexes </topics/indexes>` for examples on how to 
-use the document indexes. 
-
-
-.. |Setup tab| image:: /_static/setup_tab.png
- :alt: Setup tab
- :align: middle
-
-.. |Sources button| image:: /_static/sources_button.png
- :alt: Sources button
- :align: middle
-
-.. |Web form tab| image:: /_static/web_form_source_tab.png
- :alt: Web form tab
- :align: middle
-
-.. |Bootstrap button| image:: /_static/bootstrap_button.png
- :alt: Bootstrap button
- :align: middle
- 
-.. |Right arrow| image:: /_static/arrow_right.png
- :alt: Right arrow
- :align: middle
-
-.. |Document types button| image:: /_static/document_types_button.png
- :alt: Document types button
- :align: middle
-
-.. |Metadata types button| image:: /_static/metadata_types_button.png
- :alt: Metadata types button
- :align: middle
-
-.. _DjangoZoom: http://djangozoom.com/
-.. _`Official bootstrap setup repository for Mayan EDMS`: http://bootstrap.mayan-edms.com/
+Refer to the chapter named :doc:`Indexes </topics/indexes>` for examples on how to
+use the document indexes.

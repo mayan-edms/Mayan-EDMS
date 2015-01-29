@@ -18,11 +18,11 @@ Features
 
 * Office document format support.
 
-  * Word processing files, spreadsheets, presentations are common supported formats.
+  * **Mayan EDMS** can detect the presence of Libre Office and use it to support word processing files, spreadsheets and presentations.
 
-* User defined metadata fields and meta data sets.
+* User defined metadata fields.
 
-  * Metadata fields can be grouped into sets per technical, legal or structural requirements such as the `Dublin core`_.
+  * Several metadata fields can be matched to a document type as per technical, legal or structural requirements such as the `Dublin core`_.
 
 * Dynamic default values for metadata.
 
@@ -60,7 +60,7 @@ Features
 
   * Multiple page PDFs and TIFFs files are supported.
 
-* :doc:`Distributed OCR processing <../topics/ocr>`.
+* Automatic OCR processing.
 
   * The task of transcribing text from documents via OCR can be distributed among several physical or virtual computers to decrease load and increase availability.
 
@@ -69,11 +69,11 @@ Features
   * **Mayan EDMS** being written using the Django_ framework, can be translated to practically any language spoken in the world.
     For a list of translated languages have a look at Transifex_.
 
-* :doc:`Multilingual OCR support <../topics/ocr>`.
+* Multilingual OCR support.
 
-  * Multilingual OCR is provided as supported by the available language backends of the OCR engine tesseract.
+  * Current language of the document is passed to the corresponding OCR engine to increase the rate of data vs. recognition errors.
 
-* :doc:`Plugable storage backends <../topics/file_storage>` (File based and GridFS included).
+* :doc:`Plugable storage backends <../topics/file_storage>`.
 
   * Very easy to use 3rd party plugins such as the ones available for Amazon EC2.
 
@@ -81,8 +81,11 @@ Features
 
   * Labeled and color coded tags can be assigned for intuitive recognition.
 
+* Workflows.
+
+  * Keep track of the state a document, along with the log of the previous state changes.
+
 
 .. _`Dublin core`: http://dublincore.org/metadata-basics/
-.. _Samba:  http://www.samba.org/
 .. _Django:  https://www.djangoproject.com/
 .. _Transifex: https://www.transifex.com/projects/p/mayan-edms/

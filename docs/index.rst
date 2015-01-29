@@ -34,7 +34,6 @@ Understanding Mayan EDMS
   :doc:`Indexes <topics/indexes>` |
   :doc:`Smart links <topics/smart_links>` |
   :doc:`Tags <topics/tags>` |
-  :doc:`OCR <topics/ocr>`
 
 Release notes
 =============

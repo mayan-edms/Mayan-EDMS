@@ -7,9 +7,6 @@ document.  Users are provided with a very comprehensive but easy to use
 version numbering system that allows specifying a major, minor or micro
 version number increase.
 
-.. image:: ../_static/versioning.png
- :alt: versioning diagram
-
 A comment field is also provided to allow users
 to summarize the new verdion changes in comparison with the previous
 one.  If a new version was uploded by mistake or such new version is no
