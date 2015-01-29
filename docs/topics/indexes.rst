@@ -29,35 +29,6 @@ branch of the index evaluated against the metadata and properties of the documen
 .. image:: ../_static/index_instance.png
  :alt: index instance
 
-Index serving
-=============
-
-Indexes can be mirrored to the operating system filesystem
-using the configuration option
-:setting:`DOCUMENT_INDEXING_FILESYSTEM_SERVING`.
-
-``settings_local.py``::
-
-  # Supposing the 'Sample index' internal name is 'sample_index'
-  DOCUMENT_INDEXING_FILESYSTEM_SERVING = {
-    'sample_index': '/var/local/document/sharing/invoices/',
-  }
-
-This creates an actual directory tree and links to the actual stored files but using
-the filename of the documents as stored in the database.
-
-.. image:: ../_static/indexes.png
- :alt: indexes diagram
-
-This filesystem mirror of the index can them be served with Samba_ across the
-network.  This access would be read-only, with new versions of the files
-being uploaded from the web GUI using the document versioning support.
-
-The index cannot be edited manually to protect it's integrity, only changing
-the rules or the metadata of the documents would cause the index to be
-regenerated.  For manual organization of documents there are the folders,
-their structure is however flat, and they have to be manually updated and
-curated.
 
 .. _Samba: http://www.samba.org/
 

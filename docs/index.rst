@@ -37,7 +37,6 @@ First steps
 
   :doc:`Overview <topics/overview>` |
   :doc:`Features <topics/features>` |
-  :doc:`Requirements <topics/requirements>` |
   :doc:`Installation <topics/installation>` |
   :doc:`Getting started <topics/getting_started>`
 
@@ -45,7 +44,6 @@ Understanding Mayan EDMS
 ========================
 
   :doc:`File storage <topics/file_storage>` |
-  :doc:`Initial data loading <topics/initial_import>` |
   :doc:`Permission system <topics/permissions>` |
   :doc:`Transformations <topics/transformations>` |
   :doc:`Document visualization <topics/document_visualization>` |
@@ -68,7 +66,7 @@ Customization and fine tunning
 For developers
 ==============
 
-  :doc:`Development <topics/development>` | :doc:`Documentation <topics/documentation>` | :doc:`Translations <topics/translations>`
+  :doc:`Development <topics/development>`
 
 Credits
 =======

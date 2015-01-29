@@ -2,24 +2,20 @@
 Installation
 ============
 
-Ubuntu, Debian or Fedora server
--------------------------------
-
 **Mayan EDMS** should be deployed like any other Django_ project and preferably using virtualenv_.
 
 Being a Django_ and a Python_ project familiarity with these technologies is
 required to understand why **Mayan EDMS** does some of the things it does the way
 it does them.
 
-Before installing **Mayan EDMS**, the :doc:`binary requirements <requirements>` must be installed first:
+Before installing **Mayan EDMS**, the binary requirements must be installed first.
+
+Ubuntu
+------
 
 If using a Debian_ or Ubuntu_ based Linux distribution getting the executable requirements is as easy as::
 
-    $ sudo apt-get install python-dev gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils -y
-
-If using a Fedora_ based Linux distribution get the executable requirements using Yum::
-
-    $ sudo yum install -y git gcc tesseract unpaper python-virtualenv ghostscript libjpeg-turbo-devel libpng-devel poppler-util python-devel
+    $ sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
 
 Initialize a ``virtualenv`` to deploy the project:
 
@@ -128,11 +124,11 @@ Production use
 To create a custom settings file for **Mayan EDMS**, create a Python (.py) file
 in the directory: venv/lib/python2.7/site-packages/mayan/settings/ with the following basic content::
 
-    # my_settings.py
+    # venv/lib/python2.7/site-packages/mayan/settings/my_settings.py
 
-    from __future__ import absolute_import
+    from __future__ import unicode_literals
 
-    from .local import *
+    from . import *
 
     <Your customized settings>
 
@@ -142,7 +138,7 @@ To test your settings launch **Mayan EDMS** using::
 
 After making sure everything is running correctly, stop the runserver command.
 Deploy **Mayan EDMS** using the webserver of your preference. For more information
-on deployment instructions and examples checkout Django's official documentation
+on deployment instructions and examples, checkout Django's official documentation
 on the topic https://docs.djangoproject.com/en/1.6/howto/deployment/
 
 
@@ -154,12 +150,10 @@ corresponding python database drivers and add the corresponding database setting
 to your settings file (see above) as shown here: https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-DATABASES
 
 
-.. _Python: http://www.python.org/
-.. _Django: http://www.djangoproject.com/
-.. _Django: http://www.djangoproject.com/
 .. _Debian: http://www.debian.org/
-.. _Ubuntu: http://www.ubuntu.com/
+.. _Django: http://www.djangoproject.com/
 .. _Download: https://github.com/mayan-edms/mayan-edms/archives/master
-.. _virtualenv: http://www.virtualenv.org/en/latest/index.html
-.. _Fedora: http://fedoraproject.org/
+.. _Python: http://www.python.org/
 .. _SQLite: https://www.sqlite.org/
+.. _Ubuntu: http://www.ubuntu.com/
+.. _virtualenv: http://www.virtualenv.org/en/latest/index.html

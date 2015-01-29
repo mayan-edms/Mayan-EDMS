@@ -28,10 +28,6 @@ Features
 
   * Metadata fields can have an initial value, which can be static or determined by an user provided Python code snippet.
 
-* Filesystem integration.
-
-  * If enabled, the document database index can be mirrored in the filesystem of the host and shared via Samba_ or any other sharing method to client computers on a network.
-
 * Documents can be uploaded from different sources.
 
   * Local file or server side file uploads, multifunctional copier, or even via email.
@@ -40,7 +36,7 @@ Features
 
   * Clone a document's metadata for speedier uploads and eliminate repetitive data entry.
 
-* Previews for a great deal of image formats, including PDF.
+* Previews for a great deal of image formats.
 
   * **Mayan EDMS** provides different file conversion backends with different levels of functionality and requirements to adapt to different deployment environments.
 
@@ -70,7 +66,7 @@ Features
 
 * Multilingual user interface.
 
-  * **Mayan EDMS** is written using the Django_ framework, which natively supports Unicode. Together with the use of text templates **Mayan EDMS** can be translated to practically any language spoken in the world.
+  * **Mayan EDMS** being written using the Django_ framework, can be translated to practically any language spoken in the world.
     For a list of translated languages have a look at Transifex_.
 
 * :doc:`Multilingual OCR support <../topics/ocr>`.

@@ -1,8 +1,8 @@
 .. _contents:
 
-=================================
-Mayan EDMS documentation contents
-=================================
+========
+Contents
+========
 
 .. toctree::
     :hidden:

@@ -8,7 +8,7 @@ Contributors
 How to contribute?
 ------------------
 
-You can help further the development of **Mayan EDMS** by reporting bugs, submitting documentation, patches, with monetary or hardware donations.
+You can help further the development of **Mayan EDMS** by testing, reporting bugs, submitting documentation or code patches.
 
 Lead developer
 --------------
@@ -33,59 +33,3 @@ Contributors (in alphabetical order)
 * Sergey Glita (s.v.glita@gmail.com)
 * Simone Federici [https://twitter.com/aldaranalton] [https://github.com/simone]
 * Webfaction (https://www.webfaction.com)
-
-Translations
-------------
-* Bulgarian
-
-  - Iliya Georgiev (ikgeorgiev@gmail.com)
-  - Pavlin Koldamov (pkoldamov@gmail.com)
-
-* Dutch (Netherlands)
-
-  - Lucas Weel
-
-* French
-
-  - Pierre Lhoste (peter.cathbad.host@gmail.com)
-  - PatrickHetu (patrick.hetu@gmail.com)
-
-* German (Germany)
-
-  - Tetja Rediske (tetja.rediske@googlemail.com)
-  - Tilmann Sittig (tilmann.sittig@web.de)
-  - Manticor (sl@suchreflex.de)
-  - Mathias Behrle <mbehrle@m9s.biz>
-  - Tobias Paepke <https://twitter.com/paepke_net>
-
-* Italian
-
-  - Pierpaolo Baldan (pierpaolo.baldan@gmail.com)
-  - SeeOpen.IT (Numero Verde: 800.910.125, E-mail: sales@seeopen.it)
-  - Carlo Zanatto
-
-* Polish
-
-  - mic (diveaway12@gmail.com, winterfall24@gmail.com)
-
-* Portuguese
-
-  - Vítor Figueiró (vfigueiro@gmail.com)
-
-* Portuguese (Brazil)
-
-  - Emerson Soares (dev.emerson@gmail.com)
-  - Renata Oliveira (renatabels@gmail.com)
-  - Fábio (bnafta@gmail.com)
-
-* Russian
-
-  - Sergey Glita (s.v.glita@gmail.com)
-
-* Slovenian (Slovenia)
-
-  - kontrabant (kontrabant@gmail.com)
-
-* Spanish
-
-  - Roberto Rosario

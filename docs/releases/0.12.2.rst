@@ -16,7 +16,7 @@ check outs have been added too as per the feature request posted as `issue #26`_
 The way the history events for a document are presented has been improved and
 it is now more useful as it provides filtering by event type.  To improve
 the diagnosis of installation of runtime error a simple view showing the
-number of internal interval jobs being used by Mayan EDMS as well as a 
+number of internal interval jobs being used by Mayan EDMS as well as a
 new app which shows a detail of the current installation enviroment were added.
 
 What's new in Mayan EDMS v0.12.2
@@ -35,9 +35,6 @@ created an administrator account of username 'admin' with a password of
 'admin'.  The new default is to randomize an initial password and show this password
 at the login screen until the administrator password is changed.
 
-.. image:: mayan_first_login.png
- :alt: First login dialog
-
 Document check outs
 ~~~~~~~~~~~~~~~~~~~
 As per the feature request filed under `issue #26`_, a new document
@@ -47,7 +44,7 @@ editing conflicts.  Document check outs have an expiration period after which
 **Mayan EDMS** will automatically check them back in to avoid a permanent
 document lockout.  Only the user who has checked out a document can upload
 new versions of it or check the document back in before the expiration period,
-unless being granted the ``Allow overriding check out restrictions`` or 
+unless being granted the ``Allow overriding check out restrictions`` or
 ``Forcefully check in documents`` permission respectively.
 
 Installation environment app
@@ -109,7 +106,7 @@ Bugs fixed
 * `issue #26`_ "checkout feature request"
 
 Stuff removed
-=============  
+=============
 * Feedback app
 
 

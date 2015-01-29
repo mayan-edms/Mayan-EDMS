@@ -4,15 +4,12 @@ FAQ
 
 Frequently asked questions and solutions
 
-Database related
-----------------
-
 **Q: PostgreSQL vs. MySQL**
 
 Since Django abstracts database operations from a functional point of view
 **Mayan EDMS** will behave exactly the same either way.  The only concern
 would be that MySQL doesn't support transactions for schema modifying
-commands.  The only moment this could cause problems is when running
+commands. The only moment this could cause problems is when running
 South migrations during upgrades, if a migration fails the database
 structure is left in a transitory state and has to be reverted manually
 before trying again.
@@ -49,15 +46,12 @@ When using ``MySQL`` and doing OCR on languages other than English
   - Ref: 2- http://markmail.org/message/bqajx2utvmtriixi
 
 
-**Q: Error "django.db.utils.IntegrityError IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`...`.`...`, CONSTRAINT `..._refs_id_b0252274` FOREIGN KEY (`...`) REFERENCES `...` (`...`))')
+**Q: Error "django.db.utils.IntegrityError IntegrityError: (1452, 'Cannot add or update a child row: a foreign key constraint fails (`...`.`...`, CONSTRAINT `..._refs_id_b0252274` FOREIGN KEY (`...`) REFERENCES `...` (`...`))')**
 
 * Solution:
 
   - Convert all MySQL tables to the same type, either all MyISAM or InnoDB
 
-
-Document sharing
-----------------
 
 **Q: File system links not showing when serving content with ``Samba``**
 
@@ -82,9 +76,6 @@ Document sharing
   - Ref: 1- http://www.samba.org/samba/docs/man/manpages-3/smb.conf.5.html
 
 
-Document handling
------------------
-
 **Q: How do you upload a new version of an existing file?**
 
 * Solution:
@@ -96,9 +87,6 @@ Document handling
     version number and comments for the new version being uploaded.
 
 
-
-Deployments
------------
 
 **Q: Is virtualenv required as specified in the documentation?**
 
@@ -124,9 +112,6 @@ For more information, read https://docs.djangoproject.com/en/dev/howto/static-fi
 and https://docs.djangoproject.com/en/1.2/howto/static-files/ or
 http://mayan-edms-ru.blogspot.com/2011/11/blog-post_09.html
 
-
-Other
------
 
 **Q:  Can you change the display order of documents...i.e can they be in alphabetical order?**
 

@@ -28,13 +28,6 @@ or frames, and text extraction and OCR is done per page not per document,
 thats why even text documents need to be rendered by LibreOffice_
 before they can be previewed and text can be extracted.
 
-Version 0.12.1 introduced a new method of converting office documents, this
-new method doesn't require the use of the command line utility ``UNOCONV``.
-This new method proved to continue working better than previous solution
-and the use of ``UNOCONV`` have been removed.  Existing conversion method
-uses just one configuration option: :setting:`CONVERTER_LIBREOFFICE_PATH`
-which defaults to '/usr/bin/libreoffice'.
-
 
 .. _PDF: http://en.wikipedia.org/wiki/Portable_Document_Format
 .. _LibreOffice: http://www.libreoffice.org/
