@@ -38,11 +38,11 @@ register_maintenance_links([link_document_all_ocr_cleanup], namespace='ocr', tit
 
 
 def document_ocr_submit(self):
-    task_do_ocr.apply_async(args=[self.pk], queue='ocr')
+    task_do_ocr.apply_async(args=[self.latest_version.pk], queue='ocr')
 
 
 def document_version_ocr_submit(self):
-    task_do_ocr.apply_async(args=[self.document.pk], queue='ocr')
+    task_do_ocr.apply_async(args=[self.pk], queue='ocr')
 
 
 @receiver(post_version_upload, dispatch_uid='post_version_upload_ocr', sender=DocumentVersion)
