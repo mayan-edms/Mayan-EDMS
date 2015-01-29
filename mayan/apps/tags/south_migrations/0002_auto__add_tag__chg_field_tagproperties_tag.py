@@ -5,6 +5,9 @@ from django.db import models
 
 
 class Migration(SchemaMigration):
+    depends_on = (
+        ('documents', '0001_initial'),
+    )
 
     def forwards(self, orm):
         # Adding model 'Tag'
@@ -18,7 +21,7 @@ class Migration(SchemaMigration):
         # Adding M2M table for field document on 'Tag'
         m2m_table_name = db.shorten_name(u'tags_tag_document')
         db.create_table(m2m_table_name, (
-            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('id', models.AutoField(primary_key=True, auto_created=True)),
             ('tag', models.ForeignKey(orm[u'tags.tag'], null=False)),
             ('document', models.ForeignKey(orm[u'documents.document'], null=False))
         ))
