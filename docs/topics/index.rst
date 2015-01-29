@@ -8,7 +8,6 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
 
    contributors
    development
-   document_visualization
    faq
    features
    file_storage
@@ -17,7 +16,6 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
    installation
    license
    ocr
-   overview
    permissions
    signatures
    smart_links
