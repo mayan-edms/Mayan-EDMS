@@ -2,7 +2,7 @@
 Indexes
 =======
 
-Indexes are an automatic method to hierarchically organize documents in relation to their metadata and to each other.
+Indexes are an automatic method to hierarchically organize documents in relation to their properties.
 
 Index templates
 ===============
@@ -11,7 +11,7 @@ Since multiple indexes can be defined, the first step is to create an empty inde
 Administrators then define the tree template showing how the index will be structured.
 Each branch can be a pseudo folder, which can hold other child 'folders' or
 a document container which will have all the links to the documents that
-matched the path to reach the document container.
+matched the criteria of the document container.
 
 Index instances
 ===============
