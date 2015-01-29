@@ -22,7 +22,7 @@ before_script:
 script:
   - if [[ $DB == mysql ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.db_mysql; fi
   - if [[ $DB == postgres ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.db_postgres; fi
-  - if [[ $DB == sqlite ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis; fi
+  - if [[ $DB == sqlite ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.base; fi
 after_success:
   - coveralls
 branches:
