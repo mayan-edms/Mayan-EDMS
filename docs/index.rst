@@ -58,11 +58,6 @@ Release notes
 =============
   :doc:`Release notes and upgrading instructions <releases/index>`
 
-Customization and fine tunning
-==============================
-
-  :doc:`Settings <topics/settings>`
-
 For developers
 ==============
 

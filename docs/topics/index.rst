@@ -19,7 +19,6 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
    ocr
    overview
    permissions
-   settings
    signatures
    smart_links
    tags
