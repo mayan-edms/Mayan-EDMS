@@ -2,7 +2,7 @@
 Mayan EDMS v1.1 release notes
 =============================
 
-Released: Not yet
+Released: February 2015
 
 Welcome to Mayan EDMS v1.1
 
@@ -13,49 +13,155 @@ Overview
 What's new in Mayan EDMS v1.1
 =============================
 
-* Celery
-* Removal of the MAIN_SIDE_BAR_SEARCH
+Celery
+~~~~~~
+All background tasks processing has been converted to use Celery_. By default
+**Mayan EDMS** runs in "Eager" until a broker and result backend are configure
+as per `Celery's documentation`_. This change made the built-in scheduler and
+job_processing apps obsolete, both were removed.
+
+
+Views namespaces
+~~~~~~~~~~~~~~~~
+All views are namespaced_ with the name of the app which defines them. If you have
+developed 3rd party apps for **Mayan EDMS** be sure to update any reference to a view
+by prepending the app name to the view name.
+
+
+Removal of the splash screen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The static image home screen has been replaced with a quick links view, showing
+the most used actions: Uploading documents, viewing recent documents, viewing
+all document and searching documents.
+
+
+Sending and receiving documents via email
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A link or entire documents can be sent as attachments via email. Documents can
+also be received via email with the addition of two document sources named IMAP and POP3
+which correspond to the mail protocol used to fetch the documents. Read Django's
+`email configuration settings documentation`_ for more details on how to set up
+mail serving.
+
+
+Update to Django 1.6.8
+~~~~~~~~~~~~~~~~~~~~~~
+**Mayan EDMS** has been updated to use Django 1.6.8.
+
+
+Events app
+~~~~~~~~~~
+The built-in history app has been removed in favor of a new events wrapper app
+for `Django activity stream`_
+
+
+Watch folders
+~~~~~~~~~~~~~
+Filesystem folders can be monitored for change and their files automatically
+uploaded as documents in **Mayan EDMS**.
+
+
+Vagrant file included
+~~~~~~~~~~~~~~~~~~~~~
+A vagrant file is now included to allow developers to provision a virtual machine
+with the latest development version of **Mayan EDMS**.
+
+
+User locale profile (language and timezone)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Interface language and locale setting can now be setup for each user and are not
+installation wide as before. Date and times offests are automatically ajusted to
+each user's timezone settings.
+
+
+Document states
+~~~~~~~~~~~~~~~
+A new simple workflow app that can represent document states has been included.
+
+
+Explicit document types needed per index
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Indexes can now be tied to document types, eliminating the need to update
+indexes for every document update. Indexes will only update when a document of
+the type to which they are associated is updated.
+
+
+Optional and required metadata types
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Metadata types can now be assigned in two ways to documents types, as optiona or
+required. Values for required metadata types as the name implies, must be entered
+for documents to be able to be uploaded. Optional metadata types on the other hand
+can be left blank by the user.
+
+
+Bulk document type change
+~~~~~~~~~~~~~~~~~~~~~~~~~
+It is now possible to change the document type of previously uploaded documents.
+When the document type of a document is changed the metadata values are reset and
+the metadata types of the new document type are automatically assigned.
+
+
+New release cycle
+~~~~~~~~~~~~~~~~~
+Starting with this version a new release cycle methodology will come into effect.
+The goal of this release cycle is to allow two series of versions of **Mayan EDMS** to be
+active at a given time: A new major version with new functionality and a minor version
+providing upgrades and fixes. This release (1.1) will be active and supported for even
+after the release of version 2.0, but will go into end of life as soon as version 3.0 is
+released.
+
+
+Deprecation of Python 2.6
+~~~~~~~~~~~~~~~~~~~~~~~~~
+Series 1.0 of **Mayan EDMS** will be the last series supporting Python 2.6. Series
+2.0 will be using Django 1.7.x which itself require Python 2.7 or later.
+
+
+Improved testings
+~~~~~~~~~~~~~~~~~
+**Mayan EDMS** is now automatically tested agains SQLite, MySQL and PostgreSQL.
+
+
+API updates
+~~~~~~~~~~~
+Many new API endpoints have been added exposing the majority of **Mayan EDMS** functionality.
+
+
+Messages contextual improvements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Many updates and simplifications were made to source text messages to reduce the
+dificulty in traslating **Mayan EDMS** and maintaing the contextual meaning of the
+text messages.
+
+
+Other changes
+~~~~~~~~~~~~~
+
+* Removal of the MAIN_SIDE_BAR_SEARCH setting
 * Removal of THEMES and themes support
-* Removal of VERBOSE_LOGIN
-* Removal of graphics backend supported file format list
-* Removal of the MAIN_DISABLE_ICONS
+* Removal of VERBOSE_LOGIN setting
+* Removal of graphics backend supported file format list view
+* Removal of the MAIN_DISABLE_ICONS setting
 * Removal of specialized Sentry support
-* Removal of English only names capitalization support
-* Removal of the MAIN_ENABLE_SCROLL_JS
-* Views namespaces
-* Language translation updates
-* Removal of the splash screen
-* Sending and receiving documents via email
+* Removal of the MAIN_ENABLE_SCROLL_JS setting
 * Remove hardcoded root (/) redirections
-* Proper capitalization of messages
 * Removal of APSCheduler as a requirement
-* Removal of the signales, job_processing and scheduler apps
 * Removal of the scheduled jobs view
 * Removal of the web_theme app
 * Removal of the sources icon selection support
-* Removal of the in-app help panes
-* Improved method for custom settings
-* Update to Django 1.6.8
-* More API endpoints
-* Improvement of the existing API endpoints
+* Removal of the in-app help panels
+* Removal of the duplicate document search feature
+* Removal of filesystem document indexes mirroring feature
 * Improve sources app model sub classes and inheritance handling
-* Drop support for Python 2.6
 * Add CORS support to the API
-* Bulk document type change
-* Watch folders
-* Removal of the duplicate document search support
-* Removal of filesystem document indexes mirroring
-* New home view
-* Explicit document types needed per index
-* Events app
-* Vagrant file included
-* Document states
-* User locale profile (language and timezone)
+* Improved method for custom settings
 
 
 Upgrading from a previous version
 =================================
-IMPORTANT! Before running the upgrade make sure none of your documents have duplicated metadata types, meaning that the same metadata type appears twice for a given document.
+IMPORTANT! Before running the upgrade make sure none of your documents have
+duplicated metadata types, meaning that the same metadata type must not appear
+twice for any given document.
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -79,40 +185,37 @@ Migrate existing database schema with::
     $ mayan-edms.py migrate
 
 
+During the migration several messages of stale content types can occur:
 
-During the migration several messages of stale content types can occur::
+.. code-block:: bash
 
-The following content types are stale and need to be deleted:
+    The following content types are stale and need to be deleted:
 
-    metadata | documenttypedefaults
+        metadata | documenttypedefaults
 
-    metadata | metadataset
+        metadata | metadataset
 
-    metadata | metadatasetitem
+        metadata | metadatasetitem
 
+        ocr | documentqueue
 
-    ocr | documentqueue
+        ocr | queuedocument
 
-    ocr | queuedocument
+        sources | watchfolder
 
+        sources | outofprocess
 
-    sources | watchfolder
+        sources | webform
 
-    sources | outofprocess
+        sources | stagingfolder
 
-    sources | webform
+        tags | tagproperties
 
-    sources | stagingfolder
+    Any objects related to these content types by a foreign key will also
+    be deleted. Are you sure you want to delete these content types?
+    If you're unsure, answer 'no'.
 
-
-    tags | tagproperties
-
-
-Any objects related to these content types by a foreign key will also
-be deleted. Are you sure you want to delete these content types?
-If you're unsure, answer 'no'.
-
-    Type 'yes' to continue, or 'no' to cancel: 
+        Type 'yes' to continue, or 'no' to cancel:
 
 
 You can safely answer "yes".
@@ -137,7 +240,80 @@ Backward incompatible changes
 
 Bugs fixed or issues closed
 ===========================
-* None
+* 30
+* 32
+* 34
+* 35
+* 37
+* 39
+* 40
+* 46
+* 49
+* 50
+* 51
+* 55
+* 56
+* 57
+* 65
+* 66
+* 68
+* 69
+* 70
+* 71
+* 72
+* 74
+* 75
+* 77
+* 78
+* 79
+* 82
+* 83
+* 84
+* 85
+* 86
+* 87
+* 88
+* 89
+* 90
+* 91
+* 92
+* 95
+* 96
+* 97
+* 104
+* 105
+* 106
+* 107
+* 108
+* 109
+* 111
+* 112
+* 114
+* 116
+* 118
+* 119
+* 126
+* 127
+* 128
+* 129
+* 130
+* 131
+* 137
+* 138
+* 139
+* 140
+* 143
+* 144
+* 146
+* 149
+* 150
 
 
+
+.. _Celery: http://www.celeryproject.org/
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
+.. _Celery's documentation: http://celery.readthedocs.org/en/latest/configuration.html
+.. _namespaced: https://docs.djangoproject.com/en/1.6/topics/http/urls/#url-namespaces
+.. _email configuration settings documentation: https://docs.djangoproject.com/en/1.6/ref/settings/#email-host
+.. _Django activity stream: https://github.com/justquick/django-activity-stream
+
