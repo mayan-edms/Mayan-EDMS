@@ -5,6 +5,9 @@ from django.db import models
 
 
 class Migration(DataMigration):
+    depends_on = (
+        ('actstream', '0007_auto__add_field_follow_started'),
+    )
 
     def forwards(self, orm):
         "Write your forwards methods here."
