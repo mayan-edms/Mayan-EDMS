@@ -325,7 +325,6 @@ class UploadInteractiveVersionView(UploadBaseView):
     def create_document_form_form(self, **kwargs):
         return self.get_form_classes()['document_form'](
             prefix=kwargs['prefix'],
-            document=self.document,
             data=kwargs.get('data', None),
             files=kwargs.get('files', None),
         )
