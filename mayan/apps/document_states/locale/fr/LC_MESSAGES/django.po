@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Christophe kryskool <christophe.chauvet@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-27 15:58-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"PO-Revision-Date: 2015-01-29 07:57+0000\n"
+"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,67 +20,67 @@ msgstr ""
 
 #: __init__.py:38
 msgid "Initial state"
-msgstr ""
+msgstr "État initial"
 
 #: __init__.py:39 __init__.py:57 __init__.py:65
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 #: __init__.py:45
 msgid "Is initial state?"
-msgstr ""
+msgstr "Est ce l'état initial?"
 
 #: __init__.py:52 views.py:83
 msgid "Current state"
-msgstr ""
+msgstr "État actuel"
 
 #: __init__.py:56 __init__.py:86 models.py:129
 msgid "User"
-msgstr ""
+msgstr "Utilisateur"
 
 #: __init__.py:60 views.py:84
 msgid "Last transition"
-msgstr ""
+msgstr "Dernière transition"
 
 #: __init__.py:64 __init__.py:82
 msgid "Date and time"
-msgstr ""
+msgstr "Date et heure"
 
 #: __init__.py:71 models.py:66
 msgid "Origin state"
-msgstr ""
+msgstr "État d'origine"
 
 #: __init__.py:75 models.py:67
 msgid "Destination state"
-msgstr ""
+msgstr "État de destination"
 
 #: __init__.py:90 forms.py:41 links.py:24 models.py:128
 msgid "Transition"
-msgstr ""
+msgstr "Transition"
 
 #: __init__.py:94 forms.py:42 models.py:130
 msgid "Comment"
-msgstr ""
+msgstr "Commentaire"
 
 #: links.py:5 links.py:22 models.py:38 views.py:170
 msgid "Workflows"
-msgstr ""
+msgstr "Flux de travail"
 
 #: links.py:6
 msgid "Create"
-msgstr ""
+msgstr "Créer"
 
 #: links.py:7 links.py:12 links.py:17
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: links.py:8 links.py:13 links.py:18
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 #: links.py:10 permissions.py:7
 msgid "States"
-msgstr ""
+msgstr "États"
 
 #: links.py:11
 msgid "Create state"
@@ -87,11 +88,11 @@ msgstr ""
 
 #: links.py:15
 msgid "Transitions"
-msgstr ""
+msgstr "Transitions"
 
 #: links.py:16
 msgid "Create transition"
-msgstr ""
+msgstr "Créer une transition"
 
 #: links.py:20 models.py:17
 msgid "Document types"
@@ -99,15 +100,15 @@ msgstr ""
 
 #: links.py:23
 msgid "Detail"
-msgstr ""
+msgstr "Détail"
 
 #: models.py:16 models.py:44 models.py:64
 msgid "Label"
-msgstr ""
+msgstr "Étiquette"
 
 #: models.py:37 models.py:43 models.py:63 models.py:80
 msgid "Workflow"
-msgstr ""
+msgstr "Flux de travail"
 
 #: models.py:45
 msgid ""
@@ -117,27 +118,27 @@ msgstr ""
 
 #: models.py:45
 msgid "Initial"
-msgstr ""
+msgstr "Initial"
 
 #: models.py:57
 msgid "Workflow state"
-msgstr ""
+msgstr "État du flux de travail"
 
 #: models.py:58
 msgid "Workflow states"
-msgstr ""
+msgstr "États du flux de travail"
 
 #: models.py:74
 msgid "Workflow transition"
-msgstr ""
+msgstr "Transition du flux de travail"
 
 #: models.py:75
 msgid "Workflow transitions"
-msgstr ""
+msgstr "Transitions du flux de travail"
 
 #: models.py:81
 msgid "Document"
-msgstr ""
+msgstr "Document"
 
 #: models.py:120 models.py:126
 msgid "Workflow instance"
@@ -173,11 +174,11 @@ msgstr ""
 
 #: permissions.py:11
 msgid "View workflows"
-msgstr ""
+msgstr "Voir les flux de travail"
 
 #: permissions.py:13
 msgid "View document workflows"
-msgstr ""
+msgstr "Voir le flux de travail du document"
 
 #: permissions.py:14
 msgid "Transition document workflows"
@@ -204,7 +205,7 @@ msgstr ""
 
 #: views.py:156
 msgid "Submit"
-msgstr ""
+msgstr "Soumettre"
 
 #: views.py:220
 #, python-format

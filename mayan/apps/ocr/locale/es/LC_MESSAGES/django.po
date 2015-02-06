@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-27 15:59-0400\n"
-"PO-Revision-Date: 2015-01-17 07:07+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-01-29 20:48+0000\n"
+"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:37 permissions.py:7
@@ -62,29 +61,27 @@ msgstr "Limpiar contenido de páginas"
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
-msgstr ""
-"Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR "
-"del contenido de las paginas del documento."
+msgstr "Ejecuta un filtro de lenguaje para eliminar los errores más comunes de OCR del contenido de las paginas del documento."
 
 #: links.py:19
 msgid "OCR Errors"
-msgstr ""
+msgstr "Errores de OCR"
 
 #: models.py:12
 msgid "Document version"
-msgstr ""
+msgstr "Versión de documento"
 
 #: models.py:13
 msgid "Date time submitted"
-msgstr ""
+msgstr "Fecha y hora en que fue sometido"
 
 #: models.py:21
 msgid "Document Version OCR Error"
-msgstr ""
+msgstr "Error de OCR en versión de documento"
 
 #: models.py:22
 msgid "Document Version OCR Errors"
-msgstr ""
+msgstr "Errores de OCR en versiones de documentos"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -104,10 +101,9 @@ msgstr "La ruta de archivo del programa unpaper."
 
 #: settings.py:13
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Ruta de acceso al programa de poppler llamado pdftotext utilizado para "
-"extraer texto de archivos PDF."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Ruta de acceso al programa de poppler llamado pdftotext utilizado para extraer texto de archivos PDF."
 
 #: settings.py:14
 msgid "Full path to the backend to be used to do OCR."
@@ -116,7 +112,7 @@ msgstr "Ruta completa a la aplicación que se usará para OCR."
 #: views.py:32
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
-msgstr ""
+msgstr "Documento: %(document)s fue añadido a la lista de espera de OCR"
 
 #: views.py:56
 msgid "Are you sure you wish to clean up all the pages content?"
@@ -124,9 +120,7 @@ msgstr "¿Está seguro que desea limpiar el contenido de todas las páginas?"
 
 #: views.py:57
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"En grandes bases de datos esta operación puede tardar algún tiempo en "
-"ejecutarse."
+msgstr "En grandes bases de datos esta operación puede tardar algún tiempo en ejecutarse."
 
 #: views.py:63
 msgid "Document pages content clean up complete."
@@ -139,11 +133,11 @@ msgstr "Error en limpieza de contenido: %s"
 
 #: views.py:75
 msgid "OCR errors"
-msgstr ""
+msgstr "Errores de OCR"
 
 #: views.py:91 views.py:143
 msgid "Make at least one selection."
-msgstr ""
+msgstr "Haga al menos una selección"
 
 #: views.py:101
 #, python-format
@@ -298,11 +292,11 @@ msgstr "Texto extraído de PDF"
 #~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 #~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 
 #~ msgid "Maximum amount of concurrent document OCRs a node can perform."
 #~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
@@ -359,11 +353,9 @@ msgstr "Texto extraído de PDF"
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

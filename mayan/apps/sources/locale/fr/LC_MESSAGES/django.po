@@ -1,33 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
+# Christophe kryskool <christophe.chauvet@gmail.com>, 2014-2015
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-27 16:00-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2015-02-05 07:36+0000\n"
+"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:28
 msgid "Thumbnail"
-msgstr ""
+msgstr "Vignette"
 
 #: forms.py:29
 msgid "Comment"
-msgstr ""
+msgstr "Commentaire"
 
 #: forms.py:44
 msgid "Expand compressed files"
@@ -35,9 +34,7 @@ msgstr "Décompresser les fichiers"
 
 #: forms.py:45
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Importer le contenu d'un ensemble de fichiers compressés comme fichiers "
-"individuels"
+msgstr "Importer le contenu d'un ensemble de fichiers compressés comme fichiers individuels"
 
 #: forms.py:70
 msgid "Staging file"
@@ -49,19 +46,19 @@ msgstr "Fichier"
 
 #: links.py:18
 msgid "Upload new documents"
-msgstr ""
+msgstr "importer de nouveaux documents"
 
 #: links.py:19
 msgid "Clone"
-msgstr ""
+msgstr "Dupliquer"
 
 #: links.py:21 links.py:29 links.py:35
 msgid "Delete"
-msgstr ""
+msgstr "Supprimer"
 
 #: links.py:23 models.py:86 views.py:378
 msgid "Sources"
-msgstr ""
+msgstr "Sources"
 
 #: links.py:24
 msgid "Add new webform source"
@@ -77,23 +74,23 @@ msgstr ""
 
 #: links.py:27
 msgid "Add new POP3 email"
-msgstr ""
+msgstr "Ajouter un nouveau compte mail POP3"
 
 #: links.py:28
 msgid "Add new IMAP email"
-msgstr ""
+msgstr "Ajouter un nouveau compte mail IMAP"
 
 #: links.py:30 links.py:34
 msgid "Edit"
-msgstr ""
+msgstr "Modifier"
 
 #: links.py:32
 msgid "Transformations"
-msgstr ""
+msgstr "Transformations"
 
 #: links.py:33
 msgid "Add transformation"
-msgstr ""
+msgstr "Ajouter une transformation"
 
 #: links.py:37
 msgid "Document sources"
@@ -101,7 +98,7 @@ msgstr "Sources du document"
 
 #: links.py:39
 msgid "Upload new version"
-msgstr ""
+msgstr "Importer une nouvelle version"
 
 #: literals.py:10 literals.py:15
 msgid "Always"
@@ -117,7 +114,7 @@ msgstr "Demander à l'utilisateur"
 
 #: literals.py:27 models.py:153
 msgid "Web form"
-msgstr ""
+msgstr "Formulaire web"
 
 #: literals.py:28 models.py:137
 msgid "Staging folder"
@@ -125,27 +122,27 @@ msgstr ""
 
 #: literals.py:29 models.py:352
 msgid "Watch folder"
-msgstr ""
+msgstr "Surveiller le répertoire"
 
 #: literals.py:30
 msgid "POP3 email"
-msgstr ""
+msgstr "email POP3"
 
 #: literals.py:31 models.py:333 models.py:334
 msgid "IMAP email"
-msgstr ""
+msgstr "email IMAP"
 
 #: models.py:41
 msgid "Title"
-msgstr ""
+msgstr "Titre"
 
 #: models.py:42 views.py:387
 msgid "Enabled"
-msgstr ""
+msgstr "Activé"
 
 #: models.py:85 views.py:532 views.py:561
 msgid "Source"
-msgstr ""
+msgstr "Source"
 
 #: models.py:93
 msgid "Interactive source"
@@ -165,7 +162,7 @@ msgstr "chemin de répertoire système sur le serveur."
 
 #: models.py:102
 msgid "Preview width"
-msgstr ""
+msgstr "Largeur de la prévisualisation"
 
 #: models.py:102
 msgid "Width value to be passed to the converter backend."
@@ -173,7 +170,7 @@ msgstr "Valeur de largeur à passer au convertisseur en arrière plan"
 
 #: models.py:103
 msgid "Preview height"
-msgstr ""
+msgstr "Hauteur de prévisualisation"
 
 #: models.py:103
 msgid "Height value to be passed to the converter backend."
@@ -181,7 +178,7 @@ msgstr "Valeur de hauteur à passer au convertisseur en arrière plan."
 
 #: models.py:104 models.py:146 models.py:168
 msgid "Uncompress"
-msgstr ""
+msgstr "Décompresser"
 
 #: models.py:104 models.py:146
 msgid "Whether to expand or not compressed archives."
@@ -189,7 +186,7 @@ msgstr "Indique s'il faut ou non décompresser les fichiers d'archive."
 
 #: models.py:105
 msgid "Delete after upload"
-msgstr ""
+msgstr "Supprimer après télé-versement"
 
 #: models.py:105
 msgid "Delete the file after is has been successfully uploaded."
@@ -211,23 +208,23 @@ msgstr ""
 
 #: models.py:154
 msgid "Web forms"
-msgstr ""
+msgstr "Formulaire Web"
 
 #: models.py:161 models.py:162
 msgid "Out of process"
-msgstr ""
+msgstr "Process externe"
 
 #: models.py:166
 msgid "Interval"
-msgstr ""
+msgstr "Intervalle"
 
 #: models.py:166
 msgid "Interval in seconds between checks for new documents."
-msgstr ""
+msgstr "Intervalle en secondes entre la vérification de nouveaux documents."
 
 #: models.py:167
 msgid "Document type"
-msgstr ""
+msgstr "Type de document"
 
 #: models.py:167
 msgid "Assign a document type to documents uploaded from this source."
@@ -239,23 +236,23 @@ msgstr ""
 
 #: models.py:207
 msgid "Interval source"
-msgstr ""
+msgstr "intervalle pour la source"
 
 #: models.py:208
 msgid "Interval sources"
-msgstr ""
+msgstr "intervalle pour les sources"
 
 #: models.py:212
 msgid "Host"
-msgstr ""
+msgstr "Hote"
 
 #: models.py:213
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: models.py:214
 msgid "Port"
-msgstr ""
+msgstr "Port"
 
 #: models.py:214
 msgid ""
@@ -265,28 +262,28 @@ msgstr ""
 
 #: models.py:215
 msgid "Username"
-msgstr ""
+msgstr "Identifiant"
 
 #: models.py:216
 msgid "Password"
-msgstr ""
+msgstr "Mot de passe"
 
 #: models.py:236
 #, python-format
 msgid "attachment-%i"
-msgstr ""
+msgstr "Pièce jointe-%i"
 
 #: models.py:245
 msgid "Email source"
-msgstr ""
+msgstr "source du courriel"
 
 #: models.py:246
 msgid "Email sources"
-msgstr ""
+msgstr "Sources du courriel"
 
 #: models.py:252
 msgid "Timeout"
-msgstr ""
+msgstr "Délai d'attente dépassé"
 
 #: models.py:290 models.py:291
 msgid "POP email"
@@ -294,7 +291,7 @@ msgstr ""
 
 #: models.py:297
 msgid "Mailbox"
-msgstr ""
+msgstr "Boîte aux lettres"
 
 #: models.py:297
 msgid "Mail from which to check for messages with attached documents."
@@ -355,8 +352,8 @@ msgstr "Afficher les sources du document en cours"
 
 #: views.py:112 wizards.py:34
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 
 #: views.py:140
@@ -385,7 +382,8 @@ msgid "Current metadata"
 msgstr "Métadonnées actuelles"
 
 #: views.py:313
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:339
@@ -483,16 +481,13 @@ msgstr "Transformation de source supprimée avec succès."
 #: views.py:551
 #, python-format
 msgid "Error deleting source transformation; %(error)s"
-msgstr ""
-"Erreur lors de la suppression de la transformation de source; %(error)s"
+msgstr "Erreur lors de la suppression de la transformation de source; %(error)s"
 
 #: views.py:564
 #, python-format
 msgid ""
 "Are you sure you wish to delete source transformation \"%(transformation)s\""
-msgstr ""
-"Êtes vous certain de vouloir supprimer la transformation de source "
-"\"%(transformation)s\""
+msgstr "Êtes vous certain de vouloir supprimer la transformation de source \"%(transformation)s\""
 
 #: views.py:585
 msgid "Source transformation created successfully"
