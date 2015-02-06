@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Christophe kryskool <christophe.chauvet@gmail.com>, 2014-2015
@@ -11,14 +11,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-27 16:01-0400\n"
+"POT-Creation-Date: 2015-02-06 16:54-0400\n"
 "PO-Revision-Date: 2015-02-04 19:10+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:38
@@ -162,7 +163,9 @@ msgstr "Le document \"%(document)s\" est déjà étiqueté comme \"%(tag)s\""
 #: views.py:83
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr "L'étiquette \"%(tag)s\" a été attachée avec succès au document \"%(document)s\"."
+msgstr ""
+"L'étiquette \"%(tag)s\" a été attachée avec succès au document \"%(document)s"
+"\"."
 
 #: views.py:95
 msgid "Attach tag to document"
@@ -232,28 +235,36 @@ msgstr "Supprimer l'étiquette des documents: %s"
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
-msgstr "Êtes-vous sûr de vouloir supprimer l'étiquette \"%(tag)s\" du document: %(document)s?"
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer l'étiquette \"%(tag)s\" du document: "
+"%(document)s?"
 
 #: views.py:304
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
-msgstr "Êtes-vous sûr de vouloir supprimer l'étiquette \"%(tag)s\" des documents:   %(documents)s?"
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer l'étiquette \"%(tag)s\" des documents:   "
+"%(documents)s?"
 
 #: views.py:309
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
-msgstr "Êtes-vous sûr de vouloir supprimer les étiquettes: %(tags)s du document: %(document)s?"
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer les étiquettes: %(tags)s du document: "
+"%(document)s?"
 
 #: views.py:312
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags %(tags)s from the documents: "
 "%(documents)s?"
-msgstr "Etês vous sur de vouloir supprimer les étiquettes %(tags)s des documents: %(documents)s?"
+msgstr ""
+"Etês vous sur de vouloir supprimer les étiquettes %(tags)s des documents: "
+"%(documents)s?"
 
 #: views.py:319
 #, python-format
@@ -263,11 +274,12 @@ msgstr "Le document \"%(document)s\" n'a pas été étiqueté avec \"%(tag)s\""
 #: views.py:324
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "L'étiquette \"%(tag)s\" à été supprimée avec succès du document \"%(document)s\"."
+msgstr ""
+"L'étiquette \"%(tag)s\" à été supprimée avec succès du document "
+"\"%(document)s\"."
 
-#: templatetags/tags_tags.py:18
-msgid "Add tag to document"
-msgstr "Ajouter une étiquette au document"
+#~ msgid "Add tag to document"
+#~ msgstr "Ajouter une étiquette au document"
 
 #~ msgid "Document created"
 #~ msgstr "document"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-27 15:59-0400\n"
+"POT-Creation-Date: 2015-02-06 16:53-0400\n"
 "PO-Revision-Date: 2015-01-17 07:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -169,7 +169,7 @@ msgid "Are you sure you wish to re-queue the entry: %(entry)s?"
 msgid_plural "Are you sure you wish to re-queue these %(count)d entries."
 msgstr[0] ""
 
-#: parsers/__init__.py:94 parsers/__init__.py:171
+#: parsers/__init__.py:97 parsers/__init__.py:174
 msgid "Text extracted from PDF"
 msgstr "text استخراج شده از pdf"
 

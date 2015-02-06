@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-27 16:01-0400\n"
+"POT-Creation-Date: 2015-02-06 16:54-0400\n"
 "PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/language/da/)\n"
+"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/da/)\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:38
@@ -230,21 +231,27 @@ msgstr "Fjern tag fra dokumenter: %s."
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
-msgstr "Er du sikker på du vil fjerne mærket \"%(tag)s\" fra dokumentet: %(document)s?"
+msgstr ""
+"Er du sikker på du vil fjerne mærket \"%(tag)s\" fra dokumentet: "
+"%(document)s?"
 
 #: views.py:304
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
-msgstr "Er du sikker på du vil fjerne mærket \"%(tag)s\" fra dokumenterne: %(documents)s?"
+msgstr ""
+"Er du sikker på du vil fjerne mærket \"%(tag)s\" fra dokumenterne: "
+"%(documents)s?"
 
 #: views.py:309
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
-msgstr "Er du sikker på du ønsker at fjerne tags: %(tags)s fra dokumentet: %(document)s?"
+msgstr ""
+"Er du sikker på du ønsker at fjerne tags: %(tags)s fra dokumentet: "
+"%(document)s?"
 
 #: views.py:312
 #, python-format
@@ -263,9 +270,8 @@ msgstr "Dokumentet \"%(document)s\" ikke blev kodet som \"%(tag)s\""
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" blev fjernet fra dokumentet \"%(document)s\"."
 
-#: templatetags/tags_tags.py:18
-msgid "Add tag to document"
-msgstr "Tilføj tag til dokument"
+#~ msgid "Add tag to document"
+#~ msgstr "Tilføj tag til dokument"
 
 #~ msgid "Document created"
 #~ msgstr "document"
