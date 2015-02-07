@@ -12,6 +12,25 @@ request on GitHub_. Make sure to add yourself to the :ref:`contributors` file.
 .. _GitHub: https://github.com/mayan-edms/mayan-edms/
 .. _`GitHub issue tracker`: https://github.com/mayan-edms/mayan-edms/issues
 
+
+Project philosophies
+--------------------
+
+- Functionality must be as market/sector independent as possible, code for the 95% of use cases.
+- Each user must be able to configure and customize it to their needs after install.
+- Abstract as much as possible, each app must be an expert in just one thing, for other things they should use the API/classes/functions of other apps.
+- Assume as little as possible about anything outside the project (hardware, OS, storage).
+- Provide Python based abstraction so that a default install runs with a single step.
+- No hard dependencies on binaries unless there is no other choice.
+- Provide “drivers” or switchable backends to allow users to fine tune the installation.
+- Call to binaries only when there is no other choice or the Python choices are not viable/mature/efficient.
+- Each app is as independent and self contained as possible. Exceptions, the basic requirements: navigation, permissions, common, main.
+- If an app is meant to be used by more than one other app it should be as generic as possible in regard to the project and another app will bridge the functionality.
+
+  - Example: the acls app is app agnostic, document_acls connects the acls app with the documents app.
+  - Example: since indexing (document_indexing) only applies to documents, the app is specialized and dependant on the documents app.
+
+
 Coding conventions
 ------------------
 
