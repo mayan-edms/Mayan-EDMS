@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 16:52-0400\n"
-"PO-Revision-Date: 2015-02-07 00:04+0000\n"
+"PO-Revision-Date: 2015-02-07 05:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -57,7 +57,7 @@ msgstr "Enlace para el documento: {{ documento }}"
 
 #: settings.py:11
 msgid "Template for the document link email form subject line."
-msgstr ""
+msgstr "Plantilla para la línea de asunto del correo electrónico para envío de enlace del documento."
 
 #: settings.py:12
 msgid ""
@@ -65,7 +65,7 @@ msgid ""
 "\n"
 "--------<br />\n"
 "This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
-msgstr ""
+msgstr "Para acceder a este documento, haga clic en el siguiente enlace: <a href=\"{{ link }}\">{{ link }}</a><br /><br />\n\n-------- <br />\nEste e-mail ha sido enviado desde Maya EDMS (http://www.mayan-edms.com)"
 
 #: settings.py:12
 msgid "Template for the document link email form body line."
@@ -85,11 +85,11 @@ msgid ""
 "\n"
 "--------<br />\n"
 "This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
-msgstr ""
+msgstr "Se adjunta a este correo electrónico es el documento: {{ document }}<br /><br />\n\n--------<br />\nEste e-mail ha sido enviado desde Maya EDMS (http://www.mayan-edms.com)"
 
 #: settings.py:14
 msgid "Template for the document email form body line."
-msgstr ""
+msgstr "Plantilla para la línea de cuerpo del correo electrónico para envío de documento."
 
 #: views.py:41
 msgid "Must provide at least one document."

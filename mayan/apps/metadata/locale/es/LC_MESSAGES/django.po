@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 16:52-0400\n"
-"PO-Revision-Date: 2015-02-07 00:14+0000\n"
+"PO-Revision-Date: 2015-02-07 05:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -37,7 +37,7 @@ msgstr "Valor del tipo de metadatos"
 msgid ""
 "Queryset containing a MetadataType instance reference and a value for that "
 "metadata type"
-msgstr ""
+msgstr "QuerySet que contiene una referencia de instancia de tipo de meta datos y un valor para ese tipo de meta datos "
 
 #: __init__.py:94
 msgid "Value of a metadata"
@@ -223,11 +223,11 @@ msgstr "Ver los tipos de metadatos"
 
 #: serializers.py:31 serializers.py:36
 msgid "Primary key of the metadata type to be added."
-msgstr ""
+msgstr "Llave principal del tipo de meta datos a ser agregada."
 
 #: serializers.py:32
 msgid "Value of the corresponding metadata type instance."
-msgstr ""
+msgstr "Valor de la instancia de tipo meta datos correspondientes."
 
 #: views.py:52 views.py:157 views.py:239
 msgid "Must provide at least one document."
@@ -271,13 +271,13 @@ msgstr "Error al añadir tipo de metadatos \"%(metadata_type)s\" al documento: %
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document "
 "%(document)s."
-msgstr ""
+msgstr "Tipo de metadatos: %(metadata_type)s añadido con éxito al documento %(document)s."
 
 #: views.py:185
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr ""
+msgstr "Tipo de metadatos: %(metadata_type)s ya presente en el documento %(document)s."
 
 #: views.py:211
 msgid "Add metadata types to document"
@@ -290,14 +290,14 @@ msgstr[1] "Añadir tipos de meta datos a los documentos"
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
 "%(document)s."
-msgstr ""
+msgstr "Remoción con éxito el tipo de meta datos \"%(metadata_type)s\" del documento: %(document)s."
 
 #: views.py:293
 #, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
 "%(document)s; %(exception)s"
-msgstr ""
+msgstr "Error al eliminar el tipo de metadatos \"%(metadata_type)s\" del documento: %(document)s; %(exception)s"
 
 #: views.py:308
 msgid "Remove metadata types from the document"

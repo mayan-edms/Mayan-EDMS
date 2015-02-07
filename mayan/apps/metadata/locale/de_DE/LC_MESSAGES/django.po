@@ -14,7 +14,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 16:52-0400\n"
-"PO-Revision-Date: 2015-02-06 23:56+0000\n"
+"PO-Revision-Date: 2015-02-07 00:50+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -39,7 +39,7 @@ msgstr "Metadatentypwert"
 msgid ""
 "Queryset containing a MetadataType instance reference and a value for that "
 "metadata type"
-msgstr ""
+msgstr "Queryset enthaltend eine Referenz auf eine Metadatentyp Instanz und einen Wert für diesen Metadatentyp"
 
 #: __init__.py:94
 msgid "Value of a metadata"
@@ -47,7 +47,7 @@ msgstr "Metadatenwert"
 
 #: __init__.py:94
 msgid "Return the value of a specific document metadata"
-msgstr ""
+msgstr "Gibt den Wert einer spezifischen Dokumentmetadatums zurück"
 
 #: classes.py:21
 #, python-format
@@ -57,7 +57,7 @@ msgstr "'metadata'-Objekt hat kein Attribut '%s'"
 #: forms.py:41
 #, python-format
 msgid "Invalid value: %(message)s"
-msgstr ""
+msgstr "Ungültiger Wert: %(message)s"
 
 #: forms.py:63 models.py:78 views.py:334
 msgid "Required"
@@ -141,11 +141,11 @@ msgstr "Standard"
 
 #: models.py:22
 msgid "Enter a string to be evaluated."
-msgstr "Geben Sie einen Ausdruck (string) an, der ausgewertet werden soll."
+msgstr "Geben Sie einen Ausdruck (string) an, der ausgewertet werden soll"
 
 #: models.py:26
 msgid "Lookup"
-msgstr ""
+msgstr "Suche"
 
 #: models.py:27
 msgid "Enter a string to be evaluated that returns an iterable."
@@ -165,11 +165,11 @@ msgstr "Typ"
 
 #: models.py:59
 msgid "Metadata type is not valid for this document type."
-msgstr ""
+msgstr "Metadatentyp ist nicht gültig für diesen Dokumententyp"
 
 #: models.py:65
 msgid "Metadata type is required for this document type."
-msgstr ""
+msgstr "Metadatentyp ist erforderlich für diesen Dokumententyp"
 
 #: models.py:71 models.py:72
 msgid "Document metadata"
@@ -181,11 +181,11 @@ msgstr "Dokumententyp"
 
 #: models.py:85
 msgid "Document type metadata type options"
-msgstr ""
+msgstr "Metadatentyp Optionen"
 
 #: models.py:86
 msgid "Document type metadata types options"
-msgstr ""
+msgstr "Metadatentyp Optionen"
 
 #: permissions.py:8
 msgid "Edit a document's metadata"
@@ -225,19 +225,19 @@ msgstr "Metadatentypen anzeigen"
 
 #: serializers.py:31 serializers.py:36
 msgid "Primary key of the metadata type to be added."
-msgstr ""
+msgstr "Primärschlüssel des hinzuzufügenden Metadatentyps"
 
 #: serializers.py:32
 msgid "Value of the corresponding metadata type instance."
-msgstr ""
+msgstr "Wert der entsprechenden Metadatentyp-Instanz"
 
 #: views.py:52 views.py:157 views.py:239
 msgid "Must provide at least one document."
-msgstr "Es muss mindestens ein Dokument angegeben werden."
+msgstr "Es muss mindestens ein Dokument angegeben werden"
 
 #: views.py:56 views.py:148 views.py:243
 msgid "Only select documents of the same type."
-msgstr ""
+msgstr "Es können nur Dokumente des gleichen Typs ausgewählt werden"
 
 #: views.py:61 views.py:248
 msgid "The selected document doesn't have any metadata."

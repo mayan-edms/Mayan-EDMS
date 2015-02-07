@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2012
+# Roberto Rosario, 2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 16:51-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"PO-Revision-Date: 2015-02-07 05:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: forms.py:9 models.py:23
@@ -123,7 +122,7 @@ msgstr "Firmante: %s"
 #: views.py:74
 #, python-format
 msgid "Signature properties for document: %s"
-msgstr ""
+msgstr "Propiedades de la firma del documento: %s"
 
 #: views.py:97
 msgid "Detached signature uploaded successfully."
@@ -132,7 +131,7 @@ msgstr "Firma separada subida con éxito."
 #: views.py:110
 #, python-format
 msgid "Upload detached signature for document: %s"
-msgstr ""
+msgstr "Subir una firma aparte para el documento: %s"
 
 #: views.py:155
 msgid "Detached signature deleted successfully."

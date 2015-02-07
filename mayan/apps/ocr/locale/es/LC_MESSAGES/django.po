@@ -12,7 +12,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 20:44-0400\n"
-"PO-Revision-Date: 2015-02-07 00:45+0000\n"
+"PO-Revision-Date: 2015-02-07 05:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -142,18 +142,18 @@ msgstr "Haga al menos una selección"
 #: views.py:101
 #, python-format
 msgid "Entry: %(entry)s deleted successfully."
-msgstr ""
+msgstr "Entrada: %(entry)s ha eliminada correctamente."
 
 #: views.py:105
 #, python-format
 msgid "Error entry: %(entry)s; %(error)s"
-msgstr ""
+msgstr "Entrada de error: %(entry)s; %(error)s"
 
 #: views.py:119
 msgid "Are you sure you wish to delete the selected entry?"
 msgid_plural "Are you sure you wish to delete the selected entries?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "¿Seguro que desea eliminar la entrada seleccionada?"
+msgstr[1] "¿Seguro que desea eliminar las entradas seleccionadas?"
 
 #: views.py:152
 #, python-format
@@ -168,8 +168,8 @@ msgstr "La versión de documento #: %d, ya no existe."
 #: views.py:169
 msgid "Are you sure you wish to re-queue the selected entry?"
 msgid_plural "Are you sure you wish to re-queue the selected entries?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "¿Seguro que desea volver enviar a la cola a la entrada seleccionada?"
+msgstr[1] "¿Seguro que desea volver enviar a la cola las entradas seleccionadas?"
 
 #: parsers/__init__.py:97 parsers/__init__.py:174
 msgid "Text extracted from PDF"
