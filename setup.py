@@ -53,33 +53,37 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-APScheduler==2.1.2
+celery==3.1.17
 cssmin==0.2.0
-Django==1.6.5
+Django==1.6.8
+django-activity-stream==0.5.1
+django-celery==3.1.16
+django-compressor==1.4
+django-cors-headers==0.13
 django-filetransfers==0.1.0
 django-pagination==1.0.7
-django-compressor==1.4
-django-taggit==0.12
+django-model-utils==2.2
 django-mptt==0.6.1
-django-rest-swagger==0.1.14
+django-rest-swagger==0.2.0
 django-sendfile==0.3.6
-django-solo==1.0.5
-djangorestframework==2.3.14
+django-solo==1.1.0
+django-suit==0.2.12
+djangorestframework==2.4.4
 GitPython==0.3.2.RC1
-ghostscript==0.4.1
-Pillow==2.5.0
-PyYAML==3.11
+Pillow==2.6.1
 pdfminer==20110227
-psutil==2.1.1
+psutil==2.1.3
+pycountry==1.8
 pytz==2014.4
-python-gnupg==0.3.6
+python-dateutil==2.4.0
+python-gnupg==0.3.7
 python-hkp==0.1.3
 python-magic==0.4.6
-requests==2.3.0
+requests==2.4.3
 sh==1.09
 slate==0.3
-South==1.0
-unicode-slugify==0.1
+South==1.0.2
+unicode-slugify==0.1.1
 wsgiref==0.1.2
 """.split()
 
