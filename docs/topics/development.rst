@@ -16,6 +16,8 @@ request on GitHub_. Make sure to add yourself to the :ref:`contributors` file.
 Project philosophies
 --------------------
 
+How to think about **Mayan EDMS** when doing changes or adding new features, why things are the way they are in **Mayan EDMS**.
+
 - Functionality must be as market/sector independent as possible, code for the 95% of use cases.
 - Each user must be able to configure and customize it to their needs after install.
 - Abstract as much as possible, each app must be an expert in just one thing, for other things they should use the API/classes/functions of other apps.

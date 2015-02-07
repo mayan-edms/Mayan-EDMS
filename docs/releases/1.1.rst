@@ -2,12 +2,9 @@
 Mayan EDMS v1.1 release notes
 =============================
 
-Released: February 2015
+Released: February 10, 2015
 
 Welcome to Mayan EDMS v1.1
-
-Overview
-========
 
 
 What's new in Mayan EDMS v1.1
@@ -248,6 +245,7 @@ The upgrade procedure is now complete.
 Backward incompatible changes
 =============================
 
+* None
 
 
 Bugs fixed or issues closed
