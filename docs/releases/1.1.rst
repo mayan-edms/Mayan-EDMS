@@ -106,20 +106,21 @@ New release cycle
 Starting with this version a new release cycle methodology will come into effect.
 The goal of this release cycle is to allow two series of versions of **Mayan EDMS** to be
 active at a given time: A new major version with new functionality and a minor version
-providing upgrades and fixes. This release (1.1) will be active and supported for even
-after the release of version 2.0, but will go into end of life as soon as version 3.0 is
-released.
+providing upgrades and fixes. This release (1.1) will be active and supported
+during releases of versions 2.x, but will go into end-of-life as soon as
+version 3.0 is released, at which time version series 2.x will go into
+maintenance mode.
 
 
 Deprecation of Python 2.6
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Series 1.0 of **Mayan EDMS** will be the last series supporting Python 2.6. Series
-2.0 will be using Django 1.7.x which itself require Python 2.7 or later.
+2.0 will be using Django 1.7.x which itself requires Python 2.7 or later.
 
 
 Improved testings
 ~~~~~~~~~~~~~~~~~
-**Mayan EDMS** is now automatically tested agains SQLite, MySQL and PostgreSQL.
+**Mayan EDMS** is now automatically tested against SQLite, MySQL and PostgreSQL.
 
 
 API updates
@@ -129,9 +130,21 @@ Many new API endpoints have been added exposing the majority of **Mayan EDMS** f
 
 Messages contextual improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Many updates and simplifications were made to source text messages to reduce the
-dificulty in traslating **Mayan EDMS** and maintaing the contextual meaning of the
+Many updates and simplifications were made to the source text messages to reduce the
+dificulty of traslating **Mayan EDMS** and maintaing the contextual meaning of the
 text messages.
+
+Improved method for custom settings
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Custom setting now use a string based value, it is longer needed to import
+classes when customizing a settings::
+
+  from custom_app.backends import CustomStorageBackend
+  DOCUMENTS_STORAGE_BACKEND = CustomStorageBackend
+
+Instead the fully qualified name of the class must be passed as the setting value::
+
+  DOCUMENTS_STORAGE_BACKEND = 'custom_app.backends.CustomStorageBackend'
 
 
 Other changes
@@ -153,8 +166,7 @@ Other changes
 * Removal of the duplicate document search feature
 * Removal of filesystem document indexes mirroring feature
 * Improve sources app model sub classes and inheritance handling
-* Add CORS support to the API
-* Improved method for custom settings
+* Addition of CORS support to the API
 
 
 Upgrading from a previous version
@@ -240,74 +252,78 @@ Backward incompatible changes
 
 Bugs fixed or issues closed
 ===========================
-* 30
-* 32
-* 34
-* 35
-* 37
-* 39
-* 40
-* 46
-* 49
-* 50
-* 51
-* 55
-* 56
-* 57
-* 65
-* 66
-* 68
-* 69
-* 70
-* 71
-* 72
-* 74
-* 75
-* 77
-* 78
-* 79
-* 82
-* 83
-* 84
-* 85
-* 86
-* 87
-* 88
-* 89
-* 90
-* 91
-* 92
-* 95
-* 96
-* 97
-* 104
-* 105
-* 106
-* 107
-* 108
-* 109
-* 111
-* 112
-* 114
-* 116
-* 118
-* 119
-* 126
-* 127
-* 128
-* 129
-* 130
-* 131
-* 137
-* 138
-* 139
-* 140
-* 143
-* 144
-* 146
-* 149
-* 150
 
+* `issue #30 <https://github.com/mayan-edms/mayan-edms/issues/30>`_ Document workflows
+* `issue #32 <https://github.com/mayan-edms/mayan-edms/issues/32>`_ Watched folders
+* `issue #34 <https://github.com/mayan-edms/mayan-edms/issues/34>`_ Postprocessing document queue
+* `issue #35 <https://github.com/mayan-edms/mayan-edms/issues/35>`_ Metadata validation
+* `issue #37 <https://github.com/mayan-edms/mayan-edms/issues/37>`_ Add from __future__ import unicode_literals
+* `issue #39 <https://github.com/mayan-edms/mayan-edms/issues/39>`_ Capitalization of messages
+* `issue #40 <https://github.com/mayan-edms/mayan-edms/issues/40>`_ Update references to root ('/') path
+* `issue #46 <https://github.com/mayan-edms/mayan-edms/issues/46>`_ Advanced search past 1st page
+* `issue #49 <https://github.com/mayan-edms/mayan-edms/issues/49>`_ Problems with large pdf files
+* `issue #50 <https://github.com/mayan-edms/mayan-edms/issues/50>`_ raise CommandNotFound(path)
+* `issue #51 <https://github.com/mayan-edms/mayan-edms/issues/51>`_ Search with ANONYMOUS error
+* `issue #55 <https://github.com/mayan-edms/mayan-edms/issues/55>`_ Document approval cicle?
+* `issue #56 <https://github.com/mayan-edms/mayan-edms/issues/56>`_ Removal of non essential features, views, models
+* `issue #57 <https://github.com/mayan-edms/mayan-edms/issues/57>`_ Migrate to Celery for task query and periodic tasks
+* `issue #64 <https://github.com/mayan-edms/mayan-edms/issues/64>`_ Pluralize messages properly
+* `issue #65 <https://github.com/mayan-edms/mayan-edms/issues/65>`_ Backport the ability to receive documents via email
+* `issue #66 <https://github.com/mayan-edms/mayan-edms/issues/66>`_ Python 3 compatibility: Add from __future__ import unicode_literals and remove all u''
+* `issue #68 <https://github.com/mayan-edms/mayan-edms/issues/68>`_ Revise and update the use gettext vs. gettext_lazy
+* `issue #69 <https://github.com/mayan-edms/mayan-edms/issues/69>`_ Feature removal: remove "Unregistered" message from the title bar
+* `issue #71 <https://github.com/mayan-edms/mayan-edms/issues/71>`_ Add retry support to the converter task
+* `issue #72 <https://github.com/mayan-edms/mayan-edms/issues/72>`_ Delete unused static icons
+* `issue #74 <https://github.com/mayan-edms/mayan-edms/issues/74>`_ Cache a document's first document version
+* `issue #75 <https://github.com/mayan-edms/mayan-edms/issues/75>`_ Move automatic OCR queueing from a configuration settings to a property of Document Type model
+* `issue #77 <https://github.com/mayan-edms/mayan-edms/issues/77>`_ Add document view permission support to the search app
+* `issue #78 <https://github.com/mayan-edms/mayan-edms/issues/78>`_ COMMON_TEMPORARY_DIRECTORY seems not to be used everywhere
+* `issue #79 <https://github.com/mayan-edms/mayan-edms/issues/79>`_ Error installing
+* `issue #82 <https://github.com/mayan-edms/mayan-edms/issues/82>`_ Make document type a required field
+* `issue #83 <https://github.com/mayan-edms/mayan-edms/issues/83>`_ Simplify source app views and navigation
+* `issue #84 <https://github.com/mayan-edms/mayan-edms/issues/84>`_ Remove template context variable 'object_name' to improve translations
+* `issue #85 <https://github.com/mayan-edms/mayan-edms/issues/85>`_ Reset page count for a single document
+* `issue #86 <https://github.com/mayan-edms/mayan-edms/issues/86>`_ Move migrations to new 'south_migrations' folders
+* `issue #87 <https://github.com/mayan-edms/mayan-edms/issues/87>`_ Per document language selection
+* `issue #88 <https://github.com/mayan-edms/mayan-edms/issues/88>`_ Remove metadata type selection from the upload wizard
+* `issue #89 <https://github.com/mayan-edms/mayan-edms/issues/89>`_ Allow metadata types to be required for specific document types
+* `issue #90 <https://github.com/mayan-edms/mayan-edms/issues/90>`_ Remove the app_registry app
+* `issue #91 <https://github.com/mayan-edms/mayan-edms/issues/91>`_ Don't preserve the ?page= URL query string value when switching sources during document upload
+* `issue #92 <https://github.com/mayan-edms/mayan-edms/issues/92>`_ Make register_multi_item_links class aware
+* `issue #95 <https://github.com/mayan-edms/mayan-edms/issues/95>`_ Installation error on Mac OSX; OSError: [Errno 2] No such file or directory
+* `issue #96 <https://github.com/mayan-edms/mayan-edms/issues/96>`_ Remove hard code User model references
+* `issue #97 <https://github.com/mayan-edms/mayan-edms/issues/97>`_ Make multi item links a drop down list
+* `issue #104 <https://github.com/mayan-edms/mayan-edms/issues/104>`_ Finish polishing metadata validation patch
+* `issue #105 <https://github.com/mayan-edms/mayan-edms/issues/105>`_ Tie smart links setups to document types
+* `issue #106 <https://github.com/mayan-edms/mayan-edms/issues/106>`_ Convert document indexing app actions to Celery
+* `issue #107 <https://github.com/mayan-edms/mayan-edms/issues/107>`_ Restrict document metadata addition and removal
+* `issue #108 <https://github.com/mayan-edms/mayan-edms/issues/108>`_ New home screen
+* `issue #109 <https://github.com/mayan-edms/mayan-edms/issues/109>`_ Add Roles API endpoints
+* `issue #111 <https://github.com/mayan-edms/mayan-edms/issues/111>`_ Add Checkouts API endpoints
+* `issue #112 <https://github.com/mayan-edms/mayan-edms/issues/112>`_ Add OCR API endpoints
+* `issue #114 <https://github.com/mayan-edms/mayan-edms/issues/114>`_ Implement UI language as user preference
+* `issue #116 <https://github.com/mayan-edms/mayan-edms/issues/116>`_ Add documentation topic explicitly noting the binary requirements
+* `issue #118 <https://github.com/mayan-edms/mayan-edms/issues/118>`_ When a metadata type is removed from a document type, remove it from all the documents of that type
+* `issue #119 <https://github.com/mayan-edms/mayan-edms/issues/119>`_ When a required metadata type is added to a document type, add it to all documents of that type
+* `issue #126 <https://github.com/mayan-edms/mayan-edms/issues/126>`_ Failing migration with SQLite
+* `issue #127 <https://github.com/mayan-edms/mayan-edms/issues/127>`_ Failing migration with Postgres
+* `issue #128 <https://github.com/mayan-edms/mayan-edms/issues/128>`_ Add Indexes API endpoints
+* `issue #129 <https://github.com/mayan-edms/mayan-edms/issues/129>`_ Search api shouldn't memorize requested page as part of the query
+* `issue #130 <https://github.com/mayan-edms/mayan-edms/issues/130>`_ Users API is not working correctly
+* `issue #131 <https://github.com/mayan-edms/mayan-edms/issues/131>`_ Is there an API to update a user's password?
+* `issue #137 <https://github.com/mayan-edms/mayan-edms/issues/137>`_ Enhancement of language selection
+* `issue #138 <https://github.com/mayan-edms/mayan-edms/issues/138>`_ Possibility to keep zoom factor
+* `issue #139 <https://github.com/mayan-edms/mayan-edms/issues/139>`_ Translatability of language selection
+* `issue #140 <https://github.com/mayan-edms/mayan-edms/issues/140>`_ Thumbnail creation for ods crashing
+* `issue #143 <https://github.com/mayan-edms/mayan-edms/issues/143>`_ Exception Value: 'exceptions.ValueError' object has no attribute 'messages'
+* `issue #144 <https://github.com/mayan-edms/mayan-edms/issues/144>`_ Behavior of 'Edit metadata' (Recent Documents)
+* `issue #146 <https://github.com/mayan-edms/mayan-edms/issues/146>`_ Periodic task not initiated for mail boxes and watch folders
+* `issue #149 <https://github.com/mayan-edms/mayan-edms/issues/149>`_ Attribute error in document download
+* `issue #150 <https://github.com/mayan-edms/mayan-edms/issues/150>`_ Double second menu entry
+* `issue #152 <https://github.com/mayan-edms/mayan-edms/issues/152>`_ Document content empty
+* `issue #153 <https://github.com/mayan-edms/mayan-edms/issues/153>`_ south migration with postgres: documents: 031_remove_orphan_documents
+* `issue #157 <https://github.com/mayan-edms/mayan-edms/issues/157>`_ upload new version of a document not working
+* `issue #158 <https://github.com/mayan-edms/mayan-edms/issues/158>`_ Plural form not matching singular form in ocr app  bug i18n
 
 
 .. _Celery: http://www.celeryproject.org/
