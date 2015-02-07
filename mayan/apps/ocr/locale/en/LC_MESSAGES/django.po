@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:53-0400\n"
+"POT-Creation-Date: 2015-02-06 20:44-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -143,7 +143,7 @@ msgstr "Document pages content clean up error: %s"
 msgid "OCR errors"
 msgstr "error"
 
-#: views.py:91 views.py:143
+#: views.py:91 views.py:140
 #, fuzzy
 msgid "Make at least one selection."
 msgstr "Must provide at least one queue document."
@@ -159,26 +159,26 @@ msgid "Error entry: %(entry)s; %(error)s"
 msgstr "Error deleting document: %(document)s; %(error)s"
 
 #: views.py:119
-#, fuzzy, python-format
-msgid "Are you sure you wish to delete the entry: %(entry)s?"
-msgid_plural "Are you sure you wish to delete these %(count)d entries."
+#, fuzzy
+msgid "Are you sure you wish to delete the selected entry?"
+msgid_plural "Are you sure you wish to delete the selected entries?"
 msgstr[0] "Are you sure you wish to delete queue document: %s?"
 msgstr[1] "Are you sure you wish to delete queue document: %s?"
 
-#: views.py:155
+#: views.py:152
 #, fuzzy, python-format
 msgid "Entry: %(entry)s was re-queued for OCR."
 msgstr "Document: %(document)s is already queued."
 
-#: views.py:160
+#: views.py:157
 #, fuzzy, python-format
 msgid "Document version id#: %d, no longer exists."
 msgstr "Document id#: %d, no longer exists."
 
-#: views.py:172
-#, fuzzy, python-format
-msgid "Are you sure you wish to re-queue the entry: %(entry)s?"
-msgid_plural "Are you sure you wish to re-queue these %(count)d entries."
+#: views.py:169
+#, fuzzy
+msgid "Are you sure you wish to re-queue the selected entry?"
+msgid_plural "Are you sure you wish to re-queue the selected entries?"
 msgstr[0] "Are you sure you wish to re-queue document: %s?"
 msgstr[1] "Are you sure you wish to re-queue document: %s?"
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
@@ -14,19 +14,18 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 16:50-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2015-02-06 23:55+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: api.py:94
 msgid "Unknown"
-msgstr ""
+msgstr "Unbekannt"
 
 #: forms.py:9
 msgid "Term"
@@ -34,21 +33,19 @@ msgstr "Begriff"
 
 #: forms.py:10
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr ""
-"Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht "
-"wird."
+msgstr "Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht wird"
 
 #: links.py:10 views.py:68
 msgid "Private keys"
-msgstr ""
+msgstr "Private Schlüssel"
 
 #: links.py:11 views.py:71
 msgid "Public keys"
-msgstr ""
+msgstr "Öffentliche Schlüssel"
 
 #: links.py:12
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: links.py:13 permissions.py:11
 msgid "Query keyservers"
@@ -56,7 +53,7 @@ msgstr "Schlüsselserver abfragen"
 
 #: links.py:14
 msgid "Import"
-msgstr ""
+msgstr "Importieren"
 
 #: links.py:15 permissions.py:7
 msgid "Key management"
@@ -84,25 +81,23 @@ msgstr "Elgamal"
 
 #: literals.py:35
 msgid "Bad signature."
-msgstr "Ungültige Signatur."
+msgstr "Ungültige Signatur"
 
 #: literals.py:38
 msgid "Document not signed or invalid signature."
-msgstr "Dokument nicht signiert oder ungültige Signatur."
+msgstr "Dokument nicht signiert oder ungültige Signatur"
 
 #: literals.py:41
 msgid "Signature error."
-msgstr "Signatur Fehler."
+msgstr "Signaturfehler"
 
 #: literals.py:44
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
-"Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung "
-"verfügbar."
+msgstr "Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung verfügbar."
 
 #: literals.py:47
 msgid "Document is signed, and signature is good."
-msgstr "Dokument ist signiert mit guter Unterschrift."
+msgstr "Dokument ist signiert mit gültiger Unterschrift."
 
 #: literals.py:50
 msgid "Document is signed with a valid signature."
@@ -130,12 +125,12 @@ msgstr "Verzeichnis zum Speichern von Schlüsseln und Konfigurationsdateien."
 
 #: settings.py:16
 msgid "Path to the GPG binary."
-msgstr ""
+msgstr "Pfad zum Programm GPG"
 
 #: views.py:40
 #, python-format
 msgid "Key: %s, imported successfully."
-msgstr "Schlüssel %s erfolgreich importiert."
+msgstr "Schlüssel %s erfolgreich importiert"
 
 #: views.py:45
 #, python-format
@@ -162,7 +157,7 @@ msgstr "Eigentümer"
 #: views.py:103
 #, python-format
 msgid "Key: %s, deleted successfully."
-msgstr "Schlüssel %s erfolgreich gelöscht."
+msgstr "Schlüssel %s erfolgreich gelöscht"
 
 #: views.py:110
 msgid "Delete key"
@@ -174,10 +169,7 @@ msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
 "that is part of a public/private pair the private key will be deleted as "
 "well."
-msgstr ""
-"Sind Sie sicher, dass Sie den Schlüssel %s löschen wollen? Wenn Sie einen "
-"öffentlichen Schlüssel, der Teil eines öffentlichen/privaten Paars ist, zu "
-"löschen versuchen, wird der private Schlüssel ebenfalls gelöscht."
+msgstr "Sind Sie sicher, dass Sie den Schlüssel %s löschen wollen? Wenn Sie einen öffentlichen Schlüssel, der Teil eines öffentlichen/privaten Paars ist, zu löschen versuchen, wird der private Schlüssel ebenfalls gelöscht."
 
 #: views.py:129
 msgid "Query key server"
@@ -193,31 +185,31 @@ msgstr "ID"
 
 #: views.py:151
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
 #: views.py:155
 msgid "Creation date"
-msgstr ""
+msgstr "Erstellungsdatum"
 
 #: views.py:159
 msgid "Disabled"
-msgstr ""
+msgstr "Deaktiviert"
 
 #: views.py:163
 msgid "Expiration date"
-msgstr ""
+msgstr "Ablaufdatum"
 
 #: views.py:167
 msgid "Expired"
-msgstr ""
+msgstr "Abgelaufen"
 
 #: views.py:171
 msgid "Length"
-msgstr ""
+msgstr "Länge"
 
 #: views.py:175
 msgid "Revoked"
-msgstr ""
+msgstr "Widerrufen"
 
 #: views.py:180
 msgid "Identifies"

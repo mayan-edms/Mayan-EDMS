@@ -13,9 +13,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
-"PO-Revision-Date: 2015-01-11 22:05+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-02-06 20:44-0400\n"
+"PO-Revision-Date: 2015-02-06 23:55+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
 "edms/language/de_DE/)\n"
 "Language: de_DE\n"
@@ -42,67 +42,67 @@ msgstr "Dokument zwingend eingebucht"
 
 #: exceptions.py:18 views.py:82
 msgid "Document already checked out."
-msgstr "Dokument bereits ausgebucht."
+msgstr "Dokument bereits ausgebucht"
 
 #: links.py:19
 msgid "Checkouts"
-msgstr ""
+msgstr "Ausbuchungen"
 
 #: links.py:20
 msgid "Check out document"
-msgstr ""
+msgstr "Dokument ausbuchen"
 
 #: links.py:21
 msgid "Check in document"
-msgstr ""
+msgstr "Dokument einbuchen"
 
 #: links.py:22
 msgid "Check in/out"
-msgstr ""
+msgstr "Aus-/Einbuchen"
 
 #: literals.py:9
 msgid "Checked out"
-msgstr ""
+msgstr "Ausgebucht"
 
 #: literals.py:10
 msgid "Checked in/available"
-msgstr ""
+msgstr "Eingebucht/Verfügbar"
 
 #: models.py:23
 msgid "Document"
-msgstr ""
+msgstr "Dokument"
 
 #: models.py:24
 msgid "Check out date and time"
-msgstr ""
+msgstr "Ausbuchungsbeginn"
 
 #: models.py:25 widgets.py:79
 msgid "Check out expiration date and time"
-msgstr "Ablauf-Datum und -Zeit Ausbuchung"
+msgstr "Ausbuchungsende"
 
 #: models.py:25
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr "Zeitraum für die Ausbuchung des Dokuments (in Minuten)."
+msgstr "Zeit, für die das Dokument ausgebucht werden soll"
 
 #: models.py:32
 msgid "Block new version upload"
-msgstr ""
+msgstr "Hochladen von neuen Versionen sperren"
 
 #: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
-msgstr "Hochladen einer neuen Version dieses Dokuments verweigern."
+msgstr "Das Hochladen von neuen Versionen dieses Dokuments sperren"
 
 #: models.py:58 permissions.py:7
 msgid "Document checkout"
-msgstr "Dokumentausbuchung"
+msgstr "Ausbuchung"
 
 #: models.py:59
 msgid "Document checkouts"
-msgstr ""
+msgstr "Ausbuchungen"
 
 #: permissions.py:9
 msgid "Check out documents"
-msgstr "Dokumentausbuchungen"
+msgstr "Dokumente ausbuchen"
 
 #: permissions.py:10
 msgid "Check in documents"
@@ -110,32 +110,32 @@ msgstr "Dokumente einbuchen"
 
 #: permissions.py:11
 msgid "Forcefully check in documents"
-msgstr "Dokumenteneinbuchung erzwingen"
+msgstr "Dokumente zwingend einbuchen"
 
 #: permissions.py:12
 msgid "Allow overriding check out restrictions"
-msgstr "Außerkraftsetzung von Ausbuchungsbeschränkungen erlauben"
+msgstr "Aufhebung der Ausbuchungseinschränkungen erlauben"
 
 #: views.py:32
 msgid "Documents checked out"
-msgstr ""
+msgstr "Ausgebuchte Dokumente"
 
 #: views.py:35
 msgid "Checkout user"
-msgstr ""
+msgstr "Benutzer"
 
 #: views.py:36
 msgid "Checkout time and date"
-msgstr ""
+msgstr "Ausbuchungsbeginn"
 
 #: views.py:37
 msgid "Checkout expiration"
-msgstr ""
+msgstr "Ausbuchungsende"
 
 #: views.py:50
 #, python-format
 msgid "Document status: %s"
-msgstr ""
+msgstr "Dokumentenstatus: %s"
 
 #: views.py:54
 #, python-format
@@ -145,25 +145,25 @@ msgstr "Benutzer: %s"
 #: views.py:55
 #, python-format
 msgid "Check out time: %s"
-msgstr "Zeit Ausbuchung: %s"
+msgstr "Ausbuchungsbeginn: %s"
 
 #: views.py:56
 #, python-format
 msgid "Check out expiration: %s"
-msgstr "Ablauf Ausbuchung: %s"
+msgstr "Ausbuchungsende: %s"
 
 #: views.py:57
 #, python-format
 msgid "New versions allowed: %s"
-msgstr "Neue Versionen erlaubt: %s"
+msgstr "Hochladen neuer Versionen erlaubt: %s"
 
 #: views.py:57
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: views.py:57
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #: views.py:62
 #, python-format
@@ -173,31 +173,31 @@ msgstr "Ausbuchungsdetails für Dokument %s"
 #: views.py:85
 #, python-format
 msgid "Error trying to check out document; %s"
-msgstr "Fehler beim Versuch das Dokument %s auszubuchen"
+msgstr "Fehler bei der Ausbuchung von Dokument %s"
 
 #: views.py:87
 #, python-format
 msgid "Document \"%s\" checked out successfully."
-msgstr "Dokument \"%s\" erfolgreich ausgebucht."
+msgstr "Dokument \"%s\" erfolgreich ausgebucht"
 
 #: views.py:95
 #, python-format
 msgid "Check out document: %s"
-msgstr "Dokument ausgebucht: %s"
+msgstr "Dokument %s ausbuchen"
 
 #: views.py:107 views.py:128
 msgid "Document has not been checked out."
-msgstr "Dokument wurde nicht ausgebucht."
+msgstr "Dokument wurde nicht ausgebucht"
 
 #: views.py:130
 #, python-format
 msgid "Error trying to check in document; %s"
-msgstr "Fehler beim Versuch das Dokument %s auszubuchen."
+msgstr "Fehler bei der Einbuchung von Dokument %s"
 
 #: views.py:132
 #, python-format
 msgid "Document \"%s\" checked in successfully."
-msgstr "Dokument \"%s\" erfolgreich eingebucht."
+msgstr "Dokument \"%s\" erfolgreich eingebucht"
 
 #: views.py:143
 #, python-format
@@ -205,13 +205,13 @@ msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
 msgstr ""
-"Sie haben dieses Dokument ursprünglich nicht ausgebucht. Sind Sie sicher, "
-"dass Sie die Einbuchung von Dokument %s erzwingen wollen?"
+"Ein anderer Benutzer hat dieses Dokument ausgebucht. Wollen Sie Dokument %s "
+"wirklich zwingend einbuchen?"
 
 #: views.py:145
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
-msgstr "Sind sie sicher, dass Sie Dokument %s einbuchen wollen?"
+msgstr "Wollen Sie Dokument %s wirklich einbuchen?"
 
 #: widgets.py:17
 msgid "Days"
@@ -227,26 +227,26 @@ msgstr "Minuten"
 
 #: widgets.py:49
 msgid "Enter a valid number of days."
-msgstr "Eine gültige Anzahl an Tagen ist erforderlich."
+msgstr "Geben Sie eine gültige Anzahl an Tagen ein"
 
 #: widgets.py:50
 msgid "Enter a valid number of hours."
-msgstr "Eine gültige Anzahl an Stunden ist erforderlich."
+msgstr "Geben Sie eine gültige Anzahl an Stunden ein"
 
 #: widgets.py:51
 msgid "Enter a valid number of minutes."
-msgstr "Eine gültige Anzahl an Minuten ist erforderlich."
+msgstr "Geben Sie eine gültige Anzahl an Minuten ein"
 
 #: widgets.py:52
 msgid "Enter a valid time difference."
-msgstr "Eine gültige Zeitdifferenz ist erforderlich."
+msgstr "Geben Sie eine gültige Zeitdifferenz ein"
 
 #: widgets.py:78
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
 msgstr ""
-"Zeitdauer der Ausbuchung des Dokuments (in Tagen, Stunden und/oder Minuten)."
+"Zeitdauer der Ausbuchung des Dokuments (in Tagen, Stunden und/oder Minuten)"
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."

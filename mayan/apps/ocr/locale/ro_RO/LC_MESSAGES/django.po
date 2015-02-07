@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:53-0400\n"
-"PO-Revision-Date: 2015-01-17 07:07+0000\n"
+"POT-Creation-Date: 2015-02-06 20:44-0400\n"
+"PO-Revision-Date: 2015-02-07 00:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
 #: __init__.py:37 permissions.py:7
 msgid "OCR"
@@ -61,9 +59,7 @@ msgstr ""
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
-msgstr ""
-"Execută un filtru de limbă pentru a elimina greșelile OCR comune din "
-"conținutul paginii documentului ."
+msgstr "Execută un filtru de limbă pentru a elimina greșelile OCR comune din conținutul paginii documentului ."
 
 #: links.py:19
 msgid "OCR Errors"
@@ -103,10 +99,9 @@ msgstr "Fișier calea către programul de unpaper."
 
 #: settings.py:13
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Calea de fișier pentru programul pdftotext folosit pentru a extrage textul "
-"din fișiere PDF."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Calea de fișier pentru programul pdftotext folosit pentru a extrage textul din fișiere PDF."
 
 #: settings.py:14
 msgid "Full path to the backend to be used to do OCR."
@@ -138,7 +133,7 @@ msgstr "Eroare la curăţirea conţinutului documentului % s"
 msgid "OCR errors"
 msgstr ""
 
-#: views.py:91 views.py:143
+#: views.py:91 views.py:140
 msgid "Make at least one selection."
 msgstr ""
 
@@ -153,27 +148,25 @@ msgid "Error entry: %(entry)s; %(error)s"
 msgstr ""
 
 #: views.py:119
-#, python-format
-msgid "Are you sure you wish to delete the entry: %(entry)s?"
-msgid_plural "Are you sure you wish to delete these %(count)d entries."
+msgid "Are you sure you wish to delete the selected entry?"
+msgid_plural "Are you sure you wish to delete the selected entries?"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 
-#: views.py:155
+#: views.py:152
 #, python-format
 msgid "Entry: %(entry)s was re-queued for OCR."
 msgstr ""
 
-#: views.py:160
+#: views.py:157
 #, python-format
 msgid "Document version id#: %d, no longer exists."
 msgstr ""
 
-#: views.py:172
-#, python-format
-msgid "Are you sure you wish to re-queue the entry: %(entry)s?"
-msgid_plural "Are you sure you wish to re-queue these %(count)d entries."
+#: views.py:169
+msgid "Are you sure you wish to re-queue the selected entry?"
+msgid_plural "Are you sure you wish to re-queue the selected entries?"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
@@ -297,11 +290,11 @@ msgstr "Textul extras din PDF"
 #~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 #~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 
 #~ msgid "Maximum amount of concurrent document OCRs a node can perform."
 #~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
@@ -358,11 +351,9 @@ msgstr "Textul extras din PDF"
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

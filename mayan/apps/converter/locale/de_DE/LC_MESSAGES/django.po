@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 16:50-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2015-02-06 23:55+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: literals.py:21
@@ -27,15 +26,15 @@ msgstr "Größe ändern"
 
 #: literals.py:22
 msgid "Resize."
-msgstr "Größe ändern."
+msgstr "Größe ändern"
 
 #: literals.py:24 literals.py:39
 msgid "Width"
-msgstr ""
+msgstr "Breite"
 
 #: literals.py:25 literals.py:40
 msgid "Height"
-msgstr ""
+msgstr "Höhe"
 
 #: literals.py:29
 msgid "Rotate"
@@ -43,11 +42,11 @@ msgstr "Drehen"
 
 #: literals.py:30
 msgid "Rotate by n degress."
-msgstr "Drehen (um n Grad)."
+msgstr "Drehen (um n Grad)"
 
 #: literals.py:32
 msgid "Degrees"
-msgstr ""
+msgstr "Grade"
 
 #: literals.py:36
 msgid "Density"
@@ -55,7 +54,7 @@ msgstr "Optische Dichte"
 
 #: literals.py:37
 msgid "Change the resolution (ie: DPI) without resizing."
-msgstr "Auflösung (bspw. DPI) ohne Größenänderung anpassen."
+msgstr "Auflösung (bspw. DPI) ohne Größenänderung anpassen"
 
 #: literals.py:44
 msgid "Zoom"
@@ -67,37 +66,35 @@ msgstr "Zoomen (um n Prozent)"
 
 #: literals.py:47
 msgid "Percent"
-msgstr ""
+msgstr "Prozent"
 
 #: settings.py:11
 msgid "File path to imagemagick's convert program."
-msgstr "Dateipfad zu imagemagick's 'convert'-Programm"
+msgstr "Pfad zum Programm convert von  imagemagicks"
 
 #: settings.py:12
 msgid "File path to imagemagick's identify program."
-msgstr "Dateipfad zu imagemagicks 'identify'-Programm"
+msgstr "Pfad zum Programm identify von  imagemagicks"
 
 #: settings.py:13
 msgid "File path to graphicsmagick's program."
-msgstr "Dateipfad zum 'graphicsmagick'-Programm"
+msgstr "Pfad zum Programm graphicsmagick"
 
 #: settings.py:15
 msgid ""
-"Graphics conversion backend to use.  Options are: converter.backends."
-"imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-"and converter.backends.python.Python"
-msgstr ""
-"Zu benutzendes Bildverarbeitungs-Backend. Optionen: converter.backends."
-"imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-"und converter.backends.python.Python"
+"Graphics conversion backend to use.  Options are: "
+"converter.backends.imagemagick.ImageMagick, "
+"converter.backends.graphicsmagick.GraphicsMagick and "
+"converter.backends.python.Python"
+msgstr "Zu benutzendes Bildverarbeitungs-Backend. Optionen: converter.backends.imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick und converter.backends.python.Python"
 
 #: settings.py:16
 msgid "Path to the libreoffice program."
-msgstr "Pfad zum 'libreoffice'-Programm."
+msgstr "Pfad zum Programm libreoffice"
 
 #: settings.py:17
 msgid "Path to the Popple program pdftoppm."
-msgstr ""
+msgstr "Pfad zum Popple Programm pdftoppm"
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -413,11 +410,9 @@ msgstr ""
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -533,8 +528,7 @@ msgstr ""
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

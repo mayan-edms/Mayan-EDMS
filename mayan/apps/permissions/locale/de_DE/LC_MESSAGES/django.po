@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 16:53-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2015-02-07 00:10+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: links.py:11 widgets.py:25
@@ -32,43 +31,43 @@ msgstr "Widerrufen"
 
 #: links.py:14
 msgid "Create new role"
-msgstr ""
+msgstr "Erstellen"
 
 #: links.py:15
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: links.py:16
 msgid "Edit"
-msgstr ""
+msgstr "Bearbeiten"
 
 #: links.py:17 models.py:218 views.py:59
 msgid "Roles"
-msgstr ""
+msgstr "Rollen"
 
 #: links.py:18
 msgid "Members"
-msgstr ""
+msgstr "Mitglieder"
 
 #: links.py:19
 msgid "Role permissions"
-msgstr ""
+msgstr "Berechtigungen"
 
 #: models.py:51
 msgid "Insufficient permissions."
-msgstr "Unzureichende Berechtigungen."
+msgstr "Unzureichende Berechtigungen"
 
 #: models.py:126 views.py:80
 msgid "Namespace"
-msgstr ""
+msgstr "Namensraum"
 
 #: models.py:127 views.py:81
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 #: models.py:134 models.py:196 views.py:134
 msgid "Permission"
-msgstr ""
+msgstr "Berechtigung"
 
 #: models.py:135 permissions.py:7 views.py:77 views.py:136
 msgid "Permissions"
@@ -76,27 +75,27 @@ msgstr "Berechtigungen"
 
 #: models.py:204
 msgid "Permission holder"
-msgstr ""
+msgstr "Berechtigter"
 
 #: models.py:205
 msgid "Permission holders"
-msgstr ""
+msgstr "Berechtigte"
 
 #: models.py:213
 msgid "Label"
-msgstr ""
+msgstr "Bezeichnung"
 
 #: models.py:217 models.py:248
 msgid "Role"
-msgstr ""
+msgstr "Rolle"
 
 #: models.py:264
 msgid "Role member"
-msgstr ""
+msgstr "Rollenmitglied"
 
 #: models.py:265
 msgid "Role members"
-msgstr ""
+msgstr "Rollenmitglieder"
 
 #: permissions.py:9
 msgid "View roles"
@@ -126,13 +125,11 @@ msgstr "Berechtigungen widerrufen"
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
-msgstr ""
-"Eine Liste der existierenden Rollen, welche automatisch neuen Benutzern "
-"zugewiesen werden"
+msgstr "Eine Liste der existierenden Rollen, welche automatisch neuen Benutzern zugewiesen werden"
 
 #: views.py:83
 msgid "Has permission"
-msgstr ""
+msgstr "Berechtigt"
 
 #: views.py:131 views.py:191
 msgid " and "
@@ -157,9 +154,7 @@ msgstr "%(requester)s hat bereits die Berechtigung \"%(permission)s."
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"Sind Sie sicher, dass Sie %(permissions_label)s %(title_suffix)s gewähren "
-"wollen?"
+msgstr "Sind Sie sicher, dass Sie %(permissions_label)s %(title_suffix)s gewähren wollen?"
 
 #: views.py:194
 msgid "permission"
@@ -183,9 +178,7 @@ msgstr "%(requester)s hat nicht die Berechtigung \"%(permission)s\"."
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"Sind Sie sicher, dass Sie %(permissions_label)s  %(title_suffix)s widerrufen "
-"wollen?"
+msgstr "Sind Sie sicher, dass Sie %(permissions_label)s  %(title_suffix)s widerrufen wollen?"
 
 #: views.py:249 views.py:273
 msgid "Users"
@@ -202,12 +195,12 @@ msgstr "Spezial"
 #: views.py:304
 #, python-format
 msgid "Non members of role: %s"
-msgstr ""
+msgstr "Nichtmitglieder von Rolle %s"
 
 #: views.py:305
 #, python-format
 msgid "Members of role: %s"
-msgstr ""
+msgstr "Mitglieder von Rolle %s"
 
 #~ msgid "edit"
 #~ msgstr "edit"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Lucas Weel <ljj.weel@gmail.com>, 2012-2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 16:54-0400\n"
-"PO-Revision-Date: 2015-01-27 20:02+0000\n"
+"PO-Revision-Date: 2015-02-06 23:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:38
@@ -181,8 +180,7 @@ msgstr "Label \"%s\" verwijderd."
 #: views.py:162
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr ""
-"Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
+msgstr "Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
 
 #: views.py:171
 msgid "Will be removed from all documents."
@@ -232,27 +230,21 @@ msgstr "Verwijder label van documenten: %s"
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
-msgstr ""
-"Ben u er zeker van dat u label: \"%(tag)s\" van document: %(document)s, "
-"wenst te verwijderen? "
+msgstr "Ben u er zeker van dat u label: \"%(tag)s\" van document: %(document)s, wenst te verwijderen? "
 
 #: views.py:304
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
-msgstr ""
-"Bent u er zeker van dat u label: \"%(tag)s\" van de documenten: "
-"%(documents)s, wenst te verwijderen?"
+msgstr "Bent u er zeker van dat u label: \"%(tag)s\" van de documenten: %(documents)s, wenst te verwijderen?"
 
 #: views.py:309
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
-msgstr ""
-"Bent u er zeker van dat u de labels: %(tags)s van document: %(document)s, "
-"wenst te verwijderen?"
+msgstr "Bent u er zeker van dat u de labels: %(tags)s van document: %(document)s, wenst te verwijderen?"
 
 #: views.py:312
 #, python-format
@@ -272,7 +264,7 @@ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Label: \"%(tag)s\" is verwijdert van document \"%(document)s\"."
 
 #~ msgid "Add tag to document"
-#~ msgstr "Label document"
+#~ msgstr "Add tag to document"
 
 #~ msgid "Document created"
 #~ msgstr "document"

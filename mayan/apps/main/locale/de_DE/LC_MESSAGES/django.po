@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Stefan Lodders <sl@suchreflex.de>, 2012
@@ -16,55 +16,54 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 16:52-0400\n"
-"PO-Revision-Date: 2015-01-27 20:02+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2015-02-06 23:56+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:12
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: links.py:10
 msgid "Maintenance"
-msgstr ""
+msgstr "Wartung"
 
 #: links.py:11
 msgid "Admin site"
-msgstr ""
+msgstr "Administrationsseite"
 
 #: views.py:32
 msgid "Results"
-msgstr ""
+msgstr "Ergebnisse"
 
 #: views.py:55
 msgid "Maintenance menu"
-msgstr ""
+msgstr "Wartungsmenü"
 
 #: views.py:62
 msgid "Diagnostics"
-msgstr "Diagnosen"
+msgstr "Diagnose"
 
 #: templates/main/403.html:5 templates/main/403.html.py:9
 msgid "Insufficient permissions"
-msgstr ""
+msgstr "Fehlende Berechtigungen"
 
 #: templates/main/403.html:11
 msgid "You don't have enough permissions for this operation."
-msgstr ""
+msgstr "Fehlende Berechtigung für diesen Vorgang"
 
 #: templates/main/404.html:5 templates/main/404.html.py:9
 msgid "Page not found"
-msgstr ""
+msgstr "Seite nicht gefunden"
 
 #: templates/main/404.html:11
 msgid "Sorry, but the requested page could not be found."
-msgstr ""
+msgstr "Die angeforderte Seite konnte leider nicht gefunden werden"
 
 #: templates/main/about.html:9
 msgid "About this program"
@@ -76,7 +75,7 @@ msgstr "Version"
 
 #: templates/main/about.html:15
 msgid "Open Source Electronic Document Manager System"
-msgstr ""
+msgstr "Elektronisches Dokumentenmanagementsystem (OpenSource basiert)"
 
 #: templates/main/about.html:31
 msgid "Released under the Apache 2.0 License"
@@ -88,7 +87,7 @@ msgstr "Copyright &copy; 2011 Roberto Rosario."
 
 #: templates/main/base.html:198
 msgid "(Debug mode)"
-msgstr ""
+msgstr "(Debug Modus)"
 
 #: templates/main/base.html:219
 msgid "Anonymous"
@@ -100,19 +99,19 @@ msgstr "Benutzerdetails"
 
 #: templates/main/base.html:237
 msgid "dismiss all notifications"
-msgstr ""
+msgstr "Alle ausblenden"
 
 #: templates/main/base.html:237
 msgid "close all"
-msgstr ""
+msgstr "Alle schließen"
 
 #: templates/main/base.html:238
 msgid "dismiss this notification"
-msgstr ""
+msgstr "Ausblenden"
 
 #: templates/main/base.html:238
 msgid "close"
-msgstr ""
+msgstr "Schließen"
 
 #: templates/main/base.html:302 templates/main/base.html.py:315
 msgid "Secondary menu"
@@ -126,7 +125,7 @@ msgstr "Aktionen für  %(name)s: %(navigation_object)s"
 #: templates/main/base.html:335 templates/main/base.html.py:364
 #, python-format
 msgid "Actions for: %(navigation_object)s"
-msgstr "Aktionen für: %(navigation_object)s"
+msgstr "Aktionen für %(navigation_object)s"
 
 #: templates/main/base.html:338
 msgid "Available actions"
@@ -143,96 +142,96 @@ msgstr "Aktionen"
 #: templates/main/calculate_form_title.html:7
 #, python-format
 msgid "Details for: %(object)s"
-msgstr ""
+msgstr "Details für %(object)s"
 
 #: templates/main/calculate_form_title.html:10
 #, python-format
 msgid "Edit: %(object)s"
-msgstr ""
+msgstr "%(object)s bearbeiten"
 
 #: templates/main/calculate_form_title.html:12
 msgid "Create"
-msgstr ""
+msgstr "Erstellen"
 
 #: templates/main/generic_confirm.html:6
 #: templates/main/generic_confirm.html:20
 msgid "Confirm"
-msgstr ""
+msgstr "Bestätigen"
 
 #: templates/main/generic_confirm.html:18
 msgid "Confirm delete"
-msgstr ""
+msgstr "Löschbestätigung"
 
 #: templates/main/generic_confirm.html:34
 msgid "question bubble"
-msgstr ""
+msgstr "Fragenblase"
 
 #: templates/main/generic_confirm.html:41
 #, python-format
 msgid "Are you sure you wish to delete: %(object)s?"
-msgstr ""
+msgstr "Wollen Sie %(object)s wirklich löschen?"
 
 #: templates/main/generic_confirm.html:48
 msgid "Yes"
-msgstr ""
+msgstr "Ja"
 
 #: templates/main/generic_confirm.html:52
 msgid "No"
-msgstr ""
+msgstr "Nein"
 
 #: templates/main/generic_form_instance.html:50
 #: templates/main/generic_form_subtemplate.html:60
 #: templates/main/generic_multiform_subtemplate.html:42
 msgid "required"
-msgstr ""
+msgstr "erforderlich"
 
 #: templates/main/generic_form_subtemplate.html:82
 #: templates/main/generic_multiform_subtemplate.html:64
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #: templates/main/generic_form_subtemplate.html:82
 #: templates/main/generic_list_subtemplate.html:38
 #: templates/main/generic_multiform_subtemplate.html:64
 msgid "Submit"
-msgstr ""
+msgstr "Absenden"
 
 #: templates/main/generic_form_subtemplate.html:87
 #: templates/main/generic_multiform_subtemplate.html:69
 msgid "Cancel"
-msgstr ""
+msgstr "Abbrechen"
 
 #: templates/main/generic_list_subtemplate.html:23
 #, python-format
 msgid ""
 "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
+msgstr "%(title)s (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(total_pages)s)"
 
 #: templates/main/generic_list_subtemplate.html:25
 #, python-format
 msgid "%(title)s (%(total)s)"
-msgstr ""
+msgstr "%(title)s (%(total)s)"
 
 #: templates/main/generic_list_subtemplate.html:58
 msgid "Identifier"
-msgstr ""
+msgstr "Bezeichner"
 
 #: templates/main/generic_list_subtemplate.html:120
 msgid "No results"
-msgstr ""
+msgstr "Kein Ergebnis"
 
 #: templates/main/home.html:23
 msgid "Space separated terms"
-msgstr ""
+msgstr "Begriffe durch Leerzeichen getrennt"
 
 #: templates/main/home.html:24
 msgid "Search"
-msgstr ""
+msgstr "Suche"
 
 #: templates/main/home.html:25
 msgid "Advanced search"
-msgstr ""
+msgstr "Erweiterte Suche"
 
 #: templates/main/login.html:17 templates/main/login.html.py:55
 #: templates/main/login.html:63
@@ -241,82 +240,82 @@ msgstr "Login"
 
 #: templates/main/login.html:23
 msgid "You are already logged in"
-msgstr ""
+msgstr "Sie sind bereits angemeldet"
 
 #: templates/main/login.html:26
 msgid "Redirecting you to the website entry point in 5 seconds."
-msgstr ""
+msgstr "Sie werden in 5 Sekunden auf die Eingangsseite weitergeleitet"
 
 #: templates/main/login.html:29
 #, python-format
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
-msgstr ""
+msgstr "Oder klicken Sie <a href=\"%(LOGIN_REDIRECT_URL)s\">hier</a>, wenn die Weiterleitung nicht funktioniert."
 
 #: templates/main/login.html:40
 msgid "First time login"
-msgstr ""
+msgstr "Erstanmeldung"
 
 #: templates/main/login.html:42
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr ""
+msgstr "Sie haben die Installation von <strong>Mayan EDMS</strong> erfolgreich abgeschlossen, Glückwunsch!"
 
 #: templates/main/login.html:43
 msgid "Login using the following credentials:"
-msgstr ""
+msgstr "Mit den folgenden Daten anmelden:"
 
 #: templates/main/login.html:44
 #, python-format
 msgid "Username: <strong>%(account)s</strong>"
-msgstr ""
+msgstr "Benutzer: <strong>%(account)s</strong>"
 
 #: templates/main/login.html:45
 #, python-format
 msgid "Email: <strong>%(email)s</strong>"
-msgstr ""
+msgstr "E-Mail: <strong>%(email)s</strong>"
 
 #: templates/main/login.html:46
 #, python-format
 msgid "Password: <strong>%(password)s</strong>"
-msgstr ""
+msgstr "Passwort: <strong>%(password)s</strong>"
 
 #: templates/main/login.html:47
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
+msgstr "Bitte ändern Sie das Passwort, um die Sicherheit zu erhöhen und diese Nachricht zu deaktivieren."
 
 #: templates/main/password_change_done.html:5
 #: templates/main/password_change_form.html:5
 #: templates/main/password_change_form.html:7
 msgid "Password change"
-msgstr ""
+msgstr "Passwortänderung"
 
 #: templates/main/password_change_done.html:8
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "Das Passwort wurde erfolgreich geändert."
 
 #: templates/pagination/pagination.html:6
 #: templates/pagination/pagination.html:8
 msgid "Previous"
-msgstr ""
+msgstr "Vorherige Seite"
 
 #: templates/pagination/pagination.html:26
 #: templates/pagination/pagination.html:28
 msgid "Next"
-msgstr ""
+msgstr "Nächste Seite"
 
 #~ msgid ""
-#~ "Open source, Django based electronic document manager with custom "
-#~ "metadata, indexing, tagging, file serving integration, digital signature "
-#~ "support and OCR capabilities"
+#~ "Open source, Django based electronic document manager with custom metadata, "
+#~ "indexing, tagging, file serving integration, digital signature support and "
+#~ "OCR capabilities"
 #~ msgstr ""
-#~ "Open source, Django based electronic document manager with custom "
-#~ "metadata, indexing, tagging, file serving integration, digital signature "
-#~ "support and OCR capabilities"
+#~ "Open source, Django based electronic document manager with custom metadata, "
+#~ "indexing, tagging, file serving integration, digital signature support and "
+#~ "OCR capabilities"
 
 #~ msgid "Logout"
 #~ msgstr "Logout"
@@ -355,11 +354,11 @@ msgstr ""
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-02-06 16:54-0400\n"
-"PO-Revision-Date: 2015-01-27 20:02+0000\n"
+"PO-Revision-Date: 2015-02-06 23:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: __init__.py:38
@@ -233,36 +232,28 @@ msgstr "Quitar etiqueta de los documentos: %s."
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
-msgstr ""
-"¿Está seguro que desea quitar la etiqueta \"%(tag)s\" del documento: "
-"%(document)s?"
+msgstr "¿Está seguro que desea quitar la etiqueta \"%(tag)s\" del documento: %(document)s?"
 
 #: views.py:304
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
-msgstr ""
-"¿Está seguro que desea quitar la etiqueta \"%(tag)s\" de los documentos: "
-"%(documents)s?"
+msgstr "¿Está seguro que desea quitar la etiqueta \"%(tag)s\" de los documentos: %(documents)s?"
 
 #: views.py:309
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
-msgstr ""
-"¿Está seguro que desea quitar las etiquetas \"%(tags)s\" del documento: "
-"%(document)s?"
+msgstr "¿Está seguro que desea quitar las etiquetas \"%(tags)s\" del documento: %(document)s?"
 
 #: views.py:312
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags %(tags)s from the documents: "
 "%(documents)s?"
-msgstr ""
-"¿Está seguro de que quiere quitar las etiquetas %(tags)s de los documentos:\n"
-"%(documents)s?"
+msgstr "¿Está seguro de que quiere quitar las etiquetas %(tags)s de los documentos:\n%(documents)s?"
 
 #: views.py:319
 #, python-format
@@ -272,11 +263,10 @@ msgstr "Documento \"%(document)s\" no estaba etiquetado como \"%(tag)s \""
 #: views.py:324
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"Etiqueta \"%(tag)s\" eliminada con éxito del documento \"%(document)s\"."
+msgstr "Etiqueta \"%(tag)s\" eliminada con éxito del documento \"%(document)s\"."
 
 #~ msgid "Add tag to document"
-#~ msgstr "Etiquetar el documento"
+#~ msgstr "Add tag to document"
 
 #~ msgid "Document created"
 #~ msgstr "document"
