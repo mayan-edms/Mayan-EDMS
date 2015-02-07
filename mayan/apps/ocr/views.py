@@ -116,13 +116,10 @@ def entry_delete(request, pk=None, pk_list=None):
         context['object'] = entries[0]
 
     context['title'] = ungettext(
-        'Are you sure you wish to delete the entry: %(entry)s?',
-        'Are you sure you wish to delete these %(count)d entries.',
+        'Are you sure you wish to delete the selected entry?',
+        'Are you sure you wish to delete the selected entries?',
         len(entries)
-    ) % {
-        'count': len(entries),
-        'entry': entries[0],
-    }
+    )
 
     return render_to_response('main/generic_confirm.html', context,
                               context_instance=RequestContext(request))
@@ -169,13 +166,10 @@ def entry_re_queue(request, pk=None, pk_list=None):
         context['object'] = entries[0]
 
     context['title'] = ungettext(
-        'Are you sure you wish to re-queue the entry: %(entry)s?',
-        'Are you sure you wish to re-queue these %(count)d entries.',
+        'Are you sure you wish to re-queue the selected entry?',
+        'Are you sure you wish to re-queue the selected entries?',
         len(entries)
-    ) % {
-        'count': len(entries),
-        'entry': entries[0],
-    }
+    )
 
     return render_to_response('main/generic_confirm.html', context,
                               context_instance=RequestContext(request))
