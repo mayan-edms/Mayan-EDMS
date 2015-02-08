@@ -11,8 +11,8 @@ Document sources
 ----------------
 
 Document sources define from where documents will be uploaded or gathered.
-To do add a document source go to the ``Setup`` section, then to the ``Sources`` section.
-To obtain the fastest working setup, create a new source of type ``Web forms``.
+To add a document source go to the ``Setup`` section, then to the ``Sources`` section.
+To obtain the fastest working setup, create a new source of type ``Web form``.
 ``Web forms`` are just HTML forms with a ``Browse`` button that will open the file upload
 dialog when clicked. Name it something simple like ``Local documents`` and select whether or not
 compressed files uploaded from this source will be automatically decompressed and
@@ -35,10 +35,10 @@ Defining metadata
 With your document types defined it should be much easier now to define the required
 ``metadata`` for each of these document types. When creating ``metadata`` types,
 the first thing that will be needed is the internal name with which this metadata
-type will be referenced in other areas of **Mayan EDMS**. Internal name is like a
-variable so it should not contain spaces or uppercase characters. After the internal name,
-enter the name that will be visible to you and your users, this is usually the same as the
-internal name but with proper capitalization and spacing. The ``metadata types``
+type will be referenced in other areas of **Mayan EDMS**. The internal name must not
+contain spaces or uppercase characters. After the internal name, enter the name that
+will be visible to you and your users, which usually will be similar or the same as the
+internal name, but with proper capitalization and spacing. The ``metadata types``
 can have default values to speed up data entry. They can be single number or a
 words enclosed in quotes, ie::
 
@@ -64,16 +64,16 @@ this will ensure an unified data entry formatting. You can also use a
 
 Metadata types can be assigned in two ways to a document type, by making it an
 optional or a required metadata type for a specific document. This method
-allows metadata that is very important to some types of documents, like Invoice
-numbers to Invoices to be required in other for an Invoice to be able to be uploaded.
-Accordingly optional metadata types will presented but users are not required to
-enter a value in other to be able to upload a document.
+allows metadata very important for some types of documents (like Invoice
+numbers to Invoices) to be required for an Invoice to be able to be uploaded.
+Accordingly optional metadata types will be presented, but users are not required to
+enter a value to be able to upload a document.
 
 Indexes
 -------
 
 After defining all your metadata types you can also define indexes to
-let **Mayan EDMS** to automatically categorize your documents based on their metadata values.
+let **Mayan EDMS** automatically categorize your documents based on their metadata values.
 To create an index to organize invoices by a year metadata field do the following:
 
 - Create a year metadata type with the name ``year`` and the label ``Year``.

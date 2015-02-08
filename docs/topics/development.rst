@@ -5,7 +5,7 @@ Development
 
 **Mayan EDMS** is under active development, and contributions are welcome.
 
-If you have a feature request, suggestion, or bug reports, please open a new
+If you have a feature request, suggestion or bug report, please open a new
 issue on the `GitHub issue tracker`_. To submit patches, please send a pull
 request on GitHub_. Make sure to add yourself to the :ref:`contributors` file.
 
@@ -261,7 +261,7 @@ Views behavior
 Source Control
 --------------
 
-**Mayan EDMS** source is controlled with Git_
+**Mayan EDMS** source is controlled with Git_.
 
 The project is publicly accessible, hosted and can be cloned from **GitHub** using::
 
@@ -283,7 +283,7 @@ Git branch structure
     Released versions.
 
 
-Each release is tagged and available for download on the Downloads_ section of the **Mayan EDMS** repository on GitHub_
+Each release is tagged and available for download on the Downloads_ section of the **Mayan EDMS** repository on GitHub_.
 
 When submitting patches, please place your code in its own ``feature/`` branch prior to opening a pull request on GitHub_.
 
@@ -349,8 +349,8 @@ Then on a separate console launch a celery worker from the same provisioned Vagr
 
 Contributing changes
 --------------------
-Once your have create and committed some new code or feature, submit a Pull Request.
-Be sure to merge with mayan-edms/master before doing a pull request so that patches
+Once your have created and committed some new code or feature, submit a Pull Request.
+Be sure to merge with mayan-edms/development before doing a pull request so that patches
 apply as cleanly as possible.  If there are no conflicts, Pull Requests can be merged
 directly from Github otherwise a manual command line merge has to be done and
 your patches might take longer to get merged.
@@ -440,7 +440,7 @@ You can also generate the documentation in formats other than HTML.
 Translations
 ------------
 
-Translations are now being handled online via the **Transifex** website: https://www.transifex.com/projects/p/mayan-edms/.
+Translations are handled online via the **Transifex** website: https://www.transifex.com/projects/p/mayan-edms/.
 To create a translation team for a new language or contribute to an already
 existing language translation, create a **Transifex** account and contact
 the team coordinator of the respective language in which you are interested.

@@ -2,11 +2,11 @@
 Document signatures
 ===================
 
-**Mayan EDMS** supports two types of document signatures, these are embedded and
+**Mayan EDMS** supports two types of document signatures: embedded and
 detached signatures. When a document with an embedded signature is
 uploaded, this signature is readily detected as part of the document
-inspection step, the status of the signature can then be verified by accessing the
-signatures sections of a documents.
+inspection step. The status of the signature can be verified by accessing the
+signatures sections of a document.
 
 Existing non signed documents can be signed in one of two ways:
 by downloading the document, signing it, and uploading the signed document

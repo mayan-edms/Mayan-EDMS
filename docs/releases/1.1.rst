@@ -13,7 +13,7 @@ What's new in Mayan EDMS v1.1
 Celery
 ~~~~~~
 All background tasks processing has been converted to use Celery_. By default
-**Mayan EDMS** runs in "Eager" until a broker and result backend are configure
+**Mayan EDMS** runs in "Eager" until a broker and result backend are configured
 as per `Celery's documentation`_. This change made the built-in scheduler and
 job_processing apps obsolete, both were removed.
 
@@ -29,7 +29,7 @@ Removal of the splash screen
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The static image home screen has been replaced with a quick links view, showing
 the most used actions: Uploading documents, viewing recent documents, viewing
-all document and searching documents.
+all documents and searching documents.
 
 
 Sending and receiving documents via email
@@ -67,7 +67,7 @@ with the latest development version of **Mayan EDMS**.
 User locale profile (language and timezone)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Interface language and locale setting can now be setup for each user and are not
-installation wide as before. Date and times offests are automatically ajusted to
+installation wide as before. Date and times offsets are automatically ajusted to
 each user's timezone settings.
 
 
@@ -85,7 +85,7 @@ the type to which they are associated is updated.
 
 Optional and required metadata types
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Metadata types can now be assigned in two ways to documents types, as optiona or
+Metadata types can now be assigned in two ways to documents types, as optional or
 required. Values for required metadata types as the name implies, must be entered
 for documents to be able to be uploaded. Optional metadata types on the other hand
 can be left blank by the user.
@@ -128,13 +128,13 @@ Many new API endpoints have been added exposing the majority of **Mayan EDMS** f
 Messages contextual improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Many updates and simplifications were made to the source text messages to reduce the
-dificulty of traslating **Mayan EDMS** and maintaing the contextual meaning of the
+difficulty of translating **Mayan EDMS** and maintaing the contextual meaning of the
 text messages.
 
 Improved method for custom settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Custom setting now use a string based value, it is longer needed to import
-classes when customizing a settings::
+Custom settings now use a string based value, it is longer needed to import
+classes when customizing a setting::
 
   from custom_app.backends import CustomStorageBackend
   DOCUMENTS_STORAGE_BACKEND = CustomStorageBackend

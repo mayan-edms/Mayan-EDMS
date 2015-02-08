@@ -10,7 +10,7 @@ Getting help
 ============
 
 * Search for information in the `archives of the mayan-edms mailing list`_, or
-  `post a question`_.  If you prefer news servers, use the gateway provided by Gname_.
+  `post a question`_.  If you prefer news servers, use the gateway provided by Gmane_.
 * Report bugs with **Mayan EDMS** using Github's `ticket tracker`_.
 * Try the :doc:`FAQ <topics/faq>` -- it's got answers to many common questions.
 

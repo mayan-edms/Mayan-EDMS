@@ -4,7 +4,7 @@ Smart links
 
 
 Smart links are usefull for navigation between documents. They are rule
-based but don't create any organizational structure, just show the documents
+based, but don't create any organizational structure. They just show the documents
 that match the rules as evaluated against the metadata of the currently
 displayed document.
 
