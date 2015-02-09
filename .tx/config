@@ -67,6 +67,12 @@ source_lang = en
 source_file = mayan/apps/dynamic_search/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.apps-events]
+file_filter = mayan/apps/events/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/events/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.apps-folders]
 file_filter = mayan/apps/folders/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
