@@ -445,3 +445,49 @@ To create a translation team for a new language or contribute to an already
 existing language translation, create a **Transifex** account and contact
 the team coordinator of the respective language in which you are interested.
 
+
+Installable package
+-------------------
+
+Source file package
+~~~~~~~~~~~~~~~~~~~
+
+This is the sequence of step I use to produce an installable package:
+
+1. Make sure there are no lingering packages from previous attempts::
+
+    $ rm dist -R
+
+2. Generate the packaged version (will produce dist/mayan-edms-1.1.0.tar.gz)::
+
+    $ python setup.py sdist
+
+3. Do a test install::
+
+    $ cd /tmp
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install <path of the Git repository>/dist/mayan-edms-1.1.0.tar.gz
+    $ mayan-edms.py initialsetup
+    $ mayan-edms.py runserver
+
+
+Wheel package
+~~~~~~~~~~~~~
+
+1. Install wheel::
+
+    $ pip install wheel
+
+2. Create wheel package using the source file package (Until issue #99 of wheel is fixed: https://bitbucket.org/pypa/wheel/issue/99/cannot-exclude-directory)::
+
+    $ pip wheel --no-index --no-deps --wheel-dir dist dist/mayan-edms-1.1.0.tar.gz
+
+3. Do a test install::
+
+    $ cd /tmp
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install <path of the Git repository>/dist/mayan_edms-1.1.0-py2-none-any.whl
+    $ mayan-edms.py initialsetup
+    $ mayan-edms.py runserver
