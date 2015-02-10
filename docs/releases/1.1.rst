@@ -146,7 +146,7 @@ Instead the fully qualified name of the class must be passed as the setting valu
 
 Removal of the OCR config setting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-OCR behavior is now a document type property meaning that is can be turned
+OCR behavior is now a document type property meaning that it can be turned
 on or off for specific document types.
 
 
@@ -154,12 +154,12 @@ Per document language setting
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Previously the document language used for OCR was specified for the entire
 installation. If documents in multiple languages were uploaded some suffered
-lower successes rates. Now the language of each document can be specified.
+lower success rates. Now the language of each document can be specified.
 
 
 Metadata validation and parsing support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-It is now possible to create function to validate metadata value input or
+It is now possible to create functions to validate metadata value input or
 parse and store corrected values. Three sample metadata validations functions
 are included: ``Parse date and time``, ``Parse date`` and ``Parse time``.
 
@@ -172,7 +172,7 @@ Bootstrap UI migration has advanced greatly.
 
 Simplified UI
 ~~~~~~~~~~~~~
-All user actions as well as the logout button as now under the user functions
+All user actions as well as the logout button are now under the user functions
 section.
 
 
@@ -184,7 +184,7 @@ spurious segmentation faults at the expense of a small speed penalty.
 
 More technical documentation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Many new sub topics were added to the development section of the document
+Many new sub topics were added to the development section of the documentation
 to allow developers to better understand the inner workings and philosophies
 of **Mayan EDMS**.
 
