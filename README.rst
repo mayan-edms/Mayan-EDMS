@@ -2,12 +2,13 @@
 
 |Logo|
 
-Description
------------
-
 .. image:: https://badges.gitter.im/Join%20Chat.svg
    :alt: Join the chat at https://gitter.im/mayan-edms/mayan-edms
    :target: https://gitter.im/mayan-edms/mayan-edms?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
+
+
+Description
+-----------
 
 Free Open Source, Django based document management system with custom metadata
 indexing, file serving integration, tagging, digital signature verification,
