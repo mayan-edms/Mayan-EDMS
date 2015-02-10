@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2014
@@ -13,14 +13,12 @@ msgstr ""
 "POT-Creation-Date: 2015-02-06 16:54-0400\n"
 "PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: forms.py:15
 msgid "New password"
@@ -118,9 +116,7 @@ msgstr ""
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user oraz staff user edycja nie jest możliwa , należy użyć interfejsu "
-"administratora w takich przypadkach."
+msgstr "Super user oraz staff user edycja nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:69
 #, python-format
@@ -145,9 +141,7 @@ msgstr "Musi podać co najmniej jednego użytkownika."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user oraz staff user usuwanie nie jest możliwa , należy użyć "
-"interfejsu administratora w takich przypadkach."
+msgstr "Super user oraz staff user usuwanie nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:124
 #, python-format
@@ -177,9 +171,7 @@ msgstr "Hasła nie pasują, spróbuj ponownie."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu "
-"administratora w takich przypadkach."
+msgstr "Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:183
 #, python-format

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Christophe kryskool <christophe.chauvet@gmail.com>, 2014
@@ -13,12 +13,11 @@ msgstr ""
 "POT-Creation-Date: 2015-02-06 16:53-0400\n"
 "PO-Revision-Date: 2014-11-07 18:14+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: links.py:11 widgets.py:25
@@ -125,9 +124,7 @@ msgstr "Retirer des droits"
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
-msgstr ""
-"Une liste des rôles existant qui sont automatiquement attribués aux comptes "
-"utilisateurs nouvellement créés"
+msgstr "Une liste des rôles existant qui sont automatiquement attribués aux comptes utilisateurs nouvellement créés"
 
 #: views.py:83
 msgid "Has permission"
@@ -156,9 +153,7 @@ msgstr "%(requester)s, a déjà le droit \"%(permission)s\" d'attribué."
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"Êtes vous certain de vouloir attribuer le droit %(permissions_label)s "
-"%(title_suffix)s?"
+msgstr "Êtes vous certain de vouloir attribuer le droit %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:194
 msgid "permission"
@@ -182,9 +177,7 @@ msgstr "%(requester)s, n'a pas le droit \"%(permission)s\" d'attribué."
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-"Êtes vous certain de vouloir supprimer le droit %(permissions_label)s "
-"%(title_suffix)s?"
+msgstr "Êtes vous certain de vouloir supprimer le droit %(permissions_label)s %(title_suffix)s?"
 
 #: views.py:249 views.py:273
 msgid "Users"

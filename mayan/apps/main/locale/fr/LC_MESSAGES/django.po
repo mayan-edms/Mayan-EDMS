@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Christophe kryskool <christophe.chauvet@gmail.com>, 2014-2015
@@ -14,12 +14,11 @@ msgstr ""
 "POT-Creation-Date: 2015-02-06 16:52-0400\n"
 "PO-Revision-Date: 2015-02-05 10:29+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: __init__.py:12
@@ -203,9 +202,7 @@ msgstr "Annuler"
 msgid ""
 "%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"%(title)s (%(start)s - %(end)s de %(total)s) (Page %(page_number)s sur "
-"%(total_pages)s)"
+msgstr "%(title)s (%(start)s - %(end)s de %(total)s) (Page %(page_number)s sur %(total_pages)s)"
 
 #: templates/main/generic_list_subtemplate.html:25
 #, python-format
@@ -250,9 +247,7 @@ msgstr "Vous allez être redirigé l'accueil du site Web dans 5 secondes."
 msgid ""
 "Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
 "work."
-msgstr ""
-"Ou cliquez <a href=\"%(LOGIN_REDIRECT_URL)s\">ici</a> si la redirection ne "
-"fonctionne pas."
+msgstr "Ou cliquez <a href=\"%(LOGIN_REDIRECT_URL)s\">ici</a> si la redirection ne fonctionne pas."
 
 #: templates/main/login.html:40
 msgid "First time login"
@@ -262,14 +257,11 @@ msgstr "Première connexion"
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr ""
-"Vous venez de compléter l'installation de la <strong>GED Mayan,</strong>, "
-"félicitations!"
+msgstr "Vous venez de compléter l'installation de la <strong>GED Mayan,</strong>, félicitations!"
 
 #: templates/main/login.html:43
 msgid "Login using the following credentials:"
-msgstr ""
-"Connectez-vous en utilisant les informations d'identification suivantes:"
+msgstr "Connectez-vous en utilisant les informations d'identification suivantes:"
 
 #: templates/main/login.html:44
 #, python-format
@@ -290,9 +282,7 @@ msgstr "Mot de passe: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
-"Soyez certain de changer votre mot de passe pour accroître la sécurité et "
-"pour ne plus avoir ce message."
+msgstr "Soyez certain de changer votre mot de passe pour accroître la sécurité et pour ne plus avoir ce message."
 
 #: templates/main/password_change_done.html:5
 #: templates/main/password_change_form.html:5
@@ -315,13 +305,13 @@ msgid "Next"
 msgstr "Suivant"
 
 #~ msgid ""
-#~ "Open source, Django based electronic document manager with custom "
-#~ "metadata, indexing, tagging, file serving integration, digital signature "
-#~ "support and OCR capabilities"
+#~ "Open source, Django based electronic document manager with custom metadata, "
+#~ "indexing, tagging, file serving integration, digital signature support and "
+#~ "OCR capabilities"
 #~ msgstr ""
-#~ "Open source, Django based electronic document manager with custom "
-#~ "metadata, indexing, tagging, file serving integration, digital signature "
-#~ "support and OCR capabilities"
+#~ "Open source, Django based electronic document manager with custom metadata, "
+#~ "indexing, tagging, file serving integration, digital signature support and "
+#~ "OCR capabilities"
 
 #~ msgid "Logout"
 #~ msgstr "Logout"
@@ -360,11 +350,11 @@ msgstr "Suivant"
 #~ msgstr "sentry"
 
 #~ msgid ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 #~ msgstr ""
-#~ "Controls whether the search functionality is provided by a sidebar widget "
-#~ "or by a menu entry."
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
 #~ msgstr "statistics"

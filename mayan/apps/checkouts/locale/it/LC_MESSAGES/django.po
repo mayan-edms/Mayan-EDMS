@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2015
@@ -12,12 +12,11 @@ msgstr ""
 "POT-Creation-Date: 2015-02-06 20:44-0400\n"
 "PO-Revision-Date: 2015-01-29 08:10+0000\n"
 "Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: events.py:7
@@ -200,9 +199,7 @@ msgstr "Il documento \"%s\" è entrato con successo"
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
-msgstr ""
-"Originariamente non è stato fatto uscire questo documento. Sei sicuro di "
-"voler forzare il check in del documento: %s?"
+msgstr "Originariamente non è stato fatto uscire questo documento. Sei sicuro di voler forzare il check in del documento: %s?"
 
 #: views.py:145
 #, python-format
@@ -241,9 +238,7 @@ msgstr "Inserire una differenza di tempo valido."
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
-msgstr ""
-"Quantità di tempo per tenere il documento in check out in giorni, ore e / o "
-"minuti."
+msgstr "Quantità di tempo per tenere il documento in check out in giorni, ore e / o minuti."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."
