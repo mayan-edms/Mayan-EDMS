@@ -1,3 +1,32 @@
+1.1 (2015-02-10)
+================
+
+- Uses Celery for backgroung tasks
+- Removal of the splash screen
+- Adds a home view with common function buttons
+- Support for sending and receiving documents via email
+- Removed custom logging app in favor of django-actvity-stream
+- Adds watch folders
+- Includes Vagrant file for unified development and testing environments
+- Per user locale profile (language and timezone)
+- Includes news document workflow app
+- Optional and required metadata types
+- Improved testings. Tested againsta SQLite, MySQL, PostgreSQL
+- Many new REST API endpoints added
+- Simplfied text messages
+- Improved method for custom settings
+- Addition of CORS support to the REST API
+- Per document language setting instead of per installation language setting
+- Metadata validation and parsing support
+- Start of code updates towards Python 3 support
+- Simplified UI
+- Stable PDF previews generation
+- More technical documentation
+
+
+For a full changelog and release notes go to: http://mayan.readthedocs.org/en/latest/releases/1.1.html
+
+
 1.0 (2014-08-27)
 ================
 
