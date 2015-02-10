@@ -7,6 +7,7 @@ from django.db import models
 class Migration(SchemaMigration):
     depends_on = (
         ('documents', '0001_initial'),
+        ('actstream', '0007_auto__add_field_follow_started'),
     )
 
     def forwards(self, orm):
@@ -27,18 +28,12 @@ class Migration(SchemaMigration):
         ))
         db.create_unique(m2m_table_name, ['tag_id', 'document_id'])
 
-        # Changing field 'TagProperties.tag'
-        db.alter_column(u'tags_tagproperties', 'tag_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['tags.Tag']))
-
     def backwards(self, orm):
         # Deleting model 'Tag'
         db.delete_table(u'tags_tag')
 
         # Removing M2M table for field document on 'Tag'
         db.delete_table(db.shorten_name(u'tags_tag_document'))
-
-        # Changing field 'TagProperties.tag'
-        db.alter_column(u'tags_tagproperties', 'tag_id', self.gf('django.db.models.fields.IntegerField')())
 
     models = {
         u'documents.document': {
@@ -53,6 +48,12 @@ class Migration(SchemaMigration):
             'Meta': {'ordering': "['name']", 'object_name': 'DocumentType'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '32'})
+        },
+        u'taggit.tag': {
+            'Meta': {'object_name': 'Tag'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '100'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '100'})
         },
         u'tags.tag': {
             'Meta': {'object_name': 'Tag'},
