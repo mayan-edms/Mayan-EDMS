@@ -1,7 +1,7 @@
 1.1 (2015-02-10)
 ================
 
-- Uses Celery for backgroung tasks
+- Uses Celery for background tasks
 - Removal of the splash screen
 - Adds a home view with common function buttons
 - Support for sending and receiving documents via email
@@ -11,9 +11,9 @@
 - Per user locale profile (language and timezone)
 - Includes news document workflow app
 - Optional and required metadata types
-- Improved testings. Tested againsta SQLite, MySQL, PostgreSQL
+- Improved testings. Automated tests against SQLite, MySQL, PostgreSQL
 - Many new REST API endpoints added
-- Simplfied text messages
+- Simplified text messages
 - Improved method for custom settings
 - Addition of CORS support to the REST API
 - Per document language setting instead of per installation language setting
