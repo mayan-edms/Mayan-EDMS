@@ -355,6 +355,7 @@ Bugs fixed or issues closed
 * `issue #150 <https://github.com/mayan-edms/mayan-edms/issues/150>`_ Double second menu entry
 * `issue #152 <https://github.com/mayan-edms/mayan-edms/issues/152>`_ Document content empty
 * `issue #153 <https://github.com/mayan-edms/mayan-edms/issues/153>`_ south migration with postgres: documents: 031_remove_orphan_documents
+* `issue #154 <https://github.com/mayan-edms/mayan-edms/issues/154>`_ south migration with postgres: tags: 0002_auto__add_tag__chg_field_tagproperties_tag
 * `issue #157 <https://github.com/mayan-edms/mayan-edms/issues/157>`_ upload new version of a document not working
 * `issue #158 <https://github.com/mayan-edms/mayan-edms/issues/158>`_ Plural form not matching singular form in ocr app  bug i18n
 
