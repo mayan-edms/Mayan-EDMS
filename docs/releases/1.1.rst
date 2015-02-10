@@ -189,7 +189,6 @@ Migrate existing database schema with::
     $ mayan-edms.py migrate history 0001 --fake
     $ mayan-edms.py migrate linking 0001 --fake
     $ mayan-edms.py migrate lock_manager 0001 --fake
-    $ mayan-edms.py migrate ocr 0001 --fake
     $ mayan-edms.py migrate tags 0001 --fake
     $ mayan-edms.py migrate
 
@@ -201,23 +200,14 @@ During the migration several messages of stale content types can occur:
     The following content types are stale and need to be deleted:
 
         metadata | documenttypedefaults
-
         metadata | metadataset
-
         metadata | metadatasetitem
-
         ocr | documentqueue
-
         ocr | queuedocument
-
         sources | watchfolder
-
         sources | outofprocess
-
         sources | webform
-
         sources | stagingfolder
-
         tags | tagproperties
 
     Any objects related to these content types by a foreign key will also
