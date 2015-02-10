@@ -52,7 +52,7 @@ Credits
 
 
 .. _Django: http://www.djangoproject.com/
-.. _Gname: http://news.gmane.org/gmane.comp.python.django.mayan-edms
+.. _Gmane: http://news.gmane.org/gmane.comp.python.django.mayan-edms
 .. _Open source: http://en.wikipedia.org/wiki/Open_source
 .. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/
 .. _document management system: https://en.wikipedia.org/wiki/Document_management_system
