@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"POT-Creation-Date: 2015-02-06 16:51-0400\n"
+"PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/bg/)\n"
@@ -19,46 +20,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:7
+#: forms.py:9 models.py:23
 msgid "Signature file"
 msgstr "Файл със сигнатура"
 
 #: links.py:22
-#, fuzzy
-msgid "delete signature"
-msgstr "изтеглете сигнатура"
+msgid "Delete signature"
+msgstr ""
 
 #: links.py:23
-msgid "download signature"
-msgstr "изтеглете сигнатура"
+msgid "Download signature"
+msgstr ""
 
 #: links.py:24
-msgid "upload signature"
-msgstr "качете сигнатура"
+msgid "Upload signature"
+msgstr ""
 
 #: links.py:25
-msgid "signatures"
-msgstr "сигнатура"
-
-#: models.py:20
-msgid "document version"
-msgstr "версия на документа"
-
-#: models.py:21
-msgid "signature file"
-msgstr "файл със сигнатура"
+msgid "Signatures"
+msgstr ""
 
 #: models.py:22
-msgid "has embedded signature"
-msgstr "има вградена сигнатура"
+msgid "Document version"
+msgstr ""
 
-#: models.py:37
-msgid "document version signature"
-msgstr "сигнатура за версията на документа"
+#: models.py:24
+msgid "Has embedded signature"
+msgstr ""
 
-#: models.py:38
-msgid "document version signatures"
-msgstr "сигнатури за версията на документа"
+#: models.py:39
+msgid "Document version signature"
+msgstr ""
+
+#: models.py:40
+msgid "Document version signatures"
+msgstr ""
 
 #: permissions.py:7
 msgid "Document signatures"
@@ -69,9 +65,8 @@ msgid "Verify document signatures"
 msgstr "Проверете сигнатурите на документа"
 
 #: permissions.py:9
-#, fuzzy
 msgid "Delete detached signatures"
-msgstr "Свалете несвързаните сигнатури"
+msgstr ""
 
 #: permissions.py:10
 msgid "Download detached signatures"
@@ -81,74 +76,79 @@ msgstr "Свалете несвързаните сигнатури"
 msgid "Upload detached signatures"
 msgstr "Качете несвързаните сигнатури"
 
-#: views.py:50
+#: views.py:49
 #, python-format
-msgid "Signature status: %(widget)s %(text)s"
-msgstr "Състояние на сигнатура: %(widget)s %(text)s"
+msgid "Signature status: %s"
+msgstr ""
 
-#: views.py:58
-msgid "embedded"
-msgstr "вградено"
+#: views.py:53
+msgid "Embedded"
+msgstr ""
 
-#: views.py:60
-msgid "detached"
-msgstr "несвързано"
+#: views.py:55
+msgid "Detached"
+msgstr ""
 
-#: views.py:62
+#: views.py:57
 msgid "None"
 msgstr ""
 
-#: views.py:67
+#: views.py:62
 #, python-format
 msgid "Signature ID: %s"
 msgstr "Номер на сигнатура: %s"
 
-#: views.py:68
+#: views.py:63
 #, python-format
 msgid "Signature type: %s"
 msgstr "Вид сигнатура: %s"
 
-#: views.py:69
+#: views.py:64
 #, python-format
 msgid "Key ID: %s"
 msgstr "Номер на ключ: %s"
 
-#: views.py:70
+#: views.py:65
 #, python-format
 msgid "Timestamp: %s"
 msgstr "Време: %s"
 
-#: views.py:71
+#: views.py:66
 #, python-format
 msgid "Signee: %s"
 msgstr "Подписал: %s"
 
-#: views.py:76
+#: views.py:74
 #, python-format
-msgid "signature properties for: %s"
-msgstr "опции на сигнатурата за: %s"
+msgid "Signature properties for document: %s"
+msgstr ""
 
-#: views.py:102
+#: views.py:97
 msgid "Detached signature uploaded successfully."
 msgstr "Несвързаните сигнатури са качени успешно."
 
-#: views.py:111
+#: views.py:110
 #, python-format
-msgid "Upload detached signature for: %s"
-msgstr "Качване на несвързани сигнатури за: %s"
+msgid "Upload detached signature for document: %s"
+msgstr ""
 
-#: views.py:161
-#, fuzzy
+#: views.py:155
 msgid "Detached signature deleted successfully."
-msgstr "Несвързаните сигнатури са качени успешно."
+msgstr ""
 
-#: views.py:164
-#, fuzzy, python-format
+#: views.py:158
+#, python-format
 msgid "Error while deleting the detached signature; %s"
-msgstr "Свалете несвързаните сигнатури"
+msgstr ""
 
-#: views.py:168
+#: views.py:162
 #, python-format
 msgid ""
 "Are you sure you wish to delete the detached signature from document: %s?"
 msgstr ""
+
+#~ msgid "Signature status: %(widget)s %(text)s"
+#~ msgstr "Signature status: %(widget)s %(text)s"
+
+#~ msgid "signature file"
+#~ msgstr "signature file"

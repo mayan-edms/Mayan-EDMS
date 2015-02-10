@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2013-02-10 14:17+0000\n"
-"Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
+"POT-Creation-Date: 2015-02-06 16:51-0400\n"
+"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
 "edms/language/ro_RO/)\n"
 "Language: ro_RO\n"
@@ -20,46 +21,41 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: forms.py:7
+#: forms.py:9 models.py:23
 msgid "Signature file"
 msgstr "Fisier semnătura"
 
 #: links.py:22
-#, fuzzy
-msgid "delete signature"
-msgstr "descărca semnătura"
+msgid "Delete signature"
+msgstr ""
 
 #: links.py:23
-msgid "download signature"
-msgstr "descărca semnătura"
+msgid "Download signature"
+msgstr ""
 
 #: links.py:24
-msgid "upload signature"
-msgstr "încărcați semnătura"
+msgid "Upload signature"
+msgstr ""
 
 #: links.py:25
-msgid "signatures"
-msgstr "semnături"
-
-#: models.py:20
-msgid "document version"
-msgstr "Versiune document"
-
-#: models.py:21
-msgid "signature file"
-msgstr "fișier de semnătură"
+msgid "Signatures"
+msgstr ""
 
 #: models.py:22
-msgid "has embedded signature"
-msgstr "are semnătura încorporată"
+msgid "Document version"
+msgstr ""
 
-#: models.py:37
-msgid "document version signature"
-msgstr " versiunea document semnătura"
+#: models.py:24
+msgid "Has embedded signature"
+msgstr ""
 
-#: models.py:38
-msgid "document version signatures"
-msgstr " versiunea document semnături"
+#: models.py:39
+msgid "Document version signature"
+msgstr ""
+
+#: models.py:40
+msgid "Document version signatures"
+msgstr ""
 
 #: permissions.py:7
 msgid "Document signatures"
@@ -70,9 +66,8 @@ msgid "Verify document signatures"
 msgstr "Verifica semnăturile de documente"
 
 #: permissions.py:9
-#, fuzzy
 msgid "Delete detached signatures"
-msgstr "Descarca semnături detașate"
+msgstr ""
 
 #: permissions.py:10
 msgid "Download detached signatures"
@@ -82,74 +77,79 @@ msgstr "Descarca semnături detașate"
 msgid "Upload detached signatures"
 msgstr "Încărcați semnături detașate"
 
-#: views.py:50
+#: views.py:49
 #, python-format
-msgid "Signature status: %(widget)s %(text)s"
-msgstr "Starea semnătura: %(widget)s %(text)s"
+msgid "Signature status: %s"
+msgstr ""
 
-#: views.py:58
-msgid "embedded"
-msgstr "încorporat"
+#: views.py:53
+msgid "Embedded"
+msgstr ""
 
-#: views.py:60
-msgid "detached"
-msgstr "detașat"
+#: views.py:55
+msgid "Detached"
+msgstr ""
 
-#: views.py:62
+#: views.py:57
 msgid "None"
 msgstr ""
 
-#: views.py:67
+#: views.py:62
 #, python-format
 msgid "Signature ID: %s"
 msgstr "ID Semnătura:% s"
 
-#: views.py:68
+#: views.py:63
 #, python-format
 msgid "Signature type: %s"
 msgstr "Tipul semnătura:% s"
 
-#: views.py:69
+#: views.py:64
 #, python-format
 msgid "Key ID: %s"
 msgstr "ID cheie:% s"
 
-#: views.py:70
+#: views.py:65
 #, python-format
 msgid "Timestamp: %s"
 msgstr "Timestamp:% s"
 
-#: views.py:71
+#: views.py:66
 #, python-format
 msgid "Signee: %s"
 msgstr "Semnat :% s"
 
-#: views.py:76
+#: views.py:74
 #, python-format
-msgid "signature properties for: %s"
-msgstr "Proprietăți semnătură pentru:% s"
+msgid "Signature properties for document: %s"
+msgstr ""
 
-#: views.py:102
+#: views.py:97
 msgid "Detached signature uploaded successfully."
 msgstr "Semnătura detaşata încărcată cu succes."
 
-#: views.py:111
+#: views.py:110
 #, python-format
-msgid "Upload detached signature for: %s"
-msgstr "Încărcați semnătura deşată pentru:% s"
+msgid "Upload detached signature for document: %s"
+msgstr ""
 
-#: views.py:161
-#, fuzzy
+#: views.py:155
 msgid "Detached signature deleted successfully."
-msgstr "Semnătura detaşata încărcată cu succes."
+msgstr ""
 
-#: views.py:164
-#, fuzzy, python-format
+#: views.py:158
+#, python-format
 msgid "Error while deleting the detached signature; %s"
-msgstr "Descarca semnături detașate"
+msgstr ""
 
-#: views.py:168
+#: views.py:162
 #, python-format
 msgid ""
 "Are you sure you wish to delete the detached signature from document: %s?"
 msgstr ""
+
+#~ msgid "Signature status: %(widget)s %(text)s"
+#~ msgstr "Signature status: %(widget)s %(text)s"
+
+#~ msgid "signature file"
+#~ msgstr "signature file"

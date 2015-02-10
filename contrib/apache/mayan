@@ -1,20 +1,19 @@
 <VirtualHost *:80>
-    # Uncomment if libapache2-mod-xsendfile is installed
-    # XSendFile On
-    # XSendFileAllowAbove On
+    	# Uncomment if libapache2-mod-xsendfile is installed
+    	# XSendFile On
+    	# XSendFileAllowAbove On
+	ServerName mayan.yoursite.com
+	ServerAdmin admin@yoursite.com
+	DocumentRoot /var/www/mayan-edms
+	WSGIScriptAlias / /var/www/mayan-edms/mayan/mayan-edms.wsgi
 
-    WSGIScriptAlias / /usr/share/mayan/mayan/wsgi/dispatch.wsgi
-    
-    <Directory /usr/share/mayan/mayan>
-        Order deny,allow
-        Allow from all
-    </Directory>
-    ErrorLog /var/log/apache2/mayan_error.log
-    LogLevel warn
-    CustomLog /var/log/apache2/mayan_access.log combined
-
-    Alias /mayan-static "/usr/share/mayan/mayan/static/"
-    <Location "/static">
-        SetHandler None
-    </Location>
+	<Directory /var/www/mayan-edms>
+		Order allow,deny
+		Allow from all
+	</Directory>
+	
+	Alias /static /var/www/mayan-edms/media/static
+    	<Location "/static">
+        	SetHandler None
+    	</Location>
 </VirtualHost>

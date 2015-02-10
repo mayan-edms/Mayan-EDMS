@@ -1,19 +1,34 @@
 language: python
 python:
-  - 2.7
   - 2.6
+  - 2.7
+env:
+  global:
+   - TEST_APPS="document_indexing documents dynamic_search lock_manager document_signatures folders ocr tags"
+  matrix:
+   - DB=mysql
+   - DB=postgres
+   - DB=sqlite
 before_install:
   - sudo apt-get update -qq
   - sudo apt-get install -qq python-dev gcc tesseract-ocr unpaper ghostscript libjpeg-dev libpng-dev poppler-utils
 install:
   - "pip install -r requirements/testing.txt"
+  - if [[ $DB == mysql ]]; then pip install -q mysql-python; fi
+  - if [[ $DB == postgres ]]; then pip install -q psycopg2; fi
+before_script:
+  - mysql -e 'create database mayan_edms;'
+  - psql -c 'create database mayan_edms;' -U postgres
 script:
-  - coverage run --source=documents,document_signatures,lock_manager,folders,ocr,tags manage.py test documents lock_manager document_signatures folders ocr tags
+  - if [[ $DB == mysql ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.db_mysql; fi
+  - if [[ $DB == postgres ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.db_postgres; fi
+  - if [[ $DB == sqlite ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.base; fi
 after_success:
   - coveralls
 branches:
   only:
     - master
+    - development
 notifications:
   email:
     recipients:

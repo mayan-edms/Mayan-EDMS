@@ -1,226 +1,154 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Sergey Glita <gsv70@mail.ru>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2013-05-14 06:28+0000\n"
-"Last-Translator: Sergey Glita <gsv70@mail.ru>\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2015-02-06 16:51-0400\n"
+"PO-Revision-Date: 2015-02-06 23:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:45
+#: __init__.py:40 links.py:23 links.py:24 links.py:38 links.py:40 models.py:60
+#: views.py:38 views.py:296
 msgid "Indexes"
 msgstr "Индексы"
 
-#: api.py:71
-#, python-format
-msgid "Maximum suffix (%s) count reached."
-msgstr "Достигнуто максимальное (%s) число суффиксов "
-
-#: api.py:85
+#: api.py:49
 #, python-format
 msgid ""
-"Error in document indexing update expression: %(expression)s; %(exception)s"
-msgstr ""
-"Ошибка в выражении обновления индексов документа: %(expression)s; "
+"Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-
-#: api.py:94 api.py:109
-#, python-format
-msgid ""
-"Error updating document index, expression: %(expression)s; %(exception)s"
 msgstr ""
-"Ошибка при обновлении индекса документа, выражение: %(expression)s; "
-"%(exception)s"
 
-#: api.py:151
-#, python-format
-msgid "Unable to delete document indexing node; %s"
-msgstr "Не удается удалить узел индексирования документов; %s."
-
-#: filesystem.py:51
-#, python-format
-msgid "Unable to create indexing directory; %s"
-msgstr "Не удается создать индексации каталога; %s."
-
-#: filesystem.py:69
-#, fuzzy, python-format
-msgid ""
-"Unable to create symbolic link, file exists and could not be deleted: "
-"%(filepath)s; %(exception)s"
+#: links.py:25 views.py:75
+msgid "Create index"
 msgstr ""
-"Невозможно создать символическую ссылку, файл существует и не может быть "
-"удален: %(filepath)s; %(exc)s"
-
-#: filesystem.py:71
-#, fuzzy, python-format
-msgid "Unable to create symbolic link: %(filepath)s; %(exception)s"
-msgstr "Невозможно создать символическую ссылку: %(filepath)s; %(exc)s"
-
-#: filesystem.py:84
-#, python-format
-msgid "Unable to delete document symbolic link; %s"
-msgstr "Не удается удалить символическую ссылку документа;%s."
-
-#: filesystem.py:96
-#, python-format
-msgid "Unable to delete indexing directory; %s"
-msgstr "Не удается удалить каталог индексации; %s."
-
-#: links.py:23 links.py:38 links.py:40 models.py:64 views.py:40 views.py:305
-msgid "indexes"
-msgstr "индексы"
-
-#: links.py:24 links.py:35
-msgid "index list"
-msgstr "список индекса"
-
-#: links.py:25 views.py:77
-msgid "create index"
-msgstr "создать индекс"
 
 #: links.py:26 links.py:32
-msgid "edit"
-msgstr "редактировать"
+msgid "Edit"
+msgstr ""
 
 #: links.py:27 links.py:33
-msgid "delete"
-msgstr "удалить"
+msgid "Delete"
+msgstr ""
 
 #: links.py:28
-msgid "tree template"
-msgstr "шаблон дерева"
+msgid "Tree template"
+msgstr ""
 
-#: links.py:29 models.py:21 views.py:309
-msgid "document types"
-msgstr "типы документов"
+#: links.py:29 models.py:19 views.py:300
+msgid "Document types"
+msgstr ""
 
 #: links.py:31
-msgid "new child node"
-msgstr "новый дочерний узел"
+msgid "New child node"
+msgstr ""
+
+#: links.py:35
+msgid "Index list"
+msgstr ""
 
 #: links.py:37
-msgid "go up one level"
-msgstr "перейти на уровень выше"
+msgid "Go up one level"
+msgstr ""
 
 #: links.py:42
-msgid "rebuild indexes"
-msgstr "восстановление индексов"
+msgid "Rebuild indexes"
+msgstr ""
 
 #: links.py:42
 msgid "Deletes and creates from scratch all the document indexes."
 msgstr "Удаляет и создается с нуля, все индексы документа."
 
-#: models.py:14
-#, python-format
-msgid "Available functions: %s"
-msgstr "Доступные функции: %s."
+#: models.py:15 views.py:42
+msgid "Name"
+msgstr ""
 
-#: models.py:18 views.py:44
-msgid "name"
-msgstr "имя"
-
-#: models.py:18
+#: models.py:15
 msgid "Internal name used to reference this index."
 msgstr "внутреннее имя, используемое для ссылки на этот индекс."
 
-#: models.py:19 views.py:45
-msgid "title"
-msgstr "название"
+#: models.py:17 views.py:43
+msgid "Title"
+msgstr ""
 
-#: models.py:19
+#: models.py:17
 msgid "The name that will be visible to users."
 msgstr "Имя, которое будет видно пользователям."
 
-#: models.py:20 models.py:72 views.py:46 views.py:166
-msgid "enabled"
-msgstr "разрешено"
-
-#: models.py:20
-msgid "Causes this index to be visible and updated when document data changes."
+#: models.py:18 models.py:67 views.py:44 views.py:160
+msgid "Enabled"
 msgstr ""
-"Этот индекс должен быть видимым и обновляться при изменении данных документа."
 
-#: models.py:63 models.py:69 views.py:103 views.py:133 views.py:159
-#: views.py:195 views.py:222 views.py:251 views.py:290
-msgid "index"
-msgstr "индекс"
+#: models.py:18
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Этот индекс должен быть видимым и обновляться при изменении данных документа."
 
-#: models.py:70
-msgid "indexing expression"
-msgstr "выражение индексации "
+#: models.py:59 models.py:65 views.py:243 views.py:281
+msgid "Index"
+msgstr ""
 
-#: models.py:70
+#: models.py:66
+msgid "Indexing expression"
+msgstr ""
+
+#: models.py:66
 msgid "Enter a python string expression to be evaluated."
 msgstr "Введите строковое выражение питона для вычисления."
 
-#: models.py:72
+#: models.py:67
 msgid "Causes this node to be visible and updated when document data changes."
+msgstr "Этот узел должен быть видимым и обновляются при изменении данных документа."
+
+#: models.py:68
+msgid "Link documents"
 msgstr ""
-"Этот узел должен быть видимым и обновляются при изменении данных документа."
 
-#: models.py:73
-msgid "link documents"
-msgstr "связать документы"
-
-#: models.py:73
+#: models.py:68
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Этот узел будет контейнером для документов и не будет иметь дочерних узлов."
+
+#: models.py:74
+msgid "Index node template"
 msgstr ""
-"Этот узел будет контейнером для документов и не будет иметь дочерних узлов."
 
-#: models.py:83 models.py:89
-msgid "index template node"
-msgstr "узел шаблона индексирования"
+#: models.py:75
+msgid "Indexes node template"
+msgstr ""
 
-#: models.py:84
-msgid "indexes template nodes"
-msgstr "узлы шаблона индексирования"
+#: models.py:80
+msgid "Index template node"
+msgstr ""
 
-#: models.py:90
-msgid "value"
-msgstr "значение"
+#: models.py:81
+msgid "Value"
+msgstr ""
 
-#: models.py:91
-msgid "documents"
-msgstr "документы"
+#: models.py:82
+msgid "Documents"
+msgstr ""
+
+#: models.py:100
+msgid "Index node instance"
+msgstr ""
 
 #: models.py:101
-msgid "index instance node"
-msgstr "индекс экземпляра узла"
-
-#: models.py:102
-msgid "indexes instance nodes"
-msgstr "индексы экземпляров узлов"
-
-#: models.py:106
-msgid "index instance"
-msgstr "экземпляр индекса"
-
-#: models.py:107
-msgid "document"
-msgstr "документ"
-
-#: models.py:114
-msgid "document rename count"
-msgstr "счетчик переименования документа"
-
-#: models.py:115
-msgid "documents rename count"
-msgstr "счетчик переименования документов"
+msgid "Indexes node instances"
+msgstr ""
 
 #: permissions.py:7
 msgid "Indexing"
@@ -250,150 +178,207 @@ msgstr "Просмотр индексов документа"
 msgid "Rebuild document indexes"
 msgstr "Восстановление индексов документа"
 
-#: utils.py:19
-msgid "document indexes"
-msgstr "индексы документов"
-
-#: views.py:71
+#: views.py:69
 msgid "Index created successfully."
 msgstr "Индекс создан."
 
-#: views.py:94
+#: views.py:92
 msgid "Index edited successfully"
 msgstr "Индекс изменен"
 
-#: views.py:100
+#: views.py:98
 #, python-format
-msgid "edit index: %s"
-msgstr "редактировать индекс %s"
+msgid "Edit index: %s"
+msgstr ""
 
-#: views.py:124
+#: views.py:121
 #, python-format
 msgid "Index: %s deleted successfully."
 msgstr "Индекс %s удален."
 
-#: views.py:126
+#: views.py:123
 #, python-format
 msgid "Index: %(index)s delete error: %(error)s"
 msgstr "Индекс %(index)s - ошибка удаления %(error)s"
 
-#: views.py:138
+#: views.py:134
 #, python-format
 msgid "Are you sure you with to delete the index: %s?"
 msgstr "Удалить индекс %s?"
 
-#: views.py:162
+#: views.py:156
 #, python-format
-msgid "tree template nodes for index: %s"
-msgstr "дерево шаблонных узлов для индекса %s"
+msgid "Tree template nodes for index: %s"
+msgstr ""
 
-#: views.py:165
-msgid "level"
-msgstr "уровень"
+#: views.py:159
+msgid "Level"
+msgstr ""
 
-#: views.py:167
-msgid "has document links?"
-msgstr "есть ссылки на документы?"
+#: views.py:161
+msgid "Has document links?"
+msgstr ""
 
-#: views.py:189
+#: views.py:183
 #, python-format
-msgid "document types not in index: %s"
-msgstr "типы документов вне индекса: %s"
+msgid "Document types not in index: %s"
+msgstr ""
 
-#: views.py:190
+#: views.py:184
 #, python-format
-msgid "document types for index: %s"
-msgstr "типы документов для индекса: %s"
+msgid "Document types for index: %s"
+msgstr ""
 
-#: views.py:213
+#: views.py:206
 msgid "Index template node created successfully."
 msgstr "узел шаблона индексирования создан"
 
-#: views.py:219
-msgid "create child node"
-msgstr "создать дочерний узел"
+#: views.py:212
+msgid "Create child node"
+msgstr ""
 
-#: views.py:239
+#: views.py:231
 msgid "Index template node edited successfully"
 msgstr "узел шаблона индексирования изменён"
 
-#: views.py:245
+#: views.py:237
 #, python-format
-msgid "edit index template node: %s"
-msgstr "изменить узел шаблона индексирования %s"
+msgid "Edit index template node: %s"
+msgstr ""
 
-#: views.py:252 views.py:291 views.py:358
-msgid "node"
-msgstr "узел"
+#: views.py:244 views.py:282 views.py:349
+msgid "Node"
+msgstr ""
 
-#: views.py:273
+#: views.py:265
 #, python-format
 msgid "Node: %s deleted successfully."
 msgstr "Узел %s удален."
 
-#: views.py:275
+#: views.py:267
 #, python-format
 msgid "Node: %(node)s delete error: %(error)s"
 msgstr "Узел %(node)s - ошибка удаления %(error)s"
 
-#: views.py:284
+#: views.py:276
 #, python-format
 msgid "Are you sure you with to delete the index template node: %s?"
 msgstr "Вы уверены, что нужно удалить узел шаблона индексирования %s?"
 
-#: views.py:308
-msgid "nodes"
-msgstr "узлы"
+#: views.py:299 views.py:353
+msgid "Items"
+msgstr ""
 
-#: views.py:340
+#: views.py:331
 #, python-format
-msgid "contents for index: %s"
-msgstr "содержания для индекса: %s."
+msgid "Contents for index: %s"
+msgstr ""
 
-#: views.py:362
-msgid "items"
-msgstr "членов"
-
-#: views.py:387
+#: views.py:378
 msgid "Are you sure you wish to rebuild all indexes?"
 msgstr "Вы уверены, что хотите перестроить все индексы?"
 
-#: views.py:388
+#: views.py:379
 msgid "On large databases this operation may take some time to execute."
+msgstr "В больших базах данных эта операция может занять некоторое время для выполнения."
+
+#: views.py:383
+msgid "Index rebuild queued successfully."
 msgstr ""
-"В больших базах данных эта операция может занять некоторое время для "
-"выполнения."
 
-#: views.py:394
-msgid "Index rebuild completed successfully."
-msgstr "восстановление индекса  успешно завершено."
-
-#: views.py:401
+#: views.py:408
 #, python-format
-msgid "Index rebuild error: %s"
-msgstr "Индекс восстановить ошибка: %s"
-
-#: views.py:424
-#, python-format
-msgid "indexes containing: %s"
-msgstr "индексы, содержащие: %s"
+msgid "Indexes containing document: %s"
+msgstr ""
 
 #: widgets.py:85
-msgid "root"
+msgid "Root"
 msgstr ""
 
-#: conf/settings.py:22
-msgid ""
-"A dictionary that maps the index name and where on the filesystem that index "
-"will be mirrored."
-msgstr ""
-"Словарь, который отображает имя индекса и где на файловой системе он будет "
-"отражен."
+#~ msgid "Nodes"
+#~ msgstr "nodes"
 
-#: templates/indexing_help.html:3
-msgid "What are indexes?"
-msgstr "что за индексы?"
+#~ msgid "Maximum suffix (%s) count reached."
+#~ msgstr "Maximum suffix (%s) count reached."
 
-#: templates/indexing_help.html:4
-msgid "Indexes group documents into a tree like hierarchical structure."
-msgstr "Индексы группы документов в древовидной иерархической структуре."
+#~ msgid ""
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+#~ msgstr ""
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
+
+#~ msgid "Unable to delete document indexing node; %s"
+#~ msgstr "Unable to delete document indexing node; %s"
+
+#~ msgid "Unable to create indexing directory; %s"
+#~ msgstr "Unable to create indexing directory; %s"
+
+#~ msgid ""
+#~ "Unable to create symbolic link, file exists and could not be deleted: "
+#~ "%(filepath)s; %(exception)s"
+#~ msgstr ""
+#~ "Unable to create symbolic link, file exists and could not be deleted: "
+#~ "%(filepath)s; %(exc)s"
+
+#~ msgid "Unable to create symbolic link: %(filepath)s; %(exception)s"
+#~ msgstr "Unable to create symbolic link: %(filepath)s; %(exc)s"
+
+#~ msgid "Unable to delete document symbolic link; %s"
+#~ msgstr "Unable to delete document symbolic link; %s"
+
+#~ msgid "Unable to delete indexing directory; %s"
+#~ msgstr "Unable to delete indexing directory; %s"
+
+#~ msgid "Available functions: %s"
+#~ msgstr "Available functions: %s"
+
+#~ msgid "Index instance"
+#~ msgstr "index instance"
+
+#~ msgid "Document"
+#~ msgstr "document"
+
+#~ msgid "Document rename count"
+#~ msgstr "document rename count"
+
+#~ msgid "Documents rename count"
+#~ msgstr "documents rename count"
+
+#~ msgid ""
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
+#~ msgstr ""
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
+
+#~ msgid "Index rebuild error: %s"
+#~ msgstr "Index rebuild error: %s"
+
+#~ msgid "Index instance node"
+#~ msgstr "index instance node"
+
+#~ msgid "Indexes instance nodes"
+#~ msgstr "indexes instance nodes"
+
+#~ msgid "document indexes"
+#~ msgstr "document indexes"
+
+#~ msgid "indexes"
+#~ msgstr "indexes"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid "index"
+#~ msgstr "index"
+
+#~ msgid "node"
+#~ msgstr "node"
+
+#~ msgid "What are indexes?"
+#~ msgstr "What are indexes?"
+
+#~ msgid "Indexes group documents into a tree like hierarchical structure."
+#~ msgstr "Indexes group documents into a tree like hierarchical structure."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
+"POT-Creation-Date: 2015-02-06 16:51-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,94 +22,107 @@ msgstr ""
 msgid "Search terms"
 msgstr "Search terms"
 
-#: links.py:3
-msgid "search"
-msgstr "search"
-
-#: links.py:4 views.py:78
-msgid "advanced search"
-msgstr "advanced search"
-
-#: links.py:5
-msgid "search again"
-msgstr "search again"
-
-#: models.py:21
-msgid "user"
-msgstr "user"
-
-#: models.py:22
-msgid "query"
-msgstr "query"
-
-#: models.py:23
-msgid "datetime created"
-msgstr "datetime created"
-
-#: models.py:24
-msgid "hits"
-msgstr "hits"
-
-#: models.py:60
-msgid "recent search"
-msgstr "recent search"
-
-#: models.py:61
-msgid "recent searches"
-msgstr "recent searches"
-
-#: views.py:44
-#, python-format
-msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-msgstr "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-
-#: views.py:49
-msgid "results"
-msgstr "results"
-
-#: views.py:66
-msgid "type"
-msgstr "type"
-
-#: views.py:82 views.py:92 views.py:94 templatetags/search_tags.py:19
-#: templatetags/search_tags.py:20
+#: links.py:5 views.py:66 views.py:72 views.py:74
+#: templatetags/search_tags.py:20 templatetags/search_tags.py:21
 msgid "Search"
 msgstr "Search"
 
-#: conf/settings.py:12
+#: links.py:6 views.py:62
+#, fuzzy
+msgid "Advanced search"
+msgstr "advanced search"
+
+#: links.py:7
+#, fuzzy
+msgid "Search again"
+msgstr "search again"
+
+#: models.py:19
+msgid "User"
+msgstr ""
+
+#: models.py:25
+#, fuzzy
+msgid "Query"
+msgstr "query"
+
+#: models.py:26
+#, fuzzy
+msgid "Datetime created"
+msgstr "datetime created"
+
+#: models.py:27
+msgid "Hits"
+msgstr ""
+
+#: models.py:64
+#, fuzzy
+msgid "Recent search"
+msgstr "recent search"
+
+#: models.py:65
+#, fuzzy
+msgid "Recent searches"
+msgstr "recent searches"
+
+#: settings.py:12
 msgid "Maximum amount search hits to fetch and display."
 msgstr "Maximum amount search hits to fetch and display."
 
-#: conf/settings.py:13
+#: settings.py:13
 msgid "Maximum number of search queries to remember per user."
 msgstr "Maximum number of search queries to remember per user."
 
-#: templates/search_help.html:3
-msgid "Help"
-msgstr "Help"
+#: views.py:38
+#, fuzzy
+msgid "Results"
+msgstr "results"
 
-#: templates/search_help.html:4
-#, python-format
-msgid ""
-"Enter the desired search keywords separated by space.  Only the top "
-"%(search_results_limit)s results will be available."
+#: views.py:46
+msgid "Type"
 msgstr ""
-"Enter the desired search keywords separated by space.  Only the top "
-"%(search_results_limit)s results will be available."
 
-#: templates/search_results.html:3
+#: templates/dynamic_search/search_results.html:3
 msgid "Search results"
 msgstr "Search results"
 
-#: templates/search_results.html:19
+#: templates/dynamic_search/search_results.html:19
 #, python-format
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Elapsed time: %(time_delta)s seconds"
 
-#: templatetags/search_tags.py:33
-#, python-format
-msgid "recent searches (maximum of %d)"
+#: templatetags/search_tags.py:37
+#, fuzzy, python-format
+msgid "Recent searches (maximum of %d)"
 msgstr "recent searches (maximum of %d)"
+
+#, fuzzy
+#~ msgid ""
+#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgstr ""
+#~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
+
+#~ msgid "search"
+#~ msgstr "search"
+
+#~ msgid "user"
+#~ msgstr "user"
+
+#~ msgid "hits"
+#~ msgstr "hits"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "Help"
+#~ msgstr "Help"
+
+#~ msgid ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
+#~ msgstr ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
 
 #~ msgid "Search error: %s"
 #~ msgstr "Search error: %s"

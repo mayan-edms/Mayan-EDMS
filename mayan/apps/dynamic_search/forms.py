@@ -1,11 +1,11 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 
 class SearchForm(forms.Form):
-    q = forms.CharField(max_length=128, label=_(u'Search terms'))
+    q = forms.CharField(max_length=128, label=_('Search terms'))
     source = forms.CharField(
         max_length=32,
         required=False,

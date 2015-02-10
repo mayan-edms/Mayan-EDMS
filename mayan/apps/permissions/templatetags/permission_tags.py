@@ -1,3 +1,5 @@
+from __future__ import absolute_import, unicode_literals
+
 from django.core.exceptions import PermissionDenied
 from django.template import TemplateSyntaxError, Library, Node, Variable
 
@@ -16,16 +18,16 @@ class CheckPermissionsNode(Node):
         if not permission_list:
             # There is no permissions list to check against which means
             # this link is available for all
-            context[u'permission'] = True
-            return u''
+            context['permission'] = True
+            return ''
         requester = Variable(self.requester).resolve(context)
         try:
             Permission.objects.check_permissions(requester, permission_list)
-            context[u'permission'] = True
-            return u''
+            context['permission'] = True
+            return ''
         except PermissionDenied:
-            context[u'permission'] = False
-            return u''
+            context['permission'] = False
+            return ''
 
 
 @register.tag
@@ -34,6 +36,6 @@ def check_permissions(parser, token):
         # Splitting by None == splitting by spaces.
         tag_name, args = token.contents.split(None, 1)
     except ValueError:
-        raise TemplateSyntaxError(u'%r tag requires arguments' % token.contents.split()[0])
+        raise TemplateSyntaxError('%r tag requires arguments' % token.contents.split()[0])
 
     return CheckPermissionsNode(*args.split())

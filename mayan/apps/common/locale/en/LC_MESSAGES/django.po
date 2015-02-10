@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
+"POT-Creation-Date: 2015-02-06 16:50-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,20 +18,24 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:97
+#: classes.py:40
+msgid "Available attributes: "
+msgstr ""
+
+#: forms.py:98
 msgid "Selection"
 msgstr "Selection"
 
-#: forms.py:128
+#: forms.py:143
 msgid "Email"
 msgstr "Email"
 
-#: forms.py:131
+#: forms.py:146 models.py:36
 #, fuzzy
 msgid "Password"
 msgstr "password"
 
-#: forms.py:134
+#: forms.py:149
 #, fuzzy
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
@@ -40,382 +44,400 @@ msgstr ""
 "Please enter a correct email and password. Note that the password fields is "
 "case-sensitive."
 
-#: forms.py:136
+#: forms.py:151
 msgid "This account is inactive."
 msgstr "This account is inactive."
 
 #: links.py:10
-msgid "change password"
+#, fuzzy
+msgid "Change password"
 msgstr "change password"
 
 #: links.py:11
-msgid "user details"
+#, fuzzy
+msgid "User details"
 msgstr "user details"
 
 #: links.py:12
-msgid "edit details"
+#, fuzzy
+msgid "Edit details"
 msgstr "edit details"
 
 #: links.py:14
-msgid "about"
+#, fuzzy
+msgid "About"
 msgstr "about"
 
-#: links.py:15
-msgid "license"
-msgstr "license"
-
-#: literals.py:24
-msgid "A5"
-msgstr "A5"
-
-#: literals.py:25
-msgid "A4"
-msgstr "A4"
-
-#: literals.py:26
-msgid "A3"
-msgstr "A3"
-
-#: literals.py:27
-msgid "B5"
-msgstr "B5"
-
-#: literals.py:28
-msgid "B4"
-msgstr "B4"
-
-#: literals.py:29
-msgid "Letter"
-msgstr "Letter"
-
-#: literals.py:30
-msgid "Legal"
-msgstr "Legal"
-
-#: literals.py:31
-msgid "Ledger"
-msgstr "Ledger"
-
-#: literals.py:38
-msgid "Portrait"
-msgstr "Portrait"
-
-#: literals.py:39
-msgid "Landscape"
-msgstr "Landscape"
-
-#: models.py:17
-msgid "Anonymous user"
-msgstr "Anonymous user"
-
-#: models.py:20 models.py:21
-msgid "anonymous user"
-msgstr "anonymous user"
-
-#: models.py:25
-msgid "account"
-msgstr "account"
-
-#: models.py:26
-msgid "password"
-msgstr "password"
-
-#: models.py:27
-msgid "password hash"
-msgstr "password hash"
-
-#: models.py:30
-msgid "auto admin properties"
-msgstr "auto admin properties"
-
-#: utils.py:299
-msgid "function found"
-msgstr "function found"
-
-#: views.py:39
-msgid "No action selected."
-msgstr "No action selected."
-
-#: views.py:43
-msgid "Must select at least one item."
-msgstr "Must select at least one item."
-
-#: views.py:91
-#, python-format
-msgid "%(selection)s added successfully added to %(right_list_title)s."
-msgstr "%(selection)s added successfully added to %(right_list_title)s."
-
-#: views.py:97 views.py:124
-#, python-format
-msgid "Unable to add %(selection)s to %(right_list_title)s."
-msgstr "Unable to add %(selection)s to %(right_list_title)s."
-
-#: views.py:118
-#, python-format
-msgid "%(selection)s added successfully removed from %(right_list_title)s."
-msgstr "%(selection)s added successfully removed from %(right_list_title)s."
-
-#: views.py:139
-msgid "Add"
-msgstr "Add"
-
-#: views.py:150
-msgid "Remove"
-msgstr "Remove"
-
-#: views.py:173
-msgid "current user details"
-msgstr "current user details"
-
-#: views.py:190
-msgid "E-mail conflict, another user has that same email."
-msgstr "E-mail conflict, another user has that same email."
-
-#: views.py:193
-msgid "Current user's details updated."
-msgstr "Current user's details updated."
-
-#: views.py:202
-msgid "edit current user details"
-msgstr "edit current user details"
-
-#: views.py:233
+#: links.py:15 views.py:279
 msgid "License"
 msgstr "License"
 
-#: views.py:242
+#: links.py:17
+msgid "Locale profile"
+msgstr ""
+
+#: links.py:18
+msgid "Edit locale profile"
+msgstr ""
+
+#: links.py:20
+msgid "Logout"
+msgstr ""
+
+#: models.py:28 models.py:31
+msgid "Anonymous user"
+msgstr "Anonymous user"
+
+#: models.py:35
+#, fuzzy
+msgid "Account"
+msgstr "account"
+
+#: models.py:37
+#, fuzzy
+msgid "Password hash"
+msgstr "password hash"
+
+#: models.py:40
+#, fuzzy
+msgid "Auto admin properties"
+msgstr "auto admin properties"
+
+#: models.py:44
+msgid "File"
+msgstr ""
+
+#: models.py:45
+msgid "Filename"
+msgstr ""
+
+#: models.py:46
+msgid "Date time"
+msgstr ""
+
+#: models.py:49
+msgid "Shared uploaded file"
+msgstr ""
+
+#: models.py:50
+msgid "Shared uploaded files"
+msgstr ""
+
+#: models.py:61
+msgid "User"
+msgstr ""
+
+#: models.py:63
+msgid "Timezone"
+msgstr ""
+
+#: models.py:64
+msgid "Language"
+msgstr ""
+
+#: models.py:70
+msgid "User locale profile"
+msgstr ""
+
+#: models.py:71
+msgid "User locale profiles"
+msgstr ""
+
+#: settings.py:14
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+msgstr ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+
+#: settings.py:48
+msgid ""
+"Controls the mechanism used to authenticated user.  Options are: username, "
+"email"
+msgstr ""
+"Controls the mechanism used to authenticated user.  Options are: username, "
+"email"
+
+#: settings.py:57
+msgid "Allow non authenticated users, access to all views"
+msgstr "Allow non authenticated users, access to all views"
+
+#: settings.py:66
+msgid "A storage backend that all workers can use to share files."
+msgstr ""
+
+#: utils.py:114
+#, fuzzy
+msgid "Function found"
+msgstr "function found"
+
+#: views.py:44
+msgid "No action selected."
+msgstr "No action selected."
+
+#: views.py:48
+msgid "Must select at least one item."
+msgstr "Must select at least one item."
+
+#: views.py:100
+#, fuzzy, python-format
+msgid "Unable to remove %(selection)s."
+msgstr "Unable to add %(selection)s to %(right_list_title)s."
+
+#: views.py:125
+#, fuzzy, python-format
+msgid "Unable to add %(selection)s."
+msgstr "Unable to add %(selection)s to %(right_list_title)s."
+
+#: views.py:138
+msgid "Add"
+msgstr "Add"
+
+#: views.py:149
+msgid "Remove"
+msgstr "Remove"
+
+#: views.py:172
+#, fuzzy
+msgid "Current user details"
+msgstr "current user details"
+
+#: views.py:187
+#, fuzzy
+msgid "Current user locale profile details"
+msgstr "current user details"
+
+#: views.py:204
+msgid "E-mail conflict, another user has that same email."
+msgstr "E-mail conflict, another user has that same email."
+
+#: views.py:207
+msgid "Current user's details updated."
+msgstr "Current user's details updated."
+
+#: views.py:216
+#, fuzzy
+msgid "Edit current user details"
+msgstr "edit current user details"
+
+#: views.py:239
+#, fuzzy
+msgid "Current user's locale profile details updated."
+msgstr "Current user's details updated."
+
+#: views.py:248
+#, fuzzy
+msgid "Edit current user locale profile details"
+msgstr "edit current user details"
+
+#: views.py:288
 msgid "Current user password change"
 msgstr "Current user password change"
 
-#: views.py:257 templates/password_change_done.html:8
+#: views.py:303
 msgid "Your password has been successfully changed."
 msgstr "Your password has been successfully changed."
 
-#: views.py:303
+#: views.py:314
 #, python-format
 msgid "Error saving %s details."
 msgstr ""
 
-#: views.py:305
+#: views.py:316
 msgid "Error saving details."
 msgstr ""
 
-#: views.py:313
+#: views.py:324
 #, python-format
 msgid "%s details saved successfully."
 msgstr ""
 
-#: views.py:315
+#: views.py:326
 msgid "Details saved successfully."
 msgstr ""
 
-#: views.py:327
+#: views.py:338
 #, python-format
 msgid "Error creating new %s."
 msgstr ""
 
-#: views.py:329
+#: views.py:340
 msgid "Error creating object."
 msgstr ""
 
-#: views.py:336
+#: views.py:347
 #, python-format
 msgid "%s created successfully."
 msgstr ""
 
-#: views.py:338
+#: views.py:349
 msgid "New object created successfully."
 msgstr ""
 
-#: views.py:356
+#: views.py:367
 #, python-format
 msgid "Error deleting %s."
 msgstr ""
 
-#: views.py:358
+#: views.py:369
 msgid "Error deleting object."
 msgstr ""
 
-#: views.py:363
+#: views.py:374
 #, python-format
 msgid "%s deleted successfully."
 msgstr ""
 
-#: views.py:365
+#: views.py:376
 msgid "Object deleted successfully."
 msgstr ""
 
-#: widgets.py:58
+#: widgets.py:60
 msgid "None"
 msgstr "None"
 
-#: conf/settings.py:16
-msgid ""
-"Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
+#~ msgid "%(selection)s added successfully added to %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully added to %(right_list_title)s."
 
-#: conf/settings.py:66
-msgid ""
-"Controls the mechanism used to authenticated user.  Options are: username, "
-"email"
-msgstr ""
-"Controls the mechanism used to authenticated user.  Options are: username, "
-"email"
+#~ msgid "%(selection)s added successfully removed from %(right_list_title)s."
+#~ msgstr "%(selection)s added successfully removed from %(right_list_title)s."
 
-#: conf/settings.py:75
-msgid "Allow non authenticated users, access to all views"
-msgstr "Allow non authenticated users, access to all views"
+#~ msgid "A5"
+#~ msgstr "A5"
 
-#: templates/403.html:5 templates/403.html.py:9
-msgid "Insufficient permissions"
-msgstr "Insufficient permissions"
+#~ msgid "A4"
+#~ msgstr "A4"
 
-#: templates/403.html:11
-msgid "You don't have enough permissions for this operation."
-msgstr "You don't have enough permissions for this operation."
+#~ msgid "A3"
+#~ msgstr "A3"
 
-#: templates/404.html:5 templates/404.html.py:9
-msgid "Page not found"
-msgstr "Page not found"
+#~ msgid "B5"
+#~ msgstr "B5"
 
-#: templates/404.html:11
-msgid "Sorry, but the requested page could not be found."
-msgstr "Sorry, but the requested page could not be found."
+#~ msgid "B4"
+#~ msgstr "B4"
 
-#: templates/calculate_form_title.html:8
-#, python-format
-msgid "Details for %(object_name)s: %(object)s"
-msgstr "Details for %(object_name)s: %(object)s"
+#~ msgid "Letter"
+#~ msgstr "Letter"
 
-#: templates/calculate_form_title.html:10
-#, python-format
-msgid "Details for: %(object)s"
-msgstr "Details for: %(object)s"
+#~ msgid "Legal"
+#~ msgstr "Legal"
 
-#: templates/calculate_form_title.html:15
-#, fuzzy, python-format
-msgid "Edit %(object_name)s: %(object)s"
-msgstr "Details for %(object_name)s: %(object)s"
+#~ msgid "Ledger"
+#~ msgstr "Ledger"
 
-#: templates/calculate_form_title.html:17
-#, fuzzy, python-format
-msgid "Edit: %(object)s"
-msgstr "Edit %(object_name)s:"
+#~ msgid "Portrait"
+#~ msgstr "Portrait"
 
-#: templates/calculate_form_title.html:21
-#, python-format
-msgid "Create new %(object_name)s"
-msgstr "Create new %(object_name)s"
+#~ msgid "Landscape"
+#~ msgstr "Landscape"
 
-#: templates/calculate_form_title.html:23
-msgid "Create"
-msgstr "Create"
+#~ msgid "license"
+#~ msgstr "license"
 
-#: templates/generic_assign_remove.html:5
-#, python-format
-msgid "Assign %(title)s %(object)s"
-msgstr "Assign %(title)s %(object)s"
+#~ msgid "anonymous user"
+#~ msgstr "anonymous user"
 
-#: templates/generic_confirm.html:5 templates/generic_confirm.html.py:19
-msgid "Confirm"
-msgstr "Confirm"
+#~ msgid "password"
+#~ msgstr "password"
 
-#: templates/generic_confirm.html:17
-msgid "Confirm delete"
-msgstr "Confirm delete"
+#~ msgid "Insufficient permissions"
+#~ msgstr "Insufficient permissions"
 
-#: templates/generic_confirm.html:33
-msgid "form icon"
-msgstr "form icon"
+#~ msgid "You don't have enough permissions for this operation."
+#~ msgstr "You don't have enough permissions for this operation."
 
-#: templates/generic_confirm.html:41
-#, python-format
-msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
-msgstr "Are you sure you wish to delete %(object_name)s: %(object)s?"
+#~ msgid "Page not found"
+#~ msgstr "Page not found"
 
-#: templates/generic_confirm.html:43
-#, python-format
-msgid "Are you sure you wish to delete: %(object)s?"
-msgstr "Are you sure you wish to delete: %(object)s?"
+#~ msgid "Sorry, but the requested page could not be found."
+#~ msgstr "Sorry, but the requested page could not be found."
 
-#: templates/generic_confirm.html:51
-msgid "Yes"
-msgstr "Yes"
+#~ msgid "Details for %(object_name)s: %(object)s"
+#~ msgstr "Details for %(object_name)s: %(object)s"
 
-#: templates/generic_confirm.html:55
-msgid "No"
-msgstr "No"
+#~ msgid "Details for: %(object)s"
+#~ msgstr "Details for: %(object)s"
 
-#: templates/generic_form_instance.html:40
-#: templates/generic_form_subtemplate.html:59
-msgid "required"
-msgstr "required"
+#, fuzzy
+#~ msgid "Edit %(object_name)s: %(object)s"
+#~ msgstr "Details for %(object_name)s: %(object)s"
 
-#: templates/generic_form_subtemplate.html:83
-#: templates/generic_form_subtemplate.html:85
-#: templates/generic_list_horizontal_subtemplate.html:50
-#: templates/generic_list_horizontal_subtemplate.html:88
-#: templates/generic_list_subtemplate.html:53
-#: templates/generic_list_subtemplate.html:173
-msgid "Save"
-msgstr "Save"
+#, fuzzy
+#~ msgid "Edit: %(object)s"
+#~ msgstr "Edit %(object_name)s:"
 
-#: templates/generic_form_subtemplate.html:83
-#: templates/generic_form_subtemplate.html:85
-#: templates/generic_list_horizontal_subtemplate.html:50
-#: templates/generic_list_horizontal_subtemplate.html:88
-#: templates/generic_list_subtemplate.html:53
-#: templates/generic_list_subtemplate.html:173
-msgid "Submit"
-msgstr "Submit"
+#~ msgid "Create new %(object_name)s"
+#~ msgstr "Create new %(object_name)s"
 
-#: templates/generic_form_subtemplate.html:90
-msgid "Cancel"
-msgstr "Cancel"
+#~ msgid "Create"
+#~ msgstr "Create"
 
-#: templates/generic_list.html:8 templates/generic_list_horizontal.html:8
-#, fuzzy, python-format
-msgid "List of %(title)s"
-msgstr "List of %(stripped_title)s"
+#~ msgid "Assign %(title)s %(object)s"
+#~ msgstr "Assign %(title)s %(object)s"
 
-#: templates/generic_list_horizontal_subtemplate.html:24
-#: templates/generic_list_subtemplate.html:25
-#, python-format
-msgid ""
-"List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
-"%(page_number)s of %(total_pages)s)"
-msgstr ""
-"List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
-"%(page_number)s of %(total_pages)s)"
+#~ msgid "Confirm"
+#~ msgstr "Confirm"
 
-#: templates/generic_list_horizontal_subtemplate.html:26
-#: templates/generic_list_subtemplate.html:27
-#, python-format
-msgid "List of %(title)s (%(total)s)"
-msgstr "List of %(title)s (%(total)s)"
+#~ msgid "Confirm delete"
+#~ msgstr "Confirm delete"
 
-#: templates/generic_list_subtemplate.html:73
-msgid "Identifier"
-msgstr "Identifier"
+#~ msgid "form icon"
+#~ msgstr "form icon"
 
-#: templates/generic_list_subtemplate.html:147
-#, fuzzy, python-format
-msgid "There are no %(title)s"
-msgstr "There are no %(stripped_title)s"
+#~ msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
+#~ msgstr "Are you sure you wish to delete %(object_name)s: %(object)s?"
 
-#: templates/login.html:7
-msgid "Login"
-msgstr "Login"
+#~ msgid "Are you sure you wish to delete: %(object)s?"
+#~ msgstr "Are you sure you wish to delete: %(object)s?"
 
-#: templates/password_change_done.html:5 templates/password_change_form.html:5
-#: templates/password_change_form.html:7
-msgid "Password change"
-msgstr "Password change"
+#~ msgid "Yes"
+#~ msgstr "Yes"
+
+#~ msgid "No"
+#~ msgstr "No"
+
+#~ msgid "required"
+#~ msgstr "required"
+
+#~ msgid "Save"
+#~ msgstr "Save"
+
+#~ msgid "Submit"
+#~ msgstr "Submit"
+
+#~ msgid "Cancel"
+#~ msgstr "Cancel"
+
+#, fuzzy
+#~ msgid "List of %(title)s"
+#~ msgstr "List of %(stripped_title)s"
+
+#~ msgid ""
+#~ "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
+#~ "%(page_number)s of %(total_pages)s)"
+#~ msgstr ""
+#~ "List of %(title)s (%(start)s - %(end)s out of %(total)s) (Page "
+#~ "%(page_number)s of %(total_pages)s)"
+
+#~ msgid "List of %(title)s (%(total)s)"
+#~ msgstr "List of %(title)s (%(total)s)"
+
+#~ msgid "Identifier"
+#~ msgstr "Identifier"
+
+#, fuzzy
+#~ msgid "There are no %(title)s"
+#~ msgstr "There are no %(stripped_title)s"
+
+#~ msgid "Login"
+#~ msgstr "Login"
+
+#~ msgid "Password change"
+#~ msgstr "Password change"
 
 #~ msgid "lock field"
 #~ msgstr "lock field"

@@ -1,11 +1,11 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import (DocumentType, Document,
-    DocumentTypeFilename, DocumentPage,
-    DocumentPageTransformation, RecentDocument,
-    DocumentVersion)
+from .models import (
+    Document, DocumentPage, DocumentPageTransformation, DocumentType,
+    DocumentTypeFilename, DocumentVersion, RecentDocument
+)
 
 
 class DocumentPageInline(admin.StackedInline):
@@ -43,7 +43,7 @@ class DocumentAdmin(admin.ModelAdmin):
     inlines = [
         DocumentVersionInline
     ]
-    list_display = ('uuid', 'file_filename',)
+    list_display = ('uuid', 'label',)
 
 
 class RecentDocumentAdmin(admin.ModelAdmin):
@@ -54,8 +54,8 @@ class RecentDocumentAdmin(admin.ModelAdmin):
     date_hierarchy = 'datetime_accessed'
 
 
-admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(Document, DocumentAdmin)
 admin.site.register(DocumentPageTransformation,
-    DocumentPageTransformationAdmin)
+                    DocumentPageTransformationAdmin)
+admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(RecentDocument, RecentDocumentAdmin)

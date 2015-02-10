@@ -1,0 +1,78 @@
+{% load i18n %}
+{% load static %}
+
+<div class="content">
+    <h2 class="title">
+        {% include 'main/calculate_form_title.html' %}
+    </h2>
+    <div class="inner">
+        {% if is_multipart %}
+            <form enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="form">
+        {% else %}
+            <form method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="form">
+        {% endif %}
+
+        {% for form_name, form in forms.items %}
+            {% if submit_method != 'GET' and submit_method != 'get' %}
+                {% csrf_token %}
+            {% endif %}
+
+            {% if next %}
+                <input name="next" type="hidden" value="{{ next }}" />
+            {% endif %}
+
+            {% if previous %}
+                <input name="previous" type="hidden" value="{{ previous }}" />
+            {% endif %}
+
+            {% for hidden_field in hidden_fields %}
+               {{ hidden_field.as_hidden }}
+            {% endfor %}
+
+            {% if form.management_form %}
+                {% with form as formset %}
+                    {{ formset.management_form }}
+
+                    {% if form_display_mode_table %}
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                {% for field in formset.forms.0.visible_fields %}
+                                    <th>
+                                        {{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}
+                                    </th>
+                                {% endfor %}
+                            </tr>
+                    {% endif %}
+
+                    {% for form in formset.forms %}
+                        {% include 'main/generic_form_instance.html' %}
+                    {% endfor %}
+                    {% if form_display_mode_table %}
+                        </tbody>
+                        </table>
+                    {% endif %}
+                {% endwith %}
+            {% else %}
+                {% include 'main/generic_form_instance.html' %}
+            {% endif %}
+        {% endfor %}
+        {% if not read_only %}
+        <div class="group navform wat-cf">
+            <button class="pure-button mayan-button" type="submit" name="submit">
+                    <span class="famfam active famfam-{{ submit_icon_famfam|default:'tick' }}"></span>
+                {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}
+            </button>
+
+              {% if previous %}
+                  &nbsp;<a href="#header" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}' class="pure-button mayan-button">
+                    <span class="famfam active famfam-cross"></span>{% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}
+                  </a>
+              {% endif %}
+
+        </div>
+        {% endif %}
+            </form>
+
+    </div>
+</div>

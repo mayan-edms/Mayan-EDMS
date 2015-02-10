@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2013-07-05 11:21+0000\n"
-"Last-Translator: Mohammad Dashtizadeh <mohammad@dashtizadeh.net>\n"
+"POT-Creation-Date: 2015-02-06 16:53-0400\n"
+"PO-Revision-Date: 2014-10-25 08:37+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/fa/)\n"
 "Language: fa\n"
@@ -19,188 +21,198 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: links.py:9 models.py:218 views.py:59
-msgid "roles"
-msgstr ""
+#: links.py:11 widgets.py:25
+msgid "Grant"
+msgstr "دادن"
 
-#: links.py:10
-msgid "create new role"
-msgstr ""
-
-#: links.py:11
-msgid "edit"
-msgstr "ویرایش"
-
-#: links.py:12
-msgid "members"
-msgstr ""
-
-#: links.py:13
-msgid "role permissions"
-msgstr ""
+#: links.py:12 widgets.py:19
+msgid "Revoke"
+msgstr "لغو"
 
 #: links.py:14
-msgid "delete"
+msgid "Create new role"
+msgstr "ایجاد نقش role جدید"
+
+#: links.py:15
+msgid "Delete"
 msgstr "حذف"
 
 #: links.py:16
-msgid "grant"
-msgstr ""
+msgid "Edit"
+msgstr "ویرایش"
 
-#: links.py:17
-msgid "revoke"
-msgstr ""
+#: links.py:17 models.py:218 views.py:59
+msgid "Roles"
+msgstr "نقش ها"
+
+#: links.py:18
+msgid "Members"
+msgstr "اعضا"
+
+#: links.py:19
+msgid "Role permissions"
+msgstr "مجوزهای نقش"
 
 #: models.py:51
 msgid "Insufficient permissions."
-msgstr ""
+msgstr "اجازه ناکافی"
 
 #: models.py:126 views.py:80
-msgid "namespace"
-msgstr ""
+msgid "Namespace"
+msgstr "فضای نام"
 
 #: models.py:127 views.py:81
-msgid "name"
+msgid "Name"
 msgstr "نام"
 
-#: models.py:134 models.py:196 views.py:137 views.py:199
-msgid "permission"
-msgstr ""
+#: models.py:134 models.py:196 views.py:134
+msgid "Permission"
+msgstr "مجوز"
 
-#: models.py:135 views.py:77 views.py:139 views.py:201
-msgid "permissions"
-msgstr ""
+#: models.py:135 permissions.py:7 views.py:77 views.py:136
+msgid "Permissions"
+msgstr "مجوزها"
 
 #: models.py:204
-msgid "permission holder"
-msgstr ""
+msgid "Permission holder"
+msgstr "دارنده مجوز"
 
 #: models.py:205
-msgid "permission holders"
-msgstr ""
+msgid "Permission holders"
+msgstr "دارنده های مجوز"
 
 #: models.py:213
-msgid "label"
-msgstr ""
+msgid "Label"
+msgstr "برچسب"
 
-#: models.py:217 models.py:248 views.py:31 views.py:42 views.py:49 views.py:96
-#: views.py:314
-msgid "role"
-msgstr ""
-
-#: models.py:263
-msgid "role member"
-msgstr ""
+#: models.py:217 models.py:248
+msgid "Role"
+msgstr "نقش"
 
 #: models.py:264
-msgid "role members"
-msgstr ""
+msgid "Role member"
+msgstr "عضو نقش"
 
-#: permissions.py:7
-msgid "Permissions"
-msgstr ""
+#: models.py:265
+msgid "Role members"
+msgstr "اعضای نقش"
 
 #: permissions.py:9
 msgid "View roles"
-msgstr ""
+msgstr "دیدن نقش ها"
 
 #: permissions.py:10
 msgid "Edit roles"
-msgstr ""
+msgstr "ویرایش نقش ها"
 
 #: permissions.py:11
 msgid "Create roles"
-msgstr ""
+msgstr "ایجاد نقش ها"
 
 #: permissions.py:12
 msgid "Delete roles"
-msgstr ""
+msgstr "حذف نقش ها"
 
 #: permissions.py:13
 msgid "Grant permissions"
-msgstr ""
+msgstr "دادن مجوز"
 
 #: permissions.py:14
 msgid "Revoke permissions"
-msgstr ""
+msgstr "لغو مجوز"
 
-#: views.py:83
-msgid "has permission"
-msgstr ""
-
-#: views.py:134 views.py:196
-msgid " and "
-msgstr "و"
-
-#: views.py:134 views.py:196
-#, python-format
-msgid "%(permissions)s to %(requester)s"
-msgstr ""
-
-#: views.py:144
-#, python-format
-msgid "Permission \"%(permission)s\" granted to: %(requester)s."
-msgstr ""
-
-#: views.py:147
-#, python-format
-msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
-msgstr ""
-
-#: views.py:158
-#, python-format
-msgid ""
-"Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-
-#: views.py:206
-#, python-format
-msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
-msgstr ""
-
-#: views.py:209
-#, python-format
-msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-msgstr ""
-
-#: views.py:220
-#, python-format
-msgid ""
-"Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-msgstr ""
-
-#: views.py:255 views.py:279
-msgid "Users"
-msgstr "کاربران"
-
-#: views.py:258 views.py:282
-msgid "Groups"
-msgstr "گروه‌ها"
-
-#: views.py:261 views.py:285
-msgid "Special"
-msgstr ""
-
-#: views.py:310
-#, python-format
-msgid "non members of role: %s"
-msgstr ""
-
-#: views.py:311
-#, python-format
-msgid "members of role: %s"
-msgstr ""
-
-#: widgets.py:16
-msgid "Revoke"
-msgstr ""
-
-#: widgets.py:21
-msgid "Grant"
-msgstr ""
-
-#: conf/settings.py:10
+#: settings.py:11
 msgid ""
 "A list of existing roles that are automatically assigned to newly created "
 "users"
-msgstr ""
+msgstr "نقش های پیش فرضی که در زمان ایجاد کاربر جدید داده میشود."
+
+#: views.py:83
+msgid "Has permission"
+msgstr "دارای مجوز"
+
+#: views.py:131 views.py:191
+msgid " and "
+msgstr "و"
+
+#: views.py:131 views.py:191
+#, python-format
+msgid "%(permissions)s to %(requester)s"
+msgstr "%(permissions)s به %(requester)s"
+
+#: views.py:141
+#, python-format
+msgid "Permission \"%(permission)s\" granted to: %(requester)s."
+msgstr "مجوز  \"%(permission)s\" داده شده به %(requester)s"
+
+#: views.py:144
+#, python-format
+msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
+msgstr "%(requester)s دارای مجوز \"%(permission)s\" میباشد."
+
+#: views.py:154
+#, python-format
+msgid ""
+"Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
+msgstr "آیا از دادن مجوز مطمئن هستید  %(permissions_label)s %(title_suffix)s؟"
+
+#: views.py:194
+msgid "permission"
+msgstr "اجازه"
+
+#: views.py:196
+msgid "permissions"
+msgstr "اجازه ها"
+
+#: views.py:201
+#, python-format
+msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
+msgstr "مجوز \"%(permission)s\" از %(requester)s پس گرفته شد."
+
+#: views.py:204
+#, python-format
+msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+msgstr "%(requester)s دارای مجوز  \"%(permission)s\" نیست."
+
+#: views.py:214
+#, python-format
+msgid ""
+"Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
+msgstr "آیا از لغو مجوز %(permissions_label)s %(title_suffix)s مطئمن هستید؟"
+
+#: views.py:249 views.py:273
+msgid "Users"
+msgstr "کاربران"
+
+#: views.py:252 views.py:276
+msgid "Groups"
+msgstr "گروه‌ها"
+
+#: views.py:255 views.py:279
+msgid "Special"
+msgstr "مخصوص"
+
+#: views.py:304
+#, python-format
+msgid "Non members of role: %s"
+msgstr "عضو نقش نیستند : %s"
+
+#: views.py:305
+#, python-format
+msgid "Members of role: %s"
+msgstr "اعشای نقش : %s"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "grant"
+#~ msgstr "grant"
+
+#~ msgid "revoke"
+#~ msgstr "revoke"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid "role"
+#~ msgstr "role"

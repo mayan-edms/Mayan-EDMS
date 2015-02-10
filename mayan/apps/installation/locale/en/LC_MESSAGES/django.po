@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
+"POT-Creation-Date: 2015-02-06 16:52-0400\n"
 "PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,96 +18,97 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:37 __init__.py:48
-msgid "label"
+#: __init__.py:38 __init__.py:49
+msgid "Label"
 msgstr ""
 
-#: __init__.py:41
-msgid "items"
+#: __init__.py:42
+msgid "Items"
 msgstr ""
 
-#: __init__.py:52
-msgid "value"
+#: __init__.py:53
+msgid "Value"
 msgstr ""
 
-#: links.py:7 models.py:173
-msgid "installation details"
+#: links.py:7 models.py:178
+#, fuzzy
+msgid "Installation details"
 msgstr "installation details"
 
 #: links.py:8 views.py:21
 #, fuzzy
-msgid "installation property namespaces"
+msgid "Installation property namespaces"
 msgstr "installation details"
 
 #: links.py:9
-msgid "details"
+msgid "Details"
 msgstr ""
 
-#: models.py:53
+#: models.py:52
 msgid "Operating system"
 msgstr ""
 
-#: models.py:55 models.py:62
+#: models.py:54 models.py:61
 msgid "LSB OS"
 msgstr "LSB OS"
 
-#: models.py:56
+#: models.py:55
 msgid "Distributor ID"
 msgstr "Distributor ID"
 
-#: models.py:57
+#: models.py:56
 msgid "Description"
 msgstr "Description"
 
-#: models.py:58
+#: models.py:57
 msgid "Release"
 msgstr "Release"
 
-#: models.py:59
+#: models.py:58
 msgid "Codename"
 msgstr "Codename"
 
-#: models.py:60
+#: models.py:59
 msgid "System info"
 msgstr "System info"
 
-#: models.py:64
+#: models.py:63
 msgid "OS architecture"
 msgstr "OS architecture"
 
-#: models.py:65
+#: models.py:64
 msgid "Python version"
 msgstr "Python version"
 
-#: models.py:66
+#: models.py:65
 msgid "Hostname"
 msgstr "Hostname"
 
-#: models.py:67
+#: models.py:66
 msgid "Platform"
 msgstr "Platform"
 
-#: models.py:68
+#: models.py:67
 msgid "Machine"
 msgstr "Machine"
 
-#: models.py:69
+#: models.py:68
 msgid "Processor"
 msgstr "Processor"
 
-#: models.py:70
+#: models.py:69
 msgid "Number of CPUs"
 msgstr "Number of CPUs"
 
-#: models.py:71
+#: models.py:70
 msgid "Total physical memory"
 msgstr "Total physical memory"
 
-#: models.py:72
+#: models.py:71
 msgid "Disk partitions"
 msgstr "Disk partitions"
 
-#: models.py:75
+#: models.py:74
 msgid "Binary dependencies"
 msgstr ""
 
@@ -115,89 +116,85 @@ msgstr ""
 msgid "tesseract version"
 msgstr "tesseract version"
 
-#: models.py:81 models.py:89 models.py:97
+#: models.py:79 models.py:88 models.py:97
 msgid "not found"
 msgstr "not found"
 
-#: models.py:83 models.py:91 models.py:99
+#: models.py:81 models.py:90 models.py:99
 msgid "error getting version"
 msgstr "error getting version"
 
-#: models.py:87 models.py:89 models.py:91
+#: models.py:88 models.py:90 models.py:92
 msgid "unpaper version"
 msgstr "unpaper version"
 
-#: models.py:95 models.py:97 models.py:99
+#: models.py:97 models.py:99 models.py:101
 msgid "pdftotext version"
 msgstr "pdftotext version"
 
-#: models.py:102
+#: models.py:104
 #, fuzzy
 msgid "Mayan EDMS"
 msgstr "Mayan EDMS version"
 
-#: models.py:104
+#: models.py:106
 msgid "UUID"
 msgstr ""
 
-#: models.py:105
+#: models.py:107
 msgid "Mayan EDMS version"
 msgstr "Mayan EDMS version"
 
-#: models.py:106
-msgid "Installed via fabfile"
-msgstr "Installed via fabfile"
-
-#: models.py:109
+#: models.py:110
 #, fuzzy
 msgid "Git repository"
 msgstr "Running from a Git repository"
 
-#: models.py:114 models.py:118
+#: models.py:115 models.py:120
 msgid "Running from a Git repository"
 msgstr "Running from a Git repository"
 
-#: models.py:119
+#: models.py:121
 msgid "Repository remotes"
 msgstr "Repository remotes"
 
-#: models.py:120
+#: models.py:122
 msgid "Repository remotes URLs"
 msgstr "Repository remotes URLs"
 
-#: models.py:121
+#: models.py:123
 msgid "Branch"
 msgstr "Branch"
 
-#: models.py:122
+#: models.py:124
 msgid "HEAD commit hex SHA"
 msgstr "HEAD commit hex SHA"
 
-#: models.py:123
+#: models.py:125
 msgid "HEAD commit author"
 msgstr "HEAD commit author"
 
-#: models.py:124
+#: models.py:126
 msgid "HEAD commit authored date"
 msgstr "HEAD commit authored date"
 
-#: models.py:125
+#: models.py:127
 msgid "HEAD commit committer"
 msgstr "HEAD commit committer"
 
-#: models.py:126
+#: models.py:128
 msgid "HEAD commit committed date"
 msgstr "HEAD commit committed date"
 
-#: models.py:127
+#: models.py:129
 msgid "HEAD commit message"
 msgstr "HEAD commit message"
 
-#: models.py:130
+#: models.py:135
 msgid "VirtualEnv"
 msgstr ""
 
-#: models.py:134
+#: models.py:139
 #, fuzzy
 msgid "pip not found."
 msgstr "not found"
@@ -212,8 +209,11 @@ msgstr "View installation environment details"
 
 #: views.py:33
 #, fuzzy, python-format
-msgid "installation namespace details for: %s"
+msgid "Installation namespace details for: %s"
 msgstr "installation details"
+
+#~ msgid "Installed via fabfile"
+#~ msgstr "Installed via fabfile"
 
 #~ msgid "Installation environment details"
 #~ msgstr "Installation environment details"

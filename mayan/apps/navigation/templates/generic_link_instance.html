@@ -1,9 +1,5 @@
-{% load main_settings_tags %}
-
-{% get_main_setting "DISABLE_ICONS" as disable_icons %}
-
 {% if link.disabled %}
-    <a class="{{ link.class }}" style="cursor: default;" href="#">{% if link.famfam and not disable_icons %}<span class="famfam inactive famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}{% if link.error %} - {{ link.error }}{% endif %}{% if link.active and not hide_active_anchor %}<span class="famfam active famfam-resultset_previous"></span>{% endif %}</a>{% if horizontal %}{% if not forloop.last %} | {% endif %}{% endif %}
+    <a class="{{ link.class }}" style="cursor: default;" href="#">{% if link.famfam %}<span class="famfam inactive famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text }}{% if link.error %} - {{ link.error }}{% endif %}{% if link.active and not hide_active_anchor %}<span class="famfam active famfam-resultset_previous"></span>{% endif %}</a>{% if horizontal %}{% if not forloop.last %} | {% endif %}{% endif %}
 {% else %}
-    <a class="{{ link.class }}" href="{{ link.url }}">{% if link.famfam and not disable_icons %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text|capfirst }}{% if link.error %} - {{ link.error }}{% endif %}{% if link.active and not hide_active_anchor %}<span class="famfam active famfam-resultset_previous"></span>{% endif %}</a>{% if horizontal %}{% if not forloop.last %} | {% endif %}{% endif %}
+    <a class="{{ link.class }}" href="{{ link.url }}">{% if link.famfam %}<span class="famfam active famfam-{{ link.famfam|default:'link' }}"></span>{% endif %}{{ link.text }}{% if link.error %} - {{ link.error }}{% endif %}{% if link.active and not hide_active_anchor %}<span class="famfam active famfam-resultset_previous"></span>{% endif %}</a>{% if horizontal %}{% if not forloop.last %} | {% endif %}{% endif %}
 {% endif %}

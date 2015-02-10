@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import os
 
@@ -11,7 +11,7 @@ from documents.models import Document, DocumentType
 
 from .models import Folder
 
-TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
+TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'title_page.png')
 
 
 class FolderTestCase(TestCase):
@@ -26,7 +26,7 @@ class FolderTestCase(TestCase):
         self.document.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
+            self.document.new_version(file_object=File(file_object))
 
     def test_creation_of_folder(self):
         user = User.objects.all()[0]
@@ -39,24 +39,24 @@ class FolderTestCase(TestCase):
     def test_addition_of_documents(self):
         user = User.objects.all()[0]
         folder = Folder.objects.create(title='test', user=user)
-        folder.add_document(self.document)
+        folder.documents.add(self.document)
 
         self.assertEqual(folder.documents.count(), 1)
-        self.assertEqual(list(folder.documents), [self.document])
+        self.assertEqual(list(folder.documents.all()), [self.document])
         folder.delete()
 
     def test_addition_and_deletion_of_documents(self):
         user = User.objects.all()[0]
         folder = Folder.objects.create(title='test', user=user)
-        folder.add_document(self.document)
+        folder.documents.add(self.document)
 
         self.assertEqual(folder.documents.count(), 1)
-        self.assertEqual(list(folder.documents), [self.document])
+        self.assertEqual(list(folder.documents.all()), [self.document])
 
-        folder.remove_document(self.document)
+        folder.documents.remove(self.document)
 
         self.assertEqual(folder.documents.count(), 0)
-        self.assertEqual(list(folder.documents), [])
+        self.assertEqual(list(folder.documents.all()), [])
 
         folder.delete()
 

@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-06 16:52-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: forms.py:23
+msgid "Email address"
+msgstr ""
+
+#: forms.py:24
+msgid "Subject"
+msgstr ""
+
+#: forms.py:25
+msgid "Body"
+msgstr ""
+
+#: links.py:7
+msgid "Email link"
+msgstr ""
+
+#: links.py:8
+msgid "Email document"
+msgstr ""
+
+#: permissions.py:7
+msgid "Mailing"
+msgstr ""
+
+#: permissions.py:9
+msgid "Send document link via email"
+msgstr ""
+
+#: permissions.py:10
+msgid "Send document via email"
+msgstr ""
+
+#: settings.py:11
+msgid "Link for document: {{ document }}"
+msgstr ""
+
+#: settings.py:11
+msgid "Template for the document link email form subject line."
+msgstr ""
+
+#: settings.py:12
+msgid ""
+"To access this document click on the following link: <a href="
+"\"{{ link }}\">{{ link }}</a><br /><br />\n"
+"\n"
+"--------<br />\n"
+"This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
+msgstr ""
+
+#: settings.py:12
+msgid "Template for the document link email form body line."
+msgstr ""
+
+#: settings.py:13
+msgid "Document: {{ document }}"
+msgstr ""
+
+#: settings.py:13
+msgid "Template for the document email form subject line."
+msgstr ""
+
+#: settings.py:14
+msgid ""
+"Attached to this email is the document: {{ document }}<br /><br />\n"
+"\n"
+"--------<br />\n"
+"This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
+msgstr ""
+
+#: settings.py:14
+msgid "Template for the document email form body line."
+msgstr ""
+
+#: views.py:41
+msgid "Must provide at least one document."
+msgstr ""
+
+#: views.py:70
+msgid "Successfully queued for delivery via email."
+msgstr ""
+
+#: views.py:78
+msgid "Send"
+msgstr ""
+
+#: views.py:84
+#, python-format
+msgid "Email document: %s"
+msgstr ""
+
+#: views.py:86
+#, python-format
+msgid "Email link for document: %s"
+msgstr ""
+
+#: views.py:89
+#, python-format
+msgid "Email documents: %s"
+msgstr ""
+
+#: views.py:91
+#, python-format
+msgid "Email links for documents: %s"
+msgstr ""

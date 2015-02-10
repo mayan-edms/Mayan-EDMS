@@ -1,25 +1,11 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import datetime
 
 from django import forms
-from django.conf import settings
 from django.core import validators
-from django.utils.safestring import mark_safe
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
-
-from .literals import STATE_ICONS, STATE_LABELS
-
-
-def checkout_widget(document):
-    checkout_state = document.checkout_state()
-
-    widget = (u'<img style="vertical-align: middle;" src="%simages/icons/%s" />' % (settings.STATIC_URL, STATE_ICONS[checkout_state]))
-    return _(u'Document status: %(widget)s %(text)s') % {
-        'widget': mark_safe(widget),
-        'text': STATE_LABELS[checkout_state]
-    }
 
 
 class SplitDeltaWidget(forms.widgets.MultiWidget):
@@ -28,9 +14,9 @@ class SplitDeltaWidget(forms.widgets.MultiWidget):
     """
     def __init__(self, attrs=None):
         widgets = (
-            forms.widgets.TextInput(attrs={'maxlength': 3, 'style': 'width: 5em;', 'placeholder': _(u'Days')}),
-            forms.widgets.TextInput(attrs={'maxlength': 4, 'style': 'width: 5em;', 'placeholder': _(u'Hours')}),
-            forms.widgets.TextInput(attrs={'maxlength': 5, 'style': 'width: 5em;', 'placeholder': _(u'Minutes')}),
+            forms.widgets.TextInput(attrs={'maxlength': 3, 'style': 'width: 5em;', 'placeholder': _('Days')}),
+            forms.widgets.TextInput(attrs={'maxlength': 4, 'style': 'width: 5em;', 'placeholder': _('Hours')}),
+            forms.widgets.TextInput(attrs={'maxlength': 5, 'style': 'width: 5em;', 'placeholder': _('Minutes')}),
         )
         super(SplitDeltaWidget, self).__init__(widgets, attrs)
 
@@ -49,8 +35,8 @@ class SplitHiddenDeltaWidget(forms.widgets.SplitDateTimeWidget):
     """
     is_hidden = True
 
-    def __init__(self, attrs=None):
-        super(SplitHiddenDeltaWidget, self).__init__(attrs, date_format, time_format)
+    def __init__(self, *args, **kwargs):
+        super(SplitHiddenDeltaWidget, self).__init__(*args, **kwargs)
         for widget in self.widgets:
             widget.input_type = 'hidden'
             widget.is_hidden = True
@@ -60,10 +46,10 @@ class SplitTimeDeltaField(forms.MultiValueField):
     widget = SplitDeltaWidget
     hidden_widget = SplitHiddenDeltaWidget
     default_error_messages = {
-        'invalid_days': _(u'Enter a valid number of days.'),
-        'invalid_hours': _(u'Enter a valid number of hours.'),
-        'invalid_minutes': _(u'Enter a valid number of minutes.'),
-        'invalid_timedelta': _(u'Enter a valid time difference.'),
+        'invalid_days': _('Enter a valid number of days.'),
+        'invalid_hours': _('Enter a valid number of hours.'),
+        'invalid_minutes': _('Enter a valid number of minutes.'),
+        'invalid_timedelta': _('Enter a valid time difference.'),
     }
 
     def __init__(self, *args, **kwargs):
@@ -89,7 +75,7 @@ class SplitTimeDeltaField(forms.MultiValueField):
             ),
         )
         super(SplitTimeDeltaField, self).__init__(fields, *args, **kwargs)
-        self.help_text = _(u'Amount of time to hold the document in the checked out state in days, hours and/or minutes.')
+        self.help_text = _('Amount of time to hold the document in the checked out state in days, hours and/or minutes.')
         self.label = _('Check out expiration date and time')
 
     def compress(self, data_list):

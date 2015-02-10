@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.template import Library
 from django.utils.importlib import import_module
 
@@ -10,4 +12,4 @@ def app_version(app_name):
         app = import_module(app_name)
         return app.__version__
     except ImportError:
-        return u''
+        return ''

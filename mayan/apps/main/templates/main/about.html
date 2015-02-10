@@ -1,0 +1,45 @@
+{% extends 'main/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% load project_tags %}
+{% load version_tags %}
+
+{% block title %} :: {% trans 'About this program' %}{% endblock %}
+{% block content %}
+
+    <div class="content tc">
+        <h3>{% project_name %} ({% trans 'Version' %} {% app_version 'mayan' %})</h3>
+        <p>
+            {% trans 'Open Source Electronic Document Manager System' %}
+        </p>
+
+        <p>
+            <span class="famfam active famfam-world_go"></span><a href="http://www.mayan-edms.com">http://www.mayan-edms.com</a>
+        </p>
+        <p>
+            <span class="famfam active famfam-book_open"></span><a href="http://readthedocs.org/docs/mayan/en/latest/">http://mayan.readthedocs.org/</a>
+        </p>
+        <p>
+            <span class="famfam active famfam-wrench"></span><a href="https://github.com/mayan-edms/mayan-edms/">https://github.com/mayan-edms/mayan-edms/</a>
+        </p>
+        <p>
+            <span class="famfam active famfam-bug"></span><a href="https://github.com/mayan-edms/mayan-edms/issues">https://github.com/mayan-edms/mayan-edms/issues</a>
+        </p>
+        <p>
+            {% trans 'Released under the Apache 2.0 License' %}
+        </p>
+        <p>
+            <img src="{% static 'main/images/mayan_logo_landscape_rough.png' %}"/>
+        </p>
+    </div>
+
+{% endblock %}
+{% block footer %}
+    <div id="footer">
+        <div class="block">
+            <p>{% trans 'Copyright &copy; 2011 Roberto Rosario.' %}</p>
+        </div>
+    </div>
+{% endblock %}

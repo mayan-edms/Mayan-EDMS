@@ -3,8 +3,8 @@ from __future__ import absolute_import
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.test.client import Client
 from django.test import TestCase
+from django.test.client import Client
 
 import common
 

@@ -3,12 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2013-06-16 18:57+0000\n"
+"POT-Creation-Date: 2015-02-06 16:51-0400\n"
+"PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/fa/)\n"
@@ -20,91 +22,101 @@ msgstr ""
 
 #: forms.py:8
 msgid "Search terms"
-msgstr ""
+msgstr "عبارات جستجو"
 
-#: links.py:3
-msgid "search"
-msgstr ""
-
-#: links.py:4 views.py:78
-msgid "advanced search"
-msgstr ""
-
-#: links.py:5
-msgid "search again"
-msgstr ""
-
-#: models.py:21
-msgid "user"
-msgstr ""
-
-#: models.py:22
-msgid "query"
-msgstr ""
-
-#: models.py:23
-msgid "datetime created"
-msgstr ""
-
-#: models.py:24
-msgid "hits"
-msgstr ""
-
-#: models.py:60
-msgid "recent search"
-msgstr ""
-
-#: models.py:61
-msgid "recent searches"
-msgstr ""
-
-#: views.py:44
-#, python-format
-msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-msgstr ""
-
-#: views.py:49
-msgid "results"
-msgstr ""
-
-#: views.py:66
-msgid "type"
-msgstr ""
-
-#: views.py:82 views.py:92 views.py:94 templatetags/search_tags.py:19
-#: templatetags/search_tags.py:20
+#: links.py:5 views.py:66 views.py:72 views.py:74
+#: templatetags/search_tags.py:20 templatetags/search_tags.py:21
 msgid "Search"
-msgstr ""
+msgstr "جستجو"
 
-#: conf/settings.py:12
+#: links.py:6 views.py:62
+msgid "Advanced search"
+msgstr "جستجوی پیشرفته"
+
+#: links.py:7
+msgid "Search again"
+msgstr "جستجوی دوباره"
+
+#: models.py:19
+msgid "User"
+msgstr "کاربر"
+
+#: models.py:25
+msgid "Query"
+msgstr "پرس و جو"
+
+#: models.py:26
+msgid "Datetime created"
+msgstr "تاریخ زمان ایجاد"
+
+#: models.py:27
+msgid "Hits"
+msgstr "برخورد"
+
+#: models.py:64
+msgid "Recent search"
+msgstr "جستجوی اخیر"
+
+#: models.py:65
+msgid "Recent searches"
+msgstr "جستجوهای اخیر"
+
+#: settings.py:12
 msgid "Maximum amount search hits to fetch and display."
-msgstr ""
+msgstr "جداکثر نتایج قابل نمایش"
 
-#: conf/settings.py:13
+#: settings.py:13
 msgid "Maximum number of search queries to remember per user."
-msgstr ""
+msgstr "حداکثر تعداد پرس و جو های هرکاربر که بوسیله سیستم نگهداری میشود."
 
-#: templates/search_help.html:3
-msgid "Help"
-msgstr ""
+#: views.py:38
+msgid "Results"
+msgstr "حاصل"
 
-#: templates/search_help.html:4
-#, python-format
-msgid ""
-"Enter the desired search keywords separated by space.  Only the top "
-"%(search_results_limit)s results will be available."
-msgstr ""
+#: views.py:46
+msgid "Type"
+msgstr "نوع"
 
-#: templates/search_results.html:3
+#: templates/dynamic_search/search_results.html:3
 msgid "Search results"
-msgstr ""
+msgstr "نتایج جستجو"
 
-#: templates/search_results.html:19
+#: templates/dynamic_search/search_results.html:19
 #, python-format
 msgid "Elapsed time: %(time_delta)s seconds"
-msgstr ""
+msgstr "مدت زمان گذشته به ثانیه: %(time_delta)s"
 
-#: templatetags/search_tags.py:33
+#: templatetags/search_tags.py:37
 #, python-format
-msgid "recent searches (maximum of %d)"
-msgstr ""
+msgid "Recent searches (maximum of %d)"
+msgstr "جستجوهای اخیر(حداکثر%d)"
+
+#~ msgid ""
+#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgstr ""
+#~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
+
+#~ msgid "search"
+#~ msgstr "search"
+
+#~ msgid "user"
+#~ msgstr "user"
+
+#~ msgid "hits"
+#~ msgstr "hits"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "Help"
+#~ msgstr "Help"
+
+#~ msgid ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
+#~ msgstr ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
+
+#~ msgid "Search error: %s"
+#~ msgstr "Search error: %s"

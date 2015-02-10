@@ -3,13 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2013-06-16 18:57+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-02-06 20:44-0400\n"
+"PO-Revision-Date: 2014-10-30 13:05+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/fa/)\n"
 "Language: fa\n"
@@ -18,225 +20,226 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: forms.py:25 links.py:10 links.py:16
+#: forms.py:25 links.py:13 links.py:19
 msgid "New holder"
-msgstr ""
+msgstr "دارنده مجوز جدید"
 
 #: forms.py:42
 msgid "Users"
-msgstr ""
+msgstr "کاربران"
 
 #: forms.py:45
 msgid "Groups"
-msgstr ""
+msgstr "گروه ها"
 
 #: forms.py:48
 msgid "Roles"
-msgstr ""
+msgstr "رل ها"
 
 #: forms.py:51
 msgid "Special"
-msgstr ""
+msgstr "ویژه"
 
-#: links.py:6
+#: links.py:9
 msgid "ACLs"
-msgstr ""
+msgstr "لیست دسترسی ها (ACLs)"
 
-#: links.py:7 links.py:15
-msgid "details"
-msgstr ""
+#: links.py:10 links.py:18
+msgid "Details"
+msgstr "جزئیات"
 
-#: links.py:8 links.py:17
-msgid "grant"
-msgstr ""
+#: links.py:11 links.py:20
+msgid "Grant"
+msgstr "دادن اجازه"
 
-#: links.py:9 links.py:18
-msgid "revoke"
-msgstr ""
+#: links.py:12 links.py:21
+msgid "Revoke"
+msgstr "پس گرفتن"
 
-#: links.py:12
+#: links.py:15
 msgid "Default ACLs"
-msgstr ""
+msgstr "لیست دسترسی های پیش فرض"
 
-#: links.py:13
-msgid "List of classes"
-msgstr ""
+#: links.py:16 views.py:379
+msgid "Classes"
+msgstr "کلاس ها"
 
-#: links.py:14
+#: links.py:17
 msgid "ACLs for class"
-msgstr ""
+msgstr "لیست دسترسیها برای کلاس"
 
 #: managers.py:118 managers.py:130
 msgid "Insufficient access."
-msgstr ""
+msgstr "دسترسی ناکافی"
 
-#: models.py:26 models.py:68
-msgid "permission"
-msgstr ""
+#: models.py:25 models.py:67
+msgid "Permission"
+msgstr "مجوز"
+
+#: models.py:51
+msgid "Access entry"
+msgstr "ورودی دسترسی"
 
 #: models.py:52
-msgid "access entry"
-msgstr ""
+msgid "Access entries"
+msgstr "ورودیهای دسترسی"
 
-#: models.py:53
-msgid "access entries"
-msgstr ""
+#: models.py:88
+msgid "Default access entry"
+msgstr "ورودی دسترسی پیش فرض"
 
 #: models.py:89
-msgid "default access entry"
-msgstr ""
+msgid "Default access entries"
+msgstr "ورودیهای دسترسی پیش فرض"
 
-#: models.py:90
-msgid "default access entries"
-msgstr ""
-
-#: models.py:109
+#: models.py:108 models.py:111 models.py:112
 msgid "Creator"
-msgstr ""
-
-#: models.py:112 models.py:113
-msgid "creator"
-msgstr ""
+msgstr "خالق"
 
 #: permissions.py:7 permissions.py:8
 msgid "Access control lists"
-msgstr ""
+msgstr "لیست کنترل دسترسی ها"
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr ""
+msgstr "ویرایش دسترسی ها"
 
 #: permissions.py:11
 msgid "View ACLs"
-msgstr ""
+msgstr "دیدن دسترسی ها"
 
 #: permissions.py:13
 msgid "Edit class default ACLs"
-msgstr ""
+msgstr "ویرایش دسترسی های پیش فرض کلاس"
 
 #: permissions.py:14
 msgid "View class default ACLs"
-msgstr ""
+msgstr "دیدن دسترسی های پیش فرض کلاس"
 
-#: views.py:46
+#: views.py:48
 #, python-format
-msgid "access control lists for: %s"
-msgstr ""
+msgid "Access control lists for: %s"
+msgstr "لیست کنترل دسترسی ها برای : %s"
 
-#: views.py:48 views.py:408
-msgid "holder"
-msgstr ""
+#: views.py:50 views.py:402
+msgid "Holder"
+msgstr "دارنده"
 
-#: views.py:49 views.py:409
-msgid "permissions"
-msgstr ""
+#: views.py:51 views.py:403
+msgid "Permissions"
+msgstr "مجوزها"
 
-#: views.py:96
+#: views.py:98
 #, python-format
-msgid "permissions available to: %(actor)s for %(obj)s"
-msgstr ""
+msgid "Permissions available to: %(actor)s for %(obj)s"
+msgstr "مجوزها : %(actor)sبرای %(obj)s"
 
-#: views.py:103 views.py:441
-msgid "namespace"
-msgstr ""
+#: views.py:105 views.py:434
+msgid "Namespace"
+msgstr "فضای نام"
 
-#: views.py:104 views.py:442
-msgid "label"
-msgstr ""
+#: views.py:106 views.py:435
+msgid "Label"
+msgstr "برچسب"
 
-#: views.py:106 views.py:444
-msgid "has permission"
-msgstr ""
+#: views.py:108 views.py:437
+msgid "Has permission"
+msgstr "دارای مجوز"
 
-#: views.py:183 views.py:276 views.py:524 views.py:603
+#: views.py:181 views.py:272 views.py:516 views.py:593
 msgid ", "
-msgstr ""
+msgstr ","
 
-#: views.py:184 views.py:277 views.py:525 views.py:604
+#: views.py:182 views.py:273 views.py:517 views.py:594
 #, python-format
 msgid " for %s"
-msgstr ""
+msgstr "برای %s"
 
-#: views.py:185 views.py:526
+#: views.py:183 views.py:518
 #, python-format
 msgid " to %s"
-msgstr ""
+msgstr "به %s"
 
-#: views.py:188 views.py:529
+#: views.py:186 views.py:521
 #, python-format
 msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-msgstr ""
+msgstr "آیا از دادن مجوز به %(title_suffix)s مطمئن هستید؟"
 
-#: views.py:190 views.py:531
+#: views.py:188 views.py:523
 #, python-format
 msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-msgstr ""
+msgstr "آیا از دادن مجوز به %(title_suffix)s مطمئن هستید؟"
 
-#: views.py:197 views.py:538
+#: views.py:195 views.py:530
 #, python-format
 msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
-msgstr ""
+msgstr "مجوز \"%(permission)s\"  داده شده به %(actor)s برای %(object)s."
 
-#: views.py:203 views.py:544
+#: views.py:201 views.py:536
 #, python-format
 msgid ""
 "%(actor)s, already had the permission \"%(permission)s\" granted for "
 "%(object)s."
-msgstr ""
+msgstr "%(actor)s دارای مجوز %(permission)s برروی %(object)s میباشد."
 
-#: views.py:278 views.py:605
+#: views.py:274 views.py:595
 #, python-format
 msgid " from %s"
-msgstr ""
+msgstr "از %s"
 
-#: views.py:281 views.py:608
+#: views.py:277 views.py:598
 #, python-format
 msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-msgstr ""
+msgstr "آیا مطمئن هستید که میخواهید مجوز %(title_suffix)s را لغو کنید؟"
 
-#: views.py:283 views.py:610
+#: views.py:279 views.py:600
 #, python-format
 msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-msgstr ""
+msgstr "آیا مطمئن هستید که میخواهید مجوز %(title_suffix)s را لغو کنید؟"
 
-#: views.py:290 views.py:617
+#: views.py:286 views.py:607
 #, python-format
 msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-msgstr ""
+msgstr "مجوز \"%(permission)s از %(actor)s برای %(object)s گرفته شد."
 
-#: views.py:296 views.py:623
+#: views.py:292 views.py:613
 #, python-format
 msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-msgstr ""
+msgstr "%(actor)s مجوز %(permission)s را برای %(object)s نداشت."
 
-#: views.py:352
+#: views.py:346
 #, python-format
-msgid "add new holder for: %s"
-msgstr ""
+msgid "Add new holder for: %s"
+msgstr "ایجاد دارنده برای: %s"
 
-#: views.py:353 views.py:485
+#: views.py:347 views.py:477
 msgid "Select"
-msgstr ""
+msgstr "انتخاب"
 
-#: views.py:385
-msgid "classes"
-msgstr ""
+#: views.py:381
+msgid "Class"
+msgstr "کلاس"
 
-#: views.py:387
-msgid "class"
-msgstr ""
-
-#: views.py:406
+#: views.py:400
 #, python-format
-msgid "default access control lists for class: %s"
-msgstr ""
+msgid "Default access control lists for class: %s"
+msgstr "لیست کنترل  دسترسی پیش فرض برای کلاس : %s"
 
-#: views.py:434
+#: views.py:428
 #, python-format
-msgid "permissions available to: %(actor)s for class %(class)s"
-msgstr ""
+msgid "Permissions available to: %(actor)s for class %(class)s"
+msgstr "مجوزها : %(actor)s برای کلاس %(class)s"
 
-#: views.py:483
+#: views.py:475
 #, python-format
-msgid "add new holder for class: %s"
-msgstr ""
+msgid "Add new holder for class: %s"
+msgstr "دارنده جدید برای کلاس : %s"
+
+#~ msgid "List of classes"
+#~ msgstr "List of classes"
+
+#~ msgid "permission"
+#~ msgstr "permission"
+
+#~ msgid "creator"
+#~ msgstr "creator"

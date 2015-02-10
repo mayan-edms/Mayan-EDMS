@@ -1,11 +1,11 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 
 from rest_framework import serializers
 from rest_framework.reverse import reverse
 
-from .models import StagingFolder
+from .models import StagingFolderSource, WebFormSource
 
 logger = logging.getLogger(__name__)
 
@@ -29,13 +29,28 @@ class StagingFolderSerializer(serializers.HyperlinkedModelSerializer):
         try:
             return [StagingFolderFileSerializer(entry, context=self.context).data for entry in obj.get_files()]
         except Exception as exception:
-            logger.error('unhandled exception: %s' % exception)
+            logger.error('unhandled exception: %s', exception)
             return []
 
     class Meta:
-        model = StagingFolder
+        model = StagingFolderSource
 
 
 class StagingSourceFileImageSerializer(serializers.Serializer):
     status = serializers.CharField()
     data = serializers.CharField()
+
+
+class WebFormSourceSerializer(serializers.Serializer):
+    class Meta:
+        model = WebFormSource
+
+
+class NewDocumentSerializer(serializers.Serializer):
+    source = serializers.IntegerField()
+    document_type = serializers.IntegerField(required=False)
+    description = serializers.CharField(required=False)
+    expand = serializers.BooleanField(default=False)
+    file = serializers.FileField()
+    filename = serializers.CharField(required=False)
+    use_file_name = serializers.BooleanField(default=False)

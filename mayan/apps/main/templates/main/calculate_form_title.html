@@ -1,0 +1,15 @@
+{% load i18n %}
+
+{% if title %}
+    {{ title }}
+{% else %}
+    {% if read_only %}
+        {% blocktrans %}Details for: {{ object }}{% endblocktrans %}
+    {% else %}
+        {% if object %}
+            {% blocktrans with object as object %}Edit: {{ object }}{% endblocktrans %}
+        {% else %}
+            {% trans 'Create' %}
+        {% endif %}
+    {% endif %}
+{% endif %}

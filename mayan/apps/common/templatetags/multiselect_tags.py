@@ -1,5 +1,3 @@
-from __future__ import absolute_import
-
 from json import dumps
 from django.template import Library
 

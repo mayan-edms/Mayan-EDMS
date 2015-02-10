@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2013-02-10 14:38+0000\n"
-"Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
+"POT-Creation-Date: 2015-02-06 16:53-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
 "edms/language/ro_RO/)\n"
 "Language: ro_RO\n"
@@ -20,10 +21,10 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
 "2:1));\n"
 
-#: links.py:3
-msgid "setup"
-msgstr "configurare"
+#: links.py:5
+msgid "Setup"
+msgstr ""
 
-#: views.py:15
-msgid "setup items"
-msgstr "configurare articole"
+#: views.py:13
+msgid "Setup items"
+msgstr ""

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import time
 
@@ -9,6 +9,7 @@ from .models import Lock
 
 # Notice: StaleLock exception and tests are not available until more changes are
 # backported.
+# TODO: backport stale lock code
 
 
 class LockTestCase(TestCase):
@@ -29,7 +30,7 @@ class LockTestCase(TestCase):
         lock_2.release()
 
     def test_timeout_expired(self):
-        lock_1 = Lock.objects.acquire_lock(name='test_lock_1', timeout=1)
+        Lock.objects.acquire_lock(name='test_lock_1', timeout=1)
 
         # lock_1 not release and not expired, should raise LockError
         with self.assertRaises(LockError):

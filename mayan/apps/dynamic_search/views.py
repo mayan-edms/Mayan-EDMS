@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 import urlparse
@@ -10,19 +10,18 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import SearchModel
-from .conf.settings import LIMIT, SHOW_OBJECT_TYPE
 from .forms import SearchForm, AdvancedSearchForm
-from .models import RecentSearch
+from .settings import LIMIT, SHOW_OBJECT_TYPE
 
 logger = logging.getLogger(__name__)
-document_search = SearchModel.get('documents.Document')
 
 
 def results(request, extra_context=None):
+    document_search = SearchModel.get('documents.Document')
+
     context = {
         'query_string': request.GET,
         'hide_links': True,
-        'multi_select_as_buttons': True,
         'search_results_limit': LIMIT,
     }
 
@@ -30,84 +29,62 @@ def results(request, extra_context=None):
         # Only do search if there is user input, otherwise just render
         # the template with the extra_context
 
-        if 'q' in request.GET:
-            # Simple query
-            logger.debug('simple search')
-            query_string = request.GET.get('q', u'').strip()
-            model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.simple_search(query_string)
-        else:
-            # Advanced search
-            logger.debug('advanced search')
-            model_list, flat_list, shown_result_count, result_count, elapsed_time = document_search.advanced_search(request.GET)
-
-        if shown_result_count != result_count:
-            title = _(u'results, (showing only %(shown_result_count)s out of %(result_count)s)') % {
-                'shown_result_count': shown_result_count,
-                'result_count': result_count}
-
-        else:
-            title = _(u'results')
+        queryset, ids, timedelta = document_search.search(request.GET, request.user)
 
         # Update the context with the search results
         context.update({
-            'found_entries': model_list,
-            'object_list': flat_list,
-            'title': title,
-            'time_delta': elapsed_time,
+            'object_list': queryset,
+            'time_delta': timedelta,
+            'title': _('Results'),
         })
-
-        RecentSearch.objects.add_query_for_user(request.user, request.GET, result_count)
 
     if extra_context:
         context.update(extra_context)
 
     if SHOW_OBJECT_TYPE:
-        context.update({'extra_columns':
-            [{'name': _(u'type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]})
+        context.update({
+            'extra_columns': [{'name': _('Type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]
+        })
 
-    return render_to_response('search_results.html', context,
-                          context_instance=RequestContext(request))
+    return render_to_response('dynamic_search/search_results.html', context,
+                              context_instance=RequestContext(request))
 
 
 def search(request, advanced=False):
+    document_search = SearchModel.get('documents.Document')
+
     if advanced:
         form = AdvancedSearchForm(data=request.GET, search_model=document_search)
-        return render_to_response('generic_form.html',
+        return render_to_response(
+            'main/generic_form.html',
             {
                 'form': form,
-                'title': _(u'advanced search'),
-                'form_action': reverse('results'),
+                'title': _('Advanced search'),
+                'form_action': reverse('search:results'),
                 'submit_method': 'GET',
                 'search_results_limit': LIMIT,
-                'submit_label': _(u'Search'),
+                'submit_label': _('Search'),
                 'submit_icon_famfam': 'zoom',
-            },
-            context_instance=RequestContext(request)
+            }, context_instance=RequestContext(request)
         )
     else:
-        if request.GET.get('source') != 'sidebar':
-            # Don't include a form a top of the results if the search
-            # was originated from the sidebar search form
-            extra_context = {
-                'submit_label': _(u'Search'),
-                'submit_icon_famfam': 'zoom',
-                'form_title': _(u'Search'),
-                'form_hide_required_text': True,
-            }
-            if ('q' in request.GET) and request.GET['q'].strip():
-                query_string = request.GET['q']
-                form = SearchForm(initial={'q': query_string})
-                extra_context.update({'form': form})
-                return results(request, extra_context=extra_context)
-            else:
-                form = SearchForm()
-                extra_context.update({'form': form})
-                return results(request, extra_context=extra_context)
+        extra_context = {
+            'submit_label': _('Search'),
+            'submit_icon_famfam': 'zoom',
+            'form_title': _('Search'),
+            'form_hide_required_text': True,
+        }
+        if ('q' in request.GET) and request.GET['q'].strip():
+            query_string = request.GET['q']
+            form = SearchForm(initial={'q': query_string})
+            extra_context.update({'form': form})
+            return results(request, extra_context=extra_context)
         else:
-            # Already has a form with data, go to results
-            return results(request)
+            form = SearchForm()
+            extra_context.update({'form': form})
+            return results(request, extra_context=extra_context)
 
 
 def search_again(request):
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', u'/')).query
-    return HttpResponseRedirect('%s?%s' % (reverse('search_advanced'), query))
+    query = urlparse.urlparse(request.META.get('HTTP_REFERER', reverse('main:home'))).query
+    return HttpResponseRedirect('%s?%s' % (reverse('search:search_advanced'), query))

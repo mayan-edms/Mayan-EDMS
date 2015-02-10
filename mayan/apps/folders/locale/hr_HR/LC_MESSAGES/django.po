@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2012-12-12 06:05+0000\n"
+"POT-Creation-Date: 2015-02-06 16:52-0400\n"
+"PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Croatian (Croatia) (http://www.transifex.com/projects/p/mayan-"
 "edms/language/hr_HR/)\n"
@@ -19,80 +20,61 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 
-#: forms.py:38
+#: __init__.py:46
+msgid "Created"
+msgstr ""
+
+#: __init__.py:47 links.py:19 models.py:14
+msgid "Documents"
+msgstr ""
+
+#: forms.py:38 models.py:26
 msgid "Folder"
 msgstr ""
 
-#: links.py:13
-msgid "folder list"
+#: links.py:14 links.py:22 links.py:25 models.py:27 permissions.py:7
+#: views.py:39
+msgid "Folders"
 msgstr ""
 
-#: links.py:14 views.py:75
-msgid "create folder"
-msgstr ""
-
-#: links.py:15
-msgid "edit"
+#: links.py:15 views.py:61
+msgid "Create folder"
 msgstr ""
 
 #: links.py:16
-msgid "delete"
+msgid "Edit"
 msgstr ""
 
 #: links.py:17
-msgid "remove from folder"
+msgid "Delete"
 msgstr ""
 
 #: links.py:18
-msgid "folder documents"
-msgstr ""
-
-#: links.py:19
-msgid "add to a folder"
+msgid "Remove from folder"
 msgstr ""
 
 #: links.py:20
-msgid "add to folder"
+msgid "Add to a folder"
 msgstr ""
 
-#: links.py:21 links.py:24 models.py:42 views.py:34
-msgid "folders"
+#: links.py:21
+msgid "Add to folder"
 msgstr ""
 
-#: links.py:23
+#: links.py:24
 msgid "ACLs"
 msgstr ""
 
-#: models.py:10
-msgid "title"
-msgstr ""
-
 #: models.py:11
-msgid "user"
+msgid "Title"
 msgstr ""
 
 #: models.py:12
-msgid "datetime created"
+msgid "User"
 msgstr ""
 
-#: models.py:41 models.py:46 views.py:106 views.py:135 views.py:160
-msgid "folder"
-msgstr ""
-
-#: models.py:47 views.py:207
-msgid "document"
-msgstr ""
-
-#: models.py:53 views.py:277
-msgid "folder document"
-msgstr ""
-
-#: models.py:54
-msgid "folders documents"
-msgstr ""
-
-#: permissions.py:7
-msgid "Folders"
+#: models.py:13
+msgid "Datetime created"
 msgstr ""
 
 #: permissions.py:9
@@ -119,126 +101,155 @@ msgstr ""
 msgid "Add documents to existing folders"
 msgstr ""
 
-#: views.py:37
-msgid "created"
-msgstr ""
-
-#: views.py:38
-msgid "documents"
-msgstr ""
-
-#: views.py:67
+#: views.py:53
 msgid "Folder created successfully"
 msgstr ""
 
-#: views.py:70
+#: views.py:56
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr ""
 
-#: views.py:95
+#: views.py:79
 msgid "Folder edited successfully"
 msgstr ""
 
-#: views.py:98
+#: views.py:82
 #, python-format
 msgid "Error editing folder; %s"
 msgstr ""
 
-#: views.py:103
+#: views.py:87
 #, python-format
-msgid "edit folder: %s"
+msgid "Edit folder: %s"
 msgstr ""
 
-#: views.py:127
+#: views.py:109
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr ""
 
-#: views.py:129
+#: views.py:111
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr ""
 
-#: views.py:140
+#: views.py:121
 #, python-format
 msgid "Are you sure you with to delete the folder: %s?"
 msgstr ""
 
-#: views.py:166
+#: views.py:144
 #, python-format
-msgid "documents in folder: %s"
+msgid "Documents in folder: %s"
 msgstr ""
 
-#: views.py:178
+#: views.py:157
 msgid "Must provide at least one document."
 msgstr ""
 
-#: views.py:196
+#: views.py:176
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr ""
 
-#: views.py:199
+#: views.py:179
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr ""
 
-#: views.py:215
+#: views.py:196
+msgid "Add document to folder"
+msgid_plural "Add documents to folder"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:216
 #, python-format
-msgid "Add document: %s to folder."
+msgid "Folders containing document: %s"
 msgstr ""
 
-#: views.py:217
-#, python-format
-msgid "Add documents: %s to folder."
-msgstr ""
-
-#: views.py:235
-#, python-format
-msgid "folders containing: %s"
-msgstr ""
-
-#: views.py:251
+#: views.py:242
 msgid "Must provide at least one folder document."
 msgstr ""
 
-#: views.py:269
+#: views.py:260
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr ""
 
-#: views.py:271
+#: views.py:262
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr ""
 
-#: views.py:285
+#: views.py:272
 #, python-format
 msgid ""
-"Are you sure you wish to remove the document: %(document)s from the folder "
-"\"%(folder)s\"?"
-msgstr ""
-
-#: views.py:288
-#, python-format
-msgid ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
-msgstr ""
-
-#: templates/folders_help.html:3
-msgid "What are folders?"
-msgstr ""
-
-#: templates/folders_help.html:4
-msgid ""
-"These folders can also be described as user folders.  They are a way to let "
-"individual users create their own document organization methods.  Folders "
-"created by one user and the documents contained by them don't affect any "
-"other user folders or documents."
-msgstr ""
+"Are you sure you wish to remove the selected document from the folder: "
+"%(folder)s?"
+msgid_plural ""
+"Are you sure you wish to remove the selected documents from the folder: "
+"%(folder)s?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
 
 #: templatetags/folder_tags.py:17
 msgid "Add document to a folder"
 msgstr ""
+
+#~ msgid "Add document: %s to folder."
+#~ msgstr "Add document: %s to folder."
+
+#~ msgid "Add documents: %s to folder."
+#~ msgstr "Add documents: %s to folder."
+
+#~ msgid ""
+#~ "Are you sure you wish to remove the documents: %(documents)s from the "
+#~ "folder \"%(folder)s\"?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the documents: %(documents)s from the "
+#~ "folder \"%(folder)s\"?"
+
+#~ msgid "Document"
+#~ msgstr "document"
+
+#~ msgid "Folder document"
+#~ msgstr "folder document"
+
+#~ msgid "Folder list"
+#~ msgstr "folder list"
+
+#~ msgid "Folder documents"
+#~ msgstr "folder documents"
+
+#~ msgid "Folders documents"
+#~ msgstr "folders documents"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "folders"
+#~ msgstr "folders"
+
+#~ msgid "user"
+#~ msgstr "user"
+
+#~ msgid "folder"
+#~ msgstr "folder"
+
+#~ msgid "What are folders?"
+#~ msgstr "What are folders?"
+
+#~ msgid ""
+#~ "These folders can also be described as user folders.  They are a way to "
+#~ "let individual users create their own document organization methods.  "
+#~ "Folders created by one user and the documents contained by them don't "
+#~ "affect any other user folders or documents."
+#~ msgstr ""
+#~ "These folders can also be described as user folders.  They are a way to "
+#~ "let individual users create their own document organization methods.  "
+#~ "Folders created by one user and the documents contained by them don't "
+#~ "affect any other user folders or documents."

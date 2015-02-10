@@ -1,7 +1,10 @@
+from __future__ import unicode_literals
+
 import re
 
-from django.template import (Node, TemplateSyntaxError, Library,
-    Variable, Context)
+from django.template import (
+    Context, Library, Node, TemplateSyntaxError, Variable
+)
 from django.template.loader import get_template
 
 register = Library()

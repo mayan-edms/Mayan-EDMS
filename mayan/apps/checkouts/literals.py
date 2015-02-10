@@ -1,16 +1,11 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
 STATE_CHECKED_OUT = 'checkedout'
 STATE_CHECKED_IN = 'checkedin'
 
-STATE_ICONS = {
-    STATE_CHECKED_OUT: 'basket_put.png',
-    STATE_CHECKED_IN: 'traffic_lights_green.png',
-}
-
 STATE_LABELS = {
-    STATE_CHECKED_OUT: _(u'checked out'),
-    STATE_CHECKED_IN: _(u'checked in/available'),
+    STATE_CHECKED_OUT: _('Checked out'),
+    STATE_CHECKED_IN: _('Checked in/available'),
 }

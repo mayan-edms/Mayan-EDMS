@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
+"POT-Creation-Date: 2015-02-06 16:54-0400\n"
 "PO-Revision-Date: 2012-12-12 06:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,67 +18,57 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:26
-msgid "preview"
+#: __init__.py:38
+#, fuzzy
+msgid "Preview"
 msgstr "preview"
 
-#: __init__.py:30
-msgid "tagged items"
+#: __init__.py:42
+#, fuzzy
+msgid "Tagged items"
 msgstr "tagged items"
 
-#: __init__.py:37 __init__.py:45 links.py:19 views.py:124
-msgid "tags"
-msgstr "tags"
-
-#: __init__.py:68
-msgid "Returns a list of all the tags."
-msgstr ""
-
-#: forms.py:24
-msgid "Name"
-msgstr "Name"
-
-#: forms.py:25
-msgid "Color"
-msgstr "Color"
-
-#: forms.py:42 permissions.py:7
+#: __init__.py:49 __init__.py:54 forms.py:42 links.py:12 links.py:21
+#: models.py:18 permissions.py:7 views.py:116
 msgid "Tags"
 msgstr "Tags"
 
-#: links.py:10
-msgid "tag list"
-msgstr "tag list"
+#: links.py:13
+#, fuzzy
+msgid "Create new tag"
+msgstr "Create new tags"
 
-#: links.py:11
-msgid "create new tag"
-msgstr "create new tag"
-
-#: links.py:13 links.py:14
-msgid "attach tag"
+#: links.py:15 links.py:16
+#, fuzzy
+msgid "Attach tag"
 msgstr "attach tag"
 
-#: links.py:16
-msgid "remove tag"
+#: links.py:18
+#, fuzzy
+msgid "Remove tag"
 msgstr "remove tag"
 
-#: links.py:17
-msgid "remove tags"
+#: links.py:19
+#, fuzzy
+msgid "Remove tags"
 msgstr "remove tags"
 
-#: links.py:20 links.py:23
-msgid "delete"
+#: links.py:22 links.py:25
+#, fuzzy
+msgid "Delete"
 msgstr "delete"
 
-#: links.py:21
-msgid "edit"
-msgstr "edit"
+#: links.py:23
+#, fuzzy
+msgid "Edit"
+msgstr "Edit tags"
 
-#: links.py:22
-msgid "tagged documents"
-msgstr "tagged documents"
+#: links.py:24 models.py:14
+#, fuzzy
+msgid "Documents"
+msgstr "document"
 
-#: links.py:24
+#: links.py:26
 msgid "ACLs"
 msgstr "ACLs"
 
@@ -122,21 +112,18 @@ msgstr "Orange"
 msgid "Yellow"
 msgstr "Yellow"
 
-#: models.py:13 views.py:178 views.py:230 views.py:243
-msgid "tag"
-msgstr "tag"
+#: models.py:12
+msgid "Label"
+msgstr ""
 
-#: models.py:14
-msgid "color"
-msgstr "color"
+#: models.py:13
+msgid "Color"
+msgstr "Color"
 
 #: models.py:17
-msgid "tag properties"
-msgstr "tag properties"
-
-#: models.py:18
-msgid "tags properties"
-msgstr "tags properties"
+#, fuzzy
+msgid "Tag"
+msgstr "Tags"
 
 #: permissions.py:9
 msgid "Create new tags"
@@ -162,108 +149,95 @@ msgstr "Attach tags to documents"
 msgid "Remove tags from documents"
 msgstr "Remove tags from documents"
 
-#: views.py:43
-msgid "Tag already exists."
-msgstr "Tag already exists."
-
-#: views.py:51
+#: views.py:42
 msgid "Tag created succesfully."
 msgstr "Tag created succesfully."
 
-#: views.py:57
-msgid "create tag"
+#: views.py:48
+#, fuzzy
+msgid "Create tag"
 msgstr "create tag"
 
-#: views.py:69
+#: views.py:60
 msgid "Must provide at least one document."
 msgstr "Must provide at least one document."
 
-#: views.py:87
+#: views.py:78
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 
-#: views.py:92
+#: views.py:83
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 
-#: views.py:100
-msgid "document"
-msgstr "document"
+#: views.py:95
+#, fuzzy
+msgid "Attach tag to document"
+msgid_plural "Attach tag to documents"
+msgstr[0] "Attach tags to documents"
+msgstr[1] "Attach tags to documents"
 
-#: views.py:108
-#, python-format
-msgid "Attach tag to document: %s."
-msgstr "Attach tag to document: %s."
-
-#: views.py:110
-#, python-format
-msgid "Attach tag to documents: %s."
-msgstr "Attach tag to documents: %s."
-
-#: views.py:154
+#: views.py:145
 msgid "Must provide at least one tag."
 msgstr "Must provide at least one tag."
 
-#: views.py:169
+#: views.py:160
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Tag \"%s\" deleted successfully."
 
-#: views.py:171
+#: views.py:162
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Error deleting tag \"%(tag)s\": %(error)s"
 
-#: views.py:186
-#, python-format
-msgid "Are you sure you wish to delete the tag: %s?"
-msgstr "Are you sure you wish to delete the tag: %s?"
-
-#: views.py:187 views.py:190
+#: views.py:171
 msgid "Will be removed from all documents."
 msgstr "Will be removed from all documents."
 
-#: views.py:189
-#, python-format
-msgid "Are you sure you wish to delete the tags: %s?"
-msgstr "Are you sure you wish to delete the tags: %s?"
+#: views.py:174
+#, fuzzy
+msgid "Are you sure you wish to delete the selected tag?"
+msgid_plural "Are you sure you wish to delete the selected tags?"
+msgstr[0] "Are you sure you wish to delete the tag: %s?"
+msgstr[1] "Are you sure you wish to delete the tag: %s?"
 
-#: views.py:218
+#: views.py:205
 msgid "Tag updated succesfully."
 msgstr "Tag updated succesfully."
 
-#: views.py:227
-#, python-format
-msgid "edit tag: %s"
+#: views.py:211
+#, fuzzy, python-format
+msgid "Edit tag: %s"
 msgstr "edit tag: %s"
 
-#: views.py:240
-#, python-format
-msgid "documents with the tag \"%s\""
+#: views.py:226
+#, fuzzy, python-format
+msgid "Documents with the tag: %s"
 msgstr "documents with the tag \"%s\""
 
-#: views.py:259
-#, python-format
-msgid "tags for: %s"
+#: views.py:243
+#, fuzzy, python-format
+msgid "Tags for document: %s"
 msgstr "tags for: %s"
 
-#: views.py:271
+#: views.py:255
 msgid "Must provide at least one tagged document."
 msgstr "Must provide at least one tagged document."
 
-#: views.py:310
+#: views.py:293
 #, python-format
 msgid "Remove tag from document: %s."
 msgstr "Remove tag from document: %s."
 
-#: views.py:312
+#: views.py:295
 #, python-format
 msgid "Remove tag from documents: %s."
 msgstr "Remove tag from documents: %s."
 
-#: views.py:318
+#: views.py:301
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
@@ -272,7 +246,7 @@ msgstr ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
 
-#: views.py:321
+#: views.py:304
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
@@ -281,7 +255,7 @@ msgstr ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
 
-#: views.py:326
+#: views.py:309
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
@@ -290,7 +264,7 @@ msgstr ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
 
-#: views.py:329
+#: views.py:312
 #, fuzzy, python-format
 msgid ""
 "Are you sure you wish to remove the tags %(tags)s from the documents: "
@@ -299,16 +273,65 @@ msgstr ""
 "Are you sure you wish to remove the tags %(tag)s from the documents: "
 "%(documents)s?"
 
-#: views.py:336
+#: views.py:319
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 
-#: views.py:341
+#: views.py:324
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 
-#: templatetags/tags_tags.py:18
-msgid "Add tag to document"
-msgstr "Add tag to document"
+#~ msgid "Add tag to document"
+#~ msgstr "Add tag to document"
+
+#, fuzzy
+#~ msgid "Document created"
+#~ msgstr "document"
+
+#~ msgid "Attach tag to document: %s."
+#~ msgstr "Attach tag to document: %s."
+
+#~ msgid "Attach tag to documents: %s."
+#~ msgstr "Attach tag to documents: %s."
+
+#~ msgid "Are you sure you wish to delete the tags: %s?"
+#~ msgstr "Are you sure you wish to delete the tags: %s?"
+
+#~ msgid "Name"
+#~ msgstr "Name"
+
+#, fuzzy
+#~ msgid "Tag list"
+#~ msgstr "tag list"
+
+#, fuzzy
+#~ msgid "Tagged documents"
+#~ msgstr "tagged documents"
+
+#, fuzzy
+#~ msgid "Tag properties"
+#~ msgstr "tag properties"
+
+#, fuzzy
+#~ msgid "Tags properties"
+#~ msgstr "tags properties"
+
+#~ msgid "Tag already exists."
+#~ msgstr "Tag already exists."
+
+#~ msgid "tags"
+#~ msgstr "tags"
+
+#~ msgid "create new tag"
+#~ msgstr "create new tag"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "tag"
+#~ msgstr "tag"
+
+#~ msgid "color"
+#~ msgstr "color"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
+"POT-Creation-Date: 2015-02-06 16:53-0400\n"
 "PO-Revision-Date: 2012-02-02 18:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,86 +18,93 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: links.py:9 models.py:218 views.py:59
-msgid "roles"
-msgstr "roles"
+#: links.py:11 widgets.py:25
+msgid "Grant"
+msgstr "Grant"
 
-#: links.py:10
-msgid "create new role"
-msgstr "create new role"
-
-#: links.py:11
-msgid "edit"
-msgstr "edit"
-
-#: links.py:12
-msgid "members"
-msgstr "members"
-
-#: links.py:13
-msgid "role permissions"
-msgstr "role permissions"
+#: links.py:12 widgets.py:19
+msgid "Revoke"
+msgstr "Revoke"
 
 #: links.py:14
-msgid "delete"
+#, fuzzy
+msgid "Create new role"
+msgstr "create new role"
+
+#: links.py:15
+#, fuzzy
+msgid "Delete"
 msgstr "delete"
 
 #: links.py:16
-msgid "grant"
-msgstr "grant"
+msgid "Edit"
+msgstr ""
 
-#: links.py:17
-msgid "revoke"
-msgstr "revoke"
+#: links.py:17 models.py:218 views.py:59
+#, fuzzy
+msgid "Roles"
+msgstr "roles"
+
+#: links.py:18
+#, fuzzy
+msgid "Members"
+msgstr "members"
+
+#: links.py:19
+#, fuzzy
+msgid "Role permissions"
+msgstr "role permissions"
 
 #: models.py:51
 msgid "Insufficient permissions."
 msgstr "Insufficient permissions."
 
 #: models.py:126 views.py:80
-msgid "namespace"
+#, fuzzy
+msgid "Namespace"
 msgstr "namespace"
 
 #: models.py:127 views.py:81
-msgid "name"
-msgstr "name"
+msgid "Name"
+msgstr ""
 
-#: models.py:134 models.py:196 views.py:137 views.py:199
-msgid "permission"
-msgstr "permission"
+#: models.py:134 models.py:196 views.py:134
+#, fuzzy
+msgid "Permission"
+msgstr "Permissions"
 
-#: models.py:135 views.py:77 views.py:139 views.py:201
-msgid "permissions"
-msgstr "permissions"
+#: models.py:135 permissions.py:7 views.py:77 views.py:136
+msgid "Permissions"
+msgstr "Permissions"
 
 #: models.py:204
-msgid "permission holder"
+#, fuzzy
+msgid "Permission holder"
 msgstr "permission holder"
 
 #: models.py:205
-msgid "permission holders"
+#, fuzzy
+msgid "Permission holders"
 msgstr "permission holders"
 
 #: models.py:213
-msgid "label"
+#, fuzzy
+msgid "Label"
 msgstr "label"
 
-#: models.py:217 models.py:248 views.py:31 views.py:42 views.py:49 views.py:96
-#: views.py:314
-msgid "role"
-msgstr "role"
-
-#: models.py:263
-msgid "role member"
-msgstr "role member"
+#: models.py:217 models.py:248
+msgid "Role"
+msgstr ""
 
 #: models.py:264
-msgid "role members"
-msgstr "role members"
+#, fuzzy
+msgid "Role member"
+msgstr "role member"
 
-#: permissions.py:7
-msgid "Permissions"
-msgstr "Permissions"
+#: models.py:265
+#, fuzzy
+msgid "Role members"
+msgstr "role members"
 
 #: permissions.py:9
 msgid "View roles"
@@ -123,87 +130,103 @@ msgstr "Grant permissions"
 msgid "Revoke permissions"
 msgstr "Revoke permissions"
 
+#: settings.py:11
+msgid ""
+"A list of existing roles that are automatically assigned to newly created "
+"users"
+msgstr ""
+"A list of existing roles that are automatically assigned to newly created "
+"users"
+
 #: views.py:83
-msgid "has permission"
+#, fuzzy
+msgid "Has permission"
 msgstr "has permission"
 
-#: views.py:134 views.py:196
+#: views.py:131 views.py:191
 msgid " and "
 msgstr " and "
 
-#: views.py:134 views.py:196
+#: views.py:131 views.py:191
 #, python-format
 msgid "%(permissions)s to %(requester)s"
 msgstr "%(permissions)s to %(requester)s"
 
-#: views.py:144
+#: views.py:141
 #, python-format
 msgid "Permission \"%(permission)s\" granted to: %(requester)s."
 msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
 
-#: views.py:147
+#: views.py:144
 #, python-format
 msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
 msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
 
-#: views.py:158
+#: views.py:154
 #, python-format
 msgid ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 msgstr ""
 "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 
-#: views.py:206
+#: views.py:194
+msgid "permission"
+msgstr "permission"
+
+#: views.py:196
+msgid "permissions"
+msgstr "permissions"
+
+#: views.py:201
 #, python-format
 msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
 msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
 
-#: views.py:209
+#: views.py:204
 #, python-format
 msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 
-#: views.py:220
+#: views.py:214
 #, python-format
 msgid ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 msgstr ""
 "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 
-#: views.py:255 views.py:279
+#: views.py:249 views.py:273
 msgid "Users"
 msgstr "Users"
 
-#: views.py:258 views.py:282
+#: views.py:252 views.py:276
 msgid "Groups"
 msgstr "Groups"
 
-#: views.py:261 views.py:285
+#: views.py:255 views.py:279
 msgid "Special"
 msgstr "Special"
 
-#: views.py:310
-#, python-format
-msgid "non members of role: %s"
+#: views.py:304
+#, fuzzy, python-format
+msgid "Non members of role: %s"
 msgstr "non members of role: %s"
 
-#: views.py:311
-#, python-format
-msgid "members of role: %s"
+#: views.py:305
+#, fuzzy, python-format
+msgid "Members of role: %s"
 msgstr "members of role: %s"
 
-#: widgets.py:16
-msgid "Revoke"
-msgstr "Revoke"
+#~ msgid "edit"
+#~ msgstr "edit"
 
-#: widgets.py:21
-msgid "Grant"
-msgstr "Grant"
+#~ msgid "grant"
+#~ msgstr "grant"
 
-#: conf/settings.py:10
-msgid ""
-"A list of existing roles that are automatically assigned to newly created "
-"users"
-msgstr ""
-"A list of existing roles that are automatically assigned to newly created "
-"users"
+#~ msgid "revoke"
+#~ msgstr "revoke"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid "role"
+#~ msgstr "role"

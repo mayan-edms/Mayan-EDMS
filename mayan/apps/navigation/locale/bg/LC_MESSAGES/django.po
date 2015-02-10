@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2012-12-12 06:06+0000\n"
+"POT-Creation-Date: 2015-02-06 16:53-0400\n"
+"PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/bg/)\n"
@@ -19,14 +20,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:14
-msgid "Multi item action"
-msgstr "Действие върху няколко елемента"
+#: classes.py:21
+msgid "Unnamed link"
+msgstr ""
 
-#: widgets.py:48
-msgid "icon"
-msgstr "икона"
+#: forms.py:29
+msgid "Actions"
+msgstr ""
 
-#: templatetags/navigation_tags.py:274
-msgid "Selected item actions:"
-msgstr "Действия върху елемента:"
+#~ msgid "Multi item action"
+#~ msgstr "Multi item action"
+
+#~ msgid "Selected item actions:"
+#~ msgstr "Selected item actions:"
+
+#~ msgid "icon"
+#~ msgstr "icon"

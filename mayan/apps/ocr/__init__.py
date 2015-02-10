@@ -1,86 +1,75 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 
-from django.db import DatabaseError
-from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
+from common.utils import encapsulate
 from documents.models import Document, DocumentVersion
+from documents.signals import post_version_upload
+from documents.widgets import document_link
 from main.api import register_maintenance_links
-from navigation.api import register_links, register_multi_item_links
+from navigation.api import register_links, register_model_list_columns
+from navigation.links import link_spacer
 from project_tools.api import register_tool
-from scheduler.api import register_interval_job
-from statistics.classes import StatisticNamespace
+from rest_api.classes import APIEndPoint
 
-from south.signals import post_migrate
-
-from .conf.settings import (AUTOMATIC_OCR, QUEUE_PROCESSING_INTERVAL)
-from .exceptions import AlreadyQueued
-from .links import (submit_document, submit_document_multiple,
-    re_queue_multiple_document, queue_document_multiple_delete,
-    document_queue_disable, document_queue_enable,
-    all_document_ocr_cleanup, queue_document_list,
-    ocr_tool_link)
-from .literals import QUEUEDOCUMENT_STATE_PENDING, QUEUEDOCUMENT_STATE_PROCESSING
-from .models import DocumentQueue
+from .links import (
+    link_document_all_ocr_cleanup, link_document_submit,
+    link_document_submit_multiple, link_entry_delete,
+    link_entry_delete_multiple, link_entry_list, link_entry_re_queue,
+    link_entry_re_queue_multiple
+)
+from .models import DocumentVersionOCRError
 from .permissions import PERMISSION_OCR_DOCUMENT
-from .statistics import OCRStatistics
-from .tasks import task_process_document_queues
+from .tasks import task_do_ocr
 
 logger = logging.getLogger(__name__)
 
+register_links(Document, [link_document_submit])
+register_links([Document], [link_document_submit_multiple, link_spacer], menu_name='multi_item_links')
 
-register_links(Document, [submit_document])
-register_multi_item_links(['document_find_duplicates', 'folder_view', 'index_instance_node_view', 'document_type_document_list', 'search', 'results', 'document_group_view', 'document_list', 'document_list_recent', 'tag_tagged_item_list'], [submit_document_multiple])
-
-register_links(DocumentQueue, [document_queue_disable, document_queue_enable])
-
-register_multi_item_links(['queue_document_list'], [re_queue_multiple_document, queue_document_multiple_delete])
-
-register_links(['document_queue_disable', 'document_queue_enable', 'queue_document_list'], [queue_document_list], menu_name='secondary_menu')
-
-register_maintenance_links([all_document_ocr_cleanup], namespace='ocr', title=_(u'OCR'))
+register_links([DocumentVersionOCRError], [link_entry_re_queue_multiple, link_entry_delete_multiple], menu_name='multi_item_links')
+register_links([DocumentVersionOCRError], [link_entry_re_queue, link_entry_delete])
+register_links(['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError], [link_entry_list], menu_name='secondary_menu')
+register_maintenance_links([link_document_all_ocr_cleanup], namespace='ocr', title=_('OCR'))
 
 
-@receiver(post_save, dispatch_uid='document_post_save', sender=DocumentVersion)
-def document_post_save(sender, instance, **kwargs):
-    logger.debug('received post save signal')
-    logger.debug('instance: %s' % instance)
-    if kwargs.get('created', False):
-        if AUTOMATIC_OCR:
-            try:
-                DocumentQueue.objects.queue_document(instance.document)
-            except AlreadyQueued:
-                pass
+def document_ocr_submit(self):
+    task_do_ocr.apply_async(args=[self.latest_version.pk], queue='ocr')
 
 
-@receiver(post_migrate, dispatch_uid='create_default_queue')
-def create_default_queue_signal_handler(sender, **kwargs):
-    if kwargs['app'] == 'ocr':
-        DocumentQueue.objects.get_or_create(name='default')
+def document_version_ocr_submit(self):
+    task_do_ocr.apply_async(args=[self.pk], queue='ocr')
 
 
-def reset_queue_documents():
-    try:
-        default_queue = DocumentQueue.objects.get(name='default')
-    except (DatabaseError, DocumentQueue.DoesNotExist):
-        pass
-    else:
-        default_queue.queuedocument_set.filter(state=QUEUEDOCUMENT_STATE_PROCESSING).update(state=QUEUEDOCUMENT_STATE_PENDING)
+@receiver(post_version_upload, dispatch_uid='post_version_upload_ocr', sender=DocumentVersion)
+def post_version_upload_ocr(sender, instance, **kwargs):
+    logger.debug('received post_version_upload')
+    logger.debug('instance pk: %s', instance.pk)
+    if instance.document.document_type.ocr:
+        instance.submit_for_ocr()
 
 
-register_interval_job('task_process_document_queues', _(u'Checks the OCR queue for pending documents.'), task_process_document_queues, seconds=QUEUE_PROCESSING_INTERVAL)
+Document.add_to_class('submit_for_ocr', document_ocr_submit)
+DocumentVersion.add_to_class('submit_for_ocr', document_version_ocr_submit)
 
-register_tool(ocr_tool_link)
+class_permissions(Document, [PERMISSION_OCR_DOCUMENT])
 
-class_permissions(Document, [
-    PERMISSION_OCR_DOCUMENT,
+register_tool(link_entry_list)
+
+APIEndPoint('ocr')
+
+register_model_list_columns(DocumentVersionOCRError, [
+    {
+        'name': _('Document'), 'attribute': encapsulate(lambda entry: document_link(entry.document_version.document))
+    },
+    {
+        'name': _('Added'), 'attribute': 'datetime_submitted'
+    },
+    {
+        'name': _('Result'), 'attribute': 'result'
+    },
 ])
-
-reset_queue_documents()
-
-namespace = StatisticNamespace(name='ocr', label=_(u'OCR'))
-namespace.add_statistic(OCRStatistics(name='ocr_stats', label=_(u'OCR queue statistics')))

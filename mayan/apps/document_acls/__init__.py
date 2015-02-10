@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from acls.api import class_permissions
 from acls.permissions import ACLS_VIEW_ACL, ACLS_EDIT_ACL

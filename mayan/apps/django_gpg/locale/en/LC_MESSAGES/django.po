@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
+"POT-Creation-Date: 2015-02-06 16:50-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,89 +18,90 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: api.py:24
-msgid "Public"
-msgstr "Public"
-
-#: api.py:25
-msgid "Secret"
-msgstr "Secret"
-
-#: api.py:33 api.py:38
-msgid "RSA"
-msgstr "RSA"
-
-#: api.py:34
-msgid "DSA"
-msgstr "DSA"
-
-#: api.py:39
-msgid "Elgamal"
-msgstr "Elgamal"
-
-#: api.py:53
-msgid "Bad signature."
-msgstr "Bad signature."
-
-#: api.py:57
-msgid "Document not signed or invalid signature."
-msgstr "Document not signed or invalid signature."
-
-#: api.py:61
-msgid "Signature error."
-msgstr "Signature error."
-
-#: api.py:65
-msgid "Document is signed but no public key is available for verification."
-msgstr "Document is signed but no public key is available for verification."
-
-#: api.py:69
-msgid "Document is signed, and signature is good."
-msgstr "Document is signed, and signature is good."
-
-#: api.py:73
-msgid "Document is signed with a valid signature."
-msgstr "Document is signed with a valid signature."
-
-#: api.py:146
-msgid "unknown"
+#: api.py:94
+#, fuzzy
+msgid "Unknown"
 msgstr "unknown"
 
-#: forms.py:7
+#: forms.py:9
 msgid "Term"
 msgstr "Term"
 
-#: forms.py:8
+#: forms.py:10
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Name, e-mail, key ID or key fingerprint to look for."
 
-#: links.py:6 views.py:66
-msgid "private keys"
+#: links.py:10 views.py:68
+#, fuzzy
+msgid "Private keys"
 msgstr "private keys"
 
-#: links.py:7 views.py:69
-msgid "public keys"
+#: links.py:11 views.py:71
+#, fuzzy
+msgid "Public keys"
 msgstr "public keys"
 
-#: links.py:8
-msgid "delete"
+#: links.py:12
+#, fuzzy
+msgid "Delete"
 msgstr "delete"
 
-#: links.py:9
-msgid "query keyservers"
-msgstr "query keyservers"
+#: links.py:13 permissions.py:11
+msgid "Query keyservers"
+msgstr "Query keyservers"
 
-#: links.py:10
-msgid "import"
+#: links.py:14
+#, fuzzy
+msgid "Import"
 msgstr "import"
 
-#: links.py:11
-msgid "key management"
-msgstr "key management"
-
-#: permissions.py:7
+#: links.py:15 permissions.py:7
 msgid "Key management"
 msgstr "Key management"
+
+#: literals.py:6
+msgid "Public"
+msgstr "Public"
+
+#: literals.py:7
+msgid "Secret"
+msgstr "Secret"
+
+#: literals.py:15 literals.py:20
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:16
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:21
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: literals.py:35
+msgid "Bad signature."
+msgstr "Bad signature."
+
+#: literals.py:38
+msgid "Document not signed or invalid signature."
+msgstr "Document not signed or invalid signature."
+
+#: literals.py:41
+msgid "Signature error."
+msgstr "Signature error."
+
+#: literals.py:44
+msgid "Document is signed but no public key is available for verification."
+msgstr "Document is signed but no public key is available for verification."
+
+#: literals.py:47
+msgid "Document is signed, and signature is good."
+msgstr "Document is signed, and signature is good."
+
+#: literals.py:50
+msgid "Document is signed with a valid signature."
+msgstr "Document is signed with a valid signature."
 
 #: permissions.py:9
 msgid "View keys"
@@ -110,51 +111,59 @@ msgstr "View keys"
 msgid "Delete keys"
 msgstr "Delete keys"
 
-#: permissions.py:11
-msgid "Query keyservers"
-msgstr "Query keyservers"
-
 #: permissions.py:12
 msgid "Import keys from keyservers"
 msgstr "Import keys from keyservers"
 
-#: views.py:37
+#: settings.py:14
+msgid "List of keyservers to be queried for unknown keys."
+msgstr "List of keyservers to be queried for unknown keys."
+
+#: settings.py:15
+msgid "Home directory used to store keys as well as configuration files."
+msgstr "Home directory used to store keys as well as configuration files."
+
+#: settings.py:16
+msgid "Path to the GPG binary."
+msgstr ""
+
+#: views.py:40
 #, python-format
 msgid "Key: %s, imported successfully."
 msgstr "Key: %s, imported successfully."
 
-#: views.py:42
+#: views.py:45
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgstr "Unable to import key id: %(key_id)s; %(error)s"
 
-#: views.py:51
+#: views.py:54
 msgid "Import key"
 msgstr "Import key"
 
-#: views.py:52
+#: views.py:55
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "Are you sure you wish to import key id: %s?"
 
-#: views.py:77
+#: views.py:79
 msgid "Key ID"
 msgstr "Key ID"
 
-#: views.py:81
+#: views.py:83
 msgid "Owner"
 msgstr "Owner"
 
-#: views.py:101
+#: views.py:103
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Key: %s, deleted successfully."
 
-#: views.py:108
+#: views.py:110
 msgid "Delete key"
 msgstr "Delete key"
 
-#: views.py:110
+#: views.py:112
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -165,54 +174,67 @@ msgstr ""
 "that is part of a public/private pair the private key will be deleted as "
 "well."
 
-#: views.py:128
+#: views.py:129
 msgid "Query key server"
 msgstr "Query key server"
 
-#: views.py:141
+#: views.py:142
 msgid "results"
 msgstr "results"
 
-#: views.py:146
+#: views.py:147
 msgid "ID"
 msgstr "ID"
 
-#: views.py:150
-msgid "type"
-msgstr "type"
+#: views.py:151
+msgid "Type"
+msgstr ""
 
-#: views.py:154
-msgid "creation date"
+#: views.py:155
+#, fuzzy
+msgid "Creation date"
 msgstr "creation date"
 
-#: views.py:158
-msgid "disabled"
+#: views.py:159
+#, fuzzy
+msgid "Disabled"
 msgstr "disabled"
 
-#: views.py:162
-msgid "expiration date"
+#: views.py:163
+#, fuzzy
+msgid "Expiration date"
 msgstr "expiration date"
 
-#: views.py:166
-msgid "expired"
+#: views.py:167
+#, fuzzy
+msgid "Expired"
 msgstr "expired"
 
-#: views.py:170
-msgid "length"
+#: views.py:171
+#, fuzzy
+msgid "Length"
 msgstr "length"
 
-#: views.py:174
-msgid "revoked"
+#: views.py:175
+#, fuzzy
+msgid "Revoked"
 msgstr "revoked"
 
-#: views.py:179
+#: views.py:180
 msgid "Identifies"
 msgstr "Identifies"
 
-#: conf/settings.py:15
-msgid "List of keyservers to be queried for unknown keys."
-msgstr "List of keyservers to be queried for unknown keys."
+#~ msgid "private keys"
+#~ msgstr "private keys"
 
-#: conf/settings.py:16
-msgid "Home directory used to store keys as well as configuration files."
-msgstr "Home directory used to store keys as well as configuration files."
+#~ msgid "public keys"
+#~ msgstr "public keys"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "query keyservers"
+#~ msgstr "query keyservers"
+
+#~ msgid "key management"
+#~ msgstr "key management"

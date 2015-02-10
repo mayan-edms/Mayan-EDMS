@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2012-10-17 09:35+0000\n"
-"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
+"POT-Creation-Date: 2015-02-06 20:44-0400\n"
+"PO-Revision-Date: 2015-01-11 22:05+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/bg/)\n"
 "Language: bg\n"
@@ -19,105 +20,81 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:40
-msgid "Check expired check out documents and checks them in."
-msgstr "Проверете изтеклите за проверки документи и ги регистрирайте  отново."
-
-#: events.py:5
+#: events.py:7
 msgid "Document checked out"
 msgstr "Документът е проверен."
 
-#: events.py:6
-#, python-format
-msgid "Document \"%(document)s\" checked out by %(fullname)s."
-msgstr "Докумнетът \"%(document)s\" е проверен от %(fullname)s."
-
-#: events.py:12
+#: events.py:8
 msgid "Document checked in"
 msgstr "Докъментът е регистриран"
 
-#: events.py:13
-#, python-format
-msgid "Document \"%(document)s\" checked in by %(fullname)s."
-msgstr "Документът \"%(document)s\" е регистриран от %(fullname)s."
-
-#: events.py:19
+#: events.py:9
 msgid "Document automatically checked in"
 msgstr "Автоматично регистрирани документи"
 
-#: events.py:20
-#, python-format
-msgid "Document \"%(document)s\" automatically checked in."
-msgstr "Документ \"%(document)s\" е автоматично регистриран."
-
-#: events.py:25
+#: events.py:10
 msgid "Document forcefully checked in"
 msgstr "Документът е принудително регистриран"
 
-#: events.py:26
-#, python-format
-msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-msgstr "Документът \"%(document)s\" принудително регистриран от %(fullname)s."
-
-#: links.py:16
-msgid "checkouts"
-msgstr "проверки"
-
-#: links.py:17
-msgid "check out document"
-msgstr "проверка на документ"
-
-#: links.py:18
-msgid "check in document"
-msgstr "регистриране на документ"
+#: exceptions.py:18 views.py:82
+msgid "Document already checked out."
+msgstr "Документът вече е проверен."
 
 #: links.py:19
-msgid "check in/out"
-msgstr "регистриране/проверяване"
+msgid "Checkouts"
+msgstr ""
 
-#: literals.py:14
-msgid "checked out"
-msgstr "проверен"
+#: links.py:20
+msgid "Check out document"
+msgstr ""
 
-#: literals.py:15
-msgid "checked in/available"
-msgstr "регистриран/наличен"
+#: links.py:21
+msgid "Check in document"
+msgstr ""
 
-#: models.py:24 views.py:132
-msgid "document"
-msgstr "документ"
+#: links.py:22
+msgid "Check in/out"
+msgstr ""
+
+#: literals.py:9
+msgid "Checked out"
+msgstr ""
+
+#: literals.py:10
+msgid "Checked in/available"
+msgstr ""
+
+#: models.py:23
+msgid "Document"
+msgstr ""
+
+#: models.py:24
+msgid "Check out date and time"
+msgstr ""
+
+#: models.py:25 widgets.py:79
+msgid "Check out expiration date and time"
+msgstr "Проверете срока на валидност"
 
 #: models.py:25
-msgid "check out date and time"
-msgstr "дата и час на проверка"
-
-#: models.py:26
-msgid "check out expiration date and time"
-msgstr "проверка на срока на валидност, дата и час"
-
-#: models.py:26
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr "Време за задържане на проверения документ в минути."
 
-#: models.py:31
-msgid "block new version upload"
-msgstr "блокиране качването на нова версия"
+#: models.py:32
+msgid "Block new version upload"
+msgstr ""
 
-#: models.py:31
+#: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
 msgstr "Забранете качването на нова версия на този документ."
 
-#: models.py:54
-msgid "document checkout"
-msgstr "проверка на документ"
-
-#: models.py:55
-msgid "document checkouts"
-msgstr "проверки на документ"
-
-#: permissions.py:7
+#: models.py:58 permissions.py:7
 msgid "Document checkout"
 msgstr "Проверка на документ"
+
+#: models.py:59
+msgid "Document checkouts"
+msgstr ""
 
 #: permissions.py:9
 msgid "Check out documents"
@@ -136,20 +113,25 @@ msgid "Allow overriding check out restrictions"
 msgstr "Разреши проверки незвисимо от забрана"
 
 #: views.py:32
-msgid "checked out documents"
-msgstr "проверени документи"
+msgid "Documents checked out"
+msgstr ""
 
 #: views.py:35
-msgid "checkout user"
-msgstr "отписване потребител"
+msgid "Checkout user"
+msgstr ""
 
 #: views.py:36
-msgid "checkout time and date"
-msgstr "отписване, час и дата"
+msgid "Checkout time and date"
+msgstr ""
 
 #: views.py:37
-msgid "checkout expiration"
-msgstr "проверка срок на валидност"
+msgid "Checkout expiration"
+msgstr ""
+
+#: views.py:50
+#, python-format
+msgid "Document status: %s"
+msgstr ""
 
 #: views.py:54
 #, python-format
@@ -172,52 +154,48 @@ msgid "New versions allowed: %s"
 msgstr "Разрешени нови версии: %s"
 
 #: views.py:57
-msgid "yes"
-msgstr "да"
+msgid "Yes"
+msgstr ""
 
 #: views.py:57
-msgid "no"
-msgstr "не"
+msgid "No"
+msgstr ""
 
 #: views.py:62
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Данни от проверката на документ: %s"
 
-#: views.py:82
+#: views.py:85
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "Грешка при проверка на документ; %s"
 
-#: views.py:84
+#: views.py:87
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Документ \"%s\" проверен успешно."
-
-#: views.py:87
-msgid "Document already checked out."
-msgstr "Документът вече е проверен."
 
 #: views.py:95
 #, python-format
 msgid "Check out document: %s"
 msgstr "Провери документ: %s"
 
-#: views.py:124
+#: views.py:107 views.py:128
 msgid "Document has not been checked out."
 msgstr "Документът не е проверяван."
 
-#: views.py:126
+#: views.py:130
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "Грешка при регистрация на документ; %s"
 
-#: views.py:128
+#: views.py:132
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Документ \"%s\" е регистриран успешно."
 
-#: views.py:141
+#: views.py:143
 #, python-format
 msgid ""
 "You didn't originally checked out this document.  Are you sure you wish to "
@@ -226,45 +204,40 @@ msgstr ""
 "Проверката на този документ не е извършвана от Вас. Сигурни ли сте, че "
 "искате принудително да регистрирате документа: %s?"
 
-#: views.py:143
+#: views.py:145
 #, python-format
 msgid "Are you sure you wish to check in document: %s?"
 msgstr "Сигурни ли сте, че искате да регистрирате този документ: %s?"
 
-#: widgets.py:19
-#, python-format
-msgid "Document status: %(widget)s %(text)s"
-msgstr "Статус на документа: %(widget)s %(text)s"
-
-#: widgets.py:31
+#: widgets.py:17
 msgid "Days"
 msgstr "Дни"
 
-#: widgets.py:32
+#: widgets.py:18
 msgid "Hours"
 msgstr "Часове"
 
-#: widgets.py:33
+#: widgets.py:19
 msgid "Minutes"
 msgstr "Минути"
 
-#: widgets.py:63
+#: widgets.py:49
 msgid "Enter a valid number of days."
 msgstr "Въведете валиден брой дни."
 
-#: widgets.py:64
+#: widgets.py:50
 msgid "Enter a valid number of hours."
 msgstr "Въведете валиден брой часове."
 
-#: widgets.py:65
+#: widgets.py:51
 msgid "Enter a valid number of minutes."
 msgstr "Въведете валиден брой минути."
 
-#: widgets.py:66
+#: widgets.py:52
 msgid "Enter a valid time difference."
 msgstr "Въведете валидна времева разлика."
 
-#: widgets.py:92
+#: widgets.py:78
 msgid ""
 "Amount of time to hold the document in the checked out state in days, hours "
 "and/or minutes."
@@ -272,6 +245,41 @@ msgstr ""
 "Време за задържане на документа в състояние проверен, в дни, часове и/или "
 "минути."
 
-#: widgets.py:93
-msgid "Check out expiration date and time"
-msgstr "Проверете срока на валидност"
+#~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
+#~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."
+
+#~ msgid "Document \"%(document)s\" checked in by %(fullname)s."
+#~ msgstr "Document \"%(document)s\" checked in by %(fullname)s."
+
+#~ msgid "Document \"%(document)s\" automatically checked in."
+#~ msgstr "Document \"%(document)s\" automatically checked in."
+
+#~ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
+#~ msgstr "Document \"%(document)s\" forcefully checked in by %(fullname)s."
+
+#~ msgid "document"
+#~ msgstr "document"
+
+#~ msgid "check out expiration date and time"
+#~ msgstr "check out expiration date and time"
+
+#~ msgid "document checkout"
+#~ msgstr "document checkout"
+
+#~ msgid "document checkouts"
+#~ msgstr "document checkouts"
+
+#~ msgid "checked out documents"
+#~ msgstr "checked out documents"
+
+#~ msgid "no"
+#~ msgstr "no"
+
+#~ msgid "Check expired check out documents and checks them in."
+#~ msgstr "Check expired check out documents and checks them in."
+
+#~ msgid "check out document"
+#~ msgstr "check out document"
+
+#~ msgid "check in document"
+#~ msgstr "check in document"

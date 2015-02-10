@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # Dezső József <dejo60@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:52-0400\n"
-"PO-Revision-Date: 2013-06-25 11:22+0000\n"
-"Last-Translator: Dezső József <dejo60@gmail.com>\n"
+"POT-Creation-Date: 2015-02-06 16:51-0400\n"
+"PO-Revision-Date: 2015-01-11 22:05+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/hu/)\n"
 "Language: hu\n"
@@ -23,95 +24,99 @@ msgstr ""
 msgid "Search terms"
 msgstr "keresési feltételek"
 
-#: links.py:3
-msgid "search"
-msgstr "keresés"
-
-#: links.py:4 views.py:78
-msgid "advanced search"
-msgstr "részletes keresés"
-
-#: links.py:5
-msgid "search again"
-msgstr "keresés ismétlése"
-
-#: models.py:21
-msgid "user"
-msgstr "felhasználó"
-
-#: models.py:22
-msgid "query"
-msgstr "lekérdezés"
-
-#: models.py:23
-msgid "datetime created"
-msgstr "létrehozás dátuma és ideje"
-
-#: models.py:24
-msgid "hits"
-msgstr "találat"
-
-#: models.py:60
-msgid "recent search"
-msgstr "legutóbbi keresés"
-
-#: models.py:61
-msgid "recent searches"
-msgstr "legutóbbi keresések"
-
-#: views.py:44
-#, python-format
-msgid "results, (showing only %(shown_result_count)s out of %(result_count)s)"
-msgstr ""
-"eredmények,  (csak  %(shown_result_count)s látható a %(result_count)s)-ból."
-
-#: views.py:49
-msgid "results"
-msgstr "eredmények"
-
-#: views.py:66
-msgid "type"
-msgstr "típus"
-
-#: views.py:82 views.py:92 views.py:94 templatetags/search_tags.py:19
-#: templatetags/search_tags.py:20
+#: links.py:5 views.py:66 views.py:72 views.py:74
+#: templatetags/search_tags.py:20 templatetags/search_tags.py:21
 msgid "Search"
 msgstr "Keresés"
 
-#: conf/settings.py:12
+#: links.py:6 views.py:62
+msgid "Advanced search"
+msgstr ""
+
+#: links.py:7
+msgid "Search again"
+msgstr ""
+
+#: models.py:19
+msgid "User"
+msgstr ""
+
+#: models.py:25
+msgid "Query"
+msgstr ""
+
+#: models.py:26
+msgid "Datetime created"
+msgstr ""
+
+#: models.py:27
+msgid "Hits"
+msgstr ""
+
+#: models.py:64
+msgid "Recent search"
+msgstr ""
+
+#: models.py:65
+msgid "Recent searches"
+msgstr ""
+
+#: settings.py:12
 msgid "Maximum amount search hits to fetch and display."
 msgstr "A letölthető és megjeleníthető keresési találatok maximális száma."
 
-#: conf/settings.py:13
+#: settings.py:13
 msgid "Maximum number of search queries to remember per user."
 msgstr "A keresési előzmények maximális száma felhasználónként."
 
-#: templates/search_help.html:3
-msgid "Help"
-msgstr "Segítség / súgó"
-
-#: templates/search_help.html:4
-#, python-format
-msgid ""
-"Enter the desired search keywords separated by space.  Only the top "
-"%(search_results_limit)s results will be available."
+#: views.py:38
+msgid "Results"
 msgstr ""
-"Adja meg a kívánt keresési kulcsszavakat szóközzel elválasztva. Csak az első "
-"%(search_results_limit)s eredmények lesznek elérhetőek."
 
-#: templates/search_results.html:3
+#: views.py:46
+msgid "Type"
+msgstr ""
+
+#: templates/dynamic_search/search_results.html:3
 msgid "Search results"
 msgstr "A keresés eredményei"
 
-#: templates/search_results.html:19
+#: templates/dynamic_search/search_results.html:19
 #, python-format
 msgid "Elapsed time: %(time_delta)s seconds"
 msgstr "Eltelt idő: %(time_delta)s másodperc"
 
-#: templatetags/search_tags.py:33
+#: templatetags/search_tags.py:37
 #, python-format
-msgid "recent searches (maximum of %d)"
-msgstr "legutóbbi keresések (legfeljebb %d)"
+msgid "Recent searches (maximum of %d)"
+msgstr ""
+
+#~ msgid ""
+#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgstr ""
+#~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
+
+#~ msgid "search"
+#~ msgstr "search"
+
+#~ msgid "user"
+#~ msgstr "user"
+
+#~ msgid "hits"
+#~ msgstr "hits"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "Help"
+#~ msgstr "Help"
+
+#~ msgid ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
+#~ msgstr ""
+#~ "Enter the desired search keywords separated by space.  Only the top "
+#~ "%(search_results_limit)s results will be available."
 
 #~ msgid "Search error: %s"
-#~ msgstr "Keresési hiba: %s"
+#~ msgstr "Search error: %s"

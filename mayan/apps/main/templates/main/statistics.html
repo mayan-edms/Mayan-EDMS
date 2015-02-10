@@ -1,0 +1,13 @@
+{% extends 'main/base.html' %}
+
+{% block title %} :: {{ title }}{% endblock %}
+
+{% block content %}
+    {% for block in blocks %}
+        {% with block.title as title %}
+        {% with block.paragraphs as paragraphs %}
+            {% include 'main/generic_subtemplate.html' %}
+        {% endwith %}
+        {% endwith %}
+    {% endfor %}
+{% endblock %}

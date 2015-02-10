@@ -1,18 +1,19 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
+import warnings
 import os
 
 from django import forms
 from django.conf import settings
 from django.contrib.auth import authenticate
-from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
+from .models import UserLocaleProfile
 from .utils import return_attrib
-from .widgets import DetailSelectMultiple, PlainWidget, EmailInput
+from .widgets import DetailSelectMultiple, EmailInput, PlainWidget
 
 
 class DetailForm(forms.ModelForm):
@@ -94,7 +95,7 @@ class ChoiceForm(forms.Form):
     """
     def __init__(self, *args, **kwargs):
         choices = kwargs.pop('choices', [])
-        label = kwargs.pop('label', _(u'Selection'))
+        label = kwargs.pop('label', _('Selection'))
         super(ChoiceForm, self).__init__(*args, **kwargs)
         self.fields['selection'].choices = choices
         self.fields['selection'].label = label
@@ -107,6 +108,7 @@ class UserForm_view(DetailForm):
     """
     Form used to display an user's public details
     """
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email', 'is_staff', 'is_superuser', 'last_login', 'date_joined', 'groups')
@@ -116,24 +118,37 @@ class UserForm(forms.ModelForm):
     """
     Form used to edit an user's mininal fields by the user himself
     """
+
     class Meta:
         model = User
         fields = ('username', 'first_name', 'last_name', 'email')
+
+
+class LocaleProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserLocaleProfile
+        fields = ('language', 'timezone')
+
+
+class LocaleProfileForm_view(DetailForm):
+    class Meta:
+        model = UserLocaleProfile
+        fields = ('language', 'timezone')
 
 
 class EmailAuthenticationForm(forms.Form):
     """
     A form to use email address authentication
     """
-    email = forms.CharField(label=_(u'Email'), max_length=254,
+    email = forms.CharField(label=_('Email'), max_length=254,
         widget=EmailInput()
     )
-    password = forms.CharField(label=_(u'Password'), widget=forms.PasswordInput)
+    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
 
     error_messages = {
-        'invalid_login': _(u'Please enter a correct email and password. '
-                           u'Note that the password field is case-sensitive.'),
-        'inactive': _(u'This account is inactive.'),
+        'invalid_login': _('Please enter a correct email and password. '
+                           'Note that the password field is case-sensitive.'),
+        'inactive': _('This account is inactive.'),
     }
 
     def __init__(self, request=None, *args, **kwargs):
@@ -164,8 +179,8 @@ class EmailAuthenticationForm(forms.Form):
         return self.cleaned_data
 
     def check_for_test_cookie(self):
-        warnings.warn("check_for_test_cookie is deprecated; ensure your login "
-                "view is CSRF-protected.", DeprecationWarning)
+        warnings.warn('check_for_test_cookie is deprecated; ensure your login '
+                      'view is CSRF-protected.', DeprecationWarning)
 
     def get_user_id(self):
         if self.user_cache:
@@ -178,7 +193,7 @@ class EmailAuthenticationForm(forms.Form):
 
 class FileDisplayForm(forms.Form):
     text = forms.CharField(
-        label='',  # _(u'Text'),
+        label='',  # _('Text'),
         widget=forms.widgets.Textarea(
             attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
         )
@@ -193,5 +208,5 @@ class FileDisplayForm(forms.Form):
 
 
 class LicenseForm(FileDisplayForm):
-    FILENAME = u'LICENSE'
+    FILENAME = 'LICENSE'
     DIRECTORY = []

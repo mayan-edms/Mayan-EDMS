@@ -1,85 +1,66 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Lucas Weel <ljj.weel@gmail.com>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2013-01-12 10:56+0000\n"
-"Last-Translator: Lucas Weel <ljj.weel@gmail.com>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"POT-Creation-Date: 2015-02-06 16:54-0400\n"
+"PO-Revision-Date: 2015-02-06 23:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:26
-msgid "preview"
-msgstr "'preview'"
-
-#: __init__.py:30
-msgid "tagged items"
-msgstr "gelabelde items"
-
-#: __init__.py:37 __init__.py:45 links.py:19 views.py:124
-msgid "tags"
-msgstr "labels"
-
-#: __init__.py:68
-msgid "Returns a list of all the tags."
+#: __init__.py:38
+msgid "Preview"
 msgstr ""
 
-#: forms.py:24
-msgid "Name"
-msgstr "Naam"
+#: __init__.py:42
+msgid "Tagged items"
+msgstr ""
 
-#: forms.py:25
-msgid "Color"
-msgstr "Kleur"
-
-#: forms.py:42 permissions.py:7
+#: __init__.py:49 __init__.py:54 forms.py:42 links.py:12 links.py:21
+#: models.py:18 permissions.py:7 views.py:116
 msgid "Tags"
 msgstr "Labels"
 
-#: links.py:10
-msgid "tag list"
-msgstr "Lijst met labels"
+#: links.py:13
+msgid "Create new tag"
+msgstr ""
 
-#: links.py:11
-msgid "create new tag"
-msgstr "aanmaken nieuw label"
+#: links.py:15 links.py:16
+msgid "Attach tag"
+msgstr ""
 
-#: links.py:13 links.py:14
-msgid "attach tag"
-msgstr "Label toevoegen"
+#: links.py:18
+msgid "Remove tag"
+msgstr ""
 
-#: links.py:16
-msgid "remove tag"
-msgstr "label verwijderen"
+#: links.py:19
+msgid "Remove tags"
+msgstr ""
 
-#: links.py:17
-msgid "remove tags"
-msgstr "labels verwijderen"
+#: links.py:22 links.py:25
+msgid "Delete"
+msgstr ""
 
-#: links.py:20 links.py:23
-msgid "delete"
-msgstr "verwijderen"
+#: links.py:23
+msgid "Edit"
+msgstr ""
 
-#: links.py:21
-msgid "edit"
-msgstr "bewerk"
+#: links.py:24 models.py:14
+msgid "Documents"
+msgstr ""
 
-#: links.py:22
-msgid "tagged documents"
-msgstr "gelabelde documenten"
-
-#: links.py:24
+#: links.py:26
 msgid "ACLs"
 msgstr "ACLs"
 
@@ -123,21 +104,17 @@ msgstr "Oranje"
 msgid "Yellow"
 msgstr "Geel"
 
-#: models.py:13 views.py:178 views.py:230 views.py:243
-msgid "tag"
-msgstr "label"
+#: models.py:12
+msgid "Label"
+msgstr ""
 
-#: models.py:14
-msgid "color"
-msgstr "kleur"
+#: models.py:13
+msgid "Color"
+msgstr "Kleur"
 
 #: models.py:17
-msgid "tag properties"
-msgstr "eigenschappen label"
-
-#: models.py:18
-msgid "tags properties"
-msgstr "eigenschappen labels"
+msgid "Tag"
+msgstr ""
 
 #: permissions.py:9
 msgid "Create new tags"
@@ -163,154 +140,173 @@ msgstr "Label documenten"
 msgid "Remove tags from documents"
 msgstr "Labels van documenten verwijderen"
 
-#: views.py:43
-msgid "Tag already exists."
-msgstr "Dit label bestaat al."
-
-#: views.py:51
+#: views.py:42
 msgid "Tag created succesfully."
 msgstr "Label aangemaakt"
 
-#: views.py:57
-msgid "create tag"
-msgstr "aanmaken label"
+#: views.py:48
+msgid "Create tag"
+msgstr ""
 
-#: views.py:69
+#: views.py:60
 msgid "Must provide at least one document."
 msgstr "U dient minstens 1 document aan te geven."
 
-#: views.py:87
+#: views.py:78
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr "Document \"%(document)s\" is al gelabeld met \"%(tag)s\""
 
-#: views.py:92
+#: views.py:83
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr "Label \"%(tag)s\" is gekoppeld aan document \"%(document)s\"."
 
-#: views.py:100
-msgid "document"
-msgstr "document"
+#: views.py:95
+msgid "Attach tag to document"
+msgid_plural "Attach tag to documents"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views.py:108
-#, python-format
-msgid "Attach tag to document: %s."
-msgstr "Label aanbrengen aan document: %s"
-
-#: views.py:110
-#, python-format
-msgid "Attach tag to documents: %s."
-msgstr "Label aanbrengen aan documenten: %s"
-
-#: views.py:154
+#: views.py:145
 msgid "Must provide at least one tag."
 msgstr "U moet minimaal een label aanbrengen."
 
-#: views.py:169
+#: views.py:160
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Label \"%s\" verwijderd."
 
-#: views.py:171
+#: views.py:162
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr ""
-"Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
+msgstr "Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
 
-#: views.py:186
-#, python-format
-msgid "Are you sure you wish to delete the tag: %s?"
-msgstr "Bent u er zeker van om label: \"%s\" te verwijderen?"
-
-#: views.py:187 views.py:190
+#: views.py:171
 msgid "Will be removed from all documents."
 msgstr "Zal van alle documenten worden verwijderd."
 
-#: views.py:189
-#, python-format
-msgid "Are you sure you wish to delete the tags: %s?"
-msgstr "Bent u er zeker van om de volgende labels te verwijderen? Labels: %s."
+#: views.py:174
+msgid "Are you sure you wish to delete the selected tag?"
+msgid_plural "Are you sure you wish to delete the selected tags?"
+msgstr[0] ""
+msgstr[1] ""
 
-#: views.py:218
+#: views.py:205
 msgid "Tag updated succesfully."
 msgstr "Label aangepast."
 
-#: views.py:227
+#: views.py:211
 #, python-format
-msgid "edit tag: %s"
-msgstr "bewerken label: %s"
+msgid "Edit tag: %s"
+msgstr ""
 
-#: views.py:240
+#: views.py:226
 #, python-format
-msgid "documents with the tag \"%s\""
-msgstr "documenten met label: \"%s\""
+msgid "Documents with the tag: %s"
+msgstr ""
 
-#: views.py:259
+#: views.py:243
 #, python-format
-msgid "tags for: %s"
-msgstr "labels voor: %s"
+msgid "Tags for document: %s"
+msgstr ""
 
-#: views.py:271
+#: views.py:255
 msgid "Must provide at least one tagged document."
 msgstr "U dient minstens 1 gelabeld document aan te brengen."
 
-#: views.py:310
+#: views.py:293
 #, python-format
 msgid "Remove tag from document: %s."
 msgstr "Verwijder label van document: %s"
 
-#: views.py:312
+#: views.py:295
 #, python-format
 msgid "Remove tag from documents: %s."
 msgstr "Verwijder label van documenten: %s"
 
-#: views.py:318
+#: views.py:301
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
-msgstr ""
-"Ben u er zeker van dat u label: \"%(tag)s\" van document: %(document)s, "
-"wenst te verwijderen? "
+msgstr "Ben u er zeker van dat u label: \"%(tag)s\" van document: %(document)s, wenst te verwijderen? "
 
-#: views.py:321
+#: views.py:304
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
-msgstr ""
-"Bent u er zeker van dat u label: \"%(tag)s\" van de documenten: "
-"%(documents)s, wenst te verwijderen?"
+msgstr "Bent u er zeker van dat u label: \"%(tag)s\" van de documenten: %(documents)s, wenst te verwijderen?"
 
-#: views.py:326
+#: views.py:309
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
-msgstr ""
-"Bent u er zeker van dat u de labels: %(tags)s van document: %(document)s, "
-"wenst te verwijderen?"
+msgstr "Bent u er zeker van dat u de labels: %(tags)s van document: %(document)s, wenst te verwijderen?"
 
-#: views.py:329
-#, fuzzy, python-format
+#: views.py:312
+#, python-format
 msgid ""
 "Are you sure you wish to remove the tags %(tags)s from the documents: "
 "%(documents)s?"
 msgstr ""
-"Bent u er zeker van dat u de labels: %(tag)s van de  documenten: "
-"%(documents)s, wenst te verwijderen?"
 
-#: views.py:336
+#: views.py:319
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr "Document \"%(document)s\" is niet gelabeld als: \"%(tag)s\""
 
-#: views.py:341
+#: views.py:324
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Label: \"%(tag)s\" is verwijdert van document \"%(document)s\"."
 
-#: templatetags/tags_tags.py:18
-msgid "Add tag to document"
-msgstr "Label document"
+#~ msgid "Add tag to document"
+#~ msgstr "Add tag to document"
+
+#~ msgid "Document created"
+#~ msgstr "document"
+
+#~ msgid "Attach tag to document: %s."
+#~ msgstr "Attach tag to document: %s."
+
+#~ msgid "Attach tag to documents: %s."
+#~ msgstr "Attach tag to documents: %s."
+
+#~ msgid "Are you sure you wish to delete the tags: %s?"
+#~ msgstr "Are you sure you wish to delete the tags: %s?"
+
+#~ msgid "Name"
+#~ msgstr "Name"
+
+#~ msgid "Tag list"
+#~ msgstr "tag list"
+
+#~ msgid "Tagged documents"
+#~ msgstr "tagged documents"
+
+#~ msgid "Tag properties"
+#~ msgstr "tag properties"
+
+#~ msgid "Tags properties"
+#~ msgstr "tags properties"
+
+#~ msgid "Tag already exists."
+#~ msgstr "Tag already exists."
+
+#~ msgid "tags"
+#~ msgstr "tags"
+
+#~ msgid "create new tag"
+#~ msgstr "create new tag"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "tag"
+#~ msgstr "tag"
+
+#~ msgid "color"
+#~ msgstr "color"

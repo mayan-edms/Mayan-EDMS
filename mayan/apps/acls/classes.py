@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 import sys
@@ -7,7 +7,6 @@ import types
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.base import ModelBase
-from django.template.defaultfilters import capfirst
 
 from common.models import AnonymousUserSingleton
 
@@ -24,7 +23,7 @@ def get_source_object(obj):
 
 
 class EncapsulatedObject(object):
-    source_object_name = u'source_object'
+    source_object_name = 'source_object'
 
     @classmethod
     def object_key(cls, app_label=None, model=None, pk=None):
@@ -83,18 +82,14 @@ class EncapsulatedObject(object):
             try:
                 content_type = ContentType.objects.get(app_label=app_label, model=model)
             except ContentType.DoesNotExist:
-                # cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
-                # raise cls.DoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
-                raise ObjectDoesNotExist("%s matching query does not exist." % ContentType._meta.object_name)
+                raise ObjectDoesNotExist('%s matching query does not exist.' % ContentType._meta.object_name)
             else:
                 source_object_model_class = content_type.model_class()
                 if pk:
                     try:
                         source_object = content_type.get_object_for_this_type(pk=pk)
                     except source_object_model_class.DoesNotExist:
-                        # cls.add_to_class('DoesNotExist', subclass_exception('DoesNotExist', (ObjectDoesNotExist,), cls.__name__))
-                        # raise cls.DoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
-                        raise ObjectDoesNotExist("%s matching query does not exist." % source_object_model_class._meta.object_name)
+                        raise ObjectDoesNotExist('%s matching query does not exist.' % source_object_model_class._meta.object_name)
                 else:
                     source_object = source_object_model_class
 
@@ -115,15 +110,15 @@ class EncapsulatedObject(object):
 
     def __unicode__(self):
         if isinstance(self.source_object, ModelBase):
-            return capfirst(unicode(self.source_object._meta.verbose_name_plural))
+            return unicode(self.source_object._meta.verbose_name_plural)
         elif self.ct_fullname == 'auth.user':
-            return u'%s %s' % (self.source_object._meta.verbose_name, self.source_object.get_full_name())
+            return '%s %s' % (self.source_object._meta.verbose_name, self.source_object.get_full_name())
         elif self.ct_fullname == 'common.anonymoususersingleton':
             return unicode(self.source_object)
         elif self.ct_fullname == 'acls.creatorsingleton':
             return unicode(self.source_object)
         else:
-            return u'%s %s' % (self.source_object._meta.verbose_name, self.source_object)
+            return '%s %s' % (self.source_object._meta.verbose_name, self.source_object)
 
     def __repr__(self):
         return self.__unicode__()
@@ -134,19 +129,19 @@ class EncapsulatedObject(object):
 
 
 class AccessHolder(EncapsulatedObject):
-    source_object_name = u'holder_object'
+    source_object_name = 'holder_object'
 
 
 class AccessObject(EncapsulatedObject):
-    source_object_name = u'obj'
+    source_object_name = 'obj'
 
 
 class AccessObjectClass(EncapsulatedObject):
-    source_object_name = u'cls'
+    source_object_name = 'cls'
 
 
 class ClassAccessHolder(EncapsulatedObject):
-    source_object_name = u'class_holder'
+    source_object_name = 'class_holder'
 
 
 if sys.version_info < (2, 5):

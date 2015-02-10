@@ -1,3 +1,3 @@
 class BackendBase(object):
-    def execute(input_filename, language=None):
-        raise NotImplemented
+    def execute(self, input_filename, language=None):
+        raise NotImplementedError

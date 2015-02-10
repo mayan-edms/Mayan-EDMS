@@ -1,71 +1,65 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Roberto Rosario, 2012
+# Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2014
+# Lory977 <helga.carrero@gmail.com>, 2015
+# Roberto Rosario, 2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2012-12-12 06:12+0000\n"
+"POT-Creation-Date: 2015-02-06 16:54-0400\n"
+"PO-Revision-Date: 2015-02-07 05:31+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:13
+#: forms.py:15
 msgid "New password"
 msgstr "Nueva contraseña"
 
-#: forms.py:14
+#: forms.py:16
 msgid "Confirm password"
 msgstr "Confirmar contraseña"
 
-#: links.py:9
-msgid "user list"
-msgstr "lista de usuarios"
+#: links.py:11 links.py:12 views.py:31
+msgid "Users"
+msgstr "Usuarios"
 
-#: links.py:10 views.py:28
-msgid "users"
-msgstr "usuarios"
+#: links.py:13 links.py:23
+msgid "Edit"
+msgstr "Editar"
 
-#: links.py:11 links.py:21
-msgid "edit"
-msgstr "editar"
+#: links.py:14 views.py:96
+msgid "Create new user"
+msgstr "Crear nuevo usuario"
 
-#: links.py:12 views.py:95
-msgid "create new user"
-msgstr "crear nuevo usuario"
+#: links.py:15 links.py:16 links.py:25 links.py:26
+msgid "Delete"
+msgstr "Borrar"
 
-#: links.py:13 links.py:14 links.py:23 links.py:24
-msgid "delete"
-msgstr "eliminar"
+#: links.py:17 links.py:18
+msgid "Reset password"
+msgstr "Reestablecer contraseña"
 
-#: links.py:15 links.py:16
-msgid "reset password"
-msgstr "restablecer contraseña"
+#: links.py:19 links.py:21 links.py:22 views.py:247
+msgid "Groups"
+msgstr "Grupos"
 
-#: links.py:17 links.py:20 views.py:251
-msgid "groups"
-msgstr "grupos"
+#: links.py:24 views.py:294
+msgid "Create new group"
+msgstr "Crear nuevo grupo"
 
-#: links.py:19
-msgid "group list"
-msgstr "list de group"
-
-#: links.py:22 views.py:302
-msgid "create new group"
-msgstr "crear nuevo grupo"
-
-#: links.py:25 views.py:255
-msgid "members"
-msgstr "miembros"
+#: links.py:27 views.py:251
+msgid "Members"
+msgstr "Miembros"
 
 #: permissions.py:7
 msgid "User management"
@@ -103,173 +97,179 @@ msgstr "Ver grupos existentes"
 msgid "Delete existing groups"
 msgstr "Eliminar grupos existentes"
 
-#: views.py:32
-msgid "full name"
-msgstr "nombre completo"
+#: views.py:35
+msgid "Full name"
+msgstr "Nombre completo"
 
-#: views.py:36
-msgid "email"
-msgstr "correo electrónico"
+#: views.py:39
+msgid "Email"
+msgstr "Correo electrónico"
 
-#: views.py:40
-msgid "active"
-msgstr "activo"
+#: views.py:43
+msgid "Active"
+msgstr "Activo"
 
-#: views.py:44
-msgid "has usable password?"
+#: views.py:47
+msgid "Has usable password?"
 msgstr "¿Tiene contraseña utilizable?"
 
-#: views.py:60
+#: views.py:62
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"No se permite editar el super usuario y usuario de personal, use la interfaz "
-"de administración para estos casos."
+msgstr "No se permite editar el super usuario y el usuario de personal. Use la interfaz de administración para estos casos."
 
-#: views.py:67
+#: views.py:69
 #, python-format
 msgid "User \"%s\" updated successfully."
-msgstr "Usuario \"%s\" actualizado exitsamente."
+msgstr "Usuario \"%s\" actualizado con éxito."
 
-#: views.py:73
+#: views.py:75
 #, python-format
-msgid "edit user: %s"
-msgstr "editar usuario: %s"
+msgid "Edit user: %s"
+msgstr "Editar usuario: %s"
 
-#: views.py:76 views.py:132 views.py:195 views.py:239
-msgid "user"
-msgstr "usuario"
-
-#: views.py:89
+#: views.py:90
 #, python-format
 msgid "User \"%s\" created successfully."
-msgstr "Usuario \"%s\" ha creado exitosamente."
+msgstr "Usuario \"%s\" creado con éxito."
 
-#: views.py:110 views.py:164
+#: views.py:111 views.py:163
 msgid "Must provide at least one user."
-msgstr "Debe proveer al menos un usuario."
+msgstr "Debe indicar al menos un usuario."
 
-#: views.py:120
+#: views.py:121
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"No se permite eliminar el super usuario y usuario de personal, use la "
-"interfaz de administración para estos casos."
+msgstr "No se permite eliminar el super usuario y usuario de personal. Use la interfaz de administración para estos casos."
 
-#: views.py:123
+#: views.py:124
 #, python-format
 msgid "User \"%s\" deleted successfully."
-msgstr "Usuario \"%s\" eliminado exitosamente."
+msgstr "Usuario \"%s\" eliminado con éxito."
 
-#: views.py:125
+#: views.py:126
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Error eliminando el usuario \"%(user)s\": %(error)s "
 
-#: views.py:140
+#: views.py:139
 #, python-format
 msgid "Are you sure you wish to delete the user: %s?"
 msgstr "¿Está seguro que desea eliminar el usuario: %s?"
 
-#: views.py:142
+#: views.py:141
 #, python-format
 msgid "Are you sure you wish to delete the users: %s?"
 msgstr "¿Está seguro que desea eliminar los usuarios: %s?"
 
-#: views.py:175
+#: views.py:174
 msgid "Passwords do not match, try again."
-msgstr "Las contraseñas no coinciden, vuelva a intentarlo."
+msgstr "Las contraseñas no coinciden. Vuelva a intentarlo."
 
-#: views.py:180
+#: views.py:179
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"No se permite cambiar la contraseña del super usuario y usuarios de "
-"personal, use la interfaz de administración para estos casos."
+msgstr "No se permite cambiar la contraseña del super usuario y del usuario de personal. Use la interfaz de administración para estos casos."
 
-#: views.py:184
+#: views.py:183
 #, python-format
 msgid "Successfull password reset for user: %s."
-msgstr "Restablecimiento exitoso de contraseña para el usuario: %s."
+msgstr "Contraseña restablecida para el usuario: %s."
 
-#: views.py:186
+#: views.py:185
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Error de restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
+msgstr "Error de restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
 
-#: views.py:202
+#: views.py:200
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr "Restaurando contraseña del usuario: %s"
 
-#: views.py:204
+#: views.py:202
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr "Restaurando la contraseña de los usuarios: %s"
 
-#: views.py:234
+#: views.py:232
 #, python-format
-msgid "non groups of user: %s"
+msgid "Non groups of user: %s"
 msgstr "Grupos donde no esta el usuario: %s"
 
-#: views.py:235
+#: views.py:233
 #, python-format
-msgid "groups of user: %s"
-msgstr "grupos de usuario: %s"
+msgid "Groups of user: %s"
+msgstr "Grupos de usuario: %s"
+
+#: views.py:269
+#, python-format
+msgid "Group \"%s\" updated successfully."
+msgstr "Grupo \"%s\" actualizado con éxito."
 
 #: views.py:275
 #, python-format
-msgid "Group \"%s\" updated successfully."
-msgstr "Grupo \"%s\" actualizado exitosamente."
+msgid "Edit group: %s"
+msgstr "Editar grupo: %s"
 
-#: views.py:281
-#, python-format
-msgid "edit group: %s"
-msgstr "editar grupo: %s"
-
-#: views.py:284 views.py:336 views.py:381
-msgid "group"
-msgstr "grupo"
-
-#: views.py:296
+#: views.py:288
 #, python-format
 msgid "Group \"%s\" created successfully."
-msgstr "Grupo \"%s\" creado exitosamente."
+msgstr "Grupo \"%s\" creado con éxito."
 
-#: views.py:317
+#: views.py:309
 msgid "Must provide at least one group."
-msgstr "Debe proveer al menos un grupo."
+msgstr "Debe indicar al menos un grupo."
 
-#: views.py:327
+#: views.py:319
 #, python-format
 msgid "Group \"%s\" deleted successfully."
-msgstr "Grupo \"%s\" eliminado con exitosamente."
+msgstr "Grupo \"%s\" eliminado con éxito."
 
-#: views.py:329
+#: views.py:321
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr "Error al eliminar el grupo \"%(group)s\": %(error)s "
 
-#: views.py:344
+#: views.py:334
 #, python-format
 msgid "Are you sure you wish to delete the group: %s?"
 msgstr "¿Está seguro que desea eliminar el grupo: %s?"
 
-#: views.py:346
+#: views.py:336
 #, python-format
 msgid "Are you sure you wish to delete the groups: %s?"
 msgstr "¿Está seguro que desea eliminar los grupos: %s?"
 
-#: views.py:376
+#: views.py:366
 #, python-format
-msgid "non members of group: %s"
-msgstr "no miembros del grupo: %s"
+msgid "Non members of group: %s"
+msgstr "No miembros del grupo: %s"
 
-#: views.py:377
+#: views.py:367
 #, python-format
-msgid "members of group: %s"
-msgstr "miembros del grupo: %s"
+msgid "Members of group: %s"
+msgstr "Miembros del grupo: %s"
+
+#~ msgid "Group"
+#~ msgstr "group"
+
+#~ msgid "User list"
+#~ msgstr "user list"
+
+#~ msgid "Group list"
+#~ msgstr "group list"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "create new user"
+#~ msgstr "create new user"
+
+#~ msgid "create new group"
+#~ msgstr "create new group"
+
+#~ msgid "user"
+#~ msgstr "user"

@@ -1,8 +1,4 @@
-class AlreadyQueued(Exception):
-    """
-    Raised when a trying to queue document already in the queue
-    """
-    pass
+from __future__ import unicode_literals
 
 
 class OCRError(Exception):
@@ -16,8 +12,4 @@ class UnpaperError(Exception):
     """
     Raised by unpaper
     """
-    pass
-
-
-class ReQueueError(Exception):
     pass

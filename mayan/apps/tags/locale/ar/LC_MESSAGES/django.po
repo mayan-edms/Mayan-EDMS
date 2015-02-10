@@ -1,86 +1,66 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2013-01-25 18:44+0000\n"
-"Last-Translator: Mohammed ALDOUB <voulnet@gmail.com>\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ar/)\n"
-"Language: ar\n"
+"POT-Creation-Date: 2015-02-06 16:54-0400\n"
+"PO-Revision-Date: 2015-02-06 23:26+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: __init__.py:26
-msgid "preview"
-msgstr "معاينة"
-
-#: __init__.py:30
-msgid "tagged items"
-msgstr "الأغراض التي ربطت بكلمات استدلالية"
-
-#: __init__.py:37 __init__.py:45 links.py:19 views.py:124
-msgid "tags"
-msgstr "الكلمات الاستدلالية"
-
-#: __init__.py:68
-msgid "Returns a list of all the tags."
+#: __init__.py:38
+msgid "Preview"
 msgstr ""
 
-#: forms.py:24
-msgid "Name"
-msgstr "الاسم"
+#: __init__.py:42
+msgid "Tagged items"
+msgstr ""
 
-#: forms.py:25
-msgid "Color"
-msgstr "اللون"
-
-#: forms.py:42 permissions.py:7
+#: __init__.py:49 __init__.py:54 forms.py:42 links.py:12 links.py:21
+#: models.py:18 permissions.py:7 views.py:116
 msgid "Tags"
 msgstr "الكلمات الاستدلالية"
 
-#: links.py:10
-msgid "tag list"
-msgstr "قائمة الكلمات الاستدلالية"
+#: links.py:13
+msgid "Create new tag"
+msgstr ""
 
-#: links.py:11
-msgid "create new tag"
-msgstr "أنشأ كلمة استدلالية جديدة"
+#: links.py:15 links.py:16
+msgid "Attach tag"
+msgstr ""
 
-#: links.py:13 links.py:14
-msgid "attach tag"
-msgstr "أضف كلمة استدلالية"
+#: links.py:18
+msgid "Remove tag"
+msgstr ""
 
-#: links.py:16
-msgid "remove tag"
-msgstr "إزالة الكلمة الاستدلالية"
+#: links.py:19
+msgid "Remove tags"
+msgstr ""
 
-#: links.py:17
-msgid "remove tags"
-msgstr "إزالة الكلمات الاستدلالية"
+#: links.py:22 links.py:25
+msgid "Delete"
+msgstr ""
 
-#: links.py:20 links.py:23
-msgid "delete"
-msgstr "حذف"
+#: links.py:23
+msgid "Edit"
+msgstr ""
 
-#: links.py:21
-msgid "edit"
-msgstr "تعديل"
+#: links.py:24 models.py:14
+msgid "Documents"
+msgstr ""
 
-#: links.py:22
-msgid "tagged documents"
-msgstr "الوثائق المربوطة بكلمات استدلالية"
-
-#: links.py:24
+#: links.py:26
 msgid "ACLs"
 msgstr "الصلاحيات:"
 
@@ -124,21 +104,17 @@ msgstr "برتقالي"
 msgid "Yellow"
 msgstr "أصفر"
 
-#: models.py:13 views.py:178 views.py:230 views.py:243
-msgid "tag"
-msgstr "كلمة استدلالية"
+#: models.py:12
+msgid "Label"
+msgstr ""
 
-#: models.py:14
-msgid "color"
-msgstr "لون"
+#: models.py:13
+msgid "Color"
+msgstr "اللون"
 
 #: models.py:17
-msgid "tag properties"
-msgstr "خصائص الكلمة الاستدلالية"
-
-#: models.py:18
-msgid "tags properties"
-msgstr "خصائص الكلمات الاستدلالية"
+msgid "Tag"
+msgstr ""
 
 #: permissions.py:9
 msgid "Create new tags"
@@ -164,154 +140,181 @@ msgstr "إضافة كلمات استدلالية للوثائق"
 msgid "Remove tags from documents"
 msgstr "إزالة الكلمات الاستدلالية من الوثائق"
 
-#: views.py:43
-msgid "Tag already exists."
-msgstr "الكلمة الاستدلالية موجودة مسبقاً."
-
-#: views.py:51
+#: views.py:42
 msgid "Tag created succesfully."
 msgstr "تم انشاء الكلمة الاستدلالية بنجاح"
 
-#: views.py:57
-msgid "create tag"
-msgstr "انشاء كلمة استدلالية"
+#: views.py:48
+msgid "Create tag"
+msgstr ""
 
-#: views.py:69
+#: views.py:60
 msgid "Must provide at least one document."
 msgstr "يجب توفير وثيقة واحدة عالاقل."
 
-#: views.py:87
+#: views.py:78
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr "الوثيقة \"%(document)s\" مربوطة مسبقاً بالكلمات الاستدلالية \"%(tag)s\""
 
-#: views.py:92
+#: views.py:83
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr "تم ربط الكلمة الاستدلالية \"%(tag)s\" بالوثيقة \"%(document)s\" ."
 
-#: views.py:100
-msgid "document"
-msgstr "وثيقة"
+#: views.py:95
+msgid "Attach tag to document"
+msgid_plural "Attach tag to documents"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
-#: views.py:108
-#, python-format
-msgid "Attach tag to document: %s."
-msgstr "اضافة كلمة استدلالية للوثيقة: %s"
-
-#: views.py:110
-#, python-format
-msgid "Attach tag to documents: %s."
-msgstr "اضافة كلمة استدلالية للوثائق: %s"
-
-#: views.py:154
+#: views.py:145
 msgid "Must provide at least one tag."
 msgstr "يجب توفير كلمة استدلالية واحدة عالاقل"
 
-#: views.py:169
+#: views.py:160
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "الكلمة الاستدلالية \"%s\" مسحت بنجاح."
 
-#: views.py:171
+#: views.py:162
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "خطأ أثناء مسح الكلمة الاستدلالية \"%(tag)s\": %(error)s"
 
-#: views.py:186
-#, python-format
-msgid "Are you sure you wish to delete the tag: %s?"
-msgstr "هل أنت متأكد أنك تريد حذف الكلمة الاستدلالية : %s؟"
-
-#: views.py:187 views.py:190
+#: views.py:171
 msgid "Will be removed from all documents."
 msgstr "ستتم الإزالة من جميع الوثائق."
 
-#: views.py:189
-#, python-format
-msgid "Are you sure you wish to delete the tags: %s?"
-msgstr "هل أنت متأكد أنك تريد حذف الكلمات الاستدلالية: %s؟"
+#: views.py:174
+msgid "Are you sure you wish to delete the selected tag?"
+msgid_plural "Are you sure you wish to delete the selected tags?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+msgstr[3] ""
+msgstr[4] ""
+msgstr[5] ""
 
-#: views.py:218
+#: views.py:205
 msgid "Tag updated succesfully."
 msgstr "تم تحديث الكلمة الاستدلالية بنجاح"
 
-#: views.py:227
+#: views.py:211
 #, python-format
-msgid "edit tag: %s"
-msgstr "تعديل الكلمة الاستدلالية: %s"
+msgid "Edit tag: %s"
+msgstr ""
 
-#: views.py:240
+#: views.py:226
 #, python-format
-msgid "documents with the tag \"%s\""
-msgstr "الوثائق المربوطة بالكلمة الاستدلالية \"%s\""
+msgid "Documents with the tag: %s"
+msgstr ""
 
-#: views.py:259
+#: views.py:243
 #, python-format
-msgid "tags for: %s"
-msgstr " الكلمات الاستدلالية ل: %s"
+msgid "Tags for document: %s"
+msgstr ""
 
-#: views.py:271
+#: views.py:255
 msgid "Must provide at least one tagged document."
 msgstr "يجب توفير وثيقة واحد عالاقل مربوطة بكلمات استدلالية"
 
-#: views.py:310
+#: views.py:293
 #, python-format
 msgid "Remove tag from document: %s."
 msgstr "ازالة الكلمة الاستدلالية من الوثيقة: %s"
 
-#: views.py:312
+#: views.py:295
 #, python-format
 msgid "Remove tag from documents: %s."
 msgstr "ازالة الكلمة الاستدلالية من الوثائق: %s"
 
-#: views.py:318
+#: views.py:301
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
 "%(document)s?"
-msgstr ""
-"هل أنت متأكد أنك ترغب في إزالة الكلمة الاستدلالية \"%(tag)s\" من وثيقة "
-"%(document)s؟"
+msgstr "هل أنت متأكد أنك ترغب في إزالة الكلمة الاستدلالية \"%(tag)s\" من وثيقة %(document)s؟"
 
-#: views.py:321
+#: views.py:304
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
 "%(documents)s?"
-msgstr ""
-"هل أنت متأكد أنك ترغب في إزالة الكلمة الاستدلالية \"%(tag)s\" من الوثائق "
-"%(documents)s؟"
+msgstr "هل أنت متأكد أنك ترغب في إزالة الكلمة الاستدلالية \"%(tag)s\" من الوثائق %(documents)s؟"
 
-#: views.py:326
+#: views.py:309
 #, python-format
 msgid ""
 "Are you sure you wish to remove the tags: %(tags)s from the document: "
 "%(document)s?"
-msgstr ""
-"هل أنت متأكد أنك ترغب في الكلمات الاستدلالية %(tags)s من الوثيقة "
-"%(document)s؟"
+msgstr "هل أنت متأكد أنك ترغب في الكلمات الاستدلالية %(tags)s من الوثيقة %(document)s؟"
 
-#: views.py:329
-#, fuzzy, python-format
+#: views.py:312
+#, python-format
 msgid ""
 "Are you sure you wish to remove the tags %(tags)s from the documents: "
 "%(documents)s?"
 msgstr ""
-"هل أنت متأكد أنك ترغب في إزالة الكلمات الاستدلالية %(tag)s من الوثائق "
-"%(documents)s؟"
 
-#: views.py:336
+#: views.py:319
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr "الوثيقة \"%(document)s\" لم تربط مع:  \"%(tag)s\""
 
-#: views.py:341
+#: views.py:324
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"الكلمة الاستدلالية \"%(tag)s\" أزيلت بنجاح من الوثيقة \"%(document)s\"."
+msgstr "الكلمة الاستدلالية \"%(tag)s\" أزيلت بنجاح من الوثيقة \"%(document)s\"."
 
-#: templatetags/tags_tags.py:18
-msgid "Add tag to document"
-msgstr "أضف كلمة استدلالية للوثيقة"
+#~ msgid "Add tag to document"
+#~ msgstr "Add tag to document"
+
+#~ msgid "Document created"
+#~ msgstr "document"
+
+#~ msgid "Attach tag to document: %s."
+#~ msgstr "Attach tag to document: %s."
+
+#~ msgid "Attach tag to documents: %s."
+#~ msgstr "Attach tag to documents: %s."
+
+#~ msgid "Are you sure you wish to delete the tags: %s?"
+#~ msgstr "Are you sure you wish to delete the tags: %s?"
+
+#~ msgid "Name"
+#~ msgstr "Name"
+
+#~ msgid "Tag list"
+#~ msgstr "tag list"
+
+#~ msgid "Tagged documents"
+#~ msgstr "tagged documents"
+
+#~ msgid "Tag properties"
+#~ msgstr "tag properties"
+
+#~ msgid "Tags properties"
+#~ msgstr "tags properties"
+
+#~ msgid "Tag already exists."
+#~ msgstr "Tag already exists."
+
+#~ msgid "tags"
+#~ msgstr "tags"
+
+#~ msgid "create new tag"
+#~ msgstr "create new tag"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "tag"
+#~ msgstr "tag"
+
+#~ msgid "color"
+#~ msgstr "color"

@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:51-0400\n"
-"PO-Revision-Date: 2013-06-28 13:34+0000\n"
-"Last-Translator: www.ping.ba <jomer@ping.ba>\n"
+"POT-Creation-Date: 2015-02-06 16:50-0400\n"
+"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
 "projects/p/mayan-edms/language/bs_BA/)\n"
 "Language: bs_BA\n"
@@ -20,89 +21,85 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: api.py:24
-msgid "Public"
-msgstr "Javni"
+#: api.py:94
+msgid "Unknown"
+msgstr ""
 
-#: api.py:25
-msgid "Secret"
-msgstr "Tajna"
-
-#: api.py:33 api.py:38
-msgid "RSA"
-msgstr "RSA"
-
-#: api.py:34
-msgid "DSA"
-msgstr "DSA"
-
-#: api.py:39
-msgid "Elgamal"
-msgstr "Elgamal"
-
-#: api.py:53
-msgid "Bad signature."
-msgstr "Loš potpis."
-
-#: api.py:57
-msgid "Document not signed or invalid signature."
-msgstr "Dokument nije potpisan, ili nevažeći potpis."
-
-#: api.py:61
-msgid "Signature error."
-msgstr "Greška potpisa."
-
-#: api.py:65
-msgid "Document is signed but no public key is available for verification."
-msgstr "Dokument je potpisan, ali  javni ključ nije dostupan za provjeru."
-
-#: api.py:69
-msgid "Document is signed, and signature is good."
-msgstr "Dokument je potpisan, a potpis je dobar."
-
-#: api.py:73
-msgid "Document is signed with a valid signature."
-msgstr "Dokument je potpisan sa važećim potpisom."
-
-#: api.py:146
-msgid "unknown"
-msgstr "nepoznat"
-
-#: forms.py:7
+#: forms.py:9
 msgid "Term"
 msgstr "Pojam"
 
-#: forms.py:8
+#: forms.py:10
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Ime, e-mail, ID ključ ili otisak ključa potražiti."
 
-#: links.py:6 views.py:66
-msgid "private keys"
-msgstr "privatni ključevi"
+#: links.py:10 views.py:68
+msgid "Private keys"
+msgstr ""
 
-#: links.py:7 views.py:69
-msgid "public keys"
-msgstr "javni ključevi"
+#: links.py:11 views.py:71
+msgid "Public keys"
+msgstr ""
 
-#: links.py:8
-msgid "delete"
-msgstr "obriši"
+#: links.py:12
+msgid "Delete"
+msgstr ""
 
-#: links.py:9
-msgid "query keyservers"
-msgstr "upit keyservera"
+#: links.py:13 permissions.py:11
+msgid "Query keyservers"
+msgstr "Upit keyservera"
 
-#: links.py:10
-msgid "import"
-msgstr "uvoz"
+#: links.py:14
+msgid "Import"
+msgstr ""
 
-#: links.py:11
-msgid "key management"
-msgstr "upravljanje ključevima"
-
-#: permissions.py:7
+#: links.py:15 permissions.py:7
 msgid "Key management"
 msgstr "Upravljanje ključevima"
+
+#: literals.py:6
+msgid "Public"
+msgstr "Javni"
+
+#: literals.py:7
+msgid "Secret"
+msgstr "Tajna"
+
+#: literals.py:15 literals.py:20
+msgid "RSA"
+msgstr "RSA"
+
+#: literals.py:16
+msgid "DSA"
+msgstr "DSA"
+
+#: literals.py:21
+msgid "Elgamal"
+msgstr "Elgamal"
+
+#: literals.py:35
+msgid "Bad signature."
+msgstr "Loš potpis."
+
+#: literals.py:38
+msgid "Document not signed or invalid signature."
+msgstr "Dokument nije potpisan, ili nevažeći potpis."
+
+#: literals.py:41
+msgid "Signature error."
+msgstr "Greška potpisa."
+
+#: literals.py:44
+msgid "Document is signed but no public key is available for verification."
+msgstr "Dokument je potpisan, ali  javni ključ nije dostupan za provjeru."
+
+#: literals.py:47
+msgid "Document is signed, and signature is good."
+msgstr "Dokument je potpisan, a potpis je dobar."
+
+#: literals.py:50
+msgid "Document is signed with a valid signature."
+msgstr "Dokument je potpisan sa važećim potpisom."
 
 #: permissions.py:9
 msgid "View keys"
@@ -112,51 +109,61 @@ msgstr "Pogledaj ključeve"
 msgid "Delete keys"
 msgstr "Obriši ključeve"
 
-#: permissions.py:11
-msgid "Query keyservers"
-msgstr "Upit keyservera"
-
 #: permissions.py:12
 msgid "Import keys from keyservers"
 msgstr "Uvezi ključeve sa keyservera"
 
-#: views.py:37
+#: settings.py:14
+msgid "List of keyservers to be queried for unknown keys."
+msgstr "Popis keyservera za upit za nepoznate ključeve."
+
+#: settings.py:15
+msgid "Home directory used to store keys as well as configuration files."
+msgstr ""
+"Home direktorij se koristi za pohranu ključeva, kao i konfiguracijskih "
+"datoteka."
+
+#: settings.py:16
+msgid "Path to the GPG binary."
+msgstr ""
+
+#: views.py:40
 #, python-format
 msgid "Key: %s, imported successfully."
 msgstr "Ključ: %s, uspješno importovan."
 
-#: views.py:42
+#: views.py:45
 #, python-format
 msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgstr "Nije moguće uvesti id ključa: %(key_id)s; %(error)s"
 
-#: views.py:51
+#: views.py:54
 msgid "Import key"
 msgstr "Importuj ključ"
 
-#: views.py:52
+#: views.py:55
 #, python-format
 msgid "Are you sure you wish to import key id: %s?"
 msgstr "Jeste li sigurni da želite importovati id ključa: %s?"
 
-#: views.py:77
+#: views.py:79
 msgid "Key ID"
 msgstr "ID ključa"
 
-#: views.py:81
+#: views.py:83
 msgid "Owner"
 msgstr "Vlasnik"
 
-#: views.py:101
+#: views.py:103
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Ključ: %s, uspješno obrisan."
 
-#: views.py:108
+#: views.py:110
 msgid "Delete key"
 msgstr "Obriši ključ"
 
-#: views.py:110
+#: views.py:112
 #, python-format
 msgid ""
 "Are you sure you wish to delete key: %s?  If you try to delete a public key "
@@ -167,56 +174,61 @@ msgstr ""
 "ključ koji je dio javnog/privatnog para privatni ključ će biti izbrisan, "
 "takođe."
 
-#: views.py:128
+#: views.py:129
 msgid "Query key server"
 msgstr "Upit servera ključeva"
 
-#: views.py:141
+#: views.py:142
 msgid "results"
 msgstr "rezultati"
 
-#: views.py:146
+#: views.py:147
 msgid "ID"
 msgstr "ID"
 
-#: views.py:150
-msgid "type"
-msgstr "tip"
+#: views.py:151
+msgid "Type"
+msgstr ""
 
-#: views.py:154
-msgid "creation date"
-msgstr "datum kreiranja"
+#: views.py:155
+msgid "Creation date"
+msgstr ""
 
-#: views.py:158
-msgid "disabled"
-msgstr "onemogućen"
+#: views.py:159
+msgid "Disabled"
+msgstr ""
 
-#: views.py:162
-msgid "expiration date"
-msgstr "datum isteka"
+#: views.py:163
+msgid "Expiration date"
+msgstr ""
 
-#: views.py:166
-msgid "expired"
-msgstr "istekao"
+#: views.py:167
+msgid "Expired"
+msgstr ""
 
-#: views.py:170
-msgid "length"
-msgstr "dužina"
+#: views.py:171
+msgid "Length"
+msgstr ""
 
-#: views.py:174
-msgid "revoked"
-msgstr "ukinut"
+#: views.py:175
+msgid "Revoked"
+msgstr ""
 
-#: views.py:179
+#: views.py:180
 msgid "Identifies"
 msgstr "Identificira"
 
-#: conf/settings.py:15
-msgid "List of keyservers to be queried for unknown keys."
-msgstr "Popis keyservera za upit za nepoznate ključeve."
+#~ msgid "private keys"
+#~ msgstr "private keys"
 
-#: conf/settings.py:16
-msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
-"Home direktorij se koristi za pohranu ključeva, kao i konfiguracijskih "
-"datoteka."
+#~ msgid "public keys"
+#~ msgstr "public keys"
+
+#~ msgid "type"
+#~ msgstr "type"
+
+#~ msgid "query keyservers"
+#~ msgstr "query keyservers"
+
+#~ msgid "key management"
+#~ msgstr "key management"

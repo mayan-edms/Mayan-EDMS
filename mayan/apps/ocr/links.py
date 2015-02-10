@@ -1,22 +1,19 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from .permissions import (PERMISSION_OCR_DOCUMENT,
-    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_OCR_QUEUE_ENABLE_DISABLE,
-    PERMISSION_OCR_CLEAN_ALL_PAGES)
+from .permissions import (
+    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_DOCUMENT,
+    PERMISSION_OCR_DOCUMENT_DELETE
+)
 
-submit_document = {'text': _('submit to OCR queue'), 'view': 'submit_document', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-submit_document_multiple = {'text': _('submit to OCR queue'), 'view': 'submit_document_multiple', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-re_queue_document = {'text': _('re-queue'), 'view': 're_queue_document', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-re_queue_multiple_document = {'text': _('re-queue'), 'view': 're_queue_multiple_document', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-queue_document_delete = {'text': _(u'delete'), 'view': 'queue_document_delete', 'args': 'object.id', 'famfam': 'hourglass_delete', 'permissions': [PERMISSION_OCR_DOCUMENT_DELETE]}
-queue_document_multiple_delete = {'text': _(u'delete'), 'view': 'queue_document_multiple_delete', 'famfam': 'hourglass_delete', 'permissions': [PERMISSION_OCR_DOCUMENT_DELETE]}
+link_document_submit = {'text': _('Submit to OCR queue'), 'view': 'ocr:document_submit', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
+link_document_submit_multiple = {'text': _('Submit to OCR queue'), 'view': 'ocr:document_submit_multiple', 'famfam': 'hourglass_add'}
+link_entry_re_queue = {'text': _('Re-queue'), 'view': 'ocr:entry_re_queue', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
+link_entry_re_queue_multiple = {'text': _('Re-queue'), 'view': 'ocr:entry_re_queue_multiple', 'famfam': 'hourglass_add'}
+link_entry_delete = {'text': _('Delete'), 'view': 'ocr:entry_delete', 'args': 'object.id', 'famfam': 'hourglass_delete', 'permissions': [PERMISSION_OCR_DOCUMENT_DELETE]}
+link_entry_delete_multiple = {'text': _('Delete'), 'view': 'ocr:entry_delete_multiple', 'famfam': 'hourglass_delete'}
 
-document_queue_disable = {'text': _(u'stop queue'), 'view': 'document_queue_disable', 'args': 'queue.id', 'famfam': 'control_stop_blue', 'permissions': [PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}
-document_queue_enable = {'text': _(u'activate queue'), 'view': 'document_queue_enable', 'args': 'queue.id', 'famfam': 'control_play_blue', 'permissions': [PERMISSION_OCR_QUEUE_ENABLE_DISABLE]}
+link_document_all_ocr_cleanup = {'text': _('Clean up pages content'), 'view': 'ocr:document_all_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES], 'description': _('Runs a language filter to remove common OCR mistakes from document pages content.')}
 
-all_document_ocr_cleanup = {'text': _(u'clean up pages content'), 'view': 'all_document_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES], 'description': _(u'Runs a language filter to remove common OCR mistakes from document pages content.')}
-
-queue_document_list = {'text': _(u'queue document list'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-ocr_tool_link = {'text': _(u'OCR'), 'view': 'queue_document_list', 'famfam': 'hourglass', 'icon': 'text.png', 'permissions': [PERMISSION_OCR_DOCUMENT], 'children_view_regex': [r'queue_', r'document_queue']}
+link_entry_list = {'text': _('OCR Errors'), 'view': 'ocr:entry_list', 'famfam': 'hourglass', 'icon': 'main/icons/text.png', 'permissions': [PERMISSION_OCR_DOCUMENT]}

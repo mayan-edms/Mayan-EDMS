@@ -50,9 +50,9 @@ Contribute
 ----------
 
 - Check for open issues or open a fresh issue to start a discussion around a feature idea or a bug.
-- Fork `the repository`_ on GitHub to start making your changes to the **master** branch (or branch off of it).
+- Fork `the repository`_ on GitHub to start making your changes to the **development** branch (or branch off of it).
 - Write a test which shows that the bug was fixed or that the feature works as expected.
-- Make sure to add yourself to the `contributors file`_.
+- Add yourself to the `contributors file`_.
 - Send a pull request
 
 
@@ -63,7 +63,7 @@ Contribute
 .. _Mailing list (via Google Groups): http://groups.google.com/group/mayan-edms
 .. _Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0.txt
 .. _`the repository`: http://github.com/mayan-edms/mayan-edms
-.. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/master/docs/credits/contributors.rst
+.. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/master/docs/topics/contributors.rst
 
 .. |Build Status| image:: http://img.shields.io/travis/mayan-edms/mayan-edms/master.svg?style=flat
    :target: https://travis-ci.org/mayan-edms/mayan-edms

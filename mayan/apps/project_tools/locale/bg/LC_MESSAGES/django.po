@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2012-07-06 08:22+0000\n"
-"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
+"POT-Creation-Date: 2015-02-06 16:53-0400\n"
+"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/bg/)\n"
 "Language: bg\n"
@@ -19,6 +20,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: links.py:3 views.py:15
-msgid "tools"
-msgstr "инструменти"
+#: links.py:5 views.py:13
+msgid "Tools"
+msgstr ""

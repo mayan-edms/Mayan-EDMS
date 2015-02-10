@@ -1,0 +1,11 @@
+{% extends 'main/base.html' %}
+
+{% load navigation_tags %}
+{% load subtemplates_tags %}
+
+{% block title %} :: {{ title }}{% endblock %}
+
+{% block content %}
+    {% include 'main/generic_list_horizontal_subtemplate.html' %}
+{% endblock %}
+

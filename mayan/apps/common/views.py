@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 from json import dumps, loads
 
@@ -13,14 +13,19 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
+from django.views.generic import FormView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
-from permissions.models import Permission
-
-from .conf.settings import LOGIN_METHOD
-from .forms import (ChoiceForm, UserForm, UserForm_view, LicenseForm,
-    EmailAuthenticationForm)
+from .forms import (
+    ChoiceForm, EmailAuthenticationForm, LicenseForm, LocaleProfileForm,
+    LocaleProfileForm_view, UserForm, UserForm_view
+)
+from .mixins import (
+    ExtraContextMixin, ObjectListPermissionFilterMixin,
+    ObjectPermissionCheckMixin, RedirectionMixin, ViewPermissionCheckMixin
+)
+from .settings import LOGIN_METHOD
 
 
 def multi_object_action_view(request):
@@ -29,19 +34,19 @@ def multi_object_action_view(request):
     then redirects to the appropiate specialized view
     """
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     action = request.GET.get('action', None)
-    id_list = u','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
+    id_list = ','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
     items_property_list = [loads(key[11:]) for key in request.GET.keys() if key.startswith('properties_')]
 
     if not action:
-        messages.error(request, _(u'No action selected.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        messages.error(request, _('No action selected.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     if not id_list and not items_property_list:
-        messages.error(request, _(u'Must select at least one item.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
+        messages.error(request, _('Must select at least one item.'))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
 
     # Separate redirects to keep backwards compatibility with older
     # functions that don't expect a properties_list parameter
@@ -58,20 +63,20 @@ def multi_object_action_view(request):
 
 
 def get_obj_from_content_type_string(string):
-    model, pk = string.split(u',')
+    model, pk = string.split(',')
     ct = ContentType.objects.get(model=model)
     return ct.get_object_for_this_type(pk=pk)
 
 
-def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title, right_list_title, decode_content_type=False, extra_context=None, grouped=False):
-    left_list_name = u'left_list'
-    right_list_name = u'right_list'
+def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title=None, right_list_title=None, decode_content_type=False, extra_context=None, grouped=False):
+    left_list_name = 'left_list'
+    right_list_name = 'right_list'
 
     if request.method == 'POST':
-        if u'%s-submit' % left_list_name in request.POST.keys():
+        if '%s-submit' % left_list_name in request.POST.keys():
             unselected_list = ChoiceForm(request.POST,
-                prefix=left_list_name,
-                choices=left_list())
+                                         prefix=left_list_name,
+                                         choices=left_list())
             if unselected_list.is_valid():
                 for selection in unselected_list.cleaned_data['selection']:
                     if grouped:
@@ -88,19 +93,17 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                         selection_obj = selection
                     try:
                         add_method(selection_obj)
-                        messages.success(request, _(u'%(selection)s added successfully added to %(right_list_title)s.') % {
-                            'selection': label, 'right_list_title': right_list_title})
                     except:
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
+                            messages.error(request, _('Unable to remove %(selection)s.') % {
                                 'selection': label, 'right_list_title': right_list_title})
 
-        elif u'%s-submit' % right_list_name in request.POST.keys():
+        elif '%s-submit' % right_list_name in request.POST.keys():
             selected_list = ChoiceForm(request.POST,
-                prefix=right_list_name,
-                choices=right_list())
+                                       prefix=right_list_name,
+                                       choices=right_list())
             if selected_list.is_valid():
                 for selection in selected_list.cleaned_data['selection']:
                     if grouped:
@@ -115,39 +118,35 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                         selection = get_obj_from_content_type_string(selection)
                     try:
                         remove_method(selection)
-                        messages.success(request, _(u'%(selection)s added successfully removed from %(right_list_title)s.') % {
-                            'selection': label, 'right_list_title': right_list_title})
                     except:
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(request, _(u'Unable to add %(selection)s to %(right_list_title)s.') % {
+                            messages.error(request, _('Unable to add %(selection)s.') % {
                                 'selection': label, 'right_list_title': right_list_title})
-    unselected_list = ChoiceForm(prefix=left_list_name,
-        choices=left_list())
-    selected_list = ChoiceForm(prefix=right_list_name,
-        choices=right_list())
+    unselected_list = ChoiceForm(prefix=left_list_name, choices=left_list())
+    selected_list = ChoiceForm(prefix=right_list_name, choices=right_list())
 
     context = {
         'subtemplates_list': [
             {
-                'name': 'generic_form_subtemplate.html',
-                'grid': 6,
+                'name': 'main/generic_form_subtemplate.html',
+                'grid': 12,
                 'context': {
                     'form': unselected_list,
-                    'title': left_list_title,
-                    'submit_label': _(u'Add'),
+                    'title': left_list_title or ' ',
+                    'submit_label': _('Add'),
                     'submit_icon_famfam': 'add'
                 }
             },
             {
-                'name': 'generic_form_subtemplate.html',
-                'grid': 6,
+                'name': 'main/generic_form_subtemplate.html',
+                'grid': 12,
                 'grid_clear': True,
                 'context': {
                     'form': selected_list,
-                    'title': right_list_title,
-                    'submit_label': _(u'Remove'),
+                    'title': right_list_title or ' ',
+                    'submit_label': _('Remove'),
                     'submit_icon_famfam': 'delete'
                 }
             },
@@ -157,8 +156,8 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
     if extra_context:
         context.update(extra_context)
 
-    return render_to_response('generic_form.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_form.html', context,
+                              context_instance=RequestContext(request))
 
 
 def current_user_details(request):
@@ -168,9 +167,24 @@ def current_user_details(request):
     form = UserForm_view(instance=request.user)
 
     return render_to_response(
-        'generic_form.html', {
+        'main/generic_form.html', {
             'form': form,
-            'title': _(u'current user details'),
+            'title': _('Current user details'),
+            'read_only': True,
+        },
+        context_instance=RequestContext(request))
+
+
+def current_user_locale_profile_details(request):
+    """
+    Display the current user's locale profile details
+    """
+    form = LocaleProfileForm_view(instance=request.user.locale_profile)
+
+    return render_to_response(
+        'main/generic_form.html', {
+            'form': form,
+            'title': _('Current user locale profile details'),
             'read_only': True,
         },
         context_instance=RequestContext(request))
@@ -181,25 +195,57 @@ def current_user_edit(request):
     Allow an user to edit his own details
     """
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('current_user_details'))))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('common:current_user_details'))))
 
     if request.method == 'POST':
         form = UserForm(instance=request.user, data=request.POST)
         if form.is_valid():
             if User.objects.filter(email=form.cleaned_data['email']).exclude(pk=request.user.pk).count():
-                messages.error(request, _(u'E-mail conflict, another user has that same email.'))
+                messages.error(request, _('E-mail conflict, another user has that same email.'))
             else:
                 form.save()
-                messages.success(request, _(u'Current user\'s details updated.'))
+                messages.success(request, _('Current user\'s details updated.'))
                 return HttpResponseRedirect(next)
     else:
         form = UserForm(instance=request.user)
 
     return render_to_response(
-        'generic_form.html', {
+        'main/generic_form.html', {
             'form': form,
             'next': next,
-            'title': _(u'edit current user details'),
+            'title': _('Edit current user details'),
+        },
+        context_instance=RequestContext(request))
+
+
+def current_user_locale_profile_edit(request):
+    """
+    Allow an user to edit his own locale profile
+    """
+
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('common:current_user_locale_profile_details'))))
+
+    if request.method == 'POST':
+        form = LocaleProfileForm(instance=request.user.locale_profile, data=request.POST)
+        if form.is_valid():
+            form.save()
+
+            if hasattr(request, 'session'):
+                request.session['django_language'] = form.cleaned_data['language']
+                request.session['django_timezone'] = form.cleaned_data['timezone']
+            else:
+                request.set_cookie(settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language'])
+
+            messages.success(request, _('Current user\'s locale profile details updated.'))
+            return HttpResponseRedirect(next)
+    else:
+        form = LocaleProfileForm(instance=request.user.locale_profile)
+
+    return render_to_response(
+        'main/generic_form.html', {
+            'form': form,
+            'next': next,
+            'title': _('Edit current user locale profile details'),
         },
         context_instance=RequestContext(request))
 
@@ -209,7 +255,7 @@ def login_view(request):
     Control how the use is to be authenticated, options are 'email' and
     'username'
     """
-    kwargs = {'template_name': 'login.html'}
+    kwargs = {'template_name': 'main/login.html'}
 
     if LOGIN_METHOD == 'email':
         kwargs['authentication_form'] = EmailAuthenticationForm
@@ -228,9 +274,9 @@ def license_view(request):
     """
     form = LicenseForm()
     return render_to_response(
-        'generic_detail.html', {
+        'main/generic_detail.html', {
             'form': form,
-            'title': _(u'License'),
+            'title': _('License'),
         },
         context_instance=RequestContext(request))
 
@@ -239,13 +285,13 @@ def password_change_view(request):
     """
     Password change wrapper for better control
     """
-    context = {'title': _(u'Current user password change')}
+    context = {'title': _('Current user password change')}
 
     return password_change(
         request,
         extra_context=context,
-        template_name='password_change_form.html',
-        post_change_redirect=reverse('password_change_done'),
+        template_name='main/password_change_form.html',
+        post_change_redirect=reverse('common:password_change_done'),
     )
 
 
@@ -254,47 +300,12 @@ def password_change_done(request):
     View called when the new user password has been accepted
     """
 
-    messages.success(request, _(u'Your password has been successfully changed.'))
-    return redirect('current_user_details')
+    messages.success(request, _('Your password has been successfully changed.'))
+    return redirect('common:current_user_details')
 
 
-class MayanPermissionCheckMixin(object):
-    permissions_required = None
-
-    def dispatch(self, request, *args, **kwargs):
-        if self.permissions_required:
-            Permission.objects.check_permissions(self.request.user, self.permissions_required)
-
-        return super(MayanPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
-
-
-class MayanViewMixin(object):
-    # TODO: split into two mixins, MayanView and ExtraContextMixin
-    extra_context = {}
-    post_action_redirect = None
-
-    def dispatch(self, request, *args, **kwargs):
-        self.next_url = self.request.POST.get('next', self.request.GET.get('next', self.post_action_redirect if self.post_action_redirect else self.request.META.get('HTTP_REFERER', '/')))
-        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', self.request.META.get('HTTP_REFERER', '/')))
-
-        return super(MayanViewMixin, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(MayanViewMixin, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'next': self.next_url,
-                'previous': self.previous_url
-            }
-        )
-
-        context.update(self.extra_context)
-
-        return context
-
-
-class SingleObjectEditView(MayanPermissionCheckMixin, MayanViewMixin, UpdateView):
-    template_name = 'generic_form.html'
+class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
+    template_name = 'main/generic_form.html'
 
     def form_invalid(self, form):
         result = super(SingleObjectEditView, self).form_invalid(form)
@@ -317,8 +328,8 @@ class SingleObjectEditView(MayanPermissionCheckMixin, MayanViewMixin, UpdateView
         return result
 
 
-class SingleObjectCreateView(MayanPermissionCheckMixin, MayanViewMixin, CreateView):
-    template_name = 'generic_form.html'
+class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
+    template_name = 'main/generic_form.html'
 
     def form_invalid(self, form):
         result = super(SingleObjectCreateView, self).form_invalid(form)
@@ -340,8 +351,8 @@ class SingleObjectCreateView(MayanPermissionCheckMixin, MayanViewMixin, CreateVi
         return result
 
 
-class SingleObjectDeleteView(MayanPermissionCheckMixin, MayanViewMixin, DeleteView):
-    template_name = 'generic_confirm.html'
+class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
+    template_name = 'main/generic_confirm.html'
 
     def get_context_data(self, **kwargs):
         context = super(SingleObjectDeleteView, self).get_context_data(**kwargs)
@@ -367,6 +378,74 @@ class SingleObjectDeleteView(MayanPermissionCheckMixin, MayanViewMixin, DeleteVi
             return result
 
 
-class SingleObjectListView(MayanPermissionCheckMixin, MayanViewMixin, ListView):
-    # TODO: filter object_list by permission
-    template_name = 'generic_list.html'
+class SingleObjectListView(ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
+    template_name = 'main/generic_list.html'
+
+
+class MultiFormView(FormView):
+    prefixes = {}
+
+    prefix = None
+
+    def get_form_kwargs(self, form_name):
+        kwargs = {}
+        kwargs.update({'initial': self.get_initial(form_name)})
+        kwargs.update({'prefix': self.get_prefix(form_name)})
+
+        if self.request.method in ('POST', 'PUT'):
+            kwargs.update({
+                'data': self.request.POST,
+                'files': self.request.FILES,
+            })
+
+        return kwargs
+
+    def _create_form(self, form_name, klass):
+        form_kwargs = self.get_form_kwargs(form_name)
+        form_create_method = 'create_%s_form' % form_name
+        if hasattr(self, form_create_method):
+            form = getattr(self, form_create_method)(**form_kwargs)
+        else:
+            form = klass(**form_kwargs)
+        return form
+
+    def get_forms(self, form_classes):
+        return dict([(key, self._create_form(key, klass)) for key, klass in form_classes.items()])
+
+    def get_initial(self, form_name):
+        initial_method = 'get_%s_initial' % form_name
+        if hasattr(self, initial_method):
+            return getattr(self, initial_method)()
+        else:
+            return self.initial.copy()
+
+    def get_prefix(self, form_name):
+        return self.prefixes.get(form_name, self.prefix)
+
+    def get(self, request, *args, **kwargs):
+        form_classes = self.get_form_classes()
+        forms = self.get_forms(form_classes)
+        return self.render_to_response(self.get_context_data(forms=forms))
+
+    def forms_valid(self, forms):
+        for form_name, form in forms.items():
+            form_valid_method = '%s_form_valid' % form_name
+
+            if hasattr(self, form_valid_method):
+                return getattr(self, form_valid_method)(form)
+
+        self.all_forms_valid(forms)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def forms_invalid(self, forms):
+        return self.render_to_response(self.get_context_data(forms=forms))
+
+    def post(self, request, *args, **kwargs):
+        form_classes = self.get_form_classes()
+        forms = self.get_forms(form_classes)
+
+        if all([form.is_valid() for form in forms.values()]):
+            return self.forms_valid(forms)
+        else:
+            return self.forms_invalid(forms)

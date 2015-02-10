@@ -1,0 +1,237 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-06 16:51-0400\n"
+"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/zh_TW/)\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: __init__.py:38
+msgid "Initial state"
+msgstr ""
+
+#: __init__.py:39 __init__.py:57 __init__.py:65
+msgid "None"
+msgstr ""
+
+#: __init__.py:45
+msgid "Is initial state?"
+msgstr ""
+
+#: __init__.py:52 views.py:83
+msgid "Current state"
+msgstr ""
+
+#: __init__.py:56 __init__.py:86 models.py:129
+msgid "User"
+msgstr ""
+
+#: __init__.py:60 views.py:84
+msgid "Last transition"
+msgstr ""
+
+#: __init__.py:64 __init__.py:82
+msgid "Date and time"
+msgstr ""
+
+#: __init__.py:71 models.py:66
+msgid "Origin state"
+msgstr ""
+
+#: __init__.py:75 models.py:67
+msgid "Destination state"
+msgstr ""
+
+#: __init__.py:90 forms.py:41 links.py:24 models.py:128
+msgid "Transition"
+msgstr ""
+
+#: __init__.py:94 forms.py:42 models.py:130
+msgid "Comment"
+msgstr ""
+
+#: links.py:5 links.py:22 models.py:38 views.py:170
+msgid "Workflows"
+msgstr ""
+
+#: links.py:6
+msgid "Create"
+msgstr ""
+
+#: links.py:7 links.py:12 links.py:17
+msgid "Delete"
+msgstr ""
+
+#: links.py:8 links.py:13 links.py:18
+msgid "Edit"
+msgstr ""
+
+#: links.py:10 permissions.py:7
+msgid "States"
+msgstr ""
+
+#: links.py:11
+msgid "Create state"
+msgstr ""
+
+#: links.py:15
+msgid "Transitions"
+msgstr ""
+
+#: links.py:16
+msgid "Create transition"
+msgstr ""
+
+#: links.py:20 models.py:17
+msgid "Document types"
+msgstr ""
+
+#: links.py:23
+msgid "Detail"
+msgstr ""
+
+#: models.py:16 models.py:44 models.py:64
+msgid "Label"
+msgstr ""
+
+#: models.py:37 models.py:43 models.py:63 models.py:80
+msgid "Workflow"
+msgstr ""
+
+#: models.py:45
+msgid ""
+"Select if this will be the state with which you want the workflow to start "
+"in. Only one state can be the initial state."
+msgstr ""
+
+#: models.py:45
+msgid "Initial"
+msgstr ""
+
+#: models.py:57
+msgid "Workflow state"
+msgstr ""
+
+#: models.py:58
+msgid "Workflow states"
+msgstr ""
+
+#: models.py:74
+msgid "Workflow transition"
+msgstr ""
+
+#: models.py:75
+msgid "Workflow transitions"
+msgstr ""
+
+#: models.py:81
+msgid "Document"
+msgstr ""
+
+#: models.py:120 models.py:126
+msgid "Workflow instance"
+msgstr ""
+
+#: models.py:121
+msgid "Workflow instances"
+msgstr ""
+
+#: models.py:127
+msgid "Datetime"
+msgstr ""
+
+#: models.py:136
+msgid "Workflow instance log entry"
+msgstr ""
+
+#: models.py:137
+msgid "Workflow instance log entries"
+msgstr ""
+
+#: permissions.py:8
+msgid "Create workflows"
+msgstr ""
+
+#: permissions.py:9
+msgid "Delete workflows"
+msgstr ""
+
+#: permissions.py:10
+msgid "Edit workflows"
+msgstr ""
+
+#: permissions.py:11
+msgid "View workflows"
+msgstr ""
+
+#: permissions.py:13
+msgid "View document workflows"
+msgstr ""
+
+#: permissions.py:14
+msgid "Transition document workflows"
+msgstr ""
+
+#: views.py:55
+#, python-format
+msgid "Workflows for document: %s"
+msgstr ""
+
+#: views.py:95
+#, python-format
+msgid "Detail of workflow: %(workflow)s"
+msgstr ""
+
+#: views.py:109
+msgid "Log entries"
+msgstr ""
+
+#: views.py:155
+#, python-format
+msgid "Do transition for workflow: %s"
+msgstr ""
+
+#: views.py:156
+msgid "Submit"
+msgstr ""
+
+#: views.py:220
+#, python-format
+msgid "States of workflow: %s"
+msgstr ""
+
+#: views.py:243
+#, python-format
+msgid "Create states for workflow: %s"
+msgstr ""
+
+#: views.py:337
+#, python-format
+msgid "Transitions of workflow: %s"
+msgstr ""
+
+#: views.py:360
+#, python-format
+msgid "Create transitions for workflow: %s"
+msgstr ""
+
+#: views.py:385
+msgid "Unable to save transition; integrity error."
+msgstr ""
+
+#: views.py:461
+#, python-format
+msgid "Document types assigned the workflow: %s"
+msgstr ""

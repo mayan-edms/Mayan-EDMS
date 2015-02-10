@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
@@ -6,29 +6,29 @@ from django import forms
 from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
-from taggit.models import Tag
-
 from acls.models import AccessEntry
 from permissions.models import Permission
 
-from .models import COLOR_CHOICES
+from .models import Tag
 from .permissions import PERMISSION_TAG_VIEW
 
 logger = logging.getLogger(__name__)
 
 
-class TagForm(forms.Form):
+class TagForm(forms.ModelForm):
     """
     Form to edit an existing tag's properties
     """
-    name = forms.CharField(label=_(u'Name'))
-    color = forms.ChoiceField(choices=COLOR_CHOICES, label=_(u'Color'))
+
+    class Meta:
+        fields = ('label', 'color')
+        model = Tag
 
 
 class TagListForm(forms.Form):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
-        logger.debug('user: %s' % user)
+        logger.debug('user: %s', user)
         super(TagListForm, self).__init__(*args, **kwargs)
 
         queryset = Tag.objects.all()
@@ -39,4 +39,4 @@ class TagListForm(forms.Form):
 
         self.fields['tag'] = forms.ModelChoiceField(
             queryset=queryset,
-            label=_(u'Tags'))
+            label=_('Tags'))

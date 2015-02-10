@@ -1,11 +1,10 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django.contrib import admin
 
 from mptt.admin import MPTTModelAdmin
 
-from .models import (Index, IndexTemplateNode, IndexInstanceNode,
-    DocumentRenameCount)
+from .models import Index, IndexInstanceNode, IndexTemplateNode
 
 
 class IndexTemplateNodeAdmin(MPTTModelAdmin):
@@ -20,4 +19,3 @@ class IndexInstanceNodeAdmin(MPTTModelAdmin):
 admin.site.register(Index)
 admin.site.register(IndexTemplateNode, IndexTemplateNodeAdmin)
 admin.site.register(IndexInstanceNode, IndexInstanceNodeAdmin)
-admin.site.register(DocumentRenameCount)

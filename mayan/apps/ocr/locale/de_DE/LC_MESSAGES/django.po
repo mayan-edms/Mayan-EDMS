@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
@@ -9,145 +9,82 @@
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # tilmannsittig <tilmann.sittig@web.de>, 2012
 # tilmannsittig <tilmann.sittig@web.de>, 2012
+# Tobias Paepke <tobias.paepke@paepke.net>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2014-07-20 00:07+0000\n"
+"POT-Creation-Date: 2015-02-06 20:44-0400\n"
+"PO-Revision-Date: 2015-02-07 01:34+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:45 __init__.py:85 links.py:22 permissions.py:7
+#: __init__.py:37 permissions.py:7
 msgid "OCR"
 msgstr "OCR-Schrifterkennung"
 
-#: __init__.py:75
-msgid "Checks the OCR queue for pending documents."
-msgstr "Prüft die OCR-Warteschlange auf ausstehende Dokumente."
+#: __init__.py:67
+msgid "Document"
+msgstr "Dokument"
 
-#: __init__.py:86
-#, fuzzy
-msgid "OCR queue statistics"
-msgstr "OCR-Statistiken"
+#: __init__.py:70
+msgid "Added"
+msgstr "Hinzugefügt"
 
-#: api.py:74
+#: __init__.py:73 models.py:14
+msgid "Result"
+msgstr "Ergebnis"
+
+#: api.py:75
 msgid "Text from OCR"
 msgstr "Text aus der OCR-Schrifterkennung"
 
-#: links.py:9 links.py:10
-msgid "submit to OCR queue"
+#: links.py:10 links.py:11
+msgid "Submit to OCR queue"
 msgstr "In die OCR-Warteschlange einstellen"
 
-#: links.py:11 links.py:12
-msgid "re-queue"
+#: links.py:12 links.py:13
+msgid "Re-queue"
 msgstr "Erneut einstellen"
 
-#: links.py:13 links.py:14
-msgid "delete"
+#: links.py:14 links.py:15
+msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:16
-msgid "stop queue"
-msgstr "Warteschlange anhalten"
+#: links.py:17
+msgid "Clean up pages content"
+msgstr "Seiteninhalt säubern"
 
 #: links.py:17
-msgid "activate queue"
-msgstr "Warteschlange aktivieren"
-
-#: links.py:19
-msgid "clean up pages content"
-msgstr "Seiteninhalt aufräumen"
-
-#: links.py:19
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
-msgstr ""
-"Lässt einen Sprachfilter über den erkannten Inhalt laufen, um häufige "
-"Erkennungsfehler zu beseitigen."
+msgstr "Lässt einen Sprachfilter über den erkannten Inhalt laufen, um häufige Erkennungsfehler zu beseitigen."
 
-#: links.py:21
-msgid "queue document list"
-msgstr "Liste der Dokumente in der Warteschlange"
+#: links.py:19
+msgid "OCR Errors"
+msgstr "OCR Fehler"
 
-#: literals.py:7
-msgid "stopped"
-msgstr "Angehalten"
+#: models.py:12
+msgid "Document version"
+msgstr "Dokumentenversion"
 
-#: literals.py:8
-msgid "active"
-msgstr "Aktiv"
+#: models.py:13
+msgid "Date time submitted"
+msgstr "Einstellunsgzeit"
 
-#: literals.py:16
-msgid "pending"
-msgstr "Ausstehend"
+#: models.py:21
+msgid "Document Version OCR Error"
+msgstr "Dokumentenversion OCR Fehler"
 
-#: literals.py:17
-msgid "processing"
-msgstr "In Bearbeitung"
-
-#: literals.py:18
-msgid "error"
-msgstr "Fehler"
-
-#: models.py:19
-msgid "name"
-msgstr "Name"
-
-#: models.py:20
-msgid "label"
-msgstr "Bezeichner"
-
-#: models.py:24 models.py:44
-msgid "state"
-msgstr "Status"
-
-#: models.py:29 models.py:37 views.py:36
-msgid "document queue"
-msgstr "Dokumenten-Warteschlange"
-
-#: models.py:30
-msgid "document queues"
-msgstr "Dokumenten-Warteschlangen"
-
-#: models.py:38
-msgid "document"
-msgstr "Dokument"
-
-#: models.py:39
-msgid "date time submitted"
-msgstr "Eingestellt um"
-
-#: models.py:40
-msgid "delay ocr"
-msgstr "Verarbeitung verzögern"
-
-#: models.py:45
-msgid "result"
-msgstr "Ergebnis"
-
-#: models.py:46
-msgid "node name"
-msgstr "Knotenpunkt-Name"
-
-#: models.py:50
-msgid "queue document"
-msgstr "Dokument einstellen"
-
-#: models.py:51
-msgid "queue documents"
-msgstr "Dokumente einstellen"
-
-#: models.py:68 views.py:40
-msgid "Missing document."
-msgstr "Dokument fehlt."
+#: models.py:22
+msgid "Document Version OCR Errors"
+msgstr "Dokumentenversion OCR Fehler"
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -158,208 +95,212 @@ msgid "Delete documents from OCR queue"
 msgstr "Dokumente aus der OCR-Warteschlange entfernen"
 
 #: permissions.py:10
-msgid "Can enable/disable the OCR queue"
-msgstr "Berechtigung zum De- und Aktivieren von OCR-Warteschlangen"
-
-#: permissions.py:11
 msgid "Can execute the OCR clean up on all document pages"
 msgstr "Berechtigung zum Bereinigen des Seiteninhalts von Dokumenten"
 
-#: permissions.py:12
-msgid "Can edit an OCR queue properties"
-msgstr "Kann Eigenschaften der OCR-Warteschlangen bearbeiten"
-
-#: statistics.py:15
-#, python-format
-msgid "Document queues: %d"
-msgstr "Dokumenten-Warteschlangen: %d"
-
-#: statistics.py:16
-#, python-format
-msgid "Queued documents: %d"
-msgstr "Eingestellte Dokumente: %d"
-
-#: views.py:33
-#, python-format
-msgid "documents in queue: %s"
-msgstr "Dokumente in der Warteschlange: %s"
-
-#: views.py:41
-msgid "thumbnail"
-msgstr "Miniaturansicht"
-
-#: views.py:54
-msgid "document queue properties"
-msgstr "Eigenschaften der Dokumenten-Warteschlange"
-
-#: views.py:55
-#, python-format
-msgid "Current state: %s"
-msgstr "Aktueller Status: %s"
-
-#: views.py:73 views.py:163
-msgid "Must provide at least one queue document."
-msgstr "Es muss zumindest ein Dokument aus der Warteschlange angegeben werden."
-
-#: views.py:83
-#, python-format
-msgid "Document: %s is being processed and can't be deleted."
-msgstr "Dokument %s wird gerade verarbeitet und kann nicht gelöscht werden."
-
-#: views.py:86
-#, python-format
-msgid "Queue document: %(document)s deleted successfully."
-msgstr "Dokument %(document)s erfolgreich von Warteschlange gelöscht."
-
-#: views.py:90
-#, python-format
-msgid "Error deleting document: %(document)s; %(error)s"
-msgstr ""
-"Fehler beim Löschen des Warteschlangen-Dokuments %(document)s: %(error)s"
-
-#: views.py:103
-#, python-format
-msgid "Are you sure you wish to delete queue document: %s?"
-msgstr ""
-"Sind Sie sicher, dass das Warteschlangen-Dokument %s gelöscht werden soll?"
-
-#: views.py:105
-#, python-format
-msgid "Are you sure you wish to delete queue documents: %s?"
-msgstr ""
-"Sind Sie sicher, dass die Warteschlangen-Dokumente %s gelöscht werden sollen?"
-
-#: views.py:141
-#, python-format
-msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
-msgstr ""
-"Dokument %(document)s wurde zu OCR-Warteschlange %(queue)s hinzugefügt."
-
-#: views.py:145
-#, python-format
-msgid "Document: %(document)s is already queued."
-msgstr "Dokument %(document)s ist bereits in der Warteschlange."
-
-#: views.py:175
-#, python-format
-msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgstr ""
-"Dokument %(document)s wurde erneut in die OCR-Warteschlange: %(queue)s "
-"eingestellt."
-
-#: views.py:181
-#, python-format
-msgid "Document id#: %d, no longer exists."
-msgstr "Dokument mit ID %d existiert nicht mehr."
-
-#: views.py:185
-#, python-format
-msgid "Document: %s is already being processed and can't be re-queded."
-msgstr ""
-"Dokument %s wird bereits verarbeitet und kann nicht erneut eingestellt "
-"werden."
-
-#: views.py:197
-#, python-format
-msgid "Are you sure you wish to re-queue document: %s?"
-msgstr "Sind Sie sicher, dass Sie das Dokument %s erneut einstellen möchten?"
-
-#: views.py:199
-#, python-format
-msgid "Are you sure you wish to re-queue documents: %s?"
-msgstr "Sind Sie sicher, dass Sie die Dokumente %s erneut einstellen möchten?"
-
-#: views.py:217
-#, python-format
-msgid "Document queue: %s, already stopped."
-msgstr "Dokumenten-Warteschlange %s bereits angehalten."
-
-#: views.py:223
-#, python-format
-msgid "Document queue: %s, stopped successfully."
-msgstr "Dokumenten-Warteschlange %s angehalten."
-
-#: views.py:229
-#, python-format
-msgid "Are you sure you wish to disable document queue: %s"
-msgstr ""
-"Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s deaktivieren "
-"möchten?"
-
-#: views.py:244
-#, python-format
-msgid "Document queue: %s, already active."
-msgstr "Dokumenten-Warteschlange %s bereits aktiv."
-
-#: views.py:250
-#, python-format
-msgid "Document queue: %s, activated successfully."
-msgstr "Dokumenten-Warteschlange %s erfolgreich aktiviert."
-
-#: views.py:256
-#, python-format
-msgid "Are you sure you wish to activate document queue: %s"
-msgstr ""
-"Sind Sie sicher, dass Sie die Dokumenten-Warteschlange %s aktivieren möchten?"
-
-#: views.py:273
-msgid "Are you sure you wish to clean up all the pages content?"
-msgstr ""
-"Sind Sie sicher, dass Sie den gesamten erkannten Seiteninhalt bereinigen "
-"möchten?"
-
-#: views.py:274
-msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Auf großen Datenbanken kann diese Operation einige Zeit in Anspruch nehmen."
-
-#: views.py:280
-msgid "Document pages content clean up complete."
-msgstr "Bereinigung des Dokumenten-Seiteninhalts abgeschlossen."
-
-#: views.py:282
-#, python-format
-msgid "Document pages content clean up error: %s"
-msgstr "Fehler bei der Bereinigung des Dokumenten-Seiteninhalts: %s"
-
-#: conf/settings.py:13
-msgid ""
-"Amount of seconds to delay OCR of documents to allow for the node's storage "
-"replication overhead."
-msgstr ""
-"Verzögerung in Sekunden für die OCR-Texterkennung, um den Overhead für die "
-"Speicherreplikation zu berücksichtigen."
-
-#: conf/settings.py:14
-msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr ""
-"Maximale Anzahl an parallelen OCR-Texterkennungsvorgängen einer "
-"Serverinstanz."
-
-#: conf/settings.py:15
-msgid "Automatically queue newly created documents for OCR."
-msgstr "Neue Dokumente automatisch in die OCR-Warteschlange einstellen."
-
-#: conf/settings.py:17
+#: settings.py:12
 msgid "File path to unpaper program."
 msgstr "Pfad zum 'unpaper'-Programm"
 
-#: conf/settings.py:18
+#: settings.py:13
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt "
-"wird, um Text aus PDF-Dateien zu extrahieren."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt wird, um Text aus PDF-Dateien zu extrahieren."
 
-#: conf/settings.py:19
+#: settings.py:14
 msgid "Full path to the backend to be used to do OCR."
-msgstr ""
-"Vollständiger Pfad zum Backend, das für die OCR-Schrifterkennung verwendet "
-"werden soll."
+msgstr "Vollständiger Pfad zum Backend, das für die OCR-Schrifterkennung verwendet werden soll."
 
-#: parsers/__init__.py:93 parsers/__init__.py:170
+#: views.py:32
+#, python-format
+msgid "Document: %(document)s was added to the OCR queue."
+msgstr "Dokument %(document)s in OCR Warteschlange eingereiht"
+
+#: views.py:56
+msgid "Are you sure you wish to clean up all the pages content?"
+msgstr "Sind Sie sicher, dass Sie den gesamten erkannten Seiteninhalt bereinigen möchten?"
+
+#: views.py:57
+msgid "On large databases this operation may take some time to execute."
+msgstr "Auf großen Datenbanken kann diese Operation einige Zeit in Anspruch nehmen."
+
+#: views.py:63
+msgid "Document pages content clean up complete."
+msgstr "Bereinigung des Seiteninhalts abgeschlossen."
+
+#: views.py:65
+#, python-format
+msgid "Document pages content clean up error: %s"
+msgstr "Fehler bei der Bereinigung des Seiteninhalts: %s"
+
+#: views.py:75
+msgid "OCR errors"
+msgstr "OCR Fehler"
+
+#: views.py:91 views.py:140
+msgid "Make at least one selection."
+msgstr "Es muss mindestens eine Auswahl getroffen werden"
+
+#: views.py:101
+#, python-format
+msgid "Entry: %(entry)s deleted successfully."
+msgstr "Eintrag %(entry)s erfolgreich gelöscht"
+
+#: views.py:105
+#, python-format
+msgid "Error entry: %(entry)s; %(error)s"
+msgstr "Fehler bei Eintrag %(entry)s: %(error)s"
+
+#: views.py:119
+msgid "Are you sure you wish to delete the selected entry?"
+msgid_plural "Are you sure you wish to delete the selected entries?"
+msgstr[0] "Wollen Sie den ausgewählten Eintrag wirklich löschen?"
+msgstr[1] "Wollen Sie die ausgewählten Einträge wirklich löschen?"
+
+#: views.py:152
+#, python-format
+msgid "Entry: %(entry)s was re-queued for OCR."
+msgstr "Eintrag %(entry)s wurde erneut in die Warteschlange eingereiht"
+
+#: views.py:157
+#, python-format
+msgid "Document version id#: %d, no longer exists."
+msgstr "Dokumentenversion ID: %d existiert nicht mehr"
+
+#: views.py:169
+msgid "Are you sure you wish to re-queue the selected entry?"
+msgid_plural "Are you sure you wish to re-queue the selected entries?"
+msgstr[0] "Wollen Sie den ausgewählten Eintrag wirklich neu einreihen?"
+msgstr[1] "Wollen Sie die ausgewählten Einträge wirklich neu einreihen?"
+
+#: parsers/__init__.py:97 parsers/__init__.py:174
 msgid "Text extracted from PDF"
 msgstr "Text extrahiert aus PDF"
+
+#~ msgid "Queue document list"
+#~ msgstr "queue document list"
+
+#~ msgid "Label"
+#~ msgstr "label"
+
+#~ msgid "Document queue"
+#~ msgstr "document queue"
+
+#~ msgid "Node name"
+#~ msgstr "node name"
+
+#~ msgid "Queue document"
+#~ msgstr "queue document"
+
+#~ msgid "Queue documents"
+#~ msgstr "queue documents"
+
+#~ msgid "Missing document."
+#~ msgstr "Missing document."
+
+#~ msgid "Documents in queue: %s"
+#~ msgstr "documents in queue: %s"
+
+#~ msgid "Thumbnail"
+#~ msgstr "thumbnail"
+
+#~ msgid "Are you sure you wish to delete queue documents: %s?"
+#~ msgstr "Are you sure you wish to delete queue documents: %s?"
+
+#~ msgid "Are you sure you wish to re-queue documents: %s?"
+#~ msgstr "Are you sure you wish to re-queue documents: %s?"
+
+#~ msgid "Can edit an OCR queue properties"
+#~ msgstr "Can edit an OCR queue properties"
+
+#~ msgid "OCR queue statistics"
+#~ msgstr "OCR statistics"
+
+#~ msgid "Automatically queue newly created documents for OCR."
+#~ msgstr "Automatically queue newly created documents for OCR."
+
+#~ msgid "Document queues: %d"
+#~ msgstr "Document queues: %d"
+
+#~ msgid "Queued documents: %d"
+#~ msgstr "Queued documents: %d"
+
+#~ msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+#~ msgstr "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+
+#~ msgid "Document: %s is already being processed and can't be re-queded."
+#~ msgstr "Document: %s is already being processed and can't be re-queded."
+
+#~ msgid "Checks the OCR queue for pending documents."
+#~ msgstr "Checks the OCR queue for pending documents."
+
+#~ msgid "stop queue"
+#~ msgstr "stop queue"
+
+#~ msgid "activate queue"
+#~ msgstr "activate queue"
+
+#~ msgid "stopped"
+#~ msgstr "stopped"
+
+#~ msgid "active"
+#~ msgstr "active"
+
+#~ msgid "pending"
+#~ msgstr "pending"
+
+#~ msgid "processing"
+#~ msgstr "processing"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid "state"
+#~ msgstr "state"
+
+#~ msgid "delay ocr"
+#~ msgstr "delay ocr"
+
+#~ msgid "Can enable/disable the OCR queue"
+#~ msgstr "Can enable/disable the OCR queue"
+
+#~ msgid "document queue properties"
+#~ msgstr "document queue properties"
+
+#~ msgid "Current state: %s"
+#~ msgstr "Current state: %s"
+
+#~ msgid "Document: %s is being processed and can't be deleted."
+#~ msgstr "Document: %s is being processed and can't be deleted."
+
+#~ msgid "Document queue: %s, already stopped."
+#~ msgstr "Document queue: %s, already stopped."
+
+#~ msgid "Document queue: %s, stopped successfully."
+#~ msgstr "Document queue: %s, stopped successfully."
+
+#~ msgid "Are you sure you wish to disable document queue: %s"
+#~ msgstr "Are you sure you wish to disable document queue: %s"
+
+#~ msgid "Document queue: %s, already active."
+#~ msgstr "Document queue: %s, already active."
+
+#~ msgid "Document queue: %s, activated successfully."
+#~ msgstr "Document queue: %s, activated successfully."
+
+#~ msgid "Are you sure you wish to activate document queue: %s"
+#~ msgstr "Are you sure you wish to activate document queue: %s"
+
+#~ msgid ""
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
+#~ msgstr ""
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
+
+#~ msgid "Maximum amount of concurrent document OCRs a node can perform."
+#~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
 
 #~ msgid "transformations"
 #~ msgstr "transformations"
@@ -413,11 +354,9 @@ msgstr "Text extrahiert aus PDF"
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

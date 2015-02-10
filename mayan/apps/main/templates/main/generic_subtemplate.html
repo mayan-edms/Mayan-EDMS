@@ -1,0 +1,19 @@
+{% if side_bar %}
+    <div class="block">
+        <h3>{{ title }}</h3>
+        <div class="content">
+{% else %}
+    <div class="content">
+        <h2 class="title">{{ title }}</h2>
+        <div class="inner">
+{% endif %}
+
+{% if content %}
+    <p>{{ content }}</p>
+{% endif %}
+
+{% for paragraph in paragraphs %}
+    <p>{{ paragraph }}</p>
+{% endfor %}
+
+</div></div>

@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.template import Library, Node, Variable
 
 from converter.api import get_dimensions
@@ -12,9 +14,9 @@ class GetImageSizeNode(Node):
     def render(self, context):
         document = Variable(self.document).resolve(context)
         width, height = get_dimensions(document)
-        context[u'document_width'], context['document_height'] = width, height
-        context[u'document_aspect'] = float(width) / float(height)
-        return u''
+        context['document_width'], context['document_height'] = width, height
+        context['document_aspect'] = float(width) / float(height)
+        return ''
 
 
 @register.tag

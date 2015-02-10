@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import logging
 import os
@@ -14,66 +14,14 @@ import gnupg
 
 from django.utils.translation import ugettext_lazy as _
 
-from .exceptions import (GPGVerificationError, GPGSigningError,
-    GPGDecryptionError, KeyDeleteError, KeyGenerationError,
-    KeyFetchingError, KeyDoesNotExist, KeyImportError)
+from .exceptions import (
+    GPGException, GPGVerificationError, GPGSigningError, GPGDecryptionError,
+    KeyDeleteError, KeyGenerationError, KeyFetchingError, KeyDoesNotExist,
+    KeyImportError
+)
+from .literals import KEY_TYPES
 
 logger = logging.getLogger(__name__)
-
-KEY_TYPES = {
-    'pub': _(u'Public'),
-    'sec': _(u'Secret'),
-}
-
-KEY_CLASS_RSA = 'RSA'
-KEY_CLASS_DSA = 'DSA'
-KEY_CLASS_ELG = 'ELG-E'
-
-KEY_PRIMARY_CLASSES = (
-    ((KEY_CLASS_RSA), _(u'RSA')),
-    ((KEY_CLASS_DSA), _(u'DSA')),
-)
-
-KEY_SECONDARY_CLASSES = (
-    ((KEY_CLASS_RSA), _(u'RSA')),
-    ((KEY_CLASS_ELG), _(u'Elgamal')),
-)
-
-KEYSERVER_DEFAULT_PORT = 11371
-
-SIGNATURE_STATE_BAD = 'signature bad'
-SIGNATURE_STATE_NONE = None
-SIGNATURE_STATE_ERROR = 'signature error'
-SIGNATURE_STATE_NO_PUBLIC_KEY = 'no public key'
-SIGNATURE_STATE_GOOD = 'signature good'
-SIGNATURE_STATE_VALID = 'signature valid'
-
-SIGNATURE_STATES = {
-    SIGNATURE_STATE_BAD: {
-        'text': _(u'Bad signature.'),
-        'icon': 'cross.png'
-    },
-    SIGNATURE_STATE_NONE: {
-        'text': _(u'Document not signed or invalid signature.'),
-        'icon': 'cross.png'
-    },
-    SIGNATURE_STATE_ERROR: {
-        'text': _(u'Signature error.'),
-        'icon': 'cross.png'
-    },
-    SIGNATURE_STATE_NO_PUBLIC_KEY: {
-        'text': _(u'Document is signed but no public key is available for verification.'),
-        'icon': 'user_silhouette.png'
-    },
-    SIGNATURE_STATE_GOOD: {
-        'text': _(u'Document is signed, and signature is good.'),
-        'icon': 'document_signature.png'
-    },
-    SIGNATURE_STATE_VALID: {
-        'text': _(u'Document is signed with a valid signature.'),
-        'icon': 'document_signature.png'
-    },
-}
 
 
 class Key(object):
@@ -88,7 +36,7 @@ class Key(object):
         if exclude:
             excluded_id = exclude.key_id
         else:
-            excluded_id = u''
+            excluded_id = ''
         for key in keys:
             if not key['keyid'] in excluded_id:
                 key_instance = Key(
@@ -140,10 +88,10 @@ class Key(object):
 
     @property
     def user_ids(self):
-        return u', '.join(self.uids)
+        return ', '.join(self.uids)
 
     def __str__(self):
-        return '%s "%s" (%s)' % (self.key_id, self.user_ids, KEY_TYPES.get(self.type, _(u'unknown')))
+        return '%s "%s" (%s)' % (self.key_id, self.user_ids, KEY_TYPES.get(self.type, _('Unknown')))
 
     def __unicode__(self):
         return unicode(self.__str__())
@@ -177,7 +125,10 @@ class GPG(object):
 
         self.keyservers = keyservers
 
-        self.gpg = gnupg.GPG(**kwargs)
+        try:
+            self.gpg = gnupg.GPG(**kwargs)
+        except Exception as exception:
+            raise GPGException('ERROR: GPG initialization error; %s' % exception)
 
     def verify_file(self, file_input, detached_signature=None, fetch_key=False):
         """
@@ -202,7 +153,7 @@ class GPG(object):
         else:
             verify = self.gpg.verify_file(input_descriptor)
 
-        logger.debug('verify.status: %s' % getattr(verify, 'status', None))
+        logger.debug('verify.status: %s', getattr(verify, 'status', None))
         if verify:
             logger.debug('verify ok')
             return verify
@@ -290,7 +241,7 @@ class GPG(object):
         return result
 
     def create_key(self, *args, **kwargs):
-        if kwargs.get('passphrase') == u'':
+        if kwargs.get('passphrase') == '':
             kwargs.pop('passphrase')
 
         input_data = self.gpg.gen_key_input(**kwargs)
@@ -319,7 +270,7 @@ class GPG(object):
     def query(self, term):
         results = {}
         for keyserver in self.keyservers:
-            url = u'http://%s' % keyserver
+            url = 'http://%s' % keyserver
             server = KeyServer(url)
             try:
                 key_list = server.search(term)
@@ -332,7 +283,7 @@ class GPG(object):
 
     def import_key(self, key_data):
         import_result = self.gpg.import_keys(key_data)
-        logger.debug('import_result: %s' % import_result)
+        logger.debug('import_result: %s', import_result)
 
         if import_result:
             return Key.get(self, import_result.fingerprints[0], secret=False)

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 from django import forms
 
@@ -9,9 +9,11 @@ from .models import Role
 
 class RoleForm(forms.ModelForm):
     class Meta:
+        fields = ('name', 'label')
         model = Role
 
 
 class RoleForm_view(DetailForm):
     class Meta:
+        fields = ('name', 'label')
         model = Role

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 
@@ -24,7 +24,7 @@ class FolderForm(forms.ModelForm):
 class FolderListForm(forms.Form):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
-        logger.debug('user: %s' % user)
+        logger.debug('user: %s', user)
         super(FolderListForm, self).__init__(*args, **kwargs)
 
         queryset = Folder.objects.all()
@@ -35,4 +35,4 @@ class FolderListForm(forms.Form):
 
         self.fields['folder'] = forms.ModelChoiceField(
             queryset=queryset,
-            label=_(u'Folder'))
+            label=_('Folder'))

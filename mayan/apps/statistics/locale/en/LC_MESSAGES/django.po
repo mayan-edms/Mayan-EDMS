@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
+"POT-Creation-Date: 2015-02-06 16:54-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,43 +18,39 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: links.py:10
-msgid "execute"
+msgid "Execute"
 msgstr ""
 
 #: links.py:11
-msgid "details"
+msgid "Details"
 msgstr ""
 
 #: links.py:12
-msgid "namespace list"
+msgid "Namespace list"
 msgstr ""
 
-#: links.py:13 registry.py:7
+#: links.py:13
 msgid "Statistics"
 msgstr ""
 
-#: registry.py:8
-msgid "Central place to store and display app statistics."
-msgstr ""
-
 #: views.py:18
-msgid "statistics namespaces"
+msgid "Statistics namespaces"
 msgstr ""
 
 #: views.py:34
 #, python-format
-msgid "namespace details for: %s"
+msgid "Namespace details for: %s"
 msgstr ""
 
-#: views.py:35 views.py:49
-msgid "namespace"
+#: views.py:48
+msgid "Namespace"
 msgstr ""
 
-#: views.py:50
-msgid "statistic"
+#: views.py:49
+msgid "Statistic"
 msgstr ""
 
-#: views.py:54
+#: views.py:53
 #, python-format
-msgid "results for: %s"
+msgid "Results for: %s"
 msgstr ""

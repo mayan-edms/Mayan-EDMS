@@ -1,0 +1,10 @@
+{% load static %}
+
+<div class="pure-u-{{ button_link_columns|default:4 }}-24">
+    <a class="pure-button mayan-button-big" href="{% url link.view %}">
+        <p>
+            <img src="{% static link.icon %}"><br>
+            {{ link.text }}
+        </p>
+    </a>
+</div>

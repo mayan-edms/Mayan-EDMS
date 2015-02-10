@@ -1,149 +1,85 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
+# Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2013-02-17 11:57+0000\n"
-"Last-Translator: Badea Gabriel <gcbadea@gmail.com>\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/ro_RO/)\n"
-"Language: ro_RO\n"
+"POT-Creation-Date: 2015-02-06 20:44-0400\n"
+"PO-Revision-Date: 2015-02-07 00:45+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/projects/p/mayan-edms/language/ro_RO/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
-"2:1));\n"
+"Language: ro_RO\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
 
-#: __init__.py:45 __init__.py:85 links.py:22 permissions.py:7
+#: __init__.py:37 permissions.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: __init__.py:75
-msgid "Checks the OCR queue for pending documents."
-msgstr "Verifică coada OCR pentru documentele în aşteptare."
+#: __init__.py:67
+msgid "Document"
+msgstr ""
 
-#: __init__.py:86
-#, fuzzy
-msgid "OCR queue statistics"
-msgstr "statistici OCR"
+#: __init__.py:70
+msgid "Added"
+msgstr ""
 
-#: api.py:74
+#: __init__.py:73 models.py:14
+msgid "Result"
+msgstr ""
+
+#: api.py:75
 msgid "Text from OCR"
 msgstr "Textul de la OCR"
 
-#: links.py:9 links.py:10
-msgid "submit to OCR queue"
-msgstr "trimite la OCR"
+#: links.py:10 links.py:11
+msgid "Submit to OCR queue"
+msgstr ""
 
-#: links.py:11 links.py:12
-msgid "re-queue"
-msgstr "Retrimitere la OCR"
+#: links.py:12 links.py:13
+msgid "Re-queue"
+msgstr ""
 
-#: links.py:13 links.py:14
-msgid "delete"
-msgstr "șterge"
-
-#: links.py:16
-msgid "stop queue"
-msgstr "stop queue"
+#: links.py:14 links.py:15
+msgid "Delete"
+msgstr ""
 
 #: links.py:17
-msgid "activate queue"
-msgstr "activare coadă"
+msgid "Clean up pages content"
+msgstr ""
 
-#: links.py:19
-msgid "clean up pages content"
-msgstr "curăță paginile de conținut"
-
-#: links.py:19
+#: links.py:17
 msgid ""
 "Runs a language filter to remove common OCR mistakes from document pages "
 "content."
+msgstr "Execută un filtru de limbă pentru a elimina greșelile OCR comune din conținutul paginii documentului ."
+
+#: links.py:19
+msgid "OCR Errors"
 msgstr ""
-"Execută un filtru de limbă pentru a elimina greșelile OCR comune din "
-"conținutul paginii documentului ."
 
-#: links.py:21
-msgid "queue document list"
-msgstr "coadă listă documente"
+#: models.py:12
+msgid "Document version"
+msgstr ""
 
-#: literals.py:7
-msgid "stopped"
-msgstr "oprit"
+#: models.py:13
+msgid "Date time submitted"
+msgstr ""
 
-#: literals.py:8
-msgid "active"
-msgstr "activă"
+#: models.py:21
+msgid "Document Version OCR Error"
+msgstr ""
 
-#: literals.py:16
-msgid "pending"
-msgstr "în așteptarea"
-
-#: literals.py:17
-msgid "processing"
-msgstr "în prelucrare"
-
-#: literals.py:18
-msgid "error"
-msgstr "eroare"
-
-#: models.py:19
-msgid "name"
-msgstr "nume"
-
-#: models.py:20
-msgid "label"
-msgstr "etichetă"
-
-#: models.py:24 models.py:44
-msgid "state"
-msgstr "stare"
-
-#: models.py:29 models.py:37 views.py:36
-msgid "document queue"
-msgstr "coadă documente"
-
-#: models.py:30
-msgid "document queues"
-msgstr "cozi documente"
-
-#: models.py:38
-msgid "document"
-msgstr "document"
-
-#: models.py:39
-msgid "date time submitted"
-msgstr "data ora depunerii"
-
-#: models.py:40
-msgid "delay ocr"
-msgstr "amână OCR"
-
-#: models.py:45
-msgid "result"
-msgstr "rezultat"
-
-#: models.py:46
-msgid "node name"
-msgstr "nume nod"
-
-#: models.py:50
-msgid "queue document"
-msgstr "coadă document"
-
-#: models.py:51
-msgid "queue documents"
-msgstr "cozii de documente"
-
-#: models.py:68 views.py:40
-msgid "Missing document."
-msgstr "Lipsește documentul."
+#: models.py:22
+msgid "Document Version OCR Errors"
+msgstr ""
 
 #: permissions.py:8
 msgid "Submit documents for OCR"
@@ -154,255 +90,276 @@ msgid "Delete documents from OCR queue"
 msgstr "Ștergeți documentele din coada OCR"
 
 #: permissions.py:10
-msgid "Can enable/disable the OCR queue"
-msgstr "Puteți activa / dezactiva coada OCR"
-
-#: permissions.py:11
 msgid "Can execute the OCR clean up on all document pages"
 msgstr "Poate executa OCR curat pe toate paginile documentului"
 
-#: permissions.py:12
-msgid "Can edit an OCR queue properties"
-msgstr "Puteți edita proprietățile cozii OCR"
+#: settings.py:12
+msgid "File path to unpaper program."
+msgstr "Fișier calea către programul de unpaper."
 
-#: statistics.py:15
-#, python-format
-msgid "Document queues: %d"
-msgstr "Cozile de documente:% d"
+#: settings.py:13
+msgid ""
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Calea de fișier pentru programul pdftotext folosit pentru a extrage textul din fișiere PDF."
 
-#: statistics.py:16
-#, python-format
-msgid "Queued documents: %d"
-msgstr "Documente din coada de așteptare:% d"
-
-#: views.py:33
-#, python-format
-msgid "documents in queue: %s"
-msgstr "documente din coada de așteptare:% s"
-
-#: views.py:41
-msgid "thumbnail"
-msgstr "miniatură"
-
-#: views.py:54
-msgid "document queue properties"
-msgstr "proprietăţi coadă de documente"
-
-#: views.py:55
-#, python-format
-msgid "Current state: %s"
-msgstr "Stadiul actual:% s"
-
-#: views.py:73 views.py:163
-msgid "Must provide at least one queue document."
-msgstr "Trebuie selectată cel puțin o coadă ."
-
-#: views.py:83
-#, python-format
-msgid "Document: %s is being processed and can't be deleted."
-msgstr "Document:% s este în curs de procesare și nu poate fi șters."
-
-#: views.py:86
-#, python-format
-msgid "Queue document: %(document)s deleted successfully."
-msgstr "Documentul %(document)s șters cu succes."
-
-#: views.py:90
-#, python-format
-msgid "Error deleting document: %(document)s; %(error)s"
-msgstr "Eroare la ștergerea documentului: %(document)s; %(error)s"
-
-#: views.py:103
-#, python-format
-msgid "Are you sure you wish to delete queue document: %s?"
-msgstr "Sunteți sigur că doriți să ștergeți coada documentului:% s?"
-
-#: views.py:105
-#, python-format
-msgid "Are you sure you wish to delete queue documents: %s?"
-msgstr "Sunteți sigur că doriți să ștergeți coada documentelor:% s?"
-
-#: views.py:141
-#, python-format
-msgid "Document: %(document)s was added to the OCR queue: %(queue)s."
-msgstr "Documentul: %(document)s e a fost adaugat în coada OCR: %(queue)s."
-
-#: views.py:145
-#, python-format
-msgid "Document: %(document)s is already queued."
-msgstr "Documentul: %(document)s este deja în așteptare."
-
-#: views.py:175
-#, python-format
-msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgstr "Documentul:%(document)s a fost repus la coadă OCR:%(queue)s"
-
-#: views.py:181
-#, python-format
-msgid "Document id#: %d, no longer exists."
-msgstr "ID # documentului:% d, nu mai există."
-
-#: views.py:185
-#, python-format
-msgid "Document: %s is already being processed and can't be re-queded."
+#: settings.py:14
+msgid "Full path to the backend to be used to do OCR."
 msgstr ""
-"Documentul:% s este deja în curs de procesare și nu poate fi re-queded."
 
-#: views.py:197
+#: views.py:32
 #, python-format
-msgid "Are you sure you wish to re-queue document: %s?"
-msgstr "Sunteți sigur că doriți repunerea la coadă a documentului:% s?"
+msgid "Document: %(document)s was added to the OCR queue."
+msgstr ""
 
-#: views.py:199
-#, python-format
-msgid "Are you sure you wish to re-queue documents: %s?"
-msgstr "Sunteți sigur că doriți să repuneti documentele:% s?"
-
-#: views.py:217
-#, python-format
-msgid "Document queue: %s, already stopped."
-msgstr "Coadă documentului:% s, este deja oprită."
-
-#: views.py:223
-#, python-format
-msgid "Document queue: %s, stopped successfully."
-msgstr "Coadă documentului:% s, a fost oprită cu succes."
-
-#: views.py:229
-#, python-format
-msgid "Are you sure you wish to disable document queue: %s"
-msgstr "Sunteți sigur că doriți să dezactivați coada documentului:% s"
-
-#: views.py:244
-#, python-format
-msgid "Document queue: %s, already active."
-msgstr "Coadă documentului:% s, este deja activă."
-
-#: views.py:250
-#, python-format
-msgid "Document queue: %s, activated successfully."
-msgstr "Coadă documentului:% s, este activată cu succes."
-
-#: views.py:256
-#, python-format
-msgid "Are you sure you wish to activate document queue: %s"
-msgstr "Sunteți sigur că doriți să activați coada documentului:% s"
-
-#: views.py:273
+#: views.py:56
 msgid "Are you sure you wish to clean up all the pages content?"
 msgstr "Sunteți sigur că doriți să curățaţi  tot conținutul paginilor?"
 
-#: views.py:274
+#: views.py:57
 msgid "On large databases this operation may take some time to execute."
 msgstr "Pe baze de date mari, această operație poate dura mult timp ."
 
-#: views.py:280
+#: views.py:63
 msgid "Document pages content clean up complete."
 msgstr "Conținutul documentului este curat a fost curăţat complet."
 
-#: views.py:282
+#: views.py:65
 #, python-format
 msgid "Document pages content clean up error: %s"
 msgstr "Eroare la curăţirea conţinutului documentului % s"
 
-#: conf/settings.py:13
-msgid ""
-"Amount of seconds to delay OCR of documents to allow for the node's storage "
-"replication overhead."
-msgstr ""
-"Suma de secunde de întârziere OCR a documentelor pentru a permite aeriene "
-"nodului de stocare de replicare."
-
-#: conf/settings.py:14
-msgid "Maximum amount of concurrent document OCRs a node can perform."
-msgstr "Suma maximă de documente concurente OCRs  ce un nod poate efectua."
-
-#: conf/settings.py:15
-msgid "Automatically queue newly created documents for OCR."
-msgstr "Coadă automată creată pentru OCR."
-
-#: conf/settings.py:17
-msgid "File path to unpaper program."
-msgstr "Fișier calea către programul de unpaper."
-
-#: conf/settings.py:18
-msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Calea de fișier pentru programul pdftotext folosit pentru a extrage textul "
-"din fișiere PDF."
-
-#: conf/settings.py:19
-msgid "Full path to the backend to be used to do OCR."
+#: views.py:75
+msgid "OCR errors"
 msgstr ""
 
-#: parsers/__init__.py:93 parsers/__init__.py:170
+#: views.py:91 views.py:140
+msgid "Make at least one selection."
+msgstr ""
+
+#: views.py:101
+#, python-format
+msgid "Entry: %(entry)s deleted successfully."
+msgstr ""
+
+#: views.py:105
+#, python-format
+msgid "Error entry: %(entry)s; %(error)s"
+msgstr ""
+
+#: views.py:119
+msgid "Are you sure you wish to delete the selected entry?"
+msgid_plural "Are you sure you wish to delete the selected entries?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: views.py:152
+#, python-format
+msgid "Entry: %(entry)s was re-queued for OCR."
+msgstr ""
+
+#: views.py:157
+#, python-format
+msgid "Document version id#: %d, no longer exists."
+msgstr ""
+
+#: views.py:169
+msgid "Are you sure you wish to re-queue the selected entry?"
+msgid_plural "Are you sure you wish to re-queue the selected entries?"
+msgstr[0] ""
+msgstr[1] ""
+msgstr[2] ""
+
+#: parsers/__init__.py:97 parsers/__init__.py:174
 msgid "Text extracted from PDF"
 msgstr "Textul extras din PDF"
 
-#~ msgid "transformations"
-#~ msgstr "transformări"
+#~ msgid "Queue document list"
+#~ msgstr "queue document list"
 
-#~ msgid "add transformation"
-#~ msgstr "transformă"
+#~ msgid "Label"
+#~ msgstr "label"
 
-#~ msgid "edit"
-#~ msgstr "editează"
+#~ msgid "Document queue"
+#~ msgstr "document queue"
 
-#~ msgid "Default"
-#~ msgstr "Iniţial"
+#~ msgid "Node name"
+#~ msgstr "node name"
 
-#~ msgid "Enter a valid value."
-#~ msgstr "Introduceți o valoare validă."
+#~ msgid "Queue document"
+#~ msgstr "queue document"
 
-#~ msgid "order"
-#~ msgstr "comandă"
+#~ msgid "Queue documents"
+#~ msgstr "queue documents"
 
-#~ msgid "transformation"
-#~ msgstr "transformare"
+#~ msgid "Missing document."
+#~ msgstr "Missing document."
 
-#~ msgid "arguments"
-#~ msgstr "argumente"
+#~ msgid "Documents in queue: %s"
+#~ msgstr "documents in queue: %s"
 
-#~ msgid "Use dictionaries to indentify arguments, example: %s"
-#~ msgstr "Utilizeaza formulele , de exemplu:% s"
+#~ msgid "Thumbnail"
+#~ msgstr "thumbnail"
 
-#~ msgid "document queue transformation"
-#~ msgstr "coadă de transformare documente"
+#~ msgid "Are you sure you wish to delete queue documents: %s?"
+#~ msgstr "Are you sure you wish to delete queue documents: %s?"
 
-#~ msgid "document queue transformations"
-#~ msgstr "cozii de transformare documente"
+#~ msgid "Are you sure you wish to re-queue documents: %s?"
+#~ msgstr "Are you sure you wish to re-queue documents: %s?"
 
-#~ msgid "transformations for: %s"
-#~ msgstr "transformări pentru:% s"
+#~ msgid "Can edit an OCR queue properties"
+#~ msgstr "Can edit an OCR queue properties"
 
-#~ msgid "Queue transformation edited successfully"
-#~ msgstr "Coadă de transformare editată cu succes"
+#~ msgid "OCR queue statistics"
+#~ msgstr "OCR statistics"
 
-#~ msgid "Error editing queue transformation; %s"
-#~ msgstr "Eroare editare coadă de transformare;% s"
+#~ msgid "Automatically queue newly created documents for OCR."
+#~ msgstr "Automatically queue newly created documents for OCR."
 
-#~ msgid "Edit transformation: %s"
-#~ msgstr "Editare transformare:% s"
+#~ msgid "Document queues: %d"
+#~ msgstr "Document queues: %d"
 
-#~ msgid "Queue transformation deleted successfully."
-#~ msgstr "Transformarea Queue ștearsă cu succes."
+#~ msgid "Queued documents: %d"
+#~ msgstr "Queued documents: %d"
 
-#~ msgid "Error deleting queue transformation; %(error)s"
-#~ msgstr "Eroare ştergere coadă de transformare;%(error)s"
+#~ msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+#~ msgstr "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+
+#~ msgid "Document: %s is already being processed and can't be re-queded."
+#~ msgstr "Document: %s is already being processed and can't be re-queded."
+
+#~ msgid "Checks the OCR queue for pending documents."
+#~ msgstr "Checks the OCR queue for pending documents."
+
+#~ msgid "stop queue"
+#~ msgstr "stop queue"
+
+#~ msgid "activate queue"
+#~ msgstr "activate queue"
+
+#~ msgid "stopped"
+#~ msgstr "stopped"
+
+#~ msgid "active"
+#~ msgstr "active"
+
+#~ msgid "pending"
+#~ msgstr "pending"
+
+#~ msgid "processing"
+#~ msgstr "processing"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid "state"
+#~ msgstr "state"
+
+#~ msgid "delay ocr"
+#~ msgstr "delay ocr"
+
+#~ msgid "Can enable/disable the OCR queue"
+#~ msgstr "Can enable/disable the OCR queue"
+
+#~ msgid "document queue properties"
+#~ msgstr "document queue properties"
+
+#~ msgid "Current state: %s"
+#~ msgstr "Current state: %s"
+
+#~ msgid "Document: %s is being processed and can't be deleted."
+#~ msgstr "Document: %s is being processed and can't be deleted."
+
+#~ msgid "Document queue: %s, already stopped."
+#~ msgstr "Document queue: %s, already stopped."
+
+#~ msgid "Document queue: %s, stopped successfully."
+#~ msgstr "Document queue: %s, stopped successfully."
+
+#~ msgid "Are you sure you wish to disable document queue: %s"
+#~ msgstr "Are you sure you wish to disable document queue: %s"
+
+#~ msgid "Document queue: %s, already active."
+#~ msgstr "Document queue: %s, already active."
+
+#~ msgid "Document queue: %s, activated successfully."
+#~ msgstr "Document queue: %s, activated successfully."
+
+#~ msgid "Are you sure you wish to activate document queue: %s"
+#~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 #~ msgstr ""
-#~ "Sunteți sigur că doriți să ștergeți coada de transformare "
-#~ "\"%(transformation)s\""
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
+
+#~ msgid "Maximum amount of concurrent document OCRs a node can perform."
+#~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
+
+#~ msgid "transformations"
+#~ msgstr "transformations"
+
+#~ msgid "add transformation"
+#~ msgstr "add transformation"
+
+#~ msgid "edit"
+#~ msgstr "edit"
+
+#~ msgid "Default"
+#~ msgstr "Default"
+
+#~ msgid "Enter a valid value."
+#~ msgstr "Enter a valid value."
+
+#~ msgid "order"
+#~ msgstr "order"
+
+#~ msgid "transformation"
+#~ msgstr "transformation"
+
+#~ msgid "arguments"
+#~ msgstr "arguments"
+
+#~ msgid "Use dictionaries to indentify arguments, example: %s"
+#~ msgstr "Use dictionaries to indentify arguments, example: %s"
+
+#~ msgid "document queue transformation"
+#~ msgstr "document queue transformation"
+
+#~ msgid "document queue transformations"
+#~ msgstr "document queue transformations"
+
+#~ msgid "transformations for: %s"
+#~ msgstr "transformations for: %s"
+
+#~ msgid "Queue transformation edited successfully"
+#~ msgstr "Queue transformation edited successfully"
+
+#~ msgid "Error editing queue transformation; %s"
+#~ msgstr "Error editing queue transformation; %s"
+
+#~ msgid "Edit transformation: %s"
+#~ msgstr "Edit transformation: %s"
+
+#~ msgid "Queue transformation deleted successfully."
+#~ msgstr "Queue transformation deleted successfully."
+
+#~ msgid "Error deleting queue transformation; %(error)s"
+#~ msgstr "Error deleting queue transformation; %(error)s"
+
+#~ msgid ""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
+#~ msgstr ""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
-#~ msgstr "Transformarea coada creat cu succes"
+#~ msgstr "Queue transformation created successfully"
 
 #~ msgid "Error creating queue transformation; %s"
-#~ msgstr "Eroare la crearea de transformare coadă;% s"
+#~ msgstr "Error creating queue transformation; %s"
 
 #~ msgid "Create new transformation for queue: %s"
-#~ msgstr "Creați transformare nou pentru coadă:% s"
+#~ msgstr "Create new transformation for queue: %s"

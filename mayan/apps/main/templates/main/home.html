@@ -1,0 +1,33 @@
+{% extends 'main/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% load project_tags %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block content %}
+    <div class="pure-g tc">
+        {% with 'navigation/large_button_link.html' as link_template %}
+        {% with 8 as button_link_columns %}
+            {% include 'generic_navigation.html' %}
+        {% endwith %}
+        {% endwith %}
+
+        <div class="pure-u-24-24">
+            <form class="pure-form" id="home-form-search" method="get" action="{% url 'main:home' %}">
+                <fieldset>
+                    <legend></legend>
+                    <input type="text" name="q" placeholder="{% trans 'Space separated terms' %}">
+                    &nbsp;<button type="submit" name="submit" class="pure-button mayan-button"><span class="famfam active famfam-zoom"></span>{% trans 'Search' %}</button>
+                    &nbsp;<a href="{% url 'search:search_advanced' %}">{% trans 'Advanced search' %} </a>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    {% if query_string %}
+        {% include 'main/generic_list_subtemplate.html' %}
+    {% endif %}
+{% endblock %}

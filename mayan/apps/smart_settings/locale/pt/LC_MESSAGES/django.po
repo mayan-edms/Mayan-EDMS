@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
-# emersonsoares <dev.emerson@gmail.com>, 2011
+# Translators:
+# Emerson Soares <on.emersonsoares@gmail.com>, 2011
 # Vítor Figueiró <vfigueiro@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:54-0400\n"
-"PO-Revision-Date: 2012-12-12 06:06+0000\n"
+"POT-Creation-Date: 2015-02-06 16:54-0400\n"
+"PO-Revision-Date: 2014-10-25 07:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/mayan-edms/"
 "language/pt/)\n"
@@ -20,18 +21,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: links.py:8 views.py:28
-msgid "settings"
-msgstr "definições"
-
-#: views.py:33
-msgid "name"
-msgstr "nome"
+#: links.py:10 views.py:29
+msgid "Settings"
+msgstr ""
 
 #: views.py:34
-msgid "default"
-msgstr "padrão"
+msgid "Name"
+msgstr ""
 
 #: views.py:36
-msgid "value"
-msgstr "valor"
+msgid "Value"
+msgstr ""
+
+#~ msgid "Default"
+#~ msgstr "default"
+
+#~ msgid "name"
+#~ msgstr "name"

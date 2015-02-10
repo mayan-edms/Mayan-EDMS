@@ -1,0 +1,62 @@
+{% extends 'main/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %} :: {% trans 'Confirm' %} {{ title }}{% endblock %}
+
+{% block sidebar %}
+    {% for subtemplate in subtemplates %}
+        {% include subtemplate %}
+    {% endfor %}
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h2 class="title">
+            {% if delete_view %}
+                {% trans 'Confirm delete' %}
+            {% else %}
+                {% trans 'Confirm' %}
+            {% endif %}
+        </h2>
+        <div class="inner">
+            <form action="" method="post" class="form login">{% csrf_token %}
+                {% if next %}
+                    <input name="next" type="hidden" value="{{ next }}" />
+                {% endif %}
+
+                {% if previous %}
+                    <input name="previous" type="hidden" value="{{ previous }}" />
+                {% endif %}
+
+                <div style="float: left; margin-right: 10px;">
+                    <img style="margin-top: 12px;" src="{% static 'main/icons/question.png' %}" alt="{% trans 'question bubble' %}" />
+                </div>
+                <div style="float: left; width: 90%;">
+                {% if title %}
+                    <h3>{{ title }}</h3>
+                {% else %}
+                    {% if delete_view %}
+                        <h3>{% blocktrans %}Are you sure you wish to delete: {{ object }}?{% endblocktrans %}</h3>
+                    {% endif %}
+                {% endif %}
+                <h4>{{ message }}</h4>
+
+                <div class="group navform wat-cf">
+                  <button class="pure-button mayan-button" type="submit">
+                    <span class="famfam active famfam-tick"></span> {% trans 'Yes' %}
+                  </button>
+                  {% if previous %}
+                    &nbsp;<a href="#header" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}' class="pure-button mayan-button">
+                        <span class="famfam active famfam-cross"></span> {% trans 'No' %}
+                    </a>
+                  {% endif %}
+                </div>
+
+                </div>
+                <div class="clear"></div>
+            </form>
+        </div>
+    </div>
+{% endblock %}

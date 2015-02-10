@@ -1,3 +1,3 @@
 class BackendBase(object):
-    def check_word(word):
-        raise NotImplemented
+    def check_word(self, word):
+        raise NotImplementedError

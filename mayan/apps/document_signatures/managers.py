@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import logging
 
 from django.db import models
@@ -43,7 +45,7 @@ class DocumentVersionSignatureManager(models.Manager):
                 return False
 
     def has_embedded_signature(self, document):
-        logger.debug('document: %s' % document)
+        logger.debug('document: %s', document)
 
         try:
             document_signature = self.get_document_signature(document)
@@ -68,7 +70,7 @@ class DocumentVersionSignatureManager(models.Manager):
             args = (document_descriptor,)
 
         try:
-            return gpg.verify_file(*args, fetch_key=True)
+            return gpg.verify_file(*args, fetch_key=False)
         except GPGVerificationError:
             return None
         finally:

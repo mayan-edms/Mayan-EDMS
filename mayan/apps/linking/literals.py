@@ -1,27 +1,29 @@
+from __future__ import unicode_literals
+
 from django.utils.translation import ugettext_lazy as _
 
-INCLUSION_AND = u'&'
-INCLUSION_OR = u'|'
+INCLUSION_AND = '&'
+INCLUSION_OR = '|'
 
 INCLUSION_CHOICES = (
-    (INCLUSION_AND, _(u'and')),
-    (INCLUSION_OR, _(u'or')),
+    (INCLUSION_AND, _('and')),
+    (INCLUSION_OR, _('or')),
 )
 
 OPERATOR_CHOICES = (
-    (u'exact', _(u'is equal to')),
-    (u'iexact', _(u'is equal to (case insensitive)')),
-    (u'contains', _(u'contains')),
-    (u'icontains', _(u'contains (case insensitive)')),
-    (u'in', _(u'is in')),
-    (u'gt', _(u'is greater than')),
-    (u'gte', _(u'is greater than or equal to')),
-    (u'lt', _(u'is less than')),
-    (u'lte', _(u'is less than or equal to')),
-    (u'startswith', _(u'starts with')),
-    (u'istartswith', _(u'starts with (case insensitive)')),
-    (u'endswith', _(u'ends with')),
-    (u'iendswith', _(u'ends with (case insensitive)')),
-    (u'regex', _(u'is in regular expression')),
-    (u'iregex', _(u'is in regular expression (case insensitive)')),
+    ('exact', _('is equal to')),
+    ('iexact', _('is equal to (case insensitive)')),
+    ('contains', _('contains')),
+    ('icontains', _('contains (case insensitive)')),
+    ('in', _('is in')),
+    ('gt', _('is greater than')),
+    ('gte', _('is greater than or equal to')),
+    ('lt', _('is less than')),
+    ('lte', _('is less than or equal to')),
+    ('startswith', _('starts with')),
+    ('istartswith', _('starts with (case insensitive)')),
+    ('endswith', _('ends with')),
+    ('iendswith', _('ends with (case insensitive)')),
+    ('regex', _('is in regular expression')),
+    ('iregex', _('is in regular expression (case insensitive)')),
 )

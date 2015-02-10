@@ -1,11 +1,13 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
+
 import logging
+import uuid
 
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 from django_gpg.runtime import gpg
-from documents.models import DocumentVersion, get_filename_from_uuid
+from documents.models import DocumentVersion
 from documents.runtime import storage_backend
 
 from .managers import DocumentVersionSignatureManager
@@ -17,9 +19,9 @@ class DocumentVersionSignature(models.Model):
     """
     Model that describes a document version signature properties
     """
-    document_version = models.ForeignKey(DocumentVersion, verbose_name=_(u'document version'), editable=False)
-    signature_file = models.FileField(blank=True, null=True, upload_to=get_filename_from_uuid, storage=storage_backend, verbose_name=_(u'signature file'), editable=False)
-    has_embedded_signature = models.BooleanField(default=False, verbose_name=_(u'has embedded signature'), editable=False)
+    document_version = models.ForeignKey(DocumentVersion, verbose_name=_('Document version'), editable=False)
+    signature_file = models.FileField(blank=True, null=True, upload_to=lambda instance, filename: unicode(uuid.uuid4()), storage=storage_backend, verbose_name=_('Signature file'), editable=False)
+    has_embedded_signature = models.BooleanField(default=False, verbose_name=_('Has embedded signature'), editable=False)
 
     objects = DocumentVersionSignatureManager()
 
@@ -34,5 +36,5 @@ class DocumentVersionSignature(models.Model):
         super(DocumentVersionSignature, self).save(*args, **kwargs)
 
     class Meta:
-        verbose_name = _(u'document version signature')
-        verbose_name_plural = _(u'document version signatures')
+        verbose_name = _('Document version signature')
+        verbose_name_plural = _('Document version signatures')

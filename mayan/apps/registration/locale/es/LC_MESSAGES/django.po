@@ -3,14 +3,17 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2014
+# Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
-"PO-Revision-Date: 2012-10-11 15:35+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-02-06 16:53-0400\n"
+"PO-Revision-Date: 2015-01-14 19:57+0000\n"
+"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
 "language/es/)\n"
 "Language: es\n"
@@ -33,7 +36,7 @@ msgstr "Nombre de la empresa:"
 
 #: forms.py:28
 msgid "Industry:"
-msgstr "Industria:"
+msgstr "Actividad:"
 
 #: forms.py:33
 msgid "Company website:"
@@ -49,41 +52,38 @@ msgstr "Información adicional:"
 
 #: links.py:12
 msgid "Registration"
-msgstr "Registración"
-
-#: models.py:21
-msgid "registered"
-msgstr "registrado"
+msgstr "Registro"
 
 #: models.py:22
-msgid "registration data"
+msgid "Registered"
+msgstr "registrado"
+
+#: models.py:23
+msgid "Registration data"
 msgstr "datos de registro"
 
-#: models.py:48
+#: models.py:49
 msgid "No name"
 msgstr "Sin nombre"
 
-#: models.py:87
-msgid "registration properties"
+#: models.py:86
+msgid "Registration properties"
 msgstr "propiedades de registro"
 
-#: views.py:22
-msgid "Thank you for registering."
-msgstr "Gracias por registrarse."
-
-#: views.py:25
+#: views.py:19
 msgid "Your copy is already registered."
 msgstr "Su copia ya está registrada."
 
-#: views.py:28
-#, python-format
-msgid "Error submiting form; %s."
-msgstr "Error enviando la forma; %s."
+#: views.py:26
+msgid "Thank you for registering."
+msgstr "Gracias por registrarse."
 
-#: views.py:33
-msgid "registration form"
+#: views.py:32
+msgid "Registration form"
 msgstr "formulario de registro"
 
-#: templatetags/registration_tags.py:16
-msgid "Unregistered"
-msgstr "Sin registrar"
+#~ msgid "Error submiting form; %s."
+#~ msgstr "Error submiting form; %s."
+
+#~ msgid "Unregistered"
+#~ msgstr "Unregistered"

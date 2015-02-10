@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2013-07-05 11:00+0000\n"
-"Last-Translator: Mohammad Dashtizadeh <mohammad@dashtizadeh.net>\n"
+"POT-Creation-Date: 2015-02-06 16:52-0400\n"
+"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/fa/)\n"
 "Language: fa\n"
@@ -19,186 +21,181 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:37 __init__.py:48
-msgid "label"
-msgstr ""
+#: __init__.py:38 __init__.py:49
+msgid "Label"
+msgstr "برچسب"
 
-#: __init__.py:41
-msgid "items"
-msgstr ""
+#: __init__.py:42
+msgid "Items"
+msgstr "اقلام"
 
-#: __init__.py:52
-msgid "value"
-msgstr ""
+#: __init__.py:53
+msgid "Value"
+msgstr "مقدار"
 
-#: links.py:7 models.py:173
-msgid "installation details"
+#: links.py:7 models.py:178
+msgid "Installation details"
 msgstr "جزئیات نصب"
 
 #: links.py:8 views.py:21
-#, fuzzy
-msgid "installation property namespaces"
-msgstr "جزئیات نصب"
+msgid "Installation property namespaces"
+msgstr "فضای نام نصب"
 
 #: links.py:9
-msgid "details"
-msgstr ""
+msgid "Details"
+msgstr "جزئیات"
 
-#: models.py:53
+#: models.py:52
 msgid "Operating system"
-msgstr ""
+msgstr "سیستم عامل"
 
-#: models.py:55 models.py:62
+#: models.py:54 models.py:61
 msgid "LSB OS"
-msgstr ""
+msgstr "LSB OS"
+
+#: models.py:55
+msgid "Distributor ID"
+msgstr "شناسه توزیع کننده"
 
 #: models.py:56
-msgid "Distributor ID"
-msgstr ""
+msgid "Description"
+msgstr "شرح"
 
 #: models.py:57
-msgid "Description"
-msgstr ""
-
-#: models.py:58
 msgid "Release"
 msgstr "انتشار"
 
-#: models.py:59
+#: models.py:58
 msgid "Codename"
-msgstr ""
+msgstr "نام رمز"
 
-#: models.py:60
+#: models.py:59
 msgid "System info"
 msgstr "اطلاعات سیستم"
 
-#: models.py:64
+#: models.py:63
 msgid "OS architecture"
 msgstr "معماری سیستم‌عامل"
 
-#: models.py:65
+#: models.py:64
 msgid "Python version"
 msgstr "نسخه‌ی پایتون"
 
-#: models.py:66
+#: models.py:65
 msgid "Hostname"
 msgstr "نام میزبان"
 
-#: models.py:67
+#: models.py:66
 msgid "Platform"
-msgstr ""
+msgstr "ایستگاه"
+
+#: models.py:67
+msgid "Machine"
+msgstr "ماشین"
 
 #: models.py:68
-msgid "Machine"
-msgstr ""
+msgid "Processor"
+msgstr "پردازشگر"
 
 #: models.py:69
-msgid "Processor"
-msgstr ""
+msgid "Number of CPUs"
+msgstr "تعداد پردازشگرها و یا CPU"
 
 #: models.py:70
-msgid "Number of CPUs"
-msgstr ""
+msgid "Total physical memory"
+msgstr "کل حافظه فیزیکی"
 
 #: models.py:71
-msgid "Total physical memory"
-msgstr ""
-
-#: models.py:72
 msgid "Disk partitions"
-msgstr ""
+msgstr "تقسیم بندی هارد"
 
-#: models.py:75
+#: models.py:74
 msgid "Binary dependencies"
-msgstr ""
+msgstr "وابستگی دودویی"
 
 #: models.py:79 models.py:81 models.py:83
 msgid "tesseract version"
-msgstr ""
+msgstr "نسخه tesseract"
 
-#: models.py:81 models.py:89 models.py:97
+#: models.py:79 models.py:88 models.py:97
 msgid "not found"
-msgstr ""
+msgstr "پیدا نشد"
 
-#: models.py:83 models.py:91 models.py:99
+#: models.py:81 models.py:90 models.py:99
 msgid "error getting version"
-msgstr ""
+msgstr "خطا در تشخیص نسخه"
 
-#: models.py:87 models.py:89 models.py:91
+#: models.py:88 models.py:90 models.py:92
 msgid "unpaper version"
-msgstr ""
+msgstr "نسخه بدون کاغذ"
 
-#: models.py:95 models.py:97 models.py:99
+#: models.py:97 models.py:99 models.py:101
 msgid "pdftotext version"
-msgstr ""
-
-#: models.py:102
-msgid "Mayan EDMS"
-msgstr ""
+msgstr "نسخه تبدیل pdf به text"
 
 #: models.py:104
-msgid "UUID"
-msgstr ""
-
-#: models.py:105
-msgid "Mayan EDMS version"
-msgstr ""
+msgid "Mayan EDMS"
+msgstr "Mayan EDMS"
 
 #: models.py:106
-msgid "Installed via fabfile"
-msgstr ""
+msgid "UUID"
+msgstr "UUID"
 
-#: models.py:109
+#: models.py:107
+msgid "Mayan EDMS version"
+msgstr "نسخه Mayan EDMS"
+
+#: models.py:110
 msgid "Git repository"
-msgstr ""
+msgstr "مخزن Git"
 
-#: models.py:114 models.py:118
+#: models.py:115 models.py:120
 msgid "Running from a Git repository"
-msgstr ""
-
-#: models.py:119
-msgid "Repository remotes"
-msgstr ""
-
-#: models.py:120
-msgid "Repository remotes URLs"
-msgstr ""
+msgstr "اجرا از مخزن Git"
 
 #: models.py:121
-msgid "Branch"
-msgstr ""
+msgid "Repository remotes"
+msgstr "مخزن راه دور"
 
 #: models.py:122
-msgid "HEAD commit hex SHA"
-msgstr ""
+msgid "Repository remotes URLs"
+msgstr "URL مخزن راه دور"
 
 #: models.py:123
-msgid "HEAD commit author"
-msgstr ""
+msgid "Branch"
+msgstr "شاخه"
 
 #: models.py:124
-msgid "HEAD commit authored date"
-msgstr ""
+msgid "HEAD commit hex SHA"
+msgstr "HEAD commit hex SHA"
 
 #: models.py:125
-msgid "HEAD commit committer"
-msgstr ""
+msgid "HEAD commit author"
+msgstr "HEAD commit author"
 
 #: models.py:126
-msgid "HEAD commit committed date"
-msgstr ""
+msgid "HEAD commit authored date"
+msgstr "HEAD commit authored date"
 
 #: models.py:127
+msgid "HEAD commit committer"
+msgstr "HEAD commit committer"
+
+#: models.py:128
+msgid "HEAD commit committed date"
+msgstr "HEAD commit committed date"
+
+#: models.py:129
 msgid "HEAD commit message"
-msgstr ""
+msgstr "HEAD commit message"
 
-#: models.py:130
+#: models.py:135
 msgid "VirtualEnv"
-msgstr ""
+msgstr "محیط مجازی"
 
-#: models.py:134
+#: models.py:139
 msgid "pip not found."
-msgstr ""
+msgstr "pip پیدا نشد."
 
 #: permissions.py:7
 msgid "Installation"
@@ -206,9 +203,15 @@ msgstr "نصب"
 
 #: permissions.py:8
 msgid "View installation environment details"
-msgstr ""
+msgstr "دیدن جزئیات محیط نصب"
 
 #: views.py:33
-#, fuzzy, python-format
-msgid "installation namespace details for: %s"
-msgstr "جزئیات نصب"
+#, python-format
+msgid "Installation namespace details for: %s"
+msgstr "جزئیات فضای نام نصب برای : %s"
+
+#~ msgid "Installed via fabfile"
+#~ msgstr "Installed via fabfile"
+
+#~ msgid "Installation environment details"
+#~ msgstr "Installation environment details"

@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
-"PO-Revision-Date: 2014-07-04 05:50+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-02-06 16:54-0400\n"
+"PO-Revision-Date: 2014-10-28 06:48+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/fa/)\n"
 "Language: fa\n"
@@ -20,43 +21,39 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: links.py:10
-msgid "execute"
-msgstr ""
+msgid "Execute"
+msgstr "اجرا"
 
 #: links.py:11
-msgid "details"
-msgstr ""
+msgid "Details"
+msgstr "جزئیات"
 
 #: links.py:12
-msgid "namespace list"
-msgstr ""
+msgid "Namespace list"
+msgstr "فضای نام لیست"
 
-#: links.py:13 registry.py:7
+#: links.py:13
 msgid "Statistics"
 msgstr "آمار"
 
-#: registry.py:8
-msgid "Central place to store and display app statistics."
-msgstr ""
-
 #: views.py:18
-msgid "statistics namespaces"
-msgstr ""
+msgid "Statistics namespaces"
+msgstr "فضای نامی آمار"
 
 #: views.py:34
 #, python-format
-msgid "namespace details for: %s"
-msgstr ""
+msgid "Namespace details for: %s"
+msgstr "جزئیات فضای نام برای : %s"
 
-#: views.py:35 views.py:49
-msgid "namespace"
-msgstr ""
+#: views.py:48
+msgid "Namespace"
+msgstr "فضای نام"
 
-#: views.py:50
-msgid "statistic"
-msgstr ""
+#: views.py:49
+msgid "Statistic"
+msgstr "آمار"
 
-#: views.py:54
+#: views.py:53
 #, python-format
-msgid "results for: %s"
-msgstr ""
+msgid "Results for: %s"
+msgstr "نتایج : %s"

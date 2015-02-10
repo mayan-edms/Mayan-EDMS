@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import copy
 import inspect
@@ -7,16 +7,15 @@ import urllib
 import urlparse
 
 from django.core.urlresolvers import NoReverseMatch, reverse
-from django.template import (TemplateSyntaxError, Library,
-    VariableDoesNotExist, Node, Variable)
+from django.template import (
+    TemplateSyntaxError, Library, VariableDoesNotExist, Node, Variable
+)
 from django.utils.encoding import smart_str, smart_unicode
 from django.utils.text import unescape_string_literal
-from django.utils.translation import ugettext as _
 
 from common.utils import urlquote
 
-from ..api import (object_navigation, multi_object_navigation,
-    top_menu_entries, sidebar_templates)
+from ..api import object_navigation, top_menu_entries
 from ..forms import MultiItemForm
 from ..utils import resolve_to_name
 
@@ -31,18 +30,6 @@ class TopMenuNavigationNode(Node):
 
         all_menu_links = [entry.get('link', {}) for entry in top_menu_entries]
         menu_links = resolve_links(context, all_menu_links, current_view, current_path)
-
-        for index, link in enumerate(top_menu_entries):
-            if current_view in link.get('children_views', []):
-                menu_links[index]['active'] = True
-
-            for child_path_regex in link.get('children_path_regex', []):
-                if re.compile(child_path_regex).match(current_path.lstrip('/')):
-                    menu_links[index]['active'] = True
-
-            for children_view_regex in link.get('children_view_regex', []):
-                if re.compile(children_view_regex).match(current_view):
-                    menu_links[index]['active'] = True
 
         context['menu_links'] = menu_links
         return ''
@@ -78,6 +65,7 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
     """
     Express a list of links from definition to final values
     """
+
     context_links = []
     for link in links:
         # Check to see if link has conditional display
@@ -104,6 +92,14 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                     else:
                         new_link['url'] = reverse(link['view'], args=args)
                         if link.get('keep_query', False):
+                            try:
+                                for key in link.get('remove_from_query', []):
+                                    del parsed_query_string[key]
+                            except KeyError:
+                                # We were asked to remove a key not found in the
+                                # query string, that is not fatal
+                                pass
+
                             new_link['url'] = urlquote(new_link['url'], parsed_query_string)
                 except NoReverseMatch as exception:
                     new_link['url'] = '#'
@@ -117,6 +113,14 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                 else:
                     new_link['url'] = link['url'] % args
                     if link.get('keep_query', False):
+                        try:
+                            for key in link.get('remove_from_query', []):
+                                del parsed_query_string[key]
+                        except KeyError:
+                            # We were asked to remove a key not found in the
+                            # query string, that is not fatal
+                            pass
+
                         new_link['url'] = urlquote(new_link['url'], parsed_query_string)
             else:
                 new_link['active'] = False
@@ -128,22 +132,6 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
                 new_link['disabled'] = link['conditional_disable'](context)
             else:
                 new_link['disabled'] = False
-
-            if current_view in link.get('children_views', []):
-                new_link['active'] = True
-
-            for child_url_regex in link.get('children_url_regex', []):
-                if re.compile(child_url_regex).match(current_path.lstrip('/')):
-                    new_link['active'] = True
-
-            for children_view_regex in link.get('children_view_regex', []):
-                if re.compile(children_view_regex).match(current_view):
-                    new_link['active'] = True
-
-            for cls in link.get('children_classes', []):
-                obj, object_name = get_navigation_object(context)
-                if type(obj) == cls or obj == cls:
-                    new_link['active'] = True
 
             context_links.append(new_link)
     return context_links
@@ -163,7 +151,7 @@ def get_navigation_object(context):
     return obj, object_name
 
 
-def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation):
+def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation, obj=None):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
@@ -173,15 +161,13 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
     links_dict = links_dict.copy()
 
     # Preserve unicode data in URL query
-    previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', u'/'))))
+    previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', reverse('main:home')))))
     query_string = urlparse.urlparse(previous_path).query
     parsed_query_string = urlparse.parse_qs(query_string)
 
     try:
-        """
-        Check for and inject a temporary navigation dictionary
-        """
-        temp_navigation_links = Variable('temporary_navigation_links').resolve(context)
+        # Check for an inject temporary navigation dictionary
+        temp_navigation_links = Variable('extra_navigation_links').resolve(context)
     except VariableDoesNotExist:
         pass
     else:
@@ -196,7 +182,8 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
     except KeyError:
         pass
 
-    obj, object_name = get_navigation_object(context)
+    if not obj:
+        obj, object_name = get_navigation_object(context)
 
     # Match context navigation object links
     for source, data in links_dict[menu_name].items():
@@ -239,7 +226,7 @@ def get_object_navigation_links(parser, token):
 
     m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
     if not m:
-        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
+        raise TemplateSyntaxError('%r tag had invalid arguments' % tag_name)
 
     menu_name, var_name = m.groups()
     return GetNavigationLinks(menu_name=menu_name, var_name=var_name)
@@ -255,47 +242,13 @@ def object_navigation_template(context):
     return new_context
 
 
-@register.tag
-def get_multi_item_links(parser, token):
-    tag_name, arg = token.contents.split(None, 1)
-    m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
-    if not m:
-        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
-
-    menu_name, var_name = m.groups()
-    return GetNavigationLinks(menu_name=menu_name, links_dict=multi_object_navigation, var_name=var_name)
-
-
-@register.inclusion_tag('generic_form_instance.html', takes_context=True)
-def get_multi_item_links_form(context):
-    new_context = copy.copy(context)
-    new_context.update({
-        'form': MultiItemForm(actions=[(link['url'], link['text']) for link in _get_object_navigation_links(context, links_dict=multi_object_navigation)]),
-        'title': _(u'Selected item actions:'),
-        'form_action': reverse('multi_object_action_view'),
-        'submit_method': 'get',
-    })
-    return new_context
-
-
-class GetSidebarTemplatesNone(Node):
-    def __init__(self, var_name='sidebar_templates'):
-        self.var_name = var_name
-
-    def render(self, context):
-        request = Variable('request').resolve(context)
-        view_name = resolve_to_name(request.META['PATH_INFO'])
-        context[self.var_name] = sidebar_templates.get(view_name, [])
-        return ''
-
-
-@register.tag
-def get_sidebar_templates(parser, token):
-    tag_name, arg = token.contents.split(None, 1)
-
-    m = re.search(r'("?\w+"?)?.?as (\w+)', arg)
-    if not m:
-        raise TemplateSyntaxError("%r tag had invalid arguments" % tag_name)
-
-    menu_name, var_name = m.groups()
-    return GetSidebarTemplatesNone(var_name=var_name)
+@register.simple_tag(takes_context=True)
+def get_multi_item_links_form(context, object_list=None):
+    if object_list:
+        first_object = object_list[0]
+    else:
+        first_object = None
+    actions = [(link['url'], link['text']) for link in _get_object_navigation_links(context, menu_name='multi_item_links', obj=first_object)]
+    form = MultiItemForm(actions=actions)
+    context.update({'multi_item_form': form, 'multi_item_actions': actions})
+    return ''

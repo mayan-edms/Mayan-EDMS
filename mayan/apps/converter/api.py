@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import hashlib
 import logging
@@ -6,15 +6,15 @@ import os
 
 from django.utils.encoding import smart_str
 
-from common.conf.settings import TEMPORARY_DIRECTORY
+from common.settings import TEMPORARY_DIRECTORY
 from common.utils import fs_cleanup
 
 from .exceptions import OfficeConversionError, UnknownFileFormat
-from .literals import (DEFAULT_PAGE_NUMBER,
-    DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_FILE_FORMAT)
-from .literals import (TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
-    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR,
-    FILE_FORMATS)
+from .literals import (
+    DEFAULT_PAGE_NUMBER, DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
+    DEFAULT_FILE_FORMAT, TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
+    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR
+)
 from .runtime import backend, office_converter
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
@@ -31,7 +31,7 @@ def cache_cleanup(input_filepath, *args, **kwargs):
 
 def create_image_cache_filename(input_filepath, *args, **kwargs):
     if input_filepath:
-        hash_value = HASH_FUNCTION(u''.join([HASH_FUNCTION(smart_str(input_filepath)), unicode(args), unicode(kwargs)]))
+        hash_value = HASH_FUNCTION(''.join([HASH_FUNCTION(smart_str(input_filepath)), unicode(args), unicode(kwargs)]))
         return os.path.join(TEMPORARY_DIRECTORY, hash_value)
     else:
         return None
@@ -71,7 +71,7 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
         transformations.append(
             {
                 'transformation': TRANSFORMATION_RESIZE,
-                'arguments': dict(zip([u'width', u'height'], size.split(DIMENSION_SEPARATOR)))
+                'arguments': dict(zip(['width', 'height'], size.split(DIMENSION_SEPARATOR)))
             }
         )
 
@@ -101,11 +101,11 @@ def convert(input_filepath, output_filepath=None, cleanup_files=False, mimetype=
 
 
 def get_page_count(input_filepath):
-    logger.debug('office_converter: %s' % office_converter)
+    logger.debug('office_converter: %s', office_converter)
     if office_converter:
         try:
             office_converter.convert(input_filepath)
-            logger.debug('office_converter.exists: %s' % office_converter.exists)
+            logger.debug('office_converter.exists: %s', office_converter.exists)
             if office_converter.exists:
                 input_filepath = office_converter.output_filepath
 
@@ -121,7 +121,3 @@ def get_available_transformations_choices():
         result.append((transformation, TRANSFORMATION_CHOICES[transformation]['label']))
 
     return result
-
-
-def get_format_list():
-    return [(format, FILE_FORMATS.get(format, u'')) for format in backend.get_format_list()]

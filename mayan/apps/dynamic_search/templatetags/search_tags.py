@@ -1,10 +1,12 @@
+from __future__ import unicode_literals
+
 from django.core.urlresolvers import reverse
 from django.template import Library
 from django.utils.translation import ugettext as _
 
 from dynamic_search.forms import SearchForm
 from dynamic_search.models import RecentSearch
-from dynamic_search.conf.settings import RECENT_COUNT
+from dynamic_search.settings import RECENT_COUNT
 
 register = Library()
 
@@ -14,16 +16,15 @@ def search_form(context):
     context.update({
         'form': SearchForm(initial={'q': context.get('query_string', {}).get('q'), 'source': 'sidebar'}),
         'request': context['request'],
-        'STATIC_URL': context['STATIC_URL'],
         'form_action': reverse('search'),
-        'form_title': _(u'Search'),
-        'submit_label': _(u'Search'),
+        'form_title': _('Search'),
+        'submit_label': _('Search'),
         'submit_icon_famfam': 'zoom',
     })
     return context
 
 
-@register.inclusion_tag('generic_subtemplate.html', takes_context=True)
+@register.inclusion_tag('main/generic_subtemplate.html', takes_context=True)
 def recent_searches_template(context):
     if not context['user'].is_anonymous():
         recent_searches = RecentSearch.objects.filter(user=context['user'])
@@ -32,11 +33,10 @@ def recent_searches_template(context):
 
     context.update({
         'request': context['request'],
-        'STATIC_URL': context['STATIC_URL'],
         'side_bar': True,
-        'title': _(u'recent searches (maximum of %d)') % RECENT_COUNT,
+        'title': _('Recent searches (maximum of %d)') % RECENT_COUNT,
         'paragraphs': [
-            u'<a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a>' % {
+            '<a href="%(url)s"><span class="famfam active famfam-%(icon)s"></span>%(text)s</a>' % {
                 'text': rs,
                 'url': rs.url(),
                 'icon': 'zoom_in' if rs.is_advanced() else 'zoom',

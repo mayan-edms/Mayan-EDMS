@@ -1,11 +1,10 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
-from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
@@ -15,35 +14,34 @@ from acls.utils import apply_default_acls
 from common.utils import encapsulate, generate_choices_w_labels
 from common.views import assign_remove
 from common.widgets import two_state_template
-from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.models import Document
+from documents.permissions import PERMISSION_DOCUMENT_VIEW
 from documents.views import document_list
 from permissions.models import Permission
 
 from .forms import IndexForm, IndexTemplateNodeForm
-from .models import Index, IndexTemplateNode, IndexInstanceNode
-from .permissions import (PERMISSION_DOCUMENT_INDEXING_VIEW,
-                          PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
-                          PERMISSION_DOCUMENT_INDEXING_SETUP,
-                          PERMISSION_DOCUMENT_INDEXING_CREATE,
-                          PERMISSION_DOCUMENT_INDEXING_EDIT,
-                          PERMISSION_DOCUMENT_INDEXING_DELETE)
-from .tools import do_rebuild_all_indexes
+from .models import Index, IndexInstanceNode, IndexTemplateNode
+from .permissions import (
+    PERMISSION_DOCUMENT_INDEXING_CREATE, PERMISSION_DOCUMENT_INDEXING_DELETE,
+    PERMISSION_DOCUMENT_INDEXING_EDIT,
+    PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES,
+    PERMISSION_DOCUMENT_INDEXING_SETUP, PERMISSION_DOCUMENT_INDEXING_VIEW
+)
+from .tasks import task_do_rebuild_all_indexes
 from .widgets import index_instance_item_link, get_breadcrumbs, node_level
-
 
 # Setup views
 
 
 def index_setup_list(request):
     context = {
-        'title': _(u'indexes'),
+        'title': _('Indexes'),
         'hide_object': True,
         'list_object_variable_name': 'index',
         'extra_columns': [
-            {'name': _(u'name'), 'attribute': 'name'},
-            {'name': _(u'title'), 'attribute': 'title'},
-            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _('Name'), 'attribute': 'name'},
+            {'name': _('Title'), 'attribute': 'title'},
+            {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ]
     }
 
@@ -56,8 +54,8 @@ def index_setup_list(request):
 
     context['object_list'] = queryset
 
-    return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_list.html', context,
+                              context_instance=RequestContext(request))
 
 
 def index_setup_create(request):
@@ -68,13 +66,13 @@ def index_setup_create(request):
         if form.is_valid():
             index = form.save()
             apply_default_acls(index, request.user)
-            messages.success(request, _(u'Index created successfully.'))
-            return HttpResponseRedirect(reverse('index_setup_list'))
+            messages.success(request, _('Index created successfully.'))
+            return HttpResponseRedirect(reverse('indexing:index_setup_list'))
     else:
         form = IndexForm()
 
-    return render_to_response('generic_form.html', {
-        'title': _(u'create index'),
+    return render_to_response('main/generic_form.html', {
+        'title': _('Create index'),
         'form': form,
     }, context_instance=RequestContext(request))
 
@@ -91,16 +89,15 @@ def index_setup_edit(request, index_pk):
         form = IndexForm(request.POST, instance=index)
         if form.is_valid():
             form.save()
-            messages.success(request, _(u'Index edited successfully'))
-            return HttpResponseRedirect(reverse('index_setup_list'))
+            messages.success(request, _('Index edited successfully'))
+            return HttpResponseRedirect(reverse('indexing:index_setup_list'))
     else:
         form = IndexForm(instance=index)
 
-    return render_to_response('generic_form.html', {
-        'title': _(u'edit index: %s') % index,
+    return render_to_response('main/generic_form.html', {
+        'title': _('Edit index: %s') % index,
         'form': form,
         'index': index,
-        'object_name': _(u'index'),
         'navigation_object_name': 'index',
     }, context_instance=RequestContext(request))
 
@@ -113,34 +110,32 @@ def index_setup_delete(request, index_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_DELETE, request.user, index)
 
-    post_action_redirect = reverse('index_setup_list')
+    post_action_redirect = reverse('indexing:index_setup_list')
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         try:
             index.delete()
-            messages.success(request, _(u'Index: %s deleted successfully.') % index)
+            messages.success(request, _('Index: %s deleted successfully.') % index)
         except Exception as exception:
-            messages.error(request, _(u'Index: %(index)s delete error: %(error)s') % {
+            messages.error(request, _('Index: %(index)s delete error: %(error)s') % {
                 'index': index, 'error': exception})
 
         return HttpResponseRedirect(next)
 
     context = {
         'index': index,
-        'object_name': _(u'index'),
         'navigation_object_name': 'index',
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'title': _(u'Are you sure you with to delete the index: %s?') % index,
-        'form_icon': u'tab_delete.png',
+        'title': _('Are you sure you with to delete the index: %s?') % index,
     }
 
-    return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_confirm.html', context,
+                              context_instance=RequestContext(request))
 
 
 def index_setup_view(request, index_pk):
@@ -156,20 +151,19 @@ def index_setup_view(request, index_pk):
     context = {
         'object_list': object_list,
         'index': index,
-        'object_name': _(u'index'),
         'list_object_variable_name': 'node',
         'navigation_object_name': 'index',
-        'title': _(u'tree template nodes for index: %s') % index,
+        'title': _('Tree template nodes for index: %s') % index,
         'hide_object': True,
         'extra_columns': [
-            {'name': _(u'level'), 'attribute': encapsulate(lambda x: node_level(x))},
-            {'name': _(u'enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
-            {'name': _(u'has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents))},
+            {'name': _('Level'), 'attribute': encapsulate(lambda x: node_level(x))},
+            {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            {'name': _('Has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents))},
         ],
     }
 
-    return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_list.html', context,
+                              context_instance=RequestContext(request))
 
 
 def index_setup_document_types(request, index_pk):
@@ -183,16 +177,15 @@ def index_setup_document_types(request, index_pk):
     return assign_remove(
         request,
         left_list=lambda: generate_choices_w_labels(index.get_document_types_not_in_index(), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(index.get_index_document_types(), display_object_type=False),
+        right_list=lambda: generate_choices_w_labels(index.document_types.all(), display_object_type=False),
         add_method=lambda x: index.document_types.add(x),
         remove_method=lambda x: index.document_types.remove(x),
-        left_list_title=_(u'document types not in index: %s') % index,
-        right_list_title=_(u'document types for index: %s') % index,
+        left_list_title=_('Document types not in index: %s') % index,
+        right_list_title=_('Document types for index: %s') % index,
         decode_content_type=True,
         extra_context={
             'navigation_object_name': 'index',
             'index': index,
-            'object_name': _(u'index'),
         }
     )
 
@@ -210,16 +203,15 @@ def template_node_create(request, parent_pk):
         form = IndexTemplateNodeForm(request.POST)
         if form.is_valid():
             node = form.save()
-            messages.success(request, _(u'Index template node created successfully.'))
-            return HttpResponseRedirect(reverse('index_setup_view', args=[node.index.pk]))
+            messages.success(request, _('Index template node created successfully.'))
+            return HttpResponseRedirect(reverse('indexing:index_setup_view', args=[node.index.pk]))
     else:
         form = IndexTemplateNodeForm(initial={'index': parent_node.index, 'parent': parent_node})
 
-    return render_to_response('generic_form.html', {
-        'title': _(u'create child node'),
+    return render_to_response('main/generic_form.html', {
+        'title': _('Create child node'),
         'form': form,
         'index': parent_node.index,
-        'object_name': _(u'index'),
         'navigation_object_name': 'index',
     }, context_instance=RequestContext(request))
 
@@ -236,20 +228,20 @@ def template_node_edit(request, node_pk):
         form = IndexTemplateNodeForm(request.POST, instance=node)
         if form.is_valid():
             form.save()
-            messages.success(request, _(u'Index template node edited successfully'))
-            return HttpResponseRedirect(reverse('index_setup_view', args=[node.index.pk]))
+            messages.success(request, _('Index template node edited successfully'))
+            return HttpResponseRedirect(reverse('indexing:index_setup_view', args=[node.index.pk]))
     else:
         form = IndexTemplateNodeForm(instance=node)
 
-    return render_to_response('generic_form.html', {
-        'title': _(u'edit index template node: %s') % node,
+    return render_to_response('main/generic_form.html', {
+        'title': _('Edit index template node: %s') % node,
         'form': form,
         'index': node.index,
         'node': node,
 
         'navigation_object_list': [
-            {'object': 'index', 'name': _(u'index')},
-            {'object': 'node', 'name': _(u'node')}
+            {'object': 'index', 'name': _('Index')},
+            {'object': 'node', 'name': _('Node')}
         ],
     }, context_instance=RequestContext(request))
 
@@ -262,17 +254,17 @@ def template_node_delete(request, node_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, node.index)
 
-    post_action_redirect = reverse('index_setup_view', args=[node.index.pk])
+    post_action_redirect = reverse('indexing:index_setup_view', args=[node.index.pk])
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', '/')))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     if request.method == 'POST':
         try:
             node.delete()
-            messages.success(request, _(u'Node: %s deleted successfully.') % node)
+            messages.success(request, _('Node: %s deleted successfully.') % node)
         except Exception as exception:
-            messages.error(request, _(u'Node: %(node)s delete error: %(error)s') % {
+            messages.error(request, _('Node: %(node)s delete error: %(error)s') % {
                 'node': node, 'error': exception})
 
         return HttpResponseRedirect(next)
@@ -281,19 +273,18 @@ def template_node_delete(request, node_pk):
         'delete_view': True,
         'previous': previous,
         'next': next,
-        'title': _(u'Are you sure you with to delete the index template node: %s?') % node,
-        'form_icon': u'textfield_delete.png',
+        'title': _('Are you sure you with to delete the index template node: %s?') % node,
         'index': node.index,
         'node': node,
 
         'navigation_object_list': [
-            {'object': 'index', 'name': _(u'index')},
-            {'object': 'node', 'name': _(u'node')}
+            {'object': 'index', 'name': _('Index')},
+            {'object': 'node', 'name': _('Node')}
         ],
     }
 
-    return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_confirm.html', context,
+                              context_instance=RequestContext(request))
 
 
 # User views
@@ -302,11 +293,11 @@ def index_list(request):
     Show a list of enabled indexes
     """
     context = {
-        'title': _(u'indexes'),
+        'title': _('Indexes'),
         'hide_links': True,
         'extra_columns': [
-            {'name': _(u'nodes'), 'attribute': 'get_instance_node_count'},
-            {'name': _(u'document types'), 'attribute': 'get_document_types_names'},
+            {'name': _('Items'), 'attribute': encapsulate(lambda x: x.instance_root.documents.count() if x.template_root.link_documents else x.instance_root.get_children().count())},
+            {'name': _('Document types'), 'attribute': 'get_document_types_names'},
         ],
     }
 
@@ -319,8 +310,8 @@ def index_list(request):
 
     context['object_list'] = queryset
 
-    return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_list.html', context,
+                              context_instance=RequestContext(request))
 
 
 def index_instance_node_view(request, index_instance_node_pk):
@@ -329,7 +320,7 @@ def index_instance_node_view(request, index_instance_node_pk):
     of documents
     """
     index_instance = get_object_or_404(IndexInstanceNode, pk=index_instance_node_pk)
-    index_instance_list = [index for index in index_instance.get_children().order_by('value')]
+    index_instance_list = index_instance.get_children().order_by('value')
     breadcrumbs = get_breadcrumbs(index_instance)
 
     try:
@@ -337,7 +328,7 @@ def index_instance_node_view(request, index_instance_node_pk):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, index_instance.index)
 
-    title = mark_safe(_(u'contents for index: %s') % breadcrumbs)
+    title = mark_safe(_('Contents for index: %s') % breadcrumbs)
 
     if index_instance:
         if index_instance.index_template_node.link_documents:
@@ -351,15 +342,15 @@ def index_instance_node_view(request, index_instance_node_pk):
                 }
             )
 
-    return render_to_response('generic_list.html', {
+    return render_to_response('main/generic_list.html', {
         'object_list': index_instance_list,
-        'extra_columns_preffixed': [
+        'extra_columns': [
             {
-                'name': _(u'node'),
+                'name': _('Node'),
                 'attribute': encapsulate(lambda x: index_instance_item_link(x))
             },
             {
-                'name': _(u'items'),
+                'name': _('Items'),
                 'attribute': encapsulate(lambda x: x.documents.count() if x.index_template_node.link_documents else x.get_children().count())
             }
         ],
@@ -381,25 +372,15 @@ def rebuild_index_instances(request):
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
 
     if request.method != 'POST':
-        return render_to_response('generic_confirm.html', {
+        return render_to_response('main/generic_confirm.html', {
             'previous': previous,
             'next': next,
-            'title': _(u'Are you sure you wish to rebuild all indexes?'),
-            'message': _(u'On large databases this operation may take some time to execute.'),
-            'form_icon': u'folder_page.png',
+            'title': _('Are you sure you wish to rebuild all indexes?'),
+            'message': _('On large databases this operation may take some time to execute.'),
         }, context_instance=RequestContext(request))
     else:
-        try:
-            warnings = do_rebuild_all_indexes()
-            messages.success(request, _(u'Index rebuild completed successfully.'))
-            for warning in warnings:
-                messages.warning(request, warning)
-
-        except Exception as exception:
-            if settings.DEBUG:
-                raise
-            messages.error(request, _(u'Index rebuild error: %s') % exception)
-
+        task_do_rebuild_all_indexes.apply_async(queue='tools')
+        messages.success(request, _('Index rebuild queued successfully.'))
         return HttpResponseRedirect(next)
 
 
@@ -410,19 +391,19 @@ def document_index_list(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
     object_list = []
 
-    queryset = document.indexinstancenode_set.all()
+    queryset = document.node_instances.all()
     try:
         # TODO: should be AND not OR
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_INDEXING_VIEW])
     except PermissionDenied:
-        queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, queryset)
+        queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_INDEXING_VIEW, request.user, queryset, related='index')
 
     for index_instance in queryset:
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
 
-    return render_to_response('generic_list.html', {
-        'title': _(u'indexes containing: %s') % document,
+    return render_to_response('main/generic_list.html', {
         'object_list': object_list,
+        'object': document,
         'hide_link': True,
-        'object': document
+        'title': _('Indexes containing document: %s') % document,
     }, context_instance=RequestContext(request))

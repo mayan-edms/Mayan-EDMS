@@ -1,8 +1,9 @@
+from __future__ import unicode_literals
+
 import re
 
-from django.template import Node
-from django.template import TemplateSyntaxError, Library
 from django.conf import settings
+from django.template import Library, Node, TemplateSyntaxError
 
 register = Library()
 

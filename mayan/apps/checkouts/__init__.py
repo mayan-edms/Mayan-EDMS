@@ -1,21 +1,23 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
-from django.utils.translation import ugettext_lazy as _
+from datetime import timedelta
 
 from acls.api import class_permissions
 from documents.models import Document
-from history.api import register_history_type
+from mayan.celery import app
 from navigation.api import register_links, register_top_menu
-from scheduler.api import register_interval_job
+from rest_api.classes import APIEndPoint
 
-from .events import (HISTORY_DOCUMENT_CHECKED_OUT, HISTORY_DOCUMENT_CHECKED_IN,
-    HISTORY_DOCUMENT_AUTO_CHECKED_IN, HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
-from .links import checkout_list, checkout_document, checkout_info, checkin_document
+from .links import (
+    checkin_document, checkout_document, checkout_info, checkout_list
+)
 from .models import DocumentCheckout
-from .permissions import (PERMISSION_DOCUMENT_CHECKOUT,
+from .permissions import (
     PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
-    PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE)
-from .tasks import task_check_expired_check_outs
+    PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE
+)
+
+CHECK_EXPIRED_CHECK_OUTS_INTERVAL = 60  # Lowest check out expiration allowed
 
 
 def initialize_document_checkout_extra_methods():
@@ -25,9 +27,14 @@ def initialize_document_checkout_extra_methods():
     Document.add_to_class('checkout_state', lambda document: DocumentCheckout.objects.document_checkout_state(document))
     Document.add_to_class('is_new_versions_allowed', lambda document, user=None: DocumentCheckout.objects.is_document_new_versions_allowed(document, user))
 
-register_top_menu(name='checkouts', link=checkout_list)
-register_links(Document, [checkout_info], menu_name='form_header')
-register_links(['checkout_info', 'checkout_document', 'checkin_document'], [checkout_document, checkin_document], menu_name="sidebar")
+
+app.conf.CELERYBEAT_SCHEDULE.update({
+    'check_expired_check_outs': {
+        'task': 'checkouts.tasks.task_check_expired_check_outs',
+        'schedule': timedelta(seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL),
+        'options': {'queue': 'checkouts'}
+    },
+})
 
 class_permissions(Document, [
     PERMISSION_DOCUMENT_CHECKOUT,
@@ -36,10 +43,10 @@ class_permissions(Document, [
     PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE
 ])
 
-CHECK_EXPIRED_CHECK_OUTS_INTERVAL = 60  # Lowest check out expiration allowed
-register_interval_job('task_check_expired_check_outs', _(u'Check expired check out documents and checks them in.'), task_check_expired_check_outs, seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL)
 initialize_document_checkout_extra_methods()
-register_history_type(HISTORY_DOCUMENT_CHECKED_OUT)
-register_history_type(HISTORY_DOCUMENT_CHECKED_IN)
-register_history_type(HISTORY_DOCUMENT_AUTO_CHECKED_IN)
-register_history_type(HISTORY_DOCUMENT_FORCEFUL_CHECK_IN)
+
+register_links(Document, [checkout_info], menu_name='form_header')
+register_links(['checkouts:checkout_info', 'checkouts:checkout_document', 'checkouts:checkin_document'], [checkout_document, checkin_document], menu_name="sidebar")
+register_top_menu(name='checkouts', link=checkout_list)
+
+APIEndPoint('checkouts')

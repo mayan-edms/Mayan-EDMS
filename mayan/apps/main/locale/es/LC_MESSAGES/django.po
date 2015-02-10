@@ -1,158 +1,363 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
-# Roberto Rosario, 2011-2012
+# Lory977 <helga.carrero@gmail.com>, 2015
+# Roberto Rosario, 2011-2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:53-0400\n"
-"PO-Revision-Date: 2014-07-04 17:32+0000\n"
-"Last-Translator: jmcainzos <jmcainzos@vodafone.es>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"POT-Creation-Date: 2015-02-06 16:52-0400\n"
+"PO-Revision-Date: 2015-02-07 05:23+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:14
-msgid "home"
+#: __init__.py:12
+msgid "Home"
 msgstr "inicio"
 
-#: __init__.py:16
-msgid "search"
-msgstr "búsqueda"
-
-#: links.py:8
-msgid "maintenance"
-msgstr "mantenimiento"
-
-#: links.py:9
-msgid "diagnostics"
-msgstr "diagnósticos"
-
 #: links.py:10
-msgid "sentry"
-msgstr "centinela"
+msgid "Maintenance"
+msgstr "Mantenimiento"
 
 #: links.py:11
-msgid "admin site"
-msgstr "sitio administrativo"
+msgid "Admin site"
+msgstr "Sitio administrativo"
 
-#: views.py:41
-msgid "maintenance menu"
-msgstr "menú de mantenimiento"
+#: views.py:32
+msgid "Results"
+msgstr "Resultados"
 
-#: views.py:48
+#: views.py:55
+msgid "Maintenance menu"
+msgstr "Menú de mantenimiento"
+
+#: views.py:62
 msgid "Diagnostics"
 msgstr "Diagnósticos"
 
-#: conf/settings.py:12
-msgid ""
-"Controls whether the search functionality is provided by a sidebar widget or "
-"by a menu entry."
-msgstr ""
-"Controla si la funcionalidad de búsqueda es proporcionada por una barra "
-"lateral o por una entrada de menú."
+#: templates/main/403.html:5 templates/main/403.html.py:9
+msgid "Insufficient permissions"
+msgstr "Permisos insuficientes"
 
-#: templates/about.html:8
+#: templates/main/403.html:11
+msgid "You don't have enough permissions for this operation."
+msgstr "Usted no tiene suficientes permisos para esta operación"
+
+#: templates/main/404.html:5 templates/main/404.html.py:9
+msgid "Page not found"
+msgstr "La página no se encuentra"
+
+#: templates/main/404.html:11
+msgid "Sorry, but the requested page could not be found."
+msgstr "Lo sentimos, la página solicitada no se encuentra"
+
+#: templates/main/about.html:9
 msgid "About this program"
 msgstr "Acerca de este programa"
 
-#: templates/about.html:12 templates/verbose_login.html:5
+#: templates/main/about.html:13
 msgid "Version"
 msgstr "Versión"
 
-#: templates/about.html:20 templates/home.html:17
-#: templates/verbose_login.html:7
+#: templates/main/about.html:15
+msgid "Open Source Electronic Document Manager System"
+msgstr "Sistema Electrónico de Manejo de Documentos de Código Abierto"
+
+#: templates/main/about.html:31
+msgid "Released under the Apache 2.0 License"
+msgstr "Distribuido bajo licencia Apache 2.0 License"
+
+#: templates/main/about.html:42
 msgid "Copyright &copy; 2011 Roberto Rosario."
-msgstr "Copyright &copy; 2011 Roberto Rosario."
+msgstr "Todos los derechos reservados &copy; 2011 Roberto Rosario."
 
-#: templates/base.html:31
-msgid "(DEBUG)"
-msgstr "(DEBUG)"
+#: templates/main/base.html:198
+msgid "(Debug mode)"
+msgstr "(Modo de prueba)"
 
-#: templates/base.html:262
-msgid "User"
-msgstr "Usuario"
-
-#: templates/base.html:264
+#: templates/main/base.html:219
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/base.html:267
+#: templates/main/base.html:221
 msgid "User details"
 msgstr "Detalles de usuario"
 
-#: templates/base.html:284
-msgid "Login"
-msgstr "Iniciar sesión"
+#: templates/main/base.html:237
+msgid "dismiss all notifications"
+msgstr "Descartar todas las notificaciones"
 
-#: templates/base.html:284
-msgid "Logout"
-msgstr "Desconectarse"
+#: templates/main/base.html:237
+msgid "close all"
+msgstr "Cerrar todo"
 
-#: templates/base.html:364
+#: templates/main/base.html:238
+msgid "dismiss this notification"
+msgstr "Descartar esta notificación"
+
+#: templates/main/base.html:238
+msgid "close"
+msgstr "Cerrar"
+
+#: templates/main/base.html:302 templates/main/base.html.py:315
 msgid "Secondary menu"
 msgstr "Menú secundario"
 
-#: templates/base.html:380
+#: templates/main/base.html:333
 #, python-format
 msgid "Actions for %(name)s: %(navigation_object)s"
 msgstr "Acciones para %(name)s: %(navigation_object)s "
 
-#: templates/base.html:382 templates/base.html.py:425
+#: templates/main/base.html:335 templates/main/base.html.py:364
 #, python-format
 msgid "Actions for: %(navigation_object)s"
 msgstr "Acciones para: %(navigation_object)s "
 
-#: templates/base.html:385
+#: templates/main/base.html:338
 msgid "Available actions"
 msgstr "Acciones disponibles"
 
-#: templates/base.html:397 templates/base.html.py:440
-msgid "Related actions"
-msgstr "Acciones relacionadas"
-
-#: templates/base.html:408 templates/base.html.py:453
+#: templates/main/base.html:350 templates/main/base.html.py:378
 msgid "Other available actions"
 msgstr "Otras acciones disponibles"
 
-#: templates/base.html:423
-#, python-format
-msgid "Actions for %(object_name)s: %(navigation_object)s"
-msgstr "Acciones para %(object_name)s: %(navigation_object)s "
-
-#: templates/base.html:428
+#: templates/main/base.html:366
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/home.html:11
-msgid "Django based open source document management system"
-msgstr "Sistema de manejo de documentos de código abierto basado en Django"
+#: templates/main/calculate_form_title.html:7
+#, python-format
+msgid "Details for: %(object)s"
+msgstr "detalles para: %(object)s"
 
-#: templates/project_description.html:7
+#: templates/main/calculate_form_title.html:10
+#, python-format
+msgid "Edit: %(object)s"
+msgstr "Editar: %(object)s"
+
+#: templates/main/calculate_form_title.html:12
+msgid "Create"
+msgstr "Crear"
+
+#: templates/main/generic_confirm.html:6
+#: templates/main/generic_confirm.html:20
+msgid "Confirm"
+msgstr "Confirmar"
+
+#: templates/main/generic_confirm.html:18
+msgid "Confirm delete"
+msgstr "Confirmar borrar"
+
+#: templates/main/generic_confirm.html:34
+msgid "question bubble"
+msgstr "Burbuja de pregunta"
+
+#: templates/main/generic_confirm.html:41
+#, python-format
+msgid "Are you sure you wish to delete: %(object)s?"
+msgstr "Está seguro de que quiere borrar: %(object)s?"
+
+#: templates/main/generic_confirm.html:48
+msgid "Yes"
+msgstr "Sí"
+
+#: templates/main/generic_confirm.html:52
+msgid "No"
+msgstr "No"
+
+#: templates/main/generic_form_instance.html:50
+#: templates/main/generic_form_subtemplate.html:60
+#: templates/main/generic_multiform_subtemplate.html:42
+msgid "required"
+msgstr "Requerido"
+
+#: templates/main/generic_form_subtemplate.html:82
+#: templates/main/generic_multiform_subtemplate.html:64
+msgid "Save"
+msgstr "Guardar"
+
+#: templates/main/generic_form_subtemplate.html:82
+#: templates/main/generic_list_subtemplate.html:38
+#: templates/main/generic_multiform_subtemplate.html:64
+msgid "Submit"
+msgstr "Someter"
+
+#: templates/main/generic_form_subtemplate.html:87
+#: templates/main/generic_multiform_subtemplate.html:69
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: templates/main/generic_list_subtemplate.html:23
+#, python-format
 msgid ""
-"Open source, Django based electronic document manager with custom metadata, "
-"indexing, tagging, file serving integration, digital signature support and "
-"OCR capabilities"
-msgstr ""
-"Gestor documental libre y de código abierto, basado en Django con metadatos "
-"personalizados, indexación, etiquetado, integración de servicio de archivos, "
-"apoyo de firmas digitales y capacidades de OCR"
+"%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
+"%(total_pages)s)"
+msgstr "%(title)s (%(start)s -%(end)s de %(total)s) (Page %(page_number)s de %(total_pages)s)"
 
-#: templates/project_description.html:22
-msgid "Released under the Apache 2.0 License"
-msgstr "Distribuido bajo licencia Apache 2.0 License"
+#: templates/main/generic_list_subtemplate.html:25
+#, python-format
+msgid "%(title)s (%(total)s)"
+msgstr "%(title)s (%(total)s)"
+
+#: templates/main/generic_list_subtemplate.html:58
+msgid "Identifier"
+msgstr "Identificador"
+
+#: templates/main/generic_list_subtemplate.html:120
+msgid "No results"
+msgstr "Ningún resultado"
+
+#: templates/main/home.html:23
+msgid "Space separated terms"
+msgstr "Términos separados por espacios"
+
+#: templates/main/home.html:24
+msgid "Search"
+msgstr "Búsqueda"
+
+#: templates/main/home.html:25
+msgid "Advanced search"
+msgstr "Búsqueda avanzada"
+
+#: templates/main/login.html:17 templates/main/login.html.py:55
+#: templates/main/login.html:63
+msgid "Login"
+msgstr "Iniciar sesión"
+
+#: templates/main/login.html:23
+msgid "You are already logged in"
+msgstr "Usted ya inició sesión"
+
+#: templates/main/login.html:26
+msgid "Redirecting you to the website entry point in 5 seconds."
+msgstr "Redireccionando al portal de acceso en 5 segundos"
+
+#: templates/main/login.html:29
+#, python-format
+msgid ""
+"Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
+"work."
+msgstr "O haga clic <a href=\"%(LOGIN_REDIRECT_URL)s\">aquí</a> si la re-dirección no funciona."
+
+#: templates/main/login.html:40
+msgid "First time login"
+msgstr "Primer inicio de sesión"
+
+#: templates/main/login.html:42
+msgid ""
+"You have just finished installing <strong>Mayan EDMS</strong>, "
+"congratulations!"
+msgstr "¡Felicitaciones! Usted acaba de terminar de instalar <strong>Mayan EDMS</strong>"
+
+#: templates/main/login.html:43
+msgid "Login using the following credentials:"
+msgstr "Inicie sesión con las siguientes credenciales:"
+
+#: templates/main/login.html:44
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr "Usuario: <strong>%(account)s</strong>"
+
+#: templates/main/login.html:45
+#, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr "Correo electrónico: <strong>%(email)s</strong>"
+
+#: templates/main/login.html:46
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr "Contraseña: <strong>%(password)s</strong>"
+
+#: templates/main/login.html:47
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr "Asegúrese de cambiar su contraseña para aumentar la seguridad y para desactivar este mensaje"
+
+#: templates/main/password_change_done.html:5
+#: templates/main/password_change_form.html:5
+#: templates/main/password_change_form.html:7
+msgid "Password change"
+msgstr "Cambiar contraseña"
+
+#: templates/main/password_change_done.html:8
+msgid "Your password has been successfully changed."
+msgstr "Su contraseña ha sido cambiada de forma exitosa"
+
+#: templates/pagination/pagination.html:6
+#: templates/pagination/pagination.html:8
+msgid "Previous"
+msgstr "Previo"
+
+#: templates/pagination/pagination.html:26
+#: templates/pagination/pagination.html:28
+msgid "Next"
+msgstr "Próximo"
+
+#~ msgid ""
+#~ "Open source, Django based electronic document manager with custom metadata, "
+#~ "indexing, tagging, file serving integration, digital signature support and "
+#~ "OCR capabilities"
+#~ msgstr ""
+#~ "Open source, Django based electronic document manager with custom metadata, "
+#~ "indexing, tagging, file serving integration, digital signature support and "
+#~ "OCR capabilities"
+
+#~ msgid "Logout"
+#~ msgstr "Logout"
+
+#~ msgid "Related actions"
+#~ msgstr "Related actions"
+
+#~ msgid "User"
+#~ msgstr "User"
+
+#~ msgid "Django based open source document management system"
+#~ msgstr "Django based open source document management system"
+
+#~ msgid "(DEBUG)"
+#~ msgstr "(DEBUG)"
+
+#~ msgid "Actions for %(object_name)s: %(navigation_object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Details for %(object_name)s: %(object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Edit %(object_name)s: %(object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "home"
+#~ msgstr "home"
+
+#~ msgid "diagnostics"
+#~ msgstr "diagnostics"
+
+#~ msgid "sentry"
+#~ msgstr "sentry"
+
+#~ msgid ""
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
+#~ msgstr ""
+#~ "Controls whether the search functionality is provided by a sidebar widget or"
+#~ " by a menu entry."
 
 #~ msgid "statistics"
-#~ msgstr "estadísticas"
+#~ msgstr "statistics"
 
 #~ msgid "Statistics"
-#~ msgstr "Estadísticas"
+#~ msgstr "Statistics"

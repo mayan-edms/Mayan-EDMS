@@ -7,12 +7,6 @@ source_lang = en
 source_file = mayan/apps/acls/locale/en/LC_MESSAGES/django.po
 type = PO
 
-[mayan-edms.apps-bootstrap]
-file_filter = mayan/apps/bootstrap/locale/<lang>/LC_MESSAGES/django.po
-source_lang = en
-source_file = mayan/apps/bootstrap/locale/en/LC_MESSAGES/django.po
-type = PO
-
 [mayan-edms.apps-checkouts]
 file_filter = mayan/apps/checkouts/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
@@ -61,22 +55,28 @@ source_lang = en
 source_file = mayan/apps/document_signatures/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.apps-document_states]
+file_filter = mayan/apps/document_states/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/document_states/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.apps-dynamic_search]
 file_filter = mayan/apps/dynamic_search/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
 source_file = mayan/apps/dynamic_search/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.apps-events]
+file_filter = mayan/apps/events/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/events/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.apps-folders]
 file_filter = mayan/apps/folders/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
 source_file = mayan/apps/folders/locale/en/LC_MESSAGES/django.po
-type = PO
-
-[mayan-edms.apps-history]
-file_filter = mayan/apps/history/locale/<lang>/LC_MESSAGES/django.po
-source_lang = en
-source_file = mayan/apps/history/locale/en/LC_MESSAGES/django.po
 type = PO
 
 [mayan-edms.apps-installation]
@@ -89,6 +89,12 @@ type = PO
 file_filter = mayan/apps/linking/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
 source_file = mayan/apps/linking/locale/en/LC_MESSAGES/django.po
+type = PO
+
+[mayan-edms.apps-mailer]
+file_filter = mayan/apps/mailer/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/mailer/locale/en/LC_MESSAGES/django.po
 type = PO
 
 [mayan-edms.apps-main]
@@ -139,10 +145,10 @@ source_lang = en
 source_file = mayan/apps/registration/locale/en/LC_MESSAGES/django.po
 type = PO
 
-[mayan-edms.apps-scheduler]
-file_filter = mayan/apps/scheduler/locale/<lang>/LC_MESSAGES/django.po
+[mayan-edms.apps-rest_api]
+file_filter = mayan/apps/rest_api/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
-source_file = mayan/apps/scheduler/locale/en/LC_MESSAGES/django.po
+source_file = mayan/apps/rest_api/locale/en/LC_MESSAGES/django.po
 type = PO
 
 [mayan-edms.apps-smart_settings]
@@ -175,8 +181,4 @@ source_lang = en
 source_file = mayan/apps/user_management/locale/en/LC_MESSAGES/django.po
 type = PO
 
-[mayan-edms.apps-web_theme]
-file_filter = mayan/apps/web_theme/locale/<lang>/LC_MESSAGES/django.po
-source_lang = en
-source_file = mayan/apps/web_theme/locale/en/LC_MESSAGES/django.po
-type = PO
+

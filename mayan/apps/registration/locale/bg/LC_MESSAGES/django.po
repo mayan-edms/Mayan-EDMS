@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
-"PO-Revision-Date: 2012-10-17 08:59+0000\n"
-"Last-Translator: Pavlin Koldamov <pkoldamov@gmail.com>\n"
+"POT-Creation-Date: 2015-02-06 16:53-0400\n"
+"PO-Revision-Date: 2014-10-25 07:18+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/bg/)\n"
 "Language: bg\n"
@@ -51,39 +52,36 @@ msgstr "Друга информация:"
 msgid "Registration"
 msgstr "Регистрация"
 
-#: models.py:21
-msgid "registered"
-msgstr "регистрирани"
-
 #: models.py:22
-msgid "registration data"
-msgstr "регистрационните данни"
+msgid "Registered"
+msgstr ""
 
-#: models.py:48
+#: models.py:23
+msgid "Registration data"
+msgstr ""
+
+#: models.py:49
 msgid "No name"
 msgstr "Без име"
 
-#: models.py:87
-msgid "registration properties"
-msgstr "свойства на регистрацията"
+#: models.py:86
+msgid "Registration properties"
+msgstr ""
 
-#: views.py:22
-msgid "Thank you for registering."
-msgstr "Благодарим Ви за регистрацията."
-
-#: views.py:25
+#: views.py:19
 msgid "Your copy is already registered."
 msgstr "Вашето копие вече е регистрирано."
 
-#: views.py:28
-#, python-format
-msgid "Error submiting form; %s."
-msgstr "грешка при подаване на формуляра; %s."
+#: views.py:26
+msgid "Thank you for registering."
+msgstr "Благодарим Ви за регистрацията."
 
-#: views.py:33
-msgid "registration form"
-msgstr "формуляр за регистрация"
+#: views.py:32
+msgid "Registration form"
+msgstr ""
 
-#: templatetags/registration_tags.py:16
-msgid "Unregistered"
-msgstr "Нерегистрирани"
+#~ msgid "Error submiting form; %s."
+#~ msgstr "Error submiting form; %s."
+
+#~ msgid "Unregistered"
+#~ msgstr "Unregistered"

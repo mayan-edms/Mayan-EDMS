@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django import template
 
 register = template.Library()
@@ -16,7 +18,7 @@ class SetVarNode(template.Node):
         # Make it global across all blocks
         context.dicts[0][self.var_name] = value
 
-        return u""
+        return ''
 
 
 def set_var(parser, token):

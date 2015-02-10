@@ -1,0 +1,737 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-06 16:50-0400\n"
+"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Latvian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#: literals.py:21
+msgid "Resize"
+msgstr ""
+
+#: literals.py:22
+msgid "Resize."
+msgstr ""
+
+#: literals.py:24 literals.py:39
+msgid "Width"
+msgstr ""
+
+#: literals.py:25 literals.py:40
+msgid "Height"
+msgstr ""
+
+#: literals.py:29
+msgid "Rotate"
+msgstr ""
+
+#: literals.py:30
+msgid "Rotate by n degress."
+msgstr ""
+
+#: literals.py:32
+msgid "Degrees"
+msgstr ""
+
+#: literals.py:36
+msgid "Density"
+msgstr ""
+
+#: literals.py:37
+msgid "Change the resolution (ie: DPI) without resizing."
+msgstr ""
+
+#: literals.py:44
+msgid "Zoom"
+msgstr ""
+
+#: literals.py:45
+msgid "Zoom by n percent."
+msgstr ""
+
+#: literals.py:47
+msgid "Percent"
+msgstr ""
+
+#: settings.py:11
+msgid "File path to imagemagick's convert program."
+msgstr ""
+
+#: settings.py:12
+msgid "File path to imagemagick's identify program."
+msgstr ""
+
+#: settings.py:13
+msgid "File path to graphicsmagick's program."
+msgstr ""
+
+#: settings.py:15
+msgid ""
+"Graphics conversion backend to use.  Options are: converter.backends."
+"imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
+"and converter.backends.python.Python"
+msgstr ""
+
+#: settings.py:16
+msgid "Path to the libreoffice program."
+msgstr ""
+
+#: settings.py:17
+msgid "Path to the Popple program pdftoppm."
+msgstr ""
+
+#~ msgid "Help"
+#~ msgstr "Help"
+
+#~ msgid ""
+#~ "These are the file formats supported by the currently selected converter "
+#~ "backend.  In this case: '%(backend)s'"
+#~ msgstr ""
+#~ "These are the file formats supported by the currently selected converter "
+#~ "backend.  In this case: '%(backend)s'"
+
+#~ msgid "file formats"
+#~ msgstr "file formats"
+
+#~ msgid "Hasselblad Photo RAW, CFV/H3D39II"
+#~ msgstr "Hasselblad Photo RAW, CFV/H3D39II"
+
+#~ msgid "Photoshop resource format"
+#~ msgstr "Photoshop resource format"
+
+#~ msgid "Photoshop resource text format"
+#~ msgstr "Photoshop resource text format"
+
+#~ msgid "Photoshop resource wide text format"
+#~ msgstr "Photoshop resource wide text format"
+
+#~ msgid "Raw alpha samples"
+#~ msgstr "Raw alpha samples"
+
+#~ msgid "Adobe Illustrator CS2"
+#~ msgstr "Adobe Illustrator CS2"
+
+#~ msgid "Raw application information"
+#~ msgstr "Raw application information"
+
+#~ msgid "Raw JPEG binary data"
+#~ msgstr "Raw JPEG binary data"
+
+#~ msgid "PFS: 1st Publisher Clip Art"
+#~ msgstr "PFS: 1st Publisher Clip Art"
+
+#~ msgid "Sony Alpha DSLR Raw Image Format"
+#~ msgstr "Sony Alpha DSLR Raw Image Format"
+
+#~ msgid "Microsoft Audio/Visual Interleaved"
+#~ msgstr "Microsoft Audio/Visual Interleaved"
+
+#~ msgid "AVS X image"
+#~ msgstr "AVS X image"
+
+#~ msgid "Raw blue samples"
+#~ msgstr "Raw blue samples"
+
+#~ msgid "Raw blue, green, and red samples"
+#~ msgstr "Raw blue, green, and red samples"
+
+#~ msgid "Raw blue, green, red and alpha samples"
+#~ msgstr "Raw blue, green, red and alpha samples"
+
+#~ msgid "Microsoft Windows bitmap image"
+#~ msgstr "Microsoft Windows bitmap image"
+
+#~ msgid "Microsoft Windows bitmap image version 2"
+#~ msgstr "Microsoft Windows bitmap image version 2"
+
+#~ msgid "Microsoft Windows bitmap image version 3"
+#~ msgstr "Microsoft Windows bitmap image version 3"
+
+#~ msgid "BRF ASCII Braille format"
+#~ msgstr "BRF ASCII Braille format"
+
+#~ msgid "Raw blue, red, and green samples"
+#~ msgstr "Raw blue, red, and green samples"
+
+#~ msgid "Raw cyan samples"
+#~ msgstr "Raw cyan samples"
+
+#~ msgid "Magick Persistent Cache image format"
+#~ msgstr "Magick Persistent Cache image format"
+
+#~ msgid "Continuous Acquisition and Life-cycle Support Type 1 image"
+#~ msgstr "Continuous Acquisition and Life-cycle Support Type 1 image"
+
+#~ msgid "Image caption"
+#~ msgstr "Image caption"
+
+#~ msgid "Cineon Image File"
+#~ msgstr "Cineon Image File"
+
+#~ msgid "Cisco IP phone image format"
+#~ msgstr "Cisco IP phone image format"
+
+#~ msgid "Image Clip Mask"
+#~ msgstr "Image Clip Mask"
+
+#~ msgid "Raw cyan, magenta, yellow, and black samples"
+#~ msgstr "Raw cyan, magenta, yellow, and black samples"
+
+#~ msgid "Raw cyan, magenta, yellow, black, and opacity samples"
+#~ msgstr "Raw cyan, magenta, yellow, black, and opacity samples"
+
+#~ msgid "Canon Digital Camera Raw Image Format"
+#~ msgstr "Canon Digital Camera Raw Image Format"
+
+#~ msgid "Microsoft Cursor Icon"
+#~ msgstr "Microsoft Cursor Icon"
+
+#~ msgid "DR Halo"
+#~ msgstr "DR Halo"
+
+#~ msgid "Digital Imaging and Communications in Medicine image"
+#~ msgstr "Digital Imaging and Communications in Medicine image"
+
+#~ msgid "Kodak Digital Camera Raw Image File"
+#~ msgstr "Kodak Digital Camera Raw Image File"
+
+#~ msgid "ZSoft IBM PC multi-page Paintbrush"
+#~ msgstr "ZSoft IBM PC multi-page Paintbrush"
+
+#~ msgid "Microsoft DirectDraw Surface"
+#~ msgstr "Microsoft DirectDraw Surface"
+
+#~ msgid "Multi-face font package (Freetype 2.4.2)"
+#~ msgstr "Multi-face font package (Freetype 2.4.2)"
+
+#~ msgid "Déjà vu"
+#~ msgstr "Déjà vu"
+
+#~ msgid "Adobe Digital Negative"
+#~ msgstr "Adobe Digital Negative"
+
+#~ msgid "Graphviz"
+#~ msgstr "Graphviz"
+
+#~ msgid "SMPTE 268M-2003 (DPX 2.0)"
+#~ msgstr "SMPTE 268M-2003 (DPX 2.0)"
+
+#~ msgid "Encapsulated Portable Document Format"
+#~ msgstr "Encapsulated Portable Document Format"
+
+#~ msgid "Adobe Encapsulated PostScript Interchange format"
+#~ msgstr "Adobe Encapsulated PostScript Interchange format"
+
+#~ msgid "Adobe Encapsulated PostScript"
+#~ msgstr "Adobe Encapsulated PostScript"
+
+#~ msgid "Adobe Level II Encapsulated PostScript"
+#~ msgstr "Adobe Level II Encapsulated PostScript"
+
+#~ msgid "Adobe Level III Encapsulated PostScript"
+#~ msgstr "Adobe Level III Encapsulated PostScript"
+
+#~ msgid "Adobe Encapsulated PostScript with TIFF preview"
+#~ msgstr "Adobe Encapsulated PostScript with TIFF preview"
+
+#~ msgid "Adobe Level II Encapsulated PostScript with TIFF preview"
+#~ msgstr "Adobe Level II Encapsulated PostScript with TIFF preview"
+
+#~ msgid "Adobe Level III Encapsulated PostScript with TIFF preview"
+#~ msgstr "Adobe Level III Encapsulated PostScript with TIFF preview"
+
+#~ msgid "Epson RAW Format"
+#~ msgstr "Epson RAW Format"
+
+#~ msgid "Exif digital camera binary data"
+#~ msgstr "Exif digital camera binary data"
+
+#~ msgid "High Dynamic-range (HDR)"
+#~ msgstr "High Dynamic-range (HDR)"
+
+#~ msgid "Group 3 FAX (Not TIFF Group3 FAX)"
+#~ msgstr "Group 3 FAX (Not TIFF Group3 FAX)"
+
+#~ msgid "Autodesk FLI animations file"
+#~ msgstr "Autodesk FLI animations file"
+
+#~ msgid "Autodesk FLC animations file"
+#~ msgstr "Autodesk FLC animations file"
+
+#~ msgid "Flexible Image Transport System"
+#~ msgstr "Flexible Image Transport System"
+
+#~ msgid "Kodak FlashPix file"
+#~ msgstr "Kodak FlashPix file"
+
+#~ msgid "Plasma fractal image"
+#~ msgstr "Plasma fractal image"
+
+#~ msgid "Raw green samples"
+#~ msgstr "Raw green samples"
+
+#~ msgid "Group 3 FAX"
+#~ msgstr "Group 3 FAX"
+
+#~ msgid "Raw green, blue, and red samples"
+#~ msgstr "Raw green, blue, and red samples"
+
+#~ msgid "GIMP brush file"
+#~ msgstr "GIMP brush file"
+
+#~ msgid "CompuServe graphics interchange format (version 89a)"
+#~ msgstr "CompuServe graphics interchange format (version 89a)"
+
+#~ msgid "CompuServe graphics interchange format (version 87a)"
+#~ msgstr "CompuServe graphics interchange format (version 87a)"
+
+#~ msgid "Gradual passing from one shade to another"
+#~ msgstr "Gradual passing from one shade to another"
+
+#~ msgid "Raw gray samples"
+#~ msgstr "Raw gray samples"
+
+#~ msgid "Raw green, red, and blue samples"
+#~ msgstr "Raw green, red, and blue samples"
+
+#~ msgid "Raw CCITT Group4"
+#~ msgstr "Raw CCITT Group4"
+
+#~ msgid "Histogram of the image"
+#~ msgstr "Histogram of the image"
+
+#~ msgid "HRZ: Slow scan TV"
+#~ msgstr "HRZ: Slow scan TV"
+
+#~ msgid "Hypertext Markup Language and a client-side image map"
+#~ msgstr "Hypertext Markup Language and a client-side image map"
+
+#~ msgid "Truevision Targa image"
+#~ msgstr "Truevision Targa image"
+
+#~ msgid "ICC Color Profile"
+#~ msgstr "ICC Color Profile"
+
+#~ msgid "Microsoft Icon"
+#~ msgstr "Microsoft Icon"
+
+#~ msgid "Hald CLUT identity image"
+#~ msgstr "Hald CLUT identity image"
+
+#~ msgid "LabEye image format"
+#~ msgstr "LabEye image format"
+
+#~ msgid "GraphicsMagick Embedded Image"
+#~ msgstr "GraphicsMagick Embedded Image"
+
+#~ msgid "The image format and characteristics"
+#~ msgstr "The image format and characteristics"
+
+#~ msgid "Base64-encoded inline images"
+#~ msgstr "Base64-encoded inline images"
+
+#~ msgid "IPL Image Sequence"
+#~ msgstr "IPL Image Sequence"
+
+#~ msgid "IPTC Newsphoto"
+#~ msgstr "IPTC Newsphoto"
+
+#~ msgid "IPTC Newsphoto text format"
+#~ msgstr "IPTC Newsphoto text format"
+
+#~ msgid "ISO/TR 11548-1 format"
+#~ msgstr "ISO/TR 11548-1 format"
+
+#~ msgid "JPEG-2000 Code Stream Syntax"
+#~ msgstr "JPEG-2000 Code Stream Syntax"
+
+#~ msgid "JPEG Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgstr "JPEG Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+
+#~ msgid "JPEG-2000 JP2 File Format Syntax"
+#~ msgstr "JPEG-2000 JP2 File Format Syntax"
+
+#~ msgid "Joint Photographic Experts Group JFIF format (IJG JPEG 62)"
+#~ msgstr "Joint Photographic Experts Group JFIF format (IJG JPEG 62)"
+
+#~ msgid "JPEG-2000 File Format Syntax"
+#~ msgstr "JPEG-2000 File Format Syntax"
+
+#~ msgid "Raw black samples"
+#~ msgstr "Raw black samples"
+
+#~ msgid "Kodak Digital Camera Raw Image Format"
+#~ msgstr "Kodak Digital Camera Raw Image Format"
+
+#~ msgid "Image label"
+#~ msgstr "Image label"
+
+#~ msgid "Raw magenta samples"
+#~ msgstr "Raw magenta samples"
+
+#~ msgid "MPEG Video Stream"
+#~ msgstr "MPEG Video Stream"
+
+#~ msgid "Raw MPEG-4 Video"
+#~ msgstr "Raw MPEG-4 Video"
+
+#~ msgid "Colormap intensities and indices"
+#~ msgstr "Colormap intensities and indices"
+
+#~ msgid "MATLAB image format"
+#~ msgstr "MATLAB image format"
+
+#~ msgid "MATTE raw opacity format"
+#~ msgstr "MATTE raw opacity format"
+
+#~ msgid "8-bit McIdas area file"
+#~ msgstr "8-bit McIdas area file"
+
+#~ msgid "Microsoft Image Composer (MIC) file"
+#~ msgstr "Microsoft Image Composer (MIC) file"
+
+#~ msgid "Magick Image File Format"
+#~ msgstr "Magick Image File Format"
+
+#~ msgid ""
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
+#~ msgstr ""
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
+
+#~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
+#~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
+
+#~ msgid "MPEG-4 Video Stream"
+#~ msgstr "MPEG-4 Video Stream"
+
+#~ msgid "Sony (Minolta) Raw Image File"
+#~ msgstr "Sony (Minolta) Raw Image File"
+
+#~ msgid "Magick Scripting Language"
+#~ msgstr "Magick Scripting Language"
+
+#~ msgid "Windows 1 and 2 MSP file format"
+#~ msgstr "Windows 1 and 2 MSP file format"
+
+#~ msgid "ImageMagick's own SVG internal renderer"
+#~ msgstr "ImageMagick's own SVG internal renderer"
+
+#~ msgid "MTV Raytracing image format"
+#~ msgstr "MTV Raytracing image format"
+
+#~ msgid "Magick Vector Graphics"
+#~ msgstr "Magick Vector Graphics"
+
+#~ msgid "Nikon Digital SLR Camera Raw Image File"
+#~ msgstr "Nikon Digital SLR Camera Raw Image File"
+
+#~ msgid "Constant image of uniform color"
+#~ msgstr "Constant image of uniform color"
+
+#~ msgid "Raw opacity samples"
+#~ msgstr "Raw opacity samples"
+
+#~ msgid "Olympus Digital Camera Raw Image File"
+#~ msgstr "Olympus Digital Camera Raw Image File"
+
+#~ msgid "On-the-air bitmap"
+#~ msgstr "On-the-air bitmap"
+
+#~ msgid "Open Type font (Freetype 2.4.2)"
+#~ msgstr "Open Type font (Freetype 2.4.2)"
+
+#~ msgid "Xv thumbnail format"
+#~ msgstr "Xv thumbnail format"
+
+#~ msgid "16bit/pixel interleaved YUV"
+#~ msgstr "16bit/pixel interleaved YUV"
+
+#~ msgid "Palm pixmap"
+#~ msgstr "Palm pixmap"
+
+#~ msgid "Common 2-dimensional bitmap format"
+#~ msgstr "Common 2-dimensional bitmap format"
+
+#~ msgid "Predefined pattern"
+#~ msgstr "Predefined pattern"
+
+#~ msgid "Portable bitmap format (black and white)"
+#~ msgstr "Portable bitmap format (black and white)"
+
+#~ msgid "Photo CD"
+#~ msgstr "Photo CD"
+
+#~ msgid "Page Control Language"
+#~ msgstr "Page Control Language"
+
+#~ msgid "Apple Macintosh QuickDraw/PICT"
+#~ msgstr "Apple Macintosh QuickDraw/PICT"
+
+#~ msgid "ZSoft IBM PC Paintbrush"
+#~ msgstr "ZSoft IBM PC Paintbrush"
+
+#~ msgid "Palm Database ImageViewer Format"
+#~ msgstr "Palm Database ImageViewer Format"
+
+#~ msgid "Portable Document Format"
+#~ msgstr "Portable Document Format"
+
+#~ msgid "Portable Document Archive Format"
+#~ msgstr "Portable Document Archive Format"
+
+#~ msgid "Pentax Electronic File"
+#~ msgstr "Pentax Electronic File"
+
+#~ msgid "Embrid Embroidery Format"
+#~ msgstr "Embrid Embroidery Format"
+
+#~ msgid "Postscript Type 1 font (ASCII) (Freetype 2.4.2)"
+#~ msgstr "Postscript Type 1 font (ASCII) (Freetype 2.4.2)"
+
+#~ msgid "Postscript Type 1 font (binary) (Freetype 2.4.2)"
+#~ msgstr "Postscript Type 1 font (binary) (Freetype 2.4.2)"
+
+#~ msgid "Portable float format"
+#~ msgstr "Portable float format"
+
+#~ msgid "Portable graymap format (gray scale)"
+#~ msgstr "Portable graymap format (gray scale)"
+
+#~ msgid "JPEG-2000 VM Format"
+#~ msgstr "JPEG-2000 VM Format"
+
+#~ msgid "Personal Icon"
+#~ msgstr "Personal Icon"
+
+#~ msgid "Alias/Wavefront RLE image format"
+#~ msgstr "Alias/Wavefront RLE image format"
+
+#~ msgid "PIXAR raster file"
+#~ msgstr "PIXAR raster file"
+
+#~ msgid "Joint Photographic Experts Group JFIF format (62)"
+#~ msgstr "Joint Photographic Experts Group JFIF format (62)"
+
+#~ msgid ""
+#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgstr ""
+#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+
+#~ msgid ""
+#~ "24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgstr ""
+#~ "24-bit RGB PNG, opaque only (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+
+#~ msgid ""
+#~ "32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
+#~ msgstr ""
+#~ "32-bit RGBA PNG, semitransparency OK (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
+
+#~ msgid ""
+#~ "8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
+#~ msgstr ""
+#~ "8-bit indexed PNG, binary transparency only (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
+
+#~ msgid "Portable anymap"
+#~ msgstr "Portable anymap"
+
+#~ msgid "Portable pixmap format (color)"
+#~ msgstr "Portable pixmap format (color)"
+
+#~ msgid "Show a preview an image enhancement, effect, or f/x"
+#~ msgstr "Show a preview an image enhancement, effect, or f/x"
+
+#~ msgid "Adobe PostScript"
+#~ msgstr "Adobe PostScript"
+
+#~ msgid "Adobe Level II PostScript"
+#~ msgstr "Adobe Level II PostScript"
+
+#~ msgid "Adobe Level III PostScript"
+#~ msgstr "Adobe Level III PostScript"
+
+#~ msgid "Adobe Large Document Format"
+#~ msgstr "Adobe Large Document Format"
+
+#~ msgid "Adobe Photoshop bitmap"
+#~ msgstr "Adobe Photoshop bitmap"
+
+#~ msgid "Pyramid encoded TIFF"
+#~ msgstr "Pyramid encoded TIFF"
+
+#~ msgid "Seattle Film Works"
+#~ msgstr "Seattle Film Works"
+
+#~ msgid "Raw red samples"
+#~ msgstr "Raw red samples"
+
+#~ msgid "Fuji CCD-RAW Graphic File"
+#~ msgstr "Fuji CCD-RAW Graphic File"
+
+#~ msgid "SUN Rasterfile"
+#~ msgstr "SUN Rasterfile"
+
+#~ msgid "Raw red, blue, and green samples"
+#~ msgstr "Raw red, blue, and green samples"
+
+#~ msgid "Raw red, green, and blue samples"
+#~ msgstr "Raw red, green, and blue samples"
+
+#~ msgid "Raw red, green, blue, and matte samples"
+#~ msgstr "Raw red, green, blue, and matte samples"
+
+#~ msgid "Raw red, green, blue, and opacity samples"
+#~ msgstr "Raw red, green, blue, and opacity samples"
+
+#~ msgid "Alias/Wavefront image"
+#~ msgstr "Alias/Wavefront image"
+
+#~ msgid "Utah Run length encoded image"
+#~ msgstr "Utah Run length encoded image"
+
+#~ msgid "ZX-Spectrum SCREEN$"
+#~ msgstr "ZX-Spectrum SCREEN$"
+
+#~ msgid "Scitex HandShake"
+#~ msgstr "Scitex HandShake"
+
+#~ msgid "Irix RGB image"
+#~ msgstr "Irix RGB image"
+
+#~ msgid "Sony Raw Format 2"
+#~ msgstr "Sony Raw Format 2"
+
+#~ msgid "Sony Raw Format"
+#~ msgstr "Sony Raw Format"
+
+#~ msgid "Steganographic image"
+#~ msgstr "Steganographic image"
+
+#~ msgid "Scalable Vector Graphics (XML 2.7.6, RSVG 2.32.0)"
+#~ msgstr "Scalable Vector Graphics (XML 2.7.6, RSVG 2.32.0)"
+
+#~ msgid "Scalable Vector Graphics (ZIP compressed) (XML 2.7.6, RSVG 2.32.0)"
+#~ msgstr "Scalable Vector Graphics (ZIP compressed) (XML 2.7.6, RSVG 2.32.0)"
+
+#~ msgid "Text"
+#~ msgstr "Text"
+
+#~ msgid "EXIF Profile Thumbnail"
+#~ msgstr "EXIF Profile Thumbnail"
+
+#~ msgid "Tagged Image File Format (LIBTIFF, Version 3.9.4)"
+#~ msgstr "Tagged Image File Format (LIBTIFF, Version 3.9.4)"
+
+#~ msgid "Tagged Image File Format (64-bit) (LIBTIFF, Version 3.9.4)"
+#~ msgstr "Tagged Image File Format (64-bit) (LIBTIFF, Version 3.9.4)"
+
+#~ msgid "Tile image with a texture"
+#~ msgstr "Tile image with a texture"
+
+#~ msgid "PSX TIM"
+#~ msgstr "PSX TIM"
+
+#~ msgid "TOPOL X Image"
+#~ msgstr "TOPOL X Image"
+
+#~ msgid "TrueType font collection (Freetype 2.4.2)"
+#~ msgstr "TrueType font collection (Freetype 2.4.2)"
+
+#~ msgid "TrueType font (Freetype 2.4.2)"
+#~ msgstr "TrueType font (Freetype 2.4.2)"
+
+#~ msgid "Unicode Text format"
+#~ msgstr "Unicode Text format"
+
+#~ msgid "X-Motif UIL table"
+#~ msgstr "X-Motif UIL table"
+
+#~ msgid "VICAR rasterfile format"
+#~ msgstr "VICAR rasterfile format"
+
+#~ msgid "Visual Image Directory"
+#~ msgstr "Visual Image Directory"
+
+#~ msgid "Khoros Visualization image"
+#~ msgstr "Khoros Visualization image"
+
+#~ msgid "Wireless Bitmap (level 0) image"
+#~ msgstr "Wireless Bitmap (level 0) image"
+
+#~ msgid "Windows Meta File"
+#~ msgstr "Windows Meta File"
+
+#~ msgid "Word Perfect Graphics"
+#~ msgstr "Word Perfect Graphics"
+
+#~ msgid "Windows Media Video"
+#~ msgstr "Windows Media Video"
+
+#~ msgid "Compressed Windows Meta File"
+#~ msgstr "Compressed Windows Meta File"
+
+#~ msgid "X Window System"
+#~ msgstr "X Window System"
+
+#~ msgid "Foveon X3 (Sigma/Polaroid) Raw picture file"
+#~ msgstr "Foveon X3 (Sigma/Polaroid) Raw picture file"
+
+#~ msgid "X Windows system bitmap (black and white)"
+#~ msgstr "X Windows system bitmap (black and white)"
+
+#~ msgid "Constant image uniform color"
+#~ msgstr "Constant image uniform color"
+
+#~ msgid "GIMP image"
+#~ msgstr "GIMP image"
+
+#~ msgid "Adobe XML metadata"
+#~ msgstr "Adobe XML metadata"
+
+#~ msgid "X Windows system pixmap (color)"
+#~ msgstr "X Windows system pixmap (color)"
+
+#~ msgid "Microsoft XML Paper Specification"
+#~ msgstr "Microsoft XML Paper Specification"
+
+#~ msgid "XV thumbnail file"
+#~ msgstr "XV thumbnail file"
+
+#~ msgid "X Windows system window dump (color)"
+#~ msgstr "X Windows system window dump (color)"
+
+#~ msgid "Raw yellow samples"
+#~ msgstr "Raw yellow samples"
+
+#~ msgid "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
+#~ msgstr "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
+
+#~ msgid "suported file formats"
+#~ msgstr "suported file formats"
+
+#~ msgid "name"
+#~ msgstr "name"
+
+#~ msgid "description"
+#~ msgstr "description"

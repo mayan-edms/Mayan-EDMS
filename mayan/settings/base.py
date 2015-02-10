@@ -7,10 +7,13 @@ https://docs.djangoproject.com/en/1.6/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.6/ref/settings/
 """
+from __future__ import unicode_literals
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
 import sys
+
+from django.utils.translation import ugettext_lazy as _
 
 _file_path = os.path.abspath(os.path.dirname(__file__)).split('/')
 
@@ -34,84 +37,90 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
-    #Django
-    'django.contrib.auth',
-    'django.contrib.contenttypes',
-    'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
+    # 3rd party
+    'suit',
+    # Django
     'django.contrib.admin',
     'django.contrib.admindocs',
+    'django.contrib.auth',
     'django.contrib.comments',
+    'django.contrib.contenttypes',
+    'django.contrib.messages',
+    'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.staticfiles',
     # 3rd party
-    'south',
-    'rest_framework_swagger',
-    'filetransfers',
-    'taggit',
-    'mptt',
     'compressor',
+    'corsheaders',
+    'djcelery',
+    'filetransfers',
+    'mptt',
     'rest_framework',
     'rest_framework.authtoken',
     'solo',
+    'south',
     # Base generic
+    'acls',
+    'common',
+    'converter',
+    'django_gpg',
+    'dynamic_search',
+    'lock_manager',
+    'mimetype',
+    'navigation',
     'permissions',
     'project_setup',
     'project_tools',
     'smart_settings',
-    'navigation',
-    'lock_manager',
-    'web_theme',
-    # pagination needs to go after web_theme so that the pagination template
-    # if found
-    'pagination',
-    'common',
-    'django_gpg',
-    'dynamic_search',
-    'acls',
-    'converter',
     'user_management',
-    'mimetype',
-    'scheduler',
-    'job_processor',
-    'installation',
     # Mayan EDMS
-    'storage',
-    'app_registry',
-    'folders',
-    'tags',
-    'document_comments',
-    'metadata',
-    'statistics',
-    'documents',
-    'linking',
-    'document_indexing',
-    'document_acls',
-    'ocr',
-    'sources',
-    'history',
-    'main',
-    'rest_api',
-    'document_signatures',
     'checkouts',
-    'bootstrap',
+    'document_acls',
+    'document_comments',
+    'document_indexing',
+    'document_signatures',
+    'document_states',
+    'documents',
+    'events',
+    'folders',
+    'history',
+    'installation',
+    'linking',
+    'mailer',
+    'main',
+    'metadata',
+    'ocr',
     'registration',
-    # Has to be last so the other apps can register it's signals
-    'signaler'
+    'rest_api',
+    'sources',
+    'statistics',
+    'storage',
+    'tags',
+    # Placed after rest_api to allow template overriding
+    'rest_framework_swagger',
+    # Must be last on Django < 1.7 as per documentation
+    # https://django-activity-stream.readthedocs.org/en/latest/installation.html
+    'actstream',
+    # Pagination app must go after the main app so that the main app can
+    # override the default pagination template
+    'pagination',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'common.middleware.timezone.TimezoneMiddleware',
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'common.middleware.login_required_middleware.LoginRequiredMiddleware',
     'permissions.middleware.permission_denied_middleware.PermissionDeniedMiddleware',
     'pagination.middleware.PaginationMiddleware',
+    'common.middleware.ajax_redirect.AjaxRedirect',
 )
 
 ROOT_URLCONF = 'mayan.urls'
@@ -143,37 +152,33 @@ USE_TZ = True
 
 # Custom settings section
 
-from django.core.urlresolvers import reverse_lazy
-
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
 
-ugettext = lambda s: s
-
 LANGUAGES = (
-    ('ar', ugettext('Arabic')),
-    ('bg', ugettext('Bulgarian')),
-    ('bs', ugettext('Bosnian (Bosnia and Herzegovina)')),
-    ('da', ugettext('Danish')),
-    ('de', ugettext('German (Germany)')),
-    ('en', ugettext('English')),
-    ('es', ugettext('Spanish')),
-    ('fa', ugettext('Persian')),
-    ('fr', ugettext('French')),
-    ('hu', ugettext('Hungarian')),
-    ('hr', ugettext('Croatian')),
-    ('id', ugettext('Indonesian')),
-    ('it', ugettext('Italian')),
-    ('nl', ugettext('Dutch (Nethherlands)')),
-    ('pl', ugettext('Polish')),
-    ('pt', ugettext('Portuguese')),
-    ('pt-br', ugettext('Portuguese (Brazil)')),
-    ('ro', ugettext('Romanian (Romania)')),
-    ('ru', ugettext('Russian')),
-    ('sl', ugettext('Slovenian')),
-    ('tr', ugettext('Turkish')),
-    ('vi', ugettext('Vietnamese (Viet Nam)')),
-    ('zh-cn', ugettext('Chinese (China)')),
+    ('ar', _('Arabic')),
+    ('bg', _('Bulgarian')),
+    ('bs', _('Bosnian (Bosnia and Herzegovina)')),
+    ('da', _('Danish')),
+    ('de', _('German (Germany)')),
+    ('en', _('English')),
+    ('es', _('Spanish')),
+    ('fa', _('Persian')),
+    ('fr', _('French')),
+    ('hu', _('Hungarian')),
+    ('hr', _('Croatian')),
+    ('id', _('Indonesian')),
+    ('it', _('Italian')),
+    ('nl', _('Dutch (Nethherlands)')),
+    ('pl', _('Polish')),
+    ('pt', _('Portuguese')),
+    ('pt-br', _('Portuguese (Brazil)')),
+    ('ro', _('Romanian (Romania)')),
+    ('ru', _('Russian')),
+    ('sl', _('Slovenian')),
+    ('tr', _('Turkish')),
+    ('vi', _('Vietnamese (Viet Nam)')),
+    ('zh-cn', _('Chinese (China)')),
 )
 
 SITE_ID = 1
@@ -196,8 +201,8 @@ TEMPLATE_LOADERS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
     'django.core.context_processors.i18n',
-    'django.core.context_processors.static',
     'django.core.context_processors.request',
     'django.contrib.messages.context_processors.messages',
 )
@@ -210,15 +215,17 @@ STATICFILES_FINDERS = (
 
 # --------- Django compressor -------------
 COMPRESS_PARSER = 'compressor.parser.HtmlParser'
-COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter', 'compressor.filters.cssmin.CSSMinFilter']
+COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',
+                        'compressor.filters.cssmin.CSSMinFilter']
 COMPRESS_ENABLED = False
 # ---------- Django sendfile --------------
 SENDFILE_BACKEND = 'sendfile.backends.simple'
 # --------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
 # --------- Django -------------------
-LOGIN_URL = reverse_lazy('login_view')
-LOGIN_REDIRECT_URL = reverse_lazy('home')
+LOGIN_URL = 'common:login_view'
+LOGIN_REDIRECT_URL = 'main:home'
+INTERNAL_IPS = ('127.0.0.1',)
 # -------- LoginRequiredMiddleware ----------
 LOGIN_EXEMPT_URLS = (
     r'^favicon\.ico$',
@@ -244,14 +251,6 @@ LOGIN_EXEMPT_URLS = (
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 # ---------- Search ------------------
 SEARCH_SHOW_OBJECT_TYPE = False
-
-SERIALIZATION_MODULES = {
-    'better_yaml': 'common.serializers.better_yaml',
-}
-# --------- Taggit ------------
-SOUTH_MIGRATION_MODULES = {
-    'taggit': 'taggit.south_migrations',
-}
 # ---------- Django REST framework -----------
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10,
@@ -262,4 +261,20 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     )
+}
+# ----------- Celery ----------
+CELERY_TIMEZONE = 'UTC'
+CELERY_ENABLE_UTC = True
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_ALWAYS_EAGER = True
+CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_TASK_SERIALIZER = 'json'
+CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
+TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
+# ------------ CORS ------------
+CORS_ORIGIN_ALLOW_ALL = True
+# ------ Django REST Swagger -----
+SWAGGER_SETTINGS = {
+    'api_version': '0',  # Specify your API's version
 }

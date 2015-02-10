@@ -1,0 +1,362 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Translators:
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-06 16:52-0400\n"
+"PO-Revision-Date: 2015-01-27 20:02+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Latvian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/lv/)\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+
+#: __init__.py:12
+msgid "Home"
+msgstr ""
+
+#: links.py:10
+msgid "Maintenance"
+msgstr ""
+
+#: links.py:11
+msgid "Admin site"
+msgstr ""
+
+#: views.py:32
+msgid "Results"
+msgstr ""
+
+#: views.py:55
+msgid "Maintenance menu"
+msgstr ""
+
+#: views.py:62
+msgid "Diagnostics"
+msgstr ""
+
+#: templates/main/403.html:5 templates/main/403.html.py:9
+msgid "Insufficient permissions"
+msgstr ""
+
+#: templates/main/403.html:11
+msgid "You don't have enough permissions for this operation."
+msgstr ""
+
+#: templates/main/404.html:5 templates/main/404.html.py:9
+msgid "Page not found"
+msgstr ""
+
+#: templates/main/404.html:11
+msgid "Sorry, but the requested page could not be found."
+msgstr ""
+
+#: templates/main/about.html:9
+msgid "About this program"
+msgstr ""
+
+#: templates/main/about.html:13
+msgid "Version"
+msgstr ""
+
+#: templates/main/about.html:15
+msgid "Open Source Electronic Document Manager System"
+msgstr ""
+
+#: templates/main/about.html:31
+msgid "Released under the Apache 2.0 License"
+msgstr ""
+
+#: templates/main/about.html:42
+msgid "Copyright &copy; 2011 Roberto Rosario."
+msgstr ""
+
+#: templates/main/base.html:198
+msgid "(Debug mode)"
+msgstr ""
+
+#: templates/main/base.html:219
+msgid "Anonymous"
+msgstr ""
+
+#: templates/main/base.html:221
+msgid "User details"
+msgstr ""
+
+#: templates/main/base.html:237
+msgid "dismiss all notifications"
+msgstr ""
+
+#: templates/main/base.html:237
+msgid "close all"
+msgstr ""
+
+#: templates/main/base.html:238
+msgid "dismiss this notification"
+msgstr ""
+
+#: templates/main/base.html:238
+msgid "close"
+msgstr ""
+
+#: templates/main/base.html:302 templates/main/base.html.py:315
+msgid "Secondary menu"
+msgstr ""
+
+#: templates/main/base.html:333
+#, python-format
+msgid "Actions for %(name)s: %(navigation_object)s"
+msgstr ""
+
+#: templates/main/base.html:335 templates/main/base.html.py:364
+#, python-format
+msgid "Actions for: %(navigation_object)s"
+msgstr ""
+
+#: templates/main/base.html:338
+msgid "Available actions"
+msgstr ""
+
+#: templates/main/base.html:350 templates/main/base.html.py:378
+msgid "Other available actions"
+msgstr ""
+
+#: templates/main/base.html:366
+msgid "Actions"
+msgstr ""
+
+#: templates/main/calculate_form_title.html:7
+#, python-format
+msgid "Details for: %(object)s"
+msgstr ""
+
+#: templates/main/calculate_form_title.html:10
+#, python-format
+msgid "Edit: %(object)s"
+msgstr ""
+
+#: templates/main/calculate_form_title.html:12
+msgid "Create"
+msgstr ""
+
+#: templates/main/generic_confirm.html:6
+#: templates/main/generic_confirm.html:20
+msgid "Confirm"
+msgstr ""
+
+#: templates/main/generic_confirm.html:18
+msgid "Confirm delete"
+msgstr ""
+
+#: templates/main/generic_confirm.html:34
+msgid "question bubble"
+msgstr ""
+
+#: templates/main/generic_confirm.html:41
+#, python-format
+msgid "Are you sure you wish to delete: %(object)s?"
+msgstr ""
+
+#: templates/main/generic_confirm.html:48
+msgid "Yes"
+msgstr ""
+
+#: templates/main/generic_confirm.html:52
+msgid "No"
+msgstr ""
+
+#: templates/main/generic_form_instance.html:50
+#: templates/main/generic_form_subtemplate.html:60
+#: templates/main/generic_multiform_subtemplate.html:42
+msgid "required"
+msgstr ""
+
+#: templates/main/generic_form_subtemplate.html:82
+#: templates/main/generic_multiform_subtemplate.html:64
+msgid "Save"
+msgstr ""
+
+#: templates/main/generic_form_subtemplate.html:82
+#: templates/main/generic_list_subtemplate.html:38
+#: templates/main/generic_multiform_subtemplate.html:64
+msgid "Submit"
+msgstr ""
+
+#: templates/main/generic_form_subtemplate.html:87
+#: templates/main/generic_multiform_subtemplate.html:69
+msgid "Cancel"
+msgstr ""
+
+#: templates/main/generic_list_subtemplate.html:23
+#, python-format
+msgid ""
+"%(title)s (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
+"%(total_pages)s)"
+msgstr ""
+
+#: templates/main/generic_list_subtemplate.html:25
+#, python-format
+msgid "%(title)s (%(total)s)"
+msgstr ""
+
+#: templates/main/generic_list_subtemplate.html:58
+msgid "Identifier"
+msgstr ""
+
+#: templates/main/generic_list_subtemplate.html:120
+msgid "No results"
+msgstr ""
+
+#: templates/main/home.html:23
+msgid "Space separated terms"
+msgstr ""
+
+#: templates/main/home.html:24
+msgid "Search"
+msgstr ""
+
+#: templates/main/home.html:25
+msgid "Advanced search"
+msgstr ""
+
+#: templates/main/login.html:17 templates/main/login.html.py:55
+#: templates/main/login.html:63
+msgid "Login"
+msgstr ""
+
+#: templates/main/login.html:23
+msgid "You are already logged in"
+msgstr ""
+
+#: templates/main/login.html:26
+msgid "Redirecting you to the website entry point in 5 seconds."
+msgstr ""
+
+#: templates/main/login.html:29
+#, python-format
+msgid ""
+"Or click <a href=\"%(LOGIN_REDIRECT_URL)s\">here</a> if redirection doesn't "
+"work."
+msgstr ""
+
+#: templates/main/login.html:40
+msgid "First time login"
+msgstr ""
+
+#: templates/main/login.html:42
+msgid ""
+"You have just finished installing <strong>Mayan EDMS</strong>, "
+"congratulations!"
+msgstr ""
+
+#: templates/main/login.html:43
+msgid "Login using the following credentials:"
+msgstr ""
+
+#: templates/main/login.html:44
+#, python-format
+msgid "Username: <strong>%(account)s</strong>"
+msgstr ""
+
+#: templates/main/login.html:45
+#, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr ""
+
+#: templates/main/login.html:46
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr ""
+
+#: templates/main/login.html:47
+msgid ""
+"Be sure to change the password to increase security and to disable this "
+"message."
+msgstr ""
+
+#: templates/main/password_change_done.html:5
+#: templates/main/password_change_form.html:5
+#: templates/main/password_change_form.html:7
+msgid "Password change"
+msgstr ""
+
+#: templates/main/password_change_done.html:8
+msgid "Your password has been successfully changed."
+msgstr ""
+
+#: templates/pagination/pagination.html:6
+#: templates/pagination/pagination.html:8
+msgid "Previous"
+msgstr ""
+
+#: templates/pagination/pagination.html:26
+#: templates/pagination/pagination.html:28
+msgid "Next"
+msgstr ""
+
+#~ msgid ""
+#~ "Open source, Django based electronic document manager with custom "
+#~ "metadata, indexing, tagging, file serving integration, digital signature "
+#~ "support and OCR capabilities"
+#~ msgstr ""
+#~ "Open source, Django based electronic document manager with custom "
+#~ "metadata, indexing, tagging, file serving integration, digital signature "
+#~ "support and OCR capabilities"
+
+#~ msgid "Logout"
+#~ msgstr "Logout"
+
+#~ msgid "Related actions"
+#~ msgstr "Related actions"
+
+#~ msgid "User"
+#~ msgstr "User"
+
+#~ msgid "Django based open source document management system"
+#~ msgstr "Django based open source document management system"
+
+#~ msgid "(DEBUG)"
+#~ msgstr "(DEBUG)"
+
+#~ msgid "Actions for %(object_name)s: %(navigation_object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Details for %(object_name)s: %(object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Edit %(object_name)s: %(object)s"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "Are you sure you wish to delete %(object_name)s: %(object)s?"
+#~ msgstr "Actions for %(object_name)s: %(navigation_object)s"
+
+#~ msgid "home"
+#~ msgstr "home"
+
+#~ msgid "diagnostics"
+#~ msgstr "diagnostics"
+
+#~ msgid "sentry"
+#~ msgstr "sentry"
+
+#~ msgid ""
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
+#~ msgstr ""
+#~ "Controls whether the search functionality is provided by a sidebar widget "
+#~ "or by a menu entry."
+
+#~ msgid "statistics"
+#~ msgstr "statistics"
+
+#~ msgid "Statistics"
+#~ msgstr "Statistics"

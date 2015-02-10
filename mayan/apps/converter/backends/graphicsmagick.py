@@ -1,25 +1,26 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import subprocess
-import re
 
 from . import ConverterBase
-from ..conf.settings import GM_PATH, GM_SETTINGS
-from ..exceptions import ConvertError, UnknownFileFormat, IdentifyError
-from ..literals import (TRANSFORMATION_RESIZE,
-    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM)
-from ..literals import (DIMENSION_SEPARATOR, DEFAULT_PAGE_NUMBER,
-    DEFAULT_FILE_FORMAT)
+from ..exceptions import ConvertError, IdentifyError, UnknownFileFormat
+from ..literals import (
+    TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
+)
+from ..literals import (
+    DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER, DIMENSION_SEPARATOR
+)
+from ..settings import GM_PATH, GM_SETTINGS
 
-CONVERTER_ERROR_STRING_NO_DECODER = u'No decode delegate for this image format'
-CONVERTER_ERROR_STARTS_WITH = u'starts with'
+CONVERTER_ERROR_STARTS_WITH = 'starts with'
+CONVERTER_ERROR_STRING_NO_DECODER = 'No decode delegate for this image format'
 
 
 class GraphicsMagick(ConverterBase):
     def identify_file(self, input_filepath, arguments=None):
         command = []
         command.append(unicode(GM_PATH))
-        command.append(u'identify')
+        command.append('identify')
         if arguments:
             command.extend(arguments)
         command.append(unicode(input_filepath))
@@ -40,32 +41,32 @@ class GraphicsMagick(ConverterBase):
                         dimensions.append(unicode(transformation['arguments']['width']))
                         if 'height' in transformation['arguments']:
                             dimensions.append(unicode(transformation['arguments']['height']))
-                        arguments.append(u'-resize')
-                        arguments.append(u'%s' % DIMENSION_SEPARATOR.join(dimensions))
+                        arguments.append('-resize')
+                        arguments.append('%s' % DIMENSION_SEPARATOR.join(dimensions))
 
                     elif transformation['transformation'] == TRANSFORMATION_ZOOM:
-                        arguments.append(u'-resize')
-                        arguments.append(u'%d%%' % transformation['arguments']['percent'])
+                        arguments.append('-resize')
+                        arguments.append('%d%%' % transformation['arguments']['percent'])
 
                     elif transformation['transformation'] == TRANSFORMATION_ROTATE:
-                        arguments.append(u'-rotate')
-                        arguments.append(u'%s' % transformation['arguments']['degrees'])
+                        arguments.append('-rotate')
+                        arguments.append('%s' % transformation['arguments']['degrees'])
         except:
             pass
 
-        if file_format.lower() == u'jpeg' or file_format.lower() == u'jpg':
-            arguments.append(u'-quality')
-            arguments.append(u'85')
+        if file_format.lower() == 'jpeg' or file_format.lower() == 'jpg':
+            arguments.append('-quality')
+            arguments.append('85')
 
         # Graphicsmagick page number is 0 base
-        input_arg = u'%s[%d]' % (input_filepath, page - 1)
+        input_arg = '%s[%d]' % (input_filepath, page - 1)
 
         # Specify the file format next to the output filename
-        output_filepath = u'%s:%s' % (file_format, output_filepath)
+        output_filepath = '%s:%s' % (file_format, output_filepath)
 
         command = []
         command.append(unicode(GM_PATH))
-        command.append(u'convert')
+        command.append('convert')
         command.extend(unicode(GM_SETTINGS).split())
         command.append(unicode(input_arg))
         if arguments:
@@ -81,30 +82,6 @@ class GraphicsMagick(ConverterBase):
                 raise UnknownFileFormat
             else:
                 raise ConvertError(error_line)
-
-    def get_format_list(self):
-        """
-        Call GraphicsMagick to parse all of it's supported file formats, and
-        return a list of the names and descriptions
-        """
-        format_regex = re.compile(' *([A-Z0-9]+)[*]? +([A-Z0-9]+) +([rw\-+]+) *(.*).*')
-        formats = []
-        command = []
-        command.append(unicode(GM_PATH))
-        command.append(u'convert')
-        command.append(u'-list')
-        command.append(u'formats')
-        proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-        return_code = proc.wait()
-        if return_code != 0:
-            raise ConvertError(proc.stderr.readline())
-
-        for line in proc.stdout.readlines():
-            fields = format_regex.findall(line)
-            if fields:
-                formats.append(fields[0][0])
-
-        return formats
 
     def get_available_transformations(self):
         return [

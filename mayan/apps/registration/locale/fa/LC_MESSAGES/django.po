@@ -3,14 +3,16 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # Translators:
+# Translators:
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-07-31 19:55-0400\n"
-"PO-Revision-Date: 2013-07-05 10:37+0000\n"
-"Last-Translator: Mohammad Dashtizadeh <mohammad@dashtizadeh.net>\n"
+"POT-Creation-Date: 2015-02-06 16:53-0400\n"
+"PO-Revision-Date: 2014-10-25 08:35+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
 "language/fa/)\n"
 "Language: fa\n"
@@ -49,41 +51,38 @@ msgstr "دیگر اطلاعات:"
 
 #: links.py:12
 msgid "Registration"
-msgstr "عضویت"
-
-#: models.py:21
-msgid "registered"
-msgstr "عضویت‌یافته"
+msgstr "تبت نام"
 
 #: models.py:22
-msgid "registration data"
-msgstr "داده‌های عضویت"
+msgid "Registered"
+msgstr "ثبت شده"
 
-#: models.py:48
+#: models.py:23
+msgid "Registration data"
+msgstr "داداه های ثبت نام"
+
+#: models.py:49
 msgid "No name"
 msgstr "بدون نام"
 
-#: models.py:87
-msgid "registration properties"
-msgstr "خصوصیاتِ عضویت"
+#: models.py:86
+msgid "Registration properties"
+msgstr "خصوصیات ثبت نام"
 
-#: views.py:22
-msgid "Thank you for registering."
-msgstr "از عضویتِ شما سپاس‌گذاریم."
-
-#: views.py:25
+#: views.py:19
 msgid "Your copy is already registered."
-msgstr ""
+msgstr "کپی شما ثبت شده است."
 
-#: views.py:28
-#, python-format
-msgid "Error submiting form; %s."
-msgstr "خطا در ارسال فرم؛ %s."
+#: views.py:26
+msgid "Thank you for registering."
+msgstr "با سپاس از ثبت نام شما"
 
-#: views.py:33
-msgid "registration form"
-msgstr "فرم عضویت"
+#: views.py:32
+msgid "Registration form"
+msgstr "فرم ثبت نام"
 
-#: templatetags/registration_tags.py:16
-msgid "Unregistered"
-msgstr "عضویت‌نیافته"
+#~ msgid "Error submiting form; %s."
+#~ msgstr "Error submiting form; %s."
+
+#~ msgid "Unregistered"
+#~ msgstr "Unregistered"

@@ -1,24 +1,23 @@
-from __future__ import absolute_import
-
 import urlparse
 
 from django.contrib.auth.models import AnonymousUser
 from django.db import models
 from django.utils.http import urlencode
 
-from .conf.settings import RECENT_COUNT
+from .settings import RECENT_COUNT
 
 
 class RecentSearchManager(models.Manager):
-    def add_query_for_user(self, user, query, hits):
-        parsed_query = urlparse.parse_qs(urlencode(dict(query.items())))
+    def add_query_for_user(self, user, query_string, hits):
+        parsed_query = urlparse.parse_qs(urlencode(dict(query_string.items())))
 
         for key, value in parsed_query.items():
             parsed_query[key] = ' '.join(value)
 
-        if 'q=' in query:
+        if 'q' in query_string:
             # Is a simple query
-            if not parsed_query.get('q'):
+
+            if not query_string['q']:
                 # Don't store empty simple searches
                 return
             else:

@@ -1,88 +1,61 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
-from datetime import timedelta
 import logging
-import platform
 import sys
 import traceback
 
 from django.conf import settings
-from django.db.models import Q
-from django.utils.timezone import now
 
-from job_processor.api import process_job
+from documents.models import DocumentVersion
 from lock_manager import Lock, LockError
+from mayan.celery import app
 
 from .api import do_document_ocr
-from .conf.settings import NODE_CONCURRENT_EXECUTION, REPLICATION_DELAY
-from .literals import (QUEUEDOCUMENT_STATE_PENDING,
-    QUEUEDOCUMENT_STATE_PROCESSING, DOCUMENTQUEUE_STATE_ACTIVE,
-    QUEUEDOCUMENT_STATE_ERROR)
-from .models import QueueDocument, DocumentQueue
-
-LOCK_EXPIRE = 60 * 2  # Lock expires in 2 minutes
-# TODO: Tie LOCK_EXPIRATION with hard task timeout
+from .literals import LOCK_EXPIRE
+from .models import DocumentVersionOCRError
 
 logger = logging.getLogger(__name__)
 
 
-def task_process_queue_document(queue_document_id):
-    lock_id = u'task_proc_queue_doc-%d' % queue_document_id
+@app.task(ignore_result=True)
+def task_do_ocr(document_version_pk):
+    lock_id = 'task_do_ocr_doc_version-%d' % document_version_pk
     try:
-        logger.debug('trying to acquire lock: %s' % lock_id)
+        logger.debug('trying to acquire lock: %s', lock_id)
+        # Acquire lock to avoid doing OCR on the same document version more than
+        # once concurrently
         lock = Lock.acquire_lock(lock_id, LOCK_EXPIRE)
-        logger.debug('acquired lock: %s' % lock_id)
-        queue_document = QueueDocument.objects.get(pk=queue_document_id)
-        queue_document.state = QUEUEDOCUMENT_STATE_PROCESSING
-        queue_document.node_name = platform.node()
-        queue_document.save()
+        logger.debug('acquired lock: %s', lock_id)
+        document_version = None
         try:
-            do_document_ocr(queue_document)
-            queue_document.delete()
+            logger.info('Starting document OCR for document version: %d', document_version_pk)
+            document_version = DocumentVersion.objects.get(pk=document_version_pk)
+            do_document_ocr(document_version)
         except Exception as exception:
-            queue_document.state = QUEUEDOCUMENT_STATE_ERROR
+            logger.error('OCR error for document version: %d; %s', document_version_pk, exception)
+            if document_version:
+                entry, created = DocumentVersionOCRError.objects.get_or_create(document_version=document_version)
 
-            if settings.DEBUG:
-                result = []
-                type, value, tb = sys.exc_info()
-                result.append('%s: %s' % (type.__name__, value))
-                result.extend(traceback.format_tb(tb))
-                queue_document.result = '\n'.join(result)
-            else:
-                queue_document.result = exception
+                if settings.DEBUG:
+                    result = []
+                    type, value, tb = sys.exc_info()
+                    result.append('%s: %s' % (type.__name__, value))
+                    result.extend(traceback.format_tb(tb))
+                    entry.result = '\n'.join(result)
+                else:
+                    entry.result = exception
 
-            queue_document.save()
-
-        lock.release()
-    except LockError:
-        logger.debug('unable to obtain lock')
-        pass
-
-
-def task_process_document_queues():
-    logger.debug('executed')
-    # TODO: reset_orphans()
-    q_pending = Q(state=QUEUEDOCUMENT_STATE_PENDING)
-    q_delayed = Q(delay=True)
-    q_delay_interval = Q(datetime_submitted__lt=now() - timedelta(seconds=REPLICATION_DELAY))
-    for document_queue in DocumentQueue.objects.filter(state=DOCUMENTQUEUE_STATE_ACTIVE):
-        current_local_processing_count = QueueDocument.objects.filter(
-            state=QUEUEDOCUMENT_STATE_PROCESSING).filter(
-            node_name=platform.node()).count()
-        if current_local_processing_count < NODE_CONCURRENT_EXECUTION:
-            try:
-                oldest_queued_document_qs = document_queue.queuedocument_set.filter(
-                    (q_pending & ~q_delayed) | (q_pending & q_delayed & q_delay_interval))
-
-                if oldest_queued_document_qs:
-                    oldest_queued_document = oldest_queued_document_qs.order_by('datetime_submitted')[0]
-                    process_job(task_process_queue_document, oldest_queued_document.pk)
-            except Exception as exception:
-                logger.error('unhandled exception: %s' % exception)
-            finally:
-                # Don't process anymore from this queryset, might be stale
-                break
+                entry.save()
         else:
-            logger.debug('already processing maximum')
-    else:
-        logger.debug('nothing to process')
+            logger.info('OCR for document: %d ended', document_version_pk)
+            try:
+                entry = DocumentVersionOCRError.objects.get(document_version=document_version)
+            except DocumentVersionOCRError.DoesNotExist:
+                pass
+            else:
+                entry.delete()
+        finally:
+            lock.release()
+    except LockError:
+        logger.debug('unable to obtain lock: %s' % lock_id)
+        pass

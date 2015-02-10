@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import os
 
@@ -6,9 +6,8 @@ from django.conf import settings
 from django.core.files.base import File
 from django.test import TestCase
 
-from documents.literals import VERSION_UPDATE_MAJOR, RELEASE_LEVEL_FINAL
 from documents.models import Document, DocumentType
-from django_gpg.api import SIGNATURE_STATE_VALID
+from django_gpg.literals import SIGNATURE_STATE_VALID
 from django_gpg.runtime import gpg
 
 from .models import DocumentVersionSignature
@@ -31,7 +30,7 @@ class DocumentTestCase(TestCase):
         self.document.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file=File(file_object, name='mayan_11_1.pdf'))
+            self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf'))
 
         with open(TEST_KEY_FILE) as file_object:
             gpg.import_key(file_object.read())
@@ -43,12 +42,9 @@ class DocumentTestCase(TestCase):
         with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
             new_version_data = {
                 'comment': 'test comment 1',
-                'version_update': VERSION_UPDATE_MAJOR,
-                'release_level': RELEASE_LEVEL_FINAL,
-                'serial': 0,
             }
 
-            self.document.new_version(file=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
+            self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
 
         self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document), False)
         self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document).status, SIGNATURE_STATE_VALID)
@@ -56,12 +52,9 @@ class DocumentTestCase(TestCase):
     def test_detached_signatures(self):
         new_version_data = {
             'comment': 'test comment 2',
-            'version_update': VERSION_UPDATE_MAJOR,
-            'release_level': RELEASE_LEVEL_FINAL,
-            'serial': 0,
         }
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file=File(file_object), **new_version_data)
+            self.document.new_version(file_object=File(file_object), **new_version_data)
 
         # GPGVerificationError
         self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document), None)

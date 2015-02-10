@@ -1,13 +1,14 @@
-from __future__ import absolute_import
+from __future__ import unicode_literals
 
 import re
 
 from django.http import HttpResponseRedirect
 from django.conf import settings
+from django.core.urlresolvers import reverse
 
-from ..conf.settings import ALLOW_ANONYMOUS_ACCESS
+from ..settings import ALLOW_ANONYMOUS_ACCESS
 
-EXEMPT_URLS = [re.compile(settings.LOGIN_URL.lstrip('/'))]
+EXEMPT_URLS = [re.compile(reverse(settings.LOGIN_URL).lstrip('/'))]
 if hasattr(settings, 'LOGIN_EXEMPT_URLS'):
     EXEMPT_URLS += [re.compile(expr) for expr in settings.LOGIN_EXEMPT_URLS]
 
@@ -34,4 +35,4 @@ class LoginRequiredMiddleware:
             if not request.user.is_authenticated():
                 path = request.path_info.lstrip('/')
                 if not any(m.match(path) for m in EXEMPT_URLS):
-                    return HttpResponseRedirect(settings.LOGIN_URL)
+                    return HttpResponseRedirect(reverse(settings.LOGIN_URL))

@@ -1,4 +1,4 @@
-from __future__ import absolute_import
+from __future__ import absolute_import, unicode_literals
 
 import logging
 from json import loads
@@ -7,8 +7,8 @@ from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist, PermissionDenied
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, Http404
-from django.shortcuts import render_to_response, get_object_or_404
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
@@ -18,19 +18,21 @@ from common.widgets import two_state_template
 from permissions.models import Permission
 
 from .api import get_class_permissions_for
-from .classes import (AccessHolder, AccessObject, AccessObjectClass,
-    ClassAccessHolder)
-from .forms import HolderSelectionForm, ClassHolderSelectionForm
+from .classes import (
+    AccessHolder, AccessObject, AccessObjectClass, ClassAccessHolder
+)
+from .forms import ClassHolderSelectionForm, HolderSelectionForm
 from .models import AccessEntry, DefaultAccessEntry
-from .permissions import (ACLS_EDIT_ACL, ACLS_VIEW_ACL,
-    ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL)
+from .permissions import (
+    ACLS_EDIT_ACL, ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL, ACLS_VIEW_ACL
+)
 from .widgets import object_w_content_type_icon
 
 logger = logging.getLogger(__name__)
 
 
 def _permission_titles(permission_list):
-    return u', '.join([unicode(permission) for permission in permission_list])
+    return ', '.join([unicode(permission) for permission in permission_list])
 
 
 def acl_list_for(request, obj, extra_context=None):
@@ -39,14 +41,14 @@ def acl_list_for(request, obj, extra_context=None):
     except PermissionDenied:
         AccessEntry.objects.check_access(ACLS_VIEW_ACL, request.user, obj)
 
-    logger.debug('obj: %s' % obj)
+    logger.debug('obj: %s', obj)
 
     context = {
         'object_list': AccessEntry.objects.get_holders_for(obj),
-        'title': _(u'access control lists for: %s' % obj),
+        'title': _('Access control lists for: %s' % obj),
         'extra_columns': [
-            {'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
-            {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object, db_only=True)))},
+            {'name': _('Holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            {'name': _('Permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object, db_only=True)))},
         ],
         'hide_object': True,
         'access_object': AccessObject.encapsulate(obj),
@@ -60,8 +62,8 @@ def acl_list_for(request, obj, extra_context=None):
     if extra_context:
         context.update(extra_context)
 
-    return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_list.html', context,
+                              context_instance=RequestContext(request))
 
 
 def acl_list(request, app_label, model_name, object_id):
@@ -91,19 +93,19 @@ def acl_detail_for(request, actor, obj):
     # TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
         {
-            'name': u'generic_list_subtemplate.html',
+            'name': 'main/generic_list_subtemplate.html',
             'context': {
-                'title': _(u'permissions available to: %(actor)s for %(obj)s' % {
+                'title': _('Permissions available to: %(actor)s for %(obj)s' % {
                     'actor': actor,
                     'obj': obj
                 }
                 ),
                 'object_list': permission_list,
                 'extra_columns': [
-                    {'name': _(u'namespace'), 'attribute': 'namespace'},
-                    {'name': _(u'label'), 'attribute': 'label'},
+                    {'name': _('Namespace'), 'attribute': 'namespace'},
+                    {'name': _('Label'), 'attribute': 'label'},
                     {
-                        'name': _(u'has permission'),
+                        'name': _('Has permission'),
                         'attribute': encapsulate(lambda permission: two_state_template(AccessEntry.objects.has_access(permission, actor, obj, db_only=True)))
                     },
                 ],
@@ -115,7 +117,6 @@ def acl_detail_for(request, actor, obj):
     context = {
         'object': obj.source_object,
         'subtemplates_list': subtemplates_list,
-        'multi_select_as_buttons': True,
         'multi_select_item_properties': {
             'permission_pk': lambda x: x.pk,
             'holder_gid': lambda x: actor.gid,
@@ -128,18 +129,15 @@ def acl_detail_for(request, actor, obj):
         ],
     }
 
-    return render_to_response(
-        'generic_detail.html',
-        context,
-        context_instance=RequestContext(request)
-    )
+    return render_to_response('main/generic_detail.html', context,
+                              context_instance=RequestContext(request))
 
 
 def acl_grant(request):
     items_property_list = loads(request.GET.get('items_property_list', []))
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     items = {}
     title_suffix = []
@@ -180,27 +178,27 @@ def acl_grant(request):
 
     for requester, obj_ps in items.items():
         for obj, ps in obj_ps.items():
-            title_suffix.append(_(u', ').join([u'"%s"' % unicode(p) for p in ps]))
-            title_suffix.append(_(u' for %s') % obj)
-        title_suffix.append(_(u' to %s') % requester)
+            title_suffix.append(_(', ').join(['"%s"' % unicode(p) for p in ps]))
+            title_suffix.append(_(' for %s') % obj)
+        title_suffix.append(_(' to %s') % requester)
 
     if len(items_property_list) == 1:
-        title_prefix = _(u'Are you sure you wish to grant the permission %(title_suffix)s?')
+        title_prefix = _('Are you sure you wish to grant the permission %(title_suffix)s?')
     else:
-        title_prefix = _(u'Are you sure you wish to grant the permissions %(title_suffix)s?')
+        title_prefix = _('Are you sure you wish to grant the permissions %(title_suffix)s?')
 
     if request.method == 'POST':
         for requester, object_permissions in items.items():
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
                     if AccessEntry.objects.grant(permission, requester.source_object, obj.source_object):
-                        messages.success(request, _(u'Permission "%(permission)s" granted to %(actor)s for %(object)s.') % {
+                        messages.success(request, _('Permission "%(permission)s" granted to %(actor)s for %(object)s.') % {
                             'permission': permission,
                             'actor': requester,
                             'object': obj
                         })
                     else:
-                        messages.warning(request, _(u'%(actor)s, already had the permission "%(permission)s" granted for %(object)s.') % {
+                        messages.warning(request, _('%(actor)s, already had the permission "%(permission)s" granted for %(object)s.') % {
                             'actor': requester,
                             'permission': permission,
                             'object': obj,
@@ -209,30 +207,28 @@ def acl_grant(request):
         return HttpResponseRedirect(next)
 
     context = {
-        'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'key_add.png',
     }
 
     context['title'] = title_prefix % {
-        'title_suffix': u''.join(title_suffix),
+        'title_suffix': ''.join(title_suffix),
     }
 
-    logger.debug('navigation_object_count: %d' % navigation_object_count)
-    logger.debug('navigation_object: %s' % navigation_object)
+    logger.debug('navigation_object_count: %d', navigation_object_count)
+    logger.debug('navigation_object: %s', navigation_object)
     if navigation_object_count == 1:
         context['object'] = navigation_object.source_object
 
-    return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_confirm.html', context,
+                              context_instance=RequestContext(request))
 
 
 def acl_revoke(request):
     items_property_list = loads(request.GET.get('items_property_list', []))
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     items = {}
     title_suffix = []
@@ -273,27 +269,27 @@ def acl_revoke(request):
 
     for requester, obj_ps in items.items():
         for obj, ps in obj_ps.items():
-            title_suffix.append(_(u', ').join([u'"%s"' % unicode(p) for p in ps]))
-            title_suffix.append(_(u' for %s') % obj)
-        title_suffix.append(_(u' from %s') % requester)
+            title_suffix.append(_(', ').join(['"%s"' % unicode(p) for p in ps]))
+            title_suffix.append(_(' for %s') % obj)
+        title_suffix.append(_(' from %s') % requester)
 
     if len(items_property_list) == 1:
-        title_prefix = _(u'Are you sure you wish to revoke the permission %(title_suffix)s?')
+        title_prefix = _('Are you sure you wish to revoke the permission %(title_suffix)s?')
     else:
-        title_prefix = _(u'Are you sure you wish to revoke the permissions %(title_suffix)s?')
+        title_prefix = _('Are you sure you wish to revoke the permissions %(title_suffix)s?')
 
     if request.method == 'POST':
         for requester, object_permissions in items.items():
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
                     if AccessEntry.objects.revoke(permission, requester.source_object, obj.source_object):
-                        messages.success(request, _(u'Permission "%(permission)s" revoked of %(actor)s for %(object)s.') % {
+                        messages.success(request, _('Permission "%(permission)s" revoked of %(actor)s for %(object)s.') % {
                             'permission': permission,
                             'actor': requester,
                             'object': obj
                         })
                     else:
-                        messages.warning(request, _(u'%(actor)s, didn\'t had the permission "%(permission)s" for %(object)s.') % {
+                        messages.warning(request, _('%(actor)s, didn\'t had the permission "%(permission)s" for %(object)s.') % {
                             'actor': requester,
                             'permission': permission,
                             'object': obj,
@@ -302,23 +298,21 @@ def acl_revoke(request):
         return HttpResponseRedirect(next)
 
     context = {
-        'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'key_delete.png',
     }
 
     context['title'] = title_prefix % {
-        'title_suffix': u''.join(title_suffix),
+        'title_suffix': ''.join(title_suffix),
     }
 
-    logger.debug('navigation_object_count: %d' % navigation_object_count)
-    logger.debug('navigation_object: %s' % navigation_object)
+    logger.debug('navigation_object_count: %d', navigation_object_count)
+    logger.debug('navigation_object: %s', navigation_object)
     if navigation_object_count == 1:
         context['object'] = navigation_object.source_object
 
-    return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_confirm.html', context,
+                              context_instance=RequestContext(request))
 
 
 def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None):
@@ -334,11 +328,11 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
                 access_object = AccessObject.encapsulate(obj)
                 access_holder = AccessHolder.get(form.cleaned_data['holder_gid'])
 
-                query_string = {u'navigation_object': navigation_object}
+                query_string = {'navigation_object': navigation_object}
 
                 return HttpResponseRedirect(
-                    u'%s?%s' % (
-                        reverse('acl_detail', args=[access_object.gid, access_holder.gid]),
+                    '%s?%s' % (
+                        reverse('acls:acl_detail', args=[access_object.gid, access_holder.gid]),
                         urlencode(query_string)
                     )
                 )
@@ -349,8 +343,8 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
 
     context = {
         'form': form,
-        'title': _(u'add new holder for: %s') % obj,
-        'submit_label': _(u'Select'),
+        'title': _('Add new holder for: %s') % obj,
+        'submit_label': _('Select'),
         'submit_icon_famfam': 'tick',
         'object': obj,
         'access_object': AccessObject.encapsulate(obj),
@@ -363,8 +357,8 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
     if extra_context:
         context.update(extra_context)
 
-    return render_to_response('generic_form.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_form.html', context,
+                              context_instance=RequestContext(request))
 
 
 def acl_holder_new(request, access_object_gid):
@@ -382,39 +376,39 @@ def acl_setup_valid_classes(request):
 
     context = {
         'object_list': DefaultAccessEntry.get_classes(),
-        'title': _(u'classes'),
+        'title': _('Classes'),
         'extra_columns': [
-            {'name': _(u'class'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            {'name': _('Class'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
         ],
         'hide_object': True,
     }
 
-    return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_list.html', context,
+                              context_instance=RequestContext(request))
 
 
 def acl_class_acl_list(request, access_object_class_gid):
-    logger.debug('access_object_class_gid: %s' % access_object_class_gid)
+    logger.debug('access_object_class_gid: %s', access_object_class_gid)
 
     Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL])
 
     access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
-    logger.debug('access_object_class: %s' % access_object_class)
+    logger.debug('access_object_class: %s', access_object_class)
 
     context = {
         'object_list': DefaultAccessEntry.objects.get_holders_for(access_object_class.source_object),
-        'title': _(u'default access control lists for class: %s') % access_object_class,
+        'title': _('Default access control lists for class: %s') % access_object_class,
         'extra_columns': [
-            {'name': _(u'holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
-            {'name': _(u'permissions'), 'attribute': encapsulate(lambda x: _permission_titles(DefaultAccessEntry.objects.get_holder_permissions_for(access_object_class.source_object, x.source_object)))},
+            {'name': _('Holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            {'name': _('Permissions'), 'attribute': encapsulate(lambda x: _permission_titles(DefaultAccessEntry.objects.get_holder_permissions_for(access_object_class.source_object, x.source_object)))},
         ],
         'hide_object': True,
         'access_object_class': access_object_class,
         'object': access_object_class,
     }
 
-    return render_to_response('generic_list.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_list.html', context,
+                              context_instance=RequestContext(request))
 
 
 def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
@@ -429,19 +423,18 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
     # TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
     subtemplates_list = [
         {
-            'name': u'generic_list_subtemplate.html',
+            'name': 'main/generic_list_subtemplate.html',
             'context': {
-                'title': _(u'permissions available to: %(actor)s for class %(class)s' % {
-                        'actor': actor,
-                        'class': access_object_class
-                    }
-                ),
+                'title': _('Permissions available to: %(actor)s for class %(class)s' % {
+                    'actor': actor,
+                    'class': access_object_class
+                }),
                 'object_list': permission_list,
                 'extra_columns': [
-                    {'name': _(u'namespace'), 'attribute': 'namespace'},
-                    {'name': _(u'label'), 'attribute': 'label'},
+                    {'name': _('Namespace'), 'attribute': 'namespace'},
+                    {'name': _('Label'), 'attribute': 'label'},
                     {
-                        'name': _(u'has permission'),
+                        'name': _('Has permission'),
                         'attribute': encapsulate(lambda x: two_state_template(DefaultAccessEntry.objects.has_access(x, actor.source_object, access_object_class.source_object)))
                     },
                 ],
@@ -450,10 +443,9 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
         },
     ]
 
-    return render_to_response('generic_detail.html', {
+    return render_to_response('main/generic_detail.html', {
         'object': access_object_class,
         'subtemplates_list': subtemplates_list,
-        'multi_select_as_buttons': True,
         'multi_select_item_properties': {
             'permission_pk': lambda x: x.pk,
             'holder_gid': lambda x: actor.gid,
@@ -472,7 +464,7 @@ def acl_class_new_holder_for(request, access_object_class_gid):
             try:
                 access_holder = ClassAccessHolder.get(form.cleaned_data['holder_gid'])
 
-                return HttpResponseRedirect(reverse('acl_class_acl_detail', args=[access_object_class.gid, access_holder.gid]))
+                return HttpResponseRedirect(reverse('acls:acl_class_acl_detail', args=[access_object_class.gid, access_holder.gid]))
             except ObjectDoesNotExist:
                 raise Http404
     else:
@@ -480,22 +472,22 @@ def acl_class_new_holder_for(request, access_object_class_gid):
 
     context = {
         'form': form,
-        'title': _(u'add new holder for class: %s') % unicode(access_object_class),
+        'title': _('Add new holder for class: %s') % unicode(access_object_class),
         'object': access_object_class,
-        'submit_label': _(u'Select'),
+        'submit_label': _('Select'),
         'submit_icon_famfam': 'tick'
     }
 
-    return render_to_response('generic_form.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_form.html', context,
+                              context_instance=RequestContext(request))
 
 
 def acl_class_multiple_grant(request):
     Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
     items_property_list = loads(request.GET.get('items_property_list', []))
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     items = {}
     title_suffix = []
@@ -521,27 +513,27 @@ def acl_class_multiple_grant(request):
 
     for requester, obj_ps in items.items():
         for obj, ps in obj_ps.items():
-            title_suffix.append(_(u', ').join([u'"%s"' % unicode(p) for p in ps]))
-            title_suffix.append(_(u' for %s') % obj)
-        title_suffix.append(_(u' to %s') % requester)
+            title_suffix.append(_(', ').join(['"%s"' % unicode(p) for p in ps]))
+            title_suffix.append(_(' for %s') % obj)
+        title_suffix.append(_(' to %s') % requester)
 
     if len(items_property_list) == 1:
-        title_prefix = _(u'Are you sure you wish to grant the permission %(title_suffix)s?')
+        title_prefix = _('Are you sure you wish to grant the permission %(title_suffix)s?')
     else:
-        title_prefix = _(u'Are you sure you wish to grant the permissions %(title_suffix)s?')
+        title_prefix = _('Are you sure you wish to grant the permissions %(title_suffix)s?')
 
     if request.method == 'POST':
         for requester, object_permissions in items.items():
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
                     if DefaultAccessEntry.objects.grant(permission, requester.source_object, obj.source_object):
-                        messages.success(request, _(u'Permission "%(permission)s" granted to %(actor)s for %(object)s.') % {
+                        messages.success(request, _('Permission "%(permission)s" granted to %(actor)s for %(object)s.') % {
                             'permission': permission,
                             'actor': requester,
                             'object': obj
                         })
                     else:
-                        messages.warning(request, _(u'%(actor)s, already had the permission "%(permission)s" granted for %(object)s.') % {
+                        messages.warning(request, _('%(actor)s, already had the permission "%(permission)s" granted for %(object)s.') % {
                             'actor': requester,
                             'permission': permission,
                             'object': obj,
@@ -550,31 +542,29 @@ def acl_class_multiple_grant(request):
         return HttpResponseRedirect(next)
 
     context = {
-        'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'key_add.png',
     }
 
     context['title'] = title_prefix % {
-        'title_suffix': u''.join(title_suffix),
+        'title_suffix': ''.join(title_suffix),
     }
 
-    logger.debug('navigation_object_count: %d' % navigation_object_count)
-    logger.debug('navigation_object: %s' % navigation_object)
+    logger.debug('navigation_object_count: %d', navigation_object_count)
+    logger.debug('navigation_object: %s', navigation_object)
     if navigation_object_count == 1:
         context['object'] = navigation_object
 
-    return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_confirm.html', context,
+                              context_instance=RequestContext(request))
 
 
 def acl_class_multiple_revoke(request):
     Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
     items_property_list = loads(request.GET.get('items_property_list', []))
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', '/')))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', '/')))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse('main:home'))))
 
     items = {}
     title_suffix = []
@@ -600,27 +590,27 @@ def acl_class_multiple_revoke(request):
 
     for requester, obj_ps in items.items():
         for obj, ps in obj_ps.items():
-            title_suffix.append(_(u', ').join([u'"%s"' % unicode(p) for p in ps]))
-            title_suffix.append(_(u' for %s') % obj)
-        title_suffix.append(_(u' from %s') % requester)
+            title_suffix.append(_(', ').join(['"%s"' % unicode(p) for p in ps]))
+            title_suffix.append(_(' for %s') % obj)
+        title_suffix.append(_(' from %s') % requester)
 
     if len(items_property_list) == 1:
-        title_prefix = _(u'Are you sure you wish to revoke the permission %(title_suffix)s?')
+        title_prefix = _('Are you sure you wish to revoke the permission %(title_suffix)s?')
     else:
-        title_prefix = _(u'Are you sure you wish to revoke the permissions %(title_suffix)s?')
+        title_prefix = _('Are you sure you wish to revoke the permissions %(title_suffix)s?')
 
     if request.method == 'POST':
         for requester, object_permissions in items.items():
             for obj, permissions in object_permissions.items():
                 for permission in permissions:
                     if DefaultAccessEntry.objects.revoke(permission, requester.source_object, obj.source_object):
-                        messages.success(request, _(u'Permission "%(permission)s" revoked of %(actor)s for %(object)s.') % {
+                        messages.success(request, _('Permission "%(permission)s" revoked of %(actor)s for %(object)s.') % {
                             'permission': permission,
                             'actor': requester,
                             'object': obj
                         })
                     else:
-                        messages.warning(request, _(u'%(actor)s, didn\'t had the permission "%(permission)s" for %(object)s.') % {
+                        messages.warning(request, _('%(actor)s, didn\'t had the permission "%(permission)s" for %(object)s.') % {
                             'actor': requester,
                             'permission': permission,
                             'object': obj,
@@ -629,20 +619,18 @@ def acl_class_multiple_revoke(request):
         return HttpResponseRedirect(next)
 
     context = {
-        'delete_view': True,
         'previous': previous,
         'next': next,
-        'form_icon': u'key_delete.png',
     }
 
     context['title'] = title_prefix % {
-        'title_suffix': u''.join(title_suffix),
+        'title_suffix': ''.join(title_suffix),
     }
 
-    logger.debug('navigation_object_count: %d' % navigation_object_count)
-    logger.debug('navigation_object: %s' % navigation_object)
+    logger.debug('navigation_object_count: %d', navigation_object_count)
+    logger.debug('navigation_object: %s', navigation_object)
     if navigation_object_count == 1:
         context['object'] = navigation_object
 
-    return render_to_response('generic_confirm.html', context,
-        context_instance=RequestContext(request))
+    return render_to_response('main/generic_confirm.html', context,
+                              context_instance=RequestContext(request))

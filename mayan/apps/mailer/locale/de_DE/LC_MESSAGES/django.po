@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+# Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mayan EDMS\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-02-06 16:52-0400\n"
+"PO-Revision-Date: 2015-02-06 23:56+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-edms/language/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: forms.py:23
+msgid "Email address"
+msgstr "E-Mailadresse"
+
+#: forms.py:24
+msgid "Subject"
+msgstr "Betreff"
+
+#: forms.py:25
+msgid "Body"
+msgstr "Nachrichtenteil"
+
+#: links.py:7
+msgid "Email link"
+msgstr "Link"
+
+#: links.py:8
+msgid "Email document"
+msgstr "E-Mail Dokument"
+
+#: permissions.py:7
+msgid "Mailing"
+msgstr "E-Mail"
+
+#: permissions.py:9
+msgid "Send document link via email"
+msgstr "Dokument per E-Mail senden"
+
+#: permissions.py:10
+msgid "Send document via email"
+msgstr "Dokument per E-Mail senden"
+
+#: settings.py:11
+msgid "Link for document: {{ document }}"
+msgstr "Link für Dokument: {{ document }}"
+
+#: settings.py:11
+msgid "Template for the document link email form subject line."
+msgstr "Vorlage für die Betreffzeile des Formulars für die Dokumentenlinkversendung"
+
+#: settings.py:12
+msgid ""
+"To access this document click on the following link: <a href=\"{{ link }}\">{{ link }}</a><br /><br />\n"
+"\n"
+"--------<br />\n"
+"This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
+msgstr "Um auf dieses Dokument zuzugreifen kicken Sie bitte auf den folgenden Link: <a href=\"{{ link }}\">{{ link }}</a><br /><br />\n\n--------<br />\nDiese E-Mail wurde verschickt aus Mayan EDMS (http://www.mayan-edms.com)"
+
+#: settings.py:12
+msgid "Template for the document link email form body line."
+msgstr "Vorlage für den Nachrichtenteil des Formulars für die Dokumentenlinkversendung"
+
+#: settings.py:13
+msgid "Document: {{ document }}"
+msgstr "Dokument: {{ document }}"
+
+#: settings.py:13
+msgid "Template for the document email form subject line."
+msgstr "Vorlage für die Betreffzeile des Formulars für die Dokumentenversendung"
+
+#: settings.py:14
+msgid ""
+"Attached to this email is the document: {{ document }}<br /><br />\n"
+"\n"
+"--------<br />\n"
+"This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
+msgstr "Diese E-Mail enthält als Anlage das Dokument: {{ document }}<br /><br />\n\n--------<br />\nDiese E-Mail wurde verschickt aus Mayan EDMS (http://www.mayan-edms.com)"
+
+#: settings.py:14
+msgid "Template for the document email form body line."
+msgstr "Vorlage für den Nachrichtenteil des Formulars für die Dokumentenversendung"
+
+#: views.py:41
+msgid "Must provide at least one document."
+msgstr "Es muss mindestens ein Dokument angegeben werden."
+
+#: views.py:70
+msgid "Successfully queued for delivery via email."
+msgstr "Erfolgreich eingereiht für den Versand per E-Mail"
+
+#: views.py:78
+msgid "Send"
+msgstr "Senden"
+
+#: views.py:84
+#, python-format
+msgid "Email document: %s"
+msgstr "E-Mail Dokument: %s"
+
+#: views.py:86
+#, python-format
+msgid "Email link for document: %s"
+msgstr "E-Mail Link für Dokument %s"
+
+#: views.py:89
+#, python-format
+msgid "Email documents: %s"
+msgstr "E-Mail Dokumente: %s"
+
+#: views.py:91
+#, python-format
+msgid "Email links for documents: %s"
+msgstr "Links für Dokumente %s"
