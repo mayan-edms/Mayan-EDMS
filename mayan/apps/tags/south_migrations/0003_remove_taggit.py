@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from south.db import db
 from south.v2 import DataMigration
-from django.db import models
+from django.db import models, transaction
+from django.db.utils import ProgrammingError
 
 
 class Migration(DataMigration):
@@ -12,13 +13,14 @@ class Migration(DataMigration):
         # and orm['appname.ModelName'] for models in other applications.
 
         try:
-            from orm.TaggitModel import Tag as TaggitModel
-        except ImportError:
+            with transaction.atomic():
+                for tag in orm['taggit.tag'].objects.all():
+                    color = orm.TagProperties.objects.get(tag=tag).color
+                    orm.Tag.objects.create(label=tag.name, color=color)
+        except ProgrammingError:
+            # Ignore this error because it is expected when migrating a new
+            # install, in this situation the django-taggit table never existed
             pass
-        else:
-            for tag in TaggitModel.objects.all():
-                color = orm.TagProperties.objects.get(tag=tag).color
-                orm.Tag.objects.create(label=tag.name, color=color)
 
     def backwards(self, orm):
         "Write your backwards methods here."
@@ -36,6 +38,12 @@ class Migration(DataMigration):
             'Meta': {'ordering': "['name']", 'object_name': 'DocumentType'},
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '32'})
+        },
+        u'taggit.tag': {
+            'Meta': {'object_name': 'Tag'},
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '100'}),
+            'slug': ('django.db.models.fields.SlugField', [], {'unique': 'True', 'max_length': '100'})
         },
         u'tags.tag': {
             'Meta': {'object_name': 'Tag'},
