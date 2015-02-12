@@ -280,7 +280,10 @@ The upgrade procedure is now complete.
 Backward incompatible changes
 =============================
 
-* None
+* You will have to redefine your document sources due to the new extended models
+  for this app.
+* Check your configurations of smart links and indexes to use the newly provided
+  arguments.
 
 
 Bugs fixed or issues closed
