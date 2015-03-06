@@ -4,7 +4,7 @@
 Mayan EDMS documentation
 ========================
 
-.. rubric:: `Open source`_ `document management system`_.
+.. rubric:: `Open source`_ `electronic document management system`_.
 
 Getting help
 ============
@@ -55,6 +55,6 @@ Credits
 .. _Gmane: http://news.gmane.org/gmane.comp.python.django.mayan-edms
 .. _Open source: http://en.wikipedia.org/wiki/Open_source
 .. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/
-.. _document management system: https://en.wikipedia.org/wiki/Document_management_system
+.. _electronic document management system: https://en.wikipedia.org/wiki/Document_management_system
 .. _post a question: http://groups.google.com/group/mayan-edms
 .. _ticket tracker: https://github.com/mayan-edms/mayan-edms/issues

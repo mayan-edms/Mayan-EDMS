@@ -10,9 +10,7 @@
 Description
 -----------
 
-Free Open Source, Django based document management system with custom metadata
-indexing, file serving integration, tagging, digital signature verification,
-text parsing and OCR capabilities.
+Free Open Source Electronic Document Management System.
 
 `Website`_
 
