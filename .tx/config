@@ -139,12 +139,6 @@ source_lang = en
 source_file = mayan/apps/project_tools/locale/en/LC_MESSAGES/django.po
 type = PO
 
-[mayan-edms.apps-registration]
-file_filter = mayan/apps/registration/locale/<lang>/LC_MESSAGES/django.po
-source_lang = en
-source_file = mayan/apps/registration/locale/en/LC_MESSAGES/django.po
-type = PO
-
 [mayan-edms.apps-rest_api]
 file_filter = mayan/apps/rest_api/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en

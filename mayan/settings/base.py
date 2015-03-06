@@ -90,7 +90,6 @@ INSTALLED_APPS = (
     'main',
     'metadata',
     'ocr',
-    'registration',
     'rest_api',
     'sources',
     'statistics',

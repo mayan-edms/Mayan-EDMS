@@ -1,2 +1,0 @@
-class AlreadyRegistered(Exception):
-    pass
