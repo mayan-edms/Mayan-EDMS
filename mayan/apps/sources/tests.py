@@ -19,6 +19,7 @@ from documents.tests import (
     TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH
 )
 
+from .literals import SOURCE_UNCOMPRESS_CHOICE_N
 from .models import WatchFolderSource
 
 
@@ -41,7 +42,7 @@ class UploadDocumentTestCase(TestCase):
         temporary_directory = tempfile.mkdtemp()
         shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, temporary_directory)
 
-        watch_folder = WatchFolderSource.objects.create(document_type=self.document_type, folder_path=temporary_directory, uncompress=False)
+        watch_folder = WatchFolderSource.objects.create(document_type=self.document_type, folder_path=temporary_directory, uncompress=SOURCE_UNCOMPRESS_CHOICE_N)
         watch_folder.check_source()
 
         self.assertEqual(Document.objects.count(), 1)
