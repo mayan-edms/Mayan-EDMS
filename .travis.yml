@@ -4,7 +4,7 @@ python:
   - 2.7
 env:
   global:
-   - TEST_APPS="document_indexing documents dynamic_search lock_manager document_signatures folders ocr tags"
+   - TEST_APPS="document_indexing documents dynamic_search lock_manager document_signatures folders ocr sources tags"
   matrix:
    - DB=mysql
    - DB=postgres
