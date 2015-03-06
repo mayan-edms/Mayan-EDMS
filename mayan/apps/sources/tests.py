@@ -1,5 +1,8 @@
 from __future__ import unicode_literals
 
+import shutil
+import tempfile
+
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.test.client import Client
@@ -11,10 +14,12 @@ from sources.models import WebFormSource
 
 from documents.tests import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_SMALL_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH,
-    TEST_SIGNED_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
-    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE
+    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
+    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE,
+    TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH
 )
+
+from .models import WatchFolderSource
 
 
 class UploadDocumentTestCase(TestCase):
@@ -23,9 +28,35 @@ class UploadDocumentTestCase(TestCase):
     """
 
     def setUp(self):
-        self.document_type = DocumentType.objects.create(name='test doc type')
+        self.document_type = DocumentType.objects.create(name=TEST_DOCUMENT_TYPE)
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
         self.client = Client()
+
+    def test_issue_gh_163(self):
+        """
+        Non-ASCII chars in document name failing in upload via watch folder #163
+        https://github.com/mayan-edms/mayan-edms/issues/163
+        """
+
+        temporary_directory = tempfile.mkdtemp()
+        shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, temporary_directory)
+
+        watch_folder = WatchFolderSource.objects.create(document_type=self.document_type, folder_path=temporary_directory, uncompress=False)
+        watch_folder.check_source()
+
+        self.assertEqual(Document.objects.count(), 1)
+
+        document = Document.objects.first()
+
+        self.failUnlessEqual(document.exists(), True)
+        self.failUnlessEqual(document.size, 17436)
+
+        self.failUnlessEqual(document.file_mimetype, 'image/png')
+        self.failUnlessEqual(document.file_mime_encoding, 'binary')
+        self.failUnlessEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
+        self.failUnlessEqual(document.page_count, 1)
+
+        shutil.rmtree(temporary_directory)
 
     def test_upload_a_document(self):
         # Login the admin user
