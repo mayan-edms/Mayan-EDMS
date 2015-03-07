@@ -8,7 +8,6 @@ import time
 
 from git import Repo
 import psutil
-import requests
 import sh
 
 try:
@@ -28,17 +27,14 @@ from solo.models import SingletonModel
 
 from common.utils import pretty_size
 from mayan import __version__ as mayan_version
-from lock_manager import Lock, LockError
 from ocr.settings import PDFTOTEXT_PATH, TESSERACT_PATH, UNPAPER_PATH
 
 from .classes import PIPNotFound, Property, PropertyNamespace, VirtualEnv
-from .literals import FORM_KEY, FORM_RECEIVER_FIELD, FORM_SUBMIT_URL, TIMEOUT
 
 
 class Installation(SingletonModel):
     _properties = SortedDict()
 
-    is_first_run = models.BooleanField(default=True)
     uuid = models.CharField(max_length=48, blank=True, default=lambda: unicode(uuid.uuid4()))
 
     def add_property(self, property_instance):
@@ -155,24 +151,6 @@ class Installation(SingletonModel):
             return self._properties[name].value
         except KeyError:
             raise AttributeError
-
-    def submit(self):
-        try:
-            lock = Lock.acquire_lock('upload_stats')
-        except LockError:
-            pass
-        else:
-            self.set_properties()
-
-            try:
-                requests.post(FORM_SUBMIT_URL, data={'formkey': FORM_KEY, FORM_RECEIVER_FIELD: Property.get_reportable(as_json=True)}, timeout=TIMEOUT)
-            except Exception:
-                raise
-            else:
-                self.is_first_run = False
-                self.save()
-            finally:
-                lock.release()
 
     class Meta:
         verbose_name = verbose_name_plural = _('Installation details')
