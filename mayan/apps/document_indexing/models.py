@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
@@ -68,7 +68,10 @@ class IndexTemplateNode(MPTTModel):
     link_documents = models.BooleanField(default=False, verbose_name=_('Link documents'), help_text=_('Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
 
     def __unicode__(self):
-        return self.expression
+        if self.is_root_node():
+            return ugettext('<%s Root>') % self.index
+        else:
+            return self.expression
 
     class Meta:
         verbose_name = _('Index node template')
