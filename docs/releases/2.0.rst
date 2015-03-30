@@ -1,0 +1,75 @@
+=============================
+Mayan EDMS v2.0 release notes
+=============================
+
+Released: September 2015
+
+Welcome to Mayan EDMS v2.0
+
+
+What's new in Mayan EDMS v2.0
+=============================
+* Appearance app
+
+
+
+
+Upgrading from a previous version
+=================================
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py migrate
+
+
+During the migration several messages of stale content types can occur:
+
+.. code-block:: bash
+
+    The following content types are stale and need to be deleted:
+
+        XX | XX
+
+    Any objects related to these content types by a foreign key will also
+    be deleted. Are you sure you want to delete these content types?
+    If you're unsure, answer 'no'.
+
+        Type 'yes' to continue, or 'no' to cancel:
+
+
+You can safely answer "yes".
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+Remove unused dependencies::
+
+    $ pip uninstall XXXXX
+
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+
+Bugs fixed or issues closed
+===========================
+
+* `issue #158 <https://github.com/mayan-edms/mayan-edms/issues/158>`_ Plural form not matching singular form in ocr app  bug i18n
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/
+
