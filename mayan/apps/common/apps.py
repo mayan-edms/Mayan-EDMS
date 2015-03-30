@@ -29,6 +29,8 @@ from .settings import (
 )
 from .utils import validate_path
 
+logger = logging.getLogger(__name__)
+
 
 def create_superuser_and_anonymous_user(sender, **kwargs):
     """
@@ -41,7 +43,7 @@ def create_superuser_and_anonymous_user(sender, **kwargs):
 
     Create our own admin super user automatically.
     """
-    if kwargs.get('app') == 'common':
+    if kwargs['app_config'].__class__ == CommonApp:
         AutoAdminSingleton.objects.get_or_create()
         AnonymousUserSingleton.objects.get_or_create()
 
@@ -91,8 +93,6 @@ class CommonApp(apps.AppConfig):
     verbose_name = _('Common')
 
     def ready(self):
-        logger = logging.getLogger(__name__)
-
         register_links(['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'common:password_change_view'], [link_current_user_details, link_current_user_edit, link_current_user_locale_profile_details, link_current_user_locale_profile_edit, link_password_change, link_logout], menu_name='secondary_menu')
         register_links(['common:about_view', 'common:license_view'], [link_about, link_license], menu_name='secondary_menu')
 

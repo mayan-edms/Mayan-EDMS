@@ -19,7 +19,7 @@ from .models import CreatorSingleton
 
 
 def create_creator_user(sender, **kwargs):
-    if kwargs.get('app') == 'acls':
+    if kwargs['app_config'].__class__ == ACLsApp:
         CreatorSingleton.objects.get_or_create()
 
 
