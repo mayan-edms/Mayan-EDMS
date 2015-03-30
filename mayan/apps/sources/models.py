@@ -210,7 +210,7 @@ class IntervalBaseModel(OutOfProcessSource):
 
 class EmailBaseModel(IntervalBaseModel):
     host = models.CharField(max_length=128, verbose_name=_('Host'))
-    ssl = models.BooleanField(verbose_name=_('SSL'))
+    ssl = models.BooleanField(default=True, verbose_name=_('SSL'))
     port = models.PositiveIntegerField(blank=True, null=True, verbose_name=_('Port'), help_text=_('Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL.'))
     username = models.CharField(max_length=96, verbose_name=_('Username'))
     password = models.CharField(max_length=96, verbose_name=_('Password'))
@@ -384,7 +384,7 @@ class SourceTransformation(models.Model):
     content_object = generic.GenericForeignKey('content_type', 'object_id')
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_('Order'), db_index=True)
     transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: %s') % '{\'degrees\':90}', validators=[ArgumentsValidator()])
+    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[ArgumentsValidator()])
 
     objects = models.Manager()
     transformations = SourceTransformationManager()

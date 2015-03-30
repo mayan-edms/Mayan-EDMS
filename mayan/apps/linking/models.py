@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext_lazy as _
-from django.utils.translation import ugettext
 
 from documents.models import Document, DocumentType
 
@@ -14,7 +13,7 @@ from .managers import SmartLinkManager
 
 class SmartLink(models.Model):
     title = models.CharField(max_length=96, verbose_name=_('Title'))
-    dynamic_title = models.CharField(blank=True, max_length=96, verbose_name=_('Dynamic title'), help_text=ugettext('This expression will be evaluated against the current selected document.'))
+    dynamic_title = models.CharField(blank=True, max_length=96, verbose_name=_('Dynamic title'), help_text=_('This expression will be evaluated against the current selected document.'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     document_types = models.ManyToManyField(DocumentType, verbose_name=_('Document types'))
 
@@ -65,7 +64,7 @@ class SmartLinkCondition(models.Model):
     inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_('The inclusion is ignored for the first item.'))
     foreign_document_data = models.CharField(max_length=128, verbose_name=_('Foreign document attribute'), help_text=_('This represents the metadata of all other documents.'))
     operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
-    expression = models.TextField(verbose_name=_('Expression'), help_text=ugettext('This expression will be evaluated against the current document.'))
+    expression = models.TextField(verbose_name=_('Expression'), help_text=_('This expression will be evaluated against the current document.'))
     negated = models.BooleanField(default=False, verbose_name=_('Negated'), help_text=_('Inverts the logic of the operator.'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 

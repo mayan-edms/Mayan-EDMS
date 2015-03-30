@@ -76,11 +76,13 @@ class WebFormUploadForm(UploadBaseForm):
 
 class WebFormSetupForm(forms.ModelForm):
     class Meta:
+        fields = ('title', 'enabled', 'uncompress')
         model = WebFormSource
 
 
 class StagingFolderSetupForm(forms.ModelForm):
     class Meta:
+        fields = ('title', 'enabled', 'folder_path', 'preview_width', 'preview_height', 'uncompress', 'delete_after_upload')
         model = StagingFolderSource
 
 
@@ -93,21 +95,25 @@ class EmailSetupBaseForm(forms.ModelForm):
 
 class POP3EmailSetupForm(EmailSetupBaseForm):
     class Meta(EmailSetupBaseForm.Meta):
+        fields = ('title', 'enabled', 'interval', 'document_type', 'uncompress', 'host', 'ssl', 'port', 'username', 'password', 'timeout')
         model = POP3Email
 
 
 class IMAPEmailSetupForm(EmailSetupBaseForm):
     class Meta(EmailSetupBaseForm.Meta):
+        fields = ('title', 'enabled', 'interval', 'document_type', 'uncompress', 'host', 'ssl', 'port', 'username', 'password', 'mailbox')
         model = IMAPEmail
 
 
 class WatchFolderSetupForm(forms.ModelForm):
     class Meta:
+        fields = ('title', 'enabled', 'interval', 'document_type', 'uncompress', 'folder_path')
         model = WatchFolderSource
 
 
 class SourceTransformationForm(forms.ModelForm):
     class Meta:
+        fields = ('order', 'transformation', 'arguments')
         model = SourceTransformation
 
     def __init__(self, *args, **kwargs):

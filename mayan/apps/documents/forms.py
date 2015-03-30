@@ -20,6 +20,7 @@ from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
 # Document page forms
 class DocumentPageTransformationForm(forms.ModelForm):
     class Meta:
+        fields = ('order', 'transformation', 'arguments')
         model = DocumentPageTransformation
 
     def __init__(self, *args, **kwargs):
@@ -29,8 +30,8 @@ class DocumentPageTransformationForm(forms.ModelForm):
 
 class DocumentPageForm(DetailForm):
     class Meta:
-        model = DocumentPage
         fields = ()
+        model = DocumentPage
 
     def __init__(self, *args, **kwargs):
         zoom = kwargs.pop('zoom', 100)
@@ -49,8 +50,8 @@ class DocumentPageForm(DetailForm):
 
 class DocumentPageForm_text(DetailForm):
     class Meta:
-        model = DocumentPage
         fields = ('page_label', 'content')
+        model = DocumentPage
 
     content = forms.CharField(
         label=_('Contents'),
@@ -61,8 +62,8 @@ class DocumentPageForm_text(DetailForm):
 
 class DocumentPageForm_edit(forms.ModelForm):
     class Meta:
-        model = DocumentPage
         fields = ('page_label', 'content')
+        model = DocumentPage
 
     def __init__(self, *args, **kwargs):
         super(DocumentPageForm_edit, self).__init__(*args, **kwargs)
@@ -123,8 +124,8 @@ class DocumentPropertiesForm(DetailForm):
     Detail class form to display a document file based properties
     """
     class Meta:
-        model = Document
         fields = ('document_type', 'description', 'language')
+        model = Document
 
 
 class DocumentContentForm(forms.Form):
@@ -172,6 +173,7 @@ class DocumentTypeForm(forms.ModelForm):
     Model class form to create or edit a document type
     """
     class Meta:
+        fields = ('name', 'ocr')
         model = DocumentType
 
 
@@ -180,8 +182,8 @@ class DocumentTypeFilenameForm(forms.ModelForm):
     Model class form to edit a document type filename
     """
     class Meta:
-        model = DocumentTypeFilename
         fields = ('filename', 'enabled')
+        model = DocumentTypeFilename
 
 
 class DocumentTypeFilenameForm_create(forms.ModelForm):
@@ -189,8 +191,8 @@ class DocumentTypeFilenameForm_create(forms.ModelForm):
     Model class form to create a new document type filename
     """
     class Meta:
-        model = DocumentTypeFilename
         fields = ('filename',)
+        model = DocumentTypeFilename
 
 
 class DocumentDownloadForm(forms.Form):

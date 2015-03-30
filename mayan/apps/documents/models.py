@@ -14,8 +14,6 @@ from django.core.exceptions import ValidationError
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from actstream import registry
-
 from acls.utils import apply_default_acls
 from common.settings import TEMPORARY_DIRECTORY
 from converter.api import (
@@ -585,5 +583,3 @@ class RecentDocument(models.Model):
 # Quick hack to break the DocumentPage and DocumentPageTransformation circular dependency
 # Can be remove once the transformations are moved to the converter app
 DocumentPage.add_to_class('get_transformation_list', lambda document_page: DocumentPageTransformation.objects.get_for_document_page_as_list(document_page))
-
-registry.register(Document)

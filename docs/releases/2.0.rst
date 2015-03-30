@@ -55,7 +55,7 @@ Add new static media::
 
 Remove unused dependencies::
 
-    $ pip uninstall XXXXX
+    $ pip uninstall South
 
 
 The upgrade procedure is now complete.

@@ -9,5 +9,5 @@ class CommentForm(forms.ModelForm):
     A standard model form to allow users to post a comment
     """
     class Meta:
-        model = Comment
         fields = ('comment',)
+        model = Comment
