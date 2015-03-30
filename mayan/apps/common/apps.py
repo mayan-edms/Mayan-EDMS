@@ -41,7 +41,7 @@ def create_superuser_and_anonymous_user(sender, **kwargs):
 
     Create our own admin super user automatically.
     """
-    if kwargs['app'] == 'common':
+    if kwargs.get('app') == 'common':
         AutoAdminSingleton.objects.get_or_create()
         AnonymousUserSingleton.objects.get_or_create()
 

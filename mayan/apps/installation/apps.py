@@ -16,7 +16,7 @@ from .models import Installation
 
 
 def create_installation_instance(sender, **kwargs):
-    if kwargs['app'] == 'installation':
+    if kwargs.get('app') == 'installation':
         Installation.objects.get_or_create()
 
 
