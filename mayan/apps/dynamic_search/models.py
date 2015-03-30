@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import smart_str, smart_unicode
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from .managers import RecentSearchManager
 
