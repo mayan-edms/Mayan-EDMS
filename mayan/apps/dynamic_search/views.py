@@ -56,7 +56,7 @@ def search(request, advanced=False):
     if advanced:
         form = AdvancedSearchForm(data=request.GET, search_model=document_search)
         return render_to_response(
-            'main/generic_form.html',
+            'appearance/generic_form.html',
             {
                 'form': form,
                 'title': _('Advanced search'),

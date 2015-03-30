@@ -84,5 +84,5 @@ def events_list(request, app_label=None, module_name=None, object_id=None, verb=
                 'attribute': encapsulate(lambda entry: event_object_link(entry))
             }
         )
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))

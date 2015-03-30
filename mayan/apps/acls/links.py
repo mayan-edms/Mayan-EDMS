@@ -12,7 +12,7 @@ acl_grant = {'text': _('Grant'), 'view': 'acls:acl_multiple_grant', 'famfam': 'k
 acl_revoke = {'text': _('Revoke'), 'view': 'acls:acl_multiple_revoke', 'famfam': 'key_delete', 'permissions': [ACLS_EDIT_ACL]}
 acl_holder_new = {'text': _('New holder'), 'view': 'acls:acl_holder_new', 'args': 'access_object.gid', 'famfam': 'user', 'permissions': [ACLS_EDIT_ACL]}
 
-acl_setup_valid_classes = {'text': _('Default ACLs'), 'view': 'acls:acl_setup_valid_classes', 'icon': 'main/icons/lock.png', 'permissions': [ACLS_CLASS_VIEW_ACL]}
+acl_setup_valid_classes = {'text': _('Default ACLs'), 'view': 'acls:acl_setup_valid_classes', 'icon': 'appearance/icons/lock.png', 'permissions': [ACLS_CLASS_VIEW_ACL]}
 acl_class_list = {'text': _('Classes'), 'view': 'acls:acl_setup_valid_classes', 'famfam': 'package', 'permissions': [ACLS_CLASS_VIEW_ACL]}
 acl_class_acl_list = {'text': _('ACLs for class'), 'view': 'acls:acl_class_acl_list', 'args': 'object.gid', 'famfam': 'lock_go', 'permissions': [ACLS_CLASS_VIEW_ACL]}
 acl_class_acl_detail = {'text': _('Details'), 'view': 'acls:acl_class_acl_detail', 'args': ['access_object_class.gid', 'object.gid'], 'famfam': 'key_go', 'permissions': [ACLS_CLASS_VIEW_ACL]}

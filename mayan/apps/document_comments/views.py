@@ -65,7 +65,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
     elif len(comments) > 1:
         context['title'] = _('Are you sure you wish to delete the comments: %s?') % ', '.join([unicode(d) for d in comments])
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -102,7 +102,7 @@ def comment_add(request, document_id):
     else:
         form = CommentForm()
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'form': form,
         'title': _('Add comment to document: %s') % document,
         'next': next,
@@ -121,7 +121,7 @@ def comments_for_document(request, document_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_COMMENT_VIEW, request.user, document)
 
-    return render_to_response('main/generic_list.html', {
+    return render_to_response('appearance/generic_list.html', {
         'object': document,
         'access_object': document,
         'title': _('Comments for document: %s') % document,

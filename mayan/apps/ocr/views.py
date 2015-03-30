@@ -50,7 +50,7 @@ def document_all_ocr_cleanup(request):
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
 
     if request.method != 'POST':
-        return render_to_response('main/generic_confirm.html', {
+        return render_to_response('appearance/generic_confirm.html', {
             'previous': previous,
             'next': next,
             'title': _('Are you sure you wish to clean up all the pages content?'),
@@ -76,7 +76,7 @@ def entry_list(request):
         'hide_object': True,
     }
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -121,7 +121,7 @@ def entry_delete(request, pk=None, pk_list=None):
         len(entries)
     )
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -171,7 +171,7 @@ def entry_re_queue(request, pk=None, pk_list=None):
         len(entries)
     )
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
 
 

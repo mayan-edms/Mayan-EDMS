@@ -12,7 +12,7 @@ def namespace_list(request):
     if not request.user.is_superuser or not request.user.is_staff:
         raise PermissionDenied
 
-    return render_to_response('main/generic_list.html', {
+    return render_to_response('appearance/generic_list.html', {
         'object_list': StatisticNamespace.get_all(),
         'hide_link': True,
         'title': _('Statistics namespaces'),
@@ -26,7 +26,7 @@ def namespace_details(request, namespace_id):
 
     namespace = StatisticNamespace.get(namespace_id)
 
-    return render_to_response('main/generic_list.html', {
+    return render_to_response('appearance/generic_list.html', {
         'object': namespace,
         'namespace': namespace,
         'object_list': namespace.statistics,
@@ -41,7 +41,7 @@ def execute(request, statistic_id):
 
     statictic = Statistic.get(statistic_id)
 
-    return render_to_response('main/generic_list.html', {
+    return render_to_response('appearance/generic_list.html', {
         'object': statictic,
         'namespace': statictic.namespace,
         'navigation_object_list': [

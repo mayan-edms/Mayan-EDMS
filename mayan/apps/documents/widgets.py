@@ -119,7 +119,7 @@ def document_html_widget(document, click_view=None, click_view_arguments=None, p
     if nolazyload:
         result.append('<img class="img-nolazyload" src="%s" alt="%s" />' % (preview_view, alt_text))
     else:
-        result.append('<img class="thin_border %s" data-src="%s" data-post-load-class="%s" src="%s" alt="%s" />' % (image_class, preview_view, post_load_class, static('main/icons/hourglass.png'), alt_text))
+        result.append('<img class="thin_border %s" data-src="%s" data-post-load-class="%s" src="%s" alt="%s" />' % (image_class, preview_view, post_load_class, static('appearance/icons/hourglass.png'), alt_text))
 
     if click_view:
         result.append('</a>')

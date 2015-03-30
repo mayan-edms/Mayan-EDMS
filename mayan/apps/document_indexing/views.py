@@ -54,7 +54,7 @@ def index_setup_list(request):
 
     context['object_list'] = queryset
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -71,7 +71,7 @@ def index_setup_create(request):
     else:
         form = IndexForm()
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Create index'),
         'form': form,
     }, context_instance=RequestContext(request))
@@ -94,7 +94,7 @@ def index_setup_edit(request, index_pk):
     else:
         form = IndexForm(instance=index)
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Edit index: %s') % index,
         'form': form,
         'index': index,
@@ -134,7 +134,7 @@ def index_setup_delete(request, index_pk):
         'title': _('Are you sure you with to delete the index: %s?') % index,
     }
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -162,7 +162,7 @@ def index_setup_view(request, index_pk):
         ],
     }
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -208,7 +208,7 @@ def template_node_create(request, parent_pk):
     else:
         form = IndexTemplateNodeForm(initial={'index': parent_node.index, 'parent': parent_node})
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Create child node'),
         'form': form,
         'index': parent_node.index,
@@ -233,7 +233,7 @@ def template_node_edit(request, node_pk):
     else:
         form = IndexTemplateNodeForm(instance=node)
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Edit index template node: %s') % node,
         'form': form,
         'index': node.index,
@@ -283,7 +283,7 @@ def template_node_delete(request, node_pk):
         ],
     }
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -310,7 +310,7 @@ def index_list(request):
 
     context['object_list'] = queryset
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -342,7 +342,7 @@ def index_instance_node_view(request, index_instance_node_pk):
                 }
             )
 
-    return render_to_response('main/generic_list.html', {
+    return render_to_response('appearance/generic_list.html', {
         'object_list': index_instance_list,
         'extra_columns': [
             {
@@ -372,7 +372,7 @@ def rebuild_index_instances(request):
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
 
     if request.method != 'POST':
-        return render_to_response('main/generic_confirm.html', {
+        return render_to_response('appearance/generic_confirm.html', {
             'previous': previous,
             'next': next,
             'title': _('Are you sure you wish to rebuild all indexes?'),
@@ -401,7 +401,7 @@ def document_index_list(request, document_id):
     for index_instance in queryset:
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
 
-    return render_to_response('main/generic_list.html', {
+    return render_to_response('appearance/generic_list.html', {
         'object_list': object_list,
         'object': document,
         'hide_link': True,

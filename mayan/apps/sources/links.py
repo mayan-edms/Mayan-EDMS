@@ -15,12 +15,12 @@ from .permissions import (
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_VIEW
 )
 
-document_create_multiple = {'text': _('Upload new documents'), 'view': 'sources:document_create_multiple', 'icon': 'main/icons/page_add.png', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
+document_create_multiple = {'text': _('Upload new documents'), 'view': 'sources:document_create_multiple', 'icon': 'appearance/icons/page_add.png', 'famfam': 'page_add', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 document_create_siblings = {'text': _('Clone'), 'view': 'sources:document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 
 staging_file_delete = {'text': _('Delete'), 'view': 'sources:staging_file_delete', 'args': ['source.pk', 'object.encoded_filename'], 'famfam': 'delete', 'keep_query': True, 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE]}
 
-setup_sources = {'text': _('Sources'), 'view': 'sources:setup_source_list', 'famfam': 'application_form', 'icon': 'main/icons/application_form.png', 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
+setup_sources = {'text': _('Sources'), 'view': 'sources:setup_source_list', 'famfam': 'application_form', 'icon': 'appearance/icons/application_form.png', 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
 setup_source_create_webform = {'text': _('Add new webform source'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WEB_FORM, 'famfam': 'application_form_add', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context.get('source_type') == SOURCE_CHOICE_WEB_FORM and 'source' not in context}
 setup_source_create_staging_folder = {'text': _('Add new staging folder'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_STAGING, 'famfam': 'folder_camera', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context.get('source_type') == SOURCE_CHOICE_STAGING and 'source' not in context}
 setup_source_create_watch_folder = {'text': _('Add new watch folder'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WATCH, 'famfam': 'folder_magnify', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context.get('source_type') == SOURCE_CHOICE_WATCH and 'source' not in context}

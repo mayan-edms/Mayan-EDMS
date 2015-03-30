@@ -11,5 +11,5 @@ urlpatterns = patterns('main.views',
 )
 
 urlpatterns += patterns('',
-    (r'^favicon\.ico$', RedirectView.as_view(url=static('main/images/favicon.ico'))),
+    (r'^favicon\.ico$', RedirectView.as_view(url=static('appearance/images/favicon.ico'))),
 )

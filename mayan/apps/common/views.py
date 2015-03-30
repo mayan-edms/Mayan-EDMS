@@ -13,7 +13,7 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
@@ -26,6 +26,10 @@ from .mixins import (
     ObjectPermissionCheckMixin, RedirectionMixin, ViewPermissionCheckMixin
 )
 from .settings import LOGIN_METHOD
+
+
+class AboutView(TemplateView):
+    template_name = 'appearance/about.html'
 
 
 def multi_object_action_view(request):
@@ -130,7 +134,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
     context = {
         'subtemplates_list': [
             {
-                'name': 'main/generic_form_subtemplate.html',
+                'name': 'appearance/generic_form_subtemplate.html',
                 'grid': 12,
                 'context': {
                     'form': unselected_list,
@@ -140,7 +144,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                 }
             },
             {
-                'name': 'main/generic_form_subtemplate.html',
+                'name': 'appearance/generic_form_subtemplate.html',
                 'grid': 12,
                 'grid_clear': True,
                 'context': {
@@ -156,7 +160,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
     if extra_context:
         context.update(extra_context)
 
-    return render_to_response('main/generic_form.html', context,
+    return render_to_response('appearance/generic_form.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -167,7 +171,7 @@ def current_user_details(request):
     form = UserForm_view(instance=request.user)
 
     return render_to_response(
-        'main/generic_form.html', {
+        'appearance/generic_form.html', {
             'form': form,
             'title': _('Current user details'),
             'read_only': True,
@@ -182,7 +186,7 @@ def current_user_locale_profile_details(request):
     form = LocaleProfileForm_view(instance=request.user.locale_profile)
 
     return render_to_response(
-        'main/generic_form.html', {
+        'appearance/generic_form.html', {
             'form': form,
             'title': _('Current user locale profile details'),
             'read_only': True,
@@ -210,7 +214,7 @@ def current_user_edit(request):
         form = UserForm(instance=request.user)
 
     return render_to_response(
-        'main/generic_form.html', {
+        'appearance/generic_form.html', {
             'form': form,
             'next': next,
             'title': _('Edit current user details'),
@@ -242,7 +246,7 @@ def current_user_locale_profile_edit(request):
         form = LocaleProfileForm(instance=request.user.locale_profile)
 
     return render_to_response(
-        'main/generic_form.html', {
+        'appearance/generic_form.html', {
             'form': form,
             'next': next,
             'title': _('Edit current user locale profile details'),
@@ -255,7 +259,7 @@ def login_view(request):
     Control how the use is to be authenticated, options are 'email' and
     'username'
     """
-    kwargs = {'template_name': 'main/login.html'}
+    kwargs = {'template_name': 'appearance/login.html'}
 
     if LOGIN_METHOD == 'email':
         kwargs['authentication_form'] = EmailAuthenticationForm
@@ -274,7 +278,7 @@ def license_view(request):
     """
     form = LicenseForm()
     return render_to_response(
-        'main/generic_detail.html', {
+        'appearance/generic_detail.html', {
             'form': form,
             'title': _('License'),
         },
@@ -290,7 +294,7 @@ def password_change_view(request):
     return password_change(
         request,
         extra_context=context,
-        template_name='main/password_change_form.html',
+        template_name='appearance/password_change_form.html',
         post_change_redirect=reverse('common:password_change_done'),
     )
 
@@ -305,7 +309,7 @@ def password_change_done(request):
 
 
 class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
-    template_name = 'main/generic_form.html'
+    template_name = 'appearance/generic_form.html'
 
     def form_invalid(self, form):
         result = super(SingleObjectEditView, self).form_invalid(form)
@@ -329,7 +333,7 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
 
 
 class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
-    template_name = 'main/generic_form.html'
+    template_name = 'appearance/generic_form.html'
 
     def form_invalid(self, form):
         result = super(SingleObjectCreateView, self).form_invalid(form)
@@ -352,7 +356,7 @@ class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, Redire
 
 
 class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
-    template_name = 'main/generic_confirm.html'
+    template_name = 'appearance/generic_confirm.html'
 
     def get_context_data(self, **kwargs):
         context = super(SingleObjectDeleteView, self).get_context_data(**kwargs)
@@ -379,7 +383,7 @@ class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
 
 
 class SingleObjectListView(ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
-    template_name = 'main/generic_list.html'
+    template_name = 'appearance/generic_list.html'
 
 
 class MultiFormView(FormView):

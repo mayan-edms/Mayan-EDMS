@@ -32,7 +32,7 @@ def home(request):
             'title': _('Results'),
         })
 
-    return render_to_response('main/home.html', context, context_instance=RequestContext(request))
+    return render_to_response('appearance/home.html', context, context_instance=RequestContext(request))
 
 
 def maintenance_menu(request):
@@ -50,14 +50,14 @@ def maintenance_menu(request):
             except PermissionDenied:
                 pass
 
-    return render_to_response('main/tools.html', {
+    return render_to_response('appearance/tools.html', {
         'blocks': user_tools,
         'title': _('Maintenance menu')
     }, context_instance=RequestContext(request))
 
 
 def diagnostics_view(request):
-    return render_to_response('main/diagnostics.html', {
+    return render_to_response('appearance/diagnostics.html', {
         'blocks': diagnostics,
         'title': _('Diagnostics')
     }, context_instance=RequestContext(request))

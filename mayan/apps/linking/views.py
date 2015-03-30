@@ -97,7 +97,7 @@ def smart_link_instances_for_document(request, document_id):
         'title': _('Smart links for document: %s') % document,
     }
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -109,7 +109,7 @@ def smart_link_list(request):
     except PermissionDenied:
         qs = AccessEntry.objects.filter_objects_by_access(PERMISSION_SMART_LINK_VIEW, request.user, qs)
 
-    return render_to_response('main/generic_list.html', {
+    return render_to_response('appearance/generic_list.html', {
         'title': _('Smart links'),
         'object_list': qs,
         'extra_columns': [
@@ -135,7 +135,7 @@ def smart_link_create(request):
     else:
         form = SmartLinkForm()
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'form': form,
         'title': _('Create new smart link')
     }, context_instance=RequestContext(request))
@@ -158,7 +158,7 @@ def smart_link_edit(request, smart_link_pk):
     else:
         form = SmartLinkForm(instance=smart_link)
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'object': smart_link,
         'form': form,
         'title': _('Edit smart link: %s') % smart_link
@@ -187,7 +187,7 @@ def smart_link_delete(request, smart_link_pk):
             })
         return HttpResponseRedirect(next)
 
-    return render_to_response('main/generic_confirm.html', {
+    return render_to_response('appearance/generic_confirm.html', {
         'delete_view': True,
         'object': smart_link,
         'title': _('Are you sure you wish to delete smart link: %s?') % smart_link,
@@ -226,7 +226,7 @@ def smart_link_condition_list(request, smart_link_pk):
     except PermissionDenied:
         AccessEntry.objects.check_accesses([PERMISSION_SMART_LINK_EDIT], request.user, smart_link)
 
-    return render_to_response('main/generic_list.html', {
+    return render_to_response('appearance/generic_list.html', {
         'title': _('Conditions for smart link: %s') % smart_link,
         'object_list': smart_link.conditions.all(),
         'extra_columns': [
@@ -257,7 +257,7 @@ def smart_link_condition_create(request, smart_link_pk):
     else:
         form = SmartLinkConditionForm()
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'form': form,
         'title': _('Add new conditions to smart link: "%s"') % smart_link,
         'object': smart_link,
@@ -284,7 +284,7 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
     else:
         form = SmartLinkConditionForm(instance=smart_link_condition)
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'form': form,
         'title': _('Edit smart link condition'),
         'next': next,
@@ -321,7 +321,7 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
             })
         return HttpResponseRedirect(next)
 
-    return render_to_response('main/generic_confirm.html', {
+    return render_to_response('appearance/generic_confirm.html', {
         'delete_view': True,
         'condition': smart_link_condition,
         'object': smart_link_condition.smart_link,

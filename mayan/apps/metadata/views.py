@@ -131,7 +131,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         len(documents)
     )
 
-    return render_to_response('main/generic_form.html', context,
+    return render_to_response('appearance/generic_form.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -213,7 +213,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
         len(documents)
     )
 
-    return render_to_response('main/generic_form.html', context,
+    return render_to_response('appearance/generic_form.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -310,7 +310,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         len(documents)
     )
 
-    return render_to_response('main/generic_form.html', context,
+    return render_to_response('appearance/generic_form.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -326,7 +326,7 @@ def metadata_view(request, document_id):
     except PermissionDenied:
         AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_VIEW, request.user, document)
 
-    return render_to_response('main/generic_list.html', {
+    return render_to_response('appearance/generic_list.html', {
         'title': _('Metadata for document: %s') % document,
         'object_list': document.metadata.all(),
         'extra_columns': [
@@ -380,7 +380,7 @@ def setup_metadata_type_list(request):
         ]
     }
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -402,7 +402,7 @@ def setup_metadata_type_edit(request, metadatatype_id):
     else:
         form = MetadataTypeForm(instance=metadata_type)
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Edit metadata type: %s') % metadata_type,
         'form': form,
         'object': metadata_type,
@@ -421,7 +421,7 @@ def setup_metadata_type_create(request):
     else:
         form = MetadataTypeForm()
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Create metadata type'),
         'form': form,
     }, context_instance=RequestContext(request))
@@ -455,7 +455,7 @@ def setup_metadata_type_delete(request, metadatatype_id):
         'title': _('Are you sure you wish to delete the metadata type: %s?') % metadata_type,
     }
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
 
 

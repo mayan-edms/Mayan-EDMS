@@ -50,7 +50,7 @@ def user_list(request):
         ],
     }
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -71,7 +71,7 @@ def user_edit(request, user_id):
     else:
         form = UserForm(instance=user)
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Edit user: %s') % user,
         'form': form,
         'object': user,
@@ -92,7 +92,7 @@ def user_add(request):
     else:
         form = UserForm()
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Create new user'),
         'form': form,
     }, context_instance=RequestContext(request))
@@ -140,7 +140,7 @@ def user_delete(request, user_id=None, user_id_list=None):
     elif len(users) > 1:
         context['title'] = _('Are you sure you wish to delete the users: %s?') % ', '.join([unicode(d) for d in users])
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -201,7 +201,7 @@ def user_set_password(request, user_id=None, user_id_list=None):
     elif len(users) > 1:
         context['title'] = _('Reseting password for users: %s') % ', '.join([unicode(d) for d in users])
 
-    return render_to_response('main/generic_form.html', context,
+    return render_to_response('appearance/generic_form.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -254,7 +254,7 @@ def group_list(request):
         ],
     }
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -271,7 +271,7 @@ def group_edit(request, group_id):
     else:
         form = GroupForm(instance=group)
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Edit group: %s') % group,
         'form': form,
         'object': group,
@@ -290,7 +290,7 @@ def group_add(request):
     else:
         form = GroupForm()
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Create new group'),
         'form': form,
     }, context_instance=RequestContext(request))
@@ -335,7 +335,7 @@ def group_delete(request, group_id=None, group_id_list=None):
     elif len(groups) > 1:
         context['title'] = _('Are you sure you wish to delete the groups: %s?') % ', '.join([unicode(d) for d in groups])
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
 
 

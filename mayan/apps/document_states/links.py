@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-link_setup_workflow_list = {'text': _('Workflows'), 'view': 'document_states:setup_workflow_list', 'famfam': 'table', 'icon': 'main/icons/table.png'}
+link_setup_workflow_list = {'text': _('Workflows'), 'view': 'document_states:setup_workflow_list', 'famfam': 'table', 'icon': 'appearance/icons/table.png'}
 link_setup_workflow_create = {'text': _('Create'), 'view': 'document_states:setup_workflow_create', 'famfam': 'table_add'}
 link_setup_workflow_delete = {'text': _('Delete'), 'view': 'document_states:setup_workflow_delete', 'args': 'object.pk', 'famfam': 'table_delete'}
 link_setup_workflow_edit = {'text': _('Edit'), 'view': 'document_states:setup_workflow_edit', 'args': 'object.pk', 'famfam': 'table_edit'}

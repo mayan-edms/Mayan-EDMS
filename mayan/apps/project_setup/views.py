@@ -13,5 +13,5 @@ def setup_list(request):
         'title': _('Setup items'),
     }
 
-    return render_to_response('main/generic_list_horizontal.html', context,
+    return render_to_response('appearance/generic_list_horizontal.html', context,
                               context_instance=RequestContext(request))

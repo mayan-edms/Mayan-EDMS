@@ -61,7 +61,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
 
 
 class WorkflowInstanceDetailView(SingleObjectListView):
-    template_name = 'main/generic_multi_subtemplates.html'
+    template_name = 'appearance/generic_multi_subtemplates.html'
 
     def dispatch(self, request, *args, **kwargs):
         try:
@@ -97,13 +97,13 @@ class WorkflowInstanceDetailView(SingleObjectListView):
             },
             'subtemplates_list': [
                 {
-                    'name': 'main/generic_detail_subtemplate.html',
+                    'name': 'appearance/generic_detail_subtemplate.html',
                     'context': {
                         'form': form,
                     }
                 },
                 {
-                    'name': 'main/generic_list_subtemplate.html',
+                    'name': 'appearance/generic_list_subtemplate.html',
                     'context': {
                         'object_list': self.get_queryset(),
                         'title': _('Log entries'),
@@ -118,7 +118,7 @@ class WorkflowInstanceDetailView(SingleObjectListView):
 
 class WorkflowInstanceTransitionView(FormView):
     form_class = WorkflowInstanceTransitionForm
-    template_name = 'main/generic_form.html'
+    template_name = 'appearance/generic_form.html'
 
     def dispatch(self, request, *args, **kwargs):
         try:

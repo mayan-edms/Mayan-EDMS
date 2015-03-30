@@ -90,5 +90,5 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
         else:
             context['title'] = _('Email links for documents: %s') % ', '.join([unicode(d) for d in documents])
 
-    return render_to_response('main/generic_form.html', context,
+    return render_to_response('appearance/generic_form.html', context,
                               context_instance=RequestContext(request))

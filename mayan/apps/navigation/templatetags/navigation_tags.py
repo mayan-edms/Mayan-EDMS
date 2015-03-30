@@ -232,7 +232,7 @@ def get_object_navigation_links(parser, token):
     return GetNavigationLinks(menu_name=menu_name, var_name=var_name)
 
 
-@register.inclusion_tag('generic_navigation.html', takes_context=True)
+@register.inclusion_tag('navigation/generic_navigation.html', takes_context=True)
 def object_navigation_template(context):
     new_context = copy.copy(context)
     new_context.update({

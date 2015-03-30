@@ -1,4 +1,4 @@
-{% extends 'main/base.html' %}
+{% extends 'appearance/base.html' %}
 {% load i18n %}
 {% block title %} :: {% trans 'Search results' %}{% endblock %}
 
@@ -7,10 +7,10 @@
             {% include 'dynamic_search/search_results_subtemplate.html' %}
     {% endif %}
     {% if query_string %}
-        {% include 'main/generic_list_subtemplate.html' %}
+        {% include 'appearance/generic_list_subtemplate.html' %}
     {% endif %}
     {% if not form and not query_string %}
-        {% include 'main/generic_list_subtemplate.html' %}
+        {% include 'appearance/generic_list_subtemplate.html' %}
     {% endif %}
 {% endblock %}
 

@@ -44,7 +44,7 @@ def tag_create(request):
     else:
         form = TagForm()
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Create tag'),
         'form': form,
     }, context_instance=RequestContext(request))
@@ -101,7 +101,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
     if len(documents) == 1:
         context['object'] = documents[0]
 
-    return render_to_response('main/generic_form.html', context,
+    return render_to_response('appearance/generic_form.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -129,7 +129,7 @@ def tag_list(request, queryset=None, extra_context=None):
 
     context['object_list'] = queryset
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -180,7 +180,7 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
     if len(tags) == 1:
         context['object'] = tags[0]
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -207,7 +207,7 @@ def tag_edit(request, tag_id):
     else:
         form = TagForm(instance=tag)
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Edit tag: %s') % tag,
         'form': form,
         'object': tag,
@@ -270,13 +270,13 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
         'next': next,
     }
 
-    template = 'main/generic_confirm.html'
+    template = 'appearance/generic_confirm.html'
     if tag_id:
         tags = [get_object_or_404(Tag, pk=tag_id)]
     elif tag_id_list:
         tags = [get_object_or_404(Tag, pk=tag_id) for tag_id in tag_id_list.split(',')]
     else:
-        template = 'main/generic_form.html'
+        template = 'appearance/generic_form.html'
 
         if request.method == 'POST':
             form = TagListForm(request.POST, user=request.user)

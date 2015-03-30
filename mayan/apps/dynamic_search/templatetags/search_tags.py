@@ -11,7 +11,7 @@ from ..settings import RECENT_COUNT
 register = Library()
 
 
-@register.inclusion_tag('search_results_subtemplate.html', takes_context=True)
+@register.inclusion_tag('dynamic_search/search_results_subtemplate.html', takes_context=True)
 def search_form(context):
     context.update({
         'form': SearchForm(initial={'q': context.get('query_string', {}).get('q'), 'source': 'sidebar'}),
@@ -24,7 +24,7 @@ def search_form(context):
     return context
 
 
-@register.inclusion_tag('main/generic_subtemplate.html', takes_context=True)
+@register.inclusion_tag('appearance/generic_subtemplate.html', takes_context=True)
 def recent_searches_template(context):
     if not context['user'].is_anonymous():
         recent_searches = RecentSearch.objects.filter(user=context['user'])

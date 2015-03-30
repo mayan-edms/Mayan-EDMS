@@ -56,7 +56,7 @@ def checkout_info(request, document_pk):
         paragraphs.append(_('Check out expiration: %s') % checkout_info.expiration_datetime)
         paragraphs.append(_('New versions allowed: %s') % (_('Yes') if not checkout_info.block_new_version else _('No')))
 
-    return render_to_response('main/generic_template.html', {
+    return render_to_response('appearance/generic_template.html', {
         'paragraphs': paragraphs,
         'object': document,
         'title': _('Check out details for document: %s') % document
@@ -89,7 +89,7 @@ def checkout_document(request, document_pk):
     else:
         form = DocumentCheckoutForm(initial={'document': document})
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'form': form,
         'object': document,
         'title': _('Check out document: %s') % document
@@ -144,5 +144,5 @@ def checkin_document(request, document_pk):
     else:
         context['title'] = _('Are you sure you wish to check in document: %s?') % document
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))

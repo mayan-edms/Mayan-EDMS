@@ -99,7 +99,7 @@ def get_active_tab_links(document=None):
 
 
 class UploadBaseView(MultiFormView):
-    template_name = 'main/generic_form.html'
+    template_name = 'appearance/generic_form.html'
     prefixes = {'source_form': 'source', 'document_form': 'document'}
 
     def dispatch(self, request, *args, **kwargs):
@@ -129,13 +129,13 @@ class UploadBaseView(MultiFormView):
             finally:
                 subtemplates_list = [
                     {
-                        'name': 'main/generic_multiform_subtemplate.html',
+                        'name': 'appearance/generic_multiform_subtemplate.html',
                         'context': {
                             'forms': context['forms'],
                         }
                     },
                     {
-                        'name': 'main/generic_list_subtemplate.html',
+                        'name': 'appearance/generic_list_subtemplate.html',
                         'context': {
                             'title': _('Files in staging path'),
                             'object_list': staging_filelist,
@@ -145,7 +145,7 @@ class UploadBaseView(MultiFormView):
                 ]
         else:
             subtemplates_list.append({
-                'name': 'main/generic_multiform_subtemplate.html',
+                'name': 'appearance/generic_multiform_subtemplate.html',
                 'context': {
                     'forms': context['forms'],
                     'is_multipart': True
@@ -252,7 +252,7 @@ class UploadInteractiveView(UploadBaseView):
             {
                 'sidebar_subtemplates_list': [
                     {
-                        'name': 'main/generic_subtemplate.html',
+                        'name': 'appearance/generic_subtemplate.html',
                         'context': {
                             'title': _('Current document type'),
                             'paragraphs': [self.document_type if self.document_type else _('None')],
@@ -260,7 +260,7 @@ class UploadInteractiveView(UploadBaseView):
                         }
                     },
                     {
-                        'name': 'main/generic_subtemplate.html',
+                        'name': 'appearance/generic_subtemplate.html',
                         'context': {
                             'title': _('Current metadata'),
                             'paragraphs': metadata_repr_as_list(decode_metadata_from_url(self.request.GET)),
@@ -358,7 +358,7 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
 
     results = get_active_tab_links()
 
-    return render_to_response('main/generic_confirm.html', {
+    return render_to_response('appearance/generic_confirm.html', {
         'source': staging_folder,
         'delete_view': True,
         'object': staging_file,
@@ -389,7 +389,7 @@ def setup_source_list(request):
         ]
     }
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -413,7 +413,7 @@ def setup_source_edit(request, source_id):
     else:
         form = form_class(instance=source)
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Edit source: %s') % source,
         'form': form,
         'source': source,
@@ -449,7 +449,7 @@ def setup_source_delete(request, source_id):
         'source_type': source.source_type,
     }
 
-    return render_to_response('main/generic_confirm.html', context,
+    return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -471,7 +471,7 @@ def setup_source_create(request, source_type):
     else:
         form = form_class()
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Create new source of type: %s') % cls.class_fullname(),
         'form': form,
         'source_type': source_type,
@@ -499,7 +499,7 @@ def setup_source_transformation_list(request, source_id):
         'hide_object': True,
     }
 
-    return render_to_response('main/generic_list.html', context,
+    return render_to_response('appearance/generic_list.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -522,7 +522,7 @@ def setup_source_transformation_edit(request, transformation_id):
     else:
         form = SourceTransformationForm(instance=source_transformation)
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'title': _('Edit transformation: %s') % source_transformation,
         'form': form,
         'source': source_transformation.content_object,
@@ -552,7 +552,7 @@ def setup_source_transformation_delete(request, transformation_id):
             )
         return HttpResponseRedirect(redirect_view)
 
-    return render_to_response('main/generic_confirm.html', {
+    return render_to_response('appearance/generic_confirm.html', {
         'delete_view': True,
         'transformation': source_transformation,
         'source': source_transformation.content_object,
@@ -588,7 +588,7 @@ def setup_source_transformation_create(request, source_id):
     else:
         form = SourceTransformationForm_create()
 
-    return render_to_response('main/generic_form.html', {
+    return render_to_response('appearance/generic_form.html', {
         'form': form,
         'source': source,
         'navigation_object_name': 'source',

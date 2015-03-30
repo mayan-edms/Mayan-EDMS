@@ -23,9 +23,9 @@ metadata_multiple_remove = {'text': _('Remove metadata'), 'view': 'metadata:meta
 setup_document_type_metadata = {'text': _('Optional metadata'), 'view': 'metadata:setup_document_type_metadata', 'args': 'document_type.pk', 'famfam': 'xhtml', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 setup_document_type_metadata_required = {'text': _('Required metadata'), 'view': 'metadata:setup_document_type_metadata_required', 'args': 'document_type.pk', 'famfam': 'xhtml', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 
-setup_metadata_type_list = {'text': _('Metadata types'), 'view': 'metadata:setup_metadata_type_list', 'famfam': 'xhtml_go', 'icon': 'main/icons/xhtml.png', 'permissions': [PERMISSION_METADATA_TYPE_VIEW]}
+setup_metadata_type_list = {'text': _('Metadata types'), 'view': 'metadata:setup_metadata_type_list', 'famfam': 'xhtml_go', 'icon': 'appearance/icons/xhtml.png', 'permissions': [PERMISSION_METADATA_TYPE_VIEW]}
 setup_metadata_type_edit = {'text': _('Edit'), 'view': 'metadata:setup_metadata_type_edit', 'args': 'object.pk', 'famfam': 'xhtml', 'permissions': [PERMISSION_METADATA_TYPE_EDIT]}
 setup_metadata_type_delete = {'text': _('Delete'), 'view': 'metadata:setup_metadata_type_delete', 'args': 'object.pk', 'famfam': 'xhtml_delete', 'permissions': [PERMISSION_METADATA_TYPE_DELETE]}
 setup_metadata_type_create = {'text': _('Create new'), 'view': 'metadata:setup_metadata_type_create', 'famfam': 'xhtml_add', 'permissions': [PERMISSION_METADATA_TYPE_CREATE]}
 
-link_documents_missing_required_metadata = {'text': _('Missing required metadata'), 'view': 'metadata:documents_missing_required_metadata', 'icon': 'main/icons/to_do_list.png'}
+link_documents_missing_required_metadata = {'text': _('Missing required metadata'), 'view': 'metadata:documents_missing_required_metadata', 'icon': 'appearance/icons/to_do_list.png'}
