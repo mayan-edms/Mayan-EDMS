@@ -10,7 +10,7 @@ from navigation.api import register_links
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
 
-from .models import Permission, Role
+from .models import Role
 from .links import (
     permission_grant, permission_revoke, role_create, role_delete, role_edit,
     role_list, role_members, role_permissions

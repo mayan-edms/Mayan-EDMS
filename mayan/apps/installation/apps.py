@@ -1,8 +1,6 @@
 from __future__ import unicode_literals
 
 from django import apps
-from django.db.utils import DatabaseError
-from django.dispatch import receiver
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import encapsulate
@@ -11,7 +9,6 @@ from project_tools.api import register_tool
 
 from .classes import Property, PropertyNamespace
 from .links import link_menu_link, link_namespace_details, link_namespace_list
-from .models import Installation
 
 
 class InstallationApp(apps.AppConfig):

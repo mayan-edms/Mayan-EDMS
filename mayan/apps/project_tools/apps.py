@@ -13,5 +13,4 @@ class ProjectToolsApp(apps.AppConfig):
     verbose_name = _('Project tools')
 
     def ready(self):
-        tool_link = register_top_menu('tools', link=link_tools, position=-3)
-
+        register_top_menu('tools', link=link_tools, position=-3)

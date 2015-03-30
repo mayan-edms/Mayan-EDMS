@@ -17,6 +17,7 @@ from .permissions import (
     PERMISSION_COMMENT_VIEW
 )
 
+
 class DocumentCommentsApp(apps.AppConfig):
     name = 'document_comments'
     verbose_name = _('Document comments')

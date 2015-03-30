@@ -13,6 +13,7 @@ from .links import (
     key_delete, key_query, key_receive, key_setup, public_keys
 )
 
+
 class DjangoGPGApp(apps.AppConfig):
     name = 'django_gpg'
     verbose_name = _('Django GPG')

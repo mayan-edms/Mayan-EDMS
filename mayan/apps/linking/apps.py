@@ -23,6 +23,7 @@ from .permissions import (
     PERMISSION_SMART_LINK_VIEW
 )
 
+
 class LinkingApp(apps.AppConfig):
     name = 'linking'
     verbose_name = _('Linking')

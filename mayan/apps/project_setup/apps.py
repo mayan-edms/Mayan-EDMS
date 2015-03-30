@@ -13,4 +13,4 @@ class ProjectSetupApp(apps.AppConfig):
     verbose_name = _('Project setup')
 
     def ready(self):
-        setup_link = register_top_menu('setup_menu', link=link_setup, position=-2)
+        register_top_menu('setup_menu', link=link_setup, position=-2)

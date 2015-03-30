@@ -23,13 +23,11 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.datastructures import SortedDict
 from django.conf import settings
 
-from solo.models import SingletonModel
-
 from common.utils import pretty_size
 from mayan import __version__ as mayan_version
 from ocr.settings import PDFTOTEXT_PATH, TESSERACT_PATH, UNPAPER_PATH
 
-from .classes import PIPNotFound, Property, PropertyNamespace, VirtualEnv
+from .classes import PIPNotFound, PropertyNamespace, VirtualEnv
 
 
 class Installation(object):
