@@ -15,12 +15,16 @@ from .managers import DocumentVersionSignatureManager
 logger = logging.getLogger(__name__)
 
 
+def upload_to(*args, **kwargs):
+    return unicode(uuid.uuid4())
+
+
 class DocumentVersionSignature(models.Model):
     """
     Model that describes a document version signature properties
     """
     document_version = models.ForeignKey(DocumentVersion, verbose_name=_('Document version'), editable=False)
-    signature_file = models.FileField(blank=True, null=True, upload_to=lambda instance, filename: unicode(uuid.uuid4()), storage=storage_backend, verbose_name=_('Signature file'), editable=False)
+    signature_file = models.FileField(blank=True, null=True, upload_to=upload_to, storage=storage_backend, verbose_name=_('Signature file'), editable=False)
     has_embedded_signature = models.BooleanField(default=False, verbose_name=_('Has embedded signature'), editable=False)
 
     objects = DocumentVersionSignatureManager()

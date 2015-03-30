@@ -353,25 +353,15 @@ class WatchFolderSource(IntervalBaseModel):
         verbose_name_plural = _('Watch folders')
 
 
-class ArgumentsValidator(object):
-    message = _('Enter a valid value.')
-    code = 'invalid'
-
-    def __init__(self, message=None, code=None):
-        if message is not None:
-            self.message = message
-        if code is not None:
-            self.code = code
-
-    def __call__(self, value):
-        """
-        Validates that the input evaluates correctly.
-        """
-        value = value.strip()
-        try:
-            literal_eval(value)
-        except (ValueError, SyntaxError):
-            raise ValidationError(self.message, code=self.code)
+def argument_validator(value):
+    """
+    Validates that the input evaluates correctly.
+    """
+    value = value.strip()
+    try:
+        literal_eval(value)
+    except (ValueError, SyntaxError):
+        raise ValidationError(_('Enter a valid value.'), code='invalid')
 
 
 class SourceTransformation(models.Model):
@@ -384,7 +374,7 @@ class SourceTransformation(models.Model):
     content_object = generic.GenericForeignKey('content_type', 'object_id')
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_('Order'), db_index=True)
     transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[ArgumentsValidator()])
+    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[argument_validator])
 
     objects = models.Manager()
     transformations = SourceTransformationManager()

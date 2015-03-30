@@ -39,8 +39,11 @@ from .settings import (
 from .signals import post_version_upload, post_document_type_change
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
-UUID_FUNCTION = lambda: unicode(uuid.uuid4())
 logger = logging.getLogger(__name__)
+
+
+def UUID_FUNCTION(*args, **kwargs):
+    return unicode(uuid.uuid4())
 
 
 class DocumentType(models.Model):
@@ -72,7 +75,7 @@ class Document(models.Model):
     Defines a single document with it's fields and properties
     """
 
-    uuid = models.CharField(default=lambda: UUID_FUNCTION(), max_length=48, editable=False)
+    uuid = models.CharField(default=UUID_FUNCTION(), max_length=48, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_('Document type'), related_name='documents')
     label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True, help_text=_('The name of the document'), verbose_name=_('Label'))
     description = models.TextField(blank=True, null=True, verbose_name=_('Description'))
@@ -289,7 +292,7 @@ class DocumentVersion(models.Model):
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
     # File related fields
-    file = models.FileField(upload_to=lambda instance, filename: UUID_FUNCTION(), storage=storage_backend, verbose_name=_('File'))
+    file = models.FileField(upload_to=UUID_FUNCTION(), storage=storage_backend, verbose_name=_('File'))
     mimetype = models.CharField(max_length=255, null=True, blank=True, editable=False)
     encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
 
@@ -519,25 +522,15 @@ class DocumentPage(models.Model):
         return self.document_version.document
 
 
-class ArgumentsValidator(object):
-    message = _('Enter a valid value.')
-    code = 'invalid'
-
-    def __init__(self, message=None, code=None):
-        if message is not None:
-            self.message = message
-        if code is not None:
-            self.code = code
-
-    def __call__(self, value):
-        """
-        Validates that the input evaluates correctly.
-        """
-        value = value.strip()
-        try:
-            literal_eval(value)
-        except (ValueError, SyntaxError):
-            raise ValidationError(self.message, code=self.code)
+def argument_validator(value):
+    """
+    Validates that the input evaluates correctly.
+    """
+    value = value.strip()
+    try:
+        literal_eval(value)
+    except (ValueError, SyntaxError):
+        raise ValidationError(_('Enter a valid value.'), code='invalid')
 
 
 class DocumentPageTransformation(models.Model):
@@ -548,7 +541,7 @@ class DocumentPageTransformation(models.Model):
     document_page = models.ForeignKey(DocumentPage, verbose_name=_('Document page'))
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_('Order'), db_index=True)
     transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[ArgumentsValidator()])
+    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[argument_validator])
     objects = DocumentPageTransformationManager()
 
     def __unicode__(self):
@@ -578,8 +571,3 @@ class RecentDocument(models.Model):
         ordering = ('-datetime_accessed',)
         verbose_name = _('Recent document')
         verbose_name_plural = _('Recent documents')
-
-
-# Quick hack to break the DocumentPage and DocumentPageTransformation circular dependency
-# Can be remove once the transformations are moved to the converter app
-DocumentPage.add_to_class('get_transformation_list', lambda document_page: DocumentPageTransformation.objects.get_for_document_page_as_list(document_page))

@@ -149,3 +149,5 @@ class DocumentsApp(apps.AppConfig):
         FrontPageButton(link=document_list)
 
         registry.register(Document)
+
+        DocumentPage.add_to_class('get_transformation_list', lambda document_page: DocumentPageTransformation.objects.get_for_document_page_as_list(document_page))

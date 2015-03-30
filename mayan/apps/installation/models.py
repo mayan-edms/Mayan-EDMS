@@ -32,7 +32,7 @@ from ocr.settings import PDFTOTEXT_PATH, TESSERACT_PATH, UNPAPER_PATH
 from .classes import PIPNotFound, Property, PropertyNamespace, VirtualEnv
 
 
-class Installation(SingletonModel):
+class Installation(object):
     _properties = SortedDict()
 
     uuid = models.CharField(max_length=48, blank=True, default=lambda: unicode(uuid.uuid4()))
