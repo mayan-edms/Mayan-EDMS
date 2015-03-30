@@ -62,14 +62,14 @@ Contribute
 .. _Mailing list (via Google Groups): http://groups.google.com/group/mayan-edms
 .. _Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0.txt
 .. _`the repository`: http://github.com/mayan-edms/mayan-edms
-.. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/master/docs/topics/contributors.rst
+.. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/development/docs/topics/contributors.rst
 
-.. |Build Status| image:: http://img.shields.io/travis/mayan-edms/mayan-edms/master.svg?style=flat
+.. |Build Status| image:: http://img.shields.io/travis/mayan-edms/mayan-edms/development.svg?style=flat
    :target: https://travis-ci.org/mayan-edms/mayan-edms
-.. |Coverage Status| image:: http://img.shields.io/coveralls/mayan-edms/mayan-edms/master.svg?style=flat
-   :target: https://coveralls.io/r/mayan-edms/mayan-edms?branch=master
-.. |Logo| image:: https://github.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
-.. |Animation| image:: https://github.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif
+.. |Coverage Status| image:: http://img.shields.io/coveralls/mayan-edms/mayan-edms/development.svg?style=flat
+   :target: https://coveralls.io/r/mayan-edms/mayan-edms?branch=development
+.. |Logo| image:: https://github.com/mayan-edms/mayan-edms/raw/development/docs/_static/mayan_logo.png
+.. |Animation| image:: https://github.com/mayan-edms/mayan-edms/raw/development/docs/_static/overview.gif
 .. |Installs badge| image:: http://img.shields.io/pypi/dm/mayan-edms.svg?style=flat
    :target: https://crate.io/packages/mayan-edms/
 .. |PyPI badge| image:: http://img.shields.io/pypi/v/mayan-edms.svg?style=flat
