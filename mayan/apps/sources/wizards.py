@@ -67,7 +67,7 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
         })
         return context
 
-    def done(self, form_list):
+    def done(self, *args, **kwargs):
         query_dict = {}
         try:
             query_dict['document_type_id'] = self.get_cleaned_data_for_step('0')['document_type'].pk
