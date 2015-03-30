@@ -73,13 +73,6 @@ class StagingUploadForm(UploadBaseForm):
 class WebFormUploadForm(UploadBaseForm):
     file = forms.FileField(label=_('File'))
 
-    def __init__(self, *args, **kwargs):
-        super(WebFormUploadForm, self).__init__(*args, **kwargs)
-
-        # Move the file filed to the top
-        self.fields.keyOrder.remove('file')
-        self.fields.keyOrder.insert(0, 'file')
-
 
 class WebFormSetupForm(forms.ModelForm):
     class Meta:
