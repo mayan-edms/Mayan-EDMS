@@ -84,7 +84,6 @@ INSTALLED_APPS = (
     'documents',
     'events',
     'folders',
-    'history',
     'installation',
     'linking',
     'mailer',
