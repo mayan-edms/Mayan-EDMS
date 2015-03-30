@@ -9,7 +9,7 @@ import document_signatures.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('documents', '0002_auto_20150330_0925'),
+        ('documents', '0001_initial'),
     ]
 
     operations = [

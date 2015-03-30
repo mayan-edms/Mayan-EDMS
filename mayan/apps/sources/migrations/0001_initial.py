@@ -8,7 +8,7 @@ import sources.models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('documents', '0003_auto_20150330_0927'),
+        ('documents', '0001_initial'),
         ('contenttypes', '0001_initial'),
     ]
 
