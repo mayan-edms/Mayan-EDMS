@@ -6,13 +6,13 @@
 {% block title %} :: {% trans 'Confirm' %} {{ title }}{% endblock %}
 
 {% block content %}
-    <h2>
+    <h3>
         {% if delete_view %}
             {% trans 'Confirm delete' %}
         {% else %}
             {% trans 'Confirm' %}
         {% endif %}
-    </h2>
+    </h3>
     <hr>
 
     <div class="modal-dialog">
