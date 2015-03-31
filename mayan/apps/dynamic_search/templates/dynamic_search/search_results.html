@@ -1,6 +1,6 @@
 {% extends 'appearance/base.html' %}
 {% load i18n %}
-{% block title %} :: {% trans 'Search results' %}{% endblock %}
+{% block title %} :: {{ title }}{% endblock %}
 
 {% block content %}
     {% if form %}
@@ -11,11 +11,5 @@
     {% endif %}
     {% if not form and not query_string %}
         {% include 'appearance/generic_list_subtemplate.html' %}
-    {% endif %}
-{% endblock %}
-
-{% block footer %}
-    {% if query_string %}
-        {% blocktrans %}Elapsed time: {{ time_delta }} seconds{% endblocktrans %}
     {% endif %}
 {% endblock %}

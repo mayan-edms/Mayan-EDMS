@@ -16,8 +16,7 @@ from rest_api.classes import APIEndPoint
 from .links import (
     document_folder_list, folder_acl_list, folder_add_document,
     folder_add_multiple_documents, folder_create, folder_delete,
-    folder_document_multiple_remove, folder_edit, folder_list, folder_view,
-    folders_main_menu_link
+    folder_document_multiple_remove, folder_edit, folder_list, folder_view
 )
 from .models import Folder
 from .permissions import (
@@ -38,7 +37,7 @@ class FoldersApp(apps.AppConfig):
         register_links(Document, [document_folder_list], menu_name='form_header')
         register_links([Document], [folder_add_multiple_documents, folder_document_multiple_remove, link_spacer], menu_name='multi_item_links')
 
-        register_top_menu(name='folders', link=folders_main_menu_link)
+        register_top_menu(name='folders', link=folder_list)
 
         class_permissions(Folder, [
             ACLS_EDIT_ACL, ACLS_VIEW_ACL, PERMISSION_FOLDER_DELETE,

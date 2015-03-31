@@ -10,8 +10,8 @@ Welcome to Mayan EDMS v2.0
 What's new in Mayan EDMS v2.0
 =============================
 * Appearance app
-
-
+* Update to Django 1.7.7
+* Update frontend UI to use Bootstrap
 
 
 Upgrading from a previous version

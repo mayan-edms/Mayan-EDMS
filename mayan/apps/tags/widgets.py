@@ -12,22 +12,22 @@ def get_tags_inline_widget_simple(document):
 
     tag_count = document.tags.count()
     if tag_count:
-        tags_template.append('<ul class="tags">')
+        tags_template.append('<div class="bs-component">')
         for tag in document.tags.all():
             tags_template.append(get_single_tag_template(tag))
 
-        tags_template.append('</ul>')
+        tags_template.append('</div>')
 
     return mark_safe(''.join(tags_template))
 
 
 def single_tag_widget(tag):
     tags_template = []
-    tags_template.append('<ul class="tags">')
+    tags_template.append('<div class="bs-component">')
     tags_template.append(get_single_tag_template(tag))
-    tags_template.append('</ul>')
+    tags_template.append('</div>')
     return mark_safe(''.join(tags_template))
 
 
 def get_single_tag_template(tag):
-    return '<li style="background: %s">%s</li>' % (tag.get_color_code(), escape(tag.label).replace(' ', '&nbsp;'))
+    return '<span class="label" style="background: %s">%s</span>' % (tag.get_color_code(), escape(tag.label).replace(' ', '&nbsp;'))

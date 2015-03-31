@@ -37,8 +37,8 @@ def is_current_version(context):
     return context['object'].document.latest_version.timestamp == context['object'].timestamp
 
 
-document_list = {'text': _('All documents'), 'view': 'documents:document_list', 'famfam': 'page', 'icon': 'appearance/icons/page.png'}
-document_list_recent = {'text': _('Recent documents'), 'view': 'documents:document_list_recent', 'famfam': 'page', 'icon': 'appearance/icons/page.png'}
+document_list = {'text': _('All documents'), 'view': 'documents:document_list', 'icon': 'fa fa-file'}
+document_list_recent = {'text': _('Recent documents'), 'view': 'documents:document_list_recent', 'icon': 'fa fa-clock-o'}
 document_preview = {'text': _('Preview'), 'view': 'documents:document_preview', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_content = {'text': _('Content'), 'view': 'documents:document_content', 'args': 'object.id', 'famfam': 'page_white_text', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_properties = {'text': _('Properties'), 'view': 'documents:document_properties', 'args': 'object.id', 'famfam': 'page_gear', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
@@ -85,7 +85,7 @@ document_version_revert = {'text': _('Revert'), 'view': 'documents:document_vers
 
 # Document type related links
 document_type_list = {'text': _('Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
-document_type_setup = {'text': _('Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'icon': 'appearance/icons/layout.png', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
+document_type_setup = {'text': _('Document types'), 'view': 'documents:document_type_list', 'icon': 'fa fa-file', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
 document_type_edit = {'text': _('Edit'), 'view': 'documents:document_type_edit', 'args': 'document_type.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 document_type_delete = {'text': _('Delete'), 'view': 'documents:document_type_delete', 'args': 'document_type.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
 document_type_create = {'text': _('Create document type'), 'view': 'documents:document_type_create', 'famfam': 'layout_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_CREATE]}

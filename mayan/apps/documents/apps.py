@@ -79,8 +79,6 @@ class DocumentsApp(apps.AppConfig):
 
         # Document Version links
         register_links(DocumentVersion, [document_version_revert, document_version_download])
-        register_links(['documents:document_list_recent', 'documents:document_list'], [document_list_recent, document_list], menu_name='secondary_menu')
-        register_links(Document, [document_list_recent, document_list], menu_name='secondary_menu')
 
         # Document page links
         register_links(DocumentPage, [

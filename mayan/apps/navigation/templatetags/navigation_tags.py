@@ -137,11 +137,12 @@ def resolve_links(context, links, current_view, current_path, parsed_query_strin
     return context_links
 
 
-def get_navigation_object(context):
-    try:
-        object_name = Variable('navigation_object_name').resolve(context)
-    except VariableDoesNotExist:
-        object_name = 'object'
+def get_navigation_object(context, object_name=None):
+    if not object_name:
+        try:
+            object_name = Variable('navigation_object_name').resolve(context)
+        except VariableDoesNotExist:
+            object_name = 'object'
 
     try:
         obj = Variable(object_name).resolve(context)
@@ -151,7 +152,7 @@ def get_navigation_object(context):
     return obj, object_name
 
 
-def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation, obj=None):
+def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation, obj=None, object_name=None):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
     current_view = resolve_to_name(current_path)
@@ -183,7 +184,7 @@ def _get_object_navigation_links(context, menu_name=None, links_dict=object_navi
         pass
 
     if not obj:
-        obj, object_name = get_navigation_object(context)
+        obj, object_name = get_navigation_object(context, object_name=object_name)
 
     # Match context navigation object links
     for source, data in links_dict[menu_name].items():
@@ -252,3 +253,33 @@ def get_multi_item_links_form(context, object_list=None):
     form = MultiItemForm(actions=actions)
     context.update({'multi_item_form': form, 'multi_item_actions': actions})
     return ''
+
+
+def get_navigation_links(context, menu_name=None, links_dict=object_navigation, object_name=None):
+    return _get_object_navigation_links(context=context, menu_name=menu_name, links_dict=links_dict, object_name=object_name)
+
+
+@register.assignment_tag(takes_context=True)
+def get_contextual_links(context):
+    result = []
+
+    navigation_object_list = context.get('navigation_object_list', [])
+    if navigation_object_list:
+        for navigation_object in context.get('navigation_object_list', []):
+            links = get_navigation_links(context, object_name=navigation_object['object'])
+            if links:
+                result.append(links)
+    else:
+        links = get_navigation_links(context)
+        if links:
+            result.append(links)
+
+    links = get_navigation_links(context, menu_name='sidebar')
+    if links:
+        result.append(links)
+
+    links = get_navigation_links(context, menu_name='secondary_menu')
+    if links:
+        result.append(links)
+
+    return result

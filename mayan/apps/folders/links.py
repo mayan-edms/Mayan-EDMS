@@ -11,7 +11,7 @@ from .permissions import (
     PERMISSION_FOLDER_REMOVE_DOCUMENT
 )
 
-folder_list = {'text': _('Folders'), 'view': 'folders:folder_list', 'famfam': 'folder_user'}
+folder_list = {'text': _('Folders'), 'view': 'folders:folder_list', 'icon': 'fa fa-folder'}
 folder_create = {'text': _('Create folder'), 'view': 'folders:folder_create', 'famfam': 'folder_add', 'permissions': [PERMISSION_FOLDER_CREATE]}
 folder_edit = {'text': _('Edit'), 'view': 'folders:folder_edit', 'args': 'object.pk', 'famfam': 'folder_edit', 'permissions': [PERMISSION_FOLDER_EDIT]}
 folder_delete = {'text': _('Delete'), 'view': 'folders:folder_delete', 'args': 'object.pk', 'famfam': 'folder_delete', 'permissions': [PERMISSION_FOLDER_DELETE]}
@@ -22,4 +22,3 @@ folder_add_multiple_documents = {'text': _('Add to folder'), 'view': 'folders:fo
 document_folder_list = {'text': _('Folders'), 'view': 'folders:document_folder_list', 'args': 'object.pk', 'famfam': 'folder_user', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
 folder_acl_list = {'text': _('ACLs'), 'view': 'folders:folder_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
-folders_main_menu_link = {'text': _('Folders'), 'famfam': 'folder_user', 'view': 'folders:folder_list'}

@@ -15,6 +15,5 @@ class MainApp(apps.AppConfig):
     verbose_name = _('Main')
 
     def ready(self):
-        register_top_menu('home', link={'text': _('Home'), 'view': 'main:home', 'famfam': 'house'}, position=0)
         register_setup(admin_site)
         register_tool(maintenance_menu)

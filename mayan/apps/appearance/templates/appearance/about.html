@@ -6,40 +6,53 @@
 {% load project_tags %}
 {% load version_tags %}
 
-{% block title %} :: {% trans 'About this program' %}{% endblock %}
+{% block title %} :: {% trans 'About' %}{% endblock %}
 {% block content %}
 
-    <div class="content tc">
-        <h3>{% project_name %} ({% trans 'Version' %} {% app_version 'mayan' %})</h3>
-        <p>
-            {% trans 'Free Open Source Electronic Document Management System' %}
-        </p>
+<h2>{% trans 'About' %}</h2>
+<hr>
 
-        <p>
-            <span class="famfam active famfam-world_go"></span><a href="http://www.mayan-edms.com">http://www.mayan-edms.com</a>
-        </p>
-        <p>
-            <span class="famfam active famfam-book_open"></span><a href="http://readthedocs.org/docs/mayan/en/latest/">http://mayan.readthedocs.org/</a>
-        </p>
-        <p>
-            <span class="famfam active famfam-wrench"></span><a href="https://github.com/mayan-edms/mayan-edms/">https://github.com/mayan-edms/mayan-edms/</a>
-        </p>
-        <p>
-            <span class="famfam active famfam-bug"></span><a href="https://github.com/mayan-edms/mayan-edms/issues">https://github.com/mayan-edms/mayan-edms/issues</a>
-        </p>
-        <p>
-            {% trans 'Released under the Apache 2.0 License' %}
-        </p>
-        <p>
-            <img src="{% static 'appearance/images/mayan_logo_landscape_rough.png' %}"/>
-        </p>
-    </div>
+<div class="jumbotron">
+    <h3 class="text-center">{% project_name %} ({% trans 'Version' %} {% app_version 'mayan' %})</h3>
+    <p class="text-center">
+        {% trans 'Free Open Source Electronic Document Management System' %}
+    </p>
 
+    <p class="text-center">
+        <i class="fa fa-link"></i><a href="http://www.mayan-edms.com"> http://www.mayan-edms.com</a>
+    </p>
+
+    <p class="text-center">
+        <i class="fa fa-book"></i> <a href="http://readthedocs.org/docs/mayan/en/latest/"> http://mayan.readthedocs.org/</a>
+    </p>
+
+    <p class="text-center">
+        <i class="fa fa-wrench"></i> <a href="https://github.com/mayan-edms/mayan-edms/"> https://github.com/mayan-edms/mayan-edms/</a>
+    </p>
+
+    <p class="text-center">
+        <i class="fa fa-bug"></i> <a href="https://github.com/mayan-edms/mayan-edms/issues"> https://github.com/mayan-edms/mayan-edms/issues</a>
+    </p>
+
+    <p class="text-center">
+        {% trans 'Released under the Apache 2.0 License' %}
+    </p>
+
+    <p class="text-center">
+        <img src="{% static 'appearance/images/mayan_logo_landscape_rough.png' %}"/>
+    </p>
+
+  </div>
 {% endblock %}
+
 {% block footer %}
-    <div id="footer">
-        <div class="block">
-            <p>{% trans 'Copyright &copy; 2011-2015 Roberto Rosario.' %}</p>
+    <div id="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {% trans 'Copyright &copy; 2011-2015 Roberto Rosario.' %}
+                </div>
+            </div>
         </div>
     </div>
 {% endblock %}

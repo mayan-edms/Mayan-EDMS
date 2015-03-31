@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 
 from common.utils import encapsulate, return_type
-from common.widgets import exists_with_famfam
+from common.widgets import exists_widget
 
 from .api import settings
 
@@ -35,7 +35,7 @@ def setting_list(request):
             {
                 'name': _('Value'), 'attribute': encapsulate(lambda x: mark_safe('<div class="nowrap">%s&nbsp;%s</div>' % (
                     return_type(getattr(x['module'], x['name'])),
-                    exists_with_famfam(getattr(x['module'], x['name'])) if x['exists'] else ''
+                    exists_widget(getattr(x['module'], x['name'])) if x['exists'] else ''
                 )))
             },
         ]

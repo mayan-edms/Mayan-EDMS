@@ -61,18 +61,18 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
         return mark_safe(output + '</ul>\n')
 
 
-def exists_with_famfam(path):
+def exists_widget(path):
     try:
         return two_state_template(os.path.exists(path))
     except Exception as exception:
         return exception
 
 
-def two_state_template(state, famfam_ok_icon='tick', famfam_fail_icon='cross'):
+def two_state_template(state, ok_icon='fa fa-check', fail_icon='fa fa-cross'):
     if state:
-        return mark_safe('<span class="famfam active famfam-%s"></span>' % famfam_ok_icon)
+        return mark_safe('<i class="text-success {}"></i>'.format(ok_icon))
     else:
-        return mark_safe('<span class="famfam active famfam-%s"></span>' % famfam_fail_icon)
+        return mark_safe('<i class="text-danger {}"></i>'.format(fail_icon))
 
 
 class TextAreaDiv(forms.widgets.Widget):

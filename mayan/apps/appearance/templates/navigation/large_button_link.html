@@ -1,10 +1,8 @@
 {% load static %}
 
-<div class="pure-u-{{ button_link_columns|default:4 }}-24">
-    <a class="pure-button mayan-button-big" href="{% url link.view %}">
-        <p>
-            <img src="{% static link.icon %}"><br>
-            {{ link.text }}
-        </p>
+<div class="{% if div_class %}{{ div_class }}{% else %}col-xs-12 col-sm-6 col-md-4 col-lg-3{% endif %}">
+    <a class="btn btn-default btn-lg btn-block" href="{% url link.view %}" style="margin-bottom: 5px;">
+        <i class="{{ link.icon }} fa-2x"></i><br>
+        {{ link.text }}
     </a>
 </div>

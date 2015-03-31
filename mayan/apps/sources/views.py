@@ -247,29 +247,6 @@ class UploadInteractiveView(UploadBaseView):
     def get_context_data(self, **kwargs):
         context = super(UploadInteractiveView, self).get_context_data(**kwargs)
         context['title'] = _('Upload a local document from source: %s') % self.source.title
-
-        context.update(
-            {
-                'sidebar_subtemplates_list': [
-                    {
-                        'name': 'appearance/generic_subtemplate.html',
-                        'context': {
-                            'title': _('Current document type'),
-                            'paragraphs': [self.document_type if self.document_type else _('None')],
-                            'side_bar': True,
-                        }
-                    },
-                    {
-                        'name': 'appearance/generic_subtemplate.html',
-                        'context': {
-                            'title': _('Current metadata'),
-                            'paragraphs': metadata_repr_as_list(decode_metadata_from_url(self.request.GET)),
-                            'side_bar': True,
-                        }
-                    }
-                ],
-            }
-        )
         return context
 
 

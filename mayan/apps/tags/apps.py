@@ -58,7 +58,7 @@ class TagsApp(apps.AppConfig):
             },
         ])
 
-        register_top_menu('tags', link={'text': _('Tags'), 'view': 'tags:tag_list', 'famfam': 'tag_blue'})
+        register_top_menu('tags', link=tag_list)
 
         register_links(Tag, [tag_tagged_item_list, tag_edit, tag_acl_list, tag_delete])
         register_links([Tag], [tag_multiple_delete], menu_name='multi_item_links')

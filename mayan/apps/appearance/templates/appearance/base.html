@@ -12,6 +12,8 @@
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en">
     <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
         <title>{% project_name %}{{ request.new_window_url }}{% block title %}{% endblock %}</title>
@@ -30,20 +32,17 @@
         {% endif %}
 
         {% compress css %}
-            <link rel="stylesheet" href="{% static 'appearance/packages/web_theme_media/stylesheets/base.css' %}" type="text/css" media="screen" />
-            <link rel="stylesheet" href="{% static 'appearance/packages/web_theme_media/stylesheets/themes/activo/style.css' %}" type="text/css" media="screen" />
-            <link rel="stylesheet" href="{% static 'appearance/packages/animate-custom.css' %}" type="text/css" media="screen" />
-            <link rel="stylesheet" href="{% static 'appearance/css/famfamfam-silk-sprite.css' %}" type="text/css" media="screen" />
-            <link rel="stylesheet" href="{% static 'appearance/css/override.css' %}" type="text/css" media="screen" />
-            <link rel="stylesheet" href="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.css' %}" type="text/css" media="screen" />
-
-            <link rel="stylesheet" href="{% static 'appearance/packages/pure-release-0.5.0/base-min.css' %}" type="text/css" media="screen" />
-            <link rel="stylesheet" href="{% static 'appearance/packages/pure-release-0.5.0/grids-core-min.css' %}" type="text/css" media="screen" />
-            <link rel="stylesheet" href="{% static 'appearance/packages/pure-release-0.5.0/grids-min.css' %}" type="text/css" media="screen" />
-            <link rel="stylesheet" href="{% static 'appearance/packages/pure-release-0.5.0/forms-nr-min.css' %}" type="text/css" media="screen" />
-            <link rel="stylesheet" href="{% static 'appearance/packages/pure-release-0.5.0/buttons-min.css' %}" type="text/css" media="screen" />
+            <link href="{% static 'appearance/packages/font-awesome-4.3.0/css/font-awesome.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/packages/bootstrap-3.3.4-dist/css/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css"  />
+            <link href="{% static 'appearance/packages/bootstrap-3.3.4-dist/css/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css"  />
+            <link href="{% static 'appearance/css/flatly.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.css' %}" media="screen" rel="stylesheet" type="text/css" />
 
             <style type="text/css">
+                body {
+                  padding-top: 70px;
+                }
+
                 #fancybox-left-ico {
                  left: 20px;
                 }
@@ -53,109 +52,12 @@
                  left: auto;
                 }
 
-                .tags {
-                    margin: 0;
-                    padding: 0;
-                    right: 24px;
-                    bottom: -12px;
-                    list-style: none;
-                }
-
-                .tags li {
-                    float:left;
-                    height: 18px;
-                    line-height: 18px;
-                    position:relative;
-                    font-size: 11px;
-                    margin-left: 15px;
-                    padding: 0 5px 0 15px;
-                    background: #0089e0;
-                    color: black;
-                    text-decoration: none;
-                    -moz-border-radius-bottomright: 4px;
-                    -webkit-border-bottom-right-radius: 4px;
-                    border-bottom-right-radius: 4px;
-                    -moz-border-radius-topright: 4px;
-                    -webkit-border-top-right-radius: 4px;
-                    border-top-right-radius: 4px;
-
-                    border-top-left-radius: 12px;
-                    -moz-border-radius-topleft: 12px;
-                    -webkit-border-top-left-radius: 12px;
-
-                    border-bottom-left-radius: 12px;
-                    -moz-border-radius-bottomleft: 12px;
-                    -webkit-border-bottom-left-radius: 12px;
-
-                    /*border:1px solid #ccc;*/
-                    border: 1px solid rgba(0, 0, 0, 0.4);
-                    -moz-box-shadow: 1px 1px 2px #888;
-                    -webkit-box-shadow: 1px 1px 2px #888;
-                    box-shadow: 1px 1px 2px #888;
-
-                    text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px #fff, 0 0 70px #fff, 0 0 80px #fff, 0 0 100px #fff, 0 0 150px #fff;
-                    margin-bottom: 2px;
-                }
-
-                .tags li:after {
-                    content: "";
-                    position: absolute;
-                    top: 7px;
-                    left: 5px;
-                    float: left;
-                    width: 4px;
-                    height: 4px;
-                    -moz-border-radius: 2px;
-                    -webkit-border-radius: 2px;
-                    border-radius: 2px;
-                    background: #fff;
-                    -moz-box-shadow: -1px -1px 2px #004977;
-                    -webkit-box-shadow: -1px -1px 2px #004977;
-                    box-shadow: -1px -1px 2px #004977;
-                }
-
                 .thin_border {
                     border: 1px solid black;
                 }
 
-                .message span.dismiss {
-                    padding:0 5px;
-                    cursor:pointer;
-                    float:right;
-                    margin-right:10px;
-                }
-                .message span.dismiss-all {
-                    padding:0 5px;
-                    cursor:pointer;
-                    float:right;
-                    margin-right:10px;
-                }
-                .message a {
-                    text-decoration:none;
-                    font-weight:bold
-                }
-
                 .lazy-load-carousel-loaded {
                     width: 100%;
-                }
-
-                .mayan-button-big {
-                    margin: 10px;
-                    border: 1px solid darkgrey !important;
-                    width: 85px;
-                    height: 85px;
-                }
-
-                .mayan-button-big p {
-                    white-space: normal;
-                }
-
-                .mayan-button {
-                    border: 1px solid darkgrey !important;
-                }
-
-                #home-form-search input[type=text] {
-                    width: 50%;
                 }
 
                 .mayan-page-wrapper-interactive {
@@ -187,17 +89,23 @@
         {% endcompress %}
     </head>
     <body>
-        <div id="container">
-            {% if web_theme_view_type == 'plain' %}
-                <div id="box">
-                    {% block content_plain %}{% endblock %}
-                </div>
-            {% else %}
-                {% if not web_theme_hide_menus %}
-                    <div id="header">
-                        <h1><a href="{% url 'main:home' %}">{% project_name %}{% if debug %} {% trans "(Debug mode)" %}{% endif %}</a></h1>
-                        <div id="main-navigation">
-                            <ul class="wat-cf" style="width: 73%;">
+        {% if web_theme_view_type == 'plain' %}
+            {% block content_plain %}{% endblock %}
+        {% else %}
+            {% if not web_theme_hide_menus %}
+                <nav class="navbar navbar-default navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="sr-only">{% trans 'Toggle navigation' %}</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand" href="{% url 'main:home' %}">{% project_name %}{% if debug %} <i class="fa fa-bug"></i>{% endif %}</a>
+                        </div>
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <ul class="nav navbar-nav">
                                 {% get_top_menu_links %}
                                 {% for link in menu_links %}
                                     {% with 'true' as as_li %}
@@ -211,188 +119,112 @@
                                     {% endwith %}
                                 {% endfor %}
                             </ul>
-                        </div>
-                        <div id="user-navigation">
-                            <ul class="wat-cf">
-                                <li>
-                                    {% if not user.is_authenticated %}
-                                        {% trans 'Anonymous' %}
-                                    {% else %}
-                                        <a href="{% url 'common:current_user_details' %}" title="{% trans 'User details' %}">{{ user.get_full_name|default:user }} <span class="famfam active famfam-vcard"></span></a>
-                                    {% endif %}
-                                </li>
+                            <ul class="nav navbar-nav navbar-right">
+                                {% if not user.is_authenticated %}
+                                    {% trans 'Anonymous' %}
+                                {% else %}
+                                    <li><a href="{% url 'common:current_user_details' %}" title="{% trans 'User details' %}">{{ user.get_full_name|default:user }} <i class="fa fa-user"></i></a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
-                {% endif %}
-                <div id="wrapper" class="wat-cf">
-                    <div id="main">
-                        {% if messages %}
-                            <div class="inner">
-                                <div class="flash">
-                                    {% for message in messages %}
-                                        <div class="animated fadeInDown message{% if message.tags %}{% if 'success' in message.tags %} notice{% endif %} {{ message.tags }}{% else %} notice{% endif %}">
-                                            <p>
-                                                {{ message }}
-                                                <span class="dismiss-all"><a title="{% trans 'dismiss all notifications' %}">[{% trans 'close all' %}]</a></span>
-                                                <span class="dismiss"><a title="{% trans 'dismiss this notification' %}">[{% trans 'close' %}]</a></span>
-                                            </p>
-                                         </div>
-                                    {% endfor %}
-                                </div>
+                </nav>
+            {% endif %}
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        {% for message in messages %}
+                            <div class="alert alert-dismissible alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                <h4>{% if 'success' in message.tags %}{% trans 'Success' %}{% elif 'info' in message.tags %}{% trans 'Information' %}{% elif 'warning' in message.tags %}{% trans 'Warning' %}{% else %}{% trans 'Error' %}{% endif %}</h4>
+                                <p>{{ message }}</p>
                             </div>
-                        {% endif %}
+                        {% endfor %}
 
                         {% block messages %}{% endblock %}
+                    </div>
+                </div>
 
-                        <div class="block" id="block-text">
-                            {% if navigation_object_list %}
-                                {% for navigation_object_dict in navigation_object_list %}
-                                    {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
-                                    {% get_object_navigation_links "form_header" as form_navigation_links %}
-                                        {% if form_navigation_links %}
-                                            <div class="secondary-navigation">
-                                                <ul class="wat-cf">
-                                                        {% with form_navigation_links as object_navigation_links %}
-                                                        {% with 'true' as as_li %}
-                                                        {% with 'true' as hide_active_anchor %}
-                                                        {% with 'active' as li_class_active %}
-                                                        {% with 'first' as li_class_first %}
-                                                            {% include 'navigation/generic_navigation.html' %}
-                                                        {% endwith %}
-                                                        {% endwith %}
-                                                        {% endwith %}
-                                                        {% endwith %}
-                                                        {% endwith %}
-                                                </ul>
-                                            </div>
+                {% get_contextual_links as links %}
+
+                <div class="row">
+                    {% if links or form_navigation_links %}
+                        <div class="col-xs-8 col-lg-10">
+                    {% else %}
+                        <div class="col-xs-12">
+                    {% endif %}
+                        {% block content %}{% endblock %}
+                        {% block footer %}{% endblock %}
+                    </div>
+
+                    {% if navigation_object_list %}
+                        {% for navigation_object_dict in navigation_object_list %}
+                            {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
+                            {% get_object_navigation_links "form_header" as form_navigation_links %}
+                        {% endfor %}
+                    {% else %}
+                        {% get_object_navigation_links "form_header" as form_navigation_links %}
+
+                    {% endif %}
+
+                    {% if links or form_navigation_links %}
+                        <div class="col-xs-4 col-lg-2">
+                    {% endif %}
+
+                    {% if links %}
+                        <div class="btn-group">
+                            <button aria-expanded="true" type="button" class="btn btn-danger dropdown-toggle" data-toggle="dropdown">
+                                {% trans 'Actions' %}
+                                <span class="sr-only">{% trans 'Toggle Dropdown' %}</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                {% for links_set in links %}
+                                    {% for entry in links_set %}
+                                        <li><a href="{{ entry.url }}">{{ entry.text }}</a></li>
+                                    {% endfor %}
+
+                                        {% if not forloop.last and links_set %}
+                                            <li class="divider"></li>
                                         {% endif %}
                                 {% endfor %}
-                            {% else %}
-                                {% get_object_navigation_links "form_header" as form_navigation_links %}
-                                    {% if form_navigation_links %}
-                                        <div class="secondary-navigation">
-                                            <ul class="wat-cf">
-                                                    {% with form_navigation_links as object_navigation_links %}
-                                                    {% with 'true' as as_li %}
-                                                    {% with 'true' as hide_active_anchor %}
-                                                    {% with 'active' as li_class_active %}
-                                                    {% with 'first' as li_class_first %}
-                                                        {% include 'navigation/generic_navigation.html' %}
-                                                    {% endwith %}
-                                                    {% endwith %}
-                                                    {% endwith %}
-                                                    {% endwith %}
-                                                    {% endwith %}
-                                            </ul>
-                                        </div>
-                                    {% endif %}
-                            {% endif %}
-                            {% block content %}{% endblock %}
-                        </div><!--end .block #block-text-->
-                        {% block footer %}{% endblock %}
-                    </div><!--end #main-->
-                    <div id="sidebar">
-                        {% if navigation_object_list %}
-                            {% for navigation_object_dict in navigation_object_list %}
-                                {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
-                                {% get_object_navigation_links "secondary_menu" as object_navigation_links %}
-                                {% if object_navigation_links %}
-                                    <div class="block">
-                                        <h3>{% trans "Secondary menu" %}</h3>
-                                        <ul class="navigation">
-                                            {% with 'true' as as_li %}
-                                                {% include 'navigation/generic_navigation.html' %}
-                                            {% endwith %}
-                                        </ul>
-                                    </div>
-                                {% endif %}
-                            {% endfor %}
-                        {% else %}
-                            {% get_object_navigation_links "secondary_menu" as object_navigation_links %}
-                            {% if object_navigation_links %}
-                                <div class="block">
-                                    <h3>{% trans "Secondary menu" %}</h3>
-                                    <ul class="navigation">
-                                        {% with 'true' as as_li %}
-                                            {% include 'navigation/generic_navigation.html' %}
-                                        {% endwith %}
-                                    </ul>
-                                </div>
-                            {% endif %}
-                        {% endif %}
+                            </ul>
+                        </div>
+                        <br>
+                    {% endif %}
 
-                        {% if navigation_object_list %}
-                            {% for navigation_object_dict in navigation_object_list %}
-                                {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
-                                {% get_object_navigation_links as object_navigation_links %}
-                                {% if object_navigation_links %}
-                                    <div class="block">
-                                        {% if navigation_object %}
-                                            {% if navigation_object_dict.name %}
-                                                <h3>{% blocktrans with navigation_object_dict.name as name %}Actions for {{ name }}: {{ navigation_object }}{% endblocktrans %}</h3>
-                                            {% else %}
-                                                <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
-                                            {% endif %}
-                                        {% else %}
-                                            <h3>{% trans 'Available actions' %}</h3>
-                                        {% endif %}
-                                        <ul class="navigation">
-                                            {% with 'true' as as_li %}
-                                                {% include 'navigation/generic_navigation.html' %}
-                                            {% endwith %}
-                                        </ul>
-                                    </div>
-                                {% endif %}
-                                {% get_object_navigation_links "sidebar" as object_navigation_links %}
-                                {% if object_navigation_links %}
-                                <div class="block">
-                                    <h3>{% trans 'Other available actions' %}</h3>
-                                    <ul class="navigation">
-                                        {% with 'true' as as_li %}
-                                            {% include 'navigation/generic_navigation.html' %}
-                                        {% endwith %}
-                                    </ul>
-                                </div>
-                                {% endif %}
-                            {% endfor %}
-                        {% else %}
-                            {% get_object_navigation_links as object_navigation_links %}
-                            {% if object_navigation_links %}
-                                <div class="block">
-                                    {% if navigation_object %}
-                                        <h3>{% blocktrans %}Actions for: {{ navigation_object }}{% endblocktrans %}</h3>
-                                    {% else %}
-                                        <h3>{% trans 'Actions' %}</h3>
-                                    {% endif %}
-                                    <ul class="navigation">
-                                        {% with 'true' as as_li %}
-                                            {% include 'navigation/generic_navigation.html' %}
-                                        {% endwith %}
-                                    </ul>
-                                </div>
+                    {% if form_navigation_links %}
+                        <div class="list-group">
+                            {% if form_navigation_links %}
+                                {% with form_navigation_links as object_navigation_links %}
+                                {% with 'true' as hide_active_anchor %}
+                                {% with 'active' as link_class_active %}
+                                {% with 'list-group-item ' as link_classes %}
+                                    {% include 'navigation/generic_navigation.html' %}
+                                {% endwith %}
+                                {% endwith %}
+                                {% endwith %}
+                                {% endwith %}
                             {% endif %}
-                            {% get_object_navigation_links "sidebar" as object_navigation_links %}
-                                {% if object_navigation_links %}
-                                <div class="block">
-                                    <h3>{% trans "Other available actions" %}</h3>
-                                    <ul class="navigation">
-                                        {% with 'true' as as_li %}
-                                            {% include 'navigation/generic_navigation.html' %}
-                                        {% endwith %}
-                                    </ul>
-                                </div>
-                            {% endif %}
-                        {% endif %}
+                        </div>
+                    {% endif %}
 
-                        {% block sidebar %}{% endblock %}
-                    </div><!--end #sidebar-->
-                </div><!--end #wrapper .wat-cf-->
-            {% endif %}
-        </div><!--end #container-->
+                    {% if links or form_navigation_links %}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        {% endif %}
+
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
 
         {% compress js %}
         <script type="text/javascript" src="{% static 'appearance/packages/jquery-2.1.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'appearance/packages/bootstrap-3.3.4-dist/js/bootstrap.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/jquery.scrollview.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/jquery_lazyload-master/jquery.lazyload.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.pack.js' %}"></script>
@@ -531,38 +363,6 @@
             });
         </script>
         {% block javascript %}{% endblock %}
-
-        <script type="text/javascript">
-            function dismissAlert($element){
-                $element.parent().parent().addClass('fadeOutUp').fadeOut('slow');
-            }
-
-            $(document).ready(function() {
-                var dismissTimer = setInterval(function(){
-                    $('.success').each(function(){
-                        dismissAlert($(this).find('.dismiss'));
-                    });
-
-                    clearInterval(dismissTimer);
-                }, 2500);
-
-                $('.dismiss').click(function(){
-                    dismissAlert($(this));
-                    return false;
-                });
-                $('.dismiss-all').click(function(){
-                    $('.message').each(function(){
-                        dismissAlert($(this).parent().find('.dismiss'));
-                    });
-                    return false;
-                });
-                $('th input:checkbox').click(function(e) {
-                    var table = $(e.target).closest('table');
-                    $('td input:checkbox', table).attr('checked', e.target.checked);
-                });
-            });
-        </script>
         {% endcompress %}
-
     </body>
 </html>

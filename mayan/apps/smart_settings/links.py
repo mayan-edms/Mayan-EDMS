@@ -7,4 +7,4 @@ def is_superuser(context):
     return context['request'].user.is_staff or context['request'].user.is_superuser
 
 
-check_settings = {'text': _('Settings'), 'view': 'settings:setting_list', 'famfam': 'cog', 'icon': 'appearance/icons/cog.png', 'condition': is_superuser}
+check_settings = {'text': _('Settings'), 'view': 'settings:setting_list', 'icon': 'fa fa-gear', 'condition': is_superuser}

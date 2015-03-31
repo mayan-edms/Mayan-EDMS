@@ -43,9 +43,7 @@ class SourcesApp(apps.AppConfig):
         register_links(SourceTransformation, [setup_source_transformation_edit, setup_source_transformation_delete])
         register_links([SourceTransformation, 'sources:setup_source_transformation_create', 'sources:setup_source_transformation_list'], [setup_source_transformation_create], menu_name='sidebar')
         register_links(['documents:document_version_list', 'documents:upload_version', 'documents:document_version_revert'], [upload_version], menu_name='sidebar')
-        register_links([Document, 'documents:document_list_recent', 'documents:document_list', 'sources:document_create', 'sources:document_create_multiple', 'sources:upload_interactive', 'sources:staging_file_delete'], [document_create_multiple], menu_name='secondary_menu')
         register_links(Document, [document_create_siblings])
-        register_links(['sources:document_create', 'sources:document_create_multiple', 'sources:upload_interactive', 'sources:staging_file_delete'], [document_list_recent, document_list], menu_name='secondary_menu')
 
         register_setup(setup_sources)
 

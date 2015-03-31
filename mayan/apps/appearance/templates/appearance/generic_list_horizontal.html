@@ -6,6 +6,16 @@
 {% block title %} :: {{ title }}{% endblock %}
 
 {% block content %}
-    {% include 'appearance/generic_list_horizontal_subtemplate.html' %}
+    <h2>
+        {{ title }}
+    </h2>
+    <hr>
+    <div class="well center-block">
+        <div class="row">
+            {% with 'navigation/large_button_link.html' as link_template %}
+                {% include 'navigation/generic_navigation.html' %}
+            {% endwith %}
+        </div>
+    </div>
 {% endblock %}
 

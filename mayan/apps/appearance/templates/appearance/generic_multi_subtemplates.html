@@ -4,51 +4,27 @@
 
 {% block title %} :: {% include 'appearance/calculate_form_title.html' %}{% endblock %}
 
-{% block sidebar %}
-    {% for subtemplate in sidebar_subtemplates_list %}
-        {% if subtemplate.form %}
-            {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
-                <div class="generic_subform">
-                    {{ rendered_subtemplate }}
-                </div>
-        {% else %}
-            {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
-            {{ rendered_subtemplate }}
-        {% endif %}
-            {% if subtemplate.grid_clear or not subtemplate.grid %}
-            {% endif %}
-    {% endfor %}
-{% endblock %}
-
 {% block content %}
     {% if main_title %}
-        <div class="content">
-            <h2 class="title">{{ main_title }}</h2>
-        </div>
+        <h2>{{ main_title }}</h2>
+        <hr>
     {% endif %}
 
-    <div class="pure-g">
-
+    <div class="row">
         {% for subtemplate in subtemplates_list %}
-
             {% if subtemplate.grid %}
-                <div class="pure-u-{{ subtemplate.grid }}-24">
+                <div class="col-xs-{{ subtemplate.grid }}">
             {% else %}
-                <div class="pure-u-1">
+                <div class="cols-xs-12">
             {% endif %}
                 {% if subtemplate.form %}
                     {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
-                        <div class="generic_subform">
-                            {{ rendered_subtemplate }}
-                        </div>
+                        {{ rendered_subtemplate }}
                 {% else %}
                     {% render_subtemplate subtemplate.name subtemplate.context as rendered_subtemplate %}
                     {{ rendered_subtemplate }}
                 {% endif %}
             </div>
-            {% if subtemplate.grid_clear or not subtemplate.grid %}
-                <div class="clear"></div>
-            {% endif %}
          {% endfor %}
     </div>
 {% endblock %}
