@@ -12,7 +12,7 @@ from common.classes import ModelAttribute
 from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
 from events.permissions import PERMISSION_EVENTS_VIEW
-from main import FrontPageButton
+from main import FrontPageButton, MissingItem
 from main.api import register_maintenance_links
 from navigation.api import register_links, register_model_list_columns
 from navigation.links import link_spacer
@@ -149,3 +149,5 @@ class DocumentsApp(apps.AppConfig):
         registry.register(Document)
 
         DocumentPage.add_to_class('get_transformation_list', lambda document_page: DocumentPageTransformation.objects.get_for_document_page_as_list(document_page))
+
+        MissingItem(label=_('Create a document type'), description=_('Every uploaded document must be assigned a document type, it is the basic way Mayan EDMS categorizes documents.'), condition=lambda: not DocumentType.objects.exists(), view='documents:document_type_list')

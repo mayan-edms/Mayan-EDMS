@@ -37,6 +37,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    # Placed at the top so it can override any template
+    'appearance.apps.AppearanceApp',
     # 3rd party
     'suit',
     # Django
@@ -75,7 +77,6 @@ INSTALLED_APPS = (
     'smart_settings.apps.SmartSettingsApp',
     'user_management.apps.UserManagementApp',
     # Mayan EDMS
-    'appearance.apps.AppearanceApp',
     'checkouts.apps.CheckoutsApp',
     'document_acls.apps.DocumentACLsApp',
     'document_comments.apps.DocumentCommentsApp',

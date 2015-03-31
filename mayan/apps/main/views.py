@@ -9,7 +9,7 @@ from dynamic_search.classes import SearchModel
 from permissions.models import Permission
 
 from .api import diagnostics, tools
-from .classes import FrontPageButton
+from .classes import FrontPageButton, MissingItem
 
 
 def home(request):
@@ -20,6 +20,7 @@ def home(request):
         'query_string': request.GET,
         'hide_links': True,
         'search_results_limit': 100,
+        'missing_list': [item for item in MissingItem.get_all() if item.condition()],
     }
 
     if request.GET:

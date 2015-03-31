@@ -15,6 +15,26 @@
 
     <div class="row">
         <div class="col-xs-12">
+            {% if missing_list %}
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{% trans 'Getting started' %}</h3>
+                    </div>
+                    <div class="panel-body">
+                        {% trans 'Before you can fully use Mayan EDMS you need the following:' %}
+
+                        <div class="list-group">
+                            {% for missing in missing_list %}
+                                <a href="{% url missing.view %}" class="list-group-item">
+                                    <h4 class="list-group-item-heading">{{ missing.label }}</h4>
+                                    <p class="list-group-item-text">{{ missing.description }}</p>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
             <div class="well center-block">
                 <div class="row">
                     {% with 'navigation/large_button_link.html' as link_template %}
@@ -34,7 +54,7 @@
                         <input class="form-control" name="q" placeholder="{% trans 'Space separated terms' %}" type="text">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
-                            <a class="btn btn-primary" href="{% url 'search:search_advanced' %}">{% trans 'Advanced search' %}</a>
+                            <a class="btn btn-primary" href="{% url 'search:search_advanced' %}">{% trans 'Advanced' %}</a>
                         </span>
                     </div>
                 </form>

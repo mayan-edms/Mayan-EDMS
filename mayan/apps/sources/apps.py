@@ -6,7 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from common.utils import encapsulate
 from documents.links import document_list_recent, document_list
 from documents.models import Document
-from main import FrontPageButton
+from main import FrontPageButton, MissingItem
 from navigation.api import register_links, register_model_list_columns
 from project_setup.api import register_setup
 from rest_api.classes import APIEndPoint
@@ -50,3 +50,5 @@ class SourcesApp(apps.AppConfig):
         APIEndPoint('sources')
 
         FrontPageButton(link=document_create_multiple)
+
+        MissingItem(label=_('Create a document source'), description=_('Document sources are the way in which new documents are feed to Mayan EDMS, create at least a web form source to be able to upload documents from a browser.'), condition=lambda: not Source.objects.exists(), view='sources:setup_source_list')

@@ -1,1 +1,1 @@
-from .classes import FrontPageButton  # NOQA
+from .classes import FrontPageButton, MissingItem  # NOQA
