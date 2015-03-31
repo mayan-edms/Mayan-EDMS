@@ -148,6 +148,15 @@
 
                 {% get_contextual_links as links %}
 
+                {% if navigation_object_list %}
+                    {% for navigation_object_dict in navigation_object_list %}
+                        {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
+                        {% get_object_navigation_links "form_header" as form_navigation_links %}
+                    {% endfor %}
+                {% else %}
+                    {% get_object_navigation_links "form_header" as form_navigation_links %}
+                {% endif %}
+
                 <div class="row">
                     {% if links or form_navigation_links %}
                         <div class="col-xs-8 col-lg-10">
@@ -157,16 +166,6 @@
                         {% block content %}{% endblock %}
                         {% block footer %}{% endblock %}
                     </div>
-
-                    {% if navigation_object_list %}
-                        {% for navigation_object_dict in navigation_object_list %}
-                            {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
-                            {% get_object_navigation_links "form_header" as form_navigation_links %}
-                        {% endfor %}
-                    {% else %}
-                        {% get_object_navigation_links "form_header" as form_navigation_links %}
-
-                    {% endif %}
 
                     {% if links or form_navigation_links %}
                         <div class="col-xs-4 col-lg-2">
