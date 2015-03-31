@@ -9,10 +9,7 @@
 {% block content %}
     {% if form %}
         {% with 'true' as read_only %}
-                {% include 'appearance/generic_form_subtemplate.html' %}
-            {% if grid_clear or not grid %}
-                <div class=""></div>
-            {% endif %}
+            {% include 'appearance/generic_form_subtemplate.html' %}
         {% endwith %}
     {% endif %}
 
