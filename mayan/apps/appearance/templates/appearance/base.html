@@ -117,7 +117,9 @@
                                     {% with 'true' as hide_active_anchor %}
                                     {% with 'active' as li_class_active %}
                                     {% with 'first' as li_class_first %}
+                                    {% with ' ' as link_classes %}
                                         {% include 'navigation/generic_subnavigation.html' %}
+                                    {% endwith %}
                                     {% endwith %}
                                     {% endwith %}
                                     {% endwith %}
