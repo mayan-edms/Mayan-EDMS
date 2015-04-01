@@ -583,18 +583,13 @@ def document_page_view(request, document_page_id):
     else:
         zoom_text = ''
 
-    if rotation != 0 and rotation != 360:
-        rotation_text = '(%d&deg;)' % rotation
-    else:
-        rotation_text = ''
-
     return render_to_response('appearance/generic_detail.html', {
         'page': document_page,
         'access_object': document_page.document,
         'navigation_object_name': 'page',
         'web_theme_hide_menus': True,
         'form': document_page_form,
-        'title': ' '.join([base_title, zoom_text, rotation_text]),
+        'title': ' '.join([base_title, zoom_text]),
         'zoom': zoom,
         'rotation': rotation,
     }, context_instance=RequestContext(request))
