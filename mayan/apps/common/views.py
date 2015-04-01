@@ -293,7 +293,7 @@ def password_change_view(request):
     return password_change(
         request,
         extra_context=context,
-        template_name='appearance/password_change_form.html',
+        template_name='appearance/generic_form.html',
         post_change_redirect=reverse('common:password_change_done'),
     )
 
