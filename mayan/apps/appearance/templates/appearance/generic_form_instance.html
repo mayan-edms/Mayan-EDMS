@@ -18,7 +18,7 @@
     {% for field in form.hidden_fields %}
         {{ field }}
     {% endfor %}
-    <tr class="{% cycle 'odd' 'even2' %}">
+    <tr>
     {% for field in form.visible_fields %}
         <td title="{% if field.errors %}{% for error in field.errors %}{{ error }}{% if not forloop.last %} | {% endif %}{% endfor %}{% else %}{{ field.help_text }}{% endif %}">
             {% if field.errors %}<div class="has-error">{% endif %}
