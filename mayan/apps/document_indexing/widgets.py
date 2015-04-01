@@ -81,7 +81,7 @@ def node_level(x):
         ''.join(
             [
                 '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (getattr(x, x._mptt_meta.level_attr) - 1),
-                '' if x.is_root_node() else '',
+                '' if x.is_root_node() else '<i class="fa fa-level-up fa-rotate-90"></i> ',
                 ugettext('Root') if x.is_root_node() else unicode(x)
             ]
         )
