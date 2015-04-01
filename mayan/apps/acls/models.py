@@ -5,6 +5,7 @@ import logging
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _, ugettext
 
 from solo.models import SingletonModel
@@ -18,6 +19,7 @@ from .managers import AccessEntryManager, DefaultAccessEntryManager
 logger = logging.getLogger(__name__)
 
 
+@python_2_unicode_compatible
 class AccessEntry(models.Model):
     """
     Model that hold the permission, object, actor relationship
@@ -51,10 +53,11 @@ class AccessEntry(models.Model):
         verbose_name = _('Access entry')
         verbose_name_plural = _('Access entries')
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s: %s' % (self.content_type, self.content_object)
 
 
+@python_2_unicode_compatible
 class DefaultAccessEntry(models.Model):
     """
     Model that holds the permission, class, actor relationship, that will
@@ -88,7 +91,7 @@ class DefaultAccessEntry(models.Model):
         verbose_name = _('Default access entry')
         verbose_name_plural = _('Default access entries')
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s: %s' % (self.content_type, self.content_object)
 
 
@@ -101,10 +104,11 @@ class CreatorSingletonManager(models.Manager):
             return holder
 
 
+@python_2_unicode_compatible
 class CreatorSingleton(SingletonModel):
     objects = CreatorSingletonManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return ugettext('Creator')
 
     class Meta:

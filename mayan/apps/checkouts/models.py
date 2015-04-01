@@ -5,6 +5,7 @@ import logging
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
@@ -16,6 +17,7 @@ from .managers import DocumentCheckoutManager
 logger = logging.getLogger(__name__)
 
 
+@python_2_unicode_compatible
 class DocumentCheckout(models.Model):
     """
     Model to store the state and information of a document checkout
@@ -37,7 +39,7 @@ class DocumentCheckout(models.Model):
 
     objects = DocumentCheckoutManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return unicode(self.document)
 
     def save(self, *args, **kwargs):

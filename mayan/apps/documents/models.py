@@ -11,7 +11,7 @@ import uuid
 from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from acls.utils import apply_default_acls
@@ -46,6 +46,7 @@ def UUID_FUNCTION(*args, **kwargs):
     return unicode(uuid.uuid4())
 
 
+@python_2_unicode_compatible
 class DocumentType(models.Model):
     """
     Define document types or classes to which a specific set of
@@ -58,7 +59,7 @@ class DocumentType(models.Model):
 
     objects = DocumentTypeManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def natural_key(self):
@@ -70,6 +71,7 @@ class DocumentType(models.Model):
         ordering = ['name']
 
 
+@python_2_unicode_compatible
 class Document(models.Model):
     """
     Defines a single document with it's fields and properties
@@ -104,7 +106,7 @@ class Document(models.Model):
             if os.path.isfile(file_path):
                 os.unlink(file_path)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.label
 
     @models.permalink
@@ -272,6 +274,7 @@ class Document(models.Model):
         return self.save_to_file(temporary_path, buffer_size)
 
 
+@python_2_unicode_compatible
 class DocumentVersion(models.Model):
     """
     Model that describes a document version and its properties
@@ -302,7 +305,7 @@ class DocumentVersion(models.Model):
         verbose_name = _('Document version')
         verbose_name_plural = _('Document version')
 
-    def __unicode__(self):
+    def __str__(self):
         return '{0} - {1}'.format(self.document, self.timestamp)
 
     def save(self, *args, **kwargs):
@@ -355,7 +358,7 @@ class DocumentVersion(models.Model):
             # If converter backend doesn't understand the format,
             # use 1 as the total page count
             detected_pages = 1
-            self.description = ugettext('This document\'s file format is not known, the page count has therefore defaulted to 1.')
+            self.description = _('This document\'s file format is not known, the page count has therefore defaulted to 1.')
             self.save()
         try:
             os.remove(filepath)
@@ -468,6 +471,7 @@ class DocumentVersion(models.Model):
         return self.pages.count()
 
 
+@python_2_unicode_compatible
 class DocumentTypeFilename(models.Model):
     """
     List of filenames available to a specific document type for the
@@ -477,7 +481,7 @@ class DocumentTypeFilename(models.Model):
     filename = models.CharField(max_length=128, verbose_name=_('Filename'), db_index=True)
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
-    def __unicode__(self):
+    def __str__(self):
         return self.filename
 
     class Meta:
@@ -487,6 +491,7 @@ class DocumentTypeFilename(models.Model):
         verbose_name_plural = _('Document types quick rename filenames')
 
 
+@python_2_unicode_compatible
 class DocumentPage(models.Model):
     """
     Model that describes a document version page including it's content
@@ -496,7 +501,7 @@ class DocumentPage(models.Model):
     page_label = models.CharField(max_length=40, blank=True, null=True, verbose_name=_('Page label'))
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_('Page number'), db_index=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return _('Page %(page_num)d out of %(total_pages)d of %(document)s') % {
             'document': unicode(self.document),
             'page_num': self.page_number,
@@ -533,6 +538,7 @@ def argument_validator(value):
         raise ValidationError(_('Enter a valid value.'), code='invalid')
 
 
+@python_2_unicode_compatible
 class DocumentPageTransformation(models.Model):
     """
     Model that stores the transformation and transformation arguments
@@ -544,7 +550,7 @@ class DocumentPageTransformation(models.Model):
     arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[argument_validator])
     objects = DocumentPageTransformationManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.get_transformation_display()
 
     class Meta:
@@ -553,6 +559,7 @@ class DocumentPageTransformation(models.Model):
         verbose_name_plural = _('Document page transformations')
 
 
+@python_2_unicode_compatible
 class RecentDocument(models.Model):
     """
     Keeps a list of the n most recent accessed or created document for
@@ -564,7 +571,7 @@ class RecentDocument(models.Model):
 
     objects = RecentDocumentManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return unicode(self.document)
 
     class Meta:

@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from mptt.fields import TreeForeignKey
@@ -11,6 +12,7 @@ from documents.models import Document, DocumentType
 from .managers import IndexManager
 
 
+@python_2_unicode_compatible
 class Index(models.Model):
     name = models.CharField(unique=True, max_length=64, verbose_name=_('Name'), help_text=_('Internal name used to reference this index.'))
     # TODO: normalize 'title' to 'label'
@@ -28,7 +30,7 @@ class Index(models.Model):
     def instance_root(self):
         return self.template_root.node_instance.get()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     @models.permalink
@@ -60,6 +62,7 @@ class Index(models.Model):
         verbose_name_plural = _('Indexes')
 
 
+@python_2_unicode_compatible
 class IndexTemplateNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True)
     index = models.ForeignKey(Index, verbose_name=_('Index'), related_name='node_templates')
@@ -67,7 +70,7 @@ class IndexTemplateNode(MPTTModel):
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'), help_text=_('Causes this node to be visible and updated when document data changes.'))
     link_documents = models.BooleanField(default=False, verbose_name=_('Link documents'), help_text=_('Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
 
-    def __unicode__(self):
+    def __str__(self):
         if self.is_root_node():
             return ugettext('<%s Root>') % self.index
         else:
@@ -78,13 +81,14 @@ class IndexTemplateNode(MPTTModel):
         verbose_name_plural = _('Indexes node template')
 
 
+@python_2_unicode_compatible
 class IndexInstanceNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True)
     index_template_node = models.ForeignKey(IndexTemplateNode, related_name='node_instance', verbose_name=_('Index template node'))
     value = models.CharField(max_length=128, blank=True, verbose_name=_('Value'))
     documents = models.ManyToManyField(Document, related_name='node_instances', verbose_name=_('Documents'))
 
-    def __unicode__(self):
+    def __str__(self):
         return self.value
 
     def index(self):

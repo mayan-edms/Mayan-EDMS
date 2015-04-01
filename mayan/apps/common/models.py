@@ -5,8 +5,8 @@ from pytz import common_timezones
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.db import models
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.encoding import python_2_unicode_compatible
+from django.utils.translation import ugettext_lazy as _, ugettext
 
 from solo.models import SingletonModel
 
@@ -21,10 +21,11 @@ def upload_to(instance, filename):
     return '/'.join([SHARED_UPLOADED_FILE_PATH, filename])
 
 
+@python_2_unicode_compatible
 class AnonymousUserSingleton(SingletonModel):
     objects = AnonymousUserSingletonManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return ugettext('Anonymous user')
 
     class Meta:
@@ -40,6 +41,7 @@ class AutoAdminSingleton(SingletonModel):
         verbose_name = verbose_name_plural = _('Auto admin properties')
 
 
+@python_2_unicode_compatible
 class SharedUploadedFile(models.Model):
     file = models.FileField(upload_to=upload_to, storage=shared_storage_backend, verbose_name=_('File'))
     filename = models.CharField(max_length=255, verbose_name=_('Filename'))
@@ -49,7 +51,7 @@ class SharedUploadedFile(models.Model):
         verbose_name = _('Shared uploaded file')
         verbose_name_plural = _('Shared uploaded files')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.filename
 
     def delete(self, *args, **kwargs):
@@ -57,13 +59,14 @@ class SharedUploadedFile(models.Model):
         return super(SharedUploadedFile, self).delete(*args, **kwargs)
 
 
+@python_2_unicode_compatible
 class UserLocaleProfile(models.Model):
     user = models.OneToOneField(User, related_name='locale_profile', verbose_name=_('User'))
 
     timezone = models.CharField(choices=zip(common_timezones, common_timezones), max_length=48, verbose_name=_('Timezone'))
     language = models.CharField(choices=settings.LANGUAGES, max_length=8, verbose_name=_('Language'))
 
-    def __unicode__(self):
+    def __str__(self):
         return unicode(self.user)
 
     class Meta:

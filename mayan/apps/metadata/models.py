@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
@@ -10,6 +11,7 @@ from .managers import MetadataTypeManager
 from .settings import AVAILABLE_VALIDATORS
 
 
+@python_2_unicode_compatible
 class MetadataType(models.Model):
     """
     Define a type of metadata
@@ -30,7 +32,7 @@ class MetadataType(models.Model):
     # available now that we removed these from the help_text
     objects = MetadataTypeManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def natural_key(self):
@@ -42,6 +44,7 @@ class MetadataType(models.Model):
         verbose_name_plural = _('Metadata types')
 
 
+@python_2_unicode_compatible
 class DocumentMetadata(models.Model):
     """
     Link a document to a specific instance of a metadata type with it's
@@ -51,7 +54,7 @@ class DocumentMetadata(models.Model):
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_('Type'))
     value = models.CharField(max_length=255, blank=True, null=True, verbose_name=_('Value'), db_index=True)
 
-    def __unicode__(self):
+    def __str__(self):
         return unicode(self.metadata_type)
 
     def save(self, *args, **kwargs):
@@ -72,12 +75,13 @@ class DocumentMetadata(models.Model):
         verbose_name_plural = _('Document metadata')
 
 
+@python_2_unicode_compatible
 class DocumentTypeMetadataType(models.Model):
     document_type = models.ForeignKey(DocumentType, related_name='metadata', verbose_name=_('Document type'))
     metadata_type = models.ForeignKey(MetadataType, verbose_name=_('Metadata type'))
     required = models.BooleanField(default=False, verbose_name=_('Required'))
 
-    def __unicode__(self):
+    def __str__(self):
         return unicode(self.metadata_type)
 
     class Meta:

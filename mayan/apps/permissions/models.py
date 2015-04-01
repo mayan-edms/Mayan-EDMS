@@ -7,6 +7,7 @@ from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
@@ -122,6 +123,7 @@ Permission.objects = PermissionManager(Permission)
 Permission._default_manager = Permission.objects
 
 
+@python_2_unicode_compatible
 class StoredPermission(models.Model):
     namespace = models.CharField(max_length=64, verbose_name=_('Namespace'))
     name = models.CharField(max_length=64, verbose_name=_('Name'))
@@ -143,7 +145,7 @@ class StoredPermission(models.Model):
             # longer used in the current code
             pass
 
-    def __unicode__(self):
+    def __str__(self):
         return unicode(getattr(self, 'volatile_permission', self.name))
 
     def get_holders(self):
@@ -192,6 +194,7 @@ class StoredPermission(models.Model):
             return True
 
 
+@python_2_unicode_compatible
 class PermissionHolder(models.Model):
     permission = models.ForeignKey(StoredPermission, verbose_name=_('Permission'))
     holder_type = models.ForeignKey(ContentType,
@@ -204,10 +207,11 @@ class PermissionHolder(models.Model):
         verbose_name = _('Permission holder')
         verbose_name_plural = _('Permission holders')
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s: %s' % (self.holder_type, self.holder_object)
 
 
+@python_2_unicode_compatible
 class Role(models.Model):
     name = models.CharField(max_length=64, unique=True)
     label = models.CharField(max_length=64, unique=True, verbose_name=_('Label'))
@@ -217,7 +221,7 @@ class Role(models.Model):
         verbose_name = _('Role')
         verbose_name_plural = _('Roles')
 
-    def __unicode__(self):
+    def __str__(self):
         return self.label
 
     @models.permalink
@@ -244,6 +248,7 @@ class Role(models.Model):
         return (member.member_object for member in self.rolemember_set.filter(**filter_dict))
 
 
+@python_2_unicode_compatible
 class RoleMember(models.Model):
     role = models.ForeignKey(Role, verbose_name=_('Role'))
     member_type = models.ForeignKey(
@@ -264,5 +269,5 @@ class RoleMember(models.Model):
         verbose_name = _('Role member')
         verbose_name_plural = _('Role members')
 
-    def __unicode__(self):
+    def __str__(self):
         return unicode(self.member_object)

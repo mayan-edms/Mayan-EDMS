@@ -2,15 +2,18 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.db.models import Q
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
 
-from .literals import (INCLUSION_AND, INCLUSION_CHOICES, INCLUSION_OR,
-                       OPERATOR_CHOICES)
+from .literals import (
+    INCLUSION_AND, INCLUSION_CHOICES, INCLUSION_OR, OPERATOR_CHOICES
+)
 from .managers import SmartLinkManager
 
 
+@python_2_unicode_compatible
 class SmartLink(models.Model):
     title = models.CharField(max_length=96, verbose_name=_('Title'))
     dynamic_title = models.CharField(blank=True, max_length=96, verbose_name=_('Dynamic title'), help_text=_('This expression will be evaluated against the current selected document.'))
@@ -19,7 +22,7 @@ class SmartLink(models.Model):
 
     objects = SmartLinkManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.title
 
     def get_dynamic_title(self, document):
@@ -59,6 +62,7 @@ class SmartLink(models.Model):
         verbose_name_plural = _('Smart links')
 
 
+@python_2_unicode_compatible
 class SmartLinkCondition(models.Model):
     smart_link = models.ForeignKey(SmartLink, related_name='conditions', verbose_name=_('Smart link'))
     inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_('The inclusion is ignored for the first item.'))
@@ -68,7 +72,7 @@ class SmartLinkCondition(models.Model):
     negated = models.BooleanField(default=False, verbose_name=_('Negated'), help_text=_('Inverts the logic of the operator.'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s foreign %s %s %s %s' % (self.get_inclusion_display(), self.foreign_document_data, _('not') if self.negated else '', self.get_operator_display(), self.expression)
 
     class Meta:

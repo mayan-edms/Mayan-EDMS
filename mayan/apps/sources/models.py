@@ -14,6 +14,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
 from django.core.files import File
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
@@ -37,6 +38,7 @@ from .managers import SourceTransformationManager
 logger = logging.getLogger(__name__)
 
 
+@python_2_unicode_compatible
 class Source(models.Model):
     title = models.CharField(max_length=64, verbose_name=_('Title'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
@@ -47,7 +49,7 @@ class Source(models.Model):
     def class_fullname(cls):
         return unicode(dict(SOURCE_CHOICES).get(cls.source_type))
 
-    def __unicode__(self):
+    def __str__(self):
         return '%s' % self.title
 
     def fullname(self):
@@ -364,6 +366,7 @@ def argument_validator(value):
         raise ValidationError(_('Enter a valid value.'), code='invalid')
 
 
+@python_2_unicode_compatible
 class SourceTransformation(models.Model):
     """
     Model that stores the transformation and transformation arguments
@@ -379,7 +382,7 @@ class SourceTransformation(models.Model):
     objects = models.Manager()
     transformations = SourceTransformationManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.get_transformation_display()
 
     class Meta:

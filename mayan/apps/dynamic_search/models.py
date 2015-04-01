@@ -6,12 +6,13 @@ import urlparse
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.encoding import smart_str, smart_unicode
+from django.utils.encoding import python_2_unicode_compatible, smart_str, smart_unicode
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import RecentSearchManager
 
 
+@python_2_unicode_compatible
 class RecentSearch(models.Model):
     """
     Keeps a list of the n most recent search keywords for a given user
@@ -28,7 +29,7 @@ class RecentSearch(models.Model):
 
     objects = RecentSearchManager()
 
-    def __unicode__(self):
+    def __str__(self):
         # TODO: Fix this hack, store the search model name in the recent search entry
         from .classes import SearchModel
         document_search = SearchModel.get('documents.Document')
