@@ -804,7 +804,6 @@ def document_print(request, document_id):
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or document.get_absolute_url())))
 
     new_window_url = None
-    html_redirect = None
 
     if request.method == 'POST':
         form = PrintForm(request.POST)
@@ -827,7 +826,6 @@ def document_print(request, document_id):
         'object': document,
         'title': _('Print: %s') % document,
         'next': next,
-        'html_redirect': html_redirect if html_redirect else html_redirect,
         'new_window_url': new_window_url if new_window_url else new_window_url
     }, context_instance=RequestContext(request))
 

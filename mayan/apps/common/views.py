@@ -265,10 +265,9 @@ def login_view(request):
 
     if not request.user.is_authenticated():
         context = {'web_theme_view_type': 'plain'}
+        return login(request, extra_context=context, **kwargs)
     else:
-        context = {}
-
-    return login(request, extra_context=context, **kwargs)
+        return HttpResponseRedirect(reverse(getattr(settings, 'LOGIN_REDIRECT_URL', 'main:home')))
 
 
 def license_view(request):

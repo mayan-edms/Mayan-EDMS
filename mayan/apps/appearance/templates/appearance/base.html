@@ -16,7 +16,7 @@
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
-        <title>{% project_name %}{{ request.new_window_url }}{% block title %}{% endblock %}</title>
+        <title>{% block project_name %}{% project_name %}{% endblock %}{{ request.new_window_url }}{% block title %}{% endblock %}</title>
 
         {% if new_window_url %}
             <script type="text/javascript">
@@ -25,10 +25,6 @@
             <noscript>
                 <META HTTP-EQUIV="refresh" CONTENT="{{ new_window_url_timeout|default:'2' }};{{ new_window_url|safe }}">
             </noscript>
-        {% endif %}
-
-        {% if html_redirect %}
-            <META HTTP-EQUIV="refresh" CONTENT="{{ html_redirect_timeout|default:'2' }};{{ html_redirect|safe }}">
         {% endif %}
 
         {% compress css %}
