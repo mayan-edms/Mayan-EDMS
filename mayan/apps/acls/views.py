@@ -345,7 +345,6 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
         'form': form,
         'title': _('Add new holder for: %s') % obj,
         'submit_label': _('Select'),
-        'submit_icon_famfam': 'tick',
         'object': obj,
         'access_object': AccessObject.encapsulate(obj),
         'navigation_object_list': [
@@ -475,7 +474,6 @@ def acl_class_new_holder_for(request, access_object_class_gid):
         'title': _('Add new holder for class: %s') % unicode(access_object_class),
         'object': access_object_class,
         'submit_label': _('Select'),
-        'submit_icon_famfam': 'tick'
     }
 
     return render_to_response('appearance/generic_form.html', context,

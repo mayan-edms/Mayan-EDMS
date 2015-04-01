@@ -76,7 +76,7 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
         'form': form,
         'next': next,
         'submit_label': _('Send'),
-        'submit_icon_famfam': 'email_go'
+        'submit_icon': 'fa fa-envelope'
     }
     if len(documents) == 1:
         context['object'] = documents[0]

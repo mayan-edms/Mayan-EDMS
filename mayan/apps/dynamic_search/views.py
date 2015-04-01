@@ -64,13 +64,13 @@ def search(request, advanced=False):
                 'submit_method': 'GET',
                 'search_results_limit': LIMIT,
                 'submit_label': _('Search'),
-                'submit_icon_famfam': 'zoom',
+                'submit_icon': 'fa fa-search',
             }, context_instance=RequestContext(request)
         )
     else:
         extra_context = {
             'submit_label': _('Search'),
-            'submit_icon_famfam': 'zoom',
+            'submit_icon': 'fa fa-search',
             'form_title': _('Search'),
             'form_hide_required_text': True,
         }

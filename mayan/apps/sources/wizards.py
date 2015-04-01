@@ -63,7 +63,7 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
         context.update({
             'step_title': self.step_titles[self.steps.step0],
             'submit_label': _('Next step'),
-            'submit_icon_famfam': 'arrow_right',
+            'submit_icon': 'fa fa-arrow-right',
         })
         return context
 

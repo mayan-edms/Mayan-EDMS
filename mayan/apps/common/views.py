@@ -140,7 +140,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                     'form': unselected_list,
                     'title': left_list_title or ' ',
                     'submit_label': _('Add'),
-                    'submit_icon_famfam': 'add'
+                    'submit_icon': 'fa fa-plus'
                 }
             },
             {
@@ -150,7 +150,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                     'form': selected_list,
                     'title': right_list_title or ' ',
                     'submit_label': _('Remove'),
-                    'submit_icon_famfam': 'delete'
+                    'submit_icon': 'fa fa-minus'
                 }
             },
 
