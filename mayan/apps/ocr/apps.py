@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 import logging
 
+import sh
+
 from django import apps
 from django.utils.translation import ugettext_lazy as _
 
@@ -10,6 +12,7 @@ from common.utils import encapsulate
 from documents.models import Document, DocumentVersion
 from documents.signals import post_version_upload
 from documents.widgets import document_link
+from installation import PropertyNamespace
 from main.api import register_maintenance_links
 from navigation.api import register_links, register_model_list_columns
 from navigation.links import link_spacer
@@ -24,6 +27,7 @@ from .links import (
 )
 from .models import DocumentVersionOCRError
 from .permissions import PERMISSION_OCR_DOCUMENT
+from .settings import PDFTOTEXT_PATH, TESSERACT_PATH, UNPAPER_PATH
 from .tasks import task_do_ocr
 
 logger = logging.getLogger(__name__)
@@ -79,3 +83,32 @@ class OCRApp(apps.AppConfig):
                 'name': _('Result'), 'attribute': 'result'
             },
         ])
+
+        namespace = PropertyNamespace('ocr', _('OCR'))
+
+        try:
+            pdftotext = sh.Command(PDFTOTEXT_PATH)
+        except sh.CommandNotFound:
+            namespace.add_property('pdftotext', _('pdftotext version'), _('not found'), report=True)
+        except Exception:
+            namespace.add_property('pdftotext', _('pdftotext version'), _('error getting version'), report=True)
+        else:
+            namespace.add_property('pdftotext', _('pdftotext version'), pdftotext('-v').stderr, report=True)
+
+        try:
+            tesseract = sh.Command(TESSERACT_PATH)
+        except sh.CommandNotFound:
+            namespace.add_property('tesseract', _('tesseract version'), _('not found'), report=True)
+        except Exception:
+            namespace.add_property('tesseract', _('tesseract version'), _('error getting version'), report=True)
+        else:
+            namespace.add_property('tesseract', _('tesseract version'), tesseract('-v').stderr, report=True)
+
+        try:
+            unpaper = sh.Command(UNPAPER_PATH)
+        except sh.CommandNotFound:
+            namespace.add_property('unpaper', _('unpaper version'), _('not found'), report=True)
+        except Exception:
+            namespace.add_property('unpaper', _('unpaper version'), _('error getting version'), report=True)
+        else:
+            namespace.add_property('unpaper', _('unpaper version'), unpaper('-V').stdout, report=True)

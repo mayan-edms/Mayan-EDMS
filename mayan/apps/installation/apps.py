@@ -7,7 +7,7 @@ from common.utils import encapsulate
 from navigation.api import register_links, register_model_list_columns
 from project_tools.api import register_tool
 
-from .classes import Property, PropertyNamespace
+from .classes import Property, PropertyNamespace, PIPNotFound, VirtualEnv
 from .links import link_menu_link, link_namespace_details, link_namespace_list
 
 
@@ -41,3 +41,13 @@ class InstallationApp(apps.AppConfig):
         register_links(PropertyNamespace, [link_namespace_details])
         register_links(['installation:namespace_list', PropertyNamespace], [link_namespace_list], menu_name='secondary_menu')
         register_tool(link_menu_link)
+
+        # Virtualenv
+        namespace = PropertyNamespace('venv', _('VirtualEnv'))
+        try:
+            venv = VirtualEnv()
+        except PIPNotFound:
+            namespace.add_property('pip', 'pip', _('pip not found.'), report=True)
+        else:
+            for item, version, result in venv.get_results():
+                namespace.add_property(item, '%s (%s)' % (item, version), result, report=True)

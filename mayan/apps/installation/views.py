@@ -8,13 +8,10 @@ from permissions.models import Permission
 
 from .classes import PropertyNamespace
 from .permissions import PERMISSION_INSTALLATION_DETAILS
-from .models import Installation
 
 
 def namespace_list(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_INSTALLATION_DETAILS])
-
-    Installation().get_properties()
 
     return render_to_response('appearance/generic_list.html', {
         'object_list': PropertyNamespace.get_all(),
@@ -25,8 +22,6 @@ def namespace_list(request):
 
 def namespace_details(request, namespace_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_INSTALLATION_DETAILS])
-
-    Installation().get_properties()
 
     namespace = PropertyNamespace.get(namespace_id)
     object_list = namespace.get_properties()

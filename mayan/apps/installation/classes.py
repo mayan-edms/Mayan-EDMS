@@ -7,9 +7,10 @@ import sh
 
 try:
     pip = sh.Command('pip')
-    PIP = True
 except sh.CommandNotFound:
     PIP = False
+else:
+    PIP = True
 
 
 class PIPNotFound(Exception):

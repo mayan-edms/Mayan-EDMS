@@ -56,6 +56,8 @@ Add new static media::
 Remove unused dependencies::
 
     $ pip uninstall South
+    $ pip uninstall GitPython
+    $ pip uninstall psutil
 
 
 The upgrade procedure is now complete.
