@@ -135,7 +135,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
         'subtemplates_list': [
             {
                 'name': 'appearance/generic_form_subtemplate.html',
-                'grid': 12,
+                'column_class': 'col-xs-12 col-sm-6 col-md-6 col-lg-6',
                 'context': {
                     'form': unselected_list,
                     'title': left_list_title or ' ',
@@ -145,8 +145,7 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
             },
             {
                 'name': 'appearance/generic_form_subtemplate.html',
-                'grid': 12,
-                'grid_clear': True,
+                'column_class': 'col-xs-12 col-sm-6 col-md-6 col-lg-6',
                 'context': {
                     'form': selected_list,
                     'title': right_list_title or ' ',

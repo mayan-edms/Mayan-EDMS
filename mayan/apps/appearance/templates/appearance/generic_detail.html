@@ -16,8 +16,8 @@
     <div class="row">
         {% for subtemplate in subtemplates_list %}
 
-            {% if subtemplate.grid %}
-                <div class="col-xs-{{ subtemplate.grid }}">
+            {% if subtemplate.column_class %}
+                <div class="{{ subtemplate.column_class }}">
             {% else %}
                 <div class="col-xs-12">
             {% endif %}
