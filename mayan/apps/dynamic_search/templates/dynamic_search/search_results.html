@@ -4,7 +4,11 @@
 
 {% block content %}
     {% if form %}
-            {% include 'dynamic_search/search_results_subtemplate.html' %}
+        {% with 'get' as submit_method %}
+        {% with form_title as title %}
+            {% include 'appearance/generic_form_subtemplate.html' %}
+        {% endwith %}
+        {% endwith %}
     {% endif %}
     {% if query_string %}
         {% include 'appearance/generic_list_subtemplate.html' %}
