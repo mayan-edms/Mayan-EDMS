@@ -68,7 +68,7 @@ def exists_widget(path):
         return exception
 
 
-def two_state_template(state, ok_icon='fa fa-check', fail_icon='fa fa-cross'):
+def two_state_template(state, ok_icon='fa fa-check', fail_icon='fa fa-times'):
     if state:
         return mark_safe('<i class="text-success {}"></i>'.format(ok_icon))
     else:
