@@ -55,10 +55,3 @@ def maintenance_menu(request):
         'blocks': user_tools,
         'title': _('Maintenance menu')
     }, context_instance=RequestContext(request))
-
-
-def diagnostics_view(request):
-    return render_to_response('appearance/diagnostics.html', {
-        'blocks': diagnostics,
-        'title': _('Diagnostics')
-    }, context_instance=RequestContext(request))
