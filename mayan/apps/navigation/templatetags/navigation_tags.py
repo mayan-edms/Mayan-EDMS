@@ -6,7 +6,7 @@ import re
 import urllib
 import urlparse
 
-from django.core.urlresolvers import NoReverseMatch, reverse
+from django.core.urlresolvers import NoReverseMatch, resolve, reverse
 from django.template import (
     TemplateSyntaxError, Library, VariableDoesNotExist, Node, Variable
 )
@@ -17,7 +17,6 @@ from common.utils import urlquote
 
 from ..api import object_navigation, top_menu_entries
 from ..forms import MultiItemForm
-from ..utils import resolve_to_name
 
 register = Library()
 
@@ -26,7 +25,7 @@ class TopMenuNavigationNode(Node):
     def render(self, context):
         request = Variable('request').resolve(context)
         current_path = request.META['PATH_INFO']
-        current_view = resolve_to_name(current_path)
+        current_view = resolve(current_path).view_name
 
         all_menu_links = [entry.get('link', {}) for entry in top_menu_entries]
         menu_links = resolve_links(context, all_menu_links, current_view, current_path)
@@ -155,7 +154,7 @@ def get_navigation_object(context, object_name=None):
 def _get_object_navigation_links(context, menu_name=None, links_dict=object_navigation, obj=None, object_name=None):
     request = Variable('request').resolve(context)
     current_path = request.META['PATH_INFO']
-    current_view = resolve_to_name(current_path)
+    current_view = resolve(current_path).view_name
     context_links = []
 
     # Don't fudge with the original global dictionary
