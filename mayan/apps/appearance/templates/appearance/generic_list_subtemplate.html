@@ -106,7 +106,12 @@
                                                 {% copy_variable list_object_variable_name as "navigation_object_name" %}
                                             {% endif %}
                                             <td class="last">
-                                                {% object_navigation_template %}
+                                                {% get_object_links as links %}
+                                                {% with links as object_navigation_links %}
+                                                {% with 'true' as horizontal %}
+                                                    {% include 'navigation/generic_navigation.html' %}
+                                                {% endwith %}
+                                                {% endwith %}
                                             </td>
                                         {% endif %}
                                     </tr>

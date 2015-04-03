@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.permissions import ACLS_VIEW_ACL
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
+from navigation import Link
 
 from .permissions import (
     PERMISSION_FOLDER_ADD_DOCUMENT, PERMISSION_FOLDER_CREATE,
@@ -11,14 +12,16 @@ from .permissions import (
     PERMISSION_FOLDER_REMOVE_DOCUMENT
 )
 
-folder_list = {'text': _('Folders'), 'view': 'folders:folder_list', 'icon': 'fa fa-folder'}
-folder_create = {'text': _('Create folder'), 'view': 'folders:folder_create', 'famfam': 'folder_add', 'permissions': [PERMISSION_FOLDER_CREATE]}
-folder_edit = {'text': _('Edit'), 'view': 'folders:folder_edit', 'args': 'object.pk', 'famfam': 'folder_edit', 'permissions': [PERMISSION_FOLDER_EDIT]}
-folder_delete = {'text': _('Delete'), 'view': 'folders:folder_delete', 'args': 'object.pk', 'famfam': 'folder_delete', 'permissions': [PERMISSION_FOLDER_DELETE]}
+link_folder_create = Link(permissions=[PERMISSION_FOLDER_CREATE], text=_('Create folder'), view='folders:folder_create')
+link_folder_list = Link(icon='fa fa-folder', text=_('Folders'), view='folders:folder_list')
+
+link_folder_edit = Link(permissions=[PERMISSION_FOLDER_EDIT], text=_('Edit'), view='folders:folder_edit', args='object.pk')
+link_folder_delete = Link(permissions=[PERMISSION_FOLDER_DELETE], text=_('Delete'), view='folders:folder_delete', args='object.pk')
+link_folder_view = Link(permissions=[PERMISSION_FOLDER_VIEW], text=_('Documents'), view='folders:folder_view', args='object.pk')
+link_folder_acl_list = Link(permissions=[ACLS_VIEW_ACL], text=_('ACLs'), view='folders:folder_acl_list', args='object.pk')
+
 folder_document_multiple_remove = {'text': _('Remove from folder'), 'view': 'folders:folder_document_multiple_remove', 'args': 'object.pk', 'famfam': 'folder_delete', 'permissions': [PERMISSION_FOLDER_REMOVE_DOCUMENT]}
-folder_view = {'text': _('Documents'), 'view': 'folders:folder_view', 'args': 'object.pk', 'famfam': 'page', 'permissions': [PERMISSION_FOLDER_VIEW]}
 folder_add_document = {'text': _('Add to a folder'), 'view': 'folders:folder_add_document', 'args': 'object.pk', 'famfam': 'folder_add', 'permissions': [PERMISSION_FOLDER_ADD_DOCUMENT]}
 folder_add_multiple_documents = {'text': _('Add to folder'), 'view': 'folders:folder_add_multiple_documents', 'famfam': 'folder_add'}
 document_folder_list = {'text': _('Folders'), 'view': 'folders:document_folder_list', 'args': 'object.pk', 'famfam': 'folder_user', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
-folder_acl_list = {'text': _('ACLs'), 'view': 'folders:folder_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}

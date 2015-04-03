@@ -6,13 +6,14 @@ from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
+from common.menus import menu_main
 from documents.models import Document
 from mayan.celery import app
-from navigation.api import register_links, register_top_menu
+from navigation.api import register_links
 from rest_api.classes import APIEndPoint
 
 from .links import (
-    checkin_document, checkout_document, checkout_info, checkout_list
+    checkin_document, checkout_document, checkout_info, link_checkout_list
 )
 from .models import DocumentCheckout
 from .permissions import (
@@ -51,6 +52,7 @@ class CheckoutsApp(apps.AppConfig):
 
         register_links(Document, [checkout_info], menu_name='form_header')
         register_links(['checkouts:checkout_info', 'checkouts:checkout_document', 'checkouts:checkin_document'], [checkout_document, checkin_document], menu_name="sidebar")
-        register_top_menu(name='checkouts', link=checkout_list)
+
+        menu_main.bind_links(links=[link_checkout_list])
 
         APIEndPoint('checkouts')

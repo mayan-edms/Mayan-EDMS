@@ -5,6 +5,7 @@ import logging
 import urllib
 import urlparse
 
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import NoReverseMatch, resolve, reverse
 from django.template import VariableDoesNotExist, Variable
 from django.utils.encoding import smart_str, smart_unicode
@@ -12,34 +13,125 @@ from django.utils.http import urlencode, urlquote
 from django.utils.text import unescape_string_literal
 from django.utils.translation import ugettext_lazy as _
 
+from permissions.models import Permission
+
 logger = logging.getLogger(__name__)
 
 
 class ResolvedLink(object):
     active = False
-    url = '#'
+    description = None
+    icon = None
     text = _('Unnamed link')
+    url = '#'
+
+
+class Menu(object):
+    _registry = {}
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
+    def __init__(self, name):
+        if name in self.__class__._registry:
+            raise Exception('A menu with this name already exists')
+
+        self.name = name
+        self.bound_links = {}
+        self.__class__._registry[name] = self
+
+    def bind_links(self, links, sources=None, position=0):
+        """
+        Associate a link to a model, a view, or an url inside this menu
+        """
+        if sources:
+            for source in sources:
+                source_links = self.bound_links.setdefault(source, [])
+                source_links.extend(links)
+        else:
+            # Unsourced links display always
+            source_links = self.bound_links.setdefault(None, [])
+            source_links.extend(links)
+
+    def resolve(self, context):
+        result = []
+        request = Variable('request').resolve(context)
+        current_path = request.META['PATH_INFO']
+
+        # Get sources: view name, view objects
+        current_view = resolve(current_path).view_name
+        resolved_navigation_object_list = []
+
+        navigation_object_list = context.get('navigation_object_list', [{'object': 'object'}])
+
+        # Multiple objects
+        for navigation_object in navigation_object_list:
+            try:
+                resolved_navigation_object_list.append(Variable(navigation_object['object']).resolve(context))
+            except VariableDoesNotExist:
+                pass
+
+        # Main menu links
+        for link in self.bound_links.get(None, []):
+            result.append(link.resolve(context))
+
+        for resolved_navigation_object in resolved_navigation_object_list:
+            for source, links in self.bound_links.iteritems():
+                if inspect.isclass(source) and isinstance(resolved_navigation_object, source) or Combined(obj=type(resolved_navigation_object), view=current_view) == source:
+                    for link in links:
+                        result.append(link.resolve(context))
+                    #break  # No need for further content object match testing
+
+        return result
 
 
 class Link(object):
-    bound_links = {}
 
     @classmethod
-    def bind_links(cls, sources, links, menu_name=None, position=0):
-        """
-        Associate a link to a model, a view, or an url
-        """
-        cls.bound_links.setdefault(menu_name, {})
+    def resolve_template_variable(cls, context, name):
         try:
-            for source in sources:
-                cls.bound_links[menu_name].setdefault(source, {'links': []})
-                try:
-                    cls.bound_links[menu_name][source]['links'].extend(links)
-                except TypeError:
-                    # Try to see if links is a single link
-                    cls.bound_links[menu_name][source]['links'].append(links)
+            return unescape_string_literal(name)
+        except ValueError:
+            #return Variable(name).resolve(context)
+            #TODO: Research if should return always as a str
+            return str(Variable(name).resolve(context))
         except TypeError:
-            raise Exception('The bind_links source argument must be a list, even for single element sources.')
+            return name
+
+    @classmethod
+    def resolve_arguments(cls, context, src_args):
+        args = []
+        kwargs = {}
+
+        if isinstance(src_args, list):
+            for i in src_args:
+                try:
+                    # Try to execute as a function
+                    val = i(context=context)
+                except TypeError:
+                    val = Link.resolve_template_variable(context, i)
+                    if val:
+                        args.append(val)
+                else:
+                    args.append(val)
+        elif isinstance(src_args, dict):
+            for key, value in src_args.items():
+                try:
+                    # Try to execute as a function
+                    val = i(context=context)
+                except TypeError:
+                    val = Link.resolve_template_variable(context, value)
+                    if val:
+                        kwargs[key] = val
+                else:
+                    kwargs[key] = val
+        else:
+            val = Link.resolve_template_variable(context, src_args)
+            if val:
+                args.append(val)
+
+        return args, kwargs
 
     def __init__(self, text, view, klass=None, args=None, icon=None,
                  permissions=None, condition=None, conditional_disable=None,
@@ -60,89 +152,67 @@ class Link(object):
         self.keep_query = keep_query
         self.conditional_highlight = conditional_highlight  # Used by dynamic sources
 
-    def resolve(self, context, request=None, current_path=None, current_view=None, resolved_object=None):
-        # Don't calculate these if passed in an argument
-        request = request or Variable('request').resolve(context)
-        current_path = current_path or request.META['PATH_INFO']
-        if not current_view:
-            match = resolve(current_path)
-            if match.namespace:
-                current_view = '{}:{}'.format(match.namespace, match.url_name)
-            else:
-                current_view = match.url_name
+    def resolve(self, context):
+        request = Variable('request').resolve(context)
+        current_path = request.META['PATH_INFO']
+        current_view = resolve(current_path).view_name
 
-        # Preserve unicode data in URL query
-        previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', reverse('main:home')))))
-        query_string = urlparse.urlparse(previous_path).query
-        parsed_query_string = urlparse.parse_qs(query_string)
-
-        logger.debug('condition: %s', self.condition)
-
-        if resolved_object:
-            context['resolved_object'] = resolved_object
+        if self.permissions:
+            try:
+                Permission.objects.check_permissions(request.user, self.permissions)
+            except PermissionDenied:
+                return None
 
         # Check to see if link has conditional display
         if self.condition:
-            self.condition_result = self.condition(context)
-        else:
-            self.condition_result = True
+            if not self.condition(context):
+                return None
 
-        logger.debug('self.condition_result: %s', self.condition_result)
+        #logger.debug('self.condition_result: %s', self.condition_result)
 
-        if self.condition_result:
-            resolved_link = ResolvedLink()
-            resolved_link.text = self.text
-            resolved_link.icon = self.icon
-            resolved_link.permissions = self.permissions
-            resolved_link.condition_result = self.condition_result
+        resolved_link = ResolvedLink()
+        resolved_link.text = self.text
+        resolved_link.icon = self.icon
+        resolved_link.description = self.description
+        #resolved_link.permissions = self.permissions
+        #resolved_link.condition_result = self.condition_result
 
-            try:
-                #args, kwargs = resolve_arguments(context, self.get('args', {}))
-                args, kwargs = Link.resolve_arguments(context, self.args)
-            except VariableDoesNotExist:
-                args = []
-                kwargs = {}
+        #django/template/defaulttags.py
 
-            if self.view:
-                if not self.dont_mark_active:
-                    resolved_link.active = self.view == current_view
+        #class URLNode(Node):
 
-                try:
-                    if kwargs:
-                        resolved_link.url = reverse(self.view, kwargs=kwargs)
-                    else:
-                        resolved_link.url = reverse(self.view, args=args)
-                        if self.keep_query:
-                            resolved_link.url = '%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
+        #def __init__(self, view_name, args, kwargs, asvar):
+        #        self.view_name = view_name
+        #        self.args = args
+        #        self.kwargs = kwargs
+        #        self.asvar = asvar
+        #    def render(self, context):
 
-                except NoReverseMatch, exc:
-                    resolved_link.url = '#'
-                    resolved_link.error = exc
-            elif self.url:
-                if not self.dont_mark_active:
-                    resolved_link.url.active = self.url == current_path
+        try:
+            args, kwargs = Link.resolve_arguments(context, self.args)
+        except VariableDoesNotExist:
+            args = []
+            kwargs = {}
 
-                if kwargs:
-                    resolved_link.url = self.url % kwargs
-                else:
-                    resolved_link.url = self.url % args
-                    if self.keep_query:
-                        resolved_link.url = '%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
+        if not self.dont_mark_active:
+            resolved_link.active = self.view == current_view
+
+        try:
+            if kwargs:
+                resolved_link.url = reverse(self.view, kwargs=kwargs)
             else:
-                resolved_link.active = False
+                resolved_link.url = reverse(self.view, args=args)
+                if self.keep_query:
+                    resolved_link.url = '%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
 
-            if self.conditional_highlight:
-                resolved_link.active = self.conditional_highlight(context)
+        except NoReverseMatch, exc:
+            resolved_link.url = '#'
+            resolved_link.error = exc
 
-            if self.conditional_disable:
-                resolved_link.disabled = self.conditional_disable(context)
-            else:
-                resolved_link.disabled = False
 
-            # TODO: add tree base main menu support to auto activate parent links
+        return resolved_link
 
-            return resolved_link
-
+    '''
     @classmethod
     def get_context_navigation_links(cls, context, menu_name=None, links_dict=None):
         request = Variable('request').resolve(context)
@@ -237,52 +307,92 @@ class Link(object):
                 objects[resolved_object]['label'] = object_label
 
         return objects
+    '''
 
-    @classmethod
-    def resolve_template_variable(cls, context, name):
-        try:
-            return unescape_string_literal(name)
-        except ValueError:
-            #return Variable(name).resolve(context)
-            #TODO: Research if should return always as a str
-            return str(Variable(name).resolve(context))
-        except TypeError:
-            return name
+    '''
+    def resolve(self, context, request=None, current_path=None, current_view=None, resolved_object=None):
+        # Don't calculate these if passed in an argument
+        request = request or Variable('request').resolve(context)
+        current_path = current_path or request.META['PATH_INFO']
+        if not current_view:
+            match = resolve(current_path)
+            if match.namespace:
+                current_view = '{}:{}'.format(match.namespace, match.url_name)
+            else:
+                current_view = match.url_name
 
-    @classmethod
-    def resolve_arguments(cls, context, src_args):
-        args = []
-        kwargs = {}
+        # Preserve unicode data in URL query
+        previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', reverse('main:home')))))
+        query_string = urlparse.urlparse(previous_path).query
+        parsed_query_string = urlparse.parse_qs(query_string)
 
-        if isinstance(src_args, list):
-            for i in src_args:
-                try:
-                    # Try to execute as a function
-                    val = i(context=context)
-                except TypeError:
-                    val = Link.resolve_template_variable(context, i)
-                    if val:
-                        args.append(val)
-                else:
-                    args.append(val)
-        elif isinstance(src_args, dict):
-            for key, value in src_args.items():
-                try:
-                    # Try to execute as a function
-                    val = i(context=context)
-                except TypeError:
-                    val = Link.resolve_template_variable(context, value)
-                    if val:
-                        kwargs[key] = val
-                else:
-                    kwargs[key] = val
+        logger.debug('condition: %s', self.condition)
+
+        if resolved_object:
+            context['resolved_object'] = resolved_object
+
+        # Check to see if link has conditional display
+        if self.condition:
+            self.condition_result = self.condition(context)
         else:
-            val = Link.resolve_template_variable(context, src_args)
-            if val:
-                args.append(val)
+            self.condition_result = True
 
-        return args, kwargs
+        logger.debug('self.condition_result: %s', self.condition_result)
 
+        if self.condition_result:
+            resolved_link = ResolvedLink()
+            resolved_link.text = self.text
+            resolved_link.icon = self.icon
+            resolved_link.permissions = self.permissions
+            resolved_link.condition_result = self.condition_result
+
+            try:
+                #args, kwargs = resolve_arguments(context, self.get('args', {}))
+                args, kwargs = Link.resolve_arguments(context, self.args)
+            except VariableDoesNotExist:
+                args = []
+                kwargs = {}
+
+            if self.view:
+                if not self.dont_mark_active:
+                    resolved_link.active = self.view == current_view
+
+                try:
+                    if kwargs:
+                        resolved_link.url = reverse(self.view, kwargs=kwargs)
+                    else:
+                        resolved_link.url = reverse(self.view, args=args)
+                        if self.keep_query:
+                            resolved_link.url = '%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
+
+                except NoReverseMatch, exc:
+                    resolved_link.url = '#'
+                    resolved_link.error = exc
+            elif self.url:
+                if not self.dont_mark_active:
+                    resolved_link.url.active = self.url == current_path
+
+                if kwargs:
+                    resolved_link.url = self.url % kwargs
+                else:
+                    resolved_link.url = self.url % args
+                    if self.keep_query:
+                        resolved_link.url = '%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
+            else:
+                resolved_link.active = False
+
+            if self.conditional_highlight:
+                resolved_link.active = self.conditional_highlight(context)
+
+            if self.conditional_disable:
+                resolved_link.disabled = self.conditional_disable(context)
+            else:
+                resolved_link.disabled = False
+
+            # TODO: add tree base main menu support to auto activate parent links
+
+            return resolved_link
+    '''
 
 class ModelListColumn(object):
     _model_list_columns = {}

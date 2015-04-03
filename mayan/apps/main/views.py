@@ -44,12 +44,9 @@ def maintenance_menu(request):
         }
         user_tools[namespace].setdefault('links', [])
         for link in values['links']:
-            try:
-                permissions = link.get('permissions', [])
-                Permission.objects.check_permissions(request.user, permissions)
-                user_tools[namespace]['links'].append(link)
-            except PermissionDenied:
-                pass
+            resolved_link = link.resolve(context=RequestContext(request))
+            if resolved_link:
+                user_tools[namespace]['links'].append(resolved_link)
 
     return render_to_response('appearance/tools.html', {
         'blocks': user_tools,

@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from events.permissions import PERMISSION_EVENTS_VIEW
+from navigation import Link
 
 from .permissions import (
     PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
@@ -37,28 +38,38 @@ def is_current_version(context):
     return context['object'].document.latest_version.timestamp == context['object'].timestamp
 
 
+# Facet
+link_document_preview = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Preview'), view='documents:document_preview', args='object.id')
+link_document_content = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Content'), view='documents:document_content', args='object.id')
+link_document_properties = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Properties'), view='documents:document_properties', args='object.id')
+link_document_events_view = Link(permissions=[PERMISSION_EVENTS_VIEW], text=_('Events'), view='events:events_for_object', args=['"documents"', '"document"', 'object.id'])
+link_document_version_list = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Versions'), view='documents:document_version_list', args='object.pk')
+
+# Actions
+link_document_clear_transformations = Link(permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Clear transformations'), view='documents:document_clear_transformations', args='object.id')
+link_document_delete = Link(permissions=[PERMISSION_DOCUMENT_DELETE], text=_('Delete'), view='documents:document_delete', args='object.id')
+link_document_edit = Link(permissions=[PERMISSION_DOCUMENT_PROPERTIES_EDIT], text=_('Edit properties'), view='documents:document_edit', args='object.id')
+link_document_document_type_edit = Link(permissions=[PERMISSION_DOCUMENT_PROPERTIES_EDIT], text=_('Change type'), view='documents:document_document_type_edit', args='object.id')
+link_document_download = Link(permissions=[PERMISSION_DOCUMENT_DOWNLOAD], text=_('Download'), view='documents:document_download', args='object.id')
+link_document_print = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Print'), view='documents:document_print', args='object.id')
+link_document_update_page_count = Link(permissions=[PERMISSION_DOCUMENT_TOOLS], text=_('Reset page count'), view='documents:document_update_page_count', args='object.pk')
+
+# Views
 document_list = {'text': _('All documents'), 'view': 'documents:document_list', 'icon': 'fa fa-file'}
 document_list_recent = {'text': _('Recent documents'), 'view': 'documents:document_list_recent', 'icon': 'fa fa-clock-o'}
-document_preview = {'text': _('Preview'), 'view': 'documents:document_preview', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_content = {'text': _('Content'), 'view': 'documents:document_content', 'args': 'object.id', 'famfam': 'page_white_text', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_properties = {'text': _('Properties'), 'view': 'documents:document_properties', 'args': 'object.id', 'famfam': 'page_gear', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_delete = {'text': _('Delete'), 'view': 'documents:document_delete', 'args': 'object.id', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}
 document_multiple_delete = {'text': _('Delete'), 'view': 'documents:document_multiple_delete', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}
-document_edit = {'text': _('Edit properties'), 'view': 'documents:document_edit', 'args': 'object.id', 'famfam': 'page_edit', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
-document_document_type_edit = {'text': _('Change type'), 'view': 'documents:document_document_type_edit', 'args': 'object.id', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
 document_multiple_document_type_edit = {'text': _('Change type'), 'view': 'documents:document_multiple_document_type_edit', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
-document_download = {'text': _('Download'), 'view': 'documents:document_download', 'args': 'object.id', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
 document_multiple_download = {'text': _('Download'), 'view': 'documents:document_multiple_download', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
 document_version_download = {'text': _('Download'), 'view': 'documents:document_version_download', 'args': 'object.pk', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
-document_update_page_count = {'text': _('Reset page count'), 'view': 'documents:document_update_page_count', 'args': 'object.pk', 'famfam': 'page_white_csharp', 'permissions': [PERMISSION_DOCUMENT_TOOLS]}
 document_multiple_update_page_count = {'text': _('Reset page count'), 'view': 'documents:document_multiple_update_page_count', 'famfam': 'page_white_csharp', 'permissions': [PERMISSION_DOCUMENT_TOOLS]}
-document_clear_transformations = {'text': _('Clear transformations'), 'view': 'documents:document_clear_transformations', 'args': 'object.id', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_multiple_clear_transformations = {'text': _('Clear transformations'), 'view': 'documents:document_multiple_clear_transformations', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
-document_print = {'text': _('Print'), 'view': 'documents:document_print', 'args': 'object.id', 'famfam': 'printer', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_events_view = {'text': _('Events'), 'view': 'events:events_for_object', 'args': ['"documents"', '"document"', 'object.id'], 'famfam': 'book_go', 'permissions': [PERMISSION_EVENTS_VIEW]}
 
 # Tools
-document_clear_image_cache = {'text': _('Clear the document image cache'), 'view': 'documents:document_clear_image_cache', 'famfam': 'camera_delete', 'permissions': [PERMISSION_DOCUMENT_TOOLS], 'description': _('Clear the graphics representations used to speed up the documents\' display and interactive transformations results.')}
+link_clear_image_cache = Link(
+    description=_('Clear the graphics representations used to speed up the documents\' display and interactive transformations results.'),
+    permissions=[PERMISSION_DOCUMENT_TOOLS], text=_('Clear the document image cache'),
+    view='documents:document_clear_image_cache'
+)
 
 # Document pages
 document_page_transformation_list = {'text': _('Page transformations'), 'class': 'no-parent-history', 'view': 'documents:document_page_transformation_list', 'args': 'page.pk', 'famfam': 'pencil_go', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
@@ -80,7 +91,6 @@ document_page_rotate_left = {'text': _('Rotate left'), 'class': 'no-parent-histo
 document_page_view_reset = {'text': _('Reset view'), 'class': 'no-parent-history', 'view': 'documents:document_page_view_reset', 'args': 'page.pk', 'famfam': 'page_white', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 
 # Document versions
-document_version_list = {'text': _('Versions'), 'view': 'documents:document_version_list', 'args': 'object.pk', 'famfam': 'page_world', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_version_revert = {'text': _('Revert'), 'view': 'documents:document_version_revert', 'args': 'object.pk', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VERSION_REVERT], 'conditional_disable': is_current_version}
 
 # Document type related links

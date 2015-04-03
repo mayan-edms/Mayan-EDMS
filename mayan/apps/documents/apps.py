@@ -9,6 +9,7 @@ from actstream import registry
 
 from acls.api import class_permissions
 from common.classes import ModelAttribute
+from common.menus import menu_facet, menu_object
 from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
 from events.permissions import PERMISSION_EVENTS_VIEW
@@ -22,10 +23,10 @@ from statistics.classes import StatisticNamespace
 
 from documents import settings as document_settings
 from .links import (
-    document_clear_image_cache, document_clear_transformations,
-    document_content, document_delete, document_document_type_edit,
-    document_events_view, document_multiple_document_type_edit,
-    document_download, document_edit, document_list, document_list_recent,
+    link_clear_image_cache, link_document_clear_transformations,
+    link_document_content, link_document_delete, link_document_document_type_edit,
+    link_document_events_view, document_multiple_document_type_edit,
+    link_document_download, link_document_edit, document_list, document_list_recent,
     document_multiple_delete, document_multiple_clear_transformations,
     document_multiple_download, document_multiple_update_page_count,
     document_page_edit, document_page_navigation_first,
@@ -35,13 +36,13 @@ from .links import (
     document_page_transformation_list, document_page_transformation_create,
     document_page_transformation_edit, document_page_transformation_delete,
     document_page_view, document_page_view_reset, document_page_zoom_in,
-    document_page_zoom_out, document_preview, document_print,
-    document_properties, document_type_create, document_type_delete,
+    document_page_zoom_out, link_document_preview, link_document_print,
+    link_document_properties, document_type_create, document_type_delete,
     document_type_edit, document_type_filename_create,
     document_type_filename_delete, document_type_filename_edit,
     document_type_filename_list, document_type_list, document_type_setup,
-    document_update_page_count, document_version_download,
-    document_version_list, document_version_revert
+    link_document_update_page_count, document_version_download,
+    link_document_version_list, document_version_revert
 )
 from .models import (
     Document, DocumentPage, DocumentPageTransformation, DocumentType,
@@ -69,13 +70,16 @@ class DocumentsApp(apps.AppConfig):
         register_links(DocumentTypeFilename, [document_type_filename_edit, document_type_filename_delete])
         register_links([DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
 
-        # Register document links
-        register_links(Document, [document_edit, document_document_type_edit, document_print, document_delete, document_download, document_clear_transformations, document_update_page_count])
+        # Register document facet links
+        menu_facet.bind_links(links=[link_document_preview], sources=[Document], position=0)
+        menu_facet.bind_links(links=[link_document_content], sources=[Document], position=1)
+        menu_facet.bind_links(links=[link_document_properties], sources=[Document], position=2)
+        menu_facet.bind_links(links=[link_document_events_view, link_document_version_list], sources=[Document], position=2)
+
+        # Document actions
+        menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_delete, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
+
         register_links([Document], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count, document_multiple_document_type_edit, link_spacer], menu_name='multi_item_links')
-        register_links(Document, [document_preview], menu_name='form_header', position=0)
-        register_links(Document, [document_content], menu_name='form_header', position=1)
-        register_links(Document, [document_properties], menu_name='form_header', position=2)
-        register_links(Document, [document_events_view, document_version_list], menu_name='form_header')
 
         # Document Version links
         register_links(DocumentVersion, [document_version_revert, document_version_download])
@@ -98,7 +102,7 @@ class DocumentsApp(apps.AppConfig):
         register_links('documents:document_page_transformation_create', [document_page_transformation_create], menu_name='sidebar')
         register_links(['documents:document_page_transformation_edit', 'documents:document_page_transformation_delete'], [document_page_transformation_create], menu_name='sidebar')
 
-        register_maintenance_links([document_clear_image_cache], namespace='documents', title=_('Documents'))
+        register_maintenance_links([link_clear_image_cache], namespace='documents', title=_('Documents'))
         register_model_list_columns(Document, [
             {
                 'name': _('Thumbnail'), 'attribute':

@@ -3,13 +3,15 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from acls.permissions import ACLS_VIEW_ACL
+from navigation import Link
 
 from .permissions import (
     PERMISSION_TAG_ATTACH, PERMISSION_TAG_CREATE, PERMISSION_TAG_DELETE,
     PERMISSION_TAG_EDIT, PERMISSION_TAG_REMOVE
 )
 
-tag_list = {'text': _('Tags'), 'view': 'tags:tag_list', 'icon': 'fa fa-tag'}
+link_tag_list = Link(icon='fa fa-tag', text=_('Tags'), view='tags:tag_list')
+
 tag_create = {'text': _('Create new tag'), 'view': 'tags:tag_create', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_CREATE]}
 
 tag_attach = {'text': _('Attach tag'), 'view': 'tags:tag_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_ATTACH]}

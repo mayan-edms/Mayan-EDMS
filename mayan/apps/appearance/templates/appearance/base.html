@@ -107,7 +107,7 @@
                         </div>
                         <div id="navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
-                                {% get_top_menu_links %}
+                                {% get_top_menu_links as menu_links %}
                                 {% for link in menu_links %}
                                     {% with 'true' as as_li %}
                                     {% with 'true' as hide_active_anchor %}
@@ -156,8 +156,10 @@
                     </div>
                 </div>
 
-                {% get_contextual_links as links %}
+                {% get_action_links as links %}
 
+                {% get_object_facet_links as form_navigation_links %}
+{% comment %}
                 {% if navigation_object_list %}
                     {% for navigation_object_dict in navigation_object_list %}
                         {% copy_variable navigation_object_dict.object as "navigation_object_name" %}
@@ -166,7 +168,7 @@
                 {% else %}
                     {% get_object_navigation_links "form_header" as form_navigation_links %}
                 {% endif %}
-
+{% endcomment %}
                 <div class="row">
                     {% if links or form_navigation_links %}
                         <div class="col-xs-8 col-sm-8 col-md-10 col-lg-10">

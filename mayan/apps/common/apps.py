@@ -12,7 +12,7 @@ from django.db.models.signals import post_migrate, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from common import settings as common_settings
-from navigation.api import register_links, register_top_menu
+from navigation.api import register_links
 
 from .links import (
     link_about, link_current_user_details, link_current_user_edit,
@@ -20,6 +20,7 @@ from .links import (
     link_current_user_locale_profile_edit, link_license, link_logout,
     link_password_change
 )
+from .menus import menu_main, menu_secondary
 from .models import (
     AnonymousUserSingleton, AutoAdminSingleton, UserLocaleProfile
 )
@@ -93,10 +94,11 @@ class CommonApp(apps.AppConfig):
     verbose_name = _('Common')
 
     def ready(self):
-        register_links(['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'common:password_change_view'], [link_current_user_details, link_current_user_edit, link_current_user_locale_profile_details, link_current_user_locale_profile_edit, link_password_change, link_logout], menu_name='secondary_menu')
-        register_links(['common:about_view', 'common:license_view'], [link_about, link_license], menu_name='secondary_menu')
+        menu_main.bind_links(links=[link_about], position=-1)
+        menu_secondary.bind_links(links=[link_about, link_license], sources=['common:about_view', 'common:license_view'])
 
-        register_top_menu('about', link_about, position=-1)
+        register_links(['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'common:password_change_view'], [link_current_user_details, link_current_user_edit, link_current_user_locale_profile_details, link_current_user_locale_profile_edit, link_password_change, link_logout], menu_name='secondary_menu')
+        #register_links(['common:about_view', 'common:license_view'], [link_about, link_license], menu_name='secondary_menu')
 
         post_migrate.connect(create_superuser_and_anonymous_user, dispatch_uid='create_superuser_and_anonymous_user')
         post_save.connect(auto_admin_account_passwd_change, dispatch_uid='auto_admin_account_passwd_change', sender=User)

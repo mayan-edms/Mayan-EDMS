@@ -4,18 +4,17 @@ from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
+from common.menus import menu_secondary, menu_object, menu_main
 from common.utils import encapsulate
 from documents.models import Document
-from navigation.api import (
-    register_links, register_model_list_columns, register_top_menu
-)
+from navigation.api import register_links, register_model_list_columns
 from navigation.links import link_spacer
 from rest_api.classes import APIEndPoint
 
 from .links import (
     multiple_documents_selection_tag_remove,
     single_document_multiple_tag_remove, tag_acl_list, tag_attach, tag_create,
-    tag_delete, tag_document_list, tag_edit, tag_list, tag_multiple_attach,
+    tag_delete, tag_document_list, tag_edit, link_tag_list, tag_multiple_attach,
     tag_multiple_delete, tag_tagged_item_list
 )
 from .models import Tag
@@ -58,11 +57,11 @@ class TagsApp(apps.AppConfig):
             },
         ])
 
-        register_top_menu('tags', link=tag_list)
+        menu_main.bind_links(links=[link_tag_list])
 
         register_links(Tag, [tag_tagged_item_list, tag_edit, tag_acl_list, tag_delete])
         register_links([Tag], [tag_multiple_delete], menu_name='multi_item_links')
-        register_links([Tag, 'tags:tag_list', 'tags:tag_create'], [tag_list, tag_create], menu_name='secondary_menu')
+        register_links([Tag, 'tags:tag_list', 'tags:tag_create'], [link_tag_list, tag_create], menu_name='secondary_menu')
 
         register_links(Document, [tag_document_list], menu_name='form_header')
         register_links(['tags:document_tags', 'tags:tag_remove', 'tags:tag_multiple_remove', 'tags:tag_attach'], [tag_attach], menu_name='sidebar')
