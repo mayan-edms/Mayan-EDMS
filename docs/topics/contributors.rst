@@ -23,6 +23,7 @@ Contributors (in alphabetical order)
 * Emlyn Clay (https://github.com/EmlynC)
 * Jens Kadenbach (https://github.com/audax)
 * Kolmar Kafran
+* Helga Carrero
 * IHLeanne (https://github.com/IHLeanne)
 * Iliya Georgiev (ikgeorgiev@gmail.com)
 * Lars Kruse (devel@sumpfralle.de)
