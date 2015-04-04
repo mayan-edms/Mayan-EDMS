@@ -5,6 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from documents.permissions import (
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION
 )
+from navigation import Link
 
 from .literals import (
     SOURCE_CHOICE_WEB_FORM, SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3,
@@ -15,12 +16,12 @@ from .permissions import (
     PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_VIEW
 )
 
-document_create_multiple = {'text': _('New document'), 'view': 'sources:document_create_multiple', 'icon': 'fa fa-upload', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
+link_document_create_multiple = Link(icon='fa fa-upload', permissions=[PERMISSION_DOCUMENT_CREATE], text=_('New document'), view='sources:document_create_multiple')
 document_create_siblings = {'text': _('Clone'), 'view': 'sources:document_create_siblings', 'args': 'object.id', 'famfam': 'page_copy', 'permissions': [PERMISSION_DOCUMENT_CREATE]}
 
 staging_file_delete = {'text': _('Delete'), 'view': 'sources:staging_file_delete', 'args': ['source.pk', 'object.encoded_filename'], 'famfam': 'delete', 'keep_query': True, 'permissions': [PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE]}
 
-setup_sources = {'text': _('Sources'), 'view': 'sources:setup_source_list', 'famfam': 'application_form', 'icon': 'fa fa-upload', 'permissions': [PERMISSION_SOURCES_SETUP_VIEW]}
+link_setup_sources = Link(icon='fa fa-upload', permissions=[PERMISSION_SOURCES_SETUP_VIEW], text=_('Sources'), view='sources:setup_source_list')
 setup_source_create_webform = {'text': _('Add new webform source'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WEB_FORM, 'famfam': 'application_form_add', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context.get('source_type') == SOURCE_CHOICE_WEB_FORM and 'source' not in context}
 setup_source_create_staging_folder = {'text': _('Add new staging folder'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_STAGING, 'famfam': 'folder_camera', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context.get('source_type') == SOURCE_CHOICE_STAGING and 'source' not in context}
 setup_source_create_watch_folder = {'text': _('Add new watch folder'), 'view': 'sources:setup_source_create', 'args': '"%s"' % SOURCE_CHOICE_WATCH, 'famfam': 'folder_magnify', 'permissions': [PERMISSION_SOURCES_SETUP_CREATE], 'conditional_highlight': lambda context: context.get('source_type') == SOURCE_CHOICE_WATCH and 'source' not in context}

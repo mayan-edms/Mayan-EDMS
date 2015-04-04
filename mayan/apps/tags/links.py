@@ -12,17 +12,17 @@ from .permissions import (
 
 link_tag_list = Link(icon='fa fa-tag', text=_('Tags'), view='tags:tag_list')
 
-tag_create = {'text': _('Create new tag'), 'view': 'tags:tag_create', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_CREATE]}
+link_tag_create = Link(permissions=[PERMISSION_TAG_CREATE], text=_('Create new tag'), view='tags:tag_create')
 
-tag_attach = {'text': _('Attach tag'), 'view': 'tags:tag_attach', 'args': 'object.pk', 'famfam': 'tag_blue_add', 'permissions': [PERMISSION_TAG_ATTACH]}
-tag_multiple_attach = {'text': _('Attach tag'), 'view': 'tags:tag_multiple_attach', 'famfam': 'tag_blue_add'}
+link_tag_attach = Link(permissions=[PERMISSION_TAG_ATTACH], text=_('Attach tag'), view='tags:tag_attach', args='object.pk')
+link_tag_multiple_attach = Link(text=_('Attach tag'), view='tags:tag_multiple_attach')
 
-multiple_documents_selection_tag_remove = {'text': _('Remove tag'), 'view': 'tags:multiple_documents_selection_tag_remove', 'famfam': 'tag_blue_delete'}
-single_document_multiple_tag_remove = {'text': _('Remove tags'), 'view': 'tags:single_document_multiple_tag_remove', 'args': 'document.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_REMOVE]}
+link_multiple_documents_selection_tag_remove = Link(text=_('Remove tag'), view='tags:multiple_documents_selection_tag_remove')
+link_single_document_multiple_tag_remove = Link(permissions=[PERMISSION_TAG_REMOVE], text=_('Remove tags'), view='tags:single_document_multiple_tag_remove', args='document.id')
 
-tag_document_list = {'text': _('Tags'), 'view': 'tags:document_tags', 'args': 'object.pk', 'famfam': 'tag_blue', 'permissions': [PERMISSION_TAG_REMOVE, PERMISSION_TAG_ATTACH]}
-tag_delete = {'text': _('Delete'), 'view': 'tags:tag_delete', 'args': 'object.id', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_DELETE]}
-tag_edit = {'text': _('Edit'), 'view': 'tags:tag_edit', 'args': 'object.id', 'famfam': 'tag_blue_edit', 'permissions': [PERMISSION_TAG_EDIT]}
-tag_tagged_item_list = {'text': _('Documents'), 'view': 'tags:tag_tagged_item_list', 'args': 'object.id', 'famfam': 'page'}
-tag_multiple_delete = {'text': _('Delete'), 'view': 'tags:tag_multiple_delete', 'famfam': 'tag_blue_delete', 'permissions': [PERMISSION_TAG_DELETE]}
-tag_acl_list = {'text': _('ACLs'), 'view': 'tags:tag_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
+link_tag_document_list = Link(permissions=[PERMISSION_TAG_REMOVE, PERMISSION_TAG_ATTACH], text=_('Tags'), view='tags:document_tags', args='object.pk')
+link_tag_delete = Link(permissions=[PERMISSION_TAG_DELETE], text=_('Delete'), view='tags:tag_delete', args='object.id')
+link_tag_edit = Link(permissions=[PERMISSION_TAG_EDIT], text=_('Edit'), view='tags:tag_edit', args='object.id')
+link_tag_tagged_item_list = Link(text=('Documents'), view='tags:tag_tagged_item_list', args='object.id')
+link_tag_multiple_delete = Link(permissions=[PERMISSION_TAG_DELETE], text=_('Delete'), view='tags:tag_multiple_delete')
+link_tag_acl_list = Link(permissions=[ACLS_VIEW_ACL], text=_('ACLs'), view='tags:tag_acl_list', args='object.pk')

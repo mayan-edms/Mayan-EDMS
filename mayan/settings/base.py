@@ -72,8 +72,6 @@ INSTALLED_APPS = (
     'mimetype.apps.MIMETypesApp',
     'navigation.apps.NavigationApp',
     'permissions.apps.PermissionsApp',
-    'project_setup.apps.ProjectSetupApp',
-    'project_tools.apps.ProjectToolsApp',
     'smart_settings.apps.SmartSettingsApp',
     'user_management.apps.UserManagementApp',
     # Mayan EDMS

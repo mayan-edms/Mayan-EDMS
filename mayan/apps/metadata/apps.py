@@ -7,14 +7,12 @@ from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
+from common import menu_setup, menu_tools
 from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
 from documents.signals import post_document_type_change
-from navigation.api import register_links, register_model_list_columns
-from navigation.links import link_spacer
-from project_setup.api import register_setup
-from project_tools.api import register_tool
+from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 
 from .api import get_metadata_string
@@ -24,7 +22,7 @@ from .links import (
     metadata_multiple_remove, metadata_remove, metadata_view,
     setup_document_type_metadata, setup_document_type_metadata_required,
     setup_metadata_type_create, setup_metadata_type_delete,
-    setup_metadata_type_edit, setup_metadata_type_list,
+    setup_metadata_type_edit, link_setup_metadata_type_list,
     link_documents_missing_required_metadata
 )
 from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
@@ -72,15 +70,16 @@ class MetadataApp(apps.AppConfig):
 
         Document.add_to_class('metadata_value_of', DocumentMetadataHelper.constructor)
 
-        register_links(['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
-        register_links(Document, [metadata_view], menu_name='form_header')
-        register_links([Document], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove, link_spacer], menu_name='multi_item_links')
-        register_links(DocumentType, [setup_document_type_metadata, setup_document_type_metadata_required])
-        register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
-        register_links([MetadataType, 'metadata:setup_metadata_type_list', 'metadata:setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
+        # TODO: convert
+        #register_links(['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
+        #register_links(Document, [metadata_view], menu_name='form_header')
+        #register_links([Document], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove, link_spacer], menu_name='multi_item_links')
+        #register_links(DocumentType, [setup_document_type_metadata, setup_document_type_metadata_required])
+        #register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
+        #register_links([MetadataType, 'metadata:setup_metadata_type_list', 'metadata:setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
 
-        register_setup(setup_metadata_type_list)
-        register_tool(link_documents_missing_required_metadata)
+        menu_setup.bind_links(links=[link_setup_metadata_type_list])
+        menu_tools.bind_links(links=[link_documents_missing_required_metadata])
 
         class_permissions(Document, [
             PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,

@@ -19,6 +19,6 @@ def is_not_checked_out(context):
 
 
 link_checkout_list = Link(icon='fa fa-shopping-cart', text=_('Checkouts'), view='checkouts:checkout_list')
-checkout_document = {'text': _('Check out document'), 'view': 'checkouts:checkout_document', 'args': 'object.pk', 'famfam': 'basket_put', 'condition': is_not_checked_out, 'permissions': [PERMISSION_DOCUMENT_CHECKOUT]}
-checkin_document = {'text': _('Check in document'), 'view': 'checkouts:checkin_document', 'args': 'object.pk', 'famfam': 'basket_remove', 'condition': is_checked_out, 'permissions': [PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE]}
-checkout_info = {'text': _('Check in/out'), 'view': 'checkouts:checkout_info', 'args': 'object.pk', 'famfam': 'basket', 'permissions': [PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE, PERMISSION_DOCUMENT_CHECKOUT]}
+link_checkout_document = Link(condition=is_not_checked_out, permissions=[PERMISSION_DOCUMENT_CHECKOUT], text=_('Check out document'), view='checkouts:checkout_document', args='object.pk')
+link_checkin_document = Link(condition=is_checked_out, permissions=[PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE], text=_('Check in document'), view='checkouts:checkin_document', args='object.pk')
+link_checkout_info = Link(permissions=[PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE, PERMISSION_DOCUMENT_CHECKOUT], text=_('Check in/out'), view='checkouts:checkout_info', args='object.pk')

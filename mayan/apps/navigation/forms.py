@@ -3,8 +3,6 @@ from __future__ import unicode_literals
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from .links import link_spacer
-
 
 class MultiItemForm(forms.Form):
     def __init__(self, *args, **kwargs):

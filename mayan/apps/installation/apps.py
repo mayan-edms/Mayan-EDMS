@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 from django import apps
 from django.utils.translation import ugettext_lazy as _
 
+from common import menu_tools
 from common.utils import encapsulate
-from navigation.api import register_links, register_model_list_columns
-from project_tools.api import register_tool
+from navigation.api import register_model_list_columns
 
 from .classes import Property, PropertyNamespace, PIPNotFound, VirtualEnv
 from .links import link_menu_link, link_namespace_details, link_namespace_list
@@ -38,9 +38,10 @@ class InstallationApp(apps.AppConfig):
             }
         ])
 
-        register_links(PropertyNamespace, [link_namespace_details])
-        register_links(['installation:namespace_list', PropertyNamespace], [link_namespace_list], menu_name='secondary_menu')
-        register_tool(link_menu_link)
+        # TODO: convert
+        #register_links(PropertyNamespace, [link_namespace_details])
+        #register_links(['installation:namespace_list', PropertyNamespace], [link_namespace_list], menu_name='secondary_menu')
+        menu_tools.bind_links(links=[link_menu_link])
 
         # Virtualenv
         namespace = PropertyNamespace('venv', _('VirtualEnv'))

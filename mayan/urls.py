@@ -32,11 +32,9 @@ urlpatterns = patterns('',
     url(r'^permissions/', include('permissions.urls', namespace='permissions')),
     url(r'^search/', include('dynamic_search.urls', namespace='search')),
     url(r'^settings/', include('smart_settings.urls', namespace='settings')),
-    url(r'^setup/', include('project_setup.urls', namespace='project_setup')),
     url(r'^sources/', include('sources.urls', namespace='sources')),
     url(r'^statistics/', include('statistics.urls', namespace='statistics')),
     url(r'^tags/', include('tags.urls', namespace='tags')),
-    url(r'^tools/', include('project_tools.urls', namespace='project_tools')),
 )
 
 

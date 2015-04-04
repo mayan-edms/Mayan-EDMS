@@ -4,13 +4,14 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.permissions import ACLS_VIEW_ACL
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
+from navigation import Link
 
 from .permissions import (
     PERMISSION_SMART_LINK_CREATE, PERMISSION_SMART_LINK_DELETE,
     PERMISSION_SMART_LINK_EDIT, PERMISSION_SMART_LINK_VIEW
 )
 
-smart_link_setup = {'text': _('Smart links'), 'view': 'linking:smart_link_list', 'icon': 'fa fa-link', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
+link_smart_link_setup = Link(icon='fa fa-link', permissions=[PERMISSION_SMART_LINK_CREATE], text=_('Smart links'), view='linking:smart_link_list')
 smart_link_list = {'text': _('Smart links'), 'view': 'linking:smart_link_list', 'famfam': 'link', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 smart_link_create = {'text': _('Create new smart link'), 'view': 'linking:smart_link_create', 'famfam': 'link_add', 'permissions': [PERMISSION_SMART_LINK_CREATE]}
 smart_link_edit = {'text': _('Edit'), 'view': 'linking:smart_link_edit', 'args': 'object.pk', 'famfam': 'link_edit', 'permissions': [PERMISSION_SMART_LINK_EDIT]}

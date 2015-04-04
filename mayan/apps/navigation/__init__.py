@@ -1,1 +1,1 @@
-from .classes import Link, Menu  # NOQA
+from .classes import CombinedSource, Link, Menu  # NOQA

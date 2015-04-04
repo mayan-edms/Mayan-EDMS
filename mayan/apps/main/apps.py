@@ -3,10 +3,12 @@ from __future__ import unicode_literals
 from django import apps
 from django.utils.translation import ugettext_lazy as _
 
-from project_setup.api import register_setup
-from project_tools.api import register_tool
+from common import menu_main, menu_setup, menu_tools
 
-from .links import admin_site, maintenance_menu
+
+from .links import (
+    link_admin_site, link_maintenance_menu, link_tools, link_setup, link_tools
+)
 
 
 class MainApp(apps.AppConfig):
@@ -14,5 +16,7 @@ class MainApp(apps.AppConfig):
     verbose_name = _('Main')
 
     def ready(self):
-        register_setup(admin_site)
-        register_tool(maintenance_menu)
+        menu_setup.bind_links(links=[link_admin_site])
+        menu_tools.bind_links(links=[link_maintenance_menu])
+        menu_main.bind_links(links=[link_tools], position=-3)
+        menu_main.bind_links(links=[link_setup], position=-2)

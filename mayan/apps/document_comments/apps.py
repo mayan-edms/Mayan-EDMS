@@ -9,7 +9,7 @@ from acls.api import class_permissions
 from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document
-from navigation.api import register_links, register_model_list_columns
+from navigation.api import register_model_list_columns
 
 from .links import comment_add, comment_delete, comments_for_document
 from .permissions import (
@@ -32,9 +32,10 @@ class DocumentCommentsApp(apps.AppConfig):
             )
         )
 
-        class_permissions(Document, [PERMISSION_COMMENT_CREATE,
-                                     PERMISSION_COMMENT_DELETE,
-                                     PERMISSION_COMMENT_VIEW])
+        class_permissions(Document, [
+            PERMISSION_COMMENT_CREATE,
+            PERMISSION_COMMENT_DELETE,
+            PERMISSION_COMMENT_VIEW])
 
         register_model_list_columns(Comment, [
             {
@@ -51,8 +52,9 @@ class DocumentCommentsApp(apps.AppConfig):
             }
         ])
 
-        register_links(['comments:comments_for_document', 'comments:comment_add', 'comments:comment_delete', 'comments:comment_multiple_delete'], [comment_add], menu_name='sidebar')
-        register_links(Comment, [comment_delete])
-        register_links(Document, [comments_for_document], menu_name='form_header')
+        # TODO: convert
+        #register_links(['comments:comments_for_document', 'comments:comment_add', 'comments:comment_delete', 'comments:comment_multiple_delete'], [comment_add], menu_name='sidebar')
+        #register_links(Comment, [comment_delete])
+        #register_links(Document, [comments_for_document], menu_name='form_header')
 
         ModelAttribute(Document, label=_('Comments'), name='comments', type_name='related')

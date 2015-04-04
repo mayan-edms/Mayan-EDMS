@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django import apps
 from django.utils.translation import ugettext_lazy as _
 
-from project_tools.api import register_tool
+from common import menu_tools
 
 from .classes import APIEndPoint
 from .links import link_api, link_api_documentation
@@ -16,5 +16,4 @@ class RESTAPIApp(apps.AppConfig):
     def ready(self):
         APIEndPoint('rest_api')
 
-        register_tool(link_api)
-        register_tool(link_api_documentation)
+        menu_tools.bind_links(links=[link_api, link_api_documentation])

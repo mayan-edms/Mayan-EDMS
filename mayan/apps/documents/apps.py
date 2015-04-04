@@ -9,15 +9,13 @@ from actstream import registry
 
 from acls.api import class_permissions
 from common.classes import ModelAttribute
-from common.menus import menu_facet, menu_object
+from common import menu_facet, menu_object, menu_setup
 from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
 from events.permissions import PERMISSION_EVENTS_VIEW
 from main import FrontPageButton, MissingItem
 from main.api import register_maintenance_links
-from navigation.api import register_links, register_model_list_columns
-from navigation.links import link_spacer
-from project_setup.api import register_setup
+from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
 
@@ -26,7 +24,7 @@ from .links import (
     link_clear_image_cache, link_document_clear_transformations,
     link_document_content, link_document_delete, link_document_document_type_edit,
     link_document_events_view, document_multiple_document_type_edit,
-    link_document_download, link_document_edit, document_list, document_list_recent,
+    link_document_download, link_document_edit, link_document_list, link_document_list_recent,
     document_multiple_delete, document_multiple_clear_transformations,
     document_multiple_download, document_multiple_update_page_count,
     document_page_edit, document_page_navigation_first,
@@ -40,7 +38,7 @@ from .links import (
     link_document_properties, document_type_create, document_type_delete,
     document_type_edit, document_type_filename_create,
     document_type_filename_delete, document_type_filename_edit,
-    document_type_filename_list, document_type_list, document_type_setup,
+    document_type_filename_list, document_type_list, link_document_type_setup,
     link_document_update_page_count, document_version_download,
     link_document_version_list, document_version_revert
 )
@@ -64,11 +62,11 @@ class DocumentsApp(apps.AppConfig):
     verbose_name = _('Documents')
 
     def ready(self):
-        # Register document type links
-        register_links(DocumentType, [document_type_edit, document_type_filename_list, document_type_delete])
-        register_links([DocumentType, 'documents:document_type_create', 'documents:document_type_list'], [document_type_list, document_type_create], menu_name='secondary_menu')
-        register_links(DocumentTypeFilename, [document_type_filename_edit, document_type_filename_delete])
-        register_links([DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
+        # Document type links
+        #register_links(DocumentType, [document_type_edit, document_type_filename_list, document_type_delete])
+        #register_links([DocumentType, 'documents:document_type_create', 'documents:document_type_list'], [document_type_list, document_type_create], menu_name='secondary_menu')
+        #register_links(DocumentTypeFilename, [document_type_filename_edit, document_type_filename_delete])
+        #register_links([DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'], [document_type_filename_create], menu_name='sidebar')
 
         # Register document facet links
         menu_facet.bind_links(links=[link_document_preview], sources=[Document], position=0)
@@ -79,28 +77,28 @@ class DocumentsApp(apps.AppConfig):
         # Document actions
         menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_delete, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
 
-        register_links([Document], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count, document_multiple_document_type_edit, link_spacer], menu_name='multi_item_links')
+        #register_links([Document], [document_multiple_clear_transformations, document_multiple_delete, document_multiple_download, document_multiple_update_page_count, document_multiple_document_type_edit, link_spacer], menu_name='multi_item_links')
 
         # Document Version links
-        register_links(DocumentVersion, [document_version_revert, document_version_download])
+        #register_links(DocumentVersion, [document_version_revert, document_version_download])
 
         # Document page links
-        register_links(DocumentPage, [
-            document_page_transformation_list, document_page_view,
-            document_page_text, document_page_edit,
-        ])
+        #register_links(DocumentPage, [
+        #    document_page_transformation_list, document_page_view,
+        #    document_page_text, document_page_edit,
+        #])
 
         # Document page navigation links
-        register_links(DocumentPage, [
-            document_page_navigation_first, document_page_navigation_previous,
-            document_page_navigation_next, document_page_navigation_last
-        ], menu_name='sidebar')
+        #register_links(DocumentPage, [
+        #    document_page_navigation_first, document_page_navigation_previous,
+        #    document_page_navigation_next, document_page_navigation_last
+        #], menu_name='sidebar')
 
-        register_links(['documents:document_page_view'], [document_page_rotate_left, document_page_rotate_right, document_page_zoom_in, document_page_zoom_out, document_page_view_reset], menu_name='form_header')
-        register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])
-        register_links('documents:document_page_transformation_list', [document_page_transformation_create], menu_name='sidebar')
-        register_links('documents:document_page_transformation_create', [document_page_transformation_create], menu_name='sidebar')
-        register_links(['documents:document_page_transformation_edit', 'documents:document_page_transformation_delete'], [document_page_transformation_create], menu_name='sidebar')
+        #register_links(['documents:document_page_view'], [document_page_rotate_left, document_page_rotate_right, document_page_zoom_in, document_page_zoom_out, document_page_view_reset], menu_name='form_header')
+        #register_links(DocumentPageTransformation, [document_page_transformation_edit, document_page_transformation_delete])
+        #register_links('documents:document_page_transformation_list', [document_page_transformation_create], menu_name='sidebar')
+        #register_links('documents:document_page_transformation_create', [document_page_transformation_create], menu_name='sidebar')
+        #register_links(['documents:document_page_transformation_edit', 'documents:document_page_transformation_delete'], [document_page_transformation_create], menu_name='sidebar')
 
         register_maintenance_links([link_clear_image_cache], namespace='documents', title=_('Documents'))
         register_model_list_columns(Document, [
@@ -116,7 +114,7 @@ class DocumentsApp(apps.AppConfig):
         if (not validate_path(document_settings.CACHE_PATH)) or (not document_settings.CACHE_PATH):
             setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
 
-        register_setup(document_type_setup)
+        menu_setup.bind_links(links=[link_document_type_setup])
 
         class_permissions(Document, [
             PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
@@ -147,8 +145,8 @@ class DocumentsApp(apps.AppConfig):
 
         ModelAttribute(Document, label=_('Label'), name='label', type_name='field')
 
-        FrontPageButton(link=document_list_recent)
-        FrontPageButton(link=document_list)
+        FrontPageButton(link=link_document_list_recent)
+        FrontPageButton(link=link_document_list)
 
         registry.register(Document)
 

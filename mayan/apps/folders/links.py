@@ -20,8 +20,8 @@ link_folder_delete = Link(permissions=[PERMISSION_FOLDER_DELETE], text=_('Delete
 link_folder_view = Link(permissions=[PERMISSION_FOLDER_VIEW], text=_('Documents'), view='folders:folder_view', args='object.pk')
 link_folder_acl_list = Link(permissions=[ACLS_VIEW_ACL], text=_('ACLs'), view='folders:folder_acl_list', args='object.pk')
 
-folder_document_multiple_remove = {'text': _('Remove from folder'), 'view': 'folders:folder_document_multiple_remove', 'args': 'object.pk', 'famfam': 'folder_delete', 'permissions': [PERMISSION_FOLDER_REMOVE_DOCUMENT]}
-folder_add_document = {'text': _('Add to a folder'), 'view': 'folders:folder_add_document', 'args': 'object.pk', 'famfam': 'folder_add', 'permissions': [PERMISSION_FOLDER_ADD_DOCUMENT]}
-folder_add_multiple_documents = {'text': _('Add to folder'), 'view': 'folders:folder_add_multiple_documents', 'famfam': 'folder_add'}
-document_folder_list = {'text': _('Folders'), 'view': 'folders:document_folder_list', 'args': 'object.pk', 'famfam': 'folder_user', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+link_folder_document_multiple_remove = Link(permissions=[PERMISSION_FOLDER_REMOVE_DOCUMENT], text=_('Remove from folder'), view='folders:folder_document_multiple_remove', args='object.pk')
+link_folder_add_document = Link(permissions=[PERMISSION_FOLDER_ADD_DOCUMENT], text=_('Add to a folder'), view='folders:folder_add_document', args='object.pk')
+link_folder_add_multiple_documents = Link(text=_('Add to folder'), view='folders:folder_add_multiple_documents')
+link_document_folder_list = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Folders'), view='folders:document_folder_list', args='object.pk')
 

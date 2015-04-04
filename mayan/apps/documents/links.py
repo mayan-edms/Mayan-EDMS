@@ -55,8 +55,8 @@ link_document_print = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Print
 link_document_update_page_count = Link(permissions=[PERMISSION_DOCUMENT_TOOLS], text=_('Reset page count'), view='documents:document_update_page_count', args='object.pk')
 
 # Views
-document_list = {'text': _('All documents'), 'view': 'documents:document_list', 'icon': 'fa fa-file'}
-document_list_recent = {'text': _('Recent documents'), 'view': 'documents:document_list_recent', 'icon': 'fa fa-clock-o'}
+link_document_list = Link(icon='fa fa-file', text=_('All documents'), view='documents:document_list')
+link_document_list_recent = Link(icon='fa fa-clock-o', text=_('Recent documents'), view='documents:document_list_recent')
 document_multiple_delete = {'text': _('Delete'), 'view': 'documents:document_multiple_delete', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}
 document_multiple_document_type_edit = {'text': _('Change type'), 'view': 'documents:document_multiple_document_type_edit', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
 document_multiple_download = {'text': _('Download'), 'view': 'documents:document_multiple_download', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
@@ -95,7 +95,7 @@ document_version_revert = {'text': _('Revert'), 'view': 'documents:document_vers
 
 # Document type related links
 document_type_list = {'text': _('Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
-document_type_setup = {'text': _('Document types'), 'view': 'documents:document_type_list', 'icon': 'fa fa-file', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
+link_document_type_setup = Link(icon='fa fa-file', permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], text=_('Document types'), view='documents:document_type_list')
 document_type_edit = {'text': _('Edit'), 'view': 'documents:document_type_edit', 'args': 'document_type.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
 document_type_delete = {'text': _('Delete'), 'view': 'documents:document_type_delete', 'args': 'document_type.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
 document_type_create = {'text': _('Create document type'), 'view': 'documents:document_type_create', 'famfam': 'layout_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_CREATE]}

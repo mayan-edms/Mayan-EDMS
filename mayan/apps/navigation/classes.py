@@ -54,14 +54,30 @@ class Menu(object):
             source_links = self.bound_links.setdefault(None, [])
             source_links.extend(links)
 
-    def resolve(self, context):
+    def resolve_for_source(self, context, source):
+        request = Variable('request').resolve(context)
+        current_path = request.META['PATH_INFO']
+        current_view = resolve(current_path).view_name
+
         result = []
+
+        for link in self.bound_links.get(CombinedSource(obj=(source), view=current_view), []):
+            result.append(link.resolve(context))
+
+        for link in self.bound_links.get(source, []):
+            result.append(link.resolve(context))
+
+        return result
+
+    def resolve(self, context):
         request = Variable('request').resolve(context)
         current_path = request.META['PATH_INFO']
 
         # Get sources: view name, view objects
         current_view = resolve(current_path).view_name
         resolved_navigation_object_list = []
+
+        result = []
 
         navigation_object_list = context.get('navigation_object_list', [{'object': 'object'}])
 
@@ -72,16 +88,27 @@ class Menu(object):
             except VariableDoesNotExist:
                 pass
 
-        # Main menu links
-        for link in self.bound_links.get(None, []):
-            result.append(link.resolve(context))
-
         for resolved_navigation_object in resolved_navigation_object_list:
             for source, links in self.bound_links.iteritems():
-                if inspect.isclass(source) and isinstance(resolved_navigation_object, source) or Combined(obj=type(resolved_navigation_object), view=current_view) == source:
+                if inspect.isclass(source) and isinstance(resolved_navigation_object, source) or source == CombinedSource(obj=(resolved_navigation_object), view=current_view):
                     for link in links:
-                        result.append(link.resolve(context))
+                        resolved_link = link.resolve(context)
+                        if resolved_link:
+                            result.append(resolved_link)
+
                     #break  # No need for further content object match testing
+
+        # View links
+        for link in self.bound_links.get(current_view, []):
+            resolved_link = link.resolve(context)
+            if resolved_link:
+                result.append(resolved_link)
+
+        # Main menu links
+        for link in self.bound_links.get(None, []):
+            resolved_link = link.resolve(context)
+            if resolved_link:
+                result.append(resolved_link)
 
         return result
 
@@ -153,6 +180,7 @@ class Link(object):
         self.conditional_highlight = conditional_highlight  # Used by dynamic sources
 
     def resolve(self, context):
+        # TODO: Check ACLs
         request = Variable('request').resolve(context)
         current_path = request.META['PATH_INFO']
         current_view = resolve(current_path).view_name
@@ -406,7 +434,7 @@ class ModelListColumn(object):
         self.__class__._model_list_columns[model].extend(columns)
 
 
-class Combined(object):
+class CombinedSource(object):
     """
     Class that binds a link to a combination of an object and a view.
     This is used to show links relating to a specific object type but only

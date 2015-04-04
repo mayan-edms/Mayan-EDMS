@@ -106,7 +106,7 @@
                                                 {% copy_variable list_object_variable_name as "navigation_object_name" %}
                                             {% endif %}
                                             <td class="last">
-                                                {% get_object_links as links %}
+                                                {% get_menu_links 'object menu' as links %}
                                                 {% with links as object_navigation_links %}
                                                 {% with 'true' as horizontal %}
                                                     {% include 'navigation/generic_navigation.html' %}

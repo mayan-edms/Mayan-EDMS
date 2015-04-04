@@ -8,15 +8,14 @@ from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
+from common import menu_tools
 from common.utils import encapsulate
 from documents.models import Document, DocumentVersion
 from documents.signals import post_version_upload
 from documents.widgets import document_link
 from installation import PropertyNamespace
 from main.api import register_maintenance_links
-from navigation.api import register_links, register_model_list_columns
-from navigation.links import link_spacer
-from project_tools.api import register_tool
+from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 
 from .links import (
@@ -53,12 +52,12 @@ class OCRApp(apps.AppConfig):
     verbose_name = _('OCR')
 
     def ready(self):
-        register_links(Document, [link_document_submit])
-        register_links([Document], [link_document_submit_multiple, link_spacer], menu_name='multi_item_links')
-
-        register_links([DocumentVersionOCRError], [link_entry_re_queue_multiple, link_entry_delete_multiple], menu_name='multi_item_links')
-        register_links([DocumentVersionOCRError], [link_entry_re_queue, link_entry_delete])
-        register_links(['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError], [link_entry_list], menu_name='secondary_menu')
+        # TODO: convert
+        #register_links(Document, [link_document_submit])
+        #register_links([Document], [link_document_submit_multiple, link_spacer], menu_name='multi_item_links')
+        #register_links([DocumentVersionOCRError], [link_entry_re_queue_multiple, link_entry_delete_multiple], menu_name='multi_item_links')
+        #register_links([DocumentVersionOCRError], [link_entry_re_queue, link_entry_delete])
+        #register_links(['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError], [link_entry_list], menu_name='secondary_menu')
         register_maintenance_links([link_document_all_ocr_cleanup], namespace='ocr', title=_('OCR'))
 
         post_version_upload.connect(post_version_upload_ocr, dispatch_uid='post_version_upload_ocr', sender=DocumentVersion)
@@ -68,7 +67,7 @@ class OCRApp(apps.AppConfig):
 
         class_permissions(Document, [PERMISSION_OCR_DOCUMENT])
 
-        register_tool(link_entry_list)
+        menu_tools.bind_links(links=[link_entry_list])
 
         APIEndPoint('ocr')
 

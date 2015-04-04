@@ -15,7 +15,6 @@ from django.utils.text import unescape_string_literal
 
 from common.utils import urlquote
 
-from ..api import object_navigation
 from ..classes import Menu
 from ..forms import MultiItemForm
 
@@ -23,17 +22,13 @@ register = Library()
 
 
 @register.assignment_tag(takes_context=True)
-def get_top_menu_links(context):
-    return Menu.get('main menu').resolve(context=context)
-
-
-@register.assignment_tag(takes_context=True)
-def get_object_facet_links(context):
-    return Menu.get('object facet').resolve(context=context)
+def get_menu_links(context, name):
+    return Menu.get(name).resolve(context=context)
 
 
 @register.assignment_tag(takes_context=True)
 def get_action_links(context):
+    # TODO: move this logic to template
     result = []
 
     for menu_name in ['object menu', 'sidebar menu', 'secondary menu']:
@@ -46,15 +41,7 @@ def get_action_links(context):
 
 @register.simple_tag(takes_context=True)
 def get_multi_item_links_form(context, object_list):
-    first_object = object_list[0]
-
-    actions = []#(link.url, link.text) for link in Menu.get('multi items').resolve(context=context, obj=first_object)]
+    actions = [(link.url, link.text) for link in Menu.get('multi item menu').resolve_for_source(context=context, source=type(object_list[0]))]
     form = MultiItemForm(actions=actions)
     context.update({'multi_item_form': form, 'multi_item_actions': actions})
     return ''
-
-
-@register.assignment_tag(takes_context=True)
-def get_object_links(context):
-    return Menu.get('object menu').resolve(context=context)
-

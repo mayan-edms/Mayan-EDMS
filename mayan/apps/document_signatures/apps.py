@@ -14,7 +14,6 @@ from acls.api import class_permissions
 from django_gpg.exceptions import GPGDecryptionError
 from django_gpg.runtime import gpg
 from documents.models import Document, DocumentVersion
-from navigation.api import register_links
 
 from .links import (
     document_signature_delete, document_signature_download,
@@ -58,8 +57,9 @@ class DocumentSignaturesApp(apps.AppConfig):
     verbose_name = _('Document signatures')
 
     def ready(self):
-        register_links(Document, [document_verify], menu_name='form_header')
-        register_links(['signatures:document_verify', 'signatures:document_signature_upload', 'signatures:document_signature_download', 'signatures:document_signature_delete'], [document_signature_upload, document_signature_download, document_signature_delete], menu_name='sidebar')
+        # TODO: convert
+        #register_links(Document, [document_verify], menu_name='form_header')
+        #register_links(['signatures:document_verify', 'signatures:document_signature_upload', 'signatures:document_signature_download', 'signatures:document_signature_delete'], [document_signature_upload, document_signature_download, document_signature_delete], menu_name='sidebar')
 
         DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
         DocumentVersion.register_post_save_hook(1, document_post_save_hook)

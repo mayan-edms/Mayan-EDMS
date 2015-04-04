@@ -22,4 +22,4 @@ link_document_all_ocr_cleanup = Link(
     text=_('Clean up pages content'), view='ocr:document_all_ocr_cleanup'
 )
 
-link_entry_list = {'text': _('OCR Errors'), 'view': 'ocr:entry_list', 'icon': 'fa fa-file-text-o', 'permissions': [PERMISSION_OCR_DOCUMENT]}
+link_entry_list = Link(icon='fa fa-file-text-o', permissions=[PERMISSION_OCR_DOCUMENT], text=_('OCR Errors'), view='ocr:entry_list')
