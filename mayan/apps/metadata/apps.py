@@ -7,7 +7,10 @@ from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from common import menu_setup, menu_tools
+from common import (
+    menu_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
+    menu_sidebar, menu_tools
+)
 from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
@@ -18,12 +21,12 @@ from rest_api.classes import APIEndPoint
 from .api import get_metadata_string
 from .classes import DocumentMetadataHelper
 from .links import (
-    metadata_add, metadata_edit, metadata_multiple_add, metadata_multiple_edit,
-    metadata_multiple_remove, metadata_remove, metadata_view,
-    setup_document_type_metadata, setup_document_type_metadata_required,
-    setup_metadata_type_create, setup_metadata_type_delete,
-    setup_metadata_type_edit, link_setup_metadata_type_list,
-    link_documents_missing_required_metadata
+    link_metadata_add, link_metadata_edit, link_metadata_multiple_add,
+    link_metadata_multiple_edit, link_metadata_multiple_remove,
+    link_metadata_remove, link_metadata_view, link_setup_document_type_metadata,
+    link_setup_document_type_metadata_required, link_setup_metadata_type_create,
+    link_setup_metadata_type_delete, link_setup_metadata_type_edit,
+    link_setup_metadata_type_list, link_documents_missing_required_metadata
 )
 from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
 from .permissions import (
@@ -64,36 +67,35 @@ class MetadataApp(apps.AppConfig):
     verbose_name = _('Metadata')
 
     def ready(self):
-        post_save.connect(post_document_type_metadata_type_add, dispatch_uid='post_document_type_metadata_type_add', sender=DocumentTypeMetadataType)
-        post_delete.connect(post_document_type_metadata_type_delete, dispatch_uid='post_document_type_metadata_type_delete', sender=DocumentTypeMetadataType)
-        post_document_type_change.connect(post_post_document_type_change_metadata, dispatch_uid='post_post_document_type_change_metadata', sender=Document)
+        APIEndPoint('metadata')
 
         Document.add_to_class('metadata_value_of', DocumentMetadataHelper.constructor)
 
-        # TODO: convert
-        #register_links(['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'], [metadata_add, metadata_edit, metadata_remove], menu_name='sidebar')
-        #register_links(Document, [metadata_view], menu_name='form_header')
-        #register_links([Document], [metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove, link_spacer], menu_name='multi_item_links')
-        #register_links(DocumentType, [setup_document_type_metadata, setup_document_type_metadata_required])
-        #register_links(MetadataType, [setup_metadata_type_edit, setup_metadata_type_delete])
-        #register_links([MetadataType, 'metadata:setup_metadata_type_list', 'metadata:setup_metadata_type_create'], [setup_metadata_type_list, setup_metadata_type_create], menu_name='secondary_menu')
-
-        menu_setup.bind_links(links=[link_setup_metadata_type_list])
-        menu_tools.bind_links(links=[link_documents_missing_required_metadata])
+        ModelAttribute(Document, 'metadata', type_name='related', description=_('Queryset containing a MetadataType instance reference and a value for that metadata type'))
+        ModelAttribute(Document, 'metadata__metadata_type__name', label=_('Metadata type name'), type_name='query')
+        ModelAttribute(Document, 'metadata__value', label=_('Metadata type value'), type_name='query')
+        ModelAttribute(Document, 'metadata_value_of', label=_('Value of a metadata'), description=_('Return the value of a specific document metadata'), type_name=['property', 'indexing'])
 
         class_permissions(Document, [
             PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,
             PERMISSION_METADATA_DOCUMENT_REMOVE, PERMISSION_METADATA_DOCUMENT_VIEW,
         ])
 
+        menu_facet.bind_links(links=[link_metadata_view], sources=[Document])
+        menu_multi_item.bind_links(links=[link_metadata_multiple_add, link_metadata_multiple_edit, link_metadata_multiple_remove], sources=[Document])
+        menu_object.bind_links(links=[link_setup_document_type_metadata, link_setup_document_type_metadata_required], sources=[DocumentType])
+        menu_object.bind_links(links=[link_setup_metadata_type_edit, link_setup_metadata_type_delete], sources=[MetadataType])
+        menu_secondary.bind_links(links=[link_setup_metadata_type_list, link_setup_metadata_type_create], sources=[MetadataType, 'metadata:setup_metadata_type_list', 'metadata:setup_metadata_type_create'])
+        menu_setup.bind_links(links=[link_setup_metadata_type_list])
+        menu_sidebar.bind_links(links=[link_metadata_add, link_metadata_edit, link_metadata_remove], sources=['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'])
+        menu_tools.bind_links(links=[link_documents_missing_required_metadata])
+
+        post_save.connect(post_document_type_metadata_type_add, dispatch_uid='post_document_type_metadata_type_add', sender=DocumentTypeMetadataType)
+        post_delete.connect(post_document_type_metadata_type_delete, dispatch_uid='post_document_type_metadata_type_delete', sender=DocumentTypeMetadataType)
+        post_document_type_change.connect(post_post_document_type_change_metadata, dispatch_uid='post_post_document_type_change_metadata', sender=Document)
+
         register_model_list_columns(Document, [
             {
                 'name': _('Metadata'), 'attribute': encapsulate(lambda x: get_metadata_string(x))
             },
         ])
-
-        APIEndPoint('metadata')
-        ModelAttribute(Document, 'metadata__metadata_type__name', label=_('Metadata type name'), type_name='query')
-        ModelAttribute(Document, 'metadata__value', label=_('Metadata type value'), type_name='query')
-        ModelAttribute(Document, 'metadata', type_name='related', description=_('Queryset containing a MetadataType instance reference and a value for that metadata type'))
-        ModelAttribute(Document, 'metadata_value_of', label=_('Value of a metadata'), description=_('Return the value of a specific document metadata'), type_name=['property', 'indexing'])

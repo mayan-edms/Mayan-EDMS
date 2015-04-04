@@ -11,13 +11,14 @@ from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
+from common import menu_facet, menu_sidebar
 from django_gpg.exceptions import GPGDecryptionError
 from django_gpg.runtime import gpg
 from documents.models import Document, DocumentVersion
 
 from .links import (
-    document_signature_delete, document_signature_download,
-    document_signature_upload, document_verify
+    link_document_signature_delete, link_document_signature_download,
+    link_document_signature_upload, link_document_verify
 )
 from .models import DocumentVersionSignature
 from .permissions import (
@@ -57,12 +58,8 @@ class DocumentSignaturesApp(apps.AppConfig):
     verbose_name = _('Document signatures')
 
     def ready(self):
-        # TODO: convert
-        #register_links(Document, [document_verify], menu_name='form_header')
-        #register_links(['signatures:document_verify', 'signatures:document_signature_upload', 'signatures:document_signature_download', 'signatures:document_signature_delete'], [document_signature_upload, document_signature_download, document_signature_delete], menu_name='sidebar')
-
-        DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
         DocumentVersion.register_post_save_hook(1, document_post_save_hook)
+        DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
 
         class_permissions(Document, [
             PERMISSION_DOCUMENT_VERIFY,
@@ -70,3 +67,6 @@ class DocumentSignaturesApp(apps.AppConfig):
             PERMISSION_SIGNATURE_DOWNLOAD,
             PERMISSION_SIGNATURE_UPLOAD,
         ])
+
+        menu_facet.bind_links(links=[link_document_verify], sources=[Document])
+        menu_sidebar.bind_links(links=[link_document_signature_upload, link_document_signature_download, link_document_signature_delete], sources=['signatures:document_verify', 'signatures:document_signature_upload', 'signatures:document_signature_download', 'signatures:document_signature_delete'])

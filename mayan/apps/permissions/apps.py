@@ -6,7 +6,9 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
-from common.menus import menu_setup
+from common.menus import (
+    menu_multi_item, menu_object, menu_secondary, menu_setup
+)
 from rest_api.classes import APIEndPoint
 
 from .models import Role
@@ -38,13 +40,11 @@ class PermissionsApp(apps.AppConfig):
     verbose_name = _('Permissions')
 
     def ready(self):
-        # TODO: convert
-        #register_links(Role, [role_edit, role_members, role_permissions, role_delete])
-        #register_links([Role, 'permissions:role_create', 'permissions:role_list'], [role_list, role_create], menu_name='secondary_menu')
-        #register_links(['permissions:role_permissions'], [permission_grant, permission_revoke], menu_name='multi_item_links')
+        APIEndPoint('permissions')
 
-        post_save.connect(user_post_save, sender=User)
-
+        menu_object.bind_links(links=[link_role_edit, link_role_members, link_role_permissions, link_role_delete], sources=[Role])
+        menu_multi_item.bind_links(links=[link_permission_grant, link_permission_revoke], sources=['permissions:role_permissions'])
+        menu_secondary.bind_links(links=[link_role_list, link_role_create], sources=[Role, 'permissions:role_create', 'permissions:role_list'])
         menu_setup.bind_links(links=[link_role_list])
 
-        APIEndPoint('permissions')
+        post_save.connect(user_post_save, sender=User)

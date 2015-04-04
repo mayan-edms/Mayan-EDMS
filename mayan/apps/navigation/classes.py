@@ -90,13 +90,18 @@ class Menu(object):
 
         for resolved_navigation_object in resolved_navigation_object_list:
             for source, links in self.bound_links.iteritems():
-                if inspect.isclass(source) and isinstance(resolved_navigation_object, source) or source == CombinedSource(obj=(resolved_navigation_object), view=current_view):
-                    for link in links:
-                        resolved_link = link.resolve(context)
-                        if resolved_link:
-                            result.append(resolved_link)
+                try:
+                    if inspect.isclass(source) and isinstance(resolved_navigation_object, source) or source == CombinedSource(obj=resolved_navigation_object, view=current_view):
+                        for link in links:
+                            resolved_link = link.resolve(context)
+                            if resolved_link:
+                                result.append(resolved_link)
+                        #break  # No need for further content object match testing
 
-                    #break  # No need for further content object match testing
+                except TypeError:
+                    # When source is a dictionary
+                    pass
+
 
         # View links
         for link in self.bound_links.get(current_view, []):

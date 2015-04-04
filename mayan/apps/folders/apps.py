@@ -34,13 +34,13 @@ class FoldersApp(apps.AppConfig):
     def ready(self):
         APIEndPoint('folders')
 
+        class_permissions(Document, [
+            PERMISSION_FOLDER_ADD_DOCUMENT, PERMISSION_FOLDER_REMOVE_DOCUMENT
+        ])
+
         class_permissions(Folder, [
             ACLS_EDIT_ACL, ACLS_VIEW_ACL, PERMISSION_FOLDER_DELETE,
             PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_VIEW
-        ])
-
-        class_permissions(Document, [
-            PERMISSION_FOLDER_ADD_DOCUMENT, PERMISSION_FOLDER_REMOVE_DOCUMENT
         ])
 
         menu_facet.bind_links(links=[link_document_folder_list], sources=[Document])

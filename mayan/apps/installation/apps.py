@@ -20,7 +20,6 @@ class InstallationApp(apps.AppConfig):
         menu_secondary.bind_links(links=[link_namespace_list], sources=['installation:namespace_list', PropertyNamespace])
         menu_tools.bind_links(links=[link_menu_link])
 
-        # Virtualenv
         namespace = PropertyNamespace('venv', _('VirtualEnv'))
         try:
             venv = VirtualEnv()

@@ -8,7 +8,7 @@ from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from common import menu_tools
+from common import menu_multi_item, menu_object, menu_secondary, menu_tools
 from common.utils import encapsulate
 from documents.models import Document, DocumentVersion
 from documents.signals import post_version_upload
@@ -52,36 +52,21 @@ class OCRApp(apps.AppConfig):
     verbose_name = _('OCR')
 
     def ready(self):
-        # TODO: convert
-        #register_links(Document, [link_document_submit])
-        #register_links([Document], [link_document_submit_multiple, link_spacer], menu_name='multi_item_links')
-        #register_links([DocumentVersionOCRError], [link_entry_re_queue_multiple, link_entry_delete_multiple], menu_name='multi_item_links')
-        #register_links([DocumentVersionOCRError], [link_entry_re_queue, link_entry_delete])
-        #register_links(['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError], [link_entry_list], menu_name='secondary_menu')
-        register_maintenance_links([link_document_all_ocr_cleanup], namespace='ocr', title=_('OCR'))
-
-        post_version_upload.connect(post_version_upload_ocr, dispatch_uid='post_version_upload_ocr', sender=DocumentVersion)
+        APIEndPoint('ocr')
 
         Document.add_to_class('submit_for_ocr', document_ocr_submit)
         DocumentVersion.add_to_class('submit_for_ocr', document_version_ocr_submit)
 
         class_permissions(Document, [PERMISSION_OCR_DOCUMENT])
 
+        menu_multi_item.bind_links(links=[link_document_submit_multiple], sources=[Document])
+        menu_multi_item.bind_links(links=[link_entry_re_queue_multiple, link_entry_delete_multiple], sources=[DocumentVersionOCRError])
+        menu_object.bind_links(links=[link_document_submit], sources=[Document])
+        menu_object.bind_links(links=[link_entry_re_queue, link_entry_delete], sources=[DocumentVersionOCRError])
+        menu_secondary.bind_links(links=[link_entry_list], sources=['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError])
         menu_tools.bind_links(links=[link_entry_list])
 
-        APIEndPoint('ocr')
-
-        register_model_list_columns(DocumentVersionOCRError, [
-            {
-                'name': _('Document'), 'attribute': encapsulate(lambda entry: document_link(entry.document_version.document))
-            },
-            {
-                'name': _('Added'), 'attribute': 'datetime_submitted'
-            },
-            {
-                'name': _('Result'), 'attribute': 'result'
-            },
-        ])
+        post_version_upload.connect(post_version_upload_ocr, dispatch_uid='post_version_upload_ocr', sender=DocumentVersion)
 
         namespace = PropertyNamespace('ocr', _('OCR'))
 
@@ -111,3 +96,17 @@ class OCRApp(apps.AppConfig):
             namespace.add_property('unpaper', _('unpaper version'), _('error getting version'), report=True)
         else:
             namespace.add_property('unpaper', _('unpaper version'), unpaper('-V').stdout, report=True)
+
+        register_maintenance_links([link_document_all_ocr_cleanup], namespace='ocr', title=_('OCR'))
+
+        register_model_list_columns(DocumentVersionOCRError, [
+            {
+                'name': _('Document'), 'attribute': encapsulate(lambda entry: document_link(entry.document_version.document))
+            },
+            {
+                'name': _('Added'), 'attribute': 'datetime_submitted'
+            },
+            {
+                'name': _('Result'), 'attribute': 'result'
+            },
+        ])

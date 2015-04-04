@@ -12,7 +12,7 @@ from .models import SmartLink, SmartLinkCondition
 class SmartLinkForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SmartLinkForm, self).__init__(*args, **kwargs)
-        self.fields['dynamic_title'].help_text = ' '.join([self.fields['dynamic_title'].help_text, ModelAttribute.help_text_for(Document, type_names=['field', 'related', 'property'])])
+        self.fields['dynamic_title'].help_text = ' '.join([unicode(self.fields['dynamic_title'].help_text), ModelAttribute.help_text_for(Document, type_names=['field', 'related', 'property'])])
 
     class Meta:
         fields = ('title', 'dynamic_title', 'enabled')
