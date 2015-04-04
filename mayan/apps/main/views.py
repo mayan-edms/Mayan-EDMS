@@ -10,14 +10,13 @@ from dynamic_search.classes import SearchModel
 from permissions.models import Permission
 
 from .api import diagnostics, tools
-from .classes import FrontPageButton, MissingItem
+from .classes import MissingItem
 
 
 def home(request):
     document_search = SearchModel.get('documents.Document')
 
     context = {
-        'object_navigation_links': FrontPageButton.get_all(),
         'query_string': request.GET,
         'hide_links': True,
         'search_results_limit': 100,

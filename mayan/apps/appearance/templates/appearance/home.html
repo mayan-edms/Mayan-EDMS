@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load static %}
 
+{% load navigation_tags %}
 {% load project_tags %}
 
 {% block title %} :: {% trans 'Home' %}{% endblock %}
@@ -37,6 +38,7 @@
 
             <div class="well center-block">
                 <div class="row">
+                    {% get_menu_links 'front page menu' as object_navigation_links %}
                     {% with 'navigation/large_button_link.html' as link_template %}
                     {% with 'col-xs-12 col-sm-6 col-md-4 col-lg-4' as div_class %}
                         {% include 'navigation/generic_navigation.html' %}

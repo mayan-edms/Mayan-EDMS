@@ -72,34 +72,34 @@ link_clear_image_cache = Link(
 )
 
 # Document pages
-link_document_page_transformation_list = Link(args='page.pk', class='no-parent-history', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Page transformations'), view='documents:document_page_transformation_list')
-link_document_page_transformation_create = Link(args='page.pk', class='no-parent-history', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text= _('Create new transformation'), view='documents:document_page_transformation_create')
-link_document_page_transformation_edit = Link(args='transformation.pk', class='no-parent-history', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Edit'), view='documents:document_page_transformation_edit')
-link_document_page_transformation_delete = Link(args='transformation.pk', class='no-parent-history', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Delete'), view='documents:document_page_transformation_delete')
-link_document_page_view = Link(args='page.pk', class='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Page image'), view='documents:document_page_view')
-link_document_page_text = Link(args='page.pk', class='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Page text'), view='documents:document_page_text')
-link_document_page_edit = Link(class='no-parent-history', permissions=[PERMISSION_DOCUMENT_EDIT], text=_('Edit page text'), view='documents:document_page_edit', args='page.pk')
-link_document_page_navigation_next = Link(text=_('Next page'), 'class': 'no-parent-history', 'view': 'documents:document_page_navigation_next', 'args': 'page.pk', 'famfam': 'resultset_next', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_last_page, 'keep_query': True}
-link_document_page_navigation_previous = Link(text=_('Previous page'), 'class': 'no-parent-history', 'view': 'documents:document_page_navigation_previous', 'args': 'page.pk', 'famfam': 'resultset_previous', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_first_page, 'keep_query': True}
-link_document_page_navigation_first = Link(text=_('First page'), 'class': 'no-parent-history', 'view': 'documents:document_page_navigation_first', 'args': 'page.pk', 'famfam': 'resultset_first', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_first_page, 'keep_query': True}
-link_document_page_navigation_last = Link(text=_('Last page'), 'class': 'no-parent-history', 'view': 'documents:document_page_navigation_last', 'args': 'page.pk', 'famfam': 'resultset_last', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_last_page, 'keep_query': True}
-link_document_page_zoom_in = Link(text=_('Zoom in'), 'class': 'no-parent-history', 'view': 'documents:document_page_zoom_in', 'args': 'page.pk', 'famfam': 'zoom_in', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_max_zoom}
-link_document_page_zoom_out = Link(text=_('Zoom out'), 'class': 'no-parent-history', 'view': 'documents:document_page_zoom_out', 'args': 'page.pk', 'famfam': 'zoom_out', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_min_zoom}
-link_document_page_rotate_right = Link(text=_('Rotate right'), 'class': 'no-parent-history', 'view': 'documents:document_page_rotate_right', 'args': 'page.pk', 'famfam': 'arrow_turn_right', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-link_document_page_rotate_left = Link(text=_('Rotate left'), 'class': 'no-parent-history', 'view': 'documents:document_page_rotate_left', 'args': 'page.pk', 'famfam': 'arrow_turn_left', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-link_document_page_view_reset = Link(text=_('Reset view'), 'class': 'no-parent-history', 'view': 'documents:document_page_view_reset', 'args': 'page.pk', 'famfam': 'page_white', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+link_document_page_transformation_list = Link(args='page.pk', klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Page transformations'), view='documents:document_page_transformation_list')
+link_document_page_transformation_create = Link(args='page.pk', klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text= _('Create new transformation'), view='documents:document_page_transformation_create')
+link_document_page_transformation_edit = Link(args='transformation.pk', klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Edit'), view='documents:document_page_transformation_edit')
+link_document_page_transformation_delete = Link(args='transformation.pk', klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Delete'), view='documents:document_page_transformation_delete')
+link_document_page_view = Link(args='page.pk', klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Page image'), view='documents:document_page_view')
+link_document_page_text = Link(args='page.pk', klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Page text'), view='documents:document_page_text')
+link_document_page_edit = Link(klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_EDIT], text=_('Edit page text'), view='documents:document_page_edit', args='page.pk')
+link_document_page_navigation_next = Link(conditional_disable=is_last_page, keep_query=True, klass='no-parent-history', text=_('Next page'), permissions=[PERMISSION_DOCUMENT_VIEW], view='documents:document_page_navigation_next', args='page.pk')
+link_document_page_navigation_previous = Link(conditional_disable=is_first_page, keep_query=True, klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Previous page'), view='documents:document_page_navigation_previous', args='page.pk')
+link_document_page_navigation_first = Link(conditional_disable=is_first_page, keep_query=True, klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('First page'), view='documents:document_page_navigation_first', args='page.pk')
+link_document_page_navigation_last = Link(conditional_disable=is_last_page, keep_query=True, text=_('Last page'), klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], view='documents:document_page_navigation_last', args='page.pk')
+link_document_page_zoom_in = Link(conditional_disable=is_max_zoom, klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Zoom in'), view='documents:document_page_zoom_in', args='page.pk')
+link_document_page_zoom_out = Link(conditional_disable=is_min_zoom, klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Zoom out'), view='documents:document_page_zoom_out', args='page.pk')
+link_document_page_rotate_right = Link(klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Rotate right'), view='documents:document_page_rotate_right', args='page.pk')
+link_document_page_rotate_left = Link(klass='no-parent-history', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Rotate left'), view='documents:document_page_rotate_left', args='page.pk')
+link_document_page_view_reset = Link(permissions=[PERMISSION_DOCUMENT_VIEW], klass='no-parent-history', text=_('Reset view'), view='documents:document_page_view_reset', args='page.pk')
 
 # Document versions
-document_version_revert = {'text': _('Revert'), 'view': 'documents:document_version_revert', 'args': 'object.pk', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VERSION_REVERT], 'conditional_disable': is_current_version}
+link_document_version_revert = Link(conditional_disable=is_current_version, permissions=[PERMISSION_DOCUMENT_VERSION_REVERT], text=_('Revert'), view='documents:document_version_revert', args='object.pk')
 
 # Document type related links
-document_type_list = {'text': _('Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
+link_document_type_list = Link(permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], text=_('Document types'), view='documents:document_type_list')
 link_document_type_setup = Link(icon='fa fa-file', permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], text=_('Document types'), view='documents:document_type_list')
-document_type_edit = {'text': _('Edit'), 'view': 'documents:document_type_edit', 'args': 'document_type.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-document_type_delete = {'text': _('Delete'), 'view': 'documents:document_type_delete', 'args': 'document_type.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
-document_type_create = {'text': _('Create document type'), 'view': 'documents:document_type_create', 'famfam': 'layout_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_CREATE]}
+link_document_type_edit = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Edit'), view='documents:document_type_edit', args='document_type.id')
+link_document_type_delete = Link(permissions=[PERMISSION_DOCUMENT_TYPE_DELETE], text=_('Delete'), view='documents:document_type_delete', args='document_type.id')
+link_document_type_create = Link(permissions=[PERMISSION_DOCUMENT_TYPE_CREATE], text=_('Create document type'), view='documents:document_type_create')
 
-document_type_filename_list = {'text': _('Filenames'), 'view': 'documents:document_type_filename_list', 'args': 'document_type.id', 'famfam': 'database', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
-document_type_filename_create = {'text': _('Add filename to document type'), 'view': 'documents:document_type_filename_create', 'args': 'document_type.id', 'famfam': 'database_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-document_type_filename_edit = {'text': _('Edit'), 'view': 'documents:document_type_filename_edit', 'args': 'filename.id', 'famfam': 'database_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-document_type_filename_delete = {'text': _('Delete'), 'view': 'documents:document_type_filename_delete', 'args': 'filename.id', 'famfam': 'database_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
+link_document_type_filename_list = Link(permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], text=_('Filenames'), view='documents:document_type_filename_list', args='document_type.id')
+link_document_type_filename_create = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Add filename to document type'), view='documents:document_type_filename_create', args='document_type.id')
+link_document_type_filename_edit = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Edit'), view='documents:document_type_filename_edit', args='filename.id')
+link_document_type_filename_delete = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Delete'), view='documents:document_type_filename_delete', args='filename.id')

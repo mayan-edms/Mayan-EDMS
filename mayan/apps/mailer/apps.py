@@ -18,8 +18,8 @@ class MailerApp(apps.AppConfig):
     verbose_name = _('Mailer')
 
     def ready(self):
-        menu_object.bind_links(links=[link_send_document_link, link_send_document], sources=[Document])
-
         class_permissions(Document, [
             PERMISSION_MAILING_LINK, PERMISSION_MAILING_SEND_DOCUMENT
         ])
+
+        menu_object.bind_links(links=[link_send_document_link, link_send_document], sources=[Document])

@@ -585,7 +585,7 @@ def document_page_view(request, document_page_id):
     return render_to_response('appearance/generic_detail.html', {
         'page': document_page,
         'access_object': document_page.document,
-        'navigation_object_name': 'page',
+        'navigation_object_list': [{'object': 'page'}],
         'web_theme_hide_menus': True,
         'form': document_page_form,
         'title': ' '.join([base_title, zoom_text]),
@@ -609,7 +609,7 @@ def document_page_text(request, document_page_id):
 
     return render_to_response('appearance/generic_detail.html', {
         'page': document_page,
-        'navigation_object_name': 'page',
+        'navigation_object_list': [{'object': 'page'}],
         'web_theme_hide_menus': True,
         'form': document_page_form,
         'title': _('Details for: %s') % document_page,
@@ -639,7 +639,7 @@ def document_page_edit(request, document_page_id):
     return render_to_response('appearance/generic_form.html', {
         'form': form,
         'page': document_page,
-        'navigation_object_name': 'page',
+        'navigation_object_list': [{'object': 'page'}],
         'title': _('Edit: %s') % document_page,
         'web_theme_hide_menus': True,
         'access_object': document_page.document,
@@ -889,7 +889,7 @@ def document_type_edit(request, document_type_id):
     return render_to_response('appearance/generic_form.html', {
         'title': _('Edit document type: %s') % document_type,
         'form': form,
-        'navigation_object_name': 'document_type',
+        'navigation_object_list': [{'object': 'document_type'}],
         'document_type': document_type,
         'next': next
     }, context_instance=RequestContext(request))
@@ -917,7 +917,7 @@ def document_type_delete(request, document_type_id):
     context = {
         'document_type': document_type,
         'delete_view': True,
-        'navigation_object_name': 'document_type',
+        'navigation_object_list': [{'object': 'document_type'}],
         'next': next,
         'previous': previous,
         'title': _('Are you sure you wish to delete the document type: %s?') % document_type,
@@ -957,7 +957,7 @@ def document_type_filename_list(request, document_type_id):
     context = {
         'object_list': document_type.filenames.all(),
         'title': _('Filenames for document type: %s') % document_type,
-        'navigation_object_name': 'document_type',
+        'navigation_object_list': [{'object': 'document_type'}],
         'document_type': document_type,
         'list_object_variable_name': 'filename',
         'hide_link': True,
@@ -1002,8 +1002,8 @@ def document_type_filename_edit(request, document_type_filename_id):
         'filename': document_type_filename,
         'document_type': document_type_filename.document_type,
         'navigation_object_list': [
-            {'object': 'document_type', 'name': _('Document type')},
-            {'object': 'filename', 'name': _('Document type filename')}
+            {'object': 'document_type'},
+            {'object': 'filename'}
         ],
     }, context_instance=RequestContext(request))
 
@@ -1034,8 +1034,8 @@ def document_type_filename_delete(request, document_type_filename_id):
         'filename': document_type_filename,
         'document_type': document_type_filename.document_type,
         'navigation_object_list': [
-            {'object': 'document_type', 'name': _('Document type')},
-            {'object': 'filename', 'name': _('Document type filename')}
+            {'object': 'document_type'},
+            {'object': 'filename'}
         ],
         'title': _('Are you sure you wish to delete the filename: %(filename)s, from document type "%(document_type)s"?') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
@@ -1074,7 +1074,7 @@ def document_type_filename_create(request, document_type_id):
         'form': form,
         'document_type': document_type,
         'navigation_object_list': [
-            {'object': 'document_type', 'name': _('Document type')},
+            {'object': 'document_type'},
         ],
     }, context_instance=RequestContext(request))
 

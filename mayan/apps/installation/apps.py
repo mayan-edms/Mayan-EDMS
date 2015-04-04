@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django import apps
 from django.utils.translation import ugettext_lazy as _
 
-from common import menu_tools
+from common import menu_tools, menu_object, menu_secondary
 from common.utils import encapsulate
 from navigation.api import register_model_list_columns
 
@@ -16,6 +16,20 @@ class InstallationApp(apps.AppConfig):
     verbose_name = _('Installation')
 
     def ready(self):
+        menu_object.bind_links(links=[link_namespace_details], sources=[PropertyNamespace])
+        menu_secondary.bind_links(links=[link_namespace_list], sources=['installation:namespace_list', PropertyNamespace])
+        menu_tools.bind_links(links=[link_menu_link])
+
+        # Virtualenv
+        namespace = PropertyNamespace('venv', _('VirtualEnv'))
+        try:
+            venv = VirtualEnv()
+        except PIPNotFound:
+            namespace.add_property('pip', 'pip', _('pip not found.'), report=True)
+        else:
+            for item, version, result in venv.get_results():
+                namespace.add_property(item, '%s (%s)' % (item, version), result, report=True)
+
         register_model_list_columns(PropertyNamespace, [
             {
                 'name': _('Label'),
@@ -37,18 +51,3 @@ class InstallationApp(apps.AppConfig):
                 'attribute': 'value'
             }
         ])
-
-        # TODO: convert
-        #register_links(PropertyNamespace, [link_namespace_details])
-        #register_links(['installation:namespace_list', PropertyNamespace], [link_namespace_list], menu_name='secondary_menu')
-        menu_tools.bind_links(links=[link_menu_link])
-
-        # Virtualenv
-        namespace = PropertyNamespace('venv', _('VirtualEnv'))
-        try:
-            venv = VirtualEnv()
-        except PIPNotFound:
-            namespace.add_property('pip', 'pip', _('pip not found.'), report=True)
-        else:
-            for item, version, result in venv.get_results():
-                namespace.add_property(item, '%s (%s)' % (item, version), result, report=True)

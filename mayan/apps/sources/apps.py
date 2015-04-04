@@ -3,10 +3,10 @@ from __future__ import absolute_import, unicode_literals
 from django import apps
 from django.utils.translation import ugettext_lazy as _
 
-from common import menu_setup
+from common import menu_front_page, menu_setup
 from common.utils import encapsulate
 from documents.models import Document
-from main import FrontPageButton, MissingItem
+from main import MissingItem
 from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 
@@ -32,6 +32,9 @@ class SourcesApp(apps.AppConfig):
     verbose_name = _('Sources')
 
     def ready(self):
+        APIEndPoint('sources')
+        MissingItem(label=_('Create a document source'), description=_('Document sources are the way in which new documents are feed to Mayan EDMS, create at least a web form source to be able to upload documents from a browser.'), condition=lambda: not Source.objects.exists(), view='sources:setup_source_list')
+
         register_model_list_columns(StagingFile, [
             {
                 'name': _('Thumbnail'), 'attribute':
@@ -50,8 +53,5 @@ class SourcesApp(apps.AppConfig):
 
         menu_setup.bind_links(links=[link_setup_sources])
 
-        APIEndPoint('sources')
+        menu_front_page.bind_links(links=[link_document_create_multiple])
 
-        FrontPageButton(link=link_document_create_multiple)
-
-        MissingItem(label=_('Create a document source'), description=_('Document sources are the way in which new documents are feed to Mayan EDMS, create at least a web form source to be able to upload documents from a browser.'), condition=lambda: not Source.objects.exists(), view='sources:setup_source_list')
