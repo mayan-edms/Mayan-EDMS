@@ -12,13 +12,16 @@ from rest_api.classes import APIEndPoint
 
 from .classes import StagingFile
 from .links import (
-    link_document_create_multiple, document_create_siblings, link_setup_sources,
-    setup_source_create_imap_email, setup_source_create_pop3_email,
-    setup_source_create_watch_folder, setup_source_create_webform,
-    setup_source_create_staging_folder, setup_source_delete, setup_source_edit,
-    setup_source_transformation_create, setup_source_transformation_delete,
-    setup_source_transformation_edit, setup_source_transformation_list,
-    staging_file_delete, upload_version
+    link_document_create_multiple, link_document_create_siblings,
+    link_setup_sources, link_setup_source_create_imap_email,
+    link_setup_source_create_pop3_email,
+    link_setup_source_create_watch_folder, link_setup_source_create_webform,
+    link_setup_source_create_staging_folder, link_setup_source_delete,
+    link_setup_source_edit, link_setup_source_transformation_create,
+    link_setup_source_transformation_delete,
+    link_setup_source_transformation_edit,
+    link_setup_source_transformation_list, link_staging_file_delete,
+    link_upload_version
 )
 from .models import Source, SourceTransformation
 from .widgets import staging_file_thumbnail

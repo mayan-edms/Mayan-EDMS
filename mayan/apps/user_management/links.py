@@ -10,20 +10,19 @@ from .permissions import (
     PERMISSION_USER_EDIT, PERMISSION_USER_VIEW
 )
 
-user_list = {'text': _('Users'), 'view': 'user_management:user_list', 'famfam': 'user', 'permissions': [PERMISSION_USER_VIEW]}
-link_user_setup = Link(icon='fa fa-user', permissions=[PERMISSION_USER_VIEW], text=_('Users'), view='user_management:user_list')
-user_edit = {'text': _('Edit'), 'view': 'user_management:user_edit', 'args': 'object.id', 'famfam': 'user_edit', 'permissions': [PERMISSION_USER_EDIT]}
-user_add = {'text': _('Create new user'), 'view': 'user_management:user_add', 'famfam': 'user_add', 'permissions': [PERMISSION_USER_CREATE]}
-user_delete = {'text': _('Delete'), 'view': 'user_management:user_delete', 'args': 'object.id', 'famfam': 'user_delete', 'permissions': [PERMISSION_USER_DELETE]}
-user_multiple_delete = {'text': _('Delete'), 'view': 'user_management:user_multiple_delete', 'famfam': 'user_delete', 'permissions': [PERMISSION_USER_DELETE]}
-user_set_password = {'text': _('Reset password'), 'view': 'user_management:user_set_password', 'args': 'object.id', 'famfam': 'lock_edit', 'permissions': [PERMISSION_USER_EDIT]}
-user_multiple_set_password = {'text': _('Reset password'), 'view': 'user_management:user_multiple_set_password', 'famfam': 'lock_edit', 'permissions': [PERMISSION_USER_EDIT]}
-user_groups = {'text': _('Groups'), 'view': 'user_management:user_groups', 'args': 'object.id', 'famfam': 'group_link', 'permissions': [PERMISSION_USER_EDIT]}
-
-group_list = {'text': _('Groups'), 'view': 'user_management:group_list', 'famfam': 'group', 'permissions': [PERMISSION_GROUP_VIEW]}
+link_group_add = Link(permissions=[PERMISSION_GROUP_CREATE], text=_('Create new group'), view='user_management:group_add')
+link_group_delete = Link(permissions=[PERMISSION_GROUP_DELETE], text=_('Delete'), view='user_management:group_delete', args='object.id')
+link_group_edit = Link(permissions=[PERMISSION_GROUP_EDIT], text=_('Edit'), view='user_management:group_edit', args='object.id')
+link_group_list = Link(permissions=[PERMISSION_GROUP_VIEW], text=_('Groups'), view='user_management:group_list')
+link_group_members = Link(permissions=[PERMISSION_GROUP_EDIT], text=_('Members'), view='user_management:group_members', args='object.id')
+link_group_multiple_delete = Link(permissions=[PERMISSION_GROUP_DELETE], text=_('Delete'), view='user_management:group_multiple_delete')
 link_group_setup = Link(icon='fa fa-group', permissions=[PERMISSION_GROUP_VIEW], text=_('Groups'), view='user_management:group_list')
-group_edit = {'text': _('Edit'), 'view': 'user_management:group_edit', 'args': 'object.id', 'famfam': 'group_edit', 'permissions': [PERMISSION_GROUP_EDIT]}
-group_add = {'text': _('Create new group'), 'view': 'user_management:group_add', 'famfam': 'group_add', 'permissions': [PERMISSION_GROUP_CREATE]}
-group_delete = {'text': _('Delete'), 'view': 'user_management:group_delete', 'args': 'object.id', 'famfam': 'group_delete', 'permissions': [PERMISSION_GROUP_DELETE]}
-group_multiple_delete = {'text': _('Delete'), 'view': 'user_management:group_multiple_delete', 'famfam': 'group_delete', 'permissions': [PERMISSION_GROUP_DELETE]}
-group_members = {'text': _('Members'), 'view': 'user_management:group_members', 'args': 'object.id', 'famfam': 'group_link', 'permissions': [PERMISSION_GROUP_EDIT]}
+link_user_add = Link(permissions=[PERMISSION_USER_CREATE], text=_('Create new user'), view='user_management:user_add')
+link_user_delete = Link(permissions=[PERMISSION_USER_DELETE], text=_('Delete'), view='user_management:user_delete', args='object.id')
+link_user_edit = Link(permissions=[PERMISSION_USER_EDIT], text=_('Edit'), view='user_management:user_edit', args='object.id')
+link_user_groups = Link(permissions=[PERMISSION_USER_EDIT], text=_('Groups'), view='user_management:user_groups', args='object.id')
+link_user_list = Link(permissions=[PERMISSION_USER_VIEW], text=_('Users'), view='user_management:user_list')
+link_user_multiple_delete = Link(permissions=[PERMISSION_USER_DELETE], text=_('Delete'), view='user_management:user_multiple_delete')
+link_user_multiple_set_password = Link(permissions=[PERMISSION_USER_EDIT], text=_('Reset password'), view='user_management:user_multiple_set_password')
+link_user_set_password = Link(permissions=[PERMISSION_USER_EDIT], text=_('Reset password'), view='user_management:user_set_password', args='object.id')
+link_user_setup = Link(icon='fa fa-user', permissions=[PERMISSION_USER_VIEW], text=_('Users'), view='user_management:user_list')

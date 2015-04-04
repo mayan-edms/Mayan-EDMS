@@ -9,17 +9,15 @@ from .permissions import (
     PERMISSION_OCR_DOCUMENT_DELETE
 )
 
-link_document_submit = {'text': _('Submit to OCR queue'), 'view': 'ocr:document_submit', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-link_document_submit_multiple = {'text': _('Submit to OCR queue'), 'view': 'ocr:document_submit_multiple', 'famfam': 'hourglass_add'}
-link_entry_re_queue = {'text': _('Re-queue'), 'view': 'ocr:entry_re_queue', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-link_entry_re_queue_multiple = {'text': _('Re-queue'), 'view': 'ocr:entry_re_queue_multiple', 'famfam': 'hourglass_add'}
-link_entry_delete = {'text': _('Delete'), 'view': 'ocr:entry_delete', 'args': 'object.id', 'famfam': 'hourglass_delete', 'permissions': [PERMISSION_OCR_DOCUMENT_DELETE]}
-link_entry_delete_multiple = {'text': _('Delete'), 'view': 'ocr:entry_delete_multiple', 'famfam': 'hourglass_delete'}
-
 link_document_all_ocr_cleanup = Link(
     description=_('Runs a language filter to remove common OCR mistakes from document pages content.'),
     permissions=[PERMISSION_OCR_CLEAN_ALL_PAGES],
     text=_('Clean up pages content'), view='ocr:document_all_ocr_cleanup'
 )
-
+link_document_submit = Link(permissions=[PERMISSION_OCR_DOCUMENT], text=_('Submit to OCR queue'), view='ocr:document_submit', args='object.id')
+link_document_submit_multiple = Link(text=_('Submit to OCR queue'), view='ocr:document_submit_multiple')
+link_entry_delete = Link(permissions=[PERMISSION_OCR_DOCUMENT_DELETE], text=_('Delete'), view='ocr:entry_delete', args='object.id')
+link_entry_delete_multiple = Link(text=_('Delete'), view='ocr:entry_delete_multiple')
 link_entry_list = Link(icon='fa fa-file-text-o', permissions=[PERMISSION_OCR_DOCUMENT], text=_('OCR Errors'), view='ocr:entry_list')
+link_entry_re_queue = Link(permissions=[PERMISSION_OCR_DOCUMENT], text=_('Re-queue'), view='ocr:entry_re_queue', args='object.id')
+link_entry_re_queue_multiple = Link(text=_('Re-queue'), view='ocr:entry_re_queue_multiple')

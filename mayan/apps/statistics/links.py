@@ -9,7 +9,7 @@ def is_superuser(context):
     return context['request'].user.is_staff or context['request'].user.is_superuser
 
 
-link_execute = {'text': _('Execute'), 'view': 'statistics:execute', 'args': 'object.id', 'famfam': 'lightning', 'condition': is_superuser}
-link_namespace_details = {'text': _('Details'), 'view': 'statistics:namespace_details', 'args': 'namespace.id', 'famfam': 'chart_curve_go', 'condition': is_superuser}
-link_namespace_list = {'text': _('Namespace list'), 'view': 'statistics:namespace_list', 'famfam': 'chart_curve', 'condition': is_superuser}
+link_execute = Link(condition=is_superuser, text=_('Execute'), view='statistics:execute', args='object.id')
+link_namespace_details = Link(text=_('Details'), view='statistics:namespace_details', args='namespace.id', condition=is_superuser)
+link_namespace_list = Link(condition=is_superuser, text=_('Namespace list'), view='statistics:namespace_list')
 link_statistics = Link(condition=is_superuser, icon='fa fa-sort-numeric-desc', text=_('Statistics'), view='statistics:namespace_list')

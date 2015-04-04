@@ -10,10 +10,11 @@ from common import menu_setup
 from rest_api.classes import APIEndPoint
 
 from .links import (
-    group_add, group_delete, group_edit, group_list, group_members,
-    group_multiple_delete, link_group_setup, user_add, user_delete, user_edit,
-    user_groups, user_list, user_multiple_delete, user_multiple_set_password,
-    user_set_password, link_user_setup
+    link_group_add, link_group_delete, link_group_edit, link_group_list,
+    link_group_members, link_group_multiple_delete, link_group_setup,
+    link_user_add, link_user_delete, link_user_edit, link_user_groups,
+    link_user_list, link_user_multiple_delete,
+    link_user_multiple_set_password, link_user_set_password, link_user_setup
 )
 
 
