@@ -1,17 +1,6 @@
 from __future__ import unicode_literals
 
-import copy
-import inspect
-import re
-import urllib
-import urlparse
-
-from django.core.urlresolvers import NoReverseMatch, resolve, reverse
-from django.template import (
-    TemplateSyntaxError, Library, VariableDoesNotExist, Node, Variable
-)
-from django.utils.encoding import smart_str, smart_unicode
-from django.utils.text import unescape_string_literal
+from django.template import Library
 
 from common.utils import urlquote
 

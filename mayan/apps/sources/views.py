@@ -11,6 +11,7 @@ from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
+from common import menu_facet
 from common.models import SharedUploadedFile
 from common.utils import encapsulate
 from common.views import MultiFormView
@@ -20,6 +21,7 @@ from documents.permissions import (
 )
 from documents.tasks import task_upload_new_version
 from metadata.api import decode_metadata_from_url, metadata_repr_as_list
+from navigation import Link
 from permissions.models import Permission
 
 from .forms import (
@@ -57,27 +59,22 @@ def document_create_siblings(request, document_id):
     return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
 
 
-def conditional_highlight_factory(obj):
-    return lambda context: context['source'].source_type == obj.source_type and context['source'].pk == obj.pk
-
-
 def get_tab_link_for_source(source, document=None):
     if document:
         view = 'sources:upload_version'
-        args = [document.pk, source.pk]
+        args = ['"{}"'.format(document.pk), '"{}"'.format(source.pk)]
     else:
         view = 'sources:upload_interactive'
-        args = [source.pk]
+        args = ['"{}"'.format(source.pk)]
 
-    return {
-        'text': source.title,
-        'view': view,
-        'args': args,
-        'keep_query': True,
-        'remove_from_query': ['page'],
-        'conditional_highlight': conditional_highlight_factory(source),
-        'icon': 'fa fa-upload',
-    }
+    return Link(
+        text=source.title,
+        view=view,
+        args=args,
+        keep_query=True,
+        remove_from_query=['page'],
+        icon='fa fa-upload',
+    )
 
 
 def get_active_tab_links(document=None):
@@ -152,18 +149,11 @@ class UploadBaseView(MultiFormView):
                 },
             })
 
+        menu_facet.bound_links['sources:upload_interactive'] = self.tab_links['tab_links']
+        menu_facet.bound_links['sources:upload_version'] = self.tab_links['tab_links']
+
         context.update({
             'subtemplates_list': subtemplates_list,
-            'extra_navigation_links': {
-                'form_header': {
-                    'sources:upload_version': {
-                        'links': self.tab_links['tab_links']
-                    },
-                    'sources:upload_interactive': {
-                        'links': self.tab_links['tab_links']
-                    }
-                }
-            },
         })
 
         return context
