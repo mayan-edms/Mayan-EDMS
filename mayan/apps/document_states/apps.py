@@ -4,7 +4,9 @@ from django import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
-from common import menu_setup
+from common import (
+    menu_facet, menu_object, menu_secondary, menu_setup, menu_sidebar
+)
 from common.utils import encapsulate
 from documents.models import Document
 from navigation.api import register_model_list_columns
@@ -35,21 +37,19 @@ class DocumentStatesApp(apps.AppConfig):
     verbose_name = _('Document states')
 
     def ready(self):
-        post_save.connect(launch_workflow, dispatch_uid='launch_workflow', sender=Document)
-
+        menu_facet.bind_links(links=[link_document_workflow_instance_list], sources=[Document])
+        menu_object.bind_links(links=[link_setup_workflow_states, link_setup_workflow_transitions, link_setup_workflow_document_types, link_setup_workflow_edit, link_setup_workflow_delete], sources=[Workflow])
+        menu_object.bind_links(links=[link_setup_workflow_state_edit, link_setup_workflow_state_delete], sources=[WorkflowState])
+        menu_object.bind_links(links=[link_setup_workflow_transition_edit, link_setup_workflow_transition_delete], sources=[WorkflowTransition])
+        menu_object.bind_links(links=[link_workflow_instance_detail, link_workflow_instance_transition], sources=[WorkflowInstance])
+        menu_secondary.bind_links(links=[link_setup_workflow_list, link_setup_workflow_create], sources=[Workflow, 'document_states:setup_workflow_create', 'document_states:setup_workflow_list'])
         menu_setup.bind_links(links=[link_setup_workflow_list])
+        menu_sidebar.bind_links(links=[link_setup_workflow_state_create, link_setup_workflow_transition_create], sources=[Workflow])
 
         register_model_list_columns(Workflow, [
             {
                 'name': _('Initial state'),
                 'attribute': encapsulate(lambda workflow: workflow.get_initial_state() or _('None'))
-            },
-        ])
-
-        register_model_list_columns(WorkflowState, [
-            {
-                'name': _('Is initial state?'),
-                'attribute': 'initial'
             },
         ])
 
@@ -72,17 +72,6 @@ class DocumentStatesApp(apps.AppConfig):
             },
         ])
 
-        register_model_list_columns(WorkflowTransition, [
-            {
-                'name': _('Origin state'),
-                'attribute': 'origin_state'
-            },
-            {
-                'name': _('Destination state'),
-                'attribute': 'destination_state'
-            },
-        ])
-
         register_model_list_columns(WorkflowInstanceLogEntry, [
             {
                 'name': _('Date and time'),
@@ -102,11 +91,22 @@ class DocumentStatesApp(apps.AppConfig):
             },
         ])
 
-        # TODO: convert
-        #register_links([Document], [link_document_workflow_instance_list], menu_name='form_header')
-        #register_links([WorkflowInstance], [link_workflow_instance_detail, link_workflow_instance_transition])
-        #register_links([Workflow, 'document_states:setup_workflow_create', 'document_states:setup_workflow_list'], [link_setup_workflow_list, link_setup_workflow_create], menu_name='secondary_menu')
-        #register_links([Workflow], [link_setup_workflow_states, link_setup_workflow_transitions, link_setup_workflow_document_types, link_setup_workflow_edit, link_setup_workflow_delete])
-        ##register_links([Workflow], [link_setup_workflow_state_create, link_setup_workflow_transition_create], menu_name='sidebar')
-        #register_links([WorkflowState], [link_setup_workflow_state_edit, link_setup_workflow_state_delete])
-        #register_links([WorkflowTransition], [link_setup_workflow_transition_edit, link_setup_workflow_transition_delete])
+        register_model_list_columns(WorkflowState, [
+            {
+                'name': _('Is initial state?'),
+                'attribute': 'initial'
+            },
+        ])
+
+        register_model_list_columns(WorkflowTransition, [
+            {
+                'name': _('Origin state'),
+                'attribute': 'origin_state'
+            },
+            {
+                'name': _('Destination state'),
+                'attribute': 'destination_state'
+            },
+        ])
+
+        post_save.connect(launch_workflow, dispatch_uid='launch_workflow', sender=Document)

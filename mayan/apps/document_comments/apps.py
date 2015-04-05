@@ -6,12 +6,15 @@ from django.contrib.contenttypes import generic
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
+from common import menu_facet, menu_object, menu_sidebar
 from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document
 from navigation.api import register_model_list_columns
 
-from .links import comment_add, comment_delete, comments_for_document
+from .links import (
+    link_comment_add, link_comment_delete, link_comments_for_document
+)
 from .permissions import (
     PERMISSION_COMMENT_CREATE, PERMISSION_COMMENT_DELETE,
     PERMISSION_COMMENT_VIEW
@@ -32,10 +35,13 @@ class DocumentCommentsApp(apps.AppConfig):
             )
         )
 
+        ModelAttribute(Document, label=_('Comments'), name='comments', type_name='related')
+
         class_permissions(Document, [
             PERMISSION_COMMENT_CREATE,
             PERMISSION_COMMENT_DELETE,
-            PERMISSION_COMMENT_VIEW])
+            PERMISSION_COMMENT_VIEW]
+        )
 
         register_model_list_columns(Comment, [
             {
@@ -52,9 +58,6 @@ class DocumentCommentsApp(apps.AppConfig):
             }
         ])
 
-        # TODO: convert
-        #register_links(['comments:comments_for_document', 'comments:comment_add', 'comments:comment_delete', 'comments:comment_multiple_delete'], [comment_add], menu_name='sidebar')
-        #register_links(Comment, [comment_delete])
-        #register_links(Document, [comments_for_document], menu_name='form_header')
-
-        ModelAttribute(Document, label=_('Comments'), name='comments', type_name='related')
+        menu_sidebar.bind_links(links=[link_comment_add], sources=['comments:comments_for_document', 'comments:comment_add', 'comments:comment_delete', 'comments:comment_multiple_delete'])
+        menu_object.bind_links(links=[link_comment_delete], sources=[Comment])
+        menu_facet.bind_links(links=[link_comments_for_document], sources=[Document])

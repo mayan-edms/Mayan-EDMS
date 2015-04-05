@@ -4,7 +4,9 @@ from django import apps
 from django.db.models.signals import post_save, post_delete
 from django.utils.translation import ugettext_lazy as _
 
-from common import menu_main, menu_setup
+from common import (
+    menu_facet, menu_main, menu_object, menu_secondary, menu_setup
+)
 from documents.models import Document
 from main.api import register_maintenance_links
 from metadata.models import DocumentMetadata
@@ -41,19 +43,16 @@ class DocumentIndexingApp(apps.AppConfig):
     def ready(self):
         APIEndPoint('indexes', app_name='document_indexing')
 
-        # TODO: convert
-        #register_links(Document, [document_index_list], menu_name='form_header')
-        #register_links([Index, 'indexing:index_setup_list', 'indexing:index_setup_create'], [index_setup_list, index_setup_create], menu_name='secondary_menu')
-        #register_links(Index, [index_setup_edit, index_setup_view, index_setup_document_types, index_setup_delete])
-        #register_links(IndexInstanceNode, [index_parent])
-        #register_links(IndexTemplateNode, [template_node_create, template_node_edit, template_node_delete])
-
+        menu_facet.bind_links(links=[link_document_index_list], sources=[Document])
+        menu_object.bind_links(links=[link_index_parent], sources=[IndexInstanceNode])
+        menu_object.bind_links(links=[link_index_setup_edit, link_index_setup_view, link_index_setup_document_types, link_index_setup_delete], sources=[Index])
+        menu_object.bind_links(links=[link_template_node_create, link_template_node_edit, link_template_node_delete], sources=[IndexTemplateNode])
+        menu_main.bind_links(links=[link_index_main_menu])
+        menu_secondary.bind_links(links=[link_index_setup_list, link_index_setup_create], sources=[Index, 'indexing:index_setup_list', 'indexing:index_setup_create'])
         menu_setup.bind_links(links=[link_index_setup])
 
-        menu_main.bind_links(links=[link_index_main_menu])
-
-        post_delete.connect(document_index_delete, dispatch_uid='document_index_delete', sender=Document)
         post_save.connect(document_metadata_index_update, dispatch_uid='document_metadata_index_update', sender=DocumentMetadata)
+        post_delete.connect(document_index_delete, dispatch_uid='document_index_delete', sender=Document)
         post_delete.connect(document_metadata_index_post_delete, dispatch_uid='document_metadata_index_post_delete', sender=DocumentMetadata)
 
         register_maintenance_links([link_rebuild_index_instances], namespace='document_indexing', title=_('Indexes'))

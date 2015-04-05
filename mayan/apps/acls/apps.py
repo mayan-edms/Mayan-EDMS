@@ -30,16 +30,11 @@ class ACLsApp(apps.AppConfig):
     verbose_name = _('ACLs')
 
     def ready(self):
-        menu_sidebar.bind_links(links=[link_acl_holder_new], sources=[AccessObject])
-
-        #register_links(AccessObjectClass, [acl_class_acl_list, acl_class_new_holder_for])
-        #register_links(AccessHolder, [acl_detail])
-        #register_links(ClassAccessHolder, [acl_class_acl_detail])
-        #register_links(['acls:acl_detail'], [acl_grant, acl_revoke], menu_name='multi_item_links')
-        #register_links(['acls:acl_class_acl_detail'], [acl_class_grant, acl_class_revoke], menu_name='multi_item_links')
-        menu_setup.bind_links(links=[link_acl_setup_valid_classes])
-        post_migrate.connect(create_creator_user, dispatch_uid='create_creator_user')
-
+        menu_multi_item.bind_links(links=[link_acl_class_grant, link_acl_class_revoke], sources=['acls:acl_class_acl_detail'])
+        menu_multi_item.bind_links(links=[link_acl_grant, link_acl_revoke], sources=['acls:acl_detail'])
+        menu_object.bind_links(links=[link_acl_class_acl_detail], sources=[ClassAccessHolder])
+        menu_object.bind_links(links=[link_acl_class_acl_list, link_acl_class_new_holder_for], sources=[AccessObjectClass])
+        menu_object.bind_links(links=[link_acl_detail], sources=[AccessHolder])
         menu_secondary.bind_links(
             links=[link_acl_class_list],
             sources=[
@@ -49,3 +44,7 @@ class ACLsApp(apps.AppConfig):
                 'acls:acl_class_multiple_revoke'
             ],
          )
+        menu_setup.bind_links(links=[link_acl_setup_valid_classes])
+        menu_sidebar.bind_links(links=[link_acl_holder_new], sources=[AccessObject])
+
+        post_migrate.connect(create_creator_user, dispatch_uid='create_creator_user')

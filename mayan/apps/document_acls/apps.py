@@ -5,9 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from acls.permissions import ACLS_VIEW_ACL, ACLS_EDIT_ACL
+from common import menu_facet
 from documents.models import Document
 
-from .links import acl_list
+from .links import link_acl_list
 
 
 class DocumentACLsApp(apps.AppConfig):
@@ -15,10 +16,9 @@ class DocumentACLsApp(apps.AppConfig):
     verbose_name = _('Document ACLs')
 
     def ready(self):
-        #TODO: convert
-        #register_links(Document, [acl_list], menu_name='form_header')
-
         class_permissions(Document, [
             ACLS_VIEW_ACL,
             ACLS_EDIT_ACL
         ])
+
+        menu_facet.bind_links(links=[link_acl_list], sources=[Document])

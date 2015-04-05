@@ -51,6 +51,13 @@ class TagsApp(apps.AppConfig):
         menu_secondary.bind_links(links=[link_tag_list, link_tag_create], sources=[Tag, 'tags:tag_list', 'tags:tag_create'])
         menu_sidebar.bind_links(links=[link_tag_attach], sources=['tags:document_tags', 'tags:tag_remove', 'tags:tag_multiple_remove', 'tags:tag_attach'])
 
+        register_model_list_columns(Document, [
+            {
+                'name': _('Tags'), 'attribute':
+                encapsulate(lambda x: get_tags_inline_widget_simple(x))
+            },
+        ])
+
         register_model_list_columns(Tag, [
             {
                 'name': _('Preview'),
@@ -60,11 +67,4 @@ class TagsApp(apps.AppConfig):
                 'name': _('Tagged items'),
                 'attribute': encapsulate(lambda x: x.documents.count())
             }
-        ])
-
-        register_model_list_columns(Document, [
-            {
-                'name': _('Tags'), 'attribute':
-                encapsulate(lambda x: get_tags_inline_widget_simple(x))
-            },
         ])
