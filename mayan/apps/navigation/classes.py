@@ -43,7 +43,7 @@ class Menu(object):
 
     def bind_links(self, links, sources=None, position=0):
         """
-        Associate a link to a model, a view, or an url inside this menu
+        Associate a link to a model, a view inside this menu
         """
         if sources:
             for source in sources:
@@ -79,12 +79,12 @@ class Menu(object):
 
         result = []
 
-        navigation_object_list = context.get('navigation_object_list', [{'object': 'object'}])
+        navigation_object_list = context.get('navigation_object_list', ['object'])
 
         # Multiple objects
         for navigation_object in navigation_object_list:
             try:
-                resolved_navigation_object_list.append(Variable(navigation_object['object']).resolve(context))
+                resolved_navigation_object_list.append(Variable(navigation_object).resolve(context))
             except VariableDoesNotExist:
                 pass
 

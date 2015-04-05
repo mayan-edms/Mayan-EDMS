@@ -16,7 +16,7 @@ class MainApp(apps.AppConfig):
     verbose_name = _('Main')
 
     def ready(self):
-        menu_main.bind_links(links=[link_setup], position=-2)
+        menu_main.bind_links(links=[link_setup], position=1)
         menu_main.bind_links(links=[link_tools], position=-3)
         menu_setup.bind_links(links=[link_admin_site])
         menu_tools.bind_links(links=[link_maintenance_menu])

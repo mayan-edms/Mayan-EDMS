@@ -472,8 +472,8 @@ def setup_document_type_metadata(request, document_type_id):
         remove_method=lambda x: x.delete(),
         extra_context={
             'document_type': document_type,
-            'navigation_object_name': 'document_type',
             'main_title': _('Optional metadata types for document type: %s') % document_type,
+            'navigation_object_list': ['document_type'],
         },
         decode_content_type=True,
     )
@@ -492,8 +492,8 @@ def setup_document_type_metadata_required(request, document_type_id):
         remove_method=lambda x: x.delete(),
         extra_context={
             'document_type': document_type,
-            'navigation_object_name': 'document_type',
             'main_title': _('Required metadata types for document type: %s') % document_type,
+            'navigation_object_list': ['document_type'],
         },
         decode_content_type=True,
     )

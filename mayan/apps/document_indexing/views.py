@@ -98,7 +98,7 @@ def index_setup_edit(request, index_pk):
         'title': _('Edit index: %s') % index,
         'form': form,
         'index': index,
-        'navigation_object_name': 'index',
+        'navigation_object_list': ['index'],
     }, context_instance=RequestContext(request))
 
 
@@ -127,7 +127,7 @@ def index_setup_delete(request, index_pk):
 
     context = {
         'index': index,
-        'navigation_object_name': 'index',
+        'navigation_object_list': ['index'],
         'delete_view': True,
         'previous': previous,
         'next': next,
@@ -152,7 +152,7 @@ def index_setup_view(request, index_pk):
         'object_list': object_list,
         'index': index,
         'list_object_variable_name': 'node',
-        'navigation_object_name': 'index',
+        'navigation_object_list': ['index'],
         'title': _('Tree template nodes for index: %s') % index,
         'hide_object': True,
         'extra_columns': [
@@ -184,8 +184,8 @@ def index_setup_document_types(request, index_pk):
         right_list_title=_('Document types for index: %s') % index,
         decode_content_type=True,
         extra_context={
-            'navigation_object_name': 'index',
             'index': index,
+            'navigation_object_list': ['index'],
         }
     )
 
@@ -209,10 +209,10 @@ def template_node_create(request, parent_pk):
         form = IndexTemplateNodeForm(initial={'index': parent_node.index, 'parent': parent_node})
 
     return render_to_response('appearance/generic_form.html', {
-        'title': _('Create child node'),
         'form': form,
         'index': parent_node.index,
-        'navigation_object_name': 'index',
+        'navigation_object_list': ['index'],
+        'title': _('Create child node'),
     }, context_instance=RequestContext(request))
 
 
@@ -234,15 +234,11 @@ def template_node_edit(request, node_pk):
         form = IndexTemplateNodeForm(instance=node)
 
     return render_to_response('appearance/generic_form.html', {
-        'title': _('Edit index template node: %s') % node,
         'form': form,
         'index': node.index,
+        'navigation_object_list': ['index', 'node'],
         'node': node,
-
-        'navigation_object_list': [
-            {'object': 'index', 'name': _('Index')},
-            {'object': 'node', 'name': _('Node')}
-        ],
+        'title': _('Edit index template node: %s') % node,
     }, context_instance=RequestContext(request))
 
 
@@ -271,16 +267,12 @@ def template_node_delete(request, node_pk):
 
     context = {
         'delete_view': True,
-        'previous': previous,
-        'next': next,
-        'title': _('Are you sure you with to delete the index template node: %s?') % node,
         'index': node.index,
+        'navigation_object_list': ['index', 'node'],
+        'next': next,
         'node': node,
-
-        'navigation_object_list': [
-            {'object': 'index', 'name': _('Index')},
-            {'object': 'node', 'name': _('Node')}
-        ],
+        'title': _('Are you sure you with to delete the index template node: %s?') % node,
+        'previous': previous,
     }
 
     return render_to_response('appearance/generic_confirm.html', context,

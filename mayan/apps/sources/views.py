@@ -391,12 +391,12 @@ def setup_source_edit(request, source_id):
         form = form_class(instance=source)
 
     return render_to_response('appearance/generic_form.html', {
-        'title': _('Edit source: %s') % source,
         'form': form,
-        'source': source,
-        'navigation_object_name': 'source',
+        'navigation_object_list': ['source'],
         'next': next,
+        'source': source,
         'source_type': source.source_type,
+        'title': _('Edit source: %s') % source,
     }, context_instance=RequestContext(request))
 
 
@@ -418,12 +418,12 @@ def setup_source_delete(request, source_id):
         return HttpResponseRedirect(redirect_view)
 
     context = {
-        'title': _('Are you sure you wish to delete the source: %s?') % source,
-        'source': source,
-        'navigation_object_name': 'source',
         'delete_view': True,
+        'navigation_object_list': ['source'],
         'previous': previous,
+        'source': source,
         'source_type': source.source_type,
+        'title': _('Are you sure you wish to delete the source: %s?') % source,
     }
 
     return render_to_response('appearance/generic_confirm.html', context,
@@ -449,10 +449,10 @@ def setup_source_create(request, source_type):
         form = form_class()
 
     return render_to_response('appearance/generic_form.html', {
-        'title': _('Create new source of type: %s') % cls.class_fullname(),
         'form': form,
+        'navigation_object_list': ['source'],
         'source_type': source_type,
-        'navigation_object_name': 'source',
+        'title': _('Create new source of type: %s') % cls.class_fullname(),
     }, context_instance=RequestContext(request))
 
 
@@ -462,11 +462,6 @@ def setup_source_transformation_list(request, source_id):
     source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
 
     context = {
-        'object_list': SourceTransformation.transformations.get_for_object(source),
-        'title': _('Transformations for: %s') % source.fullname(),
-        'source': source,
-        'navigation_object_name': 'source',
-        'list_object_variable_name': 'transformation',
         'extra_columns': [
             {'name': _('Order'), 'attribute': 'order'},
             {'name': _('Transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
@@ -474,6 +469,11 @@ def setup_source_transformation_list(request, source_id):
         ],
         'hide_link': True,
         'hide_object': True,
+        'list_object_variable_name': 'transformation',
+        'navigation_object_list': ['source'],
+        'object_list': SourceTransformation.transformations.get_for_object(source),
+        'source': source,
+        'title': _('Transformations for: %s') % source.fullname(),
     }
 
     return render_to_response('appearance/generic_list.html', context,
@@ -500,15 +500,12 @@ def setup_source_transformation_edit(request, transformation_id):
         form = SourceTransformationForm(instance=source_transformation)
 
     return render_to_response('appearance/generic_form.html', {
-        'title': _('Edit transformation: %s') % source_transformation,
         'form': form,
+        'navigation_object_list': ['source', 'transformation'],
+        'next': next,
         'source': source_transformation.content_object,
         'transformation': source_transformation,
-        'navigation_object_list': [
-            {'object': 'source', 'name': _('Source')},
-            {'object': 'transformation', 'name': _('Transformation')}
-        ],
-        'next': next,
+        'title': _('Edit transformation: %s') % source_transformation,
     }, context_instance=RequestContext(request))
 
 
@@ -531,16 +528,13 @@ def setup_source_transformation_delete(request, transformation_id):
 
     return render_to_response('appearance/generic_confirm.html', {
         'delete_view': True,
-        'transformation': source_transformation,
+        'navigation_object_list': ['source', 'transformation'],
+        'previous': previous,
         'source': source_transformation.content_object,
-        'navigation_object_list': [
-            {'object': 'source', 'name': _('Source')},
-            {'object': 'transformation', 'name': _('Transformation')}
-        ],
         'title': _('Are you sure you wish to delete source transformation "%(transformation)s"') % {
             'transformation': source_transformation.get_transformation_display(),
         },
-        'previous': previous,
+        'transformation': source_transformation,
     }, context_instance=RequestContext(request))
 
 
@@ -568,6 +562,6 @@ def setup_source_transformation_create(request, source_id):
     return render_to_response('appearance/generic_form.html', {
         'form': form,
         'source': source,
-        'navigation_object_name': 'source',
+        'navigation_object_list': ['source'],
         'title': _('Create new transformation for source: %s') % source,
     }, context_instance=RequestContext(request))

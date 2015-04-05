@@ -53,10 +53,7 @@ def acl_list_for(request, obj, extra_context=None):
         'hide_object': True,
         'access_object': AccessObject.encapsulate(obj),
         'object': obj,
-        'navigation_object_list': [
-            {'object': 'object'},
-            {'object': 'access_object'}
-        ],
+        'navigation_object_list': ['object', 'access_object'],
     }
 
     if extra_context:
@@ -123,10 +120,7 @@ def acl_detail_for(request, actor, obj):
             'object_gid': lambda x: obj.gid,
         },
         'access_object': obj,
-        'navigation_object_list': [
-            {'object': 'object'},
-            {'object': 'access_object'}
-        ],
+        'navigation_object_list': ['object', 'access_object'],
     }
 
     return render_to_response('appearance/generic_detail.html', context,
@@ -347,10 +341,7 @@ def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None)
         'submit_label': _('Select'),
         'object': obj,
         'access_object': AccessObject.encapsulate(obj),
-        'navigation_object_list': [
-            {'object': 'object'},
-            {'object': 'access_object'},
-        ],
+        'navigation_object_list': ['object', 'access_object'],
     }
 
     if extra_context:

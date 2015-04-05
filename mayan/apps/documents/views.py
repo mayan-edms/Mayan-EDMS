@@ -583,14 +583,14 @@ def document_page_view(request, document_page_id):
         zoom_text = ''
 
     return render_to_response('appearance/generic_detail.html', {
-        'page': document_page,
         'access_object': document_page.document,
-        'navigation_object_list': [{'object': 'page'}],
-        'web_theme_hide_menus': True,
         'form': document_page_form,
-        'title': ' '.join([base_title, zoom_text]),
-        'zoom': zoom,
+        'navigation_object_list': ['page'],
+        'page': document_page,
         'rotation': rotation,
+        'title': ' '.join([base_title, zoom_text]),
+        'web_theme_hide_menus': True,
+        'zoom': zoom,
     }, context_instance=RequestContext(request))
 
 
@@ -608,12 +608,12 @@ def document_page_text(request, document_page_id):
     document_page_form = DocumentPageForm_text(instance=document_page)
 
     return render_to_response('appearance/generic_detail.html', {
-        'page': document_page,
-        'navigation_object_list': [{'object': 'page'}],
-        'web_theme_hide_menus': True,
-        'form': document_page_form,
-        'title': _('Details for: %s') % document_page,
         'access_object': document_page.document,
+        'form': document_page_form,
+        'page': document_page,
+        'navigation_object_list': ['page'],
+        'title': _('Details for: %s') % document_page,
+        'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
 
 
@@ -637,12 +637,12 @@ def document_page_edit(request, document_page_id):
         form = DocumentPageForm_edit(instance=document_page)
 
     return render_to_response('appearance/generic_form.html', {
+        'access_object': document_page.document,
         'form': form,
+        'navigation_object_list': ['page'],
         'page': document_page,
-        'navigation_object_list': [{'object': 'page'}],
         'title': _('Edit: %s') % document_page,
         'web_theme_hide_menus': True,
-        'access_object': document_page.document,
     }, context_instance=RequestContext(request))
 
 
@@ -887,11 +887,11 @@ def document_type_edit(request, document_type_id):
         form = DocumentTypeForm(instance=document_type)
 
     return render_to_response('appearance/generic_form.html', {
-        'title': _('Edit document type: %s') % document_type,
-        'form': form,
-        'navigation_object_list': [{'object': 'document_type'}],
         'document_type': document_type,
-        'next': next
+        'form': form,
+        'navigation_object_list': ['document_type'],
+        'next': next,
+        'title': _('Edit document type: %s') % document_type,
     }, context_instance=RequestContext(request))
 
 
@@ -915,13 +915,13 @@ def document_type_delete(request, document_type_id):
         return HttpResponseRedirect(next)
 
     context = {
-        'document_type': document_type,
         'delete_view': True,
-        'navigation_object_list': [{'object': 'document_type'}],
+        'document_type': document_type,
+        'message': _('All documents of this type will be deleted too.'),
+        'navigation_object_list': ['document_type'],
         'next': next,
         'previous': previous,
         'title': _('Are you sure you wish to delete the document type: %s?') % document_type,
-        'message': _('All documents of this type will be deleted too.'),
     }
 
     return render_to_response('appearance/generic_confirm.html', context,
@@ -955,18 +955,18 @@ def document_type_filename_list(request, document_type_id):
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 
     context = {
-        'object_list': document_type.filenames.all(),
-        'title': _('Filenames for document type: %s') % document_type,
-        'navigation_object_list': [{'object': 'document_type'}],
         'document_type': document_type,
-        'list_object_variable_name': 'filename',
-        'hide_link': True,
         'extra_columns': [
             {
                 'name': _('Enabled'),
                 'attribute': encapsulate(lambda x: two_state_template(x.enabled)),
             }
-        ]
+        ],
+        'hide_link': True,
+        'list_object_variable_name': 'filename',
+        'navigation_object_list': ['document_type'],
+        'object_list': document_type.filenames.all(),
+        'title': _('Filenames for document type: %s') % document_type,
     }
 
     return render_to_response('appearance/generic_list.html', context,
@@ -994,17 +994,14 @@ def document_type_filename_edit(request, document_type_filename_id):
         form = DocumentTypeFilenameForm(instance=document_type_filename)
 
     return render_to_response('appearance/generic_form.html', {
+        'document_type': document_type_filename.document_type,
+        'filename': document_type_filename,
+        'form': form,
+        'navigation_object_list': ['document_type', 'filename'],
+        'next': next,
         'title': _('Edit filename "%(filename)s" from document type "%(document_type)s"') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
         },
-        'form': form,
-        'next': next,
-        'filename': document_type_filename,
-        'document_type': document_type_filename.document_type,
-        'navigation_object_list': [
-            {'object': 'document_type'},
-            {'object': 'filename'}
-        ],
     }, context_instance=RequestContext(request))
 
 
@@ -1029,14 +1026,11 @@ def document_type_filename_delete(request, document_type_filename_id):
 
     context = {
         'delete_view': True,
-        'previous': previous,
-        'next': next,
-        'filename': document_type_filename,
         'document_type': document_type_filename.document_type,
-        'navigation_object_list': [
-            {'object': 'document_type'},
-            {'object': 'filename'}
-        ],
+        'filename': document_type_filename,
+        'previous': previous,
+        'navigation_object_list': ['document_type', 'filename'],
+        'next': next,
         'title': _('Are you sure you wish to delete the filename: %(filename)s, from document type "%(document_type)s"?') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
         },
@@ -1070,12 +1064,10 @@ def document_type_filename_create(request, document_type_id):
         form = DocumentTypeFilenameForm_create()
 
     return render_to_response('appearance/generic_form.html', {
-        'title': _('Create filename for document type: %s') % document_type,
-        'form': form,
         'document_type': document_type,
-        'navigation_object_list': [
-            {'object': 'document_type'},
-        ],
+        'form': form,
+        'navigation_object_list': ['document_type'],
+        'title': _('Create filename for document type: %s') % document_type,
     }, context_instance=RequestContext(request))
 
 
@@ -1177,7 +1169,7 @@ def document_page_transformation_list(request, document_page_id):
     context = {
         'object_list': document_page.documentpagetransformation_set.all(),
         'page': document_page,
-        'navigation_object_name': 'page',
+        'navigation_object_list': ['page'],
         'title': _('Transformations for: %s') % document_page,
         'web_theme_hide_menus': True,
         'list_object_variable_name': 'transformation',
@@ -1215,7 +1207,7 @@ def document_page_transformation_create(request, document_page_id):
     return render_to_response('appearance/generic_form.html', {
         'form': form,
         'page': document_page,
-        'navigation_object_name': 'page',
+        'navigation_object_list': ['page'],
         'title': _('Create new transformation for page: %(page)s of document: %(document)s') % {
             'page': document_page.page_number, 'document': document_page.document},
         'web_theme_hide_menus': True,
@@ -1242,15 +1234,12 @@ def document_page_transformation_edit(request, document_page_transformation_id):
 
     return render_to_response('appearance/generic_form.html', {
         'form': form,
-        'transformation': document_page_transformation,
+        'navigation_object_list': ['page', 'transformation'],
         'page': document_page_transformation.document_page,
-        'navigation_object_list': [
-            {'object': 'page'},
-            {'object': 'transformation', 'name': _('Transformation')}
-        ],
         'title': _('Edit transformation "%(transformation)s" for: %(document_page)s') % {
             'transformation': document_page_transformation.get_transformation_display(),
             'document_page': document_page_transformation.document_page},
+        'transformation': document_page_transformation,
         'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
 
@@ -1273,15 +1262,12 @@ def document_page_transformation_delete(request, document_page_transformation_id
 
     return render_to_response('appearance/generic_confirm.html', {
         'delete_view': True,
+        'navigation_object_list': ['page', 'transformation'],
         'page': document_page_transformation.document_page,
-        'transformation': document_page_transformation,
-        'navigation_object_list': [
-            {'object': 'page'},
-            {'object': 'transformation', 'name': _('Transformation')}
-        ],
+        'previous': previous,
         'title': _('Are you sure you wish to delete transformation "%(transformation)s" for: %(document_page)s') % {
             'transformation': document_page_transformation.get_transformation_display(),
             'document_page': document_page_transformation.document_page},
+        'transformation': document_page_transformation,
         'web_theme_hide_menus': True,
-        'previous': previous,
     }, context_instance=RequestContext(request))

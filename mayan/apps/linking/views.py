@@ -285,17 +285,13 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
         form = SmartLinkConditionForm(instance=smart_link_condition)
 
     return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'title': _('Edit smart link condition'),
-        'next': next,
-        'previous': previous,
         'condition': smart_link_condition,
+        'form': form,
+        'navigation_object_list': ['object', 'condition'],
+        'next': next,
         'object': smart_link_condition.smart_link,
-        'navigation_object_list': [
-            {'object': 'object', 'name': _('Smart link')},
-            {'object': 'condition', 'name': _('Condition')}
-        ],
-
+        'previous': previous,
+        'title': _('Edit smart link condition'),
     }, context_instance=RequestContext(request))
 
 
@@ -322,16 +318,13 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
         return HttpResponseRedirect(next)
 
     return render_to_response('appearance/generic_confirm.html', {
-        'delete_view': True,
         'condition': smart_link_condition,
-        'object': smart_link_condition.smart_link,
-        'navigation_object_list': [
-            {'object': 'object', 'name': _('Smart link')},
-            {'object': 'condition', 'name': _('Condition')}
-        ],
-        'title': _('Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
+        'delete_view': True,
+        'navigation_object_list': ['object', 'condition'],
         'next': next,
+        'object': smart_link_condition.smart_link,
         'previous': previous,
+        'title': _('Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
     }, context_instance=RequestContext(request))
 
 
