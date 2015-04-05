@@ -20,7 +20,7 @@ from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
 # Document page forms
 class DocumentPageTransformationForm(forms.ModelForm):
     class Meta:
-        fields = ('order', 'transformation', 'arguments')
+        fields = ('document_page', 'order', 'transformation', 'arguments')
         model = DocumentPageTransformation
 
     def __init__(self, *args, **kwargs):
