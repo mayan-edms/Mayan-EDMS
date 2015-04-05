@@ -18,6 +18,9 @@ urlpatterns = patterns('common.views',
 
     url(r'^login/$', 'login_view', (), name='login_view'),
     url(r'^password/change/$', 'password_change_view', (), name='password_change_view'),
+
+    url(r'^setup/$', 'setup_list', (), 'setup_list'),
+    url(r'^tools/$', 'tools_list', (), 'tools_list'),
 )
 
 urlpatterns += patterns('',

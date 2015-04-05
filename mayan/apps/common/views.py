@@ -21,6 +21,7 @@ from .forms import (
     ChoiceForm, EmailAuthenticationForm, LicenseForm, LocaleProfileForm,
     LocaleProfileForm_view, UserForm, UserForm_view
 )
+from .menus import menu_tools, menu_setup
 from .mixins import (
     ExtraContextMixin, ObjectListPermissionFilterMixin,
     ObjectPermissionCheckMixin, RedirectionMixin, ViewPermissionCheckMixin
@@ -451,3 +452,23 @@ class MultiFormView(FormView):
             return self.forms_valid(forms)
         else:
             return self.forms_invalid(forms)
+
+
+def setup_list(request):
+    context = {
+        'object_navigation_links': menu_setup.resolve(context=RequestContext(request)),
+        'title': _('Setup items'),
+    }
+
+    return render_to_response('appearance/generic_list_horizontal.html', context,
+                              context_instance=RequestContext(request))
+
+
+def tools_list(request):
+    context = {
+        'object_navigation_links': menu_tools.resolve(context=RequestContext(request)),
+        'title': _('Tools'),
+    }
+
+    return render_to_response('appearance/generic_list_horizontal.html', context,
+                              context_instance=RequestContext(request))

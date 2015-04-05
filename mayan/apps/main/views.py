@@ -5,11 +5,10 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from common.menus import menu_setup, menu_tools
 from dynamic_search.classes import SearchModel
 from permissions.models import Permission
 
-from .api import diagnostics, tools
+from .api import tools
 from .classes import MissingItem
 
 
@@ -52,23 +51,3 @@ def maintenance_menu(request):
         'blocks': user_tools,
         'title': _('Maintenance menu')
     }, context_instance=RequestContext(request))
-
-
-def setup_list(request):
-    context = {
-        'object_navigation_links': menu_setup.resolve(context=RequestContext(request)),
-        'title': _('Setup items'),
-    }
-
-    return render_to_response('appearance/generic_list_horizontal.html', context,
-                              context_instance=RequestContext(request))
-
-
-def tools_list(request):
-    context = {
-        'object_navigation_links': menu_tools.resolve(context=RequestContext(request)),
-        'title': _('Tools'),
-    }
-
-    return render_to_response('appearance/generic_list_horizontal.html', context,
-                              context_instance=RequestContext(request))
