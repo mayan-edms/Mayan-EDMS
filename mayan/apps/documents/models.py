@@ -8,9 +8,10 @@ import os
 import tempfile
 import uuid
 
-from django.db import models
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.core.urlresolvers import reverse
+from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -109,9 +110,8 @@ class Document(models.Model):
     def __str__(self):
         return self.label
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('documents:document_preview', [self.pk])
+        reverse('documents:document_preview', args=[self.pk])
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('user', None)
@@ -513,9 +513,8 @@ class DocumentPage(models.Model):
         verbose_name = _('Document page')
         verbose_name_plural = _('Document pages')
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('documents:document_page_view', [self.pk])
+        reverse('documents:document_page_view', args=[self.pk])
 
     @property
     def siblings(self):

@@ -4,6 +4,7 @@ import logging
 
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
@@ -52,9 +53,8 @@ class DocumentCheckout(models.Model):
             event_document_check_out.commit(actor=self.user_object, target=self.document)
         return result
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('checkout:checkout_info', [self.document.pk])
+        reverse('checkout:checkout_info', args=[self.document.pk])
 
     class Meta:
         verbose_name = _('Document checkout')

@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext, ugettext_lazy as _
@@ -33,9 +34,8 @@ class Index(models.Model):
     def __str__(self):
         return self.title
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('indexing:index_instance_node_view', [self.instance_root.pk])
+        reverse('indexing:index_instance_node_view', args=[self.instance_root.pk])
 
     def get_document_types_not_in_index(self):
         return DocumentType.objects.exclude(pk__in=self.document_types.all())
@@ -94,9 +94,8 @@ class IndexInstanceNode(MPTTModel):
     def index(self):
         return self.index_template_node.index
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('indexing:index_instance_node_view', [self.pk])
+        reverse('indexing:index_instance_node_view', args=[self.pk])
 
     @property
     def children(self):

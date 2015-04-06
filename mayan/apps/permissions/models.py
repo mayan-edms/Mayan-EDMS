@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext
@@ -224,9 +225,8 @@ class Role(models.Model):
     def __str__(self):
         return self.label
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('permissions:role_list',)
+        reverse('permissions:role_list')
 
     def add_member(self, member):
         member = AnonymousUserSingleton.objects.passthru_check(member)

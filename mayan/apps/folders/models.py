@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
@@ -18,9 +19,8 @@ class Folder(models.Model):
     def __str__(self):
         return self.title
 
-    @models.permalink
     def get_absolute_url(self):
-        return ('folders:folder_view', [self.pk])
+        reverse('folders:folder_view', args=[self.pk])
 
     class Meta:
         unique_together = ('title', 'user')
