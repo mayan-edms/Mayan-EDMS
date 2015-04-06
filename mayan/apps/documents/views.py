@@ -797,18 +797,22 @@ def document_print(request, document_id):
     if request.method == 'POST':
         form = PrintForm(request.POST)
         if form.is_valid():
-            hard_copy_arguments = {}
-            # Get page range
             if form.cleaned_data['page_range']:
-                hard_copy_arguments['page_range'] = form.cleaned_data['page_range']
+                page_range = form.cleaned_data['page_range']
 
-            new_url = [reverse('documents:document_hard_copy', args=[document_id])]
-            if hard_copy_arguments:
-                new_url.append(urlquote(hard_copy_arguments))
+                if page_range:
+                    page_range = parse_range(page_range)
 
-            new_window_url = '?'.join(new_url)
+                    pages = document.pages.filter(page_number__in=page_range)
+                else:
+                    pages = document.pages.all()
 
-            return HttpResponseRedirect(new_window_url)
+                return render_to_response('documents/document_print.html', {
+                    'appearance_type': 'plain',
+                    'object': document,
+                    'page_range': page_range,
+                    'pages': pages,
+                }, context_instance=RequestContext(request))
     else:
         form = PrintForm()
 
@@ -817,33 +821,6 @@ def document_print(request, document_id):
         'object': document,
         'title': _('Print: %s') % document,
         'next': next,
-    }, context_instance=RequestContext(request))
-
-
-def document_hard_copy(request, document_id):
-    # TODO: FIXME
-    document = get_object_or_404(Document, pk=document_id)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
-
-    document.add_as_recent_document_for_user(request.user)
-
-    page_range = request.GET.get('page_range', '')
-    if page_range:
-        page_range = parse_range(page_range)
-
-        pages = document.pages.filter(page_number__in=page_range)
-    else:
-        pages = document.pages.all()
-
-    return render_to_response('documents/document_print.html', {
-        'appearance_type': 'plain',
-        'object': document,
-        'page_range': page_range,
-        'pages': pages,
     }, context_instance=RequestContext(request))
 
 
