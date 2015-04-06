@@ -27,7 +27,7 @@ from .models import AccessEntry, DefaultAccessEntry
 from .permissions import (
     ACLS_EDIT_ACL, ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL, ACLS_VIEW_ACL
 )
-from .widgets import object_w_content_type_icon
+from .widgets import object_indentifier
 
 logger = logging.getLogger(__name__)
 
@@ -48,7 +48,7 @@ def acl_list_for(request, obj, extra_context=None):
         'object_list': AccessEntry.objects.get_holders_for(obj),
         'title': _('Access control lists for: %s' % obj),
         'extra_columns': [
-            {'name': _('Holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            {'name': _('Holder'), 'attribute': encapsulate(lambda x: object_indentifier(x.source_object))},
             {'name': _('Permissions'), 'attribute': encapsulate(lambda x: _permission_titles(AccessEntry.objects.get_holder_permissions_for(obj, x.source_object, db_only=True)))},
         ],
         'hide_object': True,
@@ -369,7 +369,7 @@ def acl_setup_valid_classes(request):
         'object_list': DefaultAccessEntry.get_classes(),
         'title': _('Classes'),
         'extra_columns': [
-            {'name': _('Class'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            {'name': _('Class'), 'attribute': encapsulate(lambda x: object_indentifier(x.source_object))},
         ],
         'hide_object': True,
     }
@@ -390,7 +390,7 @@ def acl_class_acl_list(request, access_object_class_gid):
         'object_list': DefaultAccessEntry.objects.get_holders_for(access_object_class.source_object),
         'title': _('Default access control lists for class: %s') % access_object_class,
         'extra_columns': [
-            {'name': _('Holder'), 'attribute': encapsulate(lambda x: object_w_content_type_icon(x.source_object))},
+            {'name': _('Holder'), 'attribute': encapsulate(lambda x: object_indentifier(x.source_object))},
             {'name': _('Permissions'), 'attribute': encapsulate(lambda x: _permission_titles(DefaultAccessEntry.objects.get_holder_permissions_for(access_object_class.source_object, x.source_object)))},
         ],
         'hide_object': True,
