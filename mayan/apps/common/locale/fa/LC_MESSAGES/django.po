@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -10,15 +10,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
+"POT-Creation-Date: 2015-04-06 16:06-0400\n"
 "PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:95
+msgid "Common"
+msgstr ""
 
 #: classes.py:40
 msgid "Available attributes: "
@@ -28,130 +33,116 @@ msgstr ""
 msgid "Selection"
 msgstr "انتخاب"
 
-#: forms.py:143
-msgid "Email"
-msgstr "پست الکترونیک"
-
-#: forms.py:146 models.py:36
-msgid "Password"
-msgstr "رمزعبور"
-
-#: forms.py:149
-msgid ""
-"Please enter a correct email and password. Note that the password field is "
-"case-sensitive."
-msgstr "لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور case-sensitive است."
-
-#: forms.py:151
-msgid "This account is inactive."
-msgstr "اکانت غیرفعال است."
-
-#: links.py:10
-msgid "Change password"
-msgstr "تغییر کلمه عبور"
-
-#: links.py:11
-msgid "User details"
-msgstr "جزئیات کاربر"
-
 #: links.py:12
-msgid "Edit details"
-msgstr "ویرایش جزئیات"
-
-#: links.py:14
 msgid "About"
 msgstr "درباره"
 
-#: links.py:15 views.py:279
-msgid "License"
-msgstr "لیسانس"
+#: links.py:13
+msgid "Admin site"
+msgstr ""
 
-#: links.py:17
+#: links.py:14
+msgid "User details"
+msgstr "جزئیات کاربر"
+
+#: links.py:15
+msgid "Edit details"
+msgstr "ویرایش جزئیات"
+
+#: links.py:16
 msgid "Locale profile"
 msgstr ""
 
-#: links.py:18
+#: links.py:17
 msgid "Edit locale profile"
 msgstr ""
 
-#: links.py:20
-msgid "Logout"
+#: links.py:18 views.py:270
+msgid "License"
+msgstr "لیسانس"
+
+#: links.py:19
+msgid "Maintenance"
 msgstr ""
 
-#: models.py:28 models.py:31
+#: links.py:20
+msgid "Setup"
+msgstr ""
+
+#: links.py:21 views.py:435
+msgid "Tools"
+msgstr ""
+
+#: models.py:29 models.py:32
 msgid "Anonymous user"
 msgstr "کاربر ناشناس anonymous"
 
-#: models.py:35
+#: models.py:36
 msgid "Account"
 msgstr "حساب"
 
 #: models.py:37
+msgid "Password"
+msgstr "رمزعبور"
+
+#: models.py:38
 msgid "Password hash"
 msgstr "هش کلمه عبور"
 
-#: models.py:40
+#: models.py:41
 msgid "Auto admin properties"
 msgstr "خصوصیات مدبر خودکار"
 
-#: models.py:44
+#: models.py:46
 msgid "File"
 msgstr "فایل"
 
-#: models.py:45
+#: models.py:47
 msgid "Filename"
 msgstr "نام فایل"
 
-#: models.py:46
+#: models.py:48
 msgid "Date time"
 msgstr "تاریخ زمان"
 
-#: models.py:49
+#: models.py:51
 msgid "Shared uploaded file"
 msgstr "فایل آپلود شده اشتراکی"
 
-#: models.py:50
+#: models.py:52
 msgid "Shared uploaded files"
 msgstr "فایلهای آپلود شده اشتراکی"
 
-#: models.py:61
+#: models.py:64
 msgid "User"
 msgstr ""
 
-#: models.py:63
+#: models.py:66
 msgid "Timezone"
 msgstr ""
 
-#: models.py:64
+#: models.py:67
 msgid "Language"
 msgstr ""
 
-#: models.py:70
+#: models.py:73
 msgid "User locale profile"
 msgstr ""
 
-#: models.py:71
+#: models.py:74
 msgid "User locale profiles"
 msgstr ""
 
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
-"tempfile.mkdtemp()"
-msgstr "دایرکتوری موقت جهت نگهداری فایلهای موقت، اگر دایرکتوری مشخص نگردد یکی بوسیله tempfile.mkdtemp() ساخته خواهد شد."
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+msgstr ""
+"دایرکتوری موقت جهت نگهداری فایلهای موقت، اگر دایرکتوری مشخص نگردد یکی بوسیله "
+"tempfile.mkdtemp() ساخته خواهد شد."
 
 #: settings.py:48
-msgid ""
-"Controls the mechanism used to authenticated user.  Options are: username, "
-"email"
-msgstr "روش کنترل اعتبار سنجی کاربران، انتخابها عبارتند از:username, email."
-
-#: settings.py:57
-msgid "Allow non authenticated users, access to all views"
-msgstr "اجازه دادن به کاربران اعتبار سنجی نشده، جهت بازبینی و یا Viewها."
-
-#: settings.py:66
 msgid "A storage backend that all workers can use to share files."
 msgstr "محلی که کلیه کاربران جهت به اشتراک گذاری فایل میتوانند استفاه کنند."
 
@@ -159,125 +150,159 @@ msgstr "محلی که کلیه کاربران جهت به اشتراک گذار�
 msgid "Function found"
 msgstr "فانکشن و یا تابع پیدا شد."
 
-#: views.py:44
+#: views.py:54
 msgid "No action selected."
 msgstr "هیچ عملیاتی action انتخاب نشده است."
 
-#: views.py:48
+#: views.py:58
 msgid "Must select at least one item."
 msgstr "حداقل یک مورد انتخاب شود."
 
-#: views.py:100
+#: views.py:110
 #, python-format
 msgid "Unable to remove %(selection)s."
 msgstr "عیر قابل حذف و یا برداشتن %(selection)s."
 
-#: views.py:125
+#: views.py:135
 #, python-format
 msgid "Unable to add %(selection)s."
 msgstr "نمیتوان برداشت: %(selection)s."
 
-#: views.py:138
+#: views.py:148
 msgid "Add"
 msgstr "افزودن"
 
-#: views.py:149
+#: views.py:158
 msgid "Remove"
 msgstr "حذف"
 
-#: views.py:172
+#: views.py:181
 msgid "Current user details"
 msgstr "جزئیاتا کاربر فعلی"
 
-#: views.py:187
+#: views.py:196
 msgid "Current user locale profile details"
 msgstr ""
 
-#: views.py:204
+#: views.py:213
 msgid "E-mail conflict, another user has that same email."
 msgstr "این ایمیل با ایمیل کاربر دیگری یکسان است."
 
-#: views.py:207
+#: views.py:216
 msgid "Current user's details updated."
 msgstr "کزئیات کاربر فعلی بروزرسانی شد."
 
-#: views.py:216
+#: views.py:225
 msgid "Edit current user details"
 msgstr "یرایش جزئیات کاربر کنونی"
 
-#: views.py:239
+#: views.py:248
 msgid "Current user's locale profile details updated."
 msgstr ""
 
-#: views.py:248
+#: views.py:257
 msgid "Edit current user locale profile details"
 msgstr ""
 
-#: views.py:288
-msgid "Current user password change"
-msgstr "تغییر کلمه عبور کاربر"
-
-#: views.py:303
-msgid "Your password has been successfully changed."
-msgstr "کلمه عبور شما با موفقیت تغییر کرد."
-
-#: views.py:314
+#: views.py:282
 #, python-format
 msgid "Error saving %s details."
 msgstr "خطا در ثبت چزئیات %s."
 
-#: views.py:316
+#: views.py:284
 msgid "Error saving details."
 msgstr "خطا در ثبت چزئیات ."
 
-#: views.py:324
+#: views.py:292
 #, python-format
 msgid "%s details saved successfully."
 msgstr "جزئیات %s با موفقیت ثبت شد."
 
-#: views.py:326
+#: views.py:294
 msgid "Details saved successfully."
 msgstr "جزییات با موفقیت ثبت شد."
 
-#: views.py:338
+#: views.py:306
 #, python-format
 msgid "Error creating new %s."
 msgstr "خطا در زمان ایجاد %s."
 
-#: views.py:340
+#: views.py:308
 msgid "Error creating object."
 msgstr "خطا در زمان ایجاد شی"
 
-#: views.py:347
+#: views.py:315
 #, python-format
 msgid "%s created successfully."
 msgstr "%s با موفقیت ایجاد شد."
 
-#: views.py:349
+#: views.py:317
 msgid "New object created successfully."
 msgstr "شی جدید با موفقیت ساخته شد."
 
-#: views.py:367
+#: views.py:335
 #, python-format
 msgid "Error deleting %s."
 msgstr "خطا در زمان حذف %s."
 
-#: views.py:369
+#: views.py:337
 msgid "Error deleting object."
 msgstr "خطا در حذف شی."
 
-#: views.py:374
+#: views.py:342
 #, python-format
 msgid "%s deleted successfully."
 msgstr "%s با موفقیت حذف شد."
 
-#: views.py:376
+#: views.py:344
 msgid "Object deleted successfully."
 msgstr "شی با موفقیت حذف شد."
+
+#: views.py:425
+msgid "Setup items"
+msgstr ""
+
+#: views.py:459
+msgid "Results"
+msgstr ""
+
+#: views.py:479
+msgid "Maintenance menu"
+msgstr ""
 
 #: widgets.py:60
 msgid "None"
 msgstr "هیچکدام."
+
+#~ msgid "Email"
+#~ msgstr "پست الکترونیک"
+
+#~ msgid ""
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
+#~ msgstr ""
+#~ "لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور "
+#~ "case-sensitive است."
+
+#~ msgid "This account is inactive."
+#~ msgstr "اکانت غیرفعال است."
+
+#~ msgid "Change password"
+#~ msgstr "تغییر کلمه عبور"
+
+#~ msgid ""
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
+#~ msgstr "روش کنترل اعتبار سنجی کاربران، انتخابها عبارتند از:username, email."
+
+#~ msgid "Allow non authenticated users, access to all views"
+#~ msgstr "اجازه دادن به کاربران اعتبار سنجی نشده، جهت بازبینی و یا Viewها."
+
+#~ msgid "Current user password change"
+#~ msgstr "تغییر کلمه عبور کاربر"
+
+#~ msgid "Your password has been successfully changed."
+#~ msgstr "کلمه عبور شما با موفقیت تغییر کرد."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."

@@ -7,8 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 from common import (
     menu_facet, menu_main, menu_object, menu_secondary, menu_setup
 )
+from common.api import register_maintenance_links
 from documents.models import Document
-from main.api import register_maintenance_links
 from metadata.models import DocumentMetadata
 from rest_api.classes import APIEndPoint
 

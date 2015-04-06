@@ -139,7 +139,7 @@ class Link(object):
         current_view = resolve(current_path).view_name
 
         # Preserve unicode data in URL query
-        previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', reverse('main:home')))))
+        previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))))
         query_string = urlparse.urlparse(previous_path).query
         parsed_query_string = urlparse.parse_qs(query_string)
 

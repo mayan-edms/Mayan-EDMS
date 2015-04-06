@@ -16,8 +16,8 @@ from common import settings as common_settings
 from .links import (
     link_about, link_admin_site, link_current_user_details,
     link_current_user_edit, link_current_user_locale_profile_details,
-    link_current_user_locale_profile_edit, link_license, link_logout,
-    link_maintenance_menu, link_password_change, link_setup, link_tools
+    link_current_user_locale_profile_edit, link_license,
+    link_maintenance_menu, link_setup, link_tools
 )
 from .menus import (
     menu_facet, menu_main, menu_secondary, menu_setup, menu_tools
@@ -95,7 +95,7 @@ class CommonApp(apps.AppConfig):
     verbose_name = _('Common')
 
     def ready(self):
-        menu_facet.bind_links(links=[link_current_user_details, link_current_user_locale_profile_details, link_tools, link_setup], sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'common:password_change_view', 'common:setup_list', 'common:tools_list'])
+        menu_facet.bind_links(links=[link_current_user_details, link_current_user_locale_profile_details, link_tools, link_setup], sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'authentication:password_change_view', 'common:setup_list', 'common:tools_list'])
         menu_main.bind_links(links=[link_about], position=-1)
         menu_secondary.bind_links(
             links=[link_about, link_license],
@@ -103,10 +103,9 @@ class CommonApp(apps.AppConfig):
         )
         menu_secondary.bind_links(
             links=[
-                link_current_user_edit, link_current_user_locale_profile_edit,
-                link_password_change, link_logout
+                link_current_user_edit, link_current_user_locale_profile_edit
             ],
-            sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'common:password_change_view', 'common:setup_list', 'common:tools_list']
+            sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'authentication:password_change_view', 'common:setup_list', 'common:tools_list']
         )
         menu_setup.bind_links(links=[link_admin_site])
         menu_tools.bind_links(links=[link_maintenance_menu])

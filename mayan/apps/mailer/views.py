@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.sites.models import Site
 from django.core.exceptions import PermissionDenied
@@ -39,7 +40,7 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
 
     if not documents:
         messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     post_action_redirect = reverse('documents:document_list_recent')
 

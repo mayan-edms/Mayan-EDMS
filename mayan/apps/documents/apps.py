@@ -8,16 +8,15 @@ from django.utils.translation import ugettext_lazy as _
 from actstream import registry
 
 from acls.api import class_permissions
-from common.classes import ModelAttribute
 from common import (
-    menu_facet, menu_front_page, menu_object, menu_secondary, menu_setup,
-    menu_sidebar, menu_multi_item
+    MissingItem, menu_facet, menu_front_page, menu_object, menu_secondary,
+    menu_setup, menu_sidebar, menu_multi_item
 )
+from common.api import register_maintenance_links
+from common.classes import ModelAttribute
 from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
 from events.permissions import PERMISSION_EVENTS_VIEW
-from main import MissingItem
-from main.api import register_maintenance_links
 from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace

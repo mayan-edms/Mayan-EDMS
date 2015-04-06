@@ -50,11 +50,11 @@ def metadata_edit(request, document_id=None, document_id_list=None):
             raise Http404
         else:
             messages.error(request, _('Must provide at least one document.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     if len(set([document.document_type.pk for document in documents])) > 1:
         messages.error(request, _('Only select documents of the same type.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     if set(documents.values_list('metadata__value', flat=True)) == set([None]):
         message = ungettext(
@@ -63,7 +63,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
             len(documents)
         )
         messages.warning(request, message)
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     post_action_redirect = reverse('documents:document_list_recent')
 
@@ -146,7 +146,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
         documents = [get_object_or_404(Document.objects.select_related('document_type'), pk=document_id) for document_id in document_id_list.split(',')]
         if len(set([document.document_type.pk for document in documents])) > 1:
             messages.error(request, _('Only select documents of the same type.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
@@ -155,7 +155,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
 
     if not documents:
         messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reversesettings.LOGIN_REDIRECT_URL))
 
     for document in documents:
         document.add_as_recent_document_for_user(request.user)
@@ -237,11 +237,11 @@ def metadata_remove(request, document_id=None, document_id_list=None):
             raise Http404
         else:
             messages.error(request, _('Must provide at least one document.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     if len(set([document.document_type.pk for document in documents])) > 1:
         messages.error(request, _('Only select documents of the same type.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     if set(documents.values_list('metadata__value', flat=True)) == set([None]):
         message = ungettext(
@@ -250,7 +250,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
             len(documents)
         )
         messages.warning(request, message)
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     post_action_redirect = reverse('documents:document_list_recent')
 

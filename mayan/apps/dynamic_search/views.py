@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import logging
 import urlparse
 
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -86,5 +87,5 @@ def search(request, advanced=False):
 
 
 def search_again(request):
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', reverse('main:home'))).query
+    query = urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).query
     return HttpResponseRedirect('%s?%s' % (reverse('search:search_advanced'), query))

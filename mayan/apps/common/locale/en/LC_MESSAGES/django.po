@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
+"POT-Creation-Date: 2015-04-06 16:06-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,6 +18,10 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
+#: apps.py:95
+msgid "Common"
+msgstr ""
+
 #: classes.py:40
 msgid "Available attributes: "
 msgstr ""
@@ -26,120 +30,110 @@ msgstr ""
 msgid "Selection"
 msgstr "Selection"
 
-#: forms.py:143
-msgid "Email"
-msgstr "Email"
-
-#: forms.py:146 models.py:36
-#, fuzzy
-msgid "Password"
-msgstr "password"
-
-#: forms.py:149
-#, fuzzy
-msgid ""
-"Please enter a correct email and password. Note that the password field is "
-"case-sensitive."
-msgstr ""
-"Please enter a correct email and password. Note that the password fields is "
-"case-sensitive."
-
-#: forms.py:151
-msgid "This account is inactive."
-msgstr "This account is inactive."
-
-#: links.py:10
-#, fuzzy
-msgid "Change password"
-msgstr "change password"
-
-#: links.py:11
-#, fuzzy
-msgid "User details"
-msgstr "user details"
-
 #: links.py:12
-#, fuzzy
-msgid "Edit details"
-msgstr "edit details"
-
-#: links.py:14
 #, fuzzy
 msgid "About"
 msgstr "about"
 
-#: links.py:15 views.py:279
-msgid "License"
-msgstr "License"
+#: links.py:13
+msgid "Admin site"
+msgstr ""
 
-#: links.py:17
+#: links.py:14
+#, fuzzy
+msgid "User details"
+msgstr "user details"
+
+#: links.py:15
+#, fuzzy
+msgid "Edit details"
+msgstr "edit details"
+
+#: links.py:16
 msgid "Locale profile"
 msgstr ""
 
-#: links.py:18
+#: links.py:17
 msgid "Edit locale profile"
 msgstr ""
 
-#: links.py:20
-msgid "Logout"
+#: links.py:18 views.py:270
+msgid "License"
+msgstr "License"
+
+#: links.py:19
+msgid "Maintenance"
 msgstr ""
 
-#: models.py:28 models.py:31
+#: links.py:20
+msgid "Setup"
+msgstr ""
+
+#: links.py:21 views.py:435
+msgid "Tools"
+msgstr ""
+
+#: models.py:29 models.py:32
 msgid "Anonymous user"
 msgstr "Anonymous user"
 
-#: models.py:35
+#: models.py:36
 #, fuzzy
 msgid "Account"
 msgstr "account"
 
 #: models.py:37
 #, fuzzy
+msgid "Password"
+msgstr "password"
+
+#: models.py:38
+#, fuzzy
 msgid "Password hash"
 msgstr "password hash"
 
-#: models.py:40
+#: models.py:41
 #, fuzzy
 msgid "Auto admin properties"
 msgstr "auto admin properties"
 
-#: models.py:44
+#: models.py:46
 msgid "File"
 msgstr ""
 
-#: models.py:45
+#: models.py:47
 msgid "Filename"
 msgstr ""
 
-#: models.py:46
+#: models.py:48
 msgid "Date time"
 msgstr ""
 
-#: models.py:49
+#: models.py:51
 msgid "Shared uploaded file"
 msgstr ""
 
-#: models.py:50
+#: models.py:52
 msgid "Shared uploaded files"
 msgstr ""
 
-#: models.py:61
+#: models.py:64
 msgid "User"
 msgstr ""
 
-#: models.py:63
+#: models.py:66
 msgid "Timezone"
 msgstr ""
 
-#: models.py:64
+#: models.py:67
 msgid "Language"
 msgstr ""
 
-#: models.py:70
+#: models.py:73
 msgid "User locale profile"
 msgstr ""
 
-#: models.py:71
+#: models.py:74
 msgid "User locale profiles"
 msgstr ""
 
@@ -154,18 +148,6 @@ msgstr ""
 "mkdtemp()"
 
 #: settings.py:48
-msgid ""
-"Controls the mechanism used to authenticated user.  Options are: username, "
-"email"
-msgstr ""
-"Controls the mechanism used to authenticated user.  Options are: username, "
-"email"
-
-#: settings.py:57
-msgid "Allow non authenticated users, access to all views"
-msgstr "Allow non authenticated users, access to all views"
-
-#: settings.py:66
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
@@ -174,130 +156,168 @@ msgstr ""
 msgid "Function found"
 msgstr "function found"
 
-#: views.py:44
+#: views.py:54
 msgid "No action selected."
 msgstr "No action selected."
 
-#: views.py:48
+#: views.py:58
 msgid "Must select at least one item."
 msgstr "Must select at least one item."
 
-#: views.py:100
+#: views.py:110
 #, fuzzy, python-format
 msgid "Unable to remove %(selection)s."
 msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
-#: views.py:125
+#: views.py:135
 #, fuzzy, python-format
 msgid "Unable to add %(selection)s."
 msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
-#: views.py:138
+#: views.py:148
 msgid "Add"
 msgstr "Add"
 
-#: views.py:149
+#: views.py:158
 msgid "Remove"
 msgstr "Remove"
 
-#: views.py:172
+#: views.py:181
 #, fuzzy
 msgid "Current user details"
 msgstr "current user details"
 
-#: views.py:187
+#: views.py:196
 #, fuzzy
 msgid "Current user locale profile details"
 msgstr "current user details"
 
-#: views.py:204
+#: views.py:213
 msgid "E-mail conflict, another user has that same email."
 msgstr "E-mail conflict, another user has that same email."
 
-#: views.py:207
+#: views.py:216
 msgid "Current user's details updated."
 msgstr "Current user's details updated."
 
-#: views.py:216
+#: views.py:225
 #, fuzzy
 msgid "Edit current user details"
 msgstr "edit current user details"
 
-#: views.py:239
+#: views.py:248
 #, fuzzy
 msgid "Current user's locale profile details updated."
 msgstr "Current user's details updated."
 
-#: views.py:248
+#: views.py:257
 #, fuzzy
 msgid "Edit current user locale profile details"
 msgstr "edit current user details"
 
-#: views.py:288
-msgid "Current user password change"
-msgstr "Current user password change"
-
-#: views.py:303
-msgid "Your password has been successfully changed."
-msgstr "Your password has been successfully changed."
-
-#: views.py:314
+#: views.py:282
 #, python-format
 msgid "Error saving %s details."
 msgstr ""
 
-#: views.py:316
+#: views.py:284
 msgid "Error saving details."
 msgstr ""
 
-#: views.py:324
+#: views.py:292
 #, python-format
 msgid "%s details saved successfully."
 msgstr ""
 
-#: views.py:326
+#: views.py:294
 msgid "Details saved successfully."
 msgstr ""
 
-#: views.py:338
+#: views.py:306
 #, python-format
 msgid "Error creating new %s."
 msgstr ""
 
-#: views.py:340
+#: views.py:308
 msgid "Error creating object."
 msgstr ""
 
-#: views.py:347
+#: views.py:315
 #, python-format
 msgid "%s created successfully."
 msgstr ""
 
-#: views.py:349
+#: views.py:317
 msgid "New object created successfully."
 msgstr ""
 
-#: views.py:367
+#: views.py:335
 #, python-format
 msgid "Error deleting %s."
 msgstr ""
 
-#: views.py:369
+#: views.py:337
 msgid "Error deleting object."
 msgstr ""
 
-#: views.py:374
+#: views.py:342
 #, python-format
 msgid "%s deleted successfully."
 msgstr ""
 
-#: views.py:376
+#: views.py:344
 msgid "Object deleted successfully."
+msgstr ""
+
+#: views.py:425
+msgid "Setup items"
+msgstr ""
+
+#: views.py:459
+msgid "Results"
+msgstr ""
+
+#: views.py:479
+msgid "Maintenance menu"
 msgstr ""
 
 #: widgets.py:60
 msgid "None"
 msgstr "None"
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#, fuzzy
+#~ msgid ""
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
+#~ msgstr ""
+#~ "Please enter a correct email and password. Note that the password fields "
+#~ "is case-sensitive."
+
+#~ msgid "This account is inactive."
+#~ msgstr "This account is inactive."
+
+#, fuzzy
+#~ msgid "Change password"
+#~ msgstr "change password"
+
+#~ msgid ""
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
+#~ msgstr ""
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
+
+#~ msgid "Allow non authenticated users, access to all views"
+#~ msgstr "Allow non authenticated users, access to all views"
+
+#~ msgid "Current user password change"
+#~ msgstr "Current user password change"
+
+#~ msgid "Your password has been successfully changed."
+#~ msgstr "Your password has been successfully changed."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."

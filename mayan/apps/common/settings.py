@@ -42,24 +42,6 @@ register_setting(
 register_setting(
     namespace='common',
     module='common.settings',
-    name='LOGIN_METHOD',
-    global_name='COMMON_LOGIN_METHOD',
-    default='username',
-    description=_('Controls the mechanism used to authenticated user.  Options are: username, email'),
-)
-
-register_setting(
-    namespace='common',
-    module='common.settings',
-    name='ALLOW_ANONYMOUS_ACCESS',
-    global_name='COMMON_ALLOW_ANONYMOUS_ACCESS',
-    default=False,
-    description=_('Allow non authenticated users, access to all views'),
-)
-
-register_setting(
-    namespace='common',
-    module='common.settings',
     name='SHARED_STORAGE',
     global_name='COMMON_SHARED_STORAGE',
     default='storage.backends.filebasedstorage.FileBasedStorage',

@@ -5,10 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link
 
 
-def has_usable_password(context):
-    return context['request'].user.has_usable_password
-
-
 def is_superuser(context):
     return context['request'].user.is_staff or context['request'].user.is_superuser
 
@@ -20,8 +16,6 @@ link_current_user_edit = Link(icon='fa fa-user', text=_('Edit details'), view='c
 link_current_user_locale_profile_details = Link(icon='fa fa-globe', text=_('Locale profile'), view='common:current_user_locale_profile_details')
 link_current_user_locale_profile_edit = Link(icon='fa fa-globe', text=_('Edit locale profile'), view='common:current_user_locale_profile_edit')
 link_license = Link(icon='fa fa-book', text=_('License'), view='common:license_view')
-link_logout = Link(icon='fa fa-sign-out', text=_('Logout'), view='common:logout_view')
-link_maintenance_menu = Link(icon='fa fa-wrench', text=_('Maintenance'), view='main:maintenance_menu')
-link_password_change = Link(condition=has_usable_password, icon='fa fa-key', text=_('Change password'), view='common:password_change_view')
+link_maintenance_menu = Link(icon='fa fa-wrench', text=_('Maintenance'), view='common:maintenance_menu')
 link_setup = Link(icon='fa fa-gear', text=_('Setup'), view='common:setup_list')
 link_tools = Link(icon='fa fa-wrench', text=_('Tools'), view='common:tools_list')

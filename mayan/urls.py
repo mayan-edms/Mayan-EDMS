@@ -7,14 +7,14 @@ from django.contrib import admin
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^', include('main.urls', namespace='main')),
+    url(r'^', include('common.urls', namespace='common')),
     url(r'^accounts/', include('user_management.urls', namespace='user_management')),
     url(r'^acls/', include('acls.urls', namespace='acls')),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^api/', include('rest_api.urls')),
+    url(r'^authentication/', include('authentication.urls', namespace='authentication')),
     url(r'^checkouts/', include('checkouts.urls', namespace='checkouts')),
     url(r'^comments/', include('document_comments.urls', namespace='comments')),
-    url(r'^common/', include('common.urls', namespace='common')),
     url(r'^document/acls/', include('document_acls.urls', namespace='document_acls')),
     url(r'^document/signatures/', include('document_signatures.urls', namespace='signatures')),
     url(r'^document/states/', include('document_states.urls', namespace='document_states')),

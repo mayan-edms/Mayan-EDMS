@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
@@ -33,21 +34,21 @@ def document_submit(request, pk):
         'document': document}
     )
 
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
 
 def document_submit_multiple(request):
     for item_id in request.GET.get('id_list', '').split(','):
         document_submit(request, item_id)
 
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
 
 def document_all_ocr_cleanup(request):
     Permission.objects.check_permissions(request.user, [PERMISSION_OCR_CLEAN_ALL_PAGES])
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method != 'POST':
         return render_to_response('appearance/generic_confirm.html', {
@@ -89,10 +90,10 @@ def entry_delete(request, pk=None, pk_list=None):
         entries = [get_object_or_404(DocumentVersionOCRError, pk=pk) for pk in pk_list.split(',')]
     else:
         messages.error(request, _('Make at least one selection.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         for entry in entries:
@@ -138,10 +139,10 @@ def entry_re_queue(request, pk=None, pk_list=None):
         entries = [get_object_or_404(DocumentVersionOCRError, pk=pk) for pk in pk_list.split(',')]
     else:
         messages.error(request, _('Make at least one selection.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         for entry in entries:

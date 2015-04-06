@@ -13,6 +13,11 @@ source_lang = en
 source_file = mayan/apps/appearance/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.apps-authentication]
+file_filter = mayan/apps/authentication/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/authentication/locale/en/LC_MESSAGES/django.po
+type = PO
 
 [mayan-edms.apps-checkouts]
 file_filter = mayan/apps/checkouts/locale/<lang>/LC_MESSAGES/django.po
@@ -102,12 +107,6 @@ type = PO
 file_filter = mayan/apps/mailer/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en
 source_file = mayan/apps/mailer/locale/en/LC_MESSAGES/django.po
-type = PO
-
-[mayan-edms.apps-main]
-file_filter = mayan/apps/main/locale/<lang>/LC_MESSAGES/django.po
-source_lang = en
-source_file = mayan/apps/main/locale/en/LC_MESSAGES/django.po
 type = PO
 
 [mayan-edms.apps-metadata]

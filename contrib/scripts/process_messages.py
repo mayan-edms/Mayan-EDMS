@@ -6,10 +6,10 @@ import optparse
 import sh
 
 APP_LIST = (
-    'acls', 'appearance', 'checkouts', 'common', 'converter', 'django_gpg',
+    'acls', 'appearance', 'authentication', 'checkouts', 'common', 'converter', 'django_gpg',
     'documents', 'document_comments', 'document_indexing',
     'document_signatures', 'document_states', 'dynamic_search', 'events',
-    'folders', 'installation', 'linking', 'mailer', 'main', 'metadata',
+    'folders', 'installation', 'linking', 'mailer', 'metadata',
     'navigation', 'ocr', 'permissions', 'project_setup', 'project_tools',
     'rest_api', 'smart_settings', 'sources', 'statistics', 'tags',
     'user_management'

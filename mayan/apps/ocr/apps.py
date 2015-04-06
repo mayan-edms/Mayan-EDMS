@@ -9,12 +9,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from common import menu_multi_item, menu_object, menu_secondary, menu_tools
+from common.api import register_maintenance_links
 from common.utils import encapsulate
 from documents.models import Document, DocumentVersion
 from documents.signals import post_version_upload
 from documents.widgets import document_link
 from installation import PropertyNamespace
-from main.api import register_maintenance_links
 from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 

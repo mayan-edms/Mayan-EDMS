@@ -64,6 +64,7 @@ INSTALLED_APPS = (
     'widget_tweaks',
     # Base generic
     'acls.apps.ACLsApp',
+    'authentication.apps.AuthenticationApp',
     'common.apps.CommonApp',
     'converter.apps.ConverterApp',
     'django_gpg.apps.DjangoGPGApp',
@@ -87,7 +88,6 @@ INSTALLED_APPS = (
     'installation.apps.InstallationApp',
     'linking.apps.LinkingApp',
     'mailer.apps.MailerApp',
-    'main.apps.MainApp',
     'metadata.apps.MetadataApp',
     'ocr.apps.OCRApp',
     'rest_api.apps.RESTAPIApp',
@@ -113,7 +113,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'common.middleware.timezone.TimezoneMiddleware',
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
-    'common.middleware.login_required_middleware.LoginRequiredMiddleware',
+    'authentication.middleware.login_required_middleware.LoginRequiredMiddleware',
     'permissions.middleware.permission_denied_middleware.PermissionDeniedMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'common.middleware.ajax_redirect.AjaxRedirect',
@@ -219,8 +219,8 @@ SENDFILE_BACKEND = 'sendfile.backends.simple'
 # --------- Web theme ---------------
 WEB_THEME_ENABLE_SCROLL_JS = False
 # --------- Django -------------------
-LOGIN_URL = 'common:login_view'
-LOGIN_REDIRECT_URL = 'main:home'
+LOGIN_URL = 'authentication:login_view'
+LOGIN_REDIRECT_URL = 'common:home'
 INTERNAL_IPS = ('127.0.0.1',)
 # -------- LoginRequiredMiddleware ----------
 LOGIN_EXEMPT_URLS = (
@@ -236,10 +236,10 @@ LOGIN_EXEMPT_URLS = (
     r'^accounts/activate/complete/',
     r'^accounts/activate/(?P<activation_key>\w+)/$',
 
-    r'^password/reset/$',
-    r'^password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
-    r'^password/reset/complete/$',
-    r'^password/reset/done/$',
+    r'^authentication/password/reset/$',
+    r'^authentication/password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
+    r'^authentication/password/reset/complete/$',
+    r'^authentication/password/reset/done/$',
 
     r'^api/',
 )

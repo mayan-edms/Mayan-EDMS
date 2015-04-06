@@ -4,11 +4,11 @@ from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from common import (
-    menu_front_page, menu_object, menu_secondary, menu_sidebar, menu_setup
+    MissingItem, menu_front_page, menu_object, menu_secondary, menu_sidebar,
+    menu_setup
 )
 from common.utils import encapsulate
 from documents.models import Document
-from main import MissingItem
 from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 

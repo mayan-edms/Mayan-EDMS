@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 
@@ -57,8 +58,8 @@ class RedirectionMixin(object):
     post_action_redirect = None
 
     def dispatch(self, request, *args, **kwargs):
-        self.next_url = self.request.POST.get('next', self.request.GET.get('next', self.post_action_redirect if self.post_action_redirect else self.request.META.get('HTTP_REFERER', reverse('main:home'))))
-        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', self.request.META.get('HTTP_REFERER', reverse('main:home'))))
+        self.next_url = self.request.POST.get('next', self.request.GET.get('next', self.post_action_redirect if self.post_action_redirect else self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
         return super(RedirectionMixin, self).dispatch(request, *args, **kwargs)
 

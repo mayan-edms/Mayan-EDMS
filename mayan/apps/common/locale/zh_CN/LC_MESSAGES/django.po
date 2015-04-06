@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -9,15 +9,20 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
+"POT-Creation-Date: 2015-04-06 16:06-0400\n"
 "PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:95
+msgid "Common"
+msgstr ""
 
 #: classes.py:40
 msgid "Available attributes: "
@@ -27,130 +32,116 @@ msgstr ""
 msgid "Selection"
 msgstr "选择"
 
-#: forms.py:143
-msgid "Email"
-msgstr "电子邮件"
-
-#: forms.py:146 models.py:36
-msgid "Password"
-msgstr "密码"
-
-#: forms.py:149
-msgid ""
-"Please enter a correct email and password. Note that the password field is "
-"case-sensitive."
-msgstr "请输入正确的邮箱或者密码。注意！密码是大小写敏感的。"
-
-#: forms.py:151
-msgid "This account is inactive."
-msgstr "此账号未激活"
-
-#: links.py:10
-msgid "Change password"
-msgstr ""
-
-#: links.py:11
-msgid "User details"
-msgstr ""
-
 #: links.py:12
-msgid "Edit details"
-msgstr ""
-
-#: links.py:14
 msgid "About"
 msgstr ""
 
-#: links.py:15 views.py:279
-msgid "License"
-msgstr "许可证"
+#: links.py:13
+msgid "Admin site"
+msgstr ""
 
-#: links.py:17
+#: links.py:14
+msgid "User details"
+msgstr ""
+
+#: links.py:15
+msgid "Edit details"
+msgstr ""
+
+#: links.py:16
 msgid "Locale profile"
 msgstr ""
 
-#: links.py:18
+#: links.py:17
 msgid "Edit locale profile"
 msgstr ""
 
-#: links.py:20
-msgid "Logout"
+#: links.py:18 views.py:270
+msgid "License"
+msgstr "许可证"
+
+#: links.py:19
+msgid "Maintenance"
 msgstr ""
 
-#: models.py:28 models.py:31
+#: links.py:20
+msgid "Setup"
+msgstr ""
+
+#: links.py:21 views.py:435
+msgid "Tools"
+msgstr ""
+
+#: models.py:29 models.py:32
 msgid "Anonymous user"
 msgstr "匿名用户"
 
-#: models.py:35
+#: models.py:36
 msgid "Account"
 msgstr ""
 
 #: models.py:37
+msgid "Password"
+msgstr "密码"
+
+#: models.py:38
 msgid "Password hash"
 msgstr ""
 
-#: models.py:40
+#: models.py:41
 msgid "Auto admin properties"
 msgstr ""
 
-#: models.py:44
+#: models.py:46
 msgid "File"
 msgstr ""
 
-#: models.py:45
+#: models.py:47
 msgid "Filename"
 msgstr ""
 
-#: models.py:46
+#: models.py:48
 msgid "Date time"
 msgstr ""
 
-#: models.py:49
+#: models.py:51
 msgid "Shared uploaded file"
 msgstr ""
 
-#: models.py:50
+#: models.py:52
 msgid "Shared uploaded files"
 msgstr ""
 
-#: models.py:61
+#: models.py:64
 msgid "User"
 msgstr ""
 
-#: models.py:63
+#: models.py:66
 msgid "Timezone"
 msgstr ""
 
-#: models.py:64
+#: models.py:67
 msgid "Language"
 msgstr ""
 
-#: models.py:70
+#: models.py:73
 msgid "User locale profile"
 msgstr ""
 
-#: models.py:71
+#: models.py:74
 msgid "User locale profiles"
 msgstr ""
 
 #: settings.py:14
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+msgstr ""
+"站点范围的临时目录用于存储缩略图，预览和临时文件。如果没有设置，将缺省使用"
 "tempfile.mkdtemp()"
-msgstr "站点范围的临时目录用于存储缩略图，预览和临时文件。如果没有设置，将缺省使用tempfile.mkdtemp()"
 
 #: settings.py:48
-msgid ""
-"Controls the mechanism used to authenticated user.  Options are: username, "
-"email"
-msgstr "控制验证用户的机制。可选项有：username, email"
-
-#: settings.py:57
-msgid "Allow non authenticated users, access to all views"
-msgstr "允许非授权用户访问所有的视图"
-
-#: settings.py:66
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
@@ -158,125 +149,154 @@ msgstr ""
 msgid "Function found"
 msgstr ""
 
-#: views.py:44
+#: views.py:54
 msgid "No action selected."
 msgstr "请选择一个操作"
 
-#: views.py:48
+#: views.py:58
 msgid "Must select at least one item."
 msgstr "至少需要选择一项"
 
-#: views.py:100
+#: views.py:110
 #, python-format
 msgid "Unable to remove %(selection)s."
 msgstr ""
 
-#: views.py:125
+#: views.py:135
 #, python-format
 msgid "Unable to add %(selection)s."
 msgstr ""
 
-#: views.py:138
+#: views.py:148
 msgid "Add"
 msgstr "新增"
 
-#: views.py:149
+#: views.py:158
 msgid "Remove"
 msgstr "移除"
 
-#: views.py:172
+#: views.py:181
 msgid "Current user details"
 msgstr ""
 
-#: views.py:187
+#: views.py:196
 msgid "Current user locale profile details"
 msgstr ""
 
-#: views.py:204
+#: views.py:213
 msgid "E-mail conflict, another user has that same email."
 msgstr "电子邮箱冲突，另外用户已经使用此邮箱"
 
-#: views.py:207
+#: views.py:216
 msgid "Current user's details updated."
 msgstr "当前用户信息已经更新"
 
-#: views.py:216
+#: views.py:225
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:239
+#: views.py:248
 msgid "Current user's locale profile details updated."
 msgstr ""
 
-#: views.py:248
+#: views.py:257
 msgid "Edit current user locale profile details"
 msgstr ""
 
-#: views.py:288
-msgid "Current user password change"
-msgstr "当前用户密码修改"
-
-#: views.py:303
-msgid "Your password has been successfully changed."
-msgstr "你的密码已经修改成功"
-
-#: views.py:314
+#: views.py:282
 #, python-format
 msgid "Error saving %s details."
 msgstr "保存 %s 详细信息出错。"
 
-#: views.py:316
+#: views.py:284
 msgid "Error saving details."
 msgstr "保存详细信息出错"
 
-#: views.py:324
+#: views.py:292
 #, python-format
 msgid "%s details saved successfully."
 msgstr "%s的详单成功保存"
 
-#: views.py:326
+#: views.py:294
 msgid "Details saved successfully."
 msgstr "详单保存成功"
 
-#: views.py:338
+#: views.py:306
 #, python-format
 msgid "Error creating new %s."
 msgstr "创建新 %s的时候出错。"
 
-#: views.py:340
+#: views.py:308
 msgid "Error creating object."
 msgstr "创建对象的时候出错"
 
-#: views.py:347
+#: views.py:315
 #, python-format
 msgid "%s created successfully."
 msgstr "创建%s成功"
 
-#: views.py:349
+#: views.py:317
 msgid "New object created successfully."
 msgstr "新对象创建成功"
 
-#: views.py:367
+#: views.py:335
 #, python-format
 msgid "Error deleting %s."
 msgstr "删除%s时候出错。"
 
-#: views.py:369
+#: views.py:337
 msgid "Error deleting object."
 msgstr "删除对象时候出错。"
 
-#: views.py:374
+#: views.py:342
 #, python-format
 msgid "%s deleted successfully."
 msgstr "删除%s成功。"
 
-#: views.py:376
+#: views.py:344
 msgid "Object deleted successfully."
 msgstr "对象删除成功"
+
+#: views.py:425
+msgid "Setup items"
+msgstr ""
+
+#: views.py:459
+msgid "Results"
+msgstr ""
+
+#: views.py:479
+msgid "Maintenance menu"
+msgstr ""
 
 #: widgets.py:60
 msgid "None"
 msgstr "无"
+
+#~ msgid "Email"
+#~ msgstr "电子邮件"
+
+#~ msgid ""
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
+#~ msgstr "请输入正确的邮箱或者密码。注意！密码是大小写敏感的。"
+
+#~ msgid "This account is inactive."
+#~ msgstr "此账号未激活"
+
+#~ msgid ""
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
+#~ msgstr "控制验证用户的机制。可选项有：username, email"
+
+#~ msgid "Allow non authenticated users, access to all views"
+#~ msgstr "允许非授权用户访问所有的视图"
+
+#~ msgid "Current user password change"
+#~ msgstr "当前用户密码修改"
+
+#~ msgid "Your password has been successfully changed."
+#~ msgstr "你的密码已经修改成功"
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."

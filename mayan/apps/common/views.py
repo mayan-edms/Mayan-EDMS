@@ -2,11 +2,12 @@ from __future__ import absolute_import, unicode_literals
 
 from json import dumps, loads
 
+from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.auth.views import login, password_change
 from django.contrib.contenttypes.models import ContentType
-from django.conf import settings
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render_to_response
@@ -17,16 +18,20 @@ from django.views.generic import FormView, TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
+from dynamic_search.classes import SearchModel
+from permissions.models import Permission
+
+from .api import tools
+from .classes import MissingItem
 from .forms import (
-    ChoiceForm, EmailAuthenticationForm, LicenseForm, LocaleProfileForm,
-    LocaleProfileForm_view, UserForm, UserForm_view
+    ChoiceForm, LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
+    UserForm, UserForm_view
 )
 from .menus import menu_tools, menu_setup
 from .mixins import (
     ExtraContextMixin, ObjectListPermissionFilterMixin,
     ObjectPermissionCheckMixin, RedirectionMixin, ViewPermissionCheckMixin
 )
-from .settings import LOGIN_METHOD
 
 
 class AboutView(TemplateView):
@@ -39,7 +44,7 @@ def multi_object_action_view(request):
     then redirects to the appropiate specialized view
     """
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('main:home'))))
+    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     action = request.GET.get('action', None)
     id_list = ','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
@@ -47,11 +52,11 @@ def multi_object_action_view(request):
 
     if not action:
         messages.error(request, _('No action selected.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     if not id_list and not items_property_list:
         messages.error(request, _('Must select at least one item.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     # Separate redirects to keep backwards compatibility with older
     # functions that don't expect a properties_list parameter
@@ -254,23 +259,6 @@ def current_user_locale_profile_edit(request):
         context_instance=RequestContext(request))
 
 
-def login_view(request):
-    """
-    Control how the use is to be authenticated, options are 'email' and
-    'username'
-    """
-    kwargs = {'template_name': 'appearance/login.html'}
-
-    if LOGIN_METHOD == 'email':
-        kwargs['authentication_form'] = EmailAuthenticationForm
-
-    if not request.user.is_authenticated():
-        context = {'appearance_type': 'plain'}
-        return login(request, extra_context=context, **kwargs)
-    else:
-        return HttpResponseRedirect(reverse(getattr(settings, 'LOGIN_REDIRECT_URL', 'main:home')))
-
-
 def license_view(request):
     """
     Display the included LICENSE file from the about menu
@@ -282,29 +270,6 @@ def license_view(request):
             'title': _('License'),
         },
         context_instance=RequestContext(request))
-
-
-def password_change_view(request):
-    """
-    Password change wrapper for better control
-    """
-    context = {'title': _('Current user password change')}
-
-    return password_change(
-        request,
-        extra_context=context,
-        template_name='appearance/generic_form.html',
-        post_change_redirect=reverse('common:password_change_done'),
-    )
-
-
-def password_change_done(request):
-    """
-    View called when the new user password has been accepted
-    """
-
-    messages.success(request, _('Your password has been successfully changed.'))
-    return redirect('common:current_user_details')
 
 
 class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
@@ -472,3 +437,44 @@ def tools_list(request):
 
     return render_to_response('appearance/generic_list_horizontal.html', context,
                               context_instance=RequestContext(request))
+
+
+def home(request):
+    document_search = SearchModel.get('documents.Document')
+
+    context = {
+        'query_string': request.GET,
+        'hide_links': True,
+        'search_results_limit': 100,
+        'missing_list': [item for item in MissingItem.get_all() if item.condition()],
+    }
+
+    if request.GET:
+        queryset, ids, timedelta = document_search.search(request.GET, request.user)
+
+        # Update the context with the search results
+        context.update({
+            'object_list': queryset,
+            'time_delta': timedelta,
+            'title': _('Results'),
+        })
+
+    return render_to_response('appearance/home.html', context, context_instance=RequestContext(request))
+
+
+def maintenance_menu(request):
+    user_tools = {}
+    for namespace, values in tools.items():
+        user_tools[namespace] = {
+            'title': values['title']
+        }
+        user_tools[namespace].setdefault('links', [])
+        for link in values['links']:
+            resolved_link = link.resolve(context=RequestContext(request))
+            if resolved_link:
+                user_tools[namespace]['links'].append(resolved_link)
+
+    return render_to_response('appearance/tools.html', {
+        'blocks': user_tools,
+        'title': _('Maintenance menu')
+    }, context_instance=RequestContext(request))
