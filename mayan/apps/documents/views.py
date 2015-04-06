@@ -589,7 +589,6 @@ def document_page_view(request, document_page_id):
         'page': document_page,
         'rotation': rotation,
         'title': ' '.join([base_title, zoom_text]),
-        'web_theme_hide_menus': True,
         'zoom': zoom,
     }, context_instance=RequestContext(request))
 
@@ -613,7 +612,6 @@ def document_page_text(request, document_page_id):
         'page': document_page,
         'navigation_object_list': ['page'],
         'title': _('Details for: %s') % document_page,
-        'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
 
 
@@ -642,7 +640,6 @@ def document_page_edit(request, document_page_id):
         'navigation_object_list': ['page'],
         'page': document_page,
         'title': _('Edit: %s') % document_page,
-        'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
 
 
@@ -1171,7 +1168,6 @@ def document_page_transformation_list(request, document_page_id):
         'page': document_page,
         'navigation_object_list': ['page'],
         'title': _('Transformations for: %s') % document_page,
-        'web_theme_hide_menus': True,
         'list_object_variable_name': 'transformation',
         'extra_columns': [
             {'name': _('Order'), 'attribute': 'order'},
@@ -1210,7 +1206,6 @@ def document_page_transformation_create(request, document_page_id):
         'navigation_object_list': ['page'],
         'title': _('Create new transformation for page: %(page)s of document: %(document)s') % {
             'page': document_page.page_number, 'document': document_page.document},
-        'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
 
 
@@ -1240,7 +1235,6 @@ def document_page_transformation_edit(request, document_page_transformation_id):
             'transformation': document_page_transformation.get_transformation_display(),
             'document_page': document_page_transformation.document_page},
         'transformation': document_page_transformation,
-        'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))
 
 
@@ -1269,5 +1263,4 @@ def document_page_transformation_delete(request, document_page_transformation_id
             'transformation': document_page_transformation.get_transformation_display(),
             'document_page': document_page_transformation.document_page},
         'transformation': document_page_transformation,
-        'web_theme_hide_menus': True,
     }, context_instance=RequestContext(request))

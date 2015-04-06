@@ -55,7 +55,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     click_view='documents:document_page_view',
                     click_view_arguments=[page.pk],
                     page=page.page_number,
-                    fancybox_class='fancybox-iframe',
+                    fancybox_class='',
                     image_class='lazy-load-carousel',
                     size=DISPLAY_SIZE,
                     version=latest_version_pk,

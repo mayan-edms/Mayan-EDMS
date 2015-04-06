@@ -35,9 +35,9 @@ from .links import (
     link_document_multiple_update_page_count, link_document_page_edit,
     link_document_page_navigation_first, link_document_page_navigation_last,
     link_document_page_navigation_next,
-    link_document_page_navigation_previous, link_document_page_rotate_left,
-    link_document_page_rotate_right, link_document_page_text,
-    link_document_page_transformation_list,
+    link_document_page_navigation_previous, link_document_page_return,
+    link_document_page_rotate_left, link_document_page_rotate_right,
+    link_document_page_text, link_document_page_transformation_list,
     link_document_page_transformation_create,
     link_document_page_transformation_edit,
     link_document_page_transformation_delete, link_document_page_view,
@@ -106,6 +106,9 @@ class DocumentsApp(apps.AppConfig):
         menu_front_page.bind_links(links=[link_document_list_recent, link_document_list])
         menu_setup.bind_links(links=[link_document_type_setup])
 
+        # Document
+        menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_delete, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
+
         # Document type links
         menu_object.bind_links(links=[link_document_type_edit, link_document_type_filename_list, link_document_type_delete], sources=[DocumentType])
         menu_object.bind_links(links=[link_document_type_filename_edit, link_document_type_filename_delete], sources=[DocumentTypeFilename])
@@ -119,19 +122,15 @@ class DocumentsApp(apps.AppConfig):
         menu_facet.bind_links(links=[link_document_events_view, link_document_version_list], sources=[Document], position=2)
 
         # Document actions
-        menu_facet.bind_links(links=[link_document_page_rotate_left, link_document_page_rotate_right, link_document_page_zoom_in, link_document_page_zoom_out, link_document_page_view_reset], sources=['documents:document_page_view'])
         menu_object.bind_links(links=[link_document_version_revert, link_document_version_download], sources=[DocumentVersion])
         menu_multi_item.bind_links(links=[link_document_multiple_clear_transformations, link_document_multiple_delete, link_document_multiple_download, link_document_multiple_update_page_count, link_document_multiple_document_type_edit], sources=[Document])
 
         # Document pages
-        menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_delete, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
-        menu_object.bind_links(links=[link_document_page_transformation_list, link_document_page_view, link_document_page_text, link_document_page_edit], sources=[DocumentPage])
-        menu_sidebar.bind_links(links=[link_document_page_navigation_first, link_document_page_navigation_previous, link_document_page_navigation_next, link_document_page_navigation_last], sources=[DocumentPage])
-
+        menu_facet.bind_links(links=[link_document_page_rotate_left, link_document_page_rotate_right, link_document_page_zoom_in, link_document_page_zoom_out, link_document_page_view_reset], sources=['documents:document_page_view'])
+        menu_facet.bind_links(links=[link_document_page_return, link_document_page_view, link_document_page_text, link_document_page_edit], sources=[DocumentPage])
+        menu_facet.bind_links(links=[link_document_page_navigation_first, link_document_page_navigation_previous, link_document_page_navigation_next, link_document_page_navigation_last, link_document_page_transformation_list], sources=[DocumentPage])
         menu_object.bind_links(links=[link_document_page_transformation_edit, link_document_page_transformation_delete], sources=[DocumentPageTransformation])
-        menu_sidebar.bind_links(links=[link_document_page_transformation_create], sources=['documents:document_page_transformation_list'])
-        menu_sidebar.bind_links(links=[link_document_page_transformation_create], sources=['documents:document_page_transformation_create'])
-        menu_sidebar.bind_links(links=[link_document_page_transformation_create], sources=['documents:document_page_transformation_edit', 'documents:document_page_transformation_delete'])
+        menu_sidebar.bind_links(links=[link_document_page_transformation_create], sources=[DocumentPage, 'documents:document_page_transformation_create'])
 
         namespace = StatisticNamespace(name='documents', label=_('Documents'))
         namespace.add_statistic(DocumentStatistics(name='document_stats', label=_('Document tendencies')))

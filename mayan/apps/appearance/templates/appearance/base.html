@@ -93,53 +93,44 @@
         {% if web_theme_view_type == 'plain' %}
             {% block content_plain %}{% endblock %}
         {% else %}
-            {% if not web_theme_hide_menus %}
-                <nav class="navbar navbar-default navbar-fixed-top">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="sr-only">{% trans 'Toggle navigation' %}</span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                                <span class="icon-bar"></span>
-                            </button>
-                            <a class="navbar-brand" href="{% url 'main:home' %}">{% project_name %}{% if debug %} <i class="fa fa-bug"></i>{% endif %}</a>
-                        </div>
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <ul class="nav navbar-nav">
-                                {% get_menu_links 'main menu' as menu_links %}
-                                {% for link in menu_links %}
-                                    {% with 'true' as as_li %}
-                                    {% with 'true' as hide_active_anchor %}
-                                    {% with 'active' as li_class_active %}
-                                    {% with 'first' as li_class_first %}
-                                    {% with ' ' as link_classes %}
-                                        {% include 'navigation/generic_subnavigation.html' %}
-                                    {% endwith %}
-                                    {% endwith %}
-                                    {% endwith %}
-                                    {% endwith %}
-                                    {% endwith %}
-                                {% endfor %}
-                            </ul>
-                            <ul class="nav navbar-nav navbar-right">
-                                {% if not user.is_authenticated %}
-                                    {% trans 'Anonymous' %}
-                                {% else %}
-                                    <li><a href="{% url 'common:current_user_details' %}" title="{% trans 'User details' %}">{{ user.get_full_name|default:user }} <i class="fa fa-user"></i></a></li>
-                                {% endif %}
-                            </ul>
-                        </div>
+            <nav class="navbar navbar-default navbar-fixed-top">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">{% trans 'Toggle navigation' %}</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{% url 'main:home' %}">{% project_name %}{% if debug %} <i class="fa fa-bug"></i>{% endif %}</a>
                     </div>
-                </nav>
-            {% else %}
-            <style type="text/css">
-                .container {
-                    width: 100%;
-                }
-            </style>
-
-            {% endif %}
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            {% get_menu_links 'main menu' as menu_links %}
+                            {% for link in menu_links %}
+                                {% with 'true' as as_li %}
+                                {% with 'true' as hide_active_anchor %}
+                                {% with 'active' as li_class_active %}
+                                {% with 'first' as li_class_first %}
+                                {% with ' ' as link_classes %}
+                                    {% include 'navigation/generic_subnavigation.html' %}
+                                {% endwith %}
+                                {% endwith %}
+                                {% endwith %}
+                                {% endwith %}
+                                {% endwith %}
+                            {% endfor %}
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            {% if not user.is_authenticated %}
+                                {% trans 'Anonymous' %}
+                            {% else %}
+                                <li><a href="{% url 'common:current_user_details' %}" title="{% trans 'User details' %}">{{ user.get_full_name|default:user }} <i class="fa fa-user"></i></a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+            </nav>
 
             <div class="container">
                 <div class="row">
@@ -233,37 +224,63 @@
         <script type="text/javascript" src="{% static 'appearance/packages/fancyBox-master/lib/jquery.mousewheel.pack.js' %}"></script>
 
         <script type="text/javascript">
-            jQuery(document).ready(function() {
-                $('form').submit(function(){
-                    $('button', this).click(function() {
-                        return false;
-                    });
-                    $(':submit', this).click(function() {
-                        return false;
-                    });
-                });
-                $('.scrollable').scrollview();
+            'use strict';
+
+            function resizeFullHeight() {
                 $('.full-height').height($(window).height() - $('.full-height').data('heightDifference'));
+            }
+
+            function set_image_noninteractive(image) {
+                // Remove border to indicate non interactive image
+                image.removeClass('thin_border');
+                container = image.parent().parent();
+                // Save img HTML
+                html = image.parent().html();
+                // Remove anchor
+                image.parent().remove();
+                // Place again img
+                container.html(html);
+            }
+
+            function load_document_image(image) {
+                $.get( image.attr('data-src'), function(result) {
+                    if (result.status == 'success') {
+                        image.attr('src', result.data);
+                        image.addClass(image.attr('data-post-load-class'));
+                    } else if (result.detail == 'unknown_file_format') {
+                        image.attr('src', "{% static 'images/mimetypes/unknown.png' %}");
+                        set_image_noninteractive(image);
+                    } else {
+                        image.attr('src', "{% static 'images/mimetypes/error.png' %}");
+                        set_image_noninteractive(image);
+                    }
+                })
+              .fail(function() {
+                image.attr('src', "{% static 'images/mimetypes/error.png' %}");
+                set_image_noninteractive(image);
+              })
+            }
+
+            jQuery(document).ready(function() {
+                resizeFullHeight();
+
                 $(window).resize(function() {
-                    $('.full-height').height($(window).height() - $('.full-height').data('heightDifference'));
+                    resizeFullHeight();
                 });
 
-                $('.no-parent-history', this).click(function() {
-                    location.replace(this.href);
-                    return false;
-                });
+                $('.scrollable').scrollview();
 
-                $("a.fancybox").fancybox({
-                    'openEffect'  : 'elastic',
-                    'closeEffect' : 'elastic',
+                $('a.fancybox').fancybox({
+                    openEffect  : 'elastic',
+                    closeEffect : 'elastic',
                     prevEffect  : 'none',
                     nextEffect  : 'none',
-                    'titleShow' : true,
-                    'type'      : 'image',
-                    'autoResize': true,
+                    titleShow   : true,
+                    type        : 'image',
+                    autoResize  : true,
                 });
 
-                $("a.fancybox-staging").click(function(e) {
+                $('a.fancybox-staging').click(function(e) {
                     var $this = $(this);
 
                         $.get($this.attr('href'), function( result ) {
@@ -272,74 +289,19 @@
                                     {
                                         href : result.data,
                                         title : $this.attr('title'),
-                                        'openEffect'  : 'elastic',
-                                        'closeEffect' : 'elastic',
+                                        openEffect  : 'elastic',
+                                        closeEffect : 'elastic',
                                         prevEffect  : 'none',
                                         nextEffect  : 'none',
-                                        'titleShow' : true,
-                                        'type'      : 'image',
-                                        'autoResize': true,
+                                        titleShow   : true,
+                                        type        : 'image',
+                                        autoResize  : true,
                                     },
                                 ]);
                             }
                         })
                     e.preventDefault();
                 })
-
-                $("a.fancybox-noscaling").fancybox({
-                    openEffect  : 'elastic',
-                    closeEffect : 'elastic',
-                    prevEffect  : 'none',
-                    nextEffect  : 'none',
-                    'titleShow' : true,
-                    'type'      : 'image',
-                    'autoResize': false
-                });
-
-                $("a.fancybox-iframe").fancybox({
-                    openEffect     : 'elastic',
-                    closeEffect    : 'elastic',
-                    'titleShow'    : false,
-                    'type'         : 'iframe',
-                    autoHeight     : false,
-                    width          : '99%',
-                    height         : '99%',
-                    minHeight      : '100%',
-                    minWidth       : '100%',
-                    'showNavArrows': false,
-                    'margin'       : 18,
-                });
-
-                function set_image_noninteractive(image) {
-                    // Remove border to indicate non interactive image
-                    image.removeClass('thin_border');
-                    container = image.parent().parent();
-                    // Save img HTML
-                    html = image.parent().html();
-                    // Remove anchor
-                    image.parent().remove();
-                    // Place again img
-                    container.html(html);
-                }
-
-                function load_document_image(image) {
-                    $.get( image.attr('data-src'), function(result) {
-                        if (result.status == 'success') {
-                            image.attr('src', result.data);
-                            image.addClass(image.attr('data-post-load-class'));
-                        } else if (result.detail == 'unknown_file_format') {
-                            image.attr('src', "{% static 'images/mimetypes/unknown.png' %}");
-                            set_image_noninteractive(image);
-                        } else {
-                            image.attr('src', "{% static 'images/mimetypes/error.png' %}");
-                            set_image_noninteractive(image);
-                        }
-                    })
-                  .fail(function() {
-                    image.attr('src', "{% static 'images/mimetypes/error.png' %}");
-                    set_image_noninteractive(image);
-                  })
-                }
 
                $('img.lazy-load').lazyload({
                     appear: function(elements_left, settings) {
