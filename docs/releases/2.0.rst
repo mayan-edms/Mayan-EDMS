@@ -12,6 +12,13 @@ What's new in Mayan EDMS v2.0
 * Appearance app
 * Update to Django 1.7.7
 * Update frontend UI to use Bootstrap
+* Improved document page navigation interface
+* Merge of document_print and document_hard_copy views
+* New class based and menu based navigation system
+* Menu reorganization
+* Repurpose the installtion app
+* Removal of Python 2.6 support
+* Use of Font Awesome
 
 
 Upgrading from a previous version
@@ -70,7 +77,12 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
-* `issue #158 <https://github.com/mayan-edms/mayan-edms/issues/158>`_ Plural form not matching singular form in ocr app  bug i18n
+* `issue #33 <https://github.com/mayan-edms/mayan-edms/issues/33>`_ Update to Django 1.7
+* `issue #59 <https://github.com/mayan-edms/mayan-edms/issues/59`_ New bootstrap based UI
+* `issue #62 <https://github.com/mayan-edms/mayan-edms/issues/62>`_ Simplify and reduce code in templates
+* `issue #67 <https://github.com/mayan-edms/mayan-edms/issues/67>`_ Python 3 compatibility: Update models __unicode__ methdo to __str__ methods (using Django's six library)
+* `issue #121 <https://github.com/mayan-edms/mayan-edms/issues/121>`_ Twitter Bootstrap theme for Mayan EDMS
+* `issue #155 <https://github.com/mayan-edms/mayan-edms/issues/155>`_ Header does not fit list on documents/list on small screens (laptop)
 
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
