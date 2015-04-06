@@ -35,7 +35,7 @@ class Index(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        reverse('indexing:index_instance_node_view', args=[self.instance_root.pk])
+        return reverse('indexing:index_instance_node_view', args=[self.instance_root.pk])
 
     def get_document_types_not_in_index(self):
         return DocumentType.objects.exclude(pk__in=self.document_types.all())
@@ -95,7 +95,7 @@ class IndexInstanceNode(MPTTModel):
         return self.index_template_node.index
 
     def get_absolute_url(self):
-        reverse('indexing:index_instance_node_view', args=[self.pk])
+        return reverse('indexing:index_instance_node_view', args=[self.pk])
 
     @property
     def children(self):

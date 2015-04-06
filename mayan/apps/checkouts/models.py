@@ -54,7 +54,7 @@ class DocumentCheckout(models.Model):
         return result
 
     def get_absolute_url(self):
-        reverse('checkout:checkout_info', args=[self.document.pk])
+        return reverse('checkout:checkout_info', args=[self.document.pk])
 
     class Meta:
         verbose_name = _('Document checkout')

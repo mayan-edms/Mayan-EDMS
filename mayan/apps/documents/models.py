@@ -111,7 +111,7 @@ class Document(models.Model):
         return self.label
 
     def get_absolute_url(self):
-        reverse('documents:document_preview', args=[self.pk])
+        return reverse('documents:document_preview', args=[self.pk])
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('user', None)
@@ -514,7 +514,7 @@ class DocumentPage(models.Model):
         verbose_name_plural = _('Document pages')
 
     def get_absolute_url(self):
-        reverse('documents:document_page_view', args=[self.pk])
+        return reverse('documents:document_page_view', args=[self.pk])
 
     @property
     def siblings(self):

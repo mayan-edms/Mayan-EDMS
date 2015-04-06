@@ -226,7 +226,7 @@ class Role(models.Model):
         return self.label
 
     def get_absolute_url(self):
-        reverse('permissions:role_list')
+        return reverse('permissions:role_list')
 
     def add_member(self, member):
         member = AnonymousUserSingleton.objects.passthru_check(member)
