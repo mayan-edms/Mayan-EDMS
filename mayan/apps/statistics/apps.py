@@ -19,5 +19,5 @@ class StatisticsApp(apps.AppConfig):
     def ready(self):
         menu_object.bind_links(links=[link_execute], sources=[Statistic])
         menu_object.bind_links(links=[link_namespace_details], sources=[StatisticNamespace])
-        menu_secondary.bind_links(links=[link_namespace_list], sources=[StatisticNamespace, 'statistics:namespace_list', 'statistics:execute'])
+        menu_secondary.bind_links(links=[link_namespace_list], sources=[StatisticNamespace, 'statistics:namespace_list'])
         menu_tools.bind_links(links=[link_statistics])

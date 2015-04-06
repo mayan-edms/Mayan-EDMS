@@ -93,11 +93,11 @@ link_document_version_revert = Link(conditional_disable=is_current_version, perm
 
 # Document type related links
 link_document_type_create = Link(permissions=[PERMISSION_DOCUMENT_TYPE_CREATE], text=_('Create document type'), view='documents:document_type_create')
-link_document_type_delete = Link(permissions=[PERMISSION_DOCUMENT_TYPE_DELETE], text=_('Delete'), view='documents:document_type_delete', args='document_type.id')
-link_document_type_edit = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Edit'), view='documents:document_type_edit', args='document_type.id')
+link_document_type_delete = Link(permissions=[PERMISSION_DOCUMENT_TYPE_DELETE], text=_('Delete'), view='documents:document_type_delete', args='resolved_object.id')
+link_document_type_edit = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Edit'), view='documents:document_type_edit', args='resolved_object.id')
 link_document_type_filename_create = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Add filename to document type'), view='documents:document_type_filename_create', args='document_type.id')
-link_document_type_filename_delete = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Delete'), view='documents:document_type_filename_delete', args='filename.id')
-link_document_type_filename_edit = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Edit'), view='documents:document_type_filename_edit', args='filename.id')
-link_document_type_filename_list = Link(permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], text=_('Filenames'), view='documents:document_type_filename_list', args='document_type.id')
+link_document_type_filename_delete = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Delete'), view='documents:document_type_filename_delete', args='resolved_object.id')
+link_document_type_filename_edit = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Edit'), view='documents:document_type_filename_edit', args='resolved_object.id')
+link_document_type_filename_list = Link(permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], text=_('Filenames'), view='documents:document_type_filename_list', args='resolved_object.id')
 link_document_type_list = Link(permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], text=_('Document types'), view='documents:document_type_list')
 link_document_type_setup = Link(icon='fa fa-file', permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], text=_('Document types'), view='documents:document_type_list')

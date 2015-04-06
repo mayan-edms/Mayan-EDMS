@@ -62,22 +62,7 @@ class Menu(object):
             # Unsourced links display always
             self._add_links_to_source(links, None)
 
-    def resolve_for_source(self, context, source):
-        request = Variable('request').resolve(context)
-        current_path = request.META['PATH_INFO']
-        current_view = resolve(current_path).view_name
-
-        result = []
-
-        for link in self.bound_links.get(CombinedSource(obj=(source), view=current_view), []):
-            result.append(link.resolve(context))
-
-        for link in self.bound_links.get(source, []):
-            result.append(link.resolve(context))
-
-        return result
-
-    def resolve(self, context):
+    def resolve(self, context, source=None):
         request = Variable('request').resolve(context)
         current_path = request.META['PATH_INFO']
 
@@ -87,14 +72,17 @@ class Menu(object):
 
         result = []
 
-        navigation_object_list = context.get('navigation_object_list', ['object'])
+        if source:
+            resolved_navigation_object_list = [source]
+        else:
+            navigation_object_list = context.get('navigation_object_list', ['object'])
 
-        # Multiple objects
-        for navigation_object in navigation_object_list:
-            try:
-                resolved_navigation_object_list.append(Variable(navigation_object).resolve(context))
-            except VariableDoesNotExist:
-                pass
+            # Multiple objects
+            for navigation_object in navigation_object_list:
+                try:
+                    resolved_navigation_object_list.append(Variable(navigation_object).resolve(context))
+                except VariableDoesNotExist:
+                    pass
 
         for resolved_navigation_object in resolved_navigation_object_list:
             for source, links in self.bound_links.iteritems():

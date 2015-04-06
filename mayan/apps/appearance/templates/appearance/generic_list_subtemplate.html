@@ -5,7 +5,6 @@
 {% load pagination_tags %}
 {% load navigation_tags %}
 {% load non_breakable %}
-{% load variable_tags %}
 {% load multiselect_tags %}
 
 {% autopaginate object_list %}
@@ -101,12 +100,8 @@
                                             {% endif %}
                                         {% endfor %}
                                         {% if not hide_links %}
-                                            {% if list_object_variable_name %}
-                                                {% copy_variable object as list_object_variable_name %}
-                                                {% copy_variable list_object_variable_name as "navigation_object_name" %}
-                                            {% endif %}
                                             <td class="last">
-                                                {% get_menu_links 'object menu' as links %}
+                                                {% get_menu_links 'object menu' source=object as links %}
                                                 {% with links as object_navigation_links %}
                                                 {% with 'true' as horizontal %}
                                                     {% include 'navigation/generic_navigation.html' %}

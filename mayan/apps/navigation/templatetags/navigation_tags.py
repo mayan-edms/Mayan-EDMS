@@ -11,17 +11,16 @@ register = Library()
 
 
 @register.assignment_tag(takes_context=True)
-def get_menu_links(context, name):
-    return Menu.get(name).resolve(context=context)
+def get_menu_links(context, name, source=None):
+    return Menu.get(name).resolve(context=context, source=source)
 
 
 @register.assignment_tag(takes_context=True)
-def get_action_links(context):
-    # TODO: move this logic to template
+def get_menus_links(context, names, source=None):
     result = []
 
-    for menu_name in ['object menu', 'sidebar menu', 'secondary menu']:
-        links = Menu.get(name=menu_name).resolve(context)
+    for name in names.split(','):
+        links = Menu.get(name=name).resolve(context)
         if links:
             result.append(links)
 
@@ -30,7 +29,7 @@ def get_action_links(context):
 
 @register.simple_tag(takes_context=True)
 def get_multi_item_links_form(context, object_list):
-    actions = [(link.url, link.text) for link in Menu.get('multi item menu').resolve_for_source(context=context, source=type(object_list[0]))]
+    actions = [(link.url, link.text) for link in Menu.get('multi item menu').resolve(context=context, source=object_list[0])]
     form = MultiItemForm(actions=actions)
     context.update({'multi_item_form': form, 'multi_item_actions': actions})
     return ''

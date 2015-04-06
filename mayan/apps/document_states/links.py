@@ -18,5 +18,5 @@ link_setup_workflow_transition_create = Link(text=_('Create transition'), view='
 link_setup_workflow_transition_delete = Link(text=_('Delete'), view='document_states:setup_workflow_transition_delete', args='object.pk')
 link_setup_workflow_transition_edit = Link(text=_('Edit'), view='document_states:setup_workflow_transition_edit', args='object.pk')
 link_setup_workflow_transitions = Link(text=_('Transitions'), view='document_states:setup_workflow_transitions', args='object.pk')
-link_workflow_instance_detail = Link(text=_('Detail'), view='document_states:workflow_instance_detail', args='workflow_instance.pk')
-link_workflow_instance_transition = Link(text=_('Transition'), view='document_states:workflow_instance_transition', args='workflow_instance.pk')
+link_workflow_instance_detail = Link(text=_('Detail'), view='document_states:workflow_instance_detail', args='resolved_object.pk')
+link_workflow_instance_transition = Link(text=_('Transition'), view='document_states:workflow_instance_transition', args='resolved_object.pk')

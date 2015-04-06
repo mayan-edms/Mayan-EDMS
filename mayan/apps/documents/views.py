@@ -854,7 +854,6 @@ def document_type_list(request):
         'object_list': DocumentType.objects.all(),
         'title': _('Document types'),
         'hide_link': True,
-        'list_object_variable_name': 'document_type',
         'extra_columns': [
             {'name': _('OCR'), 'attribute': 'ocr'},
             {'name': _('Documents'), 'attribute': encapsulate(lambda x: x.documents.count())}
@@ -960,7 +959,6 @@ def document_type_filename_list(request, document_type_id):
             }
         ],
         'hide_link': True,
-        'list_object_variable_name': 'filename',
         'navigation_object_list': ['document_type'],
         'object_list': document_type.filenames.all(),
         'title': _('Filenames for document type: %s') % document_type,
@@ -1168,7 +1166,6 @@ def document_page_transformation_list(request, document_page_id):
         'page': document_page,
         'navigation_object_list': ['page'],
         'title': _('Transformations for: %s') % document_page,
-        'list_object_variable_name': 'transformation',
         'extra_columns': [
             {'name': _('Order'), 'attribute': 'order'},
             {'name': _('Transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},

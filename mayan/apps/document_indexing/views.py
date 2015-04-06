@@ -37,7 +37,6 @@ def index_setup_list(request):
     context = {
         'title': _('Indexes'),
         'hide_object': True,
-        'list_object_variable_name': 'index',
         'extra_columns': [
             {'name': _('Name'), 'attribute': 'name'},
             {'name': _('Title'), 'attribute': 'title'},
@@ -151,7 +150,6 @@ def index_setup_view(request, index_pk):
     context = {
         'object_list': object_list,
         'index': index,
-        'list_object_variable_name': 'node',
         'navigation_object_list': ['index'],
         'title': _('Tree template nodes for index: %s') % index,
         'hide_object': True,

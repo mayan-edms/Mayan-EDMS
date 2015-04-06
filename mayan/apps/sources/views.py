@@ -343,7 +343,6 @@ def setup_source_list(request):
         'object_list': Source.objects.select_subclasses(),
         'title': _('Sources'),
         'hide_link': True,
-        'list_object_variable_name': 'source',
         'extra_columns': [
             {
                 'name': _('Type'),
@@ -459,7 +458,6 @@ def setup_source_transformation_list(request, source_id):
         ],
         'hide_link': True,
         'hide_object': True,
-        'list_object_variable_name': 'transformation',
         'navigation_object_list': ['source'],
         'object_list': SourceTransformation.transformations.get_for_object(source),
         'source': source,

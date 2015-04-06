@@ -23,7 +23,7 @@ class SmartLinkConditionForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(SmartLinkConditionForm, self).__init__(*args, **kwargs)
         self.fields['foreign_document_data'] = forms.ChoiceField(choices=ModelAttribute.get_choices_for(Document, type_names=['field', 'query']), label=_('Foreign document attribute'))
-        self.fields['expression'].help_text = ' '.join([self.fields['expression'].help_text, ModelAttribute.help_text_for(Document, type_names=['field', 'related', 'property'])])
+        self.fields['expression'].help_text = ' '.join([unicode(self.fields['expression'].help_text), ModelAttribute.help_text_for(Document, type_names=['field', 'related', 'property'])])
 
     class Meta:
         model = SmartLinkCondition

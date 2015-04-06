@@ -6,7 +6,6 @@
 {% load navigation_tags %}
 {% load project_tags %}
 {% load settings %}
-{% load variable_tags %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -152,8 +151,7 @@
                     </div>
                 </div>
 
-                {% get_action_links as links %}
-
+                {% get_menus_links names='object menu,sidebar menu,secondary menu' as links %}
                 {% get_menu_links 'object facet' as form_navigation_links %}
 
                 <div class="row">

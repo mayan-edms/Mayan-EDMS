@@ -117,7 +117,6 @@ def smart_link_list(request):
             {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
         ],
         'hide_link': True,
-        'list_object_variable_name': 'smart_link',
 
     }, context_instance=RequestContext(request))
 
@@ -234,7 +233,6 @@ def smart_link_condition_list(request, smart_link_pk):
         ],
         'hide_link': True,
         'object': smart_link,
-        'list_object_variable_name': 'condition',
     }, context_instance=RequestContext(request))
 
 
