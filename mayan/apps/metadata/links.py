@@ -12,7 +12,7 @@ from .permissions import (
     PERMISSION_METADATA_TYPE_EDIT, PERMISSION_METADATA_TYPE_VIEW
 )
 
-link_documents_missing_required_metadata = Link(icon='fa fa-edit', text=_('Missing required metadata'), view='metadata:documents_missing_required_metadata')
+link_documents_missing_required_metadata = Link(icon='fa fa-edit', text=_('Missing metadata'), view='metadata:documents_missing_required_metadata')
 link_metadata_add = Link(permissions=[PERMISSION_METADATA_DOCUMENT_ADD], text=_('Add metadata'), view='metadata:metadata_add', args='object.pk')
 link_metadata_edit = Link(permissions=[PERMISSION_METADATA_DOCUMENT_EDIT], text=_('Edit metadata'), view='metadata:metadata_edit', args='object.pk')
 link_metadata_multiple_add = Link(permissions=[PERMISSION_METADATA_DOCUMENT_ADD], text=_('Add metadata'), view='metadata:metadata_multiple_add')
