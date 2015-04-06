@@ -265,7 +265,7 @@ def login_view(request):
         kwargs['authentication_form'] = EmailAuthenticationForm
 
     if not request.user.is_authenticated():
-        context = {'web_theme_view_type': 'plain'}
+        context = {'appearance_type': 'plain'}
         return login(request, extra_context=context, **kwargs)
     else:
         return HttpResponseRedirect(reverse(getattr(settings, 'LOGIN_REDIRECT_URL', 'main:home')))

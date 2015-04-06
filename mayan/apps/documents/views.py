@@ -794,8 +794,6 @@ def document_print(request, document_id):
     post_redirect = None
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or document.get_absolute_url())))
 
-    new_window_url = None
-
     if request.method == 'POST':
         form = PrintForm(request.POST)
         if form.is_valid():
@@ -809,6 +807,8 @@ def document_print(request, document_id):
                 new_url.append(urlquote(hard_copy_arguments))
 
             new_window_url = '?'.join(new_url)
+
+            return HttpResponseRedirect(new_window_url)
     else:
         form = PrintForm()
 
@@ -817,7 +817,6 @@ def document_print(request, document_id):
         'object': document,
         'title': _('Print: %s') % document,
         'next': next,
-        'new_window_url': new_window_url if new_window_url else new_window_url
     }, context_instance=RequestContext(request))
 
 
@@ -841,6 +840,7 @@ def document_hard_copy(request, document_id):
         pages = document.pages.all()
 
     return render_to_response('documents/document_print.html', {
+        'appearance_type': 'plain',
         'object': document,
         'page_range': page_range,
         'pages': pages,

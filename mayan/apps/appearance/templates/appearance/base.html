@@ -5,7 +5,6 @@
 
 {% load navigation_tags %}
 {% load project_tags %}
-{% load settings %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -15,16 +14,7 @@
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
-        <title>{% block project_name %}{% project_name %}{% endblock %}{{ request.new_window_url }}{% block title %}{% endblock %}</title>
-
-        {% if new_window_url %}
-            <script type="text/javascript">
-                window.open('{{ new_window_url|safe }}','{{ new_window_url_name|default:"_blank" }}','toolbar=1,scrollbars=1,location=1,status=1,menubar=1,resizable=1');
-            </script>
-            <noscript>
-                <META HTTP-EQUIV="refresh" CONTENT="{{ new_window_url_timeout|default:'2' }};{{ new_window_url|safe }}">
-            </noscript>
-        {% endif %}
+        <title>{% block project_name %}{% project_name %}{% endblock %}{% block title %}{% endblock %}</title>
 
         {% compress css %}
             <link href="http://fonts.googleapis.com/css?family=IM+Fell+English+SC" rel="stylesheet" type="text/css">
@@ -94,7 +84,7 @@
         {% endcompress %}
     </head>
     <body>
-        {% if web_theme_view_type == 'plain' %}
+        {% if appearance_type == 'plain' %}
             {% block content_plain %}{% endblock %}
         {% else %}
             <nav class="navbar navbar-default navbar-fixed-top">
