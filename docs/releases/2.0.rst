@@ -18,7 +18,13 @@ What's new in Mayan EDMS v2.0
 * Menu reorganization
 * Repurpose the installtion app
 * Removal of Python 2.6 support
-* Use of Font Awesome
+* Removal of hardcoded use of the famfam icon set
+* Configurable use of Font Awesome icon set
+* Merging of apps
+
+    * home and common
+    * project_tools, project_setup and common
+    * documents and document_acls apps
 
 
 Upgrading from a previous version
