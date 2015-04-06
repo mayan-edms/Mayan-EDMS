@@ -142,16 +142,15 @@ class Link(object):
         query_string = urlparse.urlparse(previous_path).query
         parsed_query_string = urlparse.parse_qs(query_string)
 
-        for key in self.remove_from_query:
-            try:
-                del parsed_query_string[key]
-            except KeyError:
-                pass
-
+        # If this link has a required permission check that the user have it
+        # too
         if self.permissions:
             try:
                 Permission.objects.check_permissions(request.user, self.permissions)
             except PermissionDenied:
+                # If the user doesn't have the permission, and we are passed
+                # an instance, check to see if the user has at least ACL
+                # access to the instance.
                 if resolved_object:
                     try:
                         AccessEntry.objects.check_access(self.permissions, request.user, resolved_object)
@@ -160,7 +159,9 @@ class Link(object):
                 else:
                     return None
 
-        # Check to see if link has conditional display
+        # Check to see if link has conditional display function and only
+        # display it if the result of the conditional display function is
+        # True
         if self.condition:
             if not self.condition(context):
                 return None
@@ -179,21 +180,35 @@ class Link(object):
 
         kwargs = {key: Variable(value) for key, value in self.kwargs.iteritems()}
 
+        # Use Django's exact {% url %} code to resolve the link
         node = URLNode(view_name=view_name, args=args, kwargs={}, asvar=None)
 
+        # If we were passed an instance of the view context object we are
+        # resolving, inject it into the context. This help resolve links for
+        # object lists.
         if resolved_object:
             context['resolved_object'] = resolved_object
 
         resolved_link.url = node.render(context)
 
+        # This is for links that should be displayed but that are not clickable
         if self.conditional_disable:
             resolved_link.disabled = self.conditional_disable(context)
         else:
             resolved_link.disabled = False
 
+        # Lets a new link keep the same URL query string of the current URL
         if self.keep_query:
+            # Sometimes we are required to remove a key from the URL QS
+            for key in self.remove_from_query:
+                try:
+                    del parsed_query_string[key]
+                except KeyError:
+                    pass
+
             resolved_link.url = '%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
 
+        # Helps highligh in the UI the current link in effect
         resolved_link.active = self.view == current_view
 
         return resolved_link
