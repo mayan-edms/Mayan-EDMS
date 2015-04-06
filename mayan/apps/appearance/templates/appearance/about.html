@@ -4,7 +4,6 @@
 {% load static %}
 
 {% load project_tags %}
-{% load version_tags %}
 
 {% block title %} :: {% trans 'About' %}{% endblock %}
 
@@ -59,7 +58,7 @@
     <hr>
 
     <div class="well">
-        <h3 class="text-center">{% project_name %} ({% trans 'Version' %} {% app_version 'mayan' %})</h3>
+        <h3 class="text-center">{% project_name %} ({% trans 'Version' %} {% project_version %})</h3>
         <p class="text-center">
             {% trans 'Free Open Source Electronic Document Management System' %}
         </p>
