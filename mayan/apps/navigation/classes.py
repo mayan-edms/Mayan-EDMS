@@ -194,6 +194,8 @@ class Link(object):
         if self.keep_query:
             resolved_link.url = '%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
 
+        resolved_link.active = self.view == current_view
+
         return resolved_link
 
 
