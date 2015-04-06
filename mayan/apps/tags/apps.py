@@ -15,11 +15,10 @@ from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 
 from .links import (
-    link_multiple_documents_selection_tag_remove,
+    link_multiple_documents_attach_tag, link_multiple_documents_tag_remove,
     link_single_document_multiple_tag_remove, link_tag_acl_list,
     link_tag_attach, link_tag_create, link_tag_delete, link_tag_document_list,
-    link_tag_edit, link_tag_list, link_tag_multiple_attach,
-    link_tag_multiple_delete, link_tag_tagged_item_list
+    link_tag_edit, link_tag_list, link_tag_multiple_delete, link_tag_tagged_item_list
 )
 from .models import Tag
 from .permissions import (
@@ -45,6 +44,7 @@ class TagsApp(apps.AppConfig):
 
         menu_facet.bind_links(links=[link_tag_document_list], sources=[Document])
         menu_main.bind_links(links=[link_tag_list])
+        menu_multi_item.bind_links(links=[link_multiple_documents_attach_tag, link_multiple_documents_tag_remove], sources=[Document])
         menu_multi_item.bind_links(links=[link_tag_multiple_delete], sources=[Tag])
         menu_multi_item.bind_links(links=[link_single_document_multiple_tag_remove], sources=[CombinedSource(obj=Tag, view='tags:document_tags')])
         menu_object.bind_links(links=[link_tag_tagged_item_list, link_tag_edit, link_tag_acl_list, link_tag_delete], sources=[Tag])
