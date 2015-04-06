@@ -18,7 +18,7 @@ register_settings(
         {'name': 'STORAGE_BACKEND', 'global_name': 'DOCUMENTS_STORAGE_BACKEND', 'default': 'storage.backends.filebasedstorage.FileBasedStorage'},
         # Usage
         {'name': 'PREVIEW_SIZE', 'global_name': 'DOCUMENTS_PREVIEW_SIZE', 'default': '640x480'},
-        {'name': 'PRINT_SIZE', 'global_name': 'DOCUMENTS_PRINT_SIZE', 'default': '1400'},
+        {'name': 'PRINT_SIZE', 'global_name': 'DOCUMENTS_PRINT_SIZE', 'default': '3600'},
         {'name': 'MULTIPAGE_PREVIEW_SIZE', 'global_name': 'DOCUMENTS_MULTIPAGE_PREVIEW_SIZE', 'default': '160x120'},
         {'name': 'THUMBNAIL_SIZE', 'global_name': 'DOCUMENTS_THUMBNAIL_SIZE', 'default': '50x50'},
         {'name': 'DISPLAY_SIZE', 'global_name': 'DOCUMENTS_DISPLAY_SIZE', 'default': '3600'},
