@@ -8,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from actstream import registry
 
 from acls.api import class_permissions
+from acls.permissions import ACLS_VIEW_ACL, ACLS_EDIT_ACL
 from common import (
     MissingItem, menu_facet, menu_front_page, menu_object, menu_secondary,
     menu_setup, menu_sidebar, menu_multi_item
@@ -23,12 +24,12 @@ from statistics.classes import StatisticNamespace
 
 from documents import settings as document_settings
 from .links import (
-    link_clear_image_cache, link_document_clear_transformations,
-    link_document_content, link_document_delete,
-    link_document_document_type_edit, link_document_events_view,
-    link_document_multiple_document_type_edit, link_document_download,
-    link_document_edit, link_document_list, link_document_list_recent,
-    link_document_multiple_delete,
+    link_clear_image_cache, link_document_acl_list,
+    link_document_clear_transformations, link_document_content,
+    link_document_delete, link_document_document_type_edit,
+    link_document_events_view, link_document_multiple_document_type_edit,
+    link_document_download, link_document_edit, link_document_list,
+    link_document_list_recent, link_document_multiple_delete,
     link_document_multiple_clear_transformations,
     link_document_multiple_download,
     link_document_multiple_update_page_count, link_document_page_edit,
@@ -82,11 +83,15 @@ class DocumentsApp(apps.AppConfig):
         ModelAttribute(Document, label=_('Label'), name='label', type_name='field')
 
         class_permissions(Document, [
-            PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-            PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_NEW_VERSION,
-            PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_TRANSFORM,
-            PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_VIEW,
-            PERMISSION_EVENTS_VIEW
+        ])
+
+        class_permissions(Document, [
+            ACLS_VIEW_ACL, ACLS_EDIT_ACL, PERMISSION_DOCUMENT_DELETE,
+            PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_EDIT,
+            PERMISSION_DOCUMENT_NEW_VERSION,
+            PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+            PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_VERSION_REVERT,
+            PERMISSION_DOCUMENT_VIEW, PERMISSION_EVENTS_VIEW
         ])
 
         document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer_string='documents.serializers.DocumentSerializer')
@@ -105,16 +110,17 @@ class DocumentsApp(apps.AppConfig):
         menu_front_page.bind_links(links=[link_document_list_recent, link_document_list])
         menu_setup.bind_links(links=[link_document_type_setup])
 
-        # Document
-        menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_delete, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
-
         # Document type links
         menu_object.bind_links(links=[link_document_type_edit, link_document_type_filename_list, link_document_type_delete], sources=[DocumentType])
         menu_object.bind_links(links=[link_document_type_filename_edit, link_document_type_filename_delete], sources=[DocumentTypeFilename])
         menu_secondary.bind_links(links=[link_document_type_list, link_document_type_create], sources=[DocumentType, 'documents:document_type_create', 'documents:document_type_list'])
         menu_sidebar.bind_links(links=[link_document_type_filename_create], sources=[DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'])
 
-        # Register document facet links
+        # Document object links
+        menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_delete, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
+
+        # Document facet links
+        menu_facet.bind_links(links=[link_document_acl_list], sources=[Document])
         menu_facet.bind_links(links=[link_document_preview], sources=[Document], position=0)
         menu_facet.bind_links(links=[link_document_content], sources=[Document], position=1)
         menu_facet.bind_links(links=[link_document_properties], sources=[Document], position=2)

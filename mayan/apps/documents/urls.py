@@ -28,6 +28,8 @@ urlpatterns = patterns('documents.views',
     url(r'^(?P<document_id>\d+)/reset_page_count/$', 'document_update_page_count', (), 'document_update_page_count'),
     url(r'^multiple/reset_page_count/$', 'document_multiple_update_page_count', (), 'document_multiple_update_page_count'),
 
+    url(r'^(?P<document_id>\d+)/acls/$', 'document_acl_list', (), 'document_acl_list'),
+
     url(r'^(?P<document_id>\d+)/display/$', 'get_document_image', {'size': DISPLAY_SIZE}, 'document_display'),
     url(r'^(?P<document_id>\d+)/display/print/$', 'get_document_image', {'size': PRINT_SIZE}, 'document_display_print'),
 

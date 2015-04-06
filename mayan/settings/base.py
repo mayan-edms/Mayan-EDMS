@@ -77,7 +77,6 @@ INSTALLED_APPS = (
     'user_management.apps.UserManagementApp',
     # Mayan EDMS
     'checkouts.apps.CheckoutsApp',
-    'document_acls.apps.DocumentACLsApp',
     'document_comments.apps.DocumentCommentsApp',
     'document_indexing.apps.DocumentIndexingApp',
     'document_signatures.apps.DocumentSignaturesApp',

@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from acls.permissions import ACLS_VIEW_ACL
 from events.permissions import PERMISSION_EVENTS_VIEW
 from navigation import Link
 
@@ -37,6 +38,7 @@ def is_min_zoom(context):
 
 
 # Facet
+link_document_acl_list = Link(permissions=[ACLS_VIEW_ACL], text=_('ACLs'), view='documents:document_acl_list', args='object.pk')
 link_document_content = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Content'), view='documents:document_content', args='object.id')
 link_document_events_view = Link(permissions=[PERMISSION_EVENTS_VIEW], text=_('Events'), view='events:events_for_object', args=['"documents"', '"document"', 'object.id'])
 link_document_preview = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Preview'), view='documents:document_preview', args='object.id')

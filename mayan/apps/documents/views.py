@@ -16,6 +16,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 import sendfile
 
 from acls.models import AccessEntry
+from acls.views import acl_list_for
 from common.compressed_files import CompressedFile
 from common.utils import encapsulate, pretty_size, parse_range, urlquote
 from common.views import SingleObjectListView
@@ -1238,3 +1239,14 @@ def document_page_transformation_delete(request, document_page_transformation_id
             'document_page': document_page_transformation.document_page},
         'transformation': document_page_transformation,
     }, context_instance=RequestContext(request))
+
+
+def document_acl_list(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+    return acl_list_for(
+        request,
+        document,
+        extra_context={
+            'object': document,
+        }
+    )
