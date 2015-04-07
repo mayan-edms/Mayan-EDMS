@@ -6,19 +6,16 @@ from django.utils.translation import ugettext
 
 from .models import IndexInstanceNode
 
-FOLDER_W_DOCUMENTS = 'folder_page'
-FOLDER_ICON = 'folder'
-
 
 def index_instance_item_link(index_instance_item):
     if isinstance(index_instance_item, IndexInstanceNode):
         if index_instance_item.index_template_node.link_documents:
-            icon = FOLDER_W_DOCUMENTS
+            icon_template = '<i class="fa fa-folder"></i>'
         else:
-            icon = FOLDER_ICON
+            icon_template = '<i class="fa fa-file"></i>'
     else:
-        icon = ''
-    icon_template = '<span class="famfam active famfam-%s"></span>' % icon if icon else ''
+        icon_template = ''
+
     return mark_safe('%(icon_template)s<a href="%(url)s">%(text)s</a>' % {
         'url': index_instance_item.get_absolute_url(),
         'icon_template': icon_template,
