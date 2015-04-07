@@ -9,6 +9,7 @@ from .api_views import (
     APIDocumentTypeMetadataTypeRequiredView, APIMetadataTypeListView,
     APIMetadataTypeView
 )
+from .views import MissingRequiredMetadataDocumentListView
 
 urlpatterns = patterns('metadata.views',
     url(r'^(?P<document_id>\d+)/edit/$', 'metadata_edit', (), 'metadata_edit'),
@@ -27,7 +28,7 @@ urlpatterns = patterns('metadata.views',
     url(r'^setup/document/type/(?P<document_type_id>\d+)/metadata/edit/$', 'setup_document_type_metadata', (), 'setup_document_type_metadata'),
     url(r'^setup/document/type/(?P<document_type_id>\d+)/metadata/edit/required/$', 'setup_document_type_metadata_required', (), 'setup_document_type_metadata_required'),
 
-    url(r'^tools/missing_required_metadata/$', 'documents_missing_required_metadata', (), 'documents_missing_required_metadata'),
+    url(r'^tools/missing_required_metadata/$', MissingRequiredMetadataDocumentListView.as_view(), name='documents_missing_required_metadata'),
 )
 
 api_urls = patterns('',

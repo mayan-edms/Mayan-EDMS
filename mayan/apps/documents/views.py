@@ -21,8 +21,10 @@ from common.compressed_files import CompressedFile
 from common.utils import encapsulate, pretty_size, parse_range, urlquote
 from common.views import SingleObjectListView
 from common.widgets import two_state_template
-from converter.literals import (DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER,
-                                DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL)
+from converter.literals import (
+    DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
+    DEFAULT_ZOOM_LEVEL
+)
 from filetransfers.api import serve_file
 from permissions.models import Permission
 
@@ -61,13 +63,23 @@ logger = logging.getLogger(__name__)
 
 
 class DocumentListView(SingleObjectListView):
-    queryset = Document.objects.all()
-    object_permission = PERMISSION_DOCUMENT_VIEW
-
     extra_context = {
-        'title': _('All documents'),
         'hide_links': True,
+        'title': _('All documents'),
     }
+    object_permission = PERMISSION_DOCUMENT_VIEW
+    queryset = Document.objects.all()
+
+
+class RecentDocumentListView(DocumentListView):
+    extra_context = {
+        'hide_links': True,
+        'recent_count': RECENT_COUNT,
+        'title': _('Recent documents'),
+    }
+
+    def get_queryset(self):
+        return RecentDocument.objects.get_for_user(self.request.user)
 
 
 def document_list(request, object_list=None, title=None, extra_context=None):
@@ -706,17 +718,6 @@ def document_page_navigation_last(request, document_page_id):
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
     return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=[document_page.pk]), request.GET.urlencode()))
-
-
-def document_list_recent(request):
-    return document_list(
-        request,
-        object_list=RecentDocument.objects.get_for_user(request.user),
-        title=_('Recent documents'),
-        extra_context={
-            'recent_count': RECENT_COUNT
-        }
-    )
 
 
 def transform_page(request, document_page_id, zoom_function=None, rotation_function=None):

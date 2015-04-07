@@ -15,7 +15,7 @@ from documents.models import Document, DocumentType
 from documents.permissions import (
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_VIEW
 )
-from documents.views import document_list
+from documents.views import DocumentListView
 from permissions.models import Permission
 
 from common.utils import encapsulate, generate_choices_w_labels
@@ -32,6 +32,14 @@ from .permissions import (
     PERMISSION_METADATA_TYPE_CREATE, PERMISSION_METADATA_TYPE_DELETE,
     PERMISSION_METADATA_TYPE_EDIT, PERMISSION_METADATA_TYPE_VIEW
 )
+
+
+class MissingRequiredMetadataDocumentListView(DocumentListView):
+    extra_context = {
+        'hide_links': True,
+        'title': _('Documents missing required metadata'),
+    }
+    queryset = Document.objects.filter(document_type__metadata__required=True, metadata__value__isnull=True)
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):
@@ -336,32 +344,6 @@ def metadata_view(request, document_id):
         'hide_link': True,
         'object': document,
     }, context_instance=RequestContext(request))
-
-
-def documents_missing_required_metadata(request):
-    pre_object_list = Document.objects.filter(document_type__metadata__required=True, metadata__value__isnull=True)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-    except PermissionDenied:
-        # If user doesn't have global permission, get a list of document
-        # for which he/she does hace access use it to filter the
-        # provided object_list
-        object_list = AccessEntry.objects.filter_objects_by_access(
-            PERMISSION_DOCUMENT_VIEW, request.user, pre_object_list)
-    else:
-        object_list = pre_object_list
-
-    context = {
-        'object_list': object_list,
-        'title': _('Documents missing required metadata'),
-        'hide_links': True,
-    }
-
-    return document_list(
-        request,
-        extra_context=context
-    )
 
 
 # Setup views

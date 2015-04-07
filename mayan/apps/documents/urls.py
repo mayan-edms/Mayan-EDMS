@@ -10,11 +10,11 @@ from .api_views import (
     APIRecentDocumentListView
 )
 from .settings import PRINT_SIZE, DISPLAY_SIZE
-from .views import DocumentListView
+from .views import DocumentListView, RecentDocumentListView
 
 urlpatterns = patterns('documents.views',
     url(r'^list/$', DocumentListView.as_view(), name='document_list'),
-    url(r'^list/recent/$', 'document_list_recent', (), 'document_list_recent'),
+    url(r'^list/recent/$', RecentDocumentListView.as_view(), name='document_list_recent'),
 
     url(r'^(?P<document_id>\d+)/preview/$', 'document_preview', (), 'document_preview'),
     url(r'^(?P<document_id>\d+)/content/$', 'document_content', (), 'document_content'),

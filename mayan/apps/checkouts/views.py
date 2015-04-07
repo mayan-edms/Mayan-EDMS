@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
-from documents.views import document_list
+from documents.views import DocumentListView
 
 from acls.models import AccessEntry
 from common.utils import encapsulate, get_object_name
@@ -26,19 +26,18 @@ from .permissions import (
 )
 
 
-def checkout_list(request):
-    return document_list(
-        request,
-        object_list=DocumentCheckout.objects.checked_out_documents(),
-        title=_('Documents checked out'),
-        extra_context={
-            'extra_columns': [
-                {'name': _('Checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user_object, display_object_type=False))},
-                {'name': _('Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
-                {'name': _('Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
-            ],
-        }
-    )
+class CheckoutListView(DocumentListView):
+    queryset = DocumentCheckout.objects.checked_out_documents()
+
+    extra_context = {
+        'title': _('Documents checked out'),
+        'hide_links': True,
+        'extra_columns': [
+            {'name': _('Checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user_object, display_object_type=False))},
+            {'name': _('Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
+            {'name': _('Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
+        ],
+    }
 
 
 def checkout_info(request, document_pk):
