@@ -331,6 +331,126 @@ def multi_object_action_view(request):
         )
 
 
+class AssignRemoveView(TemplateView):
+    left_list_title = None
+    right_list_title=None
+    decode_content_type = False
+    extra_context = None
+    grouped = False
+
+    LEFT_LIST_NAME = 'left_list'
+    RIGHT_LIST_NAME = 'right_list'
+
+    template_name = 'appearance/generic_form.html'
+
+    def left_list(self):
+        # Subclass must override
+        return []
+
+    def right_list(self):
+        # Subclass must override
+        return []
+
+    def add(self, item):
+        # Subclass must override
+        pass
+
+    def remove(self, item):
+        # Subclass must override
+        pass
+
+    def get(self, request, *args, **kwargs):
+        self.unselected_list = ChoiceForm(prefix=self.LEFT_LIST_NAME, choices=self.left_list())
+        self.selected_list = ChoiceForm(prefix=self.RIGHT_LIST_NAME, choices=self.right_list())
+        return self.render_to_response(self.get_context_data())#form=form))
+
+    def post(self, request, *args, **kwargs):
+        if '%s-submit' % self.LEFT_LIST_NAME in self.request.POST.keys():
+            self.unselected_list = ChoiceForm(
+                self.request.POST, prefix=self.LEFT_LIST_NAME,
+                choices=self.left_list()
+            )
+            if self.unselected_list.is_valid():
+                for selection in self.unselected_list.cleaned_data['selection']:
+                    if self.grouped:
+                        flat_list = []
+                        for group in left_list():
+                            flat_list.extend(group[1])
+                    else:
+                        flat_list = self.left_list()
+
+                    label = dict(flat_list)[selection]
+                    if self.decode_content_type:
+                        selection_obj = get_obj_from_content_type_string(selection)
+                    else:
+                        selection_obj = selection
+                    try:
+                        self.add(selection_obj)
+                    except:
+                        if settings.DEBUG:
+                            raise
+                        else:
+                            messages.error(self.request, _('Unable to remove %(selection)s.') % {
+                                'selection': label, 'right_list_title': self.right_list_title})
+
+        if '%s-submit' % self.RIGHT_LIST_NAME in self.request.POST.keys():
+            self.selected_list = ChoiceForm(
+                self.request.POST, prefix=self.RIGHT_LIST_NAME,
+                choices=self.right_list()
+            )
+            if self.selected_list.is_valid():
+                for selection in self.selected_list.cleaned_data['selection']:
+                    if self.grouped:
+                        flat_list = []
+                        for group in self.right_list():
+                            flat_list.extend(group[1])
+                    else:
+                        flat_list = self.right_list()
+
+                    label = dict(flat_list)[selection]
+                    if self.decode_content_type:
+                        selection = get_obj_from_content_type_string(selection)
+                    try:
+                        self.remove(selection)
+                    except:
+                        if settings.DEBUG:
+                            raise
+                        else:
+                            messages.error(self.request, _('Unable to add %(selection)s.') % {
+                                'selection': label, 'right_list_title': self.right_list_title})
+
+        return self.get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        data = super(AssignRemoveView, self).get_context_data(**kwargs)
+        data.update({
+            'subtemplates_list': [
+                {
+                    'name': 'appearance/generic_form_subtemplate.html',
+                    'column_class': 'col-xs-12 col-sm-6 col-md-6 col-lg-6',
+                    'context': {
+                        'form': self.unselected_list,
+                        'title': self.left_list_title or ' ',
+                        'submit_label': _('Add'),
+                        'submit_icon': 'fa fa-plus'
+                    }
+                },
+                {
+                    'name': 'appearance/generic_form_subtemplate.html',
+                    'column_class': 'col-xs-12 col-sm-6 col-md-6 col-lg-6',
+                    'context': {
+                        'form': self.selected_list,
+                        'title': self.right_list_title or ' ',
+                        'submit_label': _('Remove'),
+                        'submit_icon': 'fa fa-minus'
+                    }
+                },
+
+            ],
+        })
+        return data
+
+
 def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title=None, right_list_title=None, decode_content_type=False, extra_context=None, grouped=False):
     left_list_name = 'left_list'
     right_list_name = 'right_list'
