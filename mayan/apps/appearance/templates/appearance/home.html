@@ -53,14 +53,14 @@
             <div class="well center-block">
                 <form method="get" role="search">
                     <div class="input-group">
-                        <input class="form-control" name="q" placeholder="{% trans 'Space separated terms' %}" type="text">
+                        <input class="form-control" name="q" placeholder="{% trans 'Space separated terms' %}" type="text" value="{{ search_terms|default:'' }}">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
                             <a class="btn btn-primary" href="{% url 'search:search_advanced' %}">{% trans 'Advanced' %}</a>
                         </span>
                     </div>
                 </form>
-                {% if query_string %}
+                {% if search_terms %}
                     {% include 'appearance/generic_list_subtemplate.html' %}
                 {% endif %}
             </div>
