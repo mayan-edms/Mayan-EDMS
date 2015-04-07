@@ -6,10 +6,11 @@ import tempfile
 
 import sh
 
+from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from common.settings import TEMPORARY_DIRECTORY
-from common.utils import fs_cleanup, load_backend
+from common.utils import fs_cleanup
 from converter.api import convert
 from documents.models import DocumentPage
 
@@ -87,7 +88,7 @@ def ocr_cleanup(language, text):
     cleanup filter
     """
     try:
-        language_backend = load_backend('.'.join(['ocr', 'lang', language, 'LanguageBackend']))()
+        language_backend = import_string('.'.join(['ocr', 'lang', language, 'LanguageBackend']))()
     except ImportError:
         language_backend = None
 

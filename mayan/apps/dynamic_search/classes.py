@@ -7,9 +7,9 @@ import re
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.db.models.loading import get_model
+from django.utils.module_loading import import_string
 
 from acls.models import AccessEntry
-from common.utils import load_backend
 from permissions.models import Permission
 
 from .settings import LIMIT
@@ -24,7 +24,7 @@ class SearchModel(object):
     def get(cls, full_name):
         result = cls.registry[full_name]
         if not hasattr(result, 'serializer'):
-            result.serializer = load_backend(result.serializer_string)
+            result.serializer = import_string(result.serializer_string)
 
         return result
 

@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
-from common.utils import load_backend
+from django.utils.module_loading import import_string
 
 from .exceptions import OfficeBackendError
 from .office_converter import OfficeConverter
@@ -20,4 +20,4 @@ else:
     logger.debug('office_backend initialized')
 
 
-backend = load_backend(GRAPHICS_BACKEND)()
+backend = import_string(GRAPHICS_BACKEND)()

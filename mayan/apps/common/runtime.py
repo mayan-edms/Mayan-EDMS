@@ -1,5 +1,5 @@
-from common.utils import load_backend
+from django.utils.module_loading import import_string
 
 from .settings import SHARED_STORAGE
 
-shared_storage_backend = load_backend(SHARED_STORAGE)()
+shared_storage_backend = import_string(SHARED_STORAGE)()

@@ -2,8 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import include, patterns, url
 from django.conf import settings
-
-from common.utils import load_backend
+from django.utils.module_loading import import_string
 
 
 class APIEndPoint(object):
@@ -24,7 +23,7 @@ class APIEndPoint(object):
         self.name = name
         self.endpoints = []
         try:
-            api_urls = load_backend('{0}.urls.api_urls'.format(app_name or name))
+            api_urls = import_string('{0}.urls.api_urls'.format(app_name or name))
         except Exception:
             if settings.DEBUG:
                 raise

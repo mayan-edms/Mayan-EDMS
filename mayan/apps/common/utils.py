@@ -209,17 +209,6 @@ def copyfile(source, destination, buffer_size=1024 * 1024):
     destination_descriptor.close()
 
 
-def load_backend(backend_string):
-    logger.debug('loading: %s', backend_string)
-    module_name, klass = backend_string.rsplit('.', 1)
-
-    try:
-        return getattr(import_module(module_name), klass)
-    except ImportError as exception:
-        logger.debug('error importing: %s; %s', backend_string, exception)
-        raise
-
-
 def fs_cleanup(filename, suppress_exceptions=True):
     """
     Tries to remove the given filename. Ignores non-existent files
