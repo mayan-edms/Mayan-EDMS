@@ -18,7 +18,7 @@ import sendfile
 from acls.models import AccessEntry
 from acls.views import acl_list_for
 from common.compressed_files import CompressedFile
-from common.utils import encapsulate, pretty_size, parse_range, urlquote
+from common.utils import encapsulate, pretty_size, urlquote
 from common.views import SingleObjectListView
 from common.widgets import two_state_template
 from converter.literals import (
@@ -58,6 +58,7 @@ from .settings import (
 from .tasks import (
     task_clear_image_cache, task_get_document_image, task_update_page_count
 )
+from .utils import parse_range
 
 logger = logging.getLogger(__name__)
 
