@@ -89,9 +89,10 @@ class WorkflowInstanceDetailView(SingleObjectListView):
             'object': self.get_workflow_instance().document,
             'subtemplates_list': [
                 {
-                    'name': 'appearance/generic_detail_subtemplate.html',
+                    'name': 'appearance/generic_form_subtemplate.html',
                     'context': {
                         'form': form,
+                        'read_only': True,
                     }
                 },
                 {
