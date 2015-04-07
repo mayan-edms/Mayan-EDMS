@@ -176,12 +176,16 @@ App anatomy
 
 - __init__.py
 
-  - Generic initialization code (should be empty if possible)
+  - Should be empty if possible. No initialization code should be here, use the ready() method of the AppConfig class in the apps.py module.
 
 - api.py
 
   - File to hold functions that are meant to be used by external apps.
   - Interfaces meant to be used by other apps that are not models or classes.
+
+- apps.py
+
+  - Contains the AppConfig subclass as required by Django 1.7 and up.
 
 - classes.py
 
@@ -195,16 +199,19 @@ App anatomy
 
 - events.py
 
-  - Define history type events
+  - Define history type events.
 
 - exceptions.py
 
-  - Exceptions defined by the app
+  - Exceptions defined by the app.
 
-- icons.py
+- fields.py
 
-  - Defines the icons to be used by the links and views of the app.
-  - Imports from the icons app only.
+  - Place any custom form field classed you define here.
+
+- handlers.py
+
+  - Contains the signal handlers, functions that will process a given signal emited from this or other apps.
 
 - links.py
 
@@ -227,6 +234,18 @@ App anatomy
   - Imports only from permissions app.
   - Link or view conditions such as testing for staff or super admin status are defined in the same file.
 
+- runtime.py
+
+  - Use this module when you need the same instance of a class for the entire app. This app is acts as a shared memory space for the modules of the apps or other apps.
+
+- settings.py
+
+  - Define the config settings that the app will use here.
+
+- signals.py
+
+  - Any custom defined signal goes here.
+
 - statistics.py
 
   - Provides functions that will computer any sort of statistical information on the app’s data.
@@ -239,6 +258,10 @@ App anatomy
 
   - Hold utilitarian code that doesn't fit on any other app file or that is used by several files in the app.
   - Anything used internally by the app that is not a class or a literal (should be as little as possible)
+
+- widgets.py
+
+  - HTML widgets go here. This should be the only place with presentation directives in the app (aside the templates).
 
 Views behavior
 ~~~~~~~~~~~~~~
