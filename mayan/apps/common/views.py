@@ -429,14 +429,16 @@ def setup_list(request):
                               context_instance=RequestContext(request))
 
 
-def tools_list(request):
-    context = {
-        'object_navigation_links': menu_tools.resolve(context=RequestContext(request)),
-        'title': _('Tools'),
-    }
+class ToolsListView(TemplateView):
+    template_name = 'appearance/generic_list_horizontal.html'
 
-    return render_to_response('appearance/generic_list_horizontal.html', context,
-                              context_instance=RequestContext(request))
+    def get_context_data(self, **kwargs):
+        data = super(ToolsListView, self).get_context_data(**kwargs)
+        data.update({
+            'object_navigation_links': menu_tools.resolve(context=RequestContext(self.request)),
+            'title': _('Tools'),
+        })
+        return data
 
 
 def home(request):

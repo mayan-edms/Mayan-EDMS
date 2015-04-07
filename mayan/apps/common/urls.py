@@ -4,7 +4,7 @@ from django.conf.urls import patterns, url
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.generic import RedirectView
 
-from .views import AboutView
+from .views import AboutView, ToolsListView
 
 
 urlpatterns = patterns('common.views',
@@ -22,7 +22,7 @@ urlpatterns = patterns('common.views',
     url(r'^user/locale/edit/$', 'current_user_locale_profile_edit', (), name='current_user_locale_profile_edit'),
 
     url(r'^setup/$', 'setup_list', (), 'setup_list'),
-    url(r'^tools/$', 'tools_list', (), 'tools_list'),
+    url(r'^tools/$', ToolsListView.as_view(), name='tools_list'),
 )
 
 urlpatterns += patterns('',

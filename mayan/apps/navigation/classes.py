@@ -92,9 +92,7 @@ class Menu(object):
                             resolved_link = link.resolve(context=context, resolved_object=resolved_navigation_object)
                             if resolved_link:
                                 result.append(resolved_link)
-                        #break  # No need for further content object match testing
-                        # TODO: profile this
-
+                        break  # No need for further content object match testing
                 except TypeError:
                     # When source is a dictionary
                     pass
@@ -137,11 +135,6 @@ class Link(object):
         request = Variable('request').resolve(context)
         current_path = request.META['PATH_INFO']
         current_view = resolve(current_path).view_name
-
-        # Preserve unicode data in URL query
-        previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))))
-        query_string = urlparse.urlparse(previous_path).query
-        parsed_query_string = urlparse.parse_qs(query_string)
 
         # If this link has a required permission check that the user have it
         # too
@@ -201,6 +194,10 @@ class Link(object):
         # Lets a new link keep the same URL query string of the current URL
         if self.keep_query:
             # Sometimes we are required to remove a key from the URL QS
+            previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))))
+            query_string = urlparse.urlparse(previous_path).query
+            parsed_query_string = urlparse.parse_qs(query_string)
+
             for key in self.remove_from_query:
                 try:
                     del parsed_query_string[key]
