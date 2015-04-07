@@ -19,7 +19,7 @@ from documents.views import DocumentListView
 from permissions.models import Permission
 
 from common.utils import encapsulate, generate_choices_w_labels
-from common.views import assign_remove
+from common.views import AssignRemoveView
 
 from .api import save_metadata_list
 from .forms import (
@@ -441,41 +441,50 @@ def setup_metadata_type_delete(request, metadatatype_id):
                               context_instance=RequestContext(request))
 
 
-def setup_document_type_metadata(request, document_type_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
+    decode_content_type = True
 
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+    def add(self, item):
+        self.document_type.metadata.create(metadata_type=item, required=False)
 
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=document_type.metadata.values_list('metadata_type', flat=True))), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(document_type.metadata.filter(required=False), display_object_type=False),
-        add_method=lambda x: document_type.metadata.create(metadata_type=x, required=False),
-        remove_method=lambda x: x.delete(),
-        extra_context={
-            'document_type': document_type,
-            'main_title': _('Optional metadata types for document type: %s') % document_type,
+    def dispatch(self, request, *args, **kwargs):
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+        self.document_type = get_object_or_404(DocumentType, pk=self.kwargs['document_type_id'])
+        return super(SetupDocumentTypeMetadataOptionalView, self).dispatch(request, *args, **kwargs)
+
+    def left_list(self):
+        return generate_choices_w_labels(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=self.document_type.metadata.values_list('metadata_type', flat=True))), display_object_type=False)
+
+    def right_list(self):
+        return generate_choices_w_labels(self.document_type.metadata.filter(required=False), display_object_type=False)
+
+    def remove(self, item):
+        item.delete()
+
+    def get_context_data(self, **kwargs):
+        data = super(SetupDocumentTypeMetadataOptionalView, self).get_context_data(**kwargs)
+        data.update({
+            'document_type': self.document_type,
+            'main_title': _('Optional metadata types for document type: %s') % self.document_type,
             'navigation_object_list': ['document_type'],
-        },
-        decode_content_type=True,
-    )
+        })
+
+        return data
 
 
-def setup_document_type_metadata_required(request, document_type_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+class SetupDocumentTypeMetadataRequiredView(SetupDocumentTypeMetadataOptionalView):
+    def add(self, item):
+        self.document_type.metadata.create(metadata_type=item, required=True)
 
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+    def right_list(self):
+        return generate_choices_w_labels(self.document_type.metadata.filter(required=True), display_object_type=False)
 
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=document_type.metadata.values_list('metadata_type', flat=True))), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(document_type.metadata.filter(required=True), display_object_type=False),
-        add_method=lambda x: document_type.metadata.create(metadata_type=x, required=True),
-        remove_method=lambda x: x.delete(),
-        extra_context={
-            'document_type': document_type,
-            'main_title': _('Required metadata types for document type: %s') % document_type,
+    def get_context_data(self, **kwargs):
+        data = super(SetupDocumentTypeMetadataRequiredView, self).get_context_data(**kwargs)
+        data.update({
+            'document_type': self.document_type,
+            'main_title': _('Required metadata types for document type: %s') % self.document_type,
             'navigation_object_list': ['document_type'],
-        },
-        decode_content_type=True,
-    )
+        })
+
+        return data
