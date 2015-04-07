@@ -5,10 +5,11 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 from django.utils.safestring import mark_safe
 
-from common.utils import encapsulate, return_type
+from common.utils import encapsulate
 from common.widgets import exists_widget
 
 from .api import settings
+from .utils import return_type  # TODO: remove return_type, all settings must be simple types
 
 
 def setting_list(request):

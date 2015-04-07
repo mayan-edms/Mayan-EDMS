@@ -31,3 +31,5 @@ register_settings(
         {'name': 'AVAILABLE_VALIDATORS', 'global_name': 'METADATA_AVAILABLE_VALIDATORS', 'default': default_available_validators},
     ]
 )
+
+# TODO: remove classes, import by string, all settings must be simple serializable types
