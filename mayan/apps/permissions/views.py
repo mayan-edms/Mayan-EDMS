@@ -90,7 +90,7 @@ def role_permissions(request, role_id):
         },
     ]
 
-    return render_to_response('appearance/generic_detail.html', {
+    return render_to_response('appearance/generic_form.html', {
         'form': form,
         'object': role,
         'subtemplates_list': subtemplates_list,

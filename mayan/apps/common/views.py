@@ -96,9 +96,10 @@ class HomeView(TemplateView):
 class LicenseView(ExtraContextMixin, TemplateView):
     extra_context = {
         'form': LicenseForm(),
+        'read_only': True,
         'title': _('License'),
     }
-    template_name = 'appearance/generic_detail.html'
+    template_name = 'appearance/generic_form.html'
 
 
 class MaintenanceMenuView(TemplateView):

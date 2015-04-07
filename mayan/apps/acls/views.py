@@ -122,9 +122,10 @@ def acl_detail_for(request, actor, obj):
         },
         'access_object': obj,
         'navigation_object_list': ['object', 'access_object'],
+        'read_only': True,
     }
 
-    return render_to_response('appearance/generic_detail.html', context,
+    return render_to_response('appearance/generic_form.html', context,
                               context_instance=RequestContext(request))
 
 
@@ -434,7 +435,7 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
         },
     ]
 
-    return render_to_response('appearance/generic_detail.html', {
+    return render_to_response('appearance/generic_form.html', {
         'object': access_object_class,
         'subtemplates_list': subtemplates_list,
         'multi_select_item_properties': {
@@ -442,6 +443,7 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
             'holder_gid': lambda x: actor.gid,
             'access_object_class_gid': lambda x: access_object_class.gid,
         },
+        'read_only': True,
     }, context_instance=RequestContext(request))
 
 

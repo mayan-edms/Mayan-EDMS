@@ -136,10 +136,11 @@ def document_properties(request, document_id):
 
     document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=document_fields)
 
-    return render_to_response('appearance/generic_detail.html', {
+    return render_to_response('appearance/generic_form.html', {
         'form': document_properties_form,
         'document': document,
         'object': document,
+        'read_only': True,
         'title': _('Properties for document: %s') % document,
     }, context_instance=RequestContext(request))
 
@@ -156,11 +157,12 @@ def document_preview(request, document_id):
 
     preview_form = DocumentPreviewForm(document=document)
 
-    return render_to_response('appearance/generic_detail.html', {
+    return render_to_response('appearance/generic_form.html', {
         'document': document,
         'form': preview_form,
         'hide_labels': True,
         'object': document,
+        'read_only': True,
         'title': _('Preview of document: %s') % document,
     }, context_instance=RequestContext(request))
 
@@ -177,11 +179,12 @@ def document_content(request, document_id):
 
     content_form = DocumentContentForm(document=document)
 
-    return render_to_response('appearance/generic_detail.html', {
+    return render_to_response('appearance/generic_form.html', {
         'document': document,
         'form': content_form,
         'hide_labels': True,
         'object': document,
+        'read_only': True,
         'title': _('Content of document: %s') % document,
     }, context_instance=RequestContext(request))
 
@@ -595,13 +598,14 @@ def document_page_view(request, document_page_id):
     else:
         zoom_text = ''
 
-    return render_to_response('appearance/generic_detail.html', {
+    return render_to_response('appearance/generic_form.html', {
         'access_object': document_page.document,
         'form': document_page_form,
         'navigation_object_list': ['page'],
         'page': document_page,
         'rotation': rotation,
         'title': ' '.join([base_title, zoom_text]),
+        'read_only': True,
         'zoom': zoom,
     }, context_instance=RequestContext(request))
 
@@ -619,11 +623,12 @@ def document_page_text(request, document_page_id):
 
     document_page_form = DocumentPageForm_text(instance=document_page)
 
-    return render_to_response('appearance/generic_detail.html', {
+    return render_to_response('appearance/generic_form.html', {
         'access_object': document_page.document,
         'form': document_page_form,
         'page': document_page,
         'navigation_object_list': ['page'],
+        'read_only': True,
         'title': _('Details for: %s') % document_page,
     }, context_instance=RequestContext(request))
 
