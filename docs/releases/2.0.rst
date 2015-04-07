@@ -85,6 +85,7 @@ Bugs fixed or issues closed
 
 * `issue #33 <https://github.com/mayan-edms/mayan-edms/issues/33>`_ Update to Django 1.7
 * `issue #59 <https://github.com/mayan-edms/mayan-edms/issues/59`_ New bootstrap based UI
+* `issue #60 <https://github.com/mayan-edms/mayan-edms/issues/60>`_ Backport class based navigation code from the unstable branch
 * `issue #62 <https://github.com/mayan-edms/mayan-edms/issues/62>`_ Simplify and reduce code in templates
 * `issue #67 <https://github.com/mayan-edms/mayan-edms/issues/67>`_ Python 3 compatibility: Update models __unicode__ methdo to __str__ methods (using Django's six library)
 * `issue #121 <https://github.com/mayan-edms/mayan-edms/issues/121>`_ Twitter Bootstrap theme for Mayan EDMS
