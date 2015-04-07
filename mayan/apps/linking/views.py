@@ -15,7 +15,7 @@ from acls.models import AccessEntry
 from acls.utils import apply_default_acls
 from acls.views import acl_list_for
 from common.utils import encapsulate, generate_choices_w_labels
-from common.views import assign_remove
+from common.views import AssignRemoveView
 from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.views import document_list
@@ -29,6 +29,41 @@ from .permissions import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+class SetupSmartLinkDocumentTypesView(AssignRemoveView):
+    decode_content_type = True
+
+    def add(self, item):
+        self.smart_link.document_types.add(item)
+
+    def dispatch(self, request, *args, **kwargs):
+        self.smart_link = get_object_or_404(SmartLink, pk=self.kwargs['smart_link_pk'])
+
+        try:
+            Permission.objects.check_permissions(self.request.user, [PERMISSION_SMART_LINK_EDIT])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_SMART_LINK_EDIT, self.request.user, self.smart_link)
+
+        return super(SetupSmartLinkDocumentTypesView, self).dispatch(request, *args, **kwargs)
+
+    def left_list(self):
+        return generate_choices_w_labels(DocumentType.objects.exclude(pk__in=self.smart_link.document_types.all()), display_object_type=False)
+
+    def right_list(self):
+        return generate_choices_w_labels(self.smart_link.document_types.all(), display_object_type=False)
+
+    def remove(self, item):
+        self.smart_link.document_types.remove(item)
+
+    def get_context_data(self, **kwargs):
+        data = super(SetupSmartLinkDocumentTypesView, self).get_context_data(**kwargs)
+        data.update({
+            'main_title': _('Document type for which to enable smart link: %s') % self.smart_link,
+            'object': self.smart_link,
+        })
+
+        return data
 
 
 def smart_link_instance_view(request, document_id, smart_link_pk):
@@ -194,28 +229,6 @@ def smart_link_delete(request, smart_link_pk):
         'next': next,
         'previous': previous,
     }, context_instance=RequestContext(request))
-
-
-def smart_link_document_types(request, smart_link_pk):
-    smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_SMART_LINK_EDIT])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_SMART_LINK_EDIT, request.user, smart_link)
-
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(DocumentType.objects.exclude(pk__in=smart_link.document_types.all()), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(smart_link.document_types.all(), display_object_type=False),
-        add_method=lambda x: smart_link.document_types.add(x),
-        remove_method=lambda x: smart_link.document_types.remove(x),
-        decode_content_type=True,
-        extra_context={
-            'main_title': _('Document type for which to enable smart link: %s') % smart_link,
-            'object': smart_link,
-        }
-    )
 
 
 def smart_link_condition_list(request, smart_link_pk):

@@ -3,7 +3,9 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 
 from .api_views import APIRoleListView, APIRoleView
-from .views import RoleCreateView, RoleDeleteView, RoleEditView
+from .views import (
+    RoleCreateView, RoleDeleteView, RoleEditView, SetupRoleMembersView
+)
 
 urlpatterns = patterns('permissions.views',
     url(r'^role/list/$', 'role_list', (), 'role_list'),
@@ -11,7 +13,7 @@ urlpatterns = patterns('permissions.views',
     url(r'^role/(?P<role_id>\d+)/permissions/$', 'role_permissions', (), 'role_permissions'),
     url(r'^role/(?P<pk>\d+)/edit/$', RoleEditView.as_view(), name='role_edit'),
     url(r'^role/(?P<pk>\d+)/delete/$', RoleDeleteView.as_view(), name='role_delete'),
-    url(r'^role/(?P<role_id>\d+)/members/$', 'role_members', (), 'role_members'),
+    url(r'^role/(?P<role_id>\d+)/members/$', SetupRoleMembersView.as_view(), name='role_members'),
 
     url(r'^permissions/multiple/grant/$', 'permission_grant', (), 'permission_multiple_grant'),
     url(r'^permissions/multiple/revoke/$', 'permission_revoke', (), 'permission_multiple_revoke'),

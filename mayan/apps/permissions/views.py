@@ -5,7 +5,6 @@ from json import loads
 import operator
 
 from django.contrib import messages
-from django.contrib.auth.models import Group, User
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
@@ -15,15 +14,14 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from acls.classes import EncapsulatedObject
-from common.models import AnonymousUserSingleton
 from common.views import (
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
-    assign_remove
+    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView
 )
-from common.utils import encapsulate, get_object_name
+from common.utils import encapsulate
 from common.widgets import two_state_template
 
+from .classes import Member
 from .forms import RoleForm, RoleForm_view
 from .models import Permission, Role
 from .permissions import (
@@ -31,6 +29,7 @@ from .permissions import (
     PERMISSION_ROLE_VIEW, PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
     PERMISSION_ROLE_EDIT
 )
+from .utils import get_non_role_members, get_role_members
 
 
 class RoleCreateView(SingleObjectCreateView):
@@ -49,6 +48,40 @@ class RoleDeleteView(SingleObjectDeleteView):
 class RoleEditView(SingleObjectEditView):
     model = Role
     view_permission = PERMISSION_ROLE_EDIT
+
+
+class SetupRoleMembersView(AssignRemoveView):
+    grouped = True
+
+    def add(self, item):
+        member = Member.get(item).source_object
+        self.role.add_member(member)
+
+    def dispatch(self, request, *args, **kwargs):
+        Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_EDIT])
+        self.role = get_object_or_404(Role, pk=self.kwargs['role_id'])
+        self.left_list_title = _('Non members of role: %s') % self.role
+        self.right_list_title = _('Members of role: %s') % self.role
+
+        return super(SetupRoleMembersView, self).dispatch(request, *args, **kwargs)
+
+    def left_list(self):
+        return get_non_role_members(self.role)
+
+    def right_list(self):
+        return get_role_members(self.role)
+
+    def remove(self, item):
+        member = Member.get(item).source_object
+        self.role.remove_member(member)
+
+    def get_context_data(self, **kwargs):
+        data = super(SetupRoleMembersView, self).get_context_data(**kwargs)
+        data.update({
+            'object': self.role,
+        })
+
+        return data
 
 
 def role_list(request):
@@ -221,90 +254,3 @@ def permission_revoke(request):
 
     return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
-
-
-class Member(EncapsulatedObject):
-    source_object_name = 'member_object'
-
-
-def _as_choice_list(items):
-    return sorted([(Member.encapsulate(item).gid, get_object_name(item, display_object_type=False)) for item in items], key=lambda x: x[1])
-
-
-def get_role_members(role, separate=False):
-    user_ct = ContentType.objects.get(model='user')
-    group_ct = ContentType.objects.get(model='group')
-    anonymous = ContentType.objects.get(model='anonymoususersingleton')
-
-    users = role.members(filter_dict={'member_type': user_ct})
-    groups = role.members(filter_dict={'member_type': group_ct})
-    anonymous = role.members(filter_dict={'member_type': anonymous})
-
-    if separate:
-        return users, groups, anonymous
-    else:
-        members = []
-
-        if users:
-            members.append((_('Users'), _as_choice_list(list(users))))
-
-        if groups:
-            members.append((_('Groups'), _as_choice_list(list(groups))))
-
-        if anonymous:
-            members.append((_('Special'), _as_choice_list(list(anonymous))))
-
-        return members
-
-
-def get_non_role_members(role):
-    # non members = all users - members - staff - super users
-    member_users, member_groups, member_anonymous = get_role_members(role, separate=True)
-
-    staff_users = User.objects.filter(is_staff=True)
-    super_users = User.objects.filter(is_superuser=True)
-
-    users = set(User.objects.all()) - set(member_users) - set(staff_users) - set(super_users)
-    groups = set(Group.objects.all()) - set(member_groups)
-    anonymous = set([AnonymousUserSingleton.objects.get()]) - set(member_anonymous)
-
-    non_members = []
-    if users:
-        non_members.append((_('Users'), _as_choice_list(list(users))))
-
-    if groups:
-        non_members.append((_('Groups'), _as_choice_list(list(groups))))
-
-    if anonymous:
-        non_members.append((_('Special'), _as_choice_list(list(anonymous))))
-
-    return non_members
-
-
-def add_role_member(role, selection):
-    member = Member.get(selection).source_object
-    role.add_member(member)
-
-
-def remove_role_member(role, selection):
-    member = Member.get(selection).source_object
-    role.remove_member(member)
-
-
-def role_members(request, role_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_EDIT])
-    role = get_object_or_404(Role, pk=role_id)
-
-    return assign_remove(
-        request,
-        left_list=lambda: get_non_role_members(role),
-        right_list=lambda: get_role_members(role),
-        add_method=lambda x: add_role_member(role, x),
-        remove_method=lambda x: remove_role_member(role, x),
-        left_list_title=_('Non members of role: %s') % role,
-        right_list_title=_('Members of role: %s') % role,
-        extra_context={
-            'object': role,
-        },
-        grouped=True,
-    )

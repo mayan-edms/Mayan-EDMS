@@ -11,7 +11,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import encapsulate, generate_choices_w_labels
-from common.views import assign_remove
+from common.views import AssignRemoveView
 from common.widgets import two_state_template
 from permissions.models import Permission
 
@@ -219,23 +219,36 @@ def get_user_non_groups(user):
     return Group.objects.exclude(user=user)
 
 
-def user_groups(request, user_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_USER_EDIT])
-    user = get_object_or_404(User, pk=user_id)
+class UserGroupsView(AssignRemoveView):
+    decode_content_type = True
 
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(get_user_non_groups(user), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(get_user_groups(user), display_object_type=False),
-        add_method=lambda x: x.user_set.add(user),
-        remove_method=lambda x: x.user_set.remove(user),
-        left_list_title=_('Non groups of user: %s') % user,
-        right_list_title=_('Groups of user: %s') % user,
-        decode_content_type=True,
-        extra_context={
-            'object': user,
-        }
-    )
+    def add(self, item):
+        item.user_set.add(self.user)
+
+    def dispatch(self, request, *args, **kwargs):
+        Permission.objects.check_permissions(request.user, [PERMISSION_USER_EDIT])
+        self.user = get_object_or_404(User, pk=self.kwargs['user_id'])
+        self.left_list_title=_('Non groups of user: %s') % self.user
+        self.right_list_title=_('Groups of user: %s') % self.user
+
+        return super(UserGroupsView, self).dispatch(request, *args, **kwargs)
+
+    def left_list(self):
+        return generate_choices_w_labels(get_user_non_groups(self.user), display_object_type=False)
+
+    def right_list(self):
+        return generate_choices_w_labels(get_user_groups(self.user), display_object_type=False)
+
+    def remove(self, item):
+        item.user_set.remove(self.user)
+
+    def get_context_data(self, **kwargs):
+        data = super(UserGroupsView, self).get_context_data(**kwargs)
+        data.update({
+            'object': self.user,
+        })
+
+        return data
 
 
 # Group views
@@ -345,28 +358,33 @@ def group_multiple_delete(request):
     )
 
 
-def get_group_members(group):
-    return group.user_set.all()
+class GroupMembersView(AssignRemoveView):
+    decode_content_type = True
 
+    def add(self, item):
+        self.group.user_set.add(item)
 
-def get_non_group_members(group):
-    return User.objects.exclude(groups=group).exclude(is_staff=True).exclude(is_superuser=True)
+    def dispatch(self, request, *args, **kwargs):
+        Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_EDIT])
+        self.group = get_object_or_404(Group, pk=self.kwargs['group_id'])
+        self.left_list_title = _('Non members of group: %s') % self.group
+        self.right_list_title = _('Members of group: %s') % self.group
 
+        return super(GroupMembersView, self).dispatch(request, *args, **kwargs)
 
-def group_members(request, group_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_EDIT])
-    group = get_object_or_404(Group, pk=group_id)
+    def left_list(self):
+        return generate_choices_w_labels(User.objects.exclude(groups=self.group).exclude(is_staff=True).exclude(is_superuser=True), display_object_type=False)
 
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(get_non_group_members(group), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(get_group_members(group), display_object_type=False),
-        add_method=lambda x: group.user_set.add(x),
-        remove_method=lambda x: group.user_set.remove(x),
-        left_list_title=_('Non members of group: %s') % group,
-        right_list_title=_('Members of group: %s') % group,
-        decode_content_type=True,
-        extra_context={
-            'object': group,
-        }
-    )
+    def right_list(self):
+        return generate_choices_w_labels(self.group.user_set.all(), display_object_type=False)
+
+    def remove(self, item):
+        self.group.user_set.remove(item)
+
+    def get_context_data(self, **kwargs):
+        data = super(GroupMembersView, self).get_context_data(**kwargs)
+        data.update({
+            'object': self.group,
+        })
+
+        return data

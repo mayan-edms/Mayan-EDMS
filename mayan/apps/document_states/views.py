@@ -12,8 +12,8 @@ from django.views.generic import FormView
 from acls.models import AccessEntry
 from common.utils import generate_choices_w_labels
 from common.views import (
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
-    SingleObjectListView, assign_remove
+    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document
 from permissions.models import Permission
@@ -188,7 +188,40 @@ class SetupWorkflowDeleteView(SingleObjectDeleteView):
     success_url = reverse_lazy('document_states:setup_workflow_list')
 
 
-# States
+class SetupWorkflowDocumentTypesView(AssignRemoveView):
+    decode_content_type = True
+
+    def add(self, item):
+        self.workflow.document_types.add(item)
+
+    def dispatch(self, request, *args, **kwargs):
+        self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
+
+        try:
+            Permission.objects.check_permissions(self.request.user, [PERMISSION_WORKFLOW_EDIT])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, self.request.user,self.workflow)
+
+        return super(SetupWorkflowDocumentTypesView, self).dispatch(request, *args, **kwargs)
+
+    def left_list(self):
+        return generate_choices_w_labels(self.workflow.get_document_types_not_in_workflow(), display_object_type=False)
+
+    def right_list(self):
+        return generate_choices_w_labels(self.workflow.document_types.all(), display_object_type=False)
+
+    def remove(self, item):
+        self.workflow.document_types.remove(item)
+
+    def get_context_data(self, **kwargs):
+        data = super(SetupWorkflowDocumentTypesView, self).get_context_data(**kwargs)
+        data.update({
+            'main_title': _('Document types assigned the workflow: %s') % self.workflow,
+            'object': self.workflow,
+        })
+
+        return data
+
 
 class SetupWorkflowStateListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
@@ -422,25 +455,3 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
 
     def get_success_url(self):
         return reverse('document_states:setup_workflow_transitions', args=[self.get_object().workflow.pk])
-
-
-def setup_workflow_document_types(request, pk):
-    workflow = get_object_or_404(Workflow, pk=pk)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_EDIT])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, request.user, workflow)
-
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(workflow.get_document_types_not_in_workflow(), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(workflow.document_types.all(), display_object_type=False),
-        add_method=lambda x: workflow.document_types.add(x),
-        remove_method=lambda x: workflow.document_types.remove(x),
-        decode_content_type=True,
-        extra_context={
-            'main_title': _('Document types assigned the workflow: %s') % workflow,
-            'object': workflow,
-        }
-    )

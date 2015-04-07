@@ -333,7 +333,7 @@ def multi_object_action_view(request):
 
 class AssignRemoveView(TemplateView):
     left_list_title = None
-    right_list_title=None
+    right_list_title = None
     decode_content_type = False
     extra_context = None
     grouped = False
@@ -374,7 +374,7 @@ class AssignRemoveView(TemplateView):
                 for selection in self.unselected_list.cleaned_data['selection']:
                     if self.grouped:
                         flat_list = []
-                        for group in left_list():
+                        for group in self.left_list():
                             flat_list.extend(group[1])
                     else:
                         flat_list = self.left_list()
@@ -449,97 +449,6 @@ class AssignRemoveView(TemplateView):
             ],
         })
         return data
-
-
-def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title=None, right_list_title=None, decode_content_type=False, extra_context=None, grouped=False):
-    left_list_name = 'left_list'
-    right_list_name = 'right_list'
-
-    if request.method == 'POST':
-        if '%s-submit' % left_list_name in request.POST.keys():
-            unselected_list = ChoiceForm(request.POST,
-                                         prefix=left_list_name,
-                                         choices=left_list())
-            if unselected_list.is_valid():
-                for selection in unselected_list.cleaned_data['selection']:
-                    if grouped:
-                        flat_list = []
-                        for group in left_list():
-                            flat_list.extend(group[1])
-                    else:
-                        flat_list = left_list()
-
-                    label = dict(flat_list)[selection]
-                    if decode_content_type:
-                        selection_obj = get_obj_from_content_type_string(selection)
-                    else:
-                        selection_obj = selection
-                    try:
-                        add_method(selection_obj)
-                    except:
-                        if settings.DEBUG:
-                            raise
-                        else:
-                            messages.error(request, _('Unable to remove %(selection)s.') % {
-                                'selection': label, 'right_list_title': right_list_title})
-
-        elif '%s-submit' % right_list_name in request.POST.keys():
-            selected_list = ChoiceForm(request.POST,
-                                       prefix=right_list_name,
-                                       choices=right_list())
-            if selected_list.is_valid():
-                for selection in selected_list.cleaned_data['selection']:
-                    if grouped:
-                        flat_list = []
-                        for group in right_list():
-                            flat_list.extend(group[1])
-                    else:
-                        flat_list = right_list()
-
-                    label = dict(flat_list)[selection]
-                    if decode_content_type:
-                        selection = get_obj_from_content_type_string(selection)
-                    try:
-                        remove_method(selection)
-                    except:
-                        if settings.DEBUG:
-                            raise
-                        else:
-                            messages.error(request, _('Unable to add %(selection)s.') % {
-                                'selection': label, 'right_list_title': right_list_title})
-    unselected_list = ChoiceForm(prefix=left_list_name, choices=left_list())
-    selected_list = ChoiceForm(prefix=right_list_name, choices=right_list())
-
-    context = {
-        'subtemplates_list': [
-            {
-                'name': 'appearance/generic_form_subtemplate.html',
-                'column_class': 'col-xs-12 col-sm-6 col-md-6 col-lg-6',
-                'context': {
-                    'form': unselected_list,
-                    'title': left_list_title or ' ',
-                    'submit_label': _('Add'),
-                    'submit_icon': 'fa fa-plus'
-                }
-            },
-            {
-                'name': 'appearance/generic_form_subtemplate.html',
-                'column_class': 'col-xs-12 col-sm-6 col-md-6 col-lg-6',
-                'context': {
-                    'form': selected_list,
-                    'title': right_list_title or ' ',
-                    'submit_label': _('Remove'),
-                    'submit_icon': 'fa fa-minus'
-                }
-            },
-
-        ],
-    }
-    if extra_context:
-        context.update(extra_context)
-
-    return render_to_response('appearance/generic_form.html', context,
-                              context_instance=RequestContext(request))
 
 
 def current_user_edit(request):
