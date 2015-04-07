@@ -89,6 +89,7 @@ Bugs fixed or issues closed
 * `issue #67 <https://github.com/mayan-edms/mayan-edms/issues/67>`_ Python 3 compatibility: Update models __unicode__ methdo to __str__ methods (using Django's six library)
 * `issue #121 <https://github.com/mayan-edms/mayan-edms/issues/121>`_ Twitter Bootstrap theme for Mayan EDMS
 * `issue #155 <https://github.com/mayan-edms/mayan-edms/issues/155>`_ Header does not fit list on documents/list on small screens (laptop)
+* `issue #182 <https://github.com/mayan-edms/mayan-edms/issues/182>`_ Reorganize signal processors
 
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

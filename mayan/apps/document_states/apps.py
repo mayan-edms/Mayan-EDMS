@@ -11,6 +11,7 @@ from common.utils import encapsulate
 from documents.models import Document
 from navigation.api import register_model_list_columns
 
+from .handlers import launch_workflow
 from .models import (
     Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
     WorkflowTransition
@@ -25,11 +26,6 @@ from .links import (
     link_setup_workflow_transition_delete, link_setup_workflow_transition_edit,
     link_workflow_instance_detail, link_workflow_instance_transition
 )
-
-
-def launch_workflow(sender, instance, created, **kwargs):
-    if created:
-        Workflow.objects.launch_for(instance)
 
 
 class DocumentStatesApp(apps.AppConfig):

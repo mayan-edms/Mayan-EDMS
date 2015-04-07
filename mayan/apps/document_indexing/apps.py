@@ -12,6 +12,10 @@ from documents.models import Document
 from metadata.models import DocumentMetadata
 from rest_api.classes import APIEndPoint
 
+from .handlers import (
+    document_index_delete, document_metadata_index_update,
+    document_metadata_index_post_delete
+)
 from .links import (
     link_document_index_list, link_index_main_menu, link_index_parent,
     link_index_setup, link_index_setup_create, link_index_setup_document_types,
@@ -21,19 +25,6 @@ from .links import (
     link_template_node_edit
 )
 from .models import Index, IndexTemplateNode, IndexInstanceNode
-from .tasks import task_delete_empty_index_nodes, task_index_document
-
-
-def document_index_delete(sender, **kwargs):
-    task_delete_empty_index_nodes.apply_async(queue='indexing')
-
-
-def document_metadata_index_update(sender, **kwargs):
-    task_index_document.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
-
-
-def document_metadata_index_post_delete(sender, **kwargs):
-    task_index_document.apply_async(kwargs=dict(document_id=kwargs['instance'].document.pk), queue='indexing')
 
 
 class DocumentIndexingApp(apps.AppConfig):

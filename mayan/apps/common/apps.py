@@ -13,6 +13,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from common import settings as common_settings
 
+from .handlers import (
+    auto_admin_account_passwd_change, user_locale_profile_session_config,
+    user_locale_profile_create
+)
 from .links import (
     link_about, link_admin_site, link_current_user_details,
     link_current_user_edit, link_current_user_locale_profile_details,
@@ -64,30 +68,6 @@ def create_superuser_and_anonymous_user(sender, **kwargs):
                 auto_admin_properties.save()
             else:
                 logger.info('Super admin user already exists. -- login: %s', AUTO_ADMIN_USERNAME)
-
-
-def auto_admin_account_passwd_change(sender, instance, **kwargs):
-    auto_admin_properties = AutoAdminSingleton.objects.get()
-    if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
-        # Only delete the auto admin properties when the password has been changed
-        auto_admin_properties.account = None
-        auto_admin_properties.password = None
-        auto_admin_properties.password_hash = None
-        auto_admin_properties.save()
-
-
-def user_locale_profile_session_config(sender, request, user, **kwargs):
-    if hasattr(request, 'session'):
-        user_locale_profile, created = UserLocaleProfile.objects.get_or_create(user=user)
-        request.session['django_language'] = user_locale_profile.language
-        request.session['django_timezone'] = user_locale_profile.timezone
-    else:
-        request.set_cookie(settings.LANGUAGE_COOKIE_NAME, user_locale_profile.language)
-
-
-def user_locale_profile_create(sender, instance, created, **kwargs):
-    if created:
-        UserLocaleProfile.objects.create(user=instance)
 
 
 class CommonApp(apps.AppConfig):

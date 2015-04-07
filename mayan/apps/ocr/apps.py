@@ -18,6 +18,7 @@ from installation import PropertyNamespace
 from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 
+from .handlers import post_version_upload_ocr
 from .links import (
     link_document_all_ocr_cleanup, link_document_submit,
     link_document_submit_multiple, link_entry_delete,
@@ -38,13 +39,6 @@ def document_ocr_submit(self):
 
 def document_version_ocr_submit(self):
     task_do_ocr.apply_async(args=[self.pk], queue='ocr')
-
-
-def post_version_upload_ocr(sender, instance, **kwargs):
-    logger.debug('received post_version_upload')
-    logger.debug('instance pk: %s', instance.pk)
-    if instance.document.document_type.ocr:
-        instance.submit_for_ocr()
 
 
 class OCRApp(apps.AppConfig):
