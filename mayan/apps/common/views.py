@@ -362,7 +362,7 @@ class AssignRemoveView(TemplateView):
     def get(self, request, *args, **kwargs):
         self.unselected_list = ChoiceForm(prefix=self.LEFT_LIST_NAME, choices=self.left_list())
         self.selected_list = ChoiceForm(prefix=self.RIGHT_LIST_NAME, choices=self.right_list())
-        return self.render_to_response(self.get_context_data())#form=form))
+        return self.render_to_response(self.get_context_data())
 
     def post(self, request, *args, **kwargs):
         if '%s-submit' % self.LEFT_LIST_NAME in self.request.POST.keys():

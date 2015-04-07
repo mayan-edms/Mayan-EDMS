@@ -7,6 +7,7 @@ from .api_views import (
     APIIndexNodeInstanceDocumentListView, APIIndexTemplateListView,
     APIIndexTemplateView, APIIndexView
 )
+from .views import SetupIndexDocumentTypesView
 
 
 urlpatterns = patterns('document_indexing.views',
@@ -15,7 +16,7 @@ urlpatterns = patterns('document_indexing.views',
     url(r'^setup/index/(?P<index_pk>\d+)/edit/$', 'index_setup_edit', (), 'index_setup_edit'),
     url(r'^setup/index/(?P<index_pk>\d+)/delete/$', 'index_setup_delete', (), 'index_setup_delete'),
     url(r'^setup/index/(?P<index_pk>\d+)/view/$', 'index_setup_view', (), 'index_setup_view'),
-    url(r'^setup/index/(?P<index_pk>\d+)/document_types/$', 'index_setup_document_types', (), 'index_setup_document_types'),
+    url(r'^setup/index/(?P<index_pk>\d+)/document_types/$', SetupIndexDocumentTypesView.as_view(), name='index_setup_document_types'),
 
     url(r'^setup/template/node/(?P<parent_pk>\d+)/create/child/$', 'template_node_create', (), 'template_node_create'),
     url(r'^setup/template/node/(?P<node_pk>\d+)/edit/$', 'template_node_edit', (), 'template_node_edit'),

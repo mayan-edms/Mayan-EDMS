@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessEntry
 from acls.utils import apply_default_acls
 from common.utils import encapsulate, generate_choices_w_labels
-from common.views import assign_remove
+from common.views import AssignRemoveView
 from common.widgets import two_state_template
 from documents.models import Document
 from documents.permissions import PERMISSION_DOCUMENT_VIEW
@@ -164,28 +164,42 @@ def index_setup_view(request, index_pk):
                               context_instance=RequestContext(request))
 
 
-def index_setup_document_types(request, index_pk):
-    index = get_object_or_404(Index, pk=index_pk)
+class SetupIndexDocumentTypesView(AssignRemoveView):
+    decode_content_type = True
 
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, index)
+    def add(self, item):
+        self.index.document_types.add(item)
 
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(index.get_document_types_not_in_index(), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(index.document_types.all(), display_object_type=False),
-        add_method=lambda x: index.document_types.add(x),
-        remove_method=lambda x: index.document_types.remove(x),
-        left_list_title=_('Document types not in index: %s') % index,
-        right_list_title=_('Document types for index: %s') % index,
-        decode_content_type=True,
-        extra_context={
-            'index': index,
+    def dispatch(self, request, *args, **kwargs):
+        self.index = get_object_or_404(Index, pk=self.kwargs['index_pk'])
+
+        try:
+            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_INDEXING_EDIT])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_INDEXING_EDIT, request.user, self.index)
+
+        self.left_list_title = _('Document types not in index: %s') % self.index
+        self.right_list_title = _('Document types for index: %s') % self.index
+
+        return super(SetupIndexDocumentTypesView, self).dispatch(request, *args, **kwargs)
+
+    def left_list(self):
+        return generate_choices_w_labels(self.index.get_document_types_not_in_index(), display_object_type=False)
+
+    def right_list(self):
+        return generate_choices_w_labels(self.index.document_types.all(), display_object_type=False)
+
+    def remove(self, item):
+        self.index.document_types.remove(item)
+
+    def get_context_data(self, **kwargs):
+        data = super(SetupIndexDocumentTypesView, self).get_context_data(**kwargs)
+        data.update({
+            'index': self.index,
             'navigation_object_list': ['index'],
-        }
-    )
+        })
+
+        return data
 
 
 # Node views
