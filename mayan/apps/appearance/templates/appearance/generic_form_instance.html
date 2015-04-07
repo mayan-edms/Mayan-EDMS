@@ -43,7 +43,7 @@
                 {% if field|widget_type == 'checkboxinput' %}
                     <div class="checkbox">
                         <label>
-                            <input {% if field.value %}checked="checked"{% endif %} name="{{ field.name }}" type="checkbox">
+                            <input {% if field.value %}checked="checked"{% endif %} name="{% if form.prefix %}{{ form.prefix }}-{% endif %}{{ field.name }}" type="checkbox">
                             {% if not hide_labels %}{{ field.label }}{% if field.field.required and not read_only and not form_hide_required_text %} ({% trans 'required' %}){% endif %}{% endif %}
                         </label>
                     </div>
