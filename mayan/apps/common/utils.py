@@ -252,3 +252,9 @@ def fs_cleanup(filename, suppress_exceptions=True):
             pass
         else:
             raise
+
+
+def get_obj_from_content_type_string(string):
+    model, pk = string.split(',')
+    ct = ContentType.objects.get(model=model)
+    return ct.get_object_for_this_type(pk=pk)

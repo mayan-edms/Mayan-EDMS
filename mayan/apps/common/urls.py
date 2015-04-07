@@ -4,25 +4,23 @@ from django.conf.urls import patterns, url
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.generic import RedirectView
 
-from .views import AboutView, HomeView, SetupListView, ToolsListView
-
+from .views import (
+    AboutView, CurrentUserDetailsView, CurrentUserLocaleProfileDetailsView,
+    HomeView, LicenseView, MaintenanceMenuView, SetupListView, ToolsListView
+)
 
 urlpatterns = patterns('common.views',
     url(r'^$', HomeView.as_view(), name='home'),
-    url(r'^maintenance_menu/$', 'maintenance_menu', (), 'maintenance_menu'),
-
     url(r'^about/$', AboutView.as_view(), name='about_view'),
-    url(r'^license/$', 'license_view', (), name='license_view'),
-    url(r'^object/multiple/action/$', 'multi_object_action_view', (), name='multi_object_action_view'),
-
-    url(r'^user/$', 'current_user_details', (), name='current_user_details'),
-    url(r'^user/edit/$', 'current_user_edit', (), name='current_user_edit'),
-
-    url(r'^user/locale/$', 'current_user_locale_profile_details', (), name='current_user_locale_profile_details'),
-    url(r'^user/locale/edit/$', 'current_user_locale_profile_edit', (), name='current_user_locale_profile_edit'),
-
+    url(r'^license/$', LicenseView.as_view(), name='license_view'),
+    url(r'^maintenance_menu/$', MaintenanceMenuView.as_view(), name='maintenance_menu'),
+    url(r'^object/multiple/action/$', 'multi_object_action_view', name='multi_object_action_view'),
     url(r'^setup/$', SetupListView.as_view(), name='setup_list'),
     url(r'^tools/$', ToolsListView.as_view(), name='tools_list'),
+    url(r'^user/$', CurrentUserDetailsView.as_view(), name='current_user_details'),
+    url(r'^user/edit/$', 'current_user_edit', name='current_user_edit'),
+    url(r'^user/locale/$', CurrentUserLocaleProfileDetailsView.as_view(), name='current_user_locale_profile_details'),
+    url(r'^user/locale/edit/$', 'current_user_locale_profile_edit', name='current_user_locale_profile_edit'),
 )
 
 urlpatterns += patterns('',

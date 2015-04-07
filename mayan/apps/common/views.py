@@ -32,10 +32,268 @@ from .mixins import (
     ExtraContextMixin, ObjectListPermissionFilterMixin,
     ObjectPermissionCheckMixin, RedirectionMixin, ViewPermissionCheckMixin
 )
+from .utils import get_obj_from_content_type_string
 
 
 class AboutView(TemplateView):
     template_name = 'appearance/about.html'
+
+
+class CurrentUserDetailsView(TemplateView):
+    template_name = 'appearance/generic_form.html'
+
+    def get_context_data(self, **kwargs):
+        data = super(CurrentUserDetailsView, self).get_context_data(**kwargs)
+        data.update({
+            'form': UserForm_view(instance=self.request.user),
+            'read_only': True,
+            'title': _('Current user details'),
+        })
+        return data
+
+
+class CurrentUserLocaleProfileDetailsView(TemplateView):
+    template_name = 'appearance/generic_form.html'
+
+    def get_context_data(self, **kwargs):
+        data = super(CurrentUserLocaleProfileDetailsView, self).get_context_data(**kwargs)
+        data.update({
+            'form': LocaleProfileForm_view(instance=self.request.user.locale_profile),
+            'read_only': True,
+            'title': _('Current user locale profile details'),
+        })
+        return data
+
+
+class HomeView(TemplateView):
+    template_name = 'appearance/home.html'
+
+    def get_context_data(self, **kwargs):
+        data = super(HomeView, self).get_context_data(**kwargs)
+        data.update({
+            'hide_links': True,
+            'search_results_limit': 100,
+            'search_terms': self.request.GET.get('q'),
+            'missing_list': [item for item in MissingItem.get_all() if item.condition()],
+        })
+        return data
+
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+
+        queryset, ids, timedelta = SearchModel.get('documents.Document').search(request.GET, request.user)
+
+        # Update the context with the search results
+        context.update({
+            'object_list': queryset,
+            'time_delta': timedelta,
+            'title': _('Results'),
+        })
+
+        return self.render_to_response(context)
+
+
+class LicenseView(ExtraContextMixin, TemplateView):
+    extra_context = {
+        'form': LicenseForm(),
+        'title': _('License'),
+    }
+    template_name = 'appearance/generic_detail.html'
+
+
+class MaintenanceMenuView(TemplateView):
+    template_name = 'appearance/tools.html'
+
+    def get_context_data(self, **kwargs):
+        data = super(MaintenanceMenuView, self).get_context_data(**kwargs)
+
+        user_tools = {}
+        for namespace, values in tools.items():
+            user_tools[namespace] = {
+                'title': values['title']
+            }
+            user_tools[namespace].setdefault('links', [])
+            for link in values['links']:
+                resolved_link = link.resolve(context=RequestContext(self.request))
+                if resolved_link:
+                    user_tools[namespace]['links'].append(resolved_link)
+
+        data.update({
+            'blocks': user_tools,
+            'title': _('Maintenance menu')
+        })
+        return data
+
+
+class MultiFormView(FormView):
+    prefixes = {}
+
+    prefix = None
+
+    def get_form_kwargs(self, form_name):
+        kwargs = {}
+        kwargs.update({'initial': self.get_initial(form_name)})
+        kwargs.update({'prefix': self.get_prefix(form_name)})
+
+        if self.request.method in ('POST', 'PUT'):
+            kwargs.update({
+                'data': self.request.POST,
+                'files': self.request.FILES,
+            })
+
+        return kwargs
+
+    def _create_form(self, form_name, klass):
+        form_kwargs = self.get_form_kwargs(form_name)
+        form_create_method = 'create_%s_form' % form_name
+        if hasattr(self, form_create_method):
+            form = getattr(self, form_create_method)(**form_kwargs)
+        else:
+            form = klass(**form_kwargs)
+        return form
+
+    def get_forms(self, form_classes):
+        return dict([(key, self._create_form(key, klass)) for key, klass in form_classes.items()])
+
+    def get_initial(self, form_name):
+        initial_method = 'get_%s_initial' % form_name
+        if hasattr(self, initial_method):
+            return getattr(self, initial_method)()
+        else:
+            return self.initial.copy()
+
+    def get_prefix(self, form_name):
+        return self.prefixes.get(form_name, self.prefix)
+
+    def get(self, request, *args, **kwargs):
+        form_classes = self.get_form_classes()
+        forms = self.get_forms(form_classes)
+        return self.render_to_response(self.get_context_data(forms=forms))
+
+    def forms_valid(self, forms):
+        for form_name, form in forms.items():
+            form_valid_method = '%s_form_valid' % form_name
+
+            if hasattr(self, form_valid_method):
+                return getattr(self, form_valid_method)(form)
+
+        self.all_forms_valid(forms)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def forms_invalid(self, forms):
+        return self.render_to_response(self.get_context_data(forms=forms))
+
+    def post(self, request, *args, **kwargs):
+        form_classes = self.get_form_classes()
+        forms = self.get_forms(form_classes)
+
+        if all([form.is_valid() for form in forms.values()]):
+            return self.forms_valid(forms)
+        else:
+            return self.forms_invalid(forms)
+
+
+class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
+    template_name = 'appearance/generic_form.html'
+
+    def form_invalid(self, form):
+        result = super(SingleObjectEditView, self).form_invalid(form)
+
+        try:
+            messages.error(self.request, _('Error saving %s details.') % self.extra_context['object_name'])
+        except KeyError:
+            messages.error(self.request, _('Error saving details.'))
+
+        return result
+
+    def form_valid(self, form):
+        result = super(SingleObjectEditView, self).form_valid(form)
+
+        try:
+            messages.success(self.request, _('%s details saved successfully.') % self.extra_context['object_name'].capitalize())
+        except KeyError:
+            messages.success(self.request, _('Details saved successfully.'))
+
+        return result
+
+
+class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
+    template_name = 'appearance/generic_form.html'
+
+    def form_invalid(self, form):
+        result = super(SingleObjectCreateView, self).form_invalid(form)
+
+        try:
+            messages.error(self.request, _('Error creating new %s.') % self.extra_context['object_name'])
+        except KeyError:
+            messages.error(self.request, _('Error creating object.'))
+
+        return result
+
+    def form_valid(self, form):
+        result = super(SingleObjectCreateView, self).form_valid(form)
+        try:
+            messages.success(self.request, _('%s created successfully.') % self.extra_context['object_name'].capitalize())
+        except KeyError:
+            messages.success(self.request, _('New object created successfully.'))
+
+        return result
+
+
+class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
+    template_name = 'appearance/generic_confirm.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(SingleObjectDeleteView, self).get_context_data(**kwargs)
+        context.update({'delete_view': True})
+        return context
+
+    def delete(self, request, *args, **kwargs):
+        try:
+            result = super(SingleObjectDeleteView, self).delete(request, *args, **kwargs)
+        except Exception as exception:
+            try:
+                messages.error(self.request, _('Error deleting %s.') % self.extra_context['object_name'])
+            except KeyError:
+                messages.error(self.request, _('Error deleting object.'))
+
+            raise exception
+        else:
+            try:
+                messages.success(self.request, _('%s deleted successfully.') % self.extra_context['object_name'].capitalize())
+            except KeyError:
+                messages.success(self.request, _('Object deleted successfully.'))
+
+            return result
+
+
+class SingleObjectListView(ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
+    template_name = 'appearance/generic_list.html'
+
+
+class SetupListView(TemplateView):
+    template_name = 'appearance/generic_list_horizontal.html'
+
+    def get_context_data(self, **kwargs):
+        data = super(SetupListView, self).get_context_data(**kwargs)
+        data.update({
+            'object_navigation_links': menu_setup.resolve(context=RequestContext(self.request)),
+            'title': _('Setup items'),
+        })
+        return data
+
+
+class ToolsListView(TemplateView):
+    template_name = 'appearance/generic_list_horizontal.html'
+
+    def get_context_data(self, **kwargs):
+        data = super(ToolsListView, self).get_context_data(**kwargs)
+        data.update({
+            'object_navigation_links': menu_tools.resolve(context=RequestContext(self.request)),
+            'title': _('Tools'),
+        })
+        return data
 
 
 def multi_object_action_view(request):
@@ -70,12 +328,6 @@ def multi_object_action_view(request):
             action,
             urlencode({'id_list': id_list, 'next': next}))
         )
-
-
-def get_obj_from_content_type_string(string):
-    model, pk = string.split(',')
-    ct = ContentType.objects.get(model=model)
-    return ct.get_object_for_this_type(pk=pk)
 
 
 def assign_remove(request, left_list, right_list, add_method, remove_method, left_list_title=None, right_list_title=None, decode_content_type=False, extra_context=None, grouped=False):
@@ -169,36 +421,6 @@ def assign_remove(request, left_list, right_list, add_method, remove_method, lef
                               context_instance=RequestContext(request))
 
 
-def current_user_details(request):
-    """
-    Display the current user's details
-    """
-    form = UserForm_view(instance=request.user)
-
-    return render_to_response(
-        'appearance/generic_form.html', {
-            'form': form,
-            'title': _('Current user details'),
-            'read_only': True,
-        },
-        context_instance=RequestContext(request))
-
-
-def current_user_locale_profile_details(request):
-    """
-    Display the current user's locale profile details
-    """
-    form = LocaleProfileForm_view(instance=request.user.locale_profile)
-
-    return render_to_response(
-        'appearance/generic_form.html', {
-            'form': form,
-            'title': _('Current user locale profile details'),
-            'read_only': True,
-        },
-        context_instance=RequestContext(request))
-
-
 def current_user_edit(request):
     """
     Allow an user to edit his own details
@@ -257,233 +479,3 @@ def current_user_locale_profile_edit(request):
             'title': _('Edit current user locale profile details'),
         },
         context_instance=RequestContext(request))
-
-
-def license_view(request):
-    """
-    Display the included LICENSE file from the about menu
-    """
-    form = LicenseForm()
-    return render_to_response(
-        'appearance/generic_detail.html', {
-            'form': form,
-            'title': _('License'),
-        },
-        context_instance=RequestContext(request))
-
-
-class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
-    template_name = 'appearance/generic_form.html'
-
-    def form_invalid(self, form):
-        result = super(SingleObjectEditView, self).form_invalid(form)
-
-        try:
-            messages.error(self.request, _('Error saving %s details.') % self.extra_context['object_name'])
-        except KeyError:
-            messages.error(self.request, _('Error saving details.'))
-
-        return result
-
-    def form_valid(self, form):
-        result = super(SingleObjectEditView, self).form_valid(form)
-
-        try:
-            messages.success(self.request, _('%s details saved successfully.') % self.extra_context['object_name'].capitalize())
-        except KeyError:
-            messages.success(self.request, _('Details saved successfully.'))
-
-        return result
-
-
-class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
-    template_name = 'appearance/generic_form.html'
-
-    def form_invalid(self, form):
-        result = super(SingleObjectCreateView, self).form_invalid(form)
-
-        try:
-            messages.error(self.request, _('Error creating new %s.') % self.extra_context['object_name'])
-        except KeyError:
-            messages.error(self.request, _('Error creating object.'))
-
-        return result
-
-    def form_valid(self, form):
-        result = super(SingleObjectCreateView, self).form_valid(form)
-        try:
-            messages.success(self.request, _('%s created successfully.') % self.extra_context['object_name'].capitalize())
-        except KeyError:
-            messages.success(self.request, _('New object created successfully.'))
-
-        return result
-
-
-class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
-    template_name = 'appearance/generic_confirm.html'
-
-    def get_context_data(self, **kwargs):
-        context = super(SingleObjectDeleteView, self).get_context_data(**kwargs)
-        context.update({'delete_view': True})
-        return context
-
-    def delete(self, request, *args, **kwargs):
-        try:
-            result = super(SingleObjectDeleteView, self).delete(request, *args, **kwargs)
-        except Exception as exception:
-            try:
-                messages.error(self.request, _('Error deleting %s.') % self.extra_context['object_name'])
-            except KeyError:
-                messages.error(self.request, _('Error deleting object.'))
-
-            raise exception
-        else:
-            try:
-                messages.success(self.request, _('%s deleted successfully.') % self.extra_context['object_name'].capitalize())
-            except KeyError:
-                messages.success(self.request, _('Object deleted successfully.'))
-
-            return result
-
-
-class SingleObjectListView(ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
-    template_name = 'appearance/generic_list.html'
-
-
-class MultiFormView(FormView):
-    prefixes = {}
-
-    prefix = None
-
-    def get_form_kwargs(self, form_name):
-        kwargs = {}
-        kwargs.update({'initial': self.get_initial(form_name)})
-        kwargs.update({'prefix': self.get_prefix(form_name)})
-
-        if self.request.method in ('POST', 'PUT'):
-            kwargs.update({
-                'data': self.request.POST,
-                'files': self.request.FILES,
-            })
-
-        return kwargs
-
-    def _create_form(self, form_name, klass):
-        form_kwargs = self.get_form_kwargs(form_name)
-        form_create_method = 'create_%s_form' % form_name
-        if hasattr(self, form_create_method):
-            form = getattr(self, form_create_method)(**form_kwargs)
-        else:
-            form = klass(**form_kwargs)
-        return form
-
-    def get_forms(self, form_classes):
-        return dict([(key, self._create_form(key, klass)) for key, klass in form_classes.items()])
-
-    def get_initial(self, form_name):
-        initial_method = 'get_%s_initial' % form_name
-        if hasattr(self, initial_method):
-            return getattr(self, initial_method)()
-        else:
-            return self.initial.copy()
-
-    def get_prefix(self, form_name):
-        return self.prefixes.get(form_name, self.prefix)
-
-    def get(self, request, *args, **kwargs):
-        form_classes = self.get_form_classes()
-        forms = self.get_forms(form_classes)
-        return self.render_to_response(self.get_context_data(forms=forms))
-
-    def forms_valid(self, forms):
-        for form_name, form in forms.items():
-            form_valid_method = '%s_form_valid' % form_name
-
-            if hasattr(self, form_valid_method):
-                return getattr(self, form_valid_method)(form)
-
-        self.all_forms_valid(forms)
-
-        return HttpResponseRedirect(self.get_success_url())
-
-    def forms_invalid(self, forms):
-        return self.render_to_response(self.get_context_data(forms=forms))
-
-    def post(self, request, *args, **kwargs):
-        form_classes = self.get_form_classes()
-        forms = self.get_forms(form_classes)
-
-        if all([form.is_valid() for form in forms.values()]):
-            return self.forms_valid(forms)
-        else:
-            return self.forms_invalid(forms)
-
-
-class SetupListView(TemplateView):
-    template_name = 'appearance/generic_list_horizontal.html'
-
-    def get_context_data(self, **kwargs):
-        data = super(SetupListView, self).get_context_data(**kwargs)
-        data.update({
-            'object_navigation_links': menu_setup.resolve(context=RequestContext(self.request)),
-            'title': _('Setup items'),
-        })
-        return data
-
-
-class ToolsListView(TemplateView):
-    template_name = 'appearance/generic_list_horizontal.html'
-
-    def get_context_data(self, **kwargs):
-        data = super(ToolsListView, self).get_context_data(**kwargs)
-        data.update({
-            'object_navigation_links': menu_tools.resolve(context=RequestContext(self.request)),
-            'title': _('Tools'),
-        })
-        return data
-
-
-class HomeView(TemplateView):
-    template_name = 'appearance/home.html'
-
-    def get_context_data(self, **kwargs):
-        data = super(HomeView, self).get_context_data(**kwargs)
-        data.update({
-            'search_terms': self.request.GET.get('q'),
-            'hide_links': True,
-            'search_results_limit': 100,
-            'missing_list': [item for item in MissingItem.get_all() if item.condition()],
-        })
-        return data
-
-    def get(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-
-        queryset, ids, timedelta = SearchModel.get('documents.Document').search(request.GET, request.user)
-
-        # Update the context with the search results
-        context.update({
-            'object_list': queryset,
-            'time_delta': timedelta,
-            'title': _('Results'),
-        })
-
-        return self.render_to_response(context)
-
-
-def maintenance_menu(request):
-    user_tools = {}
-    for namespace, values in tools.items():
-        user_tools[namespace] = {
-            'title': values['title']
-        }
-        user_tools[namespace].setdefault('links', [])
-        for link in values['links']:
-            resolved_link = link.resolve(context=RequestContext(request))
-            if resolved_link:
-                user_tools[namespace]['links'].append(resolved_link)
-
-    return render_to_response('appearance/tools.html', {
-        'blocks': user_tools,
-        'title': _('Maintenance menu')
-    }, context_instance=RequestContext(request))
