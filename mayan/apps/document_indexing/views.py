@@ -184,10 +184,10 @@ class SetupIndexDocumentTypesView(AssignRemoveView):
         return super(SetupIndexDocumentTypesView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return generate_choices_w_labels(self.index.get_document_types_not_in_index(), display_object_type=False)
+        return generate_choices_w_labels(self.index.get_document_types_not_in_index())
 
     def right_list(self):
-        return generate_choices_w_labels(self.index.document_types.all(), display_object_type=False)
+        return generate_choices_w_labels(self.index.document_types.all())
 
     def remove(self, item):
         self.index.document_types.remove(item)

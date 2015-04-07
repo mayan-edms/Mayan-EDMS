@@ -453,10 +453,10 @@ class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
         return super(SetupDocumentTypeMetadataOptionalView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return generate_choices_w_labels(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=self.document_type.metadata.values_list('metadata_type', flat=True))), display_object_type=False)
+        return generate_choices_w_labels(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=self.document_type.metadata.values_list('metadata_type', flat=True))))
 
     def right_list(self):
-        return generate_choices_w_labels(self.document_type.metadata.filter(required=False), display_object_type=False)
+        return generate_choices_w_labels(self.document_type.metadata.filter(required=False))
 
     def remove(self, item):
         item.delete()
@@ -477,7 +477,7 @@ class SetupDocumentTypeMetadataRequiredView(SetupDocumentTypeMetadataOptionalVie
         self.document_type.metadata.create(metadata_type=item, required=True)
 
     def right_list(self):
-        return generate_choices_w_labels(self.document_type.metadata.filter(required=True), display_object_type=False)
+        return generate_choices_w_labels(self.document_type.metadata.filter(required=True))
 
     def get_context_data(self, **kwargs):
         data = super(SetupDocumentTypeMetadataRequiredView, self).get_context_data(**kwargs)

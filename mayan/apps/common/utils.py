@@ -131,7 +131,7 @@ def parse_range(astr):
     return sorted(result)
 
 
-def generate_choices_w_labels(choices, display_object_type=True):
+def generate_choices_w_labels(choices):
     results = []
     for choice in choices:
         ct = ContentType.objects.get_for_model(choice)
@@ -139,32 +139,20 @@ def generate_choices_w_labels(choices, display_object_type=True):
         if isinstance(choice, User):
             label = choice.get_full_name() if choice.get_full_name() else choice
 
-        if display_object_type:
-            verbose_name = unicode(getattr(choice._meta, 'verbose_name', ct.name))
-            results.append(('%s,%s' % (ct.model, choice.pk), '%s: %s' % (verbose_name, label)))
-        else:
-            results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
+        results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
 
     # Sort results by the label not the key value
     return sorted(results, key=lambda x: x[1])
 
 
-def get_object_name(obj, display_object_type=True):
+def get_object_name(obj):
     ct_label = ContentType.objects.get_for_model(obj).name
     if isinstance(obj, User):
         label = obj.get_full_name() if obj.get_full_name() else obj
     else:
         label = unicode(obj)
 
-    if display_object_type:
-        try:
-            verbose_name = unicode(obj._meta.verbose_name)
-        except AttributeError:
-            verbose_name = ct_label
-
-        return '%s: %s' % (verbose_name, label)
-    else:
-        return '%s' % (label)
+    return '%s' % (label)
 
 
 def validate_path(path):
@@ -252,9 +240,3 @@ def fs_cleanup(filename, suppress_exceptions=True):
             pass
         else:
             raise
-
-
-def get_obj_from_content_type_string(string):
-    model, pk = string.split(',')
-    ct = ContentType.objects.get(model=model)
-    return ct.get_object_for_this_type(pk=pk)

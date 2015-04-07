@@ -11,7 +11,7 @@ from .classes import Member
 
 
 def _as_choice_list(items):
-    return sorted([(Member.encapsulate(item).gid, get_object_name(item, display_object_type=False)) for item in items], key=lambda x: x[1])
+    return sorted([(Member.encapsulate(item).gid, get_object_name(item)) for item in items], key=lambda x: x[1])
 
 
 def get_role_members(role, separate=False):

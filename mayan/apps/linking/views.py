@@ -48,10 +48,10 @@ class SetupSmartLinkDocumentTypesView(AssignRemoveView):
         return super(SetupSmartLinkDocumentTypesView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return generate_choices_w_labels(DocumentType.objects.exclude(pk__in=self.smart_link.document_types.all()), display_object_type=False)
+        return generate_choices_w_labels(DocumentType.objects.exclude(pk__in=self.smart_link.document_types.all()))
 
     def right_list(self):
-        return generate_choices_w_labels(self.smart_link.document_types.all(), display_object_type=False)
+        return generate_choices_w_labels(self.smart_link.document_types.all())
 
     def remove(self, item):
         self.smart_link.document_types.remove(item)

@@ -17,7 +17,7 @@ creator_singleton = SimpleLazyObject(lambda: CreatorSingleton.objects.get())
 
 
 def _as_choice_list(holders):
-    return sorted([(AccessHolder.encapsulate(holder).gid, get_object_name(holder, display_object_type=False)) for holder in holders], key=lambda x: x[1])
+    return sorted([(AccessHolder.encapsulate(holder).gid, get_object_name(holder)) for holder in holders], key=lambda x: x[1])
 
 
 class BaseHolderSelectionForm(forms.Form):
