@@ -419,14 +419,16 @@ class MultiFormView(FormView):
             return self.forms_invalid(forms)
 
 
-def setup_list(request):
-    context = {
-        'object_navigation_links': menu_setup.resolve(context=RequestContext(request)),
-        'title': _('Setup items'),
-    }
+class SetupListView(TemplateView):
+    template_name = 'appearance/generic_list_horizontal.html'
 
-    return render_to_response('appearance/generic_list_horizontal.html', context,
-                              context_instance=RequestContext(request))
+    def get_context_data(self, **kwargs):
+        data = super(SetupListView, self).get_context_data(**kwargs)
+        data.update({
+            'object_navigation_links': menu_setup.resolve(context=RequestContext(self.request)),
+            'title': _('Setup items'),
+        })
+        return data
 
 
 class ToolsListView(TemplateView):
@@ -441,18 +443,23 @@ class ToolsListView(TemplateView):
         return data
 
 
-def home(request):
-    document_search = SearchModel.get('documents.Document')
+class HomeView(TemplateView):
+    template_name = 'appearance/home.html'
 
-    context = {
-        'query_string': request.GET,
-        'hide_links': True,
-        'search_results_limit': 100,
-        'missing_list': [item for item in MissingItem.get_all() if item.condition()],
-    }
+    def get_context_data(self, **kwargs):
+        data = super(HomeView, self).get_context_data(**kwargs)
+        data.update({
+            'search_terms': self.request.GET.get('q'),
+            'hide_links': True,
+            'search_results_limit': 100,
+            'missing_list': [item for item in MissingItem.get_all() if item.condition()],
+        })
+        return data
 
-    if request.GET:
-        queryset, ids, timedelta = document_search.search(request.GET, request.user)
+    def get(self, request, *args, **kwargs):
+        context = self.get_context_data(**kwargs)
+
+        queryset, ids, timedelta = SearchModel.get('documents.Document').search(request.GET, request.user)
 
         # Update the context with the search results
         context.update({
@@ -461,7 +468,7 @@ def home(request):
             'title': _('Results'),
         })
 
-    return render_to_response('appearance/home.html', context, context_instance=RequestContext(request))
+        return self.render_to_response(context)
 
 
 def maintenance_menu(request):

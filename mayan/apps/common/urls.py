@@ -4,11 +4,11 @@ from django.conf.urls import patterns, url
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.generic import RedirectView
 
-from .views import AboutView, ToolsListView
+from .views import AboutView, HomeView, SetupListView, ToolsListView
 
 
 urlpatterns = patterns('common.views',
-    url(r'^$', 'home', (), 'home'),
+    url(r'^$', HomeView.as_view(), name='home'),
     url(r'^maintenance_menu/$', 'maintenance_menu', (), 'maintenance_menu'),
 
     url(r'^about/$', AboutView.as_view(), name='about_view'),
@@ -21,7 +21,7 @@ urlpatterns = patterns('common.views',
     url(r'^user/locale/$', 'current_user_locale_profile_details', (), name='current_user_locale_profile_details'),
     url(r'^user/locale/edit/$', 'current_user_locale_profile_edit', (), name='current_user_locale_profile_edit'),
 
-    url(r'^setup/$', 'setup_list', (), 'setup_list'),
+    url(r'^setup/$', SetupListView.as_view(), name='setup_list'),
     url(r'^tools/$', ToolsListView.as_view(), name='tools_list'),
 )
 
