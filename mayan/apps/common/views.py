@@ -35,22 +35,15 @@ from .mixins import (
 
 
 class AssignRemoveView(TemplateView):
-    left_list_title = None
-    right_list_title = None
     decode_content_type = False
     extra_context = None
     grouped = False
+    left_list_title = None
+    right_list_title = None
+    template_name = 'appearance/generic_form.html'
 
     LEFT_LIST_NAME = 'left_list'
     RIGHT_LIST_NAME = 'right_list'
-
-    template_name = 'appearance/generic_form.html'
-
-    @staticmethod
-    def get_obj_from_content_type_string(string):
-        model, pk = string.split(',')
-        ct = ContentType.objects.get(model=model)
-        return ct.get_object_for_this_type(pk=pk)
 
     def left_list(self):
         # Subclass must override
@@ -73,61 +66,40 @@ class AssignRemoveView(TemplateView):
         self.selected_list = ChoiceForm(prefix=self.RIGHT_LIST_NAME, choices=self.right_list())
         return self.render_to_response(self.get_context_data())
 
-    def post(self, request, *args, **kwargs):
-        if '%s-submit' % self.LEFT_LIST_NAME in self.request.POST.keys():
-            self.unselected_list = ChoiceForm(
-                self.request.POST, prefix=self.LEFT_LIST_NAME,
-                choices=self.left_list()
+    def process_form(self, prefix, items_function, action_function):
+        if '%s-submit' % prefix in self.request.POST.keys():
+            form = ChoiceForm(
+                self.request.POST, prefix=prefix,
+                choices=items_function()
             )
-            if self.unselected_list.is_valid():
-                for selection in self.unselected_list.cleaned_data['selection']:
+
+            if form.is_valid():
+                for selection in form.cleaned_data['selection']:
                     if self.grouped:
                         flat_list = []
-                        for group in self.left_list():
+                        for group in items_function():
                             flat_list.extend(group[1])
                     else:
-                        flat_list = self.left_list()
+                        flat_list = items_function()
 
                     label = dict(flat_list)[selection]
                     if self.decode_content_type:
-                        selection_obj = AssignRemoveView.get_obj_from_content_type_string(selection)
+                        model, pk = selection.split(',')
+                        selection_obj = ContentType.objects.get(model=model).get_object_for_this_type(pk=pk)
                     else:
                         selection_obj = selection
+
                     try:
-                        self.add(selection_obj)
+                        action_function(selection_obj)
                     except:
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(self.request, _('Unable to remove %(selection)s.') % {
-                                'selection': label, 'right_list_title': self.right_list_title})
+                            messages.error(self.request, _('Unable to transfer selection: %s.') % label)
 
-        if '%s-submit' % self.RIGHT_LIST_NAME in self.request.POST.keys():
-            self.selected_list = ChoiceForm(
-                self.request.POST, prefix=self.RIGHT_LIST_NAME,
-                choices=self.right_list()
-            )
-            if self.selected_list.is_valid():
-                for selection in self.selected_list.cleaned_data['selection']:
-                    if self.grouped:
-                        flat_list = []
-                        for group in self.right_list():
-                            flat_list.extend(group[1])
-                    else:
-                        flat_list = self.right_list()
-
-                    label = dict(flat_list)[selection]
-                    if self.decode_content_type:
-                        selection = AssignRemoveView.get_obj_from_content_type_string(selection)
-                    try:
-                        self.remove(selection)
-                    except:
-                        if settings.DEBUG:
-                            raise
-                        else:
-                            messages.error(self.request, _('Unable to add %(selection)s.') % {
-                                'selection': label, 'right_list_title': self.right_list_title})
-
+    def post(self, request, *args, **kwargs):
+        self.process_form(prefix=self.LEFT_LIST_NAME, items_function=self.left_list, action_function=self.add)
+        self.process_form(prefix=self.RIGHT_LIST_NAME, items_function=self.right_list, action_function=self.remove)
         return self.get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
