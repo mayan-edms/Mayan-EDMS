@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.core.urlresolvers import reverse
 from django.template import Library
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from dynamic_search.forms import SearchForm
 from dynamic_search.models import RecentSearch

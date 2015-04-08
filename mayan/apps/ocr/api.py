@@ -6,7 +6,7 @@ import tempfile
 
 import sh
 
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext_lazy as _
 
 from common.settings import TEMPORARY_DIRECTORY
 from common.utils import fs_cleanup, load_backend
