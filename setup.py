@@ -55,7 +55,7 @@ def find_packages(directory):
 install_requires = """
 celery==3.1.17
 cssmin==0.2.0
-Django==1.6.8
+Django==1.6.11
 django-activity-stream==0.5.1
 django-celery==3.1.16
 django-compressor==1.4
