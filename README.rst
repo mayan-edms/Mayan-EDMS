@@ -24,6 +24,10 @@ Free Open Source Electronic Document Management System.
 
 |Animation|
 
+Support
+-------
+Help support further improvements and development by donating at: https://www.patreon.com/siloraptor
+
 License
 -------
 
