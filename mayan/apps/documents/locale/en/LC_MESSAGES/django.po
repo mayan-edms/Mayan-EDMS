@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
+"POT-Creation-Date: 2015-05-15 19:00-0400\n"
 "PO-Revision-Date: 2013-11-20 11:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -106,7 +106,7 @@ msgstr "Document pages (%s)"
 msgid "Quick document rename"
 msgstr "Quick document rename"
 
-#: forms.py:148 widgets.py:65
+#: forms.py:148
 #, fuzzy, python-format
 msgid "Page %(page_number)d"
 msgstr "page number"
@@ -993,7 +993,12 @@ msgstr ""
 "Are you sure you wish to delete transformation \"%(transformation)s\" for: "
 "%(document_page)s"
 
-#: widgets.py:84
+#: widgets.py:67
+#, fuzzy, python-format
+msgid "Page %(page_number)d of %(total_pages)d"
+msgstr "Page %(page_num)d out of %(total_pages)d of %(document)s"
+
+#: widgets.py:86
 #, fuzzy
 msgid "Document page image"
 msgstr "document page image"
@@ -1134,10 +1139,6 @@ msgstr "document page image"
 #, fuzzy
 #~ msgid "Missing documents"
 #~ msgstr "missing documents"
-
-#, fuzzy
-#~ msgid "Page %(page_num)d of %(total_pages)d"
-#~ msgstr "Page %(page_num)d out of %(total_pages)d of %(document)s"
 
 #~ msgid "Click on the image for full size preview"
 #~ msgstr "Click on the image for full size preview"

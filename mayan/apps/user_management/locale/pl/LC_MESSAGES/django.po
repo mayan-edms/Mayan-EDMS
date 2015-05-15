@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Translators:
-# mic <winterfall24@gmail.com>, 2014
+# Annunnaky <doublemiu@gmail.com>, 2015
+# mic <winterfall24@gmail.com>, 2014-2015
 # mic <winterfall24@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:54-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-05-15 19:03-0400\n"
+"PO-Revision-Date: 2015-03-19 05:44+0000\n"
+"Last-Translator: Annunnaky <doublemiu@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,35 +31,35 @@ msgstr "Potwierdź hasło"
 
 #: links.py:11 links.py:12 views.py:31
 msgid "Users"
-msgstr ""
+msgstr "Użytkownicy"
 
 #: links.py:13 links.py:23
 msgid "Edit"
-msgstr ""
+msgstr "Edytuj"
 
 #: links.py:14 views.py:96
 msgid "Create new user"
-msgstr ""
+msgstr "Tworzenie nowego użytkownika"
 
 #: links.py:15 links.py:16 links.py:25 links.py:26
 msgid "Delete"
-msgstr ""
+msgstr "Usunąć"
 
 #: links.py:17 links.py:18
 msgid "Reset password"
-msgstr ""
+msgstr "Zresetować hasło"
 
 #: links.py:19 links.py:21 links.py:22 views.py:247
 msgid "Groups"
-msgstr ""
+msgstr "Grupy"
 
 #: links.py:24 views.py:294
 msgid "Create new group"
-msgstr ""
+msgstr "utwórz nową grupę"
 
 #: links.py:27 views.py:251
 msgid "Members"
-msgstr ""
+msgstr "Członkowie"
 
 #: permissions.py:7
 msgid "User management"
@@ -98,19 +99,19 @@ msgstr "Usunąć istniejące grupy"
 
 #: views.py:35
 msgid "Full name"
-msgstr ""
+msgstr "Pełna nazwa"
 
 #: views.py:39
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: views.py:43
 msgid "Active"
-msgstr ""
+msgstr "Aktywny"
 
 #: views.py:47
 msgid "Has usable password?"
-msgstr ""
+msgstr "Posiada hasło?"
 
 #: views.py:62
 msgid ""
@@ -126,7 +127,7 @@ msgstr "Użytkownik \"%s\" został zaktualizowany."
 #: views.py:75
 #, python-format
 msgid "Edit user: %s"
-msgstr ""
+msgstr "Edytuj użytkownika: %s"
 
 #: views.py:90
 #, python-format
@@ -196,12 +197,12 @@ msgstr "Resetowanie hasła dla użytkowników:%s"
 #: views.py:232
 #, python-format
 msgid "Non groups of user: %s"
-msgstr ""
+msgstr "niebędących grupami użytkownika: %s"
 
 #: views.py:233
 #, python-format
 msgid "Groups of user: %s"
-msgstr ""
+msgstr "Grupy użytkownika: %s"
 
 #: views.py:269
 #, python-format
@@ -211,7 +212,7 @@ msgstr "Grupa \"%s\" została zaktualizowany."
 #: views.py:275
 #, python-format
 msgid "Edit group: %s"
-msgstr ""
+msgstr "Edycja grupy: %s"
 
 #: views.py:288
 #, python-format
@@ -245,12 +246,12 @@ msgstr "Czy na pewno chcesz usunąć grupy: %s?"
 #: views.py:366
 #, python-format
 msgid "Non members of group: %s"
-msgstr ""
+msgstr "niebędących członkami grupy:%s"
 
 #: views.py:367
 #, python-format
 msgid "Members of group: %s"
-msgstr ""
+msgstr "Członkowie grupy: %s"
 
 #~ msgid "Group"
 #~ msgstr "group"

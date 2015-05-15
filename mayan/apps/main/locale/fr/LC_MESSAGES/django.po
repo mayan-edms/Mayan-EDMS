@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:52-0400\n"
-"PO-Revision-Date: 2015-02-05 10:29+0000\n"
-"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
+"POT-Creation-Date: 2015-05-15 19:02-0400\n"
+"PO-Revision-Date: 2015-05-15 23:05+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -70,16 +70,16 @@ msgid "Version"
 msgstr "Version"
 
 #: templates/main/about.html:15
-msgid "Open Source Electronic Document Manager System"
-msgstr "Gestionnaire Électronique de Documents Open Source"
+msgid "Free Open Source Electronic Document Management System"
+msgstr ""
 
 #: templates/main/about.html:31
 msgid "Released under the Apache 2.0 License"
 msgstr "Publié sous licence Apache 2.0"
 
 #: templates/main/about.html:42
-msgid "Copyright &copy; 2011 Roberto Rosario."
-msgstr "Copyright &copy; 2011 Roberto Rosario."
+msgid "Copyright &copy; 2011-2015 Roberto Rosario."
+msgstr ""
 
 #: templates/main/base.html:198
 msgid "(Debug mode)"
@@ -321,9 +321,6 @@ msgstr "Suivant"
 
 #~ msgid "User"
 #~ msgstr "User"
-
-#~ msgid "Django based open source document management system"
-#~ msgstr "Django based open source document management system"
 
 #~ msgid "(DEBUG)"
 #~ msgstr "(DEBUG)"

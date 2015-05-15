@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
+# Annunnaky <doublemiu@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:51-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"PO-Revision-Date: 2015-03-01 19:40+0000\n"
+"Last-Translator: Annunnaky <doublemiu@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,23 +20,23 @@ msgstr ""
 
 #: __init__.py:38
 msgid "Initial state"
-msgstr ""
+msgstr "Stan początkowy"
 
 #: __init__.py:39 __init__.py:57 __init__.py:65
 msgid "None"
-msgstr ""
+msgstr "Brak"
 
 #: __init__.py:45
 msgid "Is initial state?"
-msgstr ""
+msgstr "Czy  jest stan początkowy?"
 
 #: __init__.py:52 views.py:83
 msgid "Current state"
-msgstr ""
+msgstr "Aktualny stan"
 
 #: __init__.py:56 __init__.py:86 models.py:129
 msgid "User"
-msgstr ""
+msgstr "Użytkownik"
 
 #: __init__.py:60 views.py:84
 msgid "Last transition"
@@ -43,7 +44,7 @@ msgstr ""
 
 #: __init__.py:64 __init__.py:82
 msgid "Date and time"
-msgstr ""
+msgstr "Data i godzina"
 
 #: __init__.py:71 models.py:66
 msgid "Origin state"
@@ -59,7 +60,7 @@ msgstr ""
 
 #: __init__.py:94 forms.py:42 models.py:130
 msgid "Comment"
-msgstr ""
+msgstr "Komentarz"
 
 #: links.py:5 links.py:22 models.py:38 views.py:170
 msgid "Workflows"
@@ -67,23 +68,23 @@ msgstr ""
 
 #: links.py:6
 msgid "Create"
-msgstr ""
+msgstr "Utwórz"
 
 #: links.py:7 links.py:12 links.py:17
 msgid "Delete"
-msgstr ""
+msgstr "Usuń"
 
 #: links.py:8 links.py:13 links.py:18
 msgid "Edit"
-msgstr ""
+msgstr "Edytuj"
 
 #: links.py:10 permissions.py:7
 msgid "States"
-msgstr ""
+msgstr "Stany"
 
 #: links.py:11
 msgid "Create state"
-msgstr ""
+msgstr "Utwórz stan"
 
 #: links.py:15
 msgid "Transitions"
@@ -95,19 +96,19 @@ msgstr ""
 
 #: links.py:20 models.py:17
 msgid "Document types"
-msgstr ""
+msgstr "Typy dokumentu"
 
 #: links.py:23
 msgid "Detail"
-msgstr ""
+msgstr "Szczegół"
 
 #: models.py:16 models.py:44 models.py:64
 msgid "Label"
-msgstr ""
+msgstr "Etykieta"
 
 #: models.py:37 models.py:43 models.py:63 models.py:80
 msgid "Workflow"
-msgstr ""
+msgstr "Obieg dokumentów"
 
 #: models.py:45
 msgid ""
@@ -117,15 +118,15 @@ msgstr ""
 
 #: models.py:45
 msgid "Initial"
-msgstr ""
+msgstr "Początkowy"
 
 #: models.py:57
 msgid "Workflow state"
-msgstr ""
+msgstr "Stan obiegu"
 
 #: models.py:58
 msgid "Workflow states"
-msgstr ""
+msgstr "Stany obiegu"
 
 #: models.py:74
 msgid "Workflow transition"
@@ -137,7 +138,7 @@ msgstr ""
 
 #: models.py:81
 msgid "Document"
-msgstr ""
+msgstr "Dokument"
 
 #: models.py:120 models.py:126
 msgid "Workflow instance"
@@ -161,19 +162,19 @@ msgstr ""
 
 #: permissions.py:8
 msgid "Create workflows"
-msgstr ""
+msgstr "Utwórz obieg"
 
 #: permissions.py:9
 msgid "Delete workflows"
-msgstr ""
+msgstr "Usuń obieg"
 
 #: permissions.py:10
 msgid "Edit workflows"
-msgstr ""
+msgstr "Edytuj obieg"
 
 #: permissions.py:11
 msgid "View workflows"
-msgstr ""
+msgstr "Pokaż obieg"
 
 #: permissions.py:13
 msgid "View document workflows"
@@ -186,51 +187,51 @@ msgstr ""
 #: views.py:55
 #, python-format
 msgid "Workflows for document: %s"
-msgstr ""
+msgstr "Obiegi dokumentu: %s"
 
 #: views.py:95
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
-msgstr ""
+msgstr "Szczegóły obiegu dokumentów: %(workflow)s"
 
 #: views.py:109
 msgid "Log entries"
-msgstr ""
+msgstr "Wpisy rejestru logów"
 
 #: views.py:155
 #, python-format
 msgid "Do transition for workflow: %s"
-msgstr ""
+msgstr "Dokonaj zmiany w obiegu dokumentów: %s"
 
 #: views.py:156
 msgid "Submit"
-msgstr ""
+msgstr "Wyślij"
 
 #: views.py:220
 #, python-format
 msgid "States of workflow: %s"
-msgstr ""
+msgstr "Stany obiegu dokumentów: %s"
 
 #: views.py:243
 #, python-format
 msgid "Create states for workflow: %s"
-msgstr ""
+msgstr "Utwórz stany obiegu dokumentów: %s"
 
 #: views.py:337
 #, python-format
 msgid "Transitions of workflow: %s"
-msgstr ""
+msgstr "Zmiany obiegu dokumentów: %s"
 
 #: views.py:360
 #, python-format
 msgid "Create transitions for workflow: %s"
-msgstr ""
+msgstr "Utwórz zmiany w obiegu dokumentów: %s"
 
 #: views.py:385
 msgid "Unable to save transition; integrity error."
-msgstr ""
+msgstr "Nie można zapisać zmiany; błąd integralności."
 
 #: views.py:461
 #, python-format
 msgid "Document types assigned the workflow: %s"
-msgstr ""
+msgstr "Typy dokumentów przypisane do obiegu dokumentów: %s"

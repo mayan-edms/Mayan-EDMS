@@ -10,15 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"POT-Creation-Date: 2015-05-15 19:00-0400\n"
+"PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: __init__.py:94 __init__.py:131 models.py:88 permissions.py:7 views.py:871
 msgid "Documents"
@@ -102,7 +102,7 @@ msgstr ""
 msgid "Quick document rename"
 msgstr "Быстро переименовать документ"
 
-#: forms.py:148 widgets.py:65
+#: forms.py:148
 #, python-format
 msgid "Page %(page_number)d"
 msgstr ""
@@ -619,6 +619,7 @@ msgid_plural "Are you sure you wish to delete the selected documents?"
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:255
 #, python-format
@@ -644,6 +645,7 @@ msgid_plural "Change the type of the selected documents."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:373
 msgid "Documents to be downloaded"
@@ -677,6 +679,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:538
 #, python-format
@@ -702,6 +705,7 @@ msgid_plural ""
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
+msgstr[3] ""
 
 #: views.py:579 views.py:621
 #, python-format
@@ -899,7 +903,12 @@ msgid ""
 "%(document_page)s"
 msgstr "Вы действительно хотите удалить преобразования  \"%(transformation)s\" for: %(document_page)s\""
 
-#: widgets.py:84
+#: widgets.py:67
+#, python-format
+msgid "Page %(page_number)d of %(total_pages)d"
+msgstr ""
+
+#: widgets.py:86
 msgid "Document page image"
 msgstr ""
 
@@ -1014,9 +1023,6 @@ msgstr ""
 
 #~ msgid "Missing documents"
 #~ msgstr "missing documents"
-
-#~ msgid "Page %(page_num)d of %(total_pages)d"
-#~ msgstr "Page %(page_num)d out of %(total_pages)d of %(document)s"
 
 #~ msgid "Click on the image for full size preview"
 #~ msgstr "Click on the image for full size preview"

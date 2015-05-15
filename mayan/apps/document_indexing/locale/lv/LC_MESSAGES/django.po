@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:51-0400\n"
+"POT-Creation-Date: 2015-05-15 19:01-0400\n"
 "PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Latvian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -23,6 +23,14 @@ msgstr ""
 #: __init__.py:40 links.py:23 links.py:24 links.py:38 links.py:40 models.py:60
 #: views.py:38 views.py:296
 msgid "Indexes"
+msgstr ""
+
+#: admin.py:21
+msgid "None"
+msgstr ""
+
+#: admin.py:23 links.py:29 models.py:19 views.py:300
+msgid "Document types"
 msgstr ""
 
 #: api.py:49
@@ -46,10 +54,6 @@ msgstr ""
 
 #: links.py:28
 msgid "Tree template"
-msgstr ""
-
-#: links.py:29 models.py:19 views.py:300
-msgid "Document types"
 msgstr ""
 
 #: links.py:31
@@ -122,31 +126,36 @@ msgid ""
 "as a parent for further nodes."
 msgstr ""
 
-#: models.py:74
+#: models.py:72
+#, python-format
+msgid "<%s Root>"
+msgstr ""
+
+#: models.py:77
 msgid "Index node template"
 msgstr ""
 
-#: models.py:75
+#: models.py:78
 msgid "Indexes node template"
 msgstr ""
 
-#: models.py:80
+#: models.py:83
 msgid "Index template node"
 msgstr ""
 
-#: models.py:81
+#: models.py:84
 msgid "Value"
 msgstr ""
 
-#: models.py:82
+#: models.py:85
 msgid "Documents"
 msgstr ""
 
-#: models.py:100
+#: models.py:103
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:101
+#: models.py:104
 msgid "Indexes node instances"
 msgstr ""
 

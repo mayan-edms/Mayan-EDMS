@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# mic <winterfall24@gmail.com>, 2015
 # mic <winterfall24@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:51-0400\n"
-"PO-Revision-Date: 2015-02-06 23:25+0000\n"
+"POT-Creation-Date: 2015-05-15 19:00-0400\n"
+"PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
@@ -24,6 +25,14 @@ msgstr ""
 msgid "Indexes"
 msgstr "Indeksy"
 
+#: admin.py:21
+msgid "None"
+msgstr ""
+
+#: admin.py:23 links.py:29 models.py:19 views.py:300
+msgid "Document types"
+msgstr ""
+
 #: api.py:49
 #, python-format
 msgid ""
@@ -33,22 +42,18 @@ msgstr ""
 
 #: links.py:25 views.py:75
 msgid "Create index"
-msgstr ""
+msgstr "Tworzenie indeksu"
 
 #: links.py:26 links.py:32
 msgid "Edit"
-msgstr ""
+msgstr "Edytuj"
 
 #: links.py:27 links.py:33
 msgid "Delete"
-msgstr ""
+msgstr "Usunąć"
 
 #: links.py:28
 msgid "Tree template"
-msgstr ""
-
-#: links.py:29 models.py:19 views.py:300
-msgid "Document types"
 msgstr ""
 
 #: links.py:31
@@ -73,7 +78,7 @@ msgstr "Usuwa i tworzy od podstaw wszystkie indeksy dokumentów."
 
 #: models.py:15 views.py:42
 msgid "Name"
-msgstr ""
+msgstr "Nazwa"
 
 #: models.py:15
 msgid "Internal name used to reference this index."
@@ -81,7 +86,7 @@ msgstr "Wewnętrzna nazwa używana do odniesienia tego indeksu."
 
 #: models.py:17 views.py:43
 msgid "Title"
-msgstr ""
+msgstr "Tytuł"
 
 #: models.py:17
 msgid "The name that will be visible to users."
@@ -89,7 +94,7 @@ msgstr "Nazwa, która będzie widoczna dla użytkowników."
 
 #: models.py:18 models.py:67 views.py:44 views.py:160
 msgid "Enabled"
-msgstr ""
+msgstr "Włączony"
 
 #: models.py:18
 msgid ""
@@ -98,7 +103,7 @@ msgstr "Powoduje że  ten wskaźnik będzie widoczny i zaktualizowany podczas zm
 
 #: models.py:59 models.py:65 views.py:243 views.py:281
 msgid "Index"
-msgstr ""
+msgstr "Indeks"
 
 #: models.py:66
 msgid "Indexing expression"
@@ -122,31 +127,36 @@ msgid ""
 " as a parent for further nodes."
 msgstr "Check this option to have this node act as a container for documents and not as a parent for further nodes."
 
-#: models.py:74
+#: models.py:72
+#, python-format
+msgid "<%s Root>"
+msgstr ""
+
+#: models.py:77
 msgid "Index node template"
 msgstr ""
 
-#: models.py:75
+#: models.py:78
 msgid "Indexes node template"
 msgstr ""
 
-#: models.py:80
+#: models.py:83
 msgid "Index template node"
 msgstr ""
 
-#: models.py:81
+#: models.py:84
 msgid "Value"
-msgstr ""
+msgstr "Wartość"
 
-#: models.py:82
+#: models.py:85
 msgid "Documents"
-msgstr ""
+msgstr "Dokumenty"
 
-#: models.py:100
+#: models.py:103
 msgid "Index node instance"
 msgstr ""
 
-#: models.py:101
+#: models.py:104
 msgid "Indexes node instances"
 msgstr ""
 

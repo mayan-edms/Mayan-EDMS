@@ -9,15 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:52-0400\n"
-"PO-Revision-Date: 2015-01-27 20:02+0000\n"
+"POT-Creation-Date: 2015-05-15 19:02-0400\n"
+"PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ru\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: __init__.py:12
 msgid "Home"
@@ -68,7 +68,7 @@ msgid "Version"
 msgstr "Версия"
 
 #: templates/main/about.html:15
-msgid "Open Source Electronic Document Manager System"
+msgid "Free Open Source Electronic Document Management System"
 msgstr ""
 
 #: templates/main/about.html:31
@@ -76,7 +76,7 @@ msgid "Released under the Apache 2.0 License"
 msgstr ""
 
 #: templates/main/about.html:42
-msgid "Copyright &copy; 2011 Roberto Rosario."
+msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr ""
 
 #: templates/main/base.html:198
@@ -319,9 +319,6 @@ msgstr ""
 
 #~ msgid "User"
 #~ msgstr "User"
-
-#~ msgid "Django based open source document management system"
-#~ msgstr "Django based open source document management system"
 
 #~ msgid "(DEBUG)"
 #~ msgstr "(DEBUG)"

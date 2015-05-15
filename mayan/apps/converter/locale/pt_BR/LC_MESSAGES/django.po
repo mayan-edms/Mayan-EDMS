@@ -6,13 +6,14 @@
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011-2012
 # Renata Oliveira <renatabels@gmail.com>, 2011
+# Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-05-15 19:00-0400\n"
+"PO-Revision-Date: 2015-05-06 12:52+0000\n"
+"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -30,11 +31,11 @@ msgstr "Redimensionar."
 
 #: literals.py:24 literals.py:39
 msgid "Width"
-msgstr ""
+msgstr "largura"
 
 #: literals.py:25 literals.py:40
 msgid "Height"
-msgstr ""
+msgstr "altura"
 
 #: literals.py:29
 msgid "Rotate"
@@ -46,7 +47,7 @@ msgstr "Rodar por n graus."
 
 #: literals.py:32
 msgid "Degrees"
-msgstr ""
+msgstr "graus"
 
 #: literals.py:36
 msgid "Density"
@@ -66,7 +67,7 @@ msgstr "Zoom por n percento."
 
 #: literals.py:47
 msgid "Percent"
-msgstr ""
+msgstr "Percentual"
 
 #: settings.py:11
 msgid "File path to imagemagick's convert program."
@@ -86,7 +87,7 @@ msgid ""
 "converter.backends.imagemagick.ImageMagick, "
 "converter.backends.graphicsmagick.GraphicsMagick and "
 "converter.backends.python.Python"
-msgstr ""
+msgstr "Gráficos de conversão backend,  para usar as opções são:\nconverter.backends.imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick and converter.backends.python.Python"
 
 #: settings.py:16
 msgid "Path to the libreoffice program."
@@ -94,7 +95,7 @@ msgstr "Caminho para o programa BrOffice."
 
 #: settings.py:17
 msgid "Path to the Popple program pdftoppm."
-msgstr ""
+msgstr "Caminho para o programa  libreoffice"
 
 #~ msgid "Help"
 #~ msgstr "Help"

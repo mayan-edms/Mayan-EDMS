@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:52-0400\n"
-"PO-Revision-Date: 2015-02-05 10:21+0000\n"
+"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"PO-Revision-Date: 2015-04-06 09:05+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: forms.py:25 models.py:66
 msgid "Foreign document attribute"
-msgstr ""
+msgstr "Attribut étranger du document "
 
 #: links.py:13 links.py:14 links.py:20 models.py:60 permissions.py:7
 #: views.py:113
@@ -43,7 +43,7 @@ msgstr "Supprimer"
 
 #: links.py:18 models.py:19
 msgid "Document types"
-msgstr ""
+msgstr "Types de document"
 
 #: links.py:21 views.py:83
 msgid "Documents"
@@ -140,7 +140,7 @@ msgstr "Titre dynamique"
 #: models.py:17
 msgid ""
 "This expression will be evaluated against the current selected document."
-msgstr ""
+msgstr "Cette expression sera de nouveau évaluée sur le document actuellement sélectioné."
 
 #: models.py:18 models.py:70 views.py:117 views.py:233
 msgid "Enabled"
@@ -149,11 +149,11 @@ msgstr "Activé"
 #: models.py:31
 #, python-format
 msgid "Error generating dynamic title; %s"
-msgstr ""
+msgstr "erreur de génération d'un titre dynamique; %s"
 
 #: models.py:37
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
+msgstr "Un lien intelligent n'est pas autorisé pour le type de document sélectionné."
 
 #: models.py:59 models.py:64 views.py:295 views.py:329
 msgid "Smart link"
@@ -165,7 +165,7 @@ msgstr "Ignorer l'inclusion sur le premier élément"
 
 #: models.py:66
 msgid "This represents the metadata of all other documents."
-msgstr ""
+msgstr "Ceci représente la méta-donnée de tous les autres documents."
 
 #: models.py:68
 msgid "Expression"
@@ -173,7 +173,7 @@ msgstr "Expression"
 
 #: models.py:68
 msgid "This expression will be evaluated against the current document."
-msgstr ""
+msgstr "Cette expression sera de nouveau évaluée sur le document actuel."
 
 #: models.py:69
 msgid "Negated"
@@ -219,21 +219,21 @@ msgstr "Erreur de requête sur lien intelligent:%s"
 #: views.py:52
 #, python-format
 msgid "Documents in smart link: %s"
-msgstr ""
+msgstr "Lien inetlligent du document: %s"
 
 #: views.py:68
 #, python-format
 msgid "Error calculating smart link for: %(document)s; %(exception)s."
-msgstr ""
+msgstr "Erreur de calcul pour le lien intelligent: %(document)s; %(exception)s."
 
 #: views.py:82
 msgid "Indentifier"
-msgstr ""
+msgstr "Identifiant"
 
 #: views.py:97
 #, python-format
 msgid "Smart links for document: %s"
-msgstr ""
+msgstr "Liens intelligents pour le document: %s"
 
 #: views.py:133
 #, python-format
@@ -268,7 +268,7 @@ msgstr "Êtes vous certain de vouloir supprimer le lien intelligent:%s?"
 #: views.py:215
 #, python-format
 msgid "Document type for which to enable smart link: %s"
-msgstr ""
+msgstr "Type de document sur lesquels activer les liens intelligents: %s"
 
 #: views.py:230
 #, python-format

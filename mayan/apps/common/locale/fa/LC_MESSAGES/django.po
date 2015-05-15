@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
-"PO-Revision-Date: 2015-01-17 07:03+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-05-15 19:00-0400\n"
+"PO-Revision-Date: 2015-03-03 10:54+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: classes.py:40
 msgid "Available attributes: "
-msgstr ""
+msgstr "خصوصیات موجود"
 
 #: forms.py:98
 msgid "Selection"
@@ -68,15 +68,15 @@ msgstr "لیسانس"
 
 #: links.py:17
 msgid "Locale profile"
-msgstr ""
+msgstr "پروفایل محلی"
 
 #: links.py:18
 msgid "Edit locale profile"
-msgstr ""
+msgstr "ویرایش پروفایل محلی"
 
 #: links.py:20
 msgid "Logout"
-msgstr ""
+msgstr "خروج"
 
 #: models.py:28 models.py:31
 msgid "Anonymous user"
@@ -116,23 +116,23 @@ msgstr "فایلهای آپلود شده اشتراکی"
 
 #: models.py:61
 msgid "User"
-msgstr ""
+msgstr "کاربر"
 
 #: models.py:63
 msgid "Timezone"
-msgstr ""
+msgstr "زمان محلی"
 
 #: models.py:64
 msgid "Language"
-msgstr ""
+msgstr "زبان"
 
 #: models.py:70
 msgid "User locale profile"
-msgstr ""
+msgstr "پروفایل محلی کاربر"
 
 #: models.py:71
 msgid "User locale profiles"
-msgstr ""
+msgstr "پروفایل محلی کاربر"
 
 #: settings.py:14
 msgid ""
@@ -191,7 +191,7 @@ msgstr "جزئیاتا کاربر فعلی"
 
 #: views.py:187
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "شرح پروفایل محلی کاربر فعلی"
 
 #: views.py:204
 msgid "E-mail conflict, another user has that same email."
@@ -207,11 +207,11 @@ msgstr "یرایش جزئیات کاربر کنونی"
 
 #: views.py:239
 msgid "Current user's locale profile details updated."
-msgstr ""
+msgstr "شرح پروفایل محلی کاربر فعلی بروز رسانی شد."
 
 #: views.py:248
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "ویرایش شرح پروفایل محلی کاربر فعلی"
 
 #: views.py:288
 msgid "Current user password change"

@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"POT-Creation-Date: 2015-05-15 19:00-0400\n"
+"PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
@@ -101,7 +101,7 @@ msgstr ""
 msgid "Quick document rename"
 msgstr "Snel document hernoemen"
 
-#: forms.py:148 widgets.py:65
+#: forms.py:148
 #, python-format
 msgid "Page %(page_number)d"
 msgstr ""
@@ -894,7 +894,12 @@ msgid ""
 "%(document_page)s"
 msgstr "Weet u zeker dat u deze transformatie wenst te verwijderen: \"%(transformation)s\" for: %(document_page)s"
 
-#: widgets.py:84
+#: widgets.py:67
+#, python-format
+msgid "Page %(page_number)d of %(total_pages)d"
+msgstr ""
+
+#: widgets.py:86
 msgid "Document page image"
 msgstr ""
 
@@ -1009,9 +1014,6 @@ msgstr ""
 
 #~ msgid "Missing documents"
 #~ msgstr "missing documents"
-
-#~ msgid "Page %(page_num)d of %(total_pages)d"
-#~ msgstr "Page %(page_num)d out of %(total_pages)d of %(document)s"
 
 #~ msgid "Click on the image for full size preview"
 #~ msgstr "Click on the image for full size preview"
