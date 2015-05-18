@@ -132,7 +132,6 @@ class GPG(object):
         except Exception as exception:
             raise GPGException('ERROR: GPG initialization error; %s' % exception)
 
-
     def verify_file(self, file_input, detached_signature=None, fetch_key=False):
         """
         Verify the signature of a file.

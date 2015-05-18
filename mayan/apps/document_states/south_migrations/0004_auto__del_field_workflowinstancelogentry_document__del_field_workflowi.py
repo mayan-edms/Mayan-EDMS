@@ -33,7 +33,6 @@ class Migration(SchemaMigration):
                       self.gf('django.db.models.fields.related.ForeignKey')(to=orm['documents.Document']),
                       keep_default=False)
 
-
         # User chose to not deal with backwards NULL issues for 'WorkflowInstanceLogEntry.workflow_instace'
         raise RuntimeError("Cannot reverse this migration. 'WorkflowInstanceLogEntry.workflow_instace' and its values cannot be restored.")
 

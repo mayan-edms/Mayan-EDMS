@@ -24,6 +24,3 @@ class IndexAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Index, IndexAdmin)
-
-
-

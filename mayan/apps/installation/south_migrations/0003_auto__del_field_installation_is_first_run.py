@@ -6,18 +6,15 @@ from django.db import models
 
 
 class Migration(SchemaMigration):
-
     def forwards(self, orm):
         # Deleting field 'Installation.is_first_run'
         db.delete_column(u'installation_installation', 'is_first_run')
-
 
     def backwards(self, orm):
         # Adding field 'Installation.is_first_run'
         db.add_column(u'installation_installation', 'is_first_run',
                       self.gf('django.db.models.fields.BooleanField')(default=False),
                       keep_default=False)
-
 
     models = {
         u'installation.installation': {

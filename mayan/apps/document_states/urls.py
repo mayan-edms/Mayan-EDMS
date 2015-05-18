@@ -12,7 +12,8 @@ from .views import (
     WorkflowInstanceTransitionView, DocumentWorkflowInstanceListView
 )
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^setup/all/$', SetupWorkflowListView.as_view(), name='setup_workflow_list'),
     url(r'^setup/create/$', SetupWorkflowCreateView.as_view(), name='setup_workflow_create'),
     url(r'^setup/(?P<pk>\d+)/edit/$', SetupWorkflowEditView.as_view(), name='setup_workflow_edit'),
@@ -33,6 +34,7 @@ urlpatterns = patterns('',
     url(r'^document/workflows/(?P<pk>\d+)/transition/$', WorkflowInstanceTransitionView.as_view(), name='workflow_instance_transition'),
 )
 
-urlpatterns += patterns('document_states.views',
+urlpatterns += patterns(
+    'document_states.views',
     url(r'^setup/(?P<pk>\d+)/document_types/$', 'setup_workflow_document_types', name='setup_workflow_document_types'),
 )

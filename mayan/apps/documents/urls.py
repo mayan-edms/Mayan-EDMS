@@ -12,7 +12,8 @@ from .api_views import (
 from .settings import PRINT_SIZE, DISPLAY_SIZE
 from .views import DocumentListView
 
-urlpatterns = patterns('documents.views',
+urlpatterns = patterns(
+    'documents.views',
     url(r'^list/$', DocumentListView.as_view(), name='document_list'),
     url(r'^list/recent/$', 'document_list_recent', (), 'document_list_recent'),
 
@@ -74,7 +75,8 @@ urlpatterns = patterns('documents.views',
     url(r'^type/(?P<document_type_id>\d+)/filename/create/$', 'document_type_filename_create', (), 'document_type_filename_create'),
 )
 
-api_urls = patterns('',
+api_urls = patterns(
+    '',
     url(r'^documents/$', APIDocumentListView.as_view(), name='document-list'),
     url(r'^documents/recent/$', APIRecentDocumentListView.as_view(), name='document-recent-list'),
     url(r'^documents/(?P<pk>[0-9]+)/$', APIDocumentView.as_view(), name='document-detail'),

@@ -5,18 +5,15 @@ from django.db import models
 
 
 class Migration(SchemaMigration):
-
     def forwards(self, orm):
         # Adding field 'Document.label'
         db.add_column(u'documents_document', 'label',
                       self.gf('django.db.models.fields.CharField')(default=u'Uninitialized document', max_length=255, db_index=True),
                       keep_default=False)
 
-
     def backwards(self, orm):
         # Deleting field 'Document.label'
         db.delete_column(u'documents_document', 'label')
-
 
     models = {
         u'auth.group': {
