@@ -1,7 +1,6 @@
 # encoding: utf-8
 import os
 from south.v2 import DataMigration
-from django.db import models
 
 
 class Migration(DataMigration):

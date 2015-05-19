@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
-from south.db import db
 from south.v2 import DataMigration
-from django.db import models
 
 
 def fake_get_or_create(model, *args, **kwargs):

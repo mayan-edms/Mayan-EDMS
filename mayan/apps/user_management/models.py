@@ -1,4 +1,4 @@
-from django.db import models
+from django.db import models  # NOQA
 from django.contrib.auth.models import User, Group
 
 from actstream import registry

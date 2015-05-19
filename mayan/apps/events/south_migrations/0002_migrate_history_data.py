@@ -1,9 +1,7 @@
 # -*- coding: utf-8 -*-
 import json
 
-from south.db import db
 from south.v2 import DataMigration
-from django.db import models
 
 type_equivalence = {
     'documents.document_created': 'documents_document_create',

@@ -8,7 +8,6 @@ from django.core.files import File
 from mayan.celery import app
 
 from common.models import SharedUploadedFile
-from converter.exceptions import ConvertError
 
 from .models import Document, DocumentType, DocumentVersion
 

@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
-from south.db import db
 from south.v2 import DataMigration
-from django.db import models, transaction
+from django.db import transaction
 from django.db.utils import ProgrammingError
 
 
