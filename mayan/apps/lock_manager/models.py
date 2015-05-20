@@ -10,7 +10,7 @@ from .settings import DEFAULT_LOCK_TIMEOUT
 class Lock(models.Model):
     creation_datetime = models.DateTimeField(verbose_name=_('Creation datetime'), auto_now_add=True)
     timeout = models.IntegerField(default=DEFAULT_LOCK_TIMEOUT, verbose_name=_('Timeout'))
-    name = models.CharField(max_length=48, verbose_name=_('Name'), unique=True)
+    name = models.CharField(max_length=64, verbose_name=_('Name'), unique=True)
 
     objects = LockManager()
 
