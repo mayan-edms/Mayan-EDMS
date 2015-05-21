@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from acls.permissions import ACLS_VIEW_ACL
 from events.permissions import PERMISSION_EVENTS_VIEW
 
 from .permissions import (
@@ -56,6 +57,8 @@ document_clear_transformations = {'text': _('Clear transformations'), 'view': 'd
 document_multiple_clear_transformations = {'text': _('Clear transformations'), 'view': 'documents:document_multiple_clear_transformations', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
 document_print = {'text': _('Print'), 'view': 'documents:document_print', 'args': 'object.id', 'famfam': 'printer', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
 document_events_view = {'text': _('Events'), 'view': 'events:events_for_object', 'args': ['"documents"', '"document"', 'object.id'], 'famfam': 'book_go', 'permissions': [PERMISSION_EVENTS_VIEW]}
+document_acl_list = {'text': _('ACLs'), 'view': 'documents:document_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
+
 
 # Tools
 document_clear_image_cache = {'text': _('Clear the document image cache'), 'view': 'documents:document_clear_image_cache', 'famfam': 'camera_delete', 'permissions': [PERMISSION_DOCUMENT_TOOLS], 'description': _('Clear the graphics representations used to speed up the documents\' display and interactive transformations results.')}

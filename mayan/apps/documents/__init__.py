@@ -5,6 +5,7 @@ import tempfile
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
+from acls.permissions import ACLS_VIEW_ACL, ACLS_EDIT_ACL
 from common.classes import ModelAttribute
 from common.utils import encapsulate, validate_path
 from dynamic_search.classes import SearchModel
@@ -19,16 +20,16 @@ from statistics.classes import StatisticNamespace
 
 from documents import settings as document_settings
 from .links import (
-    document_clear_image_cache, document_clear_transformations,
-    document_content, document_delete, document_document_type_edit,
-    document_events_view, document_multiple_document_type_edit,
-    document_download, document_edit, document_list, document_list_recent,
-    document_multiple_delete, document_multiple_clear_transformations,
-    document_multiple_download, document_multiple_update_page_count,
-    document_page_edit, document_page_navigation_first,
-    document_page_navigation_last, document_page_navigation_next,
-    document_page_navigation_previous, document_page_rotate_left,
-    document_page_rotate_right, document_page_text,
+    document_acl_list, document_clear_image_cache,
+    document_clear_transformations, document_content, document_delete,
+    document_document_type_edit, document_events_view,
+    document_multiple_document_type_edit, document_download, document_edit,
+    document_list, document_list_recent, document_multiple_delete,
+    document_multiple_clear_transformations, document_multiple_download,
+    document_multiple_update_page_count, document_page_edit,
+    document_page_navigation_first, document_page_navigation_last,
+    document_page_navigation_next, document_page_navigation_previous,
+    document_page_rotate_left, document_page_rotate_right, document_page_text,
     document_page_transformation_list, document_page_transformation_create,
     document_page_transformation_edit, document_page_transformation_delete,
     document_page_view, document_page_view_reset, document_page_zoom_in,
@@ -66,7 +67,7 @@ register_links([Document], [document_multiple_clear_transformations, document_mu
 register_links(Document, [document_preview], menu_name='form_header', position=0)
 register_links(Document, [document_content], menu_name='form_header', position=1)
 register_links(Document, [document_properties], menu_name='form_header', position=2)
-register_links(Document, [document_events_view, document_version_list], menu_name='form_header')
+register_links(Document, [document_events_view, document_version_list, document_acl_list], menu_name='form_header')
 
 # Document Version links
 register_links(DocumentVersion, [document_version_revert, document_version_download])
@@ -108,11 +109,11 @@ if (not validate_path(document_settings.CACHE_PATH)) or (not document_settings.C
 register_setup(document_type_setup)
 
 class_permissions(Document, [
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_NEW_VERSION,
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_TRANSFORM,
-    PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_VIEW,
-    PERMISSION_EVENTS_VIEW
+    ACLS_EDIT_ACL, ACLS_VIEW_ACL, PERMISSION_DOCUMENT_DELETE,
+    PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_EDIT,
+    PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_VERSION_REVERT,
+    PERMISSION_DOCUMENT_VIEW, PERMISSION_EVENTS_VIEW
 ])
 
 document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer_string='documents.serializers.DocumentSerializer')
