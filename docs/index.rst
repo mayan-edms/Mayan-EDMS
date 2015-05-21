@@ -26,8 +26,8 @@ account.
     Features <topics/features>
     Installation <topics/installation>
     Getting started <topics/getting_started>
-    Release notes and upgrading instructions <releases/index>
-    Understanding Mayan EDMS <topics/index>
+    Release notes and upgrading <releases/index>
+    Concepts <topics/index>
     Development <topics/development>
     Contributors <topics/contributors>
     Licensing <topics/license>

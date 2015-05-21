@@ -128,7 +128,7 @@ in the directory: venv/lib/python2.7/site-packages/mayan/settings/ with the foll
 
     from __future__ import unicode_literals
 
-    from . import *
+    from .local import *
 
     <Your customized settings>
 

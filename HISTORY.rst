@@ -1,3 +1,20 @@
+1.1.1 (2015-05-21)
+==================
+
+- Update to Django 1.6.11
+- Fix make_dist.sh script
+- Add test for issue #163
+- Activate tests for the sources app
+- Removal of the registration app
+- New simplified official project description
+- Improvements to the index admin interface
+- Removal of installation statistics gathering
+- Remove unused folder tag
+- Fix usage of ugettext to ugettext_lazy
+- Increase size of the lock name field
+- New style documentation
+
+
 1.1 (2015-02-10)
 ================
 
