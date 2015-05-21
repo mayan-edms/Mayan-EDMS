@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 #
 # Mayan EDMS documentation build configuration file, created by
 # sphinx-quickstart on Fri Aug 19 05:13:38 2011.
@@ -43,7 +45,7 @@ source_suffix = '.rst'
 # source_encoding = 'utf-8-sig'
 
 # The master toctree document.
-master_doc = 'contents'
+master_doc = 'index'
 
 # General information about the project.
 project = mayan.__title__
@@ -98,7 +100,7 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'default'
+html_theme = 'classic'
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -185,8 +187,8 @@ htmlhelp_basename = 'MayanEDMSdoc'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
 latex_documents = [
-  ('index', 'MayanEDMS.tex', u'Mayan EDMS Documentation',
-   u'Roberto Rosario', 'manual'),
+  ('index', 'MayanEDMS.tex', 'Mayan EDMS Documentation',
+   mayan.__author__, 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -218,6 +220,29 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    ('index', 'mayanedms', u'Mayan EDMS Documentation',
-     [u'Roberto Rosario'], 1)
+    ('index', 'mayanedms', 'Mayan EDMS Documentation',
+     [mayan.__author__], 1)
 ]
+
+
+# -- Custom options
+import alabaster
+
+html_theme_path = [alabaster.get_path()]
+extensions = ['alabaster']
+html_theme = 'alabaster'
+html_sidebars = {
+    '**': [
+        'about.html', 'navigation.html', 'searchbox.html', 'donate.html',
+    ]
+}
+html_theme_options = {
+    'description': 'Free Open Source Electronic Document Management System',
+    'github_user': 'mayan-edms',
+    'github_repo': 'mayan-edms',
+    'travis_button': True,
+    'gratipay_user': 'rosarior',
+    'github_banner': True,
+}
+
+html_logo = '_static/logo_pyramid_only.png'
