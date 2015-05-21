@@ -1,12 +1,12 @@
 from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
-from django.views.generic import TemplateView
 
+from .views import AboutView
 
 urlpatterns = patterns(
     'common.views',
-    url(r'^about/$', TemplateView.as_view(template_name='main/about.html'), name='about_view'),
+    url(r'^about/$', AboutView.as_view(), name='about_view'),
     url(r'^license/$', 'license_view', (), name='license_view'),
     url(r'^password/change/done/$', 'password_change_done', (), name='password_change_done'),
     url(r'^object/multiple/action/$', 'multi_object_action_view', (), name='multi_object_action_view'),

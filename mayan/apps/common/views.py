@@ -13,7 +13,7 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import FormView
+from django.views.generic import FormView, TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
@@ -449,3 +449,7 @@ class MultiFormView(FormView):
             return self.forms_valid(forms)
         else:
             return self.forms_invalid(forms)
+
+
+class AboutView(TemplateView):
+    template_name='main/about.html'
