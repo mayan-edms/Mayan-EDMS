@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
-from navigation.api import register_top_menu
+from navigation.api import register_links
 
 from .links import link_setup
 
-setup_link = register_top_menu('setup_menu', link=link_setup, position=-2)
+register_links(['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'common:password_change_view'], [link_setup], menu_name='secondary_menu')
