@@ -33,8 +33,3 @@ urlpatterns = patterns(
     url(r'^setup/workflow/transitions/(?P<pk>\d+)/delete/$', SetupWorkflowTransitionDeleteView.as_view(), name='setup_workflow_transition_delete'),
     url(r'^setup/workflow/transitions/(?P<pk>\d+)/edit/$', SetupWorkflowTransitionEditView.as_view(), name='setup_workflow_transition_edit'),
 )
-
-urlpatterns += patterns(
-    'document_states.views',
-    url(r'^setup/(?P<pk>\d+)/document_types/$', 'setup_workflow_document_types', name='setup_workflow_document_types'),
-)

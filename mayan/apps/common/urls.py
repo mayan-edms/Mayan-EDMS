@@ -22,6 +22,7 @@ urlpatterns = patterns(
     url(r'^user/edit/$', 'current_user_edit', name='current_user_edit'),
     url(r'^user/locale/$', CurrentUserLocaleProfileDetailsView.as_view(), name='current_user_locale_profile_details'),
     url(r'^user/locale/edit/$', 'current_user_locale_profile_edit', name='current_user_locale_profile_edit'),
+)
 
 urlpatterns += patterns(
     '',
