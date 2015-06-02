@@ -7,7 +7,8 @@ from .views import (
     RoleCreateView, RoleDeleteView, RoleEditView, SetupRoleMembersView
 )
 
-urlpatterns = patterns('permissions.views',
+urlpatterns = patterns(
+    'permissions.views',
     url(r'^role/list/$', 'role_list', (), 'role_list'),
     url(r'^role/create/$', RoleCreateView.as_view(), name='role_create'),
     url(r'^role/(?P<role_id>\d+)/permissions/$', 'role_permissions', (), 'role_permissions'),
@@ -19,7 +20,8 @@ urlpatterns = patterns('permissions.views',
     url(r'^permissions/multiple/revoke/$', 'permission_revoke', (), 'permission_multiple_revoke'),
 )
 
-api_urls = patterns('',
+api_urls = patterns(
+    '',
     url(r'^roles/$', APIRoleListView.as_view(), name='role-list'),
     url(r'^roles/(?P<pk>[0-9]+)/$', APIRoleView.as_view(), name='role-detail'),
 )

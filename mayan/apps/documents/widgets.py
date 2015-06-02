@@ -41,8 +41,10 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
 
         try:
             document_pages = value.pages.all()
+            total_pages = value.pages.count()
         except AttributeError:
             document_pages = []
+            total_pages = 0
 
         # Reuse expensive values
         latest_version_pk = value.latest_version.pk
@@ -62,7 +64,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     post_load_class='lazy-load-carousel-loaded',
                 )
             )
-            output.append('<div class="carousel-item-page-number">%s</div>' % ugettext('Page %(page_number)d') % {'page_number': page.page_number})
+            output.append('<div class="carousel-item-page-number">%s</div>' % ugettext('Page %(page_number)d of %(total_pages)d') % {'page_number': page.page_number, 'total_pages': total_pages})
             output.append('</div>')
 
         output.append('</div>')

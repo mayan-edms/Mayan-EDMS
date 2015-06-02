@@ -123,6 +123,8 @@ class GPG(object):
 
         try:
             self.gpg = gnupg.GPG(**kwargs)
+        except OSError as exception:
+            raise GPGException('ERROR: GPG initialization error; Make sure the GPG binary is properly installed; %s' % exception)
         except Exception as exception:
             raise GPGException('ERROR: GPG initialization error; %s' % exception)
 

@@ -2,7 +2,7 @@ Django==1.7.7
 
 Pillow==2.7.0
 
-celery==3.1.17
+celery==3.1.18
 cssmin==0.2.0
 
 django-activity-stream==0.5.1
@@ -21,9 +21,10 @@ django-widget-tweaks==1.3
 djangorestframework==2.4.4
 
 pdfminer==20110227
+psutil==2.1.3
 pycountry==1.10
-pytz==2015.2
 python-dateutil==2.4.1
+pytz==2015.4
 python-gnupg==0.3.7
 python-hkp==0.1.3
 python-magic==0.4.6

@@ -4,15 +4,15 @@
 # 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:54-0400\n"
-"PO-Revision-Date: 2015-02-06 23:26+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-05-15 19:03-0400\n"
+"PO-Revision-Date: 2015-03-03 11:14+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -166,7 +166,7 @@ msgstr "برچسب  \"%(tag)s\" با موفقیت به سند  \"%(document)s\" 
 #: views.py:95
 msgid "Attach tag to document"
 msgid_plural "Attach tag to documents"
-msgstr[0] ""
+msgstr[0] "اتصال برچسب به سند"
 
 #: views.py:145
 msgid "Must provide at least one tag."
@@ -189,7 +189,7 @@ msgstr "از کلیه اسناد حذف خواهد شد."
 #: views.py:174
 msgid "Are you sure you wish to delete the selected tag?"
 msgid_plural "Are you sure you wish to delete the selected tags?"
-msgstr[0] ""
+msgstr[0] "آیا از حذف سندهای انتخاب شده مطمئن هستید؟"
 
 #: views.py:205
 msgid "Tag updated succesfully."
@@ -203,12 +203,12 @@ msgstr "ویرایش برچسب: %s"
 #: views.py:226
 #, python-format
 msgid "Documents with the tag: %s"
-msgstr ""
+msgstr "اسناد دارای برچسب : %s"
 
 #: views.py:243
 #, python-format
 msgid "Tags for document: %s"
-msgstr ""
+msgstr "برچسب سند : %s"
 
 #: views.py:255
 msgid "Must provide at least one tagged document."

@@ -53,9 +53,9 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-celery==3.1.17
+celery==3.1.18
 cssmin==0.2.0
-Django==1.6.8
+Django==1.6.11
 django-activity-stream==0.5.1
 django-celery==3.1.16
 django-compressor==1.4
@@ -74,7 +74,7 @@ Pillow==2.6.1
 pdfminer==20110227
 psutil==2.1.3
 pycountry==1.8
-pytz==2014.4
+pytz==2015.4
 python-dateutil==2.4.0
 python-gnupg==0.3.7
 python-hkp==0.1.3
@@ -113,7 +113,7 @@ setup(
         'Topic :: Internet :: WWW/HTTP :: WSGI :: Application',
         'Topic :: Communications :: File Sharing',
     ],
-    description='A Django based Document Management System.',
+    description='Free Open Source Electronic Document Management System',
     include_package_data=True,
     install_requires=install_requires,
     license=license,

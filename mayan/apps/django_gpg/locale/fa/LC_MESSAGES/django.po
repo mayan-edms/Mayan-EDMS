@@ -4,14 +4,14 @@
 # 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-05-15 19:00-0400\n"
+"PO-Revision-Date: 2015-03-03 10:56+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -121,7 +121,7 @@ msgstr "ریشه دایرکتوری جهت نگهداری کلیدها بهمر�
 
 #: settings.py:16
 msgid "Path to the GPG binary."
-msgstr ""
+msgstr "محل کتایخانه باینری GPG"
 
 #: views.py:40
 #, python-format

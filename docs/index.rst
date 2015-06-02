@@ -1,60 +1,41 @@
-.. _index:
+Welcome to Mayan EDMS!
+======================
 
-========================
-Mayan EDMS documentation
-========================
+**Mayan EDMS** is a `Free Open Source`_ `Electronic Document Management System`_, coded in
+the Python language using the Django_ web application framework and released
+under the `Apache 2.0 License`_. It provides an electronic vault or repository for electronic documents.
 
-.. rubric:: `Open source`_ `electronic document management system`_.
+The easiest way to install and try **Mayan EDMS** is by using a Debian based Linux distribution
+and installing it from PyPI with the following commands:
 
-Getting help
-============
+.. code-block:: bash
 
-* Search for information in the `archives of the mayan-edms mailing list`_, or
-  `post a question`_.  If you prefer news servers, use the gateway provided by Gmane_.
-* Report bugs with **Mayan EDMS** using Github's `ticket tracker`_.
-* Try the :doc:`FAQ <topics/faq>` -- it's got answers to many common questions.
+    $ sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
+    $ virtualenv venv
+    $ source venv/bin/activate
+    $ pip install mayan-edms
+    $ mayan-edms.py initialsetup
+    $ mayan-edms.py runserver
 
+Point your browser to 127.0.0.1:8000 and use the automatically created admin
+account.
 
-First steps
-===========
+.. toctree::
+    :hidden:
 
-  :doc:`Features <topics/features>` |
-  :doc:`Installation <topics/installation>` |
-  :doc:`Getting started <topics/getting_started>`
-
-Understanding Mayan EDMS
-========================
-
-  :doc:`File storage <topics/file_storage>` |
-  :doc:`Permission system <topics/permissions>` |
-  :doc:`Transformations <topics/transformations>` |
-  :doc:`Document versioning <topics/versioning>` |
-  :doc:`Document signatures <topics/signatures>` |
-  :doc:`Indexes <topics/indexes>` |
-  :doc:`Smart links <topics/smart_links>` |
-  :doc:`Tags <topics/tags>` |
-
-Release notes
-=============
-
-  :doc:`Release notes and upgrading instructions <releases/index>`
-
-For developers
-==============
-
-  :doc:`Development <topics/development>`
-
-Credits
-=======
-
-  :doc:`Contributors <topics/contributors>` |
-  :doc:`Licensing <topics/license>`
+    Features <topics/features>
+    Installation <topics/installation>
+    Getting started <topics/getting_started>
+    Release notes and upgrading <releases/index>
+    Concepts <topics/index>
+    Development <topics/development>
+    Contributors <topics/contributors>
+    Licensing <topics/license>
+    FAQ <topics/faq>
+    Contact <topics/contact>
 
 
 .. _Django: http://www.djangoproject.com/
-.. _Gmane: http://news.gmane.org/gmane.comp.python.django.mayan-edms
-.. _Open source: http://en.wikipedia.org/wiki/Open_source
-.. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/
-.. _electronic document management system: https://en.wikipedia.org/wiki/Document_management_system
-.. _post a question: http://groups.google.com/group/mayan-edms
-.. _ticket tracker: https://github.com/mayan-edms/mayan-edms/issues
+.. _Free Open Source: http://en.wikipedia.org/wiki/Open_source
+.. _Electronic Document Management System: https://en.wikipedia.org/wiki/Document_management_system
+.. _Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0.txt

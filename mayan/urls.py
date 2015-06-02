@@ -6,7 +6,8 @@ from django.contrib import admin
 
 admin.autodiscover()
 
-urlpatterns = patterns('',
+urlpatterns = patterns(
+    '',
     url(r'^', include('common.urls', namespace='common')),
     url(r'^accounts/', include('user_management.urls', namespace='user_management')),
     url(r'^acls/', include('acls.urls', namespace='acls')),

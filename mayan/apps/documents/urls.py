@@ -12,7 +12,8 @@ from .api_views import (
 from .settings import PRINT_SIZE, DISPLAY_SIZE
 from .views import DocumentListView, RecentDocumentListView
 
-urlpatterns = patterns('documents.views',
+urlpatterns = patterns(
+    'documents.views',
     url(r'^list/$', DocumentListView.as_view(), name='document_list'),
     url(r'^list/recent/$', RecentDocumentListView.as_view(), name='document_list_recent'),
 
@@ -40,6 +41,8 @@ urlpatterns = patterns('documents.views',
     url(r'^(?P<document_pk>\d+)/version/all/$', 'document_version_list', (), 'document_version_list'),
     url(r'^document/version/(?P<document_version_pk>\d+)/download/$', 'document_download', (), 'document_version_download'),
     url(r'^document/version/(?P<document_version_pk>\d+)/revert/$', 'document_version_revert', (), 'document_version_revert'),
+
+    url(r'^(?P<document_id>\d+)/acls/$', 'document_acl_list', (), 'document_acl_list'),
 
     url(r'^multiple/clear_transformations/$', 'document_multiple_clear_transformations', (), 'document_multiple_clear_transformations'),
     url(r'^maintenance/clear_image_cache/$', 'document_clear_image_cache', (), 'document_clear_image_cache'),
@@ -75,7 +78,8 @@ urlpatterns = patterns('documents.views',
     url(r'^type/(?P<document_type_id>\d+)/filename/create/$', 'document_type_filename_create', (), 'document_type_filename_create'),
 )
 
-api_urls = patterns('',
+api_urls = patterns(
+    '',
     url(r'^documents/$', APIDocumentListView.as_view(), name='document-list'),
     url(r'^documents/recent/$', APIRecentDocumentListView.as_view(), name='document-recent-list'),
     url(r'^documents/(?P<pk>[0-9]+)/$', APIDocumentView.as_view(), name='document-detail'),

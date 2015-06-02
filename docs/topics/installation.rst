@@ -118,8 +118,8 @@ to /usr/bin/ with ...
     GM_PATH = '/usr/local/bin/gm'
     LIBREOFFICE_PATH = '/Applications/LibreOffice.app/Contents/MacOS/soffice'
 
-Production use
---------------
+Testing the install
+-------------------
 
 To create a custom settings file for **Mayan EDMS**, create a Python (.py) file
 in the directory: venv/lib/python2.7/site-packages/mayan/settings/ with the following basic content::
@@ -128,7 +128,7 @@ in the directory: venv/lib/python2.7/site-packages/mayan/settings/ with the foll
 
     from __future__ import unicode_literals
 
-    from . import *
+    from .local import *
 
     <Your customized settings>
 
@@ -136,7 +136,12 @@ To test your settings launch **Mayan EDMS** using::
 
     $ mayan-edms.py runserver --settings=mayan.settings.my_settings
 
-After making sure everything is running correctly, stop the runserver command.
+Note: Background tasks and scheduled tasks will not run when using the test server.
+
+Production use
+--------------
+
+After making sure everything is running correctly, stop the `runserver` command.
 Deploy **Mayan EDMS** using the webserver of your preference. For more information
 on deployment instructions and examples, checkout Django's official documentation
 on the topic https://docs.djangoproject.com/en/1.6/howto/deployment/

@@ -3,22 +3,20 @@ from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404
 
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
-from converter.literals import (DEFAULT_PAGE_NUMBER,
-                                DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL)
+from converter.literals import (
+    DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
+)
 from rest_framework import generics
 from rest_framework.response import Response
 
-from documents.permissions import PERMISSION_DOCUMENT_CREATE
 from documents.settings import (
     DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 )
-from rest_api.permissions import MayanPermission
 
-from .models import StagingFolderSource, WatchFolderSource
+from .models import StagingFolderSource
 from .serializers import (
-    NewDocumentSerializer, StagingFolderFileSerializer,
-    StagingFolderSerializer, StagingSourceFileImageSerializer,
-    WebFormSourceSerializer
+    StagingFolderFileSerializer,
+    StagingFolderSerializer, StagingSourceFileImageSerializer
 )
 
 

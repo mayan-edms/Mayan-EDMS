@@ -4,9 +4,11 @@
 #
 # Translators:
 # Translators:
+# Annunnaky <doublemiu@gmail.com>, 2015
 # mic, 2012
 # mic <diveaway12@gmail.com>, 2012
 # mic <winterfall24@gmail.com>, 2012
+# mic <winterfall24@gmail.com>, 2015
 # mic <winterfall24@gmail.com>, 2012
 msgid ""
 msgstr ""
@@ -30,7 +32,7 @@ msgstr ""
 
 #: classes.py:40
 msgid "Available attributes: "
-msgstr ""
+msgstr "Dostępne atrybuty:"
 
 #: forms.py:98
 msgid "Selection"
@@ -46,11 +48,11 @@ msgstr ""
 
 #: links.py:14
 msgid "User details"
-msgstr ""
+msgstr "Dane użytkownika"
 
 #: links.py:15
 msgid "Edit details"
-msgstr ""
+msgstr "Edytuj szczegóły"
 
 #: links.py:16
 msgid "Locale profile"
@@ -82,7 +84,7 @@ msgstr "Użytkownik anonimowy"
 
 #: models.py:36
 msgid "Account"
-msgstr ""
+msgstr "Konto"
 
 #: models.py:37
 msgid "Password"
@@ -90,51 +92,51 @@ msgstr ""
 
 #: models.py:38
 msgid "Password hash"
-msgstr ""
+msgstr "Hasło hash"
 
 #: models.py:41
 msgid "Auto admin properties"
-msgstr ""
+msgstr "Właściwości automatyczne"
 
 #: models.py:46
 msgid "File"
-msgstr ""
+msgstr "Plik"
 
 #: models.py:47
 msgid "Filename"
-msgstr ""
+msgstr "Nazwa"
 
 #: models.py:48
 msgid "Date time"
-msgstr ""
+msgstr "data i godzina"
 
 #: models.py:51
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Udostępniony plik"
 
 #: models.py:52
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Pliki udostępnione"
 
 #: models.py:64
 msgid "User"
-msgstr ""
+msgstr "Użytkownik"
 
 #: models.py:66
 msgid "Timezone"
-msgstr ""
+msgstr "Strefa czasowa"
 
 #: models.py:67
 msgid "Language"
-msgstr ""
+msgstr "Język"
 
 #: models.py:73
 msgid "User locale profile"
-msgstr ""
+msgstr "Lokalny profil użytkownika"
 
 #: models.py:74
 msgid "User locale profiles"
-msgstr ""
+msgstr "Lokalne profile użytkownika"
 
 #: settings.py:14
 msgid ""
@@ -145,11 +147,11 @@ msgstr ""
 
 #: settings.py:48
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
+msgstr "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie plików."
 
 #: utils.py:114
 msgid "Function found"
-msgstr ""
+msgstr "Wyszukano funkcję"
 
 #: views.py:54
 msgid "No action selected."
@@ -162,12 +164,12 @@ msgstr "Musisz wybrać co najmniej jeden element."
 #: views.py:110
 #, python-format
 msgid "Unable to remove %(selection)s."
-msgstr ""
+msgstr "Nie można usunąć %(selection)s."
 
 #: views.py:135
 #, python-format
 msgid "Unable to add %(selection)s."
-msgstr ""
+msgstr "Nie można dodać %(selection)s."
 
 #: views.py:148
 msgid "Add"
@@ -179,11 +181,11 @@ msgstr "Usuń"
 
 #: views.py:181
 msgid "Current user details"
-msgstr ""
+msgstr "Aktualne dane użytkownika"
 
 #: views.py:196
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "Aktualne dane użytkownika szczegóły"
 
 #: views.py:213
 msgid "E-mail conflict, another user has that same email."
@@ -195,69 +197,69 @@ msgstr "Aktualne dane użytkownika aktualizowane."
 
 #: views.py:225
 msgid "Edit current user details"
-msgstr ""
+msgstr "Edytuj aktualne dane użytkownika"
 
 #: views.py:248
 msgid "Current user's locale profile details updated."
-msgstr ""
+msgstr "Profil aktualnego użytkownika został zaktualizowany."
 
 #: views.py:257
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "Edytuj profil aktualnego użytkownika."
 
 #: views.py:282
 #, python-format
 msgid "Error saving %s details."
-msgstr ""
+msgstr "Błąd podczas zapisu  %s."
 
 #: views.py:284
 msgid "Error saving details."
-msgstr ""
+msgstr "Błąd zapisu detali."
 
 #: views.py:292
 #, python-format
 msgid "%s details saved successfully."
-msgstr ""
+msgstr "%s detale zapiane pomyślnie."
 
 #: views.py:294
 msgid "Details saved successfully."
-msgstr ""
+msgstr "Detale zapsane pomyślnie."
 
 #: views.py:306
 #, python-format
 msgid "Error creating new %s."
-msgstr ""
+msgstr "Błąd podczas tworzenia nowego : %s."
 
 #: views.py:308
 msgid "Error creating object."
-msgstr ""
+msgstr "Błąd poczas tworzenia obiektu."
 
 #: views.py:315
 #, python-format
 msgid "%s created successfully."
-msgstr ""
+msgstr "%s utworzono pomyślnie."
 
 #: views.py:317
 msgid "New object created successfully."
-msgstr ""
+msgstr "Pomyślnie utworzono nowy obiekt."
 
 #: views.py:335
 #, python-format
 msgid "Error deleting %s."
-msgstr ""
+msgstr "Błąd podczas usuwania %s."
 
 #: views.py:337
 msgid "Error deleting object."
-msgstr ""
+msgstr "Błąd podczas usuwania obiektu."
 
 #: views.py:342
 #, python-format
 msgid "%s deleted successfully."
-msgstr ""
+msgstr "%s usunięto pomyślnie."
 
 #: views.py:344
 msgid "Object deleted successfully."
-msgstr ""
+msgstr "Pomyślnie usunuęto obiekt."
 
 #: views.py:425
 msgid "Setup items"

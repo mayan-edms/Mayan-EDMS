@@ -37,7 +37,8 @@ class APIEndPoint(object):
 
     def register_urls(self, urlpatterns):
         from .urls import version_0_urlpatterns
-        endpoint_urls = patterns('',
+        endpoint_urls = patterns(
+            '',
             url(r'^%s/' % self.name, include(urlpatterns)),
         )
 

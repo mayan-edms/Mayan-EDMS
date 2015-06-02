@@ -481,7 +481,7 @@ This is the sequence of step I use to produce an installable package:
 
     $ rm dist -R
 
-2. Generate the packaged version (will produce dist/mayan-edms-1.1.0.tar.gz)::
+2. Generate the packaged version (will produce dist/mayan-edms-1.1.1.tar.gz)::
 
     $ python setup.py sdist
 
@@ -490,7 +490,7 @@ This is the sequence of step I use to produce an installable package:
     $ cd /tmp
     $ virtualenv venv
     $ source venv/bin/activate
-    $ pip install <path of the Git repository>/dist/mayan-edms-1.1.0.tar.gz
+    $ pip install <path of the Git repository>/dist/mayan-edms-1.1.1.tar.gz
     $ mayan-edms.py initialsetup
     $ mayan-edms.py runserver
 
@@ -504,13 +504,13 @@ Wheel package
 
 2. Create wheel package using the source file package (Until issue #99 of wheel is fixed: https://bitbucket.org/pypa/wheel/issue/99/cannot-exclude-directory)::
 
-    $ pip wheel --no-index --no-deps --wheel-dir dist dist/mayan-edms-1.1.0.tar.gz
+    $ pip wheel --no-index --no-deps --wheel-dir dist dist/mayan-edms-1.1.1.tar.gz
 
 3. Do a test install::
 
     $ cd /tmp
     $ virtualenv venv
     $ source venv/bin/activate
-    $ pip install <path of the Git repository>/dist/mayan_edms-1.1.0-py2-none-any.whl
+    $ pip install <path of the Git repository>/dist/mayan_edms-1.1.1-py2-none-any.whl
     $ mayan-edms.py initialsetup
     $ mayan-edms.py runserver

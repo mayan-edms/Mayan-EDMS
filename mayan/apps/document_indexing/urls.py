@@ -10,7 +10,8 @@ from .api_views import (
 from .views import SetupIndexDocumentTypesView
 
 
-urlpatterns = patterns('document_indexing.views',
+urlpatterns = patterns(
+    'document_indexing.views',
     url(r'^setup/index/list/$', 'index_setup_list', (), 'index_setup_list'),
     url(r'^setup/index/create/$', 'index_setup_create', (), 'index_setup_create'),
     url(r'^setup/index/(?P<index_pk>\d+)/edit/$', 'index_setup_edit', (), 'index_setup_edit'),
@@ -29,7 +30,8 @@ urlpatterns = patterns('document_indexing.views',
     url(r'^list/for/document/(?P<document_id>\d+)/$', 'document_index_list', (), 'document_index_list'),
 )
 
-api_urls = patterns('',
+api_urls = patterns(
+    '',
     url(r'^index/node/(?P<pk>[0-9]+)/documents/$', APIIndexNodeInstanceDocumentListView.as_view(), name='index-node-documents'),
     url(r'^index/template/(?P<pk>[0-9]+)/$', APIIndexTemplateView.as_view(), name='index-template-detail'),
     url(r'^indexes/(?P<pk>[0-9]+)/$', APIIndexView.as_view(), name='index-detail'),

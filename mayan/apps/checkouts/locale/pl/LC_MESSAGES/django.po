@@ -4,13 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Annunnaky <doublemiu@gmail.com>, 2015
+# mic <winterfall24@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 20:44-0400\n"
-"PO-Revision-Date: 2015-01-11 22:05+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2015-05-15 18:59-0400\n"
+"PO-Revision-Date: 2015-03-01 19:24+0000\n"
+"Last-Translator: Annunnaky <doublemiu@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -64,15 +66,15 @@ msgstr ""
 
 #: models.py:23
 msgid "Document"
-msgstr ""
+msgstr "Dokument"
 
 #: models.py:24
 msgid "Check out date and time"
-msgstr ""
+msgstr "Sprawdź datę i godzinę"
 
 #: models.py:25 widgets.py:79
 msgid "Check out expiration date and time"
-msgstr ""
+msgstr "Sprawdź datę i godzinę wygaśnięcia"
 
 #: models.py:25
 msgid "Amount of time to hold the document checked out in minutes."
@@ -80,7 +82,7 @@ msgstr ""
 
 #: models.py:32
 msgid "Block new version upload"
-msgstr ""
+msgstr "Zablokuj uaktualnienie do nowszej wersji."
 
 #: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
@@ -129,12 +131,12 @@ msgstr ""
 #: views.py:50
 #, python-format
 msgid "Document status: %s"
-msgstr ""
+msgstr "Status dokumentu: %s"
 
 #: views.py:54
 #, python-format
 msgid "User: %s"
-msgstr ""
+msgstr "Użytkownik: %s"
 
 #: views.py:55
 #, python-format
@@ -153,11 +155,11 @@ msgstr ""
 
 #: views.py:57
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
 
 #: views.py:57
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: views.py:62
 #, python-format
@@ -207,23 +209,23 @@ msgstr ""
 
 #: widgets.py:17
 msgid "Days"
-msgstr ""
+msgstr "Dni"
 
 #: widgets.py:18
 msgid "Hours"
-msgstr ""
+msgstr "Godziny"
 
 #: widgets.py:19
 msgid "Minutes"
-msgstr ""
+msgstr "Minuty"
 
 #: widgets.py:49
 msgid "Enter a valid number of days."
-msgstr ""
+msgstr "Wprowadź poprawną liczbę dni."
 
 #: widgets.py:50
 msgid "Enter a valid number of hours."
-msgstr ""
+msgstr "Wprowadź poprawną liczbę godzin."
 
 #: widgets.py:51
 msgid "Enter a valid number of minutes."
@@ -231,7 +233,7 @@ msgstr ""
 
 #: widgets.py:52
 msgid "Enter a valid time difference."
-msgstr ""
+msgstr "Wprowadź różnicę czasu."
 
 #: widgets.py:78
 msgid ""

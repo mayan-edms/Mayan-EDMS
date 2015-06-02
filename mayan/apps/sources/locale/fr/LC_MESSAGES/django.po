@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:54-0400\n"
-"PO-Revision-Date: 2015-02-05 07:36+0000\n"
+"POT-Creation-Date: 2015-05-15 19:03-0400\n"
+"PO-Revision-Date: 2015-04-06 09:27+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -62,15 +62,15 @@ msgstr "Sources"
 
 #: links.py:24
 msgid "Add new webform source"
-msgstr ""
+msgstr "Ajouter une nouvelle source de formulaire web"
 
 #: links.py:25
 msgid "Add new staging folder"
-msgstr ""
+msgstr "Ajouter un nouveau répertoire d'indexation"
 
 #: links.py:26
 msgid "Add new watch folder"
-msgstr ""
+msgstr "Ajouter une nouvelle surveillance de dossier"
 
 #: links.py:27
 msgid "Add new POP3 email"
@@ -118,7 +118,7 @@ msgstr "Formulaire web"
 
 #: literals.py:28 models.py:137
 msgid "Staging folder"
-msgstr ""
+msgstr "Répertoire dit d'index, modifications en cours"
 
 #: literals.py:29 models.py:352
 msgid "Watch folder"
@@ -146,15 +146,15 @@ msgstr "Source"
 
 #: models.py:93
 msgid "Interactive source"
-msgstr ""
+msgstr "Source interactive"
 
 #: models.py:94
 msgid "Interactive sources"
-msgstr ""
+msgstr "Sources interactives "
 
 #: models.py:101 models.py:340
 msgid "Folder path"
-msgstr ""
+msgstr "Chemin du dossier"
 
 #: models.py:101 models.py:340
 msgid "Server side filesystem path."
@@ -200,11 +200,11 @@ msgstr "Impossible d'obtenir la liste des fichiers en cours de modification:%s"
 #: models.py:134
 #, python-format
 msgid "Error deleting staging file; %s"
-msgstr ""
+msgstr "Impossible de supprimer le fichier en cours de modification: %s"
 
 #: models.py:138
 msgid "Staging folders"
-msgstr ""
+msgstr "Répertoires dit d'index, modifications en cours"
 
 #: models.py:154
 msgid "Web forms"
@@ -228,11 +228,11 @@ msgstr "Type de document"
 
 #: models.py:167
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
+msgstr "Assigner un type de document aux documents importés à partir de cette source."
 
 #: models.py:168
 msgid "Whether to expand or not, compressed archives."
-msgstr ""
+msgstr "Choisir de décompresser ou pas les archives compressées."
 
 #: models.py:207
 msgid "Interval source"
@@ -258,7 +258,7 @@ msgstr "Port"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
+msgstr "Les choix typiques sont 110 pour le POP3, 995 pour le POP3 over SSL, 143 pour l'IMAP, 993 pour l'IMAP over SSL."
 
 #: models.py:215
 msgid "Username"
@@ -287,7 +287,7 @@ msgstr "Délai d'attente dépassé"
 
 #: models.py:290 models.py:291
 msgid "POP email"
-msgstr ""
+msgstr "Compte POP"
 
 #: models.py:297
 msgid "Mailbox"
@@ -295,11 +295,11 @@ msgstr "Boîte aux lettres"
 
 #: models.py:297
 msgid "Mail from which to check for messages with attached documents."
-msgstr ""
+msgstr "Compte de courriel dont il faut surveiller les messages avec pièces jointes."
 
 #: models.py:353
 msgid "Watch folders"
-msgstr ""
+msgstr "surveiller les répertoires"
 
 #: models.py:357
 msgid "Enter a valid value."
@@ -307,15 +307,15 @@ msgstr "Saisissez une valeur valide."
 
 #: models.py:385 views.py:494
 msgid "Order"
-msgstr ""
+msgstr "Ordre"
 
 #: models.py:386 views.py:495 views.py:532 views.py:561
 msgid "Transformation"
-msgstr ""
+msgstr "Transformation"
 
 #: models.py:387 views.py:496
 msgid "Arguments"
-msgstr ""
+msgstr "Arguments"
 
 #: models.py:387
 #, python-format
@@ -324,11 +324,11 @@ msgstr "Utiliser des dictionnaires afin d'identifier les arguments, exemple:%s"
 
 #: models.py:397
 msgid "Document source transformation"
-msgstr ""
+msgstr "Transformation du document source"
 
 #: models.py:398
 msgid "Document source transformations"
-msgstr ""
+msgstr "Transformations du document source"
 
 #: permissions.py:7
 msgid "Sources setup"
@@ -354,20 +354,20 @@ msgstr "Afficher les sources du document en cours"
 msgid ""
 "No interactive document sources have been defined or none have been enabled,"
 " create one before proceeding."
-msgstr ""
+msgstr "Aucune source de document interactifs n'a été définie ou/ni activée, créer en une avant de continuer."
 
 #: views.py:140
 msgid "Files in staging path"
-msgstr ""
+msgstr "Fichiers dans l'index, en cours de modification"
 
 #: views.py:224
 msgid "New document queued for uploaded and will be available shortly."
-msgstr ""
+msgstr "Nouveau document ajouter dans la file d'attente pour transfert et disponible dans les plus bref délai."
 
 #: views.py:249
 #, python-format
 msgid "Upload a local document from source: %s"
-msgstr ""
+msgstr "importer un document local à partir de la source: %s"
 
 #: views.py:257
 msgid "Current document type"
@@ -384,12 +384,12 @@ msgstr "Métadonnées actuelles"
 #: views.py:313
 msgid ""
 "New document version queued for uploaded and will be available shortly."
-msgstr ""
+msgstr "Une nouvelle version du document mis en fille d'attente pour importation qui sera disponible dans les plus brefs délai."
 
 #: views.py:338
 #, python-format
 msgid "Upload a new version from source: %s"
-msgstr ""
+msgstr "Importer une nouvelle version à partir de la source: %s"
 
 #: views.py:354
 msgid "Staging file delete successfully."
@@ -402,15 +402,15 @@ msgstr "Erreur de suppression du fichier en cours de modificiation;%s."
 
 #: views.py:382
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: views.py:387
 msgid "Yes"
-msgstr ""
+msgstr "Oui"
 
 #: views.py:387
 msgid "No"
-msgstr ""
+msgstr "Non"
 
 #: views.py:409
 msgid "Source edited successfully"
@@ -424,7 +424,7 @@ msgstr "Erreur lors de la modification de la source;%s"
 #: views.py:417
 #, python-format
 msgid "Edit source: %s"
-msgstr ""
+msgstr "Modifier la source: %s"
 
 #: views.py:436
 #, python-format
@@ -458,7 +458,7 @@ msgstr "Créer une nouvelle source de type:%s"
 #: views.py:489
 #, python-format
 msgid "Transformations for: %s"
-msgstr ""
+msgstr "Transformations pour:%s"
 
 #: views.py:518
 msgid "Source transformation edited successfully"
@@ -505,15 +505,15 @@ msgstr "Créer une nouvelle transformation pour la source:%s"
 
 #: widgets.py:23
 msgid "Staging file page image"
-msgstr ""
+msgstr "Affichage sous forme d'image de la page de fichier"
 
 #: wizards.py:44
 msgid "Step 1 of 2: Select document type"
-msgstr ""
+msgstr "Étape 1 sur 2: Sélectionner le type de document"
 
 #: wizards.py:45
 msgid "Step 2 of 2: Enter document metadata"
-msgstr ""
+msgstr "Étape 2 sur 2: Saisir les méta-données du document"
 
 #: wizards.py:65
 msgid "Next step"

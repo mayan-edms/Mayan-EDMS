@@ -8,7 +8,8 @@ from .api_views import (
 )
 from .views import FolderDetailView, FolderListView
 
-urlpatterns = patterns('folders.views',
+urlpatterns = patterns(
+    'folders.views',
     url(r'^list/$', FolderListView.as_view(), name='folder_list'),
     url(r'^create/$', 'folder_create', (), 'folder_create'),
     url(r'^(?P<folder_id>\d+)/edit/$', 'folder_edit', (), 'folder_edit'),
@@ -23,7 +24,8 @@ urlpatterns = patterns('folders.views',
     url(r'^(?P<folder_pk>\d+)/acl/list/$', 'folder_acl_list', (), 'folder_acl_list'),
 )
 
-api_urls = patterns('',
+api_urls = patterns(
+    '',
     url(r'^folders/(?P<pk>[0-9]+)/documents/(?P<document_pk>[0-9]+)/$', APIFolderDocumentView.as_view(), name='folder-document'),
     url(r'^folders/(?P<pk>[0-9]+)/documents/$', APIFolderDocumentListView.as_view(), name='folder-document-list'),
     url(r'^folders/(?P<pk>[0-9]+)/$', APIFolderView.as_view(), name='folder-detail'),

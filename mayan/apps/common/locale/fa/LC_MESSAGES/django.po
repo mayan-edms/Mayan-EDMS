@@ -4,7 +4,7 @@
 #
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
@@ -27,7 +27,7 @@ msgstr ""
 
 #: classes.py:40
 msgid "Available attributes: "
-msgstr ""
+msgstr "خصوصیات موجود"
 
 #: forms.py:98
 msgid "Selection"
@@ -61,6 +61,7 @@ msgstr ""
 msgid "License"
 msgstr "لیسانس"
 
+<<<<<<< HEAD
 #: links.py:19
 msgid "Maintenance"
 msgstr ""
@@ -72,6 +73,19 @@ msgstr ""
 #: links.py:21 views.py:435
 msgid "Tools"
 msgstr ""
+=======
+#: links.py:17
+msgid "Locale profile"
+msgstr "پروفایل محلی"
+
+#: links.py:18
+msgid "Edit locale profile"
+msgstr "ویرایش پروفایل محلی"
+
+#: links.py:20
+msgid "Logout"
+msgstr "خروج"
+>>>>>>> master
 
 #: models.py:29 models.py:32
 msgid "Anonymous user"
@@ -115,23 +129,23 @@ msgstr "فایلهای آپلود شده اشتراکی"
 
 #: models.py:64
 msgid "User"
-msgstr ""
+msgstr "کاربر"
 
 #: models.py:66
 msgid "Timezone"
-msgstr ""
+msgstr "زمان محلی"
 
 #: models.py:67
 msgid "Language"
-msgstr ""
+msgstr "زبان"
 
 #: models.py:73
 msgid "User locale profile"
-msgstr ""
+msgstr "پروفایل محلی کاربر"
 
 #: models.py:74
 msgid "User locale profiles"
-msgstr ""
+msgstr "پروفایل محلی کاربر"
 
 #: settings.py:14
 msgid ""
@@ -182,7 +196,7 @@ msgstr "جزئیاتا کاربر فعلی"
 
 #: views.py:196
 msgid "Current user locale profile details"
-msgstr ""
+msgstr "شرح پروفایل محلی کاربر فعلی"
 
 #: views.py:213
 msgid "E-mail conflict, another user has that same email."
@@ -198,11 +212,11 @@ msgstr "یرایش جزئیات کاربر کنونی"
 
 #: views.py:248
 msgid "Current user's locale profile details updated."
-msgstr ""
+msgstr "شرح پروفایل محلی کاربر فعلی بروز رسانی شد."
 
 #: views.py:257
 msgid "Edit current user locale profile details"
-msgstr ""
+msgstr "ویرایش شرح پروفایل محلی کاربر فعلی"
 
 #: views.py:282
 #, python-format

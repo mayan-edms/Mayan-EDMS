@@ -10,8 +10,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 20:44-0400\n"
-"PO-Revision-Date: 2015-01-29 07:50+0000\n"
+"POT-Creation-Date: 2015-05-15 18:59-0400\n"
+"PO-Revision-Date: 2015-04-06 09:00+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -42,27 +42,27 @@ msgstr "Document déjà verrouillé."
 
 #: links.py:19
 msgid "Checkouts"
-msgstr ""
+msgstr "Verrous"
 
 #: links.py:20
 msgid "Check out document"
-msgstr ""
+msgstr "Verrouiller le document"
 
 #: links.py:21
 msgid "Check in document"
-msgstr ""
+msgstr "Déverrouiller le document"
 
 #: links.py:22
 msgid "Check in/out"
-msgstr ""
+msgstr "Verrouiller/déverrouiller"
 
 #: literals.py:9
 msgid "Checked out"
-msgstr ""
+msgstr "Verrouillé"
 
 #: literals.py:10
 msgid "Checked in/available"
-msgstr ""
+msgstr "Déverrouiller/rendre disponible"
 
 #: models.py:23
 msgid "Document"
@@ -70,7 +70,7 @@ msgstr "Document"
 
 #: models.py:24
 msgid "Check out date and time"
-msgstr ""
+msgstr "Date et heure du verrouillage"
 
 #: models.py:25 widgets.py:79
 msgid "Check out expiration date and time"
@@ -82,7 +82,7 @@ msgstr "Durée en minutes pendant laquelle le document doit être verrouillé"
 
 #: models.py:32
 msgid "Block new version upload"
-msgstr ""
+msgstr "Empêcher l'importation d'une nouvelle version"
 
 #: models.py:32
 msgid "Do not allow new version of this document to be uploaded."
@@ -94,7 +94,7 @@ msgstr "Verrouillage du document"
 
 #: models.py:59
 msgid "Document checkouts"
-msgstr ""
+msgstr "Verrouillages du document"
 
 #: permissions.py:9
 msgid "Check out documents"
@@ -114,7 +114,7 @@ msgstr "Permettre de révoquer le verrouillage"
 
 #: views.py:32
 msgid "Documents checked out"
-msgstr ""
+msgstr "Documents verrouillés"
 
 #: views.py:35
 msgid "Checkout user"
@@ -122,11 +122,11 @@ msgstr "Verrou utilisateur"
 
 #: views.py:36
 msgid "Checkout time and date"
-msgstr ""
+msgstr "date et heure de verrouillage"
 
 #: views.py:37
 msgid "Checkout expiration"
-msgstr ""
+msgstr "Expiration du verrou"
 
 #: views.py:50
 #, python-format

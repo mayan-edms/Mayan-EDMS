@@ -2,7 +2,8 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns('acls.views',
+urlpatterns = patterns(
+    'acls.views',
     url(r'^new_holder_for/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/$', 'acl_new_holder_for', (), 'acl_new_holder_for'),
     url(r'^list_for/(?P<app_label>[-\w]+)/(?P<model_name>[-\w]+)/(?P<object_id>\d+)/$', 'acl_list', (), 'acl_list'),
     url(r'^details/(?P<access_object_gid>[.\w]+)/holder/(?P<holder_object_gid>[.\w]+)/$', 'acl_detail', (), 'acl_detail'),
@@ -18,5 +19,4 @@ urlpatterns = patterns('acls.views',
 
     url(r'^class/multiple/grant/$', 'acl_class_multiple_grant', (), 'acl_class_multiple_grant'),
     url(r'^class/multiple/revoke/$', 'acl_class_multiple_revoke', (), 'acl_class_multiple_revoke'),
-
 )

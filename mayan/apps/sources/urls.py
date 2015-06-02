@@ -9,7 +9,8 @@ from .api_views import (
 from .views import UploadInteractiveVersionView, UploadInteractiveView
 from .wizards import DocumentCreateWizard
 
-urlpatterns = patterns('sources.views',
+urlpatterns = patterns(
+    'sources.views',
     url(r'^staging_file/(?P<staging_folder_pk>\d+)/(?P<encoded_filename>.+)/delete/$', 'staging_file_delete', name='staging_file_delete'),
 
     url(r'^upload/document/new/interactive/(?P<source_id>\d+)/$', UploadInteractiveView.as_view(), name='upload_interactive'),
@@ -36,7 +37,8 @@ urlpatterns = patterns('sources.views',
     url(r'^(?P<document_id>\d+)/create/siblings/$', 'document_create_siblings', (), 'document_create_siblings'),
 )
 
-api_urls = patterns('',
+api_urls = patterns(
+    '',
     url(r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/image/$', APIStagingSourceFileImageView.as_view(), name='stagingfolderfile-image-view'),
     url(r'^staging_folders/file/(?P<staging_folder_pk>[0-9]+)/(?P<encoded_filename>.+)/$', APIStagingSourceFileView.as_view(), name='stagingfolderfile-detail'),
     url(r'^staging_folders/$', APIStagingSourceListView.as_view(), name='stagingfolder-list'),

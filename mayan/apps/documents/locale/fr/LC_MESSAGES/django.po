@@ -11,9 +11,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-02-06 16:50-0400\n"
-"PO-Revision-Date: 2015-02-05 10:38+0000\n"
-"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
+"POT-Creation-Date: 2015-05-15 19:00-0400\n"
+"PO-Revision-Date: 2015-05-15 23:05+0000\n"
+"Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -103,7 +103,7 @@ msgstr "Pages (%d) du document"
 msgid "Quick document rename"
 msgstr "Renommage rapide du document"
 
-#: forms.py:148 widgets.py:65
+#: forms.py:148
 #, python-format
 msgid "Page %(page_number)d"
 msgstr "Page %(page_number)d"
@@ -498,7 +498,7 @@ msgstr "Langue des documents par défaut (au format ISO639-2)."
 
 #: settings.py:33
 msgid "List of supported document languages."
-msgstr ""
+msgstr "Liste des langues supportées du document."
 
 #: statistics.py:46
 #, python-format
@@ -589,17 +589,17 @@ msgstr "Pages"
 #: views.py:131
 #, python-format
 msgid "Properties for document: %s"
-msgstr ""
+msgstr "Propriété du document: %s"
 
 #: views.py:152
 #, python-format
 msgid "Preview of document: %s"
-msgstr ""
+msgstr "Aperçu du document: %s"
 
 #: views.py:173
 #, python-format
 msgid "Content of document: %s"
-msgstr ""
+msgstr "Conetnu du document: %s"
 
 #: views.py:186 views.py:277 views.py:468 views.py:520
 msgid "Must provide at least one document."
@@ -617,8 +617,8 @@ msgstr "Document: erreur de suppression du %(document)s: %(error)s"
 #: views.py:214
 msgid "Are you sure you wish to delete the selected document?"
 msgid_plural "Are you sure you wish to delete the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Êtes vous sûr de vouloir supprimer le document sélectionné?"
+msgstr[1] "Êtes vous sûr de vouloir supprimer les documents sélectionnés?"
 
 #: views.py:255
 #, python-format
@@ -628,11 +628,11 @@ msgstr "Modification du document \"%s\" effectuée."
 #: views.py:264
 #, python-format
 msgid "Edit properties of document: %s"
-msgstr ""
+msgstr "Modifier les propriétés du document: %s"
 
 #: views.py:297
 msgid "Document type changed successfully."
-msgstr ""
+msgstr "Le type de document a été changé avec succès."
 
 #: views.py:304
 msgid "Submit"
@@ -641,8 +641,8 @@ msgstr "Soumettre"
 #: views.py:308
 msgid "Change the type of the selected document."
 msgid_plural "Change the type of the selected documents."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Changer le type du document sélectionné."
+msgstr[1] "Changer le type des documents sélectionnés."
 
 #: views.py:373
 msgid "Documents to be downloaded"
@@ -650,7 +650,7 @@ msgstr "Documents à télécharger"
 
 #: views.py:382
 msgid "Date and time"
-msgstr ""
+msgstr "Date et heure"
 
 #: views.py:384 views.py:1129
 msgid "Encoding"
@@ -662,19 +662,19 @@ msgstr "Retour"
 
 #: views.py:485
 msgid "Document queued for page count reset."
-msgstr ""
+msgstr "Document en file d'attente pour remise à zéro de la page de comptage."
 
 #: views.py:486
 msgid "Documents queued for page count reset."
-msgstr ""
+msgstr "Documents en file d'attente pour remise à zéro de la page de comptage."
 
 #: views.py:495
 msgid ""
 "Are you sure you wish to reset the page count of the selected document?"
 msgid_plural ""
 "Are you sure you wish to reset the page count of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Êtes vous sûr de vouloir réinitialiser le compteur de page du document sélectionné? "
+msgstr[1] "Êtes vous sûr de vouloir réinitialiser le compteur de page des documents sélectionnés? "
 
 #: views.py:538
 #, python-format
@@ -697,8 +697,8 @@ msgid ""
 msgid_plural ""
 "Are you sure you wish to clear all the page transformations for the selected"
 " documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Êtes vous certain de vouloir supprimer toutes les transformations de page pour le document sélectionné?"
+msgstr[1] "Êtes vous certain de vouloir supprimer toutes les transformations de page pour les documents sélectionnés?"
 
 #: views.py:579 views.py:621
 #, python-format
@@ -776,7 +776,7 @@ msgstr "Erreur lors de la création du type de document;%(error)s"
 #: views.py:967
 #, python-format
 msgid "Filenames for document type: %s"
-msgstr ""
+msgstr "Nom de fichiers pour le type de document: %s"
 
 #: views.py:997
 msgid "Document type filename edited successfully"
@@ -790,7 +790,7 @@ msgstr "Erreur lors de la modification du nom de fichier du type de document;%s"
 #: views.py:1005
 #, python-format
 msgid "Edit filename \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
+msgstr "Modifier le nom de fichier \"%(filename)s\" pour le type de document \"%(document_type)s\""
 
 #: views.py:1014 views.py:1046
 msgid "Document type filename"
@@ -843,7 +843,7 @@ msgstr "Heure et date"
 #: views.py:1140
 #, python-format
 msgid "Versions of document: %s"
-msgstr ""
+msgstr "Versions du document:%s"
 
 #: views.py:1160
 msgid "Document version reverted successfully"
@@ -896,7 +896,12 @@ msgid ""
 "%(document_page)s"
 msgstr "Êtes vous certain de vouloir supprimer la transformation \"%(transformation)s\" pour: %(document_page)s"
 
-#: widgets.py:84
+#: widgets.py:67
+#, python-format
+msgid "Page %(page_number)d of %(total_pages)d"
+msgstr ""
+
+#: widgets.py:86
 msgid "Document page image"
 msgstr "Image de la page du document"
 
@@ -1011,9 +1016,6 @@ msgstr "Image de la page du document"
 
 #~ msgid "Missing documents"
 #~ msgstr "missing documents"
-
-#~ msgid "Page %(page_num)d of %(total_pages)d"
-#~ msgstr "Page %(page_num)d out of %(total_pages)d of %(document)s"
 
 #~ msgid "Click on the image for full size preview"
 #~ msgstr "Click on the image for full size preview"

@@ -8,7 +8,8 @@ from .api_views import (
 )
 from .views import TagTaggedItemListView
 
-urlpatterns = patterns('tags.views',
+urlpatterns = patterns(
+    'tags.views',
     url(r'^list/$', 'tag_list', (), 'tag_list'),
     url(r'^create/$', 'tag_create', (), 'tag_create'),
     url(r'^(?P<tag_id>\d+)/delete/$', 'tag_delete', (), 'tag_delete'),
@@ -27,7 +28,8 @@ urlpatterns = patterns('tags.views',
     url(r'^(?P<tag_pk>\d+)/acl/list/$', 'tag_acl_list', (), 'tag_acl_list'),
 )
 
-api_urls = patterns('',
+api_urls = patterns(
+    '',
     url(r'^tags/(?P<pk>[0-9]+)/documents/$', APITagDocumentListView.as_view(), name='tag-document-list'),
     url(r'^tags/(?P<pk>[0-9]+)/$', APITagView.as_view(), name='tag-detail'),
     url(r'^tags/$', APITagListView.as_view(), name='tag-list'),
