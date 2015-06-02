@@ -1,12 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 
+from datetime import datetime
 import logging
 
 from django.conf import settings
 from django.contrib import messages
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
@@ -28,33 +29,35 @@ logger = logging.getLogger(__name__)
 def key_receive(request, key_id):
     Permission.objects.check_permissions(request.user, [PERMISSION_KEY_RECEIVE])
 
-    post_action_redirect = None
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         try:
-            term = request.GET.get('term')
-            results = gpg.query(term)
-            keys_dict = dict([(key.keyid, key) for key in results])
-            key = gpg.import_key(keys_dict[key_id].key)
-            messages.success(request, _('Key: %s, imported successfully.') % key)
-            return HttpResponseRedirect(next)
-        except (KeyImportError, KeyError, TypeError) as exception:
+            gpg.receive_key(key_id=key_id)
+        except Exception as exception:
             messages.error(
                 request,
-                _('Unable to import key id: %(key_id)s; %(error)s') %
+                _('Unable to import key: %(key_id)s; %(error)s') %
                 {
                     'key_id': key_id,
                     'error': exception,
                 }
             )
             return HttpResponseRedirect(previous)
+        else:
+            messages.success(
+                request,
+                _('Successfully received key: %(key_id)s') %
+                {
+                    'key_id': key_id,
+                }
+            )
+
+            return redirect('django_gpg:key_public_list')
 
     return render_to_response('appearance/generic_confirm.html', {
         'title': _('Import key'),
         'message': _('Are you sure you wish to import key id: %s?') % key_id,
-        'next': next,
         'previous': previous,
         'submit_method': 'GET',
 
@@ -146,40 +149,27 @@ def key_query(request):
                     'extra_columns': [
                         {
                             'name': _('ID'),
-                            'attribute': 'keyid',
+                            'attribute': 'key_id',
                         },
                         {
                             'name': _('Type'),
-                            'attribute': 'algo',
+                            'attribute': 'key_type',
                         },
                         {
                             'name': _('Creation date'),
-                            'attribute': 'creation_date',
-                        },
-                        {
-                            'name': _('Disabled'),
-                            'attribute': 'disabled',
+                            'attribute': encapsulate(lambda x: datetime.fromtimestamp(int(x.date)))
                         },
                         {
                             'name': _('Expiration date'),
-                            'attribute': 'expiration_date',
-                        },
-                        {
-                            'name': _('Expired'),
-                            'attribute': 'expired',
+                            'attribute': encapsulate(lambda x: datetime.fromtimestamp(int(x.expires)) if x.expires else _('No expiration'))
                         },
                         {
                             'name': _('Length'),
-                            'attribute': 'key_length',
+                            'attribute': 'length',
                         },
                         {
-                            'name': _('Revoked'),
-                            'attribute': 'revoked',
-                        },
-
-                        {
-                            'name': _('Identifies'),
-                            'attribute': encapsulate(lambda x: ', '.join([identity.uid for identity in x.identities])),
+                            'name': _('Identities'),
+                            'attribute': encapsulate(lambda x: ', '.join(x.uids)),
                         },
                     ]
                 },

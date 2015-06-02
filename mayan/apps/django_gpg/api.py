@@ -9,7 +9,6 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-from hkp import KeyServer
 import gnupg
 
 from django.utils.translation import ugettext_lazy as _
@@ -18,6 +17,16 @@ from .exceptions import *  # NOQA
 from .literals import KEY_TYPES
 
 logger = logging.getLogger(__name__)
+
+
+class KeyStub(object):
+    def __init__(self, raw):
+        self.key_id = raw['keyid']
+        self.key_type = raw['type']
+        self.date = raw['date']
+        self.expires = raw['expires']
+        self.length = raw['length']
+        self.uids = raw['uids']
 
 
 class Key(object):
@@ -268,14 +277,8 @@ class GPG(object):
     def query(self, term):
         results = {}
         for keyserver in self.keyservers:
-            url = 'http://%s' % keyserver
-            server = KeyServer(url)
-            try:
-                key_list = server.search(term)
-                for key in key_list:
-                    results[key.keyid] = key
-            except:
-                pass
+            for key_data in self.gpg.search_keys(query=term, keyserver=keyserver):
+                results[key_data['keyid']] = KeyStub(raw=key_data)
 
         return results.values()
 
