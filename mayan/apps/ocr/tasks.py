@@ -18,8 +18,8 @@ from .signals import post_document_version_ocr
 logger = logging.getLogger(__name__)
 
 
-@app.task(ignore_result=True)
-def task_do_ocr(document_version_pk):
+@app.task(bind=True, ignore_result=True)
+def task_do_ocr(self, document_version_pk):
     lock_id = 'task_do_ocr_doc_version-%d' % document_version_pk
     try:
         logger.debug('trying to acquire lock: %s', lock_id)
