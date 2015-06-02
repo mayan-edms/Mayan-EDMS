@@ -13,6 +13,7 @@ from mayan.celery import app
 from .api import do_document_ocr
 from .literals import LOCK_EXPIRE
 from .models import DocumentVersionOCRError
+from .signals import post_document_version_ocr
 
 logger = logging.getLogger(__name__)
 
@@ -54,6 +55,8 @@ def task_do_ocr(document_version_pk):
                 pass
             else:
                 entry.delete()
+
+            post_document_version_ocr.send(sender=self, instance=document_version)
         finally:
             lock.release()
     except LockError:
