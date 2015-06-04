@@ -149,7 +149,7 @@ def key_query(request):
                     'extra_columns': [
                         {
                             'name': _('ID'),
-                            'attribute': 'key_id',
+                            'attribute': encapsulate(lambda item: '...{0}'.format(item.key_id[-16:])),
                         },
                         {
                             'name': _('Type'),
