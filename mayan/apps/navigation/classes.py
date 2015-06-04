@@ -23,6 +23,7 @@ class ResolvedLink(object):
     active = False
     description = None
     icon = None
+    tags = None
     text = _('Unnamed link')
     url = '#'
 
@@ -116,7 +117,7 @@ class Link(object):
     def __init__(self, text, view, args=None, condition=None,
                  conditional_disable=None, description=None, icon=None,
                  keep_query=False, klass=None, kwargs=None, permissions=None,
-                 remove_from_query=None):
+                 remove_from_query=None, tags=None):
 
         self.args = args or []
         self.condition = condition
@@ -128,6 +129,7 @@ class Link(object):
         self.kwargs = kwargs or {}
         self.permissions = permissions or []
         self.remove_from_query = remove_from_query or []
+        self.tags = tags
         self.text = text
         self.view = view
 
@@ -164,6 +166,7 @@ class Link(object):
         resolved_link.description = self.description
         resolved_link.icon = self.icon
         resolved_link.klass = self.klass
+        resolved_link.tags = self.tags
         resolved_link.text = self.text
 
         view_name = Variable('"{}"'.format(self.view))
