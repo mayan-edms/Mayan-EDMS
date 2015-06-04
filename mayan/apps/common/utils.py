@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
 import logging
@@ -16,6 +15,134 @@ from django.utils.importlib import import_module
 from django.utils.translation import ugettext_lazy as _
 
 logger = logging.getLogger(__name__)
+
+
+# http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
+def copyfile(source, destination, buffer_size=1024 * 1024):
+    """
+    Copy a file from source to dest. source and dest
+    can either be strings or any object with a read or
+    write method, like StringIO for example.
+    """
+    source_descriptor = get_descriptor(source)
+    destination_descriptor = get_descriptor(destination, read=False)
+
+    while True:
+        copy_buffer = source_descriptor.read(buffer_size)
+        if copy_buffer:
+            destination_descriptor.write(copy_buffer)
+        else:
+            break
+
+    source_descriptor.close()
+    destination_descriptor.close()
+
+
+def encapsulate(function):
+    # Workaround Django ticket 15791
+    # Changeset 16045
+    # http://stackoverflow.com/questions/6861601/cannot-resolve-callable-context-variable/6955045#6955045
+    return lambda: function
+
+
+def fs_cleanup(filename, suppress_exceptions=True):
+    """
+    Tries to remove the given filename. Ignores non-existent files
+    """
+    try:
+        os.remove(filename)
+    except OSError:
+        if suppress_exceptions:
+            pass
+        else:
+            raise
+
+
+def generate_choices_w_labels(choices):
+    results = []
+    for choice in choices:
+        ct = ContentType.objects.get_for_model(choice)
+        label = unicode(choice)
+        if isinstance(choice, User):
+            label = choice.get_full_name() if choice.get_full_name() else choice
+
+        results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
+
+    # Sort results by the label not the key value
+    return sorted(results, key=lambda x: x[1])
+
+
+def get_descriptor(file_input, read=True):
+    try:
+        # Is it a file like object?
+        file_input.seek(0)
+    except AttributeError:
+        # If not, try open it.
+        if read:
+            return open(file_input, 'rb')
+        else:
+            return open(file_input, 'wb')
+    else:
+        return file_input
+
+
+def get_object_name(obj):
+    ct_label = ContentType.objects.get_for_model(obj).name
+    if isinstance(obj, User):
+        label = obj.get_full_name() if obj.get_full_name() else obj
+    else:
+        label = unicode(obj)
+
+    return '%s' % (label)
+
+
+# http://snippets.dzone.com/posts/show/5434
+# http://snippets.dzone.com/user/jakob
+def pretty_size(size, suffixes=None):
+    suffixes = suffixes or [
+        ('B', 1024L), ('K', 1048576L), ('M', 1073741824L),
+        ('G', 1099511627776L), ('T', 1125899906842624L)
+    ]
+
+    for suf, lim in suffixes:
+        if size > lim:
+            continue
+        else:
+            try:
+                return round(size / float(lim / 1024L), 2).__str__() + suf
+            except ZeroDivisionError:
+                return 0
+
+
+def pretty_size_10(size):
+    return pretty_size(
+        size,
+        suffixes=[
+            ('B', 1000L), ('K', 1000000L), ('M', 1000000000L),
+            ('G', 1000000000000L), ('T', 1000000000000000L)
+        ])
+
+
+def return_attrib(obj, attrib, arguments=None):
+    try:
+        if isinstance(attrib, types.FunctionType):
+            return attrib(obj)
+        elif isinstance(obj, types.DictType) or isinstance(obj, types.DictionaryType):
+            return obj[attrib]
+        else:
+            result = reduce(getattr, attrib.split('.'), obj)
+            if isinstance(result, types.MethodType):
+                if arguments:
+                    return result(**arguments)
+                else:
+                    return result()
+            else:
+                return result
+    except Exception as exception:
+        if settings.DEBUG:
+            return 'Attribute error: %s; %s' % (attrib, exception)
+        else:
+            pass
 
 
 def urlquote(link=None, get=None):
@@ -60,79 +187,6 @@ def urlquote(link=None, get=None):
         return django_urlquote(link)
 
 
-def return_attrib(obj, attrib, arguments=None):
-    try:
-        if isinstance(attrib, types.FunctionType):
-            return attrib(obj)
-        elif isinstance(obj, types.DictType) or isinstance(obj, types.DictionaryType):
-            return obj[attrib]
-        else:
-            result = reduce(getattr, attrib.split('.'), obj)
-            if isinstance(result, types.MethodType):
-                if arguments:
-                    return result(**arguments)
-                else:
-                    return result()
-            else:
-                return result
-    except Exception as exception:
-        if settings.DEBUG:
-            return 'Attribute error: %s; %s' % (attrib, exception)
-        else:
-            pass
-
-
-# http://snippets.dzone.com/posts/show/5434
-# http://snippets.dzone.com/user/jakob
-def pretty_size(size, suffixes=None):
-    suffixes = suffixes or [
-        ('B', 1024L), ('K', 1048576L), ('M', 1073741824L),
-        ('G', 1099511627776L), ('T', 1125899906842624L)
-    ]
-
-    for suf, lim in suffixes:
-        if size > lim:
-            continue
-        else:
-            try:
-                return round(size / float(lim / 1024L), 2).__str__() + suf
-            except ZeroDivisionError:
-                return 0
-
-
-def pretty_size_10(size):
-    return pretty_size(
-        size,
-        suffixes=[
-            ('B', 1000L), ('K', 1000000L), ('M', 1000000000L),
-            ('G', 1000000000000L), ('T', 1000000000000000L)
-        ])
-
-
-def generate_choices_w_labels(choices):
-    results = []
-    for choice in choices:
-        ct = ContentType.objects.get_for_model(choice)
-        label = unicode(choice)
-        if isinstance(choice, User):
-            label = choice.get_full_name() if choice.get_full_name() else choice
-
-        results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
-
-    # Sort results by the label not the key value
-    return sorted(results, key=lambda x: x[1])
-
-
-def get_object_name(obj):
-    ct_label = ContentType.objects.get_for_model(obj).name
-    if isinstance(obj, User):
-        label = obj.get_full_name() if obj.get_full_name() else obj
-    else:
-        label = unicode(obj)
-
-    return '%s' % (label)
-
-
 def validate_path(path):
     if not os.path.exists(path):
         # If doesn't exist try to create it
@@ -152,58 +206,3 @@ def validate_path(path):
         return False
 
     return True
-
-
-def encapsulate(function):
-    # Workaround Django ticket 15791
-    # Changeset 16045
-    # http://stackoverflow.com/questions/6861601/cannot-resolve-callable-context-variable/6955045#6955045
-    return lambda: function
-
-
-def get_descriptor(file_input, read=True):
-    try:
-        # Is it a file like object?
-        file_input.seek(0)
-    except AttributeError:
-        # If not, try open it.
-        if read:
-            return open(file_input, 'rb')
-        else:
-            return open(file_input, 'wb')
-    else:
-        return file_input
-
-
-# http://stackoverflow.com/questions/123198/how-do-i-copy-a-file-in-python
-def copyfile(source, destination, buffer_size=1024 * 1024):
-    """
-    Copy a file from source to dest. source and dest
-    can either be strings or any object with a read or
-    write method, like StringIO for example.
-    """
-    source_descriptor = get_descriptor(source)
-    destination_descriptor = get_descriptor(destination, read=False)
-
-    while True:
-        copy_buffer = source_descriptor.read(buffer_size)
-        if copy_buffer:
-            destination_descriptor.write(copy_buffer)
-        else:
-            break
-
-    source_descriptor.close()
-    destination_descriptor.close()
-
-
-def fs_cleanup(filename, suppress_exceptions=True):
-    """
-    Tries to remove the given filename. Ignores non-existent files
-    """
-    try:
-        os.remove(filename)
-    except OSError:
-        if suppress_exceptions:
-            pass
-        else:
-            raise
