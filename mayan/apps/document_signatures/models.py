@@ -24,20 +24,20 @@ class DocumentVersionSignature(models.Model):
     Model that describes a document version signature properties
     """
     document_version = models.ForeignKey(DocumentVersion, verbose_name=_('Document version'), editable=False)
-    signature_file = models.FileField(blank=True, null=True, upload_to=upload_to, storage=storage_backend, verbose_name=_('Signature file'), editable=False)
-    has_embedded_signature = models.BooleanField(default=False, verbose_name=_('Has embedded signature'), editable=False)
+    signature_file = models.FileField(blank=True, null=True, upload_to=upload_to, storage=storage_backend, verbose_name=_('Signature file'))
+    has_embedded_signature = models.BooleanField(default=False, verbose_name=_('Has embedded signature'))
 
     objects = DocumentVersionSignatureManager()
 
     def delete_detached_signature_file(self):
         self.signature_file.storage.delete(self.signature_file.path)
 
-    def save(self, *args, **kwargs):
-        if not self.pk:
-            descriptor = self.document_version.open(raw=True)
-            self.has_embedded_signature = gpg.has_embedded_signature(descriptor)
-            descriptor.close()
-        super(DocumentVersionSignature, self).save(*args, **kwargs)
+    def check_for_embedded_signature(self):
+        logger.debug('checking for embedded signature')
+
+        with self.document_version.open(raw=True) as file_object:
+            self.has_embedded_signature = gpg.has_embedded_signature(file_object)
+            self.save()
 
     class Meta:
         verbose_name = _('Document version signature')
