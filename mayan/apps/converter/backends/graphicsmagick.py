@@ -83,12 +83,6 @@ class GraphicsMagick(ConverterBase):
             else:
                 raise ConvertError(error_line)
 
-    def get_available_transformations(self):
-        return [
-            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
-            TRANSFORMATION_ZOOM
-        ]
-
     def get_page_count(self, input_filepath):
         try:
             return len(self.identify_file(unicode(input_filepath)).splitlines())

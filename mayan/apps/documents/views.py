@@ -341,6 +341,9 @@ def document_multiple_document_type_edit(request):
     )
 
 
+from django.http import HttpResponse
+
+
 # TODO: Get rid of this view and convert widget to use API and base64 only images
 def get_document_image(request, document_id, size=PREVIEW_SIZE):
     document = get_object_or_404(Document, pk=document_id)
@@ -364,7 +367,17 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
     task = task_get_document_image.apply_async(kwargs=dict(document_id=document.pk, size=size, page=page, zoom=zoom, rotation=rotation, as_base64=False, version=version), queue='converter')
-    return sendfile.sendfile(request, task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
+    data = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+
+    response = HttpResponse(data, content_type='data/PNG')
+    #response['Content-Disposition'] = 'attachment; filename="somefilename.pdf"'
+
+    return response
+
+    #print 'data!!!!!!!!!!!', task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+    #re
+
+    #return sendfile.sendfile(request, task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
 
 
 def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):

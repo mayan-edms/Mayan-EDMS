@@ -17,7 +17,8 @@ logger = logging.getLogger(__name__)
 @app.task(compression='zlib')
 def task_get_document_image(document_id, *args, **kwargs):
     document = Document.objects.get(pk=document_id)
-    return document.get_image(*args, **kwargs)
+    first_page = document.latest_version.pages.first()
+    return first_page.get_image(*args, **kwargs)
 
 
 @app.task(ignore_result=True)

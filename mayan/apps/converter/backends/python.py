@@ -2,6 +2,13 @@ from __future__ import unicode_literals
 
 import io
 import logging
+import os
+import tempfile
+
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
 
 import slate
 from PIL import Image
@@ -30,29 +37,42 @@ logger = logging.getLogger(__name__)
 
 
 class Python(ConverterBase):
-    def get_page_count(self, input_filepath):
+    def get_page_count(self, file_object, mimetype=None):
         page_count = 1
 
-        mimetype, encoding = get_mimetype(open(input_filepath, 'rb'), input_filepath, mimetype_only=True)
+        #file_object, input_filepath = mkstemp()
+        #file_object.write(input_data)
+
+        if not mimetype:
+            #mimetype, encoding = get_mimetype(file_description=open(input_filepath, 'rb'), filepath=None, mimetype_only=True)
+            mimetype, encoding = get_mimetype(file_object=file_object, mimetype_only=True)
+        else:
+            encoding = None
+
         if mimetype == 'application/pdf':
-            # If file is a PDF open it with slate to determine the page
-            # count
-            with open(input_filepath) as fd:
-                try:
-                    pages = slate.PDF(fd)
-                except:
-                    return 1
-                    # TODO: Maybe return UnknownFileFormat to display proper unknwon file format message in document description
-            return len(pages)
+            # If file is a PDF open it with slate to determine the page count
+            #with open(input_filepath) as fd:
+            try:
+                pages = slate.PDF(file_object)
+            except:
+                return 1
+                # TODO: Maybe return UnknownFileFormat to display proper unknwon file format message in document description
+            else:
+                return len(pages)
+            finally:
+                file_object.seek(0)
 
         try:
-            im = Image.open(input_filepath)
+            #im = Image.fromarray(input_data)
+            image = Image.open(file_object)
         except IOError:  # cannot identify image file
             raise UnknownFileFormat
+        finally:
+            file_object.seek(0)
 
         try:
             while True:
-                im.seek(im.tell() + 1)
+                image.seek(image.tell() + 1)
                 page_count += 1
                 # do something to im
         except EOFError:
@@ -60,40 +80,59 @@ class Python(ConverterBase):
 
         return page_count
 
-    def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT, **kwargs):
-        tmpfile = None
-        mimetype = kwargs.get('mimetype', None)
-        if not mimetype:
-            mimetype, encoding = get_mimetype(open(input_filepath, 'rb'), input_filepath, mimetype_only=True)
+    def convert(self, file_object, mimetype=None, output_format=DEFAULT_FILE_FORMAT, page=DEFAULT_PAGE_NUMBER):
 
-        try:
-            if mimetype == 'application/pdf' and pdftoppm:
-                image_buffer = io.BytesIO()
-                pdftoppm(input_filepath, f=page, l=page, _out=image_buffer)
-                image_buffer.seek(0)
-                im = Image.open(image_buffer)
-            else:
-                im = Image.open(input_filepath)
-        except Exception as exception:
-            logger.error('Error converting image; %s', exception)
-            # Python Imaging Library doesn't recognize it as an image
-            raise ConvertError
-        except IOError:  # cannot identify image file
-            raise UnknownFileFormat
-        finally:
-            if tmpfile:
-                fs_cleanup(tmpfile)
+        #tmpfile = None
+        #mimetype = kwargs.get('mimetype', None)
+
+        if not mimetype:
+            mimetype, encoding = get_mimetype(file_object=file_object, mimetype_only=True)
+
+        ##try:
+        print "MIME!", mimetype
+        if mimetype == 'application/pdf' and pdftoppm:
+            image_buffer = io.BytesIO()
+
+            new_file_object, input_filepath = tempfile.mkstemp()
+            os.write(new_file_object, file_object.read())
+            #file_object.seek(0)
+            #new_file_object.seek(0)
+            os.close(new_file_object)
+
+
+
+            pdftoppm(input_filepath, f=page, l=page, _out=image_buffer)
+            image_buffer.seek(0)
+            image = Image.open(image_buffer)
+            # TODO: remove input_filepath
+        else:
+            image = Image.open(file_object)
+
+
+
+        ##except Exception as exception:
+        ##    logger.error('Error converting image; %s', exception)
+        ##    # Python Imaging Library doesn't recognize it as an image
+        ##    raise ConvertError
+        ##except IOError:  # cannot identify image file
+        ##    raise UnknownFileFormat
+
+
+        #finally:
+        #    if tmpfile:
+        #        fs_cleanup(tmpfile)
 
         current_page = 0
         try:
             while current_page == page - 1:
-                im.seek(im.tell() + 1)
+                image.seek(image.tell() + 1)
                 current_page += 1
                 # do something to im
         except EOFError:
             # end of sequence
             pass
 
+        '''
         try:
             if transformations:
                 aspect = 1.0 * im.size[0] / im.size[1]
@@ -112,17 +151,16 @@ class Python(ConverterBase):
         except:
             # Ignore all transformation error
             pass
+        '''
 
-        if im.mode not in ('L', 'RGB'):
-            im = im.convert('RGB')
+        if image.mode not in ('L', 'RGB'):
+            image = image.convert('RGB')
 
-        im.save(output_filepath, format=file_format)
 
-    def get_available_transformations(self):
-        return [
-            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
-            TRANSFORMATION_ZOOM
-        ]
+        output = StringIO()
+        image.save(output, format=output_format)
+
+        return output
 
     # From: http://united-coders.com/christian-harms/image-resizing-tips-general-and-for-python
     def resize(self, img, box, fit=False, out=None):

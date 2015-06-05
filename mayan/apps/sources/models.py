@@ -19,7 +19,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
-from converter.api import get_available_transformations_choices
+#from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
 from djcelery.models import PeriodicTask, IntervalSchedule
 from documents.models import Document, DocumentType
@@ -376,7 +376,8 @@ class SourceTransformation(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_('Order'), db_index=True)
-    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
+    #transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
+    transformation = models.CharField(max_length=128, verbose_name=_('Transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[argument_validator])
 
     objects = models.Manager()

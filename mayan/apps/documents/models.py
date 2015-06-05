@@ -17,9 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.utils import apply_default_acls
 from common.settings import TEMPORARY_DIRECTORY
-from converter.api import (
-    convert, get_page_count, get_available_transformations_choices
-)
+from converter.classes import Converter
 from converter.exceptions import UnknownFileFormat
 from converter.literals import (
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_PAGE_NUMBER
@@ -127,6 +125,7 @@ class Document(models.Model):
             else:
                 event_document_create.commit(target=self)
 
+    """
     def get_cached_image_name(self, page, version):
         document_version = DocumentVersion.objects.get(pk=version)
         document_page = document_version.pages.get(page_number=page)
@@ -165,19 +164,20 @@ class Document(models.Model):
         logger.debug('file_path: %s', file_path)
 
         if as_base64:
-            mimetype = get_mimetype(open(file_path, 'r'), file_path, mimetype_only=True)[0]
-            image = open(file_path, 'r')
-            base64_data = base64.b64encode(image.read())
-            image.close()
-            return 'data:%s;base64,%s' % (mimetype, base64_data)
+            with open(file_path, 'r') as file_object:
+                mimetype = get_mimetype(file_object=file_object, mimetype_only=True)[0]
+                base64_data = base64.b64encode(file_object.read())
+                return 'data:%s;base64,%s' % (mimetype, base64_data)
         else:
             return file_path
+    """
 
     def invalidate_cached_image(self, page):
-        try:
-            os.unlink(self.get_cached_image_name(page, self.latest_version.pk)[0])
-        except OSError:
-            pass
+        pass
+        #try:
+        #    os.unlink(self.get_cached_image_name(page, self.latest_version.pk)[0])
+        #except OSError:
+        #    pass
 
     def add_as_recent_document_for_user(self, user):
         RecentDocument.objects.add_document_for_user(user, self)
@@ -347,33 +347,33 @@ class DocumentVersion(models.Model):
                 self.save()
 
     def update_page_count(self, save=True):
-        handle, filepath = tempfile.mkstemp()
+        #handle, filepath = tempfile.mkstemp()
         # Just need the filepath, close the file description
-        os.close(handle)
+        #os.close(handle)
 
-        self.save_to_file(filepath)
+        #self.save_to_file(filepath)
         try:
-            detected_pages = get_page_count(filepath)
+            with self.open() as file_object:
+                converter = Converter(file_object=file_object, mimetype=self.mimetype)
+                detected_pages = converter.get_page_count()
         except UnknownFileFormat:
             # If converter backend doesn't understand the format,
             # use 1 as the total page count
             detected_pages = 1
-            self.description = _('This document\'s file format is not known, the page count has therefore defaulted to 1.')
-            self.save()
-        try:
-            os.remove(filepath)
-        except OSError:
-            pass
+        #try:
+        #    os.remove(filepath)
+        #except OSError:
+        #    pass
 
-        current_pages = self.pages.order_by('page_number',)
-        if current_pages.count() > detected_pages:
-            for page in current_pages[detected_pages:]:
-                page.delete()
+        # TODO: put inside a DB transaction
+        self.pages.all().delete()
 
         for page_number in range(detected_pages):
-            DocumentPage.objects.get_or_create(
-                document_version=self, page_number=page_number + 1)
+            DocumentPage.objects.create(
+                document_version=self, page_number=page_number + 1
+            )
 
+        # TODO: is this needed anymore
         if save:
             self.save()
 
@@ -408,7 +408,8 @@ class DocumentVersion(models.Model):
         """
         if self.exists():
             try:
-                self.mimetype, self.encoding = get_mimetype(self.open(), self.document.label)
+                with self.open() as file_object:
+                    self.mimetype, self.encoding = get_mimetype(file_object=file_object)
             except:
                 self.mimetype = ''
                 self.encoding = ''
@@ -525,6 +526,33 @@ class DocumentPage(models.Model):
     def document(self):
         return self.document_version.document
 
+    def get_image(self, *args, **kargs):
+        #size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):
+        #if zoom < ZOOM_MIN_LEVEL:
+        #    zoom = ZOOM_MIN_LEVEL
+
+        #if zoom > ZOOM_MAX_LEVEL:
+        #    zoom = ZOOM_MAX_LEVEL
+
+        #rotation = rotation % 360
+
+        #file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version)
+        #logger.debug('file_path: %s', file_path)
+
+        converter = Converter(file_object=self.document_version.open())
+        data = converter.convert(page=self.page_number)
+        #print "data!!!!", data.getvalue()
+        ##, *args, **kwargs):
+        return 'data:%s;base64,%s' % ('PNG', base64.b64encode(data.getvalue()))
+
+        #if as_base64:
+        #    with open(file_path, 'r') as file_object:
+        #        #mimetype = get_mimetype(file_object=file_object, mimetype_only=True)[0]
+        #        base64_data = base64.b64encode(file_object.read())
+        #        return 'data:%s;base64,%s' % (mimetype, base64_data)
+        #else:
+        #    return file_path
+
 
 def argument_validator(value):
     """
@@ -545,7 +573,8 @@ class DocumentPageTransformation(models.Model):
     """
     document_page = models.ForeignKey(DocumentPage, verbose_name=_('Document page'))
     order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_('Order'), db_index=True)
-    transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
+    #transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
+    transformation = models.CharField(max_length=128, verbose_name=_('Transformation'))
     arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[argument_validator])
     objects = DocumentPageTransformationManager()
 
