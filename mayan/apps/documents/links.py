@@ -47,7 +47,7 @@ link_document_version_list = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_
 
 # Actions
 link_document_clear_transformations = Link(permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Clear transformations'), view='documents:document_clear_transformations', args='object.id')
-link_document_delete = Link(permissions=[PERMISSION_DOCUMENT_DELETE], text=_('Delete'), view='documents:document_delete', args='object.id')
+link_document_delete = Link(permissions=[PERMISSION_DOCUMENT_DELETE], tags='dangerous', text=_('Delete'), view='documents:document_delete', args='object.id')
 link_document_edit = Link(permissions=[PERMISSION_DOCUMENT_PROPERTIES_EDIT], text=_('Edit properties'), view='documents:document_edit', args='object.id')
 link_document_document_type_edit = Link(permissions=[PERMISSION_DOCUMENT_PROPERTIES_EDIT], text=_('Change type'), view='documents:document_document_type_edit', args='object.id')
 link_document_download = Link(permissions=[PERMISSION_DOCUMENT_DOWNLOAD], text=_('Download'), view='documents:document_download', args='object.id')
@@ -58,7 +58,7 @@ link_document_update_page_count = Link(permissions=[PERMISSION_DOCUMENT_TOOLS], 
 link_document_list = Link(icon='fa fa-file', text=_('All documents'), view='documents:document_list')
 link_document_list_recent = Link(icon='fa fa-clock-o', text=_('Recent documents'), view='documents:document_list_recent')
 link_document_multiple_clear_transformations = Link(permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Clear transformations'), view='documents:document_multiple_clear_transformations')
-link_document_multiple_delete = Link(permissions=[PERMISSION_DOCUMENT_DELETE], text=_('Delete'), view='documents:document_multiple_delete')
+link_document_multiple_delete = Link(permissions=[PERMISSION_DOCUMENT_DELETE], tags='dangerous', text=_('Delete'), view='documents:document_multiple_delete')
 link_document_multiple_document_type_edit = Link(permissions=[PERMISSION_DOCUMENT_PROPERTIES_EDIT], text=_('Change type'), view='documents:document_multiple_document_type_edit')
 link_document_multiple_download = Link(permissions=[PERMISSION_DOCUMENT_DOWNLOAD], text=_('Download'), view='documents:document_multiple_download')
 link_document_multiple_update_page_count = Link(permissions=[PERMISSION_DOCUMENT_TOOLS], text=_('Reset page count'), view= 'documents:document_multiple_update_page_count')
@@ -73,7 +73,7 @@ link_clear_image_cache = Link(
 
 # Document pages
 link_document_page_transformation_create = Link(args='page.pk', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text= _('Create new transformation'), view='documents:document_page_transformation_create')
-link_document_page_transformation_delete = Link(args='transformation.pk', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Delete'), view='documents:document_page_transformation_delete')
+link_document_page_transformation_delete = Link(args='transformation.pk', permissions=[PERMISSION_DOCUMENT_TRANSFORM], tags='dangerous', text=_('Delete'), view='documents:document_page_transformation_delete')
 link_document_page_transformation_edit = Link(args='transformation.pk', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Edit'), view='documents:document_page_transformation_edit')
 link_document_page_transformation_list = Link(args='page.pk', permissions=[PERMISSION_DOCUMENT_TRANSFORM], text=_('Transformations'), view='documents:document_page_transformation_list')
 link_document_page_edit = Link(permissions=[PERMISSION_DOCUMENT_EDIT], text=_('Edit page text'), view='documents:document_page_edit', args='page.pk')
@@ -95,10 +95,10 @@ link_document_version_revert = Link(conditional_disable=is_current_version, perm
 
 # Document type related links
 link_document_type_create = Link(permissions=[PERMISSION_DOCUMENT_TYPE_CREATE], text=_('Create document type'), view='documents:document_type_create')
-link_document_type_delete = Link(permissions=[PERMISSION_DOCUMENT_TYPE_DELETE], text=_('Delete'), view='documents:document_type_delete', args='resolved_object.id')
+link_document_type_delete = Link(permissions=[PERMISSION_DOCUMENT_TYPE_DELETE], tags='dangerous', text=_('Delete'), view='documents:document_type_delete', args='resolved_object.id')
 link_document_type_edit = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Edit'), view='documents:document_type_edit', args='resolved_object.id')
 link_document_type_filename_create = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Add filename to document type'), view='documents:document_type_filename_create', args='document_type.id')
-link_document_type_filename_delete = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Delete'), view='documents:document_type_filename_delete', args='resolved_object.id')
+link_document_type_filename_delete = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], tags='dangerous', text=_('Delete'), view='documents:document_type_filename_delete', args='resolved_object.id')
 link_document_type_filename_edit = Link(permissions=[PERMISSION_DOCUMENT_TYPE_EDIT], text=_('Edit'), view='documents:document_type_filename_edit', args='resolved_object.id')
 link_document_type_filename_list = Link(permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], text=_('Filenames'), view='documents:document_type_filename_list', args='resolved_object.id')
 link_document_type_list = Link(permissions=[PERMISSION_DOCUMENT_TYPE_VIEW], text=_('Document types'), view='documents:document_type_list')

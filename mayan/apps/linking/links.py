@@ -13,11 +13,11 @@ from .permissions import (
 
 link_smart_link_acl_list = Link(permissions=[ACLS_VIEW_ACL], text=_('ACLs'), view='linking:smart_link_acl_list', args='object.pk')
 link_smart_link_condition_create = Link(permissions=[PERMISSION_SMART_LINK_EDIT], text=_('Create condition'), view='linking:smart_link_condition_create', args='object.pk')
-link_smart_link_condition_delete = Link(permissions=[PERMISSION_SMART_LINK_EDIT], text=_('Delete'), view='linking:smart_link_condition_delete', args='resolved_object.pk')
+link_smart_link_condition_delete = Link(permissions=[PERMISSION_SMART_LINK_EDIT], tags='dangerous', text=_('Delete'), view='linking:smart_link_condition_delete', args='resolved_object.pk')
 link_smart_link_condition_edit = Link(permissions=[PERMISSION_SMART_LINK_EDIT], text=_('Edit'), view='linking:smart_link_condition_edit', args='resolved_object.pk')
 link_smart_link_condition_list = Link(permissions=[PERMISSION_SMART_LINK_EDIT], text=_('Conditions'), view='linking:smart_link_condition_list', args='object.pk')
 link_smart_link_create = Link(permissions=[PERMISSION_SMART_LINK_CREATE], text=_('Create new smart link'), view='linking:smart_link_create')
-link_smart_link_delete = Link(permissions=[PERMISSION_SMART_LINK_DELETE], text=_('Delete'), view='linking:smart_link_delete', args='object.pk')
+link_smart_link_delete = Link(permissions=[PERMISSION_SMART_LINK_DELETE], tags='dangerous', text=_('Delete'), view='linking:smart_link_delete', args='object.pk')
 link_smart_link_document_types = Link(permissions=[PERMISSION_SMART_LINK_EDIT], text=_('Document types'), view='linking:smart_link_document_types', args='object.pk')
 link_smart_link_edit = Link(permissions=[PERMISSION_SMART_LINK_EDIT], text=_('Edit'), view='linking:smart_link_edit', args='object.pk')
 link_smart_link_instance_view = Link(permissions=[PERMISSION_SMART_LINK_VIEW], text=_('Documents'), view='linking:smart_link_instance_view', args=['document.pk', 'object.smart_link.pk'])

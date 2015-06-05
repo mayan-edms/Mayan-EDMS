@@ -13,7 +13,7 @@ from .permissions import (
 link_permission_grant = Link(permissions=[PERMISSION_PERMISSION_GRANT], text=_('Grant'), view='permissions:permission_multiple_grant')
 link_permission_revoke = Link(permissions=[PERMISSION_PERMISSION_REVOKE], text=_('Revoke'), view='permissions:permission_multiple_revoke')
 link_role_create = Link(permissions=[PERMISSION_ROLE_CREATE], text=_('Create new role'), view='permissions:role_create')
-link_role_delete = Link(permissions=[PERMISSION_ROLE_DELETE], text=_('Delete'), view='permissions:role_delete', args='object.id')
+link_role_delete = Link(permissions=[PERMISSION_ROLE_DELETE], tags='dangerous', text=_('Delete'), view='permissions:role_delete', args='object.id')
 link_role_edit = Link(permissions=[PERMISSION_ROLE_EDIT], text=_('Edit'), view='permissions:role_edit', args='object.id')
 link_role_list = Link(icon='fa fa-child', permissions=[PERMISSION_ROLE_VIEW], text=_('Roles'), view='permissions:role_list')
 link_role_members = Link(permissions=[PERMISSION_ROLE_EDIT], text=_('Members'), view='permissions:role_members', args='object.id')

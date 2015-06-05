@@ -29,7 +29,7 @@ link_index_setup = Link(icon='fa fa-sitemap', permissions=[PERMISSION_DOCUMENT_I
 link_index_setup_list = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP], text=_('Indexes'), view='indexing:index_setup_list')
 link_index_setup_create = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_CREATE], text=_('Create index'), view='indexing:index_setup_create')
 link_index_setup_edit = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_EDIT], text=_('Edit'), view='indexing:index_setup_edit', args='resolved_object.pk')
-link_index_setup_delete = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_DELETE], text=_('Delete'), view='indexing:index_setup_delete', args='resolved_object.pk')
+link_index_setup_delete = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_DELETE], tags='dangerous', text=_('Delete'), view='indexing:index_setup_delete', args='resolved_object.pk')
 link_index_setup_view = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP], text=_('Tree template'), view='indexing:index_setup_view', args='resolved_object.pk')
 link_index_setup_document_types = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_EDIT], text=_('Document types'), view='indexing:index_setup_document_types', args='resolved_object.pk')
 link_rebuild_index_instances = Link(
@@ -39,4 +39,4 @@ link_rebuild_index_instances = Link(
 )
 link_template_node_create = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP], text=_('New child node'), view='indexing:template_node_create', args='resolved_object.pk')
 link_template_node_edit = Link(condition=is_not_root_node, permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP], text=_('Edit'), view='indexing:template_node_edit', args='resolved_object.pk')
-link_template_node_delete = Link(condition=is_not_root_node, permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP], text=_('Delete'), view='indexing:template_node_delete', args='resolved_object.pk')
+link_template_node_delete = Link(condition=is_not_root_node, permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP], tags='dangerous', text=_('Delete'), view='indexing:template_node_delete', args='resolved_object.pk')
