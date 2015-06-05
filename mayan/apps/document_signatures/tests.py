@@ -36,7 +36,7 @@ class DocumentTestCase(TestCase):
             gpg.import_key(file_object.read())
 
     def test_document_no_signature(self):
-        self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document), False)
+        self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), False)
 
     def test_new_document_version_signed(self):
         with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
@@ -46,8 +46,8 @@ class DocumentTestCase(TestCase):
 
             self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
 
-        self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document), False)
-        self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document).status, SIGNATURE_STATE_VALID)
+        self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), False)
+        self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version).status, SIGNATURE_STATE_VALID)
 
     def test_detached_signatures(self):
         new_version_data = {
@@ -57,13 +57,13 @@ class DocumentTestCase(TestCase):
             self.document.new_version(file_object=File(file_object), **new_version_data)
 
         # GPGVerificationError
-        self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document), None)
+        self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version), None)
 
         with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
-            DocumentVersionSignature.objects.add_detached_signature(self.document, File(file_object))
+            DocumentVersionSignature.objects.add_detached_signature(self.document.latest_version, File(file_object))
 
-        self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document), True)
-        self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document).status, SIGNATURE_STATE_VALID)
+        self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), True)
+        self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version).status, SIGNATURE_STATE_VALID)
 
     def tearDown(self):
         self.document.delete()

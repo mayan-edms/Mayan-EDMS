@@ -30,8 +30,8 @@ logger = logging.getLogger(__name__)
 
 
 def document_pre_open_hook(descriptor, instance):
-    if DocumentVersionSignature.objects.has_embedded_signature(instance.document):
-        # If it has an embedded signature decrypt
+    if DocumentVersionSignature.objects.has_embedded_signature(document_version=instance):
+        # If it has an embedded signature, decrypt
         try:
             result = gpg.decrypt_file(descriptor, close_descriptor=False)
             # gpg return a string, turn it into a file like object
@@ -46,11 +46,14 @@ def document_pre_open_hook(descriptor, instance):
         return descriptor
 
 
-def document_post_save_hook(instance):
-    if not instance.pk:
-        document_signature, created = DocumentVersionSignature.objects.get_or_create(
-            document_version=instance.latest_version,
-        )
+def document_version_post_save_hook(instance):
+    logger.debug('instance: %s', instance)
+
+    try:
+        document_signature = DocumentVersionSignature.objects.get(document_version=instance)
+    except DocumentVersionSignature.DoesNotExist:
+        document_signature = DocumentVersionSignature.objects.create(document_version=instance)
+        document_signature.check_for_embedded_signature()
 
 
 class DocumentSignaturesApp(apps.AppConfig):
@@ -58,7 +61,7 @@ class DocumentSignaturesApp(apps.AppConfig):
     verbose_name = _('Document signatures')
 
     def ready(self):
-        DocumentVersion.register_post_save_hook(1, document_post_save_hook)
+        DocumentVersion.register_post_save_hook(1, document_version_post_save_hook)
         DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
 
         class_permissions(Document, [

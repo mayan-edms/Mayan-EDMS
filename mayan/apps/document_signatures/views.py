@@ -40,7 +40,7 @@ def document_verify(request, document_pk):
     document.add_as_recent_document_for_user(request.user)
 
     try:
-        signature = DocumentVersionSignature.objects.verify_signature(document)
+        signature = DocumentVersionSignature.objects.verify_signature(document.latest_version)
     except AttributeError:
         signature_state = SIGNATURE_STATES.get(SIGNATURE_STATE_NONE)
         signature = None
@@ -50,7 +50,7 @@ def document_verify(request, document_pk):
     paragraphs = [_('Signature status: %s') % signature_state['text']]
 
     try:
-        if DocumentVersionSignature.objects.has_embedded_signature(document):
+        if DocumentVersionSignature.objects.has_embedded_signature(document.latest_version):
             signature_type = _('Embedded')
         else:
             signature_type = _('Detached')
@@ -94,7 +94,7 @@ def document_signature_upload(request, document_pk):
         form = DetachedSignatureForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                DocumentVersionSignature.objects.add_detached_signature(document, request.FILES['file'])
+                DocumentVersionSignature.objects.add_detached_signature(document.latest_version, request.FILES['file'])
                 messages.success(request, _('Detached signature uploaded successfully.'))
                 return HttpResponseRedirect(next)
             except Exception as exception:
@@ -121,8 +121,8 @@ def document_signature_download(request, document_pk):
         AccessEntry.objects.check_access(PERMISSION_SIGNATURE_DOWNLOAD, request.user, document)
 
     try:
-        if DocumentVersionSignature.objects.has_detached_signature(document):
-            signature = DocumentVersionSignature.objects.detached_signature(document)
+        if DocumentVersionSignature.objects.has_detached_signature(document.latest_version):
+            signature = DocumentVersionSignature.objects.detached_signature(document.latest_version)
             return serve_file(
                 request,
                 signature,
@@ -152,7 +152,7 @@ def document_signature_delete(request, document_pk):
 
     if request.method == 'POST':
         try:
-            DocumentVersionSignature.objects.clear_detached_signature(document)
+            DocumentVersionSignature.objects.clear_detached_signature(document.latest_version)
             messages.success(request, _('Detached signature deleted successfully.'))
             return HttpResponseRedirect(next)
         except Exception as exception:
