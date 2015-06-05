@@ -18,8 +18,8 @@ from .permissions import (
 from .settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
 
-def is_current_version(context):
-    return context['object'].document.latest_version.timestamp == context['object'].timestamp
+def is_not_current_version(context):
+    return context['object'].document.latest_version.timestamp != context['object'].timestamp
 
 
 def is_first_page(context):
@@ -92,7 +92,7 @@ link_document_page_zoom_in = Link(conditional_disable=is_max_zoom, icon='fa fa-s
 link_document_page_zoom_out = Link(conditional_disable=is_min_zoom, icon='fa fa-search-minus', permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Zoom out'), view='documents:document_page_zoom_out', args='page.pk')
 
 # Document versions
-link_document_version_revert = Link(conditional_disable=is_current_version, permissions=[PERMISSION_DOCUMENT_VERSION_REVERT], text=_('Revert'), view='documents:document_version_revert', args='object.pk')
+link_document_version_revert = Link(condition=is_not_current_version, permissions=[PERMISSION_DOCUMENT_VERSION_REVERT], tags='dangerous', text=_('Revert'), view='documents:document_version_revert', args='object.pk')
 
 # Document type related links
 link_document_type_create = Link(permissions=[PERMISSION_DOCUMENT_TYPE_CREATE], text=_('Create document type'), view='documents:document_type_create')
