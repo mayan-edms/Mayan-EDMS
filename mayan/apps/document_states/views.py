@@ -205,10 +205,10 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         return super(SetupWorkflowDocumentTypesView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return generate_choices_w_labels(self.workflow.get_document_types_not_in_workflow(), display_object_type=False)
+        return generate_choices_w_labels(self.workflow.get_document_types_not_in_workflow())
 
     def right_list(self):
-        return generate_choices_w_labels(self.workflow.document_types.all(), display_object_type=False)
+        return generate_choices_w_labels(self.workflow.document_types.all())
 
     def remove(self, item):
         self.workflow.document_types.remove(item)
