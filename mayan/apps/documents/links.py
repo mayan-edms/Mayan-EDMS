@@ -7,12 +7,13 @@ from events.permissions import PERMISSION_EVENTS_VIEW
 from navigation import Link
 
 from .permissions import (
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW
+    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+    PERMISSION_DOCUMENT_PRINT, PERMISSION_DOCUMENT_TRANSFORM,
+    PERMISSION_DOCUMENT_TOOLS, PERMISSION_DOCUMENT_VERSION_REVERT,
+    PERMISSION_DOCUMENT_VIEW, PERMISSION_DOCUMENT_TYPE_CREATE,
+    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_EDIT,
+    PERMISSION_DOCUMENT_TYPE_VIEW
 )
 from .settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 
@@ -51,7 +52,7 @@ link_document_delete = Link(permissions=[PERMISSION_DOCUMENT_DELETE], tags='dang
 link_document_edit = Link(permissions=[PERMISSION_DOCUMENT_PROPERTIES_EDIT], text=_('Edit properties'), view='documents:document_edit', args='object.id')
 link_document_document_type_edit = Link(permissions=[PERMISSION_DOCUMENT_PROPERTIES_EDIT], text=_('Change type'), view='documents:document_document_type_edit', args='object.id')
 link_document_download = Link(permissions=[PERMISSION_DOCUMENT_DOWNLOAD], text=_('Download'), view='documents:document_download', args='object.id')
-link_document_print = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Print'), view='documents:document_print', args='object.id')
+link_document_print = Link(permissions=[PERMISSION_DOCUMENT_PRINT], text=_('Print'), view='documents:document_print', args='object.id')
 link_document_update_page_count = Link(permissions=[PERMISSION_DOCUMENT_TOOLS], text=_('Reset page count'), view='documents:document_update_page_count', args='object.pk')
 
 # Views

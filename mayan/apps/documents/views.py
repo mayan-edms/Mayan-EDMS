@@ -44,12 +44,13 @@ from .models import (
     DocumentTypeFilename, DocumentVersion, RecentDocument
 )
 from .permissions import (
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW
+    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_PRINT,
+    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_TRANSFORM,
+    PERMISSION_DOCUMENT_TOOLS, PERMISSION_DOCUMENT_TYPE_CREATE,
+    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_EDIT,
+    PERMISSION_DOCUMENT_TYPE_VIEW, PERMISSION_DOCUMENT_VERSION_REVERT,
+    PERMISSION_DOCUMENT_VIEW,
 )
 from .settings import (
     PREVIEW_SIZE, RECENT_COUNT, ROTATION_STEP, ZOOM_PERCENT_STEP,
@@ -793,9 +794,9 @@ def document_print(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_PRINT])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
+        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_PRINT, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
