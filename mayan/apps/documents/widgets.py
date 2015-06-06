@@ -24,7 +24,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         if value:
             output = []
             output.append('<div class="full-height scrollable mayan-page-wrapper-interactive" data-height-difference=230>')
-            output.append(document_html_widget(value.document, page=value.page_number, zoom=zoom, rotation=rotation, image_class='lazy-load-interactive', nolazyload=False, size=DISPLAY_SIZE))
+            output.append(document_html_widget(value, zoom=zoom, rotation=rotation, image_class='lazy-load-interactive', nolazyload=False, size=DISPLAY_SIZE))
             output.append('</div>')
             return mark_safe(''.join(output))
         else:
@@ -46,21 +46,16 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
             document_pages = []
             total_pages = 0
 
-        # Reuse expensive values
-        latest_version_pk = value.latest_version.pk
-
         for page in document_pages:
             output.append('<div class="carousel-item">')
             output.append(
                 document_html_widget(
-                    page.document,
+                    page,
                     click_view='documents:document_page_view',
                     click_view_arguments=[page.pk],
-                    page=page.page_number,
                     fancybox_class='',
                     image_class='lazy-load-carousel',
                     size=DISPLAY_SIZE,
-                    version=latest_version_pk,
                     post_load_class='lazy-load-carousel-loaded',
                 )
             )
@@ -73,29 +68,25 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
 
 
 def document_thumbnail(document, **kwargs):
-    return document_html_widget(document, click_view='documents:document_display', **kwargs)
+    return document_html_widget(document.latest_version.pages.first(), click_view='documents:document_display', **kwargs)
 
 
 def document_link(document):
     return mark_safe('<a href="%s">%s</a>' % (document.get_absolute_url(), document))
 
 
-def document_html_widget(document, click_view=None, click_view_arguments=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', version=None, image_class='lazy-load', title=None, size=THUMBNAIL_SIZE, nolazyload=False, post_load_class=None):
+def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=THUMBNAIL_SIZE, nolazyload=False, post_load_class=None):
     result = []
 
     alt_text = _('Document page image')
 
-    if not version:
-        try:
-            version = document.latest_version.pk
-        except AttributeError:
-            version = None
+    document = document_page.document
+    page = document_page.page_number
 
     query_dict = {
         'page': page,
         'zoom': zoom,
         'rotation': rotation,
-        'version': version,
         'size': size,
     }
 
@@ -116,7 +107,12 @@ def document_html_widget(document, click_view=None, click_view_arguments=None, p
         title_template = ''
 
     if click_view:
-        result.append('<a %s class="%s" href="%s" %s>' % (gallery_template, fancybox_class, '%s?%s' % (reverse(click_view, args=click_view_arguments or [document.pk]), query_string), title_template))
+        result.append('<a {gallery_template} class="{fancybox_class}" href="{image_data}" {title_template}>'.format(
+            gallery_template=gallery_template,
+            fancybox_class=fancybox_class,
+            image_data='%s?%s' % (reverse(click_view, args=click_view_arguments or [document.pk]), query_string),
+            title_template=title_template
+        ))
 
     if nolazyload:
         result.append('<img class="img-nolazyload" src="%s" alt="%s" />' % (preview_view, alt_text))

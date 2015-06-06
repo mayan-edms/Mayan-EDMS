@@ -9,16 +9,15 @@ from mayan.celery import app
 
 from common.models import SharedUploadedFile
 
-from .models import Document, DocumentType, DocumentVersion
+from .models import Document, DocumentPage, DocumentType, DocumentVersion
 
 logger = logging.getLogger(__name__)
 
 
 @app.task(compression='zlib')
-def task_get_document_image(document_id, *args, **kwargs):
-    document = Document.objects.get(pk=document_id)
-    first_page = document.latest_version.pages.first()
-    return first_page.get_image(*args, **kwargs)
+def task_get_document_page_image(document_page_id, *args, **kwargs):
+    document_page = DocumentPage.objects.get(pk=document_page_id)
+    return document_page.get_image(*args, **kwargs)
 
 
 @app.task(ignore_result=True)

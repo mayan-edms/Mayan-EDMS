@@ -57,7 +57,8 @@ from .settings import (
     ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
 )
 from .tasks import (
-    task_clear_image_cache, task_get_document_image, task_update_page_count
+    task_clear_image_cache, task_get_document_page_image,
+    task_update_page_count
 )
 from .utils import parse_range
 
@@ -366,17 +367,15 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
 
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
-    task = task_get_document_image.apply_async(kwargs=dict(document_id=document.pk, size=size, page=page, zoom=zoom, rotation=rotation, as_base64=False, version=version), queue='converter')
+    document_page = document.pages.get(page_number=page)
+
+    task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=False, version=version), queue='converter')
     data = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
 
-    response = HttpResponse(data, content_type='data/PNG')
-    #response['Content-Disposition'] = 'attachment; filename="somefilename.pdf"'
-
+    response = HttpResponse(data, content_type='image')
     return response
 
-    #print 'data!!!!!!!!!!!', task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
-    #re
-
+    # TODO: remove sendfile
     #return sendfile.sendfile(request, task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
 
 

@@ -36,7 +36,7 @@ from .serializers import (
     RecentDocumentSerializer
 )
 from .settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
-from .tasks import task_get_document_image, task_new_document
+from .tasks import task_get_document_page_image, task_new_document
 
 
 class APIDocumentListView(generics.ListAPIView):
@@ -202,8 +202,10 @@ class APIDocumentImageView(generics.GenericAPIView):
 
         rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
+        document_page = document.pages.get(page_number=page)
+
         try:
-            task = task_get_document_image.apply_async(kwargs=dict(document_id=document.pk, size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True, version=version), queue='converter')
+            task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version), queue='converter')
             return Response({
                 'status': 'success',
                 'data': task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)

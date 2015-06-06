@@ -40,21 +40,17 @@ class Python(ConverterBase):
     def get_page_count(self, file_object, mimetype=None):
         page_count = 1
 
-        #file_object, input_filepath = mkstemp()
-        #file_object.write(input_data)
-
         if not mimetype:
-            #mimetype, encoding = get_mimetype(file_description=open(input_filepath, 'rb'), filepath=None, mimetype_only=True)
             mimetype, encoding = get_mimetype(file_object=file_object, mimetype_only=True)
         else:
             encoding = None
 
         if mimetype == 'application/pdf':
             # If file is a PDF open it with slate to determine the page count
-            #with open(input_filepath) as fd:
             try:
                 pages = slate.PDF(file_object)
-            except:
+            except Exception as exception:
+                logger.error('slate exception; %s', exception)
                 return 1
                 # TODO: Maybe return UnknownFileFormat to display proper unknwon file format message in document description
             else:
@@ -63,7 +59,6 @@ class Python(ConverterBase):
                 file_object.seek(0)
 
         try:
-            #im = Image.fromarray(input_data)
             image = Image.open(file_object)
         except IOError:  # cannot identify image file
             raise UnknownFileFormat
@@ -81,46 +76,22 @@ class Python(ConverterBase):
         return page_count
 
     def convert(self, file_object, mimetype=None, output_format=DEFAULT_FILE_FORMAT, page=DEFAULT_PAGE_NUMBER):
-
-        #tmpfile = None
-        #mimetype = kwargs.get('mimetype', None)
-
         if not mimetype:
             mimetype, encoding = get_mimetype(file_object=file_object, mimetype_only=True)
 
-        ##try:
-        print "MIME!", mimetype
         if mimetype == 'application/pdf' and pdftoppm:
             image_buffer = io.BytesIO()
 
             new_file_object, input_filepath = tempfile.mkstemp()
             os.write(new_file_object, file_object.read())
-            #file_object.seek(0)
-            #new_file_object.seek(0)
             os.close(new_file_object)
-
-
 
             pdftoppm(input_filepath, f=page, l=page, _out=image_buffer)
             image_buffer.seek(0)
             image = Image.open(image_buffer)
-            # TODO: remove input_filepath
+            fs_cleanup(input_filepath)
         else:
             image = Image.open(file_object)
-
-
-
-        ##except Exception as exception:
-        ##    logger.error('Error converting image; %s', exception)
-        ##    # Python Imaging Library doesn't recognize it as an image
-        ##    raise ConvertError
-        ##except IOError:  # cannot identify image file
-        ##    raise UnknownFileFormat
-
-
-        #finally:
-        #    if tmpfile:
-        #        fs_cleanup(tmpfile)
 
         current_page = 0
         try:
@@ -132,35 +103,34 @@ class Python(ConverterBase):
             # end of sequence
             pass
 
-        '''
-        try:
-            if transformations:
-                aspect = 1.0 * im.size[0] / im.size[1]
-                for transformation in transformations:
-                    arguments = transformation.get('arguments')
-                    if transformation['transformation'] == TRANSFORMATION_RESIZE:
-                        width = int(arguments.get('width', 0))
-                        height = int(arguments.get('height', 1.0 * width * aspect))
-                        im = self.resize(im, (width, height))
-                    elif transformation['transformation'] == TRANSFORMATION_ZOOM:
-                        decimal_value = float(arguments.get('percent', 100)) / 100
-                        im = im.transform((int(im.size[0] * decimal_value), int(im.size[1] * decimal_value)), Image.EXTENT, (0, 0, im.size[0], im.size[1]))
-                    elif transformation['transformation'] == TRANSFORMATION_ROTATE:
-                        # PIL counter degress counter-clockwise, reverse them
-                        im = im.rotate(360 - arguments.get('degrees', 0))
-        except:
-            # Ignore all transformation error
-            pass
-        '''
-
         if image.mode not in ('L', 'RGB'):
             image = image.convert('RGB')
-
 
         output = StringIO()
         image.save(output, format=output_format)
 
         return output
+
+    '''
+    try:
+        if transformations:
+            aspect = 1.0 * im.size[0] / im.size[1]
+            for transformation in transformations:
+                arguments = transformation.get('arguments')
+                if transformation['transformation'] == TRANSFORMATION_RESIZE:
+                    width = int(arguments.get('width', 0))
+                    height = int(arguments.get('height', 1.0 * width * aspect))
+                    im = self.resize(im, (width, height))
+                elif transformation['transformation'] == TRANSFORMATION_ZOOM:
+                    decimal_value = float(arguments.get('percent', 100)) / 100
+                    im = im.transform((int(im.size[0] * decimal_value), int(im.size[1] * decimal_value)), Image.EXTENT, (0, 0, im.size[0], im.size[1]))
+                elif transformation['transformation'] == TRANSFORMATION_ROTATE:
+                    # PIL counter degress counter-clockwise, reverse them
+                    im = im.rotate(360 - arguments.get('degrees', 0))
+    except:
+        # Ignore all transformation error
+        pass
+    '''
 
     # From: http://united-coders.com/christian-harms/image-resizing-tips-general-and-for-python
     def resize(self, img, box, fit=False, out=None):

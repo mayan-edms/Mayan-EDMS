@@ -17,6 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.utils import apply_default_acls
 from common.settings import TEMPORARY_DIRECTORY
+from common.utils import fs_cleanup
 from converter.classes import Converter
 from converter.exceptions import UnknownFileFormat
 from converter.literals import (
@@ -526,7 +527,15 @@ class DocumentPage(models.Model):
     def document(self):
         return self.document_version.document
 
-    def get_image(self, *args, **kargs):
+    def get_uuid(self):
+        return 'page-cache-{}'.format(self.pk)
+
+    def get_cache_filename(self):
+        return os.path.join(CACHE_PATH, self.get_uuid())
+
+    def get_image(self, *args, **kwargs):
+        transformations = kwargs.pop('transformations', [])
+
         #size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):
         #if zoom < ZOOM_MIN_LEVEL:
         #    zoom = ZOOM_MIN_LEVEL
@@ -538,20 +547,34 @@ class DocumentPage(models.Model):
 
         #file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version)
         #logger.debug('file_path: %s', file_path)
+        as_base64 = kwargs.pop('as_base64', False)
 
-        converter = Converter(file_object=self.document_version.open())
-        data = converter.convert(page=self.page_number)
-        #print "data!!!!", data.getvalue()
-        ##, *args, **kwargs):
-        return 'data:%s;base64,%s' % ('PNG', base64.b64encode(data.getvalue()))
+        cache_filename = self.get_cache_filename()
 
-        #if as_base64:
-        #    with open(file_path, 'r') as file_object:
-        #        #mimetype = get_mimetype(file_object=file_object, mimetype_only=True)[0]
-        #        base64_data = base64.b64encode(file_object.read())
-        #        return 'data:%s;base64,%s' % (mimetype, base64_data)
-        #else:
-        #    return file_path
+        if os.path.exists(cache_filename) and 0:
+            with open(cache_filename) as file_object:
+                data = file_object.read()
+
+            if as_base64:
+                return 'data:%s;base64,%s' % ('image/png', base64.b64encode(data))
+            else:
+                return data
+        else:
+            try:
+                converter = Converter(file_object=self.document_version.open())
+                image_buffer = converter.convert(page=self.page_number, output_format='PNG')
+                with open(cache_filename, 'wb+') as file_object:
+                    file_object.write(image_buffer.getvalue())
+            except:
+                fs_cleanup(cache_filename)
+                raise
+            else:
+                data = image_buffer.getvalue()
+                image_buffer.close()
+                if as_base64:
+                    return 'data:%s;base64,%s' % ('image/png', base64.b64encode(data))
+                else:
+                    return data
 
 
 def argument_validator(value):

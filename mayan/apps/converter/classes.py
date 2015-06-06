@@ -19,7 +19,6 @@ from .literals import (
     TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR
 )
 from .office_converter import OfficeConverter
-from .runtime import backend, office_converter
 from .settings import GRAPHICS_BACKEND, LIBREOFFICE_PATH
 
 CONVERTER_OFFICE_FILE_MIMETYPES = [
@@ -68,7 +67,6 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
     'text/plain',
     'text/rtf',
 ]
-
 logger = logging.getLogger(__name__)
 
 
@@ -109,23 +107,6 @@ class TransformationScale(BaseTransformation):
 
 
 class Converter(object):
-    """
-    def cache_cleanup(input_filepath, *args, **kwargs):
-        try:
-            os.remove(create_image_cache_filename(input_filepath, *args, **kwargs))
-        except OSError:
-            pass
-    """
-
-    """
-    def create_image_cache_filename(input_filepath, *args, **kwargs):
-        if input_filepath:
-            hash_value = HASH_FUNCTION(''.join([HASH_FUNCTION(smart_str(input_filepath)), unicode(args), unicode(kwargs)]))
-            return os.path.join(TEMPORARY_DIRECTORY, hash_value)
-        else:
-            return None
-    """
-
 
     @staticmethod
     def soffice(file_object):
@@ -159,8 +140,7 @@ class Converter(object):
         readline = proc.stderr.readline()
         logger.debug('stderr: %s', readline)
         if return_code != 0:
-            #raise OfficeBackendError(readline)
-            raise Exception(readline)
+            raise OfficeBackendError(readline)
 
         filename, extension = os.path.splitext(os.path.basename(input_filepath))
         logger.debug('filename: %s', filename)
@@ -169,106 +149,35 @@ class Converter(object):
         converted_output = os.path.join(TEMPORARY_DIRECTORY, os.path.extsep.join([filename, 'pdf']))
         logger.debug('converted_output: %s', converted_output)
 
-        return open(converted_output)
-        #os.rename(converted_output, output_filepath)
-        # TODO: remove temp file
-
+        return converted_output
 
     def __init__(self, file_object, mime_type=None):
         self.file_object = file_object
         self.mime_type = mime_type or get_mimetype(file_object=file_object, mimetype_only=False)[0]
-
-        if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
-            if os.path.exists(LIBREOFFICE_PATH):
-                #file_object, filename = mkstemp()
-
-                # Cache results of conversion
-                #output_filepath = os.path.join(TEMPORARY_DIRECTORY, ''.join([self.input_filepath, CACHED_FILE_SUFFIX]))
-
-                result = Converter.soffice(file_object)
-                file_object.close()
-                self.file_object = result
-                self.mime_type = 'application/pdf'
-
-                #try:
-                #    self.backend.convert(self.input_filepath, self.output_filepath)
-                #    self.exists = True
-                #except OfficeBackendError as exception:
-                #    # convert exception so that at least the mime type icon is displayed
-                #    raise UnknownFileFormat(exception)
-                #else:
-                #    result = office_converter.convert(self.file_object, mimetype=mime_type)
-                #    self.file_object.close()
-                #    self.file_object = result
-            else:
-                # TODO: NO LIBREOFFICE ERROR
-                pass
-
+        self.temporary_files = []
 
     def transform(self, transformations, page=DEFAULT_PAGE_NUMBER):
         pass
 
-    def convert(self, output_format=DEFAULT_FILE_FORMAT, page=DEFAULT_PAGE_NUMBER):#, *args, **kwargs):
-        #size = kwargs.get('size')
-        #file_format = kwargs.get('file_format', DEFAULT_FILE_FORMAT)
-        #zoom = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL)
-        #rotation = kwargs.get('rotation', DEFAULT_ROTATION)
-        #page = kwargs.get('page', DEFAULT_PAGE_NUMBER)
-        #transformations = kwargs.get('transformations', [])
+    def convert(self, output_format=DEFAULT_FILE_FORMAT, page=DEFAULT_PAGE_NUMBER):
+        if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
+            if os.path.exists(LIBREOFFICE_PATH):
+                converted_output = Converter.soffice(self.file_object)
+                self.file_object.close()
+                self.file_object = open(converted_output)
+                self.mime_type = 'application/pdf'
+                self.temporary_file.append(converted_output)
+            else:
+                # TODO: NO LIBREOFFICE FOUND ERROR
+                pass
 
-        #if transformations is None:
-        #    transformations = []
-
-        #if output_filepath is None:
-        #    output_filepath = create_image_cache_filename(input_filepath, *args, **kwargs)
-
-        #if os.path.exists(output_filepath):
-        #    return output_filepath
-
-        '''
-        if office_converter:
-            try:
-                office_converter.convert(input_filepath, mimetype=mimetype)
-                if office_converter.exists:
-                    input_filepath = office_converter.output_filepath
-                    mimetype = 'application/pdf'
-                else:
-                    # Recycle the already detected mimetype
-                    mimetype = office_converter.mimetype
-
-            except OfficeConversionError:
-                raise UnknownFileFormat('office converter exception')
-
-        if size:
-            transformations.append(
-                {
-                    'transformation': TRANSFORMATION_RESIZE,
-                    'arguments': dict(zip(['width', 'height'], size.split(DIMENSION_SEPARATOR)))
-                }
-            )
-
-        if zoom != 100:
-            transformations.append(
-                {
-                    'transformation': TRANSFORMATION_ZOOM,
-                    'arguments': {'percent': zoom}
-                }
-            )
-
-        if rotation != 0 and rotation != 360:
-            transformations.append(
-                {
-                    'transformation': TRANSFORMATION_ROTATE,
-                    'arguments': {'degrees': rotation}
-                }
-            )
-        '''
+        for temporary_file in self.temporary_files:
+            fs_cleanup(temporary_file)
 
         return backend.convert(file_object=self.file_object, mimetype=self.mime_type, output_format=output_format, page=page)
 
-        def get_page_count(self):
-            return backend.get_page_count(file_object)
-
+    def get_page_count(self):
+        return backend.get_page_count(file_object)
 
 
 '''
