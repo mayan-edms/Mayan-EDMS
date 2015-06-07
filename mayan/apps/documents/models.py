@@ -18,7 +18,9 @@ from django.utils.translation import ugettext_lazy as _
 from acls.utils import apply_default_acls
 from common.settings import TEMPORARY_DIRECTORY
 from common.utils import fs_cleanup
-from converter.classes import Converter
+from converter import (
+    converter_class, TransformationResize, TransformationRotate, TransformationZoom
+)
 from converter.exceptions import UnknownFileFormat
 from converter.literals import (
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_PAGE_NUMBER
@@ -355,7 +357,7 @@ class DocumentVersion(models.Model):
         #self.save_to_file(filepath)
         try:
             with self.open() as file_object:
-                converter = Converter(file_object=file_object, mimetype=self.mimetype)
+                converter = converter_class(file_object=file_object, mimetype=self.mimetype)
                 detected_pages = converter.get_page_count()
         except UnknownFileFormat:
             # If converter backend doesn't understand the format,
@@ -536,45 +538,53 @@ class DocumentPage(models.Model):
     def get_image(self, *args, **kwargs):
         transformations = kwargs.pop('transformations', [])
 
-        #size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):
-        #if zoom < ZOOM_MIN_LEVEL:
-        #    zoom = ZOOM_MIN_LEVEL
+        size = kwargs.pop('size', DISPLAY_SIZE)
+        rotation = kwargs.pop('rotation', DEFAULT_ROTATION)
+        zoom_level = kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL)
 
-        #if zoom > ZOOM_MAX_LEVEL:
-        #    zoom = ZOOM_MAX_LEVEL
+        if zoom_level < ZOOM_MIN_LEVEL:
+            zoom_level = ZOOM_MIN_LEVEL
 
-        #rotation = rotation % 360
+        if zoom_level > ZOOM_MAX_LEVEL:
+            zoom_level = ZOOM_MAX_LEVEL
 
-        #file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version)
-        #logger.debug('file_path: %s', file_path)
+        rotation = rotation % 360
+
         as_base64 = kwargs.pop('as_base64', False)
 
         cache_filename = self.get_cache_filename()
 
-        if os.path.exists(cache_filename) and 0:
-            with open(cache_filename) as file_object:
-                data = file_object.read()
+        if os.path.exists(cache_filename):
+            converter = converter_class(file_object=open(cache_filename))
 
-            if as_base64:
-                return 'data:%s;base64,%s' % ('image/png', base64.b64encode(data))
-            else:
-                return data
+            converter.seek(0)
         else:
             try:
-                converter = Converter(file_object=self.document_version.open())
-                image_buffer = converter.convert(page=self.page_number, output_format='PNG')
+                converter = converter_class(file_object=self.document_version.open())
+                converter.seek(page_number=self.page_number - 1)
+
+                page_image = converter.get_page()
                 with open(cache_filename, 'wb+') as file_object:
-                    file_object.write(image_buffer.getvalue())
+                    file_object.write(page_image.getvalue())
             except:
                 fs_cleanup(cache_filename)
                 raise
-            else:
-                data = image_buffer.getvalue()
-                image_buffer.close()
-                if as_base64:
-                    return 'data:%s;base64,%s' % ('image/png', base64.b64encode(data))
-                else:
-                    return data
+
+        if rotation:
+            converter.transform(transformation=TransformationRotate(degrees=rotation))
+
+        if size:
+            converter.transform(transformation=TransformationResize(**dict(zip(('width', 'height'), (size.split('x'))))))
+
+        if zoom_level:
+            converter.transform(transformation=TransformationZoom(percent=zoom_level))
+
+        page_image = converter.get_page()
+
+        if as_base64:
+            return 'data:%s;base64,%s' % ('image/png', base64.b64encode(page_image.getvalue()))
+        else:
+            return page_image
 
 
 def argument_validator(value):

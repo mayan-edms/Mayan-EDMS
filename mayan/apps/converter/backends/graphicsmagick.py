@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import subprocess
 
-from . import ConverterBase
+from ..classes import ConverterBase
 from ..exceptions import ConvertError, IdentifyError, UnknownFileFormat
 from ..literals import (
     TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM

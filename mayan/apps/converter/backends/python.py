@@ -17,7 +17,7 @@ import sh
 from common.utils import fs_cleanup
 from mimetype.api import get_mimetype
 
-from . import ConverterBase
+from ..classes import ConverterBase
 from ..exceptions import ConvertError, UnknownFileFormat
 from ..literals import (
     DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER, TRANSFORMATION_RESIZE,
@@ -37,18 +37,38 @@ logger = logging.getLogger(__name__)
 
 
 class Python(ConverterBase):
-    def get_page_count(self, file_object, mimetype=None):
+
+    def convert(self, *args, **kwargs):
+        super(Python, self).convert(*args, **kwargs)
+
+        if self.mime_type == 'application/pdf' and pdftoppm:
+
+            new_file_object, input_filepath = tempfile.mkstemp()
+
+            if self.soffice_file_object:
+                os.write(new_file_object, self.soffice_file_object.read())
+                self.soffice_file_object.close()
+            else:
+                os.write(new_file_object, self.file_object.read())
+                self.file_object.seek(0)
+
+            os.close(new_file_object)
+
+            image_buffer = io.BytesIO()
+            try:
+                pdftoppm(input_filepath, f=self.page_number + 1, l=self.page_number + 1, _out=image_buffer)
+                image_buffer.seek(0)
+                return Image.open(image_buffer)
+            finally:
+                fs_cleanup(input_filepath)
+
+    def get_page_count(self):
         page_count = 1
 
-        if not mimetype:
-            mimetype, encoding = get_mimetype(file_object=file_object, mimetype_only=True)
-        else:
-            encoding = None
-
-        if mimetype == 'application/pdf':
+        if self.mime_type == 'application/pdf':
             # If file is a PDF open it with slate to determine the page count
             try:
-                pages = slate.PDF(file_object)
+                pages = slate.PDF(self.file_object)
             except Exception as exception:
                 logger.error('slate exception; %s', exception)
                 return 1
@@ -56,120 +76,22 @@ class Python(ConverterBase):
             else:
                 return len(pages)
             finally:
-                file_object.seek(0)
+                self.file_object.seek(0)
 
         try:
-            image = Image.open(file_object)
-        except IOError:  # cannot identify image file
-            raise UnknownFileFormat
+            image = Image.open(self.file_object)
         finally:
-            file_object.seek(0)
+            self.file_object.seek(0)
 
         try:
             while True:
                 image.seek(image.tell() + 1)
                 page_count += 1
-                # do something to im
-        except EOFError:
-            pass  # end of sequence
-
-        return page_count
-
-    def convert(self, file_object, mimetype=None, output_format=DEFAULT_FILE_FORMAT, page=DEFAULT_PAGE_NUMBER):
-        if not mimetype:
-            mimetype, encoding = get_mimetype(file_object=file_object, mimetype_only=True)
-
-        if mimetype == 'application/pdf' and pdftoppm:
-            image_buffer = io.BytesIO()
-
-            new_file_object, input_filepath = tempfile.mkstemp()
-            os.write(new_file_object, file_object.read())
-            os.close(new_file_object)
-
-            pdftoppm(input_filepath, f=page, l=page, _out=image_buffer)
-            image_buffer.seek(0)
-            image = Image.open(image_buffer)
-            fs_cleanup(input_filepath)
-        else:
-            image = Image.open(file_object)
-
-        current_page = 0
-        try:
-            while current_page == page - 1:
-                image.seek(image.tell() + 1)
-                current_page += 1
-                # do something to im
         except EOFError:
             # end of sequence
             pass
 
-        if image.mode not in ('L', 'RGB'):
-            image = image.convert('RGB')
+        return page_count
 
-        output = StringIO()
-        image.save(output, format=output_format)
 
-        return output
 
-    '''
-    try:
-        if transformations:
-            aspect = 1.0 * im.size[0] / im.size[1]
-            for transformation in transformations:
-                arguments = transformation.get('arguments')
-                if transformation['transformation'] == TRANSFORMATION_RESIZE:
-                    width = int(arguments.get('width', 0))
-                    height = int(arguments.get('height', 1.0 * width * aspect))
-                    im = self.resize(im, (width, height))
-                elif transformation['transformation'] == TRANSFORMATION_ZOOM:
-                    decimal_value = float(arguments.get('percent', 100)) / 100
-                    im = im.transform((int(im.size[0] * decimal_value), int(im.size[1] * decimal_value)), Image.EXTENT, (0, 0, im.size[0], im.size[1]))
-                elif transformation['transformation'] == TRANSFORMATION_ROTATE:
-                    # PIL counter degress counter-clockwise, reverse them
-                    im = im.rotate(360 - arguments.get('degrees', 0))
-    except:
-        # Ignore all transformation error
-        pass
-    '''
-
-    # From: http://united-coders.com/christian-harms/image-resizing-tips-general-and-for-python
-    def resize(self, img, box, fit=False, out=None):
-        """
-        Downsample the image.
-        @param img: Image -  an Image-object
-        @param box: tuple(x, y) - the bounding box of the result image
-        @param fit: boolean - crop the image to fill the box
-        @param out: file-like-object - save the image into the output stream
-        """
-        # preresize image with factor 2, 4, 8 and fast algorithm
-        factor = 1
-        while img.size[0] / factor > 2 * box[0] and img.size[1] * 2 / factor > 2 * box[1]:
-            factor *= 2
-        if factor > 1:
-            img.thumbnail((img.size[0] / factor, img.size[1] / factor), Image.NEAREST)
-
-        # calculate the cropping box and get the cropped part
-        if fit:
-            x1 = y1 = 0
-            x2, y2 = img.size
-            wRatio = 1.0 * x2 / box[0]
-            hRatio = 1.0 * y2 / box[1]
-            if hRatio > wRatio:
-                y1 = y2 / 2 - box[1] * wRatio / 2
-                y2 = y2 / 2 + box[1] * wRatio / 2
-            else:
-                x1 = x2 / 2 - box[0] * hRatio / 2
-                x2 = x2 / 2 + box[0] * hRatio / 2
-            img = img.crop((x1, y1, x2, y2))
-
-        # Resize the image with best quality algorithm ANTI-ALIAS
-        img.thumbnail(box, Image.ANTIALIAS)
-
-        if out:
-            # save it into a file-like object
-            img.save(out, 'JPEG', quality=75)
-        else:
-            return img
-
-        # if isinstance(self.regex, basestring):
-        #    self.regex = re.compile(regex)

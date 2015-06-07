@@ -372,10 +372,11 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
     task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=False, version=version), queue='converter')
     data = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
 
-    response = HttpResponse(data, content_type='image')
-    return response
+    return HttpResponse(data, content_type='image')
 
     # TODO: remove sendfile
+    # TODO: test if celery result store can store binary blobs or switch to
+    # full base64 in JS
     #return sendfile.sendfile(request, task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
 
 
