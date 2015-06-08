@@ -200,7 +200,7 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         try:
             Permission.objects.check_permissions(self.request.user, [PERMISSION_WORKFLOW_EDIT])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, self.request.user,self.workflow)
+            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, self.request.user, self.workflow)
 
         return super(SetupWorkflowDocumentTypesView, self).dispatch(request, *args, **kwargs)
 

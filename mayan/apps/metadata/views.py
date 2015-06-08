@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 from acls.models import AccessEntry
 from documents.models import Document, DocumentType
 from documents.permissions import (
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_VIEW
+    PERMISSION_DOCUMENT_TYPE_EDIT
 )
 from documents.views import DocumentListView
 from permissions.models import Permission
@@ -163,7 +163,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
 
     if not documents:
         messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reversesettings.LOGIN_REDIRECT_URL))
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     for document in documents:
         document.add_as_recent_document_for_user(request.user)

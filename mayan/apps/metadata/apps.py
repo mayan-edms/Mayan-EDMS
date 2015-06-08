@@ -33,7 +33,7 @@ from .links import (
     link_setup_metadata_type_delete, link_setup_metadata_type_edit,
     link_setup_metadata_type_list, link_documents_missing_required_metadata
 )
-from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
+from .models import DocumentTypeMetadataType, MetadataType
 from .permissions import (
     PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,
     PERMISSION_METADATA_DOCUMENT_REMOVE, PERMISSION_METADATA_DOCUMENT_VIEW
