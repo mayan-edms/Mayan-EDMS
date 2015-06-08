@@ -16,6 +16,7 @@ urlpatterns = patterns(
     url(r'^authentication/', include('authentication.urls', namespace='authentication')),
     url(r'^checkouts/', include('checkouts.urls', namespace='checkouts')),
     url(r'^comments/', include('document_comments.urls', namespace='comments')),
+    url(r'^converter/', include('converter.urls', namespace='converter')),
     url(r'^document/signatures/', include('document_signatures.urls', namespace='signatures')),
     url(r'^document/states/', include('document_states.urls', namespace='document_states')),
     url(r'^documents/', include('documents.urls', namespace='documents')),

@@ -4,7 +4,7 @@ import logging
 import io
 import os
 import subprocess
-from tempfile import mkstemp
+import tempfile
 
 try:
     from cStringIO import StringIO
@@ -13,8 +13,6 @@ except ImportError:
 
 from PIL import Image
 
-from django.utils.encoding import smart_str
-from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from common.settings import TEMPORARY_DIRECTORY
@@ -22,12 +20,8 @@ from common.utils import fs_cleanup
 from mimetype.api import get_mimetype
 
 from .exceptions import OfficeConversionError, UnknownFileFormat
-from .literals import (
-    DEFAULT_PAGE_NUMBER, DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION,
-    DEFAULT_FILE_FORMAT, TRANSFORMATION_CHOICES, TRANSFORMATION_RESIZE,
-    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM, DIMENSION_SEPARATOR
-)
-from .settings import GRAPHICS_BACKEND, LIBREOFFICE_PATH
+from .literals import DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT
+from .settings import LIBREOFFICE_PATH
 
 CONVERTER_OFFICE_FILE_MIMETYPES = [
     'application/msword',
@@ -111,7 +105,7 @@ class ConverterBase(object):
         readline = proc.stderr.readline()
         logger.debug('stderr: %s', readline)
         if return_code != 0:
-            raise OfficeBackendError(readline)
+            raise OfficeConversionError(readline)
 
         filename, extension = os.path.splitext(os.path.basename(input_filepath))
         logger.debug('filename: %s', filename)
@@ -158,7 +152,7 @@ class ConverterBase(object):
         if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
             if os.path.exists(LIBREOFFICE_PATH):
                 if not self.soffice_file_object:
-                    converted_output = Converter.soffice(self.file_object)
+                    converted_output = ConverterBase.soffice(self.file_object)
                     self.file_object.seek(0)
                     self.soffice_file_object = open(converted_output)
                     self.mime_type = 'application/pdf'
@@ -187,12 +181,16 @@ class BaseTransformation(object):
     _registry = {}
 
     @classmethod
-    def get_transformations_classes(cls):
-        return map(lambda name: getattr(cls, name), filter(lambda entry: entry.startswith('Transform'), dir(cls)))
+    def register(cls, transformation):
+        cls._registry[transformation.name] = transformation
 
     @classmethod
-    def get_transformations_choices(cls):
-        return [(transformation.name, transformation.label) for transformation in cls.get_transformations_classes()]
+    def get_transformation_choices(cls):
+        return [(name, klass.label) for name, klass in cls._registry.items()]
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
 
     def __init__(self, **kwargs):
         for argument_name in self.arguments:
@@ -206,7 +204,7 @@ class BaseTransformation(object):
 class TransformationResize(BaseTransformation):
     name = 'resize'
     arguments = ('width', 'height')
-    label = _('Resize')
+    label = _('Resize <width, height>')
 
     def execute_on(self, *args, **kwargs):
         super(TransformationResize, self).execute_on(*args, **kwargs)
@@ -244,7 +242,7 @@ class TransformationResize(BaseTransformation):
 class TransformationRotate(BaseTransformation):
     name = 'rotate'
     arguments = ('degrees',)
-    label = _('Rotate')
+    label = _('Rotate <degrees>')
 
     def execute_on(self, *args, **kwargs):
         super(TransformationRotate, self).execute_on(*args, **kwargs)
@@ -255,10 +253,15 @@ class TransformationRotate(BaseTransformation):
 class TransformationZoom(BaseTransformation):
     name = 'zoom'
     arguments = ('percent',)
-    label = _('Zoom')
+    label = _('Zoom <percent>')
 
     def execute_on(self, *args, **kwargs):
         super(TransformationZoom, self).execute_on(*args, **kwargs)
 
         decimal_value = float(self.percent) / 100
         return self.image.resize((int(self.image.size[0] * decimal_value), int(self.image.size[1] * decimal_value)), Image.ANTIALIAS)
+
+
+BaseTransformation.register(TransformationResize)
+BaseTransformation.register(TransformationRotate)
+BaseTransformation.register(TransformationZoom)
