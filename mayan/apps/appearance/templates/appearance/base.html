@@ -240,16 +240,13 @@
                     if (result.status == 'success') {
                         image.attr('src', result.data);
                         image.addClass(image.attr('data-post-load-class'));
-                    } else if (result.detail == 'unknown_file_format') {
-                        image.attr('src', "{% static 'images/mimetypes/unknown.png' %}");
-                        set_image_noninteractive(image);
                     } else {
-                        image.attr('src', "{% static 'images/mimetypes/error.png' %}");
+                        image.attr('src', "{% static 'appearance/images/error.png' %}");
                         set_image_noninteractive(image);
                     }
                 })
               .fail(function() {
-                image.attr('src', "{% static 'images/mimetypes/error.png' %}");
+                image.attr('src', "{% static 'appearance/images/error.png' %}");
                 set_image_noninteractive(image);
               })
             }
