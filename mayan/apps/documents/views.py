@@ -13,8 +13,6 @@ from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-import sendfile
-
 from acls.models import AccessEntry
 from acls.views import acl_list_for
 from common.compressed_files import CompressedFile
@@ -369,15 +367,8 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
 
     document_page = document.pages.get(page_number=page)
 
-    task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=False, version=version), queue='converter')
-    data = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
-
-    return HttpResponse(data, content_type='image')
-
-    # TODO: remove sendfile
-    # TODO: test if celery result store can store binary blobs or switch to
-    # full base64 in JS
-    #return sendfile.sendfile(request, task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT), mimetype=DEFAULT_FILE_FORMAT_MIMETYPE)
+    task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version), queue='converter')
+    return HttpResponse(task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT), content_type='image')
 
 
 def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):
