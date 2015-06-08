@@ -175,16 +175,22 @@ class Link(object):
         else:
             args = [Variable(self.args)]
 
-        kwargs = {key: Variable(value) for key, value in self.kwargs.iteritems()}
-
-        # Use Django's exact {% url %} code to resolve the link
-        node = URLNode(view_name=view_name, args=args, kwargs=kwargs, asvar=None)
-
         # If we were passed an instance of the view context object we are
         # resolving, inject it into the context. This help resolve links for
         # object lists.
         if resolved_object:
             context['resolved_object'] = resolved_object
+
+        try:
+            self.kwargs = self.kwargs(context)
+        except TypeError:
+            # Is not a callable
+            pass
+
+        kwargs = {key: Variable(value) for key, value in self.kwargs.iteritems()}
+
+        # Use Django's exact {% url %} code to resolve the link
+        node = URLNode(view_name=view_name, args=args, kwargs=kwargs, asvar=None)
 
         resolved_link.url = node.render(context)
 
