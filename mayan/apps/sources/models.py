@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from ast import literal_eval
 from email.Utils import collapse_rfc2231_value
 from email import message_from_string
 import json
@@ -9,8 +8,6 @@ import logging
 import os
 import poplib
 
-from django.contrib.contenttypes import generic
-from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ValidationError
 from django.core.files import File
 from django.db import models
@@ -19,7 +16,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
-#from converter.api import get_available_transformations_choices
 from converter.literals import DIMENSION_SEPARATOR
 from djcelery.models import PeriodicTask, IntervalSchedule
 from documents.models import Document, DocumentType
@@ -33,7 +29,6 @@ from .literals import (
     SOURCE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICE_Y,
     SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3
 )
-from .managers import SourceTransformationManager
 
 logger = logging.getLogger(__name__)
 
@@ -56,7 +51,7 @@ class Source(models.Model):
         return ' '.join([self.class_fullname(), '"%s"' % self.title])
 
     def get_transformation_list(self):
-        return SourceTransformation.transformations.get_for_object_as_list(self)
+        return SourceTransformation.objects.get_for_object_as_list(self)
 
     def upload_document(self, file_object, label, description=None, document_type=None, expand=False, language=None, metadata_dict_list=None, user=None):
         new_versions = Document.objects.new_document(
@@ -353,40 +348,3 @@ class WatchFolderSource(IntervalBaseModel):
     class Meta:
         verbose_name = _('Watch folder')
         verbose_name_plural = _('Watch folders')
-
-
-def argument_validator(value):
-    """
-    Validates that the input evaluates correctly.
-    """
-    value = value.strip()
-    try:
-        literal_eval(value)
-    except (ValueError, SyntaxError):
-        raise ValidationError(_('Enter a valid value.'), code='invalid')
-
-
-@python_2_unicode_compatible
-class SourceTransformation(models.Model):
-    """
-    Model that stores the transformation and transformation arguments
-    for a given document source
-    """
-    content_type = models.ForeignKey(ContentType)
-    object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
-    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_('Order'), db_index=True)
-    #transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
-    transformation = models.CharField(max_length=128, verbose_name=_('Transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[argument_validator])
-
-    objects = models.Manager()
-    transformations = SourceTransformationManager()
-
-    def __str__(self):
-        return self.get_transformation_display()
-
-    class Meta:
-        ordering = ('order',)
-        verbose_name = _('Document source transformation')
-        verbose_name_plural = _('Document source transformations')

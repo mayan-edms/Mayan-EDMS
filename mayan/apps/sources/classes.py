@@ -11,7 +11,7 @@ except ImportError:
 
 from django.core.files import File
 
-from converter.api import convert
+from converter import converter_class
 from mimetype.api import get_mimetype
 
 

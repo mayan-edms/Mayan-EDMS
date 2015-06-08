@@ -25,16 +25,14 @@ from navigation import Link
 from permissions.models import Permission
 
 from .forms import (
-    NewDocumentForm, NewVersionForm, SourceTransformationForm,
-    SourceTransformationForm_create
+    NewDocumentForm, NewVersionForm
 )
 from .literals import (
     SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_ASK,
     SOURCE_UNCOMPRESS_CHOICE_Y
 )
 from .models import (
-    InteractiveSource, Source, StagingFolderSource, SourceTransformation,
-    WebFormSource
+    InteractiveSource, Source, StagingFolderSource, WebFormSource
 )
 from .permissions import (
     PERMISSION_SOURCES_SETUP_CREATE, PERMISSION_SOURCES_SETUP_DELETE,
@@ -442,114 +440,4 @@ def setup_source_create(request, source_type):
         'navigation_object_list': ['source'],
         'source_type': source_type,
         'title': _('Create new source of type: %s') % cls.class_fullname(),
-    }, context_instance=RequestContext(request))
-
-
-def setup_source_transformation_list(request, source_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
-
-    source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
-
-    context = {
-        'extra_columns': [
-            {'name': _('Order'), 'attribute': 'order'},
-            {'name': _('Transformation'), 'attribute': encapsulate(lambda x: x.get_transformation_display())},
-            {'name': _('Arguments'), 'attribute': 'arguments'}
-        ],
-        'hide_link': True,
-        'hide_object': True,
-        'navigation_object_list': ['source'],
-        'object_list': SourceTransformation.transformations.get_for_object(source),
-        'source': source,
-        'title': _('Transformations for: %s') % source.fullname(),
-    }
-
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
-
-
-def setup_source_transformation_edit(request, transformation_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
-
-    source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
-    redirect_view = reverse('sources:setup_source_transformation_list', args=[source_transformation.content_object.pk])
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', redirect_view)))
-
-    if request.method == 'POST':
-        form = SourceTransformationForm(instance=source_transformation, data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _('Source transformation edited successfully'))
-                return HttpResponseRedirect(next)
-            except Exception as exception:
-                messages.error(request, _('Error editing source transformation; %s') % exception)
-    else:
-        form = SourceTransformationForm(instance=source_transformation)
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'navigation_object_list': ['source', 'transformation'],
-        'next': next,
-        'source': source_transformation.content_object,
-        'transformation': source_transformation,
-        'title': _('Edit transformation: %s') % source_transformation,
-    }, context_instance=RequestContext(request))
-
-
-def setup_source_transformation_delete(request, transformation_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
-
-    source_transformation = get_object_or_404(SourceTransformation, pk=transformation_id)
-    redirect_view = reverse('sources:setup_source_transformation_list', args=[source_transformation.content_object.pk])
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
-
-    if request.method == 'POST':
-        try:
-            source_transformation.delete()
-            messages.success(request, _('Source transformation deleted successfully.'))
-        except Exception as exception:
-            messages.error(request, _('Error deleting source transformation; %(error)s') % {
-                'error': exception}
-            )
-        return HttpResponseRedirect(redirect_view)
-
-    return render_to_response('appearance/generic_confirm.html', {
-        'delete_view': True,
-        'navigation_object_list': ['source', 'transformation'],
-        'previous': previous,
-        'source': source_transformation.content_object,
-        'title': _('Are you sure you wish to delete source transformation "%(transformation)s"') % {
-            'transformation': source_transformation.get_transformation_display(),
-        },
-        'transformation': source_transformation,
-    }, context_instance=RequestContext(request))
-
-
-def setup_source_transformation_create(request, source_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
-
-    source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
-
-    redirect_view = reverse('sources:setup_source_transformation_list', args=[source.pk])
-
-    if request.method == 'POST':
-        form = SourceTransformationForm_create(request.POST)
-        if form.is_valid():
-            try:
-                source_tranformation = form.save(commit=False)
-                source_tranformation.content_object = source
-                source_tranformation.save()
-                messages.success(request, _('Source transformation created successfully'))
-                return HttpResponseRedirect(redirect_view)
-            except Exception as exception:
-                messages.error(request, _('Error creating source transformation; %s') % exception)
-    else:
-        form = SourceTransformationForm_create()
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'source': source,
-        'navigation_object_list': ['source'],
-        'title': _('Create new transformation for source: %s') % source,
     }, context_instance=RequestContext(request))

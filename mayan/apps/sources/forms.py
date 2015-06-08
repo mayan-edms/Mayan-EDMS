@@ -9,8 +9,8 @@ from django.utils.translation import ugettext_lazy as _
 from documents.forms import DocumentForm
 
 from .models import (
-    IMAPEmail, POP3Email, SourceTransformation, StagingFolderSource,
-    WebFormSource, WatchFolderSource
+    IMAPEmail, POP3Email, StagingFolderSource, WebFormSource,
+    WatchFolderSource
 )
 
 logger = logging.getLogger(__name__)
@@ -109,20 +109,3 @@ class WatchFolderSetupForm(forms.ModelForm):
     class Meta:
         fields = ('title', 'enabled', 'interval', 'document_type', 'uncompress', 'folder_path')
         model = WatchFolderSource
-
-
-class SourceTransformationForm(forms.ModelForm):
-    class Meta:
-        fields = ('order', 'transformation', 'arguments')
-        model = SourceTransformation
-
-    def __init__(self, *args, **kwargs):
-        super(SourceTransformationForm, self).__init__(*args, **kwargs)
-        self.fields['content_type'].widget = forms.HiddenInput()
-        self.fields['object_id'].widget = forms.HiddenInput()
-
-
-class SourceTransformationForm_create(forms.ModelForm):
-    class Meta:
-        model = SourceTransformation
-        exclude = ('content_type', 'object_id')

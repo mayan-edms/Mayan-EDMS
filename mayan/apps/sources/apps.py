@@ -8,6 +8,7 @@ from common import (
     menu_setup
 )
 from common.utils import encapsulate
+from converter.links import link_transformation_list
 from documents.models import Document
 from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
@@ -19,13 +20,9 @@ from .links import (
     link_setup_source_create_pop3_email,
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
     link_setup_source_create_staging_folder, link_setup_source_delete,
-    link_setup_source_edit, link_setup_source_transformation_create,
-    link_setup_source_transformation_delete,
-    link_setup_source_transformation_edit,
-    link_setup_source_transformation_list, link_staging_file_delete,
-    link_upload_version
+    link_setup_source_edit, link_staging_file_delete, link_upload_version
 )
-from .models import Source, SourceTransformation
+from .models import Source
 from .widgets import staging_file_thumbnail
 
 
@@ -39,12 +36,10 @@ class SourcesApp(apps.AppConfig):
 
         menu_front_page.bind_links(links=[link_document_create_multiple])
         menu_object.bind_links(links=[link_document_create_siblings], sources=[Document])
-        menu_object.bind_links(links=[link_setup_source_edit, link_setup_source_transformation_list, link_setup_source_delete], sources=[Source])
-        menu_object.bind_links(links=[link_setup_source_transformation_edit, link_setup_source_transformation_delete], sources=[SourceTransformation])
+        menu_object.bind_links(links=[link_setup_source_edit, link_setup_source_delete, link_transformation_list], sources=[Source])
         menu_object.bind_links(links=[link_staging_file_delete], sources=[StagingFile])
         menu_secondary.bind_links(links=[link_setup_sources, link_setup_source_create_webform, link_setup_source_create_staging_folder, link_setup_source_create_pop3_email, link_setup_source_create_imap_email, link_setup_source_create_watch_folder], sources=[Source, 'sources:setup_source_list', 'sources:setup_source_create'])
         menu_setup.bind_links(links=[link_setup_sources])
-        menu_sidebar.bind_links(links=[link_setup_source_transformation_create], sources=[SourceTransformation, 'sources:setup_source_transformation_create', 'sources:setup_source_transformation_list'])
         menu_sidebar.bind_links(links=[link_upload_version], sources=['documents:document_version_list', 'documents:upload_version', 'documents:document_version_revert'])
 
         register_model_list_columns(StagingFile, [

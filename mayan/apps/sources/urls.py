@@ -26,11 +26,6 @@ urlpatterns = patterns(
     url(r'^setup/(?P<source_id>\d+)/delete/$', 'setup_source_delete', (), 'setup_source_delete'),
     url(r'^setup/(?P<source_type>\w+)/create/$', 'setup_source_create', (), 'setup_source_create'),
 
-    url(r'^setup/(?P<source_id>\d+)/transformation/list/$', 'setup_source_transformation_list', (), 'setup_source_transformation_list'),
-    url(r'^setup/(?P<source_id>\d+)/transformation/create/$', 'setup_source_transformation_create', (), 'setup_source_transformation_create'),
-    url(r'^setup/source/transformation/(?P<transformation_id>\d+)/edit/$', 'setup_source_transformation_edit', (), 'setup_source_transformation_edit'),
-    url(r'^setup/source/transformation/(?P<transformation_id>\d+)/delete/$', 'setup_source_transformation_delete', (), 'setup_source_transformation_delete'),
-
     # Document create views
 
     url(r'^create/from/local/multiple/$', DocumentCreateWizard.as_view(), name='document_create_multiple'),
