@@ -178,7 +178,7 @@ class Link(object):
         kwargs = {key: Variable(value) for key, value in self.kwargs.iteritems()}
 
         # Use Django's exact {% url %} code to resolve the link
-        node = URLNode(view_name=view_name, args=args, kwargs={}, asvar=None)
+        node = URLNode(view_name=view_name, args=args, kwargs=kwargs, asvar=None)
 
         # If we were passed an instance of the view context object we are
         # resolving, inject it into the context. This help resolve links for
