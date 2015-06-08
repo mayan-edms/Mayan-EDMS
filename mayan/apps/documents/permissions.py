@@ -13,7 +13,6 @@ PERMISSION_DOCUMENT_EDIT = Permission.objects.register(document_namespace, 'docu
 PERMISSION_DOCUMENT_NEW_VERSION = Permission.objects.register(document_namespace, 'document_new_version', _('Create new document versions'))
 PERMISSION_DOCUMENT_PROPERTIES_EDIT = Permission.objects.register(document_namespace, 'document_properties_edit', _('Edit document properties'))
 PERMISSION_DOCUMENT_PRINT = Permission.objects.register(document_namespace, 'document_print', _('Can print documents'))
-PERMISSION_DOCUMENT_TRANSFORM = Permission.objects.register(document_namespace, 'document_transform', _('Transform documents'))
 PERMISSION_DOCUMENT_TOOLS = Permission.objects.register(document_namespace, 'document_tools', _('Execute document modifying tools'))
 PERMISSION_DOCUMENT_VERSION_REVERT = Permission.objects.register(document_namespace, 'document_version_revert', _('Revert documents to a previous version'))
 PERMISSION_DOCUMENT_VIEW = Permission.objects.register(document_namespace, 'document_view', _('View documents'))

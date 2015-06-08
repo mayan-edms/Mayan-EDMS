@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from ast import literal_eval
 import logging
 
 from django.db import models, transaction
@@ -10,27 +9,6 @@ from common.compressed_files import CompressedFile, NotACompressedFile
 from .settings import RECENT_COUNT, LANGUAGE
 
 logger = logging.getLogger(__name__)
-
-
-class DocumentPageTransformationManager(models.Manager):
-    def get_for_document_page(self, document_page):
-        return self.model.objects.filter(document_page=document_page)
-
-    def get_for_document_page_as_list(self, document_page):
-        warnings = []
-        transformations = []
-        for transformation in self.get_for_document_page(document_page).values('transformation', 'arguments'):
-            try:
-                transformations.append(
-                    {
-                        'transformation': transformation['transformation'],
-                        'arguments': literal_eval(transformation['arguments'].strip())
-                    }
-                )
-            except (ValueError, SyntaxError) as exception:
-                warnings.append(exception)
-
-        return transformations, warnings
 
 
 class RecentDocumentManager(models.Manager):

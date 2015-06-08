@@ -25,13 +25,13 @@ from converter.exceptions import UnknownFileFormat
 from converter.literals import (
     DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_PAGE_NUMBER
 )
+from converter.models import Transformation
 from mimetype.api import get_mimetype
 
 from .events import event_document_create
 from .exceptions import NewDocumentVersionNotAllowed
 from .managers import (
-    DocumentManager, DocumentPageTransformationManager, DocumentTypeManager,
-    RecentDocumentManager
+    DocumentManager, DocumentTypeManager, RecentDocumentManager
 )
 from .runtime import storage_backend
 from .settings import (
@@ -79,7 +79,7 @@ class Document(models.Model):
     Defines a single document with it's fields and properties
     """
 
-    uuid = models.CharField(default=UUID_FUNCTION(), max_length=48, editable=False)
+    uuid = models.CharField(default=UUID_FUNCTION, max_length=48, editable=False)
     document_type = models.ForeignKey(DocumentType, verbose_name=_('Document type'), related_name='documents')
     label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True, help_text=_('The name of the document'), verbose_name=_('Label'))
     description = models.TextField(blank=True, null=True, verbose_name=_('Description'))
@@ -127,53 +127,6 @@ class Document(models.Model):
                 event_document_create.commit(actor=user, target=self)
             else:
                 event_document_create.commit(target=self)
-
-    """
-    def get_cached_image_name(self, page, version):
-        document_version = DocumentVersion.objects.get(pk=version)
-        document_page = document_version.pages.get(page_number=page)
-        transformations, warnings = document_page.get_transformation_list()
-        hash_value = HASH_FUNCTION(''.join([document_version.checksum, unicode(page), unicode(transformations)]))
-        return os.path.join(CACHE_PATH, hash_value), transformations
-
-    def get_image_cache_name(self, page, version):
-        cache_file_path, transformations = self.get_cached_image_name(page, version)
-        if os.path.exists(cache_file_path):
-            return cache_file_path
-        else:
-            document_version = DocumentVersion.objects.get(pk=version)
-            document_file = document_version.document.document_save_to_temp_dir(document_version.checksum)
-            return convert(input_filepath=document_file, output_filepath=cache_file_path, page=page, transformations=transformations, mimetype=self.file_mimetype)
-
-    def get_valid_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, version=None):
-        if not version:
-            version = self.latest_version.pk
-        image_cache_name = self.get_image_cache_name(page=page, version=version)
-
-        logger.debug('image_cache_name: %s', image_cache_name)
-
-        return convert(input_filepath=image_cache_name, cleanup_files=False, size=size, zoom=zoom, rotation=rotation)
-
-    def get_image(self, size=DISPLAY_SIZE, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, as_base64=False, version=None):
-        if zoom < ZOOM_MIN_LEVEL:
-            zoom = ZOOM_MIN_LEVEL
-
-        if zoom > ZOOM_MAX_LEVEL:
-            zoom = ZOOM_MAX_LEVEL
-
-        rotation = rotation % 360
-
-        file_path = self.get_valid_image(size=size, page=page, zoom=zoom, rotation=rotation, version=version)
-        logger.debug('file_path: %s', file_path)
-
-        if as_base64:
-            with open(file_path, 'r') as file_object:
-                mimetype = get_mimetype(file_object=file_object, mimetype_only=True)[0]
-                base64_data = base64.b64encode(file_object.read())
-                return 'data:%s;base64,%s' % (mimetype, base64_data)
-        else:
-            return file_path
-    """
 
     def invalidate_cached_image(self, page):
         pass
@@ -298,7 +251,7 @@ class DocumentVersion(models.Model):
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
     # File related fields
-    file = models.FileField(upload_to=UUID_FUNCTION(), storage=storage_backend, verbose_name=_('File'))
+    file = models.FileField(upload_to=UUID_FUNCTION, storage=storage_backend, verbose_name=_('File'))
     mimetype = models.CharField(max_length=255, null=True, blank=True, editable=False)
     encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
 
@@ -350,6 +303,7 @@ class DocumentVersion(models.Model):
                 self.save()
 
     def update_page_count(self, save=True):
+        # TODO: finish converting this
         #handle, filepath = tempfile.mkstemp()
         # Just need the filepath, close the file description
         #os.close(handle)
@@ -570,6 +524,11 @@ class DocumentPage(models.Model):
                 fs_cleanup(cache_filename)
                 raise
 
+        stored_transformations = Transformation.objects.get_for_model(self, as_classes=True)
+
+        for stored_transformation in stored_transformations:
+            converter.transform(transformation=stored_transformation)
+
         if rotation:
             converter.transform(transformation=TransformationRotate(degrees=rotation))
 
@@ -585,39 +544,6 @@ class DocumentPage(models.Model):
             return 'data:%s;base64,%s' % ('image/png', base64.b64encode(page_image.getvalue()))
         else:
             return page_image
-
-
-def argument_validator(value):
-    """
-    Validates that the input evaluates correctly.
-    """
-    value = value.strip()
-    try:
-        literal_eval(value)
-    except (ValueError, SyntaxError):
-        raise ValidationError(_('Enter a valid value.'), code='invalid')
-
-
-@python_2_unicode_compatible
-class DocumentPageTransformation(models.Model):
-    """
-    Model that stores the transformation and transformation arguments
-    for a given document page
-    """
-    document_page = models.ForeignKey(DocumentPage, verbose_name=_('Document page'))
-    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_('Order'), db_index=True)
-    #transformation = models.CharField(choices=get_available_transformations_choices(), max_length=128, verbose_name=_('Transformation'))
-    transformation = models.CharField(max_length=128, verbose_name=_('Transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), help_text=_('Use dictionaries to indentify arguments, example: {\'degrees\':90}'), validators=[argument_validator])
-    objects = DocumentPageTransformationManager()
-
-    def __str__(self):
-        return self.get_transformation_display()
-
-    class Meta:
-        ordering = ('order',)
-        verbose_name = _('Document page transformation')
-        verbose_name_plural = _('Document page transformations')
 
 
 @python_2_unicode_compatible

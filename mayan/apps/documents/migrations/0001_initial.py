@@ -52,7 +52,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('order', models.PositiveIntegerField(default=0, null=True, verbose_name='Order', db_index=True, blank=True)),
                 ('transformation', models.CharField(max_length=128, verbose_name='Transformation', choices=[('resize', 'Resize'), ('rotate', 'Rotate'), ('zoom', 'Zoom')])),
-                ('arguments', models.TextField(blank=True, help_text="Use dictionaries to indentify arguments, example: {'degrees':90}", null=True, verbose_name='Arguments', validators=[documents.models.argument_validator])),
+                ('arguments', models.TextField(blank=True, help_text="Use dictionaries to indentify arguments, example: {'degrees':90}", null=True, verbose_name='Arguments', validators=[])),
                 ('document_page', models.ForeignKey(verbose_name='Document page', to='documents.DocumentPage')),
             ],
             options={

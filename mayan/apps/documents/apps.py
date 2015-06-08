@@ -16,6 +16,11 @@ from common import (
 from common.api import register_maintenance_links
 from common.classes import ModelAttribute
 from common.utils import encapsulate, validate_path
+from converter.permissions import (
+    PERMISSION_TRANSFORMATION_CREATE,
+    PERMISSION_TRANSFORMATION_DELETE, PERMISSION_TRANSFORMATION_EDIT,
+    PERMISSION_TRANSFORMATION_VIEW,
+)
 from dynamic_search.classes import SearchModel
 from events.permissions import PERMISSION_EVENTS_VIEW
 from navigation.api import register_model_list_columns
@@ -37,10 +42,7 @@ from .links import (
     link_document_page_navigation_next,
     link_document_page_navigation_previous, link_document_page_return,
     link_document_page_rotate_left, link_document_page_rotate_right,
-    link_document_page_transformation_list,
-    link_document_page_transformation_create,
-    link_document_page_transformation_edit,
-    link_document_page_transformation_delete, link_document_page_view,
+    link_document_page_transformation_list, link_document_page_view,
     link_document_page_view_reset, link_document_page_zoom_in,
     link_document_page_zoom_out, link_document_preview, link_document_print,
     link_document_properties, link_document_type_create,
@@ -52,15 +54,14 @@ from .links import (
     link_document_version_list, link_document_version_revert
 )
 from .models import (
-    Document, DocumentPage, DocumentPageTransformation, DocumentType,
-    DocumentTypeFilename, DocumentVersion
+    Document, DocumentPage, DocumentType, DocumentTypeFilename,
+    DocumentVersion
 )
 from .permissions import (
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
     PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_NEW_VERSION,
     PERMISSION_DOCUMENT_PRINT, PERMISSION_DOCUMENT_PROPERTIES_EDIT,
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_VIEW
+    PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_VIEW
 )
 from .settings import THUMBNAIL_SIZE
 from .statistics import DocumentStatistics, DocumentUsageStatistics
@@ -77,7 +78,7 @@ class DocumentsApp(apps.AppConfig):
 
         APIEndPoint('documents')
 
-        DocumentPage.add_to_class('get_transformation_list', lambda document_page: DocumentPageTransformation.objects.get_for_document_page_as_list(document_page))
+        DocumentPage.add_to_class('get_transformation_list', lambda document_page: Transformation.objects.get_for_object(document_page))
 
         MissingItem(label=_('Create a document type'), description=_('Every uploaded document must be assigned a document type, it is the basic way Mayan EDMS categorizes documents.'), condition=lambda: not DocumentType.objects.exists(), view='documents:document_type_list')
 
@@ -91,8 +92,10 @@ class DocumentsApp(apps.AppConfig):
             PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_EDIT,
             PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_PRINT,
             PERMISSION_DOCUMENT_PROPERTIES_EDIT,
-            PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_VERSION_REVERT,
-            PERMISSION_DOCUMENT_VIEW, PERMISSION_EVENTS_VIEW
+            PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_VIEW,
+            PERMISSION_EVENTS_VIEW, PERMISSION_TRANSFORMATION_CREATE,
+            PERMISSION_TRANSFORMATION_DELETE, PERMISSION_TRANSFORMATION_EDIT,
+            PERMISSION_TRANSFORMATION_VIEW,
         ])
 
         document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer_string='documents.serializers.DocumentSerializer')
@@ -135,8 +138,6 @@ class DocumentsApp(apps.AppConfig):
         menu_facet.bind_links(links=[link_document_page_rotate_left, link_document_page_rotate_right, link_document_page_zoom_in, link_document_page_zoom_out, link_document_page_view_reset], sources=['documents:document_page_view'])
         menu_facet.bind_links(links=[link_document_page_return, link_document_page_view], sources=[DocumentPage])
         menu_facet.bind_links(links=[link_document_page_navigation_first, link_document_page_navigation_previous, link_document_page_navigation_next, link_document_page_navigation_last, link_document_page_transformation_list], sources=[DocumentPage])
-        menu_object.bind_links(links=[link_document_page_transformation_edit, link_document_page_transformation_delete], sources=[DocumentPageTransformation])
-        menu_sidebar.bind_links(links=[link_document_page_transformation_create], sources=[DocumentPage, 'documents:document_page_transformation_create'])
 
         namespace = StatisticNamespace(name='documents', label=_('Documents'))
         namespace.add_statistic(DocumentStatistics(name='document_stats', label=_('Document tendencies')))

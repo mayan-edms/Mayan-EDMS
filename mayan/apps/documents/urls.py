@@ -58,12 +58,6 @@ urlpatterns = patterns(
     url(r'^page/(?P<document_page_id>\d+)/rotate/left/$', 'document_page_rotate_left', (), 'document_page_rotate_left'),
     url(r'^page/(?P<document_page_id>\d+)/reset/$', 'document_page_view_reset', (), 'document_page_view_reset'),
 
-    url(r'^page/(?P<document_page_id>\d+)/transformation/list/$', 'document_page_transformation_list', (), 'document_page_transformation_list'),
-    url(r'^page/(?P<document_page_id>\d+)/transformation/create/$', 'document_page_transformation_create', (), 'document_page_transformation_create'),
-
-    url(r'^page/transformation/(?P<document_page_transformation_id>\d+)/edit/$', 'document_page_transformation_edit', (), 'document_page_transformation_edit'),
-    url(r'^page/transformation/(?P<document_page_transformation_id>\d+)/delete/$', 'document_page_transformation_delete', (), 'document_page_transformation_delete'),
-
     # Admin views
     url(r'^type/list/$', 'document_type_list', (), 'document_type_list'),
     url(r'^type/create/$', 'document_type_create', (), 'document_type_create'),

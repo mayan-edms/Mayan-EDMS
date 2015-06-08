@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 from .models import (
-    Document, DocumentPage, DocumentPageTransformation, DocumentType,
-    DocumentTypeFilename, DocumentVersion, RecentDocument
+    Document, DocumentPage, DocumentType, DocumentTypeFilename,
+    DocumentVersion, RecentDocument
 )
 
 
@@ -35,10 +35,6 @@ class DocumentTypeAdmin(admin.ModelAdmin):
     ]
 
 
-class DocumentPageTransformationAdmin(admin.ModelAdmin):
-    model = DocumentPageTransformation
-
-
 class DocumentAdmin(admin.ModelAdmin):
     inlines = [
         DocumentVersionInline
@@ -55,7 +51,5 @@ class RecentDocumentAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Document, DocumentAdmin)
-admin.site.register(DocumentPageTransformation,
-                    DocumentPageTransformationAdmin)
 admin.site.register(DocumentType, DocumentTypeAdmin)
 admin.site.register(RecentDocument, RecentDocumentAdmin)

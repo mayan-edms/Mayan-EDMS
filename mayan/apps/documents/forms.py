@@ -10,24 +10,13 @@ from common.forms import DetailForm
 from common.widgets import TextAreaDiv
 
 from .models import (
-    Document, DocumentType, DocumentPage, DocumentPageTransformation,
-    DocumentTypeFilename
+    Document, DocumentType, DocumentPage, DocumentTypeFilename
 )
 from .literals import DEFAULT_ZIP_FILENAME
 from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
 
 
 # Document page forms
-class DocumentPageTransformationForm(forms.ModelForm):
-    class Meta:
-        fields = ('document_page', 'order', 'transformation', 'arguments')
-        model = DocumentPageTransformation
-
-    def __init__(self, *args, **kwargs):
-        super(DocumentPageTransformationForm, self).__init__(*args, **kwargs)
-        self.fields['document_page'].widget = forms.HiddenInput()
-
-
 class DocumentPageForm(DetailForm):
     class Meta:
         fields = ()
