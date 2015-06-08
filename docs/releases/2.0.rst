@@ -33,6 +33,11 @@ What's new in Mayan EDMS v2.0
   * GitPython
   * psutil
   * python-hkp
+  * sendfile
+
+* New document converter
+* New class based transformations
+
 
 Upgrading from a previous version
 =================================
@@ -94,6 +99,7 @@ Remove unused dependencies::
     $ pip uninstall GitPython
     $ pip uninstall psutil
     $ pip uninstall python-hkp
+    $ pip uninstall django-sendfile
 
 
 The upgrade procedure is now complete.
@@ -102,6 +108,7 @@ The upgrade procedure is now complete.
 Backward incompatible changes
 =============================
 
+* Document and sources transformations
 
 Bugs fixed or issues closed
 ===========================
