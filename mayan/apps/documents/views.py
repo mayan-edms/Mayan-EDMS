@@ -31,7 +31,6 @@ from .events import (
 )
 from .forms import (
     DocumentContentForm, DocumentDownloadForm, DocumentForm, DocumentPageForm,
-    DocumentPageForm_edit, DocumentPageForm_text,
     DocumentPageTransformationForm, DocumentPreviewForm, DocumentPropertiesForm,
     DocumentTypeForm, DocumentTypeFilenameForm, DocumentTypeFilenameForm_create,
     DocumentTypeSelectForm, PrintForm
@@ -618,53 +617,6 @@ def document_page_view(request, document_page_id):
 
 def document_page_view_reset(request, document_page_id):
     return HttpResponseRedirect(reverse('documents:document_page_view', args=[document_page_id]))
-
-
-def document_page_text(request, document_page_id):
-    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
-
-    document_page_form = DocumentPageForm_text(instance=document_page)
-
-    return render_to_response('appearance/generic_form.html', {
-        'access_object': document_page.document,
-        'form': document_page_form,
-        'page': document_page,
-        'navigation_object_list': ['page'],
-        'read_only': True,
-        'title': _('Details for: %s') % document_page,
-    }, context_instance=RequestContext(request))
-
-
-def document_page_edit(request, document_page_id):
-    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_EDIT])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_EDIT, request.user, document_page.document)
-
-    if request.method == 'POST':
-        form = DocumentPageForm_edit(request.POST, instance=document_page)
-        if form.is_valid():
-            document_page.page_label = form.cleaned_data['page_label']
-            document_page.content = form.cleaned_data['content']
-            document_page.save()
-            messages.success(request, _('Document page edited successfully.'))
-            return HttpResponseRedirect(document_page.get_absolute_url())
-    else:
-        form = DocumentPageForm_edit(instance=document_page)
-
-    return render_to_response('appearance/generic_form.html', {
-        'access_object': document_page.document,
-        'form': form,
-        'navigation_object_list': ['page'],
-        'page': document_page,
-        'title': _('Edit: %s') % document_page,
-    }, context_instance=RequestContext(request))
 
 
 def document_page_navigation_next(request, document_page_id):

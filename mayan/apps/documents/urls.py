@@ -48,8 +48,6 @@ urlpatterns = patterns(
     url(r'^maintenance/clear_image_cache/$', 'document_clear_image_cache', (), 'document_clear_image_cache'),
 
     url(r'^page/(?P<document_page_id>\d+)/$', 'document_page_view', (), 'document_page_view'),
-    url(r'^page/(?P<document_page_id>\d+)/text/$', 'document_page_text', (), 'document_page_text'),
-    url(r'^page/(?P<document_page_id>\d+)/edit/$', 'document_page_edit', (), 'document_page_edit'),
     url(r'^page/(?P<document_page_id>\d+)/navigation/next/$', 'document_page_navigation_next', (), 'document_page_navigation_next'),
     url(r'^page/(?P<document_page_id>\d+)/navigation/previous/$', 'document_page_navigation_previous', (), 'document_page_navigation_previous'),
     url(r'^page/(?P<document_page_id>\d+)/navigation/first/$', 'document_page_navigation_first', (), 'document_page_navigation_first'),

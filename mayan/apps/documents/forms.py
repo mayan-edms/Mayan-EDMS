@@ -48,36 +48,6 @@ class DocumentPageForm(DetailForm):
     )
 
 
-class DocumentPageForm_text(DetailForm):
-    class Meta:
-        fields = ('page_label', 'content')
-        model = DocumentPage
-
-    content = forms.CharField(
-        label=_('Contents'),
-        widget=forms.widgets.Textarea(attrs={
-            'rows': 18, 'cols': 80, 'readonly': 'readonly'
-        }))
-
-
-class DocumentPageForm_edit(forms.ModelForm):
-    class Meta:
-        fields = ('page_label', 'content')
-        model = DocumentPage
-
-    def __init__(self, *args, **kwargs):
-        super(DocumentPageForm_edit, self).__init__(*args, **kwargs)
-        self.fields['page_image'].initial = self.instance
-        self.fields.keyOrder = [
-            'page_image',
-            'page_label',
-            'content',
-        ]
-    page_image = forms.CharField(
-        required=False, widget=DocumentPageImageWidget()
-    )
-
-
 # Document forms
 
 
