@@ -17,6 +17,7 @@ from django.utils.translation import ugettext_lazy as _
 from model_utils.managers import InheritanceManager
 
 from converter.literals import DIMENSION_SEPARATOR
+from converter.models import Transformation
 from djcelery.models import PeriodicTask, IntervalSchedule
 from documents.models import Document, DocumentType
 from metadata.api import save_metadata_list
@@ -50,9 +51,6 @@ class Source(models.Model):
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.title])
 
-    def get_transformation_list(self):
-        return SourceTransformation.objects.get_for_object_as_list(self)
-
     def upload_document(self, file_object, label, description=None, document_type=None, expand=False, language=None, metadata_dict_list=None, user=None):
         new_versions = Document.objects.new_document(
             description=description,
@@ -64,18 +62,19 @@ class Source(models.Model):
             user=user
         )
 
-        transformations, errors = self.get_transformation_list()
         for new_version in new_versions:
-            new_version.apply_default_transformations(transformations)
+            Transformation.objects.copy(source=Source.objects.get_subclass(pk=self.pk), targets=new_version.pages.all())
 
             if metadata_dict_list:
                 save_metadata_list(metadata_dict_list, new_version.document, create=True)
 
     def get_upload_file_object(self, form_data):
         pass
+        # TODO: Should raise NotImplementedError()?
 
     def clean_up_upload_file(self, upload_file_object):
         pass
+        # TODO: Should raise NotImplementedError()?
 
     class Meta:
         ordering = ('title',)

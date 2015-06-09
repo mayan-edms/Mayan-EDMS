@@ -12,6 +12,36 @@ logger = logging.getLogger(__name__)
 
 
 class TransformationManager(models.Manager):
+    def copy(self, source, targets):
+        """
+        Copy transformation from source to all targets
+        """
+
+        content_type = ContentType.objects.get_for_model(source)
+
+        # Get transformations
+        transformations = self.filter(content_type=content_type, object_id=source.pk).values('name', 'arguments', 'order')
+        logger.debug('source transformations: %s', transformations)
+
+        # Get all targets from target QS
+        targets_dict = map(lambda entry:{'content_type': entry[0], 'object_id': entry[1]}, zip(ContentType.objects.get_for_models(*targets).values(), targets.values_list('pk')))
+        logger.debug('targets: %s', targets_dict)
+
+        # Combine the two
+        results = []
+        for instance in targets_dict:
+            for transformation in transformations:
+                result = instance.copy()
+                result.update(transformation)
+                results.append(dict(result))
+
+        logger.debug('results: %s', results)
+
+        # Bulk create for a single DB query
+        self.bulk_create(
+            map(lambda entry: self.model(**entry), results),
+        )
+
     def get_for_model(self, obj, as_classes=False):
         """
         as_classes == True returns the transformation classes from .classes
