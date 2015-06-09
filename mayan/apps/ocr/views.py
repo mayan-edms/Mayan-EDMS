@@ -13,11 +13,9 @@ from acls.models import AccessEntry
 from documents.models import Document, DocumentVersion
 from permissions.models import Permission
 
-from .api import clean_pages
 from .models import DocumentVersionOCRError
 from .permissions import (
-    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_DOCUMENT,
-    PERMISSION_OCR_DOCUMENT_DELETE
+    PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE
 )
 
 
@@ -42,30 +40,6 @@ def document_submit_multiple(request):
         document_submit(request, item_id)
 
     return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-
-
-def document_all_ocr_cleanup(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_CLEAN_ALL_PAGES])
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method != 'POST':
-        return render_to_response('appearance/generic_confirm.html', {
-            'previous': previous,
-            'next': next,
-            'title': _('Are you sure you wish to clean up all the pages content?'),
-            'message': _('On large databases this operation may take some time to execute.'),
-        }, context_instance=RequestContext(request))
-    else:
-        try:
-            # TODO: turn this into a Celery task
-            clean_pages()
-            messages.success(request, _('Document pages content clean up complete.'))
-        except Exception as exception:
-            messages.error(request, _('Document pages content clean up error: %s') % exception)
-
-        return HttpResponseRedirect(next)
 
 
 def entry_list(request):

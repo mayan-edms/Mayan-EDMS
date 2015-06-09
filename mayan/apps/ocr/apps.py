@@ -20,8 +20,7 @@ from rest_api.classes import APIEndPoint
 
 from .handlers import post_version_upload_ocr
 from .links import (
-    link_document_all_ocr_cleanup, link_document_submit,
-    link_document_submit_multiple, link_entry_delete,
+    link_document_submit, link_document_submit_multiple, link_entry_delete,
     link_entry_delete_multiple, link_entry_list, link_entry_re_queue,
     link_entry_re_queue_multiple
 )
@@ -90,8 +89,6 @@ class OCRApp(apps.AppConfig):
             namespace.add_property('unpaper', _('unpaper version'), _('error getting version'), report=True)
         else:
             namespace.add_property('unpaper', _('unpaper version'), unpaper('-V').stdout, report=True)
-
-        register_maintenance_links([link_document_all_ocr_cleanup], namespace='ocr', title=_('OCR'))
 
         register_model_list_columns(DocumentVersionOCRError, [
             {

@@ -8,7 +8,6 @@ urlpatterns = patterns(
     'ocr.views',
     url(r'^document/(?P<pk>\d+)/submit/$', 'document_submit', (), 'document_submit'),
     url(r'^document/multiple/submit/$', 'document_submit_multiple', (), 'document_submit_multiple'),
-    url(r'^document/all/clean_up/$', 'document_all_ocr_cleanup', (), 'document_all_ocr_cleanup'),
 
     url(r'^all/$', 'entry_list', (), 'entry_list'),
     url(r'^(?P<pk>\d+)/delete/$', 'entry_delete', (), 'entry_delete'),
