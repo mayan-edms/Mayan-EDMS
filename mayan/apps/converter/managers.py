@@ -16,7 +16,6 @@ class TransformationManager(models.Manager):
         """
         Copy transformation from source to all targets
         """
-
         content_type = ContentType.objects.get_for_model(source)
 
         # Get transformations
@@ -24,7 +23,7 @@ class TransformationManager(models.Manager):
         logger.debug('source transformations: %s', transformations)
 
         # Get all targets from target QS
-        targets_dict = map(lambda entry:{'content_type': entry[0], 'object_id': entry[1]}, zip(ContentType.objects.get_for_models(*targets).values(), targets.values_list('pk')))
+        targets_dict = map(lambda entry:{'content_type': entry[0], 'object_id': entry[1]}, zip(ContentType.objects.get_for_models(*targets).values(), targets.values_list('pk', flat=True)))
         logger.debug('targets: %s', targets_dict)
 
         # Combine the two
