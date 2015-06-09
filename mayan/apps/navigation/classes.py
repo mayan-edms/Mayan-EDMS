@@ -182,12 +182,12 @@ class Link(object):
             context['resolved_object'] = resolved_object
 
         try:
-            self.kwargs = self.kwargs(context)
+            kwargs = self.kwargs(context)
         except TypeError:
             # Is not a callable
-            pass
+            kwargs = self.kwargs
 
-        kwargs = {key: Variable(value) for key, value in self.kwargs.iteritems()}
+        kwargs = {key: Variable(value) for key, value in kwargs.iteritems()}
 
         # Use Django's exact {% url %} code to resolve the link
         node = URLNode(view_name=view_name, args=args, kwargs=kwargs, asvar=None)
