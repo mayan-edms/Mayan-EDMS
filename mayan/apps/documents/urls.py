@@ -10,7 +10,9 @@ from .api_views import (
     APIRecentDocumentListView
 )
 from .settings import PRINT_SIZE, DISPLAY_SIZE
-from .views import DocumentListView, RecentDocumentListView
+from .views import (
+    DocumentListView, DocumentPageListView, RecentDocumentListView
+)
 
 urlpatterns = patterns(
     'documents.views',
@@ -43,6 +45,7 @@ urlpatterns = patterns(
     url(r'^document/version/(?P<document_version_pk>\d+)/revert/$', 'document_version_revert', (), 'document_version_revert'),
 
     url(r'^(?P<document_id>\d+)/acls/$', 'document_acl_list', (), 'document_acl_list'),
+    url(r'^(?P<pk>\d+)/pages/all/$', DocumentPageListView.as_view(), name='document_pages'),
 
     url(r'^multiple/clear_transformations/$', 'document_multiple_clear_transformations', (), 'document_multiple_clear_transformations'),
     url(r'^maintenance/clear_image_cache/$', 'document_clear_image_cache', (), 'document_clear_image_cache'),

@@ -17,7 +17,7 @@ from acls.models import AccessEntry
 from acls.views import acl_list_for
 from common.compressed_files import CompressedFile
 from common.utils import encapsulate, pretty_size, urlquote
-from common.views import SingleObjectListView
+from common.views import ParentChildListView, SingleObjectListView
 from common.widgets import two_state_template
 from converter.literals import (
     DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
@@ -70,6 +70,26 @@ class DocumentListView(SingleObjectListView):
     }
     object_permission = PERMISSION_DOCUMENT_VIEW
     queryset = Document.objects.all()
+
+
+class DocumentPageListView(ParentChildListView):
+    object_permission = PERMISSION_DOCUMENT_VIEW
+    parent_queryset = Document.objects.all()
+
+    def get_queryset(self):
+        return self.get_object().pages.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(DocumentPageListView, self).get_context_data(**kwargs)
+
+        context.update(
+            {
+                #'hide_links': True,
+                'title': _('Pages for document: %s') % self.get_object(),
+            }
+        )
+
+        return context
 
 
 class RecentDocumentListView(DocumentListView):

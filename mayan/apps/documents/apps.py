@@ -16,6 +16,7 @@ from common import (
 from common.api import register_maintenance_links
 from common.classes import ModelAttribute
 from common.utils import encapsulate, validate_path
+from converter.links import link_transformation_list
 from converter.permissions import (
     PERMISSION_TRANSFORMATION_CREATE,
     PERMISSION_TRANSFORMATION_DELETE, PERMISSION_TRANSFORMATION_EDIT,
@@ -42,9 +43,9 @@ from .links import (
     link_document_page_navigation_next,
     link_document_page_navigation_previous, link_document_page_return,
     link_document_page_rotate_left, link_document_page_rotate_right,
-    link_document_page_transformation_list, link_document_page_view,
-    link_document_page_view_reset, link_document_page_zoom_in,
-    link_document_page_zoom_out, link_document_preview, link_document_print,
+    link_document_page_view, link_document_page_view_reset,
+    link_document_page_zoom_in, link_document_page_zoom_out,
+    link_document_pages, link_document_preview, link_document_print,
     link_document_properties, link_document_type_create,
     link_document_type_delete, link_document_type_edit,
     link_document_type_filename_create, link_document_type_filename_delete,
@@ -129,6 +130,7 @@ class DocumentsApp(apps.AppConfig):
         menu_facet.bind_links(links=[link_document_content], sources=[Document], position=1)
         menu_facet.bind_links(links=[link_document_properties], sources=[Document], position=2)
         menu_facet.bind_links(links=[link_document_events_view, link_document_version_list], sources=[Document], position=2)
+        menu_facet.bind_links(links=[link_document_pages], sources=[Document])
 
         # Document actions
         menu_object.bind_links(links=[link_document_version_revert, link_document_version_download], sources=[DocumentVersion])
@@ -137,7 +139,8 @@ class DocumentsApp(apps.AppConfig):
         # Document pages
         menu_facet.bind_links(links=[link_document_page_rotate_left, link_document_page_rotate_right, link_document_page_zoom_in, link_document_page_zoom_out, link_document_page_view_reset], sources=['documents:document_page_view'])
         menu_facet.bind_links(links=[link_document_page_return, link_document_page_view], sources=[DocumentPage])
-        menu_facet.bind_links(links=[link_document_page_navigation_first, link_document_page_navigation_previous, link_document_page_navigation_next, link_document_page_navigation_last, link_document_page_transformation_list], sources=[DocumentPage])
+        menu_facet.bind_links(links=[link_document_page_navigation_first, link_document_page_navigation_previous, link_document_page_navigation_next, link_document_page_navigation_last, link_transformation_list], sources=[DocumentPage])
+        menu_object.bind_links(links=[link_transformation_list], sources=[DocumentPage])
 
         namespace = StatisticNamespace(name='documents', label=_('Documents'))
         namespace.add_statistic(DocumentStatistics(name='document_stats', label=_('Document tendencies')))

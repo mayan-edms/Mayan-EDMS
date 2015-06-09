@@ -47,6 +47,7 @@ link_document_events_view = Link(permissions=[PERMISSION_EVENTS_VIEW], text=_('E
 link_document_preview = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Preview'), view='documents:document_preview', args='object.id')
 link_document_properties = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Properties'), view='documents:document_properties', args='object.id')
 link_document_version_list = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Versions'), view='documents:document_version_list', args='object.pk')
+link_document_pages = Link(permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Pages'), view='documents:document_pages', args='resolved_object.pk')
 
 # Actions
 link_document_clear_transformations = Link(permissions=[PERMISSION_TRANSFORMATION_DELETE], text=_('Clear transformations'), view='documents:document_clear_transformations', args='object.id')
@@ -75,8 +76,6 @@ link_clear_image_cache = Link(
 )
 
 # Document pages
-link_document_page_transformation_list = Link(kwargs={'app_label': '"documents"', 'model': '"documentpage"', 'object_id': 'resolved_object.pk'}, permissions=[PERMISSION_TRANSFORMATION_VIEW], text=_('Transformations'), view='converter:transformation_list')
-
 link_document_page_navigation_first = Link(conditional_disable=is_first_page, icon='fa fa-step-backward', keep_query=True, permissions=[PERMISSION_DOCUMENT_VIEW], text=_('First page'), view='documents:document_page_navigation_first', args='resolved_object.pk')
 link_document_page_navigation_last = Link(conditional_disable=is_last_page, icon='fa fa-step-forward', keep_query=True, text=_('Last page'), permissions=[PERMISSION_DOCUMENT_VIEW], view='documents:document_page_navigation_last', args='resolved_object.pk')
 link_document_page_navigation_previous = Link(conditional_disable=is_first_page, icon='fa fa-arrow-left', keep_query=True, permissions=[PERMISSION_DOCUMENT_VIEW], text=_('Previous page'), view='documents:document_page_navigation_previous', args='resolved_object.pk')
