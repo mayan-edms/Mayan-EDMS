@@ -24,7 +24,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         if value:
             output = []
             output.append('<div class="full-height scrollable mayan-page-wrapper-interactive" data-height-difference=230>')
-            output.append(document_html_widget(value, zoom=zoom, rotation=rotation, image_class='lazy-load-interactive', nolazyload=False, size=DISPLAY_SIZE))
+            output.append(document_html_widget(value, zoom=zoom, rotation=rotation, image_class='lazy-load', nolazyload=False, size=DISPLAY_SIZE))
             output.append('</div>')
             return mark_safe(''.join(output))
         else:

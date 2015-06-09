@@ -316,12 +316,6 @@
                         load_document_image($this);
                     },
                 });
-
-                $('img.lazy-load-interactive').lazyload({
-                    appear: function(elements_left, settings) {
-                        load_document_image($(this));
-                    }
-                });
             });
         </script>
         {% block javascript %}{% endblock %}
