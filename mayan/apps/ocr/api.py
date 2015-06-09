@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.settings import TEMPORARY_DIRECTORY
 from common.utils import fs_cleanup
-from converter.api import convert
+from converter import converter_class
 from documents.models import DocumentPage
 
 from .exceptions import UnpaperError
@@ -46,10 +46,8 @@ def do_document_ocr(document_version):
         except (ParserError, ParserUnknownFile):
             # Fall back to doing visual OCR
 
-            document_filepath = document_page.document.get_image_cache_name(page=document_page.page_number, version=document_page.document_version.pk)
-
-            logger.debug('document_filepath: %s', document_filepath)
-
+            # TODO: disabling for now
+            """
             unpaper_input = convert(document_filepath, file_format=UNPAPER_FILE_FORMAT)
 
             logger.debug('unpaper_input: %s', unpaper_input)
@@ -80,6 +78,7 @@ def do_document_ocr(document_version):
                 fs_cleanup(unpaper_input)
                 fs_cleanup(document_filepath)
                 fs_cleanup(unpaper_output)
+            """
 
 
 def ocr_cleanup(language, text):

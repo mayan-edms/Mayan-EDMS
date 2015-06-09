@@ -10,10 +10,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.settings import TEMPORARY_DIRECTORY
 from common.utils import copyfile
-from converter import office_converter
 from converter.exceptions import OfficeConversionError
-from converter.office_converter import (
-    CONVERTER_OFFICE_FILE_MIMETYPES, OfficeConverter
+from converter.classes import (
+    CONVERTER_OFFICE_FILE_MIMETYPES
 )
 
 from ..settings import PDFTOTEXT_PATH
@@ -176,4 +175,4 @@ class PopplerParser(Parser):
 
 
 register_parser(mimetypes=['application/pdf'], parsers=[PopplerParser, SlateParser])
-register_parser(mimetypes=office_converter.CONVERTER_OFFICE_FILE_MIMETYPES, parsers=[OfficeParser])
+# register_parser(mimetypes=office_converter.CONVERTER_OFFICE_FILE_MIMETYPES, parsers=[OfficeParser])  # TODO: FIX
