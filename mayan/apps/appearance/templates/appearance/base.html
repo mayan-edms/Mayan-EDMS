@@ -241,13 +241,13 @@
                         image.attr('src', result.data);
                         image.addClass(image.attr('data-post-load-class'));
                     } else {
-                        image.attr('src', "{% static 'appearance/images/error.png' %}");
+                        image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
                         set_image_noninteractive(image);
                     }
                 })
               .fail(function() {
-                image.attr('src', "{% static 'appearance/images/error.png' %}");
-                set_image_noninteractive(image);
+                  image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
+                  set_image_noninteractive(image);
               })
             }
 
