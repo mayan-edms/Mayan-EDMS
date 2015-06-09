@@ -247,7 +247,7 @@ class TransformationRotate(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super(TransformationRotate, self).execute_on(*args, **kwargs)
 
-        return self.image.rotate(360 - self.degrees)
+        return self.image.rotate(360 - self.degrees, resample=Image.BICUBIC, expand=True)
 
 
 class TransformationZoom(BaseTransformation):
