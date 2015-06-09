@@ -11,7 +11,7 @@ import uuid
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
-from django.db import models
+from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -267,12 +267,11 @@ class DocumentVersion(models.Model):
     def save(self, *args, **kwargs):
         """
         Overloaded save method that updates the document version's checksum,
-        mimetype, page count and transformation when created
+        mimetype, and page count when created
         """
         new_document_version = not self.pk
 
         # Only do this for new documents
-        transformations = kwargs.pop('transformations', None)
         super(DocumentVersion, self).save(*args, **kwargs)
 
         for key in sorted(DocumentVersion._post_save_hooks):
@@ -284,9 +283,6 @@ class DocumentVersion(models.Model):
             self.update_mimetype(save=False)
             self.save()
             self.update_page_count(save=False)
-
-            if transformations:
-                self.apply_default_transformations(transformations)
 
             post_version_upload.send(sender=self.__class__, instance=self)
 
@@ -303,53 +299,28 @@ class DocumentVersion(models.Model):
                 self.save()
 
     def update_page_count(self, save=True):
-        # TODO: finish converting this
-        #handle, filepath = tempfile.mkstemp()
-        # Just need the filepath, close the file description
-        #os.close(handle)
-
-        #self.save_to_file(filepath)
         try:
             with self.open() as file_object:
-                converter = converter_class(file_object=file_object, mimetype=self.mimetype)
+                converter = converter_class(file_object=file_object, mime_type=self.mimetype)
                 detected_pages = converter.get_page_count()
         except UnknownFileFormat:
             # If converter backend doesn't understand the format,
             # use 1 as the total page count
             detected_pages = 1
-        #try:
-        #    os.remove(filepath)
-        #except OSError:
-        #    pass
 
-        # TODO: put inside a DB transaction
-        self.pages.all().delete()
+        with transaction.atomic():
+            self.pages.all().delete()
 
-        for page_number in range(detected_pages):
-            DocumentPage.objects.create(
-                document_version=self, page_number=page_number + 1
-            )
+            for page_number in range(detected_pages):
+                DocumentPage.objects.create(
+                    document_version=self, page_number=page_number + 1
+                )
 
         # TODO: is this needed anymore
         if save:
             self.save()
 
         return detected_pages
-
-    # TODO: remove from here and move to converter app
-    def apply_default_transformations(self, transformations):
-        # Only apply default transformations on new documents
-        if reduce(lambda x, y: x + y, [page.documentpagetransformation_set.count() for page in self.pages.all()]) == 0:
-            for transformation in transformations:
-                for document_page in self.pages.all():
-                    page_transformation = DocumentPageTransformation(
-                        document_page=document_page,
-                        order=0,
-                        transformation=transformation.get('transformation'),
-                        arguments=transformation.get('arguments')
-                    )
-
-                    page_transformation.save()
 
     def revert(self):
         """
@@ -524,10 +495,13 @@ class DocumentPage(models.Model):
                 fs_cleanup(cache_filename)
                 raise
 
-        stored_transformations = Transformation.objects.get_for_model(self, as_classes=True)
-
-        for stored_transformation in stored_transformations:
+        # Stored transformations
+        for stored_transformation in Transformation.objects.get_for_model(self, as_classes=True):
             converter.transform(transformation=stored_transformation)
+
+        # Interactive transformations
+        for transformation in transformations:
+            converter.transform(transformation=transformation)
 
         if rotation:
             converter.transform(transformation=TransformationRotate(degrees=rotation))
