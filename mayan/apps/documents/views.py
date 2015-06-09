@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+import base64
 import logging
 import urlparse
 
@@ -7,7 +8,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import resolve, reverse
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.http import urlencode
@@ -360,9 +361,6 @@ def document_multiple_document_type_edit(request):
     )
 
 
-from django.http import HttpResponse
-
-
 # TODO: Get rid of this view and convert widget to use API and base64 only images
 def get_document_image(request, document_id, size=PREVIEW_SIZE):
     document = get_object_or_404(Document, pk=document_id)
@@ -388,7 +386,8 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
     document_page = document.pages.get(page_number=page)
 
     task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version), queue='converter')
-    return HttpResponse(task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT), content_type='image')
+    data = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+    return HttpResponse(base64.b64decode(data[21:]), content_type='image')
 
 
 def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):

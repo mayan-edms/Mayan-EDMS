@@ -260,22 +260,14 @@
 
                 $('.scrollable').scrollview();
 
-                $('a.fancybox').on('click', function (e) {
-                    e.preventDefault();
-                    $.ajax({
-                        type: 'get',
-                        cache: false,
-                        url: $(this).attr('href'),
-                        success: function (data) {
-                            $.fancybox.open({
-                                href : data,
-                                showLoading: true,
-                                openEffect  : 'elastic',
-                                closeEffect : 'elastic',
-
-                            });
-                        }
-                    });
+                $('a.fancybox').fancybox({
+                    openEffect  : 'elastic',
+                    closeEffect : 'elastic',
+                    prevEffect  : 'none',
+                    nextEffect  : 'none',
+                    titleShow   : true,
+                    type        : 'image',
+                    autoResize  : true,
                 });
 
                 $('a.fancybox-staging').click(function(e) {
