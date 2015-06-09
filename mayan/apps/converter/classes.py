@@ -118,6 +118,7 @@ class ConverterBase(object):
 
     def __init__(self, file_object, mime_type=None):
         self.file_object = file_object
+        self.image = None
         self.mime_type = mime_type or get_mimetype(file_object=file_object, mimetype_only=False)[0]
         self.soffice_file_object = None
 
@@ -136,7 +137,7 @@ class ConverterBase(object):
 
     def get_page(self, output_format=DEFAULT_FILE_FORMAT):
         if not self.image:
-            self.seek(1)
+            self.seek(0)
 
         image_buffer = StringIO()
         self.image.save(image_buffer, format=output_format)
