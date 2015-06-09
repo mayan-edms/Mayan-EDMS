@@ -39,14 +39,14 @@ class Transformation(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
-    order = models.PositiveIntegerField(default=0, blank=True, null=True, verbose_name=_('Order'), db_index=True)
-    name = models.CharField(choices=BaseTransformation.get_transformation_choices(), max_length=128, verbose_name=_('Transformation'))
-    arguments = models.TextField(blank=True, null=True, verbose_name=_('Arguments'), validators=[argument_validator])
+    order = models.PositiveIntegerField(default=0, blank=True, help_text=_('Order in which the transformations will be executed.'), null=True, verbose_name=_('Order'), db_index=True)
+    name = models.CharField(choices=BaseTransformation.get_transformation_choices(), max_length=128, verbose_name=_('Name'))
+    arguments = models.TextField(blank=True, help_text=_('Enter the arguments for the transformation as a Python dictionary. ie: {"degrees": 180}'), verbose_name=_('Arguments'), validators=[argument_validator])
 
     objects = TransformationManager()
 
     def __str__(self):
-        return self.get_transformation_display()
+        return self.get_name_display()
 
     class Meta:
         ordering = ('order',)
