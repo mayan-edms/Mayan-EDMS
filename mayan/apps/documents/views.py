@@ -23,6 +23,7 @@ from converter.literals import (
     DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
     DEFAULT_ZOOM_LEVEL
 )
+from converter.models import Transformation
 from converter.permissions import PERMISSION_TRANSFORMATION_DELETE
 from filetransfers.api import serve_file
 from permissions.models import Permission
@@ -541,9 +542,9 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TRANSFORM])
+        Permission.objects.check_permissions(request.user, [PERMISSION_TRANSFORMATION_DELETE])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_TRANSFORM, request.user, documents, exception_on_empty=True)
+        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_TRANSFORMATION_DELETE, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
@@ -551,14 +552,13 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
     if request.method == 'POST':
         for document in documents:
             try:
-                for document_page in document.pages.all():
-                    document_page.document.invalidate_cached_image(document_page.page_number)
-                    for transformation in document_page.documentpagetransformation_set.all():
-                        transformation.delete()
-                messages.success(request, _('All the page transformations for document: %s, have been deleted successfully.') % document)
+                for page in document.pages.all():
+                    Transformation.objects.get_for_model(page).delete()
             except Exception as exception:
                 messages.error(request, _('Error deleting the page transformations for document: %(document)s; %(error)s.') % {
                     'document': document, 'error': exception})
+            else:
+                messages.success(request, _('All the page transformations for document: %s, have been deleted successfully.') % document)
 
         return HttpResponseRedirect(next)
 
