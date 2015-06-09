@@ -46,7 +46,7 @@ def transformation_list(request, app_label, model, object_id):
         'title': _('Transformations for: %s') % content_object,
         'extra_columns': [
             {'name': _('Order'), 'attribute': 'order'},
-            {'name': _('Transformation'), 'attribute': encapsulate(lambda x: x.get_name_display())},
+            {'name': _('Transformation'), 'attribute': encapsulate(lambda x: unicode(x))},
             {'name': _('Arguments'), 'attribute': 'arguments'}
         ],
         'hide_link': True,
