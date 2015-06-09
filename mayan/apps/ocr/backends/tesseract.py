@@ -1,55 +1,41 @@
 from __future__ import unicode_literals
 
+try:
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
+
 import codecs
 import errno
+import logging
 import os
-import subprocess
 import tempfile
+
+from PIL import Image, ImageFilter
+import pytesseract
 
 from common.utils import fs_cleanup
 
-from . import BackendBase
+from ..classes import OCRBackendBase
 from ..exceptions import OCRError
 from ..settings import TESSERACT_PATH
 
+logger = logging.getLogger(__name__)
 
-class Tesseract(BackendBase):
-    def execute(self, input_filename, language=None):
+
+class Tesseract(OCRBackendBase):
+    def execute(self, *args, **kwargs):
         """
         Execute the command line binary of tesseract
         """
-        fd, filepath = tempfile.mkstemp()
-        os.close(fd)
-        ocr_output = os.extsep.join([filepath, 'txt'])
-        command = [unicode(TESSERACT_PATH), unicode(input_filename), unicode(filepath)]
+        super(Tesseract, self).execute(*args, **kwargs)
 
-        if language is not None:
-            command.extend(['-l', language])
-
+        image = Image.open(self.converter.get_page())
         try:
-            proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-        except OSError as exception:
-            if exception.errno == errno.ENOENT:
-                raise OCRError('Tesseract not found at %s' % TESSERACT_PATH)
-            else:
-                raise
-        else:
-            return_code = proc.wait()
-            if return_code != 0:
-                error_text = proc.stderr.read()
-                fs_cleanup(filepath)
-                fs_cleanup(ocr_output)
-                if language:
-                    # If tesseract gives an error with a language parameter
-                    # re-run it with no parameter again
-                    return self.execute(input_filename, language=None)
-                else:
-                    raise OCRError(error_text)
+            result = pytesseract.image_to_string(image=image, lang=self.language)
+            # If tesseract gives an error with a language parameter
+            # re-run it with no language parameter
+        except:
+            result = pytesseract.image_to_string(image=image)
 
-            fd = codecs.open(ocr_output, 'r', 'utf-8')
-            text = fd.read().strip()
-            fd.close()
-
-            os.unlink(filepath)
-
-        return text
+        return result

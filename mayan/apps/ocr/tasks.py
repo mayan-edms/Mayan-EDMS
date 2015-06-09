@@ -10,7 +10,7 @@ from documents.models import DocumentVersion
 from lock_manager import Lock, LockError
 from mayan.celery import app
 
-from .api import do_document_ocr
+from .runtime import ocr_backend_class
 from .literals import LOCK_EXPIRE
 from .models import DocumentVersionOCRError
 from .signals import post_document_version_ocr
@@ -29,11 +29,12 @@ def task_do_ocr(self, document_version_pk):
         logger.debug('acquired lock: %s', lock_id)
         document_version = None
         try:
-            logger.info('Starting document OCR for document version: %d', document_version_pk)
             document_version = DocumentVersion.objects.get(pk=document_version_pk)
-            do_document_ocr(document_version)
+            logger.info('Starting document OCR for document version: %s', document_version)
+            backend = ocr_backend_class()
+            backend.process_document_version(document_version)
         except Exception as exception:
-            logger.error('OCR error for document version: %d; %s', document_version_pk, exception)
+            logger.error('OCR error for document version: %s; %s', document_version, exception)
             if document_version:
                 entry, created = DocumentVersionOCRError.objects.get_or_create(document_version=document_version)
 
@@ -48,7 +49,7 @@ def task_do_ocr(self, document_version_pk):
 
                 entry.save()
         else:
-            logger.info('OCR for document: %d ended', document_version_pk)
+            logger.info('OCR complete for document version: %s', document_version)
             try:
                 entry = DocumentVersionOCRError.objects.get(document_version=document_version)
             except DocumentVersionOCRError.DoesNotExist:
