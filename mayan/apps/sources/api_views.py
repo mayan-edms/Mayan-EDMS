@@ -6,6 +6,7 @@ from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 )
+from converter.models import Transformation
 from rest_framework import generics
 from rest_framework.response import Response
 
@@ -64,22 +65,10 @@ class APIStagingSourceFileImageView(generics.GenericAPIView):
 
         size = request.GET.get('size', DISPLAY_SIZE)
 
-        page = int(request.GET.get('page', DEFAULT_PAGE_NUMBER))
-
-        zoom = int(request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
-
-        if zoom < ZOOM_MIN_LEVEL:
-            zoom = ZOOM_MIN_LEVEL
-
-        if zoom > ZOOM_MAX_LEVEL:
-            zoom = ZOOM_MAX_LEVEL
-
-        rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
-
         try:
             return Response({
                 'status': 'success',
-                'data': staging_file.get_image(size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True)
+                'data': staging_file.get_image(as_base64=True, size=size, transformations=Transformation.objects.get_for_model(staging_folder, as_classes=True))
             })
         except UnknownFileFormat as exception:
             return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})

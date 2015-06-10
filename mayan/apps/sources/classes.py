@@ -11,7 +11,7 @@ except ImportError:
 
 from django.core.files import File
 
-from converter import converter_class
+from converter import TransformationResize, converter_class
 from mimetype.api import get_mimetype
 
 
@@ -60,18 +60,23 @@ class StagingFile(object):
     def get_full_path(self):
         return os.path.join(self.staging_folder.folder_path, self.filename)
 
-    def get_image(self, size, page, zoom, rotation, as_base64=True):
-        # TODO: add support for transformations
-        converted_file_path = convert(self.get_full_path(), size=size)
+    def get_image(self, size=None, as_base64=True, transformations=None):
+        converter = converter_class(file_object=open(self.get_full_path()))
+
+        if size:
+            converter.transform(transformation=TransformationResize(**dict(zip(('width', 'height'), (size.split('x'))))))
+
+        # Interactive transformations
+        for transformation in transformations:
+            converter.transform(transformation=transformation)
+
+        image_data = converter.get_page()
 
         if as_base64:
-            mimetype = get_mimetype(open(converted_file_path, 'r'), converted_file_path, mimetype_only=True)[0]
-            image = open(converted_file_path, 'r')
-            base64_data = base64.b64encode(image.read())
-            image.close()
-            return 'data:%s;base64,%s' % (mimetype, base64_data)
+            base64_data = base64.b64encode(image_data.read())
+            return 'data:%s;base64,%s' % ('image/png', base64_data)
         else:
-            return converted_file_path
+            return image_data
 
     def delete(self):
         os.unlink(self.get_full_path())
