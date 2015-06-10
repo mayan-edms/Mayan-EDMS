@@ -152,7 +152,7 @@ class DocumentsApp(apps.AppConfig):
         register_model_list_columns(Document, [
             {
                 'name': _('Thumbnail'), 'attribute':
-                encapsulate(lambda x: document_thumbnail(x, gallery_name='documents:document_list', title=getattr(x, 'filename', None), size=THUMBNAIL_SIZE))
+                encapsulate(lambda x: document_thumbnail(x, gallery_name='documents:document_list', title=getattr(x, 'label', None), size=THUMBNAIL_SIZE))
             },
             {
                 'name': _('Type'), 'attribute': 'document_type'
