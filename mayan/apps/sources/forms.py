@@ -62,11 +62,6 @@ class StagingUploadForm(UploadBaseForm):
             logger.error('exception: %s', exception)
             pass
 
-        # Put staging_list field first in the field order list
-        staging_list_index = self.fields.keyOrder.index('staging_file_id')
-        staging_list = self.fields.keyOrder.pop(staging_list_index)
-        self.fields.keyOrder.insert(0, staging_list)
-
     staging_file_id = forms.ChoiceField(label=_('Staging file'))
 
 
