@@ -85,7 +85,6 @@ class DocumentPageListView(ParentChildListView):
 
         context.update(
             {
-                #'hide_links': True,
                 'title': _('Pages for document: %s') % self.get_object(),
             }
         )
