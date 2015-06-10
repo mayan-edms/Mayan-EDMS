@@ -165,9 +165,15 @@ class ConverterBase(object):
                 pass
 
     def transform(self, transformation):
+        if not self.image:
+            self.seek(0)
+
         self.image = transformation.execute_on(self.image)
 
     def transform_many(self, transformations):
+        if not self.image:
+            self.seek(0)
+
         for transformation in transformations:
             self.image = transformation.execute_on(self.image)
 
