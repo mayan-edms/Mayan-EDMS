@@ -14,7 +14,7 @@ from acls.models import AccessEntry
 from common import menu_facet
 from common.models import SharedUploadedFile
 from common.utils import encapsulate
-from common.views import MultiFormView
+from common.views import MultiFormView, ParentChildListView
 from documents.models import DocumentType, Document
 from documents.permissions import (
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION
@@ -40,6 +40,36 @@ from .permissions import (
 )
 from .tasks import task_source_upload_document
 from .utils import get_class, get_form_class, get_upload_form_class
+
+
+class SourceLogListView(ParentChildListView):
+    object_permission = PERMISSION_SOURCES_SETUP_VIEW
+    parent_queryset = Source.objects.select_subclasses()
+
+    def get_queryset(self):
+        return self.get_object().logs.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(SourceLogListView, self).get_context_data(**kwargs)
+
+        context.update(
+            {
+                'title': _('Log entries for source: %s') % self.get_object(),
+                'hide_object': True,
+                'extra_columns': [
+                    {
+                        'name': _('Date time'),
+                        'attribute': encapsulate(lambda entry: entry.datetime)
+                    },
+                    {
+                        'name': _('Message'),
+                        'attribute': encapsulate(lambda entry: entry.message)
+                    },
+                ]
+            }
+        )
+
+        return context
 
 
 def document_create_siblings(request, document_id):

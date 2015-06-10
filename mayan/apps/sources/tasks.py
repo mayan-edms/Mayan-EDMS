@@ -17,7 +17,13 @@ logger = logging.getLogger(__name__)
 def task_check_interval_source(source_id):
     source = Source.objects.get_subclass(pk=source_id)
     if source.enabled:
-        source.check_source()
+        try:
+            source.check_source()
+        except Exception as exception:
+            logger.error('Error processing source: %s; %s', source, exception)
+            self.logs.create(message=_('Error processing source: %s') % exception)
+        else:
+            self.logs.all().delete()
 
 
 @app.task(ignore_result=True)

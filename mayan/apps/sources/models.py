@@ -116,6 +116,7 @@ class StagingFolderSource(InteractiveSource):
             for entry in sorted([os.path.normcase(f) for f in os.listdir(self.folder_path) if os.path.isfile(os.path.join(self.folder_path, f))]):
                 yield self.get_file(filename=entry)
         except OSError as exception:
+            logger.error('Unable get list of staging files from source: %s; %s', self, exception)
             raise Exception(_('Unable get list of staging files: %s') % exception)
 
     def get_upload_file_object(self, form_data):
@@ -127,6 +128,7 @@ class StagingFolderSource(InteractiveSource):
             try:
                 upload_file_object.extra_data.delete()
             except Exception as exception:
+                logger.error('Error deleting staging file: %s; %s', upload_file_object, exception)
                 raise Exception(_('Error deleting staging file; %s') % exception)
 
     class Meta:
@@ -248,39 +250,35 @@ class POP3Email(EmailBaseModel):
     timeout = models.PositiveIntegerField(default=DEFAULT_POP3_TIMEOUT, verbose_name=_('Timeout'))
 
     def check_source(self):
-        try:
-            logger.debug('Starting POP3 email fetch')
-            logger.debug('host: %s', self.host)
-            logger.debug('ssl: %s', self.ssl)
+        logger.debug('Starting POP3 email fetch')
+        logger.debug('host: %s', self.host)
+        logger.debug('ssl: %s', self.ssl)
 
-            if self.ssl:
-                mailbox = poplib.POP3_SSL(self.host, self.port)
-            else:
-                mailbox = poplib.POP3(self.host, self.port, timeout=self.timeout)
+        if self.ssl:
+            mailbox = poplib.POP3_SSL(self.host, self.port)
+        else:
+            mailbox = poplib.POP3(self.host, self.port, timeout=self.timeout)
 
-            mailbox.getwelcome()
-            mailbox.user(self.username)
-            mailbox.pass_(self.password)
-            messages_info = mailbox.list()
+        mailbox.getwelcome()
+        mailbox.user(self.username)
+        mailbox.pass_(self.password)
+        messages_info = mailbox.list()
 
-            logger.debug('messages_info:')
-            logger.debug(messages_info)
-            logger.debug('messages count: %s', len(messages_info[1]))
+        logger.debug('messages_info:')
+        logger.debug(messages_info)
+        logger.debug('messages count: %s', len(messages_info[1]))
 
-            for message_info in messages_info[1]:
-                message_number, message_size = message_info.split()
-                logger.debug('message_number: %s', message_number)
-                logger.debug('message_size: %s', message_size)
+        for message_info in messages_info[1]:
+            message_number, message_size = message_info.split()
+            logger.debug('message_number: %s', message_number)
+            logger.debug('message_size: %s', message_size)
 
-                complete_message = '\n'.join(mailbox.retr(message_number)[1])
+            complete_message = '\n'.join(mailbox.retr(message_number)[1])
 
-                EmailBaseModel.process_message(source=self, message=complete_message)
-                mailbox.dele(message_number)
+            EmailBaseModel.process_message(source=self, message=complete_message)
+            mailbox.dele(message_number)
 
-            mailbox.quit()
-        except Exception as exception:
-            logger.error('Unhandled exception: %s', exception)
-            # TODO: Add user notification
+        mailbox.quit()
 
     class Meta:
         verbose_name = _('POP email')
@@ -294,36 +292,32 @@ class IMAPEmail(EmailBaseModel):
 
     # http://www.doughellmann.com/PyMOTW/imaplib/
     def check_source(self):
-        try:
-            logger.debug('Starting IMAP email fetch')
-            logger.debug('host: %s', self.host)
-            logger.debug('ssl: %s', self.ssl)
+        logger.debug('Starting IMAP email fetch')
+        logger.debug('host: %s', self.host)
+        logger.debug('ssl: %s', self.ssl)
 
-            if self.ssl:
-                mailbox = imaplib.IMAP4_SSL(self.host, self.port)
-            else:
-                mailbox = imaplib.IMAP4(self.host, self.port)
+        if self.ssl:
+            mailbox = imaplib.IMAP4_SSL(self.host, self.port)
+        else:
+            mailbox = imaplib.IMAP4(self.host, self.port)
 
-            mailbox.login(self.username, self.password)
-            mailbox.select(self.mailbox)
+        mailbox.login(self.username, self.password)
+        mailbox.select(self.mailbox)
 
-            status, data = mailbox.search(None, 'NOT', 'DELETED')
-            if data:
-                messages_info = data[0].split()
-                logger.debug('messages count: %s', len(messages_info))
+        status, data = mailbox.search(None, 'NOT', 'DELETED')
+        if data:
+            messages_info = data[0].split()
+            logger.debug('messages count: %s', len(messages_info))
 
-                for message_number in messages_info:
-                    logger.debug('message_number: %s', message_number)
-                    status, data = mailbox.fetch(message_number, '(RFC822)')
-                    EmailBaseModel.process_message(source=self, message=data[0][1])
-                    mailbox.store(message_number, '+FLAGS', '\\Deleted')
+            for message_number in messages_info:
+                logger.debug('message_number: %s', message_number)
+                status, data = mailbox.fetch(message_number, '(RFC822)')
+                EmailBaseModel.process_message(source=self, message=data[0][1])
+                mailbox.store(message_number, '+FLAGS', '\\Deleted')
 
-            mailbox.expunge()
-            mailbox.close()
-            mailbox.logout()
-        except Exception as exception:
-            logger.error('Unhandled exception: %s', exception)
-            # TODO: Add user notification
+        mailbox.expunge()
+        mailbox.close()
+        mailbox.logout()
 
     class Meta:
         verbose_name = _('IMAP email')
@@ -347,3 +341,15 @@ class WatchFolderSource(IntervalBaseModel):
     class Meta:
         verbose_name = _('Watch folder')
         verbose_name_plural = _('Watch folders')
+
+
+class SourceLog(models.Model):
+    source = models.ForeignKey(Source, related_name='logs', verbose_name=_('Source'))
+    datetime = models.DateTimeField(auto_now_add=True, editable=False, verbose_name=_('Date time'))
+    message = models.TextField(blank=True, editable=False, verbose_name=_('Message'))
+
+    class Meta:
+        verbose_name = _('Log entry')
+        verbose_name_plural = _('Log entries')
+        get_latest_by = 'datetime'
+        ordering = ['-datetime']

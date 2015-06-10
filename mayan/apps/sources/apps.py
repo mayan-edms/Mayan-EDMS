@@ -20,7 +20,8 @@ from .links import (
     link_setup_source_create_pop3_email,
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
     link_setup_source_create_staging_folder, link_setup_source_delete,
-    link_setup_source_edit, link_staging_file_delete, link_upload_version
+    link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
+    link_upload_version
 )
 from .models import Source
 from .widgets import staging_file_thumbnail
@@ -36,7 +37,7 @@ class SourcesApp(apps.AppConfig):
 
         menu_front_page.bind_links(links=[link_document_create_multiple])
         menu_object.bind_links(links=[link_document_create_siblings], sources=[Document])
-        menu_object.bind_links(links=[link_setup_source_edit, link_setup_source_delete, link_transformation_list], sources=[Source])
+        menu_object.bind_links(links=[link_setup_source_edit, link_setup_source_delete, link_transformation_list, link_setup_source_logs], sources=[Source])
         menu_object.bind_links(links=[link_staging_file_delete], sources=[StagingFile])
         menu_secondary.bind_links(links=[link_setup_sources, link_setup_source_create_webform, link_setup_source_create_staging_folder, link_setup_source_create_pop3_email, link_setup_source_create_imap_email, link_setup_source_create_watch_folder], sources=[Source, 'sources:setup_source_list', 'sources:setup_source_create'])
         menu_setup.bind_links(links=[link_setup_sources])
