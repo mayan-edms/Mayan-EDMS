@@ -23,7 +23,7 @@ from .links import (
 from .menus import (
     menu_facet, menu_main, menu_secondary, menu_setup, menu_tools
 )
-from .models import AnonymousUserSingleton, UserLocaleProfile
+from .models import AnonymousUserSingleton
 from .settings import TEMPORARY_DIRECTORY
 from .utils import validate_path
 

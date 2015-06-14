@@ -2,9 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 
-from .models import (
-    AnonymousUserSingleton, UserLocaleProfile
-)
+from .models import UserLocaleProfile
 
 
 def user_locale_profile_session_config(sender, request, user, **kwargs):
