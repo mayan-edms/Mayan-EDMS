@@ -7,13 +7,13 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import FormView
+from django.views.generic import FormView, View
 
 from acls.models import AccessEntry
 from common.utils import generate_choices_w_labels
 from common.views import (
-    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    AssignRemoveView, ConfirmView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document
 from permissions.models import Permission
@@ -193,6 +193,8 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
 
     def add(self, item):
         self.workflow.document_types.add(item)
+        # TODO: add task launching this workflow for all the document types of
+        # item
 
     def dispatch(self, request, *args, **kwargs):
         self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
@@ -212,6 +214,8 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
 
     def remove(self, item):
         self.workflow.document_types.remove(item)
+        # TODO: add task deleting this workflow for all the document types of
+        # item
 
     def get_context_data(self, **kwargs):
         data = super(SetupWorkflowDocumentTypesView, self).get_context_data(**kwargs)
