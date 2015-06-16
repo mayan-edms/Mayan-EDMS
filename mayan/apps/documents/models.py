@@ -70,7 +70,7 @@ class DocumentType(models.Model):
     class Meta:
         verbose_name = _('Document type')
         verbose_name_plural = _('Documents types')
-        ordering = ['name']
+        ordering = ('name',)
 
 
 @python_2_unicode_compatible
@@ -91,7 +91,7 @@ class Document(models.Model):
     class Meta:
         verbose_name = _('Document')
         verbose_name_plural = _('Documents')
-        ordering = ['-date_added']
+        ordering = ('-date_added',)
 
     def set_document_type(self, document_type, force=False):
         has_changed = self.document_type != document_type
@@ -414,7 +414,7 @@ class DocumentTypeFilename(models.Model):
         return self.filename
 
     class Meta:
-        ordering = ['filename']
+        ordering = ('filename',)
         unique_together = ('document_type', 'filename')
         verbose_name = _('Document type quick rename filename')
         verbose_name_plural = _('Document types quick rename filenames')
@@ -438,7 +438,7 @@ class DocumentPage(models.Model):
         }
 
     class Meta:
-        ordering = ['page_number']
+        ordering = ('page_number',)
         verbose_name = _('Document page')
         verbose_name_plural = _('Document pages')
 
