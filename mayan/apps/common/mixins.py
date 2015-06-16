@@ -43,13 +43,16 @@ class ObjectListPermissionFilterMixin(object):
 class ObjectPermissionCheckMixin(object):
     object_permission = None
 
+    def get_permission_object(self):
+        return self.get_object()
+
     def dispatch(self, request, *args, **kwargs):
 
         if self.object_permission:
             try:
                 Permission.objects.check_permissions(request.user, (self.object_permission,))
             except PermissionDenied:
-                AccessEntry.objects.check_access(self.object_permission, request.user, self.get_object())
+                AccessEntry.objects.check_access(self.object_permission, request.user, self.get_permission_object())
 
         return super(ObjectPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
 
