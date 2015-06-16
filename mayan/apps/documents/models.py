@@ -128,13 +128,6 @@ class Document(models.Model):
             else:
                 event_document_create.commit(target=self)
 
-    def invalidate_cached_image(self, page):
-        pass
-        #try:
-        #    os.unlink(self.get_cached_image_name(page, self.latest_version.pk)[0])
-        #except OSError:
-        #    pass
-
     def add_as_recent_document_for_user(self, user):
         RecentDocument.objects.add_document_for_user(user, self)
 
