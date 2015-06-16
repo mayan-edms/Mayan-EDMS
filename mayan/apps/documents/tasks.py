@@ -22,8 +22,10 @@ def task_get_document_page_image(document_page_id, *args, **kwargs):
 
 @app.task(ignore_result=True)
 def task_clear_image_cache():
-    # TODO: Error logging / notification
-    Document.clear_image_cache()
+    logger.info('Starting document cache invalidation')
+    # TODO: Notification of success and of errors
+    Document.objects.invalidate_cache()
+    logger.info('Finished document cache invalidation')
 
 
 @app.task(ignore_result=True)

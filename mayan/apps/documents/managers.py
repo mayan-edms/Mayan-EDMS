@@ -37,6 +37,10 @@ class DocumentTypeManager(models.Manager):
 
 
 class DocumentManager(models.Manager):
+    def invalidate_cache(self):
+        for document in self.model.objects.all():
+            document.invalidate_cache()
+
     @transaction.atomic
     def new_document(self, document_type, file_object, label=None, command_line=False, description=None, expand=False, language=None, user=None):
         versions_created = []

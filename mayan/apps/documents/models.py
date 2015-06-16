@@ -101,12 +101,9 @@ class Document(models.Model):
         if has_changed or force:
             post_document_type_change.send(sender=self.__class__, instance=self)
 
-    @staticmethod
-    def clear_image_cache():
-        for the_file in os.listdir(CACHE_PATH):
-            file_path = os.path.join(CACHE_PATH, the_file)
-            if os.path.isfile(file_path):
-                os.unlink(file_path)
+    def invalidate_cache(self):
+        for document_version in self.versions.all():
+            document_version.invalidate_cache()
 
     def __str__(self):
         return self.label
@@ -279,6 +276,10 @@ class DocumentVersion(models.Model):
 
             post_version_upload.send(sender=self.__class__, instance=self)
 
+    def invalidate_cache(self):
+        for page in self.pages.all():
+            page.invalidate_cache()
+
     def update_checksum(self, save=True):
         """
         Open a document version's file and update the checksum field using the
@@ -339,7 +340,11 @@ class DocumentVersion(models.Model):
                     self.save()
 
     def delete(self, *args, **kwargs):
+        for page in self.pages.all():
+            page.delete()
+
         self.file.storage.delete(self.file.path)
+
         return super(DocumentVersion, self).delete(*args, **kwargs)
 
     def exists(self):
@@ -438,6 +443,10 @@ class DocumentPage(models.Model):
     def get_absolute_url(self):
         return reverse('documents:document_page_view', args=[self.pk])
 
+    def delete(self, *args, **kwargs):
+        self.invalidate_cache()
+        super(DocumentPage, self).delete(*args, **kwargs)
+
     @property
     def siblings(self):
         return DocumentPage.objects.filter(document_version=self.document_version)
@@ -447,15 +456,20 @@ class DocumentPage(models.Model):
     def document(self):
         return self.document_version.document
 
+    def invalidate_cache(self):
+        fs_cleanup(self.get_cache_filename())
+
     def get_uuid(self):
-        return 'page-cache-{}'.format(self.pk)
+        # Make cache UUID a mix of document UUID, version ID and page ID to
+        # avoid using stale images
+        return 'page-cache-{}-{}-{}'.format(self.document.uuid, self.document_version.pk, self.pk)
 
     def get_cache_filename(self):
         return os.path.join(CACHE_PATH, self.get_uuid())
 
     def get_image(self, *args, **kwargs):
+        as_base64 = kwargs.pop('as_base64', False)
         transformations = kwargs.pop('transformations', [])
-
         size = kwargs.pop('size', DISPLAY_SIZE)
         rotation = kwargs.pop('rotation', DEFAULT_ROTATION)
         zoom_level = kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL)
@@ -467,8 +481,6 @@ class DocumentPage(models.Model):
             zoom_level = ZOOM_MAX_LEVEL
 
         rotation = rotation % 360
-
-        as_base64 = kwargs.pop('as_base64', False)
 
         cache_filename = self.get_cache_filename()
 
@@ -485,6 +497,7 @@ class DocumentPage(models.Model):
                 with open(cache_filename, 'wb+') as file_object:
                     file_object.write(page_image.getvalue())
             except:
+                # Cleanup in case of error
                 fs_cleanup(cache_filename)
                 raise
 
@@ -508,6 +521,7 @@ class DocumentPage(models.Model):
         page_image = converter.get_page()
 
         if as_base64:
+            # TODO: don't prepend 'data:%s;base64,%s' part
             return 'data:%s;base64,%s' % ('image/png', base64.b64encode(page_image.getvalue()))
         else:
             return page_image
