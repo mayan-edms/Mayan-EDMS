@@ -15,6 +15,7 @@ from common import (
 )
 from common.api import register_maintenance_links
 from common.classes import ModelAttribute
+from common.signals import post_initial_setup
 from common.utils import encapsulate, validate_path
 from converter.links import link_transformation_list
 from converter.permissions import (
@@ -29,6 +30,7 @@ from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
 
 from documents import settings as document_settings
+from .handlers import create_default_document_type
 from .links import (
     link_clear_image_cache, link_document_acl_list,
     link_document_clear_transformations, link_document_content,
@@ -145,6 +147,8 @@ class DocumentsApp(apps.AppConfig):
         namespace = StatisticNamespace(name='documents', label=_('Documents'))
         namespace.add_statistic(DocumentStatistics(name='document_stats', label=_('Document tendencies')))
         namespace.add_statistic(DocumentUsageStatistics(name='document_usage', label=_('Document usage')))
+
+        post_initial_setup.connect(create_default_document_type, dispatch_uid='create_default_document_type')
 
         registry.register(Document)
 

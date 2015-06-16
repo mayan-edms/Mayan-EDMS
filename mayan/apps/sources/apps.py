@@ -7,6 +7,7 @@ from common import (
     MissingItem, menu_front_page, menu_object, menu_secondary, menu_sidebar,
     menu_setup
 )
+from common.signals import post_initial_setup
 from common.utils import encapsulate
 from converter.links import link_transformation_list
 from documents.models import Document
@@ -14,6 +15,7 @@ from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 
 from .classes import StagingFile
+from .handlers import create_default_document_source
 from .links import (
     link_document_create_multiple, link_document_create_siblings,
     link_setup_sources, link_setup_source_create_imap_email,
@@ -49,3 +51,5 @@ class SourcesApp(apps.AppConfig):
                 encapsulate(lambda x: staging_file_thumbnail(x, gallery_name='sources:staging_list', title=x.filename, size='100'))
             },
         ])
+
+        post_initial_setup.connect(create_default_document_source, dispatch_uid='create_default_document_source')
