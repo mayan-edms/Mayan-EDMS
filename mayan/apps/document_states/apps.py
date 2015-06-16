@@ -92,6 +92,10 @@ class DocumentStatesApp(apps.AppConfig):
                 'name': _('Is initial state?'),
                 'attribute': 'initial'
             },
+            {
+                'name': _('Completion'),
+                'attribute': 'completion'
+            },
         ])
 
         register_model_list_columns(WorkflowTransition, [

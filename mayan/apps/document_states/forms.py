@@ -16,7 +16,7 @@ class WorkflowForm(forms.ModelForm):
 
 class WorkflowStateForm(forms.ModelForm):
     class Meta:
-        fields = ('initial', 'label')
+        fields = ('initial', 'label', 'completion')
         model = WorkflowState
 
 

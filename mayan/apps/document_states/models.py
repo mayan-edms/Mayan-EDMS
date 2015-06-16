@@ -43,6 +43,7 @@ class WorkflowState(models.Model):
     workflow = models.ForeignKey(Workflow, related_name='states', verbose_name=_('Workflow'))
     label = models.CharField(max_length=255, verbose_name=_('Label'))
     initial = models.BooleanField(default=False, help_text=_('Select if this will be the state with which you want the workflow to start in. Only one state can be the initial state.'), verbose_name=_('Initial'))
+    completion = models.IntegerField(blank=True, default=0, help_text=_('Enter the percent of completion that this state represents in relation to the workflow. Use numbers without the percent sign.'), verbose_name=_('Completion'))
 
     def __str__(self):
         return self.label
