@@ -23,9 +23,9 @@ def is_not_root_node(context):
 
 link_document_index_list = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_VIEW, PERMISSION_DOCUMENT_VIEW], text=_('Indexes'), view='indexing:document_index_list', args='object.pk')
 link_index_list = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_VIEW], text=_('Index list'), view='indexing:index_list')
-link_index_main_menu = Link(icon='fa fa-sitemap', text=_('Indexes'), view='indexing:index_list')
+link_index_main_menu = Link(icon='fa fa-list-ul', text=_('Indexes'), view='indexing:index_list')
 link_index_parent = Link(condition=is_not_instance_root_node, permissions=[PERMISSION_DOCUMENT_INDEXING_VIEW], text=_('Go up one level'), view='indexing:index_instance_node_view', args='object.parent.pk')
-link_index_setup = Link(icon='fa fa-sitemap', permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP], text=_('Indexes'), view='indexing:index_setup_list')
+link_index_setup = Link(icon='fa fa-list-ul', permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP], text=_('Indexes'), view='indexing:index_setup_list')
 link_index_setup_list = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_SETUP], text=_('Indexes'), view='indexing:index_setup_list')
 link_index_setup_create = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_CREATE], text=_('Create index'), view='indexing:index_setup_create')
 link_index_setup_edit = Link(permissions=[PERMISSION_DOCUMENT_INDEXING_EDIT], text=_('Edit'), view='indexing:index_setup_edit', args='resolved_object.pk')

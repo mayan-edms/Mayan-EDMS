@@ -9,7 +9,7 @@ link_setup_workflow_create = Link(text=_('Create'), view='document_states:setup_
 link_setup_workflow_delete = Link(tags='dangerous', text=_('Delete'), view='document_states:setup_workflow_delete', args='object.pk')
 link_setup_workflow_document_types = Link(text=_('Document types'), view='document_states:setup_workflow_document_types', args='object.pk')
 link_setup_workflow_edit = Link(text=_('Edit'), view='document_states:setup_workflow_edit', args='object.pk')
-link_setup_workflow_list = Link(icon='fa fa-table', text=_('Workflows'), view='document_states:setup_workflow_list')
+link_setup_workflow_list = Link(icon='fa fa-sitemap', text=_('Workflows'), view='document_states:setup_workflow_list')
 link_setup_workflow_state_create = Link(text=_('Create state'), view='document_states:setup_workflow_state_create', args='object.pk')
 link_setup_workflow_state_delete = Link(tags='dangerous', text=_('Delete'), view='document_states:setup_workflow_state_delete', args='object.pk')
 link_setup_workflow_state_edit = Link(text=_('Edit'), view='document_states:setup_workflow_state_edit', args='object.pk')
