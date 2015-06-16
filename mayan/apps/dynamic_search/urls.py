@@ -8,10 +8,10 @@ from .api_views import (
 
 urlpatterns = patterns(
     'dynamic_search.views',
-    url(r'^$', 'search', (), 'search'),
+    url(r'^$', 'search', name='search'),
     url(r'^advanced/$', 'search', {'advanced': True}, 'search_advanced'),
-    url(r'^again/$', 'search_again', (), 'search_again'),
-    url(r'^results/$', 'results', (), 'results'),
+    url(r'^again/$', 'search_again', name='search_again'),
+    url(r'^results/$', 'results', name='results'),
 )
 
 api_urls = patterns(

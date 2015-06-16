@@ -23,16 +23,16 @@ urlpatterns = patterns(
 
     # Setup views
 
-    url(r'^setup/list/$', 'setup_source_list', (), 'setup_source_list'),
-    url(r'^setup/(?P<source_id>\d+)/edit/$', 'setup_source_edit', (), 'setup_source_edit'),
+    url(r'^setup/list/$', 'setup_source_list', name='setup_source_list'),
+    url(r'^setup/(?P<source_id>\d+)/edit/$', 'setup_source_edit', name='setup_source_edit'),
     url(r'^setup/(?P<pk>\d+)/logs/$', SourceLogListView.as_view(), name='setup_source_logs'),
-    url(r'^setup/(?P<source_id>\d+)/delete/$', 'setup_source_delete', (), 'setup_source_delete'),
-    url(r'^setup/(?P<source_type>\w+)/create/$', 'setup_source_create', (), 'setup_source_create'),
+    url(r'^setup/(?P<source_id>\d+)/delete/$', 'setup_source_delete', name='setup_source_delete'),
+    url(r'^setup/(?P<source_type>\w+)/create/$', 'setup_source_create', name='setup_source_create'),
 
     # Document create views
 
     url(r'^create/from/local/multiple/$', DocumentCreateWizard.as_view(), name='document_create_multiple'),
-    url(r'^(?P<document_id>\d+)/create/siblings/$', 'document_create_siblings', (), 'document_create_siblings'),
+    url(r'^(?P<document_id>\d+)/create/siblings/$', 'document_create_siblings', name='document_create_siblings'),
 )
 
 api_urls = patterns(
