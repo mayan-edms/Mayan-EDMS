@@ -6,6 +6,8 @@ from django.conf import settings
 from django.core import management
 from django.utils.crypto import get_random_string
 
+from ...signals import post_initial_setup
+
 
 class Command(management.BaseCommand):
     help = 'Gets Mayan EDMS ready to be used (initializes database, creates a secret key, etc).'
@@ -32,3 +34,4 @@ class Command(management.BaseCommand):
             ]))
         management.call_command('migrate', interactive=False)
         management.call_command('createautoadmin', interactive=False)
+        post_initial_setup.send(sender=self)
