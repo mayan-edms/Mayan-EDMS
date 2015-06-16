@@ -135,6 +135,10 @@ class AboutView(TemplateView):
     template_name = 'appearance/about.html'
 
 
+class ConfirmView(ObjectListPermissionFilterMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
+    template_name = 'appearance/generic_confirm.html'
+
+
 class CurrentUserDetailsView(TemplateView):
     template_name = 'appearance/generic_form.html'
 
@@ -291,6 +295,8 @@ class MultiFormView(FormView):
             return self.forms_invalid(forms)
 
 
+# TODO: check/test if ViewPermissionCheckMixin, ObjectPermissionCheckMixin are
+# in the right MRO
 class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
     template_name = 'appearance/generic_form.html'
 
