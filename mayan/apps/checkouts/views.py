@@ -74,10 +74,12 @@ def checkout_document(request, document_pk):
         form = DocumentCheckoutForm(data=request.POST, initial={'document': document})
         if form.is_valid():
             try:
-                document_checkout = form.save(commit=False)
-                document_checkout.user_object = request.user
-                document_checkout.document = document
-                document_checkout.save()
+                DocumentCheckout.objects.checkout_document(
+                    document=document,
+                    expiration_datetime=form.cleaned_data['expiration_datetime'],
+                    user=request.user,
+                    block_new_version=form.cleaned_data['block_new_version'],
+                )
             except DocumentAlreadyCheckedOut:
                 messages.error(request, _('Document already checked out.'))
                 return HttpResponseRedirect(reverse('checkouts:checkout_info', args=[document.pk]))

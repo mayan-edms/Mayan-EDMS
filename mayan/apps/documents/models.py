@@ -29,7 +29,6 @@ from converter.models import Transformation
 from mimetype.api import get_mimetype
 
 from .events import event_document_create
-from .exceptions import NewDocumentVersionNotAllowed
 from .managers import (
     DocumentManager, DocumentTypeManager, RecentDocumentManager
 )
@@ -138,10 +137,7 @@ class Document(models.Model):
         return self.latest_version.size
 
     def new_version(self, file_object, user=None, comment=None):
-        logger.debug('creating new document version')
-        # TODO: move this restriction to a signal processor of the checkouts app
-        if not self.is_new_versions_allowed(user=user):
-            raise NewDocumentVersionNotAllowed
+        logger.info('Creating a new document version for document: %s', self)
 
         new_version = DocumentVersion.objects.create(
             document=self,
@@ -149,7 +145,7 @@ class Document(models.Model):
             comment=comment or '',
         )
 
-        logger.debug('new_version saved')
+        logger.info('New document version created for document: %s', self)
 
         # TODO: new HISTORY for version updates
 

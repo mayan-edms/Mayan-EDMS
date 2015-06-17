@@ -71,6 +71,9 @@ def task_upload_new_version(document_id, shared_uploaded_file_id, user_id, comme
         user = None
 
     with File(file=shared_file.file) as file_object:
-        document.new_version(comment=comment, file_object=file_object, user=user)
-
-    shared_file.delete()
+        try:
+            document.new_version(comment=comment, file_object=file_object, user=user)
+        except Warning as warning:
+            logger.info('Warning during attempt to create new document version for document:%s ; %s', document, warning)
+        finally:
+            shared_file.delete()
