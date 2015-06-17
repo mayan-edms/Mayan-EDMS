@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link
 
 link_document_workflow_instance_list = Link(text=_('Workflows'), view='document_states:document_workflow_instance_list', args='object.pk')
-link_setup_workflow_create = Link(text=_('Create'), view='document_states:setup_workflow_create')
+link_setup_workflow_create = Link(text=_('Create workflow'), view='document_states:setup_workflow_create')
 link_setup_workflow_delete = Link(tags='dangerous', text=_('Delete'), view='document_states:setup_workflow_delete', args='object.pk')
 link_setup_workflow_document_types = Link(text=_('Document types'), view='document_states:setup_workflow_document_types', args='object.pk')
 link_setup_workflow_edit = Link(text=_('Edit'), view='document_states:setup_workflow_edit', args='object.pk')
