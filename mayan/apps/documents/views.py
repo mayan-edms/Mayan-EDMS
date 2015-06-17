@@ -33,10 +33,9 @@ from .events import (
     event_document_properties_edit, event_document_type_change
 )
 from .forms import (
-    DocumentContentForm, DocumentDownloadForm, DocumentForm, DocumentPageForm,
-    DocumentPreviewForm, DocumentPropertiesForm, DocumentTypeForm,
-    DocumentTypeFilenameForm, DocumentTypeFilenameForm_create,
-    DocumentTypeSelectForm, PrintForm
+    DocumentDownloadForm, DocumentForm, DocumentPageForm, DocumentPreviewForm,
+    DocumentPropertiesForm, DocumentTypeForm, DocumentTypeFilenameForm,
+    DocumentTypeFilenameForm_create, DocumentTypeSelectForm, PrintForm
 )
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
@@ -185,28 +184,6 @@ def document_preview(request, document_id):
         'object': document,
         'read_only': True,
         'title': _('Preview of document: %s') % document,
-    }, context_instance=RequestContext(request))
-
-
-def document_content(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
-
-    document.add_as_recent_document_for_user(request.user)
-
-    content_form = DocumentContentForm(document=document)
-
-    return render_to_response('appearance/generic_form.html', {
-        'document': document,
-        'form': content_form,
-        'hide_labels': True,
-        'object': document,
-        'read_only': True,
-        'title': _('Content of document: %s') % document,
     }, context_instance=RequestContext(request))
 
 

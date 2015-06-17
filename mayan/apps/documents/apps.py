@@ -33,14 +33,13 @@ from documents import settings as document_settings
 from .handlers import create_default_document_type
 from .links import (
     link_clear_image_cache, link_document_acl_list,
-    link_document_clear_transformations, link_document_content,
-    link_document_delete, link_document_document_type_edit,
-    link_document_events_view, link_document_multiple_document_type_edit,
-    link_document_download, link_document_edit, link_document_list,
-    link_document_list_recent, link_document_multiple_delete,
+    link_document_clear_transformations, link_document_delete,
+    link_document_document_type_edit, link_document_events_view,
+    link_document_multiple_document_type_edit, link_document_download,
+    link_document_edit, link_document_list, link_document_list_recent,
+    link_document_multiple_delete,
     link_document_multiple_clear_transformations,
-    link_document_multiple_download,
-    link_document_multiple_update_page_count,
+    link_document_multiple_download, link_document_multiple_update_page_count,
     link_document_page_navigation_first, link_document_page_navigation_last,
     link_document_page_navigation_next,
     link_document_page_navigation_previous, link_document_page_return,
@@ -129,7 +128,6 @@ class DocumentsApp(apps.AppConfig):
         # Document facet links
         menu_facet.bind_links(links=[link_document_acl_list], sources=[Document])
         menu_facet.bind_links(links=[link_document_preview], sources=[Document], position=0)
-        menu_facet.bind_links(links=[link_document_content], sources=[Document], position=1)
         menu_facet.bind_links(links=[link_document_properties], sources=[Document], position=2)
         menu_facet.bind_links(links=[link_document_events_view, link_document_version_list], sources=[Document], position=2)
         menu_facet.bind_links(links=[link_document_pages], sources=[Document])

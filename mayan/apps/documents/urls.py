@@ -20,7 +20,6 @@ urlpatterns = patterns(
     url(r'^list/recent/$', RecentDocumentListView.as_view(), name='document_list_recent'),
 
     url(r'^(?P<document_id>\d+)/preview/$', 'document_preview', name='document_preview'),
-    url(r'^(?P<document_id>\d+)/content/$', 'document_content', name='document_content'),
     url(r'^(?P<document_id>\d+)/properties/$', 'document_properties', name='document_properties'),
     url(r'^(?P<document_id>\d+)/type/$', 'document_document_type_edit', name='document_document_type_edit'),
     url(r'^multiple/type/$', 'document_multiple_document_type_edit', name='document_multiple_document_type_edit'),

@@ -8,7 +8,9 @@ from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from common import menu_multi_item, menu_object, menu_secondary, menu_tools
+from common import (
+    menu_facet, menu_multi_item, menu_object, menu_secondary, menu_tools
+)
 from common.api import register_maintenance_links
 from common.utils import encapsulate
 from documents.models import Document, DocumentVersion
@@ -20,7 +22,8 @@ from rest_api.classes import APIEndPoint
 
 from .handlers import post_version_upload_ocr
 from .links import (
-    link_document_submit, link_document_submit_multiple, link_entry_delete,
+    link_document_content, link_document_submit,
+    link_document_submit_multiple, link_entry_delete,
     link_entry_delete_multiple, link_entry_list, link_entry_re_queue,
     link_entry_re_queue_multiple
 )
@@ -52,6 +55,7 @@ class OCRApp(apps.AppConfig):
 
         class_permissions(Document, [PERMISSION_OCR_DOCUMENT])
 
+        menu_facet.bind_links(links=[link_document_content], sources=[Document])
         menu_multi_item.bind_links(links=[link_document_submit_multiple], sources=[Document])
         menu_multi_item.bind_links(links=[link_entry_re_queue_multiple, link_entry_delete_multiple], sources=[DocumentVersionOCRError])
         menu_object.bind_links(links=[link_document_submit], sources=[Document])

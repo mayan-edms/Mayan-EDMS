@@ -424,10 +424,9 @@ class DocumentTypeFilename(models.Model):
 @python_2_unicode_compatible
 class DocumentPage(models.Model):
     """
-    Model that describes a document version page including it's content
+    Model that describes a document version page
     """
     document_version = models.ForeignKey(DocumentVersion, verbose_name=_('Document version'), related_name='pages')
-    content = models.TextField(blank=True, null=True, verbose_name=_('Content'))
     page_label = models.CharField(max_length=40, blank=True, null=True, verbose_name=_('Page label'))
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_('Page number'), db_index=True)
 

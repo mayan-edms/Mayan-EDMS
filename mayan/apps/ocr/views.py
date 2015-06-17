@@ -13,10 +13,34 @@ from acls.models import AccessEntry
 from documents.models import Document, DocumentVersion
 from permissions.models import Permission
 
+from .forms import DocumentContentForm
 from .models import DocumentVersionOCRError
 from .permissions import (
-    PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_DOCUMENT_DELETE
+    PERMISSION_OCR_CONTENT_VIEW, PERMISSION_OCR_DOCUMENT,
+    PERMISSION_OCR_DOCUMENT_DELETE
 )
+
+
+def document_content(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.objects.check_permissions(request.user, [PERMISSION_OCR_CONTENT_VIEW])
+    except PermissionDenied:
+        AccessEntry.objects.check_access(PERMISSION_OCR_CONTENT_VIEW, request.user, document)
+
+    document.add_as_recent_document_for_user(request.user)
+
+    content_form = DocumentContentForm(document=document)
+
+    return render_to_response('appearance/generic_form.html', {
+        'document': document,
+        'form': content_form,
+        'hide_labels': True,
+        'object': document,
+        'read_only': True,
+        'title': _('Content of document: %s') % document,
+    }, context_instance=RequestContext(request))
 
 
 def document_submit(request, pk):
