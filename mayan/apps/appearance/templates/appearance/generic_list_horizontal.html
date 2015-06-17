@@ -13,7 +13,9 @@
     <div class="well center-block">
         <div class="row">
             {% with 'navigation/large_button_link.html' as link_template %}
-                {% include 'navigation/generic_navigation.html' %}
+                {% for object_navigation_links in resolved_links %}
+                    {% include 'navigation/generic_navigation.html' %}
+                {% endfor %}
             {% endwith %}
         </div>
     </div>

@@ -459,7 +459,7 @@ class SetupListView(TemplateView):
     def get_context_data(self, **kwargs):
         data = super(SetupListView, self).get_context_data(**kwargs)
         data.update({
-            'object_navigation_links': menu_setup.resolve(context=RequestContext(self.request)),
+            'resolved_links': menu_setup.resolve(context=RequestContext(self.request)),
             'title': _('Setup items'),
         })
         return data
@@ -471,7 +471,7 @@ class ToolsListView(TemplateView):
     def get_context_data(self, **kwargs):
         data = super(ToolsListView, self).get_context_data(**kwargs)
         data.update({
-            'object_navigation_links': menu_tools.resolve(context=RequestContext(self.request)),
+            'resolved_links': menu_tools.resolve(context=RequestContext(self.request)),
             'title': _('Tools'),
         })
         return data
