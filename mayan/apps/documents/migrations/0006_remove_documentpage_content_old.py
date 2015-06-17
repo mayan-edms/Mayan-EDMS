@@ -8,6 +8,7 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('documents', '0005_auto_20150617_0358'),
+        ('ocr', '0003_auto_20150617_0401'),
     ]
 
     operations = [
