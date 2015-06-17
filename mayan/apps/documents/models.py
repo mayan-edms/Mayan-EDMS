@@ -28,7 +28,10 @@ from converter.literals import (
 from converter.models import Transformation
 from mimetype.api import get_mimetype
 
-from .events import event_document_create, event_document_new_version
+from .events import (
+    event_document_create, event_document_new_version,
+    event_document_version_revert
+)
 from .managers import (
     DocumentManager, DocumentTypeManager, RecentDocumentManager
 )
@@ -316,6 +319,10 @@ class DocumentVersion(models.Model):
         """
         Delete the subsequent versions after this one
         """
+        logger.info('Reverting to document document: %s to version: %s', self.document, self)
+
+        event_document_version_revert.commit(target=self.document)
+
         for version in self.document.versions.filter(timestamp__gt=self.timestamp):
             version.delete()
 
