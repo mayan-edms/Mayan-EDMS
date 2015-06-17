@@ -66,6 +66,10 @@ class DocumentStatesApp(apps.AppConfig):
                 'name': _('Date and time'),
                 'attribute': encapsulate(lambda workflow: getattr(workflow.get_last_log_entry(), 'datetime', _('None')))
             },
+            {
+                'name': _('Completion'),
+                'attribute': encapsulate(lambda workflow: getattr(workflow.get_current_state(), 'completion', _('None')))
+            },
         ])
 
         register_model_list_columns(WorkflowInstanceLogEntry, [
