@@ -427,7 +427,6 @@ class DocumentPage(models.Model):
     Model that describes a document version page
     """
     document_version = models.ForeignKey(DocumentVersion, verbose_name=_('Document version'), related_name='pages')
-    page_label = models.CharField(max_length=40, blank=True, null=True, verbose_name=_('Page label'))
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_('Page number'), db_index=True)
 
     def __str__(self):
