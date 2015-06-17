@@ -1095,7 +1095,7 @@ def document_version_revert(request, document_version_pk):
 
     if request.method == 'POST':
         try:
-            document_version.revert()
+            document_version.revert(user=request.user)
             messages.success(request, _('Document version reverted successfully'))
         except Exception as exception:
             messages.error(request, _('Error reverting document version; %s') % exception)
