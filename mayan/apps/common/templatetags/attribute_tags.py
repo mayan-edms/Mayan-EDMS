@@ -13,8 +13,20 @@ def object_property(value, arg):
 
 @register.filter
 def get_model_list_columns(obj):
+    try:
+        # Is it a query set?
+        obj = obj.model
+    except AttributeError:
+        # Is not a query set
+        try:
+            # Is iterable?
+            obj = obj[0]
+        except TypeError:
+            # It is not
+            pass
+
     for key, value in model_list_columns.items():
-        if isinstance(obj, key):
+        if key == obj or isinstance(obj, key):
             return value
 
     return []
