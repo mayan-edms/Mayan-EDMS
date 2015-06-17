@@ -24,6 +24,9 @@ def get_model_list_columns(obj):
         except TypeError:
             # It is not
             pass
+        except IndexError:
+            # It a list and it's empty
+            pass
 
     for key, value in model_list_columns.items():
         if key == obj or isinstance(obj, key):
