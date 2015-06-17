@@ -109,7 +109,7 @@ class DocumentsApp(apps.AppConfig):
         document_search.add_model_field('label', label=_('Label'))
         document_search.add_model_field('metadata__metadata_type__name', label=_('Metadata type'))
         document_search.add_model_field('metadata__value', label=_('Metadata value'))
-        document_search.add_model_field('versions__pages__content', label=_('Content'))
+        document_search.add_model_field('versions__pages__ocr_content__content', label=_('Content'))
         document_search.add_model_field('description', label=_('Description'))
         document_search.add_model_field('tags__label', label=_('Tags'))
 
