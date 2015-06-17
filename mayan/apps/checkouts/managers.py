@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 class DocumentCheckoutManager(models.Manager):
     def checkout_document(self, document, expiration_datetime, user, block_new_version=True):
-        self.create(document=document, expiration_datetime=expiration_datetime, user_object=user, block_new_version=block_new_version)
+        self.create(document=document, expiration_datetime=expiration_datetime, user=user, block_new_version=block_new_version)
 
     def checked_out_documents(self):
         return Document.objects.filter(pk__in=self.model.objects.all().values_list('document__pk', flat=True))
@@ -49,7 +49,7 @@ class DocumentCheckoutManager(models.Manager):
             raise DocumentNotCheckedOut
         else:
             if user:
-                if self.document_checkout_info(document).user_object != user:
+                if self.document_checkout_info(document).user != user:
                     event_document_forceful_check_in.commit(actor=user, target=document)
                 else:
                     event_document_check_in.commit(actor=user, target=document)

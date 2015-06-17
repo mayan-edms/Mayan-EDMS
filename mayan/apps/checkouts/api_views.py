@@ -62,7 +62,7 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
                 DocumentCheckout.objects.create(
                     document=document,
                     expiration_datetime=timezone.localize(serializer.data['expiration_datetime']),
-                    user_object=request.user,
+                    user=request.user,
                     block_new_version=serializer.data['block_new_version']
                 )
             except Exception as exception:
@@ -105,7 +105,7 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
 
         document = self.get_object().document
 
-        if document.checkout_info().user_object == request.user:
+        if document.checkout_info().user == request.user:
             try:
                 Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN])
             except PermissionDenied:

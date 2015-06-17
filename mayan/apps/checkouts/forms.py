@@ -11,4 +11,4 @@ class DocumentCheckoutForm(forms.ModelForm):
 
     class Meta:
         model = DocumentCheckout
-        exclude = ('document', 'checkout_datetime', 'user_content_type', 'user_object_id')
+        exclude = ('document', 'checkout_datetime', 'user')

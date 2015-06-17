@@ -15,7 +15,6 @@ class DocumentCheckoutSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = DocumentCheckout
-        read_only_fields = ('user_content_type', 'user_object_id')
 
 
 class NewDocumentCheckoutSerializer(serializers.Serializer):
