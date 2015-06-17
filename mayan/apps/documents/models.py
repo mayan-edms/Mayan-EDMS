@@ -28,7 +28,7 @@ from converter.literals import (
 from converter.models import Transformation
 from mimetype.api import get_mimetype
 
-from .events import event_document_create
+from .events import event_document_create, event_document_new_version
 from .managers import (
     DocumentManager, DocumentTypeManager, RecentDocumentManager
 )
@@ -147,7 +147,7 @@ class Document(models.Model):
 
         logger.info('New document version created for document: %s', self)
 
-        # TODO: new HISTORY for version updates
+        event_document_new_version.commit(actor=user, target=self)
 
         return new_version
 
