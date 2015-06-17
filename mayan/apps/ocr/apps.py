@@ -53,7 +53,11 @@ class OCRApp(apps.AppConfig):
         Document.add_to_class('submit_for_ocr', document_ocr_submit)
         DocumentVersion.add_to_class('submit_for_ocr', document_version_ocr_submit)
 
-        class_permissions(Document, [PERMISSION_OCR_DOCUMENT])
+        class_permissions(
+            Document, [
+                PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_CONTENT_VIEW
+            ]
+        )
 
         menu_facet.bind_links(links=[link_document_content], sources=[Document])
         menu_multi_item.bind_links(links=[link_document_submit_multiple], sources=[Document])
