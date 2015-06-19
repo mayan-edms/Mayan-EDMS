@@ -308,6 +308,12 @@
                         load_document_image($this);
                     },
                 });
+
+                $('th input:checkbox').click(function(e) {
+                    var table = $(e.target).closest('table');
+                    var checked = $(e.target).prop('checked');
+                    $('td input:checkbox', table).prop('checked', checked);
+                });
             });
         </script>
         {% block javascript %}{% endblock %}
