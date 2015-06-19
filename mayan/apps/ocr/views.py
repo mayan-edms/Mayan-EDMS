@@ -10,6 +10,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessEntry
+from common.views import ConfirmView
 from documents.models import Document, DocumentVersion
 from permissions.models import Permission
 
@@ -19,6 +20,61 @@ from .permissions import (
     PERMISSION_OCR_CONTENT_VIEW, PERMISSION_OCR_DOCUMENT,
     PERMISSION_OCR_DOCUMENT_DELETE
 )
+
+
+class DocumentSubmitView(ConfirmView):
+    def get_context_data(self, **kwargs):
+        context = super(DocumentSubmitView, self).get_context_data(**kwargs)
+
+        context.update(
+            {
+                'title': _('Are you sure you wish to submit the selected document for OCR?')
+            }
+        )
+
+        return context
+
+    def object_action(self, request, obj):
+        document = obj
+
+        try:
+            Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
+        except PermissionDenied:
+            AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document)
+
+        document.submit_for_ocr()
+        messages.success(request, _('Document: %(document)s was added to the OCR queue.') % {
+            'document': document}
+        )
+
+    def post(self, request, *args, **kwargs):
+        document = get_object_or_404(Document, pk=self.kwargs['pk'])
+        self.object_action(request=request, obj=document)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+
+class DocumentManySubmitView(DocumentSubmitView):
+    def get_context_data(self, **kwargs):
+        context = super(DocumentSubmitView, self).get_context_data(**kwargs)
+
+        context.update(
+            {
+                'title': _('Are you sure you wish to submit the selected documents for OCR?')
+            }
+        )
+
+        return context
+
+    def post(self, request, *args, **kwargs):
+        for pk in request.GET.get('id_list', '').split(','):
+            document = get_object_or_404(Document, pk=pk)
+            try:
+                self.object_action(request=request, obj=document)
+            except PermissionDenied:
+                pass
+
+        return HttpResponseRedirect(self.get_success_url())
 
 
 def document_content(request, document_id):
@@ -41,29 +97,6 @@ def document_content(request, document_id):
         'read_only': True,
         'title': _('Content of document: %s') % document,
     }, context_instance=RequestContext(request))
-
-
-def document_submit(request, pk):
-    document = get_object_or_404(Document, pk=pk)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document)
-
-    document.submit_for_ocr()
-    messages.success(request, _('Document: %(document)s was added to the OCR queue.') % {
-        'document': document}
-    )
-
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-
-
-def document_submit_multiple(request):
-    for item_id in request.GET.get('id_list', '').split(','):
-        document_submit(request, item_id)
-
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
 
 def entry_list(request):
