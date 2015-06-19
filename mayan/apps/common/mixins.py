@@ -77,6 +77,9 @@ class RedirectionMixin(object):
 
         return context
 
+    def get_success_url(self):
+        return self.next_url or self.previous_url
+
 
 class ViewPermissionCheckMixin(object):
     view_permission = None
