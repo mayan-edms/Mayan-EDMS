@@ -26,16 +26,6 @@ urlpatterns = patterns(
 
 urlpatterns += patterns(
     '',
-    url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': 'main:home'}, name='logout_view'),
-
-    url(r'^password/reset/$', 'django.contrib.auth.views.password_reset', {'email_template_name': 'main/password_reset_email.html', 'template_name': 'main/password_reset_form.html', 'post_reset_redirect': '/password/reset/done'}, name='password_reset_view'),
-    url(r'^password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$', 'django.contrib.auth.views.password_reset_confirm', {'template_name': 'main/password_reset_confirm.html', 'post_reset_redirect': '/password/reset/complete/'}, name='password_reset_confirm_view'),
-    url(r'^password/reset/complete/$', 'django.contrib.auth.views.password_reset_complete', {'template_name': 'main/password_reset_complete.html'}, name='password_reset_complete_view'),
-    url(r'^password/reset/done/$', 'django.contrib.auth.views.password_reset_done', {'template_name': 'main/password_reset_done.html'}, name='password_reset_done_view'),
-)
-
-urlpatterns += patterns(
-    '',
     url(r'^set_language/$', 'django.views.i18n.set_language', name='set_language'),
     (r'^favicon\.ico$', RedirectView.as_view(url=static('appearance/images/favicon.ico'))),
 )
