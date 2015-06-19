@@ -42,6 +42,7 @@ What's new in Mayan EDMS v2.0
 * Move document OCR content code to the OCR app
 * Add new permissions PERMISSION_OCR_CONTENT_VIEW
 * Removed the page_label field
+* OCR submit document views (single & multiple) use confirmation and POST request. Avoids OCR queueing on GET by web spiders.
 
 Upgrading from a previous version
 =================================
