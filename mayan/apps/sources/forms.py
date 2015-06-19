@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 
 class NewDocumentForm(DocumentForm):
     class Meta(DocumentForm.Meta):
-        exclude = ('label',)
+        exclude = ('label', 'description')
 
 
 class NewVersionForm(forms.Form):
