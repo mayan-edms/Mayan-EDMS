@@ -16,12 +16,14 @@ from .events import (
 )
 from .exceptions import DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
-from .permissions import PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE
 
 logger = logging.getLogger(__name__)
 
 
 class DocumentCheckoutManager(models.Manager):
+    def checkout_document(self, document, expiration_datetime, user, block_new_version=True):
+        self.create(document=document, expiration_datetime=expiration_datetime, user=user, block_new_version=block_new_version)
+
     def checked_out_documents(self):
         return Document.objects.filter(pk__in=self.model.objects.all().values_list('document__pk', flat=True))
 
@@ -47,7 +49,7 @@ class DocumentCheckoutManager(models.Manager):
             raise DocumentNotCheckedOut
         else:
             if user:
-                if self.document_checkout_info(document).user_object != user:
+                if self.document_checkout_info(document).user != user:
                     event_document_forceful_check_in.commit(actor=user, target=document)
                 else:
                     event_document_check_in.commit(actor=user, target=document)
@@ -68,33 +70,10 @@ class DocumentCheckoutManager(models.Manager):
         else:
             return STATE_CHECKED_IN
 
-    def is_document_new_versions_allowed(self, document, user=None):
+    def are_document_new_versions_allowed(self, document, user=None):
         try:
             checkout_info = self.document_checkout_info(document)
         except DocumentNotCheckedOut:
             return True
         else:
-            if not user:
-                return not checkout_info.block_new_version
-            else:
-                if user.is_staff or user.is_superuser:
-                    # Allow anything to superusers and staff
-                    return True
-
-                if user == checkout_info.user_object:
-                    # Allow anything to the user who checked out this document
-                    return True
-                else:
-                    # If not original user check to see if user has global or this document's PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE permission
-                    try:
-                        Permission.objects.check_permissions(user, [PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE])
-                    except PermissionDenied:
-                        try:
-                            AccessEntry.objects.check_accesses([PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE], user, document)
-                        except PermissionDenied:
-                            # Last resort check if original user enabled restriction
-                            return not checkout_info.block_new_version
-                        else:
-                            return True
-                    else:
-                        return True
+            return not checkout_info.block_new_version

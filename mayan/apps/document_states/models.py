@@ -1,14 +1,18 @@
 from __future__ import unicode_literals
 
+import logging
+
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.db import models
+from django.db import IntegrityError, models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
 
 from .managers import WorkflowManager
+
+logger = logging.getLogger(__name__)
 
 
 @python_2_unicode_compatible
@@ -31,7 +35,13 @@ class Workflow(models.Model):
             return None
 
     def launch_for(self, document):
-        self.instances.create(document=document)
+        try:
+            logger.info('Launching workflow %s for document %s', self, document)
+            self.instances.create(document=document)
+        except IntegrityError:
+            logger.info('Workflow %s already launched for document %s', self, document)
+        else:
+            logger.info('Workflow %s launched for document %s', self, document)
 
     class Meta:
         verbose_name = _('Workflow')
@@ -43,6 +53,7 @@ class WorkflowState(models.Model):
     workflow = models.ForeignKey(Workflow, related_name='states', verbose_name=_('Workflow'))
     label = models.CharField(max_length=255, verbose_name=_('Label'))
     initial = models.BooleanField(default=False, help_text=_('Select if this will be the state with which you want the workflow to start in. Only one state can be the initial state.'), verbose_name=_('Initial'))
+    completion = models.IntegerField(blank=True, default=0, help_text=_('Enter the percent of completion that this state represents in relation to the workflow. Use numbers without the percent sign.'), verbose_name=_('Completion'))
 
     def __str__(self):
         return self.label

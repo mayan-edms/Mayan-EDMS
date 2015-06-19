@@ -7,13 +7,13 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import FormView
+from django.views.generic import FormView, View
 
 from acls.models import AccessEntry
 from common.utils import generate_choices_w_labels
 from common.views import (
-    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    AssignRemoveView, ConfirmView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document
 from permissions.models import Permission
@@ -60,8 +60,6 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
 
 
 class WorkflowInstanceDetailView(SingleObjectListView):
-    template_name = 'appearance/generic_multi_subtemplates.html'
-
     def dispatch(self, request, *args, **kwargs):
         try:
             Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_WORKFLOW_VIEW])
@@ -77,33 +75,12 @@ class WorkflowInstanceDetailView(SingleObjectListView):
         return self.get_workflow_instance().log_entries.order_by('-datetime')
 
     def get_context_data(self, **kwargs):
-        form = WorkflowInstanceDetailForm(
-            instance=self.get_workflow_instance(), extra_fields=[
-                {'label': _('Current state'), 'field': 'get_current_state'},
-                {'label': _('Last transition'), 'field': 'get_last_transition'},
-            ]
-        )
-
         context = {
             'navigation_object_list': ['object', 'workflow_instance'],
             'object': self.get_workflow_instance().document,
-            'subtemplates_list': [
-                {
-                    'name': 'appearance/generic_form_subtemplate.html',
-                    'context': {
-                        'form': form,
-                        'read_only': True,
-                    }
-                },
-                {
-                    'name': 'appearance/generic_list_subtemplate.html',
-                    'context': {
-                        'object_list': self.get_queryset(),
-                        'title': _('Log entries'),
-                        'hide_object': True,
-                    }
-                }
-            ],
+            'object_list': self.get_queryset(),
+            'title': _('Log entries'),
+            'hide_object': True,
             'title': _('Detail of workflow: %(workflow)s') % {
                 'workflow': self.get_workflow_instance()
             },
@@ -193,6 +170,8 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
 
     def add(self, item):
         self.workflow.document_types.add(item)
+        # TODO: add task launching this workflow for all the document types of
+        # item
 
     def dispatch(self, request, *args, **kwargs):
         self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
@@ -212,6 +191,8 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
 
     def remove(self, item):
         self.workflow.document_types.remove(item)
+        # TODO: add task deleting this workflow for all the document types of
+        # item
 
     def get_context_data(self, **kwargs):
         data = super(SetupWorkflowDocumentTypesView, self).get_context_data(**kwargs)

@@ -11,15 +11,6 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 
-class PlainWidget(forms.widgets.Widget):
-    """
-    Class to define a form widget that effectively nulls the htmls of a
-    widget and reduces the output to only it's value
-    """
-    def render(self, name, value, attrs=None):
-        return mark_safe('%s' % value)
-
-
 class DetailSelectMultiple(forms.widgets.SelectMultiple):
     def __init__(self, queryset=None, *args, **kwargs):
         self.queryset = queryset
@@ -61,43 +52,6 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
         return mark_safe(output + '</ul>\n')
 
 
-def exists_widget(path):
-    try:
-        return two_state_template(os.path.exists(path))
-    except Exception as exception:
-        return exception
-
-
-def two_state_template(state, ok_icon='fa fa-check', fail_icon='fa fa-times'):
-    if state:
-        return mark_safe('<i class="text-success {}"></i>'.format(ok_icon))
-    else:
-        return mark_safe('<i class="text-danger {}"></i>'.format(fail_icon))
-
-
-class TextAreaDiv(forms.widgets.Widget):
-    """
-    Class to define a form widget that simulates the behavior of a
-    Textarea widget but using a div tag instead
-    """
-
-    def __init__(self, attrs=None):
-        # The 'rows' and 'cols' attributes are required for HTML correctness.
-        default_attrs = {'class': 'text_area_div'}
-        if attrs:
-            default_attrs.update(attrs)
-        super(TextAreaDiv, self).__init__(default_attrs)
-
-    def render(self, name, value, attrs=None):
-        if value is None:
-            value = ''
-
-        flat_attrs = flatatt(self.build_attrs(attrs, name=name))
-        content = conditional_escape(force_unicode(value))
-        result = '<pre%s>%s</pre>' % (flat_attrs, content)
-        return mark_safe(result)
-
-
 # From: http://www.peterbe.com/plog/emailinput-html5-django
 class EmailInput(forms.widgets.Input):
     """
@@ -113,6 +67,15 @@ class EmailInput(forms.widgets.Input):
                           autocapitalize='off',
                           spellcheck='false'))
         return super(EmailInput, self).render(name, value, attrs=attrs)
+
+
+class PlainWidget(forms.widgets.Widget):
+    """
+    Class to define a form widget that effectively nulls the htmls of a
+    widget and reduces the output to only it's value
+    """
+    def render(self, name, value, attrs=None):
+        return mark_safe('%s' % value)
 
 
 class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
@@ -146,3 +109,40 @@ class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
         output.append('</ul>')
 
         return mark_safe('<div class="text_area_div">%s</div>' % '\n'.join(output))
+
+
+class TextAreaDiv(forms.widgets.Widget):
+    """
+    Class to define a form widget that simulates the behavior of a
+    Textarea widget but using a div tag instead
+    """
+
+    def __init__(self, attrs=None):
+        # The 'rows' and 'cols' attributes are required for HTML correctness.
+        default_attrs = {'class': 'text_area_div'}
+        if attrs:
+            default_attrs.update(attrs)
+        super(TextAreaDiv, self).__init__(default_attrs)
+
+    def render(self, name, value, attrs=None):
+        if value is None:
+            value = ''
+
+        flat_attrs = flatatt(self.build_attrs(attrs, name=name))
+        content = conditional_escape(force_unicode(value))
+        result = '<pre%s>%s</pre>' % (flat_attrs, content)
+        return mark_safe(result)
+
+
+def exists_widget(path):
+    try:
+        return two_state_template(os.path.exists(path))
+    except Exception as exception:
+        return exception
+
+
+def two_state_template(state, ok_icon='fa fa-check', fail_icon='fa fa-times'):
+    if state:
+        return mark_safe('<i class="text-success {}"></i>'.format(ok_icon))
+    else:
+        return mark_safe('<i class="text-danger {}"></i>'.format(fail_icon))

@@ -11,8 +11,6 @@ from django.contrib.contenttypes.models import ContentType
 from django.utils.datastructures import MultiValueDict
 from django.utils.http import urlquote as django_urlquote
 from django.utils.http import urlencode as django_urlencode
-from django.utils.importlib import import_module
-from django.utils.translation import ugettext_lazy as _
 
 logger = logging.getLogger(__name__)
 
@@ -87,7 +85,6 @@ def get_descriptor(file_input, read=True):
 
 
 def get_object_name(obj):
-    ct_label = ContentType.objects.get_for_model(obj).name
     if isinstance(obj, User):
         label = obj.get_full_name() if obj.get_full_name() else obj
     else:

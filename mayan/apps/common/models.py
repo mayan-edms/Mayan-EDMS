@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from pytz import common_timezones
 
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _, ugettext
@@ -32,15 +31,6 @@ class AnonymousUserSingleton(SingletonModel):
         verbose_name = verbose_name_plural = _('Anonymous user')
 
 
-class AutoAdminSingleton(SingletonModel):
-    account = models.ForeignKey(User, null=True, blank=True, related_name='auto_admin_account', verbose_name=_('Account'))
-    password = models.CharField(null=True, blank=True, verbose_name=_('Password'), max_length=128)
-    password_hash = models.CharField(null=True, blank=True, verbose_name=_('Password hash'), max_length=128)
-
-    class Meta:
-        verbose_name = verbose_name_plural = _('Auto admin properties')
-
-
 @python_2_unicode_compatible
 class SharedUploadedFile(models.Model):
     file = models.FileField(upload_to=upload_to, storage=shared_storage_backend, verbose_name=_('File'))
@@ -61,7 +51,7 @@ class SharedUploadedFile(models.Model):
 
 @python_2_unicode_compatible
 class UserLocaleProfile(models.Model):
-    user = models.OneToOneField(User, related_name='locale_profile', verbose_name=_('User'))
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='locale_profile', verbose_name=_('User'))
 
     timezone = models.CharField(choices=zip(common_timezones, common_timezones), max_length=48, verbose_name=_('Timezone'))
     language = models.CharField(choices=settings.LANGUAGES, max_length=8, verbose_name=_('Language'))

@@ -51,7 +51,7 @@
                                             <th>{% trans 'Identifier' %}</th>
                                         {% endif %}
 
-                                        {% for column in object_list.0|get_model_list_columns %}
+                                        {% for column in object_list|get_model_list_columns %}
                                             <th>{{ column.name }}</th>
                                         {% endfor %}
 
@@ -101,17 +101,17 @@
                                         {% endfor %}
                                         {% if not hide_links %}
                                             <td class="last">
-                                                {% get_menu_links 'object menu' source=object as links %}
-                                                {% with links as object_navigation_links %}
-                                                {% with 'true' as horizontal %}
-                                                    {% include 'navigation/generic_navigation.html' %}
-                                                {% endwith %}
-                                                {% endwith %}
+                                                {% get_menu_links 'object menu' source=object as resolved_links %}
+                                                {% for object_navigation_links in resolved_links %}
+                                                    {% with 'true' as horizontal %}
+                                                        {% include 'navigation/generic_navigation.html' %}
+                                                    {% endwith %}
+                                                {% endfor %}
                                             </td>
                                         {% endif %}
                                     </tr>
                                 {% empty %}
-                                    <tr><td colspan=99 class="tc">{% trans 'No results' %}</td></tr>
+                                    <tr><td class="text-center" colspan=99>{% trans 'No results' %}</td></tr>
                                 {% endfor %}
                             </tbody>
                         </table>

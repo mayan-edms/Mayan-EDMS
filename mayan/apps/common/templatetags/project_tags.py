@@ -14,4 +14,3 @@ def project_name():
 @register.simple_tag
 def project_version():
     return mayan.__version__
-

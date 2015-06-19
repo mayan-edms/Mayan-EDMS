@@ -206,6 +206,8 @@ class APIDocumentImageView(generics.GenericAPIView):
 
         try:
             task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version), queue='converter')
+            # TODO: prepend 'data:%s;base64,%s' based on format specified in
+            # async call
             return Response({
                 'status': 'success',
                 'data': task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)

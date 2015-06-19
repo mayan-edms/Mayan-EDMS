@@ -7,3 +7,5 @@ from events.classes import Event
 event_document_create = Event(name='documents_document_create', label=_('Document created'))
 event_document_properties_edit = Event(name='documents_document_edit', label=_('Document properties edited'))
 event_document_type_change = Event(name='documents_document_type_change', label=_('Document type changed'))
+event_document_new_version = Event(name='documents_document_new_version', label=_('New version uploaded'))
+event_document_version_revert = Event(name='documents_document_version_revert', label=_('Document version reverted'))

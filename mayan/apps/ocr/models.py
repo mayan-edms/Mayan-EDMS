@@ -4,7 +4,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import DocumentVersion
+from documents.models import DocumentVersion, DocumentPage
 
 
 @python_2_unicode_compatible
@@ -20,3 +20,19 @@ class DocumentVersionOCRError(models.Model):
         ordering = ('datetime_submitted',)
         verbose_name = _('Document Version OCR Error')
         verbose_name_plural = _('Document Version OCR Errors')
+
+
+@python_2_unicode_compatible
+class DocumentPageContent(models.Model):
+    """
+    Model that describes a document page content
+    """
+    document_page = models.OneToOneField(DocumentPage, related_name='ocr_content', verbose_name=_('Document page'))
+    content = models.TextField(blank=True, verbose_name=_('Content'))
+
+    def __str__(self):
+        return unicode(self.document_page)
+
+    class Meta:
+        verbose_name = _('Document page content')
+        verbose_name_plural = _('Document pages contents')

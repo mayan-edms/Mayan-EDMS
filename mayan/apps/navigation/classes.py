@@ -86,29 +86,43 @@ class Menu(object):
                     pass
 
         for resolved_navigation_object in resolved_navigation_object_list:
-            for source, links in self.bound_links.iteritems():
+            resolved_links = []
+
+            for bound_source, links in self.bound_links.iteritems():
                 try:
-                    if inspect.isclass(source) and isinstance(resolved_navigation_object, source) or source == CombinedSource(obj=resolved_navigation_object.__class__, view=current_view):
+                    if inspect.isclass(bound_source) and isinstance(resolved_navigation_object, bound_source) or source == CombinedSource(obj=resolved_navigation_object.__class__, view=current_view):
                         for link in links:
                             resolved_link = link.resolve(context=context, resolved_object=resolved_navigation_object)
                             if resolved_link:
-                                result.append(resolved_link)
+                                resolved_links.append(resolved_link)
                         break  # No need for further content object match testing
                 except TypeError:
                     # When source is a dictionary
                     pass
 
+            if resolved_links:
+                result.append(resolved_links)
+
+        resolved_links = []
         # View links
         for link in self.bound_links.get(current_view, []):
             resolved_link = link.resolve(context)
             if resolved_link:
-                result.append(resolved_link)
+                resolved_links.append(resolved_link)
+
+        if resolved_links:
+            result.append(resolved_links)
+
+        resolved_links = []
 
         # Main menu links
         for link in self.bound_links.get(None, []):
             resolved_link = link.resolve(context)
             if resolved_link:
-                result.append(resolved_link)
+                resolved_links.append(resolved_link)
+
+        if resolved_links:
+            result.append(resolved_links)
 
         return result
 

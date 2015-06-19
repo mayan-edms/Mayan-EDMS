@@ -33,7 +33,7 @@ class CheckoutListView(DocumentListView):
         'title': _('Documents checked out'),
         'hide_links': True,
         'extra_columns': [
-            {'name': _('Checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user_object))},
+            {'name': _('Checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user))},
             {'name': _('Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
             {'name': _('Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
         ],
@@ -51,7 +51,7 @@ def checkout_info(request, document_pk):
 
     if document.is_checked_out():
         checkout_info = document.checkout_info()
-        paragraphs.append(_('User: %s') % get_object_name(checkout_info.user_object))
+        paragraphs.append(_('User: %s') % get_object_name(checkout_info.user))
         paragraphs.append(_('Check out time: %s') % checkout_info.checkout_datetime)
         paragraphs.append(_('Check out expiration: %s') % checkout_info.expiration_datetime)
         paragraphs.append(_('New versions allowed: %s') % (_('Yes') if not checkout_info.block_new_version else _('No')))
@@ -74,10 +74,12 @@ def checkout_document(request, document_pk):
         form = DocumentCheckoutForm(data=request.POST, initial={'document': document})
         if form.is_valid():
             try:
-                document_checkout = form.save(commit=False)
-                document_checkout.user_object = request.user
-                document_checkout.document = document
-                document_checkout.save()
+                DocumentCheckout.objects.checkout_document(
+                    document=document,
+                    expiration_datetime=form.cleaned_data['expiration_datetime'],
+                    user=request.user,
+                    block_new_version=form.cleaned_data['block_new_version'],
+                )
             except DocumentAlreadyCheckedOut:
                 messages.error(request, _('Document already checked out.'))
                 return HttpResponseRedirect(reverse('checkouts:checkout_info', args=[document.pk]))
@@ -110,7 +112,7 @@ def checkin_document(request, document_pk):
     # If the user trying to check in the document is the same as the check out
     # user just check for the normal permission otherwise check for the forceful
     # checkin permission
-    if document.checkout_info().user_object == request.user:
+    if document.checkout_info().user == request.user:
         try:
             Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN])
         except PermissionDenied:
@@ -139,7 +141,7 @@ def checkin_document(request, document_pk):
         'object': document,
     }
 
-    if document.checkout_info().user_object != request.user:
+    if document.checkout_info().user != request.user:
         context['title'] = _('You didn\'t originally checked out this document.  Are you sure you wish to forcefully check in document: %s?') % document
     else:
         context['title'] = _('Are you sure you wish to check in document: %s?') % document

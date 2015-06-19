@@ -2,19 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 
-from .models import (
-    AnonymousUserSingleton, AutoAdminSingleton, UserLocaleProfile
-)
-
-
-def auto_admin_account_passwd_change(sender, instance, **kwargs):
-    auto_admin_properties = AutoAdminSingleton.objects.get()
-    if instance == auto_admin_properties.account and instance.password != auto_admin_properties.password_hash:
-        # Only delete the auto admin properties when the password has been changed
-        auto_admin_properties.account = None
-        auto_admin_properties.password = None
-        auto_admin_properties.password_hash = None
-        auto_admin_properties.save()
+from .models import UserLocaleProfile
 
 
 def user_locale_profile_session_config(sender, request, user, **kwargs):

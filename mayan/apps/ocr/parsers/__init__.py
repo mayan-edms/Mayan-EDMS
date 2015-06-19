@@ -93,7 +93,6 @@ class SlateParser(Parser):
             raise ParserError('No output')
 
         document_page.content = pdf_pages[document_page.page_number - 1]
-        document_page.page_label = _('Text extracted from PDF')
         document_page.save()
 
 
@@ -170,7 +169,6 @@ class PopplerParser(Parser):
             raise ParserError('No output')
 
         document_page.content = output
-        document_page.page_label = _('Text extracted from PDF')
         document_page.save()
 
 

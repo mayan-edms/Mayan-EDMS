@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
+from django.conf import settings
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
@@ -27,10 +28,7 @@ class DocumentCheckout(models.Model):
     checkout_datetime = models.DateTimeField(verbose_name=_('Check out date and time'), auto_now_add=True)
     expiration_datetime = models.DateTimeField(verbose_name=_('Check out expiration date and time'), help_text=_('Amount of time to hold the document checked out in minutes.'))
 
-    # TODO: simplify user_object to an instance of User
-    user_content_type = models.ForeignKey(ContentType, null=True, blank=True)  # blank and null added for ease of db migration
-    user_object_id = models.PositiveIntegerField(null=True, blank=True)
-    user_object = generic.GenericForeignKey(ct_field='user_content_type', fk_field='user_object_id')
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'))
 
     block_new_version = models.BooleanField(default=True, verbose_name=_('Block new version upload'), help_text=_('Do not allow new version of this document to be uploaded.'))
 
@@ -50,7 +48,7 @@ class DocumentCheckout(models.Model):
 
         result = super(DocumentCheckout, self).save(*args, **kwargs)
         if new_checkout:
-            event_document_check_out.commit(actor=self.user_object, target=self.document)
+            event_document_check_out.commit(actor=self.user, target=self.document)
         return result
 
     def get_absolute_url(self):

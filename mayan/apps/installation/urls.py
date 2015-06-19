@@ -4,6 +4,6 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns(
     'installation.views',
-    url(r'^$', 'namespace_list', (), 'namespace_list'),
-    url(r'^(?P<namespace_id>\w+)/details/$', 'namespace_details', (), 'namespace_details'),
+    url(r'^$', 'namespace_list', name='namespace_list'),
+    url(r'^(?P<namespace_id>\w+)/details/$', 'namespace_details', name='namespace_details'),
 )

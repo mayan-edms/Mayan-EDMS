@@ -15,6 +15,7 @@ from common import (
 )
 from common.api import register_maintenance_links
 from common.classes import ModelAttribute
+from common.signals import post_initial_setup
 from common.utils import encapsulate, validate_path
 from converter.links import link_transformation_list
 from converter.permissions import (
@@ -29,16 +30,16 @@ from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
 
 from documents import settings as document_settings
+from .handlers import create_default_document_type
 from .links import (
     link_clear_image_cache, link_document_acl_list,
-    link_document_clear_transformations, link_document_content,
-    link_document_delete, link_document_document_type_edit,
-    link_document_events_view, link_document_multiple_document_type_edit,
-    link_document_download, link_document_edit, link_document_list,
-    link_document_list_recent, link_document_multiple_delete,
+    link_document_clear_transformations, link_document_delete,
+    link_document_document_type_edit, link_document_events_view,
+    link_document_multiple_document_type_edit, link_document_download,
+    link_document_edit, link_document_list, link_document_list_recent,
+    link_document_multiple_delete,
     link_document_multiple_clear_transformations,
-    link_document_multiple_download,
-    link_document_multiple_update_page_count,
+    link_document_multiple_download, link_document_multiple_update_page_count,
     link_document_page_navigation_first, link_document_page_navigation_last,
     link_document_page_navigation_next,
     link_document_page_navigation_previous, link_document_page_return,
@@ -108,7 +109,7 @@ class DocumentsApp(apps.AppConfig):
         document_search.add_model_field('label', label=_('Label'))
         document_search.add_model_field('metadata__metadata_type__name', label=_('Metadata type'))
         document_search.add_model_field('metadata__value', label=_('Metadata value'))
-        document_search.add_model_field('versions__pages__content', label=_('Content'))
+        document_search.add_model_field('versions__pages__ocr_content__content', label=_('Content'))
         document_search.add_model_field('description', label=_('Description'))
         document_search.add_model_field('tags__label', label=_('Tags'))
 
@@ -127,7 +128,6 @@ class DocumentsApp(apps.AppConfig):
         # Document facet links
         menu_facet.bind_links(links=[link_document_acl_list], sources=[Document])
         menu_facet.bind_links(links=[link_document_preview], sources=[Document], position=0)
-        menu_facet.bind_links(links=[link_document_content], sources=[Document], position=1)
         menu_facet.bind_links(links=[link_document_properties], sources=[Document], position=2)
         menu_facet.bind_links(links=[link_document_events_view, link_document_version_list], sources=[Document], position=2)
         menu_facet.bind_links(links=[link_document_pages], sources=[Document])
@@ -145,6 +145,8 @@ class DocumentsApp(apps.AppConfig):
         namespace = StatisticNamespace(name='documents', label=_('Documents'))
         namespace.add_statistic(DocumentStatistics(name='document_stats', label=_('Document tendencies')))
         namespace.add_statistic(DocumentUsageStatistics(name='document_usage', label=_('Document usage')))
+
+        post_initial_setup.connect(create_default_document_type, dispatch_uid='create_default_document_type')
 
         registry.register(Document)
 

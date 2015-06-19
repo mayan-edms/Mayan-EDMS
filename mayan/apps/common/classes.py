@@ -83,4 +83,3 @@ class MissingItem(object):
         self.description = description
         self.view = view
         self.__class__._registry.append(self)
-

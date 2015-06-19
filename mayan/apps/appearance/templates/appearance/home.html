@@ -38,10 +38,12 @@
 
             <div class="well center-block">
                 <div class="row">
-                    {% get_menu_links 'front page menu' as object_navigation_links %}
+                    {% get_menu_links 'front page menu' as resolved_links %}
                     {% with 'navigation/large_button_link.html' as link_template %}
                     {% with 'col-xs-12 col-sm-6 col-md-4 col-lg-4' as div_class %}
-                        {% include 'navigation/generic_navigation.html' %}
+                        {% for object_navigation_links in resolved_links %}
+                            {% include 'navigation/generic_navigation.html' %}
+                        {% endfor %}
                     {% endwith %}
                     {% endwith %}
                 </div>

@@ -3,14 +3,14 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 
 from .views import (
-    SetupWorkflowCreateView, SetupWorkflowDeleteView,
-    SetupWorkflowDocumentTypesView, SetupWorkflowEditView,
-    SetupWorkflowListView, SetupWorkflowStateCreateView,
-    SetupWorkflowStateDeleteView, SetupWorkflowStateEditView,
-    SetupWorkflowStateListView, SetupWorkflowTransitionListView,
-    SetupWorkflowTransitionCreateView, SetupWorkflowTransitionDeleteView,
-    SetupWorkflowTransitionEditView, WorkflowInstanceDetailView,
-    WorkflowInstanceTransitionView, DocumentWorkflowInstanceListView
+    DocumentWorkflowInstanceListView, SetupWorkflowCreateView,
+    SetupWorkflowDeleteView, SetupWorkflowDocumentTypesView,
+    SetupWorkflowEditView, SetupWorkflowListView,
+    SetupWorkflowStateCreateView, SetupWorkflowStateDeleteView,
+    SetupWorkflowStateEditView, SetupWorkflowStateListView,
+    SetupWorkflowTransitionListView, SetupWorkflowTransitionCreateView,
+    SetupWorkflowTransitionDeleteView, SetupWorkflowTransitionEditView,
+    WorkflowInstanceDetailView, WorkflowInstanceTransitionView
 )
 
 urlpatterns = patterns(

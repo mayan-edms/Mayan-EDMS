@@ -37,7 +37,11 @@ What's new in Mayan EDMS v2.0
 
 * New document converter
 * New class based transformations
-
+* Removal of the DOCUMENT_RESTRICTIONS_OVERRIDE permission
+* Use of Font awesome icons
+* Move document OCR content code to the OCR app
+* Add new permissions PERMISSION_OCR_CONTENT_VIEW
+* Removed the page_label field
 
 Upgrading from a previous version
 =================================

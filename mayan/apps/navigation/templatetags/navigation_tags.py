@@ -20,16 +20,20 @@ def get_menus_links(context, names, source=None):
     result = []
 
     for name in names.split(','):
-        links = Menu.get(name=name).resolve(context)
-        if links:
-            result.append(links)
+        for links in Menu.get(name=name).resolve(context):
+            if links:
+                result.append(links)
 
     return result
 
 
 @register.simple_tag(takes_context=True)
 def get_multi_item_links_form(context, object_list):
-    actions = [(link.url, link.text) for link in Menu.get('multi item menu').resolve(context=context, source=object_list[0])]
+    actions = []
+    for link_set in Menu.get('multi item menu').resolve(context=context, source=object_list[0]):
+        for link in link_set:
+            actions.append((link.url, link.text))
+
     form = MultiItemForm(actions=actions)
     context.update({'multi_item_form': form, 'multi_item_actions': actions})
     return ''

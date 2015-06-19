@@ -28,8 +28,10 @@ from converter.literals import (
 from converter.models import Transformation
 from mimetype.api import get_mimetype
 
-from .events import event_document_create
-from .exceptions import NewDocumentVersionNotAllowed
+from .events import (
+    event_document_create, event_document_new_version,
+    event_document_version_revert
+)
 from .managers import (
     DocumentManager, DocumentTypeManager, RecentDocumentManager
 )
@@ -70,7 +72,7 @@ class DocumentType(models.Model):
     class Meta:
         verbose_name = _('Document type')
         verbose_name_plural = _('Documents types')
-        ordering = ['name']
+        ordering = ('name',)
 
 
 @python_2_unicode_compatible
@@ -91,7 +93,7 @@ class Document(models.Model):
     class Meta:
         verbose_name = _('Document')
         verbose_name_plural = _('Documents')
-        ordering = ['-date_added']
+        ordering = ('-date_added',)
 
     def set_document_type(self, document_type, force=False):
         has_changed = self.document_type != document_type
@@ -101,12 +103,9 @@ class Document(models.Model):
         if has_changed or force:
             post_document_type_change.send(sender=self.__class__, instance=self)
 
-    @staticmethod
-    def clear_image_cache():
-        for the_file in os.listdir(CACHE_PATH):
-            file_path = os.path.join(CACHE_PATH, the_file)
-            if os.path.isfile(file_path):
-                os.unlink(file_path)
+    def invalidate_cache(self):
+        for document_version in self.versions.all():
+            document_version.invalidate_cache()
 
     def __str__(self):
         return self.label
@@ -128,13 +127,6 @@ class Document(models.Model):
             else:
                 event_document_create.commit(target=self)
 
-    def invalidate_cached_image(self, page):
-        pass
-        #try:
-        #    os.unlink(self.get_cached_image_name(page, self.latest_version.pk)[0])
-        #except OSError:
-        #    pass
-
     def add_as_recent_document_for_user(self, user):
         RecentDocument.objects.add_document_for_user(user, self)
 
@@ -148,10 +140,7 @@ class Document(models.Model):
         return self.latest_version.size
 
     def new_version(self, file_object, user=None, comment=None):
-        logger.debug('creating new document version')
-        # TODO: move this restriction to a signal processor of the checkouts app
-        if not self.is_new_versions_allowed(user=user):
-            raise NewDocumentVersionNotAllowed
+        logger.info('Creating a new document version for document: %s', self)
 
         new_version = DocumentVersion.objects.create(
             document=self,
@@ -159,9 +148,9 @@ class Document(models.Model):
             comment=comment or '',
         )
 
-        logger.debug('new_version saved')
+        logger.info('New document version created for document: %s', self)
 
-        # TODO: new HISTORY for version updates
+        event_document_new_version.commit(actor=user, target=self)
 
         return new_version
 
@@ -286,6 +275,10 @@ class DocumentVersion(models.Model):
 
             post_version_upload.send(sender=self.__class__, instance=self)
 
+    def invalidate_cache(self):
+        for page in self.pages.all():
+            page.invalidate_cache()
+
     def update_checksum(self, save=True):
         """
         Open a document version's file and update the checksum field using the
@@ -322,10 +315,14 @@ class DocumentVersion(models.Model):
 
         return detected_pages
 
-    def revert(self):
+    def revert(self, user=None):
         """
         Delete the subsequent versions after this one
         """
+        logger.info('Reverting to document document: %s to version: %s', self.document, self)
+
+        event_document_version_revert.commit(actor=user, target=self.document)
+
         for version in self.document.versions.filter(timestamp__gt=self.timestamp):
             version.delete()
 
@@ -346,7 +343,11 @@ class DocumentVersion(models.Model):
                     self.save()
 
     def delete(self, *args, **kwargs):
+        for page in self.pages.all():
+            page.delete()
+
         self.file.storage.delete(self.file.path)
+
         return super(DocumentVersion, self).delete(*args, **kwargs)
 
     def exists(self):
@@ -414,7 +415,7 @@ class DocumentTypeFilename(models.Model):
         return self.filename
 
     class Meta:
-        ordering = ['filename']
+        ordering = ('filename',)
         unique_together = ('document_type', 'filename')
         verbose_name = _('Document type quick rename filename')
         verbose_name_plural = _('Document types quick rename filenames')
@@ -423,11 +424,9 @@ class DocumentTypeFilename(models.Model):
 @python_2_unicode_compatible
 class DocumentPage(models.Model):
     """
-    Model that describes a document version page including it's content
+    Model that describes a document version page
     """
     document_version = models.ForeignKey(DocumentVersion, verbose_name=_('Document version'), related_name='pages')
-    content = models.TextField(blank=True, null=True, verbose_name=_('Content'))
-    page_label = models.CharField(max_length=40, blank=True, null=True, verbose_name=_('Page label'))
     page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_('Page number'), db_index=True)
 
     def __str__(self):
@@ -438,12 +437,16 @@ class DocumentPage(models.Model):
         }
 
     class Meta:
-        ordering = ['page_number']
+        ordering = ('page_number',)
         verbose_name = _('Document page')
         verbose_name_plural = _('Document pages')
 
     def get_absolute_url(self):
         return reverse('documents:document_page_view', args=[self.pk])
+
+    def delete(self, *args, **kwargs):
+        self.invalidate_cache()
+        super(DocumentPage, self).delete(*args, **kwargs)
 
     @property
     def siblings(self):
@@ -454,15 +457,20 @@ class DocumentPage(models.Model):
     def document(self):
         return self.document_version.document
 
+    def invalidate_cache(self):
+        fs_cleanup(self.get_cache_filename())
+
     def get_uuid(self):
-        return 'page-cache-{}'.format(self.pk)
+        # Make cache UUID a mix of document UUID, version ID and page ID to
+        # avoid using stale images
+        return 'page-cache-{}-{}-{}'.format(self.document.uuid, self.document_version.pk, self.pk)
 
     def get_cache_filename(self):
         return os.path.join(CACHE_PATH, self.get_uuid())
 
     def get_image(self, *args, **kwargs):
+        as_base64 = kwargs.pop('as_base64', False)
         transformations = kwargs.pop('transformations', [])
-
         size = kwargs.pop('size', DISPLAY_SIZE)
         rotation = kwargs.pop('rotation', DEFAULT_ROTATION)
         zoom_level = kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL)
@@ -474,8 +482,6 @@ class DocumentPage(models.Model):
             zoom_level = ZOOM_MAX_LEVEL
 
         rotation = rotation % 360
-
-        as_base64 = kwargs.pop('as_base64', False)
 
         cache_filename = self.get_cache_filename()
 
@@ -492,6 +498,7 @@ class DocumentPage(models.Model):
                 with open(cache_filename, 'wb+') as file_object:
                     file_object.write(page_image.getvalue())
             except:
+                # Cleanup in case of error
                 fs_cleanup(cache_filename)
                 raise
 
@@ -515,6 +522,7 @@ class DocumentPage(models.Model):
         page_image = converter.get_page()
 
         if as_base64:
+            # TODO: don't prepend 'data:%s;base64,%s' part
             return 'data:%s;base64,%s' % ('image/png', base64.b64encode(page_image.getvalue()))
         else:
             return page_image

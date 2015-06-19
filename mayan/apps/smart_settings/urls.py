@@ -4,5 +4,5 @@ from django.conf.urls import patterns, url
 
 urlpatterns = patterns(
     'smart_settings.views',
-    url(r'^list/$', 'setting_list', (), 'setting_list'),
+    url(r'^list/$', 'setting_list', name='setting_list'),
 )

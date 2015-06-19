@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
 from smart_settings.api import register_setting
@@ -13,30 +12,6 @@ TEMPORARY_DIRECTORY = register_setting(
     default='/tmp',
     description=_('Temporary directory used site wide to store thumbnails, previews and temporary files.  If none is specified, one will be created using tempfile.mkdtemp()'),
     exists=True
-)
-
-register_setting(
-    namespace='common',
-    module='common.settings',
-    name='AUTO_CREATE_ADMIN',
-    global_name='COMMON_AUTO_CREATE_ADMIN',
-    default=True,
-)
-
-register_setting(
-    namespace='common',
-    module='common.settings',
-    name='AUTO_ADMIN_USERNAME',
-    global_name='COMMON_AUTO_ADMIN_USERNAME',
-    default='admin',
-)
-
-register_setting(
-    namespace='common',
-    module='common.settings',
-    name='AUTO_ADMIN_PASSWORD',
-    global_name='COMMON_AUTO_ADMIN_PASSWORD',
-    default=User.objects.make_random_password(),
 )
 
 register_setting(

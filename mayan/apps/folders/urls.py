@@ -11,17 +11,17 @@ from .views import FolderDetailView, FolderListView
 urlpatterns = patterns(
     'folders.views',
     url(r'^list/$', FolderListView.as_view(), name='folder_list'),
-    url(r'^create/$', 'folder_create', (), 'folder_create'),
-    url(r'^(?P<folder_id>\d+)/edit/$', 'folder_edit', (), 'folder_edit'),
-    url(r'^(?P<folder_id>\d+)/delete/$', 'folder_delete', (), 'folder_delete'),
+    url(r'^create/$', 'folder_create', name='folder_create'),
+    url(r'^(?P<folder_id>\d+)/edit/$', 'folder_edit', name='folder_edit'),
+    url(r'^(?P<folder_id>\d+)/delete/$', 'folder_delete', name='folder_delete'),
     url(r'^(?P<pk>\d+)/$', FolderDetailView.as_view(), name='folder_view'),
-    url(r'^(?P<folder_id>\d+)/remove/document/multiple/$', 'folder_document_multiple_remove', (), 'folder_document_multiple_remove'),
+    url(r'^(?P<folder_id>\d+)/remove/document/multiple/$', 'folder_document_multiple_remove', name='folder_document_multiple_remove'),
 
-    url(r'^document/(?P<document_id>\d+)/folder/add/$', 'folder_add_document', (), 'folder_add_document'),
-    url(r'^document/multiple/folder/add/$', 'folder_add_multiple_documents', (), 'folder_add_multiple_documents'),
-    url(r'^document/(?P<document_id>\d+)/folder/list/$', 'document_folder_list', (), 'document_folder_list'),
+    url(r'^document/(?P<document_id>\d+)/folder/add/$', 'folder_add_document', name='folder_add_document'),
+    url(r'^document/multiple/folder/add/$', 'folder_add_multiple_documents', name='folder_add_multiple_documents'),
+    url(r'^document/(?P<document_id>\d+)/folder/list/$', 'document_folder_list', name='document_folder_list'),
 
-    url(r'^(?P<folder_pk>\d+)/acl/list/$', 'folder_acl_list', (), 'folder_acl_list'),
+    url(r'^(?P<folder_pk>\d+)/acl/list/$', 'folder_acl_list', name='folder_acl_list'),
 )
 
 api_urls = patterns(

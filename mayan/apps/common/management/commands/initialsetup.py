@@ -6,11 +6,14 @@ from django.conf import settings
 from django.core import management
 from django.utils.crypto import get_random_string
 
+from ...signals import post_initial_setup
+
 
 class Command(management.BaseCommand):
     help = 'Gets Mayan EDMS ready to be used (initializes database, creates a secret key, etc).'
 
-    def _generate_secret_key(self):
+    @staticmethod
+    def _generate_secret_key():
         chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
         return get_random_string(50, chars)
 
@@ -26,7 +29,9 @@ class Command(management.BaseCommand):
                 '',
                 'from .base import *',
                 '',
-                "SECRET_KEY = '{0}'".format(self._generate_secret_key()),
+                "SECRET_KEY = '{0}'".format(Command._generate_secret_key()),
                 '',
             ]))
-        management.call_command('syncdb', migrate=True, interactive=False)
+        management.call_command('migrate', interactive=False)
+        management.call_command('createautoadmin', interactive=False)
+        post_initial_setup.send(sender=self)

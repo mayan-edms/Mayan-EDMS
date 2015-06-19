@@ -5,12 +5,11 @@ from json import dumps, loads
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.models import User
-from django.contrib.auth.views import login, password_change
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import ImproperlyConfigured, PermissionDenied
+from django.core.exceptions import ImproperlyConfigured
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render_to_response
+from django.http import Http404, HttpResponseRedirect
+from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
@@ -20,7 +19,6 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
 from dynamic_search.classes import SearchModel
-from permissions.models import Permission
 
 from .api import tools
 from .classes import MissingItem
@@ -33,7 +31,6 @@ from .mixins import (
     ExtraContextMixin, ObjectListPermissionFilterMixin,
     ObjectPermissionCheckMixin, RedirectionMixin, ViewPermissionCheckMixin
 )
-from .utils import return_attrib
 
 
 class AssignRemoveView(TemplateView):
@@ -136,6 +133,10 @@ class AssignRemoveView(TemplateView):
 
 class AboutView(TemplateView):
     template_name = 'appearance/about.html'
+
+
+class ConfirmView(ObjectListPermissionFilterMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
+    template_name = 'appearance/generic_confirm.html'
 
 
 class CurrentUserDetailsView(TemplateView):
@@ -294,6 +295,8 @@ class MultiFormView(FormView):
             return self.forms_invalid(forms)
 
 
+# TODO: check/test if ViewPermissionCheckMixin, ObjectPermissionCheckMixin are
+# in the right MRO
 class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
     template_name = 'appearance/generic_form.html'
 
@@ -395,7 +398,7 @@ class ParentChildListView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, 
                 is_empty = len(self.object_list) == 0
             if is_empty:
                 raise Http404(_("Empty list and '%(class_name)s.allow_empty' is False.")
-                        % {'class_name': self.__class__.__name__})
+                              % {'class_name': self.__class__.__name__})
 
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
@@ -456,7 +459,7 @@ class SetupListView(TemplateView):
     def get_context_data(self, **kwargs):
         data = super(SetupListView, self).get_context_data(**kwargs)
         data.update({
-            'object_navigation_links': menu_setup.resolve(context=RequestContext(self.request)),
+            'resolved_links': menu_setup.resolve(context=RequestContext(self.request)),
             'title': _('Setup items'),
         })
         return data
@@ -468,7 +471,7 @@ class ToolsListView(TemplateView):
     def get_context_data(self, **kwargs):
         data = super(ToolsListView, self).get_context_data(**kwargs)
         data.update({
-            'object_navigation_links': menu_tools.resolve(context=RequestContext(self.request)),
+            'resolved_links': menu_tools.resolve(context=RequestContext(self.request)),
             'title': _('Tools'),
         })
         return data

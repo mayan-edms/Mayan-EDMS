@@ -5,7 +5,6 @@ import os
 
 from django import forms
 from django.conf import settings
-from django.contrib.auth import authenticate
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils.html import escape
@@ -13,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .models import UserLocaleProfile
 from .utils import return_attrib
-from .widgets import DetailSelectMultiple, EmailInput, PlainWidget
+from .widgets import DetailSelectMultiple, PlainWidget
 
 
 class DetailForm(forms.ModelForm):
