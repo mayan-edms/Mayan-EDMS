@@ -1,12 +1,12 @@
 from __future__ import unicode_literals
 
-from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
 from common import (
-    menu_facet, menu_object, menu_secondary, menu_setup, menu_sidebar
+    MayanAppConfig, menu_facet, menu_object, menu_secondary, menu_setup,
+    menu_sidebar
 )
 from documents.models import Document
 
@@ -27,11 +27,13 @@ from .permissions import (
 )
 
 
-class LinkingApp(apps.AppConfig):
+class LinkingApp(MayanAppConfig):
     name = 'linking'
     verbose_name = _('Linking')
 
     def ready(self):
+        super(LinkingApp, self).ready()
+
         class_permissions(SmartLink, [
             ACLS_EDIT_ACL, ACLS_VIEW_ACL, PERMISSION_SMART_LINK_DELETE,
             PERMISSION_SMART_LINK_EDIT, PERMISSION_SMART_LINK_VIEW

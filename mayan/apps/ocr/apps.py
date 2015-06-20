@@ -4,12 +4,12 @@ import logging
 
 import sh
 
-from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from common import (
-    menu_facet, menu_multi_item, menu_object, menu_secondary, menu_tools
+    MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
+    menu_tools
 )
 from common.api import register_maintenance_links
 from common.utils import encapsulate
@@ -43,11 +43,13 @@ def document_version_ocr_submit(self):
     task_do_ocr.apply_async(args=[self.pk], queue='ocr')
 
 
-class OCRApp(apps.AppConfig):
+class OCRApp(MayanAppConfig):
     name = 'ocr'
     verbose_name = _('OCR')
 
     def ready(self):
+        super(OCRApp, self).ready()
+
         APIEndPoint('ocr')
 
         Document.add_to_class('submit_for_ocr', document_ocr_submit)

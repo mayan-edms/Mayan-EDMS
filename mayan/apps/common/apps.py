@@ -5,6 +5,7 @@ import tempfile
 
 from django import apps
 from django.conf import settings
+from django.conf.urls import include, patterns, url
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_migrate, post_save
 from django.utils.translation import ugettext_lazy as _
@@ -34,11 +35,32 @@ def create_anonymous_user(sender, **kwargs):
     AnonymousUserSingleton.objects.get_or_create()
 
 
-class CommonApp(apps.AppConfig):
+class MayanAppConfig(apps.AppConfig):
+    app_url = None
+    app_namespace = None
+
+    def ready(self):
+        from mayan.urls import urlpatterns
+
+
+        if self.app_url:
+            top_url = '{}/'.format(self.app_url)
+        elif not self.app_url is None:
+            top_url = ''
+        else:
+            top_url = '{}/'.format(self.name)
+
+        urlpatterns += url(r'^{}'.format(top_url), include('{}.urls'.format(self.name), namespace=self.app_namespace or self.name)),
+
+
+class CommonApp(MayanAppConfig):
+    app_url = ''
     name = 'common'
     verbose_name = _('Common')
 
     def ready(self):
+        super(CommonApp, self).ready()
+
         menu_facet.bind_links(links=[link_current_user_details, link_current_user_locale_profile_details, link_tools, link_setup], sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'authentication:password_change_view', 'common:setup_list', 'common:tools_list'])
         menu_main.bind_links(links=[link_about], position=-1)
         menu_secondary.bind_links(

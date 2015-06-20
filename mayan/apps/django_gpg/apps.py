@@ -1,9 +1,8 @@
 from __future__ import unicode_literals
 
-from django import apps
 from django.utils.translation import ugettext_lazy as _
 
-from common import menu_object, menu_setup, menu_sidebar
+from common import MayanAppConfig, menu_object, menu_setup, menu_sidebar
 
 from .api import Key, KeyStub
 from .links import (
@@ -12,11 +11,14 @@ from .links import (
 )
 
 
-class DjangoGPGApp(apps.AppConfig):
+class DjangoGPGApp(MayanAppConfig):
+    app_url = 'gpg'
     name = 'django_gpg'
     verbose_name = _('Django GPG')
 
     def ready(self):
+        super(DjangoGPGApp, self).ready()
+
         menu_object.bind_links(links=[link_key_delete], sources=[Key])
         menu_object.bind_links(links=[link_key_receive], sources=[KeyStub])
         menu_setup.bind_links(links=[link_key_setup])

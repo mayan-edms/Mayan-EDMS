@@ -1,12 +1,11 @@
 from __future__ import unicode_literals
 
-from django import apps
 from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
-from common.menus import (
-    menu_multi_item, menu_object, menu_secondary, menu_setup
+from common import (
+    MayanAppConfig, menu_multi_item, menu_object, menu_secondary, menu_setup
 )
 from rest_api.classes import APIEndPoint
 
@@ -19,11 +18,13 @@ from .links import (
 )
 
 
-class PermissionsApp(apps.AppConfig):
+class PermissionsApp(MayanAppConfig):
     name = 'permissions'
     verbose_name = _('Permissions')
 
     def ready(self):
+        super(PermissionsApp, self).ready()
+
         APIEndPoint('permissions')
 
         menu_object.bind_links(links=[link_role_edit, link_role_members, link_role_permissions, link_role_delete], sources=[Role])

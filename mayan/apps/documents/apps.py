@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 import tempfile
 
-from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import registry
@@ -10,8 +9,8 @@ from actstream import registry
 from acls.api import class_permissions
 from acls.permissions import ACLS_VIEW_ACL, ACLS_EDIT_ACL
 from common import (
-    MissingItem, menu_facet, menu_front_page, menu_object, menu_secondary,
-    menu_setup, menu_sidebar, menu_multi_item
+    MayanAppConfig, MissingItem, menu_facet, menu_front_page, menu_object,
+    menu_secondary, menu_setup, menu_sidebar, menu_multi_item
 )
 from common.api import register_maintenance_links
 from common.classes import ModelAttribute
@@ -70,11 +69,13 @@ from .statistics import DocumentStatistics, DocumentUsageStatistics
 from .widgets import document_thumbnail
 
 
-class DocumentsApp(apps.AppConfig):
+class DocumentsApp(MayanAppConfig):
     name = 'documents'
     verbose_name = _('Documents')
 
     def ready(self):
+        super(DocumentsApp, self).ready()
+
         if (not validate_path(document_settings.CACHE_PATH)) or (not document_settings.CACHE_PATH):
             setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
 

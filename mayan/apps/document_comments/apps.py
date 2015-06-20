@@ -1,12 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
-from django import apps
 from django.contrib.comments.models import Comment
 from django.contrib.contenttypes import generic
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from common import menu_facet, menu_object, menu_sidebar
+from common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
 from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document
@@ -21,11 +20,15 @@ from .permissions import (
 )
 
 
-class DocumentCommentsApp(apps.AppConfig):
+class DocumentCommentsApp(MayanAppConfig):
+    app_namespace = 'comments'
+    app_url = 'comments'
     name = 'document_comments'
     verbose_name = _('Document comments')
 
     def ready(self):
+        super(DocumentCommentsApp, self).ready()
+
         Document.add_to_class(
             'comments',
             generic.GenericRelation(

@@ -1,11 +1,13 @@
 from __future__ import unicode_literals
 
-from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
-from common.menus import menu_facet, menu_main, menu_object, menu_secondary, menu_sidebar, menu_multi_item
+from common import (
+    MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
+    menu_sidebar, menu_multi_item
+)
 from common.utils import encapsulate
 from documents.models import Document
 from navigation.api import register_model_list_columns
@@ -27,11 +29,13 @@ from .permissions import (
 )
 
 
-class FoldersApp(apps.AppConfig):
+class FoldersApp(MayanAppConfig):
     name = 'folders'
     verbose_name = _('Folders')
 
     def ready(self):
+        super(FoldersApp, self).ready()
+
         APIEndPoint('folders')
 
         class_permissions(Document, [

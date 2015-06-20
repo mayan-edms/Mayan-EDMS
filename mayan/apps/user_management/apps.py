@@ -1,12 +1,12 @@
 from __future__ import unicode_literals
 
-from django import apps
 from django.contrib.auth.models import User, Group
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import registry
 
 from common import menu_multi_item, menu_object, menu_secondary, menu_setup
+from common.apps import MayanAppConfig
 from rest_api.classes import APIEndPoint
 
 from .links import (
@@ -18,11 +18,15 @@ from .links import (
 )
 
 
-class UserManagementApp(apps.AppConfig):
+class UserManagementApp(MayanAppConfig):
+    app_url = 'accounts'
     name = 'user_management'
     verbose_name = _('User management')
 
+
     def ready(self):
+        super(UserManagementApp, self).ready()
+
         APIEndPoint('users', app_name='user_management')
 
         menu_multi_item.bind_links(links=[link_group_multiple_delete], sources=['user_management:group_list'])

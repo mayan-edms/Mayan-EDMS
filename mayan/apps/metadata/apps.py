@@ -8,8 +8,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
 from common import (
-    menu_facet, menu_multi_item, menu_object, menu_secondary, menu_setup,
-    menu_sidebar, menu_tools
+    MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
+    menu_setup, menu_sidebar, menu_tools
 )
 from common.classes import ModelAttribute
 from common.utils import encapsulate
@@ -42,11 +42,13 @@ from .permissions import (
 logger = logging.getLogger(__name__)
 
 
-class MetadataApp(apps.AppConfig):
+class MetadataApp(MayanAppConfig):
     name = 'metadata'
     verbose_name = _('Metadata')
 
     def ready(self):
+        super(MetadataApp, self).ready()
+
         APIEndPoint('metadata')
 
         Document.add_to_class('metadata_value_of', DocumentMetadataHelper.constructor)

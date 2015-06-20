@@ -1,11 +1,11 @@
 from __future__ import unicode_literals
 
-from django import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from common import (
-    menu_facet, menu_object, menu_secondary, menu_setup, menu_sidebar
+    MayanAppConfig, menu_facet, menu_object, menu_secondary, menu_setup,
+    menu_sidebar
 )
 from common.utils import encapsulate
 from documents.models import Document
@@ -28,11 +28,13 @@ from .links import (
 )
 
 
-class DocumentStatesApp(apps.AppConfig):
+class DocumentStatesApp(MayanAppConfig):
+    app_url = 'states'
     name = 'document_states'
     verbose_name = _('Document states')
 
     def ready(self):
+        super(DocumentStatesApp, self).ready()
         menu_facet.bind_links(links=[link_document_workflow_instance_list], sources=[Document])
         menu_object.bind_links(links=[link_setup_workflow_states, link_setup_workflow_transitions, link_setup_workflow_document_types, link_setup_workflow_edit, link_setup_workflow_delete], sources=[Workflow])
         menu_object.bind_links(links=[link_setup_workflow_state_edit, link_setup_workflow_state_delete], sources=[WorkflowState])

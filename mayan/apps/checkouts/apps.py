@@ -2,12 +2,11 @@ from __future__ import absolute_import, unicode_literals
 
 from datetime import timedelta
 
-from django import apps
 from django.db.models.signals import pre_save
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from common.menus import menu_facet, menu_main, menu_sidebar
+from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
 from documents.models import Document, DocumentVersion
 from mayan.celery import app
 from rest_api.classes import APIEndPoint
@@ -26,11 +25,15 @@ from .permissions import (
 CHECK_EXPIRED_CHECK_OUTS_INTERVAL = 60  # Lowest check out expiration allowed
 
 
-class CheckoutsApp(apps.AppConfig):
+class CheckoutsApp(MayanAppConfig):
     name = 'checkouts'
     verbose_name = _('Checkouts')
 
     def ready(self):
+        super(CheckoutsApp, self).ready()
+
+        APIEndPoint('checkouts')
+
         Document.add_to_class('is_checked_out', lambda document: DocumentCheckout.objects.is_document_checked_out(document))
         Document.add_to_class('check_in', lambda document, user=None: DocumentCheckout.objects.check_in_document(document, user))
         Document.add_to_class('checkout_info', lambda document: DocumentCheckout.objects.document_checkout_info(document))
@@ -55,5 +58,3 @@ class CheckoutsApp(apps.AppConfig):
         menu_sidebar.bind_links(links=[link_checkout_document, link_checkin_document], sources=['checkouts:checkout_info', 'checkouts:checkout_document', 'checkouts:checkin_document'])
 
         pre_save.connect(check_if_new_versions_allowed, dispatch_uid='document_index_delete', sender=DocumentVersion)
-
-        APIEndPoint('checkouts')

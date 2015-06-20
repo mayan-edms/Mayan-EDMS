@@ -1,12 +1,11 @@
 from __future__ import unicode_literals
 
-from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from common.menus import (
-    menu_facet, menu_secondary, menu_object, menu_main, menu_multi_item,
-    menu_sidebar
+from common import (
+    MayanAppConfig, menu_facet, menu_secondary, menu_object, menu_main,
+    menu_multi_item, menu_sidebar
 )
 from common.utils import encapsulate
 from documents.models import Document
@@ -28,11 +27,13 @@ from .permissions import (
 from .widgets import get_tags_inline_widget_simple, single_tag_widget
 
 
-class TagsApp(apps.AppConfig):
+class TagsApp(MayanAppConfig):
     name = 'tags'
     verbose_name = _('Tags')
 
     def ready(self):
+        super(TagsApp, self).ready()
+
         APIEndPoint('tags')
 
         class_permissions(Document, [

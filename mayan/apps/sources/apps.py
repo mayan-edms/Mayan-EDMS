@@ -1,11 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
-from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from common import (
-    MissingItem, menu_front_page, menu_object, menu_secondary, menu_sidebar,
-    menu_setup
+    MayanAppConfig, MissingItem, menu_front_page, menu_object, menu_secondary,
+    menu_sidebar, menu_setup
 )
 from common.signals import post_initial_setup
 from common.utils import encapsulate
@@ -29,11 +28,13 @@ from .models import Source
 from .widgets import staging_file_thumbnail
 
 
-class SourcesApp(apps.AppConfig):
+class SourcesApp(MayanAppConfig):
     name = 'sources'
     verbose_name = _('Sources')
 
     def ready(self):
+        super(SourcesApp, self).ready()
+
         APIEndPoint('sources')
         MissingItem(label=_('Create a document source'), description=_('Document sources are the way in which new documents are feed to Mayan EDMS, create at least a web form source to be able to upload documents from a browser.'), condition=lambda: not Source.objects.exists(), view='sources:setup_source_list')
 

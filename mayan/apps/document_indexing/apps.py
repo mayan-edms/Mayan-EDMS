@@ -5,7 +5,8 @@ from django.db.models.signals import post_save, post_delete
 from django.utils.translation import ugettext_lazy as _
 
 from common import (
-    menu_facet, menu_main, menu_object, menu_secondary, menu_setup
+    MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
+    menu_setup
 )
 from common.api import register_maintenance_links
 from documents.models import Document
@@ -27,11 +28,15 @@ from .links import (
 from .models import Index, IndexTemplateNode, IndexInstanceNode
 
 
-class DocumentIndexingApp(apps.AppConfig):
+class DocumentIndexingApp(MayanAppConfig):
+    app_namespace = 'indexing'
+    app_url = 'indexing'
     name = 'document_indexing'
     verbose_name = _('Document indexing')
 
     def ready(self):
+        super(DocumentIndexingApp, self).ready()
+
         APIEndPoint('indexes', app_name='document_indexing')
 
         menu_facet.bind_links(links=[link_document_index_list], sources=[Document])

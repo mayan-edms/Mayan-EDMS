@@ -7,11 +7,10 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from common import menu_facet, menu_sidebar
+from common import MayanAppConfig, menu_facet, menu_sidebar
 from django_gpg.exceptions import GPGDecryptionError
 from django_gpg.runtime import gpg
 from documents.models import Document, DocumentVersion
@@ -56,11 +55,15 @@ def document_version_post_save_hook(instance):
         document_signature.check_for_embedded_signature()
 
 
-class DocumentSignaturesApp(apps.AppConfig):
+class DocumentSignaturesApp(MayanAppConfig):
+    app_namespace = 'signatures'
+    app_url = 'signatures'
     name = 'document_signatures'
     verbose_name = _('Document signatures')
 
     def ready(self):
+        super(DocumentSignaturesApp, self).ready()
+
         DocumentVersion.register_post_save_hook(1, document_version_post_save_hook)
         DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
 
