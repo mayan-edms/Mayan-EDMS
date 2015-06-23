@@ -23,7 +23,7 @@ from .permissions import (
     PERMISSION_TAG_ATTACH, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
     PERMISSION_TAG_REMOVE, PERMISSION_TAG_VIEW
 )
-from .widgets import get_tags_inline_widget_simple, single_tag_widget
+from .widgets import widget_inline_tags, widget_single_tag
 
 
 class TagsApp(MayanAppConfig):
@@ -35,9 +35,9 @@ class TagsApp(MayanAppConfig):
 
         APIEndPoint('tags')
 
-        SourceColumn(source=Document, label=_('Tags'), attribute=encapsulate(lambda document: get_tags_inline_widget_simple(document)))
+        SourceColumn(source=Document, label=_('Tags'), attribute=encapsulate(lambda document: widget_inline_tags(document)))
 
-        SourceColumn(source=Tag, label=_('Preview'), attribute=encapsulate(lambda tag: single_tag_widget(tag)))
+        SourceColumn(source=Tag, label=_('Preview'), attribute=encapsulate(lambda tag: widget_single_tag(tag)))
         SourceColumn(source=Tag, label=_('Tagged items'), attribute=encapsulate(lambda tag: tag.documents.count()))
 
         class_permissions(Document, [
