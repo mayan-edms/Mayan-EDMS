@@ -21,8 +21,15 @@ class SmartSettingsApp(MayanAppConfig):
     def ready(self):
         super(SmartSettingsApp, self).ready()
 
-        menu_object.bind_links(links=[link_namespace_detail], sources=[Namespace])
-        menu_setup.bind_links(links=[link_check_settings])
+        menu_object.bind_links(links=(link_namespace_detail,), sources=(Namespace,))
+        menu_setup.bind_links(links=(link_check_settings,))
+
+        register_model_list_columns(Namespace, [
+            {
+                'name': _('Setting count'),
+                'attribute': encapsulate(lambda instance: len(instance.settings))
+            },
+        ])
 
         register_model_list_columns(Setting, [
             {
