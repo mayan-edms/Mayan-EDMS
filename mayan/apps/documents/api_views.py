@@ -35,7 +35,9 @@ from .serializers import (
     DocumentTypeSerializer, DocumentVersionSerializer, NewDocumentSerializer,
     RecentDocumentSerializer
 )
-from .settings import DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
+from .settings import (
+    setting_display_size, setting_zoom_max_level, setting_zoom_min_level
+)
 from .tasks import task_get_document_page_image, task_new_document
 
 
@@ -186,7 +188,7 @@ class APIDocumentImageView(generics.GenericAPIView):
         except PermissionDenied:
             AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
 
-        size = request.GET.get('size', DISPLAY_SIZE)
+        size = request.GET.get('size', setting_display_size.value)
 
         page = int(request.GET.get('page', DEFAULT_PAGE_NUMBER))
 
@@ -194,11 +196,11 @@ class APIDocumentImageView(generics.GenericAPIView):
 
         version = int(request.GET.get('version', document.latest_version.pk))
 
-        if zoom < ZOOM_MIN_LEVEL:
-            zoom = ZOOM_MIN_LEVEL
+        if zoom < setting_zoom_min_level.value:
+            zoom = setting_zoom_min_level.value
 
-        if zoom > ZOOM_MAX_LEVEL:
-            zoom = ZOOM_MAX_LEVEL
+        if zoom > setting_zoom_max_level.value:
+            zoom = setting_zoom_max_level.value
 
         rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 

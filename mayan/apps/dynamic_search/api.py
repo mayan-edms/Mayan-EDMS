@@ -120,7 +120,7 @@ def perform_search(query_string, field_list=None):
                 model_result_ids = []
 
             result_count += len(model_result_ids)
-            results = model.objects.in_bulk(list(model_result_ids)[: LIMIT]).values()
+            results = model.objects.in_bulk(list(model_result_ids)[: LIMIT.value]).values()
             shown_result_count += len(results)
             if results:
                 model_list[title] = results

@@ -17,10 +17,10 @@ import sh
 from common.utils import fs_cleanup
 
 from ..classes import ConverterBase
-from ..settings import PDFTOPPM_PATH
+from ..settings import setting_pdftoppm_path
 
 try:
-    pdftoppm = sh.Command(PDFTOPPM_PATH)
+    pdftoppm = sh.Command(setting_pdftoppm_path.value)
 except sh.CommandNotFound:
     pdftoppm = None
 else:

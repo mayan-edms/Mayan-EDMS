@@ -29,7 +29,7 @@ from .links import (
 )
 from .models import DocumentVersionOCRError
 from .permissions import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_CONTENT_VIEW
-from .settings import PDFTOTEXT_PATH, TESSERACT_PATH, UNPAPER_PATH
+from .settings import setting_pdftotext_path, setting_tesseract_path, setting_unpaper_path
 from .tasks import task_do_ocr
 
 logger = logging.getLogger(__name__)
@@ -74,7 +74,7 @@ class OCRApp(MayanAppConfig):
         namespace = PropertyNamespace('ocr', _('OCR'))
 
         try:
-            pdftotext = sh.Command(PDFTOTEXT_PATH)
+            pdftotext = sh.Command(setting_pdftotext_path.value)
         except sh.CommandNotFound:
             namespace.add_property('pdftotext', _('pdftotext version'), _('not found'), report=True)
         except Exception:
@@ -83,7 +83,7 @@ class OCRApp(MayanAppConfig):
             namespace.add_property('pdftotext', _('pdftotext version'), pdftotext('-v').stderr, report=True)
 
         try:
-            tesseract = sh.Command(TESSERACT_PATH)
+            tesseract = sh.Command(setting_tesseract_path.value)
         except sh.CommandNotFound:
             namespace.add_property('tesseract', _('tesseract version'), _('not found'), report=True)
         except Exception:
@@ -92,7 +92,7 @@ class OCRApp(MayanAppConfig):
             namespace.add_property('tesseract', _('tesseract version'), tesseract('-v').stderr, report=True)
 
         try:
-            unpaper = sh.Command(UNPAPER_PATH)
+            unpaper = sh.Command(setting_unpaper_path.value)
         except sh.CommandNotFound:
             namespace.add_property('unpaper', _('unpaper version'), _('not found'), report=True)
         except Exception:

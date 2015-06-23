@@ -4,7 +4,7 @@ import logging
 
 from django.utils.module_loading import import_string
 
-from .settings import GRAPHICS_BACKEND
+from .settings import setting_graphics_backend
 
 logger = logging.getLogger(__name__)
-backend = converter_class = import_string(GRAPHICS_BACKEND)
+backend = converter_class = import_string(setting_graphics_backend.value)

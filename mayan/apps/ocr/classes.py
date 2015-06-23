@@ -7,7 +7,6 @@ import tempfile
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from common.settings import TEMPORARY_DIRECTORY
 from common.utils import fs_cleanup
 from converter import converter_class
 from documents.models import DocumentPage
@@ -19,7 +18,6 @@ from .literals import (
 from .models import DocumentPageContent
 from .parsers import parse_document_page
 from .parsers.exceptions import ParserError, ParserUnknownFile
-from .settings import UNPAPER_PATH
 
 logger = logging.getLogger(__name__)
 

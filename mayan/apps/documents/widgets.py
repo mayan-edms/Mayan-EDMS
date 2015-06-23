@@ -13,7 +13,7 @@ from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 )
 
-from .settings import DISPLAY_SIZE, THUMBNAIL_SIZE
+from .settings import setting_display_size, setting_thumbnail_size
 
 
 class DocumentPageImageWidget(forms.widgets.Widget):
@@ -24,7 +24,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         if value:
             output = []
             output.append('<div class="full-height scrollable mayan-page-wrapper-interactive" data-height-difference=230>')
-            output.append(document_html_widget(value, zoom=zoom, rotation=rotation, image_class='lazy-load', nolazyload=False, size=DISPLAY_SIZE))
+            output.append(document_html_widget(value, zoom=zoom, rotation=rotation, image_class='lazy-load', nolazyload=False, size=setting_display_size.value))
             output.append('</div>')
             return mark_safe(''.join(output))
         else:
@@ -55,7 +55,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     click_view_arguments=[page.pk],
                     fancybox_class='',
                     image_class='lazy-load-carousel',
-                    size=DISPLAY_SIZE,
+                    size=setting_display_size.value,
                     post_load_class='lazy-load-carousel-loaded',
                 )
             )
@@ -75,7 +75,7 @@ def document_link(document):
     return mark_safe('<a href="%s">%s</a>' % (document.get_absolute_url(), document))
 
 
-def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=THUMBNAIL_SIZE, nolazyload=False, post_load_class=None):
+def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None):
     result = []
 
     alt_text = _('Document page image')

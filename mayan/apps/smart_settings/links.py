@@ -10,3 +10,4 @@ def is_superuser(context):
 
 
 link_check_settings = Link(condition=is_superuser, icon='fa fa-sliders', text=_('Settings'), view='settings:setting_list')
+link_namespace_detail = Link(condition=is_superuser, text=_('Settings'), view='settings:namespace_detail', args='resolved_object.name')

@@ -9,7 +9,7 @@ from .api_views import (
     APIDocumentVersionCreateView, APIDocumentVersionView,
     APIRecentDocumentListView
 )
-from .settings import PRINT_SIZE, DISPLAY_SIZE
+from .settings import setting_print_size, setting_display_size
 from .views import (
     DocumentListView, DocumentPageListView, RecentDocumentListView
 )
@@ -32,8 +32,8 @@ urlpatterns = patterns(
 
     url(r'^(?P<document_id>\d+)/acls/$', 'document_acl_list', name='document_acl_list'),
 
-    url(r'^(?P<document_id>\d+)/display/$', 'get_document_image', {'size': DISPLAY_SIZE}, 'document_display'),
-    url(r'^(?P<document_id>\d+)/display/print/$', 'get_document_image', {'size': PRINT_SIZE}, 'document_display_print'),
+    url(r'^(?P<document_id>\d+)/display/$', 'get_document_image', {'size': setting_display_size.value}, 'document_display'),
+    url(r'^(?P<document_id>\d+)/display/print/$', 'get_document_image', {'size': setting_print_size.value}, 'document_display_print'),
 
     url(r'^(?P<document_id>\d+)/download/$', 'document_download', name='document_download'),
     url(r'^multiple/download/$', 'document_multiple_download', name='document_multiple_download'),

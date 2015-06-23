@@ -10,8 +10,6 @@ from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_migrate, post_save
 from django.utils.translation import ugettext_lazy as _
 
-from common import settings as common_settings
-
 from .handlers import (
     user_locale_profile_session_config, user_locale_profile_create
 )
@@ -25,7 +23,7 @@ from .menus import (
     menu_facet, menu_main, menu_secondary, menu_setup, menu_tools
 )
 from .models import AnonymousUserSingleton
-from .settings import TEMPORARY_DIRECTORY
+from .settings import setting_temporary_directory
 from .utils import validate_path
 
 logger = logging.getLogger(__name__)
@@ -80,5 +78,6 @@ class CommonApp(MayanAppConfig):
         user_logged_in.connect(user_locale_profile_session_config, dispatch_uid='user_locale_profile_session_config', sender=settings.AUTH_USER_MODEL)
         post_save.connect(user_locale_profile_create, dispatch_uid='user_locale_profile_create', sender=settings.AUTH_USER_MODEL)
 
-        if (not validate_path(TEMPORARY_DIRECTORY)) or (not TEMPORARY_DIRECTORY):
-            setattr(common_settings, 'TEMPORARY_DIRECTORY', tempfile.mkdtemp())
+        # TODO: Create temp directory and update setting if /tmp not found/writable or value == None
+        #if (not validate_path(setting_temporary_directory.value)) or (not setting_temporary_directory.value):
+        #    setattr(common_settings, 'setting_temporary_directory.value', tempfile.mkdtemp())

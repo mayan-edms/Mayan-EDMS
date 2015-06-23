@@ -6,7 +6,7 @@ from django.forms.formsets import formset_factory
 from django.utils.translation import ugettext_lazy as _
 
 from .models import MetadataType
-from .settings import AVAILABLE_FUNCTIONS, AVAILABLE_MODELS, AVAILABLE_VALIDATORS
+from .settings import AVAILABLE_FUNCTIONS, AVAILABLE_MODELS, setting_available_validators
 
 
 class MetadataForm(forms.Form):
@@ -15,7 +15,7 @@ class MetadataForm(forms.Form):
         metadata_type = MetadataType.objects.get(pk=self.cleaned_data['id'])
 
         try:
-            validation_function = AVAILABLE_VALIDATORS[metadata_type.validation]
+            validation_function = setting_available_validators.value[metadata_type.validation]
         except KeyError:
             # User entered a validation function name, but was not found
             # Return value entered as is

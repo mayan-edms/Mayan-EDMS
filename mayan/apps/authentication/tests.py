@@ -6,8 +6,7 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client
 
-from authentication import settings as auth_authentication
-import authentication
+from .settings import setting_login_method
 
 TEST_ADMIN_EMAIL = 'admin@admin.com'
 TEST_ADMIN_PASSWORD = 'test_admin_password'
@@ -24,12 +23,14 @@ class UserLoginTestCase(TestCase):
         self.client = Client()
 
     def test_normal_behaviour(self):
-        setattr(authentication.settings, 'LOGIN_METHOD', 'username')
+        # TODO set setting_login_method to 'username'
+        # setattr(authentication.settings, 'LOGIN_METHOD', 'username')
         response = self.client.get(reverse('documents:document_list'))
         self.assertRedirects(response, 'http://testserver/authentication/login/')
 
     def test_username_login(self):
-        setattr(authentication.settings, 'LOGIN_METHOD', 'username')
+        # TODO set setting_login_method to 'username'
+        # setattr(authentication.settings, 'LOGIN_METHOD', 'username')
         logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
         self.assertTrue(logged_in)
         response = self.client.get(reverse('documents:document_list'))
@@ -38,7 +39,8 @@ class UserLoginTestCase(TestCase):
 
     def test_email_login(self):
         with self.settings(COMMON_LOGIN_METHOD='email', AUTHENTICATION_BACKENDS=('authentication.auth.email_auth_backend.EmailAuthBackend',)):
-            setattr(authentication.settings, 'LOGIN_METHOD', 'email')
+            # TODO set setting_login_method to 'email'
+            #setattr(authentication.settings, 'LOGIN_METHOD', 'email')
             logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
             self.assertFalse(logged_in)
 
@@ -50,7 +52,8 @@ class UserLoginTestCase(TestCase):
             self.assertEqual(response.status_code, 200)
 
     def test_username_login_via_views(self):
-        setattr(authentication.settings, 'LOGIN_METHOD', 'username')
+        # TODO set setting_login_method to 'username'
+        # setattr(authentication.settings, 'LOGIN_METHOD', 'username')
         response = self.client.get(reverse('documents:document_list'))
         self.assertRedirects(response, 'http://testserver/authentication/login/')
 
@@ -61,7 +64,8 @@ class UserLoginTestCase(TestCase):
 
     def test_email_login_via_views(self):
         with self.settings(COMMON_LOGIN_METHOD='email', AUTHENTICATION_BACKENDS=('authentication.auth.email_auth_backend.EmailAuthBackend',)):
-            setattr(authentication.settings, 'LOGIN_METHOD', 'email')
+            # TODO set setting_login_method to 'email'
+            #setattr(authentication.settings, 'LOGIN_METHOD', 'email')
             response = self.client.get(reverse('documents:document_list'))
             self.assertRedirects(response, 'http://testserver/authentication/login/')
 

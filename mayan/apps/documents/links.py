@@ -17,7 +17,7 @@ from .permissions import (
     PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_DELETE,
     PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_VIEW
 )
-from .settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
+from .settings import setting_zoom_max_level, setting_zoom_min_level
 
 
 def is_not_current_version(context):
@@ -33,11 +33,11 @@ def is_last_page(context):
 
 
 def is_max_zoom(context):
-    return context['zoom'] >= ZOOM_MAX_LEVEL
+    return context['zoom'] >= setting_zoom_max_level.value
 
 
 def is_min_zoom(context):
-    return context['zoom'] <= ZOOM_MIN_LEVEL
+    return context['zoom'] <= setting_zoom_min_level.value
 
 
 # Facet

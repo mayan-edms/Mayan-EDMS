@@ -9,7 +9,7 @@ import sh
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
-from common.settings import TEMPORARY_DIRECTORY
+from common.settings import setting_temporary_directory
 from common.utils import fs_cleanup
 from converter import converter_class
 from documents.models import DocumentPage
@@ -47,7 +47,7 @@ def execute_unpaper(input_filepath, output_filepath=None):
     """
     if UNPAPER:
         if not output_filepath:
-            fd, output_filepath = tempfile.mkstemp(dir=TEMPORARY_DIRECTORY)
+            fd, output_filepath = tempfile.mkstemp(dir=setting_temporary_directory.value)
 
         try:
             UNPAPER(input_filepath, output_filepath)

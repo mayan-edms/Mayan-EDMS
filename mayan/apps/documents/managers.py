@@ -6,7 +6,7 @@ from django.db import models, transaction
 
 from common.compressed_files import CompressedFile, NotACompressedFile
 
-from .settings import RECENT_COUNT, LANGUAGE
+from .settings import setting_recent_count, setting_language
 
 logger = logging.getLogger(__name__)
 
@@ -19,7 +19,7 @@ class RecentDocumentManager(models.Manager):
                 # document already in the recent list, just save to force
                 # accessed date and time update
                 new_recent.save()
-            for recent_to_delete in self.model.objects.filter(user=user)[RECENT_COUNT:]:
+            for recent_to_delete in self.model.objects.filter(user=user)[setting_recent_count.value:]:
                 recent_to_delete.delete()
 
     def get_for_user(self, user):
@@ -52,7 +52,7 @@ class DocumentManager(models.Manager):
                 for compressed_file_child in compressed_file.children():
                     if command_line:
                         print 'Uploading file #%d: %s' % (count, compressed_file_child)
-                    versions_created.append(self.upload_single_document(document_type=document_type, file_object=compressed_file_child, description=description, label=unicode(compressed_file_child), language=language or LANGUAGE, user=user))
+                    versions_created.append(self.upload_single_document(document_type=document_type, file_object=compressed_file_child, description=description, label=unicode(compressed_file_child), language=language or setting_language.value, user=user))
                     compressed_file_child.close()
                     count += 1
 
@@ -60,9 +60,9 @@ class DocumentManager(models.Manager):
                 logging.debug('Exception: NotACompressedFile')
                 if command_line:
                     raise
-                versions_created.append(self.upload_single_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or LANGUAGE, user=user))
+                versions_created.append(self.upload_single_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or setting_language.value, user=user))
         else:
-            versions_created.append(self.upload_single_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or LANGUAGE, user=user))
+            versions_created.append(self.upload_single_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or setting_language.value, user=user))
 
         return versions_created
 

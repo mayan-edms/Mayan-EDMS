@@ -8,7 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from documents.models import Document, DocumentType
 
 from .managers import MetadataTypeManager
-from .settings import AVAILABLE_VALIDATORS
+from .settings import setting_available_validators
 
 
 @python_2_unicode_compatible
@@ -27,7 +27,7 @@ class MetadataType(models.Model):
     lookup = models.TextField(blank=True, null=True,
                               verbose_name=_('Lookup'),
                               help_text=_('Enter a string to be evaluated that returns an iterable.'))
-    validation = models.CharField(blank=True, choices=zip(AVAILABLE_VALIDATORS, AVAILABLE_VALIDATORS), max_length=64, verbose_name=_('Validation function name'))
+    validation = models.CharField(blank=True, choices=zip(setting_available_validators.value, setting_available_validators.value), max_length=64, verbose_name=_('Validation function name'))
     # TODO: Find a different way to let users know what models and functions are
     # available now that we removed these from the help_text
     objects = MetadataTypeManager()

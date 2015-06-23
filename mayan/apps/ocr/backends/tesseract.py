@@ -18,7 +18,7 @@ from common.utils import fs_cleanup
 
 from ..classes import OCRBackendBase
 from ..exceptions import OCRError
-from ..settings import TESSERACT_PATH
+from ..settings import setting_tesseract_path
 
 logger = logging.getLogger(__name__)
 

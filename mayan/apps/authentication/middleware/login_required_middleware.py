@@ -6,7 +6,7 @@ from django.http import HttpResponseRedirect
 from django.conf import settings
 from django.core.urlresolvers import reverse
 
-from ..settings import ALLOW_ANONYMOUS_ACCESS
+from ..settings import setting_allow_anonymous_access
 
 EXEMPT_URLS = [re.compile(reverse(settings.LOGIN_URL).lstrip('/'))]
 if hasattr(settings, 'LOGIN_EXEMPT_URLS'):
@@ -25,7 +25,7 @@ class LoginRequiredMiddleware:
     """
 
     def process_request(self, request):
-        if not ALLOW_ANONYMOUS_ACCESS:
+        if not setting_allow_anonymous_access.value:
             assert hasattr(request, 'user'), "The Login Required middleware\
      requires authentication middleware to be installed. Edit your\
      MIDDLEWARE_CLASSES setting to insert\

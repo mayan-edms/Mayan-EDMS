@@ -15,13 +15,13 @@ from PIL import Image
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.settings import TEMPORARY_DIRECTORY
+from common.settings import setting_temporary_directory
 from common.utils import fs_cleanup
 from mimetype.api import get_mimetype
 
 from .exceptions import OfficeConversionError, UnknownFileFormat
 from .literals import DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT
-from .settings import LIBREOFFICE_PATH
+from .settings import setting_libreoffice_path
 
 CONVERTER_OFFICE_FILE_MIMETYPES = [
     'application/msword',
@@ -86,18 +86,18 @@ class ConverterBase(object):
         new_file_object.close()
 
         command = []
-        command.append(LIBREOFFICE_PATH)
+        command.append(setting_libreoffice_path.value)
 
         command.append('--headless')
         command.append('--convert-to')
         command.append('pdf')
         command.append(input_filepath)
         command.append('--outdir')
-        command.append(TEMPORARY_DIRECTORY)
+        command.append(setting_temporary_directory.value)
 
         logger.debug('command: %s', command)
 
-        os.environ['HOME'] = TEMPORARY_DIRECTORY
+        os.environ['HOME'] = setting_temporary_directory.value
         proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         return_code = proc.wait()
         logger.debug('return_code: %s', return_code)
@@ -111,7 +111,7 @@ class ConverterBase(object):
         logger.debug('filename: %s', filename)
         logger.debug('extension: %s', extension)
 
-        converted_output = os.path.join(TEMPORARY_DIRECTORY, os.path.extsep.join([filename, 'pdf']))
+        converted_output = os.path.join(setting_temporary_directory.value, os.path.extsep.join([filename, 'pdf']))
         logger.debug('converted_output: %s', converted_output)
 
         return converted_output
@@ -151,7 +151,7 @@ class ConverterBase(object):
         self.mime_type = 'application/pdf'
 
         if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
-            if os.path.exists(LIBREOFFICE_PATH):
+            if os.path.exists(setting_libreoffice_path.value):
                 if not self.soffice_file_object:
                     converted_output = ConverterBase.soffice(self.file_object)
                     self.file_object.seek(0)

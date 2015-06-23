@@ -23,7 +23,7 @@ def results(request, extra_context=None):
     context = {
         'query_string': request.GET,
         'hide_links': True,
-        'search_results_limit': LIMIT,
+        'search_results_limit': LIMIT.value,
     }
 
     if request.GET:
@@ -42,7 +42,7 @@ def results(request, extra_context=None):
     if extra_context:
         context.update(extra_context)
 
-    if SHOW_OBJECT_TYPE:
+    if SHOW_OBJECT_TYPE.value:
         context.update({
             'extra_columns': [{'name': _('Type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]
         })
@@ -63,7 +63,7 @@ def search(request, advanced=False):
                 'title': _('Advanced search'),
                 'form_action': reverse('search:results'),
                 'submit_method': 'GET',
-                'search_results_limit': LIMIT,
+                'search_results_limit': LIMIT.value,
                 'submit_label': _('Search'),
                 'submit_icon': 'fa fa-search',
             }, context_instance=RequestContext(request)

@@ -1,24 +1,9 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
 from django.utils.translation import ugettext_lazy as _
 
-from smart_settings.api import register_setting
+from smart_settings import Namespace
 
-register_setting(
-    namespace='authentication',
-    module='authentication.settings',
-    name='LOGIN_METHOD',
-    global_name='COMMON_LOGIN_METHOD',
-    default='username',
-    description=_('Controls the mechanism used to authenticated user. Options are: username, email'),
-)
-
-register_setting(
-    namespace='authentication',
-    module='authentication.settings',
-    name='ALLOW_ANONYMOUS_ACCESS',
-    global_name='COMMON_ALLOW_ANONYMOUS_ACCESS',
-    default=False,
-    description=_('Allow non authenticated users, access to all views'),
-)
+namespace = Namespace(name='authentication', label=_('Authentication'))
+setting_login_method = namespace.add_setting(global_name='AUTHENTICATION_LOGIN_METHOD', default='username', help_text=_('Controls the mechanism used to authenticated user. Options are: username, email'))
+setting_allow_anonymous_access = namespace.add_setting(global_name='AUTHENTICATION_ALLOW_ANONYMOUS_ACCESS', default=False, help_text=_('Allow non authenticated users, access to all views'))

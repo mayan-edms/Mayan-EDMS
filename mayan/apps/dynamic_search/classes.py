@@ -163,7 +163,7 @@ class SearchModel(object):
 
         elapsed_time = unicode(datetime.datetime.now() - start_time).split(':')[2]
 
-        queryset = self.model.objects.in_bulk(list(result_set)[: LIMIT]).values()
+        queryset = self.model.objects.in_bulk(list(result_set)[: LIMIT.value]).values()
 
         if self.permission:
             try:

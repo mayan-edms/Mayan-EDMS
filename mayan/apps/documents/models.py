@@ -16,7 +16,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from acls.utils import apply_default_acls
-from common.settings import TEMPORARY_DIRECTORY
+from common.settings import setting_temporary_directory
 from common.utils import fs_cleanup
 from converter import (
     converter_class, TransformationResize, TransformationRotate, TransformationZoom
@@ -37,8 +37,8 @@ from .managers import (
 )
 from .runtime import storage_backend
 from .settings import (
-    CACHE_PATH, DISPLAY_SIZE, LANGUAGE, LANGUAGE_CHOICES, ZOOM_MAX_LEVEL,
-    ZOOM_MIN_LEVEL
+    setting_cache_path, setting_display_size, setting_language,
+    setting_language_choices, setting_zoom_max_level, setting_zoom_min_level
 )
 from .signals import post_version_upload, post_document_type_change
 
@@ -86,7 +86,7 @@ class Document(models.Model):
     label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True, help_text=_('The name of the document'), verbose_name=_('Label'))
     description = models.TextField(blank=True, null=True, verbose_name=_('Description'))
     date_added = models.DateTimeField(verbose_name=_('Added'), auto_now_add=True)
-    language = models.CharField(choices=LANGUAGE_CHOICES, default=LANGUAGE, max_length=8, verbose_name=_('Language'))
+    language = models.CharField(choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
 
     objects = DocumentManager()
 
@@ -215,7 +215,7 @@ class Document(models.Model):
         return self.versions.order_by('timestamp').last()
 
     def document_save_to_temp_dir(self, filename, buffer_size=1024 * 1024):
-        temporary_path = os.path.join(TEMPORARY_DIRECTORY, filename)
+        temporary_path = os.path.join(setting_temporary_directory.value, filename)
         return self.save_to_file(temporary_path, buffer_size)
 
 
@@ -466,20 +466,20 @@ class DocumentPage(models.Model):
         return 'page-cache-{}-{}-{}'.format(self.document.uuid, self.document_version.pk, self.pk)
 
     def get_cache_filename(self):
-        return os.path.join(CACHE_PATH, self.get_uuid())
+        return os.path.join(setting_cache_path.value, self.get_uuid())
 
     def get_image(self, *args, **kwargs):
         as_base64 = kwargs.pop('as_base64', False)
         transformations = kwargs.pop('transformations', [])
-        size = kwargs.pop('size', DISPLAY_SIZE)
+        size = kwargs.pop('size', setting_display_size.value)
         rotation = kwargs.pop('rotation', DEFAULT_ROTATION)
         zoom_level = kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL)
 
-        if zoom_level < ZOOM_MIN_LEVEL:
-            zoom_level = ZOOM_MIN_LEVEL
+        if zoom_level < setting_zoom_min_level.value:
+            zoom_level = setting_zoom_min_level.value
 
-        if zoom_level > ZOOM_MAX_LEVEL:
-            zoom_level = ZOOM_MAX_LEVEL
+        if zoom_level > setting_zoom_max_level.value:
+            zoom_level = setting_zoom_max_level.value
 
         rotation = rotation % 360
 

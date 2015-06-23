@@ -10,14 +10,14 @@ from django.utils.translation import ugettext_lazy as _
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 )
-from documents.settings import PREVIEW_SIZE, THUMBNAIL_SIZE
+from documents.settings import setting_preview_size, setting_thumbnail_size
 
 
 def staging_file_thumbnail(staging_file, **kwargs):
     return staging_file_html_widget(staging_file, click_view='stagingfolderfile-image-view', **kwargs)
 
 
-def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox-staging', image_class='lazy-load', title=None, size=THUMBNAIL_SIZE, nolazyload=False):
+def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox-staging', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False):
     result = []
 
     alt_text = _('Staging file page image')
@@ -50,7 +50,7 @@ def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NU
 
     if click_view:
         # TODO: fix this hack
-        query_dict['size'] = PREVIEW_SIZE
+        query_dict['size'] = setting_preview_size.value
         query_string = urlencode(query_dict)
         result.append('<a %s class="%s" href="%s" %s>' % (gallery_template, fancybox_class, '%s?%s' % (reverse(click_view, args=[staging_file.staging_folder.pk, staging_file.encoded_filename]), query_string), title_template))
 

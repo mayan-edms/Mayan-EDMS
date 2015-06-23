@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.conf.urls import patterns, url
 
-
 urlpatterns = patterns('authentication.views',
     url(r'^login/$', 'login_view', (), name='login_view'),
     url(r'^password/change/done/$', 'password_change_done', (), name='password_change_done'),

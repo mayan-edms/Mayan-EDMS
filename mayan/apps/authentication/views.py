@@ -22,7 +22,7 @@ from dynamic_search.classes import SearchModel
 from permissions.models import Permission
 
 from .forms import EmailAuthenticationForm
-from .settings import LOGIN_METHOD
+from .settings import setting_login_method
 
 
 def login_view(request):
@@ -32,7 +32,7 @@ def login_view(request):
     """
     kwargs = {'template_name': 'appearance/login.html'}
 
-    if LOGIN_METHOD == 'email':
+    if setting_login_method.value == 'email':
         kwargs['authentication_form'] = EmailAuthenticationForm
 
     if not request.user.is_authenticated():

@@ -31,5 +31,5 @@ class RecentSearchManager(models.Manager):
                 new_recent.hits = hits
                 new_recent.save()
 
-            for recent_to_delete in self.model.objects.filter(user=user)[RECENT_COUNT:]:
+            for recent_to_delete in self.model.objects.filter(user=user)[RECENT_COUNT.value:]:
                 recent_to_delete.delete()

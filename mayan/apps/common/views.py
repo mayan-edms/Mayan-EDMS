@@ -465,6 +465,10 @@ class SetupListView(TemplateView):
         return data
 
 
+class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
+    pass
+
+
 class ToolsListView(TemplateView):
     template_name = 'appearance/generic_list_horizontal.html'
 

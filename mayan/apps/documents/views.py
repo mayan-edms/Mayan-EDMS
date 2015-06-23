@@ -51,8 +51,8 @@ from .permissions import (
     PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_VIEW,
 )
 from .settings import (
-    PREVIEW_SIZE, RECENT_COUNT, ROTATION_STEP, ZOOM_PERCENT_STEP,
-    ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
+    setting_preview_size, setting_recent_count, setting_rotation_step,
+    setting_zoom_percent_step, setting_zoom_max_level, setting_zoom_min_level
 )
 from .tasks import (
     task_clear_image_cache, task_get_document_page_image,
@@ -94,7 +94,7 @@ class DocumentPageListView(ParentChildListView):
 class RecentDocumentListView(DocumentListView):
     extra_context = {
         'hide_links': True,
-        'recent_count': RECENT_COUNT,
+        'recent_count': setting_recent_count.value,  # TODO: used for something?
         'title': _('Recent documents'),
     }
 
@@ -338,7 +338,7 @@ def document_multiple_document_type_edit(request):
 
 
 # TODO: Get rid of this view and convert widget to use API and base64 only images
-def get_document_image(request, document_id, size=PREVIEW_SIZE):
+def get_document_image(request, document_id, size=setting_preview_size.value):
     document = get_object_or_404(Document, pk=document_id)
     try:
         Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
@@ -351,11 +351,11 @@ def get_document_image(request, document_id, size=PREVIEW_SIZE):
 
     version = int(request.GET.get('version', document.latest_version.pk))
 
-    if zoom < ZOOM_MIN_LEVEL:
-        zoom = ZOOM_MIN_LEVEL
+    if zoom < setting_zoom_min_level.value:
+        zoom = setting_zoom_min_level.value
 
-    if zoom > ZOOM_MAX_LEVEL:
-        zoom = ZOOM_MAX_LEVEL
+    if zoom > setting_zoom_max_level.value:
+        zoom = setting_zoom_max_level.value
 
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
 
@@ -713,7 +713,7 @@ def document_page_zoom_in(request, document_page_id):
     return transform_page(
         request,
         document_page_id,
-        zoom_function=lambda x: ZOOM_MAX_LEVEL if x + ZOOM_PERCENT_STEP > ZOOM_MAX_LEVEL else x + ZOOM_PERCENT_STEP
+        zoom_function=lambda x: setting_zoom_max_level.value if x + setting_zoom_percent_step.value > setting_zoom_max_level.value else x + setting_zoom_percent_step.value
     )
 
 
@@ -721,7 +721,7 @@ def document_page_zoom_out(request, document_page_id):
     return transform_page(
         request,
         document_page_id,
-        zoom_function=lambda x: ZOOM_MIN_LEVEL if x - ZOOM_PERCENT_STEP < ZOOM_MIN_LEVEL else x - ZOOM_PERCENT_STEP
+        zoom_function=lambda x: setting_zoom_min_level.value if x - setting_zoom_percent_step.value < setting_zoom_min_level.value else x - setting_zoom_percent_step.value
     )
 
 
@@ -729,7 +729,7 @@ def document_page_rotate_right(request, document_page_id):
     return transform_page(
         request,
         document_page_id,
-        rotation_function=lambda x: (x + ROTATION_STEP) % 360
+        rotation_function=lambda x: (x + setting_rotation_step.value) % 360
     )
 
 
@@ -737,7 +737,7 @@ def document_page_rotate_left(request, document_page_id):
     return transform_page(
         request,
         document_page_id,
-        rotation_function=lambda x: (x - ROTATION_STEP) % 360
+        rotation_function=lambda x: (x - setting_rotation_step.value) % 360
     )
 
 

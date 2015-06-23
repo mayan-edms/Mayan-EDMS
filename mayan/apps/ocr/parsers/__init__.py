@@ -8,14 +8,14 @@ import tempfile
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.settings import TEMPORARY_DIRECTORY
+from common.settings import setting_temporary_directory
 from common.utils import copyfile
 from converter.exceptions import OfficeConversionError
 from converter.classes import (
     CONVERTER_OFFICE_FILE_MIMETYPES
 )
 
-from ..settings import PDFTOTEXT_PATH
+from ..settings import setting_pdftotext_path
 
 from .exceptions import ParserError, ParserUnknownFile
 
@@ -128,7 +128,7 @@ class PopplerParser(Parser):
     PDF parser using the pdftotext execute from the poppler package
     """
     def __init__(self):
-        self.pdftotext_path = PDFTOTEXT_PATH if PDFTOTEXT_PATH else '/usr/bin/pdftotext'
+        self.pdftotext_path = setting_pdftotext_path.value if setting_pdftotext_path.value else '/usr/bin/pdftotext'
         if not os.path.exists(self.pdftotext_path):
             raise ParserError('cannot find pdftotext executable')
         logger.debug('self.pdftotext_path: %s', self.pdftotext_path)
@@ -138,7 +138,7 @@ class PopplerParser(Parser):
         pagenum = str(document_page.page_number)
 
         if descriptor:
-            destination_descriptor, temp_filepath = tempfile.mkstemp(dir=TEMPORARY_DIRECTORY)
+            destination_descriptor, temp_filepath = tempfile.mkstemp(dir=setting_temporary_directory.value)
             copyfile(descriptor, temp_filepath)
             document_file = temp_filepath
         else:

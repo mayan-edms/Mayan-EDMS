@@ -10,9 +10,7 @@ from converter.models import Transformation
 from rest_framework import generics
 from rest_framework.response import Response
 
-from documents.settings import (
-    DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
-)
+from documents.settings import setting_display_size
 
 from .models import StagingFolderSource
 from .serializers import (
@@ -63,7 +61,7 @@ class APIStagingSourceFileImageView(generics.GenericAPIView):
         staging_folder = get_object_or_404(StagingFolderSource, pk=staging_folder_pk)
         staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
 
-        size = request.GET.get('size', DISPLAY_SIZE)
+        size = request.GET.get('size', setting_display_size.value)
 
         try:
             return Response({

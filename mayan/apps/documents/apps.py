@@ -64,7 +64,7 @@ from .permissions import (
     PERMISSION_DOCUMENT_PRINT, PERMISSION_DOCUMENT_PROPERTIES_EDIT,
     PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_VIEW
 )
-from .settings import THUMBNAIL_SIZE
+from .settings import setting_thumbnail_size
 from .statistics import DocumentStatistics, DocumentUsageStatistics
 from .widgets import document_thumbnail
 
@@ -76,8 +76,9 @@ class DocumentsApp(MayanAppConfig):
     def ready(self):
         super(DocumentsApp, self).ready()
 
-        if (not validate_path(document_settings.CACHE_PATH)) or (not document_settings.CACHE_PATH):
-            setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
+        # TODO: validate cache_path or create new
+        #if (not validate_path(document_settings.CACHE_PATH)) or (not document_settings.CACHE_PATH):
+        #    setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
 
         APIEndPoint('documents')
 
@@ -155,7 +156,7 @@ class DocumentsApp(MayanAppConfig):
         register_model_list_columns(Document, [
             {
                 'name': _('Thumbnail'), 'attribute':
-                encapsulate(lambda x: document_thumbnail(x, gallery_name='documents:document_list', title=getattr(x, 'label', None), size=THUMBNAIL_SIZE))
+                encapsulate(lambda x: document_thumbnail(x, gallery_name='documents:document_list', title=getattr(x, 'label', None), size=setting_thumbnail_size.value))
             },
             {
                 'name': _('Type'), 'attribute': 'document_type'
