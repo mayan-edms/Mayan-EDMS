@@ -21,6 +21,7 @@
             <link href="{% static 'appearance/packages/font-awesome-4.3.0/css/font-awesome.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/packages/bootstrap-3.3.4-dist/css/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css"  />
             <link href="{% static 'appearance/css/flatly.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
+            <link href="{% static 'appearance/packages/animate/animate.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.css' %}" media="screen" rel="stylesheet" type="text/css" />
 
             <style type="text/css">
@@ -135,8 +136,8 @@
                 <div class="row">
                     <div class="col-xs-12">
                         {% for message in messages %}
-                            <div class="alert alert-dismissible alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}">
-                                <button type="button" class="close" data-dismiss="alert">×</button>
+                            <div class="animated fadeInDown alert alert-dismissible alert-{% if message.tags == 'error' %}danger{% else %}{{ message.tags }}{% endif %}">
+                                <button type="button" class="close">×</button>
                                 <h4>{% if 'success' in message.tags %}{% trans 'Success' %}{% elif 'info' in message.tags %}{% trans 'Information' %}{% elif 'warning' in message.tags %}{% trans 'Warning' %}{% else %}{% trans 'Error' %}{% endif %}</h4>
                                 <p>{{ message }}</p>
                             </div>
@@ -256,6 +257,10 @@
               })
             }
 
+            function dismissAlert(element) {
+                element.addClass('fadeOutDown').fadeOut('slow');
+            }
+
             jQuery(document).ready(function() {
                 resizeFullHeight();
 
@@ -319,6 +324,17 @@
                     var checked = $(e.target).prop('checked');
                     $('td input:checkbox', table).prop('checked', checked);
                 });
+
+                $('.alert button.close').click(function() {
+                    dismissAlert($(this).parent());
+                });
+
+                setTimeout(function() {
+                    $('.alert-success').each(function() {
+                        dismissAlert($(this));
+                    });
+
+                }, 3000);
             });
         </script>
         {% block javascript %}{% endblock %}
