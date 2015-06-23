@@ -11,15 +11,14 @@ from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessEntry
+from common.utils import encapsulate
+from common.views import AssignRemoveView
 from documents.models import Document, DocumentType
 from documents.permissions import (
     PERMISSION_DOCUMENT_TYPE_EDIT
 )
 from documents.views import DocumentListView
 from permissions.models import Permission
-
-from common.utils import encapsulate, generate_choices_w_labels
-from common.views import AssignRemoveView
 
 from .api import save_metadata_list
 from .forms import (
@@ -453,10 +452,10 @@ class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
         return super(SetupDocumentTypeMetadataOptionalView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return generate_choices_w_labels(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=self.document_type.metadata.values_list('metadata_type', flat=True))))
+        return AssignRemoveView.generate_choices(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=self.document_type.metadata.values_list('metadata_type', flat=True))))
 
     def right_list(self):
-        return generate_choices_w_labels(self.document_type.metadata.filter(required=False))
+        return AssignRemoveView.generate_choices(self.document_type.metadata.filter(required=False))
 
     def remove(self, item):
         item.delete()
@@ -477,7 +476,7 @@ class SetupDocumentTypeMetadataRequiredView(SetupDocumentTypeMetadataOptionalVie
         self.document_type.metadata.create(metadata_type=item, required=True)
 
     def right_list(self):
-        return generate_choices_w_labels(self.document_type.metadata.filter(required=True))
+        return AssignRemoveView.generate_choices(self.document_type.metadata.filter(required=True))
 
     def get_context_data(self, **kwargs):
         data = super(SetupDocumentTypeMetadataRequiredView, self).get_context_data(**kwargs)

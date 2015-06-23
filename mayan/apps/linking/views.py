@@ -14,7 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessEntry
 from acls.utils import apply_default_acls
 from acls.views import acl_list_for
-from common.utils import encapsulate, generate_choices_w_labels
+from common.utils import encapsulate
 from common.views import AssignRemoveView
 from common.widgets import two_state_template
 from documents.models import Document, DocumentType
@@ -48,10 +48,10 @@ class SetupSmartLinkDocumentTypesView(AssignRemoveView):
         return super(SetupSmartLinkDocumentTypesView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return generate_choices_w_labels(DocumentType.objects.exclude(pk__in=self.smart_link.document_types.all()))
+        return AssignRemoveView.generate_choices(DocumentType.objects.exclude(pk__in=self.smart_link.document_types.all()))
 
     def right_list(self):
-        return generate_choices_w_labels(self.smart_link.document_types.all())
+        return AssignRemoveView.generate_choices(self.smart_link.document_types.all())
 
     def remove(self, item):
         self.smart_link.document_types.remove(item)

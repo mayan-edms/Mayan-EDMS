@@ -56,20 +56,6 @@ def fs_cleanup(filename, suppress_exceptions=True):
             raise
 
 
-def generate_choices_w_labels(choices):
-    results = []
-    for choice in choices:
-        ct = ContentType.objects.get_for_model(choice)
-        label = unicode(choice)
-        if isinstance(choice, User):
-            label = choice.get_full_name() if choice.get_full_name() else choice
-
-        results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
-
-    # Sort results by the label not the key value
-    return sorted(results, key=lambda x: x[1])
-
-
 def get_descriptor(file_input, read=True):
     try:
         # Is it a file like object?

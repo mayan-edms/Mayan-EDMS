@@ -10,7 +10,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView
 
 from acls.models import AccessEntry
-from common.utils import generate_choices_w_labels
 from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
@@ -183,10 +182,10 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         return super(SetupWorkflowDocumentTypesView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return generate_choices_w_labels(self.workflow.get_document_types_not_in_workflow())
+        return AssignRemoveView.generate_choices(self.workflow.get_document_types_not_in_workflow())
 
     def right_list(self):
-        return generate_choices_w_labels(self.workflow.document_types.all())
+        return AssignRemoveView.generate_choices(self.workflow.document_types.all())
 
     def remove(self, item):
         self.workflow.document_types.remove(item)

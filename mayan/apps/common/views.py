@@ -44,6 +44,20 @@ class AssignRemoveView(TemplateView):
     LEFT_LIST_NAME = 'left_list'
     RIGHT_LIST_NAME = 'right_list'
 
+    @staticmethod
+    def generate_choices(choices):
+        results = []
+        for choice in choices:
+            ct = ContentType.objects.get_for_model(choice)
+            label = unicode(choice)
+            if isinstance(choice, User):
+                label = choice.get_full_name() if choice.get_full_name() else choice
+
+            results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
+
+        # Sort results by the label not the key value
+        return sorted(results, key=lambda x: x[1])
+
     def left_list(self):
         # Subclass must override
         return []

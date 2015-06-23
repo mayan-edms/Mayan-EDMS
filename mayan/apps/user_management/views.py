@@ -10,7 +10,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import encapsulate, generate_choices_w_labels
+from common.utils import encapsulate
 from common.views import AssignRemoveView
 from common.widgets import two_state_template
 from permissions.models import Permission
@@ -234,10 +234,10 @@ class UserGroupsView(AssignRemoveView):
         return super(UserGroupsView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return generate_choices_w_labels(get_user_non_groups(self.user))
+        return AssignRemoveView.generate_choices(get_user_non_groups(self.user))
 
     def right_list(self):
-        return generate_choices_w_labels(get_user_groups(self.user))
+        return AssignRemoveView.generate_choices(get_user_groups(self.user))
 
     def remove(self, item):
         item.user_set.remove(self.user)
@@ -373,10 +373,10 @@ class GroupMembersView(AssignRemoveView):
         return super(GroupMembersView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return generate_choices_w_labels(User.objects.exclude(groups=self.group).exclude(is_staff=True).exclude(is_superuser=True))
+        return AssignRemoveView.generate_choices(User.objects.exclude(groups=self.group).exclude(is_staff=True).exclude(is_superuser=True))
 
     def right_list(self):
-        return generate_choices_w_labels(self.group.user_set.all())
+        return AssignRemoveView.generate_choices(self.group.user_set.all())
 
     def remove(self, item):
         self.group.user_set.remove(item)

@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
 from acls.utils import apply_default_acls
-from common.utils import encapsulate, generate_choices_w_labels
+from common.utils import encapsulate
 from common.views import AssignRemoveView
 from common.widgets import two_state_template
 from documents.models import Document
@@ -185,10 +185,10 @@ class SetupIndexDocumentTypesView(AssignRemoveView):
         return super(SetupIndexDocumentTypesView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return generate_choices_w_labels(self.index.get_document_types_not_in_index())
+        return AssignRemoveView.generate_choices(self.index.get_document_types_not_in_index())
 
     def right_list(self):
-        return generate_choices_w_labels(self.index.document_types.all())
+        return AssignRemoveView.generate_choices(self.index.document_types.all())
 
     def remove(self, item):
         self.index.document_types.remove(item)
