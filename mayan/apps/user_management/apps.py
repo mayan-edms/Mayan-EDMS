@@ -23,7 +23,6 @@ class UserManagementApp(MayanAppConfig):
     name = 'user_management'
     verbose_name = _('User management')
 
-
     def ready(self):
         super(UserManagementApp, self).ready()
 

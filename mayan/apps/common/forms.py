@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-import warnings
 import os
 
 from django import forms

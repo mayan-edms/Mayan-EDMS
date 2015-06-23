@@ -1,25 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 
-from json import dumps, loads
-
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.auth.views import login, password_change
-from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render_to_response
-from django.template import RequestContext
-from django.utils.http import urlencode
+from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import FormView, TemplateView
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
-from django.views.generic.list import ListView
-
-from dynamic_search.classes import SearchModel
-from permissions.models import Permission
 
 from .forms import EmailAuthenticationForm
 from .settings import setting_login_method

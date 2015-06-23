@@ -3,9 +3,6 @@ from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404
 
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
-from converter.literals import (
-    DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
-)
 from converter.models import Transformation
 from rest_framework import generics
 from rest_framework.response import Response

@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-import yaml
-
 from django.contrib.auth.models import User
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _

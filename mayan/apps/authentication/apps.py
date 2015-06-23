@@ -1,13 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-import tempfile
 
-from django.conf import settings
-from django.contrib.auth import models as auth_models
-from django.contrib.auth.models import User
-from django.contrib.auth.signals import user_logged_in
-from django.db.models.signals import post_migrate, post_save
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_secondary

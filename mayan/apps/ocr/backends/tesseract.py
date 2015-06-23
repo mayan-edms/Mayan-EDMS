@@ -1,20 +1,9 @@
 from __future__ import unicode_literals
 
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
-
-import codecs
-import errno
 import logging
-import os
-import tempfile
 
-from PIL import Image, ImageFilter
+from PIL import Image
 import pytesseract
-
-from common.utils import fs_cleanup
 
 from ..classes import OCRBackendBase
 from ..exceptions import OCRError
@@ -30,6 +19,7 @@ class Tesseract(OCRBackendBase):
         """
         super(Tesseract, self).execute(*args, **kwargs)
 
+        # TODO: pass tesseract binary path to the pytesseract
         image = Image.open(self.converter.get_page())
         try:
             result = pytesseract.image_to_string(image=image, lang=self.language)

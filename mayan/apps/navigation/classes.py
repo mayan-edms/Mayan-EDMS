@@ -5,6 +5,7 @@ import logging
 import urllib
 import urlparse
 
+from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import resolve, reverse
 from django.template import VariableDoesNotExist, Variable

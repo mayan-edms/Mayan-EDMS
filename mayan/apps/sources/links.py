@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from converter.permissions import PERMISSION_TRANSFORMATION_VIEW
 from documents.permissions import (
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION
 )
@@ -32,4 +31,3 @@ link_source_list = Link(permissions=[PERMISSION_SOURCES_SETUP_VIEW], text=_('Doc
 link_staging_file_delete = Link(keep_query=True, permissions=[PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_CREATE], tags='dangerous', text=_('Delete'), view='sources:staging_file_delete', args=['source.pk', 'object.encoded_filename'])
 link_upload_version = Link(permissions=[PERMISSION_DOCUMENT_NEW_VERSION], text=_('Upload new version'), view='sources:upload_version', args='object.pk')
 link_setup_source_logs = Link(text=_('Logs'), view='sources:setup_source_logs', args=['resolved_object.pk'], permissions=[PERMISSION_SOURCES_SETUP_VIEW])
-

@@ -23,7 +23,7 @@ class TransformationManager(models.Manager):
         logger.debug('source transformations: %s', transformations)
 
         # Get all targets from target QS
-        targets_dict = map(lambda entry:{'content_type': entry[0], 'object_id': entry[1]}, zip(ContentType.objects.get_for_models(*targets).values(), targets.values_list('pk', flat=True)))
+        targets_dict = map(lambda entry: {'content_type': entry[0], 'object_id': entry[1]}, zip(ContentType.objects.get_for_models(*targets).values(), targets.values_list('pk', flat=True)))
         logger.debug('targets: %s', targets_dict)
 
         # Combine the two
@@ -66,6 +66,3 @@ class TransformationManager(models.Manager):
             return result
         else:
             return transformations
-
-
-

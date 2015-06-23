@@ -2,6 +2,7 @@ import logging
 
 from django.contrib.auth.models import User
 from django.core.files import File
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
 
@@ -21,9 +22,9 @@ def task_check_interval_source(source_id):
             source.check_source()
         except Exception as exception:
             logger.error('Error processing source: %s; %s', source, exception)
-            self.logs.create(message=_('Error processing source: %s') % exception)
+            source.logs.create(message=_('Error processing source: %s') % exception)
         else:
-            self.logs.all().delete()
+            source.logs.all().delete()
 
 
 @app.task(ignore_result=True)

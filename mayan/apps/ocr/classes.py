@@ -1,17 +1,9 @@
 from __future__ import unicode_literals
 
 import logging
-import os
-import tempfile
 
-from django.utils.module_loading import import_string
-from django.utils.translation import ugettext_lazy as _
-
-from common.utils import fs_cleanup
 from converter import converter_class
-from documents.models import DocumentPage
 
-from .exceptions import UnpaperError
 from .literals import (
     DEFAULT_OCR_FILE_EXTENSION, DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT
 )

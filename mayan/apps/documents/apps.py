@@ -28,7 +28,6 @@ from navigation.api import register_model_list_columns
 from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
 
-from documents import settings as document_settings
 from .handlers import create_default_document_type
 from .links import (
     link_clear_image_cache, link_document_acl_list,
@@ -81,8 +80,6 @@ class DocumentsApp(MayanAppConfig):
         #    setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
 
         APIEndPoint('documents')
-
-        DocumentPage.add_to_class('get_transformation_list', lambda document_page: Transformation.objects.get_for_object(document_page))
 
         MissingItem(label=_('Create a document type'), description=_('Every uploaded document must be assigned a document type, it is the basic way Mayan EDMS categorizes documents.'), condition=lambda: not DocumentType.objects.exists(), view='documents:document_type_list')
 

@@ -6,8 +6,6 @@ import slate
 import subprocess
 import tempfile
 
-from django.utils.translation import ugettext_lazy as _
-
 from common.settings import setting_temporary_directory
 from common.utils import copyfile
 from converter.exceptions import OfficeConversionError

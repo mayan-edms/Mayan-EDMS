@@ -7,21 +7,20 @@ from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import FormView, View
+from django.views.generic import FormView
 
 from acls.models import AccessEntry
 from common.utils import generate_choices_w_labels
 from common.views import (
-    AssignRemoveView, ConfirmView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document
 from permissions.models import Permission
 
 from .forms import (
-    WorkflowForm,
-    WorkflowInstanceDetailForm, WorkflowInstanceTransitionForm,
-    WorkflowStateForm, WorkflowTransitionForm
+    WorkflowForm, WorkflowInstanceTransitionForm, WorkflowStateForm,
+    WorkflowTransitionForm
 )
 from .models import Workflow, WorkflowInstance, WorkflowState, WorkflowTransition
 from .permissions import (

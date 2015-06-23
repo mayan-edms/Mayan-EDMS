@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 import logging
-import io
 import os
 import subprocess
 import tempfile
@@ -19,7 +18,7 @@ from common.settings import setting_temporary_directory
 from common.utils import fs_cleanup
 from mimetype.api import get_mimetype
 
-from .exceptions import OfficeConversionError, UnknownFileFormat
+from .exceptions import OfficeConversionError
 from .literals import DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT
 from .settings import setting_libreoffice_path
 

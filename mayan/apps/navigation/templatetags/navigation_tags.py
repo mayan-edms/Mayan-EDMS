@@ -2,8 +2,6 @@ from __future__ import unicode_literals
 
 from django.template import Library
 
-from common.utils import urlquote
-
 from ..classes import Menu
 from ..forms import MultiItemForm
 

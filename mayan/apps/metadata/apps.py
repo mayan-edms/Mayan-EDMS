@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import logging
 
-from django import apps
 from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 

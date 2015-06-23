@@ -11,7 +11,6 @@ from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
 )
-from common.api import register_maintenance_links
 from common.utils import encapsulate
 from documents.models import Document, DocumentVersion
 from documents.signals import post_version_upload

@@ -12,7 +12,6 @@ except ImportError:
 from django.core.files import File
 
 from converter import TransformationResize, converter_class
-from mimetype.api import get_mimetype
 
 
 class PseudoFile(File):

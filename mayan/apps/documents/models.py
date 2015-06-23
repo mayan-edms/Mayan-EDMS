@@ -1,15 +1,12 @@
 from __future__ import unicode_literals
 
-from ast import literal_eval
 import base64
 import hashlib
 import logging
 import os
-import tempfile
 import uuid
 
 from django.contrib.auth.models import User
-from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
@@ -22,9 +19,7 @@ from converter import (
     converter_class, TransformationResize, TransformationRotate, TransformationZoom
 )
 from converter.exceptions import UnknownFileFormat
-from converter.literals import (
-    DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION, DEFAULT_PAGE_NUMBER
-)
+from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from converter.models import Transformation
 from mimetype.api import get_mimetype
 

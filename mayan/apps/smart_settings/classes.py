@@ -4,6 +4,7 @@ import yaml
 
 from django.conf import settings
 
+
 class Namespace(object):
     _registry = {}
 

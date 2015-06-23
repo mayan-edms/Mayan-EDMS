@@ -2,8 +2,6 @@ from __future__ import unicode_literals
 
 from dateutil.parser import parse
 
-from django.utils.translation import ugettext_lazy as _
-
 
 class MetadataParser(object):
     _registry = []

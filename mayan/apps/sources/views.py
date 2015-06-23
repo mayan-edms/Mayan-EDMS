@@ -20,7 +20,7 @@ from documents.permissions import (
     PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION
 )
 from documents.tasks import task_upload_new_version
-from metadata.api import decode_metadata_from_url, metadata_repr_as_list
+from metadata.api import decode_metadata_from_url
 from navigation import Link
 from permissions.models import Permission
 

@@ -1,12 +1,7 @@
 from __future__ import unicode_literals
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
-from django.utils.safestring import mark_safe
 
-from common.utils import encapsulate
-from common.widgets import exists_widget
 from common.views import SimpleView
 
 from .classes import Namespace

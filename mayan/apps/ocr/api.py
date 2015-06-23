@@ -6,13 +6,7 @@ import tempfile
 
 import sh
 
-from django.utils.module_loading import import_string
-from django.utils.translation import ugettext_lazy as _
-
 from common.settings import setting_temporary_directory
-from common.utils import fs_cleanup
-from converter import converter_class
-from documents.models import DocumentPage
 
 from .exceptions import UnpaperError
 from .literals import (

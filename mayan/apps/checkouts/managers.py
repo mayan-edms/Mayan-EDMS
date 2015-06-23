@@ -2,13 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.core.exceptions import PermissionDenied
 from django.db import models
 from django.utils.timezone import now
 
-from acls.models import AccessEntry
 from documents.models import Document
-from permissions.models import Permission
 
 from .events import (
     event_document_auto_check_in, event_document_check_in,

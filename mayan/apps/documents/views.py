@@ -11,13 +11,12 @@ from django.core.urlresolvers import resolve, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessEntry
 from acls.views import acl_list_for
 from common.compressed_files import CompressedFile
-from common.utils import encapsulate, pretty_size, urlquote
+from common.utils import encapsulate, pretty_size
 from common.views import ParentChildListView, SingleObjectListView
 from common.widgets import two_state_template
 from converter.literals import (
@@ -44,11 +43,11 @@ from .models import (
 )
 from .permissions import (
     PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_PRINT,
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_TOOLS,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_VIEW,
-    PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_VIEW,
+    PERMISSION_DOCUMENT_PRINT, PERMISSION_DOCUMENT_PROPERTIES_EDIT,
+    PERMISSION_DOCUMENT_TOOLS, PERMISSION_DOCUMENT_TYPE_CREATE,
+    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_EDIT,
+    PERMISSION_DOCUMENT_TYPE_VIEW, PERMISSION_DOCUMENT_VERSION_REVERT,
+    PERMISSION_DOCUMENT_VIEW,
 )
 from .settings import (
     setting_preview_size, setting_recent_count, setting_rotation_step,
