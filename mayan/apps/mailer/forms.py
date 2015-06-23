@@ -4,8 +4,8 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from .settings import (
-    DOCUMENT_BODY_TEMPLATE, DOCUMENT_SUBJECT_TEMPLATE, LINK_BODY_TEMPLATE,
-    LINK_SUBJECT_TEMPLATE
+    setting_document_body_template, setting_document_subject_template,
+    setting_link_body_template, setting_link_subject_template
 )
 
 
@@ -14,11 +14,11 @@ class DocumentMailForm(forms.Form):
         as_attachment = kwargs.pop('as_attachment', False)
         super(DocumentMailForm, self).__init__(*args, **kwargs)
         if as_attachment:
-            self.fields['subject'].initial = DOCUMENT_SUBJECT_TEMPLATE
-            self.fields['body'].initial = DOCUMENT_BODY_TEMPLATE
+            self.fields['subject'].initial = setting_document_subject_template.value
+            self.fields['body'].initial = setting_document_body_template.value
         else:
-            self.fields['subject'].initial = LINK_SUBJECT_TEMPLATE
-            self.fields['body'].initial = LINK_BODY_TEMPLATE
+            self.fields['subject'].initial = setting_link_subject_template.value
+            self.fields['body'].initial = setting_link_body_template.value
 
     email = forms.EmailField(label=_('Email address'))
     subject = forms.CharField(label=_('Subject'), required=False)
