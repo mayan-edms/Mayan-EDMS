@@ -4,12 +4,12 @@ from django.core.exceptions import ObjectDoesNotExist
 
 from .models import Role
 
-from .settings import DEFAULT_ROLES
+from .settings import setting_default_roles
 
 
 def apply_default_roles(sender, instance, **kwargs):
     if kwargs.get('created', False):
-        for default_role in DEFAULT_ROLES:
+        for default_role in setting_default_roles.value:
             if isinstance(default_role, Role):
                 # If a model is passed, execute method
                 default_role.add_member(instance)

@@ -9,5 +9,5 @@ def is_superuser(context):
     return context['request'].user.is_staff or context['request'].user.is_superuser
 
 
-link_check_settings = Link(condition=is_superuser, icon='fa fa-sliders', text=_('Settings'), view='settings:setting_list')
+link_namespace_list = Link(condition=is_superuser, icon='fa fa-sliders', text=_('Settings'), view='settings:namespace_list')
 link_namespace_detail = Link(condition=is_superuser, text=_('Settings'), view='settings:namespace_detail', args='resolved_object.name')

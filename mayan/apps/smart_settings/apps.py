@@ -8,7 +8,7 @@ from common.widgets import exists_widget
 from navigation.api import register_model_list_columns
 
 from .classes import Namespace, Setting
-from .links import link_check_settings, link_namespace_detail
+from .links import link_namespace_detail, link_namespace_list
 from .widgets import setting_widget
 
 
@@ -22,7 +22,7 @@ class SmartSettingsApp(MayanAppConfig):
         super(SmartSettingsApp, self).ready()
 
         menu_object.bind_links(links=(link_namespace_detail,), sources=(Namespace,))
-        menu_setup.bind_links(links=(link_check_settings,))
+        menu_setup.bind_links(links=(link_namespace_list,))
 
         register_model_list_columns(Namespace, [
             {

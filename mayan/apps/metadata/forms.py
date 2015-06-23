@@ -6,7 +6,10 @@ from django.forms.formsets import formset_factory
 from django.utils.translation import ugettext_lazy as _
 
 from .models import MetadataType
-from .settings import AVAILABLE_FUNCTIONS, AVAILABLE_MODELS, setting_available_validators
+from .settings import (
+    setting_available_functions, setting_available_models,
+    setting_available_validators
+)
 
 
 class MetadataForm(forms.Form):
@@ -69,7 +72,7 @@ class MetadataForm(forms.Form):
 
             if self.metadata_type.lookup:
                 try:
-                    choices = eval(self.metadata_type.lookup, AVAILABLE_MODELS)
+                    choices = eval(self.metadata_type.lookup, setting_available_models.value)
                     self.fields['value'] = forms.ChoiceField(label=self.fields['value'].label)
                     choices = zip(choices, choices)
                     if not required:
@@ -82,7 +85,7 @@ class MetadataForm(forms.Form):
 
             if self.metadata_type.default:
                 try:
-                    self.fields['value'].initial = eval(self.metadata_type.default, AVAILABLE_FUNCTIONS)
+                    self.fields['value'].initial = eval(self.metadata_type.default, setting_available_functions.value)
                 except Exception as exception:
                     self.fields['value'].initial = exception
 

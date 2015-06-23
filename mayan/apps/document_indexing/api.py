@@ -5,7 +5,7 @@ import logging
 from django.utils.translation import ugettext_lazy as _
 
 from .models import Index, IndexInstanceNode
-from .settings import AVAILABLE_INDEXING_FUNCTIONS
+from .settings import setting_available_indexing_functions
 
 logger = logging.getLogger(__name__)
 
@@ -44,7 +44,7 @@ def cascade_eval(document, template_node, parent_index_instance=None):
     warnings = []
     if template_node.enabled:
         try:
-            result = eval(template_node.expression, {'document': document}, AVAILABLE_INDEXING_FUNCTIONS)
+            result = eval(template_node.expression, {'document': document}, setting_available_indexing_functions.value)
         except Exception as exception:
             error_message = _('Error indexing document: %(document)s; expression: %(expression)s; %(exception)s') % {
                 'document': document, 'expression': template_node.expression, 'exception': exception}
