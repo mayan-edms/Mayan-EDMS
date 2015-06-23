@@ -9,7 +9,7 @@ from common import (
 )
 from common.utils import encapsulate
 from documents.models import Document
-from navigation.api import register_model_list_columns
+from navigation import SourceColumn
 
 from .handlers import launch_workflow
 from .models import (
@@ -35,6 +35,26 @@ class DocumentStatesApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentStatesApp, self).ready()
+
+        SourceColumn(source=Workflow, label=_('Initial state'), attribute=encapsulate(lambda workflow: workflow.get_initial_state() or _('None')))
+
+        SourceColumn(source=WorkflowInstance, label=_('Current state'), attribute='get_current_state')
+        SourceColumn(source=WorkflowInstance, label=_('User'), attribute=encapsulate(lambda workflow: getattr(workflow.get_last_log_entry(), 'user', _('None'))))
+        SourceColumn(source=WorkflowInstance, label=_('Last transition'), attribute='get_last_transition')
+        SourceColumn(source=WorkflowInstance, label=_('Date and time'), attribute=encapsulate(lambda workflow: getattr(workflow.get_last_log_entry(), 'datetime', _('None'))))
+        SourceColumn(source=WorkflowInstance, label=_('Completion'), attribute=encapsulate(lambda workflow: getattr(workflow.get_current_state(), 'completion', _('None'))))
+
+        SourceColumn(source=WorkflowInstanceLogEntry, label=_('Date and time'), attribute='datetime')
+        SourceColumn(source=WorkflowInstanceLogEntry, label=_('User'), attribute='user')
+        SourceColumn(source=WorkflowInstanceLogEntry, label=_('Transition'), attribute='transition')
+        SourceColumn(source=WorkflowInstanceLogEntry, label=_('Comment'), attribute='comment')
+
+        SourceColumn(source=WorkflowState, label=_('Is initial state?'), attribute='initial')
+        SourceColumn(source=WorkflowState, label=_('Completion'), attribute='completion')
+
+        SourceColumn(source=WorkflowTransition, label=_('Origin state'), attribute='origin_state')
+        SourceColumn(source=WorkflowTransition, label=_('Destination state'), attribute='destination_state')
+
         menu_facet.bind_links(links=[link_document_workflow_instance_list], sources=[Document])
         menu_object.bind_links(links=[link_setup_workflow_states, link_setup_workflow_transitions, link_setup_workflow_document_types, link_setup_workflow_edit, link_setup_workflow_delete], sources=[Workflow])
         menu_object.bind_links(links=[link_setup_workflow_state_edit, link_setup_workflow_state_delete], sources=[WorkflowState])
@@ -43,76 +63,5 @@ class DocumentStatesApp(MayanAppConfig):
         menu_secondary.bind_links(links=[link_setup_workflow_list, link_setup_workflow_create], sources=[Workflow, 'document_states:setup_workflow_create', 'document_states:setup_workflow_list'])
         menu_setup.bind_links(links=[link_setup_workflow_list])
         menu_sidebar.bind_links(links=[link_setup_workflow_state_create, link_setup_workflow_transition_create], sources=[Workflow])
-
-        register_model_list_columns(Workflow, [
-            {
-                'name': _('Initial state'),
-                'attribute': encapsulate(lambda workflow: workflow.get_initial_state() or _('None'))
-            },
-        ])
-
-        register_model_list_columns(WorkflowInstance, [
-            {
-                'name': _('Current state'),
-                'attribute': 'get_current_state'
-            },
-            {
-                'name': _('User'),
-                'attribute': encapsulate(lambda workflow: getattr(workflow.get_last_log_entry(), 'user', _('None')))
-            },
-            {
-                'name': _('Last transition'),
-                'attribute': 'get_last_transition'
-            },
-            {
-                'name': _('Date and time'),
-                'attribute': encapsulate(lambda workflow: getattr(workflow.get_last_log_entry(), 'datetime', _('None')))
-            },
-            {
-                'name': _('Completion'),
-                'attribute': encapsulate(lambda workflow: getattr(workflow.get_current_state(), 'completion', _('None')))
-            },
-        ])
-
-        register_model_list_columns(WorkflowInstanceLogEntry, [
-            {
-                'name': _('Date and time'),
-                'attribute': 'datetime'
-            },
-            {
-                'name': _('User'),
-                'attribute': 'user'
-            },
-            {
-                'name': _('Transition'),
-                'attribute': 'transition'
-            },
-            {
-                'name': _('Comment'),
-                'attribute': 'comment'
-            },
-        ])
-
-        register_model_list_columns(WorkflowState, [
-            {
-                'name': _('Is initial state?'),
-                'attribute': 'initial'
-            },
-            {
-                'name': _('Completion'),
-                'attribute': 'completion'
-            },
-        ])
-
-        register_model_list_columns(WorkflowTransition, [
-            {
-                'name': _('Origin state'),
-                'attribute': 'origin_state'
-            },
-            {
-                'name': _('Destination state'),
-                'attribute': 'destination_state'
-            },
-        ])
 
         post_save.connect(launch_workflow, dispatch_uid='launch_workflow', sender=Document)

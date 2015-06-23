@@ -14,7 +14,7 @@ from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
 from documents.signals import post_document_type_change
-from navigation.api import register_model_list_columns
+from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .api import get_metadata_string
@@ -57,6 +57,8 @@ class MetadataApp(MayanAppConfig):
         ModelAttribute(Document, 'metadata__value', label=_('Metadata type value'), type_name='query')
         ModelAttribute(Document, 'metadata_value_of', label=_('Value of a metadata'), description=_('Return the value of a specific document metadata'), type_name=['property', 'indexing'])
 
+        SourceColumn(source=Document, label=_('Metadata'), attribute=encapsulate(lambda document: get_metadata_string(document)))
+
         class_permissions(Document, [
             PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,
             PERMISSION_METADATA_DOCUMENT_REMOVE, PERMISSION_METADATA_DOCUMENT_VIEW,
@@ -74,9 +76,3 @@ class MetadataApp(MayanAppConfig):
         post_save.connect(post_document_type_metadata_type_add, dispatch_uid='post_document_type_metadata_type_add', sender=DocumentTypeMetadataType)
         post_delete.connect(post_document_type_metadata_type_delete, dispatch_uid='post_document_type_metadata_type_delete', sender=DocumentTypeMetadataType)
         post_document_type_change.connect(post_post_document_type_change_metadata, dispatch_uid='post_post_document_type_change_metadata', sender=Document)
-
-        register_model_list_columns(Document, [
-            {
-                'name': _('Metadata'), 'attribute': encapsulate(lambda x: get_metadata_string(x))
-            },
-        ])

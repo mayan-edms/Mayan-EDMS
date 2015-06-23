@@ -248,6 +248,27 @@ class ModelListColumn(object):
         self.__class__._model_list_columns[model].extend(columns)
 
 
+class SourceColumn(object):
+    _registry = {}
+
+    @classmethod
+    def get_for_source(cls, source):
+        try:
+            return cls._registry[source]
+        except KeyError:
+            try:
+                return cls._registry[source.model]
+            except AttributeError:
+                try:
+                    return cls._registry[source.__class__]
+                except KeyError:
+                    return ()
+
+    def __init__(self, source, label, attribute):
+        self.__class__._registry.setdefault(source, [])
+        self.__class__._registry[source].append({'label': label, 'attribute': attribute})
+
+
 class CombinedSource(object):
     """
     Class that binds a link to a combination of an object and a view.

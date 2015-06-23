@@ -9,8 +9,7 @@ from common import (
 )
 from common.utils import encapsulate
 from documents.models import Document
-from navigation import CombinedSource
-from navigation.api import register_model_list_columns
+from navigation import CombinedSource, SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .links import (
@@ -36,6 +35,11 @@ class TagsApp(MayanAppConfig):
 
         APIEndPoint('tags')
 
+        SourceColumn(source=Document, label=_('Tags'), attribute=encapsulate(lambda document: get_tags_inline_widget_simple(document)))
+
+        SourceColumn(source=Tag, label=_('Preview'), attribute=encapsulate(lambda tag: single_tag_widget(tag)))
+        SourceColumn(source=Tag, label=_('Tagged items'), attribute=encapsulate(lambda tag: tag.documents.count()))
+
         class_permissions(Document, [
             PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
         ])
@@ -51,21 +55,3 @@ class TagsApp(MayanAppConfig):
         menu_object.bind_links(links=[link_tag_tagged_item_list, link_tag_edit, link_tag_acl_list, link_tag_delete], sources=[Tag])
         menu_secondary.bind_links(links=[link_tag_list, link_tag_create], sources=[Tag, 'tags:tag_list', 'tags:tag_create'])
         menu_sidebar.bind_links(links=[link_tag_attach], sources=['tags:document_tags', 'tags:tag_remove', 'tags:tag_multiple_remove', 'tags:tag_attach'])
-
-        register_model_list_columns(Document, [
-            {
-                'name': _('Tags'), 'attribute':
-                encapsulate(lambda x: get_tags_inline_widget_simple(x))
-            },
-        ])
-
-        register_model_list_columns(Tag, [
-            {
-                'name': _('Preview'),
-                'attribute': encapsulate(lambda x: single_tag_widget(x))
-            },
-            {
-                'name': _('Tagged items'),
-                'attribute': encapsulate(lambda x: x.documents.count())
-            }
-        ])

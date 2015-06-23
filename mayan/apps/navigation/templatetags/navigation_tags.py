@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.template import Library
 
-from ..classes import Menu
+from ..classes import Menu, SourceColumn
 from ..forms import MultiItemForm
 
 register = Library()
@@ -35,3 +35,26 @@ def get_multi_item_links_form(context, object_list):
     form = MultiItemForm(actions=actions)
     context.update({'multi_item_form': form, 'multi_item_actions': actions})
     return ''
+
+
+@register.filter
+def get_source_columns(source):
+    try:
+        # Is it a query set?
+        source = source.model
+    except AttributeError:
+        # Is not a query set
+        try:
+            # Is iterable?
+            source = source[0]
+        except TypeError:
+            # It is not
+            pass
+        except IndexError:
+            # It a list and it's empty
+            pass
+        except KeyError:
+            # It a list and it's empty
+            pass
+
+    return SourceColumn.get_for_source(source)

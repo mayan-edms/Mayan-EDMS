@@ -10,8 +10,7 @@ from common import (
 )
 from common.utils import encapsulate
 from documents.models import Document
-from navigation.api import register_model_list_columns
-from navigation import CombinedSource
+from navigation import CombinedSource, SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .links import (
@@ -55,7 +54,5 @@ class FoldersApp(MayanAppConfig):
         menu_secondary.bind_links(links=[link_folder_list, link_folder_create], sources=[Folder, 'folders:folder_list', 'folders:folder_create'])
         menu_sidebar.bind_links(links=[link_folder_add_document], sources=['folders:document_folder_list', 'folders:folder_add_document'])
 
-        register_model_list_columns(Folder, [
-            {'name': _('Created'), 'attribute': 'datetime_created'},
-            {'name': _('Documents'), 'attribute': encapsulate(lambda x: x.documents.count())},
-        ])
+        SourceColumn(source=Folder, label=_('Created'), attribute='datetime_created')
+        SourceColumn(source=Folder, label=_('Document'), attribute=encapsulate(lambda x: x.documents.count()))

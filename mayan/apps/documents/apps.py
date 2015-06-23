@@ -24,7 +24,7 @@ from converter.permissions import (
 )
 from dynamic_search.classes import SearchModel
 from events.permissions import PERMISSION_EVENTS_VIEW
-from navigation.api import register_model_list_columns
+from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
 
@@ -150,12 +150,6 @@ class DocumentsApp(MayanAppConfig):
         registry.register(Document)
 
         register_maintenance_links([link_clear_image_cache], namespace='documents', title=_('Documents'))
-        register_model_list_columns(Document, [
-            {
-                'name': _('Thumbnail'), 'attribute':
-                encapsulate(lambda x: document_thumbnail(x, gallery_name='documents:document_list', title=getattr(x, 'label', None), size=setting_thumbnail_size.value))
-            },
-            {
-                'name': _('Type'), 'attribute': 'document_type'
-            }
-        ])
+
+        SourceColumn(source=Document, label=_('Thumbnail'), attribute=encapsulate(lambda document: document_thumbnail(document, gallery_name='documents:document_list', title=getattr(document, 'label', None), size=setting_thumbnail_size.value)))
+        SourceColumn(source=Document, label=_('type'), attribute='document_type')

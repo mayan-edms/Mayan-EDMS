@@ -16,7 +16,7 @@ from documents.models import Document, DocumentVersion
 from documents.signals import post_version_upload
 from documents.widgets import document_link
 from installation import PropertyNamespace
-from navigation.api import register_model_list_columns
+from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .handlers import post_version_upload_ocr
@@ -53,6 +53,10 @@ class OCRApp(MayanAppConfig):
 
         Document.add_to_class('submit_for_ocr', document_ocr_submit)
         DocumentVersion.add_to_class('submit_for_ocr', document_version_ocr_submit)
+
+        SourceColumn(source=DocumentVersionOCRError, label=_('Document'), attribute=encapsulate(lambda entry: document_link(entry.document_version.document)))
+        SourceColumn(source=DocumentVersionOCRError, label=_('Added'), attribute='datetime_submitted')
+        SourceColumn(source=DocumentVersionOCRError, label=_('Result'), attribute='result')
 
         class_permissions(
             Document, [
@@ -98,15 +102,3 @@ class OCRApp(MayanAppConfig):
             namespace.add_property('unpaper', _('unpaper version'), _('error getting version'), report=True)
         else:
             namespace.add_property('unpaper', _('unpaper version'), unpaper('-V').stdout, report=True)
-
-        register_model_list_columns(DocumentVersionOCRError, [
-            {
-                'name': _('Document'), 'attribute': encapsulate(lambda entry: document_link(entry.document_version.document))
-            },
-            {
-                'name': _('Added'), 'attribute': 'datetime_submitted'
-            },
-            {
-                'name': _('Result'), 'attribute': 'result'
-            },
-        ])

@@ -9,7 +9,7 @@ from common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
 from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document
-from navigation.api import register_model_list_columns
+from navigation import SourceColumn
 
 from .links import (
     link_comment_add, link_comment_delete, link_comments_for_document
@@ -40,26 +40,15 @@ class DocumentCommentsApp(MayanAppConfig):
 
         ModelAttribute(Document, label=_('Comments'), name='comments', type_name='related')
 
+        SourceColumn(source=Comment, label=_('Date'), attribute='submit_date')
+        SourceColumn(source=Comment, label=_('User'), attribute=encapsulate(lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user))
+        SourceColumn(source=Comment, label=_('Comment'), attribute='comment')
+
         class_permissions(Document, [
             PERMISSION_COMMENT_CREATE,
             PERMISSION_COMMENT_DELETE,
             PERMISSION_COMMENT_VIEW]
         )
-
-        register_model_list_columns(Comment, [
-            {
-                'name': _('Date'),
-                'attribute': 'submit_date'
-            },
-            {
-                'name': _('User'),
-                'attribute': encapsulate(lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user)
-            },
-            {
-                'name': _('Comment'),
-                'attribute': 'comment'
-            }
-        ])
 
         menu_sidebar.bind_links(links=[link_comment_add], sources=['comments:comments_for_document', 'comments:comment_add', 'comments:comment_delete', 'comments:comment_multiple_delete'])
         menu_object.bind_links(links=[link_comment_delete], sources=[Comment])

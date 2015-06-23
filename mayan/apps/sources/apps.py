@@ -10,7 +10,7 @@ from common.signals import post_initial_setup
 from common.utils import encapsulate
 from converter.links import link_transformation_list
 from documents.models import Document
-from navigation.api import register_model_list_columns
+from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .classes import StagingFile
@@ -36,7 +36,10 @@ class SourcesApp(MayanAppConfig):
         super(SourcesApp, self).ready()
 
         APIEndPoint('sources')
+
         MissingItem(label=_('Create a document source'), description=_('Document sources are the way in which new documents are feed to Mayan EDMS, create at least a web form source to be able to upload documents from a browser.'), condition=lambda: not Source.objects.exists(), view='sources:setup_source_list')
+
+        SourceColumn(source=StagingFile, label=_('Thumbnail'), attribute=encapsulate(lambda staging_file: staging_file_thumbnail(staging_file, gallery_name='sources:staging_list', title=staging_file.filename, size='100')))
 
         menu_front_page.bind_links(links=[link_document_create_multiple])
         menu_object.bind_links(links=[link_document_create_siblings], sources=[Document])
@@ -45,12 +48,5 @@ class SourcesApp(MayanAppConfig):
         menu_secondary.bind_links(links=[link_setup_sources, link_setup_source_create_webform, link_setup_source_create_staging_folder, link_setup_source_create_pop3_email, link_setup_source_create_imap_email, link_setup_source_create_watch_folder], sources=[Source, 'sources:setup_source_list', 'sources:setup_source_create'])
         menu_setup.bind_links(links=[link_setup_sources])
         menu_sidebar.bind_links(links=[link_upload_version], sources=['documents:document_version_list', 'documents:upload_version', 'documents:document_version_revert'])
-
-        register_model_list_columns(StagingFile, [
-            {
-                'name': _('Thumbnail'), 'attribute':
-                encapsulate(lambda x: staging_file_thumbnail(x, gallery_name='sources:staging_list', title=x.filename, size='100'))
-            },
-        ])
 
         post_initial_setup.connect(create_default_document_source, dispatch_uid='create_default_document_source')

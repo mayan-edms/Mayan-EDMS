@@ -51,8 +51,8 @@
                                             <th>{% trans 'Identifier' %}</th>
                                         {% endif %}
 
-                                        {% for column in object_list|get_model_list_columns %}
-                                            <th>{{ column.name }}</th>
+                                        {% for column in object_list|get_source_columns %}
+                                            <th>{{ column.label }}</th>
                                         {% endfor %}
 
                                         {% for column in extra_columns %}
@@ -86,7 +86,7 @@
                                         {% endif %}
                                     {% endif %}
                                      {% if not hide_columns %}
-                                        {% for column in object|get_model_list_columns %}
+                                        {% for column in object|get_source_columns %}
                                             <td>{{ object|object_property:column.attribute }}</td>
                                         {% endfor %}
                                     {% endif %}
