@@ -43,6 +43,16 @@ What's new in Mayan EDMS v2.0
 * Add new permissions PERMISSION_OCR_CONTENT_VIEW
 * Removed the page_label field
 * OCR submit document views (single & multiple) use confirmation and POST request. Avoids OCR queueing on GET by web spiders.
+* Default document type and initial web form source created at initial setup
+* OCR settings move to the OCR app
+* New YAML based smart settings system
+* Complete removal of auto admin creation code to a separate app
+* New dependencies:
+
+  * PyYAML
+  * django-autoadmin
+
+
 
 Upgrading from a previous version
 =================================
