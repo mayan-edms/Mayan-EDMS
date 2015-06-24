@@ -18,7 +18,7 @@ from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
-from dynamic_search.classes import SearchModel
+from documents.search import document_search
 
 from .api import tools
 from .classes import MissingItem
@@ -195,7 +195,7 @@ class HomeView(TemplateView):
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
 
-        queryset, ids, timedelta = SearchModel.get('documents.Document').search(request.GET, request.user)
+        queryset, ids, timedelta = document_search.search(request.GET, request.user)
 
         # Update the context with the search results
         context.update({

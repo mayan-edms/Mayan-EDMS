@@ -9,6 +9,7 @@ from common import (
 )
 from common.utils import encapsulate
 from documents.models import Document
+from documents.search import document_search
 from navigation import CombinedSource, SourceColumn
 from rest_api.classes import APIEndPoint
 
@@ -46,6 +47,8 @@ class TagsApp(MayanAppConfig):
         class_permissions(Tag, [
             PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW,
         ])
+
+        document_search.add_model_field(field='tags__label', label=_('Tags'))
 
         menu_facet.bind_links(links=[link_tag_document_list], sources=[Document])
         menu_main.bind_links(links=[link_tag_list])

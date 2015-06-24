@@ -13,6 +13,7 @@ from common import (
 from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document, DocumentType
+from documents.search import document_search
 from documents.signals import post_document_type_change
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
@@ -63,6 +64,9 @@ class MetadataApp(MayanAppConfig):
             PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,
             PERMISSION_METADATA_DOCUMENT_REMOVE, PERMISSION_METADATA_DOCUMENT_VIEW,
         ])
+
+        document_search.add_model_field(field='metadata__metadata_type__name', label=_('Metadata type'))
+        document_search.add_model_field(field='metadata__value', label=_('Metadata value'))
 
         menu_facet.bind_links(links=[link_metadata_view], sources=[Document])
         menu_multi_item.bind_links(links=[link_metadata_multiple_add, link_metadata_multiple_edit, link_metadata_multiple_remove], sources=[Document])

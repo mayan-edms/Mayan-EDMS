@@ -13,6 +13,7 @@ from common import (
 )
 from common.utils import encapsulate
 from documents.models import Document, DocumentType, DocumentVersion
+from documents.search import document_search
 from documents.signals import post_version_upload
 from documents.widgets import document_link
 from installation import PropertyNamespace
@@ -66,6 +67,8 @@ class OCRApp(MayanAppConfig):
                 PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_CONTENT_VIEW
             ]
         )
+
+        document_search.add_model_field(field='versions__pages__ocr_content__content', label=_('Content'))
 
         menu_facet.bind_links(links=[link_document_content], sources=[Document])
         menu_multi_item.bind_links(links=[link_document_submit_multiple], sources=[Document])

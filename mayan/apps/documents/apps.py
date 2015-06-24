@@ -22,7 +22,6 @@ from converter.permissions import (
     PERMISSION_TRANSFORMATION_DELETE, PERMISSION_TRANSFORMATION_EDIT,
     PERMISSION_TRANSFORMATION_VIEW,
 )
-from dynamic_search.classes import SearchModel
 from events.permissions import PERMISSION_EVENTS_VIEW
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
@@ -98,19 +97,6 @@ class DocumentsApp(MayanAppConfig):
             PERMISSION_TRANSFORMATION_DELETE, PERMISSION_TRANSFORMATION_EDIT,
             PERMISSION_TRANSFORMATION_VIEW,
         ])
-
-        document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer_string='documents.serializers.DocumentSerializer')
-
-        # TODO: move these to their respective apps
-        # Moving these to other apps cause an ImportError; circular import?
-        document_search.add_model_field('document_type__name', label=_('Document type'))
-        document_search.add_model_field('versions__mimetype', label=_('MIME type'))
-        document_search.add_model_field('label', label=_('Label'))
-        document_search.add_model_field('metadata__metadata_type__name', label=_('Metadata type'))
-        document_search.add_model_field('metadata__value', label=_('Metadata value'))
-        document_search.add_model_field('versions__pages__ocr_content__content', label=_('Content'))
-        document_search.add_model_field('description', label=_('Description'))
-        document_search.add_model_field('tags__label', label=_('Tags'))
 
         menu_front_page.bind_links(links=[link_document_list_recent, link_document_list])
         menu_setup.bind_links(links=[link_document_type_setup])
