@@ -32,7 +32,7 @@ class SearchModel(object):
     def __init__(self, app_label, model_name, serializer_string, label=None, permission=None):
         self.app_label = app_label
         self.model_name = model_name
-        self.search_fields = {}
+        self.search_fields = []
         self.model = None  # Lazy
         self.label = label
         self.serializer_string = serializer_string
@@ -43,7 +43,7 @@ class SearchModel(object):
         return '%s.%s' % (self.app_label, self.model_name)
 
     def get_all_search_fields(self):
-        return self.search_fields.values()
+        return self.search_fields
 
     def get_search_field(self, full_name):
         try:
@@ -66,7 +66,7 @@ class SearchModel(object):
         Add a search field that directly belongs to the parent SearchModel
         """
         search_field = SearchField(self, *args, **kwargs)
-        self.search_fields[search_field.get_full_name()] = search_field
+        self.search_fields.append(search_field)
 
     def normalize_query(self, query_string,
                         findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
