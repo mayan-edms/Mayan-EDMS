@@ -11,6 +11,7 @@ from django.core.urlresolvers import resolve, reverse
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessEntry
