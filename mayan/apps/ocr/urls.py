@@ -3,13 +3,16 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 
 from .api_views import DocumentVersionOCRView
-from .views import DocumentSubmitView, DocumentManySubmitView
+from .views import (
+    DocumentManySubmitView, DocumentSubmitView, DocumentTypeSettingsEditView
+)
 
 urlpatterns = patterns(
     'ocr.views',
     url(r'^(?P<document_id>\d+)/content/$', 'document_content', name='document_content'),
     url(r'^document/(?P<pk>\d+)/submit/$', DocumentSubmitView.as_view(), name='document_submit'),
     url(r'^document/multiple/submit/$', DocumentManySubmitView.as_view(), name='document_submit_multiple'),
+    url(r'^document_type/(?P<pk>\d+)/ocr/settings/$', DocumentTypeSettingsEditView.as_view(), name='document_type_ocr_settings'),
 
     url(r'^all/$', 'entry_list', name='entry_list'),
     url(r'^(?P<pk>\d+)/delete/$', 'entry_delete', name='entry_delete'),

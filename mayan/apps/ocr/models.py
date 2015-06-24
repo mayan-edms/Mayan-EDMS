@@ -4,7 +4,19 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import DocumentVersion, DocumentPage
+from documents.models import DocumentPage, DocumentType, DocumentVersion
+
+
+class DocumentTypeSettings(models.Model):
+    """
+    Define for OCR for a specific document should behave
+    """
+    document_type = models.OneToOneField(DocumentType, related_name='ocr_settings', unique=True, verbose_name=_('Document type'))
+    auto_ocr = models.BooleanField(default=True, verbose_name=_('Automatically queue newly created documents for OCR.'))
+
+    class Meta:
+        verbose_name = _('Document type settings')
+        verbose_name_plural = _('Document types settings')
 
 
 @python_2_unicode_compatible

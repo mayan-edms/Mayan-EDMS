@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import DocumentVersionOCRError
+from .models import DocumentTypeSettings, DocumentVersionOCRError
 
 
 class DocumentVersionOCRErrorAdmin(admin.ModelAdmin):
@@ -11,3 +11,4 @@ class DocumentVersionOCRErrorAdmin(admin.ModelAdmin):
 
 
 admin.site.register(DocumentVersionOCRError, DocumentVersionOCRErrorAdmin)
+admin.site.register(DocumentTypeSettings)

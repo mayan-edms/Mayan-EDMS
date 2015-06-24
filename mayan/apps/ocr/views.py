@@ -10,15 +10,15 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessEntry
-from common.views import ConfirmView
-from documents.models import Document, DocumentVersion
+from common.views import ConfirmView, SingleObjectEditView
+from documents.models import Document, DocumentType, DocumentVersion
 from permissions.models import Permission
 
 from .forms import DocumentContentForm
-from .models import DocumentVersionOCRError
+from .models import DocumentTypeSettings, DocumentVersionOCRError
 from .permissions import (
     PERMISSION_OCR_CONTENT_VIEW, PERMISSION_OCR_DOCUMENT,
-    PERMISSION_OCR_DOCUMENT_DELETE
+    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_DOCUMENT_TYPE_OCR_SETUP
 )
 
 
@@ -75,6 +75,27 @@ class DocumentManySubmitView(DocumentSubmitView):
                 pass
 
         return HttpResponseRedirect(self.get_success_url())
+
+
+class DocumentTypeSettingsEditView(SingleObjectEditView):
+    fields = ('auto_ocr',)
+    view_permission = PERMISSION_DOCUMENT_TYPE_OCR_SETUP
+
+    def get_object(self, queryset=None):
+        document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+        instance, created = DocumentTypeSettings.objects.get_or_create(document_type=document_type)
+        return instance
+
+    def get_context_data(self, **kwargs):
+        context = super(DocumentTypeSettingsEditView, self).get_context_data(**kwargs)
+
+        context.update(
+            {
+                'title': _('Edit OCR settings for document type: %s') % self.get_object().document_type
+            }
+        )
+
+        return context
 
 
 def document_content(request, document_id):

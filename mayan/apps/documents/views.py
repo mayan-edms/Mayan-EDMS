@@ -792,7 +792,6 @@ def document_type_list(request):
         'title': _('Document types'),
         'hide_link': True,
         'extra_columns': [
-            {'name': _('OCR'), 'attribute': 'ocr'},
             {'name': _('Documents'), 'attribute': encapsulate(lambda x: x.documents.count())}
         ]
     }

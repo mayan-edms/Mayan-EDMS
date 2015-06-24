@@ -12,7 +12,7 @@ from common import (
     menu_tools
 )
 from common.utils import encapsulate
-from documents.models import Document, DocumentVersion
+from documents.models import Document, DocumentType, DocumentVersion
 from documents.signals import post_version_upload
 from documents.widgets import document_link
 from installation import PropertyNamespace
@@ -22,12 +22,15 @@ from rest_api.classes import APIEndPoint
 from .handlers import post_version_upload_ocr
 from .links import (
     link_document_content, link_document_submit,
-    link_document_submit_multiple, link_entry_delete,
-    link_entry_delete_multiple, link_entry_list, link_entry_re_queue,
-    link_entry_re_queue_multiple
+    link_document_submit_multiple, link_document_type_ocr_settings,
+    link_entry_delete, link_entry_delete_multiple, link_entry_list,
+    link_entry_re_queue, link_entry_re_queue_multiple
 )
 from .models import DocumentVersionOCRError
-from .permissions import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_CONTENT_VIEW
+from .permissions import (
+    PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_CONTENT_VIEW,
+    PERMISSION_DOCUMENT_TYPE_OCR_SETUP
+)
 from .settings import setting_pdftotext_path, setting_tesseract_path, setting_unpaper_path
 from .tasks import task_do_ocr
 
@@ -69,6 +72,7 @@ class OCRApp(MayanAppConfig):
         menu_multi_item.bind_links(links=[link_entry_re_queue_multiple, link_entry_delete_multiple], sources=[DocumentVersionOCRError])
         menu_object.bind_links(links=[link_document_submit], sources=[Document])
         menu_object.bind_links(links=[link_entry_re_queue, link_entry_delete], sources=[DocumentVersionOCRError])
+        menu_object.bind_links(links=[link_document_type_ocr_settings], sources=[DocumentType])
         menu_secondary.bind_links(links=[link_entry_list], sources=['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError])
         menu_tools.bind_links(links=[link_entry_list])
 

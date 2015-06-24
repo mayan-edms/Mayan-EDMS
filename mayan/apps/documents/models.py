@@ -54,9 +54,6 @@ class DocumentType(models.Model):
     """
     name = models.CharField(max_length=32, verbose_name=_('Name'), unique=True)
 
-    # TODO: find a way to move this to the ocr app
-    ocr = models.BooleanField(default=True, verbose_name=_('Automatically queue newly created documents for OCR.'))
-
     objects = DocumentTypeManager()
 
     def __str__(self):
