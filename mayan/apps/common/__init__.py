@@ -59,7 +59,7 @@ def create_superuser_and_anonymous_user(sender, **kwargs):
                 auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
             except auth_models.User.DoesNotExist:
                 logger.info('Creating super admin user -- login: %s, password: %s', AUTO_ADMIN_USERNAME, AUTO_ADMIN_PASSWORD)
-                assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'autoadmin@autoadmin.com', AUTO_ADMIN_PASSWORD)
+                assert auth_models.User.objects.create_superuser(AUTO_ADMIN_USERNAME, 'autoadmin@example.com', AUTO_ADMIN_PASSWORD)
                 admin = auth_models.User.objects.get(username=AUTO_ADMIN_USERNAME)
                 # Store the auto admin password properties to display the first login message
                 auto_admin_properties, created = AutoAdminSingleton.objects.get_or_create()
