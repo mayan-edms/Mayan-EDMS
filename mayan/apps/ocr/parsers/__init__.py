@@ -8,10 +8,6 @@ import tempfile
 
 from common.settings import setting_temporary_directory
 from common.utils import copyfile
-from converter.exceptions import OfficeConversionError
-from converter.classes import (
-    CONVERTER_OFFICE_FILE_MIMETYPES
-)
 
 from ..settings import setting_pdftotext_path
 
@@ -94,33 +90,6 @@ class SlateParser(Parser):
         document_page.save()
 
 
-class OfficeParser(Parser):
-    """
-    Parser for office document formats
-    """
-    def parse(self, document_page, descriptor=None):
-        logger.debug('executing')
-        try:
-            office_converter = OfficeConverter()
-            document_file = document_page.document.document_save_to_temp_dir(document_page.document.checksum)
-            logger.debug('document_file: %s', document_file)
-
-            office_converter.convert(document_file, mimetype=document_page.document.file_mimetype)
-            if office_converter.exists:
-                input_filepath = office_converter.output_filepath
-                logger.debug('office_converter.output_filepath: %s', input_filepath)
-
-                # Now that the office document has been converted to PDF
-                # call the coresponding PDF parser in this new file
-                parse_document_page(document_page, descriptor=open(input_filepath), mimetype='application/pdf')
-            else:
-                raise ParserError
-
-        except OfficeConversionError as exception:
-            logger.error(exception)
-            raise ParserError
-
-
 class PopplerParser(Parser):
     """
     PDF parser using the pdftotext execute from the poppler package
@@ -171,4 +140,3 @@ class PopplerParser(Parser):
 
 
 register_parser(mimetypes=['application/pdf'], parsers=[PopplerParser, SlateParser])
-# register_parser(mimetypes=office_converter.CONVERTER_OFFICE_FILE_MIMETYPES, parsers=[OfficeParser])  # TODO: FIX
