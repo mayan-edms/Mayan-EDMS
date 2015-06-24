@@ -4,7 +4,7 @@ from django.contrib.auth.models import AnonymousUser
 from django.db import models
 from django.utils.http import urlencode
 
-from .settings import RECENT_COUNT
+from .settings import setting_recent_count
 
 
 class RecentSearchManager(models.Manager):
@@ -31,5 +31,5 @@ class RecentSearchManager(models.Manager):
                 new_recent.hits = hits
                 new_recent.save()
 
-            for recent_to_delete in self.model.objects.filter(user=user)[RECENT_COUNT.value:]:
+            for recent_to_delete in self.model.objects.filter(user=user)[setting_recent_count.value:]:
                 recent_to_delete.delete()

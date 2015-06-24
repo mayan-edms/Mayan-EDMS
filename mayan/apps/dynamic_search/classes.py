@@ -12,7 +12,7 @@ from django.utils.module_loading import import_string
 from acls.models import AccessEntry
 from permissions.models import Permission
 
-from .settings import LIMIT
+from .settings import setting_limit
 
 logger = logging.getLogger(__name__)
 
@@ -163,7 +163,7 @@ class SearchModel(object):
 
         elapsed_time = unicode(datetime.datetime.now() - start_time).split(':')[2]
 
-        queryset = self.model.objects.in_bulk(list(result_set)[: LIMIT.value]).values()
+        queryset = self.model.objects.in_bulk(list(result_set)[: setting_limit.value]).values()
 
         if self.permission:
             try:
