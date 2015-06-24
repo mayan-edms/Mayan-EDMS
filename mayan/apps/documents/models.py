@@ -16,9 +16,10 @@ from acls.utils import apply_default_acls
 from common.settings import setting_temporary_directory
 from common.utils import fs_cleanup
 from converter import (
-    converter_class, TransformationResize, TransformationRotate, TransformationZoom
+    converter_class, TransformationResize, TransformationRotate,
+    TransformationZoom
 )
-from converter.exceptions import UnknownFileFormat
+from converter.exceptions import InvalidOfficeFormat, UnknownFileFormat
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from converter.models import Transformation
 from mimetype.api import get_mimetype
@@ -395,6 +396,45 @@ class DocumentVersion(models.Model):
     def page_count(self):
         return self.pages.count()
 
+    @property
+    def uuid(self):
+        # Make cache UUID a mix of document UUID, version ID
+        return '{}-{}'.format(self.document.uuid, self.pk)
+
+    @property
+    def cache_filename(self):
+        return os.path.join(setting_cache_path.value, 'document-version-{}'.format(self.uuid))
+
+    def get_intermidiate_file(self):
+        cache_filename = self.cache_filename
+        logger.debug('Intermidiate filename: %s', cache_filename)
+
+        if os.path.exists(cache_filename):
+            logger.debug('Intermidiate file "%s" found.', cache_filename)
+
+            return open(cache_filename)
+            #converter = converter_class(file_object=open(cache_filename))
+            #converter.seek(0)
+        else:
+            logger.debug('Intermidiate file "%s" not found.', cache_filename)
+
+            try:
+                converter = converter_class(file_object=self.open())
+                pdf_file_object = converter.to_pdf()
+
+                with open(cache_filename, 'wb+') as file_object:
+                    for chunk in pdf_file_object:
+                        file_object.write(chunk)
+
+                return open(cache_filename)
+            except InvalidOfficeFormat:
+                return self.open()
+            except Exception as exception:
+                # Cleanup in case of error
+                logger.error('Error creating intermediate file "%s"; %s.', cache_filename, exception)
+                fs_cleanup(cache_filename)
+                raise
+
 
 @python_2_unicode_compatible
 class DocumentTypeFilename(models.Model):
@@ -455,13 +495,17 @@ class DocumentPage(models.Model):
     def invalidate_cache(self):
         fs_cleanup(self.get_cache_filename())
 
-    def get_uuid(self):
-        # Make cache UUID a mix of document UUID, version ID and page ID to
-        # avoid using stale images
-        return 'page-cache-{}-{}-{}'.format(self.document.uuid, self.document_version.pk, self.pk)
+    @property
+    def uuid(self):
+        """
+        Make cache UUID a mix of version ID and page ID to avoid using stale
+        images
+        """
+        return '{}-{}'.format(self.document_version.uuid, self.pk)
 
-    def get_cache_filename(self):
-        return os.path.join(setting_cache_path.value, self.get_uuid())
+    @property
+    def cache_filename(self):
+        return os.path.join(setting_cache_path.value, 'page-cache-{}'.format(self.uuid))
 
     def get_image(self, *args, **kwargs):
         as_base64 = kwargs.pop('as_base64', False)
@@ -478,22 +522,27 @@ class DocumentPage(models.Model):
 
         rotation = rotation % 360
 
-        cache_filename = self.get_cache_filename()
+        cache_filename = self.cache_filename
+        logger.debug('Page cache filename: %s', cache_filename)
 
         if os.path.exists(cache_filename):
+            logger.debug('Page cache file "%s" found', cache_filename)
             converter = converter_class(file_object=open(cache_filename))
 
             converter.seek(0)
         else:
+            logger.debug('Page cache file "%s" not found', cache_filename)
+
             try:
-                converter = converter_class(file_object=self.document_version.open())
+                converter = converter_class(file_object=self.document_version.get_intermidiate_file())
                 converter.seek(page_number=self.page_number - 1)
 
                 page_image = converter.get_page()
                 with open(cache_filename, 'wb+') as file_object:
                     file_object.write(page_image.getvalue())
-            except:
+            except Exception as exception:
                 # Cleanup in case of error
+                logger.error('Error creating page cache file "%s".', cache_filename)
                 fs_cleanup(cache_filename)
                 raise
 

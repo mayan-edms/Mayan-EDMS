@@ -18,11 +18,15 @@ from common.settings import setting_temporary_directory
 from common.utils import fs_cleanup
 from mimetype.api import get_mimetype
 
-from .exceptions import OfficeConversionError
+from .exceptions import InvalidOfficeFormat, OfficeConversionError
 from .literals import DEFAULT_PAGE_NUMBER, DEFAULT_FILE_FORMAT
 from .settings import setting_libreoffice_path
 
-CONVERTER_OFFICE_FILE_MIMETYPES = [
+CHUNK_SIZE = 1024
+logger = logging.getLogger(__name__)
+
+
+CONVERTER_OFFICE_FILE_MIMETYPES = (
     'application/msword',
     'application/mswrite',
     'application/mspowerpoint',
@@ -67,9 +71,7 @@ CONVERTER_OFFICE_FILE_MIMETYPES = [
     'text/x-shellscript',
     'text/plain',
     'text/rtf',
-]
-logger = logging.getLogger(__name__)
-
+)
 
 class ConverterBase(object):
     @staticmethod
@@ -78,11 +80,15 @@ class ConverterBase(object):
         Executes libreoffice using subprocess's Popen
         """
 
+        if not os.path.exists(setting_libreoffice_path.value):
+            raise OfficeConversionError(_('LibreOffice not installed or not found at path: %s') % setting_libreoffice_path.value)
+
         new_file_object, input_filepath = tempfile.mkstemp()
-        new_file_object.write(file_object.read())
         file_object.seek(0)
-        new_file_object.seek(0)
-        new_file_object.close()
+        os.write(new_file_object, file_object.read())
+        file_object.seek(0)
+        os.lseek(new_file_object, 0, os.SEEK_SET)
+        os.close(new_file_object)
 
         command = []
         command.append(setting_libreoffice_path.value)
@@ -100,9 +106,11 @@ class ConverterBase(object):
         proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
         return_code = proc.wait()
         logger.debug('return_code: %s', return_code)
+        fs_cleanup(input_filepath)
 
         readline = proc.stderr.readline()
         logger.debug('stderr: %s', readline)
+
         if return_code != 0:
             raise OfficeConversionError(readline)
 
@@ -113,13 +121,26 @@ class ConverterBase(object):
         converted_output = os.path.join(setting_temporary_directory.value, os.path.extsep.join([filename, 'pdf']))
         logger.debug('converted_output: %s', converted_output)
 
-        return converted_output
+        with open(converted_output) as converted_file_object:
+            while True:
+                data = converted_file_object.read(CHUNK_SIZE)
+                if not data:
+                    break
+                yield data
+
+        fs_cleanup(input_filepath)
 
     def __init__(self, file_object, mime_type=None):
         self.file_object = file_object
         self.image = None
         self.mime_type = mime_type or get_mimetype(file_object=file_object, mimetype_only=False)[0]
         self.soffice_file_object = None
+
+    def to_pdf(self):
+        if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
+            return ConverterBase.soffice(self.file_object)
+        else:
+            raise InvalidOfficeFormat(_('Not an office file format.'))
 
     def seek(self, page_number):
         # Starting with #0
@@ -147,22 +168,6 @@ class ConverterBase(object):
     def convert(self, page_number=DEFAULT_PAGE_NUMBER):
         self.page_number = page_number
 
-        self.mime_type = 'application/pdf'
-
-        if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
-            if os.path.exists(setting_libreoffice_path.value):
-                if not self.soffice_file_object:
-                    converted_output = ConverterBase.soffice(self.file_object)
-                    self.file_object.seek(0)
-                    self.soffice_file_object = open(converted_output)
-                    self.mime_type = 'application/pdf'
-                    fs_cleanup(converted_output)
-                else:
-                    self.soffice_file_object.seek(0)
-            else:
-                # TODO: NO LIBREOFFICE FOUND ERROR
-                pass
-
     def transform(self, transformation):
         if not self.image:
             self.seek(0)
@@ -177,7 +182,7 @@ class ConverterBase(object):
             self.image = transformation.execute_on(self.image)
 
     def get_page_count(self):
-        raise NotImplementedError()
+        raise NotImplementedError
 
 
 class BaseTransformation(object):

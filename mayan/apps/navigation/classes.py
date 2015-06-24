@@ -263,6 +263,9 @@ class SourceColumn(object):
                     return cls._registry[source.__class__]
                 except KeyError:
                     return ()
+        except TypeError:
+            # unhashable type: list
+            return ()
 
     def __init__(self, source, label, attribute):
         self.__class__._registry.setdefault(source, [])

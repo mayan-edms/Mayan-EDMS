@@ -39,12 +39,8 @@ class Python(ConverterBase):
 
             new_file_object, input_filepath = tempfile.mkstemp()
 
-            if self.soffice_file_object:
-                os.write(new_file_object, self.soffice_file_object.read())
-                self.soffice_file_object.close()
-            else:
-                os.write(new_file_object, self.file_object.read())
-                self.file_object.seek(0)
+            os.write(new_file_object, self.file_object.read())
+            self.file_object.seek(0)
 
             os.close(new_file_object)
 
@@ -57,6 +53,8 @@ class Python(ConverterBase):
                 fs_cleanup(input_filepath)
 
     def get_page_count(self):
+        super(Python, self).get_page_count()
+
         page_count = 1
 
         if self.mime_type == 'application/pdf':
@@ -64,25 +62,24 @@ class Python(ConverterBase):
             try:
                 pages = slate.PDF(self.file_object)
             except Exception as exception:
-                logger.error('slate exception; %s', exception)
-                return 1
-                # TODO: Maybe return UnknownFileFormat to display proper unknwon file format message in document description
+                logger.error('Slate exception; %s', exception)
+                raise
             else:
                 return len(pages)
             finally:
                 self.file_object.seek(0)
+        else:
+            try:
+                image = Image.open(self.file_object)
+            finally:
+                self.file_object.seek(0)
 
-        try:
-            image = Image.open(self.file_object)
-        finally:
-            self.file_object.seek(0)
+            try:
+                while True:
+                    image.seek(image.tell() + 1)
+                    page_count += 1
+            except EOFError:
+                # end of sequence
+                pass
 
-        try:
-            while True:
-                image.seek(image.tell() + 1)
-                page_count += 1
-        except EOFError:
-            # end of sequence
-            pass
-
-        return page_count
+            return page_count
