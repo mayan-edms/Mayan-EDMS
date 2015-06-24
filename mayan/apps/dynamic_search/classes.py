@@ -12,6 +12,7 @@ from django.utils.module_loading import import_string
 from acls.models import AccessEntry
 from permissions.models import Permission
 
+from .models import RecentSearch
 from .settings import setting_limit
 
 logger = logging.getLogger(__name__)
@@ -32,8 +33,8 @@ class SearchModel(object):
         self.app_label = app_label
         self.model_name = model_name
         self.search_fields = {}
-        self.model = get_model(app_label, model_name)
-        self.label = label or self.model._meta.verbose_name
+        self.model = None  # Lazy
+        self.label = label
         self.serializer_string = serializer_string
         self.permission = permission
         self.__class__.registry[self.get_full_name()] = self
@@ -80,12 +81,15 @@ class SearchModel(object):
         return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
 
     def search(self, query_string, user, global_and_search=False):
-        from .models import RecentSearch
-
         elapsed_time = 0
         start_time = datetime.datetime.now()
         result_set = set()
         search_dict = {}
+
+        if not self.model:
+            self.model = get_model(self.app_label, self.model_name)
+            if not self.label:
+                self.label = self.model._meta.verbose_name
 
         if 'q' in query_string:
             # Simple search
