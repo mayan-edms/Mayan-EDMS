@@ -21,8 +21,7 @@ from common.utils import encapsulate, pretty_size
 from common.views import ParentChildListView, SingleObjectListView
 from common.widgets import two_state_template
 from converter.literals import (
-    DEFAULT_FILE_FORMAT_MIMETYPE, DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION,
-    DEFAULT_ZOOM_LEVEL
+    DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 )
 from converter.models import Transformation
 from converter.permissions import PERMISSION_TRANSFORMATION_DELETE

@@ -13,10 +13,12 @@ class EmailAuthenticationForm(forms.Form):
     """
     A form to use email address authentication
     """
-    email = forms.CharField(label=_('Email'), max_length=254,
-        widget=EmailInput()
+    email = forms.CharField(
+        label=_('Email'), max_length=254, widget=EmailInput()
     )
-    password = forms.CharField(label=_('Password'), widget=forms.PasswordInput)
+    password = forms.CharField(
+        label=_('Password'), widget=forms.PasswordInput
+    )
 
     error_messages = {
         'invalid_login': _('Please enter a correct email and password. '

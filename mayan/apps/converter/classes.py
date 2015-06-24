@@ -73,6 +73,7 @@ CONVERTER_OFFICE_FILE_MIMETYPES = (
     'text/rtf',
 )
 
+
 class ConverterBase(object):
     @staticmethod
     def soffice(file_object):

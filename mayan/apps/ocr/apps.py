@@ -28,10 +28,7 @@ from .links import (
     link_entry_re_queue, link_entry_re_queue_multiple
 )
 from .models import DocumentVersionOCRError
-from .permissions import (
-    PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_CONTENT_VIEW,
-    PERMISSION_DOCUMENT_TYPE_OCR_SETUP
-)
+from .permissions import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_CONTENT_VIEW
 from .settings import setting_pdftotext_path, setting_tesseract_path, setting_unpaper_path
 from .tasks import task_do_ocr
 

@@ -45,7 +45,7 @@ class ACLsApp(MayanAppConfig):
                 'acls:acl_class_multiple_grant',
                 'acls:acl_class_multiple_revoke'
             ],
-         )
+        )
         menu_setup.bind_links(links=[link_acl_setup_valid_classes])
         menu_sidebar.bind_links(links=[link_acl_holder_new], sources=[AccessObject])
 

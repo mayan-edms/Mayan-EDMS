@@ -236,18 +236,6 @@ class Link(object):
         return resolved_link
 
 
-class ModelListColumn(object):
-    _model_list_columns = {}
-
-    @classmethod
-    def get_model(cls, model):
-        return cls._model_list_columns.get(model)
-
-    def __init__(self, model, name, attribute):
-        self.__class__._model_list_columns.setdefault(model, [])
-        self.__class__._model_list_columns[model].extend(columns)
-
-
 class SourceColumn(object):
     _registry = {}
 

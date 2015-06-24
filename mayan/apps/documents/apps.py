@@ -1,7 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-import tempfile
-
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import registry
@@ -15,7 +13,7 @@ from common import (
 from common.api import register_maintenance_links
 from common.classes import ModelAttribute
 from common.signals import post_initial_setup
-from common.utils import encapsulate, validate_path
+from common.utils import encapsulate
 from converter.links import link_transformation_list
 from converter.permissions import (
     PERMISSION_TRANSFORMATION_CREATE,
@@ -73,10 +71,6 @@ class DocumentsApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentsApp, self).ready()
-
-        # TODO: validate cache_path or create new
-        #if (not validate_path(document_settings.CACHE_PATH)) or (not document_settings.CACHE_PATH):
-        #    setattr(document_settings, 'CACHE_PATH', tempfile.mkdtemp())
 
         APIEndPoint('documents')
 

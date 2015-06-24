@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import shutil
 
-from django.core.files.base import File
 from django.test import TestCase
 
 from .api import GPG, Key

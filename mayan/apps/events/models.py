@@ -17,5 +17,3 @@ class EventType(models.Model):
     class Meta:
         verbose_name = _('Event type')
         verbose_name_plural = _('Event types')
-
-

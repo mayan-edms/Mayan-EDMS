@@ -1,11 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-import tempfile
 
 from django import apps
 from django.conf import settings
-from django.conf.urls import include, patterns, url
+from django.conf.urls import include, url
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_migrate, post_save
 from django.utils.translation import ugettext_lazy as _
@@ -23,8 +22,6 @@ from .menus import (
     menu_facet, menu_main, menu_secondary, menu_setup, menu_tools
 )
 from .models import AnonymousUserSingleton
-from .settings import setting_temporary_directory
-from .utils import validate_path
 
 logger = logging.getLogger(__name__)
 
@@ -40,10 +37,9 @@ class MayanAppConfig(apps.AppConfig):
     def ready(self):
         from mayan.urls import urlpatterns
 
-
         if self.app_url:
             top_url = '{}/'.format(self.app_url)
-        elif not self.app_url is None:
+        elif self.app_url is not None:
             top_url = ''
         else:
             top_url = '{}/'.format(self.name)
@@ -77,7 +73,3 @@ class CommonApp(MayanAppConfig):
         post_migrate.connect(create_anonymous_user, dispatch_uid='create_anonymous_user', sender=self)
         user_logged_in.connect(user_locale_profile_session_config, dispatch_uid='user_locale_profile_session_config', sender=settings.AUTH_USER_MODEL)
         post_save.connect(user_locale_profile_create, dispatch_uid='user_locale_profile_create', sender=settings.AUTH_USER_MODEL)
-
-        # TODO: Create temp directory and update setting if /tmp not found/writable or value == None
-        #if (not validate_path(setting_temporary_directory.value)) or (not setting_temporary_directory.value):
-        #    setattr(common_settings, 'setting_temporary_directory.value', tempfile.mkdtemp())

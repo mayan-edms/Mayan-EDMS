@@ -228,8 +228,8 @@ class UserGroupsView(AssignRemoveView):
     def dispatch(self, request, *args, **kwargs):
         Permission.objects.check_permissions(request.user, [PERMISSION_USER_EDIT])
         self.user = get_object_or_404(User, pk=self.kwargs['user_id'])
-        self.left_list_title=_('Non groups of user: %s') % self.user
-        self.right_list_title=_('Groups of user: %s') % self.user
+        self.left_list_title = _('Non groups of user: %s') % self.user
+        self.right_list_title = _('Groups of user: %s') % self.user
 
         return super(UserGroupsView, self).dispatch(request, *args, **kwargs)
 

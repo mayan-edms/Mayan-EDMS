@@ -9,12 +9,8 @@ import sh
 from common.settings import setting_temporary_directory
 
 from .exceptions import UnpaperError
-from .literals import (
-    DEFAULT_OCR_FILE_EXTENSION, DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT
-)
 from .parsers import parse_document_page
 from .parsers.exceptions import ParserError, ParserUnknownFile
-from .runtime import ocr_backend
 from .settings import UNPAPER_PATH
 
 logger = logging.getLogger(__name__)

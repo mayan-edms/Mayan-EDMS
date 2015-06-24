@@ -15,7 +15,6 @@ from common.utils import encapsulate
 from permissions.models import Permission
 
 from .api import Key
-from .exceptions import KeyImportError
 from .forms import KeySearchForm
 from .permissions import (
     PERMISSION_KEY_DELETE, PERMISSION_KEY_RECEIVE, PERMISSION_KEY_VIEW,

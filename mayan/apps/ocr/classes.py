@@ -4,9 +4,6 @@ import logging
 
 from converter import converter_class
 
-from .literals import (
-    DEFAULT_OCR_FILE_EXTENSION, DEFAULT_OCR_FILE_FORMAT, UNPAPER_FILE_FORMAT
-)
 from .models import DocumentPageContent
 from .parsers import parse_document_page
 from .parsers.exceptions import ParserError, ParserUnknownFile
@@ -25,7 +22,7 @@ class OCRBackendBase(object):
             image = page.get_image()
             logger.info('Processing page: %d of document version: %s', page.page_number, document_version)
             document_page_content, created = DocumentPageContent.objects.get_or_create(document_page=page)
-            result =  self.execute(file_object=image, language=language)
+            result = self.execute(file_object=image, language=language)
             document_page_content.content = self.execute(file_object=image, language=language)
             document_page_content.save()
             image.close()

@@ -410,8 +410,6 @@ class DocumentVersion(models.Model):
             logger.debug('Intermidiate file "%s" found.', cache_filename)
 
             return open(cache_filename)
-            #converter = converter_class(file_object=open(cache_filename))
-            #converter.seek(0)
         else:
             logger.debug('Intermidiate file "%s" not found.', cache_filename)
 
@@ -539,7 +537,7 @@ class DocumentPage(models.Model):
                     file_object.write(page_image.getvalue())
             except Exception as exception:
                 # Cleanup in case of error
-                logger.error('Error creating page cache file "%s".', cache_filename)
+                logger.error('Error creating page cache file "%s"; %s', cache_filename, exception)
                 fs_cleanup(cache_filename)
                 raise
 
