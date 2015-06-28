@@ -17,7 +17,7 @@ from permissions.models import Permission
 
 from .forms import DocumentMailForm
 from .permissions import (
-    PERMISSION_MAILING_LINK, PERMISSION_MAILING_SEND_DOCUMENT
+    permission_mailing_link, permission_mailing_send_document
 )
 from .tasks import task_send_document
 
@@ -29,9 +29,9 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
 
     if as_attachment:
-        permission = PERMISSION_MAILING_SEND_DOCUMENT
+        permission = permission_mailing_send_document
     else:
-        permission = PERMISSION_MAILING_LINK
+        permission = permission_mailing_link
 
     try:
         Permission.objects.check_permissions(request.user, [permission])

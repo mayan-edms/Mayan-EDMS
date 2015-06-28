@@ -2,13 +2,13 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace, Permission
+from permissions.models import PermissionNamespace
 
-folder_namespace = PermissionNamespace('folders', _('Folders'))
+namespace = PermissionNamespace('folders', _('Folders'))
 
-PERMISSION_FOLDER_CREATE = Permission.objects.register(folder_namespace, 'folder_create', _('Create new folders'))
-PERMISSION_FOLDER_EDIT = Permission.objects.register(folder_namespace, 'folder_edit', _('Edit new folders'))
-PERMISSION_FOLDER_DELETE = Permission.objects.register(folder_namespace, 'folder_delete', _('Delete new folders'))
-PERMISSION_FOLDER_REMOVE_DOCUMENT = Permission.objects.register(folder_namespace, 'folder_remove_document', _('Remove documents from folders'))
-PERMISSION_FOLDER_VIEW = Permission.objects.register(folder_namespace, 'folder_view', _('View existing folders'))
-PERMISSION_FOLDER_ADD_DOCUMENT = Permission.objects.register(folder_namespace, 'folder_add_document', _('Add documents to existing folders'))
+permission_folder_create = namespace.add_permission(name='folder_create', label=_('Create new folders'))
+permission_folder_edit = namespace.add_permission(name='folder_edit', label=_('Edit new folders'))
+permission_folder_delete = namespace.add_permission(name='folder_delete', label=_('Delete new folders'))
+permission_folder_remove_document = namespace.add_permission(name='folder_remove_document', label=_('Remove documents from folders'))
+permission_folder_view = namespace.add_permission(name='folder_view', label=_('View existing folders'))
+permission_folder_add_document = namespace.add_permission(name='folder_add_document', label=_('Add documents to existing folders'))

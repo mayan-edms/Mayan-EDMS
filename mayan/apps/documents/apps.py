@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from actstream import registry
 
 from acls.api import class_permissions
-from acls.permissions import ACLS_VIEW_ACL, ACLS_EDIT_ACL
+from acls.permissions import acls_view_acl, acls_edit_acl
 from common import (
     MayanAppConfig, MissingItem, menu_facet, menu_front_page, menu_object,
     menu_secondary, menu_setup, menu_sidebar, menu_multi_item
@@ -16,11 +16,11 @@ from common.signals import post_initial_setup
 from common.utils import encapsulate
 from converter.links import link_transformation_list
 from converter.permissions import (
-    PERMISSION_TRANSFORMATION_CREATE,
-    PERMISSION_TRANSFORMATION_DELETE, PERMISSION_TRANSFORMATION_EDIT,
-    PERMISSION_TRANSFORMATION_VIEW,
+    permission_transformation_create,
+    permission_transformation_delete, permission_transformation_edit,
+    permission_transformation_view,
 )
-from events.permissions import PERMISSION_EVENTS_VIEW
+from events.permissions import permission_events_view
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
@@ -55,10 +55,10 @@ from .models import (
     DocumentVersion
 )
 from .permissions import (
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_NEW_VERSION,
-    PERMISSION_DOCUMENT_PRINT, PERMISSION_DOCUMENT_PROPERTIES_EDIT,
-    PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_VIEW
+    permission_document_delete, permission_document_download,
+    permission_document_edit, permission_document_new_version,
+    permission_document_print, permission_document_properties_edit,
+    permission_document_version_revert, permission_document_view
 )
 from .settings import setting_thumbnail_size
 from .statistics import DocumentStatistics, DocumentUsageStatistics
@@ -82,14 +82,14 @@ class DocumentsApp(MayanAppConfig):
         ])
 
         class_permissions(Document, [
-            ACLS_VIEW_ACL, ACLS_EDIT_ACL, PERMISSION_DOCUMENT_DELETE,
-            PERMISSION_DOCUMENT_DOWNLOAD, PERMISSION_DOCUMENT_EDIT,
-            PERMISSION_DOCUMENT_NEW_VERSION, PERMISSION_DOCUMENT_PRINT,
-            PERMISSION_DOCUMENT_PROPERTIES_EDIT,
-            PERMISSION_DOCUMENT_VERSION_REVERT, PERMISSION_DOCUMENT_VIEW,
-            PERMISSION_EVENTS_VIEW, PERMISSION_TRANSFORMATION_CREATE,
-            PERMISSION_TRANSFORMATION_DELETE, PERMISSION_TRANSFORMATION_EDIT,
-            PERMISSION_TRANSFORMATION_VIEW,
+            acls_view_acl, acls_edit_acl, permission_document_delete,
+            permission_document_download, permission_document_edit,
+            permission_document_new_version, permission_document_print,
+            permission_document_properties_edit,
+            permission_document_version_revert, permission_document_view,
+            permission_events_view, permission_transformation_create,
+            permission_transformation_delete, permission_transformation_edit,
+            permission_transformation_view,
         ])
 
         menu_front_page.bind_links(links=[link_document_list_recent, link_document_list])

@@ -8,9 +8,9 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .permissions import (
-    PERMISSION_GROUP_CREATE, PERMISSION_GROUP_DELETE, PERMISSION_GROUP_EDIT,
-    PERMISSION_GROUP_VIEW, PERMISSION_USER_CREATE, PERMISSION_USER_DELETE,
-    PERMISSION_USER_EDIT, PERMISSION_USER_VIEW
+    permission_group_create, permission_group_delete, permission_group_edit,
+    permission_group_view, permission_user_create, permission_user_delete,
+    permission_user_edit, permission_user_view
 )
 from .serializers import GroupSerializer, UserSerializer
 
@@ -21,8 +21,8 @@ class APIGroupListView(generics.ListCreateAPIView):
 
     permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [PERMISSION_GROUP_VIEW]}
-    mayan_view_permissions = {'POST': [PERMISSION_GROUP_CREATE]}
+    mayan_object_permissions = {'GET': [permission_group_view]}
+    mayan_view_permissions = {'POST': [permission_group_create]}
 
     def get(self, *args, **kwargs):
         """Returns a list of all the groups."""
@@ -39,10 +39,10 @@ class APIGroupView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [PERMISSION_GROUP_VIEW],
-        'PUT': [PERMISSION_GROUP_EDIT],
-        'PATCH': [PERMISSION_GROUP_EDIT],
-        'DELETE': [PERMISSION_GROUP_DELETE]
+        'GET': [permission_group_view],
+        'PUT': [permission_group_edit],
+        'PATCH': [permission_group_edit],
+        'DELETE': [permission_group_delete]
     }
 
     def delete(self, *args, **kwargs):
@@ -68,8 +68,8 @@ class APIUserListView(generics.ListCreateAPIView):
 
     permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [PERMISSION_USER_VIEW]}
-    mayan_view_permissions = {'POST': [PERMISSION_USER_CREATE]}
+    mayan_object_permissions = {'GET': [permission_user_view]}
+    mayan_view_permissions = {'POST': [permission_user_create]}
 
     def get(self, *args, **kwargs):
         """Returns a list of all the users."""
@@ -86,10 +86,10 @@ class APIUserView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [PERMISSION_USER_VIEW],
-        'PUT': [PERMISSION_USER_EDIT],
-        'PATCH': [PERMISSION_USER_EDIT],
-        'DELETE': [PERMISSION_USER_DELETE]
+        'GET': [permission_user_view],
+        'PUT': [permission_user_edit],
+        'PATCH': [permission_user_edit],
+        'DELETE': [permission_user_delete]
     }
 
     def delete(self, *args, **kwargs):

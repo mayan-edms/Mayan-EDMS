@@ -2,13 +2,13 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace, Permission
+from permissions.models import PermissionNamespace
 
 acls_namespace = PermissionNamespace('acls', _('Access control lists'))
 acls_setup_namespace = PermissionNamespace('acls_setup', _('Access control lists'))
 
-ACLS_EDIT_ACL = Permission.objects.register(acls_namespace, 'acl_edit', _('Edit ACLs'))
-ACLS_VIEW_ACL = Permission.objects.register(acls_namespace, 'acl_view', _('View ACLs'))
+acls_edit_acl = acls_namespace.add_permission(name='acl_edit', label=_('Edit ACLs'))
+acls_view_acl = acls_namespace.add_permission(name='acl_view', label=_('View ACLs'))
 
-ACLS_CLASS_EDIT_ACL = Permission.objects.register(acls_setup_namespace, 'acl_class_edit', _('Edit class default ACLs'))
-ACLS_CLASS_VIEW_ACL = Permission.objects.register(acls_setup_namespace, 'acl_class_view', _('View class default ACLs'))
+acls_class_edit_acl = acls_setup_namespace.add_permission(name='acl_class_edit', label=_('Edit class default ACLs'))
+acls_class_view_acl = acls_setup_namespace.add_permission(name='acl_class_view', label=_('View class default ACLs'))

@@ -22,8 +22,8 @@ from permissions.models import Permission
 from .forms import DetachedSignatureForm
 from .models import DocumentVersionSignature
 from .permissions import (
-    PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_UPLOAD,
-    PERMISSION_SIGNATURE_DOWNLOAD, PERMISSION_SIGNATURE_DELETE
+    permission_document_verify, permission_signature_upload,
+    permission_signature_download, permission_signature_delete
 )
 
 logger = logging.getLogger(__name__)
@@ -33,9 +33,9 @@ def document_verify(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VERIFY])
+        Permission.objects.check_permissions(request.user, [permission_document_verify])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VERIFY, request.user, document)
+        AccessEntry.objects.check_access(permission_document_verify, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -80,9 +80,9 @@ def document_signature_upload(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_SIGNATURE_UPLOAD])
+        Permission.objects.check_permissions(request.user, [permission_signature_upload])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_SIGNATURE_UPLOAD, request.user, document)
+        AccessEntry.objects.check_access(permission_signature_upload, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -116,9 +116,9 @@ def document_signature_download(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_SIGNATURE_DOWNLOAD])
+        Permission.objects.check_permissions(request.user, [permission_signature_download])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_SIGNATURE_DOWNLOAD, request.user, document)
+        AccessEntry.objects.check_access(permission_signature_download, request.user, document)
 
     try:
         if DocumentVersionSignature.objects.has_detached_signature(document.latest_version):
@@ -140,9 +140,9 @@ def document_signature_delete(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_SIGNATURE_DELETE])
+        Permission.objects.check_permissions(request.user, [permission_signature_delete])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_SIGNATURE_DELETE, request.user, document)
+        AccessEntry.objects.check_access(permission_signature_delete, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 

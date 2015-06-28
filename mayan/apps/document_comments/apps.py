@@ -15,8 +15,8 @@ from .links import (
     link_comment_add, link_comment_delete, link_comments_for_document
 )
 from .permissions import (
-    PERMISSION_COMMENT_CREATE, PERMISSION_COMMENT_DELETE,
-    PERMISSION_COMMENT_VIEW
+    permission_comment_create, permission_comment_delete,
+    permission_comment_view
 )
 
 
@@ -45,9 +45,9 @@ class DocumentCommentsApp(MayanAppConfig):
         SourceColumn(source=Comment, label=_('Comment'), attribute='comment')
 
         class_permissions(Document, [
-            PERMISSION_COMMENT_CREATE,
-            PERMISSION_COMMENT_DELETE,
-            PERMISSION_COMMENT_VIEW]
+            permission_comment_create,
+            permission_comment_delete,
+            permission_comment_view]
         )
 
         menu_sidebar.bind_links(links=[link_comment_add], sources=['comments:comments_for_document', 'comments:comment_add', 'comments:comment_delete', 'comments:comment_multiple_delete'])

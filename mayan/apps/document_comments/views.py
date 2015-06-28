@@ -18,8 +18,8 @@ from permissions.models import Permission
 
 from .forms import CommentForm
 from .permissions import (
-    PERMISSION_COMMENT_CREATE, PERMISSION_COMMENT_DELETE,
-    PERMISSION_COMMENT_VIEW
+    permission_comment_create, permission_comment_delete,
+    permission_comment_view
 )
 
 
@@ -32,9 +32,9 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         comments = [get_object_or_404(Comment, pk=comment_id) for comment_id in comment_id_list.split(',')]
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_DELETE])
+        Permission.objects.check_permissions(request.user, [permission_comment_delete])
     except PermissionDenied:
-        comments = AccessEntry.objects.filter_objects_by_access(PERMISSION_COMMENT_DELETE, request.user, comments, related='content_object')
+        comments = AccessEntry.objects.filter_objects_by_access(permission_comment_delete, request.user, comments, related='content_object')
 
     if not comments:
         messages.error(request, _('Must provide at least one comment.'))
@@ -80,9 +80,9 @@ def comment_add(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_CREATE])
+        Permission.objects.check_permissions(request.user, [permission_comment_create])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_COMMENT_CREATE, request.user, document)
+        AccessEntry.objects.check_access(permission_comment_create, request.user, document)
 
     post_action_redirect = None
 
@@ -118,9 +118,9 @@ def comments_for_document(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_COMMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_comment_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_COMMENT_VIEW, request.user, document)
+        AccessEntry.objects.check_access(permission_comment_view, request.user, document)
 
     return render_to_response('appearance/generic_list.html', {
         'object': document,

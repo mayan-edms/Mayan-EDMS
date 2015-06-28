@@ -35,8 +35,8 @@ from .links import (
 )
 from .models import DocumentTypeMetadataType, MetadataType
 from .permissions import (
-    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,
-    PERMISSION_METADATA_DOCUMENT_REMOVE, PERMISSION_METADATA_DOCUMENT_VIEW
+    permission_metadata_document_add, permission_metadata_document_edit,
+    permission_metadata_document_remove, permission_metadata_document_view
 )
 
 logger = logging.getLogger(__name__)
@@ -61,8 +61,8 @@ class MetadataApp(MayanAppConfig):
         SourceColumn(source=Document, label=_('Metadata'), attribute=encapsulate(lambda document: get_metadata_string(document)))
 
         class_permissions(Document, [
-            PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,
-            PERMISSION_METADATA_DOCUMENT_REMOVE, PERMISSION_METADATA_DOCUMENT_VIEW,
+            permission_metadata_document_add, permission_metadata_document_edit,
+            permission_metadata_document_remove, permission_metadata_document_view,
         ])
 
         document_search.add_model_field(field='metadata__metadata_type__name', label=_('Metadata type'))

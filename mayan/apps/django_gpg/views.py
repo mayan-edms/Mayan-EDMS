@@ -17,8 +17,8 @@ from permissions.models import Permission
 from .api import Key
 from .forms import KeySearchForm
 from .permissions import (
-    PERMISSION_KEY_DELETE, PERMISSION_KEY_RECEIVE, PERMISSION_KEY_VIEW,
-    PERMISSION_KEYSERVER_QUERY
+    permission_key_delete, permission_key_receive, permission_key_view,
+    permission_keyserver_query
 )
 from .runtime import gpg
 
@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 
 def key_receive(request, key_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_KEY_RECEIVE])
+    Permission.objects.check_permissions(request.user, [permission_key_receive])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -64,7 +64,7 @@ def key_receive(request, key_id):
 
 
 def key_list(request, secret=True):
-    Permission.objects.check_permissions(request.user, [PERMISSION_KEY_VIEW])
+    Permission.objects.check_permissions(request.user, [permission_key_view])
 
     if secret:
         object_list = Key.get_all(gpg, secret=True)
@@ -91,7 +91,7 @@ def key_list(request, secret=True):
 
 
 def key_delete(request, fingerprint, key_type):
-    Permission.objects.check_permissions(request.user, [PERMISSION_KEY_DELETE])
+    Permission.objects.check_permissions(request.user, [permission_key_delete])
 
     secret = key_type == 'sec'
     key = Key.get(gpg, fingerprint, secret=secret)
@@ -119,7 +119,7 @@ def key_delete(request, fingerprint, key_type):
 
 
 def key_query(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_KEYSERVER_QUERY])
+    Permission.objects.check_permissions(request.user, [permission_keyserver_query])
 
     subtemplates_list = []
     term = request.GET.get('term')

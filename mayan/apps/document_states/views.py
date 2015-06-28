@@ -23,18 +23,18 @@ from .forms import (
 )
 from .models import Workflow, WorkflowInstance, WorkflowState, WorkflowTransition
 from .permissions import (
-    PERMISSION_WORKFLOW_CREATE, PERMISSION_WORKFLOW_DELETE,
-    PERMISSION_WORKFLOW_EDIT, PERMISSION_WORKFLOW_VIEW,
-    PERMISSION_DOCUMENT_WORKFLOW_VIEW, PERMISSION_DOCUMENT_WORKFLOW_TRANSITION
+    permission_workflow_create, permission_workflow_delete,
+    permission_workflow_edit, permission_workflow_view,
+    permission_document_workflow_view, permission_document_workflow_transition
 )
 
 
 class DocumentWorkflowInstanceListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_WORKFLOW_VIEW])
+            Permission.objects.check_permissions(request.user, [permission_document_workflow_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_WORKFLOW_VIEW, request.user, self.get_document())
+            AccessEntry.objects.check_access(permission_document_workflow_view, request.user, self.get_document())
 
         return super(DocumentWorkflowInstanceListView, self).dispatch(request, *args, **kwargs)
 
@@ -60,9 +60,9 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
 class WorkflowInstanceDetailView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_WORKFLOW_VIEW])
+            Permission.objects.check_permissions(request.user, [permission_document_workflow_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_WORKFLOW_VIEW, request.user, self.get_workflow_instance().document)
+            AccessEntry.objects.check_access(permission_document_workflow_view, request.user, self.get_workflow_instance().document)
 
         return super(WorkflowInstanceDetailView, self).dispatch(request, *args, **kwargs)
 
@@ -94,9 +94,9 @@ class WorkflowInstanceTransitionView(FormView):
 
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_WORKFLOW_TRANSITION])
+            Permission.objects.check_permissions(request.user, [permission_document_workflow_transition])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_WORKFLOW_TRANSITION, request.user, self.get_workflow_instance().document)
+            AccessEntry.objects.check_access(permission_document_workflow_transition, request.user, self.get_workflow_instance().document)
 
         return super(WorkflowInstanceTransitionView, self).dispatch(request, *args, **kwargs)
 
@@ -140,26 +140,26 @@ class SetupWorkflowListView(SingleObjectListView):
         'hide_link': True,
     }
     model = Workflow
-    view_permission = PERMISSION_WORKFLOW_VIEW
+    view_permission = permission_workflow_view
 
 
 class SetupWorkflowCreateView(SingleObjectCreateView):
     form_class = WorkflowForm
     model = Workflow
-    view_permission = PERMISSION_WORKFLOW_CREATE
+    view_permission = permission_workflow_create
     success_url = reverse_lazy('document_states:setup_workflow_list')
 
 
 class SetupWorkflowEditView(SingleObjectEditView):
     form_class = WorkflowForm
     model = Workflow
-    view_permission = PERMISSION_WORKFLOW_EDIT
+    view_permission = permission_workflow_edit
     success_url = reverse_lazy('document_states:setup_workflow_list')
 
 
 class SetupWorkflowDeleteView(SingleObjectDeleteView):
     model = Workflow
-    view_permission = PERMISSION_WORKFLOW_DELETE
+    view_permission = permission_workflow_delete
     success_url = reverse_lazy('document_states:setup_workflow_list')
 
 
@@ -175,9 +175,9 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
         try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_WORKFLOW_EDIT])
+            Permission.objects.check_permissions(self.request.user, [permission_workflow_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, self.request.user, self.workflow)
+            AccessEntry.objects.check_access(permission_workflow_edit, self.request.user, self.workflow)
 
         return super(SetupWorkflowDocumentTypesView, self).dispatch(request, *args, **kwargs)
 
@@ -205,9 +205,9 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
 class SetupWorkflowStateListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_EDIT])
+            Permission.objects.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, request.user, self.get_workflow())
+            AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
         return super(SetupWorkflowStateListView, self).dispatch(request, *args, **kwargs)
 
@@ -235,9 +235,9 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_EDIT])
+            Permission.objects.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, request.user, self.get_workflow())
+            AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
         return super(SetupWorkflowStateCreateView, self).dispatch(request, *args, **kwargs)
 
@@ -269,7 +269,7 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
 
 class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
     model = WorkflowState
-    view_permission = PERMISSION_WORKFLOW_DELETE
+    view_permission = permission_workflow_delete
 
     def get_context_data(self, **kwargs):
         context = super(SetupWorkflowStateDeleteView, self).get_context_data(**kwargs)
@@ -291,7 +291,7 @@ class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
 class SetupWorkflowStateEditView(SingleObjectEditView):
     form_class = WorkflowStateForm
     model = WorkflowState
-    view_permission = PERMISSION_WORKFLOW_EDIT
+    view_permission = permission_workflow_edit
 
     def get_context_data(self, **kwargs):
         context = super(SetupWorkflowStateEditView, self).get_context_data(**kwargs)
@@ -316,9 +316,9 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
 class SetupWorkflowTransitionListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_EDIT])
+            Permission.objects.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, request.user, self.get_workflow())
+            AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
         return super(SetupWorkflowTransitionListView, self).dispatch(request, *args, **kwargs)
 
@@ -346,9 +346,9 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_EDIT])
+            Permission.objects.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, request.user, self.get_workflow())
+            AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
         return super(SetupWorkflowTransitionCreateView, self).dispatch(request, *args, **kwargs)
 
@@ -390,7 +390,7 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
 
 class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
     model = WorkflowTransition
-    view_permission = PERMISSION_WORKFLOW_DELETE
+    view_permission = permission_workflow_delete
 
     def get_context_data(self, **kwargs):
         context = super(SetupWorkflowTransitionDeleteView, self).get_context_data(**kwargs)
@@ -412,7 +412,7 @@ class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
 class SetupWorkflowTransitionEditView(SingleObjectEditView):
     form_class = WorkflowTransitionForm
     model = WorkflowTransition
-    view_permission = PERMISSION_WORKFLOW_EDIT
+    view_permission = permission_workflow_edit
 
     def get_context_data(self, **kwargs):
         context = super(SetupWorkflowTransitionEditView, self).get_context_data(**kwargs)

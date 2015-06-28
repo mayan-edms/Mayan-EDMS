@@ -27,6 +27,9 @@ class PermissionNamespace(object):
     def __unicode__(self):
         return unicode(self.label)
 
+    def add_permission(self, name, label):
+        return Permission(namespace=self, name=name, label=label)
+
 
 class PermissionDoesNotExists(Exception):
     pass

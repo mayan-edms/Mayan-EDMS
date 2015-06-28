@@ -5,13 +5,13 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link
 
 from .permissions import (
-    PERMISSION_KEY_DELETE, PERMISSION_KEY_RECEIVE, PERMISSION_KEY_VIEW,
-    PERMISSION_KEYSERVER_QUERY
+    permission_key_delete, permission_key_receive, permission_key_view,
+    permission_keyserver_query
 )
 
-link_private_keys = Link(icon='fa fa-key', permissions=[PERMISSION_KEY_VIEW], text=_('Private keys'), view='django_gpg:key_private_list')
-link_public_keys = Link(icon='fa fa-key', permissions=[PERMISSION_KEY_VIEW], text=_('Public keys'), view='django_gpg:key_public_list')
-link_key_delete = Link(permissions=[PERMISSION_KEY_DELETE], tags='dangerous', text=_('Delete'), view='django_gpg:key_delete', args=['object.fingerprint', 'object.type'])
-link_key_query = Link(text=_('Query keyservers'), view='django_gpg:key_query', permissions=[PERMISSION_KEYSERVER_QUERY])
-link_key_receive = Link(keep_query=True, permissions=[PERMISSION_KEY_RECEIVE], text=_('Import'), view='django_gpg:key_receive', args='object.key_id')
-link_key_setup = Link(icon='fa fa-key', permissions=[PERMISSION_KEY_VIEW], text=_('Key management'), view='django_gpg:key_public_list')
+link_private_keys = Link(icon='fa fa-key', permissions=[permission_key_view], text=_('private keys'), view='django_gpg:key_private_list')
+link_public_keys = Link(icon='fa fa-key', permissions=[permission_key_view], text=_('public keys'), view='django_gpg:key_public_list')
+link_key_delete = Link(permissions=[permission_key_delete], tags='dangerous', text=_('delete'), view='django_gpg:key_delete', args=['object.fingerprint', 'object.type'])
+link_key_query = Link(text=_('Query keyservers'), view='django_gpg:key_query', permissions=[permission_keyserver_query])
+link_key_receive = Link(keep_query=True, permissions=[permission_key_receive], text=_('import'), view='django_gpg:key_receive', args='object.key_id')
+link_key_setup = Link(icon='fa fa-key', permissions=[permission_key_view], text=_('key management'), view='django_gpg:key_public_list')

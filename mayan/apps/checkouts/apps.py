@@ -18,8 +18,8 @@ from .links import (
 )
 from .models import DocumentCheckout
 from .permissions import (
-    PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
-    PERMISSION_DOCUMENT_CHECKOUT
+    permission_document_checkin, permission_document_checkin_override,
+    permission_document_checkout
 )
 
 CHECK_EXPIRED_CHECK_OUTS_INTERVAL = 60  # Lowest check out expiration allowed
@@ -48,9 +48,9 @@ class CheckoutsApp(MayanAppConfig):
         })
 
         class_permissions(Document, [
-            PERMISSION_DOCUMENT_CHECKOUT,
-            PERMISSION_DOCUMENT_CHECKIN,
-            PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
+            permission_document_checkout,
+            permission_document_checkin,
+            permission_document_checkin_override,
         ])
 
         menu_facet.bind_links(links=[link_checkout_info], sources=[Document])

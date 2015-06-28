@@ -8,16 +8,16 @@ from rest_framework.response import Response
 
 from acls.models import AccessEntry
 from documents.models import Document
-from documents.permissions import PERMISSION_DOCUMENT_VIEW
+from documents.permissions import permission_document_view
 from permissions.models import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import Folder
 from .permissions import (
-    PERMISSION_FOLDER_ADD_DOCUMENT, PERMISSION_FOLDER_CREATE,
-    PERMISSION_FOLDER_DELETE, PERMISSION_FOLDER_EDIT,
-    PERMISSION_FOLDER_REMOVE_DOCUMENT, PERMISSION_FOLDER_VIEW
+    permission_folder_add_document, permission_folder_create,
+    permission_folder_delete, permission_folder_edit,
+    permission_folder_remove_document, permission_folder_view
 )
 from .serializers import FolderSerializer
 
@@ -28,8 +28,8 @@ class APIFolderListView(generics.ListCreateAPIView):
 
     permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [PERMISSION_FOLDER_VIEW]}
-    mayan_view_permissions = {'POST': [PERMISSION_FOLDER_CREATE]}
+    mayan_object_permissions = {'GET': [permission_folder_view]}
+    mayan_view_permissions = {'POST': [permission_folder_create]}
 
     def get(self, *args, **kwargs):
         """Returns a list of all the folders."""
@@ -60,10 +60,10 @@ class APIFolderView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [PERMISSION_FOLDER_VIEW],
-        'PUT': [PERMISSION_FOLDER_EDIT],
-        'PATCH': [PERMISSION_FOLDER_EDIT],
-        'DELETE': [PERMISSION_FOLDER_DELETE]
+        'GET': [permission_folder_view],
+        'PUT': [permission_folder_edit],
+        'PATCH': [permission_folder_edit],
+        'DELETE': [permission_folder_delete]
     }
 
     def delete(self, *args, **kwargs):
@@ -87,7 +87,7 @@ class APIFolderDocumentListView(generics.ListAPIView):
     """Returns a list of all the documents contained in a particular folder."""
 
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
+    mayan_object_permissions = {'GET': [permission_document_view]}
 
     def get_serializer_class(self):
         from documents.serializers import DocumentSerializer
@@ -96,9 +96,9 @@ class APIFolderDocumentListView(generics.ListAPIView):
     def get_queryset(self):
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_FOLDER_VIEW])
+            Permission.objects.check_permissions(self.request.user, [permission_folder_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_FOLDER_VIEW, self.request.user, folder)
+            AccessEntry.objects.check_access(permission_folder_view, self.request.user, folder)
 
         return folder.documents.all()
 
@@ -109,14 +109,14 @@ class APIDocumentFolderListView(generics.ListAPIView):
     serializer_class = FolderSerializer
 
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [PERMISSION_FOLDER_VIEW]}
+    mayan_object_permissions = {'GET': [permission_folder_view]}
 
     def get_queryset(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_DOCUMENT_VIEW])
+            Permission.objects.check_permissions(self.request.user, [permission_document_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, self.request.user, document)
+            AccessEntry.objects.check_access(permission_document_view, self.request.user, document)
 
         queryset = document.folders.all()
         return queryset
@@ -129,9 +129,9 @@ class APIFolderDocumentView(views.APIView):
 
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_REMOVE_DOCUMENT])
+            Permission.objects.check_permissions(request.user, [permission_folder_remove_document])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_FOLDER_REMOVE_DOCUMENT, request.user, folder)
+            AccessEntry.objects.check_access(permission_folder_remove_document, request.user, folder)
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         folder.documents.remove(document)
@@ -143,9 +143,9 @@ class APIFolderDocumentView(views.APIView):
 
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_FOLDER_ADD_DOCUMENT])
+            Permission.objects.check_permissions(request.user, [permission_folder_add_document])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_FOLDER_ADD_DOCUMENT, request.user, folder)
+            AccessEntry.objects.check_access(permission_folder_add_document, request.user, folder)
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         folder.documents.add(document)

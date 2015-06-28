@@ -17,14 +17,14 @@ from permissions.models import Permission
 
 from .forms import GroupForm, PasswordForm, UserForm
 from .permissions import (
-    PERMISSION_GROUP_CREATE, PERMISSION_GROUP_DELETE, PERMISSION_GROUP_EDIT,
-    PERMISSION_GROUP_VIEW, PERMISSION_USER_CREATE, PERMISSION_USER_DELETE,
-    PERMISSION_USER_EDIT, PERMISSION_USER_VIEW
+    permission_group_create, permission_group_delete, permission_group_edit,
+    permission_group_view, permission_user_create, permission_user_delete,
+    permission_user_edit, permission_user_view
 )
 
 
 def user_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_USER_VIEW])
+    Permission.objects.check_permissions(request.user, [permission_user_view])
 
     context = {
         'object_list': get_user_model().objects.exclude(is_superuser=True).exclude(is_staff=True).order_by('username'),
@@ -55,7 +55,7 @@ def user_list(request):
 
 
 def user_edit(request, user_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_USER_EDIT])
+    Permission.objects.check_permissions(request.user, [permission_user_edit])
     user = get_object_or_404(User, pk=user_id)
 
     if user.is_superuser or user.is_staff:
@@ -79,7 +79,7 @@ def user_edit(request, user_id):
 
 
 def user_add(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_USER_CREATE])
+    Permission.objects.check_permissions(request.user, [permission_user_create])
 
     if request.method == 'POST':
         form = UserForm(request.POST)
@@ -99,7 +99,7 @@ def user_add(request):
 
 
 def user_delete(request, user_id=None, user_id_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_USER_DELETE])
+    Permission.objects.check_permissions(request.user, [permission_user_delete])
     post_action_redirect = None
 
     if user_id:
@@ -151,7 +151,7 @@ def user_multiple_delete(request):
 
 
 def user_set_password(request, user_id=None, user_id_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_USER_EDIT])
+    Permission.objects.check_permissions(request.user, [permission_user_edit])
     post_action_redirect = None
 
     if user_id:
@@ -226,7 +226,7 @@ class UserGroupsView(AssignRemoveView):
         item.user_set.add(self.user)
 
     def dispatch(self, request, *args, **kwargs):
-        Permission.objects.check_permissions(request.user, [PERMISSION_USER_EDIT])
+        Permission.objects.check_permissions(request.user, [permission_user_edit])
         self.user = get_object_or_404(User, pk=self.kwargs['user_id'])
         self.left_list_title = _('Non groups of user: %s') % self.user
         self.right_list_title = _('Groups of user: %s') % self.user
@@ -253,7 +253,7 @@ class UserGroupsView(AssignRemoveView):
 
 # Group views
 def group_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_VIEW])
+    Permission.objects.check_permissions(request.user, [permission_group_view])
 
     context = {
         'object_list': Group.objects.all(),
@@ -272,7 +272,7 @@ def group_list(request):
 
 
 def group_edit(request, group_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_EDIT])
+    Permission.objects.check_permissions(request.user, [permission_group_edit])
     group = get_object_or_404(Group, pk=group_id)
 
     if request.method == 'POST':
@@ -292,7 +292,7 @@ def group_edit(request, group_id):
 
 
 def group_add(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_CREATE])
+    Permission.objects.check_permissions(request.user, [permission_group_create])
 
     if request.method == 'POST':
         form = GroupForm(request.POST)
@@ -310,7 +310,7 @@ def group_add(request):
 
 
 def group_delete(request, group_id=None, group_id_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_DELETE])
+    Permission.objects.check_permissions(request.user, [permission_group_delete])
     post_action_redirect = None
 
     if group_id:
@@ -365,7 +365,7 @@ class GroupMembersView(AssignRemoveView):
         self.group.user_set.add(item)
 
     def dispatch(self, request, *args, **kwargs):
-        Permission.objects.check_permissions(request.user, [PERMISSION_GROUP_EDIT])
+        Permission.objects.check_permissions(request.user, [permission_group_edit])
         self.group = get_object_or_404(Group, pk=self.kwargs['group_id'])
         self.left_list_title = _('Non members of group: %s') % self.group
         self.right_list_title = _('Members of group: %s') % self.group

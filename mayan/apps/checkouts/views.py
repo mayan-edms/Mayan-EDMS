@@ -21,8 +21,8 @@ from .forms import DocumentCheckoutForm
 from .literals import STATE_LABELS
 from .models import DocumentCheckout
 from .permissions import (
-    PERMISSION_DOCUMENT_CHECKIN, PERMISSION_DOCUMENT_CHECKIN_OVERRIDE,
-    PERMISSION_DOCUMENT_CHECKOUT
+    permission_document_checkin, permission_document_checkin_override,
+    permission_document_checkout
 )
 
 
@@ -43,9 +43,9 @@ class CheckoutListView(DocumentListView):
 def checkout_info(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN])
+        Permission.objects.check_permissions(request.user, [permission_document_checkout, permission_document_checkin])
     except PermissionDenied:
-        AccessEntry.objects.check_accesses([PERMISSION_DOCUMENT_CHECKOUT, PERMISSION_DOCUMENT_CHECKIN], request.user, document)
+        AccessEntry.objects.check_accesses([permission_document_checkout, permission_document_checkin], request.user, document)
 
     paragraphs = [_('Document status: %s') % STATE_LABELS[document.checkout_state()]]
 
@@ -66,9 +66,9 @@ def checkout_info(request, document_pk):
 def checkout_document(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKOUT])
+        Permission.objects.check_permissions(request.user, [permission_document_checkout])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKOUT, request.user, document)
+        AccessEntry.objects.check_access(permission_document_checkout, request.user, document)
 
     if request.method == 'POST':
         form = DocumentCheckoutForm(data=request.POST, initial={'document': document})
@@ -114,14 +114,14 @@ def checkin_document(request, document_pk):
     # checkin permission
     if document.checkout_info().user == request.user:
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN])
+            Permission.objects.check_permissions(request.user, [permission_document_checkin])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKIN, request.user, document)
+            AccessEntry.objects.check_access(permission_document_checkin, request.user, document)
     else:
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CHECKIN_OVERRIDE])
+            Permission.objects.check_permissions(request.user, [permission_document_checkin_override])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_CHECKIN_OVERRIDE, request.user, document)
+            AccessEntry.objects.check_access(permission_document_checkin_override, request.user, document)
 
     if request.method == 'POST':
         try:

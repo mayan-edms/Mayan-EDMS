@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.mixins import ViewPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
-from documents.permissions import PERMISSION_DOCUMENT_CREATE
+from documents.permissions import permission_document_create
 from metadata.forms import MetadataFormSet
 
 from .models import InteractiveSource
@@ -19,7 +19,7 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
     form_list = [DocumentTypeSelectForm, MetadataFormSet]
     template_name = 'appearance/generic_wizard.html'
     extra_context = {}
-    view_permission = PERMISSION_DOCUMENT_CREATE
+    view_permission = permission_document_create
 
     @staticmethod
     def _has_metadata_types(wizard):

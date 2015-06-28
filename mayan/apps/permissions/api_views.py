@@ -7,8 +7,8 @@ from rest_api.permissions import MayanPermission
 
 from .models import Role
 from .permissions import (
-    PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE, PERMISSION_ROLE_EDIT,
-    PERMISSION_ROLE_VIEW
+    permission_role_create, permission_role_delete, permission_role_edit,
+    permission_role_view
 )
 from .serializers import RoleSerializer
 
@@ -19,8 +19,8 @@ class APIRoleListView(generics.ListCreateAPIView):
 
     permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [PERMISSION_ROLE_VIEW]}
-    mayan_view_permissions = {'POST': [PERMISSION_ROLE_CREATE]}
+    mayan_object_permissions = {'GET': [permission_role_view]}
+    mayan_view_permissions = {'POST': [permission_role_create]}
 
     def get(self, *args, **kwargs):
         """Returns a list of all the roles."""
@@ -37,10 +37,10 @@ class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [PERMISSION_ROLE_VIEW],
-        'PUT': [PERMISSION_ROLE_EDIT],
-        'PATCH': [PERMISSION_ROLE_EDIT],
-        'DELETE': [PERMISSION_ROLE_DELETE]
+        'GET': [permission_role_view],
+        'PUT': [permission_role_edit],
+        'PATCH': [permission_role_edit],
+        'DELETE': [permission_role_delete]
     }
 
     def delete(self, *args, **kwargs):

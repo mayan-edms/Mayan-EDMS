@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
+from acls.permissions import acls_edit_acl, acls_view_acl
 from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_sidebar, menu_multi_item
@@ -22,9 +22,9 @@ from .links import (
 )
 from .models import Folder
 from .permissions import (
-    PERMISSION_FOLDER_ADD_DOCUMENT, PERMISSION_FOLDER_DELETE,
-    PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_REMOVE_DOCUMENT,
-    PERMISSION_FOLDER_VIEW
+    permission_folder_add_document, permission_folder_delete,
+    permission_folder_edit, permission_folder_remove_document,
+    permission_folder_view
 )
 
 
@@ -38,12 +38,12 @@ class FoldersApp(MayanAppConfig):
         APIEndPoint('folders')
 
         class_permissions(Document, [
-            PERMISSION_FOLDER_ADD_DOCUMENT, PERMISSION_FOLDER_REMOVE_DOCUMENT
+            permission_folder_add_document, permission_folder_remove_document
         ])
 
         class_permissions(Folder, [
-            ACLS_EDIT_ACL, ACLS_VIEW_ACL, PERMISSION_FOLDER_DELETE,
-            PERMISSION_FOLDER_EDIT, PERMISSION_FOLDER_VIEW
+            acls_edit_acl, acls_view_acl, permission_folder_delete,
+            permission_folder_edit, permission_folder_view
         ])
 
         menu_facet.bind_links(links=[link_document_folder_list], sources=[Document])

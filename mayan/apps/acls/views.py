@@ -25,7 +25,7 @@ from .classes import (
 from .forms import ClassHolderSelectionForm, HolderSelectionForm
 from .models import AccessEntry, DefaultAccessEntry
 from .permissions import (
-    ACLS_EDIT_ACL, ACLS_CLASS_EDIT_ACL, ACLS_CLASS_VIEW_ACL, ACLS_VIEW_ACL
+    acls_edit_acl, acls_class_edit_acl, acls_class_view_acl, acls_view_acl
 )
 from .widgets import object_indentifier
 
@@ -38,9 +38,9 @@ def _permission_titles(permission_list):
 
 def acl_list_for(request, obj, extra_context=None):
     try:
-        Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
+        Permission.objects.check_permissions(request.user, [acls_view_acl])
     except PermissionDenied:
-        AccessEntry.objects.check_access(ACLS_VIEW_ACL, request.user, obj)
+        AccessEntry.objects.check_access(acls_view_acl, request.user, obj)
 
     logger.debug('obj: %s', obj)
 
@@ -83,9 +83,9 @@ def acl_detail(request, access_object_gid, holder_object_gid):
 
 def acl_detail_for(request, actor, obj):
     try:
-        Permission.objects.check_permissions(request.user, [ACLS_VIEW_ACL])
+        Permission.objects.check_permissions(request.user, [acls_view_acl])
     except PermissionDenied:
-        AccessEntry.objects.check_accesses([ACLS_VIEW_ACL], actor, obj)
+        AccessEntry.objects.check_accesses([acls_view_acl], actor, obj)
 
     permission_list = get_class_permissions_for(obj.source_object)
     # TODO : get all globally assigned permission, new function get_permissions_for_holder (roles aware)
@@ -153,10 +153,10 @@ def acl_grant(request):
             raise Http404
 
         try:
-            Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
+            Permission.objects.check_permissions(request.user, [acls_edit_acl])
         except PermissionDenied:
             try:
-                AccessEntry.objects.check_access(ACLS_EDIT_ACL, request.user, access_object)
+                AccessEntry.objects.check_access(acls_edit_acl, request.user, access_object)
             except PermissionDenied:
                 raise
             else:
@@ -244,10 +244,10 @@ def acl_revoke(request):
             raise Http404
 
         try:
-            Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
+            Permission.objects.check_permissions(request.user, [acls_edit_acl])
         except PermissionDenied:
             try:
-                AccessEntry.objects.check_access(ACLS_EDIT_ACL, request.user, access_object)
+                AccessEntry.objects.check_access(acls_edit_acl, request.user, access_object)
             except PermissionDenied:
                 raise
             else:
@@ -313,9 +313,9 @@ def acl_revoke(request):
 
 def acl_new_holder_for(request, obj, extra_context=None, navigation_object=None):
     try:
-        Permission.objects.check_permissions(request.user, [ACLS_EDIT_ACL])
+        Permission.objects.check_permissions(request.user, [acls_edit_acl])
     except PermissionDenied:
-        AccessEntry.objects.check_access(ACLS_EDIT_ACL, request.user, obj)
+        AccessEntry.objects.check_access(acls_edit_acl, request.user, obj)
 
     if request.method == 'POST':
         form = HolderSelectionForm(request.POST)
@@ -364,7 +364,7 @@ def acl_holder_new(request, access_object_gid):
 
 # Setup views
 def acl_setup_valid_classes(request):
-    Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL])
+    Permission.objects.check_permissions(request.user, [acls_class_view_acl])
 
     context = {
         'object_list': DefaultAccessEntry.get_classes(),
@@ -382,7 +382,7 @@ def acl_setup_valid_classes(request):
 def acl_class_acl_list(request, access_object_class_gid):
     logger.debug('access_object_class_gid: %s', access_object_class_gid)
 
-    Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL])
+    Permission.objects.check_permissions(request.user, [acls_class_view_acl])
 
     access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
     logger.debug('access_object_class: %s', access_object_class)
@@ -404,7 +404,7 @@ def acl_class_acl_list(request, access_object_class_gid):
 
 
 def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
-    Permission.objects.check_permissions(request.user, [ACLS_CLASS_VIEW_ACL])
+    Permission.objects.check_permissions(request.user, [acls_class_view_acl])
     try:
         actor = AccessHolder.get(gid=holder_object_gid)
         access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
@@ -448,7 +448,7 @@ def acl_class_acl_detail(request, access_object_class_gid, holder_object_gid):
 
 
 def acl_class_new_holder_for(request, access_object_class_gid):
-    Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
+    Permission.objects.check_permissions(request.user, [acls_class_edit_acl])
     access_object_class = AccessObjectClass.get(gid=access_object_class_gid)
 
     if request.method == 'POST':
@@ -475,7 +475,7 @@ def acl_class_new_holder_for(request, access_object_class_gid):
 
 
 def acl_class_multiple_grant(request):
-    Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
+    Permission.objects.check_permissions(request.user, [acls_class_edit_acl])
     items_property_list = loads(request.GET.get('items_property_list', []))
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -552,7 +552,7 @@ def acl_class_multiple_grant(request):
 
 
 def acl_class_multiple_revoke(request):
-    Permission.objects.check_permissions(request.user, [ACLS_CLASS_EDIT_ACL])
+    Permission.objects.check_permissions(request.user, [acls_class_edit_acl])
     items_property_list = loads(request.GET.get('items_property_list', []))
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))

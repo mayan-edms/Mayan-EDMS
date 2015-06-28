@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from acls.api import class_permissions
-from acls.permissions import ACLS_EDIT_ACL, ACLS_VIEW_ACL
+from acls.permissions import acls_edit_acl, acls_view_acl
 from common import (
     MayanAppConfig, menu_facet, menu_object, menu_secondary, menu_setup,
     menu_sidebar
@@ -22,8 +22,8 @@ from .links import (
 )
 from .models import SmartLink, SmartLinkCondition
 from .permissions import (
-    PERMISSION_SMART_LINK_DELETE, PERMISSION_SMART_LINK_EDIT,
-    PERMISSION_SMART_LINK_VIEW
+    permission_smart_link_delete, permission_smart_link_edit,
+    permission_smart_link_view
 )
 
 
@@ -35,8 +35,8 @@ class LinkingApp(MayanAppConfig):
         super(LinkingApp, self).ready()
 
         class_permissions(SmartLink, [
-            ACLS_EDIT_ACL, ACLS_VIEW_ACL, PERMISSION_SMART_LINK_DELETE,
-            PERMISSION_SMART_LINK_EDIT, PERMISSION_SMART_LINK_VIEW
+            acls_edit_acl, acls_view_acl, permission_smart_link_delete,
+            permission_smart_link_edit, permission_smart_link_view
         ])
 
         menu_facet.bind_links(links=[link_smart_link_instances_for_document], sources=[Document])

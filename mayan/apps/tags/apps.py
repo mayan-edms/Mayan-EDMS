@@ -21,8 +21,8 @@ from .links import (
 )
 from .models import Tag
 from .permissions import (
-    PERMISSION_TAG_ATTACH, PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT,
-    PERMISSION_TAG_REMOVE, PERMISSION_TAG_VIEW
+    permission_tag_attach, permission_tag_delete, permission_tag_edit,
+    permission_tag_remove, permission_tag_view
 )
 from .widgets import widget_inline_tags, widget_single_tag
 
@@ -42,10 +42,10 @@ class TagsApp(MayanAppConfig):
         SourceColumn(source=Tag, label=_('Tagged items'), attribute=encapsulate(lambda tag: tag.documents.count()))
 
         class_permissions(Document, [
-            PERMISSION_TAG_ATTACH, PERMISSION_TAG_REMOVE,
+            permission_tag_attach, permission_tag_remove,
         ])
         class_permissions(Tag, [
-            PERMISSION_TAG_DELETE, PERMISSION_TAG_EDIT, PERMISSION_TAG_VIEW,
+            permission_tag_delete, permission_tag_edit, permission_tag_view,
         ])
 
         document_search.add_model_field(field='tags__label', label=_('Tags'))

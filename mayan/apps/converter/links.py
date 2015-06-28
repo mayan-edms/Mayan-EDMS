@@ -6,8 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link
 
 from .permissions import (
-    PERMISSION_TRANSFORMATION_CREATE, PERMISSION_TRANSFORMATION_DELETE,
-    PERMISSION_TRANSFORMATION_EDIT, PERMISSION_TRANSFORMATION_VIEW
+    permission_transformation_create, permission_transformation_delete,
+    permission_transformation_edit, permission_transformation_view
 )
 
 
@@ -19,7 +19,7 @@ def get_kwargs_factory(variable_name):
     return get_kwargs
 
 
-link_transformation_create = Link(kwargs=get_kwargs_factory('content_object'), permissions=[PERMISSION_TRANSFORMATION_CREATE], text=_('Create new transformation'), view='converter:transformation_create')
-link_transformation_delete = Link(args='resolved_object.pk', permissions=[PERMISSION_TRANSFORMATION_DELETE], tags='dangerous', text=_('Delete'), view='converter:transformation_delete')
-link_transformation_edit = Link(args='resolved_object.pk', permissions=[PERMISSION_TRANSFORMATION_EDIT], text=_('Edit'), view='converter:transformation_edit')
-link_transformation_list = Link(kwargs=get_kwargs_factory('resolved_object'), permissions=[PERMISSION_TRANSFORMATION_VIEW], text=_('Transformations'), view='converter:transformation_list')
+link_transformation_create = Link(kwargs=get_kwargs_factory('content_object'), permissions=[permission_transformation_create], text=_('create new transformation'), view='converter:transformation_create')
+link_transformation_delete = Link(args='resolved_object.pk', permissions=[permission_transformation_delete], tags='dangerous', text=_('delete'), view='converter:transformation_delete')
+link_transformation_edit = Link(args='resolved_object.pk', permissions=[permission_transformation_edit], text=_('edit'), view='converter:transformation_edit')
+link_transformation_list = Link(kwargs=get_kwargs_factory('resolved_object'), permissions=[permission_transformation_view], text=_('transformations'), view='converter:transformation_list')

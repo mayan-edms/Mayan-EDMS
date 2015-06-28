@@ -8,7 +8,7 @@ from documents.models import Document
 
 from .links import link_send_document_link, link_send_document
 from .permissions import (
-    PERMISSION_MAILING_LINK, PERMISSION_MAILING_SEND_DOCUMENT
+    permission_mailing_link, permission_mailing_send_document
 )
 
 
@@ -20,7 +20,7 @@ class MailerApp(MayanAppConfig):
         super(MailerApp, self).ready()
 
         class_permissions(Document, [
-            PERMISSION_MAILING_LINK, PERMISSION_MAILING_SEND_DOCUMENT
+            permission_mailing_link, permission_mailing_send_document
         ])
 
         menu_object.bind_links(links=[link_send_document_link, link_send_document], sources=[Document])

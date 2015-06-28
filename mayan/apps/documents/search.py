@@ -4,9 +4,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from dynamic_search.classes import SearchModel
 
-from .permissions import PERMISSION_DOCUMENT_VIEW
+from .permissions import permission_document_view
 
-document_search = SearchModel('documents', 'Document', permission=PERMISSION_DOCUMENT_VIEW, serializer_string='documents.serializers.DocumentSerializer')
+document_search = SearchModel('documents', 'Document', permission=permission_document_view, serializer_string='documents.serializers.DocumentSerializer')
 
 document_search.add_model_field(field='document_type__name', label=_('Document type'))
 document_search.add_model_field(field='versions__mimetype', label=_('MIME type'))

@@ -24,11 +24,11 @@ from .models import (
     Document, DocumentPage, DocumentType, DocumentVersion, RecentDocument
 )
 from .permissions import (
-    PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_DELETE,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_NEW_VERSION,
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_VIEW
+    permission_document_create, permission_document_delete,
+    permission_document_edit, permission_document_new_version,
+    permission_document_properties_edit, permission_document_view,
+    permission_document_type_create, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view
 )
 from .serializers import (
     DocumentImageSerializer, DocumentPageSerializer, DocumentSerializer,
@@ -50,8 +50,8 @@ class APIDocumentListView(generics.ListAPIView):
 
     permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW],
-                                'POST': [PERMISSION_DOCUMENT_CREATE]}
+    mayan_object_permissions = {'GET': [permission_document_view],
+                                'POST': [permission_document_create]}
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -105,10 +105,10 @@ class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [PERMISSION_DOCUMENT_VIEW],
-        'PUT': [PERMISSION_DOCUMENT_PROPERTIES_EDIT],
-        'PATCH': [PERMISSION_DOCUMENT_PROPERTIES_EDIT],
-        'DELETE': [PERMISSION_DOCUMENT_DELETE]
+        'GET': [permission_document_view],
+        'PUT': [permission_document_properties_edit],
+        'PATCH': [permission_document_properties_edit],
+        'DELETE': [permission_document_delete]
     }
 
     def delete(self, *args, **kwargs):
@@ -137,7 +137,7 @@ class APIDocumentVersionCreateView(generics.CreateAPIView):
     queryset = DocumentVersion.objects.all()
 
     permission_classes = (MayanPermission,)
-    mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_NEW_VERSION]}
+    mayan_view_permissions = {'POST': [permission_document_new_version]}
 
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.DATA, files=request.FILES)
@@ -166,7 +166,7 @@ class APIDocumentVersionView(generics.RetrieveAPIView):
     queryset = DocumentVersion.objects.all()
 
     permission_classes = (MayanPermission,)
-    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
+    mayan_object_permissions = {'GET': [permission_document_view]}
     mayan_permission_attribute_check = 'document'
 
 
@@ -184,9 +184,9 @@ class APIDocumentImageView(generics.GenericAPIView):
         document = get_object_or_404(Document, pk=pk)
 
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+            Permission.objects.check_permissions(request.user, [permission_document_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
+            AccessEntry.objects.check_access(permission_document_view, request.user, document)
 
         size = request.GET.get('size', setting_display_size.value)
 
@@ -230,9 +230,9 @@ class APIDocumentPageView(generics.RetrieveUpdateAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [PERMISSION_DOCUMENT_VIEW],
-        'PUT': [PERMISSION_DOCUMENT_EDIT],
-        'PATCH': [PERMISSION_DOCUMENT_EDIT]
+        'GET': [permission_document_view],
+        'PUT': [permission_document_edit],
+        'PATCH': [permission_document_edit]
     }
     mayan_permission_attribute_check = 'document'
 
@@ -255,8 +255,8 @@ class APIDocumentTypeListView(generics.ListCreateAPIView):
 
     permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_TYPE_VIEW]}
-    mayan_view_permissions = {'POST': [PERMISSION_DOCUMENT_TYPE_CREATE]}
+    mayan_object_permissions = {'GET': [permission_document_type_view]}
+    mayan_view_permissions = {'POST': [permission_document_type_create]}
 
     def get(self, *args, **kwargs):
         """Returns a list of all the document types."""
@@ -277,10 +277,10 @@ class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [PERMISSION_DOCUMENT_TYPE_VIEW],
-        'PUT': [PERMISSION_DOCUMENT_TYPE_EDIT],
-        'PATCH': [PERMISSION_DOCUMENT_TYPE_EDIT],
-        'DELETE': [PERMISSION_DOCUMENT_TYPE_DELETE]
+        'GET': [permission_document_type_view],
+        'PUT': [permission_document_type_edit],
+        'PATCH': [permission_document_type_edit],
+        'DELETE': [permission_document_type_delete]
     }
 
     def delete(self, *args, **kwargs):
@@ -306,7 +306,7 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
     """
 
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [PERMISSION_DOCUMENT_VIEW]}
+    mayan_object_permissions = {'GET': [permission_document_view]}
 
     def get_serializer_class(self):
         from documents.serializers import DocumentSerializer
@@ -315,9 +315,9 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
     def get_queryset(self):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_DOCUMENT_TYPE_VIEW])
+            Permission.objects.check_permissions(self.request.user, [permission_document_type_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_TYPE_VIEW, self.request.user, document_type)
+            AccessEntry.objects.check_access(permission_document_type_view, self.request.user, document_type)
 
         return document_type.documents.all()
 

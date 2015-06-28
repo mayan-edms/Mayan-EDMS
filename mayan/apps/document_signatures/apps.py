@@ -21,8 +21,8 @@ from .links import (
 )
 from .models import DocumentVersionSignature
 from .permissions import (
-    PERMISSION_DOCUMENT_VERIFY, PERMISSION_SIGNATURE_DELETE,
-    PERMISSION_SIGNATURE_DOWNLOAD, PERMISSION_SIGNATURE_UPLOAD
+    permission_document_verify, permission_signature_delete,
+    permission_signature_download, permission_signature_upload
 )
 
 logger = logging.getLogger(__name__)
@@ -68,10 +68,10 @@ class DocumentSignaturesApp(MayanAppConfig):
         DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
 
         class_permissions(Document, [
-            PERMISSION_DOCUMENT_VERIFY,
-            PERMISSION_SIGNATURE_DELETE,
-            PERMISSION_SIGNATURE_DOWNLOAD,
-            PERMISSION_SIGNATURE_UPLOAD,
+            permission_document_verify,
+            permission_signature_delete,
+            permission_signature_download,
+            permission_signature_upload,
         ])
 
         menu_facet.bind_links(links=[link_document_verify], sources=[Document])

@@ -18,8 +18,8 @@ from permissions.models import Permission
 from .forms import TransformationForm
 from .models import Transformation
 from .permissions import (
-    PERMISSION_TRANSFORMATION_CREATE, PERMISSION_TRANSFORMATION_DELETE,
-    PERMISSION_TRANSFORMATION_EDIT, PERMISSION_TRANSFORMATION_VIEW
+    permission_transformation_create, permission_transformation_delete,
+    permission_transformation_edit, permission_transformation_view
 )
 
 logger = logging.getLogger(__name__)
@@ -34,9 +34,9 @@ def transformation_list(request, app_label, model, object_id):
         raise Http404
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_TRANSFORMATION_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_transformation_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_TRANSFORMATION_VIEW, request.user, content_object)
+        AccessEntry.objects.check_access(permission_transformation_view, request.user, content_object)
 
     context = {
         'object_list': Transformation.objects.get_for_model(content_object),
@@ -65,9 +65,9 @@ def transformation_create(request, app_label, model, object_id):
         raise Http404
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_TRANSFORMATION_CREATE])
+        Permission.objects.check_permissions(request.user, [permission_transformation_create])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_TRANSFORMATION_CREATE, request.user, content_object)
+        AccessEntry.objects.check_access(permission_transformation_create, request.user, content_object)
 
     if request.method == 'POST':
         form = TransformationForm(request.POST, initial={'content_object': content_object})
@@ -92,9 +92,9 @@ def transformation_delete(request, object_id):
     transformation = get_object_or_404(Transformation, pk=object_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_TRANSFORMATION_DELETE])
+        Permission.objects.check_permissions(request.user, [permission_transformation_delete])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_TRANSFORMATION_DELETE, request.user, transformation.content_object)
+        AccessEntry.objects.check_access(permission_transformation_delete, request.user, transformation.content_object)
 
     if request.method == 'POST':
         transformation.delete()
@@ -117,9 +117,9 @@ def transformation_edit(request, object_id):
     transformation = get_object_or_404(Transformation, pk=object_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_TRANSFORMATION_EDIT])
+        Permission.objects.check_permissions(request.user, [permission_transformation_edit])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_TRANSFORMATION_EDIT, request.user, transformation.content_object)
+        AccessEntry.objects.check_access(permission_transformation_edit, request.user, transformation.content_object)
 
     if request.method == 'POST':
         form = TransformationForm(request.POST, instance=transformation)

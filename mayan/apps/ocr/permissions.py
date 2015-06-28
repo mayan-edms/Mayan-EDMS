@@ -2,10 +2,11 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import Permission, PermissionNamespace
+from permissions.models import PermissionNamespace
 
-ocr_namespace = PermissionNamespace('ocr', _('OCR'))
-PERMISSION_OCR_DOCUMENT = Permission.objects.register(ocr_namespace, 'ocr_document', _('Submit documents for OCR'))
-PERMISSION_OCR_DOCUMENT_DELETE = Permission.objects.register(ocr_namespace, 'ocr_document_delete', _('Delete documents from OCR queue'))
-PERMISSION_OCR_CONTENT_VIEW = Permission.objects.register(ocr_namespace, 'ocr_content_view', _('Can view the transcribed text from document'))
-PERMISSION_DOCUMENT_TYPE_OCR_SETUP = Permission.objects.register(ocr_namespace, 'ocr_document_type_setup', _('Change document type OCR settings'))
+namespace = PermissionNamespace('ocr', _('OCR'))
+
+permission_ocr_document = namespace.add_permission(name='ocr_document', label=_('Submit documents for OCR'))
+permission_ocr_document_delete = namespace.add_permission(name='ocr_document_delete', label=_('Delete documents from OCR queue'))
+permission_ocr_content_view = namespace.add_permission(name='ocr_content_view', label=_('Can view the transcribed text from document'))
+permission_document_type_ocr_setup = namespace.add_permission(name='ocr_document_type_setup', label=_('Change document type OCR settings'))

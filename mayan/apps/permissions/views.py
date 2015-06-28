@@ -25,9 +25,9 @@ from .classes import Member
 from .forms import RoleForm, RoleForm_view
 from .models import Permission, Role
 from .permissions import (
-    PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE,
-    PERMISSION_ROLE_VIEW, PERMISSION_ROLE_CREATE, PERMISSION_ROLE_DELETE,
-    PERMISSION_ROLE_EDIT
+    permission_permission_grant, permission_permission_revoke,
+    permission_role_view, permission_role_create, permission_role_delete,
+    permission_role_edit
 )
 from .utils import get_non_role_members, get_role_members
 
@@ -35,19 +35,19 @@ from .utils import get_non_role_members, get_role_members
 class RoleCreateView(SingleObjectCreateView):
     form_class = RoleForm
     model = Role
-    view_permission = PERMISSION_ROLE_CREATE
+    view_permission = permission_role_create
     success_url = reverse_lazy('permissions:role_list')
 
 
 class RoleDeleteView(SingleObjectDeleteView):
     model = Role
-    view_permission = PERMISSION_ROLE_DELETE
+    view_permission = permission_role_delete
     success_url = reverse_lazy('permissions:role_list')
 
 
 class RoleEditView(SingleObjectEditView):
     model = Role
-    view_permission = PERMISSION_ROLE_EDIT
+    view_permission = permission_role_edit
 
 
 class SetupRoleMembersView(AssignRemoveView):
@@ -58,7 +58,7 @@ class SetupRoleMembersView(AssignRemoveView):
         self.role.add_member(member)
 
     def dispatch(self, request, *args, **kwargs):
-        Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_EDIT])
+        Permission.objects.check_permissions(request.user, [permission_role_edit])
         self.role = get_object_or_404(Role, pk=self.kwargs['role_id'])
         self.left_list_title = _('Non members of role: %s') % self.role
         self.right_list_title = _('Members of role: %s') % self.role
@@ -85,7 +85,7 @@ class SetupRoleMembersView(AssignRemoveView):
 
 
 def role_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_ROLE_VIEW])
+    Permission.objects.check_permissions(request.user, [permission_role_view])
 
     context = {
         'object_list': Role.objects.all(),
@@ -98,7 +98,7 @@ def role_list(request):
 
 
 def role_permissions(request, role_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_PERMISSION_GRANT, PERMISSION_PERMISSION_REVOKE])
+    Permission.objects.check_permissions(request.user, [permission_permission_grant, permission_permission_revoke])
 
     role = get_object_or_404(Role, pk=role_id)
     form = RoleForm_view(instance=role)
@@ -137,7 +137,7 @@ def role_permissions(request, role_id):
 
 
 def permission_grant(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_PERMISSION_GRANT])
+    Permission.objects.check_permissions(request.user, [permission_permission_grant])
     items_property_list = loads(request.GET.get('items_property_list', []))
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -197,7 +197,7 @@ def permission_grant(request):
 
 
 def permission_revoke(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_PERMISSION_REVOKE])
+    Permission.objects.check_permissions(request.user, [permission_permission_revoke])
     items_property_list = loads(request.GET.get('items_property_list', []))
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))

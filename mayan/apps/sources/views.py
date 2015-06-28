@@ -17,7 +17,7 @@ from common.utils import encapsulate
 from common.views import MultiFormView, ParentChildListView
 from documents.models import DocumentType, Document
 from documents.permissions import (
-    PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION
+    permission_document_create, permission_document_new_version
 )
 from documents.tasks import task_upload_new_version
 from metadata.api import decode_metadata_from_url
@@ -35,15 +35,15 @@ from .models import (
     InteractiveSource, Source, StagingFolderSource, WebFormSource
 )
 from .permissions import (
-    PERMISSION_SOURCES_SETUP_CREATE, PERMISSION_SOURCES_SETUP_DELETE,
-    PERMISSION_SOURCES_SETUP_EDIT, PERMISSION_SOURCES_SETUP_VIEW
+    permission_sources_setup_create, permission_sources_setup_delete,
+    permission_sources_setup_edit, permission_sources_setup_view
 )
 from .tasks import task_source_upload_document
 from .utils import get_class, get_form_class, get_upload_form_class
 
 
 class SourceLogListView(ParentChildListView):
-    object_permission = PERMISSION_SOURCES_SETUP_VIEW
+    object_permission = permission_sources_setup_view
     parent_queryset = Source.objects.select_subclasses()
 
     def get_queryset(self):
@@ -73,7 +73,7 @@ class SourceLogListView(ParentChildListView):
 
 
 def document_create_siblings(request, document_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+    Permission.objects.check_permissions(request.user, [permission_document_create])
 
     document = get_object_or_404(Document, pk=document_id)
     query_dict = {}
@@ -192,7 +192,7 @@ class UploadInteractiveView(UploadBaseView):
     def dispatch(self, request, *args, **kwargs):
         self.subtemplates_list = []
 
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE])
+        Permission.objects.check_permissions(request.user, [permission_document_create])
 
         self.document_type = get_object_or_404(DocumentType, pk=self.request.GET.get('document_type_id', self.request.POST.get('document_type_id')))
 
@@ -275,9 +275,9 @@ class UploadInteractiveVersionView(UploadBaseView):
 
         self.document = get_object_or_404(Document, pk=kwargs['document_pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [PERMISSION_DOCUMENT_NEW_VERSION])
+            Permission.objects.check_permissions(self.request.user, [permission_document_new_version])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_NEW_VERSION, self.request.user, self.document)
+            AccessEntry.objects.check_access(permission_document_new_version, self.request.user, self.document)
 
         self.tab_links = get_active_tab_links(self.document)
 
@@ -336,7 +336,7 @@ class UploadInteractiveVersionView(UploadBaseView):
 
 
 def staging_file_delete(request, staging_folder_pk, encoded_filename):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_CREATE, PERMISSION_DOCUMENT_NEW_VERSION])
+    Permission.objects.check_permissions(request.user, [permission_document_create, permission_document_new_version])
     staging_folder = get_object_or_404(StagingFolderSource, pk=staging_folder_pk)
 
     staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
@@ -365,7 +365,7 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
 
 # Setup views
 def setup_source_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_VIEW])
+    Permission.objects.check_permissions(request.user, [permission_sources_setup_view])
 
     context = {
         'object_list': Source.objects.select_subclasses(),
@@ -388,7 +388,7 @@ def setup_source_list(request):
 
 
 def setup_source_edit(request, source_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_EDIT])
+    Permission.objects.check_permissions(request.user, [permission_sources_setup_edit])
 
     source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
     form_class = get_form_class(source.source_type)
@@ -418,7 +418,7 @@ def setup_source_edit(request, source_id):
 
 
 def setup_source_delete(request, source_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_DELETE])
+    Permission.objects.check_permissions(request.user, [permission_sources_setup_delete])
     source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
     redirect_view = reverse('sources:setup_source_list')
 
@@ -448,7 +448,7 @@ def setup_source_delete(request, source_id):
 
 
 def setup_source_create(request, source_type):
-    Permission.objects.check_permissions(request.user, [PERMISSION_SOURCES_SETUP_CREATE])
+    Permission.objects.check_permissions(request.user, [permission_sources_setup_create])
 
     cls = get_class(source_type)
     form_class = get_form_class(source_type)

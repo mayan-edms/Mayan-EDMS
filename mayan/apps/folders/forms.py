@@ -10,7 +10,7 @@ from acls.models import AccessEntry
 from permissions.models import Permission
 
 from .models import Folder
-from .permissions import PERMISSION_FOLDER_VIEW
+from .permissions import permission_folder_view
 
 logger = logging.getLogger(__name__)
 
@@ -29,9 +29,9 @@ class FolderListForm(forms.Form):
 
         queryset = Folder.objects.all()
         try:
-            Permission.objects.check_permissions(user, [PERMISSION_FOLDER_VIEW])
+            Permission.objects.check_permissions(user, [permission_folder_view])
         except PermissionDenied:
-            queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_VIEW, user, queryset)
+            queryset = AccessEntry.objects.filter_objects_by_access(permission_folder_view, user, queryset)
 
         self.fields['folder'] = forms.ModelChoiceField(
             queryset=queryset,

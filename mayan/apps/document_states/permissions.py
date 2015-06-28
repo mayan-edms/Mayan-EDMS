@@ -2,13 +2,13 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace, Permission
+from permissions.models import PermissionNamespace
 
 namespace = PermissionNamespace('document_states', _('States'))
-PERMISSION_WORKFLOW_CREATE = Permission.objects.register(namespace, 'workflow_create', _('Create workflows'))
-PERMISSION_WORKFLOW_DELETE = Permission.objects.register(namespace, 'workflow_delte', _('Delete workflows'))
-PERMISSION_WORKFLOW_EDIT = Permission.objects.register(namespace, 'workflow_edit', _('Edit workflows'))
-PERMISSION_WORKFLOW_VIEW = Permission.objects.register(namespace, 'workflow_view', _('View workflows'))
 
-PERMISSION_DOCUMENT_WORKFLOW_VIEW = Permission.objects.register(namespace, 'document_workflow_view', _('View document workflows'))
-PERMISSION_DOCUMENT_WORKFLOW_TRANSITION = Permission.objects.register(namespace, 'document_workflow_transition', _('Transition document workflows'))
+permission_workflow_create = namespace.add_permission(name='workflow_create', label=_('Create workflows'))
+permission_workflow_delete = namespace.add_permission(name='workflow_delte', label=_('Delete workflows'))
+permission_workflow_edit = namespace.add_permission(name='workflow_edit', label=_('Edit workflows'))
+permission_workflow_view = namespace.add_permission(name='workflow_view', label=_('View workflows'))
+permission_document_workflow_view = namespace.add_permission(name='document_workflow_view', label=_('View document workflows'))
+permission_document_workflow_transition = namespace.add_permission(name='document_workflow_transition', label=_('Transition document workflows'))

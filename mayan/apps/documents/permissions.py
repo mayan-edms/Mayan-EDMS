@@ -2,24 +2,24 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace, Permission
+from permissions.models import PermissionNamespace
 
-document_namespace = PermissionNamespace('documents', _('Documents'))
+namespace = PermissionNamespace('documents', _('Documents'))
 
-PERMISSION_DOCUMENT_CREATE = Permission.objects.register(document_namespace, 'document_create', _('Create documents'))
-PERMISSION_DOCUMENT_DELETE = Permission.objects.register(document_namespace, 'document_delete', _('Delete documents'))
-PERMISSION_DOCUMENT_DOWNLOAD = Permission.objects.register(document_namespace, 'document_download', _('Download documents'))
-PERMISSION_DOCUMENT_EDIT = Permission.objects.register(document_namespace, 'document_edit', _('Edit documents'))
-PERMISSION_DOCUMENT_NEW_VERSION = Permission.objects.register(document_namespace, 'document_new_version', _('Create new document versions'))
-PERMISSION_DOCUMENT_PROPERTIES_EDIT = Permission.objects.register(document_namespace, 'document_properties_edit', _('Edit document properties'))
-PERMISSION_DOCUMENT_PRINT = Permission.objects.register(document_namespace, 'document_print', _('Can print documents'))
-PERMISSION_DOCUMENT_TOOLS = Permission.objects.register(document_namespace, 'document_tools', _('Execute document modifying tools'))
-PERMISSION_DOCUMENT_VERSION_REVERT = Permission.objects.register(document_namespace, 'document_version_revert', _('Revert documents to a previous version'))
-PERMISSION_DOCUMENT_VIEW = Permission.objects.register(document_namespace, 'document_view', _('View documents'))
+permission_document_create = namespace.add_permission(name='document_create', label=_('Create documents'))
+permission_document_delete = namespace.add_permission(name='document_delete', label=_('Delete documents'))
+permission_document_download = namespace.add_permission(name='document_download', label=_('Download documents'))
+permission_document_edit = namespace.add_permission(name='document_edit', label=_('Edit documents'))
+permission_document_new_version = namespace.add_permission(name='document_new_version', label=_('Create new document versions'))
+permission_document_properties_edit = namespace.add_permission(name='document_properties_edit', label=_('Edit document properties'))
+permission_document_print = namespace.add_permission(name='document_print', label=_('Can print documents'))
+permission_document_tools = namespace.add_permission(name='document_tools', label=_('Execute document modifying tools'))
+permission_document_version_revert = namespace.add_permission(name='document_version_revert', label=_('Revert documents to a previous version'))
+permission_document_view = namespace.add_permission(name='document_view', label=_('View documents'))
 
-documents_setup_namespace = PermissionNamespace('documents_setup', _('Documents setup'))
+setup_namespace = PermissionNamespace('documents_setup', label=_('Documents setup'))
 
-PERMISSION_DOCUMENT_TYPE_CREATE = Permission.objects.register(documents_setup_namespace, 'document_type_create', _('Create document types'))
-PERMISSION_DOCUMENT_TYPE_DELETE = Permission.objects.register(documents_setup_namespace, 'document_type_delete', _('Delete document types'))
-PERMISSION_DOCUMENT_TYPE_EDIT = Permission.objects.register(documents_setup_namespace, 'document_type_edit', _('Edit document types'))
-PERMISSION_DOCUMENT_TYPE_VIEW = Permission.objects.register(documents_setup_namespace, 'document_type_view', _('View document types'))
+permission_document_type_create = setup_namespace.add_permission(name='document_type_create', label=_('Create document types'))
+permission_document_type_delete = setup_namespace.add_permission(name='document_type_delete', label=_('Delete document types'))
+permission_document_type_edit = setup_namespace.add_permission(name='document_type_edit', label=_('Edit document types'))
+permission_document_type_view = setup_namespace.add_permission(name='document_type_view', label=_('View document types'))

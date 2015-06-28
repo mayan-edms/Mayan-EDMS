@@ -17,8 +17,8 @@ from permissions.models import Permission
 from .forms import DocumentContentForm
 from .models import DocumentTypeSettings, DocumentVersionOCRError
 from .permissions import (
-    PERMISSION_OCR_CONTENT_VIEW, PERMISSION_OCR_DOCUMENT,
-    PERMISSION_OCR_DOCUMENT_DELETE, PERMISSION_DOCUMENT_TYPE_OCR_SETUP
+    permission_ocr_content_view, permission_ocr_document,
+    permission_ocr_document_delete, permission_document_type_ocr_setup
 )
 
 
@@ -38,9 +38,9 @@ class DocumentSubmitView(ConfirmView):
         document = obj
 
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
+            Permission.objects.check_permissions(request.user, [permission_ocr_document])
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document)
+            AccessEntry.objects.check_access(permission_ocr_document, request.user, document)
 
         document.submit_for_ocr()
         messages.success(request, _('Document: %(document)s was added to the OCR queue.') % {
@@ -79,7 +79,7 @@ class DocumentManySubmitView(DocumentSubmitView):
 
 class DocumentTypeSettingsEditView(SingleObjectEditView):
     fields = ('auto_ocr',)
-    view_permission = PERMISSION_DOCUMENT_TYPE_OCR_SETUP
+    view_permission = permission_document_type_ocr_setup
 
     def get_object(self, queryset=None):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
@@ -102,9 +102,9 @@ def document_content(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_OCR_CONTENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_ocr_content_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_OCR_CONTENT_VIEW, request.user, document)
+        AccessEntry.objects.check_access(permission_ocr_content_view, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -121,7 +121,7 @@ def document_content(request, document_id):
 
 
 def entry_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
+    Permission.objects.check_permissions(request.user, [permission_ocr_document])
 
     context = {
         'object_list': DocumentVersionOCRError.objects.all(),
@@ -134,7 +134,7 @@ def entry_list(request):
 
 
 def entry_delete(request, pk=None, pk_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT_DELETE])
+    Permission.objects.check_permissions(request.user, [permission_ocr_document_delete])
 
     if pk:
         entries = [get_object_or_404(DocumentVersionOCRError, pk=pk)]
@@ -183,7 +183,7 @@ def entry_delete_multiple(request):
 
 
 def entry_re_queue(request, pk=None, pk_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
+    Permission.objects.check_permissions(request.user, [permission_ocr_document])
 
     if pk:
         entries = [get_object_or_404(DocumentVersionOCRError, pk=pk)]

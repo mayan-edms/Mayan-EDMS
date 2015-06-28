@@ -15,7 +15,7 @@ from common.utils import encapsulate
 from common.views import AssignRemoveView
 from documents.models import Document, DocumentType
 from documents.permissions import (
-    PERMISSION_DOCUMENT_TYPE_EDIT
+    permission_document_type_edit
 )
 from documents.views import DocumentListView
 from permissions.models import Permission
@@ -26,10 +26,10 @@ from .forms import (
 )
 from .models import DocumentMetadata, MetadataType
 from .permissions import (
-    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,
-    PERMISSION_METADATA_DOCUMENT_REMOVE, PERMISSION_METADATA_DOCUMENT_VIEW,
-    PERMISSION_METADATA_TYPE_CREATE, PERMISSION_METADATA_TYPE_DELETE,
-    PERMISSION_METADATA_TYPE_EDIT, PERMISSION_METADATA_TYPE_VIEW
+    permission_metadata_document_add, permission_metadata_document_edit,
+    permission_metadata_document_remove, permission_metadata_document_view,
+    permission_metadata_type_create, permission_metadata_type_delete,
+    permission_metadata_type_edit, permission_metadata_type_view
 )
 
 
@@ -48,9 +48,9 @@ def metadata_edit(request, document_id=None, document_id_list=None):
     documents = Document.objects.select_related('metadata').filter(pk__in=document_id_list.split(','))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
+        Permission.objects.check_permissions(request.user, [permission_metadata_document_edit])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_EDIT, request.user, documents)
+        documents = AccessEntry.objects.filter_objects_by_access(permission_metadata_document_edit, request.user, documents)
 
     if not documents:
         if document_id:
@@ -156,9 +156,9 @@ def metadata_add(request, document_id=None, document_id_list=None):
             return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
+        Permission.objects.check_permissions(request.user, [permission_metadata_document_add])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_ADD, request.user, documents)
+        documents = AccessEntry.objects.filter_objects_by_access(permission_metadata_document_add, request.user, documents)
 
     if not documents:
         messages.error(request, _('Must provide at least one document.'))
@@ -235,9 +235,9 @@ def metadata_remove(request, document_id=None, document_id_list=None):
     documents = Document.objects.select_related('metadata').filter(pk__in=document_id_list.split(','))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
+        Permission.objects.check_permissions(request.user, [permission_metadata_document_remove])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_REMOVE, request.user, documents)
+        documents = AccessEntry.objects.filter_objects_by_access(permission_metadata_document_remove, request.user, documents)
 
     if not documents:
         if document_id:
@@ -329,9 +329,9 @@ def metadata_view(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_metadata_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_VIEW, request.user, document)
+        AccessEntry.objects.check_access(permission_metadata_document_view, request.user, document)
 
     return render_to_response('appearance/generic_list.html', {
         'title': _('Metadata for document: %s') % document,
@@ -347,7 +347,7 @@ def metadata_view(request, document_id):
 
 # Setup views
 def setup_metadata_type_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_VIEW])
+    Permission.objects.check_permissions(request.user, [permission_metadata_type_view])
 
     context = {
         'object_list': MetadataType.objects.all(),
@@ -366,7 +366,7 @@ def setup_metadata_type_list(request):
 
 
 def setup_metadata_type_edit(request, metadatatype_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_EDIT])
+    Permission.objects.check_permissions(request.user, [permission_metadata_type_edit])
 
     metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
 
@@ -391,7 +391,7 @@ def setup_metadata_type_edit(request, metadatatype_id):
 
 
 def setup_metadata_type_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_CREATE])
+    Permission.objects.check_permissions(request.user, [permission_metadata_type_create])
 
     if request.method == 'POST':
         form = MetadataTypeForm(request.POST)
@@ -409,7 +409,7 @@ def setup_metadata_type_create(request):
 
 
 def setup_metadata_type_delete(request, metadatatype_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_DELETE])
+    Permission.objects.check_permissions(request.user, [permission_metadata_type_delete])
 
     metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
 
@@ -447,7 +447,7 @@ class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
         self.document_type.metadata.create(metadata_type=item, required=False)
 
     def dispatch(self, request, *args, **kwargs):
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+        Permission.objects.check_permissions(request.user, [permission_document_type_edit])
         self.document_type = get_object_or_404(DocumentType, pk=self.kwargs['document_type_id'])
         return super(SetupDocumentTypeMetadataOptionalView, self).dispatch(request, *args, **kwargs)
 

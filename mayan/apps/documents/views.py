@@ -24,7 +24,7 @@ from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 )
 from converter.models import Transformation
-from converter.permissions import PERMISSION_TRANSFORMATION_DELETE
+from converter.permissions import permission_transformation_delete
 from filetransfers.api import serve_file
 from permissions.models import Permission
 
@@ -42,12 +42,12 @@ from .models import (
     DocumentVersion, RecentDocument
 )
 from .permissions import (
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_PRINT, PERMISSION_DOCUMENT_PROPERTIES_EDIT,
-    PERMISSION_DOCUMENT_TOOLS, PERMISSION_DOCUMENT_TYPE_CREATE,
-    PERMISSION_DOCUMENT_TYPE_DELETE, PERMISSION_DOCUMENT_TYPE_EDIT,
-    PERMISSION_DOCUMENT_TYPE_VIEW, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_VIEW,
+    permission_document_delete, permission_document_download,
+    permission_document_print, permission_document_properties_edit,
+    permission_document_tools, permission_document_type_create,
+    permission_document_type_delete, permission_document_type_edit,
+    permission_document_type_view, permission_document_version_revert,
+    permission_document_view,
 )
 from .settings import (
     setting_preview_size, setting_recent_count, setting_rotation_step,
@@ -67,12 +67,12 @@ class DocumentListView(SingleObjectListView):
         'hide_links': True,
         'title': _('All documents'),
     }
-    object_permission = PERMISSION_DOCUMENT_VIEW
+    object_permission = permission_document_view
     queryset = Document.objects.all()
 
 
 class DocumentPageListView(ParentChildListView):
-    object_permission = PERMISSION_DOCUMENT_VIEW
+    object_permission = permission_document_view
     parent_queryset = Document.objects.all()
 
     def get_queryset(self):
@@ -105,13 +105,13 @@ def document_list(request, object_list=None, title=None, extra_context=None):
     pre_object_list = object_list if not (object_list is None) else Document.objects.all()
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
         # If user doesn't have global permission, get a list of document
         # for which he/she does hace access use it to filter the
         # provided object_list
         final_object_list = AccessEntry.objects.filter_objects_by_access(
-            PERMISSION_DOCUMENT_VIEW, request.user, pre_object_list)
+            permission_document_view, request.user, pre_object_list)
     else:
         final_object_list = pre_object_list
 
@@ -131,9 +131,9 @@ def document_properties(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
+        AccessEntry.objects.check_access(permission_document_view, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -168,9 +168,9 @@ def document_preview(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
+        AccessEntry.objects.check_access(permission_document_view, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -199,9 +199,9 @@ def document_delete(request, document_id=None, document_id_list=None):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_DELETE])
+        Permission.objects.check_permissions(request.user, [permission_document_delete])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_DELETE, request.user, documents, exception_on_empty=True)
+        documents = AccessEntry.objects.filter_objects_by_access(permission_document_delete, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -245,9 +245,9 @@ def document_multiple_delete(request):
 def document_edit(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_PROPERTIES_EDIT])
+        Permission.objects.check_permissions(request.user, [permission_document_properties_edit])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_PROPERTIES_EDIT, request.user, document)
+        AccessEntry.objects.check_access(permission_document_properties_edit, request.user, document)
 
     if request.method == 'POST':
         form = DocumentForm(request.POST, instance=document)
@@ -290,9 +290,9 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_PROPERTIES_EDIT])
+        Permission.objects.check_permissions(request.user, [permission_document_properties_edit])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_PROPERTIES_EDIT, request.user, documents, exception_on_empty=True)
+        documents = AccessEntry.objects.filter_objects_by_access(permission_document_properties_edit, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -340,9 +340,9 @@ def document_multiple_document_type_edit(request):
 def get_document_image(request, document_id, size=setting_preview_size.value):
     document = get_object_or_404(Document, pk=document_id)
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
+        AccessEntry.objects.check_access(permission_document_view, request.user, document)
 
     page = int(request.GET.get('page', DEFAULT_PAGE_NUMBER))
 
@@ -376,9 +376,9 @@ def document_download(request, document_id=None, document_id_list=None, document
         document_versions = [get_object_or_404(DocumentVersion, pk=document_version_pk)]
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_DOWNLOAD])
+        Permission.objects.check_permissions(request.user, [permission_document_download])
     except PermissionDenied:
-        document_versions = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_DOWNLOAD, request.user, document_versions, related='document', exception_on_empty=True)
+        document_versions = AccessEntry.objects.filter_objects_by_access(permission_document_download, request.user, document_versions, related='document', exception_on_empty=True)
 
     subtemplates_list = []
     subtemplates_list.append(
@@ -484,9 +484,9 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TOOLS])
+        Permission.objects.check_permissions(request.user, [permission_document_tools])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_DOCUMENT_TOOLS, request.user, documents, exception_on_empty=True)
+        documents = AccessEntry.objects.filter_objects_by_access(permission_document_tools, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -536,9 +536,9 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_TRANSFORMATION_DELETE])
+        Permission.objects.check_permissions(request.user, [permission_transformation_delete])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_TRANSFORMATION_DELETE, request.user, documents, exception_on_empty=True)
+        documents = AccessEntry.objects.filter_objects_by_access(permission_transformation_delete, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
@@ -582,9 +582,9 @@ def document_page_view(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
+        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
 
     zoom = int(request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION))
@@ -617,9 +617,9 @@ def document_page_navigation_next(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
+        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -635,9 +635,9 @@ def document_page_navigation_previous(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
+        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -654,9 +654,9 @@ def document_page_navigation_first(request, document_page_id):
     document_page = get_object_or_404(document_page.siblings, page_number=1)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
+        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -668,9 +668,9 @@ def document_page_navigation_last(request, document_page_id):
     document_page = get_object_or_404(document_page.siblings, page_number=document_page.siblings.count())
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
+        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -681,9 +681,9 @@ def transform_page(request, document_page_id, zoom_function=None, rotation_funct
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document_page.document)
+        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -744,9 +744,9 @@ def document_print(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_PRINT])
+        Permission.objects.check_permissions(request.user, [permission_document_print])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_PRINT, request.user, document)
+        AccessEntry.objects.check_access(permission_document_print, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -784,7 +784,7 @@ def document_print(request, document_id):
 
 
 def document_type_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_VIEW])
+    Permission.objects.check_permissions(request.user, [permission_document_type_view])
 
     context = {
         'object_list': DocumentType.objects.all(),
@@ -800,7 +800,7 @@ def document_type_list(request):
 
 
 def document_type_edit(request, document_type_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+    Permission.objects.check_permissions(request.user, [permission_document_type_edit])
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('documents:document_type_list'))))
@@ -827,7 +827,7 @@ def document_type_edit(request, document_type_id):
 
 
 def document_type_delete(request, document_type_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_DELETE])
+    Permission.objects.check_permissions(request.user, [permission_document_type_delete])
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 
     post_action_redirect = reverse('documents:document_type_list')
@@ -860,7 +860,7 @@ def document_type_delete(request, document_type_id):
 
 
 def document_type_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_CREATE])
+    Permission.objects.check_permissions(request.user, [permission_document_type_create])
 
     if request.method == 'POST':
         form = DocumentTypeForm(request.POST)
@@ -882,7 +882,7 @@ def document_type_create(request):
 
 
 def document_type_filename_list(request, document_type_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_VIEW])
+    Permission.objects.check_permissions(request.user, [permission_document_type_view])
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 
     context = {
@@ -904,7 +904,7 @@ def document_type_filename_list(request, document_type_id):
 
 
 def document_type_filename_edit(request, document_type_filename_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+    Permission.objects.check_permissions(request.user, [permission_document_type_edit])
     document_type_filename = get_object_or_404(DocumentTypeFilename, pk=document_type_filename_id)
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('documents:document_type_filename_list', args=[document_type_filename.document_type_id]))))
@@ -936,7 +936,7 @@ def document_type_filename_edit(request, document_type_filename_id):
 
 
 def document_type_filename_delete(request, document_type_filename_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+    Permission.objects.check_permissions(request.user, [permission_document_type_edit])
     document_type_filename = get_object_or_404(DocumentTypeFilename, pk=document_type_filename_id)
 
     post_action_redirect = reverse('documents:document_type_filename_list', args=[document_type_filename.document_type_id])
@@ -971,7 +971,7 @@ def document_type_filename_delete(request, document_type_filename_id):
 
 
 def document_type_filename_create(request, document_type_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+    Permission.objects.check_permissions(request.user, [permission_document_type_edit])
 
     document_type = get_object_or_404(DocumentType, pk=document_type_id)
 
@@ -1002,7 +1002,7 @@ def document_type_filename_create(request, document_type_id):
 
 
 def document_clear_image_cache(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TOOLS])
+    Permission.objects.check_permissions(request.user, [permission_document_tools])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -1022,9 +1022,9 @@ def document_version_list(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
+        Permission.objects.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VIEW, request.user, document)
+        AccessEntry.objects.check_access(permission_document_view, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -1062,9 +1062,9 @@ def document_version_revert(request, document_version_pk):
     document_version = get_object_or_404(DocumentVersion, pk=document_version_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VERSION_REVERT])
+        Permission.objects.check_permissions(request.user, [permission_document_version_revert])
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_DOCUMENT_VERSION_REVERT, request.user, document_version.document)
+        AccessEntry.objects.check_access(permission_document_version_revert, request.user, document_version.document)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 

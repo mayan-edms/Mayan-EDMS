@@ -28,7 +28,7 @@ from .links import (
     link_entry_re_queue, link_entry_re_queue_multiple
 )
 from .models import DocumentVersionOCRError
-from .permissions import PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_CONTENT_VIEW
+from .permissions import permission_ocr_document, permission_ocr_content_view
 from .settings import setting_pdftotext_path, setting_tesseract_path, setting_unpaper_path
 from .tasks import task_do_ocr
 
@@ -61,7 +61,7 @@ class OCRApp(MayanAppConfig):
 
         class_permissions(
             Document, [
-                PERMISSION_OCR_DOCUMENT, PERMISSION_OCR_CONTENT_VIEW
+                permission_ocr_document, permission_ocr_content_view
             ]
         )
 
