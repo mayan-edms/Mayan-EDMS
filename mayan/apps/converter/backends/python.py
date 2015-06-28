@@ -53,8 +53,6 @@ class Python(ConverterBase):
                 fs_cleanup(input_filepath)
 
     def get_page_count(self):
-        super(Python, self).get_page_count()
-
         page_count = 1
 
         if self.mime_type == 'application/pdf':
