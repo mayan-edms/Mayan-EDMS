@@ -15,7 +15,7 @@ from django.utils.http import urlencode, urlquote
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
-from permissions.models import Permission
+from permissions import Permission
 
 logger = logging.getLogger(__name__)
 
@@ -157,7 +157,7 @@ class Link(object):
         # too
         if self.permissions:
             try:
-                Permission.objects.check_permissions(request.user, self.permissions)
+                Permission.check_permissions(request.user, self.permissions)
             except PermissionDenied:
                 # If the user doesn't have the permission, and we are passed
                 # an instance, check to see if the user has at least ACL

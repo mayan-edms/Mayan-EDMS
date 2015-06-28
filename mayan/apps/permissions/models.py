@@ -19,114 +19,6 @@ from .managers import RoleMemberManager, StoredPermissionManager
 logger = logging.getLogger(__name__)
 
 
-class PermissionNamespace(object):
-    def __init__(self, name, label):
-        self.name = name
-        self.label = label
-
-    def __unicode__(self):
-        return unicode(self.label)
-
-    def add_permission(self, name, label):
-        return Permission(namespace=self, name=name, label=label)
-
-
-class PermissionDoesNotExists(Exception):
-    pass
-
-
-class PermissionManager(object):
-    _permissions = {}
-    DoesNotExist = PermissionDoesNotExists()
-
-    @classmethod
-    def register(cls, namespace, name, label):
-        permission = Permission(namespace, name, label)
-        cls._permissions[permission.uuid] = permission
-        return permission
-
-    @classmethod
-    def check_permissions(cls, requester, permission_list):
-        for permission in permission_list:
-            if permission.requester_has_this(requester):
-                return True
-
-        logger.debug('no permission')
-
-        raise PermissionDenied(ugettext('Insufficient permissions.'))
-
-    @classmethod
-    def get_for_holder(cls, holder):
-        return StoredPermission.objects.get_for_holder(holder)
-
-    @classmethod
-    def all(cls):
-        # Return sorted permisions by namespace.name
-        return sorted(cls._permissions.values(), key=lambda x: x.namespace.name)
-
-    @classmethod
-    def get(cls, get_dict, proxy_only=False):
-        if 'pk' in get_dict:
-            try:
-                if proxy_only:
-                    return cls._permissions[get_dict['pk']]
-                else:
-                    return cls._permissions[get_dict['pk']].get_stored_permission()
-            except KeyError:
-                raise Permission.DoesNotExist
-
-    def __init__(self, model):
-        self.model = model
-
-
-class Permission(object):
-    _stored_permissions_cache = {}
-
-    DoesNotExist = PermissionDoesNotExists
-
-    def __init__(self, namespace, name, label):
-        self.namespace = namespace
-        self.name = name
-        self.label = label
-        self.pk = self.uuid
-
-    def __unicode__(self):
-        return unicode(self.label)
-
-    def __str__(self):
-        return str(self.__unicode__())
-
-    @property
-    def uuid(self):
-        return '%s.%s' % (self.namespace.name, self.name)
-
-    @property
-    def stored_permission(self):
-        return self.get_stored_permission()
-
-    def get_stored_permission(self):
-        try:
-            return self.__class__._stored_permissions_cache[self]
-        except KeyError:
-            stored_permission, created = StoredPermission.objects.get_or_create(
-                namespace=self.namespace.name,
-                name=self.name,
-            )
-            stored_permission.volatile_permission = self
-            self.__class__._stored_permissions_cache[self] = stored_permission
-            return stored_permission
-
-    def requester_has_this(self, requester):
-        stored_permission = self.get_stored_permission()
-        return stored_permission.requester_has_this(requester)
-
-    def save(self, *args, **kwargs):
-        return self.get_stored_permission()
-
-Permission.objects = PermissionManager(Permission)
-Permission._default_manager = Permission.objects
-
-
 @python_2_unicode_compatible
 class StoredPermission(models.Model):
     namespace = models.CharField(max_length=64, verbose_name=_('Namespace'))
@@ -141,10 +33,12 @@ class StoredPermission(models.Model):
         verbose_name_plural = _('Permissions')
 
     def __init__(self, *args, **kwargs):
+        from .classes import Permission
+
         super(StoredPermission, self).__init__(*args, **kwargs)
         try:
-            self.volatile_permission = Permission.objects.get({'pk': '%s.%s' % (self.namespace, self.name)}, proxy_only=True)
-        except Permission.DoesNotExist:
+            self.volatile_permission = Permission.get({'pk': '%s.%s' % (self.namespace, self.name)}, proxy_only=True)
+        except KeyError:
             # Must be a deprecated permission in the database that is no
             # longer used in the current code
             pass

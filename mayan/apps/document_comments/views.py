@@ -14,7 +14,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
 from documents.models import Document
-from permissions.models import Permission
+from permissions import Permission
 
 from .forms import CommentForm
 from .permissions import (
@@ -32,7 +32,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         comments = [get_object_or_404(Comment, pk=comment_id) for comment_id in comment_id_list.split(',')]
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_comment_delete])
+        Permission.check_permissions(request.user, [permission_comment_delete])
     except PermissionDenied:
         comments = AccessEntry.objects.filter_objects_by_access(permission_comment_delete, request.user, comments, related='content_object')
 
@@ -80,7 +80,7 @@ def comment_add(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_comment_create])
+        Permission.check_permissions(request.user, [permission_comment_create])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_comment_create, request.user, document)
 
@@ -118,7 +118,7 @@ def comments_for_document(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_comment_view])
+        Permission.check_permissions(request.user, [permission_comment_view])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_comment_view, request.user, document)
 

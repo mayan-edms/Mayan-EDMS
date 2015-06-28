@@ -11,7 +11,7 @@ from documents.models import Document, DocumentType
 from documents.permissions import (
     permission_document_type_view, permission_document_type_edit
 )
-from permissions.models import Permission
+from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -88,7 +88,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         if self.request == 'GET':
             # Make sure the use has the permission to see the metadata for this document
             try:
-                Permission.objects.check_permissions(self.request.user, [permission_metadata_document_view])
+                Permission.check_permissions(self.request.user, [permission_metadata_document_view])
             except PermissionDenied:
                 AccessEntry.objects.check_access(permission_metadata_document_view, self.request.user, document)
             else:
@@ -96,7 +96,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         elif self.request == 'POST':
             # Make sure the use has the permission to add metadata to this document
             try:
-                Permission.objects.check_permissions(self.request.user, [permission_metadata_document_add])
+                Permission.check_permissions(self.request.user, [permission_metadata_document_add])
             except PermissionDenied:
                 AccessEntry.objects.check_access(permission_metadata_document_add, self.request.user, document)
             else:
@@ -162,7 +162,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
     def get_queryset(self):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['document_type_pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [permission_document_type_view])
+            Permission.check_permissions(self.request.user, [permission_document_type_view])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_type_view, self.request.user, document_type)
 
@@ -185,7 +185,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['document_type_pk'])
 
         try:
-            Permission.objects.check_permissions(self.request.user, [permission_document_type_edit])
+            Permission.check_permissions(self.request.user, [permission_document_type_edit])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_type_edit, self.request.user, document_type)
 
@@ -221,7 +221,7 @@ class APIDocumentTypeMetadataTypeRequiredView(views.APIView):
 
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['document_type_pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [permission_document_type_edit])
+            Permission.check_permissions(self.request.user, [permission_document_type_edit])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_type_edit, self.request.user, document_type)
 

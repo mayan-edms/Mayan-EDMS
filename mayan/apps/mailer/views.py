@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
 from documents.models import Document
-from permissions.models import Permission
+from permissions import Permission
 
 from .forms import DocumentMailForm
 from .permissions import (
@@ -34,7 +34,7 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
         permission = permission_mailing_link
 
     try:
-        Permission.objects.check_permissions(request.user, [permission])
+        Permission.check_permissions(request.user, [permission])
     except PermissionDenied:
         documents = AccessEntry.objects.filter_objects_by_access(permission, request.user, documents)
 

@@ -11,7 +11,7 @@ from actstream.models import Action, any_stream
 
 from acls.models import AccessEntry
 from common.utils import encapsulate
-from permissions.models import Permission
+from permissions import Permission
 
 from .classes import Event
 from .permissions import permission_events_view
@@ -33,7 +33,7 @@ def events_list(request, app_label=None, module_name=None, object_id=None, verb=
         content_object = get_object_or_404(model, pk=object_id)
 
         try:
-            Permission.objects.check_permissions(request.user, [permission_events_view])
+            Permission.check_permissions(request.user, [permission_events_view])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_events_view, request.user, content_object)
 
@@ -46,7 +46,7 @@ def events_list(request, app_label=None, module_name=None, object_id=None, verb=
         pre_object_list = Action.objects.filter(verb=verb)
 
         try:
-            Permission.objects.check_permissions(request.user, [permission_events_view])
+            Permission.check_permissions(request.user, [permission_events_view])
         except PermissionDenied:
             # If user doesn't have global permission, get a list of document
             # for which he/she does hace access use it to filter the
@@ -63,7 +63,7 @@ def events_list(request, app_label=None, module_name=None, object_id=None, verb=
         pre_object_list = Action.objects.all()
 
         try:
-            Permission.objects.check_permissions(request.user, [permission_events_view])
+            Permission.check_permissions(request.user, [permission_events_view])
         except PermissionDenied:
             # If user doesn't have global permission, get a list of document
             # for which he/she does hace access use it to filter the

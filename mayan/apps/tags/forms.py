@@ -7,7 +7,7 @@ from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
-from permissions.models import Permission
+from permissions import Permission
 
 from .models import Tag
 from .permissions import permission_tag_view
@@ -33,7 +33,7 @@ class TagListForm(forms.Form):
 
         queryset = Tag.objects.all()
         try:
-            Permission.objects.check_permissions(user, [permission_tag_view])
+            Permission.check_permissions(user, [permission_tag_view])
         except PermissionDenied:
             queryset = AccessEntry.objects.filter_objects_by_access(permission_tag_view, user, queryset)
 

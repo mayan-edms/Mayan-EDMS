@@ -15,7 +15,7 @@ from common.views import (
     SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document
-from permissions.models import Permission
+from permissions import Permission
 
 from .forms import (
     WorkflowForm, WorkflowInstanceTransitionForm, WorkflowStateForm,
@@ -32,7 +32,7 @@ from .permissions import (
 class DocumentWorkflowInstanceListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [permission_document_workflow_view])
+            Permission.check_permissions(request.user, [permission_document_workflow_view])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_workflow_view, request.user, self.get_document())
 
@@ -60,7 +60,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
 class WorkflowInstanceDetailView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [permission_document_workflow_view])
+            Permission.check_permissions(request.user, [permission_document_workflow_view])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_workflow_view, request.user, self.get_workflow_instance().document)
 
@@ -94,7 +94,7 @@ class WorkflowInstanceTransitionView(FormView):
 
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [permission_document_workflow_transition])
+            Permission.check_permissions(request.user, [permission_document_workflow_transition])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_workflow_transition, request.user, self.get_workflow_instance().document)
 
@@ -175,7 +175,7 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
         try:
-            Permission.objects.check_permissions(self.request.user, [permission_workflow_edit])
+            Permission.check_permissions(self.request.user, [permission_workflow_edit])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_workflow_edit, self.request.user, self.workflow)
 
@@ -205,7 +205,7 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
 class SetupWorkflowStateListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [permission_workflow_edit])
+            Permission.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
@@ -235,7 +235,7 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [permission_workflow_edit])
+            Permission.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
@@ -316,7 +316,7 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
 class SetupWorkflowTransitionListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [permission_workflow_edit])
+            Permission.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
@@ -346,7 +346,7 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
 
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [permission_workflow_edit])
+            Permission.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 

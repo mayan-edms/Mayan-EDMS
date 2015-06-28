@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
 from common.utils import encapsulate
-from permissions.models import Permission
+from permissions import Permission
 
 from .forms import TransformationForm
 from .models import Transformation
@@ -34,7 +34,7 @@ def transformation_list(request, app_label, model, object_id):
         raise Http404
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_transformation_view])
+        Permission.check_permissions(request.user, [permission_transformation_view])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_transformation_view, request.user, content_object)
 
@@ -65,7 +65,7 @@ def transformation_create(request, app_label, model, object_id):
         raise Http404
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_transformation_create])
+        Permission.check_permissions(request.user, [permission_transformation_create])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_transformation_create, request.user, content_object)
 
@@ -92,7 +92,7 @@ def transformation_delete(request, object_id):
     transformation = get_object_or_404(Transformation, pk=object_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_transformation_delete])
+        Permission.check_permissions(request.user, [permission_transformation_delete])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_transformation_delete, request.user, transformation.content_object)
 
@@ -117,7 +117,7 @@ def transformation_edit(request, object_id):
     transformation = get_object_or_404(Transformation, pk=object_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_transformation_edit])
+        Permission.check_permissions(request.user, [permission_transformation_edit])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_transformation_edit, request.user, transformation.content_object)
 

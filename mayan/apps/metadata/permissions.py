@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace
+from permissions import PermissionNamespace
 
 namespace = PermissionNamespace('metadata', _('Metadata'))
 permission_metadata_document_edit = namespace.add_permission(name='metadata_document_edit', label=_('Edit a document\'s metadata'))

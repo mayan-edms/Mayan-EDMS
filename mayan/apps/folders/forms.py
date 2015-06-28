@@ -7,7 +7,7 @@ from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
-from permissions.models import Permission
+from permissions import Permission
 
 from .models import Folder
 from .permissions import permission_folder_view
@@ -29,7 +29,7 @@ class FolderListForm(forms.Form):
 
         queryset = Folder.objects.all()
         try:
-            Permission.objects.check_permissions(user, [permission_folder_view])
+            Permission.check_permissions(user, [permission_folder_view])
         except PermissionDenied:
             queryset = AccessEntry.objects.filter_objects_by_access(permission_folder_view, user, queryset)
 

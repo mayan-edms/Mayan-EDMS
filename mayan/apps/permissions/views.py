@@ -21,9 +21,9 @@ from common.views import (
 from common.utils import encapsulate
 from common.widgets import two_state_template
 
-from .classes import Member
+from .classes import Member, Permission
 from .forms import RoleForm, RoleForm_view
-from .models import Permission, Role
+from .models import Role
 from .permissions import (
     permission_permission_grant, permission_permission_revoke,
     permission_role_view, permission_role_create, permission_role_delete,
@@ -58,7 +58,7 @@ class SetupRoleMembersView(AssignRemoveView):
         self.role.add_member(member)
 
     def dispatch(self, request, *args, **kwargs):
-        Permission.objects.check_permissions(request.user, [permission_role_edit])
+        Permission.check_permissions(request.user, [permission_role_edit])
         self.role = get_object_or_404(Role, pk=self.kwargs['role_id'])
         self.left_list_title = _('Non members of role: %s') % self.role
         self.right_list_title = _('Members of role: %s') % self.role
@@ -85,7 +85,7 @@ class SetupRoleMembersView(AssignRemoveView):
 
 
 def role_list(request):
-    Permission.objects.check_permissions(request.user, [permission_role_view])
+    Permission.check_permissions(request.user, [permission_role_view])
 
     context = {
         'object_list': Role.objects.all(),
@@ -98,46 +98,35 @@ def role_list(request):
 
 
 def role_permissions(request, role_id):
-    Permission.objects.check_permissions(request.user, [permission_permission_grant, permission_permission_revoke])
+    Permission.check_permissions(request.user, [permission_permission_grant, permission_permission_revoke])
 
     role = get_object_or_404(Role, pk=role_id)
-    form = RoleForm_view(instance=role)
 
-    subtemplates_list = [
-        {
-            'name': 'appearance/generic_list_subtemplate.html',
-            'context': {
-                'title': _('Permissions'),
-                'object_list': Permission.objects.all(),
-                'extra_columns': [
-                    {'name': _('Namespace'), 'attribute': encapsulate(lambda x: x.namespace)},
-                    {'name': _('Name'), 'attribute': encapsulate(lambda x: x.label)},
-                    {
-                        'name': _('Has permission'),
-                        'attribute': encapsulate(lambda x: two_state_template(x.requester_has_this(role))),
-                    },
-                ],
-                'hide_link': True,
-                'hide_object': True,
-            }
-        },
-    ]
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
+    return render_to_response('appearance/generic_list.html', {
         'object': role,
-        'subtemplates_list': subtemplates_list,
         'multi_select_item_properties': {
             'permission_id': lambda x: x.pk,
             'requester_id': lambda x: role.pk,
             'requester_app_label': lambda x: ContentType.objects.get_for_model(role).app_label,
             'requester_model': lambda x: ContentType.objects.get_for_model(role).model,
         },
+        'title': _('Permissions for: %s') % role,
+        'object_list': Permission.all(),
+        'extra_columns': [
+            {'name': _('Namespace'), 'attribute': encapsulate(lambda x: x.namespace)},
+            {'name': _('Name'), 'attribute': encapsulate(lambda x: x.label)},
+            {
+                'name': _('Has permission'),
+                'attribute': encapsulate(lambda x: two_state_template(x.requester_has_this(role))),
+            },
+        ],
+        'hide_link': True,
+        'hide_object': True,
     }, context_instance=RequestContext(request))
 
 
 def permission_grant(request):
-    Permission.objects.check_permissions(request.user, [permission_permission_grant])
+    Permission.check_permissions(request.user, [permission_permission_grant])
     items_property_list = loads(request.GET.get('items_property_list', []))
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -146,7 +135,7 @@ def permission_grant(request):
     items = []
     for item_properties in items_property_list:
         try:
-            permission = Permission.objects.get({'pk': item_properties['permission_id']})
+            permission = Permission.get({'pk': item_properties['permission_id']})
         except Permission.DoesNotExist:
             raise Http404
 
@@ -197,7 +186,7 @@ def permission_grant(request):
 
 
 def permission_revoke(request):
-    Permission.objects.check_permissions(request.user, [permission_permission_revoke])
+    Permission.check_permissions(request.user, [permission_permission_revoke])
     items_property_list = loads(request.GET.get('items_property_list', []))
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
@@ -206,7 +195,7 @@ def permission_revoke(request):
     items = []
     for item_properties in items_property_list:
         try:
-            permission = Permission.objects.get({'pk': item_properties['permission_id']})
+            permission = Permission.get({'pk': item_properties['permission_id']})
         except Permission.DoesNotExist:
             raise Http404
 

@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from acls.models import AccessEntry
 from documents.models import Document
 from documents.permissions import permission_document_view
-from permissions.models import Permission
+from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -96,7 +96,7 @@ class APIFolderDocumentListView(generics.ListAPIView):
     def get_queryset(self):
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [permission_folder_view])
+            Permission.check_permissions(self.request.user, [permission_folder_view])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_folder_view, self.request.user, folder)
 
@@ -114,7 +114,7 @@ class APIDocumentFolderListView(generics.ListAPIView):
     def get_queryset(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [permission_document_view])
+            Permission.check_permissions(self.request.user, [permission_document_view])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_view, self.request.user, document)
 
@@ -129,7 +129,7 @@ class APIFolderDocumentView(views.APIView):
 
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(request.user, [permission_folder_remove_document])
+            Permission.check_permissions(request.user, [permission_folder_remove_document])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_folder_remove_document, request.user, folder)
 
@@ -143,7 +143,7 @@ class APIFolderDocumentView(views.APIView):
 
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(request.user, [permission_folder_add_document])
+            Permission.check_permissions(request.user, [permission_folder_add_document])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_folder_add_document, request.user, folder)
 

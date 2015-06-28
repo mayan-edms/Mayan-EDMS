@@ -9,7 +9,7 @@ from rest_framework.response import Response
 from acls.models import AccessEntry
 from documents.models import Document
 from documents.permissions import permission_document_view
-from permissions.models import Permission
+from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -75,7 +75,7 @@ class APITagDocumentListView(generics.ListAPIView):
     def get_queryset(self):
         tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [permission_tag_view])
+            Permission.check_permissions(self.request.user, [permission_tag_view])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_tag_view, self.request.user, tag)
 
@@ -96,7 +96,7 @@ class APIDocumentTagListView(generics.ListAPIView):
     def get_queryset(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [permission_document_view])
+            Permission.check_permissions(self.request.user, [permission_document_view])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_view, self.request.user, document)
 
@@ -112,7 +112,7 @@ class APIDocumentTagView(views.APIView):
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         try:
-            Permission.objects.check_permissions(request.user, [permission_tag_remove])
+            Permission.check_permissions(request.user, [permission_tag_remove])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_tag_remove, request.user, document)
 
@@ -127,7 +127,7 @@ class APIDocumentTagView(views.APIView):
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         try:
-            Permission.objects.check_permissions(request.user, [permission_tag_attach])
+            Permission.check_permissions(request.user, [permission_tag_attach])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_tag_attach, request.user, document)
 

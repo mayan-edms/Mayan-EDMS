@@ -17,7 +17,7 @@ from acls.utils import apply_default_acls
 from documents.models import Document
 from documents.views import DocumentListView
 from documents.permissions import permission_document_view
-from permissions.models import Permission
+from permissions import Permission
 
 from .forms import TagForm, TagListForm
 from .models import Tag
@@ -30,7 +30,7 @@ logger = logging.getLogger(__name__)
 
 
 def tag_create(request):
-    Permission.objects.check_permissions(request.user, [permission_tag_create])
+    Permission.check_permissions(request.user, [permission_tag_create])
     redirect_url = reverse('tags:tag_list')
 
     if request.method == 'POST':
@@ -61,7 +61,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_tag_attach])
+        Permission.check_permissions(request.user, [permission_tag_attach])
     except PermissionDenied:
         documents = AccessEntry.objects.filter_objects_by_access(permission_tag_attach, request.user, documents)
 
@@ -123,7 +123,7 @@ def tag_list(request, queryset=None, extra_context=None):
     queryset = queryset if not (queryset is None) else Tag.objects.all()
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_tag_view])
+        Permission.check_permissions(request.user, [permission_tag_view])
     except PermissionDenied:
         queryset = AccessEntry.objects.filter_objects_by_access(permission_tag_view, request.user, queryset)
 
@@ -146,7 +146,7 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_tag_delete])
+        Permission.check_permissions(request.user, [permission_tag_delete])
     except PermissionDenied:
         tags = AccessEntry.objects.filter_objects_by_access(permission_tag_delete, request.user, tags)
 
@@ -194,7 +194,7 @@ def tag_edit(request, tag_id):
     tag = get_object_or_404(Tag, pk=tag_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_tag_edit])
+        Permission.check_permissions(request.user, [permission_tag_edit])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_tag_edit, request.user, tag)
 
@@ -233,7 +233,7 @@ def document_tags(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_document_view])
+        Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_document_view, request.user, document)
 
@@ -256,7 +256,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_tag_remove])
+        Permission.check_permissions(request.user, [permission_tag_remove])
     except PermissionDenied:
         documents = AccessEntry.objects.filter_objects_by_access(permission_tag_remove, request.user, documents, exception_on_empty=True)
 

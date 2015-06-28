@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace
+from permissions import PermissionNamespace
 
 acls_namespace = PermissionNamespace('acls', _('Access control lists'))
 acls_setup_namespace = PermissionNamespace('acls_setup', _('Access control lists'))

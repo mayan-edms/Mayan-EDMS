@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace
+from permissions import PermissionNamespace
 
 namespace = PermissionNamespace('sources_setup', _('Sources setup'))
 permission_sources_setup_create = namespace.add_permission(name='sources_setup_create', label=_('Create new document sources'))

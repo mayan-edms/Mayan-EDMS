@@ -14,7 +14,7 @@ from documents.views import DocumentListView
 
 from acls.models import AccessEntry
 from common.utils import encapsulate, get_object_name
-from permissions.models import Permission
+from permissions import Permission
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
 from .forms import DocumentCheckoutForm
@@ -43,7 +43,7 @@ class CheckoutListView(DocumentListView):
 def checkout_info(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
     try:
-        Permission.objects.check_permissions(request.user, [permission_document_checkout, permission_document_checkin])
+        Permission.check_permissions(request.user, [permission_document_checkout, permission_document_checkin])
     except PermissionDenied:
         AccessEntry.objects.check_accesses([permission_document_checkout, permission_document_checkin], request.user, document)
 
@@ -66,7 +66,7 @@ def checkout_info(request, document_pk):
 def checkout_document(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
     try:
-        Permission.objects.check_permissions(request.user, [permission_document_checkout])
+        Permission.check_permissions(request.user, [permission_document_checkout])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_document_checkout, request.user, document)
 
@@ -114,12 +114,12 @@ def checkin_document(request, document_pk):
     # checkin permission
     if document.checkout_info().user == request.user:
         try:
-            Permission.objects.check_permissions(request.user, [permission_document_checkin])
+            Permission.check_permissions(request.user, [permission_document_checkin])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_checkin, request.user, document)
     else:
         try:
-            Permission.objects.check_permissions(request.user, [permission_document_checkin_override])
+            Permission.check_permissions(request.user, [permission_document_checkin_override])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_checkin_override, request.user, document)
 

@@ -11,7 +11,8 @@ from django.db.models import Q
 from django.utils.translation import ugettext
 
 from common.models import AnonymousUserSingleton
-from permissions.models import Permission, RoleMember
+from permissions import Permission
+from permissions.models import RoleMember
 
 from .classes import AccessHolder, ClassAccessHolder, get_source_object
 
@@ -82,7 +83,7 @@ class AccessEntryManager(models.Manager):
 
         try:
             self.model.objects.get(
-                permission=permission.get_stored_permission(),
+                permission=permission.stored_permission,
                 holder_type=ContentType.objects.get_for_model(actor),
                 holder_id=actor.pk,
                 content_type=content_type,
@@ -209,7 +210,7 @@ class AccessEntryManager(models.Manager):
 
         if isinstance(actor, User) and not db_only:
             if actor.is_superuser or actor.is_staff:
-                return Permission.objects.all()
+                return Permission.all()
 
         actor_type = ContentType.objects.get_for_model(actor)
         content_type = ContentType.objects.get_for_model(obj)
@@ -282,7 +283,7 @@ class DefaultAccessEntryManager(models.Manager):
 
         try:
             self.model.objects.get(
-                permission=permission.get_stored_permission(),
+                permission=permission.stored_permission,
                 holder_type=ContentType.objects.get_for_model(actor),
                 holder_id=actor.pk,
                 content_type=ContentType.objects.get_for_model(cls),
@@ -323,7 +324,7 @@ class DefaultAccessEntryManager(models.Manager):
     def get_holder_permissions_for(self, cls, actor):
         if isinstance(actor, User):
             if actor.is_superuser or actor.is_staff:
-                return Permission.objects.all()
+                return Permission.all()
 
         actor_type = ContentType.objects.get_for_model(actor)
         content_type = ContentType.objects.get_for_model(cls)

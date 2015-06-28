@@ -15,7 +15,7 @@ from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 )
-from permissions.models import Permission
+from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -184,7 +184,7 @@ class APIDocumentImageView(generics.GenericAPIView):
         document = get_object_or_404(Document, pk=pk)
 
         try:
-            Permission.objects.check_permissions(request.user, [permission_document_view])
+            Permission.check_permissions(request.user, [permission_document_view])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_view, request.user, document)
 
@@ -315,7 +315,7 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
     def get_queryset(self):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
         try:
-            Permission.objects.check_permissions(self.request.user, [permission_document_type_view])
+            Permission.check_permissions(self.request.user, [permission_document_type_view])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_document_type_view, self.request.user, document_type)
 

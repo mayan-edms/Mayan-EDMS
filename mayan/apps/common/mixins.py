@@ -5,7 +5,7 @@ from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 
 from acls.models import AccessEntry
-from permissions.models import Permission
+from permissions import Permission
 
 
 class ExtraContextMixin(object):
@@ -29,7 +29,7 @@ class ObjectListPermissionFilterMixin(object):
         if self.object_permission:
             try:
                 # Check to see if the user has the permissions globally
-                Permission.objects.check_permissions(self.request.user, (self.object_permission,))
+                Permission.check_permissions(self.request.user, (self.object_permission,))
             except PermissionDenied:
                 # No global permission, filter ther queryset per object + permission
                 return AccessEntry.objects.filter_objects_by_access(self.object_permission, self.request.user, queryset)
@@ -50,7 +50,7 @@ class ObjectPermissionCheckMixin(object):
 
         if self.object_permission:
             try:
-                Permission.objects.check_permissions(request.user, (self.object_permission,))
+                Permission.check_permissions(request.user, (self.object_permission,))
             except PermissionDenied:
                 AccessEntry.objects.check_access(self.object_permission, request.user, self.get_permission_object())
 
@@ -86,6 +86,6 @@ class ViewPermissionCheckMixin(object):
 
     def dispatch(self, request, *args, **kwargs):
         if self.view_permission:
-            Permission.objects.check_permissions(self.request.user, (self.view_permission,))
+            Permission.check_permissions(self.request.user, (self.view_permission,))
 
         return super(ViewPermissionCheckMixin, self).dispatch(request, *args, **kwargs)

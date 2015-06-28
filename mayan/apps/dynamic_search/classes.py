@@ -10,7 +10,7 @@ from django.db.models.loading import get_model
 from django.utils.module_loading import import_string
 
 from acls.models import AccessEntry
-from permissions.models import Permission
+from permissions import Permission
 
 from .models import RecentSearch
 from .settings import setting_limit
@@ -171,7 +171,7 @@ class SearchModel(object):
 
         if self.permission:
             try:
-                Permission.objects.check_permissions(user, [self.permission])
+                Permission.check_permissions(user, [self.permission])
             except PermissionDenied:
                 queryset = AccessEntry.objects.filter_objects_by_access(self.permission, user, queryset)
 

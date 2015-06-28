@@ -4,14 +4,14 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import Permission
+from permissions import Permission
 
 from .classes import PropertyNamespace
 from .permissions import permission_installation_details
 
 
 def namespace_list(request):
-    Permission.objects.check_permissions(request.user, [permission_installation_details])
+    Permission.check_permissions(request.user, [permission_installation_details])
 
     return render_to_response('appearance/generic_list.html', {
         'object_list': PropertyNamespace.get_all(),
@@ -21,7 +21,7 @@ def namespace_list(request):
 
 
 def namespace_details(request, namespace_id):
-    Permission.objects.check_permissions(request.user, [permission_installation_details])
+    Permission.check_permissions(request.user, [permission_installation_details])
 
     namespace = PropertyNamespace.get(namespace_id)
     object_list = namespace.get_properties()

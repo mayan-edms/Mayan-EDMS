@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 from acls.models import AccessEntry
 from common.views import ConfirmView, SingleObjectEditView
 from documents.models import Document, DocumentType, DocumentVersion
-from permissions.models import Permission
+from permissions import Permission
 
 from .forms import DocumentContentForm
 from .models import DocumentTypeSettings, DocumentVersionOCRError
@@ -38,7 +38,7 @@ class DocumentSubmitView(ConfirmView):
         document = obj
 
         try:
-            Permission.objects.check_permissions(request.user, [permission_ocr_document])
+            Permission.check_permissions(request.user, [permission_ocr_document])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_ocr_document, request.user, document)
 
@@ -102,7 +102,7 @@ def document_content(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_ocr_content_view])
+        Permission.check_permissions(request.user, [permission_ocr_content_view])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_ocr_content_view, request.user, document)
 
@@ -121,7 +121,7 @@ def document_content(request, document_id):
 
 
 def entry_list(request):
-    Permission.objects.check_permissions(request.user, [permission_ocr_document])
+    Permission.check_permissions(request.user, [permission_ocr_document])
 
     context = {
         'object_list': DocumentVersionOCRError.objects.all(),
@@ -134,7 +134,7 @@ def entry_list(request):
 
 
 def entry_delete(request, pk=None, pk_list=None):
-    Permission.objects.check_permissions(request.user, [permission_ocr_document_delete])
+    Permission.check_permissions(request.user, [permission_ocr_document_delete])
 
     if pk:
         entries = [get_object_or_404(DocumentVersionOCRError, pk=pk)]
@@ -183,7 +183,7 @@ def entry_delete_multiple(request):
 
 
 def entry_re_queue(request, pk=None, pk_list=None):
-    Permission.objects.check_permissions(request.user, [permission_ocr_document])
+    Permission.check_permissions(request.user, [permission_ocr_document])
 
     if pk:
         entries = [get_object_or_404(DocumentVersionOCRError, pk=pk)]

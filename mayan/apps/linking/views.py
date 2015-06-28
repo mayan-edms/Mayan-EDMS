@@ -19,7 +19,7 @@ from common.views import AssignRemoveView
 from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.views import document_list
-from permissions.models import Permission
+from permissions import Permission
 
 from .forms import SmartLinkConditionForm, SmartLinkForm
 from .models import SmartLink, SmartLinkCondition
@@ -41,7 +41,7 @@ class SetupSmartLinkDocumentTypesView(AssignRemoveView):
         self.smart_link = get_object_or_404(SmartLink, pk=self.kwargs['smart_link_pk'])
 
         try:
-            Permission.objects.check_permissions(self.request.user, [permission_smart_link_edit])
+            Permission.check_permissions(self.request.user, [permission_smart_link_edit])
         except PermissionDenied:
             AccessEntry.objects.check_access(permission_smart_link_edit, self.request.user, self.smart_link)
 
@@ -71,7 +71,7 @@ def smart_link_instance_view(request, document_id, smart_link_pk):
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_smart_link_view])
+        Permission.check_permissions(request.user, [permission_smart_link_view])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_smart_link_view, request.user, smart_link)
 
@@ -106,7 +106,7 @@ def smart_link_instances_for_document(request, document_id):
         )
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_smart_link_view])
+        Permission.check_permissions(request.user, [permission_smart_link_view])
     except PermissionDenied:
         smart_links = AccessEntry.objects.filter_objects_by_access(permission_smart_link_view, request.user, queryset)
     else:
@@ -141,7 +141,7 @@ def smart_link_list(request):
     qs = SmartLink.objects.all()
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_smart_link_view])
+        Permission.check_permissions(request.user, [permission_smart_link_view])
     except PermissionDenied:
         qs = AccessEntry.objects.filter_objects_by_access(permission_smart_link_view, request.user, qs)
 
@@ -158,7 +158,7 @@ def smart_link_list(request):
 
 
 def smart_link_create(request):
-    Permission.objects.check_permissions(request.user, [permission_smart_link_create])
+    Permission.check_permissions(request.user, [permission_smart_link_create])
 
     if request.method == 'POST':
         form = SmartLinkForm(request.POST)
@@ -180,7 +180,7 @@ def smart_link_edit(request, smart_link_pk):
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_smart_link_edit])
+        Permission.check_permissions(request.user, [permission_smart_link_edit])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_smart_link_edit, request.user, smart_link)
 
@@ -204,7 +204,7 @@ def smart_link_delete(request, smart_link_pk):
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_smart_link_delete])
+        Permission.check_permissions(request.user, [permission_smart_link_delete])
     except PermissionDenied:
         AccessEntry.objects.check_access(permission_smart_link_delete, request.user, smart_link)
 
@@ -235,7 +235,7 @@ def smart_link_condition_list(request, smart_link_pk):
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_smart_link_edit])
+        Permission.check_permissions(request.user, [permission_smart_link_edit])
     except PermissionDenied:
         AccessEntry.objects.check_accesses([permission_smart_link_edit], request.user, smart_link)
 
@@ -254,7 +254,7 @@ def smart_link_condition_create(request, smart_link_pk):
     smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_smart_link_edit])
+        Permission.check_permissions(request.user, [permission_smart_link_edit])
     except PermissionDenied:
         AccessEntry.objects.check_accesses([permission_smart_link_edit], request.user, smart_link)
 
@@ -280,7 +280,7 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
     smart_link_condition = get_object_or_404(SmartLinkCondition, pk=smart_link_condition_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_smart_link_edit])
+        Permission.check_permissions(request.user, [permission_smart_link_edit])
     except PermissionDenied:
         AccessEntry.objects.check_accesses([permission_smart_link_edit], request.user, smart_link_condition.smart_link)
 
@@ -311,7 +311,7 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
     smart_link_condition = get_object_or_404(SmartLinkCondition, pk=smart_link_condition_pk)
 
     try:
-        Permission.objects.check_permissions(request.user, [permission_smart_link_edit])
+        Permission.check_permissions(request.user, [permission_smart_link_edit])
     except PermissionDenied:
         AccessEntry.objects.check_accesses([permission_smart_link_edit], request.user, smart_link_condition.smart_link)
 

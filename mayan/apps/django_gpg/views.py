@@ -12,7 +12,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import encapsulate
-from permissions.models import Permission
+from permissions import Permission
 
 from .api import Key
 from .forms import KeySearchForm
@@ -26,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 
 def key_receive(request, key_id):
-    Permission.objects.check_permissions(request.user, [permission_key_receive])
+    Permission.check_permissions(request.user, [permission_key_receive])
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -64,7 +64,7 @@ def key_receive(request, key_id):
 
 
 def key_list(request, secret=True):
-    Permission.objects.check_permissions(request.user, [permission_key_view])
+    Permission.check_permissions(request.user, [permission_key_view])
 
     if secret:
         object_list = Key.get_all(gpg, secret=True)
@@ -91,7 +91,7 @@ def key_list(request, secret=True):
 
 
 def key_delete(request, fingerprint, key_type):
-    Permission.objects.check_permissions(request.user, [permission_key_delete])
+    Permission.check_permissions(request.user, [permission_key_delete])
 
     secret = key_type == 'sec'
     key = Key.get(gpg, fingerprint, secret=secret)
@@ -119,7 +119,7 @@ def key_delete(request, fingerprint, key_type):
 
 
 def key_query(request):
-    Permission.objects.check_permissions(request.user, [permission_keyserver_query])
+    Permission.check_permissions(request.user, [permission_keyserver_query])
 
     subtemplates_list = []
     term = request.GET.get('term')
