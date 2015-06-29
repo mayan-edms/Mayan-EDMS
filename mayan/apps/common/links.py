@@ -10,7 +10,6 @@ def is_superuser(context):
 
 
 link_about = Link(icon='fa fa-question', text=_('About'), view='common:about_view')
-link_admin_site = Link(condition=is_superuser, icon='fa fa-keyboard-o', text=_('Admin site'), view='admin:index')
 link_current_user_details = Link(icon='fa fa-user', text=_('User details'), view='common:current_user_details')
 link_current_user_edit = Link(icon='fa fa-user', text=_('Edit details'), view='common:current_user_edit')
 link_current_user_locale_profile_details = Link(icon='fa fa-globe', text=_('Locale profile'), view='common:current_user_locale_profile_details')

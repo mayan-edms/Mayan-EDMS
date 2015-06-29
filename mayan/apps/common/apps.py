@@ -13,8 +13,8 @@ from .handlers import (
     user_locale_profile_session_config, user_locale_profile_create
 )
 from .links import (
-    link_about, link_admin_site, link_current_user_details,
-    link_current_user_edit, link_current_user_locale_profile_details,
+    link_about, link_current_user_details, link_current_user_edit,
+    link_current_user_locale_profile_details,
     link_current_user_locale_profile_edit, link_license,
     link_maintenance_menu, link_setup, link_tools
 )
@@ -67,7 +67,6 @@ class CommonApp(MayanAppConfig):
             ],
             sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'authentication:password_change_view', 'common:setup_list', 'common:tools_list']
         )
-        menu_setup.bind_links(links=[link_admin_site])
         menu_tools.bind_links(links=[link_maintenance_menu])
 
         post_migrate.connect(create_anonymous_user, dispatch_uid='create_anonymous_user', sender=self)
