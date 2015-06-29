@@ -88,14 +88,14 @@ class Permission(object):
     @property
     def stored_permission(self):
         try:
-            return self.__class__._stored_permissions_cache[self]
+            return self.__class__._stored_permissions_cache[self.uuid]
         except KeyError:
             stored_permission, created = StoredPermission.objects.get_or_create(
                 namespace=self.namespace.name,
                 name=self.name,
             )
             stored_permission.volatile_permission = self
-            self.__class__._stored_permissions_cache[self] = stored_permission
+            self.__class__._stored_permissions_cache[self.uuid] = stored_permission
             return stored_permission
 
     def requester_has_this(self, requester):
