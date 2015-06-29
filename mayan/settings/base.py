@@ -114,7 +114,6 @@ MIDDLEWARE_CLASSES = (
     'common.middleware.timezone.TimezoneMiddleware',
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'authentication.middleware.login_required_middleware.LoginRequiredMiddleware',
-    'permissions.middleware.permission_denied_middleware.PermissionDeniedMiddleware',
     'pagination.middleware.PaginationMiddleware',
     'common.middleware.ajax_redirect.AjaxRedirect',
 )
