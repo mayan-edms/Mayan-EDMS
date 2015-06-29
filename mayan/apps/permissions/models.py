@@ -2,17 +2,13 @@ from __future__ import unicode_literals
 
 import logging
 
-from django.contrib.auth.models import Group, User
-from django.contrib.contenttypes import generic
-from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import PermissionDenied
+from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
-from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from .managers import RoleMemberManager, StoredPermissionManager
+from .managers import StoredPermissionManager
 
 logger = logging.getLogger(__name__)
 
@@ -45,51 +41,24 @@ class StoredPermission(models.Model):
         return unicode(getattr(self, 'volatile_permission', self.name))
 
     def get_holders(self):
-        return self.roles.all()
-        #return (holder.holder_object for holder in self.permissionholder_set.all())
+        result = []
+        for role in self.roles.all():
+            for user in role.group.user_set.all():
+                result.append(user)
 
-    def requester_has_this(self, actor):
-        #actor = AnonymousUserSingleton.objects.passthru_check(actor)
+        return result
 
-        logger.debug('actor: %s', actor)
-        if isinstance(actor, User):
-            if actor.is_superuser or actor.is_staff:
-                return True
-
-        # Request is one of the permission's holders?
-        if actor in self.get_holders():
+    def requester_has_this(self, user):
+        logger.debug('user: %s', user)
+        if user.is_superuser or user.is_staff:
             return True
 
-        # If not check if the requesters memberships objects is one of
-        # the permission's holder?
-        roles = RoleMember.objects.get_roles_for_member(actor)
-
-        if isinstance(actor, User):
-            groups = actor.groups.all()
-        else:
-            groups = []
-
-        for membership in list(set(roles) | set(groups)):
-            if self.requester_has_this(membership):
-                return True
+        # Request is one of the permission's holders?
+        if user in self.get_holders():
+            return True
 
         logger.debug('Fallthru')
         return False
-
-    def grant_to(self, actor):
-        actor = AnonymousUserSingleton.objects.passthru_check(actor)
-        permission_holder, created = PermissionHolder.objects.get_or_create(permission=self, holder_type=ContentType.objects.get_for_model(actor), holder_id=actor.pk)
-        return created
-
-    def revoke_from(self, actor):
-        actor = AnonymousUserSingleton.objects.passthru_check(actor)
-        try:
-            permission_holder = PermissionHolder.objects.get(permission=self, holder_type=ContentType.objects.get_for_model(actor), holder_id=actor.pk)
-            permission_holder.delete()
-        except PermissionHolder.DoesNotExist:
-            return False
-        else:
-            return True
 
 
 @python_2_unicode_compatible

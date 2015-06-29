@@ -4,13 +4,13 @@ from django.conf.urls import patterns, url
 
 from .api_views import APIRoleListView, APIRoleView
 from .views import (
-    RoleCreateView, RoleDeleteView, RoleEditView, SetupRoleMembersView,
-    SetupRolePermissionsView
+    RoleCreateView, RoleDeleteView, RoleEditView, RoleListView,
+    SetupRoleMembersView, SetupRolePermissionsView
 )
 
 urlpatterns = patterns(
     'permissions.views',
-    url(r'^role/list/$', 'role_list', name='role_list'),
+    url(r'^role/list/$', RoleListView.as_view(), name='role_list'),
     url(r'^role/create/$', RoleCreateView.as_view(), name='role_create'),
     url(r'^role/(?P<pk>\d+)/permissions/$', SetupRolePermissionsView.as_view(), name='role_permissions'),
     url(r'^role/(?P<pk>\d+)/edit/$', RoleEditView.as_view(), name='role_edit'),

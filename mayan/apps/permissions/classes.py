@@ -1,10 +1,13 @@
 from __future__ import unicode_literals
 
-from django.core.exceptions import PermissionDenied
+import logging
 
-from acls.classes import EncapsulatedObject
+from django.core.exceptions import PermissionDenied
+from django.utils.translation import ugettext_lazy as _
 
 from .models import StoredPermission
+
+logger = logging.getLogger(__name__)
 
 
 class PermissionNamespace(object):
@@ -45,7 +48,7 @@ class Permission(object):
 
         logger.debug('no permission')
 
-        raise PermissionDenied(ugettext('Insufficient permissions.'))
+        raise PermissionDenied(_('Insufficient permissions.'))
 
     @classmethod
     def get_for_holder(cls, holder):

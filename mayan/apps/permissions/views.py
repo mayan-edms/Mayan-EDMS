@@ -1,29 +1,19 @@
 from __future__ import unicode_literals
 
 import itertools
-from json import loads
-import operator
 
-from django.contrib import messages
 from django.contrib.auth.models import Group
-from django.contrib.contenttypes.models import ContentType
-from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
-from django.conf import settings
-from django.http import Http404, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView
+    SingleObjectEditView, SingleObjectListView
 )
-from common.utils import encapsulate
-from common.widgets import two_state_template
 
 from .classes import Permission, PermissionNamespace
-from .forms import RoleForm, RoleForm_view
+from .forms import RoleForm
 from .models import Role, StoredPermission
 from .permissions import (
     permission_permission_grant, permission_permission_revoke,
@@ -134,42 +124,11 @@ class SetupRolePermissionsView(AssignRemoveView):
         return data
 
 
-def role_list(request):
-    Permission.check_permissions(request.user, [permission_role_view])
-
-    context = {
-        'object_list': Role.objects.all(),
-        'title': _('Roles'),
+class RoleListView(SingleObjectListView):
+    extra_context = {
         'hide_link': True,
+        'title': _('Roles'),
     }
 
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
-
-
-def role_permissions(request, role_id):
-    Permission.check_permissions(request.user, [permission_permission_grant, permission_permission_revoke])
-
-    role = get_object_or_404(Role, pk=role_id)
-
-    return render_to_response('appearance/generic_list.html', {
-        'object': role,
-        'multi_select_item_properties': {
-            'permission_id': lambda x: x.pk,
-            'requester_id': lambda x: role.pk,
-            'requester_app_label': lambda x: ContentType.objects.get_for_model(role).app_label,
-            'requester_model': lambda x: ContentType.objects.get_for_model(role).model,
-        },
-        'title': _('Permissions for: %s') % role,
-        'object_list': Permission.all(),
-        'extra_columns': [
-            {'name': _('Namespace'), 'attribute': encapsulate(lambda x: x.namespace)},
-            {'name': _('Name'), 'attribute': encapsulate(lambda x: x.label)},
-            {
-                'name': _('Has permission'),
-                'attribute': encapsulate(lambda x: two_state_template(x.requester_has_this(role))),
-            },
-        ],
-        'hide_link': True,
-        'hide_object': True,
-    }, context_instance=RequestContext(request))
+    model = Role
+    view_permission = permission_role_view
