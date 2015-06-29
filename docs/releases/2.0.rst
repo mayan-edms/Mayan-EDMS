@@ -85,6 +85,7 @@ Common steps
 
 Migrate existing database schema with::
 
+    $ mayan-edms.py purge_permissions
     $ mayan-edms.py migrate
 
 During the migration several messages of stale content types can occur:
