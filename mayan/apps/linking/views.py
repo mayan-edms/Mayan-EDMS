@@ -12,7 +12,6 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
-from acls.utils import apply_default_acls
 from acls.views import acl_list_for
 from common.utils import encapsulate
 from common.views import AssignRemoveView
@@ -164,7 +163,6 @@ def smart_link_create(request):
         form = SmartLinkForm(request.POST)
         if form.is_valid():
             document_group = form.save()
-            apply_default_acls(document_group, request.user)
             messages.success(request, _('Smart link: %s created successfully.') % document_group)
             return HttpResponseRedirect(reverse('linking:smart_link_list'))
     else:

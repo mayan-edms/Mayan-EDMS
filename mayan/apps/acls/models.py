@@ -44,26 +44,3 @@ class AccessEntry(models.Model):
 
     def __str__(self):
         return '%s: %s' % (self.content_type, self.content_object)
-
-
-@python_2_unicode_compatible
-class DefaultAccessEntry(models.Model):
-    """
-    Model that holds the permission, class, actor relationship, that will
-    be added upon the creation of an instance of said class
-    """
-    @classmethod
-    def get_classes(cls):
-        return [AccessObjectClass.encapsulate(cls) for cls in get_classes()]
-
-    permission = models.ForeignKey(StoredPermission, verbose_name=_('Permission'))
-    role = models.ForeignKey(Role, verbose_name=_('Role'))
-
-    objects = DefaultAccessEntryManager()
-
-    class Meta:
-        verbose_name = _('Default access entry')
-        verbose_name_plural = _('Default access entries')
-
-    def __str__(self):
-        return '%s: %s' % (self.content_type, self.content_object)

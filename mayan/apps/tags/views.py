@@ -13,7 +13,6 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessEntry
 from acls.views import acl_list_for
-from acls.utils import apply_default_acls
 from documents.models import Document
 from documents.views import DocumentListView
 from documents.permissions import permission_document_view
@@ -37,7 +36,6 @@ def tag_create(request):
         form = TagForm(request.POST)
         if form.is_valid():
             tag = form.save()
-            apply_default_acls(tag, request.user)
 
             messages.success(request, _('Tag created succesfully.'))
             return HttpResponseRedirect(redirect_url)

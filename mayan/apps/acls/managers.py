@@ -12,9 +12,8 @@ from django.utils.translation import ugettext
 
 from common.models import AnonymousUserSingleton
 from permissions import Permission
-#from permissions.models import RoleMember
 
-from .classes import AccessHolder, ClassAccessHolder, get_source_object
+from .classes import AccessHolder, get_source_object
 
 logger = logging.getLogger(__name__)
 
@@ -266,13 +265,14 @@ class DefaultAccessEntryManager(models.Manager):
         cls = get_source_object(cls)
         content_type = ContentType.objects.get_for_model(cls)
         holder_list = []
-        for access_entry in self.model.objects.filter(content_type=content_type):
-            if access_entry.holder_object:
+        #for access_entry in self.model.objects.filter(content_type=content_type):
+            #if access_entry.holder_object:
                 # Don't add references to non existant content type objects
-                entry = ClassAccessHolder.encapsulate(access_entry.holder_object)
+                #TODO: FIX
+                #entry = ClassAccessHolder.encapsulate(access_entry.holder_object)
 
-                if entry not in holder_list:
-                    holder_list.append(entry)
+                #if entry not in holder_list:
+                #    holder_list.append(entry)
 
         return holder_list
 

@@ -12,7 +12,6 @@ from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from acls.utils import apply_default_acls
 from common.settings import setting_temporary_directory
 from common.utils import fs_cleanup
 from converter import (
@@ -112,8 +111,6 @@ class Document(models.Model):
         super(Document, self).save(*args, **kwargs)
 
         if new_document:
-            apply_default_acls(self, user)
-
             if user:
                 self.add_as_recent_document_for_user(user)
                 event_document_create.commit(actor=user, target=self)

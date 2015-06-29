@@ -12,7 +12,6 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessEntry
-from acls.utils import apply_default_acls
 from acls.views import acl_list_for
 from common.views import SingleObjectListView
 from documents.permissions import permission_document_view
@@ -50,7 +49,6 @@ def folder_create(request):
         if form.is_valid():
             folder, created = Folder.objects.get_or_create(user=request.user, title=form.cleaned_data['title'])
             if created:
-                apply_default_acls(folder, request.user)
                 messages.success(request, _('Folder created successfully'))
                 return HttpResponseRedirect(reverse('folders:folder_list'))
             else:

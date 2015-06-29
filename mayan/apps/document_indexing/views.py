@@ -11,7 +11,6 @@ from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessEntry
-from acls.utils import apply_default_acls
 from common.utils import encapsulate
 from common.views import AssignRemoveView
 from common.widgets import two_state_template
@@ -65,7 +64,6 @@ def index_setup_create(request):
         form = IndexForm(request.POST)
         if form.is_valid():
             index = form.save()
-            apply_default_acls(index, request.user)
             messages.success(request, _('Index created successfully.'))
             return HttpResponseRedirect(reverse('indexing:index_setup_list'))
     else:

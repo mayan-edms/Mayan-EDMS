@@ -140,10 +140,6 @@ class AccessObjectClass(EncapsulatedObject):
     source_object_name = 'cls'
 
 
-class ClassAccessHolder(EncapsulatedObject):
-    source_object_name = 'class_holder'
-
-
 if sys.version_info < (2, 5):
     # Prior to Python 2.5, Exception was an old-style class
     def subclass_exception(name, parents, unused):
