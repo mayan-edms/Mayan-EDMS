@@ -22,7 +22,7 @@ from common.views import (
 from common.utils import encapsulate
 from common.widgets import two_state_template
 
-from .classes import Member, Permission, PermissionNamespace
+from .classes import Permission, PermissionNamespace
 from .forms import RoleForm, RoleForm_view
 from .models import Role, StoredPermission
 from .permissions import (
@@ -30,7 +30,6 @@ from .permissions import (
     permission_role_view, permission_role_create, permission_role_delete,
     permission_role_edit
 )
-from .utils import get_non_role_members, get_role_members
 
 
 class RoleCreateView(SingleObjectCreateView):

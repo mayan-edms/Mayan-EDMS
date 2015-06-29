@@ -7,10 +7,6 @@ from acls.classes import EncapsulatedObject
 from .models import StoredPermission
 
 
-class Member(EncapsulatedObject):
-    source_object_name = 'member_object'
-
-
 class PermissionNamespace(object):
     _registry = {}
 
