@@ -49,9 +49,10 @@ class AssignRemoveView(TemplateView):
         results = []
         for choice in choices:
             ct = ContentType.objects.get_for_model(choice)
-            label = unicode(choice)
             if isinstance(choice, User):
                 label = choice.get_full_name() if choice.get_full_name() else choice
+            else:
+                label = unicode(choice)
 
             results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
 
@@ -60,19 +61,19 @@ class AssignRemoveView(TemplateView):
 
     def left_list(self):
         # Subclass must override
-        return []
+        raise NotImplementedError
 
     def right_list(self):
         # Subclass must override
-        return []
+        raise NotImplementedError
 
     def add(self, item):
         # Subclass must override
-        pass
+        raise NotImplementedError
 
     def remove(self, item):
         # Subclass must override
-        pass
+        raise NotImplementedError
 
     def get(self, request, *args, **kwargs):
         self.unselected_list = ChoiceForm(prefix=self.LEFT_LIST_NAME, choices=self.left_list())
@@ -126,7 +127,8 @@ class AssignRemoveView(TemplateView):
                         'form': self.unselected_list,
                         'title': self.left_list_title or ' ',
                         'submit_label': _('Add'),
-                        'submit_icon': 'fa fa-plus'
+                        'submit_icon': 'fa fa-plus',
+                        'hide_labels': True,
                     }
                 },
                 {
@@ -136,7 +138,8 @@ class AssignRemoveView(TemplateView):
                         'form': self.selected_list,
                         'title': self.right_list_title or ' ',
                         'submit_label': _('Remove'),
-                        'submit_icon': 'fa fa-minus'
+                        'submit_icon': 'fa fa-minus',
+                        'hide_labels': True,
                     }
                 },
 
