@@ -8,7 +8,7 @@
 <hr>
 {% endif %}
 
-<div class="well bs-component">
+<div class="well">
     {% if form.is_multipart %}
         <form name="{{ form.prefix }}" enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="{{ form_action }}" class="{{ form_class|default:'' }}">
     {% else %}

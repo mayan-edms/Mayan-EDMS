@@ -6,7 +6,7 @@
     </h4>
     <hr>
 
-    <div class="well bs-component">
+    <div class="well">
         {% if is_multipart %}
             <form enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="{{ form_action }}">
         {% else %}
