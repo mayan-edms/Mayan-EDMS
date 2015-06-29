@@ -1,10 +1,12 @@
 {% load i18n %}
 {% load static %}
 
-<h3>
-    {% include 'appearance/calculate_form_title.html' %}
-</h3>
+{% if title %}
+<h4>
+    {{ title }}
+</h4>
 <hr>
+{% endif %}
 
 <div class="well bs-component">
     {% if form.is_multipart %}

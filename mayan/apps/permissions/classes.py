@@ -12,15 +12,29 @@ class Member(EncapsulatedObject):
 
 
 class PermissionNamespace(object):
+    _registry = {}
+
+    @classmethod
+    def all(cls):
+        return cls._registry.values()
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
     def __init__(self, name, label):
         self.name = name
         self.label = label
+        self.permissions = []
+        self.__class__._registry[name] = self
 
     def __unicode__(self):
         return unicode(self.label)
 
     def add_permission(self, name, label):
-        return Permission(namespace=self, name=name, label=label)
+        permission = Permission(namespace=self, name=name, label=label)
+        self.permissions.append(permission)
+        return permission
 
 
 class Permission(object):

@@ -10,10 +10,6 @@ from common.utils import get_object_name
 from permissions.models import Role
 
 from .classes import AccessHolder
-from .models import CreatorSingleton
-
-anonymous_singleton = SimpleLazyObject(lambda: AnonymousUserSingleton.objects.get())
-creator_singleton = SimpleLazyObject(lambda: CreatorSingleton.objects.get())
 
 
 def _as_choice_list(holders):
@@ -55,8 +51,10 @@ class BaseHolderSelectionForm(forms.Form):
 
 
 class HolderSelectionForm(BaseHolderSelectionForm):
-    special_holders = [anonymous_singleton]
+    pass
+    #special_holders = [anonymous_singleton]
 
 
 class ClassHolderSelectionForm(BaseHolderSelectionForm):
-    special_holders = [anonymous_singleton, creator_singleton]
+    pass
+    #special_holders = [anonymous_singleton, creator_singleton]

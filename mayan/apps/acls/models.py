@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _, ugettext
 
 from solo.models import SingletonModel
 
-from permissions.models import StoredPermission
+from permissions.models import Role, StoredPermission
 
 from .api import get_classes
 from .classes import AccessObjectClass
@@ -25,18 +25,7 @@ class AccessEntry(models.Model):
     Model that hold the permission, object, actor relationship
     """
     permission = models.ForeignKey(StoredPermission, verbose_name=_('Permission'))
-
-    holder_type = models.ForeignKey(
-        ContentType,
-        related_name='access_holder',
-        limit_choices_to={'model__in': ('user', 'group', 'role')}
-    )
-    holder_id = models.PositiveIntegerField()
-    holder_object = generic.GenericForeignKey(
-        ct_field='holder_type',
-        fk_field='holder_id'
-    )
-
+    role = models.ForeignKey(Role, verbose_name=_('Role'))
     content_type = models.ForeignKey(
         ContentType,
         related_name='object_content_type'
@@ -68,22 +57,7 @@ class DefaultAccessEntry(models.Model):
         return [AccessObjectClass.encapsulate(cls) for cls in get_classes()]
 
     permission = models.ForeignKey(StoredPermission, verbose_name=_('Permission'))
-
-    holder_type = models.ForeignKey(
-        ContentType,
-        limit_choices_to={'model__in': ('user', 'group', 'role')},
-        related_name='default_access_entry_holder'
-    )
-    holder_id = models.PositiveIntegerField()
-    holder_object = generic.GenericForeignKey(
-        ct_field='holder_type',
-        fk_field='holder_id'
-    )
-
-    content_type = models.ForeignKey(
-        ContentType,
-        related_name='default_access_entry_class'
-    )
+    role = models.ForeignKey(Role, verbose_name=_('Role'))
 
     objects = DefaultAccessEntryManager()
 
@@ -93,24 +67,3 @@ class DefaultAccessEntry(models.Model):
 
     def __str__(self):
         return '%s: %s' % (self.content_type, self.content_object)
-
-
-class CreatorSingletonManager(models.Manager):
-    def passthru_check(self, holder, creator=None):
-        if isinstance(holder, self.model):
-            # TODO: raise explicit error if is instance and creator=None
-            return creator
-        else:
-            return holder
-
-
-@python_2_unicode_compatible
-class CreatorSingleton(SingletonModel):
-    objects = CreatorSingletonManager()
-
-    def __str__(self):
-        return ugettext('Creator')
-
-    class Meta:
-        verbose_name = _('Creator')
-        verbose_name_plural = _('Creator')

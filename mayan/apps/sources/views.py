@@ -157,14 +157,15 @@ class UploadBaseView(MultiFormView):
                         'name': 'appearance/generic_multiform_subtemplate.html',
                         'context': {
                             'forms': context['forms'],
+                            'title': _('Document properties'),
                         }
                     },
                     {
                         'name': 'appearance/generic_list_subtemplate.html',
                         'context': {
-                            'title': _('Files in staging path'),
-                            'object_list': staging_filelist,
                             'hide_link': True,
+                            'object_list': staging_filelist,
+                            'title': _('Files in staging path'),
                         }
                     },
                 ]
@@ -173,7 +174,8 @@ class UploadBaseView(MultiFormView):
                 'name': 'appearance/generic_multiform_subtemplate.html',
                 'context': {
                     'forms': context['forms'],
-                    'is_multipart': True
+                    'is_multipart': True,
+                    'title': _('Document properties'),
                 },
             })
 

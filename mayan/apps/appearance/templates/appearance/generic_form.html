@@ -5,13 +5,15 @@
 {% block title %} :: {% include 'appearance/calculate_form_title.html' %}{% endblock %}
 
 {% block content %}
-    {% if main_title %}
-        <h3>{{ main_title }}</h3>
+    {% if title %}
+        <h3>{{ title }}</h3>
         <hr>
     {% endif %}
 
     {% if form %}
-        {% include "appearance/generic_form_subtemplate.html" %}
+        {% with '' as title %}
+            {% include "appearance/generic_form_subtemplate.html" %}
+        {% endwith %}
     {% endif %}
 
     <div class="row">

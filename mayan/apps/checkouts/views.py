@@ -33,7 +33,7 @@ class CheckoutListView(DocumentListView):
         'title': _('Documents checked out'),
         'hide_links': True,
         'extra_columns': [
-            {'name': _('Checkout user'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user))},
+            {'name': _('User'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user))},
             {'name': _('Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
             {'name': _('Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
         ],

@@ -8,6 +8,11 @@
 {% block title %} :: {% include 'appearance/calculate_form_title.html' %}{% endblock %}
 
 {% block content %}
+    {% if title %}
+        <h3>{{ title }}</h3>
+        <hr>
+    {% endif %}
+
     {% include 'appearance/generic_list_subtemplate.html' %}
 {% endblock %}
 

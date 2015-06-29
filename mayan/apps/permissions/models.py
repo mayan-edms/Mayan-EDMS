@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
-from django.contrib.auth.models import User
+from django.contrib.auth.models import Group, User
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
@@ -12,7 +12,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from common.models import AnonymousUserSingleton
+#from common.models import AnonymousUserSingleton
 
 from .managers import RoleMemberManager, StoredPermissionManager
 
@@ -47,10 +47,12 @@ class StoredPermission(models.Model):
         return unicode(getattr(self, 'volatile_permission', self.name))
 
     def get_holders(self):
-        return (holder.holder_object for holder in self.permissionholder_set.all())
+        return self.roles.all()
+        #return (holder.holder_object for holder in self.permissionholder_set.all())
 
     def requester_has_this(self, actor):
-        actor = AnonymousUserSingleton.objects.passthru_check(actor)
+        #actor = AnonymousUserSingleton.objects.passthru_check(actor)
+
         logger.debug('actor: %s', actor)
         if isinstance(actor, User):
             if actor.is_superuser or actor.is_staff:
@@ -92,6 +94,7 @@ class StoredPermission(models.Model):
             return True
 
 
+"""
 @python_2_unicode_compatible
 class PermissionHolder(models.Model):
     permission = models.ForeignKey(StoredPermission, verbose_name=_('Permission'))
@@ -107,12 +110,14 @@ class PermissionHolder(models.Model):
 
     def __str__(self):
         return '%s: %s' % (self.holder_type, self.holder_object)
-
+"""
 
 @python_2_unicode_compatible
 class Role(models.Model):
     name = models.CharField(max_length=64, unique=True)
     label = models.CharField(max_length=64, unique=True, verbose_name=_('Label'))
+    permissions = models.ManyToManyField(StoredPermission, related_name='roles', verbose_name=_('Permissions'))
+    groups = models.ManyToManyField(Group, related_name='roles', verbose_name=_('Groups'))
 
     class Meta:
         ordering = ('label',)
@@ -125,6 +130,7 @@ class Role(models.Model):
     def get_absolute_url(self):
         return reverse('permissions:role_list')
 
+    """
     def add_member(self, member):
         member = AnonymousUserSingleton.objects.passthru_check(member)
         role_member, created = RoleMember.objects.get_or_create(
@@ -143,8 +149,9 @@ class Role(models.Model):
     def members(self, filter_dict=None):
         filter_dict = filter_dict or {}
         return (member.member_object for member in self.rolemember_set.filter(**filter_dict))
+    """
 
-
+    """
 @python_2_unicode_compatible
 class RoleMember(models.Model):
     role = models.ForeignKey(Role, verbose_name=_('Role'))
@@ -168,3 +175,4 @@ class RoleMember(models.Model):
 
     def __str__(self):
         return unicode(self.member_object)
+    """

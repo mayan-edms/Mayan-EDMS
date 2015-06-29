@@ -10,13 +10,13 @@
 {% autopaginate object_list %}
 <div class="row">
     <div class="col-xs-12">
-        <h3>
+        <h4>
             {% ifnotequal page_obj.paginator.num_pages 1 %}
-                {% blocktrans with page_obj.start_index as start and page_obj.end_index as end and page_obj.paginator.object_list|length as total and page_obj.number as page_number and page_obj.paginator.num_pages as total_pages %}{{ title }} ({{ start }} - {{ end }} out of {{ total }}) (Page {{ page_number }} of {{ total_pages }}){% endblocktrans %}
+                {% blocktrans with page_obj.start_index as start and page_obj.end_index as end and page_obj.paginator.object_list|length as total and page_obj.number as page_number and page_obj.paginator.num_pages as total_pages %}Total ({{ start }} - {{ end }} out of {{ total }}) (Page {{ page_number }} of {{ total_pages }}){% endblocktrans %}
             {% else %}
-                {% blocktrans with page_obj.paginator.object_list|length as total %}{{ title }} ({{ total }}){% endblocktrans %}
+                {% blocktrans with page_obj.paginator.object_list|length as total %}Total: {{ total }}{% endblocktrans %}
             {% endifnotequal %}
-        </h3>
+        </h4>
         <hr>
 
         <div class="well center-block">

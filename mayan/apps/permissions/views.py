@@ -5,6 +5,7 @@ from json import loads
 import operator
 
 from django.contrib import messages
+from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse
 from django.core.urlresolvers import reverse_lazy
@@ -21,9 +22,9 @@ from common.views import (
 from common.utils import encapsulate
 from common.widgets import two_state_template
 
-from .classes import Member, Permission
+from .classes import Member, Permission, PermissionNamespace
 from .forms import RoleForm, RoleForm_view
-from .models import Role
+from .models import Role, StoredPermission
 from .permissions import (
     permission_permission_grant, permission_permission_revoke,
     permission_role_view, permission_role_create, permission_role_delete,
@@ -51,34 +52,84 @@ class RoleEditView(SingleObjectEditView):
 
 
 class SetupRoleMembersView(AssignRemoveView):
-    grouped = True
+    grouped = False
 
     def add(self, item):
-        member = Member.get(item).source_object
-        self.role.add_member(member)
+        group = get_object_or_404(Group, pk=item)
+        self.role.groups.add(group)
 
     def dispatch(self, request, *args, **kwargs):
         Permission.check_permissions(request.user, [permission_role_edit])
         self.role = get_object_or_404(Role, pk=self.kwargs['role_id'])
-        self.left_list_title = _('Non members of role: %s') % self.role
-        self.right_list_title = _('Members of role: %s') % self.role
+        self.left_list_title = _('Available groups')
+        self.right_list_title = _('Member groups')
 
         return super(SetupRoleMembersView, self).dispatch(request, *args, **kwargs)
 
     def left_list(self):
-        return get_non_role_members(self.role)
+        return [(unicode(group.pk), group.name) for group in set(Group.objects.all()) - set(self.role.groups.all())]
 
     def right_list(self):
-        return get_role_members(self.role)
+        return [(unicode(group.pk), group.name) for group in self.role.groups.all()]
 
     def remove(self, item):
-        member = Member.get(item).source_object
-        self.role.remove_member(member)
+        group = get_object_or_404(Group, pk=item)
+        self.role.groups.remove(group)
 
     def get_context_data(self, **kwargs):
         data = super(SetupRoleMembersView, self).get_context_data(**kwargs)
         data.update({
             'object': self.role,
+            'title': _('Group members of role: %s') % self.role
+        })
+
+        return data
+
+
+class SetupRolePermissionsView(AssignRemoveView):
+    grouped = True
+
+    @staticmethod
+    def as_choice_list(items):
+        return sorted([(item.pk, item) for item in items], key=lambda x: x[1])
+
+    def add(self, item):
+        permission = get_object_or_404(StoredPermission, pk=item)
+        self.role.permissions.add(permission)
+
+    def dispatch(self, request, *args, **kwargs):
+        Permission.check_permissions(request.user, [permission_permission_grant, permission_permission_revoke])
+        self.role = get_object_or_404(Role, pk=self.kwargs['pk'])
+        self.left_list_title = _('Available permissions')
+        self.right_list_title = _('Granted permissions')
+
+        return super(SetupRolePermissionsView, self).dispatch(request, *args, **kwargs)
+
+    def left_list(self):
+        results = []
+        for namespace, permissions in itertools.groupby(StoredPermission.objects.exclude(id__in=self.role.permissions.values_list('pk', flat=True)), lambda entry: entry.namespace):
+            permission_options = [(unicode(permission.pk), permission) for permission in permissions]
+            results.append((PermissionNamespace.get(namespace), permission_options))
+
+        return results
+
+    def right_list(self):
+        results = []
+        for namespace, permissions in itertools.groupby(self.role.permissions.all(), lambda entry: entry.namespace):
+            permission_options = [(unicode(permission.pk), permission) for permission in permissions]
+            results.append((PermissionNamespace.get(namespace), permission_options))
+
+        return results
+
+    def remove(self, item):
+        permission = get_object_or_404(StoredPermission, pk=item)
+        self.role.permissions.remove(permission)
+
+    def get_context_data(self, **kwargs):
+        data = super(SetupRolePermissionsView, self).get_context_data(**kwargs)
+        data.update({
+            'object': self.role,
+            'title': _('Permissions for role: %s') % self.role,
         })
 
         return data
@@ -123,123 +174,3 @@ def role_permissions(request, role_id):
         'hide_link': True,
         'hide_object': True,
     }, context_instance=RequestContext(request))
-
-
-def permission_grant(request):
-    Permission.check_permissions(request.user, [permission_permission_grant])
-    items_property_list = loads(request.GET.get('items_property_list', []))
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    items = []
-    for item_properties in items_property_list:
-        try:
-            permission = Permission.get({'pk': item_properties['permission_id']})
-        except Permission.DoesNotExist:
-            raise Http404
-
-        ct = get_object_or_404(ContentType, app_label=item_properties['requester_app_label'], model=item_properties['requester_model'])
-        requester_model = ct.model_class()
-        requester = get_object_or_404(requester_model, pk=item_properties['requester_id'])
-        items.append({'requester': requester, 'permission': permission})
-
-    sorted_items = sorted(items, key=operator.itemgetter('requester'))
-    # Group items by requester
-    groups = itertools.groupby(sorted_items, key=operator.itemgetter('requester'))
-    grouped_items = [(grouper, [permission['permission'] for permission in group_data]) for grouper, group_data in groups]
-
-    # Warning: trial and error black magic ahead
-    title_suffix = _(' and ').join([_('%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
-
-    if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
-        permissions_label = _('Permission')
-    else:
-        permissions_label = _('Permissions')
-
-    if request.method == 'POST':
-        for item in items:
-            if item['permission'].grant_to(item['requester']):
-                messages.success(request, _('Permission "%(permission)s" granted to: %(requester)s.') % {
-                    'permission': item['permission'], 'requester': item['requester']})
-            else:
-                messages.warning(request, _('%(requester)s, already had the permission "%(permission)s" granted.') % {
-                    'requester': item['requester'], 'permission': item['permission']})
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'previous': previous,
-        'next': next,
-    }
-
-    context['title'] = _('Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?') % {
-        'permissions_label': permissions_label,
-        'title_suffix': title_suffix,
-    }
-
-    if len(grouped_items) == 1:
-        context['object'] = grouped_items[0][0]
-
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
-
-
-def permission_revoke(request):
-    Permission.check_permissions(request.user, [permission_permission_revoke])
-    items_property_list = loads(request.GET.get('items_property_list', []))
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    items = []
-    for item_properties in items_property_list:
-        try:
-            permission = Permission.get({'pk': item_properties['permission_id']})
-        except Permission.DoesNotExist:
-            raise Http404
-
-        ct = get_object_or_404(ContentType, app_label=item_properties['requester_app_label'], model=item_properties['requester_model'])
-        requester_model = ct.model_class()
-        requester = get_object_or_404(requester_model, pk=item_properties['requester_id'])
-        items.append({'requester': requester, 'permission': permission})
-
-    sorted_items = sorted(items, key=operator.itemgetter('requester'))
-    # Group items by requester
-    groups = itertools.groupby(sorted_items, key=operator.itemgetter('requester'))
-    grouped_items = [(grouper, [permission['permission'] for permission in group_data]) for grouper, group_data in groups]
-
-    # Warning: trial and error black magic ahead
-    title_suffix = _(' and ').join([_('%(permissions)s to %(requester)s') % {'permissions': ', '.join(['"%s"' % unicode(ps) for ps in p]), 'requester': unicode(r)} for r, p in grouped_items])
-
-    if len(grouped_items) == 1 and len(grouped_items[0][1]) == 1:
-        permissions_label = _('permission')
-    else:
-        permissions_label = _('permissions')
-
-    if request.method == 'POST':
-        for item in items:
-            if item['permission'].revoke_from(item['requester']):
-                messages.success(request, _('Permission "%(permission)s" revoked from: %(requester)s.') % {
-                    'permission': item['permission'], 'requester': item['requester']})
-            else:
-                messages.warning(request, _('%(requester)s, doesn\'t have the permission "%(permission)s" granted.') % {
-                    'requester': item['requester'], 'permission': item['permission']})
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'previous': previous,
-        'next': next,
-    }
-
-    context['title'] = _('Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?') % {
-        'permissions_label': permissions_label,
-        'title_suffix': title_suffix,
-    }
-
-    if len(grouped_items) == 1:
-        context['object'] = grouped_items[0][0]
-
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))

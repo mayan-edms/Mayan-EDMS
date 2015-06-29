@@ -17,12 +17,12 @@ from .links import (
     link_acl_detail, link_acl_grant, link_acl_holder_new, link_acl_revoke,
     link_acl_setup_valid_classes
 )
-from .models import CreatorSingleton
+#from .models import CreatorSingleton
 
 
-def create_creator_user(sender, **kwargs):
-    if kwargs['app_config'].__class__ == ACLsApp:
-        CreatorSingleton.objects.get_or_create()
+#def create_creator_user(sender, **kwargs):
+#    if kwargs['app_config'].__class__ == ACLsApp:
+#        CreatorSingleton.objects.get_or_create()
 
 
 class ACLsApp(MayanAppConfig):
@@ -49,4 +49,4 @@ class ACLsApp(MayanAppConfig):
         menu_setup.bind_links(links=[link_acl_setup_valid_classes])
         menu_sidebar.bind_links(links=[link_acl_holder_new], sources=[AccessObject])
 
-        post_migrate.connect(create_creator_user, dispatch_uid='create_creator_user')
+        #post_migrate.connect(create_creator_user, dispatch_uid='create_creator_user')

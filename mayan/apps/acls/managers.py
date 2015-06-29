@@ -12,7 +12,7 @@ from django.utils.translation import ugettext
 
 from common.models import AnonymousUserSingleton
 from permissions import Permission
-from permissions.models import RoleMember
+#from permissions.models import RoleMember
 
 from .classes import AccessHolder, ClassAccessHolder, get_source_object
 
