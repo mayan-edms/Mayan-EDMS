@@ -1,8 +1,6 @@
 from __future__ import unicode_literals
 
 import logging
-import sys
-import types
 
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ObjectDoesNotExist
@@ -138,12 +136,3 @@ class AccessObject(EncapsulatedObject):
 
 class AccessObjectClass(EncapsulatedObject):
     source_object_name = 'cls'
-
-
-if sys.version_info < (2, 5):
-    # Prior to Python 2.5, Exception was an old-style class
-    def subclass_exception(name, parents, unused):
-        return types.ClassType(name, parents, {})
-else:
-    def subclass_exception(name, parents, module):
-        return type(name, parents, {'__module__': module})

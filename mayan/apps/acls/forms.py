@@ -3,9 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django import forms
 from django.contrib.auth.models import User, Group
 from django.utils.translation import ugettext_lazy as _
-from django.utils.functional import SimpleLazyObject
 
-from common.models import AnonymousUserSingleton
 from common.utils import get_object_name
 from permissions.models import Role
 

@@ -18,6 +18,27 @@ from .classes import AccessHolder, get_source_object
 logger = logging.getLogger(__name__)
 
 
+class AccessControlListManager(models.Manager):
+    """
+    Implement a 3 tier permission system, involving a permissions, an actor
+    and an object
+    """
+
+    def check_access(self, permission, actor, obj):
+        if actor.is_superuser or actor.is_staff:
+            return True
+
+        user_roles = []
+        for group in user.groups.all():
+            for role in group.roles.all():
+                user_roles.append(role)
+
+        if not self.filter(content_object=obj, permissions=permission, role__in=user_roles):
+            raise PermissionDenied(ugettext('Insufficient access.'))
+
+    # TODO: add filter_objects_by_access
+
+
 class AccessEntryManager(models.Manager):
     """
     Implement a 3 tier permission system, involving a permissions, an actor
@@ -252,80 +273,3 @@ class AccessEntryManager(models.Manager):
                 raise PermissionDenied
 
             return object_list
-
-
-class DefaultAccessEntryManager(models.Manager):
-    """
-    Implement a 3 tier permission system, involving a permission, an actor
-    and a class or content type.  This model keeps track of the access
-    control lists that will be added when an instance of the recorded
-    content type is created.
-    """
-    def get_holders_for(self, cls):
-        cls = get_source_object(cls)
-        content_type = ContentType.objects.get_for_model(cls)
-        holder_list = []
-        #for access_entry in self.model.objects.filter(content_type=content_type):
-            #if access_entry.holder_object:
-                # Don't add references to non existant content type objects
-                #TODO: FIX
-                #entry = ClassAccessHolder.encapsulate(access_entry.holder_object)
-
-                #if entry not in holder_list:
-                #    holder_list.append(entry)
-
-        return holder_list
-
-    def has_access(self, permission, actor, cls):
-        if isinstance(actor, User):
-            if actor.is_superuser or actor.is_staff:
-                return True
-
-        try:
-            self.model.objects.get(
-                permission=permission.stored_permission,
-                holder_type=ContentType.objects.get_for_model(actor),
-                holder_id=actor.pk,
-                content_type=ContentType.objects.get_for_model(cls),
-            )
-        except self.model.DoesNotExist:
-            return False
-        else:
-            return True
-
-    def grant(self, permission, actor, cls):
-        """
-        Grant a permission (what), (to) an actor, (on) a specific class
-        """
-        access_entry, created = self.model.objects.get_or_create(
-            permission=permission,
-            holder_type=ContentType.objects.get_for_model(actor),
-            holder_id=actor.pk,
-            content_type=ContentType.objects.get_for_model(cls),
-        )
-        return created
-
-    def revoke(self, permission, actor, cls):
-        """
-        Revoke a permission (what), (from) an actor, (on) a specific class
-        """
-        try:
-            access_entry = self.model.objects.get(
-                permission=permission,
-                holder_type=ContentType.objects.get_for_model(actor),
-                holder_id=actor.pk,
-                content_type=ContentType.objects.get_for_model(cls),
-            )
-            access_entry.delete()
-            return True
-        except self.model.DoesNotExist:
-            return False
-
-    def get_holder_permissions_for(self, cls, actor):
-        if isinstance(actor, User):
-            if actor.is_superuser or actor.is_staff:
-                return Permission.all()
-
-        actor_type = ContentType.objects.get_for_model(actor)
-        content_type = ContentType.objects.get_for_model(cls)
-        return [access.permission for access in self.model.objects.filter(content_type=content_type, holder_type=actor_type, holder_id=actor.pk)]
