@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from permissions import PermissionNamespace
 
-namespace = PermissionNamespace('document_states', _('States'))
+namespace = PermissionNamespace('document_states', _('Document workflows'))
 
 permission_workflow_create = namespace.add_permission(name='workflow_create', label=_('Create workflows'))
 permission_workflow_delete = namespace.add_permission(name='workflow_delte', label=_('Delete workflows'))
