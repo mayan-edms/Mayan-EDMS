@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms.formsets import formset_factory
+from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from .models import MetadataType
@@ -17,17 +18,13 @@ class MetadataForm(forms.Form):
     def clean_value(self):
         metadata_type = MetadataType.objects.get(pk=self.cleaned_data['id'])
 
-        try:
-            validation_function = setting_available_validators.value[metadata_type.validation]
-        except KeyError:
-            # User entered a validation function name, but was not found
-            # Return value entered as is
-            return self.cleaned_data['value']
-        else:
+        if metadata_type.validation:
+            validator = import_string(metadata_type.validation)()
+
             try:
                 # If it is a parsing function we should get a value
                 # If it is a validation function we get nothing on success
-                result = validation_function(self.cleaned_data['value'])
+                result = validator.validate(self.cleaned_data['value'])
             except Exception as exception:
                 # If it is a validation function and an exception is raise
                 # we wrap that into a new ValidationError exception
@@ -47,10 +44,9 @@ class MetadataForm(forms.Form):
                 # If it was a validation function and passed correctly we return
                 # the original input value
                 return result or self.cleaned_data['value']
-
-        # If a validation function was never specified we return the original
-        # value
-        return self.cleaned_data['value']
+        else:
+            # If a validator was never specified we return the original value
+            return self.cleaned_data['value']
 
     def __init__(self, *args, **kwargs):
         super(MetadataForm, self).__init__(*args, **kwargs)

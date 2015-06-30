@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from dateutil.parser import parse
 
 
-class MetadataParser(object):
+class MetadataValidator(object):
     _registry = []
 
     @classmethod
@@ -20,27 +20,27 @@ class MetadataParser(object):
 
     @classmethod
     def get_import_paths(cls):
-        return [parser.get_import_path() for parser in cls.get_all()]
+        return [validator.get_import_path() for validator in cls.get_all()]
 
     def parse(self, input_data):
         raise NotImplementedError
 
 
-class DateAndTimeParser(MetadataParser):
-    def parse(self, input_data):
+class DateAndTimeValidator(MetadataValidator):
+    def validate(self, input_data):
         return parse(input_data).isoformat()
 
 
-class DateParser(MetadataParser):
-    def parse(self, input_data):
+class DateValidator(MetadataValidator):
+    def validate(self, input_data):
         return parse(input_data).date().isoformat()
 
 
-class TimeParser(MetadataParser):
-    def parse(self, input_data):
+class TimeValidator(MetadataValidator):
+    def validate(self, input_data):
         return parse(input_data).time().isoformat()
 
 
-MetadataParser.register(DateAndTimeParser)
-MetadataParser.register(DateParser)
-MetadataParser.register(TimeParser)
+MetadataValidator.register(DateAndTimeValidator)
+MetadataValidator.register(DateValidator)
+MetadataValidator.register(TimeValidator)
