@@ -42,34 +42,32 @@ class RoleEditView(SingleObjectEditView):
 
 class SetupRoleMembersView(AssignRemoveView):
     grouped = False
+    left_list_title = _('Available groups')
+    right_list_title = _('Member groups')
+    view_permission = permission_role_edit
 
     def add(self, item):
         group = get_object_or_404(Group, pk=item)
-        self.role.groups.add(group)
+        self.get_object().groups.add(group)
 
-    def dispatch(self, request, *args, **kwargs):
-        Permission.check_permissions(request.user, [permission_role_edit])
-        self.role = get_object_or_404(Role, pk=self.kwargs['role_id'])
-        self.left_list_title = _('Available groups')
-        self.right_list_title = _('Member groups')
-
-        return super(SetupRoleMembersView, self).dispatch(request, *args, **kwargs)
+    def get_object(self):
+        return get_object_or_404(Role, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return [(unicode(group.pk), group.name) for group in set(Group.objects.all()) - set(self.role.groups.all())]
+        return [(unicode(group.pk), group.name) for group in set(Group.objects.all()) - set(self.get_object().groups.all())]
 
     def right_list(self):
-        return [(unicode(group.pk), group.name) for group in self.role.groups.all()]
+        return [(unicode(group.pk), group.name) for group in self.get_object().groups.all()]
 
     def remove(self, item):
         group = get_object_or_404(Group, pk=item)
-        self.role.groups.remove(group)
+        self.get_object().groups.remove(group)
 
     def get_context_data(self, **kwargs):
         data = super(SetupRoleMembersView, self).get_context_data(**kwargs)
         data.update({
-            'object': self.role,
-            'title': _('Group members of role: %s') % self.role
+            'object': self.get_object(),
+            'title': _('Group members of role: %s') % self.get_object()
         })
 
         return data
@@ -77,22 +75,21 @@ class SetupRoleMembersView(AssignRemoveView):
 
 class SetupRolePermissionsView(AssignRemoveView):
     grouped = True
+    left_list_title = _('Available permissions')
+    right_list_title = _('Granted permissions')
+    view_permission = permission_role_view
 
     def add(self, item):
+        Permission.check_permissions(self.request.user, permissions=(permission_permission_grant,))
         permission = get_object_or_404(StoredPermission, pk=item)
-        self.role.permissions.add(permission)
+        self.get_object().permissions.add(permission)
 
-    def dispatch(self, request, *args, **kwargs):
-        Permission.check_permissions(request.user, [permission_permission_grant, permission_permission_revoke])
-        self.role = get_object_or_404(Role, pk=self.kwargs['pk'])
-        self.left_list_title = _('Available permissions')
-        self.right_list_title = _('Granted permissions')
-
-        return super(SetupRolePermissionsView, self).dispatch(request, *args, **kwargs)
+    def get_object(self):
+        return get_object_or_404(Role, pk=self.kwargs['pk'])
 
     def left_list(self):
         results = []
-        for namespace, permissions in itertools.groupby(StoredPermission.objects.exclude(id__in=self.role.permissions.values_list('pk', flat=True)), lambda entry: entry.namespace):
+        for namespace, permissions in itertools.groupby(StoredPermission.objects.exclude(id__in=self.get_object().permissions.values_list('pk', flat=True)), lambda entry: entry.namespace):
             permission_options = [(unicode(permission.pk), permission) for permission in permissions]
             results.append((PermissionNamespace.get(namespace), permission_options))
 
@@ -100,21 +97,22 @@ class SetupRolePermissionsView(AssignRemoveView):
 
     def right_list(self):
         results = []
-        for namespace, permissions in itertools.groupby(self.role.permissions.all(), lambda entry: entry.namespace):
+        for namespace, permissions in itertools.groupby(self.get_object().permissions.all(), lambda entry: entry.namespace):
             permission_options = [(unicode(permission.pk), permission) for permission in permissions]
             results.append((PermissionNamespace.get(namespace), permission_options))
 
         return results
 
     def remove(self, item):
+        Permission.check_permissions(self.request.user, permissions=(permission_permission_revoke,))
         permission = get_object_or_404(StoredPermission, pk=item)
-        self.role.permissions.remove(permission)
+        self.get_object().permissions.remove(permission)
 
     def get_context_data(self, **kwargs):
         data = super(SetupRolePermissionsView, self).get_context_data(**kwargs)
         data.update({
-            'object': self.role,
-            'title': _('Permissions for role: %s') % self.role,
+            'object': self.get_object(),
+            'title': _('Permissions for role: %s') % self.get_object(),
         })
 
         return data

@@ -30,8 +30,8 @@ urlpatterns = patterns(
     url(r'^setup/type/(?P<metadatatype_id>\d+)/edit/$', 'setup_metadata_type_edit', name='setup_metadata_type_edit'),
     url(r'^setup/type/(?P<metadatatype_id>\d+)/delete/$', 'setup_metadata_type_delete', name='setup_metadata_type_delete'),
 
-    url(r'^setup/document/type/(?P<document_type_id>\d+)/metadata/edit/$', SetupDocumentTypeMetadataOptionalView.as_view(), name='setup_document_type_metadata'),
-    url(r'^setup/document/type/(?P<document_type_id>\d+)/metadata/edit/required/$', SetupDocumentTypeMetadataRequiredView.as_view(), name='setup_document_type_metadata_required'),
+    url(r'^setup/document/type/(?P<pk>\d+)/metadata/edit/$', SetupDocumentTypeMetadataOptionalView.as_view(), name='setup_document_type_metadata'),
+    url(r'^setup/document/type/(?P<pk>\d+)/metadata/edit/required/$', SetupDocumentTypeMetadataRequiredView.as_view(), name='setup_document_type_metadata_required'),
 
     url(r'^tools/missing_required_metadata/$', MissingRequiredMetadataDocumentListView.as_view(), name='documents_missing_required_metadata'),
 )

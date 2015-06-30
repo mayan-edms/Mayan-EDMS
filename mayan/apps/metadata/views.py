@@ -442,20 +442,21 @@ def setup_metadata_type_delete(request, metadatatype_id):
 
 class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
     decode_content_type = True
+    view_permission = permission_document_type_edit
+    left_list_title = _('Available metadata types')
+    right_list_title = _('Metadata types assigned')
 
     def add(self, item):
-        self.document_type.metadata.create(metadata_type=item, required=False)
+        self.get_object().metadata.create(metadata_type=item, required=False)
 
-    def dispatch(self, request, *args, **kwargs):
-        Permission.check_permissions(request.user, [permission_document_type_edit])
-        self.document_type = get_object_or_404(DocumentType, pk=self.kwargs['document_type_id'])
-        return super(SetupDocumentTypeMetadataOptionalView, self).dispatch(request, *args, **kwargs)
+    def get_object(self):
+        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return AssignRemoveView.generate_choices(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=self.document_type.metadata.values_list('metadata_type', flat=True))))
+        return AssignRemoveView.generate_choices(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=self.get_object().metadata.values_list('metadata_type', flat=True))))
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(self.document_type.metadata.filter(required=False))
+        return AssignRemoveView.generate_choices(self.get_object().metadata.filter(required=False))
 
     def remove(self, item):
         item.delete()
@@ -463,9 +464,8 @@ class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
     def get_context_data(self, **kwargs):
         data = super(SetupDocumentTypeMetadataOptionalView, self).get_context_data(**kwargs)
         data.update({
-            'document_type': self.document_type,
-            'main_title': _('Optional metadata types for document type: %s') % self.document_type,
-            'navigation_object_list': ['document_type'],
+            'object': self.get_object(),
+            'title': _('Optional metadata types for document type: %s') % self.get_object(),
         })
 
         return data
@@ -473,17 +473,16 @@ class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
 
 class SetupDocumentTypeMetadataRequiredView(SetupDocumentTypeMetadataOptionalView):
     def add(self, item):
-        self.document_type.metadata.create(metadata_type=item, required=True)
+        self.get_object().metadata.create(metadata_type=item, required=True)
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(self.document_type.metadata.filter(required=True))
+        return AssignRemoveView.generate_choices(self.get_object().metadata.filter(required=True))
 
     def get_context_data(self, **kwargs):
         data = super(SetupDocumentTypeMetadataRequiredView, self).get_context_data(**kwargs)
         data.update({
-            'document_type': self.document_type,
-            'main_title': _('Required metadata types for document type: %s') % self.document_type,
-            'navigation_object_list': ['document_type'],
+            'object': self.get_object(),
+            'title': _('Required metadata types for document type: %s') % self.get_object(),
         })
 
         return data

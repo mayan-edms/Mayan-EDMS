@@ -17,14 +17,14 @@ urlpatterns = patterns(
     url(r'^user/multiple/delete/$', 'user_multiple_delete', name='user_multiple_delete'),
     url(r'^user/(?P<user_id>\d+)/set_password/$', 'user_set_password', name='user_set_password'),
     url(r'^user/multiple/set_password/$', 'user_multiple_set_password', name='user_multiple_set_password'),
-    url(r'^user/(?P<user_id>\d+)/groups/$', UserGroupsView.as_view(), name='user_groups'),
+    url(r'^user/(?P<pk>\d+)/groups/$', UserGroupsView.as_view(), name='user_groups'),
 
     url(r'^group/list/$', 'group_list', name='group_list'),
     url(r'^group/add/$', 'group_add', name='group_add'),
     url(r'^group/(?P<group_id>\d+)/edit/$', 'group_edit', name='group_edit'),
     url(r'^group/(?P<group_id>\d+)/delete/$', 'group_delete', name='group_delete'),
     url(r'^group/multiple/delete/$', 'group_multiple_delete', name='group_multiple_delete'),
-    url(r'^group/(?P<group_id>\d+)/members/$', GroupMembersView.as_view(), name='group_members'),
+    url(r'^group/(?P<pk>\d+)/members/$', GroupMembersView.as_view(), name='group_members'),
 )
 
 api_urls = patterns(

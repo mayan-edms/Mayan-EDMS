@@ -37,9 +37,6 @@ class Index(models.Model):
     def get_absolute_url(self):
         return reverse('indexing:index_instance_node_view', args=[self.instance_root.pk])
 
-    def get_document_types_not_in_index(self):
-        return DocumentType.objects.exclude(pk__in=self.document_types.all())
-
     def save(self, *args, **kwargs):
         """Automatically create the root index template node"""
         super(Index, self).save(*args, **kwargs)

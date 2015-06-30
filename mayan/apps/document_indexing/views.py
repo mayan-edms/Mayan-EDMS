@@ -14,7 +14,7 @@ from acls.models import AccessEntry
 from common.utils import encapsulate
 from common.views import AssignRemoveView
 from common.widgets import two_state_template
-from documents.models import Document
+from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from documents.views import document_list
 from permissions import Permission
@@ -165,37 +165,30 @@ def index_setup_view(request, index_pk):
 
 class SetupIndexDocumentTypesView(AssignRemoveView):
     decode_content_type = True
+    object_permission = permission_document_indexing_edit
+    left_list_title = _('Available document types')
+    right_list_title = _('Document types linked')
 
     def add(self, item):
-        self.index.document_types.add(item)
+        self.get_object().document_types.add(item)
 
-    def dispatch(self, request, *args, **kwargs):
-        self.index = get_object_or_404(Index, pk=self.kwargs['index_pk'])
-
-        try:
-            Permission.check_permissions(request.user, [permission_document_indexing_edit])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_indexing_edit, request.user, self.index)
-
-        self.left_list_title = _('Document types not in index: %s') % self.index
-        self.right_list_title = _('Document types for index: %s') % self.index
-
-        return super(SetupIndexDocumentTypesView, self).dispatch(request, *args, **kwargs)
+    def get_object(self):
+        return get_object_or_404(Index, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return AssignRemoveView.generate_choices(self.index.get_document_types_not_in_index())
+        return AssignRemoveView.generate_choices(DocumentType.objects.exclude(pk__in=self.get_object().document_types.all()))
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(self.index.document_types.all())
+        return AssignRemoveView.generate_choices(self.get_object().document_types.all())
 
     def remove(self, item):
-        self.index.document_types.remove(item)
+        self.get_object().document_types.remove(item)
 
     def get_context_data(self, **kwargs):
         data = super(SetupIndexDocumentTypesView, self).get_context_data(**kwargs)
         data.update({
-            'index': self.index,
-            'navigation_object_list': ['index'],
+            'object': self.get_object(),
+            'title': _('Document types linked to index: %s') % self.get_object()
         })
 
         return data

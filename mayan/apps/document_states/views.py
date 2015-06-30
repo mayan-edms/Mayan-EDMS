@@ -165,38 +165,34 @@ class SetupWorkflowDeleteView(SingleObjectDeleteView):
 
 class SetupWorkflowDocumentTypesView(AssignRemoveView):
     decode_content_type = True
+    object_permission = permission_workflow_edit
+    left_list_title = _('Available document types')
+    right_list_title = _('Document types assigned this workflow')
 
     def add(self, item):
-        self.workflow.document_types.add(item)
+        self.get_object().document_types.add(item)
         # TODO: add task launching this workflow for all the document types of
         # item
 
-    def dispatch(self, request, *args, **kwargs):
-        self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
-
-        try:
-            Permission.check_permissions(self.request.user, [permission_workflow_edit])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(permission_workflow_edit, self.request.user, self.workflow)
-
-        return super(SetupWorkflowDocumentTypesView, self).dispatch(request, *args, **kwargs)
+    def get_object(self):
+        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return AssignRemoveView.generate_choices(self.workflow.get_document_types_not_in_workflow())
+        return AssignRemoveView.generate_choices(self.get_object().get_document_types_not_in_workflow())
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(self.workflow.document_types.all())
+        return AssignRemoveView.generate_choices(self.get_object().document_types.all())
 
     def remove(self, item):
-        self.workflow.document_types.remove(item)
+        self.get_object().document_types.remove(item)
         # TODO: add task deleting this workflow for all the document types of
         # item
 
     def get_context_data(self, **kwargs):
         data = super(SetupWorkflowDocumentTypesView, self).get_context_data(**kwargs)
         data.update({
-            'main_title': _('Document types assigned the workflow: %s') % self.workflow,
-            'object': self.workflow,
+            'title': _('Document types assigned the workflow: %s') % self.get_object(),
+            'object': self.get_object(),
         })
 
         return data
