@@ -5,6 +5,7 @@ import logging
 from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
+from .exceptions import InvalidNamespace
 from .models import StoredPermission
 
 logger = logging.getLogger(__name__)
@@ -19,7 +20,10 @@ class PermissionNamespace(object):
 
     @classmethod
     def get(cls, name):
-        return cls._registry[name]
+        try:
+            return cls._registry[name]
+        except KeyError:
+            raise InvalidNamespace('Invalid namespace name. This is probably an obsolete permission namespace, execute the management command "purge_permissions" and try again.')
 
     def __init__(self, name, label):
         self.name = name
