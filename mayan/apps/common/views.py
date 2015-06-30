@@ -33,7 +33,7 @@ from .mixins import (
 )
 
 
-class AssignRemoveView(TemplateView):
+class AssignRemoveView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, TemplateView):
     decode_content_type = False
     extra_context = None
     grouped = False
