@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls.permissions import acls_view_acl
 from documents.permissions import permission_document_view
 from navigation import Link
 
@@ -13,7 +12,6 @@ from .permissions import (
 )
 
 link_document_folder_list = Link(permissions=[permission_document_view], text=_('Folders'), view='folders:document_folder_list', args='object.pk')
-link_folder_acl_list = Link(permissions=[acls_view_acl], text=_('ACLs'), view='folders:folder_acl_list', args='object.pk')
 link_folder_add_document = Link(permissions=[permission_folder_add_document], text=_('Add to a folder'), view='folders:folder_add_document', args='object.pk')
 link_folder_add_multiple_documents = Link(text=_('Add to folder'), view='folders:folder_add_multiple_documents')
 link_folder_create = Link(permissions=[permission_folder_create], text=_('Create folder'), view='folders:folder_create')

@@ -14,8 +14,6 @@ from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from acls.models import AccessEntry
-from acls.views import acl_list_for
 from common.compressed_files import CompressedFile
 from common.utils import encapsulate, pretty_size
 from common.views import ParentChildListView, SingleObjectListView
@@ -1083,14 +1081,3 @@ def document_version_revert(request, document_version_pk):
         'title': _('Are you sure you wish to revert to this version?'),
         'message': _('All later version after this one will be deleted too.'),
     }, context_instance=RequestContext(request))
-
-
-def document_acl_list(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
-    return acl_list_for(
-        request,
-        document,
-        extra_context={
-            'object': document,
-        }
-    )

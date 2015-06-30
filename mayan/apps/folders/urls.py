@@ -20,8 +20,6 @@ urlpatterns = patterns(
     url(r'^document/(?P<document_id>\d+)/folder/add/$', 'folder_add_document', name='folder_add_document'),
     url(r'^document/multiple/folder/add/$', 'folder_add_multiple_documents', name='folder_add_multiple_documents'),
     url(r'^document/(?P<document_id>\d+)/folder/list/$', 'document_folder_list', name='document_folder_list'),
-
-    url(r'^(?P<folder_pk>\d+)/acl/list/$', 'folder_acl_list', name='folder_acl_list'),
 )
 
 api_urls = patterns(

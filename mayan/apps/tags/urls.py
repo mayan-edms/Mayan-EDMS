@@ -24,8 +24,6 @@ urlpatterns = patterns(
     url(r'^selection/attach/document/multiple/$', 'tag_multiple_attach', name='multiple_documents_tag_attach'),
 
     url(r'^for/document/(?P<document_id>\d+)/$', 'document_tags', name='document_tags'),
-
-    url(r'^(?P<tag_pk>\d+)/acl/list/$', 'tag_acl_list', name='tag_acl_list'),
 )
 
 api_urls = patterns(

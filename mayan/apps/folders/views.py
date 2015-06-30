@@ -11,8 +11,6 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from acls.models import AccessEntry
-from acls.views import acl_list_for
 from common.views import SingleObjectListView
 from documents.permissions import permission_document_view
 from documents.models import Document
@@ -283,19 +281,6 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
 
 def folder_document_multiple_remove(request, folder_id):
     return folder_document_remove(request, folder_id, document_id_list=request.GET.get('id_list', []))
-
-
-def folder_acl_list(request, folder_pk):
-    folder = get_object_or_404(Folder, pk=folder_pk)
-    logger.debug('folder: %s', folder)
-
-    return acl_list_for(
-        request,
-        folder,
-        extra_context={
-            'object': folder,
-        }
-    )
 
 
 def folder_add_multiple_documents(request):

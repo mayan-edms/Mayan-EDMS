@@ -11,8 +11,6 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
-from acls.views import acl_list_for
 from common.utils import encapsulate
 from common.views import AssignRemoveView
 from common.widgets import two_state_template
@@ -336,17 +334,3 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
         'previous': previous,
         'title': _('Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
     }, context_instance=RequestContext(request))
-
-
-def smart_link_acl_list(request, smart_link_pk):
-    smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
-    logger.debug('smart_link: %s', smart_link)
-
-    return acl_list_for(
-        request,
-        smart_link,
-        extra_context={
-            'object': smart_link,
-            'smart_link': smart_link,
-        }
-    )

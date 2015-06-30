@@ -19,6 +19,4 @@ urlpatterns = patterns(
     url(r'^setup/(?P<smart_link_pk>\d+)/condition/create/$', 'smart_link_condition_create', name='smart_link_condition_create'),
     url(r'^setup/smart_link/condition/(?P<smart_link_condition_pk>\d+)/edit/$', 'smart_link_condition_edit', name='smart_link_condition_edit'),
     url(r'^setup/smart_link/condition/(?P<smart_link_condition_pk>\d+)/delete/$', 'smart_link_condition_delete', name='smart_link_condition_delete'),
-
-    url(r'^(?P<smart_link_pk>\d+)/acl/list/$', 'smart_link_acl_list', name='smart_link_acl_list'),
 )

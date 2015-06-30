@@ -11,8 +11,6 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from acls.models import AccessEntry
-from acls.views import acl_list_for
 from documents.models import Document
 from documents.views import DocumentListView
 from documents.permissions import permission_document_view
@@ -335,16 +333,3 @@ def single_document_multiple_tag_remove(request, document_id):
 
 def multiple_documents_selection_tag_remove(request):
     return tag_remove(request, document_id_list=request.GET.get('id_list', []))
-
-
-def tag_acl_list(request, tag_pk):
-    tag = get_object_or_404(Tag, pk=tag_pk)
-    logger.debug('tag: %s', tag)
-
-    return acl_list_for(
-        request,
-        tag,
-        extra_context={
-            'object': tag,
-        }
-    )

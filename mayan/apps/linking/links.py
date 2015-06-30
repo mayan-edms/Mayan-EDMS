@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls.permissions import acls_view_acl
 from documents.permissions import permission_document_view
 from navigation import Link
 
@@ -11,7 +10,6 @@ from .permissions import (
     permission_smart_link_edit, permission_smart_link_view
 )
 
-link_smart_link_acl_list = Link(permissions=[acls_view_acl], text=_('ACLs'), view='linking:smart_link_acl_list', args='object.pk')
 link_smart_link_condition_create = Link(permissions=[permission_smart_link_edit], text=_('Create condition'), view='linking:smart_link_condition_create', args='object.pk')
 link_smart_link_condition_delete = Link(permissions=[permission_smart_link_edit], tags='dangerous', text=_('Delete'), view='linking:smart_link_condition_delete', args='resolved_object.pk')
 link_smart_link_condition_edit = Link(permissions=[permission_smart_link_edit], text=_('Edit'), view='linking:smart_link_condition_edit', args='resolved_object.pk')

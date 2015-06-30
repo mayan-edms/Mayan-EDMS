@@ -5,7 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from actstream import registry
 
 from acls.api import class_permissions
-from acls.permissions import acls_view_acl, acls_edit_acl
+from acls.links import link_acl_list
+from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
     MayanAppConfig, MissingItem, menu_facet, menu_front_page, menu_object,
     menu_secondary, menu_setup, menu_sidebar, menu_multi_item
@@ -27,12 +28,11 @@ from statistics.classes import StatisticNamespace
 
 from .handlers import create_default_document_type
 from .links import (
-    link_clear_image_cache, link_document_acl_list,
-    link_document_clear_transformations, link_document_delete,
-    link_document_document_type_edit, link_document_events_view,
-    link_document_multiple_document_type_edit, link_document_download,
-    link_document_edit, link_document_list, link_document_list_recent,
-    link_document_multiple_delete,
+    link_clear_image_cache, link_document_clear_transformations,
+    link_document_delete, link_document_document_type_edit,
+    link_document_events_view, link_document_multiple_document_type_edit,
+    link_document_download, link_document_edit, link_document_list,
+    link_document_list_recent, link_document_multiple_delete,
     link_document_multiple_clear_transformations,
     link_document_multiple_download, link_document_multiple_update_page_count,
     link_document_page_navigation_first, link_document_page_navigation_last,
@@ -82,10 +82,10 @@ class DocumentsApp(MayanAppConfig):
         ])
 
         class_permissions(Document, [
-            acls_view_acl, acls_edit_acl, permission_document_delete,
-            permission_document_download, permission_document_edit,
-            permission_document_new_version, permission_document_print,
-            permission_document_properties_edit,
+            permission_acl_edit, permission_acl_view,
+            permission_document_delete, permission_document_download,
+            permission_document_edit, permission_document_new_version,
+            permission_document_print, permission_document_properties_edit,
             permission_document_version_revert, permission_document_view,
             permission_events_view, permission_transformation_create,
             permission_transformation_delete, permission_transformation_edit,
@@ -105,7 +105,7 @@ class DocumentsApp(MayanAppConfig):
         menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_delete, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
 
         # Document facet links
-        menu_facet.bind_links(links=[link_document_acl_list], sources=[Document])
+        menu_facet.bind_links(links=[link_acl_list], sources=[Document])
         menu_facet.bind_links(links=[link_document_preview], sources=[Document], position=0)
         menu_facet.bind_links(links=[link_document_properties], sources=[Document], position=2)
         menu_facet.bind_links(links=[link_document_events_view, link_document_version_list], sources=[Document], position=2)

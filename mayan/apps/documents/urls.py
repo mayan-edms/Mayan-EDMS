@@ -30,8 +30,6 @@ urlpatterns = patterns(
     url(r'^(?P<document_id>\d+)/reset_page_count/$', 'document_update_page_count', name='document_update_page_count'),
     url(r'^multiple/reset_page_count/$', 'document_multiple_update_page_count', name='document_multiple_update_page_count'),
 
-    url(r'^(?P<document_id>\d+)/acls/$', 'document_acl_list', name='document_acl_list'),
-
     url(r'^(?P<document_id>\d+)/display/$', 'get_document_image', {'size': setting_display_size.value}, 'document_display'),
     url(r'^(?P<document_id>\d+)/display/print/$', 'get_document_image', {'size': setting_print_size.value}, 'document_display_print'),
 
@@ -43,7 +41,6 @@ urlpatterns = patterns(
     url(r'^document/version/(?P<document_version_pk>\d+)/download/$', 'document_download', name='document_version_download'),
     url(r'^document/version/(?P<document_version_pk>\d+)/revert/$', 'document_version_revert', name='document_version_revert'),
 
-    url(r'^(?P<document_id>\d+)/acls/$', 'document_acl_list', name='document_acl_list'),
     url(r'^(?P<pk>\d+)/pages/all/$', DocumentPageListView.as_view(), name='document_pages'),
 
     url(r'^multiple/clear_transformations/$', 'document_multiple_clear_transformations', name='document_multiple_clear_transformations'),
