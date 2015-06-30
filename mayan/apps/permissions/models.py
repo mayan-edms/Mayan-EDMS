@@ -40,22 +40,16 @@ class StoredPermission(models.Model):
     def __str__(self):
         return unicode(getattr(self, 'volatile_permission', self.name))
 
-    def get_holders(self):
-        result = []
-        for role in self.roles.all():
-            for user in role.group.user_set.all():
-                result.append(user)
-
-        return result
-
     def requester_has_this(self, user):
         logger.debug('user: %s', user)
         if user.is_superuser or user.is_staff:
             return True
 
         # Request is one of the permission's holders?
-        if user in self.get_holders():
-            return True
+        for group in user.groups.all():
+            for role in group.roles.all():
+                if self in role.permissions.all():
+                    return True
 
         logger.debug('Fallthru')
         return False

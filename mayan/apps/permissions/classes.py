@@ -41,8 +41,8 @@ class Permission(object):
     _permissions = {}
 
     @classmethod
-    def check_permissions(cls, requester, permission_list):
-        for permission in permission_list:
+    def check_permissions(cls, requester, permissions):
+        for permission in permissions:
             if permission.requester_has_this(requester):
                 return True
 
@@ -98,5 +98,4 @@ class Permission(object):
             return stored_permission
 
     def requester_has_this(self, requester):
-        stored_permission = self.stored_permission
-        return stored_permission.requester_has_this(requester)
+        return self.stored_permission.requester_has_this(requester)

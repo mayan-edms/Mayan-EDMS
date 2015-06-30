@@ -78,10 +78,6 @@ class SetupRoleMembersView(AssignRemoveView):
 class SetupRolePermissionsView(AssignRemoveView):
     grouped = True
 
-    @staticmethod
-    def as_choice_list(items):
-        return sorted([(item.pk, item) for item in items], key=lambda x: x[1])
-
     def add(self, item):
         permission = get_object_or_404(StoredPermission, pk=item)
         self.role.permissions.add(permission)
