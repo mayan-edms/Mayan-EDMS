@@ -50,7 +50,7 @@ link_document_delete = Link(permissions=[permission_document_delete], tags='dang
 link_document_edit = Link(permissions=[permission_document_properties_edit], text=_('Edit properties'), view='documents:document_edit', args='object.id')
 link_document_document_type_edit = Link(permissions=[permission_document_properties_edit], text=_('Change type'), view='documents:document_document_type_edit', args='object.id')
 link_document_download = Link(permissions=[permission_document_download], text=_('Download'), view='documents:document_download', args='object.id')
-link_document_print = Link(permissions=[permission_document_print], text=_('Pprint'), view='documents:document_print', args='object.id')
+link_document_print = Link(permissions=[permission_document_print], text=_('Print'), view='documents:document_print', args='object.id')
 link_document_update_page_count = Link(permissions=[permission_document_tools], text=_('Reset page count'), view='documents:document_update_page_count', args='object.pk')
 
 # Views
