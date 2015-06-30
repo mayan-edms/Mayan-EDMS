@@ -64,6 +64,7 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
             'step_title': self.step_titles[self.steps.step0],
             'submit_label': _('Next step'),
             'submit_icon': 'fa fa-arrow-right',
+            'title': _('Document upload wizard'),
         })
         return context
 
