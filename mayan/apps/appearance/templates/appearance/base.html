@@ -17,7 +17,6 @@
         <title>{% block project_name %}{% project_name %}{% endblock %}{% block title %}{% endblock %}</title>
 
         {% compress css %}
-            <link href="http://fonts.googleapis.com/css?family=IM+Fell+English+SC" rel="stylesheet" type="text/css">
             <link href="{% static 'appearance/packages/font-awesome-4.3.0/css/font-awesome.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
             <link href="{% static 'appearance/packages/bootstrap-3.3.4-dist/css/bootstrap.min.css' %}" media="screen" rel="stylesheet" type="text/css"  />
             <link href="{% static 'appearance/css/flatly.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
@@ -25,6 +24,19 @@
             <link href="{% static 'appearance/packages/fancyBox-master/source/jquery.fancybox.css' %}" media="screen" rel="stylesheet" type="text/css" />
 
             <style type="text/css">
+                @font-face {
+                        font-family: 'IM Fell English SC';
+                        font-style: normal;
+                        font-weight: normal;
+                        src:
+                            local('IM FELL English SC'),
+                            local('IM_FELL_English_SC'),
+                            url('{% static "appearance/fonts/IM_Fell_English_SC.eot?#iefix" %}') format('embedded-opentype'),
+                            url('{% static "appearance/fonts/IM_Fell_English_SC.woff" %}') format('woff'),
+                            url('{% static "appearance/fonts/IM_Fell_English_SC.svg#IMFellEnglishSC" %}') format('svg'),
+                            url('{% static "appearance/fonts/IM_Fell_English_SC.ttf" %}') format('truetype');
+                }
+
                 body {
                   padding-top: 70px;
                 }
@@ -220,7 +232,7 @@
         <![endif]-->
 
         {% compress js %}
-        <script type="text/javascript" src="{% static 'appearance/packages/jquery-2.1.1.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'appearance/packages/jquery-2.1.4.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/bootstrap-3.3.4-dist/js/bootstrap.min.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/jquery.scrollview.js' %}"></script>
         <script type="text/javascript" src="{% static 'appearance/packages/jquery_lazyload-master/jquery.lazyload.min.js' %}"></script>
