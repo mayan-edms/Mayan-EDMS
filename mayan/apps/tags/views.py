@@ -215,7 +215,7 @@ class TagTaggedItemListView(DocumentListView):
     def get_tag(self):
         return get_object_or_404(Tag, pk=self.kwargs['pk'])
 
-    def get_queryset(self):
+    def get_document_queryset(self):
         return self.get_tag().documents.all()
 
     def get_extra_context(self):

@@ -134,7 +134,7 @@ class FolderDetailView(DocumentListView):
 
         return folder
 
-    def get_queryset(self):
+    def get_document_queryset(self):
         return self.get_folder().documents.all()
 
     def get_extra_context(self):

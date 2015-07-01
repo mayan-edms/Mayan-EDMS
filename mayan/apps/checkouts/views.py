@@ -27,7 +27,8 @@ from .permissions import (
 
 
 class CheckoutListView(DocumentListView):
-    queryset = DocumentCheckout.objects.checked_out_documents()
+    def get_document_queryset(self):
+        return DocumentCheckout.objects.checked_out_documents()
 
     extra_context = {
         'title': _('Documents checked out'),

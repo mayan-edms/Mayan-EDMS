@@ -67,7 +67,13 @@ class DocumentListView(SingleObjectListView):
         'title': _('All documents'),
     }
     object_permission = permission_document_view
-    queryset = Document.objects.all()
+
+    def get_document_queryset(self):
+        return Document.objects.all()
+
+    def get_queryset(self):
+        self.queryset = self.get_document_queryset()
+        return super(DocumentListView, self).get_queryset()
 
 
 class DocumentPageListView(ParentChildListView):
@@ -96,7 +102,7 @@ class RecentDocumentListView(DocumentListView):
         'title': _('Recent documents'),
     }
 
-    def get_queryset(self):
+    def get_document_queryset(self):
         return RecentDocument.objects.get_for_user(self.request.user)
 
 
