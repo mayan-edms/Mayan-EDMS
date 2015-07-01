@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from common.utils import encapsulate
 from common.views import AssignRemoveView
 from common.widgets import two_state_template
@@ -49,7 +49,7 @@ def index_setup_list(request):
     try:
         Permission.check_permissions(request.user, [permission_document_indexing_setup])
     except PermissionDenied:
-        queryset = AccessEntry.objects.filter_objects_by_access(permission_document_indexing_setup, request.user, queryset)
+        queryset = AccessControlList.objects.filter_by_access(permission_document_indexing_setup, request.user, queryset)
 
     context['object_list'] = queryset
 
@@ -81,7 +81,7 @@ def index_setup_edit(request, index_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_indexing_edit])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_indexing_create, request.user, index)
+        AccessControlList.objects.check_access(permission_document_indexing_create, request.user, index)
 
     if request.method == 'POST':
         form = IndexForm(request.POST, instance=index)
@@ -106,7 +106,7 @@ def index_setup_delete(request, index_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_indexing_delete])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_indexing_delete, request.user, index)
+        AccessControlList.objects.check_access(permission_document_indexing_delete, request.user, index)
 
     post_action_redirect = reverse('indexing:index_setup_list')
 
@@ -142,7 +142,7 @@ def index_setup_view(request, index_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_indexing_setup])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_indexing_setup, request.user, index)
+        AccessControlList.objects.check_access(permission_document_indexing_setup, request.user, index)
 
     object_list = index.template_root.get_descendants(include_self=True)
 
@@ -201,7 +201,7 @@ def template_node_create(request, parent_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_indexing_edit])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_indexing_edit, request.user, parent_node.index)
+        AccessControlList.objects.check_access(permission_document_indexing_edit, request.user, parent_node.index)
 
     if request.method == 'POST':
         form = IndexTemplateNodeForm(request.POST)
@@ -226,7 +226,7 @@ def template_node_edit(request, node_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_indexing_edit])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_indexing_edit, request.user, node.index)
+        AccessControlList.objects.check_access(permission_document_indexing_edit, request.user, node.index)
 
     if request.method == 'POST':
         form = IndexTemplateNodeForm(request.POST, instance=node)
@@ -252,7 +252,7 @@ def template_node_delete(request, node_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_indexing_edit])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_indexing_edit, request.user, node.index)
+        AccessControlList.objects.check_access(permission_document_indexing_edit, request.user, node.index)
 
     post_action_redirect = reverse('indexing:index_setup_view', args=[node.index.pk])
 
@@ -302,7 +302,7 @@ def index_list(request):
     try:
         Permission.check_permissions(request.user, [permission_document_indexing_view])
     except PermissionDenied:
-        queryset = AccessEntry.objects.filter_objects_by_access(permission_document_indexing_view, request.user, queryset)
+        queryset = AccessControlList.objects.filter_by_access(permission_document_indexing_view, request.user, queryset)
 
     context['object_list'] = queryset
 
@@ -322,7 +322,7 @@ def index_instance_node_view(request, index_instance_node_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_indexing_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_indexing_view, request.user, index_instance.index)
+        AccessControlList.objects.check_access(permission_document_indexing_view, request.user, index_instance.index)
 
     title = mark_safe(_('Contents for index: %s') % breadcrumbs)
 
@@ -392,7 +392,7 @@ def document_index_list(request, document_id):
         # TODO: should be AND not OR
         Permission.check_permissions(request.user, [permission_document_view, permission_document_indexing_view])
     except PermissionDenied:
-        queryset = AccessEntry.objects.filter_objects_by_access(permission_document_indexing_view, request.user, queryset, related='index')
+        queryset = AccessControlList.objects.filter_by_access(permission_document_indexing_view, request.user, queryset, related='index')
 
     for index_instance in queryset:
         object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))

@@ -9,7 +9,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from common.models import SharedUploadedFile
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.literals import (
@@ -186,7 +186,7 @@ class APIDocumentImageView(generics.GenericAPIView):
         try:
             Permission.check_permissions(request.user, [permission_document_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_view, request.user, document)
+            AccessControlList.objects.check_access(permission_document_view, request.user, document)
 
         size = request.GET.get('size', setting_display_size.value)
 
@@ -317,7 +317,7 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
         try:
             Permission.check_permissions(self.request.user, [permission_document_type_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_type_view, self.request.user, document_type)
+            AccessControlList.objects.check_access(permission_document_type_view, self.request.user, document_type)
 
         return document_type.documents.all()
 

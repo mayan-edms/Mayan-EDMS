@@ -12,7 +12,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from documents.models import Document
 from permissions import Permission
 
@@ -34,7 +34,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
     try:
         Permission.check_permissions(request.user, [permission_comment_delete])
     except PermissionDenied:
-        comments = AccessEntry.objects.filter_objects_by_access(permission_comment_delete, request.user, comments, related='content_object')
+        comments = AccessControlList.objects.filter_by_access(permission_comment_delete, request.user, comments, related='content_object')
 
     if not comments:
         messages.error(request, _('Must provide at least one comment.'))
@@ -82,7 +82,7 @@ def comment_add(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_comment_create])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_comment_create, request.user, document)
+        AccessControlList.objects.check_access(permission_comment_create, request.user, document)
 
     post_action_redirect = None
 
@@ -120,7 +120,7 @@ def comments_for_document(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_comment_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_comment_view, request.user, document)
+        AccessControlList.objects.check_access(permission_comment_view, request.user, document)
 
     return render_to_response('appearance/generic_list.html', {
         'object': document,

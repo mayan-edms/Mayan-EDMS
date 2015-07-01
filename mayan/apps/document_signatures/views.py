@@ -13,7 +13,7 @@ from django.template import RequestContext
 from django.template.defaultfilters import force_escape
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from django_gpg.literals import SIGNATURE_STATE_NONE, SIGNATURE_STATES
 from documents.models import Document
 from filetransfers.api import serve_file
@@ -35,7 +35,7 @@ def document_verify(request, document_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_verify])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_verify, request.user, document)
+        AccessControlList.objects.check_access(permission_document_verify, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -82,7 +82,7 @@ def document_signature_upload(request, document_pk):
     try:
         Permission.check_permissions(request.user, [permission_signature_upload])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_signature_upload, request.user, document)
+        AccessControlList.objects.check_access(permission_signature_upload, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -118,7 +118,7 @@ def document_signature_download(request, document_pk):
     try:
         Permission.check_permissions(request.user, [permission_signature_download])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_signature_download, request.user, document)
+        AccessControlList.objects.check_access(permission_signature_download, request.user, document)
 
     try:
         if DocumentVersionSignature.objects.has_detached_signature(document.latest_version):
@@ -142,7 +142,7 @@ def document_signature_delete(request, document_pk):
     try:
         Permission.check_permissions(request.user, [permission_signature_delete])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_signature_delete, request.user, document)
+        AccessControlList.objects.check_access(permission_signature_delete, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 

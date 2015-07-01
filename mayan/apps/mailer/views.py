@@ -11,7 +11,7 @@ from django.template import Context, RequestContext, Template
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from documents.models import Document
 from permissions import Permission
 
@@ -36,7 +36,7 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
     try:
         Permission.check_permissions(request.user, [permission])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(permission, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(permission, request.user, documents)
 
     if not documents:
         messages.error(request, _('Must provide at least one document.'))

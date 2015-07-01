@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from documents.models import Document
 from documents.views import DocumentListView
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from common.utils import encapsulate, get_object_name
 from permissions import Permission
 
@@ -45,7 +45,7 @@ def checkout_info(request, document_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_checkout, permission_document_checkin])
     except PermissionDenied:
-        AccessEntry.objects.check_accesses([permission_document_checkout, permission_document_checkin], request.user, document)
+        AccessControlList.objects.check_access([permission_document_checkout, permission_document_checkin], request.user, document)
 
     paragraphs = [_('Document status: %s') % STATE_LABELS[document.checkout_state()]]
 
@@ -68,7 +68,7 @@ def checkout_document(request, document_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_checkout])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_checkout, request.user, document)
+        AccessControlList.objects.check_access(permission_document_checkout, request.user, document)
 
     if request.method == 'POST':
         form = DocumentCheckoutForm(data=request.POST, initial={'document': document})
@@ -116,12 +116,12 @@ def checkin_document(request, document_pk):
         try:
             Permission.check_permissions(request.user, [permission_document_checkin])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_checkin, request.user, document)
+            AccessControlList.objects.check_access(permission_document_checkin, request.user, document)
     else:
         try:
             Permission.check_permissions(request.user, [permission_document_checkin_override])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_checkin_override, request.user, document)
+            AccessControlList.objects.check_access(permission_document_checkin_override, request.user, document)
 
     if request.method == 'POST':
         try:

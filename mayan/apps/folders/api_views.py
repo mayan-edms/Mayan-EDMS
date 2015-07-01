@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics, status, views
 from rest_framework.response import Response
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
 from permissions import Permission
@@ -98,7 +98,7 @@ class APIFolderDocumentListView(generics.ListAPIView):
         try:
             Permission.check_permissions(self.request.user, [permission_folder_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_folder_view, self.request.user, folder)
+            AccessControlList.objects.check_access(permission_folder_view, self.request.user, folder)
 
         return folder.documents.all()
 
@@ -116,7 +116,7 @@ class APIDocumentFolderListView(generics.ListAPIView):
         try:
             Permission.check_permissions(self.request.user, [permission_document_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_view, self.request.user, document)
+            AccessControlList.objects.check_access(permission_document_view, self.request.user, document)
 
         queryset = document.folders.all()
         return queryset
@@ -131,7 +131,7 @@ class APIFolderDocumentView(views.APIView):
         try:
             Permission.check_permissions(request.user, [permission_folder_remove_document])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_folder_remove_document, request.user, folder)
+            AccessControlList.objects.check_access(permission_folder_remove_document, request.user, folder)
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         folder.documents.remove(document)
@@ -145,7 +145,7 @@ class APIFolderDocumentView(views.APIView):
         try:
             Permission.check_permissions(request.user, [permission_folder_add_document])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_folder_add_document, request.user, folder)
+            AccessControlList.objects.check_access(permission_folder_add_document, request.user, folder)
 
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         folder.documents.add(document)

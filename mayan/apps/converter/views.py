@@ -11,7 +11,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from common.utils import encapsulate
 from permissions import Permission
 
@@ -36,7 +36,7 @@ def transformation_list(request, app_label, model, object_id):
     try:
         Permission.check_permissions(request.user, [permission_transformation_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_transformation_view, request.user, content_object)
+        AccessControlList.objects.check_access(permission_transformation_view, request.user, content_object)
 
     context = {
         'object_list': Transformation.objects.get_for_model(content_object),
@@ -67,7 +67,7 @@ def transformation_create(request, app_label, model, object_id):
     try:
         Permission.check_permissions(request.user, [permission_transformation_create])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_transformation_create, request.user, content_object)
+        AccessControlList.objects.check_access(permission_transformation_create, request.user, content_object)
 
     if request.method == 'POST':
         form = TransformationForm(request.POST, initial={'content_object': content_object})
@@ -94,7 +94,7 @@ def transformation_delete(request, object_id):
     try:
         Permission.check_permissions(request.user, [permission_transformation_delete])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_transformation_delete, request.user, transformation.content_object)
+        AccessControlList.objects.check_access(permission_transformation_delete, request.user, transformation.content_object)
 
     if request.method == 'POST':
         transformation.delete()
@@ -119,7 +119,7 @@ def transformation_edit(request, object_id):
     try:
         Permission.check_permissions(request.user, [permission_transformation_edit])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_transformation_edit, request.user, transformation.content_object)
+        AccessControlList.objects.check_access(permission_transformation_edit, request.user, transformation.content_object)
 
     if request.method == 'POST':
         form = TransformationForm(request.POST, instance=transformation)

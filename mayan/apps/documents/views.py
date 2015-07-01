@@ -14,6 +14,7 @@ from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
+from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
 from common.utils import encapsulate, pretty_size
 from common.views import ParentChildListView, SingleObjectListView
@@ -108,7 +109,7 @@ def document_list(request, object_list=None, title=None, extra_context=None):
         # If user doesn't have global permission, get a list of document
         # for which he/she does hace access use it to filter the
         # provided object_list
-        final_object_list = AccessEntry.objects.filter_objects_by_access(
+        final_object_list = AccessControlList.objects.filter_by_access(
             permission_document_view, request.user, pre_object_list)
     else:
         final_object_list = pre_object_list
@@ -131,7 +132,7 @@ def document_properties(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -168,7 +169,7 @@ def document_preview(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -199,7 +200,7 @@ def document_delete(request, document_id=None, document_id_list=None):
     try:
         Permission.check_permissions(request.user, [permission_document_delete])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(permission_document_delete, request.user, documents, exception_on_empty=True)
+        documents = AccessControlList.objects.filter_by_access(permission_document_delete, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -245,7 +246,7 @@ def document_edit(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_document_properties_edit])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_properties_edit, request.user, document)
+        AccessControlList.objects.check_access(permission_document_properties_edit, request.user, document)
 
     if request.method == 'POST':
         form = DocumentForm(request.POST, instance=document)
@@ -290,7 +291,7 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
     try:
         Permission.check_permissions(request.user, [permission_document_properties_edit])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(permission_document_properties_edit, request.user, documents, exception_on_empty=True)
+        documents = AccessControlList.objects.filter_by_access(permission_document_properties_edit, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -340,7 +341,7 @@ def get_document_image(request, document_id, size=setting_preview_size.value):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document)
 
     page = int(request.GET.get('page', DEFAULT_PAGE_NUMBER))
 
@@ -376,7 +377,7 @@ def document_download(request, document_id=None, document_id_list=None, document
     try:
         Permission.check_permissions(request.user, [permission_document_download])
     except PermissionDenied:
-        document_versions = AccessEntry.objects.filter_objects_by_access(permission_document_download, request.user, document_versions, related='document', exception_on_empty=True)
+        document_versions = AccessControlList.objects.filter_by_access(permission_document_download, request.user, document_versions, related='document', exception_on_empty=True)
 
     subtemplates_list = []
     subtemplates_list.append(
@@ -484,7 +485,7 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
     try:
         Permission.check_permissions(request.user, [permission_document_tools])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(permission_document_tools, request.user, documents, exception_on_empty=True)
+        documents = AccessControlList.objects.filter_by_access(permission_document_tools, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -536,7 +537,7 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
     try:
         Permission.check_permissions(request.user, [permission_transformation_delete])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(permission_transformation_delete, request.user, documents, exception_on_empty=True)
+        documents = AccessControlList.objects.filter_by_access(permission_transformation_delete, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
@@ -582,7 +583,7 @@ def document_page_view(request, document_page_id):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
 
     zoom = int(request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
     rotation = int(request.GET.get('rotation', DEFAULT_ROTATION))
@@ -617,7 +618,7 @@ def document_page_navigation_next(request, document_page_id):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -635,7 +636,7 @@ def document_page_navigation_previous(request, document_page_id):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -654,7 +655,7 @@ def document_page_navigation_first(request, document_page_id):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -668,7 +669,7 @@ def document_page_navigation_last(request, document_page_id):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -681,7 +682,7 @@ def transform_page(request, document_page_id, zoom_function=None, rotation_funct
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document_page.document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -744,7 +745,7 @@ def document_print(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_document_print])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_print, request.user, document)
+        AccessControlList.objects.check_access(permission_document_print, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -1022,7 +1023,7 @@ def document_version_list(request, document_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -1062,7 +1063,7 @@ def document_version_revert(request, document_version_pk):
     try:
         Permission.check_permissions(request.user, [permission_document_version_revert])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_version_revert, request.user, document_version.document)
+        AccessControlList.objects.check_access(permission_document_version_revert, request.user, document_version.document)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 

@@ -11,6 +11,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
+from acls.models import AccessControlList
 from common.views import SingleObjectListView
 from documents.permissions import permission_document_view
 from documents.models import Document
@@ -66,7 +67,7 @@ def folder_edit(request, folder_id):
     try:
         Permission.check_permissions(request.user, [permission_folder_edit])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_folder_edit, request.user, folder)
+        AccessControlList.objects.check_access(permission_folder_edit, request.user, folder)
 
     if request.method == 'POST':
         form = FolderForm(data=request.POST, instance=folder)
@@ -93,7 +94,7 @@ def folder_delete(request, folder_id):
     try:
         Permission.check_permissions(request.user, [permission_folder_delete])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_folder_delete, request.user, folder)
+        AccessControlList.objects.check_access(permission_folder_delete, request.user, folder)
 
     post_action_redirect = reverse('folders:folder_list')
 
@@ -129,7 +130,7 @@ class FolderDetailView(DocumentListView):
         try:
             Permission.check_permissions(self.request.user, [permission_folder_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_folder_view, self.request.user, folder)
+            AccessControlList.objects.check_access(permission_folder_view, self.request.user, folder)
 
         return folder
 
@@ -157,7 +158,7 @@ def folder_add_document(request, document_id=None, document_id_list=None):
     try:
         Permission.check_permissions(request.user, [permission_folder_add_document])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(permission_folder_add_document, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(permission_folder_add_document, request.user, documents)
 
     post_action_redirect = None
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -205,7 +206,7 @@ def document_folder_list(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_document_view, request.user, document)
+        AccessControlList.objects.check_access(permission_document_view, request.user, document)
 
     context = {
         'hide_link': True,
@@ -218,7 +219,7 @@ def document_folder_list(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_folder_view])
     except PermissionDenied:
-        queryset = AccessEntry.objects.filter_objects_by_access(permission_folder_view, request.user, queryset)
+        queryset = AccessControlList.objects.filter_by_access(permission_folder_view, request.user, queryset)
 
     context['object_list'] = queryset
 
@@ -243,7 +244,7 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
     try:
         Permission.check_permissions(request.user, [permission_folder_remove_document])
     except PermissionDenied:
-        folder_documents = AccessEntry.objects.filter_objects_by_access(permission_folder_remove_document, request.user, folder_documents, exception_on_empty=True)
+        folder_documents = AccessControlList.objects.filter_by_access(permission_folder_remove_document, request.user, folder_documents, exception_on_empty=True)
 
     logger.debug('folder_documents (post permission check): %s', folder_documents)
 

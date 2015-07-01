@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from common import menu_facet
 from common.models import SharedUploadedFile
 from common.utils import encapsulate
@@ -279,7 +279,7 @@ class UploadInteractiveVersionView(UploadBaseView):
         try:
             Permission.check_permissions(self.request.user, [permission_document_new_version])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_new_version, self.request.user, self.document)
+            AccessControlList.objects.check_access(permission_document_new_version, self.request.user, self.document)
 
         self.tab_links = get_active_tab_links(self.document)
 

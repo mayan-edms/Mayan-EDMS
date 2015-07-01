@@ -9,7 +9,7 @@ from django.db.models import Q
 from django.db.models.loading import get_model
 from django.utils.module_loading import import_string
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from permissions import Permission
 
 from .models import RecentSearch
@@ -167,13 +167,14 @@ class SearchModel(object):
 
         elapsed_time = unicode(datetime.datetime.now() - start_time).split(':')[2]
 
-        queryset = self.model.objects.in_bulk(list(result_set)[: setting_limit.value]).values()
+        #queryset = self.model.objects.in_bulk(list(result_set)[:setting_limit.value]).values()
+        queryset = self.model.objects.filter(pk__in=list(result_set)[:setting_limit.value])
 
         if self.permission:
             try:
                 Permission.check_permissions(user, [self.permission])
             except PermissionDenied:
-                queryset = AccessEntry.objects.filter_objects_by_access(self.permission, user, queryset)
+                queryset = AccessControlList.objects.filter_by_access(self.permission, user, queryset)
 
         RecentSearch.objects.add_query_for_user(user, query_string, len(result_set))
 

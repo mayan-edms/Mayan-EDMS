@@ -9,7 +9,7 @@ from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
@@ -34,7 +34,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
         try:
             Permission.check_permissions(request.user, [permission_document_workflow_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_workflow_view, request.user, self.get_document())
+            AccessControlList.objects.check_access(permission_document_workflow_view, request.user, self.get_document())
 
         return super(DocumentWorkflowInstanceListView, self).dispatch(request, *args, **kwargs)
 
@@ -62,7 +62,7 @@ class WorkflowInstanceDetailView(SingleObjectListView):
         try:
             Permission.check_permissions(request.user, [permission_document_workflow_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_workflow_view, request.user, self.get_workflow_instance().document)
+            AccessControlList.objects.check_access(permission_document_workflow_view, request.user, self.get_workflow_instance().document)
 
         return super(WorkflowInstanceDetailView, self).dispatch(request, *args, **kwargs)
 
@@ -96,7 +96,7 @@ class WorkflowInstanceTransitionView(FormView):
         try:
             Permission.check_permissions(request.user, [permission_document_workflow_transition])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_workflow_transition, request.user, self.get_workflow_instance().document)
+            AccessControlList.objects.check_access(permission_document_workflow_transition, request.user, self.get_workflow_instance().document)
 
         return super(WorkflowInstanceTransitionView, self).dispatch(request, *args, **kwargs)
 
@@ -203,7 +203,7 @@ class SetupWorkflowStateListView(SingleObjectListView):
         try:
             Permission.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
+            AccessControlList.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
         return super(SetupWorkflowStateListView, self).dispatch(request, *args, **kwargs)
 
@@ -233,7 +233,7 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
         try:
             Permission.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
+            AccessControlList.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
         return super(SetupWorkflowStateCreateView, self).dispatch(request, *args, **kwargs)
 
@@ -314,7 +314,7 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
         try:
             Permission.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
+            AccessControlList.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
         return super(SetupWorkflowTransitionListView, self).dispatch(request, *args, **kwargs)
 
@@ -344,7 +344,7 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
         try:
             Permission.check_permissions(request.user, [permission_workflow_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
+            AccessControlList.objects.check_access(permission_workflow_edit, request.user, self.get_workflow())
 
         return super(SetupWorkflowTransitionCreateView, self).dispatch(request, *args, **kwargs)
 

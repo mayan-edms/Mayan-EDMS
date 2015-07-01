@@ -4,7 +4,7 @@ from django.core.exceptions import PermissionDenied
 
 from rest_framework.filters import BaseFilterBackend
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from permissions import Permission
 
 
@@ -16,7 +16,7 @@ class MayanObjectPermissionsFilter(BaseFilterBackend):
             try:
                 Permission.check_permissions(request.user, required_permission)
             except PermissionDenied:
-                return AccessEntry.objects.filter_objects_by_access(required_permission[0], request.user, queryset)
+                return AccessControlList.objects.filter_by_access(required_permission[0], request.user, queryset)
             else:
                 return queryset
         else:

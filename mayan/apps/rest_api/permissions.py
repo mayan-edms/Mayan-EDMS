@@ -6,7 +6,7 @@ from django.core.exceptions import PermissionDenied
 
 from rest_framework.permissions import BasePermission
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from permissions import Permission
 
 
@@ -33,9 +33,9 @@ class MayanPermission(BasePermission):
             except PermissionDenied:
                 try:
                     if hasattr(view, 'mayan_permission_attribute_check'):
-                        AccessEntry.objects.check_accesses(required_permission, request.user, getattr(obj, view.mayan_permission_attribute_check))
+                        AccessControlList.objects.check_access(required_permission, request.user, getattr(obj, view.mayan_permission_attribute_check))
                     else:
-                        AccessEntry.objects.check_accesses(required_permission, request.user, obj)
+                        AccessControlList.objects.check_access(required_permission, request.user, obj)
                 except PermissionDenied:
                     return False
                 else:

@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from common.utils import encapsulate
 from common.views import AssignRemoveView
 from documents.models import Document, DocumentType
@@ -50,7 +50,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
     try:
         Permission.check_permissions(request.user, [permission_metadata_document_edit])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(permission_metadata_document_edit, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(permission_metadata_document_edit, request.user, documents)
 
     if not documents:
         if document_id:
@@ -158,7 +158,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
     try:
         Permission.check_permissions(request.user, [permission_metadata_document_add])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(permission_metadata_document_add, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(permission_metadata_document_add, request.user, documents)
 
     if not documents:
         messages.error(request, _('Must provide at least one document.'))
@@ -237,7 +237,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
     try:
         Permission.check_permissions(request.user, [permission_metadata_document_remove])
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(permission_metadata_document_remove, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(permission_metadata_document_remove, request.user, documents)
 
     if not documents:
         if document_id:
@@ -331,7 +331,7 @@ def metadata_view(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_metadata_document_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_metadata_document_view, request.user, document)
+        AccessControlList.objects.check_access(permission_metadata_document_view, request.user, document)
 
     return render_to_response('appearance/generic_list.html', {
         'title': _('Metadata for document: %s') % document,

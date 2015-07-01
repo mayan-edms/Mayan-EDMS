@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
 from permissions import Permission
@@ -84,7 +84,7 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
         try:
             Permission.check_permissions(self.request.user, [permission_document_indexing_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_indexing_view, self.request.user, index_node_instance.index)
+            AccessControlList.objects.check_access(permission_document_indexing_view, self.request.user, index_node_instance.index)
 
         return index_node_instance.documents.all()
 
@@ -144,6 +144,6 @@ class APIDocumentIndexListView(generics.ListAPIView):
         try:
             Permission.check_permissions(self.request.user, [permission_document_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_view, self.request.user, document)
+            AccessControlList.objects.check_access(permission_document_view, self.request.user, document)
 
         return document.node_instances.all()

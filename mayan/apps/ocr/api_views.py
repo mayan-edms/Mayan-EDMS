@@ -7,7 +7,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from documents.models import DocumentVersion
 from permissions import Permission
 from rest_api.permissions import MayanPermission
@@ -32,7 +32,7 @@ class DocumentVersionOCRView(generics.GenericAPIView):
             try:
                 Permission.check_permissions(request.user, [permission_ocr_document])
             except PermissionDenied:
-                AccessEntry.objects.check_access(permission_ocr_document, request.user, document_version.document)
+                AccessControlList.objects.check_access(permission_ocr_document, request.user, document_version.document)
 
             document_version.submit_for_ocr()
 

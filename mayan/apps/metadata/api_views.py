@@ -6,7 +6,7 @@ from django.shortcuts import get_object_or_404
 from rest_framework import generics, status, views
 from rest_framework.response import Response
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from documents.models import Document, DocumentType
 from documents.permissions import (
     permission_document_type_view, permission_document_type_edit
@@ -90,7 +90,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
             try:
                 Permission.check_permissions(self.request.user, [permission_metadata_document_view])
             except PermissionDenied:
-                AccessEntry.objects.check_access(permission_metadata_document_view, self.request.user, document)
+                AccessControlList.objects.check_access(permission_metadata_document_view, self.request.user, document)
             else:
                 return document.metadata.all()
         elif self.request == 'POST':
@@ -98,7 +98,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
             try:
                 Permission.check_permissions(self.request.user, [permission_metadata_document_add])
             except PermissionDenied:
-                AccessEntry.objects.check_access(permission_metadata_document_add, self.request.user, document)
+                AccessControlList.objects.check_access(permission_metadata_document_add, self.request.user, document)
             else:
                 return document.metadata.all()
 
@@ -164,7 +164,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
         try:
             Permission.check_permissions(self.request.user, [permission_document_type_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_type_view, self.request.user, document_type)
+            AccessControlList.objects.check_access(permission_document_type_view, self.request.user, document_type)
 
         return document_type.metadata.filter(required=self.required_metadata)
 
@@ -187,7 +187,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
         try:
             Permission.check_permissions(self.request.user, [permission_document_type_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_type_edit, self.request.user, document_type)
+            AccessControlList.objects.check_access(permission_document_type_edit, self.request.user, document_type)
 
         serializer = self.get_serializer(data=self.request.POST)
 
@@ -223,7 +223,7 @@ class APIDocumentTypeMetadataTypeRequiredView(views.APIView):
         try:
             Permission.check_permissions(self.request.user, [permission_document_type_edit])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_document_type_edit, self.request.user, document_type)
+            AccessControlList.objects.check_access(permission_document_type_edit, self.request.user, document_type)
 
         metadata_type = get_object_or_404(MetadataType, pk=self.kwargs['metadata_type_pk'])
         document_type.metadata_type.remove(metadata_type)

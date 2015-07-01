@@ -14,7 +14,7 @@ from django.utils.encoding import smart_str, smart_unicode
 from django.utils.http import urlencode, urlquote
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from permissions import Permission
 
 logger = logging.getLogger(__name__)
@@ -96,7 +96,7 @@ class Menu(object):
                             resolved_link = link.resolve(context=context, resolved_object=resolved_navigation_object)
                             if resolved_link:
                                 resolved_links.append(resolved_link)
-                        break  # No need for further content object match testing
+                        #break  # No need for further content object match testing
                 except TypeError:
                     # When source is a dictionary
                     pass
@@ -164,7 +164,7 @@ class Link(object):
                 # access to the instance.
                 if resolved_object:
                     try:
-                        AccessEntry.objects.check_access(self.permissions, request.user, resolved_object)
+                        AccessControlList.objects.check_access(self.permissions, request.user, resolved_object)
                     except PermissionDenied:
                         return None
                 else:

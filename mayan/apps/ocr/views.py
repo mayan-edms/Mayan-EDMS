@@ -9,7 +9,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from common.views import ConfirmView, SingleObjectEditView
 from documents.models import Document, DocumentType, DocumentVersion
 from permissions import Permission
@@ -40,7 +40,7 @@ class DocumentSubmitView(ConfirmView):
         try:
             Permission.check_permissions(request.user, [permission_ocr_document])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_ocr_document, request.user, document)
+            AccessControlList.objects.check_access(permission_ocr_document, request.user, document)
 
         document.submit_for_ocr()
         messages.success(request, _('Document: %(document)s was added to the OCR queue.') % {
@@ -104,7 +104,7 @@ def document_content(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_ocr_content_view])
     except PermissionDenied:
-        AccessEntry.objects.check_access(permission_ocr_content_view, request.user, document)
+        AccessControlList.objects.check_access(permission_ocr_content_view, request.user, document)
 
     document.add_as_recent_document_for_user(request.user)
 

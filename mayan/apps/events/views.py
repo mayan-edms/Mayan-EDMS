@@ -9,7 +9,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from actstream.models import Action, any_stream
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from common.utils import encapsulate
 from permissions import Permission
 
@@ -35,7 +35,7 @@ def events_list(request, app_label=None, module_name=None, object_id=None, verb=
         try:
             Permission.check_permissions(request.user, [permission_events_view])
         except PermissionDenied:
-            AccessEntry.objects.check_access(permission_events_view, request.user, content_object)
+            AccessControlList.objects.check_access(permission_events_view, request.user, content_object)
 
         context.update({
             'object_list': any_stream(content_object),
@@ -51,7 +51,7 @@ def events_list(request, app_label=None, module_name=None, object_id=None, verb=
             # If user doesn't have global permission, get a list of document
             # for which he/she does hace access use it to filter the
             # provided object_list
-            object_list = AccessEntry.objects.filter_objects_by_access(permission_events_view, request.user, pre_object_list, related='content_object')
+            object_list = AccessControlList.objects.filter_by_access(permission_events_view, request.user, pre_object_list, related='content_object')
         else:
             object_list = pre_object_list
 
@@ -68,7 +68,7 @@ def events_list(request, app_label=None, module_name=None, object_id=None, verb=
             # If user doesn't have global permission, get a list of document
             # for which he/she does hace access use it to filter the
             # provided object_list
-            object_list = AccessEntry.objects.filter_objects_by_access(permission_events_view, request.user, pre_object_list, related='content_object')
+            object_list = AccessControlList.objects.filter_by_access(permission_events_view, request.user, pre_object_list, related='content_object')
         else:
             object_list = pre_object_list
 
