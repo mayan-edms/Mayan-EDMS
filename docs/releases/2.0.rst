@@ -52,7 +52,13 @@ What's new in Mayan EDMS v2.0
   * PyYAML
   * django-autoadmin
 
-
+* Permissions refactor
+* ACLs refactor
+* Removal of anonymous user supporta
+* Removal of default class ACLs
+* Refactor of metadata validators
+* Management command to remove obsolete permissions
+* Simplification of permissions/ACLS and role system
 
 Upgrading from a previous version
 =================================
@@ -116,7 +122,6 @@ Remove unused dependencies::
     $ pip uninstall psutil
     $ pip uninstall python-hkp
     $ pip uninstall django-sendfile
-
 
 The upgrade procedure is now complete.
 
