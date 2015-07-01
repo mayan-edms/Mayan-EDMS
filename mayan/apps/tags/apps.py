@@ -54,7 +54,6 @@ class TagsApp(MayanAppConfig):
         SourceColumn(source=Document, label=_('Tags'), attribute=encapsulate(lambda document: widget_inline_tags(document)))
 
         SourceColumn(source=Tag, label=_('Preview'), attribute=encapsulate(lambda tag: widget_single_tag(tag)))
-        SourceColumn(source=Tag, label=_('Tagged items'), attribute=encapsulate(lambda tag: tag.documents.count()))
 
         document_search.add_model_field(field='tags__label', label=_('Tags'))
 
