@@ -10,8 +10,8 @@ from common import (
     menu_sidebar
 )
 from documents.models import Document
+from navigation import CombinedSource
 
-from .classes import ResolvedSmartLink
 from .links import (
     link_smart_link_create, link_smart_link_condition_create,
     link_smart_link_condition_delete, link_smart_link_condition_edit,
@@ -20,7 +20,7 @@ from .links import (
     link_smart_link_instance_view, link_smart_link_instances_for_document,
     link_smart_link_list, link_smart_link_setup
 )
-from .models import SmartLink, SmartLinkCondition
+from .models import ResolvedSmartLink, SmartLink, SmartLinkCondition
 from .permissions import (
     permission_smart_link_delete, permission_smart_link_edit,
     permission_smart_link_view

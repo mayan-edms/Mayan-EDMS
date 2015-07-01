@@ -10,7 +10,6 @@ from documents.models import Document, DocumentType
 from .literals import (
     INCLUSION_AND, INCLUSION_CHOICES, INCLUSION_OR, OPERATOR_CHOICES
 )
-from .managers import SmartLinkManager
 
 
 @python_2_unicode_compatible
@@ -19,8 +18,6 @@ class SmartLink(models.Model):
     dynamic_title = models.CharField(blank=True, max_length=96, verbose_name=_('Dynamic title'), help_text=_('This expression will be evaluated against the current selected document.'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     document_types = models.ManyToManyField(DocumentType, verbose_name=_('Document types'))
-
-    objects = SmartLinkManager()
 
     def __str__(self):
         return self.title
@@ -33,6 +30,9 @@ class SmartLink(models.Model):
                 return Exception(_('Error generating dynamic title; %s' % unicode(exception)))
         else:
             return self.title
+
+    def resolve_for(self, document):
+        return ResolvedSmartLink(smart_link=self, queryset=self.get_linked_document_for(document))
 
     def get_linked_document_for(self, document):
         if document.document_type.pk not in self.document_types.values_list('pk', flat=True):
@@ -60,6 +60,11 @@ class SmartLink(models.Model):
     class Meta:
         verbose_name = _('Smart link')
         verbose_name_plural = _('Smart links')
+
+
+class ResolvedSmartLink(SmartLink):
+    class Meta:
+        proxy = True
 
 
 @python_2_unicode_compatible
