@@ -167,7 +167,6 @@ class SearchModel(object):
 
         elapsed_time = unicode(datetime.datetime.now() - start_time).split(':')[2]
 
-        #queryset = self.model.objects.in_bulk(list(result_set)[:setting_limit.value]).values()
         queryset = self.model.objects.filter(pk__in=list(result_set)[:setting_limit.value])
 
         if self.permission:

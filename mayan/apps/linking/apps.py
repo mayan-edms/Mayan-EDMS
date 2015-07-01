@@ -10,7 +10,6 @@ from common import (
     menu_sidebar
 )
 from documents.models import Document
-from navigation import CombinedSource
 
 from .links import (
     link_smart_link_create, link_smart_link_condition_create,

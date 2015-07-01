@@ -11,6 +11,7 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
+from acls.models import AccessControlList
 from documents.models import Document
 from documents.views import DocumentListView
 from documents.permissions import permission_document_view
@@ -33,7 +34,7 @@ def tag_create(request):
     if request.method == 'POST':
         form = TagForm(request.POST)
         if form.is_valid():
-            tag = form.save()
+            form.save()
 
             messages.success(request, _('Tag created succesfully.'))
             return HttpResponseRedirect(redirect_url)

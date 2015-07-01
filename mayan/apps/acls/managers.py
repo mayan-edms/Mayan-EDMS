@@ -1,16 +1,11 @@
-from __future__ import absolute_import, unicode_literals
+from __future__ import unicode_literals
 
 import logging
 
-from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
 from django.db import models
-from django.db.models import Q
 from django.utils.translation import ugettext
-
-from permissions import Permission
 
 logger = logging.getLogger(__name__)
 
@@ -38,7 +33,7 @@ class AccessControlListManager(models.Manager):
         if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles):
             raise PermissionDenied(ugettext('Insufficient access.'))
 
-    def filter_by_access(self, permission, user, queryset,  exception_on_empty=False, related=None):
+    def filter_by_access(self, permission, user, queryset, exception_on_empty=False, related=None):
         if user.is_superuser or user.is_staff:
             return queryset
 

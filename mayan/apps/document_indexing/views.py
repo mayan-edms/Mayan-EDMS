@@ -63,7 +63,7 @@ def index_setup_create(request):
     if request.method == 'POST':
         form = IndexForm(request.POST)
         if form.is_valid():
-            index = form.save()
+            form.save()
             messages.success(request, _('Index created successfully.'))
             return HttpResponseRedirect(reverse('indexing:index_setup_list'))
     else:
