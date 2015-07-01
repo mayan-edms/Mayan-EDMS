@@ -10,7 +10,6 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext
 
-from common.models import AnonymousUserSingleton
 from permissions import Permission
 
 logger = logging.getLogger(__name__)

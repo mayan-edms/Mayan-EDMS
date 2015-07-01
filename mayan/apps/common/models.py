@@ -7,9 +7,6 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _, ugettext
 
-from solo.models import SingletonModel
-
-from .managers import AnonymousUserSingletonManager
 from .runtime import shared_storage_backend
 
 SHARED_UPLOADED_FILE_PATH = 'shared_uploads'
@@ -18,17 +15,6 @@ SHARED_UPLOADED_FILE_PATH = 'shared_uploads'
 def upload_to(instance, filename):
     instance.filename = filename
     return '/'.join([SHARED_UPLOADED_FILE_PATH, filename])
-
-
-@python_2_unicode_compatible
-class AnonymousUserSingleton(SingletonModel):
-    objects = AnonymousUserSingletonManager()
-
-    def __str__(self):
-        return ugettext('Anonymous user')
-
-    class Meta:
-        verbose_name = verbose_name_plural = _('Anonymous user')
 
 
 @python_2_unicode_compatible

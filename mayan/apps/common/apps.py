@@ -21,13 +21,8 @@ from .links import (
 from .menus import (
     menu_facet, menu_main, menu_secondary, menu_setup, menu_tools
 )
-from .models import AnonymousUserSingleton
 
 logger = logging.getLogger(__name__)
-
-
-def create_anonymous_user(sender, **kwargs):
-    AnonymousUserSingleton.objects.get_or_create()
 
 
 class MayanAppConfig(apps.AppConfig):
@@ -69,6 +64,5 @@ class CommonApp(MayanAppConfig):
         )
         menu_tools.bind_links(links=[link_maintenance_menu])
 
-        post_migrate.connect(create_anonymous_user, dispatch_uid='create_anonymous_user', sender=self)
         user_logged_in.connect(user_locale_profile_session_config, dispatch_uid='user_locale_profile_session_config', sender=settings.AUTH_USER_MODEL)
         post_save.connect(user_locale_profile_create, dispatch_uid='user_locale_profile_create', sender=settings.AUTH_USER_MODEL)
