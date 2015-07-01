@@ -4,7 +4,7 @@ from django.contrib.comments.models import Comment
 from django.contrib.contenttypes import generic
 from django.utils.translation import ugettext_lazy as _
 
-from acls.api import class_permissions
+from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
 from common.classes import ModelAttribute
 from common.utils import encapsulate
@@ -44,10 +44,11 @@ class DocumentCommentsApp(MayanAppConfig):
         SourceColumn(source=Comment, label=_('User'), attribute=encapsulate(lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user))
         SourceColumn(source=Comment, label=_('Comment'), attribute='comment')
 
-        class_permissions(Document, [
-            permission_comment_create,
-            permission_comment_delete,
-            permission_comment_view]
+        ModelPermission.register(
+            model=Document, permissions=(
+                permission_comment_create, permission_comment_delete,
+                permission_comment_view
+            )
         )
 
         menu_sidebar.bind_links(links=[link_comment_add], sources=['comments:comments_for_document', 'comments:comment_add', 'comments:comment_delete', 'comments:comment_multiple_delete'])

@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from actstream import registry
 
-from acls.api import class_permissions
+from acls import ModelPermission
 from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
@@ -78,19 +78,18 @@ class DocumentsApp(MayanAppConfig):
 
         ModelAttribute(Document, label=_('Label'), name='label', type_name='field')
 
-        class_permissions(Document, [
-        ])
-
-        class_permissions(Document, [
-            permission_acl_edit, permission_acl_view,
-            permission_document_delete, permission_document_download,
-            permission_document_edit, permission_document_new_version,
-            permission_document_print, permission_document_properties_edit,
-            permission_document_version_revert, permission_document_view,
-            permission_events_view, permission_transformation_create,
-            permission_transformation_delete, permission_transformation_edit,
-            permission_transformation_view,
-        ])
+        ModelPermission.register(
+            model=Document, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_document_delete, permission_document_download,
+                permission_document_edit, permission_document_new_version,
+                permission_document_print, permission_document_properties_edit,
+                permission_document_version_revert, permission_document_view,
+                permission_events_view, permission_transformation_create,
+                permission_transformation_delete, permission_transformation_edit,
+                permission_transformation_view,
+            )
+        )
 
         menu_front_page.bind_links(links=[link_document_list_recent, link_document_list])
         menu_setup.bind_links(links=[link_document_type_setup])

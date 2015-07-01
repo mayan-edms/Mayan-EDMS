@@ -6,7 +6,7 @@ import sh
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls.api import class_permissions
+from acls import ModelPermission
 from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
@@ -59,10 +59,10 @@ class OCRApp(MayanAppConfig):
         SourceColumn(source=DocumentVersionOCRError, label=_('Added'), attribute='datetime_submitted')
         SourceColumn(source=DocumentVersionOCRError, label=_('Result'), attribute='result')
 
-        class_permissions(
-            Document, [
+        ModelPermission.register(
+            model=Document, permissions=(
                 permission_ocr_document, permission_ocr_content_view
-            ]
+            )
         )
 
         document_search.add_model_field(field='versions__pages__ocr_content__content', label=_('Content'))

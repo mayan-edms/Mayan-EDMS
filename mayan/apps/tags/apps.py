@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls.api import class_permissions
+from acls import ModelPermission
 from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
@@ -38,18 +38,23 @@ class TagsApp(MayanAppConfig):
 
         APIEndPoint('tags')
 
+        ModelPermission.register(
+            model=Document, permissions=(
+                permission_tag_attach, permission_tag_remove,
+            )
+        )
+
+        ModelPermission.register(
+            model=Tag, permissions=(
+                permission_acl_edit, permission_acl_view, permission_tag_delete,
+                permission_tag_edit, permission_tag_view,
+            )
+        )
+
         SourceColumn(source=Document, label=_('Tags'), attribute=encapsulate(lambda document: widget_inline_tags(document)))
 
         SourceColumn(source=Tag, label=_('Preview'), attribute=encapsulate(lambda tag: widget_single_tag(tag)))
         SourceColumn(source=Tag, label=_('Tagged items'), attribute=encapsulate(lambda tag: tag.documents.count()))
-
-        class_permissions(Document, [
-            permission_tag_attach, permission_tag_remove,
-        ])
-        class_permissions(Tag, [
-            permission_acl_edit, permission_acl_view, permission_tag_delete,
-            permission_tag_edit, permission_tag_view,
-        ])
 
         document_search.add_model_field(field='tags__label', label=_('Tags'))
 

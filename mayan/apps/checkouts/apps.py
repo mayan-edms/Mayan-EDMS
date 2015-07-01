@@ -5,7 +5,7 @@ from datetime import timedelta
 from django.db.models.signals import pre_save
 from django.utils.translation import ugettext_lazy as _
 
-from acls.api import class_permissions
+from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
 from documents.models import Document, DocumentVersion
 from mayan.celery import app
@@ -47,11 +47,13 @@ class CheckoutsApp(MayanAppConfig):
             },
         })
 
-        class_permissions(Document, [
-            permission_document_checkout,
-            permission_document_checkin,
-            permission_document_checkin_override,
-        ])
+        ModelPermission.register(
+            model=Document, permissions=(
+                permission_document_checkout,
+                permission_document_checkin,
+                permission_document_checkin_override,
+            )
+        )
 
         menu_facet.bind_links(links=[link_checkout_info], sources=[Document])
         menu_main.bind_links(links=[link_checkout_list])

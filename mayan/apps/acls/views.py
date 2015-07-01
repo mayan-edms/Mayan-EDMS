@@ -17,6 +17,7 @@ from common.views import (
 from permissions import Permission, PermissionNamespace
 from permissions.models import StoredPermission
 
+from .classes import ModelPermission
 from .models import AccessControlList
 from .permissions import permission_acl_edit, permission_acl_view
 
@@ -137,7 +138,7 @@ class ACLPermissionsView(AssignRemoveView):
 
     def left_list(self):
         results = []
-        for namespace, permissions in itertools.groupby(StoredPermission.objects.exclude(id__in=self.get_object().permissions.values_list('pk', flat=True)), lambda entry: entry.namespace):
+        for namespace, permissions in itertools.groupby(ModelPermission.get_for_instance(instance=self.get_object().content_object).exclude(id__in=self.get_object().permissions.values_list('pk', flat=True)), lambda entry: entry.namespace):
             permission_options = [(unicode(permission.pk), permission) for permission in permissions]
             results.append((PermissionNamespace.get(namespace), permission_options))
 

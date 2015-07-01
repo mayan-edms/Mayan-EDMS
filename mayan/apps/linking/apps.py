@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls.api import class_permissions
+from acls import ModelPermission
 from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
@@ -34,11 +34,13 @@ class LinkingApp(MayanAppConfig):
     def ready(self):
         super(LinkingApp, self).ready()
 
-        class_permissions(SmartLink, [
-            permission_acl_edit, permission_acl_view,
-            permission_smart_link_delete, permission_smart_link_edit,
-            permission_smart_link_view
-        ])
+        ModelPermission.register(
+            model=SmartLink, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_smart_link_delete, permission_smart_link_edit,
+                permission_smart_link_view
+            )
+        )
 
         menu_facet.bind_links(links=[link_smart_link_instances_for_document], sources=[Document])
         menu_object.bind_links(links=[link_smart_link_condition_edit, link_smart_link_condition_delete], sources=[SmartLinkCondition])

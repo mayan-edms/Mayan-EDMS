@@ -5,7 +5,7 @@ import logging
 from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
-from acls.api import class_permissions
+from acls import ModelPermission
 from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_setup, menu_sidebar, menu_tools
@@ -60,10 +60,12 @@ class MetadataApp(MayanAppConfig):
 
         SourceColumn(source=Document, label=_('Metadata'), attribute=encapsulate(lambda document: get_metadata_string(document)))
 
-        class_permissions(Document, [
-            permission_metadata_document_add, permission_metadata_document_edit,
-            permission_metadata_document_remove, permission_metadata_document_view,
-        ])
+        ModelPermission.register(
+            model=Document, permissions=(
+                permission_metadata_document_add, permission_metadata_document_edit,
+                permission_metadata_document_remove, permission_metadata_document_view,
+            )
+        )
 
         document_search.add_model_field(field='metadata__metadata_type__name', label=_('Metadata type'))
         document_search.add_model_field(field='metadata__value', label=_('Metadata value'))

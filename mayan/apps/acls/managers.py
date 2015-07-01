@@ -13,8 +13,6 @@ from django.utils.translation import ugettext
 from common.models import AnonymousUserSingleton
 from permissions import Permission
 
-from .classes import AccessHolder, get_source_object
-
 logger = logging.getLogger(__name__)
 
 
