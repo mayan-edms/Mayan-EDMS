@@ -11,7 +11,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import encapsulate
-from common.views import AssignRemoveView
+from common.views import AssignRemoveView, SingleObjectListView
 from common.widgets import two_state_template
 from permissions import Permission
 
@@ -23,35 +23,40 @@ from .permissions import (
 )
 
 
-def user_list(request):
-    Permission.check_permissions(request.user, [permission_user_view])
+class UserListView(SingleObjectListView):
+    view_permission = permission_user_view
 
-    context = {
-        'object_list': get_user_model().objects.exclude(is_superuser=True).exclude(is_staff=True).order_by('username'),
-        'title': _('Users'),
-        'hide_link': True,
-        'extra_columns': [
-            {
-                'name': _('Full name'),
-                'attribute': 'get_full_name'
-            },
-            {
-                'name': _('Email'),
-                'attribute': 'email'
-            },
-            {
-                'name': _('Active'),
-                'attribute': encapsulate(lambda x: two_state_template(x.is_active)),
-            },
-            {
-                'name': _('Has usable password?'),
-                'attribute': encapsulate(lambda x: two_state_template(x.has_usable_password())),
-            },
-        ],
-    }
+    def get_queryset(self):
+        return get_user_model().objects.exclude(is_superuser=True).exclude(is_staff=True).order_by('last_name', 'first_name')
 
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    def get_context_data(self, **kwargs):
+        context = super(UserListView, self).get_context_data(**kwargs)
+        context.update(
+            {
+                'title': _('Users'),
+                'hide_link': True,
+                'extra_columns': [
+                    {
+                        'name': _('Full name'),
+                        'attribute': 'get_full_name'
+                    },
+                    {
+                        'name': _('Email'),
+                        'attribute': 'email'
+                    },
+                    {
+                        'name': _('Active'),
+                        'attribute': encapsulate(lambda x: two_state_template(x.is_active)),
+                    },
+                    {
+                        'name': _('Has usable password?'),
+                        'attribute': encapsulate(lambda x: two_state_template(x.has_usable_password())),
+                    },
+                ],
+            }
+        )
+
+        return context
 
 
 def user_edit(request, user_id):
@@ -251,23 +256,27 @@ class UserGroupsView(AssignRemoveView):
 
 
 # Group views
-def group_list(request):
-    Permission.check_permissions(request.user, [permission_group_view])
+class GroupListView(SingleObjectListView):
+    view_permission = permission_group_view
 
-    context = {
-        'object_list': Group.objects.all(),
-        'title': _('Groups'),
-        'hide_link': True,
-        'extra_columns': [
+    def get_queryset(self):
+        return Group.objects.all()
+
+    def get_context_data(self, **kwargs):
+        context = super(GroupListView, self).get_context_data(**kwargs)
+        context.update(
             {
-                'name': _('Members'),
-                'attribute': 'user_set.count'
-            },
-        ],
-    }
-
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+                'title': _('Groups'),
+                'hide_link': True,
+                'extra_columns': [
+                    {
+                        'name': _('Members'),
+                        'attribute': 'user_set.count'
+                    },
+                ],
+            }
+        )
+        return context
 
 
 def group_edit(request, group_id):

@@ -6,11 +6,13 @@ from .api_views import (
     APICurrentUserView, APIGroupListView, APIGroupView, APIUserListView,
     APIUserView
 )
-from .views import GroupMembersView, UserGroupsView
+from .views import (
+    GroupListView, GroupMembersView, UserGroupsView, UserListView
+)
 
 urlpatterns = patterns(
     'user_management.views',
-    url(r'^user/list/$', 'user_list', name='user_list'),
+    url(r'^user/list/$', UserListView.as_view(), name='user_list'),
     url(r'^user/add/$', 'user_add', name='user_add'),
     url(r'^user/(?P<user_id>\d+)/edit/$', 'user_edit', name='user_edit'),
     url(r'^user/(?P<user_id>\d+)/delete/$', 'user_delete', name='user_delete'),
@@ -19,7 +21,7 @@ urlpatterns = patterns(
     url(r'^user/multiple/set_password/$', 'user_multiple_set_password', name='user_multiple_set_password'),
     url(r'^user/(?P<pk>\d+)/groups/$', UserGroupsView.as_view(), name='user_groups'),
 
-    url(r'^group/list/$', 'group_list', name='group_list'),
+    url(r'^group/list/$', GroupListView.as_view(), name='group_list'),
     url(r'^group/add/$', 'group_add', name='group_add'),
     url(r'^group/(?P<group_id>\d+)/edit/$', 'group_edit', name='group_edit'),
     url(r'^group/(?P<group_id>\d+)/delete/$', 'group_delete', name='group_delete'),
