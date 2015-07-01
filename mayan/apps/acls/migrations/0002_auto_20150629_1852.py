@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
             name='permission',
         ),
         migrations.DeleteModel(
-            name='DefaultAccessEntry',
+            name='DefaultAccessControlList',
         ),
         migrations.RemoveField(
             model_name='accessentry',

@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from permissions.models import Role, StoredPermission
 
-from .managers import AccessControlListManager, AccessEntryManager
+from .managers import AccessControlListManager
 
 logger = logging.getLogger(__name__)
 
@@ -28,7 +28,7 @@ class AccessControlList(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey(
         ct_field='content_type',
-        fk_field='object_id'
+        fk_field='object_id',
     )
     # TODO: limit choices to the permissions valid for the content_object
     permissions = models.ManyToManyField(StoredPermission, blank=True, related_name='acls', verbose_name=_('Permissions'))
@@ -44,10 +44,10 @@ class AccessControlList(models.Model):
     def __str__(self):
         return '{} <=> {}'.format(self.content_object, self.role)
 
-
+'''
 # TODO: remove
 @python_2_unicode_compatible
-class AccessEntry(models.Model):
+class AccessControlList(models.Model):
     """
     Model that hold the permission, object, actor relationship
     """
@@ -63,7 +63,7 @@ class AccessEntry(models.Model):
         fk_field='object_id'
     )
 
-    objects = AccessEntryManager()
+    objects = AccessControlListManager()
 
     class Meta:
         verbose_name = _('Access entry')
@@ -71,3 +71,4 @@ class AccessEntry(models.Model):
 
     def __str__(self):
         return '%s: %s' % (self.content_type, self.content_object)
+'''
