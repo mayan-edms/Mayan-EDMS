@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.utils import encapsulate
-from common.views import AssignRemoveView
+from common.views import AssignRemoveView, SingleObjectListView
 from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
@@ -88,53 +88,52 @@ def smart_link_instance_view(request, document_id, smart_link_pk):
     )
 
 
-def smart_link_instances_for_document(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
-    queryset = ResolvedSmartLink.objects.filter(document_types=document.document_type)
+class SmartLinkListView(SingleObjectListView):
+    object_permission = permission_smart_link_view
 
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        smart_links = AccessControlList.objects.filter_by_access(permission_document_view, request.user, queryset)
-    else:
-        smart_links = queryset
+    def get_queryset(self):
+        self.queryset = self.get_smart_link_queryset()
+        return super(SmartLinkListView, self).get_queryset()
 
-    context = {
-        'document': document,
-        'extra_columns': (
-            {'name': _('Title'), 'attribute': encapsulate(lambda smart_link: smart_link.get_dynamic_title(document))},
-        ),
-        'hide_object': True,
-        'hide_link': True,
-        'object': document,
-        'object_list': smart_links,
-        'title': _('Smart links for document: %s') % document,
-    }
+    def get_smart_link_queryset(self):
+        return SmartLink.objects.all()
 
-    return render_to_response(
-        'appearance/generic_list.html', context,
-        context_instance=RequestContext(request)
-    )
+    def get_extra_context(self):
+        return {
+            'extra_columns': [
+                {'name': _('Dynamic title'), 'attribute': 'dynamic_title'},
+                {'name': _('Enabled'), 'attribute': encapsulate(lambda instance: two_state_template(instance.enabled))},
+            ],
+            'hide_link': True,
+            'title': _('Smart links'),
+        }
 
 
-def smart_link_list(request):
-    qs = SmartLink.objects.all()
+class DocumentSmartLinkListView(SmartLinkListView):
+    def dispatch(self, request, *args, **kwargs):
+        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-    try:
-        Permission.check_permissions(request.user, [permission_smart_link_view])
-    except PermissionDenied:
-        qs = AccessControlList.objects.filter_by_access(permission_smart_link_view, request.user, qs)
+        try:
+            Permission.check_permissions(request.user, (permission_document_view,))
+        except PermissionDenied:
+            AccessControlList.objects.check_permissions(permission_document_view, request.user, self.document)
 
-    return render_to_response('appearance/generic_list.html', {
-        'title': _('Smart links'),
-        'object_list': qs,
-        'extra_columns': [
-            {'name': _('Dynamic title'), 'attribute': 'dynamic_title'},
-            {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
-        ],
-        'hide_link': True,
+        return super(DocumentSmartLinkListView, self).dispatch(request, *args, **kwargs)
 
-    }, context_instance=RequestContext(request))
+    def get_smart_link_queryset(self):
+        return ResolvedSmartLink.objects.filter(document_types=self.document.document_type, enabled=True)
+
+    def get_extra_context(self):
+        return {
+            'document': self.document,
+            'extra_columns': (
+                {'name': _('Title'), 'attribute': encapsulate(lambda smart_link: smart_link.get_dynamic_title(self.document))},
+            ),
+            'hide_object': True,
+            'hide_link': True,
+            'object': self.document,
+            'title': _('Smart links for document: %s') % self.document,
+        }
 
 
 def smart_link_create(request):

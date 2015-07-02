@@ -2,14 +2,17 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .views import SetupSmartLinkDocumentTypesView
+from .views import (
+    DocumentSmartLinkListView, SetupSmartLinkDocumentTypesView,
+    SmartLinkListView
+)
 
 urlpatterns = patterns(
     'linking.views',
-    url(r'^document/(?P<document_id>\d+)/$', 'smart_link_instances_for_document', name='smart_link_instances_for_document'),
-    url(r'^document/(?P<document_id>\d+)/smart_link/(?P<smart_link_pk>\d+)/$', 'smart_link_instance_view', name='smart_link_instance_view'),
+    url(r'^document/(?P<pk>\d+)/list/$', DocumentSmartLinkListView.as_view(), name='smart_link_instances_for_document'),
+    url(r'^document/(?P<document_id>\d+)/(?P<smart_link_pk>\d+)/$', 'smart_link_instance_view', name='smart_link_instance_view'),
 
-    url(r'^setup/list/$', 'smart_link_list', name='smart_link_list'),
+    url(r'^setup/list/$', SmartLinkListView.as_view(), name='smart_link_list'),
     url(r'^setup/create/$', 'smart_link_create', name='smart_link_create'),
     url(r'^setup/(?P<smart_link_pk>\d+)/delete/$', 'smart_link_delete', name='smart_link_delete'),
     url(r'^setup/(?P<smart_link_pk>\d+)/edit/$', 'smart_link_edit', name='smart_link_edit'),
