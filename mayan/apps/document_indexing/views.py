@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.utils import encapsulate
-from common.views import AssignRemoveView
+from common.views import AssignRemoveView, SingleObjectListView
 from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
@@ -33,28 +33,20 @@ from .widgets import index_instance_item_link, get_breadcrumbs, node_level
 # Setup views
 
 
-def index_setup_list(request):
-    context = {
-        'title': _('Indexes'),
-        'hide_object': True,
-        'extra_columns': [
-            {'name': _('Name'), 'attribute': 'name'},
-            {'name': _('Title'), 'attribute': 'title'},
-            {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
-        ]
-    }
+class SetupIndexListView(SingleObjectListView):
+    model = Index
+    view_permission = permission_document_indexing_setup
 
-    queryset = Index.objects.all()
-
-    try:
-        Permission.check_permissions(request.user, [permission_document_indexing_setup])
-    except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(permission_document_indexing_setup, request.user, queryset)
-
-    context['object_list'] = queryset
-
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'title': _('Indexes'),
+            'hide_object': True,
+            'extra_columns': [
+                {'name': _('Name'), 'attribute': 'name'},
+                {'name': _('Title'), 'attribute': 'title'},
+                {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+            ]
+        }
 
 
 def index_setup_create(request):
