@@ -60,4 +60,4 @@ class FoldersApp(MayanAppConfig):
         menu_sidebar.bind_links(links=[link_folder_add_document], sources=['folders:document_folder_list', 'folders:folder_add_document'])
 
         SourceColumn(source=Folder, label=_('Created'), attribute='datetime_created')
-        SourceColumn(source=Folder, label=_('Document'), attribute=encapsulate(lambda x: x.documents.count()))
+        SourceColumn(source=Folder, label=_('User'), attribute='user')
