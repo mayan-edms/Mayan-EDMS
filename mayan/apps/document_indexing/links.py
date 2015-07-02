@@ -28,6 +28,7 @@ link_index_setup_delete = Link(permissions=[permission_document_indexing_delete]
 link_index_setup_view = Link(permissions=[permission_document_indexing_setup], text=_('Tree template'), view='indexing:index_setup_view', args='resolved_object.pk')
 link_index_setup_document_types = Link(permissions=[permission_document_indexing_edit], text=_('Document types'), view='indexing:index_setup_document_types', args='resolved_object.pk')
 link_rebuild_index_instances = Link(
+    icon='fa fa-database',
     description=_('Deletes and creates from scratch all the document indexes.'),
     permissions=[permission_document_indexing_rebuild_indexes],
     text=_('Rebuild indexes'), view='indexing:rebuild_index_instances'

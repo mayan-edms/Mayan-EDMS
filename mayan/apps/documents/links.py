@@ -65,8 +65,9 @@ link_document_version_download = Link(args='object.pk', permissions=[permission_
 
 # Tools
 link_clear_image_cache = Link(
+    icon='fa fa-file-image-o',
     description=_('Clear the graphics representations used to speed up the documents\' display and interactive transformations results.'),
-    permissions=[permission_document_tools], text=_('Clear the document image cache'),
+    permissions=[permission_document_tools], text=_('Clear image cache'),
     view='documents:document_clear_image_cache'
 )
 
@@ -96,3 +97,5 @@ link_document_type_filename_edit = Link(permissions=[permission_document_type_ed
 link_document_type_filename_list = Link(permissions=[permission_document_type_view], text=_('Filenames'), view='documents:document_type_filename_list', args='resolved_object.id')
 link_document_type_list = Link(permissions=[permission_document_type_view], text=_('Document types'), view='documents:document_type_list')
 link_document_type_setup = Link(icon='fa fa-file', permissions=[permission_document_type_view], text=_('Document types'), view='documents:document_type_list')
+
+link_tools = Link

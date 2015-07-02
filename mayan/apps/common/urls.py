@@ -6,7 +6,7 @@ from django.views.generic import RedirectView
 
 from .views import (
     AboutView, CurrentUserDetailsView, CurrentUserLocaleProfileDetailsView,
-    HomeView, LicenseView, MaintenanceMenuView, SetupListView, ToolsListView
+    HomeView, LicenseView, SetupListView, ToolsListView
 )
 
 urlpatterns = patterns(
@@ -14,7 +14,6 @@ urlpatterns = patterns(
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^about/$', AboutView.as_view(), name='about_view'),
     url(r'^license/$', LicenseView.as_view(), name='license_view'),
-    url(r'^maintenance_menu/$', MaintenanceMenuView.as_view(), name='maintenance_menu'),
     url(r'^object/multiple/action/$', 'multi_object_action_view', name='multi_object_action_view'),
     url(r'^setup/$', SetupListView.as_view(), name='setup_list'),
     url(r'^tools/$', ToolsListView.as_view(), name='tools_list'),

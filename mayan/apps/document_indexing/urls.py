@@ -7,7 +7,9 @@ from .api_views import (
     APIIndexNodeInstanceDocumentListView, APIIndexTemplateListView,
     APIIndexTemplateView, APIIndexView
 )
-from .views import IndexListView, SetupIndexDocumentTypesView, SetupIndexListView
+from .views import (
+    IndexListView, SetupIndexDocumentTypesView, SetupIndexListView,
+)
 
 
 urlpatterns = patterns(

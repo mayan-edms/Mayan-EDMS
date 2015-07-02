@@ -9,9 +9,8 @@ from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
     MayanAppConfig, MissingItem, menu_facet, menu_front_page, menu_object,
-    menu_secondary, menu_setup, menu_sidebar, menu_multi_item
+    menu_secondary, menu_setup, menu_sidebar, menu_multi_item, menu_tools
 )
-from common.api import register_maintenance_links
 from common.classes import ModelAttribute
 from common.signals import post_initial_setup
 from common.utils import encapsulate
@@ -93,6 +92,7 @@ class DocumentsApp(MayanAppConfig):
 
         menu_front_page.bind_links(links=[link_document_list_recent, link_document_list])
         menu_setup.bind_links(links=[link_document_type_setup])
+        menu_tools.bind_links(links=[link_clear_image_cache])
 
         # Document type links
         menu_object.bind_links(links=[link_document_type_edit, link_document_type_filename_list, link_document_type_delete], sources=[DocumentType])
@@ -127,8 +127,6 @@ class DocumentsApp(MayanAppConfig):
         post_initial_setup.connect(create_default_document_type, dispatch_uid='create_default_document_type')
 
         registry.register(Document)
-
-        register_maintenance_links([link_clear_image_cache], namespace='documents', title=_('Documents'))
 
         SourceColumn(source=Document, label=_('Thumbnail'), attribute=encapsulate(lambda document: document_thumbnail(document, gallery_name='documents:document_list', title=getattr(document, 'label', None), size=setting_thumbnail_size.value)))
         SourceColumn(source=Document, label=_('type'), attribute='document_type')

@@ -15,8 +15,7 @@ from .handlers import (
 from .links import (
     link_about, link_current_user_details, link_current_user_edit,
     link_current_user_locale_profile_details,
-    link_current_user_locale_profile_edit, link_license,
-    link_maintenance_menu, link_setup, link_tools
+    link_current_user_locale_profile_edit, link_license, link_setup, link_tools
 )
 from .menus import (
     menu_facet, menu_main, menu_secondary, menu_setup, menu_tools
@@ -62,7 +61,6 @@ class CommonApp(MayanAppConfig):
             ],
             sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'authentication:password_change_view', 'common:setup_list', 'common:tools_list']
         )
-        menu_tools.bind_links(links=[link_maintenance_menu])
 
         user_logged_in.connect(user_locale_profile_session_config, dispatch_uid='user_locale_profile_session_config', sender=settings.AUTH_USER_MODEL)
         post_save.connect(user_locale_profile_create, dispatch_uid='user_locale_profile_create', sender=settings.AUTH_USER_MODEL)

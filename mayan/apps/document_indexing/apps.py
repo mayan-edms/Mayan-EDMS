@@ -5,9 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
-    menu_setup
+    menu_setup, menu_tools
 )
-from common.api import register_maintenance_links
 from documents.models import Document
 from metadata.models import DocumentMetadata
 from rest_api.classes import APIEndPoint
@@ -44,9 +43,8 @@ class DocumentIndexingApp(MayanAppConfig):
         menu_main.bind_links(links=[link_index_main_menu])
         menu_secondary.bind_links(links=[link_index_setup_list, link_index_setup_create], sources=[Index, 'indexing:index_setup_list', 'indexing:index_setup_create'])
         menu_setup.bind_links(links=[link_index_setup])
+        menu_tools.bind_links(links=[link_rebuild_index_instances])
 
         post_save.connect(document_metadata_index_update, dispatch_uid='document_metadata_index_update', sender=DocumentMetadata)
         post_delete.connect(document_index_delete, dispatch_uid='document_index_delete', sender=Document)
         post_delete.connect(document_metadata_index_post_delete, dispatch_uid='document_metadata_index_post_delete', sender=DocumentMetadata)
-
-        register_maintenance_links([link_rebuild_index_instances], namespace='document_indexing', title=_('Indexes'))

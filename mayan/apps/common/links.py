@@ -15,6 +15,5 @@ link_current_user_edit = Link(icon='fa fa-user', text=_('Edit details'), view='c
 link_current_user_locale_profile_details = Link(icon='fa fa-globe', text=_('Locale profile'), view='common:current_user_locale_profile_details')
 link_current_user_locale_profile_edit = Link(icon='fa fa-globe', text=_('Edit locale profile'), view='common:current_user_locale_profile_edit')
 link_license = Link(icon='fa fa-book', text=_('License'), view='common:license_view')
-link_maintenance_menu = Link(icon='fa fa-wrench', text=_('Maintenance'), view='common:maintenance_menu')
 link_setup = Link(icon='fa fa-gear', text=_('Setup'), view='common:setup_list')
 link_tools = Link(icon='fa fa-wrench', text=_('Tools'), view='common:tools_list')

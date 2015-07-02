@@ -20,7 +20,6 @@ from django.views.generic.list import ListView
 
 from documents.search import document_search
 
-from .api import tools
 from .classes import MissingItem
 from .forms import (
     ChoiceForm, LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
@@ -217,30 +216,6 @@ class LicenseView(ExtraContextMixin, TemplateView):
         'title': _('License'),
     }
     template_name = 'appearance/generic_form.html'
-
-
-class MaintenanceMenuView(TemplateView):
-    template_name = 'appearance/tools.html'
-
-    def get_context_data(self, **kwargs):
-        data = super(MaintenanceMenuView, self).get_context_data(**kwargs)
-
-        user_tools = {}
-        for namespace, values in tools.items():
-            user_tools[namespace] = {
-                'title': values['title']
-            }
-            user_tools[namespace].setdefault('links', [])
-            for link in values['links']:
-                resolved_link = link.resolve(context=RequestContext(self.request))
-                if resolved_link:
-                    user_tools[namespace]['links'].append(resolved_link)
-
-        data.update({
-            'blocks': user_tools,
-            'title': _('Maintenance menu')
-        })
-        return data
 
 
 class MultiFormView(FormView):
@@ -486,16 +461,17 @@ class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
     pass
 
 
-class ToolsListView(TemplateView):
+class ToolsListView(SimpleView):
     template_name = 'appearance/generic_list_horizontal.html'
 
-    def get_context_data(self, **kwargs):
-        data = super(ToolsListView, self).get_context_data(**kwargs)
-        data.update({
-            'resolved_links': menu_tools.resolve(context=RequestContext(self.request)),
+    def get_menu_links(self):
+        return menu_tools.resolve(context=RequestContext(self.request))
+
+    def get_extra_context(self):
+        return {
+            'resolved_links': self.get_menu_links(),
             'title': _('Tools'),
-        })
-        return data
+        }
 
 
 def multi_object_action_view(request):

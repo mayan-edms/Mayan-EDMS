@@ -30,9 +30,8 @@ from .permissions import (
 from .tasks import task_do_rebuild_all_indexes
 from .widgets import index_instance_item_link, get_breadcrumbs, node_level
 
+
 # Setup views
-
-
 class SetupIndexListView(SingleObjectListView):
     model = Index
     view_permission = permission_document_indexing_setup
