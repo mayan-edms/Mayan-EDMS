@@ -17,7 +17,7 @@ from common.views import AssignRemoveView, SingleObjectListView
 from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
-from documents.views import document_list
+from documents.views import DocumentListView
 from permissions import Permission
 
 from .forms import SmartLinkConditionForm, SmartLinkForm
@@ -61,31 +61,43 @@ class SetupSmartLinkDocumentTypesView(AssignRemoveView):
         return data
 
 
-def smart_link_instance_view(request, document_id, smart_link_pk):
-    document = get_object_or_404(Document, pk=document_id)
-    smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+class ResolvedSmartLinkView(DocumentListView):
+    def dispatch(self, request, *args, **kwargs):
+        self.document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
+        self.smart_link = get_object_or_404(SmartLink, pk=self.kwargs['smart_link_pk'])
 
-    try:
-        Permission.check_permissions(request.user, [permission_smart_link_view])
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_smart_link_view, request.user, smart_link)
+        try:
+            Permission.check_permissions(request.user, [permission_document_view])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_document_view, request.user, self.document)
 
-    try:
-        object_list = smart_link.get_linked_document_for(document)
-    except Exception as exception:
-        object_list = Document.objects.none()
+        try:
+            Permission.check_permissions(request.user, [permission_smart_link_view])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_smart_link_view, request.user, self.smart_link)
 
-        if request.user.is_staff or request.user.is_superuser:
-            messages.error(request, _('Smart link query error: %s' % exception))
+        return super(ResolvedSmartLinkView, self).dispatch(request, *args, **kwargs)
 
-    return document_list(
-        request,
-        title=_('Documents in smart link: %s') % smart_link.get_dynamic_title(document),
-        object_list=object_list,
-        extra_context={
-            'object': document
+    def get_document_queryset(self):
+        try:
+            queryset = self.smart_link.get_linked_document_for(self.document)
+        except Exception as exception:
+            queryset = Document.objects.none()
+
+            if self.request.user.is_staff or self.request.user.is_superuser:
+                messages.error(request, _('Smart link query error: %s' % exception))
+
+        return queryset
+
+    def get_extra_context(self):
+        return {
+            'hide_links': True,
+            'object': self.document,
+            'title': _('Documents in smart link "%(smart_link)s" as relation to "%(document)s"') % {
+                'document': self.document,
+                'smart_link': self.smart_link.get_dynamic_title(self.document),
+            }
         }
-    )
 
 
 class SmartLinkListView(SingleObjectListView):

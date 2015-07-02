@@ -3,14 +3,14 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 
 from .views import (
-    DocumentSmartLinkListView, SetupSmartLinkDocumentTypesView,
-    SmartLinkListView
+    DocumentSmartLinkListView, ResolvedSmartLinkView,
+    SetupSmartLinkDocumentTypesView, SmartLinkListView
 )
 
 urlpatterns = patterns(
     'linking.views',
     url(r'^document/(?P<pk>\d+)/list/$', DocumentSmartLinkListView.as_view(), name='smart_link_instances_for_document'),
-    url(r'^document/(?P<document_id>\d+)/(?P<smart_link_pk>\d+)/$', 'smart_link_instance_view', name='smart_link_instance_view'),
+    url(r'^document/(?P<document_pk>\d+)/(?P<smart_link_pk>\d+)/$', ResolvedSmartLinkView.as_view(), name='smart_link_instance_view'),
 
     url(r'^setup/list/$', SmartLinkListView.as_view(), name='smart_link_list'),
     url(r'^setup/create/$', 'smart_link_create', name='smart_link_create'),
