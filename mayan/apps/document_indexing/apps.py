@@ -17,8 +17,8 @@ from .handlers import (
     document_metadata_index_post_delete
 )
 from .links import (
-    link_document_index_list, link_index_main_menu, link_index_parent,
-    link_index_setup, link_index_setup_create, link_index_setup_document_types,
+    link_document_index_list, link_index_main_menu, link_index_setup,
+    link_index_setup_create, link_index_setup_document_types,
     link_index_setup_delete, link_index_setup_edit, link_index_setup_list,
     link_index_setup_view, link_rebuild_index_instances,
     link_template_node_create, link_template_node_delete,
@@ -39,7 +39,6 @@ class DocumentIndexingApp(MayanAppConfig):
         APIEndPoint('indexes', app_name='document_indexing')
 
         menu_facet.bind_links(links=[link_document_index_list], sources=[Document])
-        menu_object.bind_links(links=[link_index_parent], sources=[IndexInstanceNode])
         menu_object.bind_links(links=[link_index_setup_edit, link_index_setup_view, link_index_setup_document_types, link_index_setup_delete], sources=[Index])
         menu_object.bind_links(links=[link_template_node_create, link_template_node_edit, link_template_node_delete], sources=[IndexTemplateNode])
         menu_main.bind_links(links=[link_index_main_menu])

@@ -13,10 +13,6 @@ from .permissions import (
 )
 
 
-def is_not_instance_root_node(context):
-    return not context['object'].is_root_node()
-
-
 def is_not_root_node(context):
     return not context['resolved_object'].is_root_node()
 
@@ -24,7 +20,6 @@ def is_not_root_node(context):
 link_document_index_list = Link(permissions=[permission_document_view], text=_('Indexes'), view='indexing:document_index_list', args='object.pk')
 link_index_list = Link(permissions=[permission_document_indexing_view], text=_('Index list'), view='indexing:index_list')
 link_index_main_menu = Link(icon='fa fa-list-ul', text=_('Indexes'), view='indexing:index_list')
-link_index_parent = Link(condition=is_not_instance_root_node, permissions=[permission_document_indexing_view], text=_('Go up one level'), view='indexing:index_instance_node_view', args='object.parent.pk')
 link_index_setup = Link(icon='fa fa-list-ul', permissions=[permission_document_indexing_setup], text=_('Indexes'), view='indexing:index_setup_list')
 link_index_setup_list = Link(permissions=[permission_document_indexing_setup], text=_('Indexes'), view='indexing:index_setup_list')
 link_index_setup_create = Link(permissions=[permission_document_indexing_create], text=_('Create index'), view='indexing:index_setup_create')
