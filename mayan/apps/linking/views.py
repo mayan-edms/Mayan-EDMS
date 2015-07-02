@@ -16,6 +16,7 @@ from common.utils import encapsulate
 from common.views import AssignRemoveView
 from common.widgets import two_state_template
 from documents.models import Document, DocumentType
+from documents.permissions import permission_document_view
 from documents.views import document_list
 from permissions import Permission
 
@@ -96,9 +97,9 @@ def smart_link_instances_for_document(request, document_id):
     queryset = ResolvedSmartLink.objects.filter(document_types=document.document_type)
 
     try:
-        Permission.check_permissions(request.user, (permission_smart_link_view,))
+        Permission.check_permissions(request.user, (permission_document_view,))
     except PermissionDenied:
-        smart_links = AccessControlList.objects.filter_by_access(permission_smart_link_view, request.user, queryset)
+        smart_links = AccessControlList.objects.filter_by_access(permission_document_view, request.user, queryset)
     else:
         smart_links = queryset
 

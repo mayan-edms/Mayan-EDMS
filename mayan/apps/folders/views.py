@@ -211,9 +211,9 @@ class DocumentFolderListView(FolderListView):
         self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         try:
-            Permission.check_permissions(request.user, [permission_folder_view])
+            Permission.check_permissions(request.user, [permission_document_view])
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_folder_view, request.user, self.document)
+            AccessControlList.objects.check_access(permission_document_view, request.user, self.document)
 
         return super(DocumentFolderListView, self).dispatch(request, *args, **kwargs)
 
