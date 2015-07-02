@@ -43,32 +43,3 @@ class AccessControlList(models.Model):
 
     def __str__(self):
         return '{} <=> {}'.format(self.content_object, self.role)
-
-'''
-# TODO: remove
-@python_2_unicode_compatible
-class AccessControlList(models.Model):
-    """
-    Model that hold the permission, object, actor relationship
-    """
-    permission = models.ForeignKey(StoredPermission, verbose_name=_('Permission'))
-    role = models.ForeignKey(Role, verbose_name=_('Role'))
-    content_type = models.ForeignKey(
-        ContentType,
-        related_name='object_content_type_1'
-    )
-    object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey(
-        ct_field='content_type',
-        fk_field='object_id'
-    )
-
-    objects = AccessControlListManager()
-
-    class Meta:
-        verbose_name = _('Access entry')
-        verbose_name_plural = _('Access entries')
-
-    def __str__(self):
-        return '%s: %s' % (self.content_type, self.content_object)
-'''
