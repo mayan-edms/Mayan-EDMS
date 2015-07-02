@@ -6,11 +6,11 @@ from .api_views import (
     APIDocumentTagView, APIDocumentTagListView, APITagDocumentListView,
     APITagListView, APITagView
 )
-from .views import TagTaggedItemListView
+from .views import DocumentTagListView, TagListView, TagTaggedItemListView
 
 urlpatterns = patterns(
     'tags.views',
-    url(r'^list/$', 'tag_list', name='tag_list'),
+    url(r'^list/$', TagListView.as_view(), name='tag_list'),
     url(r'^create/$', 'tag_create', name='tag_create'),
     url(r'^(?P<tag_id>\d+)/delete/$', 'tag_delete', name='tag_delete'),
     url(r'^(?P<tag_id>\d+)/edit/$', 'tag_edit', name='tag_edit'),
@@ -23,7 +23,7 @@ urlpatterns = patterns(
     url(r'^selection/attach/document/(?P<document_id>\d+)/$', 'tag_attach', name='tag_attach'),
     url(r'^selection/attach/document/multiple/$', 'tag_multiple_attach', name='multiple_documents_tag_attach'),
 
-    url(r'^for/document/(?P<document_id>\d+)/$', 'document_tags', name='document_tags'),
+    url(r'^document/(?P<pk>\d+)/tags/$', DocumentTagListView.as_view(), name='document_tags'),
 )
 
 api_urls = patterns(

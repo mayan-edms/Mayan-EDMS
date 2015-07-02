@@ -40,7 +40,7 @@ class TagsApp(MayanAppConfig):
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_tag_attach, permission_tag_remove,
+                permission_tag_attach, permission_tag_remove, permission_tag_view
             )
         )
 

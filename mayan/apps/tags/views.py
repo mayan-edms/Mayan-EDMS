@@ -12,6 +12,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
+from common.views import SingleObjectListView
 from documents.models import Document
 from documents.views import DocumentListView
 from documents.permissions import permission_document_view
@@ -108,26 +109,22 @@ def tag_multiple_attach(request):
     )
 
 
-def tag_list(request, queryset=None, extra_context=None):
-    context = {
-        'title': _('Tags'),
-        'hide_link': True,
-        'hide_object': True,
-    }
-    if extra_context:
-        context.update(extra_context)
+class TagListView(SingleObjectListView):
+    object_permission = permission_tag_view
 
-    queryset = queryset if not (queryset is None) else Tag.objects.all()
+    def get_tag_queryset(self):
+        return Tag.objects.all()
 
-    try:
-        Permission.check_permissions(request.user, [permission_tag_view])
-    except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(permission_tag_view, request.user, queryset)
+    def get_queryset(self):
+        self.queryset = self.get_tag_queryset()
+        return super(TagListView, self).get_queryset()
 
-    context['object_list'] = queryset
-
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self, **kwargs):
+        return {
+            'title': _('Tags'),
+            'hide_link': True,
+            'hide_object': True,
+        }
 
 
 def tag_delete(request, tag_id=None, tag_id_list=None):
@@ -226,21 +223,25 @@ class TagTaggedItemListView(DocumentListView):
         }
 
 
-def document_tags(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
+class DocumentTagListView(TagListView):
+    def dispatch(self, request, *args, **kwargs):
+        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-    try:
-        Permission.check_permissions(request.user, [permission_document_view])
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document)
+        try:
+            Permission.check_permissions(request.user, [permission_document_view])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_document_view, request.user, self.document)
 
-    context = {
-        'object': document,
-        'document': document,
-        'title': _('Tags for document: %s') % document,
-    }
+        return super(DocumentTagListView, self).dispatch(request, *args, **kwargs)
 
-    return tag_list(request, queryset=document.tags.all(), extra_context=context)
+    def get_extra_context(self):
+        return {
+            'object': self.document,
+            'title': _('Tags for document: %s') % self.document,
+        }
+
+    def get_tag_queryset(self):
+        return self.document.tags.all()
 
 
 def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, tag_id_list=None):
