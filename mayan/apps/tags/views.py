@@ -12,6 +12,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
+from common.utils import encapsulate
 from common.views import SingleObjectListView
 from documents.models import Document
 from documents.views import DocumentListView
@@ -110,6 +111,17 @@ def tag_multiple_attach(request):
 
 
 class TagListView(SingleObjectListView):
+    @staticmethod
+    def get_document_count(instance, user):
+        queryset = instance.documents
+
+        try:
+            Permission.check_permissions(user, [permission_document_view])
+        except PermissionDenied:
+            queryset = AccessControlList.objects.filter_by_access(permission_document_view, user, queryset)
+
+        return queryset.count()
+
     object_permission = permission_tag_view
 
     def get_tag_queryset(self):
@@ -121,9 +133,12 @@ class TagListView(SingleObjectListView):
 
     def get_extra_context(self, **kwargs):
         return {
-            'title': _('Tags'),
+            'extra_columns': [
+                {'name': _('Documents'), 'attribute': encapsulate(lambda instance: TagListView.get_document_count(instance=instance, user=self.request.user))},
+            ],
             'hide_link': True,
-            'hide_object': True,
+
+            'title': _('Tags'),
         }
 
 
@@ -236,6 +251,7 @@ class DocumentTagListView(TagListView):
 
     def get_extra_context(self):
         return {
+            'hide_link': True,
             'object': self.document,
             'title': _('Tags for document: %s') % self.document,
         }
