@@ -35,7 +35,10 @@ class Index(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('indexing:index_instance_node_view', args=[self.instance_root.pk])
+        try:
+            return reverse('indexing:index_instance_node_view', args=[self.instance_root.pk])
+        except IndexInstanceNode.DoesNotExist:
+            return '#'
 
     def save(self, *args, **kwargs):
         """Automatically create the root index template node"""
