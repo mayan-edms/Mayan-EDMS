@@ -16,7 +16,7 @@ from common.views import AssignRemoveView, SingleObjectListView
 from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
-from documents.views import document_list
+from documents.views import DocumentListView
 from permissions import Permission
 
 from .forms import IndexForm, IndexTemplateNodeForm
@@ -297,6 +297,69 @@ class IndexListView(SingleObjectListView):
                 {'name': _('Document types'), 'attribute': 'get_document_types_names'},
             ],
         }
+
+
+class IndexInstanceNodeView(DocumentListView):
+    @staticmethod
+    def get_item_count(instance, user):
+        if instance.index_template_node.link_documents:
+            queryset = instance.documents
+
+            try:
+                Permission.check_permissions(user, [permission_document_view])
+            except PermissionDenied:
+                queryset = AccessControlList.objects.filter_by_access(permission_document_view, user, queryset)
+
+            return queryset.count()
+        else:
+            return instance.get_children().count()
+
+    def dispatch(self, request, *args, **kwargs):
+        self.index_instance = get_object_or_404(IndexInstanceNode, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(request.user, [permission_document_indexing_view])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_document_indexing_view, request.user, self.index_instance.index)
+
+        return super(IndexInstanceNodeView, self).dispatch(request, *args, **kwargs)
+
+    def get_document_queryset(self):
+        if self.index_instance:
+            if self.index_instance.index_template_node.link_documents:
+                return self.index_instance.documents.all()
+            else:
+                self.object_permission = None
+                return self.index_instance.get_children().order_by('value')
+        else:
+            self.object_permission = None
+            return IndexInstanceNode.objects.none()
+
+    def get_extra_context(self):
+        context = {
+            'hide_links': True,
+            'object': self.index_instance,
+            'title': mark_safe(_('Contents for index: %s') % get_breadcrumbs(self.index_instance))
+        }
+
+        if self.index_instance and not self.index_instance.index_template_node.link_documents:
+            context.update(
+                {
+                    'extra_columns': [
+                        {
+                            'name': _('Node'),
+                            'attribute': encapsulate(lambda x: index_instance_item_link(x))
+                        },
+                        {
+                            'name': _('Items'),
+                            'attribute': encapsulate(lambda instance: IndexInstanceNodeView.get_item_count(instance=instance, user=self.request.user))
+                        }
+                    ],
+                    'hide_object': True,
+                }
+            )
+
+        return context
 
 
 def index_instance_node_view(request, index_instance_node_pk):
