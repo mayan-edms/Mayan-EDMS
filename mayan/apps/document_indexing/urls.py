@@ -7,7 +7,7 @@ from .api_views import (
     APIIndexNodeInstanceDocumentListView, APIIndexTemplateListView,
     APIIndexTemplateView, APIIndexView
 )
-from .views import SetupIndexDocumentTypesView, SetupIndexListView
+from .views import IndexListView, SetupIndexDocumentTypesView, SetupIndexListView
 
 
 urlpatterns = patterns(
@@ -23,7 +23,7 @@ urlpatterns = patterns(
     url(r'^setup/template/node/(?P<node_pk>\d+)/edit/$', 'template_node_edit', name='template_node_edit'),
     url(r'^setup/template/node/(?P<node_pk>\d+)/delete/$', 'template_node_delete', name='template_node_delete'),
 
-    url(r'^index/list/$', 'index_list', name='index_list'),
+    url(r'^index/list/$', IndexListView.as_view(), name='index_list'),
     url(r'^instance/node/(?P<index_instance_node_pk>\d+)/$', 'index_instance_node_view', name='index_instance_node_view'),
 
     url(r'^rebuild/all/$', 'rebuild_index_instances', name='rebuild_index_instances'),

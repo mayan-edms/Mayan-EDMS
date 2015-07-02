@@ -275,31 +275,29 @@ def template_node_delete(request, node_pk):
                               context_instance=RequestContext(request))
 
 
-# User views
-def index_list(request):
-    """
-    Show a list of enabled indexes
-    """
-    context = {
-        'title': _('Indexes'),
-        'hide_links': True,
-        'extra_columns': [
-            {'name': _('Items'), 'attribute': encapsulate(lambda x: x.instance_root.documents.count() if x.template_root.link_documents else x.instance_root.get_children().count())},
-            {'name': _('Document types'), 'attribute': 'get_document_types_names'},
-        ],
-    }
+class IndexListView(SingleObjectListView):
+    @staticmethod
+    def get_items_count(instance):
+        try:
+            if instance.template_root.link_documents:
+                return instance.instance_root.documents.count()
+            else:
+                return instance.instance_root.get_children().count()
+        except IndexInstanceNode.DoesNotExist:
+            return 0
 
     queryset = Index.objects.filter(enabled=True)
+    object_permission = permission_document_indexing_view
 
-    try:
-        Permission.check_permissions(request.user, [permission_document_indexing_view])
-    except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(permission_document_indexing_view, request.user, queryset)
-
-    context['object_list'] = queryset
-
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'title': _('Indexes'),
+            'hide_links': True,
+            'extra_columns': [
+                {'name': _('Items'), 'attribute': encapsulate(lambda instance: IndexListView.get_items_count(instance))},
+                {'name': _('Document types'), 'attribute': 'get_document_types_names'},
+            ],
+        }
 
 
 def index_instance_node_view(request, index_instance_node_pk):
