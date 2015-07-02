@@ -251,6 +251,9 @@ class DocumentTagListView(TagListView):
 
     def get_extra_context(self):
         return {
+            'extra_columns': [
+                {'name': _('Documents'), 'attribute': encapsulate(lambda instance: TagListView.get_document_count(instance=instance, user=self.request.user))},
+            ],
             'hide_link': True,
             'object': self.document,
             'title': _('Tags for document: %s') % self.document,
