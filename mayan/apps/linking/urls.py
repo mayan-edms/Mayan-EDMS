@@ -13,7 +13,7 @@ urlpatterns = patterns(
     url(r'^setup/create/$', 'smart_link_create', name='smart_link_create'),
     url(r'^setup/(?P<smart_link_pk>\d+)/delete/$', 'smart_link_delete', name='smart_link_delete'),
     url(r'^setup/(?P<smart_link_pk>\d+)/edit/$', 'smart_link_edit', name='smart_link_edit'),
-    url(r'^setup/(?P<smart_link_pk>\d+)/document_types/$', SetupSmartLinkDocumentTypesView.as_view(), name='smart_link_document_types'),
+    url(r'^setup/(?P<pk>\d+)/document_types/$', SetupSmartLinkDocumentTypesView.as_view(), name='smart_link_document_types'),
 
     url(r'^setup/(?P<smart_link_pk>\d+)/condition/list/$', 'smart_link_condition_list', name='smart_link_condition_list'),
     url(r'^setup/(?P<smart_link_pk>\d+)/condition/create/$', 'smart_link_condition_create', name='smart_link_condition_create'),

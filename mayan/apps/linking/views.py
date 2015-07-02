@@ -32,34 +32,30 @@ logger = logging.getLogger(__name__)
 
 class SetupSmartLinkDocumentTypesView(AssignRemoveView):
     decode_content_type = True
+    left_list_title = _('Available document types')
+    right_list_title = _('Document types enabled')
+    object_permission = permission_smart_link_edit
 
     def add(self, item):
-        self.smart_link.document_types.add(item)
+        self.get_object().document_types.add(item)
 
-    def dispatch(self, request, *args, **kwargs):
-        self.smart_link = get_object_or_404(SmartLink, pk=self.kwargs['smart_link_pk'])
-
-        try:
-            Permission.check_permissions(self.request.user, [permission_smart_link_edit])
-        except PermissionDenied:
-            AccessControlList.objects.check_access(permission_smart_link_edit, self.request.user, self.smart_link)
-
-        return super(SetupSmartLinkDocumentTypesView, self).dispatch(request, *args, **kwargs)
+    def get_object(self):
+        return get_object_or_404(SmartLink, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return AssignRemoveView.generate_choices(DocumentType.objects.exclude(pk__in=self.smart_link.document_types.all()))
+        return AssignRemoveView.generate_choices(DocumentType.objects.exclude(pk__in=self.get_object().document_types.all()))
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(self.smart_link.document_types.all())
+        return AssignRemoveView.generate_choices(self.get_object().document_types.all())
 
     def remove(self, item):
-        self.smart_link.document_types.remove(item)
+        self.get_object().document_types.remove(item)
 
     def get_context_data(self, **kwargs):
         data = super(SetupSmartLinkDocumentTypesView, self).get_context_data(**kwargs)
         data.update({
-            'main_title': _('Document type for which to enable smart link: %s') % self.smart_link,
-            'object': self.smart_link,
+            'object': self.get_object(),
+            'title': _('Document type for which to enable smart link: %s') % self.get_object(),
         })
 
         return data
