@@ -12,11 +12,11 @@ def index_instance_item_link(index_instance_item):
         if index_instance_item.index_template_node.link_documents:
             icon_template = '<i class="fa fa-folder"></i>'
         else:
-            icon_template = '<i class="fa fa-file"></i>'
+            icon_template = '<i class="fa fa-level-up fa-rotate-90"></i>'
     else:
         icon_template = ''
 
-    return mark_safe('%(icon_template)s<a href="%(url)s">%(text)s</a>' % {
+    return mark_safe('%(icon_template)s&nbsp;<a href="%(url)s">%(text)s</a>' % {
         'url': index_instance_item.get_absolute_url(),
         'icon_template': icon_template,
         'text': index_instance_item
