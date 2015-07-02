@@ -6,7 +6,7 @@ from .api_views import (
     APIDocumentFolderListView, APIFolderDocumentListView,
     APIFolderDocumentView, APIFolderListView, APIFolderView
 )
-from .views import FolderDetailView, FolderListView
+from .views import DocumentFolderListView, FolderDetailView, FolderListView
 
 urlpatterns = patterns(
     'folders.views',
@@ -19,7 +19,7 @@ urlpatterns = patterns(
 
     url(r'^document/(?P<document_id>\d+)/folder/add/$', 'folder_add_document', name='folder_add_document'),
     url(r'^document/multiple/folder/add/$', 'folder_add_multiple_documents', name='folder_add_multiple_documents'),
-    url(r'^document/(?P<document_id>\d+)/folder/list/$', 'document_folder_list', name='document_folder_list'),
+    url(r'^document/(?P<pk>\d+)/folder/list/$', DocumentFolderListView.as_view(), name='document_folder_list'),
 )
 
 api_urls = patterns(

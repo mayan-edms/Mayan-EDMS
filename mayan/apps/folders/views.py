@@ -30,8 +30,14 @@ logger = logging.getLogger(__name__)
 
 
 class FolderListView(SingleObjectListView):
-    model = Folder
     object_permission = permission_folder_view
+
+    def get_queryset(self):
+        self.queryset = self.get_folder_queryset()
+        return super(FolderListView, self).get_queryset()
+
+    def get_folder_queryset(self):
+        return Folder.objects.all()
 
     def get_extra_context(self):
         return {
@@ -200,31 +206,26 @@ def folder_add_document(request, document_id=None, document_id_list=None):
                               context_instance=RequestContext(request))
 
 
-def document_folder_list(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
+class DocumentFolderListView(FolderListView):
+    def dispatch(self, request, *args, **kwargs):
+        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-    try:
-        Permission.check_permissions(request.user, [permission_document_view])
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document)
+        try:
+            Permission.check_permissions(request.user, [permission_folder_view])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_folder_view, request.user, self.document)
 
-    context = {
-        'hide_link': True,
-        'object': document,
-        'title': _('Folders containing document: %s') % document,
-    }
+        return super(DocumentFolderListView, self).dispatch(request, *args, **kwargs)
 
-    queryset = document.folders.all()
+    def get_folder_queryset(self):
+        return self.document.folders.all()
 
-    try:
-        Permission.check_permissions(request.user, [permission_folder_view])
-    except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(permission_folder_view, request.user, queryset)
-
-    context['object_list'] = queryset
-
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'object': self.document,
+            'title': _('Folders containing document: %s') % self.document,
+        }
 
 
 def folder_document_remove(request, folder_id, document_id=None, document_id_list=None):
