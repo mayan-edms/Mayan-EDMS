@@ -8,6 +8,7 @@ from common import (
     menu_sidebar
 )
 from common.utils import encapsulate
+from common.widgets import two_state_template
 from documents.models import Document
 from navigation import SourceColumn
 
@@ -49,7 +50,7 @@ class DocumentStatesApp(MayanAppConfig):
         SourceColumn(source=WorkflowInstanceLogEntry, label=_('Transition'), attribute='transition')
         SourceColumn(source=WorkflowInstanceLogEntry, label=_('Comment'), attribute='comment')
 
-        SourceColumn(source=WorkflowState, label=_('Is initial state?'), attribute='initial')
+        SourceColumn(source=WorkflowState, label=_('Is initial state?'), attribute=encapsulate(lambda state: two_state_template(state.initial)))
         SourceColumn(source=WorkflowState, label=_('Completion'), attribute='completion')
 
         SourceColumn(source=WorkflowTransition, label=_('Origin state'), attribute='origin_state')
