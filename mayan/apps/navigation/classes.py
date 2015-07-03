@@ -91,12 +91,12 @@ class Menu(object):
 
             for bound_source, links in self.bound_links.iteritems():
                 try:
-                    if inspect.isclass(bound_source) and isinstance(resolved_navigation_object, bound_source) or source == CombinedSource(obj=resolved_navigation_object.__class__, view=current_view):
+                    if inspect.isclass(bound_source) and type(resolved_navigation_object) == bound_source or source == CombinedSource(obj=resolved_navigation_object.__class__, view=current_view):
                         for link in links:
                             resolved_link = link.resolve(context=context, resolved_object=resolved_navigation_object)
                             if resolved_link:
                                 resolved_links.append(resolved_link)
-                        #break  # No need for further content object match testing
+                        break  # No need for further content object match testing
                 except TypeError:
                     # When source is a dictionary
                     pass
