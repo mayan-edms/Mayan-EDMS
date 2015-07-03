@@ -106,32 +106,6 @@ class RecentDocumentListView(DocumentListView):
         return RecentDocument.objects.get_for_user(self.request.user)
 
 
-def document_list(request, object_list=None, title=None, extra_context=None):
-    pre_object_list = object_list if not (object_list is None) else Document.objects.all()
-
-    try:
-        Permission.check_permissions(request.user, [permission_document_view])
-    except PermissionDenied:
-        # If user doesn't have global permission, get a list of document
-        # for which he/she does hace access use it to filter the
-        # provided object_list
-        final_object_list = AccessControlList.objects.filter_by_access(
-            permission_document_view, request.user, pre_object_list)
-    else:
-        final_object_list = pre_object_list
-
-    context = {
-        'object_list': final_object_list,
-        'title': title if title else _('documents'),
-        'hide_links': True,
-    }
-    if extra_context:
-        context.update(extra_context)
-
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
-
-
 def document_properties(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 

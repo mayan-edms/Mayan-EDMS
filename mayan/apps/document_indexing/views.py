@@ -362,54 +362,6 @@ class IndexInstanceNodeView(DocumentListView):
         return context
 
 
-def index_instance_node_view(request, index_instance_node_pk):
-    """
-    Show an instance node and it's content, whether is other child nodes
-    of documents
-    """
-    index_instance = get_object_or_404(IndexInstanceNode, pk=index_instance_node_pk)
-    index_instance_list = index_instance.get_children().order_by('value')
-    breadcrumbs = get_breadcrumbs(index_instance)
-
-    try:
-        Permission.check_permissions(request.user, [permission_document_indexing_view])
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_indexing_view, request.user, index_instance.index)
-
-    title = mark_safe(_('Contents for index: %s') % breadcrumbs)
-
-    if index_instance:
-        if index_instance.index_template_node.link_documents:
-            # Document list, use the document_list view for consistency
-            return document_list(
-                request,
-                title=title,
-                object_list=index_instance.documents.all(),
-                extra_context={
-                    'object': index_instance
-                }
-            )
-
-    return render_to_response('appearance/generic_list.html', {
-        'object_list': index_instance_list,
-        'extra_columns': [
-            {
-                'name': _('Node'),
-                'attribute': encapsulate(lambda x: index_instance_item_link(x))
-            },
-            {
-                'name': _('Items'),
-                'attribute': encapsulate(lambda x: x.documents.count() if x.index_template_node.link_documents else x.get_children().count())
-            }
-        ],
-        'title': title,
-        'hide_links': True,
-        'hide_object': True,
-        'object': index_instance
-
-    }, context_instance=RequestContext(request))
-
-
 def rebuild_index_instances(request):
     """
     Confirmation view to execute the tool: do_rebuild_all_indexes
