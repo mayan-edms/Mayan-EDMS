@@ -45,9 +45,10 @@ from .permissions import (
     permission_document_delete, permission_document_download,
     permission_document_print, permission_document_properties_edit,
     permission_document_restore, permission_document_tools,
-    permission_document_type_create, permission_document_type_delete,
-    permission_document_type_edit, permission_document_type_view,
-    permission_document_version_revert, permission_document_view,
+    permission_document_trash, permission_document_type_create,
+    permission_document_type_delete, permission_document_type_edit,
+    permission_document_type_view, permission_document_version_revert,
+    permission_document_view,
 )
 from .settings import (
     setting_preview_size, setting_recent_count, setting_rotation_step,
@@ -67,6 +68,7 @@ class DocumentListView(SingleObjectListView):
         'hide_links': True,
         'title': _('All documents'),
     }
+
     object_permission = permission_document_view
 
     def get_document_queryset(self):
@@ -78,13 +80,22 @@ class DocumentListView(SingleObjectListView):
 
 
 class DeletedDocumentListView(DocumentListView):
+    object_permission = None
+
     extra_context = {
         'hide_link': True,
         'title': _('Deleted documents'),
     }
 
     def get_document_queryset(self):
-        return DeletedDocument.objects.all()
+        queryset = Document.trash.all()
+
+        try:
+            Permission.check_permissions(self.request.user, [permission_document_view])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_document_view, self.request.user, queryset)
+
+        return DeletedDocument.objects.filter(pk__in=queryset.values_list('pk', flat=True))
 
 
 class DocumentPageListView(ParentChildListView):
@@ -123,10 +134,12 @@ class DocumentRestoreView(ConfirmView):
     }
 
     def object_action(self, request, instance):
+        source_document = get_object_or_404(Document.passthrough, pk=instance.pk)
+
         try:
             Permission.check_permissions(request.user, [permission_document_restore])
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_restore, request.user, instance)
+            AccessControlList.objects.check_access(permission_document_restore, request.user, source_document)
 
         instance.restore()
         messages.success(request, _('Document: %(document)s restored.') % {
@@ -143,6 +156,38 @@ class DocumentRestoreView(ConfirmView):
 class DocumentManyRestoreView(MultipleInstanceActionMixin, DocumentRestoreView):
     extra_context = {
         'title': _('Restore the selected documents?')
+    }
+    model = DeletedDocument
+
+
+class DeletedDocumentDeleteView(ConfirmView):
+    extra_context = {
+        'title': _('Delete the selected document?')
+    }
+
+    def object_action(self, request, instance):
+        source_document = get_object_or_404(Document.passthrough, pk=instance.pk)
+
+        try:
+            Permission.check_permissions(request.user, [permission_document_delete])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_document_delete, request.user, source_document)
+
+        instance.delete()
+        messages.success(request, _('Document: %(document)s deleted.') % {
+            'document': instance}
+        )
+
+    def post(self, request, *args, **kwargs):
+        document = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
+        self.object_action(request=request, instance=document)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+
+class DocumentManyDeleteView(MultipleInstanceActionMixin, DeletedDocumentDeleteView):
+    extra_context = {
+        'title': _('Delete the selected documents?')
     }
     model = DeletedDocument
 
@@ -206,7 +251,7 @@ def document_preview(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def document_delete(request, document_id=None, document_id_list=None):
+def document_trash(request, document_id=None, document_id_list=None):
     post_action_redirect = None
 
     if document_id:
@@ -219,9 +264,9 @@ def document_delete(request, document_id=None, document_id_list=None):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.check_permissions(request.user, [permission_document_delete])
+        Permission.check_permissions(request.user, [permission_document_trash])
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_document_delete, request.user, documents, exception_on_empty=True)
+        documents = AccessControlList.objects.filter_by_access(permission_document_trash, request.user, documents, exception_on_empty=True)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -230,9 +275,9 @@ def document_delete(request, document_id=None, document_id_list=None):
         for document in documents:
             try:
                 document.delete()
-                messages.success(request, _('Document deleted successfully.'))
+                messages.success(request, _('Document moved to trash successfully.'))
             except Exception as exception:
-                messages.error(request, _('Document: %(document)s delete error: %(error)s') % {
+                messages.error(request, _('Document: %(document)s error moving to trash: %(error)s') % {
                     'document': document, 'error': exception
                 })
 
@@ -243,8 +288,8 @@ def document_delete(request, document_id=None, document_id_list=None):
         'previous': previous,
         'next': next,
         'title': ungettext(
-            'Are you sure you wish to delete the selected document?',
-            'Are you sure you wish to delete the selected documents?',
+            'Move the selected document to the trash ?',
+            'Move the selected documents to the trash ?',
             len(documents)
         )
     }
@@ -256,8 +301,8 @@ def document_delete(request, document_id=None, document_id_list=None):
                               context_instance=RequestContext(request))
 
 
-def document_multiple_delete(request):
-    return document_delete(
+def document_multiple_trash(request):
+    return document_trash(
         request, document_id_list=request.GET.get('id_list', [])
     )
 

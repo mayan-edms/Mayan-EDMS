@@ -11,8 +11,9 @@ from .permissions import (
     permission_document_properties_edit, permission_document_print,
     permission_document_restore, permission_document_tools,
     permission_document_version_revert, permission_document_view,
-    permission_document_type_create, permission_document_type_delete,
-    permission_document_type_edit, permission_document_type_view
+    permission_document_trash, permission_document_type_create,
+    permission_document_type_delete, permission_document_type_edit,
+    permission_document_type_view
 )
 from .settings import setting_zoom_max_level, setting_zoom_min_level
 
@@ -47,6 +48,7 @@ link_document_pages = Link(permissions=[permission_document_view], text=_('Pages
 # Actions
 link_document_clear_transformations = Link(permissions=[permission_transformation_delete], text=_('Clear transformations'), view='documents:document_clear_transformations', args='object.id')
 link_document_delete = Link(permissions=[permission_document_delete], tags='dangerous', text=_('Delete'), view='documents:document_delete', args='object.id')
+link_document_trash = Link(permissions=[permission_document_trash], tags='dangerous', text=_('Move to trash'), view='documents:document_trash', args='object.id')
 link_document_edit = Link(permissions=[permission_document_properties_edit], text=_('Edit properties'), view='documents:document_edit', args='object.id')
 link_document_document_type_edit = Link(permissions=[permission_document_properties_edit], text=_('Change type'), view='documents:document_document_type_edit', args='object.id')
 link_document_download = Link(permissions=[permission_document_download], text=_('Download'), view='documents:document_download', args='object.id')
@@ -54,6 +56,7 @@ link_document_print = Link(permissions=[permission_document_print], text=_('Prin
 link_document_update_page_count = Link(permissions=[permission_document_tools], text=_('Reset page count'), view='documents:document_update_page_count', args='object.pk')
 link_document_restore = Link(permissions=[permission_document_restore], text=_('Restore'), view='documents:document_restore', args='object.pk')
 link_document_multiple_clear_transformations = Link(permissions=[permission_transformation_delete], text=_('Clear transformations'), view='documents:document_multiple_clear_transformations')
+link_document_multiple_trash = Link(permissions=[permission_document_trash], tags='dangerous', text=_('Move to trash'), view='documents:document_multiple_trash')
 link_document_multiple_delete = Link(permissions=[permission_document_delete], tags='dangerous', text=_('Delete'), view='documents:document_multiple_delete')
 link_document_multiple_document_type_edit = Link(permissions=[permission_document_properties_edit], text=_('Change type'), view='documents:document_multiple_document_type_edit')
 link_document_multiple_download = Link(permissions=[permission_document_download], text=_('Download'), view='documents:document_multiple_download')

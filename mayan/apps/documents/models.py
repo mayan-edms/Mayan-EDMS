@@ -28,7 +28,8 @@ from .events import (
     event_document_version_revert
 )
 from .managers import (
-    DocumentManager, DocumentTypeManager, RecentDocumentManager, TrashCanManager
+    DocumentManager, DocumentTypeManager, PassthroughManager,
+    RecentDocumentManager, TrashCanManager
 )
 from .runtime import storage_backend
 from .settings import (
@@ -82,6 +83,8 @@ class Document(models.Model):
     in_trash = models.BooleanField(default=False, editable=False, verbose_name=_('In trash?'))
 
     objects = DocumentManager()
+    passthrough = PassthroughManager()
+    trash = TrashCanManager()
 
     class Meta:
         verbose_name = _('Document')
@@ -502,7 +505,7 @@ class DocumentPage(models.Model):
         return self.document_version.document
 
     def invalidate_cache(self):
-        fs_cleanup(self.get_cache_filename())
+        fs_cleanup(self.cache_filename)
 
     @property
     def uuid(self):

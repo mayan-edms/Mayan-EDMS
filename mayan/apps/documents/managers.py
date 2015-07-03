@@ -78,6 +78,10 @@ class DocumentManager(models.Manager):
         return version
 
 
+class PassthroughManager(models.Manager):
+    pass
+
+
 class TrashCanManager(models.Manager):
     def get_queryset(self):
         return super(TrashCanManager, self).get_queryset().filter(in_trash=True)
@@ -87,9 +91,3 @@ class TrashCanQuerySet(models.QuerySet):
     def delete(self, to_trash=True):
         for instance in self:
             instance.delete(to_trash=to_trash)
-
-        #if to_trash:
-        #    for instance in self:
-        #        instance.delete(to_trash=to_trash)
-        #else:
-        #    super(TrashCanQuerySet, self).delete()

@@ -32,7 +32,8 @@ from .links import (
     link_document_events_view, link_document_multiple_document_type_edit,
     link_document_download, link_document_edit, link_document_list,
     link_document_list_deleted, link_document_list_recent,
-    link_document_multiple_delete, link_document_multiple_clear_transformations,
+    link_document_multiple_delete, link_document_multiple_trash,
+    link_document_multiple_clear_transformations,
     link_document_multiple_download, link_document_multiple_restore,
     link_document_multiple_update_page_count,
     link_document_page_navigation_first, link_document_page_navigation_last,
@@ -42,7 +43,7 @@ from .links import (
     link_document_page_view_reset, link_document_page_zoom_in,
     link_document_page_zoom_out, link_document_pages, link_document_preview,
     link_document_print, link_document_properties, link_document_restore,
-    link_document_type_create, link_document_type_delete,
+    link_document_trash, link_document_type_create, link_document_type_delete,
     link_document_type_edit, link_document_type_filename_create,
     link_document_type_filename_delete, link_document_type_filename_edit,
     link_document_type_filename_list, link_document_type_list,
@@ -58,7 +59,8 @@ from .permissions import (
     permission_document_delete, permission_document_download,
     permission_document_edit, permission_document_new_version,
     permission_document_print, permission_document_properties_edit,
-    permission_document_version_revert, permission_document_view
+    permission_document_trash, permission_document_version_revert,
+    permission_document_view
 )
 from .settings import setting_thumbnail_size
 from .statistics import DocumentStatistics, DocumentUsageStatistics
@@ -84,10 +86,11 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_delete, permission_document_download,
                 permission_document_edit, permission_document_new_version,
                 permission_document_print, permission_document_properties_edit,
-                permission_document_version_revert, permission_document_view,
-                permission_events_view, permission_transformation_create,
-                permission_transformation_delete, permission_transformation_edit,
-                permission_transformation_view,
+                permission_document_trash, permission_document_version_revert,
+                permission_document_view, permission_events_view,
+                permission_transformation_create,
+                permission_transformation_delete,
+                permission_transformation_edit, permission_transformation_view,
             )
         )
 
@@ -102,8 +105,8 @@ class DocumentsApp(MayanAppConfig):
         menu_sidebar.bind_links(links=[link_document_type_filename_create], sources=[DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'])
 
         # Document object links
-        menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_delete, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
-        menu_object.bind_links(links=[link_document_restore], sources=[DeletedDocument])
+        menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_trash, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
+        menu_object.bind_links(links=[link_document_restore, link_document_delete], sources=[DeletedDocument])
 
         # Document facet links
         menu_facet.bind_links(links=[link_acl_list], sources=[Document])
@@ -114,8 +117,8 @@ class DocumentsApp(MayanAppConfig):
 
         # Document actions
         menu_object.bind_links(links=[link_document_version_revert, link_document_version_download], sources=[DocumentVersion])
-        menu_multi_item.bind_links(links=[link_document_multiple_clear_transformations, link_document_multiple_delete, link_document_multiple_download, link_document_multiple_update_page_count, link_document_multiple_document_type_edit], sources=[Document])
-        menu_multi_item.bind_links(links=[link_document_multiple_restore], sources=[DeletedDocument])
+        menu_multi_item.bind_links(links=[link_document_multiple_clear_transformations, link_document_multiple_trash, link_document_multiple_download, link_document_multiple_update_page_count, link_document_multiple_document_type_edit], sources=[Document])
+        menu_multi_item.bind_links(links=[link_document_multiple_restore, link_document_multiple_delete], sources=[DeletedDocument])
 
         # Document pages
         menu_facet.bind_links(links=[link_document_page_rotate_left, link_document_page_rotate_right, link_document_page_zoom_in, link_document_page_zoom_out, link_document_page_view_reset], sources=['documents:document_page_view'])

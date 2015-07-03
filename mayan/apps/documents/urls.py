@@ -11,8 +11,9 @@ from .api_views import (
 )
 from .settings import setting_print_size, setting_display_size
 from .views import (
-    DeletedDocumentListView, DocumentListView, DocumentManyRestoreView,
-    DocumentPageListView, DocumentRestoreView, RecentDocumentListView
+    DeletedDocumentDeleteView, DeletedDocumentListView, DocumentListView,
+    DocumentManyDeleteView, DocumentManyRestoreView, DocumentPageListView,
+    DocumentRestoreView, RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -25,10 +26,12 @@ urlpatterns = patterns(
     url(r'^(?P<document_id>\d+)/properties/$', 'document_properties', name='document_properties'),
     url(r'^(?P<pk>\d+)/restore/$', DocumentRestoreView.as_view(), name='document_restore'),
     url(r'^multiple/restore/$', DocumentManyRestoreView.as_view(), name='document_multiple_restore'),
+    url(r'^(?P<pk>\d+)/delete/$', DeletedDocumentDeleteView.as_view(), name='document_delete'),
+    url(r'^multiple/delete/$', DocumentManyDeleteView.as_view(), name='document_multiple_delete'),
     url(r'^(?P<document_id>\d+)/type/$', 'document_document_type_edit', name='document_document_type_edit'),
     url(r'^multiple/type/$', 'document_multiple_document_type_edit', name='document_multiple_document_type_edit'),
-    url(r'^(?P<document_id>\d+)/delete/$', 'document_delete', name='document_delete'),
-    url(r'^multiple/delete/$', 'document_multiple_delete', name='document_multiple_delete'),
+    url(r'^(?P<document_id>\d+)/trash/$', 'document_trash', name='document_trash'),
+    url(r'^multiple/trash/$', 'document_multiple_trash', name='document_multiple_trash'),
     url(r'^(?P<document_id>\d+)/edit/$', 'document_edit', name='document_edit'),
     url(r'^(?P<document_id>\d+)/print/$', 'document_print', name='document_print'),
     url(r'^(?P<document_id>\d+)/reset_page_count/$', 'document_update_page_count', name='document_update_page_count'),

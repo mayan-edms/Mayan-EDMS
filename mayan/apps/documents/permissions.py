@@ -8,6 +8,7 @@ namespace = PermissionNamespace('documents', _('Documents'))
 
 permission_document_create = namespace.add_permission(name='document_create', label=_('Create documents'))
 permission_document_delete = namespace.add_permission(name='document_delete', label=_('Delete documents'))
+permission_document_trash = namespace.add_permission(name='document_trash', label=_('Trash documents'))
 permission_document_download = namespace.add_permission(name='document_download', label=_('Download documents'))
 permission_document_edit = namespace.add_permission(name='document_edit', label=_('Edit documents'))
 permission_document_new_version = namespace.add_permission(name='document_new_version', label=_('Create new document versions'))
