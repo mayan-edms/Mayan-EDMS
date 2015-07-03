@@ -56,7 +56,7 @@ class DocumentSubmitView(ConfirmView):
 
 class DocumentManySubmitView(DocumentSubmitView):
     def get_context_data(self, **kwargs):
-        context = super(DocumentSubmitView, self).get_context_data(**kwargs)
+        context = super(DocumentManySubmitView, self).get_context_data(**kwargs)
 
         context.update(
             {
