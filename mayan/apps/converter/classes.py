@@ -135,7 +135,7 @@ class ConverterBase(object):
         self.file_object = file_object
         self.image = None
         self.mime_type = mime_type or get_mimetype(file_object=file_object, mimetype_only=False)[0]
-        self.soffice_file_object = None
+        self.soffice_file = None
 
     def to_pdf(self):
         if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
@@ -183,7 +183,10 @@ class ConverterBase(object):
             self.image = transformation.execute_on(self.image)
 
     def get_page_count(self):
-        raise NotImplementedError
+        try:
+            self.soffice_file = self.to_pdf()
+        except InvalidOfficeFormat:
+            pass
 
 
 class BaseTransformation(object):

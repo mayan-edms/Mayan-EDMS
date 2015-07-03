@@ -30,6 +30,16 @@ Image.init()
 logger = logging.getLogger(__name__)
 
 
+class IteratorIO(object):
+    def __init__(self, iterator):
+        self.file_buffer = StringIO()
+
+        for chunk in iterator:
+            self.file_buffer.write(chunk)
+
+        self.file_buffer.seek(0)
+
+
 class Python(ConverterBase):
 
     def convert(self, *args, **kwargs):
@@ -53,19 +63,26 @@ class Python(ConverterBase):
                 fs_cleanup(input_filepath)
 
     def get_page_count(self):
+        super(Python, self).get_page_count()
+
         page_count = 1
 
-        if self.mime_type == 'application/pdf':
+        if self.mime_type == 'application/pdf' or self.soffice_file:
             # If file is a PDF open it with slate to determine the page count
+            if self.soffice_file:
+                file_object = IteratorIO(self.soffice_file).file_buffer
+            else:
+                file_object = self.file_object
+
             try:
-                pages = slate.PDF(self.file_object)
+                pages = slate.PDF(file_object)
             except Exception as exception:
                 logger.error('Slate exception; %s', exception)
                 raise
             else:
                 return len(pages)
             finally:
-                self.file_object.seek(0)
+                file_object.seek(0)
         else:
             try:
                 image = Image.open(self.file_object)
