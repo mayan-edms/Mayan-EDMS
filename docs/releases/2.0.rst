@@ -59,6 +59,8 @@ What's new in Mayan EDMS v2.0
 * Refactor of metadata validators
 * Management command to remove obsolete permissions
 * Simplification of permissions/ACLS and role system
+* Removal of the ImageMagick and GraphicsMagick converter backends
+* Remove support for applying roles to new users automatically
 
 Upgrading from a previous version
 =================================
