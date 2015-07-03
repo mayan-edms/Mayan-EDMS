@@ -11,16 +11,20 @@ from .api_views import (
 )
 from .settings import setting_print_size, setting_display_size
 from .views import (
-    DocumentListView, DocumentPageListView, RecentDocumentListView
+    DeletedDocumentListView, DocumentListView, DocumentManyRestoreView,
+    DocumentPageListView, DocumentRestoreView, RecentDocumentListView
 )
 
 urlpatterns = patterns(
     'documents.views',
     url(r'^list/$', DocumentListView.as_view(), name='document_list'),
     url(r'^list/recent/$', RecentDocumentListView.as_view(), name='document_list_recent'),
+    url(r'^list/deleted/$', DeletedDocumentListView.as_view(), name='document_list_deleted'),
 
     url(r'^(?P<document_id>\d+)/preview/$', 'document_preview', name='document_preview'),
     url(r'^(?P<document_id>\d+)/properties/$', 'document_properties', name='document_properties'),
+    url(r'^(?P<pk>\d+)/restore/$', DocumentRestoreView.as_view(), name='document_restore'),
+    url(r'^multiple/restore/$', DocumentManyRestoreView.as_view(), name='document_multiple_restore'),
     url(r'^(?P<document_id>\d+)/type/$', 'document_document_type_edit', name='document_document_type_edit'),
     url(r'^multiple/type/$', 'document_multiple_document_type_edit', name='document_multiple_document_type_edit'),
     url(r'^(?P<document_id>\d+)/delete/$', 'document_delete', name='document_delete'),

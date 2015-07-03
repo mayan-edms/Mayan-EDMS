@@ -9,10 +9,10 @@ from navigation import Link
 from .permissions import (
     permission_document_delete, permission_document_download,
     permission_document_properties_edit, permission_document_print,
-    permission_document_tools, permission_document_version_revert,
-    permission_document_view, permission_document_type_create,
-    permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view
+    permission_document_restore, permission_document_tools,
+    permission_document_version_revert, permission_document_view,
+    permission_document_type_create, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view
 )
 from .settings import setting_zoom_max_level, setting_zoom_min_level
 
@@ -52,16 +52,19 @@ link_document_document_type_edit = Link(permissions=[permission_document_propert
 link_document_download = Link(permissions=[permission_document_download], text=_('Download'), view='documents:document_download', args='object.id')
 link_document_print = Link(permissions=[permission_document_print], text=_('Print'), view='documents:document_print', args='object.id')
 link_document_update_page_count = Link(permissions=[permission_document_tools], text=_('Reset page count'), view='documents:document_update_page_count', args='object.pk')
-
-# Views
-link_document_list = Link(icon='fa fa-file', text=_('All documents'), view='documents:document_list')
-link_document_list_recent = Link(icon='fa fa-clock-o', text=_('Recent documents'), view='documents:document_list_recent')
+link_document_restore = Link(permissions=[permission_document_restore], text=_('Restore'), view='documents:document_restore', args='object.pk')
 link_document_multiple_clear_transformations = Link(permissions=[permission_transformation_delete], text=_('Clear transformations'), view='documents:document_multiple_clear_transformations')
 link_document_multiple_delete = Link(permissions=[permission_document_delete], tags='dangerous', text=_('Delete'), view='documents:document_multiple_delete')
 link_document_multiple_document_type_edit = Link(permissions=[permission_document_properties_edit], text=_('Change type'), view='documents:document_multiple_document_type_edit')
 link_document_multiple_download = Link(permissions=[permission_document_download], text=_('Download'), view='documents:document_multiple_download')
 link_document_multiple_update_page_count = Link(permissions=[permission_document_tools], text=_('Reset page count'), view='documents:document_multiple_update_page_count')
+link_document_multiple_restore = Link(permissions=[permission_document_restore], text=_('Restore'), view='documents:document_multiple_restore')
 link_document_version_download = Link(args='object.pk', permissions=[permission_document_download], text=_('Download'), view='documents:document_version_download')
+
+# Views
+link_document_list = Link(icon='fa fa-file', text=_('All documents'), view='documents:document_list')
+link_document_list_recent = Link(icon='fa fa-clock-o', text=_('Recent documents'), view='documents:document_list_recent')
+link_document_list_deleted = Link(icon='fa fa-trash', text=_('Deleted documents'), view='documents:document_list_deleted')
 
 # Tools
 link_clear_image_cache = Link(
@@ -97,5 +100,3 @@ link_document_type_filename_edit = Link(permissions=[permission_document_type_ed
 link_document_type_filename_list = Link(permissions=[permission_document_type_view], text=_('Filenames'), view='documents:document_type_filename_list', args='resolved_object.id')
 link_document_type_list = Link(permissions=[permission_document_type_view], text=_('Document types'), view='documents:document_type_list')
 link_document_type_setup = Link(icon='fa fa-file', permissions=[permission_document_type_view], text=_('Document types'), view='documents:document_type_list')
-
-link_tools = Link

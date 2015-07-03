@@ -37,6 +37,9 @@ class DocumentTypeManager(models.Manager):
 
 
 class DocumentManager(models.Manager):
+    def get_queryset(self):
+        return TrashCanQuerySet(self.model, using=self._db).filter(in_trash=False)
+
     def invalidate_cache(self):
         for document in self.model.objects.all():
             document.invalidate_cache()
@@ -73,3 +76,20 @@ class DocumentManager(models.Manager):
         version = document.new_version(file_object=file_object, user=user)
         document.set_document_type(document_type, force=True)
         return version
+
+
+class TrashCanManager(models.Manager):
+    def get_queryset(self):
+        return super(TrashCanManager, self).get_queryset().filter(in_trash=True)
+
+
+class TrashCanQuerySet(models.QuerySet):
+    def delete(self, to_trash=True):
+        for instance in self:
+            instance.delete(to_trash=to_trash)
+
+        #if to_trash:
+        #    for instance in self:
+        #        instance.delete(to_trash=to_trash)
+        #else:
+        #    super(TrashCanQuerySet, self).delete()

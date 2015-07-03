@@ -28,7 +28,7 @@ from .events import (
     event_document_version_revert
 )
 from .managers import (
-    DocumentManager, DocumentTypeManager, RecentDocumentManager
+    DocumentManager, DocumentTypeManager, RecentDocumentManager, TrashCanManager
 )
 from .runtime import storage_backend
 from .settings import (
@@ -79,6 +79,7 @@ class Document(models.Model):
     description = models.TextField(blank=True, null=True, verbose_name=_('Description'))
     date_added = models.DateTimeField(verbose_name=_('Added'), auto_now_add=True)
     language = models.CharField(choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
+    in_trash = models.BooleanField(default=False, editable=False, verbose_name=_('In trash?'))
 
     objects = DocumentManager()
 
@@ -121,9 +122,18 @@ class Document(models.Model):
         RecentDocument.objects.add_document_for_user(user, self)
 
     def delete(self, *args, **kwargs):
-        for version in self.versions.all():
-            version.delete()
-        return super(Document, self).delete(*args, **kwargs)
+        if not self.in_trash and kwargs.get('to_trash', True):
+            self.in_trash = True
+            self.save()
+        else:
+            for version in self.versions.all():
+                version.delete()
+
+            return super(Document, self).delete(*args, **kwargs)
+
+    def restore(self):
+        self.in_trash = False
+        self.save()
 
     @property
     def size(self):
@@ -207,6 +217,13 @@ class Document(models.Model):
     def document_save_to_temp_dir(self, filename, buffer_size=1024 * 1024):
         temporary_path = os.path.join(setting_temporary_directory.value, filename)
         return self.save_to_file(temporary_path, buffer_size)
+
+
+class DeletedDocument(Document):
+    objects = TrashCanManager()
+
+    class Meta:
+        proxy = True
 
 
 @python_2_unicode_compatible

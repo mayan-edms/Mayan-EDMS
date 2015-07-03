@@ -13,6 +13,7 @@ permission_document_edit = namespace.add_permission(name='document_edit', label=
 permission_document_new_version = namespace.add_permission(name='document_new_version', label=_('Create new document versions'))
 permission_document_properties_edit = namespace.add_permission(name='document_properties_edit', label=_('Edit document properties'))
 permission_document_print = namespace.add_permission(name='document_print', label=_('Can print documents'))
+permission_document_restore = namespace.add_permission(name='document_restore', label=_('Restore deleted document'))
 permission_document_tools = namespace.add_permission(name='document_tools', label=_('Execute document modifying tools'))
 permission_document_version_revert = namespace.add_permission(name='document_version_revert', label=_('Revert documents to a previous version'))
 permission_document_view = namespace.add_permission(name='document_view', label=_('View documents'))

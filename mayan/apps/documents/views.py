@@ -16,8 +16,9 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
+from common.mixins import MultipleInstanceActionMixin
 from common.utils import encapsulate, pretty_size
-from common.views import ParentChildListView, SingleObjectListView
+from common.views import ConfirmView, ParentChildListView, SingleObjectListView
 from common.widgets import two_state_template
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
@@ -37,16 +38,16 @@ from .forms import (
 )
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
-    Document, DocumentType, DocumentPage, DocumentTypeFilename,
+    DeletedDocument, Document, DocumentType, DocumentPage, DocumentTypeFilename,
     DocumentVersion, RecentDocument
 )
 from .permissions import (
     permission_document_delete, permission_document_download,
     permission_document_print, permission_document_properties_edit,
-    permission_document_tools, permission_document_type_create,
-    permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_document_version_revert,
-    permission_document_view,
+    permission_document_restore, permission_document_tools,
+    permission_document_type_create, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view,
+    permission_document_version_revert, permission_document_view,
 )
 from .settings import (
     setting_preview_size, setting_recent_count, setting_rotation_step,
@@ -74,6 +75,16 @@ class DocumentListView(SingleObjectListView):
     def get_queryset(self):
         self.queryset = self.get_document_queryset()
         return super(DocumentListView, self).get_queryset()
+
+
+class DeletedDocumentListView(DocumentListView):
+    extra_context = {
+        'hide_link': True,
+        'title': _('Deleted documents'),
+    }
+
+    def get_document_queryset(self):
+        return DeletedDocument.objects.all()
 
 
 class DocumentPageListView(ParentChildListView):
@@ -104,6 +115,36 @@ class RecentDocumentListView(DocumentListView):
 
     def get_document_queryset(self):
         return RecentDocument.objects.get_for_user(self.request.user)
+
+
+class DocumentRestoreView(ConfirmView):
+    extra_context = {
+        'title': _('Restore the selected document?')
+    }
+
+    def object_action(self, request, instance):
+        try:
+            Permission.check_permissions(request.user, [permission_document_restore])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_document_restore, request.user, instance)
+
+        instance.restore()
+        messages.success(request, _('Document: %(document)s restored.') % {
+            'document': instance}
+        )
+
+    def post(self, request, *args, **kwargs):
+        document = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
+        self.object_action(request=request, instance=document)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+
+class DocumentManyRestoreView(MultipleInstanceActionMixin, DocumentRestoreView):
+    extra_context = {
+        'title': _('Restore the selected documents?')
+    }
+    model = DeletedDocument
 
 
 def document_properties(request, document_id):

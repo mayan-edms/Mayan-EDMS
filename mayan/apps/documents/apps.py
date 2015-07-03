@@ -31,26 +31,27 @@ from .links import (
     link_document_delete, link_document_document_type_edit,
     link_document_events_view, link_document_multiple_document_type_edit,
     link_document_download, link_document_edit, link_document_list,
-    link_document_list_recent, link_document_multiple_delete,
-    link_document_multiple_clear_transformations,
-    link_document_multiple_download, link_document_multiple_update_page_count,
+    link_document_list_deleted, link_document_list_recent,
+    link_document_multiple_delete, link_document_multiple_clear_transformations,
+    link_document_multiple_download, link_document_multiple_restore,
+    link_document_multiple_update_page_count,
     link_document_page_navigation_first, link_document_page_navigation_last,
-    link_document_page_navigation_next,
-    link_document_page_navigation_previous, link_document_page_return,
-    link_document_page_rotate_left, link_document_page_rotate_right,
-    link_document_page_view, link_document_page_view_reset,
-    link_document_page_zoom_in, link_document_page_zoom_out,
-    link_document_pages, link_document_preview, link_document_print,
-    link_document_properties, link_document_type_create,
-    link_document_type_delete, link_document_type_edit,
-    link_document_type_filename_create, link_document_type_filename_delete,
-    link_document_type_filename_edit, link_document_type_filename_list,
-    link_document_type_list, link_document_type_setup,
-    link_document_update_page_count, link_document_version_download,
-    link_document_version_list, link_document_version_revert
+    link_document_page_navigation_next, link_document_page_navigation_previous,
+    link_document_page_return, link_document_page_rotate_left,
+    link_document_page_rotate_right, link_document_page_view,
+    link_document_page_view_reset, link_document_page_zoom_in,
+    link_document_page_zoom_out, link_document_pages, link_document_preview,
+    link_document_print, link_document_properties, link_document_restore,
+    link_document_type_create, link_document_type_delete,
+    link_document_type_edit, link_document_type_filename_create,
+    link_document_type_filename_delete, link_document_type_filename_edit,
+    link_document_type_filename_list, link_document_type_list,
+    link_document_type_setup, link_document_update_page_count,
+    link_document_version_download, link_document_version_list,
+    link_document_version_revert
 )
 from .models import (
-    Document, DocumentPage, DocumentType, DocumentTypeFilename,
+    DeletedDocument, Document, DocumentPage, DocumentType, DocumentTypeFilename,
     DocumentVersion
 )
 from .permissions import (
@@ -90,7 +91,7 @@ class DocumentsApp(MayanAppConfig):
             )
         )
 
-        menu_front_page.bind_links(links=[link_document_list_recent, link_document_list])
+        menu_front_page.bind_links(links=[link_document_list_recent, link_document_list, link_document_list_deleted])
         menu_setup.bind_links(links=[link_document_type_setup])
         menu_tools.bind_links(links=[link_clear_image_cache])
 
@@ -102,6 +103,7 @@ class DocumentsApp(MayanAppConfig):
 
         # Document object links
         menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_delete, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
+        menu_object.bind_links(links=[link_document_restore], sources=[DeletedDocument])
 
         # Document facet links
         menu_facet.bind_links(links=[link_acl_list], sources=[Document])
@@ -113,6 +115,7 @@ class DocumentsApp(MayanAppConfig):
         # Document actions
         menu_object.bind_links(links=[link_document_version_revert, link_document_version_download], sources=[DocumentVersion])
         menu_multi_item.bind_links(links=[link_document_multiple_clear_transformations, link_document_multiple_delete, link_document_multiple_download, link_document_multiple_update_page_count, link_document_multiple_document_type_edit], sources=[Document])
+        menu_multi_item.bind_links(links=[link_document_multiple_restore], sources=[DeletedDocument])
 
         # Document pages
         menu_facet.bind_links(links=[link_document_page_rotate_left, link_document_page_rotate_right, link_document_page_zoom_in, link_document_page_zoom_out, link_document_page_view_reset], sources=['documents:document_page_view'])
