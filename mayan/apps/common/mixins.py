@@ -20,6 +20,18 @@ class ExtraContextMixin(object):
         return context
 
 
+class MultipleInstanceActionMixin(object):
+    def post(self, request, *args, **kwargs):
+        for pk in request.GET.get('id_list', '').split(','):
+            document = get_object_or_404(DeletedDocument, pk=pk)
+            try:
+                self.object_action(request=request, instance=document)
+            except PermissionDenied:
+                pass
+
+        return HttpResponseRedirect(self.get_success_url())
+
+
 class ObjectListPermissionFilterMixin(object):
     object_permission = None
 
