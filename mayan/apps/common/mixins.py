@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 
 from acls.models import AccessControlList
 from permissions import Permission
@@ -21,9 +23,11 @@ class ExtraContextMixin(object):
 
 
 class MultipleInstanceActionMixin(object):
+    model = None
+
     def post(self, request, *args, **kwargs):
         for pk in request.GET.get('id_list', '').split(','):
-            document = get_object_or_404(DeletedDocument, pk=pk)
+            document = get_object_or_404(self.model, pk=pk)
             try:
                 self.object_action(request=request, instance=document)
             except PermissionDenied:
