@@ -9,7 +9,6 @@ from common import (
 )
 from rest_api.classes import APIEndPoint
 
-from .handlers import apply_default_roles
 from .models import Role
 from .links import (
     link_permission_grant, link_permission_revoke, link_role_create,
@@ -31,5 +30,3 @@ class PermissionsApp(MayanAppConfig):
         menu_multi_item.bind_links(links=[link_permission_grant, link_permission_revoke], sources=['permissions:role_permissions'])
         menu_secondary.bind_links(links=[link_role_list, link_role_create], sources=[Role, 'permissions:role_create', 'permissions:role_list'])
         menu_setup.bind_links(links=[link_role_list])
-
-        post_save.connect(apply_default_roles, dispatch_uid='apply_default_roles', sender=User)
