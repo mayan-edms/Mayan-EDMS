@@ -200,7 +200,6 @@ class EmptyTrashCanView(ConfirmView):
 class RecentDocumentListView(DocumentListView):
     extra_context = {
         'hide_links': True,
-        'recent_count': setting_recent_count.value,  # TODO: used for something?
         'title': _('Recent documents'),
     }
 
