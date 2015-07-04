@@ -98,34 +98,29 @@ class DeletedDocumentListView(DocumentListView):
         return DeletedDocument.objects.filter(pk__in=queryset.values_list('pk', flat=True))
 
 
-class DocumentPageListView(ParentChildListView):
-    object_permission = permission_document_view
-    parent_queryset = Document.objects.all()
-
-    def get_queryset(self):
-        return self.get_object().pages.all()
-
-    def get_context_data(self, **kwargs):
-        context = super(DocumentPageListView, self).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'title': _('Pages for document: %s') % self.get_object(),
-            }
-        )
-
-        return context
-
-
-class RecentDocumentListView(DocumentListView):
+class DeletedDocumentDeleteView(ConfirmView):
     extra_context = {
-        'hide_links': True,
-        'recent_count': setting_recent_count.value,  # TODO: used for something?
-        'title': _('Recent documents'),
+        'title': _('Delete the selected document?')
     }
 
-    def get_document_queryset(self):
-        return RecentDocument.objects.get_for_user(self.request.user)
+    def object_action(self, request, instance):
+        source_document = get_object_or_404(Document.passthrough, pk=instance.pk)
+
+        try:
+            Permission.check_permissions(request.user, [permission_document_delete])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_document_delete, request.user, source_document)
+
+        instance.delete()
+        messages.success(request, _('Document: %(document)s deleted.') % {
+            'document': instance}
+        )
+
+    def post(self, request, *args, **kwargs):
+        document = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
+        self.object_action(request=request, instance=document)
+
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class DocumentRestoreView(ConfirmView):
@@ -153,6 +148,13 @@ class DocumentRestoreView(ConfirmView):
         return HttpResponseRedirect(self.get_success_url())
 
 
+class DocumentManyDeleteView(MultipleInstanceActionMixin, DeletedDocumentDeleteView):
+    extra_context = {
+        'title': _('Delete the selected documents?')
+    }
+    model = DeletedDocument
+
+
 class DocumentManyRestoreView(MultipleInstanceActionMixin, DocumentRestoreView):
     extra_context = {
         'title': _('Restore the selected documents?')
@@ -160,36 +162,23 @@ class DocumentManyRestoreView(MultipleInstanceActionMixin, DocumentRestoreView):
     model = DeletedDocument
 
 
-class DeletedDocumentDeleteView(ConfirmView):
-    extra_context = {
-        'title': _('Delete the selected document?')
-    }
+class DocumentPageListView(ParentChildListView):
+    object_permission = permission_document_view
+    parent_queryset = Document.objects.all()
 
-    def object_action(self, request, instance):
-        source_document = get_object_or_404(Document.passthrough, pk=instance.pk)
+    def get_queryset(self):
+        return self.get_object().pages.all()
 
-        try:
-            Permission.check_permissions(request.user, [permission_document_delete])
-        except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_delete, request.user, source_document)
+    def get_context_data(self, **kwargs):
+        context = super(DocumentPageListView, self).get_context_data(**kwargs)
 
-        instance.delete()
-        messages.success(request, _('Document: %(document)s deleted.') % {
-            'document': instance}
+        context.update(
+            {
+                'title': _('Pages for document: %s') % self.get_object(),
+            }
         )
 
-    def post(self, request, *args, **kwargs):
-        document = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
-        self.object_action(request=request, instance=document)
-
-        return HttpResponseRedirect(self.get_success_url())
-
-
-class DocumentManyDeleteView(MultipleInstanceActionMixin, DeletedDocumentDeleteView):
-    extra_context = {
-        'title': _('Delete the selected documents?')
-    }
-    model = DeletedDocument
+        return context
 
 
 class EmptyTrashCanView(ConfirmView):
@@ -206,6 +195,17 @@ class EmptyTrashCanView(ConfirmView):
         messages.success(request, _('Trash can emptied successfully'))
 
         return HttpResponseRedirect(self.get_success_url())
+
+
+class RecentDocumentListView(DocumentListView):
+    extra_context = {
+        'hide_links': True,
+        'recent_count': setting_recent_count.value,  # TODO: used for something?
+        'title': _('Recent documents'),
+    }
+
+    def get_document_queryset(self):
+        return RecentDocument.objects.get_for_user(self.request.user)
 
 
 def document_properties(request, document_id):

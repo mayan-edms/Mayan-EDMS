@@ -10,6 +10,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
 from common.settings import setting_temporary_directory
@@ -81,6 +82,7 @@ class Document(models.Model):
     date_added = models.DateTimeField(verbose_name=_('Added'), auto_now_add=True)
     language = models.CharField(choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
     in_trash = models.BooleanField(default=False, editable=False, verbose_name=_('In trash?'))
+    deleted_date_time = models.DateTimeField(blank=True, editable=True, verbose_name=_('Date and time deleted'))
 
     objects = DocumentManager()
     passthrough = PassthroughManager()
@@ -127,6 +129,7 @@ class Document(models.Model):
     def delete(self, *args, **kwargs):
         if not self.in_trash and kwargs.get('to_trash', True):
             self.in_trash = True
+            self.deleted_date_time = now()
             self.save()
         else:
             for version in self.versions.all():
