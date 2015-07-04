@@ -13,7 +13,7 @@ from .permissions import (
     permission_document_version_revert, permission_document_view,
     permission_document_trash, permission_document_type_create,
     permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view
+    permission_document_type_view, permission_empty_trash
 )
 from .settings import setting_zoom_max_level, setting_zoom_min_level
 
@@ -76,6 +76,7 @@ link_clear_image_cache = Link(
     permissions=[permission_document_tools], text=_('Clear image cache'),
     view='documents:document_clear_image_cache'
 )
+link_trash_can_empty = Link(permissions=[permission_empty_trash], text=_('Empty trash can'), view='documents:trash_can_empty')
 
 # Document pages
 link_document_page_navigation_first = Link(conditional_disable=is_first_page, icon='fa fa-step-backward', keep_query=True, permissions=[permission_document_view], text=_('First page'), view='documents:document_page_navigation_first', args='resolved_object.pk')

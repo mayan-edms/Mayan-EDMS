@@ -49,7 +49,7 @@ from .links import (
     link_document_type_filename_list, link_document_type_list,
     link_document_type_setup, link_document_update_page_count,
     link_document_version_download, link_document_version_list,
-    link_document_version_revert
+    link_document_version_revert, link_trash_can_empty
 )
 from .models import (
     DeletedDocument, Document, DocumentPage, DocumentType, DocumentTypeFilename,
@@ -94,6 +94,10 @@ class DocumentsApp(MayanAppConfig):
             )
         )
 
+        SourceColumn(source=Document, label=_('Thumbnail'), attribute=encapsulate(lambda document: document_thumbnail(document, gallery_name='documents:document_list', title=getattr(document, 'label', None), size=setting_thumbnail_size.value)))
+        SourceColumn(source=Document, label=_('Type'), attribute='document_type')
+        SourceColumn(source=DeletedDocument, label=_('Type'), attribute='document_type')
+
         menu_front_page.bind_links(links=[link_document_list_recent, link_document_list, link_document_list_deleted])
         menu_setup.bind_links(links=[link_document_type_setup])
         menu_tools.bind_links(links=[link_clear_image_cache])
@@ -103,6 +107,8 @@ class DocumentsApp(MayanAppConfig):
         menu_object.bind_links(links=[link_document_type_filename_edit, link_document_type_filename_delete], sources=[DocumentTypeFilename])
         menu_secondary.bind_links(links=[link_document_type_list, link_document_type_create], sources=[DocumentType, 'documents:document_type_create', 'documents:document_type_list'])
         menu_sidebar.bind_links(links=[link_document_type_filename_create], sources=[DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'])
+
+        menu_sidebar.bind_links(links=[link_trash_can_empty], sources=['documents:document_list_deleted', 'documents:trash_can_empty'])
 
         # Document object links
         menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_trash, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
@@ -133,6 +139,3 @@ class DocumentsApp(MayanAppConfig):
         post_initial_setup.connect(create_default_document_type, dispatch_uid='create_default_document_type')
 
         registry.register(Document)
-
-        SourceColumn(source=Document, label=_('Thumbnail'), attribute=encapsulate(lambda document: document_thumbnail(document, gallery_name='documents:document_list', title=getattr(document, 'label', None), size=setting_thumbnail_size.value)))
-        SourceColumn(source=Document, label=_('type'), attribute='document_type')

@@ -7,7 +7,7 @@ import urlparse
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import resolve, reverse
+from django.core.urlresolvers import resolve, reverse, reverse_lazy
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -48,7 +48,7 @@ from .permissions import (
     permission_document_trash, permission_document_type_create,
     permission_document_type_delete, permission_document_type_edit,
     permission_document_type_view, permission_document_version_revert,
-    permission_document_view,
+    permission_document_view, permission_empty_trash
 )
 from .settings import (
     setting_preview_size, setting_recent_count, setting_rotation_step,
@@ -190,6 +190,22 @@ class DocumentManyDeleteView(MultipleInstanceActionMixin, DeletedDocumentDeleteV
         'title': _('Delete the selected documents?')
     }
     model = DeletedDocument
+
+
+class EmptyTrashCanView(ConfirmView):
+    extra_context = {
+        'title': _('Empty trash can?')
+    }
+    view_permission = permission_empty_trash
+    action_cancel_redirect = post_action_redirect = reverse_lazy('documents:document_list_deleted')
+
+    def post(self, request, *args, **kwargs):
+        for deleted_document in DeletedDocument.objects.all():
+            deleted_document.delete()
+
+        messages.success(request, _('Trash can emptied successfully'))
+
+        return HttpResponseRedirect(self.get_success_url())
 
 
 def document_properties(request, document_id):

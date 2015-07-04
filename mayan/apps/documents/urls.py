@@ -13,7 +13,7 @@ from .settings import setting_print_size, setting_display_size
 from .views import (
     DeletedDocumentDeleteView, DeletedDocumentListView, DocumentListView,
     DocumentManyDeleteView, DocumentManyRestoreView, DocumentPageListView,
-    DocumentRestoreView, RecentDocumentListView
+    DocumentRestoreView, EmptyTrashCanView, RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -52,6 +52,7 @@ urlpatterns = patterns(
 
     url(r'^multiple/clear_transformations/$', 'document_multiple_clear_transformations', name='document_multiple_clear_transformations'),
     url(r'^maintenance/clear_image_cache/$', 'document_clear_image_cache', name='document_clear_image_cache'),
+    url(r'^trash_can/empty/$', EmptyTrashCanView.as_view(), name='trash_can_empty'),
 
     url(r'^page/(?P<document_page_id>\d+)/$', 'document_page_view', name='document_page_view'),
     url(r'^page/(?P<document_page_id>\d+)/navigation/next/$', 'document_page_navigation_next', name='document_page_navigation_next'),
