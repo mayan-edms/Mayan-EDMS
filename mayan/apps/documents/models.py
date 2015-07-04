@@ -13,6 +13,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
+from common.literals import TIME_DELTA_UNIT_CHOICES
 from common.settings import setting_temporary_directory
 from common.utils import fs_cleanup
 from converter import (
@@ -28,6 +29,7 @@ from .events import (
     event_document_create, event_document_new_version,
     event_document_version_revert
 )
+from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
     DocumentManager, DocumentTypeManager, PassthroughManager,
     RecentDocumentManager, TrashCanManager
@@ -53,7 +55,11 @@ class DocumentType(models.Model):
     Define document types or classes to which a specific set of
     properties can be attached
     """
-    name = models.CharField(max_length=32, verbose_name=_('Name'), unique=True)
+    name = models.CharField(max_length=32, unique=True, verbose_name=_('Name'))
+    trash_time_period = models.PositiveIntegerField(blank=True, help_text=_('Amount of time after which documents of this type will be moved to the trash.'), null=True, verbose_name=_('Trash time period'))
+    trash_time_unit = models.CharField(blank=True, choices=TIME_DELTA_UNIT_CHOICES, null=True, max_length=8, verbose_name=_('Trash time unit'))
+    delete_time_period = models.PositiveIntegerField(default=DEFAULT_DELETE_PERIOD, help_text=_('Amount of time after which documents of this type in the trash will be deleted.'), verbose_name=_('Delete time period'))
+    delete_time_unit = models.CharField(choices=TIME_DELTA_UNIT_CHOICES, default=DEFAULT_DELETE_TIME_UNIT, max_length=8, verbose_name=_('Delete time unit'))
 
     objects = DocumentTypeManager()
 

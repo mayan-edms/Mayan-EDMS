@@ -61,6 +61,8 @@ What's new in Mayan EDMS v2.0
 * Simplification of permissions/ACLS and role system
 * Removal of the ImageMagick and GraphicsMagick converter backends
 * Remove support for applying roles to new users automatically
+* Trash can feature
+* Retention policies, auto move to trash, auto delete from trash
 
 Upgrading from a previous version
 =================================

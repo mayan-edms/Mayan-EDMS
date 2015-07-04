@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+from datetime import timedelta
+
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import registry
@@ -21,6 +23,7 @@ from converter.permissions import (
     permission_transformation_view,
 )
 from events.permissions import permission_events_view
+from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 from statistics.classes import StatisticNamespace
@@ -51,6 +54,7 @@ from .links import (
     link_document_version_download, link_document_version_list,
     link_document_version_revert, link_trash_can_empty
 )
+from .literals import CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL
 from .models import (
     DeletedDocument, Document, DocumentPage, DocumentType, DocumentTypeFilename,
     DocumentVersion
@@ -98,6 +102,22 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(source=Document, label=_('Type'), attribute='document_type')
         SourceColumn(source=DeletedDocument, label=_('Type'), attribute='document_type')
         SourceColumn(source=DeletedDocument, label=_('Date time trashed'), attribute='deleted_date_time')
+
+        app.conf.CELERYBEAT_SCHEDULE.update({
+            'task_check_trash_periods': {
+                'task': 'documents.tasks.task_check_trash_periods',
+                'schedule': timedelta(seconds=CHECK_TRASH_PERIOD_INTERVAL),
+                'options': {'queue': 'documents'}
+            },
+        })
+
+        app.conf.CELERYBEAT_SCHEDULE.update({
+            'task_check_delete_periods': {
+                'task': 'documents.tasks.task_check_delete_periods',
+                'schedule': timedelta(seconds=CHECK_DELETE_PERIOD_INTERVAL),
+                'options': {'queue': 'documents'}
+            },
+        })
 
         menu_front_page.bind_links(links=[link_document_list_recent, link_document_list, link_document_list_deleted])
         menu_setup.bind_links(links=[link_document_type_setup])
