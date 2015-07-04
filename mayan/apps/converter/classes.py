@@ -10,9 +10,9 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-from PIL import Image
 
-from django.utils.translation import ugettext_lazy as _
+from PIL import Image
+from django.utils.translation import string_concat, ugettext_lazy as _
 
 from common.settings import setting_temporary_directory
 from common.utils import fs_cleanup
@@ -201,11 +201,15 @@ class BaseTransformation(object):
 
     @classmethod
     def get_transformation_choices(cls):
-        return [(name, klass.label) for name, klass in cls._registry.items()]
+        return [(name, klass.get_label()) for name, klass in cls._registry.items()]
 
     @classmethod
     def get(cls, name):
         return cls._registry[name]
+
+    @classmethod
+    def get_label(cls):
+        return string_concat(cls.label, ': ', ', '.join(cls.arguments))
 
     def __init__(self, **kwargs):
         for argument_name in self.arguments:
@@ -219,7 +223,7 @@ class BaseTransformation(object):
 class TransformationResize(BaseTransformation):
     name = 'resize'
     arguments = ('width', 'height')
-    label = _('Resize <width> <height>')
+    label = _('Resize')
 
     def execute_on(self, *args, **kwargs):
         super(TransformationResize, self).execute_on(*args, **kwargs)
@@ -257,7 +261,7 @@ class TransformationResize(BaseTransformation):
 class TransformationRotate(BaseTransformation):
     name = 'rotate'
     arguments = ('degrees',)
-    label = _('Rotate <degrees>')
+    label = _('Rotate')
 
     def execute_on(self, *args, **kwargs):
         super(TransformationRotate, self).execute_on(*args, **kwargs)
@@ -268,7 +272,7 @@ class TransformationRotate(BaseTransformation):
 class TransformationZoom(BaseTransformation):
     name = 'zoom'
     arguments = ('percent',)
-    label = _('Zoom <percent>')
+    label = _('Zoom')
 
     def execute_on(self, *args, **kwargs):
         super(TransformationZoom, self).execute_on(*args, **kwargs)
