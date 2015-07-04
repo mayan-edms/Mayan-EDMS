@@ -11,6 +11,7 @@ from django.core.urlresolvers import reverse
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from django.utils import timezone, translation
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView, TemplateView
@@ -548,8 +549,11 @@ def current_user_locale_profile_edit(request):
         if form.is_valid():
             form.save()
 
+            timezone.activate(form.cleaned_data['timezone'])
+            translation.activate(form.cleaned_data['language'])
+
             if hasattr(request, 'session'):
-                request.session['django_language'] = form.cleaned_data['language']
+                request.session[translation.LANGUAGE_SESSION_KEY] = form.cleaned_data['language']
                 request.session['django_timezone'] = form.cleaned_data['timezone']
             else:
                 request.set_cookie(settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language'])

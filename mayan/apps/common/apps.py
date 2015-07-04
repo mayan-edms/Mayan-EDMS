@@ -61,6 +61,5 @@ class CommonApp(MayanAppConfig):
             ],
             sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'authentication:password_change_view', 'common:setup_list', 'common:tools_list']
         )
-
-        user_logged_in.connect(user_locale_profile_session_config, dispatch_uid='user_locale_profile_session_config', sender=settings.AUTH_USER_MODEL)
+        user_logged_in.connect(user_locale_profile_session_config, dispatch_uid='user_locale_profile_session_config')
         post_save.connect(user_locale_profile_create, dispatch_uid='user_locale_profile_create', sender=settings.AUTH_USER_MODEL)
