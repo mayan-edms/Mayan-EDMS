@@ -75,10 +75,11 @@ class ObjectPermissionCheckMixin(object):
 
 class RedirectionMixin(object):
     post_action_redirect = None
+    action_cancel_redirect = None
 
     def dispatch(self, request, *args, **kwargs):
         self.next_url = self.request.POST.get('next', self.request.GET.get('next', self.post_action_redirect if self.post_action_redirect else self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', self.action_cancel_redirect if self.action_cancel_redirect else self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
         return super(RedirectionMixin, self).dispatch(request, *args, **kwargs)
 
