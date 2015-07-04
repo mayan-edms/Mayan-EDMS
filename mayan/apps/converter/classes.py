@@ -219,7 +219,7 @@ class BaseTransformation(object):
 class TransformationResize(BaseTransformation):
     name = 'resize'
     arguments = ('width', 'height')
-    label = _('Resize <width, height>')
+    label = _('Resize <width> <height>')
 
     def execute_on(self, *args, **kwargs):
         super(TransformationResize, self).execute_on(*args, **kwargs)
