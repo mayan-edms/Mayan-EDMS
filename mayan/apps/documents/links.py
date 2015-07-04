@@ -67,7 +67,7 @@ link_document_version_download = Link(args='object.pk', permissions=[permission_
 # Views
 link_document_list = Link(icon='fa fa-file', text=_('All documents'), view='documents:document_list')
 link_document_list_recent = Link(icon='fa fa-clock-o', text=_('Recent documents'), view='documents:document_list_recent')
-link_document_list_deleted = Link(icon='fa fa-trash', text=_('Deleted documents'), view='documents:document_list_deleted')
+link_document_list_deleted = Link(icon='fa fa-trash', text=_('Trash'), view='documents:document_list_deleted')
 
 # Tools
 link_clear_image_cache = Link(
@@ -76,7 +76,7 @@ link_clear_image_cache = Link(
     permissions=[permission_document_tools], text=_('Clear image cache'),
     view='documents:document_clear_image_cache'
 )
-link_trash_can_empty = Link(permissions=[permission_empty_trash], text=_('Empty trash can'), view='documents:trash_can_empty')
+link_trash_can_empty = Link(permissions=[permission_empty_trash], text=_('Empty trash'), view='documents:trash_can_empty')
 
 # Document pages
 link_document_page_navigation_first = Link(conditional_disable=is_first_page, icon='fa fa-step-backward', keep_query=True, permissions=[permission_document_view], text=_('First page'), view='documents:document_page_navigation_first', args='resolved_object.pk')

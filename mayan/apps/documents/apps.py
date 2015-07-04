@@ -97,7 +97,7 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(source=Document, label=_('Thumbnail'), attribute=encapsulate(lambda document: document_thumbnail(document, gallery_name='documents:document_list', title=getattr(document, 'label', None), size=setting_thumbnail_size.value)))
         SourceColumn(source=Document, label=_('Type'), attribute='document_type')
         SourceColumn(source=DeletedDocument, label=_('Type'), attribute='document_type')
-        SourceColumn(source=DeletedDocument, label=_('Date time deleted'), attribute='deleted_date_time')
+        SourceColumn(source=DeletedDocument, label=_('Date time trashed'), attribute='deleted_date_time')
 
         menu_front_page.bind_links(links=[link_document_list_recent, link_document_list, link_document_list_deleted])
         menu_setup.bind_links(links=[link_document_type_setup])

@@ -82,7 +82,7 @@ class Document(models.Model):
     date_added = models.DateTimeField(verbose_name=_('Added'), auto_now_add=True)
     language = models.CharField(choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
     in_trash = models.BooleanField(default=False, editable=False, verbose_name=_('In trash?'))
-    deleted_date_time = models.DateTimeField(blank=True, editable=True, verbose_name=_('Date and time deleted'))
+    deleted_date_time = models.DateTimeField(blank=True, editable=True, verbose_name=_('Date and time trashed'))
 
     objects = DocumentManager()
     passthrough = PassthroughManager()

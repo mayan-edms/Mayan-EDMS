@@ -84,7 +84,7 @@ class DeletedDocumentListView(DocumentListView):
 
     extra_context = {
         'hide_link': True,
-        'title': _('Deleted documents'),
+        'title': _('Documents in trash'),
     }
 
     def get_document_queryset(self):
@@ -183,7 +183,7 @@ class DocumentPageListView(ParentChildListView):
 
 class EmptyTrashCanView(ConfirmView):
     extra_context = {
-        'title': _('Empty trash can?')
+        'title': _('Empty trash?')
     }
     view_permission = permission_empty_trash
     action_cancel_redirect = post_action_redirect = reverse_lazy('documents:document_list_deleted')
@@ -192,7 +192,7 @@ class EmptyTrashCanView(ConfirmView):
         for deleted_document in DeletedDocument.objects.all():
             deleted_document.delete()
 
-        messages.success(request, _('Trash can emptied successfully'))
+        messages.success(request, _('Trash emptied successfully'))
 
         return HttpResponseRedirect(self.get_success_url())
 
