@@ -30,6 +30,7 @@ class DocumentCheckout(models.Model):
 
     block_new_version = models.BooleanField(default=True, verbose_name=_('Block new version upload'), help_text=_('Do not allow new version of this document to be uploaded.'))
 
+    # TODO: add more blocking
     # block_metadata
     # block_editing
     # block tag add/remove
