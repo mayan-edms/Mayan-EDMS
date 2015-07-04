@@ -237,7 +237,7 @@ html_sidebars = {
     ]
 }
 html_theme_options = {
-    'description': 'Free Open Source Electronic Document Management System',
+    'description': mayan.__description__,
     'github_user': 'mayan-edms',
     'github_repo': 'mayan-edms',
     'travis_button': True,
