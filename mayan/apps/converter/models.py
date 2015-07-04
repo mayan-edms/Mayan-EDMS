@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from ast import literal_eval
 import logging
 
 from django.contrib.contenttypes import generic
@@ -12,19 +11,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from .classes import BaseTransformation
 from .managers import TransformationManager
+from .validators import YAMLValidator
 
 logger = logging.getLogger(__name__)
-
-
-def argument_validator(value):
-    """
-    Validates that the input evaluates correctly.
-    """
-    value = value.strip()
-    try:
-        literal_eval(value)
-    except (ValueError, SyntaxError):
-        raise ValidationError(_('Enter a valid value.'), code='invalid')
 
 
 @python_2_unicode_compatible
@@ -38,9 +27,9 @@ class Transformation(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
-    order = models.PositiveIntegerField(default=0, blank=True, help_text=_('Order in which the transformations will be executed.'), null=True, verbose_name=_('Order'), db_index=True)
+    order = models.PositiveIntegerField(blank=True, db_index=True, default=0, help_text=_('Order in which the transformations will be executed.'), null=True, verbose_name=_('Order'))
     name = models.CharField(choices=BaseTransformation.get_transformation_choices(), max_length=128, verbose_name=_('Name'))
-    arguments = models.TextField(blank=True, help_text=_('Enter the arguments for the transformation as a Python dictionary. ie: {"degrees": 180}'), verbose_name=_('Arguments'), validators=[argument_validator])
+    arguments = models.TextField(blank=True, help_text=_('Enter the arguments for the transformation as a YAML dictionary. ie: {"degrees": 180}'), validators=[YAMLValidator()], verbose_name=_('Arguments'))
 
     objects = TransformationManager()
 

@@ -19,7 +19,7 @@ class Migration(migrations.Migration):
                 ('object_id', models.PositiveIntegerField()),
                 ('order', models.PositiveIntegerField(default=0, null=True, verbose_name='Order', db_index=True, blank=True)),
                 ('transformation', models.CharField(max_length=128, verbose_name='Transformation', choices=[('rotate', 'Rotate'), ('zoom', 'Zoom'), ('resize', 'Resize')])),
-                ('arguments', models.TextField(blank=True, null=True, verbose_name='Arguments', validators=[converter.models.argument_validator])),
+                ('arguments', models.TextField(blank=True, null=True, verbose_name='Arguments', validators=[converter.validators.YAMLValidator])),
                 ('content_type', models.ForeignKey(to='contenttypes.ContentType')),
             ],
             options={

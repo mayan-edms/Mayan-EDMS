@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 
-from ast import literal_eval
 import logging
+
+import yaml
 
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
@@ -60,8 +61,10 @@ class TransformationManager(models.Manager):
                     # Non existant transformation, but we don't raise an error
                     logger.error('Non existant transformation: %s for %s', transformation.name, obj)
                 else:
-                    # TODO: what to do if literal_eval fails?
-                    result.append(transformation_class(**literal_eval(transformation.arguments)))
+                    try:
+                        result.append(transformation_class(**yaml.safe_load(transformation.arguments)))
+                    except Exception as exception:
+                        logger.error('Error while parsing transformation "%s", arguments "%s", for object "%s"; %s', transformation, transformation.arguments, obj, exception)
 
             return result
         else:
