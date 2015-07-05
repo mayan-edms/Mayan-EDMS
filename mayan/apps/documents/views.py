@@ -75,7 +75,7 @@ class DocumentListView(SingleObjectListView):
         return Document.objects.all()
 
     def get_queryset(self):
-        self.queryset = self.get_document_queryset()
+        self.queryset = self.get_document_queryset().filter(is_stub=False)
         return super(DocumentListView, self).get_queryset()
 
 

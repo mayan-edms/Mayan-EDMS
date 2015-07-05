@@ -10,11 +10,14 @@ from common.signals import post_initial_setup
 from common.utils import encapsulate
 from converter.links import link_transformation_list
 from documents.models import Document
+from documents.signals import post_version_upload
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .classes import StagingFile
-from .handlers import create_default_document_source
+from .handlers import (
+    copy_transformations_to_version, create_default_document_source
+)
 from .links import (
     link_document_create_multiple, link_document_create_siblings,
     link_setup_sources, link_setup_source_create_imap_email,
@@ -50,3 +53,4 @@ class SourcesApp(MayanAppConfig):
         menu_sidebar.bind_links(links=[link_upload_version], sources=['documents:document_version_list', 'documents:upload_version', 'documents:document_version_revert'])
 
         post_initial_setup.connect(create_default_document_source, dispatch_uid='create_default_document_source')
+        post_version_upload.connect(copy_transformations_to_version, dispatch_uid='copy_transformations_to_version')

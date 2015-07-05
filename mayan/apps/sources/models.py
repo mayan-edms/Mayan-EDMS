@@ -15,6 +15,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
+from common.compressed_files import CompressedFile, NotACompressedFile
 from converter.literals import DIMENSION_SEPARATOR
 from converter.models import Transformation
 from djcelery.models import PeriodicTask, IntervalSchedule
@@ -50,22 +51,35 @@ class Source(models.Model):
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.title])
 
-    def upload_document(self, file_object, label, description=None, document_type=None, expand=False, language=None, metadata_dict_list=None, user=None):
-        new_versions = Document.objects.new_document(
-            description=description,
-            document_type=document_type or self.document_type,
-            expand=expand,
-            file_object=file_object,
-            label=label,
-            language=language,
-            user=user
+    def _upload_document(self, document_type, file_object, label, language, user, description=None, metadata_dict_list=None):
+        document = document_type.new_document(
+            file_object=file_object, label=label, description=description,
+            language=language, _user=user
         )
 
-        for new_version in new_versions:
-            Transformation.objects.copy(source=Source.objects.get_subclass(pk=self.pk), targets=new_version.pages.all())
+        Transformation.objects.get_for_model(document).delete()
+        Transformation.objects.copy(source=Source.objects.get_subclass(pk=self.pk), targets=Document.objects.filter(pk=document.pk))
 
-            if metadata_dict_list:
-                save_metadata_list(metadata_dict_list, new_version.document, create=True)
+        if metadata_dict_list:
+            save_metadata_list(metadata_dict_list, document, create=True)
+
+    # TODO: Rename this method to 'handle_upload' or similar
+    def upload_document(self, file_object, label, description=None, document_type=None, expand=False, language=None, metadata_dict_list=None, user=None):
+        if not document_type:
+            document_type = self.document_type
+
+        if expand:
+            try:
+                compressed_file = CompressedFile(file_object)
+                for compressed_file_child in compressed_file.children():
+                    self._upload_document(document_type=document_type, file_object=compressed_file_child, description=description, label=unicode(compressed_file_child), language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
+                    compressed_file_child.close()
+
+            except NotACompressedFile:
+                logging.debug('Exception: NotACompressedFile')
+                self._upload_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
+        else:
+            self._upload_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
 
     def get_upload_file_object(self, form_data):
         pass

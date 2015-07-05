@@ -13,7 +13,10 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
+from celery.execute import send_task
+
 from common.literals import TIME_DELTA_UNIT_CHOICES
+from common.models import SharedUploadedFile
 from common.settings import setting_temporary_directory
 from common.utils import fs_cleanup
 from converter import (
@@ -39,7 +42,9 @@ from .settings import (
     setting_cache_path, setting_display_size, setting_language,
     setting_language_choices, setting_zoom_max_level, setting_zoom_min_level
 )
-from .signals import post_version_upload, post_document_type_change
+from .signals import (
+    post_document_created, post_document_type_change, post_version_upload
+)
 
 HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
 logger = logging.getLogger(__name__)
@@ -69,6 +74,28 @@ class DocumentType(models.Model):
     def natural_key(self):
         return (self.name,)
 
+    def new_document(self, file_object, label=None, description=None, language=None, _user=None):
+        if not language:
+            language = setting_language.value
+
+        if not label:
+            label = unicode(file_object)
+
+        document = self.documents.create(description=description, language=language, label=label)
+        document.save(_user=_user)
+
+        document.new_version(file_object=file_object, _user=_user)
+
+        return document
+
+    @transaction.atomic
+    def upload_single_document(self, document_type, file_object, label=None, description=None, language=None, user=None):
+        document = self.model(description=description, document_type=document_type, language=language, label=label or unicode(file_object))
+        document.save(user=user)
+        version = document.new_version(file_object=file_object, user=user)
+        document.set_document_type(document_type, force=True)
+        return version
+
     class Meta:
         verbose_name = _('Document type')
         verbose_name_plural = _('Documents types')
@@ -88,7 +115,8 @@ class Document(models.Model):
     date_added = models.DateTimeField(verbose_name=_('Added'), auto_now_add=True)
     language = models.CharField(choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
     in_trash = models.BooleanField(default=False, editable=False, verbose_name=_('In trash?'))
-    deleted_date_time = models.DateTimeField(blank=True, editable=True, verbose_name=_('Date and time trashed'))
+    deleted_date_time = models.DateTimeField(blank=True, editable=True, null=True, verbose_name=_('Date and time trashed'))
+    is_stub = models.BooleanField(default=True, editable=False, verbose_name=_('Is stub?'))
 
     objects = DocumentManager()
     passthrough = PassthroughManager()
@@ -118,7 +146,7 @@ class Document(models.Model):
         return reverse('documents:document_preview', args=[self.pk])
 
     def save(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
+        user = kwargs.pop('_user', None)
         new_document = not self.pk
         super(Document, self).save(*args, **kwargs)
 
@@ -151,20 +179,24 @@ class Document(models.Model):
     def size(self):
         return self.latest_version.size
 
-    def new_version(self, file_object, user=None, comment=None):
-        logger.info('Creating a new document version for document: %s', self)
+    def new_version(self, file_object, comment=None, _user=None):
+        from .tasks import task_upload_new_version
 
-        new_version = DocumentVersion.objects.create(
-            document=self,
-            file=file_object,
-            comment=comment or '',
-        )
+        logger.info('Queueing creation of a new document version for document: %s', self)
 
-        logger.info('New document version created for document: %s', self)
+        shared_uploaded_file = SharedUploadedFile.objects.create(file=file_object)
 
-        event_document_new_version.commit(actor=user, target=self)
+        if _user:
+            user_id = _user.pk
+        else:
+            user_id = None
 
-        return new_version
+        task_upload_new_version.apply_async(kwargs=dict(
+            shared_uploaded_file_id=shared_uploaded_file.pk,
+            document_id=self.pk, user_id=user_id,
+        ), queue='uploads')
+
+        logger.info('New document version queued for document: %s', self)
 
     # Proxy methods
     def open(self, *args, **kwargs):
@@ -277,22 +309,41 @@ class DocumentVersion(models.Model):
         Overloaded save method that updates the document version's checksum,
         mimetype, and page count when created
         """
+        user = kwargs.pop('_user', None)
+
         new_document_version = not self.pk
 
-        # Only do this for new documents
-        super(DocumentVersion, self).save(*args, **kwargs)
-
-        for key in sorted(DocumentVersion._post_save_hooks):
-            DocumentVersion._post_save_hooks[key](self)
-
         if new_document_version:
-            # Only do this for new documents
-            self.update_checksum(save=False)
-            self.update_mimetype(save=False)
-            self.save()
-            self.update_page_count(save=False)
+            logger.info('Creating new version for document: %s', self.document)
 
-            post_version_upload.send(sender=self.__class__, instance=self)
+        try:
+            with transaction.atomic():
+                super(DocumentVersion, self).save(*args, **kwargs)
+
+                for key in sorted(DocumentVersion._post_save_hooks):
+                    DocumentVersion._post_save_hooks[key](self)
+
+                if new_document_version:
+                    # Only do this for new documents
+                    self.update_checksum(save=False)
+                    self.update_mimetype(save=False)
+                    self.save()
+                    self.update_page_count(save=False)
+
+                    logger.info('New document "%s" version created for document: %s', self, self.document)
+
+                    self.document.is_stub = False
+                    self.document.save()
+        except Exception as exception:
+            logger.error('Error creating new document version for document "%s"; %s', self.document, exception)
+            raise
+        else:
+            if new_document_version:
+                event_document_new_version.commit(actor=user, target=self.document)
+                post_version_upload.send(sender=self.__class__, instance=self)
+
+                if tuple(self.document.versions.all()) == (self,):
+                    post_document_created.send(sender=self.document.__class__, instance=self.document)
 
     def invalidate_cache(self):
         for page in self.pages.all():

@@ -21,9 +21,5 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-    ]
-
-
-    operations = [
         migrations.RunPython(move_content_from_documents_to_ocr_app),
     ]

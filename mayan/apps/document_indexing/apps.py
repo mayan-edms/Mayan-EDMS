@@ -8,12 +8,13 @@ from common import (
     menu_setup, menu_tools
 )
 from documents.models import Document
+from documents.signals import post_document_created
 from metadata.models import DocumentMetadata
 from rest_api.classes import APIEndPoint
 
 from .handlers import (
-    document_index_delete, document_metadata_index_update,
-    document_metadata_index_post_delete
+    document_created_index_update, document_index_delete,
+    document_metadata_index_update, document_metadata_index_post_delete
 )
 from .links import (
     link_document_index_list, link_index_main_menu, link_index_setup,
@@ -45,6 +46,7 @@ class DocumentIndexingApp(MayanAppConfig):
         menu_setup.bind_links(links=[link_index_setup])
         menu_tools.bind_links(links=[link_rebuild_index_instances])
 
+        post_document_created.connect(document_created_index_update, dispatch_uid='document_created_index_update', sender=Document)
         post_save.connect(document_metadata_index_update, dispatch_uid='document_metadata_index_update', sender=DocumentMetadata)
         post_delete.connect(document_index_delete, dispatch_uid='document_index_delete', sender=Document)
         post_delete.connect(document_metadata_index_post_delete, dispatch_uid='document_metadata_index_post_delete', sender=DocumentMetadata)

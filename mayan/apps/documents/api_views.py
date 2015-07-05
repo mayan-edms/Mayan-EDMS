@@ -38,7 +38,7 @@ from .serializers import (
 from .settings import (
     setting_display_size, setting_zoom_max_level, setting_zoom_min_level
 )
-from .tasks import task_get_document_page_image, task_new_document
+from .tasks import task_get_document_page_image
 
 
 class APIDocumentListView(generics.ListAPIView):
