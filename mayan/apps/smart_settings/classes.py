@@ -37,6 +37,7 @@ class Setting(object):
         self.default = default
         self.help_text = help_text
         self.is_path = is_path
+        self._value = None
         namespace.settings.append(self)
 
     def __unicode__(self):
@@ -44,4 +45,11 @@ class Setting(object):
 
     @property
     def value(self):
-        return yaml.safe_load(getattr(settings, yaml.safe_dump(self.global_name), yaml.safe_dump(self.default)))
+        if not self._value:
+            self._value = yaml.safe_load(getattr(settings, yaml.safe_dump(self.global_name), yaml.safe_dump(self.default)))
+
+        return self._value
+
+    @value.setter
+    def value(self, new_value):
+        self._value = new_value
