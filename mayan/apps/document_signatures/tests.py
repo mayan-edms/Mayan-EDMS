@@ -20,17 +20,14 @@ TEST_KEY_FILE = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', '
 
 class DocumentTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType(name='test doc type')
-        self.document_type.save()
+        self.document_type = DocumentType.objects.create(name='test doc type')
 
-        self.document = Document(
-            document_type=self.document_type,
-            description='description',
-        )
-        self.document.save()
+        ocr_settings = self.document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf'))
+            self.document = self.document_type.new_document(file_object=File(file_object, name='mayan_11_1.pdf'))
 
         with open(TEST_KEY_FILE) as file_object:
             gpg.import_key(file_object.read())

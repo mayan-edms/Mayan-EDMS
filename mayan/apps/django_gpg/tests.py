@@ -5,7 +5,7 @@ import shutil
 from django.test import TestCase
 
 from .api import GPG, Key
-from .settings import GPG_PATH, KEYSERVERS
+from .settings import setting_gpg_path
 
 TEST_GPG_HOME = '/tmp/test_gpg_home'
 TEST_KEYSERVERS = ['pool.sks-keyservers.net']
@@ -20,7 +20,7 @@ class DjangoGPGTestCase(TestCase):
         except OSError:
             pass
 
-        self.gpg = GPG(binary_path=GPG_PATH, home=TEST_GPG_HOME, keyservers=KEYSERVERS)
+        self.gpg = GPG(binary_path=setting_gpg_path.value, home=TEST_GPG_HOME, keyservers=TEST_KEYSERVERS)
 
     def test_main(self):
         # No private or public keys in the keyring
