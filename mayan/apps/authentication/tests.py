@@ -23,14 +23,12 @@ class UserLoginTestCase(TestCase):
         self.client = Client()
 
     def test_normal_behaviour(self):
-        # TODO set setting_login_method to 'username'
-        # setattr(authentication.settings, 'LOGIN_METHOD', 'username')
+        setting_login_method.value = 'username'
         response = self.client.get(reverse('documents:document_list'))
         self.assertRedirects(response, 'http://testserver/authentication/login/')
 
     def test_username_login(self):
-        # TODO set setting_login_method to 'username'
-        # setattr(authentication.settings, 'LOGIN_METHOD', 'username')
+        setting_login_method.value = 'username'
         logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
         self.assertTrue(logged_in)
         response = self.client.get(reverse('documents:document_list'))
@@ -38,9 +36,9 @@ class UserLoginTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_email_login(self):
-        with self.settings(COMMON_LOGIN_METHOD='email', AUTHENTICATION_BACKENDS=('authentication.auth.email_auth_backend.EmailAuthBackend',)):
-            # TODO set setting_login_method to 'email'
-            #setattr(authentication.settings, 'LOGIN_METHOD', 'email')
+        with self.settings(AUTHENTICATION_BACKENDS=('authentication.auth.email_auth_backend.EmailAuthBackend',)):
+            setting_login_method.value = 'email'
+
             logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
             self.assertFalse(logged_in)
 
@@ -52,23 +50,24 @@ class UserLoginTestCase(TestCase):
             self.assertEqual(response.status_code, 200)
 
     def test_username_login_via_views(self):
-        # TODO set setting_login_method to 'username'
-        # setattr(authentication.settings, 'LOGIN_METHOD', 'username')
+        setting_login_method.value = 'username'
         response = self.client.get(reverse('documents:document_list'))
         self.assertRedirects(response, 'http://testserver/authentication/login/')
 
-        response = self.client.post(settings.LOGIN_URL, {'username': TEST_ADMIN_USERNAME, 'password': TEST_ADMIN_PASSWORD}, follow=True)
+        response = self.client.post(reverse(settings.LOGIN_URL), {'username': TEST_ADMIN_USERNAME, 'password': TEST_ADMIN_PASSWORD})
         response = self.client.get(reverse('documents:document_list'))
         # We didn't get redirected to the login URL
         self.assertEqual(response.status_code, 200)
 
     def test_email_login_via_views(self):
-        with self.settings(COMMON_LOGIN_METHOD='email', AUTHENTICATION_BACKENDS=('authentication.auth.email_auth_backend.EmailAuthBackend',)):
-            # TODO set setting_login_method to 'email'
-            #setattr(authentication.settings, 'LOGIN_METHOD', 'email')
+        with self.settings(AUTHENTICATION_BACKENDS=('authentication.auth.email_auth_backend.EmailAuthBackend',)):
+            setting_login_method.value = 'email'
             response = self.client.get(reverse('documents:document_list'))
             self.assertRedirects(response, 'http://testserver/authentication/login/')
 
-            response = self.client.post(settings.LOGIN_URL, {'email': TEST_ADMIN_EMAIL, 'password': TEST_ADMIN_PASSWORD}, follow=True)
+            response = self.client.post(reverse(settings.LOGIN_URL), {'email': TEST_ADMIN_EMAIL, 'password': TEST_ADMIN_PASSWORD}, follow=True)
+            self.assertEqual(response.status_code, 200)
+
             response = self.client.get(reverse('documents:document_list'))
+            # We didn't get redirected to the login URL
             self.assertEqual(response.status_code, 200)
