@@ -51,7 +51,6 @@ class DocumentSerializer(serializers.ModelSerializer):
 class NewDocumentSerializer(serializers.Serializer):
     description = serializers.CharField(required=False)
     document_type = serializers.IntegerField()
-    expand = serializers.BooleanField(default=False)
     file = serializers.FileField()
     label = serializers.CharField(required=False)
     language = serializers.ChoiceField(choices=LANGUAGE_CHOICES, blank_display_value=None, required=False)
