@@ -15,7 +15,7 @@ class IndexTestCase(TestCase):
         self.document_type = DocumentType.objects.create(name=TEST_DOCUMENT_TYPE)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = Document.objects.new_document(file_object=File(file_object), document_type=self.document_type)[0].document
+            self.document = self.document_type.new_document(file_object=File(file_object))
 
     def test_indexing(self):
         metadata_type = MetadataType.objects.create(name='test', title='test')
@@ -61,5 +61,11 @@ class IndexTestCase(TestCase):
         self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), ['', '0003'])
 
         # Check node instance is destroyed when no documents are contained
+        self.document.delete()
+
+        # Document is in trash, index structure should remain unchanged
+        self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), ['', '0003'])
+
+        # Document deleted from, index structure should update
         self.document.delete()
         self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [''])
