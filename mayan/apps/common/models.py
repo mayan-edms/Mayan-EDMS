@@ -19,9 +19,9 @@ def upload_to(instance, filename):
 
 @python_2_unicode_compatible
 class SharedUploadedFile(models.Model):
-    file = models.FileField(upload_to=upload_to, storage=shared_storage_backend, verbose_name=_('File'))
+    file = models.FileField(storage=shared_storage_backend, upload_to=upload_to, verbose_name=_('File'))
     filename = models.CharField(max_length=255, verbose_name=_('Filename'))
-    datatime = models.DateTimeField(auto_now_add=True, verbose_name=_('Date time'))
+    datetime = models.DateTimeField(auto_now_add=True, verbose_name=_('Date time'))
 
     class Meta:
         verbose_name = _('Shared uploaded file')
