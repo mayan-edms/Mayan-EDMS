@@ -3,13 +3,15 @@ from __future__ import unicode_literals
 from django.conf import settings
 from django.conf.urls import patterns, url
 
-urlpatterns = patterns('authentication.views',
+urlpatterns = patterns(
+    'authentication.views',
     url(r'^login/$', 'login_view', (), name='login_view'),
     url(r'^password/change/done/$', 'password_change_done', (), name='password_change_done'),
     url(r'^password/change/$', 'password_change_view', (), name='password_change_view'),
 )
 
-urlpatterns += patterns('',
+urlpatterns += patterns(
+    '',
     url(r'^logout/$', 'django.contrib.auth.views.logout', {'next_page': settings.LOGIN_REDIRECT_URL}, name='logout_view'),
 
     url(r'^password/reset/$', 'django.contrib.auth.views.password_reset', {'email_template_name': 'appearance/password_reset_email.html', 'template_name': 'appearance/password_reset_form.html', 'post_reset_redirect': '/password/reset/done'}, name='password_reset_view'),

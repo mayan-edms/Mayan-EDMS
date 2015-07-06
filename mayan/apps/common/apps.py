@@ -6,7 +6,7 @@ from django import apps
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib.auth.signals import user_logged_in
-from django.db.models.signals import post_migrate, post_save
+from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from .handlers import (
@@ -17,9 +17,7 @@ from .links import (
     link_current_user_locale_profile_details,
     link_current_user_locale_profile_edit, link_license, link_setup, link_tools
 )
-from .menus import (
-    menu_facet, menu_main, menu_secondary, menu_setup, menu_tools
-)
+from .menus import menu_facet, menu_main, menu_secondary
 
 logger = logging.getLogger(__name__)
 
