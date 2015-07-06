@@ -69,6 +69,12 @@ class DocumentType(models.Model):
     def __str__(self):
         return self.name
 
+    def delete(self, *args, **kwargs):
+        for document in Document.passthrough.filter(document_type=self):
+            document.delete(to_trash=False)
+
+        return super(DocumentType, self).delete(*args, **kwargs)
+
     def natural_key(self):
         return (self.name,)
 
@@ -85,14 +91,6 @@ class DocumentType(models.Model):
         document.new_version(file_object=file_object, _user=_user)
 
         return document
-
-    @transaction.atomic
-    def upload_single_document(self, document_type, file_object, label=None, description=None, language=None, user=None):
-        document = self.model(description=description, document_type=document_type, language=language, label=label or unicode(file_object))
-        document.save(user=user)
-        version = document.new_version(file_object=file_object, user=user)
-        document.set_document_type(document_type, force=True)
-        return version
 
     class Meta:
         verbose_name = _('Document type')
@@ -159,7 +157,9 @@ class Document(models.Model):
         RecentDocument.objects.add_document_for_user(user, self)
 
     def delete(self, *args, **kwargs):
-        if not self.in_trash and kwargs.get('to_trash', True):
+        to_trash = kwargs.pop('to_trash', True)
+
+        if not self.in_trash and to_trash:
             self.in_trash = True
             self.deleted_date_time = now()
             self.save()
