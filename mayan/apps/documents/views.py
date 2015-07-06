@@ -51,8 +51,8 @@ from .permissions import (
     permission_document_view, permission_empty_trash
 )
 from .settings import (
-    setting_preview_size, setting_recent_count, setting_rotation_step,
-    setting_zoom_percent_step, setting_zoom_max_level, setting_zoom_min_level
+    setting_preview_size, setting_rotation_step, setting_zoom_percent_step,
+    setting_zoom_max_level, setting_zoom_min_level
 )
 from .tasks import (
     task_clear_image_cache, task_get_document_page_image,

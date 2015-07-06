@@ -8,7 +8,7 @@ def make_existing_documents_not_stubs(apps, schema_editor):
     Document = apps.get_model('documents', 'Document')
 
     for document in Document.objects.all():
-        document.is_stub=False
+        document.is_stub = False
         document.save()
 
 

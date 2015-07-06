@@ -2,9 +2,9 @@ from __future__ import unicode_literals
 
 import logging
 
-from django.db import models, transaction
+from django.db import models
 
-from .settings import setting_recent_count, setting_language
+from .settings import setting_recent_count
 
 logger = logging.getLogger(__name__)
 

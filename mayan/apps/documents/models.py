@@ -13,8 +13,6 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
-from celery.execute import send_task
-
 from common.literals import TIME_DELTA_UNIT_CHOICES
 from common.models import SharedUploadedFile
 from common.settings import setting_temporary_directory
