@@ -82,9 +82,7 @@ class DocumentTypeSettingsEditView(SingleObjectEditView):
     view_permission = permission_document_type_ocr_setup
 
     def get_object(self, queryset=None):
-        document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
-        instance, created = DocumentTypeSettings.objects.get_or_create(document_type=document_type)
-        return instance
+        return get_object_or_404(DocumentType, pk=self.kwargs['pk']).ocr_settings
 
     def get_context_data(self, **kwargs):
         context = super(DocumentTypeSettingsEditView, self).get_context_data(**kwargs)

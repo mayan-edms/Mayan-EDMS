@@ -4,6 +4,7 @@ import logging
 
 import sh
 
+from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -20,7 +21,7 @@ from installation import PropertyNamespace
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
-from .handlers import post_version_upload_ocr
+from .handlers import initialize_new_ocr_settings, post_version_upload_ocr
 from .links import (
     link_document_content, link_document_submit,
     link_document_submit_multiple, link_document_type_ocr_settings,
@@ -55,15 +56,15 @@ class OCRApp(MayanAppConfig):
         Document.add_to_class('submit_for_ocr', document_ocr_submit)
         DocumentVersion.add_to_class('submit_for_ocr', document_version_ocr_submit)
 
-        SourceColumn(source=DocumentVersionOCRError, label=_('Document'), attribute=encapsulate(lambda entry: document_link(entry.document_version.document)))
-        SourceColumn(source=DocumentVersionOCRError, label=_('Added'), attribute='datetime_submitted')
-        SourceColumn(source=DocumentVersionOCRError, label=_('Result'), attribute='result')
-
         ModelPermission.register(
             model=Document, permissions=(
                 permission_ocr_document, permission_ocr_content_view
             )
         )
+
+        SourceColumn(source=DocumentVersionOCRError, label=_('Document'), attribute=encapsulate(lambda entry: document_link(entry.document_version.document)))
+        SourceColumn(source=DocumentVersionOCRError, label=_('Added'), attribute='datetime_submitted')
+        SourceColumn(source=DocumentVersionOCRError, label=_('Result'), attribute='result')
 
         document_search.add_model_field(field='versions__pages__ocr_content__content', label=_('Content'))
 
@@ -76,6 +77,7 @@ class OCRApp(MayanAppConfig):
         menu_secondary.bind_links(links=[link_entry_list], sources=['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError])
         menu_tools.bind_links(links=[link_entry_list])
 
+        post_save.connect(initialize_new_ocr_settings, dispatch_uid='initialize_new_ocr_settings', sender=DocumentType)
         post_version_upload.connect(post_version_upload_ocr, dispatch_uid='post_version_upload_ocr', sender=DocumentVersion)
 
         namespace = PropertyNamespace('ocr', _('OCR'))
