@@ -24,7 +24,7 @@ from .links import (
     link_template_node_create, link_template_node_delete,
     link_template_node_edit
 )
-from .models import Index, IndexTemplateNode, IndexInstanceNode
+from .models import Index, IndexTemplateNode
 
 
 class DocumentIndexingApp(MayanAppConfig):
