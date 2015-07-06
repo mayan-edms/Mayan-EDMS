@@ -299,7 +299,7 @@ class IndexListView(SingleObjectListView):
         }
 
 
-class IndexInstanceNodeView(DocumentListView):
+class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
     @staticmethod
     def get_item_count(instance, user):
         if instance.index_template_node.link_documents:
@@ -322,18 +322,27 @@ class IndexInstanceNodeView(DocumentListView):
         except PermissionDenied:
             AccessControlList.objects.check_access(permission_document_indexing_view, request.user, self.index_instance.index)
 
-        return super(IndexInstanceNodeView, self).dispatch(request, *args, **kwargs)
-
-    def get_document_queryset(self):
         if self.index_instance:
             if self.index_instance.index_template_node.link_documents:
-                return self.index_instance.documents.all()
+                return DocumentListView.dispatch(self, request, *args, **kwargs)
+
+        return SingleObjectListView.dispatch(self, request, *args, **kwargs)
+
+    def get_queryset(self):
+        if self.index_instance:
+            if self.index_instance.index_template_node.link_documents:
+                return DocumentListView.get_queryset(self)
             else:
                 self.object_permission = None
                 return self.index_instance.get_children().order_by('value')
         else:
             self.object_permission = None
             return IndexInstanceNode.objects.none()
+
+    def get_document_queryset(self):
+        if self.index_instance:
+            if self.index_instance.index_template_node.link_documents:
+                return self.index_instance.documents.all()
 
     def get_extra_context(self):
         context = {
