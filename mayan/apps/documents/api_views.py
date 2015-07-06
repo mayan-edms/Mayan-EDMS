@@ -41,7 +41,7 @@ from .settings import (
 from .tasks import task_get_document_page_image
 
 
-class APIDocumentListView(generics.ListAPIView):
+class APIDocumentListView(generics.ListCreateAPIView):
     """
     Returns a list of all the documents.
     """
@@ -59,40 +59,29 @@ class APIDocumentListView(generics.ListAPIView):
         elif self.request.method == 'POST':
             return NewDocumentSerializer
 
-    def post(self, request, *args, **kwargs):
+    def post(self, *args, **kwargs):
         """Create a new document."""
+        return super(APIDocumentListView, self).post(*args, **kwargs)
 
+    def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(data=request.DATA, files=request.FILES)
 
         if serializer.is_valid():
-            shared_uploaded_file = SharedUploadedFile.objects.create(file=request.FILES['file'])
+            document_type = get_object_or_404(DocumentType, pk=serializer.data['document_type'])
 
-            if request.user.is_anonymous():
-                user_id = None
-            else:
-                user_id = request.user.pk
-
-            task_new_document.apply_async(kwargs=dict(
-                shared_uploaded_file_id=shared_uploaded_file.pk,
-                document_type_id=serializer.data['document_type'],
+            serializer.object = document_type.new_document(
                 description=serializer.data['description'],
-                expand=serializer.data['expand'],
+                file_object=request.FILES['file'],
                 label=serializer.data['label'] or serializer.data['file'],
                 language=serializer.data['language'],
-                user_id=user_id
-            ), queue='uploads')
+                _user=request.user
+            )
 
             headers = self.get_success_headers(serializer.data)
-            return Response(serializer.data, status=status.HTTP_202_ACCEPTED,
+            return Response(serializer.data, status=status.HTTP_201_CREATED,
                             headers=headers)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-    def get_success_headers(self, data):
-        try:
-            return {'Location': data[api_settings.URL_FIELD_NAME]}
-        except (TypeError, KeyError):
-            return {}
 
 
 class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
@@ -148,7 +137,7 @@ class APIDocumentVersionCreateView(generics.CreateAPIView):
             # a read only field in the serializer
             document = get_object_or_404(Document, pk=kwargs['pk'])
 
-            document.new_version(file_object=serializer.object.file, user=request.user, comment=serializer.object.comment)
+            document.new_version(file_object=serializer.object.file, comment=serializer.object.comment, _user=request.user)
 
             headers = self.get_success_headers(serializer.data)
             return Response(status=status.HTTP_202_ACCEPTED, headers=headers)
