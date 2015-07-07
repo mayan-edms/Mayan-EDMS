@@ -49,7 +49,7 @@ def task_upload_new_version(document_id, shared_uploaded_file_id, user_id, comme
     else:
         user = None
 
-    with File(file=shared_file.file) as file_object:
+    with shared_file.open() as file_object:
         try:
             document_version = DocumentVersion(document=document, comment=comment or '', file=file_object)
             document_version.save(_user=user)

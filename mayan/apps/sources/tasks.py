@@ -38,7 +38,7 @@ def task_source_upload_document(label, document_type_id, shared_uploaded_file_id
     else:
         user = None
 
-    with File(file=shared_uploaded_file.file) as file_object:
+    with shared_uploaded_file.open() as file_object:
         source.upload_document(description=description, document_type=document_type, expand=expand, file_object=file_object, label=label, language=language, metadata_dict_list=metadata_dict_list, user=user)
 
     shared_uploaded_file.delete()
