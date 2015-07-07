@@ -27,7 +27,7 @@ class DocumentTestCase(TestCase):
         ocr_settings.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(file_object=File(file_object, name='mayan_11_1.pdf'))
+            self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf')
 
         with open(TEST_KEY_FILE) as file_object:
             gpg.import_key(file_object.read())
@@ -37,21 +37,14 @@ class DocumentTestCase(TestCase):
 
     def test_new_document_version_signed(self):
         with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
-            new_version_data = {
-                'comment': 'test comment 1',
-            }
-
-            self.document.new_version(file_object=File(file_object, name='mayan_11_1.pdf.gpg'), **new_version_data)
+            self.document.new_version(file_object=File(file_object), comment='test comment 1')
 
         self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), False)
         self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version).status, SIGNATURE_STATE_VALID)
 
     def test_detached_signatures(self):
-        new_version_data = {
-            'comment': 'test comment 2',
-        }
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file_object=File(file_object), **new_version_data)
+            self.document.new_version(file_object=File(file_object), comment='test comment 2')
 
         # GPGVerificationError
         self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version), None)
