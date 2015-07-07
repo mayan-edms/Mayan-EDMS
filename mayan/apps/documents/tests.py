@@ -7,7 +7,7 @@ import os
 
 from django.conf import settings
 from django.contrib.auth.models import User
-from django.core.files.base import File
+from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
@@ -56,14 +56,10 @@ class DocumentTestCase(TestCase):
         self.failUnlessEqual(self.document.page_count, 47)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            new_version_data = {
-                'comment': 'test comment 1',
-            }
-
             self.document.new_version(file_object=File(file_object))
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file_object=File(file_object), **new_version_data)
+            self.document.new_version(file_object=File(file_object), comment='test comment 1')
 
         self.failUnlessEqual(self.document.versions.count(), 3)
 
