@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import uuid
+
 from pytz import common_timezones
 
 from django.conf import settings
@@ -9,12 +11,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from .runtime import shared_storage_backend
 
-SHARED_UPLOADED_FILE_PATH = 'shared_uploads'
-
 
 def upload_to(instance, filename):
-    instance.filename = filename
-    return '/'.join([SHARED_UPLOADED_FILE_PATH, filename])
+    return 'shared-file-{}'.format(uuid.uuid4().hex)
 
 
 @python_2_unicode_compatible
@@ -33,6 +32,9 @@ class SharedUploadedFile(models.Model):
     def delete(self, *args, **kwargs):
         self.file.storage.delete(self.file.path)
         return super(SharedUploadedFile, self).delete(*args, **kwargs)
+
+    def open(self):
+        return self.file.storage.open(self.file.path)
 
 
 @python_2_unicode_compatible
