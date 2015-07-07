@@ -20,6 +20,7 @@ from converter.literals import DIMENSION_SEPARATOR
 from converter.models import Transformation
 from djcelery.models import PeriodicTask, IntervalSchedule
 from documents.models import Document, DocumentType
+from documents.settings import setting_language
 from metadata.api import save_metadata_list
 
 from .classes import Attachment, SourceUploadedFile, StagingFile
