@@ -31,6 +31,10 @@ class UploadDocumentTestCase(TestCase):
 
     def setUp(self):
         self.document_type = DocumentType.objects.create(name=TEST_DOCUMENT_TYPE)
+        ocr_settings = self.document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
+
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
         self.client = Client()
 
