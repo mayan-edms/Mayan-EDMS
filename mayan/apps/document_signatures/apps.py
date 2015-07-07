@@ -1,12 +1,9 @@
 from __future__ import unicode_literals
 
+import io
 import logging
 
-try:
-    from cStringIO import StringIO
-except ImportError:
-    from StringIO import StringIO
-
+from django.core.files import File
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -40,7 +37,7 @@ def document_pre_open_hook(descriptor, instance):
             return descriptor
         else:
             descriptor.close()
-            return StringIO(result.data)
+            return io.BytesIO(result.data)
     else:
         return descriptor
 
