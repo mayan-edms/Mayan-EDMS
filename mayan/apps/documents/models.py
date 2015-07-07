@@ -368,6 +368,7 @@ class DocumentVersion(models.Model):
             # If converter backend doesn't understand the format,
             # use 1 as the total page count
             detected_pages = 1
+            # TODO: should be no pages instead?
 
         with transaction.atomic():
             self.pages.all().delete()
