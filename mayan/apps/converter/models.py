@@ -16,6 +16,10 @@ from .validators import YAMLValidator
 logger = logging.getLogger(__name__)
 
 
+def validators():
+    return [YAMLValidator()]
+
+
 @python_2_unicode_compatible
 class Transformation(models.Model):
     """
@@ -29,7 +33,7 @@ class Transformation(models.Model):
 
     order = models.PositiveIntegerField(blank=True, db_index=True, default=0, help_text=_('Order in which the transformations will be executed.'), null=True, verbose_name=_('Order'))
     name = models.CharField(choices=BaseTransformation.get_transformation_choices(), max_length=128, verbose_name=_('Name'))
-    arguments = models.TextField(blank=True, help_text=_('Enter the arguments for the transformation as a YAML dictionary. ie: {"degrees": 180}'), validators=[YAMLValidator()], verbose_name=_('Arguments'))
+    arguments = models.TextField(blank=True, help_text=_('Enter the arguments for the transformation as a YAML dictionary. ie: {"degrees": 180}'), validators=validators, verbose_name=_('Arguments'))
 
     objects = TransformationManager()
 
