@@ -13,7 +13,7 @@ from documents.models import Document
 from documents.views import DocumentListView
 
 from acls.models import AccessControlList
-from common.utils import encapsulate, get_object_name
+from common.utils import encapsulate
 from common.views import SingleObjectCreateView
 from permissions import Permission
 
@@ -73,7 +73,7 @@ class CheckoutListView(DocumentListView):
         'title': _('Documents checked out'),
         'hide_links': True,
         'extra_columns': [
-            {'name': _('User'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user))},
+            {'name': _('User'), 'attribute': encapsulate(lambda document: document.checkout_info().user.get_full_name() or document.checkout_info().user)},
             {'name': _('Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
             {'name': _('Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
         ],
@@ -91,7 +91,7 @@ def checkout_info(request, document_pk):
 
     if document.is_checked_out():
         checkout_info = document.checkout_info()
-        paragraphs.append(_('User: %s') % get_object_name(checkout_info.user))
+        paragraphs.append(_('User: %s') % (checkout_info.user.get_full_name() or checkout_info.user))
         paragraphs.append(_('Check out time: %s') % checkout_info.checkout_datetime)
         paragraphs.append(_('Check out expiration: %s') % checkout_info.expiration_datetime)
         paragraphs.append(_('New versions allowed: %s') % (_('Yes') if not checkout_info.block_new_version else _('No')))

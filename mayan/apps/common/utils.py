@@ -69,15 +69,6 @@ def get_descriptor(file_input, read=True):
         return file_input
 
 
-def get_object_name(obj):
-    if isinstance(obj, User):
-        label = obj.get_full_name() if obj.get_full_name() else obj
-    else:
-        label = unicode(obj)
-
-    return '%s' % (label)
-
-
 # http://snippets.dzone.com/posts/show/5434
 # http://snippets.dzone.com/user/jakob
 def pretty_size(size, suffixes=None):
@@ -124,7 +115,7 @@ def return_attrib(obj, attrib, arguments=None):
         if settings.DEBUG:
             return 'Attribute error: %s; %s' % (attrib, exception)
         else:
-            pass
+            return unicode(exception)
 
 
 def urlquote(link=None, get=None):
