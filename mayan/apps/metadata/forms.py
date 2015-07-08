@@ -63,7 +63,7 @@ class MetadataForm(forms.Form):
             else:
                 self.fields['value'].required = False
 
-            self.fields['name'].initial = '%s%s' % ((self.metadata_type.title if self.metadata_type.title else self.metadata_type.name), required_string)
+            self.fields['name'].initial = '%s%s' % ((self.metadata_type.label if self.metadata_type.label else self.metadata_type.name), required_string)
             self.fields['id'].initial = self.metadata_type.pk
 
             if self.metadata_type.lookup:
@@ -116,5 +116,5 @@ MetadataRemoveFormSet = formset_factory(MetadataRemoveForm, extra=0)
 
 class MetadataTypeForm(forms.ModelForm):
     class Meta:
-        fields = ('name', 'title', 'default', 'lookup', 'validation')
+        fields = ('name', 'label', 'default', 'lookup', 'validation')
         model = MetadataType
