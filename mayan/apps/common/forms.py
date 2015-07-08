@@ -57,11 +57,6 @@ class DetailForm(forms.ModelForm):
             self.fields[field_name].widget.attrs.update({'readonly': 'readonly'})
 
 
-class GenericConfirmForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        pass
-
-
 class GenericAssignRemoveForm(forms.Form):
     def __init__(self, *args, **kwargs):
         left_list_qryset = kwargs.pop('left_list_qryset', None)
@@ -78,16 +73,6 @@ class GenericAssignRemoveForm(forms.Form):
 
     left_list = forms.ModelMultipleChoiceField(required=False, queryset=None)
     right_list = forms.ModelMultipleChoiceField(required=False, queryset=None)
-
-
-class FilterForm(forms.Form):
-    def __init__(self, list_filters, *args, **kwargs):
-        super(FilterForm, self).__init__(*args, **kwargs)
-        for list_filter in list_filters:
-            label = list_filter.get('title', list_filter['name'])
-            self.fields[list_filter['name']] = forms.ModelChoiceField(
-                queryset=list_filter['queryset'],
-                label=label[0].upper() + label[1:], required=False)
 
 
 class ChoiceForm(forms.Form):
@@ -140,7 +125,7 @@ class LocaleProfileForm_view(DetailForm):
 
 class FileDisplayForm(forms.Form):
     text = forms.CharField(
-        label='',  # _('Text'),
+        label='',
         widget=forms.widgets.Textarea(
             attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
         )
