@@ -191,7 +191,7 @@ class Document(models.Model):
             document_id=self.pk, user_id=user_id,
         ), queue='uploads')
 
-        logger.info('New document version created for document: %s', self)
+        logger.info('New document version queued for document: %s', self)
 
     # Proxy methods
     def open(self, *args, **kwargs):
