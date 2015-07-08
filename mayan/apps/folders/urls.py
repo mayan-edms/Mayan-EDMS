@@ -6,13 +6,15 @@ from .api_views import (
     APIDocumentFolderListView, APIFolderDocumentListView,
     APIFolderDocumentView, APIFolderListView, APIFolderView
 )
-from .views import DocumentFolderListView, FolderDetailView, FolderListView
+from .views import (
+    DocumentFolderListView, FolderDetailView, FolderEditView, FolderListView
+)
 
 urlpatterns = patterns(
     'folders.views',
     url(r'^list/$', FolderListView.as_view(), name='folder_list'),
     url(r'^create/$', 'folder_create', name='folder_create'),
-    url(r'^(?P<folder_id>\d+)/edit/$', 'folder_edit', name='folder_edit'),
+    url(r'^(?P<pk>\d+)/edit/$', FolderEditView.as_view(), name='folder_edit'),
     url(r'^(?P<folder_id>\d+)/delete/$', 'folder_delete', name='folder_delete'),
     url(r'^(?P<pk>\d+)/$', FolderDetailView.as_view(), name='folder_view'),
     url(r'^(?P<folder_id>\d+)/remove/document/multiple/$', 'folder_document_multiple_remove', name='folder_document_multiple_remove'),

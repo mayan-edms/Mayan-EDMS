@@ -5,7 +5,7 @@ import logging
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
@@ -13,7 +13,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.utils import encapsulate
-from common.views import SingleObjectListView
+from common.views import SingleObjectEditView, SingleObjectListView
 from documents.permissions import permission_document_view
 from documents.models import Document
 from documents.views import DocumentListView
@@ -28,6 +28,19 @@ from .permissions import (
 )
 
 logger = logging.getLogger(__name__)
+
+
+class FolderEditView(SingleObjectEditView):
+    fields = ('label',)
+    model = Folder
+    object_permission = permission_folder_edit
+    post_action_redirect = reverse_lazy('folders:folder_list')
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit folder: %s') % self.get_object(),
+        }
 
 
 class FolderListView(SingleObjectListView):
@@ -79,33 +92,6 @@ def folder_create(request):
     return render_to_response('appearance/generic_form.html', {
         'title': _('Create folder'),
         'form': form,
-    }, context_instance=RequestContext(request))
-
-
-def folder_edit(request, folder_id):
-    folder = get_object_or_404(Folder, pk=folder_id)
-
-    try:
-        Permission.check_permissions(request.user, [permission_folder_edit])
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_folder_edit, request.user, folder)
-
-    if request.method == 'POST':
-        form = FolderForm(data=request.POST, instance=folder)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _('Folder edited successfully'))
-                return HttpResponseRedirect(reverse('folders:folder_list'))
-            except Exception as exception:
-                messages.error(request, _('Error editing folder; %s') % exception)
-    else:
-        form = FolderForm(instance=folder)
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Edit folder: %s') % folder,
-        'form': form,
-        'object': folder,
     }, context_instance=RequestContext(request))
 
 
