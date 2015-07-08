@@ -104,7 +104,7 @@ class Document(models.Model):
     uuid = models.CharField(default=UUID_FUNCTION, editable=False, max_length=48)
     document_type = models.ForeignKey(DocumentType, related_name='documents',  verbose_name=_('Document type'))
     label = models.CharField(db_index=True, default=_('Uninitialized document'), max_length=255, help_text=_('The name of the document'), verbose_name=_('Label'))
-    description = models.TextField(blank=True, null=True, verbose_name=_('Description'))
+    description = models.TextField(blank=True, verbose_name=_('Description'))
     date_added = models.DateTimeField(auto_now_add=True, verbose_name=_('Added'))
     language = models.CharField(choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
     in_trash = models.BooleanField(default=False, editable=False, verbose_name=_('In trash?'))
