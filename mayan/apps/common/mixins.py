@@ -77,9 +77,18 @@ class RedirectionMixin(object):
     post_action_redirect = None
     action_cancel_redirect = None
 
+    def get_post_action_redirect(self):
+        return self.post_action_redirect
+
+    def get_action_cancel_redirect(self):
+        return self.action_cancel_redirect
+
     def dispatch(self, request, *args, **kwargs):
-        self.next_url = self.request.POST.get('next', self.request.GET.get('next', self.post_action_redirect if self.post_action_redirect else self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', self.action_cancel_redirect if self.action_cancel_redirect else self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+        post_action_redirect = self.get_post_action_redirect()
+        action_cancel_redirect = self.get_action_cancel_redirect()
+
+        self.next_url = self.request.POST.get('next', self.request.GET.get('next', post_action_redirect if post_action_redirect else self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', action_cancel_redirect if action_cancel_redirect else self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
         return super(RedirectionMixin, self).dispatch(request, *args, **kwargs)
 
