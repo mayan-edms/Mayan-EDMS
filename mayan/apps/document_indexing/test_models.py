@@ -22,7 +22,7 @@ class IndexTestCase(TestCase):
             self.document = self.document_type.new_document(file_object=File(file_object))
 
     def test_indexing(self):
-        metadata_type = MetadataType.objects.create(name='test', title='test')
+        metadata_type = MetadataType.objects.create(name='test', label='test')
         DocumentTypeMetadataType.objects.create(document_type=self.document_type, metadata_type=metadata_type)
 
         # Create empty index
