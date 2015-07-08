@@ -63,4 +63,4 @@ class Setting(object):
 
     @value.setter
     def value(self, value):
-        self.yaml = yaml.safe_dump(self.python_value, allow_unicode=True)
+        self.yaml = value
