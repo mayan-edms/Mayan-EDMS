@@ -6,8 +6,7 @@ from mayan.celery import app
 from documents.models import Document
 from lock_manager import Lock, LockError
 
-from .api import index_document, delete_empty_index_nodes
-from .tools import do_rebuild_all_indexes
+from .models import IndexInstanceNode
 
 logger = logging.getLogger(__name__)
 RETRY_DELAY = 20  # TODO: convert this into a config option
@@ -22,7 +21,7 @@ def task_delete_empty_index_nodes(self):
         raise self.retry(exc=exception, countdown=RETRY_DELAY)
     else:
         try:
-            delete_empty_index_nodes()
+            IndexInstanceNode.objects.delete_empty_index_nodes()
         finally:
             rebuild_lock.release()
 
@@ -47,7 +46,7 @@ def task_index_document(self, document_id):
                 # Document was deleted before we could execute, abort about updating
                 pass
             else:
-                index_document(document)
+                IndexInstanceNode.objects.index_document(document)
             finally:
                 lock.release()
         finally:
@@ -67,6 +66,6 @@ def task_do_rebuild_all_indexes(self):
         raise self.retry(exc=exception, countdown=RETRY_DELAY)
     else:
         try:
-            do_rebuild_all_indexes()
+            IndexInstanceNode.objects.rebuild_all_indexes()
         finally:
             lock.release()

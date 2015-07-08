@@ -12,7 +12,6 @@ from .views import (
     SetupIndexListView,
 )
 
-
 urlpatterns = patterns(
     'document_indexing.views',
     url(r'^setup/index/list/$', SetupIndexListView.as_view(), name='index_setup_list'),

@@ -10,7 +10,7 @@ from mptt.models import MPTTModel
 
 from documents.models import Document, DocumentType
 
-from .managers import IndexManager
+from .managers import IndexManager, IndexInstanceNodeManager
 
 
 @python_2_unicode_compatible
@@ -82,6 +82,8 @@ class IndexInstanceNode(MPTTModel):
     index_template_node = models.ForeignKey(IndexTemplateNode, related_name='node_instance', verbose_name=_('Index template node'))
     value = models.CharField(max_length=128, blank=True, verbose_name=_('Value'))
     documents = models.ManyToManyField(Document, related_name='node_instances', verbose_name=_('Documents'))
+
+    objects = IndexInstanceNodeManager()
 
     def __str__(self):
         return self.value
