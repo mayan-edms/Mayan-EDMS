@@ -13,7 +13,8 @@ from .settings import setting_print_size, setting_display_size
 from .views import (
     DeletedDocumentDeleteView, DeletedDocumentListView, DocumentListView,
     DocumentManyDeleteView, DocumentManyRestoreView, DocumentPageListView,
-    DocumentRestoreView, EmptyTrashCanView, RecentDocumentListView
+    DocumentRestoreView, DocumentTypeDocumentListView, EmptyTrashCanView,
+    RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -70,7 +71,7 @@ urlpatterns = patterns(
     url(r'^type/create/$', 'document_type_create', name='document_type_create'),
     url(r'^type/(?P<document_type_id>\d+)/edit/$', 'document_type_edit', name='document_type_edit'),
     url(r'^type/(?P<document_type_id>\d+)/delete/$', 'document_type_delete', name='document_type_delete'),
-
+    url(r'^type/(?P<pk>\d+)/documents/$', DocumentTypeDocumentListView.as_view(), name='document_type_document_list'),
     url(r'^type/(?P<document_type_id>\d+)/filename/list/$', 'document_type_filename_list', name='document_type_filename_list'),
     url(r'^type/filename/(?P<document_type_filename_id>\d+)/edit/$', 'document_type_filename_edit', name='document_type_filename_edit'),
     url(r'^type/filename/(?P<document_type_filename_id>\d+)/delete/$', 'document_type_filename_delete', name='document_type_filename_delete'),

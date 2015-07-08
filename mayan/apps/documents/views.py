@@ -181,6 +181,21 @@ class DocumentPageListView(ParentChildListView):
         return context
 
 
+class DocumentTypeDocumentListView(DocumentListView):
+    def get_document_type(self):
+        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+
+    def get_document_queryset(self):
+        return self.get_document_type().documents.all()
+
+    def get_extra_context(self):
+        return {
+            'hide_links': True,
+            'object': self.get_document_type(),
+            'title': _('Documents of type: %s') % self.get_document_type()
+        }
+
+
 class EmptyTrashCanView(ConfirmView):
     extra_context = {
         'title': _('Empty trash?')

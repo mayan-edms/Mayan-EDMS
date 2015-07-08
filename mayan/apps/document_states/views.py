@@ -15,6 +15,7 @@ from common.views import (
     SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document
+from documents.views import DocumentListView
 from permissions import Permission
 
 from .forms import (
@@ -55,6 +56,28 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
         )
 
         return context
+
+
+class WorkflowDocumentListView(DocumentListView):
+    def dispatch(self, request, *args, **kwargs):
+        self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(request.user, [permission_workflow_view])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_workflow_view, request.user, self.workflow)
+
+        return super(WorkflowDocumentListView, self).dispatch(request, *args, **kwargs)
+
+    def get_document_queryset(self):
+        return Document.objects.filter(document_type__in=self.workflow.document_types.all())
+
+    def get_extra_context(self):
+        return {
+            'hide_links': True,
+            'object': self.workflow,
+            'title': _('Documents with the workflow: %s') % self.workflow
+            }
 
 
 class WorkflowInstanceDetailView(SingleObjectListView):

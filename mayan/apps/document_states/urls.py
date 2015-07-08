@@ -10,7 +10,8 @@ from .views import (
     SetupWorkflowStateEditView, SetupWorkflowStateListView,
     SetupWorkflowTransitionListView, SetupWorkflowTransitionCreateView,
     SetupWorkflowTransitionDeleteView, SetupWorkflowTransitionEditView,
-    WorkflowInstanceDetailView, WorkflowInstanceTransitionView
+    WorkflowDocumentListView, WorkflowInstanceDetailView,
+    WorkflowInstanceTransitionView
 )
 
 urlpatterns = patterns(
@@ -23,6 +24,7 @@ urlpatterns = patterns(
     url(r'^setup/create/$', SetupWorkflowCreateView.as_view(), name='setup_workflow_create'),
     url(r'^setup/(?P<pk>\d+)/edit/$', SetupWorkflowEditView.as_view(), name='setup_workflow_edit'),
     url(r'^setup/(?P<pk>\d+)/delete/$', SetupWorkflowDeleteView.as_view(), name='setup_workflow_delete'),
+    url(r'^setup/(?P<pk>\d+)/documents/$', WorkflowDocumentListView.as_view(), name='setup_workflow_document_list'),
     url(r'^setup/(?P<pk>\d+)/document_types/$', SetupWorkflowDocumentTypesView.as_view(), name='setup_workflow_document_types'),
     url(r'^setup/(?P<pk>\d+)/states/$', SetupWorkflowStateListView.as_view(), name='setup_workflow_states'),
     url(r'^setup/(?P<pk>\d+)/states/create/$', SetupWorkflowStateCreateView.as_view(), name='setup_workflow_state_create'),
