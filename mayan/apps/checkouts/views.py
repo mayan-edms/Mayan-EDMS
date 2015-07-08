@@ -14,6 +14,7 @@ from documents.views import DocumentListView
 
 from acls.models import AccessControlList
 from common.utils import encapsulate, get_object_name
+from common.views import SingleObjectCreateView
 from permissions import Permission
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
@@ -64,39 +65,42 @@ def checkout_info(request, document_pk):
     }, context_instance=RequestContext(request))
 
 
-def checkout_document(request, document_pk):
-    document = get_object_or_404(Document, pk=document_pk)
-    try:
-        Permission.check_permissions(request.user, [permission_document_checkout])
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_checkout, request.user, document)
+class CheckoutDocumentView(SingleObjectCreateView):
+    form_class = DocumentCheckoutForm
 
-    if request.method == 'POST':
-        form = DocumentCheckoutForm(data=request.POST, initial={'document': document})
-        if form.is_valid():
-            try:
-                DocumentCheckout.objects.checkout_document(
-                    document=document,
-                    expiration_datetime=form.cleaned_data['expiration_datetime'],
-                    user=request.user,
-                    block_new_version=form.cleaned_data['block_new_version'],
-                )
-            except DocumentAlreadyCheckedOut:
-                messages.error(request, _('Document already checked out.'))
-                return HttpResponseRedirect(reverse('checkouts:checkout_info', args=[document.pk]))
-            except Exception as exception:
-                messages.error(request, _('Error trying to check out document; %s') % exception)
-            else:
-                messages.success(request, _('Document "%s" checked out successfully.') % document)
-                return HttpResponseRedirect(reverse('checkouts:checkout_info', args=[document.pk]))
-    else:
-        form = DocumentCheckoutForm(initial={'document': document})
+    def dispatch(self, request, *args, **kwargs):
+        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'object': document,
-        'title': _('Check out document: %s') % document
-    }, context_instance=RequestContext(request))
+        try:
+            Permission.check_permissions(request.user, [permission_document_checkout])
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_document_checkout, request.user, self.document)
+
+        return super(CheckoutDocumentView, self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        try:
+            instance = form.save(commit=False)
+            instance.user = self.request.user
+            instance.document = self.document
+            instance.save()
+        except DocumentAlreadyCheckedOut:
+            messages.error(self.request, _('Document already checked out.'))
+        except Exception as exception:
+            messages.error(self.request, _('Error trying to check out document; %s') % exception)
+        else:
+            messages.success(self.request, _('Document "%s" checked out successfully.') % self.document)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_extra_context(self):
+        return {
+            'object': self.document,
+            'title': _('Check out document: %s') % self.document
+        }
+
+    def get_post_action_redirect(self):
+        return reverse('checkouts:checkout_info', args=[self.document.pk])
 
 
 def checkin_document(request, document_pk):
