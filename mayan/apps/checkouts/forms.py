@@ -3,12 +3,13 @@ from __future__ import unicode_literals
 from django import forms
 
 from .models import DocumentCheckout
-from .widgets import SplitTimeDeltaField
+from .widgets import SplitTimeDeltaWidget
 
 
 class DocumentCheckoutForm(forms.ModelForm):
-    expiration_datetime = SplitTimeDeltaField()
-
     class Meta:
         model = DocumentCheckout
         exclude = ('document', 'checkout_datetime', 'user')
+        widgets = {
+            'expiration_datetime': SplitTimeDeltaWidget()
+        }
