@@ -25,7 +25,12 @@ class Tesseract(OCRBackendBase):
             result = pytesseract.image_to_string(image=image, lang=self.language)
             # If tesseract gives an error with a language parameter
             # re-run it with no language parameter
-        except:
-            result = pytesseract.image_to_string(image=image)
+        except Exception as exception:
+            logger.error('Exception calling pytesseract with language option: %s; %s', self.language, exception)
+            try:
+                result = pytesseract.image_to_string(image=image)
+            except Exception as exception:
+                logger.debug('Exception calling pytesseract without a language option; %s', exception)
+                raise OCRError
 
         return result
