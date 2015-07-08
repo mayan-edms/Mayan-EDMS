@@ -344,10 +344,11 @@ class WatchFolderSource(IntervalBaseModel):
     folder_path = models.CharField(max_length=255, verbose_name=_('Folder path'), help_text=_('Server side filesystem path.'))
 
     def check_source(self):
-        for file_name in os.listdir(self.folder_path):
+        # Force self.folder_path to unicode to avoid os.listdir returning
+        # str for non-latin filenames, gh-issue #163
+        for file_name in os.listdir(unicode(self.folder_path)):
             full_path = os.path.join(self.folder_path, file_name)
             if os.path.isfile(full_path):
-
                 with File(file=open(full_path, mode='rb')) as file_object:
                     self.upload_document(file_object, label=file_name, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y))
                     os.unlink(full_path)
