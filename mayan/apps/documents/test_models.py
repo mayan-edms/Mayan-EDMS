@@ -15,7 +15,7 @@ from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from .models import Document, DocumentType
+from .models import DeletedDocument, Document, DocumentType
 
 TEST_ADMIN_PASSWORD = 'test_admin_password'
 TEST_ADMIN_USERNAME = 'test_admin'
@@ -43,6 +43,9 @@ class DocumentTestCase(TestCase):
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf')
 
+    def tearDown(self):
+        self.document_type.delete()
+
     def test_document_creation(self):
         self.failUnlessEqual(self.document_type.label, TEST_DOCUMENT_TYPE)
 
@@ -55,6 +58,7 @@ class DocumentTestCase(TestCase):
         self.failUnlessEqual(self.document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
         self.failUnlessEqual(self.document.page_count, 47)
 
+    def test_version_creation(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document.new_version(file_object=File(file_object))
 
@@ -63,6 +67,28 @@ class DocumentTestCase(TestCase):
 
         self.failUnlessEqual(self.document.versions.count(), 3)
 
-    def tearDown(self):
+    def test_restoring_documents(self):
+        self.assertEqual(Document.objects.count(), 1)
+
+        # Trash the document
         self.document.delete()
-        self.document_type.delete()
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(Document.objects.count(), 0)
+
+        # Restore the document
+        self.document.restore()
+        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(Document.objects.count(), 1)
+
+    def test_trashing_documents(self):
+        self.assertEqual(Document.objects.count(), 1)
+
+        # Trash the document
+        self.document.delete()
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(Document.objects.count(), 0)
+
+        # Delete the document
+        self.document.delete()
+        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(Document.objects.count(), 0)
