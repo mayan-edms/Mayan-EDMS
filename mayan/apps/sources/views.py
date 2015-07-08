@@ -96,7 +96,7 @@ def get_tab_link_for_source(source, document=None):
         args = ['"{}"'.format(source.pk)]
 
     return Link(
-        text=source.title,
+        text=source.label,
         view=view,
         args=args,
         keep_query=True,
@@ -266,7 +266,7 @@ class UploadInteractiveView(UploadBaseView):
 
     def get_context_data(self, **kwargs):
         context = super(UploadInteractiveView, self).get_context_data(**kwargs)
-        context['title'] = _('Upload a local document from source: %s') % self.source.title
+        context['title'] = _('Upload a local document from source: %s') % self.source.label
         return context
 
 
@@ -332,7 +332,7 @@ class UploadInteractiveVersionView(UploadBaseView):
     def get_context_data(self, **kwargs):
         context = super(UploadInteractiveVersionView, self).get_context_data(**kwargs)
         context['object'] = self.document
-        context['title'] = _('Upload a new version from source: %s') % self.source.title
+        context['title'] = _('Upload a new version from source: %s') % self.source.label
 
         return context
 

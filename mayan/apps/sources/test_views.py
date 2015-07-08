@@ -45,7 +45,7 @@ class UploadDocumentTestCase(TestCase):
         self.assertTrue(self.admin_user.is_authenticated())
 
         # Create new webform source
-        self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
+        self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'label': 'test', 'uncompress': 'n', 'enabled': True})
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document
@@ -74,7 +74,7 @@ class UploadDocumentTestCase(TestCase):
         self.assertTrue(self.admin_user.is_authenticated())
 
         # Create new webform source
-        self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
+        self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'label': 'test', 'uncompress': 'n', 'enabled': True})
         self.assertEqual(WebFormSource.objects.count(), 1)
 
         # Upload the test document

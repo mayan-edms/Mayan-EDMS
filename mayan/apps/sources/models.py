@@ -37,7 +37,7 @@ logger = logging.getLogger(__name__)
 
 @python_2_unicode_compatible
 class Source(models.Model):
-    title = models.CharField(max_length=64, verbose_name=_('Title'))
+    label = models.CharField(max_length=64, verbose_name=_('Label'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
     objects = InheritanceManager()
@@ -47,10 +47,10 @@ class Source(models.Model):
         return unicode(dict(SOURCE_CHOICES).get(cls.source_type))
 
     def __str__(self):
-        return '%s' % self.title
+        return '%s' % self.label
 
     def fullname(self):
-        return ' '.join([self.class_fullname(), '"%s"' % self.title])
+        return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
     def _upload_document(self, document_type, file_object, label, language, user, description=None, metadata_dict_list=None):
         document = document_type.new_document(
@@ -91,7 +91,7 @@ class Source(models.Model):
         # TODO: Should raise NotImplementedError()?
 
     class Meta:
-        ordering = ('title',)
+        ordering = ('label',)
         verbose_name = _('Source')
         verbose_name_plural = _('Sources')
 
