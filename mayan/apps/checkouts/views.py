@@ -27,44 +27,6 @@ from .permissions import (
 )
 
 
-class CheckoutListView(DocumentListView):
-    def get_document_queryset(self):
-        return DocumentCheckout.objects.checked_out_documents()
-
-    extra_context = {
-        'title': _('Documents checked out'),
-        'hide_links': True,
-        'extra_columns': [
-            {'name': _('User'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user))},
-            {'name': _('Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
-            {'name': _('Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
-        ],
-    }
-
-
-def checkout_info(request, document_pk):
-    document = get_object_or_404(Document, pk=document_pk)
-    try:
-        Permission.check_permissions(request.user, [permission_document_checkout, permission_document_checkin])
-    except PermissionDenied:
-        AccessControlList.objects.check_access([permission_document_checkout, permission_document_checkin], request.user, document)
-
-    paragraphs = [_('Document status: %s') % STATE_LABELS[document.checkout_state()]]
-
-    if document.is_checked_out():
-        checkout_info = document.checkout_info()
-        paragraphs.append(_('User: %s') % get_object_name(checkout_info.user))
-        paragraphs.append(_('Check out time: %s') % checkout_info.checkout_datetime)
-        paragraphs.append(_('Check out expiration: %s') % checkout_info.expiration_datetime)
-        paragraphs.append(_('New versions allowed: %s') % (_('Yes') if not checkout_info.block_new_version else _('No')))
-
-    return render_to_response('appearance/generic_template.html', {
-        'paragraphs': paragraphs,
-        'object': document,
-        'title': _('Check out details for document: %s') % document
-    }, context_instance=RequestContext(request))
-
-
 class CheckoutDocumentView(SingleObjectCreateView):
     form_class = DocumentCheckoutForm
 
@@ -101,6 +63,44 @@ class CheckoutDocumentView(SingleObjectCreateView):
 
     def get_post_action_redirect(self):
         return reverse('checkouts:checkout_info', args=[self.document.pk])
+
+
+class CheckoutListView(DocumentListView):
+    def get_document_queryset(self):
+        return DocumentCheckout.objects.checked_out_documents()
+
+    extra_context = {
+        'title': _('Documents checked out'),
+        'hide_links': True,
+        'extra_columns': [
+            {'name': _('User'), 'attribute': encapsulate(lambda document: get_object_name(document.checkout_info().user))},
+            {'name': _('Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
+            {'name': _('Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
+        ],
+    }
+
+
+def checkout_info(request, document_pk):
+    document = get_object_or_404(Document, pk=document_pk)
+    try:
+        Permission.check_permissions(request.user, [permission_document_checkout, permission_document_checkin])
+    except PermissionDenied:
+        AccessControlList.objects.check_access([permission_document_checkout, permission_document_checkin], request.user, document)
+
+    paragraphs = [_('Document status: %s') % STATE_LABELS[document.checkout_state()]]
+
+    if document.is_checked_out():
+        checkout_info = document.checkout_info()
+        paragraphs.append(_('User: %s') % get_object_name(checkout_info.user))
+        paragraphs.append(_('Check out time: %s') % checkout_info.checkout_datetime)
+        paragraphs.append(_('Check out expiration: %s') % checkout_info.expiration_datetime)
+        paragraphs.append(_('New versions allowed: %s') % (_('Yes') if not checkout_info.block_new_version else _('No')))
+
+    return render_to_response('appearance/generic_template.html', {
+        'paragraphs': paragraphs,
+        'object': document,
+        'title': _('Check out details for document: %s') % document
+    }, context_instance=RequestContext(request))
 
 
 def checkin_document(request, document_pk):

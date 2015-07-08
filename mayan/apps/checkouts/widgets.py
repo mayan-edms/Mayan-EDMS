@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import datetime
 
 from django import forms
-from django.core import validators
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
