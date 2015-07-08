@@ -12,7 +12,7 @@ from documents.models import Document, DocumentType
 from sources.literals import SOURCE_CHOICE_WEB_FORM
 from sources.models import WebFormSource
 
-from documents.tests import (
+from documents.test_models import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
     TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
     TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE,

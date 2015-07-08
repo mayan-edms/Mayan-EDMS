@@ -8,7 +8,7 @@ from django.test import TestCase
 
 from documents.models import Document, DocumentType
 from documents.search import document_search
-from documents.tests import (
+from documents.test_models import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
     TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )

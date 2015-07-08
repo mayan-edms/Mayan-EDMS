@@ -12,7 +12,7 @@ from documents.models import Document, DocumentType
 from sources.literals import SOURCE_CHOICE_WEB_FORM
 from sources.models import WebFormSource
 
-from documents.tests import (
+from documents.test_models import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
     TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
     TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE,
@@ -62,10 +62,6 @@ class UploadDocumentTestCase(TestCase):
         self.failUnlessEqual(self.document.label, 'mayan_11_1.pdf')
         self.failUnlessEqual(self.document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
         self.failUnlessEqual(self.document.page_count, 47)
-
-        # Delete the document
-        self.client.post(reverse('documents:document_delete', args=[self.document.pk]))
-        self.assertEqual(Document.objects.count(), 0)
 
     def test_issue_25(self):
         # Login the admin user

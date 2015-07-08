@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 from django.core.files.base import File
 from django.test import TestCase
 
-from authentication.tests import (
+from authentication.test_views import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 from documents.models import Document, DocumentType

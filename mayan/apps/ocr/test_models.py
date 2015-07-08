@@ -4,7 +4,7 @@ from django.core.files.base import File
 from django.test import TransactionTestCase
 
 from documents.models import Document, DocumentType
-from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from documents.test_models import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
 
 class DocumentOCRTestCase(TransactionTestCase):
