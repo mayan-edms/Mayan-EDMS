@@ -23,7 +23,7 @@ class SmartSettingsApp(MayanAppConfig):
 
         SourceColumn(source=Namespace, label=_('Setting count'), attribute=encapsulate(lambda instance: len(instance.settings)))
         SourceColumn(source=Setting, label=_('Name'), attribute=encapsulate(lambda instance: setting_widget(instance)))
-        SourceColumn(source=Setting, label=_('Value'), attribute='value')
+        SourceColumn(source=Setting, label=_('Value'), attribute='serialized_value')
         SourceColumn(source=Setting, label=_('Found in path'), attribute=encapsulate(lambda instance: exists_widget(instance.value) if instance.is_path else _('n/a')))
 
         menu_object.bind_links(links=(link_namespace_detail,), sources=(Namespace,))

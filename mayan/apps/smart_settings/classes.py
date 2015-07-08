@@ -37,19 +37,30 @@ class Setting(object):
         self.default = default
         self.help_text = help_text
         self.is_path = is_path
-        self._value = None
+        self.yaml = None
         namespace.settings.append(self)
 
     def __unicode__(self):
         return unicode(self.global_name)
 
     @property
-    def value(self):
-        if not self._value:
-            self._value = yaml.safe_load(getattr(settings, self.global_name, yaml.safe_dump(self.default)))
+    def serialized_value(self):
+        if not self.yaml:
+            self.yaml = yaml.safe_dump(getattr(settings, self.global_name, self.default), allow_unicode=True)
 
-        return self._value
+        return self.yaml
+
+    @serialized_value.setter
+    def serialized_value(self, value):
+        self.yaml = value
+
+    @property
+    def value(self):
+        if not self.yaml:
+            self.yaml = yaml.safe_dump(getattr(settings, self.global_name, self.default), allow_unicode=True)
+
+        return yaml.safe_load(self.yaml)
 
     @value.setter
-    def value(self, new_value):
-        self._value = new_value
+    def value(self, value):
+        self.yaml = yaml.safe_dump(self.python_value, allow_unicode=True)
