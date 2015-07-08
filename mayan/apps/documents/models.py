@@ -191,7 +191,7 @@ class Document(models.Model):
             document_id=self.pk, user_id=user_id,
         ), queue='uploads')
 
-        logger.info('New document version queued for document: %s', self)
+        logger.info('New document version created for document: %s', self)
 
     # Proxy methods
     def open(self, *args, **kwargs):
@@ -324,7 +324,7 @@ class DocumentVersion(models.Model):
                     self.save()
                     self.update_page_count(save=False)
 
-                    logger.info('New document "%s" version created for document: %s', self, self.document)
+                    logger.info('New document version "%s" created for document: %s', self, self.document)
 
                     self.document.is_stub = False
                     self.document.save()
