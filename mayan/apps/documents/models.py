@@ -82,7 +82,7 @@ class DocumentType(models.Model):
         if not label:
             label = unicode(file_object)
 
-        document = self.documents.create(description=description, language=language, label=label)
+        document = self.documents.create(description=description or '', language=language, label=label)
         document.save(_user=_user)
 
         document.new_version(file_object=file_object, _user=_user)
