@@ -41,8 +41,7 @@ class SetupIndexListView(SingleObjectListView):
             'title': _('Indexes'),
             'hide_object': True,
             'extra_columns': [
-                {'name': _('Name'), 'attribute': 'name'},
-                {'name': _('Title'), 'attribute': 'title'},
+                {'name': _('Label'), 'attribute': 'label'},
                 {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
             ]
         }
@@ -384,7 +383,7 @@ def rebuild_index_instances(request):
         return render_to_response('appearance/generic_confirm.html', {
             'previous': previous,
             'next': next,
-            'title': _('Are you sure you wish to rebuild all indexes?'),
+            'title': _('Rebuild all indexes?'),
             'message': _('On large databases this operation may take some time to execute.'),
         }, context_instance=RequestContext(request))
     else:

@@ -30,5 +30,5 @@ class IndexSerializer(serializers.ModelSerializer):
     instance_root = IndexInstanceNodeSerializer(read_only=True)
 
     class Meta:
-        fields = ('id', 'name', 'title', 'enabled', 'document_types', 'node_templates', 'instance_root')
+        fields = ('id', 'label', 'enabled', 'document_types', 'node_templates', 'instance_root')
         model = Index

@@ -15,10 +15,8 @@ from .managers import IndexManager
 
 @python_2_unicode_compatible
 class Index(models.Model):
-    name = models.CharField(unique=True, max_length=64, verbose_name=_('Name'), help_text=_('Internal name used to reference this index.'))
-    # TODO: normalize 'title' to 'label'
-    title = models.CharField(unique=True, max_length=128, verbose_name=_('Title'), help_text=_('The name that will be visible to users.'))
-    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'), help_text=_('Causes this index to be visible and updated when document data changes.'))
+    label = models.CharField(max_length=128, unique=True, verbose_name=_('Label'))
+    enabled = models.BooleanField(default=True, help_text=_('Causes this index to be visible and updated when document data changes.'), verbose_name=_('Enabled'))
     document_types = models.ManyToManyField(DocumentType, verbose_name=_('Document types'))
 
     objects = IndexManager()
@@ -32,7 +30,7 @@ class Index(models.Model):
         return self.template_root.node_instance.get()
 
     def __str__(self):
-        return self.title
+        return self.label
 
     def get_absolute_url(self):
         try:
@@ -47,9 +45,6 @@ class Index(models.Model):
 
     def get_document_types_names(self):
         return ', '.join([unicode(document_type) for document_type in self.document_types.all()] or ['None'])
-
-    def natural_key(self):
-        return (self.name,)
 
     def get_instance_node_count(self):
         try:

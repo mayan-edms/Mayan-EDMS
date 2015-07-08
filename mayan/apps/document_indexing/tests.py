@@ -22,7 +22,7 @@ class IndexTestCase(TestCase):
         DocumentTypeMetadataType.objects.create(document_type=self.document_type, metadata_type=metadata_type)
 
         # Create empty index
-        index = Index.objects.create(name='test', title='test')
+        index = Index.objects.create(label='test')
         self.failUnlessEqual(list(Index.objects.all()), [index])
 
         # Add our document type to the new index
