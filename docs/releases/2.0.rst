@@ -66,6 +66,8 @@ What's new in Mayan EDMS v2.0
 * New internal document creation workflow, returns document stub while content is processing
 * New document ready signal
 * Index are recalculating after new document is ready
+* Normalization of 'title' and 'name' fields to 'label'
+* Split tests files.
 
 Upgrading from a previous version
 =================================
