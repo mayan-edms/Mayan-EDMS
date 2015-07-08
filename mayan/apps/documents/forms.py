@@ -100,7 +100,7 @@ class DocumentTypeForm(forms.ModelForm):
     Model class form to create or edit a document type
     """
     class Meta:
-        fields = ('name', 'trash_time_period', 'trash_time_unit', 'delete_time_period', 'delete_time_unit')
+        fields = ('label', 'trash_time_period', 'trash_time_unit', 'delete_time_period', 'delete_time_unit')
         model = DocumentType
 
 

@@ -58,7 +58,7 @@ class DocumentType(models.Model):
     Define document types or classes to which a specific set of
     properties can be attached
     """
-    name = models.CharField(max_length=32, unique=True, verbose_name=_('Name'))
+    label = models.CharField(max_length=32, unique=True, verbose_name=_('Label'))
     trash_time_period = models.PositiveIntegerField(blank=True, help_text=_('Amount of time after which documents of this type will be moved to the trash.'), null=True, verbose_name=_('Trash time period'))
     trash_time_unit = models.CharField(blank=True, choices=TIME_DELTA_UNIT_CHOICES, null=True, max_length=8, verbose_name=_('Trash time unit'))
     delete_time_period = models.PositiveIntegerField(default=DEFAULT_DELETE_PERIOD, help_text=_('Amount of time after which documents of this type in the trash will be deleted.'), verbose_name=_('Delete time period'))
@@ -67,16 +67,13 @@ class DocumentType(models.Model):
     objects = DocumentTypeManager()
 
     def __str__(self):
-        return self.name
+        return self.label
 
     def delete(self, *args, **kwargs):
         for document in Document.passthrough.filter(document_type=self):
             document.delete(to_trash=False)
 
         return super(DocumentType, self).delete(*args, **kwargs)
-
-    def natural_key(self):
-        return (self.name,)
 
     def new_document(self, file_object, label=None, description=None, language=None, _user=None):
         if not language:
@@ -95,7 +92,7 @@ class DocumentType(models.Model):
     class Meta:
         verbose_name = _('Document type')
         verbose_name_plural = _('Documents types')
-        ordering = ('name',)
+        ordering = ('label',)
 
 
 @python_2_unicode_compatible
@@ -104,11 +101,11 @@ class Document(models.Model):
     Defines a single document with it's fields and properties
     """
 
-    uuid = models.CharField(default=UUID_FUNCTION, max_length=48, editable=False)
-    document_type = models.ForeignKey(DocumentType, verbose_name=_('Document type'), related_name='documents')
-    label = models.CharField(max_length=255, default=_('Uninitialized document'), db_index=True, help_text=_('The name of the document'), verbose_name=_('Label'))
+    uuid = models.CharField(default=UUID_FUNCTION, editable=False, max_length=48)
+    document_type = models.ForeignKey(DocumentType, related_name='documents',  verbose_name=_('Document type'))
+    label = models.CharField(db_index=True, default=_('Uninitialized document'), max_length=255, help_text=_('The name of the document'), verbose_name=_('Label'))
     description = models.TextField(blank=True, null=True, verbose_name=_('Description'))
-    date_added = models.DateTimeField(verbose_name=_('Added'), auto_now_add=True)
+    date_added = models.DateTimeField(auto_now_add=True, verbose_name=_('Added'))
     language = models.CharField(choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
     in_trash = models.BooleanField(default=False, editable=False, verbose_name=_('In trash?'))
     deleted_date_time = models.DateTimeField(blank=True, editable=True, null=True, verbose_name=_('Date and time trashed'))
@@ -284,16 +281,15 @@ class DocumentVersion(models.Model):
     def register_post_save_hook(cls, order, func):
         cls._post_save_hooks[order] = func
 
-    document = models.ForeignKey(Document, verbose_name=_('Document'), related_name='versions')
-    timestamp = models.DateTimeField(verbose_name=_('Timestamp'), auto_now_add=True)
+    document = models.ForeignKey(Document, related_name='versions', verbose_name=_('Document'))
+    timestamp = models.DateTimeField(auto_now_add=True, verbose_name=_('Timestamp'))
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
     # File related fields
-    file = models.FileField(upload_to=UUID_FUNCTION, storage=storage_backend, verbose_name=_('File'))
-    mimetype = models.CharField(max_length=255, null=True, blank=True, editable=False)
-    encoding = models.CharField(max_length=64, null=True, blank=True, editable=False)
-
-    checksum = models.TextField(blank=True, null=True, verbose_name=_('Checksum'), editable=False)
+    file = models.FileField(storage=storage_backend, upload_to=UUID_FUNCTION, verbose_name=_('File'))
+    mimetype = models.CharField(blank=True, editable=False, max_length=255, null=True)
+    encoding = models.CharField(blank=True, editable=False, max_length=64, null=True)
+    checksum = models.TextField(blank=True, editable=False, null=True, verbose_name=_('Checksum'))
 
     class Meta:
         verbose_name = _('Document version')
@@ -514,7 +510,7 @@ class DocumentTypeFilename(models.Model):
     quick rename functionality
     """
     document_type = models.ForeignKey(DocumentType, related_name='filenames', verbose_name=_('Document type'))
-    filename = models.CharField(max_length=128, verbose_name=_('Filename'), db_index=True)
+    filename = models.CharField(db_index=True, max_length=128, verbose_name=_('Filename'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
     def __str__(self):
@@ -532,8 +528,8 @@ class DocumentPage(models.Model):
     """
     Model that describes a document version page
     """
-    document_version = models.ForeignKey(DocumentVersion, verbose_name=_('Document version'), related_name='pages')
-    page_number = models.PositiveIntegerField(default=1, editable=False, verbose_name=_('Page number'), db_index=True)
+    document_version = models.ForeignKey(DocumentVersion, related_name='pages', verbose_name=_('Document version'))
+    page_number = models.PositiveIntegerField(db_index=True, default=1, editable=False, verbose_name=_('Page number'))
 
     def __str__(self):
         return _('Page %(page_num)d out of %(total_pages)d of %(document)s') % {
@@ -649,9 +645,9 @@ class RecentDocument(models.Model):
     Keeps a list of the n most recent accessed or created document for
     a given user
     """
-    user = models.ForeignKey(User, verbose_name=_('User'), editable=False)
-    document = models.ForeignKey(Document, verbose_name=_('Document'), editable=False)
-    datetime_accessed = models.DateTimeField(verbose_name=_('Accessed'), auto_now=True, db_index=True)
+    user = models.ForeignKey(User, editable=False, verbose_name=_('User'))
+    document = models.ForeignKey(Document, editable=False, verbose_name=_('Document'))
+    datetime_accessed = models.DateTimeField(auto_now=True, db_index=True, verbose_name=_('Accessed'))
 
     objects = RecentDocumentManager()
 

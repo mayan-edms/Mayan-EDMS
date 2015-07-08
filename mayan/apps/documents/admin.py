@@ -50,7 +50,7 @@ class DocumentTypeAdmin(admin.ModelAdmin):
     inlines = (
         DocumentTypeFilenameInline,
     )
-    list_display = ('name', 'trash_time_period', 'trash_time_unit', 'delete_time_period', 'delete_time_unit')
+    list_display = ('label', 'trash_time_period', 'trash_time_unit', 'delete_time_period', 'delete_time_unit')
 
 
 class RecentDocumentAdmin(admin.ModelAdmin):
