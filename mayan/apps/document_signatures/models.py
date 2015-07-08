@@ -8,9 +8,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from django_gpg.runtime import gpg
 from documents.models import DocumentVersion
-from documents.runtime import storage_backend
 
 from .managers import DocumentVersionSignatureManager
+from .runtime import storage_backend
 
 logger = logging.getLogger(__name__)
 
