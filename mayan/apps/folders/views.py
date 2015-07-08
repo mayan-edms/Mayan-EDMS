@@ -67,12 +67,12 @@ def folder_create(request):
     if request.method == 'POST':
         form = FolderForm(request.POST)
         if form.is_valid():
-            folder, created = Folder.objects.get_or_create(user=request.user, title=form.cleaned_data['title'])
+            folder, created = Folder.objects.get_or_create(user=request.user, label=form.cleaned_data['label'])
             if created:
                 messages.success(request, _('Folder created successfully'))
                 return HttpResponseRedirect(reverse('folders:folder_list'))
             else:
-                messages.error(request, _('A folder named: %s, already exists.') % form.cleaned_data['title'])
+                messages.error(request, _('A folder named: %s, already exists.') % form.cleaned_data['label'])
     else:
         form = FolderForm()
 

@@ -18,7 +18,7 @@ logger = logging.getLogger(__name__)
 class FolderForm(forms.ModelForm):
     class Meta:
         model = Folder
-        fields = ('title',)
+        fields = ('label',)
 
 
 class FolderListForm(forms.Form):

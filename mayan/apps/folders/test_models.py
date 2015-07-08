@@ -28,7 +28,7 @@ class FolderTestCase(TestCase):
         self.user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
 
     def test_creation_of_folder(self):
-        folder = Folder.objects.create(title='test', user=self.user)
+        folder = Folder.objects.create(label='test', user=self.user)
 
         self.assertEqual(Folder.objects.all().count(), 1)
         self.assertEqual(list(Folder.objects.all()), [folder])
@@ -36,7 +36,7 @@ class FolderTestCase(TestCase):
 
     def test_addition_of_documents(self):
         user = User.objects.all()[0]
-        folder = Folder.objects.create(title='test', user=self.user)
+        folder = Folder.objects.create(label='test', user=self.user)
         folder.documents.add(self.document)
 
         self.assertEqual(folder.documents.count(), 1)
@@ -45,7 +45,7 @@ class FolderTestCase(TestCase):
 
     def test_addition_and_deletion_of_documents(self):
         user = User.objects.all()[0]
-        folder = Folder.objects.create(title='test', user=self.user)
+        folder = Folder.objects.create(label='test', user=self.user)
         folder.documents.add(self.document)
 
         self.assertEqual(folder.documents.count(), 1)

@@ -9,7 +9,7 @@ class FolderSerializer(serializers.ModelSerializer):
     documents = serializers.SerializerMethodField('get_documents_count')
 
     class Meta:
-        fields = ('id', 'title', 'user', 'datetime_created', 'documents')
+        fields = ('id', 'label', 'user', 'datetime_created', 'documents')
         model = Folder
         read_only_fields = ('user',)
 
