@@ -29,6 +29,10 @@ class SharedUploadedFile(models.Model):
     def __str__(self):
         return self.filename
 
+    def save(self, *args, **kwargs):
+        self.filename = unicode(self.file)
+        super(SharedUploadedFile, self).save(*args, **kwargs)
+
     def delete(self, *args, **kwargs):
         self.file.storage.delete(self.file.path)
         return super(SharedUploadedFile, self).delete(*args, **kwargs)
