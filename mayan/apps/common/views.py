@@ -554,9 +554,10 @@ def current_user_locale_profile_edit(request):
 
             if hasattr(request, 'session'):
                 request.session[translation.LANGUAGE_SESSION_KEY] = form.cleaned_data['language']
-                request.session['django_timezone'] = form.cleaned_data['timezone']
+                request.session[settings.TIMEZONE_SESSION_KEY] = form.cleaned_data['timezone']
             else:
                 request.set_cookie(settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language'])
+                request.set_cookie(settings.TIMEZONE_COOKIE_NAME, form.cleaned_data['timezone'])
 
             messages.success(request, _('Current user\'s locale profile details updated.'))
             return HttpResponseRedirect(next)

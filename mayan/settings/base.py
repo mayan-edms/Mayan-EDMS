@@ -271,3 +271,6 @@ CORS_ORIGIN_ALLOW_ALL = True
 SWAGGER_SETTINGS = {
     'api_version': '0',  # Specify your API's version
 }
+# ------ Timezone --------
+TIMEZONE_COOKIE_NAME = 'django_timezone'
+TIMEZONE_SESSION_KEY = 'django_timezone'

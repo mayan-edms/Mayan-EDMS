@@ -17,9 +17,10 @@ def user_locale_profile_session_config(sender, request, user, **kwargs):
 
         if hasattr(request, 'session'):
             request.session[translation.LANGUAGE_SESSION_KEY] = user_locale_profile.language
-            request.session['django_timezone'] = user_locale_profile.timezone
+            request.session[settings.TIMEZONE_SESSION_KEY] = user_locale_profile.timezone
         else:
             request.set_cookie(settings.LANGUAGE_COOKIE_NAME, user_locale_profile.language)
+            request.set_cookie(settings.TIMEZONE_COOKIE_NAME, user_locale_profile.timezone)
 
 
 def user_locale_profile_create(sender, instance, created, **kwargs):
