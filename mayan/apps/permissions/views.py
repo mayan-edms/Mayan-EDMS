@@ -13,7 +13,6 @@ from common.views import (
 )
 
 from .classes import Permission, PermissionNamespace
-from .forms import RoleForm
 from .models import Role, StoredPermission
 from .permissions import (
     permission_permission_grant, permission_permission_revoke,
@@ -23,7 +22,7 @@ from .permissions import (
 
 
 class RoleCreateView(SingleObjectCreateView):
-    form_class = RoleForm
+    fields = ('label',)
     model = Role
     view_permission = permission_role_create
     success_url = reverse_lazy('permissions:role_list')
@@ -36,6 +35,7 @@ class RoleDeleteView(SingleObjectDeleteView):
 
 
 class RoleEditView(SingleObjectEditView):
+    fields = ('label',)
     model = Role
     view_permission = permission_role_edit
 
