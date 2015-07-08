@@ -7,6 +7,7 @@ from django.core.files.base import File
 from django.test import TestCase
 
 from documents.models import Document, DocumentType
+from documents.test_models import TEST_DOCUMENT_TYPE
 from django_gpg.literals import SIGNATURE_STATE_VALID
 from django_gpg.runtime import gpg
 
@@ -20,7 +21,7 @@ TEST_KEY_FILE = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', '
 
 class DocumentTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(name='test doc type')
+        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
 
         ocr_settings = self.document_type.ocr_settings
         ocr_settings.auto_ocr = False

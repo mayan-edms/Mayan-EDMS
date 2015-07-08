@@ -30,7 +30,7 @@ class UploadDocumentTestCase(TestCase):
     """
 
     def setUp(self):
-        self.document_type = DocumentType.objects.create(name=TEST_DOCUMENT_TYPE)
+        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
         ocr_settings = self.document_type.ocr_settings
         ocr_settings.auto_ocr = False
         ocr_settings.save()

@@ -12,7 +12,11 @@ from .models import Index, IndexInstanceNode, IndexTemplateNode
 
 class IndexTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(name=TEST_DOCUMENT_TYPE)
+        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+
+        ocr_settings = self.document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(file_object=File(file_object))

@@ -7,6 +7,7 @@ from django.core.files.base import File
 from django.test import TestCase
 
 from documents.models import Document, DocumentType
+from documents.test_models import TEST_DOCUMENT_TYPE
 
 from .literals import COLOR_RED
 from .models import Tag
@@ -16,7 +17,7 @@ TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_document
 
 class TagTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType(name='test doc type')
+        self.document_type = DocumentType(label=TEST_DOCUMENT_TYPE)
         self.document_type.save()
 
         self.document = Document(
