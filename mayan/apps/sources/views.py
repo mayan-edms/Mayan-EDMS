@@ -215,10 +215,11 @@ class UploadInteractiveView(UploadBaseView):
 
         shared_uploaded_file = SharedUploadedFile.objects.create(file=uploaded_file.file)
 
-        label = shared_uploaded_file.filename
         if 'document_type_available_filenames' in forms['document_form'].cleaned_data:
             if forms['document_form'].cleaned_data['document_type_available_filenames']:
                 label = forms['document_form'].cleaned_data['document_type_available_filenames'].filename
+        else:
+            label = None
 
         if not self.request.user.is_anonymous():
             user_id = self.request.user.pk

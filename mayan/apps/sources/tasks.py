@@ -38,6 +38,9 @@ def task_source_upload_document(label, document_type_id, shared_uploaded_file_id
     else:
         user = None
 
+    if not label:
+        label = shared_uploaded_file.filename
+
     with shared_uploaded_file.open() as file_object:
         source.upload_document(description=description, document_type=document_type, expand=expand, file_object=file_object, label=label, language=language, metadata_dict_list=metadata_dict_list, user=user)
 
