@@ -46,7 +46,7 @@ class Setting(object):
     @property
     def value(self):
         if not self._value:
-            self._value = yaml.safe_load(getattr(settings, yaml.safe_dump(self.global_name), yaml.safe_dump(self.default)))
+            self._value = yaml.safe_load(getattr(settings, self.global_name, yaml.safe_dump(self.default)))
 
         return self._value
 
