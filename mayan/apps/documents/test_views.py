@@ -15,7 +15,7 @@ from django.test import TestCase
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from .models import Document, DocumentType
+from .models import DeletedDocument, Document, DocumentType
 from .test_models import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
     TEST_SMALL_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_FILENAME,
@@ -33,30 +33,50 @@ class DocumentsViewsFunctionalTestCase(TestCase):
     """
 
     def setUp(self):
-        from sources.models import WebFormSource
-        from sources.literals import SOURCE_CHOICE_WEB_FORM
-
-        DocumentType.objects.all().delete()  # Clean up <orphan document type>
         self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        ocr_settings = self.document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
+
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
         self.client = Client()
         # Login the admin user
         logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
         self.assertTrue(logged_in)
         self.assertTrue(self.admin_user.is_authenticated())
-        # Create new webform source
-        self.client.post(reverse('sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]), {'title': 'test', 'uncompress': 'n', 'enabled': True})
-        self.assertEqual(WebFormSource.objects.count(), 1)
 
-        # Upload the test document
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
-            self.client.post(reverse('sources:upload_interactive'), {'document-language': 'eng', 'source-file': file_descriptor, 'document_type_id': self.document_type.pk})
-        self.assertEqual(Document.objects.count(), 1)
-        self.document = Document.objects.first()
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf')
 
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
+
+    def test_restoring_documents(self):
+        self.assertEqual(Document.objects.count(), 1)
+
+        # Trash the document
+        self.client.post(reverse('documents:document_trash', args=[self.document.pk]))
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(Document.objects.count(), 0)
+
+        # Restore the document
+        self.client.post(reverse('documents:document_restore', args=[self.document.pk]))
+        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(Document.objects.count(), 1)
+
+    def test_trashing_documents(self):
+        self.assertEqual(Document.objects.count(), 1)
+
+        # Trash the document
+        self.client.post(reverse('documents:document_trash', args=[self.document.pk]))
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(Document.objects.count(), 0)
+
+        # Delete the document
+        self.client.post(reverse('documents:document_delete', args=[self.document.pk]))
+        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(Document.objects.count(), 0)
 
     def test_document_view(self):
         response = self.client.get(reverse('documents:document_list'))
