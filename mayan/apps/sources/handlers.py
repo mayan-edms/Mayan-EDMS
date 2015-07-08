@@ -9,7 +9,7 @@ from .models import WebFormSource
 
 
 def create_default_document_source(sender, **kwargs):
-    WebFormSource.objects.create(title=_('Default'), uncompress=SOURCE_UNCOMPRESS_CHOICE_ASK)
+    WebFormSource.objects.create(label=_('Default'), uncompress=SOURCE_UNCOMPRESS_CHOICE_ASK)
 
 
 def copy_transformations_to_version(sender, **kwargs):
