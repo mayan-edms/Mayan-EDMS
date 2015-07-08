@@ -96,16 +96,11 @@ class ACLCreateView(SingleObjectCreateView):
 
         return super(ACLCreateView, self).form_valid(form)
 
-    def get_context_data(self, **kwargs):
-        context = super(ACLCreateView, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'object': self.content_object,
-                'title': _('New access control lists for: %s' % self.content_object),
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'object': self.content_object,
+            'title': _('New access control lists for: %s' % self.content_object),
+        }
 
 
 class ACLDeleteView(SingleObjectDeleteView):
