@@ -57,7 +57,6 @@ class StoredPermission(models.Model):
 
 @python_2_unicode_compatible
 class Role(models.Model):
-    name = models.CharField(max_length=64, unique=True)
     label = models.CharField(max_length=64, unique=True, verbose_name=_('Label'))
     permissions = models.ManyToManyField(StoredPermission, related_name='roles', verbose_name=_('Permissions'))
     groups = models.ManyToManyField(Group, related_name='roles', verbose_name=_('Groups'))

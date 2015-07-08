@@ -7,5 +7,5 @@ from .models import Role
 
 class RoleForm(forms.ModelForm):
     class Meta:
-        fields = ('name', 'label')
+        fields = ('label',)
         model = Role
