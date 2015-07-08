@@ -95,7 +95,7 @@ class ResolvedSmartLinkView(DocumentListView):
             'object': self.document,
             'title': _('Documents in smart link "%(smart_link)s" as relation to "%(document)s"') % {
                 'document': self.document,
-                'smart_link': self.smart_link.get_dynamic_title(self.document),
+                'smart_link': self.smart_link.get_dynamic_label(self.document),
             }
         }
 
@@ -113,7 +113,7 @@ class SmartLinkListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'extra_columns': [
-                {'name': _('Dynamic title'), 'attribute': 'dynamic_title'},
+                {'name': _('Dynamic label'), 'attribute': 'dynamic_label'},
                 {'name': _('Enabled'), 'attribute': encapsulate(lambda instance: two_state_template(instance.enabled))},
             ],
             'hide_link': True,
@@ -139,7 +139,7 @@ class DocumentSmartLinkListView(SmartLinkListView):
         return {
             'document': self.document,
             'extra_columns': (
-                {'name': _('Title'), 'attribute': encapsulate(lambda smart_link: smart_link.get_dynamic_title(self.document))},
+                {'name': _('Label'), 'attribute': encapsulate(lambda smart_link: smart_link.get_dynamic_label(self.document))},
             ),
             'hide_object': True,
             'hide_link': True,

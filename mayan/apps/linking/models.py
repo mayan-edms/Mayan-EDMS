@@ -14,22 +14,22 @@ from .literals import (
 
 @python_2_unicode_compatible
 class SmartLink(models.Model):
-    title = models.CharField(max_length=96, verbose_name=_('Title'))
-    dynamic_title = models.CharField(blank=True, max_length=96, verbose_name=_('Dynamic title'), help_text=_('This expression will be evaluated against the current selected document.'))
+    label = models.CharField(max_length=96, verbose_name=_('Label'))
+    dynamic_label = models.CharField(blank=True, max_length=96, verbose_name=_('Dynamic label'), help_text=_('This expression will be evaluated against the current selected document.'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     document_types = models.ManyToManyField(DocumentType, verbose_name=_('Document types'))
 
     def __str__(self):
-        return self.title
+        return self.label
 
-    def get_dynamic_title(self, document):
-        if self.dynamic_title:
+    def get_dynamic_label(self, document):
+        if self.dynamic_label:
             try:
-                return eval(self.dynamic_title, {'document': document})
+                return eval(self.dynamic_label, {'document': document})
             except Exception as exception:
-                return Exception(_('Error generating dynamic title; %s' % unicode(exception)))
+                return Exception(_('Error generating dynamic label; %s' % unicode(exception)))
         else:
-            return self.title
+            return self.label
 
     def resolve_for(self, document):
         return ResolvedSmartLink(smart_link=self, queryset=self.get_linked_document_for(document))
