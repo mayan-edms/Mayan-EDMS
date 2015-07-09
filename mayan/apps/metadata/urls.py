@@ -10,13 +10,14 @@ from .api_views import (
     APIMetadataTypeView
 )
 from .views import (
+    MetadataTypeCreateView, MetadataTypeDeleteView, MetadataTypeEditView,
     MetadataTypeListView, MissingRequiredMetadataDocumentListView,
     SetupDocumentTypeMetadataOptionalView, SetupDocumentTypeMetadataRequiredView
 )
 
 urlpatterns = patterns(
     'metadata.views',
-    url(r'^(?P<document_id>\d+)/edit/$', 'metadata_edit', name='metadata_edit'),
+    url(r'^(?P<pk>\d+)/edit/$', 'metadata_edit', name='metadata_edit'),
     url(r'^(?P<document_id>\d+)/view/$', 'metadata_view', name='metadata_view'),
     url(r'^multiple/edit/$', 'metadata_multiple_edit', name='metadata_multiple_edit'),
     url(r'^(?P<document_id>\d+)/add/$', 'metadata_add', name='metadata_add'),
@@ -25,9 +26,9 @@ urlpatterns = patterns(
     url(r'^multiple/remove/$', 'metadata_multiple_remove', name='metadata_multiple_remove'),
 
     url(r'^setup/type/list/$', MetadataTypeListView.as_view(), name='setup_metadata_type_list'),
-    url(r'^setup/type/create/$', 'setup_metadata_type_create', name='setup_metadata_type_create'),
-    url(r'^setup/type/(?P<metadatatype_id>\d+)/edit/$', 'setup_metadata_type_edit', name='setup_metadata_type_edit'),
-    url(r'^setup/type/(?P<metadatatype_id>\d+)/delete/$', 'setup_metadata_type_delete', name='setup_metadata_type_delete'),
+    url(r'^setup/type/create/$', MetadataTypeCreateView.as_view(), name='setup_metadata_type_create'),
+    url(r'^setup/type/(?P<pk>\d+)/edit/$', MetadataTypeEditView.as_view(), name='setup_metadata_type_edit'),
+    url(r'^setup/type/(?P<pk>\d+)/delete/$', MetadataTypeDeleteView.as_view(), name='setup_metadata_type_delete'),
 
     url(r'^setup/document/type/(?P<pk>\d+)/metadata/edit/$', SetupDocumentTypeMetadataOptionalView.as_view(), name='setup_document_type_metadata'),
     url(r'^setup/document/type/(?P<pk>\d+)/metadata/edit/required/$', SetupDocumentTypeMetadataRequiredView.as_view(), name='setup_document_type_metadata_required'),

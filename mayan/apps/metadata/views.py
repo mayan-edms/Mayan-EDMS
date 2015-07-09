@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
@@ -12,7 +12,10 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.utils import encapsulate
-from common.views import AssignRemoveView, SingleObjectListView
+from common.views import (
+    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
+)
 from documents.models import Document, DocumentType
 from documents.permissions import (
     permission_document_type_edit
@@ -21,9 +24,7 @@ from documents.views import DocumentListView
 from permissions import Permission
 
 from .api import save_metadata_list
-from .forms import (
-    AddMetadataForm, MetadataFormSet, MetadataRemoveFormSet, MetadataTypeForm
-)
+from .forms import AddMetadataForm, MetadataFormSet, MetadataRemoveFormSet
 from .models import DocumentMetadata, MetadataType
 from .permissions import (
     permission_metadata_document_add, permission_metadata_document_edit,
@@ -348,6 +349,38 @@ def metadata_view(request, document_id):
 
 
 # Setup views
+class MetadataTypeCreateView(SingleObjectCreateView):
+    extra_context = {'title': _('Create metadata type')}
+    model = MetadataType
+    post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
+    view_permission = permission_metadata_type_create
+
+
+class MetadataTypeDeleteView(SingleObjectDeleteView):
+    model = MetadataType
+    post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
+    view_permission = permission_metadata_type_delete
+
+    def get_extra_context(self):
+        return {
+            'delete_view': True,
+            'object': self.get_object(),
+            'title': _('Delete the metadata type: %s?') % self.get_object(),
+        }
+
+
+class MetadataTypeEditView(SingleObjectEditView):
+    model = MetadataType
+    post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
+    view_permission = permission_metadata_type_edit
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit metadata type: %s') % self.get_object(),
+        }
+
+
 class MetadataTypeListView(SingleObjectListView):
     view_permission = permission_metadata_type_view
 
@@ -365,81 +398,6 @@ class MetadataTypeListView(SingleObjectListView):
                 },
             ]
         }
-
-
-def setup_metadata_type_edit(request, metadatatype_id):
-    Permission.check_permissions(request.user, [permission_metadata_type_edit])
-
-    metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
-
-    if request.method == 'POST':
-        form = MetadataTypeForm(instance=metadata_type, data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _('Metadata type edited successfully'))
-                return HttpResponseRedirect(reverse('metadata:setup_metadata_type_list'))
-            except Exception as exception:
-                messages.error(request, _('Error editing metadata type; %s') % exception)
-            pass
-    else:
-        form = MetadataTypeForm(instance=metadata_type)
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Edit metadata type: %s') % metadata_type,
-        'form': form,
-        'object': metadata_type,
-    }, context_instance=RequestContext(request))
-
-
-def setup_metadata_type_create(request):
-    Permission.check_permissions(request.user, [permission_metadata_type_create])
-
-    if request.method == 'POST':
-        form = MetadataTypeForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _('Metadata type created successfully'))
-            return HttpResponseRedirect(reverse('metadata:setup_metadata_type_list'))
-    else:
-        form = MetadataTypeForm()
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Create metadata type'),
-        'form': form,
-    }, context_instance=RequestContext(request))
-
-
-def setup_metadata_type_delete(request, metadatatype_id):
-    Permission.check_permissions(request.user, [permission_metadata_type_delete])
-
-    metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
-
-    post_action_redirect = reverse('metadata:setup_metadata_type_list')
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_action_redirect)))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
-
-    if request.method == 'POST':
-        try:
-            metadata_type.delete()
-            messages.success(request, _('Metadata type: %s deleted successfully.') % metadata_type)
-        except Exception as exception:
-            messages.error(request, _('Metadata type: %(metadata_type)s delete error: %(error)s') % {
-                'metadata_type': metadata_type, 'error': exception})
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'next': next,
-        'previous': previous,
-        'object': metadata_type,
-        'title': _('Are you sure you wish to delete the metadata type: %s?') % metadata_type,
-    }
-
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
 
 
 class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
