@@ -10,9 +10,8 @@ from .api_views import (
     APIMetadataTypeView
 )
 from .views import (
-    MissingRequiredMetadataDocumentListView,
-    SetupDocumentTypeMetadataOptionalView,
-    SetupDocumentTypeMetadataRequiredView
+    MetadataTypeListView, MissingRequiredMetadataDocumentListView,
+    SetupDocumentTypeMetadataOptionalView, SetupDocumentTypeMetadataRequiredView
 )
 
 urlpatterns = patterns(
@@ -25,7 +24,7 @@ urlpatterns = patterns(
     url(r'^(?P<document_id>\d+)/remove/$', 'metadata_remove', name='metadata_remove'),
     url(r'^multiple/remove/$', 'metadata_multiple_remove', name='metadata_multiple_remove'),
 
-    url(r'^setup/type/list/$', 'setup_metadata_type_list', name='setup_metadata_type_list'),
+    url(r'^setup/type/list/$', MetadataTypeListView.as_view(), name='setup_metadata_type_list'),
     url(r'^setup/type/create/$', 'setup_metadata_type_create', name='setup_metadata_type_create'),
     url(r'^setup/type/(?P<metadatatype_id>\d+)/edit/$', 'setup_metadata_type_edit', name='setup_metadata_type_edit'),
     url(r'^setup/type/(?P<metadatatype_id>\d+)/delete/$', 'setup_metadata_type_delete', name='setup_metadata_type_delete'),

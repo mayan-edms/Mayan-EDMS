@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.utils import encapsulate
-from common.views import AssignRemoveView
+from common.views import AssignRemoveView, SingleObjectListView
 from documents.models import Document, DocumentType
 from documents.permissions import (
     permission_document_type_edit
@@ -348,23 +348,23 @@ def metadata_view(request, document_id):
 
 
 # Setup views
-def setup_metadata_type_list(request):
-    Permission.check_permissions(request.user, [permission_metadata_type_view])
+class MetadataTypeListView(SingleObjectListView):
+    view_permission = permission_metadata_type_view
 
-    context = {
-        'object_list': MetadataType.objects.all(),
-        'title': _('Metadata types'),
-        'hide_link': True,
-        'extra_columns': [
-            {
-                'name': _('Internal name'),
-                'attribute': 'name',
-            },
-        ]
-    }
+    def get_queryset(self):
+        return MetadataType.objects.all()
 
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'title': _('Metadata types'),
+            'hide_link': True,
+            'extra_columns': [
+                {
+                    'name': _('Internal name'),
+                    'attribute': 'name',
+                },
+            ]
+        }
 
 
 def setup_metadata_type_edit(request, metadatatype_id):
