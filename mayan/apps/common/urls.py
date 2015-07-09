@@ -5,7 +5,8 @@ from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.generic import RedirectView
 
 from .views import (
-    AboutView, CurrentUserDetailsView, CurrentUserLocaleProfileDetailsView,
+    AboutView, CurrentUserDetailsView, CurrentUserEditView,
+    CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
     HomeView, LicenseView, SetupListView, ToolsListView
 )
 
@@ -18,9 +19,9 @@ urlpatterns = patterns(
     url(r'^setup/$', SetupListView.as_view(), name='setup_list'),
     url(r'^tools/$', ToolsListView.as_view(), name='tools_list'),
     url(r'^user/$', CurrentUserDetailsView.as_view(), name='current_user_details'),
-    url(r'^user/edit/$', 'current_user_edit', name='current_user_edit'),
+    url(r'^user/edit/$', CurrentUserEditView.as_view(), name='current_user_edit'),
     url(r'^user/locale/$', CurrentUserLocaleProfileDetailsView.as_view(), name='current_user_locale_profile_details'),
-    url(r'^user/locale/edit/$', 'current_user_locale_profile_edit', name='current_user_locale_profile_edit'),
+    url(r'^user/locale/edit/$', CurrentUserLocaleProfileEditView.as_view(), name='current_user_locale_profile_edit'),
 )
 
 urlpatterns += patterns(

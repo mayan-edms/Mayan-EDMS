@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import ImproperlyConfigured
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -509,65 +509,34 @@ def multi_object_action_view(request):
         )
 
 
-def current_user_edit(request):
-    """
-    Allow an user to edit his own details
-    """
+class CurrentUserEditView(SingleObjectEditView):
+    extra_context = {'title': _('Edit current user details')}
+    form_class = UserForm
+    post_action_redirect = reverse_lazy('common:current_user_details')
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('common:current_user_details'))))
-
-    if request.method == 'POST':
-        form = UserForm(instance=request.user, data=request.POST)
-        if form.is_valid():
-            if User.objects.filter(email=form.cleaned_data['email']).exclude(pk=request.user.pk).count():
-                messages.error(request, _('E-mail conflict, another user has that same email.'))
-            else:
-                form.save()
-                messages.success(request, _('Current user\'s details updated.'))
-                return HttpResponseRedirect(next)
-    else:
-        form = UserForm(instance=request.user)
-
-    return render_to_response(
-        'appearance/generic_form.html', {
-            'form': form,
-            'next': next,
-            'title': _('Edit current user details'),
-        },
-        context_instance=RequestContext(request))
+    def get_object(self):
+        return self.request.user
 
 
-def current_user_locale_profile_edit(request):
-    """
-    Allow an user to edit his own locale profile
-    """
+class CurrentUserLocaleProfileEditView(SingleObjectEditView):
+    extra_context = {'title': _('Edit current user locale profile details')}
+    form_class = LocaleProfileForm
+    post_action_redirect = reverse_lazy('common:current_user_locale_profile_details')
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('common:current_user_locale_profile_details'))))
+    def form_valid(self, form):
+        form.save()
 
-    if request.method == 'POST':
-        form = LocaleProfileForm(instance=request.user.locale_profile, data=request.POST)
-        if form.is_valid():
-            form.save()
+        timezone.activate(form.cleaned_data['timezone'])
+        translation.activate(form.cleaned_data['language'])
 
-            timezone.activate(form.cleaned_data['timezone'])
-            translation.activate(form.cleaned_data['language'])
+        if hasattr(self.request, 'session'):
+            self.request.session[translation.LANGUAGE_SESSION_KEY] = form.cleaned_data['language']
+            self.request.session[settings.TIMEZONE_SESSION_KEY] = form.cleaned_data['timezone']
+        else:
+            self.request.set_cookie(settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language'])
+            self.request.set_cookie(settings.TIMEZONE_COOKIE_NAME, form.cleaned_data['timezone'])
 
-            if hasattr(request, 'session'):
-                request.session[translation.LANGUAGE_SESSION_KEY] = form.cleaned_data['language']
-                request.session[settings.TIMEZONE_SESSION_KEY] = form.cleaned_data['timezone']
-            else:
-                request.set_cookie(settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language'])
-                request.set_cookie(settings.TIMEZONE_COOKIE_NAME, form.cleaned_data['timezone'])
+        return super(CurrentUserLocaleProfileEditView, self).form_valid(form)
 
-            messages.success(request, _('Current user\'s locale profile details updated.'))
-            return HttpResponseRedirect(next)
-    else:
-        form = LocaleProfileForm(instance=request.user.locale_profile)
-
-    return render_to_response(
-        'appearance/generic_form.html', {
-            'form': form,
-            'next': next,
-            'title': _('Edit current user locale profile details'),
-        },
-        context_instance=RequestContext(request))
+    def get_object(self):
+        return self.request.user.locale_profile
