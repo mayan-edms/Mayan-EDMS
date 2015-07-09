@@ -7,7 +7,8 @@ from .api_views import (
     APIUserView
 )
 from .views import (
-    GroupListView, GroupMembersView, UserGroupsView, UserListView
+    GroupCreateView, GroupEditView, GroupListView, GroupMembersView,
+    UserGroupsView, UserListView
 )
 
 urlpatterns = patterns(
@@ -22,8 +23,8 @@ urlpatterns = patterns(
     url(r'^user/(?P<pk>\d+)/groups/$', UserGroupsView.as_view(), name='user_groups'),
 
     url(r'^group/list/$', GroupListView.as_view(), name='group_list'),
-    url(r'^group/add/$', 'group_add', name='group_add'),
-    url(r'^group/(?P<group_id>\d+)/edit/$', 'group_edit', name='group_edit'),
+    url(r'^group/add/$', GroupCreateView.as_view(), name='group_add'),
+    url(r'^group/(?P<pk>\d+)/edit/$', GroupEditView.as_view(), name='group_edit'),
     url(r'^group/(?P<group_id>\d+)/delete/$', 'group_delete', name='group_delete'),
     url(r'^group/multiple/delete/$', 'group_multiple_delete', name='group_multiple_delete'),
     url(r'^group/(?P<pk>\d+)/members/$', GroupMembersView.as_view(), name='group_members'),

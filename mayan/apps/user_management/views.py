@@ -4,18 +4,21 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group, User
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import encapsulate
-from common.views import AssignRemoveView, SingleObjectListView
+from common.views import (
+    AssignRemoveView, SingleObjectCreateView, SingleObjectEditView,
+    SingleObjectListView
+)
 from common.widgets import two_state_template
 from permissions import Permission
 
-from .forms import GroupForm, PasswordForm, UserForm
+from .forms import PasswordForm, UserForm
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
@@ -256,65 +259,40 @@ class UserGroupsView(AssignRemoveView):
 
 
 # Group views
+class GroupCreateView(SingleObjectCreateView):
+    extra_context = {'title': _('Create new group')}
+    fields = ('name',)
+    model = Group
+    post_action_redirect = reverse_lazy('user_management:group_list')
+    view_permission = permission_group_create
+
+
+class GroupEditView(SingleObjectEditView):
+    fields = ('name',)
+    model = Group
+    post_action_redirect = reverse_lazy('user_management:group_list')
+    view_permission = permission_group_edit
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit group: %s') % self.get_object(),
+        }
+
+
 class GroupListView(SingleObjectListView):
-    view_permission = permission_group_view
-
-    def get_queryset(self):
-        return Group.objects.all()
-
-    def get_context_data(self, **kwargs):
-        context = super(GroupListView, self).get_context_data(**kwargs)
-        context.update(
+    extra_context = {
+        'title': _('Groups'),
+        'hide_link': True,
+        'extra_columns': [
             {
-                'title': _('Groups'),
-                'hide_link': True,
-                'extra_columns': [
-                    {
-                        'name': _('Members'),
-                        'attribute': 'user_set.count'
-                    },
-                ],
-            }
-        )
-        return context
-
-
-def group_edit(request, group_id):
-    Permission.check_permissions(request.user, [permission_group_edit])
-    group = get_object_or_404(Group, pk=group_id)
-
-    if request.method == 'POST':
-        form = GroupForm(instance=group, data=request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _('Group "%s" updated successfully.') % group)
-            return HttpResponseRedirect(reverse('user_management:group_list'))
-    else:
-        form = GroupForm(instance=group)
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Edit group: %s') % group,
-        'form': form,
-        'object': group,
-    }, context_instance=RequestContext(request))
-
-
-def group_add(request):
-    Permission.check_permissions(request.user, [permission_group_create])
-
-    if request.method == 'POST':
-        form = GroupForm(request.POST)
-        if form.is_valid():
-            group = form.save()
-            messages.success(request, _('Group "%s" created successfully.') % group)
-            return HttpResponseRedirect(reverse('user_management:group_list'))
-    else:
-        form = GroupForm()
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Create new group'),
-        'form': form,
-    }, context_instance=RequestContext(request))
+                'name': _('Members'),
+                'attribute': 'user_set.count'
+            },
+        ],
+    }
+    model = Group
+    view_permission = permission_group_view
 
 
 def group_delete(request, group_id=None, group_id_list=None):
