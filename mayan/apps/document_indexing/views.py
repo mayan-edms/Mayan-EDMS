@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
@@ -12,14 +12,17 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.utils import encapsulate
-from common.views import AssignRemoveView, SingleObjectListView
+from common.views import (
+    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
+)
 from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from documents.views import DocumentListView
 from permissions import Permission
 
-from .forms import IndexForm, IndexTemplateNodeForm
+from .forms import IndexTemplateNodeForm
 from .models import Index, IndexInstanceNode, IndexTemplateNode
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
@@ -32,6 +35,14 @@ from .widgets import index_instance_item_link, get_breadcrumbs, node_level
 
 
 # Setup views
+class SetupIndexCreateView(SingleObjectCreateView):
+    extra_context = {'title': _('Create index')}
+    fields = ('label', 'enabled')
+    model = Index
+    post_action_redirect = reverse_lazy('indexing:index_setup_list')
+    view_permission = permission_document_indexing_create
+
+
 class SetupIndexListView(SingleObjectListView):
     model = Index
     view_permission = permission_document_indexing_setup
@@ -47,83 +58,29 @@ class SetupIndexListView(SingleObjectListView):
         }
 
 
-def index_setup_create(request):
-    Permission.check_permissions(request.user, [permission_document_indexing_create])
+class SetupIndexEditView(SingleObjectEditView):
+    fields = ('label', 'enabled')
+    model = Index
+    post_action_redirect = reverse_lazy('indexing:index_setup_list')
+    view_permission = permission_document_indexing_edit
 
-    if request.method == 'POST':
-        form = IndexForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _('Index created successfully.'))
-            return HttpResponseRedirect(reverse('indexing:index_setup_list'))
-    else:
-        form = IndexForm()
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Create index'),
-        'form': form,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'title': _('Edit index: %s') % self.get_object(),
+            'object': self.get_object(),
+        }
 
 
-def index_setup_edit(request, index_pk):
-    index = get_object_or_404(Index, pk=index_pk)
+class SetupIndexDeleteView(SingleObjectDeleteView):
+    model = Index
+    post_action_redirect = reverse_lazy('indexing:index_setup_list')
+    view_permission = permission_document_indexing_delete
 
-    try:
-        Permission.check_permissions(request.user, [permission_document_indexing_edit])
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_indexing_create, request.user, index)
-
-    if request.method == 'POST':
-        form = IndexForm(request.POST, instance=index)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _('Index edited successfully'))
-            return HttpResponseRedirect(reverse('indexing:index_setup_list'))
-    else:
-        form = IndexForm(instance=index)
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Edit index: %s') % index,
-        'form': form,
-        'index': index,
-        'navigation_object_list': ['index'],
-    }, context_instance=RequestContext(request))
-
-
-def index_setup_delete(request, index_pk):
-    index = get_object_or_404(Index, pk=index_pk)
-
-    try:
-        Permission.check_permissions(request.user, [permission_document_indexing_delete])
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_indexing_delete, request.user, index)
-
-    post_action_redirect = reverse('indexing:index_setup_list')
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        try:
-            index.delete()
-            messages.success(request, _('Index: %s deleted successfully.') % index)
-        except Exception as exception:
-            messages.error(request, _('Index: %(index)s delete error: %(error)s') % {
-                'index': index, 'error': exception})
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'index': index,
-        'navigation_object_list': ['index'],
-        'delete_view': True,
-        'previous': previous,
-        'next': next,
-        'title': _('Are you sure you with to delete the index: %s?') % index,
-    }
-
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'title': _('Delete the index: %s?') % self.get_object(),
+            'object': self.get_object(),
+        }
 
 
 def index_setup_view(request, index_pk):

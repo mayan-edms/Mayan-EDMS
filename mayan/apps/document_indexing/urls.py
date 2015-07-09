@@ -9,15 +9,16 @@ from .api_views import (
 )
 from .views import (
     IndexInstanceNodeView, IndexListView, SetupIndexDocumentTypesView,
-    SetupIndexListView,
+    SetupIndexCreateView, SetupIndexDeleteView, SetupIndexEditView,
+    SetupIndexListView
 )
 
 urlpatterns = patterns(
     'document_indexing.views',
     url(r'^setup/index/list/$', SetupIndexListView.as_view(), name='index_setup_list'),
-    url(r'^setup/index/create/$', 'index_setup_create', name='index_setup_create'),
-    url(r'^setup/index/(?P<index_pk>\d+)/edit/$', 'index_setup_edit', name='index_setup_edit'),
-    url(r'^setup/index/(?P<index_pk>\d+)/delete/$', 'index_setup_delete', name='index_setup_delete'),
+    url(r'^setup/index/create/$', SetupIndexCreateView.as_view(), name='index_setup_create'),
+    url(r'^setup/index/(?P<pk>\d+)/edit/$', SetupIndexEditView.as_view(), name='index_setup_edit'),
+    url(r'^setup/index/(?P<pk>\d+)/delete/$', SetupIndexDeleteView.as_view(), name='index_setup_delete'),
     url(r'^setup/index/(?P<index_pk>\d+)/view/$', 'index_setup_view', name='index_setup_view'),
     url(r'^setup/index/(?P<pk>\d+)/document_types/$', SetupIndexDocumentTypesView.as_view(), name='index_setup_document_types'),
 

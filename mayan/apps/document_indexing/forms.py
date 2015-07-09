@@ -8,15 +8,6 @@ from documents.models import Document
 from .models import Index, IndexTemplateNode
 
 
-class IndexForm(forms.ModelForm):
-    """
-    A standard model form to allow users to create a new index
-    """
-    class Meta:
-        model = Index
-        exclude = ('document_types',)
-
-
 class IndexTemplateNodeForm(forms.ModelForm):
     """
     A standard model form to allow users to create a new index template node
