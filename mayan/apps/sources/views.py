@@ -463,29 +463,3 @@ class SetupSourceCreateView(SingleObjectCreateView):
             'object': self.kwargs['source_type'],
             'title': _('Create new source of type: %s') % get_class(self.kwargs['source_type']).class_fullname(),
         }
-
-
-def setup_source_create(request, source_type):
-    Permission.check_permissions(request.user, [permission_sources_setup_create])
-
-    cls = get_class(source_type)
-    form_class = get_form_class(source_type)
-
-    if request.method == 'POST':
-        form = form_class(data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _('Source created successfully'))
-                return HttpResponseRedirect(reverse('sources:setup_source_list'))
-            except Exception as exception:
-                messages.error(request, _('Error creating source; %s') % exception)
-    else:
-        form = form_class()
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'navigation_object_list': ['source'],
-        'source_type': source_type,
-        'title': _('Create new source of type: %s') % cls.class_fullname(),
-    }, context_instance=RequestContext(request))
