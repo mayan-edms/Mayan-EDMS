@@ -4,7 +4,7 @@ import logging
 
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.conf import settings
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
@@ -13,13 +13,15 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.utils import encapsulate
-from common.views import SingleObjectListView
+from common.views import (
+    SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
+)
 from documents.models import Document
 from documents.views import DocumentListView
 from documents.permissions import permission_document_view
 from permissions import Permission
 
-from .forms import TagForm, TagListForm
+from .forms import TagListForm
 from .models import Tag
 from .permissions import (
     permission_tag_attach, permission_tag_create, permission_tag_delete,
@@ -29,24 +31,12 @@ from .permissions import (
 logger = logging.getLogger(__name__)
 
 
-def tag_create(request):
-    Permission.check_permissions(request.user, [permission_tag_create])
-    redirect_url = reverse('tags:tag_list')
-
-    if request.method == 'POST':
-        form = TagForm(request.POST)
-        if form.is_valid():
-            form.save()
-
-            messages.success(request, _('Tag created succesfully.'))
-            return HttpResponseRedirect(redirect_url)
-    else:
-        form = TagForm()
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Create tag'),
-        'form': form,
-    }, context_instance=RequestContext(request))
+class TagCreateView(SingleObjectCreateView):
+    extra_context = {'title': _('Create tag')}
+    fields = ('label', 'color')
+    model = Tag
+    post_action_redirect = reverse_lazy('tags:tag_list')
+    view_permission = permission_tag_create
 
 
 def tag_attach(request, document_id=None, document_id_list=None):
@@ -199,28 +189,17 @@ def tag_multiple_delete(request):
     )
 
 
-def tag_edit(request, tag_id):
-    tag = get_object_or_404(Tag, pk=tag_id)
+class TagEditView(SingleObjectEditView):
+    fields = ('label', 'color')
+    model = Tag
+    object_permission = permission_tag_edit
+    post_action_redirect = reverse_lazy('tags:tag_list')
 
-    try:
-        Permission.check_permissions(request.user, [permission_tag_edit])
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_tag_edit, request.user, tag)
-
-    if request.method == 'POST':
-        form = TagForm(data=request.POST, instance=tag)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _('Tag updated succesfully.'))
-            return HttpResponseRedirect(reverse('tags:tag_list'))
-    else:
-        form = TagForm(instance=tag)
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Edit tag: %s') % tag,
-        'form': form,
-        'object': tag,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit tag: %s') % self.get_object(),
+        }
 
 
 class TagTaggedItemListView(DocumentListView):

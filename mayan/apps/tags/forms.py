@@ -15,16 +15,6 @@ from .permissions import permission_tag_view
 logger = logging.getLogger(__name__)
 
 
-class TagForm(forms.ModelForm):
-    """
-    Form to edit an existing tag's properties
-    """
-
-    class Meta:
-        fields = ('label', 'color')
-        model = Tag
-
-
 class TagListForm(forms.Form):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)
