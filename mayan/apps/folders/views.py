@@ -4,7 +4,7 @@ import logging
 
 from django.conf import settings
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
@@ -13,7 +13,9 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.utils import encapsulate
-from common.views import SingleObjectEditView, SingleObjectListView
+from common.views import (
+    SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
+)
 from documents.permissions import permission_document_view
 from documents.models import Document
 from documents.views import DocumentListView
@@ -74,25 +76,27 @@ class FolderListView(SingleObjectListView):
         }
 
 
-def folder_create(request):
-    Permission.check_permissions(request.user, [permission_folder_create])
+class FolderCreateView(SingleObjectCreateView):
+    fields = ('label',)
+    model = Folder
+    view_permission = permission_folder_create
 
-    if request.method == 'POST':
-        form = FolderForm(request.POST)
-        if form.is_valid():
-            folder, created = Folder.objects.get_or_create(user=request.user, label=form.cleaned_data['label'])
-            if created:
-                messages.success(request, _('Folder created successfully'))
-                return HttpResponseRedirect(reverse('folders:folder_list'))
-            else:
-                messages.error(request, _('A folder named: %s, already exists.') % form.cleaned_data['label'])
-    else:
-        form = FolderForm()
+    def form_valid(self, form):
+        try:
+            Folder.objects.get(label=form.cleaned_data['label'], user=self.request.user)
+        except Folder.DoesNotExist:
+            instance = form.save(commit=False)
+            instance.user = self.request.user
+            instance.save()
+            return super(FolderCreateView, self).form_valid(form)
+        else:
+            messages.error(self.request, _('A folder named: %s, already exists.') % form.cleaned_data['label'])
+            return super(FolderCreateView, self).form_invalid(form)
 
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Create folder'),
-        'form': form,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'title': _('Create folder'),
+        }
 
 
 def folder_delete(request, folder_id):
