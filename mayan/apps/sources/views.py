@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -14,7 +14,11 @@ from acls.models import AccessControlList
 from common import menu_facet
 from common.models import SharedUploadedFile
 from common.utils import encapsulate
-from common.views import MultiFormView, ParentChildListView
+from common.views import (
+    MultiFormView, ParentChildListView, SingleObjectCreateView,
+    SingleObjectListView
+)
+from common.widgets import two_state_template
 from documents.models import DocumentType, Document
 from documents.permissions import (
     permission_document_create, permission_document_new_version
@@ -367,27 +371,24 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
 
 
 # Setup views
-def setup_source_list(request):
-    Permission.check_permissions(request.user, [permission_sources_setup_view])
+class SetupSourceListView(SingleObjectListView):
+    view_permission = permission_sources_setup_view
+    queryset = Source.objects.select_subclasses()
 
-    context = {
-        'object_list': Source.objects.select_subclasses(),
-        'title': _('Sources'),
-        'hide_link': True,
+    extra_context = {
         'extra_columns': [
             {
                 'name': _('Type'),
-                'attribute': encapsulate(lambda x: x.class_fullname())
+                'attribute': encapsulate(lambda entry: entry.class_fullname())
             },
             {
                 'name': _('Enabled'),
-                'attribute': encapsulate(lambda x: _('Yes') if x.enabled else _('No'))
+                'attribute': encapsulate(lambda entry: two_state_template(entry.enabled))
             },
-        ]
+        ],
+        'hide_link': True,
+        'title': _('Sources'),
     }
-
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
 
 
 def setup_source_edit(request, source_id):
@@ -448,6 +449,20 @@ def setup_source_delete(request, source_id):
 
     return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
+
+
+class SetupSourceCreateView(SingleObjectCreateView):
+    post_action_redirect = reverse_lazy('sources:setup_source_list')
+    view_permission = permission_sources_setup_create
+
+    def get_form_class(self):
+        return get_form_class(self.kwargs['source_type'])
+
+    def get_extra_context(self):
+        return {
+            'object': self.kwargs['source_type'],
+            'title': _('Create new source of type: %s') % get_class(self.kwargs['source_type']).class_fullname(),
+        }
 
 
 def setup_source_create(request, source_type):
