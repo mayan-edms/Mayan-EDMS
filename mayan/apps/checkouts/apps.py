@@ -16,13 +16,13 @@ from .links import (
     link_checkin_document, link_checkout_document, link_checkout_info,
     link_checkout_list
 )
+from .literals import CHECK_EXPIRED_CHECK_OUTS_INTERVAL
 from .models import DocumentCheckout
 from .permissions import (
     permission_document_checkin, permission_document_checkin_override,
     permission_document_checkout
 )
 
-CHECK_EXPIRED_CHECK_OUTS_INTERVAL = 60  # Lowest check out expiration allowed
 
 
 class CheckoutsApp(MayanAppConfig):
