@@ -253,7 +253,7 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
     try:
         Permission.check_permissions(request.user, [permission_folder_remove_document])
     except PermissionDenied:
-        folder_documents = AccessControlList.objects.filter_by_access(permission_folder_remove_document, request.user, folder_documents, exception_on_empty=True)
+        folder_documents = AccessControlList.objects.filter_by_access(permission_folder_remove_document, request.user, folder_documents)
 
     logger.debug('folder_documents (post permission check): %s', folder_documents)
 

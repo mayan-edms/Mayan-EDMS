@@ -296,7 +296,7 @@ def document_trash(request, document_id=None, document_id_list=None):
     try:
         Permission.check_permissions(request.user, [permission_document_trash])
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_document_trash, request.user, documents, exception_on_empty=True)
+        documents = AccessControlList.objects.filter_by_access(permission_document_trash, request.user, documents)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -387,7 +387,7 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
     try:
         Permission.check_permissions(request.user, [permission_document_properties_edit])
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_document_properties_edit, request.user, documents, exception_on_empty=True)
+        documents = AccessControlList.objects.filter_by_access(permission_document_properties_edit, request.user, documents)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -473,7 +473,7 @@ def document_download(request, document_id=None, document_id_list=None, document
     try:
         Permission.check_permissions(request.user, [permission_document_download])
     except PermissionDenied:
-        document_versions = AccessControlList.objects.filter_by_access(permission_document_download, request.user, document_versions, related='document', exception_on_empty=True)
+        document_versions = AccessControlList.objects.filter_by_access(permission_document_download, request.user, document_versions, related='document')
 
     subtemplates_list = []
     subtemplates_list.append(
@@ -581,7 +581,7 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
     try:
         Permission.check_permissions(request.user, [permission_document_tools])
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_document_tools, request.user, documents, exception_on_empty=True)
+        documents = AccessControlList.objects.filter_by_access(permission_document_tools, request.user, documents)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -633,7 +633,7 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
     try:
         Permission.check_permissions(request.user, [permission_transformation_delete])
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_transformation_delete, request.user, documents, exception_on_empty=True)
+        documents = AccessControlList.objects.filter_by_access(permission_transformation_delete, request.user, documents)
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))

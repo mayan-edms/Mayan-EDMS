@@ -62,7 +62,7 @@ class AccessControlListManager(models.Manager):
         if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles):
             raise PermissionDenied(ugettext('Insufficient access.'))
 
-    def filter_by_access(self, permission, user, queryset, exception_on_empty=False, related=None):
+    def filter_by_access(self, permission, user, queryset, related=None):
         if user.is_superuser or user.is_staff:
             return queryset
 
@@ -85,9 +85,4 @@ class AccessControlListManager(models.Manager):
         content_type = ContentType.objects.get_for_model(queryset.model)
         acl_query = Q(pk__in=self.filter(content_type=content_type, role__in=user_roles, permissions=permission.stored_permission).values_list('object_id', flat=True))
 
-        new_queryset = queryset.filter(parent_acl_query | acl_query)
-
-        if new_queryset.count() == 0 and exception_on_empty:
-            raise PermissionDenied
-
-        return new_queryset
+        return queryset.filter(parent_acl_query | acl_query)

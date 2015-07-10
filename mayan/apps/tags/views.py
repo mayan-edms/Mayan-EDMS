@@ -254,7 +254,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
     try:
         Permission.check_permissions(request.user, [permission_tag_remove])
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_tag_remove, request.user, documents, exception_on_empty=True)
+        documents = AccessControlList.objects.filter_by_access(permission_tag_remove, request.user, documents)
 
     post_action_redirect = None
 
