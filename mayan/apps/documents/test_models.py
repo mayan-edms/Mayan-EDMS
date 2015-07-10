@@ -1,19 +1,11 @@
 # -*- coding: utf-8 -*-
-
 from __future__ import unicode_literals
 
-from json import loads
 import os
 
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.core.files import File
-from django.core.urlresolvers import reverse
-from django.test.client import Client
 from django.test import TestCase
-
-from rest_framework import status
-from rest_framework.test import APIClient
 
 from .models import DeletedDocument, Document, DocumentType
 
@@ -24,7 +16,6 @@ TEST_SMALL_DOCUMENT_FILENAME = 'title_page.png'
 TEST_NON_ASCII_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png'
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png.zip'
 TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
-TEST_SIGNED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg')
 TEST_SMALL_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_SMALL_DOCUMENT_FILENAME)
 TEST_NON_ASCII_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_NON_ASCII_DOCUMENT_FILENAME)
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME)

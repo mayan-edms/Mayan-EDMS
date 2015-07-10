@@ -10,7 +10,7 @@ from django.test import TestCase
 from authentication.test_views import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
-from documents.models import Document, DocumentType
+from documents.models import DocumentType
 from documents.test_models import TEST_DOCUMENT_TYPE
 
 from .models import Folder
@@ -35,7 +35,6 @@ class FolderTestCase(TestCase):
         folder.delete()
 
     def test_addition_of_documents(self):
-        user = User.objects.all()[0]
         folder = Folder.objects.create(label='test', user=self.user)
         folder.documents.add(self.document)
 
@@ -44,7 +43,6 @@ class FolderTestCase(TestCase):
         folder.delete()
 
     def test_addition_and_deletion_of_documents(self):
-        user = User.objects.all()[0]
         folder = Folder.objects.create(label='test', user=self.user)
         folder.documents.add(self.document)
 

@@ -108,11 +108,11 @@ class StagingFolderSource(InteractiveSource):
     is_interactive = True
     source_type = SOURCE_CHOICE_STAGING
 
-    folder_path = models.CharField(max_length=255, verbose_name=_('Folder path'), help_text=_('Server side filesystem path.'))
-    preview_width = models.IntegerField(verbose_name=_('Preview width'), help_text=_('Width value to be passed to the converter backend.'))
-    preview_height = models.IntegerField(blank=True, null=True, verbose_name=_('Preview height'), help_text=_('Height value to be passed to the converter backend.'))
-    uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_('Uncompress'), help_text=_('Whether to expand or not compressed archives.'))
-    delete_after_upload = models.BooleanField(default=True, verbose_name=_('Delete after upload'), help_text=_('Delete the file after is has been successfully uploaded.'))
+    folder_path = models.CharField(max_length=255, help_text=_('Server side filesystem path.'), verbose_name=_('Folder path'))
+    preview_width = models.IntegerField(help_text=_('Width value to be passed to the converter backend.'), verbose_name=_('Preview width'))
+    preview_height = models.IntegerField(blank=True, null=True, help_text=_('Height value to be passed to the converter backend.'), verbose_name=_('Preview height'))
+    uncompress = models.CharField(choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, max_length=1, help_text=_('Whether to expand or not compressed archives.'), verbose_name=_('Uncompress'))
+    delete_after_upload = models.BooleanField(default=True, help_text=_('Delete the file after is has been successfully uploaded.'), verbose_name=_('Delete after upload'))
 
     def get_preview_size(self):
         dimensions = []
@@ -155,7 +155,7 @@ class WebFormSource(InteractiveSource):
     source_type = SOURCE_CHOICE_WEB_FORM
 
     # TODO: unify uncompress as an InteractiveSource field
-    uncompress = models.CharField(max_length=1, choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, verbose_name=_('Uncompress'), help_text=_('Whether to expand or not compressed archives.'))
+    uncompress = models.CharField(choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, help_text=_('Whether to expand or not compressed archives.'), max_length=1, verbose_name=_('Uncompress'))
     # Default path
 
     def get_upload_file_object(self, form_data):
@@ -175,9 +175,9 @@ class OutOfProcessSource(Source):
 
 
 class IntervalBaseModel(OutOfProcessSource):
-    interval = models.PositiveIntegerField(default=DEFAULT_INTERVAL, verbose_name=_('Interval'), help_text=_('Interval in seconds between checks for new documents.'))
-    document_type = models.ForeignKey(DocumentType, verbose_name=_('Document type'), help_text=_('Assign a document type to documents uploaded from this source.'))
-    uncompress = models.CharField(max_length=1, choices=SOURCE_UNCOMPRESS_CHOICES, verbose_name=_('Uncompress'), help_text=_('Whether to expand or not, compressed archives.'))
+    interval = models.PositiveIntegerField(default=DEFAULT_INTERVAL, help_text=_('Interval in seconds between checks for new documents.'), verbose_name=_('Interval'))
+    document_type = models.ForeignKey(DocumentType, help_text=_('Assign a document type to documents uploaded from this source.'), verbose_name=_('Document type'))
+    uncompress = models.CharField(choices=SOURCE_UNCOMPRESS_CHOICES, help_text=_('Whether to expand or not, compressed archives.'), max_length=1, verbose_name=_('Uncompress'))
 
     def _get_periodic_task_name(self, pk=None):
         return 'check_interval_source-%i' % (pk or self.pk)
@@ -223,7 +223,7 @@ class IntervalBaseModel(OutOfProcessSource):
 class EmailBaseModel(IntervalBaseModel):
     host = models.CharField(max_length=128, verbose_name=_('Host'))
     ssl = models.BooleanField(default=True, verbose_name=_('SSL'))
-    port = models.PositiveIntegerField(blank=True, null=True, verbose_name=_('Port'), help_text=_('Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL.'))
+    port = models.PositiveIntegerField(blank=True, null=True, help_text=_('Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL.'), verbose_name=_('Port'))
     username = models.CharField(max_length=96, verbose_name=_('Username'))
     password = models.CharField(max_length=96, verbose_name=_('Password'))
 
@@ -302,7 +302,7 @@ class POP3Email(EmailBaseModel):
 class IMAPEmail(EmailBaseModel):
     source_type = SOURCE_CHOICE_EMAIL_IMAP
 
-    mailbox = models.CharField(max_length=64, default=DEFAULT_IMAP_MAILBOX, verbose_name=_('Mailbox'), help_text=_('Mail from which to check for messages with attached documents.'))
+    mailbox = models.CharField(default=DEFAULT_IMAP_MAILBOX, help_text=_('Mail from which to check for messages with attached documents.'), max_length=64, verbose_name=_('Mailbox'))
 
     # http://www.doughellmann.com/PyMOTW/imaplib/
     def check_source(self):
@@ -341,7 +341,7 @@ class IMAPEmail(EmailBaseModel):
 class WatchFolderSource(IntervalBaseModel):
     source_type = SOURCE_CHOICE_WATCH
 
-    folder_path = models.CharField(max_length=255, verbose_name=_('Folder path'), help_text=_('Server side filesystem path.'))
+    folder_path = models.CharField(help_text=_('Server side filesystem path.'), max_length=255, verbose_name=_('Folder path'))
 
     def check_source(self):
         # Force self.folder_path to unicode to avoid os.listdir returning

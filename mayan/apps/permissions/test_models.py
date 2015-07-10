@@ -1,16 +1,12 @@
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.exceptions import PermissionDenied
-from django.core.files import File
-from django.core.urlresolvers import reverse
-from django.test.client import Client
 from django.test import TestCase
 
 from .classes import Permission
-from .models import Role, StoredPermission
+from .models import Role
 from .permissions import permission_role_view
 
 

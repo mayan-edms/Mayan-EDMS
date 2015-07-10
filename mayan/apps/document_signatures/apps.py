@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import io
 import logging
 
-from django.core.files import File
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission

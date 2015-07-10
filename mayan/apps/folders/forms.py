@@ -15,12 +15,6 @@ from .permissions import permission_folder_view
 logger = logging.getLogger(__name__)
 
 
-class FolderForm(forms.ModelForm):
-    class Meta:
-        model = Folder
-        fields = ('label',)
-
-
 class FolderListForm(forms.Form):
     def __init__(self, *args, **kwargs):
         user = kwargs.pop('user', None)

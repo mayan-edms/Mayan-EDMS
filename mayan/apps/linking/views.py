@@ -85,7 +85,7 @@ class ResolvedSmartLinkView(DocumentListView):
             queryset = Document.objects.none()
 
             if self.request.user.is_staff or self.request.user.is_superuser:
-                messages.error(request, _('Smart link query error: %s' % exception))
+                messages.error(self.request, _('Smart link query error: %s' % exception))
 
         return queryset
 

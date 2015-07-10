@@ -2,10 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
-from django.db.models.loading import get_model
 from django.http import Http404
-from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from actstream.models import Action, any_stream

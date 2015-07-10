@@ -9,7 +9,6 @@ from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_sidebar, menu_multi_item
 )
-from common.utils import encapsulate
 from documents.models import Document
 from navigation import CombinedSource, SourceColumn
 from rest_api.classes import APIEndPoint

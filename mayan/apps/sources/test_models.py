@@ -4,23 +4,18 @@ import shutil
 import tempfile
 
 from django.contrib.auth.models import User
-from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
 
 from documents.models import Document, DocumentType
-from sources.literals import SOURCE_CHOICE_WEB_FORM
-from sources.models import WebFormSource
 
 from documents.test_models import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
-    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE,
-    TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
-    TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE, TEST_NON_ASCII_DOCUMENT_FILENAME,
+    TEST_NON_ASCII_DOCUMENT_PATH, TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
 )
 
-from .literals import SOURCE_UNCOMPRESS_CHOICE_N, SOURCE_UNCOMPRESS_CHOICE_Y
+from .literals import SOURCE_UNCOMPRESS_CHOICE_Y
 from .models import WatchFolderSource
 
 

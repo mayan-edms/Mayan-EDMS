@@ -2,27 +2,16 @@
 
 from __future__ import unicode_literals
 
-from json import loads
-import os
-
-from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
 
-from rest_framework import status
-from rest_framework.test import APIClient
-
 from .models import DeletedDocument, Document, DocumentType
 from .test_models import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_SMALL_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_FILENAME,
-    TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH,
-    TEST_SIGNED_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
-    TEST_NON_ASCII_DOCUMENT_PATH, TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH,
-    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE
+    TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 )
 
 
@@ -45,7 +34,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         self.assertTrue(logged_in)
         self.assertTrue(self.admin_user.is_authenticated())
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf')
 
     def tearDown(self):

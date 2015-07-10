@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import models, migrations
+from django.db import migrations
+
 
 def move_content_from_documents_to_ocr_app(apps, schema_editor):
     DocumentPage = apps.get_model('documents', 'DocumentPage')

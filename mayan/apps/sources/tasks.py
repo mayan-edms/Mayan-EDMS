@@ -1,7 +1,6 @@
 import logging
 
 from django.contrib.auth.models import User
-from django.core.files import File
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app

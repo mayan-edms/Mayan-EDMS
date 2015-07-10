@@ -91,6 +91,9 @@ class WorkflowInstance(models.Model):
     workflow = models.ForeignKey(Workflow, related_name='instances', verbose_name=_('Workflow'))
     document = models.ForeignKey(Document, related_name='workflows', verbose_name=_('Document'))
 
+    def __str__(self):
+        return unicode(self.workflow)
+
     def get_absolute_url(self):
         return reverse('document_states:workflow_instance_detail', args=[str(self.pk)])
 
@@ -108,23 +111,20 @@ class WorkflowInstance(models.Model):
         except AttributeError:
             return self.workflow.get_initial_state()
 
-    def get_last_transition(self):
-        try:
-            return self.get_last_log_entry().transition
-        except AttributeError:
-            return None
-
     def get_last_log_entry(self):
         try:
             return self.log_entries.order_by('datetime').last()
         except AttributeError:
             return None
 
+    def get_last_transition(self):
+        try:
+            return self.get_last_log_entry().transition
+        except AttributeError:
+            return None
+
     def get_transition_choices(self):
         return self.get_current_state().origin_transitions.all()
-
-    def __str__(self):
-        return unicode(self.workflow)
 
     class Meta:
         unique_together = ('document', 'workflow')

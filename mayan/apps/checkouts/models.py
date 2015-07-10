@@ -35,6 +35,9 @@ class DocumentCheckout(models.Model):
     def __str__(self):
         return unicode(self.document)
 
+    def get_absolute_url(self):
+        return reverse('checkout:checkout_info', args=[self.document.pk])
+
     def clean(self):
         if self.expiration_datetime < now():
             raise ValidationError(_('Check out expiration date and time must be in the future.'))
@@ -50,9 +53,6 @@ class DocumentCheckout(models.Model):
             logger.info('Document "%s" checked out by user "%s"', self.document, self.user)
 
         return result
-
-    def get_absolute_url(self):
-        return reverse('checkout:checkout_info', args=[self.document.pk])
 
     class Meta:
         verbose_name = _('Document checkout')

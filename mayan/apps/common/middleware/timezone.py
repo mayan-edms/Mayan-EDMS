@@ -11,7 +11,7 @@ class TimezoneMiddleware(object):
         if hasattr(request, 'session'):
             tzname = request.session.get(settings.TIMEZONE_SESSION_KEY)
         else:
-            tzname = HttpRequest.COOKIES.get(settings.TIMEZONE_COOKIE_NAME)
+            tzname = request.COOKIES.get(settings.TIMEZONE_COOKIE_NAME)
 
         if tzname:
             timezone.activate(pytz.timezone(tzname))

@@ -15,7 +15,7 @@ from .literals import (
 @python_2_unicode_compatible
 class SmartLink(models.Model):
     label = models.CharField(max_length=96, verbose_name=_('Label'))
-    dynamic_label = models.CharField(blank=True, max_length=96, verbose_name=_('Dynamic label'), help_text=_('This expression will be evaluated against the current selected document.'))
+    dynamic_label = models.CharField(blank=True, max_length=96, help_text=_('This expression will be evaluated against the current selected document.'), verbose_name=_('Dynamic label'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     document_types = models.ManyToManyField(DocumentType, verbose_name=_('Document types'))
 
@@ -30,9 +30,6 @@ class SmartLink(models.Model):
                 return Exception(_('Error generating dynamic label; %s' % unicode(exception)))
         else:
             return self.label
-
-    def resolve_for(self, document):
-        return ResolvedSmartLink(smart_link=self, queryset=self.get_linked_document_for(document))
 
     def get_linked_document_for(self, document):
         if document.document_type.pk not in self.document_types.values_list('pk', flat=True):
@@ -57,6 +54,9 @@ class SmartLink(models.Model):
         else:
             return Document.objects.none()
 
+    def resolve_for(self, document):
+        return ResolvedSmartLink(smart_link=self, queryset=self.get_linked_document_for(document))
+
     class Meta:
         verbose_name = _('Smart link')
         verbose_name_plural = _('Smart links')
@@ -70,11 +70,11 @@ class ResolvedSmartLink(SmartLink):
 @python_2_unicode_compatible
 class SmartLinkCondition(models.Model):
     smart_link = models.ForeignKey(SmartLink, related_name='conditions', verbose_name=_('Smart link'))
-    inclusion = models.CharField(default=INCLUSION_AND, max_length=16, choices=INCLUSION_CHOICES, help_text=_('The inclusion is ignored for the first item.'))
-    foreign_document_data = models.CharField(max_length=128, verbose_name=_('Foreign document attribute'), help_text=_('This represents the metadata of all other documents.'))
-    operator = models.CharField(max_length=16, choices=OPERATOR_CHOICES)
-    expression = models.TextField(verbose_name=_('Expression'), help_text=_('This expression will be evaluated against the current document.'))
-    negated = models.BooleanField(default=False, verbose_name=_('Negated'), help_text=_('Inverts the logic of the operator.'))
+    inclusion = models.CharField(choices=INCLUSION_CHOICES, default=INCLUSION_AND, help_text=_('The inclusion is ignored for the first item.'), max_length=16)
+    foreign_document_data = models.CharField(help_text=_('This represents the metadata of all other documents.'), max_length=128, verbose_name=_('Foreign document attribute'))
+    operator = models.CharField(choices=OPERATOR_CHOICES, max_length=16)
+    expression = models.TextField(help_text=_('This expression will be evaluated against the current document.'), verbose_name=_('Expression'))
+    negated = models.BooleanField(default=False, help_text=_('Inverts the logic of the operator.'), verbose_name=_('Negated'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
     def __str__(self):

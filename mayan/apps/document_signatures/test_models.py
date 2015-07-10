@@ -6,14 +6,13 @@ from django.conf import settings
 from django.core.files.base import File
 from django.test import TestCase
 
-from documents.models import Document, DocumentType
-from documents.test_models import TEST_DOCUMENT_TYPE
+from documents.models import DocumentType
+from documents.test_models import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 from django_gpg.literals import SIGNATURE_STATE_VALID
 from django_gpg.runtime import gpg
 
 from .models import DocumentVersionSignature
 
-TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
 TEST_SIGNED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg')
 TEST_SIGNATURE_FILE_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.sig')
 TEST_KEY_FILE = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'key0x5F3F7F75D210724D.asc')

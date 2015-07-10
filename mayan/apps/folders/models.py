@@ -11,9 +11,9 @@ from documents.models import Document
 
 @python_2_unicode_compatible
 class Folder(models.Model):
-    label = models.CharField(max_length=128, verbose_name=_('Label'), db_index=True)
+    label = models.CharField(db_index=True, max_length=128, verbose_name=_('Label'))
     user = models.ForeignKey(User, verbose_name=_('User'))
-    datetime_created = models.DateTimeField(verbose_name=_('Datetime created'), auto_now_add=True)
+    datetime_created = models.DateTimeField(auto_now_add=True, verbose_name=_('Datetime created'))
     documents = models.ManyToManyField(Document, related_name='folders', verbose_name=_('Documents'))
 
     def __str__(self):
@@ -23,7 +23,7 @@ class Folder(models.Model):
         return reverse('folders:folder_view', args=[self.pk])
 
     class Meta:
-        unique_together = ('label', 'user')
         ordering = ('label',)
+        unique_together = ('label', 'user')
         verbose_name = _('Folder')
         verbose_name_plural = _('Folders')

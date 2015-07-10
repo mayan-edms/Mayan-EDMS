@@ -77,7 +77,7 @@ class WorkflowDocumentListView(DocumentListView):
             'hide_links': True,
             'object': self.workflow,
             'title': _('Documents with the workflow: %s') % self.workflow
-            }
+        }
 
 
 class WorkflowInstanceDetailView(SingleObjectListView):

@@ -7,10 +7,7 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from .models import MetadataType
-from .settings import (
-    setting_available_functions, setting_available_models,
-    setting_available_validators
-)
+from .settings import setting_available_functions, setting_available_models
 
 
 class MetadataForm(forms.Form):

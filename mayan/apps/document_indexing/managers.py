@@ -89,9 +89,9 @@ class IndexInstanceNodeManager(models.Manager):
 
         self.delete_empty_index_nodes()
 
-    def rebuild_all_indexes():
+    def rebuild_all_indexes(self):
         for instance_node in self.all():
             instance_node.delete()
 
         for document in Document.objects.all():
-            index_document(document)
+            self.index_document(document)

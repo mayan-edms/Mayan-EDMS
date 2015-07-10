@@ -12,4 +12,3 @@ STATE_LABELS = {
     STATE_CHECKED_OUT: _('Checked out'),
     STATE_CHECKED_IN: _('Checked in/available'),
 }
-

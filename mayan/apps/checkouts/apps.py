@@ -24,7 +24,6 @@ from .permissions import (
 )
 
 
-
 class CheckoutsApp(MayanAppConfig):
     name = 'checkouts'
     verbose_name = _('Checkouts')
@@ -34,18 +33,10 @@ class CheckoutsApp(MayanAppConfig):
 
         APIEndPoint('checkouts')
 
-        Document.add_to_class('is_checked_out', lambda document: DocumentCheckout.objects.is_document_checked_out(document))
         Document.add_to_class('check_in', lambda document, user=None: DocumentCheckout.objects.check_in_document(document, user))
         Document.add_to_class('checkout_info', lambda document: DocumentCheckout.objects.document_checkout_info(document))
         Document.add_to_class('checkout_state', lambda document: DocumentCheckout.objects.document_checkout_state(document))
-
-        app.conf.CELERYBEAT_SCHEDULE.update({
-            'check_expired_check_outs': {
-                'task': 'checkouts.tasks.task_check_expired_check_outs',
-                'schedule': timedelta(seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL),
-                'options': {'queue': 'checkouts'}
-            },
-        })
+        Document.add_to_class('is_checked_out', lambda document: DocumentCheckout.objects.is_document_checked_out(document))
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -54,6 +45,14 @@ class CheckoutsApp(MayanAppConfig):
                 permission_document_checkin_override,
             )
         )
+
+        app.conf.CELERYBEAT_SCHEDULE.update({
+            'check_expired_check_outs': {
+                'task': 'checkouts.tasks.task_check_expired_check_outs',
+                'schedule': timedelta(seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL),
+                'options': {'queue': 'checkouts'}
+            },
+        })
 
         menu_facet.bind_links(links=[link_checkout_info], sources=[Document])
         menu_main.bind_links(links=[link_checkout_list])

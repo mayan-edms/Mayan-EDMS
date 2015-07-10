@@ -22,7 +22,7 @@ class DocumentTypeSettings(models.Model):
 @python_2_unicode_compatible
 class DocumentVersionOCRError(models.Model):
     document_version = models.ForeignKey(DocumentVersion, verbose_name=_('Document version'))
-    datetime_submitted = models.DateTimeField(verbose_name=_('Date time submitted'), auto_now=True, db_index=True)
+    datetime_submitted = models.DateTimeField(auto_now=True, db_index=True, verbose_name=_('Date time submitted'))
     result = models.TextField(blank=True, null=True, verbose_name=_('Result'))
 
     def __str__(self):

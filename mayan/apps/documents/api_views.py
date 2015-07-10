@@ -7,10 +7,8 @@ from django.shortcuts import get_object_or_404
 
 from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.settings import api_settings
 
 from acls.models import AccessControlList
-from common.models import SharedUploadedFile
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL

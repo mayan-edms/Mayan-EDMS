@@ -10,7 +10,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from permissions.models import Role, StoredPermission
 
-from .classes import ModelPermission
 from .managers import AccessControlListManager
 
 logger = logging.getLogger(__name__)

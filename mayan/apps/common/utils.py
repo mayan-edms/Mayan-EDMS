@@ -6,7 +6,6 @@ import tempfile
 import types
 
 from django.conf import settings
-from django.contrib.auth.models import User
 from django.utils.datastructures import MultiValueDict
 from django.utils.http import urlquote as django_urlquote
 from django.utils.http import urlencode as django_urlencode

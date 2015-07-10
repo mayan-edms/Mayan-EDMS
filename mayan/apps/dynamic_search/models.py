@@ -23,9 +23,9 @@ class RecentSearch(models.Model):
     # Should be fixed by DRF v2.4.4
     # TODO: Fix after upgrade to DRF v2.4.4
 
-    query = models.TextField(verbose_name=_('Query'), editable=False)
-    datetime_created = models.DateTimeField(verbose_name=_('Datetime created'), auto_now=True, db_index=True)
-    hits = models.IntegerField(verbose_name=_('Hits'), editable=False)
+    query = models.TextField(editable=False, verbose_name=_('Query'))
+    datetime_created = models.DateTimeField(auto_now=True, db_index=True, verbose_name=_('Datetime created'))
+    hits = models.IntegerField(editable=False, verbose_name=_('Hits'))
 
     objects = RecentSearchManager()
 

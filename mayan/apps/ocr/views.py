@@ -15,7 +15,7 @@ from documents.models import Document, DocumentType, DocumentVersion
 from permissions import Permission
 
 from .forms import DocumentContentForm
-from .models import DocumentTypeSettings, DocumentVersionOCRError
+from .models import DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
     permission_ocr_document_delete, permission_document_type_ocr_setup

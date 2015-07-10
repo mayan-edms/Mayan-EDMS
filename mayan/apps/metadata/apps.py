@@ -58,14 +58,14 @@ class MetadataApp(MayanAppConfig):
         ModelAttribute(Document, 'metadata__value', label=_('Metadata type value'), type_name='query')
         ModelAttribute(Document, 'metadata_value_of', label=_('Value of a metadata'), description=_('Return the value of a specific document metadata'), type_name=['property', 'indexing'])
 
-        SourceColumn(source=Document, label=_('Metadata'), attribute=encapsulate(lambda document: get_metadata_string(document)))
-
         ModelPermission.register(
             model=Document, permissions=(
                 permission_metadata_document_add, permission_metadata_document_edit,
                 permission_metadata_document_remove, permission_metadata_document_view,
             )
         )
+
+        SourceColumn(source=Document, label=_('Metadata'), attribute=encapsulate(lambda document: get_metadata_string(document)))
 
         document_search.add_model_field(field='metadata__metadata_type__name', label=_('Metadata type'))
         document_search.add_model_field(field='metadata__value', label=_('Metadata value'))
@@ -79,6 +79,6 @@ class MetadataApp(MayanAppConfig):
         menu_sidebar.bind_links(links=[link_metadata_add, link_metadata_edit, link_metadata_remove], sources=['metadata:metadata_add', 'metadata:metadata_edit', 'metadata:metadata_remove', 'metadata:metadata_view'])
         menu_tools.bind_links(links=[link_documents_missing_required_metadata])
 
-        post_save.connect(post_document_type_metadata_type_add, dispatch_uid='post_document_type_metadata_type_add', sender=DocumentTypeMetadataType)
         post_delete.connect(post_document_type_metadata_type_delete, dispatch_uid='post_document_type_metadata_type_delete', sender=DocumentTypeMetadataType)
         post_document_type_change.connect(post_post_document_type_change_metadata, dispatch_uid='post_post_document_type_change_metadata', sender=Document)
+        post_save.connect(post_document_type_metadata_type_add, dispatch_uid='post_document_type_metadata_type_add', sender=DocumentTypeMetadataType)

@@ -4,7 +4,7 @@ import logging
 
 from django.conf import settings
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied, ValidationError
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
@@ -21,7 +21,7 @@ from documents.models import Document
 from documents.views import DocumentListView
 from permissions import Permission
 
-from .forms import FolderForm, FolderListForm
+from .forms import FolderListForm
 from .models import Folder
 from .permissions import (
     permission_folder_add_document, permission_folder_create,

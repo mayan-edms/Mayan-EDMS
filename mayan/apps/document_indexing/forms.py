@@ -5,7 +5,7 @@ from django import forms
 from common.classes import ModelAttribute
 from documents.models import Document
 
-from .models import Index, IndexTemplateNode
+from .models import IndexTemplateNode
 
 
 class IndexTemplateNodeForm(forms.ModelForm):

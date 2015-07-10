@@ -5,7 +5,6 @@ import os
 
 from django import forms
 from django.forms.util import flatatt
-from django.utils.datastructures import MultiValueDict, MergeDict
 from django.utils.encoding import force_unicode, force_text
 from django.utils.html import conditional_escape, format_html
 from django.utils.safestring import mark_safe

@@ -4,7 +4,6 @@ from datetime import timedelta
 import logging
 
 from django.contrib.auth.models import User
-from django.core.files import File
 from django.utils.timezone import now
 
 from mayan.celery import app

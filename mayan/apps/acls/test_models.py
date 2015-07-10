@@ -1,24 +1,14 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.exceptions import PermissionDenied
 from django.core.files import File
-from django.core.urlresolvers import reverse
-from django.test.client import Client
 from django.test import TestCase
 
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
-from documents.test_models import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_SMALL_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_FILENAME,
-    TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH,
-    TEST_SIGNED_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
-    TEST_NON_ASCII_DOCUMENT_PATH, TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH,
-    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE
-)
+from documents.test_models import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 from permissions.classes import Permission
 from permissions.models import Role
 
@@ -127,7 +117,6 @@ class PermissionTestCase(TestCase):
         self.assertTrue(self.document_1 in result)
         self.assertTrue(self.document_2 in result)
         self.assertTrue(self.document_3 not in result)
-
 
     def test_filtering_with_inherited_permissions_and_local_acl(self):
         self.group.user_set.add(self.user)
