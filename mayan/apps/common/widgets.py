@@ -5,8 +5,9 @@ import os
 
 from django import forms
 from django.forms.util import flatatt
-from django.utils.encoding import force_unicode
-from django.utils.html import conditional_escape
+from django.utils.datastructures import MultiValueDict, MergeDict
+from django.utils.encoding import force_unicode, force_text
+from django.utils.html import conditional_escape, format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
@@ -50,6 +51,35 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
         else:
             output += '<li>%s</li>' % _('None')
         return mark_safe(output + '</ul>\n')
+
+
+class DisableableSelectWidget(forms.SelectMultiple):
+    allow_multiple_selected = True
+
+    def __init__(self, *args, **kwargs):
+        self.disabled_choices = kwargs.pop('disabled_choices', ())
+        super(DisableableSelectWidget, self).__init__(*args, **kwargs)
+
+    def render_option(self, selected_choices, option_value, option_label):
+        if option_value is None:
+            option_value = ''
+        option_value = force_text(option_value)
+        if option_value in selected_choices:
+            selected_html = mark_safe(' selected="selected"')
+            if not self.allow_multiple_selected:
+                # Only allow for a single selection.
+                selected_choices.remove(option_value)
+        else:
+            selected_html = ''
+        if option_value in self.disabled_choices:
+            disabled_html = u' disabled="disabled"'
+        else:
+            disabled_html = ''
+        return format_html('<option value="{0}"{1}{2}>{3}</option>',
+                           option_value,
+                           selected_html,
+                           disabled_html,
+                           force_text(option_label))
 
 
 # From: http://www.peterbe.com/plog/emailinput-html5-django
