@@ -22,6 +22,7 @@ from converter.permissions import (
     permission_transformation_delete, permission_transformation_edit,
     permission_transformation_view,
 )
+from events.links import link_events_for_object
 from events.permissions import permission_events_view
 from mayan.celery import app
 from navigation import SourceColumn
@@ -32,11 +33,10 @@ from .handlers import create_default_document_type
 from .links import (
     link_clear_image_cache, link_document_clear_transformations,
     link_document_delete, link_document_document_type_edit,
-    link_document_events_view, link_document_multiple_document_type_edit,
-    link_document_download, link_document_edit, link_document_list,
-    link_document_list_deleted, link_document_list_recent,
-    link_document_multiple_delete, link_document_multiple_trash,
-    link_document_multiple_clear_transformations,
+    link_document_multiple_document_type_edit, link_document_download,
+    link_document_edit, link_document_list, link_document_list_deleted,
+    link_document_list_recent, link_document_multiple_delete,
+    link_document_multiple_trash, link_document_multiple_clear_transformations,
     link_document_multiple_download, link_document_multiple_restore,
     link_document_multiple_update_page_count,
     link_document_page_navigation_first, link_document_page_navigation_last,
@@ -147,7 +147,7 @@ class DocumentsApp(MayanAppConfig):
         menu_facet.bind_links(links=[link_acl_list], sources=[Document])
         menu_facet.bind_links(links=[link_document_preview], sources=[Document], position=0)
         menu_facet.bind_links(links=[link_document_properties], sources=[Document], position=2)
-        menu_facet.bind_links(links=[link_document_events_view, link_document_version_list], sources=[Document], position=2)
+        menu_facet.bind_links(links=[link_events_for_object, link_document_version_list], sources=[Document], position=2)
         menu_facet.bind_links(links=[link_document_pages], sources=[Document])
 
         # Document actions
