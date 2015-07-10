@@ -10,6 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from permissions.models import Role, StoredPermission
 
+from .classes import ModelPermission
 from .managers import AccessControlListManager
 
 logger = logging.getLogger(__name__)
@@ -43,3 +44,6 @@ class AccessControlList(models.Model):
 
     def __str__(self):
         return '{} <=> {}'.format(self.content_object, self.role)
+
+    def get_inherited_permissions(self):
+        return AccessControlList.objects.get_inherited_permissions(role=self.role, obj=self.content_object)

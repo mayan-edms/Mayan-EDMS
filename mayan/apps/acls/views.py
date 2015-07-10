@@ -5,6 +5,7 @@ import logging
 
 from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
+from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
@@ -24,11 +25,11 @@ from .permissions import permission_acl_edit, permission_acl_view
 logger = logging.getLogger(__name__)
 
 
-def _permission_titles(permission_list):
-    return ', '.join([unicode(permission) for permission in permission_list])
-
-
 class ACLListView(SingleObjectListView):
+    @staticmethod
+    def permission_titles(permission_list):
+        return ', '.join([unicode(permission) for permission in permission_list])
+
     def dispatch(self, request, *args, **kwargs):
         self.content_type = get_object_or_404(ContentType, app_label=self.kwargs['app_label'], model=self.kwargs['model'])
 
@@ -47,32 +48,27 @@ class ACLListView(SingleObjectListView):
     def get_queryset(self):
         return AccessControlList.objects.filter(content_type=self.content_type, object_id=self.content_object.pk)
 
-    def get_context_data(self, **kwargs):
-        context = super(ACLListView, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'hide_object': True,
-                'object': self.content_object,
-                'title': _('Access control lists for: %s' % self.content_object),
-                'extra_columns': [
-                    {
-                        'name': _('Role'),
-                        'attribute': 'role'
-                    },
-                    {
-                        'name': _('Permissions'),
-                        'attribute': encapsulate(lambda x: _permission_titles(x.permissions.all()))
-                    },
-                ],
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'object': self.content_object,
+            'title': _('Access control lists for: %s' % self.content_object),
+            'extra_columns': [
+                {
+                    'name': _('Role'),
+                    'attribute': 'role'
+                },
+                {
+                    'name': _('Permissions'),
+                    'attribute': encapsulate(lambda entry: ACLListView.permission_titles(entry.permissions.all()))
+                },
+            ],
+        }
 
 
 class ACLCreateView(SingleObjectCreateView):
-    model = AccessControlList
     fields = ('role',)
+    model = AccessControlList
 
     def dispatch(self, request, *args, **kwargs):
         content_type = get_object_or_404(ContentType, app_label=self.kwargs['app_label'], model=self.kwargs['model'])
@@ -90,11 +86,14 @@ class ACLCreateView(SingleObjectCreateView):
         return super(ACLCreateView, self).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        instance = form.save(commit=False)
-        instance.content_object = self.content_object
-        instance.save()
+        self.instance = form.save(commit=False)
+        self.instance.content_object = self.content_object
+        self.instance.save()
 
         return super(ACLCreateView, self).form_valid(form)
+
+    def get_success_url(self):
+        return reverse('acls:acl_permissions', args=[self.instance.pk])
 
     def get_extra_context(self):
         return {
@@ -105,7 +104,16 @@ class ACLCreateView(SingleObjectCreateView):
 
 class ACLDeleteView(SingleObjectDeleteView):
     model = AccessControlList
-    object_permission = permission_acl_edit
+
+    def dispatch(self, request, *args, **kwargs):
+        acl = get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(request.user, permissions=(permission_acl_edit,))
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_acl_edit, request.user, acl.content_object)
+
+        return super(ACLDeleteView, self).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(ACLDeleteView, self).get_context_data(**kwargs)
@@ -120,45 +128,74 @@ class ACLDeleteView(SingleObjectDeleteView):
 
 class ACLPermissionsView(AssignRemoveView):
     grouped = True
-    object_permission = permission_acl_edit
     left_list_title = _('Available permissions')
     right_list_title = _('Granted permissions')
+
+    @staticmethod
+    def generate_choices(entries):
+        results = []
+
+        for namespace, permissions in itertools.groupby(entries, lambda entry: entry.namespace):
+            permission_options = [(unicode(permission.pk), permission) for permission in permissions]
+            results.append((PermissionNamespace.get(namespace), permission_options))
+
+        return results
 
     def add(self, item):
         permission = get_object_or_404(StoredPermission, pk=item)
         self.get_object().permissions.add(permission)
 
+    def dispatch(self, request, *args, **kwargs):
+        acl = get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(request.user, permissions=(permission_acl_edit,))
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_acl_edit, request.user, acl.content_object)
+
+        return super(ACLPermissionsView, self).dispatch(request, *args, **kwargs)
+
+    def get_help_text(self):
+        if self.get_object().get_inherited_permissions():
+            return _('Disabled permissions are inherited from a parent object.')
+
+        return None
+
     def get_object(self):
         return get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
 
-    def left_list(self):
-        results = []
-        for namespace, permissions in itertools.groupby(ModelPermission.get_for_instance(instance=self.get_object().content_object).exclude(id__in=self.get_object().permissions.values_list('pk', flat=True)), lambda entry: entry.namespace):
-            permission_options = [(unicode(permission.pk), permission) for permission in permissions]
-            results.append((PermissionNamespace.get(namespace), permission_options))
+    def get_available_list(self):
+        return ModelPermission.get_for_instance(instance=self.get_object().content_object).exclude(id__in=self.get_granted_list().values_list('pk', flat=True))
 
-        return results
+    def get_disabled_choices(self):
+        """
+        Get permissions from a parent's acls but remove the permissions we
+        already hold for this object
+        """
+        return map(str, set(self.get_object().get_inherited_permissions().values_list('pk', flat=True)).difference(self.get_object().permissions.values_list('pk', flat=True)))
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object().content_object,
+            'title': _('Role "%(role)s" permission\'s for "%(object)s"') % {
+                'role': self.get_object().role,
+                'object': self.get_object().content_object,
+            },
+        }
+
+    def get_granted_list(self):
+        """
+        Merge or permissions we hold for this object and the permissions we
+        hold for this object's parent via another ACL
+        """
+        merged_pks = self.get_object().permissions.values_list('pk', flat=True) | self.get_object().get_inherited_permissions().values_list('pk', flat=True)
+        return StoredPermission.objects.filter(pk__in=merged_pks)
+
+    def left_list(self):
+        return ACLPermissionsView.generate_choices(self.get_available_list())
 
     def right_list(self):
-        results = []
-        for namespace, permissions in itertools.groupby(self.get_object().permissions.all(), lambda entry: entry.namespace):
-            permission_options = [(unicode(permission.pk), permission) for permission in permissions]
-            results.append((PermissionNamespace.get(namespace), permission_options))
-
-        return results
-
-    def get_context_data(self, **kwargs):
-        context = super(ACLPermissionsView, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'object': self.get_object().content_object,
-                'title': _('Role "%(role)s" permission\'s for "%(object)s"') % {
-                    'role': self.get_object().role,
-                    'object': self.get_object().content_object,
-                }
-            }
-        )
-        return context
+        return ACLPermissionsView.generate_choices(self.get_granted_list())
 
     def remove(self, item):
         permission = get_object_or_404(StoredPermission, pk=item)

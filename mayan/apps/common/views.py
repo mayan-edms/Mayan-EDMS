@@ -33,7 +33,7 @@ from .mixins import (
 )
 
 
-class AssignRemoveView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, TemplateView):
+class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, TemplateView):
     decode_content_type = False
     extra_context = None
     grouped = False
@@ -75,9 +75,15 @@ class AssignRemoveView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, Tem
         # Subclass must override
         raise NotImplementedError
 
+    def get_disabled_choices(self):
+        return ()
+
+    def get_help_text(self):
+        return self.help_text
+
     def get(self, request, *args, **kwargs):
         self.unselected_list = ChoiceForm(prefix=self.LEFT_LIST_NAME, choices=self.left_list())
-        self.selected_list = ChoiceForm(prefix=self.RIGHT_LIST_NAME, choices=self.right_list())
+        self.selected_list = ChoiceForm(prefix=self.RIGHT_LIST_NAME, choices=self.right_list(), disabled_choices=self.get_disabled_choices(), help_text=self.get_help_text())
         return self.render_to_response(self.get_context_data())
 
     def process_form(self, prefix, items_function, action_function):

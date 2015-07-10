@@ -11,7 +11,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from .models import UserLocaleProfile
 from .utils import return_attrib
-from .widgets import DetailSelectMultiple, PlainWidget
+from .widgets import DetailSelectMultiple, DisableableSelectWidget, PlainWidget
 
 
 class DetailForm(forms.ModelForm):
@@ -57,24 +57,6 @@ class DetailForm(forms.ModelForm):
             self.fields[field_name].widget.attrs.update({'readonly': 'readonly'})
 
 
-class GenericAssignRemoveForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        left_list_qryset = kwargs.pop('left_list_qryset', None)
-        right_list_qryset = kwargs.pop('right_list_qryset', None)
-        left_filter = kwargs.pop('left_filter', None)
-        super(GenericAssignRemoveForm, self).__init__(*args, **kwargs)
-        if left_filter:
-            self.fields['left_list'].queryset = left_list_qryset.filter(
-                *left_filter)
-        else:
-            self.fields['left_list'].queryset = left_list_qryset
-
-        self.fields['right_list'].queryset = right_list_qryset
-
-    left_list = forms.ModelMultipleChoiceField(required=False, queryset=None)
-    right_list = forms.ModelMultipleChoiceField(required=False, queryset=None)
-
-
 class ChoiceForm(forms.Form):
     """
     Form to be used in side by side templates used to add or remove
@@ -83,12 +65,16 @@ class ChoiceForm(forms.Form):
     def __init__(self, *args, **kwargs):
         choices = kwargs.pop('choices', [])
         label = kwargs.pop('label', _('Selection'))
+        help_text = kwargs.pop('help_text', None)
+        disabled_choices = kwargs.pop('disabled_choices', ())
         super(ChoiceForm, self).__init__(*args, **kwargs)
         self.fields['selection'].choices = choices
         self.fields['selection'].label = label
+        self.fields['selection'].help_text = help_text
+        self.fields['selection'].widget.disabled_choices = disabled_choices
         self.fields['selection'].widget.attrs.update({'size': 14, 'class': 'choice_form'})
 
-    selection = forms.MultipleChoiceField()
+    selection = forms.MultipleChoiceField(widget=DisableableSelectWidget())
 
 
 class UserForm_view(DetailForm):

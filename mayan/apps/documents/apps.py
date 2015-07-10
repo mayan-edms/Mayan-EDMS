@@ -98,6 +98,14 @@ class DocumentsApp(MayanAppConfig):
             )
         )
 
+        ModelPermission.register_proxy(
+            source=Document, model=DocumentType,
+        )
+
+        ModelPermission.register_inheritance(
+            model=Document, related='document_type',
+        )
+
         SourceColumn(source=Document, label=_('Thumbnail'), attribute=encapsulate(lambda document: document_thumbnail(document, gallery_name='documents:document_list', title=getattr(document, 'label', None), size=setting_thumbnail_size.value)))
         SourceColumn(source=Document, label=_('Type'), attribute='document_type')
         SourceColumn(source=DeletedDocument, label=_('Type'), attribute='document_type')
@@ -124,7 +132,7 @@ class DocumentsApp(MayanAppConfig):
         menu_tools.bind_links(links=[link_clear_image_cache])
 
         # Document type links
-        menu_object.bind_links(links=[link_document_type_edit, link_document_type_filename_list, link_document_type_delete], sources=[DocumentType])
+        menu_object.bind_links(links=[link_document_type_edit, link_document_type_filename_list, link_acl_list, link_document_type_delete], sources=[DocumentType])
         menu_object.bind_links(links=[link_document_type_filename_edit, link_document_type_filename_delete], sources=[DocumentTypeFilename])
         menu_secondary.bind_links(links=[link_document_type_list, link_document_type_create], sources=[DocumentType, 'documents:document_type_create', 'documents:document_type_list'])
         menu_sidebar.bind_links(links=[link_document_type_filename_create], sources=[DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'])
