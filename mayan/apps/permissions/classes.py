@@ -45,9 +45,13 @@ class Permission(object):
     _permissions = {}
 
     @classmethod
+    def invalidate_cache(cls):
+        cls._stored_permissions_cache = {}
+
+    @classmethod
     def check_permissions(cls, requester, permissions):
         for permission in permissions:
-            if permission.requester_has_this(requester):
+            if permission.stored_permission.requester_has_this(requester):
                 return True
 
         logger.debug('no permission')
@@ -100,6 +104,3 @@ class Permission(object):
             stored_permission.volatile_permission = self
             self.__class__._stored_permissions_cache[self.uuid] = stored_permission
             return stored_permission
-
-    def requester_has_this(self, requester):
-        return self.stored_permission.requester_has_this(requester)

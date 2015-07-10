@@ -3,7 +3,7 @@ python:
   - 2.7
 env:
   global:
-   - TEST_APPS="authentication document_indexing documents django_gpg dynamic_search lock_manager document_signatures folders ocr sources tags"
+   - TEST_APPS="authentication django_gpg document_indexing document_signatures documents dynamic_search folders lock_manager ocr permissions sources tags"
   matrix:
    - DB=mysql
    - DB=postgres
