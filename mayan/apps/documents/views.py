@@ -898,7 +898,7 @@ class DocumentTypeListView(SingleObjectListView):
 class DocumentTypeDeleteView(SingleObjectDeleteView):
     model = DocumentType
     post_action_redirect = reverse_lazy('documents:document_type_list')
-    view_permission = permission_document_type_edit
+    view_permission = permission_document_type_delete
 
     def get_extra_context(self):
         return {
