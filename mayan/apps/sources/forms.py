@@ -77,30 +77,42 @@ class WebFormSetupForm(forms.ModelForm):
 
 class StagingFolderSetupForm(forms.ModelForm):
     class Meta:
-        fields = ('label', 'enabled', 'folder_path', 'preview_width', 'preview_height', 'uncompress', 'delete_after_upload')
+        fields = (
+            'label', 'enabled', 'folder_path', 'preview_width',
+            'preview_height', 'uncompress', 'delete_after_upload'
+        )
         model = StagingFolderSource
 
 
 class EmailSetupBaseForm(forms.ModelForm):
     class Meta:
         widgets = {
-            'password': forms.widgets.PasswordInput()
+            'password': forms.widgets.PasswordInput(render_value=True)
         }
 
 
 class POP3EmailSetupForm(EmailSetupBaseForm):
     class Meta(EmailSetupBaseForm.Meta):
-        fields = ('label', 'enabled', 'interval', 'document_type', 'uncompress', 'host', 'ssl', 'port', 'username', 'password', 'timeout')
+        fields = (
+            'label', 'enabled', 'interval', 'document_type', 'uncompress',
+            'host', 'ssl', 'port', 'username', 'password', 'timeout'
+        )
         model = POP3Email
 
 
 class IMAPEmailSetupForm(EmailSetupBaseForm):
     class Meta(EmailSetupBaseForm.Meta):
-        fields = ('label', 'enabled', 'interval', 'document_type', 'uncompress', 'host', 'ssl', 'port', 'username', 'password', 'mailbox')
+        fields = (
+            'label', 'enabled', 'interval', 'document_type', 'uncompress',
+            'host', 'ssl', 'port', 'username', 'password', 'mailbox'
+        )
         model = IMAPEmail
 
 
 class WatchFolderSetupForm(forms.ModelForm):
     class Meta:
-        fields = ('label', 'enabled', 'interval', 'document_type', 'uncompress', 'folder_path')
+        fields = (
+            'label', 'enabled', 'interval', 'document_type', 'uncompress',
+            'folder_path'
+        )
         model = WatchFolderSource
