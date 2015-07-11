@@ -265,6 +265,8 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
+CELERY_QUEUES = []
+CELERY_ROUTES = {}
 # ------------ CORS ------------
 CORS_ORIGIN_ALLOW_ALL = True
 # ------ Django REST Swagger -----

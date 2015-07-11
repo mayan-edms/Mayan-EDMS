@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+from kombu import Exchange, Queue
+
 from django.db.models.signals import post_save, post_delete
 from django.utils.translation import ugettext_lazy as _
 
@@ -9,6 +11,7 @@ from common import (
 )
 from documents.models import Document
 from documents.signals import post_document_created
+from mayan.celery import app
 from metadata.models import DocumentMetadata
 from rest_api.classes import APIEndPoint
 
@@ -37,6 +40,24 @@ class DocumentIndexingApp(MayanAppConfig):
         super(DocumentIndexingApp, self).ready()
 
         APIEndPoint('indexes', app_name='document_indexing')
+
+        app.conf.CELERY_QUEUES.append(
+            Queue('indexing', Exchange('indexing'), routing_key='indexing'),
+        )
+
+        app.conf.CELERY_ROUTES.update(
+            {
+                'document_indexing.tasks.task_delete_empty_index_nodes': {
+                    'queue': 'indexing'
+                },
+                'document_indexing.tasks.task_index_document': {
+                    'queue': 'indexing'
+                },
+                'document_indexing.tasks.task_do_rebuild_all_indexes': {
+                    'queue': 'tools'
+                },
+            }
+        )
 
         menu_facet.bind_links(links=[link_document_index_list], sources=[Document])
         menu_object.bind_links(links=[link_index_setup_edit, link_index_setup_view, link_index_setup_document_types, link_index_setup_delete], sources=[Index])

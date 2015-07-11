@@ -245,7 +245,7 @@ class UploadInteractiveView(UploadBaseView):
             shared_uploaded_file_id=shared_uploaded_file.pk,
             source_id=self.source.pk,
             user_id=user_id,
-        ), queue='uploads')
+        ))
         messages.success(self.request, _('New document queued for uploaded and will be available shortly.'))
         return HttpResponseRedirect(self.request.get_full_path())
 
@@ -310,7 +310,7 @@ class UploadInteractiveVersionView(UploadBaseView):
             document_id=self.document.pk,
             user_id=user_id,
             comment=forms['document_form'].cleaned_data.get('comment')
-        ), queue='uploads')
+        ))
 
         messages.success(self.request, _('New document version queued for uploaded and will be available shortly.'))
         return HttpResponseRedirect(reverse('documents:document_version_list', args=[self.document.pk]))

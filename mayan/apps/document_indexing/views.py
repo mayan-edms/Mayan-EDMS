@@ -344,7 +344,7 @@ def rebuild_index_instances(request):
             'message': _('On large databases this operation may take some time to execute.'),
         }, context_instance=RequestContext(request))
     else:
-        task_do_rebuild_all_indexes.apply_async(queue='tools')
+        task_do_rebuild_all_indexes.apply_async()
         messages.success(request, _('Index rebuild queued successfully.'))
         return HttpResponseRedirect(next)
 

@@ -194,7 +194,7 @@ class APIDocumentImageView(generics.GenericAPIView):
         document_page = document.pages.get(page_number=page)
 
         try:
-            task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version), queue='converter')
+            task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version))
             # TODO: prepend 'data:%s;base64,%s' based on format specified in
             # async call
             return Response({

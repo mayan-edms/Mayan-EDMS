@@ -2,6 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from datetime import timedelta
 
+from kombu import Exchange, Queue
+
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import registry
@@ -111,21 +113,49 @@ class DocumentsApp(MayanAppConfig):
         SourceColumn(source=DeletedDocument, label=_('Type'), attribute='document_type')
         SourceColumn(source=DeletedDocument, label=_('Date time trashed'), attribute='deleted_date_time')
 
-        app.conf.CELERYBEAT_SCHEDULE.update({
-            'task_check_trash_periods': {
-                'task': 'documents.tasks.task_check_trash_periods',
-                'schedule': timedelta(seconds=CHECK_TRASH_PERIOD_INTERVAL),
-                'options': {'queue': 'documents'}
-            },
-        })
+        app.conf.CELERYBEAT_SCHEDULE.update(
+            {
+                'task_check_delete_periods': {
+                    'task': 'documents.tasks.task_check_delete_periods',
+                    'schedule': timedelta(seconds=CHECK_DELETE_PERIOD_INTERVAL),
+                },
+                'task_check_trash_periods': {
+                    'task': 'documents.tasks.task_check_trash_periods',
+                    'schedule': timedelta(seconds=CHECK_TRASH_PERIOD_INTERVAL),
+                },
+            }
+        )
 
-        app.conf.CELERYBEAT_SCHEDULE.update({
-            'task_check_delete_periods': {
-                'task': 'documents.tasks.task_check_delete_periods',
-                'schedule': timedelta(seconds=CHECK_DELETE_PERIOD_INTERVAL),
-                'options': {'queue': 'documents'}
-            },
-        })
+        app.conf.CELERY_QUEUES.extend(
+            (
+                Queue('converter', Exchange('converter'), routing_key='converter', delivery_mode=1),
+                Queue('documents_periodic', Exchange('documents_periodic'), routing_key='documents_periodic', delivery_mode=1),
+                Queue('uploads', Exchange('uploads'), routing_key='uploads'),
+            )
+        )
+
+        app.conf.CELERY_ROUTES.update(
+            {
+                'documents.tasks.task_check_delete_periods': {
+                    'queue': 'documents'
+                },
+                'documents.tasks.task_check_trash_periods': {
+                    'queue': 'documents'
+                },
+                'documents.tasks.task_clear_image_cache': {
+                    'queue': 'tools'
+                },
+                'documents.tasks.task_get_document_page_image': {
+                    'queue': 'converter'
+                },
+                'documents.tasks.task_update_page_count': {
+                    'queue': 'tools'
+                },
+                'documents.tasks.task_upload_new_version': {
+                    'queue': 'uploads'
+                },
+            }
+        )
 
         menu_front_page.bind_links(links=[link_document_list_recent, link_document_list, link_document_list_deleted])
         menu_setup.bind_links(links=[link_document_type_setup])

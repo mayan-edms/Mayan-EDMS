@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 import logging
 
+from kombu import Exchange, Queue
+
 from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
@@ -15,6 +17,7 @@ from common.utils import encapsulate
 from documents.models import Document, DocumentType
 from documents.search import document_search
 from documents.signals import post_document_type_change
+from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
@@ -66,6 +69,21 @@ class MetadataApp(MayanAppConfig):
         )
 
         SourceColumn(source=Document, label=_('Metadata'), attribute=encapsulate(lambda document: get_metadata_string(document)))
+
+        app.conf.CELERY_QUEUES.append(
+            Queue('metadata', Exchange('metadata'), routing_key='metadata'),
+        )
+
+        app.conf.CELERY_ROUTES.update(
+            {
+                'metadata.tasks.task_remove_metadata_type': {
+                    'queue': 'metadata'
+                },
+                'metadata.tasks.task_add_required_metadata_type': {
+                    'queue': 'metadata'
+                },
+            }
+        )
 
         document_search.add_model_field(field='metadata__metadata_type__name', label=_('Metadata type'))
         document_search.add_model_field(field='metadata__value', label=_('Metadata value'))

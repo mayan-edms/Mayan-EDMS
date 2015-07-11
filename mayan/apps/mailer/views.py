@@ -65,7 +65,7 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
                 subject_template = Template(form.cleaned_data['subject'])
                 subject_text = strip_tags(subject_template.render(context))
 
-                task_send_document.apply_async(args=(subject_text, body_text_content, request.user.email, form.cleaned_data['email']), kwargs={'document_id': document.pk, 'as_attachment': as_attachment}, queue='mailing')
+                task_send_document.apply_async(args=(subject_text, body_text_content, request.user.email, form.cleaned_data['email']), kwargs={'document_id': document.pk, 'as_attachment': as_attachment})
 
             # TODO: Pluralize
             messages.success(request, _('Successfully queued for delivery via email.'))

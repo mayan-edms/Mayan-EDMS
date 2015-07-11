@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
+from kombu import Exchange, Queue
 import sh
 
 from django.db.models.signals import post_save
@@ -18,6 +19,7 @@ from documents.search import document_search
 from documents.signals import post_version_upload
 from documents.widgets import document_link
 from installation import PropertyNamespace
+from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
@@ -37,11 +39,11 @@ logger = logging.getLogger(__name__)
 
 
 def document_ocr_submit(self):
-    task_do_ocr.apply_async(args=[self.latest_version.pk], queue='ocr')
+    task_do_ocr.apply_async(args=[self.latest_version.pk])
 
 
 def document_version_ocr_submit(self):
-    task_do_ocr.apply_async(args=[self.pk], queue='ocr')
+    task_do_ocr.apply_async(args=[self.pk])
 
 
 class OCRApp(MayanAppConfig):
@@ -65,6 +67,18 @@ class OCRApp(MayanAppConfig):
         SourceColumn(source=DocumentVersionOCRError, label=_('Document'), attribute=encapsulate(lambda entry: document_link(entry.document_version.document)))
         SourceColumn(source=DocumentVersionOCRError, label=_('Added'), attribute='datetime_submitted')
         SourceColumn(source=DocumentVersionOCRError, label=_('Result'), attribute='result')
+
+        app.conf.CELERY_QUEUES.append(
+            Queue('ocr', Exchange('ocr'), routing_key='ocr'),
+        )
+
+        app.conf.CELERY_ROUTES.update(
+            {
+                'ocr.tasks.task_do_ocr': {
+                    'queue': 'ocr'
+                },
+            }
+        )
 
         document_search.add_model_field(field='versions__pages__ocr_content__content', label=_('Content'))
 

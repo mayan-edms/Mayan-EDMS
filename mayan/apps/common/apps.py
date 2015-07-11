@@ -2,12 +2,16 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from kombu import Exchange, Queue
+
 from django import apps
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
+
+from mayan.celery import app
 
 from .handlers import (
     user_locale_profile_session_config, user_locale_profile_create
@@ -46,6 +50,10 @@ class CommonApp(MayanAppConfig):
 
     def ready(self):
         super(CommonApp, self).ready()
+
+        app.conf.CELERY_QUEUES.append(
+            Queue('tools', Exchange('tools'), routing_key='tools'),
+        )
 
         menu_facet.bind_links(links=[link_current_user_details, link_current_user_locale_profile_details, link_tools, link_setup], sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'authentication:password_change_view', 'common:setup_list', 'common:tools_list'])
         menu_main.bind_links(links=[link_about], position=-1)

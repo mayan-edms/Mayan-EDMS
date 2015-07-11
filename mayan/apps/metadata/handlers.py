@@ -12,12 +12,12 @@ def post_document_type_metadata_type_add(sender, instance, created, **kwargs):
     logger.debug('instance: %s', instance)
 
     if created and instance.required:
-        task_add_required_metadata_type.apply_async(kwargs={'document_type_id': instance.document_type.pk, 'metadata_type_id': instance.metadata_type.pk}, queue='metadata')
+        task_add_required_metadata_type.apply_async(kwargs={'document_type_id': instance.document_type.pk, 'metadata_type_id': instance.metadata_type.pk})
 
 
 def post_document_type_metadata_type_delete(sender, instance, **kwargs):
     logger.debug('instance: %s', instance)
-    task_remove_metadata_type.apply_async(kwargs={'document_type_id': instance.document_type.pk, 'metadata_type_id': instance.metadata_type.pk}, queue='metadata')
+    task_remove_metadata_type.apply_async(kwargs={'document_type_id': instance.document_type.pk, 'metadata_type_id': instance.metadata_type.pk})
 
 
 def post_post_document_type_change_metadata(sender, instance, **kwargs):

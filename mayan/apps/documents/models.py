@@ -189,7 +189,7 @@ class Document(models.Model):
         task_upload_new_version.apply_async(kwargs=dict(
             shared_uploaded_file_id=shared_uploaded_file.pk,
             document_id=self.pk, user_id=user_id,
-        ), queue='uploads')
+        ))
 
         logger.info('New document version queued for document: %s', self)
 

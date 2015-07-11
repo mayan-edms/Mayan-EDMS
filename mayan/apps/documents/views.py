@@ -455,7 +455,7 @@ def get_document_image(request, document_id, size=setting_preview_size.value):
 
     document_page = document.pages.get(page_number=page)
 
-    task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version), queue='converter')
+    task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version))
     data = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
     return HttpResponse(base64.b64decode(data[21:]), content_type='image')
 
@@ -587,7 +587,7 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
 
     if request.method == 'POST':
         for document in documents:
-            task_update_page_count.apply_async(kwargs={'version_id': document.latest_version.pk}, queue='tools')
+            task_update_page_count.apply_async(kwargs={'version_id': document.latest_version.pk})
 
         messages.success(
             request,
@@ -1102,7 +1102,7 @@ def document_clear_image_cache(request):
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
-        task_clear_image_cache.apply_async(queue='tools')
+        task_clear_image_cache.apply_async()
         messages.success(request, _('Document image cache clearing queued successfully.'))
 
         return HttpResponseRedirect(previous)
