@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 import logging
 
+from django.db import OperationalError
+
 from mayan.celery import app
 from documents.models import Document
 from lock_manager import Lock, LockError
@@ -46,7 +48,14 @@ def task_index_document(self, document_id):
                 # Document was deleted before we could execute, abort about updating
                 pass
             else:
-                IndexInstanceNode.objects.index_document(document)
+                try:
+                    IndexInstanceNode.objects.index_document(document)
+                except OperationalError as exception:
+                    logger.warning('Operational error while trying to index document: %s; %s', document, exception)
+                    lock.release()
+                    raise self.retry(exc=exception)
+                else:
+                    lock.release()
             finally:
                 lock.release()
         finally:
