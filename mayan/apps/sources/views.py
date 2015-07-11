@@ -16,7 +16,7 @@ from common.models import SharedUploadedFile
 from common.utils import encapsulate
 from common.views import (
     MultiFormView, ParentChildListView, SingleObjectCreateView,
-    SingleObjectListView
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from common.widgets import two_state_template
 from documents.models import DocumentType, Document
@@ -371,6 +371,54 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
 
 
 # Setup views
+class SetupSourceCreateView(SingleObjectCreateView):
+    post_action_redirect = reverse_lazy('sources:setup_source_list')
+    view_permission = permission_sources_setup_create
+
+    def get_form_class(self):
+        return get_form_class(self.kwargs['source_type'])
+
+    def get_extra_context(self):
+        return {
+            'object': self.kwargs['source_type'],
+            'title': _('Create new source of type: %s') % get_class(self.kwargs['source_type']).class_fullname(),
+        }
+
+
+class SetupSourceDeleteView(SingleObjectDeleteView):
+    post_action_redirect = reverse_lazy('sources:setup_source_list')
+    view_permission = permission_sources_setup_delete
+
+    def get_object(self):
+        return get_object_or_404(Source.objects.select_subclasses(), pk=self.kwargs['pk'])
+
+    def get_form_class(self):
+        return get_form_class(self.get_object().source_type)
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Delete the source: %s?') % self.get_object(),
+        }
+
+
+class SetupSourceEditView(SingleObjectEditView):
+    post_action_redirect = reverse_lazy('sources:setup_source_list')
+    view_permission = permission_sources_setup_edit
+
+    def get_object(self):
+        return get_object_or_404(Source.objects.select_subclasses(), pk=self.kwargs['pk'])
+
+    def get_form_class(self):
+        return get_form_class(self.get_object().source_type)
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit source: %s') % self.get_object(),
+        }
+
+
 class SetupSourceListView(SingleObjectListView):
     view_permission = permission_sources_setup_view
     queryset = Source.objects.select_subclasses()
@@ -389,77 +437,3 @@ class SetupSourceListView(SingleObjectListView):
         'hide_link': True,
         'title': _('Sources'),
     }
-
-
-def setup_source_edit(request, source_id):
-    Permission.check_permissions(request.user, [permission_sources_setup_edit])
-
-    source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
-    form_class = get_form_class(source.source_type)
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        form = form_class(instance=source, data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _('Source edited successfully'))
-                return HttpResponseRedirect(next)
-            except Exception as exception:
-                messages.error(request, _('Error editing source; %s') % exception)
-    else:
-        form = form_class(instance=source)
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'navigation_object_list': ['source'],
-        'next': next,
-        'source': source,
-        'source_type': source.source_type,
-        'title': _('Edit source: %s') % source,
-    }, context_instance=RequestContext(request))
-
-
-def setup_source_delete(request, source_id):
-    Permission.check_permissions(request.user, [permission_sources_setup_delete])
-    source = get_object_or_404(Source.objects.select_subclasses(), pk=source_id)
-    redirect_view = reverse('sources:setup_source_list')
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', redirect_view)))
-
-    if request.method == 'POST':
-        try:
-            source.delete()
-            messages.success(request, _('Source "%s" deleted successfully.') % source)
-        except Exception as exception:
-            messages.error(request, _('Error deleting source "%(source)s": %(error)s') % {
-                'source': source, 'error': exception
-            })
-        return HttpResponseRedirect(redirect_view)
-
-    context = {
-        'delete_view': True,
-        'navigation_object_list': ['source'],
-        'previous': previous,
-        'source': source,
-        'source_type': source.source_type,
-        'title': _('Are you sure you wish to delete the source: %s?') % source,
-    }
-
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
-
-
-class SetupSourceCreateView(SingleObjectCreateView):
-    post_action_redirect = reverse_lazy('sources:setup_source_list')
-    view_permission = permission_sources_setup_create
-
-    def get_form_class(self):
-        return get_form_class(self.kwargs['source_type'])
-
-    def get_extra_context(self):
-        return {
-            'object': self.kwargs['source_type'],
-            'title': _('Create new source of type: %s') % get_class(self.kwargs['source_type']).class_fullname(),
-        }
