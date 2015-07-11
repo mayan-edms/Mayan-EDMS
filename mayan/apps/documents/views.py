@@ -18,7 +18,10 @@ from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
 from common.mixins import MultipleInstanceActionMixin
 from common.utils import encapsulate, pretty_size
-from common.views import ConfirmView, ParentChildListView, SingleObjectListView
+from common.views import (
+    ConfirmView, ParentChildListView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+)
 from common.widgets import two_state_template
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
@@ -33,7 +36,7 @@ from .events import (
 )
 from .forms import (
     DocumentDownloadForm, DocumentForm, DocumentPageForm, DocumentPreviewForm,
-    DocumentPropertiesForm, DocumentTypeForm, DocumentTypeFilenameForm,
+    DocumentPropertiesForm, DocumentTypeFilenameForm,
     DocumentTypeFilenameForm_create, DocumentTypeSelectForm, PrintForm
 )
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
@@ -878,102 +881,56 @@ def document_print(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def document_type_list(request):
-    Permission.check_permissions(request.user, [permission_document_type_view])
+class DocumentTypeListView(SingleObjectListView):
+    model = DocumentType
+    view_permission = permission_document_type_view
 
-    context = {
-        'object_list': DocumentType.objects.all(),
-        'title': _('Document types'),
-        'hide_link': True,
-        'extra_columns': [
-            {'name': _('Documents'), 'attribute': encapsulate(lambda x: x.documents.count())}
-        ]
-    }
-
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'extra_columns': [
+                {'name': _('Documents'), 'attribute': encapsulate(lambda document_type: document_type.documents.count())}
+            ],
+            'hide_link': True,
+            'title': _('Document types'),
+        }
 
 
-def document_type_edit(request, document_type_id):
-    Permission.check_permissions(request.user, [permission_document_type_edit])
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+class DocumentTypeDeleteView(SingleObjectDeleteView):
+    model = DocumentType
+    post_action_redirect = reverse_lazy('documents:document_type_list')
+    view_permission = permission_document_type_edit
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('documents:document_type_list'))))
-
-    if request.method == 'POST':
-        form = DocumentTypeForm(instance=document_type, data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _('Document type edited successfully'))
-                return HttpResponseRedirect(next)
-            except Exception as exception:
-                messages.error(request, _('Error editing document type; %s') % exception)
-    else:
-        form = DocumentTypeForm(instance=document_type)
-
-    return render_to_response('appearance/generic_form.html', {
-        'document_type': document_type,
-        'form': form,
-        'navigation_object_list': ['document_type'],
-        'next': next,
-        'title': _('Edit document type: %s') % document_type,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'message': _('All documents of this type will be deleted too.'),
+            'object': self.get_object(),
+            'title': _('Delete the document type: %s?') % self.get_object(),
+        }
 
 
-def document_type_delete(request, document_type_id):
-    Permission.check_permissions(request.user, [permission_document_type_delete])
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+class DocumentTypeEditView(SingleObjectEditView):
+    fields = ('label', 'trash_time_period', 'trash_time_unit', 'delete_time_period', 'delete_time_unit')
+    model = DocumentType
+    post_action_redirect = reverse_lazy('documents:document_type_list')
+    view_permission = permission_document_type_edit
 
-    post_action_redirect = reverse('documents:document_type_list')
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        try:
-            document_type.delete()
-            messages.success(request, _('Document type: %s deleted successfully.') % document_type)
-        except Exception as exception:
-            messages.error(request, _('Document type: %(document_type)s delete error: %(error)s') % {
-                'document_type': document_type, 'error': exception})
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'document_type': document_type,
-        'message': _('All documents of this type will be deleted too.'),
-        'navigation_object_list': ['document_type'],
-        'next': next,
-        'previous': previous,
-        'title': _('Are you sure you wish to delete the document type: %s?') % document_type,
-    }
-
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit document type: %s') % self.get_object(),
+        }
 
 
-def document_type_create(request):
-    Permission.check_permissions(request.user, [permission_document_type_create])
+class DocumentTypeCreateView(SingleObjectCreateView):
+    fields = ('label', 'trash_time_period', 'trash_time_unit', 'delete_time_period', 'delete_time_unit')
+    model = DocumentType
+    post_action_redirect = reverse_lazy('documents:document_type_list')
+    view_permission = permission_document_type_create
 
-    if request.method == 'POST':
-        form = DocumentTypeForm(request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _('Document type created successfully'))
-                return HttpResponseRedirect(reverse('documents:document_type_list'))
-            except Exception as exception:
-                messages.error(request, _('Error creating document type; %(error)s') % {
-                    'error': exception})
-    else:
-        form = DocumentTypeForm()
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Create document type'),
-        'form': form,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'title': _('Create document type'),
+        }
 
 
 def document_type_filename_list(request, document_type_id):
