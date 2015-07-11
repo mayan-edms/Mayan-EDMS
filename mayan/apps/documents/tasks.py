@@ -4,12 +4,16 @@ from datetime import timedelta
 import logging
 
 from django.contrib.auth.models import User
+from django.db import OperationalError
 from django.utils.timezone import now
 
 from mayan.celery import app
 
 from common.models import SharedUploadedFile
 
+from .literals import (
+    UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
+)
 from .models import (
     DeletedDocument, Document, DocumentPage, DocumentType, DocumentVersion
 )
@@ -69,14 +73,18 @@ def task_get_document_page_image(document_page_id, *args, **kwargs):
     return document_page.get_image(*args, **kwargs)
 
 
-@app.task(ignore_result=True)
-def task_update_page_count(version_id):
+@app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)
+def task_update_page_count(self, version_id):
     document_version = DocumentVersion.objects.get(pk=version_id)
-    document_version.update_page_count()
+    try:
+        document_version.update_page_count()
+    except OperationalError as exception:
+        logger.warning('Operational error during attempt to update page count for document version: %s; %s. Retrying.', document, exception)
+        raise self.retry(exc=exception)
 
 
-@app.task(ignore_result=True)
-def task_upload_new_version(document_id, shared_uploaded_file_id, user_id, comment=None):
+@app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)
+def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id, comment=None):
     document = Document.objects.get(pk=document_id)
 
     shared_file = SharedUploadedFile.objects.get(pk=shared_uploaded_file_id)
@@ -87,10 +95,20 @@ def task_upload_new_version(document_id, shared_uploaded_file_id, user_id, comme
         user = None
 
     with shared_file.open() as file_object:
+        document_version = DocumentVersion(document=document, comment=comment or '', file=file_object)
         try:
-            document_version = DocumentVersion(document=document, comment=comment or '', file=file_object)
             document_version.save(_user=user)
         except Warning as warning:
-            logger.info('Warning during attempt to create new document version for document: %s ; %s', document, warning)
-        finally:
+            # New document version are blocked
+            logger.info('Warning during attempt to create new document version for document: %s; %s', document, warning)
+            shared_file.delete()
+        except OperationalError as exception:
+            # Database is locked for example
+            logger.warning('Operational error during attempt to create new document version for document: %s; %s. Retrying.', document, exception)
+            raise self.retry(exc=exception)
+        except Exception as exception:
+            # This except and else block emulate a finally:
+            logger.error('Unexpected error during attempt to create new document version for document: %s; %s', document, warning)
+            shared_file.delete()
+        else:
             shared_file.delete()

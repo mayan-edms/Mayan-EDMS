@@ -5,20 +5,21 @@ import sys
 import traceback
 
 from django.conf import settings
+from django.db import OperationalError
 
 from documents.models import DocumentVersion
 from lock_manager import Lock, LockError
 from mayan.celery import app
 
 from .runtime import ocr_backend_class
-from .literals import LOCK_EXPIRE
+from .literals import DO_OCR_RETRY_DELAY, LOCK_EXPIRE
 from .models import DocumentVersionOCRError
 from .signals import post_document_version_ocr
 
 logger = logging.getLogger(__name__)
 
 
-@app.task(bind=True, ignore_result=True)
+@app.task(bind=True, default_retry_delay=DO_OCR_RETRY_DELAY, ignore_result=True)
 def task_do_ocr(self, document_version_pk):
     lock_id = 'task_do_ocr_doc_version-%d' % document_version_pk
     try:
@@ -33,6 +34,9 @@ def task_do_ocr(self, document_version_pk):
             logger.info('Starting document OCR for document version: %s', document_version)
             backend = ocr_backend_class()
             backend.process_document_version(document_version)
+        except OperationalError as exception:
+            logger.error('OCR error for document version: %s; %s. Retrying.', document_version, exception)
+            raise self.retry(exc=exception)
         except Exception as exception:
             logger.error('OCR error for document version: %s; %s', document_version, exception)
             if document_version:
