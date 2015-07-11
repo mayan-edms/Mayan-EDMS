@@ -25,7 +25,7 @@ from .permissions import (
     permission_document_checkout
 )
 from .tasks import task_check_expired_check_outs  # NOQA
-# Required so that celerybeat can find the task
+# This import is required so that celerybeat can find the task
 
 
 class CheckoutsApp(MayanAppConfig):
