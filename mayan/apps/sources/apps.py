@@ -30,7 +30,10 @@ from .links import (
     link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
     link_upload_version
 )
-from .models import Source
+from .models import (
+    POP3Email, IMAPEmail, Source, StagingFolderSource, WatchFolderSource,
+    WebFormSource,
+)
 from .widgets import staging_file_thumbnail
 
 
@@ -67,9 +70,9 @@ class SourcesApp(MayanAppConfig):
 
         menu_front_page.bind_links(links=[link_document_create_multiple])
         menu_object.bind_links(links=[link_document_create_siblings], sources=[Document])
-        menu_object.bind_links(links=[link_setup_source_edit, link_setup_source_delete, link_transformation_list, link_setup_source_logs], sources=[Source])
+        menu_object.bind_links(links=[link_setup_source_edit, link_setup_source_delete, link_transformation_list, link_setup_source_logs], sources=[POP3Email, IMAPEmail, StagingFolderSource, WatchFolderSource, WebFormSource])
         menu_object.bind_links(links=[link_staging_file_delete], sources=[StagingFile])
-        menu_secondary.bind_links(links=[link_setup_sources, link_setup_source_create_webform, link_setup_source_create_staging_folder, link_setup_source_create_pop3_email, link_setup_source_create_imap_email, link_setup_source_create_watch_folder], sources=[Source, 'sources:setup_source_list', 'sources:setup_source_create'])
+        menu_secondary.bind_links(links=[link_setup_sources, link_setup_source_create_webform, link_setup_source_create_staging_folder, link_setup_source_create_pop3_email, link_setup_source_create_imap_email, link_setup_source_create_watch_folder], sources=[POP3Email, IMAPEmail, StagingFolderSource, WatchFolderSource, WebFormSource, 'sources:setup_source_list', 'sources:setup_source_create'])
         menu_setup.bind_links(links=[link_setup_sources])
         menu_sidebar.bind_links(links=[link_upload_version], sources=['documents:document_version_list', 'documents:upload_version', 'documents:document_version_revert'])
 
