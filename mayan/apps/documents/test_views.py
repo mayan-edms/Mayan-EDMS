@@ -95,7 +95,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         #TODO: FIX self.assertContains(response, 'Document type edited successfully', status_code=200)
 
         # Reload document type model data
-        self.document = DocumentType.objects.get(pk=self.document.pk)
+        #self.document_type = DocumentType.objects.get(pk=self.document_type.pk)
         #TODO: FIX self.assertEqual(self.document_type.name, TEST_DOCUMENT_TYPE + 'partial')
 
         # Delete the document type
