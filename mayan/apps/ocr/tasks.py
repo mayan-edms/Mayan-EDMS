@@ -35,7 +35,7 @@ def task_do_ocr(self, document_version_pk):
             backend = ocr_backend_class()
             backend.process_document_version(document_version)
         except OperationalError as exception:
-            logger.error('OCR error for document version: %s; %s. Retrying.', document_version, exception)
+            logger.warning('OCR error for document version: %s; %s. Retrying.', document_version, exception)
             raise self.retry(exc=exception)
         except Exception as exception:
             logger.error('OCR error for document version: %s; %s', document_version, exception)
