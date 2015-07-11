@@ -242,6 +242,7 @@ LOGIN_EXEMPT_URLS = (
 )
 # --------- Pagination ----------------
 PAGINATION_INVALID_PAGE_RAISES_404 = True
+PAGINATION_DEFAULT_PAGINATION = 40
 # ---------- Search ------------------
 SEARCH_SHOW_OBJECT_TYPE = False
 # ---------- Django REST framework -----------
