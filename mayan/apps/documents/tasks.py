@@ -79,7 +79,7 @@ def task_update_page_count(self, version_id):
     try:
         document_version.update_page_count()
     except OperationalError as exception:
-        logger.warning('Operational error during attempt to update page count for document version: %s; %s. Retrying.', document, exception)
+        logger.warning('Operational error during attempt to update page count for document version: %s; %s. Retrying.', document_version, exception)
         raise self.retry(exc=exception)
 
 
