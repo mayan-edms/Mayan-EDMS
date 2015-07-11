@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
-from django.db import models
+from django.db import models, transaction
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
@@ -75,13 +75,14 @@ class IndexInstanceNodeManager(models.Manager):
 
         from .models import Index
 
-        self.remove_document(document)
+        with transaction.atomic():
+            self.remove_document(document)
 
-        # Only update indexes where the document type is found
-        for index in Index.objects.filter(enabled=True, document_types=document.document_type):
-            root_instance, created = self.get_or_create(index_template_node=index.template_root, parent=None)
-            for template_node in index.template_root.get_children():
-                self.cascade_eval(document, template_node, root_instance)
+            # Only update indexes where the document type is found
+            for index in Index.objects.filter(enabled=True, document_types=document.document_type):
+                root_instance, created = self.get_or_create(index_template_node=index.template_root, parent=None)
+                for template_node in index.template_root.get_children():
+                    self.cascade_eval(document, template_node, root_instance)
 
     def remove_document(self, document):
         for index_node in self.filter(documents=document):
