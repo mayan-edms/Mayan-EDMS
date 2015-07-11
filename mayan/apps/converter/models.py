@@ -5,6 +5,7 @@ import logging
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
+from django.db.models import Max
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -26,7 +27,7 @@ class Transformation(models.Model):
     object_id = models.PositiveIntegerField()
     content_object = generic.GenericForeignKey('content_type', 'object_id')
 
-    order = models.PositiveIntegerField(blank=True, db_index=True, default=0, help_text=_('Order in which the transformations will be executed.'), null=True, verbose_name=_('Order'))
+    order = models.PositiveIntegerField(blank=True, db_index=True, default=0, help_text=_('Order in which the transformations will be executed. If left unchanged, an automatic order value will be assigned.'), verbose_name=_('Order'))
     name = models.CharField(choices=BaseTransformation.get_transformation_choices(), max_length=128, verbose_name=_('Name'))
     arguments = models.TextField(blank=True, help_text=_('Enter the arguments for the transformation as a YAML dictionary. ie: {"degrees": 180}'), validators=[YAMLValidator()], verbose_name=_('Arguments'))
 
@@ -35,7 +36,13 @@ class Transformation(models.Model):
     def __str__(self):
         return self.get_name_display()
 
+    def save(self, *args, **kwargs):
+        if not self.order:
+            self.order = Transformation.objects.filter(content_type=self.content_type, object_id=self.object_id).aggregate(Max('order'))['order__max'] + 1
+        super(Transformation, self).save(*args, **kwargs)
+
     class Meta:
         ordering = ('order',)
+        unique_together = ('content_type', 'object_id', 'order')
         verbose_name = _('Transformation')
         verbose_name_plural = _('Transformations')
