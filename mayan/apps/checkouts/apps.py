@@ -2,6 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 from datetime import timedelta
 
+from kombu import Exchange, Queue
+
 from django.db.models.signals import pre_save
 from django.utils.translation import ugettext_lazy as _
 
@@ -22,6 +24,8 @@ from .permissions import (
     permission_document_checkin, permission_document_checkin_override,
     permission_document_checkout
 )
+from .tasks import task_check_expired_check_outs  # NOQA
+# Required so that celerybeat can find the task
 
 
 class CheckoutsApp(MayanAppConfig):
@@ -46,13 +50,26 @@ class CheckoutsApp(MayanAppConfig):
             )
         )
 
-        app.conf.CELERYBEAT_SCHEDULE.update({
-            'check_expired_check_outs': {
-                'task': 'checkouts.tasks.task_check_expired_check_outs',
-                'schedule': timedelta(seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL),
-                'options': {'queue': 'checkouts'}
-            },
-        })
+        app.conf.CELERYBEAT_SCHEDULE.update(
+            {
+                'task_check_expired_check_outs': {
+                    'task': 'checkouts.tasks.task_check_expired_check_outs',
+                    'schedule': timedelta(seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL),
+                },
+            }
+        )
+
+        app.conf.CELERY_QUEUES.append(
+            Queue('checkouts_periodic', Exchange('checkouts_periodic'), routing_key='checkouts_periodic', delivery_mode=1),
+        )
+
+        app.conf.CELERY_ROUTES.update(
+            {
+                'checkouts.tasks.task_check_expired_check_outs': {
+                    'queue': 'checkouts_periodic'
+                },
+            }
+        )
 
         menu_facet.bind_links(links=[link_checkout_info], sources=[Document])
         menu_main.bind_links(links=[link_checkout_list])

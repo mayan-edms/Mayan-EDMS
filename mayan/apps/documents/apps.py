@@ -137,10 +137,10 @@ class DocumentsApp(MayanAppConfig):
         app.conf.CELERY_ROUTES.update(
             {
                 'documents.tasks.task_check_delete_periods': {
-                    'queue': 'documents'
+                    'queue': 'documents_periodic'
                 },
                 'documents.tasks.task_check_trash_periods': {
-                    'queue': 'documents'
+                    'queue': 'documents_periodic'
                 },
                 'documents.tasks.task_clear_image_cache': {
                     'queue': 'tools'
