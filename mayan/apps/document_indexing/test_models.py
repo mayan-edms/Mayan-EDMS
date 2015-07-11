@@ -73,3 +73,34 @@ class IndexTestCase(TestCase):
         # Document deleted from, index structure should update
         self.document.delete()
         self.failUnlessEqual(list(IndexInstanceNode.objects.values_list('value', flat=True)), [''])
+
+    def test_rebuild_all_indexes(self):
+        # Add metadata type and connect to document type
+        metadata_type = MetadataType.objects.create(name='test', label='test')
+        DocumentTypeMetadataType.objects.create(document_type=self.document_type, metadata_type=metadata_type)
+
+        # Add document metadata value
+        self.document.metadata.create(metadata_type=metadata_type, value='0001')
+
+        # Create empty index
+        index = Index.objects.create(label='test')
+        self.failUnlessEqual(list(Index.objects.all()), [index])
+
+        # Add our document type to the new index
+        index.document_types.add(self.document_type)
+        self.failUnlessEqual(list(index.document_types.all()), [self.document_type])
+
+        # Create simple index template
+        root = index.template_root
+        index.node_templates.create(parent=root, expression='document.metadata_value_of.test', link_documents=True)
+        self.failUnlessEqual(list(IndexTemplateNode.objects.values_list('expression', flat=True)), ['', 'document.metadata_value_of.test'])
+
+        # There should be no index instances
+        self.failUnlessEqual(list(IndexInstanceNode.objects.all()), [])
+
+        # Rebuild all indexes
+        IndexInstanceNode.objects.rebuild_all_indexes()
+
+        # Check that document is in instance node
+        instance_node = IndexInstanceNode.objects.get(value='0001')
+        self.failUnlessEqual(list(instance_node.documents.all()), [self.document])
