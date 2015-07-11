@@ -149,7 +149,7 @@ class DocumentsApp(MayanAppConfig):
                     'queue': 'converter'
                 },
                 'documents.tasks.task_update_page_count': {
-                    'queue': 'tools'
+                    'queue': 'uploads'
                 },
                 'documents.tasks.task_upload_new_version': {
                     'queue': 'uploads'
