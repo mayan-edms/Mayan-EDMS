@@ -32,6 +32,10 @@ class DocumentTestCase(TestCase):
         with open(TEST_KEY_FILE) as file_object:
             gpg.import_key(file_object.read())
 
+    def tearDown(self):
+        self.document.delete()
+        self.document_type.delete()
+
     def test_document_no_signature(self):
         self.assertEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), False)
 
@@ -54,7 +58,3 @@ class DocumentTestCase(TestCase):
 
         self.assertEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), True)
         self.assertEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version).status, SIGNATURE_STATE_VALID)
-
-    def tearDown(self):
-        self.document.delete()
-        self.document_type.delete()

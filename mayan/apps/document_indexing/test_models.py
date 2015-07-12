@@ -21,6 +21,10 @@ class IndexTestCase(TestCase):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(file_object=File(file_object))
 
+    def tearDown(self):
+        for document_type in DocumentType.objects.all():
+            document_type.delete()
+
     def test_indexing(self):
         metadata_type = MetadataType.objects.create(name='test', label='test')
         DocumentTypeMetadataType.objects.create(document_type=self.document_type, metadata_type=metadata_type)

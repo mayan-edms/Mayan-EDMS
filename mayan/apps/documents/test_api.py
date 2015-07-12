@@ -34,6 +34,10 @@ class DocumentAPICreateDocumentTestCase(TestCase):
         ocr_settings.auto_ocr = False
         ocr_settings.save()
 
+    def tearDown(self):
+        self.document_type.delete()
+        self.admin_user.delete()
+
     def test_uploading_a_document_using_token_auth(self):
         # Get the an user token
         token_client = APIClient()
@@ -97,6 +101,3 @@ class DocumentAPICreateDocumentTestCase(TestCase):
 
         # The document was deleted from the the DB?
         self.assertEqual(Document.objects.count(), 0)
-
-    def tearDown(self):
-        self.document_type.delete()

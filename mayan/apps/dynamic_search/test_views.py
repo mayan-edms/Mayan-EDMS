@@ -43,7 +43,9 @@ class Issue46TestCase(TestCase):
                 )
 
     def tearDown(self):
-        DocumentType.objects.all().delete()
+        for document_type in DocumentType.objects.all():
+            document_type.delete()
+
         self.admin_user.delete()
 
     def test_advanced_search_past_first_page(self):
