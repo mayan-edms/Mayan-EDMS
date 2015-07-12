@@ -33,27 +33,27 @@ class DocumentTestCase(TestCase):
             gpg.import_key(file_object.read())
 
     def test_document_no_signature(self):
-        self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), False)
+        self.assertEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), False)
 
     def test_new_document_version_signed(self):
         with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
             self.document.new_version(file_object=File(file_object), comment='test comment 1')
 
-        self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), False)
-        self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version).status, SIGNATURE_STATE_VALID)
+        self.assertEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), False)
+        self.assertEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version).status, SIGNATURE_STATE_VALID)
 
     def test_detached_signatures(self):
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document.new_version(file_object=File(file_object), comment='test comment 2')
 
         # GPGVerificationError
-        self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version), None)
+        self.assertEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version), None)
 
         with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
             DocumentVersionSignature.objects.add_detached_signature(self.document.latest_version, File(file_object))
 
-        self.failUnlessEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), True)
-        self.failUnlessEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version).status, SIGNATURE_STATE_VALID)
+        self.assertEqual(DocumentVersionSignature.objects.has_detached_signature(self.document.latest_version), True)
+        self.assertEqual(DocumentVersionSignature.objects.verify_signature(self.document.latest_version).status, SIGNATURE_STATE_VALID)
 
     def tearDown(self):
         self.document.delete()

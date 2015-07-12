@@ -76,14 +76,14 @@ class DocumentAPICreateDocumentTestCase(TestCase):
 
         # Make sure the document uploaded correctly
         document = Document.objects.first()
-        self.failUnlessEqual(document.exists(), True)
-        self.failUnlessEqual(document.size, 272213)
+        self.assertEqual(document.exists(), True)
+        self.assertEqual(document.size, 272213)
 
-        self.failUnlessEqual(document.file_mimetype, 'application/pdf')
-        self.failUnlessEqual(document.file_mime_encoding, 'binary')
-        self.failUnlessEqual(document.label, TEST_SMALL_DOCUMENT_FILENAME)
-        self.failUnlessEqual(document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
-        self.failUnlessEqual(document.page_count, 47)
+        self.assertEqual(document.file_mimetype, 'application/pdf')
+        self.assertEqual(document.file_mime_encoding, 'binary')
+        self.assertEqual(document.label, TEST_SMALL_DOCUMENT_FILENAME)
+        self.assertEqual(document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
+        self.assertEqual(document.page_count, 47)
 
         # Make sure we can edit the document via the API
         document_url = reverse('document-detail', args=[Document.objects.first().pk])

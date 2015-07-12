@@ -49,13 +49,13 @@ class UploadDocumentTestCase(TestCase):
 
         document = Document.objects.first()
 
-        self.failUnlessEqual(document.exists(), True)
-        self.failUnlessEqual(document.size, 17436)
+        self.assertEqual(document.exists(), True)
+        self.assertEqual(document.size, 17436)
 
-        self.failUnlessEqual(document.file_mimetype, 'image/png')
-        self.failUnlessEqual(document.file_mime_encoding, 'binary')
-        self.failUnlessEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
-        self.failUnlessEqual(document.page_count, 1)
+        self.assertEqual(document.file_mimetype, 'image/png')
+        self.assertEqual(document.file_mime_encoding, 'binary')
+        self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
+        self.assertEqual(document.page_count, 1)
 
         # Test Non-ASCII named documents inside Non-ASCII named compressed file
 
@@ -66,12 +66,12 @@ class UploadDocumentTestCase(TestCase):
 
         self.assertEqual(Document.objects.count(), 2)
 
-        self.failUnlessEqual(document.exists(), True)
-        self.failUnlessEqual(document.size, 17436)
+        self.assertEqual(document.exists(), True)
+        self.assertEqual(document.size, 17436)
 
-        self.failUnlessEqual(document.file_mimetype, 'image/png')
-        self.failUnlessEqual(document.file_mime_encoding, 'binary')
-        self.failUnlessEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
-        self.failUnlessEqual(document.page_count, 1)
+        self.assertEqual(document.file_mimetype, 'image/png')
+        self.assertEqual(document.file_mime_encoding, 'binary')
+        self.assertEqual(document.label, TEST_NON_ASCII_DOCUMENT_FILENAME)
+        self.assertEqual(document.page_count, 1)
 
         shutil.rmtree(temporary_directory)

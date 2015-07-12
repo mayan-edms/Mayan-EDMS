@@ -32,8 +32,8 @@ class TagTestCase(TestCase):
     def runTest(self):
         tag = Tag(label='test', color=COLOR_RED)
         tag.save()
-        self.failUnlessEqual(tag.label, 'test')
-        self.failUnlessEqual(tag.get_color_code(), 'red')
+        self.assertEqual(tag.label, 'test')
+        self.assertEqual(tag.get_color_code(), 'red')
 
     def test_addition_and_deletion_of_documents(self):
         tag = Tag(label='test', color=COLOR_RED)

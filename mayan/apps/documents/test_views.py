@@ -40,6 +40,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
+        self.admin_user.delete()
 
     def test_restoring_documents(self):
         self.assertEqual(Document.objects.count(), 1)

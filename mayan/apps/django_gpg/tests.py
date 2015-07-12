@@ -24,8 +24,8 @@ class DjangoGPGTestCase(TestCase):
 
     def test_main(self):
         # No private or public keys in the keyring
-        self.failUnlessEqual(Key.get_all(self.gpg, secret=True), [])
-        self.failUnlessEqual(Key.get_all(self.gpg), [])
+        self.assertEqual(Key.get_all(self.gpg, secret=True), [])
+        self.assertEqual(Key.get_all(self.gpg), [])
 
         # Test querying the keyservers
         self.assertTrue(TEST_KEY_ID in [key_stub.key_id for key_stub in self.gpg.query(TEST_UIDS)])

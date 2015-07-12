@@ -46,14 +46,14 @@ class UploadDocumentTestCase(TestCase):
         self.assertEqual(Document.objects.count(), 1)
 
         self.document = Document.objects.all().first()
-        self.failUnlessEqual(self.document.exists(), True)
-        self.failUnlessEqual(self.document.size, 272213)
+        self.assertEqual(self.document.exists(), True)
+        self.assertEqual(self.document.size, 272213)
 
-        self.failUnlessEqual(self.document.file_mimetype, 'application/pdf')
-        self.failUnlessEqual(self.document.file_mime_encoding, 'binary')
-        self.failUnlessEqual(self.document.label, 'mayan_11_1.pdf')
-        self.failUnlessEqual(self.document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
-        self.failUnlessEqual(self.document.page_count, 47)
+        self.assertEqual(self.document.file_mimetype, 'application/pdf')
+        self.assertEqual(self.document.file_mime_encoding, 'binary')
+        self.assertEqual(self.document.label, 'mayan_11_1.pdf')
+        self.assertEqual(self.document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
+        self.assertEqual(self.document.page_count, 47)
 
     def test_issue_25(self):
         # Login the admin user
@@ -73,15 +73,15 @@ class UploadDocumentTestCase(TestCase):
         document = Document.objects.first()
         # Test for issue 25 during creation
         # ** description fields was removed from upload from **
-        self.failUnlessEqual(document.description, '')
+        self.assertEqual(document.description, '')
 
         # Reset description
         document.description = TEST_DOCUMENT_DESCRIPTION
         document.save()
-        self.failUnlessEqual(document.description, TEST_DOCUMENT_DESCRIPTION)
+        self.assertEqual(document.description, TEST_DOCUMENT_DESCRIPTION)
 
         # Test for issue 25 during editing
         self.client.post(reverse('documents:document_edit', args=[document.pk]), {'description': TEST_DOCUMENT_DESCRIPTION, 'language': document.language, 'label': document.label})
         # Fetch document again and test description
         document = Document.objects.first()
-        self.failUnlessEqual(document.description, TEST_DOCUMENT_DESCRIPTION)
+        self.assertEqual(document.description, TEST_DOCUMENT_DESCRIPTION)

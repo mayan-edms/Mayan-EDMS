@@ -38,16 +38,16 @@ class DocumentTestCase(TestCase):
         self.document_type.delete()
 
     def test_document_creation(self):
-        self.failUnlessEqual(self.document_type.label, TEST_DOCUMENT_TYPE)
+        self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE)
 
-        self.failUnlessEqual(self.document.exists(), True)
-        self.failUnlessEqual(self.document.size, 272213)
+        self.assertEqual(self.document.exists(), True)
+        self.assertEqual(self.document.size, 272213)
 
-        self.failUnlessEqual(self.document.file_mimetype, 'application/pdf')
-        self.failUnlessEqual(self.document.file_mime_encoding, 'binary')
-        self.failUnlessEqual(self.document.label, 'mayan_11_1.pdf')
-        self.failUnlessEqual(self.document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
-        self.failUnlessEqual(self.document.page_count, 47)
+        self.assertEqual(self.document.file_mimetype, 'application/pdf')
+        self.assertEqual(self.document.file_mime_encoding, 'binary')
+        self.assertEqual(self.document.label, 'mayan_11_1.pdf')
+        self.assertEqual(self.document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
+        self.assertEqual(self.document.page_count, 47)
 
     def test_version_creation(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -56,7 +56,7 @@ class DocumentTestCase(TestCase):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document.new_version(file_object=File(file_object), comment='test comment 1')
 
-        self.failUnlessEqual(self.document.versions.count(), 3)
+        self.assertEqual(self.document.versions.count(), 3)
 
     def test_restoring_documents(self):
         self.assertEqual(Document.objects.count(), 1)

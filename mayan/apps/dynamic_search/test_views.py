@@ -1,11 +1,13 @@
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.files.base import File
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client
-from django.test.utils import override_settings
+
+from pagination.templatetags import pagination_tags
 
 from documents.models import DocumentType
 from documents.search import document_search
@@ -32,7 +34,7 @@ class Issue46TestCase(TestCase):
 
         self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
 
-        # Upload 50 instances of the same test document
+        # Upload many instances of the same test document
         for i in range(self.document_count):
             with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
                 self.document_type.new_document(
@@ -40,16 +42,22 @@ class Issue46TestCase(TestCase):
                     label='test document',
                 )
 
-    @override_settings(PAGINATION_DEFAULT_PAGINATION=2)
+    def tearDown(self):
+        DocumentType.objects.all().delete()
+        self.admin_user.delete()
+
     def test_advanced_search_past_first_page(self):
         # Make sure all documents are returned by the search
         model_list, result_set, elapsed_time = document_search.search({'label': 'test document'}, user=self.admin_user)
         self.assertEqual(len(result_set), self.document_count)
 
-        # Funcitonal test for the first page of advanced results
-        response = self.client.get(reverse('search:results'), {'label': 'test'})
-        self.assertContains(response, 'Total (1 - 2 out of 4) (Page 1 of 2)', status_code=200)
+        with self.settings(PAGINATION_DEFAULT_PAGINATION=2):
+            reload(pagination_tags)
 
-        # Functional test for the second page of advanced results
-        response = self.client.get(reverse('search:results'), {'label': 'test', 'page': 2})
-        self.assertContains(response, 'Total (3 - 4 out of 4) (Page 2 of 2)', status_code=200)
+            # Funcitonal test for the first page of advanced results
+            response = self.client.get(reverse('search:results'), {'label': 'test'})
+            self.assertContains(response, 'Total (1 - 2 out of 4) (Page 1 of 2)', status_code=200)
+
+            # Functional test for the second page of advanced results
+            response = self.client.get(reverse('search:results'), {'label': 'test', 'page': 2})
+            self.assertContains(response, 'Total (3 - 4 out of 4) (Page 2 of 2)', status_code=200)
