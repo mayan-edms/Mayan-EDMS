@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
+from django.apps import apps
 from django.db import models
 
 from .settings import setting_recent_count
@@ -21,7 +22,7 @@ class RecentDocumentManager(models.Manager):
                 recent_to_delete.delete()
 
     def get_for_user(self, user):
-        document_model = models.get_model('documents', 'document')
+        document_model = apps.get_model('documents', 'document')
 
         if user.is_authenticated():
             return document_model.objects.filter(recentdocument__user=user).order_by('-recentdocument__datetime_accessed')

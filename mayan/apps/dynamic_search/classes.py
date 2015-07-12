@@ -4,9 +4,9 @@ import datetime
 import logging
 import re
 
+from django.apps import apps
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
-from django.db.models.loading import get_model
 from django.utils.module_loading import import_string
 
 from acls.models import AccessControlList
@@ -87,7 +87,7 @@ class SearchModel(object):
         search_dict = {}
 
         if not self.model:
-            self.model = get_model(self.app_label, self.model_name)
+            self.model = apps.get_model(self.app_label, self.model_name)
             if not self.label:
                 self.label = self.model._meta.verbose_name
 
