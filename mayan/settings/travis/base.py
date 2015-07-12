@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-from .. import *  # NOQA
+from ..base import *  # NOQA
+
 
 LOGGING = {
     'version': 1,
@@ -18,26 +19,42 @@ LOGGING = {
     },
     'handlers': {
         'console': {
-            'level': 'DEBUG',
+            'level': 'WARNING',
             'class': 'logging.StreamHandler',
             'formatter': 'intermediate'
         }
     },
     'loggers': {
-        'documents': {
+        'acls': {
             'handlers': ['console'],
             'propagate': True,
-            'level': 'DEBUG',
+            'level': 'WARNING',
         },
         'converter': {
             'handlers': ['console'],
             'propagate': True,
-            'level': 'DEBUG',
+            'level': 'WARNING',
+        },
+        'documents': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARNING',
+        },
+        'document_indexing': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARNING',
         },
         'ocr': {
             'handlers': ['console'],
             'propagate': True,
-            'level': 'DEBUG',
+            'level': 'WARNING',
         },
     }
 }
+
+
+TEMPLATE_LOADERS = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader'
+)
