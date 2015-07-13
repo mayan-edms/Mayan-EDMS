@@ -16,7 +16,6 @@ from django.utils.translation import ugettext_lazy as _
 from common.literals import TIME_DELTA_UNIT_CHOICES
 from common.models import SharedUploadedFile
 from common.settings import setting_temporary_directory
-from common.utils import fs_cleanup
 from converter import (
     converter_class, TransformationResize, TransformationRotate,
     TransformationZoom
@@ -35,10 +34,10 @@ from .managers import (
     DocumentManager, DocumentTypeManager, PassthroughManager,
     RecentDocumentManager, TrashCanManager
 )
-from .runtime import storage_backend
+from .runtime import cache_storage_backend, storage_backend
 from .settings import (
-    setting_cache_path, setting_display_size, setting_language,
-    setting_language_choices, setting_zoom_max_level, setting_zoom_min_level
+    setting_display_size, setting_language, setting_language_choices,
+    setting_zoom_max_level, setting_zoom_min_level
 )
 from .signals import (
     post_document_created, post_document_type_change, post_version_upload
@@ -340,6 +339,7 @@ class DocumentVersion(models.Model):
                     post_document_created.send(sender=self.document.__class__, instance=self.document)
 
     def invalidate_cache(self):
+        cache_storage_backend.delete(self.cache_filename)
         for page in self.pages.all():
             page.invalidate_cache()
 
@@ -472,16 +472,16 @@ class DocumentVersion(models.Model):
 
     @property
     def cache_filename(self):
-        return os.path.join(setting_cache_path.value, 'document-version-{}'.format(self.uuid))
+        return 'document-version-{}'.format(self.uuid)
 
     def get_intermidiate_file(self):
         cache_filename = self.cache_filename
         logger.debug('Intermidiate filename: %s', cache_filename)
 
-        if os.path.exists(cache_filename):
+        if cache_storage_backend.exists(cache_filename):
             logger.debug('Intermidiate file "%s" found.', cache_filename)
 
-            return open(cache_filename)
+            return cache_storage_backend.open(cache_filename)
         else:
             logger.debug('Intermidiate file "%s" not found.', cache_filename)
 
@@ -489,17 +489,17 @@ class DocumentVersion(models.Model):
                 converter = converter_class(file_object=self.open())
                 pdf_file_object = converter.to_pdf()
 
-                with open(cache_filename, 'wb+') as file_object:
+                with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
                     for chunk in pdf_file_object:
                         file_object.write(chunk)
 
-                return open(cache_filename)
+                return cache_storage_backend.open(cache_filename)
             except InvalidOfficeFormat:
                 return self.open()
             except Exception as exception:
                 # Cleanup in case of error
                 logger.error('Error creating intermediate file "%s"; %s.', cache_filename, exception)
-                fs_cleanup(cache_filename)
+                cache_storage_backend.delete(cache_filename)
                 raise
 
 
@@ -560,7 +560,7 @@ class DocumentPage(models.Model):
         return self.document_version.document
 
     def invalidate_cache(self):
-        fs_cleanup(self.cache_filename)
+        cache_storage_backend.delete(self.cache_filename)
 
     @property
     def uuid(self):
@@ -572,7 +572,7 @@ class DocumentPage(models.Model):
 
     @property
     def cache_filename(self):
-        return os.path.join(setting_cache_path.value, 'page-cache-{}'.format(self.uuid))
+        return 'page-cache-{}'.format(self.uuid)
 
     def get_image(self, *args, **kwargs):
         as_base64 = kwargs.pop('as_base64', False)
@@ -592,9 +592,9 @@ class DocumentPage(models.Model):
         cache_filename = self.cache_filename
         logger.debug('Page cache filename: %s', cache_filename)
 
-        if os.path.exists(cache_filename):
+        if cache_storage_backend.exists(cache_filename):
             logger.debug('Page cache file "%s" found', cache_filename)
-            converter = converter_class(file_object=open(cache_filename))
+            converter = converter_class(file_object=cache_storage_backend.open(cache_filename))
 
             converter.seek(0)
         else:
@@ -605,12 +605,13 @@ class DocumentPage(models.Model):
                 converter.seek(page_number=self.page_number - 1)
 
                 page_image = converter.get_page()
-                with open(cache_filename, 'wb+') as file_object:
+
+                with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
                     file_object.write(page_image.getvalue())
             except Exception as exception:
                 # Cleanup in case of error
                 logger.error('Error creating page cache file "%s"; %s', cache_filename, exception)
-                fs_cleanup(cache_filename)
+                cache_storage_backend.delete(cache_filename)
                 raise
 
         # Stored transformations

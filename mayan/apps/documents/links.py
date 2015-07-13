@@ -71,7 +71,7 @@ link_document_list_deleted = Link(icon='fa fa-trash', text=_('Trash'), view='doc
 link_clear_image_cache = Link(
     icon='fa fa-file-image-o',
     description=_('Clear the graphics representations used to speed up the documents\' display and interactive transformations results.'),
-    permissions=[permission_document_tools], text=_('Clear image cache'),
+    permissions=[permission_document_tools], text=_('Clear document cache'),
     view='documents:document_clear_image_cache'
 )
 link_trash_can_empty = Link(permissions=[permission_empty_trash], text=_('Empty trash'), view='documents:trash_can_empty')

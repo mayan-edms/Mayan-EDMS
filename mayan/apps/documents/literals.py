@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+CACHE_PATH = 'document_cache/'
 CHECK_DELETE_PERIOD_INTERVAL = 60
 CHECK_TRASH_PERIOD_INTERVAL = 60
 DEFAULT_DELETE_PERIOD = 30

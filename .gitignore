@@ -7,7 +7,7 @@ settings_local.py
 /celerybeat-schedule
 document_storage/
 /misc/mayan.geany
-image_cache/
+mayan/media/document_cache/
 build/
 _build/
 gpg_home/

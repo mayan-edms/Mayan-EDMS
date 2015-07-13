@@ -24,6 +24,6 @@ setting_zoom_percent_step = namespace.add_setting(global_name='DOCUMENTS_ZOOM_PE
 setting_zoom_max_level = namespace.add_setting(global_name='DOCUMENTS_ZOOM_MAX_LEVEL', default=300, help_text=_('Maximum amount in percent (%) to allow user to zoom in a document page interactively.'))
 setting_zoom_min_level = namespace.add_setting(global_name='DOCUMENTS_ZOOM_MIN_LEVEL', default=25, help_text=_('Minimum amount in percent (%) to allow user to zoom out a document page interactively.'))
 setting_rotation_step = namespace.add_setting(global_name='DOCUMENTS_ROTATION_STEP', default=90, help_text=_('Amount in degrees to rotate a document page per user interaction.'))
-setting_cache_path = namespace.add_setting(global_name='DOCUMENTS_CACHE_PATH', default=os.path.join(settings.MEDIA_ROOT, 'image_cache'), is_path=True)
+setting_cache_storage_backend = namespace.add_setting(global_name='DOCUMENTS_CACHE_STORAGE_BACKEND', default='documents.storage.LocalCacheFileStorage')
 setting_language = namespace.add_setting(global_name='DOCUMENTS_LANGUAGE', default='eng', help_text=_('Default documents language (in ISO639-2 format).'))
 setting_language_choices = namespace.add_setting(global_name='DOCUMENTS_LANGUAGE_CHOICES', default=LANGUAGE_CHOICES, help_text=_('List of supported document languages.'))
