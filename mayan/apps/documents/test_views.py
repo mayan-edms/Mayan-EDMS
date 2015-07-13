@@ -38,7 +38,6 @@ class DocumentsViewsFunctionalTestCase(TestCase):
             self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf')
 
     def tearDown(self):
-        self.document.delete()
         self.document_type.delete()
         self.admin_user.delete()
 
