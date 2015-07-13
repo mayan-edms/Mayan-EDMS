@@ -68,6 +68,8 @@ What's new in Mayan EDMS v2.0
 * Index are recalculating after new document is ready
 * Normalization of 'title' and 'name' fields to 'label'
 * Split tests files.
+* Document image and intermediate file caching now has it's own storage backend.
+
 
 Upgrading from a previous version
 =================================
