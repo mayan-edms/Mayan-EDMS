@@ -81,7 +81,7 @@ class AccessControlListManager(models.Manager):
                 parent_object = getattr(instance, parent_accessor)
                 parent_content_type = ContentType.objects.get_for_model(parent_object)
                 parent_queryset = self.filter(content_type=parent_content_type, role__in=user_roles, permissions=permission.stored_permission)
-                parent_acl_query = Q(**{'{}__pk__in'.format(parent_accessor): parent_queryset.values_list('pk', flat=True)})
+                parent_acl_query = Q(**{'{}__pk__in'.format(parent_accessor): parent_queryset.values_list('object_id', flat=True)})
             else:
                 parent_acl_query = Q()
 
