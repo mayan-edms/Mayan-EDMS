@@ -155,7 +155,7 @@ class ACLPermissionsView(AssignRemoveView):
 
         return super(ACLPermissionsView, self).dispatch(request, *args, **kwargs)
 
-    def get_help_text(self):
+    def get_right_list_help_text(self):
         if self.get_object().get_inherited_permissions():
             return _('Disabled permissions are inherited from a parent object.')
 
