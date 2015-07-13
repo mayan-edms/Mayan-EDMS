@@ -33,6 +33,10 @@ class UploadDocumentTestCase(TestCase):
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
         self.client = Client()
 
+    def tearDown(self):
+        self.document_type.delete()
+        self.admin_user.delete()
+
     def test_issue_gh_163(self):
         """
         Non-ASCII chars in document name failing in upload via watch folder #163

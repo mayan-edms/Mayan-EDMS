@@ -27,6 +27,11 @@ class FolderTestCase(TestCase):
 
         self.user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
 
+    def tearDown(self):
+        self.document.delete()
+        self.document_type.delete()
+        self.user.delete()
+
     def test_creation_of_folder(self):
         folder = Folder.objects.create(label='test', user=self.user)
 
@@ -55,7 +60,3 @@ class FolderTestCase(TestCase):
         self.assertEqual(list(folder.documents.all()), [])
 
         folder.delete()
-
-    def tearDown(self):
-        self.document.delete()
-        self.document_type.delete()

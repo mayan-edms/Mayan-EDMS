@@ -17,17 +17,18 @@ TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_document
 
 class TagTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType(label=TEST_DOCUMENT_TYPE)
-        self.document_type.save()
+        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
 
-        self.document = Document(
-            document_type=self.document_type,
-            description='description',
-        )
-        self.document.save()
+        ocr_settings = self.document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file_object=File(file_object))
+            self.document = self.document_type.new_document(file_object=File(file_object))
+
+    def tearDown(self):
+        self.document.delete()
+        self.document_type.delete()
 
     def runTest(self):
         tag = Tag(label='test', color=COLOR_RED)
@@ -50,7 +51,3 @@ class TagTestCase(TestCase):
         self.assertEqual(list(tag.documents.all()), [])
 
         tag.delete()
-
-    def tearDown(self):
-        self.document.delete()
-        self.document_type.delete()

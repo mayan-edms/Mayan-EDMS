@@ -30,6 +30,10 @@ class UploadDocumentTestCase(TestCase):
         self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
         self.client = Client()
 
+    def tearDown(self):
+        self.document_type.delete()
+        self.admin_user.delete()
+
     def test_upload_a_document(self):
         # Login the admin user
         logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)

@@ -17,6 +17,11 @@ class PermissionTestCase(TestCase):
         self.role = Role.objects.create(label='test role')
         Permission.invalidate_cache()
 
+    def tearDown(self):
+        self.role.delete()
+        self.group.delete()
+        self.user.delete()
+
     def test_no_permissions(self):
         with self.assertRaises(PermissionDenied):
             Permission.check_permissions(requester=self.user, permissions=(permission_role_view,))

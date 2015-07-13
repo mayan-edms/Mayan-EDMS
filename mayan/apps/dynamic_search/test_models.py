@@ -20,6 +20,10 @@ class DocumentSearchTestCase(TestCase):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf')
 
+    def tearDown(self):
+        self.document.delete()
+        self.document_type.delete()
+
     def test_simple_search_after_related_name_change(self):
         """
         Test that simple search works after related_name changes to
@@ -40,7 +44,3 @@ class DocumentSearchTestCase(TestCase):
         model_list, result_set, elapsed_time = document_search.search({'versions__mimetype': self.document.file_mimetype}, user=self.admin_user)
         self.assertEqual(len(result_set), 1)
         self.assertEqual(list(model_list), [self.document])
-
-    def tearDown(self):
-        self.document.delete()
-        self.document_type.delete()
