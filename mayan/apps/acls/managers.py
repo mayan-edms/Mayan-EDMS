@@ -71,15 +71,19 @@ class AccessControlListManager(models.Manager):
             for role in group.roles.all():
                 user_roles.append(role)
 
-        parent_accessor = ModelPermission.get_inheritance(queryset.model)
-        instance = queryset.first()
-        if instance:
-            parent_object = getattr(instance, parent_accessor)
-            parent_content_type = ContentType.objects.get_for_model(parent_object)
-            parent_queryset = self.filter(content_type=parent_content_type, role__in=user_roles, permissions=permission.stored_permission)
-            parent_acl_query = Q(**{'{}__pk__in'.format(parent_accessor): parent_queryset.values_list('pk', flat=True)})
-        else:
+        try:
+            parent_accessor = ModelPermission.get_inheritance(queryset.model)
+        except KeyError:
             parent_acl_query = Q()
+        else:
+            instance = queryset.first()
+            if instance:
+                parent_object = getattr(instance, parent_accessor)
+                parent_content_type = ContentType.objects.get_for_model(parent_object)
+                parent_queryset = self.filter(content_type=parent_content_type, role__in=user_roles, permissions=permission.stored_permission)
+                parent_acl_query = Q(**{'{}__pk__in'.format(parent_accessor): parent_queryset.values_list('pk', flat=True)})
+            else:
+                parent_acl_query = Q()
 
         # Directly granted access
         content_type = ContentType.objects.get_for_model(queryset.model)
