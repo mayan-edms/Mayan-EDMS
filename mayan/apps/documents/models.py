@@ -411,7 +411,7 @@ class DocumentVersion(models.Model):
         for page in self.pages.all():
             page.delete()
 
-        self.file.storage.delete(self.file.path)
+        self.file.storage.delete(self.file.name)
 
         return super(DocumentVersion, self).delete(*args, **kwargs)
 
@@ -420,7 +420,7 @@ class DocumentVersion(models.Model):
         Returns a boolean value that indicates if the document's file
         exists in storage
         """
-        return self.file.storage.exists(self.file.path)
+        return self.file.storage.exists(self.file.name)
 
     def open(self, raw=False):
         """
@@ -428,9 +428,9 @@ class DocumentVersion(models.Model):
         the storage backend
         """
         if raw:
-            return self.file.storage.open(self.file.path)
+            return self.file.storage.open(self.file.name)
         else:
-            result = self.file.storage.open(self.file.path)
+            result = self.file.storage.open(self.file.name)
             for key in sorted(DocumentVersion._pre_open_hooks):
                 result = DocumentVersion._pre_open_hooks[key](result, self)
 
@@ -457,7 +457,7 @@ class DocumentVersion(models.Model):
     @property
     def size(self):
         if self.exists():
-            return self.file.storage.size(self.file.path)
+            return self.file.storage.size(self.file.name)
         else:
             return None
 

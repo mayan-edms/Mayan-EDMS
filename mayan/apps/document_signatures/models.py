@@ -37,7 +37,7 @@ class DocumentVersionSignature(models.Model):
             self.save()
 
     def delete_detached_signature_file(self):
-        self.signature_file.storage.delete(self.signature_file.path)
+        self.signature_file.storage.delete(self.signature_file.name)
 
     class Meta:
         verbose_name = _('Document version signature')

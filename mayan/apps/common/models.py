@@ -34,11 +34,11 @@ class SharedUploadedFile(models.Model):
         super(SharedUploadedFile, self).save(*args, **kwargs)
 
     def delete(self, *args, **kwargs):
-        self.file.storage.delete(self.file.path)
+        self.file.storage.delete(self.file.name)
         return super(SharedUploadedFile, self).delete(*args, **kwargs)
 
     def open(self):
-        return self.file.storage.open(self.file.path)
+        return self.file.storage.open(self.file.name)
 
 
 @python_2_unicode_compatible

@@ -59,7 +59,7 @@ class DocumentVersionSignatureManager(models.Manager):
     def detached_signature(self, document_version):
         document_signature = self.get_document_signature(document_version=document_version)
 
-        return document_signature.signature_file.storage.open(document_signature.signature_file.path)
+        return document_signature.signature_file.storage.open(document_signature.signature_file.name)
 
     def verify_signature(self, document_version):
         document_version_descriptor = document_version.open(raw=True)
