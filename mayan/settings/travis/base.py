@@ -35,7 +35,7 @@ LOGGING = {
             'propagate': True,
             'level': 'WARNING',
         },
-        'documents': {
+        'django_gpg': {
             'handlers': ['console'],
             'propagate': True,
             'level': 'WARNING',
@@ -45,7 +45,47 @@ LOGGING = {
             'propagate': True,
             'level': 'WARNING',
         },
+        'document_signatures': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARNING',
+        },
+        'documents': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARNING',
+        },
+        'dynamic_search': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARNING',
+        },
+        'folders': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARNING',
+        },
+        'lock_manager': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARNING',
+        },
         'ocr': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARNING',
+        },
+        'permissions': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARNING',
+        },
+        'sources': {
+            'handlers': ['console'],
+            'propagate': True,
+            'level': 'WARNING',
+        },
+        'tags': {
             'handlers': ['console'],
             'propagate': True,
             'level': 'WARNING',
