@@ -1060,13 +1060,13 @@ def document_clear_image_cache(request):
 
     if request.method == 'POST':
         task_clear_image_cache.apply_async()
-        messages.success(request, _('Document image cache clearing queued successfully.'))
+        messages.success(request, _('Document cache clearing queued successfully.'))
 
         return HttpResponseRedirect(previous)
 
     return render_to_response('appearance/generic_confirm.html', {
         'previous': previous,
-        'title': _('Are you sure you wish to clear the document image cache?'),
+        'title': _('Clear the document cache?'),
     }, context_instance=RequestContext(request))
 
 
