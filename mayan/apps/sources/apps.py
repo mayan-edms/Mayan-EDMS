@@ -62,7 +62,7 @@ class SourcesApp(MayanAppConfig):
                 'sources.tasks.task_check_interval_source': {
                     'queue': 'sources_periodic'
                 },
-                'sources.tasks.task_source_upload_document': {
+                'sources.tasks.task_source_handle_upload': {
                     'queue': 'sources'
                 },
             }

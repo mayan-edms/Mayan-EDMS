@@ -42,7 +42,7 @@ from .permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
     permission_sources_setup_edit, permission_sources_setup_view
 )
-from .tasks import task_source_upload_document
+from .tasks import task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
 
 
@@ -235,7 +235,7 @@ class UploadInteractiveView(UploadBaseView):
         except Exception as exception:
             messages.error(self.request, exception)
 
-        task_source_upload_document.apply_async(kwargs=dict(
+        task_source_handle_upload.apply_async(kwargs=dict(
             description=forms['document_form'].cleaned_data.get('description'),
             document_type_id=self.document_type.pk,
             expand=expand,

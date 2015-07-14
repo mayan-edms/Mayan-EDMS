@@ -52,7 +52,7 @@ class Source(models.Model):
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
-    def _upload_document(self, document_type, file_object, label, language, user, description=None, metadata_dict_list=None):
+    def upload_document(self, document_type, file_object, label, language, user, description=None, metadata_dict_list=None):
         document = document_type.new_document(
             file_object=file_object, label=label, description=description,
             language=language, _user=user
@@ -64,8 +64,7 @@ class Source(models.Model):
         if metadata_dict_list:
             save_metadata_list(metadata_dict_list, document, create=True)
 
-    # TODO: Rename this method to 'handle_upload' or similar
-    def upload_document(self, file_object, label, description=None, document_type=None, expand=False, language=None, metadata_dict_list=None, user=None):
+    def handle_upload(self, file_object, label, description=None, document_type=None, expand=False, language=None, metadata_dict_list=None, user=None):
         if not document_type:
             document_type = self.document_type
 
@@ -73,14 +72,14 @@ class Source(models.Model):
             try:
                 compressed_file = CompressedFile(file_object)
                 for compressed_file_child in compressed_file.children():
-                    self._upload_document(document_type=document_type, file_object=compressed_file_child, description=description, label=unicode(compressed_file_child), language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
+                    self.upload_document(document_type=document_type, file_object=compressed_file_child, description=description, label=unicode(compressed_file_child), language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
                     compressed_file_child.close()
 
             except NotACompressedFile:
                 logging.debug('Exception: NotACompressedFile')
-                self._upload_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
+                self.upload_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
         else:
-            self._upload_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
+            self.upload_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
 
     def get_upload_file_object(self, form_data):
         pass
@@ -250,7 +249,7 @@ class EmailBaseModel(IntervalBaseModel):
                 logger.debug('filename: %s', filename)
 
                 file_object = Attachment(part, name=filename)
-                source.upload_document(file_object=file_object, label=filename, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
+                source.handle_upload(file_object=file_object, label=filename, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
 
     class Meta:
         verbose_name = _('Email source')
@@ -349,7 +348,7 @@ class WatchFolderSource(IntervalBaseModel):
             full_path = os.path.join(self.folder_path, file_name)
             if os.path.isfile(full_path):
                 with File(file=open(full_path, mode='rb')) as file_object:
-                    self.upload_document(file_object, label=file_name, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y))
+                    self.handle_upload(file_object, label=file_name, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y))
                     os.unlink(full_path)
 
     class Meta:
