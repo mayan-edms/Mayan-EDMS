@@ -108,7 +108,7 @@ def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id,
             raise self.retry(exc=exception)
         except Exception as exception:
             # This except and else block emulate a finally:
-            logger.error('Unexpected error during attempt to create new document version for document: %s; %s', document, warning)
+            logger.error('Unexpected error during attempt to create new document version for document: %s; %s', document, exception)
             shared_file.delete()
         else:
             shared_file.delete()
