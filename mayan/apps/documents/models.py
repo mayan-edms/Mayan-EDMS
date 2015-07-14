@@ -89,9 +89,9 @@ class DocumentType(models.Model):
         return document
 
     class Meta:
+        ordering = ('label',)
         verbose_name = _('Document type')
         verbose_name_plural = _('Documents types')
-        ordering = ('label',)
 
 
 @python_2_unicode_compatible
@@ -104,7 +104,7 @@ class Document(models.Model):
     document_type = models.ForeignKey(DocumentType, related_name='documents', verbose_name=_('Document type'))
     label = models.CharField(db_index=True, default=_('Uninitialized document'), max_length=255, help_text=_('The name of the document'), verbose_name=_('Label'))
     description = models.TextField(blank=True, verbose_name=_('Description'))
-    date_added = models.DateTimeField(auto_now_add=True, verbose_name=_('Added'))
+    date_added = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_('Added'))
     language = models.CharField(choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
     in_trash = models.BooleanField(default=False, editable=False, verbose_name=_('In trash?'))
     deleted_date_time = models.DateTimeField(blank=True, editable=True, null=True, verbose_name=_('Date and time trashed'))
@@ -281,7 +281,7 @@ class DocumentVersion(models.Model):
         cls._post_save_hooks[order] = func
 
     document = models.ForeignKey(Document, related_name='versions', verbose_name=_('Document'))
-    timestamp = models.DateTimeField(auto_now_add=True, verbose_name=_('Timestamp'))
+    timestamp = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_('Timestamp'))
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
     # File related fields
