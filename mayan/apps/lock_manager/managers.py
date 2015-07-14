@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import datetime
 import logging
 
-from django.db import models, transaction
+from django.db import  OperationalError, models, transaction
 from django.db.utils import IntegrityError
 from django.utils.timezone import now
 
@@ -41,6 +41,8 @@ class LockManager(models.Manager):
             else:
                 logger.debug('unable to acquire lock: %s', name)
                 raise LockError('Unable to acquire lock')
+        except OperationalError as exception:
+            raise LockError('Operational error while trying to acquire lock: %s; %s', name, exception)
         else:
             logger.debug('acquired lock: %s', name)
             return lock
