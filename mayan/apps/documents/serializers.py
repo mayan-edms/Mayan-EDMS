@@ -4,7 +4,7 @@ from rest_framework import serializers
 
 from .models import (Document, DocumentVersion, DocumentPage, DocumentType,
                      RecentDocument)
-from .settings import LANGUAGE_CHOICES
+from .settings import setting_language, setting_language_choices
 
 
 class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
@@ -53,7 +53,7 @@ class NewDocumentSerializer(serializers.Serializer):
     document_type = serializers.IntegerField()
     file = serializers.FileField()
     label = serializers.CharField(required=False)
-    language = serializers.ChoiceField(choices=LANGUAGE_CHOICES, blank_display_value=None, required=False)
+    language = serializers.ChoiceField(blank_display_value=None, choices=setting_language_choices.value, default=setting_language.value, required=False)
 
 
 class RecentDocumentSerializer(serializers.ModelSerializer):
