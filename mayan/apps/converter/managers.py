@@ -5,7 +5,7 @@ import logging
 import yaml
 
 from django.contrib.contenttypes.models import ContentType
-from django.db import models
+from django.db import models, transaction
 
 from .classes import BaseTransformation
 
@@ -38,9 +38,10 @@ class TransformationManager(models.Manager):
         logger.debug('results: %s', results)
 
         # Bulk create for a single DB query
-        self.bulk_create(
-            map(lambda entry: self.model(**entry), results),
-        )
+        with transaction.atomic():
+            self.bulk_create(
+                map(lambda entry: self.model(**entry), results),
+            )
 
     def get_for_model(self, obj, as_classes=False):
         """
