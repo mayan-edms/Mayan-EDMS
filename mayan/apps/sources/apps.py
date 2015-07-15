@@ -65,6 +65,9 @@ class SourcesApp(MayanAppConfig):
                 'sources.tasks.task_source_handle_upload': {
                     'queue': 'sources'
                 },
+                'sources.tasks.task_upload_document': {
+                    'queue': 'sources'
+                },
             }
         )
 

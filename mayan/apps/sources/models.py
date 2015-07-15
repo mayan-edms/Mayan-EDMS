@@ -9,7 +9,7 @@ import os
 import poplib
 
 from django.core.files import File
-from django.db import models
+from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -35,6 +35,50 @@ from .literals import (
 logger = logging.getLogger(__name__)
 
 
+class UploadHandler(object):
+    def document_upload(self, file_object):
+        document_version = self.document_type.new_document(file_object=file_object, description=self.description, label=self.label, language=self.language, _user=self.user)
+        self.post_document_upload(document=document_version.document)
+        self.post_document_version_upload(document_version=document_version)
+
+    def get_objects(self):
+        self.source = Source.objects.get_subclass(pk=self.kwargs['source'].pk)
+        self.file_object = self.kwargs['file_object']
+        self.document_type = self.kwargs.get('document_type')#, self.source.document_type)
+        self.description = self.kwargs.get('description')
+        self.expand = self.kwargs.get('expand', False)
+        self.label = self.kwargs.get('label')
+        self.language = self.kwargs.get('language')
+        self.metadata_dict_list = self.kwargs.get('metadata_dict_list')
+        self.user = self.kwargs.get('user')
+
+    def handle_upload(self, *args, **kwargs):
+        self.args = args
+        self.kwargs = kwargs
+
+        self.get_objects()
+
+        if self.expand:
+            try:
+                compressed_file = CompressedFile(self.file_object)
+                for compressed_file_child in compressed_file.children():
+                    self.document_upload(file_object=File(compressed_file_child))
+                    compressed_file_child.close()
+
+            except NotACompressedFile:
+                logging.debug('Exception: NotACompressedFile')
+                self.document_upload(file_object=self.file_object)
+        else:
+            self.document_upload(file_object=self.file_object)
+
+    def post_document_upload(self, document):
+        if self.metadata_dict_list:
+            save_metadata_list(self.metadata_dict_list, document, create=True)
+
+    def post_document_version_upload(self, document_version):
+        Transformation.objects.copy(source=self.source, targets=document_version.pages.all())
+
+
 @python_2_unicode_compatible
 class Source(models.Model):
     label = models.CharField(max_length=64, verbose_name=_('Label'))
@@ -52,34 +96,9 @@ class Source(models.Model):
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
-    def upload_document(self, document_type, file_object, label, language, user, description=None, metadata_dict_list=None):
-        document = document_type.new_document(
-            file_object=file_object, label=label, description=description,
-            language=language, _user=user
-        )
-
-        Transformation.objects.get_for_model(document).delete()
-        Transformation.objects.copy(source=Source.objects.get_subclass(pk=self.pk), targets=Document.objects.filter(pk=document.pk))
-
-        if metadata_dict_list:
-            save_metadata_list(metadata_dict_list, document, create=True)
-
-    def handle_upload(self, file_object, label, description=None, document_type=None, expand=False, language=None, metadata_dict_list=None, user=None):
-        if not document_type:
-            document_type = self.document_type
-
-        if expand:
-            try:
-                compressed_file = CompressedFile(file_object)
-                for compressed_file_child in compressed_file.children():
-                    self.upload_document(document_type=document_type, file_object=compressed_file_child, description=description, label=unicode(compressed_file_child), language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
-                    compressed_file_child.close()
-
-            except NotACompressedFile:
-                logging.debug('Exception: NotACompressedFile')
-                self.upload_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
-        else:
-            self.upload_document(document_type=document_type, file_object=file_object, description=description, label=label, language=language or setting_language.value, metadata_dict_list=metadata_dict_list, user=user)
+    def handle_upload(self, *args, **kwargs):
+        handler = UploadHandler()
+        handler.handle_upload(*args, source=self, **kwargs)
 
     def get_upload_file_object(self, form_data):
         pass
@@ -249,7 +268,7 @@ class EmailBaseModel(IntervalBaseModel):
                 logger.debug('filename: %s', filename)
 
                 file_object = Attachment(part, name=filename)
-                source.handle_upload(file_object=file_object, label=filename, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), document_type=source.document_type)
+                source.handle_upload(document_type=source.document_type, file_object=file_object, label=filename, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y))
 
     class Meta:
         verbose_name = _('Email source')
@@ -348,7 +367,7 @@ class WatchFolderSource(IntervalBaseModel):
             full_path = os.path.join(self.folder_path, file_name)
             if os.path.isfile(full_path):
                 with File(file=open(full_path, mode='rb')) as file_object:
-                    self.handle_upload(file_object, label=file_name, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y))
+                    self.handle_upload(file_object=file_object, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), label=file_name)
                     os.unlink(full_path)
 
     class Meta:
