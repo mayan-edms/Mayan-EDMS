@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 # TODO: Improve API methods docstrings
+import logging
 
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
@@ -9,6 +10,7 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 from acls.models import AccessControlList
+from common.models import SharedUploadedFile
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
@@ -34,9 +36,12 @@ from .serializers import (
     RecentDocumentSerializer
 )
 from .settings import (
-    setting_display_size, setting_zoom_max_level, setting_zoom_min_level
+    setting_display_size, setting_language, setting_zoom_max_level,
+    setting_zoom_min_level
 )
-from .tasks import task_get_document_page_image
+from .tasks import task_get_document_page_image, task_upload_new_version
+
+logger = logging.getLogger(__name__)
 
 
 class APIDocumentListView(generics.ListCreateAPIView):
@@ -67,13 +72,28 @@ class APIDocumentListView(generics.ListCreateAPIView):
         if serializer.is_valid():
             document_type = get_object_or_404(DocumentType, pk=serializer.data['document_type'])
 
-            serializer.object = document_type.new_document(
-                description=serializer.data['description'],
-                file_object=request.FILES['file'],
+            logger.info('Creating document version for document type: %s', document_type)
+
+            document = Document.objects.create(
+                description=serializer.data['description'] or '',
+                document_type=document_type,
                 label=serializer.data['label'] or serializer.data['file'],
-                language=serializer.data['language'],
-                _user=request.user
+                language=serializer.data['language'] or setting_language.value
             )
+            document.save(_user=request.user)
+
+            shared_uploaded_file = SharedUploadedFile.objects.create(
+                file=request.FILES['file']
+            )
+
+            task_upload_new_version.delay(
+                shared_uploaded_file_id=shared_uploaded_file.pk,
+                document_id=document.pk, user_id=request.user.pk,
+            )
+
+            logger.info('New document version queued for document: %s', document)
+
+            serializer.object = document
 
             headers = self.get_success_headers(serializer.data)
             return Response(serializer.data, status=status.HTTP_201_CREATED,
