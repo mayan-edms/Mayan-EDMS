@@ -7,11 +7,12 @@ import os
 import uuid
 
 from django.contrib.auth.models import User
+from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 from common.literals import TIME_DELTA_UNIT_CHOICES
 from common.models import SharedUploadedFile
@@ -75,18 +76,15 @@ class DocumentType(models.Model):
         return super(DocumentType, self).delete(*args, **kwargs)
 
     def new_document(self, file_object, label=None, description=None, language=None, _user=None):
-        if not language:
-            language = setting_language.value
+        try:
+            with transaction.atomic():
+                document = self.documents.create(description=description or '', label=label or unicode(file_object), language=language or setting_language.value)
+                document.save(_user=_user)
 
-        if not label:
-            label = unicode(file_object)
-
-        document = self.documents.create(description=description or '', language=language, label=label)
-        document.save(_user=_user)
-
-        document.new_version(file_object=file_object, _user=_user)
-
-        return document
+                return document.new_version(file_object=file_object, _user=_user)
+        except Exception as exception:
+            logger.critical('Unexpected exception while trying to create new document "%s" from document type "%s"; %s', label or unicode(file_object), self, exception)
+            raise
 
     class Meta:
         ordering = ('label',)
@@ -102,10 +100,10 @@ class Document(models.Model):
 
     uuid = models.CharField(default=UUID_FUNCTION, editable=False, max_length=48)
     document_type = models.ForeignKey(DocumentType, related_name='documents', verbose_name=_('Document type'))
-    label = models.CharField(db_index=True, default=_('Uninitialized document'), max_length=255, help_text=_('The name of the document'), verbose_name=_('Label'))
-    description = models.TextField(blank=True, verbose_name=_('Description'))
+    label = models.CharField(blank=True, db_index=True, default='', max_length=255, help_text=_('The name of the document'), verbose_name=_('Label'))
+    description = models.TextField(blank=True, default='', verbose_name=_('Description'))
     date_added = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_('Added'))
-    language = models.CharField(choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
+    language = models.CharField(blank=True, choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
     in_trash = models.BooleanField(default=False, editable=False, verbose_name=_('In trash?'))
     deleted_date_time = models.DateTimeField(blank=True, editable=True, null=True, verbose_name=_('Date and time trashed'))
     is_stub = models.BooleanField(default=True, editable=False, verbose_name=_('Is stub?'))
@@ -132,7 +130,7 @@ class Document(models.Model):
             document_version.invalidate_cache()
 
     def __str__(self):
-        return self.label
+        return self.label or ugettext('Document stub, id: %d') % self.pk
 
     def get_absolute_url(self):
         return reverse('documents:document_preview', args=[self.pk])
@@ -174,23 +172,13 @@ class Document(models.Model):
         return self.latest_version.size
 
     def new_version(self, file_object, comment=None, _user=None):
-        from .tasks import task_upload_new_version
+        logger.info('Creating new document version for document: %s', self)
 
-        logger.info('Queueing creation of a new document version for document: %s', self)
-
-        shared_uploaded_file = SharedUploadedFile.objects.create(file=file_object)
-
-        if _user:
-            user_id = _user.pk
-        else:
-            user_id = None
-
-        task_upload_new_version.apply_async(kwargs=dict(
-            shared_uploaded_file_id=shared_uploaded_file.pk,
-            document_id=self.pk, user_id=user_id,
-        ))
+        document_version = DocumentVersion(document=self, comment=comment, file=File(file_object))
+        document_version.save(_user=_user)
 
         logger.info('New document version queued for document: %s', self)
+        return document_version
 
     # Proxy methods
     def open(self, *args, **kwargs):
@@ -211,10 +199,6 @@ class Document(models.Model):
         return self.latest_version.exists()
 
     # Compatibility methods
-    @property
-    def file(self):
-        return self.latest_version.file
-
     @property
     def file_mimetype(self):
         return self.latest_version.mimetype
@@ -252,6 +236,7 @@ class Document(models.Model):
     def latest_version(self):
         return self.versions.order_by('timestamp').last()
 
+    # TODO: look to remove, only used by the OCR parser
     def document_save_to_temp_dir(self, filename, buffer_size=1024 * 1024):
         temporary_path = os.path.join(setting_temporary_directory.value, filename)
         return self.save_to_file(temporary_path, buffer_size)
@@ -282,7 +267,7 @@ class DocumentVersion(models.Model):
 
     document = models.ForeignKey(Document, related_name='versions', verbose_name=_('Document'))
     timestamp = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_('Timestamp'))
-    comment = models.TextField(blank=True, verbose_name=_('Comment'))
+    comment = models.TextField(blank=True, default='', null=True, verbose_name=_('Comment'))
 
     # File related fields
     file = models.FileField(storage=storage_backend, upload_to=UUID_FUNCTION, verbose_name=_('File'))
@@ -326,6 +311,9 @@ class DocumentVersion(models.Model):
                     logger.info('New document version "%s" created for document: %s', self, self.document)
 
                     self.document.is_stub = False
+                    if not self.document.label:
+                        self.document.label = unicode(self.file)
+
                     self.document.save()
         except Exception as exception:
             logger.error('Error creating new document version for document "%s"; %s', self.document, exception)

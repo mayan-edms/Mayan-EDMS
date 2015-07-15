@@ -12,7 +12,8 @@ from mayan.celery import app
 from common.models import SharedUploadedFile
 
 from .literals import (
-    UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY
+    UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY,
+    NEW_DOCUMENT_RETRY_DELAY
 )
 from .models import (
     DeletedDocument, Document, DocumentPage, DocumentType, DocumentVersion
@@ -83,27 +84,49 @@ def task_update_page_count(self, version_id):
         raise self.retry(exc=exception)
 
 
+@app.task(bind=True, default_retry_delay=NEW_DOCUMENT_RETRY_DELAY, ignore_result=True)
+def task_upload_new_document(self, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, user_id=None):
+    try:
+        document_type = DocumentType.objects.get(pk=document_type_id)
+        shared_file = SharedUploadedFile.objects.get(pk=shared_uploaded_file_id)
+        if user_id:
+            user = User.objects.get(pk=user_id)
+        else:
+            user = None
+
+    except OperationalError as exception:
+        logger.warning('Operational error during attempt to gather data for new document: %s; Retrying.', exception)
+        raise self.retry(exc=exception)
+
+    try:
+        with shared_file.open as file_object:
+            document_version = document_type.new_document(self, file_object=file_object, label=label, description=description, language=language, _user=user)
+    except OperationalError as exception:
+        logger.warning('Operational error during attempt to gather data for new document: %s; Retrying.', exception)
+        raise self.retry(exc=exception)
+
+    try:
+        shared_file.delete()
+    except OperationalError as exception:
+        logger.warning('Operational error while trying to delete shared file used to upload new document: %s; %s. Retrying.', document_version.document, exception)
+
+
 @app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)
 def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id, comment=None):
     try:
         document = Document.objects.get(pk=document_id)
-    except OperationalError as exception:
-        logger.warning('Operational error during attempt to retrieve document: %s; %s. Retrying.', document_id, exception)
-        raise self.retry(exc=exception)
-
-    try:
         shared_file = SharedUploadedFile.objects.get(pk=shared_uploaded_file_id)
-    except OperationalError as exception:
-        logger.warning('Operational error during attempt to retrieve shared file: %s; %s. Retrying.', shared_uploaded_file_id, exception)
-        raise self.retry(exc=exception)
+        if user_id:
+            user = User.objects.get(pk=user_id)
+        else:
+            user = None
 
-    if user_id:
-        user = User.objects.get(pk=user_id)
-    else:
-        user = None
+    except OperationalError as exception:
+        logger.warning('Operational error during attempt to retrieve shared data for new document version for:%s; %s. Retrying.', document, exception)
+        raise self.retry(exc=exception)
 
     with shared_file.open() as file_object:
-        document_version = DocumentVersion(document=document, comment=comment or '', file=file_object)
+        document_version = DocumentVersion(document=document, comment=comment, file=file_object)
         try:
             document_version.save(_user=user)
         except Warning as warning:
@@ -119,9 +142,9 @@ def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id,
             try:
                 shared_file.delete()
             except OperationalError as exception:
-                logger.warning('Operational error during attempt to delete shared file: %s; %s. Retrying.', shared_file, exception)
+                logger.warning('Operational error during attempt to delete shared file: %s; %s.', shared_file, exception)
         else:
             try:
                 shared_file.delete()
             except OperationalError as exception:
-                logger.warning('Operational error during attempt to delete shared file: %s; %s. Retrying.', shared_file, exception)
+                logger.warning('Operational error during attempt to delete shared file: %s; %s.', shared_file, exception)

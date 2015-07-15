@@ -32,7 +32,7 @@ class DocumentTestCase(TestCase):
         ocr_settings.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf')
+            self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf').document
 
     def tearDown(self):
         self.document_type.delete()
