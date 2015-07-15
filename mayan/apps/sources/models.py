@@ -35,50 +35,6 @@ from .literals import (
 logger = logging.getLogger(__name__)
 
 
-class UploadHandler(object):
-    def document_upload(self, file_object):
-        document_version = self.document_type.new_document(file_object=file_object, description=self.description, label=self.label, language=self.language, _user=self.user)
-        self.post_document_upload(document=document_version.document)
-        self.post_document_version_upload(document_version=document_version)
-
-    def get_objects(self):
-        self.source = Source.objects.get_subclass(pk=self.kwargs['source'].pk)
-        self.file_object = self.kwargs['file_object']
-        self.document_type = self.kwargs.get('document_type')#, self.source.document_type)
-        self.description = self.kwargs.get('description')
-        self.expand = self.kwargs.get('expand', False)
-        self.label = self.kwargs.get('label')
-        self.language = self.kwargs.get('language')
-        self.metadata_dict_list = self.kwargs.get('metadata_dict_list')
-        self.user = self.kwargs.get('user')
-
-    def handle_upload(self, *args, **kwargs):
-        self.args = args
-        self.kwargs = kwargs
-
-        self.get_objects()
-
-        if self.expand:
-            try:
-                compressed_file = CompressedFile(self.file_object)
-                for compressed_file_child in compressed_file.children():
-                    self.document_upload(file_object=File(compressed_file_child))
-                    compressed_file_child.close()
-
-            except NotACompressedFile:
-                logging.debug('Exception: NotACompressedFile')
-                self.document_upload(file_object=self.file_object)
-        else:
-            self.document_upload(file_object=self.file_object)
-
-    def post_document_upload(self, document):
-        if self.metadata_dict_list:
-            save_metadata_list(self.metadata_dict_list, document, create=True)
-
-    def post_document_version_upload(self, document_version):
-        Transformation.objects.copy(source=self.source, targets=document_version.pages.all())
-
-
 @python_2_unicode_compatible
 class Source(models.Model):
     label = models.CharField(max_length=64, verbose_name=_('Label'))
@@ -96,9 +52,46 @@ class Source(models.Model):
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
-    def handle_upload(self, *args, **kwargs):
-        handler = UploadHandler()
-        handler.handle_upload(*args, source=self, **kwargs)
+    def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, user=None):
+        try:
+            with transaction.atomic():
+                document = Document.objects.create(description=description or '', document_type=document_type, label=label or unicode(file_object), language=language or setting_language.value)
+                document.save(_user=user)
+
+                document_version = document.new_version(file_object=file_object, _user=user)
+
+                Transformation.objects.copy(source=self, targets=document_version.pages.all())
+
+                if metadata_dict_list:
+                    save_metadata_list(metadata_dict_list, document, create=True)
+
+        except Exception as exception:
+            logger.critical('Unexpected exception while trying to create new document "%s" from source "%s"; %s', label or unicode(file_object), self, exception)
+            raise
+
+    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, user=None):
+        if not document_type:
+            document_type = self.document_type
+
+        kwargs = {
+            'description': description, 'document_type': document_type,
+            'label': label, 'language': language,
+            'metadata_dict_list': metadata_dict_list, 'user': user
+        }
+
+        if expand:
+            try:
+                compressed_file = CompressedFile(file_object)
+                for compressed_file_child in compressed_file.children():
+                    kwargs.update({'label': unicode(compressed_file_child)})
+                    self.upload_document(file_object=File(compressed_file_child), **kwargs)
+                    compressed_file_child.close()
+
+            except NotACompressedFile:
+                logging.debug('Exception: NotACompressedFile')
+                self.upload_document(file_object=file_object, **kwargs)
+        else:
+            self.upload_document(file_object=file_object, **kwargs)
 
     def get_upload_file_object(self, form_data):
         pass

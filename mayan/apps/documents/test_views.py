@@ -35,7 +35,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         self.assertTrue(self.admin_user.is_authenticated())
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf').document
+            self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf')
 
     def tearDown(self):
         self.document_type.delete()

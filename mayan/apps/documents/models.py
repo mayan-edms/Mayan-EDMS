@@ -81,7 +81,8 @@ class DocumentType(models.Model):
                 document = self.documents.create(description=description or '', label=label or unicode(file_object), language=language or setting_language.value)
                 document.save(_user=_user)
 
-                return document.new_version(file_object=file_object, _user=_user)
+                document.new_version(file_object=file_object, _user=_user)
+                return document
         except Exception as exception:
             logger.critical('Unexpected exception while trying to create new document "%s" from document type "%s"; %s', label or unicode(file_object), self, exception)
             raise
@@ -174,7 +175,7 @@ class Document(models.Model):
     def new_version(self, file_object, comment=None, _user=None):
         logger.info('Creating new document version for document: %s', self)
 
-        document_version = DocumentVersion(document=self, comment=comment, file=File(file_object))
+        document_version = DocumentVersion(document=self, comment=comment or '', file=File(file_object))
         document_version.save(_user=_user)
 
         logger.info('New document version queued for document: %s', self)
@@ -267,7 +268,7 @@ class DocumentVersion(models.Model):
 
     document = models.ForeignKey(Document, related_name='versions', verbose_name=_('Document'))
     timestamp = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_('Timestamp'))
-    comment = models.TextField(blank=True, default='', null=True, verbose_name=_('Comment'))
+    comment = models.TextField(blank=True, default='', verbose_name=_('Comment'))
 
     # File related fields
     file = models.FileField(storage=storage_backend, upload_to=UUID_FUNCTION, verbose_name=_('File'))

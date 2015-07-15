@@ -14,7 +14,7 @@ from .models import IndexInstanceNode
 logger = logging.getLogger(__name__)
 
 
-@app.task(bind=True, default_retry_delay=RETRY_DELAY, ignore_result=True)
+@app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
 def task_delete_empty_index_nodes(self):
     try:
         rebuild_lock = Lock.acquire_lock('document_indexing_task_do_rebuild_all_indexes')
@@ -28,7 +28,7 @@ def task_delete_empty_index_nodes(self):
             rebuild_lock.release()
 
 
-@app.task(bind=True, default_retry_delay=RETRY_DELAY, ignore_result=True)
+@app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
 def task_index_document(self, document_id):
     try:
         rebuild_lock = Lock.acquire_lock('document_indexing_task_do_rebuild_all_indexes')
