@@ -151,6 +151,7 @@ STATIC_URL = '/static/'
 TEMPLATE_DEBUG = True
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
+PROJECT_WEBSITE = 'http://www.mayan-edms.com'
 
 LANGUAGES = (
     ('ar', _('Arabic')),
