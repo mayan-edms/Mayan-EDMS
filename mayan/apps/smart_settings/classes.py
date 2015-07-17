@@ -56,11 +56,8 @@ class Setting(object):
 
     @property
     def value(self):
-        if not self.yaml:
-            self.yaml = yaml.safe_dump(getattr(settings, self.global_name, self.default), allow_unicode=True)
-
-        return yaml.safe_load(self.yaml)
+        return yaml.safe_load(self.serialized_value)
 
     @value.setter
     def value(self, value):
-        self.yaml = value
+        self.serialized_value = value
