@@ -215,7 +215,7 @@ def smart_link_delete(request, smart_link_pk):
     return render_to_response('appearance/generic_confirm.html', {
         'delete_view': True,
         'object': smart_link,
-        'title': _('Are you sure you wish to delete smart link: %s?') % smart_link,
+        'title': _('Delete smart link: %s?') % smart_link,
         'next': next,
         'previous': previous,
     }, context_instance=RequestContext(request))
@@ -326,5 +326,5 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
         'next': next,
         'object': smart_link_condition.smart_link,
         'previous': previous,
-        'title': _('Are you sure you wish to delete smart link condition: "%s"?') % smart_link_condition,
+        'title': _('Delete smart link condition: "%s"?') % smart_link_condition,
     }, context_instance=RequestContext(request))

@@ -62,9 +62,9 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
     }
     if len(comments) == 1:
         context['object'] = comments[0].content_object
-        context['title'] = _('Are you sure you wish to delete the comment: %s?') % ', '.join([unicode(d) for d in comments])
+        context['title'] = _('Delete comment?')
     elif len(comments) > 1:
-        context['title'] = _('Are you sure you wish to delete the comments: %s?') % ', '.join([unicode(d) for d in comments])
+        context['title'] = _('Delete comments?')
 
     return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))

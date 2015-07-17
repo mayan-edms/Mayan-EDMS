@@ -147,9 +147,9 @@ def checkin_document(request, document_pk):
     }
 
     if document.checkout_info().user != request.user:
-        context['title'] = _('You didn\'t originally checked out this document.  Are you sure you wish to forcefully check in document: %s?') % document
+        context['title'] = _('You didn\'t originally checked out this document. Forcefully check in the document: %s?') % document
     else:
-        context['title'] = _('Are you sure you wish to check in document: %s?') % document
+        context['title'] = _('Check in the document: %s?') % document
 
     return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))

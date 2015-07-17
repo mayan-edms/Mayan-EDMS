@@ -56,7 +56,7 @@ def key_receive(request, key_id):
 
     return render_to_response('appearance/generic_confirm.html', {
         'title': _('Import key'),
-        'message': _('Are you sure you wish to import key id: %s?') % key_id,
+        'message': _('Import key ID: %s?') % key_id,
         'previous': previous,
         'submit_method': 'GET',
 
@@ -112,7 +112,7 @@ def key_delete(request, fingerprint, key_type):
     return render_to_response('appearance/generic_confirm.html', {
         'title': _('Delete key'),
         'delete_view': True,
-        'message': _('Are you sure you wish to delete key: %s?  If you try to delete a public key that is part of a public/private pair the private key will be deleted as well.') % key,
+        'message': _('Delete key %s? If you delete a public key that is part of a public/private pair the private key will be deleted as well.') % key,
         'next': next,
         'previous': previous,
     }, context_instance=RequestContext(request))

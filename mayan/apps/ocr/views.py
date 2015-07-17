@@ -23,16 +23,7 @@ from .permissions import (
 
 
 class DocumentSubmitView(ConfirmView):
-    def get_context_data(self, **kwargs):
-        context = super(DocumentSubmitView, self).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'title': _('Are you sure you wish to submit the selected document for OCR?')
-            }
-        )
-
-        return context
+    extra_context = {'title': _('Submit the selected document for OCR?')}
 
     def object_action(self, request, obj):
         document = obj
@@ -55,9 +46,7 @@ class DocumentSubmitView(ConfirmView):
 
 
 class DocumentAllSubmitView(ConfirmView):
-    extra_context = {
-        'title': _('Submit all documents for OCR?')
-    }
+    extra_context = {'title': _('Submit all documents for OCR?')}
 
     def post(self, request, *args, **kwargs):
         count = 0
@@ -71,16 +60,7 @@ class DocumentAllSubmitView(ConfirmView):
 
 
 class DocumentManySubmitView(DocumentSubmitView):
-    def get_context_data(self, **kwargs):
-        context = super(DocumentManySubmitView, self).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'title': _('Are you sure you wish to submit the selected documents for OCR?')
-            }
-        )
-
-        return context
+    extra_context = {'title': _('Submit the selected documents for OCR?')}
 
     def post(self, request, *args, **kwargs):
         for pk in request.GET.get('id_list', '').split(','):
@@ -183,8 +163,8 @@ def entry_delete(request, pk=None, pk_list=None):
         context['object'] = entries[0]
 
     context['title'] = ungettext(
-        'Are you sure you wish to delete the selected entry?',
-        'Are you sure you wish to delete the selected entries?',
+        'Delete the selected entry?',
+        'Delete the selected entries?',
         len(entries)
     )
 
@@ -233,8 +213,8 @@ def entry_re_queue(request, pk=None, pk_list=None):
         context['object'] = entries[0]
 
     context['title'] = ungettext(
-        'Are you sure you wish to re-queue the selected entry?',
-        'Are you sure you wish to re-queue the selected entries?',
+        'Re-queue the selected entry?',
+        'Re-queue the selected entries?',
         len(entries)
     )
 

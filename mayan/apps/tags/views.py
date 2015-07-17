@@ -170,8 +170,8 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         'message': _('Will be removed from all documents.'),
         'next': next,
         'title': ungettext(
-            'Are you sure you wish to delete the selected tag?',
-            'Are you sure you wish to delete the selected tags?',
+            'Delete the selected tag?',
+            'Delete the selected tags?',
             len(tags)
         )
     }
@@ -294,18 +294,18 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
         if len(tags) == 1:
             if len(documents) == 1:
                 context['object'] = documents[0]
-                context['title'] = _('Are you sure you wish to remove the tag "%(tag)s" from the document: %(document)s?') % {
+                context['title'] = _('Remove the tag "%(tag)s" from the document: %(document)s?') % {
                     'tag': ', '.join([unicode(d) for d in tags]), 'document': ', '.join([unicode(d) for d in documents])}
             else:
-                context['title'] = _('Are you sure you wish to remove the tag "%(tag)s" from the documents: %(documents)s?') % {
+                context['title'] = _('Remove the tag "%(tag)s" from the documents: %(documents)s?') % {
                     'tag': ', '.join([unicode(d) for d in tags]), 'documents': ', '.join([unicode(d) for d in documents])}
         elif len(tags) > 1:
             if len(documents) == 1:
                 context['object'] = documents[0]
-                context['title'] = _('Are you sure you wish to remove the tags: %(tags)s from the document: %(document)s?') % {
+                context['title'] = _('Remove the tags: %(tags)s from the document: %(document)s?') % {
                     'tags': ', '.join([unicode(d) for d in tags]), 'document': ', '.join([unicode(d) for d in documents])}
             else:
-                context['title'] = _('Are you sure you wish to remove the tags %(tags)s from the documents: %(documents)s?') % {
+                context['title'] = _('Remove the tags %(tags)s from the documents: %(documents)s?') % {
                     'tags': ', '.join([unicode(d) for d in tags]), 'documents': ', '.join([unicode(d) for d in documents])}
 
     if request.method == 'POST':

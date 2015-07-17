@@ -144,9 +144,9 @@ def user_delete(request, user_id=None, user_id_list=None):
     }
     if len(users) == 1:
         context['object'] = users[0]
-        context['title'] = _('Are you sure you wish to delete the user: %s?') % ', '.join([unicode(d) for d in users])
+        context['title'] = _('Delete the user: %s?') % ', '.join([unicode(d) for d in users])
     elif len(users) > 1:
-        context['title'] = _('Are you sure you wish to delete the users: %s?') % ', '.join([unicode(d) for d in users])
+        context['title'] = _('Delete the users: %s?') % ', '.join([unicode(d) for d in users])
 
     return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))
@@ -330,9 +330,9 @@ def group_delete(request, group_id=None, group_id_list=None):
     }
     if len(groups) == 1:
         context['object'] = groups[0]
-        context['title'] = _('Are you sure you wish to delete the group: %s?') % ', '.join([unicode(d) for d in groups])
+        context['title'] = _('Delete the group: %s?') % ', '.join([unicode(d) for d in groups])
     elif len(groups) > 1:
-        context['title'] = _('Are you sure you wish to delete the groups: %s?') % ', '.join([unicode(d) for d in groups])
+        context['title'] = _('Delete the groups: %s?') % ', '.join([unicode(d) for d in groups])
 
     return render_to_response('appearance/generic_confirm.html', context,
                               context_instance=RequestContext(request))

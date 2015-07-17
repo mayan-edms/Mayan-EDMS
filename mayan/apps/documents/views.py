@@ -605,8 +605,8 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
     context = {
         'previous': previous,
         'title': ungettext(
-            'Are you sure you wish to reset the page count of the selected document?',
-            'Are you sure you wish to reset the page count of the selected documents?',
+            'Reset the page count of the selected document?',
+            'Reset the page count of the selected documents?',
             len(documents)
         )
     }
@@ -659,8 +659,8 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
         'next': next,
         'previous': previous,
         'title': ungettext(
-            'Are you sure you wish to clear all the page transformations for the selected document?',
-            'Are you sure you wish to clear all the page transformations for the selected documents?',
+            'Clear all the page transformations for the selected document?',
+            'Clear all the page transformations for the selected documents?',
             len(documents)
         )
     }
@@ -1013,7 +1013,7 @@ def document_type_filename_delete(request, document_type_filename_id):
         'previous': previous,
         'navigation_object_list': ['document_type', 'filename'],
         'next': next,
-        'title': _('Are you sure you wish to delete the filename: %(filename)s, from document type "%(document_type)s"?') % {
+        'title': _('Delete the filename: %(filename)s, from document type "%(document_type)s"?') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
         },
     }
@@ -1132,6 +1132,6 @@ def document_version_revert(request, document_version_pk):
     return render_to_response('appearance/generic_confirm.html', {
         'previous': previous,
         'object': document_version.document,
-        'title': _('Are you sure you wish to revert to this version?'),
+        'title': _('Revert to this version?'),
         'message': _('All later version after this one will be deleted too.'),
     }, context_instance=RequestContext(request))

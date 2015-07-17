@@ -222,7 +222,7 @@ def template_node_delete(request, node_pk):
         'navigation_object_list': ['index', 'node'],
         'next': next,
         'node': node,
-        'title': _('Are you sure you with to delete the index template node: %s?') % node,
+        'title': _('Delete the index template node: %s?') % node,
         'previous': previous,
     }
 

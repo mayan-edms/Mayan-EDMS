@@ -127,7 +127,7 @@ def folder_delete(request, folder_id):
         'previous': previous,
         'next': next,
         'object': folder,
-        'title': _('Are you sure you with to delete the folder: %s?') % folder,
+        'title': _('Delete the folder: %s?') % folder,
     }
 
     return render_to_response('appearance/generic_confirm.html', context,
@@ -276,8 +276,8 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
         'object': folder,
         'previous': previous,
         'title': ungettext(
-            'Are you sure you wish to remove the selected document from the folder: %(folder)s?',
-            'Are you sure you wish to remove the selected documents from the folder: %(folder)s?',
+            'Remove the selected document from the folder: %(folder)s?',
+            'Remove the selected documents from the folder: %(folder)s?',
             len(folder_documents)
         ) % {'folder': folder}
     }
