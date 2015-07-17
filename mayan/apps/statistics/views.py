@@ -5,46 +5,51 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
+from common.views import SimpleView
+
 from .classes import Statistic, StatisticNamespace
+from .permissions import permission_statistics_view
 
 
-def namespace_list(request):
-    if not request.user.is_superuser or not request.user.is_staff:
-        raise PermissionDenied
+class NamespaceListView(SimpleView):
+    template_name = 'appearance/generic_list.html'
+    view_permission = permission_statistics_view
 
-    return render_to_response('appearance/generic_list.html', {
-        'object_list': StatisticNamespace.get_all(),
-        'hide_link': True,
-        'title': _('Statistics namespaces'),
-    }, context_instance=RequestContext(request))
-
-
-def namespace_details(request, namespace_id):
-    if not request.user.is_superuser or not request.user.is_staff:
-        raise PermissionDenied
-
-    namespace = StatisticNamespace.get(namespace_id)
-
-    return render_to_response('appearance/generic_list.html', {
-        'object': namespace,
-        'namespace': namespace,
-        'object_list': namespace.statistics,
-        'hide_link': True,
-        'title': _('Namespace details for: %s') % namespace,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'object_list': StatisticNamespace.get_all(),
+            'title': _('Statistics namespaces'),
+        }
 
 
-def execute(request, statistic_id):
-    if not request.user.is_superuser or not request.user.is_staff:
-        raise PermissionDenied
+class NamespaceDetailView(SimpleView):
+    template_name = 'appearance/generic_list.html'
+    view_permission = permission_statistics_view
 
-    statictic = Statistic.get(statistic_id)
+    def get_extra_context(self):
+        namespace = StatisticNamespace.get(self.kwargs['namespace_id'])
 
-    return render_to_response('appearance/generic_list.html', {
-        'object': statictic,
-        'namespace': statictic.namespace,
-        'navigation_object_list': ['namespace', 'object'],
-        'object_list': statictic.get_results(),
-        'hide_link': True,
-        'title': _('Results for: %s') % statictic,
-    }, context_instance=RequestContext(request))
+        return {
+            'hide_link': True,
+            'object': namespace,
+            'object_list': namespace.statistics,
+            'title': _('Namespace details for: %s') % namespace,
+        }
+
+
+class StatisticExecute(SimpleView):
+    template_name = 'appearance/generic_list.html'
+    view_permission = permission_statistics_view
+
+    def get_extra_context(self):
+        statictic = Statistic.get(self.kwargs['statistic_id'])
+
+        return {
+            'hide_link': True,
+            'namespace': statictic.namespace,
+            'navigation_object_list': ['namespace', 'object'],
+            'object': statictic,
+            'object_list': statictic.get_results(),
+            'title': _('Results for: %s') % statictic,
+        }
