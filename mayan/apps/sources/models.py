@@ -194,15 +194,18 @@ class IntervalBaseModel(OutOfProcessSource):
         return 'check_interval_source-%i' % (pk or self.pk)
 
     def _delete_periodic_task(self, pk=None):
-        periodic_task = PeriodicTask.objects.get(name=self._get_periodic_task_name(pk))
+        try:
+            periodic_task = PeriodicTask.objects.get(name=self._get_periodic_task_name(pk))
 
-        interval_instance = periodic_task.interval
+            interval_instance = periodic_task.interval
 
-        if tuple(interval_instance.periodictask_set.values_list('id', flat=True)) == (periodic_task.pk,):
-            # Only delete the interval if nobody else is using it
-            interval_instance.delete()
-        else:
-            periodic_task.delete()
+            if tuple(interval_instance.periodictask_set.values_list('id', flat=True)) == (periodic_task.pk,):
+                # Only delete the interval if nobody else is using it
+                interval_instance.delete()
+            else:
+                periodic_task.delete()
+        except PeriodicTask.DoesNotExist:
+            logger.warning('Tried to delete non existant periodic task "%s"', self._get_periodic_task_name(pk))
 
     def save(self, *args, **kwargs):
         new_source = not self.pk
