@@ -31,9 +31,19 @@ def object_property(value, arg):
     return return_attrib(value, arg)
 
 
+@register.assignment_tag
+def project_description():
+    return getattr(settings, 'PROJECT_DESCRIPTION', mayan.__description__)
+
+
 @register.simple_tag
 def project_name():
     return settings.PROJECT_TITLE
+
+
+@register.simple_tag
+def project_website():
+    return settings.PROJECT_WEBSITE
 
 
 @register.simple_tag
