@@ -55,7 +55,7 @@ class TransformationDeleteView(SingleObjectDeleteView):
 
 
 class TransformationCreateView(SingleObjectCreateView):
-    fields = ('name', 'arguments', 'order')
+    fields = ('name', 'arguments')
 
     def dispatch(self, request, *args, **kwargs):
         content_type = get_object_or_404(ContentType, app_label=self.kwargs['app_label'], model=self.kwargs['model'])

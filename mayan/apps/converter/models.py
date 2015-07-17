@@ -38,7 +38,9 @@ class Transformation(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.order:
-            self.order = Transformation.objects.filter(content_type=self.content_type, object_id=self.object_id).aggregate(Max('order'))['order__max'] + 1
+            last_order = Transformation.objects.filter(content_type=self.content_type, object_id=self.object_id).aggregate(Max('order'))['order__max']
+            if last_order is not None:
+                self.order = last_order + 1
         super(Transformation, self).save(*args, **kwargs)
 
     class Meta:
