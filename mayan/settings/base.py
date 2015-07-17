@@ -52,6 +52,7 @@ INSTALLED_APPS = (
     # 3rd party
     'actstream',
     'autoadmin',
+    'colorful',
     'compressor',
     'corsheaders',
     'djcelery',

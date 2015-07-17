@@ -22,5 +22,5 @@ def widget_single_tag(tag):
     return mark_safe(
         '''
             <span class="label label-tag" style="background: {}">{}</span>
-        '''.format(tag.get_color_code(), escape(tag.label).replace(' ', '&nbsp;'))
+        '''.format(tag.color, escape(tag.label).replace(' ', '&nbsp;'))
     )
