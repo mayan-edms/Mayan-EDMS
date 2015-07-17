@@ -25,7 +25,7 @@ from rest_api.classes import APIEndPoint
 
 from .handlers import initialize_new_ocr_settings, post_version_upload_ocr
 from .links import (
-    link_document_content, link_document_submit,
+    link_document_content, link_document_submit, link_document_submit_all,
     link_document_submit_multiple, link_document_type_ocr_settings,
     link_entry_delete, link_entry_delete_multiple, link_entry_list,
     link_entry_re_queue, link_entry_re_queue_multiple
@@ -89,7 +89,7 @@ class OCRApp(MayanAppConfig):
         menu_object.bind_links(links=[link_entry_re_queue, link_entry_delete], sources=[DocumentVersionOCRError])
         menu_object.bind_links(links=[link_document_type_ocr_settings], sources=[DocumentType])
         menu_secondary.bind_links(links=[link_entry_list], sources=['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError])
-        menu_tools.bind_links(links=[link_entry_list])
+        menu_tools.bind_links(links=[link_document_submit_all, link_entry_list])
 
         post_save.connect(initialize_new_ocr_settings, dispatch_uid='initialize_new_ocr_settings', sender=DocumentType)
         post_version_upload.connect(post_version_upload_ocr, dispatch_uid='post_version_upload_ocr', sender=DocumentVersion)

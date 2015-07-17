@@ -4,13 +4,15 @@ from django.conf.urls import patterns, url
 
 from .api_views import DocumentVersionOCRView
 from .views import (
-    DocumentManySubmitView, DocumentSubmitView, DocumentTypeSettingsEditView
+    DocumentSubmitView, DocumentAllSubmitView, DocumentManySubmitView,
+    DocumentTypeSettingsEditView
 )
 
 urlpatterns = patterns(
     'ocr.views',
     url(r'^(?P<document_id>\d+)/content/$', 'document_content', name='document_content'),
     url(r'^document/(?P<pk>\d+)/submit/$', DocumentSubmitView.as_view(), name='document_submit'),
+    url(r'^document/all/submit/$', DocumentAllSubmitView.as_view(), name='document_submit_all'),
     url(r'^document/multiple/submit/$', DocumentManySubmitView.as_view(), name='document_submit_multiple'),
     url(r'^document_type/(?P<pk>\d+)/ocr/settings/$', DocumentTypeSettingsEditView.as_view(), name='document_type_ocr_settings'),
 

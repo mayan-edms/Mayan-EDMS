@@ -54,6 +54,22 @@ class DocumentSubmitView(ConfirmView):
         return HttpResponseRedirect(self.get_success_url())
 
 
+class DocumentAllSubmitView(ConfirmView):
+    extra_context = {
+        'title': _('Submit all documents for OCR?')
+    }
+
+    def post(self, request, *args, **kwargs):
+        count = 0
+        for document in Document.objects.all():
+            document.submit_for_ocr()
+            count += 1
+
+        messages.success(request, _('%d documents added to the OCR queue.') % count)
+
+        return HttpResponseRedirect(self.get_success_url())
+
+
 class DocumentManySubmitView(DocumentSubmitView):
     def get_context_data(self, **kwargs):
         context = super(DocumentManySubmitView, self).get_context_data(**kwargs)
