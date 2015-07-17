@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 import yaml
 
 from django.conf import settings
+from django.utils.functional import Promise, allow_lazy
+from django.utils.encoding import force_text
 
 
 class Namespace(object):
@@ -32,6 +34,17 @@ class Namespace(object):
 
 
 class Setting(object):
+    @staticmethod
+    def serialize_value(value):
+        if isinstance(value, Promise):
+            value = force_text(value)
+
+        return yaml.safe_dump(value, allow_unicode=True)
+
+    @staticmethod
+    def deserialize_value(value):
+        return yaml.safe_load(value)
+
     def __init__(self, namespace, global_name, default, help_text=None, is_path=False):
         self.global_name = global_name
         self.default = default
@@ -46,18 +59,14 @@ class Setting(object):
     @property
     def serialized_value(self):
         if not self.yaml:
-            self.yaml = yaml.safe_dump(getattr(settings, self.global_name, self.default), allow_unicode=True)
+            self.yaml = Setting.serialize_value(getattr(settings, self.global_name, self.default))
 
         return self.yaml
 
-    @serialized_value.setter
-    def serialized_value(self, value):
-        self.yaml = value
-
     @property
     def value(self):
-        return yaml.safe_load(self.serialized_value)
+        return Setting.deserialize_value(self.serialized_value)
 
     @value.setter
     def value(self, value):
-        self.serialized_value = value
+        self.yaml = value
