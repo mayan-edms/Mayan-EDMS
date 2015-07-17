@@ -25,12 +25,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mayan', 'media')
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'om^a(i8^6&h+umbd2%pt91cj!qu_@oztw117rgxmn(n2lp^*c!'
+SECRET_KEY = 'secret_key_missing'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -145,8 +143,12 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Custom settings section
+STATIC_URL = '/static/'
 
+
+# ------------ Custom settings section ----------
+
+TEMPLATE_DEBUG = True
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
 
@@ -178,13 +180,9 @@ LANGUAGES = (
 
 SITE_ID = 1
 
-STATIC_URL = '/static/'
-
-# Custom settings section
-
 sys.path.append(os.path.join(BASE_DIR, 'mayan', 'apps'))
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'mayan', 'media', 'static')
+STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -207,14 +205,12 @@ STATICFILES_FINDERS = (
 )
 
 # --------- Django compressor -------------
-COMPRESS_PARSER = 'compressor.parser.HtmlParser'
-COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',
-                        'compressor.filters.cssmin.CSSMinFilter']
+COMPRESS_CSS_FILTERS = (
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter'
+)
 COMPRESS_ENABLED = False
-# ---------- Django sendfile --------------
-SENDFILE_BACKEND = 'sendfile.backends.simple'
-# --------- Web theme ---------------
-WEB_THEME_ENABLE_SCROLL_JS = False
+COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 # --------- Django -------------------
 LOGIN_URL = 'authentication:login_view'
 LOGIN_REDIRECT_URL = 'common:home'
@@ -243,8 +239,6 @@ LOGIN_EXEMPT_URLS = (
 # --------- Pagination ----------------
 PAGINATION_INVALID_PAGE_RAISES_404 = True
 PAGINATION_DEFAULT_PAGINATION = 40
-# ---------- Search ------------------
-SEARCH_SHOW_OBJECT_TYPE = False
 # ---------- Django REST framework -----------
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10,
@@ -257,18 +251,18 @@ REST_FRAMEWORK = {
     )
 }
 # ----------- Celery ----------
-CELERY_TIMEZONE = 'UTC'
-CELERY_ENABLE_UTC = True
-CELERY_ACCEPT_CONTENT = ['json']
+CELERY_ACCEPT_CONTENT = ('json',)
 CELERY_ALWAYS_EAGER = True
+CELERY_CREATE_MISSING_QUEUES = False
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+CELERY_ENABLE_UTC = True
+CELERY_QUEUES = []
 CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ROUTES = {}
 CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
-CELERY_QUEUES = []
-CELERY_ROUTES = {}
-CELERY_CREATE_MISSING_QUEUES = False
 # ------------ CORS ------------
 CORS_ORIGIN_ALLOW_ALL = True
 # ------ Django REST Swagger -----
