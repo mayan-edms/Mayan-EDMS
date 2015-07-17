@@ -7,12 +7,11 @@ from django.core.files.base import File
 from django.test import TestCase
 
 from documents.models import Document, DocumentType
-from documents.test_models import TEST_DOCUMENT_TYPE
+from documents.test_models import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
-from .literals import COLOR_RED
 from .models import Tag
 
-TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'title_page.png')
+TAG_COLOR = '#FF0000'
 
 
 class TagTestCase(TestCase):
@@ -31,13 +30,13 @@ class TagTestCase(TestCase):
         self.document_type.delete()
 
     def runTest(self):
-        tag = Tag(label='test', color=COLOR_RED)
+        tag = Tag(label='test', color=TAG_COLOR)
         tag.save()
         self.assertEqual(tag.label, 'test')
         self.assertEqual(tag.get_color_code(), 'red')
 
     def test_addition_and_deletion_of_documents(self):
-        tag = Tag(label='test', color=COLOR_RED)
+        tag = Tag(label='test', color=TAG_COLOR)
         tag.save()
 
         tag.documents.add(self.document)
