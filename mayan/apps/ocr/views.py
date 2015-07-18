@@ -23,7 +23,11 @@ from .permissions import (
 
 
 class DocumentSubmitView(ConfirmView):
-    extra_context = {'title': _('Submit the selected document for OCR?')}
+    def get_extra_context(self):
+        return {
+            'object': Document.objects.get(pk=self.kwargs['pk']),
+            'title': _('Submit the selected document for OCR?')
+        }
 
     def object_action(self, request, obj):
         document = obj
