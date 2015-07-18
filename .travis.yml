@@ -10,7 +10,7 @@ env:
    - DB=sqlite
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq python-dev gcc tesseract-ocr unpaper ghostscript libjpeg-dev libpng-dev poppler-utils
+  - sudo apt-get install -qq python-dev gcc tesseract-ocr tesseract-ocr-deu unpaper ghostscript libjpeg-dev libpng-dev poppler-utils
 install:
   - "pip install -r requirements/testing.txt"
   - if [[ $DB == mysql ]]; then pip install -q mysql-python; fi
