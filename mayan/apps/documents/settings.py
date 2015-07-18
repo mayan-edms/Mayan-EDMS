@@ -10,7 +10,7 @@ from smart_settings import Namespace
 
 # TODO: Findout method to make languages names' translatable.
 # YAML fails to serialize ugettext_lazy and ugettext is not allowed at this level
-LANGUAGE_CHOICES = [(i.bibliographic, i.name) for i in list(pycountry.languages)]
+LANGUAGE_CHOICES = [(i.terminology, i.name) for i in list(pycountry.languages)]
 
 namespace = Namespace(name='documents', label=_('Documents'))
 setting_storage_backend = namespace.add_setting(global_name='DOCUMENTS_STORAGE_BACKEND', default='storage.backends.filebasedstorage.FileBasedStorage')
