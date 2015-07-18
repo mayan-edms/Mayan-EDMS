@@ -69,7 +69,8 @@ What's new in Mayan EDMS v2.0
 * Normalization of 'title' and 'name' fields to 'label'
 * Split tests files.
 * Document image and intermediate file caching now has it's own storage backend.
-
+* RGB tags
+* ``performupgrade`` management command.
 
 Upgrading from a previous version
 =================================
@@ -102,8 +103,7 @@ Common steps
 
 Migrate existing database schema with::
 
-    $ mayan-edms.py purge_permissions
-    $ mayan-edms.py migrate
+    $ mayan-edms.py performupgrade
 
 During the migration several messages of stale content types can occur:
 

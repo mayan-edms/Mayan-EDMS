@@ -5,8 +5,10 @@ from django.utils.translation import ugettext_lazy as _
 from common import (
     MayanAppConfig, menu_multi_item, menu_object, menu_secondary, menu_setup
 )
+from common.signals import perform_upgrade
 from rest_api.classes import APIEndPoint
 
+from .handlers import purge_permissions
 from .models import Role
 from .links import (
     link_permission_grant, link_permission_revoke, link_role_create,
@@ -28,3 +30,5 @@ class PermissionsApp(MayanAppConfig):
         menu_multi_item.bind_links(links=[link_permission_grant, link_permission_revoke], sources=['permissions:role_permissions'])
         menu_secondary.bind_links(links=[link_role_list, link_role_create], sources=[Role, 'permissions:role_create', 'permissions:role_list'])
         menu_setup.bind_links(links=[link_role_list])
+
+        perform_upgrade.connect(purge_permissions, dispatch_uid='purge_permissions')
