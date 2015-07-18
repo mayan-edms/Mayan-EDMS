@@ -8,7 +8,7 @@ from common import (
     MayanAppConfig, MissingItem, menu_front_page, menu_object, menu_secondary,
     menu_sidebar, menu_setup
 )
-from common.signals import post_initial_setup
+from common.signals import post_initial_setup, post_upgrade
 from common.utils import encapsulate
 from converter.links import link_transformation_list
 from documents.models import Document
@@ -19,7 +19,8 @@ from rest_api.classes import APIEndPoint
 
 from .classes import StagingFile
 from .handlers import (
-    copy_transformations_to_version, create_default_document_source
+    copy_transformations_to_version, create_default_document_source,
+    initialize_periodic_tasks
 )
 from .links import (
     link_document_create_multiple, link_document_create_siblings,
@@ -32,7 +33,7 @@ from .links import (
 )
 from .models import (
     POP3Email, IMAPEmail, Source, StagingFolderSource, WatchFolderSource,
-    WebFormSource,
+    WebFormSource
 )
 from .widgets import staging_file_thumbnail
 
@@ -79,5 +80,6 @@ class SourcesApp(MayanAppConfig):
         menu_setup.bind_links(links=[link_setup_sources])
         menu_sidebar.bind_links(links=[link_upload_version], sources=['documents:document_version_list', 'documents:upload_version', 'documents:document_version_revert'])
 
+        post_upgrade.connect(initialize_periodic_tasks, dispatch_uid='initialize_periodic_tasks')
         post_initial_setup.connect(create_default_document_source, dispatch_uid='create_default_document_source')
         post_version_upload.connect(copy_transformations_to_version, dispatch_uid='copy_transformations_to_version')

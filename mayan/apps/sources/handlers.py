@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from converter.models import Transformation
 
 from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK
-from .models import WebFormSource
+from .models import POP3Email, IMAPEmail, WatchFolderSource, WebFormSource
 
 
 def create_default_document_source(sender, **kwargs):
@@ -16,3 +16,14 @@ def copy_transformations_to_version(sender, **kwargs):
     instance = kwargs['instance']
 
     Transformation.objects.copy(source=instance.document, targets=instance.pages.all())
+
+
+def initialize_periodic_tasks(**kwargs):
+    for source in POP3Email.objects.filter(enabled=True):
+        source.save()
+
+    for source in IMAPEmail.objects.filter(enabled=True):
+        source.save()
+
+    for source in WatchFolderSource.objects.filter(enabled=True):
+        source.save()
