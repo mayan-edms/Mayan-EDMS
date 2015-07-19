@@ -2,17 +2,14 @@ import logging
 
 from django.contrib.auth.models import User
 from django.core.files import File
-from django.db import OperationalError, transaction
+from django.db import OperationalError
 from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
 
 from common.compressed_files import CompressedFile, NotACompressedFile
 from common.models import SharedUploadedFile
-from converter.models import Transformation
-from documents.models import Document, DocumentType
-from documents.settings import setting_language
-from metadata.api import save_metadata_list
+from documents.models import DocumentType
 
 from .literals import DEFAULT_SOURCE_TASK_RETRY_DELAY
 from .models import Source
@@ -62,13 +59,7 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
 def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, label=None, language=None, metadata_dict_list=None, skip_list=None, user_id=None):
     try:
         document_type = DocumentType.objects.get(pk=document_type_id)
-        source = Source.objects.get_subclass(pk=source_id)
         shared_upload = SharedUploadedFile.objects.get(pk=shared_uploaded_file_id)
-
-        if user_id:
-            user = User.objects.get(pk=user_id)
-        else:
-            user = None
 
         if not label:
             label = shared_upload.filename
@@ -122,7 +113,7 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                 try:
                     shared_upload.delete()
                 except OperationalError as exception:
-                    logger.warning('Operational error during attempt to delete shared upload file: %s; %s. Retrying.', shared_uploaded_file, exception)
+                    logger.warning('Operational error during attempt to delete shared upload file: %s; %s. Retrying.', shared_upload, exception)
             except NotACompressedFile:
                 logging.debug('Exception: NotACompressedFile')
                 task_upload_document.delay(shared_uploaded_file_id=shared_upload.pk, **kwargs)

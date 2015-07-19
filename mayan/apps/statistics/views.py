@@ -1,8 +1,5 @@
 from __future__ import unicode_literals
 
-from django.core.exceptions import PermissionDenied
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from common.views import SimpleView

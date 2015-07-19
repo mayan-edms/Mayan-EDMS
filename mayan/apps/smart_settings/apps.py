@@ -42,4 +42,3 @@ class SmartSettingsApp(MayanAppConfig):
                 logger.debug('App %s has not settings.py file', app.name)
             else:
                 logger.debug('Imported settings.py file for app %s', app.name)
-

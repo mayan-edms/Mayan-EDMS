@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.files.base import File
 from django.core.urlresolvers import reverse

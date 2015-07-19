@@ -18,6 +18,17 @@ class ConverterApp(MayanAppConfig):
     def ready(self):
         super(ConverterApp, self).ready()
 
-        menu_sidebar.bind_links(links=[link_transformation_create], sources=[Transformation])
-        menu_sidebar.bind_links(links=[link_transformation_create], sources=['converter:transformation_create', 'converter:transformation_list'])
-        menu_object.bind_links(links=[link_transformation_edit, link_transformation_delete], sources=[Transformation])
+        menu_sidebar.bind_links(
+            links=[link_transformation_create], sources=[Transformation]
+        )
+        menu_sidebar.bind_links(
+            links=[link_transformation_create],
+            sources=[
+                'converter:transformation_create',
+                'converter:transformation_list'
+            ]
+        )
+        menu_object.bind_links(
+            links=[link_transformation_edit, link_transformation_delete],
+            sources=[Transformation]
+        )

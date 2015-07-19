@@ -1,12 +1,9 @@
 from __future__ import unicode_literals
 
-import os
-
-from django.conf import settings
 from django.core.files.base import File
 from django.test import TestCase
 
-from documents.models import Document, DocumentType
+from documents.models import DocumentType
 from documents.test_models import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
 from .models import Tag

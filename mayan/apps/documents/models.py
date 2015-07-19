@@ -15,7 +15,6 @@ from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from common.literals import TIME_DELTA_UNIT_CHOICES
-from common.models import SharedUploadedFile
 from common.settings import setting_temporary_directory
 from converter import (
     converter_class, TransformationResize, TransformationRotate,

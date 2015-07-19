@@ -82,7 +82,9 @@ class ConverterBase(object):
         """
 
         if not os.path.exists(setting_libreoffice_path.value):
-            raise OfficeConversionError(_('LibreOffice not installed or not found at path: %s') % setting_libreoffice_path.value)
+            raise OfficeConversionError(
+                _('LibreOffice not installed or not found at path: %s') % setting_libreoffice_path.value
+            )
 
         new_file_object, input_filepath = tempfile.mkstemp()
         file_object.seek(0)
@@ -104,7 +106,10 @@ class ConverterBase(object):
         logger.debug('command: %s', command)
 
         os.environ['HOME'] = setting_temporary_directory.value
-        proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+        proc = subprocess.Popen(
+            command, close_fds=True, stderr=subprocess.PIPE,
+            stdout=subprocess.PIPE
+        )
         return_code = proc.wait()
         logger.debug('return_code: %s', return_code)
         fs_cleanup(input_filepath)
@@ -115,11 +120,17 @@ class ConverterBase(object):
         if return_code != 0:
             raise OfficeConversionError(readline)
 
-        filename, extension = os.path.splitext(os.path.basename(input_filepath))
+        filename, extension = os.path.splitext(
+            os.path.basename(input_filepath)
+        )
         logger.debug('filename: %s', filename)
         logger.debug('extension: %s', extension)
 
-        converted_output = os.path.join(setting_temporary_directory.value, os.path.extsep.join([filename, 'pdf']))
+        converted_output = os.path.join(
+            setting_temporary_directory.value, os.path.extsep.join(
+                [filename, 'pdf']
+            )
+        )
         logger.debug('converted_output: %s', converted_output)
 
         with open(converted_output) as converted_file_object:
@@ -134,7 +145,9 @@ class ConverterBase(object):
     def __init__(self, file_object, mime_type=None):
         self.file_object = file_object
         self.image = None
-        self.mime_type = mime_type or get_mimetype(file_object=file_object, mimetype_only=False)[0]
+        self.mime_type = mime_type or get_mimetype(
+            file_object=file_object, mimetype_only=False
+        )[0]
         self.soffice_file = None
 
     def to_pdf(self):
@@ -201,7 +214,9 @@ class BaseTransformation(object):
 
     @classmethod
     def get_transformation_choices(cls):
-        return [(name, klass.get_label()) for name, klass in cls._registry.items()]
+        return [
+            (name, klass.get_label()) for name, klass in cls._registry.items()
+        ]
 
     @classmethod
     def get(cls, name):
@@ -236,7 +251,10 @@ class TransformationResize(BaseTransformation):
         while self.image.size[0] / factor > 2 * width and self.image.size[1] * 2 / factor > 2 * height:
             factor *= 2
         if factor > 1:
-            self.image.thumbnail((self.image.size[0] / factor, self.image.size[1] / factor), Image.NEAREST)
+            self.image.thumbnail(
+                (self.image.size[0] / factor, self.image.size[1] / factor),
+                Image.NEAREST
+            )
 
         # calculate the cropping box and get the cropped part
         if fit:
@@ -265,8 +283,9 @@ class TransformationRotate(BaseTransformation):
 
     def execute_on(self, *args, **kwargs):
         super(TransformationRotate, self).execute_on(*args, **kwargs)
-
-        return self.image.rotate(360 - self.degrees, resample=Image.BICUBIC, expand=True)
+        return self.image.rotate(
+            360 - self.degrees, resample=Image.BICUBIC, expand=True
+        )
 
 
 class TransformationZoom(BaseTransformation):
@@ -278,7 +297,10 @@ class TransformationZoom(BaseTransformation):
         super(TransformationZoom, self).execute_on(*args, **kwargs)
 
         decimal_value = float(self.percent) / 100
-        return self.image.resize((int(self.image.size[0] * decimal_value), int(self.image.size[1] * decimal_value)), Image.ANTIALIAS)
+        return self.image.resize(
+            (int(self.image.size[0] * decimal_value),
+            int(self.image.size[1] * decimal_value)), Image.ANTIALIAS
+        )
 
 
 BaseTransformation.register(TransformationResize)

@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import datetime
 import logging
 
-from django.db import  OperationalError, models, transaction
+from django.db import OperationalError, models, transaction
 from django.db.utils import IntegrityError
 from django.utils.timezone import now
 

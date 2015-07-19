@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 import pycountry
 
-from django.db import models, migrations
+from django.db import migrations
 
 
 def change_bibliographic_to_terminology(apps, schema_editor):

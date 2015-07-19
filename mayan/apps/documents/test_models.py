@@ -13,6 +13,7 @@ TEST_ADMIN_PASSWORD = 'test_admin_password'
 TEST_ADMIN_USERNAME = 'test_admin'
 TEST_ADMIN_EMAIL = 'admin@admin.com'
 TEST_DEU_DOCUMENT_FILENAME = 'deu_website.png'
+TEST_COMPRESSED_DOCUMENTS_FILENAME = 'compressed_documents.zip'
 TEST_SMALL_DOCUMENT_FILENAME = 'title_page.png'
 TEST_NON_ASCII_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png'
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png.zip'
@@ -21,6 +22,7 @@ TEST_SMALL_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_do
 TEST_NON_ASCII_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_NON_ASCII_DOCUMENT_FILENAME)
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME)
 TEST_DEU_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_DEU_DOCUMENT_FILENAME)
+TEST_COMPRESSED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_COMPRESSED_DOCUMENTS_FILENAME)
 TEST_DOCUMENT_DESCRIPTION = 'test description'
 TEST_DOCUMENT_TYPE = 'test_document_type'
 

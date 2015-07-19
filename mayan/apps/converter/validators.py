@@ -18,7 +18,10 @@ class YAMLValidator(object):
         try:
             yaml.safe_load(value)
         except yaml.error.YAMLError:
-            raise ValidationError(_('Enter a valid YAML value.'), code='invalid')
+            raise ValidationError(
+                _('Enter a valid YAML value.'),
+                code='invalid'
+            )
 
     def __eq__(self, other):
         return (

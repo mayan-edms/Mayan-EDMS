@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import yaml
 
 from django.conf import settings
-from django.utils.functional import Promise, allow_lazy
+from django.utils.functional import Promise
 from django.utils.encoding import force_text
 
 

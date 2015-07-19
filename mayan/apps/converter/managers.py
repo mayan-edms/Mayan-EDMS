@@ -20,11 +20,20 @@ class TransformationManager(models.Manager):
         content_type = ContentType.objects.get_for_model(source)
 
         # Get transformations
-        transformations = self.filter(content_type=content_type, object_id=source.pk).values('name', 'arguments', 'order')
+        transformations = self.filter(
+            content_type=content_type, object_id=source.pk
+        ).values('name', 'arguments', 'order')
         logger.debug('source transformations: %s', transformations)
 
         # Get all targets from target QS
-        targets_dict = map(lambda entry: {'content_type': entry[0], 'object_id': entry[1]}, zip(ContentType.objects.get_for_models(*targets).values(), targets.values_list('pk', flat=True)))
+        targets_dict = map(
+            lambda entry: {
+                'content_type': entry[0], 'object_id': entry[1]
+            }, zip(
+                ContentType.objects.get_for_models(*targets).values(),
+                targets.values_list('pk', flat=True)
+            )
+        )
         logger.debug('targets: %s', targets_dict)
 
         # Combine the two
@@ -51,21 +60,36 @@ class TransformationManager(models.Manager):
 
         content_type = ContentType.objects.get_for_model(obj)
 
-        transformations = self.filter(content_type=content_type, object_id=obj.pk)
+        transformations = self.filter(
+            content_type=content_type, object_id=obj.pk
+        )
 
         if as_classes:
             result = []
             for transformation in transformations:
                 try:
-                    transformation_class = BaseTransformation.get(transformation.name)
+                    transformation_class = BaseTransformation.get(
+                        transformation.name
+                    )
                 except KeyError:
                     # Non existant transformation, but we don't raise an error
-                    logger.error('Non existant transformation: %s for %s', transformation.name, obj)
+                    logger.error(
+                        'Non existant transformation: %s for %s',
+                        transformation.name, obj
+                    )
                 else:
                     try:
-                        result.append(transformation_class(**yaml.safe_load(transformation.arguments)))
+                        result.append(
+                            transformation_class(
+                                **yaml.safe_load(transformation.arguments)
+                            )
+                        )
                     except Exception as exception:
-                        logger.error('Error while parsing transformation "%s", arguments "%s", for object "%s"; %s', transformation, transformation.arguments, obj, exception)
+                        logger.error(
+                            'Error while parsing transformation "%s", arguments "%s", for object "%s"; %s',
+                            transformation, transformation.arguments, obj,
+                            exception
+                        )
 
             return result
         else:
