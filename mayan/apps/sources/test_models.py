@@ -4,19 +4,21 @@ import shutil
 import tempfile
 
 from django.contrib.auth.models import User
-from django.test.client import Client
+from django.core.files.base import File
 from django.test import TestCase
+from django.test.client import Client
 
 from documents.models import Document, DocumentType
 
 from documents.test_models import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_DOCUMENT_TYPE, TEST_NON_ASCII_DOCUMENT_FILENAME,
-    TEST_NON_ASCII_DOCUMENT_PATH, TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
+    TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
+    TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
+    TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
 )
 
 from .literals import SOURCE_UNCOMPRESS_CHOICE_Y
-from .models import WatchFolderSource
+from .models import WatchFolderSource, WebFormSource
 
 
 class UploadDocumentTestCase(TestCase):
@@ -79,3 +81,26 @@ class UploadDocumentTestCase(TestCase):
         self.assertEqual(document.page_count, 1)
 
         shutil.rmtree(temporary_directory)
+
+
+class CompressedUploadsTestCase(TestCase):
+    def setUp(self):
+        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+
+        ocr_settings = self.document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
+
+    def tearDown(self):
+        self.document_type.delete()
+
+    def test_upload_compressed_file(self):
+        source = WebFormSource(label='test source', uncompress=SOURCE_UNCOMPRESS_CHOICE_Y)
+
+        with open(TEST_COMPRESSED_DOCUMENT_PATH) as file_object:
+            #self.document = self.document_type.new_document(file_object=File(file_object), label='small document')
+            source.handle_upload(document_type=self.document_type, file_object=File(file_object), expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y))
+
+        self.assertEqual(Document.objects.count(), 2)
+        self.assertTrue('first document.pdf' in Document.objects.values_list('label', flat=True))
+        self.assertTrue('second document.pdf' in Document.objects.values_list('label', flat=True))
