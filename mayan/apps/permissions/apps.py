@@ -26,9 +26,22 @@ class PermissionsApp(MayanAppConfig):
 
         APIEndPoint('permissions')
 
-        menu_object.bind_links(links=[link_role_edit, link_role_members, link_role_permissions, link_role_delete], sources=[Role])
-        menu_multi_item.bind_links(links=[link_permission_grant, link_permission_revoke], sources=['permissions:role_permissions'])
-        menu_secondary.bind_links(links=[link_role_list, link_role_create], sources=[Role, 'permissions:role_create', 'permissions:role_list'])
+        menu_object.bind_links(
+            links=[
+                link_role_edit, link_role_members, link_role_permissions,
+                link_role_delete
+            ], sources=[Role]
+        )
+        menu_multi_item.bind_links(
+            links=[link_permission_grant, link_permission_revoke],
+            sources=['permissions:role_permissions']
+        )
+        menu_secondary.bind_links(
+            links=[link_role_list, link_role_create],
+            sources=[Role, 'permissions:role_create', 'permissions:role_list']
+        )
         menu_setup.bind_links(links=[link_role_list])
 
-        perform_upgrade.connect(purge_permissions, dispatch_uid='purge_permissions')
+        perform_upgrade.connect(
+            purge_permissions, dispatch_uid='purge_permissions'
+        )

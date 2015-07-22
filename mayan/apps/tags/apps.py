@@ -40,28 +40,66 @@ class TagsApp(MayanAppConfig):
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_tag_attach, permission_tag_remove, permission_tag_view
+                permission_tag_attach, permission_tag_remove,
+                permission_tag_view
             )
         )
 
         ModelPermission.register(
             model=Tag, permissions=(
-                permission_acl_edit, permission_acl_view, permission_tag_delete,
-                permission_tag_edit, permission_tag_view,
+                permission_acl_edit, permission_acl_view,
+                permission_tag_delete, permission_tag_edit,
+                permission_tag_view,
             )
         )
 
-        SourceColumn(source=Document, label=_('Tags'), attribute=encapsulate(lambda document: widget_inline_tags(document)))
+        SourceColumn(
+            source=Document, label=_('Tags'),
+            attribute=encapsulate(
+                lambda document: widget_inline_tags(document)
+            )
+        )
 
-        SourceColumn(source=Tag, label=_('Preview'), attribute=encapsulate(lambda tag: widget_single_tag(tag)))
+        SourceColumn(
+            source=Tag, label=_('Preview'),
+            attribute=encapsulate(lambda tag: widget_single_tag(tag))
+        )
 
         document_search.add_model_field(field='tags__label', label=_('Tags'))
 
-        menu_facet.bind_links(links=[link_tag_document_list], sources=[Document])
+        menu_facet.bind_links(
+            links=[link_tag_document_list], sources=[Document]
+        )
         menu_main.bind_links(links=[link_tag_list])
-        menu_multi_item.bind_links(links=[link_multiple_documents_attach_tag, link_multiple_documents_tag_remove], sources=[Document])
-        menu_multi_item.bind_links(links=[link_tag_multiple_delete], sources=[Tag])
-        menu_multi_item.bind_links(links=[link_single_document_multiple_tag_remove], sources=[CombinedSource(obj=Tag, view='tags:document_tags')])
-        menu_object.bind_links(links=[link_tag_tagged_item_list, link_tag_edit, link_acl_list, link_tag_delete], sources=[Tag])
-        menu_secondary.bind_links(links=[link_tag_list, link_tag_create], sources=[Tag, 'tags:tag_list', 'tags:tag_create'])
-        menu_sidebar.bind_links(links=[link_tag_attach], sources=['tags:document_tags', 'tags:tag_remove', 'tags:tag_multiple_remove', 'tags:tag_attach'])
+        menu_multi_item.bind_links(
+            links=[
+                link_multiple_documents_attach_tag,
+                link_multiple_documents_tag_remove
+            ],
+            sources=[Document]
+        )
+        menu_multi_item.bind_links(
+            links=[link_tag_multiple_delete], sources=[Tag]
+        )
+        menu_multi_item.bind_links(
+            links=[link_single_document_multiple_tag_remove],
+            sources=[CombinedSource(obj=Tag, view='tags:document_tags')]
+        )
+        menu_object.bind_links(
+            links=[
+                link_tag_tagged_item_list, link_tag_edit, link_acl_list,
+                link_tag_delete
+            ],
+            sources=[Tag]
+        )
+        menu_secondary.bind_links(
+            links=[link_tag_list, link_tag_create],
+            sources=[Tag, 'tags:tag_list', 'tags:tag_create']
+        )
+        menu_sidebar.bind_links(
+            links=[link_tag_attach],
+            sources=[
+                'tags:document_tags', 'tags:tag_remove',
+                'tags:tag_multiple_remove', 'tags:tag_attach'
+            ]
+        )

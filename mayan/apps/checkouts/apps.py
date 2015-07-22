@@ -37,10 +37,22 @@ class CheckoutsApp(MayanAppConfig):
 
         APIEndPoint('checkouts')
 
-        Document.add_to_class('check_in', lambda document, user=None: DocumentCheckout.objects.check_in_document(document, user))
-        Document.add_to_class('checkout_info', lambda document: DocumentCheckout.objects.document_checkout_info(document))
-        Document.add_to_class('checkout_state', lambda document: DocumentCheckout.objects.document_checkout_state(document))
-        Document.add_to_class('is_checked_out', lambda document: DocumentCheckout.objects.is_document_checked_out(document))
+        Document.add_to_class(
+            'check_in',
+            lambda document, user=None: DocumentCheckout.objects.check_in_document(document, user)
+        )
+        Document.add_to_class(
+            'checkout_info',
+            lambda document: DocumentCheckout.objects.document_checkout_info(document)
+        )
+        Document.add_to_class(
+            'checkout_state',
+            lambda document: DocumentCheckout.objects.document_checkout_state(document)
+        )
+        Document.add_to_class(
+            'is_checked_out',
+            lambda document: DocumentCheckout.objects.is_document_checked_out(document)
+        )
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -54,13 +66,18 @@ class CheckoutsApp(MayanAppConfig):
             {
                 'task_check_expired_check_outs': {
                     'task': 'checkouts.tasks.task_check_expired_check_outs',
-                    'schedule': timedelta(seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL),
+                    'schedule': timedelta(
+                        seconds=CHECK_EXPIRED_CHECK_OUTS_INTERVAL
+                    ),
                 },
             }
         )
 
         app.conf.CELERY_QUEUES.append(
-            Queue('checkouts_periodic', Exchange('checkouts_periodic'), routing_key='checkouts_periodic', delivery_mode=1),
+            Queue(
+                'checkouts_periodic', Exchange('checkouts_periodic'),
+                routing_key='checkouts_periodic', delivery_mode=1
+            ),
         )
 
         app.conf.CELERY_ROUTES.update(
@@ -73,6 +90,15 @@ class CheckoutsApp(MayanAppConfig):
 
         menu_facet.bind_links(links=[link_checkout_info], sources=[Document])
         menu_main.bind_links(links=[link_checkout_list])
-        menu_sidebar.bind_links(links=[link_checkout_document, link_checkin_document], sources=['checkouts:checkout_info', 'checkouts:checkout_document', 'checkouts:checkin_document'])
+        menu_sidebar.bind_links(
+            links=[link_checkout_document, link_checkin_document],
+            sources=[
+                'checkouts:checkout_info', 'checkouts:checkout_document',
+                'checkouts:checkin_document'
+            ]
+        )
 
-        pre_save.connect(check_if_new_versions_allowed, dispatch_uid='document_index_delete', sender=DocumentVersion)
+        pre_save.connect(
+            check_if_new_versions_allowed,
+            dispatch_uid='document_index_delete', sender=DocumentVersion
+        )

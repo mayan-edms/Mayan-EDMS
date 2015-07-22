@@ -24,11 +24,26 @@ class DocumentCheckout(models.Model):
     """
     Model to store the state and information of a document checkout
     """
-    document = models.ForeignKey(Document, unique=True, verbose_name=_('Document'))
-    checkout_datetime = models.DateTimeField(auto_now_add=True, verbose_name=_('Check out date and time'))
-    expiration_datetime = models.DateTimeField(help_text=_('Amount of time to hold the document checked out in minutes.'), verbose_name=_('Check out expiration date and time'))
+    document = models.ForeignKey(
+        Document, unique=True, verbose_name=_('Document')
+    )
+    checkout_datetime = models.DateTimeField(
+        auto_now_add=True, verbose_name=_('Check out date and time')
+    )
+    expiration_datetime = models.DateTimeField(
+        help_text=_(
+            'Amount of time to hold the document checked out in minutes.'
+        ),
+        verbose_name=_('Check out expiration date and time')
+    )
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'))
-    block_new_version = models.BooleanField(default=True, help_text=_('Do not allow new version of this document to be uploaded.'), verbose_name=_('Block new version upload'))
+    block_new_version = models.BooleanField(
+        default=True,
+        help_text=_(
+            'Do not allow new version of this document to be uploaded.'
+        ),
+        verbose_name=_('Block new version upload')
+    )
 
     objects = DocumentCheckoutManager()
 
@@ -40,7 +55,9 @@ class DocumentCheckout(models.Model):
 
     def clean(self):
         if self.expiration_datetime < now():
-            raise ValidationError(_('Check out expiration date and time must be in the future.'))
+            raise ValidationError(
+                _('Check out expiration date and time must be in the future.')
+            )
 
     def save(self, *args, **kwargs):
         new_checkout = not self.pk
@@ -49,8 +66,13 @@ class DocumentCheckout(models.Model):
 
         result = super(DocumentCheckout, self).save(*args, **kwargs)
         if new_checkout:
-            event_document_check_out.commit(actor=self.user, target=self.document)
-            logger.info('Document "%s" checked out by user "%s"', self.document, self.user)
+            event_document_check_out.commit(
+                actor=self.user, target=self.document
+            )
+            logger.info(
+                'Document "%s" checked out by user "%s"',
+                self.document, self.user
+            )
 
         return result
 

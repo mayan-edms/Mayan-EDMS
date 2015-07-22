@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 from .models import (
-    DeletedDocument, Document, DocumentPage, DocumentType, DocumentTypeFilename,
-    DocumentVersion, RecentDocument
+    DeletedDocument, Document, DocumentPage, DocumentType,
+    DocumentTypeFilename, DocumentVersion, RecentDocument
 )
 
 
@@ -50,7 +50,10 @@ class DocumentTypeAdmin(admin.ModelAdmin):
     inlines = (
         DocumentTypeFilenameInline,
     )
-    list_display = ('label', 'trash_time_period', 'trash_time_unit', 'delete_time_period', 'delete_time_unit')
+    list_display = (
+        'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
+        'delete_time_unit'
+    )
 
 
 class RecentDocumentAdmin(admin.ModelAdmin):

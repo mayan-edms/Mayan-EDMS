@@ -12,10 +12,19 @@ urlpatterns = patterns(
     'permissions.views',
     url(r'^role/list/$', RoleListView.as_view(), name='role_list'),
     url(r'^role/create/$', RoleCreateView.as_view(), name='role_create'),
-    url(r'^role/(?P<pk>\d+)/permissions/$', SetupRolePermissionsView.as_view(), name='role_permissions'),
+    url(
+        r'^role/(?P<pk>\d+)/permissions/$', SetupRolePermissionsView.as_view(),
+        name='role_permissions'
+    ),
     url(r'^role/(?P<pk>\d+)/edit/$', RoleEditView.as_view(), name='role_edit'),
-    url(r'^role/(?P<pk>\d+)/delete/$', RoleDeleteView.as_view(), name='role_delete'),
-    url(r'^role/(?P<pk>\d+)/members/$', SetupRoleMembersView.as_view(), name='role_members'),
+    url(
+        r'^role/(?P<pk>\d+)/delete/$', RoleDeleteView.as_view(),
+        name='role_delete'
+    ),
+    url(
+        r'^role/(?P<pk>\d+)/members/$', SetupRoleMembersView.as_view(),
+        name='role_members'
+    ),
 )
 
 api_urls = patterns(

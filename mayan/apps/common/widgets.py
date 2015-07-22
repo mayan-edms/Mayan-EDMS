@@ -118,7 +118,10 @@ class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
             value = []
         has_id = attrs and 'id' in attrs
         final_attrs = self.build_attrs(attrs, name=name)
-        output = ['<ul class="undecorated_list" style="margin-left: 5px; margin-top: 3px; margin-bottom: 3px;">']
+        # TODO: Move this styling to a CSS class
+        output = [
+            '<ul class="undecorated_list" style="margin-left: 5px; margin-top: 3px; margin-bottom: 3px;">'
+        ]
         # Normalize to strings
         str_values = set([force_unicode(v) for v in value])
         for i, (option_value, option_label) in enumerate(chain(self.choices, choices)):
@@ -130,14 +133,22 @@ class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
             else:
                 label_for = ''
 
-            cb = forms.widgets.CheckboxInput(final_attrs, check_test=lambda value: value in str_values)
+            cb = forms.widgets.CheckboxInput(
+                final_attrs, check_test=lambda value: value in str_values
+            )
             option_value = force_unicode(option_value)
             rendered_cb = cb.render(name, option_value)
             option_label = conditional_escape(force_unicode(option_label))
-            output.append('<li><label%s>%s %s</label></li>' % (label_for, rendered_cb, option_label))
+            output.append(
+                '<li><label%s>%s %s</label></li>' % (
+                    label_for, rendered_cb, option_label
+                )
+            )
         output.append('</ul>')
 
-        return mark_safe('<div class="text_area_div">%s</div>' % '\n'.join(output))
+        return mark_safe(
+            '<div class="text_area_div">%s</div>' % '\n'.join(output)
+        )
 
 
 class TextAreaDiv(forms.widgets.Widget):

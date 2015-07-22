@@ -12,6 +12,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for permission in StoredPermission.objects.all():
             try:
-                Permission.get({'pk': '%s.%s' % (permission.namespace, permission.name)}, proxy_only=True)
+                Permission.get(
+                    {'pk': '%s.%s' % (permission.namespace, permission.name)},
+                    proxy_only=True
+                )
             except KeyError:
                 permission.delete()

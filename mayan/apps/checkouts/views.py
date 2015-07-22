@@ -34,9 +34,13 @@ class CheckoutDocumentView(SingleObjectCreateView):
         self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         try:
-            Permission.check_permissions(request.user, [permission_document_checkout])
+            Permission.check_permissions(
+                request.user, [permission_document_checkout]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_checkout, request.user, self.document)
+            AccessControlList.objects.check_access(
+                permission_document_checkout, request.user, self.document
+            )
 
         return super(CheckoutDocumentView, self).dispatch(request, *args, **kwargs)
 
@@ -49,9 +53,15 @@ class CheckoutDocumentView(SingleObjectCreateView):
         except DocumentAlreadyCheckedOut:
             messages.error(self.request, _('Document already checked out.'))
         except Exception as exception:
-            messages.error(self.request, _('Error trying to check out document; %s') % exception)
+            messages.error(
+                self.request,
+                _('Error trying to check out document; %s') % exception
+            )
         else:
-            messages.success(self.request, _('Document "%s" checked out successfully.') % self.document)
+            messages.success(
+                self.request,
+                _('Document "%s" checked out successfully.') % self.document
+            )
 
         return HttpResponseRedirect(self.get_success_url())
 
@@ -73,9 +83,24 @@ class CheckoutListView(DocumentListView):
         'title': _('Documents checked out'),
         'hide_links': True,
         'extra_columns': [
-            {'name': _('User'), 'attribute': encapsulate(lambda document: document.checkout_info().user.get_full_name() or document.checkout_info().user)},
-            {'name': _('Checkout time and date'), 'attribute': encapsulate(lambda document: document.checkout_info().checkout_datetime)},
-            {'name': _('Checkout expiration'), 'attribute': encapsulate(lambda document: document.checkout_info().expiration_datetime)},
+            {
+                'name': _('User'),
+                'attribute': encapsulate(
+                    lambda document: document.checkout_info().user.get_full_name() or document.checkout_info().user
+                )
+            },
+            {
+                'name': _('Checkout time and date'),
+                'attribute': encapsulate(
+                    lambda document: document.checkout_info().checkout_datetime
+                )
+            },
+            {
+                'name': _('Checkout expiration'),
+                'attribute': encapsulate(
+                    lambda document: document.checkout_info().expiration_datetime
+                )
+            },
         ],
     }
 
@@ -83,29 +108,51 @@ class CheckoutListView(DocumentListView):
 def checkout_info(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
     try:
-        Permission.check_permissions(request.user, [permission_document_checkout, permission_document_checkin])
+        Permission.check_permissions(
+            request.user, [
+                permission_document_checkout, permission_document_checkin
+            ]
+        )
     except PermissionDenied:
-        AccessControlList.objects.check_access([permission_document_checkout, permission_document_checkin], request.user, document)
+        AccessControlList.objects.check_access(
+            [permission_document_checkout, permission_document_checkin],
+            request.user, document
+        )
 
-    paragraphs = [_('Document status: %s') % STATE_LABELS[document.checkout_state()]]
+    paragraphs = [
+        _('Document status: %s') % STATE_LABELS[document.checkout_state()]
+    ]
 
     if document.is_checked_out():
         checkout_info = document.checkout_info()
-        paragraphs.append(_('User: %s') % (checkout_info.user.get_full_name() or checkout_info.user))
-        paragraphs.append(_('Check out time: %s') % checkout_info.checkout_datetime)
-        paragraphs.append(_('Check out expiration: %s') % checkout_info.expiration_datetime)
-        paragraphs.append(_('New versions allowed: %s') % (_('Yes') if not checkout_info.block_new_version else _('No')))
+        paragraphs.append(
+            _('User: %s') % (checkout_info.user.get_full_name() or checkout_info.user)
+        )
+        paragraphs.append(
+            _('Check out time: %s') % checkout_info.checkout_datetime
+        )
+        paragraphs.append(
+            _('Check out expiration: %s') % checkout_info.expiration_datetime
+        )
+        paragraphs.append(
+            _('New versions allowed: %s') % (_('Yes') if not checkout_info.block_new_version else _('No'))
+        )
 
-    return render_to_response('appearance/generic_template.html', {
-        'paragraphs': paragraphs,
-        'object': document,
-        'title': _('Check out details for document: %s') % document
-    }, context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_template.html', {
+             'paragraphs': paragraphs,
+             'object': document,
+             'title': _('Check out details for document: %s') % document
+         },
+         context_instance=RequestContext(request)
+      )
 
 
 def checkin_document(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
-    post_action_redirect = reverse('checkouts:checkout_info', args=[document.pk])
+    post_action_redirect = reverse(
+        'checkouts:checkout_info', args=[document.pk]
+    )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))

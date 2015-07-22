@@ -33,13 +33,20 @@ class DocumentSubmitView(ConfirmView):
         document = obj
 
         try:
-            Permission.check_permissions(request.user, [permission_ocr_document])
+            Permission.check_permissions(
+                request.user, [permission_ocr_document]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_ocr_document, request.user, document)
+            AccessControlList.objects.check_access(
+                permission_ocr_document, request.user, document
+            )
 
         document.submit_for_ocr()
-        messages.success(request, _('Document: %(document)s was added to the OCR queue.') % {
-            'document': document}
+        messages.success(
+            request,
+             _('Document: %(document)s was added to the OCR queue.') % {
+                'document': document
+            }
         )
 
     def post(self, request, *args, **kwargs):
@@ -58,7 +65,9 @@ class DocumentAllSubmitView(ConfirmView):
             document.submit_for_ocr()
             count += 1
 
-        messages.success(request, _('%d documents added to the OCR queue.') % count)
+        messages.success(
+            request, _('%d documents added to the OCR queue.') % count
+        )
 
         return HttpResponseRedirect(self.get_success_url())
 
@@ -82,14 +91,20 @@ class DocumentTypeSettingsEditView(SingleObjectEditView):
     view_permission = permission_document_type_ocr_setup
 
     def get_object(self, queryset=None):
-        return get_object_or_404(DocumentType, pk=self.kwargs['pk']).ocr_settings
+        return get_object_or_404(
+            DocumentType, pk=self.kwargs['pk']
+        ).ocr_settings
 
     def get_context_data(self, **kwargs):
-        context = super(DocumentTypeSettingsEditView, self).get_context_data(**kwargs)
+        context = super(
+            DocumentTypeSettingsEditView, self
+        ).get_context_data(**kwargs)
 
         context.update(
             {
-                'title': _('Edit OCR settings for document type: %s') % self.get_object().document_type
+                'title': _(
+                    'Edit OCR settings for document type: %s'
+                ) % self.get_object().document_type
             }
         )
 
@@ -100,9 +115,13 @@ def document_content(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.check_permissions(request.user, [permission_ocr_content_view])
+        Permission.check_permissions(
+            request.user, [permission_ocr_content_view]
+        )
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_ocr_content_view, request.user, document)
+        AccessControlList.objects.check_access(
+            permission_ocr_content_view, request.user, document
+        )
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -132,7 +151,9 @@ def entry_list(request):
 
 
 def entry_delete(request, pk=None, pk_list=None):
-    Permission.check_permissions(request.user, [permission_ocr_document_delete])
+    Permission.check_permissions(
+        request.user, [permission_ocr_document_delete]
+    )
 
     if pk:
         entries = [get_object_or_404(DocumentVersionOCRError, pk=pk)]
@@ -140,7 +161,11 @@ def entry_delete(request, pk=None, pk_list=None):
         entries = [get_object_or_404(DocumentVersionOCRError, pk=pk) for pk in pk_list.split(',')]
     else:
         messages.error(request, _('Make at least one selection.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -149,12 +174,18 @@ def entry_delete(request, pk=None, pk_list=None):
         for entry in entries:
             try:
                 entry.delete()
-                messages.success(request, _('Entry: %(entry)s deleted successfully.') % {
-                    'entry': entry})
+                messages.success(
+                    request, _('Entry: %(entry)s deleted successfully.') % {
+                        'entry': entry
+                    }
+                )
 
             except Exception as exception:
-                messages.error(request, _('Error entry: %(entry)s; %(error)s') % {
-                    'entry': entry, 'error': exception})
+                messages.error(
+                    request, _('Error entry: %(entry)s; %(error)s') % {
+                        'entry': entry, 'error': exception
+                    }
+                )
         return HttpResponseRedirect(next)
 
     context = {

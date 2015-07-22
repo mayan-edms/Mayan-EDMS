@@ -24,7 +24,9 @@ class PermissionTestCase(TestCase):
 
     def test_no_permissions(self):
         with self.assertRaises(PermissionDenied):
-            Permission.check_permissions(requester=self.user, permissions=(permission_role_view,))
+            Permission.check_permissions(
+                requester=self.user, permissions=(permission_role_view,)
+            )
 
     def test_with_permissions(self):
         self.group.user_set.add(self.user)
@@ -32,6 +34,8 @@ class PermissionTestCase(TestCase):
         self.role.groups.add(self.group)
 
         try:
-            Permission.check_permissions(requester=self.user, permissions=(permission_role_view,))
+            Permission.check_permissions(
+                requester=self.user, permissions=(permission_role_view,)
+            )
         except PermissionDenied:
             self.fail('PermissionDenied exception was not expected.')

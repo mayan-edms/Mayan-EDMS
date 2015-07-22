@@ -27,12 +27,17 @@ class UploadDocumentTestCase(TestCase):
     """
 
     def setUp(self):
-        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
         ocr_settings = self.document_type.ocr_settings
         ocr_settings.auto_ocr = False
         ocr_settings.save()
 
-        self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
+        self.admin_user = User.objects.create_superuser(
+            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
+            password=TEST_ADMIN_PASSWORD
+        )
         self.client = Client()
 
     def tearDown(self):
@@ -41,14 +46,17 @@ class UploadDocumentTestCase(TestCase):
 
     def test_issue_gh_163(self):
         """
-        Non-ASCII chars in document name failing in upload via watch folder #163
-        https://github.com/mayan-edms/mayan-edms/issues/163
+        Non-ASCII chars in document name failing in upload via watch folder
+        gh-issue #163 https://github.com/mayan-edms/mayan-edms/issues/163
         """
 
         temporary_directory = tempfile.mkdtemp()
         shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, temporary_directory)
 
-        watch_folder = WatchFolderSource.objects.create(document_type=self.document_type, folder_path=temporary_directory, uncompress=SOURCE_UNCOMPRESS_CHOICE_Y)
+        watch_folder = WatchFolderSource.objects.create(
+            document_type=self.document_type, folder_path=temporary_directory,
+            uncompress=SOURCE_UNCOMPRESS_CHOICE_Y
+        )
         watch_folder.check_source()
 
         self.assertEqual(Document.objects.count(), 1)
@@ -65,7 +73,9 @@ class UploadDocumentTestCase(TestCase):
 
         # Test Non-ASCII named documents inside Non-ASCII named compressed file
 
-        shutil.copy(TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, temporary_directory)
+        shutil.copy(
+            TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH, temporary_directory
+        )
 
         watch_folder.check_source()
         document = Document.objects.all()[1]
@@ -85,7 +95,9 @@ class UploadDocumentTestCase(TestCase):
 
 class CompressedUploadsTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
 
         ocr_settings = self.document_type.ocr_settings
         ocr_settings.auto_ocr = False
@@ -95,12 +107,25 @@ class CompressedUploadsTestCase(TestCase):
         self.document_type.delete()
 
     def test_upload_compressed_file(self):
-        source = WebFormSource(label='test source', uncompress=SOURCE_UNCOMPRESS_CHOICE_Y)
+        source = WebFormSource(
+            label='test source', uncompress=SOURCE_UNCOMPRESS_CHOICE_Y
+        )
 
         with open(TEST_COMPRESSED_DOCUMENT_PATH) as file_object:
-            #self.document = self.document_type.new_document(file_object=File(file_object), label='small document')
-            source.handle_upload(document_type=self.document_type, file_object=File(file_object), expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y))
+            source.handle_upload(
+                document_type=self.document_type,
+                file_object=File(file_object),
+                expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y)
+            )
 
         self.assertEqual(Document.objects.count(), 2)
-        self.assertTrue('first document.pdf' in Document.objects.values_list('label', flat=True))
-        self.assertTrue('second document.pdf' in Document.objects.values_list('label', flat=True))
+        self.assertTrue(
+            'first document.pdf' in Document.objects.values_list(
+                'label', flat=True
+            )
+        )
+        self.assertTrue(
+            'second document.pdf' in Document.objects.values_list(
+                'label', flat=True
+            )
+        )

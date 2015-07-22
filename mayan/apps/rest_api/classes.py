@@ -23,7 +23,9 @@ class APIEndPoint(object):
         self.name = name
         self.endpoints = []
         try:
-            api_urls = import_string('{0}.urls.api_urls'.format(app_name or name))
+            api_urls = import_string(
+                '{0}.urls.api_urls'.format(app_name or name)
+            )
         except Exception:
             if settings.DEBUG:
                 raise

@@ -83,7 +83,9 @@ class ConverterBase(object):
 
         if not os.path.exists(setting_libreoffice_path.value):
             raise OfficeConversionError(
-                _('LibreOffice not installed or not found at path: %s') % setting_libreoffice_path.value
+                _(
+                    'LibreOffice not installed or not found at path: %s'
+                ) % setting_libreoffice_path.value
             )
 
         new_file_object, input_filepath = tempfile.mkstemp()

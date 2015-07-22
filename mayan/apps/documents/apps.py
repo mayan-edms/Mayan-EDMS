@@ -58,8 +58,8 @@ from .links import (
 )
 from .literals import CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL
 from .models import (
-    DeletedDocument, Document, DocumentPage, DocumentType, DocumentTypeFilename,
-    DocumentVersion
+    DeletedDocument, Document, DocumentPage, DocumentType,
+    DocumentTypeFilename, DocumentVersion
 )
 from .permissions import (
     permission_document_delete, permission_document_download,
@@ -82,9 +82,16 @@ class DocumentsApp(MayanAppConfig):
 
         APIEndPoint('documents')
 
-        MissingItem(label=_('Create a document type'), description=_('Every uploaded document must be assigned a document type, it is the basic way Mayan EDMS categorizes documents.'), condition=lambda: not DocumentType.objects.exists(), view='documents:document_type_list')
+        MissingItem(
+            label=_('Create a document type'),
+            description=_('Every uploaded document must be assigned a document type, it is the basic way Mayan EDMS categorizes documents.'),
+            condition=lambda: not DocumentType.objects.exists(),
+            view='documents:document_type_list'
+        )
 
-        ModelAttribute(Document, label=_('Label'), name='label', type_name='field')
+        ModelAttribute(
+            Document, label=_('Label'), name='label', type_name='field'
+        )
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -108,16 +115,34 @@ class DocumentsApp(MayanAppConfig):
             model=Document, related='document_type',
         )
 
-        SourceColumn(source=Document, label=_('Thumbnail'), attribute=encapsulate(lambda document: document_thumbnail(document, gallery_name='documents:document_list', title=getattr(document, 'label', None), size=setting_thumbnail_size.value)))
-        SourceColumn(source=Document, label=_('Type'), attribute='document_type')
-        SourceColumn(source=DeletedDocument, label=_('Type'), attribute='document_type')
-        SourceColumn(source=DeletedDocument, label=_('Date time trashed'), attribute='deleted_date_time')
+        SourceColumn(
+            source=Document, label=_('Thumbnail'),
+            attribute=encapsulate(
+                lambda document: document_thumbnail(
+                    document, gallery_name='documents:document_list',
+                    size=setting_thumbnail_size.value,
+                    title=getattr(document, 'label', None),
+                )
+            )
+        )
+        SourceColumn(
+            source=Document, label=_('Type'), attribute='document_type'
+        )
+        SourceColumn(
+            source=DeletedDocument, label=_('Type'), attribute='document_type'
+        )
+        SourceColumn(
+            source=DeletedDocument, label=_('Date time trashed'),
+            attribute='deleted_date_time'
+        )
 
         app.conf.CELERYBEAT_SCHEDULE.update(
             {
                 'task_check_delete_periods': {
                     'task': 'documents.tasks.task_check_delete_periods',
-                    'schedule': timedelta(seconds=CHECK_DELETE_PERIOD_INTERVAL),
+                    'schedule': timedelta(
+                        seconds=CHECK_DELETE_PERIOD_INTERVAL
+                    ),
                 },
                 'task_check_trash_periods': {
                     'task': 'documents.tasks.task_check_trash_periods',
@@ -128,8 +153,14 @@ class DocumentsApp(MayanAppConfig):
 
         app.conf.CELERY_QUEUES.extend(
             (
-                Queue('converter', Exchange('converter'), routing_key='converter', delivery_mode=1),
-                Queue('documents_periodic', Exchange('documents_periodic'), routing_key='documents_periodic', delivery_mode=1),
+                Queue(
+                    'converter', Exchange('converter'),
+                    routing_key='converter', delivery_mode=1
+                ),
+                Queue(
+                    'documents_periodic', Exchange('documents_periodic'),
+                    routing_key='documents_periodic', delivery_mode=1
+                ),
                 Queue('uploads', Exchange('uploads'), routing_key='uploads'),
             )
         )
@@ -157,44 +188,135 @@ class DocumentsApp(MayanAppConfig):
             }
         )
 
-        menu_front_page.bind_links(links=[link_document_list_recent, link_document_list, link_document_list_deleted])
+        menu_front_page.bind_links(
+            links=[
+                link_document_list_recent, link_document_list,
+                link_document_list_deleted
+            ]
+        )
         menu_setup.bind_links(links=[link_document_type_setup])
         menu_tools.bind_links(links=[link_clear_image_cache])
 
         # Document type links
-        menu_object.bind_links(links=[link_document_type_edit, link_document_type_filename_list, link_acl_list, link_document_type_delete], sources=[DocumentType])
-        menu_object.bind_links(links=[link_document_type_filename_edit, link_document_type_filename_delete], sources=[DocumentTypeFilename])
-        menu_secondary.bind_links(links=[link_document_type_list, link_document_type_create], sources=[DocumentType, 'documents:document_type_create', 'documents:document_type_list'])
-        menu_sidebar.bind_links(links=[link_document_type_filename_create], sources=[DocumentTypeFilename, 'documents:document_type_filename_list', 'documents:document_type_filename_create'])
-
-        menu_sidebar.bind_links(links=[link_trash_can_empty], sources=['documents:document_list_deleted', 'documents:trash_can_empty'])
+        menu_object.bind_links(
+            links=[
+                link_document_type_edit, link_document_type_filename_list,
+                link_acl_list, link_document_type_delete
+            ], sources=[DocumentType]
+        )
+        menu_object.bind_links(
+            links=[
+                link_document_type_filename_edit,
+                link_document_type_filename_delete
+            ], sources=[DocumentTypeFilename]
+        )
+        menu_secondary.bind_links(
+            links=[link_document_type_list, link_document_type_create],
+            sources=[
+                DocumentType, 'documents:document_type_create',
+                'documents:document_type_list'
+            ]
+        )
+        menu_sidebar.bind_links(
+            links=[link_document_type_filename_create],
+            sources=[
+                DocumentTypeFilename, 'documents:document_type_filename_list',
+                'documents:document_type_filename_create'
+            ]
+        )
+        menu_sidebar.bind_links(
+            links=[link_trash_can_empty],
+            sources=[
+                'documents:document_list_deleted', 'documents:trash_can_empty'
+            ]
+        )
 
         # Document object links
-        menu_object.bind_links(links=[link_document_edit, link_document_document_type_edit, link_document_print, link_document_trash, link_document_download, link_document_clear_transformations, link_document_update_page_count], sources=[Document])
-        menu_object.bind_links(links=[link_document_restore, link_document_delete], sources=[DeletedDocument])
+        menu_object.bind_links(
+            links=[
+                link_document_edit, link_document_document_type_edit,
+                link_document_print, link_document_trash,
+                link_document_download, link_document_clear_transformations,
+                link_document_update_page_count
+            ], sources=[Document]
+        )
+        menu_object.bind_links(
+            links=[link_document_restore, link_document_delete],
+            sources=[DeletedDocument]
+        )
 
         # Document facet links
         menu_facet.bind_links(links=[link_acl_list], sources=[Document])
-        menu_facet.bind_links(links=[link_document_preview], sources=[Document], position=0)
-        menu_facet.bind_links(links=[link_document_properties], sources=[Document], position=2)
-        menu_facet.bind_links(links=[link_events_for_object, link_document_version_list], sources=[Document], position=2)
+        menu_facet.bind_links(
+            links=[link_document_preview], sources=[Document], position=0
+        )
+        menu_facet.bind_links(
+            links=[link_document_properties], sources=[Document], position=2
+        )
+        menu_facet.bind_links(
+            links=[link_events_for_object, link_document_version_list],
+            sources=[Document], position=2
+        )
         menu_facet.bind_links(links=[link_document_pages], sources=[Document])
 
         # Document actions
-        menu_object.bind_links(links=[link_document_version_revert, link_document_version_download], sources=[DocumentVersion])
-        menu_multi_item.bind_links(links=[link_document_multiple_clear_transformations, link_document_multiple_trash, link_document_multiple_download, link_document_multiple_update_page_count, link_document_multiple_document_type_edit], sources=[Document])
-        menu_multi_item.bind_links(links=[link_document_multiple_restore, link_document_multiple_delete], sources=[DeletedDocument])
+        menu_object.bind_links(
+            links=[
+                link_document_version_revert, link_document_version_download
+            ],
+            sources=[DocumentVersion]
+        )
+        menu_multi_item.bind_links(
+            links=[
+                link_document_multiple_clear_transformations,
+                link_document_multiple_trash, link_document_multiple_download,
+                link_document_multiple_update_page_count,
+                link_document_multiple_document_type_edit
+            ], sources=[Document]
+        )
+        menu_multi_item.bind_links(
+            links=[
+                link_document_multiple_restore, link_document_multiple_delete
+            ], sources=[DeletedDocument]
+        )
 
         # Document pages
-        menu_facet.bind_links(links=[link_document_page_rotate_left, link_document_page_rotate_right, link_document_page_zoom_in, link_document_page_zoom_out, link_document_page_view_reset], sources=['documents:document_page_view'])
-        menu_facet.bind_links(links=[link_document_page_return, link_document_page_view], sources=[DocumentPage])
-        menu_facet.bind_links(links=[link_document_page_navigation_first, link_document_page_navigation_previous, link_document_page_navigation_next, link_document_page_navigation_last, link_transformation_list], sources=[DocumentPage])
-        menu_object.bind_links(links=[link_transformation_list], sources=[DocumentPage])
+        menu_facet.bind_links(
+            links=[
+                link_document_page_rotate_left,
+                link_document_page_rotate_right, link_document_page_zoom_in,
+                link_document_page_zoom_out, link_document_page_view_reset
+            ], sources=['documents:document_page_view']
+        )
+        menu_facet.bind_links(
+            links=[link_document_page_return, link_document_page_view],
+            sources=[DocumentPage]
+        )
+        menu_facet.bind_links(
+            links=[
+                link_document_page_navigation_first,
+                link_document_page_navigation_previous,
+                link_document_page_navigation_next,
+                link_document_page_navigation_last, link_transformation_list
+            ], sources=[DocumentPage]
+        )
+        menu_object.bind_links(
+            links=[link_transformation_list], sources=[DocumentPage]
+        )
 
         namespace = StatisticNamespace(name='documents', label=_('Documents'))
-        namespace.add_statistic(DocumentStatistics(name='document_stats', label=_('Document tendencies')))
-        namespace.add_statistic(DocumentUsageStatistics(name='document_usage', label=_('Document usage')))
+        namespace.add_statistic(
+            DocumentStatistics(
+                name='document_stats', label=_('Document tendencies')
+            )
+        )
+        namespace.add_statistic(DocumentUsageStatistics(
+            name='document_usage', label=_('Document usage'))
+        )
 
-        post_initial_setup.connect(create_default_document_type, dispatch_uid='create_default_document_type')
+        post_initial_setup.connect(
+            create_default_document_type,
+            dispatch_uid='create_default_document_type'
+        )
 
         registry.register(Document)

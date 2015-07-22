@@ -32,7 +32,9 @@ from .links import (
 )
 from .models import DocumentVersionOCRError
 from .permissions import permission_ocr_document, permission_ocr_content_view
-from .settings import setting_pdftotext_path, setting_tesseract_path, setting_unpaper_path
+from .settings import (
+    setting_pdftotext_path, setting_tesseract_path, setting_unpaper_path
+)
 from .tasks import task_do_ocr
 
 logger = logging.getLogger(__name__)
@@ -56,7 +58,9 @@ class OCRApp(MayanAppConfig):
         APIEndPoint('ocr')
 
         Document.add_to_class('submit_for_ocr', document_ocr_submit)
-        DocumentVersion.add_to_class('submit_for_ocr', document_version_ocr_submit)
+        DocumentVersion.add_to_class(
+            'submit_for_ocr', document_version_ocr_submit
+        )
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -64,9 +68,20 @@ class OCRApp(MayanAppConfig):
             )
         )
 
-        SourceColumn(source=DocumentVersionOCRError, label=_('Document'), attribute=encapsulate(lambda entry: document_link(entry.document_version.document)))
-        SourceColumn(source=DocumentVersionOCRError, label=_('Added'), attribute='datetime_submitted')
-        SourceColumn(source=DocumentVersionOCRError, label=_('Result'), attribute='result')
+        SourceColumn(
+            source=DocumentVersionOCRError, label=_('Document'),
+            attribute=encapsulate(
+                lambda entry: document_link(entry.document_version.document)
+            )
+        )
+        SourceColumn(
+            source=DocumentVersionOCRError, label=_('Added'),
+            attribute='datetime_submitted'
+        )
+        SourceColumn(
+            source=DocumentVersionOCRError, label=_('Result'),
+            attribute='result'
+        )
 
         app.conf.CELERY_QUEUES.append(
             Queue('ocr', Exchange('ocr'), routing_key='ocr'),
@@ -80,45 +95,98 @@ class OCRApp(MayanAppConfig):
             }
         )
 
-        document_search.add_model_field(field='versions__pages__ocr_content__content', label=_('Content'))
+        document_search.add_model_field(
+            field='versions__pages__ocr_content__content', label=_('Content')
+        )
 
-        menu_facet.bind_links(links=[link_document_content], sources=[Document])
-        menu_multi_item.bind_links(links=[link_document_submit_multiple], sources=[Document])
-        menu_multi_item.bind_links(links=[link_entry_re_queue_multiple, link_entry_delete_multiple], sources=[DocumentVersionOCRError])
-        menu_object.bind_links(links=[link_document_submit], sources=[Document])
-        menu_object.bind_links(links=[link_entry_re_queue, link_entry_delete], sources=[DocumentVersionOCRError])
-        menu_object.bind_links(links=[link_document_type_ocr_settings], sources=[DocumentType])
-        menu_secondary.bind_links(links=[link_entry_list], sources=['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError])
-        menu_tools.bind_links(links=[link_document_submit_all, link_entry_list])
+        menu_facet.bind_links(
+            links=[link_document_content], sources=[Document]
+        )
+        menu_multi_item.bind_links(
+            links=[link_document_submit_multiple], sources=[Document]
+        )
+        menu_multi_item.bind_links(
+            links=[link_entry_re_queue_multiple, link_entry_delete_multiple],
+            sources=[DocumentVersionOCRError]
+        )
+        menu_object.bind_links(
+            links=[link_document_submit], sources=[Document]
+        )
+        menu_object.bind_links(
+            links=[link_entry_re_queue, link_entry_delete],\
+            sources=[DocumentVersionOCRError]
+        )
+        menu_object.bind_links(
+            links=[link_document_type_ocr_settings], sources=[DocumentType]
+        )
+        menu_secondary.bind_links(
+            links=[link_entry_list],
+            sources=['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError]
+        )
+        menu_tools.bind_links(
+            links=[link_document_submit_all, link_entry_list]
+        )
 
-        post_save.connect(initialize_new_ocr_settings, dispatch_uid='initialize_new_ocr_settings', sender=DocumentType)
-        post_version_upload.connect(post_version_upload_ocr, dispatch_uid='post_version_upload_ocr', sender=DocumentVersion)
+        post_save.connect(
+            initialize_new_ocr_settings,
+            dispatch_uid='initialize_new_ocr_settings', sender=DocumentType
+        )
+        post_version_upload.connect(
+            post_version_upload_ocr, dispatch_uid='post_version_upload_ocr',
+            sender=DocumentVersion
+        )
 
         namespace = PropertyNamespace('ocr', _('OCR'))
 
         try:
             pdftotext = sh.Command(setting_pdftotext_path.value)
         except sh.CommandNotFound:
-            namespace.add_property('pdftotext', _('pdftotext version'), _('not found'), report=True)
+            namespace.add_property(
+                'pdftotext', _('pdftotext version'), _('not found'),
+                report=True
+            )
         except Exception:
-            namespace.add_property('pdftotext', _('pdftotext version'), _('error getting version'), report=True)
+            namespace.add_property(
+                'pdftotext', _('pdftotext version'),
+                _('error getting version'), report=True
+            )
         else:
-            namespace.add_property('pdftotext', _('pdftotext version'), pdftotext('-v').stderr, report=True)
+            namespace.add_property(
+                'pdftotext', _('pdftotext version'), pdftotext('-v').stderr,
+                report=True
+            )
 
         try:
             tesseract = sh.Command(setting_tesseract_path.value)
         except sh.CommandNotFound:
-            namespace.add_property('tesseract', _('tesseract version'), _('not found'), report=True)
+            namespace.add_property(
+                'tesseract', _('tesseract version'), _('not found'),
+                report=True
+            )
         except Exception:
-            namespace.add_property('tesseract', _('tesseract version'), _('error getting version'), report=True)
+            namespace.add_property(
+                'tesseract', _('tesseract version'),
+                _('error getting version'), report=True
+            )
         else:
-            namespace.add_property('tesseract', _('tesseract version'), tesseract('-v').stderr, report=True)
+            namespace.add_property(
+                'tesseract', _('tesseract version'), tesseract('-v').stderr,
+                report=True
+            )
 
         try:
             unpaper = sh.Command(setting_unpaper_path.value)
         except sh.CommandNotFound:
-            namespace.add_property('unpaper', _('unpaper version'), _('not found'), report=True)
+            namespace.add_property(
+                'unpaper', _('unpaper version'), _('not found'), report=True
+            )
         except Exception:
-            namespace.add_property('unpaper', _('unpaper version'), _('error getting version'), report=True)
+            namespace.add_property(
+                'unpaper', _('unpaper version'), _('error getting version'),
+                report=True
+            )
         else:
-            namespace.add_property('unpaper', _('unpaper version'), unpaper('-V').stdout, report=True)
+            namespace.add_property(
+                'unpaper', _('unpaper version'), unpaper('-V').stdout,
+                report=True
+            )

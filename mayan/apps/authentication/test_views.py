@@ -19,17 +19,24 @@ class UserLoginTestCase(TestCase):
     """
 
     def setUp(self):
-        self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
+        self.admin_user = User.objects.create_superuser(
+            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
+            password=TEST_ADMIN_PASSWORD
+        )
         self.client = Client()
 
     def test_normal_behaviour(self):
         setting_login_method.value = 'username'
         response = self.client.get(reverse('documents:document_list'))
-        self.assertRedirects(response, 'http://testserver/authentication/login/')
+        self.assertRedirects(
+            response, 'http://testserver/authentication/login/'
+        )
 
     def test_username_login(self):
         setting_login_method.value = 'username'
-        logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
         self.assertTrue(logged_in)
         response = self.client.get(reverse('documents:document_list'))
         # We didn't get redirected to the login URL
@@ -39,10 +46,14 @@ class UserLoginTestCase(TestCase):
         with self.settings(AUTHENTICATION_BACKENDS=('authentication.auth.email_auth_backend.EmailAuthBackend',)):
             setting_login_method.value = 'email'
 
-            logged_in = self.client.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
+            logged_in = self.client.login(
+                username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+            )
             self.assertFalse(logged_in)
 
-            logged_in = self.client.login(email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
+            logged_in = self.client.login(
+                email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD
+            )
             self.assertTrue(logged_in)
 
             response = self.client.get(reverse('documents:document_list'))
@@ -52,9 +63,16 @@ class UserLoginTestCase(TestCase):
     def test_username_login_via_views(self):
         setting_login_method.value = 'username'
         response = self.client.get(reverse('documents:document_list'))
-        self.assertRedirects(response, 'http://testserver/authentication/login/')
+        self.assertRedirects(
+            response, 'http://testserver/authentication/login/'
+        )
 
-        response = self.client.post(reverse(settings.LOGIN_URL), {'username': TEST_ADMIN_USERNAME, 'password': TEST_ADMIN_PASSWORD})
+        response = self.client.post(
+            reverse(settings.LOGIN_URL), {
+                'username': TEST_ADMIN_USERNAME,
+                'password': TEST_ADMIN_PASSWORD
+            }
+        )
         response = self.client.get(reverse('documents:document_list'))
         # We didn't get redirected to the login URL
         self.assertEqual(response.status_code, 200)
@@ -63,9 +81,15 @@ class UserLoginTestCase(TestCase):
         with self.settings(AUTHENTICATION_BACKENDS=('authentication.auth.email_auth_backend.EmailAuthBackend',)):
             setting_login_method.value = 'email'
             response = self.client.get(reverse('documents:document_list'))
-            self.assertRedirects(response, 'http://testserver/authentication/login/')
+            self.assertRedirects(
+                response, 'http://testserver/authentication/login/'
+            )
 
-            response = self.client.post(reverse(settings.LOGIN_URL), {'email': TEST_ADMIN_EMAIL, 'password': TEST_ADMIN_PASSWORD}, follow=True)
+            response = self.client.post(
+                reverse(settings.LOGIN_URL), {
+                    'email': TEST_ADMIN_EMAIL, 'password': TEST_ADMIN_PASSWORD
+                }, follow=True
+            )
             self.assertEqual(response.status_code, 200)
 
             response = self.client.get(reverse('documents:document_list'))

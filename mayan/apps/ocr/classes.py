@@ -20,12 +20,20 @@ class OCRBackendBase(object):
 
         for page in document_version.pages.all():
             image = page.get_image()
-            logger.info('Processing page: %d of document version: %s', page.page_number, document_version)
+            logger.info(
+                'Processing page: %d of document version: %s',
+                page.page_number, document_version
+            )
             document_page_content, created = DocumentPageContent.objects.get_or_create(document_page=page)
-            document_page_content.content = self.execute(file_object=image, language=language)
+            document_page_content.content = self.execute(
+                file_object=image, language=language
+            )
             document_page_content.save()
             image.close()
-            logger.info('Finished processing page: %d of document version: %s', page.page_number, document_version)
+            logger.info(
+                'Finished processing page: %d of document version: %s',
+                page.page_number, document_version
+            )
 
     def execute(self, file_object, language=None, transformations=None):
         self.language = language

@@ -32,7 +32,8 @@ from .forms import (
     NewDocumentForm, NewVersionForm
 )
 from .literals import (
-    SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM, SOURCE_UNCOMPRESS_CHOICE_ASK,
+    SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM,
+    SOURCE_UNCOMPRESS_CHOICE_ASK,
     SOURCE_UNCOMPRESS_CHOICE_Y
 )
 from .models import (
@@ -133,12 +134,18 @@ class UploadBaseView(MultiFormView):
 
     def dispatch(self, request, *args, **kwargs):
         if 'source_id' in kwargs:
-            self.source = get_object_or_404(Source.objects.filter(enabled=True).select_subclasses(), pk=kwargs['source_id'])
+            self.source = get_object_or_404(
+                Source.objects.filter(enabled=True).select_subclasses(),
+                pk=kwargs['source_id']
+            )
         else:
             self.source = InteractiveSource.objects.filter(enabled=True).select_subclasses().first()
 
         if InteractiveSource.objects.filter(enabled=True).count() == 0:
-            messages.error(request, _('No interactive document sources have been defined or none have been enabled, create one before proceeding.'))
+            messages.error(
+                request,
+                _('No interactive document sources have been defined or none have been enabled, create one before proceeding.')
+            )
             return HttpResponseRedirect(reverse('sources:setup_source_list'))
 
         return super(UploadBaseView, self).dispatch(request, *args, **kwargs)
@@ -198,9 +205,16 @@ class UploadInteractiveView(UploadBaseView):
     def dispatch(self, request, *args, **kwargs):
         self.subtemplates_list = []
 
-        Permission.check_permissions(request.user, [permission_document_create])
+        Permission.check_permissions(
+            request.user, [permission_document_create]
+        )
 
-        self.document_type = get_object_or_404(DocumentType, pk=self.request.GET.get('document_type_id', self.request.POST.get('document_type_id')))
+        self.document_type = get_object_or_404(
+            DocumentType,
+            pk=self.request.GET.get(
+                'document_type_id', self.request.POST.get('document_type_id')
+            )
+        )
 
         self.tab_links = get_active_tab_links()
 
@@ -215,9 +229,13 @@ class UploadInteractiveView(UploadBaseView):
             else:
                 expand = False
 
-        uploaded_file = self.source.get_upload_file_object(forms['source_form'].cleaned_data)
+        uploaded_file = self.source.get_upload_file_object(
+            forms['source_form'].cleaned_data
+        )
 
-        shared_uploaded_file = SharedUploadedFile.objects.create(file=uploaded_file.file)
+        shared_uploaded_file = SharedUploadedFile.objects.create(
+            file=uploaded_file.file
+        )
 
         if 'document_type_available_filenames' in forms['document_form'].cleaned_data:
             if forms['document_form'].cleaned_data['document_type_available_filenames']:
@@ -246,14 +264,19 @@ class UploadInteractiveView(UploadBaseView):
             source_id=self.source.pk,
             user_id=user_id,
         ))
-        messages.success(self.request, _('New document queued for uploaded and will be available shortly.'))
+        messages.success(
+            self.request,
+            _('New document queued for uploaded and will be available shortly.')
+        )
         return HttpResponseRedirect(self.request.get_full_path())
 
     def create_source_form_form(self, **kwargs):
         return self.get_form_classes()['source_form'](
             prefix=kwargs['prefix'],
             source=self.source,
-            show_expand=(self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK),
+            show_expand=(
+                self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK
+            ),
             data=kwargs.get('data', None),
             files=kwargs.get('files', None),
         )
@@ -267,11 +290,16 @@ class UploadInteractiveView(UploadBaseView):
         )
 
     def get_form_classes(self):
-        return {'document_form': NewDocumentForm, 'source_form': get_upload_form_class(self.source.source_type)}
+        return {
+            'document_form': NewDocumentForm,
+            'source_form': get_upload_form_class(self.source.source_type)
+        }
 
     def get_context_data(self, **kwargs):
         context = super(UploadInteractiveView, self).get_context_data(**kwargs)
-        context['title'] = _('Upload a local document from source: %s') % self.source.label
+        context['title'] = _(
+            'Upload a local document from source: %s'
+        ) % self.source.label
         return context
 
 
@@ -282,18 +310,27 @@ class UploadInteractiveVersionView(UploadBaseView):
 
         self.document = get_object_or_404(Document, pk=kwargs['document_pk'])
         try:
-            Permission.check_permissions(self.request.user, [permission_document_new_version])
+            Permission.check_permissions(
+                self.request.user, [permission_document_new_version]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_new_version, self.request.user, self.document)
+            AccessControlList.objects.check_access(
+                permission_document_new_version, self.request.user,
+                self.document
+            )
 
         self.tab_links = get_active_tab_links(self.document)
 
         return super(UploadInteractiveVersionView, self).dispatch(request, *args, **kwargs)
 
     def forms_valid(self, forms):
-        uploaded_file = self.source.get_upload_file_object(forms['source_form'].cleaned_data)
+        uploaded_file = self.source.get_upload_file_object(
+            forms['source_form'].cleaned_data
+        )
 
-        shared_uploaded_file = SharedUploadedFile.objects.create(file=uploaded_file.file)
+        shared_uploaded_file = SharedUploadedFile.objects.create(
+            file=uploaded_file.file
+        )
 
         try:
             self.source.clean_up_upload_file(uploaded_file)
@@ -312,8 +349,13 @@ class UploadInteractiveVersionView(UploadBaseView):
             comment=forms['document_form'].cleaned_data.get('comment')
         ))
 
-        messages.success(self.request, _('New document version queued for uploaded and will be available shortly.'))
-        return HttpResponseRedirect(reverse('documents:document_version_list', args=[self.document.pk]))
+        messages.success(
+            self.request,
+            _('New document version queued for uploaded and will be available shortly.')
+        )
+        return HttpResponseRedirect(
+            reverse('documents:document_version_list', args=[self.document.pk])
+        )
 
     def create_source_form_form(self, **kwargs):
         return self.get_form_classes()['source_form'](
@@ -332,30 +374,47 @@ class UploadInteractiveVersionView(UploadBaseView):
         )
 
     def get_form_classes(self):
-        return {'document_form': NewVersionForm, 'source_form': get_upload_form_class(self.source.source_type)}
+        return {
+            'document_form': NewVersionForm,
+            'source_form': get_upload_form_class(self.source.source_type)
+        }
 
     def get_context_data(self, **kwargs):
         context = super(UploadInteractiveVersionView, self).get_context_data(**kwargs)
         context['object'] = self.document
-        context['title'] = _('Upload a new version from source: %s') % self.source.label
+        context['title'] = _(
+            'Upload a new version from source: %s'
+        ) % self.source.label
 
         return context
 
 
 def staging_file_delete(request, staging_folder_pk, encoded_filename):
-    Permission.check_permissions(request.user, [permission_document_create, permission_document_new_version])
-    staging_folder = get_object_or_404(StagingFolderSource, pk=staging_folder_pk)
+    Permission.check_permissions(
+        request.user, [
+            permission_document_create, permission_document_new_version
+        ]
+    )
+    staging_folder = get_object_or_404(
+        StagingFolderSource, pk=staging_folder_pk
+    )
 
     staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get(
+        'next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+    )
+    previous = request.POST.get(
+        'previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+    )
 
     if request.method == 'POST':
         try:
             staging_file.delete()
             messages.success(request, _('Staging file delete successfully.'))
         except Exception as exception:
-            messages.error(request, _('Staging file delete error; %s.') % exception)
+            messages.error(
+                request, _('Staging file delete error; %s.') % exception
+            )
         return HttpResponseRedirect(next)
 
     results = get_active_tab_links()
@@ -366,7 +425,11 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
         'object': staging_file,
         'next': next,
         'previous': previous,
-        'extra_navigation_links': {'form_header': {'staging_file_delete': {'links': results['tab_links']}}},
+        'extra_navigation_links': {
+            'form_header': {
+                'staging_file_delete': {'links': results['tab_links']}
+            }
+        },
     }, context_instance=RequestContext(request))
 
 
@@ -390,7 +453,9 @@ class SetupSourceDeleteView(SingleObjectDeleteView):
     view_permission = permission_sources_setup_delete
 
     def get_object(self):
-        return get_object_or_404(Source.objects.select_subclasses(), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            Source.objects.select_subclasses(), pk=self.kwargs['pk']
+        )
 
     def get_form_class(self):
         return get_form_class(self.get_object().source_type)
@@ -407,7 +472,9 @@ class SetupSourceEditView(SingleObjectEditView):
     view_permission = permission_sources_setup_edit
 
     def get_object(self):
-        return get_object_or_404(Source.objects.select_subclasses(), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            Source.objects.select_subclasses(), pk=self.kwargs['pk']
+        )
 
     def get_form_class(self):
         return get_form_class(self.get_object().source_type)
@@ -431,7 +498,9 @@ class SetupSourceListView(SingleObjectListView):
             },
             {
                 'name': _('Enabled'),
-                'attribute': encapsulate(lambda entry: two_state_template(entry.enabled))
+                'attribute': encapsulate(
+                    lambda entry: two_state_template(entry.enabled)
+                )
             },
         ],
         'hide_link': True,

@@ -40,7 +40,13 @@ class MayanAppConfig(apps.AppConfig):
         else:
             top_url = '{}/'.format(self.name)
 
-        urlpatterns += url(r'^{}'.format(top_url), include('{}.urls'.format(self.name), namespace=self.app_namespace or self.name)),
+        urlpatterns += url(
+            r'^{}'.format(top_url),
+            include(
+                '{}.urls'.format(self.name),
+                namespace=self.app_namespace or self.name
+            )
+        ),
 
 
 class CommonApp(MayanAppConfig):
@@ -60,7 +66,19 @@ class CommonApp(MayanAppConfig):
 
         app.conf.CELERY_DEFAULT_QUEUE = 'default'
 
-        menu_facet.bind_links(links=[link_current_user_details, link_current_user_locale_profile_details, link_tools, link_setup], sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'authentication:password_change_view', 'common:setup_list', 'common:tools_list'])
+        menu_facet.bind_links(
+            links=[
+                link_current_user_details,
+                link_current_user_locale_profile_details, link_tools,
+                link_setup
+            ], sources=[
+                'common:current_user_details', 'common:current_user_edit',
+                'common:current_user_locale_profile_details',
+                'common:current_user_locale_profile_edit',
+                'authentication:password_change_view', 'common:setup_list',
+                'common:tools_list'
+            ]
+        )
         menu_main.bind_links(links=[link_about], position=-1)
         menu_secondary.bind_links(
             links=[link_about, link_license],
@@ -70,7 +88,20 @@ class CommonApp(MayanAppConfig):
             links=[
                 link_current_user_edit, link_current_user_locale_profile_edit
             ],
-            sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'authentication:password_change_view', 'common:setup_list', 'common:tools_list']
+            sources=[
+                'common:current_user_details', 'common:current_user_edit',
+                'common:current_user_locale_profile_details',
+                'common:current_user_locale_profile_edit',
+                'authentication:password_change_view', 'common:setup_list',
+                'common:tools_list'
+            ]
         )
-        user_logged_in.connect(user_locale_profile_session_config, dispatch_uid='user_locale_profile_session_config')
-        post_save.connect(user_locale_profile_create, dispatch_uid='user_locale_profile_create', sender=settings.AUTH_USER_MODEL)
+        user_logged_in.connect(
+            user_locale_profile_session_config,
+            dispatch_uid='user_locale_profile_session_config'
+        )
+        post_save.connect(
+            user_locale_profile_create,
+            dispatch_uid='user_locale_profile_create',
+            sender=settings.AUTH_USER_MODEL
+        )

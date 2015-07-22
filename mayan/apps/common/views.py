@@ -53,9 +53,13 @@ class CurrentUserLocaleProfileDetailsView(TemplateView):
     template_name = 'appearance/generic_form.html'
 
     def get_context_data(self, **kwargs):
-        data = super(CurrentUserLocaleProfileDetailsView, self).get_context_data(**kwargs)
+        data = super(
+            CurrentUserLocaleProfileDetailsView, self
+        ).get_context_data(**kwargs)
         data.update({
-            'form': LocaleProfileForm_view(instance=self.request.user.locale_profile),
+            'form': LocaleProfileForm_view(
+                instance=self.request.user.locale_profile
+            ),
             'read_only': True,
             'title': _('Current user locale profile details'),
         })
@@ -63,9 +67,13 @@ class CurrentUserLocaleProfileDetailsView(TemplateView):
 
 
 class CurrentUserLocaleProfileEditView(SingleObjectEditView):
-    extra_context = {'title': _('Edit current user locale profile details')}
+    extra_context = {
+        'title': _('Edit current user locale profile details')
+    }
     form_class = LocaleProfileForm
-    post_action_redirect = reverse_lazy('common:current_user_locale_profile_details')
+    post_action_redirect = reverse_lazy(
+        'common:current_user_locale_profile_details'
+    )
 
     def form_valid(self, form):
         form.save()
@@ -74,11 +82,19 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
         translation.activate(form.cleaned_data['language'])
 
         if hasattr(self.request, 'session'):
-            self.request.session[translation.LANGUAGE_SESSION_KEY] = form.cleaned_data['language']
-            self.request.session[settings.TIMEZONE_SESSION_KEY] = form.cleaned_data['timezone']
+            self.request.session[
+                translation.LANGUAGE_SESSION_KEY
+            ] = form.cleaned_data['language']
+            self.request.session[
+                settings.TIMEZONE_SESSION_KEY
+            ] = form.cleaned_data['timezone']
         else:
-            self.request.set_cookie(settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language'])
-            self.request.set_cookie(settings.TIMEZONE_COOKIE_NAME, form.cleaned_data['timezone'])
+            self.request.set_cookie(
+                settings.LANGUAGE_COOKIE_NAME, form.cleaned_data['language']
+            )
+            self.request.set_cookie(
+                settings.TIMEZONE_COOKIE_NAME, form.cleaned_data['timezone']
+            )
 
         return super(CurrentUserLocaleProfileEditView, self).form_valid(form)
 
@@ -95,14 +111,18 @@ class HomeView(TemplateView):
             'hide_links': True,
             'search_results_limit': 100,
             'search_terms': self.request.GET.get('q'),
-            'missing_list': [item for item in MissingItem.get_all() if item.condition()],
+            'missing_list': [
+                item for item in MissingItem.get_all() if item.condition()
+            ],
         })
         return data
 
     def get(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
 
-        queryset, ids, timedelta = document_search.search(request.GET, request.user)
+        queryset, ids, timedelta = document_search.search(
+            request.GET, request.user
+        )
 
         # Update the context with the search results
         context.update({
@@ -129,7 +149,9 @@ class SetupListView(TemplateView):
     def get_context_data(self, **kwargs):
         data = super(SetupListView, self).get_context_data(**kwargs)
         data.update({
-            'resolved_links': menu_setup.resolve(context=RequestContext(self.request)),
+            'resolved_links': menu_setup.resolve(
+                context=RequestContext(self.request)
+            ),
             'title': _('Setup items'),
         })
         return data
@@ -154,26 +176,49 @@ def multi_object_action_view(request):
     then redirects to the appropiate specialized view
     """
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get(
+        'next', request.GET.get(
+            'next', request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
+    )
 
     action = request.GET.get('action', None)
     id_list = ','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
-    items_property_list = [loads(key[11:]) for key in request.GET.keys() if key.startswith('properties_')]
+    items_property_list = [
+        (key[11:]) for key in request.GET.keys() if key.startswith('properties_')
+    ]
 
     if not action:
         messages.error(request, _('No action selected.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     if not id_list and not items_property_list:
         messages.error(request, _('Must select at least one item.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     # Separate redirects to keep backwards compatibility with older
     # functions that don't expect a properties_list parameter
     if items_property_list:
-        return HttpResponseRedirect('%s?%s' % (
-            action,
-            urlencode({'items_property_list': dumps(items_property_list), 'next': next}))
+        return HttpResponseRedirect(
+            '%s?%s' % (
+                action,
+                urlencode(
+                    {
+                        'items_property_list': dumps(items_property_list),
+                        'next': next
+                    }
+                )
+            )
         )
     else:
         return HttpResponseRedirect('%s?%s' % (

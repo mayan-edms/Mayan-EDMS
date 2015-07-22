@@ -66,4 +66,3 @@ def task_do_ocr(self, document_version_pk):
             lock.release()
     except LockError:
         logger.debug('unable to obtain lock: %s' % lock_id)
-        pass

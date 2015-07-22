@@ -16,7 +16,9 @@ from .settings import UNPAPER_PATH
 logger = logging.getLogger(__name__)
 
 try:
-    UNPAPER = sh.Command(UNPAPER_PATH).bake(overwrite=True, no_multi_pages=True)
+    UNPAPER = sh.Command(UNPAPER_PATH).bake(
+        overwrite=True, no_multi_pages=True
+    )
 except sh.CommandNotFound:
     logger.debug('unpaper not found')
     UNPAPER = None
@@ -37,7 +39,9 @@ def execute_unpaper(input_filepath, output_filepath=None):
     """
     if UNPAPER:
         if not output_filepath:
-            fd, output_filepath = tempfile.mkstemp(dir=setting_temporary_directory.value)
+            fd, output_filepath = tempfile.mkstemp(
+                dir=setting_temporary_directory.value
+            )
 
         try:
             UNPAPER(input_filepath, output_filepath)

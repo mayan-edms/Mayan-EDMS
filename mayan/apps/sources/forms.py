@@ -60,7 +60,6 @@ class StagingUploadForm(UploadBaseForm):
             ]
         except Exception as exception:
             logger.error('exception: %s', exception)
-            pass
 
     staging_file_id = forms.ChoiceField(label=_('Staging file'))
 

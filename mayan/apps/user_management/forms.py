@@ -12,5 +12,9 @@ class UserForm(forms.ModelForm):
 
 
 class PasswordForm(forms.Form):
-    new_password_1 = forms.CharField(label=_('New password'), widget=forms.PasswordInput())
-    new_password_2 = forms.CharField(label=_('Confirm password'), widget=forms.PasswordInput())
+    new_password_1 = forms.CharField(
+        label=_('New password'), widget=forms.PasswordInput()
+    )
+    new_password_2 = forms.CharField(
+        label=_('Confirm password'), widget=forms.PasswordInput()
+    )

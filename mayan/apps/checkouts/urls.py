@@ -8,13 +8,28 @@ from .views import CheckoutDocumentView, CheckoutListView
 urlpatterns = patterns(
     'checkouts.views',
     url(r'^list/$', CheckoutListView.as_view(), name='checkout_list'),
-    url(r'^(?P<pk>\d+)/check/out/$', CheckoutDocumentView.as_view(), name='checkout_document'),
-    url(r'^(?P<document_pk>\d+)/check/in/$', 'checkin_document', name='checkin_document'),
-    url(r'^(?P<document_pk>\d+)/check/info/$', 'checkout_info', name='checkout_info'),
+    url(
+        r'^(?P<pk>\d+)/check/out/$', CheckoutDocumentView.as_view(),
+        name='checkout_document'
+    ),
+    url(
+        r'^(?P<document_pk>\d+)/check/in/$', 'checkin_document',
+        name='checkin_document'
+    ),
+    url(
+        r'^(?P<document_pk>\d+)/check/info/$', 'checkout_info',
+        name='checkout_info'
+    ),
 )
 
 api_urls = patterns(
     '',
-    url(r'^documents/$', APICheckedoutDocumentListView.as_view(), name='checkout-document-list'),
-    url(r'^documents/(?P<pk>[0-9]+)/$', APICheckedoutDocumentView.as_view(), name='checkedout-document-view'),
+    url(
+        r'^documents/$', APICheckedoutDocumentListView.as_view(),
+        name='checkout-document-list'
+    ),
+    url(
+        r'^documents/(?P<pk>[0-9]+)/$', APICheckedoutDocumentView.as_view(),
+        name='checkedout-document-view'
+    ),
 )

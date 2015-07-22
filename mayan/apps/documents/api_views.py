@@ -67,12 +67,18 @@ class APIDocumentListView(generics.ListCreateAPIView):
         return super(APIDocumentListView, self).post(*args, **kwargs)
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.DATA, files=request.FILES)
+        serializer = self.get_serializer(
+            data=request.DATA, files=request.FILES
+        )
 
         if serializer.is_valid():
-            document_type = get_object_or_404(DocumentType, pk=serializer.data['document_type'])
+            document_type = get_object_or_404(
+                DocumentType, pk=serializer.data['document_type']
+            )
 
-            logger.info('Creating document version for document type: %s', document_type)
+            logger.info(
+                'Creating document version for document type: %s', document_type
+            )
 
             document = Document.objects.create(
                 description=serializer.data['description'] or '',
@@ -91,13 +97,17 @@ class APIDocumentListView(generics.ListCreateAPIView):
                 document_id=document.pk, user_id=request.user.pk,
             )
 
-            logger.info('New document version queued for document: %s', document)
+            logger.info(
+                'New document version queued for document: %s', document
+            )
 
             serializer.object = document
 
             headers = self.get_success_headers(serializer.data)
-            return Response(serializer.data, status=status.HTTP_201_CREATED,
-                            headers=headers)
+            return Response(
+                serializer.data, status=status.HTTP_201_CREATED,
+                headers=headers
+            )
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -147,7 +157,9 @@ class APIDocumentVersionCreateView(generics.CreateAPIView):
     mayan_view_permissions = {'POST': [permission_document_new_version]}
 
     def create(self, request, *args, **kwargs):
-        serializer = self.get_serializer(data=request.DATA, files=request.FILES)
+        serializer = self.get_serializer(
+            data=request.DATA, files=request.FILES
+        )
 
         if serializer.is_valid():
             # Nested resource we take the document pk from the URL and insert it
@@ -155,7 +167,10 @@ class APIDocumentVersionCreateView(generics.CreateAPIView):
             # a read only field in the serializer
             document = get_object_or_404(Document, pk=kwargs['pk'])
 
-            document.new_version(file_object=serializer.object.file, comment=serializer.object.comment, _user=request.user)
+            document.new_version(
+                file_object=serializer.object.file,
+                comment=serializer.object.comment, _user=request.user
+            )
 
             headers = self.get_success_headers(serializer.data)
             return Response(status=status.HTTP_202_ACCEPTED, headers=headers)
@@ -191,9 +206,13 @@ class APIDocumentImageView(generics.GenericAPIView):
         document = get_object_or_404(Document, pk=pk)
 
         try:
-            Permission.check_permissions(request.user, [permission_document_view])
+            Permission.check_permissions(
+                request.user, [permission_document_view]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_view, request.user, document)
+            AccessControlList.objects.check_access(
+                permission_document_view, request.user, document
+            )
 
         size = request.GET.get('size', setting_display_size.value)
 
@@ -214,7 +233,12 @@ class APIDocumentImageView(generics.GenericAPIView):
         document_page = document.pages.get(page_number=page)
 
         try:
-            task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version))
+            task = task_get_document_page_image.apply_async(
+                kwargs=dict(
+                    document_page_id=document_page.pk, size=size, zoom=zoom,
+                    rotation=rotation, as_base64=True, version=version
+                )
+            )
             # TODO: prepend 'data:%s;base64,%s' based on format specified in
             # async call
             return Response({
@@ -222,9 +246,19 @@ class APIDocumentImageView(generics.GenericAPIView):
                 'data': task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
             })
         except UnknownFileFormat as exception:
-            return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})
+            return Response(
+                {
+                    'status': 'error', 'detail': 'unknown_file_format',
+                    'message': unicode(exception)
+                }
+            )
         except UnkownConvertError as exception:
-            return Response({'status': 'error', 'detail': 'converter_error', 'message': unicode(exception)})
+            return Response(
+                {
+                    'status': 'error', 'detail': 'converter_error',
+                    'message': unicode(exception)
+                }
+            )
 
 
 class APIDocumentPageView(generics.RetrieveUpdateAPIView):
@@ -322,9 +356,13 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
     def get_queryset(self):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
         try:
-            Permission.check_permissions(self.request.user, [permission_document_type_view])
+            Permission.check_permissions(
+                self.request.user, [permission_document_type_view]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_type_view, self.request.user, document_type)
+            AccessControlList.objects.check_access(
+                permission_document_type_view, self.request.user, document_type
+            )
 
         return document_type.documents.all()
 

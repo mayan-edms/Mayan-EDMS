@@ -25,7 +25,11 @@ class APIBase(generics.GenericAPIView):
 
     def get(self, request, format=None):
         return Response([
-            {'name': 'Version 0', 'url': reverse('api-version-0', request=request, format=format)}
+            {
+                'name': 'Version 0', 'url': reverse(
+                    'api-version-0', request=request, format=format
+                )
+            }
         ])
 
 
@@ -39,7 +43,11 @@ class Version_0(generics.GenericAPIView):
     def get(self, request, format=None):
         return Response({
             'apps': [
-                {'name': unicode(endpoint), 'url': reverse('api-version-0-app', args=[unicode(endpoint)], request=request, format=format)} for endpoint in APIEndPoint.get_all()
+                {
+                    'name': unicode(endpoint),
+                    'url': reverse('api-version-0-app',
+                    args=[unicode(endpoint)], request=request, format=format)
+                } for endpoint in APIEndPoint.get_all()
             ],
         })
 
@@ -54,10 +62,15 @@ class APIAppView(generics.GenericAPIView):
     def get(self, request, app_name, format=None):
         api_app = APIEndPoint.get(app_name)
 
-        return Response({
-            'name': api_app.name,
-            'url': reverse('api-version-0-app', args=[unicode(api_app.name)], request=request, format=format)
-        })
+        return Response(
+            {
+                'name': api_app.name,
+                'url': reverse(
+                    'api-version-0-app', args=[unicode(api_app.name)],
+                    request=request, format=format
+                )
+            }
+        )
 
 
 class BrowseableObtainAuthToken(ObtainAuthToken):

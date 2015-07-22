@@ -24,15 +24,24 @@ class DocumentVersionOCRView(generics.GenericAPIView):
     def post(self, request, *args, **kwargs):
         """Submit document version for OCR."""
 
-        serializer = self.get_serializer(data=request.DATA, files=request.FILES)
+        serializer = self.get_serializer(
+            data=request.DATA, files=request.FILES
+        )
 
         if serializer.is_valid():
-            document_version = get_object_or_404(DocumentVersion, pk=serializer.data['document_version_id'])
+            document_version = get_object_or_404(
+                DocumentVersion, pk=serializer.data['document_version_id']
+            )
 
             try:
-                Permission.check_permissions(request.user, [permission_ocr_document])
+                Permission.check_permissions(
+                    request.user, [permission_ocr_document]
+                )
             except PermissionDenied:
-                AccessControlList.objects.check_access(permission_ocr_document, request.user, document_version.document)
+                AccessControlList.objects.check_access(
+                    permission_ocr_document, request.user,
+                    document_version.document
+                )
 
             document_version.submit_for_ocr()
 

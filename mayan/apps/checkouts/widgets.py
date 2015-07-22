@@ -16,8 +16,15 @@ class SplitTimeDeltaWidget(forms.widgets.MultiWidget):
 
     def __init__(self, attrs=None):
         widgets = (
-            forms.widgets.NumberInput(attrs={'maxlength': 4, 'style': 'width: 8em;', 'placeholder': _('Period')}),
-            forms.widgets.Select(attrs={'style': 'width: 8em;'}, choices=TIME_DELTA_UNIT_CHOICES),
+            forms.widgets.NumberInput(
+                attrs={
+                    'maxlength': 4, 'style': 'width: 8em;',
+                    'placeholder': _('Period')
+                }
+            ),
+            forms.widgets.Select(
+                attrs={'style': 'width: 8em;'}, choices=TIME_DELTA_UNIT_CHOICES
+            ),
 
         )
         super(SplitTimeDeltaWidget, self).__init__(widgets, attrs)

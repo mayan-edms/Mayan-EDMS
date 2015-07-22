@@ -16,19 +16,25 @@ class DocumentOCRTestCase(TestCase):
         self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(file_object=File(file_object), label='small document')
+            self.document = self.document_type.new_document(
+                file_object=File(file_object), label='small document'
+            )
 
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
 
     def test_ocr_language_backends_end(self):
-        self.assertTrue('Mayan EDMS Documentation' in self.document.pages.first().ocr_content.content)
+        self.assertTrue(
+            'Mayan EDMS Documentation' in self.document.pages.first().ocr_content.content
+        )
 
 
 class GermanOCRSupportTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
 
         # Get corresponding language code for German from the default language
         # choices list
@@ -37,12 +43,18 @@ class GermanOCRSupportTestCase(TestCase):
         self.assertEqual('deu', language_code)
 
         with open(TEST_DEU_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(file_object=File(file_object), language=language_code)
+            self.document = self.document_type.new_document(
+                file_object=File(file_object), language=language_code
+            )
 
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
 
     def test_ocr_language_backends_end(self):
-        self.assertTrue('Repository für elektronische Dokumente.' in self.document.pages.first().ocr_content.content)
-        self.assertTrue('Es bietet einen elektronischen Tresor oder' in self.document.pages.first().ocr_content.content)
+        self.assertTrue(
+            'Repository für elektronische Dokumente.' in self.document.pages.first().ocr_content.content
+        )
+        self.assertTrue(
+            'Es bietet einen elektronischen Tresor oder' in self.document.pages.first().ocr_content.content
+        )

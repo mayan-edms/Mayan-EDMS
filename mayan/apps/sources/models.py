@@ -55,18 +55,31 @@ class Source(models.Model):
     def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, user=None):
         try:
             with transaction.atomic():
-                document = Document.objects.create(description=description or '', document_type=document_type, label=label or unicode(file_object), language=language or setting_language.value)
+                document = Document.objects.create(
+                    description=description or '', document_type=document_type,
+                    label=label or unicode(file_object),
+                    language=language or setting_language.value
+                )
                 document.save(_user=user)
 
-                document_version = document.new_version(file_object=file_object, _user=user)
+                document_version = document.new_version(
+                    file_object=file_object, _user=user
+                )
 
-                Transformation.objects.copy(source=self, targets=document_version.pages.all())
+                Transformation.objects.copy(
+                    source=self, targets=document_version.pages.all()
+                )
 
                 if metadata_dict_list:
-                    save_metadata_list(metadata_dict_list, document, create=True)
+                    save_metadata_list(
+                        metadata_dict_list, document, create=True
+                    )
 
         except Exception as exception:
-            logger.critical('Unexpected exception while trying to create new document "%s" from source "%s"; %s', label or unicode(file_object), self, exception)
+            logger.critical(
+                'Unexpected exception while trying to create new document "%s" from source "%s"; %s',
+                label or unicode(file_object), self, exception
+            )
             raise
 
     def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, user=None):
@@ -84,7 +97,9 @@ class Source(models.Model):
                 compressed_file = CompressedFile(file_object)
                 for compressed_file_child in compressed_file.children():
                     kwargs.update({'label': unicode(compressed_file_child)})
-                    self.upload_document(file_object=File(compressed_file_child), **kwargs)
+                    self.upload_document(
+                        file_object=File(compressed_file_child), **kwargs
+                    )
                     compressed_file_child.close()
 
             except NotACompressedFile:
@@ -119,11 +134,29 @@ class StagingFolderSource(InteractiveSource):
     is_interactive = True
     source_type = SOURCE_CHOICE_STAGING
 
-    folder_path = models.CharField(max_length=255, help_text=_('Server side filesystem path.'), verbose_name=_('Folder path'))
-    preview_width = models.IntegerField(help_text=_('Width value to be passed to the converter backend.'), verbose_name=_('Preview width'))
-    preview_height = models.IntegerField(blank=True, null=True, help_text=_('Height value to be passed to the converter backend.'), verbose_name=_('Preview height'))
-    uncompress = models.CharField(choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, max_length=1, help_text=_('Whether to expand or not compressed archives.'), verbose_name=_('Uncompress'))
-    delete_after_upload = models.BooleanField(default=True, help_text=_('Delete the file after is has been successfully uploaded.'), verbose_name=_('Delete after upload'))
+    folder_path = models.CharField(
+        max_length=255, help_text=_('Server side filesystem path.'),
+        verbose_name=_('Folder path')
+    )
+    preview_width = models.IntegerField(
+        help_text=_('Width value to be passed to the converter backend.'),
+        verbose_name=_('Preview width')
+    )
+    preview_height = models.IntegerField(
+        blank=True, null=True,
+        help_text=_('Height value to be passed to the converter backend.'),
+        verbose_name=_('Preview height')
+    )
+    uncompress = models.CharField(
+        choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, max_length=1,
+        help_text=_('Whether to expand or not compressed archives.'),
+        verbose_name=_('Uncompress')
+    )
+    delete_after_upload = models.BooleanField(
+        default=True,
+        help_text=_('Delete the file after is has been successfully uploaded.'),
+        verbose_name=_('Delete after upload')
+    )
 
     def get_preview_size(self):
         dimensions = []
@@ -141,20 +174,34 @@ class StagingFolderSource(InteractiveSource):
             for entry in sorted([os.path.normcase(f) for f in os.listdir(self.folder_path) if os.path.isfile(os.path.join(self.folder_path, f))]):
                 yield self.get_file(filename=entry)
         except OSError as exception:
-            logger.error('Unable get list of staging files from source: %s; %s', self, exception)
-            raise Exception(_('Unable get list of staging files: %s') % exception)
+            logger.error(
+                'Unable get list of staging files from source: %s; %s', self,
+                exception
+            )
+            raise Exception(
+                _('Unable get list of staging files: %s') % exception
+            )
 
     def get_upload_file_object(self, form_data):
-        staging_file = self.get_file(encoded_filename=form_data['staging_file_id'])
-        return SourceUploadedFile(source=self, file=staging_file.as_file(), extra_data=staging_file)
+        staging_file = self.get_file(
+            encoded_filename=form_data['staging_file_id']
+        )
+        return SourceUploadedFile(
+            source=self, file=staging_file.as_file(), extra_data=staging_file
+        )
 
     def clean_up_upload_file(self, upload_file_object):
         if self.delete_after_upload:
             try:
                 upload_file_object.extra_data.delete()
             except Exception as exception:
-                logger.error('Error deleting staging file: %s; %s', upload_file_object, exception)
-                raise Exception(_('Error deleting staging file; %s') % exception)
+                logger.error(
+                    'Error deleting staging file: %s; %s', upload_file_object,
+                    exception
+                )
+                raise Exception(
+                    _('Error deleting staging file; %s') % exception
+                )
 
     class Meta:
         verbose_name = _('Staging folder')
@@ -166,7 +213,11 @@ class WebFormSource(InteractiveSource):
     source_type = SOURCE_CHOICE_WEB_FORM
 
     # TODO: unify uncompress as an InteractiveSource field
-    uncompress = models.CharField(choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, help_text=_('Whether to expand or not compressed archives.'), max_length=1, verbose_name=_('Uncompress'))
+    uncompress = models.CharField(
+        choices=SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
+        help_text=_('Whether to expand or not compressed archives.'),
+        max_length=1, verbose_name=_('Uncompress')
+    )
     # Default path
 
     def get_upload_file_object(self, form_data):
@@ -186,16 +237,30 @@ class OutOfProcessSource(Source):
 
 
 class IntervalBaseModel(OutOfProcessSource):
-    interval = models.PositiveIntegerField(default=DEFAULT_INTERVAL, help_text=_('Interval in seconds between checks for new documents.'), verbose_name=_('Interval'))
-    document_type = models.ForeignKey(DocumentType, help_text=_('Assign a document type to documents uploaded from this source.'), verbose_name=_('Document type'))
-    uncompress = models.CharField(choices=SOURCE_UNCOMPRESS_CHOICES, help_text=_('Whether to expand or not, compressed archives.'), max_length=1, verbose_name=_('Uncompress'))
+    interval = models.PositiveIntegerField(
+        default=DEFAULT_INTERVAL,
+        help_text=_('Interval in seconds between checks for new documents.'),
+        verbose_name=_('Interval')
+    )
+    document_type = models.ForeignKey(
+        DocumentType,
+        help_text=_('Assign a document type to documents uploaded from this source.'),
+        verbose_name=_('Document type')
+    )
+    uncompress = models.CharField(
+        choices=SOURCE_UNCOMPRESS_CHOICES,
+        help_text=_('Whether to expand or not, compressed archives.'),
+        max_length=1, verbose_name=_('Uncompress')
+    )
 
     def _get_periodic_task_name(self, pk=None):
         return 'check_interval_source-%i' % (pk or self.pk)
 
     def _delete_periodic_task(self, pk=None):
         try:
-            periodic_task = PeriodicTask.objects.get(name=self._get_periodic_task_name(pk))
+            periodic_task = PeriodicTask.objects.get(
+                name=self._get_periodic_task_name(pk)
+            )
 
             interval_instance = periodic_task.interval
 
@@ -205,7 +270,10 @@ class IntervalBaseModel(OutOfProcessSource):
             else:
                 periodic_task.delete()
         except PeriodicTask.DoesNotExist:
-            logger.warning('Tried to delete non existant periodic task "%s"', self._get_periodic_task_name(pk))
+            logger.warning(
+                'Tried to delete non existant periodic task "%s"',
+                self._get_periodic_task_name(pk)
+            )
 
     def save(self, *args, **kwargs):
         new_source = not self.pk
@@ -214,7 +282,9 @@ class IntervalBaseModel(OutOfProcessSource):
         if not new_source:
             self._delete_periodic_task()
 
-        interval_instance, created = IntervalSchedule.objects.get_or_create(every=self.interval, period='seconds')
+        interval_instance, created = IntervalSchedule.objects.get_or_create(
+            every=self.interval, period='seconds'
+        )
         # Create a new interval or reuse someone else's
         PeriodicTask.objects.create(
             name=self._get_periodic_task_name(),
@@ -236,7 +306,10 @@ class IntervalBaseModel(OutOfProcessSource):
 class EmailBaseModel(IntervalBaseModel):
     host = models.CharField(max_length=128, verbose_name=_('Host'))
     ssl = models.BooleanField(default=True, verbose_name=_('SSL'))
-    port = models.PositiveIntegerField(blank=True, null=True, help_text=_('Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL.'), verbose_name=_('Port'))
+    port = models.PositiveIntegerField(blank=True, null=True, help_text=_(
+        'Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL.'),
+        verbose_name=_('Port')
+    )
     username = models.CharField(max_length=96, verbose_name=_('Username'))
     password = models.CharField(max_length=96, verbose_name=_('Password'))
 
@@ -264,7 +337,11 @@ class EmailBaseModel(IntervalBaseModel):
                 logger.debug('filename: %s', filename)
 
                 file_object = Attachment(part, name=filename)
-                source.handle_upload(document_type=source.document_type, file_object=file_object, label=filename, expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y))
+                source.handle_upload(
+                    document_type=source.document_type,
+                    file_object=file_object, label=filename,
+                    expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y)
+                )
 
     class Meta:
         verbose_name = _('Email source')
@@ -274,7 +351,9 @@ class EmailBaseModel(IntervalBaseModel):
 class POP3Email(EmailBaseModel):
     source_type = SOURCE_CHOICE_EMAIL_POP3
 
-    timeout = models.PositiveIntegerField(default=DEFAULT_POP3_TIMEOUT, verbose_name=_('Timeout'))
+    timeout = models.PositiveIntegerField(
+        default=DEFAULT_POP3_TIMEOUT, verbose_name=_('Timeout')
+    )
 
     def check_source(self):
         logger.debug('Starting POP3 email fetch')
@@ -302,7 +381,9 @@ class POP3Email(EmailBaseModel):
 
             complete_message = '\n'.join(mailbox.retr(message_number)[1])
 
-            EmailBaseModel.process_message(source=self, message=complete_message)
+            EmailBaseModel.process_message(
+                source=self, message=complete_message
+            )
             mailbox.dele(message_number)
 
         mailbox.quit()
@@ -315,7 +396,11 @@ class POP3Email(EmailBaseModel):
 class IMAPEmail(EmailBaseModel):
     source_type = SOURCE_CHOICE_EMAIL_IMAP
 
-    mailbox = models.CharField(default=DEFAULT_IMAP_MAILBOX, help_text=_('Mail from which to check for messages with attached documents.'), max_length=64, verbose_name=_('Mailbox'))
+    mailbox = models.CharField(
+        default=DEFAULT_IMAP_MAILBOX,
+        help_text=_('Mail from which to check for messages with attached documents.'),
+        max_length=64, verbose_name=_('Mailbox')
+    )
 
     # http://www.doughellmann.com/PyMOTW/imaplib/
     def check_source(self):
@@ -354,7 +439,10 @@ class IMAPEmail(EmailBaseModel):
 class WatchFolderSource(IntervalBaseModel):
     source_type = SOURCE_CHOICE_WATCH
 
-    folder_path = models.CharField(help_text=_('Server side filesystem path.'), max_length=255, verbose_name=_('Folder path'))
+    folder_path = models.CharField(
+        help_text=_('Server side filesystem path.'), max_length=255,
+        verbose_name=_('Folder path')
+    )
 
     def check_source(self):
         # Force self.folder_path to unicode to avoid os.listdir returning
@@ -363,7 +451,11 @@ class WatchFolderSource(IntervalBaseModel):
             full_path = os.path.join(self.folder_path, file_name)
             if os.path.isfile(full_path):
                 with File(file=open(full_path, mode='rb')) as file_object:
-                    self.handle_upload(file_object=file_object, expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y), label=file_name)
+                    self.handle_upload(
+                        file_object=file_object,
+                        expand=(self.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y),
+                        label=file_name
+                    )
                     os.unlink(full_path)
 
     class Meta:
@@ -372,9 +464,15 @@ class WatchFolderSource(IntervalBaseModel):
 
 
 class SourceLog(models.Model):
-    source = models.ForeignKey(Source, related_name='logs', verbose_name=_('Source'))
-    datetime = models.DateTimeField(auto_now_add=True, editable=False, verbose_name=_('Date time'))
-    message = models.TextField(blank=True, editable=False, verbose_name=_('Message'))
+    source = models.ForeignKey(
+        Source, related_name='logs', verbose_name=_('Source')
+    )
+    datetime = models.DateTimeField(
+        auto_now_add=True, editable=False, verbose_name=_('Date time')
+    )
+    message = models.TextField(
+        blank=True, editable=False, verbose_name=_('Message')
+    )
 
     class Meta:
         verbose_name = _('Log entry')

@@ -25,7 +25,9 @@ class TagListForm(forms.Form):
         try:
             Permission.check_permissions(user, [permission_tag_view])
         except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(permission_tag_view, user, queryset)
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_tag_view, user, queryset
+            )
 
         self.fields['tag'] = forms.ModelChoiceField(
             queryset=queryset,

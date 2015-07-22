@@ -44,19 +44,31 @@ def tag_attach(request, document_id=None, document_id_list=None):
         documents = [get_object_or_404(Document, pk=document_id)]
         post_action_redirect = reverse('tags:tag_list')
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        documents = [
+            get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')
+        ]
     else:
         messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     try:
         Permission.check_permissions(request.user, [permission_tag_attach])
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_tag_attach, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_tag_attach, request.user, documents
+        )
 
     post_action_redirect = None
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    previous = request.POST.get(
+        'previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+    )
+    next = request.POST.get(
+        'next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+    )
 
     if request.method == 'POST':
         form = TagListForm(request.POST, user=request.user)
@@ -64,13 +76,22 @@ def tag_attach(request, document_id=None, document_id_list=None):
             tag = form.cleaned_data['tag']
             for document in documents:
                 if tag in document.tags.all():
-                    messages.warning(request, _('Document "%(document)s" is already tagged as "%(tag)s"') % {
-                        'document': document, 'tag': tag}
+                    messages.warning(
+                        request, _(
+                            'Document "%(document)s" is already tagged as "%(tag)s"'
+                        ) % {
+                            'document': document, 'tag': tag
+                        }
                     )
                 else:
                     tag.documents.add(document)
-                    messages.success(request, _('Tag "%(tag)s" attached successfully to document "%(document)s".') % {
-                        'document': document, 'tag': tag}
+                    messages.success(
+                        request,
+                        _(
+                            'Tag "%(tag)s" attached successfully to document "%(document)s".'
+                        ) % {
+                            'document': document, 'tag': tag
+                        }
                     )
             return HttpResponseRedirect(next)
     else:
@@ -90,8 +111,10 @@ def tag_attach(request, document_id=None, document_id_list=None):
     if len(documents) == 1:
         context['object'] = documents[0]
 
-    return render_to_response('appearance/generic_form.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_form.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def tag_multiple_attach(request):
@@ -108,7 +131,9 @@ class TagListView(SingleObjectListView):
         try:
             Permission.check_permissions(user, [permission_document_view])
         except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(permission_document_view, user, queryset)
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_document_view, user, queryset
+            )
 
         return queryset.count()
 
@@ -124,7 +149,14 @@ class TagListView(SingleObjectListView):
     def get_extra_context(self, **kwargs):
         return {
             'extra_columns': [
-                {'name': _('Documents'), 'attribute': encapsulate(lambda instance: TagListView.get_document_count(instance=instance, user=self.request.user))},
+                {
+                    'name': _('Documents'),
+                    'attribute': encapsulate(
+                        lambda instance: TagListView.get_document_count(
+                            instance=instance, user=self.request.user
+                        )
+                    )
+                },
             ],
             'hide_link': True,
 
@@ -142,12 +174,18 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         tags = [get_object_or_404(Tag, pk=tag_id) for tag_id in tag_id_list.split(',')]
     else:
         messages.error(request, _('Must provide at least one tag.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     try:
         Permission.check_permissions(request.user, [permission_tag_delete])
     except PermissionDenied:
-        tags = AccessControlList.objects.filter_by_access(permission_tag_delete, request.user, tags)
+        tags = AccessControlList.objects.filter_by_access(
+            permission_tag_delete, request.user, tags
+        )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -156,11 +194,15 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         for tag in tags:
             try:
                 tag.delete()
-                messages.success(request, _('Tag "%s" deleted successfully.') % tag)
+                messages.success(
+                    request, _('Tag "%s" deleted successfully.') % tag
+                )
             except Exception as exception:
-                messages.error(request, _('Error deleting tag "%(tag)s": %(error)s') % {
-                    'tag': tag, 'error': exception
-                })
+                messages.error(
+                    request, _('Error deleting tag "%(tag)s": %(error)s') % {
+                        'tag': tag, 'error': exception
+                    }
+                )
 
         return HttpResponseRedirect(next)
 
@@ -179,8 +221,10 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
     if len(tags) == 1:
         context['object'] = tags[0]
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_confirm.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def tag_multiple_delete(request):
@@ -222,16 +266,27 @@ class DocumentTagListView(TagListView):
         self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         try:
-            Permission.check_permissions(request.user, [permission_document_view])
+            Permission.check_permissions(
+                request.user, [permission_document_view]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_view, request.user, self.document)
+            AccessControlList.objects.check_access(
+                permission_document_view, request.user, self.document
+            )
 
         return super(DocumentTagListView, self).dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
         return {
             'extra_columns': [
-                {'name': _('Documents'), 'attribute': encapsulate(lambda instance: TagListView.get_document_count(instance=instance, user=self.request.user))},
+                {
+                    'name': _('Documents'),
+                    'attribute': encapsulate(
+                        lambda instance: TagListView.get_document_count(
+                            instance=instance, user=self.request.user
+                        )
+                    )
+                },
             ],
             'hide_link': True,
             'object': self.document,
@@ -248,13 +303,21 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
-        messages.error(request, _('Must provide at least one tagged document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        messages.error(
+            request, _('Must provide at least one tagged document.')
+        )
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     try:
         Permission.check_permissions(request.user, [permission_tag_remove])
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_tag_remove, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_tag_remove, request.user, documents
+        )
 
     post_action_redirect = None
 
@@ -270,7 +333,11 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
     if tag_id:
         tags = [get_object_or_404(Tag, pk=tag_id)]
     elif tag_id_list:
-        tags = [get_object_or_404(Tag, pk=tag_id) for tag_id in tag_id_list.split(',')]
+        tags = [
+            get_object_or_404(
+                Tag, pk=tag_id
+            ) for tag_id in tag_id_list.split(',')
+        ]
     else:
         template = 'appearance/generic_form.html'
 
@@ -286,39 +353,66 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
         context['form'] = form
         if len(documents) == 1:
             context['object'] = documents[0]
-            context['title'] = _('Remove tag from document: %s.') % ', '.join([unicode(d) for d in documents])
+            context['title'] = _(
+                'Remove tag from document: %s.'
+            ) % ', '.join([unicode(d) for d in documents])
         elif len(documents) > 1:
-            context['title'] = _('Remove tag from documents: %s.') % ', '.join([unicode(d) for d in documents])
+            context['title'] = _(
+                'Remove tag from documents: %s.'
+            ) % ', '.join([unicode(d) for d in documents])
 
     if tags:
         if len(tags) == 1:
             if len(documents) == 1:
                 context['object'] = documents[0]
-                context['title'] = _('Remove the tag "%(tag)s" from the document: %(document)s?') % {
-                    'tag': ', '.join([unicode(d) for d in tags]), 'document': ', '.join([unicode(d) for d in documents])}
+                context['title'] = _(
+                    'Remove the tag "%(tag)s" from the document: %(document)s?'
+                ) % {
+                    'tag': ', '.join([unicode(d) for d in tags]),
+                    'document': ', '.join([unicode(d) for d in documents])
+                }
             else:
-                context['title'] = _('Remove the tag "%(tag)s" from the documents: %(documents)s?') % {
-                    'tag': ', '.join([unicode(d) for d in tags]), 'documents': ', '.join([unicode(d) for d in documents])}
+                context['title'] = _(
+                    'Remove the tag "%(tag)s" from the documents: %(documents)s?'
+                ) % {
+                    'tag': ', '.join([unicode(d) for d in tags]),
+                    'documents': ', '.join([unicode(d) for d in documents])
+                }
         elif len(tags) > 1:
             if len(documents) == 1:
                 context['object'] = documents[0]
-                context['title'] = _('Remove the tags: %(tags)s from the document: %(document)s?') % {
-                    'tags': ', '.join([unicode(d) for d in tags]), 'document': ', '.join([unicode(d) for d in documents])}
+                context['title'] = _(
+                    'Remove the tags: %(tags)s from the document: %(document)s?'
+                ) % {
+                    'tags': ', '.join([unicode(d) for d in tags]),
+                    'document': ', '.join([unicode(d) for d in documents])
+                }
             else:
-                context['title'] = _('Remove the tags %(tags)s from the documents: %(documents)s?') % {
-                    'tags': ', '.join([unicode(d) for d in tags]), 'documents': ', '.join([unicode(d) for d in documents])}
+                context['title'] = _(
+                    'Remove the tags %(tags)s from the documents: %(documents)s?'
+                ) % {
+                    'tags': ', '.join([unicode(d) for d in tags]),
+                    'documents': ', '.join([unicode(d) for d in documents])
+                }
 
     if request.method == 'POST':
         for document in documents:
             for tag in tags:
                 if tag not in document.tags.all():
-                    messages.warning(request, _('Document "%(document)s" wasn\'t tagged as "%(tag)s"') % {
-                        'document': document, 'tag': tag}
+                    messages.warning(
+                        request, _('Document "%(document)s" wasn\'t tagged as "%(tag)s"'
+                    ) % {
+                        'document': document, 'tag': tag
+                    }
                     )
                 else:
                     tag.documents.remove(document)
-                    messages.success(request, _('Tag "%(tag)s" removed successfully from document "%(document)s".') % {
-                        'document': document, 'tag': tag}
+                    messages.success(
+                        request, _(
+                            'Tag "%(tag)s" removed successfully from document "%(document)s".'
+                        ) % {
+                        'document': document, 'tag': tag
+                        }
                     )
 
         return HttpResponseRedirect(next)
@@ -328,7 +422,10 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
 
 
 def single_document_multiple_tag_remove(request, document_id):
-    return tag_remove(request, document_id=document_id, tag_id_list=request.GET.get('id_list', []))
+    return tag_remove(
+        request, document_id=document_id,
+        tag_id_list=request.GET.get('id_list', [])
+    )
 
 
 def multiple_documents_selection_tag_remove(request):

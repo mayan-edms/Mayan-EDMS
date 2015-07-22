@@ -29,7 +29,9 @@ class ModelAttribute(object):
 
     @classmethod
     def get_choices_for(cls, model, type_names=None):
-        return [(attribute.name, attribute) for attribute in cls.get_for(model, type_names)]
+        return [
+            (attribute.name, attribute) for attribute in cls.get_for(model, type_names)
+        ]
 
     @classmethod
     def help_text_for(cls, model, type_names=None):
@@ -41,7 +43,9 @@ class ModelAttribute(object):
 
     def get_display(self, show_name=False):
         if self.description:
-            return '{} - {}'.format(self.name if show_name else self.label, self.description)
+            return '{} - {}'.format(
+                self.name if show_name else self.label, self.description
+            )
         else:
             return unicode(self.name if show_name else self.label)
 

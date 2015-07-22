@@ -72,7 +72,9 @@ class ChoiceForm(forms.Form):
         self.fields['selection'].label = label
         self.fields['selection'].help_text = help_text
         self.fields['selection'].widget.disabled_choices = disabled_choices
-        self.fields['selection'].widget.attrs.update({'size': 14, 'class': 'choice_form'})
+        self.fields['selection'].widget.attrs.update(
+            {'size': 14, 'class': 'choice_form'}
+        )
 
     selection = forms.MultipleChoiceField(widget=DisableableSelectWidget())
 
@@ -84,7 +86,10 @@ class UserForm_view(DetailForm):
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'is_staff', 'is_superuser', 'last_login', 'date_joined', 'groups')
+        fields = (
+            'username', 'first_name', 'last_name', 'email', 'is_staff',
+            'is_superuser', 'last_login', 'date_joined', 'groups'
+        )
 
 
 class UserForm(forms.ModelForm):
@@ -119,7 +124,9 @@ class FileDisplayForm(forms.Form):
 
     def __init__(self, *args, **kwargs):
         super(FileDisplayForm, self).__init__(*args, **kwargs)
-        changelog_path = os.path.join(settings.BASE_DIR, os.sep.join(self.DIRECTORY), self.FILENAME)
+        changelog_path = os.path.join(
+            settings.BASE_DIR, os.sep.join(self.DIRECTORY), self.FILENAME
+        )
         fd = open(changelog_path)
         self.fields['text'].initial = fd.read()
         fd.close()

@@ -71,7 +71,8 @@ class DocumentForm(forms.ModelForm):
             self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
                 queryset=filenames_qs,
                 required=False,
-                label=_('Quick document rename'))
+                label=_('Quick document rename')
+            )
 
 
 class DocumentPropertiesForm(DetailForm):
@@ -88,7 +89,9 @@ class DocumentTypeSelectForm(forms.Form):
     Form to select the document type of a document to be created, used
     as form #1 in the document creation wizard
     """
-    document_type = forms.ModelChoiceField(queryset=DocumentType.objects.all(), label=('Document type'))
+    document_type = forms.ModelChoiceField(
+        queryset=DocumentType.objects.all(), label=('Document type')
+    )
 
 
 class PrintForm(forms.Form):
@@ -114,8 +117,15 @@ class DocumentTypeFilenameForm_create(forms.ModelForm):
 
 
 class DocumentDownloadForm(forms.Form):
-    compressed = forms.BooleanField(label=_('Compress'), required=False, help_text=_('Download the document in the original format or in a compressed manner.  This option is selectable only when downloading one document, for multiple documents, the bundle will always be downloads as a compressed file.'))
-    zip_filename = forms.CharField(initial=DEFAULT_ZIP_FILENAME, label=_('Compressed filename'), required=False, help_text=_('The filename of the compressed file that will contain the documents to be downloaded, if the previous option is selected.'))
+    compressed = forms.BooleanField(
+        label=_('Compress'), required=False,
+        help_text=_('Download the document in the original format or in a compressed manner.  This option is selectable only when downloading one document, for multiple documents, the bundle will always be downloads as a compressed file.')
+    )
+    zip_filename = forms.CharField(
+        initial=DEFAULT_ZIP_FILENAME, label=_('Compressed filename'),
+        required=False,
+        help_text=_('The filename of the compressed file that will contain the documents to be downloaded, if the previous option is selected.')
+    )
 
     def __init__(self, *args, **kwargs):
         self.document_versions = kwargs.pop('document_versions', None)

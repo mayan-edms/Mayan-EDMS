@@ -23,8 +23,15 @@ class APIStagingSourceFileView(generics.GenericAPIView):
     serializer_class = StagingFolderFileSerializer
 
     def get(self, request, staging_folder_pk, encoded_filename):
-        staging_folder = get_object_or_404(StagingFolderSource, pk=staging_folder_pk)
-        return Response(StagingFolderFileSerializer(staging_folder.get_file(encoded_filename=encoded_filename), context={'request': request}).data)
+        staging_folder = get_object_or_404(
+            StagingFolderSource, pk=staging_folder_pk
+        )
+        return Response(
+            StagingFolderFileSerializer(
+                staging_folder.get_file(encoded_filename=encoded_filename),
+                context={'request': request}
+            ).data
+        )
 
 
 class APIStagingSourceListView(generics.ListAPIView):
@@ -55,17 +62,36 @@ class APIStagingSourceFileImageView(generics.GenericAPIView):
     serializer_class = StagingSourceFileImageSerializer
 
     def get(self, request, staging_folder_pk, encoded_filename):
-        staging_folder = get_object_or_404(StagingFolderSource, pk=staging_folder_pk)
-        staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
+        staging_folder = get_object_or_404(
+            StagingFolderSource, pk=staging_folder_pk
+        )
+        staging_file = staging_folder.get_file(
+            encoded_filename=encoded_filename
+        )
 
         size = request.GET.get('size', setting_display_size.value)
 
         try:
             return Response({
                 'status': 'success',
-                'data': staging_file.get_image(as_base64=True, size=size, transformations=Transformation.objects.get_for_model(staging_folder, as_classes=True))
+                'data': staging_file.get_image(
+                    as_base64=True, size=size,
+                    transformations=Transformation.objects.get_for_model(
+                        staging_folder, as_classes=True
+                    )
+                )
             })
         except UnknownFileFormat as exception:
-            return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})
+            return Response(
+                {
+                    'status': 'error', 'detail': 'unknown_file_format',
+                    'message': unicode(exception)
+                }
+            )
         except UnkownConvertError as exception:
-            return Response({'status': 'error', 'detail': 'converter_error', 'message': unicode(exception)})
+            return Response(
+                {
+                    'status': 'error', 'detail': 'converter_error',
+                    'message': unicode(exception)
+                }
+            )

@@ -6,4 +6,6 @@ from permissions import PermissionNamespace
 
 namespace = PermissionNamespace('statistics', _('Statistics'))
 
-permission_statistics_view = namespace.add_permission(name='statistics_view', label=_('View statistics'))
+permission_statistics_view = namespace.add_permission(
+    name='statistics_view', label=_('View statistics')
+)

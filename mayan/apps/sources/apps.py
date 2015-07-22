@@ -47,14 +47,34 @@ class SourcesApp(MayanAppConfig):
 
         APIEndPoint('sources')
 
-        MissingItem(label=_('Create a document source'), description=_('Document sources are the way in which new documents are feed to Mayan EDMS, create at least a web form source to be able to upload documents from a browser.'), condition=lambda: not Source.objects.exists(), view='sources:setup_source_list')
+        MissingItem(
+            label=_('Create a document source'),
+            description=_('Document sources are the way in which new documents are feed to Mayan EDMS, create at least a web form source to be able to upload documents from a browser.'),
+            condition=lambda: not Source.objects.exists(),
+            view='sources:setup_source_list'
+        )
 
-        SourceColumn(source=StagingFile, label=_('Thumbnail'), attribute=encapsulate(lambda staging_file: staging_file_thumbnail(staging_file, gallery_name='sources:staging_list', title=staging_file.filename, size='100')))
+        SourceColumn(
+            source=StagingFile,
+            label=_('Thumbnail'),
+            attribute=encapsulate(
+                lambda staging_file: staging_file_thumbnail(
+                    staging_file,
+                    gallery_name='sources:staging_list',
+                    title=staging_file.filename, size='100'
+                )
+            )
+        )
 
         app.conf.CELERY_QUEUES.extend(
             (
-                Queue('sources', Exchange('sources'), routing_key='sources'),
-                Queue('sources_periodic', Exchange('sources_periodic'), routing_key='sources_periodic', delivery_mode=1),
+                Queue(
+                    'sources', Exchange('sources'), routing_key='sources'
+                ),
+                Queue(
+                    'sources_periodic', Exchange('sources_periodic'),
+                    routing_key='sources_periodic', delivery_mode=1
+                ),
             )
         )
 
@@ -73,13 +93,51 @@ class SourcesApp(MayanAppConfig):
         )
 
         menu_front_page.bind_links(links=[link_document_create_multiple])
-        menu_object.bind_links(links=[link_document_create_siblings], sources=[Document])
-        menu_object.bind_links(links=[link_setup_source_edit, link_setup_source_delete, link_transformation_list, link_setup_source_logs], sources=[POP3Email, IMAPEmail, StagingFolderSource, WatchFolderSource, WebFormSource])
-        menu_object.bind_links(links=[link_staging_file_delete], sources=[StagingFile])
-        menu_secondary.bind_links(links=[link_setup_sources, link_setup_source_create_webform, link_setup_source_create_staging_folder, link_setup_source_create_pop3_email, link_setup_source_create_imap_email, link_setup_source_create_watch_folder], sources=[POP3Email, IMAPEmail, StagingFolderSource, WatchFolderSource, WebFormSource, 'sources:setup_source_list', 'sources:setup_source_create'])
+        menu_object.bind_links(
+            links=[link_document_create_siblings], sources=[Document]
+        )
+        menu_object.bind_links(
+            links=[
+                link_setup_source_edit, link_setup_source_delete,
+                link_transformation_list, link_setup_source_logs
+            ], sources=[
+                POP3Email, IMAPEmail, StagingFolderSource, WatchFolderSource,
+                WebFormSource
+            ]
+        )
+        menu_object.bind_links(
+            links=[link_staging_file_delete], sources=[StagingFile]
+        )
+        menu_secondary.bind_links(
+            links=[
+                link_setup_sources, link_setup_source_create_webform,
+                link_setup_source_create_staging_folder,
+                link_setup_source_create_pop3_email,
+                link_setup_source_create_imap_email,
+                link_setup_source_create_watch_folder
+            ], sources=[
+                POP3Email, IMAPEmail, StagingFolderSource, WatchFolderSource,
+                WebFormSource, 'sources:setup_source_list',
+                'sources:setup_source_create'
+            ]
+        )
         menu_setup.bind_links(links=[link_setup_sources])
-        menu_sidebar.bind_links(links=[link_upload_version], sources=['documents:document_version_list', 'documents:upload_version', 'documents:document_version_revert'])
+        menu_sidebar.bind_links(
+            links=[link_upload_version],
+            sources=[
+                'documents:document_version_list', 'documents:upload_version',
+                'documents:document_version_revert'
+            ]
+        )
 
-        post_upgrade.connect(initialize_periodic_tasks, dispatch_uid='initialize_periodic_tasks')
-        post_initial_setup.connect(create_default_document_source, dispatch_uid='create_default_document_source')
-        post_version_upload.connect(copy_transformations_to_version, dispatch_uid='copy_transformations_to_version')
+        post_upgrade.connect(
+            initialize_periodic_tasks, dispatch_uid='initialize_periodic_tasks'
+        )
+        post_initial_setup.connect(
+            create_default_document_source,
+            dispatch_uid='create_default_document_source'
+        )
+        post_version_upload.connect(
+            copy_transformations_to_version,
+            dispatch_uid='copy_transformations_to_version'
+        )

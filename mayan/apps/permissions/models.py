@@ -31,7 +31,10 @@ class StoredPermission(models.Model):
 
         super(StoredPermission, self).__init__(*args, **kwargs)
         try:
-            self.volatile_permission = Permission.get({'pk': '%s.%s' % (self.namespace, self.name)}, proxy_only=True)
+            self.volatile_permission = Permission.get(
+                {'pk': '%s.%s' % (self.namespace, self.name)},
+                proxy_only=True
+            )
         except KeyError:
             # Must be a deprecated permission in the database that is no
             # longer used in the current code
@@ -57,9 +60,15 @@ class StoredPermission(models.Model):
 
 @python_2_unicode_compatible
 class Role(models.Model):
-    label = models.CharField(max_length=64, unique=True, verbose_name=_('Label'))
-    permissions = models.ManyToManyField(StoredPermission, related_name='roles', verbose_name=_('Permissions'))
-    groups = models.ManyToManyField(Group, related_name='roles', verbose_name=_('Groups'))
+    label = models.CharField(
+        max_length=64, unique=True, verbose_name=_('Label')
+    )
+    permissions = models.ManyToManyField(
+        StoredPermission, related_name='roles', verbose_name=_('Permissions')
+    )
+    groups = models.ManyToManyField(
+        Group, related_name='roles', verbose_name=_('Groups')
+    )
 
     class Meta:
         ordering = ('label',)

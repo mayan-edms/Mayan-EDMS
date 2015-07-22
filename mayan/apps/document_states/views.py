@@ -97,11 +97,10 @@ class WorkflowInstanceDetailView(SingleObjectListView):
 
     def get_context_data(self, **kwargs):
         context = {
+            'hide_object': True,
             'navigation_object_list': ['object', 'workflow_instance'],
             'object': self.get_workflow_instance().document,
             'object_list': self.get_queryset(),
-            'title': _('Log entries'),
-            'hide_object': True,
             'title': _('Detail of workflow: %(workflow)s') % {
                 'workflow': self.get_workflow_instance()
             },

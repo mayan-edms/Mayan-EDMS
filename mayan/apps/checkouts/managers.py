@@ -19,13 +19,24 @@ logger = logging.getLogger(__name__)
 
 class DocumentCheckoutManager(models.Manager):
     def checkout_document(self, document, expiration_datetime, user, block_new_version=True):
-        self.create(document=document, expiration_datetime=expiration_datetime, user=user, block_new_version=block_new_version)
+        self.create(
+            document=document, expiration_datetime=expiration_datetime,
+            user=user, block_new_version=block_new_version
+        )
 
     def checked_out_documents(self):
-        return Document.objects.filter(pk__in=self.model.objects.all().values_list('document__pk', flat=True))
+        return Document.objects.filter(
+            pk__in=self.model.objects.all().values_list(
+                'document__pk', flat=True
+            )
+        )
 
     def expired_check_outs(self):
-        expired_list = Document.objects.filter(pk__in=self.model.objects.filter(expiration_datetime__lte=now()).values_list('document__pk', flat=True))
+        expired_list = Document.objects.filter(
+            pk__in=self.model.objects.filter(
+                expiration_datetime__lte=now()
+            ).values_list('document__pk', flat=True)
+        )
         logger.debug('expired_list: %s', expired_list)
         return expired_list
 
@@ -47,7 +58,9 @@ class DocumentCheckoutManager(models.Manager):
         else:
             if user:
                 if self.document_checkout_info(document).user != user:
-                    event_document_forceful_check_in.commit(actor=user, target=document)
+                    event_document_forceful_check_in.commit(
+                        actor=user, target=document
+                    )
                 else:
                     event_document_check_in.commit(actor=user, target=document)
             else:

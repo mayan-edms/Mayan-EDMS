@@ -23,7 +23,9 @@ class PermissionNamespace(object):
         try:
             return cls._registry[name]
         except KeyError:
-            raise InvalidNamespace('Invalid namespace name. This is probably an obsolete permission namespace, execute the management command "purge_permissions" and try again.')
+            raise InvalidNamespace(
+                'Invalid namespace name. This is probably an obsolete permission namespace, execute the management command "purge_permissions" and try again.'
+            )
 
     def __init__(self, name, label):
         self.name = name
@@ -65,7 +67,9 @@ class Permission(object):
     @classmethod
     def all(cls):
         # Return sorted permisions by namespace.name
-        return sorted(cls._permissions.values(), key=lambda x: x.namespace.name)
+        return sorted(
+            cls._permissions.values(), key=lambda x: x.namespace.name
+        )
 
     @classmethod
     def get(cls, get_dict, proxy_only=False):

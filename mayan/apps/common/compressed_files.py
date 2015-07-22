@@ -63,12 +63,16 @@ class CompressedFile(object):
             file_input.seek(0)
         except AttributeError:
             # If not, keep it
-            self.zf.write(file_input, arcname=arcname, compress_type=COMPRESSION)
+            self.zf.write(
+                file_input, arcname=arcname, compress_type=COMPRESSION
+            )
         else:
             self.zf.writestr(arcname, file_input.read())
 
     def contents(self):
-        return [filename for filename in self.zf.namelist() if not filename.endswith('/')]
+        return [
+            filename for filename in self.zf.namelist() if not filename.endswith('/')
+        ]
 
     def get_content(self, filename):
         return self.zf.read(filename)
@@ -93,8 +97,12 @@ class CompressedFile(object):
         try:
             # Try for a ZIP file
             zfobj = zipfile.ZipFile(self.file_object)
-            filenames = [filename for filename in zfobj.namelist() if not filename.endswith('/')]
-            return (SimpleUploadedFile(name=filename, content=zfobj.read(filename)) for filename in filenames)
+            filenames = [
+                filename for filename in zfobj.namelist() if not filename.endswith('/')
+            ]
+            return (
+                SimpleUploadedFile(name=filename, content=zfobj.read(filename)) for filename in filenames
+            )
         except zipfile.BadZipfile:
             raise NotACompressedFile
 

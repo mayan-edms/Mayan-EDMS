@@ -54,10 +54,14 @@ class SetupRoleMembersView(AssignRemoveView):
         return get_object_or_404(Role, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return [(unicode(group.pk), group.name) for group in set(Group.objects.all()) - set(self.get_object().groups.all())]
+        return [
+            (unicode(group.pk), group.name) for group in set(Group.objects.all()) - set(self.get_object().groups.all())
+        ]
 
     def right_list(self):
-        return [(unicode(group.pk), group.name) for group in self.get_object().groups.all()]
+        return [
+            (unicode(group.pk), group.name) for group in self.get_object().groups.all()
+        ]
 
     def remove(self, item):
         group = get_object_or_404(Group, pk=item)
@@ -80,7 +84,9 @@ class SetupRolePermissionsView(AssignRemoveView):
     view_permission = permission_role_view
 
     def add(self, item):
-        Permission.check_permissions(self.request.user, permissions=(permission_permission_grant,))
+        Permission.check_permissions(
+            self.request.user, permissions=(permission_permission_grant,)
+        )
         permission = get_object_or_404(StoredPermission, pk=item)
         self.get_object().permissions.add(permission)
 
@@ -90,21 +96,31 @@ class SetupRolePermissionsView(AssignRemoveView):
     def left_list(self):
         results = []
         for namespace, permissions in itertools.groupby(StoredPermission.objects.exclude(id__in=self.get_object().permissions.values_list('pk', flat=True)), lambda entry: entry.namespace):
-            permission_options = [(unicode(permission.pk), permission) for permission in permissions]
-            results.append((PermissionNamespace.get(namespace), permission_options))
+            permission_options = [
+                (unicode(permission.pk), permission) for permission in permissions
+            ]
+            results.append(
+                (PermissionNamespace.get(namespace), permission_options)
+            )
 
         return results
 
     def right_list(self):
         results = []
         for namespace, permissions in itertools.groupby(self.get_object().permissions.all(), lambda entry: entry.namespace):
-            permission_options = [(unicode(permission.pk), permission) for permission in permissions]
-            results.append((PermissionNamespace.get(namespace), permission_options))
+            permission_options = [
+                (unicode(permission.pk), permission) for permission in permissions
+            ]
+            results.append(
+                (PermissionNamespace.get(namespace), permission_options)
+            )
 
         return results
 
     def remove(self, item):
-        Permission.check_permissions(self.request.user, permissions=(permission_permission_revoke,))
+        Permission.check_permissions(
+            self.request.user, permissions=(permission_permission_revoke,)
+        )
         permission = get_object_or_404(StoredPermission, pk=item)
         self.get_object().permissions.remove(permission)
 

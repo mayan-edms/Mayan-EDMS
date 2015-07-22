@@ -38,7 +38,10 @@ class AccessControlListManager(models.Manager):
             parent_object = getattr(instance, parent_accessor)
             content_type = ContentType.objects.get_for_model(parent_object)
             try:
-                return self.get(role=role, content_type=content_type, object_id=parent_object.pk).permissions.all()
+                return self.get(
+                    role=role, content_type=content_type,
+                    object_id=parent_object.pk
+                ).permissions.all()
             except self.model.DoesNotExist:
                 return StoredPermission.objects.none()
 
@@ -47,7 +50,9 @@ class AccessControlListManager(models.Manager):
             return True
 
         try:
-            stored_permissions = [permission.stored_permission for permission in permissions]
+            stored_permissions = [
+                permission.stored_permission for permission in permissions
+            ]
         except TypeError:
             stored_permissions = [permissions.stored_permission]
 
@@ -80,14 +85,22 @@ class AccessControlListManager(models.Manager):
             instance = queryset.first()
             if instance:
                 parent_object = getattr(instance, parent_accessor)
-                parent_content_type = ContentType.objects.get_for_model(parent_object)
-                parent_queryset = self.filter(content_type=parent_content_type, role__in=user_roles, permissions=permission.stored_permission)
+                parent_content_type = ContentType.objects.get_for_model(
+                    parent_object
+                )
+                parent_queryset = self.filter(
+                    content_type=parent_content_type, role__in=user_roles,
+                    permissions=permission.stored_permission
+                )
                 parent_acl_query = Q(**{'{}__pk__in'.format(parent_accessor): parent_queryset.values_list('object_id', flat=True)})
             else:
                 parent_acl_query = Q()
 
         # Directly granted access
         content_type = ContentType.objects.get_for_model(queryset.model)
-        acl_query = Q(pk__in=self.filter(content_type=content_type, role__in=user_roles, permissions=permission.stored_permission).values_list('object_id', flat=True))
+        acl_query = Q(pk__in=self.filter(
+            content_type=content_type, role__in=user_roles,
+            permissions=permission.stored_permission
+        ).values_list('object_id', flat=True))
 
         return queryset.filter(parent_acl_query | acl_query)

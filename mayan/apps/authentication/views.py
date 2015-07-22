@@ -48,5 +48,7 @@ def password_change_done(request):
     View called when the new user password has been accepted
     """
 
-    messages.success(request, _('Your password has been successfully changed.'))
+    messages.success(
+        request, _('Your password has been successfully changed.')
+    )
     return redirect('common:current_user_details')

@@ -18,4 +18,6 @@ class DocumentMetadataHelper(object):
         try:
             return self.instance.metadata.get(metadata_type__name=name).value
         except MetadataType.DoesNotExist:
-            raise AttributeError(_('\'metadata\' object has no attribute \'%s\'') % name)
+            raise AttributeError(
+                _('\'metadata\' object has no attribute \'%s\'') % name
+            )

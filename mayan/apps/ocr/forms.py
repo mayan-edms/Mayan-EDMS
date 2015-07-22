@@ -33,11 +33,22 @@ class DocumentContentForm(forms.Form):
                 pass
             else:
                 content.append(conditional_escape(force_unicode(page_content)))
-                content.append('\n\n\n<hr/><div class="document-page-content-divider">- %s -</div><hr/>\n\n\n' % (ugettext('Page %(page_number)d') % {'page_number': page.page_number}))
+                content.append(
+                    '\n\n\n<hr/><div class="document-page-content-divider">- %s -</div><hr/>\n\n\n' % (
+                        ugettext(
+                            'Page %(page_number)d'
+                        ) % {'page_number': page.page_number}
+                    )
+                )
 
         self.fields['contents'].initial = mark_safe(''.join(content))
 
     contents = forms.CharField(
         label=_('Contents'),
-        widget=TextAreaDiv(attrs={'class': 'text_area_div full-height', 'data-height-difference': 360})
+        widget=TextAreaDiv(
+            attrs={
+                'class': 'text_area_div full-height',
+                'data-height-difference': 360
+            }
+        )
     )

@@ -30,7 +30,9 @@ class UserListView(SingleObjectListView):
     view_permission = permission_user_view
 
     def get_queryset(self):
-        return get_user_model().objects.exclude(is_superuser=True).exclude(is_staff=True).order_by('last_name', 'first_name')
+        return get_user_model().objects.exclude(
+            is_superuser=True
+        ).exclude(is_staff=True).order_by('last_name', 'first_name')
 
     def get_context_data(self, **kwargs):
         context = super(UserListView, self).get_context_data(**kwargs)
@@ -49,11 +51,17 @@ class UserListView(SingleObjectListView):
                     },
                     {
                         'name': _('Active'),
-                        'attribute': encapsulate(lambda x: two_state_template(x.is_active)),
+                        'attribute': encapsulate(
+                            lambda user: two_state_template(user.is_active)
+                        ),
                     },
                     {
                         'name': _('Has usable password?'),
-                        'attribute': encapsulate(lambda x: two_state_template(x.has_usable_password())),
+                        'attribute': encapsulate(
+                            lambda user: two_state_template(
+                                user.has_usable_password()
+                            )
+                        ),
                     },
                 ],
             }
@@ -67,14 +75,23 @@ def user_edit(request, user_id):
     user = get_object_or_404(User, pk=user_id)
 
     if user.is_superuser or user.is_staff:
-        messages.error(request, _('Super user and staff user editing is not allowed, use the admin interface for these cases.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        messages.error(
+            request,
+            _('Super user and staff user editing is not allowed, use the admin interface for these cases.')
+        )
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     if request.method == 'POST':
         form = UserForm(instance=user, data=request.POST)
         if form.is_valid():
             form.save()
-            messages.success(request, _('User "%s" updated successfully.') % user)
+            messages.success(
+                request, _('User "%s" updated successfully.') % user
+            )
             return HttpResponseRedirect(reverse('user_management:user_list'))
     else:
         form = UserForm(instance=user)
@@ -95,8 +112,12 @@ def user_add(request):
             user = form.save(commit=False)
             user.set_unusable_password()
             user.save()
-            messages.success(request, _('User "%s" created successfully.') % user)
-            return HttpResponseRedirect(reverse('user_management:user_set_password', args=[user.pk]))
+            messages.success(
+                request, _('User "%s" created successfully.') % user
+            )
+            return HttpResponseRedirect(
+                reverse('user_management:user_set_password', args=[user.pk])
+            )
     else:
         form = UserForm()
 
@@ -114,10 +135,16 @@ def user_delete(request, user_id=None, user_id_list=None):
         users = [get_object_or_404(User, pk=user_id)]
         post_action_redirect = reverse('user_management:user_list')
     elif user_id_list:
-        users = [get_object_or_404(User, pk=user_id) for user_id in user_id_list.split(',')]
+        users = [
+            get_object_or_404(User, pk=user_id) for user_id in user_id_list.split(',')
+        ]
     else:
         messages.error(request, _('Must provide at least one user.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))

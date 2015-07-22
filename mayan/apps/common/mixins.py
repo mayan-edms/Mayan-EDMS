@@ -45,10 +45,14 @@ class ObjectListPermissionFilterMixin(object):
         if self.object_permission:
             try:
                 # Check to see if the user has the permissions globally
-                Permission.check_permissions(self.request.user, (self.object_permission,))
+                Permission.check_permissions(
+                    self.request.user, (self.object_permission,)
+                )
             except PermissionDenied:
                 # No global permission, filter ther queryset per object + permission
-                return AccessControlList.objects.filter_by_access(self.object_permission, self.request.user, queryset)
+                return AccessControlList.objects.filter_by_access(
+                    self.object_permission, self.request.user, queryset
+                )
             else:
                 # Has the permission globally, return all results
                 return queryset
@@ -66,9 +70,14 @@ class ObjectPermissionCheckMixin(object):
 
         if self.object_permission:
             try:
-                Permission.check_permissions(request.user, (self.object_permission,))
+                Permission.check_permissions(
+                    request.user, (self.object_permission,)
+                )
             except PermissionDenied:
-                AccessControlList.objects.check_access(self.object_permission, request.user, self.get_permission_object())
+                AccessControlList.objects.check_access(
+                    self.object_permission, request.user,
+                    self.get_permission_object()
+                )
 
         return super(ObjectPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
 
@@ -87,8 +96,20 @@ class RedirectionMixin(object):
         post_action_redirect = self.get_post_action_redirect()
         action_cancel_redirect = self.get_action_cancel_redirect()
 
-        self.next_url = self.request.POST.get('next', self.request.GET.get('next', post_action_redirect if post_action_redirect else self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-        self.previous_url = self.request.POST.get('previous', self.request.GET.get('previous', action_cancel_redirect if action_cancel_redirect else self.request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+        self.next_url = self.request.POST.get(
+            'next', self.request.GET.get(
+                'next', post_action_redirect if post_action_redirect else self.request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
+            )
+        )
+        self.previous_url = self.request.POST.get(
+            'previous', self.request.GET.get(
+                'previous', action_cancel_redirect if action_cancel_redirect else self.request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
+            )
+        )
 
         return super(RedirectionMixin, self).dispatch(request, *args, **kwargs)
 
@@ -112,6 +133,8 @@ class ViewPermissionCheckMixin(object):
 
     def dispatch(self, request, *args, **kwargs):
         if self.view_permission:
-            Permission.check_permissions(self.request.user, (self.view_permission,))
+            Permission.check_permissions(
+                self.request.user, (self.view_permission,)
+            )
 
         return super(ViewPermissionCheckMixin, self).dispatch(request, *args, **kwargs)

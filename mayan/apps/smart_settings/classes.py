@@ -23,7 +23,9 @@ class Namespace(object):
 
     def __init__(self, name, label):
         if name in self.__class__._registry:
-            raise Exception('Namespace names must be unique; "%s" already exists.' % name)
+            raise Exception(
+                'Namespace names must be unique; "%s" already exists.' % name
+            )
         self.name = name
         self.label = label
         self.__class__._registry[name] = self
@@ -59,7 +61,9 @@ class Setting(object):
     @property
     def serialized_value(self):
         if not self.yaml:
-            self.yaml = Setting.serialize_value(getattr(settings, self.global_name, self.default))
+            self.yaml = Setting.serialize_value(
+                getattr(settings, self.global_name, self.default)
+            )
 
         return self.yaml
 

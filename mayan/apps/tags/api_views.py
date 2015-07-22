@@ -75,9 +75,13 @@ class APITagDocumentListView(generics.ListAPIView):
     def get_queryset(self):
         tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
         try:
-            Permission.check_permissions(self.request.user, [permission_tag_view])
+            Permission.check_permissions(
+                self.request.user, [permission_tag_view]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_tag_view, self.request.user, tag)
+            AccessControlList.objects.check_access(
+                permission_tag_view, self.request.user, tag
+            )
 
         queryset = tag.documents.all()
         return queryset
@@ -96,9 +100,13 @@ class APIDocumentTagListView(generics.ListAPIView):
     def get_queryset(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
         try:
-            Permission.check_permissions(self.request.user, [permission_document_view])
+            Permission.check_permissions(
+                self.request.user, [permission_document_view]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_view, self.request.user, document)
+            AccessControlList.objects.check_access(
+                permission_document_view, self.request.user, document
+            )
 
         queryset = document.tags.all()
         return queryset
@@ -114,7 +122,9 @@ class APIDocumentTagView(views.APIView):
         try:
             Permission.check_permissions(request.user, [permission_tag_remove])
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_tag_remove, request.user, document)
+            AccessControlList.objects.check_access(
+                permission_tag_remove, request.user, document
+            )
 
         tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
         tag.documents.remove(document)
@@ -129,7 +139,9 @@ class APIDocumentTagView(views.APIView):
         try:
             Permission.check_permissions(request.user, [permission_tag_attach])
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_tag_attach, request.user, document)
+            AccessControlList.objects.check_access(
+                permission_tag_attach, request.user, document
+            )
 
         tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
         tag.documents.add(document)

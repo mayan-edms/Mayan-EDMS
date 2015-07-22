@@ -31,7 +31,10 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
 
     def dispatch(self, request, *args, **kwargs):
         if InteractiveSource.objects.filter(enabled=True).count() == 0:
-            messages.error(request, _('No interactive document sources have been defined or none have been enabled, create one before proceeding.'))
+            messages.error(
+                request,
+                _('No interactive document sources have been defined or none have been enabled, create one before proceeding.')
+            )
             return HttpResponseRedirect(reverse('sources:setup_source_list'))
         return super(DocumentCreateWizard, self).dispatch(request, *args, **kwargs)
 

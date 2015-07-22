@@ -24,10 +24,13 @@ def register_parser(mimetypes, parsers):
             try:
                 parser_instance = parser()
             except ParserError:
-                # If parser fails initialization is not added to the list for this mimetype
+                # If parser fails initialization is not added to the list for
+                # this mimetype
                 pass
             else:
-                mimetype_registry.setdefault(mimetype, []).append(parser_instance)
+                mimetype_registry.setdefault(mimetype, []).append(
+                    parser_instance
+                )
 
 
 def parse_document_page(document_page, descriptor=None, mimetype=None):
@@ -66,7 +69,10 @@ class Parser(object):
     """
 
     def parse(self, document_page, descriptor=None):
-        raise NotImplementedError('Your %s class has not defined a parse() method, which is required.', self.__class__.__name__)
+        raise NotImplementedError(
+            'Your %s class has not defined a parse() method, which is required.',
+            self.__class__.__name__
+        )
 
 
 class SlateParser(Parser):
@@ -105,11 +111,15 @@ class PopplerParser(Parser):
         pagenum = str(document_page.page_number)
 
         if descriptor:
-            destination_descriptor, temp_filepath = tempfile.mkstemp(dir=setting_temporary_directory.value)
+            destination_descriptor, temp_filepath = tempfile.mkstemp(
+                dir=setting_temporary_directory.value
+            )
             copyfile(descriptor, temp_filepath)
             document_file = temp_filepath
         else:
-            document_file = document_page.document.document_save_to_temp_dir(document_page.document.checksum)
+            document_file = document_page.document.document_save_to_temp_dir(
+                document_page.document.checksum
+            )
 
         logger.debug('document_file: %s', document_file)
 
@@ -124,7 +134,10 @@ class PopplerParser(Parser):
         command.append(document_file)
         command.append('-')
 
-        proc = subprocess.Popen(command, close_fds=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+        proc = subprocess.Popen(
+            command, close_fds=True, stderr=subprocess.PIPE,
+            stdout=subprocess.PIPE
+        )
         return_code = proc.wait()
         if return_code != 0:
             logger.error(proc.stderr.readline())
@@ -139,4 +152,6 @@ class PopplerParser(Parser):
         document_page.save()
 
 
-register_parser(mimetypes=['application/pdf'], parsers=[PopplerParser, SlateParser])
+register_parser(
+    mimetypes=['application/pdf'], parsers=[PopplerParser, SlateParser]
+)

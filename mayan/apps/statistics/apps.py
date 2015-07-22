@@ -19,6 +19,11 @@ class StatisticsApp(MayanAppConfig):
         super(StatisticsApp, self).ready()
 
         menu_object.bind_links(links=[link_execute], sources=[Statistic])
-        menu_object.bind_links(links=[link_namespace_details], sources=[StatisticNamespace])
-        menu_secondary.bind_links(links=[link_namespace_list], sources=[StatisticNamespace, 'statistics:namespace_list'])
+        menu_object.bind_links(
+            links=[link_namespace_details], sources=[StatisticNamespace]
+        )
+        menu_secondary.bind_links(
+            links=[link_namespace_list],
+            sources=[StatisticNamespace, 'statistics:namespace_list']
+        )
         menu_tools.bind_links(links=[link_statistics])

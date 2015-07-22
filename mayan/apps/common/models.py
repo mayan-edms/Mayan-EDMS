@@ -18,9 +18,14 @@ def upload_to(instance, filename):
 
 @python_2_unicode_compatible
 class SharedUploadedFile(models.Model):
-    file = models.FileField(storage=shared_storage_backend, upload_to=upload_to, verbose_name=_('File'))
+    file = models.FileField(
+        storage=shared_storage_backend, upload_to=upload_to,
+        verbose_name=_('File')
+    )
     filename = models.CharField(max_length=255, verbose_name=_('Filename'))
-    datetime = models.DateTimeField(auto_now_add=True, verbose_name=_('Date time'))
+    datetime = models.DateTimeField(
+        auto_now_add=True, verbose_name=_('Date time')
+    )
 
     class Meta:
         verbose_name = _('Shared uploaded file')
@@ -43,10 +48,17 @@ class SharedUploadedFile(models.Model):
 
 @python_2_unicode_compatible
 class UserLocaleProfile(models.Model):
-    user = models.OneToOneField(settings.AUTH_USER_MODEL, related_name='locale_profile', verbose_name=_('User'))
-
-    timezone = models.CharField(choices=zip(common_timezones, common_timezones), max_length=48, verbose_name=_('Timezone'))
-    language = models.CharField(choices=settings.LANGUAGES, max_length=8, verbose_name=_('Language'))
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL, related_name='locale_profile',
+        verbose_name=_('User')
+    )
+    timezone = models.CharField(
+        choices=zip(common_timezones, common_timezones), max_length=48,
+        verbose_name=_('Timezone')
+    )
+    language = models.CharField(
+        choices=settings.LANGUAGES, max_length=8, verbose_name=_('Language')
+    )
 
     def __str__(self):
         return unicode(self.user)

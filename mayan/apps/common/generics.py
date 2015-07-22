@@ -79,8 +79,14 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
         return self.right_list_help_text
 
     def get(self, request, *args, **kwargs):
-        self.unselected_list = ChoiceForm(prefix=self.LEFT_LIST_NAME, choices=self.left_list())
-        self.selected_list = ChoiceForm(prefix=self.RIGHT_LIST_NAME, choices=self.right_list(), disabled_choices=self.get_disabled_choices(), help_text=self.get_right_list_help_text())
+        self.unselected_list = ChoiceForm(
+            prefix=self.LEFT_LIST_NAME, choices=self.left_list()
+        )
+        self.selected_list = ChoiceForm(
+            prefix=self.RIGHT_LIST_NAME, choices=self.right_list(),
+            disabled_choices=self.get_disabled_choices(),
+            help_text=self.get_right_list_help_text()
+        )
         return self.render_to_response(self.get_context_data())
 
     def process_form(self, prefix, items_function, action_function):
@@ -112,11 +118,20 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(self.request, _('Unable to transfer selection: %s.') % label)
+                            messages.error(
+                                self.request,
+                                _('Unable to transfer selection: %s.') % label
+                            )
 
     def post(self, request, *args, **kwargs):
-        self.process_form(prefix=self.LEFT_LIST_NAME, items_function=self.left_list, action_function=self.add)
-        self.process_form(prefix=self.RIGHT_LIST_NAME, items_function=self.right_list, action_function=self.remove)
+        self.process_form(
+            prefix=self.LEFT_LIST_NAME, items_function=self.left_list,
+            action_function=self.add
+        )
+        self.process_form(
+            prefix=self.RIGHT_LIST_NAME, items_function=self.right_list,
+            action_function=self.remove
+        )
         return self.get(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
@@ -183,7 +198,11 @@ class MultiFormView(FormView):
         return form
 
     def get_forms(self, form_classes):
-        return dict([(key, self._create_form(key, klass)) for key, klass in form_classes.items()])
+        return dict(
+            [
+                (key, self._create_form(key, klass)) for key, klass in form_classes.items()
+            ]
+        )
 
     def get_initial(self, form_name):
         initial_method = 'get_%s_initial' % form_name
@@ -246,8 +265,13 @@ class ParentChildListView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, 
             else:
                 is_empty = len(self.object_list) == 0
             if is_empty:
-                raise Http404(_("Empty list and '%(class_name)s.allow_empty' is False.")
-                              % {'class_name': self.__class__.__name__})
+                raise Http404(
+                    _(
+                        "Empty list and '%(class_name)s.allow_empty' is False."
+                    ) % {
+                        'class_name': self.__class__.__name__
+                    }
+                )
 
         context = self.get_context_data(object=self.object)
         return self.render_to_response(context)
@@ -313,7 +337,10 @@ class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, Redire
         result = super(SingleObjectCreateView, self).form_invalid(form)
 
         try:
-            messages.error(self.request, _('Error creating new %s.') % self.extra_context['object_name'])
+            messages.error(
+                self.request,
+                _('Error creating new %s.') % self.extra_context['object_name']
+            )
         except KeyError:
             messages.error(self.request, _('Error creating object.'))
 
@@ -322,9 +349,14 @@ class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, Redire
     def form_valid(self, form):
         result = super(SingleObjectCreateView, self).form_valid(form)
         try:
-            messages.success(self.request, _('%s created successfully.') % self.extra_context['object_name'].capitalize())
+            messages.success(
+                self.request,
+                _('%s created successfully.') % self.extra_context['object_name'].capitalize()
+            )
         except KeyError:
-            messages.success(self.request, _('New object created successfully.'))
+            messages.success(
+                self.request, _('New object created successfully.')
+            )
 
         return result
 
@@ -342,16 +374,24 @@ class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
             result = super(SingleObjectDeleteView, self).delete(request, *args, **kwargs)
         except Exception as exception:
             try:
-                messages.error(self.request, _('Error deleting %s.') % self.extra_context['object_name'])
+                messages.error(
+                    self.request, _('Error deleting %s.') % self.extra_context['object_name']
+                )
             except KeyError:
-                messages.error(self.request, _('Error deleting object.'))
+                messages.error(
+                    self.request, _('Error deleting object.')
+                )
 
             raise exception
         else:
             try:
-                messages.success(self.request, _('%s deleted successfully.') % self.extra_context['object_name'].capitalize())
+                messages.success(
+                    self.request, _('%s deleted successfully.') % self.extra_context['object_name'].capitalize()
+                )
             except KeyError:
-                messages.success(self.request, _('Object deleted successfully.'))
+                messages.success(
+                    self.request, _('Object deleted successfully.')
+                )
 
             return result
 
@@ -365,9 +405,13 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
         result = super(SingleObjectEditView, self).form_invalid(form)
 
         try:
-            messages.error(self.request, _('Error saving %s details.') % self.extra_context['object_name'])
+            messages.error(
+                self.request, _('Error saving %s details.') % self.extra_context['object_name']
+            )
         except KeyError:
-            messages.error(self.request, _('Error saving details.'))
+            messages.error(
+                self.request, _('Error saving details.')
+            )
 
         return result
 
@@ -375,9 +419,13 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
         result = super(SingleObjectEditView, self).form_valid(form)
 
         try:
-            messages.success(self.request, _('%s details saved successfully.') % self.extra_context['object_name'].capitalize())
+            messages.success(
+                self.request, _('%s details saved successfully.') % self.extra_context['object_name'].capitalize()
+            )
         except KeyError:
-            messages.success(self.request, _('Details saved successfully.'))
+            messages.success(
+                self.request, _('Details saved successfully.')
+            )
 
         return result
 

@@ -22,5 +22,11 @@ class AuthenticationApp(MayanAppConfig):
             links=[
                 link_password_change, link_logout
             ],
-            sources=['common:current_user_details', 'common:current_user_edit', 'common:current_user_locale_profile_details', 'common:current_user_locale_profile_edit', 'authentication:password_change_view', 'common:setup_list', 'common:tools_list']
+            sources=[
+                'common:current_user_details', 'common:current_user_edit',
+                'common:current_user_locale_profile_details',
+                'common:current_user_locale_profile_edit',
+                'authentication:password_change_view',
+                'common:setup_list', 'common:tools_list'
+            ]
         )
