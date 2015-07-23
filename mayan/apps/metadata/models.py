@@ -25,28 +25,36 @@ class MetadataType(models.Model):
     """
     name = models.CharField(
         max_length=48,
-        help_text=_('Name used by other apps to reference this value. Do not use python reserved words, or spaces.'),
+        help_text=_(
+            'Name used by other apps to reference this value. '
+            'Do not use python reserved words, or spaces.'
+        ),
         unique=True, verbose_name=_('Name')
     )
     label = models.CharField(max_length=48, verbose_name=_('Label'))
     default = models.CharField(
         blank=True, max_length=128, null=True,
-        help_text=_('Enter a template to render. Use Django\'s default templating language (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)'),
+        help_text=_(
+            'Enter a template to render. '
+            'Use Django\'s default templating language '
+            '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)'
+        ),
         verbose_name=_('Default')
     )
-    # TODO: Add enable_lookup boolean to allow users to switch the lookup on and
-    # off without losing the lookup expression
     lookup = models.TextField(
         blank=True, null=True,
-        help_text=_('Enter a string to be evaluated that returns an iterable.'),
+        help_text=_(
+            'Enter a template to render. '
+            'Must result in a command delimited string. '
+            'Use Django\'s default templating language '
+            '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/).'
+        ),
         verbose_name=_('Lookup')
     )
     validation = models.CharField(
         blank=True, choices=validation_choices(), max_length=64,
         verbose_name=_('Validation function name')
     )
-    # TODO: Find a different way to let users know what models and functions are
-    # available now that we removed these from the help_text
     objects = MetadataTypeManager()
 
     def __str__(self):

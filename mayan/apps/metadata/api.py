@@ -104,7 +104,9 @@ def get_metadata_string(document):
     """
     Return a formated representation of a document's metadata values
     """
-    return ', '.join(['%s - %s' % (document_metadata.metadata_type, document_metadata.value) for document_metadata in document.metadata.all()])
+    return ', '.join(
+        ['%s - %s' % (document_metadata.metadata_type, document_metadata.value) for document_metadata in document.metadata.all()]
+    )
 
 
 def convert_dict_to_dict_list(dictionary):

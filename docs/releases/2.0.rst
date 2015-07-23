@@ -71,6 +71,7 @@ What's new in Mayan EDMS v2.0
 * Document image and intermediate file caching now has it's own storage backend.
 * RGB tags
 * ``performupgrade`` management command.
+* Removal of eval from metadata type defaults and lookup fields. Django's own template language is now used instead.
 
 Upgrading from a previous version
 =================================

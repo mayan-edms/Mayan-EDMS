@@ -1,16 +1,26 @@
 from __future__ import unicode_literals
 
+import shlex
+
 from django import forms
 from django.core.exceptions import ValidationError
 from django.forms.formsets import formset_factory
 from django.template import Context, Template
 from django.utils.module_loading import import_string
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import string_concat, ugettext_lazy as _
 
+from .classes import MetadataLookup
 from .models import MetadataType
 
 
 class MetadataForm(forms.Form):
+    @staticmethod
+    def comma_splitter(string):
+        splitter = shlex.shlex(string.encode('utf-8'), posix=True)
+        splitter.whitespace = ','.encode('utf-8')
+        splitter.whitespace_split = True
+        splitter.commenters = ''.encode('utf-8')
+        return list(splitter)
 
     def clean_value(self):
         metadata_type = MetadataType.objects.get(pk=self.cleaned_data['id'])
@@ -66,23 +76,32 @@ class MetadataForm(forms.Form):
                 self.fields['value'].required = False
 
             self.fields['name'].initial = '%s%s' % (
-                (self.metadata_type.label if self.metadata_type.label else self.metadata_type.name),
+                (
+                    self.metadata_type.label if self.metadata_type.label else self.metadata_type.name
+                ),
                 required_string
             )
             self.fields['id'].initial = self.metadata_type.pk
 
             if self.metadata_type.lookup:
                 try:
-                    #choices = eval(self.metadata_type.lookup, setting_available_models.value)  #####
-                    choices = []
-                    self.fields['value'] = forms.ChoiceField(label=self.fields['value'].label)
+                    template = Template(self.metadata_type.lookup)
+                    context = Context(MetadataLookup.get_as_context())
+                    choices = MetadataForm.comma_splitter(
+                        template.render(context=context)
+                    )
+                    self.fields['value'] = forms.ChoiceField(
+                        label=self.fields['value'].label
+                    )
                     choices = zip(choices, choices)
                     if not required:
                         choices.insert(0, ('', '------'))
                     self.fields['value'].choices = choices
                     self.fields['value'].required = required
                 except Exception as exception:
-                    self.fields['value'].initial = exception
+                    self.fields['value'].initial = _(
+                        'Lookup value error: %s'
+                    ) % exception
                     self.fields['value'].widget = forms.TextInput(
                         attrs={'readonly': 'readonly'}
                     )
@@ -95,8 +114,12 @@ class MetadataForm(forms.Form):
                     self.fields['value'].initial = result
                 except Exception as exception:
                     self.fields['value'].initial = _(
-                        'Error: %s'
+                        'Default value error: %s'
                     ) % exception
+                    self.fields['value'].widget = forms.TextInput(
+                        attrs={'readonly': 'readonly'}
+                    )
+
 
     id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
 
@@ -121,6 +144,20 @@ class AddMetadataForm(forms.Form):
         document_type = kwargs.pop('document_type')
         super(AddMetadataForm, self).__init__(*args, **kwargs)
         self.fields['metadata_type'].queryset = document_type.metadata.all()
+
+
+class MetadataTypeForm(forms.ModelForm):
+    class Meta:
+        fields = ('name', 'label', 'default', 'lookup', 'validation')
+        model = MetadataType
+
+    def __init__(self, *args, **kwargs):
+        super(MetadataTypeForm, self).__init__(*args, **kwargs)
+        self.fields['lookup'].help_text = string_concat(
+            self.fields['lookup'].help_text,
+            _(' Available template context variables: '),
+            MetadataLookup.get_as_help_text()
+        )
 
 
 class MetadataRemoveForm(MetadataForm):
