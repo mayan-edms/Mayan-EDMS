@@ -8,6 +8,19 @@ from django.utils.translation import ugettext_lazy as _
 from smart_settings import Namespace
 
 namespace = Namespace(name='django_gpg', label=_('Signatures'))
-setting_keyservers = namespace.add_setting(global_name='SIGNATURES_KEYSERVERS', default=['pool.sks-keyservers.net'], help_text=_('List of keyservers to be queried for unknown keys.'))
-setting_gpg_home = namespace.add_setting(global_name='SIGNATURES_GPG_HOME', default=os.path.join(settings.MEDIA_ROOT, 'gpg_home'), help_text=_('Home directory used to store keys as well as configuration files.'), is_path=True)
-setting_gpg_path = namespace.add_setting(global_name='SIGNATURES_GPG_PATH', default='/usr/bin/gpg', help_text=_('Path to the GPG binary.'), is_path=True)
+setting_keyservers = namespace.add_setting(
+    global_name='SIGNATURES_KEYSERVERS', default=['pool.sks-keyservers.net'],
+    help_text=_('List of keyservers to be queried for unknown keys.')
+)
+setting_gpg_home = namespace.add_setting(
+    global_name='SIGNATURES_GPG_HOME',
+    default=os.path.join(settings.MEDIA_ROOT, 'gpg_home'),
+    help_text=_(
+        'Home directory used to store keys as well as configuration files.'
+    ),
+    is_path=True
+)
+setting_gpg_path = namespace.add_setting(
+    global_name='SIGNATURES_GPG_PATH', default='/usr/bin/gpg',
+    help_text=_('Path to the GPG binary.'), is_path=True
+)

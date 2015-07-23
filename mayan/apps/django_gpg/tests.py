@@ -20,7 +20,10 @@ class DjangoGPGTestCase(TestCase):
         except OSError:
             pass
 
-        self.gpg = GPG(binary_path=setting_gpg_path.value, home=TEST_GPG_HOME, keyservers=TEST_KEYSERVERS)
+        self.gpg = GPG(
+            binary_path=setting_gpg_path.value, home=TEST_GPG_HOME,
+            keyservers=TEST_KEYSERVERS
+        )
 
     def test_main(self):
         # No private or public keys in the keyring
@@ -28,10 +31,14 @@ class DjangoGPGTestCase(TestCase):
         self.assertEqual(Key.get_all(self.gpg), [])
 
         # Test querying the keyservers
-        self.assertTrue(TEST_KEY_ID in [key_stub.key_id for key_stub in self.gpg.query(TEST_UIDS)])
+        self.assertTrue(
+            TEST_KEY_ID in [key_stub.key_id for key_stub in self.gpg.query(TEST_UIDS)]
+        )
 
         # Receive a public key from the keyserver
         self.gpg.receive_key(key_id=TEST_KEY_ID[-8:])
 
         # Check that the received key is indeed in the keyring
-        self.assertTrue(TEST_KEY_ID[-16:] in [key_stub.key_id for key_stub in Key.get_all(self.gpg)])
+        self.assertTrue(
+            TEST_KEY_ID[-16:] in [key_stub.key_id for key_stub in Key.get_all(self.gpg)]
+        )

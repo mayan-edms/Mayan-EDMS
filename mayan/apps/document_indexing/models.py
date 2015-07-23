@@ -15,9 +15,20 @@ from .managers import IndexManager, IndexInstanceNodeManager
 
 @python_2_unicode_compatible
 class Index(models.Model):
-    label = models.CharField(max_length=128, unique=True, verbose_name=_('Label'))
-    enabled = models.BooleanField(default=True, help_text=_('Causes this index to be visible and updated when document data changes.'), verbose_name=_('Enabled'))
-    document_types = models.ManyToManyField(DocumentType, verbose_name=_('Document types'))
+    label = models.CharField(
+        max_length=128, unique=True, verbose_name=_('Label')
+    )
+    enabled = models.BooleanField(
+        default=True,
+        help_text=_(
+            'Causes this index to be visible and updated when document data '
+            'changes.'
+        ),
+        verbose_name=_('Enabled')
+    )
+    document_types = models.ManyToManyField(
+        DocumentType, verbose_name=_('Document types')
+    )
 
     objects = IndexManager()
 
@@ -34,7 +45,10 @@ class Index(models.Model):
 
     def get_absolute_url(self):
         try:
-            return reverse('indexing:index_instance_node_view', args=[self.instance_root.pk])
+            return reverse(
+                'indexing:index_instance_node_view',
+                args=[self.instance_root.pk]
+            )
         except IndexInstanceNode.DoesNotExist:
             return '#'
 
@@ -44,7 +58,9 @@ class Index(models.Model):
         IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
     def get_document_types_names(self):
-        return ', '.join([unicode(document_type) for document_type in self.document_types.all()] or ['None'])
+        return ', '.join(
+            [unicode(document_type) for document_type in self.document_types.all()] or ['None']
+        )
 
     def get_instance_node_count(self):
         try:
@@ -59,11 +75,31 @@ class Index(models.Model):
 
 @python_2_unicode_compatible
 class IndexTemplateNode(MPTTModel):
-    parent = TreeForeignKey('self', null=True, blank=True)
-    index = models.ForeignKey(Index, verbose_name=_('Index'), related_name='node_templates')
-    expression = models.CharField(max_length=128, verbose_name=_('Indexing expression'), help_text=_('Enter a python string expression to be evaluated.'))
-    enabled = models.BooleanField(default=True, verbose_name=_('Enabled'), help_text=_('Causes this node to be visible and updated when document data changes.'))
-    link_documents = models.BooleanField(default=False, verbose_name=_('Link documents'), help_text=_('Check this option to have this node act as a container for documents and not as a parent for further nodes.'))
+    parent = TreeForeignKey('self', blank=True, null=True)
+    index = models.ForeignKey(
+        Index, related_name='node_templates', verbose_name=_('Index')
+    )
+    expression = models.CharField(
+        max_length=128,
+        help_text=_('Enter a python string expression to be evaluated.'),
+        verbose_name=_('Indexing expression')
+    )
+    enabled = models.BooleanField(
+        default=True,
+        help_text=_(
+            'Causes this node to be visible and updated when document data '
+            'changes.'
+        ),
+        verbose_name=_('Enabled')
+    )
+    link_documents = models.BooleanField(
+        default=False,
+        help_text=_(
+            'Check this option to have this node act as a container for '
+            'documents and not as a parent for further nodes.'
+        ),
+        verbose_name=_('Link documents')
+    )
 
     def __str__(self):
         if self.is_root_node():
@@ -79,9 +115,16 @@ class IndexTemplateNode(MPTTModel):
 @python_2_unicode_compatible
 class IndexInstanceNode(MPTTModel):
     parent = TreeForeignKey('self', null=True, blank=True)
-    index_template_node = models.ForeignKey(IndexTemplateNode, related_name='node_instance', verbose_name=_('Index template node'))
-    value = models.CharField(max_length=128, blank=True, verbose_name=_('Value'))
-    documents = models.ManyToManyField(Document, related_name='node_instances', verbose_name=_('Documents'))
+    index_template_node = models.ForeignKey(
+        IndexTemplateNode, related_name='node_instance',
+        verbose_name=_('Index template node')
+    )
+    value = models.CharField(
+        blank=True, max_length=128, verbose_name=_('Value')
+    )
+    documents = models.ManyToManyField(
+        Document, related_name='node_instances', verbose_name=_('Documents')
+    )
 
     objects = IndexInstanceNodeManager()
 

@@ -344,7 +344,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
     try:
         Permission.check_permissions(
             request.user, [permission_metadata_document_remove]
-            )
+        )
     except PermissionDenied:
         documents = AccessControlList.objects.filter_by_access(
             permission_metadata_document_remove, request.user, documents

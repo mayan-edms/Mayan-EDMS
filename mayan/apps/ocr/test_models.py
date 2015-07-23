@@ -13,7 +13,9 @@ from documents.test_models import (
 
 class DocumentOCRTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
@@ -38,7 +40,9 @@ class GermanOCRSupportTestCase(TestCase):
 
         # Get corresponding language code for German from the default language
         # choices list
-        language_code = [language for language in setting_language_choices.value if language[1] == 'German'][0][0]
+        language_code = [
+            language for language in setting_language_choices.value if language[1] == 'German'
+        ][0][0]
 
         self.assertEqual('deu', language_code)
 

@@ -112,7 +112,10 @@ def key_delete(request, fingerprint, key_type):
     return render_to_response('appearance/generic_confirm.html', {
         'title': _('Delete key'),
         'delete_view': True,
-        'message': _('Delete key %s? If you delete a public key that is part of a public/private pair the private key will be deleted as well.') % key,
+        'message': _(
+            'Delete key %s? If you delete a public key that is part of a '
+            'public/private pair the private key will be deleted as well.'
+        ) % key,
         'next': next,
         'previous': previous,
     }, context_instance=RequestContext(request))
@@ -148,7 +151,9 @@ def key_query(request):
                     'extra_columns': [
                         {
                             'name': _('ID'),
-                            'attribute': encapsulate(lambda item: '...{0}'.format(item.key_id[-16:])),
+                            'attribute': encapsulate(
+                                lambda item: '...{0}'.format(item.key_id[-16:])
+                            ),
                         },
                         {
                             'name': _('Type'),
@@ -156,11 +161,15 @@ def key_query(request):
                         },
                         {
                             'name': _('Creation date'),
-                            'attribute': encapsulate(lambda x: datetime.fromtimestamp(int(x.date)))
+                            'attribute': encapsulate(
+                                lambda x: datetime.fromtimestamp(int(x.date))
+                            )
                         },
                         {
                             'name': _('Expiration date'),
-                            'attribute': encapsulate(lambda x: datetime.fromtimestamp(int(x.expires)) if x.expires else _('No expiration'))
+                            'attribute': encapsulate(
+                                lambda x: datetime.fromtimestamp(int(x.expires)) if x.expires else _('No expiration')
+                            )
                         },
                         {
                             'name': _('Length'),
@@ -168,7 +177,9 @@ def key_query(request):
                         },
                         {
                             'name': _('Identities'),
-                            'attribute': encapsulate(lambda x: ', '.join(x.uids)),
+                            'attribute': encapsulate(
+                                lambda x: ', '.join(x.uids)
+                            ),
                         },
                     ]
                 },

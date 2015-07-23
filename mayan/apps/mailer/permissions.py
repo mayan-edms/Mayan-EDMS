@@ -6,5 +6,9 @@ from permissions import PermissionNamespace
 
 namespace = PermissionNamespace('mailing', _('Mailing'))
 
-permission_mailing_link = namespace.add_permission(name='mail_link', label=_('Send document link via email'))
-permission_mailing_send_document = namespace.add_permission(name='mail_document', label=_('Send document via email'))
+permission_mailing_link = namespace.add_permission(
+    name='mail_link', label=_('Send document link via email')
+)
+permission_mailing_send_document = namespace.add_permission(
+    name='mail_document', label=_('Send document via email')
+)

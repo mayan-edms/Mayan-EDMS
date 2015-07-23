@@ -24,7 +24,9 @@ class PermissionNamespace(object):
             return cls._registry[name]
         except KeyError:
             raise InvalidNamespace(
-                'Invalid namespace name. This is probably an obsolete permission namespace, execute the management command "purge_permissions" and try again.'
+                'Invalid namespace name. This is probably an obsolete '
+                'permission namespace, execute the management command '
+                '"purge_permissions" and try again.'
             )
 
     def __init__(self, name, label):
@@ -106,5 +108,7 @@ class Permission(object):
                 name=self.name,
             )
             stored_permission.volatile_permission = self
-            self.__class__._stored_permissions_cache[self.uuid] = stored_permission
+            self.__class__._stored_permissions_cache[
+                self.uuid
+            ] = stored_permission
             return stored_permission

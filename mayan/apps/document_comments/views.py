@@ -82,7 +82,9 @@ def comment_add(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_comment_create])
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_comment_create, request.user, document)
+        AccessControlList.objects.check_access(
+            permission_comment_create, request.user, document
+        )
 
     post_action_redirect = None
 
@@ -120,7 +122,9 @@ def comments_for_document(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_comment_view])
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_comment_view, request.user, document)
+        AccessControlList.objects.check_access(
+            permission_comment_view, request.user, document
+        )
 
     return render_to_response('appearance/generic_list.html', {
         'object': document,

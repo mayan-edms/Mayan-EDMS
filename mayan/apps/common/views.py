@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from json import dumps, loads
+from json import dumps
 
 from django.conf import settings
 from django.contrib import messages

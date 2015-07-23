@@ -22,7 +22,9 @@ class Tesseract(OCRBackendBase):
         # TODO: pass tesseract binary path to the pytesseract
         image = Image.open(self.converter.get_page())
         try:
-            result = pytesseract.image_to_string(image=image, lang=self.language)
+            result = pytesseract.image_to_string(
+                image=image, lang=self.language
+            )
             # If tesseract gives an error with a language parameter
             # re-run it with no language parameter
         except Exception as exception:

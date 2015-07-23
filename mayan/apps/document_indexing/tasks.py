@@ -17,7 +17,9 @@ logger = logging.getLogger(__name__)
 @app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
 def task_delete_empty_index_nodes(self):
     try:
-        rebuild_lock = Lock.acquire_lock('document_indexing_task_do_rebuild_all_indexes')
+        rebuild_lock = Lock.acquire_lock(
+            'document_indexing_task_do_rebuild_all_indexes'
+        )
     except LockError as exception:
         # A rebuild is happening, retry later
         raise self.retry(exc=exception)
@@ -31,13 +33,17 @@ def task_delete_empty_index_nodes(self):
 @app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
 def task_index_document(self, document_id):
     try:
-        rebuild_lock = Lock.acquire_lock('document_indexing_task_do_rebuild_all_indexes')
+        rebuild_lock = Lock.acquire_lock(
+            'document_indexing_task_do_rebuild_all_indexes'
+        )
     except LockError as exception:
         # A rebuild is happening, retry later
         raise self.retry(exc=exception)
     else:
         try:
-            lock = Lock.acquire_lock('document_indexing_task_update_index_document_%d' % document_id)
+            lock = Lock.acquire_lock(
+                'document_indexing_task_update_index_document_%d' % document_id
+            )
         except LockError as exception:
             # This document is being reindexed by another task, retry later
             raise self.retry(exc=exception)
@@ -45,13 +51,17 @@ def task_index_document(self, document_id):
             try:
                 document = Document.objects.get(pk=document_id)
             except Document.DoesNotExist:
-                # Document was deleted before we could execute, abort about updating
+                # Document was deleted before we could execute, abort about
+                # updating
                 pass
             else:
                 try:
                     IndexInstanceNode.objects.index_document(document)
                 except OperationalError as exception:
-                    logger.warning('Operational error while trying to index document: %s; %s', document, exception)
+                    logger.warning(
+                        'Operational error while trying to index document: %s; %s',
+                        document, exception
+                    )
                     lock.release()
                     raise self.retry(exc=exception)
                 else:
@@ -69,7 +79,9 @@ def task_do_rebuild_all_indexes(self):
         raise self.retry()
 
     try:
-        lock = Lock.acquire_lock('document_indexing_task_do_rebuild_all_indexes')
+        lock = Lock.acquire_lock(
+            'document_indexing_task_do_rebuild_all_indexes'
+        )
     except LockError as exception:
         # Another rebuild is happening, retry later
         raise self.retry(exc=exception)

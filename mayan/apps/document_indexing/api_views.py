@@ -13,12 +13,13 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import Index, IndexInstanceNode, IndexTemplateNode
-from .permissions import (permission_document_indexing_create,
-                          permission_document_indexing_delete,
-                          permission_document_indexing_edit,
-                          permission_document_indexing_view)
-from .serializers import (IndexInstanceNodeSerializer, IndexSerializer,
-                          IndexTemplateNodeSerializer)
+from .permissions import (
+    permission_document_indexing_create, permission_document_indexing_delete,
+    permission_document_indexing_edit, permission_document_indexing_view
+)
+from .serializers import (
+    IndexInstanceNodeSerializer, IndexSerializer, IndexTemplateNodeSerializer
+)
 
 
 class APIIndexListView(generics.ListCreateAPIView):
@@ -69,7 +70,8 @@ class APIIndexView(generics.RetrieveUpdateDestroyAPIView):
 
 class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
     """
-    Returns a list of all the documents contained by a particular index node instance.
+    Returns a list of all the documents contained by a particular index node
+    instance.
     """
 
     filter_backends = (MayanObjectPermissionsFilter,)
@@ -80,11 +82,18 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
         return DocumentSerializer
 
     def get_queryset(self):
-        index_node_instance = get_object_or_404(IndexInstanceNode, pk=self.kwargs['pk'])
+        index_node_instance = get_object_or_404(
+            IndexInstanceNode, pk=self.kwargs['pk']
+        )
         try:
-            Permission.check_permissions(self.request.user, [permission_document_indexing_view])
+            Permission.check_permissions(
+                self.request.user, [permission_document_indexing_view]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_indexing_view, self.request.user, index_node_instance.index)
+            AccessControlList.objects.check_access(
+                permission_document_indexing_view, self.request.user,
+                index_node_instance.index
+            )
 
         return index_node_instance.documents.all()
 
@@ -142,8 +151,12 @@ class APIDocumentIndexListView(generics.ListAPIView):
     def get_queryset(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
         try:
-            Permission.check_permissions(self.request.user, [permission_document_view])
+            Permission.check_permissions(
+                self.request.user, [permission_document_view]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_view, self.request.user, document)
+            AccessControlList.objects.check_access(
+                permission_document_view, self.request.user, document
+            )
 
         return document.node_instances.all()

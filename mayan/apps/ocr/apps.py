@@ -113,7 +113,7 @@ class OCRApp(MayanAppConfig):
             links=[link_document_submit], sources=[Document]
         )
         menu_object.bind_links(
-            links=[link_entry_re_queue, link_entry_delete],\
+            links=[link_entry_re_queue, link_entry_delete],
             sources=[DocumentVersionOCRError]
         )
         menu_object.bind_links(
@@ -121,7 +121,10 @@ class OCRApp(MayanAppConfig):
         )
         menu_secondary.bind_links(
             links=[link_entry_list],
-            sources=['ocr:entry_list', 'ocr:entry_delete_multiple', 'ocr:entry_re_queue_multiple', DocumentVersionOCRError]
+            sources=[
+                'ocr:entry_list', 'ocr:entry_delete_multiple',
+                'ocr:entry_re_queue_multiple', DocumentVersionOCRError
+            ]
         )
         menu_tools.bind_links(
             links=[link_document_submit_all, link_entry_list]

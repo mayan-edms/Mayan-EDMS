@@ -22,4 +22,6 @@ class DocumentMailForm(forms.Form):
 
     email = forms.EmailField(label=_('Email address'))
     subject = forms.CharField(label=_('Subject'), required=False)
-    body = forms.CharField(label=_('Body'), widget=forms.widgets.Textarea(), required=False)
+    body = forms.CharField(
+        label=_('Body'), widget=forms.widgets.Textarea(), required=False
+    )

@@ -39,7 +39,7 @@ urlpatterns = patterns(
     url(
         r'^user/multiple/delete/$', 'user_multiple_delete',
         name='user_multiple_delete'
-        ),
+    ),
     url(
         r'^user/(?P<user_id>\d+)/set_password/$', 'user_set_password',
         name='user_set_password'

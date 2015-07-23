@@ -44,7 +44,7 @@ class DocumentSubmitView(ConfirmView):
         document.submit_for_ocr()
         messages.success(
             request,
-             _('Document: %(document)s was added to the OCR queue.') % {
+            _('Document: %(document)s was added to the OCR queue.') % {
                 'document': document
             }
         )
@@ -158,7 +158,11 @@ def entry_delete(request, pk=None, pk_list=None):
     if pk:
         entries = [get_object_or_404(DocumentVersionOCRError, pk=pk)]
     elif pk_list:
-        entries = [get_object_or_404(DocumentVersionOCRError, pk=pk) for pk in pk_list.split(',')]
+        entries = [
+            get_object_or_404(
+                DocumentVersionOCRError, pk=pk
+            ) for pk in pk_list.split(',')
+        ]
     else:
         messages.error(request, _('Make at least one selection.'))
         return HttpResponseRedirect(

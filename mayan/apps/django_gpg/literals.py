@@ -41,7 +41,10 @@ SIGNATURE_STATES = {
         'text': _('Signature error.'),
     },
     SIGNATURE_STATE_NO_PUBLIC_KEY: {
-        'text': _('Document is signed but no public key is available for verification.'),
+        'text': _(
+            'Document is signed but no public key is available for '
+            'verification.'
+        ),
     },
     SIGNATURE_STATE_GOOD: {
         'text': _('Document is signed, and signature is good.'),

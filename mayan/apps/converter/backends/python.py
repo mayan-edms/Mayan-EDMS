@@ -56,7 +56,10 @@ class Python(ConverterBase):
 
             image_buffer = io.BytesIO()
             try:
-                pdftoppm(input_filepath, f=self.page_number + 1, l=self.page_number + 1, _out=image_buffer)
+                pdftoppm(
+                    input_filepath, f=self.page_number + 1,
+                    l=self.page_number + 1, _out=image_buffer
+                )
                 image_buffer.seek(0)
                 return Image.open(image_buffer)
             finally:

@@ -30,7 +30,9 @@ class IndexInstanceNodeManager(models.Manager):
             parent = instance_node.parent
             if parent:
                 instance_node.delete()
-                IndexInstanceNodeManager.delete_empty_index_nodes_recursive(parent)
+                IndexInstanceNodeManager.delete_empty_index_nodes_recursive(
+                    parent
+                )
 
     def cascade_eval(self, document, template_node, parent_index_instance=None):
         """
@@ -41,14 +43,26 @@ class IndexInstanceNodeManager(models.Manager):
 
         if template_node.enabled:
             try:
-                result = eval(template_node.expression, {'document': document}, setting_available_indexing_functions.value)
+                result = eval(
+                    template_node.expression, {'document': document},
+                    setting_available_indexing_functions.value
+                )
             except Exception as exception:
-                error_message = _('Error indexing document: %(document)s; expression: %(expression)s; %(exception)s') % {
-                    'document': document, 'expression': template_node.expression, 'exception': exception}
+                error_message = _(
+                    'Error indexing document: %(document)s; expression: '
+                    '%(expression)s; %(exception)s'
+                ) % {
+                    'document': document,
+                    'expression': template_node.expression,
+                    'exception': exception
+                }
                 logger.debug(error_message)
             else:
                 if result:
-                    index_instance, created = self.get_or_create(index_template_node=template_node, value=result, parent=parent_index_instance)
+                    index_instance, created = self.get_or_create(
+                        index_template_node=template_node, value=result,
+                        parent=parent_index_instance
+                    )
 
                     if template_node.link_documents:
                         index_instance.documents.add(document)
@@ -66,7 +80,9 @@ class IndexInstanceNodeManager(models.Manager):
         """
 
         for instance_node in self.filter(documents__isnull=True, parent__isnull=False):
-            IndexInstanceNodeManager.delete_empty_index_nodes_recursive(instance_node)
+            IndexInstanceNodeManager.delete_empty_index_nodes_recursive(
+                instance_node
+            )
 
     def index_document(self, document):
         """
@@ -80,7 +96,9 @@ class IndexInstanceNodeManager(models.Manager):
 
             # Only update indexes where the document type is found
             for index in Index.objects.filter(enabled=True, document_types=document.document_type):
-                root_instance, created = self.get_or_create(index_template_node=index.template_root, parent=None)
+                root_instance, created = self.get_or_create(
+                    index_template_node=index.template_root, parent=None
+                )
                 for template_node in index.template_root.get_children():
                     self.cascade_eval(document, template_node, root_instance)
 

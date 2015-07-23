@@ -15,7 +15,10 @@ setting_unpaper_path = namespace.add_setting(
 )
 setting_pdftotext_path = namespace.add_setting(
     global_name='OCR_PDFTOTEXT_PATH', default='/usr/bin/pdftotext',
-    help_text=_('File path to poppler\'s pdftotext program used to extract text from PDF files.'),
+    help_text=_(
+        'File path to poppler\'s pdftotext program used to extract text '
+        'from PDF files.'
+    ),
     is_path=True
 )
 setting_ocr_backend = namespace.add_setting(

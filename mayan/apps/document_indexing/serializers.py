@@ -21,7 +21,10 @@ IndexInstanceNodeSerializer.base_fields['children'] = IndexInstanceNodeSerialize
 
 class IndexTemplateNodeSerializer(serializers.ModelSerializer):
     class Meta:
-        fields = ('id', 'parent', 'index', 'expression', 'enabled', 'link_documents', 'level')
+        fields = (
+            'id', 'parent', 'index', 'expression', 'enabled', 'link_documents',
+            'level'
+        )
         model = IndexTemplateNode
 
 
@@ -30,5 +33,8 @@ class IndexSerializer(serializers.ModelSerializer):
     instance_root = IndexInstanceNodeSerializer(read_only=True)
 
     class Meta:
-        fields = ('id', 'label', 'enabled', 'document_types', 'node_templates', 'instance_root')
+        fields = (
+            'id', 'label', 'enabled', 'document_types', 'node_templates',
+            'instance_root'
+        )
         model = Index

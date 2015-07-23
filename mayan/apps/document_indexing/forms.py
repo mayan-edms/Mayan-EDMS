@@ -16,7 +16,12 @@ class IndexTemplateNodeForm(forms.ModelForm):
         super(IndexTemplateNodeForm, self).__init__(*args, **kwargs)
         self.fields['index'].widget = forms.widgets.HiddenInput()
         self.fields['parent'].widget = forms.widgets.HiddenInput()
-        self.fields['expression'].help_text = ' '.join([unicode(self.fields['expression'].help_text), ModelAttribute.help_text_for(Document, type_names=['indexing'])])
+        self.fields['expression'].help_text = ' '.join(
+            [
+                unicode(self.fields['expression'].help_text),
+                ModelAttribute.help_text_for(Document, type_names=['indexing'])
+            ]
+        )
 
     class Meta:
         fields = ('parent', 'index', 'expression', 'enabled', 'link_documents')

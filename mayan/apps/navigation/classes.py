@@ -77,12 +77,16 @@ class Menu(object):
         if source:
             resolved_navigation_object_list = [source]
         else:
-            navigation_object_list = context.get('navigation_object_list', ['object'])
+            navigation_object_list = context.get(
+                'navigation_object_list', ['object']
+            )
 
             # Multiple objects
             for navigation_object in navigation_object_list:
                 try:
-                    resolved_navigation_object_list.append(Variable(navigation_object).resolve(context))
+                    resolved_navigation_object_list.append(
+                        Variable(navigation_object).resolve(context)
+                    )
                 except VariableDoesNotExist:
                     pass
 
@@ -93,10 +97,14 @@ class Menu(object):
                 try:
                     if inspect.isclass(bound_source) and type(resolved_navigation_object) == bound_source or source == CombinedSource(obj=resolved_navigation_object.__class__, view=current_view):
                         for link in links:
-                            resolved_link = link.resolve(context=context, resolved_object=resolved_navigation_object)
+                            resolved_link = link.resolve(
+                                context=context,
+                                resolved_object=resolved_navigation_object
+                            )
                             if resolved_link:
                                 resolved_links.append(resolved_link)
-                        break  # No need for further content object match testing
+                        # No need for further content object match testing
+                        break
                 except TypeError:
                     # When source is a dictionary
                     pass
@@ -164,7 +172,9 @@ class Link(object):
                 # access to the instance.
                 if resolved_object:
                     try:
-                        AccessControlList.objects.check_access(self.permissions, request.user, resolved_object)
+                        AccessControlList.objects.check_access(
+                            self.permissions, request.user, resolved_object
+                        )
                     except PermissionDenied:
                         return None
                 else:
@@ -205,7 +215,9 @@ class Link(object):
         kwargs = {key: Variable(value) for key, value in kwargs.iteritems()}
 
         # Use Django's exact {% url %} code to resolve the link
-        node = URLNode(view_name=view_name, args=args, kwargs=kwargs, asvar=None)
+        node = URLNode(
+            view_name=view_name, args=args, kwargs=kwargs, asvar=None
+        )
 
         resolved_link.url = node.render(context)
 
@@ -218,7 +230,18 @@ class Link(object):
         # Lets a new link keep the same URL query string of the current URL
         if self.keep_query:
             # Sometimes we are required to remove a key from the URL QS
-            previous_path = smart_unicode(urllib.unquote_plus(smart_str(request.get_full_path()) or smart_str(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))))
+            previous_path = smart_unicode(
+                urllib.unquote_plus(
+                    smart_str(
+                        request.get_full_path()
+                    ) or smart_str(
+                        request.META.get(
+                            'HTTP_REFERER',
+                            reverse(settings.LOGIN_REDIRECT_URL)
+                        )
+                    )
+                )
+            )
             query_string = urlparse.urlparse(previous_path).query
             parsed_query_string = urlparse.parse_qs(query_string)
 
@@ -228,7 +251,10 @@ class Link(object):
                 except KeyError:
                     pass
 
-            resolved_link.url = '%s?%s' % (urlquote(resolved_link.url), urlencode(parsed_query_string, doseq=True))
+            resolved_link.url = '%s?%s' % (
+                urlquote(resolved_link.url),
+                urlencode(parsed_query_string, doseq=True)
+            )
 
         # Helps highligh in the UI the current link in effect
         resolved_link.active = self.view == current_view
@@ -257,7 +283,9 @@ class SourceColumn(object):
 
     def __init__(self, source, label, attribute):
         self.__class__._registry.setdefault(source, [])
-        self.__class__._registry[source].append({'label': label, 'attribute': attribute})
+        self.__class__._registry[source].append(
+            {'label': label, 'attribute': attribute}
+        )
 
 
 class CombinedSource(object):

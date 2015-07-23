@@ -86,7 +86,8 @@ class TransformationManager(models.Manager):
                         )
                     except Exception as exception:
                         logger.error(
-                            'Error while parsing transformation "%s", arguments "%s", for object "%s"; %s',
+                            'Error while parsing transformation "%s", '
+                            'arguments "%s", for object "%s"; %s',
                             transformation, transformation.arguments, obj,
                             exception
                         )

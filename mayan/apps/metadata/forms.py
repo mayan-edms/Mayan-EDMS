@@ -120,7 +120,6 @@ class MetadataForm(forms.Form):
                         attrs={'readonly': 'readonly'}
                     )
 
-
     id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
 
     name = forms.CharField(

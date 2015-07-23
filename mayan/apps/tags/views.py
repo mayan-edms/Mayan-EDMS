@@ -171,7 +171,9 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         tags = [get_object_or_404(Tag, pk=tag_id)]
         post_action_redirect = reverse('tags:tag_list')
     elif tag_id_list:
-        tags = [get_object_or_404(Tag, pk=tag_id) for tag_id in tag_id_list.split(',')]
+        tags = [
+            get_object_or_404(Tag, pk=tag_id) for tag_id in tag_id_list.split(',')
+        ]
     else:
         messages.error(request, _('Must provide at least one tag.'))
         return HttpResponseRedirect(
@@ -274,7 +276,9 @@ class DocumentTagListView(TagListView):
                 permission_document_view, request.user, self.document
             )
 
-        return super(DocumentTagListView, self).dispatch(request, *args, **kwargs)
+        return super(
+            DocumentTagListView, self
+        ).dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
         return {
@@ -301,7 +305,9 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        documents = [
+            get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')
+        ]
     else:
         messages.error(
             request, _('Must provide at least one tagged document.')
@@ -400,10 +406,11 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
             for tag in tags:
                 if tag not in document.tags.all():
                     messages.warning(
-                        request, _('Document "%(document)s" wasn\'t tagged as "%(tag)s"'
-                    ) % {
-                        'document': document, 'tag': tag
-                    }
+                        request, _(
+                            'Document "%(document)s" wasn\'t tagged as "%(tag)s"'
+                        ) % {
+                            'document': document, 'tag': tag
+                        }
                     )
                 else:
                     tag.documents.remove(document)
@@ -417,8 +424,9 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
 
         return HttpResponseRedirect(next)
     else:
-        return render_to_response(template, context,
-                                  context_instance=RequestContext(request))
+        return render_to_response(
+            template, context, context_instance=RequestContext(request)
+        )
 
 
 def single_document_multiple_tag_remove(request, document_id):

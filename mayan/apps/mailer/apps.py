@@ -40,4 +40,8 @@ class MailerApp(MayanAppConfig):
             }
         )
 
-        menu_object.bind_links(links=[link_send_document_link, link_send_document], sources=[Document])
+        menu_object.bind_links(
+            links=[
+                link_send_document_link, link_send_document
+            ], sources=[Document]
+        )
