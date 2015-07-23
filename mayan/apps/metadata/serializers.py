@@ -28,9 +28,16 @@ class DocumentTypeMetadataTypeSerializer(serializers.ModelSerializer):
 
 
 class DocumentNewMetadataSerializer(serializers.Serializer):
-    metadata_type = serializers.IntegerField(help_text=_('Primary key of the metadata type to be added.'))
-    value = serializers.CharField(max_length=255, help_text=_('Value of the corresponding metadata type instance.'))
+    metadata_type = serializers.IntegerField(
+        help_text=_('Primary key of the metadata type to be added.')
+    )
+    value = serializers.CharField(
+        max_length=255,
+        help_text=_('Value of the corresponding metadata type instance.')
+    )
 
 
 class DocumentTypeNewMetadataTypeSerializer(serializers.Serializer):
-    metadata_type = serializers.IntegerField(help_text=_('Primary key of the metadata type to be added.'))
+    metadata_type = serializers.IntegerField(
+        help_text=_('Primary key of the metadata type to be added.')
+    )

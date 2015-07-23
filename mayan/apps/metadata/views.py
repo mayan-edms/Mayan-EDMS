@@ -41,30 +41,47 @@ class MissingRequiredMetadataDocumentListView(DocumentListView):
     }
 
     def get_document_queryset(self):
-        return Document.objects.filter(document_type__metadata__required=True, metadata__value__isnull=True)
+        return Document.objects.filter(
+            document_type__metadata__required=True,
+            metadata__value__isnull=True
+        )
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):
     if document_id:
         document_id_list = unicode(document_id)
 
-    documents = Document.objects.select_related('metadata').filter(pk__in=document_id_list.split(','))
+    documents = Document.objects.select_related('metadata').filter(
+        pk__in=document_id_list.split(',')
+    )
 
     try:
-        Permission.check_permissions(request.user, [permission_metadata_document_edit])
+        Permission.check_permissions(
+            request.user, [permission_metadata_document_edit]
+        )
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_metadata_document_edit, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_metadata_document_edit, request.user, documents
+        )
 
     if not documents:
         if document_id:
             raise Http404
         else:
             messages.error(request, _('Must provide at least one document.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+            return HttpResponseRedirect(
+                request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
+            )
 
     if len(set([document.document_type.pk for document in documents])) > 1:
         messages.error(request, _('Only select documents of the same type.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     if set(documents.values_list('metadata__value', flat=True)) == set([None]):
         message = ungettext(
@@ -73,11 +90,19 @@ def metadata_edit(request, document_id=None, document_id_list=None):
             len(documents)
         )
         messages.warning(request, message)
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     post_action_redirect = reverse('documents:document_list_recent')
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
+    next = request.POST.get(
+        'next', request.GET.get(
+            'next', request.META.get('HTTP_REFERER', post_action_redirect)
+        )
+    )
 
     metadata = {}
     initial = []
@@ -97,7 +122,9 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         initial.append({
             'metadata_type': key,
             'value': ', '.join(value) if value else '',
-            'required': key in document.document_type.metadata.filter(required=True),
+            'required': key in document.document_type.metadata.filter(
+                required=True
+            ),
         })
 
     formset = MetadataFormSet(initial=initial)
@@ -119,10 +146,19 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(request, _('Error editing metadata for document %(document)s; %(exception)s.') % {
-                                'document': document, 'exception': ', '.join(exception.messages)})
+                            messages.error(
+                                request, _(
+                                    'Error editing metadata for document %(document)s; %(exception)s.'
+                                ) % {
+                                    'document': document,
+                                    'exception': ', '.join(exception.messages)
+                                }
+                            )
                 else:
-                    messages.success(request, _('Metadata for document %s edited successfully.') % document)
+                    messages.success(
+                        request,
+                        _('Metadata for document %s edited successfully.') % document
+                    )
 
             return HttpResponseRedirect(next)
 
@@ -146,54 +182,102 @@ def metadata_edit(request, document_id=None, document_id_list=None):
 
 
 def metadata_multiple_edit(request):
-    return metadata_edit(request, document_id_list=request.GET.get('id_list', ''))
+    return metadata_edit(
+        request, document_id_list=request.GET.get('id_list', '')
+    )
 
 
 def metadata_add(request, document_id=None, document_id_list=None):
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
     elif document_id_list:
-        documents = [get_object_or_404(Document.objects.select_related('document_type'), pk=document_id) for document_id in document_id_list.split(',')]
+        documents = [
+            get_object_or_404(Document.objects.select_related('document_type'), pk=document_id) for document_id in document_id_list.split(',')
+        ]
         if len(set([document.document_type.pk for document in documents])) > 1:
-            messages.error(request, _('Only select documents of the same type.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+            messages.error(
+                request, _('Only select documents of the same type.')
+            )
+            return HttpResponseRedirect(
+                request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
+            )
 
     try:
-        Permission.check_permissions(request.user, [permission_metadata_document_add])
+        Permission.check_permissions(
+            request.user, [permission_metadata_document_add]
+        )
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_metadata_document_add, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_metadata_document_add, request.user, documents
+        )
 
     if not documents:
         messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     for document in documents:
         document.add_as_recent_document_for_user(request.user)
 
     post_action_redirect = reverse('documents:document_list_recent')
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
+    next = request.POST.get(
+        'next',
+        request.GET.get(
+            'next', request.META.get('HTTP_REFERER', post_action_redirect)
+        )
+    )
 
     if request.method == 'POST':
-        form = AddMetadataForm(data=request.POST, document_type=document.document_type)
+        form = AddMetadataForm(
+            data=request.POST, document_type=document.document_type
+        )
         if form.is_valid():
             metadata_type = form.cleaned_data['metadata_type']
             for document in documents:
                 try:
-                    document_metadata, created = DocumentMetadata.objects.get_or_create(document=document, metadata_type=metadata_type.metadata_type, defaults={'value': ''})
+                    document_metadata, created = DocumentMetadata.objects.get_or_create(
+                        document=document,
+                        metadata_type=metadata_type.metadata_type,
+                        defaults={'value': ''}
+                    )
                 except Exception as exception:
                     if getattr(settings, 'DEBUG', False):
                         raise
                     else:
-                        messages.error(request, _('Error adding metadata type "%(metadata_type)s" to document: %(document)s; %(exception)s') % {
-                            'metadata_type': metadata_type, 'document': document, 'exception': ', '.join(getattr(exception, 'messages', exception))})
+                        messages.error(
+                            request,
+                            _(
+                                'Error adding metadata type "%(metadata_type)s" to document: %(document)s; %(exception)s'
+                            ) % {
+                                'metadata_type': metadata_type,
+                                'document': document,
+                                'exception': ', '.join(getattr(exception, 'messages', exception))
+                            }
+                        )
                 else:
                     if created:
-                        messages.success(request, _('Metadata type: %(metadata_type)s successfully added to document %(document)s.') % {
-                            'metadata_type': metadata_type, 'document': document})
+                        messages.success(
+                            request,
+                            _(
+                                'Metadata type: %(metadata_type)s successfully added to document %(document)s.'
+                            ) % {
+                                'metadata_type': metadata_type, 'document': document
+                            }
+                        )
                     else:
-                        messages.warning(request, _('Metadata type: %(metadata_type)s already present in document %(document)s.') % {
-                            'metadata_type': metadata_type, 'document': document})
+                        messages.warning(
+                            request, _(
+                                'Metadata type: %(metadata_type)s already present in document %(document)s.'
+                            ) % {
+                                'metadata_type': metadata_type, 'document': document
+                            }
+                        )
 
             if len(documents) == 1:
                 return HttpResponseRedirect('%s?%s' % (
@@ -228,30 +312,46 @@ def metadata_add(request, document_id=None, document_id_list=None):
 
 
 def metadata_multiple_add(request):
-    return metadata_add(request, document_id_list=request.GET.get('id_list', []))
+    return metadata_add(
+        request, document_id_list=request.GET.get('id_list', [])
+    )
 
 
 def metadata_remove(request, document_id=None, document_id_list=None):
     if document_id:
         document_id_list = unicode(document_id)
 
-    documents = Document.objects.select_related('metadata').filter(pk__in=document_id_list.split(','))
+    documents = Document.objects.select_related('metadata').filter(
+        pk__in=document_id_list.split(',')
+    )
 
     try:
-        Permission.check_permissions(request.user, [permission_metadata_document_remove])
+        Permission.check_permissions(
+            request.user, [permission_metadata_document_remove]
+            )
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_metadata_document_remove, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_metadata_document_remove, request.user, documents
+        )
 
     if not documents:
         if document_id:
             raise Http404
         else:
             messages.error(request, _('Must provide at least one document.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+            return HttpResponseRedirect(
+                request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
+            )
 
     if len(set([document.document_type.pk for document in documents])) > 1:
         messages.error(request, _('Only select documents of the same type.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     if set(documents.values_list('metadata__value', flat=True)) == set([None]):
         message = ungettext(
@@ -260,7 +360,11 @@ def metadata_remove(request, document_id=None, document_id_list=None):
             len(documents)
         )
         messages.warning(request, message)
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     post_action_redirect = reverse('documents:document_list_recent')
 
@@ -413,20 +517,36 @@ class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
         return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return AssignRemoveView.generate_choices(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=self.get_object().metadata.values_list('metadata_type', flat=True))))
+        return AssignRemoveView.generate_choices(
+            set(MetadataType.objects.all()) - set(
+                MetadataType.objects.filter(
+                    id__in=self.get_object().metadata.values_list(
+                        'metadata_type', flat=True
+                    )
+                )
+            )
+        )
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(self.get_object().metadata.filter(required=False))
+        return AssignRemoveView.generate_choices(
+            self.get_object().metadata.filter(required=False)
+        )
 
     def remove(self, item):
         item.delete()
 
     def get_context_data(self, **kwargs):
-        data = super(SetupDocumentTypeMetadataOptionalView, self).get_context_data(**kwargs)
-        data.update({
-            'object': self.get_object(),
-            'title': _('Optional metadata types for document type: %s') % self.get_object(),
-        })
+        data = super(
+            SetupDocumentTypeMetadataOptionalView, self
+        ).get_context_data(**kwargs)
+        data.update(
+            {
+                'object': self.get_object(),
+                'title': _(
+                    'Optional metadata types for document type: %s'
+                ) % self.get_object(),
+            }
+        )
 
         return data
 
@@ -436,13 +556,21 @@ class SetupDocumentTypeMetadataRequiredView(SetupDocumentTypeMetadataOptionalVie
         self.get_object().metadata.create(metadata_type=item, required=True)
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(self.get_object().metadata.filter(required=True))
+        return AssignRemoveView.generate_choices(
+            self.get_object().metadata.filter(required=True)
+        )
 
     def get_context_data(self, **kwargs):
-        data = super(SetupDocumentTypeMetadataRequiredView, self).get_context_data(**kwargs)
-        data.update({
-            'object': self.get_object(),
-            'title': _('Required metadata types for document type: %s') % self.get_object(),
-        })
+        data = super(
+            SetupDocumentTypeMetadataRequiredView, self
+        ).get_context_data(**kwargs)
+        data.update(
+            {
+                'object': self.get_object(),
+                'title': _(
+                    'Required metadata types for document type: %s'
+                ) % self.get_object(),
+            }
+        )
 
         return data
