@@ -20,11 +20,11 @@ class DynamicSearchApp(MayanAppConfig):
         APIEndPoint('search', app_name='dynamic_search')
 
         menu_facet.bind_links(
-            links=[link_search, link_search_advanced],
-            sources=[
+            links=(link_search, link_search_advanced),
+            sources=(
                 'search:search', 'search:search_advanced', 'search:results'
-            ]
+            )
         )
         menu_sidebar.bind_links(
-            links=[link_search_again], sources=['search:results']
+            links=(link_search_again,), sources=('search:results',)
         )

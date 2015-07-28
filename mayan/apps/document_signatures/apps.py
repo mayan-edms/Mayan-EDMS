@@ -77,17 +77,17 @@ class DocumentSignaturesApp(MayanAppConfig):
         )
 
         menu_facet.bind_links(
-            links=[link_document_verify], sources=[Document]
+            links=(link_document_verify,), sources=(Document,)
         )
         menu_sidebar.bind_links(
-            links=[
+            links=(
                 link_document_signature_upload,
                 link_document_signature_download,
                 link_document_signature_delete
-            ], sources=[
+            ), sources=(
                 'signatures:document_verify',
                 'signatures:document_signature_upload',
                 'signatures:document_signature_download',
                 'signatures:document_signature_delete'
-            ]
+            )
         )

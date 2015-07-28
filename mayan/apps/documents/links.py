@@ -39,92 +39,92 @@ def is_min_zoom(context):
 
 # Facet
 link_document_preview = Link(
-    permissions=[permission_document_view], text=_('Preview'),
+    permissions=(permission_document_view,), text=_('Preview'),
     view='documents:document_preview', args='object.id'
 )
 link_document_properties = Link(
-    permissions=[permission_document_view], text=_('Properties'),
+    permissions=(permission_document_view,), text=_('Properties'),
     view='documents:document_properties', args='object.id'
 )
 link_document_version_list = Link(
-    permissions=[permission_document_view], text=_('Versions'),
+    permissions=(permission_document_view,), text=_('Versions'),
     view='documents:document_version_list', args='object.pk'
 )
 link_document_pages = Link(
-    permissions=[permission_document_view], text=_('Pages'),
+    permissions=(permission_document_view,), text=_('Pages'),
     view='documents:document_pages', args='resolved_object.pk'
 )
 
 # Actions
 link_document_clear_transformations = Link(
-    permissions=[permission_transformation_delete],
+    permissions=(permission_transformation_delete,),
     text=_('Clear transformations'),
     view='documents:document_clear_transformations', args='object.id'
 )
 link_document_delete = Link(
-    permissions=[permission_document_delete], tags='dangerous',
+    permissions=(permission_document_delete,), tags='dangerous',
     text=_('Delete'), view='documents:document_delete', args='object.id'
 )
 link_document_trash = Link(
-    permissions=[permission_document_trash], tags='dangerous',
+    permissions=(permission_document_trash,), tags='dangerous',
     text=_('Move to trash'), view='documents:document_trash', args='object.id'
 )
 link_document_edit = Link(
-    permissions=[permission_document_properties_edit],
+    permissions=(permission_document_properties_edit,),
     text=_('Edit properties'), view='documents:document_edit',
     args='object.id'
 )
 link_document_document_type_edit = Link(
-    permissions=[permission_document_properties_edit], text=_('Change type'),
+    permissions=(permission_document_properties_edit,), text=_('Change type'),
     view='documents:document_document_type_edit', args='object.id'
 )
 link_document_download = Link(
-    permissions=[permission_document_download], text=_('Download'),
+    permissions=(permission_document_download,), text=_('Download'),
     view='documents:document_download', args='object.id'
 )
 link_document_print = Link(
-    permissions=[permission_document_print], text=_('Print'),
+    permissions=(permission_document_print,), text=_('Print'),
     view='documents:document_print', args='object.id'
 )
 link_document_update_page_count = Link(
-    permissions=[permission_document_tools], text=_('Reset page count'),
+    permissions=(permission_document_tools,), text=_('Reset page count'),
     view='documents:document_update_page_count', args='object.pk'
 )
 link_document_restore = Link(
-    permissions=[permission_document_restore], text=_('Restore'),
+    permissions=(permission_document_restore,), text=_('Restore'),
     view='documents:document_restore', args='object.pk'
 )
 link_document_multiple_clear_transformations = Link(
-    permissions=[permission_transformation_delete],
+    permissions=(permission_transformation_delete,),
     text=_('Clear transformations'),
     view='documents:document_multiple_clear_transformations'
 )
 link_document_multiple_trash = Link(
-    permissions=[permission_document_trash], tags='dangerous',
+    permissions=(permission_document_trash,), tags='dangerous',
     text=_('Move to trash'), view='documents:document_multiple_trash'
 )
 link_document_multiple_delete = Link(
-    permissions=[permission_document_delete], tags='dangerous',
+    permissions=(permission_document_delete,), tags='dangerous',
     text=_('Delete'), view='documents:document_multiple_delete'
 )
 link_document_multiple_document_type_edit = Link(
-    permissions=[permission_document_properties_edit], text=_('Change type'),
+    permissions=(permission_document_properties_edit,), text=_('Change type'),
     view='documents:document_multiple_document_type_edit'
 )
 link_document_multiple_download = Link(
-    permissions=[permission_document_download], text=_('Download'),
+    permissions=(permission_document_download,), text=_('Download'),
     view='documents:document_multiple_download'
 )
 link_document_multiple_update_page_count = Link(
-    permissions=[permission_document_tools], text=_('Reset page count'),
+    permissions=(permission_document_tools,), text=_('Reset page count'),
     view='documents:document_multiple_update_page_count'
 )
 link_document_multiple_restore = Link(
-    permissions=[permission_document_restore], text=_('Restore'),
+    permissions=(permission_document_restore,), text=_('Restore'),
     view='documents:document_multiple_restore'
 )
 link_document_version_download = Link(
-    args='object.pk', permissions=[permission_document_download],
+    args='object.pk', permissions=(permission_document_download,),
     text=_('Download'), view='documents:document_version_download'
 )
 
@@ -148,30 +148,30 @@ link_clear_image_cache = Link(
         'Clear the graphics representations used to speed up the documents\' '
         'display and interactive transformations results.'
     ),
-    permissions=[permission_document_tools], text=_('Clear document cache'),
+    permissions=(permission_document_tools,), text=_('Clear document cache'),
     view='documents:document_clear_image_cache'
 )
 link_trash_can_empty = Link(
-    permissions=[permission_empty_trash], text=_('Empty trash'),
+    permissions=(permission_empty_trash,), text=_('Empty trash'),
     view='documents:trash_can_empty'
 )
 
 # Document pages
 link_document_page_navigation_first = Link(
     conditional_disable=is_first_page, icon='fa fa-step-backward',
-    keep_query=True, permissions=[permission_document_view],
+    keep_query=True, permissions=(permission_document_view,),
     text=_('First page'), view='documents:document_page_navigation_first',
     args='resolved_object.pk'
 )
 link_document_page_navigation_last = Link(
     conditional_disable=is_last_page, icon='fa fa-step-forward',
     keep_query=True, text=_('Last page'),
-    permissions=[permission_document_view],
+    permissions=(permission_document_view,),
     view='documents:document_page_navigation_last', args='resolved_object.pk'
 )
 link_document_page_navigation_previous = Link(
     conditional_disable=is_first_page, icon='fa fa-arrow-left',
-    keep_query=True, permissions=[permission_document_view],
+    keep_query=True, permissions=(permission_document_view,),
     text=_('Previous page'),
     view='documents:document_page_navigation_previous',
     args='resolved_object.pk'
@@ -179,88 +179,88 @@ link_document_page_navigation_previous = Link(
 link_document_page_navigation_next = Link(
     conditional_disable=is_last_page, icon='fa fa-arrow-right',
     keep_query=True, text=_('Next page'),
-    permissions=[permission_document_view],
+    permissions=(permission_document_view,),
     view='documents:document_page_navigation_next', args='resolved_object.pk'
 )
 link_document_page_return = Link(
-    icon='fa fa-file', permissions=[permission_document_view],
+    icon='fa fa-file', permissions=(permission_document_view,),
     text=_('Document'), view='documents:document_preview',
     args='resolved_object.document.pk'
 )
 link_document_page_rotate_left = Link(
-    icon='fa fa-rotate-left', permissions=[permission_document_view],
+    icon='fa fa-rotate-left', permissions=(permission_document_view,),
     text=_('Rotate left'), view='documents:document_page_rotate_left',
     args='resolved_object.pk'
 )
 link_document_page_rotate_right = Link(
-    icon='fa fa-rotate-right', permissions=[permission_document_view],
+    icon='fa fa-rotate-right', permissions=(permission_document_view,),
     text=_('Rotate right'), view='documents:document_page_rotate_right',
     args='resolved_object.pk'
 )
 link_document_page_view = Link(
-    permissions=[permission_document_view], text=_('Page image'),
+    permissions=(permission_document_view,), text=_('Page image'),
     view='documents:document_page_view', args='resolved_object.pk'
 )
 link_document_page_view_reset = Link(
-    permissions=[permission_document_view], text=_('Reset view'),
+    permissions=(permission_document_view,), text=_('Reset view'),
     view='documents:document_page_view_reset', args='resolved_object.pk'
 )
 link_document_page_zoom_in = Link(
     conditional_disable=is_max_zoom, icon='fa fa-search-plus',
-    permissions=[permission_document_view], text=_('Zoom in'),
+    permissions=(permission_document_view,), text=_('Zoom in'),
     view='documents:document_page_zoom_in', args='resolved_object.pk'
 )
 link_document_page_zoom_out = Link(
     conditional_disable=is_min_zoom, icon='fa fa-search-minus',
-    permissions=[permission_document_view], text=_('Zoom out'),
+    permissions=(permission_document_view,), text=_('Zoom out'),
     view='documents:document_page_zoom_out', args='resolved_object.pk'
 )
 
 # Document versions
 link_document_version_revert = Link(
     condition=is_not_current_version,
-    permissions=[permission_document_version_revert], tags='dangerous',
+    permissions=(permission_document_version_revert,), tags='dangerous',
     text=_('Revert'), view='documents:document_version_revert',
     args='object.pk'
 )
 
 # Document type related links
 link_document_type_create = Link(
-    permissions=[permission_document_type_create],
+    permissions=(permission_document_type_create,),
     text=_('Create document type'), view='documents:document_type_create'
 )
 link_document_type_delete = Link(
-    permissions=[permission_document_type_delete], tags='dangerous',
+    permissions=(permission_document_type_delete,), tags='dangerous',
     text=_('Delete'), view='documents:document_type_delete',
     args='resolved_object.id'
 )
 link_document_type_edit = Link(
-    permissions=[permission_document_type_edit], text=_('Edit'),
+    permissions=(permission_document_type_edit,), text=_('Edit'),
     view='documents:document_type_edit', args='resolved_object.id'
 )
 link_document_type_filename_create = Link(
-    permissions=[permission_document_type_edit],
+    permissions=(permission_document_type_edit,),
     text=_('Add filename to document type'),
     view='documents:document_type_filename_create', args='document_type.id'
 )
 link_document_type_filename_delete = Link(
-    permissions=[permission_document_type_edit], tags='dangerous',
+    permissions=(permission_document_type_edit,), tags='dangerous',
     text=_('Delete'), view='documents:document_type_filename_delete',
     args='resolved_object.id'
 )
 link_document_type_filename_edit = Link(
-    permissions=[permission_document_type_edit], text=_('Edit'),
+    permissions=(permission_document_type_edit,), text=_('Edit'),
     view='documents:document_type_filename_edit', args='resolved_object.id'
 )
 link_document_type_filename_list = Link(
-    permissions=[permission_document_type_view], text=_('Filenames'),
+    permissions=(permission_document_type_view,), text=_('Filenames'),
     view='documents:document_type_filename_list', args='resolved_object.id'
 )
 link_document_type_list = Link(
-    permissions=[permission_document_type_view], text=_('Document types'),
+    permissions=(permission_document_type_view,), text=_('Document types'),
     view='documents:document_type_list'
 )
 link_document_type_setup = Link(
-    icon='fa fa-file', permissions=[permission_document_type_view],
+    icon='fa fa-file', permissions=(permission_document_type_view,),
     text=_('Document types'), view='documents:document_type_list'
 )

@@ -18,67 +18,67 @@ from .permissions import (
 
 
 link_document_create_multiple = Link(
-    icon='fa fa-upload', permissions=[permission_document_create],
+    icon='fa fa-upload', permissions=(permission_document_create,),
     text=_('New document'), view='sources:document_create_multiple'
 )
 link_document_create_siblings = Link(
-    permissions=[permission_document_create], text=_('Clone'),
+    permissions=(permission_document_create,), text=_('Clone'),
     view='sources:document_create_siblings', args='object.id'
 )
 link_setup_sources = Link(
-    icon='fa fa-upload', permissions=[permission_sources_setup_view],
+    icon='fa fa-upload', permissions=(permission_sources_setup_view,),
     text=_('Sources'), view='sources:setup_source_list'
 )
 link_setup_source_create_imap_email = Link(
-    permissions=[permission_sources_setup_create],
+    permissions=(permission_sources_setup_create,),
     text=_('Add new imap email'), view='sources:setup_source_create',
     args='"%s"' % SOURCE_CHOICE_EMAIL_IMAP
 )
 link_setup_source_create_pop3_email = Link(
-    permissions=[permission_sources_setup_create],
+    permissions=(permission_sources_setup_create,),
     text=_('Add new pop3 email'), view='sources:setup_source_create',
     args='"%s"' % SOURCE_CHOICE_EMAIL_POP3
 )
 link_setup_source_create_staging_folder = Link(
-    permissions=[permission_sources_setup_create],
+    permissions=(permission_sources_setup_create,),
     text=_('Add new staging folder'), view='sources:setup_source_create',
     args='"%s"' % SOURCE_CHOICE_STAGING
 )
 link_setup_source_create_watch_folder = Link(
-    permissions=[permission_sources_setup_create],
+    permissions=(permission_sources_setup_create,),
     text=_('Add new watch folder'), view='sources:setup_source_create',
     args='"%s"' % SOURCE_CHOICE_WATCH
 )
 link_setup_source_create_webform = Link(
-    permissions=[permission_sources_setup_create],
+    permissions=(permission_sources_setup_create,),
     text=_('Add new webform source'), view='sources:setup_source_create',
     args='"%s"' % SOURCE_CHOICE_WEB_FORM
 )
 link_setup_source_delete = Link(
-    permissions=[permission_sources_setup_delete], tags='dangerous',
+    permissions=(permission_sources_setup_delete,), tags='dangerous',
     text=_('Delete'), view='sources:setup_source_delete',
     args=['resolved_object.pk']
 )
 link_setup_source_edit = Link(
     text=_('Edit'), view='sources:setup_source_edit',
-    args=['resolved_object.pk'], permissions=[permission_sources_setup_edit]
+    args=['resolved_object.pk'], permissions=(permission_sources_setup_edit,)
 )
 link_source_list = Link(
-    permissions=[permission_sources_setup_view], text=_('Document sources'),
+    permissions=(permission_sources_setup_view,), text=_('Document sources'),
     view='sources:setup_web_form_list'
 )
 link_staging_file_delete = Link(
     keep_query=True,
-    permissions=[permission_document_new_version, permission_document_create],
+    permissions=(permission_document_new_version, permission_document_create),
     tags='dangerous', text=_('Delete'), view='sources:staging_file_delete',
     args=['source.pk', 'object.encoded_filename']
 )
 link_upload_version = Link(
-    permissions=[permission_document_new_version],
+    permissions=(permission_document_new_version,),
     text=_('Upload new version'), view='sources:upload_version',
     args='object.pk'
 )
 link_setup_source_logs = Link(
     text=_('Logs'), view='sources:setup_source_logs',
-    args=['resolved_object.pk'], permissions=[permission_sources_setup_view]
+    args=['resolved_object.pk'], permissions=(permission_sources_setup_view,)
 )

@@ -120,45 +120,45 @@ class MetadataApp(MayanAppConfig):
             field='metadata__value', label=_('Metadata value')
         )
 
-        menu_facet.bind_links(links=[link_metadata_view], sources=[Document])
+        menu_facet.bind_links(links=(link_metadata_view,), sources=(Document,))
         menu_multi_item.bind_links(
-            links=[
+            links=(
                 link_metadata_multiple_add, link_metadata_multiple_edit,
                 link_metadata_multiple_remove
-            ], sources=[Document]
+            ), sources=(Document,)
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_setup_document_type_metadata,
                 link_setup_document_type_metadata_required
-            ], sources=[DocumentType]
+            ), sources=(DocumentType,)
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_setup_metadata_type_edit,
                 link_setup_metadata_type_delete
-            ], sources=[MetadataType]
+            ), sources=(MetadataType,)
         )
         menu_secondary.bind_links(
-            links=[
+            links=(
                 link_setup_metadata_type_list,
                 link_setup_metadata_type_create
-            ], sources=[
+            ), sources=(
                 MetadataType, 'metadata:setup_metadata_type_list',
                 'metadata:setup_metadata_type_create'
-            ]
+            )
         )
         menu_setup.bind_links(links=[link_setup_metadata_type_list])
         menu_sidebar.bind_links(
-            links=[
+            links=(
                 link_metadata_add, link_metadata_edit, link_metadata_remove
-            ], sources=[
+            ), sources=(
                 'metadata:metadata_add', 'metadata:metadata_edit',
                 'metadata:metadata_remove', 'metadata:metadata_view'
-            ]
+            )
         )
         menu_tools.bind_links(
-            links=[link_documents_missing_required_metadata]
+            links=(link_documents_missing_required_metadata,)
         )
 
         post_delete.connect(

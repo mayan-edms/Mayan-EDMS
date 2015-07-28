@@ -9,10 +9,10 @@ from .permissions import (
 )
 
 link_send_document = Link(
-    permissions=[permission_mailing_send_document], text=_('Email document'),
+    permissions=(permission_mailing_send_document,), text=_('Email document'),
     view='mailer:send_document', args='object.pk'
 )
 link_send_document_link = Link(
-    permissions=[permission_mailing_link], text=_('Email link'),
+    permissions=(permission_mailing_link,), text=_('Email link'),
     view='mailer:send_document_link', args='object.pk'
 )

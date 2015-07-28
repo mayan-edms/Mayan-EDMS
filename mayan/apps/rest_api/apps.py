@@ -16,4 +16,4 @@ class RESTAPIApp(apps.AppConfig):
     def ready(self):
         APIEndPoint('rest_api')
 
-        menu_tools.bind_links(links=[link_api, link_api_documentation])
+        menu_tools.bind_links(links=(link_api, link_api_documentation))

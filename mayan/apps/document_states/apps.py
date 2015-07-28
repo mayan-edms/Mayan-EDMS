@@ -111,46 +111,46 @@ class DocumentStatesApp(MayanAppConfig):
         )
 
         menu_facet.bind_links(
-            links=[link_document_workflow_instance_list], sources=[Document]
+            links=(link_document_workflow_instance_list,), sources=(Document,)
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_setup_workflow_states, link_setup_workflow_transitions,
                 link_setup_workflow_document_types, link_setup_workflow_edit,
                 link_setup_workflow_delete
-            ], sources=[Workflow]
+            ), sources=(Workflow,)
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_setup_workflow_state_edit,
                 link_setup_workflow_state_delete
-            ], sources=[WorkflowState]
+            ), sources=(WorkflowState,)
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_setup_workflow_transition_edit,
                 link_setup_workflow_transition_delete
-            ], sources=[WorkflowTransition]
+            ), sources=(WorkflowTransition,)
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_workflow_instance_detail,
                 link_workflow_instance_transition
-            ], sources=[WorkflowInstance]
+            ), sources=(WorkflowInstance,)
         )
         menu_secondary.bind_links(
-            links=[link_setup_workflow_list, link_setup_workflow_create],
-            sources=[
+            links=(link_setup_workflow_list, link_setup_workflow_create),
+            sources=(
                 Workflow, 'document_states:setup_workflow_create',
                 'document_states:setup_workflow_list'
-            ]
+            )
         )
-        menu_setup.bind_links(links=[link_setup_workflow_list])
+        menu_setup.bind_links(links=(link_setup_workflow_list,))
         menu_sidebar.bind_links(
-            links=[
+            links=(
                 link_setup_workflow_state_create,
                 link_setup_workflow_transition_create
-            ], sources=[Workflow]
+            ), sources=(Workflow,)
         )
 
         post_save.connect(

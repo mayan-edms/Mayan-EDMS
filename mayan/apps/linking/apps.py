@@ -42,40 +42,40 @@ class LinkingApp(MayanAppConfig):
         )
 
         menu_facet.bind_links(
-            links=[link_smart_link_instances_for_document],
-            sources=[Document]
+            links=(link_smart_link_instances_for_document,),
+            sources=(Document,)
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_smart_link_condition_edit,
                 link_smart_link_condition_delete
-            ], sources=[SmartLinkCondition]
+            ), sources=(SmartLinkCondition,)
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_smart_link_edit, link_smart_link_document_types,
                 link_smart_link_condition_list, link_acl_list,
                 link_smart_link_delete
-            ], sources=[SmartLink]
+            ), sources=(SmartLink,)
         )
         menu_object.bind_links(
-            links=[link_smart_link_instance_view],
-            sources=[ResolvedSmartLink]
+            links=(link_smart_link_instance_view,),
+            sources=(ResolvedSmartLink,)
         )
         menu_secondary.bind_links(
-            links=[link_smart_link_list, link_smart_link_create],
-            sources=[
+            links=(link_smart_link_list, link_smart_link_create),
+            sources=(
                 SmartLink, 'linking:smart_link_list',
                 'linking:smart_link_create'
-            ]
+            )
         )
-        menu_setup.bind_links(links=[link_smart_link_setup])
+        menu_setup.bind_links(links=(link_smart_link_setup,))
         menu_sidebar.bind_links(
-            links=[link_smart_link_condition_create],
-            sources=[
+            links=(link_smart_link_condition_create,),
+            sources=(
                 'linking:smart_link_condition_list',
                 'linking:smart_link_condition_create',
                 'linking:smart_link_condition_edit',
                 'linking:smart_link_condition_delete'
-            ]
+            )
         )

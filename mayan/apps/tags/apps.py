@@ -68,38 +68,38 @@ class TagsApp(MayanAppConfig):
         document_search.add_model_field(field='tags__label', label=_('Tags'))
 
         menu_facet.bind_links(
-            links=[link_tag_document_list], sources=[Document]
+            links=(link_tag_document_list,), sources=(Document,)
         )
-        menu_main.bind_links(links=[link_tag_list])
+        menu_main.bind_links(links=(link_tag_list,))
         menu_multi_item.bind_links(
-            links=[
+            links=(
                 link_multiple_documents_attach_tag,
                 link_multiple_documents_tag_remove
-            ],
-            sources=[Document]
+            ),
+            sources=(Document,)
         )
         menu_multi_item.bind_links(
-            links=[link_tag_multiple_delete], sources=[Tag]
+            links=(link_tag_multiple_delete,), sources=(Tag,)
         )
         menu_multi_item.bind_links(
-            links=[link_single_document_multiple_tag_remove],
+            links=(link_single_document_multiple_tag_remove,),
             sources=[CombinedSource(obj=Tag, view='tags:document_tags')]
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_tag_tagged_item_list, link_tag_edit, link_acl_list,
                 link_tag_delete
-            ],
-            sources=[Tag]
+            ),
+            sources=(Tag,)
         )
         menu_secondary.bind_links(
-            links=[link_tag_list, link_tag_create],
-            sources=[Tag, 'tags:tag_list', 'tags:tag_create']
+            links=(link_tag_list, link_tag_create),
+            sources=(Tag, 'tags:tag_list', 'tags:tag_create')
         )
         menu_sidebar.bind_links(
-            links=[link_tag_attach],
-            sources=[
+            links=(link_tag_attach,),
+            sources=(
                 'tags:document_tags', 'tags:tag_remove',
                 'tags:tag_multiple_remove', 'tags:tag_attach'
-            ]
+            )
         )

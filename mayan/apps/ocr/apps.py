@@ -100,34 +100,34 @@ class OCRApp(MayanAppConfig):
         )
 
         menu_facet.bind_links(
-            links=[link_document_content], sources=[Document]
+            links=(link_document_content,), sources=(Document,)
         )
         menu_multi_item.bind_links(
-            links=[link_document_submit_multiple], sources=[Document]
+            links=(link_document_submit_multiple,), sources=(Document,)
         )
         menu_multi_item.bind_links(
-            links=[link_entry_re_queue_multiple, link_entry_delete_multiple],
-            sources=[DocumentVersionOCRError]
+            links=(link_entry_re_queue_multiple, link_entry_delete_multiple),
+            sources=(DocumentVersionOCRError,)
         )
         menu_object.bind_links(
-            links=[link_document_submit], sources=[Document]
+            links=(link_document_submit,), sources=(Document,)
         )
         menu_object.bind_links(
-            links=[link_entry_re_queue, link_entry_delete],
-            sources=[DocumentVersionOCRError]
+            links=(link_entry_re_queue, link_entry_delete),
+            sources=(DocumentVersionOCRError,)
         )
         menu_object.bind_links(
-            links=[link_document_type_ocr_settings], sources=[DocumentType]
+            links=(link_document_type_ocr_settings,), sources=(DocumentType,)
         )
         menu_secondary.bind_links(
-            links=[link_entry_list],
-            sources=[
+            links=(link_entry_list,),
+            sources=(
                 'ocr:entry_list', 'ocr:entry_delete_multiple',
                 'ocr:entry_re_queue_multiple', DocumentVersionOCRError
-            ]
+            )
         )
         menu_tools.bind_links(
-            links=[link_document_submit_all, link_entry_list]
+            links=(link_document_submit_all, link_entry_list)
         )
 
         post_save.connect(

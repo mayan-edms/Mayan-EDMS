@@ -191,119 +191,119 @@ class DocumentsApp(MayanAppConfig):
         )
 
         menu_front_page.bind_links(
-            links=[
+            links=(
                 link_document_list_recent, link_document_list,
                 link_document_list_deleted
-            ]
+            )
         )
-        menu_setup.bind_links(links=[link_document_type_setup])
-        menu_tools.bind_links(links=[link_clear_image_cache])
+        menu_setup.bind_links(links=(link_document_type_setup,))
+        menu_tools.bind_links(links=(link_clear_image_cache,))
 
         # Document type links
         menu_object.bind_links(
-            links=[
+            links=(
                 link_document_type_edit, link_document_type_filename_list,
                 link_acl_list, link_document_type_delete
-            ], sources=[DocumentType]
+            ), sources=(DocumentType,)
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_document_type_filename_edit,
                 link_document_type_filename_delete
-            ], sources=[DocumentTypeFilename]
+            ), sources=(DocumentTypeFilename,)
         )
         menu_secondary.bind_links(
-            links=[link_document_type_list, link_document_type_create],
-            sources=[
+            links=(link_document_type_list, link_document_type_create),
+            sources=(
                 DocumentType, 'documents:document_type_create',
                 'documents:document_type_list'
-            ]
+            )
         )
         menu_sidebar.bind_links(
-            links=[link_document_type_filename_create],
-            sources=[
+            links=(link_document_type_filename_create,),
+            sources=(
                 DocumentTypeFilename, 'documents:document_type_filename_list',
                 'documents:document_type_filename_create'
-            ]
+            )
         )
         menu_sidebar.bind_links(
-            links=[link_trash_can_empty],
-            sources=[
+            links=(link_trash_can_empty,),
+            sources=(
                 'documents:document_list_deleted', 'documents:trash_can_empty'
-            ]
+            )
         )
 
         # Document object links
         menu_object.bind_links(
-            links=[
+            links=(
                 link_document_edit, link_document_document_type_edit,
                 link_document_print, link_document_trash,
                 link_document_download, link_document_clear_transformations,
                 link_document_update_page_count
-            ], sources=[Document]
+            ), sources=(Document,)
         )
         menu_object.bind_links(
-            links=[link_document_restore, link_document_delete],
-            sources=[DeletedDocument]
+            links=(link_document_restore, link_document_delete),
+            sources=(DeletedDocument,)
         )
 
         # Document facet links
-        menu_facet.bind_links(links=[link_acl_list], sources=[Document])
+        menu_facet.bind_links(links=(link_acl_list,), sources=(Document,))
         menu_facet.bind_links(
-            links=[link_document_preview], sources=[Document], position=0
+            links=(link_document_preview,), sources=(Document,), position=0
         )
         menu_facet.bind_links(
-            links=[link_document_properties], sources=[Document], position=2
+            links=(link_document_properties,), sources=(Document,), position=2
         )
         menu_facet.bind_links(
-            links=[link_events_for_object, link_document_version_list],
-            sources=[Document], position=2
+            links=(link_events_for_object, link_document_version_list,),
+            sources=(Document,), position=2
         )
-        menu_facet.bind_links(links=[link_document_pages], sources=[Document])
+        menu_facet.bind_links(links=(link_document_pages,), sources=(Document,))
 
         # Document actions
         menu_object.bind_links(
-            links=[
+            links=(
                 link_document_version_revert, link_document_version_download
-            ],
-            sources=[DocumentVersion]
+            ),
+            sources=(DocumentVersion,)
         )
         menu_multi_item.bind_links(
-            links=[
+            links=(
                 link_document_multiple_clear_transformations,
                 link_document_multiple_trash, link_document_multiple_download,
                 link_document_multiple_update_page_count,
                 link_document_multiple_document_type_edit
-            ], sources=[Document]
+            ), sources=(Document,)
         )
         menu_multi_item.bind_links(
-            links=[
+            links=(
                 link_document_multiple_restore, link_document_multiple_delete
-            ], sources=[DeletedDocument]
+            ), sources=(DeletedDocument,)
         )
 
         # Document pages
         menu_facet.bind_links(
-            links=[
+            links=(
                 link_document_page_rotate_left,
                 link_document_page_rotate_right, link_document_page_zoom_in,
                 link_document_page_zoom_out, link_document_page_view_reset
-            ], sources=['documents:document_page_view']
+            ), sources=('documents:document_page_view',)
         )
         menu_facet.bind_links(
-            links=[link_document_page_return, link_document_page_view],
-            sources=[DocumentPage]
+            links=(link_document_page_return, link_document_page_view),
+            sources=(DocumentPage,)
         )
         menu_facet.bind_links(
-            links=[
+            links=(
                 link_document_page_navigation_first,
                 link_document_page_navigation_previous,
                 link_document_page_navigation_next,
                 link_document_page_navigation_last, link_transformation_list
-            ], sources=[DocumentPage]
+            ), sources=(DocumentPage,)
         )
         menu_object.bind_links(
-            links=[link_transformation_list], sources=[DocumentPage]
+            links=(link_transformation_list,), sources=(DocumentPage,)
         )
 
         namespace = StatisticNamespace(name='documents', label=_('Documents'))

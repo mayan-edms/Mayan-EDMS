@@ -27,7 +27,7 @@ def can_delete_detached_signature(context):
 
 link_document_signature_delete = Link(
     condition=can_delete_detached_signature,
-    permissions=[permission_signature_delete], tags='dangerous',
+    permissions=(permission_signature_delete,), tags='dangerous',
     text=_('Delete signature'), view='signatures:document_signature_delete',
     args='object.pk'
 )
@@ -38,10 +38,10 @@ link_document_signature_download = Link(
 )
 link_document_signature_upload = Link(
     condition=can_upload_detached_signature,
-    permissions=[permission_signature_upload], text=_('Upload signature'),
+    permissions=(permission_signature_upload,), text=_('Upload signature'),
     view='signatures:document_signature_upload', args='object.pk'
 )
 link_document_verify = Link(
-    permissions=[permission_document_verify], text=_('Signatures'),
+    permissions=(permission_document_verify,), text=_('Signatures'),
     view='signatures:document_verify', args='object.pk'
 )

@@ -31,13 +31,13 @@ class InstallationApp(MayanAppConfig):
         SourceColumn(source=Property, label=_('Value'), attribute='value')
 
         menu_object.bind_links(
-            links=[link_namespace_details], sources=[PropertyNamespace]
+            links=(link_namespace_details,), sources=(PropertyNamespace,)
         )
         menu_secondary.bind_links(
-            links=[link_namespace_list],
-            sources=['installation:namespace_list', PropertyNamespace]
+            links=(link_namespace_list,),
+            sources=('installation:namespace_list', PropertyNamespace)
         )
-        menu_tools.bind_links(links=[link_menu_link])
+        menu_tools.bind_links(links=(link_menu_link,))
 
         namespace = PropertyNamespace('venv', _('VirtualEnv'))
         try:

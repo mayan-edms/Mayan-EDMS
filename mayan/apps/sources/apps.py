@@ -98,40 +98,40 @@ class SourcesApp(MayanAppConfig):
 
         menu_front_page.bind_links(links=[link_document_create_multiple])
         menu_object.bind_links(
-            links=[link_document_create_siblings], sources=[Document]
+            links=(link_document_create_siblings,), sources=(Document,)
         )
         menu_object.bind_links(
-            links=[
+            links=(
                 link_setup_source_edit, link_setup_source_delete,
                 link_transformation_list, link_setup_source_logs
-            ], sources=[
+            ), sources=(
                 POP3Email, IMAPEmail, StagingFolderSource, WatchFolderSource,
                 WebFormSource
-            ]
+            )
         )
         menu_object.bind_links(
-            links=[link_staging_file_delete], sources=[StagingFile]
+            links=(link_staging_file_delete,), sources=(StagingFile,)
         )
         menu_secondary.bind_links(
-            links=[
+            links=(
                 link_setup_sources, link_setup_source_create_webform,
                 link_setup_source_create_staging_folder,
                 link_setup_source_create_pop3_email,
                 link_setup_source_create_imap_email,
                 link_setup_source_create_watch_folder
-            ], sources=[
+            ), sources=(
                 POP3Email, IMAPEmail, StagingFolderSource, WatchFolderSource,
                 WebFormSource, 'sources:setup_source_list',
                 'sources:setup_source_create'
-            ]
+            )
         )
-        menu_setup.bind_links(links=[link_setup_sources])
+        menu_setup.bind_links(links=(link_setup_sources,))
         menu_sidebar.bind_links(
-            links=[link_upload_version],
-            sources=[
+            links=(link_upload_version,),
+            sources=(
                 'documents:document_version_list', 'documents:upload_version',
                 'documents:document_version_revert'
-            ]
+            )
         )
 
         post_upgrade.connect(
