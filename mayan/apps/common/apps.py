@@ -67,34 +67,34 @@ class CommonApp(MayanAppConfig):
         app.conf.CELERY_DEFAULT_QUEUE = 'default'
 
         menu_facet.bind_links(
-            links=[
+            links=(
                 link_current_user_details,
                 link_current_user_locale_profile_details, link_tools,
                 link_setup
-            ], sources=[
+            ), sources=(
                 'common:current_user_details', 'common:current_user_edit',
                 'common:current_user_locale_profile_details',
                 'common:current_user_locale_profile_edit',
                 'authentication:password_change_view', 'common:setup_list',
                 'common:tools_list'
-            ]
+            )
         )
         menu_main.bind_links(links=[link_about], position=-1)
         menu_secondary.bind_links(
-            links=[link_about, link_license],
-            sources=['common:about_view', 'common:license_view']
+            links=(link_about, link_license),
+            sources=('common:about_view', 'common:license_view')
         )
         menu_secondary.bind_links(
-            links=[
+            links=(
                 link_current_user_edit, link_current_user_locale_profile_edit
-            ],
-            sources=[
+            ),
+            sources=(
                 'common:current_user_details', 'common:current_user_edit',
                 'common:current_user_locale_profile_details',
                 'common:current_user_locale_profile_edit',
                 'authentication:password_change_view', 'common:setup_list',
                 'common:tools_list'
-            ]
+            )
         )
         user_logged_in.connect(
             user_locale_profile_session_config,

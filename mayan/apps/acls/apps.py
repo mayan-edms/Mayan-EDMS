@@ -16,9 +16,9 @@ class ACLsApp(MayanAppConfig):
         super(ACLsApp, self).ready()
 
         menu_object.bind_links(
-            links=[link_acl_permissions, link_acl_delete],
-            sources=[AccessControlList]
+            links=(link_acl_permissions, link_acl_delete),
+            sources=(AccessControlList,)
         )
         menu_sidebar.bind_links(
-            links=[link_acl_new], sources=['acls:acl_list']
+            links=(link_acl_new,), sources=('acls:acl_list',)
         )

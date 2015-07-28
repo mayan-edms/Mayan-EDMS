@@ -23,19 +23,19 @@ link_checkout_list = Link(
     view='checkouts:checkout_list'
 )
 link_checkout_document = Link(
-    condition=is_not_checked_out, permissions=[permission_document_checkout],
+    condition=is_not_checked_out, permissions=(permission_document_checkout,),
     text=_('Check out document'), view='checkouts:checkout_document',
     args='object.pk'
 )
 link_checkin_document = Link(
-    condition=is_checked_out, permissions=[
+    condition=is_checked_out, permissions=(
         permission_document_checkin, permission_document_checkin_override
-    ], text=_('Check in document'), view='checkouts:checkin_document',
+    ), text=_('Check in document'), view='checkouts:checkin_document',
     args='object.pk'
 )
 link_checkout_info = Link(
-    permissions=[
+    permissions=(
         permission_document_checkin, permission_document_checkin_override,
         permission_document_checkout
-    ], text=_('Check in/out'), view='checkouts:checkout_info', args='object.pk'
+    ), text=_('Check in/out'), view='checkouts:checkout_info', args='object.pk'
 )

@@ -88,14 +88,14 @@ class CheckoutsApp(MayanAppConfig):
             }
         )
 
-        menu_facet.bind_links(links=[link_checkout_info], sources=[Document])
-        menu_main.bind_links(links=[link_checkout_list])
+        menu_facet.bind_links(links=(link_checkout_info,), sources=(Document,))
+        menu_main.bind_links(links=(link_checkout_list,))
         menu_sidebar.bind_links(
-            links=[link_checkout_document, link_checkin_document],
-            sources=[
+            links=(link_checkout_document, link_checkin_document),
+            sources=(
                 'checkouts:checkout_info', 'checkouts:checkout_document',
                 'checkouts:checkin_document'
-            ]
+            )
         )
 
         pre_save.connect(

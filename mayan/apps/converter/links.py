@@ -31,15 +31,15 @@ link_transformation_create = Link(
     text=_('Create new transformation'), view='converter:transformation_create'
 )
 link_transformation_delete = Link(
-    args='resolved_object.pk', permissions=[permission_transformation_delete],
+    args='resolved_object.pk', permissions=(permission_transformation_delete,),
     tags='dangerous', text=_('Delete'), view='converter:transformation_delete'
 )
 link_transformation_edit = Link(
-    args='resolved_object.pk', permissions=[permission_transformation_edit],
+    args='resolved_object.pk', permissions=(permission_transformation_edit,),
     text=_('Edit'), view='converter:transformation_edit'
 )
 link_transformation_list = Link(
     kwargs=get_kwargs_factory('resolved_object'),
-    permissions=[permission_transformation_view], text=_('Transformations'),
+    permissions=(permission_transformation_view,), text=_('Transformations'),
     view='converter:transformation_list'
 )

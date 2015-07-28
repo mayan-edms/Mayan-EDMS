@@ -45,7 +45,9 @@ class DocumentCommentsApp(MayanAppConfig):
         SourceColumn(source=Comment, label=_('Date'), attribute='submit_date')
         SourceColumn(
             source=Comment, label=_('User'),
-            attribute=encapsulate(lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user)
+            attribute=encapsulate(
+                lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user
+            )
         )
         SourceColumn(source=Comment, label=_('Comment'), attribute='comment')
 
@@ -57,13 +59,13 @@ class DocumentCommentsApp(MayanAppConfig):
         )
 
         menu_sidebar.bind_links(
-            links=[link_comment_add],
-            sources=[
+            links=(link_comment_add,),
+            sources=(
                 'comments:comments_for_document', 'comments:comment_add',
                 'comments:comment_delete', 'comments:comment_multiple_delete'
-            ]
+            )
         )
-        menu_object.bind_links(links=[link_comment_delete], sources=[Comment])
+        menu_object.bind_links(links=(link_comment_delete,), sources=(Comment,))
         menu_facet.bind_links(
-            links=[link_comments_for_document], sources=[Document]
+            links=(link_comments_for_document,), sources=(Document,)
         )
