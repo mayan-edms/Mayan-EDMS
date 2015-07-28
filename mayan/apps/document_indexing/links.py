@@ -62,7 +62,7 @@ link_rebuild_index_instances = Link(
     description=_(
         'Deletes and creates from scratch all the document indexes.'
     ),
-    permissions=(permission_document_indexing_rebuild_indexes),
+    permissions=(permission_document_indexing_rebuild_indexes,),
     text=_('Rebuild indexes'), view='indexing:rebuild_index_instances'
 )
 link_template_node_create = Link(
@@ -77,7 +77,7 @@ link_template_node_edit = Link(
 )
 link_template_node_delete = Link(
     condition=is_not_root_node, permissions=(
-        permission_document_indexing_setup
+        permission_document_indexing_setup,
     ),
     tags='dangerous', text=_('Delete'), view='indexing:template_node_delete',
     args='resolved_object.pk'
