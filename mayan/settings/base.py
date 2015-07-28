@@ -88,6 +88,7 @@ INSTALLED_APPS = (
     'linking.apps.LinkingApp',
     'mailer.apps.MailerApp',
     'metadata.apps.MetadataApp',
+    'mirroring.apps.MirroringApp',
     'ocr.apps.OCRApp',
     'rest_api.apps.RESTAPIApp',
     'sources.apps.SourcesApp',
