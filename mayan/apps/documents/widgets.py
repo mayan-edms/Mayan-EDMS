@@ -43,7 +43,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         output = []
         output.append(
             '<div id="carousel-container" class="full-height scrollable" '
-            'data-height-difference=360>'
+            'data-height-difference=200>'
         )
 
         try:
