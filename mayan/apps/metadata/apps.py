@@ -63,7 +63,8 @@ class MetadataApp(MayanAppConfig):
         ModelAttribute(
             Document, 'metadata', type_name='related',
             description=_(
-                'Queryset containing a MetadataType instance reference and a value for that metadata type'
+                'Queryset containing a MetadataType instance reference and a '
+                'value for that metadata type'
             )
         )
         ModelAttribute(
