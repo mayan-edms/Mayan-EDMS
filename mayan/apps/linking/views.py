@@ -116,16 +116,22 @@ class ResolvedSmartLinkView(DocumentListView):
         return queryset
 
     def get_extra_context(self):
-        return {
-            'hide_links': True,
-            'object': self.document,
-            'title': _(
-                'Documents in smart link "%(smart_link)s" as relation to '
+        dynamic_label = self.smart_link.get_dynamic_label(self.document)
+        if dynamic_label:
+            title = _('Documents in smart link: %s') % dynamic_label
+        else:
+            title = _(
+                'Documents in smart link "%(smart_link)s" as related to '
                 '"%(document)s"'
             ) % {
                 'document': self.document,
-                'smart_link': self.smart_link.get_dynamic_label(self.document),
+                'smart_link': self.smart_link.label,
             }
+
+        return {
+            'hide_links': True,
+            'object': self.document,
+            'title': title,
         }
 
 

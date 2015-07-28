@@ -95,6 +95,12 @@ class DocumentsApp(MayanAppConfig):
             Document, label=_('Label'), name='label', type_name='field'
         )
 
+        ModelAttribute(
+            Document,
+            description=_('The MIME type of any of the versions of a document'),
+            label=_('MIME type'), name='versions__mimetype', type_name='field'
+        )
+
         ModelPermission.register(
             model=Document, permissions=(
                 permission_acl_edit, permission_acl_view,

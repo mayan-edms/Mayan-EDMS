@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models
 from django.db.models import Q
+from django.template import Context, Template
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -17,8 +18,10 @@ class SmartLink(models.Model):
     label = models.CharField(max_length=96, verbose_name=_('Label'))
     dynamic_label = models.CharField(
         blank=True, max_length=96, help_text=_(
-            'This expression will be evaluated against the current selected '
-            'document.'
+            'Enter a template to render. '
+            'Use Django\'s default templating language '
+            '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). '
+            'The {{ document }} context variable is available.'
         ), verbose_name=_('Dynamic label')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
@@ -31,16 +34,16 @@ class SmartLink(models.Model):
 
     def get_dynamic_label(self, document):
         if self.dynamic_label:
+            context = Context({'document': document})
             try:
-                return eval(self.dynamic_label, {'document': document})
+                template = Template(self.dynamic_label)
+                return template.render(context=context)
             except Exception as exception:
-                return Exception(
-                    _(
-                        'Error generating dynamic label; %s' % unicode(exception)
-                    )
+                return _(
+                    'Error generating dynamic label; %s' % unicode(exception)
                 )
         else:
-            return self.label
+            return None
 
     def get_linked_document_for(self, document):
         if document.document_type.pk not in self.document_types.values_list('pk', flat=True):
@@ -53,11 +56,15 @@ class SmartLink(models.Model):
 
         smart_link_query = Q()
 
+        context = Context({'document': document})
+
         for condition in self.conditions.filter(enabled=True):
+            template = Template(condition.expression)
+
             condition_query = Q(**{
                 '%s__%s' % (
                     condition.foreign_document_data, condition.operator
-                ): eval(condition.expression, {'document': document})
+                ): template.render(context=context)
             })
             if condition.negated:
                 condition_query = ~condition_query
@@ -104,7 +111,10 @@ class SmartLinkCondition(models.Model):
     operator = models.CharField(choices=OPERATOR_CHOICES, max_length=16)
     expression = models.TextField(
         help_text=_(
-            'This expression will be evaluated against the current document.'
+            'Enter a template to render. '
+            'Use Django\'s default templating language '
+            '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). '
+            'The {{ document }} context variable is available.'
         ), verbose_name=_('Expression')
     )
     negated = models.BooleanField(

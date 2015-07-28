@@ -38,8 +38,11 @@ class DocumentCommentsApp(MayanAppConfig):
             )
         )
 
-        ModelAttribute(
-            Document, label=_('Comments'), name='comments', type_name='related'
+        ModelPermission.register(
+            model=Document, permissions=(
+                permission_comment_create, permission_comment_delete,
+                permission_comment_view
+            )
         )
 
         SourceColumn(source=Comment, label=_('Date'), attribute='submit_date')
@@ -50,13 +53,6 @@ class DocumentCommentsApp(MayanAppConfig):
             )
         )
         SourceColumn(source=Comment, label=_('Comment'), attribute='comment')
-
-        ModelPermission.register(
-            model=Document, permissions=(
-                permission_comment_create, permission_comment_delete,
-                permission_comment_view
-            )
-        )
 
         menu_sidebar.bind_links(
             links=(link_comment_add,),

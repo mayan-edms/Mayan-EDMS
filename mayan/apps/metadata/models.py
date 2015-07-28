@@ -45,7 +45,7 @@ class MetadataType(models.Model):
         blank=True, null=True,
         help_text=_(
             'Enter a template to render. '
-            'Must result in a command delimited string. '
+            'Must result in a comma delimited string. '
             'Use Django\'s default templating language '
             '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/).'
         ),
