@@ -9,7 +9,9 @@ from .settings import setting_recent_count
 
 class RecentSearchManager(models.Manager):
     def add_query_for_user(self, user, query_string, hits):
-        parsed_query = urlparse.parse_qs(urlencode(dict(query_string.items())))
+        parsed_query = urlparse.parse_qs(
+            urlencode(dict(query_string.items()))
+        )
 
         for key, value in parsed_query.items():
             parsed_query[key] = ' '.join(value)
@@ -26,7 +28,10 @@ class RecentSearchManager(models.Manager):
 
         if parsed_query and not isinstance(user, AnonymousUser):
             # If the URL query has at least one variable with a value
-            new_recent, created = self.model.objects.get_or_create(user=user, query=urlencode(parsed_query), defaults={'hits': hits})
+            new_recent, created = self.model.objects.get_or_create(
+                user=user, query=urlencode(parsed_query),
+                defaults={'hits': hits}
+            )
             if not created:
                 new_recent.hits = hits
                 new_recent.save()

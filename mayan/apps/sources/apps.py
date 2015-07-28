@@ -49,7 +49,11 @@ class SourcesApp(MayanAppConfig):
 
         MissingItem(
             label=_('Create a document source'),
-            description=_('Document sources are the way in which new documents are feed to Mayan EDMS, create at least a web form source to be able to upload documents from a browser.'),
+            description=_(
+                'Document sources are the way in which new documents are '
+                'feed to Mayan EDMS, create at least a web form source to '
+                'be able to upload documents from a browser.'
+            ),
             condition=lambda: not Source.objects.exists(),
             view='sources:setup_source_list'
         )
@@ -131,7 +135,8 @@ class SourcesApp(MayanAppConfig):
         )
 
         post_upgrade.connect(
-            initialize_periodic_tasks, dispatch_uid='initialize_periodic_tasks'
+            initialize_periodic_tasks,
+            dispatch_uid='initialize_periodic_tasks'
         )
         post_initial_setup.connect(
             create_default_document_source,

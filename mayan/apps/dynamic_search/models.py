@@ -6,7 +6,9 @@ import urlparse
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible, smart_str, smart_unicode
+from django.utils.encoding import (
+    python_2_unicode_compatible, smart_str, smart_unicode
+)
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import RecentSearchManager
@@ -24,13 +26,16 @@ class RecentSearch(models.Model):
     # TODO: Fix after upgrade to DRF v2.4.4
 
     query = models.TextField(editable=False, verbose_name=_('Query'))
-    datetime_created = models.DateTimeField(auto_now=True, db_index=True, verbose_name=_('Datetime created'))
+    datetime_created = models.DateTimeField(
+        auto_now=True, db_index=True, verbose_name=_('Datetime created')
+    )
     hits = models.IntegerField(editable=False, verbose_name=_('Hits'))
 
     objects = RecentSearchManager()
 
     def __str__(self):
-        # TODO: Fix this hack, store the search model name in the recent search entry
+        # TODO: Fix this hack, store the search model name in the recent
+        # search entry
         from .classes import SearchModel
         document_search = SearchModel.get('documents.Document')
 
@@ -41,7 +46,11 @@ class RecentSearch(models.Model):
             advanced_string = []
             for key, value in query_dict.items():
                 search_field = document_search.get_search_field(key)
-                advanced_string.append('%s: %s' % (search_field.label, smart_unicode(' '.join(value))))
+                advanced_string.append(
+                    '%s: %s' % (
+                        search_field.label, smart_unicode(' '.join(value))
+                    )
+                )
 
             display_string = ', '.join(advanced_string)
         else:

@@ -40,7 +40,9 @@ class SmartSettingsApp(MayanAppConfig):
         )
         SourceColumn(
             source=Setting, label=_('Found in path'),
-            attribute=encapsulate(lambda instance: exists_widget(instance.value) if instance.is_path else _('n/a'))
+            attribute=encapsulate(
+                lambda instance: exists_widget(instance.value) if instance.is_path else _('n/a')
+            )
         )
 
         menu_object.bind_links(
@@ -54,4 +56,6 @@ class SmartSettingsApp(MayanAppConfig):
             except ImportError:
                 logger.debug('App %s has not settings.py file', app.name)
             else:
-                logger.debug('Imported settings.py file for app %s', app.name)
+                logger.debug(
+                    'Imported settings.py file for app %s', app.name
+                )

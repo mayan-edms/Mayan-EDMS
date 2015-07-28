@@ -45,9 +45,13 @@ def document_version_post_save_hook(instance):
     logger.debug('instance: %s', instance)
 
     try:
-        document_signature = DocumentVersionSignature.objects.get(document_version=instance)
+        document_signature = DocumentVersionSignature.objects.get(
+            document_version=instance
+        )
     except DocumentVersionSignature.DoesNotExist:
-        document_signature = DocumentVersionSignature.objects.create(document_version=instance)
+        document_signature = DocumentVersionSignature.objects.create(
+            document_version=instance
+        )
         document_signature.check_for_embedded_signature()
 
 
@@ -60,7 +64,9 @@ class DocumentSignaturesApp(MayanAppConfig):
     def ready(self):
         super(DocumentSignaturesApp, self).ready()
 
-        DocumentVersion.register_post_save_hook(1, document_version_post_save_hook)
+        DocumentVersion.register_post_save_hook(
+            1, document_version_post_save_hook
+        )
         DocumentVersion.register_pre_open_hook(1, document_pre_open_hook)
 
         ModelPermission.register(
@@ -70,5 +76,18 @@ class DocumentSignaturesApp(MayanAppConfig):
             )
         )
 
-        menu_facet.bind_links(links=[link_document_verify], sources=[Document])
-        menu_sidebar.bind_links(links=[link_document_signature_upload, link_document_signature_download, link_document_signature_delete], sources=['signatures:document_verify', 'signatures:document_signature_upload', 'signatures:document_signature_download', 'signatures:document_signature_delete'])
+        menu_facet.bind_links(
+            links=[link_document_verify], sources=[Document]
+        )
+        menu_sidebar.bind_links(
+            links=[
+                link_document_signature_upload,
+                link_document_signature_download,
+                link_document_signature_delete
+            ], sources=[
+                'signatures:document_verify',
+                'signatures:document_signature_upload',
+                'signatures:document_signature_download',
+                'signatures:document_signature_delete'
+            ]
+        )

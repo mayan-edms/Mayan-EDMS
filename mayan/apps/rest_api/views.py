@@ -46,7 +46,9 @@ class Version_0(generics.GenericAPIView):
                 {
                     'name': unicode(endpoint),
                     'url': reverse('api-version-0-app',
-                    args=[unicode(endpoint)], request=request, format=format)
+                        args=[unicode(endpoint)], request=request,
+                        format=format
+                    )
                 } for endpoint in APIEndPoint.get_all()
             ],
         })

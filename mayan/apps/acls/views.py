@@ -28,25 +28,38 @@ logger = logging.getLogger(__name__)
 class ACLListView(SingleObjectListView):
     @staticmethod
     def permission_titles(permission_list):
-        return ', '.join([unicode(permission) for permission in permission_list])
+        return ', '.join(
+            [unicode(permission) for permission in permission_list]
+        )
 
     def dispatch(self, request, *args, **kwargs):
-        self.content_type = get_object_or_404(ContentType, app_label=self.kwargs['app_label'], model=self.kwargs['model'])
+        self.content_type = get_object_or_404(
+            ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
 
         try:
-            self.content_object = self.content_type.get_object_for_this_type(pk=self.kwargs['object_id'])
+            self.content_object = self.content_type.get_object_for_this_type(
+                pk=self.kwargs['object_id']
+            )
         except self.content_type.model_class().DoesNotExist:
             raise Http404
 
         try:
-            Permission.check_permissions(request.user, permissions=(permission_acl_view,))
+            Permission.check_permissions(
+                request.user, permissions=(permission_acl_view,)
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_acl_view, request.user, self.content_object)
+            AccessControlList.objects.check_access(
+                permission_acl_view, request.user, self.content_object
+            )
 
         return super(ACLListView, self).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
-        return AccessControlList.objects.filter(content_type=self.content_type, object_id=self.content_object.pk)
+        return AccessControlList.objects.filter(
+            content_type=self.content_type, object_id=self.content_object.pk
+        )
 
     def get_extra_context(self):
         return {
@@ -60,7 +73,11 @@ class ACLListView(SingleObjectListView):
                 },
                 {
                     'name': _('Permissions'),
-                    'attribute': encapsulate(lambda entry: ACLListView.permission_titles(entry.permissions.all()))
+                    'attribute': encapsulate(
+                        lambda entry: ACLListView.permission_titles(
+                            entry.permissions.all()
+                        )
+                    )
                 },
             ],
         }
@@ -71,17 +88,26 @@ class ACLCreateView(SingleObjectCreateView):
     model = AccessControlList
 
     def dispatch(self, request, *args, **kwargs):
-        content_type = get_object_or_404(ContentType, app_label=self.kwargs['app_label'], model=self.kwargs['model'])
+        content_type = get_object_or_404(
+            ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
 
         try:
-            self.content_object = content_type.get_object_for_this_type(pk=self.kwargs['object_id'])
+            self.content_object = content_type.get_object_for_this_type(
+                pk=self.kwargs['object_id']
+            )
         except content_type.model_class().DoesNotExist:
             raise Http404
 
         try:
-            Permission.check_permissions(request.user, permissions=(permission_acl_edit,))
+            Permission.check_permissions(
+                request.user, permissions=(permission_acl_edit,)
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_acl_edit, request.user, self.content_object)
+            AccessControlList.objects.check_access(
+                permission_acl_edit, request.user, self.content_object
+            )
 
         return super(ACLCreateView, self).dispatch(request, *args, **kwargs)
 
@@ -98,7 +124,9 @@ class ACLCreateView(SingleObjectCreateView):
     def get_extra_context(self):
         return {
             'object': self.content_object,
-            'title': _('New access control lists for: %s' % self.content_object),
+            'title': _(
+                'New access control lists for: %s' % self.content_object
+            ),
         }
 
 
@@ -109,9 +137,13 @@ class ACLDeleteView(SingleObjectDeleteView):
         acl = get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
 
         try:
-            Permission.check_permissions(request.user, permissions=(permission_acl_edit,))
+            Permission.check_permissions(
+                request.user, permissions=(permission_acl_edit,)
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_acl_edit, request.user, acl.content_object)
+            AccessControlList.objects.check_access(
+                permission_acl_edit, request.user, acl.content_object
+            )
 
         return super(ACLDeleteView, self).dispatch(request, *args, **kwargs)
 
@@ -136,8 +168,12 @@ class ACLPermissionsView(AssignRemoveView):
         results = []
 
         for namespace, permissions in itertools.groupby(entries, lambda entry: entry.namespace):
-            permission_options = [(unicode(permission.pk), permission) for permission in permissions]
-            results.append((PermissionNamespace.get(namespace), permission_options))
+            permission_options = [
+                (unicode(permission.pk), permission) for permission in permissions
+            ]
+            results.append(
+                (PermissionNamespace.get(namespace), permission_options)
+            )
 
         return results
 
@@ -149,15 +185,23 @@ class ACLPermissionsView(AssignRemoveView):
         acl = get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
 
         try:
-            Permission.check_permissions(request.user, permissions=(permission_acl_edit,))
+            Permission.check_permissions(
+                request.user, permissions=(permission_acl_edit,)
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_acl_edit, request.user, acl.content_object)
+            AccessControlList.objects.check_access(
+                permission_acl_edit, request.user, acl.content_object
+            )
 
-        return super(ACLPermissionsView, self).dispatch(request, *args, **kwargs)
+        return super(
+            ACLPermissionsView, self
+        ).dispatch(request, *args, **kwargs)
 
     def get_right_list_help_text(self):
         if self.get_object().get_inherited_permissions():
-            return _('Disabled permissions are inherited from a parent object.')
+            return _(
+                'Disabled permissions are inherited from a parent object.'
+            )
 
         return None
 
@@ -165,14 +209,24 @@ class ACLPermissionsView(AssignRemoveView):
         return get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
 
     def get_available_list(self):
-        return ModelPermission.get_for_instance(instance=self.get_object().content_object).exclude(id__in=self.get_granted_list().values_list('pk', flat=True))
+        return ModelPermission.get_for_instance(
+            instance=self.get_object().content_object
+        ).exclude(id__in=self.get_granted_list().values_list('pk', flat=True))
 
     def get_disabled_choices(self):
         """
         Get permissions from a parent's acls but remove the permissions we
         already hold for this object
         """
-        return map(str, set(self.get_object().get_inherited_permissions().values_list('pk', flat=True)).difference(self.get_object().permissions.values_list('pk', flat=True)))
+        return map(
+            str, set(
+                self.get_object().get_inherited_permissions().values_list(
+                    'pk', flat=True
+                )
+            ).difference(
+                self.get_object().permissions.values_list('pk', flat=True)
+            )
+        )
 
     def get_extra_context(self):
         return {

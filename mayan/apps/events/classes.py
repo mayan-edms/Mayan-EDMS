@@ -28,4 +28,7 @@ class Event(object):
         if not self.event_type:
             self.event_type, created = model.objects.get_or_create(name=self.name)
 
-        action.send(actor or target, actor=actor, verb=self.name, action_object=action_object, target=target)
+        action.send(
+            actor or target, actor=actor, verb=self.name,
+            action_object=action_object, target=target
+        )

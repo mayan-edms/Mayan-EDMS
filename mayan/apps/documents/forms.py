@@ -42,7 +42,9 @@ class DocumentPreviewForm(forms.Form):
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = document
         try:
-            self.fields['preview'].label = _('Document pages (%d)') % document.page_count
+            self.fields['preview'].label = _(
+                'Document pages (%d)'
+            ) % document.page_count
         except AttributeError:
             self.fields['preview'].label = _('Document pages (%d)') % 0
 
@@ -62,13 +64,16 @@ class DocumentForm(forms.ModelForm):
 
         super(DocumentForm, self).__init__(*args, **kwargs)
 
-        # Is a document (documents app edit) and has been saved (sources app upload)?
+        # Is a document (documents app edit) and has been saved (sources
+        # app upload)?
         if self.instance and self.instance.pk:
             document_type = self.instance.document_type
 
         filenames_qs = document_type.filenames.filter(enabled=True)
         if filenames_qs.count():
-            self.fields['document_type_available_filenames'] = forms.ModelChoiceField(
+            self.fields[
+                'document_type_available_filenames'
+            ] = forms.ModelChoiceField(
                 queryset=filenames_qs,
                 required=False,
                 label=_('Quick document rename')
@@ -119,12 +124,20 @@ class DocumentTypeFilenameForm_create(forms.ModelForm):
 class DocumentDownloadForm(forms.Form):
     compressed = forms.BooleanField(
         label=_('Compress'), required=False,
-        help_text=_('Download the document in the original format or in a compressed manner.  This option is selectable only when downloading one document, for multiple documents, the bundle will always be downloads as a compressed file.')
+        help_text=_(
+            'Download the document in the original format or in a compressed '
+            'manner. This option is selectable only when downloading one '
+            'document, for multiple documents, the bundle will always be '
+            'downloads as a compressed file.'
+        )
     )
     zip_filename = forms.CharField(
         initial=DEFAULT_ZIP_FILENAME, label=_('Compressed filename'),
         required=False,
-        help_text=_('The filename of the compressed file that will contain the documents to be downloaded, if the previous option is selected.')
+        help_text=_(
+            'The filename of the compressed file that will contain the '
+            'documents to be downloaded, if the previous option is selected.'
+        )
     )
 
     def __init__(self, *args, **kwargs):

@@ -39,24 +39,48 @@ class FoldersApp(MayanAppConfig):
 
         ModelPermission.register(
             model=Document, permissions=(
-                permission_folder_add_document, permission_folder_remove_document
+                permission_folder_add_document,
+                permission_folder_remove_document
             )
         )
 
         ModelPermission.register(
             model=Folder, permissions=(
-                permission_acl_edit, permission_acl_view, permission_folder_delete,
-                permission_folder_edit, permission_folder_view
+                permission_acl_edit, permission_acl_view,
+                permission_folder_delete, permission_folder_edit,
+                permission_folder_view
             )
         )
 
-        menu_facet.bind_links(links=[link_document_folder_list], sources=[Document])
+        menu_facet.bind_links(
+            links=[link_document_folder_list], sources=[Document]
+        )
         menu_main.bind_links(links=[link_folder_list])
-        menu_multi_item.bind_links(links=[link_folder_add_multiple_documents], sources=[Document])
-        menu_multi_item.bind_links(links=[link_folder_document_multiple_remove], sources=[CombinedSource(obj=Document, view='folders:folder_view')])
-        menu_object.bind_links(links=[link_folder_view, link_folder_edit, link_acl_list, link_folder_delete], sources=[Folder])
-        menu_secondary.bind_links(links=[link_folder_list, link_folder_create], sources=[Folder, 'folders:folder_list', 'folders:folder_create'])
-        menu_sidebar.bind_links(links=[link_folder_add_document], sources=['folders:document_folder_list', 'folders:folder_add_document'])
+        menu_multi_item.bind_links(
+            links=[link_folder_add_multiple_documents], sources=[Document]
+        )
+        menu_multi_item.bind_links(
+            links=[link_folder_document_multiple_remove],
+            sources=[CombinedSource(obj=Document, view='folders:folder_view')]
+        )
+        menu_object.bind_links(
+            links=[
+                link_folder_view, link_folder_edit, link_acl_list,
+                link_folder_delete
+            ], sources=[Folder]
+        )
+        menu_secondary.bind_links(
+            links=[link_folder_list, link_folder_create],
+            sources=[Folder, 'folders:folder_list', 'folders:folder_create']
+        )
+        menu_sidebar.bind_links(
+            links=[link_folder_add_document],
+            sources=[
+                'folders:document_folder_list', 'folders:folder_add_document'
+            ]
+        )
 
-        SourceColumn(source=Folder, label=_('Created'), attribute='datetime_created')
+        SourceColumn(
+            source=Folder, label=_('Created'), attribute='datetime_created'
+        )
         SourceColumn(source=Folder, label=_('User'), attribute='user')

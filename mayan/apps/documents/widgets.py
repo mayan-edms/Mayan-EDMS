@@ -21,8 +21,14 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         rotation = final_attrs.get('rotation', 0)
         if value:
             output = []
-            output.append('<div class="full-height scrollable mayan-page-wrapper-interactive" data-height-difference=230>')
-            output.append(document_html_widget(value, zoom=zoom, rotation=rotation, image_class='lazy-load', nolazyload=False, size=setting_display_size.value))
+            output.append(
+                '<div class="full-height scrollable '
+                'mayan-page-wrapper-interactive" data-height-difference=230>'
+            )
+            output.append(document_html_widget(
+                value, zoom=zoom, rotation=rotation, image_class='lazy-load',
+                nolazyload=False, size=setting_display_size.value)
+            )
             output.append('</div>')
             return mark_safe(''.join(output))
         else:
@@ -35,7 +41,10 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
     """
     def render(self, name, value, attrs=None):
         output = []
-        output.append('<div id="carousel-container" class="full-height scrollable" data-height-difference=360>')
+        output.append(
+            '<div id="carousel-container" class="full-height scrollable" '
+            'data-height-difference=360>'
+        )
 
         try:
             document_pages = value.pages.all()
@@ -57,7 +66,14 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     post_load_class='lazy-load-carousel-loaded',
                 )
             )
-            output.append('<div class="carousel-item-page-number">%s</div>' % ugettext('Page %(page_number)d of %(total_pages)d') % {'page_number': page.page_number, 'total_pages': total_pages})
+            output.append(
+                '<div class="carousel-item-page-number">%s</div>' % ugettext(
+                    'Page %(page_number)d of %(total_pages)d'
+                ) % {
+                    'page_number': page.page_number,
+                    'total_pages': total_pages
+                }
+            )
             output.append('</div>')
 
         output.append('</div>')
@@ -66,11 +82,16 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
 
 
 def document_thumbnail(document, **kwargs):
-    return document_html_widget(document.latest_version.pages.first(), click_view='documents:document_display', **kwargs)
+    return document_html_widget(
+        document.latest_version.pages.first(),
+        click_view='documents:document_display', **kwargs
+    )
 
 
 def document_link(document):
-    return mark_safe('<a href="%s">%s</a>' % (document.get_absolute_url(), document))
+    return mark_safe('<a href="%s">%s</a>' % (
+        document.get_absolute_url(), document)
+    )
 
 
 def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None):
@@ -95,9 +116,15 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
 
     query_string = urlencode(query_dict)
 
-    preview_view = '%s?%s' % (reverse('document-image', args=[document.pk]), query_string)
+    preview_view = '%s?%s' % (
+        reverse('document-image', args=[document.pk]), query_string
+    )
 
-    result.append('<div class="tc" id="document-%d-%d">' % (document.pk, page if page else 1))
+    result.append(
+        '<div class="tc" id="document-%d-%d">' % (
+            document.pk, page if page else 1
+        )
+    )
 
     if title:
         title_template = 'title="%s"' % strip_tags(title)
@@ -105,17 +132,34 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
         title_template = ''
 
     if click_view:
-        result.append('<a {gallery_template} class="{fancybox_class}" href="{image_data}" {title_template}>'.format(
-            gallery_template=gallery_template,
-            fancybox_class=fancybox_class,
-            image_data='%s?%s' % (reverse(click_view, args=click_view_arguments or [document.pk]), query_string),
-            title_template=title_template
-        ))
+        result.append(
+            '<a {gallery_template} class="{fancybox_class}" '
+            'href="{image_data}" {title_template}>'.format(
+                gallery_template=gallery_template,
+                fancybox_class=fancybox_class,
+                image_data='%s?%s' % (
+                    reverse(
+                        click_view, args=click_view_arguments or [document.pk]
+                    ), query_string
+                ),
+                title_template=title_template
+            )
+        )
 
     if nolazyload:
-        result.append('<img class="img-nolazyload" src="%s" alt="%s" />' % (preview_view, alt_text))
+        result.append(
+            '<img class="img-nolazyload" src="%s" alt="%s" />' % (
+                preview_view, alt_text
+            )
+        )
     else:
-        result.append('<img class="thin_border %s" data-src="%s" data-post-load-class="%s" src="%s" alt="%s" />' % (image_class, preview_view, post_load_class, static('appearance/images/loading.png'), alt_text))
+        result.append(
+            '<img class="thin_border %s" data-src="%s" '
+            'data-post-load-class="%s" src="%s" alt="%s" />' % (
+                image_class, preview_view, post_load_class,
+                static('appearance/images/loading.png'), alt_text
+            )
+        )
 
     if click_view:
         result.append('</a>')

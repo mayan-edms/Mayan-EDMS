@@ -17,26 +17,47 @@ TEST_COMPRESSED_DOCUMENTS_FILENAME = 'compressed_documents.zip'
 TEST_SMALL_DOCUMENT_FILENAME = 'title_page.png'
 TEST_NON_ASCII_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png'
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png.zip'
-TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf')
-TEST_SMALL_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_SMALL_DOCUMENT_FILENAME)
-TEST_NON_ASCII_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_NON_ASCII_DOCUMENT_FILENAME)
-TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME)
-TEST_DEU_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_DEU_DOCUMENT_FILENAME)
-TEST_COMPRESSED_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', TEST_COMPRESSED_DOCUMENTS_FILENAME)
+TEST_DOCUMENT_PATH = os.path.join(
+    settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf'
+)
+TEST_SMALL_DOCUMENT_PATH = os.path.join(
+    settings.BASE_DIR, 'contrib', 'sample_documents',
+    TEST_SMALL_DOCUMENT_FILENAME
+)
+TEST_NON_ASCII_DOCUMENT_PATH = os.path.join(
+    settings.BASE_DIR, 'contrib', 'sample_documents',
+    TEST_NON_ASCII_DOCUMENT_FILENAME
+)
+TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH = os.path.join(
+    settings.BASE_DIR, 'contrib', 'sample_documents',
+    TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME
+)
+TEST_DEU_DOCUMENT_PATH = os.path.join(
+    settings.BASE_DIR, 'contrib', 'sample_documents',
+    TEST_DEU_DOCUMENT_FILENAME
+)
+TEST_COMPRESSED_DOCUMENT_PATH = os.path.join(
+    settings.BASE_DIR, 'contrib', 'sample_documents',
+    TEST_COMPRESSED_DOCUMENTS_FILENAME
+)
 TEST_DOCUMENT_DESCRIPTION = 'test description'
 TEST_DOCUMENT_TYPE = 'test_document_type'
 
 
 class DocumentTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
 
         ocr_settings = self.document_type.ocr_settings
         ocr_settings.auto_ocr = False
         ocr_settings.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(file_object=File(file_object), label='mayan_11_1.pdf')
+            self.document = self.document_type.new_document(
+                file_object=File(file_object), label='mayan_11_1.pdf'
+            )
 
     def tearDown(self):
         self.document_type.delete()
@@ -50,7 +71,10 @@ class DocumentTestCase(TestCase):
         self.assertEqual(self.document.file_mimetype, 'application/pdf')
         self.assertEqual(self.document.file_mime_encoding, 'binary')
         self.assertEqual(self.document.label, 'mayan_11_1.pdf')
-        self.assertEqual(self.document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
+        self.assertEqual(
+            self.document.checksum,
+            'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3'
+        )
         self.assertEqual(self.document.page_count, 47)
 
     def test_version_creation(self):
@@ -58,7 +82,9 @@ class DocumentTestCase(TestCase):
             self.document.new_version(file_object=File(file_object))
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file_object=File(file_object), comment='test comment 1')
+            self.document.new_version(
+                file_object=File(file_object), comment='test comment 1'
+            )
 
         self.assertEqual(self.document.versions.count(), 3)
 

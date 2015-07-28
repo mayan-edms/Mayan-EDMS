@@ -43,7 +43,8 @@ from .signals import (
     post_document_created, post_document_type_change, post_version_upload
 )
 
-HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()  # document image cache name hash function
+# document image cache name hash function
+HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 logger = logging.getLogger(__name__)
 
 
@@ -57,11 +58,29 @@ class DocumentType(models.Model):
     Define document types or classes to which a specific set of
     properties can be attached
     """
-    label = models.CharField(max_length=32, unique=True, verbose_name=_('Label'))
-    trash_time_period = models.PositiveIntegerField(blank=True, help_text=_('Amount of time after which documents of this type will be moved to the trash.'), null=True, verbose_name=_('Trash time period'))
-    trash_time_unit = models.CharField(blank=True, choices=TIME_DELTA_UNIT_CHOICES, null=True, max_length=8, verbose_name=_('Trash time unit'))
-    delete_time_period = models.PositiveIntegerField(default=DEFAULT_DELETE_PERIOD, help_text=_('Amount of time after which documents of this type in the trash will be deleted.'), verbose_name=_('Delete time period'))
-    delete_time_unit = models.CharField(choices=TIME_DELTA_UNIT_CHOICES, default=DEFAULT_DELETE_TIME_UNIT, max_length=8, verbose_name=_('Delete time unit'))
+    label = models.CharField(
+        max_length=32, unique=True, verbose_name=_('Label')
+    )
+    trash_time_period = models.PositiveIntegerField(
+        blank=True, help_text=_(
+            'Amount of time after which documents of this type will be '
+            'moved to the trash.'
+        ), null=True, verbose_name=_('Trash time period')
+    )
+    trash_time_unit = models.CharField(
+        blank=True, choices=TIME_DELTA_UNIT_CHOICES, null=True, max_length=8,
+        verbose_name=_('Trash time unit')
+    )
+    delete_time_period = models.PositiveIntegerField(
+        default=DEFAULT_DELETE_PERIOD, help_text=_(
+            'Amount of time after which documents of this type in the trash '
+            'will be deleted.'
+        ), verbose_name=_('Delete time period')
+    )
+    delete_time_unit = models.CharField(
+        choices=TIME_DELTA_UNIT_CHOICES, default=DEFAULT_DELETE_TIME_UNIT,
+        max_length=8, verbose_name=_('Delete time unit')
+    )
 
     objects = DocumentTypeManager()
 
@@ -77,13 +96,21 @@ class DocumentType(models.Model):
     def new_document(self, file_object, label=None, description=None, language=None, _user=None):
         try:
             with transaction.atomic():
-                document = self.documents.create(description=description or '', label=label or unicode(file_object), language=language or setting_language.value)
+                document = self.documents.create(
+                    description=description or '',
+                    label=label or unicode(file_object),
+                    language=language or setting_language.value
+                )
                 document.save(_user=_user)
 
                 document.new_version(file_object=file_object, _user=_user)
                 return document
         except Exception as exception:
-            logger.critical('Unexpected exception while trying to create new document "%s" from document type "%s"; %s', label or unicode(file_object), self, exception)
+            logger.critical(
+                'Unexpected exception while trying to create new document '
+                '"%s" from document type "%s"; %s',
+                label or unicode(file_object), self, exception
+            )
             raise
 
     class Meta:
@@ -98,15 +125,38 @@ class Document(models.Model):
     Defines a single document with it's fields and properties
     """
 
-    uuid = models.CharField(default=UUID_FUNCTION, editable=False, max_length=48)
-    document_type = models.ForeignKey(DocumentType, related_name='documents', verbose_name=_('Document type'))
-    label = models.CharField(blank=True, db_index=True, default='', max_length=255, help_text=_('The name of the document'), verbose_name=_('Label'))
-    description = models.TextField(blank=True, default='', verbose_name=_('Description'))
-    date_added = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_('Added'))
-    language = models.CharField(blank=True, choices=setting_language_choices.value, default=setting_language.value, max_length=8, verbose_name=_('Language'))
-    in_trash = models.BooleanField(default=False, editable=False, verbose_name=_('In trash?'))
-    deleted_date_time = models.DateTimeField(blank=True, editable=True, null=True, verbose_name=_('Date and time trashed'))
-    is_stub = models.BooleanField(default=True, editable=False, verbose_name=_('Is stub?'))
+    uuid = models.CharField(
+        default=UUID_FUNCTION, editable=False, max_length=48
+    )
+    document_type = models.ForeignKey(
+        DocumentType, related_name='documents',
+        verbose_name=_('Document type')
+    )
+    label = models.CharField(
+        blank=True, db_index=True, default='', max_length=255,
+        help_text=_('The name of the document'), verbose_name=_('Label')
+    )
+    description = models.TextField(
+        blank=True, default='', verbose_name=_('Description')
+    )
+    date_added = models.DateTimeField(
+        auto_now_add=True, db_index=True, verbose_name=_('Added')
+    )
+    language = models.CharField(
+        blank=True, choices=setting_language_choices.value,
+        default=setting_language.value, max_length=8,
+        verbose_name=_('Language')
+    )
+    in_trash = models.BooleanField(
+        default=False, editable=False, verbose_name=_('In trash?')
+    )
+    deleted_date_time = models.DateTimeField(
+        blank=True, editable=True, null=True,
+        verbose_name=_('Date and time trashed')
+    )
+    is_stub = models.BooleanField(
+        default=True, editable=False, verbose_name=_('Is stub?')
+    )
 
     objects = DocumentManager()
     passthrough = PassthroughManager()
@@ -123,7 +173,9 @@ class Document(models.Model):
         self.document_type = document_type
         self.save()
         if has_changed or force:
-            post_document_type_change.send(sender=self.__class__, instance=self)
+            post_document_type_change.send(
+                sender=self.__class__, instance=self
+            )
 
     def invalidate_cache(self):
         for document_version in self.versions.all():
@@ -174,7 +226,9 @@ class Document(models.Model):
     def new_version(self, file_object, comment=None, _user=None):
         logger.info('Creating new document version for document: %s', self)
 
-        document_version = DocumentVersion(document=self, comment=comment or '', file=File(file_object))
+        document_version = DocumentVersion(
+            document=self, comment=comment or '', file=File(file_object)
+        )
         document_version.save(_user=_user)
 
         logger.info('New document version queued for document: %s', self)
@@ -238,7 +292,9 @@ class Document(models.Model):
 
     # TODO: look to remove, only used by the OCR parser
     def document_save_to_temp_dir(self, filename, buffer_size=1024 * 1024):
-        temporary_path = os.path.join(setting_temporary_directory.value, filename)
+        temporary_path = os.path.join(
+            setting_temporary_directory.value, filename
+        )
         return self.save_to_file(temporary_path, buffer_size)
 
 
@@ -265,15 +321,30 @@ class DocumentVersion(models.Model):
     def register_post_save_hook(cls, order, func):
         cls._post_save_hooks[order] = func
 
-    document = models.ForeignKey(Document, related_name='versions', verbose_name=_('Document'))
-    timestamp = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_('Timestamp'))
-    comment = models.TextField(blank=True, default='', verbose_name=_('Comment'))
+    document = models.ForeignKey(
+        Document, related_name='versions', verbose_name=_('Document')
+    )
+    timestamp = models.DateTimeField(
+        auto_now_add=True, db_index=True, verbose_name=_('Timestamp')
+    )
+    comment = models.TextField(
+        blank=True, default='', verbose_name=_('Comment')
+    )
 
     # File related fields
-    file = models.FileField(storage=storage_backend, upload_to=UUID_FUNCTION, verbose_name=_('File'))
-    mimetype = models.CharField(blank=True, editable=False, max_length=255, null=True)
-    encoding = models.CharField(blank=True, editable=False, max_length=64, null=True)
-    checksum = models.TextField(blank=True, editable=False, null=True, verbose_name=_('Checksum'))
+    file = models.FileField(
+        storage=storage_backend, upload_to=UUID_FUNCTION,
+        verbose_name=_('File')
+    )
+    mimetype = models.CharField(
+        blank=True, editable=False, max_length=255, null=True
+    )
+    encoding = models.CharField(
+        blank=True, editable=False, max_length=64, null=True
+    )
+    checksum = models.TextField(
+        blank=True, editable=False, null=True, verbose_name=_('Checksum')
+    )
 
     class Meta:
         verbose_name = _('Document version')
@@ -308,7 +379,10 @@ class DocumentVersion(models.Model):
                     self.save()
                     self.update_page_count(save=False)
 
-                    logger.info('New document version "%s" created for document: %s', self, self.document)
+                    logger.info(
+                        'New document version "%s" created for document: %s',
+                        self, self.document
+                    )
 
                     self.document.is_stub = False
                     if not self.document.label:
@@ -316,15 +390,22 @@ class DocumentVersion(models.Model):
 
                     self.document.save()
         except Exception as exception:
-            logger.error('Error creating new document version for document "%s"; %s', self.document, exception)
+            logger.error(
+                'Error creating new document version for document "%s"; %s',
+                self.document, exception
+            )
             raise
         else:
             if new_document_version:
-                event_document_new_version.commit(actor=user, target=self.document)
+                event_document_new_version.commit(
+                    actor=user, target=self.document
+                )
                 post_version_upload.send(sender=self.__class__, instance=self)
 
                 if tuple(self.document.versions.all()) == (self,):
-                    post_document_created.send(sender=self.document.__class__, instance=self.document)
+                    post_document_created.send(
+                        sender=self.document.__class__, instance=self.document
+                    )
 
     def invalidate_cache(self):
         cache_storage_backend.delete(self.cache_filename)
@@ -333,8 +414,8 @@ class DocumentVersion(models.Model):
 
     def update_checksum(self, save=True):
         """
-        Open a document version's file and update the checksum field using the
-        user provided checksum function
+        Open a document version's file and update the checksum field using
+        the user provided checksum function
         """
         if self.exists():
             source = self.open()
@@ -346,7 +427,9 @@ class DocumentVersion(models.Model):
     def update_page_count(self, save=True):
         try:
             with self.open() as file_object:
-                converter = converter_class(file_object=file_object, mime_type=self.mimetype)
+                converter = converter_class(
+                    file_object=file_object, mime_type=self.mimetype
+                )
                 detected_pages = converter.get_page_count()
         except UnknownFileFormat:
             # If converter backend doesn't understand the format,
@@ -372,7 +455,10 @@ class DocumentVersion(models.Model):
         """
         Delete the subsequent versions after this one
         """
-        logger.info('Reverting to document document: %s to version: %s', self.document, self)
+        logger.info(
+            'Reverting to document document: %s to version: %s',
+            self.document, self
+        )
 
         event_document_version_revert.commit(actor=user, target=self.document)
 
@@ -381,13 +467,15 @@ class DocumentVersion(models.Model):
 
     def update_mimetype(self, save=True):
         """
-        Read a document verions's file and determine the mimetype by calling the
-        get_mimetype wrapper
+        Read a document verions's file and determine the mimetype by calling
+        the get_mimetype wrapper
         """
         if self.exists():
             try:
                 with self.open() as file_object:
-                    self.mimetype, self.encoding = get_mimetype(file_object=file_object)
+                    self.mimetype, self.encoding = get_mimetype(
+                        file_object=file_object
+                    )
             except:
                 self.mimetype = ''
                 self.encoding = ''
@@ -486,7 +574,10 @@ class DocumentVersion(models.Model):
                 return self.open()
             except Exception as exception:
                 # Cleanup in case of error
-                logger.error('Error creating intermediate file "%s"; %s.', cache_filename, exception)
+                logger.error(
+                    'Error creating intermediate file "%s"; %s.',
+                    cache_filename, exception
+                )
                 cache_storage_backend.delete(cache_filename)
                 raise
 
@@ -497,8 +588,12 @@ class DocumentTypeFilename(models.Model):
     List of filenames available to a specific document type for the
     quick rename functionality
     """
-    document_type = models.ForeignKey(DocumentType, related_name='filenames', verbose_name=_('Document type'))
-    filename = models.CharField(db_index=True, max_length=128, verbose_name=_('Filename'))
+    document_type = models.ForeignKey(
+        DocumentType, related_name='filenames', verbose_name=_('Document type')
+    )
+    filename = models.CharField(
+        db_index=True, max_length=128, verbose_name=_('Filename')
+    )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
     def __str__(self):
@@ -516,11 +611,18 @@ class DocumentPage(models.Model):
     """
     Model that describes a document version page
     """
-    document_version = models.ForeignKey(DocumentVersion, related_name='pages', verbose_name=_('Document version'))
-    page_number = models.PositiveIntegerField(db_index=True, default=1, editable=False, verbose_name=_('Page number'))
+    document_version = models.ForeignKey(
+        DocumentVersion, related_name='pages',
+        verbose_name=_('Document version')
+    )
+    page_number = models.PositiveIntegerField(
+        db_index=True, default=1, editable=False, verbose_name=_('Page number')
+    )
 
     def __str__(self):
-        return _('Page %(page_num)d out of %(total_pages)d of %(document)s') % {
+        return _(
+            'Page %(page_num)d out of %(total_pages)d of %(document)s'
+        ) % {
             'document': unicode(self.document),
             'page_num': self.page_number,
             'total_pages': self.document_version.pages.count()
@@ -540,7 +642,9 @@ class DocumentPage(models.Model):
 
     @property
     def siblings(self):
-        return DocumentPage.objects.filter(document_version=self.document_version)
+        return DocumentPage.objects.filter(
+            document_version=self.document_version
+        )
 
     # Compatibility methods
     @property
@@ -582,14 +686,18 @@ class DocumentPage(models.Model):
 
         if cache_storage_backend.exists(cache_filename):
             logger.debug('Page cache file "%s" found', cache_filename)
-            converter = converter_class(file_object=cache_storage_backend.open(cache_filename))
+            converter = converter_class(
+                file_object=cache_storage_backend.open(cache_filename)
+            )
 
             converter.seek(0)
         else:
             logger.debug('Page cache file "%s" not found', cache_filename)
 
             try:
-                converter = converter_class(file_object=self.document_version.get_intermidiate_file())
+                converter = converter_class(
+                    file_object=self.document_version.get_intermidiate_file()
+                )
                 converter.seek(page_number=self.page_number - 1)
 
                 page_image = converter.get_page()
@@ -598,7 +706,10 @@ class DocumentPage(models.Model):
                     file_object.write(page_image.getvalue())
             except Exception as exception:
                 # Cleanup in case of error
-                logger.error('Error creating page cache file "%s"; %s', cache_filename, exception)
+                logger.error(
+                    'Error creating page cache file "%s"; %s',
+                    cache_filename, exception
+                )
                 cache_storage_backend.delete(cache_filename)
                 raise
 
@@ -611,13 +722,19 @@ class DocumentPage(models.Model):
             converter.transform(transformation=transformation)
 
         if rotation:
-            converter.transform(transformation=TransformationRotate(degrees=rotation))
+            converter.transform(transformation=TransformationRotate(
+                degrees=rotation)
+            )
 
         if size:
-            converter.transform(transformation=TransformationResize(**dict(zip(('width', 'height'), (size.split('x'))))))
+            converter.transform(transformation=TransformationResize(
+                **dict(zip(('width', 'height'), (size.split('x')))))
+            )
 
         if zoom_level:
-            converter.transform(transformation=TransformationZoom(percent=zoom_level))
+            converter.transform(
+                transformation=TransformationZoom(percent=zoom_level)
+            )
 
         page_image = converter.get_page()
 
@@ -635,8 +752,12 @@ class RecentDocument(models.Model):
     a given user
     """
     user = models.ForeignKey(User, editable=False, verbose_name=_('User'))
-    document = models.ForeignKey(Document, editable=False, verbose_name=_('Document'))
-    datetime_accessed = models.DateTimeField(auto_now=True, db_index=True, verbose_name=_('Accessed'))
+    document = models.ForeignKey(
+        Document, editable=False, verbose_name=_('Document')
+    )
+    datetime_accessed = models.DateTimeField(
+        auto_now=True, db_index=True, verbose_name=_('Accessed')
+    )
 
     objects = RecentDocumentManager()
 

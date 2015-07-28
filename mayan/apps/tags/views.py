@@ -418,7 +418,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
                         request, _(
                             'Tag "%(tag)s" removed successfully from document "%(document)s".'
                         ) % {
-                        'document': document, 'tag': tag
+                            'document': document, 'tag': tag
                         }
                     )
 

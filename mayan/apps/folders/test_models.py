@@ -15,17 +15,26 @@ from documents.test_models import TEST_DOCUMENT_TYPE
 
 from .models import Folder
 
-TEST_DOCUMENT_PATH = os.path.join(settings.BASE_DIR, 'contrib', 'sample_documents', 'title_page.png')
+TEST_DOCUMENT_PATH = os.path.join(
+    settings.BASE_DIR, 'contrib', 'sample_documents', 'title_page.png'
+)
 
 
 class FolderTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(file_object=File(file_object))
+            self.document = self.document_type.new_document(
+                file_object=File(file_object)
+            )
 
-        self.user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
+        self.user = User.objects.create_superuser(
+            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
+            password=TEST_ADMIN_PASSWORD
+        )
 
     def tearDown(self):
         self.document.delete()

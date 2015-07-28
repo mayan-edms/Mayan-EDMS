@@ -13,7 +13,10 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='metadatatype',
-            options={'ordering': ('label',), 'verbose_name': 'Metadata type', 'verbose_name_plural': 'Metadata types'},
+            options={
+                'ordering': ('label',), 'verbose_name': 'Metadata type',
+                'verbose_name_plural': 'Metadata types'
+            },
         ),
         migrations.RenameField(
             model_name='metadatatype',

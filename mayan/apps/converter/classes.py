@@ -300,8 +300,10 @@ class TransformationZoom(BaseTransformation):
 
         decimal_value = float(self.percent) / 100
         return self.image.resize(
-            (int(self.image.size[0] * decimal_value),
-            int(self.image.size[1] * decimal_value)), Image.ANTIALIAS
+            (
+                int(self.image.size[0] * decimal_value),
+                int(self.image.size[1] * decimal_value)
+            ), Image.ANTIALIAS
         )
 
 

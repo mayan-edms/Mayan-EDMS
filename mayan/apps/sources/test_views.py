@@ -51,7 +51,7 @@ class UploadDocumentTestCase(TestCase):
         self.client.post(
             reverse(
                 'sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]
-                ), {'label': 'test', 'uncompress': 'n', 'enabled': True}
+            ), {'label': 'test', 'uncompress': 'n', 'enabled': True}
         )
         self.assertEqual(WebFormSource.objects.count(), 1)
 

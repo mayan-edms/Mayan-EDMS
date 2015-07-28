@@ -15,12 +15,34 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AccessEntry',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('holder_id', models.PositiveIntegerField()),
+                (
+                    'id', models.AutoField(
+                        verbose_name='ID', serialize=False,
+                        auto_created=True, primary_key=True
+                    )
+                ),
+                (
+                    'holder_id', models.PositiveIntegerField()
+                ),
                 ('object_id', models.PositiveIntegerField()),
-                ('content_type', models.ForeignKey(related_name='object_content_type', to='contenttypes.ContentType')),
-                ('holder_type', models.ForeignKey(related_name='access_holder', to='contenttypes.ContentType')),
-                ('permission', models.ForeignKey(verbose_name='Permission', to='permissions.StoredPermission')),
+                (
+                    'content_type', models.ForeignKey(
+                        related_name='object_content_type',
+                        to='contenttypes.ContentType'
+                    )
+                ),
+                (
+                    'holder_type', models.ForeignKey(
+                        related_name='access_holder',
+                        to='contenttypes.ContentType'
+                    )
+                ),
+                (
+                    'permission', models.ForeignKey(
+                        verbose_name='Permission',
+                        to='permissions.StoredPermission'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Access entry',
@@ -31,7 +53,12 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='CreatorSingleton',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                (
+                    'id', models.AutoField(
+                        verbose_name='ID', serialize=False,
+                        auto_created=True, primary_key=True
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Creator',
@@ -42,11 +69,31 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DefaultAccessEntry',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                (
+                    'id', models.AutoField(
+                        verbose_name='ID', serialize=False,
+                        auto_created=True, primary_key=True
+                    )
+                ),
                 ('holder_id', models.PositiveIntegerField()),
-                ('content_type', models.ForeignKey(related_name='default_access_entry_class', to='contenttypes.ContentType')),
-                ('holder_type', models.ForeignKey(related_name='default_access_entry_holder', to='contenttypes.ContentType')),
-                ('permission', models.ForeignKey(verbose_name='Permission', to='permissions.StoredPermission')),
+                (
+                    'content_type', models.ForeignKey(
+                        related_name='default_access_entry_class',
+                        to='contenttypes.ContentType'
+                    )
+                ),
+                (
+                    'holder_type', models.ForeignKey(
+                        related_name='default_access_entry_holder',
+                        to='contenttypes.ContentType'
+                    )
+                ),
+                (
+                    'permission', models.ForeignKey(
+                        verbose_name='Permission',
+                        to='permissions.StoredPermission'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Default access entry',

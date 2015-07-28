@@ -17,8 +17,13 @@ logger = logging.getLogger(__name__)
 
 @python_2_unicode_compatible
 class Workflow(models.Model):
-    label = models.CharField(max_length=255, unique=True, verbose_name=_('Label'))
-    document_types = models.ManyToManyField(DocumentType, related_name='workflows', verbose_name=_('Document types'))
+    label = models.CharField(
+        max_length=255, unique=True, verbose_name=_('Label')
+    )
+    document_types = models.ManyToManyField(
+        DocumentType, related_name='workflows',
+        verbose_name=_('Document types')
+    )
 
     objects = WorkflowManager()
 
@@ -36,12 +41,18 @@ class Workflow(models.Model):
 
     def launch_for(self, document):
         try:
-            logger.info('Launching workflow %s for document %s', self, document)
+            logger.info(
+                'Launching workflow %s for document %s', self, document
+            )
             self.instances.create(document=document)
         except IntegrityError:
-            logger.info('Workflow %s already launched for document %s', self, document)
+            logger.info(
+                'Workflow %s already launched for document %s', self, document
+            )
         else:
-            logger.info('Workflow %s launched for document %s', self, document)
+            logger.info(
+                'Workflow %s launched for document %s', self, document
+            )
 
     class Meta:
         verbose_name = _('Workflow')
@@ -50,10 +61,23 @@ class Workflow(models.Model):
 
 @python_2_unicode_compatible
 class WorkflowState(models.Model):
-    workflow = models.ForeignKey(Workflow, related_name='states', verbose_name=_('Workflow'))
+    workflow = models.ForeignKey(
+        Workflow, related_name='states', verbose_name=_('Workflow')
+    )
     label = models.CharField(max_length=255, verbose_name=_('Label'))
-    initial = models.BooleanField(default=False, help_text=_('Select if this will be the state with which you want the workflow to start in. Only one state can be the initial state.'), verbose_name=_('Initial'))
-    completion = models.IntegerField(blank=True, default=0, help_text=_('Enter the percent of completion that this state represents in relation to the workflow. Use numbers without the percent sign.'), verbose_name=_('Completion'))
+    initial = models.BooleanField(
+        default=False,
+        help_text=_(
+            'Select if this will be the state with which you want the '
+            'workflow to start in. Only one state can be the initial state.'
+        ), verbose_name=_('Initial')
+    )
+    completion = models.IntegerField(
+        blank=True, default=0, help_text=_(
+            'Enter the percent of completion that this state represents in '
+            'relation to the workflow. Use numbers without the percent sign.'
+        ), verbose_name=_('Completion')
+    )
 
     def __str__(self):
         return self.label
@@ -71,36 +95,54 @@ class WorkflowState(models.Model):
 
 @python_2_unicode_compatible
 class WorkflowTransition(models.Model):
-    workflow = models.ForeignKey(Workflow, related_name='transitions', verbose_name=_('Workflow'))
+    workflow = models.ForeignKey(
+        Workflow, related_name='transitions', verbose_name=_('Workflow')
+    )
     label = models.CharField(max_length=255, verbose_name=_('Label'))
 
-    origin_state = models.ForeignKey(WorkflowState, related_name='origin_transitions', verbose_name=_('Origin state'))
-    destination_state = models.ForeignKey(WorkflowState, related_name='destination_transitions', verbose_name=_('Destination state'))
+    origin_state = models.ForeignKey(
+        WorkflowState, related_name='origin_transitions',
+        verbose_name=_('Origin state')
+    )
+    destination_state = models.ForeignKey(
+        WorkflowState, related_name='destination_transitions',
+        verbose_name=_('Destination state')
+    )
 
     def __str__(self):
         return self.label
 
     class Meta:
-        unique_together = ('workflow', 'label', 'origin_state', 'destination_state')
+        unique_together = (
+            'workflow', 'label', 'origin_state', 'destination_state'
+        )
         verbose_name = _('Workflow transition')
         verbose_name_plural = _('Workflow transitions')
 
 
 @python_2_unicode_compatible
 class WorkflowInstance(models.Model):
-    workflow = models.ForeignKey(Workflow, related_name='instances', verbose_name=_('Workflow'))
-    document = models.ForeignKey(Document, related_name='workflows', verbose_name=_('Document'))
+    workflow = models.ForeignKey(
+        Workflow, related_name='instances', verbose_name=_('Workflow')
+    )
+    document = models.ForeignKey(
+        Document, related_name='workflows', verbose_name=_('Document')
+    )
 
     def __str__(self):
         return unicode(self.workflow)
 
     def get_absolute_url(self):
-        return reverse('document_states:workflow_instance_detail', args=[str(self.pk)])
+        return reverse(
+            'document_states:workflow_instance_detail', args=[str(self.pk)]
+        )
 
     def do_transition(self, comment, transition, user):
         try:
             if transition in self.get_current_state().origin_transitions.all():
-                self.log_entries.create(comment=comment, transition=transition, user=user)
+                self.log_entries.create(
+                    comment=comment, transition=transition, user=user
+                )
         except AttributeError:
             # No initial state has been set for this workflow
             pass
@@ -134,9 +176,16 @@ class WorkflowInstance(models.Model):
 
 @python_2_unicode_compatible
 class WorkflowInstanceLogEntry(models.Model):
-    workflow_instance = models.ForeignKey(WorkflowInstance, related_name='log_entries', verbose_name=_('Workflow instance'))
-    datetime = models.DateTimeField(auto_now_add=True, db_index=True, verbose_name=_('Datetime'))
-    transition = models.ForeignKey(WorkflowTransition, verbose_name=_('Transition'))
+    workflow_instance = models.ForeignKey(
+        WorkflowInstance, related_name='log_entries',
+        verbose_name=_('Workflow instance')
+    )
+    datetime = models.DateTimeField(
+        auto_now_add=True, db_index=True, verbose_name=_('Datetime')
+    )
+    transition = models.ForeignKey(
+        WorkflowTransition, verbose_name=_('Transition')
+    )
     user = models.ForeignKey(User, verbose_name=_('User'))
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 

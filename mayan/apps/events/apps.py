@@ -21,6 +21,8 @@ class EventsApp(MayanAppConfig):
 
         SourceColumn(source=Action, label=_('Timestamp'), attribute='timestamp')
         SourceColumn(source=Action, label=_('Actor'), attribute='actor')
-        SourceColumn(source=Action, label=_('Verb'), attribute=encapsulate(lambda entry: event_type_link(entry)))
+        SourceColumn(source=Action, label=_('Verb'), attribute=encapsulate(
+            lambda entry: event_type_link(entry))
+        )
 
         menu_tools.bind_links(links=[link_events_list])

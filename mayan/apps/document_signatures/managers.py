@@ -24,7 +24,9 @@ class DocumentVersionSignatureManager(models.Manager):
         )
 
         if document_signature.has_embedded_signature:
-            raise Exception('Document version already has an embedded signature')
+            raise Exception(
+                'Document version already has an embedded signature'
+            )
         else:
             if document_signature.signature_file:
                 logger.debug('Existing detached signature')
@@ -37,7 +39,9 @@ class DocumentVersionSignatureManager(models.Manager):
 
     def has_detached_signature(self, document_version):
         try:
-            document_signature = self.get_document_signature(document_version=document_version)
+            document_signature = self.get_document_signature(
+                document_version=document_version
+            )
         except ValueError:
             return False
         else:
@@ -50,23 +54,31 @@ class DocumentVersionSignatureManager(models.Manager):
         logger.debug('document_version: %s', document_version)
 
         try:
-            document_signature = self.get_document_signature(document_version=document_version)
+            document_signature = self.get_document_signature(
+                document_version=document_version
+            )
         except ValueError:
             return False
         else:
             return document_signature.has_embedded_signature
 
     def detached_signature(self, document_version):
-        document_signature = self.get_document_signature(document_version=document_version)
+        document_signature = self.get_document_signature(
+            document_version=document_version
+        )
 
-        return document_signature.signature_file.storage.open(document_signature.signature_file.name)
+        return document_signature.signature_file.storage.open(
+            document_signature.signature_file.name
+        )
 
     def verify_signature(self, document_version):
         document_version_descriptor = document_version.open(raw=True)
         detached_signature = None
         if self.has_detached_signature(document_version=document_version):
             logger.debug('has detached signature')
-            detached_signature = self.detached_signature(document_version=document_version)
+            detached_signature = self.detached_signature(
+                document_version=document_version
+            )
             args = (document_version_descriptor, detached_signature)
         else:
             args = (document_version_descriptor,)
@@ -81,7 +93,9 @@ class DocumentVersionSignatureManager(models.Manager):
                 detached_signature.close()
 
     def clear_detached_signature(self, document_version):
-        document_signature = self.get_document_signature(document_version=document_version)
+        document_signature = self.get_document_signature(
+            document_version=document_version
+        )
         if not document_signature.signature_file:
             raise Exception('document doesn\'t have a detached signature')
 

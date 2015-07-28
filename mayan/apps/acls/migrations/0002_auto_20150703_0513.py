@@ -16,11 +16,31 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='AccessControlList',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                (
+                    'id', models.AutoField(
+                        verbose_name='ID', serialize=False, auto_created=True,
+                        primary_key=True
+                    )
+                ),
                 ('object_id', models.PositiveIntegerField()),
-                ('content_type', models.ForeignKey(related_name='object_content_type', to='contenttypes.ContentType')),
-                ('permissions', models.ManyToManyField(related_name='acls', verbose_name='Permissions', to='permissions.StoredPermission', blank=True)),
-                ('role', models.ForeignKey(related_name='acls', verbose_name='Role', to='permissions.Role')),
+                (
+                    'content_type', models.ForeignKey(
+                        related_name='object_content_type',
+                        to='contenttypes.ContentType'
+                    )
+                ),
+                (
+                    'permissions', models.ManyToManyField(
+                        related_name='acls', verbose_name='Permissions',
+                        to='permissions.StoredPermission', blank=True
+                    )
+                ),
+                (
+                    'role', models.ForeignKey(
+                        related_name='acls', verbose_name='Role',
+                        to='permissions.Role'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Access entry',

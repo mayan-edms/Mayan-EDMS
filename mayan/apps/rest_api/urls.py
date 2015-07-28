@@ -8,7 +8,8 @@ version_0_urlpatterns = patterns(
     '',
     url(r'^$', Version_0.as_view(), name='api-version-0'),
     url(
-        r'^(?P<app_name>\w+)/$', APIAppView.as_view(), name='api-version-0-app'
+        r'^(?P<app_name>\w+)/$', APIAppView.as_view(),
+        name='api-version-0-app'
     ),
 )
 

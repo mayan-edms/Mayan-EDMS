@@ -29,12 +29,19 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
     if comment_id:
         comments = [get_object_or_404(Comment, pk=comment_id)]
     elif comment_id_list:
-        comments = [get_object_or_404(Comment, pk=comment_id) for comment_id in comment_id_list.split(',')]
+        comments = [
+            get_object_or_404(
+                Comment, pk=comment_id
+            ) for comment_id in comment_id_list.split(',')
+        ]
 
     try:
         Permission.check_permissions(request.user, [permission_comment_delete])
     except PermissionDenied:
-        comments = AccessControlList.objects.filter_by_access(permission_comment_delete, request.user, comments, related='content_object')
+        comments = AccessControlList.objects.filter_by_access(
+            permission_comment_delete, request.user, comments,
+            related='content_object'
+        )
 
     if not comments:
         messages.error(request, _('Must provide at least one comment.'))
@@ -47,11 +54,17 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         for comment in comments:
             try:
                 comment.delete()
-                messages.success(request, _('Comment "%s" deleted successfully.') % comment)
+                messages.success(
+                    request, _('Comment "%s" deleted successfully.') % comment
+                )
             except Exception as exception:
-                messages.error(request, _('Error deleting comment "%(comment)s": %(error)s') % {
-                    'comment': comment, 'error': exception
-                })
+                messages.error(
+                    request, _(
+                        'Error deleting comment "%(comment)s": %(error)s'
+                    ) % {
+                        'comment': comment, 'error': exception
+                    }
+                )
 
         return HttpResponseRedirect(next)
 

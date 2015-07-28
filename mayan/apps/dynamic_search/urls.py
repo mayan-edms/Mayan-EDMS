@@ -16,7 +16,13 @@ urlpatterns = patterns(
 
 api_urls = patterns(
     '',
-    url(r'^recent_searches/$', APIRecentSearchListView.as_view(), name='recentsearch-list'),
-    url(r'^recent_searches/(?P<pk>[0-9]+)/$', APIRecentSearchView.as_view(), name='recentsearch-detail'),
+    url(
+        r'^recent_searches/$', APIRecentSearchListView.as_view(),
+        name='recentsearch-list'
+    ),
+    url(
+        r'^recent_searches/(?P<pk>[0-9]+)/$', APIRecentSearchView.as_view(),
+        name='recentsearch-detail'
+    ),
     url(r'^search/$', APISearchView.as_view(), name='search-view'),
 )

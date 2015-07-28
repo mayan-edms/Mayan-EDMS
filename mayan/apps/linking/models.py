@@ -15,9 +15,16 @@ from .literals import (
 @python_2_unicode_compatible
 class SmartLink(models.Model):
     label = models.CharField(max_length=96, verbose_name=_('Label'))
-    dynamic_label = models.CharField(blank=True, max_length=96, help_text=_('This expression will be evaluated against the current selected document.'), verbose_name=_('Dynamic label'))
+    dynamic_label = models.CharField(
+        blank=True, max_length=96, help_text=_(
+            'This expression will be evaluated against the current selected '
+            'document.'
+        ), verbose_name=_('Dynamic label')
+    )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
-    document_types = models.ManyToManyField(DocumentType, verbose_name=_('Document types'))
+    document_types = models.ManyToManyField(
+        DocumentType, verbose_name=_('Document types')
+    )
 
     def __str__(self):
         return self.label
@@ -27,19 +34,30 @@ class SmartLink(models.Model):
             try:
                 return eval(self.dynamic_label, {'document': document})
             except Exception as exception:
-                return Exception(_('Error generating dynamic label; %s' % unicode(exception)))
+                return Exception(
+                    _(
+                        'Error generating dynamic label; %s' % unicode(exception)
+                    )
+                )
         else:
             return self.label
 
     def get_linked_document_for(self, document):
         if document.document_type.pk not in self.document_types.values_list('pk', flat=True):
-            raise Exception(_('This smart link is not allowed for the selected document\'s type.'))
+            raise Exception(
+                _(
+                    'This smart link is not allowed for the selected '
+                    'document\'s type.'
+                )
+            )
 
         smart_link_query = Q()
 
         for condition in self.conditions.filter(enabled=True):
             condition_query = Q(**{
-                '%s__%s' % (condition.foreign_document_data, condition.operator): eval(condition.expression, {'document': document})
+                '%s__%s' % (
+                    condition.foreign_document_data, condition.operator
+                ): eval(condition.expression, {'document': document})
             })
             if condition.negated:
                 condition_query = ~condition_query
@@ -55,7 +73,9 @@ class SmartLink(models.Model):
             return Document.objects.none()
 
     def resolve_for(self, document):
-        return ResolvedSmartLink(smart_link=self, queryset=self.get_linked_document_for(document))
+        return ResolvedSmartLink(
+            smart_link=self, queryset=self.get_linked_document_for(document)
+        )
 
     class Meta:
         verbose_name = _('Smart link')
@@ -69,16 +89,36 @@ class ResolvedSmartLink(SmartLink):
 
 @python_2_unicode_compatible
 class SmartLinkCondition(models.Model):
-    smart_link = models.ForeignKey(SmartLink, related_name='conditions', verbose_name=_('Smart link'))
-    inclusion = models.CharField(choices=INCLUSION_CHOICES, default=INCLUSION_AND, help_text=_('The inclusion is ignored for the first item.'), max_length=16)
-    foreign_document_data = models.CharField(help_text=_('This represents the metadata of all other documents.'), max_length=128, verbose_name=_('Foreign document attribute'))
+    smart_link = models.ForeignKey(
+        SmartLink, related_name='conditions', verbose_name=_('Smart link')
+    )
+    inclusion = models.CharField(
+        choices=INCLUSION_CHOICES, default=INCLUSION_AND,
+        help_text=_('The inclusion is ignored for the first item.'),
+        max_length=16
+    )
+    foreign_document_data = models.CharField(
+        help_text=_('This represents the metadata of all other documents.'),
+        max_length=128, verbose_name=_('Foreign document attribute')
+    )
     operator = models.CharField(choices=OPERATOR_CHOICES, max_length=16)
-    expression = models.TextField(help_text=_('This expression will be evaluated against the current document.'), verbose_name=_('Expression'))
-    negated = models.BooleanField(default=False, help_text=_('Inverts the logic of the operator.'), verbose_name=_('Negated'))
+    expression = models.TextField(
+        help_text=_(
+            'This expression will be evaluated against the current document.'
+        ), verbose_name=_('Expression')
+    )
+    negated = models.BooleanField(
+        default=False, help_text=_('Inverts the logic of the operator.'),
+        verbose_name=_('Negated')
+    )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
     def __str__(self):
-        return '%s foreign %s %s %s %s' % (self.get_inclusion_display(), self.foreign_document_data, _('not') if self.negated else '', self.get_operator_display(), self.expression)
+        return '%s foreign %s %s %s %s' % (
+            self.get_inclusion_display(),
+            self.foreign_document_data, _('not') if self.negated else '',
+            self.get_operator_display(), self.expression
+        )
 
     class Meta:
         verbose_name = _('Link condition')

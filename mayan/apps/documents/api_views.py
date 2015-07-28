@@ -162,9 +162,9 @@ class APIDocumentVersionCreateView(generics.CreateAPIView):
         )
 
         if serializer.is_valid():
-            # Nested resource we take the document pk from the URL and insert it
-            # so that it needs not to be specified by the user, we mark it as
-            # a read only field in the serializer
+            # Nested resource we take the document pk from the URL and insert
+            # it so that it needs not to be specified by the user, we mark
+            # it as a read only field in the serializer
             document = get_object_or_404(Document, pk=kwargs['pk'])
 
             document.new_version(
@@ -361,7 +361,8 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
-                permission_document_type_view, self.request.user, document_type
+                permission_document_type_view, self.request.user,
+                document_type
             )
 
         return document_type.documents.all()

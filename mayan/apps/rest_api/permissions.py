@@ -13,8 +13,8 @@ from permissions import Permission
 class MayanPermission(BasePermission):
     def has_permission(self, request, view):
         required_permission = getattr(
-            view, 'mayan_view_permissions', {}).get(request.method, None
-        )
+            view, 'mayan_view_permissions', {}
+        ).get(request.method, None)
 
         if required_permission:
             try:
@@ -28,8 +28,8 @@ class MayanPermission(BasePermission):
 
     def has_object_permission(self, request, view, obj):
         required_permission = getattr(
-            view, 'mayan_object_permissions', {}).get(request.method, None
-        )
+            view, 'mayan_object_permissions', {}
+        ).get(request.method, None)
 
         if required_permission:
             try:

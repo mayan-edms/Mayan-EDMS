@@ -9,7 +9,9 @@ from .classes import Event
 
 @python_2_unicode_compatible
 class EventType(models.Model):
-    name = models.CharField(max_length=64, unique=True, verbose_name=_('Name'))
+    name = models.CharField(
+        max_length=64, unique=True, verbose_name=_('Name')
+    )
 
     def __str__(self):
         return unicode(Event.get_label(self.name))

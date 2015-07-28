@@ -11,7 +11,11 @@ from .permissions import permission_acl_view, permission_acl_edit
 def get_kwargs_factory(variable_name):
     def get_kwargs(context):
         content_type = ContentType.objects.get_for_model(context[variable_name])
-        return {'app_label': '"{}"'.format(content_type.app_label), 'model': '"{}"'.format(content_type.model), 'object_id': '{}.pk'.format(variable_name)}
+        return {
+            'app_label': '"{}"'.format(content_type.app_label),
+            'model': '"{}"'.format(content_type.model),
+            'object_id': '{}.pk'.format(variable_name)
+        }
 
     return get_kwargs
 

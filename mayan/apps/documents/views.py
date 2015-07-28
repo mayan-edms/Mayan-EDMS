@@ -41,8 +41,8 @@ from .forms import (
 )
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
-    DeletedDocument, Document, DocumentType, DocumentPage, DocumentTypeFilename,
-    DocumentVersion, RecentDocument
+    DeletedDocument, Document, DocumentType, DocumentPage,
+    DocumentTypeFilename, DocumentVersion, RecentDocument
 )
 from .permissions import (
     permission_document_delete, permission_document_download,
@@ -94,11 +94,17 @@ class DeletedDocumentListView(DocumentListView):
         queryset = Document.trash.all()
 
         try:
-            Permission.check_permissions(self.request.user, [permission_document_view])
+            Permission.check_permissions(
+                self.request.user, [permission_document_view]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_view, self.request.user, queryset)
+            AccessControlList.objects.check_access(
+                permission_document_view, self.request.user, queryset
+            )
 
-        return DeletedDocument.objects.filter(pk__in=queryset.values_list('pk', flat=True))
+        return DeletedDocument.objects.filter(
+            pk__in=queryset.values_list('pk', flat=True)
+        )
 
 
 class DeletedDocumentDeleteView(ConfirmView):
@@ -107,12 +113,18 @@ class DeletedDocumentDeleteView(ConfirmView):
     }
 
     def object_action(self, request, instance):
-        source_document = get_object_or_404(Document.passthrough, pk=instance.pk)
+        source_document = get_object_or_404(
+            Document.passthrough, pk=instance.pk
+        )
 
         try:
-            Permission.check_permissions(request.user, [permission_document_delete])
+            Permission.check_permissions(
+                request.user, [permission_document_delete]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_delete, request.user, source_document)
+            AccessControlList.objects.check_access(
+                permission_document_delete, request.user, source_document
+            )
 
         instance.delete()
         messages.success(request, _('Document: %(document)s deleted.') % {
@@ -132,16 +144,24 @@ class DocumentRestoreView(ConfirmView):
     }
 
     def object_action(self, request, instance):
-        source_document = get_object_or_404(Document.passthrough, pk=instance.pk)
+        source_document = get_object_or_404(
+            Document.passthrough, pk=instance.pk
+        )
 
         try:
-            Permission.check_permissions(request.user, [permission_document_restore])
+            Permission.check_permissions(
+                request.user, [permission_document_restore]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_restore, request.user, source_document)
+            AccessControlList.objects.check_access(
+                permission_document_restore, request.user, source_document
+            )
 
         instance.restore()
-        messages.success(request, _('Document: %(document)s restored.') % {
-            'document': instance}
+        messages.success(
+            request, _('Document: %(document)s restored.') % {
+                'document': instance
+            }
         )
 
     def post(self, request, *args, **kwargs):
@@ -204,7 +224,9 @@ class EmptyTrashCanView(ConfirmView):
         'title': _('Empty trash?')
     }
     view_permission = permission_empty_trash
-    action_cancel_redirect = post_action_redirect = reverse_lazy('documents:document_list_deleted')
+    action_cancel_redirect = post_action_redirect = reverse_lazy(
+        'documents:document_list_deleted'
+    )
 
     def post(self, request, *args, **kwargs):
         for deleted_document in DeletedDocument.objects.all():
@@ -231,27 +253,43 @@ def document_properties(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document)
+        AccessControlList.objects.check_access(
+            permission_document_view, request.user, document
+        )
 
     document.add_as_recent_document_for_user(request.user)
 
     document_fields = [
         {'label': _('Date added'), 'field': lambda x: x.date_added.date()},
-        {'label': _('Time added'), 'field': lambda x: unicode(x.date_added.time()).split('.')[0]},
+        {
+            'label': _('Time added'),
+            'field': lambda x: unicode(x.date_added.time()).split('.')[0]
+        },
         {'label': _('UUID'), 'field': 'uuid'},
     ]
     if document.latest_version:
         document_fields.extend([
-            {'label': _('File mimetype'), 'field': lambda x: x.file_mimetype or _('None')},
-            {'label': _('File encoding'), 'field': lambda x: x.file_mime_encoding or _('None')},
-            {'label': _('File size'), 'field': lambda x: pretty_size(x.size) if x.size else '-'},
+            {
+                'label': _('File mimetype'),
+                'field': lambda x: x.file_mimetype or _('None')
+            },
+            {
+                'label': _('File encoding'),
+                'field': lambda x: x.file_mime_encoding or _('None')
+            },
+            {
+                'label': _('File size'),
+                'field': lambda x: pretty_size(x.size) if x.size else '-'
+            },
             {'label': _('Exists in storage'), 'field': 'exists'},
             {'label': _('File path in storage'), 'field': 'file'},
             {'label': _('Checksum'), 'field': 'checksum'},
             {'label': _('Pages'), 'field': 'page_count'},
         ])
 
-    document_properties_form = DocumentPropertiesForm(instance=document, extra_fields=document_fields)
+    document_properties_form = DocumentPropertiesForm(
+        instance=document, extra_fields=document_fields
+    )
 
     return render_to_response('appearance/generic_form.html', {
         'form': document_properties_form,
@@ -268,7 +306,9 @@ def document_preview(request, document_id):
     try:
         Permission.check_permissions(request.user, [permission_document_view])
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document)
+        AccessControlList.objects.check_access(
+            permission_document_view, request.user, document
+        )
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -291,15 +331,23 @@ def document_trash(request, document_id=None, document_id_list=None):
         documents = [get_object_or_404(Document, pk=document_id)]
         post_action_redirect = reverse('documents:document_list_recent')
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        documents = [
+            get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')
+        ]
     else:
         messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     try:
         Permission.check_permissions(request.user, [permission_document_trash])
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_document_trash, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_document_trash, request.user, documents
+        )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))

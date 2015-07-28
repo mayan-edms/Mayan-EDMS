@@ -140,12 +140,12 @@ def checkout_info(request, document_pk):
 
     return render_to_response(
         'appearance/generic_template.html', {
-             'paragraphs': paragraphs,
-             'object': document,
-             'title': _('Check out details for document: %s') % document
-         },
-         context_instance=RequestContext(request)
-      )
+            'paragraphs': paragraphs,
+            'object': document,
+            'title': _('Check out details for document: %s') % document
+        },
+        context_instance=RequestContext(request)
+    )
 
 
 def checkin_document(request, document_pk):

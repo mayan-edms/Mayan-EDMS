@@ -40,11 +40,16 @@ class DocumentSerializer(serializers.ModelSerializer):
     versions = DocumentVersionSerializer(many=True, read_only=True)
     # TODO: Deprecate, move this as an entry point of DocumentVersion's pages
     image = serializers.HyperlinkedIdentityField(view_name='document-image')
-    new_version = serializers.HyperlinkedIdentityField(view_name='document-new-version')
+    new_version = serializers.HyperlinkedIdentityField(
+        view_name='document-new-version'
+    )
     document_type = DocumentTypeSerializer()
 
     class Meta:
-        fields = ('id', 'label', 'image', 'new_version', 'uuid', 'document_type', 'description', 'date_added', 'versions')
+        fields = (
+            'id', 'label', 'image', 'new_version', 'uuid', 'document_type',
+            'description', 'date_added', 'versions'
+        )
         model = Document
 
 
@@ -53,7 +58,10 @@ class NewDocumentSerializer(serializers.Serializer):
     document_type = serializers.IntegerField()
     file = serializers.FileField()
     label = serializers.CharField(required=False)
-    language = serializers.ChoiceField(blank_display_value=None, choices=setting_language_choices.value, default=setting_language.value, required=False)
+    language = serializers.ChoiceField(
+        blank_display_value=None, choices=setting_language_choices.value,
+        default=setting_language.value, required=False
+    )
 
 
 class RecentDocumentSerializer(serializers.ModelSerializer):

@@ -22,13 +22,18 @@ from .test_models import (
 
 class DocumentAPICreateDocumentTestCase(TestCase):
     """
-    Functional test to make sure all the moving parts to create a document from
-    the API are working correctly
+    Functional test to make sure all the moving parts to create a document
+    from the API are working correctly
     """
 
     def setUp(self):
-        self.admin_user = User.objects.create_superuser(username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD)
-        self.document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
+        self.admin_user = User.objects.create_superuser(
+            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
+            password=TEST_ADMIN_PASSWORD
+        )
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
 
         ocr_settings = self.document_type.ocr_settings
         ocr_settings.auto_ocr = False
@@ -41,7 +46,12 @@ class DocumentAPICreateDocumentTestCase(TestCase):
     def test_uploading_a_document_using_token_auth(self):
         # Get the an user token
         token_client = APIClient()
-        response = token_client.post(reverse('auth_token_obtain'), {'username': TEST_ADMIN_USERNAME, 'password': TEST_ADMIN_PASSWORD})
+        response = token_client.post(
+            reverse('auth_token_obtain'), {
+                'username': TEST_ADMIN_USERNAME,
+                'password': TEST_ADMIN_PASSWORD
+            }
+        )
 
         # Be able to get authentication token
         self.assertEqual(response.status_code, status.HTTP_200_OK)
@@ -66,17 +76,26 @@ class DocumentAPICreateDocumentTestCase(TestCase):
 
         # Create a blank document
         with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
-            document_response = document_client.post(reverse('document-list'), {'document_type': self.document_type.pk, 'file': file_descriptor})
+            document_response = document_client.post(
+                reverse('document-list'), {
+                    'document_type': self.document_type.pk,
+                    'file': file_descriptor
+                }
+            )
 
         self.assertEqual(document_response.status_code, status.HTTP_201_CREATED)
 
         # The document was created in the DB?
         self.assertEqual(Document.objects.count(), 1)
 
-        new_version_url = reverse('document-new-version', args=[Document.objects.first().pk])
+        new_version_url = reverse(
+            'document-new-version', args=[Document.objects.first().pk]
+        )
 
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            response = document_client.post(new_version_url, {'file': file_descriptor})
+            response = document_client.post(
+                new_version_url, {'file': file_descriptor}
+            )
 
         # Make sure the document uploaded correctly
         document = Document.objects.first()
@@ -86,13 +105,20 @@ class DocumentAPICreateDocumentTestCase(TestCase):
         self.assertEqual(document.file_mimetype, 'application/pdf')
         self.assertEqual(document.file_mime_encoding, 'binary')
         self.assertEqual(document.label, TEST_SMALL_DOCUMENT_FILENAME)
-        self.assertEqual(document.checksum, 'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3')
+        self.assertEqual(
+            document.checksum,
+            'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3'
+        )
         self.assertEqual(document.page_count, 47)
 
         # Make sure we can edit the document via the API
-        document_url = reverse('document-detail', args=[Document.objects.first().pk])
+        document_url = reverse(
+            'document-detail', args=[Document.objects.first().pk]
+        )
 
-        response = document_client.post(document_url, {'description': 'edited test document'})
+        response = document_client.post(
+            document_url, {'description': 'edited test document'}
+        )
 
         # self.assertTrue(document.description, 'edited test document')
 

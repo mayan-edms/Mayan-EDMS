@@ -29,7 +29,9 @@ class EventListView(SingleObjectListView):
             'extra_columns': [
                 {
                     'name': _('Target'),
-                    'attribute': encapsulate(lambda entry: event_object_link(entry))
+                    'attribute': encapsulate(
+                        lambda entry: event_object_link(entry)
+                    )
                 }
             ],
             'hide_object': True,
@@ -41,19 +43,30 @@ class ObjectEventListView(EventListView):
     view_permissions = None
 
     def dispatch(self, request, *args, **kwargs):
-        self.content_type = get_object_or_404(ContentType, app_label=self.kwargs['app_label'], model=self.kwargs['model'])
+        self.content_type = get_object_or_404(
+            ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
+        )
 
         try:
-            self.content_object = self.content_type.get_object_for_this_type(pk=self.kwargs['object_id'])
+            self.content_object = self.content_type.get_object_for_this_type(
+                pk=self.kwargs['object_id']
+            )
         except self.content_type.model_class().DoesNotExist:
             raise Http404
 
         try:
-            Permission.check_permissions(request.user, permissions=(permission_events_view,))
+            Permission.check_permissions(
+                request.user, permissions=(permission_events_view,)
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_events_view, request.user, self.content_object)
+            AccessControlList.objects.check_access(
+                permission_events_view, request.user, self.content_object
+            )
 
-        return super(ObjectEventListView, self).dispatch(request, *args, **kwargs)
+        return super(
+            ObjectEventListView, self
+        ).dispatch(request, *args, **kwargs)
 
     def get_queryset(self):
         return any_stream(self.content_object)
@@ -75,9 +88,13 @@ class VerbEventListView(SingleObjectListView):
             'extra_columns': [
                 {
                     'name': _('Target'),
-                    'attribute': encapsulate(lambda entry: event_object_link(entry))
+                    'attribute': encapsulate(
+                        lambda entry: event_object_link(entry)
+                    )
                 }
             ],
             'hide_object': True,
-            'title': _('Events of type: %s') % Event.get_label(self.kwargs['verb']),
+            'title': _(
+                'Events of type: %s'
+            ) % Event.get_label(self.kwargs['verb']),
         }

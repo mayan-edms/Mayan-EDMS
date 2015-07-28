@@ -69,10 +69,12 @@ class TransformationDeleteView(SingleObjectDeleteView):
                 ]
             ),
             'title': _(
-                'Delete transformation "%(transformation)s" for: %(content_object)s?') % {
-                    'transformation': self.transformation,
-                    'content_object': self.transformation.content_object
-                },
+                'Delete transformation "%(transformation)s" for: '
+                '%(content_object)s?'
+            ) % {
+                'transformation': self.transformation,
+                'content_object': self.transformation.content_object
+            },
             'transformation': self.transformation,
         }
 

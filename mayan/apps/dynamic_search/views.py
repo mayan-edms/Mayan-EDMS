@@ -44,18 +44,27 @@ def results(request, extra_context=None):
 
     if setting_show_object_type.value:
         context.update({
-            'extra_columns': [{'name': _('Type'), 'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]}]
+            'extra_columns': [
+                {
+                    'name': _('Type'),
+                    'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]
+                }
+            ]
         })
 
-    return render_to_response('dynamic_search/search_results.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'dynamic_search/search_results.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def search(request, advanced=False):
     document_search = SearchModel.get('documents.Document')
 
     if advanced:
-        form = AdvancedSearchForm(data=request.GET, search_model=document_search)
+        form = AdvancedSearchForm(
+            data=request.GET, search_model=document_search
+        )
         return render_to_response(
             'appearance/generic_form.html',
             {
@@ -87,5 +96,9 @@ def search(request, advanced=False):
 
 
 def search_again(request):
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).query
-    return HttpResponseRedirect('%s?%s' % (reverse('search:search_advanced'), query))
+    query = urlparse.urlparse(
+        request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
+    ).query
+    return HttpResponseRedirect(
+        '%s?%s' % (reverse('search:search_advanced'), query)
+    )

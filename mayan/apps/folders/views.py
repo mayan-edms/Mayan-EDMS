@@ -53,7 +53,9 @@ class FolderListView(SingleObjectListView):
         try:
             Permission.check_permissions(user, [permission_document_view])
         except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(permission_document_view, user, queryset)
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_document_view, user, queryset
+            )
 
         return queryset.count()
 
@@ -69,7 +71,14 @@ class FolderListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'extra_columns': [
-                {'name': _('Documents'), 'attribute': encapsulate(lambda instance: FolderListView.get_document_count(instance=instance, user=self.request.user))},
+                {
+                    'name': _('Documents'),
+                    'attribute': encapsulate(
+                        lambda instance: FolderListView.get_document_count(
+                            instance=instance, user=self.request.user
+                        )
+                    )
+                },
             ],
             'title': _('Folders'),
             'hide_link': True,
@@ -83,14 +92,21 @@ class FolderCreateView(SingleObjectCreateView):
 
     def form_valid(self, form):
         try:
-            Folder.objects.get(label=form.cleaned_data['label'], user=self.request.user)
+            Folder.objects.get(
+                label=form.cleaned_data['label'], user=self.request.user
+            )
         except Folder.DoesNotExist:
             instance = form.save(commit=False)
             instance.user = self.request.user
             instance.save()
             return super(FolderCreateView, self).form_valid(form)
         else:
-            messages.error(self.request, _('A folder named: %s, already exists.') % form.cleaned_data['label'])
+            messages.error(
+                self.request,
+                _(
+                    'A folder named: %s, already exists.'
+                ) % form.cleaned_data['label']
+            )
             return super(FolderCreateView, self).form_invalid(form)
 
     def get_extra_context(self):
@@ -105,7 +121,9 @@ def folder_delete(request, folder_id):
     try:
         Permission.check_permissions(request.user, [permission_folder_delete])
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_folder_delete, request.user, folder)
+        AccessControlList.objects.check_access(
+            permission_folder_delete, request.user, folder
+        )
 
     post_action_redirect = reverse('folders:folder_list')
 
@@ -139,9 +157,13 @@ class FolderDetailView(DocumentListView):
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
 
         try:
-            Permission.check_permissions(self.request.user, [permission_folder_view])
+            Permission.check_permissions(
+                self.request.user, [permission_folder_view]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_folder_view, self.request.user, folder)
+            AccessControlList.objects.check_access(
+                permission_folder_view, self.request.user, folder
+            )
 
         return folder
 
@@ -216,9 +238,13 @@ class DocumentFolderListView(FolderListView):
         self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
         try:
-            Permission.check_permissions(request.user, [permission_document_view])
+            Permission.check_permissions(
+                request.user, [permission_document_view]
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_view, request.user, self.document)
+            AccessControlList.objects.check_access(
+                permission_document_view, request.user, self.document
+            )
 
         return super(DocumentFolderListView, self).dispatch(request, *args, **kwargs)
 
@@ -228,7 +254,14 @@ class DocumentFolderListView(FolderListView):
     def get_extra_context(self):
         return {
             'extra_columns': [
-                {'name': _('Documents'), 'attribute': encapsulate(lambda instance: FolderListView.get_document_count(instance=instance, user=self.request.user))},
+                {
+                    'name': _('Documents'),
+                    'attribute': encapsulate(
+                        lambda instance: FolderListView.get_document_count(
+                            instance=instance, user=self.request.user
+                        )
+                    )
+                },
             ],
             'hide_link': True,
             'object': self.document,

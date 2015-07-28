@@ -8,6 +8,7 @@ namespace = Namespace(name='authentication', label=_('Authentication'))
 setting_login_method = namespace.add_setting(
     global_name='AUTHENTICATION_LOGIN_METHOD', default='username',
     help_text=_(
-        'Controls the mechanism used to authenticated user. Options are: username, email'
+        'Controls the mechanism used to authenticated user. Options are: '
+        'username, email'
     )
 )

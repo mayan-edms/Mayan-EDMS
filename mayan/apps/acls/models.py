@@ -31,7 +31,10 @@ class AccessControlList(models.Model):
         fk_field='object_id',
     )
     # TODO: limit choices to the permissions valid for the content_object
-    permissions = models.ManyToManyField(StoredPermission, blank=True, related_name='acls', verbose_name=_('Permissions'))
+    permissions = models.ManyToManyField(
+        StoredPermission, blank=True, related_name='acls',
+        verbose_name=_('Permissions')
+    )
     role = models.ForeignKey(Role, related_name='acls', verbose_name=_('Role'))
 
     objects = AccessControlListManager()
@@ -45,4 +48,6 @@ class AccessControlList(models.Model):
         return '{} <=> {}'.format(self.content_object, self.role)
 
     def get_inherited_permissions(self):
-        return AccessControlList.objects.get_inherited_permissions(role=self.role, obj=self.content_object)
+        return AccessControlList.objects.get_inherited_permissions(
+            role=self.role, obj=self.content_object
+        )
