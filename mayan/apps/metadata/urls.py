@@ -18,7 +18,7 @@ from .views import (
 
 urlpatterns = patterns(
     'metadata.views',
-    url(r'^(?P<pk>\d+)/edit/$', 'metadata_edit', name='metadata_edit'),
+    url(r'^(?P<document_id>\d+)/edit/$', 'metadata_edit', name='metadata_edit'),
     url(
         r'^(?P<document_id>\d+)/view/$', 'metadata_view',
         name='metadata_view'
