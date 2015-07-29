@@ -58,7 +58,7 @@ link_index_setup_document_types = Link(
     view='indexing:index_setup_document_types', args='resolved_object.pk'
 )
 link_rebuild_index_instances = Link(
-    icon='fa fa-database',
+    icon='fa fa-list-ul',
     description=_(
         'Deletes and creates from scratch all the document indexes.'
     ),
