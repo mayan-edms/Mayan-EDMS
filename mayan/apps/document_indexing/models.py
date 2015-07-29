@@ -125,7 +125,7 @@ class IndexInstanceNode(MPTTModel):
         verbose_name=_('Index template node')
     )
     value = models.CharField(
-        blank=True, max_length=128, verbose_name=_('Value')
+        blank=True, db_index=True, max_length=128, verbose_name=_('Value')
     )
     documents = models.ManyToManyField(
         Document, related_name='node_instances', verbose_name=_('Documents')
