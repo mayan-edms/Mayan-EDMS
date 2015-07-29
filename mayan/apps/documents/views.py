@@ -282,7 +282,7 @@ def document_properties(request, document_id):
                 'field': lambda x: pretty_size(x.size) if x.size else '-'
             },
             {'label': _('Exists in storage'), 'field': 'exists'},
-            {'label': _('File path in storage'), 'field': 'file'},
+            {'label': _('File path in storage'), 'field': 'latest_version.file'},
             {'label': _('Checksum'), 'field': 'checksum'},
             {'label': _('Pages'), 'field': 'page_count'},
         ])
