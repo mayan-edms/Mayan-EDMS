@@ -5,11 +5,16 @@ from kombu import Exchange, Queue
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
-from common import MayanAppConfig, menu_object
+from common import MayanAppConfig, menu_object, menu_tools
 from documents.models import Document
 from mayan.celery import app
+from navigation import SourceColumn
 
-from .links import link_send_document_link, link_send_document
+from .links import (
+    link_document_mailing_error_log, link_send_document_link,
+    link_send_document
+)
+from .models import LogEntry
 from .permissions import (
     permission_mailing_link, permission_mailing_send_document
 )
@@ -21,6 +26,18 @@ class MailerApp(MayanAppConfig):
 
     def ready(self):
         super(MailerApp, self).ready()
+
+        SourceColumn(
+            source=LogEntry,
+            label='Date and time',
+            attribute='datetime'
+        )
+
+        SourceColumn(
+            source=LogEntry,
+            label='Message',
+            attribute='message'
+        )
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -45,3 +62,5 @@ class MailerApp(MayanAppConfig):
                 link_send_document_link, link_send_document
             ), sources=(Document,)
         )
+
+        menu_tools.bind_links(links=(link_document_mailing_error_log,))

@@ -12,14 +12,26 @@ from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
+from common.generics import SingleObjectListView
 from documents.models import Document
 from permissions import Permission
 
 from .forms import DocumentMailForm
+from .models import LogEntry
 from .permissions import (
-    permission_mailing_link, permission_mailing_send_document
+    permission_mailing_link, permission_mailing_send_document,
+    permission_view_error_log
 )
 from .tasks import task_send_document
+
+
+class LogEntryListView(SingleObjectListView):
+    extra_context = {
+        'hide_object': True,
+        'title': _('Document mailing error log'),
+    }
+    model = LogEntry
+    view_permission = permission_view_error_log
 
 
 def send_document_link(request, document_id=None, document_id_list=None, as_attachment=False):

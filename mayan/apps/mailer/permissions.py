@@ -12,3 +12,6 @@ permission_mailing_link = namespace.add_permission(
 permission_mailing_send_document = namespace.add_permission(
     name='mail_document', label=_('Send document via email')
 )
+permission_view_error_log = namespace.add_permission(
+    name='view_error_log', label=_('View document mailing error log')
+)

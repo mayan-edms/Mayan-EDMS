@@ -8,8 +8,8 @@ from .literals import (
     DEFAULT_DOCUMENT_BODY_TEMPLATE, DEFAULT_LINK_BODY_TEMPLATE
 )
 
-
 namespace = Namespace(name='mailer', label=_('Mailing'))
+
 setting_link_subject_template = namespace.add_setting(
     default=_('Link for document: {{ document }}'),
     help_text=_('Template for the document link email form subject line.'),
