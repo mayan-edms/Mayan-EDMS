@@ -1,12 +1,9 @@
-from __future__ import absolute_import, unicode_literals
+from __future__ import unicode_literals
 
-from django.contrib.comments.models import Comment
-from django.contrib.contenttypes import generic
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
-from common.classes import ModelAttribute
 from common.utils import encapsulate
 from documents.models import Document
 from navigation import SourceColumn
@@ -14,6 +11,7 @@ from navigation import SourceColumn
 from .links import (
     link_comment_add, link_comment_delete, link_comments_for_document
 )
+from .models import Comment
 from .permissions import (
     permission_comment_create, permission_comment_delete,
     permission_comment_view
@@ -28,15 +26,6 @@ class DocumentCommentsApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentCommentsApp, self).ready()
-
-        Document.add_to_class(
-            'comments',
-            generic.GenericRelation(
-                Comment,
-                content_type_field='content_type',
-                object_id_field='object_pk'
-            )
-        )
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -61,7 +50,9 @@ class DocumentCommentsApp(MayanAppConfig):
                 'comments:comment_delete', 'comments:comment_multiple_delete'
             )
         )
-        menu_object.bind_links(links=(link_comment_delete,), sources=(Comment,))
+        menu_object.bind_links(
+            links=(link_comment_delete,), sources=(Comment,)
+        )
         menu_facet.bind_links(
             links=(link_comments_for_document,), sources=(Document,)
         )

@@ -2,9 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.comments.models import Comment
-from django.contrib.contenttypes.models import ContentType
-from django.contrib.sites.models import Site
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
@@ -17,6 +14,7 @@ from documents.models import Document
 from permissions import Permission
 
 from .forms import CommentForm
+from .models import Comment
 from .permissions import (
     permission_comment_create, permission_comment_delete,
     permission_comment_view
@@ -36,19 +34,27 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         ]
 
     try:
-        Permission.check_permissions(request.user, [permission_comment_delete])
+        Permission.check_permissions(request.user, (
+            permission_comment_delete,))
     except PermissionDenied:
         comments = AccessControlList.objects.filter_by_access(
             permission_comment_delete, request.user, comments,
-            related='content_object'
         )
 
     if not comments:
         messages.error(request, _('Must provide at least one comment.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    previous = request.POST.get(
+        'previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+    )
+    next = request.POST.get(
+        'next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+    )
 
     if request.method == 'POST':
         for comment in comments:
@@ -74,7 +80,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         'next': next,
     }
     if len(comments) == 1:
-        context['object'] = comments[0].content_object
+        context['object'] = comments[0].document
         context['title'] = _('Delete comment?')
     elif len(comments) > 1:
         context['title'] = _('Delete comments?')
@@ -93,7 +99,9 @@ def comment_add(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.check_permissions(request.user, [permission_comment_create])
+        Permission.check_permissions(
+            request.user, (permission_comment_create,)
+        )
     except PermissionDenied:
         AccessControlList.objects.check_access(
             permission_comment_create, request.user, document
@@ -108,9 +116,7 @@ def comment_add(request, document_id):
         if form.is_valid():
             comment = form.save(commit=False)
             comment.user = request.user
-            comment.content_type = ContentType.objects.get_for_model(document)
-            comment.object_pk = document.pk
-            comment.site = Site.objects.get_current()
+            comment.document = document
             comment.save()
 
             messages.success(request, _('Comment added successfully.'))
@@ -133,7 +139,7 @@ def comments_for_document(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.check_permissions(request.user, [permission_comment_view])
+        Permission.check_permissions(request.user, (permission_comment_view,))
     except PermissionDenied:
         AccessControlList.objects.check_access(
             permission_comment_view, request.user, document
@@ -143,7 +149,7 @@ def comments_for_document(request, document_id):
         'object': document,
         'access_object': document,
         'title': _('Comments for document: %s') % document,
-        'object_list': Comment.objects.for_model(document).order_by('-submit_date'),
+        'object_list': document.comments.all(),
         'hide_link': True,
         'hide_object': True,
     }, context_instance=RequestContext(request))

@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.contrib.comments.models import Comment
+
+from .models import Comment
 
 
 class CommentForm(forms.ModelForm):
