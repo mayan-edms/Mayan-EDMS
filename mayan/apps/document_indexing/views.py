@@ -37,7 +37,7 @@ from .widgets import index_instance_item_link, get_breadcrumbs, node_level
 # Setup views
 class SetupIndexCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create index')}
-    fields = ('label', 'enabled')
+    fields = ('label', 'slug', 'enabled')
     model = Index
     post_action_redirect = reverse_lazy('indexing:index_setup_list')
     view_permission = permission_document_indexing_create
@@ -53,13 +53,14 @@ class SetupIndexListView(SingleObjectListView):
             'hide_object': True,
             'extra_columns': [
                 {'name': _('Label'), 'attribute': 'label'},
+                {'name': _('Slug'), 'attribute': 'slug'},
                 {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
             ]
         }
 
 
 class SetupIndexEditView(SingleObjectEditView):
-    fields = ('label', 'enabled')
+    fields = ('label', 'slug', 'enabled')
     model = Index
     post_action_redirect = reverse_lazy('indexing:index_setup_list')
     view_permission = permission_document_indexing_edit

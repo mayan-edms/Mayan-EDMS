@@ -18,6 +18,11 @@ class Index(models.Model):
     label = models.CharField(
         max_length=128, unique=True, verbose_name=_('Label')
     )
+    slug = models.SlugField(
+        help_text=_(
+            'This values will be used by other apps to reference this index.'
+        ), max_length=128, unique=True, verbose_name=_('Slug')
+    )
     enabled = models.BooleanField(
         default=True,
         help_text=_(
