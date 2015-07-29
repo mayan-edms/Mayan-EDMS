@@ -475,7 +475,7 @@ class SourceLog(models.Model):
     )
 
     class Meta:
-        verbose_name = _('Log entry')
-        verbose_name_plural = _('Log entries')
         get_latest_by = 'datetime'
         ordering = ('-datetime',)
+        verbose_name = _('Log entry')
+        verbose_name_plural = _('Log entries')
