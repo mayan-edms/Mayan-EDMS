@@ -127,7 +127,10 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
     )
 
     if title:
-        title_template = 'title="%s"' % strip_tags(title)
+        preview_click_link = document.get_absolute_url()
+        title_template = 'data-caption="<a class=\'a-caption\' href=\'{url}\'>{title}</a>"'.format(
+            title=strip_tags(title), url=preview_click_link or '#'
+        )
     else:
         title_template = ''
 

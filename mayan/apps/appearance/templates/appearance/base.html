@@ -152,6 +152,11 @@
                 .btn-block {
                     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
                 }
+
+                .a-caption {
+                    color: white;
+                }
+
             </style>
             {% block stylesheets %}{% endblock %}
 
@@ -342,6 +347,9 @@
                 $('.scrollable').scrollview();
 
                 $('a.fancybox').fancybox({
+                    beforeShow : function(){
+                        this.title =  $(this.element).data('caption');
+                    },
                     openEffect  : 'elastic',
                     closeEffect : 'elastic',
                     prevEffect  : 'none',
