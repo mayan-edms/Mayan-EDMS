@@ -10,13 +10,16 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-import slate
 from PIL import Image
+from pdfminer.pdfpage import PDFPage
 import sh
+
+from django.utils.translation import ugettext_lazy as _
 
 from common.utils import fs_cleanup
 
 from ..classes import ConverterBase
+from ..exceptions import PageCountError
 from ..settings import setting_pdftoppm_path
 
 try:
@@ -78,12 +81,14 @@ class Python(ConverterBase):
                 file_object = self.file_object
 
             try:
-                pages = slate.PDF(file_object)
+                page_count = len(list(PDFPage.get_pages(file_object)))
             except Exception as exception:
-                logger.error('Slate exception; %s', exception)
-                raise
+                error_message = _('Exception determining PDF page count; %s') % exception
+                logger.error(error_message)
+                raise PageCountError(error_message)
             else:
-                return len(pages)
+                logger.debug('Document contains %d pages', page_count)
+                return page_count
             finally:
                 file_object.seek(0)
         else:

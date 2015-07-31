@@ -23,7 +23,7 @@ djangorestframework==2.4.4
 
 fusepy==2.0.2
 
-pdfminer==20110227
+pdfminer==20140328
 pycountry==1.10
 pytesseract==0.1.6
 python-dateutil==2.4.2
@@ -32,4 +32,3 @@ python-magic==0.4.6
 pytz==2015.4
 
 sh==1.11
-slate==0.3

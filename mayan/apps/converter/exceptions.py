@@ -29,3 +29,6 @@ class OfficeConversionError(ConvertError):
 
 class InvalidOfficeFormat(ConvertError):
     pass
+
+class PageCountError(ConvertError):
+    pass
