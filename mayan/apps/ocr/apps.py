@@ -33,7 +33,7 @@ from .links import (
 from .models import DocumentVersionOCRError
 from .permissions import permission_ocr_document, permission_ocr_content_view
 from .settings import (
-    setting_pdftotext_path, setting_tesseract_path, setting_unpaper_path
+    setting_pdftotext_path, setting_tesseract_path
 )
 from .tasks import task_do_ocr
 
@@ -174,22 +174,5 @@ class OCRApp(MayanAppConfig):
         else:
             namespace.add_property(
                 'tesseract', _('tesseract version'), tesseract('-v').stderr,
-                report=True
-            )
-
-        try:
-            unpaper = sh.Command(setting_unpaper_path.value)
-        except sh.CommandNotFound:
-            namespace.add_property(
-                'unpaper', _('unpaper version'), _('not found'), report=True
-            )
-        except Exception:
-            namespace.add_property(
-                'unpaper', _('unpaper version'), _('error getting version'),
-                report=True
-            )
-        else:
-            namespace.add_property(
-                'unpaper', _('unpaper version'), unpaper('-V').stdout,
                 report=True
             )

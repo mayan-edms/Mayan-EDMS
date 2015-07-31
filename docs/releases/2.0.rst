@@ -34,6 +34,7 @@ What's new in Mayan EDMS v2.0
   * psutil
   * python-hkp
   * sendfile
+  * slate
 
 * New document converter
 * New class based transformations

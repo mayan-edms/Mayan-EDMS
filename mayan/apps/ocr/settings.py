@@ -9,10 +9,6 @@ setting_tesseract_path = namespace.add_setting(
     global_name='OCR_TESSERACT_PATH', default='/usr/bin/tesseract',
     help_text=_('File path to tesseract program.'), is_path=True
 )
-setting_unpaper_path = namespace.add_setting(
-    global_name='OCR_UNPAPER_PATH', default='/usr/bin/unpaper',
-    help_text=_('File path to unpaper program.'), is_path=True
-)
 setting_pdftotext_path = namespace.add_setting(
     global_name='OCR_PDFTOTEXT_PATH', default='/usr/bin/pdftotext',
     help_text=_(
