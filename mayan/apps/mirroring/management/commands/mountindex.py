@@ -10,6 +10,8 @@ from fuse import FUSE, FuseOSError, Operations
 
 from django.core import management
 from django.core.cache import caches
+from django.core.exceptions import MultipleObjectsReturned
+from django.db.models import Count, Max
 
 from document_indexing.models import Index, IndexInstanceNode
 from documents.models import Document
@@ -68,7 +70,6 @@ class IndexFS(Operations):
             for count, part in enumerate(parts[1:]):
                 try:
                     node = node.children.get(value=part)
-
                 except IndexInstanceNode.DoesNotExist:
                     logger.debug('%s does not exists', part)
 
@@ -94,6 +95,10 @@ class IndexFS(Operations):
                                 'path %s is a file, but is not found', path
                             )
                             return None
+                        except MultipleObjectsReturned:
+                            return None
+                except MultipleObjectsReturned:
+                    return None
 
             self.cache.set(
                 path, {'node_pk': node.pk},
@@ -180,14 +185,24 @@ class IndexFS(Operations):
         yield '.'
         yield '..'
 
-        for child_node in node.get_children().values_list('value', flat=True):
-            if '/' not in child_node:
-                yield child_node
+        # Nodes
+        queryset = node.get_children().values('value').exclude(value__contains='/')
 
+        for duplicate in queryset.order_by().annotate(count_id=Count('id')).filter(count_id__gt=1):
+            queryset = queryset.exclude(label=duplicate['label'])
+
+        for child_node in queryset.values_list('value', flat=True):
+            yield child_node
+
+        # Documents
         if node.index_template_node.link_documents:
-            for document_label in node.documents.values_list('label', flat=True):
-                if '/' not in document_label:
-                    yield document_label
+            queryset = node.documents.values('label').exclude(label__contains='/')
+
+            for duplicate in queryset.order_by().annotate(count_id=Count('id')).filter(count_id__gt=1):
+                queryset = queryset.exclude(label=duplicate['label'])
+
+            for document_label in queryset.values_list('label', flat=True):
+                yield document_label
 
 
 class Command(management.BaseCommand):
