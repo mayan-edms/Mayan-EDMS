@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from json import dumps
 
+import sh
+
 from django.conf import settings
 from django.template import Context, Library
 from django.template.loader import get_template
@@ -11,6 +13,14 @@ import mayan
 from ..utils import return_attrib
 
 register = Library()
+
+try:
+    BUILD = sh.Command('git').bake('describe', '--tags', '--always', 'HEAD')
+    DATE = sh.Command('git').bake('--no-pager', 'log', '-1', '--format=%cd')
+except sh.CommandNotFound:
+    logger.debug('git not found')
+    BUILD = None
+    DATE = None
 
 
 @register.filter
@@ -61,3 +71,11 @@ def render_subtemplate(context, template_name, template_context):
     new_context = Context(context)
     new_context.update(Context(template_context))
     return get_template(template_name).render(new_context)
+
+
+@register.assignment_tag
+def build():
+    if BUILD:
+        return '{} {}'.format(BUILD(), DATE().decode())
+    else:
+        return 'No build information'
