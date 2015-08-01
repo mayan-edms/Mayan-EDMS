@@ -74,7 +74,7 @@ def task_index_document(self, document_id):
 
 @app.task(bind=True, default_retry_delay=RETRY_DELAY, ignore_result=True)
 def task_do_rebuild_all_indexes(self):
-    if Lock.filter(name__startswith='document_indexing_task_update_index_document'):
+    if Lock.check_existing(name__startswith='document_indexing_task_update_index_document'):
         # A document index update is happening, wait
         raise self.retry()
 
