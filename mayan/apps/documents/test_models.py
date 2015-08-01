@@ -15,6 +15,7 @@ TEST_ADMIN_EMAIL = 'admin@admin.com'
 TEST_DEU_DOCUMENT_FILENAME = 'deu_website.png'
 TEST_COMPRESSED_DOCUMENTS_FILENAME = 'compressed_documents.zip'
 TEST_SMALL_DOCUMENT_FILENAME = 'title_page.png'
+TEST_MULTI_PAGE_TIFF = 'multi_page.tiff'
 TEST_NON_ASCII_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png'
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png.zip'
 TEST_DOCUMENT_PATH = os.path.join(
@@ -23,6 +24,10 @@ TEST_DOCUMENT_PATH = os.path.join(
 TEST_SMALL_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'contrib', 'sample_documents',
     TEST_SMALL_DOCUMENT_FILENAME
+)
+TEST_MULTI_PAGE_TIFF_PATH = os.path.join(
+    settings.BASE_DIR, 'contrib', 'sample_documents',
+    TEST_MULTI_PAGE_TIFF
 )
 TEST_NON_ASCII_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'contrib', 'sample_documents',
@@ -113,3 +118,31 @@ class DocumentTestCase(TestCase):
         self.document.delete()
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
+
+
+class MultiPageTiffTestCase(TestCase):
+    def setUp(self):
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        ocr_settings = self.document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
+
+        with open(TEST_MULTI_PAGE_TIFF_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=File(file_object)
+            )
+
+    def tearDown(self):
+        self.document_type.delete()
+
+    def test_document_creation(self):
+        self.assertEqual(self.document.file_mimetype, 'image/tiff')
+        self.assertEqual(self.document.file_mime_encoding, 'binary')
+        self.assertEqual(
+            self.document.checksum,
+            '40adaa9d658b65c70a7f002dfe084a8354bb77c0dfbf1993e31fb024a285fb1d'
+        )
+        self.assertEqual(self.document.page_count, 2)
