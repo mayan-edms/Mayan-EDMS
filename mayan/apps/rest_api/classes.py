@@ -41,9 +41,8 @@ class APIEndPoint(object):
 
         self.__class__._registry[app.name] = self
 
-    @property
-    def url(self):
-        return reverse('rest_api:api-version-1-app', args=[self.app.name])
+    def get_absolute_url(self):
+        return reverse('rest_api:api-version-1-app', args=(self.app.name,))
 
     @property
     def app_name(self):
