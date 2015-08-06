@@ -23,13 +23,12 @@ from .serializers import FolderSerializer
 
 
 class APIFolderListView(generics.ListCreateAPIView):
-    serializer_class = FolderSerializer
-    queryset = Folder.objects.all()
-
-    permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [permission_folder_view]}
-    mayan_view_permissions = {'POST': [permission_folder_create]}
+    mayan_object_permissions = {'GET': (permission_folder_view,)}
+    mayan_view_permissions = {'POST': (permission_folder_create,)}
+    permission_classes = (MayanPermission,)
+    queryset = Folder.objects.all()
+    serializer_class = FolderSerializer
 
     def get(self, *args, **kwargs):
         """
@@ -43,6 +42,7 @@ class APIFolderListView(generics.ListCreateAPIView):
         """
         return super(APIFolderListView, self).post(*args, **kwargs)
 
+    '''
     def create(self, request, *args, **kwargs):
         serializer = self.get_serializer(
             data=request.DATA, files=request.FILES
@@ -60,6 +60,7 @@ class APIFolderListView(generics.ListCreateAPIView):
             )
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    '''
 
 
 class APIFolderView(generics.RetrieveUpdateDestroyAPIView):
@@ -68,10 +69,10 @@ class APIFolderView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [permission_folder_view],
-        'PUT': [permission_folder_edit],
-        'PATCH': [permission_folder_edit],
-        'DELETE': [permission_folder_delete]
+        'GET': (permission_folder_view,),
+        'PUT': (permission_folder_edit,),
+        'PATCH': (permission_folder_edit,),
+        'DELETE': (permission_folder_delete,)
     }
 
     def delete(self, *args, **kwargs):
@@ -105,7 +106,7 @@ class APIFolderDocumentListView(generics.ListAPIView):
     """
 
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [permission_document_view]}
+    mayan_object_permissions = {'GET': (permission_document_view,)}
 
     def get_serializer_class(self):
         from documents.serializers import DocumentSerializer
@@ -124,6 +125,26 @@ class APIFolderDocumentListView(generics.ListAPIView):
 
         return folder.documents.all()
 
+    # TODO: move this method as post of APIFolderDocumentListView
+    def post(self, request, *args, **kwargs):
+        """
+        Add a document to the selected folder.
+        """
+
+        folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
+        try:
+            Permission.check_permissions(
+                request.user, (permission_folder_add_document,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_folder_add_document, request.user, folder
+            )
+
+        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
+        folder.documents.add(document)
+        return Response(status=status.HTTP_201_CREATED)
+
 
 class APIDocumentFolderListView(generics.ListAPIView):
     """
@@ -133,7 +154,7 @@ class APIDocumentFolderListView(generics.ListAPIView):
     serializer_class = FolderSerializer
 
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [permission_folder_view]}
+    mayan_object_permissions = {'GET': (permission_folder_view,)}
 
     def get_queryset(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
@@ -160,7 +181,7 @@ class APIFolderDocumentView(views.APIView):
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
         try:
             Permission.check_permissions(
-                request.user, [permission_folder_remove_document]
+                request.user, (permission_folder_remove_document,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -170,23 +191,3 @@ class APIFolderDocumentView(views.APIView):
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
         folder.documents.remove(document)
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-    # TODO: move this method as post of APIFolderDocumentListView
-    def post(self, request, *args, **kwargs):
-        """
-        Add a document to the selected folder.
-        """
-
-        folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
-        try:
-            Permission.check_permissions(
-                request.user, [permission_folder_add_document]
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_folder_add_document, request.user, folder
-            )
-
-        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
-        folder.documents.add(document)
-        return Response(status=status.HTTP_201_CREATED)
