@@ -1,15 +1,14 @@
+from __future__ import unicode_literals
+
 from rest_framework import serializers
 
 
-class APISerializer(serializers.Serializer):
-    name = serializers.CharField()
+class APIVersionSerializer(serializers.Serializer):
     url = serializers.URLField()
+    version_string = serializers.CharField()
 
 
 class APIAppSerializer(serializers.Serializer):
-    name = serializers.CharField()
+    app_name = serializers.CharField()
     url = serializers.URLField()
-
-
-class APIVersionSerializer(serializers.Serializer):
-    apps = APIAppSerializer()
+    version_string = serializers.CharField()

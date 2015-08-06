@@ -270,7 +270,7 @@ TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
 CORS_ORIGIN_ALLOW_ALL = True
 # ------ Django REST Swagger -----
 SWAGGER_SETTINGS = {
-    'api_version': '0',  # Specify your API's version
+    'api_version': '1',  # Specify your API's version
 }
 # ------ Timezone --------
 TIMEZONE_COOKIE_NAME = 'django_timezone'
