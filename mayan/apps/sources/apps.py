@@ -45,7 +45,7 @@ class SourcesApp(MayanAppConfig):
     def ready(self):
         super(SourcesApp, self).ready()
 
-        APIEndPoint('sources')
+        APIEndPoint(app=self, version_string='1')
 
         MissingItem(
             label=_('Create a document source'),

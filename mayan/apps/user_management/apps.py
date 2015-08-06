@@ -28,7 +28,7 @@ class UserManagementApp(MayanAppConfig):
     def ready(self):
         super(UserManagementApp, self).ready()
 
-        APIEndPoint('users', app_name='user_management')
+        APIEndPoint(app=self, version_string='1')
 
         MetadataLookup(description=_('All the groups.'), name='group', value=Group.objects.all())
         MetadataLookup(description=_('All the users.'), name='users', value=get_user_model().objects.all())

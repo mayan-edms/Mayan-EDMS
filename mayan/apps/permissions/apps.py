@@ -24,7 +24,7 @@ class PermissionsApp(MayanAppConfig):
     def ready(self):
         super(PermissionsApp, self).ready()
 
-        APIEndPoint('permissions')
+        APIEndPoint(app=self, version_string='1')
 
         menu_object.bind_links(
             links=(

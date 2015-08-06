@@ -20,7 +20,9 @@ from converter import (
     converter_class, TransformationResize, TransformationRotate,
     TransformationZoom
 )
-from converter.exceptions import InvalidOfficeFormat, UnknownFileFormat
+from converter.exceptions import (
+    InvalidOfficeFormat, PageCountError, UnknownFileFormat
+)
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from converter.models import Transformation
 from mimetype.api import get_mimetype
@@ -150,6 +152,7 @@ class Document(models.Model):
     in_trash = models.BooleanField(
         default=False, editable=False, verbose_name=_('In trash?')
     )
+    #TODO: set editable to False
     deleted_date_time = models.DateTimeField(
         blank=True, editable=True, null=True,
         verbose_name=_('Date and time trashed')
@@ -431,25 +434,24 @@ class DocumentVersion(models.Model):
                     file_object=file_object, mime_type=self.mimetype
                 )
                 detected_pages = converter.get_page_count()
-        except UnknownFileFormat:
+        except PageCountError:
             # If converter backend doesn't understand the format,
             # use 1 as the total page count
-            detected_pages = 1
-            # TODO: should be no pages instead?
+            pass
+        else:
+            with transaction.atomic():
+                self.pages.all().delete()
 
-        with transaction.atomic():
-            self.pages.all().delete()
+                for page_number in range(detected_pages):
+                    DocumentPage.objects.create(
+                        document_version=self, page_number=page_number + 1
+                    )
 
-            for page_number in range(detected_pages):
-                DocumentPage.objects.create(
-                    document_version=self, page_number=page_number + 1
-                )
+            # TODO: is this needed anymore
+            if save:
+                self.save()
 
-        # TODO: is this needed anymore
-        if save:
-            self.save()
-
-        return detected_pages
+            return detected_pages
 
     def revert(self, user=None):
         """
@@ -670,8 +672,8 @@ class DocumentPage(models.Model):
         as_base64 = kwargs.pop('as_base64', False)
         transformations = kwargs.pop('transformations', [])
         size = kwargs.pop('size', setting_display_size.value)
-        rotation = kwargs.pop('rotation', DEFAULT_ROTATION)
-        zoom_level = kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL)
+        rotation = int(kwargs.pop('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION)
+        zoom_level = int(kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL)
 
         if zoom_level < setting_zoom_min_level.value:
             zoom_level = setting_zoom_min_level.value

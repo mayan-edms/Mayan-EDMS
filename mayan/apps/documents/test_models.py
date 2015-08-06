@@ -18,8 +18,9 @@ TEST_SMALL_DOCUMENT_FILENAME = 'title_page.png'
 TEST_MULTI_PAGE_TIFF = 'multi_page.tiff'
 TEST_NON_ASCII_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png'
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png.zip'
+TEST_DOCUMENT_FILENAME = 'mayan_11_1.pdf'
 TEST_DOCUMENT_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf'
+    settings.BASE_DIR, 'contrib', 'sample_documents', TEST_DOCUMENT_FILENAME
 )
 TEST_SMALL_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'contrib', 'sample_documents',

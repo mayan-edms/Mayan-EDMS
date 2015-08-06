@@ -39,7 +39,7 @@ class DocumentIndexingApp(MayanAppConfig):
     def ready(self):
         super(DocumentIndexingApp, self).ready()
 
-        APIEndPoint('indexes', app_name='document_indexing')
+        APIEndPoint(app=self, version_string='1')
 
         app.conf.CELERY_QUEUES.append(
             Queue('indexing', Exchange('indexing'), routing_key='indexing'),
@@ -85,15 +85,6 @@ class DocumentIndexingApp(MayanAppConfig):
         menu_setup.bind_links(links=(link_index_setup,))
         menu_tools.bind_links(links=(link_rebuild_index_instances,))
 
-        post_document_created.connect(
-            document_created_index_update,
-            dispatch_uid='document_created_index_update', sender=Document
-        )
-        post_save.connect(
-            document_metadata_index_update,
-            dispatch_uid='document_metadata_index_update',
-            sender=DocumentMetadata
-        )
         post_delete.connect(
             document_index_delete, dispatch_uid='document_index_delete',
             sender=Document
@@ -101,5 +92,14 @@ class DocumentIndexingApp(MayanAppConfig):
         post_delete.connect(
             document_metadata_index_post_delete,
             dispatch_uid='document_metadata_index_post_delete',
+            sender=DocumentMetadata
+        )
+        post_document_created.connect(
+            document_created_index_update,
+            dispatch_uid='document_created_index_update', sender=Document
+        )
+        post_save.connect(
+            document_metadata_index_update,
+            dispatch_uid='document_metadata_index_update',
             sender=DocumentMetadata
         )

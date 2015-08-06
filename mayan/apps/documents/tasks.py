@@ -181,7 +181,7 @@ def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id,
 
     with shared_file.open() as file_object:
         document_version = DocumentVersion(
-            document=document, comment=comment, file=file_object
+            document=document, comment=comment or '', file=file_object
         )
         try:
             document_version.save(_user=user)

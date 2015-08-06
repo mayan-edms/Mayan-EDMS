@@ -55,7 +55,7 @@ class OCRApp(MayanAppConfig):
     def ready(self):
         super(OCRApp, self).ready()
 
-        APIEndPoint('ocr')
+        APIEndPoint(app=self, version_string='1')
 
         Document.add_to_class('submit_for_ocr', document_ocr_submit)
         DocumentVersion.add_to_class(

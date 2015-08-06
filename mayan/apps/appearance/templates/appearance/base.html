@@ -319,18 +319,13 @@
 
             function load_document_image(image) {
                 $.get( image.attr('data-src'), function(result) {
-                    if (result.status == 'success') {
-                        image.attr('src', result.data);
-                        image.addClass(image.attr('data-post-load-class'));
-                    } else {
-                        image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
-                        set_image_noninteractive(image);
-                    }
+                    image.attr('src', result.data);
+                    image.addClass(image.attr('data-post-load-class'));
                 })
-              .fail(function() {
-                  image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
-                  set_image_noninteractive(image);
-              })
+                .fail(function() {
+                    image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
+                    set_image_noninteractive(image);
+                })
             }
 
             function dismissAlert(element) {

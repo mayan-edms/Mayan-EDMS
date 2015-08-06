@@ -36,7 +36,7 @@ class TagsApp(MayanAppConfig):
     def ready(self):
         super(TagsApp, self).ready()
 
-        APIEndPoint('tags')
+        APIEndPoint(app=self, version_string='1')
 
         ModelPermission.register(
             model=Document, permissions=(

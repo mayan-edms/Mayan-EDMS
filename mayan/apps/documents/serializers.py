@@ -2,66 +2,181 @@ from __future__ import unicode_literals
 
 from rest_framework import serializers
 
-from .models import (Document, DocumentVersion, DocumentPage, DocumentType,
-                     RecentDocument)
-from .settings import setting_language, setting_language_choices
+from common.models import SharedUploadedFile
+
+from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
+from .models import (
+    Document, DocumentVersion, DocumentPage, DocumentType, RecentDocument
+)
+from .settings import setting_language
+from .tasks import task_get_document_page_image, task_upload_new_version
+
+
+class DocumentPageImageSerializer(serializers.Serializer):
+    data = serializers.SerializerMethodField()
+
+    def get_data(self, instance):
+        request = self.context['request']
+        size = request.GET.get('size')
+        zoom = request.GET.get('zoom')
+        rotation = request.GET.get('rotation')
+
+        task = task_get_document_page_image.apply_async(
+            kwargs=dict(
+                document_page_id=instance.pk, size=size, zoom=zoom,
+                rotation=rotation, as_base64=True
+            )
+        )
+        # TODO: prepend 'data:%s;base64,%s' based on format specified in
+        # async call
+        return task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
 
 
 class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
+    image = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:documentpage-image'
+    )
+
     class Meta:
+        extra_kwargs = {
+            'url': {'view_name': 'rest_api:documentpage-detail'},
+            'document_version': {'view_name': 'rest_api:documentversion-detail'}
+        }
         model = DocumentPage
 
 
-class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
-    pages = DocumentPageSerializer(many=True, required=False, read_only=True)
-
-    class Meta:
-        model = DocumentVersion
-        read_only_fields = ('document',)
-
-
-class DocumentImageSerializer(serializers.Serializer):
-    status = serializers.CharField()
-    data = serializers.CharField()
-
-
-class DocumentTypeSerializer(serializers.ModelSerializer):
-    documents = serializers.SerializerMethodField('get_documents_count')
-
-    class Meta:
-        model = DocumentType
-        fields = ('id', 'name', 'documents')
+class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
+    documents = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:documenttype-document-list',
+    )
+    documents_count = serializers.SerializerMethodField()
 
     def get_documents_count(self, obj):
         return obj.documents.count()
 
+    class Meta:
+        extra_kwargs = {
+            'url': {'view_name': 'rest_api:documenttype-detail'},
+        }
+        fields = (
+            'delete_time_period', 'delete_time_unit', 'documents',
+            'documents_count', 'id', 'label', 'trash_time_period',
+            'trash_time_unit', 'url'
+        )
+        model = DocumentType
 
-class DocumentSerializer(serializers.ModelSerializer):
-    versions = DocumentVersionSerializer(many=True, read_only=True)
-    # TODO: Deprecate, move this as an entry point of DocumentVersion's pages
-    image = serializers.HyperlinkedIdentityField(view_name='document-image')
-    new_version = serializers.HyperlinkedIdentityField(
-        view_name='document-new-version'
-    )
-    document_type = DocumentTypeSerializer()
+
+class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
+    pages = DocumentPageSerializer(many=True, required=False, read_only=True)
+    revert = serializers.HyperlinkedIdentityField(view_name='rest_api:documentversion-revert')
 
     class Meta:
+        extra_kwargs = {
+            'document': {'view_name': 'rest_api:document-detail'},
+            'file': {'use_url': False},
+            'url': {'view_name': 'rest_api:documentversion-detail'},
+        }
+        model = DocumentVersion
+        read_only_fields = ('document', 'file')
+
+
+class DocumentVersionRevertSerializer(DocumentVersionSerializer):
+    class Meta(DocumentVersionSerializer.Meta):
+        read_only_fields = ('comment', 'document',)
+
+
+class NewDocumentVersionSerializer(serializers.Serializer):
+    comment = serializers.CharField(allow_blank=True)
+    file = serializers.FileField(use_url=False)
+
+    def save(self, document, _user):
+        shared_uploaded_file = SharedUploadedFile.objects.create(
+            file=self.validated_data['file']
+        )
+
+        task_upload_new_version.delay(
+            comment=self.validated_data.get('comment', ''),
+            document_id=document.pk,
+            shared_uploaded_file_id=shared_uploaded_file.pk, user_id=_user.pk
+        )
+
+
+class DeletedDocumentSerializer(serializers.HyperlinkedModelSerializer):
+    document_type_label = serializers.SerializerMethodField()
+    restore = serializers.HyperlinkedIdentityField(view_name='rest_api:deleteddocument-restore')
+
+    def get_document_type_label(self, instance):
+        return instance.document_type.label
+
+    class Meta:
+        extra_kwargs = {
+            'document_type': {'view_name': 'rest_api:documenttype-detail'},
+            'url': {'view_name': 'rest_api:deleteddocument-detail'}
+        }
         fields = (
-            'id', 'label', 'image', 'new_version', 'uuid', 'document_type',
-            'description', 'date_added', 'versions'
+            'date_added', 'deleted_date_time', 'description', 'document_type',
+            'document_type_label', 'id', 'label', 'language', 'restore',
+            'url', 'uuid',
+        )
+        model = Document
+        read_only_fields = (
+            'deleted_date_time', 'description', 'document_type', 'label',
+            'language'
+        )
+
+
+class DocumentSerializer(serializers.HyperlinkedModelSerializer):
+    document_type_label = serializers.SerializerMethodField()
+    latest_version = DocumentVersionSerializer(many=False, read_only=True)
+    versions = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:document-version-list',
+    )
+
+    def get_document_type_label(self, instance):
+        return instance.document_type.label
+
+    class Meta:
+        extra_kwargs = {
+            'document_type': {'view_name': 'rest_api:documenttype-detail'},
+            'url': {'view_name': 'rest_api:document-detail'}
+        }
+        fields = (
+            'date_added', 'description', 'document_type', 'document_type_label',
+            'id', 'label', 'language', 'latest_version', 'url', 'uuid',
+            'versions',
         )
         model = Document
 
 
-class NewDocumentSerializer(serializers.Serializer):
-    description = serializers.CharField(required=False)
-    document_type = serializers.IntegerField()
-    file = serializers.FileField()
-    label = serializers.CharField(required=False)
-    language = serializers.ChoiceField(
-        blank_display_value=None, choices=setting_language_choices.value,
-        default=setting_language.value, required=False
-    )
+class NewDocumentSerializer(serializers.ModelSerializer):
+    file = serializers.FileField(write_only=True)
+
+    def save(self, _user):
+        document = Document.objects.create(
+            description=self.validated_data.get('description', ''),
+            document_type=self.validated_data['document_type'],
+            label=self.validated_data.get('label', unicode(self.validated_data['file'])),
+            language=self.validated_data.get('language', setting_language.value)
+        )
+        document.save(_user=_user)
+
+        shared_uploaded_file = SharedUploadedFile.objects.create(
+            file=self.validated_data['file']
+        )
+
+        task_upload_new_version.delay(
+            document_id=document.pk,
+            shared_uploaded_file_id=shared_uploaded_file.pk, user_id=_user.pk
+        )
+
+        self.instance = document
+        return document
+
+    class Meta:
+        fields = (
+            'description', 'document_type', 'id', 'file', 'label', 'language',
+        )
+        model = Document
 
 
 class RecentDocumentSerializer(serializers.ModelSerializer):

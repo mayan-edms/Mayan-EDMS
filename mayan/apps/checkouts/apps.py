@@ -35,7 +35,7 @@ class CheckoutsApp(MayanAppConfig):
     def ready(self):
         super(CheckoutsApp, self).ready()
 
-        APIEndPoint('checkouts')
+        APIEndPoint(app=self, version_string='1')
 
         Document.add_to_class(
             'check_in',

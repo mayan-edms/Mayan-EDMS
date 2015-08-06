@@ -96,12 +96,13 @@ class CommonApp(MayanAppConfig):
                 'common:tools_list'
             )
         )
-        user_logged_in.connect(
-            user_locale_profile_session_config,
-            dispatch_uid='user_locale_profile_session_config'
-        )
+
         post_save.connect(
             user_locale_profile_create,
             dispatch_uid='user_locale_profile_create',
             sender=settings.AUTH_USER_MODEL
+        )
+        user_logged_in.connect(
+            user_locale_profile_session_config,
+            dispatch_uid='user_locale_profile_session_config'
         )

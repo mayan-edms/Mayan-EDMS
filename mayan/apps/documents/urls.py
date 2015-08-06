@@ -3,10 +3,12 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 
 from .api_views import (
-    APIDocumentView, APIDocumentImageView, APIDocumentListView,
-    APIDocumentPageView, APIDocumentTypeDocumentListView,
-    APIDocumentTypeListView, APIDocumentTypeView,
-    APIDocumentVersionCreateView, APIDocumentVersionView,
+    APIDeletedDocumentListView, APIDeletedDocumentRestoreView,
+    APIDeletedDocumentView, APIDocumentView, APIDocumentListView,
+    APIDocumentPageImageView, APIDocumentPageView,
+    APIDocumentTypeDocumentListView, APIDocumentTypeListView,
+    APIDocumentTypeView, APIDocumentVersionsListView,
+    APIDocumentVersionRevertView, APIDocumentVersionView,
     APIRecentDocumentListView
 )
 from .settings import setting_print_size, setting_display_size
@@ -229,6 +231,18 @@ urlpatterns = patterns(
 
 api_urls = patterns(
     '',
+    url(
+        r'^deleted_documents/$', APIDeletedDocumentListView.as_view(),
+        name='deleteddocument-list'
+    ),
+    url(
+        r'^deleted_documents/(?P<pk>[0-9]+)/$',
+        APIDeletedDocumentView.as_view(), name='deleteddocument-detail'
+    ),
+    url(
+        r'^deleted_documents/(?P<pk>[0-9]+)/restore/$',
+        APIDeletedDocumentRestoreView.as_view(), name='deleteddocument-restore'
+    ),
     url(r'^documents/$', APIDocumentListView.as_view(), name='document-list'),
     url(
         r'^documents/recent/$', APIRecentDocumentListView.as_view(),
@@ -239,32 +253,36 @@ api_urls = patterns(
         name='document-detail'
     ),
     url(
+        r'^documents/(?P<pk>[0-9]+)/versions/$',
+        APIDocumentVersionsListView.as_view(), name='document-version-list'
+    ),
+    url(
         r'^document_version/(?P<pk>[0-9]+)/$',
         APIDocumentVersionView.as_view(), name='documentversion-detail'
+    ),
+    url(
+        r'^document_version/(?P<pk>[0-9]+)/revert/$',
+        APIDocumentVersionRevertView.as_view(), name='documentversion-revert'
     ),
     url(
         r'^document_page/(?P<pk>[0-9]+)/$', APIDocumentPageView.as_view(),
         name='documentpage-detail'
     ),
     url(
-        r'^documents/(?P<pk>[0-9]+)/image/$', APIDocumentImageView.as_view(),
-        name='document-image'
+        r'^document_page/(?P<pk>[0-9]+)/image/$',
+        APIDocumentPageImageView.as_view(), name='documentpage-image'
     ),
     url(
-        r'^documents/(?P<pk>[0-9]+)/new_version/$',
-        APIDocumentVersionCreateView.as_view(), name='document-new-version'
-    ),
-    url(
-        r'^documenttypes/(?P<pk>[0-9]+)/documents/$',
+        r'^document_types/(?P<pk>[0-9]+)/documents/$',
         APIDocumentTypeDocumentListView.as_view(),
         name='documenttype-document-list'
     ),
     url(
-        r'^documenttypes/(?P<pk>[0-9]+)/$', APIDocumentTypeView.as_view(),
+        r'^document_types/(?P<pk>[0-9]+)/$', APIDocumentTypeView.as_view(),
         name='documenttype-detail'
     ),
     url(
-        r'^documenttypes/$', APIDocumentTypeListView.as_view(),
+        r'^document_types/$', APIDocumentTypeListView.as_view(),
         name='documenttype-list'
     ),
 )

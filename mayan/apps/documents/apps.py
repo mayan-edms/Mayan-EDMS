@@ -80,7 +80,7 @@ class DocumentsApp(MayanAppConfig):
     def ready(self):
         super(DocumentsApp, self).ready()
 
-        APIEndPoint('documents')
+        APIEndPoint(app=self, version_string='1')
 
         MissingItem(
             label=_('Create a document type'),

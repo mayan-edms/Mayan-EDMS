@@ -17,7 +17,7 @@ class DynamicSearchApp(MayanAppConfig):
     def ready(self):
         super(DynamicSearchApp, self).ready()
 
-        APIEndPoint('search', app_name='dynamic_search')
+        APIEndPoint(app=self, version_string='1')
 
         menu_facet.bind_links(
             links=(link_search, link_search_advanced),

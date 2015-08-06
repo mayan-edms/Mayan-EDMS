@@ -35,7 +35,7 @@ class FoldersApp(MayanAppConfig):
     def ready(self):
         super(FoldersApp, self).ready()
 
-        APIEndPoint('folders')
+        APIEndPoint(app=self, version_string='1')
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -51,6 +51,11 @@ class FoldersApp(MayanAppConfig):
                 permission_folder_view
             )
         )
+
+        SourceColumn(
+            source=Folder, label=_('Created'), attribute='datetime_created'
+        )
+        SourceColumn(source=Folder, label=_('User'), attribute='user')
 
         menu_facet.bind_links(
             links=(link_document_folder_list,), sources=(Document,)
@@ -79,8 +84,3 @@ class FoldersApp(MayanAppConfig):
                 'folders:document_folder_list', 'folders:folder_add_document'
             )
         )
-
-        SourceColumn(
-            source=Folder, label=_('Created'), attribute='datetime_created'
-        )
-        SourceColumn(source=Folder, label=_('User'), attribute='user')

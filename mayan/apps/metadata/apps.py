@@ -54,7 +54,7 @@ class MetadataApp(MayanAppConfig):
     def ready(self):
         super(MetadataApp, self).ready()
 
-        APIEndPoint('metadata')
+        APIEndPoint(app=self, version_string='1')
 
         Document.add_to_class(
             'metadata_value_of', DocumentMetadataHelper.constructor
