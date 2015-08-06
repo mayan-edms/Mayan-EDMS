@@ -1,8 +1,5 @@
 from __future__ import unicode_literals
 
-import os
-
-from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.files.base import File
 from django.test import TestCase
@@ -11,13 +8,9 @@ from authentication.test_views import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 from documents.models import DocumentType
-from documents.test_models import TEST_DOCUMENT_TYPE
+from documents.test_models import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
 from .models import Folder
-
-TEST_DOCUMENT_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents', 'title_page.png'
-)
 
 
 class FolderTestCase(TestCase):
