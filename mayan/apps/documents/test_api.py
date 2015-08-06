@@ -32,7 +32,7 @@ class DocumentTypeAPITestCase(APITestCase):
 
         self.client.force_authenticate(user=self.admin_user)
 
-    def testDown(self):
+    def tearDown(self):
         self.admin_user.delete()
 
     def test_document_type_create(self):
