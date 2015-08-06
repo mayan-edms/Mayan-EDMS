@@ -17,7 +17,7 @@ class DocumentMetadataSerializer(serializers.ModelSerializer):
     document = serializers.PrimaryKeyRelatedField(read_only=True)
 
     class Meta:
-        fields = ('id', 'metadata_type', 'value',)
+        fields = ('document', 'id', 'metadata_type', 'value',)
         model = DocumentMetadata
 
 
