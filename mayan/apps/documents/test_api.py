@@ -187,7 +187,6 @@ class DocumentAPITestCase(APITestCase):
                     'file': file_descriptor,
                 }
             )
-        print response
 
         self.assertEqual(response.status_code, status.HTTP_202_ACCEPTED)
 
