@@ -57,8 +57,13 @@ urlpatterns = patterns(
 api_urls = patterns(
     '',
     url(r'^groups/$', APIGroupListView.as_view(), name='group-list'),
-    url(r'^groups/(?P<pk>[0-9]+)/$', APIGroupView.as_view(), name='group-detail'),
+    url(
+        r'^groups/(?P<pk>[0-9]+)/$', APIGroupView.as_view(),
+        name='group-detail'
+    ),
     url(r'^users/$', APIUserListView.as_view(), name='user-list'),
     url(r'^users/(?P<pk>[0-9]+)/$', APIUserView.as_view(), name='user-detail'),
-    url(r'^users/current/$', APICurrentUserView.as_view(), name='user-current'),
+    url(
+        r'^users/current/$', APICurrentUserView.as_view(), name='user-current'
+    ),
 )
