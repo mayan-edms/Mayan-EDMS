@@ -1,0 +1,126 @@
+from __future__ import unicode_literals
+
+from json import loads
+
+from django.contrib.auth.models import User
+from django.core.files import File
+from django.core.urlresolvers import reverse
+
+from rest_framework import status
+from rest_framework.test import APITestCase
+
+from documents.models import DocumentType
+from documents.test_models import (
+    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
+    TEST_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH,
+)
+
+from .models import Tag
+
+TEST_TAG_LABEL = 'test tag'
+TEST_TAG_LABEL_ALTERNATE = 'test tag alternate'
+TEST_TAG_COLOR = '#001122'
+TEST_TAG_COLOR_ALTERNATE = '#221100'
+
+
+class TagAPITestCase(APITestCase):
+    """
+    Test the tag API endpoints
+    """
+
+    def setUp(self):
+        self.admin_user = User.objects.create_superuser(
+            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
+            password=TEST_ADMIN_PASSWORD
+        )
+
+        self.client.force_authenticate(user=self.admin_user)
+
+    def tearDown(self):
+        self.admin_user.delete()
+
+    def test_tag_create(self):
+        self.client.post(
+            reverse('rest_api:tag-list'), {
+                'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
+            }
+        )
+
+        tag = Tag.objects.first()
+
+        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(tag.label, TEST_TAG_LABEL)
+        self.assertEqual(tag.color, TEST_TAG_COLOR)
+
+    def test_tag_delete(self):
+        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+
+        self.client.delete(reverse('rest_api:tag-detail', args=(tag.pk,)))
+
+        self.assertEqual(Tag.objects.count(), 0)
+
+    def test_tag_edit(self):
+        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+
+        self.client.put(
+            reverse('rest_api:tag-detail', args=(tag.pk,)),
+            {
+                'label': TEST_TAG_LABEL_ALTERNATE,
+                'color': TEST_TAG_COLOR_ALTERNATE
+            }
+        )
+
+        tag = Tag.objects.first()
+
+        self.assertEqual(tag.label, TEST_TAG_LABEL_ALTERNATE)
+        self.assertEqual(tag.color, TEST_TAG_COLOR_ALTERNATE)
+
+    def test_tag_add_document(self):
+        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        ocr_settings = document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document = document_type.new_document(
+                file_object=File(file_object),
+            )
+
+        self.client.post(
+            reverse('rest_api:document-tag-list', args=(document.pk,)),
+            {'tag': tag.pk}
+        )
+
+        self.assertEqual(tag.documents.count(), 1)
+
+    """
+    def test_tag_remove_document(self):
+        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        ocr_settings = document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document = document_type.new_document(
+                file_object=File(file_object),
+            )
+
+        tag.documents.add(document)
+
+        self.client.delete(
+            reverse('rest_api:tag-document', args=(tag.pk, document.pk)),
+        )
+
+        self.assertEqual(tag.documents.count(), 0)
+    """
