@@ -177,7 +177,6 @@ class APIFolderDocumentView(generics.RetrieveDestroyAPIView):
         'GET': (permission_folder_view,),
         'DELETE': (permission_folder_remove_document,)
     }
-    mayan_permission_attribute_check = 'folder'
     serializer_class = FolderDocumentSerializer
 
     def delete(self, request, *args, **kwargs):
