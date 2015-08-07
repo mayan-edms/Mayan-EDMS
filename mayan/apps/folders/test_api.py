@@ -9,6 +9,7 @@ from django.core.urlresolvers import reverse
 from rest_framework import status
 from rest_framework.test import APITestCase
 
+from documents.models import DocumentType
 from documents.test_models import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
     TEST_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
@@ -34,14 +35,86 @@ class FolderAPITestCase(APITestCase):
 
         self.client.force_authenticate(user=self.admin_user)
 
-    def testDown(self):
+    def tearDown(self):
         self.admin_user.delete()
 
     def test_folder_create(self):
-        self.client.post(reverse('rest_api:folder-list'), {'label': TEST_FOLDER_LABEL})
+        self.client.post(
+            reverse('rest_api:folder-list'), {'label': TEST_FOLDER_LABEL}
+        )
 
         folder = Folder.objects.first()
 
         self.assertEqual(Folder.objects.count(), 1)
         self.assertEqual(folder.label, TEST_FOLDER_LABEL)
         self.assertEqual(folder.user, self.admin_user)
+
+    def test_folder_delete(self):
+        folder = Folder.objects.create(
+            label=TEST_FOLDER_LABEL, user=self.admin_user
+        )
+
+        self.client.delete(reverse('rest_api:folder-detail', args=(folder.pk,)))
+
+        self.assertEqual(Folder.objects.count(), 0)
+
+    def test_folder_edit(self):
+        folder = Folder.objects.create(
+            label=TEST_FOLDER_LABEL, user=self.admin_user
+        )
+
+        self.client.put(
+            reverse('rest_api:folder-detail', args=(folder.pk,)),
+            {'label': TEST_FOLDER_LABEL + ' edited'}
+        )
+
+        folder = Folder.objects.first()
+
+        self.assertEqual(folder.label, TEST_FOLDER_LABEL + ' edited')
+
+    def test_folder_add_document(self):
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL, user=self.admin_user)
+
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        ocr_settings = document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document = document_type.new_document(
+                file_object=File(file_object),
+            )
+
+        self.client.post(
+            reverse('rest_api:folder-document-list', args=(folder.pk,)),
+            {'document': document.pk}
+        )
+
+        self.assertEqual(folder.documents.count(), 1)
+
+    def test_folder_remove_document(self):
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL, user=self.admin_user)
+
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        ocr_settings = document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document = document_type.new_document(
+                file_object=File(file_object),
+            )
+
+        folder.documents.add(document)
+
+        self.client.delete(
+            reverse('rest_api:folder-document', args=(folder.pk, document.pk)),
+        )
+
+        self.assertEqual(folder.documents.count(), 0)

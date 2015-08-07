@@ -43,7 +43,7 @@ urlpatterns = patterns(
 api_urls = patterns(
     '',
     url(
-        r'^folders/(?P<pk>[0-9]+)/documents/(?P<document_pk>[0-9]+)/$',
+        r'^folders/(?P<folder_pk>[0-9]+)/documents/(?P<pk>[0-9]+)/$',
         APIFolderDocumentView.as_view(), name='folder-document'
     ),
     url(
