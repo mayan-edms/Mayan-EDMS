@@ -56,7 +56,7 @@ class DocumentTagSerializer(TagSerializer):
     def get_remove(self, instance):
         return reverse(
             'rest_api:document-tag', args=(
-                self.context['document'].pk, instance.pk
+                self.context['document'].pk, instance.pk,
             ), request=self.context['request'], format=self.context['format']
         )
 

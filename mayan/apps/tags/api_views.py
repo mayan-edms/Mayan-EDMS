@@ -4,6 +4,7 @@ from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics, status, views
+from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 
 from acls.models import AccessControlList
@@ -134,6 +135,17 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
 
         return document.tags.all()
 
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'document': self.get_document(),
+            'view': self
+        }
+
     def get_serializer_class(self):
         if self.request.method == 'GET':
             return DocumentTagSerializer
@@ -152,39 +164,62 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
 
 
 class APIDocumentTagView(generics.RetrieveDestroyAPIView):
-    serialize_class = DocumentTagSerializer
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {
+        'GET': (permission_tag_view,),
+        'DELETE': (permission_tag_remove,)
+    }
+    serializer_class = DocumentTagSerializer
 
-    def get_folder(self):
-        return get_object_or_404(Document, pk=self.kwargs['document_pk'])
+    def delete(self, request, *args, **kwargs):
+        """
+        Remove a tag from the selected document.
+        """
+
+        return super(APIDocumentTagView, self).delete(request, *args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        """
+        Returns the details of the selected document tag.
+        """
+
+        return super(APIDocumentTagView, self).get(*args, **kwargs)
+
+    def get_document(self):
+        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_view,)
+            )
+        except PermissionDenied:
+            documents = AccessControlList.objects.check_access(
+                permission_document_view, self.request.user, document
+            )
+        return document
+
+    def get_queryset(self):
+        return self.get_document().tags.all()
 
     def get_serializer_context(self):
         """
         Extra context provided to the serializer class.
         """
         return {
-            'document': self.get_document(),
             'format': self.format_kwarg,
             'request': self.request,
+            'document': self.get_document(),
             'view': self
         }
 
-    '''
-    def delete(self, request, *args, **kwargs):
-        """
-        Remove a tag from a document.
-        """
-
-        document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
-
+    def perform_destroy(self, instance):
         try:
-            Permission.check_permissions(request.user, (permission_tag_remove,))
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_tag_remove, request.user, document
-            )
+            instance.documents.remove(self.get_document())
+        except Exception as exception:
+            raise ValidationError(exception)
 
-        tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
-        tag.documents.remove(document)
-        return Response(status=status.HTTP_204_NO_CONTENT)
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
 
-    '''
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)

@@ -54,9 +54,18 @@ urlpatterns = patterns(
 
 api_urls = patterns(
     '',
-    url(r'^tags/(?P<pk>[0-9]+)/documents/$', APITagDocumentListView.as_view(), name='tag-document-list'),
+    url(
+        r'^tags/(?P<pk>[0-9]+)/documents/$', APITagDocumentListView.as_view(),
+        name='tag-document-list'
+    ),
     url(r'^tags/(?P<pk>[0-9]+)/$', APITagView.as_view(), name='tag-detail'),
     url(r'^tags/$', APITagListView.as_view(), name='tag-list'),
-    url(r'^document/(?P<pk>[0-9]+)/tags/$', APIDocumentTagListView.as_view(), name='document-tag-list'),
-    url(r'^document/(?P<document_pk>[0-9]+)/tags/(?P<pk>[0-9]+)/$', APIDocumentTagView.as_view(), name='document-tag'),
+    url(
+        r'^document/(?P<pk>[0-9]+)/tags/$', APIDocumentTagListView.as_view(),
+        name='document-tag-list'
+    ),
+    url(
+        r'^document/(?P<document_pk>[0-9]+)/tags/(?P<pk>[0-9]+)/$',
+        APIDocumentTagView.as_view(), name='document-tag'
+    ),
 )

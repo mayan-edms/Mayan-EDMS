@@ -99,7 +99,6 @@ class TagAPITestCase(APITestCase):
 
         self.assertEqual(tag.documents.count(), 1)
 
-    """
     def test_tag_remove_document(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
 
@@ -119,8 +118,7 @@ class TagAPITestCase(APITestCase):
         tag.documents.add(document)
 
         self.client.delete(
-            reverse('rest_api:tag-document', args=(tag.pk, document.pk)),
+            reverse('rest_api:document-tag', args=(document.pk, tag.pk)),
         )
 
         self.assertEqual(tag.documents.count(), 0)
-    """
