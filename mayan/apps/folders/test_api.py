@@ -18,7 +18,6 @@ from documents.test_models import (
 
 from .models import Folder
 
-
 TEST_FOLDER_LABEL = 'test folder'
 
 
