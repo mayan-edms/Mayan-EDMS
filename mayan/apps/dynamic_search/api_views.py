@@ -6,6 +6,7 @@ from rest_framework.exceptions import ParseError
 from rest_api.filters import MayanObjectPermissionsFilter
 
 from .classes import SearchModel
+from .filters import RecentSearchUserFilter
 from .models import RecentSearch
 from .serializers import RecentSearchSerializer, SearchSerializer
 
@@ -15,10 +16,9 @@ class APIRecentSearchListView(generics.ListAPIView):
     Returns a list of all the recent searches.
     """
 
-    serializer_class = RecentSearchSerializer
+    filter_backends = (RecentSearchUserFilter,)
     queryset = RecentSearch.objects.all()
-
-    # TODO: Add filter_backend so that users can only see their own entries
+    serializer_class = RecentSearchSerializer
 
 
 class APIRecentSearchView(generics.RetrieveDestroyAPIView):
@@ -26,10 +26,9 @@ class APIRecentSearchView(generics.RetrieveDestroyAPIView):
     Returns the selected recent search details.
     """
 
-    serializer_class = RecentSearchSerializer
+    filter_backends = (RecentSearchUserFilter,)
     queryset = RecentSearch.objects.all()
-
-    # TODO: Add filter_backend so that users can only see their own entries
+    serializer_class = RecentSearchSerializer
 
 
 class APISearchView(generics.ListAPIView):
@@ -40,17 +39,22 @@ class APISearchView(generics.ListAPIView):
 
     filter_backends = (MayanObjectPermissionsFilter,)
 
-    # Placeholder serializer to avoid errors with Django REST swagger
-    serializer_class = SearchSerializer
-
     def get_queryset(self):
-        document_search = SearchModel.get('documents.Document')
-        self.serializer_class = document_search.serializer
-        self.mayan_object_permissions = {'GET': [document_search.permission]}
+        search_class = self.get_search_class()
+        if search_class.permission:
+            self.mayan_object_permissions = {'GET': (search_class.permission,)}
 
         try:
-            queryset, ids, timedelta = document_search.search(self.request.GET, self.request.user)
+            queryset, ids, timedelta = search_class.search(
+                query_string=self.request.GET, user=self.request.user
+            )
         except Exception as exception:
             raise ParseError(unicode(exception))
 
         return queryset
+
+    def get_search_class(self):
+        return SearchModel.get('documents.Document')
+
+    def get_serializer_class(self):
+        return self.get_search_class().serializer

@@ -17,14 +17,10 @@ from .managers import RecentSearchManager
 @python_2_unicode_compatible
 class RecentSearch(models.Model):
     """
-    Keeps a list of the n most recent search keywords for a given user
+    Keeps a list of the [n] most recent search keywords for a given user
     """
-    user = models.ForeignKey(User, verbose_name=_('User'), editable=True)
-    # Setting editable to True to workaround Django REST framework issue
-    # 1604 - https://github.com/tomchristie/django-rest-framework/issues/1604
-    # Should be fixed by DRF v2.4.4
-    # TODO: Fix after upgrade to DRF v2.4.4
 
+    user = models.ForeignKey(User, editable=False, verbose_name=_('User'))
     query = models.TextField(editable=False, verbose_name=_('Query'))
     datetime_created = models.DateTimeField(
         auto_now=True, db_index=True, verbose_name=_('Datetime created')
