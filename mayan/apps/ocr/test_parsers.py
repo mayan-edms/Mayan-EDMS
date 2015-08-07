@@ -5,10 +5,7 @@ from django.core.files.base import File
 from django.test import TestCase
 
 from documents.models import DocumentType
-from documents.settings import setting_language_choices
-from documents.test_models import (
-    TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
-)
+from documents.test_models import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
 from .parsers import PDFMinerParser, PopplerParser
 

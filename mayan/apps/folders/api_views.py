@@ -3,13 +3,12 @@ from __future__ import absolute_import, unicode_literals
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics, status, views
+from rest_framework import generics
 from rest_framework.response import Response
 
 from acls.models import AccessControlList
-from documents.models import Document, DocumentType
+from documents.models import Document
 from documents.permissions import permission_document_view
-from documents.serializers import DocumentSerializer
 from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
@@ -221,8 +220,8 @@ class APIFolderDocumentView(generics.RetrieveDestroyAPIView):
                 self.request.user, (permission_document_view,)
             )
         except PermissionDenied:
-            documents = AccessControlList.objects.check_access(
-                permission_document_view, self.request.user, documents
+            AccessControlList.objects.check_access(
+                permission_document_view, self.request.user, instance
             )
 
         serializer = self.get_serializer(instance)

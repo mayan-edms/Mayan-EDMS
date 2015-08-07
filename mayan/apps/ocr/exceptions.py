@@ -20,4 +20,3 @@ class NoMIMETypeMatch(ParserError):
     There is no parser registered for the specified MIME type
     """
     pass
-

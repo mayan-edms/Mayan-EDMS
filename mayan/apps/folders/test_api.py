@@ -1,19 +1,15 @@
 from __future__ import unicode_literals
 
-from json import loads
-
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.core.urlresolvers import reverse
 
-from rest_framework import status
 from rest_framework.test import APITestCase
 
 from documents.models import DocumentType
 from documents.test_models import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
-    TEST_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
-    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH,
+    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH,
 )
 
 from .models import Folder

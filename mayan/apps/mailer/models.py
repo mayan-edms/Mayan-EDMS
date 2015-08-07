@@ -3,11 +3,7 @@ from __future__ import unicode_literals
 import logging
 
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
-
-from djcelery.models import PeriodicTask, IntervalSchedule
-from documents.models import Document
 
 logger = logging.getLogger(__name__)
 

@@ -18,7 +18,6 @@ try:
     BUILD = sh.Command('git').bake('describe', '--tags', '--always', 'HEAD')
     DATE = sh.Command('git').bake('--no-pager', 'log', '-1', '--format=%cd')
 except sh.CommandNotFound:
-    logger.debug('git not found')
     BUILD = None
     DATE = None
 

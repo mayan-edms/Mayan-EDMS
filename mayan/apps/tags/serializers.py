@@ -40,7 +40,7 @@ class NewDocumentTagSerializer(serializers.Serializer):
                 Permission.check_permissions(self.context['request'].user, (permission_tag_attach,))
             except PermissionDenied:
                 AccessControlList.objects.check_access(
-                    permission_tag_attach, self.context['request'], document
+                    permission_tag_attach, self.context['request'], tag
                 )
 
             tag.documents.add(validated_data['document'])

@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
-from rest_framework import generics, status, views
+from rest_framework import generics
 from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 
@@ -17,8 +17,8 @@ from rest_api.permissions import MayanPermission
 
 from .models import Tag
 from .permissions import (
-    permission_tag_attach, permission_tag_create, permission_tag_delete,
-    permission_tag_edit, permission_tag_remove, permission_tag_view
+    permission_tag_create, permission_tag_delete, permission_tag_edit,
+    permission_tag_remove, permission_tag_view
 )
 from .serializers import (
     DocumentTagSerializer, NewDocumentTagSerializer, TagSerializer
@@ -110,7 +110,7 @@ class APITagDocumentListView(generics.ListAPIView):
 
         return tag.documents.all()
 
-###
+
 class APIDocumentTagListView(generics.ListCreateAPIView):
     """
     Returns a list of all the tags attached to a document.
@@ -193,7 +193,7 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
                 self.request.user, (permission_document_view,)
             )
         except PermissionDenied:
-            documents = AccessControlList.objects.check_access(
+            AccessControlList.objects.check_access(
                 permission_document_view, self.request.user, document
             )
         return document

@@ -41,4 +41,3 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         if 'password' in attrs:
             user.set_password(attrs['password'])
         return user
-

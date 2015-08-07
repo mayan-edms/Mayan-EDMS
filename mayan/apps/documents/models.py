@@ -21,7 +21,7 @@ from converter import (
     TransformationZoom
 )
 from converter.exceptions import (
-    InvalidOfficeFormat, PageCountError, UnknownFileFormat
+    InvalidOfficeFormat, PageCountError
 )
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from converter.models import Transformation

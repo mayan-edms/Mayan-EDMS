@@ -40,10 +40,10 @@ class Parser(object):
     @classmethod
     def process_document_version(cls, document_version):
         try:
-            for parser_class in cls._registry[mimetype]:
+            for parser_class in cls._registry[document_version.mimetype]:
                 try:
                     parser = parser_class()
-                    parser.process_document_version(document_page)
+                    parser.process_document_version(document_version)
                 except ParserError:
                     # If parser raises error, try next parser in the list
                     pass
@@ -158,7 +158,7 @@ class PDFMinerParser(Parser):
             rsrcmgr = PDFResourceManager()
             device = TextConverter(rsrcmgr, outfp=string_buffer, laparams=LAParams())
             interpreter = PDFPageInterpreter(rsrcmgr, device)
-            page = PDFPage.get_pages(file_object, maxpages=1, pagenos=(page_number-1,))
+            page = PDFPage.get_pages(file_object, maxpages=1, pagenos=(page_number - 1,))
             interpreter.process_page(page.next())
             device.close()
 
