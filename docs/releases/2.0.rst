@@ -52,6 +52,7 @@ What's new in Mayan EDMS v2.0
 
   * PyYAML
   * django-autoadmin
+  * djangorestframework-recursive
 
 * Permissions refactor
 * ACLs refactor
@@ -75,6 +76,7 @@ What's new in Mayan EDMS v2.0
 * Removal of eval from metadata type defaults and lookup fields. Django's own template language is now used instead.
 * Support to share an index as a FUSE filesystem.
 * Preview images' titles are clickable.
+* Improved API
 
 Upgrading from a previous version
 =================================

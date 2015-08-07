@@ -8,6 +8,7 @@ from rest_framework import generics
 from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
+from documents.serializers import DocumentSerializer
 from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
@@ -23,48 +24,64 @@ from .serializers import (
 
 
 class APIIndexListView(generics.ListCreateAPIView):
-    serializer_class = IndexSerializer
-    queryset = Index.objects.all()
-
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [permission_document_indexing_view]}
-    mayan_view_permissions = {'POST': [permission_document_indexing_create]}
+    mayan_object_permissions = {'GET': (permission_document_indexing_view,)}
+    mayan_view_permissions = {'POST': (permission_document_indexing_create,)}
+    queryset = Index.objects.all()
+    serializer_class = IndexSerializer
 
     def get(self, *args, **kwargs):
-        """Returns a list of all the defined indexes."""
+        """
+        Returns a list of all the defined indexes.
+        """
+
         return super(APIIndexListView, self).get(*args, **kwargs)
 
     def post(self, *args, **kwargs):
-        """Create a new index."""
+        """
+        Create a new index.
+        """
+
         return super(APIIndexListView, self).post(*args, **kwargs)
 
 
 class APIIndexView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = IndexSerializer
-    queryset = Index.objects.all()
-
-    permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [permission_document_indexing_view],
-        'PUT': [permission_document_indexing_edit],
-        'PATCH': [permission_document_indexing_edit],
-        'DELETE': [permission_document_indexing_delete]
+        'GET': (permission_document_indexing_view,),
+        'PUT': (permission_document_indexing_edit,),
+        'PATCH': (permission_document_indexing_edit,),
+        'DELETE': (permission_document_indexing_delete,)
     }
+    permission_classes = (MayanPermission,)
+    queryset = Index.objects.all()
+    serializer_class = IndexSerializer
 
     def delete(self, *args, **kwargs):
-        """Delete the selected index."""
+        """
+        Delete the selected index.
+        """
+
         return super(APIIndexView, self).delete(*args, **kwargs)
 
     def get(self, *args, **kwargs):
-        """Returns the details of the selected index."""
+        """
+        Returns the details of the selected index.
+        """
+
         return super(APIIndexView, self).get(*args, **kwargs)
 
     def patch(self, *args, **kwargs):
-        """Partially edit an index."""
+        """
+        Partially edit an index.
+        """
+
         return super(APIIndexView, self).patch(*args, **kwargs)
 
     def put(self, *args, **kwargs):
-        """Edit an index."""
+        """
+        Edit an index.
+        """
+
         return super(APIIndexView, self).put(*args, **kwargs)
 
 
@@ -75,11 +92,8 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
     """
 
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [permission_document_view]}
-
-    def get_serializer_class(self):
-        from documents.serializers import DocumentSerializer
-        return DocumentSerializer
+    mayan_object_permissions = {'GET': (permission_document_view,)}
+    serializer_class = DocumentSerializer
 
     def get_queryset(self):
         index_node_instance = get_object_or_404(
@@ -99,13 +113,15 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
 
 
 class APIIndexTemplateListView(generics.ListAPIView):
+    filter_backends = (MayanObjectPermissionsFilter,)
+    mayan_object_permissions = {'GET': (permission_document_indexing_view,)}
     serializer_class = IndexTemplateNodeSerializer
 
-    filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [permission_document_indexing_view]}
-
     def get(self, *args, **kwargs):
-        """Returns a list of all the template nodes for the selected index."""
+        """
+        Returns a list of all the template nodes for the selected index.
+        """
+
         return super(APIIndexTemplateListView, self).get(*args, **kwargs)
 
 
@@ -115,26 +131,38 @@ class APIIndexTemplateView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [permission_document_indexing_view],
-        'PUT': [permission_document_indexing_edit],
-        'PATCH': [permission_document_indexing_edit],
-        'DELETE': [permission_document_indexing_edit]
+        'GET': (permission_document_indexing_view,),
+        'PUT': (permission_document_indexing_edit,),
+        'PATCH': (permission_document_indexing_edit,),
+        'DELETE': (permission_document_indexing_edit,)
     }
 
     def delete(self, *args, **kwargs):
-        """Delete the selected index template node."""
+        """
+        Delete the selected index template node.
+        """
+
         return super(APIIndexTemplateView, self).delete(*args, **kwargs)
 
     def get(self, *args, **kwargs):
-        """Returns the details of the selected index template node."""
+        """
+        Returns the details of the selected index template node.
+        """
+
         return super(APIIndexTemplateView, self).get(*args, **kwargs)
 
     def patch(self, *args, **kwargs):
-        """Partially edit an index template node."""
+        """
+        Partially edit an index template node.
+        """
+
         return super(APIIndexTemplateView, self).patch(*args, **kwargs)
 
     def put(self, *args, **kwargs):
-        """Edit an index template node."""
+        """
+        Edit an index template node.
+        """
+
         return super(APIIndexTemplateView, self).put(*args, **kwargs)
 
 
@@ -143,10 +171,9 @@ class APIDocumentIndexListView(generics.ListAPIView):
     Returns a list of all the indexes to which a document belongs.
     """
 
-    serializer_class = IndexInstanceNodeSerializer
-
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [permission_document_indexing_view]}
+    mayan_object_permissions = {'GET': (permission_document_indexing_view,)}
+    serializer_class = IndexInstanceNodeSerializer
 
     def get_queryset(self):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
