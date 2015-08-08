@@ -48,6 +48,10 @@ TEST_COMPRESSED_DOCUMENT_PATH = os.path.join(
 )
 TEST_DOCUMENT_DESCRIPTION = 'test description'
 TEST_DOCUMENT_TYPE = 'test_document_type'
+TEST_HYBRID_DOCUMENT = 'hybrid_text_and_image.pdf'
+TEST_HYBRID_DOCUMENT_PATH = os.path.join(
+    'contrib', 'sample_documents', TEST_HYBRID_DOCUMENT
+)
 
 
 class DocumentTestCase(TestCase):

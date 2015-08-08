@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 from __future__ import unicode_literals
 
 from django.core.files.base import File
@@ -19,7 +20,7 @@ class DocumentOCRTestCase(TestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object), label='small document'
+                file_object=File(file_object),
             )
 
     def tearDown(self):
@@ -27,8 +28,10 @@ class DocumentOCRTestCase(TestCase):
         self.document_type.delete()
 
     def test_ocr_language_backends_end(self):
+        content = self.document.pages.first().ocr_content.content
+
         self.assertTrue(
-            'Mayan EDMS Documentation' in self.document.pages.first().ocr_content.content
+            'Mayan EDMS Documentation' in content
         )
 
 
@@ -56,9 +59,11 @@ class GermanOCRSupportTestCase(TestCase):
         self.document_type.delete()
 
     def test_ocr_language_backends_end(self):
+        content = self.document.pages.first().ocr_content.content
+
         self.assertTrue(
-            'Repository für elektronische Dokumente.' in self.document.pages.first().ocr_content.content
+            'Repository für elektronische Dokumente.' in content
         )
         self.assertTrue(
-            'Es bietet einen elektronischen Tresor oder' in self.document.pages.first().ocr_content.content
+            'Es bietet einen elektronischen Tresor oder' in content
         )

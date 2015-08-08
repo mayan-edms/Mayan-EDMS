@@ -38,7 +38,7 @@ class Parser(object):
                 ).append(parser_class)
 
     @classmethod
-    def process_document_version(cls, document_version):
+    def parse_document_version(cls, document_version):
         try:
             for parser_class in cls._registry[document_version.mimetype]:
                 try:
@@ -52,6 +52,24 @@ class Parser(object):
                     # others in the list for this mimetype
                     return
 
+            raise NoMIMETypeMatch('Parser MIME type list exhausted')
+        except KeyError:
+            raise NoMIMETypeMatch
+
+    @classmethod
+    def parse_document_page(cls, document_page):
+        try:
+            for parser_class in cls._registry[document_page.document_version.mimetype]:
+                try:
+                    parser = parser_class()
+                    parser.process_document_page(document_page)
+                except ParserError:
+                    # If parser raises error, try next parser in the list
+                    pass
+                else:
+                    # If parser was successfull there is no need to try
+                    # others in the list for this mimetype
+                    return
             raise NoMIMETypeMatch('Parser MIME type list exhausted')
         except KeyError:
             raise NoMIMETypeMatch
@@ -139,9 +157,13 @@ class PopplerParser(Parser):
             raise ParserError
 
         output = proc.stdout.read()
+
         if output == b'\x0c':
             logger.debug('Parser didn\'t return any output')
             return ''
+
+        if output[-3:] == b'\x0a\x0a\x0c':
+            return output[:-3]
 
         return output
 

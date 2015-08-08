@@ -11,7 +11,7 @@ from documents.models import DocumentVersion
 from lock_manager import Lock, LockError
 from mayan.celery import app
 
-from .runtime import ocr_backend_class
+from .classes import TextExtractor
 from .literals import DO_OCR_RETRY_DELAY, LOCK_EXPIRE
 from .models import DocumentVersionOCRError
 from .signals import post_document_version_ocr
@@ -35,8 +35,7 @@ def task_do_ocr(self, document_version_pk):
                 'Starting document OCR for document version: %s',
                 document_version
             )
-            backend = ocr_backend_class()
-            backend.process_document_version(document_version)
+            TextExtractor.process_document_version(document_version)
         except OperationalError as exception:
             logger.warning(
                 'OCR error for document version: %s; %s. Retrying.',
