@@ -3,6 +3,10 @@
 |Logo|
 
 .. image:: https://badges.gitter.im/Join%20Chat.svg
+
+Notice: This project is being migrated to GitLab: https://gitlab.com/mayan-edms/mayan-edms. This repository will be removed once all tickets are closed.
+
+
    :alt: Join the chat at https://gitter.im/mayan-edms/mayan-edms
    :target: https://gitter.im/mayan-edms/mayan-edms?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
