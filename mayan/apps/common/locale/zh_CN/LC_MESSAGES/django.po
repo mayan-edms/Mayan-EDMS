@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-06 16:06-0400\n"
+"POT-Creation-Date: 2015-08-11 02:09-0400\n"
 "PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
@@ -20,119 +20,180 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:95
+#: apps.py:55 settings.py:7
 msgid "Common"
 msgstr ""
 
-#: classes.py:40
+#: classes.py:42
 msgid "Available attributes: "
 msgstr ""
 
-#: forms.py:98
+#: forms.py:67
 msgid "Selection"
 msgstr "选择"
 
-#: links.py:12
+#: generics.py:123
+#, python-format
+msgid "Unable to transfer selection: %s."
+msgstr ""
+
+#: generics.py:147
+msgid "Add"
+msgstr "新增"
+
+#: generics.py:158
+msgid "Remove"
+msgstr "移除"
+
+#: generics.py:270
+#, python-format
+msgid "Empty list and '%(class_name)s.allow_empty' is False."
+msgstr ""
+
+#: generics.py:302
+#, python-format
+msgid "No %(verbose_name)s found matching the query"
+msgstr ""
+
+#: generics.py:342
+#, python-format
+msgid "Error creating new %s."
+msgstr "创建新 %s的时候出错。"
+
+#: generics.py:345
+msgid "Error creating object."
+msgstr "创建对象的时候出错"
+
+#: generics.py:354
+#, python-format
+msgid "%s created successfully."
+msgstr "创建%s成功"
+
+#: generics.py:358
+msgid "New object created successfully."
+msgstr "新对象创建成功"
+
+#: generics.py:378
+#, python-format
+msgid "Error deleting %s."
+msgstr "删除%s时候出错。"
+
+#: generics.py:382
+msgid "Error deleting object."
+msgstr "删除对象时候出错。"
+
+#: generics.py:389
+#, python-format
+msgid "%s deleted successfully."
+msgstr "删除%s成功。"
+
+#: generics.py:393
+msgid "Object deleted successfully."
+msgstr "对象删除成功"
+
+#: generics.py:409
+#, python-format
+msgid "Error saving %s details."
+msgstr "保存 %s 详细信息出错。"
+
+#: generics.py:413
+msgid "Error saving details."
+msgstr "保存详细信息出错"
+
+#: generics.py:423
+#, python-format
+msgid "%s details saved successfully."
+msgstr "%s的详单成功保存"
+
+#: generics.py:427
+msgid "Details saved successfully."
+msgstr "详单保存成功"
+
+#: links.py:9
 msgid "About"
 msgstr ""
 
-#: links.py:13
-msgid "Admin site"
-msgstr ""
-
-#: links.py:14
+#: links.py:12
 msgid "User details"
 msgstr ""
 
-#: links.py:15
+#: links.py:16
 msgid "Edit details"
 msgstr ""
 
-#: links.py:16
+#: links.py:19
 msgid "Locale profile"
 msgstr ""
 
-#: links.py:17
+#: links.py:23
 msgid "Edit locale profile"
 msgstr ""
 
-#: links.py:18 views.py:270
+#: links.py:27 views.py:141
 msgid "License"
 msgstr "许可证"
 
-#: links.py:19
-msgid "Maintenance"
-msgstr ""
-
-#: links.py:20
+#: links.py:30
 msgid "Setup"
 msgstr ""
 
-#: links.py:21 views.py:435
+#: links.py:33 views.py:169
 msgid "Tools"
 msgstr ""
 
-#: models.py:29 models.py:32
-msgid "Anonymous user"
-msgstr "匿名用户"
-
-#: models.py:36
-msgid "Account"
+#: literals.py:6
+msgid "Days"
 msgstr ""
 
-#: models.py:37
-msgid "Password"
-msgstr "密码"
-
-#: models.py:38
-msgid "Password hash"
+#: literals.py:7
+msgid "Hours"
 msgstr ""
 
-#: models.py:41
-msgid "Auto admin properties"
+#: literals.py:8
+msgid "Minutes"
 msgstr ""
 
-#: models.py:46
+#: models.py:23
 msgid "File"
 msgstr ""
 
-#: models.py:47
+#: models.py:25
 msgid "Filename"
 msgstr ""
 
-#: models.py:48
+#: models.py:27
 msgid "Date time"
 msgstr ""
 
-#: models.py:51
+#: models.py:31
 msgid "Shared uploaded file"
 msgstr ""
 
-#: models.py:52
+#: models.py:32
 msgid "Shared uploaded files"
 msgstr ""
 
-#: models.py:64
+#: models.py:53
 msgid "User"
 msgstr ""
 
-#: models.py:66
+#: models.py:57
 msgid "Timezone"
 msgstr ""
 
-#: models.py:67
+#: models.py:60
 msgid "Language"
 msgstr ""
 
-#: models.py:73
+#: models.py:67
 msgid "User locale profile"
 msgstr ""
 
-#: models.py:74
+#: models.py:68
 msgid "User locale profiles"
 msgstr ""
 
-#: settings.py:14
+#: settings.py:10
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
@@ -141,137 +202,57 @@ msgstr ""
 "站点范围的临时目录用于存储缩略图，预览和临时文件。如果没有设置，将缺省使用"
 "tempfile.mkdtemp()"
 
-#: settings.py:48
+#: settings.py:16
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
-#: utils.py:114
-msgid "Function found"
-msgstr ""
-
-#: views.py:54
-msgid "No action selected."
-msgstr "请选择一个操作"
-
-#: views.py:58
-msgid "Must select at least one item."
-msgstr "至少需要选择一项"
-
-#: views.py:110
-#, python-format
-msgid "Unable to remove %(selection)s."
-msgstr ""
-
-#: views.py:135
-#, python-format
-msgid "Unable to add %(selection)s."
-msgstr ""
-
-#: views.py:148
-msgid "Add"
-msgstr "新增"
-
-#: views.py:158
-msgid "Remove"
-msgstr "移除"
-
-#: views.py:181
+#: views.py:38
 msgid "Current user details"
 msgstr ""
 
-#: views.py:196
-msgid "Current user locale profile details"
-msgstr ""
-
-#: views.py:213
-msgid "E-mail conflict, another user has that same email."
-msgstr "电子邮箱冲突，另外用户已经使用此邮箱"
-
-#: views.py:216
-msgid "Current user's details updated."
-msgstr "当前用户信息已经更新"
-
-#: views.py:225
+#: views.py:44
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:248
-msgid "Current user's locale profile details updated."
+#: views.py:64
+msgid "Current user locale profile details"
 msgstr ""
 
-#: views.py:257
+#: views.py:71
 msgid "Edit current user locale profile details"
 msgstr ""
 
-#: views.py:282
-#, python-format
-msgid "Error saving %s details."
-msgstr "保存 %s 详细信息出错。"
-
-#: views.py:284
-msgid "Error saving details."
-msgstr "保存详细信息出错"
-
-#: views.py:292
-#, python-format
-msgid "%s details saved successfully."
-msgstr "%s的详单成功保存"
-
-#: views.py:294
-msgid "Details saved successfully."
-msgstr "详单保存成功"
-
-#: views.py:306
-#, python-format
-msgid "Error creating new %s."
-msgstr "创建新 %s的时候出错。"
-
-#: views.py:308
-msgid "Error creating object."
-msgstr "创建对象的时候出错"
-
-#: views.py:315
-#, python-format
-msgid "%s created successfully."
-msgstr "创建%s成功"
-
-#: views.py:317
-msgid "New object created successfully."
-msgstr "新对象创建成功"
-
-#: views.py:335
-#, python-format
-msgid "Error deleting %s."
-msgstr "删除%s时候出错。"
-
-#: views.py:337
-msgid "Error deleting object."
-msgstr "删除对象时候出错。"
-
-#: views.py:342
-#, python-format
-msgid "%s deleted successfully."
-msgstr "删除%s成功。"
-
-#: views.py:344
-msgid "Object deleted successfully."
-msgstr "对象删除成功"
-
-#: views.py:425
-msgid "Setup items"
-msgstr ""
-
-#: views.py:459
+#: views.py:131
 msgid "Results"
 msgstr ""
 
-#: views.py:479
-msgid "Maintenance menu"
+#: views.py:155
+msgid "Setup items"
 msgstr ""
 
-#: widgets.py:60
+#: views.py:194
+msgid "No action selected."
+msgstr "请选择一个操作"
+
+#: views.py:202
+msgid "Must select at least one item."
+msgstr "至少需要选择一项"
+
+#: widgets.py:51
 msgid "None"
 msgstr "无"
+
+#~ msgid "Anonymous user"
+#~ msgstr "匿名用户"
+
+#~ msgid "Password"
+#~ msgstr "密码"
+
+#~ msgid "E-mail conflict, another user has that same email."
+#~ msgstr "电子邮箱冲突，另外用户已经使用此邮箱"
+
+#~ msgid "Current user's details updated."
+#~ msgstr "当前用户信息已经更新"
 
 #~ msgid "Email"
 #~ msgstr "电子邮件"

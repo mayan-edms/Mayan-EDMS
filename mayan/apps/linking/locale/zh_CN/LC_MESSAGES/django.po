@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -9,56 +9,57 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"POT-Creation-Date: 2015-08-11 02:11-0400\n"
 "PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: forms.py:25 models.py:66
+#: apps.py:31
+msgid "Linking"
+msgstr ""
+
+#: forms.py:35 models.py:109
 msgid "Foreign document attribute"
 msgstr ""
 
-#: links.py:13 links.py:14 links.py:20 models.py:60 permissions.py:7
-#: views.py:113
-msgid "Smart links"
-msgstr "智能链接"
-
-#: links.py:15 views.py:140
-msgid "Create new smart link"
-msgstr "新建智能链接"
-
-#: links.py:16 links.py:25
-msgid "Edit"
-msgstr ""
-
-#: links.py:17 links.py:26
-msgid "Delete"
-msgstr ""
-
-#: links.py:18 models.py:19
-msgid "Document types"
-msgstr ""
-
-#: links.py:21 views.py:83
-msgid "Documents"
-msgstr ""
-
-#: links.py:23
-msgid "Conditions"
-msgstr ""
-
-#: links.py:24
+#: links.py:14
 msgid "Create condition"
 msgstr ""
 
-#: links.py:28
-msgid "ACLs"
-msgstr "访问控制列表"
+#: links.py:19 links.py:36
+msgid "Delete"
+msgstr ""
+
+#: links.py:23 links.py:43
+msgid "Edit"
+msgstr ""
+
+#: links.py:27
+msgid "Conditions"
+msgstr ""
+
+#: links.py:32 views.py:224
+msgid "Create new smart link"
+msgstr "新建智能链接"
+
+#: links.py:39 models.py:29
+msgid "Document types"
+msgstr ""
+
+#: links.py:47
+msgid "Documents"
+msgstr ""
+
+#: links.py:53 links.py:57 links.py:62 models.py:89 permissions.py:7
+#: views.py:159
+msgid "Smart links"
+msgstr "智能链接"
 
 #: literals.py:9
 msgid "and"
@@ -128,191 +129,201 @@ msgstr "正则表达式"
 msgid "is in regular expression (case insensitive)"
 msgstr "正则表达式(大小写不敏感)"
 
-#: models.py:16
-msgid "Title"
+#: models.py:18 views.py:190
+msgid "Label"
 msgstr ""
 
-#: models.py:17 views.py:116
-msgid "Dynamic title"
-msgstr ""
-
-#: models.py:17
+#: models.py:21 models.py:114
 msgid ""
-"This expression will be evaluated against the current selected document."
+"Enter a template to render. Use Django's default templating language "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
+"{{ document }} context variable is available."
 msgstr ""
 
-#: models.py:18 models.py:70 views.py:117 views.py:233
+#: models.py:25 views.py:151
+msgid "Dynamic label"
+msgstr ""
+
+#: models.py:27 models.py:124 views.py:153 views.py:325
 msgid "Enabled"
 msgstr ""
 
-#: models.py:31
+#: models.py:43
 #, python-format
-msgid "Error generating dynamic title; %s"
+msgid "Error generating dynamic label; %s"
 msgstr ""
 
-#: models.py:37
+#: models.py:52
 msgid "This smart link is not allowed for the selected document's type."
 msgstr ""
 
-#: models.py:59 models.py:64 views.py:295 views.py:329
+#: models.py:88 models.py:100
 msgid "Smart link"
 msgstr ""
 
-#: models.py:65
+#: models.py:104
 msgid "The inclusion is ignored for the first item."
 msgstr "第一项的包含将被忽略。"
 
-#: models.py:66
+#: models.py:108
 msgid "This represents the metadata of all other documents."
 msgstr ""
 
-#: models.py:68
+#: models.py:118
 msgid "Expression"
 msgstr ""
 
-#: models.py:68
-msgid "This expression will be evaluated against the current document."
-msgstr ""
-
-#: models.py:69
-msgid "Negated"
-msgstr ""
-
-#: models.py:69
+#: models.py:121
 msgid "Inverts the logic of the operator."
 msgstr "颠倒操作符的逻辑"
 
-#: models.py:73
+#: models.py:122
+msgid "Negated"
+msgstr ""
+
+#: models.py:129
 msgid "not"
 msgstr "否"
 
-#: models.py:76
+#: models.py:134
 msgid "Link condition"
 msgstr ""
 
-#: models.py:77
+#: models.py:135
 msgid "Link conditions"
 msgstr ""
 
-#: permissions.py:9
+#: permissions.py:10
 msgid "View existing smart links"
 msgstr "查看智能链接"
 
-#: permissions.py:10
+#: permissions.py:13
 msgid "Create new smart links"
 msgstr "新建智能链接"
 
-#: permissions.py:11
+#: permissions.py:16
 msgid "Delete smart links"
 msgstr "删除智能链接"
 
-#: permissions.py:12
+#: permissions.py:19
 msgid "Edit smart links"
 msgstr "编辑智能链接"
 
-#: views.py:48
-#, python-format
-msgid "Smart link query error: %s"
-msgstr "智能链接查询错误：%s"
-
-#: views.py:52
-#, python-format
-msgid "Documents in smart link: %s"
+#: views.py:35
+msgid "Available document types"
 msgstr ""
 
-#: views.py:68
-#, python-format
-msgid "Error calculating smart link for: %(document)s; %(exception)s."
+#: views.py:36
+msgid "Document types enabled"
 msgstr ""
 
-#: views.py:82
-msgid "Indentifier"
-msgstr ""
-
-#: views.py:97
-#, python-format
-msgid "Smart links for document: %s"
-msgstr ""
-
-#: views.py:133
-#, python-format
-msgid "Smart link: %s created successfully."
-msgstr "智能链接: %s创建成功"
-
-#: views.py:156
-#, python-format
-msgid "Smart link: %s edited successfully."
-msgstr "智能链接: %s编辑成功"
-
-#: views.py:164
-#, python-format
-msgid "Edit smart link: %s"
-msgstr "编辑智能链接: %s"
-
-#: views.py:182
-#, python-format
-msgid "Smart link: %s deleted successfully."
-msgstr "智能链接: %s删除成功"
-
-#: views.py:184
-#, python-format
-msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgstr "删除智能链接%(smart_link)s出错： %(exception)s."
-
-#: views.py:193
-#, python-format
-msgid "Are you sure you wish to delete smart link: %s?"
-msgstr "确定要删除智能链接: %s么?"
-
-#: views.py:215
+#: views.py:67
 #, python-format
 msgid "Document type for which to enable smart link: %s"
 msgstr ""
 
-#: views.py:230
+#: views.py:113
+#, python-format
+msgid "Smart link query error: %s"
+msgstr "智能链接查询错误：%s"
+
+#: views.py:121
+#, python-format
+msgid "Documents in smart link: %s"
+msgstr ""
+
+#: views.py:124
+#, fuzzy, python-format
+#| msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
+msgid ""
+"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "删除智能链接%(smart_link)s出错： %(exception)s."
+
+#: views.py:200
+#, python-format
+msgid "Smart links for document: %s"
+msgstr ""
+
+#: views.py:215
+#, python-format
+msgid "Smart link: %s created successfully."
+msgstr "智能链接: %s创建成功"
+
+#: views.py:246
+#, python-format
+msgid "Smart link: %s edited successfully."
+msgstr "智能链接: %s编辑成功"
+
+#: views.py:256
+#, python-format
+msgid "Edit smart link: %s"
+msgstr "编辑智能链接: %s"
+
+#: views.py:284
+#, python-format
+msgid "Smart link: %s deleted successfully."
+msgstr "智能链接: %s删除成功"
+
+#: views.py:290
+#, python-format
+msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
+msgstr "删除智能链接%(smart_link)s出错： %(exception)s."
+
+#: views.py:302
+#, fuzzy, python-format
+#| msgid "Delete smart links"
+msgid "Delete smart link: %s?"
+msgstr "删除智能链接"
+
+#: views.py:321
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr ""
 
-#: views.py:255
+#: views.py:356
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "智能链接条件: \"%s\"创建成功。"
 
-#: views.py:262
+#: views.py:369
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "新建条件到智能链接：\"%s\""
 
-#: views.py:282
+#: views.py:400
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "智能链接条件: \"%s\"编辑成功。"
 
-#: views.py:289
+#: views.py:414
 msgid "Edit smart link condition"
 msgstr "编辑智能链接条件"
 
-#: views.py:296 views.py:330
-msgid "Condition"
-msgstr ""
-
-#: views.py:316
+#: views.py:439
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "智能链接条件: \"%s\"删除成功。"
 
-#: views.py:318
+#: views.py:445
 #, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; "
-"%(exception)s."
+"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr "删除智能链接条件：%(smart_link_condition)s出错： %(exception)s."
 
-#: views.py:332
-#, python-format
-msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-msgstr "确定要删除智能链接条件: \"%s\"么?"
+#: views.py:461
+#, fuzzy, python-format
+#| msgid "Edit smart link condition"
+msgid "Delete smart link condition: \"%s\"?"
+msgstr "编辑智能链接条件"
+
+#~ msgid "ACLs"
+#~ msgstr "访问控制列表"
+
+#~ msgid "Are you sure you wish to delete smart link: %s?"
+#~ msgstr "确定要删除智能链接: %s么?"
+
+#~ msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
+#~ msgstr "确定要删除智能链接条件: \"%s\"么?"
 
 #~ msgid "Pages"
 #~ msgstr "Pages"
@@ -370,14 +381,14 @@ msgstr "确定要删除智能链接条件: \"%s\"么?"
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query the "
-#~ "database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate in "
-#~ "some manner to the document being displayed and allow users the ability to "
-#~ "jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query "
+#~ "the database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate "
+#~ "in some manner to the document being displayed and allow users the "
+#~ "ability to jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query the "
-#~ "database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate in "
-#~ "some manner to the document being displayed and allow users the ability to "
-#~ "jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query "
+#~ "the database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate "
+#~ "in some manner to the document being displayed and allow users the "
+#~ "ability to jump to and from linked documents very easily."

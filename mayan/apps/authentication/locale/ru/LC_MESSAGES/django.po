@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-04-06 16:05-0400\n"
+"POT-Creation-Date: 2015-08-11 02:09-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,50 +19,46 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:25
+#: apps.py:16 settings.py:7
 msgid "Authentication"
 msgstr ""
 
-#: forms.py:21
+#: forms.py:17
 msgid "Email"
 msgstr ""
 
-#: forms.py:24
+#: forms.py:20
 msgid "Password"
 msgstr ""
 
-#: forms.py:27
+#: forms.py:24
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
 msgstr ""
 
-#: forms.py:29
+#: forms.py:26
 msgid "This account is inactive."
 msgstr ""
 
-#: links.py:12
+#: links.py:13
 msgid "Logout"
 msgstr ""
 
-#: links.py:13
+#: links.py:16
 msgid "Change password"
 msgstr ""
 
-#: settings.py:14
+#: settings.py:11
 msgid ""
 "Controls the mechanism used to authenticated user. Options are: username, "
 "email"
 msgstr ""
 
-#: settings.py:23
-msgid "Allow non authenticated users, access to all views"
-msgstr ""
-
-#: views.py:49
+#: views.py:36
 msgid "Current user password change"
 msgstr ""
 
-#: views.py:64
+#: views.py:52
 msgid "Your password has been successfully changed."
 msgstr ""

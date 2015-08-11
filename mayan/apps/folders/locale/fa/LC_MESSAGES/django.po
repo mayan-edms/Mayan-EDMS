@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
@@ -9,187 +9,195 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"POT-Creation-Date: 2015-08-11 02:11-0400\n"
 "PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: __init__.py:46
-msgid "Created"
-msgstr "ساخته‌شده"
-
-#: __init__.py:47 links.py:19 models.py:14
-msgid "Documents"
-msgstr "اسناد"
-
-#: forms.py:38 models.py:26
-msgid "Folder"
-msgstr "پرونده"
-
-#: links.py:14 links.py:22 links.py:25 models.py:27 permissions.py:7
-#: views.py:39
+#: apps.py:33 links.py:15 links.py:43 models.py:35 permissions.py:7
+#: views.py:83
 msgid "Folders"
 msgstr "پرونده ها"
 
-#: links.py:15 views.py:61
-msgid "Create folder"
-msgstr "ایجاد پرونده"
+#: apps.py:56
+msgid "Created"
+msgstr "ساخته‌شده"
 
-#: links.py:16
-msgid "Edit"
-msgstr "ویرایش"
-
-#: links.py:17
-msgid "Delete"
-msgstr "حذف"
-
-#: links.py:18
-msgid "Remove from folder"
-msgstr "حذف از پرونده"
-
-#: links.py:20
-msgid "Add to a folder"
-msgstr "اضافه به پرونده"
-
-#: links.py:21
-msgid "Add to folder"
-msgstr "اضافه به پرونده"
-
-#: links.py:24
-msgid "ACLs"
-msgstr "ACLs"
-
-#: models.py:11
-msgid "Title"
-msgstr "لقب"
-
-#: models.py:12
+#: apps.py:58 models.py:17
 msgid "User"
 msgstr "کاربر"
 
-#: models.py:13
+#: forms.py:34 models.py:34
+msgid "Folder"
+msgstr "پرونده"
+
+#: links.py:19
+msgid "Add to a folder"
+msgstr "اضافه به پرونده"
+
+#: links.py:23
+msgid "Add to folder"
+msgstr "اضافه به پرونده"
+
+#: links.py:26 views.py:114
+msgid "Create folder"
+msgstr "ایجاد پرونده"
+
+#: links.py:31
+msgid "Delete"
+msgstr "حذف"
+
+#: links.py:35
+msgid "Remove from folder"
+msgstr "حذف از پرونده"
+
+#: links.py:39
+msgid "Edit"
+msgstr "ویرایش"
+
+#: links.py:46 models.py:22 views.py:75 views.py:258
+msgid "Documents"
+msgstr "اسناد"
+
+#: models.py:15
+msgid "Label"
+msgstr ""
+
+#: models.py:19
 msgid "Datetime created"
 msgstr "تاریخ و زمان ایجاد"
 
-#: permissions.py:9
+#: permissions.py:10
 msgid "Create new folders"
 msgstr "ایجاد پرونده های جدید"
 
-#: permissions.py:10
+#: permissions.py:13
 msgid "Edit new folders"
 msgstr "ویرایش پرونده های جدید"
 
-#: permissions.py:11
+#: permissions.py:16
 msgid "Delete new folders"
 msgstr "حذف پرونده های جدید"
 
-#: permissions.py:12
+#: permissions.py:19
 msgid "Remove documents from folders"
 msgstr "حذف اسناد از پرونده ها"
 
-#: permissions.py:13
+#: permissions.py:22
 msgid "View existing folders"
 msgstr "دیدن پرونده های موجود"
 
-#: permissions.py:14
+#: permissions.py:25
 msgid "Add documents to existing folders"
 msgstr "اضافه کردن اسناد به پرونده های موجود"
 
-#: views.py:53
-msgid "Folder created successfully"
-msgstr "ایجاد موفق پرونده"
+#: serializers.py:61
+msgid "Primary key of the document to be added."
+msgstr ""
 
-#: views.py:56
-#, python-format
-msgid "A folder named: %s, already exists."
-msgstr "پرونده ای با نام %s موجود است."
-
-#: views.py:79
-msgid "Folder edited successfully"
-msgstr "ویرایش موفق پرونده"
-
-#: views.py:82
-#, python-format
-msgid "Error editing folder; %s"
-msgstr "خطای ویرایش پرونده %s"
-
-#: views.py:87
+#: views.py:44
 #, python-format
 msgid "Edit folder: %s"
 msgstr "ویرایش پرونده: %s"
 
-#: views.py:109
+#: views.py:107
+#, python-format
+msgid "A folder named: %s, already exists."
+msgstr "پرونده ای با نام %s موجود است."
+
+#: views.py:136
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "حذف موفق پرونده: %s"
 
-#: views.py:111
+#: views.py:138
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "پرونده: %(folder)s خطای حذف: %(error)s"
 
-#: views.py:121
-#, python-format
-msgid "Are you sure you with to delete the folder: %s?"
-msgstr "آیا از حذف پرونده %s مطمئن هستید؟"
+#: views.py:148
+#, fuzzy, python-format
+#| msgid "Delete new folders"
+msgid "Delete the folder: %s?"
+msgstr "حذف پرونده های جدید"
 
-#: views.py:144
+#: views.py:175
 #, python-format
 msgid "Documents in folder: %s"
 msgstr "اسناد داحل پرونده:%s"
 
-#: views.py:157
+#: views.py:188
 msgid "Must provide at least one document."
 msgstr "حداقل یک سند باید ارایه شود."
 
-#: views.py:176
+#: views.py:207
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "سند%(document)s   با موفقیت به پرونده%(folder)s   اضافه شد."
 
-#: views.py:179
+#: views.py:210
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "سند%(document)s  درون پرونده%(folder)s.  میباشد."
 
-#: views.py:196
+#: views.py:227
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
 msgstr[0] ""
 
-#: views.py:216
+#: views.py:268
 #, python-format
 msgid "Folders containing document: %s"
 msgstr ""
 
-#: views.py:242
+#: views.py:282
 msgid "Must provide at least one folder document."
 msgstr "حداقل یک پرونده سند باید ارایه گردد."
 
-#: views.py:260
+#: views.py:300
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "سند: %s با موفقیت حذف شد."
 
-#: views.py:262
+#: views.py:302
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "سند%(document)s  خطای حذف%(error)s"
 
-#: views.py:272
-#, python-format
-msgid ""
-"Are you sure you wish to remove the selected document from the folder: "
-"%(folder)s?"
-msgid_plural ""
-"Are you sure you wish to remove the selected documents from the folder: "
-"%(folder)s?"
+#: views.py:312
+#, fuzzy, python-format
+#| msgid ""
+#| "Are you sure you wish to remove the documents: %(documents)s from the "
+#| "folder \"%(folder)s\"?"
+msgid "Remove the selected document from the folder: %(folder)s?"
+msgid_plural "Remove the selected documents from the folder: %(folder)s?"
 msgstr[0] ""
+"Are you sure you wish to remove the documents: %(documents)s from the folder "
+"\"%(folder)s\"?"
+
+#~ msgid "ACLs"
+#~ msgstr "ACLs"
+
+#~ msgid "Title"
+#~ msgstr "لقب"
+
+#~ msgid "Folder created successfully"
+#~ msgstr "ایجاد موفق پرونده"
+
+#~ msgid "Folder edited successfully"
+#~ msgstr "ویرایش موفق پرونده"
+
+#~ msgid "Error editing folder; %s"
+#~ msgstr "خطای ویرایش پرونده %s"
+
+#~ msgid "Are you sure you with to delete the folder: %s?"
+#~ msgstr "آیا از حذف پرونده %s مطمئن هستید؟"
 
 #~ msgid "Add document to a folder"
 #~ msgstr "Add document to a folder"
@@ -199,13 +207,6 @@ msgstr[0] ""
 
 #~ msgid "Add documents: %s to folder."
 #~ msgstr "Add documents: %s to folder."
-
-#~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
-#~ " \"%(folder)s\"?"
-#~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
-#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -238,12 +239,12 @@ msgstr[0] ""
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to let "
-#~ "individual users create their own document organization methods.  Folders "
-#~ "created by one user and the documents contained by them don't affect any "
-#~ "other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to "
+#~ "let individual users create their own document organization methods.  "
+#~ "Folders created by one user and the documents contained by them don't "
+#~ "affect any other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to let "
-#~ "individual users create their own document organization methods.  Folders "
-#~ "created by one user and the documents contained by them don't affect any "
-#~ "other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to "
+#~ "let individual users create their own document organization methods.  "
+#~ "Folders created by one user and the documents contained by them don't "
+#~ "affect any other user folders or documents."

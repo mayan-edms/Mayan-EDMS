@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -11,196 +11,200 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:02-0400\n"
+"POT-Creation-Date: 2015-08-11 02:12-0400\n"
 "PO-Revision-Date: 2015-05-07 18:25+0000\n"
 "Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
+"mayan-edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: links.py:11 widgets.py:25
-msgid "Grant"
-msgstr "Conceder"
-
-#: links.py:12 widgets.py:19
-msgid "Revoke"
-msgstr "Revogar"
-
-#: links.py:14
-msgid "Create new role"
-msgstr "Criar nova regra"
-
-#: links.py:15
-msgid "Delete"
-msgstr "Excluir"
-
-#: links.py:16
-msgid "Edit"
-msgstr "Editar"
-
-#: links.py:17 models.py:218 views.py:59
-msgid "Roles"
-msgstr "Regras"
-
-#: links.py:18
-msgid "Members"
-msgstr "Membros"
-
-#: links.py:19
-msgid "Role permissions"
-msgstr "Regra de permissão"
-
-#: models.py:51
-msgid "Insufficient permissions."
-msgstr "Permissões insuficientes."
-
-#: models.py:126 views.py:80
-msgid "Namespace"
-msgstr "namespace"
-
-#: models.py:127 views.py:81
-msgid "Name"
-msgstr "Nome"
-
-#: models.py:134 models.py:196 views.py:134
-msgid "Permission"
-msgstr "permissão"
-
-#: models.py:135 permissions.py:7 views.py:77 views.py:136
+#: apps.py:22 models.py:27 models.py:67 permissions.py:7
 msgid "Permissions"
 msgstr "Permissões"
 
-#: models.py:204
-msgid "Permission holder"
-msgstr "Permissionário"
+#: classes.py:63
+msgid "Insufficient permissions."
+msgstr "Permissões insuficientes."
 
-#: models.py:205
-msgid "Permission holders"
-msgstr "Permissionários"
+#: links.py:14
+msgid "Grant"
+msgstr "Conceder"
 
-#: models.py:213
+#: links.py:18
+msgid "Revoke"
+msgstr "Revogar"
+
+#: links.py:22
+msgid "Create new role"
+msgstr "Criar nova regra"
+
+#: links.py:26
+msgid "Delete"
+msgstr "Excluir"
+
+#: links.py:30
+msgid "Edit"
+msgstr "Editar"
+
+#: links.py:35 models.py:76 views.py:140
+msgid "Roles"
+msgstr "Regras"
+
+#: links.py:38
+msgid "Members"
+msgstr "Membros"
+
+#: links.py:43
+msgid "Role permissions"
+msgstr "Regra de permissão"
+
+#: models.py:18
+msgid "Namespace"
+msgstr "namespace"
+
+#: models.py:19
+msgid "Name"
+msgstr "Nome"
+
+#: models.py:26
+msgid "Permission"
+msgstr "permissão"
+
+#: models.py:64
 msgid "Label"
 msgstr "Label"
 
-#: models.py:217 models.py:248
-msgid "Role"
-msgstr "Regras"
-
-#: models.py:264
-msgid "Role member"
-msgstr "Membro da Regra"
-
-#: models.py:265
-msgid "Role members"
-msgstr "Membros da Regra"
-
-#: permissions.py:9
-msgid "View roles"
-msgstr "Ver funções"
-
-#: permissions.py:10
-msgid "Edit roles"
-msgstr "Editar funções"
-
-#: permissions.py:11
-msgid "Create roles"
-msgstr "Criar funções"
-
-#: permissions.py:12
-msgid "Delete roles"
-msgstr "Deletar funções"
-
-#: permissions.py:13
-msgid "Grant permissions"
-msgstr "Conceder permissões"
-
-#: permissions.py:14
-msgid "Revoke permissions"
-msgstr "Revogar as permissões"
-
-#: settings.py:11
-msgid ""
-"A list of existing roles that are automatically assigned to newly created "
-"users"
-msgstr "A lista de funções existentes que são automaticamente designados para usuários recém-criados"
-
-#: views.py:83
-msgid "Has permission"
-msgstr "Tem permissão"
-
-#: views.py:131 views.py:191
-msgid " and "
-msgstr " e "
-
-#: views.py:131 views.py:191
-#, python-format
-msgid "%(permissions)s to %(requester)s"
-msgstr "%(permissions)s para %(requester)s"
-
-#: views.py:141
-#, python-format
-msgid "Permission \"%(permission)s\" granted to: %(requester)s."
-msgstr "Permissão \"%(permission)s\" concedida para: %(requester)s."
-
-#: views.py:144
-#, python-format
-msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
-msgstr "%(requester)s, já tinha a permissão \"%(permission)s\" concedida."
-
-#: views.py:154
-#, python-format
-msgid ""
-"Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
-msgstr "Tem certeza de que deseja conceder  %(permissions_label)s %(title_suffix)s?"
-
-#: views.py:194
-msgid "permission"
-msgstr "permissão"
-
-#: views.py:196
-msgid "permissions"
-msgstr "permissões"
-
-#: views.py:201
-#, python-format
-msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
-msgstr "Permissão \"%(permission)s\" revogada a partir de: %(requester)s."
-
-#: views.py:204
-#, python-format
-msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-msgstr ""
-
-#: views.py:214
-#, python-format
-msgid ""
-"Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
-msgstr "Tem certeza de que deseja revogar  %(permissions_label)s %(title_suffix)s?"
-
-#: views.py:249 views.py:273
-msgid "Users"
-msgstr "Usuários"
-
-#: views.py:252 views.py:276
+#: models.py:70
 msgid "Groups"
 msgstr "Grupos"
 
-#: views.py:255 views.py:279
-msgid "Special"
-msgstr "Especial"
+#: models.py:75
+msgid "Role"
+msgstr "Regras"
 
-#: views.py:304
-#, python-format
-msgid "Non members of role: %s"
+#: permissions.py:10
+msgid "View roles"
+msgstr "Ver funções"
+
+#: permissions.py:13
+msgid "Edit roles"
+msgstr "Editar funções"
+
+#: permissions.py:16
+msgid "Create roles"
+msgstr "Criar funções"
+
+#: permissions.py:19
+msgid "Delete roles"
+msgstr "Deletar funções"
+
+#: permissions.py:22
+msgid "Grant permissions"
+msgstr "Conceder permissões"
+
+#: permissions.py:25
+msgid "Revoke permissions"
+msgstr "Revogar as permissões"
+
+#: views.py:45
+msgid "Available groups"
+msgstr ""
+
+#: views.py:46
+#, fuzzy
+#| msgid "Members"
+msgid "Member groups"
+msgstr "Membros"
+
+#: views.py:74
+#, fuzzy, python-format
+#| msgid "Non members of role: %s"
+msgid "Group members of role: %s"
 msgstr "não membros da função: %s"
 
-#: views.py:305
-#, python-format
-msgid "Members of role: %s"
-msgstr "Membros das regras :%s."
+#: views.py:82
+#, fuzzy
+#| msgid "Role permissions"
+msgid "Available permissions"
+msgstr "Regra de permissão"
+
+#: views.py:83
+#, fuzzy
+#| msgid "Grant permissions"
+msgid "Granted permissions"
+msgstr "Conceder permissões"
+
+#: views.py:131
+#, fuzzy, python-format
+#| msgid "Permission holders"
+msgid "Permissions for role: %s"
+msgstr "Permissionários"
+
+#~ msgid "Permission holder"
+#~ msgstr "Permissionário"
+
+#~ msgid "Role member"
+#~ msgstr "Membro da Regra"
+
+#~ msgid "Role members"
+#~ msgstr "Membros da Regra"
+
+#~ msgid ""
+#~ "A list of existing roles that are automatically assigned to newly created "
+#~ "users"
+#~ msgstr ""
+#~ "A lista de funções existentes que são automaticamente designados para "
+#~ "usuários recém-criados"
+
+#~ msgid "Has permission"
+#~ msgstr "Tem permissão"
+
+#~ msgid " and "
+#~ msgstr " e "
+
+#~ msgid "%(permissions)s to %(requester)s"
+#~ msgstr "%(permissions)s para %(requester)s"
+
+#~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
+#~ msgstr "Permissão \"%(permission)s\" concedida para: %(requester)s."
+
+#~ msgid ""
+#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, já tinha a permissão \"%(permission)s\" concedida."
+
+#~ msgid ""
+#~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
+#~ msgstr ""
+#~ "Tem certeza de que deseja conceder  %(permissions_label)s "
+#~ "%(title_suffix)s?"
+
+#~ msgid "permission"
+#~ msgstr "permissão"
+
+#~ msgid "permissions"
+#~ msgstr "permissões"
+
+#~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
+#~ msgstr "Permissão \"%(permission)s\" revogada a partir de: %(requester)s."
+
+#~ msgid ""
+#~ "Are you sure you wish to revoke the %(permissions_label)s "
+#~ "%(title_suffix)s?"
+#~ msgstr ""
+#~ "Tem certeza de que deseja revogar  %(permissions_label)s %(title_suffix)s?"
+
+#~ msgid "Users"
+#~ msgstr "Usuários"
+
+#~ msgid "Special"
+#~ msgstr "Especial"
+
+#~ msgid "Members of role: %s"
+#~ msgstr "Membros das regras :%s."
 
 #~ msgid "edit"
 #~ msgstr "edit"

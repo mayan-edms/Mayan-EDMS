@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Christophe kryskool <christophe.chauvet@gmail.com>, 2014-2015
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
@@ -9,33 +9,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:03-0400\n"
+"POT-Creation-Date: 2015-08-11 02:13-0400\n"
 "PO-Revision-Date: 2015-02-04 19:12+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: links.py:10
-msgid "Execute"
-msgstr "Exécuter"
-
-#: links.py:11
-msgid "Details"
-msgstr "Détails"
-
-#: links.py:12
-msgid "Namespace list"
-msgstr "Liste de l'espace de nom"
-
-#: links.py:13
+#: apps.py:16 links.py:24 permissions.py:7
 msgid "Statistics"
 msgstr "Statistiques"
 
-#: views.py:18
+#: links.py:11
+msgid "Execute"
+msgstr "Exécuter"
+
+#: links.py:15
+#, fuzzy
+#| msgid "Namespace details for: %s"
+msgid "Namespace details"
+msgstr "Détails de l'espace de nommage pour: %s"
+
+#: links.py:19
+msgid "Namespace list"
+msgstr "Liste de l'espace de nom"
+
+#: permissions.py:10
+#, fuzzy
+#| msgid "Statistics"
+msgid "View statistics"
+msgstr "Statistiques"
+
+#: views.py:19
 msgid "Statistics namespaces"
 msgstr "Statistiques des espaces de nommage"
 
@@ -44,15 +53,16 @@ msgstr "Statistiques des espaces de nommage"
 msgid "Namespace details for: %s"
 msgstr "Détails de l'espace de nommage pour: %s"
 
-#: views.py:48
-msgid "Namespace"
-msgstr "Espace de nommage"
-
-#: views.py:49
-msgid "Statistic"
-msgstr "Statistique"
-
-#: views.py:53
+#: views.py:51
 #, python-format
 msgid "Results for: %s"
 msgstr "Résultats pour: %s"
+
+#~ msgid "Details"
+#~ msgstr "Détails"
+
+#~ msgid "Namespace"
+#~ msgstr "Espace de nommage"
+
+#~ msgid "Statistic"
+#~ msgstr "Statistique"

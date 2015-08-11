@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:00-0400\n"
+"POT-Creation-Date: 2015-08-11 02:09-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,88 +18,186 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: literals.py:21
+#: apps.py:16 permissions.py:7 settings.py:7
+msgid "Converter"
+msgstr ""
+
+#: backends/python.py:86 backends/python.py:98
+#, python-format
+msgid "Exception determining PDF page count; %s"
+msgstr ""
+
+#: classes.py:87
+#, python-format
+msgid "LibreOffice not installed or not found at path: %s"
+msgstr ""
+
+#: classes.py:159
+#, fuzzy
+#| msgid "suported file formats"
+msgid "Not an office file format."
+msgstr "suported file formats"
+
+#: classes.py:243
 msgid "Resize"
 msgstr "Resize"
 
-#: literals.py:22
-msgid "Resize."
-msgstr "Resize."
-
-#: literals.py:24 literals.py:39
-#, fuzzy
-msgid "Width"
-msgstr "width"
-
-#: literals.py:25 literals.py:40
-#, fuzzy
-msgid "Height"
-msgstr "height"
-
-#: literals.py:29
+#: classes.py:284
 msgid "Rotate"
 msgstr "Rotate"
 
-#: literals.py:30
-msgid "Rotate by n degress."
-msgstr "Rotate by n degress."
-
-#: literals.py:32
-#, fuzzy
-msgid "Degrees"
-msgstr "degrees"
-
-#: literals.py:36
-msgid "Density"
-msgstr "Density"
-
-#: literals.py:37
-msgid "Change the resolution (ie: DPI) without resizing."
-msgstr "Change the resolution (ie: DPI) without resizing."
-
-#: literals.py:44
+#: classes.py:296
 msgid "Zoom"
 msgstr "Zoom"
 
-#: literals.py:45
-msgid "Zoom by n percent."
-msgstr "Zoom by n percent."
-
-#: literals.py:47
-#, fuzzy
-msgid "Percent"
-msgstr "percent"
-
-#: settings.py:11
-msgid "File path to imagemagick's convert program."
-msgstr "File path to imagemagick's convert program."
-
-#: settings.py:12
-msgid "File path to imagemagick's identify program."
-msgstr "File path to imagemagick's identify program."
-
-#: settings.py:13
-msgid "File path to graphicsmagick's program."
-msgstr "File path to graphicsmagick's program."
-
-#: settings.py:15
-#, fuzzy
-msgid ""
-"Graphics conversion backend to use.  Options are: converter.backends."
-"imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-"and converter.backends.python.Python"
+#: links.py:31
+msgid "Create new transformation"
 msgstr ""
-"Graphics conversion backend to use.  Options are: converter.backends."
-"imagemagick, converter.backends.graphicsmagick and converter.backends.python."
+
+#: links.py:35
+msgid "Delete"
+msgstr ""
+
+#: links.py:39
+msgid "Edit"
+msgstr ""
+
+#: links.py:43 models.py:63
+msgid "Transformations"
+msgstr ""
+
+#: models.py:32
+msgid ""
+"Order in which the transformations will be executed. If left unchanged, an "
+"automatic order value will be assigned."
+msgstr ""
+
+#: models.py:33 views.py:235
+msgid "Order"
+msgstr ""
+
+#: models.py:37
+msgid "Name"
+msgstr ""
+
+#: models.py:41
+msgid ""
+"Enter the arguments for the transformation as a YAML dictionary. ie: "
+"{\"degrees\": 180}"
+msgstr ""
+
+#: models.py:42 views.py:241
+msgid "Arguments"
+msgstr ""
+
+#: models.py:62 views.py:237
+msgid "Transformation"
+msgstr ""
+
+#: permissions.py:10
+msgid "Create new transformations"
+msgstr ""
+
+#: permissions.py:13
+msgid "Delete transformations"
+msgstr ""
+
+#: permissions.py:16
+msgid "Edit transformations"
+msgstr ""
+
+#: permissions.py:19
+#, fuzzy
+#| msgid "Raw application information"
+msgid "View existing transformations"
+msgstr "Raw application information"
+
+#: settings.py:10
+msgid "Graphics conversion backend to use."
+msgstr ""
 
 #: settings.py:16
 msgid "Path to the libreoffice program."
 msgstr "Path to the libreoffice program."
 
-#: settings.py:17
+#: settings.py:20
 #, fuzzy
 msgid "Path to the Popple program pdftoppm."
 msgstr "Path to the libreoffice program."
+
+#: validators.py:22
+msgid "Enter a valid YAML value."
+msgstr ""
+
+#: views.py:72
+#, python-format
+msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
+msgstr ""
+
+#: views.py:139
+#, python-format
+msgid "Create new transformation for: %s"
+msgstr ""
+
+#: views.py:191
+#, python-format
+msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
+msgstr ""
+
+#: views.py:246
+#, python-format
+msgid "Transformations for: %s"
+msgstr ""
+
+#~ msgid "Resize."
+#~ msgstr "Resize."
+
+#, fuzzy
+#~ msgid "Width"
+#~ msgstr "width"
+
+#, fuzzy
+#~ msgid "Height"
+#~ msgstr "height"
+
+#~ msgid "Rotate by n degress."
+#~ msgstr "Rotate by n degress."
+
+#, fuzzy
+#~ msgid "Degrees"
+#~ msgstr "degrees"
+
+#~ msgid "Density"
+#~ msgstr "Density"
+
+#~ msgid "Change the resolution (ie: DPI) without resizing."
+#~ msgstr "Change the resolution (ie: DPI) without resizing."
+
+#~ msgid "Zoom by n percent."
+#~ msgstr "Zoom by n percent."
+
+#, fuzzy
+#~ msgid "Percent"
+#~ msgstr "percent"
+
+#~ msgid "File path to imagemagick's convert program."
+#~ msgstr "File path to imagemagick's convert program."
+
+#~ msgid "File path to imagemagick's identify program."
+#~ msgstr "File path to imagemagick's identify program."
+
+#~ msgid "File path to graphicsmagick's program."
+#~ msgstr "File path to graphicsmagick's program."
+
+#, fuzzy
+#~ msgid ""
+#~ "Graphics conversion backend to use.  Options are: converter.backends."
+#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
+#~ "and converter.backends.python.Python"
+#~ msgstr ""
+#~ "Graphics conversion backend to use.  Options are: converter.backends."
+#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
+#~ "python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -131,9 +229,6 @@ msgstr "Path to the libreoffice program."
 
 #~ msgid "Adobe Illustrator CS2"
 #~ msgstr "Adobe Illustrator CS2"
-
-#~ msgid "Raw application information"
-#~ msgstr "Raw application information"
 
 #~ msgid "Raw JPEG binary data"
 #~ msgstr "Raw JPEG binary data"
@@ -732,9 +827,6 @@ msgstr "Path to the libreoffice program."
 
 #~ msgid "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
 #~ msgstr "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
-
-#~ msgid "suported file formats"
-#~ msgstr "suported file formats"
 
 #~ msgid "name"
 #~ msgstr "name"

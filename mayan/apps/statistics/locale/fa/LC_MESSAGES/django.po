@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -9,33 +9,42 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:03-0400\n"
+"POT-Creation-Date: 2015-08-11 02:13-0400\n"
 "PO-Revision-Date: 2014-10-28 06:48+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: links.py:10
-msgid "Execute"
-msgstr "اجرا"
-
-#: links.py:11
-msgid "Details"
-msgstr "جزئیات"
-
-#: links.py:12
-msgid "Namespace list"
-msgstr "فضای نام لیست"
-
-#: links.py:13
+#: apps.py:16 links.py:24 permissions.py:7
 msgid "Statistics"
 msgstr "آمار"
 
-#: views.py:18
+#: links.py:11
+msgid "Execute"
+msgstr "اجرا"
+
+#: links.py:15
+#, fuzzy
+#| msgid "Namespace details for: %s"
+msgid "Namespace details"
+msgstr "جزئیات فضای نام برای : %s"
+
+#: links.py:19
+msgid "Namespace list"
+msgstr "فضای نام لیست"
+
+#: permissions.py:10
+#, fuzzy
+#| msgid "Statistics"
+msgid "View statistics"
+msgstr "آمار"
+
+#: views.py:19
 msgid "Statistics namespaces"
 msgstr "فضای نامی آمار"
 
@@ -44,15 +53,16 @@ msgstr "فضای نامی آمار"
 msgid "Namespace details for: %s"
 msgstr "جزئیات فضای نام برای : %s"
 
-#: views.py:48
-msgid "Namespace"
-msgstr "فضای نام"
-
-#: views.py:49
-msgid "Statistic"
-msgstr "آمار"
-
-#: views.py:53
+#: views.py:51
 #, python-format
 msgid "Results for: %s"
 msgstr "نتایج : %s"
+
+#~ msgid "Details"
+#~ msgstr "جزئیات"
+
+#~ msgid "Namespace"
+#~ msgstr "فضای نام"
+
+#~ msgid "Statistic"
+#~ msgstr "آمار"

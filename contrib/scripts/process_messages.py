@@ -14,7 +14,11 @@ APP_LIST = (
     'rest_api', 'smart_settings', 'sources', 'statistics', 'tags',
     'user_management'
 )
-LANGUAGE_LIST = ('ar', 'bg', 'bs_BA', 'da', 'de_CH', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu', 'hr_HR', 'id', 'it', 'lv', 'nb', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'sq', 'tr_TR', 'vi_VN', 'zh_CN', 'zh_TW')
+LANGUAGE_LIST = (
+    'ar', 'bg', 'bs_BA', 'da', 'de_CH', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu',
+    'hr_HR', 'id', 'it', 'lv', 'nb', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO',
+    'ru', 'sl_SI', 'sq', 'tr_TR', 'vi_VN', 'zh_CN', 'zh_TW'
+)
 
 makemessages = sh.Command('django-admin.py')
 makemessages = makemessages.bake('makemessages')
@@ -26,7 +30,9 @@ transifex_client = sh.Command('tx')
 pull_translations = transifex_client.bake('pull')
 push_translations = transifex_client.bake('push')
 
-BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..', 'mayan'))
+BASE_DIR = os.path.abspath(
+    os.path.join(os.path.dirname(__file__), '..', '..', 'mayan')
+)
 
 
 def process(command, app_list, language_list):
@@ -59,12 +65,30 @@ def process(command, app_list, language_list):
 
 if __name__ == '__main__':
     parser = optparse.OptionParser()
-    parser.add_option('-m', '--make', help='create message sources file', dest='make', default=False, action='store_true')
-    parser.add_option('-c', '--compile', help='compile message files', dest='compile', default=False, action='store_true')
-    parser.add_option('-p', '--pull', help='pull translation files', dest='pull', default=False, action='store_true')
-    parser.add_option('-u', '--push', help='push translation files', dest='push', default=False, action='store_true')
-    parser.add_option('-a', '--app', help='specify which app to process', dest='app', action='store', metavar='appname')
-    parser.add_option('-l', '--lang', help='specify which language to process', dest='lang', action='store', metavar='language')
+    parser.add_option(
+        '-m', '--make', help='create message sources file', dest='make',
+        default=False, action='store_true'
+    )
+    parser.add_option(
+        '-c', '--compile', help='compile message files', dest='compile',
+        default=False, action='store_true'
+    )
+    parser.add_option(
+        '-p', '--pull', help='pull translation files', dest='pull',
+        default=False, action='store_true'
+    )
+    parser.add_option(
+        '-u', '--push', help='push translation files', dest='push',
+        default=False, action='store_true'
+    )
+    parser.add_option(
+        '-a', '--app', help='specify which app to process', dest='app',
+        action='store', metavar='appname'
+    )
+    parser.add_option(
+        '-l', '--lang', help='specify which language to process', dest='lang',
+        action='store', metavar='language'
+    )
     (opts, args) = parser.parse_args()
 
     if not opts.make and not opts.compile:

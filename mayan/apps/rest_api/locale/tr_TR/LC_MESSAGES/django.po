@@ -1,31 +1,27 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:03-0400\n"
+"POT-Creation-Date: 2015-08-11 02:12-0400\n"
 "PO-Revision-Date: 2015-01-18 06:08+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/mayan-edms/language/tr_TR/)\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/mayan-"
+"edms/language/tr_TR/)\n"
+"Language: tr_TR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: links.py:5
+#: apps.py:14 links.py:7
 msgid "REST API"
 msgstr ""
 
-#: links.py:6
-msgid "REST API Documentation"
-msgstr ""
-
-#: templates/rest_framework_swagger/index.html:65
-#: templates/rest_framework_swagger/index.html:69
-msgid "API documentation"
+#: links.py:9
+msgid "API Documentation"
 msgstr ""

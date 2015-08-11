@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Christophe kryskool <christophe.chauvet@gmail.com>, 2014
@@ -12,204 +12,169 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"POT-Creation-Date: 2015-08-11 02:11-0400\n"
 "PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: __init__.py:26 __init__.py:37
-msgid "Label"
-msgstr "Étiquette"
-
-#: __init__.py:30
-msgid "Items"
-msgstr "Éléments"
-
-#: __init__.py:41
-msgid "Value"
-msgstr "Valeur"
-
-#: links.py:7 models.py:156
-msgid "Installation details"
-msgstr "Détails de l'installation"
-
-#: links.py:8 views.py:21
-msgid "Installation property namespaces"
-msgstr "installation des propriétés des espaces de nommages"
-
-#: links.py:9
-msgid "Details"
-msgstr "Détails"
-
-#: models.py:48
-msgid "Operating system"
-msgstr "Système d'exploitation"
-
-#: models.py:50 models.py:57
-msgid "LSB OS"
-msgstr "LSB OS"
-
-#: models.py:51
-msgid "Distributor ID"
-msgstr "ID du distributeur"
-
-#: models.py:52
-msgid "Description"
-msgstr "Description"
-
-#: models.py:53
-msgid "Release"
-msgstr "Version"
-
-#: models.py:54
-msgid "Codename"
-msgstr "Codename"
-
-#: models.py:55
-msgid "System info"
-msgstr "Information sur le système"
-
-#: models.py:59
-msgid "OS architecture"
-msgstr "architecture de l'OS"
-
-#: models.py:60
-msgid "Python version"
-msgstr "La version de Python"
-
-#: models.py:61
-msgid "Hostname"
-msgstr "Nom d'hôte"
-
-#: models.py:62
-msgid "Platform"
-msgstr "Plateforme"
-
-#: models.py:63
-msgid "Machine"
-msgstr "Machine"
-
-#: models.py:64
-msgid "Processor"
-msgstr "Processeur"
-
-#: models.py:65
-msgid "Number of CPUs"
-msgstr "Nombre de processeurs supportés"
-
-#: models.py:66
-msgid "Total physical memory"
-msgstr "Mémoire physique totale"
-
-#: models.py:67
-msgid "Disk partitions"
-msgstr "Les partitions du disque"
-
-#: models.py:70
-msgid "Binary dependencies"
-msgstr "Dépendances binaires"
-
-#: models.py:75 models.py:77 models.py:79
-msgid "tesseract version"
-msgstr "la version de tesseract"
-
-#: models.py:75 models.py:84 models.py:93
-msgid "not found"
-msgstr "non trouvée"
-
-#: models.py:77 models.py:86 models.py:95
-msgid "error getting version"
-msgstr "erreur en récupérant la version"
-
-#: models.py:84 models.py:86 models.py:88
-msgid "unpaper version"
-msgstr "Version de unpaper"
-
-#: models.py:93 models.py:95 models.py:97
-msgid "pdftotext version"
-msgstr "version de pdftotext"
-
-#: models.py:100
-msgid "Mayan EDMS"
-msgstr "Mayan EDMS"
-
-#: models.py:102
-msgid "UUID"
-msgstr "UUID"
-
-#: models.py:103
-msgid "Mayan EDMS version"
-msgstr "la version de l'EDMS Maya"
-
-#: models.py:106
-msgid "Git repository"
-msgstr "Dépôt Git"
-
-#: models.py:111 models.py:116
-msgid "Running from a Git repository"
-msgstr "Installé depuis un dépôt Git"
-
-#: models.py:117
-msgid "Repository remotes"
-msgstr "Dépôt distant"
-
-#: models.py:118
-msgid "Repository remotes URLs"
-msgstr "Liens des dépôts distants"
-
-#: models.py:119
-msgid "Branch"
-msgstr "Branche"
-
-#: models.py:120
-msgid "HEAD commit hex SHA"
-msgstr "HEAD commit hex SHA"
-
-#: models.py:121
-msgid "HEAD commit author"
-msgstr "HEAD commit author"
-
-#: models.py:122
-msgid "HEAD commit authored date"
-msgstr "HEAD commit authored date"
-
-#: models.py:123
-msgid "HEAD commit committer"
-msgstr "HEAD commit committer"
-
-#: models.py:124
-msgid "HEAD commit committed date"
-msgstr "HEAD commit committed date"
-
-#: models.py:125
-msgid "HEAD commit message"
-msgstr "HEAD commit message"
-
-#: models.py:131
-msgid "VirtualEnv"
-msgstr "VirtualEnv"
-
-#: models.py:135
-msgid "pip not found."
-msgstr "pip non trouvé"
-
-#: permissions.py:7
+#: apps.py:17 permissions.py:7
 msgid "Installation"
 msgstr "Installation"
 
-#: permissions.py:8
+#: apps.py:23 apps.py:30
+msgid "Label"
+msgstr "Étiquette"
+
+#: apps.py:26
+msgid "Items"
+msgstr "Éléments"
+
+#: apps.py:31
+msgid "Value"
+msgstr "Valeur"
+
+#: apps.py:42
+msgid "VirtualEnv"
+msgstr "VirtualEnv"
+
+#: apps.py:47
+msgid "pip not found."
+msgstr "pip non trouvé"
+
+#: links.py:12
+msgid "Installation details"
+msgstr "Détails de l'installation"
+
+#: links.py:15
+msgid "Details"
+msgstr "Détails"
+
+#: links.py:20 views.py:20
+msgid "Installation property namespaces"
+msgstr "installation des propriétés des espaces de nommages"
+
+#: permissions.py:10
 msgid "View installation environment details"
 msgstr "Voir détails de la plateforme"
 
-#: views.py:33
+#: views.py:32
 #, python-format
 msgid "Installation namespace details for: %s"
 msgstr "installation détaillée de l'espace de nommage pour: %s"
+
+#~ msgid "Operating system"
+#~ msgstr "Système d'exploitation"
+
+#~ msgid "LSB OS"
+#~ msgstr "LSB OS"
+
+#~ msgid "Distributor ID"
+#~ msgstr "ID du distributeur"
+
+#~ msgid "Description"
+#~ msgstr "Description"
+
+#~ msgid "Release"
+#~ msgstr "Version"
+
+#~ msgid "Codename"
+#~ msgstr "Codename"
+
+#~ msgid "System info"
+#~ msgstr "Information sur le système"
+
+#~ msgid "OS architecture"
+#~ msgstr "architecture de l'OS"
+
+#~ msgid "Python version"
+#~ msgstr "La version de Python"
+
+#~ msgid "Hostname"
+#~ msgstr "Nom d'hôte"
+
+#~ msgid "Platform"
+#~ msgstr "Plateforme"
+
+#~ msgid "Machine"
+#~ msgstr "Machine"
+
+#~ msgid "Processor"
+#~ msgstr "Processeur"
+
+#~ msgid "Number of CPUs"
+#~ msgstr "Nombre de processeurs supportés"
+
+#~ msgid "Total physical memory"
+#~ msgstr "Mémoire physique totale"
+
+#~ msgid "Disk partitions"
+#~ msgstr "Les partitions du disque"
+
+#~ msgid "Binary dependencies"
+#~ msgstr "Dépendances binaires"
+
+#~ msgid "tesseract version"
+#~ msgstr "la version de tesseract"
+
+#~ msgid "not found"
+#~ msgstr "non trouvée"
+
+#~ msgid "error getting version"
+#~ msgstr "erreur en récupérant la version"
+
+#~ msgid "unpaper version"
+#~ msgstr "Version de unpaper"
+
+#~ msgid "pdftotext version"
+#~ msgstr "version de pdftotext"
+
+#~ msgid "Mayan EDMS"
+#~ msgstr "Mayan EDMS"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Mayan EDMS version"
+#~ msgstr "la version de l'EDMS Maya"
+
+#~ msgid "Git repository"
+#~ msgstr "Dépôt Git"
+
+#~ msgid "Running from a Git repository"
+#~ msgstr "Installé depuis un dépôt Git"
+
+#~ msgid "Repository remotes"
+#~ msgstr "Dépôt distant"
+
+#~ msgid "Repository remotes URLs"
+#~ msgstr "Liens des dépôts distants"
+
+#~ msgid "Branch"
+#~ msgstr "Branche"
+
+#~ msgid "HEAD commit hex SHA"
+#~ msgstr "HEAD commit hex SHA"
+
+#~ msgid "HEAD commit author"
+#~ msgstr "HEAD commit author"
+
+#~ msgid "HEAD commit authored date"
+#~ msgstr "HEAD commit authored date"
+
+#~ msgid "HEAD commit committer"
+#~ msgstr "HEAD commit committer"
+
+#~ msgid "HEAD commit committed date"
+#~ msgstr "HEAD commit committed date"
+
+#~ msgid "HEAD commit message"
+#~ msgstr "HEAD commit message"
 
 #~ msgid "Installed via fabfile"
 #~ msgstr "Installed via fabfile"

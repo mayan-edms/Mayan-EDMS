@@ -1,32 +1,34 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:03-0400\n"
+"POT-Creation-Date: 2015-08-11 02:12-0400\n"
 "PO-Revision-Date: 2015-03-04 08:52+0000\n"
 "Last-Translator: Annunnaky <doublemiu@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
-#: links.py:5
+#: apps.py:14 links.py:7
 msgid "REST API"
 msgstr "REST API"
 
-#: links.py:6
-msgid "REST API Documentation"
-msgstr "Dokumentacja REST API"
-
-#: templates/rest_framework_swagger/index.html:65
-#: templates/rest_framework_swagger/index.html:69
-msgid "API documentation"
+#: links.py:9
+#, fuzzy
+#| msgid "API documentation"
+msgid "API Documentation"
 msgstr "Dokumentacja API"
+
+#~ msgid "REST API Documentation"
+#~ msgstr "Dokumentacja REST API"

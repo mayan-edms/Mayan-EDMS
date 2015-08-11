@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
@@ -10,204 +10,143 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"POT-Creation-Date: 2015-08-11 02:11-0400\n"
 "PO-Revision-Date: 2015-03-19 06:12+0000\n"
 "Last-Translator: Annunnaky <doublemiu@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:26 __init__.py:37
-msgid "Label"
-msgstr "Etykieta"
-
-#: __init__.py:30
-msgid "Items"
-msgstr "Pozycje"
-
-#: __init__.py:41
-msgid "Value"
-msgstr "Wartość"
-
-#: links.py:7 models.py:156
-msgid "Installation details"
-msgstr "Szczegóły instalacji"
-
-#: links.py:8 views.py:21
-msgid "Installation property namespaces"
-msgstr ""
-
-#: links.py:9
-msgid "Details"
-msgstr "Szczegóły"
-
-#: models.py:48
-msgid "Operating system"
-msgstr "System operacyjny"
-
-#: models.py:50 models.py:57
-msgid "LSB OS"
-msgstr "LSB OS"
-
-#: models.py:51
-msgid "Distributor ID"
-msgstr "ID dostawcy"
-
-#: models.py:52
-msgid "Description"
-msgstr "Opis"
-
-#: models.py:53
-msgid "Release"
-msgstr "Wydanie"
-
-#: models.py:54
-msgid "Codename"
-msgstr ""
-
-#: models.py:55
-msgid "System info"
-msgstr "Informacje o systemie"
-
-#: models.py:59
-msgid "OS architecture"
-msgstr "OS architektura"
-
-#: models.py:60
-msgid "Python version"
-msgstr "Python wersja"
-
-#: models.py:61
-msgid "Hostname"
-msgstr "Hostname"
-
-#: models.py:62
-msgid "Platform"
-msgstr "Platforma"
-
-#: models.py:63
-msgid "Machine"
-msgstr "Maszyna"
-
-#: models.py:64
-msgid "Processor"
-msgstr "Procesor"
-
-#: models.py:65
-msgid "Number of CPUs"
-msgstr "Liczba CPU"
-
-#: models.py:66
-msgid "Total physical memory"
-msgstr "Pamięć fizyczna"
-
-#: models.py:67
-msgid "Disk partitions"
-msgstr "Partycje dysku"
-
-#: models.py:70
-msgid "Binary dependencies"
-msgstr "Zależności"
-
-#: models.py:75 models.py:77 models.py:79
-msgid "tesseract version"
-msgstr ""
-
-#: models.py:75 models.py:84 models.py:93
-msgid "not found"
-msgstr "nie znaleziono"
-
-#: models.py:77 models.py:86 models.py:95
-msgid "error getting version"
-msgstr "błąd pobierania wersji"
-
-#: models.py:84 models.py:86 models.py:88
-msgid "unpaper version"
-msgstr ""
-
-#: models.py:93 models.py:95 models.py:97
-msgid "pdftotext version"
-msgstr "wersja pdftotext"
-
-#: models.py:100
-msgid "Mayan EDMS"
-msgstr "Mayan EDMS"
-
-#: models.py:102
-msgid "UUID"
-msgstr "UUID"
-
-#: models.py:103
-msgid "Mayan EDMS version"
-msgstr "Mayan EDMS wersja"
-
-#: models.py:106
-msgid "Git repository"
-msgstr "repozytorium Git"
-
-#: models.py:111 models.py:116
-msgid "Running from a Git repository"
-msgstr "Uruchom z repozytorium Git"
-
-#: models.py:117
-msgid "Repository remotes"
-msgstr "Zdalne repozytorium"
-
-#: models.py:118
-msgid "Repository remotes URLs"
-msgstr "URL zdalnego repozytorium"
-
-#: models.py:119
-msgid "Branch"
-msgstr "Gałąź"
-
-#: models.py:120
-msgid "HEAD commit hex SHA"
-msgstr ""
-
-#: models.py:121
-msgid "HEAD commit author"
-msgstr ""
-
-#: models.py:122
-msgid "HEAD commit authored date"
-msgstr ""
-
-#: models.py:123
-msgid "HEAD commit committer"
-msgstr ""
-
-#: models.py:124
-msgid "HEAD commit committed date"
-msgstr ""
-
-#: models.py:125
-msgid "HEAD commit message"
-msgstr ""
-
-#: models.py:131
-msgid "VirtualEnv"
-msgstr "VirtualEnv"
-
-#: models.py:135
-msgid "pip not found."
-msgstr "nie odnaleziono pip."
-
-#: permissions.py:7
+#: apps.py:17 permissions.py:7
 msgid "Installation"
 msgstr "Instalacja"
 
-#: permissions.py:8
+#: apps.py:23 apps.py:30
+msgid "Label"
+msgstr "Etykieta"
+
+#: apps.py:26
+msgid "Items"
+msgstr "Pozycje"
+
+#: apps.py:31
+msgid "Value"
+msgstr "Wartość"
+
+#: apps.py:42
+msgid "VirtualEnv"
+msgstr "VirtualEnv"
+
+#: apps.py:47
+msgid "pip not found."
+msgstr "nie odnaleziono pip."
+
+#: links.py:12
+msgid "Installation details"
+msgstr "Szczegóły instalacji"
+
+#: links.py:15
+msgid "Details"
+msgstr "Szczegóły"
+
+#: links.py:20 views.py:20
+msgid "Installation property namespaces"
+msgstr ""
+
+#: permissions.py:10
 msgid "View installation environment details"
 msgstr ""
 
-#: views.py:33
+#: views.py:32
 #, python-format
 msgid "Installation namespace details for: %s"
 msgstr ""
+
+#~ msgid "Operating system"
+#~ msgstr "System operacyjny"
+
+#~ msgid "LSB OS"
+#~ msgstr "LSB OS"
+
+#~ msgid "Distributor ID"
+#~ msgstr "ID dostawcy"
+
+#~ msgid "Description"
+#~ msgstr "Opis"
+
+#~ msgid "Release"
+#~ msgstr "Wydanie"
+
+#~ msgid "System info"
+#~ msgstr "Informacje o systemie"
+
+#~ msgid "OS architecture"
+#~ msgstr "OS architektura"
+
+#~ msgid "Python version"
+#~ msgstr "Python wersja"
+
+#~ msgid "Hostname"
+#~ msgstr "Hostname"
+
+#~ msgid "Platform"
+#~ msgstr "Platforma"
+
+#~ msgid "Machine"
+#~ msgstr "Maszyna"
+
+#~ msgid "Processor"
+#~ msgstr "Procesor"
+
+#~ msgid "Number of CPUs"
+#~ msgstr "Liczba CPU"
+
+#~ msgid "Total physical memory"
+#~ msgstr "Pamięć fizyczna"
+
+#~ msgid "Disk partitions"
+#~ msgstr "Partycje dysku"
+
+#~ msgid "Binary dependencies"
+#~ msgstr "Zależności"
+
+#~ msgid "not found"
+#~ msgstr "nie znaleziono"
+
+#~ msgid "error getting version"
+#~ msgstr "błąd pobierania wersji"
+
+#~ msgid "pdftotext version"
+#~ msgstr "wersja pdftotext"
+
+#~ msgid "Mayan EDMS"
+#~ msgstr "Mayan EDMS"
+
+#~ msgid "UUID"
+#~ msgstr "UUID"
+
+#~ msgid "Mayan EDMS version"
+#~ msgstr "Mayan EDMS wersja"
+
+#~ msgid "Git repository"
+#~ msgstr "repozytorium Git"
+
+#~ msgid "Running from a Git repository"
+#~ msgstr "Uruchom z repozytorium Git"
+
+#~ msgid "Repository remotes"
+#~ msgstr "Zdalne repozytorium"
+
+#~ msgid "Repository remotes URLs"
+#~ msgstr "URL zdalnego repozytorium"
+
+#~ msgid "Branch"
+#~ msgstr "Gałąź"
 
 #~ msgid "Installed via fabfile"
 #~ msgstr "Installed via fabfile"

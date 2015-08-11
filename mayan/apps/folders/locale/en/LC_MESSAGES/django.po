@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"POT-Creation-Date: 2015-08-11 02:11-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,193 +18,195 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:46
+#: apps.py:33 links.py:15 links.py:43 models.py:35 permissions.py:7
+#: views.py:83
+msgid "Folders"
+msgstr "Folders"
+
+#: apps.py:56
 #, fuzzy
 msgid "Created"
 msgstr "created"
 
-#: __init__.py:47 links.py:19 models.py:14
-#, fuzzy
-msgid "Documents"
-msgstr "documents"
+#: apps.py:58 models.py:17
+msgid "User"
+msgstr ""
 
-#: forms.py:38 models.py:26
+#: forms.py:34 models.py:34
 msgid "Folder"
 msgstr "Folder"
 
-#: links.py:14 links.py:22 links.py:25 models.py:27 permissions.py:7
-#: views.py:39
-msgid "Folders"
-msgstr "Folders"
-
-#: links.py:15 views.py:61
-#, fuzzy
-msgid "Create folder"
-msgstr "create folder"
-
-#: links.py:16
-msgid "Edit"
-msgstr ""
-
-#: links.py:17
-#, fuzzy
-msgid "Delete"
-msgstr "delete"
-
-#: links.py:18
-#, fuzzy
-msgid "Remove from folder"
-msgstr "remove from folder"
-
-#: links.py:20
+#: links.py:19
 #, fuzzy
 msgid "Add to a folder"
 msgstr "add to a folder"
 
-#: links.py:21
+#: links.py:23
 #, fuzzy
 msgid "Add to folder"
 msgstr "add to folder"
 
-#: links.py:24
-msgid "ACLs"
-msgstr "ACLs"
-
-#: models.py:11
+#: links.py:26 views.py:114
 #, fuzzy
-msgid "Title"
-msgstr "title"
+msgid "Create folder"
+msgstr "create folder"
 
-#: models.py:12
-msgid "User"
+#: links.py:31
+#, fuzzy
+msgid "Delete"
+msgstr "delete"
+
+#: links.py:35
+#, fuzzy
+msgid "Remove from folder"
+msgstr "remove from folder"
+
+#: links.py:39
+msgid "Edit"
 msgstr ""
 
-#: models.py:13
+#: links.py:46 models.py:22 views.py:75 views.py:258
+#, fuzzy
+msgid "Documents"
+msgstr "documents"
+
+#: models.py:15
+msgid "Label"
+msgstr ""
+
+#: models.py:19
 #, fuzzy
 msgid "Datetime created"
 msgstr "datetime created"
 
-#: permissions.py:9
+#: permissions.py:10
 msgid "Create new folders"
 msgstr "Create new folders"
 
-#: permissions.py:10
+#: permissions.py:13
 msgid "Edit new folders"
 msgstr "Edit new folders"
 
-#: permissions.py:11
+#: permissions.py:16
 msgid "Delete new folders"
 msgstr "Delete new folders"
 
-#: permissions.py:12
+#: permissions.py:19
 msgid "Remove documents from folders"
 msgstr "Remove documents from folders"
 
-#: permissions.py:13
+#: permissions.py:22
 msgid "View existing folders"
 msgstr "View existing folders"
 
-#: permissions.py:14
+#: permissions.py:25
 msgid "Add documents to existing folders"
 msgstr "Add documents to existing folders"
 
-#: views.py:53
-msgid "Folder created successfully"
-msgstr "Folder created successfully"
+#: serializers.py:61
+msgid "Primary key of the document to be added."
+msgstr ""
 
-#: views.py:56
-#, python-format
-msgid "A folder named: %s, already exists."
-msgstr "A folder named: %s, already exists."
-
-#: views.py:79
-msgid "Folder edited successfully"
-msgstr "Folder edited successfully"
-
-#: views.py:82
-#, python-format
-msgid "Error editing folder; %s"
-msgstr "Error editing folder; %s"
-
-#: views.py:87
+#: views.py:44
 #, fuzzy, python-format
 msgid "Edit folder: %s"
 msgstr "edit folder: %s"
 
-#: views.py:109
+#: views.py:107
+#, python-format
+msgid "A folder named: %s, already exists."
+msgstr "A folder named: %s, already exists."
+
+#: views.py:136
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Folder: %s deleted successfully."
 
-#: views.py:111
+#: views.py:138
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Folder: %(folder)s delete error: %(error)s"
 
-#: views.py:121
-#, python-format
-msgid "Are you sure you with to delete the folder: %s?"
-msgstr "Are you sure you with to delete the folder: %s?"
+#: views.py:148
+#, fuzzy, python-format
+#| msgid "Delete new folders"
+msgid "Delete the folder: %s?"
+msgstr "Delete new folders"
 
-#: views.py:144
+#: views.py:175
 #, fuzzy, python-format
 msgid "Documents in folder: %s"
 msgstr "documents in folder: %s"
 
-#: views.py:157
+#: views.py:188
 msgid "Must provide at least one document."
 msgstr "Must provide at least one document."
 
-#: views.py:176
+#: views.py:207
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Document: %(document)s added to folder: %(folder)s successfully."
 
-#: views.py:179
+#: views.py:210
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Document: %(document)s is already in folder: %(folder)s."
 
-#: views.py:196
+#: views.py:227
 #, fuzzy
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
 msgstr[0] "Add document to a folder"
 msgstr[1] "Add document to a folder"
 
-#: views.py:216
+#: views.py:268
 #, fuzzy, python-format
 msgid "Folders containing document: %s"
 msgstr "folders containing: %s"
 
-#: views.py:242
+#: views.py:282
 msgid "Must provide at least one folder document."
 msgstr "Must provide at least one folder document."
 
-#: views.py:260
+#: views.py:300
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Document: %s removed successfully."
 
-#: views.py:262
+#: views.py:302
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Document: %(document)s delete error: %(error)s"
 
-#: views.py:272
+#: views.py:312
 #, fuzzy, python-format
-msgid ""
-"Are you sure you wish to remove the selected document from the folder: "
-"%(folder)s?"
-msgid_plural ""
-"Are you sure you wish to remove the selected documents from the folder: "
-"%(folder)s?"
+msgid "Remove the selected document from the folder: %(folder)s?"
+msgid_plural "Remove the selected documents from the folder: %(folder)s?"
 msgstr[0] ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
 msgstr[1] ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
+
+#~ msgid "ACLs"
+#~ msgstr "ACLs"
+
+#, fuzzy
+#~ msgid "Title"
+#~ msgstr "title"
+
+#~ msgid "Folder created successfully"
+#~ msgstr "Folder created successfully"
+
+#~ msgid "Folder edited successfully"
+#~ msgstr "Folder edited successfully"
+
+#~ msgid "Error editing folder; %s"
+#~ msgstr "Error editing folder; %s"
+
+#~ msgid "Are you sure you with to delete the folder: %s?"
+#~ msgstr "Are you sure you with to delete the folder: %s?"
 
 #~ msgid "Add document to a folder"
 #~ msgstr "Add document to a folder"

@@ -1,22 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:02-0400\n"
+"POT-Creation-Date: 2015-08-11 02:11-0400\n"
 "PO-Revision-Date: 2014-10-28 06:43+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps.py:25
+#, fuzzy
+#| msgid "Mailing"
+msgid "Mailer"
+msgstr "پست کردن"
 
 #: forms.py:23
 msgid "Email address"
@@ -26,98 +33,142 @@ msgstr "پست الکترونیکی"
 msgid "Subject"
 msgstr "موضوع"
 
-#: forms.py:25
+#: forms.py:26
 msgid "Body"
 msgstr "بدنه"
 
-#: links.py:7
-msgid "Email link"
-msgstr "پیوند پلکترونیکی"
-
-#: links.py:8
+#: links.py:13
 msgid "Email document"
 msgstr "ایمیل کردن سند"
 
-#: permissions.py:7
+#: links.py:17
+msgid "Email link"
+msgstr "پیوند پلکترونیکی"
+
+#: links.py:22 views.py:31
+msgid "Document mailing error log"
+msgstr ""
+
+#: literals.py:8
+#, fuzzy, python-format
+#| msgid ""
+#| "Attached to this email is the document: {{ document }}<br /><br />\n"
+#| "\n"
+#| "--------<br />\n"
+#| "This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
+msgid ""
+"Attached to this email is the document: {{ document }}\n"
+"\n"
+" --------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr ""
+"Attached to this email is the document: {{ document }}<br /><br />\n"
+"--------<br />\n"
+"This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
+
+#: literals.py:17
+#, fuzzy, python-format
+#| msgid ""
+#| "To access this document click on the following link: <a href="
+#| "\"{{ link }}\">{{ link }}</a><br /><br />\n"
+#| "\n"
+#| "--------<br />\n"
+#| "This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
+msgid ""
+"To access this document click on the following link: {{ link }}\n"
+"\n"
+"--------\n"
+" This email has been sent from %(project_title)s (%(project_website)s)"
+msgstr ""
+"To access this document click on the following link: <a href="
+"\"{{ link }}\">{{ link }}</a><br /><br />\n"
+"--------<br />\n"
+"This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
+
+#: models.py:13
+msgid "Date time"
+msgstr ""
+
+#: models.py:16
+msgid "Message"
+msgstr ""
+
+#: models.py:22
+msgid "Log entry"
+msgstr ""
+
+#: models.py:23
+msgid "Log entries"
+msgstr ""
+
+#: permissions.py:7 settings.py:11
 msgid "Mailing"
 msgstr "پست کردن"
 
-#: permissions.py:9
+#: permissions.py:10
 msgid "Send document link via email"
 msgstr "ارسال پیوند و یا لینک سند بوسیله ایمیل"
 
-#: permissions.py:10
+#: permissions.py:13
 msgid "Send document via email"
 msgstr "ارسال سند بوسیله ایمیل"
 
-#: settings.py:11
+#: permissions.py:16
+msgid "View document mailing error log"
+msgstr ""
+
+#: settings.py:14
 msgid "Link for document: {{ document }}"
 msgstr "پیوند سند :{{document}}"
 
-#: settings.py:11
+#: settings.py:15
 msgid "Template for the document link email form subject line."
 msgstr "الگوی ارسال سند بوسیله پیوند آن از داخل موضوع"
 
-#: settings.py:12
-msgid ""
-"To access this document click on the following link: <a href=\"{{ link }}\">{{ link }}</a><br /><br />\n"
-"\n"
-"--------<br />\n"
-"This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
-msgstr "To access this document click on the following link: <a href=\"{{ link }}\">{{ link }}</a><br /><br />\n--------<br />\nThis email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
-
-#: settings.py:12
+#: settings.py:20
 msgid "Template for the document link email form body line."
 msgstr "الگوی ارسال سند بوسیله پیوند آن از داخل بدنه"
 
-#: settings.py:13
+#: settings.py:24
 msgid "Document: {{ document }}"
 msgstr "سند : {{ document }}"
 
-#: settings.py:13
+#: settings.py:25
 msgid "Template for the document email form subject line."
 msgstr "الگوی ارسال سند بوسیله پیوند آن از داخل موضوع"
 
-#: settings.py:14
-msgid ""
-"Attached to this email is the document: {{ document }}<br /><br />\n"
-"\n"
-"--------<br />\n"
-"This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
-msgstr "Attached to this email is the document: {{ document }}<br /><br />\n--------<br />\nThis email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
-
-#: settings.py:14
+#: settings.py:30
 msgid "Template for the document email form body line."
 msgstr "الگوی ارسال سند از داخل بدنه"
 
-#: views.py:41
+#: views.py:54
 msgid "Must provide at least one document."
 msgstr "حداقل یک سند بایست ارایه گردد."
 
-#: views.py:70
+#: views.py:83
 msgid "Successfully queued for delivery via email."
 msgstr "ورود موفق به صف ارسال از طریق ایمیل"
 
-#: views.py:78
+#: views.py:91
 msgid "Send"
 msgstr "ارسال"
 
-#: views.py:84
+#: views.py:97
 #, python-format
 msgid "Email document: %s"
 msgstr "ایمیل سند: %s"
 
-#: views.py:86
+#: views.py:99
 #, python-format
 msgid "Email link for document: %s"
 msgstr "پیوند ایمیل برای سند: %s"
 
-#: views.py:89
+#: views.py:102
 #, python-format
 msgid "Email documents: %s"
 msgstr "ایمیل اسناد: %s"
 
-#: views.py:91
+#: views.py:104
 #, python-format
 msgid "Email links for documents: %s"
 msgstr "پیوند ایمیل برای اسناد: %s"

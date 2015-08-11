@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 18:59-0400\n"
+"POT-Creation-Date: 2015-08-11 02:08-0400\n"
 "PO-Revision-Date: 2014-10-25 06:47+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Albanian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -20,83 +20,41 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:25 links.py:13 links.py:19
-msgid "New holder"
-msgstr "Mbajtës i ri"
-
-#: forms.py:42
-msgid "Users"
-msgstr "Përdorues"
-
-#: forms.py:45
-msgid "Groups"
-msgstr "Grupe"
-
-#: forms.py:48
-msgid "Roles"
-msgstr "Role"
-
-#: forms.py:51
-msgid "Special"
-msgstr ""
-
-#: links.py:9
+#: apps.py:13 links.py:28
 msgid "ACLs"
 msgstr "ACLs"
 
-#: links.py:10 links.py:18
-msgid "Details"
+#: links.py:24
+msgid "Delete"
 msgstr ""
 
-#: links.py:11 links.py:20
-msgid "Grant"
+#: links.py:32
+msgid "New ACL"
 msgstr ""
 
-#: links.py:12 links.py:21
-msgid "Revoke"
+#: links.py:36 models.py:36 views.py:75
+msgid "Permissions"
 msgstr ""
 
-#: links.py:15
-msgid "Default ACLs"
-msgstr "ACL e paracaktuara"
-
-#: links.py:16 views.py:379
-msgid "Classes"
-msgstr ""
-
-#: links.py:17
-msgid "ACLs for class"
-msgstr "ACL-të per klasën"
-
-#: managers.py:118 managers.py:130
+#: managers.py:69
 msgid "Insufficient access."
 msgstr "e drejtë e pa mjaftueshme"
 
-#: models.py:25 models.py:67
-msgid "Permission"
-msgstr ""
+#: models.py:38 views.py:71
+#, fuzzy
+#| msgid "Roles"
+msgid "Role"
+msgstr "Role"
 
-#: models.py:51
+#: models.py:44
 msgid "Access entry"
 msgstr ""
 
-#: models.py:52
+#: models.py:45
 msgid "Access entries"
 msgstr ""
 
-#: models.py:88
-msgid "Default access entry"
-msgstr ""
-
-#: models.py:89
-msgid "Default access entries"
-msgstr ""
-
-#: models.py:108 models.py:111 models.py:112
-msgid "Creator"
-msgstr ""
-
-#: permissions.py:7 permissions.py:8
+#: permissions.py:7
 msgid "Access control lists"
 msgstr ""
 
@@ -104,142 +62,58 @@ msgstr ""
 msgid "Edit ACLs"
 msgstr ""
 
-#: permissions.py:11
+#: permissions.py:13
 msgid "View ACLs"
 msgstr ""
 
-#: permissions.py:13
-msgid "Edit class default ACLs"
-msgstr ""
-
-#: permissions.py:14
-msgid "View class default ACLs"
-msgstr ""
-
-#: views.py:48
+#: views.py:68
 #, python-format
 msgid "Access control lists for: %s"
 msgstr ""
 
-#: views.py:50 views.py:402
-msgid "Holder"
-msgstr ""
-
-#: views.py:51 views.py:403
-msgid "Permissions"
-msgstr ""
-
-#: views.py:98
+#: views.py:128
 #, python-format
-msgid "Permissions available to: %(actor)s for %(obj)s"
+msgid "New access control lists for: %s"
 msgstr ""
 
-#: views.py:105 views.py:434
-msgid "Namespace"
+#: views.py:163
+#, fuzzy
+#| msgid "permission"
+msgid "Available permissions"
+msgstr "permission"
+
+#: views.py:164
+#, fuzzy
+#| msgid "permission"
+msgid "Granted permissions"
+msgstr "permission"
+
+#: views.py:203
+msgid "Disabled permissions are inherited from a parent object."
 msgstr ""
 
-#: views.py:106 views.py:435
-msgid "Label"
-msgstr ""
-
-#: views.py:108 views.py:437
-msgid "Has permission"
-msgstr ""
-
-#: views.py:181 views.py:272 views.py:516 views.py:593
-msgid ", "
-msgstr ""
-
-#: views.py:182 views.py:273 views.py:517 views.py:594
+#: views.py:234
 #, python-format
-msgid " for %s"
+msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""
 
-#: views.py:183 views.py:518
-#, python-format
-msgid " to %s"
-msgstr ""
+#~ msgid "New holder"
+#~ msgstr "Mbajtës i ri"
 
-#: views.py:186 views.py:521
-#, python-format
-msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-msgstr ""
+#~ msgid "Users"
+#~ msgstr "Përdorues"
 
-#: views.py:188 views.py:523
-#, python-format
-msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-msgstr ""
+#~ msgid "Groups"
+#~ msgstr "Grupe"
 
-#: views.py:195 views.py:530
-#, python-format
-msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
-msgstr ""
+#~ msgid "Default ACLs"
+#~ msgstr "ACL e paracaktuara"
 
-#: views.py:201 views.py:536
-#, python-format
-msgid ""
-"%(actor)s, already had the permission \"%(permission)s\" granted for "
-"%(object)s."
-msgstr ""
-
-#: views.py:274 views.py:595
-#, python-format
-msgid " from %s"
-msgstr ""
-
-#: views.py:277 views.py:598
-#, python-format
-msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-msgstr ""
-
-#: views.py:279 views.py:600
-#, python-format
-msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-msgstr ""
-
-#: views.py:286 views.py:607
-#, python-format
-msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-msgstr ""
-
-#: views.py:292 views.py:613
-#, python-format
-msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-msgstr ""
-
-#: views.py:346
-#, python-format
-msgid "Add new holder for: %s"
-msgstr ""
-
-#: views.py:347 views.py:477
-msgid "Select"
-msgstr ""
-
-#: views.py:381
-msgid "Class"
-msgstr ""
-
-#: views.py:400
-#, python-format
-msgid "Default access control lists for class: %s"
-msgstr ""
-
-#: views.py:428
-#, python-format
-msgid "Permissions available to: %(actor)s for class %(class)s"
-msgstr ""
-
-#: views.py:475
-#, python-format
-msgid "Add new holder for class: %s"
-msgstr ""
+#~ msgid "ACLs for class"
+#~ msgstr "ACL-të per klasën"
 
 #~ msgid "List of classes"
 #~ msgstr "List of classes"
-
-#~ msgid "permission"
-#~ msgstr "permission"
 
 #~ msgid "creator"
 #~ msgstr "creator"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -11,142 +11,148 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"POT-Creation-Date: 2015-08-11 02:10-0400\n"
 "PO-Revision-Date: 2015-02-07 05:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:9 models.py:23
-msgid "Signature file"
-msgstr "Archivo de firma"
-
-#: links.py:22
-msgid "Delete signature"
-msgstr "Borrar firma"
-
-#: links.py:23
-msgid "Download signature"
-msgstr "Descargar firma"
-
-#: links.py:24
-msgid "Upload signature"
-msgstr "Subir firma"
-
-#: links.py:25
-msgid "Signatures"
-msgstr "Firma"
-
-#: models.py:22
-msgid "Document version"
-msgstr "Versión de documento"
-
-#: models.py:24
-msgid "Has embedded signature"
-msgstr "Tiene firma integrada"
-
-#: models.py:39
-msgid "Document version signature"
-msgstr "Firma de versión de documento"
-
-#: models.py:40
-msgid "Document version signatures"
-msgstr "Firmas de versión de documento"
-
-#: permissions.py:7
+#: apps.py:62 permissions.py:8 settings.py:7
 msgid "Document signatures"
 msgstr "Firmas de documentos"
 
-#: permissions.py:8
+#: forms.py:9 models.py:31
+msgid "Signature file"
+msgstr "Archivo de firma"
+
+#: links.py:31
+msgid "Delete signature"
+msgstr "Borrar firma"
+
+#: links.py:35
+msgid "Download signature"
+msgstr "Descargar firma"
+
+#: links.py:41
+msgid "Upload signature"
+msgstr "Subir firma"
+
+#: links.py:45
+msgid "Signatures"
+msgstr "Firma"
+
+#: models.py:27
+msgid "Document version"
+msgstr "Versión de documento"
+
+#: models.py:34
+msgid "Has embedded signature"
+msgstr "Tiene firma integrada"
+
+#: models.py:52
+msgid "Document version signature"
+msgstr "Firma de versión de documento"
+
+#: models.py:53
+msgid "Document version signatures"
+msgstr "Firmas de versión de documento"
+
+#: permissions.py:12
 msgid "Verify document signatures"
 msgstr "Verificar firmas de documentos"
 
-#: permissions.py:9
+#: permissions.py:15
 msgid "Delete detached signatures"
 msgstr "Borrar firmas separadas"
 
-#: permissions.py:10
+#: permissions.py:18
 msgid "Download detached signatures"
 msgstr "Descargar firmas separadas"
 
-#: permissions.py:11
+#: permissions.py:21
 msgid "Upload detached signatures"
 msgstr "Subir firmas separadas"
 
-#: views.py:49
+#: views.py:50
 #, python-format
 msgid "Signature status: %s"
 msgstr "Estado de firma: %s"
 
-#: views.py:53
+#: views.py:54
 msgid "Embedded"
 msgstr "Integrado"
 
-#: views.py:55
+#: views.py:56
 msgid "Detached"
 msgstr "Aparte"
 
-#: views.py:57
+#: views.py:58
 msgid "None"
 msgstr "Ninguno"
 
-#: views.py:62
+#: views.py:63
 #, python-format
 msgid "Signature ID: %s"
 msgstr "ID de la firma: %s"
 
-#: views.py:63
+#: views.py:64
 #, python-format
 msgid "Signature type: %s"
 msgstr "Tipo de firma: %s"
 
-#: views.py:64
+#: views.py:65
 #, python-format
 msgid "Key ID: %s"
 msgstr "ID de la clave: %s"
 
-#: views.py:65
+#: views.py:66
 #, python-format
 msgid "Timestamp: %s"
 msgstr "Marca de tiempo: %s"
 
-#: views.py:66
+#: views.py:67
 #, python-format
 msgid "Signee: %s"
 msgstr "Firmante: %s"
 
-#: views.py:74
+#: views.py:75
 #, python-format
 msgid "Signature properties for document: %s"
 msgstr "Propiedades de la firma del documento: %s"
 
-#: views.py:97
+#: views.py:98
 msgid "Detached signature uploaded successfully."
 msgstr "Firma separada subida con éxito."
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "Upload detached signature for document: %s"
 msgstr "Subir una firma aparte para el documento: %s"
 
-#: views.py:155
+#: views.py:156
 msgid "Detached signature deleted successfully."
 msgstr "Firma separada borrada con éxito."
 
-#: views.py:158
+#: views.py:159
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr "Error al borrar la firma separada: %s"
 
-#: views.py:162
-#, python-format
-msgid ""
-"Are you sure you wish to delete the detached signature from document: %s?"
-msgstr "Está seguro de que quiere borrar la firma separada del documento: %s?"
+#: views.py:163
+#, fuzzy, python-format
+#| msgid "Upload detached signature for document: %s"
+msgid "Delete the detached signature from document: %s?"
+msgstr "Subir una firma aparte para el documento: %s"
+
+#~ msgid ""
+#~ "Are you sure you wish to delete the detached signature from document: %s?"
+#~ msgstr ""
+#~ "Está seguro de que quiere borrar la firma separada del documento: %s?"
 
 #~ msgid "Signature status: %(widget)s %(text)s"
 #~ msgstr "Signature status: %(widget)s %(text)s"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"POT-Creation-Date: 2015-08-11 02:10-0400\n"
 "PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Albanian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,131 +19,130 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:9 models.py:23
-msgid "Signature file"
-msgstr ""
-
-#: links.py:22
-msgid "Delete signature"
-msgstr ""
-
-#: links.py:23
-msgid "Download signature"
-msgstr ""
-
-#: links.py:24
-msgid "Upload signature"
-msgstr ""
-
-#: links.py:25
-msgid "Signatures"
-msgstr ""
-
-#: models.py:22
-msgid "Document version"
-msgstr ""
-
-#: models.py:24
-msgid "Has embedded signature"
-msgstr ""
-
-#: models.py:39
-msgid "Document version signature"
-msgstr ""
-
-#: models.py:40
-msgid "Document version signatures"
-msgstr ""
-
-#: permissions.py:7
+#: apps.py:62 permissions.py:8 settings.py:7
 msgid "Document signatures"
 msgstr ""
 
-#: permissions.py:8
+#: forms.py:9 models.py:31
+msgid "Signature file"
+msgstr ""
+
+#: links.py:31
+msgid "Delete signature"
+msgstr ""
+
+#: links.py:35
+msgid "Download signature"
+msgstr ""
+
+#: links.py:41
+msgid "Upload signature"
+msgstr ""
+
+#: links.py:45
+msgid "Signatures"
+msgstr ""
+
+#: models.py:27
+msgid "Document version"
+msgstr ""
+
+#: models.py:34
+msgid "Has embedded signature"
+msgstr ""
+
+#: models.py:52
+msgid "Document version signature"
+msgstr ""
+
+#: models.py:53
+msgid "Document version signatures"
+msgstr ""
+
+#: permissions.py:12
 msgid "Verify document signatures"
 msgstr ""
 
-#: permissions.py:9
+#: permissions.py:15
 msgid "Delete detached signatures"
 msgstr ""
 
-#: permissions.py:10
+#: permissions.py:18
 msgid "Download detached signatures"
 msgstr ""
 
-#: permissions.py:11
+#: permissions.py:21
 msgid "Upload detached signatures"
 msgstr ""
 
-#: views.py:49
+#: views.py:50
 #, python-format
 msgid "Signature status: %s"
 msgstr ""
 
-#: views.py:53
+#: views.py:54
 msgid "Embedded"
 msgstr ""
 
-#: views.py:55
+#: views.py:56
 msgid "Detached"
 msgstr ""
 
-#: views.py:57
+#: views.py:58
 msgid "None"
-msgstr ""
-
-#: views.py:62
-#, python-format
-msgid "Signature ID: %s"
 msgstr ""
 
 #: views.py:63
 #, python-format
-msgid "Signature type: %s"
+msgid "Signature ID: %s"
 msgstr ""
 
 #: views.py:64
 #, python-format
-msgid "Key ID: %s"
+msgid "Signature type: %s"
 msgstr ""
 
 #: views.py:65
 #, python-format
-msgid "Timestamp: %s"
+msgid "Key ID: %s"
 msgstr ""
 
 #: views.py:66
 #, python-format
+msgid "Timestamp: %s"
+msgstr ""
+
+#: views.py:67
+#, python-format
 msgid "Signee: %s"
 msgstr ""
 
-#: views.py:74
+#: views.py:75
 #, python-format
 msgid "Signature properties for document: %s"
 msgstr ""
 
-#: views.py:97
+#: views.py:98
 msgid "Detached signature uploaded successfully."
 msgstr ""
 
-#: views.py:110
+#: views.py:111
 #, python-format
 msgid "Upload detached signature for document: %s"
 msgstr ""
 
-#: views.py:155
+#: views.py:156
 msgid "Detached signature deleted successfully."
 msgstr ""
 
-#: views.py:158
+#: views.py:159
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr ""
 
-#: views.py:162
+#: views.py:163
 #, python-format
-msgid ""
-"Are you sure you wish to delete the detached signature from document: %s?"
+msgid "Delete the detached signature from document: %s?"
 msgstr ""
 
 #~ msgid "Signature status: %(widget)s %(text)s"

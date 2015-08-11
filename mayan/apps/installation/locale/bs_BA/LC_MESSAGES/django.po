@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,204 +9,155 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"POT-Creation-Date: 2015-08-11 02:11-0400\n"
 "PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/projects/p/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"projects/p/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: __init__.py:26 __init__.py:37
-msgid "Label"
-msgstr ""
-
-#: __init__.py:30
-msgid "Items"
-msgstr ""
-
-#: __init__.py:41
-msgid "Value"
-msgstr ""
-
-#: links.py:7 models.py:156
-msgid "Installation details"
-msgstr ""
-
-#: links.py:8 views.py:21
-msgid "Installation property namespaces"
-msgstr ""
-
-#: links.py:9
-msgid "Details"
-msgstr ""
-
-#: models.py:48
-msgid "Operating system"
-msgstr ""
-
-#: models.py:50 models.py:57
-msgid "LSB OS"
-msgstr "LSB OS"
-
-#: models.py:51
-msgid "Distributor ID"
-msgstr "ID oznaka distributora"
-
-#: models.py:52
-msgid "Description"
-msgstr "Opis"
-
-#: models.py:53
-msgid "Release"
-msgstr "Izdanje"
-
-#: models.py:54
-msgid "Codename"
-msgstr "Kodno ime"
-
-#: models.py:55
-msgid "System info"
-msgstr "Sistemske informacije"
-
-#: models.py:59
-msgid "OS architecture"
-msgstr "Arhitektura OS-a"
-
-#: models.py:60
-msgid "Python version"
-msgstr "Verzija Python-a"
-
-#: models.py:61
-msgid "Hostname"
-msgstr "Ime hosta"
-
-#: models.py:62
-msgid "Platform"
-msgstr "Platforma"
-
-#: models.py:63
-msgid "Machine"
-msgstr "Mašina"
-
-#: models.py:64
-msgid "Processor"
-msgstr "Procesor"
-
-#: models.py:65
-msgid "Number of CPUs"
-msgstr "Broj CPU"
-
-#: models.py:66
-msgid "Total physical memory"
-msgstr "Ukupna fizička memorija"
-
-#: models.py:67
-msgid "Disk partitions"
-msgstr "Particije diska"
-
-#: models.py:70
-msgid "Binary dependencies"
-msgstr ""
-
-#: models.py:75 models.py:77 models.py:79
-msgid "tesseract version"
-msgstr "verzija tesseract-a"
-
-#: models.py:75 models.py:84 models.py:93
-msgid "not found"
-msgstr "nije pronađeno"
-
-#: models.py:77 models.py:86 models.py:95
-msgid "error getting version"
-msgstr "greška pribavljanja verzije"
-
-#: models.py:84 models.py:86 models.py:88
-msgid "unpaper version"
-msgstr "bezpapirna verzija"
-
-#: models.py:93 models.py:95 models.py:97
-msgid "pdftotext version"
-msgstr "verzija pdftotext"
-
-#: models.py:100
-msgid "Mayan EDMS"
-msgstr ""
-
-#: models.py:102
-msgid "UUID"
-msgstr ""
-
-#: models.py:103
-msgid "Mayan EDMS version"
-msgstr "verzija Mayan EDMS "
-
-#: models.py:106
-msgid "Git repository"
-msgstr ""
-
-#: models.py:111 models.py:116
-msgid "Running from a Git repository"
-msgstr "Izvršava se iz Git repozitorija"
-
-#: models.py:117
-msgid "Repository remotes"
-msgstr "Udaljeni repozitoriji"
-
-#: models.py:118
-msgid "Repository remotes URLs"
-msgstr "URL-ovi udaljenih repozitorija"
-
-#: models.py:119
-msgid "Branch"
-msgstr "Ogranak"
-
-#: models.py:120
-msgid "HEAD commit hex SHA"
-msgstr "HEAD izvršava heksadekadni SHA"
-
-#: models.py:121
-msgid "HEAD commit author"
-msgstr "HEAD izvršava autor"
-
-#: models.py:122
-msgid "HEAD commit authored date"
-msgstr "HEAD izvršava autor datum"
-
-#: models.py:123
-msgid "HEAD commit committer"
-msgstr "HEAD izvršava komitera"
-
-#: models.py:124
-msgid "HEAD commit committed date"
-msgstr "HEAD izvršava datum izvršenja"
-
-#: models.py:125
-msgid "HEAD commit message"
-msgstr "HEAD izvršava poruku"
-
-#: models.py:131
-msgid "VirtualEnv"
-msgstr ""
-
-#: models.py:135
-msgid "pip not found."
-msgstr ""
-
-#: permissions.py:7
+#: apps.py:17 permissions.py:7
 msgid "Installation"
 msgstr "Instalacija"
 
-#: permissions.py:8
+#: apps.py:23 apps.py:30
+msgid "Label"
+msgstr ""
+
+#: apps.py:26
+msgid "Items"
+msgstr ""
+
+#: apps.py:31
+msgid "Value"
+msgstr ""
+
+#: apps.py:42
+msgid "VirtualEnv"
+msgstr ""
+
+#: apps.py:47
+msgid "pip not found."
+msgstr ""
+
+#: links.py:12
+msgid "Installation details"
+msgstr ""
+
+#: links.py:15
+msgid "Details"
+msgstr ""
+
+#: links.py:20 views.py:20
+msgid "Installation property namespaces"
+msgstr ""
+
+#: permissions.py:10
 msgid "View installation environment details"
 msgstr "Pregled detalja instalacije"
 
-#: views.py:33
+#: views.py:32
 #, python-format
 msgid "Installation namespace details for: %s"
 msgstr ""
+
+#~ msgid "LSB OS"
+#~ msgstr "LSB OS"
+
+#~ msgid "Distributor ID"
+#~ msgstr "ID oznaka distributora"
+
+#~ msgid "Description"
+#~ msgstr "Opis"
+
+#~ msgid "Release"
+#~ msgstr "Izdanje"
+
+#~ msgid "Codename"
+#~ msgstr "Kodno ime"
+
+#~ msgid "System info"
+#~ msgstr "Sistemske informacije"
+
+#~ msgid "OS architecture"
+#~ msgstr "Arhitektura OS-a"
+
+#~ msgid "Python version"
+#~ msgstr "Verzija Python-a"
+
+#~ msgid "Hostname"
+#~ msgstr "Ime hosta"
+
+#~ msgid "Platform"
+#~ msgstr "Platforma"
+
+#~ msgid "Machine"
+#~ msgstr "Mašina"
+
+#~ msgid "Processor"
+#~ msgstr "Procesor"
+
+#~ msgid "Number of CPUs"
+#~ msgstr "Broj CPU"
+
+#~ msgid "Total physical memory"
+#~ msgstr "Ukupna fizička memorija"
+
+#~ msgid "Disk partitions"
+#~ msgstr "Particije diska"
+
+#~ msgid "tesseract version"
+#~ msgstr "verzija tesseract-a"
+
+#~ msgid "not found"
+#~ msgstr "nije pronađeno"
+
+#~ msgid "error getting version"
+#~ msgstr "greška pribavljanja verzije"
+
+#~ msgid "unpaper version"
+#~ msgstr "bezpapirna verzija"
+
+#~ msgid "pdftotext version"
+#~ msgstr "verzija pdftotext"
+
+#~ msgid "Mayan EDMS version"
+#~ msgstr "verzija Mayan EDMS "
+
+#~ msgid "Running from a Git repository"
+#~ msgstr "Izvršava se iz Git repozitorija"
+
+#~ msgid "Repository remotes"
+#~ msgstr "Udaljeni repozitoriji"
+
+#~ msgid "Repository remotes URLs"
+#~ msgstr "URL-ovi udaljenih repozitorija"
+
+#~ msgid "Branch"
+#~ msgstr "Ogranak"
+
+#~ msgid "HEAD commit hex SHA"
+#~ msgstr "HEAD izvršava heksadekadni SHA"
+
+#~ msgid "HEAD commit author"
+#~ msgstr "HEAD izvršava autor"
+
+#~ msgid "HEAD commit authored date"
+#~ msgstr "HEAD izvršava autor datum"
+
+#~ msgid "HEAD commit committer"
+#~ msgstr "HEAD izvršava komitera"
+
+#~ msgid "HEAD commit committed date"
+#~ msgstr "HEAD izvršava datum izvršenja"
+
+#~ msgid "HEAD commit message"
+#~ msgstr "HEAD izvršava poruku"
 
 #~ msgid "Installed via fabfile"
 #~ msgstr "Installed via fabfile"
