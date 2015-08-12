@@ -43,15 +43,21 @@ class CheckoutsApp(MayanAppConfig):
         )
         Document.add_to_class(
             'checkout_info',
-            lambda document: DocumentCheckout.objects.document_checkout_info(document)
+            lambda document: DocumentCheckout.objects.document_checkout_info(
+                document
+            )
         )
         Document.add_to_class(
             'checkout_state',
-            lambda document: DocumentCheckout.objects.document_checkout_state(document)
+            lambda document: DocumentCheckout.objects.document_checkout_state(
+                document
+            )
         )
         Document.add_to_class(
             'is_checked_out',
-            lambda document: DocumentCheckout.objects.is_document_checked_out(document)
+            lambda document: DocumentCheckout.objects.is_document_checked_out(
+                document
+            )
         )
 
         ModelPermission.register(

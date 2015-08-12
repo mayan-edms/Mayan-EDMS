@@ -13,8 +13,8 @@ from documents.models import Document
 from documents.views import DocumentListView
 
 from acls.models import AccessControlList
+from common.generics import ConfirmView, SingleObjectCreateView
 from common.utils import encapsulate
-from common.views import SingleObjectCreateView
 from permissions import Permission
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
@@ -42,7 +42,9 @@ class CheckoutDocumentView(SingleObjectCreateView):
                 permission_document_checkout, request.user, self.document
             )
 
-        return super(CheckoutDocumentView, self).dispatch(request, *args, **kwargs)
+        return super(
+            CheckoutDocumentView, self
+        ).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
         try:
@@ -148,55 +150,66 @@ def checkout_info(request, document_pk):
     )
 
 
-def checkin_document(request, document_pk):
-    document = get_object_or_404(Document, pk=document_pk)
-    post_action_redirect = reverse(
-        'checkouts:checkout_info', args=[document.pk]
-    )
+class DocumentCheckinView(ConfirmView):
+    def get_object(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    def get_extra_context(self):
+        document = self.get_object()
 
-    if not document.is_checked_out():
-        messages.error(request, _('Document has not been checked out.'))
-        return HttpResponseRedirect(previous)
+        context = {
+            'object': document,
+        }
 
-    # If the user trying to check in the document is the same as the check out
-    # user just check for the normal permission otherwise check for the forceful
-    # checkin permission
-    if document.checkout_info().user == request.user:
-        try:
-            Permission.check_permissions(request.user, [permission_document_checkin])
-        except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_checkin, request.user, document)
-    else:
-        try:
-            Permission.check_permissions(request.user, [permission_document_checkin_override])
-        except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_checkin_override, request.user, document)
+        if document.checkout_info().user != self.request.user:
+            context['title'] = _(
+                'You didn\'t originally checked out this document. '
+                'Forcefully check in the document: %s?'
+            ) % document
+        else:
+            context['title'] = _('Check in the document: %s?') % document
 
-    if request.method == 'POST':
+        return context
+
+    def object_action(self, request, obj):
+        document = obj
+
+        if document.checkout_info().user == request.user:
+            try:
+                Permission.check_permissions(
+                    request.user, (permission_document_checkin,)
+                )
+            except PermissionDenied:
+                AccessControlList.objects.check_access(
+                    permission_document_checkin, request.user, document
+                )
+        else:
+            try:
+                Permission.check_permissions(
+                    request.user, (permission_document_checkin_override,)
+                )
+            except PermissionDenied:
+                AccessControlList.objects.check_access(
+                    permission_document_checkin_override, request.user, document
+                )
+
         try:
             document.check_in(user=request.user)
         except DocumentNotCheckedOut:
             messages.error(request, _('Document has not been checked out.'))
         except Exception as exception:
-            messages.error(request, _('Error trying to check in document; %s') % exception)
+            messages.error(
+                request, _('Error trying to check in document; %s') % exception
+            )
         else:
-            messages.success(request, _('Document "%s" checked in successfully.') % document)
-            return HttpResponseRedirect(next)
+            messages.success(
+                request, _('Document "%s" checked in successfully.') % document
+            )
 
-    context = {
-        'delete_view': False,
-        'previous': previous,
-        'next': next,
-        'object': document,
-    }
+    def get_post_action_redirect(self):
+        return reverse('checkouts:checkout_info', args=(self.get_object().pk,))
 
-    if document.checkout_info().user != request.user:
-        context['title'] = _('You didn\'t originally checked out this document. Forcefully check in the document: %s?') % document
-    else:
-        context['title'] = _('Check in the document: %s?') % document
+    def post(self, request, *args, **kwargs):
+        self.object_action(request=request, obj=self.get_object())
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+        return HttpResponseRedirect(self.get_success_url())

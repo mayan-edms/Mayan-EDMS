@@ -14,8 +14,13 @@ from documents.permissions import permission_document_view
 from permissions import Permission
 
 from .models import DocumentCheckout
-from .permissions import permission_document_checkout, permission_document_checkin, permission_document_checkin_override
-from .serializers import DocumentCheckoutSerializer, NewDocumentCheckoutSerializer
+from .permissions import (
+    permission_document_checkout, permission_document_checkin,
+    permission_document_checkin_override
+)
+from .serializers import (
+    DocumentCheckoutSerializer, NewDocumentCheckoutSerializer
+)
 
 
 class APICheckedoutDocumentListView(generics.ListCreateAPIView):
@@ -29,44 +34,65 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
         documents = DocumentCheckout.objects.checked_out_documents()
 
         try:
-            Permission.check_permissions(self.request.user, [permission_document_view])
+            Permission.check_permissions(
+                self.request.user, (permission_document_view,)
+            )
         except PermissionDenied:
-            filtered_documents = AccessControlList.objects.filter_by_access([permission_document_view], self.request.user, documents)
+            filtered_documents = AccessControlList.objects.filter_by_access(
+                (permission_document_view,), self.request.user, documents
+            )
         else:
             filtered_documents = documents
 
-        return DocumentCheckout.objects.filter(document__pk__in=filtered_documents.values_list('pk', flat=True))
+        return DocumentCheckout.objects.filter(
+            document__pk__in=filtered_documents.values_list('pk', flat=True)
+        )
 
     def get(self, request, *args, **kwargs):
         """
         Returns a list of all the documents that are currently checked out.
         """
-        return super(APICheckedoutDocumentListView, self).get(request, *args, **kwargs)
+
+        return super(
+            APICheckedoutDocumentListView, self
+        ).get(request, *args, **kwargs)
 
     def post(self, request, *args, **kwargs):
         """
         Checkout a document.
         """
+
         serializer = self.get_serializer(data=request.DATA, files=request.FILES)
 
         if serializer.is_valid():
-            document = get_object_or_404(Document, pk=serializer.data['document'])
+            document = get_object_or_404(
+                Document, pk=serializer.data['document']
+            )
             try:
-                Permission.check_permissions(request.user, [permission_document_checkout])
+                Permission.check_permissions(
+                    request.user, (permission_document_checkout,)
+                )
             except PermissionDenied:
-                AccessControlList.objects.check_access(permission_document_checkout, request.user, document)
+                AccessControlList.objects.check_access(
+                    permission_document_checkout, request.user, document
+                )
 
             timezone = pytz.utc
 
             try:
                 DocumentCheckout.objects.create(
                     document=document,
-                    expiration_datetime=timezone.localize(serializer.data['expiration_datetime']),
+                    expiration_datetime=timezone.localize(
+                        serializer.data['expiration_datetime']
+                    ),
                     user=request.user,
                     block_new_version=serializer.data['block_new_version']
                 )
             except Exception as exception:
-                return Response(data={'exception': unicode(exception)}, status=status.HTTP_400_BAD_REQUEST)
+                return Response(
+                    data={'exception': unicode(exception)},
+                    status=status.HTTP_400_BAD_REQUEST
+                )
 
             return Response(status=status.HTTP_201_CREATED)
 
@@ -81,13 +107,19 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
             documents = DocumentCheckout.objects.checked_out_documents()
 
             try:
-                Permission.check_permissions(self.request.user, [permission_document_view])
+                Permission.check_permissions(
+                    self.request.user, (permission_document_view,)
+                )
             except PermissionDenied:
-                filtered_documents = AccessControlList.objects.filter_by_access([permission_document_view], self.request.user, documents)
+                filtered_documents = AccessControlList.objects.filter_by_access(
+                    (permission_document_view,), self.request.user, documents
+                )
             else:
                 filtered_documents = documents
 
-            return DocumentCheckout.objects.filter(document__pk__in=filtered_documents.values_list('pk', flat=True))
+            return DocumentCheckout.objects.filter(
+                document__pk__in=filtered_documents.values_list('pk', flat=True)
+            )
         elif self.request.method == 'DELETE':
             return DocumentCheckout.objects.all()
 
@@ -96,7 +128,9 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
         Retrieve the details of the selected checked out document entry.
         """
 
-        return super(APICheckedoutDocumentView, self).get(request, *args, **kwargs)
+        return super(
+            APICheckedoutDocumentView, self).get(request, *args, **kwargs
+        )
 
     def delete(self, request, *args, **kwargs):
         """
@@ -107,13 +141,21 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
 
         if document.checkout_info().user == request.user:
             try:
-                Permission.check_permissions(request.user, [permission_document_checkin])
+                Permission.check_permissions(
+                    request.user, (permission_document_checkin,)
+                )
             except PermissionDenied:
-                AccessControlList.objects.check_access(permission_document_checkin, request.user, document)
+                AccessControlList.objects.check_access(
+                    permission_document_checkin, request.user, document
+                )
         else:
             try:
-                Permission.check_permissions(request.user, [permission_document_checkin_override])
+                Permission.check_permissions(
+                    request.user, (permission_document_checkin_override,)
+                )
             except PermissionDenied:
-                AccessControlList.objects.check_access(permission_document_checkin_override, request.user, document)
+                AccessControlList.objects.check_access(
+                    permission_document_checkin_override, request.user, document
+                )
 
         return super(APICheckedoutDocumentView, self).delete(request, *args, **kwargs)
