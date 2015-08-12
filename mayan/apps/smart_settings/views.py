@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 
 from common.views import SimpleView
@@ -22,7 +23,10 @@ class NamespaceDetailView(SimpleView):
     template_name = 'appearance/generic_list.html'
 
     def get_extra_context(self):
-        namespace = Namespace.get(self.kwargs['namespace_name'])
+        try:
+            namespace = Namespace.get(self.kwargs['namespace_name'])
+        except KeyError:
+            raise Http404(_('Namespace: %s, not found') % self.kwargs['namespace_name'])
 
         return {
             'hide_object': True,
