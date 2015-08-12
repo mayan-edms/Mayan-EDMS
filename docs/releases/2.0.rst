@@ -78,6 +78,7 @@ What's new in Mayan EDMS v2.0
 * Preview images' titles are clickable.
 * Improved API
 * Text parsers and OCR backend are used in tandem.
+* Invert page title/project name order in browser title.
 
 Upgrading from a previous version
 =================================
