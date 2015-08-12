@@ -3,11 +3,10 @@ from __future__ import unicode_literals
 import logging
 
 from django.db import models, transaction
+from django.template import Context, Template
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
-
-from .settings import setting_available_indexing_functions
 
 logger = logging.getLogger(__name__)
 
@@ -43,10 +42,9 @@ class IndexInstanceNodeManager(models.Manager):
 
         if template_node.enabled:
             try:
-                result = eval(
-                    template_node.expression, {'document': document},
-                    setting_available_indexing_functions.value
-                )
+                template = Template(template_node.expression)
+                context = Context({'document': document})
+                result = template.render(context=context)
             except Exception as exception:
                 error_message = _(
                     'Error indexing document: %(document)s; expression: '

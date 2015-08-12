@@ -48,19 +48,19 @@ or::
 
     "Storage room 1"
 
-Default values can also be defined as ``Python`` statements or functions such as::
+Default values can also be defined using Django template tags, such as::
 
-    current_date()
+    {% now "Y" %}
+
+This will set the metadata default value to the current year.
 
 If you want to restrict or standardize the values for a metadata type, use the ``Lookup`` field to
-define the list of options that are allowed. Define the lookup list using a ``Python``
-list of quoted values, for example::
+define a comman delimited list of options that will be allowed.
 
-    ["2000", "2001", "2002", "2003", "2004"].
+    2000,2001,2002,2003,2004.
 
 Instead of a free entry text field, your users will get a dropdown list of years,
-this will ensure an unified data entry formatting. You can also use a
-``Python`` expression to generate the lookup list.
+this will ensure an unified data entry formatting.
 
 Metadata types can be assigned in two ways to a document type, by making it an
 optional or a required metadata type for a specific document. This method
@@ -79,7 +79,7 @@ To create an index to organize invoices by a year metadata field do the followin
 - Create a year metadata type with the name ``year`` and the label ``Year``.
 - Create an invoice document type and assign it the ``year`` metadata type as a required metadata type.
 - Create a new index, give it the name ``invoices_per_year`` and the label ``Invoices per year``.
-- Edit the index's ``Tree template``, add a ``New child node``, and enter ``document.metadata_value_of.year`` as the ``Indexing expression``, check the ``Link documents`` checkbox and save.
+- Edit the index's ``Tree template``, add a ``New child node``, and enter ``{{ document.metadata_value_of.year }}`` as the ``Indexing expression``, check the ``Link documents`` checkbox and save.
 - Link this new index to the invoice document type using the ``Document types`` button of the index.
 
 Now every time a new invoice upload or an existing invoice's ``year`` metadata value is changed, a new folder will be created in the ``Invoices`` index with the corresponding invoices for that year.

@@ -45,8 +45,8 @@ class IndexTestCase(TestCase):
 
         # Create simple index template
         root = index.template_root
-        index.node_templates.create(parent=root, expression='document.metadata_value_of.test', link_documents=True)
-        self.assertEqual(list(IndexTemplateNode.objects.values_list('expression', flat=True)), ['', 'document.metadata_value_of.test'])
+        index.node_templates.create(parent=root, expression='{{ document.metadata_value_of.test }}', link_documents=True)
+        self.assertEqual(list(IndexTemplateNode.objects.values_list('expression', flat=True)), ['', '{{ document.metadata_value_of.test }}'])
 
         # Add document metadata value to trigger index node instance creation
         self.document.metadata.create(metadata_type=metadata_type, value='0001')
@@ -102,8 +102,8 @@ class IndexTestCase(TestCase):
 
         # Create simple index template
         root = index.template_root
-        index.node_templates.create(parent=root, expression='document.metadata_value_of.test', link_documents=True)
-        self.assertEqual(list(IndexTemplateNode.objects.values_list('expression', flat=True)), ['', 'document.metadata_value_of.test'])
+        index.node_templates.create(parent=root, expression='{{ document.metadata_value_of.test }}', link_documents=True)
+        self.assertEqual(list(IndexTemplateNode.objects.values_list('expression', flat=True)), ['', '{{ document.metadata_value_of.test }}'])
 
         # There should be no index instances
         self.assertEqual(list(IndexInstanceNode.objects.all()), [])

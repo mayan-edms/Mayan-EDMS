@@ -86,7 +86,11 @@ class IndexTemplateNode(MPTTModel):
     )
     expression = models.CharField(
         max_length=128,
-        help_text=_('Enter a python string expression to be evaluated.'),
+        help_text=_(
+            'Enter a template to render. '
+            'Use Django\'s default templating language '
+            '(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)'
+        ),
         verbose_name=_('Indexing expression')
     )
     enabled = models.BooleanField(
