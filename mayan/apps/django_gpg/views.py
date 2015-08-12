@@ -11,6 +11,7 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
+from common.generics import SingleObjectListView
 from common.utils import encapsulate
 from permissions import Permission
 
@@ -63,31 +64,38 @@ def key_receive(request, key_id):
     }, context_instance=RequestContext(request))
 
 
-def key_list(request, secret=True):
-    Permission.check_permissions(request.user, [permission_key_view])
+class PublicKeyListView(SingleObjectListView):
+    view_permission = permission_key_view
 
-    if secret:
-        object_list = Key.get_all(gpg, secret=True)
-        title = _('Private keys')
-    else:
-        object_list = Key.get_all(gpg)
-        title = _('Public keys')
+    def get_extra_context(self):
+        return  {
+            'extra_columns': [
+                {
+                    'name': _('Key ID'),
+                    'attribute': 'key_id',
+                },
+                {
+                    'name': _('Owner'),
+                    'attribute': encapsulate(lambda x: ', '.join(x.uids)),
+                },
+            ],
+            'hide_object': True,
+            'title': self.get_title()
+        }
 
-    return render_to_response('appearance/generic_list.html', {
-        'object_list': object_list,
-        'title': title,
-        'hide_object': True,
-        'extra_columns': [
-            {
-                'name': _('Key ID'),
-                'attribute': 'key_id',
-            },
-            {
-                'name': _('Owner'),
-                'attribute': encapsulate(lambda x: ', '.join(x.uids)),
-            },
-        ]
-    }, context_instance=RequestContext(request))
+    def get_queryset(self):
+        return Key.get_all(gpg)
+
+    def get_title(self):
+        return _('Public keys')
+
+
+class PrivateKeyListView(PublicKeyListView):
+    def get_title(self):
+        return _('Private keys')
+
+    def get_queryset(self):
+        return Key.get_all(gpg, secret=True)
 
 
 def key_delete(request, fingerprint, key_type):
