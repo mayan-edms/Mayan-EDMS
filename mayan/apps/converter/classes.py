@@ -307,6 +307,20 @@ class TransformationZoom(BaseTransformation):
         )
 
 
+class TransformationCrop(BaseTransformation):
+    name = 'crop'
+    arguments = ('left', 'top', 'right', 'bottom',)
+    label = _('Crop')
+
+    def execute_on(self, *args, **kwargs):
+        super(TransformationCrop, self).execute_on(*args, **kwargs)
+
+        return self.image.crop(
+            (self.left, self.top, self.right, self.bottom)
+        )
+
+
 BaseTransformation.register(TransformationResize)
 BaseTransformation.register(TransformationRotate)
 BaseTransformation.register(TransformationZoom)
+BaseTransformation.register(TransformationCrop)
