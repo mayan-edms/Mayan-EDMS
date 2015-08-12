@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
@@ -35,7 +34,7 @@ class CheckoutDocumentView(SingleObjectCreateView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_document_checkout]
+                request.user, (permission_document_checkout,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -74,7 +73,7 @@ class CheckoutDocumentView(SingleObjectCreateView):
         }
 
     def get_post_action_redirect(self):
-        return reverse('checkouts:checkout_info', args=[self.document.pk])
+        return reverse('checkouts:checkout_info', args=(self.document.pk,))
 
 
 class CheckoutListView(DocumentListView):
@@ -111,13 +110,13 @@ def checkout_info(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
     try:
         Permission.check_permissions(
-            request.user, [
+            request.user, (
                 permission_document_checkout, permission_document_checkin
-            ]
+            )
         )
     except PermissionDenied:
         AccessControlList.objects.check_access(
-            [permission_document_checkout, permission_document_checkin],
+            (permission_document_checkout, permission_document_checkin),
             request.user, document
         )
 
@@ -128,7 +127,9 @@ def checkout_info(request, document_pk):
     if document.is_checked_out():
         checkout_info = document.checkout_info()
         paragraphs.append(
-            _('User: %s') % (checkout_info.user.get_full_name() or checkout_info.user)
+            _('User: %s') % (
+                checkout_info.user.get_full_name() or checkout_info.user
+            )
         )
         paragraphs.append(
             _('Check out time: %s') % checkout_info.checkout_datetime

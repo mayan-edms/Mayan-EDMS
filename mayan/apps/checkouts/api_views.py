@@ -129,8 +129,8 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
         """
 
         return super(
-            APICheckedoutDocumentView, self).get(request, *args, **kwargs
-        )
+            APICheckedoutDocumentView, self
+        ).get(request, *args, **kwargs)
 
     def delete(self, request, *args, **kwargs):
         """

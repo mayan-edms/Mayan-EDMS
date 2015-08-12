@@ -48,8 +48,6 @@ class OCRBackendBase(object):
         logger.info('Starting OCR for document version: %s', document_version)
         logger.debug('document version: %d', document_version.pk)
 
-        language = document_version.document.language
-
         for document_page in document_version.pages.all():
             self.process_document_page(document_page=document_page)
 

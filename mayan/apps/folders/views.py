@@ -51,7 +51,7 @@ class FolderListView(SingleObjectListView):
         queryset = instance.documents
 
         try:
-            Permission.check_permissions(user, [permission_document_view])
+            Permission.check_permissions(user, (permission_document_view,))
         except PermissionDenied:
             queryset = AccessControlList.objects.filter_by_access(
                 permission_document_view, user, queryset
@@ -119,7 +119,7 @@ def folder_delete(request, folder_id):
     folder = get_object_or_404(Folder, pk=folder_id)
 
     try:
-        Permission.check_permissions(request.user, [permission_folder_delete])
+        Permission.check_permissions(request.user, (permission_folder_delete,))
     except PermissionDenied:
         AccessControlList.objects.check_access(
             permission_folder_delete, request.user, folder
@@ -158,7 +158,7 @@ class FolderDetailView(DocumentListView):
 
         try:
             Permission.check_permissions(
-                self.request.user, [permission_folder_view]
+                self.request.user, (permission_folder_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -189,7 +189,7 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.check_permissions(request.user, [permission_folder_add_document])
+        Permission.check_permissions(request.user, (permission_folder_add_document,))
     except PermissionDenied:
         documents = AccessControlList.objects.filter_by_access(permission_folder_add_document, request.user, documents)
 
@@ -239,7 +239,7 @@ class DocumentFolderListView(FolderListView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_document_view]
+                request.user, (permission_document_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -284,7 +284,7 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
 
     logger.debug('folder_documents (pre permission check): %s', folder_documents)
     try:
-        Permission.check_permissions(request.user, [permission_folder_remove_document])
+        Permission.check_permissions(request.user, (permission_folder_remove_document,))
     except PermissionDenied:
         folder_documents = AccessControlList.objects.filter_by_access(permission_folder_remove_document, request.user, folder_documents)
 

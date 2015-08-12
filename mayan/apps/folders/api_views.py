@@ -39,7 +39,7 @@ class APIDocumentFolderListView(generics.ListAPIView):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
         try:
             Permission.check_permissions(
-                self.request.user, [permission_document_view]
+                self.request.user, (permission_document_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(

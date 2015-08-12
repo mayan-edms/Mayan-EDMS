@@ -27,7 +27,7 @@ def get_kwargs_factory(variable_name):
 
 link_transformation_create = Link(
     kwargs=get_kwargs_factory('content_object'),
-    permissions=[permission_transformation_create],
+    permissions=(permission_transformation_create,),
     text=_('Create new transformation'), view='converter:transformation_create'
 )
 link_transformation_delete = Link(

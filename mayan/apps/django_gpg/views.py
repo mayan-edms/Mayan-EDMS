@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 
 
 def key_receive(request, key_id):
-    Permission.check_permissions(request.user, [permission_key_receive])
+    Permission.check_permissions(request.user, (permission_key_receive,))
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -68,7 +68,7 @@ class PublicKeyListView(SingleObjectListView):
     view_permission = permission_key_view
 
     def get_extra_context(self):
-        return  {
+        return {
             'extra_columns': [
                 {
                     'name': _('Key ID'),
@@ -99,7 +99,7 @@ class PrivateKeyListView(PublicKeyListView):
 
 
 def key_delete(request, fingerprint, key_type):
-    Permission.check_permissions(request.user, [permission_key_delete])
+    Permission.check_permissions(request.user, (permission_key_delete,))
 
     secret = key_type == 'sec'
     key = Key.get(gpg, fingerprint, secret=secret)
@@ -130,7 +130,7 @@ def key_delete(request, fingerprint, key_type):
 
 
 def key_query(request):
-    Permission.check_permissions(request.user, [permission_keyserver_query])
+    Permission.check_permissions(request.user, (permission_keyserver_query,))
 
     subtemplates_list = []
     term = request.GET.get('term')

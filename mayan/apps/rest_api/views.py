@@ -4,8 +4,6 @@ import logging
 
 from rest_framework import generics, renderers
 from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.response import Response
-from rest_framework.reverse import reverse
 
 from .classes import APIVersion, APIEndPoint
 from .serializers import APIAppSerializer, APIVersionSerializer

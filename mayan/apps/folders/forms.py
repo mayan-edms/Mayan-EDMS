@@ -23,7 +23,7 @@ class FolderListForm(forms.Form):
 
         queryset = Folder.objects.all()
         try:
-            Permission.check_permissions(user, [permission_folder_view])
+            Permission.check_permissions(user, (permission_folder_view,))
         except PermissionDenied:
             queryset = AccessControlList.objects.filter_by_access(
                 permission_folder_view, user, queryset

@@ -63,7 +63,11 @@ def get_breadcrumbs(index_instance, simple=False, single_link=False, include_cou
 
     if single_link:
         # Return the entire breadcrumb path as a single HTML anchor
-        output.insert(0, get_instance_link(index_instance_node=index_instance, text=(' / '.join(result))))
+        output.insert(
+            0, get_instance_link(
+                index_instance_node=index_instance, text=(' / '.join(result))
+            )
+        )
         return mark_safe(' '.join(output))
     else:
         output.insert(0, ' / '.join(result))

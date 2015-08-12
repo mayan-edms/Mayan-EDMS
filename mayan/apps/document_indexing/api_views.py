@@ -101,7 +101,7 @@ class APIIndexNodeInstanceDocumentListView(generics.ListAPIView):
         )
         try:
             Permission.check_permissions(
-                self.request.user, [permission_document_indexing_view]
+                self.request.user, (permission_document_indexing_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -179,7 +179,7 @@ class APIDocumentIndexListView(generics.ListAPIView):
         document = get_object_or_404(Document, pk=self.kwargs['pk'])
         try:
             Permission.check_permissions(
-                self.request.user, [permission_document_view]
+                self.request.user, (permission_document_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(

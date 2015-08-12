@@ -34,7 +34,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
             Permission.check_permissions(
-                request.user, [permission_document_workflow_view]
+                request.user, (permission_document_workflow_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -75,7 +75,7 @@ class WorkflowDocumentListView(DocumentListView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_workflow_view]
+                request.user, (permission_workflow_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -103,7 +103,7 @@ class WorkflowInstanceDetailView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
             Permission.check_permissions(
-                request.user, [permission_document_workflow_view]
+                request.user, (permission_document_workflow_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -143,7 +143,7 @@ class WorkflowInstanceTransitionView(FormView):
     def dispatch(self, request, *args, **kwargs):
         try:
             Permission.check_permissions(
-                request.user, [permission_document_workflow_transition]
+                request.user, (permission_document_workflow_transition,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -274,7 +274,7 @@ class SetupWorkflowStateListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
             Permission.check_permissions(
-                request.user, [permission_workflow_edit]
+                request.user, (permission_workflow_edit,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -312,7 +312,7 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
     def dispatch(self, request, *args, **kwargs):
         try:
             Permission.check_permissions(
-                request.user, [permission_workflow_edit]
+                request.user, (permission_workflow_edit,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -415,7 +415,7 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
             Permission.check_permissions(
-                request.user, [permission_workflow_edit]
+                request.user, (permission_workflow_edit,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -455,7 +455,7 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
     def dispatch(self, request, *args, **kwargs):
         try:
             Permission.check_permissions(
-                request.user, [permission_workflow_edit]
+                request.user, (permission_workflow_edit,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(

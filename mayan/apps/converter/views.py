@@ -36,7 +36,7 @@ class TransformationDeleteView(SingleObjectDeleteView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_transformation_delete]
+                request.user, (permission_transformation_delete,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -50,11 +50,11 @@ class TransformationDeleteView(SingleObjectDeleteView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'converter:transformation_list', args=[
+            'converter:transformation_list', args=(
                 self.transformation.content_type.app_label,
                 self.transformation.content_type.model,
                 self.transformation.object_id
-            ]
+            )
         )
 
     def get_extra_context(self):
@@ -62,11 +62,11 @@ class TransformationDeleteView(SingleObjectDeleteView):
             'content_object': self.transformation.content_object,
             'navigation_object_list': ['content_object', 'transformation'],
             'previous': reverse(
-                'converter:transformation_list', args=[
+                'converter:transformation_list', args=(
                     self.transformation.content_type.app_label,
                     self.transformation.content_type.model,
                     self.transformation.object_id
-                ]
+                )
             ),
             'title': _(
                 'Delete transformation "%(transformation)s" for: '
@@ -97,7 +97,7 @@ class TransformationCreateView(SingleObjectCreateView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_transformation_create]
+                request.user, (permission_transformation_create,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -152,7 +152,7 @@ class TransformationEditView(SingleObjectEditView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_transformation_edit]
+                request.user, (permission_transformation_edit,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -176,11 +176,11 @@ class TransformationEditView(SingleObjectEditView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'converter:transformation_list', args=[
+            'converter:transformation_list', args=(
                 self.transformation.content_type.app_label,
                 self.transformation.content_type.model,
                 self.transformation.object_id
-            ]
+            )
         )
 
     def get_extra_context(self):
@@ -213,7 +213,7 @@ class TransformationListView(SingleObjectListView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_transformation_view]
+                request.user, (permission_transformation_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(

@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import Group, User
 
 from rest_framework import serializers
-from rest_framework.reverse import reverse
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):

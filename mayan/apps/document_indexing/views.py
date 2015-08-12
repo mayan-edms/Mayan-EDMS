@@ -54,7 +54,11 @@ class SetupIndexListView(SingleObjectListView):
             'extra_columns': [
                 {'name': _('Label'), 'attribute': 'label'},
                 {'name': _('Slug'), 'attribute': 'slug'},
-                {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
+                {
+                    'name': _('Enabled'), 'attribute': encapsulate(
+                        lambda x: two_state_template(x.enabled)
+                    )
+                },
             ]
         }
 
@@ -88,9 +92,13 @@ def index_setup_view(request, index_pk):
     index = get_object_or_404(Index, pk=index_pk)
 
     try:
-        Permission.check_permissions(request.user, [permission_document_indexing_setup])
+        Permission.check_permissions(
+            request.user, (permission_document_indexing_setup,)
+        )
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_indexing_setup, request.user, index)
+        AccessControlList.objects.check_access(
+            permission_document_indexing_setup, request.user, index
+        )
 
     object_list = index.template_root.get_descendants(include_self=True)
 
@@ -101,14 +109,28 @@ def index_setup_view(request, index_pk):
         'title': _('Tree template nodes for index: %s') % index,
         'hide_object': True,
         'extra_columns': [
-            {'name': _('Level'), 'attribute': encapsulate(lambda x: node_level(x))},
-            {'name': _('Enabled'), 'attribute': encapsulate(lambda x: two_state_template(x.enabled))},
-            {'name': _('Has document links?'), 'attribute': encapsulate(lambda x: two_state_template(x.link_documents))},
+            {
+                'name': _('Level'), 'attribute': encapsulate(
+                    lambda x: node_level(x)
+                )
+            },
+            {
+                'name': _('Enabled'), 'attribute': encapsulate(
+                    lambda x: two_state_template(x.enabled)
+                )
+            },
+            {
+                'name': _('Has document links?'), 'attribute': encapsulate(
+                    lambda x: two_state_template(x.link_documents)
+                )
+            },
         ],
     }
 
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_list.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 class SetupIndexDocumentTypesView(AssignRemoveView):
@@ -124,16 +146,24 @@ class SetupIndexDocumentTypesView(AssignRemoveView):
         return get_object_or_404(Index, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return AssignRemoveView.generate_choices(DocumentType.objects.exclude(pk__in=self.get_object().document_types.all()))
+        return AssignRemoveView.generate_choices(
+            DocumentType.objects.exclude(
+                pk__in=self.get_object().document_types.all()
+            )
+        )
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(self.get_object().document_types.all())
+        return AssignRemoveView.generate_choices(
+            self.get_object().document_types.all()
+        )
 
     def remove(self, item):
         self.get_object().document_types.remove(item)
 
     def get_context_data(self, **kwargs):
-        data = super(SetupIndexDocumentTypesView, self).get_context_data(**kwargs)
+        data = super(
+            SetupIndexDocumentTypesView, self
+        ).get_context_data(**kwargs)
         data.update({
             'object': self.get_object(),
             'title': _('Document types linked to index: %s') % self.get_object()
@@ -147,18 +177,28 @@ def template_node_create(request, parent_pk):
     parent_node = get_object_or_404(IndexTemplateNode, pk=parent_pk)
 
     try:
-        Permission.check_permissions(request.user, [permission_document_indexing_edit])
+        Permission.check_permissions(
+            request.user, (permission_document_indexing_edit,)
+        )
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_indexing_edit, request.user, parent_node.index)
+        AccessControlList.objects.check_access(
+            permission_document_indexing_edit, request.user, parent_node.index
+        )
 
     if request.method == 'POST':
         form = IndexTemplateNodeForm(request.POST)
         if form.is_valid():
             node = form.save()
-            messages.success(request, _('Index template node created successfully.'))
-            return HttpResponseRedirect(reverse('indexing:index_setup_view', args=[node.index.pk]))
+            messages.success(
+                request, _('Index template node created successfully.')
+            )
+            return HttpResponseRedirect(
+                reverse('indexing:index_setup_view', args=(node.index.pk,))
+            )
     else:
-        form = IndexTemplateNodeForm(initial={'index': parent_node.index, 'parent': parent_node})
+        form = IndexTemplateNodeForm(
+            initial={'index': parent_node.index, 'parent': parent_node}
+        )
 
     return render_to_response('appearance/generic_form.html', {
         'form': form,
@@ -172,16 +212,24 @@ def template_node_edit(request, node_pk):
     node = get_object_or_404(IndexTemplateNode, pk=node_pk)
 
     try:
-        Permission.check_permissions(request.user, [permission_document_indexing_edit])
+        Permission.check_permissions(
+            request.user, (permission_document_indexing_edit,)
+        )
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_indexing_edit, request.user, node.index)
+        AccessControlList.objects.check_access(
+            permission_document_indexing_edit, request.user, node.index
+        )
 
     if request.method == 'POST':
         form = IndexTemplateNodeForm(request.POST, instance=node)
         if form.is_valid():
             form.save()
-            messages.success(request, _('Index template node edited successfully'))
-            return HttpResponseRedirect(reverse('indexing:index_setup_view', args=[node.index.pk]))
+            messages.success(
+                request, _('Index template node edited successfully')
+            )
+            return HttpResponseRedirect(
+                reverse('indexing:index_setup_view', args=(node.index.pk,))
+            )
     else:
         form = IndexTemplateNodeForm(instance=node)
 
@@ -198,11 +246,17 @@ def template_node_delete(request, node_pk):
     node = get_object_or_404(IndexTemplateNode, pk=node_pk)
 
     try:
-        Permission.check_permissions(request.user, [permission_document_indexing_edit])
+        Permission.check_permissions(
+            request.user, (permission_document_indexing_edit,)
+        )
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_indexing_edit, request.user, node.index)
+        AccessControlList.objects.check_access(
+            permission_document_indexing_edit, request.user, node.index
+        )
 
-    post_action_redirect = reverse('indexing:index_setup_view', args=[node.index.pk])
+    post_action_redirect = reverse(
+        'indexing:index_setup_view', args=(node.index.pk,)
+    )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -212,8 +266,11 @@ def template_node_delete(request, node_pk):
             node.delete()
             messages.success(request, _('Node: %s deleted successfully.') % node)
         except Exception as exception:
-            messages.error(request, _('Node: %(node)s delete error: %(error)s') % {
-                'node': node, 'error': exception})
+            messages.error(
+                request, _('Node: %(node)s delete error: %(error)s') % {
+                    'node': node, 'error': exception
+                }
+            )
 
         return HttpResponseRedirect(next)
 
@@ -227,8 +284,10 @@ def template_node_delete(request, node_pk):
         'previous': previous,
     }
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_confirm.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 class IndexListView(SingleObjectListView):
@@ -250,8 +309,15 @@ class IndexListView(SingleObjectListView):
             'title': _('Indexes'),
             'hide_links': True,
             'extra_columns': [
-                {'name': _('Items'), 'attribute': encapsulate(lambda instance: IndexListView.get_items_count(instance))},
-                {'name': _('Document types'), 'attribute': 'get_document_types_names'},
+                {
+                    'name': _('Items'), 'attribute': encapsulate(
+                        lambda instance: IndexListView.get_items_count(instance)
+                    )
+                },
+                {
+                    'name': _('Document types'),
+                    'attribute': 'get_document_types_names'
+                },
             ],
         }
 
@@ -263,21 +329,30 @@ class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
             queryset = instance.documents
 
             try:
-                Permission.check_permissions(user, [permission_document_view])
+                Permission.check_permissions(user, (permission_document_view,))
             except PermissionDenied:
-                queryset = AccessControlList.objects.filter_by_access(permission_document_view, user, queryset)
+                queryset = AccessControlList.objects.filter_by_access(
+                    permission_document_view, user, queryset
+                )
 
             return queryset.count()
         else:
             return instance.get_children().count()
 
     def dispatch(self, request, *args, **kwargs):
-        self.index_instance = get_object_or_404(IndexInstanceNode, pk=self.kwargs['pk'])
+        self.index_instance = get_object_or_404(
+            IndexInstanceNode, pk=self.kwargs['pk']
+        )
 
         try:
-            Permission.check_permissions(request.user, [permission_document_indexing_view])
+            Permission.check_permissions(
+                request.user, (permission_document_indexing_view,)
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_indexing_view, request.user, self.index_instance.index)
+            AccessControlList.objects.check_access(
+                permission_document_indexing_view,
+                request.user, self.index_instance.index
+            )
 
         if self.index_instance:
             if self.index_instance.index_template_node.link_documents:
@@ -305,7 +380,9 @@ class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
         context = {
             'hide_links': True,
             'object': self.index_instance,
-            'title': mark_safe(_('Contents for index: %s') % get_breadcrumbs(self.index_instance))
+            'title': mark_safe(
+                _('Contents for index: %s') % get_breadcrumbs(self.index_instance)
+            )
         }
 
         if self.index_instance and not self.index_instance.index_template_node.link_documents:
@@ -314,11 +391,15 @@ class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
                     'extra_columns': [
                         {
                             'name': _('Node'),
-                            'attribute': encapsulate(lambda x: index_instance_item_link(x))
+                            'attribute': encapsulate(
+                                lambda x: index_instance_item_link(x)
+                            )
                         },
                         {
                             'name': _('Items'),
-                            'attribute': encapsulate(lambda instance: IndexInstanceNodeView.get_item_count(instance=instance, user=self.request.user))
+                            'attribute': encapsulate(
+                                lambda instance: IndexInstanceNodeView.get_item_count(instance=instance, user=self.request.user)
+                            )
                         }
                     ],
                     'hide_object': True,
@@ -332,7 +413,9 @@ def rebuild_index_instances(request):
     """
     Confirmation view to execute the tool: do_rebuild_all_indexes
     """
-    Permission.check_permissions(request.user, [permission_document_indexing_rebuild_indexes])
+    Permission.check_permissions(
+        request.user, (permission_document_indexing_rebuild_indexes,)
+    )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -360,12 +443,23 @@ def document_index_list(request, document_id):
     queryset = document.node_instances.all()
     try:
         # TODO: should be AND not OR
-        Permission.check_permissions(request.user, [permission_document_view, permission_document_indexing_view])
+        Permission.check_permissions(
+            request.user, (
+                permission_document_view, permission_document_indexing_view
+            )
+        )
     except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(permission_document_indexing_view, request.user, queryset, related='index')
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_document_indexing_view, request.user, queryset,
+            related='index'
+        )
 
     for index_instance in queryset:
-        object_list.append(get_breadcrumbs(index_instance, single_link=True, include_count=True))
+        object_list.append(
+            get_breadcrumbs(
+                index_instance, single_link=True, include_count=True
+            )
+        )
 
     return render_to_response('appearance/generic_list.html', {
         'object_list': object_list,

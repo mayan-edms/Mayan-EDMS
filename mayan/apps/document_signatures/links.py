@@ -34,7 +34,7 @@ link_document_signature_delete = Link(
 link_document_signature_download = Link(
     condition=can_delete_detached_signature, text=_('Download signature'),
     view='signatures:document_signature_download', args='object.pk',
-    permissions=[permission_signature_download]
+    permissions=(permission_signature_download,)
 )
 link_document_signature_upload = Link(
     condition=can_upload_detached_signature,

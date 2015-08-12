@@ -33,7 +33,7 @@ def document_verify(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.check_permissions(request.user, [permission_document_verify])
+        Permission.check_permissions(request.user, (permission_document_verify,))
     except PermissionDenied:
         AccessControlList.objects.check_access(permission_document_verify, request.user, document)
 
@@ -80,7 +80,7 @@ def document_signature_upload(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.check_permissions(request.user, [permission_signature_upload])
+        Permission.check_permissions(request.user, (permission_signature_upload,))
     except PermissionDenied:
         AccessControlList.objects.check_access(permission_signature_upload, request.user, document)
 
@@ -116,7 +116,7 @@ def document_signature_download(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.check_permissions(request.user, [permission_signature_download])
+        Permission.check_permissions(request.user, (permission_signature_download,))
     except PermissionDenied:
         AccessControlList.objects.check_access(permission_signature_download, request.user, document)
 
@@ -140,7 +140,7 @@ def document_signature_delete(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.check_permissions(request.user, [permission_signature_delete])
+        Permission.check_permissions(request.user, (permission_signature_delete,))
     except PermissionDenied:
         AccessControlList.objects.check_access(permission_signature_delete, request.user, document)
 
