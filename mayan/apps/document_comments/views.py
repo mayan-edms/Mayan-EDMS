@@ -10,6 +10,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
+from common.generics import SingleObjectListView
 from documents.models import Document
 from permissions import Permission
 
@@ -132,24 +133,26 @@ def comment_add(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def comments_for_document(request, document_id):
-    """
-    Show a list of all the comments related to the passed object
-    """
-    document = get_object_or_404(Document, pk=document_id)
+class DocumentCommentListView(SingleObjectListView):
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
 
-    try:
-        Permission.check_permissions(request.user, (permission_comment_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_comment_view, request.user, document
-        )
+    def get_queryset(self):
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_comment_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_comment_view, self.request.user, self.get_document()
+            )
 
-    return render_to_response('appearance/generic_list.html', {
-        'object': document,
-        'access_object': document,
-        'title': _('Comments for document: %s') % document,
-        'object_list': document.comments.all(),
-        'hide_link': True,
-        'hide_object': True,
-    }, context_instance=RequestContext(request))
+        return self.get_document().comments.all()
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'hide_object': True,
+            'object': self.get_document(),
+            'title': _('Comments for document: %s') % self.get_document(),
+        }

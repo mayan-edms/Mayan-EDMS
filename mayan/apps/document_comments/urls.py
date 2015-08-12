@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
+from .views import DocumentCommentListView
+
 urlpatterns = patterns(
     'document_comments.views',
     url(
@@ -17,7 +19,7 @@ urlpatterns = patterns(
         name='comment_add'
     ),
     url(
-        r'^(?P<document_id>\d+)/comment/list/$', 'comments_for_document',
-        name='comments_for_document'
+        r'^(?P<pk>\d+)/comment/list/$',
+        DocumentCommentListView.as_view(), name='comments_for_document'
     ),
 )
