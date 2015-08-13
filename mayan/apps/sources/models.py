@@ -8,6 +8,8 @@ import logging
 import os
 import poplib
 
+import yaml
+
 from django.core.files import File
 from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
@@ -21,15 +23,16 @@ from converter.models import Transformation
 from djcelery.models import PeriodicTask, IntervalSchedule
 from documents.models import Document, DocumentType
 from documents.settings import setting_language
-from metadata.api import save_metadata_list
+from metadata.api import save_metadata_list, set_bulk_metadata
 
 from .classes import Attachment, SourceUploadedFile, StagingFile
 from .literals import (
     DEFAULT_INTERVAL, DEFAULT_POP3_TIMEOUT, DEFAULT_IMAP_MAILBOX,
-    SOURCE_CHOICES, SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WATCH,
-    SOURCE_CHOICE_WEB_FORM, SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES,
-    SOURCE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICE_Y,
-    SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3
+    DEFAULT_METADATA_ATTACHMENT_NAME, SOURCE_CHOICES, SOURCE_CHOICE_STAGING,
+    SOURCE_CHOICE_WATCH, SOURCE_CHOICE_WEB_FORM,
+    SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICES,
+    SOURCE_UNCOMPRESS_CHOICE_Y, SOURCE_CHOICE_EMAIL_IMAP,
+    SOURCE_CHOICE_EMAIL_POP3
 )
 
 logger = logging.getLogger(__name__)
@@ -52,7 +55,7 @@ class Source(models.Model):
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
-    def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, user=None):
+    def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, user=None):
         try:
             with transaction.atomic():
                 document = Document.objects.create(
@@ -75,6 +78,12 @@ class Source(models.Model):
                         metadata_dict_list, document, create=True
                     )
 
+                if metadata_dictionary:
+                    set_bulk_metadata(
+                        document=document,
+                        metadata_dictionary=metadata_dictionary
+                    )
+
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document "%s" from source "%s"; %s',
@@ -82,14 +91,15 @@ class Source(models.Model):
             )
             raise
 
-    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, user=None):
+    def handle_upload(self, file_object, description=None, document_type=None, expand=False, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, user=None):
         if not document_type:
             document_type = self.document_type
 
         kwargs = {
             'description': description, 'document_type': document_type,
             'label': label, 'language': language,
-            'metadata_dict_list': metadata_dict_list, 'user': user
+            'metadata_dict_list': metadata_dict_list,
+            'metadata_dictionary': metadata_dictionary, 'user': user
         }
 
         if expand:
@@ -312,14 +322,23 @@ class EmailBaseModel(IntervalBaseModel):
     )
     username = models.CharField(max_length=96, verbose_name=_('Username'))
     password = models.CharField(max_length=96, verbose_name=_('Password'))
+    metadata_attachment_name = models.CharField(
+        default=DEFAULT_METADATA_ATTACHMENT_NAME,
+        help_text=_(
+            'Name of the attachment that will contains the metadata type names '
+            'and value pairs to be assigned to the rest of the downloaded '
+            'attachments. Note: This attachment has to be the first attachment.'
+        ), max_length=128, verbose_name=_('Metadata attachment name')
+    )
 
     # From: http://bookmarks.honewatson.com/2009/08/11/python-gmail-imaplib-search-subject-get-attachments/
     # TODO: Add lock to avoid running more than once concurrent same document download
     # TODO: Use message ID for lock
     @staticmethod
     def process_message(source, message):
-        email = message_from_string(message)
         counter = 1
+        email = message_from_string(message)
+        metadata_dictionary = None
 
         for part in email.walk():
             disposition = part.get('Content-Disposition', 'none')
@@ -336,12 +355,20 @@ class EmailBaseModel(IntervalBaseModel):
 
                 logger.debug('filename: %s', filename)
 
-                file_object = Attachment(part, name=filename)
-                source.handle_upload(
-                    document_type=source.document_type,
-                    file_object=file_object, label=filename,
-                    expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y)
-                )
+                with Attachment(part, name=filename) as file_object:
+                    if filename == source.metadata_attachment_name:
+                        metadata_dictionary = yaml.safe_load(file_object.read())
+                        logger.debug(
+                            'Got metadata dictionary: %s', metadata_dictionary
+                        )
+                    else:
+                        source.handle_upload(
+                            document_type=source.document_type,
+                            file_object=file_object, label=filename,
+                            expand=(
+                                source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y
+                            ), metadata_dictionary=metadata_dictionary
+                        )
 
     class Meta:
         verbose_name = _('Email source')

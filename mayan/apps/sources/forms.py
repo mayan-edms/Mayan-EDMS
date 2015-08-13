@@ -94,7 +94,8 @@ class POP3EmailSetupForm(EmailSetupBaseForm):
     class Meta(EmailSetupBaseForm.Meta):
         fields = (
             'label', 'enabled', 'interval', 'document_type', 'uncompress',
-            'host', 'ssl', 'port', 'username', 'password', 'timeout'
+            'host', 'ssl', 'port', 'username', 'password', 'timeout',
+            'metadata_attachment_name',
         )
         model = POP3Email
 
@@ -103,7 +104,8 @@ class IMAPEmailSetupForm(EmailSetupBaseForm):
     class Meta(EmailSetupBaseForm.Meta):
         fields = (
             'label', 'enabled', 'interval', 'document_type', 'uncompress',
-            'host', 'ssl', 'port', 'username', 'password', 'mailbox'
+            'host', 'ssl', 'port', 'username', 'password', 'mailbox',
+            'metadata_attachment_name'
         )
         model = IMAPEmail
 
