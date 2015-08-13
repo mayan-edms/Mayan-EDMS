@@ -756,7 +756,7 @@ def document_page_view(request, document_page_id):
     return render_to_response('appearance/generic_form.html', {
         'access_object': document_page.document,
         'form': document_page_form,
-        'navigation_object_list': ['page'],
+        'navigation_object_list': ('page',),
         'page': document_page,
         'rotation': rotation,
         'title': ' '.join([base_title, zoom_text]),
@@ -1004,7 +1004,7 @@ def document_type_filename_list(request, document_type_id):
             }
         ],
         'hide_link': True,
-        'navigation_object_list': ['document_type'],
+        'navigation_object_list': ('document_type',),
         'object_list': document_type.filenames.all(),
         'title': _('Filenames for document type: %s') % document_type,
     }
@@ -1037,7 +1037,7 @@ def document_type_filename_edit(request, document_type_filename_id):
         'document_type': document_type_filename.document_type,
         'filename': document_type_filename,
         'form': form,
-        'navigation_object_list': ['document_type', 'filename'],
+        'navigation_object_list': ('document_type', 'filename',),
         'next': next,
         'title': _('Edit filename "%(filename)s" from document type "%(document_type)s"') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
@@ -1069,7 +1069,7 @@ def document_type_filename_delete(request, document_type_filename_id):
         'document_type': document_type_filename.document_type,
         'filename': document_type_filename,
         'previous': previous,
-        'navigation_object_list': ['document_type', 'filename'],
+        'navigation_object_list': ('document_type', 'filename',),
         'next': next,
         'title': _('Delete the filename: %(filename)s, from document type "%(document_type)s"?') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
@@ -1106,7 +1106,7 @@ def document_type_filename_create(request, document_type_id):
     return render_to_response('appearance/generic_form.html', {
         'document_type': document_type,
         'form': form,
-        'navigation_object_list': ['document_type'],
+        'navigation_object_list': ('document_type',),
         'title': _('Create filename for document type: %s') % document_type,
     }, context_instance=RequestContext(request))
 

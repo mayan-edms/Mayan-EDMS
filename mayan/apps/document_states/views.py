@@ -124,7 +124,7 @@ class WorkflowInstanceDetailView(SingleObjectListView):
     def get_context_data(self, **kwargs):
         context = {
             'hide_object': True,
-            'navigation_object_list': ['object', 'workflow_instance'],
+            'navigation_object_list': ('object', 'workflow_instance'),
             'object': self.get_workflow_instance().document,
             'object_list': self.get_queryset(),
             'title': _('Detail of workflow: %(workflow)s') % {
@@ -180,7 +180,7 @@ class WorkflowInstanceTransitionView(FormView):
 
         context.update(
             {
-                'navigation_object_list': ['object', 'workflow_instance'],
+                'navigation_object_list': ('object', 'workflow_instance'),
                 'object': self.get_workflow_instance().document,
                 'submit_label': _('Submit'),
                 'title': _(
@@ -366,7 +366,7 @@ class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
 
         context.update(
             {
-                'navigation_object_list': ['object', 'workflow_instance'],
+                'navigation_object_list': ('object', 'workflow_instance'),
                 'object': self.get_object().workflow,
                 'workflow_instance': self.get_object(),
             }
@@ -393,7 +393,7 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
 
         context.update(
             {
-                'navigation_object_list': ['object', 'workflow_instance'],
+                'navigation_object_list': ('object', 'workflow_instance'),
                 'object': self.get_object().workflow,
                 'workflow_instance': self.get_object(),
             }
@@ -527,7 +527,7 @@ class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
         context.update(
             {
                 'object': self.get_object().workflow,
-                'navigation_object_list': ['object', 'workflow_instance'],
+                'navigation_object_list': ('object', 'workflow_instance'),
                 'workflow_instance': self.get_object(),
             }
         )
@@ -553,7 +553,7 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
 
         context.update(
             {
-                'navigation_object_list': ['object', 'workflow_instance'],
+                'navigation_object_list': ('object', 'workflow_instance'),
                 'object': self.get_object().workflow,
                 'workflow_instance': self.get_object(),
             }

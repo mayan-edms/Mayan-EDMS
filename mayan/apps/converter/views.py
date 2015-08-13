@@ -60,7 +60,7 @@ class TransformationDeleteView(SingleObjectDeleteView):
     def get_extra_context(self):
         return {
             'content_object': self.transformation.content_object,
-            'navigation_object_list': ['content_object', 'transformation'],
+            'navigation_object_list': ('content_object', 'transformation'),
             'previous': reverse(
                 'converter:transformation_list', args=(
                     self.transformation.content_type.app_label,
@@ -122,10 +122,10 @@ class TransformationCreateView(SingleObjectCreateView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'converter:transformation_list', args=[
+            'converter:transformation_list', args=(
                 self.kwargs['app_label'], self.kwargs['model'],
                 self.kwargs['object_id']
-            ]
+            )
         )
 
     def get_queryset(self):
@@ -134,7 +134,7 @@ class TransformationCreateView(SingleObjectCreateView):
     def get_extra_context(self):
         return {
             'content_object': self.content_object,
-            'navigation_object_list': ['content_object'],
+            'navigation_object_list': ('content_object',),
             'title': _(
                 'Create new transformation for: %s'
             ) % self.content_object,
@@ -186,7 +186,7 @@ class TransformationEditView(SingleObjectEditView):
     def get_extra_context(self):
         return {
             'content_object': self.transformation.content_object,
-            'navigation_object_list': ['content_object', 'transformation'],
+            'navigation_object_list': ('content_object', 'transformation'),
             'title': _(
                 'Edit transformation "%(transformation)s" for: %(content_object)s'
             ) % {
@@ -242,6 +242,6 @@ class TransformationListView(SingleObjectListView):
             ],
             'hide_link': True,
             'hide_object': True,
-            'navigation_object_list': ['content_object'],
+            'navigation_object_list': ('content_object',),
             'title': _('Transformations for: %s') % self.content_object,
         }

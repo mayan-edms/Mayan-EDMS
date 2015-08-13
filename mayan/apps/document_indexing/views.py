@@ -105,7 +105,7 @@ def index_setup_view(request, index_pk):
     context = {
         'object_list': object_list,
         'index': index,
-        'navigation_object_list': ['index'],
+        'navigation_object_list': ('index',),
         'title': _('Tree template nodes for index: %s') % index,
         'hide_object': True,
         'extra_columns': [
@@ -203,7 +203,7 @@ def template_node_create(request, parent_pk):
     return render_to_response('appearance/generic_form.html', {
         'form': form,
         'index': parent_node.index,
-        'navigation_object_list': ['index'],
+        'navigation_object_list': ('index',),
         'title': _('Create child node'),
     }, context_instance=RequestContext(request))
 
@@ -236,7 +236,7 @@ def template_node_edit(request, node_pk):
     return render_to_response('appearance/generic_form.html', {
         'form': form,
         'index': node.index,
-        'navigation_object_list': ['index', 'node'],
+        'navigation_object_list': ('index', 'node'),
         'node': node,
         'title': _('Edit index template node: %s') % node,
     }, context_instance=RequestContext(request))
@@ -277,7 +277,7 @@ def template_node_delete(request, node_pk):
     context = {
         'delete_view': True,
         'index': node.index,
-        'navigation_object_list': ['index', 'node'],
+        'navigation_object_list': ('index', 'node'),
         'next': next,
         'node': node,
         'title': _('Delete the index template node: %s?') % node,
@@ -413,6 +413,7 @@ def rebuild_index_instances(request):
     """
     Confirmation view to execute the tool: do_rebuild_all_indexes
     """
+
     Permission.check_permissions(
         request.user, (permission_document_indexing_rebuild_indexes,)
     )
@@ -437,6 +438,7 @@ def document_index_list(request, document_id):
     """
     Show a list of indexes where the current document can be found
     """
+
     document = get_object_or_404(Document, pk=document_id)
     object_list = []
 

@@ -22,7 +22,9 @@ class DocumentVersionOCRView(generics.GenericAPIView):
     permission_classes = (MayanPermission,)
 
     def post(self, request, *args, **kwargs):
-        """Submit document version for OCR."""
+        """
+        Submit document version for OCR.
+        """
 
         serializer = self.get_serializer(
             data=request.DATA, files=request.FILES
@@ -35,7 +37,7 @@ class DocumentVersionOCRView(generics.GenericAPIView):
 
             try:
                 Permission.check_permissions(
-                    request.user, [permission_ocr_document]
+                    request.user, (permission_ocr_document,)
                 )
             except PermissionDenied:
                 AccessControlList.objects.check_access(

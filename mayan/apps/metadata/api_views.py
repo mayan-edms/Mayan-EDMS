@@ -34,8 +34,8 @@ class APIMetadataTypeListView(generics.ListCreateAPIView):
 
     permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
-    mayan_object_permissions = {'GET': [permission_metadata_type_view]}
-    mayan_view_permissions = {'POST': [permission_metadata_type_create]}
+    mayan_object_permissions = {'GET': (permission_metadata_type_view,)}
+    mayan_view_permissions = {'POST': (permission_metadata_type_create,)}
 
     def get(self, *args, **kwargs):
         """
@@ -56,10 +56,10 @@ class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [permission_metadata_type_view],
-        'PUT': [permission_metadata_type_edit],
-        'PATCH': [permission_metadata_type_edit],
-        'DELETE': [permission_metadata_type_delete]
+        'GET': (permission_metadata_type_view,),
+        'PUT': (permission_metadata_type_edit,),
+        'PATCH': (permission_metadata_type_edit,),
+        'DELETE': (permission_metadata_type_delete,)
     }
 
     def delete(self, *args, **kwargs):
@@ -102,7 +102,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
             # this document
             try:
                 Permission.check_permissions(
-                    self.request.user, [permission_metadata_document_view]
+                    self.request.user, (permission_metadata_document_view,)
                 )
             except PermissionDenied:
                 AccessControlList.objects.check_access(
@@ -116,7 +116,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
             # document
             try:
                 Permission.check_permissions(
-                    self.request.user, [permission_metadata_document_add]
+                    self.request.user, (permission_metadata_document_add,)
                 )
             except PermissionDenied:
                 AccessControlList.objects.check_access(
@@ -148,10 +148,10 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
-        'GET': [permission_metadata_document_view],
-        'PUT': [permission_metadata_document_edit],
-        'PATCH': [permission_metadata_document_edit],
-        'DELETE': [permission_metadata_document_remove]
+        'GET': (permission_metadata_document_view,),
+        'PUT': (permission_metadata_document_edit,),
+        'PATCH': (permission_metadata_document_edit,),
+        'DELETE': (permission_metadata_document_remove,)
     }
 
     def delete(self, *args, **kwargs):
@@ -207,7 +207,7 @@ class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
 class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
     permission_classes = (MayanPermission,)
 
-    mayan_view_permissions = {'POST': [permission_document_type_edit]}
+    mayan_view_permissions = {'POST': (permission_document_type_edit,)}
 
     required_metadata = False
 
@@ -217,7 +217,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
         )
         try:
             Permission.check_permissions(
-                self.request.user, [permission_document_type_view]
+                self.request.user, (permission_document_type_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -251,7 +251,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
 
         try:
             Permission.check_permissions(
-                self.request.user, [permission_document_type_edit]
+                self.request.user, (permission_document_type_edit,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -305,7 +305,7 @@ class APIDocumentTypeMetadataTypeRequiredView(views.APIView):
         )
         try:
             Permission.check_permissions(
-                self.request.user, [permission_document_type_edit]
+                self.request.user, (permission_document_type_edit,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(

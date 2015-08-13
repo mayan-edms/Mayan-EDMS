@@ -46,7 +46,7 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
         permission = permission_mailing_link
 
     try:
-        Permission.check_permissions(request.user, [permission])
+        Permission.check_permissions(request.user, (permission,))
     except PermissionDenied:
         documents = AccessControlList.objects.filter_by_access(permission, request.user, documents)
 

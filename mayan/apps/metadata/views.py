@@ -59,7 +59,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
 
     try:
         Permission.check_permissions(
-            request.user, [permission_metadata_document_edit]
+            request.user, (permission_metadata_document_edit,)
         )
     except PermissionDenied:
         documents = AccessControlList.objects.filter_by_access(
@@ -214,7 +214,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
 
     try:
         Permission.check_permissions(
-            request.user, [permission_metadata_document_add]
+            request.user, (permission_metadata_document_add,)
         )
     except PermissionDenied:
         documents = AccessControlList.objects.filter_by_access(
@@ -343,7 +343,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
     try:
         Permission.check_permissions(
-            request.user, [permission_metadata_document_remove]
+            request.user, (permission_metadata_document_remove,)
         )
     except PermissionDenied:
         documents = AccessControlList.objects.filter_by_access(
@@ -478,7 +478,7 @@ def metadata_view(request, document_id):
 
     try:
         Permission.check_permissions(
-            request.user, [permission_metadata_document_view]
+            request.user, (permission_metadata_document_view,)
         )
     except PermissionDenied:
         AccessControlList.objects.check_access(

@@ -71,7 +71,7 @@ class UserListView(SingleObjectListView):
 
 
 def user_edit(request, user_id):
-    Permission.check_permissions(request.user, [permission_user_edit])
+    Permission.check_permissions(request.user, (permission_user_edit,))
     user = get_object_or_404(User, pk=user_id)
 
     if user.is_superuser or user.is_staff:
@@ -104,7 +104,7 @@ def user_edit(request, user_id):
 
 
 def user_add(request):
-    Permission.check_permissions(request.user, [permission_user_create])
+    Permission.check_permissions(request.user, (permission_user_create,))
 
     if request.method == 'POST':
         form = UserForm(request.POST)
@@ -128,7 +128,7 @@ def user_add(request):
 
 
 def user_delete(request, user_id=None, user_id_list=None):
-    Permission.check_permissions(request.user, [permission_user_delete])
+    Permission.check_permissions(request.user, (permission_user_delete,))
     post_action_redirect = None
 
     if user_id:
@@ -186,7 +186,7 @@ def user_multiple_delete(request):
 
 
 def user_set_password(request, user_id=None, user_id_list=None):
-    Permission.check_permissions(request.user, [permission_user_edit])
+    Permission.check_permissions(request.user, (permission_user_edit,))
     post_action_redirect = None
 
     if user_id:
@@ -323,7 +323,7 @@ class GroupListView(SingleObjectListView):
 
 
 def group_delete(request, group_id=None, group_id_list=None):
-    Permission.check_permissions(request.user, [permission_group_delete])
+    Permission.check_permissions(request.user, (permission_group_delete,))
     post_action_redirect = None
 
     if group_id:
@@ -361,8 +361,10 @@ def group_delete(request, group_id=None, group_id_list=None):
     elif len(groups) > 1:
         context['title'] = _('Delete the groups: %s?') % ', '.join([unicode(d) for d in groups])
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_confirm.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def group_multiple_delete(request):

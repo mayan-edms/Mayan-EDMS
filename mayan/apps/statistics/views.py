@@ -45,7 +45,7 @@ class StatisticExecute(SimpleView):
         return {
             'hide_link': True,
             'namespace': statictic.namespace,
-            'navigation_object_list': ['namespace', 'object'],
+            'navigation_object_list': ('namespace', 'object'),
             'object': statictic,
             'object_list': statictic.get_results(),
             'title': _('Results for: %s') % statictic,

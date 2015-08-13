@@ -34,7 +34,7 @@ class DocumentSubmitView(ConfirmView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_ocr_document]
+                request.user, (permission_ocr_document,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -116,7 +116,7 @@ def document_content(request, document_id):
 
     try:
         Permission.check_permissions(
-            request.user, [permission_ocr_content_view]
+            request.user, (permission_ocr_content_view,)
         )
     except PermissionDenied:
         AccessControlList.objects.check_access(
@@ -138,7 +138,7 @@ def document_content(request, document_id):
 
 
 def entry_list(request):
-    Permission.check_permissions(request.user, [permission_ocr_document])
+    Permission.check_permissions(request.user, (permission_ocr_document,))
 
     context = {
         'object_list': DocumentVersionOCRError.objects.all(),
@@ -146,13 +146,15 @@ def entry_list(request):
         'hide_object': True,
     }
 
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_list.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def entry_delete(request, pk=None, pk_list=None):
     Permission.check_permissions(
-        request.user, [permission_ocr_document_delete]
+        request.user, (permission_ocr_document_delete,)
     )
 
     if pk:
@@ -207,8 +209,10 @@ def entry_delete(request, pk=None, pk_list=None):
         len(entries)
     )
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_confirm.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def entry_delete_multiple(request):
@@ -216,7 +220,7 @@ def entry_delete_multiple(request):
 
 
 def entry_re_queue(request, pk=None, pk_list=None):
-    Permission.check_permissions(request.user, [permission_ocr_document])
+    Permission.check_permissions(request.user, (permission_ocr_document,))
 
     if pk:
         entries = [get_object_or_404(DocumentVersionOCRError, pk=pk)]
@@ -257,8 +261,10 @@ def entry_re_queue(request, pk=None, pk_list=None):
         len(entries)
     )
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_confirm.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def entry_re_queue_multiple(request):

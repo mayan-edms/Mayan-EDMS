@@ -78,7 +78,7 @@ class SourceLogListView(ParentChildListView):
 
 
 def document_create_siblings(request, document_id):
-    Permission.check_permissions(request.user, [permission_document_create])
+    Permission.check_permissions(request.user, (permission_document_create,))
 
     document = get_object_or_404(Document, pk=document_id)
     query_dict = {}
@@ -206,7 +206,7 @@ class UploadInteractiveView(UploadBaseView):
         self.subtemplates_list = []
 
         Permission.check_permissions(
-            request.user, [permission_document_create]
+            request.user, (permission_document_create,)
         )
 
         self.document_type = get_object_or_404(
@@ -311,7 +311,7 @@ class UploadInteractiveVersionView(UploadBaseView):
         self.document = get_object_or_404(Document, pk=kwargs['document_pk'])
         try:
             Permission.check_permissions(
-                self.request.user, [permission_document_new_version]
+                self.request.user, (permission_document_new_version,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(

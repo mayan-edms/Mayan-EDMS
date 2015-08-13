@@ -56,7 +56,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
         )
 
     try:
-        Permission.check_permissions(request.user, [permission_tag_attach])
+        Permission.check_permissions(request.user, (permission_tag_attach,))
     except PermissionDenied:
         documents = AccessControlList.objects.filter_by_access(
             permission_tag_attach, request.user, documents
@@ -129,7 +129,7 @@ class TagListView(SingleObjectListView):
         queryset = instance.documents
 
         try:
-            Permission.check_permissions(user, [permission_document_view])
+            Permission.check_permissions(user, (permission_document_view,))
         except PermissionDenied:
             queryset = AccessControlList.objects.filter_by_access(
                 permission_document_view, user, queryset
@@ -183,7 +183,7 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
         )
 
     try:
-        Permission.check_permissions(request.user, [permission_tag_delete])
+        Permission.check_permissions(request.user, (permission_tag_delete,))
     except PermissionDenied:
         tags = AccessControlList.objects.filter_by_access(
             permission_tag_delete, request.user, tags
@@ -269,7 +269,7 @@ class DocumentTagListView(TagListView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_document_view]
+                request.user, (permission_document_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -319,7 +319,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
         )
 
     try:
-        Permission.check_permissions(request.user, [permission_tag_remove])
+        Permission.check_permissions(request.user, (permission_tag_remove,))
     except PermissionDenied:
         documents = AccessControlList.objects.filter_by_access(
             permission_tag_remove, request.user, documents

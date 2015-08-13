@@ -23,7 +23,7 @@ class TagListForm(forms.Form):
 
         queryset = Tag.objects.all()
         try:
-            Permission.check_permissions(user, [permission_tag_view])
+            Permission.check_permissions(user, (permission_tag_view,))
         except PermissionDenied:
             queryset = AccessControlList.objects.filter_by_access(
                 permission_tag_view, user, queryset

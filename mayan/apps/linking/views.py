@@ -82,7 +82,7 @@ class ResolvedSmartLinkView(DocumentListView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_document_view]
+                request.user, (permission_document_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -91,7 +91,7 @@ class ResolvedSmartLinkView(DocumentListView):
 
         try:
             Permission.check_permissions(
-                request.user, [permission_smart_link_view]
+                request.user, (permission_smart_link_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
@@ -203,7 +203,7 @@ class DocumentSmartLinkListView(SmartLinkListView):
 
 def smart_link_create(request):
     Permission.check_permissions(
-        request.user, [permission_smart_link_create]
+        request.user, (permission_smart_link_create,)
     )
 
     if request.method == 'POST':
@@ -230,7 +230,7 @@ def smart_link_edit(request, smart_link_pk):
 
     try:
         Permission.check_permissions(
-            request.user, [permission_smart_link_edit]
+            request.user, (permission_smart_link_edit,)
         )
     except PermissionDenied:
         AccessControlList.objects.check_access(
@@ -262,7 +262,7 @@ def smart_link_delete(request, smart_link_pk):
 
     try:
         Permission.check_permissions(
-            request.user, [permission_smart_link_delete]
+            request.user, (permission_smart_link_delete,)
         )
     except PermissionDenied:
         AccessControlList.objects.check_access(
@@ -310,11 +310,11 @@ def smart_link_condition_list(request, smart_link_pk):
 
     try:
         Permission.check_permissions(
-            request.user, [permission_smart_link_edit]
+            request.user, (permission_smart_link_edit,)
         )
     except PermissionDenied:
         AccessControlList.objects.check_access(
-            [permission_smart_link_edit], request.user, smart_link
+            (permission_smart_link_edit,), request.user, smart_link
         )
 
     return render_to_response('appearance/generic_list.html', {
@@ -338,11 +338,11 @@ def smart_link_condition_create(request, smart_link_pk):
 
     try:
         Permission.check_permissions(
-            request.user, [permission_smart_link_edit]
+            request.user, (permission_smart_link_edit,)
         )
     except PermissionDenied:
         AccessControlList.objects.check_access(
-            [permission_smart_link_edit], request.user, smart_link
+            (permission_smart_link_edit,), request.user, smart_link
         )
 
     if request.method == 'POST':
@@ -378,11 +378,11 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
 
     try:
         Permission.check_permissions(
-            request.user, [permission_smart_link_edit]
+            request.user, (permission_smart_link_edit,)
         )
     except PermissionDenied:
         AccessControlList.objects.check_access(
-            [permission_smart_link_edit], request.user,
+            (permission_smart_link_edit,), request.user,
             smart_link_condition.smart_link
         )
 
@@ -407,7 +407,7 @@ def smart_link_condition_edit(request, smart_link_condition_pk):
     return render_to_response('appearance/generic_form.html', {
         'condition': smart_link_condition,
         'form': form,
-        'navigation_object_list': ['object', 'condition'],
+        'navigation_object_list': ('object', 'condition'),
         'next': next,
         'object': smart_link_condition.smart_link,
         'previous': previous,
@@ -421,10 +421,12 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
     )
 
     try:
-        Permission.check_permissions(request.user, [permission_smart_link_edit])
+        Permission.check_permissions(
+            request.user, (permission_smart_link_edit,)
+        )
     except PermissionDenied:
         AccessControlList.objects.check_access(
-            [permission_smart_link_edit], request.user,
+            (permission_smart_link_edit,), request.user,
             smart_link_condition.smart_link
         )
 
@@ -454,7 +456,7 @@ def smart_link_condition_delete(request, smart_link_condition_pk):
     return render_to_response('appearance/generic_confirm.html', {
         'condition': smart_link_condition,
         'delete_view': True,
-        'navigation_object_list': ['object', 'condition'],
+        'navigation_object_list': ('object', 'condition'),
         'next': next,
         'object': smart_link_condition.smart_link,
         'previous': previous,
