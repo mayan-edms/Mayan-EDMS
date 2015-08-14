@@ -11,7 +11,7 @@ from django.shortcuts import redirect, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from common.generics import SingleObjectListView
+from common.generics import SimpleView, SingleObjectListView
 from common.utils import encapsulate
 from permissions import Permission
 
@@ -129,71 +129,74 @@ def key_delete(request, fingerprint, key_type):
     }, context_instance=RequestContext(request))
 
 
-def key_query(request):
-    Permission.check_permissions(request.user, (permission_keyserver_query,))
+class KeyQueryView(SimpleView):
+    template_name = 'appearance/generic_form.html'
+    view_permission = permission_keyserver_query
 
-    subtemplates_list = []
-    term = request.GET.get('term')
+    def get_form(self):
+        if ('term' in self.request.GET) and self.request.GET['term'].strip():
+            term = self.request.GET['term']
+            return KeySearchForm(initial={'term': term})
+        else:
+            return KeySearchForm()
 
-    form = KeySearchForm(initial={'term': term})
-    subtemplates_list.append(
-        {
-            'name': 'appearance/generic_form_subtemplate.html',
-            'context': {
-                'title': _('Query key server'),
-                'form': form,
-                'submit_method': 'GET',
-            },
+    def get_extra_context(self):
+        return {
+            'form': self.get_form(),
+            'form_action': reverse('django_gpg:key_query_results'),
+            'submit_icon': 'fa fa-search',
+            'submit_label': _('Search'),
+            'submit_method': 'GET',
+            'title': _('Query key server'),
         }
-    )
 
-    if term:
-        results = gpg.query(term)
-        subtemplates_list.append(
-            {
-                'name': 'appearance/generic_list_subtemplate.html',
-                'context': {
-                    'title': _('results'),
-                    'object_list': results,
-                    'hide_object': True,
-                    'extra_columns': [
-                        {
-                            'name': _('ID'),
-                            'attribute': encapsulate(
-                                lambda item: '...{0}'.format(item.key_id[-16:])
-                            ),
-                        },
-                        {
-                            'name': _('Type'),
-                            'attribute': 'key_type',
-                        },
-                        {
-                            'name': _('Creation date'),
-                            'attribute': encapsulate(
-                                lambda x: datetime.fromtimestamp(int(x.date))
-                            )
-                        },
-                        {
-                            'name': _('Expiration date'),
-                            'attribute': encapsulate(
-                                lambda x: datetime.fromtimestamp(int(x.expires)) if x.expires else _('No expiration')
-                            )
-                        },
-                        {
-                            'name': _('Length'),
-                            'attribute': 'length',
-                        },
-                        {
-                            'name': _('Identities'),
-                            'attribute': encapsulate(
-                                lambda x: ', '.join(x.uids)
-                            ),
-                        },
-                    ]
+
+class KeyQueryResultView(SingleObjectListView):
+    view_permission = permission_keyserver_query
+
+    def get_extra_context(self):
+        return {
+            'title': _('Key query results'),
+            'hide_object': True,
+            'extra_columns': (
+                {
+                    'name': _('ID'),
+                    'attribute': encapsulate(
+                        lambda key: '...{0}'.format(key.key_id[-16:])
+                    ),
                 },
-            }
-        )
+                {
+                    'name': _('Type'),
+                    'attribute': 'key_type',
+                },
+                {
+                    'name': _('Creation date'),
+                    'attribute': encapsulate(
+                        lambda key: datetime.fromtimestamp(int(key.date))
+                    )
+                },
+                {
+                    'name': _('Expiration date'),
+                    'attribute': encapsulate(
+                        lambda key: datetime.fromtimestamp(int(key.expires)) if key.expires else _('No expiration')
+                    )
+                },
+                {
+                    'name': _('Length'),
+                    'attribute': 'length',
+                },
+                {
+                    'name': _('Identities'),
+                    'attribute': encapsulate(
+                        lambda key: ', '.join(key.uids)
+                    ),
+                },
+            )
+        }
 
-    return render_to_response('appearance/generic_form.html', {
-        'subtemplates_list': subtemplates_list,
-    }, context_instance=RequestContext(request))
+    def get_queryset(self):
+        term = self.request.GET.get('term')
+        if term:
+            return gpg.query(term)
+        else:
+            return ()

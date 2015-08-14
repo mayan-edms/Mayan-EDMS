@@ -26,6 +26,6 @@ class DjangoGPGApp(MayanAppConfig):
             links=(link_public_keys, link_key_query),
             sources=(
                 'django_gpg:key_delete', 'django_gpg:key_public_list',
-                'django_gpg:key_query'
+                'django_gpg:key_query', 'django_gpg:key_query_results',
             )
         )
