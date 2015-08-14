@@ -11,16 +11,15 @@ from .classes import PropertyNamespace
 from .permissions import permission_installation_details
 
 
-def namespace_list(request):
-    Permission.check_permissions(
-        request.user, (permission_installation_details,)
-    )
-
-    return render_to_response('appearance/generic_list.html', {
-        'object_list': PropertyNamespace.get_all(),
+class NamespaceListView(SingleObjectListView):
+    extra_context = {
         'title': _('Installation property namespaces'),
         'hide_object': True,
-    }, context_instance=RequestContext(request))
+    }
+    view_permission = permission_installation_details
+
+    def get_queryset(self):
+        return PropertyNamespace.get_all()
 
 
 class NamespaceDetailView(SingleObjectListView):
