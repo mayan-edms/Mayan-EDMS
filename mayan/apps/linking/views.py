@@ -5,7 +5,7 @@ import logging
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
@@ -13,7 +13,10 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.utils import encapsulate
-from common.views import AssignRemoveView, SingleObjectListView
+from common.generics import (
+    AssignRemoveView, SingleObjectCreateView, SingleObjectEditView,
+    SingleObjectListView
+)
 from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
@@ -201,60 +204,24 @@ class DocumentSmartLinkListView(SmartLinkListView):
         }
 
 
-def smart_link_create(request):
-    Permission.check_permissions(
-        request.user, (permission_smart_link_create,)
-    )
-
-    if request.method == 'POST':
-        form = SmartLinkForm(request.POST)
-        if form.is_valid():
-            document_group = form.save()
-            messages.success(
-                request, _(
-                    'Smart link: %s created successfully.'
-                ) % document_group
-            )
-            return HttpResponseRedirect(reverse('linking:smart_link_list'))
-    else:
-        form = SmartLinkForm()
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'title': _('Create new smart link')
-    }, context_instance=RequestContext(request))
+class SmartLinkCreateView(SingleObjectCreateView):
+    extra_context = {'title': _('Create new smart link')}
+    form_class = SmartLinkForm
+    post_action_redirect = reverse_lazy('linking:smart_link_list')
+    view_permission = permission_smart_link_create
 
 
-def smart_link_edit(request, smart_link_pk):
-    smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+class SmartLinkEditView(SingleObjectEditView):
+    form_class = SmartLinkForm
+    model = SmartLink
+    post_action_redirect = reverse_lazy('linking:smart_link_list')
+    view_permission = permission_smart_link_edit
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_smart_link_edit,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_smart_link_edit, request.user, smart_link
-        )
-
-    if request.method == 'POST':
-        form = SmartLinkForm(request.POST, instance=smart_link)
-        if form.is_valid():
-            smart_link = form.save()
-            messages.success(
-                request, _(
-                    'Smart link: %s edited successfully.'
-                ) % smart_link
-            )
-            return HttpResponseRedirect(reverse('linking:smart_link_list'))
-    else:
-        form = SmartLinkForm(instance=smart_link)
-
-    return render_to_response('appearance/generic_form.html', {
-        'object': smart_link,
-        'form': form,
-        'title': _('Edit smart link: %s') % smart_link
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit smart link: %s') % self.get_object()
+        }
 
 
 def smart_link_delete(request, smart_link_pk):
@@ -305,32 +272,29 @@ def smart_link_delete(request, smart_link_pk):
     }, context_instance=RequestContext(request))
 
 
-def smart_link_condition_list(request, smart_link_pk):
-    smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+class SmartLinkConditionListView(SingleObjectListView):
+    view_permission = permission_smart_link_edit
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_smart_link_edit,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            (permission_smart_link_edit,), request.user, smart_link
-        )
+    def get_extra_context(self):
+        return {
+            'title': _('Conditions for smart link: %s') % self.get_smart_link(),
+            'extra_columns': (
+                {
+                    'name': _('Enabled'),
+                    'attribute': encapsulate(
+                        lambda condition: two_state_template(condition.enabled)
+                    )
+                },
+            ),
+            'hide_link': True,
+            'object': self.get_smart_link(),
+        }
 
-    return render_to_response('appearance/generic_list.html', {
-        'title': _('Conditions for smart link: %s') % smart_link,
-        'object_list': smart_link.conditions.all(),
-        'extra_columns': [
-            {
-                'name': _('Enabled'),
-                'attribute': encapsulate(
-                    lambda x: two_state_template(x.enabled)
-                )
-            },
-        ],
-        'hide_link': True,
-        'object': smart_link,
-    }, context_instance=RequestContext(request))
+    def get_smart_link(self):
+        return get_object_or_404(SmartLink, pk=self.kwargs['pk'])
+
+    def get_queryset(self):
+        return self.get_smart_link().conditions.all()
 
 
 def smart_link_condition_create(request, smart_link_pk):

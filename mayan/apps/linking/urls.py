@@ -4,7 +4,8 @@ from django.conf.urls import patterns, url
 
 from .views import (
     DocumentSmartLinkListView, ResolvedSmartLinkView,
-    SetupSmartLinkDocumentTypesView, SmartLinkListView
+    SetupSmartLinkDocumentTypesView, SmartLinkConditionListView,
+    SmartLinkCreateView, SmartLinkEditView, SmartLinkListView
 )
 
 urlpatterns = patterns(
@@ -21,13 +22,16 @@ urlpatterns = patterns(
     url(
         r'^setup/list/$', SmartLinkListView.as_view(), name='smart_link_list'
     ),
-    url(r'^setup/create/$', 'smart_link_create', name='smart_link_create'),
+    url(
+        r'^setup/create/$', SmartLinkCreateView.as_view(),
+        name='smart_link_create'
+    ),
     url(
         r'^setup/(?P<smart_link_pk>\d+)/delete/$', 'smart_link_delete',
         name='smart_link_delete'
     ),
     url(
-        r'^setup/(?P<smart_link_pk>\d+)/edit/$', 'smart_link_edit',
+        r'^setup/(?P<pk>\d+)/edit/$', SmartLinkEditView.as_view(),
         name='smart_link_edit'
     ),
     url(
@@ -37,8 +41,8 @@ urlpatterns = patterns(
     ),
 
     url(
-        r'^setup/(?P<smart_link_pk>\d+)/condition/list/$',
-        'smart_link_condition_list', name='smart_link_condition_list'
+        r'^setup/(?P<pk>\d+)/condition/list/$',
+        SmartLinkConditionListView.as_view(), name='smart_link_condition_list'
     ),
     url(
         r'^setup/(?P<smart_link_pk>\d+)/condition/create/$',
