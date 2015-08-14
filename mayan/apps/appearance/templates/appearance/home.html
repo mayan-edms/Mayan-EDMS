@@ -52,7 +52,7 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="well center-block">
-                <form method="get" role="search">
+                <form action="{% url 'search:results' %}" method="get" role="search">
                     <div class="input-group">
                         <input class="form-control" name="q" placeholder="{% trans 'Space separated terms' %}" type="text" value="{{ search_terms|default:'' }}">
                         <span class="input-group-btn">

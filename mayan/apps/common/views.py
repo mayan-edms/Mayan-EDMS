@@ -105,34 +105,6 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
 class HomeView(TemplateView):
     template_name = 'appearance/home.html'
 
-    def get_context_data(self, **kwargs):
-        data = super(HomeView, self).get_context_data(**kwargs)
-        data.update({
-            'hide_links': True,
-            'search_results_limit': 100,
-            'search_terms': self.request.GET.get('q'),
-            'missing_list': [
-                item for item in MissingItem.get_all() if item.condition()
-            ],
-        })
-        return data
-
-    def get(self, request, *args, **kwargs):
-        context = self.get_context_data(**kwargs)
-
-        queryset, ids, timedelta = document_search.search(
-            request.GET, request.user
-        )
-
-        # Update the context with the search results
-        context.update({
-            'object_list': queryset,
-            'time_delta': timedelta,
-            'title': _('Results'),
-        })
-
-        return self.render_to_response(context)
-
 
 class LicenseView(SimpleView):
     extra_context = {
