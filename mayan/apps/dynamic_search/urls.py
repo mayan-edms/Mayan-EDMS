@@ -5,13 +5,14 @@ from django.conf.urls import patterns, url
 from .api_views import (
     APIRecentSearchListView, APIRecentSearchView, APISearchView
 )
+from .views import AdvancedSearchView, ResultsView, SearchView
 
 urlpatterns = patterns(
     'dynamic_search.views',
-    url(r'^$', 'search', name='search'),
-    url(r'^advanced/$', 'search', {'advanced': True}, 'search_advanced'),
+    url(r'^$', SearchView.as_view(), name='search'),
+    url(r'^advanced/$', AdvancedSearchView.as_view(), name='search_advanced'),
     url(r'^again/$', 'search_again', name='search_again'),
-    url(r'^results/$', 'results', name='results'),
+    url(r'^results/$', ResultsView.as_view(), name='results'),
 )
 
 api_urls = patterns(
