@@ -16,7 +16,8 @@ from .views import (
     DeletedDocumentDeleteView, DeletedDocumentListView, DocumentListView,
     DocumentManyDeleteView, DocumentManyRestoreView, DocumentPageListView,
     DocumentRestoreView, DocumentTypeCreateView, DocumentTypeDeleteView,
-    DocumentTypeDocumentListView, DocumentTypeListView, DocumentTypeEditView,
+    DocumentTypeDocumentListView, DocumentTypeFilenameEditView,
+    DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
     EmptyTrashCanView, RecentDocumentListView
 )
 
@@ -212,12 +213,12 @@ urlpatterns = patterns(
         name='document_type_document_list'
     ),
     url(
-        r'^type/(?P<document_type_id>\d+)/filename/list/$',
-        'document_type_filename_list', name='document_type_filename_list'
+        r'^type/(?P<pk>\d+)/filename/list/$',
+        DocumentTypeFilenameListView.as_view(), name='document_type_filename_list'
     ),
     url(
-        r'^type/filename/(?P<document_type_filename_id>\d+)/edit/$',
-        'document_type_filename_edit', name='document_type_filename_edit'
+        r'^type/filename/(?P<pk>\d+)/edit/$',
+        DocumentTypeFilenameEditView.as_view(), name='document_type_filename_edit'
     ),
     url(
         r'^type/filename/(?P<document_type_filename_id>\d+)/delete/$',

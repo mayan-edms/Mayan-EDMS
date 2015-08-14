@@ -991,58 +991,51 @@ class DocumentTypeCreateView(SingleObjectCreateView):
         }
 
 
-def document_type_filename_list(request, document_type_id):
-    Permission.check_permissions(request.user, (permission_document_type_view,))
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+class DocumentTypeFilenameListView(SingleObjectListView):
+    model = DocumentType
+    view_permission = permission_document_type_view
 
-    context = {
-        'document_type': document_type,
-        'extra_columns': [
-            {
-                'name': _('Enabled'),
-                'attribute': encapsulate(lambda x: two_state_template(x.enabled)),
-            }
-        ],
-        'hide_link': True,
-        'navigation_object_list': ('document_type',),
-        'object_list': document_type.filenames.all(),
-        'title': _('Filenames for document type: %s') % document_type,
-    }
+    def get_document_type(self):
+        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
 
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'document_type': self.get_document_type(),
+            'extra_columns': (
+                {
+                    'name': _('Enabled'),
+                    'attribute': encapsulate(lambda filename: two_state_template(filename.enabled)),
+                },
+            ),
+            'hide_link': True,
+            'navigation_object_list': ('document_type',),
+            'object_list': self.get_document_type().filenames.all(),
+            'title': _('Filenames for document type: %s') % self.get_document_type(),
+        }
 
 
-def document_type_filename_edit(request, document_type_filename_id):
-    Permission.check_permissions(request.user, (permission_document_type_edit,))
-    document_type_filename = get_object_or_404(DocumentTypeFilename, pk=document_type_filename_id)
+class DocumentTypeFilenameEditView(SingleObjectEditView):
+    fields = ('enabled', 'filename',)
+    model = DocumentTypeFilename
+    view_permission = permission_document_type_edit
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse('documents:document_type_filename_list', args=[document_type_filename.document_type_id]))))
+    def get_post_action_redirect(self):
+        return reverse(
+            'documents:document_type_filename_list',
+            args=(self.get_object().document_type.pk,)
+        )
 
-    if request.method == 'POST':
-        form = DocumentTypeFilenameForm(instance=document_type_filename, data=request.POST)
-        if form.is_valid():
-            try:
-                document_type_filename.filename = form.cleaned_data['filename']
-                document_type_filename.enabled = form.cleaned_data['enabled']
-                document_type_filename.save()
-                messages.success(request, _('Document type filename edited successfully'))
-                return HttpResponseRedirect(next)
-            except Exception as exception:
-                messages.error(request, _('Error editing document type filename; %s') % exception)
-    else:
-        form = DocumentTypeFilenameForm(instance=document_type_filename)
+    def get_extra_context(self):
+        document_type_filename = self.get_object()
 
-    return render_to_response('appearance/generic_form.html', {
-        'document_type': document_type_filename.document_type,
-        'filename': document_type_filename,
-        'form': form,
-        'navigation_object_list': ('document_type', 'filename',),
-        'next': next,
-        'title': _('Edit filename "%(filename)s" from document type "%(document_type)s"') % {
-            'document_type': document_type_filename.document_type, 'filename': document_type_filename
-        },
-    }, context_instance=RequestContext(request))
+        return {
+            'document_type': document_type_filename.document_type,
+            'filename': document_type_filename,
+            'navigation_object_list': ('document_type', 'filename',),
+            'title': _('Edit filename "%(filename)s" from document type "%(document_type)s"') % {
+                'document_type': document_type_filename.document_type, 'filename': document_type_filename
+            },
+        }
 
 
 def document_type_filename_delete(request, document_type_filename_id):
