@@ -5,7 +5,7 @@ from django.conf.urls import patterns, url
 from .api_views import DocumentVersionOCRView
 from .views import (
     DocumentSubmitView, DocumentAllSubmitView, DocumentManySubmitView,
-    DocumentTypeSettingsEditView
+    DocumentTypeSettingsEditView, EntryListView
 )
 
 urlpatterns = patterns(
@@ -32,7 +32,7 @@ urlpatterns = patterns(
         name='document_type_ocr_settings'
     ),
 
-    url(r'^all/$', 'entry_list', name='entry_list'),
+    url(r'^all/$', EntryListView.as_view(), name='entry_list'),
     url(r'^(?P<pk>\d+)/delete/$', 'entry_delete', name='entry_delete'),
     url(
         r'^multiple/delete/$', 'entry_delete_multiple',

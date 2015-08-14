@@ -10,7 +10,9 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
-from common.views import ConfirmView, SingleObjectEditView
+from common.generics import (
+    ConfirmView, SingleObjectEditView, SingleObjectListView
+)
 from documents.models import Document, DocumentType, DocumentVersion
 from permissions import Permission
 
@@ -137,19 +139,15 @@ def document_content(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def entry_list(request):
-    Permission.check_permissions(request.user, (permission_ocr_document,))
-
-    context = {
-        'object_list': DocumentVersionOCRError.objects.all(),
-        'title': _('OCR errors'),
+class EntryListView(SingleObjectListView):
+    extra_context = {
         'hide_object': True,
+        'title': _('OCR errors'),
     }
+    view_permission = permission_ocr_document
 
-    return render_to_response(
-        'appearance/generic_list.html', context,
-        context_instance=RequestContext(request)
-    )
+    def get_queryset(self):
+        return DocumentVersionOCRError.objects.all()
 
 
 def entry_delete(request, pk=None, pk_list=None):
