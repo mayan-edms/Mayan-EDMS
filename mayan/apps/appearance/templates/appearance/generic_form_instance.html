@@ -36,14 +36,14 @@
             <div class="form-group {% if field.errors %}has-error{% endif %}">
                 {# We display the label then the field for all except checkboxes #}
                 {% if field|widget_type != 'checkboxinput' %}
-                    {% if not hide_labels %}{{ field.label_tag }}{% if field.field.required and not read_only and not form_hide_required_text %} ({% trans 'required' %}){% endif %}{% endif %}
+                    {% if not hide_labels %}{{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}{% endif %}
                 {% endif %}
 
                 {% if field|widget_type == 'checkboxinput' %}
                     <div class="checkbox">
                         <label>
                             <input {% if field.value %}checked="checked"{% endif %} name="{% if form.prefix %}{{ form.prefix }}-{% endif %}{{ field.name }}" type="checkbox">
-                            {% if not hide_labels %}{{ field.label }}{% if field.field.required and not read_only and not form_hide_required_text %} ({% trans 'required' %}){% endif %}{% endif %}
+                            {% if not hide_labels %}{{ field.label }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}{% endif %}
                         </label>
                     </div>
                 {% elif field|widget_type == 'detailselectmultiple' %}
