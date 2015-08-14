@@ -92,45 +92,51 @@ def document_create_siblings(request, document_id):
     return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
 
 
-def get_tab_link_for_source(source, document=None):
-    if document:
-        view = 'sources:upload_version'
-        args = ['"{}"'.format(document.pk), '"{}"'.format(source.pk)]
-    else:
-        view = 'sources:upload_interactive'
-        args = ['"{}"'.format(source.pk)]
-
-    return Link(
-        text=source.label,
-        view=view,
-        args=args,
-        keep_query=True,
-        remove_from_query=['page'],
-        icon='fa fa-upload',
-    )
-
-
-def get_active_tab_links(document=None):
-    tab_links = []
-
-    web_forms = WebFormSource.objects.filter(enabled=True)
-    for web_form in web_forms:
-        tab_links.append(get_tab_link_for_source(web_form, document))
-
-    staging_folders = StagingFolderSource.objects.filter(enabled=True)
-    for staging_folder in staging_folders:
-        tab_links.append(get_tab_link_for_source(staging_folder, document))
-
-    return {
-        'tab_links': tab_links,
-        SOURCE_CHOICE_WEB_FORM: web_forms,
-        SOURCE_CHOICE_STAGING: staging_folders,
-    }
-
-
 class UploadBaseView(MultiFormView):
     template_name = 'appearance/generic_form.html'
     prefixes = {'source_form': 'source', 'document_form': 'document'}
+
+    @staticmethod
+    def get_tab_link_for_source(source, document=None):
+        if document:
+            view = 'sources:upload_version'
+            args = ['"{}"'.format(document.pk), '"{}"'.format(source.pk)]
+        else:
+            view = 'sources:upload_interactive'
+            args = ['"{}"'.format(source.pk)]
+
+        return Link(
+            text=source.label,
+            view=view,
+            args=args,
+            keep_query=True,
+            remove_from_query=['page'],
+            icon='fa fa-upload',
+        )
+
+    @staticmethod
+    def get_active_tab_links(document=None):
+        tab_links = []
+
+        web_forms = WebFormSource.objects.filter(enabled=True)
+        for web_form in web_forms:
+            tab_links.append(
+                UploadBaseView.get_tab_link_for_source(web_form, document)
+            )
+
+        staging_folders = StagingFolderSource.objects.filter(enabled=True)
+        for staging_folder in staging_folders:
+            tab_links.append(
+                UploadBaseView.get_tab_link_for_source(
+                    staging_folder, document
+                )
+            )
+
+        return {
+            'tab_links': tab_links,
+            SOURCE_CHOICE_WEB_FORM: web_forms,
+            SOURCE_CHOICE_STAGING: staging_folders,
+        }
 
     def dispatch(self, request, *args, **kwargs):
         if 'source_id' in kwargs:
@@ -216,7 +222,7 @@ class UploadInteractiveView(UploadBaseView):
             )
         )
 
-        self.tab_links = get_active_tab_links()
+        self.tab_links = UploadBaseView.get_active_tab_links()
 
         return super(UploadInteractiveView, self).dispatch(request, *args, **kwargs)
 
@@ -319,7 +325,7 @@ class UploadInteractiveVersionView(UploadBaseView):
                 self.document
             )
 
-        self.tab_links = get_active_tab_links(self.document)
+        self.tab_links = UploadBaseView.get_active_tab_links(self.document)
 
         return super(UploadInteractiveVersionView, self).dispatch(request, *args, **kwargs)
 
@@ -417,7 +423,7 @@ def staging_file_delete(request, staging_folder_pk, encoded_filename):
             )
         return HttpResponseRedirect(next)
 
-    results = get_active_tab_links()
+    results = UploadBaseView.get_active_tab_links()
 
     return render_to_response('appearance/generic_confirm.html', {
         'source': staging_folder,
