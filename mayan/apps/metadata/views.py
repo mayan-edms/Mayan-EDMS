@@ -12,7 +12,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.utils import encapsulate
-from common.views import (
+from common.generics import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
@@ -473,31 +473,44 @@ def metadata_multiple_remove(request):
     )
 
 
-def metadata_view(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
+class DocumentMetadataListView(SingleObjectListView):
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_metadata_document_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_metadata_document_view, self.request.user,
+                self.get_document()
+            )
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_metadata_document_view,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_metadata_document_view, request.user, document
+        return super(DocumentMetadataListView, self).dispatch(
+            request, *args, **kwargs
         )
 
-    return render_to_response('appearance/generic_list.html', {
-        'title': _('Metadata for document: %s') % document,
-        'object_list': document.metadata.all(),
-        'extra_columns': [
-            {'name': _('Value'), 'attribute': 'value'},
-            {
-                'name': _('Required'),
-                'attribute': encapsulate(lambda x: x.metadata_type in document.document_type.metadata.filter(required=True))
-            }
-        ],
-        'hide_link': True,
-        'object': document,
-    }, context_instance=RequestContext(request))
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        document = self.get_document()
+        return {
+            'title': _('Metadata for document: %s') % document,
+            'extra_columns': (
+                {'name': _('Value'), 'attribute': 'value'},
+                {
+                    'name': _('Required'),
+                    'attribute': encapsulate(
+                        lambda metadata: metadata.metadata_type in document.document_type.metadata.filter(required=True)
+                    )
+                }
+            ),
+            'hide_link': True,
+            'object': document,
+        }
+
+    def get_queryset(self):
+        return self.get_document().metadata.all()
 
 
 # Setup views
