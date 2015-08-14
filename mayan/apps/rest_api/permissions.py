@@ -38,9 +38,9 @@ class MayanPermission(BasePermission):
                 try:
                     if hasattr(view, 'mayan_permission_attribute_check'):
                         AccessControlList.objects.check_access(
-                            required_permission, request.user, getattr(
-                                obj, view.mayan_permission_attribute_check
-                            )
+                            permissions=required_permission,
+                            user=request.user, obj=obj,
+                            related=view.mayan_permission_attribute_check
                         )
                     else:
                         AccessControlList.objects.check_access(
