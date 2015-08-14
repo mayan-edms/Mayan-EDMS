@@ -3,33 +3,33 @@ from __future__ import unicode_literals
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 
-from common.views import SimpleView
+from common.views import SingleObjectListView
 
 from .classes import Namespace
 
 
-class NamespaceListView(SimpleView):
-    template_name = 'appearance/generic_list.html'
+class NamespaceListView(SingleObjectListView):
+    extra_context = {
+        'hide_link': True,
+        'title': _('Setting namespaces'),
+    }
 
+    def get_queryset(self):
+        return Namespace.get_all()
+
+
+class NamespaceDetailView(SingleObjectListView):
     def get_extra_context(self):
         return {
-            'hide_link': True,
-            'object_list': Namespace.get_all(),
-            'title': _('Setting namespaces'),
+            'hide_object': True,
+            'title': _('Settings in namespace: %s') % self.get_namespace(),
         }
 
-
-class NamespaceDetailView(SimpleView):
-    template_name = 'appearance/generic_list.html'
-
-    def get_extra_context(self):
+    def get_namespace(self):
         try:
-            namespace = Namespace.get(self.kwargs['namespace_name'])
+            return Namespace.get(self.kwargs['namespace_name'])
         except KeyError:
             raise Http404(_('Namespace: %s, not found') % self.kwargs['namespace_name'])
 
-        return {
-            'hide_object': True,
-            'object_list': namespace.settings,
-            'title': _('Settings in namespace: %s') % namespace,
-        }
+    def get_queryset(self):
+        return self.get_namespace().settings
