@@ -18,7 +18,7 @@ from .views import (
     DocumentRestoreView, DocumentTypeCreateView, DocumentTypeDeleteView,
     DocumentTypeDocumentListView, DocumentTypeFilenameEditView,
     DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
-    EmptyTrashCanView, RecentDocumentListView
+    DocumentVersionListView, EmptyTrashCanView, RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -117,7 +117,7 @@ urlpatterns = patterns(
     ),
 
     url(
-        r'^(?P<document_pk>\d+)/version/all/$', 'document_version_list',
+        r'^(?P<pk>\d+)/version/all/$', DocumentVersionListView.as_view(),
         name='document_version_list'
     ),
     url(

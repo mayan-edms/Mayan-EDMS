@@ -1121,44 +1121,33 @@ def document_clear_image_cache(request):
     }, context_instance=RequestContext(request))
 
 
-def document_version_list(request, document_pk):
-    document = get_object_or_404(Document, pk=document_pk)
+class DocumentVersionListView(SingleObjectListView):
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(request.user, (permission_document_view,))
+        except PermissionDenied:
+            AccessControlList.objects.check_access(permission_document_view, request.user, self.get_document())
 
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document)
+        self.get_document().add_as_recent_document_for_user(request.user)
 
-    document.add_as_recent_document_for_user(request.user)
+        return super(DocumentVersionListView, self).dispatch(request, *args, **kwargs)
 
-    context = {
-        'access_object': document,
-        'extra_columns': [
-            {
-                'name': _('Time and date'),
-                'attribute': 'timestamp',
-            },
-            {
-                'name': _('MIME type'),
-                'attribute': 'mimetype',
-            },
-            {
-                'name': _('Encoding'),
-                'attribute': 'encoding',
-            },
-            {
-                'name': _('Comment'),
-                'attribute': 'comment',
-            },
-        ],
-        'hide_object': True,
-        'object': document,
-        'object_list': document.versions.order_by('-timestamp'),
-        'title': _('Versions of document: %s') % document,
-    }
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
 
-    return render_to_response('appearance/generic_list.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {'name': _('Time and date'), 'attribute': 'timestamp'},
+                {'name': _('MIME type'), 'attribute': 'mimetype'},
+                {'name': _('Encoding'), 'attribute': 'encoding'},
+                {'name': _('Comment'), 'attribute': 'comment'},
+            ), 'hide_object': True, 'object': self.get_document(),
+            'title': _('Versions of document: %s') % self.get_document(),
+        }
+
+    def get_queryset(self):
+        return self.get_document().versions.order_by('-timestamp')
 
 
 def document_version_revert(request, document_version_pk):
