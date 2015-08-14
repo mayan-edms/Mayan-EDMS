@@ -45,7 +45,7 @@ class AccessControlListManager(models.Manager):
             except self.model.DoesNotExist:
                 return StoredPermission.objects.none()
 
-    def check_access(self, permissions, user, obj):
+    def check_access(self, permissions, user, obj, related=None):
         if user.is_superuser or user.is_staff:
             return True
 
@@ -55,6 +55,9 @@ class AccessControlListManager(models.Manager):
             ]
         except TypeError:
             stored_permissions = [permissions.stored_permission]
+
+        if related:
+            obj = getattr(obj, related)
 
         user_roles = []
         for group in user.groups.all():
