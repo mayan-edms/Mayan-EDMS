@@ -4,6 +4,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
+from common.generics import SingleObjectListView
 from permissions import Permission
 
 from .classes import PropertyNamespace
@@ -22,18 +23,19 @@ def namespace_list(request):
     }, context_instance=RequestContext(request))
 
 
-def namespace_details(request, namespace_id):
-    Permission.check_permissions(
-        request.user, (permission_installation_details,)
-    )
+class NamespaceDetailView(SingleObjectListView):
+    view_permission = permission_installation_details
 
-    namespace = PropertyNamespace.get(namespace_id)
-    object_list = namespace.get_properties()
-    title = _('Installation namespace details for: %s') % namespace.label
+    def get_extra_context(self):
+        return {
+            'title': _('Installation namespace details for: %s') % self.get_namespace().label,
+            'hide_object': True,
+            'object': self.get_namespace(),
+        }
 
-    return render_to_response('appearance/generic_list.html', {
-        'object_list': object_list,
-        'hide_object': True,
-        'title': title,
-        'object': namespace,
-    }, context_instance=RequestContext(request))
+    def get_namespace(self):
+        return PropertyNamespace.get(self.kwargs['namespace_id'])
+
+    def get_queryset(self):
+        return self.get_namespace().get_properties()
+
