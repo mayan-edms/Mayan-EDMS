@@ -46,6 +46,8 @@ class FolderEditView(SingleObjectEditView):
 
 
 class FolderListView(SingleObjectListView):
+    object_permission = permission_folder_view
+
     @staticmethod
     def get_document_count(instance, user):
         queryset = instance.documents
@@ -59,15 +61,6 @@ class FolderListView(SingleObjectListView):
 
         return queryset.count()
 
-    object_permission = permission_folder_view
-
-    def get_queryset(self):
-        self.queryset = self.get_folder_queryset()
-        return super(FolderListView, self).get_queryset()
-
-    def get_folder_queryset(self):
-        return Folder.objects.all()
-
     def get_extra_context(self):
         return {
             'extra_columns': [
@@ -80,9 +73,16 @@ class FolderListView(SingleObjectListView):
                     )
                 },
             ],
-            'title': _('Folders'),
             'hide_link': True,
+            'title': _('Folders'),
         }
+
+    def get_folder_queryset(self):
+        return Folder.objects.all()
+
+    def get_queryset(self):
+        self.queryset = self.get_folder_queryset()
+        return super(FolderListView, self).get_queryset()
 
 
 class FolderCreateView(SingleObjectCreateView):
