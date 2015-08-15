@@ -13,7 +13,7 @@ django-colorful==1.1.0
 django-compressor==1.5
 django-cors-headers==1.1.0
 django-filetransfers==0.1.0
-django-pagination==1.0.7
+django-pure-pagination==0.2.1
 django-model-utils==2.2
 django-mptt==0.7.4
 django-rest-swagger==0.3.3

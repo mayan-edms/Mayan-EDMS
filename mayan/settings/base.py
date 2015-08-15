@@ -58,6 +58,7 @@ INSTALLED_APPS = (
     'djcelery',
     'filetransfers',
     'mptt',
+    'pure_pagination',
     'rest_framework',
     'rest_framework.authtoken',
     'solo',
@@ -97,9 +98,6 @@ INSTALLED_APPS = (
     'tags.apps.TagsApp',
     # Placed after rest_api to allow template overriding
     'rest_framework_swagger',
-    # Pagination app must go after the main app so that the main app can
-    # override the default pagination template
-    'pagination',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -114,7 +112,6 @@ MIDDLEWARE_CLASSES = (
     'common.middleware.timezone.TimezoneMiddleware',
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'authentication.middleware.login_required_middleware.LoginRequiredMiddleware',
-    'pagination.middleware.PaginationMiddleware',
     'common.middleware.ajax_redirect.AjaxRedirect',
 )
 
@@ -239,9 +236,6 @@ LOGIN_EXEMPT_URLS = (
 
     r'^api/',
 )
-# --------- Pagination ----------------
-PAGINATION_INVALID_PAGE_RAISES_404 = True
-PAGINATION_DEFAULT_PAGINATION = 40
 # ---------- Django REST framework -----------
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10,
@@ -252,6 +246,11 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     )
+}
+# --------- Pagination --------
+PAGINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 8,
+    'MARGIN_PAGES_DISPLAYED': 2,
 }
 # ----------- Celery ----------
 CELERY_ACCEPT_CONTENT = ('json',)

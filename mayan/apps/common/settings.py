@@ -17,3 +17,8 @@ setting_shared_storage = namespace.add_setting(
     default='storage.backends.filebasedstorage.FileBasedStorage',
     help_text=_('A storage backend that all workers can use to share files.')
 )
+setting_paginate_by = namespace.add_setting(
+    global_name='COMMON_PAGINATE_BY',
+    default=40,
+    help_text=_('An integer specifying how many objects should be displayed per page.')
+)

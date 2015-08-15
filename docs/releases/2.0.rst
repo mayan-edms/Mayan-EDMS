@@ -31,6 +31,7 @@ What's new in Mayan EDMS v2.0
 
   * South
   * GitPython
+  * django-pagination
   * psutil
   * python-hkp
   * sendfile
@@ -52,6 +53,7 @@ What's new in Mayan EDMS v2.0
 
   * PyYAML
   * django-autoadmin
+  * django-pure-pagination
   * djangorestframework-recursive
 
 * Permissions refactor
@@ -79,6 +81,7 @@ What's new in Mayan EDMS v2.0
 * Improved API
 * Text parsers and OCR backend are used in tandem.
 * Invert page title/project name order in browser title.
+* Use Django's class based views pagination
 
 Upgrading from a previous version
 =================================

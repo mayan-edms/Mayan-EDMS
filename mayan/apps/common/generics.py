@@ -12,12 +12,14 @@ from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
+from pure_pagination.mixins import PaginationMixin
+
 from .forms import ChoiceForm
 from .mixins import (
     ExtraContextMixin, ObjectListPermissionFilterMixin,
     ObjectPermissionCheckMixin, RedirectionMixin, ViewPermissionCheckMixin
 )
-
+from .settings import setting_paginate_by
 
 __all__ = (
     'AssignRemoveView', 'ConfirmView', 'MultiFormView', 'ParentChildListView',
@@ -430,5 +432,6 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
         return result
 
 
-class SingleObjectListView(ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
+class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
+    paginate_by = setting_paginate_by.value
     template_name = 'appearance/generic_list.html'
