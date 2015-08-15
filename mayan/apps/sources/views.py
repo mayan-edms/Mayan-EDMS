@@ -15,8 +15,8 @@ from common import menu_facet
 from common.models import SharedUploadedFile
 from common.utils import encapsulate
 from common.views import (
-    MultiFormView, ParentChildListView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
+    MultiFormView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
 )
 from common.widgets import two_state_template
 from documents.models import DocumentType, Document
@@ -47,34 +47,30 @@ from .tasks import task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
 
 
-class SourceLogListView(ParentChildListView):
-    object_permission = permission_sources_setup_view
-    parent_queryset = Source.objects.select_subclasses()
+class SourceLogListView(SingleObjectListView):
+    view_permission = permission_sources_setup_view
+
+    def get_source(self):
+        return get_object_or_404(Source.objects.select_subclasses(), pk=self.kwargs['pk'])
 
     def get_queryset(self):
-        return self.get_object().logs.all()
+        return self.get_source().logs.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(SourceLogListView, self).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'title': _('Log entries for source: %s') % self.get_object(),
-                'hide_object': True,
-                'extra_columns': [
-                    {
-                        'name': _('Date time'),
-                        'attribute': encapsulate(lambda entry: entry.datetime)
-                    },
-                    {
-                        'name': _('Message'),
-                        'attribute': encapsulate(lambda entry: entry.message)
-                    },
-                ]
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'title': _('Log entries for source: %s') % self.get_source(),
+            'hide_object': True,
+            'extra_columns': (
+                {
+                    'name': _('Date time'),
+                    'attribute': encapsulate(lambda entry: entry.datetime)
+                },
+                {
+                    'name': _('Message'),
+                    'attribute': encapsulate(lambda entry: entry.message)
+                },
+            )
+        }
 
 
 def document_create_siblings(request, document_id):
@@ -397,9 +393,9 @@ class UploadInteractiveVersionView(UploadBaseView):
 
 def staging_file_delete(request, staging_folder_pk, encoded_filename):
     Permission.check_permissions(
-        request.user, [
+        request.user, (
             permission_document_create, permission_document_new_version
-        ]
+        )
     )
     staging_folder = get_object_or_404(
         StagingFolderSource, pk=staging_folder_pk

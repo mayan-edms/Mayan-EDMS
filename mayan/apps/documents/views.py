@@ -16,12 +16,12 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
+from common.generics import (
+    ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
+)
 from common.mixins import MultipleInstanceActionMixin
 from common.utils import encapsulate, pretty_size
-from common.views import (
-    ConfirmView, ParentChildListView, SingleObjectCreateView,
-    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
-)
 from common.widgets import two_state_template
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
@@ -185,23 +185,31 @@ class DocumentManyRestoreView(MultipleInstanceActionMixin, DocumentRestoreView):
     model = DeletedDocument
 
 
-class DocumentPageListView(ParentChildListView):
-    object_permission = permission_document_view
-    parent_queryset = Document.objects.all()
+class DocumentPageListView(SingleObjectListView):
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_view, self.request.user, self.get_document()
+            )
+
+        return super(
+            DocumentPageListView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
 
     def get_queryset(self):
-        return self.get_object().pages.all()
+        return self.get_document().pages.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(DocumentPageListView, self).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'title': _('Pages for document: %s') % self.get_object(),
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+                'title': _('Pages for document: %s') % self.get_document(),
+        }
 
 
 class DocumentTypeDocumentListView(DocumentListView):
