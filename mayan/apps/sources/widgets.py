@@ -15,7 +15,7 @@ from documents.settings import setting_preview_size, setting_thumbnail_size
 
 def staging_file_thumbnail(staging_file, **kwargs):
     return staging_file_html_widget(
-        staging_file, click_view='stagingfolderfile-image-view', **kwargs
+        staging_file, click_view='rest_api:stagingfolderfile-image-view', **kwargs
     )
 
 
@@ -40,7 +40,7 @@ def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NU
 
     preview_view = '%s?%s' % (
         reverse(
-            'stagingfolderfile-image-view',
+            'rest_api:stagingfolderfile-image-view',
             args=[
                 staging_file.staging_folder.pk, staging_file.encoded_filename
             ]
