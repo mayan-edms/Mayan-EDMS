@@ -41,31 +41,32 @@ def get_instance_link(index_instance_node, text=None, simple=False):
     }
 
 
-def get_breadcrumbs(index_instance, simple=False, single_link=False, include_count=False):
+def get_breadcrumbs(index_instance_node, simple=False, single_link=False, include_count=False):
     """
     Return a joined string of HTML anchors to every index instance's
     parent from the root of the tree to the index instance
     """
+
     result = []
     if single_link:
         # Return the entire breadcrumb path as a single HTML anchor
         simple = True
 
-    for instance in index_instance.get_ancestors():
+    for instance in index_instance_node.get_ancestors():
         result.append(get_instance_link(instance, simple=simple))
 
-    result.append(get_instance_link(index_instance, simple=simple))
+    result.append(get_instance_link(index_instance_node, simple=simple))
 
     output = []
 
     if include_count:
-        output.append('(%d)' % index_instance.documents.count())
+        output.append('(%d)' % index_instance_node.documents.count())
 
     if single_link:
         # Return the entire breadcrumb path as a single HTML anchor
         output.insert(
             0, get_instance_link(
-                index_instance_node=index_instance, text=(' / '.join(result))
+                index_instance_node=index_instance_node, text=(' / '.join(result))
             )
         )
         return mark_safe(' '.join(output))
@@ -74,16 +75,17 @@ def get_breadcrumbs(index_instance, simple=False, single_link=False, include_cou
         return mark_safe(' '.join(output))
 
 
-def node_level(x):
+def node_level(node):
     """
     Render an indented tree like output for a specific node
     """
+
     return mark_safe(
         ''.join(
             [
-                '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (getattr(x, x._mptt_meta.level_attr) - 1),
-                '' if x.is_root_node() else '<i class="fa fa-level-up fa-rotate-90"></i> ',
-                ugettext('Root') if x.is_root_node() else unicode(x)
+                '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (getattr(node, node._mptt_meta.level_attr) - 1),
+                '' if node.is_root_node() else '<i class="fa fa-level-up fa-rotate-90"></i> ',
+                ugettext('Root') if node.is_root_node() else unicode(node)
             ]
         )
     )
