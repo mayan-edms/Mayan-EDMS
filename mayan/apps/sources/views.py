@@ -58,8 +58,6 @@ class SourceLogListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'title': _('Log entries for source: %s') % self.get_source(),
-            'hide_object': True,
             'extra_columns': (
                 {
                     'name': _('Date time'),
@@ -69,7 +67,10 @@ class SourceLogListView(SingleObjectListView):
                     'name': _('Message'),
                     'attribute': encapsulate(lambda entry: entry.message)
                 },
-            )
+            ),
+            'hide_object': True,
+            'object': self.get_source(),
+            'title': _('Log entries for source: %s') % self.get_source(),
         }
 
 
