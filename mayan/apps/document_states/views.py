@@ -115,25 +115,22 @@ class WorkflowInstanceDetailView(SingleObjectListView):
             WorkflowInstanceDetailView, self
         ).dispatch(request, *args, **kwargs)
 
-    def get_workflow_instance(self):
-        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
-
-    def get_queryset(self):
-        return self.get_workflow_instance().log_entries.order_by('-datetime')
-
-    def get_context_data(self, **kwargs):
-        context = {
+    def get_extra_context(self):
+        return {
             'hide_object': True,
             'navigation_object_list': ('object', 'workflow_instance'),
             'object': self.get_workflow_instance().document,
-            'object_list': self.get_queryset(),
             'title': _('Detail of workflow: %(workflow)s') % {
                 'workflow': self.get_workflow_instance()
             },
             'workflow_instance': self.get_workflow_instance(),
         }
 
-        return context
+    def get_queryset(self):
+        return self.get_workflow_instance().log_entries.order_by('-datetime')
+
+    def get_workflow_instance(self):
+        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
 
 
 class WorkflowInstanceTransitionView(FormView):

@@ -88,49 +88,39 @@ class SetupIndexDeleteView(SingleObjectDeleteView):
         }
 
 
-def index_setup_view(request, index_pk):
-    index = get_object_or_404(Index, pk=index_pk)
+class SetupIndexTreeTemplateListView(SingleObjectListView):
+    view_permission = permission_document_indexing_setup
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_indexing_setup,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_indexing_setup, request.user, index
-        )
+    def get_index(self):
+        return get_object_or_404(Index, pk=self.kwargs['pk'])
 
-    object_list = index.template_root.get_descendants(include_self=True)
+    def get_queryset(self):
+        return self.get_index().template_root.get_descendants(include_self=True)
 
-    context = {
-        'object_list': object_list,
-        'index': index,
-        'navigation_object_list': ('index',),
-        'title': _('Tree template nodes for index: %s') % index,
-        'hide_object': True,
-        'extra_columns': [
-            {
-                'name': _('Level'), 'attribute': encapsulate(
-                    lambda x: node_level(x)
-                )
-            },
-            {
-                'name': _('Enabled'), 'attribute': encapsulate(
-                    lambda x: two_state_template(x.enabled)
-                )
-            },
-            {
-                'name': _('Has document links?'), 'attribute': encapsulate(
-                    lambda x: two_state_template(x.link_documents)
-                )
-            },
-        ],
-    }
-
-    return render_to_response(
-        'appearance/generic_list.html', context,
-        context_instance=RequestContext(request)
-    )
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {
+                    'name': _('Level'), 'attribute': encapsulate(
+                        lambda node: node_level(node)
+                    )
+                },
+                {
+                    'name': _('Enabled'), 'attribute': encapsulate(
+                        lambda node: two_state_template(node.enabled)
+                    )
+                },
+                {
+                    'name': _('Has document links?'), 'attribute': encapsulate(
+                        lambda node: two_state_template(node.link_documents)
+                    )
+                },
+            ),
+            'hide_object': True,
+            'index': self.get_index(),
+            'navigation_object_list': ('index',),
+            'title': _('Tree template nodes for index: %s') % self.get_index(),
+        }
 
 
 class SetupIndexDocumentTypesView(AssignRemoveView):
@@ -434,38 +424,49 @@ def rebuild_index_instances(request):
         return HttpResponseRedirect(next)
 
 
-def document_index_list(request, document_id):
+class DocumentIndexNodeListView(SingleObjectListView):
     """
     Show a list of indexes where the current document can be found
     """
 
-    document = get_object_or_404(Document, pk=document_id)
-    object_list = []
+    object_permission = permission_document_indexing_view
+    object_permission_related = 'index'
 
-    queryset = document.node_instances.all()
-    try:
-        # TODO: should be AND not OR
-        Permission.check_permissions(
-            request.user, (
-                permission_document_view, permission_document_indexing_view
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_view,)
             )
-        )
-    except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(
-            permission_document_indexing_view, request.user, queryset,
-            related='index'
-        )
-
-    for index_instance in queryset:
-        object_list.append(
-            get_breadcrumbs(
-                index_instance, single_link=True, include_count=True
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_view, request.user, self.get_document()
             )
-        )
 
-    return render_to_response('appearance/generic_list.html', {
-        'object_list': object_list,
-        'object': document,
-        'hide_link': True,
-        'title': _('Indexes containing document: %s') % document,
-    }, context_instance=RequestContext(request))
+        return super(
+            DocumentIndexNodeListView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {
+                    'name': _('Node'),
+                    'attribute': encapsulate(
+                        lambda node: get_breadcrumbs(
+                            index_instance_node=node, single_link=True, include_count=True
+                        )
+                    )
+                },
+            ),
+            'hide_object': True,
+            'object': self.get_document(),
+            'title': _(
+                'Indexes nodes containing document: %s'
+            ) % self.get_document(),
+        }
+
+    def get_queryset(self):
+        return self.get_document().node_instances.all()

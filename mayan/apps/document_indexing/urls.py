@@ -8,9 +8,9 @@ from .api_views import (
     APIIndexTemplateView, APIIndexView
 )
 from .views import (
-    IndexInstanceNodeView, IndexListView, SetupIndexDocumentTypesView,
-    SetupIndexCreateView, SetupIndexDeleteView, SetupIndexEditView,
-    SetupIndexListView
+    DocumentIndexNodeListView, IndexInstanceNodeView, IndexListView,
+    SetupIndexDocumentTypesView, SetupIndexCreateView, SetupIndexDeleteView,
+    SetupIndexEditView, SetupIndexListView, SetupIndexTreeTemplateListView
 )
 
 urlpatterns = patterns(
@@ -32,8 +32,8 @@ urlpatterns = patterns(
         name='index_setup_delete'
     ),
     url(
-        r'^setup/index/(?P<index_pk>\d+)/view/$', 'index_setup_view',
-        name='index_setup_view'
+        r'^setup/index/(?P<pk>\d+)/template/$',
+        SetupIndexTreeTemplateListView.as_view(), name='index_setup_view'
     ),
     url(
         r'^setup/index/(?P<pk>\d+)/document_types/$',
@@ -63,8 +63,8 @@ urlpatterns = patterns(
         name='rebuild_index_instances'
     ),
     url(
-        r'^list/for/document/(?P<document_id>\d+)/$', 'document_index_list',
-        name='document_index_list'
+        r'^list/for/document/(?P<pk>\d+)/$',
+        DocumentIndexNodeListView.as_view(), name='document_index_list'
     ),
 )
 

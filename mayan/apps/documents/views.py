@@ -1009,9 +1009,11 @@ class DocumentTypeFilenameListView(SingleObjectListView):
             ),
             'hide_link': True,
             'navigation_object_list': ('document_type',),
-            'object_list': self.get_document_type().filenames.all(),
             'title': _('Filenames for document type: %s') % self.get_document_type(),
         }
+
+    def get_queryset(self):
+        return self.get_document_type().filenames.all()
 
 
 class DocumentTypeFilenameEditView(SingleObjectEditView):
