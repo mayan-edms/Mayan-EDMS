@@ -150,16 +150,11 @@ class SetupIndexDocumentTypesView(AssignRemoveView):
     def remove(self, item):
         self.get_object().document_types.remove(item)
 
-    def get_context_data(self, **kwargs):
-        data = super(
-            SetupIndexDocumentTypesView, self
-        ).get_context_data(**kwargs)
-        data.update({
+    def get_extra_context(self):
+        return {
             'object': self.get_object(),
             'title': _('Document types linked to index: %s') % self.get_object()
-        })
-
-        return data
+        }
 
 
 # Node views

@@ -598,20 +598,13 @@ class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
     def remove(self, item):
         item.delete()
 
-    def get_context_data(self, **kwargs):
-        data = super(
-            SetupDocumentTypeMetadataOptionalView, self
-        ).get_context_data(**kwargs)
-        data.update(
-            {
-                'object': self.get_object(),
-                'title': _(
-                    'Optional metadata types for document type: %s'
-                ) % self.get_object(),
-            }
-        )
-
-        return data
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _(
+                'Optional metadata types for document type: %s'
+            ) % self.get_object(),
+        }
 
 
 class SetupDocumentTypeMetadataRequiredView(SetupDocumentTypeMetadataOptionalView):
@@ -623,17 +616,10 @@ class SetupDocumentTypeMetadataRequiredView(SetupDocumentTypeMetadataOptionalVie
             self.get_object().metadata.filter(required=True)
         )
 
-    def get_context_data(self, **kwargs):
-        data = super(
-            SetupDocumentTypeMetadataRequiredView, self
-        ).get_context_data(**kwargs)
-        data.update(
-            {
-                'object': self.get_object(),
-                'title': _(
-                    'Required metadata types for document type: %s'
-                ) % self.get_object(),
-            }
-        )
-
-        return data
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _(
+                'Required metadata types for document type: %s'
+            ) % self.get_object(),
+        }

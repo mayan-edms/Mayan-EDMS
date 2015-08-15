@@ -147,15 +147,10 @@ class ACLDeleteView(SingleObjectDeleteView):
 
         return super(ACLDeleteView, self).dispatch(request, *args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super(ACLDeleteView, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'object': self.get_object().content_object,
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'object': self.get_object().content_object,
+        }
 
 
 class ACLPermissionsView(AssignRemoveView):

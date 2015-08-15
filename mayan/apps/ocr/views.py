@@ -97,20 +97,12 @@ class DocumentTypeSettingsEditView(SingleObjectEditView):
             DocumentType, pk=self.kwargs['pk']
         ).ocr_settings
 
-    def get_context_data(self, **kwargs):
-        context = super(
-            DocumentTypeSettingsEditView, self
-        ).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'title': _(
-                    'Edit OCR settings for document type: %s'
-                ) % self.get_object().document_type
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Edit OCR settings for document type: %s'
+            ) % self.get_object().document_type
+        }
 
 
 def document_content(request, document_id):

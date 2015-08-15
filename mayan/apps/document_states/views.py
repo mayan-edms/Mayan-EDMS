@@ -49,24 +49,17 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
     def get_document(self):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
 
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'object': self.get_document(),
+            'title': _(
+                'Workflows for document: %s'
+            ) % self.get_document(),
+        }
+
     def get_queryset(self):
         return self.get_document().workflows.all()
-
-    def get_context_data(self, **kwargs):
-        context = super(
-            DocumentWorkflowInstanceListView, self
-        ).get_context_data(**kwargs)
-        context.update(
-            {
-                'hide_link': True,
-                'object': self.get_document(),
-                'title': _(
-                    'Workflows for document: %s'
-                ) % self.get_document(),
-            }
-        )
-
-        return context
 
 
 class WorkflowDocumentListView(DocumentListView):
@@ -162,35 +155,27 @@ class WorkflowInstanceTransitionView(FormView):
         )
         return HttpResponseRedirect(self.get_success_url())
 
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': ('object', 'workflow_instance'),
+            'object': self.get_workflow_instance().document,
+            'submit_label': _('Submit'),
+            'title': _(
+                'Do transition for workflow: %s'
+            ) % self.get_workflow_instance(),
+            'workflow_instance': self.get_workflow_instance(),
+        }
+
     def get_form_kwargs(self):
         kwargs = super(WorkflowInstanceTransitionView, self).get_form_kwargs()
         kwargs['workflow'] = self.get_workflow_instance()
         return kwargs
 
-    def get_workflow_instance(self):
-        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
-
-    def get_context_data(self, **kwargs):
-        context = super(
-            WorkflowInstanceTransitionView, self
-        ).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'navigation_object_list': ('object', 'workflow_instance'),
-                'object': self.get_workflow_instance().document,
-                'submit_label': _('Submit'),
-                'title': _(
-                    'Do transition for workflow: %s'
-                ) % self.get_workflow_instance(),
-                'workflow_instance': self.get_workflow_instance(),
-            }
-        )
-
-        return context
-
     def get_success_url(self):
         return self.get_workflow_instance().get_absolute_url()
+
+    def get_workflow_instance(self):
+        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
 
 
 # Setup
@@ -235,6 +220,14 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         # TODO: add task launching this workflow for all the document types
         # of item
 
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Document types assigned the workflow: %s'
+            ) % self.get_object(),
+            'object': self.get_object(),
+        }
+
     def get_object(self):
         return get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
@@ -253,19 +246,6 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         # TODO: add task deleting this workflow for all the document types of
         # item
 
-    def get_context_data(self, **kwargs):
-        data = super(
-            SetupWorkflowDocumentTypesView, self
-        ).get_context_data(**kwargs)
-        data.update({
-            'title': _(
-                'Document types assigned the workflow: %s'
-            ) % self.get_object(),
-            'object': self.get_object(),
-        })
-
-        return data
-
 
 class SetupWorkflowStateListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
@@ -282,25 +262,18 @@ class SetupWorkflowStateListView(SingleObjectListView):
             SetupWorkflowStateListView, self
         ).dispatch(request, *args, **kwargs)
 
-    def get_workflow(self):
-        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'object': self.get_workflow(),
+            'title': _('States of workflow: %s') % self.get_workflow()
+        }
 
     def get_queryset(self):
         return self.get_workflow().states.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(
-            SetupWorkflowStateListView, self
-        ).get_context_data(**kwargs)
-        context.update(
-            {
-                'hide_link': True,
-                'object': self.get_workflow(),
-                'title': _('States of workflow: %s') % self.get_workflow()
-            }
-        )
-
-        return context
+    def get_workflow(self):
+        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
 
 class SetupWorkflowStateCreateView(SingleObjectCreateView):
@@ -320,19 +293,13 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
             SetupWorkflowStateCreateView, self
         ).dispatch(request, *args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super(
-            SetupWorkflowStateCreateView, self
-        ).get_context_data(**kwargs)
-        context.update(
-            {
-                'object': self.get_workflow(),
-                'title': _(
-                    'Create states for workflow: %s'
-                ) % self.get_workflow()
-            }
-        )
-        return context
+    def get_extra_context(self):
+        return {
+            'object': self.get_workflow(),
+            'title': _(
+                'Create states for workflow: %s'
+            ) % self.get_workflow()
+        }
 
     def get_workflow(self):
         return get_object_or_404(Workflow, pk=self.kwargs['pk'])
@@ -356,20 +323,12 @@ class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
     model = WorkflowState
     view_permission = permission_workflow_delete
 
-    def get_context_data(self, **kwargs):
-        context = super(
-            SetupWorkflowStateDeleteView, self
-        ).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'navigation_object_list': ('object', 'workflow_instance'),
-                'object': self.get_object().workflow,
-                'workflow_instance': self.get_object(),
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': ('object', 'workflow_instance'),
+            'object': self.get_object().workflow,
+            'workflow_instance': self.get_object(),
+        }
 
     def get_success_url(self):
         return reverse(
@@ -383,20 +342,12 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
     model = WorkflowState
     view_permission = permission_workflow_edit
 
-    def get_context_data(self, **kwargs):
-        context = super(
-            SetupWorkflowStateEditView, self
-        ).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'navigation_object_list': ('object', 'workflow_instance'),
-                'object': self.get_object().workflow,
-                'workflow_instance': self.get_object(),
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': ('object', 'workflow_instance'),
+            'object': self.get_object().workflow,
+            'workflow_instance': self.get_object(),
+        }
 
     def get_success_url(self):
         return reverse(
@@ -429,21 +380,14 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
     def get_queryset(self):
         return self.get_workflow().transitions.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(
-            SetupWorkflowTransitionListView, self
-        ).get_context_data(**kwargs)
-        context.update(
-            {
-                'hide_link': True,
-                'object': self.get_workflow(),
-                'title': _(
-                    'Transitions of workflow: %s'
-                ) % self.get_workflow()
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'object': self.get_workflow(),
+            'title': _(
+                'Transitions of workflow: %s'
+            ) % self.get_workflow()
+        }
 
 
 class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
@@ -463,19 +407,13 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
             SetupWorkflowTransitionCreateView, self
         ).dispatch(request, *args, **kwargs)
 
-    def get_context_data(self, **kwargs):
-        context = super(
-            SetupWorkflowTransitionCreateView, self
-        ).get_context_data(**kwargs)
-        context.update(
-            {
-                'object': self.get_workflow(),
-                'title': _(
-                    'Create transitions for workflow: %s'
-                ) % self.get_workflow()
-            }
-        )
-        return context
+    def get_extra_context(self):
+        return {
+            'object': self.get_workflow(),
+            'title': _(
+                'Create transitions for workflow: %s'
+            ) % self.get_workflow()
+        }
 
     def get_form_kwargs(self):
         kwargs = super(
@@ -516,20 +454,12 @@ class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
     model = WorkflowTransition
     view_permission = permission_workflow_delete
 
-    def get_context_data(self, **kwargs):
-        context = super(
-            SetupWorkflowTransitionDeleteView, self
-        ).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'object': self.get_object().workflow,
-                'navigation_object_list': ('object', 'workflow_instance'),
-                'workflow_instance': self.get_object(),
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'object': self.get_object().workflow,
+            'navigation_object_list': ('object', 'workflow_instance'),
+            'workflow_instance': self.get_object(),
+        }
 
     def get_success_url(self):
         return reverse(
@@ -543,20 +473,12 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
     model = WorkflowTransition
     view_permission = permission_workflow_edit
 
-    def get_context_data(self, **kwargs):
-        context = super(
-            SetupWorkflowTransitionEditView, self
-        ).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'navigation_object_list': ('object', 'workflow_instance'),
-                'object': self.get_object().workflow,
-                'workflow_instance': self.get_object(),
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': ('object', 'workflow_instance'),
+            'object': self.get_object().workflow,
+            'workflow_instance': self.get_object(),
+        }
 
     def get_form_kwargs(self):
         kwargs = super(
