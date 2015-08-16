@@ -79,7 +79,7 @@ class CommonApp(MayanAppConfig):
                 'common:tools_list'
             )
         )
-        menu_main.bind_links(links=[link_about], position=-1)
+        menu_main.bind_links(links=(link_about,), position=-1)
         menu_secondary.bind_links(
             links=(link_about, link_license),
             sources=('common:about_view', 'common:license_view')

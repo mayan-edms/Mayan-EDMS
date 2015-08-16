@@ -24,4 +24,4 @@ class EventsApp(MayanAppConfig):
             func=lambda context: event_type_link(context['object'])
         )
 
-        menu_tools.bind_links(links=[link_events_list])
+        menu_tools.bind_links(links=(link_events_list,))

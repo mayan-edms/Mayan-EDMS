@@ -156,7 +156,7 @@ class MetadataApp(MayanAppConfig):
                 'metadata:setup_metadata_type_create'
             )
         )
-        menu_setup.bind_links(links=[link_setup_metadata_type_list])
+        menu_setup.bind_links(links=(link_setup_metadata_type_list,))
         menu_sidebar.bind_links(
             links=(
                 link_metadata_add, link_metadata_edit, link_metadata_remove

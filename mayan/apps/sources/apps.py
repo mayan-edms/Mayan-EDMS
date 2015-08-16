@@ -104,7 +104,7 @@ class SourcesApp(MayanAppConfig):
             }
         )
 
-        menu_front_page.bind_links(links=[link_document_create_multiple])
+        menu_front_page.bind_links(links=(link_document_create_multiple,))
         menu_object.bind_links(
             links=(link_document_create_siblings,), sources=(Document,)
         )
