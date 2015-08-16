@@ -69,16 +69,6 @@ class PublicKeyListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': [
-                {
-                    'name': _('Key ID'),
-                    'attribute': 'key_id',
-                },
-                {
-                    'name': _('Owner'),
-                    'attribute': encapsulate(lambda x: ', '.join(x.uids)),
-                },
-            ],
             'hide_object': True,
             'title': self.get_title()
         }
@@ -156,42 +146,8 @@ class KeyQueryResultView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'title': _('Key query results'),
             'hide_object': True,
-            'extra_columns': (
-                {
-                    'name': _('ID'),
-                    'attribute': encapsulate(
-                        lambda key: '...{0}'.format(key.key_id[-16:])
-                    ),
-                },
-                {
-                    'name': _('Type'),
-                    'attribute': 'key_type',
-                },
-                {
-                    'name': _('Creation date'),
-                    'attribute': encapsulate(
-                        lambda key: datetime.fromtimestamp(int(key.date))
-                    )
-                },
-                {
-                    'name': _('Expiration date'),
-                    'attribute': encapsulate(
-                        lambda key: datetime.fromtimestamp(int(key.expires)) if key.expires else _('No expiration')
-                    )
-                },
-                {
-                    'name': _('Length'),
-                    'attribute': 'length',
-                },
-                {
-                    'name': _('Identities'),
-                    'attribute': encapsulate(
-                        lambda key: ', '.join(key.uids)
-                    ),
-                },
-            )
+            'title': _('Key query results'),
         }
 
     def get_queryset(self):
