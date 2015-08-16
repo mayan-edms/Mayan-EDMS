@@ -31,11 +31,6 @@ def get_encoded_parameter(item, parameters_dict):
 
 
 @register.filter
-def make_non_breakable(value):
-    return value.replace('-', '\u2011')
-
-
-@register.filter
 def object_property(value, arg):
     return return_attrib(value, arg)
 
