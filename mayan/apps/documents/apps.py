@@ -17,7 +17,7 @@ from common import (
 )
 from common.classes import ModelAttribute
 from common.signals import post_initial_setup
-from common.utils import encapsulate
+from common.widgets import two_state_template
 from converter.links import link_transformation_list
 from converter.permissions import (
     permission_transformation_create,
@@ -125,23 +125,50 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=Document, label=_('Thumbnail'),
-            attribute=encapsulate(
-                lambda document: document_thumbnail(
-                    document, gallery_name='documents:document_list',
-                    size=setting_thumbnail_size.value,
-                    title=getattr(document, 'label', None),
-                )
+            func=lambda context: document_thumbnail(
+                context['object'], gallery_name='documents:document_list',
+                size=setting_thumbnail_size.value,
+                title=getattr(context['object'], 'label', None),
             )
         )
         SourceColumn(
             source=Document, label=_('Type'), attribute='document_type'
         )
+
+        # TODO: make permission aware
+        SourceColumn(
+            source=DocumentType, label=_('Documents'),
+            func=lambda context: context['object'].documents.count()
+        )
+
+        SourceColumn(
+            source=DocumentTypeFilename, label=_('Enabled'),
+            func=lambda context: two_state_template(context['object'].enabled)
+        )
+
         SourceColumn(
             source=DeletedDocument, label=_('Type'), attribute='document_type'
         )
         SourceColumn(
             source=DeletedDocument, label=_('Date time trashed'),
             attribute='deleted_date_time'
+        )
+
+        SourceColumn(
+            source=DocumentVersion, label=_('Time and date'),
+            attribute='timestamp'
+        )
+        SourceColumn(
+            source=DocumentVersion, label=_('MIME type'),
+            attribute='mimetype'
+        )
+        SourceColumn(
+            source=DocumentVersion, label=_('Encoding'),
+            attribute='encoding'
+        )
+        SourceColumn(
+            source=DocumentVersion, label=_('Comment'),
+            attribute='comment'
         )
 
         app.conf.CELERYBEAT_SCHEDULE.update(

@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.template import Library
 
+from common.utils import return_attrib
+
 from ..classes import Menu, SourceColumn
 from ..forms import MultiItemForm
 
@@ -58,3 +60,11 @@ def get_source_columns(source):
             pass
 
     return SourceColumn.get_for_source(source)
+
+
+@register.simple_tag(takes_context=True)
+def source_column_resolve(context, column):
+    if column.attribute:
+        return return_attrib(context['object'], column.attribute)
+    elif column.func:
+        return column.func(context=context)

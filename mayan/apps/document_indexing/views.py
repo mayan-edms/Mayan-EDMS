@@ -11,7 +11,6 @@ from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from common.utils import encapsulate
 from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
@@ -23,7 +22,10 @@ from documents.views import DocumentListView
 from permissions import Permission
 
 from .forms import IndexTemplateNodeForm
-from .models import Index, IndexInstanceNode, IndexTemplateNode
+from .models import (
+    DocumentIndexInstanceNode, Index, IndexInstance, IndexInstanceNode,
+    IndexTemplateNode
+)
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit,
@@ -49,17 +51,8 @@ class SetupIndexListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'title': _('Indexes'),
             'hide_object': True,
-            'extra_columns': [
-                {'name': _('Label'), 'attribute': 'label'},
-                {'name': _('Slug'), 'attribute': 'slug'},
-                {
-                    'name': _('Enabled'), 'attribute': encapsulate(
-                        lambda x: two_state_template(x.enabled)
-                    )
-                },
-            ]
+            'title': _('Indexes'),
         }
 
 
@@ -71,8 +64,8 @@ class SetupIndexEditView(SingleObjectEditView):
 
     def get_extra_context(self):
         return {
-            'title': _('Edit index: %s') % self.get_object(),
             'object': self.get_object(),
+            'title': _('Edit index: %s') % self.get_object(),
         }
 
 
@@ -83,8 +76,8 @@ class SetupIndexDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'title': _('Delete the index: %s?') % self.get_object(),
             'object': self.get_object(),
+            'title': _('Delete the index: %s?') % self.get_object(),
         }
 
 
@@ -99,23 +92,6 @@ class SetupIndexTreeTemplateListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': (
-                {
-                    'name': _('Level'), 'attribute': encapsulate(
-                        lambda node: node_level(node)
-                    )
-                },
-                {
-                    'name': _('Enabled'), 'attribute': encapsulate(
-                        lambda node: two_state_template(node.enabled)
-                    )
-                },
-                {
-                    'name': _('Has document links?'), 'attribute': encapsulate(
-                        lambda node: two_state_template(node.link_documents)
-                    )
-                },
-            ),
             'hide_object': True,
             'index': self.get_index(),
             'navigation_object_list': ('index',),
@@ -276,54 +252,17 @@ def template_node_delete(request, node_pk):
 
 
 class IndexListView(SingleObjectListView):
-    @staticmethod
-    def get_items_count(instance):
-        try:
-            if instance.template_root.link_documents:
-                return instance.instance_root.documents.count()
-            else:
-                return instance.instance_root.get_children().count()
-        except IndexInstanceNode.DoesNotExist:
-            return 0
-
-    queryset = Index.objects.filter(enabled=True)
     object_permission = permission_document_indexing_view
+    queryset = IndexInstance.objects.filter(enabled=True)
 
     def get_extra_context(self):
         return {
-            'title': _('Indexes'),
             'hide_links': True,
-            'extra_columns': [
-                {
-                    'name': _('Items'), 'attribute': encapsulate(
-                        lambda instance: IndexListView.get_items_count(instance)
-                    )
-                },
-                {
-                    'name': _('Document types'),
-                    'attribute': 'get_document_types_names'
-                },
-            ],
+            'title': _('Indexes'),
         }
 
 
 class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
-    @staticmethod
-    def get_item_count(instance, user):
-        if instance.index_template_node.link_documents:
-            queryset = instance.documents
-
-            try:
-                Permission.check_permissions(user, (permission_document_view,))
-            except PermissionDenied:
-                queryset = AccessControlList.objects.filter_by_access(
-                    permission_document_view, user, queryset
-                )
-
-            return queryset.count()
-        else:
-            return instance.get_children().count()
-
     def dispatch(self, request, *args, **kwargs):
         self.index_instance = get_object_or_404(
             IndexInstanceNode, pk=self.kwargs['pk']
@@ -371,25 +310,7 @@ class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
         }
 
         if self.index_instance and not self.index_instance.index_template_node.link_documents:
-            context.update(
-                {
-                    'extra_columns': [
-                        {
-                            'name': _('Node'),
-                            'attribute': encapsulate(
-                                lambda x: index_instance_item_link(x)
-                            )
-                        },
-                        {
-                            'name': _('Items'),
-                            'attribute': encapsulate(
-                                lambda instance: IndexInstanceNodeView.get_item_count(instance=instance, user=self.request.user)
-                            )
-                        }
-                    ],
-                    'hide_object': True,
-                }
-            )
+            context.update({'hide_object': True})
 
         return context
 
@@ -446,16 +367,6 @@ class DocumentIndexNodeListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': (
-                {
-                    'name': _('Node'),
-                    'attribute': encapsulate(
-                        lambda node: get_breadcrumbs(
-                            index_instance_node=node, single_link=True, include_count=True
-                        )
-                    )
-                },
-            ),
             'hide_object': True,
             'object': self.get_document(),
             'title': _(
@@ -464,4 +375,4 @@ class DocumentIndexNodeListView(SingleObjectListView):
         }
 
     def get_queryset(self):
-        return self.get_document().node_instances.all()
+        return DocumentIndexInstanceNode.objects.get_for(self.get_document())

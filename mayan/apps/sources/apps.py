@@ -9,7 +9,6 @@ from common import (
     menu_sidebar, menu_setup
 )
 from common.signals import post_initial_setup, post_upgrade
-from common.utils import encapsulate
 from converter.links import link_transformation_list
 from documents.models import Document
 from documents.signals import post_version_upload
@@ -32,8 +31,8 @@ from .links import (
     link_upload_version
 )
 from .models import (
-    POP3Email, IMAPEmail, Source, StagingFolderSource, WatchFolderSource,
-    WebFormSource
+    POP3Email, IMAPEmail, Source, SourceLog, StagingFolderSource,
+    WatchFolderSource, WebFormSource
 )
 from .widgets import staging_file_thumbnail
 
@@ -61,13 +60,22 @@ class SourcesApp(MayanAppConfig):
         SourceColumn(
             source=StagingFile,
             label=_('Thumbnail'),
-            attribute=encapsulate(
-                lambda staging_file: staging_file_thumbnail(
-                    staging_file,
-                    gallery_name='sources:staging_list',
-                    title=staging_file.filename, size='100'
-                )
+            func=lambda context: staging_file_thumbnail(
+                context['object'],
+                gallery_name='sources:staging_list',
+                title=context['object'].filename, size='100'
             )
+        )
+
+        SourceColumn(
+            source=SourceLog,
+            label=_('Date time'),
+            func=lambda context: context['object'].datetime
+        )
+        SourceColumn(
+            source=SourceLog,
+            label=_('Message'),
+            func=lambda context: context['object'].message
         )
 
         app.conf.CELERY_QUEUES.extend(

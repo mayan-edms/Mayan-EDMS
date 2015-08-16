@@ -7,7 +7,6 @@ from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_setup, menu_object
-from common.utils import encapsulate
 from common.widgets import exists_widget
 from navigation import SourceColumn
 
@@ -29,20 +28,20 @@ class SmartSettingsApp(MayanAppConfig):
 
         SourceColumn(
             source=Namespace, label=_('Setting count'),
-            attribute=encapsulate(lambda instance: len(instance.settings))
+            func=lambda context: len(context['object'].settings)
         )
         SourceColumn(
             source=Setting, label=_('Name'),
-            attribute=encapsulate(lambda instance: setting_widget(instance))
+            func=lambda context: setting_widget(context['object'])
         )
         SourceColumn(
             source=Setting, label=_('Value'), attribute='serialized_value'
         )
         SourceColumn(
             source=Setting, label=_('Found in path'),
-            attribute=encapsulate(
-                lambda instance: exists_widget(instance.value) if instance.is_path else _('n/a')
-            )
+            func=lambda context: exists_widget(
+                context['object'].value
+            ) if context['object'].is_path else _('n/a')
         )
 
         menu_object.bind_links(

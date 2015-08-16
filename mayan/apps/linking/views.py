@@ -12,7 +12,6 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from common.utils import encapsulate
 from common.generics import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectEditView,
     SingleObjectListView
@@ -145,14 +144,6 @@ class SmartLinkListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': [
-                {'name': _('Dynamic label'), 'attribute': 'dynamic_label'},
-                {
-                    'name': _('Enabled'), 'attribute': encapsulate(
-                        lambda instance: two_state_template(instance.enabled)
-                    )
-                },
-            ],
             'hide_link': True,
             'title': _('Smart links'),
         }
@@ -183,15 +174,6 @@ class DocumentSmartLinkListView(SmartLinkListView):
     def get_extra_context(self):
         return {
             'document': self.document,
-            'extra_columns': (
-                {
-                    'name': _('Label'), 'attribute': encapsulate(
-                        lambda smart_link: smart_link.get_dynamic_label(
-                            self.document
-                        )
-                    )
-                },
-            ),
             'hide_object': True,
             'hide_link': True,
             'object': self.document,
@@ -272,17 +254,9 @@ class SmartLinkConditionListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'title': _('Conditions for smart link: %s') % self.get_smart_link(),
-            'extra_columns': (
-                {
-                    'name': _('Enabled'),
-                    'attribute': encapsulate(
-                        lambda condition: two_state_template(condition.enabled)
-                    )
-                },
-            ),
             'hide_link': True,
             'object': self.get_smart_link(),
+            'title': _('Conditions for smart link: %s') % self.get_smart_link(),
         }
 
     def get_smart_link(self):

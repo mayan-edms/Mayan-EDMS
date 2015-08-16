@@ -10,7 +10,6 @@ from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import encapsulate
 from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectEditView,
     SingleObjectListView
@@ -31,30 +30,6 @@ class UserListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': (
-                {
-                    'name': _('Full name'),
-                    'attribute': 'get_full_name'
-                },
-                {
-                    'name': _('Email'),
-                    'attribute': 'email'
-                },
-                {
-                    'name': _('Active'),
-                    'attribute': encapsulate(
-                        lambda user: two_state_template(user.is_active)
-                    ),
-                },
-                {
-                    'name': _('Has usable password?'),
-                    'attribute': encapsulate(
-                        lambda user: two_state_template(
-                            user.has_usable_password()
-                        )
-                    ),
-                },
-            ),
             'hide_link': True,
             'title': _('Users'),
         }
@@ -301,8 +276,8 @@ class GroupEditView(SingleObjectEditView):
 
 class GroupListView(SingleObjectListView):
     extra_context = {
-        'title': _('Groups'),
         'hide_link': True,
+        'title': _('Groups'),
         'extra_columns': [
             {
                 'name': _('Members'),

@@ -4,7 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
-from common.utils import encapsulate
 from documents.models import Document
 from navigation import SourceColumn
 
@@ -37,9 +36,7 @@ class DocumentCommentsApp(MayanAppConfig):
         SourceColumn(source=Comment, label=_('Date'), attribute='submit_date')
         SourceColumn(
             source=Comment, label=_('User'),
-            attribute=encapsulate(
-                lambda x: x.user.get_full_name() if x.user.get_full_name() else x.user
-            )
+            func=lambda context: context['object'].user.get_full_name() if context['object'].user.get_full_name() else context['object'].user
         )
         SourceColumn(source=Comment, label=_('Comment'), attribute='comment')
 

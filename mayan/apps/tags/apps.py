@@ -9,7 +9,6 @@ from common import (
     MayanAppConfig, menu_facet, menu_secondary, menu_object, menu_main,
     menu_multi_item, menu_sidebar
 )
-from common.utils import encapsulate
 from documents.models import Document
 from documents.search import document_search
 from navigation import CombinedSource, SourceColumn
@@ -55,14 +54,18 @@ class TagsApp(MayanAppConfig):
 
         SourceColumn(
             source=Document, label=_('Tags'),
-            attribute=encapsulate(
-                lambda document: widget_inline_tags(document)
-            )
+            func=lambda context: widget_inline_tags(context['object'])
         )
 
         SourceColumn(
             source=Tag, label=_('Preview'),
-            attribute=encapsulate(lambda tag: widget_single_tag(tag))
+            func=lambda context: widget_single_tag(context['object'])
+        )
+        SourceColumn(
+            source=Tag, label=_('Documents'),
+            func=lambda context: context['object'].get_document_count(
+                user=context['request'].user
+            )
         )
 
         document_search.add_model_field(field='tags__label', label=_('Tags'))

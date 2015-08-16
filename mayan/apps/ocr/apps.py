@@ -13,7 +13,6 @@ from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
 )
-from common.utils import encapsulate
 from documents.models import Document, DocumentType, DocumentVersion
 from documents.search import document_search
 from documents.signals import post_version_upload
@@ -70,9 +69,7 @@ class OCRApp(MayanAppConfig):
 
         SourceColumn(
             source=DocumentVersionOCRError, label=_('Document'),
-            attribute=encapsulate(
-                lambda entry: document_link(entry.document_version.document)
-            )
+            func=lambda context: document_link(context['object'].document_version.document)
         )
         SourceColumn(
             source=DocumentVersionOCRError, label=_('Added'),

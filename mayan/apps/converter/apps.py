@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_object, menu_sidebar
-from common.utils import encapsulate
 from navigation import SourceColumn
 
 from .links import (
@@ -23,9 +22,7 @@ class ConverterApp(MayanAppConfig):
         SourceColumn(source=Transformation, label=_('Order'), attribute='order')
         SourceColumn(
             source=Transformation, label=_('Transformation'),
-            attribute=encapsulate(
-                lambda transformation: unicode(transformation)
-            )
+            func=lambda context: unicode(context['object'])
         )
         SourceColumn(
             source=Transformation, label=_('Arguments'), attribute='arguments'

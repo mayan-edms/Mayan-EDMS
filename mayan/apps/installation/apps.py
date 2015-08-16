@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_tools, menu_object, menu_secondary
-from common.utils import encapsulate
 from navigation import SourceColumn
 
 from .classes import Property, PropertyNamespace, PIPNotFound, VirtualEnv
@@ -24,7 +23,7 @@ class InstallationApp(MayanAppConfig):
         )
         SourceColumn(
             source=PropertyNamespace, label=_('Items'),
-            attribute=encapsulate(lambda entry: len(entry.get_properties()))
+            func=lambda context: len(context['object'].get_properties())
         )
 
         SourceColumn(source=Property, label=_('Label'), attribute='label')

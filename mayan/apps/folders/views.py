@@ -12,7 +12,6 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
-from common.utils import encapsulate
 from common.views import (
     SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
 )
@@ -48,31 +47,8 @@ class FolderEditView(SingleObjectEditView):
 class FolderListView(SingleObjectListView):
     object_permission = permission_folder_view
 
-    @staticmethod
-    def get_document_count(instance, user):
-        queryset = instance.documents
-
-        try:
-            Permission.check_permissions(user, (permission_document_view,))
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_view, user, queryset
-            )
-
-        return queryset.count()
-
     def get_extra_context(self):
         return {
-            'extra_columns': [
-                {
-                    'name': _('Documents'),
-                    'attribute': encapsulate(
-                        lambda instance: FolderListView.get_document_count(
-                            instance=instance, user=self.request.user
-                        )
-                    )
-                },
-            ],
             'hide_link': True,
             'title': _('Folders'),
         }
@@ -253,16 +229,6 @@ class DocumentFolderListView(FolderListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': [
-                {
-                    'name': _('Documents'),
-                    'attribute': encapsulate(
-                        lambda instance: FolderListView.get_document_count(
-                            instance=instance, user=self.request.user
-                        )
-                    )
-                },
-            ],
             'hide_link': True,
             'object': self.document,
             'title': _('Folders containing document: %s') % self.document,

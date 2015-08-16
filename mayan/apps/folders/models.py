@@ -1,12 +1,16 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 from django.contrib.auth.models import User
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from acls.models import AccessControlList
 from documents.models import Document
+from documents.permissions import permission_document_view
+from permissions import Permission
 
 
 @python_2_unicode_compatible
@@ -27,6 +31,18 @@ class Folder(models.Model):
 
     def get_absolute_url(self):
         return reverse('folders:folder_view', args=[self.pk])
+
+    def get_document_count(self, user):
+        queryset = self.documents
+
+        try:
+            Permission.check_permissions(user, (permission_document_view,))
+        except PermissionDenied:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_document_view, user, queryset
+            )
+
+        return queryset.count()
 
     class Meta:
         ordering = ('label',)

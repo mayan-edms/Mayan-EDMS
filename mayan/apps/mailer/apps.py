@@ -28,15 +28,11 @@ class MailerApp(MayanAppConfig):
         super(MailerApp, self).ready()
 
         SourceColumn(
-            source=LogEntry,
-            label='Date and time',
-            attribute='datetime'
+            source=LogEntry, label=_('Date and time'), attribute='datetime'
         )
 
         SourceColumn(
-            source=LogEntry,
-            label='Message',
-            attribute='message'
+            source=LogEntry, label=_('Message'), attribute='message'
         )
 
         ModelPermission.register(

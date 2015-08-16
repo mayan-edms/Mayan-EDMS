@@ -13,7 +13,7 @@ from common import (
     menu_setup, menu_sidebar, menu_tools
 )
 from common.classes import ModelAttribute
-from common.utils import encapsulate
+from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.search import document_search
 from documents.signals import post_document_type_change
@@ -38,7 +38,7 @@ from .links import (
     link_setup_metadata_type_edit, link_setup_metadata_type_list,
     link_documents_missing_required_metadata
 )
-from .models import DocumentTypeMetadataType, MetadataType
+from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
 from .permissions import (
     permission_metadata_document_add, permission_metadata_document_edit,
     permission_metadata_document_remove, permission_metadata_document_view
@@ -94,9 +94,16 @@ class MetadataApp(MayanAppConfig):
 
         SourceColumn(
             source=Document, label=_('Metadata'),
-            attribute=encapsulate(
-                lambda document: get_metadata_string(document)
-            )
+            func=lambda context: get_metadata_string(context['object'])
+        )
+
+        SourceColumn(
+            source=DocumentMetadata, label=_('Value'),
+            attribute='value'
+        )
+        SourceColumn(
+            source=DocumentMetadata, label=_('Required'),
+            func=lambda context: two_state_template(context['object'].is_required)
         )
 
         app.conf.CELERY_QUEUES.append(

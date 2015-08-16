@@ -11,7 +11,6 @@ from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
-from common.utils import encapsulate
 from common.generics import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
@@ -495,18 +494,9 @@ class DocumentMetadataListView(SingleObjectListView):
     def get_extra_context(self):
         document = self.get_document()
         return {
-            'title': _('Metadata for document: %s') % document,
-            'extra_columns': (
-                {'name': _('Value'), 'attribute': 'value'},
-                {
-                    'name': _('Required'),
-                    'attribute': encapsulate(
-                        lambda metadata: metadata.metadata_type in document.document_type.metadata.filter(required=True)
-                    )
-                }
-            ),
             'hide_link': True,
             'object': document,
+            'title': _('Metadata for document: %s') % document,
         }
 
     def get_queryset(self):

@@ -56,6 +56,12 @@ class FoldersApp(MayanAppConfig):
             source=Folder, label=_('Created'), attribute='datetime_created'
         )
         SourceColumn(source=Folder, label=_('User'), attribute='user')
+        SourceColumn(
+            source=Folder, label=_('Documents'),
+            func=lambda context: context['object'].get_document_count(
+                user=context['request'].user
+            )
+        )
 
         menu_facet.bind_links(
             links=(link_document_folder_list,), sources=(Document,)

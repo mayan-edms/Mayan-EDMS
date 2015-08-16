@@ -5,7 +5,6 @@ from django.utils.translation import ugettext_lazy as _
 from actstream.models import Action
 
 from common import MayanAppConfig, menu_tools
-from common.utils import encapsulate
 from navigation import SourceColumn
 
 from .links import link_events_list
@@ -21,8 +20,8 @@ class EventsApp(MayanAppConfig):
 
         SourceColumn(source=Action, label=_('Timestamp'), attribute='timestamp')
         SourceColumn(source=Action, label=_('Actor'), attribute='actor')
-        SourceColumn(source=Action, label=_('Verb'), attribute=encapsulate(
-            lambda entry: event_type_link(entry))
+        SourceColumn(source=Action, label=_('Verb'),
+            func=lambda context: event_type_link(context['object'])
         )
 
         menu_tools.bind_links(links=[link_events_list])

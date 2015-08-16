@@ -1,12 +1,16 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 from django.db import models
+from django.core.exceptions import PermissionDenied
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from colorful.fields import RGBColorField
 
+from acls.models import AccessControlList
 from documents.models import Document
+from documents.permissions import permission_document_view
+from permissions import Permission
 
 
 @python_2_unicode_compatible
@@ -25,3 +29,15 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.label
+
+    def get_document_count(self, user):
+        queryset = self.documents
+
+        try:
+            Permission.check_permissions(user, (permission_document_view,))
+        except PermissionDenied:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_document_view, user, queryset
+            )
+
+        return queryset.count()

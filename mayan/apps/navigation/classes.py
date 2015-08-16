@@ -281,11 +281,13 @@ class SourceColumn(object):
             # unhashable type: list
             return ()
 
-    def __init__(self, source, label, attribute):
+    def __init__(self, source, label, attribute=None, func=None):
+        self.source = source
+        self.label = label
+        self.attribute = attribute
+        self.func = func
         self.__class__._registry.setdefault(source, [])
-        self.__class__._registry[source].append(
-            {'label': label, 'attribute': attribute}
-        )
+        self.__class__._registry[source].append(self)
 
 
 class CombinedSource(object):

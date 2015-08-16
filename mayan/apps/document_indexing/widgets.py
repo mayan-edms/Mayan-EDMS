@@ -7,22 +7,6 @@ from django.utils.translation import ugettext
 from .models import IndexInstanceNode
 
 
-def index_instance_item_link(index_instance_item):
-    if isinstance(index_instance_item, IndexInstanceNode):
-        if index_instance_item.index_template_node.link_documents:
-            icon_template = '<i class="fa fa-folder"></i>'
-        else:
-            icon_template = '<i class="fa fa-level-up fa-rotate-90"></i>'
-    else:
-        icon_template = ''
-
-    return mark_safe('%(icon_template)s&nbsp;<a href="%(url)s">%(text)s</a>' % {
-        'url': index_instance_item.get_absolute_url(),
-        'icon_template': icon_template,
-        'text': index_instance_item
-    })
-
-
 def get_instance_link(index_instance_node, text=None, simple=False):
     """
     Return an HTML anchor to an index instance
@@ -73,6 +57,22 @@ def get_breadcrumbs(index_instance_node, simple=False, single_link=False, includ
     else:
         output.insert(0, ' / '.join(result))
         return mark_safe(' '.join(output))
+
+
+def index_instance_item_link(index_instance_item):
+    if isinstance(index_instance_item, IndexInstanceNode):
+        if index_instance_item.index_template_node.link_documents:
+            icon_template = '<i class="fa fa-folder"></i>'
+        else:
+            icon_template = '<i class="fa fa-level-up fa-rotate-90"></i>'
+    else:
+        icon_template = ''
+
+    return mark_safe('%(icon_template)s&nbsp;<a href="%(url)s">%(text)s</a>' % {
+        'url': index_instance_item.get_absolute_url(),
+        'icon_template': icon_template,
+        'text': index_instance_item
+    })
 
 
 def node_level(node):

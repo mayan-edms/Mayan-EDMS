@@ -8,7 +8,9 @@ from actstream import registry
 
 from common import menu_multi_item, menu_object, menu_secondary, menu_setup
 from common.apps import MayanAppConfig
+from common.widgets import two_state_template
 from metadata import MetadataLookup
+from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .links import (
@@ -32,6 +34,25 @@ class UserManagementApp(MayanAppConfig):
 
         MetadataLookup(description=_('All the groups.'), name='group', value=Group.objects.all())
         MetadataLookup(description=_('All the users.'), name='users', value=get_user_model().objects.all())
+
+        SourceColumn(
+            source=Group, label=_('Members'), attribute='user_set.count'
+        )
+
+        SourceColumn(
+            source=User, label=_('Full name'), attribute='get_full_name'
+        )
+        SourceColumn(
+            source=User, label=_('Email'), attribute='email'
+        )
+        SourceColumn(
+            source=User, label=_('Active'),
+            func=lambda context: two_state_template(context['object'].is_active)
+        )
+        SourceColumn(
+            source=User, label=_('Has usable password?'),
+            func=lambda context: two_state_template(context['object'].has_usable_password())
+        )
 
         menu_multi_item.bind_links(
             links=(link_group_multiple_delete,),

@@ -87,7 +87,7 @@
                                     {% endif %}
                                      {% if not hide_columns %}
                                         {% for column in object|get_source_columns %}
-                                            <td>{{ object|object_property:column.attribute }}</td>
+                                            <td>{% source_column_resolve column=column %}</td>
                                         {% endfor %}
                                     {% endif %}
                                         {% for column in extra_columns %}

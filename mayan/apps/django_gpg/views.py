@@ -12,7 +12,6 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from common.generics import SimpleView, SingleObjectListView
-from common.utils import encapsulate
 from permissions import Permission
 
 from .api import Key

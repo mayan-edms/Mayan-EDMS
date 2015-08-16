@@ -9,10 +9,12 @@ from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_tools
 )
+from common.widgets import two_state_template
 from documents.models import Document
 from documents.signals import post_document_created
 from mayan.celery import app
 from metadata.models import DocumentMetadata
+from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .handlers import (
@@ -27,7 +29,11 @@ from .links import (
     link_template_node_create, link_template_node_delete,
     link_template_node_edit
 )
-from .models import Index, IndexTemplateNode
+from .models import (
+    DocumentIndexInstanceNode, Index, IndexInstance, IndexInstanceNode,
+    IndexTemplateNode
+)
+from .widgets import get_breadcrumbs, index_instance_item_link, node_level
 
 
 class DocumentIndexingApp(MayanAppConfig):
@@ -40,6 +46,60 @@ class DocumentIndexingApp(MayanAppConfig):
         super(DocumentIndexingApp, self).ready()
 
         APIEndPoint(app=self, version_string='1')
+
+        SourceColumn(source=Index, label=_('Label'), attribute='label')
+        SourceColumn(source=Index, label=_('Slug'), attribute='slug')
+        SourceColumn(
+            source=Index, label=_('Enabled'),
+            func=lambda context: two_state_template(context['object'].enabled)
+        )
+
+        SourceColumn(
+            source=IndexInstance, label=_('Items'),
+            func=lambda context: context['object'].get_items_count(
+                user=context['request'].user
+            )
+        )
+        SourceColumn(
+            source=IndexInstance, label=_('Document types'), attribute='get_document_types_names'
+        )
+
+        SourceColumn(
+            source=IndexTemplateNode, label=_('Level'),
+            func=lambda context: node_level(context['object'])
+        )
+        SourceColumn(
+            source=IndexTemplateNode, label=_('Enabled'),
+            func=lambda context: two_state_template(context['object'].enabled)
+        )
+        SourceColumn(
+            source=IndexTemplateNode, label=_('Has document links?'),
+            func=lambda context: two_state_template(context['object'].link_documents)
+        )
+
+        SourceColumn(
+            source=IndexInstanceNode, label=_('Node'),
+            func=lambda context: index_instance_item_link(context['object'])
+        )
+        SourceColumn(
+            source=IndexInstanceNode, label=_('Items'),
+            func=lambda context: context['object'].get_item_count(
+                user=context['request'].user
+            )
+        )
+
+        SourceColumn(
+            source=DocumentIndexInstanceNode, label=_('Node'),
+            func=lambda context: get_breadcrumbs(
+                index_instance_node=context['object'], single_link=True,
+            )
+        )
+        SourceColumn(
+            source=DocumentIndexInstanceNode, label=_('Items'),
+            func=lambda context: context['object'].get_item_count(
+                user=context['request'].user
+            )
+        )
 
         app.conf.CELERY_QUEUES.append(
             Queue('indexing', Exchange('indexing'), routing_key='indexing'),

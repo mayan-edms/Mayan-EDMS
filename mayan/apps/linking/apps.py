@@ -9,7 +9,9 @@ from common import (
     MayanAppConfig, menu_facet, menu_object, menu_secondary, menu_setup,
     menu_sidebar
 )
+from common.widgets import two_state_template
 from documents.models import Document
+from navigation import SourceColumn
 
 from .links import (
     link_smart_link_create, link_smart_link_condition_create,
@@ -39,6 +41,26 @@ class LinkingApp(MayanAppConfig):
                 permission_smart_link_delete, permission_smart_link_edit,
                 permission_smart_link_view
             )
+        )
+
+        SourceColumn(
+            source=ResolvedSmartLink, label=_('Label'),
+            func=lambda context: context['object'].get_dynamic_label(
+                context['resolved_object']
+            )
+        )
+
+        SourceColumn(
+            source=SmartLink, label=_('Dynamic label'), attribute='dynamic_label'
+        )
+        SourceColumn(
+            source=SmartLink, label=_('Enabled'),
+            func=lambda context: two_state_template(context['object'].enabled)
+        )
+
+        SourceColumn(
+            source=SmartLinkCondition, label=_('Enabled'),
+            func=lambda context: two_state_template(context['object'].enabled)
         )
 
         menu_facet.bind_links(

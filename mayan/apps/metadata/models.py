@@ -103,6 +103,10 @@ class DocumentMetadata(models.Model):
 
         return super(DocumentMetadata, self).delete(*args, **kwargs)
 
+    @property
+    def is_required(self):
+        return self.metadata_type in self.document.document_type.metadata.filter(required=True)
+
     class Meta:
         unique_together = ('document', 'metadata_type')
         verbose_name = _('Document metadata')

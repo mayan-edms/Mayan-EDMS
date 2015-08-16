@@ -1,5 +1,6 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
+from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -8,7 +9,10 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from mptt.fields import TreeForeignKey
 from mptt.models import MPTTModel
 
+from acls.models import AccessControlList
 from documents.models import Document, DocumentType
+from documents.permissions import permission_document_view
+from permissions import Permission
 
 from .managers import IndexManager, IndexInstanceNodeManager
 
@@ -58,7 +62,10 @@ class Index(models.Model):
             return '#'
 
     def save(self, *args, **kwargs):
-        """Automatically create the root index template node"""
+        """
+        Automatically create the root index template node
+        """
+
         super(Index, self).save(*args, **kwargs)
         IndexTemplateNode.objects.get_or_create(parent=None, index=self)
 
@@ -67,15 +74,28 @@ class Index(models.Model):
             [unicode(document_type) for document_type in self.document_types.all()] or ['None']
         )
 
+    class Meta:
+        verbose_name = _('Index')
+        verbose_name_plural = _('Indexes')
+
+
+class IndexInstance(Index):
     def get_instance_node_count(self):
         try:
             return self.instance_root.get_descendant_count()
         except IndexInstanceNode.DoesNotExist:
             return 0
 
+    def get_items_count(self, user):
+        try:
+            return self.instance_root.get_item_count(user=user)
+        except IndexInstanceNode.DoesNotExist:
+            return 0
+
     class Meta:
-        verbose_name = _('Index')
-        verbose_name_plural = _('Indexes')
+        proxy = True
+        verbose_name = _('Index instance')
+        verbose_name_plural = _('Index instances')
 
 
 @python_2_unicode_compatible
@@ -140,9 +160,6 @@ class IndexInstanceNode(MPTTModel):
     def __str__(self):
         return self.value
 
-    def index(self):
-        return self.index_template_node.index
-
     def get_absolute_url(self):
         return reverse('indexing:index_instance_node_view', args=[self.pk])
 
@@ -151,6 +168,38 @@ class IndexInstanceNode(MPTTModel):
         # Convenience method for serializer
         return self.get_children()
 
+    def index(self):
+        return self.index_template_node.index
+
+    def get_item_count(self, user):
+        if self.index_template_node.link_documents:
+            queryset = self.documents
+
+            try:
+                Permission.check_permissions(user, (permission_document_view,))
+            except PermissionDenied:
+                queryset = AccessControlList.objects.filter_by_access(
+                    permission_document_view, user, queryset
+                )
+
+            return queryset.count()
+        else:
+            return self.get_children().count()
+
     class Meta:
         verbose_name = _('Index node instance')
         verbose_name_plural = _('Indexes node instances')
+
+
+class DocumentIndexInstanceNodeManager(models.Manager):
+    def get_for(self, document):
+        return self.filter(documents=document)
+
+
+class DocumentIndexInstanceNode(IndexInstanceNode):
+    objects = DocumentIndexInstanceNodeManager()
+
+    class Meta:
+        proxy = True
+        verbose_name = _('Document index node instance')
+        verbose_name_plural = _('Document indexes node instances')

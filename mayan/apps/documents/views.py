@@ -954,9 +954,6 @@ class DocumentTypeListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': [
-                {'name': _('Documents'), 'attribute': encapsulate(lambda document_type: document_type.documents.count())}
-            ],
             'hide_link': True,
             'title': _('Document types'),
         }
@@ -1010,12 +1007,6 @@ class DocumentTypeFilenameListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'document_type': self.get_document_type(),
-            'extra_columns': (
-                {
-                    'name': _('Enabled'),
-                    'attribute': encapsulate(lambda filename: two_state_template(filename.enabled)),
-                },
-            ),
             'hide_link': True,
             'navigation_object_list': ('document_type',),
             'title': _('Filenames for document type: %s') % self.get_document_type(),
@@ -1148,12 +1139,7 @@ class DocumentVersionListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': (
-                {'name': _('Time and date'), 'attribute': 'timestamp'},
-                {'name': _('MIME type'), 'attribute': 'mimetype'},
-                {'name': _('Encoding'), 'attribute': 'encoding'},
-                {'name': _('Comment'), 'attribute': 'comment'},
-            ), 'hide_object': True, 'object': self.get_document(),
+            'hide_object': True, 'object': self.get_document(),
             'title': _('Versions of document: %s') % self.get_document(),
         }
 

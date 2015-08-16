@@ -7,7 +7,6 @@ from common import (
     MayanAppConfig, menu_facet, menu_object, menu_secondary, menu_setup,
     menu_sidebar
 )
-from common.utils import encapsulate
 from common.widgets import two_state_template
 from documents.models import Document
 from navigation import SourceColumn
@@ -39,9 +38,7 @@ class DocumentStatesApp(MayanAppConfig):
 
         SourceColumn(
             source=Workflow, label=_('Initial state'),
-            attribute=encapsulate(
-                lambda workflow: workflow.get_initial_state() or _('None')
-            )
+            func=lambda context: context['object'].get_initial_state() or _('None')
         )
 
         SourceColumn(
@@ -50,10 +47,8 @@ class DocumentStatesApp(MayanAppConfig):
         )
         SourceColumn(
             source=WorkflowInstance, label=_('User'),
-            attribute=encapsulate(
-                lambda workflow: getattr(
-                    workflow.get_last_log_entry(), 'user', _('None')
-                )
+            func=lambda context: getattr(
+                context['object'].get_last_log_entry(), 'user', _('None')
             )
         )
         SourceColumn(
@@ -62,16 +57,14 @@ class DocumentStatesApp(MayanAppConfig):
         )
         SourceColumn(
             source=WorkflowInstance, label=_('Date and time'),
-            attribute=encapsulate(
-                lambda workflow: getattr(
-                    workflow.get_last_log_entry(), 'datetime', _('None')
-                )
+            func=lambda context: getattr(
+                context['object'].get_last_log_entry(), 'datetime', _('None')
             )
         )
         SourceColumn(
             source=WorkflowInstance, label=_('Completion'),
-            attribute=encapsulate(lambda workflow: getattr(
-                workflow.get_current_state(), 'completion', _('None'))
+            func=lambda context: getattr(
+                context['object'].get_current_state(), 'completion', _('None')
             )
         )
 
@@ -93,9 +86,7 @@ class DocumentStatesApp(MayanAppConfig):
 
         SourceColumn(
             source=WorkflowState, label=_('Is initial state?'),
-            attribute=encapsulate(
-                lambda state: two_state_template(state.initial)
-            )
+            func=lambda context: two_state_template(context['object'].initial)
         )
         SourceColumn(
             source=WorkflowState, label=_('Completion'), attribute='completion'

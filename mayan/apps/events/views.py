@@ -26,14 +26,14 @@ class EventListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': [
+            'extra_columns': (
                 {
                     'name': _('Target'),
                     'attribute': encapsulate(
                         lambda entry: event_object_link(entry)
                     )
-                }
-            ],
+                },
+            ),
             'hide_object': True,
             'title': _('Events'),
         }
@@ -85,14 +85,14 @@ class VerbEventListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'extra_columns': [
+            'extra_columns': (
                 {
                     'name': _('Target'),
                     'attribute': encapsulate(
                         lambda entry: event_object_link(entry)
                     )
-                }
-            ],
+                },
+            ),
             'hide_object': True,
             'title': _(
                 'Events of type: %s'
