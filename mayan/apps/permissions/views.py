@@ -50,6 +50,12 @@ class SetupRoleMembersView(AssignRemoveView):
         group = get_object_or_404(Group, pk=item)
         self.get_object().groups.add(group)
 
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Group members of role: %s') % self.get_object()
+        }
+
     def get_object(self):
         return get_object_or_404(Role, pk=self.kwargs['pk'])
 
@@ -67,15 +73,6 @@ class SetupRoleMembersView(AssignRemoveView):
         group = get_object_or_404(Group, pk=item)
         self.get_object().groups.remove(group)
 
-    def get_context_data(self, **kwargs):
-        data = super(SetupRoleMembersView, self).get_context_data(**kwargs)
-        data.update({
-            'object': self.get_object(),
-            'title': _('Group members of role: %s') % self.get_object()
-        })
-
-        return data
-
 
 class SetupRolePermissionsView(AssignRemoveView):
     grouped = True
@@ -89,6 +86,12 @@ class SetupRolePermissionsView(AssignRemoveView):
         )
         permission = get_object_or_404(StoredPermission, pk=item)
         self.get_object().permissions.add(permission)
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Permissions for role: %s') % self.get_object(),
+        }
 
     def get_object(self):
         return get_object_or_404(Role, pk=self.kwargs['pk'])
@@ -123,15 +126,6 @@ class SetupRolePermissionsView(AssignRemoveView):
         )
         permission = get_object_or_404(StoredPermission, pk=item)
         self.get_object().permissions.remove(permission)
-
-    def get_context_data(self, **kwargs):
-        data = super(SetupRolePermissionsView, self).get_context_data(**kwargs)
-        data.update({
-            'object': self.get_object(),
-            'title': _('Permissions for role: %s') % self.get_object(),
-        })
-
-        return data
 
 
 class RoleListView(SingleObjectListView):

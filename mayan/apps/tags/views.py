@@ -124,6 +124,8 @@ def tag_multiple_attach(request):
 
 
 class TagListView(SingleObjectListView):
+    object_permission = permission_tag_view
+
     @staticmethod
     def get_document_count(instance, user):
         queryset = instance.documents
@@ -137,18 +139,9 @@ class TagListView(SingleObjectListView):
 
         return queryset.count()
 
-    object_permission = permission_tag_view
-
-    def get_tag_queryset(self):
-        return Tag.objects.all()
-
-    def get_queryset(self):
-        self.queryset = self.get_tag_queryset()
-        return super(TagListView, self).get_queryset()
-
-    def get_extra_context(self, **kwargs):
+    def get_extra_context(self):
         return {
-            'extra_columns': [
+            'extra_columns': (
                 {
                     'name': _('Documents'),
                     'attribute': encapsulate(
@@ -157,11 +150,18 @@ class TagListView(SingleObjectListView):
                         )
                     )
                 },
-            ],
+            ),
             'hide_link': True,
 
             'title': _('Tags'),
         }
+
+    def get_queryset(self):
+        self.queryset = self.get_tag_queryset()
+        return super(TagListView, self).get_queryset()
+
+    def get_tag_queryset(self):
+        return Tag.objects.all()
 
 
 def tag_delete(request, tag_id=None, tag_id_list=None):

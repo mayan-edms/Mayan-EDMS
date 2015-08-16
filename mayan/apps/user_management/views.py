@@ -29,45 +29,40 @@ from .permissions import (
 class UserListView(SingleObjectListView):
     view_permission = permission_user_view
 
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {
+                    'name': _('Full name'),
+                    'attribute': 'get_full_name'
+                },
+                {
+                    'name': _('Email'),
+                    'attribute': 'email'
+                },
+                {
+                    'name': _('Active'),
+                    'attribute': encapsulate(
+                        lambda user: two_state_template(user.is_active)
+                    ),
+                },
+                {
+                    'name': _('Has usable password?'),
+                    'attribute': encapsulate(
+                        lambda user: two_state_template(
+                            user.has_usable_password()
+                        )
+                    ),
+                },
+            ),
+            'hide_link': True,
+            'title': _('Users'),
+        }
+
     def get_queryset(self):
         return get_user_model().objects.exclude(
             is_superuser=True
         ).exclude(is_staff=True).order_by('last_name', 'first_name')
-
-    def get_context_data(self, **kwargs):
-        context = super(UserListView, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'title': _('Users'),
-                'hide_link': True,
-                'extra_columns': [
-                    {
-                        'name': _('Full name'),
-                        'attribute': 'get_full_name'
-                    },
-                    {
-                        'name': _('Email'),
-                        'attribute': 'email'
-                    },
-                    {
-                        'name': _('Active'),
-                        'attribute': encapsulate(
-                            lambda user: two_state_template(user.is_active)
-                        ),
-                    },
-                    {
-                        'name': _('Has usable password?'),
-                        'attribute': encapsulate(
-                            lambda user: two_state_template(
-                                user.has_usable_password()
-                            )
-                        ),
-                    },
-                ],
-            }
-        )
-
-        return context
 
 
 def user_edit(request, user_id):
@@ -263,6 +258,12 @@ class UserGroupsView(AssignRemoveView):
     def add(self, item):
         item.user_set.add(self.get_object())
 
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Groups of user: %s') % self.get_object()
+        }
+
     def get_object(self):
         return get_object_or_404(User, pk=self.kwargs['pk'])
 
@@ -274,15 +275,6 @@ class UserGroupsView(AssignRemoveView):
 
     def remove(self, item):
         item.user_set.remove(self.get_object())
-
-    def get_context_data(self, **kwargs):
-        data = super(UserGroupsView, self).get_context_data(**kwargs)
-        data.update({
-            'object': self.get_object(),
-            'title': _('Groups of user: %s') % self.get_object()
-        })
-
-        return data
 
 
 # Group views
@@ -382,6 +374,12 @@ class GroupMembersView(AssignRemoveView):
     def add(self, item):
         self.get_object().user_set.add(item)
 
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Members of group: %s') % self.get_object()
+        }
+
     def get_object(self):
         return get_object_or_404(Group, pk=self.kwargs['pk'])
 
@@ -393,12 +391,3 @@ class GroupMembersView(AssignRemoveView):
 
     def remove(self, item):
         self.get_object().user_set.remove(item)
-
-    def get_context_data(self, **kwargs):
-        data = super(GroupMembersView, self).get_context_data(**kwargs)
-        data.update({
-            'object': self.get_object(),
-            'title': _('Members of group: %s') % self.get_object()
-        })
-
-        return data
