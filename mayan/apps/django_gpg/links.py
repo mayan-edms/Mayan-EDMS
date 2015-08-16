@@ -27,7 +27,7 @@ link_key_query = Link(
     view='django_gpg:key_query'
 )
 link_key_receive = Link(
-    keep_query=True, permissions=(permission_key_receive,), text=_('Import'),
+    keep_query=True, permissions=(permission_key_receive,), text=_('Download'),
     view='django_gpg:key_receive', args='object.key_id'
 )
 link_key_setup = Link(
