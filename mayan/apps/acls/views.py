@@ -26,12 +26,6 @@ logger = logging.getLogger(__name__)
 
 
 class ACLListView(SingleObjectListView):
-    @staticmethod
-    def permission_titles(permission_list):
-        return ', '.join(
-            [unicode(permission) for permission in permission_list]
-        )
-
     def dispatch(self, request, *args, **kwargs):
         self.content_type = get_object_or_404(
             ContentType, app_label=self.kwargs['app_label'],
@@ -66,20 +60,6 @@ class ACLListView(SingleObjectListView):
             'hide_object': True,
             'object': self.content_object,
             'title': _('Access control lists for: %s' % self.content_object),
-            'extra_columns': [
-                {
-                    'name': _('Role'),
-                    'attribute': 'role'
-                },
-                {
-                    'name': _('Permissions'),
-                    'attribute': encapsulate(
-                        lambda entry: ACLListView.permission_titles(
-                            entry.permissions.all()
-                        )
-                    )
-                },
-            ],
         }
 
 

@@ -51,3 +51,10 @@ class AccessControlList(models.Model):
         return AccessControlList.objects.get_inherited_permissions(
             role=self.role, obj=self.content_object
         )
+
+    def get_permission_titles(self):
+        result = ', '.join(
+            [unicode(permission) for permission in self.permissions.all()]
+        )
+
+        return result or _('None')
