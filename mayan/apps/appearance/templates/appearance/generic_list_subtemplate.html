@@ -91,13 +91,7 @@
                                         {% endfor %}
                                     {% endif %}
                                         {% for column in extra_columns %}
-                                            {% if column.keep_together %}
-                                                <td>
-                                                    {{ object|object_property:column.attribute|make_non_breakable }}
-                                                </td>
-                                            {% else %}
-                                                <td>{{ object|object_property:column.attribute }}</td>
-                                            {% endif %}
+                                            <td>{{ object|object_property:column.attribute }}</td>
                                         {% endfor %}
                                         {% if not hide_links %}
                                             <td class="last">
