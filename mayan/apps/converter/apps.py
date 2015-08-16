@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_object, menu_sidebar
+from common.utils import encapsulate
+from navigation import SourceColumn
 
 from .links import (
     link_transformation_create, link_transformation_delete,
@@ -17,6 +19,17 @@ class ConverterApp(MayanAppConfig):
 
     def ready(self):
         super(ConverterApp, self).ready()
+
+        SourceColumn(source=Transformation, label=_('Order'), attribute='order')
+        SourceColumn(
+            source=Transformation, label=_('Transformation'),
+            attribute=encapsulate(
+                lambda transformation: unicode(transformation)
+            )
+        )
+        SourceColumn(
+            source=Transformation, label=_('Arguments'), attribute='arguments'
+        )
 
         menu_object.bind_links(
             links=(link_transformation_edit, link_transformation_delete),

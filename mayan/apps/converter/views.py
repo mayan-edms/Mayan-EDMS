@@ -10,7 +10,6 @@ from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from common.utils import encapsulate
 from common.views import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
     SingleObjectListView
@@ -231,15 +230,6 @@ class TransformationListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'content_object': self.content_object,
-            'extra_columns': [
-                {'name': _('Order'), 'attribute': 'order'},
-                {
-                    'name': _('Transformation'), 'attribute': encapsulate(
-                        lambda transformation: unicode(transformation)
-                    )
-                },
-                {'name': _('Arguments'), 'attribute': 'arguments'}
-            ],
             'hide_link': True,
             'hide_object': True,
             'navigation_object_list': ('content_object',),
