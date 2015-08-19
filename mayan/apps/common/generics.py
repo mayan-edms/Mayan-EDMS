@@ -350,5 +350,8 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
 
 
 class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):
-    paginate_by = setting_paginate_by.value
     template_name = 'appearance/generic_list.html'
+
+    def get_paginate_by(self, queryset):
+        return setting_paginate_by.value
+
