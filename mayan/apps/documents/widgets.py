@@ -118,7 +118,7 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
     query_string = urlencode(query_dict)
 
     preview_view = '%s?%s' % (
-        reverse('rest_api:documentpage-image', args=[document_page.pk]), query_string
+        reverse('rest_api:documentpage-image', args=(document_page.pk,)), query_string
     )
 
     result.append(

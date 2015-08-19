@@ -309,7 +309,7 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
 
     def get_success_url(self):
         return reverse(
-            'document_states:setup_workflow_states', args=[self.kwargs['pk']]
+            'document_states:setup_workflow_states', args=(self.kwargs['pk'],)
         )
 
     def form_valid(self, form):
@@ -333,7 +333,7 @@ class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
     def get_success_url(self):
         return reverse(
             'document_states:setup_workflow_States',
-            args=[self.get_object().workflow.pk]
+            args=(self.get_object().workflow.pk,)
         )
 
 
@@ -352,7 +352,7 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
     def get_success_url(self):
         return reverse(
             'document_states:setup_workflow_states',
-            args=[self.get_object().workflow.pk]
+            args=(self.get_object().workflow.pk,)
         )
 
 
@@ -431,7 +431,7 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
     def get_success_url(self):
         return reverse(
             'document_states:setup_workflow_transitions',
-            args=[self.kwargs['pk']]
+            args=(self.kwargs['pk'],)
         )
 
     def form_valid(self, form):
@@ -464,7 +464,7 @@ class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
     def get_success_url(self):
         return reverse(
             'document_states:setup_workflow_transitions',
-            args=[self.get_object().workflow.pk]
+            args=(self.get_object().workflow.pk,)
         )
 
 
@@ -490,5 +490,5 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
     def get_success_url(self):
         return reverse(
             'document_states:setup_workflow_transitions',
-            args=[self.get_object().workflow.pk]
+            args=(self.get_object().workflow.pk,)
         )

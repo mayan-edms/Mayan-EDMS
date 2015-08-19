@@ -188,7 +188,7 @@ class Document(models.Model):
         return self.label or ugettext('Document stub, id: %d') % self.pk
 
     def get_absolute_url(self):
-        return reverse('documents:document_preview', args=[self.pk])
+        return reverse('documents:document_preview', args=(self.pk,))
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None)
@@ -636,7 +636,7 @@ class DocumentPage(models.Model):
         verbose_name_plural = _('Document pages')
 
     def get_absolute_url(self):
-        return reverse('documents:document_page_view', args=[self.pk])
+        return reverse('documents:document_page_view', args=(self.pk,))
 
     def delete(self, *args, **kwargs):
         self.invalidate_cache()

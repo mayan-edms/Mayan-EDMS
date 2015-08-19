@@ -19,7 +19,7 @@ link_public_keys = Link(
 )
 link_key_delete = Link(
     permissions=(permission_key_delete,), tags='dangerous', text=_('Delete'),
-    view='django_gpg:key_delete', args=['object.fingerprint', 'object.type']
+    view='django_gpg:key_delete', args=('object.fingerprint', 'object.type',)
 )
 
 link_key_query = Link(

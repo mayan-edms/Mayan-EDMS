@@ -49,7 +49,7 @@ class UploadDocumentTestCase(TestCase):
         # Create new webform source
         self.client.post(
             reverse(
-                'sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]
+                'sources:setup_source_create', args=(SOURCE_CHOICE_WEB_FORM,)
             ), {'label': 'test', 'uncompress': 'n', 'enabled': True}
         )
         self.assertEqual(WebFormSource.objects.count(), 1)
@@ -90,7 +90,7 @@ class UploadDocumentTestCase(TestCase):
         # Create new webform source
         self.client.post(
             reverse(
-                'sources:setup_source_create', args=[SOURCE_CHOICE_WEB_FORM]
+                'sources:setup_source_create', args=(SOURCE_CHOICE_WEB_FORM,)
             ), {'label': 'test', 'uncompress': 'n', 'enabled': True}
         )
         self.assertEqual(WebFormSource.objects.count(), 1)
@@ -118,7 +118,7 @@ class UploadDocumentTestCase(TestCase):
 
         # Test for issue 25 during editing
         self.client.post(
-            reverse('documents:document_edit', args=[document.pk]),
+            reverse('documents:document_edit', args=(document.pk,)),
             {
                 'description': TEST_DOCUMENT_DESCRIPTION,
                 'language': document.language, 'label': document.label

@@ -775,7 +775,7 @@ def document_page_view(request, document_page_id):
 
 
 def document_page_view_reset(request, document_page_id):
-    return HttpResponseRedirect(reverse('documents:document_page_view', args=[document_page_id]))
+    return HttpResponseRedirect(reverse('documents:document_page_view', args=(document_page_id,)))
 
 
 def document_page_navigation_next(request, document_page_id):
@@ -793,7 +793,7 @@ def document_page_navigation_next(request, document_page_id):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
     else:
         document_page = get_object_or_404(document_page.siblings, page_number=document_page.page_number + 1)
-        return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=[document_page.pk]), request.GET.urlencode()))
+        return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=(document_page.pk,)), request.GET.urlencode()))
 
 
 def document_page_navigation_previous(request, document_page_id):
@@ -811,7 +811,7 @@ def document_page_navigation_previous(request, document_page_id):
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
     else:
         document_page = get_object_or_404(document_page.siblings, page_number=document_page.page_number - 1)
-        return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=[document_page.pk]), request.GET.urlencode()))
+        return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=(document_page.pk,)), request.GET.urlencode()))
 
 
 def document_page_navigation_first(request, document_page_id):
@@ -825,7 +825,7 @@ def document_page_navigation_first(request, document_page_id):
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
-    return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=[document_page.pk]), request.GET.urlencode()))
+    return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=(document_page.pk,)), request.GET.urlencode()))
 
 
 def document_page_navigation_last(request, document_page_id):
@@ -839,7 +839,7 @@ def document_page_navigation_last(request, document_page_id):
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
-    return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=[document_page.pk]), request.GET.urlencode()))
+    return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=(document_page.pk,)), request.GET.urlencode()))
 
 
 def transform_page(request, document_page_id, zoom_function=None, rotation_function=None):
@@ -1044,7 +1044,7 @@ def document_type_filename_delete(request, document_type_filename_id):
     Permission.check_permissions(request.user, (permission_document_type_edit,))
     document_type_filename = get_object_or_404(DocumentTypeFilename, pk=document_type_filename_id)
 
-    post_action_redirect = reverse('documents:document_type_filename_list', args=[document_type_filename.document_type_id])
+    post_action_redirect = reverse('documents:document_type_filename_list', args=(document_type_filename.document_type_id,))
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -1091,7 +1091,7 @@ def document_type_filename_create(request, document_type_id):
                 )
                 document_type_filename.save()
                 messages.success(request, _('Document type filename created successfully'))
-                return HttpResponseRedirect(reverse('documents:document_type_filename_list', args=[document_type_id]))
+                return HttpResponseRedirect(reverse('documents:document_type_filename_list', args=(document_type_id,)))
             except Exception as exception:
                 messages.error(request, _('Error creating document type filename; %(error)s') % {
                     'error': exception})

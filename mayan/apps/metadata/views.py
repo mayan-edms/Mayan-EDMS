@@ -296,7 +296,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
 
             if len(documents) == 1:
                 return HttpResponseRedirect('%s?%s' % (
-                    reverse('metadata:metadata_edit', args=[document.pk]),
+                    reverse('metadata:metadata_edit', args=(document.pk,)),
                     urlencode({'next': next}))
                 )
             elif len(documents) > 1:

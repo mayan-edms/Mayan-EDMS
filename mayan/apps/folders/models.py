@@ -30,7 +30,7 @@ class Folder(models.Model):
         return self.label
 
     def get_absolute_url(self):
-        return reverse('folders:folder_view', args=[self.pk])
+        return reverse('folders:folder_view', args=(self.pk,))
 
     def get_document_count(self, user):
         queryset = self.documents

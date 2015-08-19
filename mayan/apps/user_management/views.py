@@ -86,7 +86,7 @@ def user_add(request):
                 request, _('User "%s" created successfully.') % user
             )
             return HttpResponseRedirect(
-                reverse('user_management:user_set_password', args=[user.pk])
+                reverse('user_management:user_set_password', args=(user.pk,))
             )
     else:
         form = UserForm()

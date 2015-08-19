@@ -55,14 +55,14 @@ class DocumentsViewsFunctionalTestCase(TestCase):
 
         # Trash the document
         self.client.post(
-            reverse('documents:document_trash', args=[self.document.pk])
+            reverse('documents:document_trash', args=(self.document.pk,))
         )
         self.assertEqual(DeletedDocument.objects.count(), 1)
         self.assertEqual(Document.objects.count(), 0)
 
         # Restore the document
         self.client.post(
-            reverse('documents:document_restore', args=[self.document.pk])
+            reverse('documents:document_restore', args=(self.document.pk,))
         )
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
@@ -72,14 +72,14 @@ class DocumentsViewsFunctionalTestCase(TestCase):
 
         # Trash the document
         self.client.post(
-            reverse('documents:document_trash', args=[self.document.pk])
+            reverse('documents:document_trash', args=(self.document.pk,))
         )
         self.assertEqual(DeletedDocument.objects.count(), 1)
         self.assertEqual(Document.objects.count(), 0)
 
         # Delete the document
         self.client.post(
-            reverse('documents:document_delete', args=[self.document.pk])
+            reverse('documents:document_delete', args=(self.document.pk,))
         )
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
@@ -90,7 +90,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
 
         # test document simple view
         response = self.client.get(
-            reverse('documents:document_properties', args=[self.document.pk])
+            reverse('documents:document_properties', args=(self.document.pk,))
         )
         self.assertContains(
             response, 'roperties for document', status_code=200
@@ -118,7 +118,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         # Edit the document type
         response = self.client.post(
             reverse(
-                'documents:document_type_edit', args=[self.document_type.pk]
+                'documents:document_type_edit', args=(self.document_type.pk,)
             ), data={'name': TEST_DOCUMENT_TYPE + 'partial'}, follow=True
         )
         #TODO: FIX
@@ -138,7 +138,7 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         # Delete the document type
         #response = self.client.post(
         #    reverse(
-        #        'documents:document_type_delete', args=[self.document_type.pk]
+        #        'documents:document_type_delete', args=(self.document_type.pk,)
         #    ), follow=True
         #)
         #TODO: FIX#

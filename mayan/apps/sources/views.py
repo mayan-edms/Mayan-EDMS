@@ -347,7 +347,7 @@ class UploadInteractiveVersionView(UploadBaseView):
             _('New document version queued for uploaded and will be available shortly.')
         )
         return HttpResponseRedirect(
-            reverse('documents:document_version_list', args=[self.document.pk])
+            reverse('documents:document_version_list', args=(self.document.pk,))
         )
 
     def create_source_form_form(self, **kwargs):

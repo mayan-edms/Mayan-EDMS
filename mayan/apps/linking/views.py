@@ -291,7 +291,7 @@ def smart_link_condition_create(request, smart_link_pk):
             )
             return HttpResponseRedirect(
                 reverse(
-                    'linking:smart_link_condition_list', args=[smart_link.pk]
+                    'linking:smart_link_condition_list', args=(smart_link.pk,)
                 )
             )
     else:

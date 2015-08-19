@@ -98,7 +98,7 @@ class ACLCreateView(SingleObjectCreateView):
         return super(ACLCreateView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse('acls:acl_permissions', args=[self.instance.pk])
+        return reverse('acls:acl_permissions', args=(self.instance.pk,))
 
     def get_extra_context(self):
         return {

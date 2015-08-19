@@ -57,11 +57,11 @@ link_setup_source_create_webform = Link(
 link_setup_source_delete = Link(
     permissions=(permission_sources_setup_delete,), tags='dangerous',
     text=_('Delete'), view='sources:setup_source_delete',
-    args=['resolved_object.pk']
+    args=('resolved_object.pk',)
 )
 link_setup_source_edit = Link(
     text=_('Edit'), view='sources:setup_source_edit',
-    args=['resolved_object.pk'], permissions=(permission_sources_setup_edit,)
+    args=('resolved_object.pk',), permissions=(permission_sources_setup_edit,)
 )
 link_source_list = Link(
     permissions=(permission_sources_setup_view,), text=_('Document sources'),
@@ -71,7 +71,7 @@ link_staging_file_delete = Link(
     keep_query=True,
     permissions=(permission_document_new_version, permission_document_create),
     tags='dangerous', text=_('Delete'), view='sources:staging_file_delete',
-    args=['source.pk', 'object.encoded_filename']
+    args=('source.pk', 'object.encoded_filename',)
 )
 link_upload_version = Link(
     permissions=(permission_document_new_version,),
@@ -80,5 +80,5 @@ link_upload_version = Link(
 )
 link_setup_source_logs = Link(
     text=_('Logs'), view='sources:setup_source_logs',
-    args=['resolved_object.pk'], permissions=(permission_sources_setup_view,)
+    args=('resolved_object.pk',), permissions=(permission_sources_setup_view,)
 )

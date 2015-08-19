@@ -40,11 +40,11 @@ logger = logging.getLogger(__name__)
 
 
 def document_ocr_submit(self):
-    task_do_ocr.apply_async(args=[self.latest_version.pk])
+    task_do_ocr.apply_async(args=(self.latest_version.pk,))
 
 
 def document_version_ocr_submit(self):
-    task_do_ocr.apply_async(args=[self.pk])
+    task_do_ocr.apply_async(args=(self.pk,))
 
 
 class OCRApp(MayanAppConfig):

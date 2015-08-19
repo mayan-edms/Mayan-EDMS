@@ -41,9 +41,9 @@ def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NU
     preview_view = '%s?%s' % (
         reverse(
             'rest_api:stagingfolderfile-image-view',
-            args=[
-                staging_file.staging_folder.pk, staging_file.encoded_filename
-            ]
+            args=(
+                staging_file.staging_folder.pk, staging_file.encoded_filename,
+            )
         ), query_string
     )
 
@@ -73,10 +73,10 @@ def staging_file_html_widget(staging_file, click_view=None, page=DEFAULT_PAGE_NU
                 '%s?%s' % (
                     reverse(
                         click_view,
-                        args=[
+                        args=(
                             staging_file.staging_folder.pk,
-                            staging_file.encoded_filename
-                        ]
+                            staging_file.encoded_filename,
+                        )
                     ),
                     query_string
                 ), title_template

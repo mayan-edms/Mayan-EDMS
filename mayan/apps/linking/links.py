@@ -45,9 +45,9 @@ link_smart_link_edit = Link(
 )
 link_smart_link_instance_view = Link(
     permissions=(permission_smart_link_view,), text=_('Documents'),
-    view='linking:smart_link_instance_view', args=[
-        'document.pk', 'object.pk'
-    ]
+    view='linking:smart_link_instance_view', args=(
+        'document.pk', 'object.pk',
+    )
 )
 link_smart_link_instances_for_document = Link(
     permissions=(permission_document_view,), text=_('Smart links'),

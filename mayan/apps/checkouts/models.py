@@ -51,7 +51,7 @@ class DocumentCheckout(models.Model):
         return unicode(self.document)
 
     def get_absolute_url(self):
-        return reverse('checkout:checkout_info', args=[self.document.pk])
+        return reverse('checkout:checkout_info', args=(self.document.pk,))
 
     def clean(self):
         if self.expiration_datetime < now():

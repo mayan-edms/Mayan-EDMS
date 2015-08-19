@@ -47,7 +47,7 @@ class DocumentTypeAPITestCase(APITestCase):
         document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
 
         self.client.put(
-            reverse('rest_api:documenttype-detail', args=[document_type.pk]),
+            reverse('rest_api:documenttype-detail', args=(document_type.pk,)),
             {'label': TEST_DOCUMENT_TYPE + 'edited'}
         )
 
@@ -58,7 +58,7 @@ class DocumentTypeAPITestCase(APITestCase):
         document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
 
         self.client.patch(
-            reverse('rest_api:documenttype-detail', args=[document_type.pk]),
+            reverse('rest_api:documenttype-detail', args=(document_type.pk,)),
             {'label': TEST_DOCUMENT_TYPE + 'edited'}
         )
 
