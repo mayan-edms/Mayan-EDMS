@@ -15,7 +15,3 @@ class RecentSearchSerializer(serializers.HyperlinkedModelSerializer):
         fields = ('datetime_created', 'hits', 'query', 'url', 'user')
         model = RecentSearch
         read_only_fields = ('datetime_created', 'hits', 'query', 'user')
-
-
-class SearchSerializer(serializers.Serializer):
-    results = serializers.CharField()

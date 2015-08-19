@@ -1,1 +1,1 @@
-from .literals import *
+from .literals import *  # NOQA

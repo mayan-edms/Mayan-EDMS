@@ -49,7 +49,8 @@ class ObjectListPermissionFilterMixin(object):
                     self.request.user, (self.object_permission,)
                 )
             except PermissionDenied:
-                # No global permission, filter ther queryset per object + permission
+                # No global permission, filter ther queryset per object +
+                # permission
                 return AccessControlList.objects.filter_by_access(
                     self.object_permission, self.request.user, queryset
                 )
@@ -79,7 +80,9 @@ class ObjectPermissionCheckMixin(object):
                     self.get_permission_object()
                 )
 
-        return super(ObjectPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
+        return super(
+            ObjectPermissionCheckMixin, self
+        ).dispatch(request, *args, **kwargs)
 
 
 class RedirectionMixin(object):
@@ -111,7 +114,9 @@ class RedirectionMixin(object):
             )
         )
 
-        return super(RedirectionMixin, self).dispatch(request, *args, **kwargs)
+        return super(
+            RedirectionMixin, self
+        ).dispatch(request, *args, **kwargs)
 
     def get_context_data(self, **kwargs):
         context = super(RedirectionMixin, self).get_context_data(**kwargs)
@@ -137,4 +142,6 @@ class ViewPermissionCheckMixin(object):
                 self.request.user, (self.view_permission,)
             )
 
-        return super(ViewPermissionCheckMixin, self).dispatch(request, *args, **kwargs)
+        return super(
+            ViewPermissionCheckMixin, self
+        ).dispatch(request, *args, **kwargs)

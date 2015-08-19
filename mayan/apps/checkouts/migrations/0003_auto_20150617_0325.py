@@ -23,5 +23,7 @@ class Migration(migrations.Migration):
     ]
 
     operations = [
-        migrations.RunPython(move_from_content_type_user_to_foreign_key_field_user),
+        migrations.RunPython(
+            move_from_content_type_user_to_foreign_key_field_user
+        ),
     ]

@@ -15,7 +15,6 @@ from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectEditView, SingleObjectListView
 )
-from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from documents.views import DocumentListView
@@ -33,7 +32,7 @@ from .permissions import (
     permission_document_indexing_setup, permission_document_indexing_view
 )
 from .tasks import task_do_rebuild_all_indexes
-from .widgets import index_instance_item_link, get_breadcrumbs, node_level
+from .widgets import get_breadcrumbs
 
 
 # Setup views

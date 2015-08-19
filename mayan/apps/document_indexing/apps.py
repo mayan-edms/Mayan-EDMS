@@ -61,7 +61,8 @@ class DocumentIndexingApp(MayanAppConfig):
             )
         )
         SourceColumn(
-            source=IndexInstance, label=_('Document types'), attribute='get_document_types_names'
+            source=IndexInstance, label=_('Document types'),
+            attribute='get_document_types_names'
         )
 
         SourceColumn(
@@ -74,7 +75,9 @@ class DocumentIndexingApp(MayanAppConfig):
         )
         SourceColumn(
             source=IndexTemplateNode, label=_('Has document links?'),
-            func=lambda context: two_state_template(context['object'].link_documents)
+            func=lambda context: two_state_template(
+                context['object'].link_documents
+            )
         )
 
         SourceColumn(

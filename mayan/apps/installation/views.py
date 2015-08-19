@@ -1,11 +1,8 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from common.generics import SingleObjectListView
-from permissions import Permission
 
 from .classes import PropertyNamespace
 from .permissions import permission_installation_details
@@ -37,4 +34,3 @@ class NamespaceDetailView(SingleObjectListView):
 
     def get_queryset(self):
         return self.get_namespace().get_properties()
-

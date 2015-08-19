@@ -14,7 +14,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='indexinstancenode',
             name='value',
-            field=models.CharField(db_index=True, max_length=128, verbose_name='Value', blank=True),
+            field=models.CharField(
+                db_index=True, max_length=128, verbose_name='Value',
+                blank=True
+            ),
             preserve_default=True,
         ),
     ]

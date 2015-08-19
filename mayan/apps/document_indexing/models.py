@@ -71,7 +71,9 @@ class Index(models.Model):
 
     def get_document_types_names(self):
         return ', '.join(
-            [unicode(document_type) for document_type in self.document_types.all()] or ['None']
+            [
+                unicode(document_type) for document_type in self.document_types.all()
+            ] or ['None']
         )
 
     class Meta:

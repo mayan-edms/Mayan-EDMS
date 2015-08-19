@@ -118,7 +118,9 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
                 filtered_documents = documents
 
             return DocumentCheckout.objects.filter(
-                document__pk__in=filtered_documents.values_list('pk', flat=True)
+                document__pk__in=filtered_documents.values_list(
+                    'pk', flat=True
+                )
             )
         elif self.request.method == 'DELETE':
             return DocumentCheckout.objects.all()
@@ -155,7 +157,10 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
                 )
             except PermissionDenied:
                 AccessControlList.objects.check_access(
-                    permission_document_checkin_override, request.user, document
+                    permission_document_checkin_override, request.user,
+                    document
                 )
 
-        return super(APICheckedoutDocumentView, self).delete(request, *args, **kwargs)
+        return super(
+            APICheckedoutDocumentView, self
+        ).delete(request, *args, **kwargs)

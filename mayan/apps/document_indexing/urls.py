@@ -37,7 +37,8 @@ urlpatterns = patterns(
     ),
     url(
         r'^setup/index/(?P<pk>\d+)/document_types/$',
-        SetupIndexDocumentTypesView.as_view(), name='index_setup_document_types'
+        SetupIndexDocumentTypesView.as_view(),
+        name='index_setup_document_types'
     ),
     url(
         r'^setup/template/node/(?P<parent_pk>\d+)/create/child/$',
@@ -84,8 +85,8 @@ api_urls = patterns(
         name='index-detail'
     ),
     url(
-        r'^index/(?P<pk>[0-9]+)/template/$', APIIndexTemplateListView.as_view(),
-        name='index-template-detail'
+        r'^index/(?P<pk>[0-9]+)/template/$',
+        APIIndexTemplateListView.as_view(), name='index-template-detail'
     ),
     url(r'^indexes/$', APIIndexListView.as_view(), name='index-list'),
     url(

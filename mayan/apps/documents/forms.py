@@ -103,15 +103,6 @@ class PrintForm(forms.Form):
     page_range = forms.CharField(label=_('Page range'), required=False)
 
 
-class DocumentTypeFilenameForm(forms.ModelForm):
-    """
-    Model class form to edit a document type filename
-    """
-    class Meta:
-        fields = ('filename', 'enabled')
-        model = DocumentTypeFilename
-
-
 class DocumentTypeFilenameForm_create(forms.ModelForm):
     """
     Model class form to create a new document type filename

@@ -20,7 +20,8 @@ class EventsApp(MayanAppConfig):
 
         SourceColumn(source=Action, label=_('Timestamp'), attribute='timestamp')
         SourceColumn(source=Action, label=_('Actor'), attribute='actor')
-        SourceColumn(source=Action, label=_('Verb'),
+        SourceColumn(
+            source=Action, label=_('Verb'),
             func=lambda context: event_type_link(context['object'])
         )
 

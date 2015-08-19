@@ -16,7 +16,6 @@ from common.generics import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectEditView,
     SingleObjectListView
 )
-from common.widgets import two_state_template
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from documents.views import DocumentListView

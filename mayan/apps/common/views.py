@@ -12,9 +12,6 @@ from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import TemplateView
 
-from documents.search import document_search
-
-from .classes import MissingItem
 from .forms import (
     LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
     UserForm, UserForm_view

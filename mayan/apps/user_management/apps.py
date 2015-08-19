@@ -32,8 +32,14 @@ class UserManagementApp(MayanAppConfig):
 
         APIEndPoint(app=self, version_string='1')
 
-        MetadataLookup(description=_('All the groups.'), name='group', value=Group.objects.all())
-        MetadataLookup(description=_('All the users.'), name='users', value=get_user_model().objects.all())
+        MetadataLookup(
+            description=_('All the groups.'), name='group',
+            value=Group.objects.all()
+        )
+        MetadataLookup(
+            description=_('All the users.'), name='users',
+            value=get_user_model().objects.all()
+        )
 
         SourceColumn(
             source=Group, label=_('Members'), attribute='user_set.count'
@@ -47,11 +53,15 @@ class UserManagementApp(MayanAppConfig):
         )
         SourceColumn(
             source=User, label=_('Active'),
-            func=lambda context: two_state_template(context['object'].is_active)
+            func=lambda context: two_state_template(
+                context['object'].is_active
+            )
         )
         SourceColumn(
             source=User, label=_('Has usable password?'),
-            func=lambda context: two_state_template(context['object'].has_usable_password())
+            func=lambda context: two_state_template(
+                context['object'].has_usable_password()
+            )
         )
 
         menu_multi_item.bind_links(

@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from itertools import chain
 import os
 
 from django import forms
@@ -105,50 +104,6 @@ class PlainWidget(forms.widgets.Widget):
     """
     def render(self, name, value, attrs=None):
         return mark_safe('%s' % value)
-
-
-class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
-    """
-    Class for a form widget composed of a selection of checkboxes wrapped
-    in a div tag with automatic overflow to add scrollbars when the list
-    exceds the height of the div
-    """
-    def render(self, name, value, attrs=None, choices=()):
-        if value is None:
-            value = []
-        has_id = attrs and 'id' in attrs
-        final_attrs = self.build_attrs(attrs, name=name)
-        # TODO: Move this styling to a CSS class
-        output = [
-            '<ul class="undecorated_list" style="margin-left: 5px; margin-top: 3px; margin-bottom: 3px;">'
-        ]
-        # Normalize to strings
-        str_values = set([force_unicode(v) for v in value])
-        for i, (option_value, option_label) in enumerate(chain(self.choices, choices)):
-            # If an ID attribute was given, add a numeric index as a suffix,
-            # so that the checkboxes don't all have the same ID attribute.
-            if has_id:
-                final_attrs = dict(final_attrs, id='%s_%s' % (attrs['id'], i))
-                label_for = ' for="%s"' % final_attrs['id']
-            else:
-                label_for = ''
-
-            cb = forms.widgets.CheckboxInput(
-                final_attrs, check_test=lambda value: value in str_values
-            )
-            option_value = force_unicode(option_value)
-            rendered_cb = cb.render(name, option_value)
-            option_label = conditional_escape(force_unicode(option_label))
-            output.append(
-                '<li><label%s>%s %s</label></li>' % (
-                    label_for, rendered_cb, option_label
-                )
-            )
-        output.append('</ul>')
-
-        return mark_safe(
-            '<div class="text_area_div">%s</div>' % '\n'.join(output)
-        )
 
 
 class TextAreaDiv(forms.widgets.Widget):

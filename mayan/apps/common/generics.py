@@ -4,11 +4,9 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
-from django.core.exceptions import ImproperlyConfigured
-from django.http import Http404, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView, TemplateView
-from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
@@ -110,7 +108,9 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
                     label = dict(flat_list)[selection]
                     if self.decode_content_type:
                         model, pk = selection.split(',')
-                        selection_obj = ContentType.objects.get(model=model).get_object_for_this_type(pk=pk)
+                        selection_obj = ContentType.objects.get(
+                            model=model
+                        ).get_object_for_this_type(pk=pk)
                     else:
                         selection_obj = selection
 
@@ -202,7 +202,9 @@ class MultiFormView(FormView):
     def get_forms(self, form_classes):
         return dict(
             [
-                (key, self._create_form(key, klass)) for key, klass in form_classes.items()
+                (
+                    key, self._create_form(key, klass)
+                ) for key, klass in form_classes.items()
             ]
         )
 
@@ -270,7 +272,9 @@ class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, Redire
         try:
             messages.success(
                 self.request,
-                _('%s created successfully.') % self.extra_context['object_name'].capitalize()
+                _(
+                    '%s created successfully.'
+                ) % self.extra_context['object_name'].capitalize()
             )
         except KeyError:
             messages.success(
@@ -294,7 +298,8 @@ class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
         except Exception as exception:
             try:
                 messages.error(
-                    self.request, _('Error deleting %s.') % self.extra_context['object_name']
+                    self.request,
+                    _('Error deleting %s.') % self.extra_context['object_name']
                 )
             except KeyError:
                 messages.error(
@@ -305,7 +310,10 @@ class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
         else:
             try:
                 messages.success(
-                    self.request, _('%s deleted successfully.') % self.extra_context['object_name'].capitalize()
+                    self.request,
+                    _(
+                        '%s deleted successfully.'
+                    ) % self.extra_context['object_name'].capitalize()
                 )
             except KeyError:
                 messages.success(
@@ -325,7 +333,10 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
 
         try:
             messages.error(
-                self.request, _('Error saving %s details.') % self.extra_context['object_name']
+                self.request,
+                _(
+                    'Error saving %s details.'
+                ) % self.extra_context['object_name']
             )
         except KeyError:
             messages.error(
@@ -339,7 +350,10 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
 
         try:
             messages.success(
-                self.request, _('%s details saved successfully.') % self.extra_context['object_name'].capitalize()
+                self.request,
+                _(
+                    '%s details saved successfully.'
+                ) % self.extra_context['object_name'].capitalize()
             )
         except KeyError:
             messages.success(
@@ -354,4 +368,3 @@ class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectList
 
     def get_paginate_by(self, queryset):
         return setting_paginate_by.value
-

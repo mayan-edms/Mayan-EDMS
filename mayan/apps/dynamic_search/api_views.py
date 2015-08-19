@@ -8,7 +8,7 @@ from rest_api.filters import MayanObjectPermissionsFilter
 from .classes import SearchModel
 from .filters import RecentSearchUserFilter
 from .models import RecentSearch
-from .serializers import RecentSearchSerializer, SearchSerializer
+from .serializers import RecentSearchSerializer
 
 
 class APIRecentSearchListView(generics.ListAPIView):

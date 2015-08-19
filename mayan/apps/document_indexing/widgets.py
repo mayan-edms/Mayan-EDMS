@@ -21,7 +21,9 @@ def get_instance_link(index_instance_node, text=None, simple=False):
 
     return template % {
         'url': index_instance_node.get_absolute_url(),
-        'value': text if text else (index_instance_node if index_instance_node.parent else index_instance_node.index_template_node.index)
+        'value': text if text else (
+            index_instance_node if index_instance_node.parent else index_instance_node.index_template_node.index
+        )
     }
 
 
@@ -50,7 +52,9 @@ def get_breadcrumbs(index_instance_node, simple=False, single_link=False, includ
         # Return the entire breadcrumb path as a single HTML anchor
         output.insert(
             0, get_instance_link(
-                index_instance_node=index_instance_node, text=(' / '.join(result))
+                index_instance_node=index_instance_node, text=(
+                    ' / '.join(result)
+                )
             )
         )
         return mark_safe(' '.join(output))
@@ -68,11 +72,13 @@ def index_instance_item_link(index_instance_item):
     else:
         icon_template = ''
 
-    return mark_safe('%(icon_template)s&nbsp;<a href="%(url)s">%(text)s</a>' % {
-        'url': index_instance_item.get_absolute_url(),
-        'icon_template': icon_template,
-        'text': index_instance_item
-    })
+    return mark_safe(
+        '%(icon_template)s&nbsp;<a href="%(url)s">%(text)s</a>' % {
+            'url': index_instance_item.get_absolute_url(),
+            'icon_template': icon_template,
+            'text': index_instance_item
+        }
+    )
 
 
 def node_level(node):
@@ -83,8 +89,9 @@ def node_level(node):
     return mark_safe(
         ''.join(
             [
-                '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (getattr(node, node._mptt_meta.level_attr) - 1),
-                '' if node.is_root_node() else '<i class="fa fa-level-up fa-rotate-90"></i> ',
+                '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (
+                    getattr(node, node._mptt_meta.level_attr) - 1
+                ), '' if node.is_root_node() else '<i class="fa fa-level-up fa-rotate-90"></i> ',
                 ugettext('Root') if node.is_root_node() else unicode(node)
             ]
         )

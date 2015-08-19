@@ -11,7 +11,8 @@ from common.literals import TIME_DELTA_UNIT_CHOICES
 
 class SplitTimeDeltaWidget(forms.widgets.MultiWidget):
     """
-    A Widget that splits a timedelta input into three <input type="text"> boxes.
+    A Widget that splits a timedelta input into three <input type="text">
+    boxes.
     """
 
     def __init__(self, attrs=None):

@@ -32,7 +32,9 @@ class DjangoGPGTestCase(TestCase):
 
         # Test querying the keyservers
         self.assertTrue(
-            TEST_KEY_ID in [key_stub.key_id for key_stub in self.gpg.query(TEST_UIDS)]
+            TEST_KEY_ID in [
+                key_stub.key_id for key_stub in self.gpg.query(TEST_UIDS)
+            ]
         )
 
         # Receive a public key from the keyserver
@@ -40,5 +42,7 @@ class DjangoGPGTestCase(TestCase):
 
         # Check that the received key is indeed in the keyring
         self.assertTrue(
-            TEST_KEY_ID[-16:] in [key_stub.key_id for key_stub in Key.get_all(self.gpg)]
+            TEST_KEY_ID[-16:] in [
+                key_stub.key_id for key_stub in Key.get_all(self.gpg)
+            ]
         )

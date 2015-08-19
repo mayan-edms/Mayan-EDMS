@@ -2,7 +2,9 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .views import ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView
+from .views import (
+    ACLCreateView, ACLDeleteView, ACLListView, ACLPermissionsView
+)
 
 urlpatterns = patterns(
     'acls.views',

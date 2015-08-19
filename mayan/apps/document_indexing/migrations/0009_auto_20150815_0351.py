@@ -14,7 +14,10 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='indextemplatenode',
             name='expression',
-            field=models.CharField(help_text="Enter a template to render. Use Django's default templating language (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)", max_length=128, verbose_name='Indexing expression'),
+            field=models.CharField(
+                help_text="Enter a template to render. Use Django's default templating language (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)",
+                max_length=128, verbose_name='Indexing expression'
+            ),
             preserve_default=True,
         ),
     ]

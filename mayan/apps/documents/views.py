@@ -21,8 +21,7 @@ from common.generics import (
     SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
-from common.utils import encapsulate, pretty_size
-from common.widgets import two_state_template
+from common.utils import pretty_size
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 )
@@ -36,8 +35,8 @@ from .events import (
 )
 from .forms import (
     DocumentDownloadForm, DocumentForm, DocumentPageForm, DocumentPreviewForm,
-    DocumentPropertiesForm, DocumentTypeFilenameForm,
-    DocumentTypeFilenameForm_create, DocumentTypeSelectForm, PrintForm
+    DocumentPropertiesForm, DocumentTypeSelectForm,
+    DocumentTypeFilenameForm_create, PrintForm
 )
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (

@@ -101,7 +101,9 @@ class CompressedFile(object):
                 filename for filename in zfobj.namelist() if not filename.endswith('/')
             ]
             return (
-                SimpleUploadedFile(name=filename, content=zfobj.read(filename)) for filename in filenames
+                SimpleUploadedFile(
+                    name=filename, content=zfobj.read(filename)
+                ) for filename in filenames
             )
         except zipfile.BadZipfile:
             raise NotACompressedFile

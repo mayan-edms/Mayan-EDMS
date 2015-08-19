@@ -11,7 +11,7 @@ from fuse import FUSE, FuseOSError, Operations
 from django.core import management
 from django.core.cache import caches
 from django.core.exceptions import MultipleObjectsReturned
-from django.db.models import Count, Max
+from django.db.models import Count
 
 from document_indexing.models import Index, IndexInstanceNode
 from documents.models import Document

@@ -14,7 +14,6 @@ from common.views import (
     AssignRemoveView, SingleObjectCreateView, SingleObjectEditView,
     SingleObjectListView
 )
-from common.widgets import two_state_template
 from permissions import Permission
 
 from .forms import PasswordForm, UserForm
@@ -47,7 +46,10 @@ def user_edit(request, user_id):
     if user.is_superuser or user.is_staff:
         messages.error(
             request,
-            _('Super user and staff user editing is not allowed, use the admin interface for these cases.')
+            _(
+                'Super user and staff user editing is not allowed, use the '
+                'admin interface for these cases.'
+            )
         )
         return HttpResponseRedirect(
             request.META.get(
@@ -106,7 +108,9 @@ def user_delete(request, user_id=None, user_id_list=None):
         post_action_redirect = reverse('user_management:user_list')
     elif user_id_list:
         users = [
-            get_object_or_404(User, pk=user_id) for user_id in user_id_list.split(',')
+            get_object_or_404(
+                User, pk=user_id
+            ) for user_id in user_id_list.split(',')
         ]
     else:
         messages.error(request, _('Must provide at least one user.'))
@@ -123,14 +127,24 @@ def user_delete(request, user_id=None, user_id_list=None):
         for user in users:
             try:
                 if user.is_superuser or user.is_staff:
-                    messages.error(request, _('Super user and staff user deleting is not allowed, use the admin interface for these cases.'))
+                    messages.error(
+                        request,
+                        _(
+                            'Super user and staff user deleting is not '
+                            'allowed, use the admin interface for these cases.'
+                        )
+                    )
                 else:
                     user.delete()
-                    messages.success(request, _('User "%s" deleted successfully.') % user)
+                    messages.success(
+                        request, _('User "%s" deleted successfully.') % user
+                    )
             except Exception as exception:
-                messages.error(request, _('Error deleting user "%(user)s": %(error)s') % {
-                    'user': user, 'error': exception
-                })
+                messages.error(
+                    request, _('Error deleting user "%(user)s": %(error)s') % {
+                        'user': user, 'error': exception
+                    }
+                )
 
         return HttpResponseRedirect(next)
 
@@ -145,8 +159,10 @@ def user_delete(request, user_id=None, user_id_list=None):
     elif len(users) > 1:
         context['title'] = _('Delete the users: %s?') % ', '.join([unicode(d) for d in users])
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_confirm.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def user_multiple_delete(request):
@@ -166,7 +182,11 @@ def user_set_password(request, user_id=None, user_id_list=None):
         users = [get_object_or_404(User, pk=user_id) for user_id in user_id_list.split(',')]
     else:
         messages.error(request, _('Must provide at least one user.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -181,15 +201,30 @@ def user_set_password(request, user_id=None, user_id_list=None):
                 for user in users:
                     try:
                         if user.is_superuser or user.is_staff:
-                            messages.error(request, _('Super user and staff user password reseting is not allowed, use the admin interface for these cases.'))
+                            messages.error(
+                                request,
+                                _(
+                                    'Super user and staff user password '
+                                    'reseting is not allowed, use the admin '
+                                    'interface for these cases.'
+                                )
+                            )
                         else:
                             user.set_password(password_1)
                             user.save()
-                            messages.success(request, _('Successfull password reset for user: %s.') % user)
+                            messages.success(
+                                request, _(
+                                    'Successfull password reset for user: %s.'
+                                ) % user
+                            )
                     except Exception as exception:
-                        messages.error(request, _('Error reseting password for user "%(user)s": %(error)s') % {
-                            'user': user, 'error': exception
-                        })
+                        messages.error(
+                            request, _(
+                                    'Error reseting password for user "%(user)s": %(error)s'
+                            ) % {
+                                'user': user, 'error': exception
+                            }
+                        )
 
                 return HttpResponseRedirect(next)
     else:
@@ -243,10 +278,14 @@ class UserGroupsView(AssignRemoveView):
         return get_object_or_404(User, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return AssignRemoveView.generate_choices(get_user_non_groups(self.get_object()))
+        return AssignRemoveView.generate_choices(
+            get_user_non_groups(self.get_object())
+        )
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(get_user_groups(self.get_object()))
+        return AssignRemoveView.generate_choices(
+            get_user_groups(self.get_object())
+        )
 
     def remove(self, item):
         item.user_set.remove(self.get_object())
@@ -297,7 +336,9 @@ def group_delete(request, group_id=None, group_id_list=None):
         groups = [get_object_or_404(Group, pk=group_id)]
         post_action_redirect = reverse('user_management:group_list')
     elif group_id_list:
-        groups = [get_object_or_404(Group, pk=group_id) for group_id in group_id_list.split(',')]
+        groups = [
+            get_object_or_404(Group, pk=group_id) for group_id in group_id_list.split(',')
+        ]
     else:
         messages.error(request, _('Must provide at least one group.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
@@ -359,10 +400,16 @@ class GroupMembersView(AssignRemoveView):
         return get_object_or_404(Group, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return AssignRemoveView.generate_choices(User.objects.exclude(groups=self.get_object()).exclude(is_staff=True).exclude(is_superuser=True))
+        return AssignRemoveView.generate_choices(
+            User.objects.exclude(
+                groups=self.get_object()
+            ).exclude(is_staff=True).exclude(is_superuser=True)
+        )
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(self.get_object().user_set.all())
+        return AssignRemoveView.generate_choices(
+            self.get_object().user_set.all()
+        )
 
     def remove(self, item):
         self.get_object().user_set.remove(item)

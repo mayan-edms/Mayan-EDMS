@@ -11,6 +11,7 @@ from ..settings import setting_login_method
 TEST_ADMIN_EMAIL = 'admin@admin.com'
 TEST_ADMIN_PASSWORD = 'test_admin_password'
 TEST_ADMIN_USERNAME = 'test_admin'
+TEST_EMAIL_AUTHENTICATION_BACKEND = 'authentication.auth.email_auth_backend.EmailAuthBackend'
 
 
 class UserLoginTestCase(TestCase):
@@ -43,7 +44,7 @@ class UserLoginTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_email_login(self):
-        with self.settings(AUTHENTICATION_BACKENDS=('authentication.auth.email_auth_backend.EmailAuthBackend',)):
+        with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
             setting_login_method.value = 'email'
 
             logged_in = self.client.login(
@@ -78,7 +79,7 @@ class UserLoginTestCase(TestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_email_login_via_views(self):
-        with self.settings(AUTHENTICATION_BACKENDS=('authentication.auth.email_auth_backend.EmailAuthBackend',)):
+        with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
             setting_login_method.value = 'email'
             response = self.client.get(reverse('documents:document_list'))
             self.assertRedirects(

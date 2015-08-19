@@ -100,7 +100,9 @@ def return_attrib(obj, attrib, arguments=None):
     try:
         if isinstance(attrib, types.FunctionType):
             return attrib(obj)
-        elif isinstance(obj, types.DictType) or isinstance(obj, types.DictionaryType):
+        elif isinstance(
+            obj, types.DictType
+        ) or isinstance(obj, types.DictionaryType):
             return obj[attrib]
         else:
             result = reduce(getattr, attrib.split('.'), obj)
@@ -140,12 +142,13 @@ def urlquote(link=None, get=None):
 
     assert link or get
     if isinstance(link, dict):
-        # urlqoute({'key': 'value', 'key2': 'value2'}) --> key=value&key2=value2
+        # urlqoute({'key': 'value', 'key2': 'value2'}) -->
+        # key=value&key2=value2
         assert not get, get
         get = link
         link = ''
     assert isinstance(get, dict), 'wrong type "%s", dict required' % type(get)
-    # assert not (link.startswith('http://') or link.startswith('https://')), \
+    # assert not (link.startswith('http://') or link.startswith('https://')),
     #    'This method should only quote the url path.
     #    It should not start with http(s)://  (%s)' % (
     #    link)

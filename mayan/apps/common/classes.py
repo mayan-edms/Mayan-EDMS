@@ -18,8 +18,8 @@ class ModelAttribute(object):
 
             return result
         except IndexError:
-            # We were passed a model instance, try again using the model of the
-            # instance
+            # We were passed a model instance, try again using the model of
+            # the instance
 
             # If we are already in the model class, exit with an error
             if model.__class__ == models.base.ModelBase:
@@ -30,16 +30,24 @@ class ModelAttribute(object):
     @classmethod
     def get_choices_for(cls, model, type_names=None):
         return [
-            (attribute.name, attribute) for attribute in cls.get_for(model, type_names)
+            (
+                attribute.name, attribute
+            ) for attribute in cls.get_for(model, type_names)
         ]
 
     @classmethod
     def help_text_for(cls, model, type_names=None):
         result = []
         for count, attribute in enumerate(cls.get_for(model, type_names), 1):
-            result.append('{}) {}'.format(count, unicode(attribute.get_display(show_name=True))))
+            result.append(
+                '{}) {}'.format(
+                    count, unicode(attribute.get_display(show_name=True))
+                )
+            )
 
-        return ' '.join([ugettext('Available attributes: '), ', '.join(result)])
+        return ' '.join(
+            [ugettext('Available attributes: '), ', '.join(result)]
+        )
 
     def get_display(self, show_name=False):
         if self.description:

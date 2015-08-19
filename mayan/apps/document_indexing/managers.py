@@ -20,7 +20,8 @@ class IndexInstanceNodeManager(models.Manager):
     @staticmethod
     def delete_empty_index_nodes_recursive(instance_node):
         """
-        Calls itself recursively deleting empty index instance nodes up to root
+        Calls itself recursively deleting empty index instance nodes up to
+        root
         """
 
         if instance_node.get_children().count() == 0:

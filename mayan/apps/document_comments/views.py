@@ -51,10 +51,16 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         )
 
     previous = request.POST.get(
-        'previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        'previous', request.GET.get(
+            'previous', request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
     )
     next = request.POST.get(
-        'next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        'next', request.GET.get(
+            'next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
+        )
     )
 
     if request.method == 'POST':
@@ -110,7 +116,11 @@ def comment_add(request, document_id):
 
     post_action_redirect = None
 
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    next = request.POST.get(
+        'next', request.GET.get(
+            'next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
+        )
+    )
 
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -144,7 +154,8 @@ class DocumentCommentListView(SingleObjectListView):
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
-                permission_comment_view, self.request.user, self.get_document()
+                permission_comment_view, self.request.user,
+                self.get_document()
             )
 
         return self.get_document().comments.all()
