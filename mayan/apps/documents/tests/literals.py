@@ -34,6 +34,7 @@ TEST_HYBRID_DOCUMENT = 'hybrid_text_and_image.pdf'
 TEST_MULTI_PAGE_TIFF = 'multi_page.tiff'
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png.zip'
 TEST_NON_ASCII_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png'
+TEST_OFFICE_DOCUMENT = 'simple_2_page_document.doc'
 TEST_SMALL_DOCUMENT_FILENAME = 'title_page.png'
 
 # File paths
@@ -62,6 +63,10 @@ TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH = os.path.join(
 TEST_NON_ASCII_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'contrib', 'sample_documents',
     TEST_NON_ASCII_DOCUMENT_FILENAME
+)
+TEST_OFFICE_DOCUMENT_PATH = os.path.join(
+    settings.BASE_DIR, 'contrib', 'sample_documents',
+    TEST_OFFICE_DOCUMENT
 )
 TEST_SMALL_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'contrib', 'sample_documents',

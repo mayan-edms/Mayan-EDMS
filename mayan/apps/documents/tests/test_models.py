@@ -6,7 +6,7 @@ from django.test import TestCase
 
 from .literals import (
     TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
-    TEST_SMALL_DOCUMENT_PATH
+    TEST_OFFICE_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
 )
 from ..models import DeletedDocument, Document, DocumentType
 
@@ -80,6 +80,34 @@ class DocumentTestCase(TestCase):
         self.document.delete()
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
+
+
+class OfficeDocumentTestCase(TestCase):
+    def setUp(self):
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        ocr_settings = self.document_type.ocr_settings
+        ocr_settings.auto_ocr = False
+        ocr_settings.save()
+
+        with open(TEST_OFFICE_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=File(file_object)
+            )
+
+    def tearDown(self):
+        self.document_type.delete()
+
+    def test_document_creation(self):
+        self.assertEqual(self.document.file_mimetype, 'application/msword')
+        self.assertEqual(self.document.file_mime_encoding, 'application/mswordbinary')
+        self.assertEqual(
+            self.document.checksum,
+            '03a7e9071d2c6ae05a6588acd7dff1d890fac2772cf61abd470c9ffa6ef71f03'
+        )
+        self.assertEqual(self.document.page_count, 2)
 
 
 class MultiPageTiffTestCase(TestCase):
