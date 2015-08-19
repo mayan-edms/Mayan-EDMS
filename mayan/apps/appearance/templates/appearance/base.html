@@ -1,5 +1,6 @@
 {% load i18n %}
 {% load static %}
+{% load tz %}
 
 {% load compress %}
 
@@ -163,6 +164,8 @@
         {% endcompress %}
     </head>
     <body>
+        {% localtime on %}
+
         {% if appearance_type == 'plain' %}
             {% block content_plain %}{% endblock %}
         {% else %}
@@ -413,5 +416,6 @@
         </script>
         {% block javascript %}{% endblock %}
         {% endcompress %}
+        {% endlocaltime %}
     </body>
 </html>
