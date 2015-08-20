@@ -15,10 +15,13 @@ APP_LIST = (
     'tags', 'user_management'
 )
 LANGUAGE_LIST = (
-    'ar', 'bg', 'bs_BA', 'da', 'de_CH', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu',
-    'hr_HR', 'id', 'it', 'lv', 'nb', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO',
-    'ru', 'sl_SI', 'sq', 'tr_TR', 'vi_VN', 'zh_CN', 'zh_TW'
+    'ar', 'bg', 'bs_BA', 'da', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu', 'id',
+    'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'vi_VN',
+    'zh_CN',
 )
+
+# Inactive translations
+# 'de_CH', 'hr_HR', 'lv', 'nb', 'sq', 'tr_TR', 'zh_TW'
 
 makemessages = sh.Command('django-admin.py')
 makemessages = makemessages.bake('makemessages')
