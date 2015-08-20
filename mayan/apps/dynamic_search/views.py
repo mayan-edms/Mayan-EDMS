@@ -27,12 +27,12 @@ class ResultsView(SingleObjectListView):
 
         if setting_show_object_type.value:
             context.update({
-                'extra_columns': [
+                'extra_columns': (
                     {
                         'name': _('Type'),
                         'attribute': lambda x: x._meta.verbose_name[0].upper() + x._meta.verbose_name[1:]
-                    }
-                ]
+                    },
+                )
             })
 
         return context

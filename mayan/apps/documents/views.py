@@ -556,12 +556,12 @@ def document_download(request, document_id=None, document_id_list=None, document
                 'hide_links': True,
                 'scrollable_content': True,
                 'scrollable_content_height': '200px',
-                'extra_columns': [
+                'extra_columns': (
                     {'name': _('Document'), 'attribute': 'document'},
                     {'name': _('Date and time'), 'attribute': 'timestamp'},
                     {'name': _('MIME type'), 'attribute': 'mimetype'},
                     {'name': _('Encoding'), 'attribute': 'encoding'},
-                ],
+                ),
             }
         }
     )

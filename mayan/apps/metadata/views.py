@@ -181,8 +181,10 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         len(documents)
     )
 
-    return render_to_response('appearance/generic_form.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_form.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def metadata_multiple_edit(request):
@@ -546,14 +548,14 @@ class MetadataTypeListView(SingleObjectListView):
 
     def get_extra_context(self):
         return {
-            'title': _('Metadata types'),
-            'hide_link': True,
-            'extra_columns': [
+            'extra_columns': (
                 {
                     'name': _('Internal name'),
                     'attribute': 'name',
                 },
-            ]
+            ),
+            'hide_link': True,
+            'title': _('Metadata types'),
         }
 
 
