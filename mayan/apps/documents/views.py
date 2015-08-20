@@ -8,6 +8,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import resolve, reverse, reverse_lazy
+from django.template.defaultfilters import filesizeformat
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -21,7 +22,7 @@ from common.generics import (
     SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
-from common.utils import pretty_size, render_date_object
+from common.utils import render_date_object
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 )
@@ -278,15 +279,15 @@ def document_properties(request, document_id):
         document_fields.extend([
             {
                 'label': _('File mimetype'),
-                'field': lambda x: x.file_mimetype or _('None')
+                'field': lambda x: document.file_mimetype or _('None')
             },
             {
                 'label': _('File encoding'),
-                'field': lambda x: x.file_mime_encoding or _('None')
+                'field': lambda x: document.file_mime_encoding or _('None')
             },
             {
                 'label': _('File size'),
-                'field': lambda x: pretty_size(x.size) if x.size else '-'
+                'field': lambda document: filesizeformat(document.size) if document.size else '-'
             },
             {'label': _('Exists in storage'), 'field': 'exists'},
             {'label': _('File path in storage'), 'field': 'latest_version.file'},

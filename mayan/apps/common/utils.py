@@ -71,33 +71,6 @@ def get_descriptor(file_input, read=True):
         return file_input
 
 
-# http://snippets.dzone.com/posts/show/5434
-# http://snippets.dzone.com/user/jakob
-def pretty_size(size, suffixes=None):
-    suffixes = suffixes or [
-        ('B', 1024L), ('K', 1048576L), ('M', 1073741824L),
-        ('G', 1099511627776L), ('T', 1125899906842624L)
-    ]
-
-    for suf, lim in suffixes:
-        if size > lim:
-            continue
-        else:
-            try:
-                return round(size / float(lim / 1024L), 2).__str__() + suf
-            except ZeroDivisionError:
-                return 0
-
-
-def pretty_size_10(size):
-    return pretty_size(
-        size,
-        suffixes=[
-            ('B', 1000L), ('K', 1000000L), ('M', 1000000000L),
-            ('G', 1000000000000L), ('T', 1000000000000000L)
-        ])
-
-
 def render_date_object(date_time_object):
     return force_text(formats.localize(date_time_object, use_l10n=True))
 
