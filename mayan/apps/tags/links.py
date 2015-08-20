@@ -17,7 +17,7 @@ link_multiple_documents_attach_tag = Link(
     text=_('Attach tag'), view='tags:multiple_documents_tag_attach'
 )
 link_single_document_multiple_tag_remove = Link(
-    permissions=(permission_tag_remove,), text=_('remove tags'),
+    permissions=(permission_tag_remove,), text=_('Remove tags'),
     view='tags:single_document_multiple_tag_remove', args='document.id'
 )
 link_tag_attach = Link(
