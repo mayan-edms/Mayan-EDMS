@@ -1,30 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # mic, 2012
 # mic <diveaway12@gmail.com>, 2012
-# mic <winterfall24@gmail.com>, 2012
-# mic <winterfall24@gmail.com>, 2015
-# mic <winterfall24@gmail.com>, 2012
+# mic <winterfall24@gmail.com>, 2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-01-17 07:03+0000\n"
+"PO-Revision-Date: 2015-08-20 22:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:55 settings.py:9
 msgid "Common"
@@ -39,10 +35,9 @@ msgid "Selection"
 msgstr "Zaznaczenie"
 
 #: generics.py:125
-#, fuzzy, python-format
-#| msgid "Unable to add %(selection)s."
+#, python-format
 msgid "Unable to transfer selection: %s."
-msgstr "Nie można dodać %(selection)s."
+msgstr ""
 
 #: generics.py:149
 msgid "Add"
@@ -108,7 +103,7 @@ msgstr "Detale zapsane pomyślnie."
 
 #: links.py:9
 msgid "About"
-msgstr ""
+msgstr "Informacje o"
 
 #: links.py:12
 msgid "User details"
@@ -120,11 +115,11 @@ msgstr "Edytuj szczegóły"
 
 #: links.py:19
 msgid "Locale profile"
-msgstr ""
+msgstr "Profil lokalny"
 
 #: links.py:23
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Edytuj profil lokalny"
 
 #: links.py:27 views.py:110
 msgid "License"
@@ -193,15 +188,13 @@ msgstr "Lokalne profile użytkownika"
 #: settings.py:13
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "Katalog tymczasowy, używany do przechowywania miniatur, podglądów oraz plików tymczasowych. Jeśli nie zostanie określony, zostanie utworzony za pomocą tempfile.mkdtemp()"
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie "
-"plików."
+msgstr "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie plików."
 
 #: settings.py:28
 msgid "An integer specifying how many objects should be displayed per page."
@@ -240,43 +233,66 @@ msgid "None"
 msgstr "Brak"
 
 #~ msgid "Anonymous user"
-#~ msgstr "Użytkownik anonimowy"
+#~ msgstr "Anonymous user"
 
 #~ msgid "Account"
-#~ msgstr "Konto"
+#~ msgstr "account"
+
+#~ msgid "Password"
+#~ msgstr "password"
 
 #~ msgid "Password hash"
-#~ msgstr "Hasło hash"
+#~ msgstr "password hash"
 
 #~ msgid "Auto admin properties"
-#~ msgstr "Właściwości automatyczne"
+#~ msgstr "auto admin properties"
 
 #~ msgid "Function found"
-#~ msgstr "Wyszukano funkcję"
+#~ msgstr "function found"
 
 #~ msgid "Unable to remove %(selection)s."
-#~ msgstr "Nie można usunąć %(selection)s."
+#~ msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
 #~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr "Użytkownik o podanym adresie e-mail już istnieje."
+#~ msgstr "E-mail conflict, another user has that same email."
 
 #~ msgid "Current user's details updated."
-#~ msgstr "Aktualne dane użytkownika aktualizowane."
+#~ msgstr "Current user's details updated."
 
 #~ msgid "Current user's locale profile details updated."
-#~ msgstr "Profil aktualnego użytkownika został zaktualizowany."
+#~ msgstr "Current user's details updated."
 
 #~ msgid "Email"
-#~ msgstr "E-mail"
+#~ msgstr "Email"
+
+#~ msgid ""
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
+#~ msgstr ""
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
-#~ msgstr "To konto jest nieaktywne."
+#~ msgstr "This account is inactive."
+
+#~ msgid "Change password"
+#~ msgstr "change password"
+
+#~ msgid ""
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
+#~ msgstr ""
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
+
+#~ msgid "Allow non authenticated users, access to all views"
+#~ msgstr "Allow non authenticated users, access to all views"
 
 #~ msgid "Current user password change"
-#~ msgstr "Zmiana hasła użytkownika"
+#~ msgstr "Current user password change"
 
 #~ msgid "Your password has been successfully changed."
-#~ msgstr "Twoje hasło zostało pomyślnie zmienione."
+#~ msgstr "Your password has been successfully changed."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."

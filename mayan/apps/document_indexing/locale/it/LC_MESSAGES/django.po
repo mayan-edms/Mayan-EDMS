@@ -12,10 +12,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:45-0400\n"
+"POT-Creation-Date: 2015-08-20 18:11-0400\n"
 "PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
 "language/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -336,9 +336,6 @@ msgstr "L'indice contiene documenti: %s"
 msgid "Root"
 msgstr "Principale"
 
-#~ msgid "Enter a python string expression to be evaluated."
-#~ msgstr "Inserisci una espressione python perchè possa essere valutata."
-
 #~ msgid "Go up one level"
 #~ msgstr "Salire di un livello"
 
@@ -350,6 +347,9 @@ msgstr "Principale"
 
 #~ msgid "The name that will be visible to users."
 #~ msgstr "Il nome che sarà visibile agli utenti."
+
+#~ msgid "Enter a python string expression to be evaluated."
+#~ msgstr "Inserisci una espressione python perchè possa essere valutata."
 
 #~ msgid "Index created successfully."
 #~ msgstr "Indice creato con successo."

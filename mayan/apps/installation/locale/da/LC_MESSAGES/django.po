@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # René Rovsing Bach <reroba@outlook.com>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:46-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"PO-Revision-Date: 2015-08-20 22:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/da/)\n"
-"Language: da\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16 permissions.py:7
@@ -69,10 +68,10 @@ msgstr ""
 #~ msgstr "LSB OS"
 
 #~ msgid "Distributor ID"
-#~ msgstr "Distributør id"
+#~ msgstr "Distributor ID"
 
 #~ msgid "Description"
-#~ msgstr "Beskrivelse"
+#~ msgstr "Description"
 
 #~ msgid "Release"
 #~ msgstr "Release"
@@ -84,52 +83,58 @@ msgstr ""
 #~ msgstr "System info"
 
 #~ msgid "OS architecture"
-#~ msgstr "OS arkitektur"
+#~ msgstr "OS architecture"
 
 #~ msgid "Python version"
 #~ msgstr "Python version"
 
 #~ msgid "Hostname"
-#~ msgstr "Host navn"
+#~ msgstr "Hostname"
 
 #~ msgid "Platform"
 #~ msgstr "Platform"
 
 #~ msgid "Machine"
-#~ msgstr "Maskine"
+#~ msgstr "Machine"
 
 #~ msgid "Processor"
 #~ msgstr "Processor"
 
 #~ msgid "Number of CPUs"
-#~ msgstr "Antal CPU'er"
+#~ msgstr "Number of CPUs"
 
 #~ msgid "Total physical memory"
-#~ msgstr "Samlet fysisk hukommelse"
+#~ msgstr "Total physical memory"
 
 #~ msgid "Disk partitions"
-#~ msgstr "Diskpartitioner"
+#~ msgstr "Disk partitions"
 
 #~ msgid "tesseract version"
-#~ msgstr "Tesseract version"
+#~ msgstr "tesseract version"
 
 #~ msgid "not found"
-#~ msgstr "Ej fundet"
+#~ msgstr "not found"
 
 #~ msgid "error getting version"
-#~ msgstr "Fejl ved versionssøgning"
+#~ msgstr "error getting version"
 
 #~ msgid "unpaper version"
-#~ msgstr "digital udgave"
+#~ msgstr "unpaper version"
 
 #~ msgid "pdftotext version"
 #~ msgstr "pdftotext version"
 
+#~ msgid "Mayan EDMS"
+#~ msgstr "Mayan EDMS version"
+
 #~ msgid "Mayan EDMS version"
 #~ msgstr "Mayan EDMS version"
 
+#~ msgid "Git repository"
+#~ msgstr "Running from a Git repository"
+
 #~ msgid "Running from a Git repository"
-#~ msgstr "Kører fra en Git repository"
+#~ msgstr "Running from a Git repository"
 
 #~ msgid "Repository remotes"
 #~ msgstr "Repository remotes"

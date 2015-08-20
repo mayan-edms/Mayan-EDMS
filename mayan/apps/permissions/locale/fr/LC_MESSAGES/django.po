@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Christophe kryskool <christophe.chauvet@gmail.com>, 2014
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:47-0400\n"
-"PO-Revision-Date: 2014-11-07 18:14+0000\n"
-"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2015-08-20 22:01+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:22 models.py:27 models.py:67 permissions.py:7
@@ -114,101 +113,89 @@ msgid "Available groups"
 msgstr ""
 
 #: views.py:46
-#, fuzzy
-#| msgid "Members"
 msgid "Member groups"
-msgstr "Membres"
+msgstr ""
 
 #: views.py:56
-#, fuzzy, python-format
-#| msgid "Non members of role: %s"
+#, python-format
 msgid "Group members of role: %s"
-msgstr "Membres exclus du rôle:%s"
+msgstr ""
 
 #: views.py:79
-#, fuzzy
-#| msgid "Role permissions"
 msgid "Available permissions"
-msgstr "Autorisations du rôle"
+msgstr ""
 
 #: views.py:80
-#, fuzzy
 #| msgid "Grant permissions"
 msgid "Granted permissions"
-msgstr "Donner des droits"
+msgstr ""
 
 #: views.py:93
-#, fuzzy, python-format
-#| msgid "Permission holders"
+#, python-format
 msgid "Permissions for role: %s"
-msgstr "Propriétaires du droit"
+msgstr ""
 
 #~ msgid "Permission holder"
-#~ msgstr "Propriétaire du droit"
+#~ msgstr "permission holder"
 
 #~ msgid "Role member"
-#~ msgstr "Membre du rôle"
+#~ msgstr "role member"
 
 #~ msgid "Role members"
-#~ msgstr "membres du rôle"
+#~ msgstr "role members"
 
 #~ msgid ""
 #~ "A list of existing roles that are automatically assigned to newly created "
 #~ "users"
 #~ msgstr ""
-#~ "Une liste des rôles existant qui sont automatiquement attribués aux "
-#~ "comptes utilisateurs nouvellement créés"
+#~ "A list of existing roles that are automatically assigned to newly created "
+#~ "users"
 
 #~ msgid "Has permission"
-#~ msgstr "Possède le droit"
+#~ msgstr "has permission"
 
 #~ msgid " and "
-#~ msgstr " et "
+#~ msgstr " and "
 
 #~ msgid "%(permissions)s to %(requester)s"
-#~ msgstr "%(permissions)s pour %(requester)s"
+#~ msgstr "%(permissions)s to %(requester)s"
 
 #~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
-#~ msgstr "Droit \"%(permission)s\" attribué à: %(requester)s."
+#~ msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
 
-#~ msgid ""
-#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
-#~ msgstr "%(requester)s, a déjà le droit \"%(permission)s\" d'attribué."
+#~ msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
 
 #~ msgid ""
 #~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 #~ msgstr ""
-#~ "Êtes vous certain de vouloir attribuer le droit %(permissions_label)s "
-#~ "%(title_suffix)s?"
+#~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
 
 #~ msgid "permission"
-#~ msgstr "droit"
+#~ msgstr "permission"
 
 #~ msgid "permissions"
-#~ msgstr "droits"
+#~ msgstr "permissions"
 
 #~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
-#~ msgstr "Droit \"%(permission)s\" retiré pour: %(requester)s."
+#~ msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
+
+#~ msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 
 #~ msgid ""
-#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-#~ msgstr "%(requester)s, n'a pas le droit \"%(permission)s\" d'attribué."
-
-#~ msgid ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s "
-#~ "%(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 #~ msgstr ""
-#~ "Êtes vous certain de vouloir supprimer le droit %(permissions_label)s "
-#~ "%(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 
 #~ msgid "Users"
-#~ msgstr "Utilisateurs"
+#~ msgstr "Users"
 
 #~ msgid "Special"
-#~ msgstr "Spécial"
+#~ msgstr "Special"
 
 #~ msgid "Members of role: %s"
-#~ msgstr "Membres du rôle:%s"
+#~ msgstr "members of role: %s"
 
 #~ msgid "edit"
 #~ msgstr "edit"

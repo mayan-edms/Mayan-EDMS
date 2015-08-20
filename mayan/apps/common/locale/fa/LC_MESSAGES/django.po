@@ -10,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-01-17 07:03+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"POT-Creation-Date: 2015-08-20 18:15-0400\n"
+"PO-Revision-Date: 2015-03-03 10:54+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
 "language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -234,6 +234,25 @@ msgstr "حداقل یک مورد انتخاب شود."
 msgid "None"
 msgstr "هیچکدام."
 
+#~ msgid "Email"
+#~ msgstr "پست الکترونیک"
+
+#~ msgid "Password"
+#~ msgstr "رمزعبور"
+
+#~ msgid ""
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
+#~ msgstr ""
+#~ "لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور "
+#~ "case-sensitive است."
+
+#~ msgid "This account is inactive."
+#~ msgstr "اکانت غیرفعال است."
+
+#~ msgid "Change password"
+#~ msgstr "تغییر کلمه عبور"
+
 #~ msgid "Logout"
 #~ msgstr "خروج"
 
@@ -243,14 +262,19 @@ msgstr "هیچکدام."
 #~ msgid "Account"
 #~ msgstr "حساب"
 
-#~ msgid "Password"
-#~ msgstr "رمزعبور"
-
 #~ msgid "Password hash"
 #~ msgstr "هش کلمه عبور"
 
 #~ msgid "Auto admin properties"
 #~ msgstr "خصوصیات مدبر خودکار"
+
+#~ msgid ""
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
+#~ msgstr "روش کنترل اعتبار سنجی کاربران، انتخابها عبارتند از:username, email."
+
+#~ msgid "Allow non authenticated users, access to all views"
+#~ msgstr "اجازه دادن به کاربران اعتبار سنجی نشده، جهت بازبینی و یا Viewها."
 
 #~ msgid "Function found"
 #~ msgstr "فانکشن و یا تابع پیدا شد."
@@ -266,30 +290,6 @@ msgstr "هیچکدام."
 
 #~ msgid "Current user's locale profile details updated."
 #~ msgstr "شرح پروفایل محلی کاربر فعلی بروز رسانی شد."
-
-#~ msgid "Email"
-#~ msgstr "پست الکترونیک"
-
-#~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
-#~ msgstr ""
-#~ "لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور "
-#~ "case-sensitive است."
-
-#~ msgid "This account is inactive."
-#~ msgstr "اکانت غیرفعال است."
-
-#~ msgid "Change password"
-#~ msgstr "تغییر کلمه عبور"
-
-#~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
-#~ msgstr "روش کنترل اعتبار سنجی کاربران، انتخابها عبارتند از:username, email."
-
-#~ msgid "Allow non authenticated users, access to all views"
-#~ msgstr "اجازه دادن به کاربران اعتبار سنجی نشده، جهت بازبینی و یا Viewها."
 
 #~ msgid "Current user password change"
 #~ msgstr "تغییر کلمه عبور کاربر"

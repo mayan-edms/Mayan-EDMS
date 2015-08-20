@@ -16,10 +16,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:46-0400\n"
+"POT-Creation-Date: 2015-08-20 18:05-0400\n"
 "PO-Revision-Date: 2015-02-06 23:56+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
 "edms/language/de_DE/)\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -321,12 +321,6 @@ msgstr ""
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Bedingung für Smart Link bearbeiten"
 
-#~ msgid "Smart link: %s created successfully."
-#~ msgstr "Smart Link %s erfolgreich erstellt"
-
-#~ msgid "Smart link: %s edited successfully."
-#~ msgstr "Smart Link %s erfolgreich bearbeitet"
-
 #~ msgid "ACLs"
 #~ msgstr "Zugriffsberechtigungen"
 
@@ -348,6 +342,12 @@ msgstr "Bedingung für Smart Link bearbeiten"
 
 #~ msgid "Indentifier"
 #~ msgstr "Bezeichner"
+
+#~ msgid "Smart link: %s created successfully."
+#~ msgstr "Smart Link %s erfolgreich erstellt"
+
+#~ msgid "Smart link: %s edited successfully."
+#~ msgstr "Smart Link %s erfolgreich bearbeitet"
 
 #~ msgid "Are you sure you wish to delete smart link: %s?"
 #~ msgstr "Wollen Sie Smart Link %s wirklich löschen?"

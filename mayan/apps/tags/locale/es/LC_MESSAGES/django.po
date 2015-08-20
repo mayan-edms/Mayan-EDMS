@@ -1,25 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2011-2012,2015
+# Roberto Rosario, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:48-0400\n"
-"PO-Revision-Date: 2015-02-07 05:27+0000\n"
+"PO-Revision-Date: 2015-08-20 22:44+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 apps.py:56 apps.py:71 forms.py:34 links.py:40 links.py:43
@@ -44,10 +43,8 @@ msgid "Attach tag"
 msgstr "Adjuntar etiqueta"
 
 #: links.py:20
-#, fuzzy
-#| msgid "Remove tags"
 msgid "remove tags"
-msgstr "Remover etiquetas"
+msgstr "Quitar etiquetas"
 
 #: links.py:28
 msgid "Create new tag"
@@ -144,13 +141,10 @@ msgid "Will be removed from all documents."
 msgstr "Se eliminará de todos los documentos."
 
 #: views.py:192
-#, fuzzy
-#| msgid "Are you sure you wish to delete the selected tag?"
-#| msgid_plural "Are you sure you wish to delete the selected tags?"
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
-msgstr[0] "¿Seguro que desea eliminar la etiqueta seleccionada?"
-msgstr[1] "¿Seguro que desea eliminar las etiquetas seleccionadas?"
+msgstr[0] "¿Eliminar la etiqueta seleccionada?"
+msgstr[1] "¿Eliminar las etiquetas seleccionadas?"
 
 #: views.py:222
 #, python-format
@@ -182,44 +176,30 @@ msgid "Remove tag from documents: %s."
 msgstr "Quitar etiqueta de los documentos: %s."
 
 #: views.py:340
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
-#| "%(document)s?"
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
 msgstr ""
-"¿Está seguro que desea quitar la etiqueta \"%(tag)s\" del documento: "
-"%(document)s?"
 
 #: views.py:347
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
-#| "%(documents)s?"
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
 msgstr ""
-"¿Está seguro que desea quitar la etiqueta \"%(tag)s\" de los documentos: "
-"%(documents)s?"
 
 #: views.py:356
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "Are you sure you wish to remove the tags: %(tags)s from the document: "
-#| "%(document)s?"
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
 msgstr ""
-"¿Está seguro que desea quitar las etiquetas \"%(tags)s\" del documento: "
-"%(document)s?"
 
 #: views.py:363
-#, fuzzy, python-format
-#| msgid ""
-#| "Are you sure you wish to remove the tags %(tags)s from the documents: "
-#| "%(documents)s?"
+#, python-format
 msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
 msgstr ""
-"¿Está seguro de que quiere quitar las etiquetas %(tags)s de los documentos:\n"
-"%(documents)s?"
 
 #: views.py:375
 #, python-format
@@ -229,50 +209,49 @@ msgstr "Documento \"%(document)s\" no estaba etiquetado como \"%(tag)s \""
 #: views.py:384
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"Etiqueta \"%(tag)s\" eliminada con éxito del documento \"%(document)s\"."
+msgstr "Etiqueta \"%(tag)s\" eliminada con éxito del documento \"%(document)s\"."
 
 #~ msgid "Tagged items"
-#~ msgstr "Artículos etiquetados"
+#~ msgstr "tagged items"
 
 #~ msgid "ACLs"
-#~ msgstr "LCAs"
+#~ msgstr "ACLs"
 
 #~ msgid "Blue"
-#~ msgstr "Azul"
+#~ msgstr "Blue"
 
 #~ msgid "Cyan"
-#~ msgstr "Cian"
+#~ msgstr "Cyan"
 
 #~ msgid "Coral"
 #~ msgstr "Coral"
 
 #~ msgid "Green-Yellow"
-#~ msgstr "Verde-Amarillo"
+#~ msgstr "Green-Yellow"
 
 #~ msgid "Khaki"
-#~ msgstr "Caqui"
+#~ msgstr "Khaki"
 
 #~ msgid "LightGrey"
-#~ msgstr "Gris claro"
+#~ msgstr "LightGrey"
 
 #~ msgid "Magenta"
 #~ msgstr "Magenta"
 
 #~ msgid "Red"
-#~ msgstr "Rojo"
+#~ msgstr "Red"
 
 #~ msgid "Orange"
-#~ msgstr "Naranja"
+#~ msgstr "Orange"
 
 #~ msgid "Yellow"
-#~ msgstr "Amarillo"
+#~ msgstr "Yellow"
 
 #~ msgid "Tag created succesfully."
-#~ msgstr "Etiqueta creada con éxito."
+#~ msgstr "Tag created succesfully."
 
 #~ msgid "Tag updated succesfully."
-#~ msgstr "Etiqueta actualizada con éxito.."
+#~ msgstr "Tag updated succesfully."
 
 #~ msgid "Add tag to document"
 #~ msgstr "Add tag to document"

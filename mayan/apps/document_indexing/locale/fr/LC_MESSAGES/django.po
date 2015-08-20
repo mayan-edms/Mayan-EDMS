@@ -11,11 +11,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:45-0400\n"
-"PO-Revision-Date: 2015-05-15 23:05+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
+"POT-Creation-Date: 2015-08-20 18:11-0400\n"
+"PO-Revision-Date: 2015-05-28 09:23+0000\n"
+"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -24,7 +24,7 @@ msgstr ""
 
 #: admin.py:21
 msgid "None"
-msgstr ""
+msgstr "Aucun"
 
 #: admin.py:23 apps.py:64 links.py:57 models.py:39
 msgid "Document types"
@@ -168,7 +168,7 @@ msgstr "Lier les documents"
 #: models.py:137
 #, python-format
 msgid "<%s Root>"
-msgstr ""
+msgstr "<%s Root>"
 
 #: models.py:142
 msgid "Index node template"
@@ -336,9 +336,6 @@ msgstr "indexes contenant le document: %s"
 msgid "Root"
 msgstr "Racine"
 
-#~ msgid "Enter a python string expression to be evaluated."
-#~ msgstr "Entrez une commande python à exécuter."
-
 #~ msgid "Go up one level"
 #~ msgstr "Remonter d'un niveau"
 
@@ -350,6 +347,9 @@ msgstr "Racine"
 
 #~ msgid "The name that will be visible to users."
 #~ msgstr "Le nom qui sera affiché aux utilisateurs."
+
+#~ msgid "Enter a python string expression to be evaluated."
+#~ msgstr "Entrez une commande python à exécuter."
 
 #~ msgid "Index created successfully."
 #~ msgstr "Index créé avec succès"

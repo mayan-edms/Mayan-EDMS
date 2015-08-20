@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-01-17 07:03+0000\n"
+"PO-Revision-Date: 2015-08-20 22:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:55 settings.py:9
@@ -186,11 +185,9 @@ msgstr ""
 #: settings.py:13
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"站点范围的临时目录用于存储缩略图，预览和临时文件。如果没有设置，将缺省使用"
+"temporary files.  If none is specified, one will be created using "
 "tempfile.mkdtemp()"
+msgstr "站点范围的临时目录用于存储缩略图，预览和临时文件。如果没有设置，将缺省使用tempfile.mkdtemp()"
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
@@ -233,41 +230,66 @@ msgid "None"
 msgstr "无"
 
 #~ msgid "Anonymous user"
-#~ msgstr "匿名用户"
+#~ msgstr "Anonymous user"
+
+#~ msgid "Account"
+#~ msgstr "account"
 
 #~ msgid "Password"
-#~ msgstr "密码"
+#~ msgstr "password"
+
+#~ msgid "Password hash"
+#~ msgstr "password hash"
+
+#~ msgid "Auto admin properties"
+#~ msgstr "auto admin properties"
+
+#~ msgid "Function found"
+#~ msgstr "function found"
+
+#~ msgid "Unable to remove %(selection)s."
+#~ msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
 #~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr "电子邮箱冲突，另外用户已经使用此邮箱"
+#~ msgstr "E-mail conflict, another user has that same email."
 
 #~ msgid "Current user's details updated."
-#~ msgstr "当前用户信息已经更新"
+#~ msgstr "Current user's details updated."
+
+#~ msgid "Current user's locale profile details updated."
+#~ msgstr "Current user's details updated."
 
 #~ msgid "Email"
-#~ msgstr "电子邮件"
+#~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
-#~ msgstr "请输入正确的邮箱或者密码。注意！密码是大小写敏感的。"
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
+#~ msgstr ""
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
-#~ msgstr "此账号未激活"
+#~ msgstr "This account is inactive."
+
+#~ msgid "Change password"
+#~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
-#~ msgstr "控制验证用户的机制。可选项有：username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
+#~ msgstr ""
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
-#~ msgstr "允许非授权用户访问所有的视图"
+#~ msgstr "Allow non authenticated users, access to all views"
 
 #~ msgid "Current user password change"
-#~ msgstr "当前用户密码修改"
+#~ msgstr "Current user password change"
 
 #~ msgid "Your password has been successfully changed."
-#~ msgstr "你的密码已经修改成功"
+#~ msgstr "Your password has been successfully changed."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."

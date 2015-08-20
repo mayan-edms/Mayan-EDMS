@@ -4,17 +4,14 @@
 #
 # Translators:
 # Translators:
-# Iliya Georgiev <ikgeorgiev@gmail.com>, 2012
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2012
-# Pavlin Koldamov <pkoldamov@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:43-0400\n"
-"PO-Revision-Date: 2014-10-25 06:47+0000\n"
+"POT-Creation-Date: 2015-08-20 17:48-0400\n"
+"PO-Revision-Date: 2015-08-20 18:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
 "language/bg/)\n"
 "Language: bg\n"
 "MIME-Version: 1.0\n"
@@ -24,17 +21,15 @@ msgstr ""
 
 #: apps.py:14 links.py:30
 msgid "ACLs"
-msgstr "Контролни списъци за достъп"
+msgstr ""
 
 #: apps.py:20 links.py:38 models.py:36
 msgid "Permissions"
 msgstr ""
 
 #: apps.py:24 models.py:38
-#, fuzzy
-#| msgid "Roles"
 msgid "Role"
-msgstr "Роли"
+msgstr ""
 
 #: links.py:26
 msgid "Delete"
@@ -46,7 +41,7 @@ msgstr ""
 
 #: managers.py:72
 msgid "Insufficient access."
-msgstr "Недостатъчен достъп."
+msgstr ""
 
 #: models.py:44
 msgid "Access entry"
@@ -62,7 +57,7 @@ msgstr ""
 
 #: permissions.py:7
 msgid "Access control lists"
-msgstr "Контролни списъци за достъп"
+msgstr ""
 
 #: permissions.py:10
 msgid "Edit ACLs"
@@ -78,22 +73,17 @@ msgid "Access control lists for: %s"
 msgstr ""
 
 #: views.py:107
-#, fuzzy, python-format
-#| msgid "Access control lists"
+#, python-format
 msgid "New access control lists for: %s"
-msgstr "Контролни списъци за достъп"
+msgstr ""
 
 #: views.py:137
-#, fuzzy
-#| msgid "permission"
 msgid "Available permissions"
-msgstr "permission"
+msgstr ""
 
 #: views.py:138
-#, fuzzy
-#| msgid "permission"
 msgid "Granted permissions"
-msgstr "permission"
+msgstr ""
 
 #: views.py:177
 msgid "Disabled permissions are inherited from a parent object."
@@ -105,45 +95,130 @@ msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""
 
 #~ msgid "New holder"
-#~ msgstr "Нов притежател"
+#~ msgstr "New holder"
 
 #~ msgid "Users"
-#~ msgstr "Потребители"
+#~ msgstr "Users"
 
 #~ msgid "Groups"
-#~ msgstr "Групи"
+#~ msgstr "Groups"
+
+#~ msgid "Special"
+#~ msgstr "Special"
+
+#~ msgid "Details"
+#~ msgstr "details"
+
+#~ msgid "Grant"
+#~ msgstr "grant"
+
+#~ msgid "Revoke"
+#~ msgstr "revoke"
 
 #~ msgid "Default ACLs"
-#~ msgstr "Контролни списъци за достъп по подразбиране"
+#~ msgstr "Default ACLs"
+
+#~ msgid "Classes"
+#~ msgstr "classes"
 
 #~ msgid "ACLs for class"
-#~ msgstr "Контролни списъци за клас"
+#~ msgstr "ACLs for class"
+
+#~ msgid "Permission"
+#~ msgstr "permissions"
+
+#~ msgid "Default access entry"
+#~ msgstr "default access entry"
+
+#~ msgid "Default access entries"
+#~ msgstr "default access entries"
+
+#~ msgid "Creator"
+#~ msgstr "Creator"
+
+#~ msgid "Edit class default ACLs"
+#~ msgstr "Edit class default ACLs"
+
+#~ msgid "View class default ACLs"
+#~ msgstr "View class default ACLs"
+
+#~ msgid "Holder"
+#~ msgstr "holder"
+
+#~ msgid "Permissions available to: %(actor)s for %(obj)s"
+#~ msgstr "permissions available to: %(actor)s for %(obj)s"
+
+#~ msgid "Namespace"
+#~ msgstr "namespace"
+
+#~ msgid "Label"
+#~ msgstr "label"
+
+#~ msgid ", "
+#~ msgstr ", "
 
 #~ msgid " for %s"
-#~ msgstr " за %s"
+#~ msgstr " for %s"
 
 #~ msgid " to %s"
-#~ msgstr " към %s"
+#~ msgstr " to %s"
 
 #~ msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-#~ msgstr "Сигурни ли сте, че искате да дадете разрешение за %(title_suffix)s?"
+#~ msgstr "Are you sure you wish to grant the permission %(title_suffix)s?"
 
 #~ msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-#~ msgstr "Сигурни ли сте, че искате да дадете разрешения за %(title_suffix)s?"
+#~ msgstr "Are you sure you wish to grant the permissions %(title_suffix)s?"
+
+#~ msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
+#~ msgstr "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
+
+#~ msgid ""
+#~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
+#~ "%(object)s."
+#~ msgstr ""
+#~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
+#~ "%(object)s."
 
 #~ msgid " from %s"
-#~ msgstr " от %s"
+#~ msgstr " from %s"
 
 #~ msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-#~ msgstr ""
-#~ "Сигурни ли сте, че искате да отнемете разрешението за %(title_suffix)s?"
+#~ msgstr "Are you sure you wish to revoke the permission %(title_suffix)s?"
 
 #~ msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
+#~ msgstr "Are you sure you wish to revoke the permissions %(title_suffix)s?"
+
+#~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
+#~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
+
+#~ msgid ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 #~ msgstr ""
-#~ "Сигурни ли сте, че искате да отнемете разрешенията за %(title_suffix)s?"
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+
+#~ msgid "Add new holder for: %s"
+#~ msgstr "add new holder for: %s"
+
+#~ msgid "Select"
+#~ msgstr "Select"
+
+#~ msgid "Class"
+#~ msgstr "class"
+
+#~ msgid "Default access control lists for class: %s"
+#~ msgstr "default access control lists for class: %s"
+
+#~ msgid "Permissions available to: %(actor)s for class %(class)s"
+#~ msgstr "permissions available to: %(actor)s for class %(class)s"
+
+#~ msgid "Add new holder for class: %s"
+#~ msgstr "add new holder for class: %s"
 
 #~ msgid "List of classes"
 #~ msgstr "List of classes"
+
+#~ msgid "permission"
+#~ msgstr "permission"
 
 #~ msgid "creator"
 #~ msgstr "creator"

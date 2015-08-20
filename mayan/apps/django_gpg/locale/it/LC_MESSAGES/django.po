@@ -10,10 +10,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
+"POT-Creation-Date: 2015-08-20 18:13-0400\n"
 "PO-Revision-Date: 2015-01-29 09:01+0000\n"
 "Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
 "language/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -234,17 +234,17 @@ msgstr ""
 #~ msgid "Import"
 #~ msgstr "Importazione"
 
-#~ msgid "Key ID"
-#~ msgstr "chiave ID"
-
-#~ msgid "results"
-#~ msgstr "risultati"
-
 #~ msgid "Key: %s, imported successfully."
 #~ msgstr "Chiave: %s, importata con successo."
 
 #~ msgid "Are you sure you wish to import key id: %s?"
 #~ msgstr "Sei sicuro di voler importare la chiave id: %s?"
+
+#~ msgid "Key ID"
+#~ msgstr "chiave ID"
+
+#~ msgid "results"
+#~ msgstr "risultati"
 
 #~ msgid "Disabled"
 #~ msgstr "Disabilita"

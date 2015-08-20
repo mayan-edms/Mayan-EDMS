@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:48-0400\n"
-"PO-Revision-Date: 2015-01-27 20:02+0000\n"
+"PO-Revision-Date: 2015-08-20 21:52+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (Taiwan) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/zh_TW/)\n"
-"Language: zh_TW\n"
+"Language-Team: Chinese (Taiwan) (http://www.transifex.com/rosarior/mayan-edms/language/zh_TW/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_TW\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:33 apps.py:56 apps.py:71 forms.py:34 links.py:40 links.py:43
@@ -173,16 +172,22 @@ msgstr ""
 
 #: views.py:340
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
 msgstr ""
 
 #: views.py:347
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
 msgstr ""
 
 #: views.py:356
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
 msgstr ""
 
@@ -200,6 +205,51 @@ msgstr ""
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""
+
+#~ msgid "Tagged items"
+#~ msgstr "tagged items"
+
+#~ msgid "ACLs"
+#~ msgstr "ACLs"
+
+#~ msgid "Blue"
+#~ msgstr "Blue"
+
+#~ msgid "Cyan"
+#~ msgstr "Cyan"
+
+#~ msgid "Coral"
+#~ msgstr "Coral"
+
+#~ msgid "Green-Yellow"
+#~ msgstr "Green-Yellow"
+
+#~ msgid "Khaki"
+#~ msgstr "Khaki"
+
+#~ msgid "LightGrey"
+#~ msgstr "LightGrey"
+
+#~ msgid "Magenta"
+#~ msgstr "Magenta"
+
+#~ msgid "Red"
+#~ msgstr "Red"
+
+#~ msgid "Orange"
+#~ msgstr "Orange"
+
+#~ msgid "Yellow"
+#~ msgstr "Yellow"
+
+#~ msgid "Tag created succesfully."
+#~ msgstr "Tag created succesfully."
+
+#~ msgid "Tag updated succesfully."
+#~ msgstr "Tag updated succesfully."
+
+#~ msgid "Add tag to document"
+#~ msgstr "Add tag to document"
 
 #~ msgid "Document created"
 #~ msgstr "document"

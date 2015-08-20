@@ -1,156 +1,97 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"POT-Creation-Date: 2015-05-15 19:00-0400\n"
+"PO-Revision-Date: 2015-08-20 21:52+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:17 permissions.py:7 settings.py:7
-msgid "Converter"
-msgstr ""
-
-#: apps.py:22 models.py:33
-msgid "Order"
-msgstr ""
-
-#: apps.py:24 models.py:62
-msgid "Transformation"
-msgstr ""
-
-#: apps.py:28 models.py:42
-msgid "Arguments"
-msgstr ""
-
-#: backends/python.py:86 backends/python.py:98
-#, python-format
-msgid "Exception determining PDF page count; %s"
-msgstr ""
-
-#: classes.py:87
-#, python-format
-msgid "LibreOffice not installed or not found at path: %s"
-msgstr ""
-
-#: classes.py:159
-#, fuzzy
-#| msgid "suported file formats"
-msgid "Not an office file format."
-msgstr "suported file formats"
-
-#: classes.py:243
+#: literals.py:21
 msgid "Resize"
 msgstr ""
 
-#: classes.py:284
+#: literals.py:22
+msgid "Resize."
+msgstr ""
+
+#: literals.py:24 literals.py:39
+msgid "Width"
+msgstr ""
+
+#: literals.py:25 literals.py:40
+msgid "Height"
+msgstr ""
+
+#: literals.py:29
 msgid "Rotate"
 msgstr ""
 
-#: classes.py:296
+#: literals.py:30
+msgid "Rotate by n degress."
+msgstr ""
+
+#: literals.py:32
+msgid "Degrees"
+msgstr ""
+
+#: literals.py:36
+msgid "Density"
+msgstr ""
+
+#: literals.py:37
+msgid "Change the resolution (ie: DPI) without resizing."
+msgstr ""
+
+#: literals.py:44
 msgid "Zoom"
 msgstr ""
 
-#: classes.py:313
-msgid "Crop"
+#: literals.py:45
+msgid "Zoom by n percent."
 msgstr ""
 
-#: links.py:31
-msgid "Create new transformation"
+#: literals.py:47
+msgid "Percent"
 msgstr ""
 
-#: links.py:35
-msgid "Delete"
+#: settings.py:11
+msgid "File path to imagemagick's convert program."
 msgstr ""
 
-#: links.py:39
-msgid "Edit"
+#: settings.py:12
+msgid "File path to imagemagick's identify program."
 msgstr ""
 
-#: links.py:43 models.py:63
-msgid "Transformations"
+#: settings.py:13
+msgid "File path to graphicsmagick's program."
 msgstr ""
 
-#: models.py:32
+#: settings.py:15
 msgid ""
-"Order in which the transformations will be executed. If left unchanged, an "
-"automatic order value will be assigned."
-msgstr ""
-
-#: models.py:37
-msgid "Name"
-msgstr ""
-
-#: models.py:41
-msgid ""
-"Enter the arguments for the transformation as a YAML dictionary. ie: "
-"{\"degrees\": 180}"
-msgstr ""
-
-#: permissions.py:10
-msgid "Create new transformations"
-msgstr ""
-
-#: permissions.py:13
-msgid "Delete transformations"
-msgstr ""
-
-#: permissions.py:16
-msgid "Edit transformations"
-msgstr ""
-
-#: permissions.py:19
-#, fuzzy
-#| msgid "Raw application information"
-msgid "View existing transformations"
-msgstr "Raw application information"
-
-#: settings.py:10
-msgid "Graphics conversion backend to use."
+"Graphics conversion backend to use.  Options are: "
+"converter.backends.imagemagick.ImageMagick, "
+"converter.backends.graphicsmagick.GraphicsMagick and "
+"converter.backends.python.Python"
 msgstr ""
 
 #: settings.py:16
 msgid "Path to the libreoffice program."
 msgstr ""
 
-#: settings.py:20
+#: settings.py:17
 msgid "Path to the Popple program pdftoppm."
-msgstr ""
-
-#: validators.py:22
-msgid "Enter a valid YAML value."
-msgstr ""
-
-#: views.py:71
-#, python-format
-msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
-
-#: views.py:138
-#, python-format
-msgid "Create new transformation for: %s"
-msgstr ""
-
-#: views.py:190
-#, python-format
-msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
-
-#: views.py:236
-#, python-format
-msgid "Transformations for: %s"
 msgstr ""
 
 #~ msgid "Help"
@@ -183,6 +124,9 @@ msgstr ""
 
 #~ msgid "Adobe Illustrator CS2"
 #~ msgstr "Adobe Illustrator CS2"
+
+#~ msgid "Raw application information"
+#~ msgstr "Raw application information"
 
 #~ msgid "Raw JPEG binary data"
 #~ msgstr "Raw JPEG binary data"
@@ -464,11 +408,9 @@ msgstr ""
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -584,8 +526,7 @@ msgstr ""
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
@@ -781,6 +722,9 @@ msgstr ""
 
 #~ msgid "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
 #~ msgstr "CCIR 601 4:1:1 or 4:2:2 (8-bit only)"
+
+#~ msgid "suported file formats"
+#~ msgstr "suported file formats"
 
 #~ msgid "name"
 #~ msgstr "name"

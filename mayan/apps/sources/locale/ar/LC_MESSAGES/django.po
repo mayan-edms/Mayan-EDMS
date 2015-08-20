@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -9,27 +9,24 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:47-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"POT-Creation-Date: 2015-08-20 17:49-0400\n"
+"PO-Revision-Date: 2015-08-20 21:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:42 links.py:30 models.py:132 views.py:500
 msgid "Sources"
 msgstr ""
 
 #: apps.py:50
-#, fuzzy
 #| msgid "Create new document sources"
 msgid "Create a document source"
-msgstr "خلق مصادر وثائق جديدة"
+msgstr ""
 
 #: apps.py:52
 msgid ""
@@ -75,10 +72,8 @@ msgid "Default"
 msgstr ""
 
 #: links.py:22
-#, fuzzy
-#| msgid "Current document type"
 msgid "New document"
-msgstr "نوع الوثيقة الحالي"
+msgstr ""
 
 #: links.py:25
 msgid "Clone"
@@ -365,28 +360,26 @@ msgid "View existing document sources"
 msgstr "عرض مصادر الوثائق الحالية"
 
 #: tasks.py:29
-#, fuzzy, python-format
+#, python-format
 #| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
-msgstr "خطأ بانشاء المصدر: %s"
+msgstr ""
 
 #: views.py:63
-#, fuzzy, python-format
-#| msgid "Create new transformation for source: %s"
+#, python-format
 msgid "Log entries for source: %s"
-msgstr "إنشاء تحويل جديد للمصدر: %s"
+msgstr ""
 
 #: views.py:140 wizards.py:36
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 
 #: views.py:164 views.py:182
-#, fuzzy
 #| msgid "Document sources"
 msgid "Document properties"
-msgstr "مصادر الوثائق"
+msgstr ""
 
 #: views.py:172
 msgid "Files in staging path"
@@ -402,7 +395,8 @@ msgid "Upload a local document from source: %s"
 msgstr ""
 
 #: views.py:347
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:379
@@ -425,10 +419,10 @@ msgid "Create new source of type: %s"
 msgstr "انشاء مصدر جديد من النوع: %s"
 
 #: views.py:459
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete document sources"
 msgid "Delete the source: %s?"
-msgstr "حذف مصادر الوثائق"
+msgstr ""
 
 #: views.py:478
 #, python-format
@@ -459,61 +453,97 @@ msgstr ""
 msgid "Document upload wizard"
 msgstr ""
 
+#~ msgid "Transformations"
+#~ msgstr "transformations"
+
+#~ msgid "Add transformation"
+#~ msgstr "add transformation"
+
+#~ msgid "Title"
+#~ msgstr "title"
+
 #~ msgid "Enter a valid value."
-#~ msgstr "أدخل قيمة صالحة"
+#~ msgstr "Enter a valid value."
+
+#~ msgid "Order"
+#~ msgstr "order"
+
+#~ msgid "Transformation"
+#~ msgstr "transformation"
+
+#~ msgid "Arguments"
+#~ msgstr "arguments"
 
 #~ msgid "Use dictionaries to indentify arguments, example: %s"
-#~ msgstr "استخدم مصادر لتحديد المدخلات، مثل: %s"
+#~ msgstr "Use dictionaries to indentify arguments, example: %s"
+
+#~ msgid "Document source transformation"
+#~ msgstr "document source transformation"
+
+#~ msgid "Document source transformations"
+#~ msgstr "document source transformations"
+
+#~ msgid "Current document type"
+#~ msgstr "Current document type"
 
 #~ msgid "None"
-#~ msgstr "لا شيء"
+#~ msgstr "None"
 
 #~ msgid "Current metadata"
-#~ msgstr "البيانات الوصفية الحالية"
+#~ msgstr "Current metadata"
+
+#~ msgid "No"
+#~ msgstr "None"
 
 #~ msgid "Source edited successfully"
-#~ msgstr "تم تعديل المصدر بنجاح"
+#~ msgstr "Source edited successfully"
 
 #~ msgid "Error editing source; %s"
-#~ msgstr "خطأ بتعديل المصدر: %s"
+#~ msgstr "Error editing source; %s"
 
 #~ msgid "Source \"%s\" deleted successfully."
-#~ msgstr "المصدر \"%s\" تم مسحه بنجاح"
+#~ msgstr "Source \"%s\" deleted successfully."
 
 #~ msgid "Error deleting source \"%(source)s\": %(error)s"
-#~ msgstr "خطأ بمسح المصدر: %(source)s\": %(error)s"
+#~ msgstr "Error deleting source \"%(source)s\": %(error)s"
 
 #~ msgid "Are you sure you wish to delete the source: %s?"
-#~ msgstr "هل أنت متأكد من مسح المصدر: %s ؟"
+#~ msgstr "Are you sure you wish to delete the source: %s?"
 
 #~ msgid "Source created successfully"
-#~ msgstr "تم انشاء المصدر بنجاح"
+#~ msgstr "Source created successfully"
+
+#~ msgid "Transformations for: %s"
+#~ msgstr "transformations for: %s"
 
 #~ msgid "Source transformation edited successfully"
-#~ msgstr "تم تعديل تحويلات المصدر بنجاح"
+#~ msgstr "Source transformation edited successfully"
 
 #~ msgid "Error editing source transformation; %s"
-#~ msgstr "خطأ بتعديل تحويل المصدر: %s"
+#~ msgstr "Error editing source transformation; %s"
 
 #~ msgid "Edit transformation: %s"
-#~ msgstr "تعديل التحرير: %s"
+#~ msgstr "Edit transformation: %s"
 
 #~ msgid "Source transformation deleted successfully."
-#~ msgstr "تم حذف مصدر التحويل بنجاح"
+#~ msgstr "Source transformation deleted successfully."
 
 #~ msgid "Error deleting source transformation; %(error)s"
-#~ msgstr "خطأ أثناء حذف مصدر التحويل: %(error)s"
+#~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
-#~ msgstr "هل أنت متأكد أنك تريد حذف مصدر التحويل \"%(transformation)s\" ؟"
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ msgstr ""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
-#~ msgstr "إنشاء تحويل المصدر بنجاح"
+#~ msgstr "Source transformation created successfully"
 
 #~ msgid "Error creating source transformation; %s"
-#~ msgstr "خطأ في إنشاء مصدر التحويل؛ %s"
+#~ msgstr "Error creating source transformation; %s"
+
+#~ msgid "Create new transformation for source: %s"
+#~ msgstr "Create new transformation for source: %s"
 
 #~ msgid "Upload sources"
 #~ msgstr "Upload sources"

@@ -4,16 +4,16 @@
 #
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
+# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:46-0400\n"
-"PO-Revision-Date: 2015-01-27 20:02+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"POT-Creation-Date: 2015-08-20 18:05-0400\n"
+"PO-Revision-Date: 2015-06-20 05:51+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
 "language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -41,7 +41,7 @@ msgstr "فعال شده"
 
 #: forms.py:35 models.py:109
 msgid "Foreign document attribute"
-msgstr ""
+msgstr "مختصات سند خارجی"
 
 #: links.py:14
 msgid "Create condition"
@@ -65,11 +65,11 @@ msgstr "ایجاد پیوند هوشمند جدید"
 
 #: links.py:39 models.py:29
 msgid "Document types"
-msgstr ""
+msgstr "انواع مستندات"
 
 #: links.py:47
 msgid "Documents"
-msgstr ""
+msgstr "مستندات"
 
 #: links.py:53 links.py:57 links.py:62 models.py:89 permissions.py:7
 #: views.py:147
@@ -152,13 +152,14 @@ msgid ""
 msgstr ""
 
 #: models.py:43
-#, python-format
+#, fuzzy, python-format
+#| msgid "Error generating dynamic title; %s"
 msgid "Error generating dynamic label; %s"
-msgstr ""
+msgstr "عنوان پویای تولید خطا ; %s"
 
 #: models.py:52
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
+msgstr "این لینک هوشمند برای نوع سند منتخب مجاز نیست"
 
 #: models.py:88 models.py:100
 msgid "Smart link"
@@ -170,7 +171,7 @@ msgstr "ورود اولین آیتم در نطر گرفته نشد."
 
 #: models.py:108
 msgid "This represents the metadata of all other documents."
-msgstr ""
+msgstr "این مورد نشانگر متا داده تمامی اسناد می باشد."
 
 #: models.py:118
 msgid "Expression"
@@ -213,17 +214,21 @@ msgid "Edit smart links"
 msgstr "ویرایش پیوند هوشمند "
 
 #: views.py:36
+#, fuzzy
+#| msgid "Document types"
 msgid "Available document types"
-msgstr ""
+msgstr "انواع مستندات"
 
 #: views.py:37
+#, fuzzy
+#| msgid "Document types"
 msgid "Document types enabled"
-msgstr ""
+msgstr "انواع مستندات"
 
 #: views.py:65
 #, python-format
 msgid "Document type for which to enable smart link: %s"
-msgstr ""
+msgstr "نوع سند برای فعالسازی لینک هوشمند: %s"
 
 #: views.py:109
 #, python-format
@@ -233,7 +238,7 @@ msgstr "خطای پرسش query از پیوند هوشمند : %s"
 #: views.py:117
 #, python-format
 msgid "Documents in smart link: %s"
-msgstr ""
+msgstr "اسناد در لینک هوشمند: %s"
 
 #: views.py:120
 #, fuzzy, python-format
@@ -245,7 +250,7 @@ msgstr "خطا در حذف پیوند هوشمند %(smart_link)s; %(exception)s
 #: views.py:179
 #, python-format
 msgid "Smart links for document: %s"
-msgstr ""
+msgstr "ارتباطات هوشمند برای سند :%s"
 
 #: views.py:199
 #, python-format
@@ -309,17 +314,30 @@ msgstr "خطا در حذف شرط پیوند هوشمند : %(smart_link_conditi
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "ویرایش شرط پیوند هوشمند \"%s\""
 
-#~ msgid "Smart link: %s created successfully."
-#~ msgstr "ایجاد موفق پیوند هوشمند %s"
-
-#~ msgid "Smart link: %s edited successfully."
-#~ msgstr "ویرایش موفق پیوند هوشمند %s"
-
 #~ msgid "ACLs"
 #~ msgstr "ACLs"
 
 #~ msgid "Title"
 #~ msgstr "لقب"
+
+#~ msgid ""
+#~ "This expression will be evaluated against the current selected document."
+#~ msgstr "این توضیح برای سند منتخب جاری ارزیابی خواهد شد"
+
+#~ msgid "This expression will be evaluated against the current document."
+#~ msgstr "این توضیح در قیاس با سند جاری ارزیابی خواهد شد"
+
+#~ msgid "Error calculating smart link for: %(document)s; %(exception)s."
+#~ msgstr "لینک هوشمند محاسبه خطا برای :%(document)s; %(exception)s."
+
+#~ msgid "Indentifier"
+#~ msgstr "شناساننده"
+
+#~ msgid "Smart link: %s created successfully."
+#~ msgstr "ایجاد موفق پیوند هوشمند %s"
+
+#~ msgid "Smart link: %s edited successfully."
+#~ msgstr "ویرایش موفق پیوند هوشمند %s"
 
 #~ msgid "Are you sure you wish to delete smart link: %s?"
 #~ msgstr "از حذف پیوند هوشمند مطمئن هستید : %s"

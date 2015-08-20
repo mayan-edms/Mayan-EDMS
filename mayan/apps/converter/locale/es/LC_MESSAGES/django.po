@@ -1,42 +1,40 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# jmcainzos <jmcainzos@vodafone.es>, 2013-2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2011-2012,2015
+# Roberto Rosario, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"PO-Revision-Date: 2015-08-20 22:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:17 permissions.py:7 settings.py:7
 msgid "Converter"
-msgstr ""
+msgstr "Convertidor"
 
 #: apps.py:22 models.py:33
 msgid "Order"
-msgstr ""
+msgstr "Orden"
 
 #: apps.py:24 models.py:62
 msgid "Transformation"
-msgstr ""
+msgstr "Transformación"
 
 #: apps.py:28 models.py:42
 msgid "Arguments"
-msgstr ""
+msgstr "Argumentos"
 
 #: backends/python.py:86 backends/python.py:98
 #, python-format
@@ -49,10 +47,9 @@ msgid "LibreOffice not installed or not found at path: %s"
 msgstr ""
 
 #: classes.py:159
-#, fuzzy
 #| msgid "suported file formats"
 msgid "Not an office file format."
-msgstr "suported file formats"
+msgstr ""
 
 #: classes.py:243
 msgid "Resize"
@@ -72,19 +69,19 @@ msgstr ""
 
 #: links.py:31
 msgid "Create new transformation"
-msgstr ""
+msgstr "Crear nueva transformación"
 
 #: links.py:35
 msgid "Delete"
-msgstr ""
+msgstr "Borrar"
 
 #: links.py:39
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: links.py:43 models.py:63
 msgid "Transformations"
-msgstr ""
+msgstr "Transformaciones"
 
 #: models.py:32
 msgid ""
@@ -94,7 +91,7 @@ msgstr ""
 
 #: models.py:37
 msgid "Name"
-msgstr ""
+msgstr "Nombre"
 
 #: models.py:41
 msgid ""
@@ -104,21 +101,20 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Create new transformations"
-msgstr ""
+msgstr "Crear nuevas transformaciones"
 
 #: permissions.py:13
 msgid "Delete transformations"
-msgstr ""
+msgstr "Borrar transformaciones"
 
 #: permissions.py:16
 msgid "Edit transformations"
-msgstr ""
+msgstr "Editar transformaciones"
 
 #: permissions.py:19
-#, fuzzy
 #| msgid "Raw application information"
 msgid "View existing transformations"
-msgstr "Raw application information"
+msgstr "Ver transformaciones existentes"
 
 #: settings.py:10
 msgid "Graphics conversion backend to use."
@@ -144,62 +140,63 @@ msgstr ""
 #: views.py:138
 #, python-format
 msgid "Create new transformation for: %s"
-msgstr ""
+msgstr "Crear transformación para :%s"
 
 #: views.py:190
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
+msgstr "Editar transformación \"%(transformation)s\" para: %(content_object)s"
 
 #: views.py:236
 #, python-format
 msgid "Transformations for: %s"
-msgstr ""
+msgstr "Transformaciones para: %s"
 
 #~ msgid "Resize."
-#~ msgstr "Cambiar el tamaño."
+#~ msgstr "Resize."
 
 #~ msgid "Width"
-#~ msgstr "Ancho"
+#~ msgstr "width"
 
 #~ msgid "Height"
-#~ msgstr "Altura"
+#~ msgstr "height"
 
 #~ msgid "Rotate by n degress."
-#~ msgstr "Girar n grados."
+#~ msgstr "Rotate by n degress."
 
 #~ msgid "Degrees"
-#~ msgstr "Grados"
+#~ msgstr "degrees"
 
 #~ msgid "Density"
-#~ msgstr "Densidad"
+#~ msgstr "Density"
 
 #~ msgid "Change the resolution (ie: DPI) without resizing."
-#~ msgstr "Cambia la resolución (es decir: DPI) sin cambiar el tamaño."
+#~ msgstr "Change the resolution (ie: DPI) without resizing."
 
 #~ msgid "Zoom by n percent."
-#~ msgstr "Zoom en n tanto por ciento."
+#~ msgstr "Zoom by n percent."
 
 #~ msgid "Percent"
-#~ msgstr "Por ciento"
+#~ msgstr "percent"
 
 #~ msgid "File path to imagemagick's convert program."
-#~ msgstr "Ruta de archivo al programa de imagemagick, convert."
+#~ msgstr "File path to imagemagick's convert program."
 
 #~ msgid "File path to imagemagick's identify program."
-#~ msgstr "Ruta de archivo al programa de imagemagick, identify."
+#~ msgstr "File path to imagemagick's identify program."
 
 #~ msgid "File path to graphicsmagick's program."
-#~ msgstr "Ruta de archivo al programa graphicsmagick."
+#~ msgstr "File path to graphicsmagick's program."
 
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-#~ "and converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick.ImageMagick, "
+#~ "converter.backends.graphicsmagick.GraphicsMagick and "
+#~ "converter.backends.python.Python"
 #~ msgstr ""
-#~ "Aplicación de conversión de gráficos a utilizar. Las opciones son:\n"
-#~ "converter.backends.imagemagick.ImageMagick, converter.backends."
-#~ "graphicsmagick.GraphicsMagick y converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
+#~ "converter.backends.python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -512,11 +509,9 @@ msgstr ""
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -632,8 +627,7 @@ msgstr ""
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

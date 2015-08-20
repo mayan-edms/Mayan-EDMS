@@ -4,15 +4,14 @@
 #
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:43-0400\n"
-"PO-Revision-Date: 2014-10-30 13:05+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"POT-Creation-Date: 2015-08-20 17:48-0400\n"
+"PO-Revision-Date: 2015-08-20 18:49+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
 "language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -22,39 +21,35 @@ msgstr ""
 
 #: apps.py:14 links.py:30
 msgid "ACLs"
-msgstr "لیست دسترسی ها (ACLs)"
+msgstr ""
 
 #: apps.py:20 links.py:38 models.py:36
 msgid "Permissions"
-msgstr "مجوزها"
+msgstr ""
 
 #: apps.py:24 models.py:38
-#, fuzzy
-#| msgid "Roles"
 msgid "Role"
-msgstr "رل ها"
+msgstr ""
 
 #: links.py:26
 msgid "Delete"
 msgstr ""
 
 #: links.py:34
-#, fuzzy
-#| msgid "View ACLs"
 msgid "New ACL"
-msgstr "دیدن دسترسی ها"
+msgstr ""
 
 #: managers.py:72
 msgid "Insufficient access."
-msgstr "دسترسی ناکافی"
+msgstr ""
 
 #: models.py:44
 msgid "Access entry"
-msgstr "ورودی دسترسی"
+msgstr ""
 
 #: models.py:45
 msgid "Access entries"
-msgstr "ورودیهای دسترسی"
+msgstr ""
 
 #: models.py:60
 msgid "None"
@@ -62,38 +57,33 @@ msgstr ""
 
 #: permissions.py:7
 msgid "Access control lists"
-msgstr "لیست کنترل دسترسی ها"
+msgstr ""
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr "ویرایش دسترسی ها"
+msgstr ""
 
 #: permissions.py:13
 msgid "View ACLs"
-msgstr "دیدن دسترسی ها"
+msgstr ""
 
 #: views.py:61
 #, python-format
 msgid "Access control lists for: %s"
-msgstr "لیست کنترل دسترسی ها برای : %s"
+msgstr ""
 
 #: views.py:107
-#, fuzzy, python-format
-#| msgid "Access control lists for: %s"
+#, python-format
 msgid "New access control lists for: %s"
-msgstr "لیست کنترل دسترسی ها برای : %s"
+msgstr ""
 
 #: views.py:137
-#, fuzzy
-#| msgid "Has permission"
 msgid "Available permissions"
-msgstr "دارای مجوز"
+msgstr ""
 
 #: views.py:138
-#, fuzzy
-#| msgid "Has permission"
 msgid "Granted permissions"
-msgstr "دارای مجوز"
+msgstr ""
 
 #: views.py:177
 msgid "Disabled permissions are inherited from a parent object."
@@ -105,121 +95,124 @@ msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""
 
 #~ msgid "New holder"
-#~ msgstr "دارنده مجوز جدید"
+#~ msgstr "New holder"
 
 #~ msgid "Users"
-#~ msgstr "کاربران"
+#~ msgstr "Users"
 
 #~ msgid "Groups"
-#~ msgstr "گروه ها"
+#~ msgstr "Groups"
 
 #~ msgid "Special"
-#~ msgstr "ویژه"
+#~ msgstr "Special"
 
 #~ msgid "Details"
-#~ msgstr "جزئیات"
+#~ msgstr "details"
 
 #~ msgid "Grant"
-#~ msgstr "دادن اجازه"
+#~ msgstr "grant"
 
 #~ msgid "Revoke"
-#~ msgstr "پس گرفتن"
+#~ msgstr "revoke"
 
 #~ msgid "Default ACLs"
-#~ msgstr "لیست دسترسی های پیش فرض"
+#~ msgstr "Default ACLs"
 
 #~ msgid "Classes"
-#~ msgstr "کلاس ها"
+#~ msgstr "classes"
 
 #~ msgid "ACLs for class"
-#~ msgstr "لیست دسترسیها برای کلاس"
+#~ msgstr "ACLs for class"
 
 #~ msgid "Permission"
-#~ msgstr "مجوز"
+#~ msgstr "permissions"
 
 #~ msgid "Default access entry"
-#~ msgstr "ورودی دسترسی پیش فرض"
+#~ msgstr "default access entry"
 
 #~ msgid "Default access entries"
-#~ msgstr "ورودیهای دسترسی پیش فرض"
+#~ msgstr "default access entries"
 
 #~ msgid "Creator"
-#~ msgstr "خالق"
+#~ msgstr "Creator"
 
 #~ msgid "Edit class default ACLs"
-#~ msgstr "ویرایش دسترسی های پیش فرض کلاس"
+#~ msgstr "Edit class default ACLs"
 
 #~ msgid "View class default ACLs"
-#~ msgstr "دیدن دسترسی های پیش فرض کلاس"
+#~ msgstr "View class default ACLs"
 
 #~ msgid "Holder"
-#~ msgstr "دارنده"
+#~ msgstr "holder"
 
 #~ msgid "Permissions available to: %(actor)s for %(obj)s"
-#~ msgstr "مجوزها : %(actor)sبرای %(obj)s"
+#~ msgstr "permissions available to: %(actor)s for %(obj)s"
 
 #~ msgid "Namespace"
-#~ msgstr "فضای نام"
+#~ msgstr "namespace"
 
 #~ msgid "Label"
-#~ msgstr "برچسب"
+#~ msgstr "label"
 
 #~ msgid ", "
-#~ msgstr ","
+#~ msgstr ", "
 
 #~ msgid " for %s"
-#~ msgstr "برای %s"
+#~ msgstr " for %s"
 
 #~ msgid " to %s"
-#~ msgstr "به %s"
+#~ msgstr " to %s"
 
 #~ msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-#~ msgstr "آیا از دادن مجوز به %(title_suffix)s مطمئن هستید؟"
+#~ msgstr "Are you sure you wish to grant the permission %(title_suffix)s?"
 
 #~ msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-#~ msgstr "آیا از دادن مجوز به %(title_suffix)s مطمئن هستید؟"
+#~ msgstr "Are you sure you wish to grant the permissions %(title_suffix)s?"
 
 #~ msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
-#~ msgstr "مجوز \"%(permission)s\"  داده شده به %(actor)s برای %(object)s."
+#~ msgstr "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
 
 #~ msgid ""
 #~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
 #~ "%(object)s."
-#~ msgstr "%(actor)s دارای مجوز %(permission)s برروی %(object)s میباشد."
+#~ msgstr ""
+#~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
+#~ "%(object)s."
 
 #~ msgid " from %s"
-#~ msgstr "از %s"
+#~ msgstr " from %s"
 
 #~ msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-#~ msgstr "آیا مطمئن هستید که میخواهید مجوز %(title_suffix)s را لغو کنید؟"
+#~ msgstr "Are you sure you wish to revoke the permission %(title_suffix)s?"
 
 #~ msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-#~ msgstr "آیا مطمئن هستید که میخواهید مجوز %(title_suffix)s را لغو کنید؟"
+#~ msgstr "Are you sure you wish to revoke the permissions %(title_suffix)s?"
 
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-#~ msgstr "مجوز \"%(permission)s از %(actor)s برای %(object)s گرفته شد."
+#~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
 #~ msgid ""
 #~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr "%(actor)s مجوز %(permission)s را برای %(object)s نداشت."
+#~ msgstr ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
-#~ msgstr "ایجاد دارنده برای: %s"
+#~ msgstr "add new holder for: %s"
 
 #~ msgid "Select"
-#~ msgstr "انتخاب"
+#~ msgstr "Select"
 
 #~ msgid "Class"
-#~ msgstr "کلاس"
+#~ msgstr "class"
 
 #~ msgid "Default access control lists for class: %s"
-#~ msgstr "لیست کنترل  دسترسی پیش فرض برای کلاس : %s"
+#~ msgstr "default access control lists for class: %s"
 
 #~ msgid "Permissions available to: %(actor)s for class %(class)s"
-#~ msgstr "مجوزها : %(actor)s برای کلاس %(class)s"
+#~ msgstr "permissions available to: %(actor)s for class %(class)s"
 
 #~ msgid "Add new holder for class: %s"
-#~ msgstr "دارنده جدید برای کلاس : %s"
+#~ msgstr "add new holder for class: %s"
 
 #~ msgid "List of classes"
 #~ msgstr "List of classes"

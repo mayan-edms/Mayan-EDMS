@@ -10,11 +10,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:46-0400\n"
+"POT-Creation-Date: 2015-08-20 18:05-0400\n"
 "PO-Revision-Date: 2015-04-06 09:05+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -321,12 +321,6 @@ msgstr ""
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Modifier la condition sur le lien intelligent"
 
-#~ msgid "Smart link: %s created successfully."
-#~ msgstr "Création du lien intelligent:%s avec succès."
-
-#~ msgid "Smart link: %s edited successfully."
-#~ msgstr "Lien intelligent:%s modifié avec succès."
-
 #~ msgid "ACLs"
 #~ msgstr "ACLs"
 
@@ -348,6 +342,12 @@ msgstr "Modifier la condition sur le lien intelligent"
 
 #~ msgid "Indentifier"
 #~ msgstr "Identifiant"
+
+#~ msgid "Smart link: %s created successfully."
+#~ msgstr "Création du lien intelligent:%s avec succès."
+
+#~ msgid "Smart link: %s edited successfully."
+#~ msgstr "Lien intelligent:%s modifié avec succès."
 
 #~ msgid "Are you sure you wish to delete smart link: %s?"
 #~ msgstr "Êtes vous certain de vouloir supprimer le lien intelligent:%s?"

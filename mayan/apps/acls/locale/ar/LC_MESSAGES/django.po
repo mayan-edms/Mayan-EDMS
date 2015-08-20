@@ -4,16 +4,15 @@
 #
 # Translators:
 # Translators:
-# Mohammed ALDOUB <voulnet@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:43-0400\n"
-"PO-Revision-Date: 2014-10-25 06:47+0000\n"
+"POT-Creation-Date: 2015-08-20 17:48-0400\n"
+"PO-Revision-Date: 2015-08-20 18:49+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -23,31 +22,27 @@ msgstr ""
 
 #: apps.py:14 links.py:30
 msgid "ACLs"
-msgstr "ACLs"
+msgstr ""
 
 #: apps.py:20 links.py:38 models.py:36
 msgid "Permissions"
 msgstr ""
 
 #: apps.py:24 models.py:38
-#, fuzzy
-#| msgid "Roles"
 msgid "Role"
-msgstr "Roles"
+msgstr ""
 
 #: links.py:26
 msgid "Delete"
 msgstr ""
 
 #: links.py:34
-#, fuzzy
-#| msgid "View ACLs"
 msgid "New ACL"
-msgstr "View ACLs"
+msgstr ""
 
 #: managers.py:72
 msgid "Insufficient access."
-msgstr "Insufficient access."
+msgstr ""
 
 #: models.py:44
 msgid "Access entry"
@@ -63,15 +58,15 @@ msgstr ""
 
 #: permissions.py:7
 msgid "Access control lists"
-msgstr "Access control lists"
+msgstr ""
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr "Edit ACLs"
+msgstr ""
 
 #: permissions.py:13
 msgid "View ACLs"
-msgstr "View ACLs"
+msgstr ""
 
 #: views.py:61
 #, python-format
@@ -79,22 +74,17 @@ msgid "Access control lists for: %s"
 msgstr ""
 
 #: views.py:107
-#, fuzzy, python-format
-#| msgid "Access control lists"
+#, python-format
 msgid "New access control lists for: %s"
-msgstr "Access control lists"
+msgstr ""
 
 #: views.py:137
-#, fuzzy
-#| msgid "permission"
 msgid "Available permissions"
-msgstr "permission"
+msgstr ""
 
 #: views.py:138
-#, fuzzy
-#| msgid "permission"
 msgid "Granted permissions"
-msgstr "permission"
+msgstr ""
 
 #: views.py:177
 msgid "Disabled permissions are inherited from a parent object."
@@ -117,11 +107,32 @@ msgstr ""
 #~ msgid "Special"
 #~ msgstr "Special"
 
+#~ msgid "Details"
+#~ msgstr "details"
+
+#~ msgid "Grant"
+#~ msgstr "grant"
+
+#~ msgid "Revoke"
+#~ msgstr "revoke"
+
 #~ msgid "Default ACLs"
 #~ msgstr "Default ACLs"
 
+#~ msgid "Classes"
+#~ msgstr "classes"
+
 #~ msgid "ACLs for class"
 #~ msgstr "ACLs for class"
+
+#~ msgid "Permission"
+#~ msgstr "permissions"
+
+#~ msgid "Default access entry"
+#~ msgstr "default access entry"
+
+#~ msgid "Default access entries"
+#~ msgstr "default access entries"
 
 #~ msgid "Creator"
 #~ msgstr "Creator"
@@ -131,6 +142,18 @@ msgstr ""
 
 #~ msgid "View class default ACLs"
 #~ msgstr "View class default ACLs"
+
+#~ msgid "Holder"
+#~ msgstr "holder"
+
+#~ msgid "Permissions available to: %(actor)s for %(obj)s"
+#~ msgstr "permissions available to: %(actor)s for %(obj)s"
+
+#~ msgid "Namespace"
+#~ msgstr "namespace"
+
+#~ msgid "Label"
+#~ msgstr "label"
 
 #~ msgid ", "
 #~ msgstr ", "
@@ -174,11 +197,29 @@ msgstr ""
 #~ msgstr ""
 #~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
+#~ msgid "Add new holder for: %s"
+#~ msgstr "add new holder for: %s"
+
 #~ msgid "Select"
 #~ msgstr "Select"
 
+#~ msgid "Class"
+#~ msgstr "class"
+
+#~ msgid "Default access control lists for class: %s"
+#~ msgstr "default access control lists for class: %s"
+
+#~ msgid "Permissions available to: %(actor)s for class %(class)s"
+#~ msgstr "permissions available to: %(actor)s for class %(class)s"
+
+#~ msgid "Add new holder for class: %s"
+#~ msgstr "add new holder for class: %s"
+
 #~ msgid "List of classes"
 #~ msgstr "List of classes"
+
+#~ msgid "permission"
+#~ msgstr "permission"
 
 #~ msgid "creator"
 #~ msgstr "creator"

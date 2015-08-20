@@ -1,9 +1,8 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# jmcainzos <jmcainzos@vodafone.es>, 2013-2014
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2014
 msgid ""
@@ -11,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:48-0400\n"
-"PO-Revision-Date: 2015-01-13 15:41+0000\n"
-"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-08-20 21:57+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16 links.py:24 permissions.py:7
@@ -30,20 +28,16 @@ msgid "Execute"
 msgstr "Ejecutar"
 
 #: links.py:15
-#, fuzzy
-#| msgid "Namespace details for: %s"
 msgid "Namespace details"
-msgstr "Detalles para espacios nombrados: %s"
+msgstr ""
 
 #: links.py:19
 msgid "Namespace list"
 msgstr "Lista de espacios nombrados"
 
 #: permissions.py:10
-#, fuzzy
-#| msgid "Statistics"
 msgid "View statistics"
-msgstr "Estadísticas"
+msgstr ""
 
 #: views.py:15
 msgid "Statistics namespaces"
@@ -63,12 +57,3 @@ msgstr "Resultados para: %s"
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr ""
-
-#~ msgid "Details"
-#~ msgstr "Detalles"
-
-#~ msgid "Namespace"
-#~ msgstr "Espacios nombrados"
-
-#~ msgid "Statistic"
-#~ msgstr "Estadística"

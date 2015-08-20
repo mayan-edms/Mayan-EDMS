@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:47-0400\n"
-"PO-Revision-Date: 2015-02-07 00:45+0000\n"
+"PO-Revision-Date: 2015-08-20 22:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/da/)\n"
-"Language: da\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:52 apps.py:139 permissions.py:7 settings.py:7
@@ -67,16 +66,13 @@ msgid "Contents"
 msgstr ""
 
 #: links.py:17 links.py:25
-#, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit for OCR"
-msgstr "Tilmeld dokumenter til OCR"
+msgstr ""
 
 #: links.py:22
-#, fuzzy
-#| msgid "Queue documents"
 msgid "OCR all documents"
-msgstr "queue documents"
+msgstr ""
 
 #: links.py:28
 msgid "Setup OCR"
@@ -95,20 +91,16 @@ msgid "Re-queue"
 msgstr ""
 
 #: models.py:16
-#, fuzzy
-#| msgid "Document queue"
 msgid "Document type"
-msgstr "document queue"
+msgstr ""
 
 #: models.py:20
 msgid "Automatically queue newly created documents for OCR."
 msgstr "Automatically queue newly created documents for OCR."
 
 #: models.py:24
-#, fuzzy
-#| msgid "Document queue"
 msgid "Document type settings"
-msgstr "document queue"
+msgstr ""
 
 #: models.py:25
 msgid "Document types settings"
@@ -131,22 +123,17 @@ msgid "Document Version OCR Errors"
 msgstr ""
 
 #: models.py:54
-#, fuzzy
-#| msgid "Document queue"
 msgid "Document page"
-msgstr "document queue"
+msgstr ""
 
 #: models.py:62
-#, fuzzy
-#| msgid "Document pages content clean up complete."
 msgid "Document page content"
-msgstr "Dokument siders indhold renset"
+msgstr ""
 
 #: models.py:63
-#, fuzzy
 #| msgid "Document pages content clean up error: %s"
 msgid "Document pages contents"
-msgstr "Fejl ved rensning af side indhold: %s"
+msgstr ""
 
 #: parsers.py:101
 #, python-format
@@ -175,27 +162,24 @@ msgid "Change document type OCR settings"
 msgstr ""
 
 #: settings.py:10
-#, fuzzy
 #| msgid "File path to unpaper program."
 msgid "File path to tesseract program."
-msgstr "Fil sti til unpaper program."
+msgstr ""
 
 #: settings.py:15
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Fil sti til poppler's pdftotext program, brugt til at identificere tekst fra "
-"PDF filer."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Fil sti til poppler's pdftotext program, brugt til at identificere tekst fra PDF filer."
 
 #: settings.py:22
 msgid "Full path to the backend to be used to do OCR."
 msgstr ""
 
 #: views.py:31
-#, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit the selected document for OCR?"
-msgstr "Tilmeld dokumenter til OCR"
+msgstr ""
 
 #: views.py:49
 #, python-format
@@ -203,22 +187,19 @@ msgid "Document: %(document)s was added to the OCR queue."
 msgstr ""
 
 #: views.py:62
-#, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit all documents for OCR?"
-msgstr "Tilmeld dokumenter til OCR"
+msgstr ""
 
 #: views.py:71
-#, fuzzy, python-format
-#| msgid "Delete documents from OCR queue"
+#, python-format
 msgid "%d documents added to the OCR queue."
-msgstr "Slet dokumenter fra OCR kø"
+msgstr ""
 
 #: views.py:78
-#, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit the selected documents for OCR?"
-msgstr "Tilmeld dokumenter til OCR"
+msgstr ""
 
 #: views.py:103
 #, python-format
@@ -226,10 +207,10 @@ msgid "Edit OCR settings for document type: %s"
 msgstr ""
 
 #: views.py:130
-#, fuzzy, python-format
+#, python-format
 #| msgid "Queued documents: %d"
 msgid "Content of document: %s"
-msgstr "Queued documents: %d"
+msgstr ""
 
 #: views.py:159 views.py:220
 msgid "Make at least one selection."
@@ -268,32 +249,41 @@ msgstr[0] ""
 msgstr[1] ""
 
 #~ msgid "Text from OCR"
-#~ msgstr "Tekst fra OCR"
+#~ msgstr "Text from OCR"
+
+#~ msgid "Submit to OCR queue"
+#~ msgstr "submit to OCR queue"
 
 #~ msgid ""
 #~ "Runs a language filter to remove common OCR mistakes from document pages "
 #~ "content."
 #~ msgstr ""
-#~ "Kører et sprogfilter for at fjerne almindelige OCR fejl fra "
-#~ "dokumentsiders indhold."
+#~ "Runs a language filter to remove common OCR mistakes from document pages "
+#~ "content."
 
 #~ msgid "Can execute the OCR clean up on all document pages"
-#~ msgstr "kan udføre OCR rensning på alle dokument sider"
+#~ msgstr "Can execute the OCR clean up on all document pages"
 
 #~ msgid "Are you sure you wish to clean up all the pages content?"
-#~ msgstr "Er du sikker på at du vil rense alle sidernes indhold"
+#~ msgstr "Are you sure you wish to clean up all the pages content?"
 
 #~ msgid "On large databases this operation may take some time to execute."
-#~ msgstr "På store databaser kan denne operation tage lidt tid at udføre."
+#~ msgstr "On large databases this operation may take some time to execute."
+
+#~ msgid "Document pages content clean up complete."
+#~ msgstr "Document pages content clean up complete."
 
 #~ msgid "Text extracted from PDF"
-#~ msgstr "Tekst identificeret fra PDF"
+#~ msgstr "Text extracted from PDF"
 
 #~ msgid "Queue document list"
 #~ msgstr "queue document list"
 
 #~ msgid "Label"
 #~ msgstr "label"
+
+#~ msgid "Document queue"
+#~ msgstr "document queue"
 
 #~ msgid "Node name"
 #~ msgstr "node name"
@@ -392,11 +382,11 @@ msgstr[1] ""
 #~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 #~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 
 #~ msgid "Maximum amount of concurrent document OCRs a node can perform."
 #~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
@@ -453,11 +443,9 @@ msgstr[1] ""
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

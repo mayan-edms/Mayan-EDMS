@@ -1,61 +1,56 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:45-0400\n"
-"PO-Revision-Date: 2014-10-25 17:30+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2015-08-20 19:29+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:24
-#, fuzzy
 #| msgid "Delete comments"
 msgid "Document comments"
-msgstr "حذف توضیحات"
+msgstr ""
 
 #: apps.py:36
 msgid "Date"
-msgstr "تاریخ"
+msgstr ""
 
 #: apps.py:38 models.py:17
 msgid "User"
-msgstr "کاربر"
+msgstr ""
 
 #. Translators: Comment here is a noun and refers to the actual text stored
 #: apps.py:41 models.py:20 models.py:29
 msgid "Comment"
-msgstr "توضیحات"
+msgstr ""
 
 #: links.py:13
 msgid "Add comment"
-msgstr "اضافه کردن توضیحات"
+msgstr ""
 
 #: links.py:18 links.py:22
 msgid "Delete"
-msgstr "حذف"
+msgstr ""
 
 #: links.py:25 models.py:30 permissions.py:7
 msgid "Comments"
-msgstr "توضیحات"
+msgstr ""
 
 #: models.py:13
-#, fuzzy
-#| msgid "Comment"
 msgid "Document"
-msgstr "توضیحات"
+msgstr ""
 
 #: models.py:23
 msgid "Date time submitted"
@@ -63,15 +58,15 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Create new comments"
-msgstr "ایجاد توضیحات "
+msgstr ""
 
 #: permissions.py:13
 msgid "Delete comments"
-msgstr "حذف توضیحات"
+msgstr ""
 
 #: permissions.py:16
 msgid "View comments"
-msgstr "بازبینی توضیحات"
+msgstr ""
 
 #: views.py:46
 msgid "At least one comment must be selected."
@@ -80,50 +75,48 @@ msgstr ""
 #: views.py:71
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
-msgstr "جذف موفق توضیحات  %s"
+msgstr ""
 
 #: views.py:76
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
-msgstr "خطا %(error)s  حذف توضیحات \"%(comment)s\""
+msgstr ""
 
 #: views.py:91
-#, fuzzy
 #| msgid "Delete comments"
 msgid "Delete comment?"
-msgstr "حذف توضیحات"
+msgstr ""
 
 #: views.py:93
-#, fuzzy
 #| msgid "Delete comments"
 msgid "Delete comments?"
-msgstr "حذف توضیحات"
+msgstr ""
 
 #: views.py:133
 msgid "Comment added successfully."
-msgstr "توضیحات با موفقیت اضافه شد."
+msgstr ""
 
 #: views.py:140
 #, python-format
 msgid "Add comment to document: %s"
-msgstr "اضافه کردن توضیحات به سند: %s"
+msgstr ""
 
 #: views.py:168
 #, python-format
 msgid "Comments for document: %s"
-msgstr "توضیحات سند %s"
+msgstr ""
 
 #~ msgid "comment"
 #~ msgstr "comment"
 
 #~ msgid "Must provide at least one comment."
-#~ msgstr "حداقل یک توضیح ارایه شود."
+#~ msgstr "Must provide at least one comment."
 
 #~ msgid "Are you sure you wish to delete the comment: %s?"
-#~ msgstr "آیا از حذف توضیحات %s مطمئن هستید؟"
+#~ msgstr "Are you sure you wish to delete the comment: %s?"
 
 #~ msgid "Are you sure you wish to delete the comments: %s?"
-#~ msgstr "آیا از حذف توضیحات %s مطمئن هستید؟"
+#~ msgstr "Are you sure you wish to delete the comments: %s?"
 
 #~ msgid "date"
 #~ msgstr "date"

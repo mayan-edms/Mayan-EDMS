@@ -4,21 +4,15 @@
 #
 # Translators:
 # Translators:
-# Stefan Lodders <sl@suchreflex.de>, 2012
-# Mathias Behrle <mbehrle@m9s.biz>, 2014
-# Stefan Lodders <sl@suchreflex.de>, 2012
-# Stefan Lodders <sl@suchreflex.de>, 2012
-# tilmannsittig <tilmann.sittig@web.de>, 2012
-# tilmannsittig <tilmann.sittig@web.de>, 2012
-# Tobias Paepke <tobias.paepke@paepke.net>, 2014
+# Berny <berny@bernhard-marx.de>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:43-0400\n"
-"PO-Revision-Date: 2015-02-06 23:55+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
+"POT-Creation-Date: 2015-08-20 17:48-0400\n"
+"PO-Revision-Date: 2015-08-20 18:49+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
 "edms/language/de_DE/)\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
@@ -28,39 +22,35 @@ msgstr ""
 
 #: apps.py:14 links.py:30
 msgid "ACLs"
-msgstr "Zugriffsberechtigungen"
+msgstr ""
 
 #: apps.py:20 links.py:38 models.py:36
 msgid "Permissions"
-msgstr "Berechtigungen"
+msgstr ""
 
 #: apps.py:24 models.py:38
-#, fuzzy
-#| msgid "Roles"
 msgid "Role"
-msgstr "Rollen"
+msgstr ""
 
 #: links.py:26
 msgid "Delete"
-msgstr ""
+msgstr "Löschen"
 
 #: links.py:34
-#, fuzzy
-#| msgid "View ACLs"
 msgid "New ACL"
-msgstr "Zugriffsberechtigungen anzeigen"
+msgstr ""
 
 #: managers.py:72
 msgid "Insufficient access."
-msgstr "Keine Zugriffsberechtigung"
+msgstr ""
 
 #: models.py:44
 msgid "Access entry"
-msgstr "Zugriffsberechtigung"
+msgstr ""
 
 #: models.py:45
 msgid "Access entries"
-msgstr "Zugriffsberechtigungen"
+msgstr ""
 
 #: models.py:60
 msgid "None"
@@ -68,38 +58,33 @@ msgstr ""
 
 #: permissions.py:7
 msgid "Access control lists"
-msgstr "Zugriffsberechtigungen"
+msgstr ""
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr "Zugriffsberechtigungen bearbeiten"
+msgstr ""
 
 #: permissions.py:13
 msgid "View ACLs"
-msgstr "Zugriffsberechtigungen anzeigen"
+msgstr ""
 
 #: views.py:61
 #, python-format
 msgid "Access control lists for: %s"
-msgstr "Zugriffsberechtigungen für: %s"
+msgstr ""
 
 #: views.py:107
-#, fuzzy, python-format
-#| msgid "Access control lists for: %s"
+#, python-format
 msgid "New access control lists for: %s"
-msgstr "Zugriffsberechtigungen für: %s"
+msgstr ""
 
 #: views.py:137
-#, fuzzy
-#| msgid "Has permission"
 msgid "Available permissions"
-msgstr "Berechtigt"
+msgstr ""
 
 #: views.py:138
-#, fuzzy
-#| msgid "Has permission"
 msgid "Granted permissions"
-msgstr "Berechtigt"
+msgstr ""
 
 #: views.py:177
 msgid "Disabled permissions are inherited from a parent object."
@@ -111,135 +96,124 @@ msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""
 
 #~ msgid "New holder"
-#~ msgstr "Neue Berechtigung"
+#~ msgstr "New holder"
 
 #~ msgid "Users"
-#~ msgstr "Benutzer"
+#~ msgstr "Users"
 
 #~ msgid "Groups"
-#~ msgstr "Gruppen"
+#~ msgstr "Groups"
 
 #~ msgid "Special"
-#~ msgstr "Spezial"
+#~ msgstr "Special"
 
 #~ msgid "Details"
-#~ msgstr "Details"
+#~ msgstr "details"
 
 #~ msgid "Grant"
-#~ msgstr "Erteilen"
+#~ msgstr "grant"
 
 #~ msgid "Revoke"
-#~ msgstr "Widerrufen"
+#~ msgstr "revoke"
 
 #~ msgid "Default ACLs"
-#~ msgstr "Standardzugriffsberechtigungen"
+#~ msgstr "Default ACLs"
 
 #~ msgid "Classes"
-#~ msgstr "Klassen"
+#~ msgstr "classes"
 
 #~ msgid "ACLs for class"
-#~ msgstr "Zugriffsberechtigungen für Klasse"
+#~ msgstr "ACLs for class"
 
 #~ msgid "Permission"
-#~ msgstr "Berechtigung"
+#~ msgstr "permissions"
 
 #~ msgid "Default access entry"
-#~ msgstr "Standardzugriffsberechtigung"
+#~ msgstr "default access entry"
 
 #~ msgid "Default access entries"
-#~ msgstr "Standardzugriffsberechtigungen"
+#~ msgstr "default access entries"
 
 #~ msgid "Creator"
-#~ msgstr "Ersteller"
+#~ msgstr "Creator"
 
 #~ msgid "Edit class default ACLs"
-#~ msgstr "Zugriffsberechtigungen der Klasse bearbeiten"
+#~ msgstr "Edit class default ACLs"
 
 #~ msgid "View class default ACLs"
-#~ msgstr "Zugriffsberechtigungen der Klasse anzeigen"
+#~ msgstr "View class default ACLs"
 
 #~ msgid "Holder"
-#~ msgstr "Berechtigter"
+#~ msgstr "holder"
 
 #~ msgid "Permissions available to: %(actor)s for %(obj)s"
-#~ msgstr "Berechtigungen von %(actor)s für %(obj)s"
+#~ msgstr "permissions available to: %(actor)s for %(obj)s"
 
 #~ msgid "Namespace"
-#~ msgstr "Namensraum"
+#~ msgstr "namespace"
 
 #~ msgid "Label"
-#~ msgstr "Bezeichnung"
+#~ msgstr "label"
 
 #~ msgid ", "
-#~ msgstr ","
+#~ msgstr ", "
 
 #~ msgid " for %s"
-#~ msgstr "für %s"
+#~ msgstr " for %s"
 
 #~ msgid " to %s"
-#~ msgstr "an %s"
+#~ msgstr " to %s"
 
 #~ msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-#~ msgstr ""
-#~ "Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  erteilen "
-#~ "möchten?"
+#~ msgstr "Are you sure you wish to grant the permission %(title_suffix)s?"
 
 #~ msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-#~ msgstr ""
-#~ "Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  erteilen "
-#~ "möchten?"
+#~ msgstr "Are you sure you wish to grant the permissions %(title_suffix)s?"
 
 #~ msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
-#~ msgstr ""
-#~ "Berechtigung \"%(permission)s\" erteilt an %(actor)s für %(object)s."
+#~ msgstr "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
 
 #~ msgid ""
 #~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
 #~ "%(object)s."
 #~ msgstr ""
-#~ "%(actor)s verfügt bereits über die Berechtigung \"%(permission)s an "
+#~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
 #~ "%(object)s."
 
 #~ msgid " from %s"
-#~ msgstr "von %s"
+#~ msgstr " from %s"
 
 #~ msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-#~ msgstr ""
-#~ "Sind Sie sicher, dass Sie die Berechtigung %(title_suffix)s  widerrufen "
-#~ "möchten?"
+#~ msgstr "Are you sure you wish to revoke the permission %(title_suffix)s?"
 
 #~ msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-#~ msgstr ""
-#~ "Sind Sie sicher, dass Sie die Berechtigungen %(title_suffix)s  widerrufen "
-#~ "möchten?"
+#~ msgstr "Are you sure you wish to revoke the permissions %(title_suffix)s?"
 
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-#~ msgstr ""
-#~ "Berechtigung \"%(permission)s\" von %(actor)s für %(object)s widerrufen."
+#~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
 #~ msgid ""
 #~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 #~ msgstr ""
-#~ "%(actor)s verfügte nicht über Berechtigung \"%(permission)s\" für "
-#~ "%(object)s."
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
-#~ msgstr "Neue Berechtigung für %s erstellen"
+#~ msgstr "add new holder for: %s"
 
 #~ msgid "Select"
-#~ msgstr "Auswählen"
+#~ msgstr "Select"
 
 #~ msgid "Class"
-#~ msgstr "Klasse"
+#~ msgstr "class"
 
 #~ msgid "Default access control lists for class: %s"
-#~ msgstr "Standardberechtigungen für Klasse %s"
+#~ msgstr "default access control lists for class: %s"
 
 #~ msgid "Permissions available to: %(actor)s for class %(class)s"
-#~ msgstr "Berechtigungen von %(actor)s für Klasse %(class)s"
+#~ msgstr "permissions available to: %(actor)s for class %(class)s"
 
 #~ msgid "Add new holder for class: %s"
-#~ msgstr "Neue Berechtigung für Klasse %s erstellen"
+#~ msgstr "add new holder for class: %s"
 
 #~ msgid "List of classes"
 #~ msgstr "List of classes"

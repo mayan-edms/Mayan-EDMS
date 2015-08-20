@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-01-17 07:03+0000\n"
+"PO-Revision-Date: 2015-08-20 22:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
-"projects/p/mayan-edms/language/bs_BA/)\n"
-"Language: bs_BA\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: bs_BA\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:55 settings.py:9
 msgid "Common"
@@ -187,12 +185,9 @@ msgstr ""
 #: settings.py:13
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Privremeni direktorij koristi postavke sajta da smjesti ikonice, preglede i "
-"privremene datoteke. Ako ništa nije naznačeno, biće kreiran korištenjem "
+"temporary files.  If none is specified, one will be created using "
 "tempfile.mkdtemp()"
+msgstr "Privremeni direktorij koristi postavke sajta da smjesti ikonice, preglede i privremene datoteke. Ako ništa nije naznačeno, biće kreiran korištenjem tempfile.mkdtemp()"
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
@@ -235,34 +230,66 @@ msgid "None"
 msgstr "Nijedno"
 
 #~ msgid "Anonymous user"
-#~ msgstr "Anonimni korisnik"
+#~ msgstr "Anonymous user"
+
+#~ msgid "Account"
+#~ msgstr "account"
+
+#~ msgid "Password"
+#~ msgstr "password"
+
+#~ msgid "Password hash"
+#~ msgstr "password hash"
+
+#~ msgid "Auto admin properties"
+#~ msgstr "auto admin properties"
+
+#~ msgid "Function found"
+#~ msgstr "function found"
+
+#~ msgid "Unable to remove %(selection)s."
+#~ msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
 #~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr "E-mail zauzet, drugi korisnik ima istu e-mail adresu."
+#~ msgstr "E-mail conflict, another user has that same email."
 
 #~ msgid "Current user's details updated."
-#~ msgstr "Detalji trenutnog korisnika ažurirani."
+#~ msgstr "Current user's details updated."
+
+#~ msgid "Current user's locale profile details updated."
+#~ msgstr "Current user's details updated."
 
 #~ msgid "Email"
 #~ msgstr "Email"
 
+#~ msgid ""
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
+#~ msgstr ""
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
+
 #~ msgid "This account is inactive."
-#~ msgstr "Ovaj account nije aktivan."
+#~ msgstr "This account is inactive."
+
+#~ msgid "Change password"
+#~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Određuje način autentikacije korisnika. Opcije su: koricničko ime, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
-#~ msgstr "Dozvoliti neovlaštenim korisnicima, pristup svim pregledima"
+#~ msgstr "Allow non authenticated users, access to all views"
 
 #~ msgid "Current user password change"
-#~ msgstr "Promjeniti trenutni pasvord"
+#~ msgstr "Current user password change"
 
 #~ msgid "Your password has been successfully changed."
-#~ msgstr "Vaš password je uspješno promjenjen"
+#~ msgstr "Your password has been successfully changed."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."

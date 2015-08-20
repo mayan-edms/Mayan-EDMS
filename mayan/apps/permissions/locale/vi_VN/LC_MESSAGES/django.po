@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Trung Phan Minh <navmobile@gmail.com>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:47-0400\n"
-"PO-Revision-Date: 2014-10-08 21:14+0000\n"
+"PO-Revision-Date: 2015-08-20 22:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/vi_VN/)\n"
-"Language: vi_VN\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:22 models.py:27 models.py:67 permissions.py:7
@@ -126,6 +125,7 @@ msgid "Available permissions"
 msgstr ""
 
 #: views.py:80
+#| msgid "Grant permissions"
 msgid "Granted permissions"
 msgstr ""
 
@@ -133,6 +133,68 @@ msgstr ""
 #, python-format
 msgid "Permissions for role: %s"
 msgstr ""
+
+#~ msgid "Permission holder"
+#~ msgstr "permission holder"
+
+#~ msgid "Role member"
+#~ msgstr "role member"
+
+#~ msgid "Role members"
+#~ msgstr "role members"
+
+#~ msgid ""
+#~ "A list of existing roles that are automatically assigned to newly created "
+#~ "users"
+#~ msgstr ""
+#~ "A list of existing roles that are automatically assigned to newly created "
+#~ "users"
+
+#~ msgid "Has permission"
+#~ msgstr "has permission"
+
+#~ msgid " and "
+#~ msgstr " and "
+
+#~ msgid "%(permissions)s to %(requester)s"
+#~ msgstr "%(permissions)s to %(requester)s"
+
+#~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
+#~ msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
+
+#~ msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
+
+#~ msgid ""
+#~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
+
+#~ msgid "permission"
+#~ msgstr "permission"
+
+#~ msgid "permissions"
+#~ msgstr "permissions"
+
+#~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
+#~ msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
+
+#~ msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+
+#~ msgid ""
+#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
+#~ msgstr ""
+#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
+
+#~ msgid "Users"
+#~ msgstr "Users"
+
+#~ msgid "Special"
+#~ msgstr "Special"
+
+#~ msgid "Members of role: %s"
+#~ msgstr "members of role: %s"
 
 #~ msgid "edit"
 #~ msgstr "edit"

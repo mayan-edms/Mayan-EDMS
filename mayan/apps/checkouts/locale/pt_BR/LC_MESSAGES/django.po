@@ -1,270 +1,262 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-05-13 17:40+0000\n"
-"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2015-08-20 14:43-0400\n"
+"PO-Revision-Date: 2015-08-19 06:41+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:33 links.py:22
 msgid "Checkouts"
-msgstr "Checkouts"
+msgstr ""
 
 #: events.py:9
 msgid "Document automatically checked in"
-msgstr "Documento checked in automático"
+msgstr ""
 
 #: events.py:12
 msgid "Document checked in"
-msgstr "Documento checked in"
+msgstr ""
 
 #: events.py:15
 msgid "Document checked out"
-msgstr "Documento checked out"
+msgstr ""
 
 #: events.py:19
 msgid "Document forcefully checked in"
-msgstr "Documento  forçando o check-in"
+msgstr ""
 
 #: exceptions.py:32 views.py:55
 msgid "Document already checked out."
-msgstr "Documento já fez check-out. "
+msgstr ""
 
 #: handlers.py:13
-#, fuzzy, python-format
+#, python-format
 #| msgid "New versions allowed: %s"
 msgid "New versions not allowed for the checkedout document: %s"
-msgstr "Novas versões permitida:%s"
+msgstr ""
 
 #: links.py:27
 msgid "Check out document"
-msgstr "Documento Check out "
+msgstr ""
 
 #: links.py:33
 msgid "Check in document"
-msgstr "Documento Check in"
+msgstr ""
 
 #: links.py:40
 msgid "Check in/out"
-msgstr "Check in/out"
+msgstr ""
 
 #: literals.py:12
 msgid "Checked out"
-msgstr "Checked out"
+msgstr ""
 
 #: literals.py:13
 msgid "Checked in/available"
-msgstr "Checked in disponível"
+msgstr ""
 
 #: models.py:28
 msgid "Document"
-msgstr "Documento"
+msgstr ""
 
 #: models.py:31
 msgid "Check out date and time"
-msgstr "Data e hora do Check out"
+msgstr ""
 
 #: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr ""
-"Quantidade de tempo para armazenar o documento com check-out em poucos "
-"minutos."
 
 #: models.py:37
 msgid "Check out expiration date and time"
-msgstr "Confira data e hora de expiração"
+msgstr ""
 
 #: models.py:39 views.py:88
-#, fuzzy
 #| msgid "User: %s"
 msgid "User"
-msgstr "Usuario: %s"
+msgstr ""
 
 #: models.py:43
 msgid "Do not allow new version of this document to be uploaded."
-msgstr "Não permitir nova versão deste documento a ser enviado."
+msgstr ""
 
 #: models.py:45
 msgid "Block new version upload"
-msgstr "Permitir  restrições imperativas do check out"
+msgstr ""
 
 #: models.py:59
-#, fuzzy
 #| msgid "Check out expiration date and time"
 msgid "Check out expiration date and time must be in the future."
-msgstr "Confira data e hora de expiração"
+msgstr ""
 
 #: models.py:80 permissions.py:7
 msgid "Document checkout"
-msgstr "Documento checked out"
+msgstr ""
 
 #: models.py:81
 msgid "Document checkouts"
-msgstr "Documentos checkouts"
+msgstr ""
 
 #: permissions.py:10
 msgid "Check in documents"
-msgstr "Documentos Check in "
+msgstr ""
 
 #: permissions.py:13
 msgid "Forcefully check in documents"
-msgstr "Forçando o check-in documentos"
+msgstr ""
 
 #: permissions.py:16
 msgid "Check out documents"
-msgstr "Documentos Check out"
+msgstr ""
 
 #: views.py:59
 #, python-format
 msgid "Error trying to check out document; %s"
-msgstr "Erro tentando check-out de documentos;%s"
+msgstr ""
 
 #: views.py:64
 #, python-format
 msgid "Document \"%s\" checked out successfully."
-msgstr "Documento \"%s\" check-out com êxito."
+msgstr ""
 
 #: views.py:72
 #, python-format
 msgid "Check out document: %s"
-msgstr "Check out  -  documento: %s"
+msgstr ""
 
 #: views.py:84
 msgid "Documents checked out"
-msgstr "Documentos checked out"
+msgstr ""
 
 #: views.py:94
 msgid "Checkout time and date"
-msgstr "Data e hora do Check out"
+msgstr ""
 
 #: views.py:100
 msgid "Checkout expiration"
-msgstr "Check Out expiração"
+msgstr ""
 
 #: views.py:124
 #, python-format
 msgid "Document status: %s"
-msgstr "Documento status: %s"
+msgstr ""
 
 #: views.py:130
 #, python-format
 msgid "User: %s"
-msgstr "Usuario: %s"
+msgstr ""
 
 #: views.py:136
 #, python-format
 msgid "Check out time: %s"
-msgstr "Confira o tempo:%s"
+msgstr ""
 
 #: views.py:141
 #, python-format
 msgid "Check out expiration: %s"
-msgstr "Check out expirado: %s"
+msgstr ""
 
 #: views.py:145
 #, python-format
 msgid "New versions allowed: %s"
-msgstr "Novas versões permitida:%s"
+msgstr ""
 
 #: views.py:145
 msgid "Yes"
-msgstr "Sim"
+msgstr ""
 
 #: views.py:145
 msgid "No"
-msgstr "não"
+msgstr ""
 
 #: views.py:152
 #, python-format
 msgid "Check out details for document: %s"
-msgstr "Confira detalhes sobre documento:%s "
+msgstr ""
 
 #: views.py:171
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "You didn't originally checked out this document.  Are you sure you wish "
-#| "to forcefully check in document: %s?"
+#| "dn't originally checked out this document.  Are you sure you wish cefully "
+#| "check in document: %s?"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr ""
-"Você originalmente não fez check-out este documento. Tem certeza de que "
-"deseja verificar no documento: %s?"
 
 #: views.py:175
-#, fuzzy, python-format
+#, python-format
 #| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
-msgstr "Check out  -  documento: %s"
+msgstr ""
 
 #: views.py:204
 msgid "Document has not been checked out."
-msgstr "Documento não foi verificado."
+msgstr ""
 
 #: views.py:207
 #, python-format
 msgid "Error trying to check in document; %s"
-msgstr "Erro tente novamente realizar o check no documento; %s"
+msgstr ""
 
 #: views.py:211
 #, python-format
 msgid "Document \"%s\" checked in successfully."
-msgstr "Sucesso no checked in -  Documento \"%s\""
+msgstr ""
 
 #: widgets.py:23
 msgid "Period"
 msgstr ""
 
 #~ msgid "Allow overriding check out restrictions"
-#~ msgstr "Permitir  restrições imperativas do check out"
+#~ msgstr "Allow overriding check out restrictions"
 
 #~ msgid "Checkout user"
-#~ msgstr "Checkout de  usuario"
+#~ msgstr "checkout user"
 
 #~ msgid "Are you sure you wish to check in document: %s?"
-#~ msgstr "Tem certeza de que deseja verificar no documento: %s?"
+#~ msgstr "Are you sure you wish to check in document: %s?"
 
 #~ msgid "Days"
-#~ msgstr "Dia"
+#~ msgstr "Days"
 
 #~ msgid "Hours"
-#~ msgstr "Hora"
+#~ msgstr "Hours"
 
 #~ msgid "Minutes"
-#~ msgstr "Minutos"
+#~ msgstr "Minutes"
 
 #~ msgid "Enter a valid number of days."
-#~ msgstr "Entre com o numero válido de dias."
+#~ msgstr "Enter a valid number of days."
 
 #~ msgid "Enter a valid number of hours."
-#~ msgstr "Entre com o numero válido de horas."
+#~ msgstr "Enter a valid number of hours."
 
 #~ msgid "Enter a valid number of minutes."
-#~ msgstr "Entre com o numero válido de minutos."
+#~ msgstr "Enter a valid number of minutes."
 
 #~ msgid "Enter a valid time difference."
-#~ msgstr "Digite com um tempo válido diferente."
+#~ msgstr "Enter a valid time difference."
 
 #~ msgid ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 #~ msgstr ""
-#~ "Quantidade de tempo para guardar o documento no estado check-out em dias, "
-#~ "horas e / ou minutos."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."

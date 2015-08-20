@@ -11,11 +11,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-01-17 07:03+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/pt_BR/)\n"
+"POT-Creation-Date: 2015-08-20 18:15-0400\n"
+"PO-Revision-Date: 2015-05-06 15:13+0000\n"
+"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -104,7 +104,7 @@ msgstr "Detalhes salvos com sucesso."
 
 #: links.py:9
 msgid "About"
-msgstr ""
+msgstr "Sobre"
 
 #: links.py:12
 msgid "User details"
@@ -116,11 +116,11 @@ msgstr "Editar Detalhes"
 
 #: links.py:19
 msgid "Locale profile"
-msgstr ""
+msgstr "Perfil Idioma"
 
 #: links.py:23
 msgid "Edit locale profile"
-msgstr ""
+msgstr "Editar perfil Idioma"
 
 #: links.py:27 views.py:110
 msgid "License"
@@ -192,6 +192,9 @@ msgid ""
 "temporary files.  If none is specified, one will be created using tempfile."
 "mkdtemp()"
 msgstr ""
+"Diretório temporário local usado para armazenar grande miniaturas, previews "
+"e arquivos temporários. Se nenhum for especificado, um será criado usando "
+"tempfile.mkdtemp ()"
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
@@ -235,6 +238,28 @@ msgstr "Deve selecionar pelo menos um item."
 msgid "None"
 msgstr "Nenhum"
 
+#~ msgid "Email"
+#~ msgstr "E-mail"
+
+#~ msgid "Password"
+#~ msgstr "Senha"
+
+#~ msgid ""
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
+#~ msgstr ""
+#~ "Por favor, indique um e-mail e senha corretamente. Note-se que o campo de "
+#~ "senha diferencia maiúsculas de minúsculas."
+
+#~ msgid "This account is inactive."
+#~ msgstr "Esta conta está inativa."
+
+#~ msgid "Change password"
+#~ msgstr "Alterar a senha"
+
+#~ msgid "Logout"
+#~ msgstr "Sair"
+
 #~ msgid "Anonymous user"
 #~ msgstr "Usuário anônimo"
 
@@ -246,6 +271,17 @@ msgstr "Nenhum"
 
 #~ msgid "Auto admin properties"
 #~ msgstr "Propriedades de administração Automático"
+
+#~ msgid ""
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
+#~ msgstr ""
+#~ "Controla o mecanismo usado para usuário autenticado. As opções são: e-"
+#~ "mail, nome de usuário,"
+
+#~ msgid "Allow non authenticated users, access to all views"
+#~ msgstr ""
+#~ "Permitir que usuários não autenticados, acesso a todos os pontos de vista."
 
 #~ msgid "Function found"
 #~ msgstr "função encontrada"
@@ -261,19 +297,6 @@ msgstr "Nenhum"
 
 #~ msgid "Current user's locale profile details updated."
 #~ msgstr "Detalhes do perfil de localidade do usuário atual atualizado."
-
-#~ msgid "Email"
-#~ msgstr "E-mail"
-
-#~ msgid "This account is inactive."
-#~ msgstr "Esta conta está inativa."
-
-#~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
-#~ msgstr ""
-#~ "Controla o mecanismo usado para usuário autenticado. As opções são: e-"
-#~ "mail, nome de usuário,"
 
 #~ msgid "Current user password change"
 #~ msgstr "Alteração de senha do usuário atual"

@@ -8,10 +8,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:45-0400\n"
+"POT-Creation-Date: 2015-08-20 18:09-0400\n"
 "PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/projects/p/mayan-edms/"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
 "language/id/)\n"
 "Language: id\n"
 "MIME-Version: 1.0\n"
@@ -74,10 +74,8 @@ msgid "Maximum number of search queries to remember per user."
 msgstr ""
 
 #: views.py:25
-#, fuzzy
-#| msgid "Search error: %s"
 msgid "Search results"
-msgstr "Search error: %s"
+msgstr ""
 
 #: views.py:32
 msgid "Type"
@@ -106,3 +104,6 @@ msgstr ""
 #~ msgstr ""
 #~ "Enter the desired search keywords separated by space.  Only the top "
 #~ "%(search_results_limit)s results will be available."
+
+#~ msgid "Search error: %s"
+#~ msgstr "Search error: %s"

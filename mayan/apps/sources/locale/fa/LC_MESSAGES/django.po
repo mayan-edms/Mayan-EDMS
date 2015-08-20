@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:47-0400\n"
-"PO-Revision-Date: 2015-03-02 14:19+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"POT-Creation-Date: 2015-08-20 17:49-0400\n"
+"PO-Revision-Date: 2015-08-20 21:51+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:42 links.py:30 models.py:132 views.py:500
@@ -26,10 +24,9 @@ msgid "Sources"
 msgstr "سورس"
 
 #: apps.py:50
-#, fuzzy
 #| msgid "Create new document sources"
 msgid "Create a document source"
-msgstr "ایجاد سورس سند جدید"
+msgstr ""
 
 #: apps.py:52
 msgid ""
@@ -75,26 +72,20 @@ msgid "Default"
 msgstr ""
 
 #: links.py:22
-#, fuzzy
-#| msgid "Upload new documents"
 msgid "New document"
-msgstr "آپلود اسناد جدید"
+msgstr ""
 
 #: links.py:25
 msgid "Clone"
 msgstr "کپی کامل Clone"
 
 #: links.py:34
-#, fuzzy
-#| msgid "Add new POP3 email"
 msgid "Add new imap email"
-msgstr "اضافه کردن pop3 جدید"
+msgstr ""
 
 #: links.py:39
-#, fuzzy
-#| msgid "Add new POP3 email"
 msgid "Add new pop3 email"
-msgstr "اضافه کردن pop3 جدید"
+msgstr ""
 
 #: links.py:44
 msgid "Add new staging folder"
@@ -142,9 +133,7 @@ msgstr "پرسیدن از کاربر"
 
 #: literals.py:27 models.py:237
 msgid "Web form"
-msgstr ""
-"وب فرم "
-"ا                                                                                                                                                                                                                                                                                                                                                                                                          "
+msgstr "وب فرم ا                                                                                                                                                                                                                                                                                                                                                                                                          "
 
 #: literals.py:28 models.py:217
 msgid "Staging folder"
@@ -284,9 +273,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
-"for IMAP over SSL."
+msgstr "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL."
 
 #: models.py:321
 msgid "Port"
@@ -373,30 +360,26 @@ msgid "View existing document sources"
 msgstr "دیدن سورس اسناد موجود"
 
 #: tasks.py:29
-#, fuzzy, python-format
+#, python-format
 #| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
-msgstr "خطای ایجاد سورس: %s"
+msgstr ""
 
 #: views.py:63
-#, fuzzy, python-format
-#| msgid "Upload a new version from source: %s"
+#, python-format
 msgid "Log entries for source: %s"
-msgstr "آپلود نسخه ای جدید از اصل : %s"
+msgstr ""
 
 #: views.py:140 wizards.py:36
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع "
-"بسازید."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع بسازید."
 
 #: views.py:164 views.py:182
-#, fuzzy
 #| msgid "Document sources"
 msgid "Document properties"
-msgstr "سورسهای سند"
+msgstr ""
 
 #: views.py:172
 msgid "Files in staging path"
@@ -412,7 +395,8 @@ msgid "Upload a local document from source: %s"
 msgstr "آپلود کردن فایل محلی از اصل:%s"
 
 #: views.py:347
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr "نسخه سند جدید که جهت آپلود وارد صف شد بزودی قابل دسترس خواهد بود."
 
 #: views.py:379
@@ -435,10 +419,10 @@ msgid "Create new source of type: %s"
 msgstr "ایجاد سورس جدید از نوع %s."
 
 #: views.py:459
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete document sources"
 msgid "Delete the source: %s?"
-msgstr "حذف سورس سند"
+msgstr ""
 
 #: views.py:478
 #, python-format
@@ -469,103 +453,97 @@ msgstr "مرحله بعدی"
 msgid "Document upload wizard"
 msgstr ""
 
-#~ msgid "Add new IMAP email"
-#~ msgstr "اضافه کردن IMAP جدید"
-
 #~ msgid "Transformations"
-#~ msgstr "تبدیلات"
+#~ msgstr "transformations"
 
 #~ msgid "Add transformation"
-#~ msgstr "اضافه کردن تبدیل"
+#~ msgstr "add transformation"
 
 #~ msgid "Title"
-#~ msgstr "لقب"
+#~ msgstr "title"
 
 #~ msgid "Enter a valid value."
-#~ msgstr "یک مقدار معتبر وارد کنید."
+#~ msgstr "Enter a valid value."
 
 #~ msgid "Order"
-#~ msgstr "ترتیب"
+#~ msgstr "order"
 
 #~ msgid "Transformation"
-#~ msgstr "تبدیلات"
+#~ msgstr "transformation"
 
 #~ msgid "Arguments"
-#~ msgstr "آرگومانها"
+#~ msgstr "arguments"
 
 #~ msgid "Use dictionaries to indentify arguments, example: %s"
-#~ msgstr "استفاده از لغت نامه جهت تشخیص، بعنوان مثال : %s"
+#~ msgstr "Use dictionaries to indentify arguments, example: %s"
 
 #~ msgid "Document source transformation"
-#~ msgstr "تبدیل برروی سند اصلی"
+#~ msgstr "document source transformation"
 
 #~ msgid "Document source transformations"
-#~ msgstr "تبدیلات برروی سند اصلی"
+#~ msgstr "document source transformations"
 
 #~ msgid "Current document type"
-#~ msgstr "نوع سند فعلی"
+#~ msgstr "Current document type"
 
 #~ msgid "None"
-#~ msgstr "هیچ"
+#~ msgstr "None"
 
 #~ msgid "Current metadata"
-#~ msgstr "متادیتا فعلی"
-
-#~ msgid "Yes"
-#~ msgstr "بلی"
+#~ msgstr "Current metadata"
 
 #~ msgid "No"
-#~ msgstr "خیر"
+#~ msgstr "None"
 
 #~ msgid "Source edited successfully"
-#~ msgstr "ویرایش موفق سورس"
+#~ msgstr "Source edited successfully"
 
 #~ msgid "Error editing source; %s"
-#~ msgstr "خطا %s در ویرایش سورس."
+#~ msgstr "Error editing source; %s"
 
 #~ msgid "Source \"%s\" deleted successfully."
-#~ msgstr "حذف موفق سورس: %s"
+#~ msgstr "Source \"%s\" deleted successfully."
 
 #~ msgid "Error deleting source \"%(source)s\": %(error)s"
-#~ msgstr "خطای حذف سورس  \"%(source)s\": %(error)s"
+#~ msgstr "Error deleting source \"%(source)s\": %(error)s"
 
 #~ msgid "Are you sure you wish to delete the source: %s?"
-#~ msgstr "آیا از حذف سورس %s مطمئن هستید؟"
+#~ msgstr "Are you sure you wish to delete the source: %s?"
 
 #~ msgid "Source created successfully"
-#~ msgstr "سورس با موفقیت ایجاد شد."
+#~ msgstr "Source created successfully"
 
 #~ msgid "Transformations for: %s"
-#~ msgstr "تبدیلات برای : %s"
+#~ msgstr "transformations for: %s"
 
 #~ msgid "Source transformation edited successfully"
-#~ msgstr "تبدیلات سورس با موفقیت اجام شد."
+#~ msgstr "Source transformation edited successfully"
 
 #~ msgid "Error editing source transformation; %s"
-#~ msgstr "خطا در ویرایش تبدیلات سورس: %s"
+#~ msgstr "Error editing source transformation; %s"
 
 #~ msgid "Edit transformation: %s"
-#~ msgstr "ویرایش تبدیلات: %s"
+#~ msgstr "Edit transformation: %s"
 
 #~ msgid "Source transformation deleted successfully."
-#~ msgstr "تبدیلات سورس با موفقیت حذف شد."
+#~ msgstr "Source transformation deleted successfully."
 
 #~ msgid "Error deleting source transformation; %(error)s"
-#~ msgstr "خطا در حذف تبدیلات سورس:  %(error)s"
+#~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
-#~ msgstr "آیا از حذف تبدیلات  \"%(transformation)s\" مطمئن هستید؟"
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ msgstr ""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
-#~ msgstr "سورس تبدیلات با موفقیت انجام شد."
+#~ msgstr "Source transformation created successfully"
 
 #~ msgid "Error creating source transformation; %s"
-#~ msgstr "خطای ایجاد تبدیلات سورس. %s"
+#~ msgstr "Error creating source transformation; %s"
 
 #~ msgid "Create new transformation for source: %s"
-#~ msgstr "ایجاد تبدیلات جدیدبرای سورس: %s"
+#~ msgstr "Create new transformation for source: %s"
 
 #~ msgid "Upload sources"
 #~ msgstr "Upload sources"

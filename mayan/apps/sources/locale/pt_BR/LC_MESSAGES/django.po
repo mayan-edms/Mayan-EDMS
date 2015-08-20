@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -10,15 +10,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:47-0400\n"
-"PO-Revision-Date: 2015-05-13 15:51+0000\n"
-"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
-"mayan-edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2015-08-20 17:49-0400\n"
+"PO-Revision-Date: 2015-08-20 21:51+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:42 links.py:30 models.py:132 views.py:500
@@ -26,10 +25,9 @@ msgid "Sources"
 msgstr "Fontes"
 
 #: apps.py:50
-#, fuzzy
 #| msgid "Create new document sources"
 msgid "Create a document source"
-msgstr "Criar novas fontes de documentos"
+msgstr ""
 
 #: apps.py:52
 msgid ""
@@ -60,8 +58,7 @@ msgstr "Expandir arquivos compactados"
 
 #: forms.py:45
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Upload de um arquivo compactado contendo arquivos como documentos individuais"
+msgstr "Upload de um arquivo compactado contendo arquivos como documentos individuais"
 
 #: forms.py:64
 msgid "Staging file"
@@ -76,26 +73,20 @@ msgid "Default"
 msgstr ""
 
 #: links.py:22
-#, fuzzy
-#| msgid "Upload new documents"
 msgid "New document"
-msgstr "upload de novos documentos"
+msgstr ""
 
 #: links.py:25
 msgid "Clone"
 msgstr "Clone"
 
 #: links.py:34
-#, fuzzy
-#| msgid "Add new POP3 email"
 msgid "Add new imap email"
-msgstr "Adicionar um novo email POP3"
+msgstr ""
 
 #: links.py:39
-#, fuzzy
-#| msgid "Add new POP3 email"
 msgid "Add new pop3 email"
-msgstr "Adicionar um novo email POP3"
+msgstr ""
 
 #: links.py:44
 msgid "Add new staging folder"
@@ -253,8 +244,7 @@ msgstr "intervalo"
 
 #: models.py:257
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-"Atribuir um tipo de documento para documentos enviados a partir desta fonte."
+msgstr "Atribuir um tipo de documento para documentos enviados a partir desta fonte."
 
 #: models.py:258
 msgid "Document type"
@@ -284,9 +274,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Escolhas típicas : 110 para POP3, 995 para  POP3 sobre SSL, 143 para IMAP, "
-"993 para IMAP sobre SSL."
+msgstr "Escolhas típicas : 110 para POP3, 995 para  POP3 sobre SSL, 143 para IMAP, 993 para IMAP sobre SSL."
 
 #: models.py:321
 msgid "Port"
@@ -373,30 +361,26 @@ msgid "View existing document sources"
 msgstr "Ver fontes de documentos existentes"
 
 #: tasks.py:29
-#, fuzzy, python-format
+#, python-format
 #| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
-msgstr "Erro ao criar fonte; %s"
+msgstr ""
 
 #: views.py:63
-#, fuzzy, python-format
-#| msgid "Upload a new version from source: %s"
+#, python-format
 msgid "Log entries for source: %s"
-msgstr "Carregar uma nova versão da Origem: %s"
+msgstr ""
 
 #: views.py:140 wizards.py:36
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"Nenhuma fonte interativa de documentos fora definida ou nenhum foi ativada. "
-"Criar uma antes de prosseguir."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Nenhuma fonte interativa de documentos fora definida ou nenhum foi ativada. Criar uma antes de prosseguir."
 
 #: views.py:164 views.py:182
-#, fuzzy
 #| msgid "Document sources"
 msgid "Document properties"
-msgstr "Fontes de documentos"
+msgstr ""
 
 #: views.py:172
 msgid "Files in staging path"
@@ -412,10 +396,9 @@ msgid "Upload a local document from source: %s"
 msgstr "Carregar um documento no local de origem:%s "
 
 #: views.py:347
-msgid "New document version queued for uploaded and will be available shortly."
-msgstr ""
-"Nova versão do documento na fila para carregados e estará disponível em "
-"breve."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
+msgstr "Nova versão do documento na fila para carregados e estará disponível em breve."
 
 #: views.py:379
 #, python-format
@@ -437,10 +420,10 @@ msgid "Create new source of type: %s"
 msgstr "Criar nova fonte do tipo: %s"
 
 #: views.py:459
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete document sources"
 msgid "Delete the source: %s?"
-msgstr "Excluir fontes de documentos"
+msgstr ""
 
 #: views.py:478
 #, python-format
@@ -471,102 +454,97 @@ msgstr "Próximo passo"
 msgid "Document upload wizard"
 msgstr ""
 
-#~ msgid "Add new IMAP email"
-#~ msgstr "Adicionar um novo email IMAP"
-
 #~ msgid "Transformations"
-#~ msgstr "transformação"
+#~ msgstr "transformations"
 
 #~ msgid "Add transformation"
-#~ msgstr "adicionar uma transformação"
+#~ msgstr "add transformation"
 
 #~ msgid "Title"
-#~ msgstr "título"
+#~ msgstr "title"
 
 #~ msgid "Enter a valid value."
-#~ msgstr "Digite um valor válido."
+#~ msgstr "Enter a valid value."
 
 #~ msgid "Order"
-#~ msgstr "ordem"
+#~ msgstr "order"
 
 #~ msgid "Transformation"
-#~ msgstr "transformação"
+#~ msgstr "transformation"
 
 #~ msgid "Arguments"
-#~ msgstr "argumentos"
+#~ msgstr "arguments"
 
 #~ msgid "Use dictionaries to indentify arguments, example: %s"
-#~ msgstr "Use dicionários para identificar os argumentos, exemplo: %s"
+#~ msgstr "Use dictionaries to indentify arguments, example: %s"
 
 #~ msgid "Document source transformation"
-#~ msgstr "Transformação de origem do Documento"
+#~ msgstr "document source transformation"
 
 #~ msgid "Document source transformations"
-#~ msgstr "Transformações de origem do Documento"
+#~ msgstr "document source transformations"
 
 #~ msgid "Current document type"
-#~ msgstr "Atual tipo de documento "
+#~ msgstr "Current document type"
 
 #~ msgid "None"
-#~ msgstr "Nenhum"
+#~ msgstr "None"
 
 #~ msgid "Current metadata"
-#~ msgstr "Metadados atuais"
-
-#~ msgid "Yes"
-#~ msgstr "Sim"
+#~ msgstr "Current metadata"
 
 #~ msgid "No"
-#~ msgstr "Não"
+#~ msgstr "None"
 
 #~ msgid "Source edited successfully"
-#~ msgstr "Fonte editada com sucesso"
+#~ msgstr "Source edited successfully"
 
 #~ msgid "Error editing source; %s"
-#~ msgstr "Erro ao editar fonte; %s"
+#~ msgstr "Error editing source; %s"
 
 #~ msgid "Source \"%s\" deleted successfully."
-#~ msgstr "Fonte \"%s\" removida com sucesso."
+#~ msgstr "Source \"%s\" deleted successfully."
 
 #~ msgid "Error deleting source \"%(source)s\": %(error)s"
-#~ msgstr "Erro ao excluir fonte \" %(source)s \": %(error)s "
+#~ msgstr "Error deleting source \"%(source)s\": %(error)s"
 
 #~ msgid "Are you sure you wish to delete the source: %s?"
-#~ msgstr "Tem certeza de que deseja deletar a fonte: %s?"
+#~ msgstr "Are you sure you wish to delete the source: %s?"
 
 #~ msgid "Source created successfully"
-#~ msgstr "Fonte criada com sucesso"
+#~ msgstr "Source created successfully"
+
+#~ msgid "Transformations for: %s"
+#~ msgstr "transformations for: %s"
 
 #~ msgid "Source transformation edited successfully"
-#~ msgstr "Transformação de fonte alterado com sucesso"
+#~ msgstr "Source transformation edited successfully"
 
 #~ msgid "Error editing source transformation; %s"
-#~ msgstr "Erro ao editar transformação de fonte; %s"
+#~ msgstr "Error editing source transformation; %s"
 
 #~ msgid "Edit transformation: %s"
-#~ msgstr "Editar transformação: %s"
+#~ msgstr "Edit transformation: %s"
 
 #~ msgid "Source transformation deleted successfully."
-#~ msgstr "Transformação de fonte excluída com sucesso."
+#~ msgstr "Source transformation deleted successfully."
 
 #~ msgid "Error deleting source transformation; %(error)s"
-#~ msgstr "Erro ao deletar transformação de fonte; %(error)s "
+#~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Tem certeza de que deseja deletar a transformação de fonte \" "
-#~ "%(transformation)s \""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
-#~ msgstr "Transformação de fonte criada com sucesso"
+#~ msgstr "Source transformation created successfully"
 
 #~ msgid "Error creating source transformation; %s"
-#~ msgstr "Erro ao criar a transformação de fonte; %s"
+#~ msgstr "Error creating source transformation; %s"
 
 #~ msgid "Create new transformation for source: %s"
-#~ msgstr "Criar nova transformação de fonte: %s"
+#~ msgstr "Create new transformation for source: %s"
 
 #~ msgid "Upload sources"
 #~ msgstr "Upload sources"

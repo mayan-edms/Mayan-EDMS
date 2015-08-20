@@ -1,31 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# jmcainzos <jmcainzos@vodafone.es>, 2014
-# Lory977 <helga.carrero@gmail.com>, 2015
+# Roberto Rosario, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:45-0400\n"
-"PO-Revision-Date: 2015-01-12 18:53+0000\n"
-"Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"PO-Revision-Date: 2015-08-20 22:28+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24
-#, fuzzy
 #| msgid "Delete comments"
 msgid "Document comments"
-msgstr "Eliminar comentarios"
+msgstr ""
 
 #: apps.py:36
 msgid "Date"
@@ -53,14 +50,12 @@ msgid "Comments"
 msgstr "Comentarios"
 
 #: models.py:13
-#, fuzzy
-#| msgid "Comment"
 msgid "Document"
-msgstr "Comentario"
+msgstr "Documento"
 
 #: models.py:23
 msgid "Date time submitted"
-msgstr ""
+msgstr "Fecha y hora sometido"
 
 #: permissions.py:10
 msgid "Create new comments"
@@ -86,19 +81,17 @@ msgstr "Comentario \"%s\" eliminado con éxito."
 #: views.py:76
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
-msgstr "Error al eliminar el comentario \" %(comment)s\": %(error)s "
+msgstr "Error borrando el comentario \"%(comment)s\": %(error)s "
 
 #: views.py:91
-#, fuzzy
 #| msgid "Delete comments"
 msgid "Delete comment?"
-msgstr "Eliminar comentarios"
+msgstr "¿Borrar comentario?"
 
 #: views.py:93
-#, fuzzy
 #| msgid "Delete comments"
 msgid "Delete comments?"
-msgstr "Eliminar comentarios"
+msgstr "¿Borrar comentarios?"
 
 #: views.py:133
 msgid "Comment added successfully."
@@ -118,13 +111,13 @@ msgstr "Comentarios para el documento: %s"
 #~ msgstr "comment"
 
 #~ msgid "Must provide at least one comment."
-#~ msgstr "Debe proveer al menos un comentario."
+#~ msgstr "Must provide at least one comment."
 
 #~ msgid "Are you sure you wish to delete the comment: %s?"
-#~ msgstr "¿Está seguro que desea eliminar el comentario:% s?"
+#~ msgstr "Are you sure you wish to delete the comment: %s?"
 
 #~ msgid "Are you sure you wish to delete the comments: %s?"
-#~ msgstr "¿Está seguro que desea eliminar los comentarios:% s?"
+#~ msgstr "Are you sure you wish to delete the comments: %s?"
 
 #~ msgid "date"
 #~ msgstr "date"

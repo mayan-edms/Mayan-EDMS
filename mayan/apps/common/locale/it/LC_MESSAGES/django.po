@@ -13,10 +13,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
+"POT-Creation-Date: 2015-08-20 18:15-0400\n"
 "PO-Revision-Date: 2015-01-29 08:38+0000\n"
 "Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
 "language/it/)\n"
 "Language: it\n"
 "MIME-Version: 1.0\n"
@@ -240,35 +240,11 @@ msgstr "Devi selezionare un elemento"
 msgid "None"
 msgstr "Nessuno"
 
-#~ msgid "Anonymous user"
-#~ msgstr "Utente anonimo"
-
-#~ msgid "Account"
-#~ msgstr "Account"
+#~ msgid "Email"
+#~ msgstr "Email"
 
 #~ msgid "Password"
 #~ msgstr "Password"
-
-#~ msgid "Auto admin properties"
-#~ msgstr "Auto proprietà di amministrazione "
-
-#~ msgid "Function found"
-#~ msgstr "Trovata funzione"
-
-#~ msgid "Unable to remove %(selection)s."
-#~ msgstr "Impossibile rimuovere %(selection)s."
-
-#~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr "E-mail conflitto, un altro utente ha quella stessa email."
-
-#~ msgid "Current user's details updated."
-#~ msgstr "Dettagli dell'utente corrente aggiornati"
-
-#~ msgid "Current user's locale profile details updated."
-#~ msgstr "Dettagli del profilo locale dell'utente attuale aggiornati."
-
-#~ msgid "Email"
-#~ msgstr "Email"
 
 #~ msgid ""
 #~ "Please enter a correct email and password. Note that the password field "
@@ -286,6 +262,15 @@ msgstr "Nessuno"
 #~ msgid "Logout"
 #~ msgstr "Logout"
 
+#~ msgid "Anonymous user"
+#~ msgstr "Utente anonimo"
+
+#~ msgid "Account"
+#~ msgstr "Account"
+
+#~ msgid "Auto admin properties"
+#~ msgstr "Auto proprietà di amministrazione "
+
 #~ msgid ""
 #~ "Controls the mechanism used to authenticated user.  Options are: "
 #~ "username, email"
@@ -295,6 +280,21 @@ msgstr "Nessuno"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Consentire agli utenti non autenticati, l'accesso a tutte le viste"
+
+#~ msgid "Function found"
+#~ msgstr "Trovata funzione"
+
+#~ msgid "Unable to remove %(selection)s."
+#~ msgstr "Impossibile rimuovere %(selection)s."
+
+#~ msgid "E-mail conflict, another user has that same email."
+#~ msgstr "E-mail conflitto, un altro utente ha quella stessa email."
+
+#~ msgid "Current user's details updated."
+#~ msgstr "Dettagli dell'utente corrente aggiornati"
+
+#~ msgid "Current user's locale profile details updated."
+#~ msgstr "Dettagli del profilo locale dell'utente attuale aggiornati."
 
 #~ msgid "Current user password change"
 #~ msgstr "Modifica della password dell'utente corrente"

@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
+"POT-Creation-Date: 2015-08-20 18:15-0400\n"
 "PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
 "Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -234,20 +234,14 @@ msgstr "يجب اختيار غرض واحد عالأقل."
 msgid "None"
 msgstr "لا شيء"
 
-#~ msgid "Anonymous user"
-#~ msgstr "مستخدم مجهول"
-
-#~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr "تضارب في البريد الإلكتروني ، لدى مستخدم آخر نفس البريد الإلكتروني."
-
-#~ msgid "Current user's details updated."
-#~ msgstr "تفاصيل المستخدم الحالي تم تحديثها."
-
 #~ msgid "Email"
 #~ msgstr "البريد الإلكتروني"
 
 #~ msgid "This account is inactive."
 #~ msgstr "هذا الحساب غير نشط."
+
+#~ msgid "Anonymous user"
+#~ msgstr "مستخدم مجهول"
 
 #~ msgid ""
 #~ "Controls the mechanism used to authenticated user.  Options are: "
@@ -258,6 +252,12 @@ msgstr "لا شيء"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "السماح للمستخدمين المجهولين الوصول إلى جميع صفحات العرض"
+
+#~ msgid "E-mail conflict, another user has that same email."
+#~ msgstr "تضارب في البريد الإلكتروني ، لدى مستخدم آخر نفس البريد الإلكتروني."
+
+#~ msgid "Current user's details updated."
+#~ msgstr "تفاصيل المستخدم الحالي تم تحديثها."
 
 #~ msgid "Current user password change"
 #~ msgstr "تغيير كلمة السر للمستخدم الحالي"

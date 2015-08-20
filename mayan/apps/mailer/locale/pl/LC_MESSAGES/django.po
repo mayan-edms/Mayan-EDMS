@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 msgid ""
@@ -9,22 +9,18 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:46-0400\n"
-"PO-Revision-Date: 2015-03-04 05:07+0000\n"
-"Last-Translator: Annunnaky <doublemiu@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/pl/)\n"
-"Language: pl\n"
+"PO-Revision-Date: 2015-08-20 22:05+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:25
-#, fuzzy
-#| msgid "Mailing"
 msgid "Mailer"
-msgstr "Wysyłanie"
+msgstr ""
 
 #: apps.py:31
 msgid "Date and time"
@@ -59,44 +55,22 @@ msgid "Document mailing error log"
 msgstr ""
 
 #: literals.py:8
-#, fuzzy, python-format
-#| msgid ""
-#| "Attached to this email is the document: {{ document }}<br /><br />\n"
-#| "\n"
-#| "--------<br />\n"
-#| "This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
+#, python-format
 msgid ""
 "Attached to this email is the document: {{ document }}\n"
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
-"Do tej wiadomośći dołączony jest dokument: {{ document }} <br /><br />\n"
-"\n"
-"--------<br />\n"
-"Tą wiadomość nadano z Mayan EDMS (http://www.mayan-edms.com)"
 
 #: literals.py:17
-#, fuzzy, python-format
-#| msgid ""
-#| "To access this document click on the following link: <a href="
-#| "\"{{ link }}\">{{ link }}</a><br /><br />\n"
-#| "\n"
-#| "--------<br />\n"
-#| "This email has been sent from Mayan EDMS (http://www.mayan-edms.com)"
+#, python-format
 msgid ""
 "To access this document click on the following link: {{ link }}\n"
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
-"Aby otworzyć ten dokument kliknij w ten link: <a href="
-"\"{{ link }}\">{{ link }}</a><br /><br />\n"
-"\n"
-"\n"
-"--------<br />\n"
-"\n"
-"Tą wiadomość nadano z Mayan EDMS (http://www.mayan-edms.com)"
 
 #: models.py:13
 msgid "Date time"

@@ -9,10 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
+"POT-Creation-Date: 2015-08-20 18:13-0400\n"
 "PO-Revision-Date: 2015-03-03 10:56+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
 "language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -228,17 +228,17 @@ msgstr ""
 #~ msgid "Import"
 #~ msgstr "وارد کردن"
 
-#~ msgid "Key ID"
-#~ msgstr "شناسه کلید"
-
-#~ msgid "results"
-#~ msgstr "نتایج"
-
 #~ msgid "Key: %s, imported successfully."
 #~ msgstr "کلید: %s, بصورت موفقیت آمیز وارد شد."
 
 #~ msgid "Are you sure you wish to import key id: %s?"
 #~ msgstr "آیا از ورود کلیدی با شناسه: %s مطمئن هستید؟"
+
+#~ msgid "Key ID"
+#~ msgstr "شناسه کلید"
+
+#~ msgid "results"
+#~ msgstr "نتایج"
 
 #~ msgid "Disabled"
 #~ msgstr "غیر فعال"

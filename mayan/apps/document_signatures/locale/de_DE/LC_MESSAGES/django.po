@@ -1,13 +1,11 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
-# Stefan Lodders <sl@suchreflex.de>, 2012
-# tetjarediske <tetja.rediske@googlemail.com>, 2012
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
 # Tobias Paepke <tobias.paepke@paepke.net>, 2014
 msgid ""
@@ -15,14 +13,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:45-0400\n"
-"PO-Revision-Date: 2015-02-06 23:55+0000\n"
-"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2015-08-20 22:11+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:62 permissions.py:8 settings.py:7
@@ -147,14 +144,9 @@ msgid "Error while deleting the detached signature; %s"
 msgstr "Fehler beim Löschen der separaten Unterschrift; %s"
 
 #: views.py:163
-#, fuzzy, python-format
-#| msgid "Upload detached signature for document: %s"
+#, python-format
 msgid "Delete the detached signature from document: %s?"
-msgstr "Separate Unterschrift für Dokument %s hochladen"
-
-#~ msgid ""
-#~ "Are you sure you wish to delete the detached signature from document: %s?"
-#~ msgstr "Separate Unterschrift zu Dokument %s wirklich löschen?"
+msgstr ""
 
 #~ msgid "Signature status: %(widget)s %(text)s"
 #~ msgstr "Signature status: %(widget)s %(text)s"

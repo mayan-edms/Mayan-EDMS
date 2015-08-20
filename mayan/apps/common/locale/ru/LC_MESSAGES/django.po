@@ -1,25 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2011-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-01-17 07:03+0000\n"
+"PO-Revision-Date: 2015-08-20 22:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:55 settings.py:9
 msgid "Common"
@@ -187,12 +184,9 @@ msgstr ""
 #: settings.py:13
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Временный каталог, используемый сайтом для хранения миниатюр, превью и "
-"временных файлов. Если он не указан, он будет создан с использованием "
-"tempfile.mkdtemp ()"
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "Временный каталог, используемый сайтом для хранения миниатюр, превью и временных файлов. Если он не указан, он будет создан с использованием tempfile.mkdtemp ()"
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
@@ -235,37 +229,66 @@ msgid "None"
 msgstr "Ни один"
 
 #~ msgid "Anonymous user"
-#~ msgstr "Анонимный пользователь"
+#~ msgstr "Anonymous user"
+
+#~ msgid "Account"
+#~ msgstr "account"
+
+#~ msgid "Password"
+#~ msgstr "password"
+
+#~ msgid "Password hash"
+#~ msgstr "password hash"
+
+#~ msgid "Auto admin properties"
+#~ msgstr "auto admin properties"
+
+#~ msgid "Function found"
+#~ msgstr "function found"
+
+#~ msgid "Unable to remove %(selection)s."
+#~ msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
 #~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr "Другой пользователь укеазал тот же е-мейл."
+#~ msgstr "E-mail conflict, another user has that same email."
 
 #~ msgid "Current user's details updated."
-#~ msgstr "Данные пользователя обновлены."
+#~ msgstr "Current user's details updated."
+
+#~ msgid "Current user's locale profile details updated."
+#~ msgstr "Current user's details updated."
 
 #~ msgid "Email"
 #~ msgstr "Email"
 
+#~ msgid ""
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
+#~ msgstr ""
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
+
 #~ msgid "This account is inactive."
-#~ msgstr "Эта учетная запись неактивна."
+#~ msgstr "This account is inactive."
+
+#~ msgid "Change password"
+#~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Управление механизмом, используемым для аутентификации пользователя. "
-#~ "Возможные варианты: имя пользователя, адрес электронной почты"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
-#~ msgstr ""
-#~ "Разрешить, не прошедшим проверку, пользователям доступ ко всем "
-#~ "представлениям"
+#~ msgstr "Allow non authenticated users, access to all views"
 
 #~ msgid "Current user password change"
-#~ msgstr "Изменить пароль пользователя"
+#~ msgstr "Current user password change"
 
 #~ msgid "Your password has been successfully changed."
-#~ msgstr "Ваш пароль был изменен."
+#~ msgstr "Your password has been successfully changed."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."

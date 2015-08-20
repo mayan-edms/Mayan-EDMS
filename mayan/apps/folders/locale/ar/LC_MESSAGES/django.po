@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:46-0400\n"
-"PO-Revision-Date: 2015-05-15 23:05+0000\n"
+"PO-Revision-Date: 2015-08-20 22:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:33 links.py:15 links.py:43 models.py:51 permissions.py:7
 #: views.py:53
@@ -123,10 +121,10 @@ msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "خطأ بمسح المجلد %(folder)s  : %(error)s"
 
 #: views.py:124
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
-msgstr "حذف مجلدات جديدة"
+msgstr ""
 
 #: views.py:151
 #, python-format
@@ -177,45 +175,33 @@ msgid "Document: %(document)s delete error: %(error)s"
 msgstr "خطأ بمسح الوثيقة %(document)s  : %(error)s"
 
 #: views.py:278
-#, fuzzy, python-format
-#| msgid ""
-#| "Are you sure you wish to remove the documents: %(documents)s from the "
-#| "folder \"%(folder)s\"?"
+#, python-format
 msgid "Remove the selected document from the folder: %(folder)s?"
 msgid_plural "Remove the selected documents from the folder: %(folder)s?"
 msgstr[0] ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
 msgstr[1] ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
 msgstr[2] ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
 msgstr[3] ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
 msgstr[4] ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
 msgstr[5] ""
-"Are you sure you wish to remove the documents: %(documents)s from the folder "
-"\"%(folder)s\"?"
 
 #~ msgid "ACLs"
-#~ msgstr "قائمة الصلاحيات"
+#~ msgstr "ACLs"
+
+#~ msgid "Title"
+#~ msgstr "title"
 
 #~ msgid "Folder created successfully"
-#~ msgstr "تم انشاء المجلد بنجاح"
+#~ msgstr "Folder created successfully"
 
 #~ msgid "Folder edited successfully"
-#~ msgstr "المجلد تم تتعديله بنجاح"
+#~ msgstr "Folder edited successfully"
 
 #~ msgid "Error editing folder; %s"
-#~ msgstr "خطأ بتعديل المجلد %s"
+#~ msgstr "Error editing folder; %s"
 
 #~ msgid "Are you sure you with to delete the folder: %s?"
-#~ msgstr "هل أنت متأكد من حذف المجلد: %s ؟"
+#~ msgstr "Are you sure you with to delete the folder: %s?"
 
 #~ msgid "Add document to a folder"
 #~ msgstr "Add document to a folder"
@@ -225,6 +211,13 @@ msgstr[5] ""
 
 #~ msgid "Add documents: %s to folder."
 #~ msgstr "Add documents: %s to folder."
+
+#~ msgid ""
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
+#~ msgstr ""
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -257,12 +250,12 @@ msgstr[5] ""
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

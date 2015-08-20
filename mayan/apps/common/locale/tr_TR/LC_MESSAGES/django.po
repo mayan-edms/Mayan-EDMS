@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Caner Başaran <basaran.caner@gmail.com>, 2013
@@ -9,238 +9,274 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-01-17 07:03+0000\n"
+"POT-Creation-Date: 2015-05-15 19:00-0400\n"
+"PO-Revision-Date: 2015-08-20 21:52+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/mayan-"
-"edms/language/tr_TR/)\n"
-"Language: tr_TR\n"
+"Language-Team: Turkish (Turkey) (http://www.transifex.com/rosarior/mayan-edms/language/tr_TR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: tr_TR\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:55 settings.py:9
-msgid "Common"
-msgstr ""
-
-#: classes.py:49
+#: classes.py:40
 msgid "Available attributes: "
 msgstr ""
 
-#: forms.py:69
+#: forms.py:98
 msgid "Selection"
 msgstr ""
 
-#: generics.py:125
-#, python-format
-msgid "Unable to transfer selection: %s."
+#: forms.py:143
+msgid "Email"
 msgstr ""
 
-#: generics.py:149
+#: forms.py:146 models.py:36
+msgid "Password"
+msgstr ""
+
+#: forms.py:149
+msgid ""
+"Please enter a correct email and password. Note that the password field is "
+"case-sensitive."
+msgstr ""
+
+#: forms.py:151
+msgid "This account is inactive."
+msgstr ""
+
+#: links.py:10
+msgid "Change password"
+msgstr ""
+
+#: links.py:11
+msgid "User details"
+msgstr ""
+
+#: links.py:12
+msgid "Edit details"
+msgstr ""
+
+#: links.py:14
+msgid "About"
+msgstr ""
+
+#: links.py:15 views.py:279
+msgid "License"
+msgstr ""
+
+#: links.py:17
+msgid "Locale profile"
+msgstr ""
+
+#: links.py:18
+msgid "Edit locale profile"
+msgstr ""
+
+#: links.py:20
+msgid "Logout"
+msgstr ""
+
+#: models.py:28 models.py:31
+msgid "Anonymous user"
+msgstr ""
+
+#: models.py:35
+msgid "Account"
+msgstr ""
+
+#: models.py:37
+msgid "Password hash"
+msgstr ""
+
+#: models.py:40
+msgid "Auto admin properties"
+msgstr ""
+
+#: models.py:44
+msgid "File"
+msgstr ""
+
+#: models.py:45
+msgid "Filename"
+msgstr ""
+
+#: models.py:46
+msgid "Date time"
+msgstr ""
+
+#: models.py:49
+msgid "Shared uploaded file"
+msgstr ""
+
+#: models.py:50
+msgid "Shared uploaded files"
+msgstr ""
+
+#: models.py:61
+msgid "User"
+msgstr ""
+
+#: models.py:63
+msgid "Timezone"
+msgstr ""
+
+#: models.py:64
+msgid "Language"
+msgstr ""
+
+#: models.py:70
+msgid "User locale profile"
+msgstr ""
+
+#: models.py:71
+msgid "User locale profiles"
+msgstr ""
+
+#: settings.py:14
+msgid ""
+"Temporary directory used site wide to store thumbnails, previews and "
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr ""
+
+#: settings.py:48
+msgid ""
+"Controls the mechanism used to authenticated user.  Options are: username, "
+"email"
+msgstr ""
+
+#: settings.py:57
+msgid "Allow non authenticated users, access to all views"
+msgstr ""
+
+#: settings.py:66
+msgid "A storage backend that all workers can use to share files."
+msgstr ""
+
+#: utils.py:114
+msgid "Function found"
+msgstr ""
+
+#: views.py:44
+msgid "No action selected."
+msgstr ""
+
+#: views.py:48
+msgid "Must select at least one item."
+msgstr ""
+
+#: views.py:100
+#, python-format
+msgid "Unable to remove %(selection)s."
+msgstr ""
+
+#: views.py:125
+#, python-format
+msgid "Unable to add %(selection)s."
+msgstr ""
+
+#: views.py:138
 msgid "Add"
-msgstr "Ekle"
+msgstr ""
 
-#: generics.py:160
+#: views.py:149
 msgid "Remove"
-msgstr "Kaldır"
-
-#: generics.py:263
-#, python-format
-msgid "Error creating new %s."
 msgstr ""
 
-#: generics.py:266
-msgid "Error creating object."
+#: views.py:172
+msgid "Current user details"
 msgstr ""
 
-#: generics.py:276
-#, python-format
-msgid "%s created successfully."
+#: views.py:187
+msgid "Current user locale profile details"
 msgstr ""
 
-#: generics.py:281
-msgid "New object created successfully."
+#: views.py:204
+msgid "E-mail conflict, another user has that same email."
 msgstr ""
 
-#: generics.py:302
-#, python-format
-msgid "Error deleting %s."
+#: views.py:207
+msgid "Current user's details updated."
 msgstr ""
 
-#: generics.py:306
-msgid "Error deleting object."
+#: views.py:216
+msgid "Edit current user details"
 msgstr ""
 
-#: generics.py:315
-#, python-format
-msgid "%s deleted successfully."
+#: views.py:239
+msgid "Current user's locale profile details updated."
 msgstr ""
 
-#: generics.py:320
-msgid "Object deleted successfully."
+#: views.py:248
+msgid "Edit current user locale profile details"
 msgstr ""
 
-#: generics.py:338
+#: views.py:288
+msgid "Current user password change"
+msgstr ""
+
+#: views.py:303
+msgid "Your password has been successfully changed."
+msgstr ""
+
+#: views.py:314
 #, python-format
 msgid "Error saving %s details."
 msgstr ""
 
-#: generics.py:343
+#: views.py:316
 msgid "Error saving details."
 msgstr ""
 
-#: generics.py:355
+#: views.py:324
 #, python-format
 msgid "%s details saved successfully."
 msgstr ""
 
-#: generics.py:360
+#: views.py:326
 msgid "Details saved successfully."
 msgstr ""
 
-#: links.py:9
-msgid "About"
+#: views.py:338
+#, python-format
+msgid "Error creating new %s."
 msgstr ""
 
-#: links.py:12
-msgid "User details"
+#: views.py:340
+msgid "Error creating object."
 msgstr ""
 
-#: links.py:16
-msgid "Edit details"
+#: views.py:347
+#, python-format
+msgid "%s created successfully."
 msgstr ""
 
-#: links.py:19
-msgid "Locale profile"
+#: views.py:349
+msgid "New object created successfully."
 msgstr ""
 
-#: links.py:23
-msgid "Edit locale profile"
+#: views.py:367
+#, python-format
+msgid "Error deleting %s."
 msgstr ""
 
-#: links.py:27 views.py:110
-msgid "License"
+#: views.py:369
+msgid "Error deleting object."
 msgstr ""
 
-#: links.py:30
-msgid "Setup"
+#: views.py:374
+#, python-format
+msgid "%s deleted successfully."
 msgstr ""
 
-#: links.py:33 views.py:138
-msgid "Tools"
+#: views.py:376
+msgid "Object deleted successfully."
 msgstr ""
 
-#: literals.py:6
-msgid "Days"
-msgstr ""
-
-#: literals.py:7
-msgid "Hours"
-msgstr ""
-
-#: literals.py:8
-msgid "Minutes"
-msgstr ""
-
-#: models.py:23
-msgid "File"
-msgstr ""
-
-#: models.py:25
-msgid "Filename"
-msgstr ""
-
-#: models.py:27
-msgid "Date time"
-msgstr ""
-
-#: models.py:31
-msgid "Shared uploaded file"
-msgstr ""
-
-#: models.py:32
-msgid "Shared uploaded files"
-msgstr ""
-
-#: models.py:53
-msgid "User"
-msgstr ""
-
-#: models.py:57
-msgid "Timezone"
-msgstr ""
-
-#: models.py:60
-msgid "Language"
-msgstr ""
-
-#: models.py:67
-msgid "User locale profile"
-msgstr ""
-
-#: models.py:68
-msgid "User locale profiles"
-msgstr ""
-
-#: settings.py:13
-msgid ""
-"Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-
-#: settings.py:22
-msgid "A storage backend that all workers can use to share files."
-msgstr ""
-
-#: settings.py:28
-msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
-
-#: views.py:35
-msgid "Current user details"
-msgstr ""
-
-#: views.py:41
-msgid "Edit current user details"
-msgstr ""
-
-#: views.py:61
-msgid "Current user locale profile details"
-msgstr ""
-
-#: views.py:68
-msgid "Edit current user locale profile details"
-msgstr ""
-
-#: views.py:124
-msgid "Setup items"
-msgstr ""
-
-#: views.py:163
-msgid "No action selected."
-msgstr ""
-
-#: views.py:171
-msgid "Must select at least one item."
-msgstr ""
-
-#: widgets.py:50
+#: widgets.py:60
 msgid "None"
 msgstr ""
-
-#~ msgid "Anonymous user"
-#~ msgstr "Anonim kullanıcı"
-
-#~ msgid "Email"
-#~ msgstr "E-posta"
-
-#~ msgid "This account is inactive."
-#~ msgstr "Bu hesap etkin değildir."
-
-#~ msgid "Your password has been successfully changed."
-#~ msgstr "Parolanız başarılı olarak değiştirildi."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."

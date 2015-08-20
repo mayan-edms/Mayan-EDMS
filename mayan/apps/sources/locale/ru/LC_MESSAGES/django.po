@@ -1,36 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2011-2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:47-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"POT-Creation-Date: 2015-08-20 17:49-0400\n"
+"PO-Revision-Date: 2015-08-20 21:51+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:42 links.py:30 models.py:132 views.py:500
 msgid "Sources"
 msgstr ""
 
 #: apps.py:50
-#, fuzzy
 #| msgid "Create new document sources"
 msgid "Create a document source"
-msgstr "Создать новый источник документов"
+msgstr ""
 
 #: apps.py:52
 msgid ""
@@ -76,10 +71,8 @@ msgid "Default"
 msgstr ""
 
 #: links.py:22
-#, fuzzy
-#| msgid "Current document type"
 msgid "New document"
-msgstr "Текущий тип документа"
+msgstr ""
 
 #: links.py:25
 msgid "Clone"
@@ -366,28 +359,26 @@ msgid "View existing document sources"
 msgstr "Просмотр существующих источников документов"
 
 #: tasks.py:29
-#, fuzzy, python-format
+#, python-format
 #| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
-msgstr "Ошибка создания источника; %s"
+msgstr ""
 
 #: views.py:63
-#, fuzzy, python-format
-#| msgid "Create new transformation for source: %s"
+#, python-format
 msgid "Log entries for source: %s"
-msgstr "Создать новое преобразование для источника: %s"
+msgstr ""
 
 #: views.py:140 wizards.py:36
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 
 #: views.py:164 views.py:182
-#, fuzzy
 #| msgid "Document sources"
 msgid "Document properties"
-msgstr "Источники документов"
+msgstr ""
 
 #: views.py:172
 msgid "Files in staging path"
@@ -403,7 +394,8 @@ msgid "Upload a local document from source: %s"
 msgstr ""
 
 #: views.py:347
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:379
@@ -426,10 +418,10 @@ msgid "Create new source of type: %s"
 msgstr "Создать новый источник типа: %s"
 
 #: views.py:459
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete document sources"
 msgid "Delete the source: %s?"
-msgstr "Удалить источник документов "
+msgstr ""
 
 #: views.py:478
 #, python-format
@@ -460,63 +452,97 @@ msgstr ""
 msgid "Document upload wizard"
 msgstr ""
 
+#~ msgid "Transformations"
+#~ msgstr "transformations"
+
+#~ msgid "Add transformation"
+#~ msgstr "add transformation"
+
+#~ msgid "Title"
+#~ msgstr "title"
+
 #~ msgid "Enter a valid value."
-#~ msgstr "Введите допустимое значение."
+#~ msgstr "Enter a valid value."
+
+#~ msgid "Order"
+#~ msgstr "order"
+
+#~ msgid "Transformation"
+#~ msgstr "transformation"
+
+#~ msgid "Arguments"
+#~ msgstr "arguments"
 
 #~ msgid "Use dictionaries to indentify arguments, example: %s"
-#~ msgstr "Использование словарей для определения аргументов, например: %s"
+#~ msgstr "Use dictionaries to indentify arguments, example: %s"
+
+#~ msgid "Document source transformation"
+#~ msgstr "document source transformation"
+
+#~ msgid "Document source transformations"
+#~ msgstr "document source transformations"
+
+#~ msgid "Current document type"
+#~ msgstr "Current document type"
 
 #~ msgid "None"
-#~ msgstr "Нет"
+#~ msgstr "None"
 
 #~ msgid "Current metadata"
-#~ msgstr "Действующие метаданные"
+#~ msgstr "Current metadata"
+
+#~ msgid "No"
+#~ msgstr "None"
 
 #~ msgid "Source edited successfully"
-#~ msgstr "Источник успешно изменен"
+#~ msgstr "Source edited successfully"
 
 #~ msgid "Error editing source; %s"
-#~ msgstr "Ошибка редактирования источника; %s"
+#~ msgstr "Error editing source; %s"
 
 #~ msgid "Source \"%s\" deleted successfully."
-#~ msgstr "Источник \"%s\"удален."
+#~ msgstr "Source \"%s\" deleted successfully."
 
 #~ msgid "Error deleting source \"%(source)s\": %(error)s"
-#~ msgstr "Ошибка при удалении источника \"%(source)s\": %(error)s"
+#~ msgstr "Error deleting source \"%(source)s\": %(error)s"
 
 #~ msgid "Are you sure you wish to delete the source: %s?"
-#~ msgstr "Вы действительно хотите удалить источник: %s?"
+#~ msgstr "Are you sure you wish to delete the source: %s?"
 
 #~ msgid "Source created successfully"
-#~ msgstr "Источник создан"
+#~ msgstr "Source created successfully"
+
+#~ msgid "Transformations for: %s"
+#~ msgstr "transformations for: %s"
 
 #~ msgid "Source transformation edited successfully"
-#~ msgstr "Преобразование источника изменено"
+#~ msgstr "Source transformation edited successfully"
 
 #~ msgid "Error editing source transformation; %s"
-#~ msgstr "Ошибка редактирования преобразования источника; %s"
+#~ msgstr "Error editing source transformation; %s"
 
 #~ msgid "Edit transformation: %s"
-#~ msgstr "Изменить преобразование: %s"
+#~ msgstr "Edit transformation: %s"
 
 #~ msgid "Source transformation deleted successfully."
-#~ msgstr "Преобразование источника удалено."
+#~ msgstr "Source transformation deleted successfully."
 
 #~ msgid "Error deleting source transformation; %(error)s"
-#~ msgstr "Ошибка при удалении преобразования источника; %(error)s"
+#~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Вы действительно хотите удалить источник трансформации "
-#~ "\"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
-#~ msgstr "Преобразование источника создано"
+#~ msgstr "Source transformation created successfully"
 
 #~ msgid "Error creating source transformation; %s"
-#~ msgstr "Ошибка создания преобразования источника; %s"
+#~ msgstr "Error creating source transformation; %s"
+
+#~ msgid "Create new transformation for source: %s"
+#~ msgstr "Create new transformation for source: %s"
 
 #~ msgid "Upload sources"
 #~ msgstr "Upload sources"

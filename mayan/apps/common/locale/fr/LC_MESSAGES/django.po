@@ -12,11 +12,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
+"POT-Creation-Date: 2015-08-20 18:15-0400\n"
 "PO-Revision-Date: 2015-01-29 07:48+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
-"language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
 "Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -239,40 +239,11 @@ msgstr "Vous devez sélectionner au moins un élément."
 msgid "None"
 msgstr "Aucun"
 
-#~ msgid "Anonymous user"
-#~ msgstr "Utilisateur anonyme"
-
-#~ msgid "Account"
-#~ msgstr "Compte"
+#~ msgid "Email"
+#~ msgstr "adresse électronique"
 
 #~ msgid "Password"
 #~ msgstr "Mot de passe"
-
-#~ msgid "Password hash"
-#~ msgstr "Hachage de mot de passe"
-
-#~ msgid "Auto admin properties"
-#~ msgstr "Propriétés de l'administration automatique"
-
-#~ msgid "Function found"
-#~ msgstr "Fonction trouvée"
-
-#~ msgid "Unable to remove %(selection)s."
-#~ msgstr "Impossible de supprimer %(selection)s."
-
-#~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr ""
-#~ "Conflit d'adresse électronique: un autre utilisateur a cette adresse."
-
-#~ msgid "Current user's details updated."
-#~ msgstr "Les détails de l'utilisateur actuel ont été mis à jour."
-
-#~ msgid "Current user's locale profile details updated."
-#~ msgstr ""
-#~ "Détails des paramètres régionaux de l'utilisateur actuel mis à jour."
-
-#~ msgid "Email"
-#~ msgstr "adresse électronique"
 
 #~ msgid ""
 #~ "Please enter a correct email and password. Note that the password field "
@@ -290,6 +261,18 @@ msgstr "Aucun"
 #~ msgid "Logout"
 #~ msgstr "Déconnexion"
 
+#~ msgid "Anonymous user"
+#~ msgstr "Utilisateur anonyme"
+
+#~ msgid "Account"
+#~ msgstr "Compte"
+
+#~ msgid "Password hash"
+#~ msgstr "Hachage de mot de passe"
+
+#~ msgid "Auto admin properties"
+#~ msgstr "Propriétés de l'administration automatique"
+
 #~ msgid ""
 #~ "Controls the mechanism used to authenticated user.  Options are: "
 #~ "username, email"
@@ -300,6 +283,23 @@ msgstr "Aucun"
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr ""
 #~ "Autoriser les utilisateurs non-authentifiés, à accéder à tous les vues"
+
+#~ msgid "Function found"
+#~ msgstr "Fonction trouvée"
+
+#~ msgid "Unable to remove %(selection)s."
+#~ msgstr "Impossible de supprimer %(selection)s."
+
+#~ msgid "E-mail conflict, another user has that same email."
+#~ msgstr ""
+#~ "Conflit d'adresse électronique: un autre utilisateur a cette adresse."
+
+#~ msgid "Current user's details updated."
+#~ msgstr "Les détails de l'utilisateur actuel ont été mis à jour."
+
+#~ msgid "Current user's locale profile details updated."
+#~ msgstr ""
+#~ "Détails des paramètres régionaux de l'utilisateur actuel mis à jour."
 
 #~ msgid "Current user password change"
 #~ msgstr "Modifier le mot de passe de l'utilisateur courant"

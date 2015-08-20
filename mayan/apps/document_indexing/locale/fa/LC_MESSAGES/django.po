@@ -9,10 +9,10 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:45-0400\n"
-"PO-Revision-Date: 2015-05-15 23:05+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
+"POT-Creation-Date: 2015-08-20 18:11-0400\n"
+"PO-Revision-Date: 2015-06-20 05:50+0000\n"
+"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
 "language/fa/)\n"
 "Language: fa\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: admin.py:21
 msgid "None"
-msgstr ""
+msgstr "ناموجود"
 
 #: admin.py:23 apps.py:64 links.py:57 models.py:39
 msgid "Document types"
@@ -162,7 +162,7 @@ msgstr "اسناد پیوند"
 #: models.py:137
 #, python-format
 msgid "<%s Root>"
-msgstr ""
+msgstr "<%s Root>"
 
 #: models.py:142
 msgid "Index node template"
@@ -328,9 +328,6 @@ msgstr "اندیسهای شامل سند : %s"
 msgid "Root"
 msgstr "ریشه"
 
-#~ msgid "Enter a python string expression to be evaluated."
-#~ msgstr "یک رشته عبارت که قابل ارزیابی باشد وارد کنید."
-
 #~ msgid "Go up one level"
 #~ msgstr "بالا رفتن یک سطح"
 
@@ -342,6 +339,9 @@ msgstr "ریشه"
 
 #~ msgid "The name that will be visible to users."
 #~ msgstr "نامی که بوسیله کاربر قابل مشاهده است."
+
+#~ msgid "Enter a python string expression to be evaluated."
+#~ msgstr "یک رشته عبارت که قابل ارزیابی باشد وارد کنید."
 
 #~ msgid "Index created successfully."
 #~ msgstr "ایجاد موفق ایندکس"

@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2011-2012,2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-20 14:44-0400\n"
-"PO-Revision-Date: 2015-01-18 06:16+0000\n"
+"PO-Revision-Date: 2015-08-20 22:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:55 settings.py:9
@@ -35,10 +33,9 @@ msgid "Selection"
 msgstr "Selección"
 
 #: generics.py:125
-#, fuzzy, python-format
-#| msgid "Unable to add %(selection)s."
+#, python-format
 msgid "Unable to transfer selection: %s."
-msgstr "No se puede agregar %(selection)s."
+msgstr ""
 
 #: generics.py:149
 msgid "Add"
@@ -189,18 +186,13 @@ msgstr "Perfil de usuario local"
 #: settings.py:13
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"El directorio temporal se usa para almacenar miniaturas, previsualizaciones "
-"y archivos temporales.  Si no se especifica ninguno, se creará utilizando "
+"temporary files.  If none is specified, one will be created using "
 "tempfile.mkdtemp()"
+msgstr "El directorio temporal se usa para almacenar miniaturas, previsualizaciones y archivos temporales.  Si no se especifica ninguno, se creará utilizando tempfile.mkdtemp()"
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Un soporte de almacenamiento que todos los trabajadores puedan utilizar para "
-"compartir archivos."
+msgstr "Un soporte de almacenamiento que todos los trabajadores puedan utilizar para compartir archivos."
 
 #: settings.py:28
 msgid "An integer specifying how many objects should be displayed per page."
@@ -239,72 +231,66 @@ msgid "None"
 msgstr "Ninguno"
 
 #~ msgid "Anonymous user"
-#~ msgstr "Usuario anónimo"
+#~ msgstr "Anonymous user"
 
 #~ msgid "Account"
-#~ msgstr "Cuenta"
+#~ msgstr "account"
 
 #~ msgid "Password"
-#~ msgstr "Contraseña"
+#~ msgstr "password"
 
 #~ msgid "Password hash"
-#~ msgstr "Hash de la contraseña"
+#~ msgstr "password hash"
 
 #~ msgid "Auto admin properties"
-#~ msgstr "propiedades de administrador automático"
+#~ msgstr "auto admin properties"
 
 #~ msgid "Function found"
-#~ msgstr "función encontrada"
+#~ msgstr "function found"
 
 #~ msgid "Unable to remove %(selection)s."
-#~ msgstr "No se puede remover %(selection)s."
+#~ msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
 #~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr ""
-#~ "Conflicto de correo electrónico, otro usuario tiene ese mismo correo "
-#~ "electrónico."
+#~ msgstr "E-mail conflict, another user has that same email."
 
 #~ msgid "Current user's details updated."
-#~ msgstr "Datos del usuario actual actualizados."
+#~ msgstr "Current user's details updated."
 
 #~ msgid "Current user's locale profile details updated."
-#~ msgstr "Datos del usuario corriente actualizados."
+#~ msgstr "Current user's details updated."
 
 #~ msgid "Email"
-#~ msgstr "E-mail"
+#~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Introduzca una dirección de correo y contraseña válidos. Recuerde que la "
-#~ "contraseña es sensible a mayúsculas."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
-#~ msgstr "Esta cuenta está inactiva."
+#~ msgstr "This account is inactive."
 
 #~ msgid "Change password"
-#~ msgstr "Cambiar contraseña"
-
-#~ msgid "Logout"
-#~ msgstr "Cerrar sesión"
+#~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controla el mecanismo utilizado para el usuario autenticado. Las opciones "
-#~ "son: 'username' nombre de usuario, 'email' correo electrónico"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
-#~ msgstr ""
-#~ "Permita a los usuarios no autenticados el acceso a todas las pantallas"
+#~ msgstr "Allow non authenticated users, access to all views"
 
 #~ msgid "Current user password change"
-#~ msgstr "Cambio de contraseña de usuario actual"
+#~ msgstr "Current user password change"
 
 #~ msgid "Your password has been successfully changed."
-#~ msgstr "Su contraseña se ha modificado correctamente."
+#~ msgstr "Your password has been successfully changed."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."
