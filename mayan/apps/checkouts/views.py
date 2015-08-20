@@ -13,7 +13,7 @@ from documents.views import DocumentListView
 
 from acls.models import AccessControlList
 from common.generics import ConfirmView, SingleObjectCreateView
-from common.utils import encapsulate
+from common.utils import encapsulate, render_date_object
 from permissions import Permission
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
@@ -83,7 +83,7 @@ class CheckoutListView(DocumentListView):
     extra_context = {
         'title': _('Documents checked out'),
         'hide_links': True,
-        'extra_columns': [
+        'extra_columns': (
             {
                 'name': _('User'),
                 'attribute': encapsulate(
@@ -102,7 +102,7 @@ class CheckoutListView(DocumentListView):
                     lambda document: document.checkout_info().expiration_datetime
                 )
             },
-        ],
+        ),
     }
 
 
@@ -132,10 +132,14 @@ def checkout_info(request, document_pk):
             )
         )
         paragraphs.append(
-            _('Check out time: %s') % checkout_info.checkout_datetime
+            _(
+                'Check out time: %s'
+            ) % render_date_object(checkout_info.checkout_datetime)
         )
         paragraphs.append(
-            _('Check out expiration: %s') % checkout_info.expiration_datetime
+            _(
+                'Check out expiration: %s'
+            ) % render_date_object(checkout_info.expiration_datetime)
         )
         paragraphs.append(
             _('New versions allowed: %s') % (_('Yes') if not checkout_info.block_new_version else _('No'))

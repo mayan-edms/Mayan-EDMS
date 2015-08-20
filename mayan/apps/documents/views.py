@@ -21,7 +21,7 @@ from common.generics import (
     SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
-from common.utils import pretty_size
+from common.utils import pretty_size, render_date_object
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 )
@@ -268,10 +268,9 @@ def document_properties(request, document_id):
     document.add_as_recent_document_for_user(request.user)
 
     document_fields = [
-        {'label': _('Date added'), 'field': lambda x: x.date_added.date()},
         {
-            'label': _('Time added'),
-            'field': lambda x: unicode(x.date_added.time()).split('.')[0]
+            'label': _('Date added'),
+            'field': lambda document: render_date_object(document.date_added)
         },
         {'label': _('UUID'), 'field': 'uuid'},
     ]

@@ -6,7 +6,9 @@ import tempfile
 import types
 
 from django.conf import settings
+from django.utils import formats
 from django.utils.datastructures import MultiValueDict
+from django.utils.encoding import force_text
 from django.utils.http import urlquote as django_urlquote
 from django.utils.http import urlencode as django_urlencode
 
@@ -94,6 +96,10 @@ def pretty_size_10(size):
             ('B', 1000L), ('K', 1000000L), ('M', 1000000000L),
             ('G', 1000000000000L), ('T', 1000000000000000L)
         ])
+
+
+def render_date_object(date_time_object):
+    return force_text(formats.localize(date_time_object, use_l10n=True))
 
 
 def return_attrib(obj, attrib, arguments=None):
