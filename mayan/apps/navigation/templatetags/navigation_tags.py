@@ -64,7 +64,5 @@ def get_source_columns(source):
 
 @register.simple_tag(takes_context=True)
 def source_column_resolve(context, column):
-    if column.attribute:
-        return return_attrib(context['object'], column.attribute)
-    elif column.func:
-        return column.func(context=context)
+    context['column_result'] = column.resolve(context=context)
+    return ''

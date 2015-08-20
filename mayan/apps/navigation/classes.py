@@ -15,6 +15,7 @@ from django.utils.http import urlencode, urlquote
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
+from common.utils import return_attrib
 from permissions import Permission
 
 logger = logging.getLogger(__name__)
@@ -288,6 +289,14 @@ class SourceColumn(object):
         self.func = func
         self.__class__._registry.setdefault(source, [])
         self.__class__._registry[source].append(self)
+
+    def resolve(self, context):
+        if self.attribute:
+            result = return_attrib(context['object'], self.attribute)
+        elif self.func:
+            result = self.func(context=context)
+
+        return result
 
 
 class CombinedSource(object):

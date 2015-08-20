@@ -87,22 +87,22 @@
                                     {% endif %}
                                      {% if not hide_columns %}
                                         {% for column in object|get_source_columns %}
-                                            <td>{% source_column_resolve column=column %}</td>
+                                            <td>{% source_column_resolve column=column %}{{ column_result }}</td>
                                         {% endfor %}
                                     {% endif %}
-                                        {% for column in extra_columns %}
-                                            <td>{{ object|object_property:column.attribute }}</td>
-                                        {% endfor %}
-                                        {% if not hide_links %}
-                                            <td class="last">
-                                                {% get_menu_links 'object menu' source=object as resolved_links %}
-                                                {% for object_navigation_links in resolved_links %}
-                                                    {% with 'true' as horizontal %}
-                                                        {% include 'navigation/generic_navigation.html' %}
-                                                    {% endwith %}
-                                                {% endfor %}
-                                            </td>
-                                        {% endif %}
+                                    {% for column in extra_columns %}
+                                        <td>{{ object|object_property:column.attribute }}</td>
+                                    {% endfor %}
+                                    {% if not hide_links %}
+                                        <td class="last">
+                                            {% get_menu_links 'object menu' source=object as resolved_links %}
+                                            {% for object_navigation_links in resolved_links %}
+                                                {% with 'true' as horizontal %}
+                                                    {% include 'navigation/generic_navigation.html' %}
+                                                {% endwith %}
+                                            {% endfor %}
+                                        </td>
+                                    {% endif %}
                                     </tr>
                                 {% empty %}
                                     <tr><td class="text-center" colspan=99>{% trans 'No results' %}</td></tr>
