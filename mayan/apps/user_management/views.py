@@ -317,12 +317,6 @@ class GroupListView(SingleObjectListView):
     extra_context = {
         'hide_link': True,
         'title': _('Groups'),
-        'extra_columns': [
-            {
-                'name': _('Members'),
-                'attribute': 'user_set.count'
-            },
-        ],
     }
     model = Group
     view_permission = permission_group_view
