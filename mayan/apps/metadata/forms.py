@@ -10,65 +10,20 @@ from django.utils.module_loading import import_string
 from django.utils.translation import string_concat, ugettext_lazy as _
 
 from .classes import MetadataLookup
-from .models import MetadataType
+from .models import DocumentMetadata, MetadataType
 
 
 class MetadataForm(forms.Form):
-    @staticmethod
-    def comma_splitter(string):
-        splitter = shlex.shlex(string.encode('utf-8'), posix=True)
-        splitter.whitespace = ','.encode('utf-8')
-        splitter.whitespace_split = True
-        splitter.commenters = ''.encode('utf-8')
-        return list(splitter)
-
-    def clean_value(self):
-        metadata_type = MetadataType.objects.get(pk=self.cleaned_data['id'])
-
-        if metadata_type.validation:
-            validator = import_string(metadata_type.validation)()
-
-            try:
-                # If it is a parsing function we should get a value
-                # If it is a validation function we get nothing on success
-                result = validator.validate(self.cleaned_data['value'])
-            except Exception as exception:
-                # If it is a validation function and an exception is raise
-                # we wrap that into a new ValidationError exception
-                # If the function exception is a ValidationError itself the
-                # error messages will be in a 'messages' property, so we
-                # contatenate them.
-                # Otherwise we extract whatever single message the exception
-                # included.
-                try:
-                    message = ', '.join(exception.messages)
-                except AttributeError:
-                    message = unicode(exception)
-
-                raise ValidationError(
-                    _('Invalid value: %(message)s'), params={
-                        'message': message
-                    }, code='invalid'
-                )
-            else:
-                # Return the result if it was a parsing function
-                # If it was a validation function and passed correctly
-                # we return the original input value
-                return result or self.cleaned_data['value']
-        else:
-            # If a validator was never specified we return the original
-            # value
-            return self.cleaned_data['value']
-
     def __init__(self, *args, **kwargs):
         super(MetadataForm, self).__init__(*args, **kwargs)
 
         # Set form fields initial values
         if 'initial' in kwargs:
             self.metadata_type = kwargs['initial'].pop('metadata_type', None)
-            required = kwargs['initial'].pop('required', False)
+            self.document_type = kwargs['initial'].pop('document_type', None)
             required_string = ''
 
+            required = self.metadata_type.get_required_for(document_type=self.document_type)
             if required:
                 self.fields['value'].required = True
                 required_string = ' (%s)' % _('Required')
@@ -85,14 +40,10 @@ class MetadataForm(forms.Form):
 
             if self.metadata_type.lookup:
                 try:
-                    template = Template(self.metadata_type.lookup)
-                    context = Context(MetadataLookup.get_as_context())
-                    choices = MetadataForm.comma_splitter(
-                        template.render(context=context)
-                    )
                     self.fields['value'] = forms.ChoiceField(
                         label=self.fields['value'].label
                     )
+                    choices = self.metadata_type.get_lookup_values()
                     choices = zip(choices, choices)
                     if not required:
                         choices.insert(0, ('', '------'))
@@ -108,10 +59,9 @@ class MetadataForm(forms.Form):
 
             if self.metadata_type.default:
                 try:
-                    template = Template(self.metadata_type.default)
-                    context = Context()
-                    result = template.render(context=context)
-                    self.fields['value'].initial = result
+                    self.fields[
+                        'value'
+                    ].initial = self.metadata_type.get_default_value()
                 except Exception as exception:
                     self.fields['value'].initial = _(
                         'Default value error: %s'
@@ -119,6 +69,9 @@ class MetadataForm(forms.Form):
                     self.fields['value'].widget = forms.TextInput(
                         attrs={'readonly': 'readonly'}
                     )
+
+    def clean_value(self):
+        return self.metadata_type.validate_value(document_type=self.document_type, value=self.cleaned_data['value'])
 
     id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
 
@@ -147,7 +100,7 @@ class AddMetadataForm(forms.Form):
 
 class MetadataTypeForm(forms.ModelForm):
     class Meta:
-        fields = ('name', 'label', 'default', 'lookup', 'validation')
+        fields = ('name', 'label', 'default', 'lookup', 'validation', 'parser')
         model = MetadataType
 
     def __init__(self, *args, **kwargs):

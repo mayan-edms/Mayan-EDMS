@@ -1,14 +1,19 @@
 from __future__ import unicode_literals
 
+import shlex
+
 from django.core.exceptions import ValidationError
 from django.db import models
+from django.template import Context, Template
 from django.utils.encoding import python_2_unicode_compatible
+from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
 
+from .classes import MetadataLookup
 from .managers import MetadataTypeManager
-from .settings import setting_available_validators
+from .settings import setting_available_parsers, setting_available_validators
 
 
 def validation_choices():
@@ -18,11 +23,27 @@ def validation_choices():
     )
 
 
+def parser_choices():
+    return zip(
+        setting_available_parsers.value,
+        setting_available_parsers.value
+    )
+
+
 @python_2_unicode_compatible
 class MetadataType(models.Model):
     """
     Define a type of metadata
     """
+
+    @staticmethod
+    def comma_splitter(string):
+        splitter = shlex.shlex(string.encode('utf-8'), posix=True)
+        splitter.whitespace = ','.encode('utf-8')
+        splitter.whitespace_split = True
+        splitter.commenters = ''.encode('utf-8')
+        return list(splitter)
+
     name = models.CharField(
         max_length=48,
         help_text=_(
@@ -52,9 +73,19 @@ class MetadataType(models.Model):
         verbose_name=_('Lookup')
     )
     validation = models.CharField(
-        blank=True, choices=validation_choices(), max_length=64,
-        verbose_name=_('Validation function name')
+        blank=True, choices=validation_choices(),
+        help_text=_(
+            'The validator will reject data entry if the value entered does '
+            'not conform to the expected format.'
+        ), max_length=64, verbose_name=_('Validator')
     )
+    parser = models.CharField(
+        blank=True, choices=parser_choices(), help_text=_(
+            'The parser will reformat the value entered to conform to the '
+            'expected format.'
+        ), max_length=64, verbose_name=_('Parser')
+    )
+
     objects = MetadataTypeManager()
 
     def __str__(self):
@@ -63,6 +94,49 @@ class MetadataType(models.Model):
     def natural_key(self):
         return (self.name,)
 
+    def get_default_value(self):
+        template = Template(self.default)
+        context = Context()
+        return template.render(context=context)
+
+    def get_lookup_values(self):
+        template = Template(self.lookup)
+        context = Context(MetadataLookup.get_as_context())
+        return MetadataType.comma_splitter(template.render(context=context))
+
+    def get_required_for(self, document_type):
+        return self in document_type.metadata.filter(required=True)
+
+    def validate_value(self, document_type, value):
+        # Check default
+        if not value and self.default:
+            value = self.get_default_value()
+
+        if not value and self.get_required_for(document_type=document_type):
+            raise ValidationError(
+                {
+                    'value': _(
+                        'This metadata is required for this document type.'
+                    )
+                }
+            )
+
+        if self.lookup:
+            lookup_options = self.get_lookup_values()
+            if value not in lookup_options:
+                raise ValidationError(
+                    {'value': _('Value is not one of the provided options.')}
+                )
+
+        if self.validation:
+            validator = import_string(self.validation)()
+            validator.validate(value)
+
+        if self.parser:
+            parser = import_string(self.parser)()
+            value = parser.parse(value)
+
+        return value
     class Meta:
         ordering = ('label',)
         verbose_name = _('Metadata type')
@@ -87,14 +161,6 @@ class DocumentMetadata(models.Model):
     def __str__(self):
         return unicode(self.metadata_type)
 
-    def save(self, *args, **kwargs):
-        if self.metadata_type.pk not in self.document.document_type.metadata.values_list('metadata_type', flat=True):
-            raise ValidationError(
-                _('Metadata type is not valid for this document type.')
-            )
-
-        return super(DocumentMetadata, self).save(*args, **kwargs)
-
     def delete(self, enforce_required=True, *args, **kwargs):
         if enforce_required and self.metadata_type.pk in self.document.document_type.metadata.filter(required=True).values_list('metadata_type', flat=True):
             raise ValidationError(
@@ -103,9 +169,26 @@ class DocumentMetadata(models.Model):
 
         return super(DocumentMetadata, self).delete(*args, **kwargs)
 
+    def save(self, *args, **kwargs):
+        if self.metadata_type.pk not in self.document.document_type.metadata.values_list('metadata_type', flat=True):
+            raise ValidationError(
+                _('Metadata type is not valid for this document type.')
+            )
+
+        return super(DocumentMetadata, self).save(*args, **kwargs)
+
+    def clean_fields(self, *args, **kwargs):
+        super(DocumentMetadata, self).clean_fields(*args, **kwargs)
+
+        self.value = self.metadata_type.validate_value(
+            document_type=self.document.document_type, value=self.value
+        )
+
     @property
     def is_required(self):
-        return self.metadata_type in self.document.document_type.metadata.filter(required=True)
+        return self.metadata_type.get_required_for(
+            document_type=self.document.document_type
+        )
 
     class Meta:
         unique_together = ('document', 'metadata_type')

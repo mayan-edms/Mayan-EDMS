@@ -16,7 +16,7 @@ from .models import InteractiveSource
 
 
 class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
-    form_list = [DocumentTypeSelectForm, MetadataFormSet]
+    form_list = (DocumentTypeSelectForm, MetadataFormSet)
     template_name = 'appearance/generic_wizard.html'
     extra_context = {}
     view_permission = permission_document_create
@@ -54,8 +54,8 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
 
             for document_type_metadata_type in self.get_cleaned_data_for_step('0')['document_type'].metadata.all():
                 initial.append({
+                    'document_type': self.get_cleaned_data_for_step('0')['document_type'],
                     'metadata_type': document_type_metadata_type.metadata_type,
-                    'required': document_type_metadata_type.required,
                 })
 
             return initial

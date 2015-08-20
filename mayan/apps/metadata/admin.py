@@ -6,7 +6,9 @@ from .models import MetadataType
 
 
 class MetadataTypeAdmin(admin.ModelAdmin):
-    list_display = ('name', 'label', 'default', 'lookup', 'validation')
+    list_display = (
+        'name', 'label', 'default', 'lookup', 'validation', 'parser'
+    )
 
 
 admin.site.register(MetadataType, MetadataTypeAdmin)
