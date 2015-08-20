@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:11-0400\n"
+"POT-Creation-Date: 2015-08-20 14:46-0400\n"
 "PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -24,8 +24,8 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:33 links.py:15 links.py:43 models.py:35 permissions.py:7
-#: views.py:83
+#: apps.py:33 links.py:15 links.py:43 models.py:51 permissions.py:7
+#: views.py:53
 msgid "Folders"
 msgstr "Katalogi"
 
@@ -33,11 +33,15 @@ msgstr "Katalogi"
 msgid "Created"
 msgstr "utworzony"
 
-#: apps.py:58 models.py:17
+#: apps.py:58 models.py:21
 msgid "User"
 msgstr "Użytkownik"
 
-#: forms.py:34 models.py:34
+#: apps.py:60 links.py:46 models.py:26
+msgid "Documents"
+msgstr "Dokumenty"
+
+#: forms.py:34 models.py:50
 msgid "Folder"
 msgstr "Katalog"
 
@@ -49,7 +53,7 @@ msgstr "Dodać do folderu"
 msgid "Add to folder"
 msgstr "Dodać do folderu"
 
-#: links.py:26 views.py:114
+#: links.py:26 views.py:90
 msgid "Create folder"
 msgstr "Stworzyć folder"
 
@@ -65,15 +69,11 @@ msgstr "Usuń z folderu"
 msgid "Edit"
 msgstr "Edytuj"
 
-#: links.py:46 models.py:22 views.py:75 views.py:258
-msgid "Documents"
-msgstr "Dokumenty"
-
-#: models.py:15
+#: models.py:19
 msgid "Label"
 msgstr ""
 
-#: models.py:19
+#: models.py:23
 msgid "Datetime created"
 msgstr "Data utworzenia"
 
@@ -105,78 +105,78 @@ msgstr "Dodaj dokumenty do istniejących katalogów"
 msgid "Primary key of the document to be added."
 msgstr ""
 
-#: views.py:44
+#: views.py:43
 #, python-format
 msgid "Edit folder: %s"
 msgstr "edytuj katalog: %s"
 
-#: views.py:107
+#: views.py:83
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Katalog o nazwie:%s już istnieje."
 
-#: views.py:136
+#: views.py:112
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Katalog: %s został usunięty."
 
-#: views.py:138
+#: views.py:114
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Katalog: %(folder)s błąd usuwania: %(error)s"
 
-#: views.py:148
+#: views.py:124
 #, fuzzy, python-format
 #| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr "Usuń nowe katalogi"
 
-#: views.py:175
+#: views.py:151
 #, python-format
 msgid "Documents in folder: %s"
 msgstr "Dokumenty w katalogu: %s"
 
-#: views.py:188
+#: views.py:164
 msgid "Must provide at least one document."
 msgstr "Musisz podać co najmniej jeden dokument."
 
-#: views.py:207
+#: views.py:183
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Dokument :  %(document)s pomyślnie dodano do katalogu: %(folder)s."
 
-#: views.py:210
+#: views.py:186
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Dokument: %(document)s jest już w katalogu: %(folder)s."
 
-#: views.py:227
+#: views.py:203
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
 msgstr[0] "Dodaj dokument do katalogu"
 msgstr[1] "Dodaj dokumenty do katalogu"
 msgstr[2] "Dodaj dokumenty do katalogu"
 
-#: views.py:268
+#: views.py:234
 #, python-format
 msgid "Folders containing document: %s"
 msgstr "Katalogi zawierające dokument: %s"
 
-#: views.py:282
+#: views.py:248
 msgid "Must provide at least one folder document."
 msgstr "Musisz podać conajmiej jeden katalog dokumentów."
 
-#: views.py:300
+#: views.py:266
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Pomyślnie usunięto dokument: %s. "
 
-#: views.py:302
+#: views.py:268
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Dokument: %(document)s błąd usuwania: %(error)s"
 
-#: views.py:312
+#: views.py:278
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to remove the selected document from the folder: "

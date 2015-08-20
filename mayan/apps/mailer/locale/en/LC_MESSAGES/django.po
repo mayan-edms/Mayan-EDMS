@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:11-0400\n"
+"POT-Creation-Date: 2015-08-20 14:46-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,6 +19,14 @@ msgstr ""
 
 #: apps.py:25
 msgid "Mailer"
+msgstr ""
+
+#: apps.py:31
+msgid "Date and time"
+msgstr ""
+
+#: apps.py:35 models.py:16
+msgid "Message"
 msgstr ""
 
 #: forms.py:23
@@ -65,10 +73,6 @@ msgstr ""
 
 #: models.py:13
 msgid "Date time"
-msgstr ""
-
-#: models.py:16
-msgid "Message"
 msgstr ""
 
 #: models.py:22

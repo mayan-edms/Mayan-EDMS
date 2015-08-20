@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:10-0400\n"
+"POT-Creation-Date: 2015-08-20 14:45-0400\n"
 "PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
@@ -21,8 +21,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:78 apps.py:315 models.py:170 permissions.py:7 settings.py:16
-#: views.py:939
+#: apps.py:78 apps.py:140 apps.py:342 models.py:173 permissions.py:7
+#: settings.py:16
 msgid "Documents"
 msgstr "文档"
 
@@ -46,7 +46,7 @@ msgstr ""
 msgid "The MIME type of any of the versions of a document"
 msgstr ""
 
-#: apps.py:101 search.py:18 views.py:544 views.py:1139
+#: apps.py:101 apps.py:162 search.py:18 views.py:562
 msgid "MIME type"
 msgstr "MIME类型"
 
@@ -54,19 +54,35 @@ msgstr "MIME类型"
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:137 apps.py:140
+#: apps.py:135 apps.py:150
 msgid "Type"
 msgstr ""
 
-#: apps.py:143
+#: apps.py:145 models.py:602
+msgid "Enabled"
+msgstr ""
+
+#: apps.py:153
 msgid "Date time trashed"
 msgstr ""
 
-#: apps.py:318
+#: apps.py:158
+msgid "Time and date"
+msgstr ""
+
+#: apps.py:166 views.py:563
+msgid "Encoding"
+msgstr ""
+
+#: apps.py:170 models.py:337
+msgid "Comment"
+msgstr "评论"
+
+#: apps.py:345
 msgid "Document tendencies"
 msgstr "文档趋势"
 
-#: apps.py:322
+#: apps.py:349
 msgid "Document usage"
 msgstr "文档使用情况"
 
@@ -111,11 +127,11 @@ msgstr "快速文档重命名"
 msgid "Page range"
 msgstr "页范围"
 
-#: forms.py:126
+#: forms.py:117
 msgid "Compress"
 msgstr "压缩"
 
-#: forms.py:128
+#: forms.py:119
 #, fuzzy
 #| msgid ""
 #| "Download the document in the original format or in a compressed manner.  "
@@ -130,11 +146,11 @@ msgstr ""
 "以原始格式或者压缩方式下载文档。此选项仅仅在下载一个文档时候有效，对多个文"
 "档，总是以压缩文件方式下载。"
 
-#: forms.py:135
+#: forms.py:126
 msgid "Compressed filename"
 msgstr "压缩的文件名"
 
-#: forms.py:138
+#: forms.py:129
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
@@ -156,7 +172,7 @@ msgstr ""
 msgid "Versions"
 msgstr ""
 
-#: links.py:54 views.py:287
+#: links.py:54 views.py:295
 msgid "Pages"
 msgstr "页面"
 
@@ -180,7 +196,7 @@ msgstr ""
 msgid "Change type"
 msgstr ""
 
-#: links.py:82 links.py:115 links.py:128 views.py:602
+#: links.py:82 links.py:115 links.py:128 views.py:620
 msgid "Download"
 msgstr "下载"
 
@@ -189,7 +205,7 @@ msgid "Print"
 msgstr ""
 
 #: links.py:90 links.py:119
-msgid "Reset page count"
+msgid "Recalculate page count"
 msgstr ""
 
 #: links.py:94 links.py:123
@@ -200,7 +216,7 @@ msgstr ""
 msgid "All documents"
 msgstr ""
 
-#: links.py:136 models.py:772 views.py:243
+#: links.py:136 models.py:775 views.py:252
 msgid "Recent documents"
 msgstr ""
 
@@ -240,7 +256,7 @@ msgstr ""
 msgid "Next page"
 msgstr ""
 
-#: links.py:187 models.py:169 models.py:328 models.py:758 views.py:542
+#: links.py:187 models.py:172 models.py:331 models.py:761 views.py:560
 msgid "Document"
 msgstr ""
 
@@ -268,7 +284,7 @@ msgstr ""
 msgid "Revert"
 msgstr ""
 
-#: links.py:230 views.py:980
+#: links.py:230 views.py:997
 msgid "Create document type"
 msgstr ""
 
@@ -284,7 +300,7 @@ msgstr ""
 msgid "Filenames"
 msgstr ""
 
-#: links.py:260 links.py:265 views.py:942
+#: links.py:260 links.py:265 views.py:959
 msgid "Document types"
 msgstr ""
 
@@ -319,7 +335,7 @@ msgstr "删除文档类型"
 msgid "Delete time unit"
 msgstr "删除文档"
 
-#: models.py:120 models.py:135 models.py:594 search.py:15
+#: models.py:120 models.py:135 models.py:597 search.py:15
 msgid "Document type"
 msgstr "文档类型"
 
@@ -351,78 +367,77 @@ msgstr ""
 msgid "Date and time trashed"
 msgstr ""
 
-#: models.py:161
+#: models.py:162
+msgid ""
+"A document stub is a document with an entry on the database but no file "
+"uploaded. This could be an interrupted upload or a deferred upload via the "
+"API."
+msgstr ""
+
+#: models.py:164
 msgid "Is stub?"
 msgstr ""
 
-#: models.py:188
+#: models.py:191
 #, fuzzy, python-format
 #| msgid "Document types: %d"
 msgid "Document stub, id: %d"
 msgstr "文档类型：%d"
 
-#: models.py:331
+#: models.py:334
 msgid "Timestamp"
 msgstr ""
 
-#: models.py:334 views.py:1147
-msgid "Comment"
-msgstr "评论"
-
-#: models.py:340
+#: models.py:343
 msgid "File"
 msgstr ""
 
-#: models.py:349 views.py:286
+#: models.py:352 views.py:294
 msgid "Checksum"
 msgstr "校验码"
 
-#: models.py:353 models.py:354 models.py:618
+#: models.py:356 models.py:357 models.py:621
 msgid "Document version"
 msgstr ""
 
-#: models.py:597
+#: models.py:600
 msgid "Filename"
 msgstr "文件名"
 
-#: models.py:599 views.py:992
-msgid "Enabled"
-msgstr ""
-
-#: models.py:607
+#: models.py:610
 msgid "Document type quick rename filename"
 msgstr ""
 
-#: models.py:608
+#: models.py:611
 msgid "Document types quick rename filenames"
 msgstr ""
 
-#: models.py:621
+#: models.py:624
 msgid "Page number"
 msgstr ""
 
-#: models.py:626
+#: models.py:629
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "文档%(document)s页%(page_num)d超出%(total_pages)d"
 
-#: models.py:635
+#: models.py:638
 msgid "Document page"
 msgstr ""
 
-#: models.py:636
+#: models.py:639
 msgid "Document pages"
 msgstr ""
 
-#: models.py:756
+#: models.py:759
 msgid "User"
 msgstr ""
 
-#: models.py:761
+#: models.py:764
 msgid "Accessed"
 msgstr ""
 
-#: models.py:771
+#: models.py:774
 msgid "Recent document"
 msgstr ""
 
@@ -440,7 +455,7 @@ msgstr "删除文档"
 msgid "Trash documents"
 msgstr "变换文档"
 
-#: permissions.py:19 views.py:601
+#: permissions.py:19 views.py:619
 msgid "Download documents"
 msgstr "下载文档"
 
@@ -458,9 +473,9 @@ msgstr "编辑文档属性"
 
 #: permissions.py:31
 #, fuzzy
-#| msgid "Create documents"
-msgid "Can print documents"
-msgstr "创建文档"
+#| msgid "Edit documents"
+msgid "Print documents"
+msgstr "编辑文档"
 
 #: permissions.py:34
 #, fuzzy
@@ -534,45 +549,43 @@ msgstr ""
 msgid "List of supported document languages."
 msgstr ""
 
-#: statistics.py:48
+#: statistics.py:49
 #, python-format
 msgid "Document types: %d"
 msgstr "文档类型：%d"
 
-#: statistics.py:55
+#: statistics.py:58
 #, python-format
 msgid "Minimum amount of pages per document: %d"
 msgstr "每个文档的最小页数： %d"
 
-#: statistics.py:58
+#: statistics.py:61
 #, python-format
 msgid "Maximum amount of pages per document: %d"
 msgstr "每个文档的最大页数：%d"
 
-#: statistics.py:61
+#: statistics.py:64
 #, python-format
 msgid "Average amount of pages per document: %f"
 msgstr "每个文档的平均页数：%f"
 
-#: statistics.py:75
+#: statistics.py:80
 #, python-format
 msgid "Documents in database: %d"
 msgstr "数据库中文档数：%d"
 
-#: statistics.py:80
+#: statistics.py:87
 #, python-format
 msgid "Documents in storage: %d"
 msgstr "存储中文档数：%d"
 
-#: statistics.py:84
-#, python-format
-msgid ""
-"Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d "
-"bytes"
-msgstr ""
-"存储使用空间：%(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d字节"
+#: statistics.py:91
+#, fuzzy, python-format
+#| msgid "Documents in storage: %d"
+msgid "Space used in storage: %s"
+msgstr "存储中文档数：%d"
 
-#: statistics.py:98
+#: statistics.py:100
 #, python-format
 msgid "Document pages in database: %d"
 msgstr "数据库中文档页数：%d"
@@ -619,165 +632,161 @@ msgstr "删除文档"
 msgid "Restore the selected documents?"
 msgstr "删除文档"
 
-#: views.py:200
+#: views.py:212
 #, fuzzy, python-format
 #| msgid "Transform documents"
 msgid "Pages for document: %s"
 msgstr "变换文档"
 
-#: views.py:218
+#: views.py:227
 #, fuzzy, python-format
 #| msgid "documents of type \"%s\""
 msgid "Documents of type: %s"
 msgstr "documents of type \"%s\""
 
-#: views.py:224
+#: views.py:233
 msgid "Empty trash?"
 msgstr ""
 
-#: views.py:235
+#: views.py:244
 #, fuzzy
 #| msgid "Document deleted successfully."
 msgid "Trash emptied successfully"
 msgstr "文档删除成功"
 
-#: views.py:263
+#: views.py:273
 msgid "Date added"
 msgstr "添加日期"
 
-#: views.py:265
-msgid "Time added"
-msgstr "添加时间"
-
-#: views.py:268
+#: views.py:276
 msgid "UUID"
 msgstr "UUID"
 
-#: views.py:273
+#: views.py:281
 msgid "File mimetype"
 msgstr "文件mimetype"
 
-#: views.py:274 views.py:278
+#: views.py:282 views.py:286
 msgid "None"
 msgstr "无"
 
-#: views.py:277
+#: views.py:285
 msgid "File encoding"
 msgstr ""
 
-#: views.py:281
+#: views.py:289
 msgid "File size"
 msgstr "文件大小"
 
-#: views.py:284
+#: views.py:292
 msgid "Exists in storage"
 msgstr "在存储中存在"
 
-#: views.py:285
+#: views.py:293
 msgid "File path in storage"
 msgstr "在存储中的文件路径"
 
-#: views.py:299
+#: views.py:307
 #, python-format
 msgid "Properties for document: %s"
 msgstr ""
 
-#: views.py:323
+#: views.py:331
 #, python-format
 msgid "Preview of document: %s"
 msgstr ""
 
-#: views.py:338 views.py:435 views.py:629 views.py:681
+#: views.py:346 views.py:447 views.py:701
 msgid "Must provide at least one document."
 msgstr "必须至少提供一个文档"
 
-#: views.py:359
+#: views.py:367
 #, fuzzy
 #| msgid "Document deleted successfully."
 msgid "Document moved to trash successfully."
 msgstr "文档删除成功"
 
-#: views.py:361
+#: views.py:369
 #, fuzzy, python-format
 #| msgid "Document: %(document)s delete error: %(error)s"
 msgid "Document: %(document)s error moving to trash: %(error)s"
 msgstr "文档%(document)s删除出错: %(error)s"
 
-#: views.py:372
+#: views.py:380
 msgid "Move the selected document to the trash ?"
 msgid_plural "Move the selected documents to the trash ?"
 msgstr[0] ""
 
-#: views.py:413
+#: views.py:425
 #, python-format
 msgid "Document \"%s\" edited successfully."
 msgstr "文档\"%s\"编辑成功。"
 
-#: views.py:422
+#: views.py:434
 #, python-format
 msgid "Edit properties of document: %s"
 msgstr ""
 
-#: views.py:455
+#: views.py:471
 msgid "Document type changed successfully."
 msgstr ""
 
-#: views.py:462
+#: views.py:478
 msgid "Submit"
 msgstr ""
 
-#: views.py:466
+#: views.py:482
 msgid "Change the type of the selected document."
 msgid_plural "Change the type of the selected documents."
 msgstr[0] ""
 
-#: views.py:534
+#: views.py:552
 msgid "Documents to be downloaded"
 msgstr ""
 
-#: views.py:543
+#: views.py:561
 msgid "Date and time"
 msgstr ""
 
-#: views.py:545 views.py:1143
-msgid "Encoding"
-msgstr ""
-
-#: views.py:604
+#: views.py:622
 msgid "Return"
 msgstr "返回"
 
-#: views.py:646
-msgid "Document queued for page count reset."
-msgstr ""
-
 #: views.py:647
-msgid "Documents queued for page count reset."
+msgid "At least one document must be selected."
 msgstr ""
 
-#: views.py:656
+#: views.py:664
+msgid "Document queued for page count recalculation."
+msgstr ""
+
+#: views.py:665
+msgid "Documents queued for page count recalculation."
+msgstr ""
+
+#: views.py:674
 #, fuzzy
 #| msgid "Are you sure you wish to reset the page count of this document?"
-msgid "Reset the page count of the selected document?"
-msgid_plural "Reset the page count of the selected documents?"
+msgid "Recalculation the page count of the selected document?"
+msgid_plural "Recalculation the page count of the selected documents?"
 msgstr[0] ""
 "Are you sure you wish to update the page count for the office documents (%d)?"
 
-#: views.py:698
+#: views.py:718
 #, python-format
 msgid ""
 "Error deleting the page transformations for document: %(document)s; "
 "%(error)s."
 msgstr "删除文档: %(document)s变换页数失败%(error)s"
 
-#: views.py:701
+#: views.py:721
 #, python-format
 msgid ""
 "All the page transformations for document: %s, have been deleted "
 "successfully."
 msgstr "文档: %s的变换页数已经成功删除"
 
-#: views.py:710
+#: views.py:730
 #, fuzzy
 #| msgid ""
 #| "Are you sure you wish to clear all the page transformations for "
@@ -788,70 +797,61 @@ msgstr[0] ""
 "Are you sure you wish to clear all the page transformations for documents: "
 "%s?"
 
-#: views.py:739
+#: views.py:759
 #, python-format
 msgid "Details for: %s"
 msgstr ""
 
-#: views.py:773
+#: views.py:793
 msgid "There are no more pages in this document"
 msgstr "此文档中无更多页"
 
-#: views.py:791
+#: views.py:811
 msgid "You are already at the first page of this document"
 msgstr "你已经在此文档的第一页了"
 
-#: views.py:927
+#: views.py:947
 #, python-format
 msgid "Print: %s"
 msgstr ""
 
-#: views.py:953
+#: views.py:970
 msgid "All documents of this type will be deleted too."
 msgstr ""
 
-#: views.py:955
+#: views.py:972
 #, fuzzy, python-format
 #| msgid "Delete document types"
 msgid "Delete the document type: %s?"
 msgstr "删除文档类型"
 
-#: views.py:968
+#: views.py:985
 #, python-format
 msgid "Edit document type: %s"
 msgstr ""
 
-#: views.py:999
+#: views.py:1013
 #, python-format
 msgid "Filenames for document type: %s"
 msgstr ""
 
-#: views.py:1019
-msgid "Document type filename edited successfully"
-msgstr "文档类型文件名编辑成功"
-
-#: views.py:1022
-#, python-format
-msgid "Error editing document type filename; %s"
-msgstr "编辑文档类型文件名%s失败"
-
-#: views.py:1032
+#: views.py:1038
 #, python-format
 msgid "Edit filename \"%(filename)s\" from document type \"%(document_type)s\""
 msgstr ""
 
-#: views.py:1050
+#: views.py:1056
 #, python-format
 msgid "Document type filename: %s deleted successfully."
 msgstr "文档类型文件名: %s删除成功"
 
-#: views.py:1052
+#: views.py:1058
 #, python-format
 msgid ""
 "Document type filename: %(document_type_filename)s delete error: %(error)s"
 msgstr "文档类型文件名 %(document_type_filename)s删除失败: %(error)s"
 
-#: views.py:1064
+#: views.py:1070
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to delete the filename: %(filename)s, from document "
@@ -860,57 +860,53 @@ msgid ""
 "Delete the filename: %(filename)s, from document type \"%(document_type)s\"?"
 msgstr "确定要删除文档类型 \"%(document_type)s\"的文件名: %(filename)s么？"
 
-#: views.py:1088
+#: views.py:1094
 msgid "Document type filename created successfully"
 msgstr "文档类型文件名创建成功"
 
-#: views.py:1091
+#: views.py:1097
 #, python-format
 msgid "Error creating document type filename; %(error)s"
 msgstr "创建文档类型文件名失败 %(error)s"
 
-#: views.py:1100
+#: views.py:1106
 #, python-format
 msgid "Create filename for document type: %s"
 msgstr ""
 
-#: views.py:1111
+#: views.py:1117
 #, fuzzy
 #| msgid "Document page edited successfully."
 msgid "Document cache clearing queued successfully."
 msgstr "文档页面修改成功"
 
-#: views.py:1117
+#: views.py:1123
 #, fuzzy
 #| msgid "Clear the document image cache"
 msgid "Clear the document cache?"
 msgstr "清除文档预览图片缓存"
 
-#: views.py:1135
-msgid "Time and date"
-msgstr ""
-
-#: views.py:1154
+#: views.py:1144
 #, python-format
 msgid "Versions of document: %s"
 msgstr ""
 
-#: views.py:1174
+#: views.py:1164
 msgid "Document version reverted successfully"
 msgstr "文档版本恢复成功"
 
-#: views.py:1176
+#: views.py:1166
 #, python-format
 msgid "Error reverting document version; %s"
 msgstr "恢复文档版本失败%s"
 
-#: views.py:1183
+#: views.py:1173
 #, fuzzy
 #| msgid "Revert documents to a previous version"
 msgid "Revert to this version?"
 msgstr "恢复文档到前一版本"
 
-#: views.py:1184
+#: views.py:1174
 msgid "All later version after this one will be deleted too."
 msgstr "此版本以后的所有版本将被删除"
 
@@ -922,6 +918,26 @@ msgstr ""
 #: widgets.py:100
 msgid "Document page image"
 msgstr ""
+
+#, fuzzy
+#~| msgid "Create documents"
+#~ msgid "Can print documents"
+#~ msgstr "创建文档"
+
+#~ msgid ""
+#~ "Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), "
+#~ "%(bytes)d bytes"
+#~ msgstr ""
+#~ "存储使用空间：%(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d字节"
+
+#~ msgid "Time added"
+#~ msgstr "添加时间"
+
+#~ msgid "Document type filename edited successfully"
+#~ msgstr "文档类型文件名编辑成功"
+
+#~ msgid "Error editing document type filename; %s"
+#~ msgstr "编辑文档类型文件名%s失败"
 
 #~ msgid "Metadata type"
 #~ msgstr "Metadata类型"

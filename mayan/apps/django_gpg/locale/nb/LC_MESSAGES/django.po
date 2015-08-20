@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:09-0400\n"
+"POT-Creation-Date: 2015-08-20 14:44-0400\n"
 "PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Norwegian Bokmål (http://www.transifex.com/projects/p/mayan-"
@@ -23,8 +23,40 @@ msgstr ""
 msgid "Unknown"
 msgstr ""
 
-#: apps.py:17
+#: apps.py:20
 msgid "Django GPG"
+msgstr ""
+
+#: apps.py:25 apps.py:32
+msgid "ID"
+msgstr ""
+
+#: apps.py:27
+msgid "Owner"
+msgstr ""
+
+#: apps.py:35
+msgid "Type"
+msgstr ""
+
+#: apps.py:37
+msgid "Creation date"
+msgstr ""
+
+#: apps.py:43
+msgid "Expiration date"
+msgstr ""
+
+#: apps.py:44
+msgid "No expiration"
+msgstr ""
+
+#: apps.py:46
+msgid "Length"
+msgstr ""
+
+#: apps.py:48
+msgid "Identities"
 msgstr ""
 
 #: forms.py:9
@@ -35,11 +67,11 @@ msgstr ""
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr ""
 
-#: links.py:14 views.py:71
+#: links.py:14 views.py:83
 msgid "Private keys"
 msgstr ""
 
-#: links.py:17 views.py:74
+#: links.py:17 views.py:78
 msgid "Public keys"
 msgstr ""
 
@@ -52,7 +84,7 @@ msgid "Query keyservers"
 msgstr ""
 
 #: links.py:30
-msgid "Import"
+msgid "Download"
 msgstr ""
 
 #: links.py:35 permissions.py:7
@@ -131,83 +163,51 @@ msgstr ""
 msgid "Path to the GPG binary."
 msgstr ""
 
-#: views.py:39
+#: views.py:38
 #, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
-#: views.py:49
+#: views.py:48
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
-#: views.py:58
+#: views.py:57
 msgid "Import key"
 msgstr ""
 
-#: views.py:59
+#: views.py:58
 #, python-format
 msgid "Import key ID: %s?"
 msgstr ""
 
-#: views.py:82
-msgid "Key ID"
-msgstr ""
-
-#: views.py:86
-msgid "Owner"
-msgstr ""
-
-#: views.py:106
+#: views.py:102
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr ""
 
-#: views.py:113
+#: views.py:109
 msgid "Delete key"
 msgstr ""
 
-#: views.py:116
+#: views.py:112
 #, python-format
 msgid ""
 "Delete key %s? If you delete a public key that is part of a public/private "
 "pair the private key will be deleted as well."
 msgstr ""
 
-#: views.py:135
+#: views.py:136
+msgid "Search"
+msgstr ""
+
+#: views.py:138
 msgid "Query key server"
 msgstr ""
 
 #: views.py:148
-msgid "results"
-msgstr ""
-
-#: views.py:153
-msgid "ID"
-msgstr ""
-
-#: views.py:159
-msgid "Type"
-msgstr ""
-
-#: views.py:163
-msgid "Creation date"
-msgstr ""
-
-#: views.py:169
-msgid "Expiration date"
-msgstr ""
-
-#: views.py:171
-msgid "No expiration"
-msgstr ""
-
-#: views.py:175
-msgid "Length"
-msgstr ""
-
-#: views.py:179
-msgid "Identities"
+msgid "Key query results"
 msgstr ""
 
 #~ msgid "private keys"

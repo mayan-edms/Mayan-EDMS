@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:10-0400\n"
+"POT-Creation-Date: 2015-08-20 14:45-0400\n"
 "PO-Revision-Date: 2015-03-01 19:40+0000\n"
 "Last-Translator: Annunnaky <doublemiu@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -20,61 +20,61 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:35
+#: apps.py:34
 #, fuzzy
 #| msgid "Document types"
 msgid "Document states"
 msgstr "Typy dokumentu"
 
-#: apps.py:41
+#: apps.py:40
 msgid "Initial state"
 msgstr "Stan początkowy"
 
-#: apps.py:43 apps.py:55 apps.py:67 apps.py:74
+#: apps.py:41 apps.py:51 apps.py:61 apps.py:67
 msgid "None"
 msgstr "Brak"
 
-#: apps.py:48
+#: apps.py:45
 msgid "Current state"
 msgstr "Aktualny stan"
 
-#: apps.py:52 apps.py:83 models.py:189
+#: apps.py:49 apps.py:76 models.py:189
 msgid "User"
 msgstr "Użytkownik"
 
-#: apps.py:60
+#: apps.py:55
 msgid "Last transition"
 msgstr ""
 
-#: apps.py:64 apps.py:79
+#: apps.py:59 apps.py:72
 msgid "Date and time"
 msgstr "Data i godzina"
 
-#: apps.py:72 apps.py:101 models.py:79
+#: apps.py:65 apps.py:92 models.py:79
 msgid "Completion"
 msgstr ""
 
-#: apps.py:86 forms.py:39 links.py:67 models.py:187
+#: apps.py:79 forms.py:39 links.py:67 models.py:187
 msgid "Transition"
 msgstr ""
 
-#: apps.py:90 forms.py:40 models.py:190
+#: apps.py:83 forms.py:40 models.py:190
 msgid "Comment"
 msgstr "Komentarz"
 
-#: apps.py:95
+#: apps.py:88
 msgid "Is initial state?"
 msgstr "Czy  jest stan początkowy?"
 
-#: apps.py:105 models.py:105
+#: apps.py:96 models.py:105
 msgid "Origin state"
 msgstr ""
 
-#: apps.py:109 models.py:109
+#: apps.py:100 models.py:109
 msgid "Destination state"
 msgstr ""
 
-#: links.py:8 links.py:27 models.py:59 views.py:203
+#: links.py:8 links.py:27 models.py:59 views.py:185
 msgid "Workflows"
 msgstr ""
 
@@ -210,69 +210,69 @@ msgstr ""
 msgid "Transition document workflows"
 msgstr ""
 
-#: views.py:64
+#: views.py:57
 #, python-format
 msgid "Workflows for document: %s"
 msgstr "Obiegi dokumentu: %s"
 
-#: views.py:98
+#: views.py:91
 #, fuzzy, python-format
 #| msgid "Document types assigned the workflow: %s"
 msgid "Documents with the workflow: %s"
 msgstr "Typy dokumentów przypisane do obiegu dokumentów: %s"
 
-#: views.py:130
+#: views.py:116
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
 msgstr "Szczegóły obiegu dokumentów: %(workflow)s"
 
-#: views.py:185
+#: views.py:162
 msgid "Submit"
 msgstr "Wyślij"
 
-#: views.py:187
+#: views.py:164
 #, python-format
 msgid "Do transition for workflow: %s"
 msgstr "Dokonaj zmiany w obiegu dokumentów: %s"
 
-#: views.py:233
+#: views.py:215
 #, fuzzy
 #| msgid "Document types"
 msgid "Available document types"
 msgstr "Typy dokumentu"
 
-#: views.py:234
+#: views.py:216
 #, fuzzy
 #| msgid "Document types assigned the workflow: %s"
 msgid "Document types assigned this workflow"
 msgstr "Typy dokumentów przypisane do obiegu dokumentów: %s"
 
-#: views.py:265
+#: views.py:226
 #, python-format
 msgid "Document types assigned the workflow: %s"
 msgstr "Typy dokumentów przypisane do obiegu dokumentów: %s"
 
-#: views.py:302
+#: views.py:269
 #, python-format
 msgid "States of workflow: %s"
 msgstr "Stany obiegu dokumentów: %s"
 
-#: views.py:334
+#: views.py:300
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "Utwórz stany obiegu dokumentów: %s"
 
-#: views.py:444
+#: views.py:388
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr "Zmiany obiegu dokumentów: %s"
 
-#: views.py:477
+#: views.py:414
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr "Utwórz zmiany w obiegu dokumentów: %s"
 
-#: views.py:509
+#: views.py:444
 msgid "Unable to save transition; integrity error."
 msgstr "Nie można zapisać zmiany; błąd integralności."
 

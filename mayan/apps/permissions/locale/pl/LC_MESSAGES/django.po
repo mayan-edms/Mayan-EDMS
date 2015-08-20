@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:12-0400\n"
+"POT-Creation-Date: 2015-08-20 14:47-0400\n"
 "PO-Revision-Date: 2015-02-28 20:27+0000\n"
 "Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -50,7 +50,7 @@ msgstr "Usunąć"
 msgid "Edit"
 msgstr "Edytuj"
 
-#: links.py:35 models.py:76 views.py:140
+#: links.py:35 models.py:76 views.py:134
 msgid "Roles"
 msgstr ""
 
@@ -120,24 +120,24 @@ msgstr ""
 msgid "Member groups"
 msgstr "Członkowie"
 
-#: views.py:74
+#: views.py:56
 #, python-format
 msgid "Group members of role: %s"
 msgstr ""
 
-#: views.py:82
+#: views.py:79
 #, fuzzy
 #| msgid "permissions"
 msgid "Available permissions"
 msgstr "uprawnienia"
 
-#: views.py:83
+#: views.py:80
 #, fuzzy
 #| msgid "permissions"
 msgid "Granted permissions"
 msgstr "uprawnienia"
 
-#: views.py:131
+#: views.py:93
 #, fuzzy, python-format
 #| msgid "Permissions"
 msgid "Permissions for role: %s"

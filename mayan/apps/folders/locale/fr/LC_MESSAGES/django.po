@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:11-0400\n"
+"POT-Creation-Date: 2015-08-20 14:46-0400\n"
 "PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,8 +22,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:33 links.py:15 links.py:43 models.py:35 permissions.py:7
-#: views.py:83
+#: apps.py:33 links.py:15 links.py:43 models.py:51 permissions.py:7
+#: views.py:53
 msgid "Folders"
 msgstr "Répertoires"
 
@@ -31,11 +31,15 @@ msgstr "Répertoires"
 msgid "Created"
 msgstr "Créé"
 
-#: apps.py:58 models.py:17
+#: apps.py:58 models.py:21
 msgid "User"
 msgstr "Utilisateur"
 
-#: forms.py:34 models.py:34
+#: apps.py:60 links.py:46 models.py:26
+msgid "Documents"
+msgstr "Documents"
+
+#: forms.py:34 models.py:50
 msgid "Folder"
 msgstr "Répertoire"
 
@@ -47,7 +51,7 @@ msgstr "Ajouter à un dossier"
 msgid "Add to folder"
 msgstr "Ajouter au dossier"
 
-#: links.py:26 views.py:114
+#: links.py:26 views.py:90
 msgid "Create folder"
 msgstr "Créer un dossier"
 
@@ -63,15 +67,11 @@ msgstr "Supprimer du dossier"
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:46 models.py:22 views.py:75 views.py:258
-msgid "Documents"
-msgstr "Documents"
-
-#: models.py:15
+#: models.py:19
 msgid "Label"
 msgstr ""
 
-#: models.py:19
+#: models.py:23
 msgid "Datetime created"
 msgstr "Date et heure de création"
 
@@ -103,78 +103,78 @@ msgstr "Ajouter des documents aux répertoires existant."
 msgid "Primary key of the document to be added."
 msgstr ""
 
-#: views.py:44
+#: views.py:43
 #, python-format
 msgid "Edit folder: %s"
 msgstr "Modifier le répertoire: %s"
 
-#: views.py:107
+#: views.py:83
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Un répertoire portant le nom: %s existe déjà."
 
-#: views.py:136
+#: views.py:112
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Répertoire: %s supprimé avec succès."
 
-#: views.py:138
+#: views.py:114
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Erreur: %(error)s lors de la suppression du répertoire: %(folder)s"
 
-#: views.py:148
+#: views.py:124
 #, fuzzy, python-format
 #| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr "Supprimer les nouveaux répertoires"
 
-#: views.py:175
+#: views.py:151
 #, python-format
 msgid "Documents in folder: %s"
 msgstr "Documents du dossier: %s"
 
-#: views.py:188
+#: views.py:164
 msgid "Must provide at least one document."
 msgstr "Il est nécessaire de fournir au moins un document."
 
-#: views.py:207
+#: views.py:183
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Document: %(document)s ajouté avec succès au répertoire: %(folder)s."
 
-#: views.py:210
+#: views.py:186
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr ""
 "Document: %(document)s est déjà présent dans le répertoire: %(folder)s."
 
-#: views.py:227
+#: views.py:203
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
 msgstr[0] "Ajouter un document au répertoire"
 msgstr[1] "Ajouter les documents au répertoire"
 
-#: views.py:268
+#: views.py:234
 #, python-format
 msgid "Folders containing document: %s"
 msgstr "Dossiers contenant le document: %s"
 
-#: views.py:282
+#: views.py:248
 msgid "Must provide at least one folder document."
 msgstr "Vous devez fournir au moins un document pour le répertoire."
 
-#: views.py:300
+#: views.py:266
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Document: %s supprimé avec succès."
 
-#: views.py:302
+#: views.py:268
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Document: %(document)s erreur de suppression: %(error)s"
 
-#: views.py:312
+#: views.py:278
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to remove the selected document from the folder: "

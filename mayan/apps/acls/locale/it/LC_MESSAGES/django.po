@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:08-0400\n"
+"POT-Creation-Date: 2015-08-20 14:43-0400\n"
 "PO-Revision-Date: 2015-01-29 07:17+0000\n"
 "Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -23,33 +23,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:13 links.py:28
+#: apps.py:14 links.py:30
 msgid "ACLs"
 msgstr "ACL"
 
-#: links.py:24
+#: apps.py:20 links.py:38 models.py:36
+msgid "Permissions"
+msgstr "Permessi"
+
+#: apps.py:24 models.py:38
+#, fuzzy
+#| msgid "Roles"
+msgid "Role"
+msgstr "Ruoli"
+
+#: links.py:26
 msgid "Delete"
 msgstr ""
 
-#: links.py:32
+#: links.py:34
 #, fuzzy
 #| msgid "View ACLs"
 msgid "New ACL"
 msgstr "Visualizza ACL"
 
-#: links.py:36 models.py:36 views.py:75
-msgid "Permissions"
-msgstr "Permessi"
-
-#: managers.py:69
+#: managers.py:72
 msgid "Insufficient access."
 msgstr "Accesso insufficiente."
-
-#: models.py:38 views.py:71
-#, fuzzy
-#| msgid "Roles"
-msgid "Role"
-msgstr "Ruoli"
 
 #: models.py:44
 msgid "Access entry"
@@ -58,6 +58,10 @@ msgstr "Voce di accesso"
 #: models.py:45
 msgid "Access entries"
 msgstr "Voci di accesso"
+
+#: models.py:60
+msgid "None"
+msgstr ""
 
 #: permissions.py:7
 msgid "Access control lists"
@@ -71,34 +75,34 @@ msgstr "Modifica ACL"
 msgid "View ACLs"
 msgstr "Visualizza ACL"
 
-#: views.py:68
+#: views.py:61
 #, python-format
 msgid "Access control lists for: %s"
 msgstr "Lista dei permessi d'accesso per: %s"
 
-#: views.py:128
+#: views.py:107
 #, fuzzy, python-format
 #| msgid "Access control lists for: %s"
 msgid "New access control lists for: %s"
 msgstr "Lista dei permessi d'accesso per: %s"
 
-#: views.py:163
+#: views.py:137
 #, fuzzy
 #| msgid "Has permission"
 msgid "Available permissions"
 msgstr "Ha il permesso"
 
-#: views.py:164
+#: views.py:138
 #, fuzzy
 #| msgid "Has permission"
 msgid "Granted permissions"
 msgstr "Ha il permesso"
 
-#: views.py:203
+#: views.py:177
 msgid "Disabled permissions are inherited from a parent object."
 msgstr ""
 
-#: views.py:234
+#: views.py:208
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:09-0400\n"
+"POT-Creation-Date: 2015-08-20 14:44-0400\n"
 "PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,92 +21,82 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:55 settings.py:7
+#: apps.py:55 settings.py:9
 msgid "Common"
 msgstr ""
 
-#: classes.py:42
+#: classes.py:49
 msgid "Available attributes: "
 msgstr ""
 
-#: forms.py:67
+#: forms.py:69
 msgid "Selection"
 msgstr "Выбор"
 
-#: generics.py:123
+#: generics.py:125
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr ""
 
-#: generics.py:147
+#: generics.py:149
 msgid "Add"
 msgstr "Добавить"
 
-#: generics.py:158
+#: generics.py:160
 msgid "Remove"
 msgstr "Удалить"
 
-#: generics.py:270
-#, python-format
-msgid "Empty list and '%(class_name)s.allow_empty' is False."
-msgstr ""
-
-#: generics.py:302
-#, python-format
-msgid "No %(verbose_name)s found matching the query"
-msgstr ""
-
-#: generics.py:342
+#: generics.py:263
 #, python-format
 msgid "Error creating new %s."
 msgstr ""
 
-#: generics.py:345
+#: generics.py:266
 msgid "Error creating object."
 msgstr ""
 
-#: generics.py:354
+#: generics.py:276
 #, python-format
 msgid "%s created successfully."
 msgstr ""
 
-#: generics.py:358
+#: generics.py:281
 msgid "New object created successfully."
 msgstr ""
 
-#: generics.py:378
+#: generics.py:302
 #, python-format
 msgid "Error deleting %s."
 msgstr ""
 
-#: generics.py:382
+#: generics.py:306
 msgid "Error deleting object."
 msgstr ""
 
-#: generics.py:389
+#: generics.py:315
 #, python-format
 msgid "%s deleted successfully."
 msgstr ""
 
-#: generics.py:393
+#: generics.py:320
 msgid "Object deleted successfully."
 msgstr ""
 
-#: generics.py:409
+#: generics.py:338
 #, python-format
 msgid "Error saving %s details."
 msgstr ""
 
-#: generics.py:413
+#: generics.py:343
 msgid "Error saving details."
 msgstr ""
 
-#: generics.py:423
+#: generics.py:355
 #, python-format
 msgid "%s details saved successfully."
 msgstr ""
 
-#: generics.py:427
+#: generics.py:360
 msgid "Details saved successfully."
 msgstr ""
 
@@ -130,7 +120,7 @@ msgstr ""
 msgid "Edit locale profile"
 msgstr ""
 
-#: links.py:27 views.py:141
+#: links.py:27 views.py:110
 msgid "License"
 msgstr "Лицензия"
 
@@ -138,7 +128,7 @@ msgstr "Лицензия"
 msgid "Setup"
 msgstr ""
 
-#: links.py:33 views.py:169
+#: links.py:33 views.py:138
 msgid "Tools"
 msgstr ""
 
@@ -194,7 +184,7 @@ msgstr ""
 msgid "User locale profiles"
 msgstr ""
 
-#: settings.py:10
+#: settings.py:13
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
@@ -204,43 +194,43 @@ msgstr ""
 "временных файлов. Если он не указан, он будет создан с использованием "
 "tempfile.mkdtemp ()"
 
-#: settings.py:16
+#: settings.py:22
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
-#: views.py:38
+#: settings.py:28
+msgid "An integer specifying how many objects should be displayed per page."
+msgstr ""
+
+#: views.py:35
 msgid "Current user details"
 msgstr ""
 
-#: views.py:44
+#: views.py:41
 msgid "Edit current user details"
 msgstr ""
 
-#: views.py:64
+#: views.py:61
 msgid "Current user locale profile details"
 msgstr ""
 
-#: views.py:71
+#: views.py:68
 msgid "Edit current user locale profile details"
 msgstr ""
 
-#: views.py:131
-msgid "Results"
-msgstr ""
-
-#: views.py:155
+#: views.py:124
 msgid "Setup items"
 msgstr ""
 
-#: views.py:194
+#: views.py:163
 msgid "No action selected."
 msgstr "Никаких действий не выбрано."
 
-#: views.py:202
+#: views.py:171
 msgid "Must select at least one item."
 msgstr "Необходимо выбрать хотя бы один элемент."
 
-#: widgets.py:51
+#: widgets.py:50
 msgid "None"
 msgstr "Ни один"
 

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:10-0400\n"
+"POT-Creation-Date: 2015-08-20 14:45-0400\n"
 "PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -28,15 +28,15 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "search"
 
-#: forms.py:8
+#: forms.py:20
 msgid "Search terms"
 msgstr "Условия поиска"
 
-#: links.py:7 settings.py:8 views.py:76 views.py:82 views.py:84
+#: links.py:7 settings.py:8 views.py:54 views.py:68
 msgid "Search"
 msgstr "Поиск"
 
-#: links.py:9 views.py:72
+#: links.py:9 views.py:75
 msgid "Advanced search"
 msgstr ""
 
@@ -78,16 +78,13 @@ msgstr ""
 "Максимальное количество поисковых запросов запоминаемых для каждого "
 "пользователя."
 
-#: views.py:39
-msgid "Results"
-msgstr ""
+#: views.py:25
+msgid "Search results"
+msgstr "Результаты поиска"
 
-#: views.py:49
+#: views.py:32
 msgid "Type"
 msgstr ""
-
-#~ msgid "Search results"
-#~ msgstr "Результаты поиска"
 
 #~ msgid "Elapsed time: %(time_delta)s seconds"
 #~ msgstr "Прошедшее время в секундах: %(time_delta)s"

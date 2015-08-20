@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:11-0400\n"
+"POT-Creation-Date: 2015-08-20 14:46-0400\n"
 "PO-Revision-Date: 2015-02-06 23:56+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
@@ -26,7 +26,7 @@ msgstr ""
 msgid "Navigation"
 msgstr ""
 
-#: classes.py:28
+#: classes.py:29
 msgid "Unnamed link"
 msgstr "Unbenannte Verknüpfung"
 

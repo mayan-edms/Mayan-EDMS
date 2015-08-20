@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:13-0400\n"
+"POT-Creation-Date: 2015-08-20 14:48-0400\n"
 "PO-Revision-Date: 2015-01-13 15:41+0000\n"
 "Last-Translator: Lory977 <helga.carrero@gmail.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -45,19 +45,24 @@ msgstr "Lista de espacios nombrados"
 msgid "View statistics"
 msgstr "Estadísticas"
 
-#: views.py:19
+#: views.py:15
 msgid "Statistics namespaces"
 msgstr "Estadísticas de espacios nombrados"
 
-#: views.py:34
+#: views.py:32
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Detalles para espacios nombrados: %s"
 
-#: views.py:51
+#: views.py:52
 #, python-format
 msgid "Results for: %s"
 msgstr "Resultados para: %s"
+
+#: views.py:62
+#, python-format
+msgid "Statistic \"%s\" not found."
+msgstr ""
 
 #~ msgid "Details"
 #~ msgstr "Detalles"

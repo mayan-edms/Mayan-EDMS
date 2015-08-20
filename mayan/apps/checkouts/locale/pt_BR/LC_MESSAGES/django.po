@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:09-0400\n"
+"POT-Creation-Date: 2015-08-20 14:44-0400\n"
 "PO-Revision-Date: 2015-05-13 17:40+0000\n"
 "Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -40,7 +40,7 @@ msgstr "Documento checked out"
 msgid "Document forcefully checked in"
 msgstr "Documento  forçando o check-in"
 
-#: exceptions.py:32 views.py:54
+#: exceptions.py:32 views.py:55
 msgid "Document already checked out."
 msgstr "Documento já fez check-out. "
 
@@ -88,7 +88,7 @@ msgstr ""
 msgid "Check out expiration date and time"
 msgstr "Confira data e hora de expiração"
 
-#: models.py:39 views.py:87
+#: models.py:39 views.py:88
 #, fuzzy
 #| msgid "User: %s"
 msgid "User"
@@ -128,86 +128,72 @@ msgstr "Forçando o check-in documentos"
 msgid "Check out documents"
 msgstr "Documentos Check out"
 
-#: views.py:58
+#: views.py:59
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "Erro tentando check-out de documentos;%s"
 
-#: views.py:63
+#: views.py:64
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Documento \"%s\" check-out com êxito."
 
-#: views.py:71
+#: views.py:72
 #, python-format
 msgid "Check out document: %s"
 msgstr "Check out  -  documento: %s"
 
-#: views.py:83
+#: views.py:84
 msgid "Documents checked out"
 msgstr "Documentos checked out"
 
-#: views.py:93
+#: views.py:94
 msgid "Checkout time and date"
 msgstr "Data e hora do Check out"
 
-#: views.py:99
+#: views.py:100
 msgid "Checkout expiration"
 msgstr "Check Out expiração"
 
-#: views.py:123
+#: views.py:124
 #, python-format
 msgid "Document status: %s"
 msgstr "Documento status: %s"
 
-#: views.py:129
+#: views.py:130
 #, python-format
 msgid "User: %s"
 msgstr "Usuario: %s"
 
-#: views.py:132
+#: views.py:136
 #, python-format
 msgid "Check out time: %s"
 msgstr "Confira o tempo:%s"
 
-#: views.py:135
+#: views.py:141
 #, python-format
 msgid "Check out expiration: %s"
 msgstr "Check out expirado: %s"
 
-#: views.py:138
+#: views.py:145
 #, python-format
 msgid "New versions allowed: %s"
 msgstr "Novas versões permitida:%s"
 
-#: views.py:138
+#: views.py:145
 msgid "Yes"
 msgstr "Sim"
 
-#: views.py:138
+#: views.py:145
 msgid "No"
 msgstr "não"
 
-#: views.py:145
+#: views.py:152
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Confira detalhes sobre documento:%s "
 
-#: views.py:161 views.py:182
-msgid "Document has not been checked out."
-msgstr "Documento não foi verificado."
-
-#: views.py:184
-#, python-format
-msgid "Error trying to check in document; %s"
-msgstr "Erro tente novamente realizar o check no documento; %s"
-
-#: views.py:186
-#, python-format
-msgid "Document \"%s\" checked in successfully."
-msgstr "Sucesso no checked in -  Documento \"%s\""
-
-#: views.py:197
+#: views.py:171
 #, fuzzy, python-format
 #| msgid ""
 #| "You didn't originally checked out this document.  Are you sure you wish "
@@ -219,13 +205,27 @@ msgstr ""
 "Você originalmente não fez check-out este documento. Tem certeza de que "
 "deseja verificar no documento: %s?"
 
-#: views.py:199
+#: views.py:175
 #, fuzzy, python-format
 #| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr "Check out  -  documento: %s"
 
-#: widgets.py:22
+#: views.py:204
+msgid "Document has not been checked out."
+msgstr "Documento não foi verificado."
+
+#: views.py:207
+#, python-format
+msgid "Error trying to check in document; %s"
+msgstr "Erro tente novamente realizar o check no documento; %s"
+
+#: views.py:211
+#, python-format
+msgid "Document \"%s\" checked in successfully."
+msgstr "Sucesso no checked in -  Documento \"%s\""
+
+#: widgets.py:23
 msgid "Period"
 msgstr ""
 

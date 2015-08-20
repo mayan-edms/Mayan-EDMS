@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:13-0400\n"
+"POT-Creation-Date: 2015-08-20 14:48-0400\n"
 "PO-Revision-Date: 2015-05-06 14:00+0000\n"
 "Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -22,14 +22,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:34 apps.py:57 apps.py:68 forms.py:34 links.py:40 links.py:43
-#: models.py:24 permissions.py:7 views.py:163
+#: apps.py:33 apps.py:56 apps.py:71 forms.py:34 links.py:40 links.py:43
+#: models.py:28 permissions.py:7 views.py:131
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: apps.py:64
+#: apps.py:61
 msgid "Preview"
 msgstr "Visualizar"
+
+#: apps.py:65 models.py:23
+msgid "Documents"
+msgstr "Documentos"
 
 #: links.py:14
 msgid "Remove tag"
@@ -57,19 +61,15 @@ msgstr "Excluir"
 msgid "Edit"
 msgstr "Editar"
 
-#: models.py:15
+#: models.py:19
 msgid "Label"
 msgstr ""
 
-#: models.py:17
+#: models.py:21
 msgid "Color"
 msgstr "Cor"
 
-#: models.py:19 views.py:153 views.py:287
-msgid "Documents"
-msgstr "Documentos"
-
-#: models.py:23
+#: models.py:27
 msgid "Tag"
 msgstr "Etiqueta"
 
@@ -101,114 +101,114 @@ msgstr "Remover etiquetas de documentos"
 msgid "Primary key of the tag to be added."
 msgstr ""
 
-#: views.py:35
+#: views.py:34
 msgid "Create tag"
 msgstr "Criar Etiqueta"
 
-#: views.py:51
+#: views.py:50
 msgid "Must provide at least one document."
 msgstr "Deve fornecer, pelo menos, um documento."
 
-#: views.py:81
+#: views.py:80
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr "Documento \"%(document)s\" já está marcado como  \"%(tag)s\""
 
-#: views.py:91
+#: views.py:90
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr ""
 "Etiqueta \"%(tag)s\" anexada com sucesso para o documento \"%(document)s\"."
 
-#: views.py:105
+#: views.py:104
 msgid "Attach tag to document"
 msgid_plural "Attach tag to documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:178
+#: views.py:153
 msgid "Must provide at least one tag."
 msgstr "Deve fornecer pelo menos uma etiqueta."
 
-#: views.py:200
+#: views.py:175
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Etiqueta \"%s\" removida com sucesso."
 
-#: views.py:204
+#: views.py:179
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Erro ao excluir etiqueta \" %(tag)s \": %(error)s "
 
-#: views.py:214
+#: views.py:189
 msgid "Will be removed from all documents."
 msgstr "Será removido de todos os documentos."
 
-#: views.py:217
+#: views.py:192
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:247
+#: views.py:222
 #, python-format
 msgid "Edit tag: %s"
 msgstr "Editar etiqueta:%s"
 
-#: views.py:260
+#: views.py:235
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Os documentos com a etiqueta: %s"
 
-#: views.py:297
+#: views.py:262
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Etiqueta para documento: %s"
 
-#: views.py:313
+#: views.py:278
 msgid "Must provide at least one tagged document."
 msgstr "Deve fornecer pelo menos um documento marcado."
 
-#: views.py:363
+#: views.py:328
 #, python-format
 msgid "Remove tag from document: %s."
 msgstr "Remove etiqueta do documento: %s."
 
-#: views.py:367
+#: views.py:332
 #, python-format
 msgid "Remove tag from documents: %s."
 msgstr "Remove etiqueta dos documentos: %s."
 
-#: views.py:375
+#: views.py:340
 #, fuzzy, python-format
 #| msgid "Remove tag from document: %s."
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
 msgstr "Remove etiqueta do documento: %s."
 
-#: views.py:382
+#: views.py:347
 #, fuzzy, python-format
 #| msgid "Remove tag from documents: %s."
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
 msgstr "Remove etiqueta dos documentos: %s."
 
-#: views.py:391
+#: views.py:356
 #, fuzzy, python-format
 #| msgid "Remove tag from document: %s."
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
 msgstr "Remove etiqueta do documento: %s."
 
-#: views.py:398
+#: views.py:363
 #, fuzzy, python-format
 #| msgid "Remove tag from documents: %s."
 msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
 msgstr "Remove etiqueta dos documentos: %s."
 
-#: views.py:410
+#: views.py:375
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr ""
 
-#: views.py:419
+#: views.py:384
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""

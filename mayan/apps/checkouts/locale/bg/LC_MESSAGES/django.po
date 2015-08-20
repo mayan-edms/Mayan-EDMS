@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:09-0400\n"
+"POT-Creation-Date: 2015-08-20 14:43-0400\n"
 "PO-Revision-Date: 2015-01-11 22:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -40,7 +40,7 @@ msgstr "Документът е проверен."
 msgid "Document forcefully checked in"
 msgstr "Документът е принудително регистриран"
 
-#: exceptions.py:32 views.py:54
+#: exceptions.py:32 views.py:55
 msgid "Document already checked out."
 msgstr "Документът вече е проверен."
 
@@ -86,7 +86,7 @@ msgstr "Време за задържане на проверения докум�
 msgid "Check out expiration date and time"
 msgstr "Проверете срока на валидност"
 
-#: models.py:39 views.py:87
+#: models.py:39 views.py:88
 #, fuzzy
 #| msgid "User: %s"
 msgid "User"
@@ -126,86 +126,72 @@ msgstr "Регистрирай принудилтелно документи"
 msgid "Check out documents"
 msgstr "Провери документи"
 
-#: views.py:58
+#: views.py:59
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "Грешка при проверка на документ; %s"
 
-#: views.py:63
+#: views.py:64
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Документ \"%s\" проверен успешно."
 
-#: views.py:71
+#: views.py:72
 #, python-format
 msgid "Check out document: %s"
 msgstr "Провери документ: %s"
 
-#: views.py:83
+#: views.py:84
 msgid "Documents checked out"
 msgstr ""
 
-#: views.py:93
+#: views.py:94
 msgid "Checkout time and date"
 msgstr ""
 
-#: views.py:99
+#: views.py:100
 msgid "Checkout expiration"
 msgstr ""
 
-#: views.py:123
+#: views.py:124
 #, python-format
 msgid "Document status: %s"
 msgstr ""
 
-#: views.py:129
+#: views.py:130
 #, python-format
 msgid "User: %s"
 msgstr "Потребител: %s"
 
-#: views.py:132
+#: views.py:136
 #, python-format
 msgid "Check out time: %s"
 msgstr "Време на отписване: %s"
 
-#: views.py:135
+#: views.py:141
 #, python-format
 msgid "Check out expiration: %s"
 msgstr "Проверка срок на валидност: %s"
 
-#: views.py:138
+#: views.py:145
 #, python-format
 msgid "New versions allowed: %s"
 msgstr "Разрешени нови версии: %s"
 
-#: views.py:138
+#: views.py:145
 msgid "Yes"
 msgstr ""
 
-#: views.py:138
+#: views.py:145
 msgid "No"
 msgstr ""
 
-#: views.py:145
+#: views.py:152
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Данни от проверката на документ: %s"
 
-#: views.py:161 views.py:182
-msgid "Document has not been checked out."
-msgstr "Документът не е проверяван."
-
-#: views.py:184
-#, python-format
-msgid "Error trying to check in document; %s"
-msgstr "Грешка при регистрация на документ; %s"
-
-#: views.py:186
-#, python-format
-msgid "Document \"%s\" checked in successfully."
-msgstr "Документ \"%s\" е регистриран успешно."
-
-#: views.py:197
+#: views.py:171
 #, fuzzy, python-format
 #| msgid ""
 #| "You didn't originally checked out this document.  Are you sure you wish "
@@ -217,13 +203,27 @@ msgstr ""
 "Проверката на този документ не е извършвана от Вас. Сигурни ли сте, че "
 "искате принудително да регистрирате документа: %s?"
 
-#: views.py:199
+#: views.py:175
 #, fuzzy, python-format
 #| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr "Провери документ: %s"
 
-#: widgets.py:22
+#: views.py:204
+msgid "Document has not been checked out."
+msgstr "Документът не е проверяван."
+
+#: views.py:207
+#, python-format
+msgid "Error trying to check in document; %s"
+msgstr "Грешка при регистрация на документ; %s"
+
+#: views.py:211
+#, python-format
+msgid "Document \"%s\" checked in successfully."
+msgstr "Документ \"%s\" е регистриран успешно."
+
+#: widgets.py:23
 msgid "Period"
 msgstr ""
 

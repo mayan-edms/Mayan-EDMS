@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:09-0400\n"
+"POT-Creation-Date: 2015-08-20 14:44-0400\n"
 "PO-Revision-Date: 2015-03-02 05:31+0000\n"
 "Last-Translator: Annunnaky <doublemiu@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -27,9 +27,45 @@ msgstr ""
 msgid "Unknown"
 msgstr "Nieznany"
 
-#: apps.py:17
+#: apps.py:20
 msgid "Django GPG"
 msgstr ""
+
+#: apps.py:25 apps.py:32
+msgid "ID"
+msgstr "ID"
+
+#: apps.py:27
+msgid "Owner"
+msgstr "Właściciel"
+
+#: apps.py:35
+msgid "Type"
+msgstr "Typ"
+
+#: apps.py:37
+msgid "Creation date"
+msgstr "Data utworzenia"
+
+#: apps.py:43
+msgid "Expiration date"
+msgstr "Data wygaśnięcia"
+
+#: apps.py:44
+#, fuzzy
+#| msgid "Expiration date"
+msgid "No expiration"
+msgstr "Data wygaśnięcia"
+
+#: apps.py:46
+msgid "Length"
+msgstr "Długość"
+
+#: apps.py:48
+#, fuzzy
+#| msgid "Identifies"
+msgid "Identities"
+msgstr "Identyfikuje"
 
 #: forms.py:9
 msgid "Term"
@@ -39,11 +75,11 @@ msgstr "Term"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Imię i nazwisko, e-mail, key ID lub key fingerprint kluc szukać."
 
-#: links.py:14 views.py:71
+#: links.py:14 views.py:83
 msgid "Private keys"
 msgstr "Klucze prywatne"
 
-#: links.py:17 views.py:74
+#: links.py:17 views.py:78
 msgid "Public keys"
 msgstr "Klucze publiczne"
 
@@ -56,8 +92,8 @@ msgid "Query keyservers"
 msgstr "Query keyservers"
 
 #: links.py:30
-msgid "Import"
-msgstr "Import"
+msgid "Download"
+msgstr ""
 
 #: links.py:35 permissions.py:7
 msgid "Key management"
@@ -140,45 +176,37 @@ msgstr ""
 msgid "Path to the GPG binary."
 msgstr "Ścieżka do GPG binary."
 
-#: views.py:39
+#: views.py:38
 #, fuzzy, python-format
 #| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Nie można zaimportować ID klucza: %(key_id)s ; %(error)s "
 
-#: views.py:49
+#: views.py:48
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
-#: views.py:58
+#: views.py:57
 msgid "Import key"
 msgstr "Importuj klucz"
 
-#: views.py:59
+#: views.py:58
 #, fuzzy, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "Importuj klucz"
 
-#: views.py:82
-msgid "Key ID"
-msgstr "Key ID"
-
-#: views.py:86
-msgid "Owner"
-msgstr "Właściciel"
-
-#: views.py:106
+#: views.py:102
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Klucz:%s, został usunięty."
 
-#: views.py:113
+#: views.py:109
 msgid "Delete key"
 msgstr "Usuń klucz"
 
-#: views.py:116
+#: views.py:112
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to delete key: %s?  If you try to delete a public "
@@ -192,45 +220,26 @@ msgstr ""
 "publiczny, który jest częścią pary publiczny / prywatny klucz prywatny "
 "zostanie usunięty również."
 
-#: views.py:135
+#: views.py:136
+msgid "Search"
+msgstr ""
+
+#: views.py:138
 msgid "Query key server"
 msgstr "Query key server"
 
 #: views.py:148
-msgid "results"
-msgstr "wyniki"
+msgid "Key query results"
+msgstr ""
 
-#: views.py:153
-msgid "ID"
-msgstr "ID"
+#~ msgid "Import"
+#~ msgstr "Import"
 
-#: views.py:159
-msgid "Type"
-msgstr "Typ"
+#~ msgid "Key ID"
+#~ msgstr "Key ID"
 
-#: views.py:163
-msgid "Creation date"
-msgstr "Data utworzenia"
-
-#: views.py:169
-msgid "Expiration date"
-msgstr "Data wygaśnięcia"
-
-#: views.py:171
-#, fuzzy
-#| msgid "Expiration date"
-msgid "No expiration"
-msgstr "Data wygaśnięcia"
-
-#: views.py:175
-msgid "Length"
-msgstr "Długość"
-
-#: views.py:179
-#, fuzzy
-#| msgid "Identifies"
-msgid "Identities"
-msgstr "Identyfikuje"
+#~ msgid "results"
+#~ msgstr "wyniki"
 
 #~ msgid "Key: %s, imported successfully."
 #~ msgstr "Klucz:%s, zaimportowany."

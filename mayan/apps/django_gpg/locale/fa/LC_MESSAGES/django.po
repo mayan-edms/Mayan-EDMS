@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:09-0400\n"
+"POT-Creation-Date: 2015-08-20 14:44-0400\n"
 "PO-Revision-Date: 2015-03-03 10:56+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -24,9 +24,45 @@ msgstr ""
 msgid "Unknown"
 msgstr "ناشناخته"
 
-#: apps.py:17
+#: apps.py:20
 msgid "Django GPG"
 msgstr ""
+
+#: apps.py:25 apps.py:32
+msgid "ID"
+msgstr "شناسه"
+
+#: apps.py:27
+msgid "Owner"
+msgstr "صاحب"
+
+#: apps.py:35
+msgid "Type"
+msgstr "نوع"
+
+#: apps.py:37
+msgid "Creation date"
+msgstr "تاریخ ایجاد"
+
+#: apps.py:43
+msgid "Expiration date"
+msgstr "تاریخ انقضا"
+
+#: apps.py:44
+#, fuzzy
+#| msgid "Expiration date"
+msgid "No expiration"
+msgstr "تاریخ انقضا"
+
+#: apps.py:46
+msgid "Length"
+msgstr "طول"
+
+#: apps.py:48
+#, fuzzy
+#| msgid "Identifies"
+msgid "Identities"
+msgstr "شناسایی کردن."
 
 #: forms.py:9
 msgid "Term"
@@ -36,11 +72,11 @@ msgstr "ترم Term"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "نام، ایمیل، شناسه کلید ویا اثرانگشت کلید برای چستچو."
 
-#: links.py:14 views.py:71
+#: links.py:14 views.py:83
 msgid "Private keys"
 msgstr "کلید شخصی"
 
-#: links.py:17 views.py:74
+#: links.py:17 views.py:78
 msgid "Public keys"
 msgstr "کلید عمومی"
 
@@ -53,8 +89,8 @@ msgid "Query keyservers"
 msgstr "پرسش و یا query از سرورهای کلید"
 
 #: links.py:30
-msgid "Import"
-msgstr "وارد کردن"
+msgid "Download"
+msgstr ""
 
 #: links.py:35 permissions.py:7
 msgid "Key management"
@@ -134,45 +170,37 @@ msgstr "ریشه دایرکتوری جهت نگهداری کلیدها بهمر�
 msgid "Path to the GPG binary."
 msgstr "محل کتایخانه باینری GPG"
 
-#: views.py:39
+#: views.py:38
 #, fuzzy, python-format
 #| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "فادر نبودن در وارد کردن کلید با شناسه: %(key_id)s , خطای  %(error)s"
 
-#: views.py:49
+#: views.py:48
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
-#: views.py:58
+#: views.py:57
 msgid "Import key"
 msgstr "وارد کردن کلید"
 
-#: views.py:59
+#: views.py:58
 #, fuzzy, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "وارد کردن کلید"
 
-#: views.py:82
-msgid "Key ID"
-msgstr "شناسه کلید"
-
-#: views.py:86
-msgid "Owner"
-msgstr "صاحب"
-
-#: views.py:106
+#: views.py:102
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "کلید: %s با موفقیت حذف شد."
 
-#: views.py:113
+#: views.py:109
 msgid "Delete key"
 msgstr "حذف کلید"
 
-#: views.py:116
+#: views.py:112
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to delete key: %s?  If you try to delete a public "
@@ -185,45 +213,26 @@ msgstr ""
 "آیا از حذف کلید: %s مطمئن هستید؟ درصورت حذف کلید عمومی مرتبط با کلید خصوصی، "
 "کلیدخصوصی بطور اتوماتیک حذف خواهد شد."
 
-#: views.py:135
+#: views.py:136
+msgid "Search"
+msgstr ""
+
+#: views.py:138
 msgid "Query key server"
 msgstr "پرسش از سرور کلید"
 
 #: views.py:148
-msgid "results"
-msgstr "نتایج"
+msgid "Key query results"
+msgstr ""
 
-#: views.py:153
-msgid "ID"
-msgstr "شناسه"
+#~ msgid "Import"
+#~ msgstr "وارد کردن"
 
-#: views.py:159
-msgid "Type"
-msgstr "نوع"
+#~ msgid "Key ID"
+#~ msgstr "شناسه کلید"
 
-#: views.py:163
-msgid "Creation date"
-msgstr "تاریخ ایجاد"
-
-#: views.py:169
-msgid "Expiration date"
-msgstr "تاریخ انقضا"
-
-#: views.py:171
-#, fuzzy
-#| msgid "Expiration date"
-msgid "No expiration"
-msgstr "تاریخ انقضا"
-
-#: views.py:175
-msgid "Length"
-msgstr "طول"
-
-#: views.py:179
-#, fuzzy
-#| msgid "Identifies"
-msgid "Identities"
-msgstr "شناسایی کردن."
+#~ msgid "results"
+#~ msgstr "نتایج"
 
 #~ msgid "Key: %s, imported successfully."
 #~ msgstr "کلید: %s, بصورت موفقیت آمیز وارد شد."

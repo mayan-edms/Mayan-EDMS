@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:09-0400\n"
+"POT-Creation-Date: 2015-08-20 14:44-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -23,9 +23,47 @@ msgstr ""
 msgid "Unknown"
 msgstr "unknown"
 
-#: apps.py:17
+#: apps.py:20
 msgid "Django GPG"
 msgstr ""
+
+#: apps.py:25 apps.py:32
+msgid "ID"
+msgstr "ID"
+
+#: apps.py:27
+msgid "Owner"
+msgstr "Owner"
+
+#: apps.py:35
+msgid "Type"
+msgstr ""
+
+#: apps.py:37
+#, fuzzy
+msgid "Creation date"
+msgstr "creation date"
+
+#: apps.py:43
+#, fuzzy
+msgid "Expiration date"
+msgstr "expiration date"
+
+#: apps.py:44
+#, fuzzy
+msgid "No expiration"
+msgstr "expiration date"
+
+#: apps.py:46
+#, fuzzy
+msgid "Length"
+msgstr "length"
+
+#: apps.py:48
+#, fuzzy
+#| msgid "Identifies"
+msgid "Identities"
+msgstr "Identifies"
 
 #: forms.py:9
 msgid "Term"
@@ -35,12 +73,12 @@ msgstr "Term"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Name, e-mail, key ID or key fingerprint to look for."
 
-#: links.py:14 views.py:71
+#: links.py:14 views.py:83
 #, fuzzy
 msgid "Private keys"
 msgstr "private keys"
 
-#: links.py:17 views.py:74
+#: links.py:17 views.py:78
 #, fuzzy
 msgid "Public keys"
 msgstr "public keys"
@@ -55,9 +93,8 @@ msgid "Query keyservers"
 msgstr "Query keyservers"
 
 #: links.py:30
-#, fuzzy
-msgid "Import"
-msgstr "import"
+msgid "Download"
+msgstr ""
 
 #: links.py:35 permissions.py:7
 msgid "Key management"
@@ -137,45 +174,37 @@ msgstr "Home directory used to store keys as well as configuration files."
 msgid "Path to the GPG binary."
 msgstr ""
 
-#: views.py:39
+#: views.py:38
 #, fuzzy, python-format
 #| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Unable to import key id: %(key_id)s; %(error)s"
 
-#: views.py:49
+#: views.py:48
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
-#: views.py:58
+#: views.py:57
 msgid "Import key"
 msgstr "Import key"
 
-#: views.py:59
+#: views.py:58
 #, fuzzy, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "Import key"
 
-#: views.py:82
-msgid "Key ID"
-msgstr "Key ID"
-
-#: views.py:86
-msgid "Owner"
-msgstr "Owner"
-
-#: views.py:106
+#: views.py:102
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Key: %s, deleted successfully."
 
-#: views.py:113
+#: views.py:109
 msgid "Delete key"
 msgstr "Delete key"
 
-#: views.py:116
+#: views.py:112
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to delete key: %s?  If you try to delete a public "
@@ -189,47 +218,27 @@ msgstr ""
 "that is part of a public/private pair the private key will be deleted as "
 "well."
 
-#: views.py:135
+#: views.py:136
+msgid "Search"
+msgstr ""
+
+#: views.py:138
 msgid "Query key server"
 msgstr "Query key server"
 
 #: views.py:148
-msgid "results"
-msgstr "results"
-
-#: views.py:153
-msgid "ID"
-msgstr "ID"
-
-#: views.py:159
-msgid "Type"
+msgid "Key query results"
 msgstr ""
 
-#: views.py:163
 #, fuzzy
-msgid "Creation date"
-msgstr "creation date"
+#~ msgid "Import"
+#~ msgstr "import"
 
-#: views.py:169
-#, fuzzy
-msgid "Expiration date"
-msgstr "expiration date"
+#~ msgid "Key ID"
+#~ msgstr "Key ID"
 
-#: views.py:171
-#, fuzzy
-msgid "No expiration"
-msgstr "expiration date"
-
-#: views.py:175
-#, fuzzy
-msgid "Length"
-msgstr "length"
-
-#: views.py:179
-#, fuzzy
-#| msgid "Identifies"
-msgid "Identities"
-msgstr "Identifies"
+#~ msgid "results"
+#~ msgstr "results"
 
 #~ msgid "Key: %s, imported successfully."
 #~ msgstr "Key: %s, imported successfully."

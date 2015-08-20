@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:12-0400\n"
+"POT-Creation-Date: 2015-08-20 14:47-0400\n"
 "PO-Revision-Date: 2015-03-19 06:01+0000\n"
 "Last-Translator: Annunnaky <doublemiu@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -21,41 +21,41 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:53 apps.py:142 permissions.py:7 settings.py:7
+#: apps.py:52 apps.py:139 permissions.py:7 settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:72
+#: apps.py:71
 msgid "Document"
 msgstr "Dokument"
 
-#: apps.py:78
+#: apps.py:75
 msgid "Added"
 msgstr "Dodano"
 
-#: apps.py:82 models.py:36
+#: apps.py:79 models.py:36
 msgid "Result"
 msgstr "Wynik"
 
-#: apps.py:99 links.py:13 models.py:56
+#: apps.py:96 links.py:13 models.py:56
 msgid "Content"
 msgstr ""
 
-#: apps.py:148 apps.py:153 apps.py:158
+#: apps.py:145 apps.py:150 apps.py:155
 #, fuzzy
 #| msgid "Document version"
 msgid "pdftotext version"
 msgstr "Wersja dokumentu"
 
-#: apps.py:148 apps.py:166
+#: apps.py:145 apps.py:163
 msgid "not found"
 msgstr ""
 
-#: apps.py:154 apps.py:172
+#: apps.py:151 apps.py:169
 msgid "error getting version"
 msgstr ""
 
-#: apps.py:166 apps.py:171 apps.py:176
+#: apps.py:163 apps.py:168 apps.py:173
 #, fuzzy
 #| msgid "Document version"
 msgid "tesseract version"
@@ -90,7 +90,7 @@ msgstr ""
 msgid "Delete"
 msgstr "Usunąć"
 
-#: links.py:40 views.py:145
+#: links.py:40 views.py:137
 msgid "OCR errors"
 msgstr "Błędy OCR"
 
@@ -173,7 +173,7 @@ msgid "Delete documents from OCR queue"
 msgstr "Usuń dokument z kolejki OCR"
 
 #: permissions.py:17
-msgid "Can view the transcribed text from document"
+msgid "View the transcribed text from document"
 msgstr ""
 
 #: permissions.py:21
@@ -193,61 +193,61 @@ msgstr ""
 msgid "Full path to the backend to be used to do OCR."
 msgstr ""
 
-#: views.py:29
+#: views.py:31
 #, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit the selected document for OCR?"
 msgstr "Prześlij dokument do OCR"
 
-#: views.py:47
+#: views.py:49
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Dokument : %(document)s dodany do kolejki OCR"
 
-#: views.py:60
+#: views.py:62
 #, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit all documents for OCR?"
 msgstr "Prześlij dokument do OCR"
 
-#: views.py:69
+#: views.py:71
 #, fuzzy, python-format
 #| msgid "Document: %(document)s was added to the OCR queue."
 msgid "%d documents added to the OCR queue."
 msgstr "Dokument : %(document)s dodany do kolejki OCR"
 
-#: views.py:76
+#: views.py:78
 #, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit the selected documents for OCR?"
 msgstr "Prześlij dokument do OCR"
 
-#: views.py:106
+#: views.py:103
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr ""
 
-#: views.py:136
+#: views.py:130
 #, fuzzy, python-format
 #| msgid "Queued documents: %d"
 msgid "Content of document: %s"
 msgstr "Queued documents: %d"
 
-#: views.py:167 views.py:226
+#: views.py:159 views.py:220
 msgid "Make at least one selection."
 msgstr "Zaznacz przynajmniej jedno."
 
-#: views.py:182
+#: views.py:174
 #, python-format
 msgid "Entry: %(entry)s deleted successfully."
 msgstr "Wpis: %(entry)s pomyślnie usunięty."
 
-#: views.py:189
+#: views.py:181
 #, python-format
 msgid "Error entry: %(entry)s; %(error)s"
 msgstr "Błąd wpisu : %(entry)s; %(error)s"
 
-#: views.py:205
+#: views.py:197
 #, fuzzy
 #| msgid "Are you sure you wish to delete the selected entry?"
 #| msgid_plural "Are you sure you wish to delete the selected entries?"
@@ -257,17 +257,17 @@ msgstr[0] "Czy napewno usunąć zaznaczony wpis?"
 msgstr[1] "Czy napewno usunąć zaznaczone wpisy?"
 msgstr[2] "Czy napewno usunąć zaznaczone wpisy?"
 
-#: views.py:238
+#: views.py:232
 #, python-format
 msgid "Entry: %(entry)s was re-queued for OCR."
 msgstr "Wpis: %(entry)s został ponownie zakolejkowany do OCR."
 
-#: views.py:243
+#: views.py:237
 #, python-format
 msgid "Document version id#: %d, no longer exists."
 msgstr "Wersja dokumentu id#: %d, nie istnieje."
 
-#: views.py:255
+#: views.py:249
 #, fuzzy
 #| msgid "Are you sure you wish to re-queue the selected entry?"
 #| msgid_plural "Are you sure you wish to re-queue the selected entries?"

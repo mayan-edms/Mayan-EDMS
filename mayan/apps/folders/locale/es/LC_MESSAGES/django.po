@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:11-0400\n"
+"POT-Creation-Date: 2015-08-20 14:46-0400\n"
 "PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,8 +22,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:33 links.py:15 links.py:43 models.py:35 permissions.py:7
-#: views.py:83
+#: apps.py:33 links.py:15 links.py:43 models.py:51 permissions.py:7
+#: views.py:53
 msgid "Folders"
 msgstr "Carpetas"
 
@@ -31,11 +31,15 @@ msgstr "Carpetas"
 msgid "Created"
 msgstr "Creado"
 
-#: apps.py:58 models.py:17
+#: apps.py:58 models.py:21
 msgid "User"
 msgstr "Usuario"
 
-#: forms.py:34 models.py:34
+#: apps.py:60 links.py:46 models.py:26
+msgid "Documents"
+msgstr "Documentos"
+
+#: forms.py:34 models.py:50
 msgid "Folder"
 msgstr "Carpeta"
 
@@ -47,7 +51,7 @@ msgstr "Añadir a una carpeta"
 msgid "Add to folder"
 msgstr "Añadir a carpeta"
 
-#: links.py:26 views.py:114
+#: links.py:26 views.py:90
 msgid "Create folder"
 msgstr "Crear carpetas"
 
@@ -63,15 +67,11 @@ msgstr "Remover de la carpeta"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:46 models.py:22 views.py:75 views.py:258
-msgid "Documents"
-msgstr "Documentos"
-
-#: models.py:15
+#: models.py:19
 msgid "Label"
 msgstr ""
 
-#: models.py:19
+#: models.py:23
 msgid "Datetime created"
 msgstr "Fecha y hora que fue creado"
 
@@ -103,77 +103,77 @@ msgstr "Agregar documentos a las carpetas existentes"
 msgid "Primary key of the document to be added."
 msgstr ""
 
-#: views.py:44
+#: views.py:43
 #, python-format
 msgid "Edit folder: %s"
 msgstr "Editar carpeta: %s"
 
-#: views.py:107
+#: views.py:83
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Una carpeta con el nombre: %s, ya existe."
 
-#: views.py:136
+#: views.py:112
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Carpeta: %s eliminada con éxito."
 
-#: views.py:138
+#: views.py:114
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Carpeta: %(folder)s error de eliminación: %(error)s "
 
-#: views.py:148
+#: views.py:124
 #, fuzzy, python-format
 #| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr "Borrar carpetas nuevas"
 
-#: views.py:175
+#: views.py:151
 #, python-format
 msgid "Documents in folder: %s"
 msgstr "Documentos en la carpeta: %s"
 
-#: views.py:188
+#: views.py:164
 msgid "Must provide at least one document."
 msgstr "Debe proporcionar al menos un documento."
 
-#: views.py:207
+#: views.py:183
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Documento: %(document)s agregado a la carpeta: %(folder)s con éxito."
 
-#: views.py:210
+#: views.py:186
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Documento: %(document)s ya está en la carpeta: %(folder)s."
 
-#: views.py:227
+#: views.py:203
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
 msgstr[0] "Añadir documento a la carpeta"
 msgstr[1] "Añadir los documentos a la carpeta"
 
-#: views.py:268
+#: views.py:234
 #, python-format
 msgid "Folders containing document: %s"
 msgstr "Las carpetas que contienen el documento: %s"
 
-#: views.py:282
+#: views.py:248
 msgid "Must provide at least one folder document."
 msgstr "Debe proveer al menos un documento de carpeta."
 
-#: views.py:300
+#: views.py:266
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Documento: %s eliminado con éxito."
 
-#: views.py:302
+#: views.py:268
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Documento: %(document)s error de eliminación: %(error)s "
 
-#: views.py:312
+#: views.py:278
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to remove the selected document from the folder: "

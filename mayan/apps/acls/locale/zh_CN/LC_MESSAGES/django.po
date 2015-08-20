@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:08-0400\n"
+"POT-Creation-Date: 2015-08-20 14:43-0400\n"
 "PO-Revision-Date: 2015-01-07 02:01+0000\n"
 "Last-Translator: Genlin Jiao <jiaogl@pkusz.edu.cn>\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-"
@@ -21,33 +21,33 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:13 links.py:28
+#: apps.py:14 links.py:30
 msgid "ACLs"
 msgstr "访问控制列表"
 
-#: links.py:24
+#: apps.py:20 links.py:38 models.py:36
+msgid "Permissions"
+msgstr ""
+
+#: apps.py:24 models.py:38
+#, fuzzy
+#| msgid "Roles"
+msgid "Role"
+msgstr "角色"
+
+#: links.py:26
 msgid "Delete"
 msgstr ""
 
-#: links.py:32
+#: links.py:34
 #, fuzzy
 #| msgid "View ACLs"
 msgid "New ACL"
 msgstr "查看访问控制列表"
 
-#: links.py:36 models.py:36 views.py:75
-msgid "Permissions"
-msgstr ""
-
-#: managers.py:69
+#: managers.py:72
 msgid "Insufficient access."
 msgstr "权限不足"
-
-#: models.py:38 views.py:71
-#, fuzzy
-#| msgid "Roles"
-msgid "Role"
-msgstr "角色"
 
 #: models.py:44
 msgid "Access entry"
@@ -56,6 +56,10 @@ msgstr "访问入口"
 #: models.py:45
 msgid "Access entries"
 msgstr "多个访问入口"
+
+#: models.py:60
+msgid "None"
+msgstr ""
 
 #: permissions.py:7
 msgid "Access control lists"
@@ -69,34 +73,34 @@ msgstr "编辑访问控制列表"
 msgid "View ACLs"
 msgstr "查看访问控制列表"
 
-#: views.py:68
+#: views.py:61
 #, python-format
 msgid "Access control lists for: %s"
 msgstr ""
 
-#: views.py:128
+#: views.py:107
 #, fuzzy, python-format
 #| msgid "Access control lists"
 msgid "New access control lists for: %s"
 msgstr "访问控制列表"
 
-#: views.py:163
+#: views.py:137
 #, fuzzy
 #| msgid "permission"
 msgid "Available permissions"
 msgstr "permission"
 
-#: views.py:164
+#: views.py:138
 #, fuzzy
 #| msgid "permission"
 msgid "Granted permissions"
 msgstr "permission"
 
-#: views.py:203
+#: views.py:177
 msgid "Disabled permissions are inherited from a parent object."
 msgstr ""
 
-#: views.py:234
+#: views.py:208
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""

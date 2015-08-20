@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:12-0400\n"
+"POT-Creation-Date: 2015-08-20 14:47-0400\n"
 "PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Turkish (Turkey) (http://www.transifex.com/projects/p/mayan-"
@@ -19,23 +19,31 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:43 links.py:30 models.py:122 views.py:507
+#: apps.py:42 links.py:30 models.py:132 views.py:500
 msgid "Sources"
 msgstr ""
 
-#: apps.py:51
+#: apps.py:50
 msgid "Create a document source"
 msgstr ""
 
-#: apps.py:53
+#: apps.py:52
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
 
-#: apps.py:63
+#: apps.py:62
 msgid "Thumbnail"
+msgstr ""
+
+#: apps.py:72 models.py:498
+msgid "Date time"
+msgstr ""
+
+#: apps.py:77 models.py:501
+msgid "Message"
 msgstr ""
 
 #: forms.py:29
@@ -122,15 +130,15 @@ msgstr ""
 msgid "Ask user"
 msgstr ""
 
-#: literals.py:27 models.py:227
+#: literals.py:27 models.py:237
 msgid "Web form"
 msgstr ""
 
-#: literals.py:28 models.py:207
+#: literals.py:28 models.py:217
 msgid "Staging folder"
 msgstr ""
 
-#: literals.py:29 models.py:462
+#: literals.py:29 models.py:489
 msgid "Watch folder"
 msgstr ""
 
@@ -138,192 +146,195 @@ msgstr ""
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:31 models.py:435 models.py:436
+#: literals.py:31 models.py:462 models.py:463
 msgid "IMAP email"
 msgstr ""
 
-#: models.py:40
+#: models.py:43
 msgid "Label"
 msgstr ""
 
-#: models.py:41 views.py:500
+#: models.py:44 views.py:493
 msgid "Enabled"
 msgstr ""
 
-#: models.py:121 models.py:468
+#: models.py:131 models.py:495
 msgid "Source"
 msgstr ""
 
-#: models.py:129
+#: models.py:139
 msgid "Interactive source"
 msgstr ""
 
-#: models.py:130
+#: models.py:140
 msgid "Interactive sources"
 msgstr ""
 
-#: models.py:138 models.py:443
+#: models.py:148 models.py:470
 msgid "Server side filesystem path."
 msgstr ""
 
-#: models.py:139 models.py:444
+#: models.py:149 models.py:471
 msgid "Folder path"
 msgstr ""
 
-#: models.py:142
+#: models.py:152
 msgid "Width value to be passed to the converter backend."
 msgstr ""
 
-#: models.py:143
+#: models.py:153
 msgid "Preview width"
 msgstr ""
 
-#: models.py:147
+#: models.py:157
 msgid "Height value to be passed to the converter backend."
 msgstr ""
 
-#: models.py:148
+#: models.py:158
 msgid "Preview height"
 msgstr ""
 
-#: models.py:152 models.py:218
+#: models.py:162 models.py:228
 msgid "Whether to expand or not compressed archives."
 msgstr ""
 
-#: models.py:153 models.py:219 models.py:253
+#: models.py:163 models.py:229 models.py:263
 msgid "Uncompress"
 msgstr ""
 
-#: models.py:157
+#: models.py:167
 msgid "Delete the file after is has been successfully uploaded."
 msgstr ""
 
-#: models.py:158
+#: models.py:168
 msgid "Delete after upload"
 msgstr ""
 
-#: models.py:182
+#: models.py:192
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr ""
 
-#: models.py:203
+#: models.py:213
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr ""
 
-#: models.py:208
+#: models.py:218
 msgid "Staging folders"
 msgstr ""
 
-#: models.py:228
+#: models.py:238
 msgid "Web forms"
 msgstr ""
 
-#: models.py:235 models.py:236
+#: models.py:245 models.py:246
 msgid "Out of process"
 msgstr ""
 
-#: models.py:242
+#: models.py:252
 msgid "Interval in seconds between checks for new documents."
 msgstr ""
 
-#: models.py:243
+#: models.py:253
 msgid "Interval"
 msgstr ""
 
-#: models.py:247
+#: models.py:257
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
-#: models.py:248
+#: models.py:258
 msgid "Document type"
 msgstr ""
 
-#: models.py:252
+#: models.py:262
 msgid "Whether to expand or not, compressed archives."
 msgstr ""
 
-#: models.py:302
+#: models.py:312
 msgid "Interval source"
 msgstr ""
 
-#: models.py:303
+#: models.py:313
 msgid "Interval sources"
 msgstr ""
 
-#: models.py:307
+#: models.py:317
 msgid "Host"
 msgstr ""
 
-#: models.py:308
+#: models.py:318
 msgid "SSL"
 msgstr ""
 
-#: models.py:310
+#: models.py:320
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr ""
 
-#: models.py:311
+#: models.py:321
 msgid "Port"
 msgstr ""
 
-#: models.py:313
+#: models.py:323
 msgid "Username"
 msgstr ""
 
-#: models.py:314
+#: models.py:324
 msgid "Password"
 msgstr ""
 
-#: models.py:334
+#: models.py:328
+msgid ""
+"Name of the attachment that will contains the metadata type names and value "
+"pairs to be assigned to the rest of the downloaded attachments. Note: This "
+"attachment has to be the first attachment."
+msgstr ""
+
+#: models.py:331
+msgid "Metadata attachment name"
+msgstr ""
+
+#: models.py:353
 #, python-format
 msgid "attachment-%i"
 msgstr ""
 
-#: models.py:347
+#: models.py:374
 msgid "Email source"
 msgstr ""
 
-#: models.py:348
+#: models.py:375
 msgid "Email sources"
 msgstr ""
 
-#: models.py:355
+#: models.py:382
 msgid "Timeout"
 msgstr ""
 
-#: models.py:392 models.py:393
+#: models.py:419 models.py:420
 msgid "POP email"
 msgstr ""
 
-#: models.py:401
+#: models.py:428
 msgid "Mail from which to check for messages with attached documents."
 msgstr ""
 
-#: models.py:402
+#: models.py:429
 msgid "Mailbox"
 msgstr ""
 
-#: models.py:463
+#: models.py:490
 msgid "Watch folders"
 msgstr ""
 
-#: models.py:471 views.py:66
-msgid "Date time"
-msgstr ""
-
-#: models.py:474 views.py:70
-msgid "Message"
-msgstr ""
-
-#: models.py:480
+#: models.py:507
 msgid "Log entry"
 msgstr ""
 
-#: models.py:481
+#: models.py:508
 msgid "Log entries"
 msgstr ""
 
@@ -352,68 +363,68 @@ msgstr ""
 msgid "Error processing source: %s"
 msgstr ""
 
-#: views.py:62
+#: views.py:63
 #, python-format
 msgid "Log entries for source: %s"
 msgstr ""
 
-#: views.py:147 wizards.py:36
+#: views.py:140 wizards.py:36
 msgid ""
 "No interactive document sources have been defined or none have been enabled, "
 "create one before proceeding."
 msgstr ""
 
-#: views.py:171 views.py:189
+#: views.py:164 views.py:182
 msgid "Document properties"
 msgstr ""
 
-#: views.py:179
+#: views.py:172
 msgid "Files in staging path"
 msgstr ""
 
-#: views.py:269
+#: views.py:262
 msgid "New document queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:301
+#: views.py:294
 #, python-format
 msgid "Upload a local document from source: %s"
 msgstr ""
 
-#: views.py:354
+#: views.py:347
 msgid "New document version queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:386
+#: views.py:379
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr ""
 
-#: views.py:413
+#: views.py:406
 msgid "Staging file delete successfully."
 msgstr ""
 
-#: views.py:416
+#: views.py:409
 #, python-format
 msgid "Staging file delete error; %s."
 msgstr ""
 
-#: views.py:447
+#: views.py:440
 #, python-format
 msgid "Create new source of type: %s"
 msgstr ""
 
-#: views.py:466
+#: views.py:459
 #, python-format
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views.py:485
+#: views.py:478
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:496
+#: views.py:489
 msgid "Type"
 msgstr ""
 

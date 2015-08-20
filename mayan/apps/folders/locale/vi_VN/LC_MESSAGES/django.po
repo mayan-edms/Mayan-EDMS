@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:11-0400\n"
+"POT-Creation-Date: 2015-08-20 14:46-0400\n"
 "PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/projects/p/"
@@ -20,8 +20,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:33 links.py:15 links.py:43 models.py:35 permissions.py:7
-#: views.py:83
+#: apps.py:33 links.py:15 links.py:43 models.py:51 permissions.py:7
+#: views.py:53
 msgid "Folders"
 msgstr "Các thư mục"
 
@@ -29,11 +29,15 @@ msgstr "Các thư mục"
 msgid "Created"
 msgstr ""
 
-#: apps.py:58 models.py:17
+#: apps.py:58 models.py:21
 msgid "User"
 msgstr ""
 
-#: forms.py:34 models.py:34
+#: apps.py:60 links.py:46 models.py:26
+msgid "Documents"
+msgstr ""
+
+#: forms.py:34 models.py:50
 msgid "Folder"
 msgstr "Thư mục"
 
@@ -45,7 +49,7 @@ msgstr ""
 msgid "Add to folder"
 msgstr ""
 
-#: links.py:26 views.py:114
+#: links.py:26 views.py:90
 msgid "Create folder"
 msgstr ""
 
@@ -61,15 +65,11 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: links.py:46 models.py:22 views.py:75 views.py:258
-msgid "Documents"
-msgstr ""
-
-#: models.py:15
+#: models.py:19
 msgid "Label"
 msgstr ""
 
-#: models.py:19
+#: models.py:23
 msgid "Datetime created"
 msgstr ""
 
@@ -101,76 +101,76 @@ msgstr "Thêm tài liệu vào các thư mục đang có"
 msgid "Primary key of the document to be added."
 msgstr ""
 
-#: views.py:44
+#: views.py:43
 #, python-format
 msgid "Edit folder: %s"
 msgstr ""
 
-#: views.py:107
+#: views.py:83
 #, python-format
 msgid "A folder named: %s, already exists."
 msgstr "Thư mục tên: %s, đã tồn tại."
 
-#: views.py:136
+#: views.py:112
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Thư mục: %s đã xóa thành công."
 
-#: views.py:138
+#: views.py:114
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Thư mục: %(folder)s lỗi xóa: %(error)s"
 
-#: views.py:148
+#: views.py:124
 #, fuzzy, python-format
 #| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr "Xóa các thư mục mới"
 
-#: views.py:175
+#: views.py:151
 #, python-format
 msgid "Documents in folder: %s"
 msgstr ""
 
-#: views.py:188
+#: views.py:164
 msgid "Must provide at least one document."
 msgstr "Cần cung cấp ít nhất một tài liệu."
 
-#: views.py:207
+#: views.py:183
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Tài liệu: %(document)s được thêm vào thư mục: %(folder)s thành công."
 
-#: views.py:210
+#: views.py:186
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Tài liệu: %(document)s đã tồn tại trong thư mục: %(folder)s."
 
-#: views.py:227
+#: views.py:203
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
 msgstr[0] ""
 
-#: views.py:268
+#: views.py:234
 #, python-format
 msgid "Folders containing document: %s"
 msgstr ""
 
-#: views.py:282
+#: views.py:248
 msgid "Must provide at least one folder document."
 msgstr "Cần cung cấp ít nhất một thư mục tài liệu."
 
-#: views.py:300
+#: views.py:266
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Tài liệu: %s đã xóa thành công."
 
-#: views.py:302
+#: views.py:268
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Tài liệu: %(document)s lỗi xóa: %(error)s"
 
-#: views.py:312
+#: views.py:278
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to remove the documents: %(documents)s from the "

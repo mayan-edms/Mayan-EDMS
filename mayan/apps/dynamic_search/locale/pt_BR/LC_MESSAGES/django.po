@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:10-0400\n"
+"POT-Creation-Date: 2015-08-20 14:45-0400\n"
 "PO-Revision-Date: 2015-05-07 18:33+0000\n"
 "Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -27,15 +27,15 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "pesquisa avançada"
 
-#: forms.py:8
+#: forms.py:20
 msgid "Search terms"
 msgstr "Termos de pesquisa"
 
-#: links.py:7 settings.py:8 views.py:76 views.py:82 views.py:84
+#: links.py:7 settings.py:8 views.py:54 views.py:68
 msgid "Search"
 msgstr "Pesquisa"
 
-#: links.py:9 views.py:72
+#: links.py:9 views.py:75
 msgid "Advanced search"
 msgstr "pesquisa avançada"
 
@@ -75,16 +75,16 @@ msgstr "Quantidade máxima acessos para a pesquisa buscar e mostrar."
 msgid "Maximum number of search queries to remember per user."
 msgstr "Número máximo de consultas de pesquisa para se lembrar por usuário."
 
-#: views.py:39
-msgid "Results"
-msgstr "resultados"
+#: views.py:25
+msgid "Search results"
+msgstr "Resultados da pesquisa"
 
-#: views.py:49
+#: views.py:32
 msgid "Type"
 msgstr "Tipo"
 
-#~ msgid "Search results"
-#~ msgstr "Resultados da pesquisa"
+#~ msgid "Results"
+#~ msgstr "resultados"
 
 #~ msgid "Elapsed time: %(time_delta)s seconds"
 #~ msgstr "Tempo decorrido: %(time_delta)s segundos"

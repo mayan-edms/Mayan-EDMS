@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:11-0400\n"
+"POT-Creation-Date: 2015-08-20 14:46-0400\n"
 "PO-Revision-Date: 2015-05-07 20:12+0000\n"
 "Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -19,15 +19,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:17 links.py:25 links.py:28 permissions.py:7 views.py:38
+#: apps.py:16 links.py:25 links.py:28 permissions.py:7 views.py:38
 msgid "Events"
 msgstr "Eventos"
 
-#: apps.py:22
+#: apps.py:21
 msgid "Timestamp"
 msgstr "Timestamp"
 
-#: apps.py:23
+#: apps.py:22
 msgid "Actor"
 msgstr "Ator"
 

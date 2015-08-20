@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:09-0400\n"
+"POT-Creation-Date: 2015-08-20 14:44-0400\n"
 "PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Albanian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -19,8 +19,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:16 permissions.py:7 settings.py:7
+#: apps.py:17 permissions.py:7 settings.py:7
 msgid "Converter"
+msgstr ""
+
+#: apps.py:22 models.py:33
+msgid "Order"
+msgstr ""
+
+#: apps.py:24 models.py:62
+msgid "Transformation"
+msgstr ""
+
+#: apps.py:28 models.py:42
+msgid "Arguments"
 msgstr ""
 
 #: backends/python.py:86 backends/python.py:98
@@ -51,6 +63,10 @@ msgstr ""
 msgid "Zoom"
 msgstr ""
 
+#: classes.py:313
+msgid "Crop"
+msgstr ""
+
 #: links.py:31
 msgid "Create new transformation"
 msgstr ""
@@ -73,10 +89,6 @@ msgid ""
 "automatic order value will be assigned."
 msgstr ""
 
-#: models.py:33 views.py:235
-msgid "Order"
-msgstr ""
-
 #: models.py:37
 msgid "Name"
 msgstr ""
@@ -85,14 +97,6 @@ msgstr ""
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
-
-#: models.py:42 views.py:241
-msgid "Arguments"
-msgstr ""
-
-#: models.py:62 views.py:237
-msgid "Transformation"
 msgstr ""
 
 #: permissions.py:10
@@ -129,22 +133,22 @@ msgstr ""
 msgid "Enter a valid YAML value."
 msgstr ""
 
-#: views.py:72
+#: views.py:71
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr ""
 
-#: views.py:139
+#: views.py:138
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr ""
 
-#: views.py:191
+#: views.py:190
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr ""
 
-#: views.py:246
+#: views.py:236
 #, python-format
 msgid "Transformations for: %s"
 msgstr ""

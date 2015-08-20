@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:13-0400\n"
+"POT-Creation-Date: 2015-08-20 14:48-0400\n"
 "PO-Revision-Date: 2015-02-06 23:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,14 +22,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:34 apps.py:57 apps.py:68 forms.py:34 links.py:40 links.py:43
-#: models.py:24 permissions.py:7 views.py:163
+#: apps.py:33 apps.py:56 apps.py:71 forms.py:34 links.py:40 links.py:43
+#: models.py:28 permissions.py:7 views.py:131
 msgid "Tags"
 msgstr "Etiquettes"
 
-#: apps.py:64
+#: apps.py:61
 msgid "Preview"
 msgstr "Prévisualiser"
+
+#: apps.py:65 models.py:23
+msgid "Documents"
+msgstr "Documents"
 
 #: links.py:14
 msgid "Remove tag"
@@ -57,19 +61,15 @@ msgstr "Supprimer"
 msgid "Edit"
 msgstr "Modifier"
 
-#: models.py:15
+#: models.py:19
 msgid "Label"
 msgstr "Étiquette"
 
-#: models.py:17
+#: models.py:21
 msgid "Color"
 msgstr "Couleur"
 
-#: models.py:19 views.py:153 views.py:287
-msgid "Documents"
-msgstr "Documents"
-
-#: models.py:23
+#: models.py:27
 msgid "Tag"
 msgstr "Étiquette"
 
@@ -101,51 +101,51 @@ msgstr "Retirer des étiquettes au document"
 msgid "Primary key of the tag to be added."
 msgstr ""
 
-#: views.py:35
+#: views.py:34
 msgid "Create tag"
 msgstr "Créer une étiquette"
 
-#: views.py:51
+#: views.py:50
 msgid "Must provide at least one document."
 msgstr "Il est nécessaire d'indiquer au moins un document."
 
-#: views.py:81
+#: views.py:80
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr "Le document \"%(document)s\" est déjà étiqueté comme \"%(tag)s\""
 
-#: views.py:91
+#: views.py:90
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr ""
 "L'étiquette \"%(tag)s\" a été attachée avec succès au document \"%(document)s"
 "\"."
 
-#: views.py:105
+#: views.py:104
 msgid "Attach tag to document"
 msgid_plural "Attach tag to documents"
 msgstr[0] "Rattacher une étiquette au document"
 msgstr[1] "Rattacher une étiquette aux documents"
 
-#: views.py:178
+#: views.py:153
 msgid "Must provide at least one tag."
 msgstr "Vous devez fournir au moins une étiquette"
 
-#: views.py:200
+#: views.py:175
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Etiquette \"%s\" supprimée avec succès"
 
-#: views.py:204
+#: views.py:179
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Erreur lors de la suppression de l'étiquette \"%(tag)s\": %(error)s"
 
-#: views.py:214
+#: views.py:189
 msgid "Will be removed from all documents."
 msgstr "Sera supprimée de tous les documents"
 
-#: views.py:217
+#: views.py:192
 #, fuzzy
 #| msgid "Are you sure you wish to delete the selected tag?"
 #| msgid_plural "Are you sure you wish to delete the selected tags?"
@@ -154,36 +154,36 @@ msgid_plural "Delete the selected tags?"
 msgstr[0] "Êtes vous sûr de vouloir supprime l'étiquette sélectionnée?"
 msgstr[1] "Êtes vous sûr de vouloir supprime les étiquettes sélectionnées?"
 
-#: views.py:247
+#: views.py:222
 #, python-format
 msgid "Edit tag: %s"
 msgstr "Modifier l'étiquette:%s"
 
-#: views.py:260
+#: views.py:235
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr "Documents avec l'étiquette: %s"
 
-#: views.py:297
+#: views.py:262
 #, python-format
 msgid "Tags for document: %s"
 msgstr "Étiquettes du document: %s"
 
-#: views.py:313
+#: views.py:278
 msgid "Must provide at least one tagged document."
 msgstr "Il est nécessaire d'indiquer au moins un document étiqueté."
 
-#: views.py:363
+#: views.py:328
 #, python-format
 msgid "Remove tag from document: %s."
 msgstr "Supprimer l'étiquette du document: %s"
 
-#: views.py:367
+#: views.py:332
 #, python-format
 msgid "Remove tag from documents: %s."
 msgstr "Supprimer l'étiquette des documents: %s"
 
-#: views.py:375
+#: views.py:340
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
@@ -193,7 +193,7 @@ msgstr ""
 "Êtes-vous sûr de vouloir supprimer l'étiquette \"%(tag)s\" du document: "
 "%(document)s?"
 
-#: views.py:382
+#: views.py:347
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
@@ -203,7 +203,7 @@ msgstr ""
 "Êtes-vous sûr de vouloir supprimer l'étiquette \"%(tag)s\" des documents:   "
 "%(documents)s?"
 
-#: views.py:391
+#: views.py:356
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to remove the tags: %(tags)s from the document: "
@@ -213,7 +213,7 @@ msgstr ""
 "Êtes-vous sûr de vouloir supprimer les étiquettes: %(tags)s du document: "
 "%(document)s?"
 
-#: views.py:398
+#: views.py:363
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to remove the tags %(tags)s from the documents: "
@@ -223,12 +223,12 @@ msgstr ""
 "Etês vous sur de vouloir supprimer les étiquettes %(tags)s des documents: "
 "%(documents)s?"
 
-#: views.py:410
+#: views.py:375
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr "Le document \"%(document)s\" n'a pas été étiqueté avec \"%(tag)s\""
 
-#: views.py:419
+#: views.py:384
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""

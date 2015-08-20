@@ -10,9 +10,9 @@ APP_LIST = (
     'converter', 'django_gpg', 'documents', 'document_comments',
     'document_indexing', 'document_signatures', 'document_states',
     'dynamic_search', 'events', 'folders', 'installation', 'linking',
-    'mailer', 'metadata', 'navigation', 'ocr', 'permissions',
-    'rest_api', 'smart_settings', 'sources', 'statistics', 'tags',
-    'user_management'
+    'lock_manager', 'mailer', 'metadata', 'navigation', 'ocr', 'permissions',
+    'rest_api', 'smart_settings', 'sources', 'statistics', 'storage',
+    'tags', 'user_management'
 )
 LANGUAGE_LIST = (
     'ar', 'bg', 'bs_BA', 'da', 'de_CH', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu',

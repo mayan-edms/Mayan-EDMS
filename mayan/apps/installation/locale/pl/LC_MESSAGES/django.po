@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:11-0400\n"
+"POT-Creation-Date: 2015-08-20 14:46-0400\n"
 "PO-Revision-Date: 2015-03-19 06:12+0000\n"
 "Last-Translator: Annunnaky <doublemiu@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,27 +22,27 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:17 permissions.py:7
+#: apps.py:16 permissions.py:7
 msgid "Installation"
 msgstr "Instalacja"
 
-#: apps.py:23 apps.py:30
+#: apps.py:22 apps.py:29
 msgid "Label"
 msgstr "Etykieta"
 
-#: apps.py:26
+#: apps.py:25
 msgid "Items"
 msgstr "Pozycje"
 
-#: apps.py:31
+#: apps.py:30
 msgid "Value"
 msgstr "Wartość"
 
-#: apps.py:42
+#: apps.py:41
 msgid "VirtualEnv"
 msgstr "VirtualEnv"
 
-#: apps.py:47
+#: apps.py:46
 msgid "pip not found."
 msgstr "nie odnaleziono pip."
 
@@ -54,7 +54,7 @@ msgstr "Szczegóły instalacji"
 msgid "Details"
 msgstr "Szczegóły"
 
-#: links.py:20 views.py:20
+#: links.py:20 views.py:13
 msgid "Installation property namespaces"
 msgstr ""
 
@@ -62,7 +62,7 @@ msgstr ""
 msgid "View installation environment details"
 msgstr ""
 
-#: views.py:32
+#: views.py:27
 #, python-format
 msgid "Installation namespace details for: %s"
 msgstr ""

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:13-0400\n"
+"POT-Creation-Date: 2015-08-20 14:48-0400\n"
 "PO-Revision-Date: 2014-10-25 07:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Switzerland) (http://www.transifex.com/projects/p/"
@@ -38,16 +38,21 @@ msgstr ""
 msgid "View statistics"
 msgstr ""
 
-#: views.py:19
+#: views.py:15
 msgid "Statistics namespaces"
 msgstr ""
 
-#: views.py:34
+#: views.py:32
 #, python-format
 msgid "Namespace details for: %s"
 msgstr ""
 
-#: views.py:51
+#: views.py:52
 #, python-format
 msgid "Results for: %s"
+msgstr ""
+
+#: views.py:62
+#, python-format
+msgid "Statistic \"%s\" not found."
 msgstr ""

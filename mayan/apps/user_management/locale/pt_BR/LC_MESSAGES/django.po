@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:13-0400\n"
+"POT-Creation-Date: 2015-08-20 14:48-0400\n"
 "PO-Revision-Date: 2015-05-06 13:08+0000\n"
 "Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/"
@@ -23,17 +23,37 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:26 permissions.py:7
+#: apps.py:28 permissions.py:7
 msgid "User management"
 msgstr "Gerenciar usuários"
 
-#: apps.py:33
+#: apps.py:36
 msgid "All the groups."
 msgstr ""
 
-#: apps.py:34
+#: apps.py:40
 msgid "All the users."
 msgstr ""
+
+#: apps.py:45 links.py:30
+msgid "Members"
+msgstr "Membros"
+
+#: apps.py:49
+msgid "Full name"
+msgstr "Nome Completo"
+
+#: apps.py:52
+msgid "Email"
+msgstr "E-mail"
+
+#: apps.py:55
+msgid "Active"
+msgstr "Ativo"
+
+#: apps.py:61
+msgid "Has usable password?"
+msgstr "tem senha usável?"
 
 #: forms.py:16
 msgid "New password"
@@ -43,7 +63,7 @@ msgstr "Nova senha"
 msgid "Confirm password"
 msgstr "Confirmar senha"
 
-#: links.py:14 views.py:290
+#: links.py:14 views.py:296
 msgid "Create new group"
 msgstr "Criar novo Grupo"
 
@@ -55,19 +75,15 @@ msgstr "excluir"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:26 links.py:38 links.py:54 views.py:312
+#: links.py:26 links.py:38 links.py:54 views.py:319
 msgid "Groups"
 msgstr "Grupos"
 
-#: links.py:30 views.py:316
-msgid "Members"
-msgstr "Membros"
-
-#: links.py:42 views.py:125
+#: links.py:42 views.py:97
 msgid "Create new user"
 msgstr "Criar novo Usuário"
 
-#: links.py:58 links.py:74 views.py:41
+#: links.py:58 links.py:74 views.py:33
 msgid "Users"
 msgstr "Usuários"
 
@@ -107,23 +123,7 @@ msgstr "Editar usuários existentes"
 msgid "View existing users"
 msgstr "Ver os usuários existentes"
 
-#: views.py:45
-msgid "Full name"
-msgstr "Nome Completo"
-
-#: views.py:49
-msgid "Email"
-msgstr "E-mail"
-
-#: views.py:53
-msgid "Active"
-msgstr "Ativo"
-
-#: views.py:59
-msgid "Has usable password?"
-msgstr "tem senha usável?"
-
-#: views.py:80
+#: views.py:50
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
@@ -131,26 +131,26 @@ msgstr ""
 "Edição de super usuário e usuário pessoal não é permitida, use a interface "
 "de administração para esses casos."
 
-#: views.py:93
+#: views.py:65
 #, python-format
 msgid "User \"%s\" updated successfully."
 msgstr "Usuário \"%s\" atualizado com sucesso."
 
-#: views.py:100
+#: views.py:72
 #, python-format
 msgid "Edit user: %s"
 msgstr "Editar usuário:%s"
 
-#: views.py:116
+#: views.py:88
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Usuário \"%s\" criado com sucesso."
 
-#: views.py:142 views.py:198
+#: views.py:116 views.py:184
 msgid "Must provide at least one user."
 msgstr "Deve fornecer pelo menos um usuário."
 
-#: views.py:156
+#: views.py:133
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
@@ -158,33 +158,33 @@ msgstr ""
 "Excluir super usuário e usuário pessoal não é permitido, use a interface de "
 "administração para esses casos."
 
-#: views.py:159
+#: views.py:140
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Usuário \"%s\" removido com sucesso."
 
-#: views.py:161
+#: views.py:144
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Erro ao excluir usuário \"%(user)s\": %(error)s "
 
-#: views.py:174
+#: views.py:158
 #, fuzzy, python-format
 #| msgid "Delete existing users"
 msgid "Delete the user: %s?"
 msgstr "Excluir usuários existentes"
 
-#: views.py:176
+#: views.py:160
 #, fuzzy, python-format
 #| msgid "Delete existing users"
 msgid "Delete the users: %s?"
 msgstr "Excluir usuários existentes"
 
-#: views.py:209
+#: views.py:199
 msgid "Passwords do not match, try again."
 msgstr "Senhas não coincidem, tente novamente."
 
-#: views.py:214
+#: views.py:207
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
@@ -192,79 +192,79 @@ msgstr ""
 "Redefinir senha de super usuário e usuário pessoal não é permitido, use a "
 "interface de administração para esses casos."
 
-#: views.py:218
+#: views.py:217
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "Redefinição de senha do usuário bem-sucedida: %s."
 
-#: views.py:220
+#: views.py:223
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
 msgstr "Erro de redefinição de senha para o usuário \"%(user)s\": %(error)s "
 
-#: views.py:235
+#: views.py:240
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr "Redefinindo senha para o usuário: %s"
 
-#: views.py:237
+#: views.py:242
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr "Redefinindo senha para os usuários: %s"
 
-#: views.py:259 views.py:376
+#: views.py:264 views.py:380
 msgid "Available groups"
 msgstr ""
 
-#: views.py:260
+#: views.py:265
 #, fuzzy
 #| msgid "Groups"
 msgid "Groups joined"
 msgstr "Grupos"
 
-#: views.py:282
+#: views.py:274
 #, python-format
 msgid "Groups of user: %s"
 msgstr "Grupos de usuário:%s"
 
-#: views.py:306
+#: views.py:312
 #, python-format
 msgid "Edit group: %s"
 msgstr "Editar grupo:%s"
 
-#: views.py:335
+#: views.py:337
 msgid "Must provide at least one group."
 msgstr "Deve fornecer pelo menos um grupo."
 
-#: views.py:345
+#: views.py:347
 #, python-format
 msgid "Group \"%s\" deleted successfully."
 msgstr "Grupo \"%s\" removido com sucesso."
 
-#: views.py:347
+#: views.py:349
 #, python-format
 msgid "Error deleting group \"%(group)s\": %(error)s"
 msgstr "Erro ao excluir o grupo \"%(group)s\": %(error)s "
 
-#: views.py:360
+#: views.py:362
 #, fuzzy, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "Excluir grupos existentes"
 
-#: views.py:362
+#: views.py:364
 #, fuzzy, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the groups: %s?"
 msgstr "Excluir grupos existentes"
 
-#: views.py:377
+#: views.py:381
 #, fuzzy
 #| msgid "Members of group: %s"
 msgid "Members of groups"
 msgstr "membros do grupo: %s"
 
-#: views.py:399
+#: views.py:390
 #, python-format
 msgid "Members of group: %s"
 msgstr "membros do grupo: %s"

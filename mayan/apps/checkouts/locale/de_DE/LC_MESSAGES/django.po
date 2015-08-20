@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:09-0400\n"
+"POT-Creation-Date: 2015-08-20 14:43-0400\n"
 "PO-Revision-Date: 2015-02-06 23:55+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/projects/p/mayan-"
@@ -44,7 +44,7 @@ msgstr "Dokument ausgebucht"
 msgid "Document forcefully checked in"
 msgstr "Dokument zwingend eingebucht"
 
-#: exceptions.py:32 views.py:54
+#: exceptions.py:32 views.py:55
 msgid "Document already checked out."
 msgstr "Dokument bereits ausgebucht"
 
@@ -90,7 +90,7 @@ msgstr "Zeit, für die das Dokument ausgebucht werden soll"
 msgid "Check out expiration date and time"
 msgstr "Ausbuchungsende"
 
-#: models.py:39 views.py:87
+#: models.py:39 views.py:88
 #, fuzzy
 #| msgid "User: %s"
 msgid "User"
@@ -130,86 +130,72 @@ msgstr "Dokumente zwingend einbuchen"
 msgid "Check out documents"
 msgstr "Dokumente ausbuchen"
 
-#: views.py:58
+#: views.py:59
 #, python-format
 msgid "Error trying to check out document; %s"
 msgstr "Fehler bei der Ausbuchung von Dokument %s"
 
-#: views.py:63
+#: views.py:64
 #, python-format
 msgid "Document \"%s\" checked out successfully."
 msgstr "Dokument \"%s\" erfolgreich ausgebucht"
 
-#: views.py:71
+#: views.py:72
 #, python-format
 msgid "Check out document: %s"
 msgstr "Dokument %s ausbuchen"
 
-#: views.py:83
+#: views.py:84
 msgid "Documents checked out"
 msgstr "Ausgebuchte Dokumente"
 
-#: views.py:93
+#: views.py:94
 msgid "Checkout time and date"
 msgstr "Ausbuchungsbeginn"
 
-#: views.py:99
+#: views.py:100
 msgid "Checkout expiration"
 msgstr "Ausbuchungsende"
 
-#: views.py:123
+#: views.py:124
 #, python-format
 msgid "Document status: %s"
 msgstr "Dokumentenstatus: %s"
 
-#: views.py:129
+#: views.py:130
 #, python-format
 msgid "User: %s"
 msgstr "Benutzer: %s"
 
-#: views.py:132
+#: views.py:136
 #, python-format
 msgid "Check out time: %s"
 msgstr "Ausbuchungsbeginn: %s"
 
-#: views.py:135
+#: views.py:141
 #, python-format
 msgid "Check out expiration: %s"
 msgstr "Ausbuchungsende: %s"
 
-#: views.py:138
+#: views.py:145
 #, python-format
 msgid "New versions allowed: %s"
 msgstr "Hochladen neuer Versionen erlaubt: %s"
 
-#: views.py:138
+#: views.py:145
 msgid "Yes"
 msgstr "Ja"
 
-#: views.py:138
+#: views.py:145
 msgid "No"
 msgstr "Nein"
 
-#: views.py:145
+#: views.py:152
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Ausbuchungsdetails für Dokument %s"
 
-#: views.py:161 views.py:182
-msgid "Document has not been checked out."
-msgstr "Dokument wurde nicht ausgebucht"
-
-#: views.py:184
-#, python-format
-msgid "Error trying to check in document; %s"
-msgstr "Fehler bei der Einbuchung von Dokument %s"
-
-#: views.py:186
-#, python-format
-msgid "Document \"%s\" checked in successfully."
-msgstr "Dokument \"%s\" erfolgreich eingebucht"
-
-#: views.py:197
+#: views.py:171
 #, fuzzy, python-format
 #| msgid ""
 #| "You didn't originally checked out this document.  Are you sure you wish "
@@ -221,13 +207,27 @@ msgstr ""
 "Ein anderer Benutzer hat dieses Dokument ausgebucht. Wollen Sie Dokument %s "
 "wirklich zwingend einbuchen?"
 
-#: views.py:199
+#: views.py:175
 #, fuzzy, python-format
 #| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr "Dokument %s ausbuchen"
 
-#: widgets.py:22
+#: views.py:204
+msgid "Document has not been checked out."
+msgstr "Dokument wurde nicht ausgebucht"
+
+#: views.py:207
+#, python-format
+msgid "Error trying to check in document; %s"
+msgstr "Fehler bei der Einbuchung von Dokument %s"
+
+#: views.py:211
+#, python-format
+msgid "Document \"%s\" checked in successfully."
+msgstr "Dokument \"%s\" erfolgreich eingebucht"
+
+#: widgets.py:23
 msgid "Period"
 msgstr ""
 

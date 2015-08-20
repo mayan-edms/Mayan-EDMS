@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:08-0400\n"
+"POT-Creation-Date: 2015-08-20 14:43-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -161,7 +161,7 @@ msgid "Save"
 msgstr ""
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_list_subtemplate.html:29
+#: templates/appearance/generic_list_subtemplate.html:31
 #: templates/appearance/generic_multiform_subtemplate.html:64
 msgid "Submit"
 msgstr ""
@@ -171,23 +171,24 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
-#: templates/appearance/generic_list_subtemplate.html:13
+#: templates/appearance/generic_list_subtemplate.html:12
 #, python-format
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
 msgstr ""
 
-#: templates/appearance/generic_list_subtemplate.html:15
+#: templates/appearance/generic_list_subtemplate.html:14
+#: templates/appearance/generic_list_subtemplate.html:17
 #, python-format
 msgid "Total: %(total)s"
 msgstr ""
 
-#: templates/appearance/generic_list_subtemplate.html:49
+#: templates/appearance/generic_list_subtemplate.html:51
 msgid "Identifier"
 msgstr ""
 
-#: templates/appearance/generic_list_subtemplate.html:112
+#: templates/appearance/generic_list_subtemplate.html:108
 msgid "No results"
 msgstr ""
 
@@ -215,42 +216,46 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: templates/appearance/login.html:18
+#: templates/appearance/login.html:9
+msgid "Login"
+msgstr ""
+
+#: templates/appearance/login.html:20
 msgid "First time login"
 msgstr ""
 
-#: templates/appearance/login.html:21
+#: templates/appearance/login.html:23
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
 msgstr ""
 
-#: templates/appearance/login.html:22
-msgid "Login using the following credentials:"
-msgstr ""
-
-#: templates/appearance/login.html:23
-#, python-format
-msgid "Username: <strong>%(account)s</strong>"
-msgstr ""
-
 #: templates/appearance/login.html:24
-#, python-format
-msgid "Email: <strong>%(email)s</strong>"
+msgid "Login using the following credentials:"
 msgstr ""
 
 #: templates/appearance/login.html:25
 #, python-format
-msgid "Password: <strong>%(password)s</strong>"
+msgid "Username: <strong>%(account)s</strong>"
 msgstr ""
 
 #: templates/appearance/login.html:26
+#, python-format
+msgid "Email: <strong>%(email)s</strong>"
+msgstr ""
+
+#: templates/appearance/login.html:27
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr ""
+
+#: templates/appearance/login.html:28
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
 msgstr ""
 
-#: templates/appearance/login.html:35 templates/appearance/login.html.py:44
+#: templates/appearance/login.html:37 templates/appearance/login.html.py:46
 msgid "Sign in"
 msgstr ""
 

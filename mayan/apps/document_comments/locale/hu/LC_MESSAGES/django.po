@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:10-0400\n"
+"POT-Creation-Date: 2015-08-20 14:45-0400\n"
 "PO-Revision-Date: 2014-10-25 07:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Hungarian (http://www.transifex.com/projects/p/mayan-edms/"
@@ -20,21 +20,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25
+#: apps.py:24
 #, fuzzy
 #| msgid "Delete comments"
 msgid "Document comments"
 msgstr "hozzászólás törlése"
 
-#: apps.py:37
+#: apps.py:36
 msgid "Date"
 msgstr ""
 
-#: apps.py:39 models.py:17
+#: apps.py:38 models.py:17
 msgid "User"
 msgstr ""
 
-#: apps.py:44 models.py:28
+#. Translators: Comment here is a noun and refers to the actual text stored
+#: apps.py:41 models.py:20 models.py:29
 msgid "Comment"
 msgstr ""
 
@@ -46,7 +47,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: links.py:25 models.py:29 permissions.py:7
+#: links.py:25 models.py:30 permissions.py:7
 msgid "Comments"
 msgstr "Hozzászólás"
 
@@ -56,11 +57,7 @@ msgstr "Hozzászólás"
 msgid "Document"
 msgstr "comment"
 
-#: models.py:19
-msgid "comment"
-msgstr "comment"
-
-#: models.py:22
+#: models.py:23
 msgid "Date time submitted"
 msgstr ""
 
@@ -76,45 +73,51 @@ msgstr "hozzászólás törlése"
 msgid "View comments"
 msgstr "hozzászólás megtekintése"
 
-#: views.py:45
-msgid "Must provide at least one comment."
-msgstr "Legalább egy megjegyzés szükséges!"
+#: views.py:46
+msgid "At least one comment must be selected."
+msgstr ""
 
-#: views.py:64
+#: views.py:71
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
 msgstr "A megjegyzés \"%s\" törlése sikerült."
 
-#: views.py:69
+#: views.py:76
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "A megjegyzés \"%(comment)s\": a %(error)s hiba miatt sikertelen."
 
-#: views.py:84
+#: views.py:91
 #, fuzzy
 #| msgid "Delete comments"
 msgid "Delete comment?"
 msgstr "hozzászólás törlése"
 
-#: views.py:86
+#: views.py:93
 #, fuzzy
 #| msgid "Delete comments"
 msgid "Delete comments?"
 msgstr "hozzászólás törlése"
 
-#: views.py:122
+#: views.py:133
 msgid "Comment added successfully."
 msgstr "Megjegyzés hozzáfűzése sikeres."
 
-#: views.py:129
+#: views.py:140
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Megjegyzés fűzése a %s dokumentumhoz."
 
-#: views.py:151
+#: views.py:168
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""
+
+#~ msgid "comment"
+#~ msgstr "comment"
+
+#~ msgid "Must provide at least one comment."
+#~ msgstr "Legalább egy megjegyzés szükséges!"
 
 #~ msgid "Are you sure you wish to delete the comment: %s?"
 #~ msgstr "Valóban törölni akarja a következő megjegyzést: %s?"

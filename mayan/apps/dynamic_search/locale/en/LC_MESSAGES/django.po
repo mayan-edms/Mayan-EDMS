@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:10-0400\n"
+"POT-Creation-Date: 2015-08-20 14:45-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -23,15 +23,15 @@ msgstr ""
 msgid "Dynamic search"
 msgstr "advanced search"
 
-#: forms.py:8
+#: forms.py:20
 msgid "Search terms"
 msgstr "Search terms"
 
-#: links.py:7 settings.py:8 views.py:76 views.py:82 views.py:84
+#: links.py:7 settings.py:8 views.py:54 views.py:68
 msgid "Search"
 msgstr "Search"
 
-#: links.py:9 views.py:72
+#: links.py:9 views.py:75
 #, fuzzy
 msgid "Advanced search"
 msgstr "advanced search"
@@ -77,17 +77,17 @@ msgstr "Maximum amount search hits to fetch and display."
 msgid "Maximum number of search queries to remember per user."
 msgstr "Maximum number of search queries to remember per user."
 
-#: views.py:39
-#, fuzzy
-msgid "Results"
-msgstr "results"
+#: views.py:25
+msgid "Search results"
+msgstr "Search results"
 
-#: views.py:49
+#: views.py:32
 msgid "Type"
 msgstr ""
 
-#~ msgid "Search results"
-#~ msgstr "Search results"
+#, fuzzy
+#~ msgid "Results"
+#~ msgstr "results"
 
 #~ msgid "Elapsed time: %(time_delta)s seconds"
 #~ msgstr "Elapsed time: %(time_delta)s seconds"

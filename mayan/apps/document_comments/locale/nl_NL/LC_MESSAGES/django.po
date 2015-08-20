@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-11 02:10-0400\n"
+"POT-Creation-Date: 2015-08-20 14:45-0400\n"
 "PO-Revision-Date: 2014-10-25 07:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/projects/p/"
@@ -20,21 +20,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:25
+#: apps.py:24
 #, fuzzy
 #| msgid "Delete comments"
 msgid "Document comments"
 msgstr "Verwijderen van commentaar"
 
-#: apps.py:37
+#: apps.py:36
 msgid "Date"
 msgstr ""
 
-#: apps.py:39 models.py:17
+#: apps.py:38 models.py:17
 msgid "User"
 msgstr ""
 
-#: apps.py:44 models.py:28
+#. Translators: Comment here is a noun and refers to the actual text stored
+#: apps.py:41 models.py:20 models.py:29
 msgid "Comment"
 msgstr ""
 
@@ -46,7 +47,7 @@ msgstr ""
 msgid "Delete"
 msgstr ""
 
-#: links.py:25 models.py:29 permissions.py:7
+#: links.py:25 models.py:30 permissions.py:7
 msgid "Comments"
 msgstr "Commentaar"
 
@@ -56,11 +57,7 @@ msgstr "Commentaar"
 msgid "Document"
 msgstr "comment"
 
-#: models.py:19
-msgid "comment"
-msgstr "comment"
-
-#: models.py:22
+#: models.py:23
 msgid "Date time submitted"
 msgstr ""
 
@@ -76,45 +73,51 @@ msgstr "Verwijderen van commentaar"
 msgid "View comments"
 msgstr "Bekijk commentaar"
 
-#: views.py:45
-msgid "Must provide at least one comment."
-msgstr "U moet minimaal een opmerking plaatsen."
+#: views.py:46
+msgid "At least one comment must be selected."
+msgstr ""
 
-#: views.py:64
+#: views.py:71
 #, python-format
 msgid "Comment \"%s\" deleted successfully."
 msgstr "Opmerking \"%s\" succesvol verwijdert."
 
-#: views.py:69
+#: views.py:76
 #, python-format
 msgid "Error deleting comment \"%(comment)s\": %(error)s"
 msgstr "Fout bij het verwijderen van de opmerking: \"%(comment)s: %(error)s"
 
-#: views.py:84
+#: views.py:91
 #, fuzzy
 #| msgid "Delete comments"
 msgid "Delete comment?"
 msgstr "Verwijderen van commentaar"
 
-#: views.py:86
+#: views.py:93
 #, fuzzy
 #| msgid "Delete comments"
 msgid "Delete comments?"
 msgstr "Verwijderen van commentaar"
 
-#: views.py:122
+#: views.py:133
 msgid "Comment added successfully."
 msgstr "Opmerking succesvol toegevoegd."
 
-#: views.py:129
+#: views.py:140
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Opmerking toevoegen aan document: %s"
 
-#: views.py:151
+#: views.py:168
 #, python-format
 msgid "Comments for document: %s"
 msgstr ""
+
+#~ msgid "comment"
+#~ msgstr "comment"
+
+#~ msgid "Must provide at least one comment."
+#~ msgstr "U moet minimaal een opmerking plaatsen."
 
 #~ msgid "Are you sure you wish to delete the comment: %s?"
 #~ msgstr "Bent u er zeker van dat u de opmerking: %s, wenst te verwijderen?"
