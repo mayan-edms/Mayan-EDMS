@@ -14,7 +14,7 @@ permission_ocr_document_delete = namespace.add_permission(
 )
 permission_ocr_content_view = namespace.add_permission(
     name='ocr_content_view',
-    label=_('Can view the transcribed text from document')
+    label=_('View the transcribed text from document')
 )
 permission_document_type_ocr_setup = namespace.add_permission(
     name='ocr_document_type_setup',

@@ -644,7 +644,7 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
     elif document_id_list:
         documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
     else:
-        messages.error(request, _('Must provide at least one document.'))
+        messages.error(request, _('At least one document must be selected.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
@@ -661,8 +661,8 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
         messages.success(
             request,
             ungettext(
-                _('Document queued for page count reset.'),
-                _('Documents queued for page count reset.'),
+                _('Document queued for page count recalculation.'),
+                _('Documents queued for page count recalculation.'),
                 len(documents)
             )
         )
@@ -671,8 +671,8 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
     context = {
         'previous': previous,
         'title': ungettext(
-            'Reset the page count of the selected document?',
-            'Reset the page count of the selected documents?',
+            'Recalculation the page count of the selected document?',
+            'Recalculation the page count of the selected documents?',
             len(documents)
         )
     }
@@ -680,8 +680,10 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
     if len(documents) == 1:
         context['object'] = documents[0]
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_confirm.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def document_multiple_update_page_count(request):

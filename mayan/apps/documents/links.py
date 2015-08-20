@@ -87,7 +87,7 @@ link_document_print = Link(
     view='documents:document_print', args='object.id'
 )
 link_document_update_page_count = Link(
-    permissions=(permission_document_tools,), text=_('Reset page count'),
+    permissions=(permission_document_tools,), text=_('Recalculate page count'),
     view='documents:document_update_page_count', args='object.pk'
 )
 link_document_restore = Link(
@@ -116,7 +116,7 @@ link_document_multiple_download = Link(
     view='documents:document_multiple_download'
 )
 link_document_multiple_update_page_count = Link(
-    permissions=(permission_document_tools,), text=_('Reset page count'),
+    permissions=(permission_document_tools,), text=_('Recalculate page count'),
     view='documents:document_multiple_update_page_count'
 )
 link_document_multiple_restore = Link(

@@ -16,7 +16,8 @@ class Comment(models.Model):
         settings.AUTH_USER_MODEL, editable=False, related_name='comments',
         verbose_name=_('User'),
     )
-    comment = models.TextField(verbose_name=_('comment'))
+    # Translators: Comment here is a noun and refers to the actual text stored
+    comment = models.TextField(verbose_name=_('Comment'))
     submit_date = models.DateTimeField(
         auto_now_add=True, db_index=True,
         verbose_name=_('Date time submitted')

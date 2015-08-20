@@ -28,7 +28,7 @@ permission_document_properties_edit = namespace.add_permission(
     name='document_properties_edit', label=_('Edit document properties')
 )
 permission_document_print = namespace.add_permission(
-    name='document_print', label=_('Can print documents')
+    name='document_print', label=_('Print documents')
 )
 permission_document_restore = namespace.add_permission(
     name='document_restore', label=_('Restore deleted document')

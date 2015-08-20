@@ -43,7 +43,7 @@ def comment_delete(request, comment_id=None, comment_id_list=None):
         )
 
     if not comments:
-        messages.error(request, _('Must provide at least one comment.'))
+        messages.error(request, _('At least one comment must be selected.'))
         return HttpResponseRedirect(
             request.META.get(
                 'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
