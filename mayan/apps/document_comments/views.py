@@ -10,7 +10,7 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from common.generics import SingleObjectListView
+from common.generics import SingleObjectCreateView, SingleObjectListView
 from documents.models import Document
 from permissions import Permission
 
@@ -102,45 +102,41 @@ def comment_multiple_delete(request):
     )
 
 
-def comment_add(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
+class CommentCreateView(SingleObjectCreateView):
+    fields = ('comment',)
+    model = Comment
+    object_verbose_name = _('Comment')
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_comment_create,)
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_comment_create,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_comment_create, request.user, self.get_document()
+            )
+
+        return super(CommentCreateView, self).dispatch(request, *args, **kwargs)
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_document(),
+            'title': _('Add comment to document: %s') % self.get_document(),
+        }
+
+    def get_instance_extra_data(self):
+        return {
+            'document': self.get_document(), 'user': self.request.user
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'comments:comments_for_document', args=(self.kwargs['pk'],)
         )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_comment_create, request.user, document
-        )
-
-    post_action_redirect = None
-
-    next = request.POST.get(
-        'next', request.GET.get(
-            'next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
-        )
-    )
-
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.user = request.user
-            comment.document = document
-            comment.save()
-
-            messages.success(request, _('Comment added successfully.'))
-            return HttpResponseRedirect(next)
-    else:
-        form = CommentForm()
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'title': _('Add comment to document: %s') % document,
-        'next': next,
-        'object': document,
-    }, context_instance=RequestContext(request))
 
 
 class DocumentCommentListView(SingleObjectListView):

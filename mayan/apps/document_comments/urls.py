@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .views import DocumentCommentListView
+from .views import CommentCreateView, DocumentCommentListView
 
 urlpatterns = patterns(
     'document_comments.views',
@@ -15,7 +15,7 @@ urlpatterns = patterns(
         name='comment_multiple_delete'
     ),
     url(
-        r'^(?P<document_id>\d+)/comment/add/$', 'comment_add',
+        r'^(?P<pk>\d+)/comment/add/$', CommentCreateView.as_view(),
         name='comment_add'
     ),
     url(
