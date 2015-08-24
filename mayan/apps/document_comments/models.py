@@ -2,11 +2,13 @@ from __future__ import unicode_literals
 
 from django.conf import settings
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
 
 
+@python_2_unicode_compatible
 class Comment(models.Model):
     document = models.ForeignKey(
         Document, db_index=True, related_name='comments',
@@ -22,6 +24,9 @@ class Comment(models.Model):
         auto_now_add=True, db_index=True,
         verbose_name=_('Date time submitted')
     )
+
+    def __str__(self):
+        return self.comment
 
     class Meta:
         get_latest_by = 'submit_date'

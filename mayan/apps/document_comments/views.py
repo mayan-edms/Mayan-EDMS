@@ -10,11 +10,12 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from common.generics import SingleObjectCreateView, SingleObjectListView
+from common.generics import (
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectListView
+)
 from documents.models import Document
 from permissions import Permission
 
-from .forms import CommentForm
 from .models import Comment
 from .permissions import (
     permission_comment_create, permission_comment_delete,
@@ -22,87 +23,7 @@ from .permissions import (
 )
 
 
-def comment_delete(request, comment_id=None, comment_id_list=None):
-    post_action_redirect = None
-
-    if comment_id:
-        comments = [get_object_or_404(Comment, pk=comment_id)]
-    elif comment_id_list:
-        comments = [
-            get_object_or_404(
-                Comment, pk=comment_id
-            ) for comment_id in comment_id_list.split(',')
-        ]
-
-    try:
-        Permission.check_permissions(request.user, (
-            permission_comment_delete,))
-    except PermissionDenied:
-        comments = AccessControlList.objects.filter_by_access(
-            permission_comment_delete, request.user, comments,
-        )
-
-    if not comments:
-        messages.error(request, _('At least one comment must be selected.'))
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
-            )
-        )
-
-    previous = request.POST.get(
-        'previous', request.GET.get(
-            'previous', request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
-            )
-        )
-    )
-    next = request.POST.get(
-        'next', request.GET.get(
-            'next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
-        )
-    )
-
-    if request.method == 'POST':
-        for comment in comments:
-            try:
-                comment.delete()
-                messages.success(
-                    request, _('Comment "%s" deleted successfully.') % comment
-                )
-            except Exception as exception:
-                messages.error(
-                    request, _(
-                        'Error deleting comment "%(comment)s": %(error)s'
-                    ) % {
-                        'comment': comment, 'error': exception
-                    }
-                )
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'previous': previous,
-        'next': next,
-    }
-    if len(comments) == 1:
-        context['object'] = comments[0].document
-        context['title'] = _('Delete comment?')
-    elif len(comments) > 1:
-        context['title'] = _('Delete comments?')
-
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
-
-
-def comment_multiple_delete(request):
-    return comment_delete(
-        request, comment_id_list=request.GET.get('id_list', [])
-    )
-
-
-class CommentCreateView(SingleObjectCreateView):
+class DocumentCommentCreateView(SingleObjectCreateView):
     fields = ('comment',)
     model = Comment
     object_verbose_name = _('Comment')
@@ -117,7 +38,7 @@ class CommentCreateView(SingleObjectCreateView):
                 permission_comment_create, request.user, self.get_document()
             )
 
-        return super(CommentCreateView, self).dispatch(request, *args, **kwargs)
+        return super(DocumentCommentCreateView, self).dispatch(request, *args, **kwargs)
 
     def get_document(self):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
@@ -136,6 +57,33 @@ class CommentCreateView(SingleObjectCreateView):
     def get_post_action_redirect(self):
         return reverse(
             'comments:comments_for_document', args=(self.kwargs['pk'],)
+        )
+
+
+class DocumentCommentDeleteView(SingleObjectDeleteView):
+    model = Comment
+
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_comment_delete,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_comment_delete, request.user, self.get_object().document
+            )
+
+        return super(DocumentCommentDeleteView, self).dispatch(request, *args, **kwargs)
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object().document,
+            'title': _('Delete comment: %s?') % self.get_object(),
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'comments:comments_for_document', args=(self.get_object().document.pk,)
         )
 
 
