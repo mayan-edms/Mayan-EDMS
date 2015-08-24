@@ -114,18 +114,14 @@ class MetadataType(models.Model):
 
         if not value and self.get_required_for(document_type=document_type):
             raise ValidationError(
-                {
-                    'value': _(
-                        'This metadata is required for this document type.'
-                    )
-                }
+                _('This metadata is required for this document type.')
             )
 
         if self.lookup:
             lookup_options = self.get_lookup_values()
             if value not in lookup_options:
                 raise ValidationError(
-                    {'value': _('Value is not one of the provided options.')}
+                    _('Value is not one of the provided options.')
                 )
 
         if self.validation:
