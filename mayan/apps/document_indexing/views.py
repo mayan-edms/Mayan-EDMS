@@ -202,52 +202,24 @@ def template_node_edit(request, node_pk):
     }, context_instance=RequestContext(request))
 
 
-def template_node_delete(request, node_pk):
-    node = get_object_or_404(IndexTemplateNode, pk=node_pk)
+class TemplateNodeDeleteView(SingleObjectDeleteView):
+    model = IndexTemplateNode
+    view_permission = permission_document_indexing_edit
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_indexing_edit,)
+    def get_extra_context(self):
+        return {
+            'index': self.get_object().index,
+            'navigation_object_list': ('index', 'node'),
+            'node': self.get_object(),
+            'title': _(
+                'Delete the index template node: %s?'
+            ) % self.get_object(),
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'indexing:index_setup_view', args=(self.get_object().index.pk,)
         )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_indexing_edit, request.user, node.index
-        )
-
-    post_action_redirect = reverse(
-        'indexing:index_setup_view', args=(node.index.pk,)
-    )
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        try:
-            node.delete()
-            messages.success(request, _('Node: %s deleted successfully.') % node)
-        except Exception as exception:
-            messages.error(
-                request, _('Node: %(node)s delete error: %(error)s') % {
-                    'node': node, 'error': exception
-                }
-            )
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'index': node.index,
-        'navigation_object_list': ('index', 'node'),
-        'next': next,
-        'node': node,
-        'title': _('Delete the index template node: %s?') % node,
-        'previous': previous,
-    }
-
-    return render_to_response(
-        'appearance/generic_confirm.html', context,
-        context_instance=RequestContext(request)
-    )
 
 
 class IndexListView(SingleObjectListView):

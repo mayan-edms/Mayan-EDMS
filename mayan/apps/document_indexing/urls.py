@@ -10,7 +10,8 @@ from .api_views import (
 from .views import (
     DocumentIndexNodeListView, IndexInstanceNodeView, IndexListView,
     SetupIndexDocumentTypesView, SetupIndexCreateView, SetupIndexDeleteView,
-    SetupIndexEditView, SetupIndexListView, SetupIndexTreeTemplateListView
+    SetupIndexEditView, SetupIndexListView, SetupIndexTreeTemplateListView,
+    TemplateNodeDeleteView
 )
 
 urlpatterns = patterns(
@@ -49,8 +50,8 @@ urlpatterns = patterns(
         name='template_node_edit'
     ),
     url(
-        r'^setup/template/node/(?P<node_pk>\d+)/delete/$',
-        'template_node_delete', name='template_node_delete'
+        r'^setup/template/node/(?P<pk>\d+)/delete/$',
+        TemplateNodeDeleteView.as_view(), name='template_node_delete'
     ),
 
     url(r'^index/list/$', IndexListView.as_view(), name='index_list'),
