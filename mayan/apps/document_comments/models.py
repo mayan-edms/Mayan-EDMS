@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import logging
+
 from django.conf import settings
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -8,6 +10,8 @@ from django.utils.translation import ugettext_lazy as _
 from documents.models import Document
 
 from .events import event_document_comment_create, event_document_comment_delete
+
+logger = logging.getLogger(__name__)
 
 
 @python_2_unicode_compatible
@@ -39,8 +43,10 @@ class Comment(models.Model):
                 event_document_comment_create.commit(
                     actor=user, target=self.document
                 )
+                logger.info('Comment "%s" added to document "%s" by user "%s"', self.comment, self.document, user)
             else:
                 event_document_comment_create.commit(target=self.document)
+                logger.info('Comment "%s" added to document "%s"', self.comment, self.document)
 
     def delete(self, *args, **kwargs):
         user = kwargs.pop('_user', None)
