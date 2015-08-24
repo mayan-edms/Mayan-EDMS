@@ -13,8 +13,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.generics import (
-    AssignRemoveView, SingleObjectCreateView, SingleObjectEditView,
-    SingleObjectListView
+    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
@@ -200,52 +200,16 @@ class SmartLinkEditView(SingleObjectEditView):
         }
 
 
-def smart_link_delete(request, smart_link_pk):
-    smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+class SmartLinkDeleteView(SingleObjectDeleteView):
+    model = SmartLink
+    post_action_redirect = reverse_lazy('linking:smart_link_list')
+    view_permission = permission_smart_link_delete
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_smart_link_delete,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_smart_link_delete, request.user, smart_link
-        )
-
-    next = request.POST.get(
-        'next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-    )
-    previous = request.POST.get(
-        'previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-    )
-
-    if request.method == 'POST':
-        try:
-            smart_link.delete()
-            messages.success(
-                request, _(
-                    'Smart link: %s deleted successfully.'
-                ) % smart_link
-            )
-        except Exception as exception:
-            messages.error(
-                request, _(
-                    'Error deleting smart link: %(smart_link)s; '
-                    '%(exception)s.'
-                ) % {
-                    'smart_link': smart_link,
-                    'exception': exception
-                }
-            )
-        return HttpResponseRedirect(next)
-
-    return render_to_response('appearance/generic_confirm.html', {
-        'delete_view': True,
-        'object': smart_link,
-        'title': _('Delete smart link: %s?') % smart_link,
-        'next': next,
-        'previous': previous,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Delete smart link: %s') % self.get_object()
+        }
 
 
 class SmartLinkConditionListView(SingleObjectListView):
