@@ -1010,7 +1010,7 @@ class DocumentTypeFilenameListView(SingleObjectListView):
             'document_type': self.get_document_type(),
             'hide_link': True,
             'navigation_object_list': ('document_type',),
-            'title': _('Filenames for document type: %s') % self.get_document_type(),
+            'title': _('Quick labels for document type: %s') % self.get_document_type(),
         }
 
     def get_queryset(self):
@@ -1035,7 +1035,7 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
             'document_type': document_type_filename.document_type,
             'filename': document_type_filename,
             'navigation_object_list': ('document_type', 'filename',),
-            'title': _('Edit filename "%(filename)s" from document type "%(document_type)s"') % {
+            'title': _('Edit quick label "%(filename)s" from document type "%(document_type)s"') % {
                 'document_type': document_type_filename.document_type, 'filename': document_type_filename
             },
         }
@@ -1053,9 +1053,9 @@ def document_type_filename_delete(request, document_type_filename_id):
     if request.method == 'POST':
         try:
             document_type_filename.delete()
-            messages.success(request, _('Document type filename: %s deleted successfully.') % document_type_filename)
+            messages.success(request, _('Document type quick label: %s deleted successfully.') % document_type_filename)
         except Exception as exception:
-            messages.error(request, _('Document type filename: %(document_type_filename)s delete error: %(error)s') % {
+            messages.error(request, _('Document type quick label: %(document_type_filename)s delete error: %(error)s') % {
                 'document_type_filename': document_type_filename, 'error': exception})
 
         return HttpResponseRedirect(next)
@@ -1067,7 +1067,7 @@ def document_type_filename_delete(request, document_type_filename_id):
         'previous': previous,
         'navigation_object_list': ('document_type', 'filename',),
         'next': next,
-        'title': _('Delete the filename: %(filename)s, from document type "%(document_type)s"?') % {
+        'title': _('Delete the quick label: %(filename)s, from document type "%(document_type)s"?') % {
             'document_type': document_type_filename.document_type, 'filename': document_type_filename
         },
     }
@@ -1091,10 +1091,10 @@ def document_type_filename_create(request, document_type_id):
                     enabled=True
                 )
                 document_type_filename.save()
-                messages.success(request, _('Document type filename created successfully'))
+                messages.success(request, _('Document type quick label created successfully'))
                 return HttpResponseRedirect(reverse('documents:document_type_filename_list', args=(document_type_id,)))
             except Exception as exception:
-                messages.error(request, _('Error creating document type filename; %(error)s') % {
+                messages.error(request, _('Error creating document type quick label; %(error)s') % {
                     'error': exception})
     else:
         form = DocumentTypeFilenameForm_create()
@@ -1103,7 +1103,7 @@ def document_type_filename_create(request, document_type_id):
         'document_type': document_type,
         'form': form,
         'navigation_object_list': ('document_type',),
-        'title': _('Create filename for document type: %s') % document_type,
+        'title': _('Create quick label for document type: %s') % document_type,
     }, context_instance=RequestContext(request))
 
 

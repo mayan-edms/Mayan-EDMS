@@ -590,14 +590,14 @@ class DocumentVersion(models.Model):
 @python_2_unicode_compatible
 class DocumentTypeFilename(models.Model):
     """
-    List of filenames available to a specific document type for the
+    List of labels available to a specific document type for the
     quick rename functionality
     """
     document_type = models.ForeignKey(
         DocumentType, related_name='filenames', verbose_name=_('Document type')
     )
     filename = models.CharField(
-        db_index=True, max_length=128, verbose_name=_('Filename')
+        db_index=True, max_length=128, verbose_name=_('Label')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
@@ -607,8 +607,8 @@ class DocumentTypeFilename(models.Model):
     class Meta:
         ordering = ('filename',)
         unique_together = ('document_type', 'filename')
-        verbose_name = _('Document type quick rename filename')
-        verbose_name_plural = _('Document types quick rename filenames')
+        verbose_name = _('Quick rename template')
+        verbose_name_plural = _('Quick rename templates')
 
 
 @python_2_unicode_compatible

@@ -240,7 +240,7 @@ link_document_type_edit = Link(
 )
 link_document_type_filename_create = Link(
     permissions=(permission_document_type_edit,),
-    text=_('Add filename to document type'),
+    text=_('Add quick label to document type'),
     view='documents:document_type_filename_create', args='document_type.id'
 )
 link_document_type_filename_delete = Link(
@@ -253,7 +253,7 @@ link_document_type_filename_edit = Link(
     view='documents:document_type_filename_edit', args='resolved_object.id'
 )
 link_document_type_filename_list = Link(
-    permissions=(permission_document_type_view,), text=_('Filenames'),
+    permissions=(permission_document_type_view,), text=_('Quick labels'),
     view='documents:document_type_filename_list', args='resolved_object.id'
 )
 link_document_type_list = Link(
