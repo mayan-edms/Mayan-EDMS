@@ -90,7 +90,7 @@ def key_delete(request, fingerprint, key_type):
     secret = key_type == 'sec'
     key = Key.get(gpg, fingerprint, secret=secret)
 
-    post_action_redirect = None
+    post_action_redirect = redirect('django_gpg:key_public_list')
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
