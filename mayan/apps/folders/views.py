@@ -170,6 +170,9 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         documents = AccessControlList.objects.filter_by_access(permission_folder_add_document, request.user, documents)
 
     post_action_redirect = None
+    if document_id:
+        post_action_redirect = reverse('folders:document_folder_list', args=(document_id,))
+
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -225,7 +228,7 @@ class DocumentFolderListView(FolderListView):
         return super(DocumentFolderListView, self).dispatch(request, *args, **kwargs)
 
     def get_folder_queryset(self):
-        return self.document.folders.all()
+        return self.document.folders().all()
 
     def get_extra_context(self):
         return {
