@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 18:04-0400\n"
+"POT-Creation-Date: 2015-08-23 23:14-0400\n"
 "PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
@@ -46,15 +46,15 @@ msgstr ""
 msgid "Return the value of a specific document metadata"
 msgstr ""
 
-#: apps.py:101 forms.py:82 models.py:158
+#: apps.py:101 forms.py:82 models.py:154
 msgid "Value"
 msgstr "值"
 
-#: apps.py:105 forms.py:29 models.py:208
+#: apps.py:105 forms.py:29 models.py:204
 msgid "Required"
 msgstr ""
 
-#: apps.py:125 forms.py:92 models.py:142 models.py:206
+#: apps.py:125 forms.py:92 models.py:138 models.py:202
 msgid "Metadata type"
 msgstr "元数据类型"
 
@@ -137,7 +137,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: links.py:71 models.py:143 views.py:556
+#: links.py:71 models.py:139 views.py:556
 msgid "Metadata types"
 msgstr "元数据类型"
 
@@ -193,43 +193,43 @@ msgstr ""
 msgid "Parser"
 msgstr ""
 
-#: models.py:119
+#: models.py:117
 msgid "This metadata is required for this document type."
 msgstr ""
 
-#: models.py:128
+#: models.py:124
 msgid "Value is not one of the provided options."
 msgstr ""
 
-#: models.py:153
+#: models.py:149
 msgid "Document"
 msgstr ""
 
-#: models.py:155
+#: models.py:151
 msgid "Type"
 msgstr ""
 
-#: models.py:167
+#: models.py:163
 msgid "Metadata type is required for this document type."
 msgstr ""
 
-#: models.py:175
+#: models.py:171
 msgid "Metadata type is not valid for this document type."
 msgstr ""
 
-#: models.py:195 models.py:196
+#: models.py:191 models.py:192
 msgid "Document metadata"
 msgstr ""
 
-#: models.py:203
+#: models.py:199
 msgid "Document type"
 msgstr ""
 
-#: models.py:215
+#: models.py:211
 msgid "Document type metadata type options"
 msgstr ""
 
-#: models.py:216
+#: models.py:212
 msgid "Document type metadata types options"
 msgstr ""
 

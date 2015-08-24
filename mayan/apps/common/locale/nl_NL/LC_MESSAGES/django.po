@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 18:15-0400\n"
+"POT-Creation-Date: 2015-08-23 23:12-0400\n"
 "PO-Revision-Date: 2015-01-17 07:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
@@ -32,70 +32,70 @@ msgstr ""
 msgid "Selection"
 msgstr "Selectie"
 
-#: generics.py:125
+#: generics.py:122
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr ""
 
-#: generics.py:149
+#: generics.py:146
 msgid "Add"
 msgstr "Voeg toe"
 
-#: generics.py:160
+#: generics.py:157
 msgid "Remove"
 msgstr "Verwijder"
 
-#: generics.py:263
+#: generics.py:260
 #, python-format
 msgid "Error creating new %s."
 msgstr "Error bij maken nieuwe %s."
 
-#: generics.py:266
+#: generics.py:263
 msgid "Error creating object."
 msgstr "Error bij het maken van object."
 
-#: generics.py:276
+#: generics.py:273
 #, python-format
 msgid "%s created successfully."
 msgstr "%s succesvol aangemaakt."
 
-#: generics.py:281
+#: generics.py:278
 msgid "New object created successfully."
 msgstr "Nieuw object succesvol aangemaakt."
 
-#: generics.py:302
+#: generics.py:299
 #, python-format
 msgid "Error deleting %s."
 msgstr "Error bij verwijderen %s."
 
-#: generics.py:306
+#: generics.py:303
 msgid "Error deleting object."
 msgstr "Error bij het verwijderen van object."
 
-#: generics.py:315
+#: generics.py:312
 #, python-format
 msgid "%s deleted successfully."
 msgstr "%s succesvol verwijderd."
 
-#: generics.py:320
+#: generics.py:317
 msgid "Object deleted successfully."
 msgstr "Object succesvol verwijderd."
 
-#: generics.py:338
+#: generics.py:335
 #, python-format
 msgid "Error saving %s details."
 msgstr "Error bij opslaan van %s gegevens."
 
-#: generics.py:343
+#: generics.py:340
 msgid "Error saving details."
 msgstr "Error bij opslaan gegevens."
 
-#: generics.py:355
+#: generics.py:352
 #, python-format
 msgid "%s details saved successfully."
 msgstr "%s gegevens succesvol opgeslagen."
 
-#: generics.py:360
+#: generics.py:357
 msgid "Details saved successfully."
 msgstr "Gegevens succesvol opgeslagen."
 

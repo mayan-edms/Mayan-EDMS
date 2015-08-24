@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:45-0400\n"
+"POT-Creation-Date: 2015-08-23 23:13-0400\n"
 "PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -28,36 +28,48 @@ msgstr "Delete comments"
 msgid "Date"
 msgstr ""
 
-#: apps.py:38 models.py:17
+#: apps.py:38 models.py:25
 msgid "User"
 msgstr ""
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: apps.py:41 models.py:20 models.py:29
+#: apps.py:41 models.py:28 models.py:62 views.py:29
 #, fuzzy
 msgid "Comment"
 msgstr "Comments"
+
+#: events.py:9
+#, fuzzy
+#| msgid "Delete comments"
+msgid "Document comment created"
+msgstr "Delete comments"
+
+#: events.py:13
+#, fuzzy
+#| msgid "Delete comments"
+msgid "Document comment deleted"
+msgstr "Delete comments"
 
 #: links.py:13
 #, fuzzy
 msgid "Add comment"
 msgstr "add comment"
 
-#: links.py:18 links.py:22
+#: links.py:18
 #, fuzzy
 msgid "Delete"
 msgstr "delete"
 
-#: links.py:25 models.py:30 permissions.py:7
+#: links.py:21 models.py:63 permissions.py:7
 msgid "Comments"
 msgstr "Comments"
 
-#: models.py:13
+#: models.py:21
 #, fuzzy
 msgid "Document"
 msgstr "Comments"
 
-#: models.py:23
+#: models.py:31
 msgid "Date time submitted"
 msgstr ""
 
@@ -73,45 +85,35 @@ msgstr "Delete comments"
 msgid "View comments"
 msgstr "View comments"
 
-#: views.py:46
-msgid "At least one comment must be selected."
-msgstr ""
-
-#: views.py:71
-#, python-format
-msgid "Comment \"%s\" deleted successfully."
-msgstr "Comment \"%s\" deleted successfully."
-
-#: views.py:76
-#, python-format
-msgid "Error deleting comment \"%(comment)s\": %(error)s"
-msgstr "Error deleting comment \"%(comment)s\": %(error)s"
-
-#: views.py:91
-#, fuzzy
-#| msgid "Delete comments"
-msgid "Delete comment?"
-msgstr "Delete comments"
-
-#: views.py:93
-#, fuzzy
-#| msgid "Delete comments"
-msgid "Delete comments?"
-msgstr "Delete comments"
-
-#: views.py:133
-msgid "Comment added successfully."
-msgstr "Comment added successfully."
-
-#: views.py:140
+#: views.py:49
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Add comment to document: %s"
 
-#: views.py:168
+#: views.py:84
+#, fuzzy, python-format
+#| msgid "Delete comments"
+msgid "Delete comment: %s?"
+msgstr "Delete comments"
+
+#: views.py:115
 #, fuzzy, python-format
 msgid "Comments for document: %s"
 msgstr "Add comment to document: %s"
+
+#~ msgid "Comment \"%s\" deleted successfully."
+#~ msgstr "Comment \"%s\" deleted successfully."
+
+#~ msgid "Error deleting comment \"%(comment)s\": %(error)s"
+#~ msgstr "Error deleting comment \"%(comment)s\": %(error)s"
+
+#, fuzzy
+#~| msgid "Delete comments"
+#~ msgid "Delete comment?"
+#~ msgstr "Delete comments"
+
+#~ msgid "Comment added successfully."
+#~ msgstr "Comment added successfully."
 
 #~ msgid "comment"
 #~ msgstr "comment"

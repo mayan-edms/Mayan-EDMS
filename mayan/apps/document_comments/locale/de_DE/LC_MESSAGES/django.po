@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -9,18 +9,18 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:45-0400\n"
+"POT-Creation-Date: 2015-08-23 23:13-0400\n"
 "PO-Revision-Date: 2015-08-20 19:29+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24
-#| msgid "Delete comments"
 msgid "Document comments"
 msgstr "Kommentare zum Dokument"
 
@@ -28,32 +28,44 @@ msgstr "Kommentare zum Dokument"
 msgid "Date"
 msgstr "Datum"
 
-#: apps.py:38 models.py:17
+#: apps.py:38 models.py:25
 msgid "User"
 msgstr "Benutzer"
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: apps.py:41 models.py:20 models.py:29
+#: apps.py:41 models.py:28 models.py:62 views.py:29
 msgid "Comment"
 msgstr "Kommentar"
+
+#: events.py:9
+#, fuzzy
+#| msgid "Document comments"
+msgid "Document comment created"
+msgstr "Kommentare zum Dokument"
+
+#: events.py:13
+#, fuzzy
+#| msgid "Document comments"
+msgid "Document comment deleted"
+msgstr "Kommentare zum Dokument"
 
 #: links.py:13
 msgid "Add comment"
 msgstr "Kommentar hinzufügen"
 
-#: links.py:18 links.py:22
+#: links.py:18
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:25 models.py:30 permissions.py:7
+#: links.py:21 models.py:63 permissions.py:7
 msgid "Comments"
 msgstr "Kommentare"
 
-#: models.py:13
+#: models.py:21
 msgid "Document"
 msgstr "Dokument"
 
-#: models.py:23
+#: models.py:31
 msgid "Date time submitted"
 msgstr "Einstellunsgdatum und -zeit"
 
@@ -69,43 +81,34 @@ msgstr "Kommentare löschen"
 msgid "View comments"
 msgstr "Kommentare ansehen"
 
-#: views.py:46
-msgid "At least one comment must be selected."
-msgstr ""
-
-#: views.py:71
-#, python-format
-msgid "Comment \"%s\" deleted successfully."
-msgstr "Kommentar \"%s\" erfolgreich gelöscht."
-
-#: views.py:76
-#, python-format
-msgid "Error deleting comment \"%(comment)s\": %(error)s"
-msgstr "Fehler beim Löschen von Kommentar \"%(comment)s\": %(error)s"
-
-#: views.py:91
-#| msgid "Delete comments"
-msgid "Delete comment?"
-msgstr "Kommentar löschen?"
-
-#: views.py:93
-#| msgid "Delete comments"
-msgid "Delete comments?"
-msgstr "Kommentare löschen?"
-
-#: views.py:133
-msgid "Comment added successfully."
-msgstr "Kommentar erfolgreich hinzugefügt."
-
-#: views.py:140
+#: views.py:49
 #, python-format
 msgid "Add comment to document: %s"
 msgstr "Kommentar zu Dokument %s hinzufügen"
 
-#: views.py:168
+#: views.py:84
+#, fuzzy, python-format
+#| msgid "Delete comments?"
+msgid "Delete comment: %s?"
+msgstr "Kommentare löschen?"
+
+#: views.py:115
 #, python-format
 msgid "Comments for document: %s"
 msgstr "Kommentare für Dokument: %s"
+
+#~ msgid "Comment \"%s\" deleted successfully."
+#~ msgstr "Kommentar \"%s\" erfolgreich gelöscht."
+
+#~ msgid "Error deleting comment \"%(comment)s\": %(error)s"
+#~ msgstr "Fehler beim Löschen von Kommentar \"%(comment)s\": %(error)s"
+
+#~| msgid "Delete comments"
+#~ msgid "Delete comment?"
+#~ msgstr "Kommentar löschen?"
+
+#~ msgid "Comment added successfully."
+#~ msgstr "Kommentar erfolgreich hinzugefügt."
 
 #~ msgid "comment"
 #~ msgstr "comment"

@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Roberto Rosario, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:43-0400\n"
+"POT-Creation-Date: 2015-08-23 23:12-0400\n"
 "PO-Revision-Date: 2015-08-20 22:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:9
@@ -44,8 +45,8 @@ msgstr "Error de servidor"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: templates/500.html:14
@@ -75,39 +76,39 @@ msgstr "Liberado bajo la licencia Apache 2.0 License"
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr "Todos los derechos reservados &copy; 2011-2015 Roberto Rosario."
 
-#: templates/appearance/base.html:173
+#: templates/appearance/base.html:38
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/appearance/base.html:202
+#: templates/appearance/base.html:67
 msgid "Anonymous"
 msgstr "Anónimo"
 
-#: templates/appearance/base.html:204
+#: templates/appearance/base.html:69
 msgid "User details"
 msgstr "Detalles del usuario"
 
-#: templates/appearance/base.html:217
+#: templates/appearance/base.html:82
 msgid "Success"
 msgstr ""
 
-#: templates/appearance/base.html:217
+#: templates/appearance/base.html:82
 msgid "Information"
 msgstr "Información"
 
-#: templates/appearance/base.html:217
+#: templates/appearance/base.html:82
 msgid "Warning"
 msgstr "Advertencia"
 
-#: templates/appearance/base.html:217
+#: templates/appearance/base.html:82
 msgid "Error"
 msgstr "Error"
 
-#: templates/appearance/base.html:246
+#: templates/appearance/base.html:111
 msgid "Actions"
 msgstr "Acciones"
 
-#: templates/appearance/base.html:247
+#: templates/appearance/base.html:112
 msgid "Toggle Dropdown"
 msgstr ""
 
@@ -175,7 +176,9 @@ msgstr "Cancelar"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr "Total (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de %(total_pages)s)"
+msgstr ""
+"Total (%(start)s - %(end)s de %(total)s) (Página %(page_number)s de "
+"%(total_pages)s)"
 
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
@@ -227,7 +230,8 @@ msgstr "Primer inicio de sesión"
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr "!Felicitaciones! Acaba de terminar de instalar <strong>Mayan EDMS</strong>"
+msgstr ""
+"!Felicitaciones! Acaba de terminar de instalar <strong>Mayan EDMS</strong>"
 
 #: templates/appearance/login.html:24
 msgid "Login using the following credentials:"
@@ -252,7 +256,9 @@ msgstr ""
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr "Asegúrese de cambiar su contraseña para aumentar la seguridad y para desactivar este mensaje"
+msgstr ""
+"Asegúrese de cambiar su contraseña para aumentar la seguridad y para "
+"desactivar este mensaje"
 
 #: templates/appearance/login.html:37 templates/appearance/login.html.py:46
 msgid "Sign in"

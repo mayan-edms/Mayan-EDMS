@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 17:56-0400\n"
+"POT-Creation-Date: 2015-08-23 23:15-0400\n"
 "PO-Revision-Date: 2015-02-06 23:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
@@ -45,7 +45,7 @@ msgstr ""
 #: links.py:20
 #, fuzzy
 #| msgid "Create new tags"
-msgid "remove tags"
+msgid "Remove tags"
 msgstr "Kreiraj novo oznako"
 
 #: links.py:28

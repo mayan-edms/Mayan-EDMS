@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 18:07-0400\n"
+"POT-Creation-Date: 2015-08-23 23:13-0400\n"
 "PO-Revision-Date: 2015-05-07 20:12+0000\n"
 "Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
@@ -60,7 +60,7 @@ msgstr "Acesse os eventos de um objeto"
 msgid "Target"
 msgstr "Destino"
 
-#: views.py:78
+#: views.py:75
 #, python-format
 msgid "Events for: %s"
 msgstr "Eventos para: %s"

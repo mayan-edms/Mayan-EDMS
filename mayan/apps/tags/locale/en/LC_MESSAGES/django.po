@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 17:55-0400\n"
+"POT-Creation-Date: 2015-08-23 23:15-0400\n"
 "PO-Revision-Date: 2012-12-12 06:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -45,8 +45,8 @@ msgstr "attach tag"
 
 #: links.py:20
 #, fuzzy
-msgid "remove tags"
-msgstr "remove tags"
+msgid "Remove tags"
+msgstr "remove tag"
 
 #: links.py:28
 #, fuzzy
@@ -230,6 +230,10 @@ msgstr "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
+
+#, fuzzy
+#~ msgid "remove tags"
+#~ msgstr "remove tags"
 
 #, fuzzy
 #~ msgid "Tagged items"

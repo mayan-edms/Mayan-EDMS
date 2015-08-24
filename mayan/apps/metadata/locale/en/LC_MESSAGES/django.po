@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 18:03-0400\n"
+"POT-Creation-Date: 2015-08-23 23:14-0400\n"
 "PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -47,16 +47,16 @@ msgstr "default metadata"
 msgid "Return the value of a specific document metadata"
 msgstr ""
 
-#: apps.py:101 forms.py:82 models.py:158
+#: apps.py:101 forms.py:82 models.py:154
 msgid "Value"
 msgstr "Value"
 
-#: apps.py:105 forms.py:29 models.py:208
+#: apps.py:105 forms.py:29 models.py:204
 #, fuzzy
 msgid "Required"
 msgstr "required"
 
-#: apps.py:125 forms.py:92 models.py:142 models.py:206
+#: apps.py:125 forms.py:92 models.py:138 models.py:202
 msgid "Metadata type"
 msgstr "Metadata type"
 
@@ -146,7 +146,7 @@ msgstr "delete"
 msgid "Edit"
 msgstr ""
 
-#: links.py:71 models.py:143 views.py:556
+#: links.py:71 models.py:139 views.py:556
 msgid "Metadata types"
 msgstr "Metadata types"
 
@@ -204,50 +204,50 @@ msgstr ""
 msgid "Parser"
 msgstr ""
 
-#: models.py:119
+#: models.py:117
 #, fuzzy
 msgid "This metadata is required for this document type."
 msgstr "Add metadata type to document: %s"
 
-#: models.py:128
+#: models.py:124
 msgid "Value is not one of the provided options."
 msgstr ""
 
-#: models.py:153
+#: models.py:149
 #, fuzzy
 msgid "Document"
 msgstr "document"
 
-#: models.py:155
+#: models.py:151
 msgid "Type"
 msgstr ""
 
-#: models.py:167
+#: models.py:163
 #, fuzzy
 msgid "Metadata type is required for this document type."
 msgstr "Add metadata type to document: %s"
 
-#: models.py:175
+#: models.py:171
 #, fuzzy
 msgid "Metadata type is not valid for this document type."
 msgstr "Add metadata type to document: %s"
 
-#: models.py:195 models.py:196
+#: models.py:191 models.py:192
 #, fuzzy
 msgid "Document metadata"
 msgstr "document metadata"
 
-#: models.py:203
+#: models.py:199
 #, fuzzy
 msgid "Document type"
 msgstr "document type"
 
-#: models.py:215
+#: models.py:211
 #, fuzzy
 msgid "Document type metadata type options"
 msgstr "Delete metadata types"
 
-#: models.py:216
+#: models.py:212
 #, fuzzy
 msgid "Document type metadata types options"
 msgstr "Delete metadata types"

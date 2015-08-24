@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 18:13-0400\n"
+"POT-Creation-Date: 2015-08-23 23:12-0400\n"
 "PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
@@ -70,11 +70,11 @@ msgstr "Term"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Name, e-mail, key ID or key fingerprint to look for."
 
-#: links.py:14 views.py:83
+#: links.py:14 views.py:81
 msgid "Private keys"
 msgstr ""
 
-#: links.py:17 views.py:78
+#: links.py:17 views.py:76
 msgid "Public keys"
 msgstr ""
 
@@ -87,8 +87,10 @@ msgid "Query keyservers"
 msgstr "Truy vấn keyservers"
 
 #: links.py:30
-msgid "Download"
-msgstr ""
+#, fuzzy
+#| msgid "Import key"
+msgid "Import"
+msgstr "Import key"
 
 #: links.py:35 permissions.py:7
 msgid "Key management"
@@ -180,25 +182,25 @@ msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
 #: views.py:57
-msgid "Import key"
-msgstr "Import key"
-
-#: views.py:58
 #, fuzzy, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "Import key"
 
-#: views.py:102
+#: views.py:59
+msgid "Import key"
+msgstr "Import key"
+
+#: views.py:100
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Khóa: %s, đã xóa thành công."
 
-#: views.py:109
+#: views.py:107
 msgid "Delete key"
 msgstr " Xóa khóa"
 
-#: views.py:112
+#: views.py:110
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to delete key: %s?  If you try to delete a public "
@@ -212,15 +214,15 @@ msgstr ""
 "that is part of a public/private pair the private key will be deleted as "
 "well."
 
-#: views.py:136
+#: views.py:134
 msgid "Search"
 msgstr ""
 
-#: views.py:138
+#: views.py:136
 msgid "Query key server"
 msgstr "Query key server"
 
-#: views.py:148
+#: views.py:146
 msgid "Key query results"
 msgstr ""
 

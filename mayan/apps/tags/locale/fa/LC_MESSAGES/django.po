@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 17:55-0400\n"
+"POT-Creation-Date: 2015-08-23 23:15-0400\n"
 "PO-Revision-Date: 2015-03-03 11:14+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -44,9 +44,9 @@ msgstr "الصاق برچسب"
 
 #: links.py:20
 #, fuzzy
-#| msgid "Remove tags"
-msgid "remove tags"
-msgstr "برداشتن برچسبها"
+#| msgid "Remove tag"
+msgid "Remove tags"
+msgstr "برداشتن برچسب"
 
 #: links.py:28
 msgid "Create new tag"
@@ -219,6 +219,11 @@ msgstr "سند  \"%(document)s\"  دارای  برچسب  \"%(tag)s\" نمیبا
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "برچسب \"%(tag)s\" با موفقیت از سند  \"%(document)s\" برداشته شد."
+
+#, fuzzy
+#~| msgid "Remove tags"
+#~ msgid "remove tags"
+#~ msgstr "برداشتن برچسبها"
 
 #~ msgid "Tagged items"
 #~ msgstr "اقلام برچسب"

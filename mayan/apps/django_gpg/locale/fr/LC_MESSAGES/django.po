@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 18:13-0400\n"
+"POT-Creation-Date: 2015-08-23 23:12-0400\n"
 "PO-Revision-Date: 2015-01-29 07:41+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -73,11 +73,11 @@ msgstr "Terme"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Nom, e-mail, ID de clé ou empreinte à rechercher."
 
-#: links.py:14 views.py:83
+#: links.py:14 views.py:81
 msgid "Private keys"
 msgstr "Clés privées"
 
-#: links.py:17 views.py:78
+#: links.py:17 views.py:76
 msgid "Public keys"
 msgstr "Clés publiques"
 
@@ -90,8 +90,8 @@ msgid "Query keyservers"
 msgstr "Interroger les serveurs de clés"
 
 #: links.py:30
-msgid "Download"
-msgstr ""
+msgid "Import"
+msgstr "importer"
 
 #: links.py:35 permissions.py:7
 msgid "Key management"
@@ -187,25 +187,25 @@ msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
 #: views.py:57
-msgid "Import key"
-msgstr "Importer la clé"
-
-#: views.py:58
 #, fuzzy, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "Importer la clé"
 
-#: views.py:102
+#: views.py:59
+msgid "Import key"
+msgstr "Importer la clé"
+
+#: views.py:100
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Clé: %s, supprimée avec succès"
 
-#: views.py:109
+#: views.py:107
 msgid "Delete key"
 msgstr "Supprimer la clé"
 
-#: views.py:112
+#: views.py:110
 #, fuzzy, python-format
 #| msgid ""
 #| "Are you sure you wish to delete key: %s?  If you try to delete a public "
@@ -219,20 +219,17 @@ msgstr ""
 "publique qui fait partie d'une paire clé publique/clé privée, la clé privée "
 "sera également supprimée."
 
-#: views.py:136
+#: views.py:134
 msgid "Search"
 msgstr ""
 
-#: views.py:138
+#: views.py:136
 msgid "Query key server"
 msgstr "Interroger le serveur de clés"
 
-#: views.py:148
+#: views.py:146
 msgid "Key query results"
 msgstr ""
-
-#~ msgid "Import"
-#~ msgstr "importer"
 
 #~ msgid "Key: %s, imported successfully."
 #~ msgstr "Clé: %s, importée avec succès."

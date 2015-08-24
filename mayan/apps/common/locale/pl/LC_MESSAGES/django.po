@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
@@ -12,15 +12,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-20 14:44-0400\n"
+"POT-Creation-Date: 2015-08-23 23:12-0400\n"
 "PO-Revision-Date: 2015-08-20 22:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:55 settings.py:9
 msgid "Common"
@@ -34,70 +36,70 @@ msgstr "Dostępne atrybuty:"
 msgid "Selection"
 msgstr "Zaznaczenie"
 
-#: generics.py:125
+#: generics.py:122
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr ""
 
-#: generics.py:149
+#: generics.py:146
 msgid "Add"
 msgstr "Dodaj"
 
-#: generics.py:160
+#: generics.py:157
 msgid "Remove"
 msgstr "Usuń"
 
-#: generics.py:263
+#: generics.py:260
 #, python-format
 msgid "Error creating new %s."
 msgstr "Błąd podczas tworzenia nowego : %s."
 
-#: generics.py:266
+#: generics.py:263
 msgid "Error creating object."
 msgstr "Błąd poczas tworzenia obiektu."
 
-#: generics.py:276
+#: generics.py:273
 #, python-format
 msgid "%s created successfully."
 msgstr "%s utworzono pomyślnie."
 
-#: generics.py:281
+#: generics.py:278
 msgid "New object created successfully."
 msgstr "Pomyślnie utworzono nowy obiekt."
 
-#: generics.py:302
+#: generics.py:299
 #, python-format
 msgid "Error deleting %s."
 msgstr "Błąd podczas usuwania %s."
 
-#: generics.py:306
+#: generics.py:303
 msgid "Error deleting object."
 msgstr "Błąd podczas usuwania obiektu."
 
-#: generics.py:315
+#: generics.py:312
 #, python-format
 msgid "%s deleted successfully."
 msgstr "%s usunięto pomyślnie."
 
-#: generics.py:320
+#: generics.py:317
 msgid "Object deleted successfully."
 msgstr "Pomyślnie usunuęto obiekt."
 
-#: generics.py:338
+#: generics.py:335
 #, python-format
 msgid "Error saving %s details."
 msgstr "Błąd podczas zapisu  %s."
 
-#: generics.py:343
+#: generics.py:340
 msgid "Error saving details."
 msgstr "Błąd zapisu detali."
 
-#: generics.py:355
+#: generics.py:352
 #, python-format
 msgid "%s details saved successfully."
 msgstr "%s detale zapiane pomyślnie."
 
-#: generics.py:360
+#: generics.py:357
 msgid "Details saved successfully."
 msgstr "Detale zapsane pomyślnie."
 
@@ -188,13 +190,18 @@ msgstr "Lokalne profile użytkownika"
 #: settings.py:13
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
-"tempfile.mkdtemp()"
-msgstr "Katalog tymczasowy, używany do przechowywania miniatur, podglądów oraz plików tymczasowych. Jeśli nie zostanie określony, zostanie utworzony za pomocą tempfile.mkdtemp()"
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()"
+msgstr ""
+"Katalog tymczasowy, używany do przechowywania miniatur, podglądów oraz "
+"plików tymczasowych. Jeśli nie zostanie określony, zostanie utworzony za "
+"pomocą tempfile.mkdtemp()"
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
-msgstr "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie plików."
+msgstr ""
+"Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie "
+"plików."
 
 #: settings.py:28
 msgid "An integer specifying how many objects should be displayed per page."
@@ -266,11 +273,11 @@ msgstr "Brak"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields "
+#~ "is case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -279,11 +286,11 @@ msgstr "Brak"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"
