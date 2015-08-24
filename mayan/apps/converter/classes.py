@@ -200,7 +200,7 @@ class ConverterBase(object):
     def get_page_count(self):
         try:
             self.soffice_file = self.to_pdf()
-        except InvalidOfficeFormat:
+        except InvalidOfficeFormat as exception:
             logger.debug('Is not an office format document; %s', exception)
 
 
