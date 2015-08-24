@@ -68,15 +68,15 @@ class ObjectEventListView(EventListView):
             ObjectEventListView, self
         ).dispatch(request, *args, **kwargs)
 
-    def get_queryset(self):
-        return any_stream(self.content_object)
-
-    def extra_context(self):
+    def get_extra_context(self):
         return {
             'hide_object': True,
             'object': self.content_object,
             'title': _('Events for: %s') % self.content_object,
         }
+
+    def get_queryset(self):
+        return any_stream(self.content_object)
 
 
 class VerbEventListView(SingleObjectListView):
