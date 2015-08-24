@@ -20,7 +20,7 @@ from .links import (
     link_folder_delete, link_folder_document_multiple_remove,
     link_folder_edit, link_folder_view
 )
-from .models import Folder
+from .models import DocumentFolder, Folder
 from .permissions import (
     permission_folder_add_document, permission_folder_delete,
     permission_folder_edit, permission_folder_remove_document,
@@ -36,6 +36,8 @@ class FoldersApp(MayanAppConfig):
         super(FoldersApp, self).ready()
 
         APIEndPoint(app=self, version_string='1')
+
+        Document.add_to_class('folders', lambda document: DocumentFolder.objects.filter(documents=document))
 
         ModelPermission.register(
             model=Document, permissions=(
@@ -72,7 +74,12 @@ class FoldersApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(link_folder_document_multiple_remove,),
-            sources=(CombinedSource(obj=Document, view='folders:folder_view'),)
+            sources=('folders:folder_view',)
+        )
+        menu_object.bind_links(
+            links=(
+                link_folder_view,
+            ), sources=(DocumentFolder, )
         )
         menu_object.bind_links(
             links=(
