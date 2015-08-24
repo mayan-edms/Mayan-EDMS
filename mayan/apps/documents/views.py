@@ -671,8 +671,8 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
     context = {
         'previous': previous,
         'title': ungettext(
-            'Recalculation the page count of the selected document?',
-            'Recalculation the page count of the selected documents?',
+            'Recalculate the page count of the selected document?',
+            'Recalculate the page count of the selected documents?',
             len(documents)
         )
     }
