@@ -460,15 +460,6 @@ You can also generate the documentation in formats other than HTML.
 .. _Sphinx: http://sphinx.pocoo.org
 
 
-Translations
-------------
-
-Translations are handled online via the **Transifex** website: https://www.transifex.com/projects/p/mayan-edms/.
-To create a translation team for a new language or contribute to an already
-existing language translation, create a **Transifex** account and contact
-the team coordinator of the respective language in which you are interested.
-
-
 Installable package
 -------------------
 

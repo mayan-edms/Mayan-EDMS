@@ -29,6 +29,7 @@ account.
     Release notes and upgrading <releases/index>
     Concepts <topics/index>
     Development <topics/development>
+    Translations <topics/translations>
     Contributors <topics/contributors>
     Licensing <topics/license>
     FAQ <topics/faq>
