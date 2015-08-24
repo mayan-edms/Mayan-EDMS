@@ -281,7 +281,7 @@ class SingleObjectCreateView(InstanceExtraDataMixin, ViewPermissionCheckMixin, E
         return result
 
 
-class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
+class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
     template_name = 'appearance/generic_confirm.html'
 
     def get_context_data(self, **kwargs):

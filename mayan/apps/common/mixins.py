@@ -10,10 +10,22 @@ from acls.models import AccessControlList
 from permissions import Permission
 
 __all__ = (
-    'ExtraContextMixin', 'InstanceExtraDataMixin',
+    'DeleteExtraDataMixin', 'ExtraContextMixin', 'InstanceExtraDataMixin',
     'ObjectListPermissionFilterMixin', 'ObjectPermissionCheckMixin',
     'RedirectionMixin', 'ViewPermissionCheckMixin'
 )
+
+
+class DeleteExtraDataMixin(object):
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        if hasattr(self, 'get_delete_extra_data'):
+            self.object.delete(**self.get_delete_extra_data())
+        else:
+            self.object.delete()
+
+        return HttpResponseRedirect(success_url)
 
 
 class ExtraContextMixin(object):
