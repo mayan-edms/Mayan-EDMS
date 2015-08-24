@@ -1035,39 +1035,25 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
         }
 
 
-def document_type_filename_delete(request, document_type_filename_id):
-    Permission.check_permissions(request.user, (permission_document_type_edit,))
-    document_type_filename = get_object_or_404(DocumentTypeFilename, pk=document_type_filename_id)
+class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
+    model = DocumentTypeFilename
+    view_permission = permission_document_type_edit
 
-    post_action_redirect = reverse('documents:document_type_filename_list', args=(document_type_filename.document_type_id,))
+    def get_extra_context(self):
+        return {
+            'document_type': self.get_object().document_type,
+            'filename': self.get_object(),
+            'navigation_object_list': ('document_type', 'filename',),
+            'title': _('Delete the quick label: %(label)s, from document type "%(document_type)s"?') % {
+                'document_type': self.get_object().document_type, 'label': self.get_object()
+            },
+        }
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        try:
-            document_type_filename.delete()
-            messages.success(request, _('Document type quick label: %s deleted successfully.') % document_type_filename)
-        except Exception as exception:
-            messages.error(request, _('Document type quick label: %(document_type_filename)s delete error: %(error)s') % {
-                'document_type_filename': document_type_filename, 'error': exception})
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'document_type': document_type_filename.document_type,
-        'filename': document_type_filename,
-        'previous': previous,
-        'navigation_object_list': ('document_type', 'filename',),
-        'next': next,
-        'title': _('Delete the quick label: %(filename)s, from document type "%(document_type)s"?') % {
-            'document_type': document_type_filename.document_type, 'filename': document_type_filename
-        },
-    }
-
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    def get_post_action_redirect(self):
+        return reverse(
+            'documents:document_type_filename_list',
+            args=(self.get_object().document_type.pk,)
+        )
 
 
 def document_type_filename_create(request, document_type_id):
