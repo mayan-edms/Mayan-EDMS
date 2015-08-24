@@ -43,7 +43,7 @@ class RoleEditView(SingleObjectEditView):
 class SetupRoleMembersView(AssignRemoveView):
     grouped = False
     left_list_title = _('Available groups')
-    right_list_title = _('Member groups')
+    right_list_title = _('Role groups')
     view_permission = permission_role_edit
 
     def add(self, item):
@@ -53,7 +53,7 @@ class SetupRoleMembersView(AssignRemoveView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
-            'title': _('Group members of role: %s') % self.get_object()
+            'title': _('Groups of role: %s') % self.get_object()
         }
 
     def get_object(self):
