@@ -20,8 +20,9 @@ class RecentDocumentManager(models.Manager):
                 # document already in the recent list, just save to force
                 # accessed date and time update
                 new_recent.save()
-            for recent_to_delete in self.model.objects.filter(user=user)[setting_recent_count.value:]:
-                recent_to_delete.delete()
+
+            recent_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_recent_count.value:]
+            self.filter(pk__in=list(recent_to_delete)).delete()
 
     def get_for_user(self, user):
         document_model = apps.get_model('documents', 'document')
