@@ -15,10 +15,11 @@ from .settings import setting_print_size, setting_display_size
 from .views import (
     DeletedDocumentDeleteView, DeletedDocumentListView, DocumentListView,
     DocumentManyDeleteView, DocumentManyRestoreView, DocumentPageListView,
-    DocumentRestoreView, DocumentTypeCreateView, DocumentTypeDeleteView,
-    DocumentTypeDocumentListView, DocumentTypeFilenameEditView,
-    DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
-    DocumentVersionListView, EmptyTrashCanView, RecentDocumentListView
+    DocumentPreviewView, DocumentRestoreView, DocumentTypeCreateView,
+    DocumentTypeDeleteView, DocumentTypeDocumentListView,
+    DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
+    DocumentTypeListView, DocumentTypeEditView, DocumentVersionListView,
+    EmptyTrashCanView, RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -34,7 +35,7 @@ urlpatterns = patterns(
     ),
 
     url(
-        r'^(?P<document_id>\d+)/preview/$', 'document_preview',
+        r'^(?P<pk>\d+)/preview/$', DocumentPreviewView.as_view(),
         name='document_preview'
     ),
     url(

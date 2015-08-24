@@ -19,7 +19,7 @@ from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
 from common.generics import (
     ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
 from common.utils import render_date_object
@@ -308,28 +308,22 @@ def document_properties(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-def document_preview(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
+class DocumentPreviewView(SingleObjectDetailView):
+    model = Document
+    object_permission = permission_document_view
 
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_view, request.user, document
-        )
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentPreviewView, self).dispatch(request, *args, **kwargs)
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
 
-    document.add_as_recent_document_for_user(request.user)
-
-    preview_form = DocumentPreviewForm(document=document)
-
-    return render_to_response('appearance/generic_form.html', {
-        'document': document,
-        'form': preview_form,
-        'hide_labels': True,
-        'object': document,
-        'read_only': True,
-        'title': _('Preview of document: %s') % document,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'form': DocumentPreviewForm(document=self.get_object()),
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _('Preview of document: %s') % self.get_object(),
+        }
 
 
 def document_trash(request, document_id=None, document_id_list=None):
