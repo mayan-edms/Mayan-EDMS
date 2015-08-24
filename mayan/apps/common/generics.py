@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import FormView, TemplateView
+from django.views.generic import FormView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
@@ -18,8 +18,9 @@ from .settings import setting_paginate_by
 
 __all__ = (
     'AssignRemoveView', 'ConfirmView', 'MultiFormView',
-    'SingleObjectCreateView', 'SingleObjectDeleteView', 'SingleObjectEditView',
-    'SingleObjectListView', 'SimpleView',
+    'SingleObjectCreateView', 'SingleObjectDeleteView',
+    'SingleObjectDetailView', 'SingleObjectEditView', 'SingleObjectListView',
+    'SimpleView',
 )
 
 
@@ -318,6 +319,15 @@ class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, Obj
                 )
 
             return result
+
+
+class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, DetailView):
+    template_name = 'appearance/generic_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(SingleObjectDetailView, self).get_context_data(**kwargs)
+        context.update({'read_only': True})
+        return context
 
 
 # TODO: check/test if ViewPermissionCheckMixin, ObjectPermissionCheckMixin are
