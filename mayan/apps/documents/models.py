@@ -756,7 +756,9 @@ class RecentDocument(models.Model):
     Keeps a list of the n most recent accessed or created document for
     a given user
     """
-    user = models.ForeignKey(User, editable=False, verbose_name=_('User'))
+    user = models.ForeignKey(
+        User, db_index=True, editable=False, verbose_name=_('User')
+    )
     document = models.ForeignKey(
         Document, editable=False, verbose_name=_('Document')
     )
