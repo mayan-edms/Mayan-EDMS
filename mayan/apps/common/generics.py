@@ -13,10 +13,7 @@ from django.views.generic.list import ListView
 from pure_pagination.mixins import PaginationMixin
 
 from .forms import ChoiceForm
-from .mixins import (
-    ExtraContextMixin, ObjectListPermissionFilterMixin,
-    ObjectPermissionCheckMixin, RedirectionMixin, ViewPermissionCheckMixin
-)
+from .mixins import *  # NOQA
 from .settings import setting_paginate_by
 
 __all__ = (
@@ -251,7 +248,7 @@ class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
     pass
 
 
-class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
+class SingleObjectCreateView(InstanceExtraDataMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
     template_name = 'appearance/generic_form.html'
 
     def form_invalid(self, form):
@@ -325,7 +322,7 @@ class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
 
 # TODO: check/test if ViewPermissionCheckMixin, ObjectPermissionCheckMixin are
 # in the right MRO
-class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
+class SingleObjectEditView(InstanceExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
     template_name = 'appearance/generic_form.html'
 
     def form_invalid(self, form):

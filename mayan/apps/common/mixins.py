@@ -9,6 +9,12 @@ from django.shortcuts import get_object_or_404
 from acls.models import AccessControlList
 from permissions import Permission
 
+__all__ = (
+    'ExtraContextMixin', 'InstanceExtraDataMixin',
+    'ObjectListPermissionFilterMixin', 'ObjectPermissionCheckMixin',
+    'RedirectionMixin', 'ViewPermissionCheckMixin'
+)
+
 
 class ExtraContextMixin(object):
     extra_context = {}
@@ -20,6 +26,20 @@ class ExtraContextMixin(object):
         context = super(ExtraContextMixin, self).get_context_data(**kwargs)
         context.update(self.get_extra_context())
         return context
+
+
+class InstanceExtraDataMixin(object):
+    def form_valid(self, form):
+        if hasattr(self, 'get_instance_extra_data'):
+            self.object = form.save(commit=False)
+            for key, value in self.get_instance_extra_data().items():
+                setattr(self.object, key, value)
+
+            self.object.save()
+        else:
+            self.object = form.save()
+
+        return super(InstanceExtraDataMixin, self).form_valid(form)
 
 
 class MultipleInstanceActionMixin(object):
