@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-23 23:15-0400\n"
+"POT-Creation-Date: 2015-08-24 01:15-0400\n"
 "PO-Revision-Date: 2012-02-02 18:18+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -120,12 +120,12 @@ msgstr ""
 
 #: views.py:46
 #, fuzzy
-msgid "Member groups"
+msgid "Role groups"
 msgstr "members"
 
 #: views.py:56
 #, fuzzy, python-format
-msgid "Group members of role: %s"
+msgid "Groups of role: %s"
 msgstr "non members of role: %s"
 
 #: views.py:79
