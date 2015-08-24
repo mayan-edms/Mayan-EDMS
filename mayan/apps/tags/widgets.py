@@ -10,9 +10,9 @@ def widget_inline_tags(document):
     """
     tags_template = []
 
-    tag_count = document.tags.count()
+    tag_count = document.tags().count()
     if tag_count:
-        for tag in document.tags.all():
+        for tag in document.tags().all():
             tags_template.append(widget_single_tag(tag))
 
     return mark_safe(''.join(tags_template))

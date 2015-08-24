@@ -74,7 +74,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
         if form.is_valid():
             tag = form.cleaned_data['tag']
             for document in documents:
-                if tag in document.tags.all():
+                if tag in document.tags().all():
                     messages.warning(
                         request, _(
                             'Document "%(document)s" is already tagged as "%(tag)s"'
@@ -263,7 +263,7 @@ class DocumentTagListView(TagListView):
         }
 
     def get_tag_queryset(self):
-        return self.document.tags.all()
+        return self.document.tags().all()
 
 
 def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, tag_id_list=None):
@@ -369,7 +369,7 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
     if request.method == 'POST':
         for document in documents:
             for tag in tags:
-                if tag not in document.tags.all():
+                if tag not in document.tags().all():
                     messages.warning(
                         request, _(
                             'Document "%(document)s" wasn\'t tagged as "%(tag)s"'

@@ -20,7 +20,7 @@ from .links import (
     link_tag_delete, link_tag_document_list, link_tag_edit, link_tag_list,
     link_tag_multiple_delete, link_tag_tagged_item_list
 )
-from .models import Tag
+from .models import DocumentTag, Tag
 from .permissions import (
     permission_tag_attach, permission_tag_delete, permission_tag_edit,
     permission_tag_remove, permission_tag_view
@@ -37,6 +37,8 @@ class TagsApp(MayanAppConfig):
 
         APIEndPoint(app=self, version_string='1')
 
+        Document.add_to_class('tags', lambda document: DocumentTag.objects.filter(documents=document))
+
         ModelPermission.register(
             model=Document, permissions=(
                 permission_tag_attach, permission_tag_remove,
@@ -50,6 +52,11 @@ class TagsApp(MayanAppConfig):
                 permission_tag_delete, permission_tag_edit,
                 permission_tag_view,
             )
+        )
+
+        SourceColumn(
+            source=DocumentTag, label=_('Preview'),
+            func=lambda context: widget_single_tag(context['object'])
         )
 
         SourceColumn(
@@ -86,7 +93,7 @@ class TagsApp(MayanAppConfig):
         )
         menu_multi_item.bind_links(
             links=(link_single_document_multiple_tag_remove,),
-            sources=[CombinedSource(obj=Tag, view='tags:document_tags')]
+            sources=(DocumentTag,)
         )
         menu_object.bind_links(
             links=(

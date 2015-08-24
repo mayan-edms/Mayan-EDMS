@@ -20,7 +20,7 @@ class Tag(models.Model):
     )
     color = RGBColorField(verbose_name=_('Color'))
     documents = models.ManyToManyField(
-        Document, related_name='tags', verbose_name=_('Documents')
+        Document, verbose_name=_('Documents')
     )
 
     class Meta:
@@ -41,3 +41,10 @@ class Tag(models.Model):
             )
 
         return queryset.count()
+
+
+class DocumentTag(Tag):
+    class Meta:
+        proxy = True
+        verbose_name = _('Document tag')
+        verbose_name_plural = _('Document tags')
