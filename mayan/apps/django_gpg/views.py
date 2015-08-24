@@ -54,11 +54,9 @@ def key_receive(request, key_id):
             return redirect('django_gpg:key_public_list')
 
     return render_to_response('appearance/generic_confirm.html', {
-        'title': _('Import key'),
         'message': _('Import key ID: %s?') % key_id,
         'previous': previous,
-        'submit_method': 'GET',
-
+        'title': _('Import key'),
     }, context_instance=RequestContext(request))
 
 
