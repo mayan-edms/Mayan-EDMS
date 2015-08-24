@@ -271,7 +271,7 @@ class SingleObjectCreateView(InstanceExtraDataMixin, ViewPermissionCheckMixin, E
                 self.request,
                 _(
                     '%s created successfully.'
-                ) % self.extra_context['object_name'].capitalize()
+                ) % self.extra_context['object_name']
             )
         except KeyError:
             messages.success(
@@ -310,7 +310,7 @@ class SingleObjectDeleteView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
                     self.request,
                     _(
                         '%s deleted successfully.'
-                    ) % self.extra_context['object_name'].capitalize()
+                    ) % self.extra_context['object_name']
                 )
             except KeyError:
                 messages.success(
@@ -350,7 +350,7 @@ class SingleObjectEditView(InstanceExtraDataMixin, ViewPermissionCheckMixin, Obj
                 self.request,
                 _(
                     '%s details saved successfully.'
-                ) % self.extra_context['object_name'].capitalize()
+                ) % self.extra_context['object_name']
             )
         except KeyError:
             messages.success(
