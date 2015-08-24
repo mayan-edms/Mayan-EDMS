@@ -96,7 +96,7 @@ class Menu(object):
 
             for bound_source, links in self.bound_links.iteritems():
                 try:
-                    if inspect.isclass(bound_source) and type(resolved_navigation_object) == bound_source or source == CombinedSource(obj=resolved_navigation_object.__class__, view=current_view):
+                    if inspect.isclass(bound_source) and type(resolved_navigation_object) == bound_source:
                         for link in links:
                             resolved_link = link.resolve(
                                 context=context,
@@ -300,22 +300,3 @@ class SourceColumn(object):
             result = self.func(context=context)
 
         return result
-
-
-class CombinedSource(object):
-    """
-    Class that binds a link to a combination of an object and a view.
-    This is used to show links relating to a specific object type but only
-    in certain views.
-    Used by the PageDocument class to show rotatio and zoom link only on
-    certain views
-    """
-    def __init__(self, obj, view):
-        self.obj = obj
-        self.view = view
-
-    def __hash__(self):
-        return hash((self.obj, self.view))
-
-    def __eq__(self, other):
-        return hash(self) == hash(other)

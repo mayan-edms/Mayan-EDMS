@@ -23,7 +23,7 @@ class Folder(models.Model):
         auto_now_add=True, verbose_name=_('Datetime created')
     )
     documents = models.ManyToManyField(
-        Document, related_name='folders', verbose_name=_('Documents')
+        Document, verbose_name=_('Documents')
     )
 
     def __str__(self):
@@ -49,3 +49,10 @@ class Folder(models.Model):
         unique_together = ('label', 'user')
         verbose_name = _('Folder')
         verbose_name_plural = _('Folders')
+
+
+class DocumentFolder(Folder):
+    class Meta:
+        proxy = True
+        verbose_name = _('Document folder')
+        verbose_name_plural = _('Document folders')

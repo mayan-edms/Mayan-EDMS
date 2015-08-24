@@ -11,7 +11,7 @@ from common import (
 )
 from documents.models import Document
 from documents.search import document_search
-from navigation import CombinedSource, SourceColumn
+from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .links import (

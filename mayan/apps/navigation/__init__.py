@@ -1,1 +1,1 @@
-from .classes import CombinedSource, Link, Menu, SourceColumn  # NOQA
+from .classes import Link, Menu, SourceColumn  # NOQA
