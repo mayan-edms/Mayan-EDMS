@@ -1,7 +1,11 @@
 from __future__ import unicode_literals
 
+from django.core.exceptions import PermissionDenied
 from django.db import models
 from django.utils.translation import ugettext
+
+from acls.models import AccessControlList
+from permissions import Permission
 
 
 class ModelAttribute(object):
@@ -95,3 +99,53 @@ class MissingItem(object):
         self.description = description
         self.view = view
         self.__class__._registry.append(self)
+
+
+class Filter(object):
+    _registry = {}
+
+    @classmethod
+    def get(cls, slug):
+        return cls._registry[slug]
+
+    @classmethod
+    def all(cls):
+        return cls._registry
+
+    def __init__(self, label, slug, filter_kwargs, model, object_permission=None, hide_links=False):
+        self.label = label
+        self.slug = slug
+        self.filter_kwargs = filter_kwargs
+        self.model = model
+        self.object_permission = object_permission
+        self.hide_links = hide_links
+
+        self.__class__._registry[self.slug] = self
+
+    def __unicode__(self):
+        return unicode(self.label)
+
+    def get_queryset(self, user):
+        queryset = self.model.objects.all()
+        for kwargs in self.filter_kwargs:
+            queryset = queryset.filter(**kwargs)
+
+        queryset = queryset.distinct()
+
+        if self.object_permission:
+            try:
+                # Check to see if the user has the permissions globally
+                Permission.check_permissions(
+                    user, (self.object_permission,)
+                )
+            except PermissionDenied:
+                # No global permission, filter ther queryset per object +
+                # permission
+                return AccessControlList.objects.filter_by_access(
+                    self.object_permission, user, queryset
+                )
+            else:
+                # Has the permission globally, return all results
+                return queryset
+        else:
+            return queryset

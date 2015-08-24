@@ -12,7 +12,6 @@ from .api_views import (
 from .views import (
     DocumentMetadataListView, MetadataTypeCreateView, MetadataTypeDeleteView,
     MetadataTypeEditView, MetadataTypeListView,
-    MissingRequiredMetadataDocumentListView,
     SetupDocumentTypeMetadataOptionalView,
     SetupDocumentTypeMetadataRequiredView
 )
@@ -68,12 +67,6 @@ urlpatterns = patterns(
         r'^setup/document/type/(?P<pk>\d+)/metadata/edit/required/$',
         SetupDocumentTypeMetadataRequiredView.as_view(),
         name='setup_document_type_metadata_required'
-    ),
-
-    url(
-        r'^tools/missing_required_metadata/$',
-        MissingRequiredMetadataDocumentListView.as_view(),
-        name='documents_missing_required_metadata'
     ),
 )
 

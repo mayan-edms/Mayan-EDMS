@@ -5,15 +5,16 @@ from json import dumps
 from django.conf import settings
 from django.contrib import messages
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.template import RequestContext
 from django.utils import timezone, translation
 from django.utils.http import urlencode
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ugettext
 from django.views.generic import TemplateView
 
+from .classes import Filter
 from .forms import (
-    LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
+    FilterForm, LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
     UserForm, UserForm_view
 )
 from .generics import *  # NOQA
@@ -97,6 +98,45 @@ class CurrentUserLocaleProfileEditView(SingleObjectEditView):
 
     def get_object(self):
         return self.request.user.locale_profile
+
+
+class FilterSelectView(SimpleView):
+    form_class = FilterForm
+    template_name = 'appearance/generic_form.html'
+
+    def get_form(self):
+        return FilterForm()
+
+    def get_extra_context(self):
+        return {
+            'form': self.get_form(),
+            'title': _('Filter selection')
+        }
+
+    def post(self, request, *args, **kwargs):
+        return HttpResponseRedirect(
+            reverse(
+                'common:filter_results',
+                args=(request.POST.get('filter_slug'),)
+            )
+        )
+
+
+class FilterResultListView(SingleObjectListView):
+    def get_extra_context(self):
+        return {
+            'hide_links': self.get_filter().hide_links,
+            'title': _('Results for filter: %s') % self.get_filter()
+        }
+
+    def get_filter(self):
+        try:
+            return Filter.get(self.kwargs['slug'])
+        except KeyError:
+            raise Http404(ugettext('Filter not found'))
+
+    def get_queryset(self):
+        return self.get_filter().get_queryset(user=self.request.user)
 
 
 class HomeView(TemplateView):

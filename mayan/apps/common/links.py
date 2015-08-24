@@ -23,6 +23,10 @@ link_current_user_locale_profile_edit = Link(
     icon='fa fa-globe', text=_('Edit locale profile'),
     view='common:current_user_locale_profile_edit'
 )
+link_filters = Link(
+    icon='fa fa-filter', text=_('Data filters'),
+    view='common:filter_selection'
+)
 link_license = Link(
     icon='fa fa-book', text=_('License'), view='common:license_view'
 )

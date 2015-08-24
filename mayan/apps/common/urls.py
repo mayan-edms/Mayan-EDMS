@@ -7,7 +7,8 @@ from django.views.generic import RedirectView
 from .views import (
     AboutView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
-    HomeView, LicenseView, SetupListView, ToolsListView
+    FilterResultListView, FilterSelectView, HomeView, LicenseView,
+    SetupListView, ToolsListView
 )
 
 urlpatterns = patterns(
@@ -36,6 +37,14 @@ urlpatterns = patterns(
     url(
         r'^user/locale/edit/$', CurrentUserLocaleProfileEditView.as_view(),
         name='current_user_locale_profile_edit'
+    ),
+    url(
+        r'^filter/select/$', FilterSelectView.as_view(),
+        name='filter_selection'
+    ),
+    url(
+        r'^filter/(?P<slug>[\w-]+)/results/$', FilterResultListView.as_view(),
+        name='filter_results'
     ),
 )
 

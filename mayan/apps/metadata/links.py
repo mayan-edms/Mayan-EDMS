@@ -12,10 +12,6 @@ from .permissions import (
     permission_metadata_type_edit, permission_metadata_type_view
 )
 
-link_documents_missing_required_metadata = Link(
-    icon='fa fa-edit', text=_('Missing metadata'),
-    view='metadata:documents_missing_required_metadata'
-)
 link_metadata_add = Link(
     permissions=(permission_metadata_document_add,), text=_('Add metadata'),
     view='metadata:metadata_add', args='object.pk'

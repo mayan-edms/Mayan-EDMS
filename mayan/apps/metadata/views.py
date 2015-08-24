@@ -35,19 +35,6 @@ from .permissions import (
 )
 
 
-class MissingRequiredMetadataDocumentListView(DocumentListView):
-    extra_context = {
-        'hide_links': True,
-        'title': _('Documents missing required metadata'),
-    }
-
-    def get_document_queryset(self):
-        return Document.objects.filter(
-            document_type__metadata__required=True,
-            metadata__value__isnull=True
-        )
-
-
 def metadata_edit(request, document_id=None, document_id_list=None):
     if document_id:
         document_id_list = unicode(document_id)

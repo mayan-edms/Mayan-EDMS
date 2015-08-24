@@ -19,9 +19,10 @@ from .handlers import (
 from .links import (
     link_about, link_current_user_details, link_current_user_edit,
     link_current_user_locale_profile_details,
-    link_current_user_locale_profile_edit, link_license, link_setup, link_tools
+    link_current_user_locale_profile_edit, link_filters, link_license,
+    link_setup, link_tools
 )
-from .menus import menu_facet, menu_main, menu_secondary
+from .menus import menu_facet, menu_main, menu_secondary, menu_tools
 
 logger = logging.getLogger(__name__)
 
@@ -95,6 +96,10 @@ class CommonApp(MayanAppConfig):
                 'authentication:password_change_view', 'common:setup_list',
                 'common:tools_list'
             )
+        )
+
+        menu_tools.bind_links(
+            links=(link_filters,)
         )
 
         post_save.connect(
