@@ -201,7 +201,7 @@ class ConverterBase(object):
         try:
             self.soffice_file = self.to_pdf()
         except InvalidOfficeFormat:
-            pass
+            logger.debug('Is not an office format document; %s', exception)
 
 
 class BaseTransformation(object):
