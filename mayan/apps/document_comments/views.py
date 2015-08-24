@@ -51,7 +51,7 @@ class DocumentCommentCreateView(SingleObjectCreateView):
 
     def get_instance_extra_data(self):
         return {
-            'document': self.get_document(), 'user': self.request.user
+            'document': self.get_document(), 'user': self.request.user,
         }
 
     def get_post_action_redirect(self):
@@ -74,6 +74,9 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
             )
 
         return super(DocumentCommentDeleteView, self).dispatch(request, *args, **kwargs)
+
+    def get_delete_extra_data(self):
+        return {'_user': self.request.user}
 
     def get_extra_context(self):
         return {

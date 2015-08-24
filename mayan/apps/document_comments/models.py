@@ -7,6 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
 
+from .events import event_document_comment_create, event_document_comment_delete
+
 
 @python_2_unicode_compatible
 class Comment(models.Model):
@@ -28,8 +30,35 @@ class Comment(models.Model):
     def __str__(self):
         return self.comment
 
+    def save(self, *args, **kwargs):
+        user = kwargs.pop('_user', None) or self.user
+        is_new = not self.pk
+        super(Comment, self).save(*args, **kwargs)
+        if is_new:
+            if user:
+                event_document_comment_create.commit(
+                    actor=user, target=self.document
+                )
+            else:
+                event_document_comment_create.commit(target=self.document)
+
+    def delete(self, *args, **kwargs):
+        user = kwargs.pop('_user', None)
+        super(Comment, self).delete(*args, **kwargs)
+        if user:
+            event_document_comment_delete.commit(actor=user, target=self.document)
+        else:
+            event_document_comment_delete.commit(target=self.document)
+
     class Meta:
         get_latest_by = 'submit_date'
         ordering = ('-submit_date',)
         verbose_name = _('Comment')
         verbose_name_plural = _('Comments')
+
+
+
+
+
+
+
