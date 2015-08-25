@@ -186,7 +186,9 @@ class IndexFS(Operations):
         yield '..'
 
         # Nodes
-        queryset = node.get_children().values('value').exclude(value__contains='/')
+        queryset = node.get_children().values('value').exclude(
+            value__contains='/'
+        )
 
         for duplicate in queryset.order_by().annotate(count_id=Count('id')).filter(count_id__gt=1):
             queryset = queryset.exclude(label=duplicate['label'])
@@ -196,7 +198,9 @@ class IndexFS(Operations):
 
         # Documents
         if node.index_template_node.link_documents:
-            queryset = node.documents.values('label').exclude(label__contains='/')
+            queryset = node.documents.values('label').exclude(
+                label__contains='/'
+            )
 
             for duplicate in queryset.order_by().annotate(count_id=Count('id')).filter(count_id__gt=1):
                 queryset = queryset.exclude(label=duplicate['label'])

@@ -1,16 +1,11 @@
 from __future__ import unicode_literals
 
-import shlex
-
 from django import forms
-from django.core.exceptions import ValidationError
 from django.forms.formsets import formset_factory
-from django.template import Context, Template
-from django.utils.module_loading import import_string
 from django.utils.translation import string_concat, ugettext_lazy as _
 
 from .classes import MetadataLookup
-from .models import DocumentMetadata, MetadataType
+from .models import MetadataType
 
 
 class MetadataForm(forms.Form):

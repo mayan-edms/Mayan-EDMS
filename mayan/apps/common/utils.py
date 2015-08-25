@@ -111,10 +111,14 @@ def urlquote(link=None, get=None):
 
     Example:
 
-      urlquote('/wiki/Python_(programming_language)')     --> '/wiki/Python_%28programming_language%29'
-      urlquote('/mypath/', {'key': 'value'})              --> '/mypath/?key=value'
-      urlquote('/mypath/', {'key': ['value1', 'value2']}) --> '/mypath/?key=value1&key=value2'
-      urlquote({'key': ['value1', 'value2']})             --> 'key=value1&key=value2'
+    urlquote('/wiki/Python_(programming_language)')
+        --> '/wiki/Python_%28programming_language%29'
+    urlquote('/mypath/', {'key': 'value'})
+        --> '/mypath/?key=value'
+    urlquote('/mypath/', {'key': ['value1', 'value2']})
+        --> '/mypath/?key=value1&key=value2'
+    urlquote({'key': ['value1', 'value2']})
+        --> 'key=value1&key=value2'
     """
     if get is None:
         get = []

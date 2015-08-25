@@ -13,6 +13,10 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='sourcelog',
-            options={'ordering': ('-datetime',), 'get_latest_by': 'datetime', 'verbose_name': 'Log entry', 'verbose_name_plural': 'Log entries'},
+            options={
+                'ordering': ('-datetime',), 'get_latest_by': 'datetime',
+                'verbose_name': 'Log entry',
+                'verbose_name_plural': 'Log entries'
+            },
         ),
     ]

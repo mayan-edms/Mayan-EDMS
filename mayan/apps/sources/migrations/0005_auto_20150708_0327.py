@@ -13,7 +13,10 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='source',
-            options={'ordering': ('label',), 'verbose_name': 'Source', 'verbose_name_plural': 'Sources'},
+            options={
+                'ordering': ('label',), 'verbose_name': 'Source',
+                'verbose_name_plural': 'Sources'
+            },
         ),
         migrations.RenameField(
             model_name='source',

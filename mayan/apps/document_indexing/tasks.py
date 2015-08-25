@@ -59,8 +59,8 @@ def task_index_document(self, document_id):
                     IndexInstanceNode.objects.index_document(document)
                 except OperationalError as exception:
                     logger.warning(
-                        'Operational error while trying to index document: %s; %s',
-                        document, exception
+                        'Operational error while trying to index document: '
+                        '%s; %s', document, exception
                     )
                     lock.release()
                     raise self.retry(exc=exception)

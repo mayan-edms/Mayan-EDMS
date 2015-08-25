@@ -13,7 +13,10 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterModelOptions(
             name='documenttype',
-            options={'ordering': ('label',), 'verbose_name': 'Document type', 'verbose_name_plural': 'Documents types'},
+            options={
+                'ordering': ('label',), 'verbose_name': 'Document type',
+                'verbose_name_plural': 'Documents types'
+            },
         ),
         migrations.RenameField(
             model_name='documenttype',

@@ -100,7 +100,9 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
     alt_text = _('Document page image')
 
     if not document_page:
-        return mark_safe('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-question fa-stack-1x text-danger"></i></span>')
+        return mark_safe(
+            '<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-question fa-stack-1x text-danger"></i></span>'
+        )
 
     document = document_page.document
 
@@ -118,7 +120,8 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
     query_string = urlencode(query_dict)
 
     preview_view = '%s?%s' % (
-        reverse('rest_api:documentpage-image', args=(document_page.pk,)), query_string
+        reverse('rest_api:documentpage-image', args=(document_page.pk,)),
+        query_string
     )
 
     result.append(

@@ -37,4 +37,6 @@ class WorkflowInstanceTransitionForm(forms.Form):
         self.fields['transition'].choices = workflow.get_transition_choices().values_list('pk', 'label')
 
     transition = forms.ChoiceField(label=_('Transition'))
-    comment = forms.CharField(label=_('Comment'), required=False, widget=forms.widgets.Textarea())
+    comment = forms.CharField(
+        label=_('Comment'), required=False, widget=forms.widgets.Textarea()
+    )

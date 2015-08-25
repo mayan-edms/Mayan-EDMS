@@ -219,7 +219,9 @@ class SmartLinkConditionListView(SingleObjectListView):
         return {
             'hide_link': True,
             'object': self.get_smart_link(),
-            'title': _('Conditions for smart link: %s') % self.get_smart_link(),
+            'title': _(
+                'Conditions for smart link: %s'
+            ) % self.get_smart_link(),
         }
 
     def get_smart_link(self):

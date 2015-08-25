@@ -34,7 +34,9 @@ class DocumentCommentCreateView(SingleObjectCreateView):
                 permission_comment_create, request.user, self.get_document()
             )
 
-        return super(DocumentCommentCreateView, self).dispatch(request, *args, **kwargs)
+        return super(
+            DocumentCommentCreateView, self
+        ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
@@ -66,10 +68,13 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
-                permission_comment_delete, request.user, self.get_object().document
+                permission_comment_delete, request.user,
+                self.get_object().document
             )
 
-        return super(DocumentCommentDeleteView, self).dispatch(request, *args, **kwargs)
+        return super(
+            DocumentCommentDeleteView, self
+        ).dispatch(request, *args, **kwargs)
 
     def get_delete_extra_data(self):
         return {'_user': self.request.user}
@@ -82,7 +87,8 @@ class DocumentCommentDeleteView(SingleObjectDeleteView):
 
     def get_post_action_redirect(self):
         return reverse(
-            'comments:comments_for_document', args=(self.get_object().document.pk,)
+            'comments:comments_for_document',
+            args=(self.get_object().document.pk,)
         )
 
 

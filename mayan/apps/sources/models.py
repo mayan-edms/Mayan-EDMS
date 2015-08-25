@@ -86,7 +86,8 @@ class Source(models.Model):
 
         except Exception as exception:
             logger.critical(
-                'Unexpected exception while trying to create new document "%s" from source "%s"; %s',
+                'Unexpected exception while trying to create new document '
+                '"%s" from source "%s"; %s',
                 label or unicode(file_object), self, exception
             )
             raise
@@ -164,7 +165,9 @@ class StagingFolderSource(InteractiveSource):
     )
     delete_after_upload = models.BooleanField(
         default=True,
-        help_text=_('Delete the file after is has been successfully uploaded.'),
+        help_text=_(
+            'Delete the file after is has been successfully uploaded.'
+        ),
         verbose_name=_('Delete after upload')
     )
 
@@ -254,7 +257,9 @@ class IntervalBaseModel(OutOfProcessSource):
     )
     document_type = models.ForeignKey(
         DocumentType,
-        help_text=_('Assign a document type to documents uploaded from this source.'),
+        help_text=_(
+            'Assign a document type to documents uploaded from this source.'
+        ),
         verbose_name=_('Document type')
     )
     uncompress = models.CharField(
@@ -317,8 +322,8 @@ class EmailBaseModel(IntervalBaseModel):
     host = models.CharField(max_length=128, verbose_name=_('Host'))
     ssl = models.BooleanField(default=True, verbose_name=_('SSL'))
     port = models.PositiveIntegerField(blank=True, null=True, help_text=_(
-        'Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL.'),
-        verbose_name=_('Port')
+        'Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for '
+        'IMAP, 993 for IMAP over SSL.'), verbose_name=_('Port')
     )
     username = models.CharField(max_length=96, verbose_name=_('Username'))
     password = models.CharField(max_length=96, verbose_name=_('Password'))
@@ -331,8 +336,10 @@ class EmailBaseModel(IntervalBaseModel):
         ), max_length=128, verbose_name=_('Metadata attachment name')
     )
 
-    # From: http://bookmarks.honewatson.com/2009/08/11/python-gmail-imaplib-search-subject-get-attachments/
-    # TODO: Add lock to avoid running more than once concurrent same document download
+    # From: http://bookmarks.honewatson.com/2009/08/11/
+    #   python-gmail-imaplib-search-subject-get-attachments/
+    # TODO: Add lock to avoid running more than once concurrent same document
+    # download
     # TODO: Use message ID for lock
     @staticmethod
     def process_message(source, message):
@@ -357,7 +364,9 @@ class EmailBaseModel(IntervalBaseModel):
 
                 with Attachment(part, name=filename) as file_object:
                     if filename == source.metadata_attachment_name:
-                        metadata_dictionary = yaml.safe_load(file_object.read())
+                        metadata_dictionary = yaml.safe_load(
+                            file_object.read()
+                        )
                         logger.debug(
                             'Got metadata dictionary: %s', metadata_dictionary
                         )
@@ -425,8 +434,9 @@ class IMAPEmail(EmailBaseModel):
 
     mailbox = models.CharField(
         default=DEFAULT_IMAP_MAILBOX,
-        help_text=_('Mail from which to check for messages with attached documents.'),
-        max_length=64, verbose_name=_('Mailbox')
+        help_text=_(
+            'Mail from which to check for messages with attached documents.'
+        ), max_length=64, verbose_name=_('Mailbox')
     )
 
     # http://www.doughellmann.com/PyMOTW/imaplib/
@@ -451,7 +461,9 @@ class IMAPEmail(EmailBaseModel):
             for message_number in messages_info:
                 logger.debug('message_number: %s', message_number)
                 status, data = mailbox.fetch(message_number, '(RFC822)')
-                EmailBaseModel.process_message(source=self, message=data[0][1])
+                EmailBaseModel.process_message(
+                    source=self, message=data[0][1]
+                )
                 mailbox.store(message_number, '+FLAGS', '\\Deleted')
 
         mailbox.expunge()

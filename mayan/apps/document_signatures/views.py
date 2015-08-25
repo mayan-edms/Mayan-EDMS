@@ -33,7 +33,9 @@ def document_verify(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.check_permissions(request.user, (permission_document_verify,))
+        Permission.check_permissions(
+            request.user, (permission_document_verify,)
+        )
     except PermissionDenied:
         AccessControlList.objects.check_access(permission_document_verify, request.user, document)
 

@@ -9,7 +9,9 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
 
-from .events import event_document_comment_create, event_document_comment_delete
+from .events import (
+    event_document_comment_create, event_document_comment_delete
+)
 
 logger = logging.getLogger(__name__)
 
@@ -43,16 +45,24 @@ class Comment(models.Model):
                 event_document_comment_create.commit(
                     actor=user, target=self.document
                 )
-                logger.info('Comment "%s" added to document "%s" by user "%s"', self.comment, self.document, user)
+                logger.info(
+                    'Comment "%s" added to document "%s" by user "%s"',
+                    self.comment, self.document, user
+                )
             else:
                 event_document_comment_create.commit(target=self.document)
-                logger.info('Comment "%s" added to document "%s"', self.comment, self.document)
+                logger.info(
+                    'Comment "%s" added to document "%s"', self.comment,
+                    self.document
+                )
 
     def delete(self, *args, **kwargs):
         user = kwargs.pop('_user', None)
         super(Comment, self).delete(*args, **kwargs)
         if user:
-            event_document_comment_delete.commit(actor=user, target=self.document)
+            event_document_comment_delete.commit(
+                actor=user, target=self.document
+            )
         else:
             event_document_comment_delete.commit(target=self.document)
 

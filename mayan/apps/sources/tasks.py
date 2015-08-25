@@ -53,7 +53,8 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
 
     except OperationalError as exception:
         logger.warning(
-            'Operational exception while trying to create new document "%s" from source id %d; %s. Retying.',
+            'Operational exception while trying to create new document "%s" '
+            'from source id %d; %s. Retying.',
             label or shared_upload.filename, source_id, exception
         )
         raise self.retry(exc=exception)
@@ -62,8 +63,8 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
             shared_upload.delete()
         except OperationalError as exception:
             logger.warning(
-                'Operational error during attempt to delete shared upload file: %s; %s. Retrying.',
-                shared_upload, exception
+                'Operational error during attempt to delete shared upload '
+                'file: %s; %s. Retrying.', shared_upload, exception
             )
 
 
@@ -80,8 +81,8 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
 
     except OperationalError as exception:
         logger.warning(
-            'Operational error during attempt to load data to handle source upload: %s. Retrying.',
-            exception
+            'Operational error during attempt to load data to handle source '
+            'upload: %s. Retrying.', exception
         )
         raise self.retry(exc=exception)
 
@@ -111,8 +112,8 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                             )
                         except OperationalError as exception:
                             logger.warning(
-                                'Operational error while preparing to upload child document: %s. Rescheduling.',
-                                exception
+                                'Operational error while preparing to upload '
+                                'child document: %s. Rescheduling.', exception
                             )
 
                             task_source_handle_upload.delay(
@@ -139,8 +140,9 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                     shared_upload.delete()
                 except OperationalError as exception:
                     logger.warning(
-                        'Operational error during attempt to delete shared upload file: %s; %s. Retrying.',
-                        shared_upload, exception
+                        'Operational error during attempt to delete shared '
+                        'upload file: %s; %s. Retrying.', shared_upload,
+                        exception
                     )
             except NotACompressedFile:
                 logging.debug('Exception: NotACompressedFile')

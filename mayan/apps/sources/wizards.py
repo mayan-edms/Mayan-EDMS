@@ -33,10 +33,15 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
         if InteractiveSource.objects.filter(enabled=True).count() == 0:
             messages.error(
                 request,
-                _('No interactive document sources have been defined or none have been enabled, create one before proceeding.')
+                _(
+                    'No interactive document sources have been defined or '
+                    'none have been enabled, create one before proceeding.'
+                )
             )
             return HttpResponseRedirect(reverse('sources:setup_source_list'))
-        return super(DocumentCreateWizard, self).dispatch(request, *args, **kwargs)
+        return super(
+            DocumentCreateWizard, self
+        ).dispatch(request, *args, **kwargs)
 
     def __init__(self, *args, **kwargs):
         super(DocumentCreateWizard, self).__init__(*args, **kwargs)
@@ -62,7 +67,9 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
         return self.initial_dict.get(step, {})
 
     def get_context_data(self, form, **kwargs):
-        context = super(DocumentCreateWizard, self).get_context_data(form=form, **kwargs)
+        context = super(
+            DocumentCreateWizard, self
+        ).get_context_data(form=form, **kwargs)
         context.update({
             'step_title': self.step_titles[self.steps.step0],
             'submit_label': _('Next step'),
@@ -85,5 +92,10 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
         except TypeError:
             pass
 
-        url = '?'.join([reverse('sources:upload_interactive'), urlencode(query_dict, doseq=True)])
+        url = '?'.join(
+            [
+                reverse('sources:upload_interactive'),
+                urlencode(query_dict, doseq=True)
+            ]
+        )
         return HttpResponseRedirect(url)

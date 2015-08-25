@@ -40,7 +40,9 @@ class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         extra_kwargs = {
             'url': {'view_name': 'rest_api:documentpage-detail'},
-            'document_version': {'view_name': 'rest_api:documentversion-detail'}
+            'document_version': {
+                'view_name': 'rest_api:documentversion-detail'
+                }
         }
         model = DocumentPage
 
@@ -68,7 +70,9 @@ class DocumentTypeSerializer(serializers.HyperlinkedModelSerializer):
 
 class DocumentVersionSerializer(serializers.HyperlinkedModelSerializer):
     pages = DocumentPageSerializer(many=True, required=False, read_only=True)
-    revert = serializers.HyperlinkedIdentityField(view_name='rest_api:documentversion-revert')
+    revert = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:documentversion-revert'
+    )
 
     class Meta:
         extra_kwargs = {
@@ -103,7 +107,9 @@ class NewDocumentVersionSerializer(serializers.Serializer):
 
 class DeletedDocumentSerializer(serializers.HyperlinkedModelSerializer):
     document_type_label = serializers.SerializerMethodField()
-    restore = serializers.HyperlinkedIdentityField(view_name='rest_api:deleteddocument-restore')
+    restore = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:deleteddocument-restore'
+    )
 
     def get_document_type_label(self, instance):
         return instance.document_type.label
@@ -141,9 +147,9 @@ class DocumentSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'rest_api:document-detail'}
         }
         fields = (
-            'date_added', 'description', 'document_type', 'document_type_label',
-            'id', 'label', 'language', 'latest_version', 'url', 'uuid',
-            'versions',
+            'date_added', 'description', 'document_type',
+            'document_type_label', 'id', 'label', 'language',
+            'latest_version', 'url', 'uuid', 'versions',
         )
         model = Document
 
@@ -155,8 +161,12 @@ class NewDocumentSerializer(serializers.ModelSerializer):
         document = Document.objects.create(
             description=self.validated_data.get('description', ''),
             document_type=self.validated_data['document_type'],
-            label=self.validated_data.get('label', unicode(self.validated_data['file'])),
-            language=self.validated_data.get('language', setting_language.value)
+            label=self.validated_data.get(
+                'label', unicode(self.validated_data['file'])
+            ),
+            language=self.validated_data.get(
+                'language', setting_language.value
+            )
         )
         document.save(_user=_user)
 

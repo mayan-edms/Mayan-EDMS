@@ -18,7 +18,9 @@ class EventsApp(MayanAppConfig):
     def ready(self):
         super(EventsApp, self).ready()
 
-        SourceColumn(source=Action, label=_('Timestamp'), attribute='timestamp')
+        SourceColumn(
+            source=Action, label=_('Timestamp'), attribute='timestamp'
+        )
         SourceColumn(source=Action, label=_('Actor'), attribute='actor')
         SourceColumn(
             source=Action, label=_('Verb'),

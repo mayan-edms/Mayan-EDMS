@@ -14,7 +14,12 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='transformation',
             name='order',
-            field=models.PositiveIntegerField(default=0, help_text='Order in which the transformations will be executed. If left unchanged, an automatic order value will be assigned.', db_index=True, verbose_name='Order', blank=True),
+            field=models.PositiveIntegerField(
+                default=0, help_text='Order in which the transformations '
+                'will be executed. If left unchanged, an automatic order '
+                'value will be assigned.', db_index=True,
+                verbose_name='Order', blank=True
+            ),
             preserve_default=True,
         ),
     ]

@@ -51,7 +51,9 @@ class SourceLogListView(SingleObjectListView):
     view_permission = permission_sources_setup_view
 
     def get_source(self):
-        return get_object_or_404(Source.objects.select_subclasses(), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            Source.objects.select_subclasses(), pk=self.kwargs['pk']
+        )
 
     def get_queryset(self):
         return self.get_source().logs.all()
@@ -132,12 +134,17 @@ class UploadBaseView(MultiFormView):
                 pk=kwargs['source_id']
             )
         else:
-            self.source = InteractiveSource.objects.filter(enabled=True).select_subclasses().first()
+            self.source = InteractiveSource.objects.filter(
+                enabled=True
+            ).select_subclasses().first()
 
         if InteractiveSource.objects.filter(enabled=True).count() == 0:
             messages.error(
                 request,
-                _('No interactive document sources have been defined or none have been enabled, create one before proceeding.')
+                _(
+                    'No interactive document sources have been defined or '
+                    'none have been enabled, create one before proceeding.'
+                )
             )
             return HttpResponseRedirect(reverse('sources:setup_source_list'))
 
@@ -211,7 +218,9 @@ class UploadInteractiveView(UploadBaseView):
 
         self.tab_links = UploadBaseView.get_active_tab_links()
 
-        return super(UploadInteractiveView, self).dispatch(request, *args, **kwargs)
+        return super(
+            UploadInteractiveView, self
+        ).dispatch(request, *args, **kwargs)
 
     def forms_valid(self, forms):
         if self.source.uncompress == SOURCE_UNCOMPRESS_CHOICE_ASK:
@@ -259,7 +268,10 @@ class UploadInteractiveView(UploadBaseView):
         ))
         messages.success(
             self.request,
-            _('New document queued for uploaded and will be available shortly.')
+            _(
+                'New document queued for uploaded and will be available '
+                'shortly.'
+            )
         )
         return HttpResponseRedirect(self.request.get_full_path())
 
@@ -314,7 +326,9 @@ class UploadInteractiveVersionView(UploadBaseView):
 
         self.tab_links = UploadBaseView.get_active_tab_links(self.document)
 
-        return super(UploadInteractiveVersionView, self).dispatch(request, *args, **kwargs)
+        return super(
+            UploadInteractiveVersionView, self
+        ).dispatch(request, *args, **kwargs)
 
     def forms_valid(self, forms):
         uploaded_file = self.source.get_upload_file_object(
@@ -344,10 +358,15 @@ class UploadInteractiveVersionView(UploadBaseView):
 
         messages.success(
             self.request,
-            _('New document version queued for uploaded and will be available shortly.')
+            _(
+                'New document version queued for uploaded and will be '
+                'available shortly.'
+            )
         )
         return HttpResponseRedirect(
-            reverse('documents:document_version_list', args=(self.document.pk,))
+            reverse(
+                'documents:document_version_list', args=(self.document.pk,)
+            )
         )
 
     def create_source_form_form(self, **kwargs):
@@ -373,7 +392,9 @@ class UploadInteractiveVersionView(UploadBaseView):
         }
 
     def get_context_data(self, **kwargs):
-        context = super(UploadInteractiveVersionView, self).get_context_data(**kwargs)
+        context = super(
+            UploadInteractiveVersionView, self
+        ).get_context_data(**kwargs)
         context['object'] = self.document
         context['title'] = _(
             'Upload a new version from source: %s'
@@ -437,7 +458,9 @@ class SetupSourceCreateView(SingleObjectCreateView):
     def get_extra_context(self):
         return {
             'object': self.kwargs['source_type'],
-            'title': _('Create new source of type: %s') % get_class(self.kwargs['source_type']).class_fullname(),
+            'title': _(
+                'Create new source of type: %s'
+            ) % get_class(self.kwargs['source_type']).class_fullname(),
         }
 
 

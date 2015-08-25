@@ -19,7 +19,6 @@ from documents.models import Document, DocumentType
 from documents.permissions import (
     permission_document_type_edit
 )
-from documents.views import DocumentListView
 from permissions import Permission
 
 from .api import save_metadata_list

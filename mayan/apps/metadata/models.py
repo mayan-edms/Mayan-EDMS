@@ -133,6 +133,7 @@ class MetadataType(models.Model):
             value = parser.parse(value)
 
         return value
+
     class Meta:
         ordering = ('label',)
         verbose_name = _('Metadata type')
