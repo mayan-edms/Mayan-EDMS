@@ -11,8 +11,8 @@ from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _
 
 from common.views import (
-    AssignRemoveView, SingleObjectCreateView, SingleObjectEditView,
-    SingleObjectListView
+    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
 )
 from permissions import Permission
 
@@ -322,57 +322,16 @@ class GroupListView(SingleObjectListView):
     view_permission = permission_group_view
 
 
-def group_delete(request, group_id=None, group_id_list=None):
-    Permission.check_permissions(request.user, (permission_group_delete,))
-    post_action_redirect = None
+class GroupDeleteView(SingleObjectDeleteView):
+    model = Group
+    post_action_redirect = reverse_lazy('user_management:group_list')
+    view_permission = permission_group_delete
 
-    if group_id:
-        groups = [get_object_or_404(Group, pk=group_id)]
-        post_action_redirect = reverse('user_management:group_list')
-    elif group_id_list:
-        groups = [
-            get_object_or_404(Group, pk=group_id) for group_id in group_id_list.split(',')
-        ]
-    else:
-        messages.error(request, _('Must provide at least one group.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        for group in groups:
-            try:
-                group.delete()
-                messages.success(request, _('Group "%s" deleted successfully.') % group)
-            except Exception as exception:
-                messages.error(request, _('Error deleting group "%(group)s": %(error)s') % {
-                    'group': group, 'error': exception
-                })
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'previous': previous,
-        'next': next,
-    }
-    if len(groups) == 1:
-        context['object'] = groups[0]
-        context['title'] = _('Delete the group: %s?') % ', '.join([unicode(d) for d in groups])
-    elif len(groups) > 1:
-        context['title'] = _('Delete the groups: %s?') % ', '.join([unicode(d) for d in groups])
-
-    return render_to_response(
-        'appearance/generic_confirm.html', context,
-        context_instance=RequestContext(request)
-    )
-
-
-def group_multiple_delete(request):
-    return group_delete(
-        request, group_id_list=request.GET.get('id_list', [])
-    )
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Delete the group: %s?') % self.get_object(),
+        }
 
 
 class GroupMembersView(AssignRemoveView):

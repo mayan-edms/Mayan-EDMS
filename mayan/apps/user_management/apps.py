@@ -15,10 +15,10 @@ from rest_api.classes import APIEndPoint
 
 from .links import (
     link_group_add, link_group_delete, link_group_edit, link_group_list,
-    link_group_members, link_group_multiple_delete, link_group_setup,
-    link_user_add, link_user_delete, link_user_edit, link_user_groups,
-    link_user_list, link_user_multiple_delete,
-    link_user_multiple_set_password, link_user_set_password, link_user_setup
+    link_group_members, link_group_setup, link_user_add, link_user_delete,
+    link_user_edit, link_user_groups, link_user_list,
+    link_user_multiple_delete, link_user_multiple_set_password,
+    link_user_set_password, link_user_setup
 )
 
 
@@ -64,10 +64,6 @@ class UserManagementApp(MayanAppConfig):
             )
         )
 
-        menu_multi_item.bind_links(
-            links=(link_group_multiple_delete,),
-            sources=('user_management:group_list',)
-        )
         menu_multi_item.bind_links(
             links=(link_user_multiple_set_password, link_user_multiple_delete),
             sources=('user_management:user_list',)

@@ -30,10 +30,6 @@ link_group_members = Link(
     permissions=(permission_group_edit,), text=_('Members'),
     view='user_management:group_members', args='object.id'
 )
-link_group_multiple_delete = Link(
-    permissions=(permission_group_delete,), text=_('Delete'),
-    view='user_management:group_multiple_delete'
-)
 link_group_setup = Link(
     icon='fa fa-group', permissions=(permission_group_view,), text=_('Groups'),
     view='user_management:group_list'
