@@ -42,7 +42,7 @@ class DocumentPageSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'rest_api:documentpage-detail'},
             'document_version': {
                 'view_name': 'rest_api:documentversion-detail'
-                }
+            }
         }
         model = DocumentPage
 

@@ -71,10 +71,3 @@ class Comment(models.Model):
         ordering = ('-submit_date',)
         verbose_name = _('Comment')
         verbose_name_plural = _('Comments')
-
-
-
-
-
-
-

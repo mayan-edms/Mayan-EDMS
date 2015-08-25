@@ -81,7 +81,7 @@ class MetadataTestCase(TestCase):
             document_metadata.save()
 
         # Should not return error
-        document_metadata.value=TEST_CORRECT_LOOKUP_VALUE
+        document_metadata.value = TEST_CORRECT_LOOKUP_VALUE
         document_metadata.full_clean()
         document_metadata.save()
 
@@ -100,7 +100,7 @@ class MetadataTestCase(TestCase):
             document_metadata.save()
 
         # Should not return error
-        document_metadata.value=TEST_VALID_DATE
+        document_metadata.value = TEST_VALID_DATE
         document_metadata.full_clean()
         document_metadata.save()
 
@@ -119,7 +119,7 @@ class MetadataTestCase(TestCase):
             document_metadata.save()
 
         # Should not return error
-        document_metadata.value=TEST_VALID_DATE
+        document_metadata.value = TEST_VALID_DATE
         document_metadata.full_clean()
         document_metadata.save()
 

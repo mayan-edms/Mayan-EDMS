@@ -220,7 +220,7 @@ def user_set_password(request, user_id=None, user_id_list=None):
                     except Exception as exception:
                         messages.error(
                             request, _(
-                                    'Error reseting password for user "%(user)s": %(error)s'
+                                'Error reseting password for user "%(user)s": %(error)s'
                             ) % {
                                 'user': user, 'error': exception
                             }

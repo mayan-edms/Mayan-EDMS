@@ -2,8 +2,6 @@ from __future__ import unicode_literals
 
 from django.template import Library
 
-from common.utils import return_attrib
-
 from ..classes import Menu, SourceColumn
 from ..forms import MultiItemForm
 

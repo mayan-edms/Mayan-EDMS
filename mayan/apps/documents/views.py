@@ -968,7 +968,10 @@ class DocumentTypeDeleteView(SingleObjectDeleteView):
 
 
 class DocumentTypeEditView(SingleObjectEditView):
-    fields = ('label', 'trash_time_period', 'trash_time_unit', 'delete_time_period', 'delete_time_unit')
+    fields = (
+        'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
+        'delete_time_unit'
+    )
     model = DocumentType
     post_action_redirect = reverse_lazy('documents:document_type_list')
     view_permission = permission_document_type_edit
@@ -981,7 +984,10 @@ class DocumentTypeEditView(SingleObjectEditView):
 
 
 class DocumentTypeCreateView(SingleObjectCreateView):
-    fields = ('label', 'trash_time_period', 'trash_time_unit', 'delete_time_period', 'delete_time_unit')
+    fields = (
+        'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
+        'delete_time_unit'
+    )
     model = DocumentType
     post_action_redirect = reverse_lazy('documents:document_type_list')
     view_permission = permission_document_type_create
@@ -1107,13 +1113,19 @@ def document_clear_image_cache(request):
 class DocumentVersionListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.check_permissions(request.user, (permission_document_view,))
+            Permission.check_permissions(
+                request.user, (permission_document_view,)
+            )
         except PermissionDenied:
-            AccessControlList.objects.check_access(permission_document_view, request.user, self.get_document())
+            AccessControlList.objects.check_access(
+                permission_document_view, request.user, self.get_document()
+            )
 
         self.get_document().add_as_recent_document_for_user(request.user)
 
-        return super(DocumentVersionListView, self).dispatch(request, *args, **kwargs)
+        return super(
+            DocumentVersionListView, self
+        ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
