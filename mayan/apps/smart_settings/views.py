@@ -6,6 +6,7 @@ from django.utils.translation import ugettext_lazy as _
 from common.views import SingleObjectListView
 
 from .classes import Namespace
+from .permissions import permission_settings_view
 
 
 class NamespaceListView(SingleObjectListView):
@@ -13,12 +14,15 @@ class NamespaceListView(SingleObjectListView):
         'hide_link': True,
         'title': _('Setting namespaces'),
     }
+    view_permission = permission_settings_view
 
     def get_queryset(self):
         return Namespace.get_all()
 
 
 class NamespaceDetailView(SingleObjectListView):
+    view_permission = permission_settings_view
+
     def get_extra_context(self):
         return {
             'hide_object': True,
@@ -29,7 +33,9 @@ class NamespaceDetailView(SingleObjectListView):
         try:
             return Namespace.get(self.kwargs['namespace_name'])
         except KeyError:
-            raise Http404(_('Namespace: %s, not found') % self.kwargs['namespace_name'])
+            raise Http404(
+                _('Namespace: %s, not found') % self.kwargs['namespace_name']
+            )
 
     def get_queryset(self):
         return self.get_namespace().settings
