@@ -20,7 +20,7 @@ class Tag(models.Model):
     )
     color = RGBColorField(verbose_name=_('Color'))
     documents = models.ManyToManyField(
-        Document, verbose_name=_('Documents')
+        Document, related_name='tags', verbose_name=_('Documents')
     )
 
     class Meta:

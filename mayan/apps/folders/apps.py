@@ -37,7 +37,10 @@ class FoldersApp(MayanAppConfig):
 
         APIEndPoint(app=self, version_string='1')
 
-        Document.add_to_class('folders', lambda document: DocumentFolder.objects.filter(documents=document))
+        Document.add_to_class(
+            'document_folders',
+            lambda document: DocumentFolder.objects.filter(documents=document)
+        )
 
         ModelPermission.register(
             model=Document, permissions=(

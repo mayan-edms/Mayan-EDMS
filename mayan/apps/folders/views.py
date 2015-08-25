@@ -228,7 +228,7 @@ class DocumentFolderListView(FolderListView):
         return super(DocumentFolderListView, self).dispatch(request, *args, **kwargs)
 
     def get_folder_queryset(self):
-        return self.document.folders().all()
+        return self.document.document_folders().all()
 
     def get_extra_context(self):
         return {

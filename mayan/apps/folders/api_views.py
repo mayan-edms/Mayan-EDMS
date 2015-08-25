@@ -46,7 +46,7 @@ class APIDocumentFolderListView(generics.ListAPIView):
                 permission_document_view, self.request.user, document
             )
 
-        queryset = document.folders().all()
+        queryset = document.document_folders().all()
         return queryset
 
 

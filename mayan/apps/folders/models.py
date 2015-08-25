@@ -23,7 +23,7 @@ class Folder(models.Model):
         auto_now_add=True, verbose_name=_('Datetime created')
     )
     documents = models.ManyToManyField(
-        Document, verbose_name=_('Documents')
+        Document, related_name='folders', verbose_name=_('Documents')
     )
 
     def __str__(self):

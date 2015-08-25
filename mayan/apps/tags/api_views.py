@@ -133,7 +133,7 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
                 permission_document_view, self.request.user, document
             )
 
-        return document.tags().all()
+        return document.attached_tags().all()
 
     def get_serializer_context(self):
         """
@@ -199,7 +199,7 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
         return document
 
     def get_queryset(self):
-        return self.get_document().tags().all()
+        return self.get_document().attached_tags().all()
 
     def get_serializer_context(self):
         """

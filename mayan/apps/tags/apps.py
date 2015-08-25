@@ -37,7 +37,7 @@ class TagsApp(MayanAppConfig):
 
         APIEndPoint(app=self, version_string='1')
 
-        Document.add_to_class('tags', lambda document: DocumentTag.objects.filter(documents=document))
+        Document.add_to_class('attached_tags', lambda document: DocumentTag.objects.filter(documents=document))
 
         ModelPermission.register(
             model=Document, permissions=(
