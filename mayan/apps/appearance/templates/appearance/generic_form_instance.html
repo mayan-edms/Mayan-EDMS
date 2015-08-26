@@ -59,6 +59,10 @@
                     {% else %}
                         {% render_field field class+="" %}
                     {% endif %}
+                {% elif field|widget_type == 'radioselect' %}
+                    <div class="radio">
+                        {% render_field field %}
+                    </div>
                 {% else %}
                     {% render_field field class+="form-control" %}
                 {% endif %}

@@ -130,3 +130,7 @@ hr {
 .a-caption {
     color: white;
 }
+
+.radio ul li {
+    list-style-type:none;
+}

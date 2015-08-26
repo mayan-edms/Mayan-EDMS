@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.utils.translation import ugettext_lazy as _
+
 CACHE_PATH = 'document_cache/'
 CHECK_DELETE_PERIOD_INTERVAL = 60
 CHECK_TRASH_PERIOD_INTERVAL = 60
@@ -10,3 +12,10 @@ DOCUMENT_IMAGE_TASK_TIMEOUT = 20
 UPDATE_PAGE_COUNT_RETRY_DELAY = 10
 UPLOAD_NEW_VERSION_RETRY_DELAY = 10
 NEW_DOCUMENT_RETRY_DELAY = 10
+
+PAGE_RANGE_ALL = 'all'
+PAGE_RANGE_RANGE = 'range'
+PAGE_RANGE_CHOICES = (
+    (PAGE_RANGE_ALL, _('All pages')), (PAGE_RANGE_RANGE, _('Page range'))
+)
+

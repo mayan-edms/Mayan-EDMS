@@ -39,7 +39,7 @@ from .forms import (
     DocumentPropertiesForm, DocumentTypeSelectForm,
     DocumentTypeFilenameForm_create, PrintForm
 )
-from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
+from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT, PAGE_RANGE_RANGE
 from .models import (
     DeletedDocument, Document, DocumentType, DocumentPage,
     DocumentTypeFilename, DocumentVersion, RecentDocument
@@ -1092,30 +1092,32 @@ def document_print(request, document_id):
     if request.method == 'POST':
         form = PrintForm(request.POST)
         if form.is_valid():
-            if form.cleaned_data['page_range']:
+            if form.cleaned_data['page_group'] == PAGE_RANGE_RANGE:
                 page_range = form.cleaned_data['page_range']
 
                 if page_range:
                     page_range = parse_range(page_range)
-
                     pages = document.pages.filter(page_number__in=page_range)
                 else:
                     pages = document.pages.all()
+            else:
+                pages = document.pages.all()
 
-                return render_to_response('documents/document_print.html', {
-                    'appearance_type': 'plain',
-                    'object': document,
-                    'page_range': page_range,
-                    'pages': pages,
-                }, context_instance=RequestContext(request))
+            return render_to_response('documents/document_print.html', {
+                'appearance_type': 'plain',
+                'object': document,
+                'pages': pages,
+                'title': _('Print: %s') % document,
+            }, context_instance=RequestContext(request))
     else:
         form = PrintForm()
 
     return render_to_response('appearance/generic_form.html', {
         'form': form,
         'object': document,
-        'title': _('Print: %s') % document,
         'next': next,
+        'title': _('Print: %s') % document,
+        'submit_label': _('Submit'),
     }, context_instance=RequestContext(request))
 
 

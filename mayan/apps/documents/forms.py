@@ -8,7 +8,7 @@ from common.forms import DetailForm
 from .models import (
     Document, DocumentType, DocumentPage, DocumentTypeFilename
 )
-from .literals import DEFAULT_ZIP_FILENAME
+from .literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_CHOICES
 from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
 
 
@@ -108,10 +108,6 @@ class DocumentTypeSelectForm(forms.Form):
     )
 
 
-class PrintForm(forms.Form):
-    page_range = forms.CharField(label=_('Page range'), required=False)
-
-
 class DocumentTypeFilenameForm_create(forms.ModelForm):
     """
     Model class form to create a new document type filename
@@ -146,3 +142,10 @@ class DocumentDownloadForm(forms.Form):
         if len(self.document_versions) > 1:
             self.fields['compressed'].initial = True
             self.fields['compressed'].widget.attrs.update({'disabled': True})
+
+
+class PrintForm(forms.Form):
+    page_group = forms.ChoiceField(
+        widget=forms.RadioSelect, choices=PAGE_RANGE_CHOICES
+    )
+    page_range = forms.CharField(label=_('Page range'), required=False)
