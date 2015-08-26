@@ -12,7 +12,31 @@ from django.utils.translation import ugettext_lazy as _
 from .classes import Filter
 from .models import UserLocaleProfile
 from .utils import return_attrib
-from .widgets import DetailSelectMultiple, DisableableSelectWidget, PlainWidget
+from .widgets import (
+    DetailSelectMultiple, DisableableSelectWidget, PlainWidget
+)
+
+
+class ChoiceForm(forms.Form):
+    """
+    Form to be used in side by side templates used to add or remove
+    items from a many to many field
+    """
+    def __init__(self, *args, **kwargs):
+        choices = kwargs.pop('choices', [])
+        label = kwargs.pop('label', _('Selection'))
+        help_text = kwargs.pop('help_text', None)
+        disabled_choices = kwargs.pop('disabled_choices', ())
+        super(ChoiceForm, self).__init__(*args, **kwargs)
+        self.fields['selection'].choices = choices
+        self.fields['selection'].label = label
+        self.fields['selection'].help_text = help_text
+        self.fields['selection'].widget.disabled_choices = disabled_choices
+        self.fields['selection'].widget.attrs.update(
+            {'size': 14, 'class': 'choice_form'}
+        )
+
+    selection = forms.MultipleChoiceField(widget=DisableableSelectWidget())
 
 
 class DetailForm(forms.ModelForm):
@@ -60,63 +84,6 @@ class DetailForm(forms.ModelForm):
             )
 
 
-class ChoiceForm(forms.Form):
-    """
-    Form to be used in side by side templates used to add or remove
-    items from a many to many field
-    """
-    def __init__(self, *args, **kwargs):
-        choices = kwargs.pop('choices', [])
-        label = kwargs.pop('label', _('Selection'))
-        help_text = kwargs.pop('help_text', None)
-        disabled_choices = kwargs.pop('disabled_choices', ())
-        super(ChoiceForm, self).__init__(*args, **kwargs)
-        self.fields['selection'].choices = choices
-        self.fields['selection'].label = label
-        self.fields['selection'].help_text = help_text
-        self.fields['selection'].widget.disabled_choices = disabled_choices
-        self.fields['selection'].widget.attrs.update(
-            {'size': 14, 'class': 'choice_form'}
-        )
-
-    selection = forms.MultipleChoiceField(widget=DisableableSelectWidget())
-
-
-class UserForm_view(DetailForm):
-    """
-    Form used to display an user's public details
-    """
-
-    class Meta:
-        model = User
-        fields = (
-            'username', 'first_name', 'last_name', 'email', 'is_staff',
-            'is_superuser', 'last_login', 'date_joined', 'groups'
-        )
-
-
-class UserForm(forms.ModelForm):
-    """
-    Form used to edit an user's mininal fields by the user himself
-    """
-
-    class Meta:
-        model = User
-        fields = ('username', 'first_name', 'last_name', 'email')
-
-
-class LocaleProfileForm(forms.ModelForm):
-    class Meta:
-        model = UserLocaleProfile
-        fields = ('language', 'timezone')
-
-
-class LocaleProfileForm_view(DetailForm):
-    class Meta:
-        model = UserLocaleProfile
-        fields = ('language', 'timezone')
-
-
 class FileDisplayForm(forms.Form):
     text = forms.CharField(
         label='',
@@ -136,7 +103,7 @@ class FileDisplayForm(forms.Form):
 
 
 class FilterForm(forms.Form):
-    filter_slug = forms.ChoiceField(label=_('Field'))
+    filter_slug = forms.ChoiceField(label=_('Filter'))
 
     def __init__(self, *args, **kwargs):
         super(FilterForm, self).__init__(*args, **kwargs)
@@ -146,3 +113,38 @@ class FilterForm(forms.Form):
 class LicenseForm(FileDisplayForm):
     FILENAME = 'LICENSE'
     DIRECTORY = []
+
+
+class LocaleProfileForm(forms.ModelForm):
+    class Meta:
+        model = UserLocaleProfile
+        fields = ('language', 'timezone')
+
+
+class LocaleProfileForm_view(DetailForm):
+    class Meta:
+        model = UserLocaleProfile
+        fields = ('language', 'timezone')
+
+
+class UserForm(forms.ModelForm):
+    """
+    Form used to edit an user's mininal fields by the user himself
+    """
+
+    class Meta:
+        model = User
+        fields = ('username', 'first_name', 'last_name', 'email')
+
+
+class UserForm_view(DetailForm):
+    """
+    Form used to display an user's public details
+    """
+
+    class Meta:
+        model = User
+        fields = (
+            'username', 'first_name', 'last_name', 'email', 'is_staff',
+            'is_superuser', 'last_login', 'date_joined', 'groups'
+        )
