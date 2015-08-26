@@ -82,6 +82,8 @@ What's new in Mayan EDMS v2.0
 * Text parsers and OCR backend are used in tandem.
 * Invert page title/project name order in browser title.
 * Use Django's class based views pagination
+* setting_view_permission added to the smart settings app. It is no longer required to be a super admin or staff user to see the setting values.
+* Removal of the CombinedSource class.
 
 Upgrading from a previous version
 =================================
@@ -144,6 +146,7 @@ Remove unused dependencies::
     $ pip uninstall psutil
     $ pip uninstall python-hkp
     $ pip uninstall django-sendfile
+    $ pip uninstall django-pagination
 
 The upgrade procedure is now complete.
 
