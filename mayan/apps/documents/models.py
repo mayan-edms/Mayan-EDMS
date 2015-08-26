@@ -29,7 +29,7 @@ from mimetype.api import get_mimetype
 
 from .events import (
     event_document_create, event_document_new_version,
-    event_document_version_revert
+    event_document_properties_edit, event_document_version_revert
 )
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
@@ -195,6 +195,7 @@ class Document(models.Model):
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None)
+        print '!!!!!!!!!!', user
         new_document = not self.pk
         super(Document, self).save(*args, **kwargs)
 
@@ -204,6 +205,8 @@ class Document(models.Model):
                 event_document_create.commit(actor=user, target=self)
             else:
                 event_document_create.commit(target=self)
+        else:
+            event_document_properties_edit.commit(actor=user, target=self)
 
     def add_as_recent_document_for_user(self, user):
         RecentDocument.objects.add_document_for_user(user, self)

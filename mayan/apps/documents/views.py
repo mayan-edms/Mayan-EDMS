@@ -18,7 +18,7 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
 from common.generics import (
-    ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
+    ConfirmView, SimpleView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
@@ -390,43 +390,28 @@ def document_multiple_trash(request):
     )
 
 
-def document_edit(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_properties_edit,)
+class DocumentEditView(SingleObjectEditView):
+    form_class = DocumentForm
+    model = Document
+    object_permission = permission_document_properties_edit
+
+    def get_extra_context(self):
+        self.get_object().add_as_recent_document_for_user(self.request.user)
+
+        return {
+            'object': self.get_object(),
+            'title': _('Edit properties of document: %s') % self.get_object(),
+        }
+
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'documents:document_properties', args=(self.get_object().pk,)
         )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_properties_edit, request.user, document
-        )
-
-    if request.method == 'POST':
-        form = DocumentForm(request.POST, instance=document)
-        if form.is_valid():
-            document.label = form.cleaned_data['label']
-            document.description = form.cleaned_data['description']
-            document.language = form.cleaned_data['language']
-
-            if 'document_type_available_filenames' in form.cleaned_data:
-                if form.cleaned_data['document_type_available_filenames']:
-                    document.label = form.cleaned_data['document_type_available_filenames'].filename
-
-            document.save()
-            event_document_properties_edit.commit(actor=request.user, target=document)
-            document.add_as_recent_document_for_user(request.user)
-
-            messages.success(request, _('Document "%s" edited successfully.') % document)
-
-            return HttpResponseRedirect(document.get_absolute_url())
-    else:
-        form = DocumentForm(instance=document)
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'object': document,
-        'title': _('Edit properties of document: %s') % document,
-    }, context_instance=RequestContext(request))
 
 
 def document_document_type_edit(request, document_id=None, document_id_list=None):
@@ -738,35 +723,50 @@ def document_multiple_clear_transformations(request):
     return document_clear_transformations(request, document_id_list=request.GET.get('id_list', []))
 
 
-def document_page_view(request, document_page_id):
-    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+class DocumentPageView(SimpleView):
+    template_name = 'appearance/generic_form.html'
 
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_view, request.user,
+                self.get_object().document
+            )
+        return super(
+            DocumentPageView, self
+        ).dispatch(request, *args, **kwargs)
 
-    zoom = int(request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
-    rotation = int(request.GET.get('rotation', DEFAULT_ROTATION))
-    document_page_form = DocumentPageForm(instance=document_page, zoom=zoom, rotation=rotation)
+    def get_extra_context(self):
+        zoom = int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
+        rotation = int(self.request.GET.get('rotation', DEFAULT_ROTATION))
+        document_page_form = DocumentPageForm(
+            instance=self.get_object(), zoom=zoom, rotation=rotation
+        )
 
-    base_title = _('Details for: %s') % document_page
+        base_title = _('Image of: %s') % self.get_object()
 
-    if zoom != DEFAULT_ZOOM_LEVEL:
-        zoom_text = '(%d%%)' % zoom
-    else:
-        zoom_text = ''
+        if zoom != DEFAULT_ZOOM_LEVEL:
+            zoom_text = '(%d%%)' % zoom
+        else:
+            zoom_text = ''
 
-    return render_to_response('appearance/generic_form.html', {
-        'access_object': document_page.document,
-        'form': document_page_form,
-        'navigation_object_list': ('page',),
-        'page': document_page,
-        'rotation': rotation,
-        'title': ' '.join([base_title, zoom_text]),
-        'read_only': True,
-        'zoom': zoom,
-    }, context_instance=RequestContext(request))
+        return {
+            'form': document_page_form,
+            'hide_labels': True,
+            'navigation_object_list': ('page',),
+            'page': self.get_object(),
+            'rotation': rotation,
+            'title': ' '.join([base_title, zoom_text]),
+            'read_only': True,
+            'zoom': zoom,
+        }
+
+    def get_object(self):
+        return get_object_or_404(DocumentPage, pk=self.kwargs['pk'])
 
 
 def document_page_view_reset(request, document_page_id):

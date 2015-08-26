@@ -79,6 +79,15 @@ class DocumentForm(forms.ModelForm):
                 label=_('Quick document rename')
             )
 
+    def clean(self):
+        if 'document_type_available_filenames' in self.cleaned_data:
+            if self.cleaned_data['document_type_available_filenames']:
+                self.cleaned_data['label'] = self.cleaned_data[
+                    'document_type_available_filenames'
+                ]
+
+        return self.cleaned_data
+
 
 class DocumentPropertiesForm(DetailForm):
     """

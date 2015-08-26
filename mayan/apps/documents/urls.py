@@ -13,13 +13,14 @@ from .api_views import (
 )
 from .settings import setting_print_size, setting_display_size
 from .views import (
-    DeletedDocumentDeleteView, DeletedDocumentListView, DocumentListView,
-    DocumentManyDeleteView, DocumentManyRestoreView, DocumentPageListView,
-    DocumentPreviewView, DocumentRestoreView, DocumentTypeCreateView,
-    DocumentTypeDeleteView, DocumentTypeDocumentListView,
-    DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
-    DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
-    DocumentVersionListView, EmptyTrashCanView, RecentDocumentListView
+    DeletedDocumentDeleteView, DeletedDocumentListView, DocumentEditView,
+    DocumentListView, DocumentManyDeleteView, DocumentManyRestoreView,
+    DocumentPageView, DocumentPageListView, DocumentPreviewView,
+    DocumentRestoreView, DocumentTypeCreateView, DocumentTypeDeleteView,
+    DocumentTypeDocumentListView, DocumentTypeFilenameDeleteView,
+    DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
+    DocumentTypeListView, DocumentTypeEditView, DocumentVersionListView,
+    EmptyTrashCanView, RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -75,7 +76,7 @@ urlpatterns = patterns(
         name='document_multiple_trash'
     ),
     url(
-        r'^(?P<document_id>\d+)/edit/$', 'document_edit',
+        r'^(?P<pk>\d+)/edit/$', DocumentEditView.as_view(),
         name='document_edit'
     ),
     url(
@@ -150,7 +151,7 @@ urlpatterns = patterns(
     ),
 
     url(
-        r'^page/(?P<document_page_id>\d+)/$', 'document_page_view',
+        r'^page/(?P<pk>\d+)/$', DocumentPageView.as_view(),
         name='document_page_view'
     ),
     url(
