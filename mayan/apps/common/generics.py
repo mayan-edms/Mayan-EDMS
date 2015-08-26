@@ -249,7 +249,7 @@ class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
     pass
 
 
-class SingleObjectCreateView(InstanceExtraDataMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
+class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
     template_name = 'appearance/generic_form.html'
 
     def form_invalid(self, form):
@@ -266,7 +266,21 @@ class SingleObjectCreateView(InstanceExtraDataMixin, ViewPermissionCheckMixin, E
         return result
 
     def form_valid(self, form):
-        result = super(SingleObjectCreateView, self).form_valid(form)
+        # This overrides the original Django form_valid method
+
+        self.object = form.save(commit=False)
+
+        if hasattr(self, 'get_instance_extra_data'):
+            for key, value in self.get_instance_extra_data().items():
+                setattr(self.object, key, value)
+
+        if hasattr(self, 'get_save_extra_data'):
+            save_extra_data = self.get_save_extra_data()
+        else:
+            save_extra_data = {}
+
+        self.object.save(**save_extra_data)
+
         try:
             messages.success(
                 self.request,
@@ -279,7 +293,7 @@ class SingleObjectCreateView(InstanceExtraDataMixin, ViewPermissionCheckMixin, E
                 self.request, _('New object created successfully.')
             )
 
-        return result
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
@@ -332,7 +346,7 @@ class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
 
 # TODO: check/test if ViewPermissionCheckMixin, ObjectPermissionCheckMixin are
 # in the right MRO
-class SingleObjectEditView(InstanceExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
+class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
     template_name = 'appearance/generic_form.html'
 
     def form_invalid(self, form):
@@ -353,7 +367,20 @@ class SingleObjectEditView(InstanceExtraDataMixin, ViewPermissionCheckMixin, Obj
         return result
 
     def form_valid(self, form):
-        result = super(SingleObjectEditView, self).form_valid(form)
+        # This overrides the original Django form_valid method
+
+        self.object = form.save(commit=False)
+
+        if hasattr(self, 'get_instance_extra_data'):
+            for key, value in self.get_instance_extra_data().items():
+                setattr(self.object, key, value)
+
+        if hasattr(self, 'get_save_extra_data'):
+            save_extra_data = self.get_save_extra_data()
+        else:
+            save_extra_data = {}
+
+        self.object.save(**save_extra_data)
 
         try:
             messages.success(
@@ -367,7 +394,16 @@ class SingleObjectEditView(InstanceExtraDataMixin, ViewPermissionCheckMixin, Obj
                 self.request, _('Details saved successfully.')
             )
 
-        return result
+        return HttpResponseRedirect(self.get_success_url())
+
+    def get_object(self, queryset=None):
+        obj = super(SingleObjectEditView, self).get_object(queryset=queryset)
+
+        if hasattr(self, 'get_instance_extra_data'):
+            for key, value in self.get_instance_extra_data().items():
+                setattr(obj, key, value)
+
+        return obj
 
 
 class SingleObjectListView(PaginationMixin, ViewPermissionCheckMixin, ObjectListPermissionFilterMixin, ExtraContextMixin, RedirectionMixin, ListView):

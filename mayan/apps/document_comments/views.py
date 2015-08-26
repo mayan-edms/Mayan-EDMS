@@ -52,6 +52,11 @@ class DocumentCommentCreateView(SingleObjectCreateView):
             'document': self.get_document(), 'user': self.request.user,
         }
 
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user,
+        }
+
     def get_post_action_redirect(self):
         return reverse(
             'comments:comments_for_document', args=(self.kwargs['pk'],)
