@@ -138,6 +138,35 @@ class DeletedDocumentDeleteView(ConfirmView):
         return HttpResponseRedirect(self.get_success_url())
 
 
+class DocumentEditView(SingleObjectEditView):
+    form_class = DocumentForm
+    model = Document
+    object_permission = permission_document_properties_edit
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(
+            DocumentEditView, self
+        ).dispatch(request, *args, **kwargs)
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit properties of document: %s') % self.get_object(),
+        }
+
+    def get_save_extra_data(self):
+        return {
+            '_user': self.request.user
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'documents:document_properties', args=(self.get_object().pk,)
+        )
+
+
 class DocumentRestoreView(ConfirmView):
     extra_context = {
         'title': _('Restore the selected document?')
@@ -193,7 +222,8 @@ class DocumentPageListView(SingleObjectListView):
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
-                permission_document_view, self.request.user, self.get_document()
+                permission_document_view, self.request.user,
+                self.get_document()
             )
 
         return super(
@@ -213,6 +243,72 @@ class DocumentPageListView(SingleObjectListView):
         }
 
 
+class DocumentPageView(SimpleView):
+    template_name = 'appearance/generic_form.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_view, request.user,
+                self.get_object().document
+            )
+        return super(
+            DocumentPageView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_extra_context(self):
+        zoom = int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
+        rotation = int(self.request.GET.get('rotation', DEFAULT_ROTATION))
+        document_page_form = DocumentPageForm(
+            instance=self.get_object(), zoom=zoom, rotation=rotation
+        )
+
+        base_title = _('Image of: %s') % self.get_object()
+
+        if zoom != DEFAULT_ZOOM_LEVEL:
+            zoom_text = '(%d%%)' % zoom
+        else:
+            zoom_text = ''
+
+        return {
+            'form': document_page_form,
+            'hide_labels': True,
+            'navigation_object_list': ('page',),
+            'page': self.get_object(),
+            'rotation': rotation,
+            'title': ' '.join([base_title, zoom_text]),
+            'read_only': True,
+            'zoom': zoom,
+        }
+
+    def get_object(self):
+        return get_object_or_404(DocumentPage, pk=self.kwargs['pk'])
+
+
+class DocumentPreviewView(SingleObjectDetailView):
+    model = Document
+    object_permission = permission_document_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(
+            DocumentPreviewView, self
+        ).dispatch(request, *args, **kwargs)
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
+
+    def get_extra_context(self):
+        return {
+            'form': DocumentPreviewForm(document=self.get_object()),
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _('Preview of document: %s') % self.get_object(),
+        }
+
+
 class DocumentTypeDocumentListView(DocumentListView):
     def get_document_type(self):
         return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
@@ -226,6 +322,226 @@ class DocumentTypeDocumentListView(DocumentListView):
             'object': self.get_document_type(),
             'title': _('Documents of type: %s') % self.get_document_type()
         }
+
+
+class DocumentTypeListView(SingleObjectListView):
+    model = DocumentType
+    view_permission = permission_document_type_view
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'title': _('Document types'),
+        }
+
+
+class DocumentTypeDeleteView(SingleObjectDeleteView):
+    model = DocumentType
+    post_action_redirect = reverse_lazy('documents:document_type_list')
+    view_permission = permission_document_type_delete
+
+    def get_extra_context(self):
+        return {
+            'message': _('All documents of this type will be deleted too.'),
+            'object': self.get_object(),
+            'title': _('Delete the document type: %s?') % self.get_object(),
+        }
+
+
+class DocumentTypeEditView(SingleObjectEditView):
+    fields = (
+        'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
+        'delete_time_unit'
+    )
+    model = DocumentType
+    post_action_redirect = reverse_lazy('documents:document_type_list')
+    view_permission = permission_document_type_edit
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit document type: %s') % self.get_object(),
+        }
+
+
+class DocumentTypeCreateView(SingleObjectCreateView):
+    fields = (
+        'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
+        'delete_time_unit'
+    )
+    model = DocumentType
+    post_action_redirect = reverse_lazy('documents:document_type_list')
+    view_permission = permission_document_type_create
+
+    def get_extra_context(self):
+        return {
+            'title': _('Create document type'),
+        }
+
+
+class DocumentTypeFilenameListView(SingleObjectListView):
+    model = DocumentType
+    view_permission = permission_document_type_view
+
+    def get_document_type(self):
+        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        return {
+            'document_type': self.get_document_type(),
+            'hide_link': True,
+            'navigation_object_list': ('document_type',),
+            'title': _(
+                'Quick labels for document type: %s'
+            ) % self.get_document_type(),
+        }
+
+    def get_queryset(self):
+        return self.get_document_type().filenames.all()
+
+
+class DocumentTypeFilenameEditView(SingleObjectEditView):
+    fields = ('enabled', 'filename',)
+    model = DocumentTypeFilename
+    view_permission = permission_document_type_edit
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'documents:document_type_filename_list',
+            args=(self.get_object().document_type.pk,)
+        )
+
+    def get_extra_context(self):
+        document_type_filename = self.get_object()
+
+        return {
+            'document_type': document_type_filename.document_type,
+            'filename': document_type_filename,
+            'navigation_object_list': ('document_type', 'filename',),
+            'title': _(
+                'Edit quick label "%(filename)s" from document type '
+                '"%(document_type)s"'
+            ) % {
+                'document_type': document_type_filename.document_type,
+                'filename': document_type_filename
+            },
+        }
+
+
+class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
+    model = DocumentTypeFilename
+    view_permission = permission_document_type_edit
+
+    def get_extra_context(self):
+        return {
+            'document_type': self.get_object().document_type,
+            'filename': self.get_object(),
+            'navigation_object_list': ('document_type', 'filename',),
+            'title': _(
+                'Delete the quick label: %(label)s, from document type '
+                '"%(document_type)s"?'
+            ) % {
+                'document_type': self.get_object().document_type,
+                'label': self.get_object()
+            },
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'documents:document_type_filename_list',
+            args=(self.get_object().document_type.pk,)
+        )
+
+
+class DocumentVersionListView(SingleObjectListView):
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_view, request.user, self.get_document()
+            )
+
+        self.get_document().add_as_recent_document_for_user(request.user)
+
+        return super(
+            DocumentVersionListView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True, 'object': self.get_document(),
+            'title': _('Versions of document: %s') % self.get_document(),
+        }
+
+    def get_queryset(self):
+        return self.get_document().versions.order_by('-timestamp')
+
+
+class DocumentView(SingleObjectDetailView):
+    model = Document
+    object_permission = permission_document_view
+
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentView, self).dispatch(request, *args, **kwargs)
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
+
+    def get_extra_context(self):
+        return {
+            'form': self.get_form(),
+            'document': self.get_object(),
+            'object': self.get_object(),
+            'title': _('Properties for document: %s') % self.get_object(),
+        }
+
+    def get_form(self):
+        document = self.get_object()
+
+        document_fields = [
+            {
+                'label': _('Date added'),
+                'field': lambda document: render_date_object(
+                    document.date_added
+                )
+            },
+            {'label': _('UUID'), 'field': 'uuid'},
+        ]
+        if document.latest_version:
+            document_fields.extend([
+                {
+                    'label': _('File mimetype'),
+                    'field': lambda x: document.file_mimetype or _('None')
+                },
+                {
+                    'label': _('File encoding'),
+                    'field': lambda x: document.file_mime_encoding or _(
+                        'None'
+                    )
+                },
+                {
+                    'label': _('File size'),
+                    'field': lambda document: filesizeformat(
+                        document.size
+                    ) if document.size else '-'
+                },
+                {'label': _('Exists in storage'), 'field': 'exists'},
+                {
+                    'label': _('File path in storage'),
+                    'field': 'latest_version.file'
+                },
+                {'label': _('Checksum'), 'field': 'checksum'},
+                {'label': _('Pages'), 'field': 'page_count'},
+            ])
+
+        return DocumentPropertiesForm(
+            instance=document, extra_fields=document_fields
+        )
 
 
 class EmptyTrashCanView(ConfirmView):
@@ -254,76 +570,6 @@ class RecentDocumentListView(DocumentListView):
 
     def get_document_queryset(self):
         return RecentDocument.objects.get_for_user(self.request.user)
-
-
-def document_properties(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
-
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_view, request.user, document
-        )
-
-    document.add_as_recent_document_for_user(request.user)
-
-    document_fields = [
-        {
-            'label': _('Date added'),
-            'field': lambda document: render_date_object(document.date_added)
-        },
-        {'label': _('UUID'), 'field': 'uuid'},
-    ]
-    if document.latest_version:
-        document_fields.extend([
-            {
-                'label': _('File mimetype'),
-                'field': lambda x: document.file_mimetype or _('None')
-            },
-            {
-                'label': _('File encoding'),
-                'field': lambda x: document.file_mime_encoding or _('None')
-            },
-            {
-                'label': _('File size'),
-                'field': lambda document: filesizeformat(document.size) if document.size else '-'
-            },
-            {'label': _('Exists in storage'), 'field': 'exists'},
-            {'label': _('File path in storage'), 'field': 'latest_version.file'},
-            {'label': _('Checksum'), 'field': 'checksum'},
-            {'label': _('Pages'), 'field': 'page_count'},
-        ])
-
-    document_properties_form = DocumentPropertiesForm(
-        instance=document, extra_fields=document_fields
-    )
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': document_properties_form,
-        'document': document,
-        'object': document,
-        'read_only': True,
-        'title': _('Properties for document: %s') % document,
-    }, context_instance=RequestContext(request))
-
-
-class DocumentPreviewView(SingleObjectDetailView):
-    model = Document
-    object_permission = permission_document_view
-
-    def dispatch(self, request, *args, **kwargs):
-        result = super(DocumentPreviewView, self).dispatch(request, *args, **kwargs)
-        self.get_object().add_as_recent_document_for_user(request.user)
-        return result
-
-    def get_extra_context(self):
-        return {
-            'form': DocumentPreviewForm(document=self.get_object()),
-            'hide_labels': True,
-            'object': self.get_object(),
-            'title': _('Preview of document: %s') % self.get_object(),
-        }
 
 
 def document_trash(request, document_id=None, document_id_list=None):
@@ -388,30 +634,6 @@ def document_multiple_trash(request):
     return document_trash(
         request, document_id_list=request.GET.get('id_list', [])
     )
-
-
-class DocumentEditView(SingleObjectEditView):
-    form_class = DocumentForm
-    model = Document
-    object_permission = permission_document_properties_edit
-
-    def get_extra_context(self):
-        self.get_object().add_as_recent_document_for_user(self.request.user)
-
-        return {
-            'object': self.get_object(),
-            'title': _('Edit properties of document: %s') % self.get_object(),
-        }
-
-    def get_save_extra_data(self):
-        return {
-            '_user': self.request.user
-        }
-
-    def get_post_action_redirect(self):
-        return reverse(
-            'documents:document_properties', args=(self.get_object().pk,)
-        )
 
 
 def document_document_type_edit(request, document_id=None, document_id_list=None):
@@ -723,52 +945,6 @@ def document_multiple_clear_transformations(request):
     return document_clear_transformations(request, document_id_list=request.GET.get('id_list', []))
 
 
-class DocumentPageView(SimpleView):
-    template_name = 'appearance/generic_form.html'
-
-    def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, request.user,
-                self.get_object().document
-            )
-        return super(
-            DocumentPageView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_extra_context(self):
-        zoom = int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
-        rotation = int(self.request.GET.get('rotation', DEFAULT_ROTATION))
-        document_page_form = DocumentPageForm(
-            instance=self.get_object(), zoom=zoom, rotation=rotation
-        )
-
-        base_title = _('Image of: %s') % self.get_object()
-
-        if zoom != DEFAULT_ZOOM_LEVEL:
-            zoom_text = '(%d%%)' % zoom
-        else:
-            zoom_text = ''
-
-        return {
-            'form': document_page_form,
-            'hide_labels': True,
-            'navigation_object_list': ('page',),
-            'page': self.get_object(),
-            'rotation': rotation,
-            'title': ' '.join([base_title, zoom_text]),
-            'read_only': True,
-            'zoom': zoom,
-        }
-
-    def get_object(self):
-        return get_object_or_404(DocumentPage, pk=self.kwargs['pk'])
-
-
 def document_page_view_reset(request, document_page_id):
     return HttpResponseRedirect(reverse('documents:document_page_view', args=(document_page_id,)))
 
@@ -943,125 +1119,6 @@ def document_print(request, document_id):
     }, context_instance=RequestContext(request))
 
 
-class DocumentTypeListView(SingleObjectListView):
-    model = DocumentType
-    view_permission = permission_document_type_view
-
-    def get_extra_context(self):
-        return {
-            'hide_link': True,
-            'title': _('Document types'),
-        }
-
-
-class DocumentTypeDeleteView(SingleObjectDeleteView):
-    model = DocumentType
-    post_action_redirect = reverse_lazy('documents:document_type_list')
-    view_permission = permission_document_type_delete
-
-    def get_extra_context(self):
-        return {
-            'message': _('All documents of this type will be deleted too.'),
-            'object': self.get_object(),
-            'title': _('Delete the document type: %s?') % self.get_object(),
-        }
-
-
-class DocumentTypeEditView(SingleObjectEditView):
-    fields = (
-        'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
-        'delete_time_unit'
-    )
-    model = DocumentType
-    post_action_redirect = reverse_lazy('documents:document_type_list')
-    view_permission = permission_document_type_edit
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Edit document type: %s') % self.get_object(),
-        }
-
-
-class DocumentTypeCreateView(SingleObjectCreateView):
-    fields = (
-        'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
-        'delete_time_unit'
-    )
-    model = DocumentType
-    post_action_redirect = reverse_lazy('documents:document_type_list')
-    view_permission = permission_document_type_create
-
-    def get_extra_context(self):
-        return {
-            'title': _('Create document type'),
-        }
-
-
-class DocumentTypeFilenameListView(SingleObjectListView):
-    model = DocumentType
-    view_permission = permission_document_type_view
-
-    def get_document_type(self):
-        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
-
-    def get_extra_context(self):
-        return {
-            'document_type': self.get_document_type(),
-            'hide_link': True,
-            'navigation_object_list': ('document_type',),
-            'title': _('Quick labels for document type: %s') % self.get_document_type(),
-        }
-
-    def get_queryset(self):
-        return self.get_document_type().filenames.all()
-
-
-class DocumentTypeFilenameEditView(SingleObjectEditView):
-    fields = ('enabled', 'filename',)
-    model = DocumentTypeFilename
-    view_permission = permission_document_type_edit
-
-    def get_post_action_redirect(self):
-        return reverse(
-            'documents:document_type_filename_list',
-            args=(self.get_object().document_type.pk,)
-        )
-
-    def get_extra_context(self):
-        document_type_filename = self.get_object()
-
-        return {
-            'document_type': document_type_filename.document_type,
-            'filename': document_type_filename,
-            'navigation_object_list': ('document_type', 'filename',),
-            'title': _('Edit quick label "%(filename)s" from document type "%(document_type)s"') % {
-                'document_type': document_type_filename.document_type, 'filename': document_type_filename
-            },
-        }
-
-
-class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
-    model = DocumentTypeFilename
-    view_permission = permission_document_type_edit
-
-    def get_extra_context(self):
-        return {
-            'document_type': self.get_object().document_type,
-            'filename': self.get_object(),
-            'navigation_object_list': ('document_type', 'filename',),
-            'title': _('Delete the quick label: %(label)s, from document type "%(document_type)s"?') % {
-                'document_type': self.get_object().document_type, 'label': self.get_object()
-            },
-        }
-
-    def get_post_action_redirect(self):
-        return reverse(
-            'documents:document_type_filename_list',
-            args=(self.get_object().document_type.pk,)
-        )
-
-
 def document_type_filename_create(request, document_type_id):
     Permission.check_permissions(request.user, (permission_document_type_edit,))
 
@@ -1108,36 +1165,6 @@ def document_clear_image_cache(request):
         'previous': previous,
         'title': _('Clear the document cache?'),
     }, context_instance=RequestContext(request))
-
-
-class DocumentVersionListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, request.user, self.get_document()
-            )
-
-        self.get_document().add_as_recent_document_for_user(request.user)
-
-        return super(
-            DocumentVersionListView, self
-        ).dispatch(request, *args, **kwargs)
-
-    def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True, 'object': self.get_document(),
-            'title': _('Versions of document: %s') % self.get_document(),
-        }
-
-    def get_queryset(self):
-        return self.get_document().versions.order_by('-timestamp')
 
 
 def document_version_revert(request, document_version_pk):

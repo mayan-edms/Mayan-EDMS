@@ -20,7 +20,7 @@ from .views import (
     DocumentTypeDocumentListView, DocumentTypeFilenameDeleteView,
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView, DocumentTypeEditView, DocumentVersionListView,
-    EmptyTrashCanView, RecentDocumentListView
+    DocumentView, EmptyTrashCanView, RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -40,7 +40,7 @@ urlpatterns = patterns(
         name='document_preview'
     ),
     url(
-        r'^(?P<document_id>\d+)/properties/$', 'document_properties',
+        r'^(?P<pk>\d+)/properties/$', DocumentView.as_view(),
         name='document_properties'
     ),
     url(
