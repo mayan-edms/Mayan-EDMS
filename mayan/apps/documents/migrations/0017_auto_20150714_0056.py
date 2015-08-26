@@ -14,13 +14,17 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='document',
             name='date_added',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='Added', db_index=True),
+            field=models.DateTimeField(
+                auto_now_add=True, verbose_name='Added', db_index=True
+            ),
             preserve_default=True,
         ),
         migrations.AlterField(
             model_name='documentversion',
             name='timestamp',
-            field=models.DateTimeField(auto_now_add=True, verbose_name='Timestamp', db_index=True),
+            field=models.DateTimeField(
+                auto_now_add=True, verbose_name='Timestamp', db_index=True
+            ),
             preserve_default=True,
         ),
     ]

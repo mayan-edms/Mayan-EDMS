@@ -597,7 +597,8 @@ class DocumentTypeFilename(models.Model):
     quick rename functionality
     """
     document_type = models.ForeignKey(
-        DocumentType, related_name='filenames', verbose_name=_('Document type')
+        DocumentType, related_name='filenames',
+        verbose_name=_('Document type')
     )
     filename = models.CharField(
         db_index=True, max_length=128, verbose_name=_('Label')
@@ -624,7 +625,8 @@ class DocumentPage(models.Model):
         verbose_name=_('Document version')
     )
     page_number = models.PositiveIntegerField(
-        db_index=True, default=1, editable=False, verbose_name=_('Page number')
+        db_index=True, default=1, editable=False,
+        verbose_name=_('Page number')
     )
 
     def __str__(self):
@@ -678,8 +680,12 @@ class DocumentPage(models.Model):
         as_base64 = kwargs.pop('as_base64', False)
         transformations = kwargs.pop('transformations', [])
         size = kwargs.pop('size', setting_display_size.value)
-        rotation = int(kwargs.pop('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION)
-        zoom_level = int(kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL)
+        rotation = int(
+            kwargs.pop('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
+        )
+        zoom_level = int(
+            kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL
+        )
 
         if zoom_level < setting_zoom_min_level.value:
             zoom_level = setting_zoom_min_level.value
@@ -748,7 +754,9 @@ class DocumentPage(models.Model):
 
         if as_base64:
             # TODO: don't prepend 'data:%s;base64,%s' part
-            return 'data:%s;base64,%s' % ('image/png', base64.b64encode(page_image.getvalue()))
+            return 'data:%s;base64,%s' % (
+                'image/png', base64.b64encode(page_image.getvalue())
+            )
         else:
             return page_image
 

@@ -14,19 +14,27 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='document',
             name='description',
-            field=models.TextField(default='', verbose_name='Description', blank=True),
+            field=models.TextField(
+                default='', verbose_name='Description', blank=True
+            ),
             preserve_default=True,
         ),
         migrations.AlterField(
             model_name='document',
             name='label',
-            field=models.CharField(default='', max_length=255, blank=True, help_text='The name of the document', verbose_name='Label', db_index=True),
+            field=models.CharField(
+                default='', max_length=255, blank=True,
+                help_text='The name of the document', verbose_name='Label',
+                db_index=True
+            ),
             preserve_default=True,
         ),
         migrations.AlterField(
             model_name='documentversion',
             name='comment',
-            field=models.TextField(default='', verbose_name='Comment', blank=True),
+            field=models.TextField(
+                default='', verbose_name='Comment', blank=True
+            ),
             preserve_default=True,
         ),
     ]

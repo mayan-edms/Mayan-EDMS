@@ -14,7 +14,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documenttype',
             name='label',
-            field=models.CharField(unique=True, max_length=32, verbose_name='Label'),
+            field=models.CharField(
+                unique=True, max_length=32, verbose_name='Label'
+            ),
             preserve_default=True,
         ),
     ]
