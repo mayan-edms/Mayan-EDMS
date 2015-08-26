@@ -354,4 +354,5 @@ class DocumentsApp(MayanAppConfig):
             dispatch_uid='create_default_document_type'
         )
 
+        registry.register(DeletedDocument)
         registry.register(Document)

@@ -195,7 +195,6 @@ class Document(models.Model):
 
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None)
-        print '!!!!!!!!!!', user
         new_document = not self.pk
         super(Document, self).save(*args, **kwargs)
 
