@@ -820,7 +820,6 @@ def document_download(request, document_id=None, document_id_list=None, document
         'title': _('Download documents'),
         'submit_label': _('Download'),
         'previous': previous,
-        'cancel_label': _('Return'),
     }
 
     if len(document_versions) == 1:
