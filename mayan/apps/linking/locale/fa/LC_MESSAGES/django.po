@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:22-0400\n"
-"PO-Revision-Date: 2015-06-20 05:51+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2015-08-27 05:24+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:33
@@ -30,10 +28,8 @@ msgid "Label"
 msgstr ""
 
 #: apps.py:54 models.py:25
-#, fuzzy
-#| msgid "Dynamic title"
 msgid "Dynamic label"
-msgstr "لقب پویا"
+msgstr ""
 
 #: apps.py:57 apps.py:62 models.py:27 models.py:124
 msgid "Enabled"
@@ -147,15 +143,14 @@ msgstr "موجود در عبارات منظم  (case insensitive)"
 #: models.py:21 models.py:114
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
 msgstr ""
 
 #: models.py:43
-#, fuzzy, python-format
-#| msgid "Error generating dynamic title; %s"
+#, python-format
 msgid "Error generating dynamic label; %s"
-msgstr "عنوان پویای تولید خطا ; %s"
+msgstr ""
 
 #: models.py:52
 msgid "This smart link is not allowed for the selected document's type."
@@ -214,16 +209,12 @@ msgid "Edit smart links"
 msgstr "ویرایش پیوند هوشمند "
 
 #: views.py:36
-#, fuzzy
-#| msgid "Document types"
 msgid "Available document types"
-msgstr "انواع مستندات"
+msgstr ""
 
 #: views.py:37
-#, fuzzy
-#| msgid "Document types"
 msgid "Document types enabled"
-msgstr "انواع مستندات"
+msgstr ""
 
 #: views.py:65
 #, python-format
@@ -241,11 +232,9 @@ msgid "Documents in smart link: %s"
 msgstr "اسناد در لینک هوشمند: %s"
 
 #: views.py:120
-#, fuzzy, python-format
-#| msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "خطا در حذف پیوند هوشمند %(smart_link)s; %(exception)s."
+#, python-format
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
 
 #: views.py:179
 #, python-format
@@ -258,10 +247,10 @@ msgid "Edit smart link: %s"
 msgstr "ویرایش پیوند هوشمند %s"
 
 #: views.py:211
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete smart links"
 msgid "Delete smart link: %s"
-msgstr "حذف پیوند هوشمند "
+msgstr ""
 
 #: views.py:223
 #, python-format
@@ -295,54 +284,48 @@ msgstr "حذف موفق شرط پیوند هوشمند \"%s\""
 #: views.py:345
 #, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
+"Error deleting smart link condition: %(smart_link_condition)s; "
+"%(exception)s."
 msgstr "خطا در حذف شرط پیوند هوشمند : %(smart_link_condition)s; %(exception)s."
 
 #: views.py:361
-#, fuzzy, python-format
+#, python-format
 #| msgid "Edit smart link condition"
 msgid "Delete smart link condition: \"%s\"?"
-msgstr "ویرایش شرط پیوند هوشمند \"%s\""
+msgstr ""
 
 #~ msgid "Smart link: %s deleted successfully."
-#~ msgstr "حذف موفق پیوند هوشمند %s"
+#~ msgstr "Smart link: %s deleted successfully."
 
 #~ msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-#~ msgstr "خطا در حذف پیوند هوشمند %(smart_link)s; %(exception)s."
+#~ msgstr "Error deleting smart link: %(smart_link)s; %(error)s."
+
+#~ msgid "Smart link: %s created successfully."
+#~ msgstr "Smart link: %s created successfully."
+
+#~ msgid "Smart link: %s edited successfully."
+#~ msgstr "Smart link: %s edited successfully."
 
 #~ msgid "ACLs"
 #~ msgstr "ACLs"
 
 #~ msgid "Title"
-#~ msgstr "لقب"
-
-#~ msgid ""
-#~ "This expression will be evaluated against the current selected document."
-#~ msgstr "این توضیح برای سند منتخب جاری ارزیابی خواهد شد"
+#~ msgstr "title"
 
 #~ msgid "This expression will be evaluated against the current document."
-#~ msgstr "این توضیح در قیاس با سند جاری ارزیابی خواهد شد"
+#~ msgstr "There no defined smart links for the current document."
 
 #~ msgid "Error calculating smart link for: %(document)s; %(exception)s."
-#~ msgstr "لینک هوشمند محاسبه خطا برای :%(document)s; %(exception)s."
-
-#~ msgid "Indentifier"
-#~ msgstr "شناساننده"
-
-#~ msgid "Smart link: %s created successfully."
-#~ msgstr "ایجاد موفق پیوند هوشمند %s"
-
-#~ msgid "Smart link: %s edited successfully."
-#~ msgstr "ویرایش موفق پیوند هوشمند %s"
+#~ msgstr "Error deleting smart link: %(smart_link)s; %(error)s."
 
 #~ msgid "Are you sure you wish to delete smart link: %s?"
-#~ msgstr "از حذف پیوند هوشمند مطمئن هستید : %s"
+#~ msgstr "Are you sure you wish to delete smart link: %s?"
 
 #~ msgid "Condition"
-#~ msgstr "شرط"
+#~ msgstr "condition"
 
 #~ msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-#~ msgstr "آیا از حذف شرط پیوند هوشمند مطمئن هستید \"%s\"؟"
+#~ msgstr "Are you sure you wish to delete smart link condition: \"%s\"?"
 
 #~ msgid "Pages"
 #~ msgstr "Pages"
@@ -400,14 +383,14 @@ msgstr "ویرایش شرط پیوند هوشمند \"%s\""
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

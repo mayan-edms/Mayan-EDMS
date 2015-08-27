@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-02-06 23:26+0000\n"
+"PO-Revision-Date: 2015-08-27 05:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 apps.py:63 apps.py:78 forms.py:34 links.py:40 links.py:43
@@ -44,10 +43,8 @@ msgid "Attach tag"
 msgstr ""
 
 #: links.py:20
-#, fuzzy
-#| msgid "Delete tags"
 msgid "Remove tags"
-msgstr "Excluir etiquetas"
+msgstr ""
 
 #: links.py:28
 msgid "Create new tag"
@@ -74,16 +71,12 @@ msgid "Tag"
 msgstr ""
 
 #: models.py:49
-#, fuzzy
-#| msgid "Document created"
 msgid "Document tag"
-msgstr "document"
+msgstr ""
 
 #: models.py:50
-#, fuzzy
-#| msgid "Document created"
 msgid "Document tags"
-msgstr "document"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new tags"
@@ -191,28 +184,30 @@ msgid "Remove tag from documents: %s."
 msgstr ""
 
 #: views.py:340
-#, fuzzy, python-format
-#| msgid "Remove tags from documents"
+#, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
-msgstr "Remover etiquetas de documentos"
+msgstr ""
 
 #: views.py:347
-#, fuzzy, python-format
-#| msgid "Remove tags from documents"
+#, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
-msgstr "Remover etiquetas de documentos"
+msgstr ""
 
 #: views.py:356
-#, fuzzy, python-format
-#| msgid "Remove tags from documents"
+#, python-format
+#| msgid ""
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
-msgstr "Remover etiquetas de documentos"
+msgstr ""
 
 #: views.py:363
-#, fuzzy, python-format
-#| msgid "Remove tags from documents"
+#, python-format
 msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
-msgstr "Remover etiquetas de documentos"
+msgstr ""
 
 #: views.py:375
 #, python-format
@@ -224,47 +219,56 @@ msgstr ""
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""
 
+#~ msgid "remove tags"
+#~ msgstr "remove tags"
+
+#~ msgid "Tagged items"
+#~ msgstr "tagged items"
+
 #~ msgid "ACLs"
-#~ msgstr "ACL's"
+#~ msgstr "ACLs"
 
 #~ msgid "Blue"
-#~ msgstr "Azul"
+#~ msgstr "Blue"
 
 #~ msgid "Cyan"
-#~ msgstr "Ciano"
+#~ msgstr "Cyan"
 
 #~ msgid "Coral"
 #~ msgstr "Coral"
 
 #~ msgid "Green-Yellow"
-#~ msgstr "Verde-Amarelo"
+#~ msgstr "Green-Yellow"
 
 #~ msgid "Khaki"
-#~ msgstr "Caqui"
+#~ msgstr "Khaki"
 
 #~ msgid "LightGrey"
-#~ msgstr "CinzentoClaro"
+#~ msgstr "LightGrey"
 
 #~ msgid "Magenta"
 #~ msgstr "Magenta"
 
 #~ msgid "Red"
-#~ msgstr "Vermelho"
+#~ msgstr "Red"
 
 #~ msgid "Orange"
-#~ msgstr "Laranja"
+#~ msgstr "Orange"
 
 #~ msgid "Yellow"
-#~ msgstr "Amarelo"
+#~ msgstr "Yellow"
 
 #~ msgid "Tag created succesfully."
-#~ msgstr "Etiqueta criada com sucesso."
+#~ msgstr "Tag created succesfully."
 
 #~ msgid "Tag updated succesfully."
-#~ msgstr "Etiqueta atualizada com sucesso."
+#~ msgstr "Tag updated succesfully."
 
 #~ msgid "Add tag to document"
 #~ msgstr "Add tag to document"
+
+#~ msgid "Document created"
+#~ msgstr "document"
 
 #~ msgid "Attach tag to document: %s."
 #~ msgstr "Attach tag to document: %s."

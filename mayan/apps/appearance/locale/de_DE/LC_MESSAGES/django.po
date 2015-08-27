@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:20-0400\n"
-"PO-Revision-Date: 2015-08-20 18:52+0000\n"
+"PO-Revision-Date: 2015-08-27 05:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:9
@@ -45,19 +44,15 @@ msgstr "Serverfehler"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
-"Es kam zu einem Fehler. Der Fehler wurde per E-Mail and die Administratoren "
-"gemeldet und sollte bald behoben werden. Vielen Dank für Ihre Geduld."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "Es kam zu einem Fehler. Der Fehler wurde per E-Mail and die Administratoren gemeldet und sollte bald behoben werden. Vielen Dank für Ihre Geduld."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr ""
-"Wenn Sie Hilfe brauchen, können Sie den Fehler über folgende Kennung "
-"referenzieren: "
+msgstr "Wenn Sie Hilfe brauchen, können Sie den Fehler über folgende Kennung referenzieren: "
 
 #: templates/appearance/about.html:8 templates/appearance/about.html.py:58
 msgid "About"
@@ -140,10 +135,9 @@ msgid "Confirm delete"
 msgstr "Löschen bestätigen"
 
 #: templates/appearance/generic_confirm.html:27
-#, fuzzy, python-format
-#| msgid "Edit: %(object)s"
+#, python-format
 msgid "Delete: %(object)s?"
-msgstr "%(object)s bearbeiten"
+msgstr ""
 
 #: templates/appearance/generic_confirm.html:47
 msgid "Yes"
@@ -181,9 +175,7 @@ msgstr "Abbrechen"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von "
-"%(total_pages)s)"
+msgstr "Gesamt (%(start)s - %(end)s von %(total)s) (Seite %(page_number)s von %(total_pages)s)"
 
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
@@ -225,7 +217,7 @@ msgstr "Erweitert"
 
 #: templates/appearance/login.html:9
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: templates/appearance/login.html:20
 msgid "First time login"
@@ -235,9 +227,7 @@ msgstr "Erstanmeldung"
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
-msgstr ""
-"Herzlichen Glückwunsch! Sie haben die Installation von <strong>Mayan EDMS</"
-"strong> erfolgreich abgeschlossen. "
+msgstr "Herzlichen Glückwunsch! Sie haben die Installation von <strong>Mayan EDMS</strong> erfolgreich abgeschlossen. "
 
 #: templates/appearance/login.html:24
 msgid "Login using the following credentials:"
@@ -262,9 +252,7 @@ msgstr "Passwort: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
-"Bitte ändern Sie das Passwort, um die Sicherheit zu erhöhen und diese "
-"Nachricht zu deaktivieren."
+msgstr "Bitte ändern Sie das Passwort, um die Sicherheit zu erhöhen und diese Nachricht zu deaktivieren."
 
 #: templates/appearance/login.html:37 templates/appearance/login.html.py:46
 msgid "Sign in"
@@ -273,6 +261,3 @@ msgstr "Anmelden"
 #: templatetags/appearance_tags.py:16
 msgid "None"
 msgstr "Keine"
-
-#~ msgid "Are you sure you wish to delete: %(object)s?"
-#~ msgstr "Wollen Sie %(object)s wirklich löschen?"

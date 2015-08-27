@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
-# Roberto Rosario, 2011-2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:22-0400\n"
-"PO-Revision-Date: 2015-02-07 05:20+0000\n"
+"PO-Revision-Date: 2015-08-27 05:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33
@@ -31,10 +29,8 @@ msgid "Label"
 msgstr ""
 
 #: apps.py:54 models.py:25
-#, fuzzy
-#| msgid "Dynamic title"
 msgid "Dynamic label"
-msgstr "Título dinámico"
+msgstr ""
 
 #: apps.py:57 apps.py:62 models.py:27 models.py:124
 msgid "Enabled"
@@ -148,21 +144,18 @@ msgstr "está en la expresión regular (no sensible a mayúsculas)"
 #: models.py:21 models.py:114
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
 msgstr ""
 
 #: models.py:43
-#, fuzzy, python-format
-#| msgid "Error generating dynamic title; %s"
+#, python-format
 msgid "Error generating dynamic label; %s"
-msgstr "Error generando título dinámico; %s"
+msgstr ""
 
 #: models.py:52
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
-"Este enlace inteligente no está permitido para el tipo de documento "
-"seleccionado."
+msgstr "Este enlace inteligente no está permitido para el tipo de documento seleccionado."
 
 #: models.py:88 models.py:100
 msgid "Smart link"
@@ -217,16 +210,12 @@ msgid "Edit smart links"
 msgstr "Editar enlaces inteligentes"
 
 #: views.py:36
-#, fuzzy
-#| msgid "Document types"
 msgid "Available document types"
-msgstr "Tipos de documento"
+msgstr ""
 
 #: views.py:37
-#, fuzzy
-#| msgid "Document types"
 msgid "Document types enabled"
-msgstr "Tipos de documento"
+msgstr ""
 
 #: views.py:65
 #, python-format
@@ -244,11 +233,9 @@ msgid "Documents in smart link: %s"
 msgstr "Documentos en enlace inteligente: %s"
 
 #: views.py:120
-#, fuzzy, python-format
-#| msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr "Error al borrar enlace inteligente: %(smart_link)s; %(exception)s."
+#, python-format
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr ""
 
 #: views.py:179
 #, python-format
@@ -261,10 +248,10 @@ msgid "Edit smart link: %s"
 msgstr "Editar enlace inteligente: %s"
 
 #: views.py:211
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete smart links"
 msgid "Delete smart link: %s"
-msgstr "Eliminar enlaces inteligentes"
+msgstr ""
 
 #: views.py:223
 #, python-format
@@ -298,59 +285,48 @@ msgstr "Condición de enlace inteligente: \"%s\" eliminada con éxito."
 #: views.py:345
 #, python-format
 msgid ""
-"Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
-msgstr ""
-"Error al borrar condición en enlace inteligente: %(smart_link_condition)s; "
+"Error deleting smart link condition: %(smart_link_condition)s; "
 "%(exception)s."
+msgstr "Error al borrar condición en enlace inteligente: %(smart_link_condition)s; %(exception)s."
 
 #: views.py:361
-#, fuzzy, python-format
+#, python-format
 #| msgid "Edit smart link condition"
 msgid "Delete smart link condition: \"%s\"?"
-msgstr "Editar condición de enlace inteligente"
+msgstr ""
 
 #~ msgid "Smart link: %s deleted successfully."
-#~ msgstr "Enlace inteligente: %s eliminado con éxito."
+#~ msgstr "Smart link: %s deleted successfully."
 
 #~ msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-#~ msgstr "Error al borrar enlace inteligente: %(smart_link)s; %(exception)s."
-
-#~ msgid "ACLs"
-#~ msgstr "LCAs"
-
-#~ msgid "Title"
-#~ msgstr "Título"
-
-#~ msgid ""
-#~ "This expression will be evaluated against the current selected document."
-#~ msgstr "Esta expresión será evaluada contra los documentos seleccionados."
-
-#~ msgid "This expression will be evaluated against the current document."
-#~ msgstr "Esta expresión se evaluará en el documento actual."
-
-#~ msgid "Error calculating smart link for: %(document)s; %(exception)s."
-#~ msgstr ""
-#~ "Error calculando enlace inteligente para: %(document)s; %(exception)s"
-
-#~ msgid "Indentifier"
-#~ msgstr "Identificador"
+#~ msgstr "Error deleting smart link: %(smart_link)s; %(error)s."
 
 #~ msgid "Smart link: %s created successfully."
-#~ msgstr "Enlace inteligente: %s creado con éxito."
+#~ msgstr "Smart link: %s created successfully."
 
 #~ msgid "Smart link: %s edited successfully."
-#~ msgstr "Enlace inteligente: %s editado con éxito."
+#~ msgstr "Smart link: %s edited successfully."
+
+#~ msgid "ACLs"
+#~ msgstr "ACLs"
+
+#~ msgid "Title"
+#~ msgstr "title"
+
+#~ msgid "This expression will be evaluated against the current document."
+#~ msgstr "There no defined smart links for the current document."
+
+#~ msgid "Error calculating smart link for: %(document)s; %(exception)s."
+#~ msgstr "Error deleting smart link: %(smart_link)s; %(error)s."
 
 #~ msgid "Are you sure you wish to delete smart link: %s?"
-#~ msgstr "¿Está seguro que desea eliminar el enlace inteligente: %s?"
+#~ msgstr "Are you sure you wish to delete smart link: %s?"
 
 #~ msgid "Condition"
-#~ msgstr "Condición"
+#~ msgstr "condition"
 
 #~ msgid "Are you sure you wish to delete smart link condition: \"%s\"?"
-#~ msgstr ""
-#~ "¿Está seguro que desea eliminar la condición de enlace inteligente: \"%s"
-#~ "\"?"
+#~ msgstr "Are you sure you wish to delete smart link condition: \"%s\"?"
 
 #~ msgid "Pages"
 #~ msgstr "Pages"
@@ -408,14 +384,14 @@ msgstr "Editar condición de enlace inteligente"
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

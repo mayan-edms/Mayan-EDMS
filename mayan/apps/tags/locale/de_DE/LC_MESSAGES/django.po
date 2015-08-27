@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -9,15 +9,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:23-0400\n"
-"PO-Revision-Date: 2015-08-20 22:15+0000\n"
-"Last-Translator: Berny <berny@bernhard-marx.de>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2015-08-27 01:24-0400\n"
+"PO-Revision-Date: 2015-08-27 05:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 apps.py:63 apps.py:78 forms.py:34 links.py:40 links.py:43
@@ -42,10 +41,8 @@ msgid "Attach tag"
 msgstr "Tag anhängen"
 
 #: links.py:20
-#, fuzzy
-#| msgid "Remove tag"
 msgid "Remove tags"
-msgstr "Tag entfernen"
+msgstr ""
 
 #: links.py:28
 msgid "Create new tag"
@@ -72,16 +69,12 @@ msgid "Tag"
 msgstr "Tag"
 
 #: models.py:49
-#, fuzzy
-#| msgid "Documents"
 msgid "Document tag"
-msgstr "Dokumente"
+msgstr ""
 
 #: models.py:50
-#, fuzzy
-#| msgid "Documents"
 msgid "Document tags"
-msgstr "Dokumente"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new tags"
@@ -190,17 +183,22 @@ msgstr "Tag von Dokumenten %s entfernen."
 
 #: views.py:340
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
-msgstr ""
-"Wollen Sie den Tag %(tag)s wirklich vom Dokument %(document)s entfernen?"
+msgstr "Wollen Sie den Tag %(tag)s wirklich vom Dokument %(document)s entfernen?"
 
 #: views.py:347
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
 msgstr "Tag \"%(tag)s\" wirklich von den Dokumenten %(documents)s entfernen?"
 
 #: views.py:356
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
 msgstr "Wollen Sie die Tags %(tags)s  vom Dokument %(document)s entfernen?"
 
@@ -220,7 +218,7 @@ msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "Tag \"%(tag)s\" erfolgreich von Dokument \"%(document)s\" entfernt."
 
 #~ msgid "remove tags"
-#~ msgstr "Tags entfernen"
+#~ msgstr "remove tags"
 
 #~ msgid "Tagged items"
 #~ msgstr "tagged items"

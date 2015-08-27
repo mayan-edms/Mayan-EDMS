@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
 # Roberto Rosario, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-02-06 23:26+0000\n"
+"PO-Revision-Date: 2015-08-27 05:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 apps.py:63 apps.py:78 forms.py:34 links.py:40 links.py:43
@@ -44,10 +42,8 @@ msgid "Attach tag"
 msgstr ""
 
 #: links.py:20
-#, fuzzy
-#| msgid "Delete tags"
 msgid "Remove tags"
-msgstr "Eliminare i tag"
+msgstr ""
 
 #: links.py:28
 msgid "Create new tag"
@@ -74,16 +70,12 @@ msgid "Tag"
 msgstr ""
 
 #: models.py:49
-#, fuzzy
-#| msgid "Document created"
 msgid "Document tag"
-msgstr "document"
+msgstr ""
 
 #: models.py:50
-#, fuzzy
-#| msgid "Document created"
 msgid "Document tags"
-msgstr "document"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new tags"
@@ -191,28 +183,30 @@ msgid "Remove tag from documents: %s."
 msgstr ""
 
 #: views.py:340
-#, fuzzy, python-format
-#| msgid "Remove tags from documents"
+#, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
-msgstr "Rimuovi  etichetta dal documento"
+msgstr ""
 
 #: views.py:347
-#, fuzzy, python-format
-#| msgid "Remove tags from documents"
+#, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
-msgstr "Rimuovi  etichetta dal documento"
+msgstr ""
 
 #: views.py:356
-#, fuzzy, python-format
-#| msgid "Remove tags from documents"
+#, python-format
+#| msgid ""
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
-msgstr "Rimuovi  etichetta dal documento"
+msgstr ""
 
 #: views.py:363
-#, fuzzy, python-format
-#| msgid "Remove tags from documents"
+#, python-format
 msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
-msgstr "Rimuovi  etichetta dal documento"
+msgstr ""
 
 #: views.py:375
 #, python-format
@@ -224,6 +218,12 @@ msgstr ""
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""
 
+#~ msgid "remove tags"
+#~ msgstr "remove tags"
+
+#~ msgid "Tagged items"
+#~ msgstr "tagged items"
+
 #~ msgid "ACLs"
 #~ msgstr "ACLs"
 
@@ -231,40 +231,43 @@ msgstr ""
 #~ msgstr "Blue"
 
 #~ msgid "Cyan"
-#~ msgstr "Ciaono"
+#~ msgstr "Cyan"
 
 #~ msgid "Coral"
-#~ msgstr "Corallo"
+#~ msgstr "Coral"
 
 #~ msgid "Green-Yellow"
-#~ msgstr "Verdognolo"
+#~ msgstr "Green-Yellow"
 
 #~ msgid "Khaki"
 #~ msgstr "Khaki"
 
 #~ msgid "LightGrey"
-#~ msgstr "Grigio chiaro"
+#~ msgstr "LightGrey"
 
 #~ msgid "Magenta"
 #~ msgstr "Magenta"
 
 #~ msgid "Red"
-#~ msgstr "Rosso"
+#~ msgstr "Red"
 
 #~ msgid "Orange"
-#~ msgstr "Arancione"
+#~ msgstr "Orange"
 
 #~ msgid "Yellow"
-#~ msgstr "Giallo"
+#~ msgstr "Yellow"
 
 #~ msgid "Tag created succesfully."
-#~ msgstr "Etichetta creata con successo"
+#~ msgstr "Tag created succesfully."
 
 #~ msgid "Tag updated succesfully."
-#~ msgstr "Etichetta aggiornata con successo"
+#~ msgstr "Tag updated succesfully."
 
 #~ msgid "Add tag to document"
 #~ msgstr "Add tag to document"
+
+#~ msgid "Document created"
+#~ msgstr "document"
 
 #~ msgid "Attach tag to document: %s."
 #~ msgstr "Attach tag to document: %s."

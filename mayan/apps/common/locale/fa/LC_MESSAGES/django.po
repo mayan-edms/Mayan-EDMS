@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:20-0400\n"
-"PO-Revision-Date: 2015-03-03 10:54+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2015-08-27 05:24+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:56 settings.py:9
@@ -38,10 +36,9 @@ msgid "Filter"
 msgstr ""
 
 #: generics.py:123
-#, fuzzy, python-format
-#| msgid "Unable to add %(selection)s."
+#, python-format
 msgid "Unable to transfer selection: %s."
-msgstr "نمیتوان برداشت: %(selection)s."
+msgstr ""
 
 #: generics.py:147
 msgid "Add"
@@ -196,11 +193,9 @@ msgstr "پروفایل محلی کاربر"
 #: settings.py:13
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"دایرکتوری موقت جهت نگهداری فایلهای موقت، اگر دایرکتوری مشخص نگردد یکی بوسیله "
-"tempfile.mkdtemp() ساخته خواهد شد."
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "دایرکتوری موقت جهت نگهداری فایلهای موقت، اگر دایرکتوری مشخص نگردد یکی بوسیله tempfile.mkdtemp() ساخته خواهد شد."
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
@@ -227,10 +222,9 @@ msgid "Edit current user locale profile details"
 msgstr "ویرایش شرح پروفایل محلی کاربر فعلی"
 
 #: views.py:113
-#, fuzzy
 #| msgid "Selection"
 msgid "Filter selection"
-msgstr "انتخاب"
+msgstr ""
 
 #: views.py:129
 #, python-format
@@ -238,10 +232,9 @@ msgid "Results for filter: %s"
 msgstr ""
 
 #: views.py:136
-#, fuzzy
 #| msgid "Page not found"
 msgid "Filter not found"
-msgstr "Page not found"
+msgstr ""
 
 #: views.py:164
 msgid "Setup items"
@@ -259,68 +252,67 @@ msgstr "حداقل یک مورد انتخاب شود."
 msgid "None"
 msgstr "هیچکدام."
 
-#~ msgid "Email"
-#~ msgstr "پست الکترونیک"
-
-#~ msgid "Password"
-#~ msgstr "رمزعبور"
-
-#~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
-#~ msgstr ""
-#~ "لطفا از ایمیل و کلمه عبور معتبر جهت ورود استفاده کنید. درضمن کلمه عبور "
-#~ "case-sensitive است."
-
-#~ msgid "This account is inactive."
-#~ msgstr "اکانت غیرفعال است."
-
-#~ msgid "Change password"
-#~ msgstr "تغییر کلمه عبور"
-
-#~ msgid "Logout"
-#~ msgstr "خروج"
-
 #~ msgid "Anonymous user"
-#~ msgstr "کاربر ناشناس anonymous"
+#~ msgstr "Anonymous user"
 
 #~ msgid "Account"
-#~ msgstr "حساب"
+#~ msgstr "account"
+
+#~ msgid "Password"
+#~ msgstr "password"
 
 #~ msgid "Password hash"
-#~ msgstr "هش کلمه عبور"
+#~ msgstr "password hash"
 
 #~ msgid "Auto admin properties"
-#~ msgstr "خصوصیات مدبر خودکار"
-
-#~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
-#~ msgstr "روش کنترل اعتبار سنجی کاربران، انتخابها عبارتند از:username, email."
-
-#~ msgid "Allow non authenticated users, access to all views"
-#~ msgstr "اجازه دادن به کاربران اعتبار سنجی نشده، جهت بازبینی و یا Viewها."
+#~ msgstr "auto admin properties"
 
 #~ msgid "Function found"
-#~ msgstr "فانکشن و یا تابع پیدا شد."
+#~ msgstr "function found"
 
 #~ msgid "Unable to remove %(selection)s."
-#~ msgstr "عیر قابل حذف و یا برداشتن %(selection)s."
+#~ msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
 #~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr "این ایمیل با ایمیل کاربر دیگری یکسان است."
+#~ msgstr "E-mail conflict, another user has that same email."
 
 #~ msgid "Current user's details updated."
-#~ msgstr "کزئیات کاربر فعلی بروزرسانی شد."
+#~ msgstr "Current user's details updated."
 
 #~ msgid "Current user's locale profile details updated."
-#~ msgstr "شرح پروفایل محلی کاربر فعلی بروز رسانی شد."
+#~ msgstr "Current user's details updated."
+
+#~ msgid "Email"
+#~ msgstr "Email"
+
+#~ msgid ""
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
+#~ msgstr ""
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
+
+#~ msgid "This account is inactive."
+#~ msgstr "This account is inactive."
+
+#~ msgid "Change password"
+#~ msgstr "change password"
+
+#~ msgid ""
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
+#~ msgstr ""
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
+
+#~ msgid "Allow non authenticated users, access to all views"
+#~ msgstr "Allow non authenticated users, access to all views"
 
 #~ msgid "Current user password change"
-#~ msgstr "تغییر کلمه عبور کاربر"
+#~ msgstr "Current user password change"
 
 #~ msgid "Your password has been successfully changed."
-#~ msgstr "کلمه عبور شما با موفقیت تغییر کرد."
+#~ msgstr "Your password has been successfully changed."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."

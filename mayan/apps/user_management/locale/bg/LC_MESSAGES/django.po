@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Iliya Georgiev <inactive+iliicho7@transifex.com>, 2012
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"PO-Revision-Date: 2015-08-27 05:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:28 permissions.py:7
@@ -124,9 +123,7 @@ msgstr "Преглед на съществуващи потребители"
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Редактиране на потребители от супер потребител и служител не е разрешено. "
-"Използвайте администраторския модул за тези случаи."
+msgstr "Редактиране на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
 
 #: views.py:65
 #, python-format
@@ -151,9 +148,7 @@ msgstr "Трябва да изберете поне един потребите�
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Изтриване на потребители от супер потребител и служител не е разрешено. "
-"Използвайте администраторския модул за тези случаи."
+msgstr "Изтриване на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
 
 #: views.py:140
 #, python-format
@@ -166,16 +161,16 @@ msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Грешка при изтриването на потребител \"%(user)s\": %(error)s"
 
 #: views.py:158
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing users"
 msgid "Delete the user: %s?"
-msgstr "Изтриване на съществуващи потребители"
+msgstr ""
 
 #: views.py:160
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing users"
 msgid "Delete the users: %s?"
-msgstr "Изтриване на съществуващи потребители"
+msgstr ""
 
 #: views.py:199
 msgid "Passwords do not match, try again."
@@ -185,9 +180,7 @@ msgstr "Паролата не съвпада. Опитайте отново."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Промяна на парола на потребители от супер потребител и служител не е "
-"разрешено. Използвайте администраторския модул за тези случаи."
+msgstr "Промяна на парола на потребители от супер потребител и служител не е разрешено. Използвайте администраторския модул за тези случаи."
 
 #: views.py:217
 #, python-format
@@ -214,10 +207,8 @@ msgid "Available groups"
 msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Group list"
 msgid "Groups joined"
-msgstr "group list"
+msgstr ""
 
 #: views.py:274
 #, python-format
@@ -230,10 +221,10 @@ msgid "Edit group: %s"
 msgstr ""
 
 #: views.py:333
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
-msgstr "Изтриване на съществуващи групи"
+msgstr ""
 
 #: views.py:340
 msgid "Members of groups"
@@ -245,42 +236,49 @@ msgid "Members of group: %s"
 msgstr ""
 
 #~ msgid "Must provide at least one group."
-#~ msgstr "Необходимо е да се включи поне една група."
+#~ msgstr "Must provide at least one group."
 
 #~ msgid "Group \"%s\" deleted successfully."
-#~ msgstr "Групата \"%s\" е изтрита успешно."
+#~ msgstr "Group \"%s\" deleted successfully."
 
 #~ msgid "Error deleting group \"%(group)s\": %(error)s"
-#~ msgstr "Грешка при изтриването на група \"%(group)s\": %(error)s"
+#~ msgstr "Error deleting group \"%(group)s\": %(error)s"
 
-#, fuzzy
-#~| msgid "Delete existing groups"
 #~ msgid "Delete the groups: %s?"
-#~ msgstr "Изтриване на съществуващи групи"
+#~ msgstr "Delete existing groups"
 
 #~ msgid "Are you sure you wish to delete the user: %s?"
-#~ msgstr "Сигурни ли сте, че искате да изтриете потребителят %s?"
+#~ msgstr "Are you sure you wish to delete the user: %s?"
 
 #~ msgid "Are you sure you wish to delete the users: %s?"
-#~ msgstr "Сигурни ли сте, че искате да изтриете потребителите %s?"
+#~ msgstr "Are you sure you wish to delete the users: %s?"
+
+#~ msgid "Non groups of user: %s"
+#~ msgstr "non groups of user: %s"
 
 #~ msgid "Group \"%s\" updated successfully."
-#~ msgstr "Групата \"%s\" е обновена успешно."
+#~ msgstr "Group \"%s\" updated successfully."
 
 #~ msgid "Group \"%s\" created successfully."
-#~ msgstr "Групата \"%s\" е създадена успешно."
+#~ msgstr "Group \"%s\" created successfully."
 
 #~ msgid "Are you sure you wish to delete the group: %s?"
-#~ msgstr "Сигурни ли сте, че искате да изтриете групата %s?"
+#~ msgstr "Are you sure you wish to delete the group: %s?"
 
 #~ msgid "Are you sure you wish to delete the groups: %s?"
-#~ msgstr "Сигурни ли сте, че искате да изтриете групите %s?"
+#~ msgstr "Are you sure you wish to delete the groups: %s?"
+
+#~ msgid "Non members of group: %s"
+#~ msgstr "non members of group: %s"
 
 #~ msgid "Group"
 #~ msgstr "group"
 
 #~ msgid "User list"
 #~ msgstr "user list"
+
+#~ msgid "Group list"
+#~ msgstr "group list"
 
 #~ msgid "edit"
 #~ msgstr "edit"

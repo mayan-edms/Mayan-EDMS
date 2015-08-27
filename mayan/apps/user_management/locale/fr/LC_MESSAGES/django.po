@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Christophe kryskool <christophe.chauvet@gmail.com>, 2014
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"PO-Revision-Date: 2015-08-27 05:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:28 permissions.py:7
@@ -126,9 +125,7 @@ msgstr "Afficher les utilisateurs existant"
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"La modification des comptes super utilisateur et staff n'est pas autorisée "
-"ici, veuillez le faire via l'interface d'admin."
+msgstr "La modification des comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'admin."
 
 #: views.py:65
 #, python-format
@@ -153,9 +150,7 @@ msgstr "Vous devez fournir au moins un utilisateur."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"La suppression des comptes super utilisateur et staff n'est pas autorisée "
-"ici, veuillez le faire via l'interface d'admin."
+msgstr "La suppression des comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'admin."
 
 #: views.py:140
 #, python-format
@@ -168,16 +163,16 @@ msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Erreur lors de la suppression de l'utilisateur \"%(user)s\": %(error)s"
 
 #: views.py:158
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing users"
 msgid "Delete the user: %s?"
-msgstr "Supprimer des utilisateurs existant"
+msgstr ""
 
 #: views.py:160
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing users"
 msgid "Delete the users: %s?"
-msgstr "Supprimer des utilisateurs existant"
+msgstr ""
 
 #: views.py:199
 msgid "Passwords do not match, try again."
@@ -187,9 +182,7 @@ msgstr "Les mots de passe ne correspondent pas, veuillez réessayer."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"La réinitialisation des mots de passe pour les comptes super utilisateur et "
-"staff n'est pas autorisée ici, veuillez le faire via l'interface d'admin."
+msgstr "La réinitialisation des mots de passe pour les comptes super utilisateur et staff n'est pas autorisée ici, veuillez le faire via l'interface d'admin."
 
 #: views.py:217
 #, python-format
@@ -199,9 +192,7 @@ msgstr "Mot de passe ré-initialisé avec succès pour l'utilisateur: %s."
 #: views.py:223
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur "
-"\"%(user)s\": %(error)s"
+msgstr "Erreur lors de la ré-initialisation du mot de passe pour l'utilisateur \"%(user)s\": %(error)s"
 
 #: views.py:240
 #, python-format
@@ -218,10 +209,8 @@ msgid "Available groups"
 msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Groups"
 msgid "Groups joined"
-msgstr "Groupes"
+msgstr ""
 
 #: views.py:274
 #, python-format
@@ -234,16 +223,14 @@ msgid "Edit group: %s"
 msgstr "Modification du groupe: %s"
 
 #: views.py:333
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
-msgstr "Supprimer les groupes existant"
+msgstr ""
 
 #: views.py:340
-#, fuzzy
-#| msgid "Members of group: %s"
 msgid "Members of groups"
-msgstr "Membres du groupe: %s"
+msgstr ""
 
 #: views.py:349
 #, python-format
@@ -251,42 +238,40 @@ msgid "Members of group: %s"
 msgstr "Membres du groupe: %s"
 
 #~ msgid "Must provide at least one group."
-#~ msgstr "Vous devez fournir au minimum un groupe."
+#~ msgstr "Must provide at least one group."
 
 #~ msgid "Group \"%s\" deleted successfully."
-#~ msgstr "Groupe \"%s\" supprimé avec succès."
+#~ msgstr "Group \"%s\" deleted successfully."
 
 #~ msgid "Error deleting group \"%(group)s\": %(error)s"
-#~ msgstr "Erreur lors de la suppression du groupe \"%(group)s\": %(error)s"
+#~ msgstr "Error deleting group \"%(group)s\": %(error)s"
 
-#, fuzzy
-#~| msgid "Delete existing groups"
 #~ msgid "Delete the groups: %s?"
-#~ msgstr "Supprimer les groupes existant"
+#~ msgstr "Delete existing groups"
 
 #~ msgid "Are you sure you wish to delete the user: %s?"
-#~ msgstr "Êtes vous certain de vouloir supprimer l'utilisateur: \"%s\"?"
+#~ msgstr "Are you sure you wish to delete the user: %s?"
 
 #~ msgid "Are you sure you wish to delete the users: %s?"
-#~ msgstr "Êtes vous certain de vouloir supprimer les utilisateurs: \"%s\"?"
+#~ msgstr "Are you sure you wish to delete the users: %s?"
 
 #~ msgid "Non groups of user: %s"
-#~ msgstr "Membres absents du groupe: %s"
+#~ msgstr "non groups of user: %s"
 
 #~ msgid "Group \"%s\" updated successfully."
-#~ msgstr "Le groupe \"%s\" a été mis à jour avec succès."
+#~ msgstr "Group \"%s\" updated successfully."
 
 #~ msgid "Group \"%s\" created successfully."
-#~ msgstr "Groupe \"%s\" créé avec succès."
+#~ msgstr "Group \"%s\" created successfully."
 
 #~ msgid "Are you sure you wish to delete the group: %s?"
-#~ msgstr "Êtes vous certain de vouloir supprimer le groupe: %s?"
+#~ msgstr "Are you sure you wish to delete the group: %s?"
 
 #~ msgid "Are you sure you wish to delete the groups: %s?"
-#~ msgstr "Êtes vous certain de vouloir supprimer les groupes: %s?"
+#~ msgstr "Are you sure you wish to delete the groups: %s?"
 
 #~ msgid "Non members of group: %s"
-#~ msgstr "Non membres des groupes: %s"
+#~ msgstr "non members of group: %s"
 
 #~ msgid "Group"
 #~ msgstr "group"

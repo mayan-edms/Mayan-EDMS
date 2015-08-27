@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-03-03 11:14+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2015-08-27 05:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:33 apps.py:63 apps.py:78 forms.py:34 links.py:40 links.py:43
@@ -43,10 +41,8 @@ msgid "Attach tag"
 msgstr "الصاق برچسب"
 
 #: links.py:20
-#, fuzzy
-#| msgid "Remove tag"
 msgid "Remove tags"
-msgstr "برداشتن برچسب"
+msgstr ""
 
 #: links.py:28
 msgid "Create new tag"
@@ -73,16 +69,12 @@ msgid "Tag"
 msgstr "برچسب"
 
 #: models.py:49
-#, fuzzy
-#| msgid "Documents"
 msgid "Document tag"
-msgstr "اسناد"
+msgstr ""
 
 #: models.py:50
-#, fuzzy
-#| msgid "Documents"
 msgid "Document tags"
-msgstr "اسناد"
+msgstr ""
 
 #: permissions.py:10
 msgid "Create new tags"
@@ -154,12 +146,9 @@ msgid "Will be removed from all documents."
 msgstr "از کلیه اسناد حذف خواهد شد."
 
 #: views.py:192
-#, fuzzy
-#| msgid "Are you sure you wish to delete the selected tag?"
-#| msgid_plural "Are you sure you wish to delete the selected tags?"
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
-msgstr[0] "آیا از حذف سندهای انتخاب شده مطمئن هستید؟"
+msgstr[0] ""
 
 #: views.py:222
 #, python-format
@@ -191,36 +180,30 @@ msgid "Remove tag from documents: %s."
 msgstr "حذف برچسب از اسناد: %s"
 
 #: views.py:340
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
-#| "%(document)s?"
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
-msgstr "آیا از حذف برچسب \"%(tag)s\" از سند  %(document)s مطمئن هستید؟"
+msgstr ""
 
 #: views.py:347
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
-#| "%(documents)s?"
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
-msgstr "آیا از حذف برچسب  \"%(tag)s\"  از اسناد  %(documents)s مطمئن هستید؟"
+msgstr ""
 
 #: views.py:356
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "Are you sure you wish to remove the tags: %(tags)s from the document: "
-#| "%(document)s?"
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
-msgstr "آیا از حذف برچسبها  %(tags)s    از سند  %(document)s مطمئن هستید؟"
+msgstr ""
 
 #: views.py:363
-#, fuzzy, python-format
-#| msgid ""
-#| "Are you sure you wish to remove the tags %(tags)s from the documents: "
-#| "%(documents)s?"
+#, python-format
 msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
-msgstr "آیا از حذف برچسبها %(tags)s از اسناد %(documents)s مطمئن هستید؟"
+msgstr ""
 
 #: views.py:375
 #, python-format
@@ -232,52 +215,50 @@ msgstr "سند  \"%(document)s\"  دارای  برچسب  \"%(tag)s\" نمیبا
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr "برچسب \"%(tag)s\" با موفقیت از سند  \"%(document)s\" برداشته شد."
 
-#, fuzzy
-#~| msgid "Remove tags"
 #~ msgid "remove tags"
-#~ msgstr "برداشتن برچسبها"
+#~ msgstr "remove tags"
 
 #~ msgid "Tagged items"
-#~ msgstr "اقلام برچسب"
+#~ msgstr "tagged items"
 
 #~ msgid "ACLs"
 #~ msgstr "ACLs"
 
 #~ msgid "Blue"
-#~ msgstr "آبی"
+#~ msgstr "Blue"
 
 #~ msgid "Cyan"
-#~ msgstr "فیروزه ای"
+#~ msgstr "Cyan"
 
 #~ msgid "Coral"
-#~ msgstr "مرجانی"
+#~ msgstr "Coral"
 
 #~ msgid "Green-Yellow"
-#~ msgstr "سبز-زرد"
+#~ msgstr "Green-Yellow"
 
 #~ msgid "Khaki"
-#~ msgstr "خاکی"
+#~ msgstr "Khaki"
 
 #~ msgid "LightGrey"
-#~ msgstr "خاکستری کمرنگ"
+#~ msgstr "LightGrey"
 
 #~ msgid "Magenta"
-#~ msgstr "سرخابی"
+#~ msgstr "Magenta"
 
 #~ msgid "Red"
-#~ msgstr "قرمز"
+#~ msgstr "Red"
 
 #~ msgid "Orange"
-#~ msgstr "نارنجی"
+#~ msgstr "Orange"
 
 #~ msgid "Yellow"
-#~ msgstr "زرد"
+#~ msgstr "Yellow"
 
 #~ msgid "Tag created succesfully."
-#~ msgstr "ایجاد موفق برچسب"
+#~ msgstr "Tag created succesfully."
 
 #~ msgid "Tag updated succesfully."
-#~ msgstr "بروزرسانی موفق برچسب."
+#~ msgstr "Tag updated succesfully."
 
 #~ msgid "Add tag to document"
 #~ msgstr "Add tag to document"

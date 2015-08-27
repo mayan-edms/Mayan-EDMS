@@ -1,27 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
-# mic <winterfall24@gmail.com>, 2014-2015
 # mic <winterfall24@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-05-27 07:33+0000\n"
-"Last-Translator: mic <winterfall24@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"PO-Revision-Date: 2015-08-27 05:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:28 permissions.py:7
 msgid "User management"
@@ -127,9 +124,7 @@ msgstr "Zobacz istniejących użytkowników"
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user oraz staff user edycja nie jest możliwa , należy użyć interfejsu "
-"administratora w takich przypadkach."
+msgstr "Super user oraz staff user edycja nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:65
 #, python-format
@@ -154,9 +149,7 @@ msgstr "Musi podać co najmniej jednego użytkownika."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user oraz staff user usuwanie nie jest możliwa , należy użyć "
-"interfejsu administratora w takich przypadkach."
+msgstr "Super user oraz staff user usuwanie nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:140
 #, python-format
@@ -169,16 +162,16 @@ msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Błąd podczas usuwania użytkownika \" %(user)s \": %(error)s "
 
 #: views.py:158
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing users"
 msgid "Delete the user: %s?"
-msgstr "Usuwanie istniejących użytkowników"
+msgstr ""
 
 #: views.py:160
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing users"
 msgid "Delete the users: %s?"
-msgstr "Usuwanie istniejących użytkowników"
+msgstr ""
 
 #: views.py:199
 msgid "Passwords do not match, try again."
@@ -188,9 +181,7 @@ msgstr "Hasła nie pasują, spróbuj ponownie."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu "
-"administratora w takich przypadkach."
+msgstr "Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:217
 #, python-format
@@ -217,10 +208,8 @@ msgid "Available groups"
 msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Groups"
 msgid "Groups joined"
-msgstr "Grupy"
+msgstr ""
 
 #: views.py:274
 #, python-format
@@ -233,16 +222,14 @@ msgid "Edit group: %s"
 msgstr "Edycja grupy: %s"
 
 #: views.py:333
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
-msgstr "Usunąć istniejące grupy"
+msgstr ""
 
 #: views.py:340
-#, fuzzy
-#| msgid "Members of group: %s"
 msgid "Members of groups"
-msgstr "Członkowie grupy: %s"
+msgstr ""
 
 #: views.py:349
 #, python-format
@@ -250,42 +237,40 @@ msgid "Members of group: %s"
 msgstr "Członkowie grupy: %s"
 
 #~ msgid "Must provide at least one group."
-#~ msgstr "Musi podać co najmniej jedną grupę."
+#~ msgstr "Must provide at least one group."
 
 #~ msgid "Group \"%s\" deleted successfully."
-#~ msgstr "Grupa \"%s\" została usunięta."
+#~ msgstr "Group \"%s\" deleted successfully."
 
 #~ msgid "Error deleting group \"%(group)s\": %(error)s"
-#~ msgstr "Błąd podczas usuwania grupy \" %(group)s \": %(error)s "
+#~ msgstr "Error deleting group \"%(group)s\": %(error)s"
 
-#, fuzzy
-#~| msgid "Delete existing groups"
 #~ msgid "Delete the groups: %s?"
-#~ msgstr "Usunąć istniejące grupy"
+#~ msgstr "Delete existing groups"
 
 #~ msgid "Are you sure you wish to delete the user: %s?"
-#~ msgstr "Czy na pewno chcesz usunąć użytkownika:%s.?"
+#~ msgstr "Are you sure you wish to delete the user: %s?"
 
 #~ msgid "Are you sure you wish to delete the users: %s?"
-#~ msgstr "Czy na pewno chcesz usunąć użytkowników:%s?"
+#~ msgstr "Are you sure you wish to delete the users: %s?"
 
 #~ msgid "Non groups of user: %s"
-#~ msgstr "niebędących grupami użytkownika: %s"
+#~ msgstr "non groups of user: %s"
 
 #~ msgid "Group \"%s\" updated successfully."
-#~ msgstr "Grupa \"%s\" została zaktualizowany."
+#~ msgstr "Group \"%s\" updated successfully."
 
 #~ msgid "Group \"%s\" created successfully."
-#~ msgstr "Grupa \"%s\" została utworzona pomyślnie."
+#~ msgstr "Group \"%s\" created successfully."
 
 #~ msgid "Are you sure you wish to delete the group: %s?"
-#~ msgstr "Czy na pewno chcesz usunąć grupę:%s?"
+#~ msgstr "Are you sure you wish to delete the group: %s?"
 
 #~ msgid "Are you sure you wish to delete the groups: %s?"
-#~ msgstr "Czy na pewno chcesz usunąć grupy: %s?"
+#~ msgstr "Are you sure you wish to delete the groups: %s?"
 
 #~ msgid "Non members of group: %s"
-#~ msgstr "niebędących członkami grupy:%s"
+#~ msgstr "non members of group: %s"
 
 #~ msgid "Group"
 #~ msgstr "group"

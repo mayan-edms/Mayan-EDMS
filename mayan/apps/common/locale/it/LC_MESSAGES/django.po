@@ -1,27 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Carlo Zanatto <>, 2012
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012,2015
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
 # Roberto Rosario, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:20-0400\n"
-"PO-Revision-Date: 2015-01-29 08:38+0000\n"
-"Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2015-08-27 05:24+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:56 settings.py:9
@@ -41,10 +39,9 @@ msgid "Filter"
 msgstr ""
 
 #: generics.py:123
-#, fuzzy, python-format
-#| msgid "Unable to add %(selection)s."
+#, python-format
 msgid "Unable to transfer selection: %s."
-msgstr "Impossibile aggiungere %(selection)s."
+msgstr ""
 
 #: generics.py:147
 msgid "Add"
@@ -199,18 +196,13 @@ msgstr "Profili dell'utente locale"
 #: settings.py:13
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
-msgstr ""
-"Elenco temporaneo ha usato ampi spazi per memorizzare miniature, anteprime e "
-"file temporanei. Se nessuno è specificato, uno può essere creato usando "
-"tempfile.mkdtemp() "
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()"
+msgstr "Elenco temporaneo ha usato ampi spazi per memorizzare miniature, anteprime e file temporanei. Se nessuno è specificato, uno può essere creato usando tempfile.mkdtemp() "
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Un backend di memorizzazione che tutti i lavoratori possono utilizzare per "
-"condividere i file."
+msgstr "Un backend di memorizzazione che tutti i lavoratori possono utilizzare per condividere i file."
 
 #: settings.py:28
 msgid "An integer specifying how many objects should be displayed per page."
@@ -233,10 +225,9 @@ msgid "Edit current user locale profile details"
 msgstr "Modificare i dettagli del profilo corrente dell'utente"
 
 #: views.py:113
-#, fuzzy
 #| msgid "Selection"
 msgid "Filter selection"
-msgstr "Selezione"
+msgstr ""
 
 #: views.py:129
 #, python-format
@@ -244,10 +235,9 @@ msgid "Results for filter: %s"
 msgstr ""
 
 #: views.py:136
-#, fuzzy
 #| msgid "Page not found"
 msgid "Filter not found"
-msgstr "Page not found"
+msgstr ""
 
 #: views.py:164
 msgid "Setup items"
@@ -265,67 +255,67 @@ msgstr "Devi selezionare un elemento"
 msgid "None"
 msgstr "Nessuno"
 
+#~ msgid "Anonymous user"
+#~ msgstr "Anonymous user"
+
+#~ msgid "Account"
+#~ msgstr "account"
+
+#~ msgid "Password"
+#~ msgstr "password"
+
+#~ msgid "Password hash"
+#~ msgstr "password hash"
+
+#~ msgid "Auto admin properties"
+#~ msgstr "auto admin properties"
+
+#~ msgid "Function found"
+#~ msgstr "function found"
+
+#~ msgid "Unable to remove %(selection)s."
+#~ msgstr "Unable to add %(selection)s to %(right_list_title)s."
+
+#~ msgid "E-mail conflict, another user has that same email."
+#~ msgstr "E-mail conflict, another user has that same email."
+
+#~ msgid "Current user's details updated."
+#~ msgstr "Current user's details updated."
+
+#~ msgid "Current user's locale profile details updated."
+#~ msgstr "Current user's details updated."
+
 #~ msgid "Email"
 #~ msgstr "Email"
 
-#~ msgid "Password"
-#~ msgstr "Password"
-
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Inserisci una corretta email e password. Si noti che il campo password è "
+#~ "Please enter a correct email and password. Note that the password fields is "
 #~ "case-sensitive."
 
 #~ msgid "This account is inactive."
-#~ msgstr "Questo account è inattivo"
+#~ msgstr "This account is inactive."
 
 #~ msgid "Change password"
-#~ msgstr "Cambiare la password"
-
-#~ msgid "Logout"
-#~ msgstr "Logout"
-
-#~ msgid "Anonymous user"
-#~ msgstr "Utente anonimo"
-
-#~ msgid "Account"
-#~ msgstr "Account"
-
-#~ msgid "Auto admin properties"
-#~ msgstr "Auto proprietà di amministrazione "
+#~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controllo del meccanismo di autenticazione. Le opzioni possibili sono:"
-#~ "username,email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
-#~ msgstr "Consentire agli utenti non autenticati, l'accesso a tutte le viste"
-
-#~ msgid "Function found"
-#~ msgstr "Trovata funzione"
-
-#~ msgid "Unable to remove %(selection)s."
-#~ msgstr "Impossibile rimuovere %(selection)s."
-
-#~ msgid "E-mail conflict, another user has that same email."
-#~ msgstr "E-mail conflitto, un altro utente ha quella stessa email."
-
-#~ msgid "Current user's details updated."
-#~ msgstr "Dettagli dell'utente corrente aggiornati"
-
-#~ msgid "Current user's locale profile details updated."
-#~ msgstr "Dettagli del profilo locale dell'utente attuale aggiornati."
+#~ msgstr "Allow non authenticated users, access to all views"
 
 #~ msgid "Current user password change"
-#~ msgstr "Modifica della password dell'utente corrente"
+#~ msgstr "Current user password change"
 
 #~ msgid "Your password has been successfully changed."
-#~ msgstr "La tua password è stata cambiata con successo"
+#~ msgstr "Your password has been successfully changed."
 
 #~ msgid "%(selection)s added successfully added to %(right_list_title)s."
 #~ msgstr "%(selection)s added successfully added to %(right_list_title)s."

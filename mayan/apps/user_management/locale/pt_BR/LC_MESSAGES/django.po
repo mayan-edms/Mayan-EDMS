@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2013
@@ -13,14 +13,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-05-06 13:08+0000\n"
-"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"PO-Revision-Date: 2015-08-27 05:25+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:28 permissions.py:7
@@ -127,9 +126,7 @@ msgstr "Ver os usuários existentes"
 msgid ""
 "Super user and staff user editing is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Edição de super usuário e usuário pessoal não é permitida, use a interface "
-"de administração para esses casos."
+msgstr "Edição de super usuário e usuário pessoal não é permitida, use a interface de administração para esses casos."
 
 #: views.py:65
 #, python-format
@@ -154,9 +151,7 @@ msgstr "Deve fornecer pelo menos um usuário."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Excluir super usuário e usuário pessoal não é permitido, use a interface de "
-"administração para esses casos."
+msgstr "Excluir super usuário e usuário pessoal não é permitido, use a interface de administração para esses casos."
 
 #: views.py:140
 #, python-format
@@ -169,16 +164,16 @@ msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Erro ao excluir usuário \"%(user)s\": %(error)s "
 
 #: views.py:158
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing users"
 msgid "Delete the user: %s?"
-msgstr "Excluir usuários existentes"
+msgstr ""
 
 #: views.py:160
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing users"
 msgid "Delete the users: %s?"
-msgstr "Excluir usuários existentes"
+msgstr ""
 
 #: views.py:199
 msgid "Passwords do not match, try again."
@@ -188,9 +183,7 @@ msgstr "Senhas não coincidem, tente novamente."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Redefinir senha de super usuário e usuário pessoal não é permitido, use a "
-"interface de administração para esses casos."
+msgstr "Redefinir senha de super usuário e usuário pessoal não é permitido, use a interface de administração para esses casos."
 
 #: views.py:217
 #, python-format
@@ -217,10 +210,8 @@ msgid "Available groups"
 msgstr ""
 
 #: views.py:265
-#, fuzzy
-#| msgid "Groups"
 msgid "Groups joined"
-msgstr "Grupos"
+msgstr ""
 
 #: views.py:274
 #, python-format
@@ -233,16 +224,14 @@ msgid "Edit group: %s"
 msgstr "Editar grupo:%s"
 
 #: views.py:333
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
-msgstr "Excluir grupos existentes"
+msgstr ""
 
 #: views.py:340
-#, fuzzy
-#| msgid "Members of group: %s"
 msgid "Members of groups"
-msgstr "membros do grupo: %s"
+msgstr ""
 
 #: views.py:349
 #, python-format
@@ -250,42 +239,40 @@ msgid "Members of group: %s"
 msgstr "membros do grupo: %s"
 
 #~ msgid "Must provide at least one group."
-#~ msgstr "Deve fornecer pelo menos um grupo."
+#~ msgstr "Must provide at least one group."
 
 #~ msgid "Group \"%s\" deleted successfully."
-#~ msgstr "Grupo \"%s\" removido com sucesso."
+#~ msgstr "Group \"%s\" deleted successfully."
 
 #~ msgid "Error deleting group \"%(group)s\": %(error)s"
-#~ msgstr "Erro ao excluir o grupo \"%(group)s\": %(error)s "
+#~ msgstr "Error deleting group \"%(group)s\": %(error)s"
 
-#, fuzzy
-#~| msgid "Delete existing groups"
 #~ msgid "Delete the groups: %s?"
-#~ msgstr "Excluir grupos existentes"
+#~ msgstr "Delete existing groups"
 
 #~ msgid "Are you sure you wish to delete the user: %s?"
-#~ msgstr "Tem certeza de que deseja excluir o usuário: %s?"
+#~ msgstr "Are you sure you wish to delete the user: %s?"
 
 #~ msgid "Are you sure you wish to delete the users: %s?"
-#~ msgstr "Tem certeza de que deseja excluir os usuários: %s?"
+#~ msgstr "Are you sure you wish to delete the users: %s?"
 
 #~ msgid "Non groups of user: %s"
-#~ msgstr "Usuário:¨%s sem grupos"
+#~ msgstr "non groups of user: %s"
 
 #~ msgid "Group \"%s\" updated successfully."
-#~ msgstr "Grupo \"%s\" atualizado com sucesso."
+#~ msgstr "Group \"%s\" updated successfully."
 
 #~ msgid "Group \"%s\" created successfully."
-#~ msgstr "Grupo \"%s\" criado com sucesso."
+#~ msgstr "Group \"%s\" created successfully."
 
 #~ msgid "Are you sure you wish to delete the group: %s?"
-#~ msgstr "Tem certeza de que deseja excluir o grupo: %s?"
+#~ msgstr "Are you sure you wish to delete the group: %s?"
 
 #~ msgid "Are you sure you wish to delete the groups: %s?"
-#~ msgstr "Tem certeza de que deseja excluir os grupos: %s?"
+#~ msgstr "Are you sure you wish to delete the groups: %s?"
 
 #~ msgid "Non members of group: %s"
-#~ msgstr "não-membros do grupo: %s"
+#~ msgstr "non members of group: %s"
 
 #~ msgid "Group"
 #~ msgstr "group"
