@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:21-0400\n"
 "PO-Revision-Date: 2015-01-29 09:11+0000\n"
 "Last-Translator: Pierpaolo Baldan <pierpaolo.baldan@gmail.com>\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -77,72 +77,72 @@ msgstr "Scarica firme separatamente"
 msgid "Upload detached signatures"
 msgstr "Carica firme separatamente"
 
-#: views.py:50
+#: views.py:52
 #, python-format
 msgid "Signature status: %s"
 msgstr "Stato della firma: %s"
 
-#: views.py:54
+#: views.py:56
 msgid "Embedded"
 msgstr "Incorporata"
 
-#: views.py:56
+#: views.py:58
 msgid "Detached"
 msgstr "Distaccato"
 
-#: views.py:58
+#: views.py:60
 msgid "None"
 msgstr "Nessuno"
 
-#: views.py:63
+#: views.py:65
 #, python-format
 msgid "Signature ID: %s"
 msgstr "ID Firma: %s"
 
-#: views.py:64
+#: views.py:66
 #, python-format
 msgid "Signature type: %s"
 msgstr "Tipo di firma: %s"
 
-#: views.py:65
+#: views.py:67
 #, python-format
 msgid "Key ID: %s"
 msgstr "Chiave ID: %s"
 
-#: views.py:66
+#: views.py:68
 #, python-format
 msgid "Timestamp: %s"
 msgstr "Timestamp: %s"
 
-#: views.py:67
+#: views.py:69
 #, python-format
 msgid "Signee: %s"
 msgstr "Firmatario: %s"
 
-#: views.py:75
+#: views.py:77
 #, python-format
 msgid "Signature properties for document: %s"
 msgstr "Proprietà della firma per il documento: %s"
 
-#: views.py:98
+#: views.py:100
 msgid "Detached signature uploaded successfully."
 msgstr "Firma scaduta aggiornata con successo."
 
-#: views.py:111
+#: views.py:113
 #, python-format
 msgid "Upload detached signature for document: %s"
 msgstr "Carica la firma allegata per il documento: %s"
 
-#: views.py:156
+#: views.py:158
 msgid "Detached signature deleted successfully."
 msgstr "Scarica la firma allegata al documento: %s"
 
-#: views.py:159
+#: views.py:161
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr "Errore nel cancellare la firma allegata; %s"
 
-#: views.py:163
+#: views.py:165
 #, fuzzy, python-format
 #| msgid "Upload detached signature for document: %s"
 msgid "Delete the detached signature from document: %s?"

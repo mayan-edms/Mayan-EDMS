@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:21-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -66,7 +66,7 @@ msgid "Node"
 msgstr ""
 
 #: links.py:21 links.py:29 links.py:33 links.py:36 models.py:81 views.py:54
-#: views.py:260
+#: views.py:232
 msgid "Indexes"
 msgstr "Indexes"
 
@@ -297,41 +297,31 @@ msgstr "Index template node edited successfully"
 msgid "Edit index template node: %s"
 msgstr "edit index template node: %s"
 
-#: views.py:227
-#, python-format
-msgid "Node: %s deleted successfully."
-msgstr "Node: %s deleted successfully."
-
-#: views.py:230
-#, python-format
-msgid "Node: %(node)s delete error: %(error)s"
-msgstr "Node: %(node)s delete error: %(error)s"
-
-#: views.py:243
+#: views.py:215
 #, fuzzy, python-format
 msgid "Delete the index template node: %s?"
 msgstr "edit index template node: %s"
 
-#: views.py:307
+#: views.py:279
 #, fuzzy, python-format
 msgid "Contents for index: %s"
 msgstr "contents for index: %s"
 
-#: views.py:333
+#: views.py:305
 #, fuzzy
 msgid "Rebuild all indexes?"
 msgstr "rebuild indexes"
 
-#: views.py:334
+#: views.py:306
 msgid "On large databases this operation may take some time to execute."
 msgstr "On large databases this operation may take some time to execute."
 
-#: views.py:338
+#: views.py:310
 #, fuzzy
 msgid "Index rebuild queued successfully."
 msgstr "Index rebuild completed successfully."
 
-#: views.py:372
+#: views.py:344
 #, fuzzy, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr "indexes containing: %s"
@@ -339,6 +329,12 @@ msgstr "indexes containing: %s"
 #: widgets.py:95
 msgid "Root"
 msgstr ""
+
+#~ msgid "Node: %s deleted successfully."
+#~ msgstr "Node: %s deleted successfully."
+
+#~ msgid "Node: %(node)s delete error: %(error)s"
+#~ msgstr "Node: %(node)s delete error: %(error)s"
 
 #~ msgid "Enter a python string expression to be evaluated."
 #~ msgstr "Enter a python string expression to be evaluated."

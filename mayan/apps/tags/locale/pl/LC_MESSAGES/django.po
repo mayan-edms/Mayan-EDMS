@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:16-0400\n"
+"POT-Creation-Date: 2015-08-27 01:24-0400\n"
 "PO-Revision-Date: 2015-05-27 07:33+0000\n"
 "Last-Translator: mic <winterfall24@gmail.com>\n"
 "Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -23,16 +23,16 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
 "|| n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:33 apps.py:56 apps.py:71 forms.py:34 links.py:40 links.py:43
+#: apps.py:33 apps.py:63 apps.py:78 forms.py:34 links.py:40 links.py:43
 #: models.py:28 permissions.py:7 views.py:131
 msgid "Tags"
 msgstr "Tagi"
 
-#: apps.py:61
+#: apps.py:58 apps.py:68
 msgid "Preview"
 msgstr "Podgląd"
 
-#: apps.py:65 models.py:23
+#: apps.py:72 models.py:23
 msgid "Documents"
 msgstr "Dokumenty"
 
@@ -73,6 +73,18 @@ msgstr "Kolor"
 #: models.py:27
 msgid "Tag"
 msgstr "Tag"
+
+#: models.py:49
+#, fuzzy
+#| msgid "Documents"
+msgid "Document tag"
+msgstr "Dokumenty"
+
+#: models.py:50
+#, fuzzy
+#| msgid "Documents"
+msgid "Document tags"
+msgstr "Dokumenty"
 
 #: permissions.py:10
 msgid "Create new tags"

@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:13-0400\n"
+"POT-Creation-Date: 2015-08-27 01:20-0400\n"
 "PO-Revision-Date: 2015-03-03 10:54+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -21,83 +21,87 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:55 settings.py:9
+#: apps.py:56 settings.py:9
 msgid "Common"
 msgstr ""
 
-#: classes.py:49
+#: classes.py:53
 msgid "Available attributes: "
 msgstr "خصوصیات موجود"
 
-#: forms.py:69
+#: forms.py:27
 msgid "Selection"
 msgstr "انتخاب"
 
-#: generics.py:122
+#: forms.py:106
+msgid "Filter"
+msgstr ""
+
+#: generics.py:123
 #, fuzzy, python-format
 #| msgid "Unable to add %(selection)s."
 msgid "Unable to transfer selection: %s."
 msgstr "نمیتوان برداشت: %(selection)s."
 
-#: generics.py:146
+#: generics.py:147
 msgid "Add"
 msgstr "افزودن"
 
-#: generics.py:157
+#: generics.py:158
 msgid "Remove"
 msgstr "حذف"
 
-#: generics.py:260
+#: generics.py:261
 #, python-format
 msgid "Error creating new %s."
 msgstr "خطا در زمان ایجاد %s."
 
-#: generics.py:263
+#: generics.py:264
 msgid "Error creating object."
 msgstr "خطا در زمان ایجاد شی"
 
-#: generics.py:273
+#: generics.py:288
 #, python-format
 msgid "%s created successfully."
 msgstr "%s با موفقیت ایجاد شد."
 
-#: generics.py:278
+#: generics.py:293
 msgid "New object created successfully."
 msgstr "شی جدید با موفقیت ساخته شد."
 
-#: generics.py:299
+#: generics.py:314
 #, python-format
 msgid "Error deleting %s."
 msgstr "خطا در زمان حذف %s."
 
-#: generics.py:303
+#: generics.py:318
 msgid "Error deleting object."
 msgstr "خطا در حذف شی."
 
-#: generics.py:312
+#: generics.py:327
 #, python-format
 msgid "%s deleted successfully."
 msgstr "%s با موفقیت حذف شد."
 
-#: generics.py:317
+#: generics.py:332
 msgid "Object deleted successfully."
 msgstr "شی با موفقیت حذف شد."
 
-#: generics.py:335
+#: generics.py:359
 #, python-format
 msgid "Error saving %s details."
 msgstr "خطا در ثبت چزئیات %s."
 
-#: generics.py:340
+#: generics.py:364
 msgid "Error saving details."
 msgstr "خطا در ثبت چزئیات ."
 
-#: generics.py:352
+#: generics.py:389
 #, python-format
 msgid "%s details saved successfully."
 msgstr "جزئیات %s با موفقیت ثبت شد."
 
-#: generics.py:357
+#: generics.py:394
 msgid "Details saved successfully."
 msgstr "جزییات با موفقیت ثبت شد."
 
@@ -121,15 +125,19 @@ msgstr "پروفایل محلی"
 msgid "Edit locale profile"
 msgstr "ویرایش پروفایل محلی"
 
-#: links.py:27 views.py:110
+#: links.py:27
+msgid "Data filters"
+msgstr ""
+
+#: links.py:31 views.py:150
 msgid "License"
 msgstr "لیسانس"
 
-#: links.py:30
+#: links.py:34
 msgid "Setup"
 msgstr ""
 
-#: links.py:33 views.py:138
+#: links.py:37 views.py:178
 msgid "Tools"
 msgstr ""
 
@@ -202,31 +210,48 @@ msgstr "محلی که کلیه کاربران جهت به اشتراک گذار�
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr ""
 
-#: views.py:35
+#: views.py:36
 msgid "Current user details"
 msgstr "جزئیاتا کاربر فعلی"
 
-#: views.py:41
+#: views.py:42
 msgid "Edit current user details"
 msgstr "یرایش جزئیات کاربر کنونی"
 
-#: views.py:61
+#: views.py:62
 msgid "Current user locale profile details"
 msgstr "شرح پروفایل محلی کاربر فعلی"
 
-#: views.py:68
+#: views.py:69
 msgid "Edit current user locale profile details"
 msgstr "ویرایش شرح پروفایل محلی کاربر فعلی"
 
-#: views.py:124
+#: views.py:113
+#, fuzzy
+#| msgid "Selection"
+msgid "Filter selection"
+msgstr "انتخاب"
+
+#: views.py:129
+#, python-format
+msgid "Results for filter: %s"
+msgstr ""
+
+#: views.py:136
+#, fuzzy
+#| msgid "Page not found"
+msgid "Filter not found"
+msgstr "Page not found"
+
+#: views.py:164
 msgid "Setup items"
 msgstr ""
 
-#: views.py:163
+#: views.py:203
 msgid "No action selected."
 msgstr "هیچ عملیاتی action انتخاب نشده است."
 
-#: views.py:171
+#: views.py:211
 msgid "Must select at least one item."
 msgstr "حداقل یک مورد انتخاب شود."
 
@@ -347,9 +372,6 @@ msgstr "هیچکدام."
 
 #~ msgid "You don't have enough permissions for this operation."
 #~ msgstr "You don't have enough permissions for this operation."
-
-#~ msgid "Page not found"
-#~ msgstr "Page not found"
 
 #~ msgid "Sorry, but the requested page could not be found."
 #~ msgstr "Sorry, but the requested page could not be found."

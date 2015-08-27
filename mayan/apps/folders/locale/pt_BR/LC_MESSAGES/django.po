@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:22-0400\n"
 "PO-Revision-Date: 2015-08-20 22:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
@@ -28,15 +28,15 @@ msgstr ""
 msgid "Folders"
 msgstr "Pastas"
 
-#: apps.py:56
+#: apps.py:61
 msgid "Created"
 msgstr "Criando"
 
-#: apps.py:58 models.py:21
+#: apps.py:63 models.py:21
 msgid "User"
 msgstr "Usuário"
 
-#: apps.py:60 links.py:46 models.py:26
+#: apps.py:65 links.py:46 models.py:26
 msgid "Documents"
 msgstr "Documentos"
 
@@ -75,6 +75,18 @@ msgstr ""
 #: models.py:23
 msgid "Datetime created"
 msgstr "Hora e data criada"
+
+#: models.py:57
+#, fuzzy
+#| msgid "Documents in folder: %s"
+msgid "Document folder"
+msgstr "Documentos na pasta: %s"
+
+#: models.py:58
+#, fuzzy
+#| msgid "Documents in folder: %s"
+msgid "Document folders"
+msgstr "Documentos na pasta: %s"
 
 #: permissions.py:10
 msgid "Create new folders"
@@ -138,42 +150,42 @@ msgstr "Documentos na pasta: %s"
 msgid "Must provide at least one document."
 msgstr ""
 
-#: views.py:183
+#: views.py:186
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Documento: %(document)s  adicionados à pasta: %(folder)s com sucesso."
 
-#: views.py:186
+#: views.py:189
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Documento: %(document)s  já está na pasta: %(folder)s ."
 
-#: views.py:203
+#: views.py:206
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:234
+#: views.py:237
 #, python-format
 msgid "Folders containing document: %s"
 msgstr "Pastas contendo documento:%s"
 
-#: views.py:248
+#: views.py:251
 msgid "Must provide at least one folder document."
 msgstr "Deve fornecer pelo menos um documento da pasta."
 
-#: views.py:266
+#: views.py:269
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Documento: %s removido com sucesso."
 
-#: views.py:268
+#: views.py:271
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Documento: %(document)s erro ao deletar: %(error)s "
 
-#: views.py:278
+#: views.py:281
 #, python-format
 msgid "Remove the selected document from the folder: %(folder)s?"
 msgid_plural "Remove the selected documents from the folder: %(folder)s?"

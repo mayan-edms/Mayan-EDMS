@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:15-0400\n"
+"POT-Creation-Date: 2015-08-27 01:22-0400\n"
 "PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,49 +18,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:52 apps.py:96 links.py:45 permissions.py:7 settings.py:10
+#: apps.py:52 apps.py:130 links.py:41 permissions.py:7 settings.py:10
 msgid "Metadata"
 msgstr "Metadata"
 
-#: apps.py:66
+#: apps.py:64
+#, fuzzy
+msgid "Documents missing required metadata"
+msgstr "document metadata"
+
+#: apps.py:81
+#, fuzzy
+msgid "Documents missing optional metadata"
+msgstr "document metadata"
+
+#: apps.py:100
 msgid ""
 "Queryset containing a MetadataType instance reference and a value for that "
 "metadata type"
 msgstr ""
 
-#: apps.py:72
+#: apps.py:106
 #, fuzzy
 msgid "Metadata type name"
 msgstr "Metadata type"
 
-#: apps.py:75
+#: apps.py:109
 #, fuzzy
 msgid "Metadata type value"
 msgstr "Metadata type"
 
-#: apps.py:79
+#: apps.py:113
 #, fuzzy
 msgid "Value of a metadata"
 msgstr "default metadata"
 
-#: apps.py:81
+#: apps.py:115
 msgid "Return the value of a specific document metadata"
 msgstr ""
 
-#: apps.py:101 forms.py:82 models.py:154
+#: apps.py:135 forms.py:77 models.py:155
 msgid "Value"
 msgstr "Value"
 
-#: apps.py:105 forms.py:29 models.py:204
+#: apps.py:139 forms.py:24 models.py:205
 #, fuzzy
 msgid "Required"
 msgstr "required"
 
-#: apps.py:125 forms.py:92 models.py:138 models.py:202
+#: apps.py:159 forms.py:87 models.py:139 models.py:203
 msgid "Metadata type"
 msgstr "Metadata type"
 
-#: apps.py:128
+#: apps.py:162
 #, fuzzy
 msgid "Metadata value"
 msgstr "Metadata type"
@@ -70,83 +80,78 @@ msgstr "Metadata type"
 msgid "'metadata' object has no attribute '%s'"
 msgstr "'metadata' object has no attribute '%s'"
 
-#: forms.py:54
+#: forms.py:49
 #, python-format
 msgid "Lookup value error: %s"
 msgstr ""
 
-#: forms.py:67
+#: forms.py:62
 #, python-format
 msgid "Default value error: %s"
 msgstr ""
 
-#: forms.py:76
+#: forms.py:71
 msgid "ID"
 msgstr ""
 
-#: forms.py:79 models.py:53
+#: forms.py:74 models.py:53
 msgid "Name"
 msgstr "Name"
 
-#: forms.py:84
+#: forms.py:79
 msgid "Update"
 msgstr "Update"
 
-#: forms.py:110
+#: forms.py:105
 #, fuzzy
 #| msgid " Available models: %s"
 msgid " Available template context variables: "
 msgstr " Available models: %s"
 
-#: forms.py:117
+#: forms.py:112
 msgid "Remove"
 msgstr "Remove"
 
-#: links.py:16
-#, fuzzy
-msgid "Missing metadata"
-msgstr "edit metadata"
-
-#: links.py:20 links.py:28
+#: links.py:16 links.py:24
 #, fuzzy
 msgid "Add metadata"
 msgstr "add metadata"
 
-#: links.py:24 links.py:32
+#: links.py:20 links.py:28
 #, fuzzy
 msgid "Edit metadata"
 msgstr "edit metadata"
 
-#: links.py:37 links.py:41
+#: links.py:33 links.py:37
 #, fuzzy
 msgid "Remove metadata"
 msgstr "remove metadata"
 
-#: links.py:49
+#: links.py:45
 #, fuzzy
 msgid "Optional metadata"
 msgstr "edit metadata"
 
-#: links.py:53
+#: links.py:49
 #, fuzzy
 msgid "Required metadata"
 msgstr "remove metadata"
 
-#: links.py:58
+#: links.py:54
 #, fuzzy
 msgid "Create new"
 msgstr "create new"
 
-#: links.py:63
+#: links.py:59
 #, fuzzy
 msgid "Delete"
 msgstr "delete"
 
-#: links.py:66
+#: links.py:62
 msgid "Edit"
 msgstr ""
 
-#: links.py:71 models.py:139 views.py:556
+#: links.py:67 models.py:140 views.py:542
 msgid "Metadata types"
 msgstr "Metadata types"
 
@@ -213,41 +218,41 @@ msgstr "Add metadata type to document: %s"
 msgid "Value is not one of the provided options."
 msgstr ""
 
-#: models.py:149
+#: models.py:150
 #, fuzzy
 msgid "Document"
 msgstr "document"
 
-#: models.py:151
+#: models.py:152
 msgid "Type"
 msgstr ""
 
-#: models.py:163
+#: models.py:164
 #, fuzzy
 msgid "Metadata type is required for this document type."
 msgstr "Add metadata type to document: %s"
 
-#: models.py:171
+#: models.py:172
 #, fuzzy
 msgid "Metadata type is not valid for this document type."
 msgstr "Add metadata type to document: %s"
 
-#: models.py:191 models.py:192
+#: models.py:192 models.py:193
 #, fuzzy
 msgid "Document metadata"
 msgstr "document metadata"
 
-#: models.py:199
+#: models.py:200
 #, fuzzy
 msgid "Document type"
 msgstr "document type"
 
-#: models.py:211
+#: models.py:212
 #, fuzzy
 msgid "Document type metadata type options"
 msgstr "Delete metadata types"
 
-#: models.py:212
+#: models.py:213
 #, fuzzy
 msgid "Document type metadata types options"
 msgstr "Delete metadata types"
@@ -296,45 +301,40 @@ msgstr ""
 msgid "Value of the corresponding metadata type instance."
 msgstr ""
 
-#: views.py:41
-#, fuzzy
-msgid "Documents missing required metadata"
-msgstr "document metadata"
-
-#: views.py:72 views.py:224 views.py:356
+#: views.py:58 views.py:210 views.py:342
 msgid "Must provide at least one document."
 msgstr "Must provide at least one document."
 
-#: views.py:80 views.py:206 views.py:364
+#: views.py:66 views.py:192 views.py:350
 #, fuzzy
 msgid "Only select documents of the same type."
 msgstr "The selected document doesn't have any metadata."
 
-#: views.py:89 views.py:373
+#: views.py:75 views.py:359
 #, fuzzy
 msgid "The selected document doesn't have any metadata."
 msgid_plural "The selected documents don't have any metadata."
 msgstr[0] "The selected document doesn't have any metadata."
 msgstr[1] "The selected document doesn't have any metadata."
 
-#: views.py:150
+#: views.py:136
 #, fuzzy, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
 msgstr "Error editing metadata for document %(document)s; %(error)s."
 
-#: views.py:161
+#: views.py:147
 #, python-format
 msgid "Metadata for document %s edited successfully."
 msgstr "Metadata for document %s edited successfully."
 
-#: views.py:177
+#: views.py:163
 #, fuzzy
 msgid "Edit document metadata"
 msgid_plural "Edit documents metadata"
 msgstr[0] "Edit a document's metadata"
 msgstr[1] "Edit a document's metadata"
 
-#: views.py:263
+#: views.py:249
 #, fuzzy, python-format
 msgid ""
 "Error adding metadata type \"%(metadata_type)s\" to document: %(document)s; "
@@ -342,28 +342,28 @@ msgid ""
 msgstr ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
 
-#: views.py:279
+#: views.py:265
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s successfully added to document %(document)s."
 msgstr ""
 "Metadata type: %(metadata_type)s successfully added to document %(document)s."
 
-#: views.py:289
+#: views.py:275
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 msgstr ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
 
-#: views.py:320
+#: views.py:306
 #, fuzzy
 msgid "Add metadata types to document"
 msgid_plural "Add metadata types to documents"
 msgstr[0] "Add metadata type to documents: %s"
 msgstr[1] "Add metadata type to documents: %s"
 
-#: views.py:430
+#: views.py:416
 #, fuzzy, python-format
 msgid ""
 "Successfully remove metadata type \"%(metadata_type)s\" from document: "
@@ -372,7 +372,7 @@ msgstr ""
 "Successfully remove metadata type: %(metadata_type)s from document: "
 "%(document)s."
 
-#: views.py:440
+#: views.py:426
 #, fuzzy, python-format
 msgid ""
 "Error removing metadata type \"%(metadata_type)s\" from document: "
@@ -380,59 +380,63 @@ msgid ""
 msgstr ""
 "Error removing metadata type: %(metadata_type)s from document: %(document)s."
 
-#: views.py:460
+#: views.py:446
 #, fuzzy
 msgid "Remove metadata types from the document"
 msgid_plural "Remove metadata types from the documents"
 msgstr[0] "Remove metadata types from documents: %s"
 msgstr[1] "Remove metadata types from documents: %s"
 
-#: views.py:499
+#: views.py:485
 #, fuzzy, python-format
 msgid "Metadata for document: %s"
 msgstr "Edit metadata for documents: %s"
 
-#: views.py:508
+#: views.py:494
 #, fuzzy
 msgid "Create metadata type"
 msgstr "create metadata type"
 
-#: views.py:524
+#: views.py:510
 #, fuzzy, python-format
 #| msgid "Delete metadata types"
 msgid "Delete the metadata type: %s?"
 msgstr "Delete metadata types"
 
-#: views.py:537
+#: views.py:523
 #, fuzzy, python-format
 msgid "Edit metadata type: %s"
 msgstr "edit metadata type: %s"
 
-#: views.py:551
+#: views.py:537
 #, fuzzy
 msgid "Internal name"
 msgstr "internal name"
 
-#: views.py:563
+#: views.py:549
 #, fuzzy
 #| msgid "View metadata types"
 msgid "Available metadata types"
 msgstr "View metadata types"
 
-#: views.py:564
+#: views.py:550
 #, fuzzy
 msgid "Metadata types assigned"
 msgstr "Metadata type"
 
-#: views.py:595
+#: views.py:581
 #, fuzzy, python-format
 msgid "Optional metadata types for document type: %s"
 msgstr "Remove metadata types from document: %s"
 
-#: views.py:613
+#: views.py:599
 #, fuzzy, python-format
 msgid "Required metadata types for document type: %s"
 msgstr "Remove metadata types from document: %s"
+
+#, fuzzy
+#~ msgid "Missing metadata"
+#~ msgstr "edit metadata"
 
 #, fuzzy
 #~ msgid "Missing required metadata"

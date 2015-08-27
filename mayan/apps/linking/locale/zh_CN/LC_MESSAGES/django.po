@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:15-0400\n"
+"POT-Creation-Date: 2015-08-27 01:22-0400\n"
 "PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
@@ -249,62 +249,58 @@ msgstr ""
 msgid "Edit smart link: %s"
 msgstr "编辑智能链接: %s"
 
-#: views.py:227
-#, python-format
-msgid "Smart link: %s deleted successfully."
-msgstr "智能链接: %s删除成功"
-
-#: views.py:233
-#, python-format
-msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgstr "删除智能链接%(smart_link)s出错： %(exception)s."
-
-#: views.py:245
+#: views.py:211
 #, fuzzy, python-format
 #| msgid "Delete smart links"
-msgid "Delete smart link: %s?"
+msgid "Delete smart link: %s"
 msgstr "删除智能链接"
 
-#: views.py:258
+#: views.py:223
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr ""
 
-#: views.py:288
+#: views.py:254
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "智能链接条件: \"%s\"创建成功。"
 
-#: views.py:301
+#: views.py:267
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "新建条件到智能链接：\"%s\""
 
-#: views.py:332
+#: views.py:298
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "智能链接条件: \"%s\"编辑成功。"
 
-#: views.py:346
+#: views.py:312
 msgid "Edit smart link condition"
 msgstr "编辑智能链接条件"
 
-#: views.py:373
+#: views.py:339
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "智能链接条件: \"%s\"删除成功。"
 
-#: views.py:379
+#: views.py:345
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr "删除智能链接条件：%(smart_link_condition)s出错： %(exception)s."
 
-#: views.py:395
+#: views.py:361
 #, fuzzy, python-format
 #| msgid "Edit smart link condition"
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "编辑智能链接条件"
+
+#~ msgid "Smart link: %s deleted successfully."
+#~ msgstr "智能链接: %s删除成功"
+
+#~ msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
+#~ msgstr "删除智能链接%(smart_link)s出错： %(exception)s."
 
 #~ msgid "ACLs"
 #~ msgstr "访问控制列表"

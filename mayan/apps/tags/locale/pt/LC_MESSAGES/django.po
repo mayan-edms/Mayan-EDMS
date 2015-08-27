@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:16-0400\n"
+"POT-Creation-Date: 2015-08-27 01:24-0400\n"
 "PO-Revision-Date: 2015-02-06 23:26+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
@@ -22,16 +22,16 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:33 apps.py:56 apps.py:71 forms.py:34 links.py:40 links.py:43
+#: apps.py:33 apps.py:63 apps.py:78 forms.py:34 links.py:40 links.py:43
 #: models.py:28 permissions.py:7 views.py:131
 msgid "Tags"
 msgstr "Etiquetas"
 
-#: apps.py:61
+#: apps.py:58 apps.py:68
 msgid "Preview"
 msgstr ""
 
-#: apps.py:65 models.py:23
+#: apps.py:72 models.py:23
 msgid "Documents"
 msgstr ""
 
@@ -72,6 +72,18 @@ msgstr "Cor"
 #: models.py:27
 msgid "Tag"
 msgstr ""
+
+#: models.py:49
+#, fuzzy
+#| msgid "Document created"
+msgid "Document tag"
+msgstr "document"
+
+#: models.py:50
+#, fuzzy
+#| msgid "Document created"
+msgid "Document tags"
+msgstr "document"
 
 #: permissions.py:10
 msgid "Create new tags"
@@ -253,9 +265,6 @@ msgstr ""
 
 #~ msgid "Add tag to document"
 #~ msgstr "Add tag to document"
-
-#~ msgid "Document created"
-#~ msgstr "document"
 
 #~ msgid "Attach tag to document: %s."
 #~ msgstr "Attach tag to document: %s."

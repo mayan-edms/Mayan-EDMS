@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:16-0400\n"
+"POT-Creation-Date: 2015-08-27 01:24-0400\n"
 "PO-Revision-Date: 2015-01-11 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
@@ -66,27 +66,27 @@ msgstr "Confirmar senha"
 msgid "Create new group"
 msgstr ""
 
-#: links.py:18 links.py:34 links.py:46 links.py:62
+#: links.py:18 links.py:42 links.py:58
 msgid "Delete"
 msgstr ""
 
-#: links.py:22 links.py:50
+#: links.py:22 links.py:46
 msgid "Edit"
 msgstr ""
 
-#: links.py:26 links.py:38 links.py:54 views.py:319
+#: links.py:26 links.py:34 links.py:50 views.py:319
 msgid "Groups"
 msgstr ""
 
-#: links.py:42 views.py:97
+#: links.py:38 views.py:97
 msgid "Create new user"
 msgstr ""
 
-#: links.py:58 links.py:74 views.py:33
+#: links.py:54 links.py:70 views.py:33
 msgid "Users"
 msgstr ""
 
-#: links.py:66 links.py:70
+#: links.py:62 links.py:66
 msgid "Reset password"
 msgstr ""
 
@@ -211,7 +211,7 @@ msgstr "A redefinir a senha do utilizador: %s"
 msgid "Reseting password for users: %s"
 msgstr "A redefinir a senha dos utilizadores: %s"
 
-#: views.py:264 views.py:380
+#: views.py:264 views.py:339
 msgid "Available groups"
 msgstr ""
 
@@ -231,40 +231,34 @@ msgstr ""
 msgid "Edit group: %s"
 msgstr ""
 
-#: views.py:337
-msgid "Must provide at least one group."
-msgstr "Deve fornecer pelo menos um grupo."
-
-#: views.py:347
-#, python-format
-msgid "Group \"%s\" deleted successfully."
-msgstr "Grupo \"%s\" excluído com sucesso."
-
-#: views.py:349
-#, python-format
-msgid "Error deleting group \"%(group)s\": %(error)s"
-msgstr "Erro ao excluir o grupo \"%(group)s\": %(error)s "
-
-#: views.py:362
+#: views.py:333
 #, fuzzy, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "Excluir grupos existentes"
 
-#: views.py:364
-#, fuzzy, python-format
-#| msgid "Delete existing groups"
-msgid "Delete the groups: %s?"
-msgstr "Excluir grupos existentes"
-
-#: views.py:381
+#: views.py:340
 msgid "Members of groups"
 msgstr ""
 
-#: views.py:390
+#: views.py:349
 #, python-format
 msgid "Members of group: %s"
 msgstr ""
+
+#~ msgid "Must provide at least one group."
+#~ msgstr "Deve fornecer pelo menos um grupo."
+
+#~ msgid "Group \"%s\" deleted successfully."
+#~ msgstr "Grupo \"%s\" excluído com sucesso."
+
+#~ msgid "Error deleting group \"%(group)s\": %(error)s"
+#~ msgstr "Erro ao excluir o grupo \"%(group)s\": %(error)s "
+
+#, fuzzy
+#~| msgid "Delete existing groups"
+#~ msgid "Delete the groups: %s?"
+#~ msgstr "Excluir grupos existentes"
 
 #~ msgid "Are you sure you wish to delete the user: %s?"
 #~ msgstr "Tem a certeza de que deseja excluir o utilizador: %s?"

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:22-0400\n"
 "PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -257,63 +257,60 @@ msgstr "smart links (%s)"
 msgid "Edit smart link: %s"
 msgstr "Edit smart link: %s"
 
-#: views.py:227
-#, python-format
-msgid "Smart link: %s deleted successfully."
-msgstr "Smart link: %s deleted successfully."
-
-#: views.py:233
-#, fuzzy, python-format
-msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgstr "Error deleting smart link: %(smart_link)s; %(error)s."
-
-#: views.py:245
+#: views.py:211
 #, fuzzy, python-format
 #| msgid "Delete smart links"
-msgid "Delete smart link: %s?"
+msgid "Delete smart link: %s"
 msgstr "Delete smart links"
 
-#: views.py:258
+#: views.py:223
 #, fuzzy, python-format
 msgid "Conditions for smart link: %s"
 msgstr "conditions for smart link: %s"
 
-#: views.py:288
+#: views.py:254
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "Smart link condition: \"%s\" created successfully."
 
-#: views.py:301
+#: views.py:267
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Add new conditions to smart link: \"%s\""
 
-#: views.py:332
+#: views.py:298
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "Smart link condition: \"%s\" edited successfully."
 
-#: views.py:346
+#: views.py:312
 msgid "Edit smart link condition"
 msgstr "Edit smart link condition"
 
-#: views.py:373
+#: views.py:339
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "Smart link condition: \"%s\" deleted successfully."
 
-#: views.py:379
+#: views.py:345
 #, fuzzy, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
 
-#: views.py:395
+#: views.py:361
 #, fuzzy, python-format
 #| msgid "Edit smart link condition"
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Edit smart link condition"
+
+#~ msgid "Smart link: %s deleted successfully."
+#~ msgstr "Smart link: %s deleted successfully."
+
+#, fuzzy
+#~ msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
+#~ msgstr "Error deleting smart link: %(smart_link)s; %(error)s."
 
 #~ msgid "Smart link: %s created successfully."
 #~ msgstr "Smart link: %s created successfully."

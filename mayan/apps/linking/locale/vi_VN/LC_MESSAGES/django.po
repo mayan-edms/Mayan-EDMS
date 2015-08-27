@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:22-0400\n"
 "PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
@@ -248,62 +248,55 @@ msgstr ""
 msgid "Edit smart link: %s"
 msgstr "Sửa liên kết thông minh: %s"
 
-#: views.py:227
-#, python-format
-msgid "Smart link: %s deleted successfully."
-msgstr "Liên kết thông minh: %s xóa thành công."
-
-#: views.py:233
-#, python-format
-msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgstr ""
-
-#: views.py:245
+#: views.py:211
 #, fuzzy, python-format
 #| msgid "Delete smart links"
-msgid "Delete smart link: %s?"
+msgid "Delete smart link: %s"
 msgstr "Xóa liên kết thông minh"
 
-#: views.py:258
+#: views.py:223
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr ""
 
-#: views.py:288
+#: views.py:254
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "điều kiện liên kết thông minh: %s tạo thành công."
 
-#: views.py:301
+#: views.py:267
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr ""
 
-#: views.py:332
+#: views.py:298
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr ""
 
-#: views.py:346
+#: views.py:312
 msgid "Edit smart link condition"
 msgstr ""
 
-#: views.py:373
+#: views.py:339
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr ""
 
-#: views.py:379
+#: views.py:345
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr ""
 
-#: views.py:395
+#: views.py:361
 #, fuzzy, python-format
 #| msgid "Delete smart links"
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Xóa liên kết thông minh"
+
+#~ msgid "Smart link: %s deleted successfully."
+#~ msgstr "Liên kết thông minh: %s xóa thành công."
 
 #~ msgid "Are you sure you wish to delete smart link: %s?"
 #~ msgstr "Bạn có chắc chắn muốn xóa liên kết thông minh: %s"

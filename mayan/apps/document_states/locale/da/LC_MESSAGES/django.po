@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:21-0400\n"
 "PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -54,7 +54,7 @@ msgstr ""
 msgid "Transition"
 msgstr ""
 
-#: apps.py:83 forms.py:40 models.py:190
+#: apps.py:83 forms.py:41 models.py:190
 msgid "Comment"
 msgstr ""
 

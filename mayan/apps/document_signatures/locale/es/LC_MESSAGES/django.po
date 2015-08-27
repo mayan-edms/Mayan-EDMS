@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:21-0400\n"
 "PO-Revision-Date: 2015-08-20 22:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
@@ -78,72 +78,72 @@ msgstr "Descargar firmas separadas"
 msgid "Upload detached signatures"
 msgstr "Subir firmas separadas"
 
-#: views.py:50
+#: views.py:52
 #, python-format
 msgid "Signature status: %s"
 msgstr "Estado de firma: %s"
 
-#: views.py:54
+#: views.py:56
 msgid "Embedded"
 msgstr "Integrado"
 
-#: views.py:56
+#: views.py:58
 msgid "Detached"
 msgstr "Aparte"
 
-#: views.py:58
+#: views.py:60
 msgid "None"
 msgstr "Ninguno"
 
-#: views.py:63
+#: views.py:65
 #, python-format
 msgid "Signature ID: %s"
 msgstr "ID de la firma: %s"
 
-#: views.py:64
+#: views.py:66
 #, python-format
 msgid "Signature type: %s"
 msgstr "Tipo de firma: %s"
 
-#: views.py:65
+#: views.py:67
 #, python-format
 msgid "Key ID: %s"
 msgstr "ID de la clave: %s"
 
-#: views.py:66
+#: views.py:68
 #, python-format
 msgid "Timestamp: %s"
 msgstr "Marca de tiempo: %s"
 
-#: views.py:67
+#: views.py:69
 #, python-format
 msgid "Signee: %s"
 msgstr "Firmante: %s"
 
-#: views.py:75
+#: views.py:77
 #, python-format
 msgid "Signature properties for document: %s"
 msgstr "Propiedades de la firma del documento: %s"
 
-#: views.py:98
+#: views.py:100
 msgid "Detached signature uploaded successfully."
 msgstr "Firma separada subida con éxito."
 
-#: views.py:111
+#: views.py:113
 #, python-format
 msgid "Upload detached signature for document: %s"
 msgstr "Subir una firma aparte para el documento: %s"
 
-#: views.py:156
+#: views.py:158
 msgid "Detached signature deleted successfully."
 msgstr "Firma separada borrada con éxito."
 
-#: views.py:159
+#: views.py:161
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr "Error al borrar la firma separada: %s"
 
-#: views.py:163
+#: views.py:165
 #, python-format
 msgid "Delete the detached signature from document: %s?"
 msgstr ""

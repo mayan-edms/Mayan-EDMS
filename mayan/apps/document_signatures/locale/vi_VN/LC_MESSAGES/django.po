@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:21-0400\n"
 "PO-Revision-Date: 2015-01-27 20:01+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
@@ -76,72 +76,72 @@ msgstr "ống chữ kí đã tách ra"
 msgid "Upload detached signatures"
 msgstr "Tải lên chữ kí đã tách ra"
 
-#: views.py:50
+#: views.py:52
 #, python-format
 msgid "Signature status: %s"
 msgstr ""
 
-#: views.py:54
+#: views.py:56
 msgid "Embedded"
 msgstr ""
 
-#: views.py:56
+#: views.py:58
 msgid "Detached"
 msgstr ""
 
-#: views.py:58
+#: views.py:60
 msgid "None"
 msgstr ""
 
-#: views.py:63
+#: views.py:65
 #, python-format
 msgid "Signature ID: %s"
 msgstr "ID chữ kí: %s"
 
-#: views.py:64
+#: views.py:66
 #, python-format
 msgid "Signature type: %s"
 msgstr "Kiểu chũ kí: %s"
 
-#: views.py:65
+#: views.py:67
 #, python-format
 msgid "Key ID: %s"
 msgstr "Key ID: %s"
 
-#: views.py:66
+#: views.py:68
 #, python-format
 msgid "Timestamp: %s"
 msgstr "Thời gian: %s"
 
-#: views.py:67
+#: views.py:69
 #, python-format
 msgid "Signee: %s"
 msgstr "Người kí: %s"
 
-#: views.py:75
+#: views.py:77
 #, python-format
 msgid "Signature properties for document: %s"
 msgstr ""
 
-#: views.py:98
+#: views.py:100
 msgid "Detached signature uploaded successfully."
 msgstr "Detached signature uploaded successfully."
 
-#: views.py:111
+#: views.py:113
 #, python-format
 msgid "Upload detached signature for document: %s"
 msgstr ""
 
-#: views.py:156
+#: views.py:158
 msgid "Detached signature deleted successfully."
 msgstr ""
 
-#: views.py:159
+#: views.py:161
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr ""
 
-#: views.py:163
+#: views.py:165
 #, python-format
 msgid "Delete the detached signature from document: %s?"
 msgstr ""

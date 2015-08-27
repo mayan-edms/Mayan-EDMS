@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:15-0400\n"
+"POT-Creation-Date: 2015-08-27 01:23-0400\n"
 "PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:24
+#: apps.py:24 permissions.py:7
 #, fuzzy
 msgid "Smart settings"
 msgstr "settings"
@@ -45,22 +45,27 @@ msgstr ""
 msgid "n/a"
 msgstr ""
 
-#: links.py:13 links.py:17
+#: links.py:11 links.py:14
 #, fuzzy
 msgid "Settings"
 msgstr "settings"
 
-#: views.py:14
+#: permissions.py:10
+#, fuzzy
+msgid "View settings"
+msgstr "settings"
+
+#: views.py:15
 #, fuzzy
 msgid "Setting namespaces"
 msgstr "settings"
 
-#: views.py:25
+#: views.py:29
 #, python-format
 msgid "Settings in namespace: %s"
 msgstr ""
 
-#: views.py:32
+#: views.py:37
 #, python-format
 msgid "Namespace: %s, not found"
 msgstr ""

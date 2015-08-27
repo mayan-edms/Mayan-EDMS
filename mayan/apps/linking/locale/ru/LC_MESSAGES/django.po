@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:22-0400\n"
 "PO-Revision-Date: 2015-01-27 20:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -250,62 +250,55 @@ msgstr ""
 msgid "Edit smart link: %s"
 msgstr "Редактировать отношение %s"
 
-#: views.py:227
-#, python-format
-msgid "Smart link: %s deleted successfully."
-msgstr "Отношение %s удалено."
-
-#: views.py:233
-#, python-format
-msgid "Error deleting smart link: %(smart_link)s; %(exception)s."
-msgstr ""
-
-#: views.py:245
+#: views.py:211
 #, fuzzy, python-format
 #| msgid "Delete smart links"
-msgid "Delete smart link: %s?"
+msgid "Delete smart link: %s"
 msgstr "Удалить отношения"
 
-#: views.py:258
+#: views.py:223
 #, python-format
 msgid "Conditions for smart link: %s"
 msgstr ""
 
-#: views.py:288
+#: views.py:254
 #, python-format
 msgid "Smart link condition: \"%s\" created successfully."
 msgstr "Условие для отношения \"%s\" успешно создано."
 
-#: views.py:301
+#: views.py:267
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
 msgstr "Добавить новые условия отношения \"%s\""
 
-#: views.py:332
+#: views.py:298
 #, python-format
 msgid "Smart link condition: \"%s\" edited successfully."
 msgstr "Условие отношения  \"%s\" изменено."
 
-#: views.py:346
+#: views.py:312
 msgid "Edit smart link condition"
 msgstr "Изменить условие отношения"
 
-#: views.py:373
+#: views.py:339
 #, python-format
 msgid "Smart link condition: \"%s\" deleted successfully."
 msgstr "Условие отношения \"%s\" удалено."
 
-#: views.py:379
+#: views.py:345
 #, python-format
 msgid ""
 "Error deleting smart link condition: %(smart_link_condition)s; %(exception)s."
 msgstr ""
 
-#: views.py:395
+#: views.py:361
 #, fuzzy, python-format
 #| msgid "Edit smart link condition"
 msgid "Delete smart link condition: \"%s\"?"
 msgstr "Изменить условие отношения"
+
+#~ msgid "Smart link: %s deleted successfully."
+#~ msgstr "Отношение %s удалено."
 
 #~ msgid "ACLs"
 #~ msgstr "ACLs"

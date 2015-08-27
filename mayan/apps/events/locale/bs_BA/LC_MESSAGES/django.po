@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:22-0400\n"
 "PO-Revision-Date: 2015-02-09 18:30+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
@@ -19,19 +19,19 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:16 links.py:25 links.py:28 permissions.py:7 views.py:38
+#: apps.py:16 links.py:27 links.py:30 permissions.py:7 views.py:38
 msgid "Events"
 msgstr ""
 
-#: apps.py:21
+#: apps.py:22
 msgid "Timestamp"
 msgstr ""
 
-#: apps.py:22
+#: apps.py:24
 msgid "Actor"
 msgstr ""
 
-#: apps.py:24
+#: apps.py:26
 msgid "Verb"
 msgstr ""
 

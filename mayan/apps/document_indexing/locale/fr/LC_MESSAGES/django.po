@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:21-0400\n"
 "PO-Revision-Date: 2015-05-28 09:23+0000\n"
 "Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -65,7 +65,7 @@ msgid "Node"
 msgstr "Noeud"
 
 #: links.py:21 links.py:29 links.py:33 links.py:36 models.py:81 views.py:54
-#: views.py:260
+#: views.py:232
 msgid "Indexes"
 msgstr "Indexes"
 
@@ -289,44 +289,34 @@ msgstr "Noeud de modèle d'index modifié avec succès."
 msgid "Edit index template node: %s"
 msgstr "Modifier le noeud de modèle d'index: %s"
 
-#: views.py:227
-#, python-format
-msgid "Node: %s deleted successfully."
-msgstr "Noeud: %s supprimé avec succès."
-
-#: views.py:230
-#, python-format
-msgid "Node: %(node)s delete error: %(error)s"
-msgstr "Noeud: %(node)s erreur de suppression: %(error)s"
-
-#: views.py:243
+#: views.py:215
 #, fuzzy, python-format
 #| msgid "Edit index template node: %s"
 msgid "Delete the index template node: %s?"
 msgstr "Modifier le noeud de modèle d'index: %s"
 
-#: views.py:307
+#: views.py:279
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Contenu de l'index:%s"
 
-#: views.py:333
+#: views.py:305
 #, fuzzy
 #| msgid "Rebuild indexes"
 msgid "Rebuild all indexes?"
 msgstr "Reconstruire les index"
 
-#: views.py:334
+#: views.py:306
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 "Sur de grosses bases de données, cette opération peut prendre un certain "
 "temps."
 
-#: views.py:338
+#: views.py:310
 msgid "Index rebuild queued successfully."
 msgstr "La ré-indexation en attente a été faite avec succès."
 
-#: views.py:372
+#: views.py:344
 #, fuzzy, python-format
 #| msgid "Indexes containing document: %s"
 msgid "Indexes nodes containing document: %s"
@@ -335,6 +325,12 @@ msgstr "indexes contenant le document: %s"
 #: widgets.py:95
 msgid "Root"
 msgstr "Racine"
+
+#~ msgid "Node: %s deleted successfully."
+#~ msgstr "Noeud: %s supprimé avec succès."
+
+#~ msgid "Node: %(node)s delete error: %(error)s"
+#~ msgstr "Noeud: %(node)s erreur de suppression: %(error)s"
 
 #~ msgid "Go up one level"
 #~ msgstr "Remonter d'un niveau"

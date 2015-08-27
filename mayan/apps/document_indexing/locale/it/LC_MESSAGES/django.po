@@ -12,7 +12,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:21-0400\n"
 "PO-Revision-Date: 2015-05-15 23:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -66,7 +66,7 @@ msgid "Node"
 msgstr "Nodo"
 
 #: links.py:21 links.py:29 links.py:33 links.py:36 models.py:81 views.py:54
-#: views.py:260
+#: views.py:232
 msgid "Indexes"
 msgstr "Indici"
 
@@ -289,44 +289,34 @@ msgstr "Template nodo Indice modificato con successo"
 msgid "Edit index template node: %s"
 msgstr "Modfica il template dell nodo per l'indice: %s"
 
-#: views.py:227
-#, python-format
-msgid "Node: %s deleted successfully."
-msgstr "Nodo: %s cancellato con succcesso."
-
-#: views.py:230
-#, python-format
-msgid "Node: %(node)s delete error: %(error)s"
-msgstr "Nodo: %(node)s errore di cancellazione: %(error)s"
-
-#: views.py:243
+#: views.py:215
 #, fuzzy, python-format
 #| msgid "Edit index template node: %s"
 msgid "Delete the index template node: %s?"
 msgstr "Modfica il template dell nodo per l'indice: %s"
 
-#: views.py:307
+#: views.py:279
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Contenuti per l'indice: %s"
 
-#: views.py:333
+#: views.py:305
 #, fuzzy
 #| msgid "Rebuild indexes"
 msgid "Rebuild all indexes?"
 msgstr "Ricostruisci indici"
 
-#: views.py:334
+#: views.py:306
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 "Per un database di grosse dimensioni l'operazione protrebbe aver bisogno di "
 "tempo."
 
-#: views.py:338
+#: views.py:310
 msgid "Index rebuild queued successfully."
 msgstr "Ricostruzione dell'indice messo in coda."
 
-#: views.py:372
+#: views.py:344
 #, fuzzy, python-format
 #| msgid "Indexes containing document: %s"
 msgid "Indexes nodes containing document: %s"
@@ -335,6 +325,12 @@ msgstr "L'indice contiene documenti: %s"
 #: widgets.py:95
 msgid "Root"
 msgstr "Principale"
+
+#~ msgid "Node: %s deleted successfully."
+#~ msgstr "Nodo: %s cancellato con succcesso."
+
+#~ msgid "Node: %(node)s delete error: %(error)s"
+#~ msgstr "Nodo: %(node)s errore di cancellazione: %(error)s"
 
 #~ msgid "Go up one level"
 #~ msgstr "Salire di un livello"

@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:14-0400\n"
+"POT-Creation-Date: 2015-08-27 01:21-0400\n"
 "PO-Revision-Date: 2015-08-20 22:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -65,7 +65,7 @@ msgid "Node"
 msgstr "Knotenpunkt"
 
 #: links.py:21 links.py:29 links.py:33 links.py:36 models.py:81 views.py:54
-#: views.py:260
+#: views.py:232
 msgid "Indexes"
 msgstr "Indices"
 
@@ -275,40 +275,30 @@ msgstr "Knotenpunkt erfolgreich bearbeitet"
 msgid "Edit index template node: %s"
 msgstr "Knotenpunkt %s bearbeiten"
 
-#: views.py:227
-#, python-format
-msgid "Node: %s deleted successfully."
-msgstr "Knotenpunkt %s erfolgreich gelöscht"
-
-#: views.py:230
-#, python-format
-msgid "Node: %(node)s delete error: %(error)s"
-msgstr "Fehler beim Löschen von Knotenpunkt %(node)s: %(error)s"
-
-#: views.py:243
+#: views.py:215
 #, python-format
 msgid "Delete the index template node: %s?"
 msgstr ""
 
-#: views.py:307
+#: views.py:279
 #, python-format
 msgid "Contents for index: %s"
 msgstr "Inhalt von Index %s"
 
-#: views.py:333
+#: views.py:305
 msgid "Rebuild all indexes?"
 msgstr ""
 
-#: views.py:334
+#: views.py:306
 msgid "On large databases this operation may take some time to execute."
 msgstr ""
 "Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
 
-#: views.py:338
+#: views.py:310
 msgid "Index rebuild queued successfully."
 msgstr "Indexwiederaufbau erfolgreich eingereiht"
 
-#: views.py:372
+#: views.py:344
 #, python-format
 msgid "Indexes nodes containing document: %s"
 msgstr ""
@@ -316,6 +306,12 @@ msgstr ""
 #: widgets.py:95
 msgid "Root"
 msgstr "Wurzel"
+
+#~ msgid "Node: %s deleted successfully."
+#~ msgstr "Knotenpunkt %s erfolgreich gelöscht"
+
+#~ msgid "Node: %(node)s delete error: %(error)s"
+#~ msgstr "Fehler beim Löschen von Knotenpunkt %(node)s: %(error)s"
 
 #~ msgid "Enter a python string expression to be evaluated."
 #~ msgstr "Enter a python string expression to be evaluated."

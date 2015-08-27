@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-24 01:16-0400\n"
+"POT-Creation-Date: 2015-08-27 01:24-0400\n"
 "PO-Revision-Date: 2015-08-20 21:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -68,27 +68,27 @@ msgstr "Passwort bestätigen"
 msgid "Create new group"
 msgstr "Erstellen"
 
-#: links.py:18 links.py:34 links.py:46 links.py:62
+#: links.py:18 links.py:42 links.py:58
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:22 links.py:50
+#: links.py:22 links.py:46
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:26 links.py:38 links.py:54 views.py:319
+#: links.py:26 links.py:34 links.py:50 views.py:319
 msgid "Groups"
 msgstr "Gruppen"
 
-#: links.py:42 views.py:97
+#: links.py:38 views.py:97
 msgid "Create new user"
 msgstr "Erstellen"
 
-#: links.py:58 links.py:74 views.py:33
+#: links.py:54 links.py:70 views.py:33
 msgid "Users"
 msgstr "Benutzer"
 
-#: links.py:66 links.py:70
+#: links.py:62 links.py:66
 msgid "Reset password"
 msgstr "Passwort"
 
@@ -213,7 +213,7 @@ msgstr "Passwort zurücksetzen für Benutzer %s"
 msgid "Reseting password for users: %s"
 msgstr "Passwort zurücksetzen für die Benutzer %s"
 
-#: views.py:264 views.py:380
+#: views.py:264 views.py:339
 msgid "Available groups"
 msgstr "Verfügbare Gruppen"
 
@@ -231,38 +231,31 @@ msgstr "Gruppen von Benutzer %s"
 msgid "Edit group: %s"
 msgstr "Gruppe %s bearbeiten"
 
-#: views.py:337
-msgid "Must provide at least one group."
-msgstr "Es muss mindestens eine Gruppe angegeben werden"
-
-#: views.py:347
-#, python-format
-msgid "Group \"%s\" deleted successfully."
-msgstr "Gruppe \"%s\" erfolgreich gelöscht"
-
-#: views.py:349
-#, python-format
-msgid "Error deleting group \"%(group)s\": %(error)s"
-msgstr "Fehler beim Löschen der Gruppe  \"%(group)s\": %(error)s"
-
-#: views.py:362
+#: views.py:333
 #, python-format
 msgid "Delete the group: %s?"
 msgstr "Gruppe %s löschen?"
 
-#: views.py:364
-#, python-format
-msgid "Delete the groups: %s?"
-msgstr "Gruppen %s löschen?"
-
-#: views.py:381
+#: views.py:340
 msgid "Members of groups"
 msgstr "Gruppenmitglieder"
 
-#: views.py:390
+#: views.py:349
 #, python-format
 msgid "Members of group: %s"
 msgstr "Mitglieder von Gruppe %s"
+
+#~ msgid "Must provide at least one group."
+#~ msgstr "Es muss mindestens eine Gruppe angegeben werden"
+
+#~ msgid "Group \"%s\" deleted successfully."
+#~ msgstr "Gruppe \"%s\" erfolgreich gelöscht"
+
+#~ msgid "Error deleting group \"%(group)s\": %(error)s"
+#~ msgstr "Fehler beim Löschen der Gruppe  \"%(group)s\": %(error)s"
+
+#~ msgid "Delete the groups: %s?"
+#~ msgstr "Gruppen %s löschen?"
 
 #~ msgid "Are you sure you wish to delete the user: %s?"
 #~ msgstr "Are you sure you wish to delete the user: %s?"
