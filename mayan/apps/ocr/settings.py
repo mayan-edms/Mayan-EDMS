@@ -21,3 +21,9 @@ setting_ocr_backend = namespace.add_setting(
     global_name='OCR_BACKEND', default='ocr.backends.tesseract.Tesseract',
     help_text=_('Full path to the backend to be used to do OCR.')
 )
+setting_auto_ocr = namespace.add_setting(
+    global_name='OCR_AUTO_OCR', default=True,
+    help_text=_(
+        'Set new document types to perform OCR automatically by default.'
+    )
+)
