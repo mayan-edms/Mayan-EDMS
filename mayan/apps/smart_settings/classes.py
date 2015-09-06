@@ -1,10 +1,16 @@
 from __future__ import unicode_literals
 
+from importlib import import_module
+import logging
+
 import yaml
 
+from django.apps import apps
 from django.conf import settings
 from django.utils.functional import Promise
 from django.utils.encoding import force_text
+
+logger = logging.getLogger(__name__)
 
 
 class Namespace(object):
@@ -17,6 +23,18 @@ class Namespace(object):
     @classmethod
     def get(cls, name):
         return cls._registry[name]
+
+    @staticmethod
+    def initialize():
+        for app in apps.get_app_configs():
+            try:
+                import_module('{}.settings'.format(app.name))
+            except ImportError:
+                logger.debug('App %s has not settings.py file', app.name)
+            else:
+                logger.debug(
+                    'Imported settings.py file for app %s', app.name
+                )
 
     def __unicode__(self):
         return unicode(self.label)
@@ -36,6 +54,8 @@ class Namespace(object):
 
 
 class Setting(object):
+    _registry = []
+
     @staticmethod
     def serialize_value(value):
         if isinstance(value, Promise):
@@ -47,6 +67,11 @@ class Setting(object):
     def deserialize_value(value):
         return yaml.safe_load(value)
 
+    @classmethod
+    def invalidate_cache(cls):
+        for setting in cls._registry:
+            setting.yaml = None
+
     def __init__(self, namespace, global_name, default, help_text=None, is_path=False):
         self.global_name = global_name
         self.default = default
@@ -54,6 +79,7 @@ class Setting(object):
         self.is_path = is_path
         self.yaml = None
         namespace.settings.append(self)
+        self.__class__._registry.append(self)
 
     def __unicode__(self):
         return unicode(self.global_name)
