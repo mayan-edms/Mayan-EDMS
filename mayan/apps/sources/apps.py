@@ -59,6 +59,12 @@ class SourcesApp(MayanAppConfig):
 
         SourceColumn(
             source=StagingFile,
+            label=_('Created'),
+            func=lambda context: context['object'].get_date_time_created()
+        )
+
+        SourceColumn(
+            source=StagingFile,
             label=_('Thumbnail'),
             func=lambda context: staging_file_thumbnail(
                 context['object'],

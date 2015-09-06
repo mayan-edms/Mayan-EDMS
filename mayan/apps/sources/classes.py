@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import base64
 import os
+import time
 import urllib
 
 try:
@@ -61,6 +62,9 @@ class StagingFile(object):
         return File(
             file=open(self.get_full_path(), mode='rb'), name=self.filename
         )
+
+    def get_date_time_created(self):
+        return time.ctime(os.path.getctime(self.get_full_path()))
 
     def get_full_path(self):
         return os.path.join(self.staging_folder.folder_path, self.filename)
