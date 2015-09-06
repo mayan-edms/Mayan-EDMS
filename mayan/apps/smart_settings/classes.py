@@ -54,8 +54,6 @@ class Namespace(object):
 
 
 class Setting(object):
-    _registry = []
-
     @staticmethod
     def serialize_value(value):
         if isinstance(value, Promise):
@@ -67,11 +65,6 @@ class Setting(object):
     def deserialize_value(value):
         return yaml.safe_load(value)
 
-    @classmethod
-    def invalidate_cache(cls):
-        for setting in cls._registry:
-            setting.yaml = None
-
     def __init__(self, namespace, global_name, default, help_text=None, is_path=False):
         self.global_name = global_name
         self.default = default
@@ -79,17 +72,15 @@ class Setting(object):
         self.is_path = is_path
         self.yaml = None
         namespace.settings.append(self)
-        self.__class__._registry.append(self)
 
     def __unicode__(self):
         return unicode(self.global_name)
 
     @property
     def serialized_value(self):
-        if not self.yaml:
-            self.yaml = Setting.serialize_value(
-                getattr(settings, self.global_name, self.default)
-            )
+        self.yaml = Setting.serialize_value(
+            getattr(settings, self.global_name, self.default)
+        )
 
         return self.yaml
 
