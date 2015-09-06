@@ -5,6 +5,7 @@ from json import loads
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.core.urlresolvers import reverse
+from django.test import override_settings
 
 from rest_framework.test import APITestCase
 
@@ -15,6 +16,7 @@ from documents.tests import (
 )
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class SearchAPITestCase(APITestCase):
     """
     Test the search API endpoints
@@ -35,10 +37,6 @@ class SearchAPITestCase(APITestCase):
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        ocr_settings = document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = document_type.new_document(

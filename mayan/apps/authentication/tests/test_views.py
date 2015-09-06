@@ -3,10 +3,8 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
-from django.test import TestCase
+from django.test import TestCase, override_settings
 from django.test.client import Client
-
-from ..settings import setting_login_method
 
 TEST_ADMIN_EMAIL = 'admin@admin.com'
 TEST_ADMIN_PASSWORD = 'test_admin_password'
@@ -26,15 +24,15 @@ class UserLoginTestCase(TestCase):
         )
         self.client = Client()
 
+    @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_normal_behaviour(self):
-        setting_login_method.value = 'username'
         response = self.client.get(reverse('documents:document_list'))
         self.assertRedirects(
             response, 'http://testserver/authentication/login/'
         )
 
+    @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_username_login(self):
-        setting_login_method.value = 'username'
         logged_in = self.client.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
@@ -43,10 +41,9 @@ class UserLoginTestCase(TestCase):
         # We didn't get redirected to the login URL
         self.assertEqual(response.status_code, 200)
 
+    @override_settings(AUTHENTICATION_LOGIN_METHOD='email')
     def test_email_login(self):
         with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
-            setting_login_method.value = 'email'
-
             logged_in = self.client.login(
                 username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
             )
@@ -61,8 +58,8 @@ class UserLoginTestCase(TestCase):
             # We didn't get redirected to the login URL
             self.assertEqual(response.status_code, 200)
 
+    @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
     def test_username_login_via_views(self):
-        setting_login_method.value = 'username'
         response = self.client.get(reverse('documents:document_list'))
         self.assertRedirects(
             response, 'http://testserver/authentication/login/'
@@ -78,9 +75,9 @@ class UserLoginTestCase(TestCase):
         # We didn't get redirected to the login URL
         self.assertEqual(response.status_code, 200)
 
+    @override_settings(AUTHENTICATION_LOGIN_METHOD='email')
     def test_email_login_via_views(self):
         with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
-            setting_login_method.value = 'email'
             response = self.client.get(reverse('documents:document_list'))
             self.assertRedirects(
                 response, 'http://testserver/authentication/login/'

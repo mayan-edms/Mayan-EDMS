@@ -12,7 +12,6 @@ from documents.tests import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
-from smart_settings import Setting
 
 
 class Issue46TestCase(TestCase):
@@ -61,8 +60,6 @@ class Issue46TestCase(TestCase):
         self.assertEqual(len(result_set), self.document_count)
 
         with self.settings(COMMON_PAGINATE_BY=2):
-            Setting.invalidate_cache()
-
             # Funcitonal test for the first page of advanced results
             response = self.client.get(
                 reverse('search:results'), {'label': 'test'}

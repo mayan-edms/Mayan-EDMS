@@ -7,6 +7,7 @@ from json import loads
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.core.urlresolvers import reverse
+from django.test import override_settings
 
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -75,6 +76,7 @@ class DocumentTypeAPITestCase(APITestCase):
         self.assertEqual(DocumentType.objects.all().count(), 0)
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class DocumentAPITestCase(APITestCase):
     """
     Test document API endpoints
@@ -91,10 +93,6 @@ class DocumentAPITestCase(APITestCase):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        ocr_settings = self.document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
     def tearDown(self):
         self.admin_user.delete()

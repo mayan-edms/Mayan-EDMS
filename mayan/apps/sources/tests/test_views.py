@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.test.client import Client
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 from documents.models import Document, DocumentType
 from documents.tests import (
@@ -15,6 +15,7 @@ from sources.literals import SOURCE_CHOICE_WEB_FORM
 from sources.models import WebFormSource
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class UploadDocumentTestCase(TestCase):
     """
     Test creating documents
@@ -24,9 +25,6 @@ class UploadDocumentTestCase(TestCase):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-        ocr_settings = self.document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         self.admin_user = User.objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,

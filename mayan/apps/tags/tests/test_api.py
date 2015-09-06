@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.core.urlresolvers import reverse
+from django.test import override_settings
 
 from rest_framework.test import APITestCase
 
@@ -72,16 +73,13 @@ class TagAPITestCase(APITestCase):
         self.assertEqual(tag.label, TEST_TAG_LABEL_ALTERNATE)
         self.assertEqual(tag.color, TEST_TAG_COLOR_ALTERNATE)
 
+    @override_settings(OCR_AUTO_OCR=False)
     def test_tag_add_document(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
 
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        ocr_settings = document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = document_type.new_document(
@@ -95,16 +93,13 @@ class TagAPITestCase(APITestCase):
 
         self.assertEqual(tag.documents.count(), 1)
 
+    @override_settings(OCR_AUTO_OCR=False)
     def test_tag_remove_document(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
 
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        ocr_settings = document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = document_type.new_document(

@@ -4,7 +4,7 @@ from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.exceptions import PermissionDenied
 from django.core.files import File
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
@@ -15,23 +15,16 @@ from permissions.models import Role
 from ..models import AccessControlList
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class PermissionTestCase(TestCase):
     def setUp(self):
         self.document_type_1 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
 
-        ocr_settings = self.document_type_1.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
-
         self.document_type_2 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE + '2'
         )
-
-        ocr_settings = self.document_type_2.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document_1 = self.document_type_1.new_document(

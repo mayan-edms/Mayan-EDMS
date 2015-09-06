@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.core.files import File
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 from .literals import (
     TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
@@ -10,15 +10,12 @@ from .literals import (
 from ..models import DeletedDocument, Document, DocumentType
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class DocumentTestCase(TestCase):
     def setUp(self):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        ocr_settings = self.document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
@@ -81,15 +78,12 @@ class DocumentTestCase(TestCase):
         self.assertEqual(Document.objects.count(), 0)
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class OfficeDocumentTestCase(TestCase):
     def setUp(self):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        ocr_settings = self.document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         with open(TEST_OFFICE_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
@@ -109,15 +103,12 @@ class OfficeDocumentTestCase(TestCase):
         self.assertEqual(self.document.page_count, 2)
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class MultiPageTiffTestCase(TestCase):
     def setUp(self):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        ocr_settings = self.document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         with open(TEST_MULTI_PAGE_TIFF_PATH) as file_object:
             self.document = self.document_type.new_document(

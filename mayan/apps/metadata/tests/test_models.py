@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.core.files.base import File
 from django.core.exceptions import ValidationError
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 from documents.models import DocumentType
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
@@ -20,6 +20,7 @@ TEST_VALID_DATE = '2001-1-1'
 TEST_PARSED_VALID_DATE = '2001-01-01'
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class MetadataTestCase(TestCase):
     def setUp(self):
         self.metadata_type = MetadataType.objects.create(
@@ -29,10 +30,6 @@ class MetadataTestCase(TestCase):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        ocr_settings = self.document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         self.document_type.metadata.create(metadata_type=self.metadata_type)
 

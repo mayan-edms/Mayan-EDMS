@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 from .literals import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
@@ -15,6 +15,7 @@ from .literals import (
 from ..models import DeletedDocument, Document, DocumentType
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class DocumentsViewsFunctionalTestCase(TestCase):
     """
     Functional tests to make sure all the moving parts after creating a
@@ -25,9 +26,6 @@ class DocumentsViewsFunctionalTestCase(TestCase):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-        ocr_settings = self.document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         self.admin_user = User.objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,

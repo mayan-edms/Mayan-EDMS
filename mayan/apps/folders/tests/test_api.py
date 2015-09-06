@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.core.urlresolvers import reverse
+from django.test import override_settings
 
 from rest_framework.test import APITestCase
 
@@ -67,16 +68,13 @@ class FolderAPITestCase(APITestCase):
 
         self.assertEqual(folder.label, TEST_FOLDER_LABEL + ' edited')
 
+    @override_settings(OCR_AUTO_OCR=False)
     def test_folder_add_document(self):
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL, user=self.admin_user)
 
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        ocr_settings = document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = document_type.new_document(
@@ -90,16 +88,13 @@ class FolderAPITestCase(APITestCase):
 
         self.assertEqual(folder.documents.count(), 1)
 
+    @override_settings(OCR_AUTO_OCR=False)
     def test_folder_remove_document(self):
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL, user=self.admin_user)
 
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        ocr_settings = document_type.ocr_settings
-        ocr_settings.auto_ocr = False
-        ocr_settings.save()
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = document_type.new_document(
