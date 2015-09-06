@@ -13,7 +13,7 @@ from __future__ import unicode_literals
 import os
 import sys
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext_lazy as _, ugettext
 
 _file_path = os.path.abspath(os.path.dirname(__file__)).split('/')
 
@@ -269,7 +269,15 @@ TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
 CORS_ORIGIN_ALLOW_ALL = True
 # ------ Django REST Swagger -----
 SWAGGER_SETTINGS = {
-    'api_version': '1',  # Specify your API's version
+    'api_version': '1',
+    'info': {
+          'title': _('Mayan EDMS API Documentation'),
+          'description': _('Free Open Source Document Management System.'),
+          'contact': 'roberto.rosario@mayan-edms.com',
+          'license': 'Apache 2.0',
+          'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    }
+
 }
 # ------ Timezone --------
 TIMEZONE_COOKIE_NAME = 'django_timezone'
