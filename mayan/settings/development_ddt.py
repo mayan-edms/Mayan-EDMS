@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from .development import *  # NOQA
 
 INSTALLED_APPS += (
-    'debug_toolbar'
+    'debug_toolbar',
 )
 
 # Stop debug toolbar patching!
