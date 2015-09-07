@@ -39,40 +39,19 @@ class UserListView(SingleObjectListView):
         ).exclude(is_staff=True).order_by('last_name', 'first_name')
 
 
-def user_edit(request, user_id):
-    Permission.check_permissions(request.user, (permission_user_edit,))
-    user = get_object_or_404(User, pk=user_id)
+class UserEditView(SingleObjectEditView):
+    fields = ('username', 'first_name', 'last_name', 'email', 'is_active',)
+    post_action_redirect = reverse_lazy('user_management:user_list')
+    queryset = get_user_model().objects.filter(
+        is_superuser=False, is_staff=False
+    )
+    view_permission = permission_user_edit
 
-    if user.is_superuser or user.is_staff:
-        messages.error(
-            request,
-            _(
-                'Super user and staff user editing is not allowed, use the '
-                'admin interface for these cases.'
-            )
-        )
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
-            )
-        )
-
-    if request.method == 'POST':
-        form = UserForm(instance=user, data=request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(
-                request, _('User "%s" updated successfully.') % user
-            )
-            return HttpResponseRedirect(reverse('user_management:user_list'))
-    else:
-        form = UserForm(instance=user)
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Edit user: %s') % user,
-        'form': form,
-        'object': user,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit user: %s') % self.get_object(),
+        }
 
 
 def user_add(request):
@@ -241,22 +220,16 @@ def user_set_password(request, user_id=None, user_id_list=None):
     elif len(users) > 1:
         context['title'] = _('Reseting password for users: %s') % ', '.join([unicode(d) for d in users])
 
-    return render_to_response('appearance/generic_form.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_form.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def user_multiple_set_password(request):
     return user_set_password(
         request, user_id_list=request.GET.get('id_list', [])
     )
-
-
-def get_user_groups(user):
-    return Group.objects.filter(user=user)
-
-
-def get_user_non_groups(user):
-    return Group.objects.exclude(user=user)
 
 
 class UserGroupsView(AssignRemoveView):
@@ -279,12 +252,12 @@ class UserGroupsView(AssignRemoveView):
 
     def left_list(self):
         return AssignRemoveView.generate_choices(
-            get_user_non_groups(self.get_object())
+            Group.objects.exclude(user=self.get_object())
         )
 
     def right_list(self):
         return AssignRemoveView.generate_choices(
-            get_user_groups(self.get_object())
+            Group.objects.filter(user=self.get_object())
         )
 
     def remove(self, item):
