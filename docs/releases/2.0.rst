@@ -9,17 +9,189 @@ Welcome to Mayan EDMS v2.0
 
 What's new in Mayan EDMS v2.0
 =============================
-* Appearance app
-* Update to Django 1.7.7
-* Update frontend UI to use Bootstrap
-* Improved document page navigation interface
+
+Update to Django 1.7
+--------------------
+The biggest change of this release comes in the form of support for Django 1.7. **Mayan EDMS** makes use of several new features
+of Django 1.7 like: migrations, app config and transaction handling. The version of Django supported in this version is 1.7.10.
+With the move to Django 1.7, support for South migrations and Python 2.6 is removed. The switch to Django 1.7's app config
+means that the startup order of app should not longer have any relevance, cause any import or startup
+problems.
+
+Frontend UI
+-----------
+The frontend UI HTML has been refactored to use Bootstrap. Along with this update a lot of legacy HTML and CSS was removed, greatly
+simplifying the existing template and allowing the removal of some.
+
+Theming and rebranding
+----------------------
+All the presentation logic and markup has been moved into it's own app, the 'appearance' app.
+All modifications required to customize the entire look of the **Mayan EDMS** can now be done in a single app. Very little markup
+remains in the other apps, and it's usually because of necesity, namely the widgets.py modules.
+
+Improved page navigation interface
+----------------------------------
+Previously the document page interface used a fancybox windows leaving the current document in the background.
+This UI workflow as been improved and the document page navigation behaves like the rest of the document
+views.
+
+Menu reorganization
+-------------------
+To improve user experience, the main menu has been restructured based on function usage, moving seldom used buttons inside
+other views.
+
+Removal of famfam icon set
+--------------------------
+The previously used icon set and icon display code was removed and a new system that favor font icon was added.
+
+Document preview generation
+---------------------------
+The image conversion system was refactored from the ground up and uses a much smarted caching system. The document
+image cache has it's own Django file storage driver and no longer default to the system /tmp directory.
+By moving the document image cache to a Django file storage, the cache doesn't need to reside
+in the same filesystem or even computer serving the document images. This change also allows nodes in a
+clutered install to share the document image cache.
+
+Document submission for OCR changed to POST
+-------------------------------------------
+Previously submitting a document for OCR could be done with a GET request to the corresponding URL.
+This design decision allowed for fast user experience but caused massive document submissions
+when sites were scanned by web spiders. The new workflow is to submit documents to the
+OCR queue only on POST request.
+
+New YAML based settings system
+------------------------------
+The first phase of the new distributed settings system has landed in this version.
+This first change causes settings to be serialized to YAML. This also means that it is
+not possible to pass functions or custom classes as values to settings. 
+Setting that related to a class or function, now specify the path to those classes or
+functions and they are imported dynamically at runtime.
+Example: DOCUMENTS_STORAGE_BACKEND = 'storage.backends.filebasedstorage.FileBasedStorage'
+
+Removal of auto admin creation
+------------------------------
+The auto admin user creation code used during new installs has been removed and it
+is its own reusable Django app. The app is available at https://pypi.python.org/pypi/django-autoadmin
+
+Removal of dependencies
+-----------------------
+Through optimizations and code reduction several Python libraries and Django app are no longer
+required. These are: South, GitPython, django-pagination, psutil, python-hkp, sendfile and slate.
+
+ACL system refactor
+-------------------
+The Access Control System has been greatly simplified and optimized. The logistics to grant and revoke permissions
+are now as follows: Only Roles can hold permissions, groups and user can no longer on their own be granted a permission.
+Groups are now only organizational units that hold users and Roles are collections of groups. User are just a
+profile and authentication information object. So to grant a permission or access to a document to a user, grant
+those permissions to a new or existing role, add the desired user to a group and add that group to the role to
+which you granted the permission. When thinking about granting permissions think of it this way: 
+Permissions -> Roles -> Groups -> User
+Permissions for a document -> Roles -> Groups -> User
+Permissions for a type of document -> Roles -> Groups -> User
+
+Object access control inheritance
+---------------------------------
+A frequently asked feature is the ability to change the access control of a group of documents. This
+feature has been implemented in the form of object access control inheritance. This means that
+if you grant a permission to a role for a document type, that role will inherit that permission
+for all document that are later created of that type. If you revoke a permission from a role
+for a document type, that role loses that permission for all documents of that type. With this new
+system changing the access control of individual documents should be an edge case. This new ability of
+modifying the access control of document types is the new recommended method.
+
+Removal of anonymous user support
+---------------------------------
+Allowing anonymous users access to your document repository is no longer support. Admininstrator
+wanting to make a group of documents public are encouraged to create an user, group and role for
+that purpose.
+
+Metadata validators refactor
+----------------------------
+The metadata validator have been splitted into: Validators and Parsers. Validators will just
+check that the input value conforms to certain specification, raising a validation error is not
+and blocking the user from submitting data. The Parsers will transform user input and store the
+result as the metadata value.
+
+Trash can support
+-----------------
+To avoid accidental data loss, documents are not deleted but moved to a virtual trash can. From
+that trash can documents can them be deleted permanently. The deletion document documents and
+the moving of documents to the trash can are governed by two different permissions.
+
+Retention policies
+------------------
+Support for retention policies was added and is control on a document type basis.
+Two aspects can be controlled: the time at which documents will be automatically moved to the
+trash can and the time after which documents in the trash can will be automatically
+deleted. By default all new document types created will have a retention policy that doesn't
+move documents to the trash can and that permanently deletes documents in the trash can after
+30 days.
+
+Support to share an index as a FUSE filesystem
+----------------------------------------------
+Index mirror has been added after being removed several version ago. This time mirroring works
+by creating a FUSE filesystem that is then mounted anywhere in the filesystem. The
+previous implementation used symbolic links that while fast, required constant modification
+to keep in sync with the indexes structure and only worked when the document storage and
+the index mirror resided in the same physical computer or node. This new implementation 
+allowing mirroring of indexes even across a network or if the document storage is not a
+traditional filesystem but a remote object store. Since this new FUSE mirroring uses
+direct read access to the database caching is provided and is controlled by the 
+MIRRORING_DOCUMENT_CACHE_LOOKUP_TIMEOUT and MIRRORING_NODE_CACHE_LOOKUP_TIMEOUT setting
+options. Both setting have a default of 10 seconds.
+
+Clickable preview images titles
+-------------------------------
+To shorten the amount of click required to access a document, document preview image titles
+are clickable and will take the user straight to the document view.
+
+Removal of eval
+---------------
+Use of Python's eval statement has been completely removed. Metadata type defaults, lookup fields,
+smart links and indexes templates now use Django's own template language.
+
+Smarter OCR
+-----------
+Document OCR workflow has been improved to try to parse text for each document page and in
+failing to parse text will only perform OCR on that specific page, returning to the parsing
+behavior for the next page. This allowing proper text extraction of documents containing both,
+embedded text and images.
+
+Failure tolerance
+-----------------
+Previous versions made use of transactions to prevent data loss in the event of an unexpected
+error. This release improves on that approach by also reacting to infrastructure failures.
+**Mayan EDMS** can now recover without any or minimal data loss from critical events such as loss
+of connectivity to the database manager. This changes allow installation of using database managers
+that do not provide guaranteed concurrency such as SQLite, to scale to thousand of documents.
+While this configuration is still not recommended, **Mayan EDMS** will now work and scale much better
+in environments where parts of the infrastructure cannot be changed (such as the database manager).
+
+For more information about this change read the blog post: http://blog.robertorosario.com/testing-django-project-infrastructure-failure-tolerance/
+
+As a result of this work a new Django app called Django-sabot was created that gives Django projects the
+ability to create unit tests for infrastructure failure tolerance: https://pypi.python.org/pypi/django-sabot
+
+RGB tags
+--------
+Previously tags could only choose from a predertermined number of color. This release changes
+that and tags be of any color. Tags now store the color selected in HTML RGB format. Existing tags
+are automatically converted to this new scheme.
+
+Default document type and default document source
+-------------------------------------------------
+After installation a default document type and document source are created, this means
+that users can start uploading documents as soon as **Mayan EDMS** is installed without
+having to do any configuration setting changes. The default document type and default document
+source are both called 'Default'.
+
+Other changes
+-------------
+
 * Merge of document_print and document_hard_copy views
 * New class based and menu based navigation system
-* Menu reorganization
 * Repurpose the installtion app
-* Removal of Python 2.6 support
-* Removal of hardcoded use of the famfam icon set
-* Configurable use of Font Awesome icon set
 * Merging of apps
 
   * home and common
@@ -27,28 +199,13 @@ What's new in Mayan EDMS v2.0
   * documents and document_acls apps
 
 * Addition of a post document version OCR signal
-* Removal dependencies:
-
-  * South
-  * GitPython
-  * django-pagination
-  * psutil
-  * python-hkp
-  * sendfile
-  * slate
-
-* New document converter
 * New class based transformations
 * Removal of the DOCUMENT_RESTRICTIONS_OVERRIDE permission
 * Use of Font awesome icons
-* Move document OCR content code to the OCR app
+* Move document text content display code to the OCR app
 * Add new permissions PERMISSION_OCR_CONTENT_VIEW
 * Removed the page_label field
-* OCR submit document views (single & multiple) use confirmation and POST request. Avoids OCR queueing on GET by web spiders.
-* Default document type and initial web form source created at initial setup
-* OCR settings move to the OCR app
-* New YAML based smart settings system
-* Complete removal of auto admin creation code to a separate app
+* Document type OCR settings move to the OCR app
 * New dependencies:
 
   * PyYAML
@@ -57,33 +214,22 @@ What's new in Mayan EDMS v2.0
   * djangorestframework-recursive
 
 * Permissions refactor
-* ACLs refactor
-* Removal of anonymous user supporta
 * Removal of default class ACLs
-* Refactor of metadata validators
 * Management command to remove obsolete permissions
-* Simplification of permissions/ACLS and role system
 * Removal of the ImageMagick and GraphicsMagick converter backends
 * Remove support for applying roles to new users automatically
-* Trash can feature
-* Retention policies, auto move to trash, auto delete from trash
 * New internal document creation workflow, returns document stub while content is processing
 * New document ready signal
 * Index are recalculating after new document is ready
 * Normalization of 'title' and 'name' fields to 'label'
 * Split tests files.
-* Document image and intermediate file caching now has it's own storage backend.
-* RGB tags
 * ``performupgrade`` management command.
-* Removal of eval from metadata type defaults and lookup fields. Django's own template language is now used instead.
-* Support to share an index as a FUSE filesystem.
-* Preview images' titles are clickable.
 * Improved API
-* Text parsers and OCR backend are used in tandem.
 * Invert page title/project name order in browser title.
 * Use Django's class based views pagination
 * setting_view_permission added to the smart settings app. It is no longer required to be a super admin or staff user to see the setting values.
 * Removal of the CombinedSource class.
+* Reduction of text strings.
 
 Upgrading from a previous version
 =================================
@@ -133,7 +279,7 @@ During the migration several messages of stale content types can occur:
         Type 'yes' to continue, or 'no' to cancel:
 
 
-You can safely answer "yes".
+You can safely answer "yes" to all.
 
 Add new static media::
 
