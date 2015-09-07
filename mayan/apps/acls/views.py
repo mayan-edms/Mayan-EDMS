@@ -129,7 +129,17 @@ class ACLDeleteView(SingleObjectDeleteView):
     def get_extra_context(self):
         return {
             'object': self.get_object().content_object,
+            'title': _('Delete ACL: %s') % self.get_object(),
         }
+
+    def get_post_action_redirect(self):
+        instance = self.get_object()
+        return reverse(
+            'acls:acl_list', args=(
+                instance.content_type.app_label,
+                instance.content_type.model, instance.object_id
+            )
+        )
 
 
 class ACLPermissionsView(AssignRemoveView):
