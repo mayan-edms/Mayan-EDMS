@@ -5,7 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 CACHE_PATH = 'document_cache/'
 CHECK_DELETE_PERIOD_INTERVAL = 60
 CHECK_TRASH_PERIOD_INTERVAL = 60
-DELETE_STALE_STUBS_INTERVAL = 60
+DELETE_STALE_STUBS_INTERVAL = 60 * 10  # 10 minutes
 DEFAULT_DELETE_PERIOD = 30
 DEFAULT_DELETE_TIME_UNIT = 'days'
 DEFAULT_ZIP_FILENAME = 'document_bundle.zip'
