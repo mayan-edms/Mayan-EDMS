@@ -13,7 +13,7 @@ from common.models import SharedUploadedFile
 
 from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY,
-    NEW_DOCUMENT_RETRY_DELAY
+    NEW_DOCUMENT_RETRY_DELAY, STUB_EXPIRATION_INTERVAL
 )
 from .models import (
     DeletedDocument, Document, DocumentPage, DocumentType, DocumentVersion
@@ -41,6 +41,7 @@ def task_check_delete_periods():
                 document_type, delta
             )
             for document in DeletedDocument.objects.filter(document_type=document_type):
+                # TODO: Don't iterate, filter documents by expiration
                 if now() > document.deleted_date_time + delta:
                     logger.info(
                         'Document "%s" with id: %d, trashed on: %s, exceded '
@@ -75,6 +76,7 @@ def task_check_trash_periods():
                 document_type, delta
             )
             for document in Document.objects.filter(document_type=document_type):
+                # TODO: Don't iterate, filter documents by expiration
                 if now() > document.date_added + delta:
                     logger.info(
                         'Document "%s" with id: %d, added on: %s, exceded '
@@ -96,6 +98,16 @@ def task_clear_image_cache():
     # TODO: Notification of success and of errors
     Document.objects.invalidate_cache()
     logger.info('Finished document cache invalidation')
+
+
+@app.task(ignore_result=True)
+def task_delete_stubs():
+    logger.info('Executing')
+
+    for stale_stub_document in Document.objects.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=STUB_EXPIRATION_INTERVAL)):
+        stale_stub_document.delete(trash=False)
+
+    logger.info('Finshed')
 
 
 @app.task(compression='zlib')

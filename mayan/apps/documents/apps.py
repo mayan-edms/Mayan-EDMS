@@ -56,7 +56,10 @@ from .links import (
     link_document_version_download, link_document_version_list,
     link_document_version_revert, link_trash_can_empty
 )
-from .literals import CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL
+from .literals import (
+    CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
+    DELETE_STALE_STUBS_INTERVAL
+)
 from .models import (
     DeletedDocument, Document, DocumentPage, DocumentType,
     DocumentTypeFilename, DocumentVersion
@@ -183,6 +186,10 @@ class DocumentsApp(MayanAppConfig):
                     'task': 'documents.tasks.task_check_trash_periods',
                     'schedule': timedelta(seconds=CHECK_TRASH_PERIOD_INTERVAL),
                 },
+                'task_delete_stubs': {
+                    'task': 'documents.tasks.task_delete_stubs',
+                    'schedule': timedelta(seconds=DELETE_STALE_STUBS_INTERVAL),
+                },
             }
         )
 
@@ -206,6 +213,9 @@ class DocumentsApp(MayanAppConfig):
                     'queue': 'documents_periodic'
                 },
                 'documents.tasks.task_check_trash_periods': {
+                    'queue': 'documents_periodic'
+                },
+                'documents.tasks.task_delete_stubs': {
                     'queue': 'documents_periodic'
                 },
                 'documents.tasks.task_clear_image_cache': {
