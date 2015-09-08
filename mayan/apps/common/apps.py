@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from datetime import timedelta
 import logging
 
 from kombu import Exchange, Queue
@@ -22,7 +23,9 @@ from .links import (
     link_current_user_locale_profile_edit, link_filters, link_license,
     link_setup, link_tools
 )
+from .literals import DELETE_STALE_UPLOADS_INTERVAL
 from .menus import menu_facet, menu_main, menu_secondary, menu_tools
+from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 
 logger = logging.getLogger(__name__)
 
@@ -58,14 +61,37 @@ class CommonApp(MayanAppConfig):
     def ready(self):
         super(CommonApp, self).ready()
 
+        app.conf.CELERYBEAT_SCHEDULE.update(
+            {
+                'task_delete_stale_uploads': {
+                    'task': 'common.tasks.task_delete_stale_uploads',
+                    'schedule': timedelta(
+                        seconds=DELETE_STALE_UPLOADS_INTERVAL
+                    ),
+                },
+            }
+        )
+
         app.conf.CELERY_QUEUES.extend(
             (
                 Queue('default', Exchange('default'), routing_key='default'),
                 Queue('tools', Exchange('tools'), routing_key='tools'),
+                Queue(
+                    'common_periodic', Exchange('common_periodic'),
+                    routing_key='common_periodic', delivery_mode=1
+                ),
             )
         )
 
         app.conf.CELERY_DEFAULT_QUEUE = 'default'
+
+        app.conf.CELERY_ROUTES.update(
+            {
+                'common.tasks.task_delete_stale_uploads': {
+                    'queue': 'common_periodic'
+                },
+            }
+        )
 
         menu_facet.bind_links(
             links=(
