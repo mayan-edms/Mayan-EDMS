@@ -24,9 +24,6 @@ setting_preview_size = namespace.add_setting(
 setting_print_size = namespace.add_setting(
     global_name='DOCUMENTS_PRINT_SIZE', default='3600'
 )
-setting_multipage_preview_size = namespace.add_setting(
-    global_name='DOCUMENTS_MULTIPAGE_PREVIEW_SIZE', default='160x120'
-)
 setting_thumbnail_size = namespace.add_setting(
     global_name='DOCUMENTS_THUMBNAIL_SIZE', default='50x50'
 )
