@@ -29,6 +29,7 @@ class DocumentVersionInline(admin.StackedInline):
     allow_add = True
 
 
+@admin.register(DeletedDocument)
 class DeletedDocumentAdmin(admin.ModelAdmin):
     date_hierarchy = 'deleted_date_time'
     list_filter = ('document_type',)
@@ -36,35 +37,28 @@ class DeletedDocumentAdmin(admin.ModelAdmin):
     readonly_fields = ('uuid', 'document_type')
 
 
+@admin.register(Document)
 class DocumentAdmin(admin.ModelAdmin):
     date_hierarchy = 'date_added'
-    inlines = [
-        DocumentVersionInline
-    ]
-    list_filter = ('document_type',)
-    list_display = ('uuid', 'label', 'document_type', 'date_added')
+    inlines = (DocumentVersionInline,)
+    list_filter = ('document_type', 'is_stub')
+    list_display = ('uuid', 'label', 'document_type', 'date_added', 'is_stub')
     readonly_fields = ('uuid', 'document_type', 'date_added')
 
 
+@admin.register(DocumentType)
 class DocumentTypeAdmin(admin.ModelAdmin):
-    inlines = (
-        DocumentTypeFilenameInline,
-    )
+    inlines = (DocumentTypeFilenameInline,)
     list_display = (
         'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
         'delete_time_unit'
     )
 
 
+@admin.register(RecentDocument)
 class RecentDocumentAdmin(admin.ModelAdmin):
     date_hierarchy = 'datetime_accessed'
     list_display = ('user', 'document', 'datetime_accessed')
     list_display_links = ('document', 'datetime_accessed')
     list_filter = ('user',)
     readonly_fields = ('user', 'document', 'datetime_accessed')
-
-
-admin.site.register(DeletedDocument, DeletedDocumentAdmin)
-admin.site.register(Document, DocumentAdmin)
-admin.site.register(DocumentType, DocumentTypeAdmin)
-admin.site.register(RecentDocument, RecentDocumentAdmin)
