@@ -1,3 +1,8 @@
+from __future__ import unicode_literals
+
+from .models import StatisticResult
+
+
 class StatisticNamespace(object):
     _registry = {}
 
@@ -18,9 +23,10 @@ class StatisticNamespace(object):
     def __unicode__(self):
         return unicode(self.label)
 
-    def add_statistic(self, statistic):
-        self._statistics.append(statistic)
+    def add_statistic(self, *args, **kwargs):
+        statistic = Statistic(*args, **kwargs)
         statistic.namespace = self
+        self._statistics.append(statistic)
 
     @property
     def id(self):
@@ -39,20 +45,33 @@ class Statistic(object):
         return cls._registry.values()
 
     @classmethod
-    def get(cls, name):
-        return cls._registry[name]
+    def get(cls, slug):
+        return cls._registry[slug]
 
-    def __init__(self, name, label):
-        self.name = name
+    def __init__(self, slug, label, func):
+        self.slug = slug
         self.label = label
-        self.__class__._registry[name] = self
+        self.func = func
+        self.__class__._registry[slug] = self
 
     def __unicode__(self):
         return unicode(self.label)
 
-    def get_results(self, *args, **kwargs):
-        return NotImplementedError
+    def execute(self):
+        self.store_results(results=self.func())
 
     @property
     def id(self):
-        return self.name
+        return self.slug
+
+    def store_results(self, results):
+        StatisticResult.objects.filter(slug=self.slug).delete()
+
+        statistic_result = StatisticResult.objects.create(slug=self.slug)
+        statistic_result.store_data(data=results)
+
+    def get_results(self):
+        try:
+            return StatisticResult.objects.get(slug=self.slug).get_data()
+        except StatisticResultDoesNotExist:
+            return ((),)

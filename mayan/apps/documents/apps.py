@@ -72,7 +72,7 @@ from .permissions import (
     permission_document_view
 )
 from .settings import setting_thumbnail_size
-from .statistics import DocumentStatistics, DocumentUsageStatistics
+from .statistics import document_page_count_per_month
 from .widgets import document_thumbnail
 
 
@@ -351,12 +351,9 @@ class DocumentsApp(MayanAppConfig):
 
         namespace = StatisticNamespace(name='documents', label=_('Documents'))
         namespace.add_statistic(
-            DocumentStatistics(
-                name='document_stats', label=_('Document tendencies')
-            )
-        )
-        namespace.add_statistic(DocumentUsageStatistics(
-            name='document_usage', label=_('Document usage'))
+            slug='document-page-count-per-month',
+            label=_('Document page count per month'),
+            func=document_page_count_per_month
         )
 
         post_initial_setup.connect(

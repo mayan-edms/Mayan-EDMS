@@ -40,15 +40,23 @@ def storage_count(path='.'):
         return total_count, total_size
 
 
-class DocumentStatistics(Statistic):
-    def get_results(self):
-        results = []
+def document_page_count_per_month():
+    return (
+        (
+            {'August, 2015': 1244},
+            {'September, 2015': 3123},
+        ),
+    )
 
-        results.extend(
-            [
-                _('Document types: %d') % DocumentType.objects.count(),
-            ]
-        )
+
+    #def get_results(self):
+    #    return (
+    ##        (
+    #            {_('Document types'): DocumentType.objects.count()},
+    #        ),
+    #    )
+
+"""
         document_stats = DocumentVersion.objects.annotate(
             page_count=Count('pages')
         ).aggregate(Min('page_count'), Max('page_count'), Avg('page_count'))
@@ -67,7 +75,7 @@ class DocumentStatistics(Statistic):
         )
 
         return results
-
+"""
 
 class DocumentUsageStatistics(Statistic):
     def get_results(self):

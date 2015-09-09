@@ -12,7 +12,7 @@ urlpatterns = patterns(
         NamespaceDetailView.as_view(), name='namespace_details'
     ),
     url(
-        r'^(?P<statistic_id>\w+)/execute/$', StatisticExecute.as_view(),
+        r'^(?P<statistic_id>[\w,-]+)/view/$', StatisticExecute.as_view(),
         name='statistic_execute'
     ),
 )
