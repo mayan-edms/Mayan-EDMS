@@ -29,7 +29,7 @@ from events.permissions import permission_events_view
 from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
-from statistics.classes import StatisticNamespace
+from statistics.classes import StatisticNamespace, CharJSLine
 
 from .handlers import create_default_document_type
 from .links import (
@@ -72,7 +72,10 @@ from .permissions import (
     permission_document_view
 )
 from .settings import setting_thumbnail_size
-from .statistics import document_page_count_per_month
+from .statistics import (
+    new_documents_per_month, new_document_pages_per_month,
+    new_document_versions_per_month
+)
 from .widgets import document_thumbnail
 
 
@@ -351,9 +354,22 @@ class DocumentsApp(MayanAppConfig):
 
         namespace = StatisticNamespace(name='documents', label=_('Documents'))
         namespace.add_statistic(
-            slug='document-page-count-per-month',
-            label=_('Document page count per month'),
-            func=document_page_count_per_month
+            slug='new-documents-per-month',
+            label=_('New documents per month'),
+            func=new_documents_per_month,
+            renderer=CharJSLine
+        )
+        namespace.add_statistic(
+            slug='new-document-versions-per-month',
+            label=_('New document versions per month'),
+            func=new_document_versions_per_month,
+            renderer=CharJSLine
+        )
+        namespace.add_statistic(
+            slug='new-document-pages-per-month',
+            label=_('New document pages per month'),
+            func=new_document_pages_per_month,
+            renderer=CharJSLine
         )
 
         post_initial_setup.connect(

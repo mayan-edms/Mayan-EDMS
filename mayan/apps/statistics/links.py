@@ -8,8 +8,8 @@ from .permissions import permission_statistics_view
 
 
 link_execute = Link(
-    permissions=(permission_statistics_view,), text=_('Execute'),
-    view='statistics:statistic_execute', args='resolved_object.id'
+    permissions=(permission_statistics_view,), text=_('View'),
+    view='statistics:statistic_detail', args='resolved_object.id'
 )
 link_namespace_details = Link(
     permissions=(permission_statistics_view,), text=_('Namespace details'),

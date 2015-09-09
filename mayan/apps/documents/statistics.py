@@ -1,7 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 
+import datetime
+
+import qsstats
+
 from django.db.models import Avg, Count, Max, Min
 from django.template.defaultfilters import filesizeformat
+from django.utils import formats
+from django.utils.encoding import force_text
 from django.utils.translation import ugettext_lazy as _
 
 from statistics.classes import Statistic
@@ -40,41 +46,45 @@ def storage_count(path='.'):
         return total_count, total_size
 
 
-def document_page_count_per_month():
-    return (
-        (
-            {'August, 2015': 1244},
-            {'September, 2015': 3123},
-        ),
-    )
+def new_documents_per_month():
+    qss = qsstats.QuerySetStats(Document.passthrough.all(), 'date_added')
+
+    today = datetime.date.today()
+    this_year = datetime.date(year=today.year, month=1, day=1)
+
+    return {
+        'series': {
+            'Document': map(lambda x: {x[0].month: x[1]}, qss.time_series(start=this_year, end=today, interval='months'))
+        }
+    }
 
 
-    #def get_results(self):
-    #    return (
-    ##        (
-    #            {_('Document types'): DocumentType.objects.count()},
-    #        ),
-    #    )
+def new_document_versions_per_month():
+    qss = qsstats.QuerySetStats(DocumentVersion.objects.all(), 'document__date_added')
 
-"""
-        document_stats = DocumentVersion.objects.annotate(
-            page_count=Count('pages')
-        ).aggregate(Min('page_count'), Max('page_count'), Avg('page_count'))
-        results.extend(
-            [
-                _(
-                    'Minimum amount of pages per document: %d'
-                ) % (document_stats['page_count__min'] or 0),
-                _(
-                    'Maximum amount of pages per document: %d'
-                ) % (document_stats['page_count__max'] or 0),
-                _(
-                    'Average amount of pages per document: %f'
-                ) % (document_stats['page_count__avg'] or 0),
-            ]
-        )
+    today = datetime.date.today()
+    this_year = datetime.date(year=today.year, month=1, day=1)
 
-        return results
+    return {
+        'series': {
+            'Document': map(lambda x: {x[0].month: x[1]}, qss.time_series(start=this_year, end=today, interval='months'))
+        }
+    }
+
+
+def new_document_pages_per_month():
+    qss = qsstats.QuerySetStats(DocumentPage.objects.all(), 'document_version__document__date_added')
+
+    today = datetime.date.today()
+    this_year = datetime.date(year=today.year, month=1, day=1)
+
+    return {
+        'series': {
+            'Document': map(lambda x: {x[0].month: x[1]}, qss.time_series(start=this_year, end=today, interval='months'))
+        }
+    }
+
+
 """
 
 class DocumentUsageStatistics(Statistic):
@@ -111,3 +121,4 @@ class DocumentUsageStatistics(Statistic):
         )
 
         return results
+"""

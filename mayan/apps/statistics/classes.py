@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import json
+
 from .models import StatisticResult
 
 
@@ -48,10 +50,11 @@ class Statistic(object):
     def get(cls, slug):
         return cls._registry[slug]
 
-    def __init__(self, slug, label, func):
+    def __init__(self, slug, label, func, renderer):
         self.slug = slug
         self.label = label
         self.func = func
+        self.renderer = renderer
         self.__class__._registry[slug] = self
 
     def __unicode__(self):
@@ -73,5 +76,73 @@ class Statistic(object):
     def get_results(self):
         try:
             return StatisticResult.objects.get(slug=self.slug).get_data()
-        except StatisticResultDoesNotExist:
-            return ((),)
+        except StatisticResult.DoesNotExist:
+            return {'series': {}}
+
+    def get_chart_data(self):
+        return self.renderer(data=self.get_results()).get_chart_data()
+
+
+class ChartRenderer(object):
+    def __init__(self, data):
+        self.data = data
+
+    def get_chart_data(self):
+        raise NotImplementedError
+
+
+class CharJSLine(ChartRenderer):
+    template_name = 'statistics/backends/chartjs/line.html'
+
+    dataset_palette = (
+        {
+            'fillColor': "rgba(220,220,220,0.2)",
+            'strokeColor': "rgba(220,220,220,1)",
+            'pointColor': "rgba(220,220,220,1)",
+            'pointStrokeColor': "#fff",
+            'pointHighlightFill': "#fff",
+            'pointHighlightStroke': "rgba(220,220,220,1)",
+        },
+        {
+            'fillColor': "rgba(151,187,205,0.2)",
+            'strokeColor': "rgba(151,187,205,1)",
+            'pointColor': "rgba(151,187,205,1)",
+            'pointStrokeColor': "#fff",
+            'pointHighlightFill': "#fff",
+            'pointHighlightStroke': "rgba(151,187,205,1)",
+        }
+    )
+
+    def get_chart_data(self):
+        labels = []
+        datasets = []
+
+        for count, serie in enumerate(self.data['series'].items()):
+            series_name, series_data = serie
+            dataset_labels = []
+            dataset_values = []
+
+            for data_point in series_data:
+                dataset_labels.extend(data_point.keys())
+                dataset_values.extend(data_point.values())
+
+            labels = dataset_labels
+            dataset = {
+                'label': series_name,
+                'data': dataset_values,
+            }
+            dataset.update(
+                CharJSLine.dataset_palette[
+                    count % len(CharJSLine.dataset_palette)
+                ]
+            )
+
+            datasets.append(dataset)
+
+        data = {
+            'labels': labels,
+            'datasets': datasets,
+
+        }
+
+        return json.dumps(data)

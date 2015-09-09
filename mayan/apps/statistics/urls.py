@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
-from .views import NamespaceDetailView, NamespaceListView, StatisticExecute
+from .views import NamespaceDetailView, NamespaceListView, StatisticDetailView
 
 urlpatterns = patterns(
     'statistics.views',
@@ -12,7 +12,7 @@ urlpatterns = patterns(
         NamespaceDetailView.as_view(), name='namespace_details'
     ),
     url(
-        r'^(?P<statistic_id>[\w,-]+)/view/$', StatisticExecute.as_view(),
-        name='statistic_execute'
+        r'^(?P<slug>[\w-]+)/view/$', StatisticDetailView.as_view(),
+        name='statistic_detail'
     ),
 )
