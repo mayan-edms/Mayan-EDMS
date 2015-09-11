@@ -240,9 +240,9 @@ html_theme_options = {
     'description': mayan.__description__,
     'github_user': 'mayan-edms',
     'github_repo': 'mayan-edms',
-    'travis_button': True,
+    'travis_button': False,
     'gratipay_user': 'rosarior',
-    'github_banner': True,
+    'github_banner': False,
 }
 
 html_logo = '_static/logo_pyramid_only.png'

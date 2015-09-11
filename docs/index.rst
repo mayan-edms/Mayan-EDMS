@@ -25,6 +25,7 @@ account.
 
     Features <topics/features>
     Installation <topics/installation>
+    Deploying <topics/deploying>
     Getting started <topics/getting_started>
     Release notes and upgrading <releases/index>
     Concepts <topics/index>
