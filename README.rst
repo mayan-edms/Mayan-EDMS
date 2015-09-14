@@ -56,7 +56,7 @@ Contribute
 - Fork `the repository`_ on GitHub to start making your changes to the **development** branch (or branch off of it).
 - Write a test which shows that the bug was fixed or that the feature works as expected.
 - Add yourself to the `contributors file`_.
-- Send a pull request
+- Send a merge request.
 
 
 .. _Website: http://www.mayan-edms.com
