@@ -163,7 +163,7 @@ class ConverterBase(object):
         self.file_object.seek(0)
 
         try:
-            self.image = Image.open(self.file_object)
+            self.image = Image.open(self.file_object).convert('RGB')
         except IOError:
             # Cannot identify image file
             self.image = self.convert(page_number=page_number)
