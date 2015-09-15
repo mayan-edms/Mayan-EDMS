@@ -13,6 +13,7 @@ from acls.models import AccessControlList
 from common.generics import (
     ConfirmView, SingleObjectEditView, SingleObjectListView
 )
+from common.mixins import MultipleInstanceActionMixin
 from documents.models import Document, DocumentType, DocumentVersion
 from permissions import Permission
 
@@ -24,68 +25,68 @@ from .permissions import (
 )
 
 
-class DocumentSubmitView(ConfirmView):
-    def get_extra_context(self):
-        return {
-            'object': Document.objects.get(pk=self.kwargs['pk']),
-            'title': _('Submit the selected document for OCR?')
-        }
-
-    def object_action(self, request, obj):
-        document = obj
-
-        try:
-            Permission.check_permissions(
-                request.user, (permission_ocr_document,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_ocr_document, request.user, document
-            )
-
-        document.submit_for_ocr()
-        messages.success(
-            request,
-            _('Document: %(document)s was added to the OCR queue.') % {
-                'document': document
-            }
-        )
-
-    def post(self, request, *args, **kwargs):
-        document = get_object_or_404(Document, pk=self.kwargs['pk'])
-        self.object_action(request=request, obj=document)
-
-        return HttpResponseRedirect(self.get_success_url())
-
-
 class DocumentAllSubmitView(ConfirmView):
     extra_context = {'title': _('Submit all documents for OCR?')}
 
-    def post(self, request, *args, **kwargs):
+    def get_post_action_redirect(self):
+        return reverse('common:tools_list')
+
+    def view_action(self):
         count = 0
         for document in Document.objects.all():
             document.submit_for_ocr()
             count += 1
 
         messages.success(
-            request, _('%d documents added to the OCR queue.') % count
+            self.request, _('%d documents added to the OCR queue.') % count
         )
 
-        return HttpResponseRedirect(self.get_success_url())
+
+class DocumentSubmitView(ConfirmView):
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Submit "%s" to the OCR queue?') % self.get_object()
+        }
+
+    def get_object(self):
+        return Document.objects.get(pk=self.kwargs['pk'])
+
+    def object_action(self, instance):
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_ocr_document,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_ocr_document, self.request.user, instance
+            )
+
+        instance.submit_for_ocr()
+
+    def view_action(self):
+        instance = self.get_object()
+
+        self.object_action(instance=instance)
+
+        messages.success(
+            self.request,
+            _('Document: %(document)s was added to the OCR queue.') % {
+                'document': instance
+            }
+        )
 
 
-class DocumentManySubmitView(DocumentSubmitView):
-    extra_context = {'title': _('Submit the selected documents for OCR?')}
+class DocumentSubmitManyView(MultipleInstanceActionMixin, DocumentSubmitView):
+    model = Document
+    success_message = '%(count)d document submitted to the OCR queue.'
+    success_message_plural = '%(count)d documents submitted to the OCR queue.'
 
-    def post(self, request, *args, **kwargs):
-        for pk in request.GET.get('id_list', '').split(','):
-            document = get_object_or_404(Document, pk=pk)
-            try:
-                self.object_action(request=request, obj=document)
-            except PermissionDenied:
-                pass
-
-        return HttpResponseRedirect(self.get_success_url())
+    def get_extra_context(self):
+        # Override the base class method
+        return {
+            'title': _('Submit the selected documents to the OCR queue?')
+        }
 
 
 class DocumentTypeSettingsEditView(SingleObjectEditView):

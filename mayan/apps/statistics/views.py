@@ -90,6 +90,5 @@ class StatisticQueueView(ConfirmView):
             args=(self.get_object().namespace.slug,)
         )
 
-    def post(self, request, *args, **kwargs):
+    def view_action(self):
         task_execute_statistic.delay(slug=self.get_object().slug)
-        return HttpResponseRedirect(self.get_post_action_redirect())
