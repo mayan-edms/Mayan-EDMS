@@ -4,7 +4,7 @@ from django.conf.urls import patterns, url
 
 from .api_views import DocumentVersionOCRView
 from .views import (
-    DocumentSubmitView, DocumentAllSubmitView, DocumentManySubmitView,
+    DocumentAllSubmitView, DocumentSubmitView, DocumentSubmitManyView,
     DocumentTypeSettingsEditView, EntryListView
 )
 
@@ -23,7 +23,7 @@ urlpatterns = patterns(
         name='document_submit_all'
     ),
     url(
-        r'^document/multiple/submit/$', DocumentManySubmitView.as_view(),
+        r'^document/multiple/submit/$', DocumentSubmitManyView.as_view(),
         name='document_submit_multiple'
     ),
     url(

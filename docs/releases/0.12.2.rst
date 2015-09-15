@@ -27,10 +27,10 @@ Smarter auto admin creation
 **Mayan EDMS** creates a administrator user during the
 database creation phase to reduce the amount of steps required for a
 functional install.  The creation of this account is controlled by the configuration
-option :setting:`COMMON_AUTO_CREATE_ADMIN`, the username of the account is
-specified with the configuration option :setting:`COMMON_AUTO_ADMIN_USERNAME`
-and the password of this account by the option :setting:`COMMON_AUTO_ADMIN_PASSWORD`.
-Previously the :setting:`COMMON_AUTO_ADMIN_PASSWORD` defaulted to 'admin' which
+option `COMMON_AUTO_CREATE_ADMIN`, the username of the account is
+specified with the configuration option `COMMON_AUTO_ADMIN_USERNAME`
+and the password of this account by the option `COMMON_AUTO_ADMIN_PASSWORD`.
+Previously the `COMMON_AUTO_ADMIN_PASSWORD` defaulted to 'admin' which
 created an administrator account of username 'admin' with a password of
 'admin'.  The new default is to randomize an initial password and show this password
 at the login screen until the administrator password is changed.

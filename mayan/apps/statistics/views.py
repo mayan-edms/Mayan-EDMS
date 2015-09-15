@@ -1,12 +1,19 @@
 from __future__ import unicode_literals
 
+import json
+
+from django.core.urlresolvers import reverse
 from django.http import Http404
+from django.shortcuts import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 
-from common.views import SingleObjectListView
+from common.generics import (
+    ConfirmView, SingleObjectDetailView, SingleObjectListView
+)
 
 from .classes import Statistic, StatisticNamespace
 from .permissions import permission_statistics_view
+from .tasks import task_execute_statistic
 
 
 class NamespaceListView(SingleObjectListView):
@@ -22,7 +29,6 @@ class NamespaceListView(SingleObjectListView):
 
 
 class NamespaceDetailView(SingleObjectListView):
-    template_name = 'appearance/generic_list.html'
     view_permission = permission_statistics_view
 
     def get_extra_context(self):
@@ -33,30 +39,56 @@ class NamespaceDetailView(SingleObjectListView):
         }
 
     def get_namespace(self):
-        return StatisticNamespace.get(self.kwargs['namespace_id'])
+        return StatisticNamespace.get(self.kwargs['slug'])
 
     def get_queryset(self):
         return self.get_namespace().statistics
 
 
-class StatisticExecute(SingleObjectListView):
-    template_name = 'appearance/generic_list.html'
+class StatisticDetailView(SingleObjectDetailView):
     view_permission = permission_statistics_view
 
     def get_extra_context(self):
         return {
-            'hide_link': True,
-            'namespace': self.get_statictic().namespace,
+            'chart_data': self.get_object().get_chart_data(),
+            'namespace': self.get_object().namespace,
             'navigation_object_list': ('namespace', 'object'),
-            'object': self.get_statictic(),
-            'title': _('Results for: %s') % self.get_statictic(),
+            'no_data': not self.get_object().get_results()['series'],
+            'object': self.get_object(),
+            'title': _('Results for: %s') % self.get_object(),
         }
 
-    def get_queryset(self):
-        return self.get_statictic().get_results()
-
-    def get_statictic(self):
+    def get_object(self):
         try:
-            return Statistic.get(self.kwargs['statistic_id'])
+            return Statistic.get(self.kwargs['slug'])
         except KeyError:
-            raise Http404(_('Statistic "%s" not found.') % self.kwargs['statistic_id'])
+            raise Http404(_('Statistic "%s" not found.') % self.kwargs['slug'])
+
+    def get_template_names(self):
+        return (self.get_object().renderer.template_name,)
+
+
+class StatisticQueueView(ConfirmView):
+    view_permission = permission_statistics_view
+
+    def get_extra_context(self):
+        return {
+            'namespace': self.get_object().namespace,
+            'object': self.get_object(),
+            'title': _('Queue statistic "%s" to be updated?') % self.get_object(),
+        }
+
+    def get_object(self):
+        try:
+            return Statistic.get(self.kwargs['slug'])
+        except KeyError:
+            raise Http404(_('Statistic "%s" not found.') % self.kwargs['slug'])
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'statistics:namespace_details',
+            args=(self.get_object().namespace.slug,)
+        )
+
+    def view_action(self):
+        task_execute_statistic.delay(slug=self.get_object().slug)

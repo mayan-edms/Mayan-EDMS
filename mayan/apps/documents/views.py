@@ -112,30 +112,39 @@ class DeletedDocumentDeleteView(ConfirmView):
         'title': _('Delete the selected document?')
     }
 
-    def object_action(self, request, instance):
+    def object_action(self, instance):
         source_document = get_object_or_404(
             Document.passthrough, pk=instance.pk
         )
 
         try:
             Permission.check_permissions(
-                request.user, (permission_document_delete,)
+                self.request.user, (permission_document_delete,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
-                permission_document_delete, request.user, source_document
+                permission_document_delete, self.request.user, source_document
             )
 
         instance.delete()
-        messages.success(request, _('Document: %(document)s deleted.') % {
-            'document': instance}
+
+    def view_action(self):
+        instance = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
+        self.object_action(instance=instance)
+        messages.success(
+            self.request, _('Document: %(document)s deleted.') % {
+                'document': instance
+            }
         )
 
-    def post(self, request, *args, **kwargs):
-        document = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
-        self.object_action(request=request, instance=document)
 
-        return HttpResponseRedirect(self.get_success_url())
+class DeletedDocumentDeleteManyView(MultipleInstanceActionMixin, DeletedDocumentDeleteView):
+    extra_context = {
+        'title': _('Delete the selected documents?')
+    }
+    model = DeletedDocument
+    success_message = '%(count)d document deleted.'
+    success_message_plural = '%(count)d documents deleted.'
 
 
 class DocumentEditView(SingleObjectEditView):
@@ -172,46 +181,41 @@ class DocumentRestoreView(ConfirmView):
         'title': _('Restore the selected document?')
     }
 
-    def object_action(self, request, instance):
+    def object_action(self, instance):
         source_document = get_object_or_404(
             Document.passthrough, pk=instance.pk
         )
 
         try:
             Permission.check_permissions(
-                request.user, (permission_document_restore,)
+                self.request.user, (permission_document_restore,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
-                permission_document_restore, request.user, source_document
+                permission_document_restore, self.request.user, source_document
             )
 
         instance.restore()
+
+    def view_action(self):
+        instance = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
+
+        self.object_action(instance=instance)
+
         messages.success(
-            request, _('Document: %(document)s restored.') % {
+            self.request, _('Document: %(document)s restored.') % {
                 'document': instance
             }
         )
 
-    def post(self, request, *args, **kwargs):
-        document = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
-        self.object_action(request=request, instance=document)
 
-        return HttpResponseRedirect(self.get_success_url())
-
-
-class DocumentManyDeleteView(MultipleInstanceActionMixin, DeletedDocumentDeleteView):
-    extra_context = {
-        'title': _('Delete the selected documents?')
-    }
-    model = DeletedDocument
-
-
-class DocumentManyRestoreView(MultipleInstanceActionMixin, DocumentRestoreView):
+class DocumentRestoreManyView(MultipleInstanceActionMixin, DocumentRestoreView):
     extra_context = {
         'title': _('Restore the selected documents?')
     }
     model = DeletedDocument
+    success_message = '%(count)d document restored.'
+    success_message_plural = '%(count)d documents restored.'
 
 
 class DocumentPageListView(SingleObjectListView):
@@ -306,6 +310,54 @@ class DocumentPreviewView(SingleObjectDetailView):
             'hide_labels': True,
             'object': self.get_object(),
             'title': _('Preview of document: %s') % self.get_object(),
+        }
+
+
+class DocumentTrashView(ConfirmView):
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Move "%s" to the trash?') % self.get_object()
+        }
+
+    def get_object(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
+    def get_post_action_redirect(self):
+        return reverse('documents:document_list_recent')
+
+    def object_action(self, instance):
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_trash,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_trash, self.request.user, instance
+            )
+
+        instance.delete()
+
+    def view_action(self):
+        instance = self.get_object()
+
+        self.object_action(instance=instance)
+
+        messages.success(
+            self.request, _('Document: %(document)s moved to trash successfully.') % {
+                'document': instance
+            }
+        )
+
+
+class DocumentTrashManyView(MultipleInstanceActionMixin, DocumentTrashView):
+    model = Document
+    success_message = '%(count)d document moved to the trash.'
+    success_message_plural = '%(count)d documents moved to the trash.'
+
+    def get_extra_context(self):
+        return {
+            'title': _('Move the selected documents to the trash?')
         }
 
 
@@ -405,12 +457,6 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
     model = DocumentTypeFilename
     view_permission = permission_document_type_edit
 
-    def get_post_action_redirect(self):
-        return reverse(
-            'documents:document_type_filename_list',
-            args=(self.get_object().document_type.pk,)
-        )
-
     def get_extra_context(self):
         document_type_filename = self.get_object()
 
@@ -426,6 +472,12 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
                 'filename': document_type_filename
             },
         }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'documents:document_type_filename_list',
+            args=(self.get_object().document_type.pk,)
+        )
 
 
 class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
@@ -553,13 +605,11 @@ class EmptyTrashCanView(ConfirmView):
         'documents:document_list_deleted'
     )
 
-    def post(self, request, *args, **kwargs):
+    def view_action(self):
         for deleted_document in DeletedDocument.objects.all():
             deleted_document.delete()
 
-        messages.success(request, _('Trash emptied successfully'))
-
-        return HttpResponseRedirect(self.get_success_url())
+        messages.success(self.request, _('Trash emptied successfully'))
 
 
 class RecentDocumentListView(DocumentListView):
@@ -570,70 +620,6 @@ class RecentDocumentListView(DocumentListView):
 
     def get_document_queryset(self):
         return RecentDocument.objects.get_for_user(self.request.user)
-
-
-def document_trash(request, document_id=None, document_id_list=None):
-    post_action_redirect = None
-
-    if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
-        post_action_redirect = reverse('documents:document_list_recent')
-    elif document_id_list:
-        documents = [
-            get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')
-        ]
-    else:
-        messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
-            )
-        )
-
-    try:
-        Permission.check_permissions(request.user, (permission_document_trash,))
-    except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission_document_trash, request.user, documents
-        )
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        for document in documents:
-            try:
-                document.delete()
-                messages.success(request, _('Document moved to trash successfully.'))
-            except Exception as exception:
-                messages.error(request, _('Document: %(document)s error moving to trash: %(error)s') % {
-                    'document': document, 'error': exception
-                })
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'previous': previous,
-        'next': next,
-        'title': ungettext(
-            'Move the selected document to the trash ?',
-            'Move the selected documents to the trash ?',
-            len(documents)
-        )
-    }
-
-    if len(documents) == 1:
-        context['object'] = documents[0]
-
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
-
-
-def document_multiple_trash(request):
-    return document_trash(
-        request, document_id_list=request.GET.get('id_list', [])
-    )
 
 
 def document_document_type_edit(request, document_id=None, document_id_list=None):

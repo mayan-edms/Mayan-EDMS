@@ -1,10 +1,12 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
+from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.utils.translation import ungettext
 
 from acls.models import AccessControlList
 from permissions import Permission
@@ -42,14 +44,33 @@ class ExtraContextMixin(object):
 
 class MultipleInstanceActionMixin(object):
     model = None
+    success_message = 'Operation performed on %(count)d object'
+    success_message_plural = 'Operation performed on %(count)d objects'
+
+    def get_success_message(self, count):
+        return ungettext(
+            self.success_message,
+            self.success_message_plural,
+            count
+        ) % {
+            'count': count,
+        }
 
     def post(self, request, *args, **kwargs):
+        count = 0
         for pk in request.GET.get('id_list', '').split(','):
             document = get_object_or_404(self.model, pk=pk)
             try:
-                self.object_action(request=request, instance=document)
+                self.object_action(instance=document)
             except PermissionDenied:
                 pass
+            else:
+                count += 1
+
+        messages.success(
+            self.request,
+            self.get_success_message(count=count)
+        )
 
         return HttpResponseRedirect(self.get_success_url())
 

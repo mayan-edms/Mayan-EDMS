@@ -169,6 +169,10 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
 class ConfirmView(ObjectListPermissionFilterMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
     template_name = 'appearance/generic_confirm.html'
 
+    def post(self, request, *args, **kwargs):
+        self.view_action()
+        return HttpResponseRedirect(self.get_success_url())
+
 
 class MultiFormView(FormView):
     prefixes = {}

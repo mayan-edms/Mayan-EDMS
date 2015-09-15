@@ -6,17 +6,18 @@ Development
 **Mayan EDMS** is under active development, and contributions are welcome.
 
 If you have a feature request, suggestion or bug report, please open a new
-issue on the `GitHub issue tracker`_. To submit patches, please send a pull
-request on GitHub_. Make sure to add yourself to the :ref:`contributors` file.
+issue on the `GitLab issue tracker`_. To submit patches, please send a pull
+request on GitLab_. Make sure to add yourself to the :ref:`contributors` file.
 
-.. _GitHub: https://github.com/mayan-edms/mayan-edms/
-.. _`GitHub issue tracker`: https://github.com/mayan-edms/mayan-edms/issues
+.. _GitLab: https://gitlab.com/mayan-edms/mayan-edms/
+.. _`GitLab issue tracker`: https://gitlab.com/mayan-edms/mayan-edms/issues
 
 
 Project philosophies
 --------------------
 
-How to think about **Mayan EDMS** when doing changes or adding new features, why things are the way they are in **Mayan EDMS**.
+How to think about **Mayan EDMS** when doing changes or adding new features,
+why things are the way they are in **Mayan EDMS**.
 
 - Functionality must be as market/sector independent as possible, code for the 95% of use cases.
 - Each user must be able to configure and customize it to their needs after install.
@@ -93,7 +94,9 @@ Example:
     )
     from .models import Index, IndexInstanceNode, DocumentRenameCount
 
-All local app module imports are in relative form, local app module name is to be referenced as little as possible, unless required by a specific feature, trick, restriction, ie: Runtime modification of the module's attributes.
+All local app module imports are in relative form, local app module name is to
+be referenced as little as possible, unless required by a specific feature,
+trick, restriction, ie: Runtime modification of the module's attributes.
 
 Incorrect:
 
@@ -113,12 +116,18 @@ Correct:
 
 Dependencies
 ~~~~~~~~~~~~
-**Mayan EDMS** apps follow a hierarchical model of dependency. Apps import from their parents or siblings, never from their children. Think plugins. A parent app must never assume anything about a possible existing child app. The documents app and the Document model are the basic entities they must never import anything else. The common and main apps are the base apps.
+**Mayan EDMS** apps follow a hierarchical model of dependency. Apps import from
+their parents or siblings, never from their children. Think plugins. A parent
+app must never assume anything about a possible existing child app. The
+documents app and the Document model are the basic entities they must never
+import anything else. The common and main apps are the base apps.
 
 
 Variables
 ~~~~~~~~~
-Naming of variables should follow a Major to Minor convention, usually including the purpose of the variable as the first piece of the name, using underscores as spaces. camelCase is not used in **Mayan EDMS**.
+Naming of variables should follow a Major to Minor convention, usually
+including the purpose of the variable as the first piece of the name, using
+underscores as spaces. camelCase is not used in **Mayan EDMS**.
 
 Examples:
 
@@ -158,143 +167,35 @@ Quotation character used in **Mayan EDMS** for strings is the single quote. Doub
 
 General
 ~~~~~~~
-
-Code should appear in their modules in alphabetic order or in their order of importance if it makes more sense for the specific application.
-This makes visual scanning easier on modules with a large number of imports, views or classes.
-Class methods that return a value should be prepended with a ``get_`` to differentiate from an object’s properties.
-When a variable refers to a file it should be named as follows:
+Code should appear in their modules in alphabetic order or in their order of
+importance if it makes more sense for the specific application. This makes
+visual scanning easier on modules with a large number of imports, views or
+classes. Class methods that return a value should be prepended with a
+``get_`` to differentiate from an object’s properties. When a variable refers
+to a file it should be named as follows:
 
 - filename:  The file’s name and extension only.
 - filepath:  The entire path to the file including the filename.
 - path:  A path to a directory.
 
 Flash messages should end with a period as applicable for the language.
-Only exception is when the tail of the message contains an exceptions message as passed directly from the exception object.
-
-App anatomy
-~~~~~~~~~~~
-
-- __init__.py
-
-  - Should be empty if possible. No initialization code should be here, use the ready() method of the AppConfig class in the apps.py module.
-
-- api.py
-
-  - File to hold functions that are meant to be used by external apps.
-  - Interfaces meant to be used by other apps that are not models or classes.
-
-- apps.py
-
-  - Contains the AppConfig subclass as required by Django 1.7 and up.
-
-- classes.py
-
-  - Hold python classes to be used internally or externally.
-  - Any class defined by the app that is not a model.
-
-- diagnostics.py
-
-  - Define functions that will return the state of the data of an app.
-  - Does not fixes the problems only finds them.
-
-- events.py
-
-  - Define history type events.
-
-- exceptions.py
-
-  - Exceptions defined by the app.
-
-- fields.py
-
-  - Place any custom form field classed you define here.
-
-- handlers.py
-
-  - Contains the signal handlers, functions that will process a given signal emited from this or other apps.
-
-- links.py
-
-  - Defines the links to be used by the app.
-  - Import only from the navigation app and the local icons.py file.
-
-- literals.py
-
-  - Stores magic numbers, module choices (if static), settings defaults, and constants.
-  - Should contain all capital case variables.
-  - Must not import from any other module.
-
-- maintenance.py
-
-  - Hold functions that the user may run periodically to fix errors in the app’s data.
-
-- permissions.py
-
-  - Defines the permissions to be used by links and views to validate access.
-  - Imports only from permissions app.
-  - Link or view conditions such as testing for staff or super admin status are defined in the same file.
-
-- runtime.py
-
-  - Use this module when you need the same instance of a class for the entire app. This app is acts as a shared memory space for the modules of the apps or other apps.
-
-- settings.py
-
-  - Define the config settings that the app will use here.
-
-- signals.py
-
-  - Any custom defined signal goes here.
-
-- statistics.py
-
-  - Provides functions that will computer any sort of statistical information on the app’s data.
-
-- tasks.py
-
-  - Code to be execute as in the background or a as an process-of-process action.
-
-- utils.py
-
-  - Hold utilitarian code that doesn't fit on any other app file or that is used by several files in the app.
-  - Anything used internally by the app that is not a class or a literal (should be as little as possible)
-
-- widgets.py
-
-  - HTML widgets go here. This should be the only place with presentation directives in the app (aside the templates).
-
-Views behavior
-~~~~~~~~~~~~~~
-
-- Delete views:
-
-  - Redirect to object list view if one object is deleted.
-  - Redirect to previous view if many are deleted.
-  - Previous view equals:
-
-    - previous variable in POST or
-    - previous variable in GET or
-    - request.META.HTTP_REFERER or
-    - object list view or
-    - 'home' view
-    - fallback to ‘/’
-    - if previous equal same view then previous should equal object list view or ‘/’
-
+Only exception is when the tail of the message contains an exceptions message
+as passed directly from the exception object.
 
 Source Control
 --------------
 
 **Mayan EDMS** source is controlled with Git_.
 
-The project is publicly accessible, hosted and can be cloned from **GitHub** using::
+The project is publicly accessible, hosted and can be cloned from **GitLab** using::
 
-    $ git clone git://github.com/mayan-edms/mayan-edms.git
+    $ git clone git://gitlab.com/mayan-edms/mayan-edms.git
 
 
 Git branch structure
 --------------------
 
-**Mayan EDMS** follows the model layout by Vincent Driessen in his `Successful Git Branching Model`_ blog post. Git-flow_ is a great tool for managing the repository in this way.
+**Mayan EDMS** follows simplified model layout by Vincent Driessen in his `Successful Git Branching Model`_ blog post. Git-flow_ is a great tool for managing the repository in this way.
 
 ``develop``
     The "next release" branch, likely unstable.
@@ -306,21 +207,21 @@ Git branch structure
     Released versions.
 
 
-Each release is tagged and available for download on the Downloads_ section of the **Mayan EDMS** repository on GitHub_.
+Each release is tagged separately.
 
-When submitting patches, please place your code in its own ``feature/`` branch prior to opening a pull request on GitHub_.
+When submitting patches, please place your code in its own ``feature/`` branch
+prior to opening a Merge Request on GitLab_.
 
 .. _Git: http://git-scm.org
 .. _`Successful Git Branching Model`: http://nvie.com/posts/a-successful-git-branching-model/
 .. _git-flow: https://github.com/nvie/gitflow
-.. _Downloads:  https://github.com/mayan-edms/mayan-edms/archives/master
 
 
 Steps to deploy a development version
 -------------------------------------
 .. code-block:: bash
 
-    $ git clone https://github.com/mayan-edms/mayan-edms.git
+    $ git clone https://gitlab.com/mayan-edms/mayan-edms.git
     $ cd mayan-edms
     $ git checkout development
     $ virtualenv venv
@@ -332,7 +233,8 @@ Steps to deploy a development version
 
 Setting up a development version using Vagrant
 ----------------------------------------------
-Make sure you have Vagrant and a provider properly installed as per https://docs.vagrantup.com/v2/installation/index.html
+Make sure you have Vagrant and a provider properly installed as per
+https://docs.vagrantup.com/v2/installation/index.html
 
 Start and provision a machine using:
 
@@ -372,14 +274,12 @@ Then on a separate console launch a celery worker from the same provisioned Vagr
 
 Contributing changes
 --------------------
-Once your have created and committed some new code or feature, submit a Pull Request.
-Be sure to merge with mayan-edms/development before doing a pull request so that patches
-apply as cleanly as possible.  If there are no conflicts, Pull Requests can be merged
-directly from Github otherwise a manual command line merge has to be done and
-your patches might take longer to get merged.
-
-For more information on how to create Pull Request read: https://help.github.com/articles/using-pull-requests
-or the quick version: https://help.github.com/articles/creating-a-pull-request
+Once your have created and committed some new code or feature, submit a Pull
+Request. Be sure to merge with the development branch before doing a Pull
+Request so that patches apply as cleanly as possible. If there are no conflicts,
+Merge Requests can be merged directly from the website UI otherwise a manual
+command line merge has to be done and your patches might take longer to get
+merged.
 
 
 Debugging

@@ -25,10 +25,12 @@ account.
 
     Features <topics/features>
     Installation <topics/installation>
+    Deploying <topics/deploying>
     Getting started <topics/getting_started>
     Release notes and upgrading <releases/index>
     Concepts <topics/index>
     Development <topics/development>
+    App creation <topics/app_creation>
     Translations <topics/translations>
     Contributors <topics/contributors>
     Licensing <topics/license>

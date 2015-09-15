@@ -77,9 +77,6 @@ class CheckoutDocumentView(SingleObjectCreateView):
 
 
 class CheckoutListView(DocumentListView):
-    def get_document_queryset(self):
-        return DocumentCheckout.objects.checked_out_documents()
-
     extra_context = {
         'title': _('Documents checked out'),
         'hide_links': True,
@@ -104,6 +101,9 @@ class CheckoutListView(DocumentListView):
             },
         ),
     }
+
+    def get_document_queryset(self):
+        return DocumentCheckout.objects.checked_out_documents()
 
 
 def checkout_info(request, document_pk):
@@ -156,9 +156,6 @@ def checkout_info(request, document_pk):
 
 
 class DocumentCheckinView(ConfirmView):
-    def get_object(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
-
     def get_extra_context(self):
         document = self.get_object()
 
@@ -176,8 +173,14 @@ class DocumentCheckinView(ConfirmView):
 
         return context
 
-    def object_action(self, request, obj):
-        document = obj
+    def get_object(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
+    def get_post_action_redirect(self):
+        return reverse('checkouts:checkout_info', args=(self.get_object().pk,))
+
+    def view_action(self, request):
+        document = self.get_object()
 
         if document.checkout_info().user == request.user:
             try:
@@ -210,11 +213,3 @@ class DocumentCheckinView(ConfirmView):
             messages.success(
                 request, _('Document "%s" checked in successfully.') % document
             )
-
-    def get_post_action_redirect(self):
-        return reverse('checkouts:checkout_info', args=(self.get_object().pk,))
-
-    def post(self, request, *args, **kwargs):
-        self.object_action(request=request, obj=self.get_object())
-
-        return HttpResponseRedirect(self.get_success_url())

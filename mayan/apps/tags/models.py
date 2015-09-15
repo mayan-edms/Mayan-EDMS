@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.core.exceptions import PermissionDenied
 from django.utils.encoding import python_2_unicode_compatible
@@ -29,6 +30,9 @@ class Tag(models.Model):
 
     def __str__(self):
         return self.label
+
+    def get_absolute_url(self):
+        return reverse('tags:tag_tagged_item_list', args=(str(self.pk),))
 
     def get_document_count(self, user):
         queryset = self.documents

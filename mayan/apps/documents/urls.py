@@ -13,10 +13,11 @@ from .api_views import (
 )
 from .settings import setting_print_size, setting_display_size
 from .views import (
-    DeletedDocumentDeleteView, DeletedDocumentListView, DocumentEditView,
-    DocumentListView, DocumentManyDeleteView, DocumentManyRestoreView,
+    DeletedDocumentDeleteView, DeletedDocumentDeleteManyView,
+    DeletedDocumentListView, DocumentEditView, DocumentListView,
     DocumentPageView, DocumentPageListView, DocumentPreviewView,
-    DocumentRestoreView, DocumentTypeCreateView, DocumentTypeDeleteView,
+    DocumentRestoreView, DocumentRestoreManyView, DocumentTrashView,
+    DocumentTrashManyView,  DocumentTypeCreateView, DocumentTypeDeleteView,
     DocumentTypeDocumentListView, DocumentTypeFilenameDeleteView,
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView, DocumentTypeEditView, DocumentVersionListView,
@@ -48,7 +49,7 @@ urlpatterns = patterns(
         name='document_restore'
     ),
     url(
-        r'^multiple/restore/$', DocumentManyRestoreView.as_view(),
+        r'^multiple/restore/$', DocumentRestoreManyView.as_view(),
         name='document_multiple_restore'
     ),
     url(
@@ -56,7 +57,7 @@ urlpatterns = patterns(
         name='document_delete'
     ),
     url(
-        r'^multiple/delete/$', DocumentManyDeleteView.as_view(),
+        r'^multiple/delete/$', DeletedDocumentDeleteManyView.as_view(),
         name='document_multiple_delete'
     ),
     url(
@@ -68,11 +69,11 @@ urlpatterns = patterns(
         name='document_multiple_document_type_edit'
     ),
     url(
-        r'^(?P<document_id>\d+)/trash/$', 'document_trash',
+        r'^(?P<pk>\d+)/trash/$', DocumentTrashView.as_view(),
         name='document_trash'
     ),
     url(
-        r'^multiple/trash/$', 'document_multiple_trash',
+        r'^multiple/trash/$', DocumentTrashManyView.as_view(),
         name='document_multiple_trash'
     ),
     url(
