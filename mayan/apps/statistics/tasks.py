@@ -4,17 +4,15 @@ import logging
 
 from mayan.celery import app
 
-from .classes import StatisticNamespace
+from .classes import Statistic
 
 logger = logging.getLogger(__name__)
 
 
 @app.task(ignore_result=True)
-def task_check_statistics():
+def task_execute_statistic(slug):
     logger.info('Executing')
 
-    for namespace in StatisticNamespace.get_all():
-        for statistic in namespace.statistics:
-            statistic.execute()
+    Statistic.get(slug=slug).execute()
 
     logger.info('Finshed')

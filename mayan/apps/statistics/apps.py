@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
-from datetime import timedelta
-
+from celery.schedules import crontab
 from kombu import Exchange, Queue
 
 from django.utils.translation import ugettext_lazy as _
@@ -9,13 +8,14 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.celery import app
 from common import MayanAppConfig, menu_object, menu_secondary, menu_tools
 
+from navigation import SourceColumn
+
 from .classes import Statistic, StatisticNamespace
 from .links import (
     link_execute, link_namespace_details, link_namespace_list,
-    link_statistics
+    link_statistics, link_view
 )
-from .literals import STATISTICS_REFRESH_INTERVAL
-from .tasks import task_check_statistics  # NOQA - Force registration of task
+from .tasks import task_execute_statistic  # NOQA - Force registration of task
 
 
 class StatisticsApp(MayanAppConfig):
@@ -25,13 +25,10 @@ class StatisticsApp(MayanAppConfig):
     def ready(self):
         super(StatisticsApp, self).ready()
 
-        app.conf.CELERYBEAT_SCHEDULE.update(
-            {
-                'statistics.task_check_statistics': {
-                    'task': 'statistics.tasks.task_check_statistics',
-                    'schedule': timedelta(seconds=STATISTICS_REFRESH_INTERVAL),
-                },
-            }
+        SourceColumn(
+            source=Statistic,
+            label=_('Schedule'),
+            attribute='schedule',
         )
 
         app.conf.CELERY_QUEUES.extend(
@@ -43,15 +40,7 @@ class StatisticsApp(MayanAppConfig):
             )
         )
 
-        app.conf.CELERY_ROUTES.update(
-            {
-                'statistics.tasks.task_check_statistics': {
-                    'queue': 'statistics'
-                },
-            }
-        )
-
-        menu_object.bind_links(links=(link_execute,), sources=(Statistic,))
+        menu_object.bind_links(links=(link_execute, link_view), sources=(Statistic,))
         menu_object.bind_links(
             links=(link_namespace_details,), sources=(StatisticNamespace,)
         )

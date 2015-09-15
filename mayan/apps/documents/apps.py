@@ -74,7 +74,8 @@ from .permissions import (
 from .settings import setting_thumbnail_size
 from .statistics import (
     new_documents_per_month, new_document_pages_per_month,
-    new_document_versions_per_month
+    new_document_versions_per_month, total_document_per_month,
+    total_document_page_per_month, total_document_version_per_month
 )
 from .widgets import document_thumbnail
 
@@ -352,24 +353,48 @@ class DocumentsApp(MayanAppConfig):
             links=(link_transformation_list,), sources=(DocumentPage,)
         )
 
-        namespace = StatisticNamespace(name='documents', label=_('Documents'))
+        namespace = StatisticNamespace(slug='documents', label=_('Documents'))
         namespace.add_statistic(
             slug='new-documents-per-month',
             label=_('New documents per month'),
             func=new_documents_per_month,
-            renderer=CharJSLine
+            renderer=CharJSLine,
+            minute='0'
         )
         namespace.add_statistic(
             slug='new-document-versions-per-month',
             label=_('New document versions per month'),
             func=new_document_versions_per_month,
-            renderer=CharJSLine
+            renderer=CharJSLine,
+            minute='0'
         )
         namespace.add_statistic(
             slug='new-document-pages-per-month',
             label=_('New document pages per month'),
             func=new_document_pages_per_month,
-            renderer=CharJSLine
+            renderer=CharJSLine,
+            minute='0'
+        )
+        namespace.add_statistic(
+            slug='total-documents-at-each-month',
+            label=_('Total documents at each month'),
+            func=total_document_per_month,
+            renderer=CharJSLine,
+            minute='0'
+        )
+        namespace.add_statistic(
+            slug='total-document-versions-at-each-month',
+            label=_('Total document versions at each month'),
+            func=total_document_version_per_month,
+            renderer=CharJSLine,
+            minute='0'
+        )
+        namespace.add_statistic(
+            slug='total-document-pages-at-each-month',
+            label=_('Total document pages at each month'),
+            func=total_document_page_per_month,
+            renderer=CharJSLine,
+            minute='0'
         )
 
         post_initial_setup.connect(

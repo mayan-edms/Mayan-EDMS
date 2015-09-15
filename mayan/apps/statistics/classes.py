@@ -2,6 +2,11 @@ from __future__ import unicode_literals
 
 import json
 
+from celery.schedules import crontab
+from djcelery.models import PeriodicTask
+
+from mayan.celery import app
+
 from .models import StatisticResult
 
 
@@ -13,14 +18,14 @@ class StatisticNamespace(object):
         return cls._registry.values()
 
     @classmethod
-    def get(cls, name):
-        return cls._registry[name]
+    def get(cls, slug):
+        return cls._registry[slug]
 
-    def __init__(self, name, label):
-        self.name = name
+    def __init__(self, slug, label):
+        self.slug = slug
         self.label = label
         self._statistics = []
-        self.__class__._registry[name] = self
+        self.__class__._registry[slug] = self
 
     def __unicode__(self):
         return unicode(self.label)
@@ -31,16 +36,28 @@ class StatisticNamespace(object):
         self._statistics.append(statistic)
 
     @property
-    def id(self):
-        return self.name
-
-    @property
     def statistics(self):
         return self._statistics
 
 
 class Statistic(object):
     _registry = {}
+
+    @staticmethod
+    def purge_schedules():
+        queryset = PeriodicTask.objects.filter(name__startswith='statistics.').exclude(name__in=Statistic.get_task_names())
+
+        for periodic_task in queryset:
+            crontab_instance = periodic_task.crontab
+            periodic_task.delete()
+
+            if crontab_instance and not crontab_instance.periodictask_set.all():
+                # Only delete the interval if nobody else is using it
+                crontab_instance.delete()
+
+        StatisticResult.objects.filter(
+            slug__in=queryset.values_list('name', flat=True)
+        ).delete()
 
     @classmethod
     def get_all(cls):
@@ -50,11 +67,39 @@ class Statistic(object):
     def get(cls, slug):
         return cls._registry[slug]
 
-    def __init__(self, slug, label, func, renderer):
+    @classmethod
+    def get_task_names(cls):
+        return [task.get_task_name() for task in cls.get_all()]
+
+    def __init__(self, slug, label, func, renderer, minute='*', hour='*', day_of_week='*', day_of_month='*', month_of_year='*'):
         self.slug = slug
         self.label = label
         self.func = func
         self.renderer = renderer
+
+        self.schedule = crontab(
+            minute=minute, hour=hour, day_of_week=day_of_week,
+            day_of_month=day_of_month, month_of_year=month_of_year,
+        )
+
+        app.conf.CELERYBEAT_SCHEDULE.update(
+            {
+                self.get_task_name(): {
+                    'task': 'statistics.tasks.task_execute_statistic',
+                    'schedule': self.schedule,
+                    'args': (self.slug,)
+                },
+            }
+        )
+
+        app.conf.CELERY_ROUTES.update(
+            {
+                self.get_task_name(): {
+                    'queue': 'statistics'
+                },
+            }
+        )
+
         self.__class__._registry[slug] = self
 
     def __unicode__(self):
@@ -63,14 +108,13 @@ class Statistic(object):
     def execute(self):
         self.store_results(results=self.func())
 
-    @property
-    def id(self):
-        return self.slug
+    def get_task_name(self):
+        return 'statistics.task_execute_statistic_{}'.format(self.slug)
 
     def store_results(self, results):
         StatisticResult.objects.filter(slug=self.slug).delete()
 
-        statistic_result = StatisticResult.objects.create(slug=self.slug)
+        statistic_result, created = StatisticResult.objects.get_or_create(slug=self.slug)
         statistic_result.store_data(data=results)
 
     def get_results(self):
@@ -96,6 +140,14 @@ class CharJSLine(ChartRenderer):
 
     dataset_palette = (
         {
+            'fillColor': "rgba(220,220,220,0.2)",
+            'strokeColor': "rgba(220,220,220,1)",
+            'pointColor': "rgba(220,220,220,1)",
+            'pointStrokeColor': "#fff",
+            'pointHighlightFill': "#fff",
+            'pointHighlightStroke': "rgba(220,220,220,1)",
+        },
+        {
             'fillColor': "rgba(151,187,205,0.2)",
             'strokeColor': "rgba(151,187,205,1)",
             'pointColor': "rgba(151,187,205,1)",
@@ -103,14 +155,6 @@ class CharJSLine(ChartRenderer):
             'pointHighlightFill': "#fff",
             'pointHighlightStroke': "rgba(151,187,205,1)",
         },
-        {
-            'fillColor': "rgba(220,220,220,0.2)",
-            'strokeColor': "rgba(220,220,220,1)",
-            'pointColor': "rgba(220,220,220,1)",
-            'pointStrokeColor': "#fff",
-            'pointHighlightFill': "#fff",
-            'pointHighlightStroke': "rgba(220,220,220,1)",
-        }
     )
 
     def get_chart_data(self):

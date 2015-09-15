@@ -2,13 +2,18 @@ from __future__ import unicode_literals
 
 import json
 
+from django.core.urlresolvers import reverse
 from django.http import Http404
+from django.shortcuts import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 
-from common.views import SingleObjectDetailView, SingleObjectListView
+from common.generics import (
+    ConfirmView, SingleObjectDetailView, SingleObjectListView
+)
 
 from .classes import Statistic, StatisticNamespace
 from .permissions import permission_statistics_view
+from .tasks import task_execute_statistic
 
 
 class NamespaceListView(SingleObjectListView):
@@ -34,7 +39,7 @@ class NamespaceDetailView(SingleObjectListView):
         }
 
     def get_namespace(self):
-        return StatisticNamespace.get(self.kwargs['namespace_id'])
+        return StatisticNamespace.get(self.kwargs['slug'])
 
     def get_queryset(self):
         return self.get_namespace().statistics
@@ -61,3 +66,30 @@ class StatisticDetailView(SingleObjectDetailView):
 
     def get_template_names(self):
         return (self.get_object().renderer.template_name,)
+
+
+class StatisticQueueView(ConfirmView):
+    view_permission = permission_statistics_view
+
+    def get_extra_context(self):
+        return {
+            'namespace': self.get_object().namespace,
+            'object': self.get_object(),
+            'title': _('Queue statistic "%s" to be updated?') % self.get_object(),
+        }
+
+    def get_object(self):
+        try:
+            return Statistic.get(self.kwargs['slug'])
+        except KeyError:
+            raise Http404(_('Statistic "%s" not found.') % self.kwargs['slug'])
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'statistics:namespace_details',
+            args=(self.get_object().namespace.slug,)
+        )
+
+    def post(self, request, *args, **kwargs):
+        task_execute_statistic.delay(slug=self.get_object().slug)
+        return HttpResponseRedirect(self.get_post_action_redirect())
