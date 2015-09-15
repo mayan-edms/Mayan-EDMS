@@ -267,6 +267,7 @@ Other changes
 * setting_view_permission added to the smart settings app. It is no longer required to be a super admin or staff user to see the setting values.
 * Removal of the CombinedSource class.
 * Reduction of text strings.
+* Statistics refactor; purgestatistics command
 
 Upgrading from a previous version
 ---------------------------------
