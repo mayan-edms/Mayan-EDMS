@@ -12,8 +12,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.views import (
-    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    AssignRemoveView, ConfirmView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
@@ -294,31 +294,6 @@ class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
         return context
 
 
-def rebuild_index_instances(request):
-    """
-    Confirmation view to execute the tool: do_rebuild_all_indexes
-    """
-
-    Permission.check_permissions(
-        request.user, (permission_document_indexing_rebuild_indexes,)
-    )
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method != 'POST':
-        return render_to_response('appearance/generic_confirm.html', {
-            'previous': previous,
-            'next': next,
-            'title': _('Rebuild all indexes?'),
-            'message': _('On large databases this operation may take some time to execute.'),
-        }, context_instance=RequestContext(request))
-    else:
-        task_do_rebuild_all_indexes.apply_async()
-        messages.success(request, _('Index rebuild queued successfully.'))
-        return HttpResponseRedirect(next)
-
-
 class DocumentIndexNodeListView(SingleObjectListView):
     """
     Show a list of indexes where the current document can be found
@@ -355,3 +330,18 @@ class DocumentIndexNodeListView(SingleObjectListView):
 
     def get_queryset(self):
         return DocumentIndexInstanceNode.objects.get_for(self.get_document())
+
+
+class RebuildIndexesConfirmView(ConfirmView):
+    extra_context = {
+        'message': _('On large databases this operation may take some time to execute.'),
+        'title': _('Rebuild all indexes?'),
+    }
+    view_permission = permission_document_indexing_rebuild_indexes
+
+    def get_post_action_redirect(self):
+        return reverse('common:tools_list')
+
+    def view_action(self):
+        task_do_rebuild_all_indexes.apply_async()
+        messages.success(self.request, _('Index rebuild queued successfully.'))
