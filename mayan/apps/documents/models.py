@@ -152,7 +152,7 @@ class Document(models.Model):
     in_trash = models.BooleanField(
         default=False, editable=False, verbose_name=_('In trash?')
     )
-    #TODO: set editable to False
+    # TODO: set editable to False
     deleted_date_time = models.DateTimeField(
         blank=True, editable=True, null=True,
         verbose_name=_('Date and time trashed')

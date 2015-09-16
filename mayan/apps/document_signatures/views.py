@@ -37,17 +37,23 @@ def document_verify(request, document_pk):
             request.user, (permission_document_verify,)
         )
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_verify, request.user, document)
+        AccessControlList.objects.check_access(
+            permission_document_verify, request.user, document
+        )
 
     document.add_as_recent_document_for_user(request.user)
 
     try:
-        signature = DocumentVersionSignature.objects.verify_signature(document.latest_version)
+        signature = DocumentVersionSignature.objects.verify_signature(
+            document.latest_version
+        )
     except AttributeError:
         signature_state = SIGNATURE_STATES.get(SIGNATURE_STATE_NONE)
         signature = None
     else:
-        signature_state = SIGNATURE_STATES.get(getattr(signature, 'status', None))
+        signature_state = SIGNATURE_STATES.get(
+            getattr(signature, 'status', None)
+        )
 
     paragraphs = [_('Signature status: %s') % signature_state['text']]
 
@@ -65,7 +71,9 @@ def document_verify(request, document_pk):
                 _('Signature ID: %s') % signature.signature_id,
                 _('Signature type: %s') % signature_type,
                 _('Key ID: %s') % signature.key_id,
-                _('Timestamp: %s') % datetime.fromtimestamp(int(signature.sig_timestamp)),
+                _('Timestamp: %s') % datetime.fromtimestamp(
+                    int(signature.sig_timestamp)
+                ),
                 _('Signee: %s') % force_escape(getattr(signature, 'username', '')),
             ]
         )
@@ -82,9 +90,13 @@ def document_signature_upload(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.check_permissions(request.user, (permission_signature_upload,))
+        Permission.check_permissions(
+            request.user, (permission_signature_upload,)
+        )
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_signature_upload, request.user, document)
+        AccessControlList.objects.check_access(
+            permission_signature_upload, request.user, document
+        )
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -96,8 +108,12 @@ def document_signature_upload(request, document_pk):
         form = DetachedSignatureForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                DocumentVersionSignature.objects.add_detached_signature(document.latest_version, request.FILES['file'])
-                messages.success(request, _('Detached signature uploaded successfully.'))
+                DocumentVersionSignature.objects.add_detached_signature(
+                    document.latest_version, request.FILES['file']
+                )
+                messages.success(
+                    request, _('Detached signature uploaded successfully.')
+                )
                 return HttpResponseRedirect(next)
             except Exception as exception:
                 messages.error(request, exception)
@@ -118,13 +134,19 @@ def document_signature_download(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.check_permissions(request.user, (permission_signature_download,))
+        Permission.check_permissions(
+            request.user, (permission_signature_download,)
+        )
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_signature_download, request.user, document)
+        AccessControlList.objects.check_access(
+            permission_signature_download, request.user, document
+        )
 
     try:
         if DocumentVersionSignature.objects.has_detached_signature(document.latest_version):
-            signature = DocumentVersionSignature.objects.detached_signature(document.latest_version)
+            signature = DocumentVersionSignature.objects.detached_signature(
+                document.latest_version
+            )
             return serve_file(
                 request,
                 signature,
@@ -142,9 +164,13 @@ def document_signature_delete(request, document_pk):
     document = get_object_or_404(Document, pk=document_pk)
 
     try:
-        Permission.check_permissions(request.user, (permission_signature_delete,))
+        Permission.check_permissions(
+            request.user, (permission_signature_delete,)
+        )
     except PermissionDenied:
-        AccessControlList.objects.check_access(permission_signature_delete, request.user, document)
+        AccessControlList.objects.check_access(
+            permission_signature_delete, request.user, document
+        )
 
     document.add_as_recent_document_for_user(request.user)
 
@@ -154,17 +180,27 @@ def document_signature_delete(request, document_pk):
 
     if request.method == 'POST':
         try:
-            DocumentVersionSignature.objects.clear_detached_signature(document.latest_version)
-            messages.success(request, _('Detached signature deleted successfully.'))
+            DocumentVersionSignature.objects.clear_detached_signature(
+                document.latest_version
+            )
+            messages.success(
+                request, _('Detached signature deleted successfully.')
+            )
             return HttpResponseRedirect(next)
         except Exception as exception:
-            messages.error(request, _('Error while deleting the detached signature; %s') % exception)
+            messages.error(
+                request, _(
+                    'Error while deleting the detached signature; %s'
+                ) % exception
+            )
             return HttpResponseRedirect(previous)
 
     return render_to_response('appearance/generic_confirm.html', {
-        'title': _('Delete the detached signature from document: %s?') % document,
-        'next': next,
-        'previous': previous,
-        'object': document,
         'delete_view': True,
+        'next': next,
+        'object': document,
+        'previous': previous,
+        'title': _(
+            'Delete the detached signature from document: %s?'
+        ) % document,
     }, context_instance=RequestContext(request))

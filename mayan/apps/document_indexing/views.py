@@ -87,7 +87,9 @@ class SetupIndexTreeTemplateListView(SingleObjectListView):
         return get_object_or_404(Index, pk=self.kwargs['pk'])
 
     def get_queryset(self):
-        return self.get_index().template_root.get_descendants(include_self=True)
+        return self.get_index().template_root.get_descendants(
+            include_self=True
+        )
 
     def get_extra_context(self):
         return {
@@ -128,7 +130,9 @@ class SetupIndexDocumentTypesView(AssignRemoveView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
-            'title': _('Document types linked to index: %s') % self.get_object()
+            'title': _(
+                'Document types linked to index: %s'
+            ) % self.get_object()
         }
 
 
@@ -251,7 +255,9 @@ class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
 
         if self.index_instance:
             if self.index_instance.index_template_node.link_documents:
-                return DocumentListView.dispatch(self, request, *args, **kwargs)
+                return DocumentListView.dispatch(
+                    self, request, *args, **kwargs
+                )
 
         return SingleObjectListView.dispatch(self, request, *args, **kwargs)
 
@@ -276,7 +282,9 @@ class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
             'hide_links': True,
             'object': self.index_instance,
             'title': mark_safe(
-                _('Contents for index: %s') % get_breadcrumbs(self.index_instance)
+                _(
+                    'Contents for index: %s'
+                ) % get_breadcrumbs(self.index_instance)
             )
         }
 

@@ -24,19 +24,80 @@ from .permissions import (
 )
 
 
-class UserListView(SingleObjectListView):
-    view_permission = permission_user_view
+class GroupCreateView(SingleObjectCreateView):
+    extra_context = {'title': _('Create new group')}
+    fields = ('name',)
+    model = Group
+    post_action_redirect = reverse_lazy('user_management:group_list')
+    view_permission = permission_group_create
+
+
+class GroupEditView(SingleObjectEditView):
+    fields = ('name',)
+    model = Group
+    post_action_redirect = reverse_lazy('user_management:group_list')
+    view_permission = permission_group_edit
 
     def get_extra_context(self):
         return {
-            'hide_link': True,
-            'title': _('Users'),
+            'object': self.get_object(),
+            'title': _('Edit group: %s') % self.get_object(),
         }
 
-    def get_queryset(self):
-        return get_user_model().objects.exclude(
-            is_superuser=True
-        ).exclude(is_staff=True).order_by('last_name', 'first_name')
+
+class GroupListView(SingleObjectListView):
+    extra_context = {
+        'hide_link': True,
+        'title': _('Groups'),
+    }
+    model = Group
+    view_permission = permission_group_view
+
+
+class GroupDeleteView(SingleObjectDeleteView):
+    model = Group
+    post_action_redirect = reverse_lazy('user_management:group_list')
+    view_permission = permission_group_delete
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Delete the group: %s?') % self.get_object(),
+        }
+
+
+class GroupMembersView(AssignRemoveView):
+    decode_content_type = True
+    left_list_title = _('Available groups')
+    right_list_title = _('Members of groups')
+    view_permission = permission_group_edit
+
+    def add(self, item):
+        self.get_object().user_set.add(item)
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Members of group: %s') % self.get_object()
+        }
+
+    def get_object(self):
+        return get_object_or_404(Group, pk=self.kwargs['pk'])
+
+    def left_list(self):
+        return AssignRemoveView.generate_choices(
+            User.objects.exclude(
+                groups=self.get_object()
+            ).exclude(is_staff=True).exclude(is_superuser=True)
+        )
+
+    def right_list(self):
+        return AssignRemoveView.generate_choices(
+            self.get_object().user_set.all()
+        )
+
+    def remove(self, item):
+        self.get_object().user_set.remove(item)
 
 
 class UserEditView(SingleObjectEditView):
@@ -52,6 +113,53 @@ class UserEditView(SingleObjectEditView):
             'object': self.get_object(),
             'title': _('Edit user: %s') % self.get_object(),
         }
+
+
+class UserGroupsView(AssignRemoveView):
+    decode_content_type = True
+    left_list_title = _('Available groups')
+    right_list_title = _('Groups joined')
+    view_permission = permission_user_edit
+
+    def add(self, item):
+        item.user_set.add(self.get_object())
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Groups of user: %s') % self.get_object()
+        }
+
+    def get_object(self):
+        return get_object_or_404(User, pk=self.kwargs['pk'])
+
+    def left_list(self):
+        return AssignRemoveView.generate_choices(
+            Group.objects.exclude(user=self.get_object())
+        )
+
+    def right_list(self):
+        return AssignRemoveView.generate_choices(
+            Group.objects.filter(user=self.get_object())
+        )
+
+    def remove(self, item):
+        item.user_set.remove(self.get_object())
+
+
+class UserListView(SingleObjectListView):
+    view_permission = permission_user_view
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'title': _('Users'),
+        }
+
+    def get_queryset(self):
+        return get_user_model().objects.exclude(
+            is_superuser=True
+        ).exclude(is_staff=True).order_by('last_name', 'first_name')
 
 
 def user_add(request):
@@ -230,112 +338,3 @@ def user_multiple_set_password(request):
     return user_set_password(
         request, user_id_list=request.GET.get('id_list', [])
     )
-
-
-class UserGroupsView(AssignRemoveView):
-    decode_content_type = True
-    left_list_title = _('Available groups')
-    right_list_title = _('Groups joined')
-    view_permission = permission_user_edit
-
-    def add(self, item):
-        item.user_set.add(self.get_object())
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Groups of user: %s') % self.get_object()
-        }
-
-    def get_object(self):
-        return get_object_or_404(User, pk=self.kwargs['pk'])
-
-    def left_list(self):
-        return AssignRemoveView.generate_choices(
-            Group.objects.exclude(user=self.get_object())
-        )
-
-    def right_list(self):
-        return AssignRemoveView.generate_choices(
-            Group.objects.filter(user=self.get_object())
-        )
-
-    def remove(self, item):
-        item.user_set.remove(self.get_object())
-
-
-# Group views
-class GroupCreateView(SingleObjectCreateView):
-    extra_context = {'title': _('Create new group')}
-    fields = ('name',)
-    model = Group
-    post_action_redirect = reverse_lazy('user_management:group_list')
-    view_permission = permission_group_create
-
-
-class GroupEditView(SingleObjectEditView):
-    fields = ('name',)
-    model = Group
-    post_action_redirect = reverse_lazy('user_management:group_list')
-    view_permission = permission_group_edit
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Edit group: %s') % self.get_object(),
-        }
-
-
-class GroupListView(SingleObjectListView):
-    extra_context = {
-        'hide_link': True,
-        'title': _('Groups'),
-    }
-    model = Group
-    view_permission = permission_group_view
-
-
-class GroupDeleteView(SingleObjectDeleteView):
-    model = Group
-    post_action_redirect = reverse_lazy('user_management:group_list')
-    view_permission = permission_group_delete
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Delete the group: %s?') % self.get_object(),
-        }
-
-
-class GroupMembersView(AssignRemoveView):
-    decode_content_type = True
-    left_list_title = _('Available groups')
-    right_list_title = _('Members of groups')
-    view_permission = permission_group_edit
-
-    def add(self, item):
-        self.get_object().user_set.add(item)
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Members of group: %s') % self.get_object()
-        }
-
-    def get_object(self):
-        return get_object_or_404(Group, pk=self.kwargs['pk'])
-
-    def left_list(self):
-        return AssignRemoveView.generate_choices(
-            User.objects.exclude(
-                groups=self.get_object()
-            ).exclude(is_staff=True).exclude(is_superuser=True)
-        )
-
-    def right_list(self):
-        return AssignRemoveView.generate_choices(
-            self.get_object().user_set.all()
-        )
-
-    def remove(self, item):
-        self.get_object().user_set.remove(item)

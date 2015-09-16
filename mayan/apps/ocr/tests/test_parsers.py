@@ -10,7 +10,6 @@ from documents.tests import (
 
 from ..classes import TextExtractor
 from ..parsers import PDFMinerParser, PopplerParser
-from ..settings import setting_auto_ocr
 
 
 @override_settings(OCR_AUTO_OCR=False)

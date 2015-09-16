@@ -7,7 +7,7 @@ from django.test import TestCase, override_settings
 from documents.models import DocumentType
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
-from ..models import MetadataType, DocumentMetadata, DocumentTypeMetadataType
+from ..models import MetadataType, DocumentMetadata
 
 TEST_DEFAULT_VALUE = 'test'
 TEST_LOOKUP_TEMPLATE = '1,2,3'

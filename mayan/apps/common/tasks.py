@@ -6,7 +6,6 @@ import logging
 from django.utils.timezone import now
 
 from mayan.celery import app
-from common.models import SharedUploadedFile
 
 from .literals import UPLOAD_EXPIRATION_INTERVAL
 from .models import SharedUploadedFile

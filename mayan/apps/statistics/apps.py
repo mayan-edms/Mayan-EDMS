@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from celery.schedules import crontab
 from kombu import Exchange, Queue
 
 from django.utils.translation import ugettext_lazy as _

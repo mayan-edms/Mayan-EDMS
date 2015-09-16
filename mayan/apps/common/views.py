@@ -194,7 +194,9 @@ def multi_object_action_view(request):
     )
 
     action = request.GET.get('action', None)
-    id_list = ','.join([key[3:] for key in request.GET.keys() if key.startswith('pk_')])
+    id_list = ','.join(
+        [key[3:] for key in request.GET.keys() if key.startswith('pk_')]
+    )
     items_property_list = [
         (key[11:]) for key in request.GET.keys() if key.startswith('properties_')
     ]

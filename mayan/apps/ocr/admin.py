@@ -14,5 +14,3 @@ class DocumentTypeSettingsAdmin(admin.ModelAdmin):
 class DocumentVersionOCRErrorAdmin(admin.ModelAdmin):
     list_display = ('document_version', 'datetime_submitted')
     readonly_fields = ('document_version', 'datetime_submitted', 'result')
-
-

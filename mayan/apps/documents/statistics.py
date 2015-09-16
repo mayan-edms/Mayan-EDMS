@@ -4,12 +4,7 @@ import datetime
 
 import qsstats
 
-from django.db.models import Avg, Count, Max, Min
-from django.utils.translation import ugettext_lazy as _
-
-from statistics.classes import Statistic
-
-from .models import Document, DocumentType, DocumentPage, DocumentVersion
+from .models import Document, DocumentPage, DocumentVersion
 
 
 def new_documents_per_month():
@@ -49,6 +44,7 @@ def new_document_pages_per_month():
             'Pages': map(lambda x: {x[0].month: x[1]}, qss.time_series(start=this_year, end=today, interval='months'))
         }
     }
+
 
 def total_document_per_month():
     qss = qsstats.QuerySetStats(Document.objects.all(), 'date_added')

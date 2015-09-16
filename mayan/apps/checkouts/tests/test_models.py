@@ -11,10 +11,9 @@ from django.utils.timezone import now
 from authentication.tests.literals import (
     TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD
 )
-from documents.models import Document, DocumentType
+from documents.models import DocumentType
 from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
-    TEST_OFFICE_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
 )
 
 from ..exceptions import (
@@ -54,7 +53,9 @@ class DocumentCheckoutTestCase(TestCase):
 
         self.assertTrue(self.document.is_checked_out())
         self.assertTrue(
-            DocumentCheckout.objects.is_document_checked_out(document=self.document)
+            DocumentCheckout.objects.is_document_checked_out(
+                document=self.document
+            )
         )
 
     def test_version_creation_blocking(self):
@@ -81,7 +82,9 @@ class DocumentCheckoutTestCase(TestCase):
 
         self.assertFalse(self.document.is_checked_out())
         self.assertFalse(
-            DocumentCheckout.objects.is_document_checked_out(document=self.document)
+            DocumentCheckout.objects.is_document_checked_out(
+                document=self.document
+            )
         )
 
     def test_double_checkout(self):
@@ -94,8 +97,9 @@ class DocumentCheckoutTestCase(TestCase):
 
         with self.assertRaises(DocumentAlreadyCheckedOut):
             DocumentCheckout.objects.checkout_document(
-                document=self.document, expiration_datetime=expiration_datetime,
-                user=self.admin_user, block_new_version=True
+                document=self.document,
+                expiration_datetime=expiration_datetime, user=self.admin_user,
+                block_new_version=True
             )
 
     def test_checkin_without_checkout(self):

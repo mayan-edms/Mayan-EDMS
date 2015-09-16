@@ -37,13 +37,18 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='role',
             name='groups',
-            field=models.ManyToManyField(related_name='roles', verbose_name='Groups', to='auth.Group'),
+            field=models.ManyToManyField(
+                related_name='roles', verbose_name='Groups', to='auth.Group'
+            ),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='role',
             name='permissions',
-            field=models.ManyToManyField(related_name='roles', verbose_name='Permissions', to='permissions.StoredPermission'),
+            field=models.ManyToManyField(
+                related_name='roles', verbose_name='Permissions',
+                to='permissions.StoredPermission'
+            ),
             preserve_default=True,
         ),
     ]

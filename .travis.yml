@@ -3,7 +3,7 @@ python:
   - 2.7
 env:
   global:
-   - TEST_APPS="acls authentication django_gpg document_indexing document_signatures documents dynamic_search folders lock_manager metadata ocr permissions sources tags"
+   - TEST_APPS="acls authentication checkouts django_gpg document_indexing document_signatures documents dynamic_search folders lock_manager metadata ocr permissions sources tags"
   matrix:
    - DB=mysql
    - DB=postgres

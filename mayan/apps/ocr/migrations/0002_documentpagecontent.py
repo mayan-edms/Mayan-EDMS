@@ -15,9 +15,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='DocumentPageContent',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('content', models.TextField(verbose_name='Content', blank=True)),
-                ('document_page', models.OneToOneField(related_name='ocr_content', verbose_name='Document page', to='documents.DocumentPage')),
+                (
+                    'id', models.AutoField(
+                        verbose_name='ID', serialize=False, auto_created=True,
+                        primary_key=True
+                    )
+                ),
+                (
+                    'content', models.TextField(
+                        verbose_name='Content', blank=True
+                    )
+                ),
+                (
+                    'document_page', models.OneToOneField(
+                        related_name='ocr_content',
+                        verbose_name='Document page', to='documents.DocumentPage'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Document page content',

@@ -142,7 +142,9 @@ def checkout_info(request, document_pk):
             ) % render_date_object(checkout_info.expiration_datetime)
         )
         paragraphs.append(
-            _('New versions allowed: %s') % (_('Yes') if not checkout_info.block_new_version else _('No'))
+            _(
+                'New versions allowed: %s'
+            ) % (_('Yes') if not checkout_info.block_new_version else _('No'))
         )
 
     return render_to_response(
@@ -198,7 +200,8 @@ class DocumentCheckinView(ConfirmView):
                 )
             except PermissionDenied:
                 AccessControlList.objects.check_access(
-                    permission_document_checkin_override, request.user, document
+                    permission_document_checkin_override, request.user,
+                    document
                 )
 
         try:

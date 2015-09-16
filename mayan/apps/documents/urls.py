@@ -17,7 +17,7 @@ from .views import (
     DeletedDocumentListView, DocumentEditView, DocumentListView,
     DocumentPageView, DocumentPageListView, DocumentPreviewView,
     DocumentRestoreView, DocumentRestoreManyView, DocumentTrashView,
-    DocumentTrashManyView,  DocumentTypeCreateView, DocumentTypeDeleteView,
+    DocumentTrashManyView, DocumentTypeCreateView, DocumentTypeDeleteView,
     DocumentTypeDocumentListView, DocumentTypeFilenameDeleteView,
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView, DocumentTypeEditView, DocumentVersionListView,

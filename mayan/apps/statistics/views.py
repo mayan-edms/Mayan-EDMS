@@ -1,10 +1,7 @@
 from __future__ import unicode_literals
 
-import json
-
 from django.core.urlresolvers import reverse
 from django.http import Http404
-from django.shortcuts import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 
 from common.generics import (

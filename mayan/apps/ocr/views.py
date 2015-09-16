@@ -235,7 +235,11 @@ def entry_re_queue(request, pk=None, pk_list=None):
                     }
                 )
             except DocumentVersion.DoesNotExist:
-                messages.error(request, _('Document version id#: %d, no longer exists.') % entry.document_version_id)
+                messages.error(
+                    request, _(
+                        'Document version id#: %d, no longer exists.'
+                    ) % entry.document_version_id
+                )
         return HttpResponseRedirect(next)
 
     context = {

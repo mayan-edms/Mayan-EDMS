@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from importlib import import_module
-
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_setup, menu_object
