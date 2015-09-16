@@ -14,7 +14,11 @@
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta http-equiv="Content-Language" content="{{ LANGUAGE_CODE }}" />
-        <title>{% block title %}{% endblock %} :: {% block project_name %}{% project_name %}{% endblock %}</title>
+        <title>
+            {% block base_title %}
+                {% block title %}{% endblock %} :: {% block project_name %}{% project_name %}{% endblock %}
+            {% endblock base_title %}
+        </title>
 
         {% compress css %}
             <link href="{% static 'appearance/packages/font-awesome-4.3.0/css/font-awesome.min.css' %}" media="screen" rel="stylesheet" type="text/css" />
