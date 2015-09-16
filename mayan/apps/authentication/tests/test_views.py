@@ -6,10 +6,10 @@ from django.core.urlresolvers import reverse
 from django.test import TestCase, override_settings
 from django.test.client import Client
 
-TEST_ADMIN_EMAIL = 'admin@admin.com'
-TEST_ADMIN_PASSWORD = 'test_admin_password'
-TEST_ADMIN_USERNAME = 'test_admin'
-TEST_EMAIL_AUTHENTICATION_BACKEND = 'authentication.auth.email_auth_backend.EmailAuthBackend'
+from .literals import (
+    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
+    TEST_EMAIL_AUTHENTICATION_BACKEND
+)
 
 
 class UserLoginTestCase(TestCase):
