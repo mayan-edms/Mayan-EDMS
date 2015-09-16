@@ -14,7 +14,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='folder',
             name='label',
-            field=models.CharField(max_length=128, verbose_name='Label', db_index=True),
+            field=models.CharField(
+                max_length=128, verbose_name='Label', db_index=True
+            ),
             preserve_default=True,
         ),
     ]

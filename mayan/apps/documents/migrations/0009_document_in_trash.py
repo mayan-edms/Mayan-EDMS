@@ -14,7 +14,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='document',
             name='in_trash',
-            field=models.BooleanField(default=False, verbose_name='In trash?', editable=False),
+            field=models.BooleanField(
+                default=False, verbose_name='In trash?', editable=False
+            ),
             preserve_default=True,
         ),
     ]

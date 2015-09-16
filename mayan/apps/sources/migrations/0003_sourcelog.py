@@ -14,10 +14,28 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='SourceLog',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('datetime', models.DateTimeField(auto_now_add=True, verbose_name='Date time')),
-                ('message', models.TextField(verbose_name='Message', editable=False, blank=True)),
-                ('source', models.ForeignKey(related_name='logs', verbose_name='Source', to='sources.Source')),
+                (
+                    'id', models.AutoField(
+                        verbose_name='ID', serialize=False, auto_created=True,
+                        primary_key=True
+                    )
+                ),
+                (
+                    'datetime', models.DateTimeField(
+                        auto_now_add=True, verbose_name='Date time'
+                    )
+                ),
+                (
+                    'message', models.TextField(
+                        verbose_name='Message', editable=False, blank=True
+                    )
+                ),
+                (
+                    'source', models.ForeignKey(
+                        related_name='logs', verbose_name='Source',
+                        to='sources.Source'
+                    )
+                ),
             ],
             options={
                 'ordering': ['-datetime'],

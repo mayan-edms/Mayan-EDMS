@@ -14,7 +14,11 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='smartlink',
             name='dynamic_label',
-            field=models.CharField(help_text='This expression will be evaluated against the current selected document.', max_length=96, verbose_name='Dynamic label', blank=True),
+            field=models.CharField(
+                help_text='This expression will be evaluated against the '
+                'current selected document.', max_length=96,
+                verbose_name='Dynamic label', blank=True
+            ),
             preserve_default=True,
         ),
         migrations.AlterField(

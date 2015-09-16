@@ -27,9 +27,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'dynamic_title', models.CharField(
-                        help_text='This expression will be evaluated against the current selected document.',
-                        max_length=96, verbose_name='Dynamic title',
-                        blank=True
+                        help_text='This expression will be evaluated against '
+                        'the current selected document.', max_length=96,
+                        verbose_name='Dynamic title', blank=True
                     )
                 ),
                 (
@@ -68,8 +68,8 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'foreign_document_data', models.CharField(
-                        help_text='This represents the metadata of all other documents.',
-                        max_length=128,
+                        help_text='This represents the metadata of all other '
+                        'documents.', max_length=128,
                         verbose_name='Foreign document attribute'
                     )
                 ),
@@ -89,20 +89,23 @@ class Migration(migrations.Migration):
                             ('endswith', 'ends with'),
                             ('iendswith', 'ends with (case insensitive)'),
                             ('regex', 'is in regular expression'),
-                            ('iregex', 'is in regular expression (case insensitive)')
+                            (
+                                'iregex',
+                                'is in regular expression (case insensitive)'
+                            )
                         ]
                     )
                 ),
                 (
                     'expression', models.TextField(
-                        help_text='This expression will be evaluated against the current document.',
-                        verbose_name='Expression'
+                        help_text='This expression will be evaluated against '
+                        'the current document.', verbose_name='Expression'
                     )
                 ),
                 (
                     'negated', models.BooleanField(
-                        default=False, help_text='Inverts the logic of the operator.',
-                        verbose_name='Negated'
+                        default=False, help_text='Inverts the logic of the '
+                        'operator.', verbose_name='Negated'
                     )
                 ),
                 (

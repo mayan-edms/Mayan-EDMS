@@ -16,13 +16,20 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='document',
             name='uuid',
-            field=models.CharField(default=documents.models.UUID_FUNCTION, max_length=48, editable=False),
+            field=models.CharField(
+                default=documents.models.UUID_FUNCTION, max_length=48,
+                editable=False
+            ),
             preserve_default=True,
         ),
         migrations.AlterField(
             model_name='documentversion',
             name='file',
-            field=models.FileField(upload_to=documents.models.UUID_FUNCTION, storage=storage.backends.filebasedstorage.FileBasedStorage(), verbose_name='File'),
+            field=models.FileField(
+                upload_to=documents.models.UUID_FUNCTION,
+                storage=storage.backends.filebasedstorage.FileBasedStorage(),
+                verbose_name='File'
+            ),
             preserve_default=True,
         ),
     ]

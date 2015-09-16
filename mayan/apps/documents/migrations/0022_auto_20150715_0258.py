@@ -14,7 +14,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='document',
             name='description',
-            field=models.TextField(default='', verbose_name='Description', blank=True),
+            field=models.TextField(
+                default='', verbose_name='Description', blank=True
+            ),
             preserve_default=True,
         ),
     ]

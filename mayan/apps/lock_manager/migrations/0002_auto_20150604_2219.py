@@ -14,7 +14,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='lock',
             name='name',
-            field=models.CharField(unique=True, max_length=64, verbose_name='Name'),
+            field=models.CharField(
+                unique=True, max_length=64, verbose_name='Name'
+            ),
             preserve_default=True,
         ),
     ]

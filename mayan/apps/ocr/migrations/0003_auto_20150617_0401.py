@@ -10,7 +10,8 @@ def move_content_from_documents_to_ocr_app(apps, schema_editor):
 
     for document_page in DocumentPage.objects.all():
         document_page_content = DocumentPageContent(
-            document_page=document_page, content=document_page.content_old or ''
+            document_page=document_page,
+            content=document_page.content_old or ''
         )
         document_page_content.save()
 

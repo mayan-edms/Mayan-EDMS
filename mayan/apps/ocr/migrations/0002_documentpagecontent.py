@@ -29,7 +29,8 @@ class Migration(migrations.Migration):
                 (
                     'document_page', models.OneToOneField(
                         related_name='ocr_content',
-                        verbose_name='Document page', to='documents.DocumentPage'
+                        verbose_name='Document page',
+                        to='documents.DocumentPage'
                     )
                 ),
             ],

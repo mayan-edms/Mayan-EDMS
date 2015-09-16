@@ -14,7 +14,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documentversion',
             name='comment',
-            field=models.TextField(default='', null=True, verbose_name='Comment', blank=True),
+            field=models.TextField(
+                default='', null=True, verbose_name='Comment', blank=True
+            ),
             preserve_default=True,
         ),
     ]

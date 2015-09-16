@@ -15,11 +15,33 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='RecentSearch',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('query', models.TextField(verbose_name='Query', editable=False)),
-                ('datetime_created', models.DateTimeField(auto_now=True, verbose_name='Datetime created', db_index=True)),
-                ('hits', models.IntegerField(verbose_name='Hits', editable=False)),
-                ('user', models.ForeignKey(verbose_name='User', to=settings.AUTH_USER_MODEL)),
+                (
+                    'id', models.AutoField(
+                        verbose_name='ID', serialize=False, auto_created=True,
+                        primary_key=True
+                    )
+                ),
+                (
+                    'query', models.TextField(
+                        verbose_name='Query', editable=False
+                    )
+                ),
+                (
+                    'datetime_created', models.DateTimeField(
+                        auto_now=True, verbose_name='Datetime created',
+                        db_index=True
+                    )
+                ),
+                (
+                    'hits', models.IntegerField(
+                        verbose_name='Hits', editable=False
+                    )
+                ),
+                (
+                    'user', models.ForeignKey(
+                        verbose_name='User', to=settings.AUTH_USER_MODEL
+                    )
+                ),
             ],
             options={
                 'ordering': ('-datetime_created',),

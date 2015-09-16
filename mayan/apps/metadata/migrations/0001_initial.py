@@ -56,7 +56,8 @@ class Migration(migrations.Migration):
                 (
                     'document_type', models.ForeignKey(
                         related_name='metadata',
-                        verbose_name='Document type', to='documents.DocumentType'
+                        verbose_name='Document type',
+                        to='documents.DocumentType'
                     )
                 ),
             ],
@@ -90,7 +91,8 @@ class Migration(migrations.Migration):
                 (
                     'default', models.CharField(
                         help_text='Enter a string to be evaluated.',
-                        max_length=128, null=True, verbose_name='Default', blank=True
+                        max_length=128, null=True, verbose_name='Default',
+                        blank=True
                     )
                 ),
                 (

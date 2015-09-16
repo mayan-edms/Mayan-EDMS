@@ -16,7 +16,8 @@ class Migration(migrations.Migration):
             model_name='transformation',
             name='arguments',
             field=models.TextField(
-                help_text='Enter the arguments for the transformation as a YAML dictionary. ie: {"degrees": 180}',
+                help_text='Enter the arguments for the transformation as a '
+                'YAML dictionary. ie: {"degrees": 180}',
                 blank=True, verbose_name='Arguments',
                 validators=[converter.validators.YAMLValidator()]
             ),

@@ -112,8 +112,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'initial', models.BooleanField(
-                        default=False,
-                        help_text='Select if this will be the state with which you want the workflow to start in. Only one state can be the initial state.',
+                        default=False, help_text='Select if this will be the '
+                        'state with which you want the workflow to start in. '
+                        'Only one state can be the initial state.',
                         verbose_name='Initial'
                     )
                 ),

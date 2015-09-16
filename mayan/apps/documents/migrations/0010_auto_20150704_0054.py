@@ -25,7 +25,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='document',
             name='deleted_date_time',
-            field=models.DateTimeField(default=datetime.datetime(2015, 7, 4, 0, 54, 7, 910642, tzinfo=utc), verbose_name='Date and time deleted', blank=True),
+            field=models.DateTimeField(
+                default=datetime.datetime(
+                    2015, 7, 4, 0, 54, 7, 910642, tzinfo=utc
+                ), verbose_name='Date and time deleted', blank=True
+            ),
             preserve_default=False,
         ),
     ]
