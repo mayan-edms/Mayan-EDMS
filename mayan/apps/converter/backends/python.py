@@ -93,7 +93,7 @@ class Python(ConverterBase):
                 file_object.seek(0)
         else:
             try:
-                image = Image.open(self.file_object).convert('RGB')
+                image = Image.open(self.file_object)
             except IOError as exception:
                 error_message = _('Exception determining PDF page count; %s') % exception
                 logger.error(error_message)

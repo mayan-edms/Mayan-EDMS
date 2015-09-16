@@ -163,7 +163,7 @@ class ConverterBase(object):
         self.file_object.seek(0)
 
         try:
-            self.image = Image.open(self.file_object).convert('RGB')
+            self.image = Image.open(self.file_object)
         except IOError:
             # Cannot identify image file
             self.image = self.convert(page_number=page_number)
@@ -176,7 +176,16 @@ class ConverterBase(object):
             self.seek(0)
 
         image_buffer = StringIO()
-        self.image.save(image_buffer, format=output_format)
+
+        new_mode = self.image.mode
+
+        if output_format.upper() == 'JPEG':
+            if self.image.mode == 'P':
+                new_mode = 'RGB'
+                if 'transparency' in self.image.info:
+                    new_mode = 'RGBA'
+
+        self.image.convert(new_mode).save(image_buffer, format=output_format)
         image_buffer.seek(0)
 
         return image_buffer
