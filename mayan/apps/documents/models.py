@@ -86,6 +86,11 @@ class DocumentType(models.Model):
 
     objects = DocumentTypeManager()
 
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Document type')
+        verbose_name_plural = _('Documents types')
+
     def __str__(self):
         return self.label
 
@@ -114,11 +119,6 @@ class DocumentType(models.Model):
                 label or unicode(file_object), self, exception
             )
             raise
-
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Document type')
-        verbose_name_plural = _('Documents types')
 
 
 @python_2_unicode_compatible
@@ -173,22 +173,21 @@ class Document(models.Model):
         verbose_name_plural = _('Documents')
         ordering = ('-date_added',)
 
-    def set_document_type(self, document_type, force=False):
-        has_changed = self.document_type != document_type
-
-        self.document_type = document_type
-        self.save()
-        if has_changed or force:
-            post_document_type_change.send(
-                sender=self.__class__, instance=self
-            )
-
-    def invalidate_cache(self):
-        for document_version in self.versions.all():
-            document_version.invalidate_cache()
-
     def __str__(self):
         return self.label or ugettext('Document stub, id: %d') % self.pk
+
+    def delete(self, *args, **kwargs):
+        to_trash = kwargs.pop('to_trash', True)
+
+        if not self.in_trash and to_trash:
+            self.in_trash = True
+            self.deleted_date_time = now()
+            self.save()
+        else:
+            for version in self.versions.all():
+                version.delete()
+
+            return super(Document, self).delete(*args, **kwargs)
 
     def get_absolute_url(self):
         return reverse('documents:document_preview', args=(self.pk,))
@@ -207,29 +206,21 @@ class Document(models.Model):
         else:
             event_document_properties_edit.commit(actor=user, target=self)
 
+    # Custom methods
+
     def add_as_recent_document_for_user(self, user):
         RecentDocument.objects.add_document_for_user(user, self)
 
-    def delete(self, *args, **kwargs):
-        to_trash = kwargs.pop('to_trash', True)
+    def exists(self):
+        """
+        Returns a boolean value that indicates if the document's
+        latest version file exists in storage
+        """
+        return self.latest_version.exists()
 
-        if not self.in_trash and to_trash:
-            self.in_trash = True
-            self.deleted_date_time = now()
-            self.save()
-        else:
-            for version in self.versions.all():
-                version.delete()
-
-            return super(Document, self).delete(*args, **kwargs)
-
-    def restore(self):
-        self.in_trash = False
-        self.save()
-
-    @property
-    def size(self):
-        return self.latest_version.size
+    def invalidate_cache(self):
+        for document_version in self.versions.all():
+            document_version.invalidate_cache()
 
     def new_version(self, file_object, comment=None, _user=None):
         logger.info('Creating new document version for document: %s', self)
@@ -242,7 +233,6 @@ class Document(models.Model):
         logger.info('New document version queued for document: %s', self)
         return document_version
 
-    # Proxy methods
     def open(self, *args, **kwargs):
         """
         Return a file descriptor to a document's file irrespective of
@@ -250,20 +240,43 @@ class Document(models.Model):
         """
         return self.latest_version.open(*args, **kwargs)
 
+    def restore(self):
+        self.in_trash = False
+        self.save()
+
     def save_to_file(self, *args, **kwargs):
         return self.latest_version.save_to_file(*args, **kwargs)
 
-    def exists(self):
-        """
-        Returns a boolean value that indicates if the document's
-        latest version file exists in storage
-        """
-        return self.latest_version.exists()
+    def set_document_type(self, document_type, force=False):
+        has_changed = self.document_type != document_type
+
+        self.document_type = document_type
+        self.save()
+        if has_changed or force:
+            post_document_type_change.send(
+                sender=self.__class__, instance=self
+            )
+
+    @property
+    def size(self):
+        return self.latest_version.size
 
     # Compatibility methods
+
     @property
-    def file_mimetype(self):
-        return self.latest_version.mimetype
+    def checksum(self):
+        return self.latest_version.checksum
+
+    @property
+    def date_updated(self):
+        return self.latest_version.timestamp
+
+    # TODO: look to remove, only used by the OCR parser
+    def document_save_to_temp_dir(self, filename, buffer_size=1024 * 1024):
+        temporary_path = os.path.join(
+            setting_temporary_directory.value, filename
+        )
+        return self.save_to_file(temporary_path, buffer_size)
 
     # TODO: rename to file_encoding
     @property
@@ -271,16 +284,16 @@ class Document(models.Model):
         return self.latest_version.encoding
 
     @property
-    def date_updated(self):
-        return self.latest_version.timestamp
+    def file_mimetype(self):
+        return self.latest_version.mimetype
 
     @property
-    def checksum(self):
-        return self.latest_version.checksum
+    def latest_version(self):
+        return self.versions.order_by('timestamp').last()
 
     @property
-    def signature_state(self):
-        return self.latest_version.signature_state
+    def page_count(self):
+        return self.latest_version.page_count
 
     @property
     def pages(self):
@@ -291,19 +304,8 @@ class Document(models.Model):
             return 0
 
     @property
-    def page_count(self):
-        return self.latest_version.page_count
-
-    @property
-    def latest_version(self):
-        return self.versions.order_by('timestamp').last()
-
-    # TODO: look to remove, only used by the OCR parser
-    def document_save_to_temp_dir(self, filename, buffer_size=1024 * 1024):
-        temporary_path = os.path.join(
-            setting_temporary_directory.value, filename
-        )
-        return self.save_to_file(temporary_path, buffer_size)
+    def signature_state(self):
+        return self.latest_version.signature_state
 
 
 class DeletedDocument(Document):
@@ -361,6 +363,14 @@ class DocumentVersion(models.Model):
     def __str__(self):
         return '{0} - {1}'.format(self.document, self.timestamp)
 
+    def delete(self, *args, **kwargs):
+        for page in self.pages.all():
+            page.delete()
+
+        self.file.storage.delete(self.file.name)
+
+        return super(DocumentVersion, self).delete(*args, **kwargs)
+
     def save(self, *args, **kwargs):
         """
         Overloaded save method that updates the document version's checksum,
@@ -415,88 +425,11 @@ class DocumentVersion(models.Model):
                         sender=self.document.__class__, instance=self.document
                     )
 
-    def invalidate_cache(self):
-        cache_storage_backend.delete(self.cache_filename)
-        for page in self.pages.all():
-            page.invalidate_cache()
+    # Custom methods
 
-    def update_checksum(self, save=True):
-        """
-        Open a document version's file and update the checksum field using
-        the user provided checksum function
-        """
-        if self.exists():
-            source = self.open()
-            self.checksum = unicode(HASH_FUNCTION(source.read()))
-            source.close()
-            if save:
-                self.save()
-
-    def update_page_count(self, save=True):
-        try:
-            with self.open() as file_object:
-                converter = converter_class(
-                    file_object=file_object, mime_type=self.mimetype
-                )
-                detected_pages = converter.get_page_count()
-        except PageCountError:
-            # If converter backend doesn't understand the format,
-            # use 1 as the total page count
-            pass
-        else:
-            with transaction.atomic():
-                self.pages.all().delete()
-
-                for page_number in range(detected_pages):
-                    DocumentPage.objects.create(
-                        document_version=self, page_number=page_number + 1
-                    )
-
-            # TODO: is this needed anymore
-            if save:
-                self.save()
-
-            return detected_pages
-
-    def revert(self, user=None):
-        """
-        Delete the subsequent versions after this one
-        """
-        logger.info(
-            'Reverting to document document: %s to version: %s',
-            self.document, self
-        )
-
-        event_document_version_revert.commit(actor=user, target=self.document)
-
-        for version in self.document.versions.filter(timestamp__gt=self.timestamp):
-            version.delete()
-
-    def update_mimetype(self, save=True):
-        """
-        Read a document verions's file and determine the mimetype by calling
-        the get_mimetype wrapper
-        """
-        if self.exists():
-            try:
-                with self.open() as file_object:
-                    self.mimetype, self.encoding = get_mimetype(
-                        file_object=file_object
-                    )
-            except:
-                self.mimetype = ''
-                self.encoding = ''
-            finally:
-                if save:
-                    self.save()
-
-    def delete(self, *args, **kwargs):
-        for page in self.pages.all():
-            page.delete()
-
-        self.file.storage.delete(self.file.name)
-
-        return super(DocumentVersion, self).delete(*args, **kwargs)
+    @property
+    def cache_filename(self):
+        return 'document-version-{}'.format(self.uuid)
 
     def exists(self):
         """
@@ -504,58 +437,6 @@ class DocumentVersion(models.Model):
         exists in storage
         """
         return self.file.storage.exists(self.file.name)
-
-    def open(self, raw=False):
-        """
-        Return a file descriptor to a document version's file irrespective of
-        the storage backend
-        """
-        if raw:
-            return self.file.storage.open(self.file.name)
-        else:
-            result = self.file.storage.open(self.file.name)
-            for key in sorted(DocumentVersion._pre_open_hooks):
-                result = DocumentVersion._pre_open_hooks[key](result, self)
-
-            return result
-
-    def save_to_file(self, filepath, buffer_size=1024 * 1024):
-        """
-        Save a copy of the document from the document storage backend
-        to the local filesystem
-        """
-        input_descriptor = self.open()
-        output_descriptor = open(filepath, 'wb')
-        while True:
-            copy_buffer = input_descriptor.read(buffer_size)
-            if copy_buffer:
-                output_descriptor.write(copy_buffer)
-            else:
-                break
-
-        output_descriptor.close()
-        input_descriptor.close()
-        return filepath
-
-    @property
-    def size(self):
-        if self.exists():
-            return self.file.storage.size(self.file.name)
-        else:
-            return None
-
-    @property
-    def page_count(self):
-        return self.pages.count()
-
-    @property
-    def uuid(self):
-        # Make cache UUID a mix of document UUID, version ID
-        return '{}-{}'.format(self.document.uuid, self.pk)
-
-    @property
-    def cache_filename(self):
-        return 'document-version-{}'.format(self.uuid)
 
     def get_intermidiate_file(self):
         cache_filename = self.cache_filename
@@ -588,6 +469,128 @@ class DocumentVersion(models.Model):
                 cache_storage_backend.delete(cache_filename)
                 raise
 
+    def invalidate_cache(self):
+        cache_storage_backend.delete(self.cache_filename)
+        for page in self.pages.all():
+            page.invalidate_cache()
+
+    def open(self, raw=False):
+        """
+        Return a file descriptor to a document version's file irrespective of
+        the storage backend
+        """
+        if raw:
+            return self.file.storage.open(self.file.name)
+        else:
+            result = self.file.storage.open(self.file.name)
+            for key in sorted(DocumentVersion._pre_open_hooks):
+                result = DocumentVersion._pre_open_hooks[key](result, self)
+
+            return result
+
+    @property
+    def page_count(self):
+        return self.pages.count()
+
+    def revert(self, _user=None):
+        """
+        Delete the subsequent versions after this one
+        """
+        logger.info(
+            'Reverting to document document: %s to version: %s',
+            self.document, self
+        )
+
+        event_document_version_revert.commit(actor=_user, target=self.document)
+        for version in self.document.versions.filter(timestamp__gt=self.timestamp):
+            version.delete()
+
+    def save_to_file(self, filepath, buffer_size=1024 * 1024):
+        """
+        Save a copy of the document from the document storage backend
+        to the local filesystem
+        """
+        input_descriptor = self.open()
+        output_descriptor = open(filepath, 'wb')
+        while True:
+            copy_buffer = input_descriptor.read(buffer_size)
+            if copy_buffer:
+                output_descriptor.write(copy_buffer)
+            else:
+                break
+
+        output_descriptor.close()
+        input_descriptor.close()
+        return filepath
+
+    @property
+    def size(self):
+        if self.exists():
+            return self.file.storage.size(self.file.name)
+        else:
+            return None
+
+    def update_checksum(self, save=True):
+        """
+        Open a document version's file and update the checksum field using
+        the user provided checksum function
+        """
+        if self.exists():
+            source = self.open()
+            self.checksum = unicode(HASH_FUNCTION(source.read()))
+            source.close()
+            if save:
+                self.save()
+
+    def update_mimetype(self, save=True):
+        """
+        Read a document verions's file and determine the mimetype by calling
+        the get_mimetype wrapper
+        """
+        if self.exists():
+            try:
+                with self.open() as file_object:
+                    self.mimetype, self.encoding = get_mimetype(
+                        file_object=file_object
+                    )
+            except:
+                self.mimetype = ''
+                self.encoding = ''
+            finally:
+                if save:
+                    self.save()
+
+    def update_page_count(self, save=True):
+        try:
+            with self.open() as file_object:
+                converter = converter_class(
+                    file_object=file_object, mime_type=self.mimetype
+                )
+                detected_pages = converter.get_page_count()
+        except PageCountError:
+            # If converter backend doesn't understand the format,
+            # use 1 as the total page count
+            pass
+        else:
+            with transaction.atomic():
+                self.pages.all().delete()
+
+                for page_number in range(detected_pages):
+                    DocumentPage.objects.create(
+                        document_version=self, page_number=page_number + 1
+                    )
+
+            # TODO: is this needed anymore
+            if save:
+                self.save()
+
+            return detected_pages
+
+    @property
+    def uuid(self):
+        # Make cache UUID a mix of document UUID, version ID
+        return '{}-{}'.format(self.document.uuid, self.pk)
+
 
 @python_2_unicode_compatible
 class DocumentTypeFilename(models.Model):
@@ -604,15 +607,14 @@ class DocumentTypeFilename(models.Model):
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
-    def __str__(self):
-        return self.filename
-
     class Meta:
         ordering = ('filename',)
         unique_together = ('document_type', 'filename')
         verbose_name = _('Quick rename template')
         verbose_name_plural = _('Quick rename templates')
 
+    def __str__(self):
+        return self.filename
 
 @python_2_unicode_compatible
 class DocumentPage(models.Model):
@@ -628,6 +630,11 @@ class DocumentPage(models.Model):
         verbose_name=_('Page number')
     )
 
+    class Meta:
+        ordering = ('page_number',)
+        verbose_name = _('Document page')
+        verbose_name_plural = _('Document pages')
+
     def __str__(self):
         return _(
             'Page %(page_num)d out of %(total_pages)d of %(document)s'
@@ -637,43 +644,22 @@ class DocumentPage(models.Model):
             'total_pages': self.document_version.pages.count()
         }
 
-    class Meta:
-        ordering = ('page_number',)
-        verbose_name = _('Document page')
-        verbose_name_plural = _('Document pages')
-
-    def get_absolute_url(self):
-        return reverse('documents:document_page_view', args=(self.pk,))
-
     def delete(self, *args, **kwargs):
         self.invalidate_cache()
         super(DocumentPage, self).delete(*args, **kwargs)
 
-    @property
-    def siblings(self):
-        return DocumentPage.objects.filter(
-            document_version=self.document_version
-        )
+    def get_absolute_url(self):
+        return reverse('documents:document_page_view', args=(self.pk,))
 
-    # Compatibility methods
-    @property
-    def document(self):
-        return self.document_version.document
-
-    def invalidate_cache(self):
-        cache_storage_backend.delete(self.cache_filename)
-
-    @property
-    def uuid(self):
-        """
-        Make cache UUID a mix of version ID and page ID to avoid using stale
-        images
-        """
-        return '{}-{}'.format(self.document_version.uuid, self.pk)
+    # Custom methods
 
     @property
     def cache_filename(self):
         return 'page-cache-{}'.format(self.uuid)
+
+    @property
+    def document(self):
+        return self.document_version.document
 
     def get_image(self, *args, **kwargs):
         as_base64 = kwargs.pop('as_base64', False)
@@ -759,6 +745,23 @@ class DocumentPage(models.Model):
         else:
             return page_image
 
+    def invalidate_cache(self):
+        cache_storage_backend.delete(self.cache_filename)
+
+    @property
+    def siblings(self):
+        return DocumentPage.objects.filter(
+            document_version=self.document_version
+        )
+
+    @property
+    def uuid(self):
+        """
+        Make cache UUID a mix of version ID and page ID to avoid using stale
+        images
+        """
+        return '{}-{}'.format(self.document_version.uuid, self.pk)
+
 
 @python_2_unicode_compatible
 class RecentDocument(models.Model):
@@ -778,10 +781,10 @@ class RecentDocument(models.Model):
 
     objects = RecentDocumentManager()
 
-    def __str__(self):
-        return unicode(self.document)
-
     class Meta:
         ordering = ('-datetime_accessed',)
         verbose_name = _('Recent document')
         verbose_name_plural = _('Recent documents')
+
+    def __str__(self):
+        return unicode(self.document)

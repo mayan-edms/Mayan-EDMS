@@ -404,5 +404,5 @@ class APIDocumentVersionRevertView(generics.GenericAPIView):
     serializer_class = DocumentVersionRevertSerializer
 
     def post(self, *args, **kwargs):
-        self.get_object().revert()
+        self.get_object().revert(_user=self.request.user)
         return Response(status=status.HTTP_200_OK)
