@@ -8,6 +8,9 @@ env:
    - DB=mysql
    - DB=postgres
    - DB=sqlite
+before_install:
+  - sudo apt-get update -qq
+  - sudo apt-get install -qq python-dev gcc tesseract-ocr tesseract-ocr-deu unpaper ghostscript libjpeg-dev libpng-dev poppler-utils libreoffice
 install:
   - "pip install -r requirements/testing.txt"
   - if [[ $DB == mysql ]]; then pip install -q mysql-python; fi
@@ -31,18 +34,3 @@ notifications:
     - roberto.rosario@mayan-edms.com
     on_success: never
     on_failure: always
-sudo: false
-addons:
-  apt:
-    packages:
-    - python-dev
-    - gcc
-    - tesseract-ocr
-    - tesseract-ocr-deu
-    - unpaper
-    - ghostscript
-    - libjpeg-dev
-    - libpng-dev
-    - poppler-utils
-    - libreoffice
-    - libtiff-dev
