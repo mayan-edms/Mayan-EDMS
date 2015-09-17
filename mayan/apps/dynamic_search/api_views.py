@@ -13,7 +13,7 @@ from .serializers import RecentSearchSerializer
 
 class APIRecentSearchListView(generics.ListAPIView):
     """
-    Returns a list of all the recent searches.
+    Returns a list of all the recent searches for the logged user.
     """
 
     filter_backends = (RecentSearchUserFilter,)
@@ -21,7 +21,7 @@ class APIRecentSearchListView(generics.ListAPIView):
     serializer_class = RecentSearchSerializer
 
 
-class APIRecentSearchView(generics.RetrieveDestroyAPIView):
+class APIRecentSearchView(generics.RetrieveAPIView):
     """
     Returns the selected recent search details.
     """
