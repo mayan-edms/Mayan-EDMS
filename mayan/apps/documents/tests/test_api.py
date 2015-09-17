@@ -2,6 +2,8 @@
 
 from __future__ import unicode_literals
 
+import time
+
 from json import loads
 
 from django.contrib.auth.models import User
@@ -205,12 +207,15 @@ class DocumentAPITestCase(APITestCase):
                 file_object=File(file_object),
             )
 
+        # Needed by MySQL as milliseconds value is not store in timestamp field
+        time.sleep(1)
+
         with open(TEST_DOCUMENT_PATH) as file_object:
             document.new_version(file_object=File(file_object))
 
-        document_version = document.versions.first()
-
         self.assertEqual(document.versions.count(), 2)
+
+        document_version = document.versions.first()
 
         self.client.post(
             reverse(

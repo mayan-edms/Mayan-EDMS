@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+import time
+
 from django.core.files import File
 from django.test import TestCase, override_settings
 
@@ -126,3 +128,50 @@ class MultiPageTiffTestCase(TestCase):
             '40adaa9d658b65c70a7f002dfe084a8354bb77c0dfbf1993e31fb024a285fb1d'
         )
         self.assertEqual(self.document.page_count, 2)
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class DocumentVersionTestCase(TestCase):
+    def setUp(self):
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=File(file_object)
+            )
+
+    def tearDown(self):
+        self.document_type.delete()
+
+    def test_add_new_version(self):
+        self.assertEqual(self.document.versions.count(), 1)
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            self.document.new_version(
+                file_object=File(file_object)
+            )
+
+        self.assertEqual(self.document.versions.count(), 2)
+
+        self.assertEqual(
+            self.document.checksum,
+            'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3'
+        )
+
+    def test_revert_version(self):
+        self.assertEqual(self.document.versions.count(), 1)
+
+        time.sleep(1)
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            self.document.new_version(
+                file_object=File(file_object)
+            )
+
+        self.assertEqual(self.document.versions.count(), 2)
+
+        self.document.versions.first().revert()
+
+        self.assertEqual(self.document.versions.count(), 1)
