@@ -18,10 +18,7 @@ permission_workflow_edit = namespace.add_permission(
 permission_workflow_view = namespace.add_permission(
     name='workflow_view', label=_('View workflows')
 )
-permission_document_workflow_view = namespace.add_permission(
-    name='document_workflow_view', label=_('View document workflows')
-)
-permission_document_workflow_transition = namespace.add_permission(
-    name='document_workflow_transition',
-    label=_('Transition document workflows')
+permission_workflow_transition = namespace.add_permission(
+    name='workflow_transition',
+    label=_('Transition workflows')
 )
