@@ -223,26 +223,99 @@ this means that users can start uploading documents as soon as **Mayan EDMS**
 is installed without having to do any configuration setting changes. The
 default document type and default document source are both called 'Default'.
 
+Link unbinding
+--------------
+Suppport for allowing 3rd party apps to unbind links binded by the core apps
+was added to further improve re-branding and customization.
+
+Statistics refactor
+-------------------
+Statistics gathering and generation has been overhauled to allow for the
+creation of scheduled statistics. This allows statistics computation to be
+scheduled during low load times. A new management command was added to
+purge stale or orphan schedules left behind by the editing of statistics
+scheduled. The command is `purgestatistics` and has no parameters.
+
+Apps merge
+----------
+Several app were merge to reduce complexity of the code based on function.
+These are: the `home`, `common`, `project_tools` and `project_setup` apps,
+as well as the `documents` and `document_acls` apps.
+
+New signals
+-----------
+Two new signals are provided to better trigger processing documents at the
+correct moment, these are:
+
+* common/perform_upgrade - Launched on the `performupgrade` management command
+  to allow 3rd party apps to execute custom upgrade procedures in an unified
+  manner.
+* common/post_initial_setup - Launched on the `initialsetup` management command
+  to allow for post install initialization or setup.
+* common/post_upgrade - Launched after the `performupgrade` management command
+  finishes.
+* documents/post_version_upload = Launched after a new document version is
+  uploaded.
+* document/post_document_type_change = Launched after the document type of a
+  document is changed.
+* documents/post_document_created = Launched after a document is finally ready
+  to be accessed, not when it is created.
+* ocr/post_document_version_ocr - Launched when the OCR of a document version
+  has finished.
+
+Test improvements
+-----------------
+Instead of a flat tests.py file, each app now has a tests/ directory containing
+tests modules for each particular aspect of an apps, ie: test_models.py,
+test_views.py, test_classes.py. The total number and coverage of tests has been
+greatly increased.
+
+Indexes recalculation
+---------------------
+Indexes are now recalculated on when a new document is ready as well as the
+when the metadata of a document changes. This allows indexing documents not
+only based on their metadata but also based on their properties.
+
+Upgrade command
+---------------
+To reduce the steps and complexity of upgrades, the new `performupgrade`
+management command was been added. All necessary apps upgrade steps will be
+performed by this command.
+
+Admin changes
+-------------
+Installation admins are no longer required to have the `superusers` or `staff`
+Django account flags. All setup tasks are now governed by a permission which
+can be assigned to a role. This creates a clear separation between an install
+administrator and the server administrator in which the installtion was
+performed.
+
+OCR functions split
+-------------------
+The textual content of a document as interpreted by the OCR now resides as data
+in the `ocr` app and not in the `documents` app as before. OCR content might
+not be available for all documents after the upgrade and might need to be
+queued again. To help with this situation there is new tool called `OCR all
+documents` for this exact situation.
+
+New internal document creation workflow
+---------------------------------------
+The new document upload code now returns a document stub while content is
+processing. This allows API users to have the document id of the document
+just uploaded and perform other actions on it while it becomes ready
+for access.
+
 Other changes
 -------------
 
-* Merge of document_print and document_hard_copy views
-* New class based and menu based navigation system
-* Repurpose the installtion app
-* Merging of apps
-
-  * home and common
-  * project_tools, project_setup and common
-  * documents and document_acls apps
-
-* Addition of a post document version OCR signal
-* New class based transformations
-* Removal of the DOCUMENT_RESTRICTIONS_OVERRIDE permission
-* Use of Font awesome icons
-* Move document text content display code to the OCR app
-* Add new permissions PERMISSION_OCR_CONTENT_VIEW
-* Removed the page_label field
-* Document type OCR settings move to the OCR app
+* Merge of document_print and document_hard_copy views.
+* New class based and menu based navigation system.
+* Repurpose the installtion app.
+* New class based transformations.
+* Usage of Font Awesome icons set.
+* Move document text content display code to the OCR app.
+* Add new permissions PERMISSION_OCR_CONTENT_VIEW.
+* Document type OCR settings move to the OCR app.
 * New dependencies:
 
   * PyYAML
@@ -250,24 +323,22 @@ Other changes
   * django-pure-pagination
   * djangorestframework-recursive
 
-* Permissions refactor
-* Removal of default class ACLs
-* Management command to remove obsolete permissions
-* Removal of the ImageMagick and GraphicsMagick converter backends
-* Remove support for applying roles to new users automatically
-* New internal document creation workflow, returns document stub while content is processing
-* New document ready signal
-* Index are recalculating after new document is ready
-* Normalization of 'title' and 'name' fields to 'label'
-* Split tests files.
-* ``performupgrade`` management command.
-* Improved API
+* Management command to remove obsolete permissions: `purgepermissions`.
+* Normalization of 'title' and 'name' fields to 'label'.
+* Improved API, now at version 1.
 * Invert page title/project name order in browser title.
 * Use Django's class based views pagination
-* setting_view_permission added to the smart settings app. It is no longer required to be a super admin or staff user to see the setting values.
-* Removal of the CombinedSource class.
 * Reduction of text strings.
-* Statistics refactor; purgestatistics command
+
+Removals
+--------
+* Removal of the CombinedSource class.
+* Removal of default class ACLs
+* Removal of the ImageMagick and GraphicsMagick converter backends
+* Remove support for applying roles to new users automatically
+* Removal of the DOCUMENT_RESTRICTIONS_OVERRIDE permission
+* Removed the page_label field
+
 
 Upgrading from a previous version
 ---------------------------------
