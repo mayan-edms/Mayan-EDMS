@@ -22,12 +22,31 @@ logger = logging.getLogger(__name__)
 
 
 class ResolvedLink(object):
-    active = False
-    description = None
-    icon = None
-    tags = None
-    text = _('Unnamed link')
-    url = '#'
+    def __init__(self, link, current_view):
+        self.current_view = current_view
+        self.disabled = False
+        self.link = link
+        self.url = '#'
+
+    @property
+    def active(self):
+        return self.link.view == self.current_view
+
+    @property
+    def description(self):
+        return self.link.description
+
+    @property
+    def icon(self):
+        return self.link.icon
+
+    @property
+    def tags(self):
+        return self.link.tags
+
+    @property
+    def text(self):
+        return self.link.text
 
 
 class Menu(object):
@@ -45,10 +64,11 @@ class Menu(object):
 
         self.name = name
         self.bound_links = {}
+        self.unbound_links = {}
         self.__class__._registry[name] = self
 
-    def _add_links_to_source(self, links, source, position=None):
-        source_links = self.bound_links.setdefault(source, [])
+    def _map_links_to_source(self, links, source, map_variable='bound_links', position=None):
+        source_links = getattr(self, map_variable).setdefault(source, [])
 
         for link in links:
             source_links.append(link)
@@ -60,10 +80,10 @@ class Menu(object):
 
         if sources:
             for source in sources:
-                self._add_links_to_source(links, source)
+                self._map_links_to_source(links=links, source=source)
         else:
             # Unsourced links display always
-            self._add_links_to_source(links, None)
+            self._map_links_to_source(links=links, source=None)
 
     def resolve(self, context, source=None):
         request = Variable('request').resolve(context)
@@ -79,7 +99,7 @@ class Menu(object):
             resolved_navigation_object_list = [source]
         else:
             navigation_object_list = context.get(
-                'navigation_object_list', ['object']
+                'navigation_object_list', ('object',)
             )
 
             # Multiple objects
@@ -134,13 +154,35 @@ class Menu(object):
         if resolved_links:
             result.append(resolved_links)
 
+        if result:
+            for resolved_link in result[0]:
+                if resolved_link.link in self.unbound_links.get(source, ()):
+                    result[0].remove(resolved_link)
+
         return result
+
+    def unbind_links(self, links, sources=None):
+        """
+        Allow unbinding links from sources, used to allow 3rd party apps to
+        change the link binding of core apps
+        """
+
+        if sources:
+            for source in sources:
+                self._map_links_to_source(
+                    links=links, source=source, map_variable='unbound_links'
+                )
+        else:
+            # Unsourced links display always
+            self._map_links_to_source(
+                links=links, source=None, map_variable='unbound_links'
+            )
 
 
 class Link(object):
     def __init__(self, text, view, args=None, condition=None,
                  conditional_disable=None, description=None, icon=None,
-                 keep_query=False, klass=None, kwargs=None, permissions=None,
+                 keep_query=False, kwargs=None, permissions=None,
                  remove_from_query=None, tags=None):
 
         self.args = args or []
@@ -149,7 +191,6 @@ class Link(object):
         self.description = description
         self.icon = icon
         self.keep_query = keep_query
-        self.klass = klass
         self.kwargs = kwargs or {}
         self.permissions = permissions or []
         self.remove_from_query = remove_from_query or []
@@ -188,12 +229,7 @@ class Link(object):
             if not self.condition(context):
                 return None
 
-        resolved_link = ResolvedLink()
-        resolved_link.description = self.description
-        resolved_link.icon = self.icon
-        resolved_link.klass = self.klass
-        resolved_link.tags = self.tags
-        resolved_link.text = self.text
+        resolved_link = ResolvedLink(current_view=current_view, link=self)
 
         view_name = Variable('"{}"'.format(self.view))
         if isinstance(self.args, list) or isinstance(self.args, tuple):
@@ -259,9 +295,6 @@ class Link(object):
                 urlquote(resolved_link.url),
                 urlencode(parsed_query_string, doseq=True)
             )
-
-        # Helps highligh in the UI the current link in effect
-        resolved_link.active = self.view == current_view
 
         return resolved_link
 
