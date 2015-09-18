@@ -61,9 +61,10 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'inclusion', models.CharField(
-                        default='&',
-                        help_text='The inclusion is ignored for the first item.',
-                        max_length=16, choices=[('&', 'and'), ('|', 'or')]
+                        default='&', help_text='The inclusion is ignored for '
+                        'the first item.', max_length=16, choices=[
+                            ('&', 'and'), ('|', 'or')
+                        ]
                     )
                 ),
                 (

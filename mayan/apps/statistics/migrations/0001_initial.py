@@ -13,10 +13,23 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='StatisticResult',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                (
+                    'id', models.AutoField(
+                        verbose_name='ID', serialize=False, auto_created=True,
+                        primary_key=True
+                    )
+                ),
                 ('slug', models.SlugField(verbose_name='Slug')),
-                ('datetime', models.DateTimeField(auto_now=True, verbose_name='Date time')),
-                ('serialize_data', models.TextField(verbose_name='Data', blank=True)),
+                (
+                    'datetime', models.DateTimeField(
+                        auto_now=True, verbose_name='Date time'
+                    )
+                ),
+                (
+                    'serialize_data', models.TextField(
+                        verbose_name='Data', blank=True
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'Statistics result',

@@ -22,7 +22,9 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='document',
             name='is_stub',
-            field=models.BooleanField(default=True, verbose_name='Is stub?', editable=False),
+            field=models.BooleanField(
+                default=True, verbose_name='Is stub?', editable=False
+            ),
             preserve_default=True,
         ),
         migrations.RunPython(make_existing_documents_not_stubs),

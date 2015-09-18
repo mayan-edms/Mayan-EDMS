@@ -15,8 +15,8 @@ class Migration(migrations.Migration):
             model_name='index',
             name='slug',
             field=models.SlugField(
-                null=True, max_length=128, blank=True,
-                help_text='This values will be used by other apps to reference this index.',
+                null=True, max_length=128, blank=True, help_text='This values '
+                'will be used by other apps to reference this index.',
                 unique=True, verbose_name='Slug'
             ),
             preserve_default=True,

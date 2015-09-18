@@ -12,7 +12,6 @@ from django.template import VariableDoesNotExist, Variable
 from django.template.defaulttags import URLNode
 from django.utils.encoding import smart_str, smart_unicode
 from django.utils.http import urlencode, urlquote
-from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.utils import return_attrib

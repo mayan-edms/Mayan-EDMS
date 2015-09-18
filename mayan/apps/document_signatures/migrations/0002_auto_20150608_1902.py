@@ -16,13 +16,19 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documentversionsignature',
             name='has_embedded_signature',
-            field=models.BooleanField(default=False, verbose_name='Has embedded signature'),
+            field=models.BooleanField(
+                default=False, verbose_name='Has embedded signature'
+            ),
             preserve_default=True,
         ),
         migrations.AlterField(
             model_name='documentversionsignature',
             name='signature_file',
-            field=models.FileField(storage=storage.backends.filebasedstorage.FileBasedStorage(), upload_to=document_signatures.models.upload_to, null=True, verbose_name='Signature file', blank=True),
+            field=models.FileField(
+                storage=storage.backends.filebasedstorage.FileBasedStorage(),
+                upload_to=document_signatures.models.upload_to, null=True,
+                verbose_name='Signature file', blank=True
+            ),
             preserve_default=True,
         ),
     ]

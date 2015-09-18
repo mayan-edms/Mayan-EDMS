@@ -616,6 +616,7 @@ class DocumentTypeFilename(models.Model):
     def __str__(self):
         return self.filename
 
+
 @python_2_unicode_compatible
 class DocumentPage(models.Model):
     """

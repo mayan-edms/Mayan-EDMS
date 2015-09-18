@@ -163,6 +163,7 @@ class DocumentVersionTestCase(TestCase):
     def test_revert_version(self):
         self.assertEqual(self.document.versions.count(), 1)
 
+        # Needed by MySQL as milliseconds value is not store in timestamp field
         time.sleep(1)
 
         with open(TEST_DOCUMENT_PATH) as file_object:

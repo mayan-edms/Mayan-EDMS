@@ -23,8 +23,9 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'name', models.CharField(
-                        help_text='Internal name used to reference this index.',
-                        unique=True, max_length=64, verbose_name='Name'
+                        help_text='Internal name used to reference this '
+                        'index.', unique=True, max_length=64,
+                        verbose_name='Name'
                     )
                 ),
                 (
@@ -35,8 +36,8 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'enabled', models.BooleanField(
-                        default=True,
-                        help_text='Causes this index to be visible and updated when document data changes.',
+                        default=True, help_text='Causes this index to be '
+                        'visible and updated when document data changes.',
                         verbose_name='Enabled'
                     )
                 ),
@@ -112,21 +113,23 @@ class Migration(migrations.Migration):
                 ),
                 (
                     'expression', models.CharField(
-                        help_text='Enter a python string expression to be evaluated.',
-                        max_length=128, verbose_name='Indexing expression'
+                        help_text='Enter a python string expression to be '
+                        'evaluated.', max_length=128,
+                        verbose_name='Indexing expression'
                     )
                 ),
                 (
                     'enabled', models.BooleanField(
-                        default=True,
-                        help_text='Causes this node to be visible and updated when document data changes.',
+                        default=True, help_text='Causes this node to be '
+                        'visible and updated when document data changes.',
                         verbose_name='Enabled'
                     )
                 ),
                 (
                     'link_documents', models.BooleanField(
-                        default=False,
-                        help_text='Check this option to have this node act as a container for documents and not as a parent for further nodes.',
+                        default=False, help_text='Check this option to have '
+                        'this node act as a container for documents and not '
+                        'as a parent for further nodes.',
                         verbose_name='Link documents'
                     )
                 ),
