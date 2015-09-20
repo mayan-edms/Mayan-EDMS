@@ -38,13 +38,13 @@ def task_do_ocr(self, document_version_pk):
             TextExtractor.process_document_version(document_version)
         except OperationalError as exception:
             logger.warning(
-                'OCR error for document version: %s; %s. Retrying.',
-                document_version, exception
+                'OCR error for document version: %d; %s. Retrying.',
+                document_version_pk, exception
             )
             raise self.retry(exc=exception)
         except Exception as exception:
             logger.error(
-                'OCR error for document version: %s; %s', document_version,
+                'OCR error for document version: %d; %s', document_version_pk,
                 exception
             )
             if document_version:
