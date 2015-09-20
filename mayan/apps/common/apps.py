@@ -25,6 +25,7 @@ from .links import (
 )
 from .literals import DELETE_STALE_UPLOADS_INTERVAL
 from .menus import menu_facet, menu_main, menu_secondary, menu_tools
+from .settings import setting_auto_logging
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 
 logger = logging.getLogger(__name__)
@@ -51,6 +52,18 @@ class MayanAppConfig(apps.AppConfig):
                 namespace=self.app_namespace or self.name
             )
         ),
+
+        if setting_auto_logging.value:
+            if settings.DEBUG:
+                level = 'DEBUG'
+            else:
+                level = 'INFO'
+
+            settings.LOGGING['loggers'][self.name] = {
+                'handlers': ['console'],
+                'propagate': True,
+                'level': level,
+            }
 
 
 class CommonApp(MayanAppConfig):

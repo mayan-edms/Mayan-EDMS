@@ -212,6 +212,23 @@ COMPRESS_CSS_FILTERS = (
 COMPRESS_ENABLED = False
 COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 # --------- Django -------------------
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': True,
+    'formatters': {
+        'intermediate': {
+            'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() %(message)s"'
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'intermediate'
+        }
+    },
+    'loggers': {}
+}
 LOGIN_URL = 'authentication:login_view'
 LOGIN_REDIRECT_URL = 'common:home'
 INTERNAL_IPS = ('127.0.0.1',)

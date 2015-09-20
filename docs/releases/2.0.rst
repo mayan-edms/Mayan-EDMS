@@ -305,6 +305,14 @@ processing. This allows API users to have the document id of the document
 just uploaded and perform other actions on it while it becomes ready
 for access.
 
+Auto logging
+------------
+App logging to the console is now automatically enabled. If Django's DEBUG
+flag is `True` the default level for auto logging is `DEBUG`. If Django's
+DEBUG flag is `False` (as in production), the default level changes to `INFO`.
+This should make it easier to add relevant messages to issue tickets as
+well as a adecuate logging during production.
+
 Other changes
 -------------
 

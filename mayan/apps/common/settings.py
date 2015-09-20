@@ -28,3 +28,10 @@ setting_paginate_by = namespace.add_setting(
         'An integer specifying how many objects should be displayed per page.'
     )
 )
+setting_auto_logging = namespace.add_setting(
+    global_name='COMMON_AUTO_LOGGING',
+    default=True,
+    help_text=_(
+        'Automatically enable logging to all apps.'
+    )
+)
