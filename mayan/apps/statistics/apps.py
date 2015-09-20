@@ -39,6 +39,14 @@ class StatisticsApp(MayanAppConfig):
             )
         )
 
+        app.conf.CELERY_ROUTES.update(
+            {
+                'statistics.tasks.task_execute_statistic': {
+                    'queue': 'statistics'
+                },
+            }
+        )
+
         menu_object.bind_links(links=(link_execute, link_view), sources=(Statistic,))
         menu_object.bind_links(
             links=(link_namespace_details,), sources=(StatisticNamespace,)
