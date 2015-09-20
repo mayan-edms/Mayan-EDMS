@@ -44,7 +44,9 @@ def document_ocr_submit(self):
 
 
 def document_version_ocr_submit(self):
-    task_do_ocr.apply_async(args=(self.pk,))
+    task_do_ocr.apply_async(
+        kwargs={'document_version_pk': self.pk}, countdown=1
+    )
 
 
 class OCRApp(MayanAppConfig):
