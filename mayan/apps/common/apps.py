@@ -53,18 +53,6 @@ class MayanAppConfig(apps.AppConfig):
             )
         ),
 
-        if setting_auto_logging.value:
-            if settings.DEBUG:
-                level = 'DEBUG'
-            else:
-                level = 'INFO'
-
-            settings.LOGGING['loggers'][self.name] = {
-                'handlers': ['console'],
-                'propagate': True,
-                'level': level,
-            }
-
 
 class CommonApp(MayanAppConfig):
     app_url = ''
@@ -150,3 +138,39 @@ class CommonApp(MayanAppConfig):
             user_locale_profile_session_config,
             dispatch_uid='user_locale_profile_session_config'
         )
+        self.setup_auto_logging()
+
+    def setup_auto_logging(self):
+        if setting_auto_logging.value:
+            if settings.DEBUG:
+                level = 'DEBUG'
+            else:
+                level = 'INFO'
+
+            loggers = {}
+            for app in apps.apps.get_app_configs():
+                loggers[app.name] = {
+                    'handlers': ['console'],
+                    'propagate': True,
+                    'level': level,
+                }
+
+            logging.config.dictConfig(
+                {
+                    'version': 1,
+                    'disable_existing_loggers': True,
+                    'formatters': {
+                        'intermediate': {
+                            'format': '%(name)s <%(process)d> [%(levelname)s] "%(funcName)s() %(message)s"'
+                        },
+                    },
+                    'handlers': {
+                        'console': {
+                            'level': 'DEBUG',
+                            'class': 'logging.StreamHandler',
+                            'formatter': 'intermediate'
+                        }
+                    },
+                    'loggers': loggers
+                }
+            )
