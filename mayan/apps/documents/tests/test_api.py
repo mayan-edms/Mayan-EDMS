@@ -178,6 +178,10 @@ class DocumentAPITestCase(APITestCase):
                 file_object=File(file_object),
             )
 
+        # Artifical delay since MySQL doesn't store microsecond data in
+        # timestamps. Version timestamp is used to determine which version
+        # is the latest.
+        time.sleep(1)
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
             response = self.client.post(
                 reverse(

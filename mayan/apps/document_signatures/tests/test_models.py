@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 import os
+import time
 
 from django.conf import settings
 from django.core.files.base import File
@@ -56,6 +57,11 @@ class DocumentTestCase(TestCase):
             self.document.new_version(
                 file_object=File(file_object), comment='test comment 1'
             )
+
+        # Artifical delay since MySQL doesn't store microsecond data in
+        # timestamps. Version timestamp is used to determine which version
+        # is the latest.
+        time.sleep(1)
 
         self.assertEqual(
             DocumentVersionSignature.objects.has_detached_signature(
