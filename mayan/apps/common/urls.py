@@ -8,7 +8,7 @@ from .views import (
     AboutView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
     FilterResultListView, FilterSelectView, HomeView, LicenseView,
-    SetupListView, ToolsListView
+    PackagesLicensesView, SetupListView, ToolsListView
 )
 
 urlpatterns = patterns(
@@ -16,6 +16,7 @@ urlpatterns = patterns(
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^about/$', AboutView.as_view(), name='about_view'),
     url(r'^license/$', LicenseView.as_view(), name='license_view'),
+    url(r'^packages/licenses/$', PackagesLicensesView.as_view(), name='packages_licenses_view'),
     url(
         r'^object/multiple/action/$', 'multi_object_action_view',
         name='multi_object_action_view'

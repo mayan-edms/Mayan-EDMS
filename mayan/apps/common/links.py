@@ -30,6 +30,10 @@ link_filters = Link(
 link_license = Link(
     icon='fa fa-book', text=_('License'), view='common:license_view'
 )
+link_packages_licenses = Link(
+    icon='fa fa-book', text=_('Other packages licenses'),
+    view='common:packages_licenses_view'
+)
 link_setup = Link(
     icon='fa fa-gear', text=_('Setup'), view='common:setup_list'
 )

@@ -15,7 +15,7 @@ from django.views.generic import TemplateView
 from .classes import Filter
 from .forms import (
     FilterForm, LicenseForm, LocaleProfileForm, LocaleProfileForm_view,
-    UserForm, UserForm_view
+    PackagesLicensesForm, UserForm, UserForm_view
 )
 from .generics import *  # NOQA
 from .menus import menu_tools, menu_setup
@@ -150,6 +150,19 @@ class LicenseView(SimpleView):
         'title': _('License'),
     }
     template_name = 'appearance/generic_form.html'
+
+
+class PackagesLicensesView(SimpleView):
+    template_name = 'appearance/generic_form.html'
+
+    def get_extra_context(self):
+        # Use a function so that PackagesLicensesForm get initialized at every
+        # request
+        return {
+        'form': PackagesLicensesForm(),
+        'read_only': True,
+        'title': _('Other packages licenses'),
+    }
 
 
 class SetupListView(TemplateView):

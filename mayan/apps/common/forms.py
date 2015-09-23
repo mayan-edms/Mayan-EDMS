@@ -9,7 +9,7 @@ from django.db import models
 from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
-from .classes import Filter
+from .classes import Filter, Package
 from .models import UserLocaleProfile
 from .utils import return_attrib
 from .widgets import (
@@ -125,6 +125,21 @@ class LocaleProfileForm_view(DetailForm):
     class Meta:
         model = UserLocaleProfile
         fields = ('language', 'timezone')
+
+
+class PackagesLicensesForm(forms.Form):
+    text = forms.CharField(
+        label='',
+        widget=forms.widgets.Textarea(
+            attrs={'cols': 40, 'rows': 20, 'readonly': 'readonly'}
+        )
+    )
+
+    def __init__(self, *args, **kwargs):
+        super(PackagesLicensesForm, self).__init__(*args, **kwargs)
+        self.fields['text'].initial = '\n\n'.join(
+            ['{}\n{}'.format(package.label, package.license_text) for package in Package.get_all()]
+        )
 
 
 class UserForm(forms.ModelForm):
