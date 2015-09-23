@@ -13,6 +13,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_multi_item, menu_object, menu_secondary,
     menu_tools
 )
+from common.settings import settings_db_sync_task_delay
 from documents.models import Document, DocumentType, DocumentVersion
 from documents.search import document_search
 from documents.signals import post_version_upload
@@ -45,7 +46,8 @@ def document_ocr_submit(self):
 
 def document_version_ocr_submit(self):
     task_do_ocr.apply_async(
-        kwargs={'document_version_pk': self.pk}, countdown=1
+        kwargs={'document_version_pk': self.pk},
+        countdown=settings_db_sync_task_delay.value
     )
 
 

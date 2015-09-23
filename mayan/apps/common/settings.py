@@ -35,3 +35,11 @@ setting_auto_logging = namespace.add_setting(
         'Automatically enable logging to all apps.'
     )
 )
+settings_db_sync_task_delay = namespace.add_setting(
+    global_name='COMMON_DB_SYNC_TASK_DELAY',
+    default=2,
+    help_text=_(
+        'Time to delay background task that depend on a database commit to '
+        'propagate'
+    )
+)
