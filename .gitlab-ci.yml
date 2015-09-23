@@ -1,7 +1,7 @@
 image: python:2.7
 services:
   - mysql
-  - postgresql
+  - postgres
 before_script:
   - sudo apt-get update -qq
   - sudo apt-get install -qq python-dev gcc tesseract-ocr tesseract-ocr-deu unpaper ghostscript libjpeg-dev libpng-dev poppler-utils
@@ -21,7 +21,7 @@ job1:
 job2:
   stage: test
   script:
-  - export TEST_APPS="acls authentication django_gpg document_indexing document_signatures documents dynamic_search folders lock_manager ocr permissions sources tags"
+  - export TEST_APPS="acls authentication checkouts django_gpg document_indexing document_signatures documents dynamic_search folders lock_manager ocr permissions sources tags"
   - coverage run manage.py test $TEST_APPS --settings=mayan.settings.testing.base
   - coverage run manage.py test $TEST_APPS --settings=mayan.settings.testing.travis.db_mysql
   - coverage run manage.py test $TEST_APPS --settings=mayan.settings.testing.travis.db_postgres
