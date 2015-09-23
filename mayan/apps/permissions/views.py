@@ -25,13 +25,13 @@ class RoleCreateView(SingleObjectCreateView):
     fields = ('label',)
     model = Role
     view_permission = permission_role_create
-    success_url = reverse_lazy('permissions:role_list')
+    post_action_redirect = reverse_lazy('permissions:role_list')
 
 
 class RoleDeleteView(SingleObjectDeleteView):
     model = Role
     view_permission = permission_role_delete
-    success_url = reverse_lazy('permissions:role_list')
+    post_action_redirect = reverse_lazy('permissions:role_list')
 
 
 class RoleEditView(SingleObjectEditView):

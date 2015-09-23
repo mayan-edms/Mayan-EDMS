@@ -193,20 +193,20 @@ class SetupWorkflowCreateView(SingleObjectCreateView):
     form_class = WorkflowForm
     model = Workflow
     view_permission = permission_workflow_create
-    success_url = reverse_lazy('document_states:setup_workflow_list')
+    post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
 
 
 class SetupWorkflowEditView(SingleObjectEditView):
     form_class = WorkflowForm
     model = Workflow
     view_permission = permission_workflow_edit
-    success_url = reverse_lazy('document_states:setup_workflow_list')
+    post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
 
 
 class SetupWorkflowDeleteView(SingleObjectDeleteView):
     model = Workflow
     view_permission = permission_workflow_delete
-    success_url = reverse_lazy('document_states:setup_workflow_list')
+    post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
 
 
 class SetupWorkflowDocumentTypesView(AssignRemoveView):
