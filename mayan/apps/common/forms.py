@@ -112,7 +112,7 @@ class FilterForm(forms.Form):
 
 class LicenseForm(FileDisplayForm):
     FILENAME = 'LICENSE'
-    DIRECTORY = []
+    DIRECTORY = ('mayan',)
 
 
 class LocaleProfileForm(forms.ModelForm):
