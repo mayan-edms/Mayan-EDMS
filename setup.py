@@ -50,6 +50,7 @@ def find_packages(directory):
                 packages.append('.'.join(fullsplit(dirpath)))
             elif filenames:
                 data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
+
     return packages
 
 install_requires = """
@@ -120,7 +121,7 @@ setup(
     packages=find_packages(PACKAGE_DIR),
     platforms=['any'],
     scripts=['mayan/bin/mayan-edms.py'],
-    url='https://github.com/mayan-edms/mayan-edms',
+    url='https://gitlab.com/mayan-edms/mayan-edms',
     version=mayan.__version__,
     zip_safe=False,
 )
