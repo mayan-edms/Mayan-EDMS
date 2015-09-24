@@ -37,6 +37,8 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
         SourceColumn(
             source=Statistic,
+            # Translators: Schedule here is a verb, the 'schedule' at which the
+            # statistic will be updated
             label=_('Schedule'),
             attribute='schedule',
         )

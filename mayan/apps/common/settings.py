@@ -12,7 +12,7 @@ setting_temporary_directory = namespace.add_setting(
     help_text=_(
         'Temporary directory used site wide to store thumbnails, previews '
         'and temporary files.  If none is specified, one will be created '
-        'using tempfile.mkdtemp()'
+        'using tempfile.mkdtemp().'
     ),
     is_path=True
 )
@@ -31,15 +31,13 @@ setting_paginate_by = namespace.add_setting(
 setting_auto_logging = namespace.add_setting(
     global_name='COMMON_AUTO_LOGGING',
     default=True,
-    help_text=_(
-        'Automatically enable logging to all apps.'
-    )
+    help_text=_('Automatically enable logging to all apps.')
 )
 settings_db_sync_task_delay = namespace.add_setting(
     global_name='COMMON_DB_SYNC_TASK_DELAY',
     default=2,
     help_text=_(
-        'Time to delay background task that depend on a database commit to '
-        'propagate'
+        'Time to delay background tasks that depend on a database commit to '
+        'propagate.'
     )
 )

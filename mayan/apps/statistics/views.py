@@ -72,6 +72,9 @@ class StatisticQueueView(ConfirmView):
         return {
             'namespace': self.get_object().namespace,
             'object': self.get_object(),
+            # Translators: This text is asking users if they want to queue
+            # (to send to the queue) a statistic for it to be update ahead
+            # of schedule
             'title': _('Queue statistic "%s" to be updated?') % self.get_object(),
         }
 

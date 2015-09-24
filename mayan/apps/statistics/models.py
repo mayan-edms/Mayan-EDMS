@@ -9,6 +9,8 @@ from django.utils.translation import ugettext_lazy as _
 
 @python_2_unicode_compatible
 class StatisticResult(models.Model):
+    # Translators: 'Slug' refers to the URL valid ID of the statistic
+    # More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
     slug = models.SlugField(verbose_name=_('Slug'))
     datetime = models.DateTimeField(
         auto_now=True, verbose_name=_('Date time')

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 01:10-0400\n"
+"POT-Creation-Date: 2015-09-24 16:28-0400\n"
 "PO-Revision-Date: 2015-09-24 05:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:42 links.py:30 models.py:133 views.py:523
@@ -25,7 +26,6 @@ msgid "Sources"
 msgstr ""
 
 #: apps.py:50
-#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
@@ -186,7 +186,8 @@ msgstr ""
 
 #: models.py:153
 msgid "Width value to be passed to the converter backend."
-msgstr "valore della larghezza da passare per le operazioni di conversione in backend"
+msgstr ""
+"valore della larghezza da passare per le operazioni di conversione in backend"
 
 #: models.py:154
 msgid "Preview width"
@@ -194,7 +195,8 @@ msgstr ""
 
 #: models.py:158
 msgid "Height value to be passed to the converter backend."
-msgstr "valore dell'altezza da passare per le operazioni di conversione in backend"
+msgstr ""
+"valore dell'altezza da passare per le operazioni di conversione in backend"
 
 #: models.py:159
 msgid "Preview height"
@@ -366,7 +368,6 @@ msgstr "Visualizza sorgenti documento esistente"
 
 #: tasks.py:29
 #, python-format
-#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
@@ -377,12 +378,11 @@ msgstr ""
 
 #: views.py:145 wizards.py:37
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
 #: views.py:171 views.py:189
-#| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
@@ -400,8 +400,7 @@ msgid "Upload a local document from source: %s"
 msgstr ""
 
 #: views.py:362
-msgid ""
-"New document version queued for uploaded and will be available shortly."
+msgid "New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:400
@@ -425,7 +424,6 @@ msgstr "Crea nuovo tipo di sorgente:%s"
 
 #: views.py:482
 #, python-format
-#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -537,9 +535,11 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

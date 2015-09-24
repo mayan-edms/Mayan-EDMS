@@ -18,6 +18,9 @@ permission_workflow_edit = namespace.add_permission(
 permission_workflow_view = namespace.add_permission(
     name='workflow_view', label=_('View workflows')
 )
+# Translators: This text refers to the permission to grant user the ability to
+# 'transition workflows' from one state to another, to move the workflow
+# forwards
 permission_workflow_transition = namespace.add_permission(
     name='workflow_transition',
     label=_('Transition workflows')

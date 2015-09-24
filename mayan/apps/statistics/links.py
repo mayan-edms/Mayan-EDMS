@@ -6,7 +6,7 @@ from navigation import Link
 
 from .permissions import permission_statistics_view
 
-
+#Translators: 'Queue' here is the verb, to queue a statistic to update
 link_execute = Link(
     permissions=(permission_statistics_view,), text=_('Queue'),
     view='statistics:statistic_queue', args='resolved_object.slug'

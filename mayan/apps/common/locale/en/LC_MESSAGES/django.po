@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 01:06-0400\n"
+"POT-Creation-Date: 2015-09-24 16:25-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -197,10 +197,15 @@ msgid "User locale profiles"
 msgstr ""
 
 #: settings.py:13
+#, fuzzy
+#| msgid ""
+#| "Temporary directory used site wide to store thumbnails, previews and "
+#| "temporary files.  If none is specified, one will be created using "
+#| "tempfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()"
+"mkdtemp()."
 msgstr ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
@@ -214,13 +219,13 @@ msgstr ""
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr ""
 
-#: settings.py:35
+#: settings.py:34
 msgid "Automatically enable logging to all apps."
 msgstr ""
 
-#: settings.py:42
+#: settings.py:40
 msgid ""
-"Time to delay background task that depend on a database commit to propagate"
+"Time to delay background tasks that depend on a database commit to propagate."
 msgstr ""
 
 #: views.py:36

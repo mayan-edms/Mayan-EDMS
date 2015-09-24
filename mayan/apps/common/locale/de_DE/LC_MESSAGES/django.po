@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -12,14 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 01:06-0400\n"
+"POT-Creation-Date: 2015-09-24 16:25-0400\n"
 "PO-Revision-Date: 2015-09-24 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:66 settings.py:9
@@ -198,11 +199,19 @@ msgid "User locale profiles"
 msgstr "Benutzerlokalisierungsprofile"
 
 #: settings.py:13
+#, fuzzy
+#| msgid ""
+#| "Temporary directory used site wide to store thumbnails, previews and "
+#| "temporary files.  If none is specified, one will be created using "
+#| "tempfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
-"tempfile.mkdtemp()"
-msgstr "Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschau und temporären Dateien. Falls keines angegeben wurde, wird es mit tempfile.mkdtemp() erzeugt."
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()."
+msgstr ""
+"Temporäres Verzeichnis zum systemweiten Speichern von Thumbnails, Vorschau "
+"und temporären Dateien. Falls keines angegeben wurde, wird es mit tempfile."
+"mkdtemp() erzeugt."
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
@@ -210,15 +219,16 @@ msgstr "Datenbackend, das alle Worker benutzen können, um Dateien zu teilen"
 
 #: settings.py:28
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr "Eine Ganzzahl, die die Anzahl der angezeigten Datensätze pro Seite angibt."
+msgstr ""
+"Eine Ganzzahl, die die Anzahl der angezeigten Datensätze pro Seite angibt."
 
-#: settings.py:35
+#: settings.py:34
 msgid "Automatically enable logging to all apps."
 msgstr ""
 
-#: settings.py:42
+#: settings.py:40
 msgid ""
-"Time to delay background task that depend on a database commit to propagate"
+"Time to delay background tasks that depend on a database commit to propagate."
 msgstr ""
 
 #: views.py:36
@@ -238,7 +248,6 @@ msgid "Edit current user locale profile details"
 msgstr "Aktuelle Benutzerlokalisierungsdetails bearbeiten"
 
 #: views.py:113
-#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Filterauswahl"
 
@@ -248,7 +257,6 @@ msgid "Results for filter: %s"
 msgstr "Ergebnis für Filter %s"
 
 #: views.py:136
-#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Filter nicht gefunden"
 
@@ -302,11 +310,11 @@ msgstr "Kein(e)"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields "
+#~ "is case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -315,11 +323,11 @@ msgstr "Kein(e)"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

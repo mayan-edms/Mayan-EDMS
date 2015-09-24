@@ -21,6 +21,8 @@ permission_folder_remove_document = namespace.add_permission(
 permission_folder_view = namespace.add_permission(
     name='folder_view', label=_('View folders')
 )
+# Translators: this refers to the permission that will allow users to add
+# documents to folders.
 permission_folder_add_document = namespace.add_permission(
     name='folder_add_document', label=_('Add documents to folders')
 )
