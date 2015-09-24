@@ -121,6 +121,12 @@ source_lang = en
 source_file = mayan/apps/metadata/locale/en/LC_MESSAGES/django.po
 type = PO
 
+[mayan-edms.mirroring-2-0]
+file_filter = mayan/apps/mirroring/locale/<lang>/LC_MESSAGES/django.po
+source_lang = en
+source_file = mayan/apps/mirroring/locale/en/LC_MESSAGES/django.po
+type = PO
+
 [mayan-edms.navigation-2-0]
 file_filter = mayan/apps/navigation/locale/<lang>/LC_MESSAGES/django.po
 source_lang = en

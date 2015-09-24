@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:23-0400\n"
+"POT-Creation-Date: 2015-09-24 01:10-0400\n"
 "PO-Revision-Date: 2012-12-12 06:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,30 +18,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:24 permissions.py:7
+#: apps.py:18 permissions.py:7
 #, fuzzy
 msgid "Smart settings"
 msgstr "settings"
 
-#: apps.py:30
+#: apps.py:26
 #, fuzzy
 msgid "Setting count"
 msgstr "settings"
 
-#: apps.py:34
+#: apps.py:30
 msgid "Name"
 msgstr ""
 
-#: apps.py:38
+#: apps.py:34
 #, fuzzy
 msgid "Value"
 msgstr "value"
 
-#: apps.py:41
+#: apps.py:37
 msgid "Found in path"
 msgstr ""
 
-#: apps.py:44
+#: apps.py:40
 msgid "n/a"
 msgstr ""
 

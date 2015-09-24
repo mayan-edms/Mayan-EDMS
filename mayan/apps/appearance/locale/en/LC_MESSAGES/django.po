@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:20-0400\n"
+"POT-Creation-Date: 2015-09-24 01:06-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:9
+#: apps.py:12
 msgid "Appearance"
 msgstr ""
 
@@ -53,60 +53,60 @@ msgid ""
 "identifier:"
 msgstr ""
 
-#: templates/appearance/about.html:8 templates/appearance/about.html.py:58
+#: templates/appearance/about.html:8 templates/appearance/about.html.py:57
 msgid "About"
 msgstr ""
 
-#: templates/appearance/about.html:63
+#: templates/appearance/about.html:62
 msgid "Version"
 msgstr ""
 
-#: templates/appearance/about.html:65
+#: templates/appearance/about.html:64
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr ""
 
-#: templates/appearance/about.html:89
+#: templates/appearance/about.html:88
 msgid "Released under the Apache 2.0 License"
 msgstr ""
 
-#: templates/appearance/about.html:101
+#: templates/appearance/about.html:100
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr ""
 
-#: templates/appearance/base.html:38
+#: templates/appearance/base.html:42
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/appearance/base.html:67
+#: templates/appearance/base.html:71
 msgid "Anonymous"
 msgstr ""
 
-#: templates/appearance/base.html:69
+#: templates/appearance/base.html:73
 msgid "User details"
 msgstr ""
 
-#: templates/appearance/base.html:82
+#: templates/appearance/base.html:86
 msgid "Success"
 msgstr ""
 
-#: templates/appearance/base.html:82
+#: templates/appearance/base.html:86
 msgid "Information"
 msgstr ""
 
-#: templates/appearance/base.html:82
+#: templates/appearance/base.html:86
 msgid "Warning"
 msgstr ""
 
-#: templates/appearance/base.html:82
+#: templates/appearance/base.html:86
 msgid "Error"
 msgstr ""
 
-#: templates/appearance/base.html:111
+#: templates/appearance/base.html:115
 msgid "Actions"
 msgstr ""
 
-#: templates/appearance/base.html:112
+#: templates/appearance/base.html:116
 msgid "Toggle Dropdown"
 msgstr ""
 

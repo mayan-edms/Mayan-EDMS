@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:21-0400\n"
-"PO-Revision-Date: 2015-08-20 22:10+0000\n"
+"POT-Creation-Date: 2015-09-24 01:08-0400\n"
+"PO-Revision-Date: 2015-09-24 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:34
 msgid "Document states"
-msgstr ""
+msgstr "Status"
 
 #: apps.py:40
 msgid "Initial state"
@@ -48,9 +47,9 @@ msgstr "Datum und Zeit"
 
 #: apps.py:65 apps.py:92 models.py:79
 msgid "Completion"
-msgstr ""
+msgstr "Fertigstellung"
 
-#: apps.py:79 forms.py:39 links.py:67 models.py:187
+#: apps.py:79 forms.py:39 links.py:77 models.py:187
 msgid "Transition"
 msgstr "Übergang"
 
@@ -70,43 +69,43 @@ msgstr "Herkunftsstatus"
 msgid "Destination state"
 msgstr "Zielstatus"
 
-#: links.py:8 links.py:27 models.py:59 views.py:185
+#: links.py:14 links.py:36 models.py:59 views.py:185
 msgid "Workflows"
 msgstr "Workflows"
 
-#: links.py:12
+#: links.py:18
 msgid "Create workflow"
-msgstr ""
+msgstr "Workflow erstellen"
 
-#: links.py:15 links.py:35 links.py:51
+#: links.py:23 links.py:44 links.py:61
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:19 models.py:25
+#: links.py:27 models.py:25
 msgid "Document types"
 msgstr "Dokumententypen"
 
-#: links.py:23 links.py:39 links.py:55
+#: links.py:31 links.py:48 links.py:65
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:31
+#: links.py:39
 msgid "Create state"
 msgstr "Status erstellen"
 
-#: links.py:43
+#: links.py:52
 msgid "States"
 msgstr "Status"
 
-#: links.py:47
+#: links.py:56
 msgid "Create transition"
 msgstr "Übergang erstellen"
 
-#: links.py:59
+#: links.py:69
 msgid "Transitions"
 msgstr "Übergänge"
 
-#: links.py:63
+#: links.py:73
 msgid "Detail"
 msgstr "Detail"
 
@@ -122,9 +121,7 @@ msgstr "Workflow"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr ""
-"Diesen Status markieren, wenn der Workflow damit starten soll. Nur ein "
-"Status kann initial sein."
+msgstr "Diesen Status markieren, wenn der Workflow damit starten soll. Nur ein Status kann initial sein."
 
 #: models.py:73
 msgid "Initial"
@@ -134,7 +131,7 @@ msgstr "Initial"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr ""
+msgstr "Ermöglicht den Eintrag einer Zahl (ohne Prozentzeichen), die den Stand der Fertigstellung in Bezug auf den Workflow angibt."
 
 #: models.py:92
 msgid "Workflow state"
@@ -178,7 +175,7 @@ msgstr "Workflow Logeinträge"
 
 #: permissions.py:7
 msgid "Document workflows"
-msgstr ""
+msgstr "Dokumentenworkflows"
 
 #: permissions.py:10
 msgid "Create workflows"
@@ -196,13 +193,9 @@ msgstr "Workflows bearbeiten"
 msgid "View workflows"
 msgstr "Workflows betrachten"
 
-#: permissions.py:22
-msgid "View document workflows"
-msgstr "Dokumentenworkflows betrachten"
-
-#: permissions.py:26
-msgid "Transition document workflows"
-msgstr "Übergänge Dokumentenworkflows"
+#: permissions.py:23
+msgid "Transition workflows"
+msgstr ""
 
 #: views.py:57
 #, python-format
@@ -212,7 +205,7 @@ msgstr "Workflows für Dokument: %s"
 #: views.py:91
 #, python-format
 msgid "Documents with the workflow: %s"
-msgstr ""
+msgstr "Dokumente mit Workflow %s"
 
 #: views.py:116
 #, python-format
@@ -230,11 +223,11 @@ msgstr "Übergang für Workflow %s durchführen"
 
 #: views.py:215
 msgid "Available document types"
-msgstr ""
+msgstr "Verfügbare Dokumententypen"
 
 #: views.py:216
 msgid "Document types assigned this workflow"
-msgstr ""
+msgstr "Dokumententypen zugeordnet zu diesem Workflow"
 
 #: views.py:226
 #, python-format
@@ -246,21 +239,21 @@ msgstr "Dokumententypen zugeordnet zu Workflow %s"
 msgid "States of workflow: %s"
 msgstr "Status für Workflow %s"
 
-#: views.py:300
+#: views.py:287
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr "Status für Workflow %s erstellen"
 
-#: views.py:388
+#: views.py:363
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr "Übergänge für Workflow %s"
 
-#: views.py:414
+#: views.py:376
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr "Übergänge für Workflow %s erstellen"
 
-#: views.py:444
+#: views.py:406
 msgid "Unable to save transition; integrity error."
 msgstr "Integritätsfehler beim Speichern des Übergangs"

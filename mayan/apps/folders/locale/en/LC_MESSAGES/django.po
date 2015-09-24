@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:22-0400\n"
+"POT-Creation-Date: 2015-09-24 01:08-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -90,15 +90,19 @@ msgid "Document folders"
 msgstr "documents in folder: %s"
 
 #: permissions.py:10
-msgid "Create new folders"
-msgstr "Create new folders"
+#, fuzzy
+msgid "Create folders"
+msgstr "create folder"
 
 #: permissions.py:13
-msgid "Edit new folders"
-msgstr "Edit new folders"
+#, fuzzy
+msgid "Edit folders"
+msgstr "edit folder: %s"
 
 #: permissions.py:16
-msgid "Delete new folders"
+#, fuzzy
+#| msgid "Delete new folders"
+msgid "Delete folders"
 msgstr "Delete new folders"
 
 #: permissions.py:19
@@ -106,12 +110,15 @@ msgid "Remove documents from folders"
 msgstr "Remove documents from folders"
 
 #: permissions.py:22
-msgid "View existing folders"
-msgstr "View existing folders"
+#, fuzzy
+#| msgid "Edit new folders"
+msgid "View folders"
+msgstr "Edit new folders"
 
 #: permissions.py:25
-msgid "Add documents to existing folders"
-msgstr "Add documents to existing folders"
+#, fuzzy
+msgid "Add documents to folders"
+msgstr "Add document to a folder"
 
 #: serializers.py:61
 msgid "Primary key of the document to be added."
@@ -198,6 +205,15 @@ msgstr[0] ""
 msgstr[1] ""
 "Are you sure you wish to remove the document: %(document)s from the folder "
 "\"%(folder)s\"?"
+
+#~ msgid "Create new folders"
+#~ msgstr "Create new folders"
+
+#~ msgid "View existing folders"
+#~ msgstr "View existing folders"
+
+#~ msgid "Add documents to existing folders"
+#~ msgstr "Add documents to existing folders"
 
 #~ msgid "ACLs"
 #~ msgstr "ACLs"

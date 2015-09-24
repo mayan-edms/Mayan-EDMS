@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:20-0400\n"
+"POT-Creation-Date: 2015-09-24 01:06-0400\n"
 "PO-Revision-Date: 2012-02-02 18:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -83,21 +83,27 @@ msgstr "access control lists for: %s"
 msgid "New access control lists for: %s"
 msgstr "access control lists for: %s"
 
-#: views.py:137
+#: views.py:132
+#, fuzzy, python-format
+#| msgid "Default ACLs"
+msgid "Delete ACL: %s"
+msgstr "Default ACLs"
+
+#: views.py:147
 #, fuzzy
 msgid "Available permissions"
 msgstr "has permission"
 
-#: views.py:138
+#: views.py:148
 #, fuzzy
 msgid "Granted permissions"
 msgstr "has permission"
 
-#: views.py:177
+#: views.py:187
 msgid "Disabled permissions are inherited from a parent object."
 msgstr ""
 
-#: views.py:208
+#: views.py:218
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr ""
@@ -125,9 +131,6 @@ msgstr ""
 #, fuzzy
 #~ msgid "Revoke"
 #~ msgstr "revoke"
-
-#~ msgid "Default ACLs"
-#~ msgstr "Default ACLs"
 
 #, fuzzy
 #~ msgid "Classes"

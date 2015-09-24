@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:21-0400\n"
+"POT-Creation-Date: 2015-09-24 01:07-0400\n"
 "PO-Revision-Date: 2015-05-11 20:22+0000\n"
 "Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
@@ -25,41 +25,41 @@ msgstr ""
 msgid "Unknown"
 msgstr "desconhecido"
 
-#: apps.py:20
+#: apps.py:21
 msgid "Django GPG"
 msgstr ""
 
-#: apps.py:25 apps.py:32
+#: apps.py:54 apps.py:61
 msgid "ID"
 msgstr "ID"
 
-#: apps.py:27
+#: apps.py:56
 msgid "Owner"
 msgstr "Proprietário"
 
-#: apps.py:35
+#: apps.py:64
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:37
+#: apps.py:66
 msgid "Creation date"
 msgstr "data de criação"
 
-#: apps.py:43
+#: apps.py:72
 msgid "Expiration date"
 msgstr "data de validade"
 
-#: apps.py:44
+#: apps.py:73
 #, fuzzy
 #| msgid "Expiration date"
 msgid "No expiration"
 msgstr "data de validade"
 
-#: apps.py:46
+#: apps.py:75
 msgid "Length"
 msgstr "comprimento"
 
-#: apps.py:48
+#: apps.py:77
 #, fuzzy
 #| msgid "Identifies"
 msgid "Identities"
@@ -77,7 +77,7 @@ msgstr ""
 msgid "Private keys"
 msgstr "chaves privadas"
 
-#: links.py:17 views.py:76
+#: links.py:18 views.py:76
 msgid "Public keys"
 msgstr "chaves públicas"
 

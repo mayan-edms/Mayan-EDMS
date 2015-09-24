@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:20-0400\n"
-"PO-Revision-Date: 2015-08-27 05:24+0000\n"
+"POT-Creation-Date: 2015-09-24 01:06-0400\n"
+"PO-Revision-Date: 2015-09-24 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:56 settings.py:9
+#: apps.py:66 settings.py:9
 msgid "Common"
 msgstr ""
 
@@ -48,57 +48,57 @@ msgstr "افزودن"
 msgid "Remove"
 msgstr "حذف"
 
-#: generics.py:261
+#: generics.py:265
 #, python-format
 msgid "Error creating new %s."
 msgstr "خطا در زمان ایجاد %s."
 
-#: generics.py:264
+#: generics.py:268
 msgid "Error creating object."
 msgstr "خطا در زمان ایجاد شی"
 
-#: generics.py:288
+#: generics.py:292
 #, python-format
 msgid "%s created successfully."
 msgstr "%s با موفقیت ایجاد شد."
 
-#: generics.py:293
+#: generics.py:297
 msgid "New object created successfully."
 msgstr "شی جدید با موفقیت ساخته شد."
 
-#: generics.py:314
+#: generics.py:318
 #, python-format
 msgid "Error deleting %s."
 msgstr "خطا در زمان حذف %s."
 
-#: generics.py:318
+#: generics.py:322
 msgid "Error deleting object."
 msgstr "خطا در حذف شی."
 
-#: generics.py:327
+#: generics.py:331
 #, python-format
 msgid "%s deleted successfully."
 msgstr "%s با موفقیت حذف شد."
 
-#: generics.py:332
+#: generics.py:336
 msgid "Object deleted successfully."
 msgstr "شی با موفقیت حذف شد."
 
-#: generics.py:359
+#: generics.py:363
 #, python-format
 msgid "Error saving %s details."
 msgstr "خطا در ثبت چزئیات %s."
 
-#: generics.py:364
+#: generics.py:368
 msgid "Error saving details."
 msgstr "خطا در ثبت چزئیات ."
 
-#: generics.py:389
+#: generics.py:393
 #, python-format
 msgid "%s details saved successfully."
 msgstr "جزئیات %s با موفقیت ثبت شد."
 
-#: generics.py:394
+#: generics.py:398
 msgid "Details saved successfully."
 msgstr "جزییات با موفقیت ثبت شد."
 
@@ -130,23 +130,27 @@ msgstr ""
 msgid "License"
 msgstr "لیسانس"
 
-#: links.py:34
+#: links.py:34 views.py:164
+msgid "Other packages licenses"
+msgstr ""
+
+#: links.py:38
 msgid "Setup"
 msgstr ""
 
-#: links.py:37 views.py:178
+#: links.py:41 views.py:191
 msgid "Tools"
 msgstr ""
 
-#: literals.py:6
+#: literals.py:8
 msgid "Days"
 msgstr ""
 
-#: literals.py:7
+#: literals.py:9
 msgid "Hours"
 msgstr ""
 
-#: literals.py:8
+#: literals.py:10
 msgid "Minutes"
 msgstr ""
 
@@ -205,6 +209,15 @@ msgstr "محلی که کلیه کاربران جهت به اشتراک گذار�
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr ""
 
+#: settings.py:35
+msgid "Automatically enable logging to all apps."
+msgstr ""
+
+#: settings.py:42
+msgid ""
+"Time to delay background task that depend on a database commit to propagate"
+msgstr ""
+
 #: views.py:36
 msgid "Current user details"
 msgstr "جزئیاتا کاربر فعلی"
@@ -236,15 +249,15 @@ msgstr ""
 msgid "Filter not found"
 msgstr ""
 
-#: views.py:164
+#: views.py:177
 msgid "Setup items"
 msgstr ""
 
-#: views.py:203
+#: views.py:218
 msgid "No action selected."
 msgstr "هیچ عملیاتی action انتخاب نشده است."
 
-#: views.py:211
+#: views.py:226
 msgid "Must select at least one item."
 msgstr "حداقل یک مورد انتخاب شود."
 

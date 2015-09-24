@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:20-0400\n"
+"POT-Creation-Date: 2015-09-24 01:07-0400\n"
 "PO-Revision-Date: 2015-08-20 22:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -20,19 +20,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:17 permissions.py:7 settings.py:7
+#: apps.py:19 permissions.py:7 settings.py:7
 msgid "Converter"
 msgstr ""
 
-#: apps.py:22 models.py:33
+#: apps.py:37 models.py:33
 msgid "Order"
 msgstr ""
 
-#: apps.py:24 models.py:62
+#: apps.py:39 models.py:62
 msgid "Transformation"
 msgstr ""
 
-#: apps.py:28 models.py:42
+#: apps.py:43 models.py:42
 msgid "Arguments"
 msgstr ""
 
@@ -50,19 +50,19 @@ msgstr ""
 msgid "Not an office file format."
 msgstr ""
 
-#: classes.py:243
+#: classes.py:252
 msgid "Resize"
 msgstr "Redimensionner"
 
-#: classes.py:284
+#: classes.py:293
 msgid "Rotate"
 msgstr "Rotation"
 
-#: classes.py:296
+#: classes.py:305
 msgid "Zoom"
 msgstr "Zoom"
 
-#: classes.py:313
+#: classes.py:322
 msgid "Crop"
 msgstr ""
 

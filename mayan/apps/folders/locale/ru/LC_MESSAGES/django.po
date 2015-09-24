@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:22-0400\n"
-"PO-Revision-Date: 2015-08-27 05:24+0000\n"
+"POT-Creation-Date: 2015-09-24 01:08-0400\n"
+"PO-Revision-Date: 2015-09-24 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -80,28 +80,30 @@ msgid "Document folders"
 msgstr ""
 
 #: permissions.py:10
-msgid "Create new folders"
-msgstr "Создание новых папок"
+msgid "Create folders"
+msgstr ""
 
 #: permissions.py:13
-msgid "Edit new folders"
-msgstr "Изменить новые папки"
+msgid "Edit folders"
+msgstr ""
 
 #: permissions.py:16
-msgid "Delete new folders"
-msgstr "Удалить новые папки"
+#| msgid "Delete new folders"
+msgid "Delete folders"
+msgstr ""
 
 #: permissions.py:19
 msgid "Remove documents from folders"
 msgstr "Удаление документов из папок"
 
 #: permissions.py:22
-msgid "View existing folders"
-msgstr "Просмотр существующих папок"
+#| msgid "Edit new folders"
+msgid "View folders"
+msgstr ""
 
 #: permissions.py:25
-msgid "Add documents to existing folders"
-msgstr "Добавление документов в существующие папки"
+msgid "Add documents to folders"
+msgstr ""
 
 #: serializers.py:61
 msgid "Primary key of the document to be added."
@@ -187,6 +189,15 @@ msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
 msgstr[3] ""
+
+#~ msgid "Create new folders"
+#~ msgstr "Create new folders"
+
+#~ msgid "View existing folders"
+#~ msgstr "View existing folders"
+
+#~ msgid "Add documents to existing folders"
+#~ msgstr "Add documents to existing folders"
 
 #~ msgid "ACLs"
 #~ msgstr "ACLs"

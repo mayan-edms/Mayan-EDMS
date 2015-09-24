@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:21-0400\n"
+"POT-Creation-Date: 2015-09-24 01:08-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,7 +49,7 @@ msgstr ""
 msgid "Completion"
 msgstr ""
 
-#: apps.py:79 forms.py:39 links.py:67 models.py:187
+#: apps.py:79 forms.py:39 links.py:77 models.py:187
 msgid "Transition"
 msgstr ""
 
@@ -69,43 +69,43 @@ msgstr ""
 msgid "Destination state"
 msgstr ""
 
-#: links.py:8 links.py:27 models.py:59 views.py:185
+#: links.py:14 links.py:36 models.py:59 views.py:185
 msgid "Workflows"
 msgstr ""
 
-#: links.py:12
+#: links.py:18
 msgid "Create workflow"
 msgstr ""
 
-#: links.py:15 links.py:35 links.py:51
+#: links.py:23 links.py:44 links.py:61
 msgid "Delete"
 msgstr ""
 
-#: links.py:19 models.py:25
+#: links.py:27 models.py:25
 msgid "Document types"
 msgstr ""
 
-#: links.py:23 links.py:39 links.py:55
+#: links.py:31 links.py:48 links.py:65
 msgid "Edit"
 msgstr ""
 
-#: links.py:31
+#: links.py:39
 msgid "Create state"
 msgstr ""
 
-#: links.py:43
+#: links.py:52
 msgid "States"
 msgstr ""
 
-#: links.py:47
+#: links.py:56
 msgid "Create transition"
 msgstr ""
 
-#: links.py:59
+#: links.py:69
 msgid "Transitions"
 msgstr ""
 
-#: links.py:63
+#: links.py:73
 msgid "Detail"
 msgstr ""
 
@@ -193,12 +193,8 @@ msgstr ""
 msgid "View workflows"
 msgstr ""
 
-#: permissions.py:22
-msgid "View document workflows"
-msgstr ""
-
-#: permissions.py:26
-msgid "Transition document workflows"
+#: permissions.py:23
+msgid "Transition workflows"
 msgstr ""
 
 #: views.py:57
@@ -243,21 +239,21 @@ msgstr ""
 msgid "States of workflow: %s"
 msgstr ""
 
-#: views.py:300
+#: views.py:287
 #, python-format
 msgid "Create states for workflow: %s"
 msgstr ""
 
-#: views.py:388
+#: views.py:363
 #, python-format
 msgid "Transitions of workflow: %s"
 msgstr ""
 
-#: views.py:414
+#: views.py:376
 #, python-format
 msgid "Create transitions for workflow: %s"
 msgstr ""
 
-#: views.py:444
+#: views.py:406
 msgid "Unable to save transition; integrity error."
 msgstr ""

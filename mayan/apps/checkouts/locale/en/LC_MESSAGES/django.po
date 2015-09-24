@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:20-0400\n"
+"POT-Creation-Date: 2015-09-24 01:06-0400\n"
 "PO-Revision-Date: 2012-07-10 15:47+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -92,7 +92,7 @@ msgstr "Amount of time to hold the document checked out in minutes."
 msgid "Check out expiration date and time"
 msgstr "Check out expiration date and time"
 
-#: models.py:39 views.py:88
+#: models.py:39 views.py:85
 #, fuzzy
 #| msgid "User: %s"
 msgid "User"
@@ -149,17 +149,17 @@ msgstr "Document \"%s\" checked out successfully."
 msgid "Check out document: %s"
 msgstr "Check out document: %s"
 
-#: views.py:84
+#: views.py:81
 #, fuzzy
 msgid "Documents checked out"
 msgstr "Document checked out"
 
-#: views.py:94
+#: views.py:91
 #, fuzzy
 msgid "Checkout time and date"
 msgstr "checkout time and date"
 
-#: views.py:100
+#: views.py:97
 #, fuzzy
 msgid "Checkout expiration"
 msgstr "checkout expiration"
@@ -184,26 +184,26 @@ msgstr "Check out time: %s"
 msgid "Check out expiration: %s"
 msgstr "Check out expiration: %s"
 
-#: views.py:145
+#: views.py:146
 #, python-format
 msgid "New versions allowed: %s"
 msgstr "New versions allowed: %s"
 
-#: views.py:145
+#: views.py:147
 #, fuzzy
 msgid "Yes"
 msgstr "yes"
 
-#: views.py:145
+#: views.py:147
 msgid "No"
 msgstr ""
 
-#: views.py:152
+#: views.py:154
 #, python-format
 msgid "Check out details for document: %s"
 msgstr "Check out details for document: %s"
 
-#: views.py:171
+#: views.py:170
 #, fuzzy, python-format
 #| msgid ""
 #| "You didn't originally checked out this document.  Are you sure you wish "
@@ -215,22 +215,22 @@ msgstr ""
 "You didn't originally checked out this document.  Are you sure you wish to "
 "forcefully check in document: %s?"
 
-#: views.py:175
+#: views.py:174
 #, fuzzy, python-format
 #| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr "Check out document: %s"
 
-#: views.py:204
+#: views.py:210
 msgid "Document has not been checked out."
 msgstr "Document has not been checked out."
 
-#: views.py:207
+#: views.py:213
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr "Error trying to check in document; %s"
 
-#: views.py:211
+#: views.py:217
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr "Document \"%s\" checked in successfully."

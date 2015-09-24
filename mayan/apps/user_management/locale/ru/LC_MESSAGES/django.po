@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-08-27 05:25+0000\n"
+"POT-Creation-Date: 2015-09-24 01:11-0400\n"
+"PO-Revision-Date: 2015-09-24 05:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
@@ -58,7 +58,7 @@ msgstr "Новый пароль"
 msgid "Confirm password"
 msgstr "Подтвердите пароль"
 
-#: links.py:14 views.py:296
+#: links.py:14 views.py:28
 msgid "Create new group"
 msgstr ""
 
@@ -70,15 +70,15 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: links.py:26 links.py:34 links.py:50 views.py:319
+#: links.py:26 links.py:34 links.py:50 views.py:51
 msgid "Groups"
 msgstr ""
 
-#: links.py:38 views.py:97
+#: links.py:38 views.py:184
 msgid "Create new user"
 msgstr ""
 
-#: links.py:54 links.py:70 views.py:33
+#: links.py:54 links.py:70 views.py:156
 msgid "Users"
 msgstr ""
 
@@ -118,121 +118,120 @@ msgstr "Редактирование существующих пользоват
 msgid "View existing users"
 msgstr "Просмотр существующих пользователей"
 
-#: views.py:50
-msgid ""
-"Super user and staff user editing is not allowed, use the admin interface "
-"for these cases."
-msgstr "Редактирование суперпользователя и персонала не допускается, используйте для этого интерфейс администратора."
-
-#: views.py:65
-#, python-format
-msgid "User \"%s\" updated successfully."
-msgstr "Пользователь \"%s\"обновлён"
-
-#: views.py:72
-#, python-format
-msgid "Edit user: %s"
-msgstr ""
-
-#: views.py:88
-#, python-format
-msgid "User \"%s\" created successfully."
-msgstr "Пользователь \"%s\" создан."
-
-#: views.py:116 views.py:184
-msgid "Must provide at least one user."
-msgstr "Должен быть хотя бы один пользователь."
-
-#: views.py:133
-msgid ""
-"Super user and staff user deleting is not allowed, use the admin interface "
-"for these cases."
-msgstr "Удаление суперпользователя и  персонала не допускается, используйте интерфейс администратора для этих случаев."
-
-#: views.py:140
-#, python-format
-msgid "User \"%s\" deleted successfully."
-msgstr "Пользователь \"%s\" удален."
-
-#: views.py:144
-#, python-format
-msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr "Ошибка при удалении пользователя \"%(user)s\": %(error)s"
-
-#: views.py:158
-#, python-format
-#| msgid "Delete existing users"
-msgid "Delete the user: %s?"
-msgstr ""
-
-#: views.py:160
-#, python-format
-#| msgid "Delete existing users"
-msgid "Delete the users: %s?"
-msgstr ""
-
-#: views.py:199
-msgid "Passwords do not match, try again."
-msgstr "Пароли не совпадают, попробуйте еще раз."
-
-#: views.py:207
-msgid ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
-msgstr "Сброс паролей суперпользователя и персонала не допускается, используйте интерфейс администратора для этих случаев."
-
-#: views.py:217
-#, python-format
-msgid "Successfull password reset for user: %s."
-msgstr "Пароль пользователя %s сброшен."
-
-#: views.py:223
-#, python-format
-msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Ошибка сброса пароля для пользователя \"%(user)s\": %(error)s"
-
-#: views.py:240
-#, python-format
-msgid "Reseting password for user: %s"
-msgstr "Сброс пароля пользователя: %s"
-
-#: views.py:242
-#, python-format
-msgid "Reseting password for users: %s"
-msgstr "Сброс пароля для пользователей: %s"
-
-#: views.py:264 views.py:339
-msgid "Available groups"
-msgstr ""
-
-#: views.py:265
-msgid "Groups joined"
-msgstr ""
-
-#: views.py:274
-#, python-format
-msgid "Groups of user: %s"
-msgstr ""
-
-#: views.py:312
+#: views.py:44
 #, python-format
 msgid "Edit group: %s"
 msgstr ""
 
-#: views.py:333
+#: views.py:65
 #, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr ""
 
-#: views.py:340
+#: views.py:71 views.py:120
+msgid "Available groups"
+msgstr ""
+
+#: views.py:72
 msgid "Members of groups"
 msgstr ""
 
-#: views.py:349
+#: views.py:81
 #, python-format
 msgid "Members of group: %s"
 msgstr ""
+
+#: views.py:114
+#, python-format
+msgid "Edit user: %s"
+msgstr ""
+
+#: views.py:121
+msgid "Groups joined"
+msgstr ""
+
+#: views.py:130
+#, python-format
+msgid "Groups of user: %s"
+msgstr ""
+
+#: views.py:175
+#, python-format
+msgid "User \"%s\" created successfully."
+msgstr "Пользователь \"%s\" создан."
+
+#: views.py:203 views.py:271
+msgid "Must provide at least one user."
+msgstr "Должен быть хотя бы один пользователь."
+
+#: views.py:220
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr "Удаление суперпользователя и  персонала не допускается, используйте интерфейс администратора для этих случаев."
+
+#: views.py:227
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "Пользователь \"%s\" удален."
+
+#: views.py:231
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "Ошибка при удалении пользователя \"%(user)s\": %(error)s"
+
+#: views.py:245
+#, python-format
+#| msgid "Delete existing users"
+msgid "Delete the user: %s?"
+msgstr ""
+
+#: views.py:247
+#, python-format
+#| msgid "Delete existing users"
+msgid "Delete the users: %s?"
+msgstr ""
+
+#: views.py:286
+msgid "Passwords do not match, try again."
+msgstr "Пароли не совпадают, попробуйте еще раз."
+
+#: views.py:294
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "Сброс паролей суперпользователя и персонала не допускается, используйте интерфейс администратора для этих случаев."
+
+#: views.py:304
+#, python-format
+msgid "Successfull password reset for user: %s."
+msgstr "Пароль пользователя %s сброшен."
+
+#: views.py:310
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "Ошибка сброса пароля для пользователя \"%(user)s\": %(error)s"
+
+#: views.py:327
+#, python-format
+msgid "Reseting password for user: %s"
+msgstr "Сброс пароля пользователя: %s"
+
+#: views.py:329
+#, python-format
+msgid "Reseting password for users: %s"
+msgstr "Сброс пароля для пользователей: %s"
+
+#~ msgid ""
+#~ "Super user and staff user editing is not allowed, use the admin interface "
+#~ "for these cases."
+#~ msgstr ""
+#~ "Super user and staff user editing is not allowed, use the admin interface "
+#~ "for these cases."
+
+#~ msgid "User \"%s\" updated successfully."
+#~ msgstr "User \"%s\" updated successfully."
 
 #~ msgid "Must provide at least one group."
 #~ msgstr "Must provide at least one group."

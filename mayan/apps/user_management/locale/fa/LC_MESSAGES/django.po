@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-08-27 05:25+0000\n"
+"POT-Creation-Date: 2015-09-24 01:11-0400\n"
+"PO-Revision-Date: 2015-09-24 05:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgstr "کلمه عبور جدید"
 msgid "Confirm password"
 msgstr "تائید کلمه عبور"
 
-#: links.py:14 views.py:296
+#: links.py:14 views.py:28
 msgid "Create new group"
 msgstr "گروه جدید"
 
@@ -71,15 +71,15 @@ msgstr "حذف"
 msgid "Edit"
 msgstr "ویرایش"
 
-#: links.py:26 links.py:34 links.py:50 views.py:319
+#: links.py:26 links.py:34 links.py:50 views.py:51
 msgid "Groups"
 msgstr "گروه ها"
 
-#: links.py:38 views.py:97
+#: links.py:38 views.py:184
 msgid "Create new user"
 msgstr "کاربر جدید"
 
-#: links.py:54 links.py:70 views.py:33
+#: links.py:54 links.py:70 views.py:156
 msgid "Users"
 msgstr "کاربران"
 
@@ -119,121 +119,120 @@ msgstr "ویرایش کاربران موجود"
 msgid "View existing users"
 msgstr "دیدن کاربران موجود"
 
-#: views.py:50
-msgid ""
-"Super user and staff user editing is not allowed, use the admin interface "
-"for these cases."
-msgstr "از صفحه admin برای این موارد استفاده کنید."
-
-#: views.py:65
-#, python-format
-msgid "User \"%s\" updated successfully."
-msgstr "کاربر \"%s\" با موفقیت بروز رسانی شد."
-
-#: views.py:72
-#, python-format
-msgid "Edit user: %s"
-msgstr "ویرایش کاربر : %s"
-
-#: views.py:88
-#, python-format
-msgid "User \"%s\" created successfully."
-msgstr "کاربر \"%s\" با موفقیت ساخته شد."
-
-#: views.py:116 views.py:184
-msgid "Must provide at least one user."
-msgstr "باید حداقل یک کاربر ارئه شود."
-
-#: views.py:133
-msgid ""
-"Super user and staff user deleting is not allowed, use the admin interface "
-"for these cases."
-msgstr "برای حذف از صفحه admin استفاده کنید."
-
-#: views.py:140
-#, python-format
-msgid "User \"%s\" deleted successfully."
-msgstr "کاربر \"%s\" با موفقیت حذف شد."
-
-#: views.py:144
-#, python-format
-msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr "خطا در حذف کاربر  \"%(user)s\": %(error)s"
-
-#: views.py:158
-#, python-format
-#| msgid "Delete existing users"
-msgid "Delete the user: %s?"
-msgstr ""
-
-#: views.py:160
-#, python-format
-#| msgid "Delete existing users"
-msgid "Delete the users: %s?"
-msgstr ""
-
-#: views.py:199
-msgid "Passwords do not match, try again."
-msgstr "کلمه عبور یکسان نیست دوباره امتحان کنید."
-
-#: views.py:207
-msgid ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
-msgstr "از صفحه admin برای این موارد استفاده کنید."
-
-#: views.py:217
-#, python-format
-msgid "Successfull password reset for user: %s."
-msgstr "ریست موفق کلمه عبور برای کاربر : %s."
-
-#: views.py:223
-#, python-format
-msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "خطا در زمان ریست کلمه عبور کاربر:  \"%(user)s\": %(error)s"
-
-#: views.py:240
-#, python-format
-msgid "Reseting password for user: %s"
-msgstr "ریست کلمه عبور کاربر: %s"
-
-#: views.py:242
-#, python-format
-msgid "Reseting password for users: %s"
-msgstr "ریست کلمه عبور کابران : %s"
-
-#: views.py:264 views.py:339
-msgid "Available groups"
-msgstr ""
-
-#: views.py:265
-msgid "Groups joined"
-msgstr ""
-
-#: views.py:274
-#, python-format
-msgid "Groups of user: %s"
-msgstr "گروه های کاربر : %s"
-
-#: views.py:312
+#: views.py:44
 #, python-format
 msgid "Edit group: %s"
 msgstr "ویرایش گروه : %s"
 
-#: views.py:333
+#: views.py:65
 #, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr ""
 
-#: views.py:340
+#: views.py:71 views.py:120
+msgid "Available groups"
+msgstr ""
+
+#: views.py:72
 msgid "Members of groups"
 msgstr ""
 
-#: views.py:349
+#: views.py:81
 #, python-format
 msgid "Members of group: %s"
 msgstr " اعضای گروه : %s"
+
+#: views.py:114
+#, python-format
+msgid "Edit user: %s"
+msgstr "ویرایش کاربر : %s"
+
+#: views.py:121
+msgid "Groups joined"
+msgstr ""
+
+#: views.py:130
+#, python-format
+msgid "Groups of user: %s"
+msgstr "گروه های کاربر : %s"
+
+#: views.py:175
+#, python-format
+msgid "User \"%s\" created successfully."
+msgstr "کاربر \"%s\" با موفقیت ساخته شد."
+
+#: views.py:203 views.py:271
+msgid "Must provide at least one user."
+msgstr "باید حداقل یک کاربر ارئه شود."
+
+#: views.py:220
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr "برای حذف از صفحه admin استفاده کنید."
+
+#: views.py:227
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "کاربر \"%s\" با موفقیت حذف شد."
+
+#: views.py:231
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "خطا در حذف کاربر  \"%(user)s\": %(error)s"
+
+#: views.py:245
+#, python-format
+#| msgid "Delete existing users"
+msgid "Delete the user: %s?"
+msgstr ""
+
+#: views.py:247
+#, python-format
+#| msgid "Delete existing users"
+msgid "Delete the users: %s?"
+msgstr ""
+
+#: views.py:286
+msgid "Passwords do not match, try again."
+msgstr "کلمه عبور یکسان نیست دوباره امتحان کنید."
+
+#: views.py:294
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "از صفحه admin برای این موارد استفاده کنید."
+
+#: views.py:304
+#, python-format
+msgid "Successfull password reset for user: %s."
+msgstr "ریست موفق کلمه عبور برای کاربر : %s."
+
+#: views.py:310
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "خطا در زمان ریست کلمه عبور کاربر:  \"%(user)s\": %(error)s"
+
+#: views.py:327
+#, python-format
+msgid "Reseting password for user: %s"
+msgstr "ریست کلمه عبور کاربر: %s"
+
+#: views.py:329
+#, python-format
+msgid "Reseting password for users: %s"
+msgstr "ریست کلمه عبور کابران : %s"
+
+#~ msgid ""
+#~ "Super user and staff user editing is not allowed, use the admin interface "
+#~ "for these cases."
+#~ msgstr ""
+#~ "Super user and staff user editing is not allowed, use the admin interface "
+#~ "for these cases."
+
+#~ msgid "User \"%s\" updated successfully."
+#~ msgstr "User \"%s\" updated successfully."
 
 #~ msgid "Must provide at least one group."
 #~ msgstr "Must provide at least one group."

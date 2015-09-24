@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
@@ -10,52 +10,88 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:23-0400\n"
-"PO-Revision-Date: 2015-08-20 22:17+0000\n"
-"Last-Translator: Berny <berny@bernhard-marx.de>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2015-09-24 01:10-0400\n"
+"PO-Revision-Date: 2015-09-24 05:16+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:16 links.py:24 permissions.py:7
+#: apps.py:23 links.py:28 permissions.py:7
 msgid "Statistics"
 msgstr "Statistiken"
 
+#: apps.py:40
+msgid "Schedule"
+msgstr ""
+
 #: links.py:11
-msgid "Execute"
-msgstr "Ausführen"
+msgid "Queue"
+msgstr ""
 
 #: links.py:15
+msgid "View"
+msgstr ""
+
+#: links.py:19
 msgid "Namespace details"
 msgstr "Namensraumdetails"
 
-#: links.py:19
+#: links.py:23
 msgid "Namespace list"
 msgstr "Namensraumliste"
+
+#: models.py:12
+msgid "Slug"
+msgstr ""
+
+#: models.py:14
+msgid "Date time"
+msgstr ""
+
+#: models.py:16
+msgid "Data"
+msgstr ""
+
+#: models.py:29
+msgid "Statistics result"
+msgstr ""
+
+#: models.py:30
+msgid "Statistics results"
+msgstr ""
 
 #: permissions.py:10
 msgid "View statistics"
 msgstr "Statsitiken anzeigen."
 
-#: views.py:15
+#: templates/statistics/backends/chartjs/line.html:19
+msgid "No data available yet"
+msgstr ""
+
+#: views.py:19
 msgid "Statistics namespaces"
 msgstr "Statistiken Namensräume"
 
-#: views.py:32
+#: views.py:35
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Namensraumdetails für %s"
 
-#: views.py:52
+#: views.py:55
 #, python-format
 msgid "Results for: %s"
 msgstr "Ergebnis für %s"
 
-#: views.py:62
+#: views.py:62 views.py:82
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr "Statistik \"%s\" nicht gefunden."
+
+#: views.py:75
+#, python-format
+msgid "Queue statistic \"%s\" to be updated?"
+msgstr ""

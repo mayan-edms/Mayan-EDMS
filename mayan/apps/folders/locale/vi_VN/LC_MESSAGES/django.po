@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:22-0400\n"
-"PO-Revision-Date: 2015-08-27 05:24+0000\n"
+"POT-Creation-Date: 2015-09-24 01:08-0400\n"
+"PO-Revision-Date: 2015-09-24 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
@@ -81,28 +81,30 @@ msgid "Document folders"
 msgstr ""
 
 #: permissions.py:10
-msgid "Create new folders"
-msgstr "Tạo các thư mục mới"
+msgid "Create folders"
+msgstr ""
 
 #: permissions.py:13
-msgid "Edit new folders"
-msgstr "Sửa các thư mục mới"
+msgid "Edit folders"
+msgstr ""
 
 #: permissions.py:16
-msgid "Delete new folders"
-msgstr "Xóa các thư mục mới"
+#| msgid "Delete new folders"
+msgid "Delete folders"
+msgstr ""
 
 #: permissions.py:19
 msgid "Remove documents from folders"
 msgstr "Xóa các tài liệu từ các thư mục"
 
 #: permissions.py:22
-msgid "View existing folders"
-msgstr "Xem các thư mục đang có"
+#| msgid "Edit new folders"
+msgid "View folders"
+msgstr ""
 
 #: permissions.py:25
-msgid "Add documents to existing folders"
-msgstr "Thêm tài liệu vào các thư mục đang có"
+msgid "Add documents to folders"
+msgstr ""
 
 #: serializers.py:61
 msgid "Primary key of the document to be added."
@@ -182,6 +184,15 @@ msgstr "Tài liệu: %(document)s lỗi xóa: %(error)s"
 msgid "Remove the selected document from the folder: %(folder)s?"
 msgid_plural "Remove the selected documents from the folder: %(folder)s?"
 msgstr[0] ""
+
+#~ msgid "Create new folders"
+#~ msgstr "Create new folders"
+
+#~ msgid "View existing folders"
+#~ msgstr "View existing folders"
+
+#~ msgid "Add documents to existing folders"
+#~ msgstr "Add documents to existing folders"
 
 #~ msgid "ACLs"
 #~ msgstr "ACLs"

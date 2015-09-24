@@ -1,23 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:20-0400\n"
+"POT-Creation-Date: 2015-09-24 01:06-0400\n"
 "PO-Revision-Date: 2015-08-27 05:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:9
+#: apps.py:12
 msgid "Appearance"
 msgstr ""
 
@@ -43,8 +45,8 @@ msgstr ""
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: templates/500.html:14
@@ -53,60 +55,60 @@ msgid ""
 "identifier:"
 msgstr ""
 
-#: templates/appearance/about.html:8 templates/appearance/about.html.py:58
+#: templates/appearance/about.html:8 templates/appearance/about.html.py:57
 msgid "About"
 msgstr ""
 
-#: templates/appearance/about.html:63
+#: templates/appearance/about.html:62
 msgid "Version"
 msgstr ""
 
-#: templates/appearance/about.html:65
+#: templates/appearance/about.html:64
 #, python-format
 msgid "Build number: %(build_number)s"
 msgstr ""
 
-#: templates/appearance/about.html:89
+#: templates/appearance/about.html:88
 msgid "Released under the Apache 2.0 License"
 msgstr ""
 
-#: templates/appearance/about.html:101
+#: templates/appearance/about.html:100
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr ""
 
-#: templates/appearance/base.html:38
+#: templates/appearance/base.html:42
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/appearance/base.html:67
+#: templates/appearance/base.html:71
 msgid "Anonymous"
 msgstr ""
 
-#: templates/appearance/base.html:69
+#: templates/appearance/base.html:73
 msgid "User details"
 msgstr ""
 
-#: templates/appearance/base.html:82
+#: templates/appearance/base.html:86
 msgid "Success"
 msgstr ""
 
-#: templates/appearance/base.html:82
+#: templates/appearance/base.html:86
 msgid "Information"
 msgstr ""
 
-#: templates/appearance/base.html:82
+#: templates/appearance/base.html:86
 msgid "Warning"
 msgstr ""
 
-#: templates/appearance/base.html:82
+#: templates/appearance/base.html:86
 msgid "Error"
 msgstr ""
 
-#: templates/appearance/base.html:111
+#: templates/appearance/base.html:115
 msgid "Actions"
 msgstr ""
 
-#: templates/appearance/base.html:112
+#: templates/appearance/base.html:116
 msgid "Toggle Dropdown"
 msgstr ""
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
@@ -9,18 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:24-0400\n"
+"POT-Creation-Date: 2015-09-24 01:11-0400\n"
 "PO-Revision-Date: 2015-08-27 05:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"da/)\n"
+"Language: da\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 apps.py:63 apps.py:78 forms.py:34 links.py:40 links.py:43
-#: models.py:28 permissions.py:7 views.py:131
+#: models.py:29 permissions.py:7 views.py:131
 msgid "Tags"
 msgstr "Tags"
 
@@ -28,7 +29,7 @@ msgstr "Tags"
 msgid "Preview"
 msgstr ""
 
-#: apps.py:72 models.py:23
+#: apps.py:72 models.py:24
 msgid "Documents"
 msgstr ""
 
@@ -56,23 +57,23 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: models.py:19
+#: models.py:20
 msgid "Label"
 msgstr ""
 
-#: models.py:21
+#: models.py:22
 msgid "Color"
 msgstr "Farve"
 
-#: models.py:27
+#: models.py:28
 msgid "Tag"
 msgstr ""
 
-#: models.py:49
+#: models.py:53
 msgid "Document tag"
 msgstr ""
 
-#: models.py:50
+#: models.py:54
 msgid "Document tags"
 msgstr ""
 
@@ -183,22 +184,16 @@ msgstr "Fjern tag fra dokumenter: %s."
 
 #: views.py:340
 #, python-format
-#| msgid ""
-#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
 msgstr ""
 
 #: views.py:347
 #, python-format
-#| msgid ""
-#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
 msgstr ""
 
 #: views.py:356
 #, python-format
-#| msgid ""
-#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
 msgstr ""
 

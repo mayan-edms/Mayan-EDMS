@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:21-0400\n"
+"POT-Creation-Date: 2015-09-24 01:07-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -23,43 +23,43 @@ msgstr ""
 msgid "Unknown"
 msgstr "unknown"
 
-#: apps.py:20
+#: apps.py:21
 msgid "Django GPG"
 msgstr ""
 
-#: apps.py:25 apps.py:32
+#: apps.py:54 apps.py:61
 msgid "ID"
 msgstr "ID"
 
-#: apps.py:27
+#: apps.py:56
 msgid "Owner"
 msgstr "Owner"
 
-#: apps.py:35
+#: apps.py:64
 msgid "Type"
 msgstr ""
 
-#: apps.py:37
+#: apps.py:66
 #, fuzzy
 msgid "Creation date"
 msgstr "creation date"
 
-#: apps.py:43
+#: apps.py:72
 #, fuzzy
 msgid "Expiration date"
 msgstr "expiration date"
 
-#: apps.py:44
+#: apps.py:73
 #, fuzzy
 msgid "No expiration"
 msgstr "expiration date"
 
-#: apps.py:46
+#: apps.py:75
 #, fuzzy
 msgid "Length"
 msgstr "length"
 
-#: apps.py:48
+#: apps.py:77
 #, fuzzy
 #| msgid "Identifies"
 msgid "Identities"
@@ -78,7 +78,7 @@ msgstr "Name, e-mail, key ID or key fingerprint to look for."
 msgid "Private keys"
 msgstr "private keys"
 
-#: links.py:17 views.py:76
+#: links.py:18 views.py:76
 #, fuzzy
 msgid "Public keys"
 msgstr "public keys"

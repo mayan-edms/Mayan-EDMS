@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:22-0400\n"
+"POT-Creation-Date: 2015-09-24 01:08-0400\n"
 "PO-Revision-Date: 2015-06-20 05:33+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -19,19 +19,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:16 links.py:27 links.py:30 permissions.py:7 views.py:38
+#: apps.py:18 links.py:27 links.py:30 permissions.py:7 views.py:38
 msgid "Events"
 msgstr "رویداد"
 
-#: apps.py:22
+#: apps.py:55
 msgid "Timestamp"
 msgstr "علامت زمان"
 
-#: apps.py:24
+#: apps.py:57
 msgid "Actor"
 msgstr "فعال"
 
-#: apps.py:26
+#: apps.py:59
 msgid "Verb"
 msgstr "فعل"
 

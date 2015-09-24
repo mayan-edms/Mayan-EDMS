@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# jmcainzos <jmcainzos@vodafone.es>, 2015
 # Roberto Rosario, 2015
 # Roberto Rosario, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:20-0400\n"
-"PO-Revision-Date: 2015-08-20 22:41+0000\n"
+"POT-Creation-Date: 2015-09-24 01:06-0400\n"
+"PO-Revision-Date: 2015-09-24 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:14 links.py:30
@@ -30,6 +30,7 @@ msgid "Permissions"
 msgstr "Permisos"
 
 #: apps.py:24 models.py:38
+#| msgid "Roles"
 msgid "Role"
 msgstr "Rol"
 
@@ -38,6 +39,7 @@ msgid "Delete"
 msgstr "Borrar"
 
 #: links.py:34
+#| msgid "View ACLs"
 msgid "New ACL"
 msgstr "Nueva LCA"
 
@@ -55,7 +57,7 @@ msgstr "Entradas de acceso"
 
 #: models.py:60
 msgid "None"
-msgstr ""
+msgstr "Ninguno"
 
 #: permissions.py:7
 msgid "Access control lists"
@@ -63,11 +65,11 @@ msgstr "Listas de control de acceso"
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr "Editar LCA"
+msgstr "Editar LCAs"
 
 #: permissions.py:13
 msgid "View ACLs"
-msgstr "Ver LCA"
+msgstr "Ver LCAs"
 
 #: views.py:61
 #, python-format
@@ -79,19 +81,25 @@ msgstr "Listas de control de acceso para: %s"
 msgid "New access control lists for: %s"
 msgstr "Nueva lista de control de acceso para: %s"
 
-#: views.py:137
+#: views.py:132
+#, python-format
+#| msgid "Default ACLs"
+msgid "Delete ACL: %s"
+msgstr ""
+
+#: views.py:147
 msgid "Available permissions"
 msgstr "Permisos disponibles"
 
-#: views.py:138
+#: views.py:148
 msgid "Granted permissions"
 msgstr "Permisos otorgados"
 
-#: views.py:177
+#: views.py:187
 msgid "Disabled permissions are inherited from a parent object."
-msgstr "Permisos inactivos fueron heredados de un objeto precedente."
+msgstr "Los permisos inactivos se heredan de un objeto precedente."
 
-#: views.py:208
+#: views.py:218
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
 msgstr "Permisos del rol \"%(role)s\" para \"%(object)s\""
@@ -116,9 +124,6 @@ msgstr "Permisos del rol \"%(role)s\" para \"%(object)s\""
 
 #~ msgid "Revoke"
 #~ msgstr "revoke"
-
-#~ msgid "Default ACLs"
-#~ msgstr "Default ACLs"
 
 #~ msgid "Classes"
 #~ msgstr "classes"
@@ -193,10 +198,8 @@ msgstr "Permisos del rol \"%(role)s\" para \"%(object)s\""
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"

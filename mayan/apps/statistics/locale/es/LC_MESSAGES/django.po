@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2014
@@ -9,52 +9,88 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:23-0400\n"
-"PO-Revision-Date: 2015-08-20 21:57+0000\n"
+"POT-Creation-Date: 2015-09-24 01:10-0400\n"
+"PO-Revision-Date: 2015-09-24 05:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:16 links.py:24 permissions.py:7
+#: apps.py:23 links.py:28 permissions.py:7
 msgid "Statistics"
 msgstr "Estadísticas"
 
+#: apps.py:40
+msgid "Schedule"
+msgstr ""
+
 #: links.py:11
-msgid "Execute"
-msgstr "Ejecutar"
+msgid "Queue"
+msgstr ""
 
 #: links.py:15
-msgid "Namespace details"
+msgid "View"
 msgstr ""
 
 #: links.py:19
+msgid "Namespace details"
+msgstr ""
+
+#: links.py:23
 msgid "Namespace list"
 msgstr "Lista de espacios nombrados"
+
+#: models.py:12
+msgid "Slug"
+msgstr ""
+
+#: models.py:14
+msgid "Date time"
+msgstr ""
+
+#: models.py:16
+msgid "Data"
+msgstr ""
+
+#: models.py:29
+msgid "Statistics result"
+msgstr ""
+
+#: models.py:30
+msgid "Statistics results"
+msgstr ""
 
 #: permissions.py:10
 msgid "View statistics"
 msgstr ""
 
-#: views.py:15
+#: templates/statistics/backends/chartjs/line.html:19
+msgid "No data available yet"
+msgstr ""
+
+#: views.py:19
 msgid "Statistics namespaces"
 msgstr "Estadísticas de espacios nombrados"
 
-#: views.py:32
+#: views.py:35
 #, python-format
 msgid "Namespace details for: %s"
 msgstr "Detalles para espacios nombrados: %s"
 
-#: views.py:52
+#: views.py:55
 #, python-format
 msgid "Results for: %s"
 msgstr "Resultados para: %s"
 
-#: views.py:62
+#: views.py:62 views.py:82
 #, python-format
 msgid "Statistic \"%s\" not found."
+msgstr ""
+
+#: views.py:75
+#, python-format
+msgid "Queue statistic \"%s\" to be updated?"
 msgstr ""

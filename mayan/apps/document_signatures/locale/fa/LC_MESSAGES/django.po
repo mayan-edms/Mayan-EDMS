@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:21-0400\n"
+"POT-Creation-Date: 2015-09-24 01:08-0400\n"
 "PO-Revision-Date: 2015-03-03 11:11+0000\n"
 "Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -76,72 +76,72 @@ msgstr "دانلود امضاهای جداشده"
 msgid "Upload detached signatures"
 msgstr "آپلود امضاهای جدا شده"
 
-#: views.py:52
+#: views.py:58
 #, python-format
 msgid "Signature status: %s"
 msgstr "وضعیت امضا : %s"
 
-#: views.py:56
+#: views.py:62
 msgid "Embedded"
 msgstr "داخلی و یا جا سازی شده"
 
-#: views.py:58
+#: views.py:64
 msgid "Detached"
 msgstr "جدا شده"
 
-#: views.py:60
+#: views.py:66
 msgid "None"
 msgstr "هیچ"
 
-#: views.py:65
+#: views.py:71
 #, python-format
 msgid "Signature ID: %s"
 msgstr "شناسه امضا: %s"
 
-#: views.py:66
+#: views.py:72
 #, python-format
 msgid "Signature type: %s"
 msgstr "نوع امضا : %s"
 
-#: views.py:67
+#: views.py:73
 #, python-format
 msgid "Key ID: %s"
 msgstr "شناسه کلید: %s"
 
-#: views.py:68
+#: views.py:74
 #, python-format
 msgid "Timestamp: %s"
 msgstr "برچسب زمان: %s"
 
-#: views.py:69
+#: views.py:77
 #, python-format
 msgid "Signee: %s"
 msgstr "امضا کننده: %s"
 
-#: views.py:77
+#: views.py:85
 #, python-format
 msgid "Signature properties for document: %s"
 msgstr "خصوصیات امضا برای سند :%s"
 
-#: views.py:100
+#: views.py:115
 msgid "Detached signature uploaded successfully."
 msgstr "امضای جدا شده با موفقیت آپلود شد."
 
-#: views.py:113
+#: views.py:129
 #, python-format
 msgid "Upload detached signature for document: %s"
 msgstr "بارگیری (upload) امضای جدا شده از سند : %s"
 
-#: views.py:158
+#: views.py:187
 msgid "Detached signature deleted successfully."
 msgstr "امضای جدا شده با موفقیت حذف شد."
 
-#: views.py:161
+#: views.py:193
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr "خطا %s در حذف امضای جدا شده"
 
-#: views.py:165
+#: views.py:204
 #, fuzzy, python-format
 #| msgid "Upload detached signature for document: %s"
 msgid "Delete the detached signature from document: %s?"

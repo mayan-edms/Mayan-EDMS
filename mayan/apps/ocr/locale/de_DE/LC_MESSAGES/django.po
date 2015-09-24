@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -13,50 +13,49 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:23-0400\n"
-"PO-Revision-Date: 2015-08-20 22:43+0000\n"
-"Last-Translator: Berny <berny@bernhard-marx.de>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2015-09-24 01:09-0400\n"
+"PO-Revision-Date: 2015-09-24 05:15+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:52 apps.py:139 permissions.py:7 settings.py:7
+#: apps.py:56 apps.py:143 permissions.py:7 settings.py:7
 msgid "OCR"
 msgstr "OCR-Schrifterkennung"
 
-#: apps.py:71
+#: apps.py:75
 msgid "Document"
 msgstr "Dokument"
 
-#: apps.py:75
+#: apps.py:79
 msgid "Added"
 msgstr "Hinzugefügt"
 
-#: apps.py:79 models.py:36
+#: apps.py:83 models.py:36
 msgid "Result"
 msgstr "Ergebnis"
 
-#: apps.py:96 links.py:13 models.py:56
+#: apps.py:100 links.py:13 models.py:56
 msgid "Content"
 msgstr "Inhalt"
 
-#: apps.py:145 apps.py:150 apps.py:155
+#: apps.py:149 apps.py:154 apps.py:159
 msgid "pdftotext version"
 msgstr "pdftotext Version"
 
-#: apps.py:145 apps.py:163
+#: apps.py:149 apps.py:167
 msgid "not found"
 msgstr "nicht gefunden"
 
-#: apps.py:151 apps.py:169
+#: apps.py:155 apps.py:173
 msgid "error getting version"
 msgstr "Fehler beim Auslesen der Version"
 
-#: apps.py:163 apps.py:168 apps.py:173
+#: apps.py:167 apps.py:172 apps.py:177
 msgid "tesseract version"
 msgstr "Tesseract Version"
 
@@ -67,25 +66,26 @@ msgstr "Seite %(page_number)d"
 
 #: forms.py:47
 msgid "Contents"
-msgstr ""
+msgstr "Inhalte"
 
 #: links.py:17 links.py:25
+#| msgid "Submit documents for OCR"
 msgid "Submit for OCR"
-msgstr ""
+msgstr "In die OCR-Verarbeitung einstellen"
 
 #: links.py:22
 msgid "OCR all documents"
-msgstr ""
+msgstr "Gesamt OCR"
 
 #: links.py:28
 msgid "Setup OCR"
-msgstr ""
+msgstr "OCR Einrichtung"
 
 #: links.py:32 links.py:36
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:40 views.py:137
+#: links.py:40 views.py:138
 msgid "OCR errors"
 msgstr "OCR Fehler"
 
@@ -95,7 +95,7 @@ msgstr "Erneut einstellen"
 
 #: models.py:16
 msgid "Document type"
-msgstr ""
+msgstr "Dokumententyp"
 
 #: models.py:20
 msgid "Automatically queue newly created documents for OCR."
@@ -103,11 +103,11 @@ msgstr "Automatically queue newly created documents for OCR."
 
 #: models.py:24
 msgid "Document type settings"
-msgstr ""
+msgstr "Dokumententyp Einstellungen"
 
 #: models.py:25
 msgid "Document types settings"
-msgstr ""
+msgstr "Dokumententypen Einstellungen"
 
 #: models.py:31
 msgid "Document version"
@@ -127,25 +127,26 @@ msgstr "Dokumentenversion OCR Fehler"
 
 #: models.py:54
 msgid "Document page"
-msgstr ""
+msgstr "Dokumentenseite"
 
 #: models.py:62
 msgid "Document page content"
-msgstr ""
+msgstr "Seiteninhalt"
 
 #: models.py:63
+#| msgid "Document pages content clean up error: %s"
 msgid "Document pages contents"
-msgstr ""
+msgstr "Seiteninhalte"
 
 #: parsers.py:101
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "Ausnahme bei der Verarbeitung einer Seite: %s"
 
 #: parsers.py:127
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
-msgstr ""
+msgstr "Programm pdftotext nicht gefunden in %s"
 
 #: permissions.py:10
 msgid "Submit documents for OCR"
@@ -157,102 +158,108 @@ msgstr "Dokumente aus der OCR-Warteschlange entfernen"
 
 #: permissions.py:17
 msgid "View the transcribed text from document"
-msgstr ""
+msgstr "Verarbeiteten Text des Dokuments anzeigen"
 
 #: permissions.py:21
 msgid "Change document type OCR settings"
-msgstr ""
+msgstr "OCR-Einstellungen für Dokumententyp beabeiten"
 
 #: settings.py:10
+#| msgid "File path to unpaper program."
 msgid "File path to tesseract program."
-msgstr ""
+msgstr "Pfad zum 'tesseract'-Programm"
 
 #: settings.py:15
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt "
-"wird, um Text aus PDF-Dateien zu extrahieren."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Pfad zum \"pdftotext\"-Programm (bereitgestellt von poppler), das benutzt wird, um Text aus PDF-Dateien zu extrahieren."
 
 #: settings.py:22
 msgid "Full path to the backend to be used to do OCR."
-msgstr ""
-"Vollständiger Pfad zum Backend, das für die OCR-Schrifterkennung verwendet "
-"werden soll."
+msgstr "Vollständiger Pfad zum Backend, das für die OCR-Schrifterkennung verwendet werden soll."
 
-#: views.py:31
-msgid "Submit the selected document for OCR?"
+#: settings.py:27
+msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
+
+#: views.py:29
+#| msgid "Submit documents for OCR"
+msgid "Submit all documents for OCR?"
+msgstr "Dokumente in die OCR-Verarbeitung einstellen?"
+
+#: views.py:41
+#, python-format
+msgid "%d documents added to the OCR queue."
+msgstr "%d Dokumente in OCR Warteschlange eingereiht"
 
 #: views.py:49
+#, python-format
+msgid "Submit \"%s\" to the OCR queue?"
+msgstr ""
+
+#: views.py:74
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr "Dokument %(document)s in OCR Warteschlange eingereiht"
 
-#: views.py:62
-msgid "Submit all documents for OCR?"
+#: views.py:88
+#| msgid "Submit documents for OCR"
+msgid "Submit the selected documents to the OCR queue?"
 msgstr ""
 
-#: views.py:71
-#, python-format
-msgid "%d documents added to the OCR queue."
-msgstr ""
-
-#: views.py:78
-msgid "Submit the selected documents for OCR?"
-msgstr ""
-
-#: views.py:103
+#: views.py:104
 #, python-format
 msgid "Edit OCR settings for document type: %s"
-msgstr ""
+msgstr "OCR-Einstellungen für Dokumententyp %s bearbeiten"
 
-#: views.py:130
+#: views.py:131
 #, python-format
+#| msgid "Queued documents: %d"
 msgid "Content of document: %s"
-msgstr ""
+msgstr "Inhalt von Dokument %s"
 
-#: views.py:159 views.py:220
+#: views.py:160 views.py:221
 msgid "Make at least one selection."
 msgstr "Es muss mindestens eine Auswahl getroffen werden"
 
-#: views.py:174
+#: views.py:175
 #, python-format
 msgid "Entry: %(entry)s deleted successfully."
 msgstr "Eintrag %(entry)s erfolgreich gelöscht"
 
-#: views.py:181
+#: views.py:182
 #, python-format
 msgid "Error entry: %(entry)s; %(error)s"
 msgstr "Fehler bei Eintrag %(entry)s: %(error)s"
 
-#: views.py:197
+#: views.py:198
 msgid "Delete the selected entry?"
 msgid_plural "Delete the selected entries?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ausgewählten Eintrag löschen?"
+msgstr[1] "Ausgewählte Einträge löschen?"
 
-#: views.py:232
+#: views.py:233
 #, python-format
 msgid "Entry: %(entry)s was re-queued for OCR."
 msgstr "Eintrag %(entry)s wurde erneut in die Warteschlange eingereiht"
 
-#: views.py:237
+#: views.py:240
 #, python-format
 msgid "Document version id#: %d, no longer exists."
 msgstr "Dokumentenversion ID: %d existiert nicht mehr"
 
-#: views.py:249
+#: views.py:254
 msgid "Re-queue the selected entry?"
 msgid_plural "Re-queue the selected entries?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Ausgewählten Eintrag wieder einstellen?"
+msgstr[1] "Ausgewählte Einträge wieder einstellen?"
+
+#~ msgid "Submit the selected document for OCR?"
+#~ msgstr "Submit documents for OCR"
 
 #~ msgid "Text from OCR"
 #~ msgstr "Text from OCR"
-
-#~ msgid "Submit to OCR queue"
-#~ msgstr "submit to OCR queue"
 
 #~ msgid ""
 #~ "Runs a language filter to remove common OCR mistakes from document pages "
@@ -382,11 +389,11 @@ msgstr[1] ""
 #~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 #~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 
 #~ msgid "Maximum amount of concurrent document OCRs a node can perform."
 #~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
@@ -443,11 +450,9 @@ msgstr[1] ""
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

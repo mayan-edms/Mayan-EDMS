@@ -5,14 +5,15 @@
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
+# jmcainzos <jmcainzos@vodafone.es>, 2015
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-08-27 05:25+0000\n"
+"POT-Creation-Date: 2015-09-24 01:11-0400\n"
+"PO-Revision-Date: 2015-09-24 05:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -27,11 +28,11 @@ msgstr "Administración de usuarios"
 
 #: apps.py:36
 msgid "All the groups."
-msgstr ""
+msgstr "Todos los grupos."
 
 #: apps.py:40
 msgid "All the users."
-msgstr ""
+msgstr "Todos los usuarios."
 
 #: apps.py:45 links.py:30
 msgid "Members"
@@ -61,7 +62,7 @@ msgstr "Nueva contraseña"
 msgid "Confirm password"
 msgstr "Confirmar contraseña"
 
-#: links.py:14 views.py:296
+#: links.py:14 views.py:28
 msgid "Create new group"
 msgstr "Crear nuevo grupo"
 
@@ -73,21 +74,21 @@ msgstr "Borrar"
 msgid "Edit"
 msgstr "Editar"
 
-#: links.py:26 links.py:34 links.py:50 views.py:319
+#: links.py:26 links.py:34 links.py:50 views.py:51
 msgid "Groups"
 msgstr "Grupos"
 
-#: links.py:38 views.py:97
+#: links.py:38 views.py:184
 msgid "Create new user"
 msgstr "Crear nuevo usuario"
 
-#: links.py:54 links.py:70 views.py:33
+#: links.py:54 links.py:70 views.py:156
 msgid "Users"
 msgstr "Usuarios"
 
 #: links.py:62 links.py:66
 msgid "Reset password"
-msgstr "Reestablecer contraseña"
+msgstr "Restablecer contraseña"
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -121,121 +122,120 @@ msgstr "Editar usuarios existentes"
 msgid "View existing users"
 msgstr "Ver usuarios existentes"
 
-#: views.py:50
-msgid ""
-"Super user and staff user editing is not allowed, use the admin interface "
-"for these cases."
-msgstr "No se permite editar el super usuario y el usuario de personal. Use la interfaz de administración para estos casos."
+#: views.py:44
+#, python-format
+msgid "Edit group: %s"
+msgstr "Editar grupo: %s"
 
 #: views.py:65
 #, python-format
-msgid "User \"%s\" updated successfully."
-msgstr "Usuario \"%s\" actualizado con éxito."
+#| msgid "Delete existing groups"
+msgid "Delete the group: %s?"
+msgstr "¿Borrar el grupo: %s?"
+
+#: views.py:71 views.py:120
+msgid "Available groups"
+msgstr "Grupos disponibles."
 
 #: views.py:72
+msgid "Members of groups"
+msgstr "Miembros de grupos"
+
+#: views.py:81
+#, python-format
+msgid "Members of group: %s"
+msgstr "Miembros del grupo: %s"
+
+#: views.py:114
 #, python-format
 msgid "Edit user: %s"
 msgstr "Editar usuario: %s"
 
-#: views.py:88
+#: views.py:121
+msgid "Groups joined"
+msgstr "Grupos participados"
+
+#: views.py:130
+#, python-format
+msgid "Groups of user: %s"
+msgstr "Grupos de usuario: %s"
+
+#: views.py:175
 #, python-format
 msgid "User \"%s\" created successfully."
 msgstr "Usuario \"%s\" creado con éxito."
 
-#: views.py:116 views.py:184
+#: views.py:203 views.py:271
 msgid "Must provide at least one user."
 msgstr "Debe indicar al menos un usuario."
 
-#: views.py:133
+#: views.py:220
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
 msgstr "No se permite eliminar el super usuario y usuario de personal. Use la interfaz de administración para estos casos."
 
-#: views.py:140
+#: views.py:227
 #, python-format
 msgid "User \"%s\" deleted successfully."
 msgstr "Usuario \"%s\" eliminado con éxito."
 
-#: views.py:144
+#: views.py:231
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
 msgstr "Error eliminando el usuario \"%(user)s\": %(error)s "
 
-#: views.py:158
+#: views.py:245
 #, python-format
 #| msgid "Delete existing users"
 msgid "Delete the user: %s?"
-msgstr ""
+msgstr "¿Borrar el usuario: %s?"
 
-#: views.py:160
+#: views.py:247
 #, python-format
 #| msgid "Delete existing users"
 msgid "Delete the users: %s?"
-msgstr ""
+msgstr "¿Borrar los usuarios: %s?"
 
-#: views.py:199
+#: views.py:286
 msgid "Passwords do not match, try again."
 msgstr "Las contraseñas no coinciden. Vuelva a intentarlo."
 
-#: views.py:207
+#: views.py:294
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
 msgstr "No se permite cambiar la contraseña del super usuario y del usuario de personal. Use la interfaz de administración para estos casos."
 
-#: views.py:217
+#: views.py:304
 #, python-format
 msgid "Successfull password reset for user: %s."
 msgstr "Contraseña restablecida para el usuario: %s."
 
-#: views.py:223
+#: views.py:310
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Error de restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
+msgstr "Error restaurando la contraseña para el usuario \"%(user)s\": %(error)s "
 
-#: views.py:240
+#: views.py:327
 #, python-format
 msgid "Reseting password for user: %s"
 msgstr "Restaurando contraseña del usuario: %s"
 
-#: views.py:242
+#: views.py:329
 #, python-format
 msgid "Reseting password for users: %s"
 msgstr "Restaurando la contraseña de los usuarios: %s"
 
-#: views.py:264 views.py:339
-msgid "Available groups"
-msgstr ""
+#~ msgid ""
+#~ "Super user and staff user editing is not allowed, use the admin interface "
+#~ "for these cases."
+#~ msgstr ""
+#~ "Super user and staff user editing is not allowed, use the admin interface "
+#~ "for these cases."
 
-#: views.py:265
-msgid "Groups joined"
-msgstr ""
-
-#: views.py:274
-#, python-format
-msgid "Groups of user: %s"
-msgstr "Grupos de usuario: %s"
-
-#: views.py:312
-#, python-format
-msgid "Edit group: %s"
-msgstr "Editar grupo: %s"
-
-#: views.py:333
-#, python-format
-#| msgid "Delete existing groups"
-msgid "Delete the group: %s?"
-msgstr ""
-
-#: views.py:340
-msgid "Members of groups"
-msgstr ""
-
-#: views.py:349
-#, python-format
-msgid "Members of group: %s"
-msgstr "Miembros del grupo: %s"
+#~ msgid "User \"%s\" updated successfully."
+#~ msgstr "User \"%s\" updated successfully."
 
 #~ msgid "Must provide at least one group."
 #~ msgstr "Must provide at least one group."

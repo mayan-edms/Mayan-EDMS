@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-08-27 01:24-0400\n"
-"PO-Revision-Date: 2015-08-27 05:25+0000\n"
+"POT-Creation-Date: 2015-09-24 01:11-0400\n"
+"PO-Revision-Date: 2015-09-24 05:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
 "MIME-Version: 1.0\n"
@@ -59,7 +59,7 @@ msgstr "Nova lozinka"
 msgid "Confirm password"
 msgstr "Potvrdite lozinku"
 
-#: links.py:14 views.py:296
+#: links.py:14 views.py:28
 msgid "Create new group"
 msgstr ""
 
@@ -71,15 +71,15 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: links.py:26 links.py:34 links.py:50 views.py:319
+#: links.py:26 links.py:34 links.py:50 views.py:51
 msgid "Groups"
 msgstr ""
 
-#: links.py:38 views.py:97
+#: links.py:38 views.py:184
 msgid "Create new user"
 msgstr ""
 
-#: links.py:54 links.py:70 views.py:33
+#: links.py:54 links.py:70 views.py:156
 msgid "Users"
 msgstr ""
 
@@ -119,121 +119,120 @@ msgstr "Izmjeni postojeće korisnike"
 msgid "View existing users"
 msgstr "Pregledaj postojeće korisnike"
 
-#: views.py:50
-msgid ""
-"Super user and staff user editing is not allowed, use the admin interface "
-"for these cases."
-msgstr "Super user i staff user izmjene nisu dozvoljene, koristite administratorski interface za takve slučajeve."
-
-#: views.py:65
-#, python-format
-msgid "User \"%s\" updated successfully."
-msgstr "Korisnik \"%s\" uspješno update-ovan."
-
-#: views.py:72
-#, python-format
-msgid "Edit user: %s"
-msgstr ""
-
-#: views.py:88
-#, python-format
-msgid "User \"%s\" created successfully."
-msgstr "Korisnik \"%s\" uspješno kreiran."
-
-#: views.py:116 views.py:184
-msgid "Must provide at least one user."
-msgstr "Mora biti obebjeđen bar jedan korisnik."
-
-#: views.py:133
-msgid ""
-"Super user and staff user deleting is not allowed, use the admin interface "
-"for these cases."
-msgstr "Super user i staff user brisanja nisu dozvoljena, koristite administratorski interface za takve slučajeve"
-
-#: views.py:140
-#, python-format
-msgid "User \"%s\" deleted successfully."
-msgstr "Korisnik \"%s\" uspješno obrisan."
-
-#: views.py:144
-#, python-format
-msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr "Greška brisanja korisnika \"%(user)s\": %(error)s"
-
-#: views.py:158
-#, python-format
-#| msgid "Delete existing users"
-msgid "Delete the user: %s?"
-msgstr ""
-
-#: views.py:160
-#, python-format
-#| msgid "Delete existing users"
-msgid "Delete the users: %s?"
-msgstr ""
-
-#: views.py:199
-msgid "Passwords do not match, try again."
-msgstr "Lozinke se ne podudaraju, pokušajte ponovo."
-
-#: views.py:207
-msgid ""
-"Super user and staff user password reseting is not allowed, use the admin "
-"interface for these cases."
-msgstr "Super user i staff user reset lozinke nije dozvoljen, koristite administratorski interface za takve slučajeve"
-
-#: views.py:217
-#, python-format
-msgid "Successfull password reset for user: %s."
-msgstr "Uspješno resetovana lozinka za korisnika: %s."
-
-#: views.py:223
-#, python-format
-msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Greška resetovanja lozinke za korisnika \"%(user)s\": %(error)s"
-
-#: views.py:240
-#, python-format
-msgid "Reseting password for user: %s"
-msgstr "Resetovanje lozinke za korisnika: %s"
-
-#: views.py:242
-#, python-format
-msgid "Reseting password for users: %s"
-msgstr "Resetovanje lozinke za korisnike: %s"
-
-#: views.py:264 views.py:339
-msgid "Available groups"
-msgstr ""
-
-#: views.py:265
-msgid "Groups joined"
-msgstr ""
-
-#: views.py:274
-#, python-format
-msgid "Groups of user: %s"
-msgstr ""
-
-#: views.py:312
+#: views.py:44
 #, python-format
 msgid "Edit group: %s"
 msgstr ""
 
-#: views.py:333
+#: views.py:65
 #, python-format
 #| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr ""
 
-#: views.py:340
+#: views.py:71 views.py:120
+msgid "Available groups"
+msgstr ""
+
+#: views.py:72
 msgid "Members of groups"
 msgstr ""
 
-#: views.py:349
+#: views.py:81
 #, python-format
 msgid "Members of group: %s"
 msgstr ""
+
+#: views.py:114
+#, python-format
+msgid "Edit user: %s"
+msgstr ""
+
+#: views.py:121
+msgid "Groups joined"
+msgstr ""
+
+#: views.py:130
+#, python-format
+msgid "Groups of user: %s"
+msgstr ""
+
+#: views.py:175
+#, python-format
+msgid "User \"%s\" created successfully."
+msgstr "Korisnik \"%s\" uspješno kreiran."
+
+#: views.py:203 views.py:271
+msgid "Must provide at least one user."
+msgstr "Mora biti obebjeđen bar jedan korisnik."
+
+#: views.py:220
+msgid ""
+"Super user and staff user deleting is not allowed, use the admin interface "
+"for these cases."
+msgstr "Super user i staff user brisanja nisu dozvoljena, koristite administratorski interface za takve slučajeve"
+
+#: views.py:227
+#, python-format
+msgid "User \"%s\" deleted successfully."
+msgstr "Korisnik \"%s\" uspješno obrisan."
+
+#: views.py:231
+#, python-format
+msgid "Error deleting user \"%(user)s\": %(error)s"
+msgstr "Greška brisanja korisnika \"%(user)s\": %(error)s"
+
+#: views.py:245
+#, python-format
+#| msgid "Delete existing users"
+msgid "Delete the user: %s?"
+msgstr ""
+
+#: views.py:247
+#, python-format
+#| msgid "Delete existing users"
+msgid "Delete the users: %s?"
+msgstr ""
+
+#: views.py:286
+msgid "Passwords do not match, try again."
+msgstr "Lozinke se ne podudaraju, pokušajte ponovo."
+
+#: views.py:294
+msgid ""
+"Super user and staff user password reseting is not allowed, use the admin "
+"interface for these cases."
+msgstr "Super user i staff user reset lozinke nije dozvoljen, koristite administratorski interface za takve slučajeve"
+
+#: views.py:304
+#, python-format
+msgid "Successfull password reset for user: %s."
+msgstr "Uspješno resetovana lozinka za korisnika: %s."
+
+#: views.py:310
+#, python-format
+msgid "Error reseting password for user \"%(user)s\": %(error)s"
+msgstr "Greška resetovanja lozinke za korisnika \"%(user)s\": %(error)s"
+
+#: views.py:327
+#, python-format
+msgid "Reseting password for user: %s"
+msgstr "Resetovanje lozinke za korisnika: %s"
+
+#: views.py:329
+#, python-format
+msgid "Reseting password for users: %s"
+msgstr "Resetovanje lozinke za korisnike: %s"
+
+#~ msgid ""
+#~ "Super user and staff user editing is not allowed, use the admin interface "
+#~ "for these cases."
+#~ msgstr ""
+#~ "Super user and staff user editing is not allowed, use the admin interface "
+#~ "for these cases."
+
+#~ msgid "User \"%s\" updated successfully."
+#~ msgstr "User \"%s\" updated successfully."
 
 #~ msgid "Must provide at least one group."
 #~ msgstr "Must provide at least one group."
