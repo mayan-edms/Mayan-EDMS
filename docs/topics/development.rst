@@ -30,7 +30,6 @@ why things are the way they are in **Mayan EDMS**.
 - Each app is as independent and self contained as possible. Exceptions, the basic requirements: navigation, permissions, common, main.
 - If an app is meant to be used by more than one other app it should be as generic as possible in regard to the project and another app will bridge the functionality.
 
-  - Example: the acls app is app agnostic, document_acls connects the acls app with the documents app.
   - Example: since indexing (document_indexing) only applies to documents, the app is specialized and dependant on the documents app.
 
 
@@ -189,7 +188,7 @@ Source Control
 
 The project is publicly accessible, hosted and can be cloned from **GitLab** using::
 
-    $ git clone git://gitlab.com/mayan-edms/mayan-edms.git
+    $ git clone https://gitlab.com/mayan-edms/mayan-edms.git
 
 
 Git branch structure
@@ -286,8 +285,10 @@ Debugging
 ---------
 
 **Mayan EDMS** makes extensive use of Django's new `logging capabilities`_.
-To enable debug logging for the ``documents`` app for example add the following
-lines to your ``settings_local.py`` file::
+By default debug logging for all apps is turned on. If you wish to customize
+how logging is managed turn off automatic logging by setting
+`COMMON_AUTO_LOGGING` to False and add the following lines to your
+``settings/local.py`` file::
 
     LOGGING = {
         'version': 1,
@@ -372,7 +373,7 @@ This is the sequence of step I use to produce an installable package:
 
     $ rm dist -R
 
-2. Generate the packaged version (will produce dist/mayan-edms-1.1.1.tar.gz)::
+2. Generate the packaged version (will produce dist/mayan-edms-2.0.0.tar.gz)::
 
     $ python setup.py sdist
 
@@ -381,7 +382,7 @@ This is the sequence of step I use to produce an installable package:
     $ cd /tmp
     $ virtualenv venv
     $ source venv/bin/activate
-    $ pip install <path of the Git repository>/dist/mayan-edms-1.1.1.tar.gz
+    $ pip install <path of the Git repository>/dist/mayan-edms-2.0.0.tar.gz
     $ mayan-edms.py initialsetup
     $ mayan-edms.py runserver
 
@@ -395,13 +396,13 @@ Wheel package
 
 2. Create wheel package using the source file package (Until issue #99 of wheel is fixed: https://bitbucket.org/pypa/wheel/issue/99/cannot-exclude-directory)::
 
-    $ pip wheel --no-index --no-deps --wheel-dir dist dist/mayan-edms-1.1.1.tar.gz
+    $ pip wheel --no-index --no-deps --wheel-dir dist dist/mayan-edms-2.0.0.tar.gz
 
 3. Do a test install::
 
     $ cd /tmp
     $ virtualenv venv
     $ source venv/bin/activate
-    $ pip install <path of the Git repository>/dist/mayan_edms-1.1.1-py2-none-any.whl
+    $ pip install <path of the Git repository>/dist/mayan_edms-2.0.0-py2-none-any.whl
     $ mayan-edms.py initialsetup
     $ mayan-edms.py runserver

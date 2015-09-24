@@ -26,7 +26,7 @@ Features
 
 * Dynamic default values for metadata.
 
-  * Metadata fields can have an initial value, which can be static or determined by an user provided Python code snippet.
+  * Metadata fields can have an initial value, which can be static or determined by an user provided template code snippet.
 
 * Documents can be uploaded from different sources.
 
@@ -38,7 +38,7 @@ Features
 
 * Previews for a great deal of image formats.
 
-  * **Mayan EDMS** provides different file conversion backends with different levels of functionality and requirements to adapt to different deployment environments.
+  * **Mayan EDMS** provides document image preview generation for many popular file formats.
 
 * Full text searching.
 
@@ -67,7 +67,7 @@ Features
 * Multilingual user interface.
 
   * **Mayan EDMS** being written using the Django_ framework, can be translated to practically any language spoken in the world.
-    For a list of translated languages have a look at Transifex_.
+    For a list of translated languages have a look at the Transifex_ project location.
 
 * Multilingual OCR support.
 

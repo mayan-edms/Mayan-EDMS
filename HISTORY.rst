@@ -1,6 +1,7 @@
 2.0 (2015-10-xx)
 ================
 
+- New source homepage: https://gitlab.com/mayan-edms/mayan-edms
 - Update to Django 1.7
 - New Bootstrap Frontend UI
 - Easier theming and rebranding

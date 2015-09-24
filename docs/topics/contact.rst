@@ -34,5 +34,5 @@ Report bugs with **Mayan EDMS** or search existing ones using Github's `ticket t
 
 .. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/
 .. _post a question: http://groups.google.com/group/mayan-edms
-.. _ticket tracker: https://github.com/mayan-edms/mayan-edms/issues
+.. _ticket tracker: https://gitlab.com/mayan-edms/mayan-edms/issues
 .. _Gmane: http://news.gmane.org/gmane.comp.python.django.mayan-edms
