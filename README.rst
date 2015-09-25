@@ -1,4 +1,4 @@
-|Build Status| |Coverage Status| |PyPI badge| |Installs badge| |License badge| |Wheel badge|
+|Build Status| |PyPI badge| |Installs badge| |License badge| |Wheel badge|
 
 |Logo|
 
@@ -68,10 +68,8 @@ Contribute
 .. _`the repository`: http://github.com/mayan-edms/mayan-edms
 .. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/development/docs/topics/contributors.rst
 
-.. |Build Status| image:: http://img.shields.io/travis/mayan-edms/mayan-edms/development.svg?style=flat
-   :target: https://travis-ci.org/mayan-edms/mayan-edms
-.. |Coverage Status| image:: http://img.shields.io/coveralls/mayan-edms/mayan-edms/development.svg?style=flat
-   :target: https://coveralls.io/r/mayan-edms/mayan-edms?branch=development
+.. |Build Status| image:: https://gitlab.com/ci/projects/6169/status.png?ref=development
+   :target: https://gitlab.com/ci/projects/6169?ref=development
 .. |Logo| image:: https://github.com/mayan-edms/mayan-edms/raw/development/docs/_static/mayan_logo.png
 .. |Animation| image:: https://github.com/mayan-edms/mayan-edms/raw/development/docs/_static/overview.gif
 .. |Installs badge| image:: http://img.shields.io/pypi/dm/mayan-edms.svg?style=flat
