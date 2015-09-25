@@ -7,5 +7,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mayan_edms',
         'USER': 'root',
+        'HOST': 'localhost',
+        'PORT': '3306',
     }
 }
