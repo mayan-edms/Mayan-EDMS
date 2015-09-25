@@ -27,7 +27,7 @@ job2:
   only:
     - development
 variables:
-  POSTGRES_DB: mayan_edms
-  POSTGRES_PASSWORD: postgres
-  MYSQL_ALLOW_EMPTY_PASSWORD: yes
-  MYSQL_DATABASE: mayan_edms
+  POSTGRES_DB: "mayan_edms"
+  POSTGRES_PASSWORD: "postgres"
+  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  MYSQL_DATABASE: "mayan_edms"
