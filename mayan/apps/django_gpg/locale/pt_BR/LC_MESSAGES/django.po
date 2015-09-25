@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2012
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:25-0400\n"
-"PO-Revision-Date: 2015-05-11 20:22+0000\n"
-"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"PO-Revision-Date: 2015-08-24 04:02+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: api.py:100
@@ -50,20 +49,17 @@ msgid "Expiration date"
 msgstr "data de validade"
 
 #: apps.py:73
-#, fuzzy
-#| msgid "Expiration date"
 msgid "No expiration"
-msgstr "data de validade"
+msgstr ""
 
 #: apps.py:75
 msgid "Length"
 msgstr "comprimento"
 
 #: apps.py:77
-#, fuzzy
 #| msgid "Identifies"
 msgid "Identities"
-msgstr "Identifica"
+msgstr ""
 
 #: forms.py:9
 msgid "Term"
@@ -91,7 +87,7 @@ msgstr "Consulta servidores de chaves"
 
 #: links.py:30
 msgid "Import"
-msgstr "Importar"
+msgstr ""
 
 #: links.py:35 permissions.py:7
 msgid "Key management"
@@ -154,10 +150,9 @@ msgid "Import keys from keyservers"
 msgstr "Importar chaves do Keyservers"
 
 #: settings.py:10
-#, fuzzy
 #| msgid "Signature error."
 msgid "Signatures"
-msgstr "Erro de assinatura."
+msgstr ""
 
 #: settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
@@ -173,6 +168,7 @@ msgstr ""
 
 #: views.py:38
 #, python-format
+#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
@@ -182,10 +178,10 @@ msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
 #: views.py:57
-#, fuzzy, python-format
+#, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
-msgstr "Importar chave"
+msgstr ""
 
 #: views.py:59
 msgid "Import key"
@@ -202,6 +198,9 @@ msgstr "Excluir chave"
 
 #: views.py:110
 #, python-format
+#| msgid ""
+#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
+#| " of a public/private pair the private key will be deleted well."
 msgid ""
 "Delete key %s? If you delete a public key that is part of a public/private "
 "pair the private key will be deleted as well."
@@ -219,23 +218,26 @@ msgstr "Consultar servidor de chaves"
 msgid "Key query results"
 msgstr ""
 
-#~ msgid "Are you sure you wish to import key id: %s?"
-#~ msgstr "Você tem certeza que deseja importar chave: %s?"
-
 #~ msgid "Key ID"
-#~ msgstr "ID da chave"
+#~ msgstr "Key ID"
 
 #~ msgid "results"
-#~ msgstr "resultados"
+#~ msgstr "results"
+
+#~ msgid "Key: %s, imported successfully."
+#~ msgstr "Key: %s, imported successfully."
+
+#~ msgid "Are you sure you wish to import key id: %s?"
+#~ msgstr "Are you sure you wish to import key id: %s?"
 
 #~ msgid "Disabled"
-#~ msgstr "desativada"
+#~ msgstr "disabled"
 
 #~ msgid "Expired"
-#~ msgstr "expirado"
+#~ msgstr "expired"
 
 #~ msgid "Revoked"
-#~ msgstr "Revogada"
+#~ msgstr "revoked"
 
 #~ msgid "private keys"
 #~ msgstr "private keys"

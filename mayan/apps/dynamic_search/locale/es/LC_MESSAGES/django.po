@@ -1,30 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2011,2013
+# Roberto Rosario, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:26-0400\n"
-"PO-Revision-Date: 2015-08-20 22:09+0000\n"
+"PO-Revision-Date: 2015-08-24 04:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:15
 msgid "Dynamic search"
-msgstr ""
+msgstr "Búsqueda dinámica "
 
 #: forms.py:20
 msgid "Search terms"
@@ -91,8 +91,7 @@ msgstr "Tipo"
 #~ msgid "Recent searches (maximum of %d)"
 #~ msgstr "recent searches (maximum of %d)"
 
-#~ msgid ""
-#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 #~ msgstr ""
 #~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 

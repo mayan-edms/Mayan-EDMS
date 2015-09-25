@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
@@ -12,12 +12,11 @@ msgstr ""
 "POT-Creation-Date: 2015-09-24 16:28-0400\n"
 "PO-Revision-Date: 2015-09-24 05:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:42 links.py:30 models.py:133 views.py:523
@@ -25,6 +24,7 @@ msgid "Sources"
 msgstr "Sources"
 
 #: apps.py:50
+#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
@@ -61,9 +61,7 @@ msgstr "Décompresser les fichiers"
 
 #: forms.py:45
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Importer le contenu d'un ensemble de fichiers compressés comme fichiers "
-"individuels"
+msgstr "Importer le contenu d'un ensemble de fichiers compressés comme fichiers individuels"
 
 #: forms.py:64
 msgid "Staging file"
@@ -249,8 +247,7 @@ msgstr "Intervalle"
 
 #: models.py:261
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-"Assigner un type de document aux documents importés à partir de cette source."
+msgstr "Assigner un type de document aux documents importés à partir de cette source."
 
 #: models.py:263
 msgid "Document type"
@@ -280,9 +277,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Les choix typiques sont 110 pour le POP3, 995 pour le POP3 over SSL, 143 "
-"pour l'IMAP, 993 pour l'IMAP over SSL."
+msgstr "Les choix typiques sont 110 pour le POP3, 995 pour le POP3 over SSL, 143 pour l'IMAP, 993 pour l'IMAP over SSL."
 
 #: models.py:326
 msgid "Port"
@@ -330,8 +325,7 @@ msgstr "Compte POP"
 
 #: models.py:438
 msgid "Mail from which to check for messages with attached documents."
-msgstr ""
-"Compte de courriel dont il faut surveiller les messages avec pièces jointes."
+msgstr "Compte de courriel dont il faut surveiller les messages avec pièces jointes."
 
 #: models.py:439
 msgid "Mailbox"
@@ -371,6 +365,7 @@ msgstr "Afficher les sources du document en cours"
 
 #: tasks.py:29
 #, python-format
+#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
@@ -381,13 +376,12 @@ msgstr ""
 
 #: views.py:145 wizards.py:37
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"Aucune source de document interactifs n'a été définie ou/ni activée, créer "
-"en une avant de continuer."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Aucune source de document interactifs n'a été définie ou/ni activée, créer en une avant de continuer."
 
 #: views.py:171 views.py:189
+#| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
@@ -397,9 +391,7 @@ msgstr "Fichiers dans l'index, en cours de modification"
 
 #: views.py:272
 msgid "New document queued for uploaded and will be available shortly."
-msgstr ""
-"Nouveau document ajouter dans la file d'attente pour transfert et disponible "
-"dans les plus bref délai."
+msgstr "Nouveau document ajouter dans la file d'attente pour transfert et disponible dans les plus bref délai."
 
 #: views.py:306
 #, python-format
@@ -407,10 +399,9 @@ msgid "Upload a local document from source: %s"
 msgstr "importer un document local à partir de la source: %s"
 
 #: views.py:362
-msgid "New document version queued for uploaded and will be available shortly."
-msgstr ""
-"Une nouvelle version du document mis en fille d'attente pour importation qui "
-"sera disponible dans les plus brefs délai."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
+msgstr "Une nouvelle version du document mis en fille d'attente pour importation qui sera disponible dans les plus brefs délai."
 
 #: views.py:400
 #, python-format
@@ -433,6 +424,7 @@ msgstr "Créer une nouvelle source de type:%s"
 
 #: views.py:482
 #, python-format
+#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -544,11 +536,9 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -10,16 +10,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:25-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"PO-Revision-Date: 2015-08-24 04:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: api.py:100
 msgid "Unknown"
@@ -58,10 +56,9 @@ msgid "Length"
 msgstr ""
 
 #: apps.py:77
-#, fuzzy
 #| msgid "Identifies"
 msgid "Identities"
-msgstr "Identifies"
+msgstr ""
 
 #: forms.py:9
 msgid "Term"
@@ -88,10 +85,8 @@ msgid "Query keyservers"
 msgstr "Query keyservers"
 
 #: links.py:30
-#, fuzzy
-#| msgid "Import key"
 msgid "Import"
-msgstr "Import key"
+msgstr ""
 
 #: links.py:35 permissions.py:7
 msgid "Key management"
@@ -154,10 +149,9 @@ msgid "Import keys from keyservers"
 msgstr "Import keys from keyservers"
 
 #: settings.py:10
-#, fuzzy
 #| msgid "Signature error."
 msgid "Signatures"
-msgstr "Signature error."
+msgstr ""
 
 #: settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
@@ -172,10 +166,10 @@ msgid "Path to the GPG binary."
 msgstr ""
 
 #: views.py:38
-#, fuzzy, python-format
+#, python-format
 #| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr "Unable to import key id: %(key_id)s; %(error)s"
+msgstr ""
 
 #: views.py:48
 #, python-format
@@ -183,10 +177,10 @@ msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
 #: views.py:57
-#, fuzzy, python-format
+#, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
-msgstr "Import key"
+msgstr ""
 
 #: views.py:59
 msgid "Import key"
@@ -202,18 +196,14 @@ msgid "Delete key"
 msgstr "Delete key"
 
 #: views.py:110
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "Are you sure you wish to delete key: %s?  If you try to delete a public "
-#| "key that is part of a public/private pair the private key will be deleted "
-#| "as well."
+#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
+#| " of a public/private pair the private key will be deleted well."
 msgid ""
 "Delete key %s? If you delete a public key that is part of a public/private "
 "pair the private key will be deleted as well."
 msgstr ""
-"Are you sure you wish to delete key: %s?  If you try to delete a public key "
-"that is part of a public/private pair the private key will be deleted as "
-"well."
 
 #: views.py:134
 msgid "Search"
@@ -227,17 +217,26 @@ msgstr "Query key server"
 msgid "Key query results"
 msgstr ""
 
+#~ msgid "Key ID"
+#~ msgstr "Key ID"
+
+#~ msgid "results"
+#~ msgstr "results"
+
 #~ msgid "Key: %s, imported successfully."
 #~ msgstr "Key: %s, imported successfully."
 
 #~ msgid "Are you sure you wish to import key id: %s?"
 #~ msgstr "Are you sure you wish to import key id: %s?"
 
-#~ msgid "Key ID"
-#~ msgstr "Key ID"
+#~ msgid "Disabled"
+#~ msgstr "disabled"
 
-#~ msgid "results"
-#~ msgstr "results"
+#~ msgid "Expired"
+#~ msgstr "expired"
+
+#~ msgid "Revoked"
+#~ msgstr "revoked"
 
 #~ msgid "private keys"
 #~ msgstr "private keys"

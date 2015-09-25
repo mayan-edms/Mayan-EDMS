@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:26-0400\n"
-"PO-Revision-Date: 2015-05-13 16:48+0000\n"
-"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"PO-Revision-Date: 2015-08-20 22:06+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:16 permissions.py:7
@@ -65,17 +64,14 @@ msgstr "Exibir detalhes do ambiente de instalação"
 msgid "Installation namespace details for: %s"
 msgstr "Detalhes da Instalação do namespace para:  %s"
 
-#~ msgid "Operating system"
-#~ msgstr "Sistema Operacional"
-
 #~ msgid "LSB OS"
 #~ msgstr "LSB OS"
 
 #~ msgid "Distributor ID"
-#~ msgstr "ID Distribuidor "
+#~ msgstr "Distributor ID"
 
 #~ msgid "Description"
-#~ msgstr "Descrição"
+#~ msgstr "Description"
 
 #~ msgid "Release"
 #~ msgstr "Release"
@@ -84,76 +80,88 @@ msgstr "Detalhes da Instalação do namespace para:  %s"
 #~ msgstr "Codename"
 
 #~ msgid "System info"
-#~ msgstr "Informação do Sistema"
+#~ msgstr "System info"
 
 #~ msgid "OS architecture"
-#~ msgstr "Arquitetura O.S."
+#~ msgstr "OS architecture"
 
 #~ msgid "Python version"
-#~ msgstr "Versão do Python"
+#~ msgstr "Python version"
 
 #~ msgid "Hostname"
 #~ msgstr "Hostname"
 
 #~ msgid "Platform"
-#~ msgstr "Plataforma"
+#~ msgstr "Platform"
 
 #~ msgid "Machine"
-#~ msgstr "Servidor"
+#~ msgstr "Machine"
 
 #~ msgid "Processor"
-#~ msgstr "Processador"
+#~ msgstr "Processor"
 
 #~ msgid "Number of CPUs"
-#~ msgstr "Número  de CPU´s"
+#~ msgstr "Number of CPUs"
 
 #~ msgid "Total physical memory"
-#~ msgstr "Total Memória física "
+#~ msgstr "Total physical memory"
 
 #~ msgid "Disk partitions"
-#~ msgstr "Partições de disco"
-
-#~ msgid "Binary dependencies"
-#~ msgstr "Dependências binárias"
+#~ msgstr "Disk partitions"
 
 #~ msgid "tesseract version"
-#~ msgstr "Versão do tesseract"
+#~ msgstr "tesseract version"
 
 #~ msgid "not found"
-#~ msgstr "Não encontrada"
+#~ msgstr "not found"
 
 #~ msgid "error getting version"
-#~ msgstr "Erro ao receber a versão."
+#~ msgstr "error getting version"
 
 #~ msgid "unpaper version"
-#~ msgstr "Versão do unpaper"
+#~ msgstr "unpaper version"
 
 #~ msgid "pdftotext version"
-#~ msgstr "Versão do  pdftotext"
+#~ msgstr "pdftotext version"
 
 #~ msgid "Mayan EDMS"
-#~ msgstr "Mayan EDMS"
-
-#~ msgid "UUID"
-#~ msgstr "UUID"
+#~ msgstr "Mayan EDMS version"
 
 #~ msgid "Mayan EDMS version"
-#~ msgstr "Mayan EDMS versão"
+#~ msgstr "Mayan EDMS version"
 
 #~ msgid "Git repository"
-#~ msgstr "Git repository"
+#~ msgstr "Running from a Git repository"
 
 #~ msgid "Running from a Git repository"
-#~ msgstr "Rodando de um repositório Git"
+#~ msgstr "Running from a Git repository"
 
 #~ msgid "Repository remotes"
-#~ msgstr "Repositório remoto"
+#~ msgstr "Repository remotes"
 
 #~ msgid "Repository remotes URLs"
-#~ msgstr "URLs dos repositórios remotos"
+#~ msgstr "Repository remotes URLs"
 
 #~ msgid "Branch"
 #~ msgstr "Branch"
+
+#~ msgid "HEAD commit hex SHA"
+#~ msgstr "HEAD commit hex SHA"
+
+#~ msgid "HEAD commit author"
+#~ msgstr "HEAD commit author"
+
+#~ msgid "HEAD commit authored date"
+#~ msgstr "HEAD commit authored date"
+
+#~ msgid "HEAD commit committer"
+#~ msgstr "HEAD commit committer"
+
+#~ msgid "HEAD commit committed date"
+#~ msgstr "HEAD commit committed date"
+
+#~ msgid "HEAD commit message"
+#~ msgstr "HEAD commit message"
 
 #~ msgid "Installed via fabfile"
 #~ msgstr "Installed via fabfile"

@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2014
+# Roberto Rosario, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:28-0400\n"
-"PO-Revision-Date: 2015-09-24 05:16+0000\n"
+"PO-Revision-Date: 2015-09-24 20:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:23 links.py:28 permissions.py:7
@@ -36,7 +36,7 @@ msgstr ""
 
 #: links.py:15
 msgid "View"
-msgstr ""
+msgstr "Ver"
 
 #: links.py:19
 msgid "Namespace details"
@@ -54,27 +54,27 @@ msgstr ""
 
 #: models.py:16
 msgid "Date time"
-msgstr ""
+msgstr "Fecha y hora"
 
 #: models.py:18
 msgid "Data"
-msgstr ""
+msgstr "Datos"
 
 #: models.py:31
 msgid "Statistics result"
-msgstr ""
+msgstr "Resultado de estadísticas"
 
 #: models.py:32
 msgid "Statistics results"
-msgstr ""
+msgstr "Resultados de estadísticas"
 
 #: permissions.py:10
 msgid "View statistics"
-msgstr ""
+msgstr "Ver estadísticas"
 
 #: templates/statistics/backends/chartjs/line.html:19
 msgid "No data available yet"
-msgstr ""
+msgstr "No hay datos disponibles aún."
 
 #: views.py:19
 msgid "Statistics namespaces"
@@ -93,7 +93,7 @@ msgstr "Resultados para: %s"
 #: views.py:62 views.py:85
 #, python-format
 msgid "Statistic \"%s\" not found."
-msgstr ""
+msgstr "No se encontró estadística \"%s\"."
 
 #. Translators: This text is asking users if they want to queue
 #. (to send to the queue) a statistic for it to be update ahead

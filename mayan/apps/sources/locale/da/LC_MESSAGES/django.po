@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mads L. Nielsen <sirlundgaard@gmail.com>, 2013
@@ -12,12 +12,11 @@ msgstr ""
 "POT-Creation-Date: 2015-09-24 16:28-0400\n"
 "PO-Revision-Date: 2015-09-24 05:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"da/)\n"
-"Language: da\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:42 links.py:30 models.py:133 views.py:523
@@ -25,6 +24,7 @@ msgid "Sources"
 msgstr ""
 
 #: apps.py:50
+#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
@@ -365,6 +365,7 @@ msgstr "Se eksisterende dokument kilder"
 
 #: tasks.py:29
 #, python-format
+#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
@@ -375,11 +376,12 @@ msgstr ""
 
 #: views.py:145 wizards.py:37
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 
 #: views.py:171 views.py:189
+#| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
@@ -397,7 +399,8 @@ msgid "Upload a local document from source: %s"
 msgstr ""
 
 #: views.py:362
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:400
@@ -421,6 +424,7 @@ msgstr "Dan en ny kilde af typen: %s"
 
 #: views.py:482
 #, python-format
+#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -532,11 +536,9 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

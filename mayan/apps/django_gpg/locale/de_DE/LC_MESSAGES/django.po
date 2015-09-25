@@ -1,27 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
-# Stefan Lodders <sl@suchreflex.de>, 2012
-# tetjarediske <tetja.rediske@googlemail.com>, 2012
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:25-0400\n"
-"PO-Revision-Date: 2015-02-06 23:55+0000\n"
+"PO-Revision-Date: 2015-09-08 23:05+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: api.py:100
@@ -30,7 +27,7 @@ msgstr "Unbekannt"
 
 #: apps.py:21
 msgid "Django GPG"
-msgstr ""
+msgstr "Django GPG"
 
 #: apps.py:54 apps.py:61
 msgid "ID"
@@ -53,20 +50,17 @@ msgid "Expiration date"
 msgstr "Ablaufdatum"
 
 #: apps.py:73
-#, fuzzy
-#| msgid "Expiration date"
 msgid "No expiration"
-msgstr "Ablaufdatum"
+msgstr "Ohne Ablaufdatum"
 
 #: apps.py:75
 msgid "Length"
 msgstr "Länge"
 
 #: apps.py:77
-#, fuzzy
 #| msgid "Identifies"
 msgid "Identities"
-msgstr "Identifiziert"
+msgstr "Identitäten"
 
 #: forms.py:9
 msgid "Term"
@@ -74,9 +68,7 @@ msgstr "Begriff"
 
 #: forms.py:10
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr ""
-"Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht "
-"wird"
+msgstr "Name, E-Mail, Schlüssel-ID oder Fingerabdruck des Schlüssels, der gesucht wird"
 
 #: links.py:14 views.py:81
 msgid "Private keys"
@@ -136,9 +128,7 @@ msgstr "Signaturfehler"
 
 #: literals.py:45
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
-"Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung "
-"verfügbar."
+msgstr "Das Dokument ist signiert, aber kein öffentlicher Schlüssel zur Überprüfung verfügbar."
 
 #: literals.py:50
 msgid "Document is signed, and signature is good."
@@ -161,10 +151,9 @@ msgid "Import keys from keyservers"
 msgstr "Schlüssel von Schlüsselservern importieren"
 
 #: settings.py:10
-#, fuzzy
 #| msgid "Signature error."
 msgid "Signatures"
-msgstr "Signaturfehler"
+msgstr "Unterschriften"
 
 #: settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
@@ -179,7 +168,7 @@ msgid "Path to the GPG binary."
 msgstr "Pfad zum Programm GPG"
 
 #: views.py:38
-#, fuzzy, python-format
+#, python-format
 #| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "Schlüssel-ID %(key_id)s konnte nicht importiert werden: %(error)s"
@@ -187,13 +176,13 @@ msgstr "Schlüssel-ID %(key_id)s konnte nicht importiert werden: %(error)s"
 #: views.py:48
 #, python-format
 msgid "Successfully received key: %(key_id)s"
-msgstr ""
+msgstr "Schlüssel %(key_id)s erfolgreich heruntergeladen"
 
 #: views.py:57
-#, fuzzy, python-format
+#, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
-msgstr "Schlüssel importieren"
+msgstr "Schlüssel-ID %s importieren?"
 
 #: views.py:59
 msgid "Import key"
@@ -209,22 +198,18 @@ msgid "Delete key"
 msgstr "Schlüssel löschen"
 
 #: views.py:110
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "Are you sure you wish to delete key: %s?  If you try to delete a public "
-#| "key that is part of a public/private pair the private key will be deleted "
-#| "as well."
+#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
+#| " of a public/private pair the private key will be deleted well."
 msgid ""
 "Delete key %s? If you delete a public key that is part of a public/private "
 "pair the private key will be deleted as well."
-msgstr ""
-"Sind Sie sicher, dass Sie den Schlüssel %s löschen wollen? Wenn Sie einen "
-"öffentlichen Schlüssel, der Teil eines öffentlichen/privaten Paars ist, zu "
-"löschen versuchen, wird der private Schlüssel ebenfalls gelöscht."
+msgstr "Sind Sie sicher, dass Sie den Schlüssel %s löschen wollen? Wenn Sie einen öffentlichen Schlüssel löschen, der Teil eines öffentlichen/privaten Paars ist, wird der private Schlüssel ebenfalls gelöscht."
 
 #: views.py:134
 msgid "Search"
-msgstr ""
+msgstr "Suche"
 
 #: views.py:136
 msgid "Query key server"
@@ -232,28 +217,28 @@ msgstr "Schlüsselserver abfragen"
 
 #: views.py:146
 msgid "Key query results"
-msgstr ""
-
-#~ msgid "Key: %s, imported successfully."
-#~ msgstr "Schlüssel %s erfolgreich importiert"
-
-#~ msgid "Are you sure you wish to import key id: %s?"
-#~ msgstr "Sind Sie sicher, dass Sie die Schlüssel-ID %s importieren möchten?"
+msgstr "Ergebnis Schlüsselsuche"
 
 #~ msgid "Key ID"
-#~ msgstr "Schlüssel-ID"
+#~ msgstr "Key ID"
 
 #~ msgid "results"
-#~ msgstr "Ergebnis"
+#~ msgstr "results"
+
+#~ msgid "Key: %s, imported successfully."
+#~ msgstr "Key: %s, imported successfully."
+
+#~ msgid "Are you sure you wish to import key id: %s?"
+#~ msgstr "Are you sure you wish to import key id: %s?"
 
 #~ msgid "Disabled"
-#~ msgstr "Deaktiviert"
+#~ msgstr "disabled"
 
 #~ msgid "Expired"
-#~ msgstr "Abgelaufen"
+#~ msgstr "expired"
 
 #~ msgid "Revoked"
-#~ msgstr "Widerrufen"
+#~ msgstr "revoked"
 
 #~ msgid "private keys"
 #~ msgstr "private keys"

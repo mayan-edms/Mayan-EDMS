@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -14,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:26-0400\n"
-"PO-Revision-Date: 2015-09-24 05:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2015-09-24 18:06+0000\n"
+"Last-Translator: Berny <berny@bernhard-marx.de>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 links.py:15 links.py:43 models.py:51 permissions.py:7
@@ -87,27 +86,29 @@ msgstr "Dokumentenordner"
 
 #: permissions.py:10
 msgid "Create folders"
-msgstr ""
+msgstr "Ordner erstellen"
 
 #: permissions.py:13
 msgid "Edit folders"
-msgstr ""
+msgstr "Ordner bearbeiten"
 
 #: permissions.py:16
+#| msgid "Delete new folders"
 msgid "Delete folders"
-msgstr ""
+msgstr "Ordner löschen"
 
 #: permissions.py:19
 msgid "Remove documents from folders"
 msgstr "Dokumente aus Ordnern entfernen"
 
 #: permissions.py:22
+#| msgid "Edit new folders"
 msgid "View folders"
-msgstr ""
+msgstr "Ordner anzeigen"
 
 #: permissions.py:27
 msgid "Add documents to folders"
-msgstr ""
+msgstr "Dokumente zu Ordnern hinzufügen"
 
 #: serializers.py:61
 msgid "Primary key of the document to be added."
@@ -135,6 +136,7 @@ msgstr "Fehler beim Löschen von Ordner %(folder)s: %(error)s"
 
 #: views.py:124
 #, python-format
+#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr "Ordner %s löschen?"
 
@@ -226,11 +228,11 @@ msgstr[1] "Ausgewählte Dokumente aus Ordner %(folder)s entfernen?"
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -263,12 +265,12 @@ msgstr[1] "Ausgewählte Dokumente aus Ordner %(folder)s entfernen?"
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

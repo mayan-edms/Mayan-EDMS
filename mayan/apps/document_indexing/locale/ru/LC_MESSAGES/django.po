@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
@@ -11,15 +11,12 @@ msgstr ""
 "POT-Creation-Date: 2015-09-24 16:25-0400\n"
 "PO-Revision-Date: 2015-08-27 05:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: admin.py:24
 msgid "None"
@@ -30,6 +27,7 @@ msgid "Document types"
 msgstr ""
 
 #: apps.py:44
+#| msgid "document indexes"
 msgid "Document indexing"
 msgstr ""
 
@@ -106,13 +104,14 @@ msgid ""
 msgstr ""
 
 #: models.py:27
+#| msgid "Internal name used to reference this index."
 msgid "This values will be used by other apps to reference this index."
 msgstr ""
 
 #: models.py:33
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Этот индекс должен быть видимым и обновляться при изменении данных документа."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Этот индекс должен быть видимым и обновляться при изменении данных документа."
 
 #: models.py:80 models.py:107
 msgid "Index"
@@ -138,15 +137,13 @@ msgstr ""
 
 #: models.py:121
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Этот узел должен быть видимым и обновляются при изменении данных документа."
+msgstr "Этот узел должен быть видимым и обновляются при изменении данных документа."
 
 #: models.py:129
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Этот узел будет контейнером для документов и не будет иметь дочерних узлов."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Этот узел будет контейнером для документов и не будет иметь дочерних узлов."
 
 #: models.py:132
 msgid "Link documents"
@@ -228,6 +225,7 @@ msgstr ""
 
 #: views.py:78
 #, python-format
+#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
 msgstr ""
 
@@ -283,9 +281,7 @@ msgstr ""
 
 #: views.py:336
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"В больших базах данных эта операция может занять некоторое время для "
-"выполнения."
+msgstr "В больших базах данных эта операция может занять некоторое время для выполнения."
 
 #: views.py:337
 msgid "Rebuild all indexes?"
@@ -348,11 +344,9 @@ msgstr ""
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -389,11 +383,11 @@ msgstr ""
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

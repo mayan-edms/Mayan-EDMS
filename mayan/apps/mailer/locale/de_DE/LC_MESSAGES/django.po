@@ -1,34 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:27-0400\n"
-"PO-Revision-Date: 2015-08-20 22:05+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2015-09-24 18:10+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25
 msgid "Mailer"
-msgstr ""
+msgstr "Mailer"
 
 #: apps.py:31
 msgid "Date and time"
-msgstr ""
+msgstr "Zeit"
 
 #: apps.py:35 models.py:16
 msgid "Message"
-msgstr ""
+msgstr "Nachricht"
 
 #: forms.py:23
 msgid "Email address"
@@ -44,15 +43,15 @@ msgstr "Nachrichtenteil"
 
 #: links.py:13
 msgid "Email document"
-msgstr "E-Mail Dokument"
+msgstr "Dokument als E-Mailanhang senden"
 
 #: links.py:17
 msgid "Email link"
-msgstr "Link"
+msgstr "Link zum Dokument per E-Mail senden"
 
 #: links.py:22 views.py:31
 msgid "Document mailing error log"
-msgstr ""
+msgstr "Fehlerprotokoll"
 
 #: literals.py:8
 #, python-format
@@ -61,7 +60,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Anlagen: {{ document }}\n\n --------\n Diese E-Mail wurde gesendet mit %(project_title)s (%(project_website)s)"
 
 #: literals.py:17
 #, python-format
@@ -70,19 +69,19 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Um dieses Dokument anzuzeigen klicken Sie bitte auf folgenden Link: {{ link }}\n\n--------\n Diese E-Mail wurde gesendet mit %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
-msgstr ""
+msgstr "Zeit"
 
 #: models.py:22
 msgid "Log entry"
-msgstr ""
+msgstr "Protokolleintrag"
 
 #: models.py:23
 msgid "Log entries"
-msgstr ""
+msgstr "Protokolleinträge"
 
 #: permissions.py:7 settings.py:11
 msgid "Mailing"
@@ -90,15 +89,15 @@ msgstr "E-Mail"
 
 #: permissions.py:10
 msgid "Send document link via email"
-msgstr "Dokument per E-Mail senden"
+msgstr "Link zum Dokument per E-Mail senden"
 
 #: permissions.py:13
 msgid "Send document via email"
-msgstr "Dokument per E-Mail senden"
+msgstr "Dokument als E-Mailanhang senden"
 
 #: permissions.py:16
 msgid "View document mailing error log"
-msgstr ""
+msgstr "Fehlerprotokoll anzeigen"
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"
@@ -106,14 +105,11 @@ msgstr "Link für Dokument: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
-"Vorlage für die Betreffzeile des Formulars für die Dokumentenlinkversendung"
+msgstr "Vorlage für die Betreffzeile des Formulars für die Dokumentenlinkversendung"
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr ""
-"Vorlage für den Nachrichtenteil des Formulars für die "
-"Dokumentenlinkversendung"
+msgstr "Vorlage für den Nachrichtenteil des Formulars für die Dokumentenlinkversendung"
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -121,13 +117,11 @@ msgstr "Dokument: {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
-msgstr ""
-"Vorlage für die Betreffzeile des Formulars für die Dokumentenversendung"
+msgstr "Vorlage für die Betreffzeile des Formulars für die Dokumentenversendung"
 
 #: settings.py:30
 msgid "Template for the document email form body line."
-msgstr ""
-"Vorlage für den Nachrichtenteil des Formulars für die Dokumentenversendung"
+msgstr "Vorlage für den Nachrichtenteil des Formulars für die Dokumentenversendung"
 
 #: views.py:54
 msgid "Must provide at least one document."
@@ -135,7 +129,7 @@ msgstr "Es muss mindestens ein Dokument angegeben werden."
 
 #: views.py:83
 msgid "Successfully queued for delivery via email."
-msgstr "Erfolgreich eingereiht für den Versand per E-Mail"
+msgstr "Erfolgreich eingereiht in den E-Mailversand"
 
 #: views.py:91
 msgid "Send"

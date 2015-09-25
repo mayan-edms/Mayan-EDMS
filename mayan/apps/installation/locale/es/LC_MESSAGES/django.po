@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Igor Támara <igor@tamarapatino.org>, 2015
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:26-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"PO-Revision-Date: 2015-08-20 22:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16 permissions.py:7
@@ -67,113 +66,104 @@ msgstr "Ver detalles del entorno de instalación"
 msgid "Installation namespace details for: %s"
 msgstr "categorias de detalles de instalación para: %s"
 
-#~ msgid "Operating system"
-#~ msgstr "Sistema operativo"
-
 #~ msgid "LSB OS"
-#~ msgstr "S.O. LSB"
+#~ msgstr "LSB OS"
 
 #~ msgid "Distributor ID"
-#~ msgstr "ID de distribuidor"
+#~ msgstr "Distributor ID"
 
 #~ msgid "Description"
-#~ msgstr "Descripción"
+#~ msgstr "Description"
 
 #~ msgid "Release"
-#~ msgstr "Versión"
+#~ msgstr "Release"
 
 #~ msgid "Codename"
-#~ msgstr "Nombre clave"
+#~ msgstr "Codename"
 
 #~ msgid "System info"
-#~ msgstr "Información de sistema"
+#~ msgstr "System info"
 
 #~ msgid "OS architecture"
-#~ msgstr "Arquitectura de S.O."
+#~ msgstr "OS architecture"
 
 #~ msgid "Python version"
-#~ msgstr "Versión de Python"
+#~ msgstr "Python version"
 
 #~ msgid "Hostname"
-#~ msgstr "Nombre de la máquina"
+#~ msgstr "Hostname"
 
 #~ msgid "Platform"
-#~ msgstr "Plataforma"
+#~ msgstr "Platform"
 
 #~ msgid "Machine"
-#~ msgstr "Máquina"
+#~ msgstr "Machine"
 
 #~ msgid "Processor"
-#~ msgstr "Procesador"
+#~ msgstr "Processor"
 
 #~ msgid "Number of CPUs"
-#~ msgstr "Número de CPUs"
+#~ msgstr "Number of CPUs"
 
 #~ msgid "Total physical memory"
-#~ msgstr "Memoria física total"
+#~ msgstr "Total physical memory"
 
 #~ msgid "Disk partitions"
-#~ msgstr "Particiones de disco"
-
-#~ msgid "Binary dependencies"
-#~ msgstr "Dependencias binarias"
+#~ msgstr "Disk partitions"
 
 #~ msgid "tesseract version"
-#~ msgstr "Versión de tesseract"
+#~ msgstr "tesseract version"
 
 #~ msgid "not found"
-#~ msgstr "No encontrado"
+#~ msgstr "not found"
 
 #~ msgid "error getting version"
-#~ msgstr "error al obtener la versión"
+#~ msgstr "error getting version"
 
 #~ msgid "unpaper version"
-#~ msgstr "Versión de unpaper"
+#~ msgstr "unpaper version"
 
 #~ msgid "pdftotext version"
-#~ msgstr "versión de pdftotext"
+#~ msgstr "pdftotext version"
 
 #~ msgid "Mayan EDMS"
-#~ msgstr "Mayan EDMS"
-
-#~ msgid "UUID"
-#~ msgstr "UUID"
+#~ msgstr "Mayan EDMS version"
 
 #~ msgid "Mayan EDMS version"
-#~ msgstr "Versión de Mayan EDMS"
+#~ msgstr "Mayan EDMS version"
 
 #~ msgid "Git repository"
-#~ msgstr "Repositorio Git"
+#~ msgstr "Running from a Git repository"
 
 #~ msgid "Running from a Git repository"
-#~ msgstr "Ejecutado desde un repositorio Git"
+#~ msgstr "Running from a Git repository"
 
 #~ msgid "Repository remotes"
-#~ msgstr "Remotos del repositorio"
+#~ msgstr "Repository remotes"
 
 #~ msgid "Repository remotes URLs"
-#~ msgstr "URLs de los remotos del repositorio"
+#~ msgstr "Repository remotes URLs"
 
 #~ msgid "Branch"
-#~ msgstr "Rama"
+#~ msgstr "Branch"
 
 #~ msgid "HEAD commit hex SHA"
-#~ msgstr "SHA hex del commit HEAD"
+#~ msgstr "HEAD commit hex SHA"
 
 #~ msgid "HEAD commit author"
-#~ msgstr "Autor del commit HEAD"
+#~ msgstr "HEAD commit author"
 
 #~ msgid "HEAD commit authored date"
-#~ msgstr "Fecha de autoría"
+#~ msgstr "HEAD commit authored date"
 
 #~ msgid "HEAD commit committer"
-#~ msgstr "Usuario que sometió"
+#~ msgstr "HEAD commit committer"
 
 #~ msgid "HEAD commit committed date"
-#~ msgstr "Fecha de sumisión"
+#~ msgstr "HEAD commit committed date"
 
 #~ msgid "HEAD commit message"
-#~ msgstr "Mensaje de sumisión"
+#~ msgstr "HEAD commit message"
 
 #~ msgid "Installed via fabfile"
 #~ msgstr "Installed via fabfile"

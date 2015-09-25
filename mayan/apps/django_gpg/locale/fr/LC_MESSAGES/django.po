@@ -1,24 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Christophe kryskool <christophe.chauvet@gmail.com>, 2014-2015
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:25-0400\n"
-"PO-Revision-Date: 2015-01-29 07:41+0000\n"
-"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2015-08-24 04:02+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: api.py:100
@@ -50,20 +48,17 @@ msgid "Expiration date"
 msgstr "Date d'expiration"
 
 #: apps.py:73
-#, fuzzy
-#| msgid "Expiration date"
 msgid "No expiration"
-msgstr "Date d'expiration"
+msgstr ""
 
 #: apps.py:75
 msgid "Length"
 msgstr "Durée"
 
 #: apps.py:77
-#, fuzzy
 #| msgid "Identifies"
 msgid "Identities"
-msgstr "Identifie"
+msgstr ""
 
 #: forms.py:9
 msgid "Term"
@@ -91,7 +86,7 @@ msgstr "Interroger les serveurs de clés"
 
 #: links.py:30
 msgid "Import"
-msgstr "importer"
+msgstr ""
 
 #: links.py:35 permissions.py:7
 msgid "Key management"
@@ -131,9 +126,7 @@ msgstr "Erreur de signature."
 
 #: literals.py:45
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
-"Ce document est signé mais aucune clé publique n'est disponible pour "
-"vérifier la signature."
+msgstr "Ce document est signé mais aucune clé publique n'est disponible pour vérifier la signature."
 
 #: literals.py:50
 msgid "Document is signed, and signature is good."
@@ -156,10 +149,9 @@ msgid "Import keys from keyservers"
 msgstr "Importer les clés à partir des serveurs de clés"
 
 #: settings.py:10
-#, fuzzy
 #| msgid "Signature error."
 msgid "Signatures"
-msgstr "Erreur de signature."
+msgstr ""
 
 #: settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
@@ -167,19 +159,17 @@ msgstr "Liste des serveurs de clés à interroger pour les clés inconnues."
 
 #: settings.py:19
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
-"Répertoire principal utilisé pour stocker les clés, ainsi que les fichiers "
-"de configuration"
+msgstr "Répertoire principal utilisé pour stocker les clés, ainsi que les fichiers de configuration"
 
 #: settings.py:25
 msgid "Path to the GPG binary."
 msgstr "Chemin du binaire GPG"
 
 #: views.py:38
-#, fuzzy, python-format
+#, python-format
 #| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr "Impossible d'importer la clé dont l'id est: %(key_id)s; %(error)s"
+msgstr ""
 
 #: views.py:48
 #, python-format
@@ -187,10 +177,10 @@ msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
 #: views.py:57
-#, fuzzy, python-format
+#, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
-msgstr "Importer la clé"
+msgstr ""
 
 #: views.py:59
 msgid "Import key"
@@ -206,18 +196,14 @@ msgid "Delete key"
 msgstr "Supprimer la clé"
 
 #: views.py:110
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "Are you sure you wish to delete key: %s?  If you try to delete a public "
-#| "key that is part of a public/private pair the private key will be deleted "
-#| "as well."
+#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
+#| " of a public/private pair the private key will be deleted well."
 msgid ""
 "Delete key %s? If you delete a public key that is part of a public/private "
 "pair the private key will be deleted as well."
 msgstr ""
-"Êtes vous certain de vouloir supprimer la clé: %s? Si vous supprimez une clé "
-"publique qui fait partie d'une paire clé publique/clé privée, la clé privée "
-"sera également supprimée."
 
 #: views.py:134
 msgid "Search"
@@ -231,26 +217,26 @@ msgstr "Interroger le serveur de clés"
 msgid "Key query results"
 msgstr ""
 
-#~ msgid "Key: %s, imported successfully."
-#~ msgstr "Clé: %s, importée avec succès."
-
-#~ msgid "Are you sure you wish to import key id: %s?"
-#~ msgstr "Êtes vous certain de vouloir importer la l'id de la clé: %s?"
-
 #~ msgid "Key ID"
-#~ msgstr "ID de la clé"
+#~ msgstr "Key ID"
 
 #~ msgid "results"
-#~ msgstr "résultats"
+#~ msgstr "results"
+
+#~ msgid "Key: %s, imported successfully."
+#~ msgstr "Key: %s, imported successfully."
+
+#~ msgid "Are you sure you wish to import key id: %s?"
+#~ msgstr "Are you sure you wish to import key id: %s?"
 
 #~ msgid "Disabled"
-#~ msgstr "Désactivé"
+#~ msgstr "disabled"
 
 #~ msgid "Expired"
-#~ msgstr "Expiré"
+#~ msgstr "expired"
 
 #~ msgid "Revoked"
-#~ msgstr "Retirer"
+#~ msgstr "revoked"
 
 #~ msgid "private keys"
 #~ msgstr "private keys"

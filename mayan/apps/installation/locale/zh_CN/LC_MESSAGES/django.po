@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:26-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"PO-Revision-Date: 2015-08-20 22:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:16 permissions.py:7
@@ -65,113 +64,104 @@ msgstr "查看安装环境的详细信息"
 msgid "Installation namespace details for: %s"
 msgstr ""
 
-#~ msgid "Operating system"
-#~ msgstr "操作系统"
-
 #~ msgid "LSB OS"
-#~ msgstr "LSB 操作系统"
+#~ msgstr "LSB OS"
 
 #~ msgid "Distributor ID"
-#~ msgstr "经销商 ID"
+#~ msgstr "Distributor ID"
 
 #~ msgid "Description"
-#~ msgstr "描述"
+#~ msgstr "Description"
 
 #~ msgid "Release"
-#~ msgstr "发行"
+#~ msgstr "Release"
 
 #~ msgid "Codename"
-#~ msgstr "编码"
+#~ msgstr "Codename"
 
 #~ msgid "System info"
-#~ msgstr "系统信息"
+#~ msgstr "System info"
 
 #~ msgid "OS architecture"
-#~ msgstr "OS体系结构"
+#~ msgstr "OS architecture"
 
 #~ msgid "Python version"
-#~ msgstr "Python版本"
+#~ msgstr "Python version"
 
 #~ msgid "Hostname"
-#~ msgstr "主机名"
+#~ msgstr "Hostname"
 
 #~ msgid "Platform"
-#~ msgstr "平台"
+#~ msgstr "Platform"
 
 #~ msgid "Machine"
-#~ msgstr "主机"
+#~ msgstr "Machine"
 
 #~ msgid "Processor"
-#~ msgstr "处理器"
+#~ msgstr "Processor"
 
 #~ msgid "Number of CPUs"
-#~ msgstr "CPU数量"
+#~ msgstr "Number of CPUs"
 
 #~ msgid "Total physical memory"
-#~ msgstr "总物理内存"
+#~ msgstr "Total physical memory"
 
 #~ msgid "Disk partitions"
-#~ msgstr "磁盘分区"
-
-#~ msgid "Binary dependencies"
-#~ msgstr "二进制依赖"
+#~ msgstr "Disk partitions"
 
 #~ msgid "tesseract version"
-#~ msgstr "tesseract版本"
+#~ msgstr "tesseract version"
 
 #~ msgid "not found"
-#~ msgstr "未发现"
+#~ msgstr "not found"
 
 #~ msgid "error getting version"
-#~ msgstr "获取版本出错"
+#~ msgstr "error getting version"
 
 #~ msgid "unpaper version"
-#~ msgstr "unpaper版本"
+#~ msgstr "unpaper version"
 
 #~ msgid "pdftotext version"
-#~ msgstr "pdftotext版本"
+#~ msgstr "pdftotext version"
 
 #~ msgid "Mayan EDMS"
-#~ msgstr "Mayan电子文档管理系统"
-
-#~ msgid "UUID"
-#~ msgstr "UUID"
+#~ msgstr "Mayan EDMS version"
 
 #~ msgid "Mayan EDMS version"
-#~ msgstr "Mayan EDMS 版本"
+#~ msgstr "Mayan EDMS version"
 
 #~ msgid "Git repository"
-#~ msgstr "Git存储库"
+#~ msgstr "Running from a Git repository"
 
 #~ msgid "Running from a Git repository"
-#~ msgstr "从Git存储库运行"
+#~ msgstr "Running from a Git repository"
 
 #~ msgid "Repository remotes"
-#~ msgstr "远程存储库"
+#~ msgstr "Repository remotes"
 
 #~ msgid "Repository remotes URLs"
-#~ msgstr "远程存储库的URLs"
+#~ msgstr "Repository remotes URLs"
 
 #~ msgid "Branch"
-#~ msgstr "分支"
+#~ msgstr "Branch"
 
 #~ msgid "HEAD commit hex SHA"
-#~ msgstr "HEAD16进制提交版本的SHA"
+#~ msgstr "HEAD commit hex SHA"
 
 #~ msgid "HEAD commit author"
-#~ msgstr "HEAD提交的作者"
+#~ msgstr "HEAD commit author"
 
 #~ msgid "HEAD commit authored date"
-#~ msgstr "HEAD提交作者的日期"
+#~ msgstr "HEAD commit authored date"
 
 #~ msgid "HEAD commit committer"
-#~ msgstr "HEAD提交的提交者"
+#~ msgstr "HEAD commit committer"
 
 #~ msgid "HEAD commit committed date"
-#~ msgstr "HEAD提交的日期"
+#~ msgstr "HEAD commit committed date"
 
 #~ msgid "HEAD commit message"
-#~ msgstr "HEAD提交信息"
+#~ msgstr "HEAD commit message"
 
 #~ msgid "Installed via fabfile"
 #~ msgstr "Installed via fabfile"

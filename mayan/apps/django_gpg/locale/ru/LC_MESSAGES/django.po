@@ -1,26 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2011-2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:25-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"PO-Revision-Date: 2015-08-24 04:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: api.py:100
 msgid "Unknown"
@@ -59,10 +55,9 @@ msgid "Length"
 msgstr ""
 
 #: apps.py:77
-#, fuzzy
 #| msgid "Identifies"
 msgid "Identities"
-msgstr "Identifies"
+msgstr ""
 
 #: forms.py:9
 msgid "Term"
@@ -89,10 +84,8 @@ msgid "Query keyservers"
 msgstr "Запрос к серверам ключей"
 
 #: links.py:30
-#, fuzzy
-#| msgid "Import key"
 msgid "Import"
-msgstr "Получить ключ"
+msgstr ""
 
 #: links.py:35 permissions.py:7
 msgid "Key management"
@@ -155,10 +148,9 @@ msgid "Import keys from keyservers"
 msgstr "Импортировать ключи с серверов ключей "
 
 #: settings.py:10
-#, fuzzy
 #| msgid "Signature error."
 msgid "Signatures"
-msgstr "Ошибка подписи."
+msgstr ""
 
 #: settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
@@ -166,19 +158,17 @@ msgstr "Список ключевых серверов для запроса н�
 
 #: settings.py:19
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
-"Домашний каталог, используемый для хранения ключей, а также файлов "
-"конфигурации."
+msgstr "Домашний каталог, используемый для хранения ключей, а также файлов конфигурации."
 
 #: settings.py:25
 msgid "Path to the GPG binary."
 msgstr ""
 
 #: views.py:38
-#, fuzzy, python-format
+#, python-format
 #| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr "Невозможно импортировать ключ %(key_id)s; %(error)s"
+msgstr ""
 
 #: views.py:48
 #, python-format
@@ -186,10 +176,10 @@ msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
 #: views.py:57
-#, fuzzy, python-format
+#, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
-msgstr "Получить ключ"
+msgstr ""
 
 #: views.py:59
 msgid "Import key"
@@ -205,17 +195,14 @@ msgid "Delete key"
 msgstr "Удалить ключ."
 
 #: views.py:110
-#, fuzzy, python-format
+#, python-format
 #| msgid ""
-#| "Are you sure you wish to delete key: %s?  If you try to delete a public "
-#| "key that is part of a public/private pair the private key will be deleted "
-#| "as well."
+#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
+#| " of a public/private pair the private key will be deleted well."
 msgid ""
 "Delete key %s? If you delete a public key that is part of a public/private "
 "pair the private key will be deleted as well."
 msgstr ""
-"Вы уверены, что хотите удалить ключ %s? Если вы удалите открытый ключ то "
-"соответствующий ему закрытый ключ тоже будет удалён."
 
 #: views.py:134
 msgid "Search"
@@ -229,17 +216,26 @@ msgstr "Запросить сервер ключей"
 msgid "Key query results"
 msgstr ""
 
-#~ msgid "Key: %s, imported successfully."
-#~ msgstr "Ключ %s, получен."
-
-#~ msgid "Are you sure you wish to import key id: %s?"
-#~ msgstr "Хотите получить ключ id: %s?"
-
 #~ msgid "Key ID"
-#~ msgstr "ID ключа"
+#~ msgstr "Key ID"
 
 #~ msgid "results"
-#~ msgstr "результаты"
+#~ msgstr "results"
+
+#~ msgid "Key: %s, imported successfully."
+#~ msgstr "Key: %s, imported successfully."
+
+#~ msgid "Are you sure you wish to import key id: %s?"
+#~ msgstr "Are you sure you wish to import key id: %s?"
+
+#~ msgid "Disabled"
+#~ msgstr "disabled"
+
+#~ msgid "Expired"
+#~ msgstr "expired"
+
+#~ msgid "Revoked"
+#~ msgstr "revoked"
 
 #~ msgid "private keys"
 #~ msgstr "private keys"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammad Dashtizadeh <mohammad@dashtizadeh.net>, 2013
@@ -12,12 +12,11 @@ msgstr ""
 "POT-Creation-Date: 2015-09-24 16:28-0400\n"
 "PO-Revision-Date: 2015-09-24 05:16+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:42 links.py:30 models.py:133 views.py:523
@@ -25,6 +24,7 @@ msgid "Sources"
 msgstr "سورس"
 
 #: apps.py:50
+#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
@@ -137,9 +137,7 @@ msgstr "پرسیدن از کاربر"
 
 #: literals.py:27 models.py:240
 msgid "Web form"
-msgstr ""
-"وب فرم "
-"ا                                                                                                                                                                                                                                                                                                                                                                                                          "
+msgstr "وب فرم ا                                                                                                                                                                                                                                                                                                                                                                                                          "
 
 #: literals.py:28 models.py:220
 msgid "Staging folder"
@@ -279,9 +277,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
-"for IMAP over SSL."
+msgstr "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 for IMAP over SSL."
 
 #: models.py:326
 msgid "Port"
@@ -369,6 +365,7 @@ msgstr "دیدن سورس اسناد موجود"
 
 #: tasks.py:29
 #, python-format
+#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
@@ -379,13 +376,12 @@ msgstr ""
 
 #: views.py:145 wizards.py:37
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع "
-"بسازید."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "هیچ منبع محاوره ای سند تعریف و یا فعال نشده، قبل از ادامه دادن یک منبع بسازید."
 
 #: views.py:171 views.py:189
+#| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
@@ -403,7 +399,8 @@ msgid "Upload a local document from source: %s"
 msgstr "آپلود کردن فایل محلی از اصل:%s"
 
 #: views.py:362
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr "نسخه سند جدید که جهت آپلود وارد صف شد بزودی قابل دسترس خواهد بود."
 
 #: views.py:400
@@ -427,6 +424,7 @@ msgstr "ایجاد سورس جدید از نوع %s."
 
 #: views.py:482
 #, python-format
+#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -538,11 +536,9 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

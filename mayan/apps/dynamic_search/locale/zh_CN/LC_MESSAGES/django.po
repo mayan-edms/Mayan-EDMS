@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Ford Guo <agile.guo@gmail.com>, 2014
@@ -10,21 +10,18 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:26-0400\n"
-"PO-Revision-Date: 2015-01-11 22:05+0000\n"
+"PO-Revision-Date: 2015-08-20 22:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:15
-#, fuzzy
-#| msgid "search"
 msgid "Dynamic search"
-msgstr "search"
+msgstr ""
 
 #: forms.py:20
 msgid "Search terms"
@@ -82,13 +79,21 @@ msgstr "搜索结果"
 msgid "Type"
 msgstr ""
 
-#~ msgid "Elapsed time: %(time_delta)s seconds"
-#~ msgstr "耗时：%(time_delta)s 秒"
+#~ msgid "Results"
+#~ msgstr "results"
 
-#~ msgid ""
-#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgid "Elapsed time: %(time_delta)s seconds"
+#~ msgstr "Elapsed time: %(time_delta)s seconds"
+
+#~ msgid "Recent searches (maximum of %d)"
+#~ msgstr "recent searches (maximum of %d)"
+
+#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 #~ msgstr ""
 #~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
+
+#~ msgid "search"
+#~ msgstr "search"
 
 #~ msgid "user"
 #~ msgstr "user"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -12,14 +12,12 @@ msgstr ""
 "POT-Creation-Date: 2015-09-24 16:28-0400\n"
 "PO-Revision-Date: 2015-08-27 05:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:33 apps.py:63 apps.py:78 forms.py:34 links.py:40 links.py:43
 #: models.py:29 permissions.py:7 views.py:131
@@ -193,16 +191,22 @@ msgstr "ازالة الكلمة الاستدلالية من الوثائق: %s"
 
 #: views.py:340
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
 msgstr ""
 
 #: views.py:347
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
 msgstr ""
 
 #: views.py:356
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
 msgstr ""
 
@@ -219,8 +223,7 @@ msgstr "الوثيقة \"%(document)s\" لم تربط مع:  \"%(tag)s\""
 #: views.py:384
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"الكلمة الاستدلالية \"%(tag)s\" أزيلت بنجاح من الوثيقة \"%(document)s\"."
+msgstr "الكلمة الاستدلالية \"%(tag)s\" أزيلت بنجاح من الوثيقة \"%(document)s\"."
 
 #~ msgid "remove tags"
 #~ msgstr "remove tags"

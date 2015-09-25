@@ -1,26 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Sergey Glita <gsv70@mail.ru>, 2012-2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:26-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"PO-Revision-Date: 2015-08-20 22:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:16 permissions.py:7
 msgid "Installation"
@@ -74,19 +70,19 @@ msgstr ""
 #~ msgstr "Distributor ID"
 
 #~ msgid "Description"
-#~ msgstr "Описание"
+#~ msgstr "Description"
 
 #~ msgid "Release"
-#~ msgstr "Релиз"
+#~ msgstr "Release"
 
 #~ msgid "Codename"
 #~ msgstr "Codename"
 
 #~ msgid "System info"
-#~ msgstr "Информация о системе"
+#~ msgstr "System info"
 
 #~ msgid "OS architecture"
-#~ msgstr "Архитектура ОС"
+#~ msgstr "OS architecture"
 
 #~ msgid "Python version"
 #~ msgstr "Python version"
@@ -101,43 +97,49 @@ msgstr ""
 #~ msgstr "Machine"
 
 #~ msgid "Processor"
-#~ msgstr "Процессор"
+#~ msgstr "Processor"
 
 #~ msgid "Number of CPUs"
-#~ msgstr "Количество процессоров"
+#~ msgstr "Number of CPUs"
 
 #~ msgid "Total physical memory"
-#~ msgstr "Всего физической памяти"
+#~ msgstr "Total physical memory"
 
 #~ msgid "Disk partitions"
-#~ msgstr "Разделы диска"
+#~ msgstr "Disk partitions"
 
 #~ msgid "tesseract version"
 #~ msgstr "tesseract version"
 
 #~ msgid "not found"
-#~ msgstr "не найдено"
+#~ msgstr "not found"
 
 #~ msgid "error getting version"
-#~ msgstr "Ошибка при получении версии"
+#~ msgstr "error getting version"
 
 #~ msgid "unpaper version"
-#~ msgstr "unpaper версия"
+#~ msgstr "unpaper version"
 
 #~ msgid "pdftotext version"
-#~ msgstr "версия pdftotext"
+#~ msgstr "pdftotext version"
+
+#~ msgid "Mayan EDMS"
+#~ msgstr "Mayan EDMS version"
 
 #~ msgid "Mayan EDMS version"
 #~ msgstr "Mayan EDMS version"
 
+#~ msgid "Git repository"
+#~ msgstr "Running from a Git repository"
+
 #~ msgid "Running from a Git repository"
-#~ msgstr "Запуск с Git репозитория"
+#~ msgstr "Running from a Git repository"
 
 #~ msgid "Repository remotes"
 #~ msgstr "Repository remotes"
 
 #~ msgid "Repository remotes URLs"
-#~ msgstr "Адреса URL репозиториев "
+#~ msgstr "Repository remotes URLs"
 
 #~ msgid "Branch"
 #~ msgstr "Branch"

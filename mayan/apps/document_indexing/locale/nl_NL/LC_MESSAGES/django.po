@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Lucas Weel <ljj.weel@gmail.com>, 2013
@@ -12,12 +12,11 @@ msgstr ""
 "POT-Creation-Date: 2015-09-24 16:25-0400\n"
 "PO-Revision-Date: 2015-08-27 05:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -29,6 +28,7 @@ msgid "Document types"
 msgstr ""
 
 #: apps.py:44
+#| msgid "document indexes"
 msgid "Document indexing"
 msgstr ""
 
@@ -105,13 +105,14 @@ msgid ""
 msgstr ""
 
 #: models.py:27
+#| msgid "Internal name used to reference this index."
 msgid "This values will be used by other apps to reference this index."
 msgstr ""
 
 #: models.py:33
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Maakt deze index zichtbaar en 'up-to-date' wanneer document gegevens wijzigd."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Maakt deze index zichtbaar en 'up-to-date' wanneer document gegevens wijzigd."
 
 #: models.py:80 models.py:107
 msgid "Index"
@@ -137,15 +138,13 @@ msgstr ""
 
 #: models.py:121
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
+msgstr "Maakt deze node zichtbaar en 'up-to-date' wanneer document gegevens wijzigen"
 
 #: models.py:129
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Selecteer deze optie, wanneer deze node alleen documenten dient te bevatten. "
 
 #: models.py:132
 msgid "Link documents"
@@ -227,6 +226,7 @@ msgstr ""
 
 #: views.py:78
 #, python-format
+#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
 msgstr ""
 
@@ -345,11 +345,9 @@ msgstr ""
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -386,11 +384,11 @@ msgstr ""
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

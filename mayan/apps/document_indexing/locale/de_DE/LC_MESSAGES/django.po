@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -14,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:25-0400\n"
-"PO-Revision-Date: 2015-08-27 05:24+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"PO-Revision-Date: 2015-09-08 23:05+0000\n"
+"Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -33,16 +32,17 @@ msgid "Document types"
 msgstr "Dokumententypen"
 
 #: apps.py:44
+#| msgid "document indexes"
 msgid "Document indexing"
 msgstr "Dokumentenindices"
 
 #: apps.py:91 models.py:23
 msgid "Label"
-msgstr ""
+msgstr "Bezeichner"
 
 #: apps.py:92 models.py:28
 msgid "Slug"
-msgstr ""
+msgstr "Abkürzung"
 
 #: apps.py:94 apps.py:114 models.py:36 models.py:124
 msgid "Enabled"
@@ -106,19 +106,17 @@ msgstr "Neuer Unterknoten"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Fehler bei der Indexierung von Dokument %(document)s; Ausdruck: "
-"%(expression)s; %(exception)s"
+msgstr "Fehler bei der Indexierung von Dokument %(document)s; Ausdruck: %(expression)s; %(exception)s"
 
 #: models.py:27
+#| msgid "Internal name used to reference this index."
 msgid "This values will be used by other apps to reference this index."
 msgstr "Interner Name um diesen Index zu identifizieren"
 
 #: models.py:33
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert "
-"werden."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert werden."
 
 #: models.py:80 models.py:107
 msgid "Index"
@@ -136,10 +134,7 @@ msgstr "Index-Instanzen"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
-"Vorlage/Template zur Generierung eingeben. Django's Standard-Vorlagen-"
-"Sprache benutzen (https://docs.djangoproject.com/en/1.7/ref/templates/"
-"builtins/)"
+msgstr "Vorlage/Template zur Generierung eingeben. Django's Standard-Vorlagen-Sprache benutzen (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:116
 msgid "Indexing expression"
@@ -147,18 +142,13 @@ msgstr "Indexierungsausdruck"
 
 #: models.py:121
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert "
-"werden."
+msgstr "Bewirkt Sichtbarkeit und Aktualisierung des Index, wenn Dokumente geändert werden."
 
 #: models.py:129
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Wählen Sie diese Option, wenn Dokumente in diesem Knoten dargestellt werden "
-"sollen (und dieser Knoten nicht als Eltern-Knoten für weitere Kind-"
-"Knotenpunkte fungieren soll)."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Wählen Sie diese Option, wenn Dokumente in diesem Knoten dargestellt werden sollen (und dieser Knoten nicht als Eltern-Knoten für weitere Kind-Knotenpunkte fungieren soll)."
 
 #: models.py:132
 msgid "Link documents"
@@ -240,6 +230,7 @@ msgstr "Index %s bearbeiten"
 
 #: views.py:78
 #, python-format
+#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
 msgstr "Index %s löschen?"
 
@@ -295,8 +286,7 @@ msgstr "Knotenpunkte der Indices, die Dokumente enthalten: %s"
 
 #: views.py:336
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
+msgstr "Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
 
 #: views.py:337
 msgid "Rebuild all indexes?"
@@ -359,11 +349,9 @@ msgstr "Wurzel"
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -400,11 +388,11 @@ msgstr "Wurzel"
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

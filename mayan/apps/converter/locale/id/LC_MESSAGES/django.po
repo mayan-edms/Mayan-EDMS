@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:25-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"PO-Revision-Date: 2015-08-20 19:29+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:19 permissions.py:7 settings.py:7
@@ -46,10 +45,9 @@ msgid "LibreOffice not installed or not found at path: %s"
 msgstr ""
 
 #: classes.py:159
-#, fuzzy
 #| msgid "suported file formats"
 msgid "Not an office file format."
-msgstr "suported file formats"
+msgstr ""
 
 #: classes.py:252
 msgid "Resize"
@@ -112,10 +110,9 @@ msgid "Edit transformations"
 msgstr ""
 
 #: permissions.py:19
-#, fuzzy
 #| msgid "Raw application information"
 msgid "View existing transformations"
-msgstr "Raw application information"
+msgstr ""
 
 #: settings.py:10
 msgid "Graphics conversion backend to use."
@@ -152,6 +149,52 @@ msgstr ""
 #, python-format
 msgid "Transformations for: %s"
 msgstr ""
+
+#~ msgid "Resize."
+#~ msgstr "Resize."
+
+#~ msgid "Width"
+#~ msgstr "width"
+
+#~ msgid "Height"
+#~ msgstr "height"
+
+#~ msgid "Rotate by n degress."
+#~ msgstr "Rotate by n degress."
+
+#~ msgid "Degrees"
+#~ msgstr "degrees"
+
+#~ msgid "Density"
+#~ msgstr "Density"
+
+#~ msgid "Change the resolution (ie: DPI) without resizing."
+#~ msgstr "Change the resolution (ie: DPI) without resizing."
+
+#~ msgid "Zoom by n percent."
+#~ msgstr "Zoom by n percent."
+
+#~ msgid "Percent"
+#~ msgstr "percent"
+
+#~ msgid "File path to imagemagick's convert program."
+#~ msgstr "File path to imagemagick's convert program."
+
+#~ msgid "File path to imagemagick's identify program."
+#~ msgstr "File path to imagemagick's identify program."
+
+#~ msgid "File path to graphicsmagick's program."
+#~ msgstr "File path to graphicsmagick's program."
+
+#~ msgid ""
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick.ImageMagick, "
+#~ "converter.backends.graphicsmagick.GraphicsMagick and "
+#~ "converter.backends.python.Python"
+#~ msgstr ""
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
+#~ "converter.backends.python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -464,11 +507,9 @@ msgstr ""
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -584,8 +625,7 @@ msgstr ""
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

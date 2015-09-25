@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Mehdi Amani <MehdiAmani@toorintan.com>, 2015
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-09-24 16:27-0400\n"
-"PO-Revision-Date: 2015-06-20 05:51+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/fa/)\n"
-"Language: fa\n"
+"PO-Revision-Date: 2015-08-20 21:59+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:15 links.py:8
@@ -24,10 +23,5 @@ msgid "REST API"
 msgstr "API را متوقف کنید"
 
 #: links.py:12
-#, fuzzy
-#| msgid "API documentation"
 msgid "API Documentation"
-msgstr "مستندات API"
-
-#~ msgid "REST API Documentation"
-#~ msgstr "مستند سازی API را متوقف کنید"
+msgstr ""
