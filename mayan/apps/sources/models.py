@@ -11,6 +11,7 @@ import poplib
 import yaml
 
 from django.core.files import File
+from django.core.files.base import ContentFile
 from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
@@ -31,8 +32,8 @@ from .literals import (
     DEFAULT_METADATA_ATTACHMENT_NAME, SOURCE_CHOICES, SOURCE_CHOICE_STAGING,
     SOURCE_CHOICE_WATCH, SOURCE_CHOICE_WEB_FORM,
     SOURCE_INTERACTIVE_UNCOMPRESS_CHOICES, SOURCE_UNCOMPRESS_CHOICES,
-    SOURCE_UNCOMPRESS_CHOICE_Y, SOURCE_CHOICE_EMAIL_IMAP,
-    SOURCE_CHOICE_EMAIL_POP3
+    SOURCE_UNCOMPRESS_CHOICE_N, SOURCE_UNCOMPRESS_CHOICE_Y,
+    SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3
 )
 
 logger = logging.getLogger(__name__)
@@ -341,6 +342,7 @@ class EmailBaseModel(IntervalBaseModel):
     # TODO: Add lock to avoid running more than once concurrent same document
     # download
     # TODO: Use message ID for lock
+
     @staticmethod
     def process_message(source, message):
         counter = 1
@@ -377,6 +379,22 @@ class EmailBaseModel(IntervalBaseModel):
                             expand=(
                                 source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y
                             ), metadata_dictionary=metadata_dictionary
+                        )
+            else:
+                logger.debug('No Content-Disposition')
+
+                content_type = part.get_content_type()
+
+                logger.debug('content_type: %s', content_type)
+
+                if content_type == 'text/plain':
+                    content = part.get_payload(decode=True).decode(part.get_content_charset())
+                    with ContentFile(content=content, name='email_body.txt') as file_object:
+                        source.handle_upload(
+                            document_type=source.document_type,
+                            file_object=file_object,
+                            expand=SOURCE_UNCOMPRESS_CHOICE_N, label='email_body.txt',
+                            metadata_dictionary=metadata_dictionary
                         )
 
     class Meta:
