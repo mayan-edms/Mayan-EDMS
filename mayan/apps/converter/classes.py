@@ -10,8 +10,9 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-
 from PIL import Image
+import sh
+
 from django.utils.translation import string_concat, ugettext_lazy as _
 
 from common.settings import setting_temporary_directory
@@ -24,6 +25,11 @@ from .settings import setting_libreoffice_path
 
 CHUNK_SIZE = 1024
 logger = logging.getLogger(__name__)
+
+try:
+    LIBREOFFICE = sh.Command(setting_libreoffice_path.value).bake('--headless', '--convert-to', 'pdf')
+except sh.CommandNotFound:
+    LIBREOFFICE = None
 
 
 CONVERTER_OFFICE_FILE_MIMETYPES = (
@@ -75,75 +81,6 @@ CONVERTER_OFFICE_FILE_MIMETYPES = (
 
 
 class ConverterBase(object):
-    @staticmethod
-    def soffice(file_object):
-        """
-        Executes libreoffice using subprocess's Popen
-        """
-
-        if not os.path.exists(setting_libreoffice_path.value):
-            raise OfficeConversionError(
-                _(
-                    'LibreOffice not installed or not found at path: %s'
-                ) % setting_libreoffice_path.value
-            )
-
-        new_file_object, input_filepath = tempfile.mkstemp()
-        file_object.seek(0)
-        os.write(new_file_object, file_object.read())
-        file_object.seek(0)
-        os.lseek(new_file_object, 0, os.SEEK_SET)
-        os.close(new_file_object)
-
-        command = []
-        command.append(setting_libreoffice_path.value)
-
-        command.append('--headless')
-        command.append('--convert-to')
-        command.append('pdf')
-        command.append(input_filepath)
-        command.append('--outdir')
-        command.append(setting_temporary_directory.value)
-
-        logger.debug('command: %s', command)
-
-        os.environ['HOME'] = setting_temporary_directory.value
-        proc = subprocess.Popen(
-            command, close_fds=True, stderr=subprocess.PIPE,
-            stdout=subprocess.PIPE
-        )
-        return_code = proc.wait()
-        logger.debug('return_code: %s', return_code)
-        fs_cleanup(input_filepath)
-
-        readline = proc.stderr.readline()
-        logger.debug('stderr: %s', readline)
-
-        if return_code != 0:
-            raise OfficeConversionError(readline)
-
-        filename, extension = os.path.splitext(
-            os.path.basename(input_filepath)
-        )
-        logger.debug('filename: %s', filename)
-        logger.debug('extension: %s', extension)
-
-        converted_output = os.path.join(
-            setting_temporary_directory.value, os.path.extsep.join(
-                [filename, 'pdf']
-            )
-        )
-        logger.debug('converted_output: %s', converted_output)
-
-        with open(converted_output) as converted_file_object:
-            while True:
-                data = converted_file_object.read(CHUNK_SIZE)
-                if not data:
-                    break
-                yield data
-
-        fs_cleanup(input_filepath)
-
     def __init__(self, file_object, mime_type=None):
         self.file_object = file_object
         self.image = None
@@ -154,7 +91,7 @@ class ConverterBase(object):
 
     def to_pdf(self):
         if self.mime_type in CONVERTER_OFFICE_FILE_MIMETYPES:
-            return ConverterBase.soffice(self.file_object)
+            return self.soffice()
         else:
             raise InvalidOfficeFormat(_('Not an office file format.'))
 
@@ -170,6 +107,65 @@ class ConverterBase(object):
         else:
             self.image.seek(page_number)
             self.image.load()
+
+    def soffice(self):
+        """
+        Executes LibreOffice as a subprocess
+        """
+
+        if not os.path.exists(setting_libreoffice_path.value):
+            raise OfficeConversionError(
+                _(
+                    'LibreOffice not installed or not found at path: %s'
+                ) % setting_libreoffice_path.value
+            )
+
+        new_file_object, input_filepath = tempfile.mkstemp()
+        self.file_object.seek(0)
+        os.write(new_file_object, self.file_object.read())
+        self.file_object.seek(0)
+        os.lseek(new_file_object, 0, os.SEEK_SET)
+        os.close(new_file_object)
+
+        libreoffice_filter = None
+        if self.mime_type == 'text/plain':
+            libreoffice_filter = 'Text (encoded):UTF8,LF,,,'
+
+        args=(input_filepath, '--outdir', setting_temporary_directory.value)
+
+        kwargs = {'_env': {'HOME': setting_temporary_directory.value}}
+
+        if libreoffice_filter:
+            kwargs.update({'infilter': libreoffice_filter})
+
+        try:
+            LIBREOFFICE(*args, **kwargs)
+        except sh.ErrorReturnCode as exception:
+            raise OfficeConversionError(exception)
+        finally:
+            fs_cleanup(input_filepath)
+
+        filename, extension = os.path.splitext(
+            os.path.basename(input_filepath)
+        )
+        logger.debug('filename: %s', filename)
+        logger.debug('extension: %s', extension)
+
+        converted_output = os.path.join(
+            setting_temporary_directory.value, os.path.extsep.join(
+                (filename, 'pdf')
+            )
+        )
+        logger.debug('converted_output: %s', converted_output)
+
+        with open(converted_output) as converted_file_object:
+            while True:
+                data = converted_file_object.read(CHUNK_SIZE)
+                if not data:
+                    break
+                yield data
+
+        fs_cleanup(input_filepath)
 
     def get_page(self, output_format=DEFAULT_FILE_FORMAT):
         if not self.image:
