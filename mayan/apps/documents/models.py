@@ -100,6 +100,10 @@ class DocumentType(models.Model):
 
         return super(DocumentType, self).delete(*args, **kwargs)
 
+    @property
+    def deleted_documents(self):
+        return DeletedDocument.objects.filter(document_type=self)
+
     def new_document(self, file_object, label=None, description=None, language=None, _user=None):
         try:
             with transaction.atomic():

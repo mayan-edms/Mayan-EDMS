@@ -5,6 +5,8 @@ import time
 from django.core.files import File
 from django.test import TestCase, override_settings
 
+from common.literals import TIME_DELTA_UNIT_DAYS
+
 from .literals import (
     TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
     TEST_OFFICE_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
@@ -78,6 +80,53 @@ class DocumentTestCase(TestCase):
         self.document.delete()
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
+
+    def test_auto_trashing(self):
+        """
+        Test document type trashing policies. Documents are moved to the trash,
+        x amount of time after being uploaded
+        """
+
+        self.document_type.trash_time_period = 1
+        # 'seconds' is not a choice via the model, used here for convenience
+        self.document_type.trash_time_unit = 'seconds'
+        self.document_type.save()
+
+        time.sleep(1)
+
+        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(DeletedDocument.objects.count(), 0)
+
+        DocumentType.objects.check_trash_periods()
+
+        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+
+    def test_auto_delete(self):
+        """
+        Test document type deletion policies. Documents are deleted from the
+        trash, x amount of time after being trashed
+        """
+
+        self.document_type.delete_time_period = 1
+        # 'seconds' is not a choice via the model, used here for convenience
+        self.document_type.delete_time_unit = 'seconds'
+        self.document_type.save()
+
+        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(DeletedDocument.objects.count(), 0)
+
+        self.document.delete()
+
+        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+
+        time.sleep(1)
+
+        DocumentType.objects.check_delete_periods()
+
+        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(DeletedDocument.objects.count(), 0)
 
 
 @override_settings(OCR_AUTO_OCR=False)

@@ -1,9 +1,11 @@
 from __future__ import unicode_literals
 
+from datetime import timedelta
 import logging
 
 from django.apps import apps
 from django.db import models
+from django.utils.timezone import now
 
 from .settings import setting_recent_count
 
@@ -38,6 +40,68 @@ class RecentDocumentManager(models.Manager):
 class DocumentTypeManager(models.Manager):
     def get_by_natural_key(self, name):
         return self.get(name=name)
+
+    def check_delete_periods(self):
+        logger.info('Executing')
+
+        for document_type in self.all():
+            logger.info(
+                'Checking deletion period of document type: %s', document_type
+            )
+            if document_type.delete_time_period and document_type.delete_time_unit:
+                delta = timedelta(
+                    **{
+                        document_type.delete_time_unit: document_type.delete_time_period
+                    }
+                )
+                logger.info(
+                    'Document type: %s, has a deletion period delta of: %s',
+                    document_type, delta
+                )
+                for document in document_type.deleted_documents.filter(deleted_date_time__lt=now() - delta):
+                    logger.info(
+                        'Document "%s" with id: %d, trashed on: %s, exceded '
+                        'delete period', document, document.pk,
+                        document.deleted_date_time
+                    )
+                    document.delete()
+            else:
+                logger.info(
+                    'Document type: %s, has a no retention delta', document_type
+                )
+
+        logger.info('Finshed')
+
+    def check_trash_periods(self):
+        logger.info('Executing')
+
+        for document_type in self.all():
+            logger.info(
+                'Checking trash period of document type: %s', document_type
+            )
+            if document_type.trash_time_period and document_type.trash_time_unit:
+                delta = timedelta(
+                    **{
+                        document_type.trash_time_unit: document_type.trash_time_period
+                    }
+                )
+                logger.info(
+                    'Document type: %s, has a trash period delta of: %s',
+                    document_type, delta
+                )
+                for document in document_type.documents.filter(date_added__lt=now() - delta):
+                    logger.info(
+                        'Document "%s" with id: %d, added on: %s, exceded '
+                        'trash period', document, document.pk,
+                        document.date_added
+                    )
+                    document.delete()
+            else:
+                logger.info(
+                    'Document type: %s, has a no retention delta', document_type
+                )
+
+        logger.info('Finshed')
 
 
 class DocumentManager(models.Manager):
