@@ -7,6 +7,7 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _, ugettext
 
 from common.widgets import TextAreaDiv
+from documents.models import DocumentType
 
 from .models import DocumentPageContent
 
@@ -51,4 +52,10 @@ class DocumentContentForm(forms.Form):
                 'data-height-difference': 360
             }
         )
+    )
+
+
+class DocumentTypeSelectForm(forms.Form):
+    document_type = forms.ModelChoiceField(
+        queryset=DocumentType.objects.all(), label=('Document type')
     )

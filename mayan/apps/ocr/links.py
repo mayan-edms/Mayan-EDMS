@@ -28,6 +28,10 @@ link_document_type_ocr_settings = Link(
     permissions=(permission_document_type_ocr_setup,), text=_('Setup OCR'),
     view='ocr:document_type_ocr_settings', args='resolved_object.id'
 )
+link_document_type_submit = Link(
+    icon='fa fa-font', permissions=(permission_ocr_document,),
+    text=_('OCR documents per type'), view='ocr:document_type_submit'
+)
 link_entry_delete = Link(
     permissions=(permission_ocr_document_delete,), text=_('Delete'),
     view='ocr:entry_delete', args='object.id'

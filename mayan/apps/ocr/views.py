@@ -11,13 +11,13 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.generics import (
-    ConfirmView, SingleObjectEditView, SingleObjectListView
+    ConfirmView, FormView, SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
 from documents.models import Document, DocumentType, DocumentVersion
 from permissions import Permission
 
-from .forms import DocumentContentForm
+from .forms import DocumentContentForm, DocumentTypeSelectForm
 from .models import DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
@@ -87,6 +87,35 @@ class DocumentSubmitManyView(MultipleInstanceActionMixin, DocumentSubmitView):
         return {
             'title': _('Submit the selected documents to the OCR queue?')
         }
+
+
+class DocumentTypeSubmitView(FormView):
+    form_class = DocumentTypeSelectForm
+    extra_context = {
+        'title': _('Submit all documents of a type for OCR')
+    }
+
+    def get_post_action_redirect(self):
+        return reverse('common:tools_list')
+
+    def form_valid(self, form):
+        count = 0
+        print form.cleaned_data
+        for document in form.cleaned_data['document_type'].documents.all():
+            document.submit_for_ocr()
+            count += 1
+
+        messages.success(
+            self.request, _(
+                '%(count)d documents of type "%(document_type)s" added to the '
+                'OCR queue.'
+            ) % {
+                'count': count,
+                'document_type': form.cleaned_data['document_type']
+            }
+        )
+
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class DocumentTypeSettingsEditView(SingleObjectEditView):

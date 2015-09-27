@@ -6,7 +6,9 @@ from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
-from django.views.generic import FormView, DetailView, TemplateView
+from django.views.generic import (
+    FormView as DjangoFormView, DetailView, TemplateView
+)
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.views.generic.list import ListView
 
@@ -17,7 +19,7 @@ from .mixins import *  # NOQA
 from .settings import setting_paginate_by
 
 __all__ = (
-    'AssignRemoveView', 'ConfirmView', 'MultiFormView',
+    'AssignRemoveView', 'ConfirmView', 'FormView', 'MultiFormView',
     'SingleObjectCreateView', 'SingleObjectDeleteView',
     'SingleObjectDetailView', 'SingleObjectEditView', 'SingleObjectListView',
     'SimpleView',
@@ -174,7 +176,11 @@ class ConfirmView(ObjectListPermissionFilterMixin, ViewPermissionCheckMixin, Ext
         return HttpResponseRedirect(self.get_success_url())
 
 
-class MultiFormView(FormView):
+class FormView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
+    template_name = 'appearance/generic_form.html'
+
+
+class MultiFormView(DjangoFormView):
     prefixes = {}
 
     prefix = None

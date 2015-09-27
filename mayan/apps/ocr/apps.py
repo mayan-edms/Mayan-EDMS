@@ -27,8 +27,8 @@ from .handlers import initialize_new_ocr_settings, post_version_upload_ocr
 from .links import (
     link_document_content, link_document_submit, link_document_submit_all,
     link_document_submit_multiple, link_document_type_ocr_settings,
-    link_entry_delete, link_entry_delete_multiple, link_entry_list,
-    link_entry_re_queue, link_entry_re_queue_multiple
+    link_document_type_submit, link_entry_delete, link_entry_delete_multiple,
+    link_entry_list, link_entry_re_queue, link_entry_re_queue_multiple
 )
 from .models import DocumentVersionOCRError
 from .permissions import permission_ocr_document, permission_ocr_content_view
@@ -128,7 +128,10 @@ class OCRApp(MayanAppConfig):
             )
         )
         menu_tools.bind_links(
-            links=(link_document_submit_all, link_entry_list)
+            links=(
+                link_document_submit_all, link_document_type_submit,
+                link_entry_list
+            )
         )
 
         post_save.connect(

@@ -335,8 +335,12 @@ Other changes
 * Normalization of 'title' and 'name' fields to 'label'.
 * Improved API, now at version 1.
 * Invert page title/project name order in browser title.
-* Use Django's class based views pagination
+* Use Django's class based views pagination.
 * Reduction of text strings.
+* OCR all documents.
+* Add tool to OCR all documents of a type.
+* Fix rendering of text files with Unicode characters.
+* Capture body of emails as a text document.
 
 Removals
 --------
@@ -346,7 +350,6 @@ Removals
 * Remove support for applying roles to new users automatically
 * Removal of the DOCUMENT_RESTRICTIONS_OVERRIDE permission
 * Removed the page_label field
-
 
 Upgrading from a previous version
 ---------------------------------
