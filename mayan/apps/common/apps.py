@@ -1051,7 +1051,6 @@ THE SOFTWARE.
                 'common:tools_list'
             )
         )
-        menu_main.bind_links(links=(link_about,), position=-1)
         menu_facet.bind_links(
             links=(link_about, link_license, link_packages_licenses),
             sources=(
@@ -1059,6 +1058,7 @@ THE SOFTWARE.
                 'common:packages_licenses_view'
             )
         )
+        menu_main.bind_links(links=(link_about,), position=99)
         menu_secondary.bind_links(
             links=(
                 link_current_user_edit, link_current_user_locale_profile_edit

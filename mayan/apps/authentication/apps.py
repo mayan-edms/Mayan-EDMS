@@ -21,8 +21,7 @@ class AuthenticationApp(MayanAppConfig):
         menu_secondary.bind_links(
             links=(
                 link_password_change, link_logout
-            ),
-            sources=(
+            ), position=99, sources=(
                 'common:current_user_details', 'common:current_user_edit',
                 'common:current_user_locale_profile_details',
                 'common:current_user_locale_profile_edit',

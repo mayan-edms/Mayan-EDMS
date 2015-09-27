@@ -64,6 +64,7 @@ class Menu(object):
         self.name = name
         self.bound_links = {}
         self.unbound_links = {}
+        self.link_positions = {}
         self.__class__._registry[name] = self
 
     def _map_links_to_source(self, links, source, map_variable='bound_links', position=None):
@@ -71,18 +72,23 @@ class Menu(object):
 
         for link in links:
             source_links.append(link)
+            self.link_positions[link] = position
 
     def bind_links(self, links, sources=None, position=None):
         """
         Associate a link to a model, a view inside this menu
         """
 
-        if sources:
+        try:
             for source in sources:
-                self._map_links_to_source(links=links, source=source)
-        else:
+                self._map_links_to_source(
+                    links=links, position=position, source=source
+                )
+        except TypeError:
             # Unsourced links display always
-            self._map_links_to_source(links=links, source=None)
+            self._map_links_to_source(
+                links=links, position=position, source=sources
+            )
 
     def resolve(self, context, source=None):
         request = Variable('request').resolve(context)
@@ -162,6 +168,11 @@ class Menu(object):
                 if resolved_link.link in unbound_links:
                     result[0].remove(resolved_link)
 
+            # Sort links by position value passed during bind
+            result[0] = sorted(
+                result[0], key=lambda item: self.link_positions[item.link]
+            )
+
         return result
 
     def unbind_links(self, links, sources=None):
@@ -170,15 +181,15 @@ class Menu(object):
         change the link binding of core apps
         """
 
-        if sources:
+        try:
             for source in sources:
                 self._map_links_to_source(
                     links=links, source=source, map_variable='unbound_links'
                 )
-        else:
+        except TypeError:
             # Unsourced links display always
             self._map_links_to_source(
-                links=links, source=None, map_variable='unbound_links'
+                links=links, source=sources, map_variable='unbound_links'
             )
 
 
