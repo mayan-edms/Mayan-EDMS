@@ -18,6 +18,9 @@ job_test:
   - coverage run manage.py test $TEST_APPS --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
   - coverage run manage.py test $TEST_APPS --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
   - coveralls
+  tags:
+    - postgres
+    - mysql
 variables:
   POSTGRES_DB: "mayan_edms"
   POSTGRES_PASSWORD: "postgres"
