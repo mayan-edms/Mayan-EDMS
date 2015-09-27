@@ -271,13 +271,6 @@ class Document(models.Model):
     def date_updated(self):
         return self.latest_version.timestamp
 
-    # TODO: look to remove, only used by the OCR parser
-    def document_save_to_temp_dir(self, filename, buffer_size=1024 * 1024):
-        temporary_path = os.path.join(
-            setting_temporary_directory.value, filename
-        )
-        return self.save_to_file(temporary_path, buffer_size)
-
     # TODO: rename to file_encoding
     @property
     def file_mime_encoding(self):

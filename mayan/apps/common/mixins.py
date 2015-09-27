@@ -107,7 +107,6 @@ class ObjectPermissionCheckMixin(object):
         return self.get_object()
 
     def dispatch(self, request, *args, **kwargs):
-
         if self.object_permission:
             try:
                 Permission.check_permissions(

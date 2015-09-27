@@ -348,8 +348,6 @@ class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
         return context
 
 
-# TODO: check/test if ViewPermissionCheckMixin, ObjectPermissionCheckMixin are
-# in the right MRO
 class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
     template_name = 'appearance/generic_form.html'
 
