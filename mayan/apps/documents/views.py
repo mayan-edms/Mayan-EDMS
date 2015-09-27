@@ -770,7 +770,6 @@ def document_download(request, document_id=None, document_id_list=None, document
                         save_as='"%s"' % form.cleaned_data['zip_filename'],
                         content_type='application/zip'
                     )
-                    # TODO: DO a redirection afterwards
                 except Exception as exception:
                     if settings.DEBUG:
                         raise
