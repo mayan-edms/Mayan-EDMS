@@ -154,8 +154,12 @@ class Menu(object):
             result.append(resolved_links)
 
         if result:
+            unbound_links = []
+            unbound_links.extend(self.unbound_links.get(source, ()))
+            unbound_links.extend(self.unbound_links.get(current_view, ()))
+
             for resolved_link in result[0]:
-                if resolved_link.link in self.unbound_links.get(source, ()):
+                if resolved_link.link in unbound_links:
                     result[0].remove(resolved_link)
 
         return result
