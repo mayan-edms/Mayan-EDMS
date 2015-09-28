@@ -8,5 +8,6 @@ DATABASES = {
         'NAME': 'mayan_edms',
         'USER': 'postgres',
         'PASSWORD': 'postgres',
+        'HOST': 'postgres',
     }
 }
