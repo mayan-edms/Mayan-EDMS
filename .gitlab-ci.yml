@@ -16,7 +16,7 @@ test:mysql:
   - pip install -r requirements/testing.txt
   - pip install -q mysql-python
   - coverage run manage.py test $MAYAN_TEST_APPS --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
-  - bash <(curl -x https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
+  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
   tags:
     - mysql
 test:postgres:
@@ -24,11 +24,11 @@ test:postgres:
   - pip install -r requirements/testing.txt
   - pip install -q psycopg2
   - coverage run manage.py test $MAYAN_TEST_APPS --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
-  - bash <(curl -x https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
+  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
   tags:
     - postgres
 test:sqlite:
   script:
   - pip install -r requirements/testing.txt
   - coverage run manage.py test $MAYAN_TEST_APPS --settings=mayan.settings.testing.gitlab-ci --nomigrations
-  - bash <(curl -x https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
+  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
