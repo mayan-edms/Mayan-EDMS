@@ -4,8 +4,6 @@ from django.conf.urls import include, patterns, url
 from django.conf import settings
 from django.utils.module_loading import import_string
 
-from rest_framework.reverse import reverse
-
 
 class APIEndPoint(object):
     _registry = {}
@@ -30,7 +28,7 @@ class APIEndPoint(object):
             api_urls = import_string(
                 '{0}.urls.api_urls'.format(app.name)
             )
-        except Exception as exception:
+        except Exception:
             if settings.DEBUG:
                 raise
             else:
