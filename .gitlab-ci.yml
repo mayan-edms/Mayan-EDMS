@@ -5,24 +5,30 @@ services:
 before_script:
   - apt-get update -qq
   - apt-get install -qq python-dev gcc tesseract-ocr tesseract-ocr-deu unpaper ghostscript libjpeg-dev libpng-dev libtiff-dev poppler-utils libreoffice
-stages:
-  - test
-job_test:
-  stage: test
-  script:
-  - pip install -r requirements/testing.txt
-  - pip install -q mysql-python
-  - pip install -q psycopg2
-  - export TEST_APPS="acls authentication checkouts django_gpg document_indexing document_signatures documents dynamic_search folders lock_manager metadata ocr permissions sources tags"
-  - coverage run manage.py test $TEST_APPS --settings=mayan.settings.testing.base --nomigrations
-  - coverage run manage.py test $TEST_APPS --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
-  - coverage run manage.py test $TEST_APPS --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
-  - coveralls
-  tags:
-    - postgres
-    - mysql
 variables:
   POSTGRES_DB: "mayan_edms"
   POSTGRES_PASSWORD: "postgres"
   MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
   MYSQL_DATABASE: "mayan_edms"
+  MAYAN_TEST_APPS: "acls authentication checkouts django_gpg document_indexing document_signatures documents dynamic_search folders lock_manager metadata ocr permissions sources tags"
+test:mysql:
+  script:
+  - pip install -r requirements/testing.txt
+  - pip install -q mysql-python
+  - coverage run manage.py test $MAYAN_TEST_APPS --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
+  - coveralls
+  tags:
+    - mysql
+test:postgres:
+  script:
+  - pip install -r requirements/testing.txt
+  - pip install -q psycopg2
+  - coverage run manage.py test $MAYAN_TEST_APPS --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
+  - coveralls
+  tags:
+    - postgres
+test:sqlite:
+  script:
+  - pip install -r requirements/testing.txt
+  - coverage run manage.py test $MAYAN_TEST_APPS --settings=mayan.settings.testing.gitlab-ci --nomigrations
+  - coveralls
