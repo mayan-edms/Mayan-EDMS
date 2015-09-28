@@ -1,4 +1,4 @@
-|Build Status| |PyPI badge| |Installs badge| |License badge| |Wheel badge|
+|Build Status| [![codecov.io](http://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=development)](http://codecov.io/gitlab/mayan-edms/mayan-edms?branch=development) |PyPI badge| |Installs badge| |License badge| |Wheel badge|
 
 |Logo|
 
