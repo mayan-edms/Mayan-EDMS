@@ -17,7 +17,7 @@ class RESTAPIApp(MayanAppConfig):
     def ready(self):
         super(RESTAPIApp, self).ready()
 
-        APIEndPoint(app=self, version_string='1')
+        APIEndPoint(app=self, name='rest', version_string='1')
 
         Package(label='Django REST framework', license_text='''
 Copyright (c) 2011-2015, Tom Christie All rights reserved.

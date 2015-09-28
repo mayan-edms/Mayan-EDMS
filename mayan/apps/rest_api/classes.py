@@ -30,7 +30,7 @@ class APIEndPoint(object):
             api_urls = import_string(
                 '{0}.urls.api_urls'.format(app.name)
             )
-        except Exception:
+        except Exception as exception:
             if settings.DEBUG:
                 raise
             else:
@@ -41,23 +41,14 @@ class APIEndPoint(object):
 
         self.__class__._registry[app.name] = self
 
-    def get_absolute_url(self):
-        return reverse('rest_api:api-version-1-app', args=(self.app.name,))
-
     @property
     def app_name(self):
         return self.app.name
 
     def register_urls(self, urlpatterns):
-        from .urls import version_1_urlpatterns
-        endpoint_urls = patterns(
+        from .urls import urlpatterns as app_urls
+
+        app_urls += patterns(
             '',
-            url(r'^%s/' % self.app.name, include(urlpatterns)),
+            url(r'^%s/' % (self.name or self.app.name), include(urlpatterns)),
         )
-        version_1_urlpatterns += endpoint_urls
-
-
-class APIVersion(object):
-    def __init__(self):
-        self.version_string = '1'
-        self.url = reverse('rest_api:api-version-1')
