@@ -235,6 +235,7 @@ LOGIN_EXEMPT_URLS = (
     r'^authentication/password/reset/done/$',
 
     r'^api/',
+    r'^docs/',
 )
 # ---------- Django REST framework -----------
 REST_FRAMEWORK = {
