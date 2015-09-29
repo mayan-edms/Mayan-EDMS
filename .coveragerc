@@ -5,3 +5,4 @@ omit=
     mayan/bin/mayan-edms.py
     mayan/wsgi.py
     tests.py
+    *migrations*
