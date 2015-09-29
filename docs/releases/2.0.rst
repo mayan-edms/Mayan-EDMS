@@ -341,6 +341,9 @@ Other changes
 * Add tool to OCR all documents of a type.
 * Fix rendering of text files with Unicode characters.
 * Capture body of emails as a text document.
+* All app APIs are top level URLs.
+* CI using gitlab-ci.
+* Coverage report with codecov.io.
 
 Removals
 --------
