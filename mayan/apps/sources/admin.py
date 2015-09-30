@@ -3,8 +3,18 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 from .models import (
-    StagingFolderSource, WatchFolderSource, WebFormSource
+    IMAPEmail, POP3Email, StagingFolderSource, WatchFolderSource, WebFormSource
 )
+
+
+@admin.register(IMAPEmail)
+class IMAPEmailAdmin(admin.ModelAdmin):
+    list_display = ('label', 'enabled', 'uncompress', 'host', 'ssl', 'port', 'interval', 'document_type', 'metadata_attachment_name')
+
+
+@admin.register(POP3Email)
+class POP3EmailAdmin(admin.ModelAdmin):
+    list_display = ('label', 'enabled', 'uncompress', 'host', 'ssl', 'port', 'interval', 'document_type', 'metadata_attachment_name')
 
 
 @admin.register(StagingFolderSource)
