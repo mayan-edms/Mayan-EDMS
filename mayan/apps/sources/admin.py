@@ -9,12 +9,18 @@ from .models import (
 
 @admin.register(IMAPEmail)
 class IMAPEmailAdmin(admin.ModelAdmin):
-    list_display = ('label', 'enabled', 'uncompress', 'host', 'ssl', 'port', 'interval', 'document_type', 'metadata_attachment_name')
+    list_display = (
+        'label', 'enabled', 'uncompress', 'host', 'ssl', 'port', 'interval',
+        'document_type', 'metadata_attachment_name'
+    )
 
 
 @admin.register(POP3Email)
 class POP3EmailAdmin(admin.ModelAdmin):
-    list_display = ('label', 'enabled', 'uncompress', 'host', 'ssl', 'port', 'interval', 'document_type', 'metadata_attachment_name')
+    list_display = (
+        'label', 'enabled', 'uncompress', 'host', 'ssl', 'port', 'interval',
+        'document_type', 'metadata_attachment_name'
+    )
 
 
 @admin.register(StagingFolderSource)

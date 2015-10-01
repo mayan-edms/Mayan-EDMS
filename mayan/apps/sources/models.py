@@ -1,15 +1,17 @@
 from __future__ import unicode_literals
 
-from email.Utils import collapse_rfc2231_value
 from email import message_from_string
-import json
+from email.Utils import collapse_rfc2231_value
+from email.header import decode_header
 import imaplib
+import json
 import logging
 import os
 import poplib
 
 import yaml
 
+from django.core.exceptions import ValidationError
 from django.core.files import File
 from django.core.files.base import ContentFile
 from django.db import models, transaction
@@ -25,6 +27,7 @@ from djcelery.models import PeriodicTask, IntervalSchedule
 from documents.models import Document, DocumentType
 from documents.settings import setting_language
 from metadata.api import save_metadata_list, set_bulk_metadata
+from metadata.models import MetadataType
 
 from .classes import Attachment, SourceUploadedFile, StagingFile
 from .literals import (
@@ -331,11 +334,55 @@ class EmailBaseModel(IntervalBaseModel):
     metadata_attachment_name = models.CharField(
         default=DEFAULT_METADATA_ATTACHMENT_NAME,
         help_text=_(
-            'Name of the attachment that will contains the metadata type names '
-            'and value pairs to be assigned to the rest of the downloaded '
-            'attachments. Note: This attachment has to be the first attachment.'
+            'Name of the attachment that will contains the metadata type '
+            'names and value pairs to be assigned to the rest of the '
+            'downloaded attachments. Note: This attachment has to be the '
+            'first attachment.'
         ), max_length=128, verbose_name=_('Metadata attachment name')
     )
+    subject_metadata_type = models.ForeignKey(
+        MetadataType, blank=True, help_text=_(
+            'Select a metadata type valid for the document type selected in '
+            'which to store the email\'s subject.'
+        ), null=True, related_name='email_subject',
+        verbose_name=_('Subject metadata type')
+    )
+    from_metadata_type = models.ForeignKey(
+        MetadataType, blank=True, help_text=_(
+            'Select a metadata type valid for the document type selected in '
+            'which to store the email\'s "from" value.'
+        ), null=True, related_name='email_from',
+        verbose_name=_('From metadata type')
+    )
+
+    def clean(self):
+        if self.subject_metadata_type:
+            if self.subject_metadata_type.pk not in self.document_type.metadata.values_list('metadata_type', flat=True):
+                raise ValidationError(
+                    {
+                        'subject_metadata_type': _(
+                            'Subject metadata type "%(metadata_type)s" is not '
+                            'valid for the document type: %(document_type)s'
+                        ) % {
+                            'metadata_type': self.subject_metadata_type,
+                            'document_type': self.document_type
+                        }
+                    }
+                )
+
+        if self.from_metadata_type:
+            if self.from_metadata_type.pk not in self.document_type.metadata.values_list('metadata_type', flat=True):
+                raise ValidationError(
+                    {
+                        'from_metadata_type': _(
+                            '"From" metadata type "%(metadata_type)s" is not '
+                            'valid for the document type: %(document_type)s'
+                        ) % {
+                            'metadata_type': self.from_metadata_type,
+                            'document_type': self.document_type
+                        }
+                    }
+                )
 
     # From: http://bookmarks.honewatson.com/2009/08/11/
     #   python-gmail-imaplib-search-subject-get-attachments/
@@ -344,10 +391,29 @@ class EmailBaseModel(IntervalBaseModel):
     # TODO: Use message ID for lock
 
     @staticmethod
+    def getheader(header_text, default='ascii'):
+
+        headers = decode_header(header_text)
+        header_sections = [
+            unicode(text, charset or default) for text, charset in headers
+        ]
+        return ''.join(header_sections)
+
+    @staticmethod
     def process_message(source, message):
         counter = 1
         email = message_from_string(message)
-        metadata_dictionary = None
+        metadata_dictionary = {}
+
+        if source.subject_metadata_type:
+            metadata_dictionary[
+                source.subject_metadata_type.name
+            ] = EmailBaseModel.getheader(email['Subject'])
+
+        if source.from_metadata_type:
+            metadata_dictionary[
+                source.from_metadata_type.name
+            ] = EmailBaseModel.getheader(email['From'])
 
         for part in email.walk():
             disposition = part.get('Content-Disposition', 'none')
@@ -452,9 +518,8 @@ class IMAPEmail(EmailBaseModel):
 
     mailbox = models.CharField(
         default=DEFAULT_IMAP_MAILBOX,
-        help_text=_(
-            'Mail from which to check for messages with attached documents.'
-        ), max_length=64, verbose_name=_('Mailbox')
+        help_text=_('IMAP Mailbox from which to check for messages.'),
+        max_length=64, verbose_name=_('Mailbox')
     )
 
     # http://www.doughellmann.com/PyMOTW/imaplib/
