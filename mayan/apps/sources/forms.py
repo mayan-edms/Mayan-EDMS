@@ -89,7 +89,7 @@ class EmailSetupBaseForm(forms.ModelForm):
             'label', 'enabled', 'interval', 'document_type', 'uncompress',
             'host', 'ssl', 'port', 'username', 'password',
             'metadata_attachment_name', 'subject_metadata_type',
-            'from_metadata_type'
+            'from_metadata_type', 'store_body'
         )
         widgets = {
             'password': forms.widgets.PasswordInput(render_value=True)

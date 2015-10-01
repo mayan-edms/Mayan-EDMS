@@ -354,6 +354,11 @@ class EmailBaseModel(IntervalBaseModel):
         ), null=True, related_name='email_from',
         verbose_name=_('From metadata type')
     )
+    store_body = models.BooleanField(
+        default=True, help_text=_(
+            'Store the body of the email as a text document.'
+        ), verbose_name=_('Store email body')
+    )
 
     def clean(self):
         if self.subject_metadata_type:
@@ -453,7 +458,7 @@ class EmailBaseModel(IntervalBaseModel):
 
                 logger.debug('content_type: %s', content_type)
 
-                if content_type == 'text/plain':
+                if content_type == 'text/plain' and source.store_body:
                     content = part.get_payload(decode=True).decode(part.get_content_charset())
                     with ContentFile(content=content, name='email_body.txt') as file_object:
                         source.handle_upload(

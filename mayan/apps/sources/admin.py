@@ -11,7 +11,8 @@ from .models import (
 class IMAPEmailAdmin(admin.ModelAdmin):
     list_display = (
         'label', 'enabled', 'uncompress', 'host', 'ssl', 'port', 'interval',
-        'document_type', 'metadata_attachment_name'
+        'document_type', 'metadata_attachment_name', 'from_metadata_type',
+        'subject_metadata_type', 'store_body'
     )
 
 
@@ -19,7 +20,8 @@ class IMAPEmailAdmin(admin.ModelAdmin):
 class POP3EmailAdmin(admin.ModelAdmin):
     list_display = (
         'label', 'enabled', 'uncompress', 'host', 'ssl', 'port', 'interval',
-        'document_type', 'metadata_attachment_name'
+        'document_type', 'metadata_attachment_name', 'from_metadata_type',
+        'subject_metadata_type', 'store_body'
     )
 
 
