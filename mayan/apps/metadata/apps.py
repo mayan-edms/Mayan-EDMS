@@ -22,7 +22,6 @@ from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
-from .api import get_metadata_string
 from .classes import DocumentMetadataHelper
 from .handlers import (
     post_document_type_metadata_type_add,
@@ -43,6 +42,7 @@ from .permissions import (
     permission_metadata_document_add, permission_metadata_document_edit,
     permission_metadata_document_remove, permission_metadata_document_view
 )
+from .widgets import get_metadata_string
 
 logger = logging.getLogger(__name__)
 
