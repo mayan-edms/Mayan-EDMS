@@ -19,9 +19,15 @@ from .permissions import permission_ocr_content_view, permission_ocr_document
 from .serializers import DocumentPageContentSerializer
 
 
-class APIDocumentOCRView(APIView):
-    def get_object(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+class APIDocumentOCRView(generics.GenericAPIView):
+    mayan_object_permissions = {
+        'POST': (permission_ocr_document,)
+    }
+    permission_classes = (MayanPermission,)
+    queryset = Document.objects.all()
+
+    def get_serializer_class(self):
+        return None
 
     def post(self, request, *args, **kwargs):
         """
@@ -37,23 +43,19 @@ class APIDocumentOCRView(APIView):
               message: Accepted
         """
 
-        document = self.get_object()
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_ocr_document,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_ocr_document, self.request.user, document
-            )
-
-        document.submit_for_ocr()
+        self.get_object().submit_for_ocr()
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
-class APIDocumentVersionOCRView(APIView):
-    def get_object(self):
-        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+class APIDocumentVersionOCRView(generics.GenericAPIView):
+    mayan_object_permissions = {
+        'POST': (permission_ocr_document,)
+    }
+    permission_classes = (MayanPermission,)
+    queryset = DocumentVersion.objects.all()
+
+    def get_serializer_class(self):
+        return None
 
     def post(self, request, *args, **kwargs):
         """
@@ -69,17 +71,7 @@ class APIDocumentVersionOCRView(APIView):
               message: Accepted
         """
 
-        document_version = self.get_object()
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_ocr_document,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_ocr_document, self.request.user, document_version
-            )
-
-        document_version.submit_for_ocr()
+        self.get_object().submit_for_ocr()
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
@@ -94,16 +86,20 @@ class APIDocumentPageContentView(generics.RetrieveAPIView):
               type: number
     """
 
-    filter_backends = (MayanObjectPermissionsFilter,)
     mayan_object_permissions = {
         'GET': (permission_ocr_content_view,),
     }
     permission_classes = (MayanPermission,)
     serializer_class = DocumentPageContentSerializer
+    queryset = DocumentPage.objects.all()
 
-    def get_object(self):
-        document_page = get_object_or_404(DocumentPage, pk=self.kwargs['pk'])
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+
         try:
-            return document_page.ocr_content
+            ocr_content = instance.ocr_content
         except DocumentPageContent.DoesNotExist:
-            return DocumentPageContent.objects.none()
+            ocr_content = DocumentPageContent.objects.none()
+
+        serializer = self.get_serializer(ocr_content)
+        return Response(serializer.data)
