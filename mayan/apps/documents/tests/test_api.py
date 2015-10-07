@@ -2,6 +2,7 @@
 
 from __future__ import unicode_literals
 
+import io
 import time
 
 from json import loads
@@ -17,9 +18,9 @@ from rest_framework.test import APITestCase
 from .literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
     TEST_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
-    TEST_SMALL_DOCUMENT_PATH,
+    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH,
 )
-from ..models import Document, DocumentType
+from ..models import Document, DocumentType, HASH_FUNCTION
 
 
 class DocumentTypeAPITestCase(APITestCase):
@@ -230,6 +231,47 @@ class DocumentAPITestCase(APITestCase):
         self.assertEqual(document.versions.count(), 1)
 
         self.assertEqual(document_version, document.latest_version)
+
+    def test_document_download(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=File(file_object),
+            )
+
+        response = self.client.get(
+            reverse(
+                'rest_api:document-download', args=(document.pk,)
+            )
+        )
+        buf = io.BytesIO()
+        buf.write(response.content)
+
+        self.assertEqual(
+            HASH_FUNCTION(buf.getvalue()), TEST_SMALL_DOCUMENT_CHECKSUM
+        )
+
+        del(buf)
+
+    def test_document_version_download(self):
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=File(file_object),
+            )
+
+        response = self.client.get(
+            reverse(
+                'rest_api:documentversion-download',
+                args=(document.latest_version.pk,)
+            )
+        )
+        buf = io.BytesIO()
+        buf.write(response.content)
+
+        self.assertEqual(
+            HASH_FUNCTION(buf.getvalue()), TEST_SMALL_DOCUMENT_CHECKSUM
+        )
+
+        del(buf)
 
     #def test_document_set_document_type(self):
     #    pass

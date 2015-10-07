@@ -4,7 +4,8 @@ from django.conf.urls import patterns, url
 
 from .api_views import (
     APIDeletedDocumentListView, APIDeletedDocumentRestoreView,
-    APIDeletedDocumentView, APIDocumentView, APIDocumentListView,
+    APIDeletedDocumentView, APIDocumentDownloadView, APIDocumentView,
+    APIDocumentListView, APIDocumentVersionDownloadView,
     APIDocumentPageImageView, APIDocumentPageView,
     APIDocumentTypeDocumentListView, APIDocumentTypeListView,
     APIDocumentTypeView, APIDocumentVersionsListView,
@@ -264,12 +265,20 @@ api_urls = patterns(
         APIDocumentVersionsListView.as_view(), name='document-version-list'
     ),
     url(
+        r'^documents/(?P<pk>[0-9]+)/download/$',
+        APIDocumentDownloadView.as_view(), name='document-download'
+    ),
+    url(
         r'^document_version/(?P<pk>[0-9]+)/$',
         APIDocumentVersionView.as_view(), name='documentversion-detail'
     ),
     url(
         r'^document_version/(?P<pk>[0-9]+)/revert/$',
         APIDocumentVersionRevertView.as_view(), name='documentversion-revert'
+    ),
+    url(
+        r'^document_version/(?P<pk>[0-9]+)/download/$',
+        APIDocumentVersionDownloadView.as_view(), name='documentversion-download'
     ),
     url(
         r'^document_page/(?P<pk>[0-9]+)/$', APIDocumentPageView.as_view(),

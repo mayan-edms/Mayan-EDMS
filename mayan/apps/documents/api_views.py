@@ -5,6 +5,7 @@ import logging
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
+from filetransfers.api import serve_file
 from rest_framework import generics, status
 from rest_framework.response import Response
 
@@ -18,19 +19,19 @@ from .models import (
 )
 from .permissions import (
     permission_document_create, permission_document_delete,
-    permission_document_edit, permission_document_new_version,
-    permission_document_properties_edit, permission_document_restore,
-    permission_document_trash, permission_document_version_revert,
-    permission_document_view, permission_document_type_create,
-    permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view
+    permission_document_download, permission_document_edit,
+    permission_document_new_version, permission_document_properties_edit,
+    permission_document_restore, permission_document_trash,
+    permission_document_version_revert, permission_document_view,
+    permission_document_type_create, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view
 )
 from .serializers import (
     DeletedDocumentSerializer, DocumentPageImageSerializer,
-    DocumentPageSerializer, DocumentSerializer, DocumentTypeSerializer,
-    DocumentVersionSerializer, DocumentVersionRevertSerializer,
-    NewDocumentSerializer, NewDocumentVersionSerializer,
-    RecentDocumentSerializer
+    DocumentPageSerializer, DocumentSerializer,
+    DocumentTypeSerializer, DocumentVersionSerializer,
+    DocumentVersionRevertSerializer, NewDocumentSerializer,
+    NewDocumentVersionSerializer, RecentDocumentSerializer
 )
 
 logger = logging.getLogger(__name__)
@@ -86,6 +87,37 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
         return Response(status=status.HTTP_200_OK)
 
 
+class APIDocumentDownloadView(generics.RetrieveAPIView):
+    """
+    Download the latest version of a document.
+    ---
+    GET:
+        omit_serializer: true
+        parameters:
+            - name: pk
+              paramType: path
+              type: number
+    """
+
+    mayan_object_permissions = {
+        'GET': (permission_document_download,)
+    }
+    permission_classes = (MayanPermission,)
+    queryset = Document.objects.all()
+
+    def get_serializer_class(self):
+        return None
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        return serve_file(
+            request,
+            instance.latest_version.file,
+            save_as='"%s"' % instance.label,
+            content_type=instance.latest_version.mimetype if instance.latest_version.mimetype else 'application/octet-stream'
+        )
+
+
 class APIDocumentListView(generics.ListCreateAPIView):
     """
     Returns a list of all the documents.
@@ -112,6 +144,37 @@ class APIDocumentListView(generics.ListCreateAPIView):
         """
 
         return super(APIDocumentListView, self).post(*args, **kwargs)
+
+
+class APIDocumentVersionDownloadView(generics.RetrieveAPIView):
+    """
+    Download a document version.
+    ---
+    GET:
+        omit_serializer: true
+        parameters:
+            - name: pk
+              paramType: path
+              type: number
+    """
+
+    mayan_object_permissions = {
+        'GET': (permission_document_download,)
+    }
+    permission_classes = (MayanPermission,)
+    queryset = DocumentVersion.objects.all()
+
+    def get_serializer_class(self):
+        return None
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+        return serve_file(
+            request,
+            instance.file,
+            save_as='"%s"' % instance.document.label,
+            content_type=instance.mimetype if instance.mimetype else 'application/octet-stream'
+        )
 
 
 class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
