@@ -30,9 +30,7 @@ class DocumentOCRTestCase(TestCase):
     def test_ocr_language_backends_end(self):
         content = self.document.pages.first().ocr_content.content
 
-        self.assertTrue(
-            'Mayan EDMS Documentation' in content
-        )
+        self.assertTrue('Mayan EDMS Documentation' in content)
 
 
 class GermanOCRSupportTestCase(TestCase):
