@@ -2,7 +2,14 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import DocumentTypeSettings, DocumentVersionOCRError
+from .models import (
+    DocumentPageContent, DocumentTypeSettings, DocumentVersionOCRError
+)
+
+
+@admin.register(DocumentPageContent)
+class DocumentPageContentAdmin(admin.ModelAdmin):
+    list_display = ('document_page',)
 
 
 @admin.register(DocumentTypeSettings)
