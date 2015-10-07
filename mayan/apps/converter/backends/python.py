@@ -51,7 +51,7 @@ class Python(ConverterBase):
         if self.mime_type == 'application/pdf' and pdftoppm:
 
             new_file_object, input_filepath = tempfile.mkstemp()
-
+            self.file_object.seek(0)
             os.write(new_file_object, self.file_object.read())
             self.file_object.seek(0)
 
