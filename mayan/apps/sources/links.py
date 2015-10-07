@@ -31,12 +31,12 @@ link_setup_sources = Link(
 )
 link_setup_source_create_imap_email = Link(
     permissions=(permission_sources_setup_create,),
-    text=_('Add new imap email'), view='sources:setup_source_create',
+    text=_('Add new IMAP email'), view='sources:setup_source_create',
     args='"%s"' % SOURCE_CHOICE_EMAIL_IMAP
 )
 link_setup_source_create_pop3_email = Link(
     permissions=(permission_sources_setup_create,),
-    text=_('Add new pop3 email'), view='sources:setup_source_create',
+    text=_('Add new POP3 email'), view='sources:setup_source_create',
     args='"%s"' % SOURCE_CHOICE_EMAIL_POP3
 )
 link_setup_source_create_staging_folder = Link(
