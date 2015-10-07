@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 from __future__ import unicode_literals
 
 from django.contrib.auth.models import User
@@ -14,7 +12,7 @@ from documents.tests.literals import (
 )
 
 
-class DocumentsViewsFunctionalTestCase(TestCase):
+class CommonViewTestCase(TestCase):
     def setUp(self):
         self.admin_user = User.objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
