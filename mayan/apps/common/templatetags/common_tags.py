@@ -70,6 +70,9 @@ def render_subtemplate(context, template_name, template_context):
 @register.assignment_tag
 def build():
     if BUILD:
-        return '{} {}'.format(BUILD(), DATE().decode())
+        try:
+            return '{} {}'.format(BUILD(), DATE().decode())
+        except sh.ErrorReturnCode_128:
+            return ''
     else:
-        return 'No build information'
+        return ''
