@@ -13,7 +13,7 @@ from __future__ import unicode_literals
 import os
 import sys
 
-from django.utils.translation import ugettext_lazy as _, ugettext
+from django.utils.translation import ugettext_lazy as _
 
 _file_path = os.path.abspath(os.path.dirname(__file__)).split('/')
 
