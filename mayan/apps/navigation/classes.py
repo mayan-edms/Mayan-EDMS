@@ -170,7 +170,7 @@ class Menu(object):
 
             # Sort links by position value passed during bind
             result[0] = sorted(
-                result[0], key=lambda item: self.link_positions[item.link]
+                result[0], key=lambda item: self.link_positions.get(item.link)
             )
 
         return result
