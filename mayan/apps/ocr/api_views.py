@@ -19,7 +19,7 @@ from .permissions import permission_ocr_content_view, permission_ocr_document
 from .serializers import DocumentPageContentSerializer
 
 
-class DocumentOCRAPIView(APIView):
+class APIDocumentOCRView(APIView):
     def get_object(self):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
 
@@ -51,7 +51,7 @@ class DocumentOCRAPIView(APIView):
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
-class DocumentVersionOCRAPIView(APIView):
+class APIDocumentVersionOCRView(APIView):
     def get_object(self):
         return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
 
@@ -83,7 +83,7 @@ class DocumentVersionOCRAPIView(APIView):
         return Response(status=status.HTTP_202_ACCEPTED)
 
 
-class DocumentPageContentAPIView(generics.RetrieveAPIView):
+class APIDocumentPageContentView(generics.RetrieveAPIView):
     """
     Returns the OCR content of the selected document page.
     ---
