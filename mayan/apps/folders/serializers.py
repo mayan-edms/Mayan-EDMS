@@ -14,7 +14,9 @@ from .models import Folder
 
 
 class FolderSerializer(serializers.HyperlinkedModelSerializer):
-    documents = serializers.HyperlinkedIdentityField(view_name='rest_api:folder-document-list')
+    documents = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:folder-document-list'
+    )
     documents_count = serializers.SerializerMethodField()
     user = UserSerializer(read_only=True)
 
@@ -23,7 +25,10 @@ class FolderSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'rest_api:folder-detail'},
             'user': {'view_name': 'rest_api:user-detail'}
         }
-        fields = ('datetime_created', 'documents', 'documents_count', 'id', 'label', 'url', 'user')
+        fields = (
+            'datetime_created', 'documents', 'documents_count', 'id', 'label',
+            'url', 'user'
+        )
         model = Folder
 
     def get_documents_count(self, obj):
@@ -58,7 +63,9 @@ class FolderDocumentSerializer(DocumentSerializer):
 
 
 class NewFolderDocumentSerializer(serializers.Serializer):
-    document = serializers.IntegerField(help_text=_('Primary key of the document to be added.'))
+    document = serializers.IntegerField(
+        help_text=_('Primary key of the document to be added.')
+    )
 
     def create(self, validated_data):
         try:
