@@ -57,7 +57,7 @@ class MayanAppConfig(apps.AppConfig):
                 )
             ),
         except ImportError:
-            logger.debug('App %s doesn\'t have URLs define.')
+            logger.debug('App %s doesn\'t have URLs defined.', self.name)
 
 
 class CommonApp(MayanAppConfig):
