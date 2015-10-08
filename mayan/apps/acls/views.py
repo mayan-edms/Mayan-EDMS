@@ -104,8 +104,8 @@ class ACLCreateView(SingleObjectCreateView):
         return {
             'object': self.content_object,
             'title': _(
-                'New access control lists for: %s' % self.content_object
-            ),
+                'New access control lists for: %s'
+            ) % self.content_object
         }
 
 
