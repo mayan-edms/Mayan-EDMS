@@ -5,8 +5,6 @@ import time
 from django.core.files import File
 from django.test import TestCase, override_settings
 
-from common.literals import TIME_DELTA_UNIT_DAYS
-
 from .literals import (
     TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
     TEST_OFFICE_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH

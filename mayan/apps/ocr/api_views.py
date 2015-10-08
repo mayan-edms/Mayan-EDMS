@@ -1,17 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
-from django.shortcuts import get_object_or_404
-
 from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.settings import api_settings
-from rest_framework.views import APIView
 
-from acls.models import AccessControlList
 from documents.models import Document, DocumentPage, DocumentVersion
-from permissions import Permission
-from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
 from .models import DocumentPageContent

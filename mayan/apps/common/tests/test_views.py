@@ -7,8 +7,7 @@ from django.test.client import Client
 from django.test import TestCase
 
 from documents.tests.literals import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
 )
 
 

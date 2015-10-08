@@ -159,10 +159,10 @@ class PackagesLicensesView(SimpleView):
         # Use a function so that PackagesLicensesForm get initialized at every
         # request
         return {
-        'form': PackagesLicensesForm(),
-        'read_only': True,
-        'title': _('Other packages licenses'),
-    }
+            'form': PackagesLicensesForm(),
+            'read_only': True,
+            'title': _('Other packages licenses'),
+        }
 
 
 class SetupListView(TemplateView):

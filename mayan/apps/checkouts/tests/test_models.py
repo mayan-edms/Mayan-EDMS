@@ -13,7 +13,7 @@ from authentication.tests.literals import (
 )
 from documents.models import DocumentType
 from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
 
 from ..exceptions import (

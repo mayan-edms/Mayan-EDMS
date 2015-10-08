@@ -17,4 +17,6 @@ class AdvancedSearchForm(forms.Form):
 
 
 class SearchForm(forms.Form):
-    q = forms.CharField(max_length=128, label=_('Search terms'), required=False)
+    q = forms.CharField(
+        max_length=128, label=_('Search terms'), required=False
+    )

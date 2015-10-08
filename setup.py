@@ -49,7 +49,9 @@ def find_packages(directory):
             if '__init__.py' in filenames:
                 packages.append('.'.join(fullsplit(dirpath)))
             elif filenames:
-                data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
+                data_files.append(
+                    [dirpath, [os.path.join(dirpath, f) for f in filenames]]
+                )
 
     return packages
 

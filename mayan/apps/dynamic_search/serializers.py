@@ -8,7 +8,9 @@ from .models import RecentSearch
 
 
 class RecentSearchSerializer(serializers.HyperlinkedModelSerializer):
-    url = serializers.HyperlinkedIdentityField(view_name='rest_api:recentsearch-detail')
+    url = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:recentsearch-detail'
+    )
     user = UserSerializer()
 
     class Meta:

@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import base64
 import hashlib
 import logging
-import os
 import uuid
 
 from django.contrib.auth.models import User
@@ -15,7 +14,6 @@ from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
 from common.literals import TIME_DELTA_UNIT_CHOICES
-from common.settings import setting_temporary_directory
 from converter import (
     converter_class, TransformationResize, TransformationRotate,
     TransformationZoom

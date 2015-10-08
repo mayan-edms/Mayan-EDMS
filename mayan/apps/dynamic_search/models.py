@@ -35,7 +35,9 @@ class RecentSearch(models.Model):
         from .classes import SearchModel
         document_search = SearchModel.get('documents.Document')
 
-        query_dict = urlparse.parse_qs(urllib.unquote_plus(smart_str(self.query)))
+        query_dict = urlparse.parse_qs(
+            urllib.unquote_plus(smart_str(self.query))
+        )
 
         if self.is_advanced():
             # Advanced search

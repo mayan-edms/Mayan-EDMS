@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import logging
 import os
-import subprocess
 import tempfile
 
 try:
@@ -131,7 +130,7 @@ class ConverterBase(object):
         if self.mime_type == 'text/plain':
             libreoffice_filter = 'Text (encoded):UTF8,LF,,,'
 
-        args=(input_filepath, '--outdir', setting_temporary_directory.value)
+        args = (input_filepath, '--outdir', setting_temporary_directory.value)
 
         kwargs = {'_env': {'HOME': setting_temporary_directory.value}}
 

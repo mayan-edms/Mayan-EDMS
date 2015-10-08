@@ -1,13 +1,12 @@
 from __future__ import unicode_literals
 
-from django import apps
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig
 from common.classes import Package
 
 
-class MIMETypesApp(apps.AppConfig):
+class MIMETypesApp(MayanAppConfig):
     name = 'mimetype'
     verbose_name = _('MIME types')
 

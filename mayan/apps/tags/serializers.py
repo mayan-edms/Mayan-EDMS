@@ -15,14 +15,18 @@ from .permissions import permission_tag_attach
 
 
 class TagSerializer(serializers.HyperlinkedModelSerializer):
-    documents = serializers.HyperlinkedIdentityField(view_name='rest_api:tag-document-list')
+    documents = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:tag-document-list'
+    )
     documents_count = serializers.SerializerMethodField()
 
     class Meta:
         extra_kwargs = {
             'url': {'view_name': 'rest_api:tag-detail'},
         }
-        fields = ('color', 'documents', 'documents_count', 'id', 'label', 'url')
+        fields = (
+            'color', 'documents', 'documents_count', 'id', 'label', 'url'
+        )
         model = Tag
 
     def get_documents_count(self, instance):
@@ -30,14 +34,18 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
 
 
 class NewDocumentTagSerializer(serializers.Serializer):
-    tag = serializers.IntegerField(help_text=_('Primary key of the tag to be added.'))
+    tag = serializers.IntegerField(
+        help_text=_('Primary key of the tag to be added.')
+    )
 
     def create(self, validated_data):
         try:
             tag = Tag.objects.get(pk=validated_data['tag'])
 
             try:
-                Permission.check_permissions(self.context['request'].user, (permission_tag_attach,))
+                Permission.check_permissions(
+                    self.context['request'].user, (permission_tag_attach,)
+                )
             except PermissionDenied:
                 AccessControlList.objects.check_access(
                     permission_tag_attach, self.context['request'], tag

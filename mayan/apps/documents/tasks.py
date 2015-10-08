@@ -15,9 +15,7 @@ from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY,
     NEW_DOCUMENT_RETRY_DELAY, STUB_EXPIRATION_INTERVAL
 )
-from .models import (
-    DeletedDocument, Document, DocumentPage, DocumentType, DocumentVersion
-)
+from .models import Document, DocumentPage, DocumentType, DocumentVersion
 
 logger = logging.getLogger(__name__)
 

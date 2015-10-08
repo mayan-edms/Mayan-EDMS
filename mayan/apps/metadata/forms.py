@@ -18,7 +18,9 @@ class MetadataForm(forms.Form):
             self.document_type = kwargs['initial'].pop('document_type', None)
             required_string = ''
 
-            required = self.metadata_type.get_required_for(document_type=self.document_type)
+            required = self.metadata_type.get_required_for(
+                document_type=self.document_type
+            )
             if required:
                 self.fields['value'].required = True
                 required_string = ' (%s)' % _('Required')
@@ -66,7 +68,9 @@ class MetadataForm(forms.Form):
                     )
 
     def clean_value(self):
-        return self.metadata_type.validate_value(document_type=self.document_type, value=self.cleaned_data['value'])
+        return self.metadata_type.validate_value(
+            document_type=self.document_type, value=self.cleaned_data['value']
+        )
 
     id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
 

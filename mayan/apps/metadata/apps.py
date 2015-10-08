@@ -137,7 +137,9 @@ class MetadataApp(MayanAppConfig):
         )
         SourceColumn(
             source=DocumentMetadata, label=_('Required'),
-            func=lambda context: two_state_template(context['object'].is_required)
+            func=lambda context: two_state_template(
+                context['object'].is_required
+            )
         )
 
         app.conf.CELERY_QUEUES.append(

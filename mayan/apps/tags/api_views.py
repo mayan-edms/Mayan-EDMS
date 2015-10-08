@@ -160,7 +160,9 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
         Attach a tag to a document.
         """
 
-        return super(APIDocumentTagListView, self).post(request, *args, **kwargs)
+        return super(
+            APIDocumentTagListView, self
+        ).post(request, *args, **kwargs)
 
 
 class APIDocumentTagView(generics.RetrieveDestroyAPIView):
@@ -176,7 +178,9 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
         Remove a tag from the selected document.
         """
 
-        return super(APIDocumentTagView, self).delete(request, *args, **kwargs)
+        return super(
+            APIDocumentTagView, self
+        ).delete(request, *args, **kwargs)
 
     def get(self, *args, **kwargs):
         """

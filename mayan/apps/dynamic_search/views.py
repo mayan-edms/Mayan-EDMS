@@ -44,7 +44,9 @@ class ResultsView(SingleObjectListView):
             # Only do search if there is user input, otherwise just render
             # the template with the extra_context
 
-            queryset, ids, timedelta = document_search.search(self.request.GET, self.request.user)
+            queryset, ids, timedelta = document_search.search(
+                self.request.GET, self.request.user
+            )
 
             return queryset
 

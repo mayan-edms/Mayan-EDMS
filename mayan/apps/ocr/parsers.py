@@ -75,7 +75,9 @@ class Parser(object):
             raise NoMIMETypeMatch
 
     def process_document_version(self, document_version):
-        logger.info('Starting parsing for document version: %s', document_version)
+        logger.info(
+            'Starting parsing for document version: %s', document_version
+        )
         logger.debug('document version: %d', document_version.pk)
 
         for document_page in document_version.pages.all():
@@ -124,7 +126,9 @@ class PopplerParser(Parser):
     def __init__(self):
         self.pdftotext_path = setting_pdftotext_path.value
         if not os.path.exists(self.pdftotext_path):
-            error_message = _('Cannot find pdftotext executable at: %s') % self.pdftotext_path
+            error_message = _(
+                'Cannot find pdftotext executable at: %s'
+            ) % self.pdftotext_path
             logger.error(error_message)
             raise ParserError(error_message)
 
@@ -178,9 +182,13 @@ class PDFMinerParser(Parser):
 
         with BytesIO() as string_buffer:
             rsrcmgr = PDFResourceManager()
-            device = TextConverter(rsrcmgr, outfp=string_buffer, laparams=LAParams())
+            device = TextConverter(
+                rsrcmgr, outfp=string_buffer, laparams=LAParams()
+            )
             interpreter = PDFPageInterpreter(rsrcmgr, device)
-            page = PDFPage.get_pages(file_object, maxpages=1, pagenos=(page_number - 1,))
+            page = PDFPage.get_pages(
+                file_object, maxpages=1, pagenos=(page_number - 1,)
+            )
             interpreter.process_page(page.next())
             device.close()
 
@@ -189,5 +197,6 @@ class PDFMinerParser(Parser):
             return string_buffer.getvalue()
 
 Parser.register(
-    mimetypes=('application/pdf',), parser_classes=(PopplerParser, PDFMinerParser)
+    mimetypes=('application/pdf',),
+    parser_classes=(PopplerParser, PDFMinerParser)
 )
