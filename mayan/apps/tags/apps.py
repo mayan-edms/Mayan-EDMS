@@ -25,7 +25,7 @@ from .permissions import (
     permission_tag_attach, permission_tag_delete, permission_tag_edit,
     permission_tag_remove, permission_tag_view
 )
-from .widgets import widget_inline_tags, widget_single_tag
+from .widgets import widget_document_tags, widget_single_tag
 
 
 class TagsApp(MayanAppConfig):
@@ -64,7 +64,9 @@ class TagsApp(MayanAppConfig):
 
         SourceColumn(
             source=Document, label=_('Tags'),
-            func=lambda context: widget_inline_tags(context['object'])
+            func=lambda context: widget_document_tags(
+                document=context['object'], user=context['request'].user
+            )
         )
 
         SourceColumn(

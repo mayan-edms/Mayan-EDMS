@@ -10,15 +10,15 @@ from rest_framework.test import APITestCase
 from documents.models import DocumentType
 from documents.tests import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH,
+    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
 
 from ..models import Tag
 
-TEST_TAG_LABEL = 'test tag'
-TEST_TAG_LABEL_ALTERNATE = 'test tag alternate'
-TEST_TAG_COLOR = '#001122'
-TEST_TAG_COLOR_ALTERNATE = '#221100'
+from .literals import (
+    TEST_TAG_COLOR, TEST_TAG_COLOR_ALTERNATE, TEST_TAG_LABEL,
+    TEST_TAG_LABEL_ALTERNATE
+)
 
 
 class TagAPITestCase(APITestCase):

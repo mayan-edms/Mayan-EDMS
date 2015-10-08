@@ -4,11 +4,11 @@ from django.core.files.base import File
 from django.test import TestCase, override_settings
 
 from documents.models import DocumentType
-from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 
 from ..models import Tag
 
-TAG_COLOR = '#FF0000'
+from .literals import TEST_TAG_COLOR, TEST_TAG_LABEL
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -18,7 +18,7 @@ class TagTestCase(TestCase):
             label=TEST_DOCUMENT_TYPE
         )
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
                 file_object=File(file_object)
             )
@@ -28,14 +28,12 @@ class TagTestCase(TestCase):
         self.document_type.delete()
 
     def runTest(self):
-        tag = Tag(label='test', color=TAG_COLOR)
-        tag.save()
-        self.assertEqual(tag.label, 'test')
+        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        self.assertEqual(tag.label, TEST_TAG_LABEL)
         self.assertEqual(tag.get_color_code(), 'red')
 
     def test_addition_and_deletion_of_documents(self):
-        tag = Tag(label='test', color=TAG_COLOR)
-        tag.save()
+        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
 
         tag.documents.add(self.document)
 
