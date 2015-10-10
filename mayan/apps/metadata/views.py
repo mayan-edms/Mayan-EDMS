@@ -112,7 +112,6 @@ def metadata_edit(request, document_id=None, document_id_list=None):
             'value': ', '.join(value) if value else '',
         })
 
-    formset = MetadataFormSet(initial=initial)
     if request.method == 'POST':
         formset = MetadataFormSet(data=request.POST, initial=initial)
         if formset.is_valid():
@@ -149,6 +148,8 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                     )
 
             return HttpResponseRedirect(next)
+    else:
+        formset = MetadataFormSet(initial=initial)
 
     context = {
         'form_display_mode_table': True,
@@ -308,8 +309,10 @@ def metadata_add(request, document_id=None, document_id_list=None):
         len(documents)
     )
 
-    return render_to_response('appearance/generic_form.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_form.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def metadata_multiple_add(request):
@@ -389,12 +392,14 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
     initial = []
     for key, value in metadata.items():
-        initial.append({
-            'metadata_type': key,
-            'value': ', '.join(value)
-        })
+        initial.append(
+            {
+                'document_type': documents[0].document_type,
+                'metadata_type': key,
+                'value': ', '.join(value)
+            }
+        )
 
-    formset = MetadataRemoveFormSet(initial=initial)
     if request.method == 'POST':
         formset = MetadataRemoveFormSet(request.POST)
         if formset.is_valid():
@@ -432,6 +437,8 @@ def metadata_remove(request, document_id=None, document_id_list=None):
                             )
 
             return HttpResponseRedirect(next)
+    else:
+        formset = MetadataRemoveFormSet(initial=initial)
 
     context = {
         'form_display_mode_table': True,
@@ -448,8 +455,10 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         len(documents)
     )
 
-    return render_to_response('appearance/generic_form.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_form.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def metadata_multiple_remove(request):
