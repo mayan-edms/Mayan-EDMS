@@ -181,38 +181,38 @@ class DocumentCheckinView(ConfirmView):
     def get_post_action_redirect(self):
         return reverse('checkouts:checkout_info', args=(self.get_object().pk,))
 
-    def view_action(self, request):
+    def view_action(self):
         document = self.get_object()
 
-        if document.checkout_info().user == request.user:
+        if document.checkout_info().user == self.request.user:
             try:
                 Permission.check_permissions(
-                    request.user, (permission_document_checkin,)
+                    self.request.user, (permission_document_checkin,)
                 )
             except PermissionDenied:
                 AccessControlList.objects.check_access(
-                    permission_document_checkin, request.user, document
+                    permission_document_checkin, self.request.user, document
                 )
         else:
             try:
                 Permission.check_permissions(
-                    request.user, (permission_document_checkin_override,)
+                    self.request.user, (permission_document_checkin_override,)
                 )
             except PermissionDenied:
                 AccessControlList.objects.check_access(
-                    permission_document_checkin_override, request.user,
+                    permission_document_checkin_override, self.request.user,
                     document
                 )
 
         try:
-            document.check_in(user=request.user)
+            document.check_in(user=self.request.user)
         except DocumentNotCheckedOut:
-            messages.error(request, _('Document has not been checked out.'))
+            messages.error(self.request, _('Document has not been checked out.'))
         except Exception as exception:
             messages.error(
-                request, _('Error trying to check in document; %s') % exception
+                self.request, _('Error trying to check in document; %s') % exception
             )
         else:
             messages.success(
-                request, _('Document "%s" checked in successfully.') % document
+                self.request, _('Document "%s" checked in successfully.') % document
             )
