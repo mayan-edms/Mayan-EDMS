@@ -8,8 +8,8 @@ from .widgets import SplitTimeDeltaWidget
 
 class DocumentCheckoutForm(forms.ModelForm):
     class Meta:
+        fields = ('expiration_datetime', 'block_new_version')
         model = DocumentCheckout
-        exclude = ('document', 'checkout_datetime', 'user')
         widgets = {
             'expiration_datetime': SplitTimeDeltaWidget()
         }
