@@ -9,26 +9,23 @@ from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
 from ..models import MetadataType, DocumentMetadata
 
-TEST_DEFAULT_VALUE = 'test'
-TEST_LOOKUP_TEMPLATE = '1,2,3'
-TEST_INCORRECT_LOOKUP_VALUE = '0'
-TEST_CORRECT_LOOKUP_VALUE = '1'
-TEST_DATE_VALIDATOR = 'metadata.validators.DateValidator'
-TEST_DATE_PARSER = 'metadata.parsers.DateParser'
-TEST_INVALID_DATE = '___________'
-TEST_VALID_DATE = '2001-1-1'
-TEST_PARSED_VALID_DATE = '2001-01-01'
+from .literals import (
+    TEST_DEFAULT_VALUE, TEST_LOOKUP_TEMPLATE, TEST_INCORRECT_LOOKUP_VALUE,
+    TEST_CORRECT_LOOKUP_VALUE, TEST_DATE_VALIDATOR, TEST_DATE_PARSER,
+    TEST_METADATA_TYPE_NAME, TEST_METADATA_TYPE_LABEL, TEST_INVALID_DATE,
+    TEST_VALID_DATE, TEST_PARSED_VALID_DATE
+)
 
 
 @override_settings(OCR_AUTO_OCR=False)
 class MetadataTestCase(TestCase):
     def setUp(self):
-        self.metadata_type = MetadataType.objects.create(
-            name='test', label='test'
-        )
-
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
+        )
+
+        self.metadata_type = MetadataType.objects.create(
+            name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
         )
 
         self.document_type.metadata.create(metadata_type=self.metadata_type)
@@ -63,13 +60,16 @@ class MetadataTestCase(TestCase):
         document_metadata.full_clean()
         document_metadata.save()
 
-        self.assertEqual(self.document.metadata_value_of.test, TEST_DEFAULT_VALUE)
+        self.assertEqual(
+            self.document.metadata_value_of.test, TEST_DEFAULT_VALUE
+        )
 
     def test_lookup(self):
         self.metadata_type.lookup = TEST_LOOKUP_TEMPLATE
 
         document_metadata = DocumentMetadata(
-            document=self.document, metadata_type=self.metadata_type, value=TEST_INCORRECT_LOOKUP_VALUE
+            document=self.document, metadata_type=self.metadata_type,
+            value=TEST_INCORRECT_LOOKUP_VALUE
         )
 
         with self.assertRaises(ValidationError):
@@ -82,13 +82,16 @@ class MetadataTestCase(TestCase):
         document_metadata.full_clean()
         document_metadata.save()
 
-        self.assertEqual(self.document.metadata_value_of.test, TEST_CORRECT_LOOKUP_VALUE)
+        self.assertEqual(
+            self.document.metadata_value_of.test, TEST_CORRECT_LOOKUP_VALUE
+        )
 
     def test_validation(self):
         self.metadata_type.validation = TEST_DATE_VALIDATOR
 
         document_metadata = DocumentMetadata(
-            document=self.document, metadata_type=self.metadata_type, value=TEST_INVALID_DATE
+            document=self.document, metadata_type=self.metadata_type,
+            value=TEST_INVALID_DATE
         )
 
         with self.assertRaises(ValidationError):
@@ -107,7 +110,8 @@ class MetadataTestCase(TestCase):
         self.metadata_type.parser = TEST_DATE_PARSER
 
         document_metadata = DocumentMetadata(
-            document=self.document, metadata_type=self.metadata_type, value=TEST_INVALID_DATE
+            document=self.document, metadata_type=self.metadata_type,
+            value=TEST_INVALID_DATE
         )
 
         with self.assertRaises(ValidationError):
@@ -120,4 +124,6 @@ class MetadataTestCase(TestCase):
         document_metadata.full_clean()
         document_metadata.save()
 
-        self.assertEqual(self.document.metadata_value_of.test, TEST_PARSED_VALID_DATE)
+        self.assertEqual(
+            self.document.metadata_value_of.test, TEST_PARSED_VALID_DATE
+        )
