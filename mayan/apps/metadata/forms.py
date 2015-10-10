@@ -9,18 +9,30 @@ from .models import MetadataType
 
 
 class MetadataForm(forms.Form):
+    id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
+
+    name = forms.CharField(
+        label=_('Name'), required=False,
+        widget=forms.TextInput(attrs={'readonly': 'readonly'})
+    )
+    value = forms.CharField(label=_('Value'), required=False)
+    update = forms.BooleanField(
+        initial=True, label=_('Update'), required=False
+    )
+
     def __init__(self, *args, **kwargs):
         super(MetadataForm, self).__init__(*args, **kwargs)
 
         # Set form fields initial values
         if 'initial' in kwargs:
-            self.metadata_type = kwargs['initial'].pop('metadata_type', None)
-            self.document_type = kwargs['initial'].pop('document_type', None)
+            self.metadata_type = kwargs['initial']['metadata_type']
+            self.document_type = kwargs['initial']['document_type']
             required_string = ''
 
             required = self.metadata_type.get_required_for(
                 document_type=self.document_type
             )
+
             if required:
                 self.fields['value'].required = True
                 required_string = ' (%s)' % _('Required')
@@ -72,16 +84,6 @@ class MetadataForm(forms.Form):
             document_type=self.document_type, value=self.cleaned_data['value']
         )
 
-    id = forms.CharField(label=_('ID'), widget=forms.HiddenInput)
-
-    name = forms.CharField(
-        label=_('Name'), required=False,
-        widget=forms.TextInput(attrs={'readonly': 'readonly'})
-    )
-    value = forms.CharField(label=_('Value'), required=False)
-    update = forms.BooleanField(
-        initial=True, label=_('Update'), required=False
-    )
 
 MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
@@ -98,10 +100,6 @@ class AddMetadataForm(forms.Form):
 
 
 class MetadataTypeForm(forms.ModelForm):
-    class Meta:
-        fields = ('name', 'label', 'default', 'lookup', 'validation', 'parser')
-        model = MetadataType
-
     def __init__(self, *args, **kwargs):
         super(MetadataTypeForm, self).__init__(*args, **kwargs)
         self.fields['lookup'].help_text = string_concat(
@@ -109,6 +107,10 @@ class MetadataTypeForm(forms.ModelForm):
             _(' Available template context variables: '),
             MetadataLookup.get_as_help_text()
         )
+
+    class Meta:
+        fields = ('name', 'label', 'default', 'lookup', 'validation', 'parser')
+        model = MetadataType
 
 
 class MetadataRemoveForm(MetadataForm):
