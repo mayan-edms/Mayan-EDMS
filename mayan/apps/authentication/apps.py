@@ -13,6 +13,7 @@ logger = logging.getLogger(__name__)
 
 class AuthenticationApp(MayanAppConfig):
     name = 'authentication'
+    test = True
     verbose_name = _('Authentication')
 
     def ready(self):

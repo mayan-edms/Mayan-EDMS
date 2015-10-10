@@ -49,6 +49,7 @@ logger = logging.getLogger(__name__)
 
 class MetadataApp(MayanAppConfig):
     name = 'metadata'
+    test = True
     verbose_name = _('Metadata')
 
     def ready(self):

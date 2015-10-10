@@ -18,6 +18,7 @@ from .links import (
 class DjangoGPGApp(MayanAppConfig):
     app_url = 'gpg'
     name = 'django_gpg'
+    test = True
     verbose_name = _('Django GPG')
 
     def ready(self):

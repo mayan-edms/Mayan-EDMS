@@ -41,6 +41,7 @@ class DocumentIndexingApp(MayanAppConfig):
     app_namespace = 'indexing'
     app_url = 'indexing'
     name = 'document_indexing'
+    test = True
     verbose_name = _('Document indexing')
 
     def ready(self):

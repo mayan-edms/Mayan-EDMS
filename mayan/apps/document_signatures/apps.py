@@ -59,6 +59,7 @@ class DocumentSignaturesApp(MayanAppConfig):
     app_namespace = 'signatures'
     app_url = 'signatures'
     name = 'document_signatures'
+    test = True
     verbose_name = _('Document signatures')
 
     def ready(self):

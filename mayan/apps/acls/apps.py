@@ -11,6 +11,7 @@ from .models import AccessControlList
 
 class ACLsApp(MayanAppConfig):
     name = 'acls'
+    test = True
     verbose_name = _('ACLs')
 
     def ready(self):

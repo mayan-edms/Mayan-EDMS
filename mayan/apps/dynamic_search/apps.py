@@ -12,6 +12,7 @@ class DynamicSearchApp(MayanAppConfig):
     app_namespace = 'search'
     app_url = 'search'
     name = 'dynamic_search'
+    test = True
     verbose_name = _('Dynamic search')
 
     def ready(self):

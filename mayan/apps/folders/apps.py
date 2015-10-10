@@ -30,6 +30,7 @@ from .permissions import (
 
 class FoldersApp(MayanAppConfig):
     name = 'folders'
+    test = True
     verbose_name = _('Folders')
 
     def ready(self):

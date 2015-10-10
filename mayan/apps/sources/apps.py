@@ -39,6 +39,7 @@ from .widgets import staging_file_thumbnail
 
 class SourcesApp(MayanAppConfig):
     name = 'sources'
+    test = True
     verbose_name = _('Sources')
 
     def ready(self):

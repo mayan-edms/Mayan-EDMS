@@ -30,6 +30,7 @@ from .tasks import task_check_expired_check_outs  # NOQA
 
 class CheckoutsApp(MayanAppConfig):
     name = 'checkouts'
+    test = True
     verbose_name = _('Checkouts')
 
     def ready(self):
