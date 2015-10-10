@@ -91,7 +91,14 @@ class Menu(object):
             )
 
     def resolve(self, context, source=None):
-        request = Variable('request').resolve(context)
+        try:
+            request = Variable('request').resolve(context)
+        except VariableDoesNotExist:
+            # There is no request variable, most probable a 500 in a test view
+            # Don't return any resolved links then.
+            logger.warning('No request variable, aborting menu resolution')
+            return ()
+
         current_path = request.META['PATH_INFO']
 
         # Get sources: view name, view objects
