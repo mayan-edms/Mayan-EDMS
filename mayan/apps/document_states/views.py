@@ -313,13 +313,13 @@ class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
     def get_extra_context(self):
         return {
             'navigation_object_list': ('object', 'workflow_instance'),
-            'object': self.get_object().workflow,
-            'workflow_instance': self.get_object(),
+            'object': self.get_object(),
+            'workflow_instance': self.get_object().workflow,
         }
 
     def get_success_url(self):
         return reverse(
-            'document_states:setup_workflow_States',
+            'document_states:setup_workflow_states',
             args=(self.get_object().workflow.pk,)
         )
 
@@ -332,8 +332,8 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
     def get_extra_context(self):
         return {
             'navigation_object_list': ('object', 'workflow_instance'),
-            'object': self.get_object().workflow,
-            'workflow_instance': self.get_object(),
+            'object': self.get_object(),
+            'workflow_instance': self.get_object().workflow,
         }
 
     def get_success_url(self):
@@ -418,9 +418,9 @@ class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'object': self.get_object().workflow,
+            'object': self.get_object(),
             'navigation_object_list': ('object', 'workflow_instance'),
-            'workflow_instance': self.get_object(),
+            'workflow_instance': self.get_object().workflow,
         }
 
     def get_success_url(self):
@@ -438,8 +438,8 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
     def get_extra_context(self):
         return {
             'navigation_object_list': ('object', 'workflow_instance'),
-            'object': self.get_object().workflow,
-            'workflow_instance': self.get_object(),
+            'object': self.get_object(),
+            'workflow_instance': self.get_object().workflow,
         }
 
     def get_form_kwargs(self):

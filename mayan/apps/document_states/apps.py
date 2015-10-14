@@ -31,6 +31,7 @@ from .links import (
 class DocumentStatesApp(MayanAppConfig):
     app_url = 'states'
     name = 'document_states'
+    test = True
     verbose_name = _('Document states')
 
     def ready(self):
