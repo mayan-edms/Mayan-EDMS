@@ -155,6 +155,16 @@ class DocumentsApp(MayanAppConfig):
         )
 
         SourceColumn(
+            source=DeletedDocument, label=_('Thumbnail'),
+            func=lambda context: document_thumbnail(
+                context['object'],
+                gallery_name='documents:delete_document_list',
+                size=setting_thumbnail_size.value,
+                title=getattr(context['object'], 'label', None),
+                disable_title_link=True
+            )
+        )
+        SourceColumn(
             source=DeletedDocument, label=_('Type'), attribute='document_type'
         )
         SourceColumn(

@@ -685,7 +685,7 @@ def document_multiple_document_type_edit(request):
 
 # TODO: Get rid of this view and convert widget to use API and base64 only images
 def get_document_image(request, document_id, size=setting_preview_size.value):
-    document = get_object_or_404(Document, pk=document_id)
+    document = get_object_or_404(Document.passthrough, pk=document_id)
     try:
         Permission.check_permissions(request.user, (permission_document_view,))
     except PermissionDenied:
