@@ -14,7 +14,11 @@ from documents.tests.literals import (
 
 from ..models import MetadataType, DocumentMetadata
 
-from .literals import TEST_METADATA_TYPE_NAME, TEST_METADATA_TYPE_LABEL
+from .literals import (
+    TEST_DOCUMENT_TYPE_2, TEST_DOCUMENT_METADATA_VALUE_2,
+    TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_LABEL_2,
+    TEST_METADATA_TYPE_NAME, TEST_METADATA_TYPE_NAME_2
+)
 
 
 class DocumentMetadataTestCase(TestCase):
@@ -83,3 +87,48 @@ class DocumentMetadataTestCase(TestCase):
         self.assertContains(response, 'Success', status_code=200)
 
         self.assertEqual(len(self.document.metadata.all()), 0)
+
+    def test_metadata_edit_after_document_type_change(self):
+        # Gitlab issue #204
+        # Problems to add required metadata after changin the document type
+
+        document_type_2 = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_2
+        )
+
+        metadata_type_2 = MetadataType.objects.create(
+            name=TEST_METADATA_TYPE_NAME_2, label=TEST_METADATA_TYPE_LABEL_2
+        )
+
+        document_metadata_2 = document_type_2.metadata.create(
+            metadata_type=metadata_type_2, required=True
+        )
+
+        self.document.set_document_type(document_type=document_type_2)
+
+        response = self.client.get(
+            reverse(
+                'metadata:metadata_edit', args=(self.document.pk,),
+            ), follow=True
+        )
+
+        self.assertContains(response, 'Edit', status_code=200)
+
+        response = self.client.post(
+            reverse(
+                'metadata:metadata_edit', args=(self.document.pk,),
+            ), data={
+                'form-0-id': document_metadata_2.pk,
+                'form-0-update': True,
+                'form-0-value': TEST_DOCUMENT_METADATA_VALUE_2,
+                'form-TOTAL_FORMS': '1',
+                'form-INITIAL_FORMS': '0',
+                'form-MAX_NUM_FORMS': '',
+            }, follow=True
+        )
+
+        self.assertContains(response, 'Metadata for document', status_code=200)
+
+        self.assertEqual(
+            self.document.metadata.get(metadata_type=metadata_type_2
+        ).value, TEST_DOCUMENT_METADATA_VALUE_2)

@@ -70,7 +70,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
             )
         )
 
-    if set(documents.values_list('metadata__value', flat=True)) == set([None]):
+    if set(documents.values_list('metadata__metadata_type', flat=True)) == set([None]):
         message = ungettext(
             'The selected document doesn\'t have any metadata.',
             'The selected documents don\'t have any metadata.',
