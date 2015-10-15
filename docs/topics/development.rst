@@ -161,8 +161,13 @@ Classes:
 
 Strings
 ~~~~~~~
-Quotation character used in **Mayan EDMS** for strings is the single quote. Double quote is used for multiline comments or HTML markup.
+Quotation character used in **Mayan EDMS** for strings is the single quote.
+Double quote is used for multiline comments or HTML markup.
 
+Migrations
+~~~~~~~~~~
+Migrations should do only one thing (eg: either create a table, move data to a
+new table or remove an old table) to aid retrying on failure.
 
 General
 ~~~~~~~
@@ -287,7 +292,7 @@ Debugging
 **Mayan EDMS** makes extensive use of Django's new `logging capabilities`_.
 By default debug logging for all apps is turned on. If you wish to customize
 how logging is managed turn off automatic logging by setting
-`COMMON_AUTO_LOGGING` to False and add the following lines to your
+`COMMON_AUTO_LOGGING` to ``False`` and add the following lines to your
 ``settings/local.py`` file::
 
     LOGGING = {
