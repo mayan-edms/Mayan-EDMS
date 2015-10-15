@@ -119,7 +119,7 @@ class DocumentTestCase(TestCase):
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
-        time.sleep(1)
+        time.sleep(2)
 
         DocumentType.objects.check_delete_periods()
 
