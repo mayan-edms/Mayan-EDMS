@@ -9,14 +9,16 @@ from ..classes import Permission
 from ..models import Role
 from ..permissions import permission_role_view
 
-from .literals import TEST_GROUP, TEST_ROLE, TEST_USER_USERNAME
+from .literals import TEST_GROUP, TEST_ROLE_LABEL, TEST_USER_USERNAME
 
 
 class PermissionTestCase(TestCase):
     def setUp(self):
-        self.user = get_user_model().objects.create(username=TEST_USER_USERNAME)
+        self.user = get_user_model().objects.create(
+            username=TEST_USER_USERNAME
+        )
         self.group = Group.objects.create(name=TEST_GROUP)
-        self.role = Role.objects.create(label=TEST_ROLE)
+        self.role = Role.objects.create(label=TEST_ROLE_LABEL)
         Permission.invalidate_cache()
 
     def tearDown(self):
