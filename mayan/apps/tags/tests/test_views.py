@@ -13,7 +13,7 @@ from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 from permissions import Permission
 from permissions.models import Role
 from permissions.tests.literals import (
-    TEST_GROUP, TEST_ROLE, TEST_USER_PASSWORD, TEST_USER_USERNAME
+    TEST_GROUP, TEST_ROLE_LABEL, TEST_USER_PASSWORD, TEST_USER_USERNAME
 )
 
 from ..models import Tag
@@ -28,7 +28,7 @@ class TagViewTestCase(TestCase):
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
         self.group = Group.objects.create(name=TEST_GROUP)
-        self.role = Role.objects.create(label=TEST_ROLE)
+        self.role = Role.objects.create(label=TEST_ROLE_LABEL)
         Permission.invalidate_cache()
 
         self.document_type = DocumentType.objects.create(
