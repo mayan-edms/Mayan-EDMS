@@ -238,8 +238,7 @@ html_sidebars = {
 }
 html_theme_options = {
     'description': mayan.__description__,
-    'github_user': 'mayan-edms',
-    'github_repo': 'mayan-edms',
+    'github_button': False,
     'travis_button': False,
     'gratipay_user': 'rosarior',
     'github_banner': False,
