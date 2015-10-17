@@ -84,11 +84,6 @@ class DocumentType(models.Model):
 
     objects = DocumentTypeManager()
 
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Document type')
-        verbose_name_plural = _('Documents types')
-
     def __str__(self):
         return self.label
 
@@ -97,6 +92,14 @@ class DocumentType(models.Model):
             document.delete(to_trash=False)
 
         return super(DocumentType, self).delete(*args, **kwargs)
+
+    def natural_key(self):
+        return (self.label,)
+
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Document type')
+        verbose_name_plural = _('Documents types')
 
     @property
     def deleted_documents(self):
@@ -170,11 +173,6 @@ class Document(models.Model):
     passthrough = PassthroughManager()
     trash = TrashCanManager()
 
-    class Meta:
-        verbose_name = _('Document')
-        verbose_name_plural = _('Documents')
-        ordering = ('-date_added',)
-
     def __str__(self):
         return self.label or ugettext('Document stub, id: %d') % self.pk
 
@@ -194,6 +192,10 @@ class Document(models.Model):
     def get_absolute_url(self):
         return reverse('documents:document_preview', args=(self.pk,))
 
+    def natural_key(self):
+        return (self.uuid,)
+    natural_key.dependencies = ['documents.DocumentType']
+
     def save(self, *args, **kwargs):
         user = kwargs.pop('_user', None)
         new_document = not self.pk
@@ -208,7 +210,10 @@ class Document(models.Model):
         else:
             event_document_properties_edit.commit(actor=user, target=self)
 
-    # Custom methods
+    class Meta:
+        verbose_name = _('Document')
+        verbose_name_plural = _('Documents')
+        ordering = ('-date_added',)
 
     def add_as_recent_document_for_user(self, user):
         RecentDocument.objects.add_document_for_user(user, self)
@@ -351,10 +356,6 @@ class DocumentVersion(models.Model):
         blank=True, editable=False, null=True, verbose_name=_('Checksum')
     )
 
-    class Meta:
-        verbose_name = _('Document version')
-        verbose_name_plural = _('Document version')
-
     def __str__(self):
         return '{0} - {1}'.format(self.document, self.timestamp)
 
@@ -420,7 +421,9 @@ class DocumentVersion(models.Model):
                         sender=self.document.__class__, instance=self.document
                     )
 
-    # Custom methods
+    class Meta:
+        verbose_name = _('Document version')
+        verbose_name_plural = _('Document version')
 
     @property
     def cache_filename(self):
@@ -626,11 +629,6 @@ class DocumentPage(models.Model):
         verbose_name=_('Page number')
     )
 
-    class Meta:
-        ordering = ('page_number',)
-        verbose_name = _('Document page')
-        verbose_name_plural = _('Document pages')
-
     def __str__(self):
         return _(
             'Page %(page_num)d out of %(total_pages)d of %(document)s'
@@ -647,7 +645,10 @@ class DocumentPage(models.Model):
     def get_absolute_url(self):
         return reverse('documents:document_page_view', args=(self.pk,))
 
-    # Custom methods
+    class Meta:
+        ordering = ('page_number',)
+        verbose_name = _('Document page')
+        verbose_name_plural = _('Document pages')
 
     @property
     def cache_filename(self):
@@ -777,10 +778,14 @@ class RecentDocument(models.Model):
 
     objects = RecentDocumentManager()
 
+    def __str__(self):
+        return unicode(self.document)
+
+    def natural_key(self):
+        return self.document.natural_key() + self.user.natural_key()
+    natural_key.dependencies = ['documents.Document', 'auth.User']
+
     class Meta:
         ordering = ('-datetime_accessed',)
         verbose_name = _('Recent document')
         verbose_name_plural = _('Recent documents')
-
-    def __str__(self):
-        return unicode(self.document)

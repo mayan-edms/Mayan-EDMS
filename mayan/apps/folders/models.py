@@ -12,6 +12,8 @@ from documents.models import Document
 from documents.permissions import permission_document_view
 from permissions import Permission
 
+from .managers import FolderManager
+
 
 @python_2_unicode_compatible
 class Folder(models.Model):
@@ -26,11 +28,23 @@ class Folder(models.Model):
         Document, related_name='folders', verbose_name=_('Documents')
     )
 
+    objects = FolderManager()
+
     def __str__(self):
         return self.label
 
     def get_absolute_url(self):
         return reverse('folders:folder_view', args=(self.pk,))
+
+    def natural_key(self):
+        return (self.label,) + self.user.natural_key()
+    natural_key.dependencies = ['auth.User']
+
+    class Meta:
+        ordering = ('label',)
+        unique_together = ('label', 'user')
+        verbose_name = _('Folder')
+        verbose_name_plural = _('Folders')
 
     def get_document_count(self, user):
         queryset = self.documents
@@ -43,12 +57,6 @@ class Folder(models.Model):
             )
 
         return queryset.count()
-
-    class Meta:
-        ordering = ('label',)
-        unique_together = ('label', 'user')
-        verbose_name = _('Folder')
-        verbose_name_plural = _('Folders')
 
 
 class DocumentFolder(Folder):

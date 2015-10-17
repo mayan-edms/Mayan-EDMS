@@ -8,7 +8,7 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from .managers import StoredPermissionManager
+from .managers import RoleManager, StoredPermissionManager
 
 logger = logging.getLogger(__name__)
 
@@ -19,12 +19,6 @@ class StoredPermission(models.Model):
     name = models.CharField(max_length=64, verbose_name=_('Name'))
 
     objects = StoredPermissionManager()
-
-    class Meta:
-        ordering = ('namespace',)
-        unique_together = ('namespace', 'name')
-        verbose_name = _('Permission')
-        verbose_name_plural = _('Permissions')
 
     def __init__(self, *args, **kwargs):
         from .classes import Permission
@@ -42,6 +36,15 @@ class StoredPermission(models.Model):
 
     def __str__(self):
         return unicode(getattr(self, 'volatile_permission', self.name))
+
+    def natural_key(self):
+        return (self.namespace, self.name)
+
+    class Meta:
+        ordering = ('namespace',)
+        unique_together = ('namespace', 'name')
+        verbose_name = _('Permission')
+        verbose_name_plural = _('Permissions')
 
     def requester_has_this(self, user):
         logger.debug('user: %s', user)
@@ -70,13 +73,19 @@ class Role(models.Model):
         Group, related_name='roles', verbose_name=_('Groups')
     )
 
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Role')
-        verbose_name_plural = _('Roles')
+    objects = RoleManager()
 
     def __str__(self):
         return self.label
 
     def get_absolute_url(self):
         return reverse('permissions:role_list')
+
+    def natural_key(self):
+        return (self.label,)
+    natural_key.dependencies = ['auth.Group', 'permissions.StoredPermission']
+
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Role')
+        verbose_name_plural = _('Roles')

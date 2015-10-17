@@ -38,9 +38,6 @@ class RecentDocumentManager(models.Manager):
 
 
 class DocumentTypeManager(models.Manager):
-    def get_by_natural_key(self, name):
-        return self.get(name=name)
-
     def check_delete_periods(self):
         logger.info('Executing')
 
@@ -103,8 +100,17 @@ class DocumentTypeManager(models.Manager):
 
         logger.info('Finshed')
 
+    def get_by_natural_key(self, label):
+        return self.get(label=label)
+
 
 class DocumentManager(models.Manager):
+    def get_by_natural_key(self, uuid, *document_type_key):
+        from .model import DocumentType
+
+        document_type = DocumentType.objects.get_by_natural_key(*document_type_key)
+        return self.get(uuid=uuid, document_type=document_type)
+
     def get_queryset(self):
         return TrashCanQuerySet(
             self.model, using=self._db
