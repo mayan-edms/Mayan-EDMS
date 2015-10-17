@@ -62,7 +62,7 @@ PyYAML==3.11
 celery==3.1.18
 cssmin==0.2.0
 django-activity-stream==0.6.0
-django-autoadmin==1.0.1
+django-autoadmin==1.1.0
 django-celery==3.1.16
 django-colorful==1.1.0
 django-compressor==1.5
@@ -72,7 +72,7 @@ django-pure-pagination==0.2.1
 django-model-utils==2.2
 django-mptt==0.7.4
 django-qsstats-magic==0.7.2
-django-rest-swagger==0.3.3
+django-rest-swagger==0.3.4
 django-suit==0.2.13
 django-widget-tweaks==1.3
 djangorestframework==3.1.3
