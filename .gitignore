@@ -22,3 +22,7 @@ static_collected/
 *egg-info*
 mayan/settings/local.py
 .vagrant
+.tox/
+coverage.xml
+.coverage.tox
+htmlcov/
