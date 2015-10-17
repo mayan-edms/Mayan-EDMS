@@ -50,7 +50,9 @@ class FolderAPITestCase(APITestCase):
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
 
-        self.client.delete(reverse('rest_api:folder-detail', args=(folder.pk,)))
+        self.client.delete(
+            reverse('rest_api:folder-detail', args=(folder.pk,))
+        )
 
         self.assertEqual(Folder.objects.count(), 0)
 
@@ -70,7 +72,9 @@ class FolderAPITestCase(APITestCase):
 
     @override_settings(OCR_AUTO_OCR=False)
     def test_folder_add_document(self):
-        folder = Folder.objects.create(label=TEST_FOLDER_LABEL, user=self.admin_user)
+        folder = Folder.objects.create(
+            label=TEST_FOLDER_LABEL, user=self.admin_user
+        )
 
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
@@ -90,7 +94,9 @@ class FolderAPITestCase(APITestCase):
 
     @override_settings(OCR_AUTO_OCR=False)
     def test_folder_remove_document(self):
-        folder = Folder.objects.create(label=TEST_FOLDER_LABEL, user=self.admin_user)
+        folder = Folder.objects.create(
+            label=TEST_FOLDER_LABEL, user=self.admin_user
+        )
 
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE

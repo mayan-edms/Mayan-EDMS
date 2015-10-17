@@ -124,11 +124,23 @@ def folder_delete(request, folder_id):
         'title': _('Delete the folder: %s?') % folder,
     }
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_confirm.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 class FolderDetailView(DocumentListView):
+    def get_document_queryset(self):
+        return self.get_folder().documents.all()
+
+    def get_extra_context(self):
+        return {
+            'title': _('Documents in folder: %s') % self.get_folder(),
+            'hide_links': True,
+            'object': self.get_folder(),
+        }
+
     def get_folder(self):
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
 
@@ -143,19 +155,8 @@ class FolderDetailView(DocumentListView):
 
         return folder
 
-    def get_document_queryset(self):
-        return self.get_folder().documents.all()
-
-    def get_extra_context(self):
-        return {
-            'title': _('Documents in folder: %s') % self.get_folder(),
-            'hide_links': True,
-            'object': self.get_folder(),
-        }
-
 
 def folder_add_document(request, document_id=None, document_id_list=None):
-
     if document_id:
         documents = [get_object_or_404(Document, pk=document_id)]
     elif document_id_list:
@@ -208,8 +209,10 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         len(documents)
     )
 
-    return render_to_response('appearance/generic_form.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_form.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 class DocumentFolderListView(FolderListView):
@@ -227,15 +230,15 @@ class DocumentFolderListView(FolderListView):
 
         return super(DocumentFolderListView, self).dispatch(request, *args, **kwargs)
 
-    def get_folder_queryset(self):
-        return self.document.document_folders().all()
-
     def get_extra_context(self):
         return {
             'hide_link': True,
             'object': self.document,
             'title': _('Folders containing document: %s') % self.document,
         }
+
+    def get_folder_queryset(self):
+        return self.document.document_folders().all()
 
 
 def folder_document_remove(request, folder_id, document_id=None, document_id_list=None):
@@ -287,15 +290,17 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
     if len(folder_documents) == 1:
         context['object'] = folder_documents[0]
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_confirm.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def folder_document_multiple_remove(request, folder_id):
-    return folder_document_remove(request, folder_id, document_id_list=request.GET.get('id_list', []))
+    return folder_document_remove(request, folder_id, document_id_list=request.GET.get('id_list', request.POST.get('id_list', [])))
 
 
 def folder_add_multiple_documents(request):
     return folder_add_document(
-        request, document_id_list=request.GET.get('id_list', [])
+        request, document_id_list=request.GET.get('id_list', request.POST.get('id_list', []))
     )
