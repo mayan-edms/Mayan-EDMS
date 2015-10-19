@@ -33,7 +33,6 @@ def task_check_trash_periods():
 @app.task(ignore_result=True)
 def task_clear_image_cache():
     logger.info('Starting document cache invalidation')
-    # TODO: Notification of success and of errors
     Document.objects.invalidate_cache()
     logger.info('Finished document cache invalidation')
 
