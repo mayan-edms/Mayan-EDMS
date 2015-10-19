@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import base64
 import hashlib
@@ -6,6 +6,7 @@ import logging
 import uuid
 
 from django.contrib.auth.models import User
+from django.core.exceptions import PermissionDenied
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.db import models, transaction
@@ -13,17 +14,17 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext, ugettext_lazy as _
 
+from acls.models import AccessControlList
 from common.literals import TIME_DELTA_UNIT_CHOICES
 from converter import (
     converter_class, TransformationResize, TransformationRotate,
     TransformationZoom
 )
-from converter.exceptions import (
-    InvalidOfficeFormat, PageCountError
-)
+from converter.exceptions import InvalidOfficeFormat, PageCountError
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from converter.models import Transformation
 from mimetype.api import get_mimetype
+from permissions import Permission
 
 from .events import (
     event_document_create, event_document_new_version,
@@ -34,6 +35,7 @@ from .managers import (
     DocumentManager, DocumentTypeManager, PassthroughManager,
     RecentDocumentManager, TrashCanManager
 )
+from .permissions import permission_document_view
 from .runtime import cache_storage_backend, storage_backend
 from .settings import (
     setting_display_size, setting_language, setting_language_choices,
@@ -104,6 +106,18 @@ class DocumentType(models.Model):
     @property
     def deleted_documents(self):
         return DeletedDocument.objects.filter(document_type=self)
+
+    def get_document_count(self, user):
+        queryset = self.documents
+
+        try:
+            Permission.check_permissions(user, (permission_document_view,))
+        except PermissionDenied:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_document_view, user, queryset
+            )
+
+        return queryset.count()
 
     def new_document(self, file_object, label=None, description=None, language=None, _user=None):
         try:

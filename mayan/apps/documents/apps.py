@@ -143,10 +143,11 @@ class DocumentsApp(MayanAppConfig):
             source=Document, label=_('Type'), attribute='document_type'
         )
 
-        # TODO: make permission aware
         SourceColumn(
             source=DocumentType, label=_('Documents'),
-            func=lambda context: context['object'].documents.count()
+            func=lambda context: context['object'].get_document_count(
+                user=context['request'].user
+            )
         )
 
         SourceColumn(
