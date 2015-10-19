@@ -30,7 +30,7 @@ class Namespace(object):
             try:
                 import_module('{}.settings'.format(app.name))
             except ImportError:
-                logger.debug('App %s has not settings.py file', app.name)
+                logger.debug('App %s has no settings.py file', app.name)
             else:
                 logger.debug(
                     'Imported settings.py file for app %s', app.name
