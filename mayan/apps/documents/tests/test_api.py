@@ -42,10 +42,16 @@ class DocumentTypeAPITestCase(APITestCase):
     def test_document_type_create(self):
         self.assertEqual(DocumentType.objects.all().count(), 0)
 
-        self.client.post(reverse('rest_api:documenttype-list'), {'label': TEST_DOCUMENT_TYPE})
+        self.client.post(
+            reverse('rest_api:documenttype-list'), data={
+                'label': TEST_DOCUMENT_TYPE
+            }
+        )
 
         self.assertEqual(DocumentType.objects.all().count(), 1)
-        self.assertEqual(DocumentType.objects.all().first().label, TEST_DOCUMENT_TYPE)
+        self.assertEqual(
+            DocumentType.objects.all().first().label, TEST_DOCUMENT_TYPE
+        )
 
     def test_document_type_edit_via_put(self):
         document_type = DocumentType.objects.create(label=TEST_DOCUMENT_TYPE)
@@ -112,8 +118,9 @@ class DocumentAPITestCase(APITestCase):
 
         document_data = loads(document_response.content)
 
-        self.assertEqual(document_response.status_code, status.HTTP_201_CREATED)
-
+        self.assertEqual(
+            document_response.status_code, status.HTTP_201_CREATED
+        )
         self.assertEqual(Document.objects.count(), 1)
 
         document = Document.objects.first()
@@ -140,7 +147,9 @@ class DocumentAPITestCase(APITestCase):
                 file_object=File(file_object),
             )
 
-        self.client.delete(reverse('rest_api:document-detail', args=(document.pk,)))
+        self.client.delete(
+            reverse('rest_api:document-detail', args=(document.pk,))
+        )
 
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(Document.trash.count(), 1)
@@ -156,7 +165,9 @@ class DocumentAPITestCase(APITestCase):
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(Document.trash.count(), 1)
 
-        self.client.delete(reverse('rest_api:deleteddocument-detail', args=(document.pk,)))
+        self.client.delete(
+            reverse('rest_api:deleteddocument-detail', args=(document.pk,))
+        )
 
         self.assertEqual(Document.trash.count(), 0)
 
@@ -168,7 +179,9 @@ class DocumentAPITestCase(APITestCase):
 
         document.delete()
 
-        self.client.post(reverse('rest_api:deleteddocument-restore', args=(document.pk,)))
+        self.client.post(
+            reverse('rest_api:deleteddocument-restore', args=(document.pk,))
+        )
 
         self.assertEqual(Document.trash.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
@@ -273,5 +286,5 @@ class DocumentAPITestCase(APITestCase):
 
         del(buf)
 
-    #def test_document_set_document_type(self):
+    # TODO: def test_document_set_document_type(self):
     #    pass

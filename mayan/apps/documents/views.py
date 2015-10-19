@@ -385,6 +385,21 @@ class DocumentTypeListView(SingleObjectListView):
         }
 
 
+class DocumentTypeCreateView(SingleObjectCreateView):
+    fields = (
+        'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
+        'delete_time_unit'
+    )
+    model = DocumentType
+    post_action_redirect = reverse_lazy('documents:document_type_list')
+    view_permission = permission_document_type_create
+
+    def get_extra_context(self):
+        return {
+            'title': _('Create document type'),
+        }
+
+
 class DocumentTypeDeleteView(SingleObjectDeleteView):
     model = DocumentType
     post_action_redirect = reverse_lazy('documents:document_type_list')
@@ -411,21 +426,6 @@ class DocumentTypeEditView(SingleObjectEditView):
         return {
             'object': self.get_object(),
             'title': _('Edit document type: %s') % self.get_object(),
-        }
-
-
-class DocumentTypeCreateView(SingleObjectCreateView):
-    fields = (
-        'label', 'trash_time_period', 'trash_time_unit', 'delete_time_period',
-        'delete_time_unit'
-    )
-    model = DocumentType
-    post_action_redirect = reverse_lazy('documents:document_type_list')
-    view_permission = permission_document_type_create
-
-    def get_extra_context(self):
-        return {
-            'title': _('Create document type'),
         }
 
 

@@ -43,7 +43,6 @@ permission_document_version_revert = namespace.add_permission(
 permission_document_view = namespace.add_permission(
     name='document_view', label=_('View documents')
 )
-
 permission_empty_trash = namespace.add_permission(
     name='document_empty_trash', label=_('Empty trash')
 )
@@ -51,7 +50,6 @@ permission_empty_trash = namespace.add_permission(
 setup_namespace = PermissionNamespace(
     'documents_setup', label=_('Documents setup')
 )
-
 permission_document_type_create = setup_namespace.add_permission(
     name='document_type_create', label=_('Create document types')
 )
