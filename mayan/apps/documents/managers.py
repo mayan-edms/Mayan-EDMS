@@ -106,7 +106,7 @@ class DocumentTypeManager(models.Manager):
 
 class DocumentManager(models.Manager):
     def get_by_natural_key(self, uuid, *document_type_key):
-        from .model import DocumentType
+        from .models import DocumentType
 
         document_type = DocumentType.objects.get_by_natural_key(*document_type_key)
         return self.get(uuid=uuid, document_type=document_type)
