@@ -12,7 +12,7 @@ from documents.tests.literals import (
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
 
-from ..models import MetadataType, DocumentMetadata
+from ..models import MetadataType
 
 from .literals import (
     TEST_DOCUMENT_TYPE_2, TEST_DOCUMENT_METADATA_VALUE_2,
@@ -130,5 +130,6 @@ class DocumentMetadataTestCase(TestCase):
         self.assertContains(response, 'Metadata for document', status_code=200)
 
         self.assertEqual(
-            self.document.metadata.get(metadata_type=metadata_type_2
-        ).value, TEST_DOCUMENT_METADATA_VALUE_2)
+            self.document.metadata.get(metadata_type=metadata_type_2).value,
+            TEST_DOCUMENT_METADATA_VALUE_2
+        )

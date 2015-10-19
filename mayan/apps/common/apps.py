@@ -1096,8 +1096,8 @@ THE SOFTWARE.
                 level = 'INFO'
 
             loggers = {}
-            for app in apps.apps.get_app_configs():
-                loggers[app.name] = {
+            for project_app in apps.apps.get_app_configs():
+                loggers[project_app.name] = {
                     'handlers': ['console'],
                     'propagate': True,
                     'level': level,

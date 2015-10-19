@@ -5,9 +5,7 @@ from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
-from django.utils.timezone import now
 
-from common.literals import TIME_DELTA_UNIT_DAYS
 from documents.models import DocumentType
 from documents.tests.literals import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,

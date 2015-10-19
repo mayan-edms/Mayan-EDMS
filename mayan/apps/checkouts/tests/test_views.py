@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 import datetime
-import time
 
 from django.contrib.auth.models import User
 from django.core.files import File

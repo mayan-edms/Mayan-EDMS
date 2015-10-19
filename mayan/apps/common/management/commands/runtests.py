@@ -10,8 +10,11 @@ class Command(management.BaseCommand):
     help = 'Run all configured tests for the project.'
 
     option_list = management.BaseCommand.option_list + (
-        make_option('--nomigrations', action='store_true', dest='nomigrations', default=False,
-            help='Don\'t use migrations when creating the test database.'),
+        make_option(
+            '--nomigrations', action='store_true', dest='nomigrations',
+            default=False,
+            help='Don\'t use migrations when creating the test database.'
+        ),
     )
 
     def handle(self, *args, **options):
