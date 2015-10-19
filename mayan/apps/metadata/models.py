@@ -36,14 +36,6 @@ class MetadataType(models.Model):
     Define a type of metadata
     """
 
-    @staticmethod
-    def comma_splitter(string):
-        splitter = shlex.shlex(string.encode('utf-8'), posix=True)
-        splitter.whitespace = ','.encode('utf-8')
-        splitter.whitespace_split = True
-        splitter.commenters = ''.encode('utf-8')
-        return list(splitter)
-
     name = models.CharField(
         max_length=48,
         help_text=_(
@@ -94,6 +86,19 @@ class MetadataType(models.Model):
     def natural_key(self):
         return (self.name,)
 
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Metadata type')
+        verbose_name_plural = _('Metadata types')
+
+    @staticmethod
+    def comma_splitter(string):
+        splitter = shlex.shlex(string.encode('utf-8'), posix=True)
+        splitter.whitespace = ','.encode('utf-8')
+        splitter.whitespace_split = True
+        splitter.commenters = ''.encode('utf-8')
+        return list(splitter)
+
     def get_default_value(self):
         template = Template(self.default)
         context = Context()
@@ -134,11 +139,6 @@ class MetadataType(models.Model):
 
         return value
 
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Metadata type')
-        verbose_name_plural = _('Metadata types')
-
 
 @python_2_unicode_compatible
 class DocumentMetadata(models.Model):
@@ -146,6 +146,7 @@ class DocumentMetadata(models.Model):
     Link a document to a specific instance of a metadata type with it's
     current value
     """
+
     document = models.ForeignKey(
         Document, related_name='metadata', verbose_name=_('Document')
     )
@@ -181,16 +182,16 @@ class DocumentMetadata(models.Model):
             document_type=self.document.document_type, value=self.value
         )
 
+    class Meta:
+        unique_together = ('document', 'metadata_type')
+        verbose_name = _('Document metadata')
+        verbose_name_plural = _('Document metadata')
+
     @property
     def is_required(self):
         return self.metadata_type.get_required_for(
             document_type=self.document.document_type
         )
-
-    class Meta:
-        unique_together = ('document', 'metadata_type')
-        verbose_name = _('Document metadata')
-        verbose_name_plural = _('Document metadata')
 
 
 @python_2_unicode_compatible

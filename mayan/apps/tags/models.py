@@ -24,15 +24,15 @@ class Tag(models.Model):
         Document, related_name='tags', verbose_name=_('Documents')
     )
 
-    class Meta:
-        verbose_name = _('Tag')
-        verbose_name_plural = _('Tags')
-
     def __str__(self):
         return self.label
 
     def get_absolute_url(self):
         return reverse('tags:tag_tagged_item_list', args=(str(self.pk),))
+
+    class Meta:
+        verbose_name = _('Tag')
+        verbose_name_plural = _('Tags')
 
     def get_document_count(self, user):
         queryset = self.documents
