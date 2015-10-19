@@ -49,8 +49,6 @@ class ResolvedLink(object):
 
 
 class Menu(object):
-    # TODO: Add support for position #{'link': links, 'position': position})
-
     _registry = {}
 
     @classmethod
