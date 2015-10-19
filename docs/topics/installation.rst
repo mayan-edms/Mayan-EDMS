@@ -129,7 +129,7 @@ Deploy **Mayan EDMS** using the webserver of your preference. For more informati
 on deployment instructions and examples, checkout Django's official documentation
 on the topic https://docs.djangoproject.com/en/1.6/howto/deployment/
 For a simple production deployment setup follow the instructions in the
-Deploying chapter <topics/deploying>
+:doc:`deploying` chapter.
 
 
 Other database managers

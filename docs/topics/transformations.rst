@@ -1,12 +1,11 @@
-=========================
-What are transformations?
-=========================
+===============
+Transformations
+===============
 
-Transformation are useful to manipulate the preview of the stored documents
-in a persistent manner, for example some scanning equipment only produce
-landscape PDFs, in this case a default transformation for that document
-source would be "rotation: 270 degress". This way whenever a document is
-uploaded from that scanner it appears in portrait orientation.
-The transformation remains attached to the document, the file being
-preserved in it's original state (a requirement in legal environments) and
-only the representation being transformed.
+Transformation are persistent manipulations to the previews of the stored documents.
+For example: a scanning equipment may only produce landscape PDFs.
+In this case an useful transformation for that document source would be to
+rotate all documents scanned by 270 degress after being uploaded, this way
+whenever a document is uploaded from that scanner it will appear in portrait
+orientation. Transformations do not physically modify the document file but
+are just associated with the document's temporary graphical representation.
