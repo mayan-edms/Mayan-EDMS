@@ -2,48 +2,32 @@
 Installation
 ============
 
-**Mayan EDMS** should be deployed like any other Django_ project and preferably using virtualenv_.
+**Mayan EDMS** should be deployed like any other Django_ project and
+preferably using virtualenv_.
 
-Being a Django_ and a Python_ project familiarity with these technologies is
-required to understand why **Mayan EDMS** does some of the things it does the way
-it does them.
+Being a Django_ and a Python_ project, familiarity with these technologies is
+recommended to better understand why **Mayan EDMS** does some of the things it
+does.
 
-Before installing **Mayan EDMS**, the binary requirements must be installed first.
+Bellow are the step needed for a test install.
+
+Binary dependencies
+===================
 
 Ubuntu
 ------
 
-If using a Debian_ or Ubuntu_ based Linux distribution getting the executable requirements is as easy as::
+If using a Debian_ or Ubuntu_ based Linux distribution, get the executable requirements using::
 
-    $ sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
+    sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
 
-Initialize a ``virtualenv`` to deploy the project:
-
-.. code-block:: bash
-
-    $ virtualenv venv
-    $ source venv/bin/activate
-    $ pip install mayan-edms
-
-By default **Mayan EDMS** will create a single file SQLite_ database, which makes
-it very easy to start using **Mayan EDMS**. Populate the database with the
-project's schema doing:
-
-.. code-block:: bash
-
-    $ mayan-edms.py initialsetup
-    $ mayan-edms.py runserver
-
-Point your browser to http://127.0.0.1:8000. If everything was installed
-correctly you should see the login screen and panel showing a randomly generated
-admin password.
 
 Mac OSX
 -------
 
 **Mayan EDMS** is dependant on a number of binary packages and the recommended
 way is to use a package manager such as `MacPorts <https://www.macports.org/>`_
-or `Homebrew <http://brew.sh/>`.
+or `Homebrew <http://brew.sh/>`_.
 
 
 Use MacPorts to install binary dependencies
@@ -101,43 +85,42 @@ to /usr/bin/ with ...
 
     LIBREOFFICE_PATH = '/Applications/LibreOffice.app/Contents/MacOS/soffice'
 
-Testing the install
--------------------
+Actual project installation
+===========================
 
-To create a custom settings file for **Mayan EDMS**, create a Python (.py) file
-in the directory: venv/lib/python2.7/site-packages/mayan/settings/ with the following basic content::
+Initialize a ``virtualenv`` to deploy the project:
 
-    # venv/lib/python2.7/site-packages/mayan/settings/my_settings.py
+.. code-block:: bash
 
-    from __future__ import unicode_literals
+    virtualenv venv
+    source venv/bin/activate
+    pip install mayan-edms
 
-    from .local import *
+By default **Mayan EDMS** will create a single file SQLite_ database, which makes
+it very easy to start using **Mayan EDMS**. Populate the database with the
+project's schema doing:
 
-    <Your customized settings>
+.. code-block:: bash
 
-To test your settings launch **Mayan EDMS** using::
+    mayan-edms.py initialsetup
+    mayan-edms.py runserver
 
-    $ mayan-edms.py runserver --settings=mayan.settings.my_settings
+Point your browser to http://127.0.0.1:8000. If everything was installed
+correctly you should see the login screen and panel showing a randomly generated
+admin password.
 
 Note: Background tasks and scheduled tasks will not run when using the test server.
 
+
 Production use
---------------
+==============
 
 After making sure everything is running correctly, stop the `runserver` command.
 Deploy **Mayan EDMS** using the webserver of your preference. For more information
 on deployment instructions and examples, checkout Django's official documentation
-on the topic https://docs.djangoproject.com/en/1.6/howto/deployment/
+on the topic https://docs.djangoproject.com/en/1.7/howto/deployment/
 For a simple production deployment setup follow the instructions in the
 :doc:`deploying` chapter.
-
-
-Other database managers
------------------------
-
-If you want to use a database manager other than SQLite_ install any
-corresponding python database drivers and add the corresponding database settings
-to your settings file (see above) as shown here: https://docs.djangoproject.com/en/1.6/ref/settings/#std:setting-DATABASES
 
 
 .. _Debian: http://www.debian.org/

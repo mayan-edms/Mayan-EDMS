@@ -14,4 +14,4 @@ translation issue, it will be your resposibility to close it after you get an
 answers that satisfies your question. Administrator will not close new issues
 as they have no way to determine if your question has been properly answered.
 However to avoid cluter, answered questions will be scanned periodically and
-closed if not activity is observed from the original poster.
+closed if no activity is observed from the original poster in a period of time.

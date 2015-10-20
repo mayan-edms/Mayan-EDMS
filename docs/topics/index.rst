@@ -1,7 +1,7 @@
 Concepts
 ========
 
-Introductions to all the key parts of Mayan EDMS you'll need to know:
+Introductions to all the key parts of **Mayan EDMS** you'll need to know:
 
 .. toctree::
    :maxdepth: 1
@@ -12,6 +12,7 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
    sources
    acls
    transformations
+   checkouts
    versioning
    signatures
    indexes

@@ -10,12 +10,12 @@ and installing it from PyPI with the following commands:
 
 .. code-block:: bash
 
-    $ sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
-    $ virtualenv venv
-    $ source venv/bin/activate
-    $ pip install mayan-edms
-    $ mayan-edms.py initialsetup
-    $ mayan-edms.py runserver
+    sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
+    virtualenv venv
+    source venv/bin/activate
+    pip install mayan-edms
+    mayan-edms.py initialsetup
+    mayan-edms.py runserver
 
 Point your browser to 127.0.0.1:8000 and use the automatically created admin
 account.
@@ -26,7 +26,6 @@ account.
     Features <topics/features>
     Installation <topics/installation>
     Deploying <topics/deploying>
-    Getting started <topics/getting_started>
     Release notes and upgrading <releases/index>
     Concepts <topics/index>
     Development <topics/development>
@@ -36,7 +35,6 @@ account.
     Licensing <topics/license>
     FAQ <topics/faq>
     Contact <topics/contact>
-
 
 .. _Django: http://www.djangoproject.com/
 .. _Free Open Source: http://en.wikipedia.org/wiki/Open_source
