@@ -68,7 +68,7 @@ class GroupDeleteView(SingleObjectDeleteView):
 
 class GroupMembersView(AssignRemoveView):
     decode_content_type = True
-    left_list_title = _('Available groups')
+    left_list_title = _('Available users')
     right_list_title = _('Members of groups')
     view_permission = permission_group_edit
 
