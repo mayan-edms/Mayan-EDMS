@@ -28,7 +28,8 @@ from permissions import Permission
 
 from .events import (
     event_document_create, event_document_new_version,
-    event_document_properties_edit, event_document_version_revert
+    event_document_properties_edit, event_document_type_change,
+    event_document_version_revert
 )
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
@@ -268,7 +269,7 @@ class Document(models.Model):
     def save_to_file(self, *args, **kwargs):
         return self.latest_version.save_to_file(*args, **kwargs)
 
-    def set_document_type(self, document_type, force=False):
+    def set_document_type(self, document_type, force=False, _user=None):
         has_changed = self.document_type != document_type
 
         self.document_type = document_type
@@ -277,6 +278,10 @@ class Document(models.Model):
             post_document_type_change.send(
                 sender=self.__class__, instance=self
             )
+
+            event_document_type_change.commit(actor=_user, target=self)
+            if _user:
+                self.add_as_recent_document_for_user(user=_user)
 
     @property
     def size(self):

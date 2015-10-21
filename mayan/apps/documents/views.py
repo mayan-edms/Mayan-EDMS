@@ -624,21 +624,24 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
     post_action_redirect = None
 
     if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
+        queryset = Document.objects.filter(pk=document_id)
         post_action_redirect = reverse('documents:document_list_recent')
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-    else:
+        queryset = Document.objects.filter(pk__in=document_id_list)
+
+    if not queryset:
         messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
+        )
 
     try:
         Permission.check_permissions(
             request.user, (permission_document_properties_edit,)
         )
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission_document_properties_edit, request.user, documents
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_document_properties_edit, request.user, queryset
         )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -648,15 +651,21 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
         form = DocumentTypeSelectForm(request.POST)
         if form.is_valid():
 
-            for document in documents:
-                document.set_document_type(form.cleaned_data['document_type'])
-                event_document_type_change.commit(actor=request.user, target=document)
-                document.add_as_recent_document_for_user(request.user)
+            for instance in queryset:
+                instance.set_document_type(
+                    form.cleaned_data['document_type'], _user=request.user
+                )
 
-            messages.success(request, _('Document type changed successfully.'))
+                messages.success(
+                    request, _(
+                        'Document type for "%s" changed successfully.'
+                    ) % instance
+                )
             return HttpResponseRedirect(next)
     else:
-        form = DocumentTypeSelectForm(initial={'document_type': documents[0].document_type})
+        form = DocumentTypeSelectForm(
+            initial={'document_type': queryset.first().document_type}
+        )
 
     context = {
         'form': form,
@@ -666,20 +675,24 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
         'title': ungettext(
             'Change the type of the selected document.',
             'Change the type of the selected documents.',
-            len(documents)
+            queryset.count()
         )
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if queryset.count() == 1:
+        context['object'] = queryset.first()
 
-    return render_to_response('appearance/generic_form.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_form.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def document_multiple_document_type_edit(request):
     return document_document_type_edit(
-        request, document_id_list=request.GET.get('id_list', [])
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
     )
 
 
