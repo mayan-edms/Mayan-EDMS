@@ -71,7 +71,7 @@ class AccessControlListManager(models.Manager):
         if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles):
             raise PermissionDenied(ugettext('Insufficient access.'))
 
-    def filter_by_access(self, permission, user, queryset, related=None):
+    def filter_by_access(self, permission, user, queryset):
         if user.is_superuser or user.is_staff:
             return queryset
 
