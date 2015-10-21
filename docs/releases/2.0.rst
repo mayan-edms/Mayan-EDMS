@@ -344,16 +344,33 @@ Other changes
 * All app APIs are top level URLs.
 * CI using gitlab-ci.
 * Coverage report with codecov.io.
+* Thumbnails for documents in trash.
+* Production deployment documentation chapter.
+* Command line to create an initial settings file: `createsettings`.
+* Initialsetup now continues even is a settings/local.py exists.
+* default_app_config for each app.
+* Natural key support for many models allowing database migrations using dumped data.
+* Separate documentation requirements file to allow for contributor who only want to work on documentation.
+* Centralized testing with a new managament command, `runtests`.
+* Addition of a tox configuration.
+* Email test body capture.
+* Email subject and from values storage.
+* Gitlab CI support.
+* Codecov support.
+* Improve text file rendering.
+* Show other packages licenses.
+* Task delay to allow DB replication.
+* Automatic debug logging and info logging during production.
 
 Removals
 --------
 * Removal of the CombinedSource class.
-* Removal of default class ACLs
-* Removal of the ImageMagick and GraphicsMagick converter backends
-* Remove support for applying roles to new users automatically
-* Removal of the DOCUMENT_RESTRICTIONS_OVERRIDE permission
-* Removed the page_label field
-
+* Removal of default class ACLs.
+* Removal of the ImageMagick and GraphicsMagick converter backends.
+* Remove support for applying roles to new users automatically.
+* Removal of the DOCUMENT_RESTRICTIONS_OVERRIDE permission.
+* Removed the page_label field.
+* Removal of custom HTTP 505 error view.
 Upgrading from a previous version
 ---------------------------------
 
