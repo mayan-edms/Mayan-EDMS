@@ -1,0 +1,6 @@
+codecov==1.4.1
+coverage==3.7.1
+coveralls==0.5
+django-test-without-migrations==0.2
+tox==2.1.1
+
