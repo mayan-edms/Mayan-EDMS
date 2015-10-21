@@ -2,7 +2,6 @@
 
 from __future__ import unicode_literals
 
-import io
 import time
 
 from json import loads
@@ -11,6 +10,7 @@ from django.contrib.auth.models import User
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test import override_settings
+from django.utils.six import BytesIO
 
 from rest_framework import status
 from rest_framework.test import APITestCase
@@ -259,7 +259,7 @@ class DocumentAPITestCase(APITestCase):
                 'rest_api:document-download', args=(document.pk,)
             )
         )
-        buf = io.BytesIO()
+        buf = BytesIO()
         buf.write(response.content)
 
         self.assertEqual(
@@ -280,7 +280,7 @@ class DocumentAPITestCase(APITestCase):
                 args=(document.latest_version.pk,)
             )
         )
-        buf = io.BytesIO()
+        buf = BytesIO()
         buf.write(response.content)
 
         self.assertEqual(
