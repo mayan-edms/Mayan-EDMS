@@ -21,7 +21,7 @@ from .forms import DocumentContentForm, DocumentTypeSelectForm
 from .models import DocumentVersionOCRError
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
-    permission_ocr_document_delete, permission_document_type_ocr_setup
+    permission_document_type_ocr_setup
 )
 
 
@@ -170,70 +170,3 @@ class EntryListView(SingleObjectListView):
 
     def get_queryset(self):
         return DocumentVersionOCRError.objects.all()
-
-
-def entry_delete(request, pk=None, pk_list=None):
-    Permission.check_permissions(
-        request.user, (permission_ocr_document_delete,)
-    )
-
-    if pk:
-        entries = [get_object_or_404(DocumentVersionOCRError, pk=pk)]
-    elif pk_list:
-        entries = [
-            get_object_or_404(
-                DocumentVersionOCRError, pk=pk
-            ) for pk in pk_list.split(',')
-        ]
-    else:
-        messages.error(request, _('Make at least one selection.'))
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
-            )
-        )
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        for entry in entries:
-            try:
-                entry.delete()
-                messages.success(
-                    request, _('Entry: %(entry)s deleted successfully.') % {
-                        'entry': entry
-                    }
-                )
-
-            except Exception as exception:
-                messages.error(
-                    request, _('Error entry: %(entry)s; %(error)s') % {
-                        'entry': entry, 'error': exception
-                    }
-                )
-        return HttpResponseRedirect(next)
-
-    context = {
-        'next': next,
-        'previous': previous,
-        'delete_view': True,
-    }
-
-    if len(entries) == 1:
-        context['object'] = entries[0]
-
-    context['title'] = ungettext(
-        'Delete the selected entry?',
-        'Delete the selected entries?',
-        len(entries)
-    )
-
-    return render_to_response(
-        'appearance/generic_confirm.html', context,
-        context_instance=RequestContext(request)
-    )
-
-
-def entry_delete_multiple(request):
-    return entry_delete(request, pk_list=request.GET.get('id_list', ''))

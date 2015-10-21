@@ -39,11 +39,6 @@ urlpatterns = patterns(
     ),
 
     url(r'^all/$', EntryListView.as_view(), name='entry_list'),
-    url(r'^(?P<pk>\d+)/delete/$', 'entry_delete', name='entry_delete'),
-    url(
-        r'^multiple/delete/$', 'entry_delete_multiple',
-        name='entry_delete_multiple'
-    ),
 )
 
 api_urls = patterns(

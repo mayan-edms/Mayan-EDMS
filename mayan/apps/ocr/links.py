@@ -6,7 +6,7 @@ from navigation import Link
 
 from .permissions import (
     permission_ocr_content_view, permission_ocr_document,
-    permission_ocr_document_delete, permission_document_type_ocr_setup
+    permission_document_type_ocr_setup
 )
 
 link_document_content = Link(
@@ -31,13 +31,6 @@ link_document_type_ocr_settings = Link(
 link_document_type_submit = Link(
     icon='fa fa-font', permissions=(permission_ocr_document,),
     text=_('OCR documents per type'), view='ocr:document_type_submit'
-)
-link_entry_delete = Link(
-    permissions=(permission_ocr_document_delete,), text=_('Delete'),
-    view='ocr:entry_delete', args='object.id'
-)
-link_entry_delete_multiple = Link(
-    text=_('Delete'), view='ocr:entry_delete_multiple'
 )
 link_entry_list = Link(
     icon='fa fa-file-text-o', permissions=(permission_ocr_document,),
