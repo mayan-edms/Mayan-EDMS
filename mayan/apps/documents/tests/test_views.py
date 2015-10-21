@@ -39,12 +39,6 @@ class DocumentsViewsTestCase(TestCase):
             password=TEST_ADMIN_PASSWORD
         )
         self.client = Client()
-        # Login the admin user
-        logged_in = self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
 
         self.user = get_user_model().objects.create_user(
             username=TEST_USER_USERNAME, email=TEST_USER_EMAIL,
@@ -69,6 +63,13 @@ class DocumentsViewsTestCase(TestCase):
         self.user.delete()
 
     def test_restoring_documents(self):
+        # Login the admin user
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
         self.assertEqual(Document.objects.count(), 1)
 
         # Trash the document
@@ -86,6 +87,13 @@ class DocumentsViewsTestCase(TestCase):
         self.assertEqual(Document.objects.count(), 1)
 
     def test_trashing_documents(self):
+        # Login the admin user
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
         self.assertEqual(Document.objects.count(), 1)
 
         # Trash the document
@@ -103,6 +111,13 @@ class DocumentsViewsTestCase(TestCase):
         self.assertEqual(Document.objects.count(), 0)
 
     def test_document_view(self):
+        # Login the admin user
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
         response = self.client.get(reverse('documents:document_list'))
         self.assertContains(response, 'Total: 1', status_code=200)
 
@@ -115,6 +130,13 @@ class DocumentsViewsTestCase(TestCase):
         )
 
     def test_document_document_type_change_view(self):
+        # Login the admin user
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
             Document.objects.first().document_type, self.document_type
@@ -138,6 +160,13 @@ class DocumentsViewsTestCase(TestCase):
         )
 
     def test_document_multiple_document_type_change_view(self):
+        # Login the admin user
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
             Document.objects.first().document_type, self.document_type
@@ -188,12 +217,12 @@ class DocumentsViewsTestCase(TestCase):
 
         self.assertEqual(response.status_code, 200)
 
-        # Fails to change the document type
+        # Should fail to change the document type
         self.assertEqual(
             Document.objects.first().document_type, self.document_type
         )
 
-        # Create ACL for a positive test result
+        # Grant the permission for a positive test result
 
         self.role.permissions.add(
             permission_document_properties_edit.stored_permission
