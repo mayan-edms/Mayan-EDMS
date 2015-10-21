@@ -1,11 +1,9 @@
 from __future__ import unicode_literals
 
-from datetime import timedelta
 import logging
 
 from django.contrib.auth.models import User
 from django.db import OperationalError
-from django.utils.timezone import now
 
 from mayan.celery import app
 
@@ -13,7 +11,7 @@ from common.models import SharedUploadedFile
 
 from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY,
-    NEW_DOCUMENT_RETRY_DELAY, STUB_EXPIRATION_INTERVAL
+    NEW_DOCUMENT_RETRY_DELAY
 )
 from .models import Document, DocumentPage, DocumentType, DocumentVersion
 
@@ -40,10 +38,7 @@ def task_clear_image_cache():
 @app.task(ignore_result=True)
 def task_delete_stubs():
     logger.info('Executing')
-
-    for stale_stub_document in Document.objects.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=STUB_EXPIRATION_INTERVAL)):
-        stale_stub_document.delete(trash=False)
-
+    Document.objects.delete_stubs()
     logger.info('Finshed')
 
 

@@ -7,6 +7,7 @@ from django.apps import apps
 from django.db import models
 from django.utils.timezone import now
 
+from .literals import STUB_EXPIRATION_INTERVAL
 from .settings import setting_recent_count
 
 logger = logging.getLogger(__name__)
@@ -105,6 +106,10 @@ class DocumentTypeManager(models.Manager):
 
 
 class DocumentManager(models.Manager):
+    def delete_stubs(self):
+        for stale_stub_document in self.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=STUB_EXPIRATION_INTERVAL)):
+            stale_stub_document.delete(trash=False)
+
     def get_by_natural_key(self, uuid):
         return self.get(uuid=uuid)
 

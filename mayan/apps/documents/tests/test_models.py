@@ -1,15 +1,18 @@
 from __future__ import unicode_literals
 
+from datetime import timedelta
 import time
 
 from django.core.files import File
 from django.test import TestCase, override_settings
 
+from ..literals import STUB_EXPIRATION_INTERVAL
+from ..models import DeletedDocument, Document, DocumentType
+
 from .literals import (
     TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
     TEST_OFFICE_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH
 )
-from ..models import DeletedDocument, Document, DocumentType
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -225,3 +228,30 @@ class DocumentVersionTestCase(TestCase):
         self.document.versions.first().revert()
 
         self.assertEqual(self.document.versions.count(), 1)
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class DocumentManagerTestCase(TestCase):
+    def setUp(self):
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+    def tearDown(self):
+        self.document_type.delete()
+
+    def test_document_stubs_deletion(self):
+        document_stub = Document.objects.create(
+            document_type=self.document_type
+        )
+
+        Document.objects.delete_stubs()
+
+        self.assertEqual(Document.objects.count(), 1)
+
+        document_stub.date_added = document_stub.date_added - timedelta(seconds=STUB_EXPIRATION_INTERVAL + 1)
+        document_stub.save()
+
+        Document.objects.delete_stubs()
+
+        self.assertEqual(Document.objects.count(), 0)
