@@ -40,13 +40,12 @@ class TagCreateView(SingleObjectCreateView):
 
 def tag_attach(request, document_id=None, document_id_list=None):
     if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
+        queryset = Document.objects.filter(pk=document_id)
         post_action_redirect = reverse('tags:tag_list')
     elif document_id_list:
-        documents = [
-            get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')
-        ]
-    else:
+        queryset = Document.objects.filter(pk__in=document_id_list)
+
+    if not queryset:
         messages.error(request, _('Must provide at least one document.'))
         return HttpResponseRedirect(
             request.META.get(
@@ -57,8 +56,8 @@ def tag_attach(request, document_id=None, document_id_list=None):
     try:
         Permission.check_permissions(request.user, (permission_tag_attach,))
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission_tag_attach, request.user, documents
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_tag_attach, request.user, queryset
         )
 
     post_action_redirect = None
@@ -73,7 +72,7 @@ def tag_attach(request, document_id=None, document_id_list=None):
         form = TagListForm(request.POST, user=request.user)
         if form.is_valid():
             tag = form.cleaned_data['tag']
-            for document in documents:
+            for document in queryset:
                 if tag in document.attached_tags().all():
                     messages.warning(
                         request, _(
@@ -103,12 +102,12 @@ def tag_attach(request, document_id=None, document_id_list=None):
         'title': ungettext(
             'Attach tag to document',
             'Attach tag to documents',
-            len(documents)
+            queryset.count()
         )
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if queryset.count() == 1:
+        context['object'] = queryset.first()
 
     return render_to_response(
         'appearance/generic_form.html', context,
@@ -118,7 +117,9 @@ def tag_attach(request, document_id=None, document_id_list=None):
 
 def tag_multiple_attach(request):
     return tag_attach(
-        request, document_id_list=request.GET.get('id_list', [])
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
     )
 
 
