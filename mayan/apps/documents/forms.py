@@ -137,9 +137,9 @@ class DocumentDownloadForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        self.document_versions = kwargs.pop('document_versions', None)
+        self.queryset = kwargs.pop('queryset', None)
         super(DocumentDownloadForm, self).__init__(*args, **kwargs)
-        if len(self.document_versions) > 1:
+        if self.queryset.count() > 1:
             self.fields['compressed'].initial = True
             self.fields['compressed'].widget.attrs.update({'disabled': True})
 

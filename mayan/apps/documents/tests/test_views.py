@@ -8,6 +8,7 @@ from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase, override_settings
+from django.utils.six import BytesIO
 
 from permissions.classes import Permission
 from permissions.models import Role
@@ -18,10 +19,14 @@ from user_management.tests.literals import (
 )
 
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
-from ..models import DeletedDocument, Document, DocumentType
-from ..permissions import permission_document_properties_edit
+from ..models import DeletedDocument, Document, DocumentType, HASH_FUNCTION
+from ..permissions import (
+    permission_document_download, permission_document_properties_edit
+)
 
-from .literals import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from .literals import (
+    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
+)
 
 TEST_DOCUMENT_TYPE_EDITED_LABEL = 'test document type edited label'
 TEST_DOCUMENT_TYPE_2_LABEL = 'test document type 2 label'
@@ -191,7 +196,6 @@ class DocumentsViewsTestCase(TestCase):
         )
 
     def test_document_multiple_document_type_change_user_view(self):
-        self.client.logout()
         logged_in = self.client.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
@@ -241,6 +245,122 @@ class DocumentsViewsTestCase(TestCase):
         self.assertEqual(
             Document.objects.first().document_type, document_type
         )
+
+    def test_document_download_user_view(self):
+        logged_in = self.client.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.user.is_authenticated())
+
+        self.assertEqual(Document.objects.count(), 1)
+
+        response = self.client.post(
+            reverse(
+                'documents:document_download', args=(self.document.pk,)
+            )
+        )
+
+        self.assertEqual(response.status_code, 302)
+
+        self.role.permissions.add(
+            permission_document_download.stored_permission
+        )
+
+        response = self.client.post(
+            reverse(
+                'documents:document_download', args=(self.document.pk,)
+            )
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        buf = BytesIO()
+        buf.write(response.content)
+
+        self.assertEqual(
+            HASH_FUNCTION(buf.getvalue()), TEST_SMALL_DOCUMENT_CHECKSUM
+        )
+
+        del(buf)
+
+    def test_document_multiple_download_user_view(self):
+        logged_in = self.client.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.user.is_authenticated())
+
+        self.assertEqual(Document.objects.count(), 1)
+
+        response = self.client.post(
+            reverse('documents:document_multiple_download'),
+            data={'id_list': self.document.pk}
+        )
+
+        self.assertEqual(response.status_code, 302)
+
+        self.role.permissions.add(
+            permission_document_download.stored_permission
+        )
+
+        response = self.client.post(
+            reverse('documents:document_multiple_download'),
+            data={'id_list': self.document.pk}
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        buf = BytesIO()
+        buf.write(response.content)
+
+        self.assertEqual(
+            HASH_FUNCTION(buf.getvalue()), TEST_SMALL_DOCUMENT_CHECKSUM
+        )
+
+        del(buf)
+
+    def test_document_version_download_user_view(self):
+        logged_in = self.client.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.user.is_authenticated())
+
+        self.assertEqual(Document.objects.count(), 1)
+
+        response = self.client.post(
+            reverse(
+                'documents:document_version_download', args=(
+                    self.document.latest_version.pk,
+                )
+            )
+        )
+
+        self.assertEqual(response.status_code, 302)
+
+        self.role.permissions.add(
+            permission_document_download.stored_permission
+        )
+
+        response = self.client.post(
+            reverse(
+                'documents:document_version_download', args=(
+                    self.document.latest_version.pk,
+                )
+            )
+        )
+
+        self.assertEqual(response.status_code, 200)
+
+        buf = BytesIO()
+        buf.write(response.content)
+
+        self.assertEqual(
+            HASH_FUNCTION(buf.getvalue()), TEST_SMALL_DOCUMENT_CHECKSUM
+        )
+
+        del(buf)
 
 
 @override_settings(OCR_AUTO_OCR=False)

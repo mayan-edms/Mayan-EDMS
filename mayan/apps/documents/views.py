@@ -731,16 +731,41 @@ def document_download(request, document_id=None, document_id_list=None, document
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if document_id:
-        document_versions = [get_object_or_404(Document, pk=document_id).latest_version]
+        documents = Document.objects.filter(pk=document_id)
     elif document_id_list:
-        document_versions = [get_object_or_404(Document, pk=document_id).latest_version for document_id in document_id_list.split(',')]
+        documents = Document.objects.filter(pk__in=document_id_list)
     elif document_version_pk:
-        document_versions = [get_object_or_404(DocumentVersion, pk=document_version_pk)]
+        documents = Document.objects.filter(
+            pk=get_object_or_404(
+                DocumentVersion, pk=document_version_pk
+            ).document.pk
+        )
 
     try:
-        Permission.check_permissions(request.user, (permission_document_download,))
+        Permission.check_permissions(
+            request.user, (permission_document_download,)
+        )
     except PermissionDenied:
-        document_versions = AccessControlList.objects.filter_by_access(permission_document_download, request.user, document_versions, related='document')
+        documents = AccessControlList.objects.filter_by_access(
+            permission_document_download, request.user, documents
+        )
+
+    if not documents:
+        messages.error(
+            request, _('Must provide at least one document or version.')
+        )
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
+
+    if document_version_pk:
+        queryset = DocumentVersion.objects.filter(pk=document_version_pk)
+    else:
+        queryset = DocumentVersion.objects.filter(
+            pk__in=[document.latest_version.pk for document in documents]
+        )
 
     subtemplates_list = []
     subtemplates_list.append(
@@ -748,7 +773,7 @@ def document_download(request, document_id=None, document_id_list=None, document
             'name': 'appearance/generic_list_subtemplate.html',
             'context': {
                 'title': _('Documents to be downloaded'),
-                'object_list': document_versions,
+                'object_list': queryset,
                 'hide_link': True,
                 'hide_object': True,
                 'hide_links': True,
@@ -765,21 +790,26 @@ def document_download(request, document_id=None, document_id_list=None, document
     )
 
     if request.method == 'POST':
-        form = DocumentDownloadForm(request.POST, document_versions=document_versions)
+        form = DocumentDownloadForm(request.POST, queryset=queryset)
         if form.is_valid():
-            if form.cleaned_data['compressed'] or len(document_versions) > 1:
+            if form.cleaned_data['compressed'] or queryset.count() > 1:
                 try:
                     compressed_file = CompressedFile()
-                    for document_version in document_versions:
+                    for document_version in queryset:
                         descriptor = document_version.open()
-                        compressed_file.add_file(descriptor, arcname=document_version.document.label)
+                        compressed_file.add_file(
+                            descriptor,
+                            arcname=document_version.document.label
+                        )
                         descriptor.close()
 
                     compressed_file.close()
 
                     return serve_file(
                         request,
-                        compressed_file.as_file(form.cleaned_data['zip_filename']),
+                        compressed_file.as_file(
+                            form.cleaned_data['zip_filename']
+                        ),
                         save_as='"%s"' % form.cleaned_data['zip_filename'],
                         content_type='application/zip'
                     )
@@ -788,38 +818,42 @@ def document_download(request, document_id=None, document_id_list=None, document
                         raise
                     else:
                         messages.error(request, exception)
-                        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+                        return HttpResponseRedirect(
+                            request.META['HTTP_REFERER']
+                        )
             else:
                 try:
                     # Test permissions and trigger exception
-                    fd = document_versions[0].open()
+                    fd = queryset.first().open()
                     fd.close()
                     return serve_file(
                         request,
-                        document_versions[0].file,
-                        save_as='"%s"' % document_versions[0].document.label,
-                        content_type=document_versions[0].mimetype if document_versions[0].mimetype else 'application/octet-stream'
+                        queryset.first().file,
+                        save_as='"%s"' % queryset.first().document.label,
+                        content_type=queryset.first().mimetype if queryset.first().mimetype else 'application/octet-stream'
                     )
                 except Exception as exception:
                     if settings.DEBUG:
                         raise
                     else:
                         messages.error(request, exception)
-                        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+                        return HttpResponseRedirect(
+                            request.META['HTTP_REFERER']
+                        )
 
     else:
-        form = DocumentDownloadForm(document_versions=document_versions)
+        form = DocumentDownloadForm(queryset=queryset)
 
     context = {
         'form': form,
+        'previous': previous,
+        'submit_label': _('Download'),
         'subtemplates_list': subtemplates_list,
         'title': _('Download documents'),
-        'submit_label': _('Download'),
-        'previous': previous,
     }
 
-    if len(document_versions) == 1:
-        context['object'] = document_versions[0].document
+    if queryset.count() == 1:
+        context['object'] = queryset.first().document
 
     return render_to_response(
         'appearance/generic_form.html',
@@ -830,7 +864,9 @@ def document_download(request, document_id=None, document_id_list=None, document
 
 def document_multiple_download(request):
     return document_download(
-        request, document_id_list=request.GET.get('id_list', [])
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
     )
 
 
