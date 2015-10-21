@@ -8,9 +8,9 @@ from django.test.client import Client
 
 from documents.models import DocumentType
 from documents.search import document_search
-from documents.tests import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from user_management.tests import (
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
 )
 
 

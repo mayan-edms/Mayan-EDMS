@@ -6,7 +6,6 @@ import os
 from django.conf import settings
 
 __all__ = (
-    'TEST_ADMIN_EMAIL', 'TEST_ADMIN_PASSWORD', 'TEST_ADMIN_USERNAME',
     'TEST_COMPRESSED_DOCUMENTS_FILENAME', 'TEST_COMPRESSED_DOCUMENT_PATH',
     'TEST_DEU_DOCUMENT_FILENAME', 'TEST_DEU_DOCUMENT_PATH',
     'TEST_DOCUMENT_PATH', 'TEST_HYBRID_DOCUMENT_PATH',
@@ -19,17 +18,13 @@ __all__ = (
     'TEST_SMALL_DOCUMENT_FILENAME', 'TEST_SMALL_DOCUMENT_PATH',
 )
 
-# User related
-TEST_ADMIN_EMAIL = 'admin@admin.com'
-TEST_ADMIN_PASSWORD = 'test_admin_password'
-TEST_ADMIN_USERNAME = 'test_admin'
-
 # Filenames
 TEST_COMPRESSED_DOCUMENTS_FILENAME = 'compressed_documents.zip'
 TEST_DEU_DOCUMENT_FILENAME = 'deu_website.png'
 TEST_DOCUMENT_DESCRIPTION = 'test description'
 TEST_DOCUMENT_FILENAME = 'mayan_11_1.pdf'
 TEST_DOCUMENT_TYPE = 'test_document_type'
+TEST_DOCUMENT_TYPE_2 = 'test document type 2'
 TEST_HYBRID_DOCUMENT = 'hybrid_text_and_image.pdf'
 TEST_MULTI_PAGE_TIFF = 'multi_page.tiff'
 TEST_NON_ASCII_COMPRESSED_DOCUMENT_FILENAME = 'I18N_title_áéíóúüñÑ.png.zip'

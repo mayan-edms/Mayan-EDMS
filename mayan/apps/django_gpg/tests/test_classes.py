@@ -7,10 +7,7 @@ from django.test import TestCase
 from ..api import GPG, Key
 from ..settings import setting_gpg_path
 
-TEST_GPG_HOME = '/tmp/test_gpg_home'
-TEST_KEY_ID = '607138F1AECC5A5CA31CB7715F3F7F75D210724D'
-TEST_KEYSERVERS = ['pool.sks-keyservers.net']
-TEST_UIDS = 'Roberto Rosario'
+from .literals import TEST_GPG_HOME, TEST_KEY_ID, TEST_KEYSERVERS, TEST_UIDS
 
 
 class DjangoGPGTestCase(TestCase):

@@ -4,11 +4,11 @@ from django.contrib.auth.models import User
 from django.core.files.base import File
 from django.test import TestCase
 
-from authentication.tests.test_views import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
-)
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from user_management.tests.literals import (
+    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
+)
 
 from ..models import Folder
 

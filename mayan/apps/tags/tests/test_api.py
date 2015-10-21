@@ -8,9 +8,9 @@ from django.test import override_settings
 from rest_framework.test import APITestCase
 
 from documents.models import DocumentType
-from documents.tests import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from user_management.tests.literals import (
+    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 
 from ..models import Tag

@@ -12,8 +12,10 @@ from documents.permissions import permission_document_view
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 from permissions import Permission
 from permissions.models import Role
-from permissions.tests.literals import (
-    TEST_GROUP, TEST_ROLE_LABEL, TEST_USER_PASSWORD, TEST_USER_USERNAME
+from permissions.tests.literals import TEST_ROLE_LABEL
+from user_management.tests import (
+    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_GROUP,
+    TEST_USER_PASSWORD, TEST_USER_USERNAME
 )
 
 from ..models import Tag
@@ -24,6 +26,11 @@ from .literals import TEST_TAG_COLOR, TEST_TAG_LABEL
 
 class TagViewTestCase(TestCase):
     def setUp(self):
+        self.admin_user = get_user_model().objects.create_superuser(
+            email=TEST_ADMIN_EMAIL, password=TEST_ADMIN_PASSWORD,
+            username=TEST_ADMIN_USERNAME
+        )
+
         self.user = get_user_model().objects.create_user(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
@@ -42,11 +49,6 @@ class TagViewTestCase(TestCase):
 
         self.client = Client()
         # Login the admin user
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.user.is_authenticated())
 
         self.tag = Tag.objects.create(
             color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
@@ -56,20 +58,33 @@ class TagViewTestCase(TestCase):
 
         self.group.user_set.add(self.user)
         self.role.groups.add(self.group)
-        self.role.permissions.add(permission_document_view.stored_permission)
 
     def tearDown(self):
+        self.admin_user.delete()
+        self.document_type
         self.group.delete()
         self.role.delete()
         self.tag.delete()
         self.user.delete()
-        self.document_type
 
     def test_document_tags_widget_no_permissions(self):
+        logged_in = self.client.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.user.is_authenticated())
+
         response = self.client.get(reverse('documents:document_list'))
         self.assertNotContains(response, text=TEST_TAG_LABEL, status_code=200)
+        # TODO: Verify this test's logic
 
     def test_document_tags_widget_with_permissions(self):
+        logged_in = self.client.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.user.is_authenticated())
+
         self.role.permissions.add(permission_tag_view.stored_permission)
         response = self.client.get(reverse('documents:document_list'))
         self.assertContains(

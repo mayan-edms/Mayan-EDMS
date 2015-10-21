@@ -5,7 +5,7 @@ from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
 
-from documents.tests.literals import (
+from user_management.tests import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
 )
 

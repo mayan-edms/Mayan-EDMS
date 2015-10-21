@@ -8,8 +8,10 @@ from django.test import TestCase
 
 from documents.models import DocumentType
 from documents.tests.literals import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+)
+from user_management.tests import (
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
 )
 
 from ..models import Workflow, WorkflowState, WorkflowTransition

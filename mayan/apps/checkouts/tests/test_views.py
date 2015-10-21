@@ -12,8 +12,10 @@ from django.utils.timezone import now
 from common.literals import TIME_DELTA_UNIT_DAYS
 from documents.models import DocumentType
 from documents.tests.literals import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+)
+from user_management.tests.literals import (
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
 )
 
 from ..models import DocumentCheckout

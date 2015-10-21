@@ -7,12 +7,15 @@ from django.test import TestCase, override_settings
 
 from documents.models import Document, DocumentType
 from documents.tests import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH,
-    TEST_DOCUMENT_DESCRIPTION, TEST_DOCUMENT_TYPE,
+    TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
+    TEST_DOCUMENT_TYPE
 )
-from sources.literals import SOURCE_CHOICE_WEB_FORM
-from sources.models import WebFormSource
+from user_management.tests import (
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
+)
+
+from ..literals import SOURCE_CHOICE_WEB_FORM
+from ..models import WebFormSource
 
 
 @override_settings(OCR_AUTO_OCR=False)

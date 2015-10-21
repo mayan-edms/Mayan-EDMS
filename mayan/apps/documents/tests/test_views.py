@@ -9,23 +9,19 @@ from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase, override_settings
 
-from authentication.tests.literals import (
-    TEST_USER_EMAIL, TEST_USER_PASSWORD, TEST_USER_USERNAME
-)
 from permissions.classes import Permission
 from permissions.models import Role
-from permissions.tests.literals import (
-    TEST_GROUP, TEST_ROLE_LABEL, TEST_USER_USERNAME
+from permissions.tests.literals import TEST_ROLE_LABEL
+from user_management.tests.literals import (
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_GROUP,
+    TEST_USER_EMAIL, TEST_USER_PASSWORD, TEST_USER_USERNAME
 )
 
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from ..models import DeletedDocument, Document, DocumentType
 from ..permissions import permission_document_properties_edit
 
-from .literals import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
-)
+from .literals import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
 TEST_DOCUMENT_TYPE_EDITED_LABEL = 'test document type edited label'
 TEST_DOCUMENT_TYPE_2_LABEL = 'test document type 2 label'

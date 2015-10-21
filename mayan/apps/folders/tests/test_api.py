@@ -8,14 +8,14 @@ from django.test import override_settings
 from rest_framework.test import APITestCase
 
 from documents.models import DocumentType
-from documents.tests import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH,
+from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from user_management.tests.literals import (
+    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 
 from ..models import Folder
 
-TEST_FOLDER_LABEL = 'test folder'
+from .literals import TEST_FOLDER_EDITED_LABEL, TEST_FOLDER_LABEL
 
 
 class FolderAPITestCase(APITestCase):
@@ -63,12 +63,12 @@ class FolderAPITestCase(APITestCase):
 
         self.client.put(
             reverse('rest_api:folder-detail', args=(folder.pk,)),
-            {'label': TEST_FOLDER_LABEL + ' edited'}
+            {'label': TEST_FOLDER_EDITED_LABEL}
         )
 
         folder = Folder.objects.first()
 
-        self.assertEqual(folder.label, TEST_FOLDER_LABEL + ' edited')
+        self.assertEqual(folder.label, TEST_FOLDER_EDITED_LABEL)
 
     @override_settings(OCR_AUTO_OCR=False)
     def test_folder_add_document(self):
