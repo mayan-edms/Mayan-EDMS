@@ -47,6 +47,14 @@ class MultipleInstanceActionMixin(object):
     success_message = 'Operation performed on %(count)d object'
     success_message_plural = 'Operation performed on %(count)d objects'
 
+    def get_pk_list(self):
+        return self.request.GET.get(
+            'id_list', self.request.POST.get('id_list', '')
+        ).split(',')
+
+    def get_queryset(self):
+        return self.model.objects.filter(pk__in=self.get_pk_list())
+
     def get_success_message(self, count):
         return ungettext(
             self.success_message,
@@ -58,10 +66,9 @@ class MultipleInstanceActionMixin(object):
 
     def post(self, request, *args, **kwargs):
         count = 0
-        for pk in request.GET.get('id_list', '').split(','):
-            document = get_object_or_404(self.model, pk=pk)
+        for instance in self.get_queryset():
             try:
-                self.object_action(instance=document)
+                self.object_action(instance=instance)
             except PermissionDenied:
                 pass
             else:
