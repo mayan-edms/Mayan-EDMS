@@ -43,10 +43,3 @@ link_entry_list = Link(
     icon='fa fa-file-text-o', permissions=(permission_ocr_document,),
     text=_('OCR errors'), view='ocr:entry_list'
 )
-link_entry_re_queue = Link(
-    permissions=(permission_ocr_document,), text=_('Re-queue'),
-    view='ocr:entry_re_queue', args='object.id'
-)
-link_entry_re_queue_multiple = Link(
-    text=_('Re-queue'), view='ocr:entry_re_queue_multiple'
-)

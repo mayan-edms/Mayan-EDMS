@@ -44,11 +44,6 @@ urlpatterns = patterns(
         r'^multiple/delete/$', 'entry_delete_multiple',
         name='entry_delete_multiple'
     ),
-    url(r'^(?P<pk>\d+)/re-queue/$', 'entry_re_queue', name='entry_re_queue'),
-    url(
-        r'^multiple/re-queue/$', 'entry_re_queue_multiple',
-        name='entry_re_queue_multiple'
-    ),
 )
 
 api_urls = patterns(
