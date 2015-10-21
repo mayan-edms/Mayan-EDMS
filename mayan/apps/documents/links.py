@@ -100,28 +100,26 @@ link_document_multiple_clear_transformations = Link(
     view='documents:document_multiple_clear_transformations'
 )
 link_document_multiple_trash = Link(
-    permissions=(permission_document_trash,), tags='dangerous',
-    text=_('Move to trash'), view='documents:document_multiple_trash'
+    tags='dangerous', text=_('Move to trash'),
+    view='documents:document_multiple_trash'
 )
 link_document_multiple_delete = Link(
-    permissions=(permission_document_delete,), tags='dangerous',
-    text=_('Delete'), view='documents:document_multiple_delete'
+    tags='dangerous', text=_('Delete'),
+    view='documents:document_multiple_delete'
 )
 link_document_multiple_document_type_edit = Link(
-    permissions=(permission_document_properties_edit,), text=_('Change type'),
+    text=_('Change type'),
     view='documents:document_multiple_document_type_edit'
 )
 link_document_multiple_download = Link(
-    permissions=(permission_document_download,), text=_('Download'),
-    view='documents:document_multiple_download'
+    text=_('Download'), view='documents:document_multiple_download'
 )
 link_document_multiple_update_page_count = Link(
-    permissions=(permission_document_tools,), text=_('Recalculate page count'),
-    view='documents:document_multiple_update_page_count'
+    text=_('Recalculate page count'),
+     view='documents:document_multiple_update_page_count'
 )
 link_document_multiple_restore = Link(
-    permissions=(permission_document_restore,), text=_('Restore'),
-    view='documents:document_multiple_restore'
+    text=_('Restore'), view='documents:document_multiple_restore'
 )
 link_document_version_download = Link(
     args='object.pk', permissions=(permission_document_download,),
