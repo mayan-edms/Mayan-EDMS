@@ -1,22 +1,9 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
-from django.core.files import File
-from django.core.urlresolvers import reverse
-from django.test.client import Client
-from django.test import TestCase
-
-from documents.models import DocumentType
 from documents.permissions import permission_document_view
-from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 from documents.tests.test_views import GenericDocumentViewTestCase
-from permissions import Permission
-from permissions.models import Role
-from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_GROUP,
-    TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
+    TEST_USER_USERNAME, TEST_USER_PASSWORD
 )
 
 from ..models import Folder
@@ -30,12 +17,10 @@ from .literals import TEST_FOLDER_LABEL, TEST_FOLDER_EDITED_LABEL
 
 class FolderViewTestCase(GenericDocumentViewTestCase):
     def test_folder_create_view_no_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        response = self.client.post(
-            reverse('folders:folder_create'), data={
+        response = self.post(
+            'folders:folder_create', data={
                 'label': TEST_FOLDER_LABEL
             }
         )
@@ -44,16 +29,14 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Folder.objects.count(), 0)
 
     def test_folder_create_view_with_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         self.role.permissions.add(
             permission_folder_create.stored_permission
         )
 
-        response = self.client.post(
-            reverse('folders:folder_create'), data={
+        response = self.post(
+            'folders:folder_create', data={
                 'label': TEST_FOLDER_LABEL
             }, follow=True
         )
@@ -63,24 +46,18 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Folder.objects.first().user, self.user)
 
     def test_folder_delete_view_no_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         folder = Folder.objects.create(
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
 
-        response = self.client.post(
-            reverse('folders:folder_delete', args=(folder.pk,))
-        )
+        response = self.post('folders:folder_delete', args=(folder.pk,))
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Folder.objects.count(), 1)
 
     def test_folder_delete_view_with_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         self.role.permissions.add(
             permission_folder_delete.stored_permission
@@ -90,24 +67,22 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
 
-        response = self.client.post(
-            reverse('folders:folder_delete', args=(folder.pk,)), follow=True
+        response = self.post(
+            'folders:folder_delete', args=(folder.pk,), follow=True
         )
 
         self.assertContains(response, text='deleted', status_code=200)
         self.assertEqual(Folder.objects.count(), 0)
 
     def test_folder_edit_view_no_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         folder = Folder.objects.create(
             label=TEST_FOLDER_LABEL, user=self.user
         )
 
-        response = self.client.post(
-            reverse('folders:folder_edit', args=(folder.pk,)), data={
+        response = self.post(
+            'folders:folder_edit', args=(folder.pk,), data={
                 'label': TEST_FOLDER_EDITED_LABEL
             }
         )
@@ -116,9 +91,7 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(folder.label, TEST_FOLDER_LABEL)
 
     def test_folder_edit_view_with_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         self.role.permissions.add(
             permission_folder_edit.stored_permission
@@ -128,8 +101,8 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
             label=TEST_FOLDER_LABEL, user=self.user
         )
 
-        response = self.client.post(
-            reverse('folders:folder_edit', args=(folder.pk,)), data={
+        response = self.post(
+            'folders:folder_edit', args=(folder.pk,), data={
                 'label': TEST_FOLDER_EDITED_LABEL
             }, follow=True
         )
@@ -139,21 +112,16 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(folder.label, TEST_FOLDER_EDITED_LABEL)
 
     def test_folder_add_document_view_no_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        self.role.permissions.add(
-            permission_folder_view.stored_permission
-        )
+        self.role.permissions.add(permission_folder_view.stored_permission)
 
         folder = Folder.objects.create(
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
 
-        response = self.client.post(
-            reverse('folders:folder_add_document', args=(self.document.pk,)),
-            data={
+        response = self.post(
+            'folders:folder_add_document', args=(self.document.pk,), data={
                 'folder': folder.pk,
             }
         )
@@ -162,13 +130,9 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(folder.documents.count(), 0)
 
     def test_folder_add_document_view_with_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        self.role.permissions.add(
-            permission_folder_view.stored_permission
-        )
+        self.role.permissions.add(permission_folder_view.stored_permission)
 
         self.role.permissions.add(
             permission_folder_add_document.stored_permission
@@ -182,10 +146,8 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
 
-        response = self.client.post(
-            reverse(
-                'folders:folder_add_document', args=(self.document.pk,)
-            ), data={
+        response = self.post(
+            'folders:folder_add_document', args=(self.document.pk,), data={
                 'folder': folder.pk,
             }, follow=True
         )
@@ -198,22 +160,17 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         )
 
     def test_folder_add_multiple_documents_view_no_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        self.role.permissions.add(
-            permission_folder_view.stored_permission
-        )
+        self.role.permissions.add(permission_folder_view.stored_permission)
 
         folder = Folder.objects.create(
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
 
-        response = self.client.post(
-            reverse('folders:folder_add_multiple_documents'), data={
-                'id_list': (self.document.pk,),
-                'folder': folder.pk
+        response = self.post(
+            'folders:folder_add_multiple_documents', data={
+                'id_list': (self.document.pk,), 'folder': folder.pk
             }
         )
 
@@ -221,12 +178,9 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(folder.documents.count(), 0)
 
     def test_folder_add_multiple_documents_view_with_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
-        self.role.permissions.add(
-            permission_folder_view.stored_permission
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(permission_folder_view.stored_permission)
 
         self.role.permissions.add(
             permission_folder_add_document.stored_permission
@@ -236,10 +190,9 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
 
-        response = self.client.post(
-            reverse('folders:folder_add_multiple_documents'), data={
-                'id_list': (self.document.pk,),
-                'folder': folder.pk
+        response = self.post(
+            'folders:folder_add_multiple_documents', data={
+                'id_list': (self.document.pk,), 'folder': folder.pk
             }, follow=True
         )
 
@@ -251,22 +204,19 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         )
 
     def test_folder_remove_document_view_no_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         folder = Folder.objects.create(
-            label=TEST_FOLDER_LABEL, user=self.user,
+            label=TEST_FOLDER_LABEL, user=self.user
         )
 
         folder.documents.add(self.document)
 
         self.assertEqual(folder.documents.count(), 1)
 
-        response = self.client.post(
-            reverse(
-                'folders:folder_document_multiple_remove', args=(folder.pk,)
-            ), data={
+        response = self.post(
+            'folders:folder_document_multiple_remove', args=(folder.pk,),
+            data={
                 'id_list': (self.document.pk,),
             }
         )
@@ -277,9 +227,7 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(folder.documents.count(), 1)
 
     def test_folder_remove_document_view_with_permission(self):
-        logged_in = self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         self.role.permissions.add(
             permission_folder_remove_document.stored_permission
@@ -292,10 +240,9 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         folder.documents.add(self.document)
         self.assertEqual(folder.documents.count(), 1)
 
-        response = self.client.post(
-            reverse(
-                'folders:folder_document_multiple_remove', args=(folder.pk,)
-            ), data={
+        response = self.post(
+            'folders:folder_document_multiple_remove', args=(folder.pk,),
+            data={
                 'id_list': (self.document.pk,),
             }, follow=True
         )

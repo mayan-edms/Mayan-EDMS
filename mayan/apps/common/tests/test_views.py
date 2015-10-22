@@ -35,16 +35,41 @@ class GenericViewTestCase(TestCase):
 
     def tearDown(self):
         self.admin_user.delete()
+        self.client.logout()
         self.group.delete()
         self.role.delete()
         self.user.delete()
 
+    def get(self, viewname, *args, **kwargs):
+        data = kwargs.pop('data', {})
+        follow = kwargs.pop('follow', False)
+
+        return self.client.get(
+            reverse(viewname=viewname, *args, **kwargs),
+            data=data, follow=follow
+        )
+
+    def login(self, username, password):
+        logged_in = self.client.login(username=username, password=password)
+
+        user = get_user_model().objects.get(username=username)
+
+        self.assertTrue(logged_in)
+        self.assertTrue(user.is_authenticated())
+
+    def post(self, viewname, *args, **kwargs):
+        data = kwargs.pop('data', {})
+        follow = kwargs.pop('follow', False)
+
+        return self.client.post(
+            reverse(viewname=viewname, *args, **kwargs),
+            data=data, follow=follow
+        )
+
 
 class CommonViewTestCase(GenericViewTestCase):
     def test_about_view(self):
-        logged_in = self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        response = self.client.get(reverse('common:about_view'))
+        response = self.get('common:about_view')
         self.assertContains(response, text='About', status_code=200)
