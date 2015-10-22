@@ -40,23 +40,11 @@ class GenericViewTestCase(TestCase):
         self.user.delete()
 
 
-class CommonViewTestCase(TestCase):
-    def setUp(self):
-        self.admin_user = User.objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-        self.client = Client()
-        # Login the admin user
+class CommonViewTestCase(GenericViewTestCase):
+    def test_about_view(self):
         logged_in = self.client.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
 
-    def tearDown(self):
-        self.admin_user.delete()
-
-    def test_about_view(self):
         response = self.client.get(reverse('common:about_view'))
         self.assertContains(response, text='About', status_code=200)
