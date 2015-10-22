@@ -191,15 +191,12 @@ def user_delete(request, user_id=None, user_id_list=None):
     post_action_redirect = None
 
     if user_id:
-        users = [get_object_or_404(User, pk=user_id)]
+        users = get_user_model().objects.filter(pk=user_id)
         post_action_redirect = reverse('user_management:user_list')
     elif user_id_list:
-        users = [
-            get_object_or_404(
-                User, pk=user_id
-            ) for user_id in user_id_list.split(',')
-        ]
-    else:
+        users = get_user_model().objects.filter(pk__in=user_id_list)
+
+    if not users:
         messages.error(request, _('Must provide at least one user.'))
         return HttpResponseRedirect(
             request.META.get(
@@ -240,8 +237,8 @@ def user_delete(request, user_id=None, user_id_list=None):
         'previous': previous,
         'next': next,
     }
-    if len(users) == 1:
-        context['object'] = users[0]
+    if users.count() == 1:
+        context['object'] = users.first()
         context['title'] = _('Delete the user: %s?') % ', '.join([unicode(d) for d in users])
     elif len(users) > 1:
         context['title'] = _('Delete the users: %s?') % ', '.join([unicode(d) for d in users])
@@ -254,7 +251,9 @@ def user_delete(request, user_id=None, user_id_list=None):
 
 def user_multiple_delete(request):
     return user_delete(
-        request, user_id_list=request.GET.get('id_list', [])
+        request, user_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
     )
 
 
@@ -263,11 +262,12 @@ def user_set_password(request, user_id=None, user_id_list=None):
     post_action_redirect = None
 
     if user_id:
-        users = [get_object_or_404(User, pk=user_id)]
+        users = get_user_model().objects.filter(pk=user_id)
         post_action_redirect = reverse('user_management:user_list')
     elif user_id_list:
-        users = [get_object_or_404(User, pk=user_id) for user_id in user_id_list.split(',')]
-    else:
+        users = get_user_model().objects.filter(pk__in=user_id_list)
+
+    if not users:
         messages.error(request, _('Must provide at least one user.'))
         return HttpResponseRedirect(
             request.META.get(
@@ -283,7 +283,9 @@ def user_set_password(request, user_id=None, user_id_list=None):
             password_1 = form.cleaned_data['new_password_1']
             password_2 = form.cleaned_data['new_password_2']
             if password_1 != password_2:
-                messages.error(request, _('Passwords do not match, try again.'))
+                messages.error(
+                    request, _('Passwords do not match, try again.')
+                )
             else:
                 for user in users:
                     try:
@@ -322,8 +324,8 @@ def user_set_password(request, user_id=None, user_id_list=None):
         'form': form,
     }
 
-    if len(users) == 1:
-        context['object'] = users[0]
+    if users.count() == 1:
+        context['object'] = users.first()
         context['title'] = _('Reseting password for user: %s') % ', '.join([unicode(d) for d in users])
     elif len(users) > 1:
         context['title'] = _('Reseting password for users: %s') % ', '.join([unicode(d) for d in users])
@@ -336,5 +338,7 @@ def user_set_password(request, user_id=None, user_id_list=None):
 
 def user_multiple_set_password(request):
     return user_set_password(
-        request, user_id_list=request.GET.get('id_list', [])
+        request, user_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
     )

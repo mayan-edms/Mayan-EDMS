@@ -25,6 +25,7 @@ from .links import (
 class UserManagementApp(MayanAppConfig):
     app_url = 'accounts'
     name = 'user_management'
+    test = True
     verbose_name = _('User management')
 
     def ready(self):
