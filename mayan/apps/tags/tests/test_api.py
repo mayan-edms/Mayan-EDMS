@@ -16,8 +16,8 @@ from user_management.tests.literals import (
 from ..models import Tag
 
 from .literals import (
-    TEST_TAG_COLOR, TEST_TAG_COLOR_ALTERNATE, TEST_TAG_LABEL,
-    TEST_TAG_LABEL_ALTERNATE
+    TEST_TAG_COLOR, TEST_TAG_COLOR_EDITED, TEST_TAG_LABEL,
+    TEST_TAG_LABEL_EDITED
 )
 
 
@@ -63,15 +63,15 @@ class TagAPITestCase(APITestCase):
         self.client.put(
             reverse('rest_api:tag-detail', args=(tag.pk,)),
             {
-                'label': TEST_TAG_LABEL_ALTERNATE,
-                'color': TEST_TAG_COLOR_ALTERNATE
+                'label': TEST_TAG_LABEL_EDITED,
+                'color': TEST_TAG_COLOR_EDITED
             }
         )
 
         tag = Tag.objects.first()
 
-        self.assertEqual(tag.label, TEST_TAG_LABEL_ALTERNATE)
-        self.assertEqual(tag.color, TEST_TAG_COLOR_ALTERNATE)
+        self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
+        self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)
 
     @override_settings(OCR_AUTO_OCR=False)
     def test_tag_add_document(self):
