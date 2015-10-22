@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
@@ -8,44 +9,29 @@ from django.test import TestCase
 
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from documents.tests.test_views import GenericDocumentViewTestCase
+from permissions import Permission
+from permissions.models import Role
+from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_GROUP,
+    TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
 )
 
 from ..models import Folder
+from ..permissions import permission_folder_remove_document
 
 from .literals import TEST_FOLDER_LABEL, TEST_FOLDER_EDITED_LABEL
 
 
-class FolderViewTestCase(TestCase):
-    def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=File(file_object)
-            )
-
-        self.client = Client()
-        # Login the admin user
+class FolderViewTestCase(GenericDocumentViewTestCase):
+    def test_folder_create_view(self):
         logged_in = self.client.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
         self.assertTrue(logged_in)
         self.assertTrue(self.admin_user.is_authenticated())
 
-    def tearDown(self):
-        self.admin_user.delete()
-        self.document_type
-
-    def test_folder_create_view(self):
         response = self.client.post(
             reverse('folders:folder_create'), data={
                 'label': TEST_FOLDER_LABEL
@@ -58,6 +44,12 @@ class FolderViewTestCase(TestCase):
         self.assertEqual(Folder.objects.first().user, self.admin_user)
 
     def test_folder_delete_view(self):
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
         folder = Folder.objects.create(
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
@@ -70,6 +62,12 @@ class FolderViewTestCase(TestCase):
         self.assertEqual(Folder.objects.count(), 0)
 
     def test_folder_edit_view(self):
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
         folder = Folder.objects.create(
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
@@ -86,6 +84,12 @@ class FolderViewTestCase(TestCase):
         self.assertEqual(folder.user, self.admin_user)
 
     def test_folder_add_document_view(self):
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
         folder = Folder.objects.create(
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
@@ -105,6 +109,12 @@ class FolderViewTestCase(TestCase):
         )
 
     def test_folder_add_multiple_documents_view(self):
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
         folder = Folder.objects.create(
             label=TEST_FOLDER_LABEL, user=self.admin_user
         )
@@ -124,6 +134,12 @@ class FolderViewTestCase(TestCase):
         )
 
     def test_folder_remove_document_view(self):
+        logged_in = self.client.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
+
         folder = Folder.objects.create(
             label=TEST_FOLDER_LABEL, user=self.admin_user,
         )
@@ -131,6 +147,21 @@ class FolderViewTestCase(TestCase):
         folder.documents.add(self.document)
 
         self.assertEqual(folder.documents.count(), 1)
+
+        response = self.client.post(
+            reverse(
+                'folders:folder_document_multiple_remove', args=(folder.pk,)
+            ), data={
+                'id_list': (self.document.pk,),
+            }
+        )
+
+        self.assertEqual(response.status_code, 302)
+
+        folder = Folder.objects.get(pk=folder.pk)
+        self.assertEqual(folder.documents.count(), 1)
+
+        self.role.permissions.add(permission_folder_remove_document.stored_permission)
 
         response = self.client.post(
             reverse(

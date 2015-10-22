@@ -247,32 +247,43 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
     folder = get_object_or_404(Folder, pk=folder_id)
 
     if document_id:
-        folder_documents = [get_object_or_404(Document, pk=document_id)]
+        queryset = Document.objects.filter(pk=document_id)
     elif document_id_list:
-        folder_documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-    else:
+        queryset = Document.objects.filter(pk__in=document_id_list)
+
+    if not queryset:
         messages.error(request, _('Must provide at least one folder document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
-    logger.debug('folder_documents (pre permission check): %s', folder_documents)
     try:
-        Permission.check_permissions(request.user, (permission_folder_remove_document,))
+        Permission.check_permissions(
+            request.user, (permission_folder_remove_document,)
+        )
     except PermissionDenied:
-        folder_documents = AccessControlList.objects.filter_by_access(permission_folder_remove_document, request.user, folder_documents)
-
-    logger.debug('folder_documents (post permission check): %s', folder_documents)
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_folder_remove_document, request.user, queryset
+        )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
-        for folder_document in folder_documents:
+        for folder_document in queryset:
             try:
                 folder.documents.remove(folder_document)
-                messages.success(request, _('Document: %s removed successfully.') % folder_document)
+                messages.success(
+                    request, _(
+                        'Document: %s removed successfully.'
+                    ) % folder_document
+                )
             except Exception as exception:
-                messages.error(request, _('Document: %(document)s delete error: %(error)s') % {
-                    'document': folder_document, 'error': exception})
+                messages.error(
+                    request, _(
+                        'Document: %(document)s delete error: %(error)s'
+                    ) % {
+                        'document': folder_document, 'error': exception
+                    }
+                )
 
         return HttpResponseRedirect(next)
 
@@ -283,12 +294,12 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
         'title': ungettext(
             'Remove the selected document from the folder: %(folder)s?',
             'Remove the selected documents from the folder: %(folder)s?',
-            len(folder_documents)
+            queryset.count()
         ) % {'folder': folder}
     }
 
-    if len(folder_documents) == 1:
-        context['object'] = folder_documents[0]
+    if queryset.count() == 1:
+        context['object'] = queryset.first()
 
     return render_to_response(
         'appearance/generic_confirm.html', context,
