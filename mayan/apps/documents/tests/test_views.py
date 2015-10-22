@@ -10,6 +10,7 @@ from django.test.client import Client
 from django.test import TestCase, override_settings
 from django.utils.six import BytesIO
 
+from common.tests.test_views import GenericViewTestCase
 from permissions.classes import Permission
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
@@ -33,27 +34,12 @@ TEST_DOCUMENT_TYPE_2_LABEL = 'test document type 2 label'
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentsViewsTestCase(TestCase):
+class GenericDocumentViewTestCase(GenericViewTestCase):
     def setUp(self):
+        super(GenericDocumentViewTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
-
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-        self.client = Client()
-
-        self.user = get_user_model().objects.create_user(
-            username=TEST_USER_USERNAME, email=TEST_USER_EMAIL,
-            password=TEST_USER_PASSWORD
-        )
-        self.group = Group.objects.create(name=TEST_GROUP)
-        self.role = Role.objects.create(label=TEST_ROLE_LABEL)
-        Permission.invalidate_cache()
-        self.group.user_set.add(self.user)
-        self.role.groups.add(self.group)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
@@ -61,12 +47,12 @@ class DocumentsViewsTestCase(TestCase):
             )
 
     def tearDown(self):
-        self.admin_user.delete()
-        self.document_type.delete()
-        self.group.delete()
-        self.role.delete()
-        self.user.delete()
+        super(GenericDocumentViewTestCase, self).tearDown()
+        if self.document_type.pk:
+            self.document_type.delete()
 
+
+class DocumentsViewsTestCase(GenericDocumentViewTestCase):
     def test_restoring_documents(self):
         # Login the admin user
         logged_in = self.client.login(
@@ -363,14 +349,8 @@ class DocumentsViewsTestCase(TestCase):
         del(buf)
 
 
-@override_settings(OCR_AUTO_OCR=False)
-class DocumentTypeViewsTestCase(TestCase):
-    def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-        self.client = Client()
+class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
+    def test_document_type_create_view(self):
         # Login the admin user
         logged_in = self.client.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
@@ -378,10 +358,10 @@ class DocumentTypeViewsTestCase(TestCase):
         self.assertTrue(logged_in)
         self.assertTrue(self.admin_user.is_authenticated())
 
-    def tearDown(self):
-        self.admin_user.delete()
+        self.document_type.delete()
 
-    def test_document_type_create_view(self):
+        self.assertEqual(Document.objects.count(), 0)
+
         response = self.client.post(
             reverse('documents:document_type_create'),
             data={
@@ -399,13 +379,17 @@ class DocumentTypeViewsTestCase(TestCase):
         )
 
     def test_document_type_delete_view(self):
-        document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+        # Login the admin user
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
 
         response = self.client.post(
             reverse(
-                'documents:document_type_delete', args=(document_type.pk,)
+                'documents:document_type_delete',
+                args=(self.document_type.pk,)
             ), follow=True
         )
 
@@ -413,13 +397,17 @@ class DocumentTypeViewsTestCase(TestCase):
         self.assertEqual(DocumentType.objects.count(), 0)
 
     def test_document_type_edit_view(self):
-        document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+        # Login the admin user
+        logged_in = self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
+        self.assertTrue(logged_in)
+        self.assertTrue(self.admin_user.is_authenticated())
 
         response = self.client.post(
             reverse(
-                'documents:document_type_edit', args=(document_type.pk,)
+                'documents:document_type_edit',
+                args=(self.document_type.pk,)
             ), data={
                 'label': TEST_DOCUMENT_TYPE_EDITED_LABEL,
                 'delete_time_period': DEFAULT_DELETE_PERIOD,
@@ -430,6 +418,6 @@ class DocumentTypeViewsTestCase(TestCase):
         self.assertContains(response, 'successfully', status_code=200)
 
         self.assertEqual(
-            DocumentType.objects.first().label,
+            DocumentType.objects.get(pk=self.document_type.pk).label,
             TEST_DOCUMENT_TYPE_EDITED_LABEL
         )
