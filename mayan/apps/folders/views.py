@@ -158,21 +158,32 @@ class FolderDetailView(DocumentListView):
 
 def folder_add_document(request, document_id=None, document_id_list=None):
     if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
+        queryset = Document.objects.filter(pk=document_id)
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-    else:
+        queryset = Document.objects.filter(pk__in=document_id_list)
+
+    if not queryset:
         messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     try:
-        Permission.check_permissions(request.user, (permission_folder_add_document,))
+        Permission.check_permissions(
+            request.user, (permission_folder_add_document,)
+        )
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_folder_add_document, request.user, documents)
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_folder_add_document, request.user, queryset
+        )
 
     post_action_redirect = None
     if document_id:
-        post_action_redirect = reverse('folders:document_folder_list', args=(document_id,))
+        post_action_redirect = reverse(
+            'folders:document_folder_list', args=(document_id,)
+        )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -181,14 +192,26 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         form = FolderListForm(request.POST, user=request.user)
         if form.is_valid():
             folder = form.cleaned_data['folder']
-            for document in documents:
+            for document in queryset:
                 if document.pk not in folder.documents.values_list('pk', flat=True):
                     folder.documents.add(document)
-                    messages.success(request, _('Document: %(document)s added to folder: %(folder)s successfully.') % {
-                        'document': document, 'folder': folder})
+                    messages.success(
+                        request, _(
+                            'Document: %(document)s added to folder: '
+                            '%(folder)s successfully.'
+                        ) % {
+                            'document': document, 'folder': folder
+                        }
+                    )
                 else:
-                    messages.warning(request, _('Document: %(document)s is already in folder: %(folder)s.') % {
-                        'document': document, 'folder': folder})
+                    messages.warning(
+                        request, _(
+                            'Document: %(document)s is already in '
+                            'folder: %(folder)s.'
+                        ) % {
+                            'document': document, 'folder': folder
+                        }
+                    )
 
             return HttpResponseRedirect(next)
     else:
@@ -200,13 +223,13 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         'next': next,
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if queryset.count() == 1:
+        context['object'] = queryset.first()
 
     context['title'] = ungettext(
         'Add document to folder',
         'Add documents to folder',
-        len(documents)
+        queryset.count()
     )
 
     return render_to_response(
@@ -308,10 +331,16 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
 
 
 def folder_document_multiple_remove(request, folder_id):
-    return folder_document_remove(request, folder_id, document_id_list=request.GET.get('id_list', request.POST.get('id_list', [])))
+    return folder_document_remove(
+        request, folder_id, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
+    )
 
 
 def folder_add_multiple_documents(request):
     return folder_add_document(
-        request, document_id_list=request.GET.get('id_list', request.POST.get('id_list', []))
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
     )
