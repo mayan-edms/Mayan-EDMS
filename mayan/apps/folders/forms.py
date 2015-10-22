@@ -31,4 +31,5 @@ class FolderListForm(forms.Form):
 
         self.fields['folder'] = forms.ModelChoiceField(
             queryset=queryset,
-            label=_('Folder'))
+            label=_('Folder')
+        )
