@@ -169,11 +169,12 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         self.assertContains(response, text=TEST_TAG_LABEL, status_code=200)
 
-    def test_document_attach_tag_user_view_no_permission(self):
+    def test_document_attach_tag_view_no_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         self.assertEqual(self.document.tags.count(), 0)
 
+        self.role.permissions.add(permission_tag_view.stored_permission)
         response = self.post(
             'tags:tag_attach', args=(self.document.pk,), data={
                 'tag': self.tag.pk,
@@ -181,9 +182,10 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             }
         )
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.document.tags.count(), 0)
 
-    def test_document_attach_tag_user_view_with_permission(self):
+    def test_document_attach_tag_view_with_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         self.assertEqual(self.document.tags.count(), 0)
@@ -220,6 +222,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.document.tags.count(), 0)
 
     def test_document_multiple_attach_tag_view_with_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
