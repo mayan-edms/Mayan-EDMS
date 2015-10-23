@@ -872,30 +872,37 @@ def document_multiple_download(request):
 
 def document_update_page_count(request, document_id=None, document_id_list=None):
     if document_id:
-        documents = [get_object_or_404(Document.objects, pk=document_id)]
+        documents = Document.objects.filter(pk=document_id)
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
-    else:
+        documents = Document.objects.filter(pk__in=document_id_list)
+
+    if not documents:
         messages.error(request, _('At least one document must be selected.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
     try:
-        Permission.check_permissions(request.user, (permission_document_tools,))
+        Permission.check_permissions(
+            request.user, (permission_document_tools,)
+        )
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_document_tools, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_document_tools, request.user, documents
+        )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
         for document in documents:
-            task_update_page_count.apply_async(kwargs={'version_id': document.latest_version.pk})
+            task_update_page_count.apply_async(
+                kwargs={'version_id': document.latest_version.pk}
+            )
 
         messages.success(
             request,
             ungettext(
                 _('Document queued for page count recalculation.'),
                 _('Documents queued for page count recalculation.'),
-                len(documents)
+                documents.count()
             )
         )
         return HttpResponseRedirect(previous)
@@ -905,12 +912,12 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
         'title': ungettext(
             'Recalculate the page count of the selected document?',
             'Recalculate the page count of the selected documents?',
-            len(documents)
+            documents.count()
         )
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if documents.count() == 1:
+        context['object'] = documents.first()
 
     return render_to_response(
         'appearance/generic_confirm.html', context,
@@ -919,24 +926,37 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
 
 
 def document_multiple_update_page_count(request):
-    return document_update_page_count(request, document_id_list=request.GET.get('id_list', []))
+    return document_update_page_count(
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
+    )
 
 
 def document_clear_transformations(request, document_id=None, document_id_list=None):
     if document_id:
-        documents = [get_object_or_404(Document.objects, pk=document_id)]
+        documents = Document.objects.filter(pk=document_id)
         post_redirect = documents[0].get_absolute_url()
     elif document_id_list:
-        documents = [get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')]
+        documents = Document.objects.filter(pk__in=document_id_list)
         post_redirect = None
-    else:
+
+    if not documents:
         messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     try:
-        Permission.check_permissions(request.user, (permission_transformation_delete,))
+        Permission.check_permissions(
+            request.user, (permission_transformation_delete,)
+        )
     except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(permission_transformation_delete, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_transformation_delete, request.user, documents
+        )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
@@ -947,10 +967,21 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
                 for page in document.pages.all():
                     Transformation.objects.get_for_model(page).delete()
             except Exception as exception:
-                messages.error(request, _('Error deleting the page transformations for document: %(document)s; %(error)s.') % {
-                    'document': document, 'error': exception})
+                messages.error(
+                    request, _(
+                        'Error deleting the page transformations for '
+                        'document: %(document)s; %(error)s.'
+                    ) % {
+                        'document': document, 'error': exception
+                    }
+                )
             else:
-                messages.success(request, _('All the page transformations for document: %s, have been deleted successfully.') % document)
+                messages.success(
+                    request, _(
+                        'All the page transformations for document: %s, '
+                        'have been deleted successfully.'
+                    ) % document
+                )
 
         return HttpResponseRedirect(next)
 
@@ -961,19 +992,25 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
         'title': ungettext(
             'Clear all the page transformations for the selected document?',
             'Clear all the page transformations for the selected documents?',
-            len(documents)
+            documents.count()
         )
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if documents.count() == 1:
+        context['object'] = documents.first()
 
-    return render_to_response('appearance/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_confirm.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def document_multiple_clear_transformations(request):
-    return document_clear_transformations(request, document_id_list=request.GET.get('id_list', []))
+    return document_clear_transformations(
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
+    )
 
 
 def document_page_view_reset(request, document_page_id):

@@ -2,35 +2,36 @@
 
 from __future__ import unicode_literals
 
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
+from django.contrib.contenttypes.models import ContentType
 from django.core.files import File
-from django.core.urlresolvers import reverse
-from django.test.client import Client
-from django.test import TestCase, override_settings
+from django.test import override_settings
 from django.utils.six import BytesIO
 
 from common.tests.test_views import GenericViewTestCase
-from permissions.classes import Permission
-from permissions.models import Role
-from permissions.tests.literals import TEST_ROLE_LABEL
+from converter.models import Transformation
+from converter.permissions import permission_transformation_delete
 from user_management.tests.literals import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_GROUP,
-    TEST_USER_EMAIL, TEST_USER_PASSWORD, TEST_USER_USERNAME
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_USER_PASSWORD,
+    TEST_USER_USERNAME
 )
 
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from ..models import DeletedDocument, Document, DocumentType, HASH_FUNCTION
 from ..permissions import (
-    permission_document_download, permission_document_properties_edit
+    permission_document_download, permission_document_properties_edit,
+    permission_document_restore, permission_document_tools,
+    permission_document_view
 )
 
 from .literals import (
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_CHECKSUM,
+    TEST_SMALL_DOCUMENT_PATH
 )
 
 TEST_DOCUMENT_TYPE_EDITED_LABEL = 'test document type edited label'
 TEST_DOCUMENT_TYPE_2_LABEL = 'test document type 2 label'
+TEST_TRANSFORMATION_NAME = 'rotate'
+TEST_TRANSFORMATION_ARGUMENT = 'degrees: 180'
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -53,80 +54,76 @@ class GenericDocumentViewTestCase(GenericViewTestCase):
 
 
 class DocumentsViewsTestCase(GenericDocumentViewTestCase):
-    def test_restoring_documents(self):
-        # Login the admin user
-        logged_in = self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+    def test_document_restore_view_no_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
+        self.document.delete()
+        self.assertEqual(Document.objects.count(), 0)
 
-        self.assertEqual(Document.objects.count(), 1)
-
-        # Trash the document
-        self.client.post(
-            reverse('documents:document_trash', args=(self.document.pk,))
+        response = self.post(
+            'documents:document_restore', args=(self.document.pk,)
         )
+        self.assertEqual(response.status_code, 403)
         self.assertEqual(DeletedDocument.objects.count(), 1)
         self.assertEqual(Document.objects.count(), 0)
 
-        # Restore the document
-        self.client.post(
-            reverse('documents:document_restore', args=(self.document.pk,))
+    def test_document_restore_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
+        self.document.delete()
+        self.assertEqual(Document.objects.count(), 0)
+        self.role.permissions.add(
+            permission_document_restore.stored_permission
+        )
+        response = self.post(
+            'documents:document_restore', args=(self.document.pk,),
+            follow=True
+        )
+        self.assertContains(response, text='restored', status_code=200)
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
 
     def test_trashing_documents(self):
-        # Login the admin user
-        logged_in = self.client.login(
+        self.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
 
         self.assertEqual(Document.objects.count(), 1)
 
         # Trash the document
-        self.client.post(
-            reverse('documents:document_trash', args=(self.document.pk,))
-        )
+        self.post('documents:document_trash', args=(self.document.pk,))
+
         self.assertEqual(DeletedDocument.objects.count(), 1)
         self.assertEqual(Document.objects.count(), 0)
 
         # Delete the document
-        self.client.post(
-            reverse('documents:document_delete', args=(self.document.pk,))
-        )
+        self.post('documents:document_delete', args=(self.document.pk,))
+
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
 
     def test_document_view(self):
-        # Login the admin user
-        logged_in = self.client.login(
+        self.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
 
-        response = self.client.get(reverse('documents:document_list'))
+        response = self.get('documents:document_list')
         self.assertContains(response, 'Total: 1', status_code=200)
 
         # test document simple view
-        response = self.client.get(
-            reverse('documents:document_properties', args=(self.document.pk,))
+        response = self.get(
+            'documents:document_properties', args=(self.document.pk,)
         )
         self.assertContains(
             response, 'roperties for document', status_code=200
         )
 
     def test_document_document_type_change_view(self):
-        # Login the admin user
-        logged_in = self.client.login(
+        self.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
 
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
@@ -137,11 +134,10 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self.client.post(
-            reverse(
-                'documents:document_document_type_edit',
-                args=(self.document.pk,)
-            ), data={'document_type': document_type.pk}, follow=True
+        response = self.post(
+            'documents:document_document_type_edit',
+            args=(self.document.pk,),
+            data={'document_type': document_type.pk}, follow=True
         )
 
         self.assertEqual(response.status_code, 200)
@@ -151,12 +147,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
     def test_document_multiple_document_type_change_view(self):
-        # Login the admin user
-        logged_in = self.client.login(
+        self.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
 
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
@@ -167,11 +160,11 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self.client.post(
-            reverse(
-                'documents:document_multiple_document_type_edit',
-            ), data={
-                'id_list': self.document.pk, 'document_type': document_type.pk
+        response = self.post(
+            'documents:document_multiple_document_type_edit',
+            data={
+                'id_list': self.document.pk,
+                'document_type': document_type.pk
             }, follow=True
         )
 
@@ -182,11 +175,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
     def test_document_multiple_document_type_change_user_view(self):
-        logged_in = self.client.login(
+        self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.user.is_authenticated())
 
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
@@ -197,11 +188,11 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
-        response = self.client.post(
-            reverse(
-                'documents:document_multiple_document_type_edit',
-            ), data={
-                'id_list': self.document.pk, 'document_type': document_type.pk
+        response = self.post(
+            'documents:document_multiple_document_type_edit',
+            data={
+                'id_list': self.document.pk,
+                'document_type': document_type.pk
             }, follow=True
         )
 
@@ -218,11 +209,11 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             permission_document_properties_edit.stored_permission
         )
 
-        response = self.client.post(
-            reverse(
-                'documents:document_multiple_document_type_edit',
-            ), data={
-                'id_list': self.document.pk, 'document_type': document_type.pk
+        response = self.post(
+            'documents:document_multiple_document_type_edit',
+            data={
+                'id_list': self.document.pk,
+                'document_type': document_type.pk
             }, follow=True
         )
 
@@ -233,18 +224,14 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
     def test_document_download_user_view(self):
-        logged_in = self.client.login(
+        self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.user.is_authenticated())
 
         self.assertEqual(Document.objects.count(), 1)
 
-        response = self.client.post(
-            reverse(
-                'documents:document_download', args=(self.document.pk,)
-            )
+        response = self.post(
+            'documents:document_download', args=(self.document.pk,)
         )
 
         self.assertEqual(response.status_code, 302)
@@ -253,10 +240,8 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             permission_document_download.stored_permission
         )
 
-        response = self.client.post(
-            reverse(
-                'documents:document_download', args=(self.document.pk,)
-            )
+        response = self.post(
+            'documents:document_download', args=(self.document.pk,)
         )
 
         self.assertEqual(response.status_code, 200)
@@ -271,16 +256,14 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         del(buf)
 
     def test_document_multiple_download_user_view(self):
-        logged_in = self.client.login(
+        self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.user.is_authenticated())
 
         self.assertEqual(Document.objects.count(), 1)
 
-        response = self.client.post(
-            reverse('documents:document_multiple_download'),
+        response = self.post(
+            'documents:document_multiple_download',
             data={'id_list': self.document.pk}
         )
 
@@ -290,8 +273,8 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             permission_document_download.stored_permission
         )
 
-        response = self.client.post(
-            reverse('documents:document_multiple_download'),
+        response = self.post(
+            'documents:document_multiple_download',
             data={'id_list': self.document.pk}
         )
 
@@ -307,19 +290,15 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         del(buf)
 
     def test_document_version_download_user_view(self):
-        logged_in = self.client.login(
+        self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.user.is_authenticated())
 
         self.assertEqual(Document.objects.count(), 1)
 
-        response = self.client.post(
-            reverse(
-                'documents:document_version_download', args=(
-                    self.document.latest_version.pk,
-                )
+        response = self.post(
+            'documents:document_version_download', args=(
+                self.document.latest_version.pk,
             )
         )
 
@@ -329,11 +308,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             permission_document_download.stored_permission
         )
 
-        response = self.client.post(
-            reverse(
-                'documents:document_version_download', args=(
-                    self.document.latest_version.pk,
-                )
+        response = self.post(
+            'documents:document_version_download', args=(
+                self.document.latest_version.pk,
             )
         )
 
@@ -348,22 +325,208 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         del(buf)
 
+    def test_document_update_page_count_view_no_permission(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.document.pages.all().delete()
+        self.assertEqual(self.document.pages.count(), 0)
+
+        response = self.post(
+            'documents:document_update_page_count', args=(self.document.pk,)
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.document.pages.count(), 0)
+
+    def test_document_update_page_count_view_with_permissions(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        page_count = self.document.pages.count()
+        self.document.pages.all().delete()
+        self.assertEqual(self.document.pages.count(), 0)
+
+        self.role.permissions.add(
+            permission_document_tools.stored_permission
+        )
+
+        response = self.post(
+            'documents:document_update_page_count',
+            args=(self.document.pk,), follow=True
+        )
+        self.assertContains(response, text='queued', status_code=200)
+        self.assertEqual(self.document.pages.count(), page_count)
+
+    def test_document_multiple_update_page_count_view_no_permission(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.document.pages.all().delete()
+        self.assertEqual(self.document.pages.count(), 0)
+
+        response = self.post(
+            'documents:document_multiple_update_page_count',
+            data={'id_list': self.document.pk}
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(self.document.pages.count(), 0)
+
+    def test_document_multiple_update_page_count_view_with_permissions(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        page_count = self.document.pages.count()
+        self.document.pages.all().delete()
+        self.assertEqual(self.document.pages.count(), 0)
+
+        self.role.permissions.add(
+            permission_document_tools.stored_permission
+        )
+
+        response = self.post(
+            'documents:document_multiple_update_page_count',
+            data={'id_list': self.document.pk}, follow=True
+        )
+        self.assertContains(response, text='queued', status_code=200)
+        self.assertEqual(self.document.pages.count(), page_count)
+
+    def test_document_clear_transformations_view_no_permission(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        document_page = self.document.pages.first()
+        content_type = ContentType.objects.get_for_model(document_page)
+        transformation = Transformation.objects.create(
+            content_type=content_type, object_id=document_page.pk,
+            name=TEST_TRANSFORMATION_NAME,
+            arguments=TEST_TRANSFORMATION_ARGUMENT
+        )
+
+        self.assertQuerysetEqual(
+            Transformation.objects.get_for_model(document_page),
+            (repr(transformation),)
+        )
+
+        self.role.permissions.add(
+            permission_document_view.stored_permission
+        )
+        response = self.post(
+            'documents:document_clear_transformations',
+            args=(self.document.pk,)
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertQuerysetEqual(
+            Transformation.objects.get_for_model(document_page),
+            (repr(transformation),)
+        )
+
+    def test_document_clear_transformations_view_with_permissions(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        document_page = self.document.pages.first()
+        content_type = ContentType.objects.get_for_model(document_page)
+        transformation = Transformation.objects.create(
+            content_type=content_type, object_id=document_page.pk,
+            name=TEST_TRANSFORMATION_NAME,
+            arguments=TEST_TRANSFORMATION_ARGUMENT
+        )
+        self.assertQuerysetEqual(
+            Transformation.objects.get_for_model(document_page),
+            (repr(transformation),)
+        )
+
+        self.role.permissions.add(
+            permission_transformation_delete.stored_permission
+        )
+        self.role.permissions.add(
+            permission_document_view.stored_permission
+        )
+        response = self.post(
+            'documents:document_clear_transformations',
+            args=(self.document.pk,), follow=True
+        )
+
+        self.assertContains(
+            response, text='deleted successfully', status_code=200
+        )
+        self.assertEqual(
+            Transformation.objects.get_for_model(document_page).count(), 0
+        )
+
+    def test_document_multiple_clear_transformations_view_no_permission(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        document_page = self.document.pages.first()
+        content_type = ContentType.objects.get_for_model(document_page)
+        transformation = Transformation.objects.create(
+            content_type=content_type, object_id=document_page.pk,
+            name=TEST_TRANSFORMATION_NAME,
+            arguments=TEST_TRANSFORMATION_ARGUMENT
+        )
+
+        self.assertQuerysetEqual(
+            Transformation.objects.get_for_model(document_page),
+            (repr(transformation),)
+        )
+
+        self.role.permissions.add(
+            permission_document_view.stored_permission
+        )
+        response = self.post(
+            'documents:document_multiple_clear_transformations',
+            data={'id_list': self.document.pk}
+        )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertQuerysetEqual(
+            Transformation.objects.get_for_model(document_page),
+            (repr(transformation),)
+        )
+
+    def test_document_multiple_clear_transformations_view_with_permissions(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        document_page = self.document.pages.first()
+        content_type = ContentType.objects.get_for_model(document_page)
+        transformation = Transformation.objects.create(
+            content_type=content_type, object_id=document_page.pk,
+            name=TEST_TRANSFORMATION_NAME,
+            arguments=TEST_TRANSFORMATION_ARGUMENT
+        )
+        self.assertQuerysetEqual(
+            Transformation.objects.get_for_model(document_page),
+            (repr(transformation),)
+        )
+
+        self.role.permissions.add(
+            permission_transformation_delete.stored_permission
+        )
+        self.role.permissions.add(
+            permission_document_view.stored_permission
+        )
+        response = self.post(
+            'documents:document_multiple_clear_transformations',
+            data={'id_list': self.document.pk}, follow=True
+        )
+
+        self.assertContains(
+            response, text='deleted successfully', status_code=200
+        )
+        self.assertEqual(
+            Transformation.objects.get_for_model(document_page).count(), 0
+        )
+
 
 class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
     def test_document_type_create_view(self):
-        # Login the admin user
-        logged_in = self.client.login(
+        self.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
 
         self.document_type.delete()
 
         self.assertEqual(Document.objects.count(), 0)
 
-        response = self.client.post(
-            reverse('documents:document_type_create'),
+        response = self.post(
+            'documents:document_type_create',
             data={
                 'label': TEST_DOCUMENT_TYPE,
                 'delete_time_period': DEFAULT_DELETE_PERIOD,
@@ -379,36 +542,27 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         )
 
     def test_document_type_delete_view(self):
-        # Login the admin user
-        logged_in = self.client.login(
+        self.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
 
-        response = self.client.post(
-            reverse(
-                'documents:document_type_delete',
-                args=(self.document_type.pk,)
-            ), follow=True
+        response = self.post(
+            'documents:document_type_delete',
+            args=(self.document_type.pk,), follow=True
         )
 
         self.assertContains(response, 'successfully', status_code=200)
         self.assertEqual(DocumentType.objects.count(), 0)
 
     def test_document_type_edit_view(self):
-        # Login the admin user
-        logged_in = self.client.login(
+        self.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
         )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
 
-        response = self.client.post(
-            reverse(
-                'documents:document_type_edit',
-                args=(self.document_type.pk,)
-            ), data={
+        response = self.post(
+            'documents:document_type_edit',
+            args=(self.document_type.pk,),
+            data={
                 'label': TEST_DOCUMENT_TYPE_EDITED_LABEL,
                 'delete_time_period': DEFAULT_DELETE_PERIOD,
                 'delete_time_unit': DEFAULT_DELETE_TIME_UNIT
