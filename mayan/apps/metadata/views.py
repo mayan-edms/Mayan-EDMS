@@ -36,11 +36,11 @@ from .permissions import (
 
 def metadata_edit(request, document_id=None, document_id_list=None):
     if document_id:
-        document_id_list = unicode(document_id)
-
-    documents = Document.objects.select_related('metadata').filter(
-        pk__in=document_id_list.split(',')
-    )
+        documents = Document.objects.filter(pk=document_id)
+    elif document_id_list:
+        documents = Document.objects.select_related('metadata').filter(
+            pk__in=document_id_list
+        )
 
     try:
         Permission.check_permissions(
@@ -157,13 +157,13 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         'next': next,
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if documents.count() == 1:
+        context['object'] = documents.first()
 
     context['title'] = ungettext(
         'Edit document metadata',
         'Edit documents metadata',
-        len(documents)
+        documents.count()
     )
 
     return render_to_response(
@@ -174,20 +174,17 @@ def metadata_edit(request, document_id=None, document_id_list=None):
 
 def metadata_multiple_edit(request):
     return metadata_edit(
-        request, document_id_list=request.GET.get('id_list', '')
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
     )
 
 
 def metadata_add(request, document_id=None, document_id_list=None):
     if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
+        documents = Document.objects.filter(pk=document_id)
     elif document_id_list:
-        documents = [
-            get_object_or_404(
-                Document.objects.select_related('document_type'),
-                pk=document_id
-            ) for document_id in document_id_list.split(',')
-        ]
+        documents = Document.objects.select_related('document_type').filter(pk__in=document_id_list)
         if len(set([document.document_type.pk for document in documents])) > 1:
             messages.error(
                 request, _('Only select documents of the same type.')
@@ -281,12 +278,12 @@ def metadata_add(request, document_id=None, document_id_list=None):
                             }
                         )
 
-            if len(documents) == 1:
+            if documents.count() == 1:
                 return HttpResponseRedirect('%s?%s' % (
                     reverse('metadata:metadata_edit', args=(document.pk,)),
                     urlencode({'next': next}))
                 )
-            elif len(documents) > 1:
+            elif documents.count() > 1:
                 return HttpResponseRedirect('%s?%s' % (
                     reverse('metadata:metadata_multiple_edit'),
                     urlencode({'id_list': document_id_list, 'next': next}))
@@ -300,13 +297,13 @@ def metadata_add(request, document_id=None, document_id_list=None):
         'next': next,
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if documents.count() == 1:
+        context['object'] = documents.first()
 
     context['title'] = ungettext(
         'Add metadata types to document',
         'Add metadata types to documents',
-        len(documents)
+        documents.count()
     )
 
     return render_to_response(
@@ -317,17 +314,19 @@ def metadata_add(request, document_id=None, document_id_list=None):
 
 def metadata_multiple_add(request):
     return metadata_add(
-        request, document_id_list=request.GET.get('id_list', [])
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
     )
 
 
 def metadata_remove(request, document_id=None, document_id_list=None):
     if document_id:
-        document_id_list = unicode(document_id)
-
-    documents = Document.objects.select_related('metadata').filter(
-        pk__in=document_id_list.split(',')
-    )
+        documents = Document.objects.filter(pk=document_id)
+    elif document_id_list:
+        documents = Document.objects.select_related('metadata').filter(
+            pk__in=document_id_list
+        )
 
     try:
         Permission.check_permissions(
@@ -446,13 +445,13 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         'next': next,
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if documents.count() == 1:
+        context['object'] = documents.first()
 
     context['title'] = ungettext(
         'Remove metadata types from the document',
         'Remove metadata types from the documents',
-        len(documents)
+        documents.count()
     )
 
     return render_to_response(
@@ -463,7 +462,9 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
 def metadata_multiple_remove(request):
     return metadata_remove(
-        request, document_id_list=request.GET.get('id_list', [])
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
     )
 
 
