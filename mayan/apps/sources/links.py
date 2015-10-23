@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from documents.models import NewVersionBlock
 from documents.permissions import (
     permission_document_create, permission_document_new_version
 )
@@ -15,6 +16,10 @@ from .permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
     permission_sources_setup_edit, permission_sources_setup_view
 )
+
+
+def document_new_version_not_blocked(context):
+    return not NewVersionBlock.objects.is_blocked(context['object'])
 
 
 link_document_create_multiple = Link(
@@ -74,6 +79,7 @@ link_staging_file_delete = Link(
     args=('source.pk', 'object.encoded_filename',)
 )
 link_upload_version = Link(
+    condition=document_new_version_not_blocked,
     permissions=(permission_document_new_version,),
     text=_('Upload new version'), view='sources:upload_version',
     args='object.pk'

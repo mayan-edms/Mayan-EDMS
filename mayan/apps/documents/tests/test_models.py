@@ -6,8 +6,9 @@ import time
 from django.core.files import File
 from django.test import TestCase, override_settings
 
+from ..exceptions import NewDocumentVersionNotAllowed
 from ..literals import STUB_EXPIRATION_INTERVAL
-from ..models import DeletedDocument, Document, DocumentType
+from ..models import DeletedDocument, Document, DocumentType, NewVersionBlock
 
 from .literals import (
     TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
@@ -257,3 +258,55 @@ class DocumentManagerTestCase(TestCase):
         Document.objects.delete_stubs()
 
         self.assertEqual(Document.objects.count(), 0)
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class NewVersionBlockTestCase(TestCase):
+    def setUp(self):
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document = self.document_type.new_document(
+                file_object=File(file_object)
+            )
+
+    def tearDown(self):
+        self.document.delete()
+        self.document_type.delete()
+
+    def test_blocking(self):
+        NewVersionBlock.objects.block(document=self.document)
+
+        self.assertEqual(NewVersionBlock.objects.count(), 1)
+        self.assertEqual(
+            NewVersionBlock.objects.first().document, self.document
+        )
+
+    def test_unblocking(self):
+        NewVersionBlock.objects.create(document=self.document)
+
+        NewVersionBlock.objects.unblock(document=self.document)
+
+        self.assertEqual(NewVersionBlock.objects.count(), 0)
+
+    def test_is_blocked(self):
+        NewVersionBlock.objects.create(document=self.document)
+
+        self.assertTrue(
+            NewVersionBlock.objects.is_blocked(document=self.document)
+        )
+
+        NewVersionBlock.objects.all().delete()
+
+        self.assertFalse(
+            NewVersionBlock.objects.is_blocked(document=self.document)
+        )
+
+    def test_blocking_new_versions(self):
+        NewVersionBlock.objects.block(document=self.document)
+
+        with self.assertRaises(NewDocumentVersionNotAllowed):
+            with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+                self.document.new_version(file_object=File(file_object))

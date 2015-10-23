@@ -5,15 +5,18 @@ from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase, override_settings
 
-from documents.models import Document, DocumentType
+from documents.models import Document, DocumentType, NewVersionBlock
 from documents.tests import (
     TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
     TEST_DOCUMENT_TYPE
 )
+from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
+    TEST_USER_PASSWORD, TEST_USER_USERNAME, TEST_ADMIN_EMAIL,
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
 )
 
+from ..links import link_upload_version
 from ..literals import SOURCE_CHOICE_WEB_FORM
 from ..models import WebFormSource
 
@@ -128,3 +131,43 @@ class UploadDocumentTestCase(TestCase):
         # Fetch document again and test description
         document = Document.objects.first()
         self.assertEqual(document.description, TEST_DOCUMENT_DESCRIPTION)
+
+
+class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
+    def test_new_version_block(self):
+        """
+        Gitlab issue #231
+        User shown option to upload new version of a document even though it
+        is blocked by checkout - v2.0.0b2
+
+        Expected results:
+            - Link to upload version view should not resolve
+            - Upload version view should reject request
+        """
+
+        self.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+
+        NewVersionBlock.objects.block(self.document)
+
+        response = self.post(
+            'sources:upload_version', args=(self.document.pk,),
+            follow=True
+        )
+
+        self.assertContains(
+            response, text='blocked from uploading',
+            status_code=200
+        )
+
+        response = self.get(
+            'documents:document_version_list', args=(self.document.pk,),
+            follow=True
+        )
+
+        #Needed by the url view resolver
+        response.context.current_app = None
+        resolved_link = link_upload_version.resolve(context=response.context)
+
+        self.assertEqual(resolved_link, None)

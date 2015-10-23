@@ -13,29 +13,22 @@ from .settings import setting_recent_count
 logger = logging.getLogger(__name__)
 
 
-class RecentDocumentManager(models.Manager):
-    def add_document_for_user(self, user, document):
-        if user.is_authenticated():
-            new_recent, created = self.model.objects.get_or_create(
-                user=user, document=document
-            )
-            if not created:
-                # document already in the recent list, just save to force
-                # accessed date and time update
-                new_recent.save()
+class DocumentManager(models.Manager):
+    def delete_stubs(self):
+        for stale_stub_document in self.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=STUB_EXPIRATION_INTERVAL)):
+            stale_stub_document.delete(trash=False)
 
-            recent_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_recent_count.value:]
-            self.filter(pk__in=list(recent_to_delete)).delete()
+    def get_by_natural_key(self, uuid):
+        return self.get(uuid=uuid)
 
-    def get_for_user(self, user):
-        document_model = apps.get_model('documents', 'document')
+    def get_queryset(self):
+        return TrashCanQuerySet(
+            self.model, using=self._db
+        ).filter(in_trash=False)
 
-        if user.is_authenticated():
-            return document_model.objects.filter(
-                recentdocument__user=user
-            ).order_by('-recentdocument__datetime_accessed')
-        else:
-            return document_model.objects.none()
+    def invalidate_cache(self):
+        for document in self.model.objects.all():
+            document.invalidate_cache()
 
 
 class DocumentTypeManager(models.Manager):
@@ -105,26 +98,44 @@ class DocumentTypeManager(models.Manager):
         return self.get(label=label)
 
 
-class DocumentManager(models.Manager):
-    def delete_stubs(self):
-        for stale_stub_document in self.filter(is_stub=True, date_added__lt=now() - timedelta(seconds=STUB_EXPIRATION_INTERVAL)):
-            stale_stub_document.delete(trash=False)
+class NewVersionBlockManager(models.Manager):
+    def block(self, document):
+        self.get_or_create(document=document)
 
-    def get_by_natural_key(self, uuid):
-        return self.get(uuid=uuid)
+    def unblock(self, document):
+        self.filter(document=document).delete()
 
-    def get_queryset(self):
-        return TrashCanQuerySet(
-            self.model, using=self._db
-        ).filter(in_trash=False)
-
-    def invalidate_cache(self):
-        for document in self.model.objects.all():
-            document.invalidate_cache()
+    def is_blocked(self, document):
+        return self.filter(document=document).exists()
 
 
 class PassthroughManager(models.Manager):
     pass
+
+
+class RecentDocumentManager(models.Manager):
+    def add_document_for_user(self, user, document):
+        if user.is_authenticated():
+            new_recent, created = self.model.objects.get_or_create(
+                user=user, document=document
+            )
+            if not created:
+                # document already in the recent list, just save to force
+                # accessed date and time update
+                new_recent.save()
+
+            recent_to_delete = self.filter(user=user).values_list('pk', flat=True)[setting_recent_count.value:]
+            self.filter(pk__in=list(recent_to_delete)).delete()
+
+    def get_for_user(self, user):
+        document_model = apps.get_model('documents', 'document')
+
+        if user.is_authenticated():
+            return document_model.objects.filter(
+                recentdocument__user=user
+            ).order_by('-recentdocument__datetime_accessed')
+        else:
+            return document_model.objects.none()
 
 
 class TrashCanManager(models.Manager):

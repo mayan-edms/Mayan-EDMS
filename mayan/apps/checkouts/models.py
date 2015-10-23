@@ -10,7 +10,7 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.timezone import now
 from django.utils.translation import ugettext_lazy as _
 
-from documents.models import Document
+from documents.models import Document, NewVersionBlock
 
 from .events import event_document_check_out
 from .exceptions import DocumentAlreadyCheckedOut
@@ -50,16 +50,22 @@ class DocumentCheckout(models.Model):
     def __str__(self):
         return unicode(self.document)
 
-    def get_absolute_url(self):
-        return reverse('checkout:checkout_info', args=(self.document.pk,))
-
     def clean(self):
         if self.expiration_datetime < now():
             raise ValidationError(
                 _('Check out expiration date and time must be in the future.')
             )
 
+    def delete(self, *args, **kwargs):
+        # TODO: enclose in transaction
+        NewVersionBlock.objects.unblock(self.document)
+        super(DocumentCheckout, self).delete(*args, **kwargs)
+
+    def get_absolute_url(self):
+        return reverse('checkout:checkout_info', args=(self.document.pk,))
+
     def save(self, *args, **kwargs):
+        # TODO: enclose in transaction
         new_checkout = not self.pk
         if not new_checkout or self.document.is_checked_out():
             raise DocumentAlreadyCheckedOut
@@ -69,6 +75,9 @@ class DocumentCheckout(models.Model):
             event_document_check_out.commit(
                 actor=self.user, target=self.document
             )
+            if self.block_new_version:
+                NewVersionBlock.objects.block(self.document)
+
             logger.info(
                 'Document "%s" checked out by user "%s"',
                 self.document, self.user

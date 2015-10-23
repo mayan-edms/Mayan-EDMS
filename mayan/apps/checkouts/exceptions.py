@@ -10,13 +10,6 @@ class DocumentCheckoutError(Exception):
     pass
 
 
-class DocumentCheckoutWarning(Warning):
-    """
-    Base checkout warning
-    """
-    pass
-
-
 class DocumentNotCheckedOut(DocumentCheckoutError):
     """
     Raised when trying to checkin a document that is not checkedout
@@ -30,11 +23,3 @@ class DocumentAlreadyCheckedOut(DocumentCheckoutError):
     """
     def __unicode__(self):
         return ugettext('Document already checked out.')
-
-
-class NewDocumentVersionNotAllowed(DocumentCheckoutWarning):
-    """
-    Uploading new versions for this document is not allowed
-    Current reasons:  Document is in checked out state
-    """
-    pass

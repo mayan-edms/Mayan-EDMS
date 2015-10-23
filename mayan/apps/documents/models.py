@@ -31,10 +31,11 @@ from .events import (
     event_document_properties_edit, event_document_type_change,
     event_document_version_revert
 )
+from .exceptions import NewDocumentVersionNotAllowed
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
-    DocumentManager, DocumentTypeManager, PassthroughManager,
-    RecentDocumentManager, TrashCanManager
+    DocumentManager, DocumentTypeManager, NewVersionBlockManager,
+    PassthroughManager, RecentDocumentManager, TrashCanManager
 )
 from .permissions import permission_document_view
 from .runtime import cache_storage_backend, storage_backend
@@ -397,6 +398,8 @@ class DocumentVersion(models.Model):
 
         if new_document_version:
             logger.info('Creating new version for document: %s', self.document)
+            if NewVersionBlock.objects.is_blocked(self.document):
+                raise NewDocumentVersionNotAllowed
 
         try:
             with transaction.atomic():
@@ -777,6 +780,17 @@ class DocumentPage(models.Model):
         images
         """
         return '{}-{}'.format(self.document_version.uuid, self.pk)
+
+
+
+class NewVersionBlock(models.Model):
+    document = models.ForeignKey(Document, verbose_name=_('Document'))
+
+    objects = NewVersionBlockManager()
+
+    class Meta:
+        verbose_name = _('New version block')
+        verbose_name_plural = _('New version blocks')
 
 
 @python_2_unicode_compatible

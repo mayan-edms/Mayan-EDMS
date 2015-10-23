@@ -16,7 +16,9 @@ from user_management.tests.literals import (
 )
 
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
-from ..models import DeletedDocument, Document, DocumentType, HASH_FUNCTION
+from ..models import (
+    DeletedDocument, Document, DocumentType, NewVersionBlock, HASH_FUNCTION
+)
 from ..permissions import (
     permission_document_download, permission_document_properties_edit,
     permission_document_restore, permission_document_tools,
@@ -574,4 +576,33 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(
             DocumentType.objects.get(pk=self.document_type.pk).label,
             TEST_DOCUMENT_TYPE_EDITED_LABEL
+        )
+
+
+class NewDocumentVersionBlockViewTestCase(GenericDocumentViewTestCase):
+    def test_document_new_version_after_checkout(self):
+        """
+        Gitlab issue #231
+        User shown option to upload new version of a document even though it
+        is blocked by checkout - v2.0.0b2
+
+        Expected results:
+            - Link to upload version view should not resolve
+            - Upload version view should reject request
+        """
+
+        self.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+
+        NewVersionBlock.objects.block(self.document)
+
+        response = self.post(
+            'sources:upload_version', args=(self.document.pk,),
+            follow=True
+        )
+
+        self.assertContains(
+            response, text='blocked from uploading',
+            status_code=200
         )

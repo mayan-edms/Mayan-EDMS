@@ -14,75 +14,62 @@ from documents.models import DocumentType
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
-from user_management.tests.literals import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
+from documents.tests.test_views import GenericDocumentViewTestCase
+from sources.links import link_upload_version
+from user_management.tests import (
+    TEST_USER_PASSWORD, TEST_USER_USERNAME, TEST_ADMIN_EMAIL,
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
 )
 
 from ..models import DocumentCheckout
+from ..permissions import (
+    permission_document_checkin, permission_document_checkout
+)
 
 
-class DocumentCheckoutViewTestCase(TestCase):
-    def setUp(self):
-        self.admin_user = User.objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-        self.client = Client()
-        # Login the admin user
-        logged_in = self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
-
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
+class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
+    def test_checkin_document_view_no_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=File(file_object)
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        self.admin_user.delete()
-
-    def test_checkout_view(self):
-        response = self.client.post(
-            reverse(
-                'checkouts:checkout_document', args=(self.document.pk,),
-            ), data={
-                'expiration_datetime_0': 2,
-                'expiration_datetime_1': TIME_DELTA_UNIT_DAYS,
-                'block_new_version': True
-            }, follow=True
-        )
-
-        self.assertEquals(response.status_code, 200)
-
-        self.assertTrue(self.document.is_checked_out())
-
-        self.assertTrue(
-            DocumentCheckout.objects.is_document_checked_out(
-                document=self.document
-            )
-        )
-
-    def test_checkin_view(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
         DocumentCheckout.objects.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
-            user=self.admin_user, block_new_version=True
+            user=self.user, block_new_version=True
         )
 
         self.assertTrue(self.document.is_checked_out())
 
-        response = self.client.post(
-            reverse(
-                'checkouts:checkin_document', args=(self.document.pk,),
-            ), follow=True
+        response = self.post(
+            'checkouts:checkin_document', args=(self.document.pk,), follow=True
+        )
+
+        self.assertEquals(response.status_code, 403)
+
+        self.assertTrue(self.document.is_checked_out())
+
+    def test_checkin_document_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        expiration_datetime = now() + datetime.timedelta(days=1)
+
+        DocumentCheckout.objects.checkout_document(
+            document=self.document, expiration_datetime=expiration_datetime,
+            user=self.user, block_new_version=True
+        )
+
+        self.assertTrue(self.document.is_checked_out())
+
+        self.role.permissions.add(
+            permission_document_checkin.stored_permission
+        )
+
+        response = self.post(
+            'checkouts:checkin_document', args=(self.document.pk,), follow=True
         )
 
         self.assertEquals(response.status_code, 200)
@@ -94,3 +81,85 @@ class DocumentCheckoutViewTestCase(TestCase):
                 document=self.document
             )
         )
+
+    def test_checkout_document_view_no_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        response = self.post(
+            'checkouts:checkout_document', args=(self.document.pk,), data={
+                'expiration_datetime_0': 2,
+                'expiration_datetime_1': TIME_DELTA_UNIT_DAYS,
+                'block_new_version': True
+            }, follow=True
+        )
+
+        self.assertEquals(response.status_code, 403)
+
+        self.assertFalse(self.document.is_checked_out())
+
+    def test_checkout_document_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+        self.role.permissions.add(
+            permission_document_checkout.stored_permission
+        )
+
+        response = self.post(
+            'checkouts:checkout_document', args=(self.document.pk,), data={
+                'expiration_datetime_0': 2,
+                'expiration_datetime_1': TIME_DELTA_UNIT_DAYS,
+                'block_new_version': True
+            }, follow=True
+        )
+
+        self.assertEquals(response.status_code, 200)
+
+        self.assertTrue(self.document.is_checked_out())
+
+    def test_document_new_version_after_checkout(self):
+        """
+        Gitlab issue #231
+        User shown option to upload new version of a document even though it
+        is blocked by checkout - v2.0.0b2
+
+        Expected results:
+            - Link to upload version view should not resolve
+            - Upload version view should reject request
+        """
+
+        self.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+
+        expiration_datetime = now() + datetime.timedelta(days=1)
+
+        DocumentCheckout.objects.checkout_document(
+            document=self.document, expiration_datetime=expiration_datetime,
+            user=self.admin_user, block_new_version=True
+        )
+
+        self.assertTrue(self.document.is_checked_out())
+
+        response = self.post(
+            'sources:upload_version', args=(self.document.pk,),
+            follow=True
+        )
+
+        self.assertContains(
+            response, text='blocked from uploading',
+            status_code=200
+        )
+
+        response = self.get(
+            'documents:document_version_list', args=(self.document.pk,),
+            follow=True
+        )
+
+        #Needed by the url view resolver
+        response.context.current_app = None
+        resolved_link = link_upload_version.resolve(context=response.context)
+
+        self.assertEqual(resolved_link, None)

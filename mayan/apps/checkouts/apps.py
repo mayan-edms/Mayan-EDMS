@@ -13,7 +13,6 @@ from documents.models import Document, DocumentVersion
 from mayan.celery import app
 from rest_api.classes import APIEndPoint
 
-from .handlers import check_if_new_versions_allowed
 from .links import (
     link_checkin_document, link_checkout_document, link_checkout_info,
     link_checkout_list
@@ -103,9 +102,4 @@ class CheckoutsApp(MayanAppConfig):
                 'checkouts:checkout_info', 'checkouts:checkout_document',
                 'checkouts:checkin_document'
             )
-        )
-
-        pre_save.connect(
-            check_if_new_versions_allowed,
-            dispatch_uid='document_index_delete', sender=DocumentVersion
         )

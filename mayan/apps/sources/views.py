@@ -19,7 +19,7 @@ from common.views import (
     SingleObjectEditView, SingleObjectListView
 )
 from common.widgets import two_state_template
-from documents.models import DocumentType, Document
+from documents.models import DocumentType, Document, NewVersionBlock
 from documents.permissions import (
     permission_document_create, permission_document_new_version
 )
@@ -314,6 +314,20 @@ class UploadInteractiveVersionView(UploadBaseView):
         self.subtemplates_list = []
 
         self.document = get_object_or_404(Document, pk=kwargs['document_pk'])
+
+        if NewVersionBlock.objects.is_blocked(self.document):
+            messages.error(
+                self.request,
+                _(
+                    'Document "%s" is blocked from uploading new versions.'
+                ) % self.document
+            )
+            return HttpResponseRedirect(
+                reverse(
+                    'documents:document_version_list', args=(self.document.pk,)
+                )
+            )
+
         try:
             Permission.check_permissions(
                 self.request.user, (permission_document_new_version,)
