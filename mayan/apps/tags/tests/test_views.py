@@ -182,7 +182,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             }
         )
 
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 403)
         self.assertEqual(self.document.tags.count(), 0)
 
     def test_document_attach_tag_view_with_permission(self):

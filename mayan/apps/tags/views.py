@@ -6,7 +6,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.conf import settings
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -45,20 +45,23 @@ def tag_attach(request, document_id=None, document_id_list=None):
     elif document_id_list:
         queryset = Document.objects.filter(pk__in=document_id_list)
 
-    if not queryset:
-        messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
-            )
-        )
-
     try:
         Permission.check_permissions(request.user, (permission_tag_attach,))
     except PermissionDenied:
         queryset = AccessControlList.objects.filter_by_access(
             permission_tag_attach, request.user, queryset
         )
+
+    if not queryset:
+        if document_id:
+            raise PermissionDenied
+        else:
+            messages.error(request, _('Must provide at least one document.'))
+            return HttpResponseRedirect(
+                request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
+            )
 
     post_action_redirect = None
     previous = request.POST.get(
