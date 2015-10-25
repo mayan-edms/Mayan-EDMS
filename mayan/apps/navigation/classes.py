@@ -222,6 +222,13 @@ class Link(object):
         current_path = request.META['PATH_INFO']
         current_view = resolve(current_path).view_name
 
+        # ACL is tested agains the resolved_object or just {{ object }} if not
+        if not resolved_object:
+            try:
+                resolved_object = Variable('object').resolve(context=context)
+            except VariableDoesNotExist:
+                pass
+
         # If this link has a required permission check that the user have it
         # too
         if self.permissions:
