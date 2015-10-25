@@ -10,7 +10,7 @@ from .permissions import (
 )
 
 link_document_content = Link(
-    permissions=(permission_ocr_content_view,), text=_('Content'),
+    permissions=(permission_ocr_content_view,), text=_('OCR'),
     view='ocr:document_content', args='resolved_object.id'
 )
 link_document_submit = Link(

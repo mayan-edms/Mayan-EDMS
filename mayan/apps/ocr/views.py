@@ -157,7 +157,7 @@ def document_content(request, document_id):
         'hide_labels': True,
         'object': document,
         'read_only': True,
-        'title': _('Content of document: %s') % document,
+        'title': _('OCR result for document: %s') % document,
     }, context_instance=RequestContext(request))
 
 
