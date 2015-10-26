@@ -207,12 +207,16 @@ class DocumentCheckinView(ConfirmView):
         try:
             document.check_in(user=self.request.user)
         except DocumentNotCheckedOut:
-            messages.error(self.request, _('Document has not been checked out.'))
+            messages.error(
+                self.request, _('Document has not been checked out.')
+            )
         except Exception as exception:
             messages.error(
-                self.request, _('Error trying to check in document; %s') % exception
+                self.request,
+                _('Error trying to check in document; %s') % exception
             )
         else:
             messages.success(
-                self.request, _('Document "%s" checked in successfully.') % document
+                self.request,
+                _('Document "%s" checked in successfully.') % document
             )
