@@ -11,11 +11,19 @@ from .permissions import (
 
 
 def is_checked_out(context):
-    return context['object'].is_checked_out()
+    try:
+        return context['object'].is_checked_out()
+    except KeyError:
+        # Might not have permissions
+        return False
 
 
 def is_not_checked_out(context):
-    return not context['object'].is_checked_out()
+    try:
+        return not context['object'].is_checked_out()
+    except KeyError:
+        # Might not have permissions
+        return True
 
 
 link_checkout_list = Link(

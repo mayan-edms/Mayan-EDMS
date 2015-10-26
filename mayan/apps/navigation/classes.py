@@ -285,7 +285,12 @@ class Link(object):
             view_name=view_name, args=args, kwargs=kwargs, asvar=None
         )
 
-        resolved_link.url = node.render(context)
+        try:
+            resolved_link.url = node.render(context)
+        except Exception as exception:
+            logger.error(
+                'Error resolving link "%s" URL; %s', self.text, exception
+            )
 
         # This is for links that should be displayed but that are not clickable
         if self.conditional_disable:
