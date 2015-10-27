@@ -1,10 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.conf.urls import include, url
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
-from django.test.client import Client
+from django.http import HttpResponse
+from django.template import Context, Template
 from django.test import TestCase
+from django.test.client import Client
 
 from permissions import Permission
 from permissions.models import Role
@@ -14,9 +17,12 @@ from user_management.tests import (
     TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
 )
 
+from .literals import TEST_VIEW_NAME, TEST_VIEW_URL
+
 
 class GenericViewTestCase(TestCase):
     def setUp(self):
+        self.has_test_view = False
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -34,11 +40,27 @@ class GenericViewTestCase(TestCase):
         Permission.invalidate_cache()
 
     def tearDown(self):
+        from mayan.urls import urlpatterns
+
         self.admin_user.delete()
         self.client.logout()
         self.group.delete()
         self.role.delete()
         self.user.delete()
+        if self.has_test_view:
+            urlpatterns.pop(0)
+
+    def add_test_view(self, test_object):
+        from mayan.urls import urlpatterns
+
+        def test_view(request):
+            template = Template('{{ object }}')
+            context = Context({'object': test_object})
+            return HttpResponse(template.render(context=context))
+
+        urlpatterns.insert(0, url(TEST_VIEW_URL, test_view, name=TEST_VIEW_NAME))
+
+        self.has_test_view = True
 
     def get(self, viewname, *args, **kwargs):
         data = kwargs.pop('data', {})

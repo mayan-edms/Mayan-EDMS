@@ -9,40 +9,27 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponse
 from django.template import Context, Template
 
-from mayan.urls import urlpatterns
 
 from acls.models import AccessControlList
+from common.tests.literals import TEST_VIEW_NAME
 from common.tests.test_views import GenericViewTestCase
 from permissions import Permission, PermissionNamespace
 from user_management.tests import TEST_USER_PASSWORD, TEST_USER_USERNAME
 
 from ..classes import Link
 
-TEST_OBJECT = None
 TEST_PERMISSION_NAMESPACE_NAME = 'test namespace name'
 TEST_PERMISSION_NAMESPACE_TEXT = 'test namespace text'
 TEST_PERMISSION_NAME = 'test permission name'
 TEST_PERMISSION_LABEL = 'test permission label'
 TEST_LINK_TEXT = 'test link text'
-TEST_VIEW_URL = 'test-view-url'
-TEST_VIEW_NAME = 'test view name'
-
-
-def test_view(request):
-    template = Template('{{ object }}')
-    context = Context({'object': TEST_OBJECT})
-    return HttpResponse(template.render(context=context))
-
-
-urlpatterns += (url(TEST_VIEW_URL, test_view, name=TEST_VIEW_NAME),)
 
 
 class LinkClassTestCase(GenericViewTestCase):
     def setUp(self):
         super(LinkClassTestCase, self).setUp()
 
-        global TEST_OBJECT
-        TEST_OBJECT = self.group
+        self.add_test_view(test_object=self.group)
 
         self.namespace = PermissionNamespace(
             TEST_PERMISSION_NAMESPACE_NAME, TEST_PERMISSION_NAMESPACE_TEXT
@@ -113,7 +100,7 @@ class LinkClassTestCase(GenericViewTestCase):
         )
 
         acl = AccessControlList.objects.create(
-            content_object=TEST_OBJECT, role=self.role
+            content_object=self.group, role=self.role
         )
         acl.permissions.add(self.permission.stored_permission)
 
