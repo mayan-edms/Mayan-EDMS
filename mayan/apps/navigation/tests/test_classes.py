@@ -68,7 +68,10 @@ class LinkClassTestCase(GenericViewTestCase):
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        link = Link(permissions=(self.permission,), text=TEST_LINK_TEXT, view=TEST_VIEW_NAME)
+        link = Link(
+            permissions=(self.permission,), text=TEST_LINK_TEXT,
+            view=TEST_VIEW_NAME
+        )
 
         response = self.get(TEST_VIEW_NAME)
         response.context.update({'request': response.wsgi_request})
@@ -83,7 +86,10 @@ class LinkClassTestCase(GenericViewTestCase):
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        link = Link(permissions=(self.permission,), text=TEST_LINK_TEXT, view=TEST_VIEW_NAME)
+        link = Link(
+            permissions=(self.permission,), text=TEST_LINK_TEXT,
+            view=TEST_VIEW_NAME
+        )
 
         self.role.permissions.add(self.permission.stored_permission)
 
