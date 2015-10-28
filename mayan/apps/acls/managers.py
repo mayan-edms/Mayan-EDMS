@@ -59,6 +59,13 @@ class AccessControlListManager(models.Manager):
         if related:
             obj = getattr(obj, related)
 
+        try:
+            parent_accessor = ModelPermission.get_inheritance(obj._meta.model)
+        except KeyError:
+            pass
+        else:
+            obj = getattr(obj, parent_accessor)
+
         user_roles = []
         for group in user.groups.all():
             for role in group.roles.all():
