@@ -21,15 +21,12 @@ link_metadata_edit = Link(
     view='metadata:metadata_edit', args='object.pk'
 )
 link_metadata_multiple_add = Link(
-    permissions=(permission_metadata_document_add,), text=_('Add metadata'),
-    view='metadata:metadata_multiple_add'
+    text=_('Add metadata'), view='metadata:metadata_multiple_add'
 )
 link_metadata_multiple_edit = Link(
-    permissions=(permission_metadata_document_edit,), text=_('Edit metadata'),
-    view='metadata:metadata_multiple_edit'
+    text=_('Edit metadata'), view='metadata:metadata_multiple_edit'
 )
 link_metadata_multiple_remove = Link(
-    permissions=(permission_metadata_document_remove,),
     text=_('Remove metadata'), view='metadata:metadata_multiple_remove'
 )
 link_metadata_remove = Link(
