@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf.urls import include, url
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
-from django.core.urlresolvers import reverse
+from django.core.urlresolvers import clear_url_caches, reverse
 from django.http import HttpResponse
 from django.template import Context, Template
 from django.test import TestCase
@@ -59,8 +59,14 @@ class GenericViewTestCase(TestCase):
             return HttpResponse(template.render(context=context))
 
         urlpatterns.insert(0, url(TEST_VIEW_URL, test_view, name=TEST_VIEW_NAME))
-
+        clear_url_caches()
         self.has_test_view = True
+
+    def get_test_view(self):
+        response = self.get(TEST_VIEW_NAME)
+        response.context.update({'request': response.wsgi_request})
+        context = Context(response.context)
+        return context
 
     def get(self, viewname, *args, **kwargs):
         data = kwargs.pop('data', {})
