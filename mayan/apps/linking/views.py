@@ -157,7 +157,7 @@ class DocumentSmartLinkListView(SmartLinkListView):
                 request.user, (permission_document_view,)
             )
         except PermissionDenied:
-            AccessControlList.objects.check_permissions(
+            AccessControlList.objects.check_access(
                 permission_document_view, request.user, self.document
             )
 
