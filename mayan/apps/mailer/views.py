@@ -36,11 +36,9 @@ class LogEntryListView(SingleObjectListView):
 
 def send_document_link(request, document_id=None, document_id_list=None, as_attachment=False):
     if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
+        documents = Document.objects.filter(pk=document_id)
     elif document_id_list:
-        documents = [
-            get_object_or_404(Document, pk=document_id) for document_id in document_id_list.split(',')
-        ]
+        documents = Document.objects.filter(pk__in=document_id_list)
 
     if as_attachment:
         permission = permission_mailing_send_document
@@ -79,7 +77,10 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
 
             for document in documents:
                 context = Context({
-                    'link': 'http://%s%s' % (Site.objects.get_current().domain, document.get_absolute_url()),
+                    'link': 'http://%s%s' % (
+                        Site.objects.get_current().domain,
+                        document.get_absolute_url()
+                    ),
                     'document': document
                 })
                 body_template = Template(form.cleaned_data['body'])
@@ -100,7 +101,9 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
                 )
 
             # TODO: Pluralize
-            messages.success(request, _('Successfully queued for delivery via email.'))
+            messages.success(
+                request, _('Successfully queued for delivery via email.')
+            )
             return HttpResponseRedirect(next)
     else:
         form = DocumentMailForm(as_attachment=as_attachment)
@@ -111,13 +114,13 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
         'submit_label': _('Send'),
         'submit_icon': 'fa fa-envelope'
     }
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if documents.count() == 1:
+        context['object'] = documents.first()
         if as_attachment:
             context['title'] = _('Email document: %s') % ', '.join([unicode(d) for d in documents])
         else:
             context['title'] = _('Email link for document: %s') % ', '.join([unicode(d) for d in documents])
-    elif len(documents) > 1:
+    elif documents.count() > 1:
         if as_attachment:
             context['title'] = _('Email documents: %s') % ', '.join([unicode(d) for d in documents])
         else:
