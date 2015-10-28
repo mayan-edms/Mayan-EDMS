@@ -17,7 +17,7 @@ from user_management.tests.literals import (
 
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from ..models import (
-    DeletedDocument, Document, DocumentType, NewVersionBlock, HASH_FUNCTION
+    DeletedDocument, Document, DocumentType, HASH_FUNCTION
 )
 from ..permissions import (
     permission_document_download, permission_document_properties_edit,
@@ -26,9 +26,9 @@ from ..permissions import (
 )
 
 from .literals import (
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_CHECKSUM,
-    TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
+
 
 TEST_DOCUMENT_TYPE_EDITED_LABEL = 'test document type edited label'
 TEST_DOCUMENT_TYPE_2_LABEL = 'test document type 2 label'
