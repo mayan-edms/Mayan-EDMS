@@ -27,7 +27,10 @@ class POP3EmailAdmin(admin.ModelAdmin):
 
 @admin.register(StagingFolderSource)
 class StagingFolderSourceAdmin(admin.ModelAdmin):
-    list_display = ('label', 'enabled', 'folder_path', 'preview_width', 'preview_height', 'uncompress', 'delete_after_upload')
+    list_display = (
+        'label', 'enabled', 'folder_path', 'preview_width', 'preview_height',
+        'uncompress', 'delete_after_upload'
+    )
 
 
 @admin.register(WatchFolderSource)

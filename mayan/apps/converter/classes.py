@@ -26,7 +26,9 @@ CHUNK_SIZE = 1024
 logger = logging.getLogger(__name__)
 
 try:
-    LIBREOFFICE = sh.Command(setting_libreoffice_path.value).bake('--headless', '--convert-to', 'pdf')
+    LIBREOFFICE = sh.Command(
+        setting_libreoffice_path.value
+    ).bake('--headless', '--convert-to', 'pdf')
 except sh.CommandNotFound:
     LIBREOFFICE = None
 

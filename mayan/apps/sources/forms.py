@@ -42,7 +42,10 @@ class UploadBaseForm(forms.Form):
         if show_expand:
             self.fields['expand'] = forms.BooleanField(
                 label=_('Expand compressed files'), required=False,
-                help_text=ugettext('Upload a compressed file\'s contained files as individual documents')
+                help_text=ugettext(
+                    'Upload a compressed file\'s contained files as '
+                    'individual documents'
+                )
             )
 
 

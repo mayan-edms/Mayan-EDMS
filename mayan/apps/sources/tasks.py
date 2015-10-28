@@ -37,7 +37,9 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
     try:
         document_type = DocumentType.objects.get(pk=document_type_id)
         source = Source.objects.get_subclass(pk=source_id)
-        shared_upload = SharedUploadedFile.objects.get(pk=shared_uploaded_file_id)
+        shared_upload = SharedUploadedFile.objects.get(
+            pk=shared_uploaded_file_id
+        )
 
         if user_id:
             user = User.objects.get(pk=user_id)

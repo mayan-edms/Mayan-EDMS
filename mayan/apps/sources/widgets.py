@@ -15,7 +15,8 @@ from documents.settings import setting_preview_size, setting_thumbnail_size
 
 def staging_file_thumbnail(staging_file, **kwargs):
     return staging_file_html_widget(
-        staging_file, click_view='rest_api:stagingfolderfile-image-view', **kwargs
+        staging_file, click_view='rest_api:stagingfolderfile-image-view',
+        **kwargs
     )
 
 
