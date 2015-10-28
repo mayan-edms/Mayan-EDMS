@@ -31,7 +31,6 @@ from converter.permissions import permission_transformation_delete
 from filetransfers.api import serve_file
 from permissions import Permission
 
-from .events import event_document_type_change
 from .forms import (
     DocumentDownloadForm, DocumentForm, DocumentPageForm, DocumentPreviewForm,
     DocumentPropertiesForm, DocumentTypeSelectForm,

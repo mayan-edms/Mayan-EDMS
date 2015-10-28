@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
 
 from common.tests.test_views import GenericViewTestCase
-from documents.permissions import permission_document_view
 
 from ..permissions import (
     permission_user_delete, permission_user_edit, permission_user_view
@@ -30,10 +29,9 @@ class UserManagementViewTestCase(GenericViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        user = get_user_model().objects.get(username=TEST_USER_USERNAME)
 
         self.client.logout()
-        logged_in = self.client.login(
+        self.client.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
         )
 
@@ -57,7 +55,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
         self.assertContains(response, text='Successfull', status_code=200)
 
         self.client.logout()
-        logged_in = self.client.login(
+        self.client.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
         )
         response = self.get('common:current_user_details')
@@ -78,10 +76,9 @@ class UserManagementViewTestCase(GenericViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        user = get_user_model().objects.get(username=TEST_USER_USERNAME)
 
         self.client.logout()
-        logged_in = self.client.login(
+        self.client.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
         )
 
@@ -106,7 +103,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
         self.assertContains(response, text='Successfull', status_code=200)
 
         self.client.logout()
-        logged_in = self.client.login(
+        self.client.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
         )
         response = self.get('common:current_user_details')

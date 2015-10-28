@@ -1,11 +1,5 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
-from django.core.files import File
-from django.core.urlresolvers import reverse
-from django.test.client import Client
-from django.test import TestCase
-
 from documents.models import DocumentType
 from documents.permissions import (
     permission_document_properties_edit, permission_document_view

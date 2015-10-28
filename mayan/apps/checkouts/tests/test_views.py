@@ -2,15 +2,9 @@ from __future__ import unicode_literals
 
 import datetime
 
-from django.contrib.auth.models import User
-from django.core.files import File
-from django.core.urlresolvers import reverse
-from django.test.client import Client
-from django.test import TestCase
 from django.utils.timezone import now
 
 from common.literals import TIME_DELTA_UNIT_DAYS
-from documents.models import DocumentType
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
@@ -159,7 +153,7 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
             follow=True
         )
 
-        #Needed by the url view resolver
+        # Needed by the url view resolver
         response.context.current_app = None
         resolved_link = link_upload_version.resolve(context=response.context)
 

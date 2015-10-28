@@ -4,12 +4,11 @@ from datetime import timedelta
 
 from kombu import Exchange, Queue
 
-from django.db.models.signals import pre_save
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
-from documents.models import Document, DocumentVersion
+from documents.models import Document
 from mayan.celery import app
 from rest_api.classes import APIEndPoint
 

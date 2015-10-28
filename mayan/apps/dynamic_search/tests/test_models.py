@@ -11,6 +11,7 @@ from user_management.tests import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
 )
 
+
 class DocumentSearchTestCase(TestCase):
     def setUp(self):
         self.admin_user = User.objects.create_superuser(

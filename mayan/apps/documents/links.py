@@ -116,7 +116,7 @@ link_document_multiple_download = Link(
 )
 link_document_multiple_update_page_count = Link(
     text=_('Recalculate page count'),
-     view='documents:document_multiple_update_page_count'
+    view='documents:document_multiple_update_page_count'
 )
 link_document_multiple_restore = Link(
     text=_('Restore'), view='documents:document_multiple_restore'

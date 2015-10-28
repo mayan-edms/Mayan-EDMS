@@ -1,13 +1,12 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf.urls import include, url
+from django.conf.urls import url
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.urlresolvers import clear_url_caches, reverse
 from django.http import HttpResponse
 from django.template import Context, Template
 from django.test import TestCase
-from django.test.client import Client
 
 from permissions import Permission
 from permissions.models import Role

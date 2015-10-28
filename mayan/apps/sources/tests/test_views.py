@@ -166,7 +166,7 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
             follow=True
         )
 
-        #Needed by the url view resolver
+        # Needed by the url view resolver
         response.context.current_app = None
         resolved_link = link_upload_version.resolve(context=response.context)
 

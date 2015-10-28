@@ -1,14 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf.urls import include, url
-from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
-from django.contrib.contenttypes.models import ContentType
-from django.core.files.base import File
 from django.core.urlresolvers import reverse
-from django.http import HttpResponse
-from django.template import Context, Template
-
+from django.template import Context
 
 from acls.models import AccessControlList
 from common.tests.literals import TEST_VIEW_NAME

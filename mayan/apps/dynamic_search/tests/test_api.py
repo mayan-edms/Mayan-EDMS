@@ -15,6 +15,7 @@ from user_management.tests import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 
+
 @override_settings(OCR_AUTO_OCR=False)
 class SearchAPITestCase(APITestCase):
     """

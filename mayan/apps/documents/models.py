@@ -782,7 +782,6 @@ class DocumentPage(models.Model):
         return '{}-{}'.format(self.document_version.uuid, self.pk)
 
 
-
 class NewVersionBlock(models.Model):
     document = models.ForeignKey(Document, verbose_name=_('Document'))
 
