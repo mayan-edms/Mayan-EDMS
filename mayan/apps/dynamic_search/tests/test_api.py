@@ -30,9 +30,6 @@ class SearchAPITestCase(APITestCase):
 
         self.client.force_authenticate(user=self.admin_user)
 
-    def tearDown(self):
-        self.admin_user.delete()
-
     def test_search(self):
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE

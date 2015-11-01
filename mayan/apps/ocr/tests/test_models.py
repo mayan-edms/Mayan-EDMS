@@ -53,7 +53,6 @@ class GermanOCRSupportTestCase(TestCase):
             )
 
     def tearDown(self):
-        self.document.delete()
         self.document_type.delete()
 
     def test_ocr_language_backends_end(self):

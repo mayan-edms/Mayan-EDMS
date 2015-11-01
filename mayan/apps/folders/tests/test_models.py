@@ -30,9 +30,7 @@ class FolderTestCase(TestCase):
         )
 
     def tearDown(self):
-        self.document.delete()
         self.document_type.delete()
-        self.user.delete()
 
     def test_creation_of_folder(self):
         folder = Folder.objects.create(label='test', user=self.user)

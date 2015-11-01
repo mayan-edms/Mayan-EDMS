@@ -40,7 +40,6 @@ class UploadDocumentTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
-        self.admin_user.delete()
 
     def test_upload_a_document(self):
         # Login the admin user

@@ -39,8 +39,6 @@ class OCRAPITestCase(APITestCase):
             )
 
     def tearDown(self):
-        self.admin_user.delete()
-        self.document.delete()
         self.document_type.delete()
 
     def test_submit_document(self):

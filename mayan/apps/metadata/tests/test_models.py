@@ -37,7 +37,6 @@ class MetadataTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
-        self.metadata_type.delete()
 
     def test_no_default(self):
         document_metadata = DocumentMetadata(

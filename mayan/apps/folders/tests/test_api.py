@@ -31,9 +31,6 @@ class FolderAPITestCase(APITestCase):
 
         self.client.force_authenticate(user=self.admin_user)
 
-    def tearDown(self):
-        self.admin_user.delete()
-
     def test_folder_create(self):
         self.client.post(
             reverse('rest_api:folder-list'), {'label': TEST_FOLDER_LABEL}

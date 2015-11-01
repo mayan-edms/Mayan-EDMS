@@ -35,10 +35,6 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
 
         self.document_type.metadata.create(metadata_type=self.metadata_type)
 
-    def tearDown(self):
-        super(DocumentMetadataTestCase, self).tearDown()
-        self.metadata_type.delete()
-
     def test_metadata_add_view_no_permission(self):
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD

@@ -28,7 +28,6 @@ class DocumentSearchTestCase(TestCase):
             )
 
     def tearDown(self):
-        self.document.delete()
         self.document_type.delete()
 
     def test_simple_search_after_related_name_change(self):

@@ -48,8 +48,6 @@ class DocumentStateViewTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
-        self.admin_user.delete()
-        Workflow.objects.all().delete()
 
     def test_creating_workflow(self):
         response = self.client.post(

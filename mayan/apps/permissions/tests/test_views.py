@@ -28,9 +28,6 @@ class PermissionsViewsTestCase(TestCase):
         self.assertTrue(logged_in)
         self.assertTrue(self.admin_user.is_authenticated())
 
-    def tearDown(self):
-        self.admin_user.delete()
-
     def test_role_creation_view(self):
         response = self.client.post(
             reverse(

@@ -50,8 +50,6 @@ class Issue46TestCase(TestCase):
         for document_type in DocumentType.objects.all():
             document_type.delete()
 
-        self.admin_user.delete()
-
     def test_advanced_search_past_first_page(self):
         # Make sure all documents are returned by the search
         model_list, result_set, elapsed_time = document_search.search(

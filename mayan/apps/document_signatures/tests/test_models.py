@@ -42,7 +42,6 @@ class DocumentTestCase(TestCase):
             gpg.import_key(file_object.read())
 
     def tearDown(self):
-        self.document.delete()
         self.document_type.delete()
 
     def test_document_no_signature(self):

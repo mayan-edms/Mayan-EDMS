@@ -41,11 +41,7 @@ class GenericViewTestCase(TestCase):
     def tearDown(self):
         from mayan.urls import urlpatterns
 
-        self.admin_user.delete()
         self.client.logout()
-        self.group.delete()
-        self.role.delete()
-        self.user.delete()
         if self.has_test_view:
             urlpatterns.pop(0)
 

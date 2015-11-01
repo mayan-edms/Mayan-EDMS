@@ -26,7 +26,6 @@ class ParserTestCase(TestCase):
             )
 
     def tearDown(self):
-        self.document.delete()
         self.document_type.delete()
 
     def test_pdfminer_parser(self):
@@ -61,7 +60,6 @@ class TextExtractorTestCase(TestCase):
             )
 
     def tearDown(self):
-        self.document.delete()
         self.document_type.delete()
 
     def test_text_extractor(self):

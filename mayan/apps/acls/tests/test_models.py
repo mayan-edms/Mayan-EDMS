@@ -59,9 +59,6 @@ class PermissionTestCase(TestCase):
     def tearDown(self):
         for document_type in DocumentType.objects.all():
             document_type.delete()
-        self.role.delete()
-        self.group.delete()
-        self.user.delete()
 
     def test_check_access_without_permissions(self):
         with self.assertRaises(PermissionDenied):
