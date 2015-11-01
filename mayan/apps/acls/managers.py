@@ -64,7 +64,12 @@ class AccessControlListManager(models.Manager):
         except KeyError:
             pass
         else:
-            obj = getattr(obj, parent_accessor)
+            try:
+                return self.check_access(
+                    permissions, user, getattr(obj, parent_accessor)
+                )
+            except PermissionDenied:
+                pass
 
         user_roles = []
         for group in user.groups.all():
