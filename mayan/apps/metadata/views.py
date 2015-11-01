@@ -37,6 +37,8 @@ from .permissions import (
 def metadata_edit(request, document_id=None, document_id_list=None):
     if document_id:
         documents = Document.objects.filter(pk=document_id)
+        if not documents:
+            raise Document.DoesNotExist
     elif document_id_list:
         documents = Document.objects.select_related('metadata').filter(
             pk__in=document_id_list
@@ -53,7 +55,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
 
     if not documents:
         if document_id:
-            raise Http404
+            raise PermissionDenied
         else:
             messages.error(request, _('Must provide at least one document.'))
             return HttpResponseRedirect(
@@ -183,6 +185,8 @@ def metadata_multiple_edit(request):
 def metadata_add(request, document_id=None, document_id_list=None):
     if document_id:
         documents = Document.objects.filter(pk=document_id)
+        if not documents:
+            raise Document.DoesNotExist
     elif document_id_list:
         documents = Document.objects.select_related('document_type').filter(pk__in=document_id_list)
         if len(set([document.document_type.pk for document in documents])) > 1:
@@ -205,12 +209,15 @@ def metadata_add(request, document_id=None, document_id_list=None):
         )
 
     if not documents:
-        messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+        if document_id:
+            raise PermissionDenied
+        else:
+            messages.error(request, _('Must provide at least one document.'))
+            return HttpResponseRedirect(
+                request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
             )
-        )
 
     for document in documents:
         document.add_as_recent_document_for_user(request.user)
@@ -323,6 +330,8 @@ def metadata_multiple_add(request):
 def metadata_remove(request, document_id=None, document_id_list=None):
     if document_id:
         documents = Document.objects.filter(pk=document_id)
+        if not documents:
+            raise Document.DoesNotExist
     elif document_id_list:
         documents = Document.objects.select_related('metadata').filter(
             pk__in=document_id_list
@@ -339,7 +348,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
     if not documents:
         if document_id:
-            raise Http404
+            raise PermissionDenied
         else:
             messages.error(request, _('Must provide at least one document.'))
             return HttpResponseRedirect(

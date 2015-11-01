@@ -48,7 +48,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
             'metadata:metadata_add', args=(self.document.pk,),
             data={'metadata_type': self.metadata_type.pk}
         )
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 403)
 
         self.assertEqual(len(self.document.metadata.all()), 0)
 
@@ -151,7 +151,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
             'metadata:metadata_remove', args=(self.document.pk,),
         )
 
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 403)
 
         # Test post to metadata removal view
         response = self.post(
@@ -164,7 +164,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
             }, follow=True
         )
 
-        self.assertEqual(response.status_code, 404)
+        self.assertEqual(response.status_code, 403)
 
         self.assertEqual(len(self.document.metadata.all()), 1)
 
