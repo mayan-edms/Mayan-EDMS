@@ -6,7 +6,7 @@ from django.contrib.sites.models import Site
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import render_to_response
 from django.template import Context, RequestContext, Template
 from django.utils.html import strip_tags
 from django.utils.translation import ugettext_lazy as _

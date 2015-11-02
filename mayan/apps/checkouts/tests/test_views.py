@@ -5,14 +5,11 @@ import datetime
 from django.utils.timezone import now
 
 from common.literals import TIME_DELTA_UNIT_DAYS
-from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
-)
 from documents.tests.test_views import GenericDocumentViewTestCase
 from sources.links import link_upload_version
 from user_management.tests import (
-    TEST_USER_PASSWORD, TEST_USER_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
+    TEST_USER_PASSWORD, TEST_USER_USERNAME, TEST_ADMIN_PASSWORD,
+    TEST_ADMIN_USERNAME,
 )
 
 from ..models import DocumentCheckout

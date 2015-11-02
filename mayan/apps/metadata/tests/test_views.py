@@ -4,9 +4,7 @@ from documents.models import DocumentType
 from documents.permissions import (
     permission_document_properties_edit, permission_document_view
 )
-from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE, TEST_DOCUMENT_TYPE_2, TEST_SMALL_DOCUMENT_PATH
-)
+from documents.tests.literals import TEST_DOCUMENT_TYPE_2
 from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests.literals import (
     TEST_USER_USERNAME, TEST_USER_PASSWORD

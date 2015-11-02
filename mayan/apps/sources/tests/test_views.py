@@ -12,8 +12,7 @@ from documents.tests import (
 )
 from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests import (
-    TEST_USER_PASSWORD, TEST_USER_USERNAME, TEST_ADMIN_EMAIL,
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
+    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
 )
 
 from ..links import link_upload_version
