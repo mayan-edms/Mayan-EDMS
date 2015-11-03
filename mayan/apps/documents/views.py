@@ -628,12 +628,6 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
     elif document_id_list:
         queryset = Document.objects.filter(pk__in=document_id_list)
 
-    if not queryset:
-        messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(
-            request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
-        )
-
     try:
         Permission.check_permissions(
             request.user, (permission_document_properties_edit,)
@@ -642,6 +636,15 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
         queryset = AccessControlList.objects.filter_by_access(
             permission_document_properties_edit, request.user, queryset
         )
+
+    if not queryset:
+        if document_id:
+            raise PermissionDenied
+        else:
+            messages.error(request, _('Must provide at least one document.'))
+            return HttpResponseRedirect(
+                request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
+            )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))

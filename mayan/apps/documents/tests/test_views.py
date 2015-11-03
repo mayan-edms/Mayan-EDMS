@@ -223,7 +223,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             data={'document_type': document_type.pk}
         )
 
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
             Document.objects.get(pk=self.document.pk).document_type,
@@ -258,7 +258,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             Document.objects.get(pk=self.document.pk).document_type,
             document_type
         )
-
+##
     def test_document_multiple_document_type_change_view(self):
         self.login(
             username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
@@ -286,7 +286,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(
             Document.objects.first().document_type, document_type
         )
-
+##
     def test_document_multiple_document_type_change_user_view(self):
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
