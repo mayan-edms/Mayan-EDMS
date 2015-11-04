@@ -95,7 +95,7 @@ class DeletedDocumentListView(DocumentListView):
                 self.request.user, (permission_document_view,)
             )
         except PermissionDenied:
-            AccessControlList.objects.check_access(
+            AccessControlList.objects.filter_by_access(
                 permission_document_view, self.request.user, queryset
             )
 
