@@ -9,3 +9,5 @@ django-rosetta==0.7.6
 ipython==4.0.0
 
 transifex-client==0.10
+
+wheel==0.26.0
