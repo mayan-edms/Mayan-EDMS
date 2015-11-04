@@ -11,8 +11,7 @@ from common.tests.test_views import GenericViewTestCase
 from converter.models import Transformation
 from converter.permissions import permission_transformation_delete
 from user_management.tests.literals import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_USER_PASSWORD,
-    TEST_USER_USERNAME
+    TEST_USER_PASSWORD, TEST_USER_USERNAME
 )
 
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
@@ -23,7 +22,9 @@ from ..permissions import (
     permission_document_delete, permission_document_download,
     permission_document_properties_edit, permission_document_restore,
     permission_document_tools, permission_document_trash,
-    permission_document_type_create, permission_document_view
+    permission_document_type_create, permission_document_type_delete,
+    permission_document_type_edit, permission_document_type_view,
+    permission_document_view, permission_empty_trash
 )
 
 from .literals import (
@@ -575,38 +576,32 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             (repr(transformation),)
         )
 
-    def test_document_multiple_clear_transformations_view_with_permissions(self):
+    def test_trash_can_empty_view_no_permissions(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+        self.document.delete()
+        self.assertEqual(DeletedDocument.objects.count(), 1)
 
-        document_page = self.document.pages.first()
-        content_type = ContentType.objects.get_for_model(document_page)
-        transformation = Transformation.objects.create(
-            content_type=content_type, object_id=document_page.pk,
-            name=TEST_TRANSFORMATION_NAME,
-            arguments=TEST_TRANSFORMATION_ARGUMENT
+        response = self.post('documents:trash_can_empty')
+
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(DeletedDocument.objects.count(), 1)
+
+    def test_trash_can_empty_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
-        self.assertQuerysetEqual(
-            Transformation.objects.get_for_model(document_page),
-            (repr(transformation),)
-        )
+        self.document.delete()
+        self.assertEqual(DeletedDocument.objects.count(), 1)
 
         self.role.permissions.add(
-            permission_transformation_delete.stored_permission
+            permission_empty_trash.stored_permission
         )
-        self.role.permissions.add(
-            permission_document_view.stored_permission
-        )
-        response = self.post(
-            'documents:document_multiple_clear_transformations',
-            data={'id_list': self.document.pk}, follow=True
-        )
+        response = self.post('documents:trash_can_empty', follow=True)
 
-        self.assertContains(
-            response, text='deleted successfully', status_code=200
-        )
-        self.assertEqual(
-            Transformation.objects.get_for_model(document_page).count(), 0
-        )
+        self.assertContains(response, text='emptied successfully', status_code=200)
+        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(Document.objects.count(), 0)
 
 
 class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
@@ -644,6 +639,9 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         self.role.permissions.add(
             permission_document_type_create.stored_permission
         )
+        self.role.permissions.add(
+            permission_document_type_view.stored_permission
+        )
 
         response = self.post(
             'documents:document_type_create',
@@ -653,16 +651,37 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
                 'delete_time_unit': DEFAULT_DELETE_TIME_UNIT
             }, follow=True
         )
-        self.assertContains(response, 'successfully', status_code=200)
+
+        self.assertContains(response, text='successfully', status_code=200)
 
         self.assertEqual(DocumentType.objects.count(), 1)
         self.assertEqual(
             DocumentType.objects.first().label, TEST_DOCUMENT_TYPE
         )
 
-    def test_document_type_delete_view(self):
+    def test_document_type_delete_view_no_permission(self):
         self.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        response = self.post(
+            'documents:document_type_delete',
+            args=(self.document_type.pk,)
+        )
+
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(DocumentType.objects.count(), 1)
+
+    def test_document_type_delete_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_document_type_delete.stored_permission
+        )
+        self.role.permissions.add(
+            permission_document_type_view.stored_permission
         )
 
         response = self.post(
@@ -673,9 +692,38 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         self.assertContains(response, 'successfully', status_code=200)
         self.assertEqual(DocumentType.objects.count(), 0)
 
-    def test_document_type_edit_view(self):
+    def test_document_type_edit_view_no_permission(self):
         self.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        response = self.post(
+            'documents:document_type_edit',
+            args=(self.document_type.pk,),
+            data={
+                'label': TEST_DOCUMENT_TYPE_EDITED_LABEL,
+                'delete_time_period': DEFAULT_DELETE_PERIOD,
+                'delete_time_unit': DEFAULT_DELETE_TIME_UNIT
+            }
+        )
+
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(
+            DocumentType.objects.get(pk=self.document_type.pk).label,
+            TEST_DOCUMENT_TYPE
+        )
+
+    def test_document_type_edit_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_document_type_edit.stored_permission
+        )
+        self.role.permissions.add(
+            permission_document_type_view.stored_permission
         )
 
         response = self.post(
