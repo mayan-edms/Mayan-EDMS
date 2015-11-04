@@ -23,7 +23,7 @@ from ..permissions import (
     permission_document_delete, permission_document_download,
     permission_document_properties_edit, permission_document_restore,
     permission_document_tools, permission_document_trash,
-    permission_document_view
+    permission_document_type_create, permission_document_view
 )
 
 from .literals import (
@@ -258,41 +258,12 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             Document.objects.get(pk=self.document.pk).document_type,
             document_type
         )
-##
-    def test_document_multiple_document_type_change_view(self):
-        self.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
 
-        self.assertEqual(Document.objects.count(), 1)
-        self.assertEqual(
-            Document.objects.first().document_type, self.document_type
-        )
-
-        document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE_2_LABEL
-        )
-
-        response = self.post(
-            'documents:document_multiple_document_type_edit',
-            data={
-                'id_list': self.document.pk,
-                'document_type': document_type.pk
-            }, follow=True
-        )
-
-        self.assertEqual(response.status_code, 200)
-
-        self.assertEqual(
-            Document.objects.first().document_type, document_type
-        )
-##
-    def test_document_multiple_document_type_change_user_view(self):
+    def test_document_multiple_document_type_change_view_no_permission(self):
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(
             Document.objects.first().document_type, self.document_type
         )
@@ -306,17 +277,27 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             data={
                 'id_list': self.document.pk,
                 'document_type': document_type.pk
-            }, follow=True
+            }
         )
 
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
-        # Should fail to change the document type
         self.assertEqual(
             Document.objects.first().document_type, self.document_type
         )
 
-        # Grant the permission for a positive test result
+    def test_document_multiple_document_type_change_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.assertEqual(
+            Document.objects.first().document_type, self.document_type
+        )
+
+        document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE_2_LABEL
+        )
 
         self.role.permissions.add(
             permission_document_properties_edit.stored_permission
@@ -629,9 +610,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
 
 class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
-    def test_document_type_create_view(self):
+    def test_document_type_create_view_no_permission(self):
         self.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
         self.document_type.delete()
@@ -644,9 +625,34 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
                 'label': TEST_DOCUMENT_TYPE,
                 'delete_time_period': DEFAULT_DELETE_PERIOD,
                 'delete_time_unit': DEFAULT_DELETE_TIME_UNIT
-            }, follow=True
+            }
         )
 
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(DocumentType.objects.count(), 0)
+
+    def test_document_type_create_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.document_type.delete()
+
+        self.assertEqual(Document.objects.count(), 0)
+
+        self.role.permissions.add(
+            permission_document_type_create.stored_permission
+        )
+
+        response = self.post(
+            'documents:document_type_create',
+            data={
+                'label': TEST_DOCUMENT_TYPE,
+                'delete_time_period': DEFAULT_DELETE_PERIOD,
+                'delete_time_unit': DEFAULT_DELETE_TIME_UNIT
+            }, follow=True
+        )
         self.assertContains(response, 'successfully', status_code=200)
 
         self.assertEqual(DocumentType.objects.count(), 1)
