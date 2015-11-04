@@ -1,10 +1,6 @@
-|Build Status| [![codecov.io](http://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=development)](http://codecov.io/gitlab/mayan-edms/mayan-edms?branch=development) |PyPI badge| |Installs badge| |License badge| |Wheel badge|
+|Build Status| |Coverage badge| |PyPI badge| |Installs badge| |License badge|
 
 |Logo|
-
-.. image:: https://badges.gitter.im/Join%20Chat.svg
-   :alt: Join the chat at https://gitter.im/mayan-edms/mayan-edms
-   :target: https://gitter.im/mayan-edms/mayan-edms?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge
 
 
 Description
@@ -76,8 +72,9 @@ Contribute
    :target: https://crate.io/packages/mayan-edms/
 .. |PyPI badge| image:: http://img.shields.io/pypi/v/mayan-edms.svg?style=flat
    :target: http://badge.fury.io/py/mayan-edms
-.. |Wheel badge| image:: http://img.shields.io/badge/wheel-yes-green.svg?style=flat
 .. |License badge| image:: http://img.shields.io/badge/license-Apache%202.0-green.svg?style=flat
 .. |Analytics| image:: https://ga-beacon.appspot.com/UA-52965619-2/mayan-edms/readme?pixel
+.. |Coverage badge| image:: https://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=development
+   :target: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=development
 
 |Analytics|
