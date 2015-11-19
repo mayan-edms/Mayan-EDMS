@@ -6,4 +6,5 @@ from .models import DocumentType
 
 
 def create_default_document_type(sender, **kwargs):
-    DocumentType.objects.create(label=_('Default'))
+    if not DocumentType.objects.count():    
+        DocumentType.objects.create(label=_('Default'))

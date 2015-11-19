@@ -9,9 +9,10 @@ from .models import POP3Email, IMAPEmail, WatchFolderSource, WebFormSource
 
 
 def create_default_document_source(sender, **kwargs):
-    WebFormSource.objects.create(
-        label=_('Default'), uncompress=SOURCE_UNCOMPRESS_CHOICE_ASK
-    )
+    if not WebFormSource.objects.count():
+        WebFormSource.objects.create(
+            label=_('Default'), uncompress=SOURCE_UNCOMPRESS_CHOICE_ASK
+        )
 
 
 def copy_transformations_to_version(sender, **kwargs):
