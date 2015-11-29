@@ -25,4 +25,4 @@ storage in this case is decoupled and its behavior is controlled
 not by the project but by the ``Storage`` module class. All the other
 modules don't make any assumptions about how the actual document files are
 stored. This way files can be saved locally, over the network or even across
-the internet and everything will still operate exactly the same.
+the Internet and everything will still operate exactly the same.

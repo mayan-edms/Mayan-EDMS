@@ -22,16 +22,16 @@ or startup problems.
 
 Frontend UI
 -----------
-The frontend UI HTML has been refactored to use Bootstrap. Along with this
+The frontend UI HTML has been re-factored to use Bootstrap. Along with this
 update a lot of legacy HTML and CSS was removed, greatly simplifying the
 existing template and allowing the removal of some.
 
-Theming and rebranding
+Theming and re-branding
 ----------------------
 All the presentation logic and markup has been moved into it's own app, the
 'appearance' app. All modifications required to customize the entire look of
 the **Mayan EDMS** can now be done in a single app. Very little markup remains
-in the other apps, and it's usually because of necesity, namely the widgets.py
+in the other apps, and it's usually because of necessity, namely the widgets.py
 modules.
 
 Improved page navigation interface
@@ -52,7 +52,7 @@ system that favor font icon was added.
 
 Document preview generation
 ---------------------------
-The image conversion system was refactored from the ground up and uses a much
+The image conversion system was re-factored from the ground up and uses a much
 smarted caching system. The document image cache has it's own Django file
 storage driver and no longer default to the system /tmp directory. By moving
 the document image cache to a Django file storage, the cache doesn't need to
@@ -97,7 +97,7 @@ app are no longer required. These are:
 * sendfile
 * slate
 
-ACL system refactor
+ACL system re-factor
 -------------------
 The Access Control System has been greatly simplified and optimized. The
 logistics to grant and revoke permissions are now as follows: Only Roles can
@@ -131,12 +131,12 @@ document types is the new recommended method.
 Removal of anonymous user support
 ---------------------------------
 Allowing anonymous users access to your document repository is no longer
-support. Admininstrator wanting to make a group of documents public are
+support. Administrators wanting to make a group of documents public are
 encouraged to create an user, group and role for that purpose.
 
-Metadata validators refactor
+Metadata validators re-factor
 ----------------------------
-The metadata validator have been splitted into: Validators and Parsers.
+The metadata validators have been split into: Validators and Parsers.
 Validators will just check that the input value conforms to certain
 specification, raising a validation error is not and blocking the user from
 submitting data. The Parsers will transform user input and store the result as
@@ -211,7 +211,7 @@ failure tolerance: https://pypi.python.org/pypi/django-sabot
 
 RGB tags
 --------
-Previously tags could only choose from a predertermined number of color. This
+Previously tags could only choose from a predetermined number of color. This
 release changes that and tags be of any color. Tags now store the color
 selected in HTML RGB format. Existing tags are automatically converted to this
 new scheme.
@@ -225,10 +225,10 @@ default document type and default document source are both called 'Default'.
 
 Link unbinding
 --------------
-Suppport for allowing 3rd party apps to unbind links binded by the core apps
+Support for allowing 3rd party apps to unbind links binded by the core apps
 was added to further improve re-branding and customization.
 
-Statistics refactor
+Statistics re-factor
 -------------------
 Statistics gathering and generation has been overhauled to allow for the
 creation of scheduled statistics. This allows statistics computation to be
@@ -287,7 +287,7 @@ Admin changes
 Installation admins are no longer required to have the `superusers` or `staff`
 Django account flags. All setup tasks are now governed by a permission which
 can be assigned to a role. This creates a clear separation between an install
-administrator and the server administrator in which the installtion was
+administrator and the server administrator in which the installation was
 performed.
 
 OCR functions split
@@ -318,7 +318,7 @@ Other changes
 
 * Merge of document_print and document_hard_copy views.
 * New class based and menu based navigation system.
-* Repurpose the installtion app.
+* Re-purpose the installation app.
 * New class based transformations.
 * Usage of Font Awesome icons set.
 * Move document text content display code to the OCR app.
@@ -351,7 +351,7 @@ Other changes
 * default_app_config for each app.
 * Natural key support for many models allowing database migrations using dumped data.
 * Separate documentation requirements file to allow for contributor who only want to work on documentation.
-* Centralized testing with a new managament command, `runtests`.
+* Centralized testing with a new management command, `runtests`.
 * Addition of a tox configuration.
 * Email test body capture.
 * Email subject and from values storage.
@@ -379,7 +379,7 @@ Using PIP
 
 Type in the console::
 
-    $ pip install mayan-edms==2.0
+    $ pip install -U mayan-edms
 
 the requirements will also be updated automatically.
 

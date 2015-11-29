@@ -17,7 +17,8 @@ Binary dependencies
 Ubuntu
 ------
 
-If using a Debian_ or Ubuntu_ based Linux distribution, get the executable requirements using::
+If using a Debian_ or Ubuntu_ based Linux distribution, get the executable
+requirements using::
 
     sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
 
@@ -25,7 +26,7 @@ If using a Debian_ or Ubuntu_ based Linux distribution, get the executable requi
 Mac OSX
 -------
 
-**Mayan EDMS** is dependant on a number of binary packages and the recommended
+**Mayan EDMS** is dependent on a number of binary packages and the recommended
 way is to use a package manager such as `MacPorts <https://www.macports.org/>`_
 or `Homebrew <http://brew.sh/>`_.
 
@@ -37,7 +38,9 @@ With MacPorts installed run the command:
 
 .. code-block:: bash
 
-    sudo port install python-dev gcc tesseract-ocr unpaper python-virtualenv ghostscript libjpeg-dev libpng-dev poppler-utils
+    sudo port install python-dev gcc tesseract-ocr unpaper \
+    python-virtualenv ghostscript libjpeg-dev libpng-dev \
+    poppler-utils
 
 Set the Binary paths
 ********************

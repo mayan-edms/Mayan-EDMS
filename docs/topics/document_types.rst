@@ -2,8 +2,8 @@
 Document types
 ==============
 
-The basic unit of data in **Mayan EDMS** is the ``document type``. A document type
-can be interpreted also as a document category, a document class, or a
+The basic unit of data in **Mayan EDMS** is the ``document type``. A document
+type can be interpreted also as a document category, a document class, or a
 document template. Document types need to be created before documents can be
 uploaded. It is not possible to upload documents without assigning them a
 document type. Examples of document type: **invoices**, **blueprints**,

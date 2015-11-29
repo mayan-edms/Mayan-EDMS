@@ -5,9 +5,9 @@ Deploying
 Like other Django based projects **Mayan EDMS** can be deployed in a wide variety
 of ways. The method provided below is only a bare minimum example.
 These instructions are independent of the instructions mentioned in the
-:doc:`installation` chapter but asume you have already made a test install to
-test the compability of your operating system. These instruction are for Ubuntu
-15.04.
+:doc:`installation` chapter but assume you have already made a test install to
+test the compatibility of your operating system. These instruction are for
+Ubuntu 15.04.
 
 Switch to superuser::
 
@@ -15,7 +15,10 @@ Switch to superuser::
 
 Install all system dependencies::
 
-    apt-get install nginx supervisor redis-server postgresql libpq-dev libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
+    apt-get install nginx supervisor redis-server postgresql \
+    libpq-dev libjpeg-dev libmagic1 libpng-dev libreoffice \
+    libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv \
+    tesseract-ocr unpaper poppler-utils -y
 
 Change the directory to where the project will be deployed::
 
@@ -33,9 +36,9 @@ Install Mayan EDMS::
 
     pip install mayan-edms
 
-Install the Python client for Redis, uWSGI, and PostgreSQL::
+Install the Python client for PostgreSQL, Redis, and uWSGI::
 
-    pip install redis uwsgi psycopg2
+    pip install psycopg2 redis uwsgi
 
 Create the database for installation::
 

@@ -10,8 +10,8 @@ respective language in which you are interested.
 
 Feel free to open translation issues inside **Transifex** itself if you have a
 question about the usage or meaning of a source text string. If you open a
-translation issue, it will be your resposibility to close it after you get an
+translation issue, it will be your responsibility to close it after you get an
 answers that satisfies your question. Administrator will not close new issues
 as they have no way to determine if your question has been properly answered.
-However to avoid cluter, answered questions will be scanned periodically and
+However to avoid clutter, answered questions will be scanned periodically and
 closed if no activity is observed from the original poster in a period of time.

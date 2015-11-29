@@ -37,7 +37,7 @@ App modules
 
 - events.py
 
-  Define event class instances that are later commited to a log by custom
+  Define event class instances that are later committed to a log by custom
   code.
 
 - exceptions.py
@@ -55,7 +55,7 @@ App modules
 - handlers.py
 
   Contains the signal handlers, functions that will process a given signal
-  emited from this or other apps. Connect the handler functions to the
+  emitted from this or other apps. Connect the handler functions to the
   corresponding signal in the ready() method of the MayanAppConfig subclass in
   apps.py
 
@@ -98,7 +98,7 @@ App modules
 
 - settings.py
 
-  Define the config settings instances that the app will use.
+  Define the configuration settings instances that the app will use.
 
 - signals.py
 

@@ -13,7 +13,7 @@ Smart links are rule based, but don't create any organizational structure.
 Smart links just show the documents that match the rules as evaluated against
 the metadata or properties of the currently displayed document.
 
-Indexes are automatic hierachical units used to group documents, smart links
+Indexes are automatic hierarchical units used to group documents, smart links
 are automatic references between documents.
 
 Example:

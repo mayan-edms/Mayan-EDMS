@@ -12,11 +12,12 @@ Mailing list
 ------------
 
 Search for information in the `archives of the mayan-edms mailing list`_, or
-`post a question`_.  If you prefer news servers, use the gateway provided by Gmane_.
+`post a question`_.  If you prefer news servers, use the gateway provided by
+Gmane_.
 
 **Mayan EDMS** community developers do their best to reply to basic questions.
-Be sure to check the list archives as it may already containt the answers to your
-questions.
+Be sure to check the list archives as it may already containt the answers to
+your questions.
 
 Twitter
 -------

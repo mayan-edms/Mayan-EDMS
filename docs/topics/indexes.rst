@@ -7,7 +7,7 @@ relation to their properties (:doc:`metadata`, label, MIME type, etc). To use
 indexes you need to first create an index template. Once created, associate
 the index to one or more :doc:`document_types`.
 
-Index are hierachical models so a tree template needs to be specified for them.
+Index are hierarchical models so a tree template needs to be specified for them.
 This tree template will contain references to document metadata or properties
 that will be replaced with the actual value for those metadata or properties.
 

@@ -19,18 +19,28 @@ Project philosophies
 How to think about **Mayan EDMS** when doing changes or adding new features,
 why things are the way they are in **Mayan EDMS**.
 
-- Functionality must be as market/sector independent as possible, code for the 95% of use cases.
-- Each user must be able to configure and customize it to their needs after install.
-- Abstract as much as possible, each app must be an expert in just one thing, for other things they should use the API/classes/functions of other apps.
-- Assume as little as possible about anything outside the project (hardware, OS, storage).
-- Provide Python based abstraction so that a default install runs with a single step.
+- Functionality must be as market/sector independent as possible, code for the
+  95% of use cases.
+- Each user must be able to configure and customize it to their needs after
+  install.
+- Abstract as much as possible, each app must be an expert in just one thing,
+  for other things they should use the API/classes/functions of other apps.
+- Assume as little as possible about anything outside the project
+  (hardware, OS, storage).
+- Provide Python based abstraction so that a default install runs with a single
+  step.
 - No hard dependencies on binaries unless there is no other choice.
-- Provide “drivers” or switchable backends to allow users to fine tune the installation.
-- Call to binaries only when there is no other choice or the Python choices are not viable/mature/efficient.
-- Each app is as independent and self contained as possible. Exceptions, the basic requirements: navigation, permissions, common, main.
-- If an app is meant to be used by more than one other app it should be as generic as possible in regard to the project and another app will bridge the functionality.
+- Provide “drivers” or switchable backends to allow users to fine tune the
+  installation.
+- Call to binaries only when there is no other choice or the Python choices are
+  not viable/mature/efficient.
+- Each app is as independent and self contained as possible. Exceptions, the
+  basic requirements: navigation, permissions, common, main.
+- If an app is meant to be used by more than one other app it should be as
+  generic as possible in regard to the project and another app will bridge the functionality.
 
-  - Example: since indexing (document_indexing) only applies to documents, the app is specialized and dependant on the documents app.
+  - Example: since indexing (document_indexing) only applies to documents, the
+    app is specialized and depends on the documents app.
 
 
 Coding conventions
@@ -162,7 +172,7 @@ Classes:
 Strings
 ~~~~~~~
 Quotation character used in **Mayan EDMS** for strings is the single quote.
-Double quote is used for multiline comments or HTML markup.
+Double quote is used for multiple line comments or HTML markup.
 
 Migrations
 ~~~~~~~~~~
@@ -174,7 +184,7 @@ General
 Code should appear in their modules in alphabetic order or in their order of
 importance if it makes more sense for the specific application. This makes
 visual scanning easier on modules with a large number of imports, views or
-classes. Class methods that return a value should be prepended with a
+classes. Class methods that return a value should be pretended with a
 ``get_`` to differentiate from an object’s properties. When a variable refers
 to a file it should be named as follows:
 
@@ -199,7 +209,8 @@ The project is publicly accessible, hosted and can be cloned from **GitLab** usi
 Git branch structure
 --------------------
 
-**Mayan EDMS** follows simplified model layout by Vincent Driessen in his `Successful Git Branching Model`_ blog post. Git-flow_ is a great tool for managing the repository in this way.
+**Mayan EDMS** follows a simplified model layout based on Vincent Driessen's
+`Successful Git Branching Model`_ blog post.
 
 ``develop``
     The "next release" branch, likely unstable.
@@ -218,7 +229,6 @@ prior to opening a Merge Request on GitLab_.
 
 .. _Git: http://git-scm.org
 .. _`Successful Git Branching Model`: http://nvie.com/posts/a-successful-git-branching-model/
-.. _git-flow: https://github.com/nvie/gitflow
 
 
 Steps to deploy a development version
@@ -373,7 +383,7 @@ Installable package
 Source file package
 ~~~~~~~~~~~~~~~~~~~
 
-This is the sequence of step I use to produce an installable package:
+This is the sequence of step used to produce an installable package:
 
 1. Make sure there are no lingering packages from previous attempts::
 
@@ -396,9 +406,9 @@ This is the sequence of step I use to produce an installable package:
 Wheel package
 ~~~~~~~~~~~~~
 
-1. Install wheel::
+1. Install the development requirements::
 
-    $ pip install wheel
+    $ pip install -r requirements/development.txt
 
 2. Create wheel package using the source file package (Until issue #99 of wheel is fixed: https://bitbucket.org/pypa/wheel/issue/99/cannot-exclude-directory)::
 
