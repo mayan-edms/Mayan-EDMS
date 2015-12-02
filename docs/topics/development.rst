@@ -357,9 +357,9 @@ Likewise, to see the debug output of the ``tags`` app, just add the following in
 Documentation
 -------------
 
-The documentation is written in `reStructured Text`_ format and resides in the
-``docs`` directory.  In order to build it, you will first need to install the
-documentation editing dependencies (Sphinx_, etc)::
+The documentation is written in `reStructured Text`_ format, processed with
+Sphinx_, and resides in the ``docs`` directory. In order to build it, you will
+first need to install the documentation editing dependencies with::
 
     pip install -r requirements/documentation.txt
 
@@ -368,10 +368,11 @@ from the **docs** directory::
 
     make livehtml
 
-The ``docs/_build/html`` directory will then contain an HTML version of the
-documentation.
+The generated documentation can be viewed by browsing to http://127.0.0.1:8000
+or by browsing to the ``docs/_build/html`` directory.
 
-You can also generate the documentation in formats other than HTML.
+You can also generate the documentation in formats other than HTML. Consult the
+Sphinx_ documentation for more details.
 
 .. _`reStructured Text`: http://docutils.sourceforge.net/rst.html
 .. _Sphinx: http://sphinx.pocoo.org

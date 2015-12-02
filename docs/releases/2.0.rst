@@ -174,8 +174,8 @@ setting options. Both setting have a default of 10 seconds.
 
 Clickable preview images titles
 -------------------------------
-To shorten the amount of click required to access a document, document preview
-image titles are clickable and will take the user straight to the document view.
+To reduce the amount of clicks required to access a document, document previews
+titles are now clickable and will take the user straight to the document view.
 
 Removal of eval
 ---------------
@@ -279,16 +279,14 @@ only based on their metadata but also based on their properties.
 Upgrade command
 ---------------
 To reduce the steps and complexity of upgrades, the new `performupgrade`
-management command was been added. All necessary apps upgrade steps will be
-performed by this command.
+management command was been added. All the upgrade steps will be performed
+by this command.
 
 Admin changes
 -------------
 Installation admins are no longer required to have the `superusers` or `staff`
 Django account flags. All setup tasks are now governed by a permission which
-can be assigned to a role. This creates a clear separation between an install
-administrator and the server administrator in which the installation was
-performed.
+can be assigned to a role.
 
 OCR functions split
 -------------------
@@ -352,7 +350,7 @@ Other changes
 * Natural key support for many models allowing database migrations using dumped data.
 * Separate documentation requirements file to allow for contributor who only want to work on documentation.
 * Centralized testing with a new management command, `runtests`.
-* Addition of a tox configuration.
+* Addition of a tox testing configuration.
 * Email test body capture.
 * Email subject and from values storage.
 * Gitlab CI support.
@@ -371,6 +369,7 @@ Removals
 * Removal of the DOCUMENT_RESTRICTIONS_OVERRIDE permission.
 * Removed the page_label field.
 * Removal of custom HTTP 505 error view.
+
 Upgrading from a previous version
 ---------------------------------
 
@@ -448,15 +447,62 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
-* `issue #33 <https://github.com/mayan-edms/mayan-edms/issues/33>`_ Update to Django 1.7
-* `issue #59 <https://github.com/mayan-edms/mayan-edms/issues/59>`_ New bootstrap based UI
-* `issue #60 <https://github.com/mayan-edms/mayan-edms/issues/60>`_ Backport class based navigation code from the unstable branch
-* `issue #62 <https://github.com/mayan-edms/mayan-edms/issues/62>`_ Simplify and reduce code in templates
-* `issue #67 <https://github.com/mayan-edms/mayan-edms/issues/67>`_ Python 3 compatibility: Update models __unicode__ methdo to __str__ methods (using Django's six library)
-* `issue #121 <https://github.com/mayan-edms/mayan-edms/issues/121>`_ Twitter Bootstrap theme for Mayan EDMS
-* `issue #155 <https://github.com/mayan-edms/mayan-edms/issues/155>`_ Header does not fit list on documents/list on small screens (laptop)
-* `issue #170 <https://github.com/mayan-edms/mayan-edms/issues/170>`_ Remove use of python-hkp
-* `issue #182 <https://github.com/mayan-edms/mayan-edms/issues/182>`_ Reorganize signal processors
+* `GitHub issue #33 <https://github.com/mayan-edms/mayan-edms/issues/33>`_ Update to Django 1.7
+* `GitHub issue #59 <https://github.com/mayan-edms/mayan-edms/issues/59>`_ New bootstrap based UI
+* `GitHub issue #60 <https://github.com/mayan-edms/mayan-edms/issues/60>`_ Backport class based navigation code from the unstable branch
+* `GitHub issue #62 <https://github.com/mayan-edms/mayan-edms/issues/62>`_ Simplify and reduce code in templates
+* `GitHub issue #67 <https://github.com/mayan-edms/mayan-edms/issues/67>`_ Python 3 compatibility: Update models __unicode__ methdo to __str__ methods (using Django's six library)
+* `GitHub issue #121 <https://github.com/mayan-edms/mayan-edms/issues/121>`_ Twitter Bootstrap theme for Mayan EDMS
+* `GitHub issue #155 <https://github.com/mayan-edms/mayan-edms/issues/155>`_ Header does not fit list on documents/list on small screens (laptop)
+* `GitHub issue #170 <https://github.com/mayan-edms/mayan-edms/issues/170>`_ Remove use of python-hkp
+* `GitHub issue #182 <https://github.com/mayan-edms/mayan-edms/issues/182>`_ Reorganize signal processors
+* `GitLab issue #131 <https://gitlab.com/mayan-edms/mayan-edms/issues/131>`_ error on initialsetup: GPG initialization error
+* `GitLab issue #135 <https://gitlab.com/mayan-edms/mayan-edms/issues/135>`_ Add document indexing filesystem mirroring
+* `GitLab issue #141 <https://gitlab.com/mayan-edms/mayan-edms/issues/141>`_ Merge common and main app
+* `GitLab issue #142 <https://gitlab.com/mayan-edms/mayan-edms/issues/142>`_ New authentication app
+* `GitLab issue #145 <https://gitlab.com/mayan-edms/mayan-edms/issues/145>`_ Convert document tags to user RGB value for code instead of predetermined choices
+* `GitLab issue #150 <https://gitlab.com/mayan-edms/mayan-edms/issues/150>`_ Add 'trash can' support
+* `GitLab issue #151 <https://gitlab.com/mayan-edms/mayan-edms/issues/151>`_ Add support for data retention policies
+* `GitLab issue #152 <https://gitlab.com/mayan-edms/mayan-edms/issues/152>`_ JSON API 500 error
+* `GitLab issue #154 <https://gitlab.com/mayan-edms/mayan-edms/issues/154>`_ /documents API endpoint should return document pk
+* `GitLab issue #155 <https://gitlab.com/mayan-edms/mayan-edms/issues/155>`_ Remove unused document page label field
+* `GitLab issue #156 <https://gitlab.com/mayan-edms/mayan-edms/issues/156>`_ Remove post OCR language cleanup
+* `GitLab issue #158 <https://gitlab.com/mayan-edms/mayan-edms/issues/158>`_ Django REST Swagger not working
+* `GitLab issue #159 <https://gitlab.com/mayan-edms/mayan-edms/issues/159>`_ Error during template rendering on /document/folder/add with non-admin user
+* `GitLab issue #160 <https://gitlab.com/mayan-edms/mayan-edms/issues/160>`_ Add audit logging
+* `GitLab issue #163 <https://gitlab.com/mayan-edms/mayan-edms/issues/163>`_ Removal of the compressed file support
+* `GitLab issue #164 <https://gitlab.com/mayan-edms/mayan-edms/issues/164>`_ Keep fancybox prev & next buttons enabled all the time
+* `GitLab issue #167 <https://gitlab.com/mayan-edms/mayan-edms/issues/167>`_ Add workflow completion number to states
+* `GitLab issue #168 <https://gitlab.com/mayan-edms/mayan-edms/issues/168>`_ Add field to store last error of source during execution
+* `GitLab issue #171 <https://gitlab.com/mayan-edms/mayan-edms/issues/171>`_ tesseract fails with german language (wrong abbreviation)
+* `GitLab issue #173 <https://gitlab.com/mayan-edms/mayan-edms/issues/173>`_ Add post_document_upload signal
+* `GitLab issue #174 <https://gitlab.com/mayan-edms/mayan-edms/issues/174>`_ Bootstrap UI with master branch
+* `GitLab issue #176 <https://gitlab.com/mayan-edms/mayan-edms/issues/176>`_ Replace default email domain
+* `GitLab issue #177 <https://gitlab.com/mayan-edms/mayan-edms/issues/177>`_ Multi page tiff preview is not working
+* `GitLab issue #178 <https://gitlab.com/mayan-edms/mayan-edms/issues/178>`_ Add separate missing optional metadata and missing required metadata tools
+* `GitLab issue #181 <https://gitlab.com/mayan-edms/mayan-edms/issues/181>`_ Move task <-> queue assignment to apps.py
+* `GitLab issue #182 <https://gitlab.com/mayan-edms/mayan-edms/issues/182>`_ Document tags widget is not permissions aware
+* `GitLab issue #183 <https://gitlab.com/mayan-edms/mayan-edms/issues/183>`_ Separate metadata validators into: validators and parsers
+* `GitLab issue #184 <https://gitlab.com/mayan-edms/mayan-edms/issues/184>`_ Move literals in checkouts apps.py and tasks.py to literals.py
+* `GitLab issue #186 <https://gitlab.com/mayan-edms/mayan-edms/issues/186>`_ Scheduled task to delete all document stubs of more than X age.
+* `GitLab issue #187 <https://gitlab.com/mayan-edms/mayan-edms/issues/187>`_ Add tests for multi page tiff files
+* `GitLab issue #189 <https://gitlab.com/mayan-edms/mayan-edms/issues/189>`_ Use transient queues
+* `GitLab issue #190 <https://gitlab.com/mayan-edms/mayan-edms/issues/190>`_ Bump API version number
+* `GitLab issue #192 <https://gitlab.com/mayan-edms/mayan-edms/issues/192>`_ Use local model for document comments
+* `GitLab issue #197 <https://gitlab.com/mayan-edms/mayan-edms/issues/197>`_ Add continuous integration that is compatible with Gitlab
+* `GitLab issue #201 <https://gitlab.com/mayan-edms/mayan-edms/issues/201>`_ Untranslated items
+* `GitLab issue #202 <https://gitlab.com/mayan-edms/mayan-edms/issues/202>`_ AutoAdminSingleton matching query does not exist.
+* `GitLab issue #203 <https://gitlab.com/mayan-edms/mayan-edms/issues/203>`_ KeyError at /sources/upload/document/new/interactive/
+* `GitLab issue #204 <https://gitlab.com/mayan-edms/mayan-edms/issues/204>`_ Problems to add required metadata after changin the document type
+* `GitLab issue #216 <https://gitlab.com/mayan-edms/mayan-edms/issues/216>`_ Add default_app_config value to each app
+* `GitLab issue #223 <https://gitlab.com/mayan-edms/mayan-edms/issues/223>`_ [Documents] Trigger event_document_type_change on the model not on the view
+* `GitLab issue #227 <https://gitlab.com/mayan-edms/mayan-edms/issues/227>`_ decoder zip not available
+* `GitLab issue #228 <https://gitlab.com/mayan-edms/mayan-edms/issues/228>`_ Attribute error when trying to attach a tag for a user with inadequate permissions
+* `GitLab issue #229 <https://gitlab.com/mayan-edms/mayan-edms/issues/229>`_ Attribute error when a user tries to download a document - version 2.0.0b2
+* `GitLab issue #230 <https://gitlab.com/mayan-edms/mayan-edms/issues/230>`_ No option to create new document version even though user given permission in document ACL
+* `GitLab issue #231 <https://gitlab.com/mayan-edms/mayan-edms/issues/231>`_ User shown option to upload new version of a document even though it is blocked by checkout - v2.0.0b2
+* `GitLab issue #233 <https://gitlab.com/mayan-edms/mayan-edms/issues/233>`_ Available users instead of available groups
+* `GitLab issue #237 <https://gitlab.com/mayan-edms/mayan-edms/issues/237>`_ Forcefully checking in a document by a user without adequate permissions throws out an error
 
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

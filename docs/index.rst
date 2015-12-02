@@ -32,6 +32,7 @@ account.
     App creation <topics/app_creation>
     Translations <topics/translations>
     Contributors <topics/contributors>
+    Screenshots <topics/screenshots>
     Licensing <topics/license>
     FAQ <topics/faq>
     Contact <topics/contact>
