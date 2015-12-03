@@ -20,6 +20,9 @@ and installing it from PyPI with the following commands:
 Point your browser to 127.0.0.1:8000 and use the automatically created admin
 account.
 
+.. image:: /_static/overview.gif
+   :alt: Overview
+
 .. toctree::
     :hidden:
 
