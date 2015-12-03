@@ -1,0 +1,21 @@
+postgres:
+    env_file:
+        - ./environment
+    image: postgres
+    volumes:
+        - /var/lib/postgresql/data
+
+redis:
+    image: redis
+
+mayan-edms:
+    env_file:
+        - ./environment
+    image: mayanedms/monolithic:2.0.0rc1
+    links:
+        - postgres
+        - redis
+    ports:
+        - "8080:80"
+    volumes:
+        - /usr/local/lib/python2.7/dist-packages/mayan/media
