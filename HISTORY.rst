@@ -1,4 +1,4 @@
-2.0 (2015-10-xx)
+2.0 (2015-12-04)
 ================
 
 - New source homepage: https://gitlab.com/mayan-edms/mayan-edms
