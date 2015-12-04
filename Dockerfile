@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y netcat-openbsd python-dev python-pip gp
 ENV MAYAN_INSTALL_DIR=/usr/local/lib/python2.7/dist-packages/mayan
 
 # Install Mayan EDMS, latest production release
-RUN pip install mayan-edms==2.0.0rc1
+RUN pip install mayan-edms==2.0.0
 
 # Install Python clients for PostgreSQL, REDIS, and uWSGI
 RUN pip install psycopg2 redis uwsgi
