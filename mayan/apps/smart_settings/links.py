@@ -2,9 +2,15 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from navigation import Link
 
-def is_superuser(context):
-    return context['request'].user.is_staff or context['request'].user.is_superuser
+from .permissions import permission_settings_view
 
-
-check_settings = {'text': _('Settings'), 'view': 'settings:setting_list', 'famfam': 'cog', 'icon': 'main/icons/cog.png', 'condition': is_superuser}
+link_namespace_list = Link(
+    icon='fa fa-sliders', permissions=(permission_settings_view,),
+    text=_('Settings'), view='settings:namespace_list'
+)
+link_namespace_detail = Link(
+    permissions=(permission_settings_view,), text=_('Settings'),
+    view='settings:namespace_detail', args='resolved_object.name'
+)

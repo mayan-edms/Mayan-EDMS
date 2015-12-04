@@ -6,17 +6,19 @@ from django.core.exceptions import PermissionDenied
 
 from rest_framework.permissions import BasePermission
 
-from acls.models import AccessEntry
-from permissions.models import Permission
+from acls.models import AccessControlList
+from permissions import Permission
 
 
 class MayanPermission(BasePermission):
     def has_permission(self, request, view):
-        required_permission = getattr(view, 'mayan_view_permissions', {}).get(request.method, None)
+        required_permission = getattr(
+            view, 'mayan_view_permissions', {}
+        ).get(request.method, None)
 
         if required_permission:
             try:
-                Permission.objects.check_permissions(request.user, required_permission)
+                Permission.check_permissions(request.user, required_permission)
             except PermissionDenied:
                 return False
             else:
@@ -25,17 +27,25 @@ class MayanPermission(BasePermission):
             return True
 
     def has_object_permission(self, request, view, obj):
-        required_permission = getattr(view, 'mayan_object_permissions', {}).get(request.method, None)
+        required_permission = getattr(
+            view, 'mayan_object_permissions', {}
+        ).get(request.method, None)
 
         if required_permission:
             try:
-                Permission.objects.check_permissions(request.user, required_permission)
+                Permission.check_permissions(request.user, required_permission)
             except PermissionDenied:
                 try:
                     if hasattr(view, 'mayan_permission_attribute_check'):
-                        AccessEntry.objects.check_accesses(required_permission, request.user, getattr(obj, view.mayan_permission_attribute_check))
+                        AccessControlList.objects.check_access(
+                            permissions=required_permission,
+                            user=request.user, obj=obj,
+                            related=view.mayan_permission_attribute_check
+                        )
                     else:
-                        AccessEntry.objects.check_accesses(required_permission, request.user, obj)
+                        AccessControlList.objects.check_access(
+                            required_permission, request.user, obj
+                        )
                 except PermissionDenied:
                     return False
                 else:

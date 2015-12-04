@@ -2,14 +2,35 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from navigation import Link
+
 from .permissions import (
-    PERMISSION_KEY_DELETE, PERMISSION_KEY_RECEIVE, PERMISSION_KEY_VIEW,
-    PERMISSION_KEYSERVER_QUERY
+    permission_key_delete, permission_key_receive, permission_key_view,
+    permission_keyserver_query
 )
 
-private_keys = {'text': _('Private keys'), 'view': 'django_gpg:key_private_list', 'args': 'object.pk', 'famfam': 'key', 'icon': 'main/icons/key.png', 'permissions': [PERMISSION_KEY_VIEW]}
-public_keys = {'text': _('Public keys'), 'view': 'django_gpg:key_public_list', 'args': 'object.pk', 'famfam': 'key', 'icon': 'main/icons/key.png', 'permissions': [PERMISSION_KEY_VIEW]}
-key_delete = {'text': _('Delete'), 'view': 'django_gpg:key_delete', 'args': ['object.fingerprint', 'object.type'], 'famfam': 'key_delete', 'permissions': [PERMISSION_KEY_DELETE]}
-key_query = {'text': _('Query keyservers'), 'view': 'django_gpg:key_query', 'famfam': 'zoom', 'permissions': [PERMISSION_KEYSERVER_QUERY]}
-key_receive = {'text': _('Import'), 'view': 'django_gpg:key_receive', 'args': 'object.keyid', 'famfam': 'key_add', 'keep_query': True, 'permissions': [PERMISSION_KEY_RECEIVE]}
-key_setup = {'text': _('Key management'), 'view': 'django_gpg:key_public_list', 'args': 'object.pk', 'famfam': 'key', 'icon': 'main/icons/key.png', 'permissions': [PERMISSION_KEY_VIEW]}
+link_private_keys = Link(
+    icon='fa fa-key', permissions=(permission_key_view,),
+    text=_('Private keys'), view='django_gpg:key_private_list'
+)
+link_public_keys = Link(
+    icon='fa fa-key', permissions=(permission_key_view,),
+    text=_('Public keys'), view='django_gpg:key_public_list'
+)
+link_key_delete = Link(
+    permissions=(permission_key_delete,), tags='dangerous', text=_('Delete'),
+    view='django_gpg:key_delete', args=('object.fingerprint', 'object.type',)
+)
+
+link_key_query = Link(
+    permissions=(permission_keyserver_query,), text=_('Query keyservers'),
+    view='django_gpg:key_query'
+)
+link_key_receive = Link(
+    keep_query=True, permissions=(permission_key_receive,), text=_('Import'),
+    view='django_gpg:key_receive', args='object.key_id'
+)
+link_key_setup = Link(
+    icon='fa fa-key', permissions=(permission_key_view,),
+    text=_('Key management'), view='django_gpg:key_public_list'
+)

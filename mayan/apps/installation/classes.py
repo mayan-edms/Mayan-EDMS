@@ -7,9 +7,10 @@ import sh
 
 try:
     pip = sh.Command('pip')
-    PIP = True
 except sh.CommandNotFound:
     PIP = False
+else:
+    PIP = True
 
 
 class PIPNotFound(Exception):
@@ -107,7 +108,8 @@ class VirtualEnv(object):
                 # has no version number
                 return Dependency(string, version=None, standard=True)
             else:
-                version = version.split('#')[0].split(' ')[1]  # Get rid of '#egg' and '-e'
+                # Get rid of '#egg' and '-e'
+                version = version.split('#')[0].split(' ')[1]
                 return Dependency(package, version, standard=False)
         else:
             return Dependency(package, version, standard=True)
@@ -145,9 +147,12 @@ class VirtualEnv(object):
                     if item.version == installed_packages['%s-dev' % name.replace('-', '_')].version:
                         status = item.version
                     else:
-                        status = installed_packages['%s-dev' % name.replace('-', '_')].version
+                        status = installed_packages[
+                            '%s-dev' % name.replace('-', '_')
+                        ].version
             except KeyError:
-                # Not installed package found matching with name matchin requirement
+                # Not installed package found matching with name matching
+                # requirement
                 status = False
 
             yield name, item.version, status

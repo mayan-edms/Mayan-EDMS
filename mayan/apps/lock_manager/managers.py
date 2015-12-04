@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import datetime
 import logging
 
-from django.db import models, transaction
+from django.db import OperationalError, models, transaction
 from django.db.utils import IntegrityError
 from django.utils.timezone import now
 
@@ -41,6 +41,29 @@ class LockManager(models.Manager):
             else:
                 logger.debug('unable to acquire lock: %s', name)
                 raise LockError('Unable to acquire lock')
+        except OperationalError as exception:
+            raise LockError(
+                'Operational error while trying to acquire lock: %s; %s',
+                name, exception
+            )
         else:
             logger.debug('acquired lock: %s', name)
             return lock
+
+    def check_existing(self, **kwargs):
+        try:
+            existing_lock = self.get(**kwargs)
+        except self.model.DoesNotExist:
+            return False
+        else:
+            # Lock exists, try to re-acquire it in case it is a stale lock
+            try:
+                lock = self.acquire_lock(existing_lock.name)
+            except LockError:
+                # This is expected, try to acquire it to force it to
+                # timeout in case it is a stale lock.
+                return True
+            else:
+                # Able to re-acquire anothers lock, so we release it now
+                lock.release()
+                return False

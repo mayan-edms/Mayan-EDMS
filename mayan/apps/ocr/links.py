@@ -2,18 +2,37 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from navigation import Link
+
 from .permissions import (
-    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_DOCUMENT,
-    PERMISSION_OCR_DOCUMENT_DELETE
+    permission_ocr_content_view, permission_ocr_document,
+    permission_document_type_ocr_setup
 )
 
-link_document_submit = {'text': _('Submit to OCR queue'), 'view': 'ocr:document_submit', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-link_document_submit_multiple = {'text': _('Submit to OCR queue'), 'view': 'ocr:document_submit_multiple', 'famfam': 'hourglass_add'}
-link_entry_re_queue = {'text': _('Re-queue'), 'view': 'ocr:entry_re_queue', 'args': 'object.id', 'famfam': 'hourglass_add', 'permissions': [PERMISSION_OCR_DOCUMENT]}
-link_entry_re_queue_multiple = {'text': _('Re-queue'), 'view': 'ocr:entry_re_queue_multiple', 'famfam': 'hourglass_add'}
-link_entry_delete = {'text': _('Delete'), 'view': 'ocr:entry_delete', 'args': 'object.id', 'famfam': 'hourglass_delete', 'permissions': [PERMISSION_OCR_DOCUMENT_DELETE]}
-link_entry_delete_multiple = {'text': _('Delete'), 'view': 'ocr:entry_delete_multiple', 'famfam': 'hourglass_delete'}
-
-link_document_all_ocr_cleanup = {'text': _('Clean up pages content'), 'view': 'ocr:document_all_ocr_cleanup', 'famfam': 'text_strikethrough', 'permissions': [PERMISSION_OCR_CLEAN_ALL_PAGES], 'description': _('Runs a language filter to remove common OCR mistakes from document pages content.')}
-
-link_entry_list = {'text': _('OCR Errors'), 'view': 'ocr:entry_list', 'famfam': 'hourglass', 'icon': 'main/icons/text.png', 'permissions': [PERMISSION_OCR_DOCUMENT]}
+link_document_content = Link(
+    permissions=(permission_ocr_content_view,), text=_('OCR'),
+    view='ocr:document_content', args='resolved_object.id'
+)
+link_document_submit = Link(
+    permissions=(permission_ocr_document,), text=_('Submit for OCR'),
+    view='ocr:document_submit', args='object.id'
+)
+link_document_submit_all = Link(
+    icon='fa fa-font', permissions=(permission_ocr_document,),
+    text=_('OCR all documents'), view='ocr:document_submit_all'
+)
+link_document_submit_multiple = Link(
+    text=_('Submit for OCR'), view='ocr:document_submit_multiple'
+)
+link_document_type_ocr_settings = Link(
+    permissions=(permission_document_type_ocr_setup,), text=_('Setup OCR'),
+    view='ocr:document_type_ocr_settings', args='resolved_object.id'
+)
+link_document_type_submit = Link(
+    icon='fa fa-font', permissions=(permission_ocr_document,),
+    text=_('OCR documents per type'), view='ocr:document_type_submit'
+)
+link_entry_list = Link(
+    icon='fa fa-file-text-o', permissions=(permission_ocr_document,),
+    text=_('OCR errors'), view='ocr:entry_list'
+)

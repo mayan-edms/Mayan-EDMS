@@ -10,21 +10,21 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:02-0400\n"
-"PO-Revision-Date: 2015-05-06 13:54+0000\n"
-"Last-Translator: Rogerio Falcone <rogerio@falconeit.com.br>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/mayan-edms/language/pt_BR/)\n"
+"POT-Creation-Date: 2015-09-24 16:27-0400\n"
+"PO-Revision-Date: 2015-09-24 05:15+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: classes.py:21
-msgid "Unnamed link"
-msgstr "Sem Link"
+#: apps.py:9
+msgid "Navigation"
+msgstr ""
 
-#: forms.py:29
+#: forms.py:14
 msgid "Actions"
 msgstr "Ações"
 

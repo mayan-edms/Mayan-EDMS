@@ -4,147 +4,145 @@
 # 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
-"PO-Revision-Date: 2015-03-03 11:11+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"PO-Revision-Date: 2015-08-20 22:10+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: forms.py:9 models.py:23
-msgid "Signature file"
-msgstr "فایل امضا"
-
-#: links.py:22
-msgid "Delete signature"
-msgstr "حذف امضا"
-
-#: links.py:23
-msgid "Download signature"
-msgstr "دانلود امضا"
-
-#: links.py:24
-msgid "Upload signature"
-msgstr "آپلود امضا"
-
-#: links.py:25
-msgid "Signatures"
-msgstr "امضاها"
-
-#: models.py:22
-msgid "Document version"
-msgstr "نسخه سند"
-
-#: models.py:24
-msgid "Has embedded signature"
-msgstr "دارای امضا داخلی و یا جاسازی شده"
-
-#: models.py:39
-msgid "Document version signature"
-msgstr "امضای نسخه سند"
-
-#: models.py:40
-msgid "Document version signatures"
-msgstr "امضاهای نسخه سند"
-
-#: permissions.py:7
+#: apps.py:62 permissions.py:8 settings.py:7
 msgid "Document signatures"
 msgstr "امضاهای سند"
 
-#: permissions.py:8
+#: forms.py:9 models.py:31
+msgid "Signature file"
+msgstr "فایل امضا"
+
+#: links.py:31
+msgid "Delete signature"
+msgstr "حذف امضا"
+
+#: links.py:35
+msgid "Download signature"
+msgstr "دانلود امضا"
+
+#: links.py:41
+msgid "Upload signature"
+msgstr "آپلود امضا"
+
+#: links.py:45
+msgid "Signatures"
+msgstr "امضاها"
+
+#: models.py:27
+msgid "Document version"
+msgstr "نسخه سند"
+
+#: models.py:34
+msgid "Has embedded signature"
+msgstr "دارای امضا داخلی و یا جاسازی شده"
+
+#: models.py:52
+msgid "Document version signature"
+msgstr "امضای نسخه سند"
+
+#: models.py:53
+msgid "Document version signatures"
+msgstr "امضاهای نسخه سند"
+
+#: permissions.py:12
 msgid "Verify document signatures"
 msgstr "بررسی امضای سند"
 
-#: permissions.py:9
+#: permissions.py:15
 msgid "Delete detached signatures"
 msgstr "حذف امضاهای جدا شده"
 
-#: permissions.py:10
+#: permissions.py:18
 msgid "Download detached signatures"
 msgstr "دانلود امضاهای جداشده"
 
-#: permissions.py:11
+#: permissions.py:21
 msgid "Upload detached signatures"
 msgstr "آپلود امضاهای جدا شده"
 
-#: views.py:49
+#: views.py:58
 #, python-format
 msgid "Signature status: %s"
 msgstr "وضعیت امضا : %s"
 
-#: views.py:53
+#: views.py:62
 msgid "Embedded"
 msgstr "داخلی و یا جا سازی شده"
 
-#: views.py:55
+#: views.py:64
 msgid "Detached"
 msgstr "جدا شده"
 
-#: views.py:57
+#: views.py:66
 msgid "None"
 msgstr "هیچ"
 
-#: views.py:62
+#: views.py:71
 #, python-format
 msgid "Signature ID: %s"
 msgstr "شناسه امضا: %s"
 
-#: views.py:63
+#: views.py:72
 #, python-format
 msgid "Signature type: %s"
 msgstr "نوع امضا : %s"
 
-#: views.py:64
+#: views.py:73
 #, python-format
 msgid "Key ID: %s"
 msgstr "شناسه کلید: %s"
 
-#: views.py:65
+#: views.py:74
 #, python-format
 msgid "Timestamp: %s"
 msgstr "برچسب زمان: %s"
 
-#: views.py:66
+#: views.py:77
 #, python-format
 msgid "Signee: %s"
 msgstr "امضا کننده: %s"
 
-#: views.py:74
+#: views.py:85
 #, python-format
 msgid "Signature properties for document: %s"
 msgstr "خصوصیات امضا برای سند :%s"
 
-#: views.py:97
+#: views.py:115
 msgid "Detached signature uploaded successfully."
 msgstr "امضای جدا شده با موفقیت آپلود شد."
 
-#: views.py:110
+#: views.py:129
 #, python-format
 msgid "Upload detached signature for document: %s"
 msgstr "بارگیری (upload) امضای جدا شده از سند : %s"
 
-#: views.py:155
+#: views.py:187
 msgid "Detached signature deleted successfully."
 msgstr "امضای جدا شده با موفقیت حذف شد."
 
-#: views.py:158
+#: views.py:193
 #, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr "خطا %s در حذف امضای جدا شده"
 
-#: views.py:162
+#: views.py:204
 #, python-format
-msgid ""
-"Are you sure you wish to delete the detached signature from document: %s?"
-msgstr "آیا از حذف امضای جدا شده از سند %s مطمئن هستید؟"
+msgid "Delete the detached signature from document: %s?"
+msgstr ""
 
 #~ msgid "Signature status: %(widget)s %(text)s"
 #~ msgstr "Signature status: %(widget)s %(text)s"

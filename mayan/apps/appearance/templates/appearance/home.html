@@ -1,0 +1,70 @@
+{% extends 'appearance/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% load navigation_tags %}
+
+{% block title %}{% trans 'Home' %}{% endblock %}
+
+{% block content %}
+    <h3>
+        {% trans 'Home' %}
+    </h3>
+    <hr>
+
+    <div class="row">
+        <div class="col-xs-12">
+            {% if missing_list %}
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">{% trans 'Getting started' %}</h3>
+                    </div>
+                    <div class="panel-body">
+                        {% trans 'Before you can fully use Mayan EDMS you need the following:' %}
+
+                        <div class="list-group">
+                            {% for missing in missing_list %}
+                                <a href="{% url missing.view %}" class="list-group-item">
+                                    <h4 class="list-group-item-heading">{{ missing.label }}</h4>
+                                    <p class="list-group-item-text">{{ missing.description }}</p>
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+
+            <div class="well center-block">
+                <div class="row">
+                    {% get_menu_links 'front page menu' as resolved_links %}
+                    {% with 'navigation/large_button_link.html' as link_template %}
+                    {% with 'col-xs-12 col-sm-6 col-md-4 col-lg-3' as div_class %}
+                        {% for object_navigation_links in resolved_links %}
+                            {% include 'navigation/generic_navigation.html' %}
+                        {% endfor %}
+                    {% endwith %}
+                    {% endwith %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="well center-block">
+                <form action="{% url 'search:results' %}" method="get" role="search">
+                    <div class="input-group">
+                        <input class="form-control" name="q" placeholder="{% trans 'Space separated terms' %}" type="text" value="{{ search_terms|default:'' }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
+                            <a class="btn btn-primary" href="{% url 'search:search_advanced' %}">{% trans 'Advanced' %}</a>
+                        </span>
+                    </div>
+                </form>
+                {% if search_terms %}
+                    {% include 'appearance/generic_list_subtemplate.html' %}
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

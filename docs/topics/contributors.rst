@@ -8,7 +8,8 @@ Contributors
 How to contribute?
 ------------------
 
-You can help further the development of **Mayan EDMS** by testing, reporting bugs, submitting documentation or code patches.
+You can help further the development of **Mayan EDMS** by testing, reporting
+bugs, submitting documentation or code patches.
 
 Lead developer
 --------------
@@ -20,8 +21,10 @@ Contributors (in alphabetical order)
 * Bertrand Bordage (https://github.com/BertrandBordage)
 * Brian E (brian@realize.org)
 * David Herring (https://github.com/abadger1406)
+* Emlyn Clay (https://github.com/EmlynC)
 * Jens Kadenbach (https://github.com/audax)
 * Kolmar Kafran
+* Helga Carrero
 * IHLeanne (https://github.com/IHLeanne)
 * Iliya Georgiev (ikgeorgiev@gmail.com)
 * Lars Kruse (devel@sumpfralle.de)

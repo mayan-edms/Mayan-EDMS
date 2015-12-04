@@ -25,18 +25,18 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'mayan', 'media')
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'om^a(i8^6&h+umbd2%pt91cj!qu_@oztw117rgxmn(n2lp^*c!'
+SECRET_KEY = 'secret_key_missing'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
-TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
 # Application definition
 
 INSTALLED_APPS = (
+    # Placed at the top so it can override any template
+    'appearance',
     # 3rd party
     'suit',
     # Django
@@ -50,17 +50,22 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.staticfiles',
     # 3rd party
+    'actstream',
+    'autoadmin',
+    'colorful',
     'compressor',
     'corsheaders',
     'djcelery',
     'filetransfers',
     'mptt',
+    'pure_pagination',
     'rest_framework',
     'rest_framework.authtoken',
     'solo',
-    'south',
+    'widget_tweaks',
     # Base generic
     'acls',
+    'authentication',
     'common',
     'converter',
     'django_gpg',
@@ -69,8 +74,6 @@ INSTALLED_APPS = (
     'mimetype',
     'navigation',
     'permissions',
-    'project_setup',
-    'project_tools',
     'smart_settings',
     'user_management',
     # Mayan EDMS
@@ -82,12 +85,11 @@ INSTALLED_APPS = (
     'documents',
     'events',
     'folders',
-    'history',
     'installation',
     'linking',
     'mailer',
-    'main',
     'metadata',
+    'mirroring',
     'ocr',
     'rest_api',
     'sources',
@@ -96,12 +98,6 @@ INSTALLED_APPS = (
     'tags',
     # Placed after rest_api to allow template overriding
     'rest_framework_swagger',
-    # Must be last on Django < 1.7 as per documentation
-    # https://django-activity-stream.readthedocs.org/en/latest/installation.html
-    'actstream',
-    # Pagination app must go after the main app so that the main app can
-    # override the default pagination template
-    'pagination',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -115,9 +111,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'common.middleware.timezone.TimezoneMiddleware',
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
-    'common.middleware.login_required_middleware.LoginRequiredMiddleware',
-    'permissions.middleware.permission_denied_middleware.PermissionDeniedMiddleware',
-    'pagination.middleware.PaginationMiddleware',
+    'authentication.middleware.login_required_middleware.LoginRequiredMiddleware',
     'common.middleware.ajax_redirect.AjaxRedirect',
 )
 
@@ -148,10 +142,15 @@ USE_L10N = True
 
 USE_TZ = True
 
-# Custom settings section
+STATIC_URL = '/static/'
 
+
+# ------------ Custom settings section ----------
+
+TEMPLATE_DEBUG = True
 PROJECT_TITLE = 'Mayan EDMS'
 PROJECT_NAME = 'mayan'
+PROJECT_WEBSITE = 'http://www.mayan-edms.com'
 
 LANGUAGES = (
     ('ar', _('Arabic')),
@@ -181,20 +180,14 @@ LANGUAGES = (
 
 SITE_ID = 1
 
-STATIC_URL = '/static/'
-
-# Custom settings section
-
 sys.path.append(os.path.join(BASE_DIR, 'mayan', 'apps'))
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'mayan', 'media', 'static')
+STATIC_ROOT = os.path.join(MEDIA_ROOT, 'static')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    ('django.template.loaders.cached.Loader', (
-        'django.template.loaders.filesystem.Loader',
-        'django.template.loaders.app_directories.Loader',
-    )),
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader'
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -212,17 +205,15 @@ STATICFILES_FINDERS = (
 )
 
 # --------- Django compressor -------------
-COMPRESS_PARSER = 'compressor.parser.HtmlParser'
-COMPRESS_CSS_FILTERS = ['compressor.filters.css_default.CssAbsoluteFilter',
-                        'compressor.filters.cssmin.CSSMinFilter']
+COMPRESS_CSS_FILTERS = (
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter'
+)
 COMPRESS_ENABLED = False
-# ---------- Django sendfile --------------
-SENDFILE_BACKEND = 'sendfile.backends.simple'
-# --------- Web theme ---------------
-WEB_THEME_ENABLE_SCROLL_JS = False
+COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 # --------- Django -------------------
-LOGIN_URL = 'common:login_view'
-LOGIN_REDIRECT_URL = 'main:home'
+LOGIN_URL = 'authentication:login_view'
+LOGIN_REDIRECT_URL = 'common:home'
 INTERNAL_IPS = ('127.0.0.1',)
 # -------- LoginRequiredMiddleware ----------
 LOGIN_EXEMPT_URLS = (
@@ -238,17 +229,14 @@ LOGIN_EXEMPT_URLS = (
     r'^accounts/activate/complete/',
     r'^accounts/activate/(?P<activation_key>\w+)/$',
 
-    r'^password/reset/$',
-    r'^password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
-    r'^password/reset/complete/$',
-    r'^password/reset/done/$',
+    r'^authentication/password/reset/$',
+    r'^authentication/password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
+    r'^authentication/password/reset/complete/$',
+    r'^authentication/password/reset/done/$',
 
     r'^api/',
+    r'^docs/',
 )
-# --------- Pagination ----------------
-PAGINATION_INVALID_PAGE_RAISES_404 = True
-# ---------- Search ------------------
-SEARCH_SHOW_OBJECT_TYPE = False
 # ---------- Django REST framework -----------
 REST_FRAMEWORK = {
     'PAGINATE_BY': 10,
@@ -260,19 +248,39 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.SessionAuthentication',
     )
 }
+# --------- Pagination --------
+PAGINATION_SETTINGS = {
+    'PAGE_RANGE_DISPLAYED': 8,
+    'MARGIN_PAGES_DISPLAYED': 2,
+}
 # ----------- Celery ----------
-CELERY_TIMEZONE = 'UTC'
-CELERY_ENABLE_UTC = True
-CELERY_ACCEPT_CONTENT = ['json']
+CELERY_ACCEPT_CONTENT = ('json',)
 CELERY_ALWAYS_EAGER = True
+CELERY_CREATE_MISSING_QUEUES = False
+CELERY_DISABLE_RATE_LIMITS = True
 CELERY_EAGER_PROPAGATES_EXCEPTIONS = True
+CELERY_ENABLE_UTC = True
+CELERY_QUEUES = []
 CELERY_RESULT_SERIALIZER = 'json'
+CELERY_ROUTES = {}
 CELERY_TASK_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
 CELERYBEAT_SCHEDULER = 'djcelery.schedulers.DatabaseScheduler'
 TEST_RUNNER = 'djcelery.contrib.test_runner.CeleryTestSuiteRunner'
 # ------------ CORS ------------
 CORS_ORIGIN_ALLOW_ALL = True
 # ------ Django REST Swagger -----
 SWAGGER_SETTINGS = {
-    'api_version': '0',  # Specify your API's version
+    'api_version': '1',
+    'info': {
+          'title': _('Mayan EDMS API Documentation'),
+          'description': _('Free Open Source Document Management System.'),
+          'contact': 'roberto.rosario@mayan-edms.com',
+          'license': 'Apache 2.0',
+          'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html'
+    }
+
 }
+# ------ Timezone --------
+TIMEZONE_COOKIE_NAME = 'django_timezone'
+TIMEZONE_SESSION_KEY = 'django_timezone'

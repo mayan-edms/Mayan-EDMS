@@ -4,24 +4,60 @@
 # 
 # Translators:
 # Translators:
-# Mehdi Amani <MehdiAmani@toorintan.com>, 2014-2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:00-0400\n"
-"PO-Revision-Date: 2015-03-03 10:56+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"PO-Revision-Date: 2015-08-24 04:02+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: api.py:94
+#: api.py:100
 msgid "Unknown"
 msgstr "ناشناخته"
+
+#: apps.py:21
+msgid "Django GPG"
+msgstr ""
+
+#: apps.py:54 apps.py:61
+msgid "ID"
+msgstr "شناسه"
+
+#: apps.py:56
+msgid "Owner"
+msgstr "صاحب"
+
+#: apps.py:64
+msgid "Type"
+msgstr "نوع"
+
+#: apps.py:66
+msgid "Creation date"
+msgstr "تاریخ ایجاد"
+
+#: apps.py:72
+msgid "Expiration date"
+msgstr "تاریخ انقضا"
+
+#: apps.py:73
+msgid "No expiration"
+msgstr ""
+
+#: apps.py:75
+msgid "Length"
+msgstr "طول"
+
+#: apps.py:77
+#| msgid "Identifies"
+msgid "Identities"
+msgstr ""
 
 #: forms.py:9
 msgid "Term"
@@ -31,27 +67,27 @@ msgstr "ترم Term"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "نام، ایمیل، شناسه کلید ویا اثرانگشت کلید برای چستچو."
 
-#: links.py:10 views.py:68
+#: links.py:14 views.py:81
 msgid "Private keys"
 msgstr "کلید شخصی"
 
-#: links.py:11 views.py:71
+#: links.py:18 views.py:76
 msgid "Public keys"
 msgstr "کلید عمومی"
 
-#: links.py:12
+#: links.py:21
 msgid "Delete"
 msgstr "حذف"
 
-#: links.py:13 permissions.py:11
+#: links.py:26 permissions.py:16
 msgid "Query keyservers"
 msgstr "پرسش و یا query از سرورهای کلید"
 
-#: links.py:14
+#: links.py:30
 msgid "Import"
-msgstr "وارد کردن"
+msgstr ""
 
-#: links.py:15 permissions.py:7
+#: links.py:35 permissions.py:7
 msgid "Key management"
 msgstr "مدیریت کلید"
 
@@ -87,129 +123,119 @@ msgstr "سند امضا نشده و یا امضا قابل قبول نییست"
 msgid "Signature error."
 msgstr "خطا در امضا"
 
-#: literals.py:44
+#: literals.py:45
 msgid "Document is signed but no public key is available for verification."
 msgstr "سند امضا شده است ولیکن کلید عمومی جهت بررسی صحت امضا وجود ندارد."
 
-#: literals.py:47
+#: literals.py:50
 msgid "Document is signed, and signature is good."
 msgstr "سند امضا شده است و امضا مورد تایید میباشد."
 
-#: literals.py:50
+#: literals.py:53
 msgid "Document is signed with a valid signature."
 msgstr "سند با امضای مورد تایید امضا شده است."
 
-#: permissions.py:9
+#: permissions.py:10
 msgid "View keys"
 msgstr "دیدن کلیدها"
 
-#: permissions.py:10
+#: permissions.py:13
 msgid "Delete keys"
 msgstr "پاک و یا حذف کلیدها"
 
-#: permissions.py:12
+#: permissions.py:19
 msgid "Import keys from keyservers"
 msgstr "وارد کردن کلیده از سرور کلیدها"
 
-#: settings.py:14
+#: settings.py:10
+#| msgid "Signature error."
+msgid "Signatures"
+msgstr ""
+
+#: settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
 msgstr "لیست سرور کلیدها برای پرسش درباره کلید های ناشناس."
 
-#: settings.py:15
+#: settings.py:19
 msgid "Home directory used to store keys as well as configuration files."
 msgstr "ریشه دایرکتوری جهت نگهداری کلیدها بهمراه فایلهای پیکربندی."
 
-#: settings.py:16
+#: settings.py:25
 msgid "Path to the GPG binary."
 msgstr "محل کتایخانه باینری GPG"
 
-#: views.py:40
+#: views.py:38
 #, python-format
-msgid "Key: %s, imported successfully."
-msgstr "کلید: %s, بصورت موفقیت آمیز وارد شد."
+#| msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr ""
 
-#: views.py:45
+#: views.py:48
 #, python-format
-msgid "Unable to import key id: %(key_id)s; %(error)s"
-msgstr "فادر نبودن در وارد کردن کلید با شناسه: %(key_id)s , خطای  %(error)s"
+msgid "Successfully received key: %(key_id)s"
+msgstr ""
 
-#: views.py:54
+#: views.py:57
+#, python-format
+#| msgid "Import key"
+msgid "Import key ID: %s?"
+msgstr ""
+
+#: views.py:59
 msgid "Import key"
 msgstr "وارد کردن کلید"
 
-#: views.py:55
-#, python-format
-msgid "Are you sure you wish to import key id: %s?"
-msgstr "آیا از ورود کلیدی با شناسه: %s مطمئن هستید؟"
-
-#: views.py:79
-msgid "Key ID"
-msgstr "شناسه کلید"
-
-#: views.py:83
-msgid "Owner"
-msgstr "صاحب"
-
-#: views.py:103
+#: views.py:100
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "کلید: %s با موفقیت حذف شد."
 
-#: views.py:110
+#: views.py:107
 msgid "Delete key"
 msgstr "حذف کلید"
 
-#: views.py:112
+#: views.py:110
 #, python-format
+#| msgid ""
+#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
+#| " of a public/private pair the private key will be deleted well."
 msgid ""
-"Are you sure you wish to delete key: %s?  If you try to delete a public key "
-"that is part of a public/private pair the private key will be deleted as "
-"well."
-msgstr "آیا از حذف کلید: %s مطمئن هستید؟ درصورت حذف کلید عمومی مرتبط با کلید خصوصی، کلیدخصوصی بطور اتوماتیک حذف خواهد شد."
+"Delete key %s? If you delete a public key that is part of a public/private "
+"pair the private key will be deleted as well."
+msgstr ""
 
-#: views.py:129
+#: views.py:134
+msgid "Search"
+msgstr ""
+
+#: views.py:136
 msgid "Query key server"
 msgstr "پرسش از سرور کلید"
 
-#: views.py:142
-msgid "results"
-msgstr "نتایج"
+#: views.py:146
+msgid "Key query results"
+msgstr ""
 
-#: views.py:147
-msgid "ID"
-msgstr "شناسه"
+#~ msgid "Key ID"
+#~ msgstr "Key ID"
 
-#: views.py:151
-msgid "Type"
-msgstr "نوع"
+#~ msgid "results"
+#~ msgstr "results"
 
-#: views.py:155
-msgid "Creation date"
-msgstr "تاریخ ایجاد"
+#~ msgid "Key: %s, imported successfully."
+#~ msgstr "Key: %s, imported successfully."
 
-#: views.py:159
-msgid "Disabled"
-msgstr "غیر فعال"
+#~ msgid "Are you sure you wish to import key id: %s?"
+#~ msgstr "Are you sure you wish to import key id: %s?"
 
-#: views.py:163
-msgid "Expiration date"
-msgstr "تاریخ انقضا"
+#~ msgid "Disabled"
+#~ msgstr "disabled"
 
-#: views.py:167
-msgid "Expired"
-msgstr "منقضی ویا تاریخ گذشته"
+#~ msgid "Expired"
+#~ msgstr "expired"
 
-#: views.py:171
-msgid "Length"
-msgstr "طول"
-
-#: views.py:175
-msgid "Revoked"
-msgstr "لغو شده"
-
-#: views.py:180
-msgid "Identifies"
-msgstr "شناسایی کردن."
+#~ msgid "Revoked"
+#~ msgstr "revoked"
 
 #~ msgid "private keys"
 #~ msgstr "private keys"

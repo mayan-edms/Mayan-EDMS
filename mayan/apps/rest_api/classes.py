@@ -2,8 +2,7 @@ from __future__ import unicode_literals
 
 from django.conf.urls import include, patterns, url
 from django.conf import settings
-
-from common.utils import load_backend
+from django.utils.module_loading import import_string
 
 
 class APIEndPoint(object):
@@ -18,13 +17,17 @@ class APIEndPoint(object):
         return cls._registry[name]
 
     def __unicode__(self):
-        return unicode(self.name)
+        return unicode(self.app.name)
 
-    def __init__(self, name, app_name=None):
-        self.name = name
+    def __init__(self, app, version_string, name=None):
+        self.app = app
         self.endpoints = []
+        self.name = name
+        self.version_string = version_string
         try:
-            api_urls = load_backend('{0}.urls.api_urls'.format(app_name or name))
+            api_urls = import_string(
+                '{0}.urls.api_urls'.format(app.name)
+            )
         except Exception:
             if settings.DEBUG:
                 raise
@@ -34,13 +37,16 @@ class APIEndPoint(object):
         else:
             self.register_urls(api_urls)
 
-        self.__class__._registry[name] = self
+        self.__class__._registry[app.name] = self
+
+    @property
+    def app_name(self):
+        return self.app.name
 
     def register_urls(self, urlpatterns):
-        from .urls import version_0_urlpatterns
-        endpoint_urls = patterns(
-            '',
-            url(r'^%s/' % self.name, include(urlpatterns)),
-        )
+        from .urls import urlpatterns as app_urls
 
-        version_0_urlpatterns += endpoint_urls
+        app_urls += patterns(
+            '',
+            url(r'^%s/' % (self.name or self.app.name), include(urlpatterns)),
+        )

@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import base64
 import os
+import time
 import urllib
 
 try:
@@ -11,8 +12,7 @@ except ImportError:
 
 from django.core.files import File
 
-from converter.api import convert
-from mimetype.api import get_mimetype
+from converter import TransformationResize, converter_class
 
 
 class PseudoFile(File):
@@ -34,7 +34,9 @@ class SourceUploadedFile(File):
 class Attachment(File):
     def __init__(self, part, name):
         self.name = name
-        self.file = PseudoFile(StringIO(part.get_payload(decode=True)), name=name)
+        self.file = PseudoFile(
+            StringIO(part.get_payload(decode=True)), name=name
+        )
 
 
 class StagingFile(object):
@@ -46,7 +48,9 @@ class StagingFile(object):
         self.staging_folder = staging_folder
         if encoded_filename:
             self.encoded_filename = str(encoded_filename)
-            self.filename = base64.urlsafe_b64decode(urllib.unquote_plus(self.encoded_filename))
+            self.filename = base64.urlsafe_b64decode(
+                urllib.unquote_plus(self.encoded_filename)
+            )
         else:
             self.filename = filename
             self.encoded_filename = base64.urlsafe_b64encode(filename)
@@ -55,23 +59,37 @@ class StagingFile(object):
         return unicode(self.filename)
 
     def as_file(self):
-        return File(file=open(self.get_full_path(), mode='rb'), name=self.filename)
+        return File(
+            file=open(self.get_full_path(), mode='rb'), name=self.filename
+        )
+
+    def get_date_time_created(self):
+        return time.ctime(os.path.getctime(self.get_full_path()))
 
     def get_full_path(self):
         return os.path.join(self.staging_folder.folder_path, self.filename)
 
-    def get_image(self, size, page, zoom, rotation, as_base64=True):
-        # TODO: add support for transformations
-        converted_file_path = convert(self.get_full_path(), size=size)
+    def get_image(self, size=None, as_base64=True, transformations=None):
+        converter = converter_class(file_object=open(self.get_full_path()))
+
+        if size:
+            converter.transform(
+                transformation=TransformationResize(
+                    **dict(zip(('width', 'height'), (size.split('x'))))
+                )
+            )
+
+        # Interactive transformations
+        for transformation in transformations:
+            converter.transform(transformation=transformation)
+
+        image_data = converter.get_page()
 
         if as_base64:
-            mimetype = get_mimetype(open(converted_file_path, 'r'), converted_file_path, mimetype_only=True)[0]
-            image = open(converted_file_path, 'r')
-            base64_data = base64.b64encode(image.read())
-            image.close()
-            return 'data:%s;base64,%s' % (mimetype, base64_data)
+            base64_data = base64.b64encode(image_data.read())
+            return 'data:%s;base64,%s' % ('image/png', base64_data)
         else:
-            return converted_file_path
+            return image_data
 
     def delete(self):
         os.unlink(self.get_full_path())

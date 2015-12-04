@@ -4,25 +4,61 @@
 # 
 # Translators:
 # Translators:
-# Christophe kryskool <christophe.chauvet@gmail.com>, 2014-2015
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:00-0400\n"
-"PO-Revision-Date: 2015-01-29 07:41+0000\n"
-"Last-Translator: Christophe kryskool <christophe.chauvet@gmail.com>\n"
-"Language-Team: French (http://www.transifex.com/projects/p/mayan-edms/language/fr/)\n"
+"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"PO-Revision-Date: 2015-08-24 04:02+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: api.py:94
+#: api.py:100
 msgid "Unknown"
 msgstr "Inconnu"
+
+#: apps.py:21
+msgid "Django GPG"
+msgstr ""
+
+#: apps.py:54 apps.py:61
+msgid "ID"
+msgstr "ID"
+
+#: apps.py:56
+msgid "Owner"
+msgstr "Propriétaire"
+
+#: apps.py:64
+msgid "Type"
+msgstr "Type"
+
+#: apps.py:66
+msgid "Creation date"
+msgstr "Date de création"
+
+#: apps.py:72
+msgid "Expiration date"
+msgstr "Date d'expiration"
+
+#: apps.py:73
+msgid "No expiration"
+msgstr ""
+
+#: apps.py:75
+msgid "Length"
+msgstr "Durée"
+
+#: apps.py:77
+#| msgid "Identifies"
+msgid "Identities"
+msgstr ""
 
 #: forms.py:9
 msgid "Term"
@@ -32,27 +68,27 @@ msgstr "Terme"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Nom, e-mail, ID de clé ou empreinte à rechercher."
 
-#: links.py:10 views.py:68
+#: links.py:14 views.py:81
 msgid "Private keys"
 msgstr "Clés privées"
 
-#: links.py:11 views.py:71
+#: links.py:18 views.py:76
 msgid "Public keys"
 msgstr "Clés publiques"
 
-#: links.py:12
+#: links.py:21
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:13 permissions.py:11
+#: links.py:26 permissions.py:16
 msgid "Query keyservers"
 msgstr "Interroger les serveurs de clés"
 
-#: links.py:14
+#: links.py:30
 msgid "Import"
-msgstr "importer"
+msgstr ""
 
-#: links.py:15 permissions.py:7
+#: links.py:35 permissions.py:7
 msgid "Key management"
 msgstr "Gestion des clés"
 
@@ -88,129 +124,119 @@ msgstr "Document non signé ou signature erronée."
 msgid "Signature error."
 msgstr "Erreur de signature."
 
-#: literals.py:44
+#: literals.py:45
 msgid "Document is signed but no public key is available for verification."
 msgstr "Ce document est signé mais aucune clé publique n'est disponible pour vérifier la signature."
 
-#: literals.py:47
+#: literals.py:50
 msgid "Document is signed, and signature is good."
 msgstr "Le document est signé et la signature est bonne."
 
-#: literals.py:50
+#: literals.py:53
 msgid "Document is signed with a valid signature."
 msgstr "Le document est signé avec une signature valide."
 
-#: permissions.py:9
+#: permissions.py:10
 msgid "View keys"
 msgstr "Afficher les clés"
 
-#: permissions.py:10
+#: permissions.py:13
 msgid "Delete keys"
 msgstr "Supprimer les clés"
 
-#: permissions.py:12
+#: permissions.py:19
 msgid "Import keys from keyservers"
 msgstr "Importer les clés à partir des serveurs de clés"
 
-#: settings.py:14
+#: settings.py:10
+#| msgid "Signature error."
+msgid "Signatures"
+msgstr ""
+
+#: settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
 msgstr "Liste des serveurs de clés à interroger pour les clés inconnues."
 
-#: settings.py:15
+#: settings.py:19
 msgid "Home directory used to store keys as well as configuration files."
 msgstr "Répertoire principal utilisé pour stocker les clés, ainsi que les fichiers de configuration"
 
-#: settings.py:16
+#: settings.py:25
 msgid "Path to the GPG binary."
 msgstr "Chemin du binaire GPG"
 
-#: views.py:40
+#: views.py:38
 #, python-format
-msgid "Key: %s, imported successfully."
-msgstr "Clé: %s, importée avec succès."
+#| msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr ""
 
-#: views.py:45
+#: views.py:48
 #, python-format
-msgid "Unable to import key id: %(key_id)s; %(error)s"
-msgstr "Impossible d'importer la clé dont l'id est: %(key_id)s; %(error)s"
+msgid "Successfully received key: %(key_id)s"
+msgstr ""
 
-#: views.py:54
+#: views.py:57
+#, python-format
+#| msgid "Import key"
+msgid "Import key ID: %s?"
+msgstr ""
+
+#: views.py:59
 msgid "Import key"
 msgstr "Importer la clé"
 
-#: views.py:55
-#, python-format
-msgid "Are you sure you wish to import key id: %s?"
-msgstr "Êtes vous certain de vouloir importer la l'id de la clé: %s?"
-
-#: views.py:79
-msgid "Key ID"
-msgstr "ID de la clé"
-
-#: views.py:83
-msgid "Owner"
-msgstr "Propriétaire"
-
-#: views.py:103
+#: views.py:100
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Clé: %s, supprimée avec succès"
 
-#: views.py:110
+#: views.py:107
 msgid "Delete key"
 msgstr "Supprimer la clé"
 
-#: views.py:112
+#: views.py:110
 #, python-format
+#| msgid ""
+#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
+#| " of a public/private pair the private key will be deleted well."
 msgid ""
-"Are you sure you wish to delete key: %s?  If you try to delete a public key "
-"that is part of a public/private pair the private key will be deleted as "
-"well."
-msgstr "Êtes vous certain de vouloir supprimer la clé: %s? Si vous supprimez une clé publique qui fait partie d'une paire clé publique/clé privée, la clé privée sera également supprimée."
+"Delete key %s? If you delete a public key that is part of a public/private "
+"pair the private key will be deleted as well."
+msgstr ""
 
-#: views.py:129
+#: views.py:134
+msgid "Search"
+msgstr ""
+
+#: views.py:136
 msgid "Query key server"
 msgstr "Interroger le serveur de clés"
 
-#: views.py:142
-msgid "results"
-msgstr "résultats"
+#: views.py:146
+msgid "Key query results"
+msgstr ""
 
-#: views.py:147
-msgid "ID"
-msgstr "ID"
+#~ msgid "Key ID"
+#~ msgstr "Key ID"
 
-#: views.py:151
-msgid "Type"
-msgstr "Type"
+#~ msgid "results"
+#~ msgstr "results"
 
-#: views.py:155
-msgid "Creation date"
-msgstr "Date de création"
+#~ msgid "Key: %s, imported successfully."
+#~ msgstr "Key: %s, imported successfully."
 
-#: views.py:159
-msgid "Disabled"
-msgstr "Désactivé"
+#~ msgid "Are you sure you wish to import key id: %s?"
+#~ msgstr "Are you sure you wish to import key id: %s?"
 
-#: views.py:163
-msgid "Expiration date"
-msgstr "Date d'expiration"
+#~ msgid "Disabled"
+#~ msgstr "disabled"
 
-#: views.py:167
-msgid "Expired"
-msgstr "Expiré"
+#~ msgid "Expired"
+#~ msgstr "expired"
 
-#: views.py:171
-msgid "Length"
-msgstr "Durée"
-
-#: views.py:175
-msgid "Revoked"
-msgstr "Retirer"
-
-#: views.py:180
-msgid "Identifies"
-msgstr "Identifie"
+#~ msgid "Revoked"
+#~ msgstr "revoked"
 
 #~ msgid "private keys"
 #~ msgstr "private keys"

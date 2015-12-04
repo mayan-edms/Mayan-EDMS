@@ -1,0 +1,9 @@
+{% extends 'appearance/base.html' %}
+
+{% block title %}{{ title }}{% endblock title %}
+
+{% block content_plain %}
+    {% for page in pages %}
+        <img src="{% url 'documents:document_display_print' object.id %}?page={{ page.page_number }}" />
+    {% endfor %}
+{% endblock %}

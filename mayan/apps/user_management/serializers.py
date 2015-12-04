@@ -5,9 +5,32 @@ from django.contrib.auth.models import Group, User
 from rest_framework import serializers
 
 
-class UserSerializer(serializers.ModelSerializer):
+class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    users_count = serializers.SerializerMethodField()
+
     class Meta:
-        fields = ('id', 'username', 'first_name', 'last_name', 'email', 'is_staff', 'is_active', 'is_superuser', 'last_login', 'date_joined', 'password')
+        extra_kwargs = {
+            'url': {'view_name': 'rest_api:group-detail'}
+        }
+        fields = ('id', 'name', 'url', 'users_count')
+        model = Group
+
+    def get_users_count(self, instance):
+        return instance.user_set.count()
+
+
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    groups = GroupSerializer(many=True)
+
+    class Meta:
+        extra_kwargs = {
+            'url': {'view_name': 'rest_api:user-detail'}
+        }
+        fields = (
+            'first_name', 'date_joined', 'email', 'groups', 'id', 'is_staff',
+            'is_active', 'is_superuser', 'last_login', 'last_name',
+            'password', 'url', 'username',
+        )
         model = User
         read_only_fields = ('last_login', 'date_joined')
         write_only_fields = ('password',)
@@ -17,9 +40,3 @@ class UserSerializer(serializers.ModelSerializer):
         if 'password' in attrs:
             user.set_password(attrs['password'])
         return user
-
-
-class GroupSerializer(serializers.ModelSerializer):
-    class Meta:
-        fields = ('id', 'name')
-        model = Group

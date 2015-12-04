@@ -1,0 +1,508 @@
+=============================
+Mayan EDMS v2.0 release notes
+=============================
+
+Released: December 2015
+
+Welcome to Mayan EDMS v2.0
+
+
+What's new in Mayan EDMS v2.0
+=============================
+
+Update to Django 1.7
+--------------------
+The biggest change of this release comes in the form of support for Django 1.7.
+**Mayan EDMS** makes use of several new features of Django 1.7 like: migrations,
+app config and transaction handling. The version of Django supported in this
+version is 1.7.10. With the move to Django 1.7, support for South migrations
+and Python 2.6 is removed. The switch to Django 1.7's app config means that
+the startup order of app should not longer have any relevance, cause any import
+or startup problems.
+
+Frontend UI
+-----------
+The frontend UI HTML has been re-factored to use Bootstrap. Along with this
+update a lot of legacy HTML and CSS was removed, greatly simplifying the
+existing template and allowing the removal of some.
+
+Theming and re-branding
+----------------------
+All the presentation logic and markup has been moved into it's own app, the
+'appearance' app. All modifications required to customize the entire look of
+the **Mayan EDMS** can now be done in a single app. Very little markup remains
+in the other apps, and it's usually because of necessity, namely the widgets.py
+modules.
+
+Improved page navigation interface
+----------------------------------
+Previously the document page interface used a fancybox windows leaving the
+current document in the background. This UI workflow as been improved and the
+document page navigation behaves like the rest of the document views.
+
+Menu reorganization
+-------------------
+To improve user experience, the main menu has been restructured based on
+function usage, moving seldom used buttons inside other views.
+
+Removal of famfam icon set
+--------------------------
+The previously used icon set and icon display code was removed and a new
+system that favor font icon was added.
+
+Document preview generation
+---------------------------
+The image conversion system was re-factored from the ground up and uses a much
+smarted caching system. The document image cache has it's own Django file
+storage driver and no longer default to the system /tmp directory. By moving
+the document image cache to a Django file storage, the cache doesn't need to
+reside in the same filesystem or even computer serving the document images.
+This change also allows nodes in a clustered install to share the document
+image cache.
+
+Document submission for OCR changed to POST
+-------------------------------------------
+Previously submitting a document for OCR could be done with a GET request to
+the corresponding URL. This design decision allowed for fast user experience
+but caused massive document submissions when sites were scanned by web spiders.
+The new workflow is to submit documents to the OCR queue only on POST request.
+
+New YAML based settings system
+------------------------------
+The first phase of the new distributed settings system has landed in this
+version. This first change causes settings to be serialized to YAML. This also
+means that it is not possible to pass functions or custom classes as values to
+settings. Setting that related to a class or function, now specify the path to
+those classes or functions and they are imported dynamically at runtime.
+Example::
+
+    DOCUMENTS_STORAGE_BACKEND = 'storage.backends.filebasedstorage.FileBasedStorage'
+
+Removal of auto admin creation
+------------------------------
+The auto admin user creation code used during new installs has been removed and
+it is its own reusable Django app. The app is available at
+https://pypi.python.org/pypi/django-autoadmin
+
+Removal of dependencies
+-----------------------
+Through optimizations and code reduction several Python libraries and Django
+app are no longer required. These are:
+
+* South
+* GitPython
+* django-pagination
+* psutil
+* python-hkp
+* sendfile
+* slate
+
+ACL system re-factor
+-------------------
+The Access Control System has been greatly simplified and optimized. The
+logistics to grant and revoke permissions are now as follows: Only Roles can
+hold permissions, groups and user can no longer on their own be granted a
+permission. Groups are now only organizational units that hold users and Roles
+are collections of groups. User are just a profile and authentication
+information object. So to grant a permission or access to a document to a user,
+grant those permissions to a new or existing role, add the desired user to a
+group and add that group to the role to which you granted the permission. When
+thinking about granting permissions think of it this way:
+
+**Permissions -> Roles -> Groups -> User**
+
+**Permissions for a document -> Roles -> Groups -> User**
+
+**Permissions for a type of document -> Roles -> Groups -> User**
+
+
+Object access control inheritance
+---------------------------------
+A frequently asked feature is the ability to change the access control of a
+group of documents. This feature has been implemented in the form of object
+access control inheritance. This means that if you grant a permission to a role
+for a document type, that role will inherit that permission for all document
+that are later created of that type. If you revoke a permission from a role for
+a document type, that role loses that permission for all documents of that type.
+With this new system changing the access control of individual documents
+should be an edge case. This new ability of modifying the access control of
+document types is the new recommended method.
+
+Removal of anonymous user support
+---------------------------------
+Allowing anonymous users access to your document repository is no longer
+support. Administrators wanting to make a group of documents public are
+encouraged to create an user, group and role for that purpose.
+
+Metadata validators re-factor
+----------------------------
+The metadata validators have been split into: Validators and Parsers.
+Validators will just check that the input value conforms to certain
+specification, raising a validation error is not and blocking the user from
+submitting data. The Parsers will transform user input and store the result as
+the metadata value.
+
+Trash can support
+-----------------
+To avoid accidental data loss, documents are not deleted but moved to a virtual
+trash can. From that trash can documents can them be deleted permanently. The
+deletion document documents and the moving of documents to the trash can are
+governed by two different permissions.
+
+Retention policies
+------------------
+Support for retention policies was added and is control on a document type basis.
+Two aspects can be controlled: the time at which documents will be
+automatically moved to the trash can and the time after which documents in the
+trash can will be automatically deleted. By default all new document types
+created will have a retention policy that doesn't move documents to the trash
+can and that permanently deletes documents in the trash can after 30 days.
+
+Support to share an index as a FUSE filesystem
+----------------------------------------------
+Index mirror has been added after being removed several version ago. This time
+mirroring works by creating a FUSE filesystem that is then mounted anywhere in
+the filesystem. The previous implementation used symbolic links that while
+fast, required constant modification to keep in sync with the indexes structure
+and only worked when the document storage and the index mirror resided in the
+same physical computer or node. This new implementation allowing mirroring of
+indexes even across a network or if the document storage is not a traditional
+filesystem but a remote object store. Since this new FUSE mirroring uses direct
+read access to the database caching is provided and is controlled by the
+**MIRRORING_DOCUMENT_CACHE_LOOKUP_TIMEOUT** and **MIRRORING_NODE_CACHE_LOOKUP_TIMEOUT**
+setting options. Both setting have a default of 10 seconds.
+
+Clickable preview images titles
+-------------------------------
+To reduce the amount of clicks required to access a document, document previews
+titles are now clickable and will take the user straight to the document view.
+
+Removal of eval
+---------------
+Use of Python's eval statement has been completely removed. Metadata type
+defaults, lookup fields, smart links and indexes templates now use Django's
+own template language.
+
+Smarter OCR
+-----------
+Document OCR workflow has been improved to try to parse text for each document
+page and in failing to parse text will only perform OCR on that specific page,
+returning to the parsing behavior for the next page. This allowing proper text
+extraction of documents containing both, embedded text and images.
+
+Failure tolerance
+-----------------
+Previous versions made use of transactions to prevent data loss in the event of
+an unexpected error. This release improves on that approach by also reacting
+to infrastructure failures. **Mayan EDMS** can now recover without any or
+minimal data loss from critical events such as loss of connectivity to the
+database manager. This changes allow installation of using database managers
+that do not provide guaranteed concurrency such as SQLite, to scale to thousand
+of documents. While this configuration is still not recommended, **Mayan EDMS**
+will now work and scale much better in environments where parts of the
+infrastructure cannot be changed (such as the database manager).
+
+For more information about this change read the blog post:
+http://blog.robertorosario.com/testing-django-project-infrastructure-failure-tolerance/
+
+As a result of this work a new Django app called Django-sabot was created that
+gives Django projects the ability to create unit tests for infrastructure
+failure tolerance: https://pypi.python.org/pypi/django-sabot
+
+RGB tags
+--------
+Previously tags could only choose from a predetermined number of color. This
+release changes that and tags be of any color. Tags now store the color
+selected in HTML RGB format. Existing tags are automatically converted to this
+new scheme.
+
+Default document type and default document source
+-------------------------------------------------
+After installation a default document type and document source are created,
+this means that users can start uploading documents as soon as **Mayan EDMS**
+is installed without having to do any configuration setting changes. The
+default document type and default document source are both called 'Default'.
+
+Link unbinding
+--------------
+Support for allowing 3rd party apps to unbind links binded by the core apps
+was added to further improve re-branding and customization.
+
+Statistics re-factor
+-------------------
+Statistics gathering and generation has been overhauled to allow for the
+creation of scheduled statistics. This allows statistics computation to be
+scheduled during low load times. A new management command was added to
+purge stale or orphan schedules left behind by the editing of statistics
+scheduled. The command is `purgestatistics` and has no parameters.
+
+Apps merge
+----------
+Several app were merge to reduce complexity of the code based on function.
+These are: the `home`, `common`, `project_tools` and `project_setup` apps,
+as well as the `documents` and `document_acls` apps.
+
+New signals
+-----------
+Two new signals are provided to better trigger processing documents at the
+correct moment, these are:
+
+* common/perform_upgrade - Launched on the `performupgrade` management command
+  to allow 3rd party apps to execute custom upgrade procedures in an unified
+  manner.
+* common/post_initial_setup - Launched on the `initialsetup` management command
+  to allow for post install initialization or setup.
+* common/post_upgrade - Launched after the `performupgrade` management command
+  finishes.
+* documents/post_version_upload = Launched after a new document version is
+  uploaded.
+* document/post_document_type_change = Launched after the document type of a
+  document is changed.
+* documents/post_document_created = Launched after a document is finally ready
+  to be accessed, not when it is created.
+* ocr/post_document_version_ocr - Launched when the OCR of a document version
+  has finished.
+
+Test improvements
+-----------------
+Instead of a flat tests.py file, each app now has a tests/ directory containing
+tests modules for each particular aspect of an apps, ie: test_models.py,
+test_views.py, test_classes.py. The total number and coverage of tests has been
+greatly increased.
+
+Indexes recalculation
+---------------------
+Indexes are now recalculated on when a new document is ready as well as the
+when the metadata of a document changes. This allows indexing documents not
+only based on their metadata but also based on their properties.
+
+Upgrade command
+---------------
+To reduce the steps and complexity of upgrades, the new `performupgrade`
+management command was been added. All the upgrade steps will be performed
+by this command.
+
+Admin changes
+-------------
+Installation admins are no longer required to have the `superusers` or `staff`
+Django account flags. All setup tasks are now governed by a permission which
+can be assigned to a role.
+
+OCR functions split
+-------------------
+The textual content of a document as interpreted by the OCR now resides as data
+in the `ocr` app and not in the `documents` app as before. OCR content might
+not be available for all documents after the upgrade and might need to be
+queued again. To help with this situation there is new tool called `OCR all
+documents` for this exact situation.
+
+New internal document creation workflow
+---------------------------------------
+The new document upload code now returns a document stub while content is
+processing. This allows API users to have the document id of the document
+just uploaded and perform other actions on it while it becomes ready
+for access.
+
+Auto logging
+------------
+App logging to the console is now automatically enabled. If Django's DEBUG
+flag is `True` the default level for auto logging is `DEBUG`. If Django's
+DEBUG flag is `False` (as in production), the default level changes to `INFO`.
+This should make it easier to add relevant messages to issue tickets as
+well as a adecuate logging during production.
+
+Other changes
+-------------
+
+* Merge of document_print and document_hard_copy views.
+* New class based and menu based navigation system.
+* Re-purpose the installation app.
+* New class based transformations.
+* Usage of Font Awesome icons set.
+* Move document text content display code to the OCR app.
+* Add new permissions PERMISSION_OCR_CONTENT_VIEW.
+* Document type OCR settings move to the OCR app.
+* New dependencies:
+
+  * PyYAML
+  * django-autoadmin
+  * django-pure-pagination
+  * djangorestframework-recursive
+
+* Management command to remove obsolete permissions: `purgepermissions`.
+* Normalization of 'title' and 'name' fields to 'label'.
+* Improved API, now at version 1.
+* Invert page title/project name order in browser title.
+* Use Django's class based views pagination.
+* Reduction of text strings.
+* OCR all documents.
+* Add tool to OCR all documents of a type.
+* Fix rendering of text files with Unicode characters.
+* Capture body of emails as a text document.
+* All app APIs are top level URLs.
+* CI using gitlab-ci.
+* Coverage report with codecov.io.
+* Thumbnails for documents in trash.
+* Production deployment documentation chapter.
+* Command line to create an initial settings file: `createsettings`.
+* Initialsetup now continues even is a settings/local.py exists.
+* default_app_config for each app.
+* Natural key support for many models allowing database migrations using dumped data.
+* Separate documentation requirements file to allow for contributor who only want to work on documentation.
+* Centralized testing with a new management command, `runtests`.
+* Addition of a tox testing configuration.
+* Email test body capture.
+* Email subject and from values storage.
+* Gitlab CI support.
+* Codecov support.
+* Improve text file rendering.
+* Show other packages licenses.
+* Task delay to allow DB replication.
+* Automatic debug logging and info logging during production.
+
+Removals
+--------
+* Removal of the CombinedSource class.
+* Removal of default class ACLs.
+* Removal of the ImageMagick and GraphicsMagick converter backends.
+* Remove support for applying roles to new users automatically.
+* Removal of the DOCUMENT_RESTRICTIONS_OVERRIDE permission.
+* Removed the page_label field.
+* Removal of custom HTTP 505 error view.
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+During the migration several messages of stale content types can occur:
+
+.. code-block:: bash
+
+    The following content types are stale and need to be deleted:
+
+        XX | XX
+
+    Any objects related to these content types by a foreign key will also
+    be deleted. Are you sure you want to delete these content types?
+    If you're unsure, answer 'no'.
+
+        Type 'yes' to continue, or 'no' to cancel:
+
+
+You can safely answer "yes" to all.
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+Remove unused dependencies::
+
+    $ pip uninstall South
+    $ pip uninstall GitPython
+    $ pip uninstall psutil
+    $ pip uninstall python-hkp
+    $ pip uninstall django-sendfile
+    $ pip uninstall django-pagination
+    $ pip uninstall slate
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* Current document and document sources transformations will be lost during upgrade.
+* Permissions and Access Controls granted to users and/or groups will be lost during upgrade.
+
+Bugs fixed or issues closed
+===========================
+
+* `GitHub issue #33 <https://github.com/mayan-edms/mayan-edms/issues/33>`_ Update to Django 1.7
+* `GitHub issue #59 <https://github.com/mayan-edms/mayan-edms/issues/59>`_ New bootstrap based UI
+* `GitHub issue #60 <https://github.com/mayan-edms/mayan-edms/issues/60>`_ Backport class based navigation code from the unstable branch
+* `GitHub issue #62 <https://github.com/mayan-edms/mayan-edms/issues/62>`_ Simplify and reduce code in templates
+* `GitHub issue #67 <https://github.com/mayan-edms/mayan-edms/issues/67>`_ Python 3 compatibility: Update models __unicode__ methdo to __str__ methods (using Django's six library)
+* `GitHub issue #121 <https://github.com/mayan-edms/mayan-edms/issues/121>`_ Twitter Bootstrap theme for Mayan EDMS
+* `GitHub issue #155 <https://github.com/mayan-edms/mayan-edms/issues/155>`_ Header does not fit list on documents/list on small screens (laptop)
+* `GitHub issue #170 <https://github.com/mayan-edms/mayan-edms/issues/170>`_ Remove use of python-hkp
+* `GitHub issue #182 <https://github.com/mayan-edms/mayan-edms/issues/182>`_ Reorganize signal processors
+* `GitLab issue #131 <https://gitlab.com/mayan-edms/mayan-edms/issues/131>`_ error on initialsetup: GPG initialization error
+* `GitLab issue #135 <https://gitlab.com/mayan-edms/mayan-edms/issues/135>`_ Add document indexing filesystem mirroring
+* `GitLab issue #141 <https://gitlab.com/mayan-edms/mayan-edms/issues/141>`_ Merge common and main app
+* `GitLab issue #142 <https://gitlab.com/mayan-edms/mayan-edms/issues/142>`_ New authentication app
+* `GitLab issue #145 <https://gitlab.com/mayan-edms/mayan-edms/issues/145>`_ Convert document tags to user RGB value for code instead of predetermined choices
+* `GitLab issue #150 <https://gitlab.com/mayan-edms/mayan-edms/issues/150>`_ Add 'trash can' support
+* `GitLab issue #151 <https://gitlab.com/mayan-edms/mayan-edms/issues/151>`_ Add support for data retention policies
+* `GitLab issue #152 <https://gitlab.com/mayan-edms/mayan-edms/issues/152>`_ JSON API 500 error
+* `GitLab issue #154 <https://gitlab.com/mayan-edms/mayan-edms/issues/154>`_ /documents API endpoint should return document pk
+* `GitLab issue #155 <https://gitlab.com/mayan-edms/mayan-edms/issues/155>`_ Remove unused document page label field
+* `GitLab issue #156 <https://gitlab.com/mayan-edms/mayan-edms/issues/156>`_ Remove post OCR language cleanup
+* `GitLab issue #158 <https://gitlab.com/mayan-edms/mayan-edms/issues/158>`_ Django REST Swagger not working
+* `GitLab issue #159 <https://gitlab.com/mayan-edms/mayan-edms/issues/159>`_ Error during template rendering on /document/folder/add with non-admin user
+* `GitLab issue #160 <https://gitlab.com/mayan-edms/mayan-edms/issues/160>`_ Add audit logging
+* `GitLab issue #163 <https://gitlab.com/mayan-edms/mayan-edms/issues/163>`_ Removal of the compressed file support
+* `GitLab issue #164 <https://gitlab.com/mayan-edms/mayan-edms/issues/164>`_ Keep fancybox prev & next buttons enabled all the time
+* `GitLab issue #167 <https://gitlab.com/mayan-edms/mayan-edms/issues/167>`_ Add workflow completion number to states
+* `GitLab issue #168 <https://gitlab.com/mayan-edms/mayan-edms/issues/168>`_ Add field to store last error of source during execution
+* `GitLab issue #171 <https://gitlab.com/mayan-edms/mayan-edms/issues/171>`_ tesseract fails with german language (wrong abbreviation)
+* `GitLab issue #173 <https://gitlab.com/mayan-edms/mayan-edms/issues/173>`_ Add post_document_upload signal
+* `GitLab issue #174 <https://gitlab.com/mayan-edms/mayan-edms/issues/174>`_ Bootstrap UI with master branch
+* `GitLab issue #176 <https://gitlab.com/mayan-edms/mayan-edms/issues/176>`_ Replace default email domain
+* `GitLab issue #177 <https://gitlab.com/mayan-edms/mayan-edms/issues/177>`_ Multi page tiff preview is not working
+* `GitLab issue #178 <https://gitlab.com/mayan-edms/mayan-edms/issues/178>`_ Add separate missing optional metadata and missing required metadata tools
+* `GitLab issue #181 <https://gitlab.com/mayan-edms/mayan-edms/issues/181>`_ Move task <-> queue assignment to apps.py
+* `GitLab issue #182 <https://gitlab.com/mayan-edms/mayan-edms/issues/182>`_ Document tags widget is not permissions aware
+* `GitLab issue #183 <https://gitlab.com/mayan-edms/mayan-edms/issues/183>`_ Separate metadata validators into: validators and parsers
+* `GitLab issue #184 <https://gitlab.com/mayan-edms/mayan-edms/issues/184>`_ Move literals in checkouts apps.py and tasks.py to literals.py
+* `GitLab issue #186 <https://gitlab.com/mayan-edms/mayan-edms/issues/186>`_ Scheduled task to delete all document stubs of more than X age.
+* `GitLab issue #187 <https://gitlab.com/mayan-edms/mayan-edms/issues/187>`_ Add tests for multi page tiff files
+* `GitLab issue #189 <https://gitlab.com/mayan-edms/mayan-edms/issues/189>`_ Use transient queues
+* `GitLab issue #190 <https://gitlab.com/mayan-edms/mayan-edms/issues/190>`_ Bump API version number
+* `GitLab issue #192 <https://gitlab.com/mayan-edms/mayan-edms/issues/192>`_ Use local model for document comments
+* `GitLab issue #197 <https://gitlab.com/mayan-edms/mayan-edms/issues/197>`_ Add continuous integration that is compatible with Gitlab
+* `GitLab issue #201 <https://gitlab.com/mayan-edms/mayan-edms/issues/201>`_ Untranslated items
+* `GitLab issue #202 <https://gitlab.com/mayan-edms/mayan-edms/issues/202>`_ AutoAdminSingleton matching query does not exist.
+* `GitLab issue #203 <https://gitlab.com/mayan-edms/mayan-edms/issues/203>`_ KeyError at /sources/upload/document/new/interactive/
+* `GitLab issue #204 <https://gitlab.com/mayan-edms/mayan-edms/issues/204>`_ Problems to add required metadata after changin the document type
+* `GitLab issue #216 <https://gitlab.com/mayan-edms/mayan-edms/issues/216>`_ Add default_app_config value to each app
+* `GitLab issue #223 <https://gitlab.com/mayan-edms/mayan-edms/issues/223>`_ [Documents] Trigger event_document_type_change on the model not on the view
+* `GitLab issue #227 <https://gitlab.com/mayan-edms/mayan-edms/issues/227>`_ decoder zip not available
+* `GitLab issue #228 <https://gitlab.com/mayan-edms/mayan-edms/issues/228>`_ Attribute error when trying to attach a tag for a user with inadequate permissions
+* `GitLab issue #229 <https://gitlab.com/mayan-edms/mayan-edms/issues/229>`_ Attribute error when a user tries to download a document - version 2.0.0b2
+* `GitLab issue #230 <https://gitlab.com/mayan-edms/mayan-edms/issues/230>`_ No option to create new document version even though user given permission in document ACL
+* `GitLab issue #231 <https://gitlab.com/mayan-edms/mayan-edms/issues/231>`_ User shown option to upload new version of a document even though it is blocked by checkout - v2.0.0b2
+* `GitLab issue #233 <https://gitlab.com/mayan-edms/mayan-edms/issues/233>`_ Available users instead of available groups
+* `GitLab issue #237 <https://gitlab.com/mayan-edms/mayan-edms/issues/237>`_ Forcefully checking in a document by a user without adequate permissions throws out an error
+
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

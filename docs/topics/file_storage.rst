@@ -3,15 +3,26 @@ File storage
 ============
 
 The files are stored and placed under **Mayan EDMS** "control" to avoid
-filename clashes (each file gets renamed to its UUID and without extension)
-and stored in a simple flat arrangement in a directory. This doesn't
-stop access to the files but it is not recommended because moving,
-renaming or updating the files directly would throw the database out
+filename clashes each file gets renamed to its ``UUID`` (Universally Unique ID),
+without extension, and stored in a simple flat arrangement in a directory.
+
+.. blockdiag::
+
+   blockdiag {
+      file [ label = 'mayan_1-1.pdf', width=120];
+      document [ label = 'mayan/media/document_storage/ab6c1cfe-8a8f-4a30-96c9-f54f606b9248', width=450];
+      file -> document [label = "upload"];
+
+      file -> document;
+   }
+
+This doesn't stop access to the files but renaming, moving or updating
+directly them is not recommended because it would throw the database out
 of sync.
 
-**Mayan EDMS** components are as decoupled from each other as possible,
-storage in this case is very decoupled and its behavior is controlled
-not by the project but by the Storage progamming class. Why this design?
-All the other parts don't make any assumptions about the actual file
-storage, files can be saved locally, over the network or even across the
-internet and everything will still operate exactly the same.
+Because **Mayan EDMS** components are as decoupled from each other as possible,
+storage in this case is decoupled and its behavior is controlled
+not by the project but by the ``Storage`` module class. All the other
+modules don't make any assumptions about how the actual document files are
+stored. This way files can be saved locally, over the network or even across
+the Internet and everything will still operate exactly the same.

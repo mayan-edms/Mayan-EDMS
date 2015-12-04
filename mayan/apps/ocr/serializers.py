@@ -1,5 +1,11 @@
+from __future__ import unicode_literals
+
 from rest_framework import serializers
 
+from .models import DocumentPageContent
 
-class DocumentVersionOCRSerializer(serializers.Serializer):
-    document_version_id = serializers.IntegerField()
+
+class DocumentPageContentSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('content',)
+        model = DocumentPageContent

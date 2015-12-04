@@ -1,17 +1,14 @@
 language: python
 python:
-  - 2.6
   - 2.7
 env:
-  global:
-   - TEST_APPS="document_indexing documents dynamic_search lock_manager document_signatures folders ocr sources tags"
   matrix:
    - DB=mysql
    - DB=postgres
    - DB=sqlite
 before_install:
   - sudo apt-get update -qq
-  - sudo apt-get install -qq python-dev gcc tesseract-ocr unpaper ghostscript libjpeg-dev libpng-dev poppler-utils
+  - sudo apt-get install -qq python-dev gcc tesseract-ocr tesseract-ocr-deu unpaper ghostscript libjpeg-dev libpng-dev poppler-utils libreoffice
 install:
   - "pip install -r requirements/testing.txt"
   - if [[ $DB == mysql ]]; then pip install -q mysql-python; fi
@@ -20,9 +17,9 @@ before_script:
   - mysql -e 'create database mayan_edms;'
   - psql -c 'create database mayan_edms;' -U postgres
 script:
-  - if [[ $DB == mysql ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.db_mysql; fi
-  - if [[ $DB == postgres ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.db_postgres; fi
-  - if [[ $DB == sqlite ]]; then coverage run manage.py test $TEST_APPS --settings=mayan.settings.travis.base; fi
+  - if [[ $DB == mysql ]]; then coverage run manage.py runtests --settings=mayan.settings.testing.travis.db_mysql --nomigrations; fi
+  - if [[ $DB == postgres ]]; then coverage run manage.py runtests --settings=mayan.settings.testing.travis.db_postgres --nomigrations; fi
+  - if [[ $DB == sqlite ]]; then coverage run manage.py runtests --settings=mayan.settings.testing.base --nomigrations; fi
 after_success:
   - coveralls
 branches:

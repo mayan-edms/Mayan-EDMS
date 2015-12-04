@@ -5,13 +5,13 @@ from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
-from django.utils.timezone import now
 
-from common.literals import TIME_DELTA_UNIT_DAYS
 from documents.models import DocumentType
 from documents.tests.literals import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL,
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+)
+from user_management.tests import (
+    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
 )
 
 from ..models import Workflow, WorkflowState, WorkflowTransition
@@ -48,8 +48,6 @@ class DocumentStateViewTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
-        self.admin_user.delete()
-        Workflow.objects.all().delete()
 
     def test_creating_workflow(self):
         response = self.client.post(

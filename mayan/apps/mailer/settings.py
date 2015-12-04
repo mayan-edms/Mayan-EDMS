@@ -2,15 +2,31 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from smart_settings.api import register_settings
+from smart_settings import Namespace
 
-register_settings(
-    namespace='mailer',
-    module='mailer.settings',
-    settings=[
-        {'name': 'LINK_SUBJECT_TEMPLATE', 'global_name': 'MAILER_LINK_SUBJECT_TEMPLATE', 'default': _('Link for document: {{ document }}'), 'description': _('Template for the document link email form subject line.')},
-        {'name': 'LINK_BODY_TEMPLATE', 'global_name': 'MAILER_LINK_BODY_TEMPLATE', 'default': _('To access this document click on the following link: <a href="{{ link }}">{{ link }}</a><br /><br />\n\n--------<br />\nThis email has been sent from Mayan EDMS (http://www.mayan-edms.com)'), 'description': _('Template for the document link email form body line.')},
-        {'name': 'DOCUMENT_SUBJECT_TEMPLATE', 'global_name': 'MAILER_DOCUMENT_SUBJECT_TEMPLATE', 'default': _('Document: {{ document }}'), 'description': _('Template for the document email form subject line.')},
-        {'name': 'DOCUMENT_BODY_TEMPLATE', 'global_name': 'MAILER_DOCUMENT_BODY_TEMPLATE', 'default': _('Attached to this email is the document: {{ document }}<br /><br />\n\n--------<br />\nThis email has been sent from Mayan EDMS (http://www.mayan-edms.com)'), 'description': _('Template for the document email form body line.')},
-    ]
+from .literals import (
+    DEFAULT_DOCUMENT_BODY_TEMPLATE, DEFAULT_LINK_BODY_TEMPLATE
+)
+
+namespace = Namespace(name='mailer', label=_('Mailing'))
+
+setting_link_subject_template = namespace.add_setting(
+    default=_('Link for document: {{ document }}'),
+    help_text=_('Template for the document link email form subject line.'),
+    global_name='MAILER_LINK_SUBJECT_TEMPLATE',
+)
+setting_link_body_template = namespace.add_setting(
+    default=DEFAULT_LINK_BODY_TEMPLATE,
+    help_text=_('Template for the document link email form body line.'),
+    global_name='MAILER_LINK_BODY_TEMPLATE',
+)
+setting_document_subject_template = namespace.add_setting(
+    default=_('Document: {{ document }}'),
+    help_text=_('Template for the document email form subject line.'),
+    global_name='MAILER_DOCUMENT_SUBJECT_TEMPLATE',
+)
+setting_document_body_template = namespace.add_setting(
+    default=DEFAULT_DOCUMENT_BODY_TEMPLATE,
+    help_text=_('Template for the document email form body line.'),
+    global_name='MAILER_DOCUMENT_BODY_TEMPLATE',
 )

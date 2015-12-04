@@ -4,4 +4,7 @@ source=
 omit=
     mayan/bin/mayan-edms.py
     mayan/wsgi.py
+    mayan/settings/*
     tests.py
+    mayan/apps/*/tests/*
+    *migrations*

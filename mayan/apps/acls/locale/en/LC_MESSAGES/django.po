@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 18:59-0400\n"
+"POT-Creation-Date: 2015-09-24 16:24-0400\n"
 "PO-Revision-Date: 2012-02-02 18:20+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,92 +18,50 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:25 links.py:13 links.py:19
-msgid "New holder"
-msgstr "New holder"
-
-#: forms.py:42
-msgid "Users"
-msgstr "Users"
-
-#: forms.py:45
-msgid "Groups"
-msgstr "Groups"
-
-#: forms.py:48
-msgid "Roles"
-msgstr "Roles"
-
-#: forms.py:51
-msgid "Special"
-msgstr "Special"
-
-#: links.py:9
+#: apps.py:14 links.py:30
 msgid "ACLs"
 msgstr "ACLs"
 
-#: links.py:10 links.py:18
+#: apps.py:20 links.py:38 models.py:36
 #, fuzzy
-msgid "Details"
-msgstr "details"
+msgid "Permissions"
+msgstr "permissions"
 
-#: links.py:11 links.py:20
+#: apps.py:24 models.py:38
 #, fuzzy
-msgid "Grant"
-msgstr "grant"
+#| msgid "Roles"
+msgid "Role"
+msgstr "Roles"
 
-#: links.py:12 links.py:21
+#: links.py:26
+msgid "Delete"
+msgstr ""
+
+#: links.py:34
 #, fuzzy
-msgid "Revoke"
-msgstr "revoke"
+#| msgid "View ACLs"
+msgid "New ACL"
+msgstr "View ACLs"
 
-#: links.py:15
-msgid "Default ACLs"
-msgstr "Default ACLs"
-
-#: links.py:16 views.py:379
-#, fuzzy
-msgid "Classes"
-msgstr "classes"
-
-#: links.py:17
-msgid "ACLs for class"
-msgstr "ACLs for class"
-
-#: managers.py:118 managers.py:130
+#: managers.py:72
 msgid "Insufficient access."
 msgstr "Insufficient access."
 
-#: models.py:25 models.py:67
-#, fuzzy
-msgid "Permission"
-msgstr "permissions"
-
-#: models.py:51
+#: models.py:44
 #, fuzzy
 msgid "Access entry"
 msgstr "access entry"
 
-#: models.py:52
+#: models.py:45
 #, fuzzy
 msgid "Access entries"
 msgstr "access entries"
 
-#: models.py:88
-#, fuzzy
-msgid "Default access entry"
-msgstr "default access entry"
+#: models.py:60
+msgid "None"
+msgstr ""
 
-#: models.py:89
-#, fuzzy
-msgid "Default access entries"
-msgstr "default access entries"
-
-#: models.py:108 models.py:111 models.py:112
-msgid "Creator"
-msgstr "Creator"
-
-#: permissions.py:7 permissions.py:8
+#: permissions.py:7
 msgid "Access control lists"
 msgstr "Access control lists"
 
@@ -111,145 +69,177 @@ msgstr "Access control lists"
 msgid "Edit ACLs"
 msgstr "Edit ACLs"
 
-#: permissions.py:11
+#: permissions.py:13
 msgid "View ACLs"
 msgstr "View ACLs"
 
-#: permissions.py:13
-msgid "Edit class default ACLs"
-msgstr "Edit class default ACLs"
-
-#: permissions.py:14
-msgid "View class default ACLs"
-msgstr "View class default ACLs"
-
-#: views.py:48
+#: views.py:61
 #, fuzzy, python-format
 msgid "Access control lists for: %s"
 msgstr "access control lists for: %s"
 
-#: views.py:50 views.py:402
-#, fuzzy
-msgid "Holder"
-msgstr "holder"
-
-#: views.py:51 views.py:403
-#, fuzzy
-msgid "Permissions"
-msgstr "permissions"
-
-#: views.py:98
+#: views.py:107
 #, fuzzy, python-format
-msgid "Permissions available to: %(actor)s for %(obj)s"
-msgstr "permissions available to: %(actor)s for %(obj)s"
+msgid "New access control lists for: %s"
+msgstr "access control lists for: %s"
 
-#: views.py:105 views.py:434
-#, fuzzy
-msgid "Namespace"
-msgstr "namespace"
+#: views.py:132
+#, fuzzy, python-format
+#| msgid "Default ACLs"
+msgid "Delete ACL: %s"
+msgstr "Default ACLs"
 
-#: views.py:106 views.py:435
+#: views.py:147
 #, fuzzy
-msgid "Label"
-msgstr "label"
-
-#: views.py:108 views.py:437
-#, fuzzy
-msgid "Has permission"
+msgid "Available permissions"
 msgstr "has permission"
 
-#: views.py:181 views.py:272 views.py:516 views.py:593
-msgid ", "
-msgstr ", "
-
-#: views.py:182 views.py:273 views.py:517 views.py:594
-#, python-format
-msgid " for %s"
-msgstr " for %s"
-
-#: views.py:183 views.py:518
-#, python-format
-msgid " to %s"
-msgstr " to %s"
-
-#: views.py:186 views.py:521
-#, python-format
-msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
-msgstr "Are you sure you wish to grant the permission %(title_suffix)s?"
-
-#: views.py:188 views.py:523
-#, python-format
-msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
-msgstr "Are you sure you wish to grant the permissions %(title_suffix)s?"
-
-#: views.py:195 views.py:530
-#, python-format
-msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
-msgstr "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
-
-#: views.py:201 views.py:536
-#, python-format
-msgid ""
-"%(actor)s, already had the permission \"%(permission)s\" granted for "
-"%(object)s."
-msgstr ""
-"%(actor)s, already had the permission \"%(permission)s\" granted for "
-"%(object)s."
-
-#: views.py:274 views.py:595
-#, python-format
-msgid " from %s"
-msgstr " from %s"
-
-#: views.py:277 views.py:598
-#, python-format
-msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
-msgstr "Are you sure you wish to revoke the permission %(title_suffix)s?"
-
-#: views.py:279 views.py:600
-#, python-format
-msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-msgstr "Are you sure you wish to revoke the permissions %(title_suffix)s?"
-
-#: views.py:286 views.py:607
-#, python-format
-msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
-
-#: views.py:292 views.py:613
-#, python-format
-msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-msgstr ""
-"%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-
-#: views.py:346
-#, fuzzy, python-format
-msgid "Add new holder for: %s"
-msgstr "add new holder for: %s"
-
-#: views.py:347 views.py:477
-msgid "Select"
-msgstr "Select"
-
-#: views.py:381
+#: views.py:148
 #, fuzzy
-msgid "Class"
-msgstr "class"
+msgid "Granted permissions"
+msgstr "has permission"
 
-#: views.py:400
-#, fuzzy, python-format
-msgid "Default access control lists for class: %s"
-msgstr "default access control lists for class: %s"
+#: views.py:187
+msgid "Disabled permissions are inherited from a parent object."
+msgstr ""
 
-#: views.py:428
-#, fuzzy, python-format
-msgid "Permissions available to: %(actor)s for class %(class)s"
-msgstr "permissions available to: %(actor)s for class %(class)s"
+#: views.py:218
+#, python-format
+msgid "Role \"%(role)s\" permission's for \"%(object)s\""
+msgstr ""
 
-#: views.py:475
-#, fuzzy, python-format
-msgid "Add new holder for class: %s"
-msgstr "add new holder for class: %s"
+#~ msgid "New holder"
+#~ msgstr "New holder"
+
+#~ msgid "Users"
+#~ msgstr "Users"
+
+#~ msgid "Groups"
+#~ msgstr "Groups"
+
+#~ msgid "Special"
+#~ msgstr "Special"
+
+#, fuzzy
+#~ msgid "Details"
+#~ msgstr "details"
+
+#, fuzzy
+#~ msgid "Grant"
+#~ msgstr "grant"
+
+#, fuzzy
+#~ msgid "Revoke"
+#~ msgstr "revoke"
+
+#, fuzzy
+#~ msgid "Classes"
+#~ msgstr "classes"
+
+#~ msgid "ACLs for class"
+#~ msgstr "ACLs for class"
+
+#, fuzzy
+#~ msgid "Permission"
+#~ msgstr "permissions"
+
+#, fuzzy
+#~ msgid "Default access entry"
+#~ msgstr "default access entry"
+
+#, fuzzy
+#~ msgid "Default access entries"
+#~ msgstr "default access entries"
+
+#~ msgid "Creator"
+#~ msgstr "Creator"
+
+#~ msgid "Edit class default ACLs"
+#~ msgstr "Edit class default ACLs"
+
+#~ msgid "View class default ACLs"
+#~ msgstr "View class default ACLs"
+
+#, fuzzy
+#~ msgid "Holder"
+#~ msgstr "holder"
+
+#, fuzzy
+#~ msgid "Permissions available to: %(actor)s for %(obj)s"
+#~ msgstr "permissions available to: %(actor)s for %(obj)s"
+
+#, fuzzy
+#~ msgid "Namespace"
+#~ msgstr "namespace"
+
+#, fuzzy
+#~ msgid "Label"
+#~ msgstr "label"
+
+#~ msgid ", "
+#~ msgstr ", "
+
+#~ msgid " for %s"
+#~ msgstr " for %s"
+
+#~ msgid " to %s"
+#~ msgstr " to %s"
+
+#~ msgid "Are you sure you wish to grant the permission %(title_suffix)s?"
+#~ msgstr "Are you sure you wish to grant the permission %(title_suffix)s?"
+
+#~ msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
+#~ msgstr "Are you sure you wish to grant the permissions %(title_suffix)s?"
+
+#~ msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
+#~ msgstr "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
+
+#~ msgid ""
+#~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
+#~ "%(object)s."
+#~ msgstr ""
+#~ "%(actor)s, already had the permission \"%(permission)s\" granted for "
+#~ "%(object)s."
+
+#~ msgid " from %s"
+#~ msgstr " from %s"
+
+#~ msgid "Are you sure you wish to revoke the permission %(title_suffix)s?"
+#~ msgstr "Are you sure you wish to revoke the permission %(title_suffix)s?"
+
+#~ msgid "Are you sure you wish to revoke the permissions %(title_suffix)s?"
+#~ msgstr "Are you sure you wish to revoke the permissions %(title_suffix)s?"
+
+#~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
+#~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
+
+#~ msgid ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+
+#, fuzzy
+#~ msgid "Add new holder for: %s"
+#~ msgstr "add new holder for: %s"
+
+#~ msgid "Select"
+#~ msgstr "Select"
+
+#, fuzzy
+#~ msgid "Class"
+#~ msgstr "class"
+
+#, fuzzy
+#~ msgid "Default access control lists for class: %s"
+#~ msgstr "default access control lists for class: %s"
+
+#, fuzzy
+#~ msgid "Permissions available to: %(actor)s for class %(class)s"
+#~ msgstr "permissions available to: %(actor)s for class %(class)s"
+
+#, fuzzy
+#~ msgid "Add new holder for class: %s"
+#~ msgstr "add new holder for class: %s"
 
 #~ msgid "List of classes"
 #~ msgstr "List of classes"

@@ -1,20 +1,28 @@
 from __future__ import unicode_literals
 
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from .managers import LockManager
 from .settings import DEFAULT_LOCK_TIMEOUT
 
 
+@python_2_unicode_compatible
 class Lock(models.Model):
-    creation_datetime = models.DateTimeField(verbose_name=_('Creation datetime'), auto_now_add=True)
-    timeout = models.IntegerField(default=DEFAULT_LOCK_TIMEOUT, verbose_name=_('Timeout'))
-    name = models.CharField(max_length=64, verbose_name=_('Name'), unique=True)
+    creation_datetime = models.DateTimeField(
+        auto_now_add=True, verbose_name=_('Creation datetime')
+    )
+    timeout = models.IntegerField(
+        default=DEFAULT_LOCK_TIMEOUT, verbose_name=_('Timeout')
+    )
+    name = models.CharField(
+        max_length=64, unique=True, verbose_name=_('Name')
+    )
 
     objects = LockManager()
 
-    def __unicode__(self):
+    def __str__(self):
         return self.name
 
     def save(self, *args, **kwargs):
@@ -25,7 +33,9 @@ class Lock(models.Model):
 
     def release(self):
         try:
-            lock = Lock.objects.get(name=self.name, creation_datetime=self.creation_datetime)
+            lock = Lock.objects.get(
+                name=self.name, creation_datetime=self.creation_datetime
+            )
         except Lock.DoesNotExist:
             # Our lock has expired and was reassigned
             pass

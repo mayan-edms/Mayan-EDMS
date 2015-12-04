@@ -2,13 +2,10 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.core.exceptions import PermissionDenied
 from django.db import models
 from django.utils.timezone import now
 
-from acls.models import AccessEntry
 from documents.models import Document
-from permissions.models import Permission
 
 from .events import (
     event_document_auto_check_in, event_document_check_in,
@@ -16,17 +13,30 @@ from .events import (
 )
 from .exceptions import DocumentNotCheckedOut
 from .literals import STATE_CHECKED_OUT, STATE_CHECKED_IN
-from .permissions import PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE
 
 logger = logging.getLogger(__name__)
 
 
 class DocumentCheckoutManager(models.Manager):
+    def checkout_document(self, document, expiration_datetime, user, block_new_version=True):
+        self.create(
+            document=document, expiration_datetime=expiration_datetime,
+            user=user, block_new_version=block_new_version
+        )
+
     def checked_out_documents(self):
-        return Document.objects.filter(pk__in=self.model.objects.all().values_list('document__pk', flat=True))
+        return Document.objects.filter(
+            pk__in=self.model.objects.all().values_list(
+                'document__pk', flat=True
+            )
+        )
 
     def expired_check_outs(self):
-        expired_list = Document.objects.filter(pk__in=self.model.objects.filter(expiration_datetime__lte=now()).values_list('document__pk', flat=True))
+        expired_list = Document.objects.filter(
+            pk__in=self.model.objects.filter(
+                expiration_datetime__lte=now()
+            ).values_list('document__pk', flat=True)
+        )
         logger.debug('expired_list: %s', expired_list)
         return expired_list
 
@@ -47,8 +57,10 @@ class DocumentCheckoutManager(models.Manager):
             raise DocumentNotCheckedOut
         else:
             if user:
-                if self.document_checkout_info(document).user_object != user:
-                    event_document_forceful_check_in.commit(actor=user, target=document)
+                if self.document_checkout_info(document).user != user:
+                    event_document_forceful_check_in.commit(
+                        actor=user, target=document
+                    )
                 else:
                     event_document_check_in.commit(actor=user, target=document)
             else:
@@ -68,33 +80,10 @@ class DocumentCheckoutManager(models.Manager):
         else:
             return STATE_CHECKED_IN
 
-    def is_document_new_versions_allowed(self, document, user=None):
+    def are_document_new_versions_allowed(self, document, user=None):
         try:
             checkout_info = self.document_checkout_info(document)
         except DocumentNotCheckedOut:
             return True
         else:
-            if not user:
-                return not checkout_info.block_new_version
-            else:
-                if user.is_staff or user.is_superuser:
-                    # Allow anything to superusers and staff
-                    return True
-
-                if user == checkout_info.user_object:
-                    # Allow anything to the user who checked out this document
-                    return True
-                else:
-                    # If not original user check to see if user has global or this document's PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE permission
-                    try:
-                        Permission.objects.check_permissions(user, [PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE])
-                    except PermissionDenied:
-                        try:
-                            AccessEntry.objects.check_accesses([PERMISSION_DOCUMENT_RESTRICTIONS_OVERRIDE], user, document)
-                        except PermissionDenied:
-                            # Last resort check if original user enabled restriction
-                            return not checkout_info.block_new_version
-                        else:
-                            return True
-                    else:
-                        return True
+            return not checkout_info.block_new_version

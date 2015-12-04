@@ -4,241 +4,259 @@
 # 
 # Translators:
 # Translators:
-# Ford Guo <agile.guo@gmail.com>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 18:59-0400\n"
-"PO-Revision-Date: 2015-01-11 22:05+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/projects/p/mayan-edms/language/zh_CN/)\n"
+"POT-Creation-Date: 2015-09-24 16:24-0400\n"
+"PO-Revision-Date: 2015-08-19 06:41+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: events.py:7
-msgid "Document checked out"
-msgstr "文档检出"
-
-#: events.py:8
-msgid "Document checked in"
-msgstr "文档签入"
-
-#: events.py:9
-msgid "Document automatically checked in"
-msgstr "文档自动签入"
-
-#: events.py:10
-msgid "Document forcefully checked in"
-msgstr "文档强制签入"
-
-#: exceptions.py:18 views.py:82
-msgid "Document already checked out."
-msgstr "文档已经检出"
-
-#: links.py:19
+#: apps.py:33 links.py:22
 msgid "Checkouts"
 msgstr ""
 
-#: links.py:20
+#: events.py:9
+msgid "Document automatically checked in"
+msgstr ""
+
+#: events.py:12
+msgid "Document checked in"
+msgstr ""
+
+#: events.py:15
+msgid "Document checked out"
+msgstr ""
+
+#: events.py:19
+msgid "Document forcefully checked in"
+msgstr ""
+
+#: exceptions.py:32 views.py:55
+msgid "Document already checked out."
+msgstr ""
+
+#: handlers.py:13
+#, python-format
+#| msgid "New versions allowed: %s"
+msgid "New versions not allowed for the checkedout document: %s"
+msgstr ""
+
+#: links.py:27
 msgid "Check out document"
 msgstr ""
 
-#: links.py:21
+#: links.py:33
 msgid "Check in document"
 msgstr ""
 
-#: links.py:22
+#: links.py:40
 msgid "Check in/out"
 msgstr ""
 
-#: literals.py:9
+#: literals.py:12
 msgid "Checked out"
 msgstr ""
 
-#: literals.py:10
+#: literals.py:13
 msgid "Checked in/available"
 msgstr ""
 
-#: models.py:23
+#: models.py:28
 msgid "Document"
 msgstr ""
 
-#: models.py:24
+#: models.py:31
 msgid "Check out date and time"
 msgstr ""
 
-#: models.py:25 widgets.py:79
-msgid "Check out expiration date and time"
-msgstr "检出过期的日期和时间"
-
-#: models.py:25
+#: models.py:35
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr "持有文档检出的时间分钟数"
+msgstr ""
 
-#: models.py:32
+#: models.py:37
+msgid "Check out expiration date and time"
+msgstr ""
+
+#: models.py:39 views.py:85
+#| msgid "User: %s"
+msgid "User"
+msgstr ""
+
+#: models.py:43
+msgid "Do not allow new version of this document to be uploaded."
+msgstr ""
+
+#: models.py:45
 msgid "Block new version upload"
 msgstr ""
 
-#: models.py:32
-msgid "Do not allow new version of this document to be uploaded."
-msgstr "此文档不允许上传新版本"
-
-#: models.py:58 permissions.py:7
-msgid "Document checkout"
-msgstr "文档检出"
-
 #: models.py:59
+#| msgid "Check out expiration date and time"
+msgid "Check out expiration date and time must be in the future."
+msgstr ""
+
+#: models.py:80 permissions.py:7
+msgid "Document checkout"
+msgstr ""
+
+#: models.py:81
 msgid "Document checkouts"
 msgstr ""
 
-#: permissions.py:9
-msgid "Check out documents"
-msgstr "检出文档"
-
 #: permissions.py:10
 msgid "Check in documents"
-msgstr "签入文档"
+msgstr ""
 
-#: permissions.py:11
+#: permissions.py:13
 msgid "Forcefully check in documents"
-msgstr "强制文档签入"
+msgstr ""
 
-#: permissions.py:12
-msgid "Allow overriding check out restrictions"
-msgstr "允许覆盖检出限制"
+#: permissions.py:16
+msgid "Check out documents"
+msgstr ""
 
-#: views.py:32
+#: views.py:59
+#, python-format
+msgid "Error trying to check out document; %s"
+msgstr ""
+
+#: views.py:64
+#, python-format
+msgid "Document \"%s\" checked out successfully."
+msgstr ""
+
+#: views.py:72
+#, python-format
+msgid "Check out document: %s"
+msgstr ""
+
+#: views.py:81
 msgid "Documents checked out"
 msgstr ""
 
-#: views.py:35
-msgid "Checkout user"
-msgstr ""
-
-#: views.py:36
+#: views.py:91
 msgid "Checkout time and date"
 msgstr ""
 
-#: views.py:37
+#: views.py:97
 msgid "Checkout expiration"
 msgstr ""
 
-#: views.py:50
+#: views.py:124
 #, python-format
 msgid "Document status: %s"
 msgstr ""
 
-#: views.py:54
+#: views.py:130
 #, python-format
 msgid "User: %s"
-msgstr "用户：%s"
+msgstr ""
 
-#: views.py:55
+#: views.py:136
 #, python-format
 msgid "Check out time: %s"
-msgstr "检出时间：%s"
+msgstr ""
 
-#: views.py:56
+#: views.py:141
 #, python-format
 msgid "Check out expiration: %s"
-msgstr "检出过期：%s"
+msgstr ""
 
-#: views.py:57
+#: views.py:146
 #, python-format
 msgid "New versions allowed: %s"
-msgstr "允许新版本：%s"
+msgstr ""
 
-#: views.py:57
+#: views.py:147
 msgid "Yes"
 msgstr ""
 
-#: views.py:57
+#: views.py:147
 msgid "No"
 msgstr ""
 
-#: views.py:62
+#: views.py:154
 #, python-format
 msgid "Check out details for document: %s"
-msgstr "文档：%s的检出信息"
+msgstr ""
 
-#: views.py:85
+#: views.py:170
 #, python-format
-msgid "Error trying to check out document; %s"
-msgstr "尝试检出文档出错%s"
+#| msgid ""
+#| "dn't originally checked out this document.  Are you sure you wish cefully "
+#| "check in document: %s?"
+msgid ""
+"You didn't originally checked out this document. Forcefully check in the "
+"document: %s?"
+msgstr ""
 
-#: views.py:87
+#: views.py:174
 #, python-format
-msgid "Document \"%s\" checked out successfully."
-msgstr "文档\"%s\"检出成功"
+#| msgid "Check out document: %s"
+msgid "Check in the document: %s?"
+msgstr ""
 
-#: views.py:95
-#, python-format
-msgid "Check out document: %s"
-msgstr "检出文档: %s"
-
-#: views.py:107 views.py:128
+#: views.py:210
 msgid "Document has not been checked out."
-msgstr "文档未被检出"
+msgstr ""
 
-#: views.py:130
+#: views.py:213
 #, python-format
 msgid "Error trying to check in document; %s"
-msgstr "尝试签入文档出错: %s"
+msgstr ""
 
-#: views.py:132
+#: views.py:217
 #, python-format
 msgid "Document \"%s\" checked in successfully."
-msgstr "文档\"%s\"签入成功"
+msgstr ""
 
-#: views.py:143
-#, python-format
-msgid ""
-"You didn't originally checked out this document.  Are you sure you wish to "
-"forcefully check in document: %s?"
-msgstr "你起初没有检出此文档，确定要强制签入文档: %s么?"
+#: widgets.py:23
+msgid "Period"
+msgstr ""
 
-#: views.py:145
-#, python-format
-msgid "Are you sure you wish to check in document: %s?"
-msgstr "确定要签入文档: %s么？"
+#~ msgid "Allow overriding check out restrictions"
+#~ msgstr "Allow overriding check out restrictions"
 
-#: widgets.py:17
-msgid "Days"
-msgstr "天"
+#~ msgid "Checkout user"
+#~ msgstr "checkout user"
 
-#: widgets.py:18
-msgid "Hours"
-msgstr "小时"
+#~ msgid "Are you sure you wish to check in document: %s?"
+#~ msgstr "Are you sure you wish to check in document: %s?"
 
-#: widgets.py:19
-msgid "Minutes"
-msgstr "分钟"
+#~ msgid "Days"
+#~ msgstr "Days"
 
-#: widgets.py:49
-msgid "Enter a valid number of days."
-msgstr "输入有效的天数"
+#~ msgid "Hours"
+#~ msgstr "Hours"
 
-#: widgets.py:50
-msgid "Enter a valid number of hours."
-msgstr "输入有效的小时数"
+#~ msgid "Minutes"
+#~ msgstr "Minutes"
 
-#: widgets.py:51
-msgid "Enter a valid number of minutes."
-msgstr "输入有效的分钟数"
+#~ msgid "Enter a valid number of days."
+#~ msgstr "Enter a valid number of days."
 
-#: widgets.py:52
-msgid "Enter a valid time difference."
-msgstr "输入有效的时间差"
+#~ msgid "Enter a valid number of hours."
+#~ msgstr "Enter a valid number of hours."
 
-#: widgets.py:78
-msgid ""
-"Amount of time to hold the document in the checked out state in days, hours "
-"and/or minutes."
-msgstr "持有文档检出状态的时间数，以天，小时，分钟为单位。"
+#~ msgid "Enter a valid number of minutes."
+#~ msgstr "Enter a valid number of minutes."
+
+#~ msgid "Enter a valid time difference."
+#~ msgstr "Enter a valid time difference."
+
+#~ msgid ""
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
+#~ msgstr ""
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."

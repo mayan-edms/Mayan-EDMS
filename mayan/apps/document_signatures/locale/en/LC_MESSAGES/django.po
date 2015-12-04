@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
+"POT-Creation-Date: 2015-09-24 16:25-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,144 +18,143 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: forms.py:9 models.py:23
+#: apps.py:62 permissions.py:8 settings.py:7
+msgid "Document signatures"
+msgstr "Document signatures"
+
+#: forms.py:9 models.py:31
 msgid "Signature file"
 msgstr "Signature file"
 
-#: links.py:22
+#: links.py:31
 #, fuzzy
 msgid "Delete signature"
 msgstr "download signature"
 
-#: links.py:23
+#: links.py:35
 #, fuzzy
 msgid "Download signature"
 msgstr "download signature"
 
-#: links.py:24
+#: links.py:41
 #, fuzzy
 msgid "Upload signature"
 msgstr "upload signature"
 
-#: links.py:25
+#: links.py:45
 #, fuzzy
 msgid "Signatures"
 msgstr "signatures"
 
-#: models.py:22
+#: models.py:27
 #, fuzzy
 msgid "Document version"
 msgstr "document version"
 
-#: models.py:24
+#: models.py:34
 #, fuzzy
 msgid "Has embedded signature"
 msgstr "has embedded signature"
 
-#: models.py:39
+#: models.py:52
 #, fuzzy
 msgid "Document version signature"
 msgstr "document version signature"
 
-#: models.py:40
+#: models.py:53
 #, fuzzy
 msgid "Document version signatures"
 msgstr "document version signatures"
 
-#: permissions.py:7
-msgid "Document signatures"
-msgstr "Document signatures"
-
-#: permissions.py:8
+#: permissions.py:12
 msgid "Verify document signatures"
 msgstr "Verify document signatures"
 
-#: permissions.py:9
+#: permissions.py:15
 #, fuzzy
 msgid "Delete detached signatures"
 msgstr "Download detached signatures"
 
-#: permissions.py:10
+#: permissions.py:18
 msgid "Download detached signatures"
 msgstr "Download detached signatures"
 
-#: permissions.py:11
+#: permissions.py:21
 msgid "Upload detached signatures"
 msgstr "Upload detached signatures"
 
-#: views.py:49
+#: views.py:58
 #, fuzzy, python-format
 msgid "Signature status: %s"
 msgstr "Signature type: %s"
 
-#: views.py:53
+#: views.py:62
 #, fuzzy
 msgid "Embedded"
 msgstr "embedded"
 
-#: views.py:55
+#: views.py:64
 #, fuzzy
 msgid "Detached"
 msgstr "detached"
 
-#: views.py:57
+#: views.py:66
 msgid "None"
 msgstr ""
 
-#: views.py:62
+#: views.py:71
 #, python-format
 msgid "Signature ID: %s"
 msgstr "Signature ID: %s"
 
-#: views.py:63
+#: views.py:72
 #, python-format
 msgid "Signature type: %s"
 msgstr "Signature type: %s"
 
-#: views.py:64
+#: views.py:73
 #, python-format
 msgid "Key ID: %s"
 msgstr "Key ID: %s"
 
-#: views.py:65
+#: views.py:74
 #, python-format
 msgid "Timestamp: %s"
 msgstr "Timestamp: %s"
 
-#: views.py:66
+#: views.py:77
 #, python-format
 msgid "Signee: %s"
 msgstr "Signee: %s"
 
-#: views.py:74
+#: views.py:85
 #, fuzzy, python-format
 msgid "Signature properties for document: %s"
 msgstr "signature properties for: %s"
 
-#: views.py:97
+#: views.py:115
 msgid "Detached signature uploaded successfully."
 msgstr "Detached signature uploaded successfully."
 
-#: views.py:110
+#: views.py:129
 #, fuzzy, python-format
 msgid "Upload detached signature for document: %s"
 msgstr "Upload detached signature for: %s"
 
-#: views.py:155
+#: views.py:187
 #, fuzzy
 msgid "Detached signature deleted successfully."
 msgstr "Detached signature uploaded successfully."
 
-#: views.py:158
+#: views.py:193
 #, fuzzy, python-format
 msgid "Error while deleting the detached signature; %s"
 msgstr "Download detached signatures"
 
-#: views.py:162
-#, python-format
-msgid ""
-"Are you sure you wish to delete the detached signature from document: %s?"
-msgstr ""
+#: views.py:204
+#, fuzzy, python-format
+msgid "Delete the detached signature from document: %s?"
+msgstr "Upload detached signature for: %s"
 
 #~ msgid "Signature status: %(widget)s %(text)s"
 #~ msgstr "Signature status: %(widget)s %(text)s"

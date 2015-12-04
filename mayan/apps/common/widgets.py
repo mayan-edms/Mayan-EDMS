@@ -1,23 +1,13 @@
 from __future__ import unicode_literals
 
-from itertools import chain
 import os
 
 from django import forms
 from django.forms.util import flatatt
-from django.utils.encoding import force_unicode
-from django.utils.html import conditional_escape
+from django.utils.encoding import force_unicode, force_text
+from django.utils.html import conditional_escape, format_html
 from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
-
-
-class PlainWidget(forms.widgets.Widget):
-    """
-    Class to define a form widget that effectively nulls the htmls of a
-    widget and reduces the output to only it's value
-    """
-    def render(self, name, value, attrs=None):
-        return mark_safe('%s' % value)
 
 
 class DetailSelectMultiple(forms.widgets.SelectMultiple):
@@ -61,18 +51,59 @@ class DetailSelectMultiple(forms.widgets.SelectMultiple):
         return mark_safe(output + '</ul>\n')
 
 
-def exists_with_famfam(path):
-    try:
-        return two_state_template(os.path.exists(path))
-    except Exception as exception:
-        return exception
+class DisableableSelectWidget(forms.SelectMultiple):
+    allow_multiple_selected = True
+
+    def __init__(self, *args, **kwargs):
+        self.disabled_choices = kwargs.pop('disabled_choices', ())
+        super(DisableableSelectWidget, self).__init__(*args, **kwargs)
+
+    def render_option(self, selected_choices, option_value, option_label):
+        if option_value is None:
+            option_value = ''
+        option_value = force_text(option_value)
+        if option_value in selected_choices:
+            selected_html = mark_safe(' selected="selected"')
+            if not self.allow_multiple_selected:
+                # Only allow for a single selection.
+                selected_choices.remove(option_value)
+        else:
+            selected_html = ''
+        if option_value in self.disabled_choices:
+            disabled_html = u' disabled="disabled"'
+        else:
+            disabled_html = ''
+        return format_html('<option value="{0}"{1}{2}>{3}</option>',
+                           option_value,
+                           selected_html,
+                           disabled_html,
+                           force_text(option_label))
 
 
-def two_state_template(state, famfam_ok_icon='tick', famfam_fail_icon='cross'):
-    if state:
-        return mark_safe('<span class="famfam active famfam-%s"></span>' % famfam_ok_icon)
-    else:
-        return mark_safe('<span class="famfam active famfam-%s"></span>' % famfam_fail_icon)
+# From: http://www.peterbe.com/plog/emailinput-html5-django
+class EmailInput(forms.widgets.Input):
+    """
+    Class for a login form widget that accepts only well formated
+    email address
+    """
+    input_type = 'email'
+
+    def render(self, name, value, attrs=None):
+        if attrs is None:
+            attrs = {}
+        attrs.update(dict(autocorrect='off',
+                          autocapitalize='off',
+                          spellcheck='false'))
+        return super(EmailInput, self).render(name, value, attrs=attrs)
+
+
+class PlainWidget(forms.widgets.Widget):
+    """
+    Class to define a form widget that effectively nulls the htmls of a
+    widget and reduces the output to only it's value
+    """
+    def render(self, name, value, attrs=None):
+        return mark_safe('%s' % value)
 
 
 class TextAreaDiv(forms.widgets.Widget):
@@ -98,51 +129,15 @@ class TextAreaDiv(forms.widgets.Widget):
         return mark_safe(result)
 
 
-# From: http://www.peterbe.com/plog/emailinput-html5-django
-class EmailInput(forms.widgets.Input):
-    """
-    Class for a login form widget that accepts only well formated
-    email address
-    """
-    input_type = 'email'
-
-    def render(self, name, value, attrs=None):
-        if attrs is None:
-            attrs = {}
-        attrs.update(dict(autocorrect='off',
-                          autocapitalize='off',
-                          spellcheck='false'))
-        return super(EmailInput, self).render(name, value, attrs=attrs)
+def exists_widget(path):
+    try:
+        return two_state_template(os.path.exists(path))
+    except Exception as exception:
+        return exception
 
 
-class ScrollableCheckboxSelectMultiple(forms.widgets.CheckboxSelectMultiple):
-    """
-    Class for a form widget composed of a selection of checkboxes wrapped
-    in a div tag with automatic overflow to add scrollbars when the list
-    exceds the height of the div
-    """
-    def render(self, name, value, attrs=None, choices=()):
-        if value is None:
-            value = []
-        has_id = attrs and 'id' in attrs
-        final_attrs = self.build_attrs(attrs, name=name)
-        output = ['<ul class="undecorated_list" style="margin-left: 5px; margin-top: 3px; margin-bottom: 3px;">']
-        # Normalize to strings
-        str_values = set([force_unicode(v) for v in value])
-        for i, (option_value, option_label) in enumerate(chain(self.choices, choices)):
-            # If an ID attribute was given, add a numeric index as a suffix,
-            # so that the checkboxes don't all have the same ID attribute.
-            if has_id:
-                final_attrs = dict(final_attrs, id='%s_%s' % (attrs['id'], i))
-                label_for = ' for="%s"' % final_attrs['id']
-            else:
-                label_for = ''
-
-            cb = forms.widgets.CheckboxInput(final_attrs, check_test=lambda value: value in str_values)
-            option_value = force_unicode(option_value)
-            rendered_cb = cb.render(name, option_value)
-            option_label = conditional_escape(force_unicode(option_label))
-            output.append('<li><label%s>%s %s</label></li>' % (label_for, rendered_cb, option_label))
-        output.append('</ul>')
-
-        return mark_safe('<div class="text_area_div">%s</div>' % '\n'.join(output))
+def two_state_template(state, ok_icon='fa fa-check', fail_icon='fa fa-times'):
+    if state:
+        return mark_safe('<i class="text-success {}"></i>'.format(ok_icon))
+    else:
+        return mark_safe('<i class="text-danger {}"></i>'.format(fail_icon))

@@ -60,7 +60,7 @@ ACL support
 Anonymous user support
 ~~~~~~~~~~~~~~~~~~~~~~
 Anonymous user support is a two tier function, first is the addition of
-the :setting:`COMMON_ALLOW_ANONYMOUS_ACCESS` configuration option that
+the `COMMON_ALLOW_ANONYMOUS_ACCESS` configuration option that
 allows non authenticated user to browse all the pages of a **Mayan EDMS** installation.
 The second part of this support is the ability to assign permissions
 or individual access to objects to anonymous users.
@@ -88,7 +88,7 @@ the download of several documents in a single compressed file.
 
 Customizable GPG home directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Addition of the :setting:`SIGNATURES_GPG_HOME` configuration option to let
+Addition of the `SIGNATURES_GPG_HOME` configuration option to let
 administrators set **Mayan EDMS**'s GPG instance home directory, used to
 store keyrings and other GPG configuration files.
 
@@ -116,7 +116,7 @@ These populated trees can also be mirrored on the physical filesystem and shared
 using Samba or another filesharing server giving users a structured view
 of the documents contained within **Mayan EDMS** from the ``Indexes`` tab
 or from a mirrored index shared via the network.  A new configuration option
-has been added, :setting:`DOCUMENT_INDEXING_FILESYSTEM_SERVING`, which maps
+has been added, `DOCUMENT_INDEXING_FILESYSTEM_SERVING`, which maps
 the index internal name with the physical directory where such index will be
 mirrored on disk.
 
@@ -226,6 +226,6 @@ Stuff removed
 * Configuration options removed:
 
   * OCR_CACHE_URI
-  * DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH - Use the newest :setting:`DOCUMENT_INDEXING_FILESYSTEM_SERVING`
-  * DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE - Use the newest :setting:`DOCUMENT_INDEXING_FILESYSTEM_SERVING`
+  * DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_PATH - Use the newest `DOCUMENT_INDEXING_FILESYSTEM_SERVING`
+  * DOCUMENT_INDEXING_FILESYSTEM_FILESERVING_ENABLE - Use the newest `DOCUMENT_INDEXING_FILESYSTEM_SERVING`
 

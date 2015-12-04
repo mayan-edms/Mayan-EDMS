@@ -2,24 +2,28 @@ from __future__ import unicode_literals
 
 import io
 import logging
-
-import slate
-from PIL import Image
-import sh
-
-from common.utils import fs_cleanup
-from mimetype.api import get_mimetype
-
-from . import ConverterBase
-from ..exceptions import ConvertError, UnknownFileFormat
-from ..literals import (
-    DEFAULT_FILE_FORMAT, DEFAULT_PAGE_NUMBER, TRANSFORMATION_RESIZE,
-    TRANSFORMATION_ROTATE, TRANSFORMATION_ZOOM
-)
-from ..settings import PDFTOPPM_PATH
+import os
+import tempfile
 
 try:
-    pdftoppm = sh.Command(PDFTOPPM_PATH)
+    from cStringIO import StringIO
+except ImportError:
+    from StringIO import StringIO
+
+from PIL import Image
+from pdfminer.pdfpage import PDFPage
+import sh
+
+from django.utils.translation import ugettext_lazy as _
+
+from common.utils import fs_cleanup
+
+from ..classes import ConverterBase
+from ..exceptions import PageCountError
+from ..settings import setting_pdftoppm_path
+
+try:
+    pdftoppm = sh.Command(setting_pdftoppm_path.value)
 except sh.CommandNotFound:
     pdftoppm = None
 else:
@@ -29,139 +33,84 @@ Image.init()
 logger = logging.getLogger(__name__)
 
 
+class IteratorIO(object):
+    def __init__(self, iterator):
+        self.file_buffer = StringIO()
+
+        for chunk in iterator:
+            self.file_buffer.write(chunk)
+
+        self.file_buffer.seek(0)
+
+
 class Python(ConverterBase):
-    def get_page_count(self, input_filepath):
+
+    def convert(self, *args, **kwargs):
+        super(Python, self).convert(*args, **kwargs)
+
+        if self.mime_type == 'application/pdf' and pdftoppm:
+
+            new_file_object, input_filepath = tempfile.mkstemp()
+            self.file_object.seek(0)
+            os.write(new_file_object, self.file_object.read())
+            self.file_object.seek(0)
+
+            os.close(new_file_object)
+
+            image_buffer = io.BytesIO()
+            try:
+                pdftoppm(
+                    input_filepath, f=self.page_number + 1,
+                    l=self.page_number + 1, _out=image_buffer
+                )
+                image_buffer.seek(0)
+                return Image.open(image_buffer)
+            finally:
+                fs_cleanup(input_filepath)
+
+    def get_page_count(self):
+        super(Python, self).get_page_count()
+
         page_count = 1
 
-        mimetype, encoding = get_mimetype(open(input_filepath, 'rb'), input_filepath, mimetype_only=True)
-        if mimetype == 'application/pdf':
-            # If file is a PDF open it with slate to determine the page
-            # count
-            with open(input_filepath) as fd:
-                try:
-                    pages = slate.PDF(fd)
-                except:
-                    return 1
-                    # TODO: Maybe return UnknownFileFormat to display proper unknwon file format message in document description
-            return len(pages)
-
-        try:
-            im = Image.open(input_filepath)
-        except IOError:  # cannot identify image file
-            raise UnknownFileFormat
-
-        try:
-            while True:
-                im.seek(im.tell() + 1)
-                page_count += 1
-                # do something to im
-        except EOFError:
-            pass  # end of sequence
-
-        return page_count
-
-    def convert_file(self, input_filepath, output_filepath, transformations=None, page=DEFAULT_PAGE_NUMBER, file_format=DEFAULT_FILE_FORMAT, **kwargs):
-        tmpfile = None
-        mimetype = kwargs.get('mimetype', None)
-        if not mimetype:
-            mimetype, encoding = get_mimetype(open(input_filepath, 'rb'), input_filepath, mimetype_only=True)
-
-        try:
-            if mimetype == 'application/pdf' and pdftoppm:
-                image_buffer = io.BytesIO()
-                pdftoppm(input_filepath, f=page, l=page, _out=image_buffer)
-                image_buffer.seek(0)
-                im = Image.open(image_buffer)
+        if self.mime_type == 'application/pdf' or self.soffice_file:
+            # If file is a PDF open it with slate to determine the page count
+            if self.soffice_file:
+                file_object = IteratorIO(self.soffice_file).file_buffer
             else:
-                im = Image.open(input_filepath)
-        except Exception as exception:
-            logger.error('Error converting image; %s', exception)
-            # Python Imaging Library doesn't recognize it as an image
-            raise ConvertError
-        except IOError:  # cannot identify image file
-            raise UnknownFileFormat
-        finally:
-            if tmpfile:
-                fs_cleanup(tmpfile)
+                file_object = self.file_object
 
-        current_page = 0
-        try:
-            while current_page == page - 1:
-                im.seek(im.tell() + 1)
-                current_page += 1
-                # do something to im
-        except EOFError:
-            # end of sequence
-            pass
-
-        try:
-            if transformations:
-                aspect = 1.0 * im.size[0] / im.size[1]
-                for transformation in transformations:
-                    arguments = transformation.get('arguments')
-                    if transformation['transformation'] == TRANSFORMATION_RESIZE:
-                        width = int(arguments.get('width', 0))
-                        height = int(arguments.get('height', 1.0 * width * aspect))
-                        im = self.resize(im, (width, height))
-                    elif transformation['transformation'] == TRANSFORMATION_ZOOM:
-                        decimal_value = float(arguments.get('percent', 100)) / 100
-                        im = im.transform((int(im.size[0] * decimal_value), int(im.size[1] * decimal_value)), Image.EXTENT, (0, 0, im.size[0], im.size[1]))
-                    elif transformation['transformation'] == TRANSFORMATION_ROTATE:
-                        # PIL counter degress counter-clockwise, reverse them
-                        im = im.rotate(360 - arguments.get('degrees', 0))
-        except:
-            # Ignore all transformation error
-            pass
-
-        if im.mode not in ('L', 'RGB'):
-            im = im.convert('RGB')
-
-        im.save(output_filepath, format=file_format)
-
-    def get_available_transformations(self):
-        return [
-            TRANSFORMATION_RESIZE, TRANSFORMATION_ROTATE,
-            TRANSFORMATION_ZOOM
-        ]
-
-    # From: http://united-coders.com/christian-harms/image-resizing-tips-general-and-for-python
-    def resize(self, img, box, fit=False, out=None):
-        """
-        Downsample the image.
-        @param img: Image -  an Image-object
-        @param box: tuple(x, y) - the bounding box of the result image
-        @param fit: boolean - crop the image to fill the box
-        @param out: file-like-object - save the image into the output stream
-        """
-        # preresize image with factor 2, 4, 8 and fast algorithm
-        factor = 1
-        while img.size[0] / factor > 2 * box[0] and img.size[1] * 2 / factor > 2 * box[1]:
-            factor *= 2
-        if factor > 1:
-            img.thumbnail((img.size[0] / factor, img.size[1] / factor), Image.NEAREST)
-
-        # calculate the cropping box and get the cropped part
-        if fit:
-            x1 = y1 = 0
-            x2, y2 = img.size
-            wRatio = 1.0 * x2 / box[0]
-            hRatio = 1.0 * y2 / box[1]
-            if hRatio > wRatio:
-                y1 = y2 / 2 - box[1] * wRatio / 2
-                y2 = y2 / 2 + box[1] * wRatio / 2
+            try:
+                page_count = len(list(PDFPage.get_pages(file_object)))
+            except Exception as exception:
+                error_message = _(
+                    'Exception determining PDF page count; %s'
+                ) % exception
+                logger.error(error_message)
+                raise PageCountError(error_message)
             else:
-                x1 = x2 / 2 - box[0] * hRatio / 2
-                x2 = x2 / 2 + box[0] * hRatio / 2
-            img = img.crop((x1, y1, x2, y2))
-
-        # Resize the image with best quality algorithm ANTI-ALIAS
-        img.thumbnail(box, Image.ANTIALIAS)
-
-        if out:
-            # save it into a file-like object
-            img.save(out, 'JPEG', quality=75)
+                logger.debug('Document contains %d pages', page_count)
+                return page_count
+            finally:
+                file_object.seek(0)
         else:
-            return img
+            try:
+                image = Image.open(self.file_object)
+            except IOError as exception:
+                error_message = _(
+                    'Exception determining PDF page count; %s'
+                ) % exception
+                logger.error(error_message)
+                raise PageCountError(error_message)
+            finally:
+                self.file_object.seek(0)
 
-        # if isinstance(self.regex, basestring):
-        #    self.regex = re.compile(regex)
+            try:
+                while True:
+                    image.seek(image.tell() + 1)
+                    page_count += 1
+            except EOFError:
+                # end of sequence
+                pass
+
+            return page_count

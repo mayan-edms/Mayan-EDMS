@@ -2,7 +2,15 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import Workflow, WorkflowInstance, WorkflowState, WorkflowTransition
+from .models import (
+    Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
+    WorkflowTransition
+)
+
+
+class WorkflowInstanceLogEntryInline(admin.TabularInline):
+    extra = 1
+    model = WorkflowInstanceLogEntry
 
 
 class WorkflowStateInline(admin.TabularInline):
@@ -13,13 +21,21 @@ class WorkflowTransitionInline(admin.TabularInline):
     model = WorkflowTransition
 
 
+@admin.register(Workflow)
 class WorkflowAdmin(admin.ModelAdmin):
-    inlines = [WorkflowStateInline, WorkflowTransitionInline]
+    def document_types_list(self, instance):
+        return ','.join(
+            instance.document_types.values_list('label', flat=True)
+        )
+
+    filter_horizontal = ('document_types',)
+    inlines = (WorkflowStateInline, WorkflowTransitionInline)
+    list_display = ('label', 'document_types_list')
 
 
+@admin.register(WorkflowInstance)
 class WorkflowInstanceAdmin(admin.ModelAdmin):
-    list_display = ('workflow', 'document')
-
-
-admin.site.register(Workflow, WorkflowAdmin)
-admin.site.register(WorkflowInstance, WorkflowInstanceAdmin)
+    inlines = (WorkflowInstanceLogEntryInline,)
+    list_display = (
+        'workflow', 'document', 'get_current_state', 'get_last_transition'
+    )

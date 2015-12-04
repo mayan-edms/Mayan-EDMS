@@ -1,33 +1,18 @@
 from __future__ import unicode_literals
 
-from dateutil.parser import parse
+from django.utils.translation import ugettext_lazy as _
 
-from django.contrib.auth.models import User
-from django.utils.timezone import now
+from smart_settings import Namespace
 
-from smart_settings.api import register_settings
+from .parsers import MetadataParser
+from .validators import MetadataValidator
 
-default_available_functions = {
-    'current_date': now().date,
-}
-
-default_available_models = {
-    'User': User
-}
-
-default_available_validators = {
-    'Parse date and time': lambda input: parse(input).isoformat(),
-    'Parse date': lambda input: parse(input).date().isoformat(),
-    'Parse time': lambda input: parse(input).time().isoformat()
-}
-
-register_settings(
-    namespace='metadata',
-    module='metadata.settings',
-    settings=[
-        # Definition
-        {'name': 'AVAILABLE_FUNCTIONS', 'global_name': 'METADATA_AVAILABLE_FUNCTIONS', 'default': default_available_functions},
-        {'name': 'AVAILABLE_MODELS', 'global_name': 'METADATA_AVAILABLE_MODELS', 'default': default_available_models},
-        {'name': 'AVAILABLE_VALIDATORS', 'global_name': 'METADATA_AVAILABLE_VALIDATORS', 'default': default_available_validators},
-    ]
+namespace = Namespace(name='metadata', label=_('Metadata'))
+setting_available_validators = namespace.add_setting(
+    global_name='METADATA_AVAILABLE_VALIDATORS',
+    default=MetadataValidator.get_import_paths()
+)
+setting_available_parsers = namespace.add_setting(
+    global_name='METADATA_AVAILABLE_PARSERS',
+    default=MetadataParser.get_import_paths()
 )

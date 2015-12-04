@@ -2,10 +2,16 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace, Permission
+from permissions import PermissionNamespace
 
-comments_namespace = PermissionNamespace('comments', _('Comments'))
+namespace = PermissionNamespace('comments', _('Comments'))
 
-PERMISSION_COMMENT_CREATE = Permission.objects.register(comments_namespace, 'comment_create', _('Create new comments'))
-PERMISSION_COMMENT_DELETE = Permission.objects.register(comments_namespace, 'comment_delete', _('Delete comments'))
-PERMISSION_COMMENT_VIEW = Permission.objects.register(comments_namespace, 'comment_view', _('View comments'))
+permission_comment_create = namespace.add_permission(
+    name='comment_create', label=_('Create new comments')
+)
+permission_comment_delete = namespace.add_permission(
+    name='comment_delete', label=_('Delete comments')
+)
+permission_comment_view = namespace.add_permission(
+    name='comment_view', label=_('View comments')
+)

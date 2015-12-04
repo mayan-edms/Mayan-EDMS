@@ -3,23 +3,23 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect, Http404
+from django.core.urlresolvers import reverse, reverse_lazy
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
+from common.generics import (
+    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
+)
 from documents.models import Document, DocumentType
 from documents.permissions import (
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_VIEW
+    permission_document_type_edit
 )
-from documents.views import document_list
-from permissions.models import Permission
-
-from common.utils import encapsulate, generate_choices_w_labels
-from common.views import assign_remove
+from permissions import Permission
 
 from .api import save_metadata_list
 from .forms import (
@@ -27,47 +27,71 @@ from .forms import (
 )
 from .models import DocumentMetadata, MetadataType
 from .permissions import (
-    PERMISSION_METADATA_DOCUMENT_ADD, PERMISSION_METADATA_DOCUMENT_EDIT,
-    PERMISSION_METADATA_DOCUMENT_REMOVE, PERMISSION_METADATA_DOCUMENT_VIEW,
-    PERMISSION_METADATA_TYPE_CREATE, PERMISSION_METADATA_TYPE_DELETE,
-    PERMISSION_METADATA_TYPE_EDIT, PERMISSION_METADATA_TYPE_VIEW
+    permission_metadata_document_add, permission_metadata_document_edit,
+    permission_metadata_document_remove, permission_metadata_document_view,
+    permission_metadata_type_create, permission_metadata_type_delete,
+    permission_metadata_type_edit, permission_metadata_type_view
 )
 
 
 def metadata_edit(request, document_id=None, document_id_list=None):
     if document_id:
-        document_id_list = unicode(document_id)
-
-    documents = Document.objects.select_related('metadata').filter(pk__in=document_id_list.split(','))
+        documents = Document.objects.filter(pk=document_id)
+        if not documents:
+            raise Document.DoesNotExist
+    elif document_id_list:
+        documents = Document.objects.select_related('metadata').filter(
+            pk__in=document_id_list
+        )
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_EDIT])
+        Permission.check_permissions(
+            request.user, (permission_metadata_document_edit,)
+        )
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_EDIT, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_metadata_document_edit, request.user, documents
+        )
 
     if not documents:
         if document_id:
-            raise Http404
+            raise PermissionDenied
         else:
             messages.error(request, _('Must provide at least one document.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+            return HttpResponseRedirect(
+                request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
+            )
 
     if len(set([document.document_type.pk for document in documents])) > 1:
         messages.error(request, _('Only select documents of the same type.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
-    if set(documents.values_list('metadata__value', flat=True)) == set([None]):
+    if set(documents.values_list('metadata__metadata_type', flat=True)) == set([None]):
         message = ungettext(
             'The selected document doesn\'t have any metadata.',
             'The selected documents don\'t have any metadata.',
             len(documents)
         )
         messages.warning(request, message)
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     post_action_redirect = reverse('documents:document_list_recent')
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
+    next = request.POST.get(
+        'next', request.GET.get(
+            'next', request.META.get('HTTP_REFERER', post_action_redirect)
+        )
+    )
 
     metadata = {}
     initial = []
@@ -85,12 +109,11 @@ def metadata_edit(request, document_id=None, document_id_list=None):
 
     for key, value in metadata.items():
         initial.append({
+            'document_type': document.document_type,
             'metadata_type': key,
             'value': ', '.join(value) if value else '',
-            'required': key in document.document_type.metadata.filter(required=True),
         })
 
-    formset = MetadataFormSet(initial=initial)
     if request.method == 'POST':
         formset = MetadataFormSet(data=request.POST, initial=initial)
         if formset.is_valid():
@@ -109,12 +132,26 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                         if settings.DEBUG:
                             raise
                         else:
-                            messages.error(request, _('Error editing metadata for document %(document)s; %(exception)s.') % {
-                                'document': document, 'exception': ', '.join(exception.messages)})
+                            messages.error(
+                                request, _(
+                                    'Error editing metadata for document: '
+                                    '%(document)s; %(exception)s.'
+                                ) % {
+                                    'document': document,
+                                    'exception': ', '.join(exception.messages)
+                                }
+                            )
                 else:
-                    messages.success(request, _('Metadata for document %s edited successfully.') % document)
+                    messages.success(
+                        request,
+                        _(
+                            'Metadata for document %s edited successfully.'
+                        ) % document
+                    )
 
             return HttpResponseRedirect(next)
+    else:
+        formset = MetadataFormSet(initial=initial)
 
     context = {
         'form_display_mode_table': True,
@@ -122,75 +159,138 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         'next': next,
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if documents.count() == 1:
+        context['object'] = documents.first()
 
     context['title'] = ungettext(
         'Edit document metadata',
         'Edit documents metadata',
-        len(documents)
+        documents.count()
     )
 
-    return render_to_response('main/generic_form.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_form.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def metadata_multiple_edit(request):
-    return metadata_edit(request, document_id_list=request.GET.get('id_list', ''))
+    return metadata_edit(
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
+    )
 
 
 def metadata_add(request, document_id=None, document_id_list=None):
     if document_id:
-        documents = [get_object_or_404(Document, pk=document_id)]
+        documents = Document.objects.filter(pk=document_id)
+        if not documents:
+            raise Document.DoesNotExist
     elif document_id_list:
-        documents = [get_object_or_404(Document.objects.select_related('document_type'), pk=document_id) for document_id in document_id_list.split(',')]
+        documents = Document.objects.select_related('document_type').filter(pk__in=document_id_list)
         if len(set([document.document_type.pk for document in documents])) > 1:
-            messages.error(request, _('Only select documents of the same type.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+            messages.error(
+                request, _('Only select documents of the same type.')
+            )
+            return HttpResponseRedirect(
+                request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
+            )
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_ADD])
+        Permission.check_permissions(
+            request.user, (permission_metadata_document_add,)
+        )
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_ADD, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_metadata_document_add, request.user, documents
+        )
 
     if not documents:
-        messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        if document_id:
+            raise PermissionDenied
+        else:
+            messages.error(request, _('Must provide at least one document.'))
+            return HttpResponseRedirect(
+                request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
+            )
 
     for document in documents:
         document.add_as_recent_document_for_user(request.user)
 
     post_action_redirect = reverse('documents:document_list_recent')
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
+    next = request.POST.get(
+        'next',
+        request.GET.get(
+            'next', request.META.get('HTTP_REFERER', post_action_redirect)
+        )
+    )
 
     if request.method == 'POST':
-        form = AddMetadataForm(data=request.POST, document_type=document.document_type)
+        form = AddMetadataForm(
+            data=request.POST, document_type=document.document_type
+        )
         if form.is_valid():
             metadata_type = form.cleaned_data['metadata_type']
             for document in documents:
                 try:
-                    document_metadata, created = DocumentMetadata.objects.get_or_create(document=document, metadata_type=metadata_type.metadata_type, defaults={'value': ''})
+                    document_metadata, created = DocumentMetadata.objects.get_or_create(
+                        document=document,
+                        metadata_type=metadata_type.metadata_type,
+                        defaults={'value': ''}
+                    )
                 except Exception as exception:
                     if getattr(settings, 'DEBUG', False):
                         raise
                     else:
-                        messages.error(request, _('Error adding metadata type "%(metadata_type)s" to document: %(document)s; %(exception)s') % {
-                            'metadata_type': metadata_type, 'document': document, 'exception': ', '.join(getattr(exception, 'messages', exception))})
+                        messages.error(
+                            request,
+                            _(
+                                'Error adding metadata type '
+                                '"%(metadata_type)s" to document: '
+                                '%(document)s; %(exception)s'
+                            ) % {
+                                'metadata_type': metadata_type,
+                                'document': document,
+                                'exception': ', '.join(
+                                    getattr(exception, 'messages', exception)
+                                )
+                            }
+                        )
                 else:
                     if created:
-                        messages.success(request, _('Metadata type: %(metadata_type)s successfully added to document %(document)s.') % {
-                            'metadata_type': metadata_type, 'document': document})
+                        messages.success(
+                            request,
+                            _(
+                                'Metadata type: %(metadata_type)s '
+                                'successfully added to document %(document)s.'
+                            ) % {
+                                'metadata_type': metadata_type,
+                                'document': document
+                            }
+                        )
                     else:
-                        messages.warning(request, _('Metadata type: %(metadata_type)s already present in document %(document)s.') % {
-                            'metadata_type': metadata_type, 'document': document})
+                        messages.warning(
+                            request, _(
+                                'Metadata type: %(metadata_type)s already '
+                                'present in document %(document)s.'
+                            ) % {
+                                'metadata_type': metadata_type,
+                                'document': document
+                            }
+                        )
 
-            if len(documents) == 1:
+            if documents.count() == 1:
                 return HttpResponseRedirect('%s?%s' % (
-                    reverse('metadata:metadata_edit', args=[document.pk]),
+                    reverse('metadata:metadata_edit', args=(document.pk,)),
                     urlencode({'next': next}))
                 )
-            elif len(documents) > 1:
+            elif documents.count() > 1:
                 return HttpResponseRedirect('%s?%s' % (
                     reverse('metadata:metadata_multiple_edit'),
                     urlencode({'id_list': document_id_list, 'next': next}))
@@ -204,44 +304,66 @@ def metadata_add(request, document_id=None, document_id_list=None):
         'next': next,
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if documents.count() == 1:
+        context['object'] = documents.first()
 
     context['title'] = ungettext(
         'Add metadata types to document',
         'Add metadata types to documents',
-        len(documents)
+        documents.count()
     )
 
-    return render_to_response('main/generic_form.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_form.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def metadata_multiple_add(request):
-    return metadata_add(request, document_id_list=request.GET.get('id_list', []))
+    return metadata_add(
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
+    )
 
 
 def metadata_remove(request, document_id=None, document_id_list=None):
     if document_id:
-        document_id_list = unicode(document_id)
-
-    documents = Document.objects.select_related('metadata').filter(pk__in=document_id_list.split(','))
+        documents = Document.objects.filter(pk=document_id)
+        if not documents:
+            raise Document.DoesNotExist
+    elif document_id_list:
+        documents = Document.objects.select_related('metadata').filter(
+            pk__in=document_id_list
+        )
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_REMOVE])
+        Permission.check_permissions(
+            request.user, (permission_metadata_document_remove,)
+        )
     except PermissionDenied:
-        documents = AccessEntry.objects.filter_objects_by_access(PERMISSION_METADATA_DOCUMENT_REMOVE, request.user, documents)
+        documents = AccessControlList.objects.filter_by_access(
+            permission_metadata_document_remove, request.user, documents
+        )
 
     if not documents:
         if document_id:
-            raise Http404
+            raise PermissionDenied
         else:
             messages.error(request, _('Must provide at least one document.'))
-            return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+            return HttpResponseRedirect(
+                request.META.get(
+                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+                )
+            )
 
     if len(set([document.document_type.pk for document in documents])) > 1:
         messages.error(request, _('Only select documents of the same type.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     if set(documents.values_list('metadata__value', flat=True)) == set([None]):
         message = ungettext(
@@ -250,11 +372,19 @@ def metadata_remove(request, document_id=None, document_id_list=None):
             len(documents)
         )
         messages.warning(request, message)
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+        return HttpResponseRedirect(
+            request.META.get(
+                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+            )
+        )
 
     post_action_redirect = reverse('documents:document_list_recent')
 
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
+    next = request.POST.get(
+        'next', request.GET.get(
+            'next', request.META.get('HTTP_REFERER', post_action_redirect)
+        )
+    )
 
     metadata = {}
     for document in documents:
@@ -270,12 +400,14 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
     initial = []
     for key, value in metadata.items():
-        initial.append({
-            'metadata_type': key,
-            'value': ', '.join(value)
-        })
+        initial.append(
+            {
+                'document_type': documents[0].document_type,
+                'metadata_type': key,
+                'value': ', '.join(value)
+            }
+        )
 
-    formset = MetadataRemoveFormSet(initial=initial)
     if request.method == 'POST':
         formset = MetadataRemoveFormSet(request.POST)
         if formset.is_valid():
@@ -283,17 +415,38 @@ def metadata_remove(request, document_id=None, document_id_list=None):
 
                 for form in formset.forms:
                     if form.cleaned_data['update']:
-                        metadata_type = get_object_or_404(MetadataType, pk=form.cleaned_data['id'])
+                        metadata_type = get_object_or_404(
+                            MetadataType, pk=form.cleaned_data['id']
+                        )
                         try:
-                            document_metadata = DocumentMetadata.objects.get(document=document, metadata_type=metadata_type)
+                            document_metadata = DocumentMetadata.objects.get(
+                                document=document, metadata_type=metadata_type
+                            )
                             document_metadata.delete()
-                            messages.success(request, _('Successfully remove metadata type "%(metadata_type)s" from document: %(document)s.') % {
-                                'metadata_type': metadata_type, 'document': document})
+                            messages.success(
+                                request,
+                                _(
+                                    'Successfully remove metadata type "%(metadata_type)s" from document: %(document)s.'
+                                ) % {
+                                    'metadata_type': metadata_type,
+                                    'document': document
+                                }
+                            )
                         except Exception as exception:
-                            messages.error(request, _('Error removing metadata type "%(metadata_type)s" from document: %(document)s; %(exception)s') % {
-                                'metadata_type': metadata_type, 'document': document, 'exception': ', '.join(exception.messages)})
+                            messages.error(
+                                request,
+                                _(
+                                    'Error removing metadata type "%(metadata_type)s" from document: %(document)s; %(exception)s'
+                                ) % {
+                                    'metadata_type': metadata_type,
+                                    'document': document,
+                                    'exception': ', '.join(exception.messages)
+                                }
+                            )
 
             return HttpResponseRedirect(next)
+    else:
+        formset = MetadataRemoveFormSet(initial=initial)
 
     context = {
         'form_display_mode_table': True,
@@ -301,199 +454,167 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         'next': next,
     }
 
-    if len(documents) == 1:
-        context['object'] = documents[0]
+    if documents.count() == 1:
+        context['object'] = documents.first()
 
     context['title'] = ungettext(
         'Remove metadata types from the document',
         'Remove metadata types from the documents',
-        len(documents)
+        documents.count()
     )
 
-    return render_to_response('main/generic_form.html', context,
-                              context_instance=RequestContext(request))
+    return render_to_response(
+        'appearance/generic_form.html', context,
+        context_instance=RequestContext(request)
+    )
 
 
 def metadata_multiple_remove(request):
-    return metadata_remove(request, document_id_list=request.GET.get('id_list', []))
-
-
-def metadata_view(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_DOCUMENT_VIEW])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_METADATA_DOCUMENT_VIEW, request.user, document)
-
-    return render_to_response('main/generic_list.html', {
-        'title': _('Metadata for document: %s') % document,
-        'object_list': document.metadata.all(),
-        'extra_columns': [
-            {'name': _('Value'), 'attribute': 'value'},
-            {'name': _('Required'), 'attribute': encapsulate(lambda x: x.metadata_type in document.document_type.metadata.filter(required=True))}
-        ],
-        'hide_link': True,
-        'object': document,
-    }, context_instance=RequestContext(request))
-
-
-def documents_missing_required_metadata(request):
-    pre_object_list = Document.objects.filter(document_type__metadata__required=True, metadata__value__isnull=True)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_VIEW])
-    except PermissionDenied:
-        # If user doesn't have global permission, get a list of document
-        # for which he/she does hace access use it to filter the
-        # provided object_list
-        object_list = AccessEntry.objects.filter_objects_by_access(
-            PERMISSION_DOCUMENT_VIEW, request.user, pre_object_list)
-    else:
-        object_list = pre_object_list
-
-    context = {
-        'object_list': object_list,
-        'title': _('Documents missing required metadata'),
-        'hide_links': True,
-    }
-
-    return document_list(
-        request,
-        extra_context=context
+    return metadata_remove(
+        request, document_id_list=request.GET.get(
+            'id_list', request.POST.get('id_list', '')
+        ).split(',')
     )
+
+
+class DocumentMetadataListView(SingleObjectListView):
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_metadata_document_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_metadata_document_view, self.request.user,
+                self.get_document()
+            )
+
+        return super(DocumentMetadataListView, self).dispatch(
+            request, *args, **kwargs
+        )
+
+    def get_document(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        document = self.get_document()
+        return {
+            'hide_link': True,
+            'object': document,
+            'title': _('Metadata for document: %s') % document,
+        }
+
+    def get_queryset(self):
+        return self.get_document().metadata.all()
 
 
 # Setup views
-def setup_metadata_type_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_VIEW])
-
-    context = {
-        'object_list': MetadataType.objects.all(),
-        'title': _('Metadata types'),
-        'hide_link': True,
-        'extra_columns': [
-            {
-                'name': _('Internal name'),
-                'attribute': 'name',
-            },
-        ]
-    }
-
-    return render_to_response('main/generic_list.html', context,
-                              context_instance=RequestContext(request))
+class MetadataTypeCreateView(SingleObjectCreateView):
+    extra_context = {'title': _('Create metadata type')}
+    form_class = MetadataTypeForm
+    model = MetadataType
+    post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
+    view_permission = permission_metadata_type_create
 
 
-def setup_metadata_type_edit(request, metadatatype_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_EDIT])
+class MetadataTypeDeleteView(SingleObjectDeleteView):
+    model = MetadataType
+    post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
+    view_permission = permission_metadata_type_delete
 
-    metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
-
-    if request.method == 'POST':
-        form = MetadataTypeForm(instance=metadata_type, data=request.POST)
-        if form.is_valid():
-            try:
-                form.save()
-                messages.success(request, _('Metadata type edited successfully'))
-                return HttpResponseRedirect(reverse('metadata:setup_metadata_type_list'))
-            except Exception as exception:
-                messages.error(request, _('Error editing metadata type; %s') % exception)
-            pass
-    else:
-        form = MetadataTypeForm(instance=metadata_type)
-
-    return render_to_response('main/generic_form.html', {
-        'title': _('Edit metadata type: %s') % metadata_type,
-        'form': form,
-        'object': metadata_type,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'delete_view': True,
+            'object': self.get_object(),
+            'title': _('Delete the metadata type: %s?') % self.get_object(),
+        }
 
 
-def setup_metadata_type_create(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_CREATE])
+class MetadataTypeEditView(SingleObjectEditView):
+    form_class = MetadataTypeForm
+    model = MetadataType
+    post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
+    view_permission = permission_metadata_type_edit
 
-    if request.method == 'POST':
-        form = MetadataTypeForm(request.POST)
-        if form.is_valid():
-            form.save()
-            messages.success(request, _('Metadata type created successfully'))
-            return HttpResponseRedirect(reverse('metadata:setup_metadata_type_list'))
-    else:
-        form = MetadataTypeForm()
-
-    return render_to_response('main/generic_form.html', {
-        'title': _('Create metadata type'),
-        'form': form,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit metadata type: %s') % self.get_object(),
+        }
 
 
-def setup_metadata_type_delete(request, metadatatype_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_METADATA_TYPE_DELETE])
+class MetadataTypeListView(SingleObjectListView):
+    view_permission = permission_metadata_type_view
 
-    metadata_type = get_object_or_404(MetadataType, pk=metadatatype_id)
+    def get_queryset(self):
+        return MetadataType.objects.all()
 
-    post_action_redirect = reverse('metadata:setup_metadata_type_list')
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_action_redirect)))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_action_redirect)))
-
-    if request.method == 'POST':
-        try:
-            metadata_type.delete()
-            messages.success(request, _('Metadata type: %s deleted successfully.') % metadata_type)
-        except Exception as exception:
-            messages.error(request, _('Metadata type: %(metadata_type)s delete error: %(error)s') % {
-                'metadata_type': metadata_type, 'error': exception})
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'next': next,
-        'previous': previous,
-        'object': metadata_type,
-        'title': _('Are you sure you wish to delete the metadata type: %s?') % metadata_type,
-    }
-
-    return render_to_response('main/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {
+                    'name': _('Internal name'),
+                    'attribute': 'name',
+                },
+            ),
+            'hide_link': True,
+            'title': _('Metadata types'),
+        }
 
 
-def setup_document_type_metadata(request, document_type_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
+    decode_content_type = True
+    view_permission = permission_document_type_edit
+    left_list_title = _('Available metadata types')
+    right_list_title = _('Metadata types assigned')
 
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+    def add(self, item):
+        self.get_object().metadata.create(metadata_type=item, required=False)
 
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=document_type.metadata.values_list('metadata_type', flat=True))), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(document_type.metadata.filter(required=False), display_object_type=False),
-        add_method=lambda x: document_type.metadata.create(metadata_type=x, required=False),
-        remove_method=lambda x: x.delete(),
-        extra_context={
-            'document_type': document_type,
-            'navigation_object_name': 'document_type',
-            'main_title': _('Optional metadata types for document type: %s') % document_type,
-        },
-        decode_content_type=True,
-    )
+    def get_object(self):
+        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+
+    def left_list(self):
+        return AssignRemoveView.generate_choices(
+            set(MetadataType.objects.all()) - set(
+                MetadataType.objects.filter(
+                    id__in=self.get_object().metadata.values_list(
+                        'metadata_type', flat=True
+                    )
+                )
+            )
+        )
+
+    def right_list(self):
+        return AssignRemoveView.generate_choices(
+            self.get_object().metadata.filter(required=False)
+        )
+
+    def remove(self, item):
+        item.delete()
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _(
+                'Optional metadata types for document type: %s'
+            ) % self.get_object(),
+        }
 
 
-def setup_document_type_metadata_required(request, document_type_id):
-    Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_TYPE_EDIT])
+class SetupDocumentTypeMetadataRequiredView(SetupDocumentTypeMetadataOptionalView):
+    def add(self, item):
+        self.get_object().metadata.create(metadata_type=item, required=True)
 
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
+    def right_list(self):
+        return AssignRemoveView.generate_choices(
+            self.get_object().metadata.filter(required=True)
+        )
 
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(set(MetadataType.objects.all()) - set(MetadataType.objects.filter(id__in=document_type.metadata.values_list('metadata_type', flat=True))), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(document_type.metadata.filter(required=True), display_object_type=False),
-        add_method=lambda x: document_type.metadata.create(metadata_type=x, required=True),
-        remove_method=lambda x: x.delete(),
-        extra_context={
-            'document_type': document_type,
-            'navigation_object_name': 'document_type',
-            'main_title': _('Required metadata types for document type: %s') % document_type,
-        },
-        decode_content_type=True,
-    )
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _(
+                'Required metadata types for document type: %s'
+            ) % self.get_object(),
+        }

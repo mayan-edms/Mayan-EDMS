@@ -9,17 +9,17 @@ from django.utils.translation import ugettext_lazy as _
 
 from common.mixins import ViewPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
-from documents.permissions import PERMISSION_DOCUMENT_CREATE
+from documents.permissions import permission_document_create
 from metadata.forms import MetadataFormSet
 
 from .models import InteractiveSource
 
 
 class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
-    form_list = [DocumentTypeSelectForm, MetadataFormSet]
-    template_name = 'main/generic_wizard.html'
+    form_list = (DocumentTypeSelectForm, MetadataFormSet)
+    template_name = 'appearance/generic_wizard.html'
     extra_context = {}
-    view_permission = PERMISSION_DOCUMENT_CREATE
+    view_permission = permission_document_create
 
     @staticmethod
     def _has_metadata_types(wizard):
@@ -31,9 +31,17 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
 
     def dispatch(self, request, *args, **kwargs):
         if InteractiveSource.objects.filter(enabled=True).count() == 0:
-            messages.error(request, _('No interactive document sources have been defined or none have been enabled, create one before proceeding.'))
+            messages.error(
+                request,
+                _(
+                    'No interactive document sources have been defined or '
+                    'none have been enabled, create one before proceeding.'
+                )
+            )
             return HttpResponseRedirect(reverse('sources:setup_source_list'))
-        return super(DocumentCreateWizard, self).dispatch(request, *args, **kwargs)
+        return super(
+            DocumentCreateWizard, self
+        ).dispatch(request, *args, **kwargs)
 
     def __init__(self, *args, **kwargs):
         super(DocumentCreateWizard, self).__init__(*args, **kwargs)
@@ -51,23 +59,26 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
 
             for document_type_metadata_type in self.get_cleaned_data_for_step('0')['document_type'].metadata.all():
                 initial.append({
+                    'document_type': self.get_cleaned_data_for_step('0')['document_type'],
                     'metadata_type': document_type_metadata_type.metadata_type,
-                    'required': document_type_metadata_type.required,
                 })
 
             return initial
         return self.initial_dict.get(step, {})
 
     def get_context_data(self, form, **kwargs):
-        context = super(DocumentCreateWizard, self).get_context_data(form=form, **kwargs)
+        context = super(
+            DocumentCreateWizard, self
+        ).get_context_data(form=form, **kwargs)
         context.update({
             'step_title': self.step_titles[self.steps.step0],
             'submit_label': _('Next step'),
-            'submit_icon_famfam': 'arrow_right',
+            'submit_icon': 'fa fa-arrow-right',
+            'title': _('Document upload wizard'),
         })
         return context
 
-    def done(self, form_list):
+    def done(self, *args, **kwargs):
         query_dict = {}
         try:
             query_dict['document_type_id'] = self.get_cleaned_data_for_step('0')['document_type'].pk
@@ -81,5 +92,10 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
         except TypeError:
             pass
 
-        url = '?'.join([reverse('sources:upload_interactive'), urlencode(query_dict, doseq=True)])
+        url = '?'.join(
+            [
+                reverse('sources:upload_interactive'),
+                urlencode(query_dict, doseq=True)
+            ]
+        )
         return HttpResponseRedirect(url)

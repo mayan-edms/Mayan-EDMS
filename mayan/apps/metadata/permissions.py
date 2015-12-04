@@ -2,16 +2,32 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import Permission, PermissionNamespace
+from permissions import PermissionNamespace
 
-metadata_namespace = PermissionNamespace('metadata', _('Metadata'))
-PERMISSION_METADATA_DOCUMENT_EDIT = Permission.objects.register(metadata_namespace, 'metadata_document_edit', _('Edit a document\'s metadata'))
-PERMISSION_METADATA_DOCUMENT_ADD = Permission.objects.register(metadata_namespace, 'metadata_document_add', _('Add metadata to a document'))
-PERMISSION_METADATA_DOCUMENT_REMOVE = Permission.objects.register(metadata_namespace, 'metadata_document_remove', _('Remove metadata from a document'))
-PERMISSION_METADATA_DOCUMENT_VIEW = Permission.objects.register(metadata_namespace, 'metadata_document_view', _('View metadata from a document'))
+namespace = PermissionNamespace('metadata', _('Metadata'))
+permission_metadata_document_edit = namespace.add_permission(
+    name='metadata_document_edit', label=_('Edit a document\'s metadata')
+)
+permission_metadata_document_add = namespace.add_permission(
+    name='metadata_document_add', label=_('Add metadata to a document'))
+permission_metadata_document_remove = namespace.add_permission(
+    name='metadata_document_remove',
+    label=_('Remove metadata from a document')
+)
+permission_metadata_document_view = namespace.add_permission(
+    name='metadata_document_view', label=_('View metadata from a document')
+)
 
-metadata_setup_namespace = PermissionNamespace('metadata_setup', _('Metadata setup'))
-PERMISSION_METADATA_TYPE_EDIT = Permission.objects.register(metadata_setup_namespace, 'metadata_type_edit', _('Edit metadata types'))
-PERMISSION_METADATA_TYPE_CREATE = Permission.objects.register(metadata_setup_namespace, 'metadata_type_create', _('Create new metadata types'))
-PERMISSION_METADATA_TYPE_DELETE = Permission.objects.register(metadata_setup_namespace, 'metadata_type_delete', _('Delete metadata types'))
-PERMISSION_METADATA_TYPE_VIEW = Permission.objects.register(metadata_setup_namespace, 'metadata_type_view', _('View metadata types'))
+setup_namespace = PermissionNamespace('metadata_setup', _('Metadata setup'))
+permission_metadata_type_edit = setup_namespace.add_permission(
+    name='metadata_type_edit', label=_('Edit metadata types')
+)
+permission_metadata_type_create = setup_namespace.add_permission(
+    name='metadata_type_create', label=_('Create new metadata types')
+)
+permission_metadata_type_delete = setup_namespace.add_permission(
+    name='metadata_type_delete', label=_('Delete metadata types')
+)
+permission_metadata_type_view = setup_namespace.add_permission(
+    name='metadata_type_view', label=_('View metadata types')
+)

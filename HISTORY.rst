@@ -1,3 +1,58 @@
+2.0 (2015-10-xx)
+================
+
+- New source homepage: https://gitlab.com/mayan-edms/mayan-edms
+- Update to Django 1.7
+- New Bootstrap Frontend UI
+- Easier theming and rebranding
+- Improved page navigation interface
+- Menu reorganization
+- Removal of famfam icon set
+- Improved document preview generation
+- Document submission for OCR changed to POST
+- New YAML based settings system
+- Removal of auto admin creation as separate app
+- Removal of dependencies
+- ACL system refactor
+- Object access control inheritance
+- Removal of anonymous user support
+- Metadata validators refactor
+- Trash can support
+- Retention policies
+- Support for sharing indexes as FUSE filesystems
+- Clickable preview images titles
+- Removal of eval
+- Smarter OCR, per page parsing or OCR fallback
+- Improve failure tolerance (not all Operational Errors are critical now)
+- RGB tags
+- Default document type and default document source
+- Link unbinding
+- Statistics refactor
+- Apps merge
+- New signals
+- Test improvements
+- Indexes recalculation after document creation too
+- Upgrade command
+- OCR data moved to ocr app from documents app
+- New internal document creation workflow return a document stub
+- Auto console debug logging during development and info during production
+- New class based and menu based navigation system
+- New class based transformations
+- Usage of Font Awesome icons set
+- Management command to remove obsolete permissions: `purgepermissions`
+- Normalization of 'title' and 'name' fields to 'label'
+- Improved API, now at version 1
+- Invert page title/project name order in browser title
+- Django's class based views pagination
+- Reduction of text strings
+- Removal of the CombinedSource class
+- Removal of default class ACLs
+- Removal of the ImageMagick and GraphicsMagick converter backends
+- Remove support for applying roles to new users automatically
+- Removal of the DOCUMENT_RESTRICTIONS_OVERRIDE permission
+- Removed the page_label field
+
+
 1.1.1 (2015-05-21)
 ==================
 
@@ -41,9 +96,6 @@
 - More technical documentation
 
 
-For a full changelog and release notes go to: http://mayan.readthedocs.org/en/latest/releases/1.1.html
-
-
 1.0 (2014-08-27)
 ================
 
@@ -63,5 +115,3 @@ For a full changelog and release notes go to: http://mayan.readthedocs.org/en/la
 - License change, Mayan EDMS in now licensed under the Apache 2.0 License
 - PyPI package, Mayan EDMS in now available on PyPI: https://pypi.python.org/pypi/mayan-edms/
 - New REST API
-
-For a full changelog and release notes go to: http://mayan.readthedocs.org/en/latest/releases/1.0.html

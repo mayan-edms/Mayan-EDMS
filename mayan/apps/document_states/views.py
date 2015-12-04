@@ -9,158 +9,173 @@ from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import FormView
 
-from acls.models import AccessEntry
-from common.utils import generate_choices_w_labels
+from acls.models import AccessControlList
 from common.views import (
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
-    SingleObjectListView, assign_remove
+    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document
-from permissions.models import Permission
+from documents.views import DocumentListView
+from permissions import Permission
 
 from .forms import (
-    WorkflowForm,
-    WorkflowInstanceDetailForm, WorkflowInstanceTransitionForm,
-    WorkflowStateForm, WorkflowTransitionForm
+    WorkflowForm, WorkflowInstanceTransitionForm, WorkflowStateForm,
+    WorkflowTransitionForm
 )
 from .models import Workflow, WorkflowInstance, WorkflowState, WorkflowTransition
 from .permissions import (
-    PERMISSION_WORKFLOW_CREATE, PERMISSION_WORKFLOW_DELETE,
-    PERMISSION_WORKFLOW_EDIT, PERMISSION_WORKFLOW_VIEW,
-    PERMISSION_DOCUMENT_WORKFLOW_VIEW, PERMISSION_DOCUMENT_WORKFLOW_TRANSITION
+    permission_workflow_create, permission_workflow_delete,
+    permission_workflow_edit, permission_workflow_transition,
+    permission_workflow_view,
 )
 
 
 class DocumentWorkflowInstanceListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_WORKFLOW_VIEW])
+            Permission.check_permissions(
+                request.user, (permission_workflow_view,)
+            )
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_WORKFLOW_VIEW, request.user, self.get_document())
+            AccessControlList.objects.check_access(
+                permission_workflow_view, request.user,
+                self.get_document()
+            )
 
-        return super(DocumentWorkflowInstanceListView, self).dispatch(request, *args, **kwargs)
+        return super(
+            DocumentWorkflowInstanceListView, self
+        ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
         return get_object_or_404(Document, pk=self.kwargs['pk'])
 
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'object': self.get_document(),
+            'title': _(
+                'Workflows for document: %s'
+            ) % self.get_document(),
+        }
+
     def get_queryset(self):
         return self.get_document().workflows.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(DocumentWorkflowInstanceListView, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'hide_link': True,
-                'object': self.get_document(),
-                'title': _('Workflows for document: %s') % self.get_document(),
-                'list_object_variable_name': 'workflow_instance',
-            }
+
+class WorkflowDocumentListView(DocumentListView):
+    def dispatch(self, request, *args, **kwargs):
+        self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
+
+        try:
+            Permission.check_permissions(
+                request.user, (permission_workflow_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_workflow_view, request.user, self.workflow
+            )
+
+        return super(
+            WorkflowDocumentListView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document_queryset(self):
+        return Document.objects.filter(
+            document_type__in=self.workflow.document_types.all()
         )
 
-        return context
+    def get_extra_context(self):
+        return {
+            'hide_links': True,
+            'object': self.workflow,
+            'title': _('Documents with the workflow: %s') % self.workflow
+        }
 
 
 class WorkflowInstanceDetailView(SingleObjectListView):
-    template_name = 'main/generic_multi_subtemplates.html'
-
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_WORKFLOW_VIEW])
+            Permission.check_permissions(
+                request.user, (permission_workflow_view,)
+            )
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_WORKFLOW_VIEW, request.user, self.get_workflow_instance().document)
+            AccessControlList.objects.check_access(
+                permission_workflow_view, request.user,
+                self.get_workflow_instance().document
+            )
 
-        return super(WorkflowInstanceDetailView, self).dispatch(request, *args, **kwargs)
+        return super(
+            WorkflowInstanceDetailView, self
+        ).dispatch(request, *args, **kwargs)
 
-    def get_workflow_instance(self):
-        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'navigation_object_list': ('object', 'workflow_instance'),
+            'object': self.get_workflow_instance().document,
+            'title': _('Detail of workflow: %(workflow)s') % {
+                'workflow': self.get_workflow_instance()
+            },
+            'workflow_instance': self.get_workflow_instance(),
+        }
 
     def get_queryset(self):
         return self.get_workflow_instance().log_entries.order_by('-datetime')
 
-    def get_context_data(self, **kwargs):
-        form = WorkflowInstanceDetailForm(
-            instance=self.get_workflow_instance(), extra_fields=[
-                {'label': _('Current state'), 'field': 'get_current_state'},
-                {'label': _('Last transition'), 'field': 'get_last_transition'},
-            ]
-        )
-
-        context = {
-            'object': self.get_workflow_instance().document,
-            'workflow_instance': self.get_workflow_instance(),
-            'navigation_object_list': [
-                {'object': 'object'},
-                {'object': 'workflow_instance'}
-            ],
-            'title': _('Detail of workflow: %(workflow)s') % {
-                'workflow': self.get_workflow_instance()
-            },
-            'subtemplates_list': [
-                {
-                    'name': 'main/generic_detail_subtemplate.html',
-                    'context': {
-                        'form': form,
-                    }
-                },
-                {
-                    'name': 'main/generic_list_subtemplate.html',
-                    'context': {
-                        'object_list': self.get_queryset(),
-                        'title': _('Log entries'),
-                        'hide_object': True,
-                    }
-                }
-            ]
-        }
-
-        return context
+    def get_workflow_instance(self):
+        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
 
 
 class WorkflowInstanceTransitionView(FormView):
     form_class = WorkflowInstanceTransitionForm
-    template_name = 'main/generic_form.html'
+    template_name = 'appearance/generic_form.html'
 
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_DOCUMENT_WORKFLOW_TRANSITION])
+            Permission.check_permissions(
+                request.user, (permission_workflow_transition,)
+            )
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_DOCUMENT_WORKFLOW_TRANSITION, request.user, self.get_workflow_instance().document)
+            AccessControlList.objects.check_access(
+                permission_workflow_transition, request.user,
+                self.get_workflow_instance().document
+            )
 
-        return super(WorkflowInstanceTransitionView, self).dispatch(request, *args, **kwargs)
+        return super(
+            WorkflowInstanceTransitionView, self
+        ).dispatch(request, *args, **kwargs)
 
     def form_valid(self, form):
-        transition = self.get_workflow_instance().workflow.transitions.get(pk=form.cleaned_data['transition'])
-        self.get_workflow_instance().do_transition(comment=form.cleaned_data['comment'], transition=transition, user=self.request.user)
+        transition = self.get_workflow_instance().workflow.transitions.get(
+            pk=form.cleaned_data['transition']
+        )
+        self.get_workflow_instance().do_transition(
+            comment=form.cleaned_data['comment'], transition=transition,
+            user=self.request.user
+        )
         return HttpResponseRedirect(self.get_success_url())
+
+    def get_extra_context(self):
+        return {
+            'navigation_object_list': ('object', 'workflow_instance'),
+            'object': self.get_workflow_instance().document,
+            'submit_label': _('Submit'),
+            'title': _(
+                'Do transition for workflow: %s'
+            ) % self.get_workflow_instance(),
+            'workflow_instance': self.get_workflow_instance(),
+        }
 
     def get_form_kwargs(self):
         kwargs = super(WorkflowInstanceTransitionView, self).get_form_kwargs()
         kwargs['workflow'] = self.get_workflow_instance()
         return kwargs
 
-    def get_workflow_instance(self):
-        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
-
-    def get_context_data(self, **kwargs):
-        context = super(WorkflowInstanceTransitionView, self).get_context_data(**kwargs)
-
-        context.update(
-            {
-                'object': self.get_workflow_instance().document,
-                'workflow_instance': self.get_workflow_instance(),
-                'navigation_object_list': [
-                    {'object': 'object'},
-                    {'object': 'workflow_instance'}
-                ],
-                'title': _('Do transition for workflow: %s') % self.get_workflow_instance(),
-                'submit_label': _('Submit'),
-            }
-        )
-
-        return context
-
     def get_success_url(self):
         return self.get_workflow_instance().get_absolute_url()
+
+    def get_workflow_instance(self):
+        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
 
 
 # Setup
@@ -171,79 +186,107 @@ class SetupWorkflowListView(SingleObjectListView):
         'hide_link': True,
     }
     model = Workflow
-    view_permission = PERMISSION_WORKFLOW_VIEW
+    view_permission = permission_workflow_view
 
 
 class SetupWorkflowCreateView(SingleObjectCreateView):
     form_class = WorkflowForm
     model = Workflow
-    view_permission = PERMISSION_WORKFLOW_CREATE
-    success_url = reverse_lazy('document_states:setup_workflow_list')
+    view_permission = permission_workflow_create
+    post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
 
 
 class SetupWorkflowEditView(SingleObjectEditView):
     form_class = WorkflowForm
     model = Workflow
-    view_permission = PERMISSION_WORKFLOW_EDIT
-    success_url = reverse_lazy('document_states:setup_workflow_list')
+    view_permission = permission_workflow_edit
+    post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
 
 
 class SetupWorkflowDeleteView(SingleObjectDeleteView):
     model = Workflow
-    view_permission = PERMISSION_WORKFLOW_DELETE
-    success_url = reverse_lazy('document_states:setup_workflow_list')
+    view_permission = permission_workflow_delete
+    post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
 
 
-# States
+class SetupWorkflowDocumentTypesView(AssignRemoveView):
+    decode_content_type = True
+    object_permission = permission_workflow_edit
+    left_list_title = _('Available document types')
+    right_list_title = _('Document types assigned this workflow')
+
+    def add(self, item):
+        self.get_object().document_types.add(item)
+        # TODO: add task launching this workflow for all the document types
+        # of item
+
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Document types assigned the workflow: %s'
+            ) % self.get_object(),
+            'object': self.get_object(),
+        }
+
+    def get_object(self):
+        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
+
+    def left_list(self):
+        return AssignRemoveView.generate_choices(
+            self.get_object().get_document_types_not_in_workflow()
+        )
+
+    def right_list(self):
+        return AssignRemoveView.generate_choices(
+            self.get_object().document_types.all()
+        )
+
+    def remove(self, item):
+        self.get_object().document_types.remove(item)
+        # TODO: add task deleting this workflow for all the document types of
+        # item
+
 
 class SetupWorkflowStateListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
         try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_EDIT])
+            Permission.check_permissions(
+                request.user, (permission_workflow_view,)
+            )
         except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, request.user, self.get_workflow())
+            AccessControlList.objects.check_access(
+                permission_workflow_view, request.user, self.get_workflow()
+            )
 
-        return super(SetupWorkflowStateListView, self).dispatch(request, *args, **kwargs)
+        return super(
+            SetupWorkflowStateListView, self
+        ).dispatch(request, *args, **kwargs)
 
-    def get_workflow(self):
-        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'object': self.get_workflow(),
+            'title': _('States of workflow: %s') % self.get_workflow()
+        }
 
     def get_queryset(self):
         return self.get_workflow().states.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(SetupWorkflowStateListView, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'hide_link': True,
-                'object': self.get_workflow(),
-                'title': _('States of workflow: %s') % self.get_workflow()
-            }
-        )
-
-        return context
+    def get_workflow(self):
+        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
 
 class SetupWorkflowStateCreateView(SingleObjectCreateView):
     form_class = WorkflowStateForm
+    view_permission = permission_workflow_edit
 
-    def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_EDIT])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, request.user, self.get_workflow())
-
-        return super(SetupWorkflowStateCreateView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(SetupWorkflowStateCreateView, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'object': self.get_workflow(),
-                'title': _('Create states for workflow: %s') % self.get_workflow()
-            }
-        )
-        return context
+    def get_extra_context(self):
+        return {
+            'object': self.get_workflow(),
+            'title': _(
+                'Create states for workflow: %s'
+            ) % self.get_workflow()
+        }
 
     def get_workflow(self):
         return get_object_or_404(Workflow, pk=self.kwargs['pk'])
@@ -252,7 +295,9 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
         return self.get_workflow().states.all()
 
     def get_success_url(self):
-        return reverse('document_states:setup_workflow_states', args=[self.kwargs['pk']])
+        return reverse(
+            'document_states:setup_workflow_states', args=(self.kwargs['pk'],)
+        )
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -263,7 +308,7 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
 
 class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
     model = WorkflowState
-    view_permission = PERMISSION_WORKFLOW_DELETE
+    view_permission = permission_workflow_edit
 
     def get_extra_context(self):
         return {
@@ -282,7 +327,7 @@ class SetupWorkflowStateDeleteView(SingleObjectDeleteView):
 class SetupWorkflowStateEditView(SingleObjectEditView):
     form_class = WorkflowStateForm
     model = WorkflowState
-    view_permission = PERMISSION_WORKFLOW_EDIT
+    view_permission = permission_workflow_edit
 
     def get_extra_context(self):
         return {
@@ -292,20 +337,17 @@ class SetupWorkflowStateEditView(SingleObjectEditView):
         }
 
     def get_success_url(self):
-        return reverse('document_states:setup_workflow_states', args=[self.get_object().workflow.pk])
+        return reverse(
+            'document_states:setup_workflow_states',
+            args=(self.get_object().workflow.pk,)
+        )
 
 
 # Transitions
 
 
 class SetupWorkflowTransitionListView(SingleObjectListView):
-    def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_EDIT])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, request.user, self.get_workflow())
-
-        return super(SetupWorkflowTransitionListView, self).dispatch(request, *args, **kwargs)
+    view_permission = permission_workflow_view
 
     def get_workflow(self):
         return get_object_or_404(Workflow, pk=self.kwargs['pk'])
@@ -313,42 +355,32 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
     def get_queryset(self):
         return self.get_workflow().transitions.all()
 
-    def get_context_data(self, **kwargs):
-        context = super(SetupWorkflowTransitionListView, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'hide_link': True,
-                'object': self.get_workflow(),
-                'title': _('Transitions of workflow: %s') % self.get_workflow()
-            }
-        )
-
-        return context
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'object': self.get_workflow(),
+            'title': _(
+                'Transitions of workflow: %s'
+            ) % self.get_workflow()
+        }
 
 
 class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
     form_class = WorkflowTransitionForm
+    view_permission = permission_workflow_edit
 
-    def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_EDIT])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, request.user, self.get_workflow())
-
-        return super(SetupWorkflowTransitionCreateView, self).dispatch(request, *args, **kwargs)
-
-    def get_context_data(self, **kwargs):
-        context = super(SetupWorkflowTransitionCreateView, self).get_context_data(**kwargs)
-        context.update(
-            {
-                'object': self.get_workflow(),
-                'title': _('Create transitions for workflow: %s') % self.get_workflow()
-            }
-        )
-        return context
+    def get_extra_context(self):
+        return {
+            'object': self.get_workflow(),
+            'title': _(
+                'Create transitions for workflow: %s'
+            ) % self.get_workflow()
+        }
 
     def get_form_kwargs(self):
-        kwargs = super(SetupWorkflowTransitionCreateView, self).get_form_kwargs()
+        kwargs = super(
+            SetupWorkflowTransitionCreateView, self
+        ).get_form_kwargs()
         kwargs['workflow'] = self.get_workflow()
         return kwargs
 
@@ -359,7 +391,10 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
         return self.get_workflow().transitions.all()
 
     def get_success_url(self):
-        return reverse('document_states:setup_workflow_transitions', args=[self.kwargs['pk']])
+        return reverse(
+            'document_states:setup_workflow_transitions',
+            args=(self.kwargs['pk'],)
+        )
 
     def form_valid(self, form):
         self.object = form.save(commit=False)
@@ -367,15 +402,19 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
         try:
             self.object.save()
         except IntegrityError:
-            messages.error(self.request, _('Unable to save transition; integrity error.'))
-            return super(SetupWorkflowTransitionCreateView, self).form_invalid(form)
+            messages.error(
+                self.request, _('Unable to save transition; integrity error.')
+            )
+            return super(
+                SetupWorkflowTransitionCreateView, self
+            ).form_invalid(form)
         else:
             return HttpResponseRedirect(self.get_success_url())
 
 
 class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
     model = WorkflowTransition
-    view_permission = PERMISSION_WORKFLOW_DELETE
+    view_permission = permission_workflow_edit
 
     def get_extra_context(self):
         return {
@@ -385,13 +424,16 @@ class SetupWorkflowTransitionDeleteView(SingleObjectDeleteView):
         }
 
     def get_success_url(self):
-        return reverse('document_states:setup_workflow_transitions', args=[self.get_object().workflow.pk])
+        return reverse(
+            'document_states:setup_workflow_transitions',
+            args=(self.get_object().workflow.pk,)
+        )
 
 
 class SetupWorkflowTransitionEditView(SingleObjectEditView):
     form_class = WorkflowTransitionForm
     model = WorkflowTransition
-    view_permission = PERMISSION_WORKFLOW_EDIT
+    view_permission = permission_workflow_edit
 
     def get_extra_context(self):
         return {
@@ -401,31 +443,14 @@ class SetupWorkflowTransitionEditView(SingleObjectEditView):
         }
 
     def get_form_kwargs(self):
-        kwargs = super(SetupWorkflowTransitionEditView, self).get_form_kwargs()
+        kwargs = super(
+            SetupWorkflowTransitionEditView, self
+        ).get_form_kwargs()
         kwargs['workflow'] = self.get_object().workflow
         return kwargs
 
     def get_success_url(self):
-        return reverse('document_states:setup_workflow_transitions', args=[self.get_object().workflow.pk])
-
-
-def setup_workflow_document_types(request, pk):
-    workflow = get_object_or_404(Workflow, pk=pk)
-
-    try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_WORKFLOW_EDIT])
-    except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_WORKFLOW_EDIT, request.user, workflow)
-
-    return assign_remove(
-        request,
-        left_list=lambda: generate_choices_w_labels(workflow.get_document_types_not_in_workflow(), display_object_type=False),
-        right_list=lambda: generate_choices_w_labels(workflow.document_types.all(), display_object_type=False),
-        add_method=lambda x: workflow.document_types.add(x),
-        remove_method=lambda x: workflow.document_types.remove(x),
-        decode_content_type=True,
-        extra_context={
-            'main_title': _('Document types assigned the workflow: %s') % workflow,
-            'object': workflow,
-        }
-    )
+        return reverse(
+            'document_states:setup_workflow_transitions',
+            args=(self.get_object().workflow.pk,)
+        )

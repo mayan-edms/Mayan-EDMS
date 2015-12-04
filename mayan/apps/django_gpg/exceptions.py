@@ -1,3 +1,10 @@
+__all__ = (
+    'GPGException', 'GPGVerificationError', 'GPGSigningError',
+    'GPGDecryptionError', 'KeyDeleteError', 'KeyGenerationError',
+    'KeyFetchingError', 'KeyDoesNotExist', 'KeyImportError'
+)
+
+
 class GPGException(Exception):
     pass
 

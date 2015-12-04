@@ -49,42 +49,43 @@ def find_packages(directory):
             if '__init__.py' in filenames:
                 packages.append('.'.join(fullsplit(dirpath)))
             elif filenames:
-                data_files.append([dirpath, [os.path.join(dirpath, f) for f in filenames]])
+                data_files.append(
+                    [dirpath, [os.path.join(dirpath, f) for f in filenames]]
+                )
+
     return packages
 
 install_requires = """
+Django==1.7.10
+Pillow==2.9.0
+PyYAML==3.11
 celery==3.1.18
 cssmin==0.2.0
-Django==1.6.11
-django-activity-stream==0.5.1
+django-activity-stream==0.6.0
+django-autoadmin==1.1.0
 django-celery==3.1.16
-django-compressor==1.4
-django-cors-headers==0.13
+django-colorful==1.1.0
+django-compressor==1.5
+django-cors-headers==1.1.0
 django-filetransfers==0.1.0
-django-pagination==1.0.7
+django-pure-pagination==0.2.1
 django-model-utils==2.2
-django-mptt==0.6.1
-django-rest-swagger==0.2.0
-django-sendfile==0.3.6
-django-solo==1.1.0
-django-suit==0.2.12
-djangorestframework==2.4.4
-GitPython==0.3.2.RC1
-Pillow==2.6.1
-pdfminer==20110227
-psutil==2.1.3
-pycountry==1.8
-pytz==2015.4
-python-dateutil==2.4.0
+django-mptt==0.7.4
+django-qsstats-magic==0.7.2
+django-rest-swagger==0.3.4
+django-suit==0.2.13
+django-widget-tweaks==1.3
+djangorestframework==3.1.3
+djangorestframework-recursive==0.1.1
+fusepy==2.0.2
+pdfminer==20140328
+pycountry==1.10
+pytesseract==0.1.6
+python-dateutil==2.4.2
 python-gnupg==0.3.7
-python-hkp==0.1.3
 python-magic==0.4.6
-requests==2.4.3
-sh==1.09
-slate==0.3
-South==1.0.2
-unicode-slugify==0.1.1
-wsgiref==0.1.2
+pytz==2015.4
+sh==1.11
 """.split()
 
 with open('README.rst') as f:
@@ -122,7 +123,7 @@ setup(
     packages=find_packages(PACKAGE_DIR),
     platforms=['any'],
     scripts=['mayan/bin/mayan-edms.py'],
-    url='https://github.com/mayan-edms/mayan-edms',
+    url='https://gitlab.com/mayan-edms/mayan-edms',
     version=mayan.__version__,
     zip_safe=False,
 )

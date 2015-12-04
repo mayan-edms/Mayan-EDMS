@@ -1,5 +1,5 @@
-from project_setup.api import register_setup
+from __future__ import unicode_literals
 
-from .links import check_settings
+from .classes import Namespace, Setting  # NOQA
 
-register_setup(check_settings)
+default_app_config = 'smart_settings.apps.SmartSettingsApp'

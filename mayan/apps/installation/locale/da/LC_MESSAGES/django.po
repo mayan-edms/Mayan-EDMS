@@ -9,204 +9,159 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
-"PO-Revision-Date: 2015-01-11 22:11+0000\n"
+"POT-Creation-Date: 2015-09-24 16:26-0400\n"
+"PO-Revision-Date: 2015-08-20 22:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/projects/p/mayan-edms/language/da/)\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:26 __init__.py:37
-msgid "Label"
-msgstr ""
-
-#: __init__.py:30
-msgid "Items"
-msgstr ""
-
-#: __init__.py:41
-msgid "Value"
-msgstr ""
-
-#: links.py:7 models.py:156
-msgid "Installation details"
-msgstr ""
-
-#: links.py:8 views.py:21
-msgid "Installation property namespaces"
-msgstr ""
-
-#: links.py:9
-msgid "Details"
-msgstr ""
-
-#: models.py:48
-msgid "Operating system"
-msgstr ""
-
-#: models.py:50 models.py:57
-msgid "LSB OS"
-msgstr "LSB OS"
-
-#: models.py:51
-msgid "Distributor ID"
-msgstr "Distributør id"
-
-#: models.py:52
-msgid "Description"
-msgstr "Beskrivelse"
-
-#: models.py:53
-msgid "Release"
-msgstr "Release"
-
-#: models.py:54
-msgid "Codename"
-msgstr "Codename"
-
-#: models.py:55
-msgid "System info"
-msgstr "System info"
-
-#: models.py:59
-msgid "OS architecture"
-msgstr "OS arkitektur"
-
-#: models.py:60
-msgid "Python version"
-msgstr "Python version"
-
-#: models.py:61
-msgid "Hostname"
-msgstr "Host navn"
-
-#: models.py:62
-msgid "Platform"
-msgstr "Platform"
-
-#: models.py:63
-msgid "Machine"
-msgstr "Maskine"
-
-#: models.py:64
-msgid "Processor"
-msgstr "Processor"
-
-#: models.py:65
-msgid "Number of CPUs"
-msgstr "Antal CPU'er"
-
-#: models.py:66
-msgid "Total physical memory"
-msgstr "Samlet fysisk hukommelse"
-
-#: models.py:67
-msgid "Disk partitions"
-msgstr "Diskpartitioner"
-
-#: models.py:70
-msgid "Binary dependencies"
-msgstr ""
-
-#: models.py:75 models.py:77 models.py:79
-msgid "tesseract version"
-msgstr "Tesseract version"
-
-#: models.py:75 models.py:84 models.py:93
-msgid "not found"
-msgstr "Ej fundet"
-
-#: models.py:77 models.py:86 models.py:95
-msgid "error getting version"
-msgstr "Fejl ved versionssøgning"
-
-#: models.py:84 models.py:86 models.py:88
-msgid "unpaper version"
-msgstr "digital udgave"
-
-#: models.py:93 models.py:95 models.py:97
-msgid "pdftotext version"
-msgstr "pdftotext version"
-
-#: models.py:100
-msgid "Mayan EDMS"
-msgstr ""
-
-#: models.py:102
-msgid "UUID"
-msgstr ""
-
-#: models.py:103
-msgid "Mayan EDMS version"
-msgstr "Mayan EDMS version"
-
-#: models.py:106
-msgid "Git repository"
-msgstr ""
-
-#: models.py:111 models.py:116
-msgid "Running from a Git repository"
-msgstr "Kører fra en Git repository"
-
-#: models.py:117
-msgid "Repository remotes"
-msgstr "Repository remotes"
-
-#: models.py:118
-msgid "Repository remotes URLs"
-msgstr "Repository remotes URLs"
-
-#: models.py:119
-msgid "Branch"
-msgstr "Branch"
-
-#: models.py:120
-msgid "HEAD commit hex SHA"
-msgstr "HEAD commit hex SHA"
-
-#: models.py:121
-msgid "HEAD commit author"
-msgstr "HEAD commit author"
-
-#: models.py:122
-msgid "HEAD commit authored date"
-msgstr "HEAD commit authored date"
-
-#: models.py:123
-msgid "HEAD commit committer"
-msgstr "HEAD commit committer"
-
-#: models.py:124
-msgid "HEAD commit committed date"
-msgstr "HEAD commit committed date"
-
-#: models.py:125
-msgid "HEAD commit message"
-msgstr "HEAD commit message"
-
-#: models.py:131
-msgid "VirtualEnv"
-msgstr ""
-
-#: models.py:135
-msgid "pip not found."
-msgstr ""
-
-#: permissions.py:7
+#: apps.py:16 permissions.py:7
 msgid "Installation"
 msgstr "Installation"
 
-#: permissions.py:8
+#: apps.py:22 apps.py:29
+msgid "Label"
+msgstr ""
+
+#: apps.py:25
+msgid "Items"
+msgstr ""
+
+#: apps.py:30
+msgid "Value"
+msgstr ""
+
+#: apps.py:41
+msgid "VirtualEnv"
+msgstr ""
+
+#: apps.py:46
+msgid "pip not found."
+msgstr ""
+
+#: links.py:12
+msgid "Installation details"
+msgstr ""
+
+#: links.py:15
+msgid "Details"
+msgstr ""
+
+#: links.py:20 views.py:13
+msgid "Installation property namespaces"
+msgstr ""
+
+#: permissions.py:10
 msgid "View installation environment details"
 msgstr "Se installations miljø detaljer"
 
-#: views.py:33
+#: views.py:27
 #, python-format
 msgid "Installation namespace details for: %s"
 msgstr ""
+
+#~ msgid "LSB OS"
+#~ msgstr "LSB OS"
+
+#~ msgid "Distributor ID"
+#~ msgstr "Distributor ID"
+
+#~ msgid "Description"
+#~ msgstr "Description"
+
+#~ msgid "Release"
+#~ msgstr "Release"
+
+#~ msgid "Codename"
+#~ msgstr "Codename"
+
+#~ msgid "System info"
+#~ msgstr "System info"
+
+#~ msgid "OS architecture"
+#~ msgstr "OS architecture"
+
+#~ msgid "Python version"
+#~ msgstr "Python version"
+
+#~ msgid "Hostname"
+#~ msgstr "Hostname"
+
+#~ msgid "Platform"
+#~ msgstr "Platform"
+
+#~ msgid "Machine"
+#~ msgstr "Machine"
+
+#~ msgid "Processor"
+#~ msgstr "Processor"
+
+#~ msgid "Number of CPUs"
+#~ msgstr "Number of CPUs"
+
+#~ msgid "Total physical memory"
+#~ msgstr "Total physical memory"
+
+#~ msgid "Disk partitions"
+#~ msgstr "Disk partitions"
+
+#~ msgid "tesseract version"
+#~ msgstr "tesseract version"
+
+#~ msgid "not found"
+#~ msgstr "not found"
+
+#~ msgid "error getting version"
+#~ msgstr "error getting version"
+
+#~ msgid "unpaper version"
+#~ msgstr "unpaper version"
+
+#~ msgid "pdftotext version"
+#~ msgstr "pdftotext version"
+
+#~ msgid "Mayan EDMS"
+#~ msgstr "Mayan EDMS version"
+
+#~ msgid "Mayan EDMS version"
+#~ msgstr "Mayan EDMS version"
+
+#~ msgid "Git repository"
+#~ msgstr "Running from a Git repository"
+
+#~ msgid "Running from a Git repository"
+#~ msgstr "Running from a Git repository"
+
+#~ msgid "Repository remotes"
+#~ msgstr "Repository remotes"
+
+#~ msgid "Repository remotes URLs"
+#~ msgstr "Repository remotes URLs"
+
+#~ msgid "Branch"
+#~ msgstr "Branch"
+
+#~ msgid "HEAD commit hex SHA"
+#~ msgstr "HEAD commit hex SHA"
+
+#~ msgid "HEAD commit author"
+#~ msgstr "HEAD commit author"
+
+#~ msgid "HEAD commit authored date"
+#~ msgstr "HEAD commit authored date"
+
+#~ msgid "HEAD commit committer"
+#~ msgstr "HEAD commit committer"
+
+#~ msgid "HEAD commit committed date"
+#~ msgstr "HEAD commit committed date"
+
+#~ msgid "HEAD commit message"
+#~ msgstr "HEAD commit message"
 
 #~ msgid "Installed via fabfile"
 #~ msgstr "Installed via fabfile"

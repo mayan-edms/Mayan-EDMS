@@ -2,12 +2,28 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from navigation import Link
 
-def is_superuser(context):
-    return context['request'].user.is_staff or context['request'].user.is_superuser
+from .permissions import permission_statistics_view
 
-
-link_execute = {'text': _('Execute'), 'view': 'statistics:execute', 'args': 'object.id', 'famfam': 'lightning', 'condition': is_superuser}
-link_namespace_details = {'text': _('Details'), 'view': 'statistics:namespace_details', 'args': 'namespace.id', 'famfam': 'chart_curve_go', 'condition': is_superuser}
-link_namespace_list = {'text': _('Namespace list'), 'view': 'statistics:namespace_list', 'famfam': 'chart_curve', 'condition': is_superuser}
-link_statistics = {'text': _('Statistics'), 'view': 'statistics:namespace_list', 'famfam': 'table', 'icon': 'main/icons/blackboard_sum.png', 'condition': is_superuser}
+# Translators: 'Queue' here is the verb, to queue a statistic to update
+link_execute = Link(
+    permissions=(permission_statistics_view,), text=_('Queue'),
+    view='statistics:statistic_queue', args='resolved_object.slug'
+)
+link_view = Link(
+    permissions=(permission_statistics_view,), text=_('View'),
+    view='statistics:statistic_detail', args='resolved_object.slug'
+)
+link_namespace_details = Link(
+    permissions=(permission_statistics_view,), text=_('Namespace details'),
+    view='statistics:namespace_details', args='resolved_object.slug'
+)
+link_namespace_list = Link(
+    permissions=(permission_statistics_view,), text=_('Namespace list'),
+    view='statistics:namespace_list'
+)
+link_statistics = Link(
+    icon='fa fa-sort-numeric-desc', permissions=(permission_statistics_view,),
+    text=_('Statistics'), view='statistics:namespace_list'
+)

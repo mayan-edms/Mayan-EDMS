@@ -12,7 +12,13 @@ class SmartLinkConditionInline(admin.StackedInline):
     allow_add = True
 
 
+@admin.register(SmartLink)
 class SmartLinkAdmin(admin.ModelAdmin):
-    inlines = [SmartLinkConditionInline]
+    def document_type_list(self, instance):
+        return ','.join(
+            instance.document_types.values_list('label', flat=True)
+        )
 
-admin.site.register(SmartLink, SmartLinkAdmin)
+    filter_horizontal = ('document_types',)
+    inlines = (SmartLinkConditionInline,)
+    list_display = ('label', 'dynamic_label', 'enabled', 'document_type_list')

@@ -3,14 +3,21 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext
 
 
-class DocumentNotCheckedOut(Exception):
+class DocumentCheckoutError(Exception):
+    """
+    Base checkout exception
+    """
+    pass
+
+
+class DocumentNotCheckedOut(DocumentCheckoutError):
     """
     Raised when trying to checkin a document that is not checkedout
     """
     pass
 
 
-class DocumentAlreadyCheckedOut(Exception):
+class DocumentAlreadyCheckedOut(DocumentCheckoutError):
     """
     Raised when trying to checkout an already checkedout document
     """

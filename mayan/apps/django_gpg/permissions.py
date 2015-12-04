@@ -2,11 +2,19 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace, Permission
+from permissions import PermissionNamespace
 
-django_gpg_namespace = PermissionNamespace('django_gpg', _('Key management'))
+namespace = PermissionNamespace('django_gpg', _('Key management'))
 
-PERMISSION_KEY_VIEW = Permission.objects.register(django_gpg_namespace, 'key_view', _('View keys'))
-PERMISSION_KEY_DELETE = Permission.objects.register(django_gpg_namespace, 'key_delete', _('Delete keys'))
-PERMISSION_KEYSERVER_QUERY = Permission.objects.register(django_gpg_namespace, 'keyserver_query', _('Query keyservers'))
-PERMISSION_KEY_RECEIVE = Permission.objects.register(django_gpg_namespace, 'key_receive', _('Import keys from keyservers'))
+permission_key_view = namespace.add_permission(
+    name='key_view', label=_('View keys')
+)
+permission_key_delete = namespace.add_permission(
+    name='key_delete', label=_('Delete keys')
+)
+permission_keyserver_query = namespace.add_permission(
+    name='keyserver_query', label=_('Query keyservers')
+)
+permission_key_receive = namespace.add_permission(
+    name='key_receive', label=_('Import keys from keyservers')
+)

@@ -1,0 +1,26 @@
+{% extends 'appearance/base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+    <h3>
+        {{ title }}
+    </h3>
+    <hr>
+    {% for key, value in blocks.items %}
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">{{ value.title }}</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="undecorated_list">
+                    {% for link in value.links %}
+                        <li>
+                            {% include 'navigation/generic_subnavigation.html' %}{% if link.description %} - {{ link.description }}{% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

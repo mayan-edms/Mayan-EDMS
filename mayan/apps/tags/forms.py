@@ -6,23 +6,13 @@ from django import forms
 from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
-from permissions.models import Permission
+from acls.models import AccessControlList
+from permissions import Permission
 
 from .models import Tag
-from .permissions import PERMISSION_TAG_VIEW
+from .permissions import permission_tag_view
 
 logger = logging.getLogger(__name__)
-
-
-class TagForm(forms.ModelForm):
-    """
-    Form to edit an existing tag's properties
-    """
-
-    class Meta:
-        fields = ('label', 'color')
-        model = Tag
 
 
 class TagListForm(forms.Form):
@@ -33,9 +23,11 @@ class TagListForm(forms.Form):
 
         queryset = Tag.objects.all()
         try:
-            Permission.objects.check_permissions(user, [PERMISSION_TAG_VIEW])
+            Permission.check_permissions(user, (permission_tag_view,))
         except PermissionDenied:
-            queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_TAG_VIEW, user, queryset)
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_tag_view, user, queryset
+            )
 
         self.fields['tag'] = forms.ModelChoiceField(
             queryset=queryset,

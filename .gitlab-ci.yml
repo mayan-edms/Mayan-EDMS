@@ -1,0 +1,35 @@
+image: python:2.7
+services:
+  - mysql
+  - postgres
+before_script:
+  - apt-get update -qq
+  - apt-get install -qq python-dev gcc tesseract-ocr tesseract-ocr-deu unpaper ghostscript libjpeg-dev libpng-dev libtiff-dev poppler-utils libreoffice
+variables:
+  POSTGRES_DB: "mayan_edms"
+  POSTGRES_PASSWORD: "postgres"
+  MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  MYSQL_DATABASE: "mayan_edms"
+test:mysql:
+  script:
+  - pip install -r requirements/testing.txt
+  - pip install -q mysql-python
+  - apt-get install -qq mysql-client
+  - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "ALTER DATABASE $MYSQL_DATABASE CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+  - coverage run manage.py runtests --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
+  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
+  tags:
+    - mysql
+test:postgres:
+  script:
+  - pip install -r requirements/testing.txt
+  - pip install -q psycopg2
+  - coverage run manage.py runtests --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
+  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
+  tags:
+    - postgres
+test:sqlite:
+  script:
+  - pip install -r requirements/testing.txt
+  - coverage run manage.py runtests --settings=mayan.settings.testing.gitlab-ci --nomigrations
+  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN

@@ -11,7 +11,10 @@ logger = logging.getLogger(__name__)
 
 @app.task(ignore_result=True)
 def task_remove_metadata_type(document_type_id, metadata_type_id):
-    DocumentMetadata.objects.filter(document__document_type__id=document_type_id, metadata_type__id=metadata_type_id).delete()
+    DocumentMetadata.objects.filter(
+        document__document_type__id=document_type_id,
+        metadata_type__id=metadata_type_id
+    ).delete()
 
 
 @app.task(ignore_result=True)

@@ -1,0 +1,56 @@
+{% extends 'appearance/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% block title %}{% trans 'Confirm' %} {{ title }}{% endblock %}
+
+{% block content %}
+    <h3>
+        {% if delete_view %}
+            {% trans 'Confirm delete' %}
+        {% else %}
+            {% trans 'Confirm' %}
+        {% endif %}
+    </h3>
+    <hr>
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h4 class="modal-title">
+                    {% if title %}
+                        <h3>{{ title }}</h3>
+                    {% else %}
+                        {% if delete_view %}
+                            <h3>{% blocktrans %}Delete: {{ object }}?{% endblocktrans %}</h3>
+                        {% endif %}
+                    {% endif %}
+                </h4>
+            </div>
+            {% if message %}
+                <div class="modal-body">
+                    <p>{{ message }}</p>
+                </div>
+            {% endif %}
+            <div class="modal-footer">
+                <form action="" method="post" class="form login">{% csrf_token %}
+                    {% if next %}
+                        <input name="next" type="hidden" value="{{ next }}" />
+                    {% endif %}
+
+                    {% if previous %}
+                        <input name="previous" type="hidden" value="{{ previous }}" />
+                    {% endif %}
+
+                    <button type="submit" class="btn btn-danger" data-dismiss="modal">{% trans 'Yes' %}</button>
+                    {% if previous %}
+                        <a class="btn btn-primary" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}'>{% trans 'No' %}</a>
+                    {% endif %}
+
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -4,15 +4,16 @@ import datetime
 import logging
 import re
 
+from django.apps import apps
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
-from django.db.models.loading import get_model
+from django.utils.module_loading import import_string
 
-from acls.models import AccessEntry
-from common.utils import load_backend
-from permissions.models import Permission
+from acls.models import AccessControlList
+from permissions import Permission
 
-from .settings import LIMIT
+from .models import RecentSearch
+from .settings import setting_limit
 
 logger = logging.getLogger(__name__)
 
@@ -24,16 +25,16 @@ class SearchModel(object):
     def get(cls, full_name):
         result = cls.registry[full_name]
         if not hasattr(result, 'serializer'):
-            result.serializer = load_backend(result.serializer_string)
+            result.serializer = import_string(result.serializer_string)
 
         return result
 
     def __init__(self, app_label, model_name, serializer_string, label=None, permission=None):
         self.app_label = app_label
         self.model_name = model_name
-        self.search_fields = {}
-        self.model = get_model(app_label, model_name)
-        self.label = label or self.model._meta.verbose_name
+        self.search_fields = []
+        self.model = None  # Lazy
+        self.label = label
         self.serializer_string = serializer_string
         self.permission = permission
         self.__class__.registry[self.get_full_name()] = self
@@ -42,7 +43,7 @@ class SearchModel(object):
         return '%s.%s' % (self.app_label, self.model_name)
 
     def get_all_search_fields(self):
-        return self.search_fields.values()
+        return self.search_fields
 
     def get_search_field(self, full_name):
         try:
@@ -65,27 +66,32 @@ class SearchModel(object):
         Add a search field that directly belongs to the parent SearchModel
         """
         search_field = SearchField(self, *args, **kwargs)
-        self.search_fields[search_field.get_full_name()] = search_field
+        self.search_fields.append(search_field)
 
     def normalize_query(self, query_string,
                         findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
                         normspace=re.compile(r'\s{2,}').sub):
         """
-        Splits the query string in invidual keywords, getting rid of unecessary spaces
-        and grouping quoted words together.
+        Splits the query string in invidual keywords, getting rid of
+        unecessary spaces and grouping quoted words together.
         Example:
             >>> normalize_query('  some random  words "with   quotes  " and   spaces')
             ['some', 'random', 'words', 'with quotes', 'and', 'spaces']
         """
-        return [normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)]
+        return [
+            normspace(' ', (t[0] or t[1]).strip()) for t in findterms(query_string)
+        ]
 
     def search(self, query_string, user, global_and_search=False):
-        from .models import RecentSearch
-
         elapsed_time = 0
         start_time = datetime.datetime.now()
         result_set = set()
         search_dict = {}
+
+        if not self.model:
+            self.model = apps.get_model(self.app_label, self.model_name)
+            if not self.label:
+                self.label = self.model._meta.verbose_name
 
         if 'q' in query_string:
             # Simple search
@@ -98,7 +104,9 @@ class SearchModel(object):
                 search_dict[search_field.get_model()]['searches'].append(
                     {
                         'field_name': [search_field.field],
-                        'terms': self.normalize_query(query_string.get('q', '').strip())
+                        'terms': self.normalize_query(
+                            query_string.get('q', '').strip()
+                        )
                     }
                 )
         else:
@@ -113,7 +121,9 @@ class SearchModel(object):
                     search_dict[search_field.get_model()]['searches'].append(
                         {
                             'field_name': [search_field.field],
-                            'terms': self.normalize_query(query_string[search_field.field])
+                            'terms': self.normalize_query(
+                                query_string[search_field.field]
+                            )
                         }
                     )
 
@@ -125,7 +135,9 @@ class SearchModel(object):
 
             for query_entry in data['searches']:
                 # Fashion a list of queries for a field for each term
-                field_query_list = self.assemble_query(query_entry['terms'], query_entry['field_name'])
+                field_query_list = self.assemble_query(
+                    query_entry['terms'], query_entry['field_name']
+                )
 
                 logger.debug('field_query_list: %s', field_query_list)
 
@@ -135,20 +147,26 @@ class SearchModel(object):
                 # Get results per search field
                 for query in field_query_list:
                     logger.debug('query: %s', query)
-                    term_query_result_set = set(model.objects.filter(query).values_list(data['return_value'], flat=True))
+                    term_query_result_set = set(
+                        model.objects.filter(query).values_list(
+                            data['return_value'], flat=True
+                        )
+                    )
 
                     # Convert the QuerySet to a Python set and perform the
                     # AND operation on the program and not as a query.
                     # This operation ANDs all the field term results
                     # belonging to a single model, making sure to only include
-                    # results in the final field result variable if all the terms
-                    # are found in a single field.
+                    # results in the final field result variable if all the
+                    # terms are found in a single field.
                     if not field_result_set:
                         field_result_set = term_query_result_set
                     else:
                         field_result_set &= term_query_result_set
 
-                    logger.debug('term_query_result_set: %s', term_query_result_set)
+                    logger.debug(
+                        'term_query_result_set: %s', term_query_result_set
+                    )
                     logger.debug('field_result_set: %s', field_result_set)
 
                 if global_and_search:
@@ -161,24 +179,33 @@ class SearchModel(object):
 
             result_set = result_set | model_result_set
 
-        elapsed_time = unicode(datetime.datetime.now() - start_time).split(':')[2]
+        elapsed_time = unicode(
+            datetime.datetime.now() - start_time
+        ).split(':')[2]
 
-        queryset = self.model.objects.in_bulk(list(result_set)[: LIMIT]).values()
+        queryset = self.model.objects.filter(
+            pk__in=list(result_set)[:setting_limit.value]
+        )
 
         if self.permission:
             try:
-                Permission.objects.check_permissions(user, [self.permission])
+                Permission.check_permissions(user, [self.permission])
             except PermissionDenied:
-                queryset = AccessEntry.objects.filter_objects_by_access(self.permission, user, queryset)
+                queryset = AccessControlList.objects.filter_by_access(
+                    self.permission, user, queryset
+                )
 
-        RecentSearch.objects.add_query_for_user(user, query_string, len(result_set))
+        RecentSearch.objects.add_query_for_user(
+            user, query_string, len(result_set)
+        )
 
         return queryset, result_set, elapsed_time
 
     def assemble_query(self, terms, search_fields):
         """
         Returns a query, that is a combination of Q objects. That combination
-        aims to search keywords within a model by testing the given search fields.
+        aims to search keywords within a model by testing the given search
+        fields.
         """
         queries = []
         for term in terms:

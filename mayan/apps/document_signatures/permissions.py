@@ -2,10 +2,21 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace, Permission
+from permissions import PermissionNamespace
 
-document_signatures_namespace = PermissionNamespace('document_signatures', _('Document signatures'))
-PERMISSION_DOCUMENT_VERIFY = Permission.objects.register(document_signatures_namespace, 'document_verify', _('Verify document signatures'))
-PERMISSION_SIGNATURE_DELETE = Permission.objects.register(document_signatures_namespace, 'signature_delete', _('Delete detached signatures'))
-PERMISSION_SIGNATURE_DOWNLOAD = Permission.objects.register(document_signatures_namespace, 'signature_download', _('Download detached signatures'))
-PERMISSION_SIGNATURE_UPLOAD = Permission.objects.register(document_signatures_namespace, 'signature_upload', _('Upload detached signatures'))
+namespace = PermissionNamespace(
+    'document_signatures', _('Document signatures')
+)
+
+permission_document_verify = namespace.add_permission(
+    name='document_verify', label=_('Verify document signatures')
+)
+permission_signature_delete = namespace.add_permission(
+    name='signature_delete', label=_('Delete detached signatures')
+)
+permission_signature_download = namespace.add_permission(
+    name='signature_download', label=_('Download detached signatures')
+)
+permission_signature_upload = namespace.add_permission(
+    name='signature_upload', label=_('Upload detached signatures')
+)

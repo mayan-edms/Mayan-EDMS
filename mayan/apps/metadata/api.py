@@ -100,13 +100,6 @@ def metadata_repr_as_list(metadata_list):
     return output
 
 
-def get_metadata_string(document):
-    """
-    Return a formated representation of a document's metadata values
-    """
-    return ', '.join(['%s - %s' % (document_metadata.metadata_type, document_metadata.value) for document_metadata in document.metadata.all()])
-
-
 def convert_dict_to_dict_list(dictionary):
     result = []
     for key, value in dictionary.items():
@@ -117,3 +110,18 @@ def convert_dict_to_dict_list(dictionary):
         result.append({'id': metadata_type.pk, 'value': value})
 
     return result
+
+
+def set_bulk_metadata(document, metadata_dictionary):
+    document_type = document.document_type
+    document_type_metadata_types = [
+        document_type_metadata_type.metadata_type for document_type_metadata_type in document_type.metadata.all()
+    ]
+
+    for metadata_type_name, value in metadata_dictionary.items():
+        metadata_type = MetadataType.objects.get(name=metadata_type_name)
+
+        if metadata_type in document_type_metadata_types:
+            DocumentMetadata.objects.get_or_create(
+                document=document, metadata_type=metadata_type, value=value
+            )

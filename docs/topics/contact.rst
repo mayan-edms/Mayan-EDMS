@@ -12,11 +12,12 @@ Mailing list
 ------------
 
 Search for information in the `archives of the mayan-edms mailing list`_, or
-`post a question`_.  If you prefer news servers, use the gateway provided by Gmane_.
+`post a question`_.  If you prefer news servers, use the gateway provided by
+Gmane_.
 
 **Mayan EDMS** community developers do their best to reply to basic questions.
-Be sure to check the list archives as it may already containt the answers to your
-questions.
+Be sure to check the list archives as it may already containt the answers to
+your questions.
 
 Twitter
 -------
@@ -34,5 +35,5 @@ Report bugs with **Mayan EDMS** or search existing ones using Github's `ticket t
 
 .. _archives of the mayan-edms mailing list: http://groups.google.com/group/mayan-edms/
 .. _post a question: http://groups.google.com/group/mayan-edms
-.. _ticket tracker: https://github.com/mayan-edms/mayan-edms/issues
+.. _ticket tracker: https://gitlab.com/mayan-edms/mayan-edms/issues
 .. _Gmane: http://news.gmane.org/gmane.comp.python.django.mayan-edms

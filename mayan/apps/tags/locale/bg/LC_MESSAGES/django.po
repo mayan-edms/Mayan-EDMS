@@ -9,259 +9,258 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:03-0400\n"
-"PO-Revision-Date: 2015-02-06 23:26+0000\n"
+"POT-Creation-Date: 2015-09-24 16:28-0400\n"
+"PO-Revision-Date: 2015-08-27 05:25+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/projects/p/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:38
-msgid "Preview"
-msgstr ""
-
-#: __init__.py:42
-msgid "Tagged items"
-msgstr ""
-
-#: __init__.py:49 __init__.py:54 forms.py:42 links.py:12 links.py:21
-#: models.py:18 permissions.py:7 views.py:116
+#: apps.py:33 apps.py:63 apps.py:78 forms.py:34 links.py:40 links.py:43
+#: models.py:29 permissions.py:7 views.py:131
 msgid "Tags"
 msgstr "Етикети"
 
-#: links.py:13
-msgid "Create new tag"
+#: apps.py:58 apps.py:68
+msgid "Preview"
 msgstr ""
 
-#: links.py:15 links.py:16
-msgid "Attach tag"
-msgstr ""
-
-#: links.py:18
-msgid "Remove tag"
-msgstr ""
-
-#: links.py:19
-msgid "Remove tags"
-msgstr ""
-
-#: links.py:22 links.py:25
-msgid "Delete"
-msgstr ""
-
-#: links.py:23
-msgid "Edit"
-msgstr ""
-
-#: links.py:24 models.py:14
+#: apps.py:72 models.py:24
 msgid "Documents"
 msgstr ""
 
-#: links.py:26
-msgid "ACLs"
-msgstr "ACLs"
+#: links.py:14
+msgid "Remove tag"
+msgstr ""
 
-#: literals.py:17
-msgid "Blue"
-msgstr "Син"
+#: links.py:17 links.py:24
+msgid "Attach tag"
+msgstr ""
 
-#: literals.py:18
-msgid "Cyan"
-msgstr "Циан"
+#: links.py:20
+msgid "Remove tags"
+msgstr ""
 
-#: literals.py:19
-msgid "Coral"
-msgstr "Коралов"
+#: links.py:28
+msgid "Create new tag"
+msgstr ""
 
-#: literals.py:20
-msgid "Green-Yellow"
-msgstr "Жълто-зелен"
+#: links.py:32 links.py:45
+msgid "Delete"
+msgstr ""
 
-#: literals.py:21
-msgid "Khaki"
-msgstr "Каки"
+#: links.py:36
+msgid "Edit"
+msgstr ""
 
-#: literals.py:22
-msgid "LightGrey"
-msgstr "Светло сив"
-
-#: literals.py:23
-msgid "Magenta"
-msgstr "Пурпурен"
-
-#: literals.py:24
-msgid "Red"
-msgstr "Червен"
-
-#: literals.py:25
-msgid "Orange"
-msgstr "Оранжев"
-
-#: literals.py:26
-msgid "Yellow"
-msgstr "Жълт"
-
-#: models.py:12
+#: models.py:20
 msgid "Label"
 msgstr ""
 
-#: models.py:13
+#: models.py:22
 msgid "Color"
 msgstr "Цвят"
 
-#: models.py:17
+#: models.py:28
 msgid "Tag"
 msgstr ""
 
-#: permissions.py:9
+#: models.py:53
+msgid "Document tag"
+msgstr ""
+
+#: models.py:54
+msgid "Document tags"
+msgstr ""
+
+#: permissions.py:10
 msgid "Create new tags"
 msgstr "Създаване на нови етикети"
 
-#: permissions.py:10
+#: permissions.py:13
 msgid "Delete tags"
 msgstr "Изтриване етикети"
 
-#: permissions.py:11
-msgid "Edit tags"
-msgstr "Редактиране етикети"
-
-#: permissions.py:12
+#: permissions.py:16
 msgid "View tags"
 msgstr "Преглед етикети"
 
-#: permissions.py:13
+#: permissions.py:19
+msgid "Edit tags"
+msgstr "Редактиране етикети"
+
+#: permissions.py:22
 msgid "Attach tags to documents"
 msgstr "Закачане етикет към документи"
 
-#: permissions.py:14
+#: permissions.py:25
 msgid "Remove tags from documents"
 msgstr "Премахване на етикети от документи"
 
-#: views.py:42
-msgid "Tag created succesfully."
-msgstr "Етикетът е създаден успешно."
+#: serializers.py:33
+msgid "Primary key of the tag to be added."
+msgstr ""
 
-#: views.py:48
+#: views.py:34
 msgid "Create tag"
 msgstr ""
 
-#: views.py:60
+#: views.py:50
 msgid "Must provide at least one document."
 msgstr ""
 
-#: views.py:78
+#: views.py:80
 #, python-format
 msgid "Document \"%(document)s\" is already tagged as \"%(tag)s\""
 msgstr ""
 
-#: views.py:83
+#: views.py:90
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
 msgstr ""
 
-#: views.py:95
+#: views.py:104
 msgid "Attach tag to document"
 msgid_plural "Attach tag to documents"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:145
+#: views.py:153
 msgid "Must provide at least one tag."
 msgstr "Трябва да се осигури най-малко един етикет."
 
-#: views.py:160
+#: views.py:175
 #, python-format
 msgid "Tag \"%s\" deleted successfully."
 msgstr "Етикет \"%s\" е изтрит успешно."
 
-#: views.py:162
+#: views.py:179
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
 msgstr "Грешка при изтриване на етикет \"%(tag)s\": %(error)s"
 
-#: views.py:171
+#: views.py:189
 msgid "Will be removed from all documents."
 msgstr "Ще бъде премахнат от всички документи."
 
-#: views.py:174
-msgid "Are you sure you wish to delete the selected tag?"
-msgid_plural "Are you sure you wish to delete the selected tags?"
+#: views.py:192
+msgid "Delete the selected tag?"
+msgid_plural "Delete the selected tags?"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:205
-msgid "Tag updated succesfully."
-msgstr "Етикетът е обновен успешно."
-
-#: views.py:211
+#: views.py:222
 #, python-format
 msgid "Edit tag: %s"
 msgstr ""
 
-#: views.py:226
+#: views.py:235
 #, python-format
 msgid "Documents with the tag: %s"
 msgstr ""
 
-#: views.py:243
+#: views.py:262
 #, python-format
 msgid "Tags for document: %s"
 msgstr ""
 
-#: views.py:255
+#: views.py:278
 msgid "Must provide at least one tagged document."
 msgstr ""
 
-#: views.py:293
+#: views.py:328
 #, python-format
 msgid "Remove tag from document: %s."
 msgstr ""
 
-#: views.py:295
+#: views.py:332
 #, python-format
 msgid "Remove tag from documents: %s."
 msgstr ""
 
-#: views.py:301
+#: views.py:340
 #, python-format
-msgid ""
-"Are you sure you wish to remove the tag \"%(tag)s\" from the document: "
-"%(document)s?"
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
+msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
 msgstr ""
 
-#: views.py:304
+#: views.py:347
 #, python-format
-msgid ""
-"Are you sure you wish to remove the tag \"%(tag)s\" from the documents: "
-"%(documents)s?"
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
+msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
 msgstr ""
 
-#: views.py:309
+#: views.py:356
 #, python-format
-msgid ""
-"Are you sure you wish to remove the tags: %(tags)s from the document: "
-"%(document)s?"
+#| msgid ""
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
+msgid "Remove the tags: %(tags)s from the document: %(document)s?"
 msgstr ""
 
-#: views.py:312
+#: views.py:363
 #, python-format
-msgid ""
-"Are you sure you wish to remove the tags %(tags)s from the documents: "
-"%(documents)s?"
+msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
 msgstr ""
 
-#: views.py:319
+#: views.py:375
 #, python-format
 msgid "Document \"%(document)s\" wasn't tagged as \"%(tag)s\""
 msgstr ""
 
-#: views.py:324
+#: views.py:384
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
 msgstr ""
+
+#~ msgid "remove tags"
+#~ msgstr "remove tags"
+
+#~ msgid "Tagged items"
+#~ msgstr "tagged items"
+
+#~ msgid "ACLs"
+#~ msgstr "ACLs"
+
+#~ msgid "Blue"
+#~ msgstr "Blue"
+
+#~ msgid "Cyan"
+#~ msgstr "Cyan"
+
+#~ msgid "Coral"
+#~ msgstr "Coral"
+
+#~ msgid "Green-Yellow"
+#~ msgstr "Green-Yellow"
+
+#~ msgid "Khaki"
+#~ msgstr "Khaki"
+
+#~ msgid "LightGrey"
+#~ msgstr "LightGrey"
+
+#~ msgid "Magenta"
+#~ msgstr "Magenta"
+
+#~ msgid "Red"
+#~ msgstr "Red"
+
+#~ msgid "Orange"
+#~ msgstr "Orange"
+
+#~ msgid "Yellow"
+#~ msgstr "Yellow"
+
+#~ msgid "Tag created succesfully."
+#~ msgstr "Tag created succesfully."
+
+#~ msgid "Tag updated succesfully."
+#~ msgstr "Tag updated succesfully."
 
 #~ msgid "Add tag to document"
 #~ msgstr "Add tag to document"

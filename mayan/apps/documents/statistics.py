@@ -1,84 +1,121 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.utils.translation import ugettext_lazy as _
-from django.db.models import Avg, Count, Min, Max
+import datetime
 
-from common.utils import pretty_size, pretty_size_10
-from statistics.classes import Statistic
+import qsstats
 
-from .models import Document, DocumentType, DocumentPage, DocumentVersion
-from .runtime import storage_backend
+from .models import Document, DocumentPage, DocumentVersion
 
 
-def get_used_size(path, file_list):
-    total_size = 0
-    for filename in file_list:
-        try:
-            total_size += storage_backend.size(storage_backend.separator.join([path, filename]))
-        except OSError:
-            pass
+def new_documents_per_month():
+    qss = qsstats.QuerySetStats(Document.passthrough.all(), 'date_added')
 
-    return total_size
+    today = datetime.date.today()
+    this_year = datetime.date(year=today.year, month=1, day=1)
 
-
-def storage_count(path='.'):
-    try:
-        directories, files = storage_backend.listdir(path)
-    except OSError:
-        return 0, 0
-    else:
-        total_count = len(files)
-        total_size = get_used_size(path, files)
-
-        for directory in directories:
-            file_count, files_size = storage_count(directory)
-            total_count += file_count
-            total_size += files_size
-
-        return total_count, total_size
+    return {
+        'series': {
+            'Documents': map(lambda x: {x[0].month: x[1]}, qss.time_series(start=this_year, end=today, interval='months'))
+        }
+    }
 
 
-class DocumentStatistics(Statistic):
-    def get_results(self):
-        results = []
+def new_document_versions_per_month():
+    qss = qsstats.QuerySetStats(DocumentVersion.objects.all(), 'document__date_added')
 
-        results.extend([
-            _('Document types: %d') % DocumentType.objects.count(),
-        ])
-        document_stats = DocumentVersion.objects.annotate(page_count=Count('pages')).aggregate(Min('page_count'), Max('page_count'), Avg('page_count'))
-        results.extend([
-            _('Minimum amount of pages per document: %d') % (document_stats['page_count__min'] or 0),
-            _('Maximum amount of pages per document: %d') % (document_stats['page_count__max'] or 0),
-            _('Average amount of pages per document: %f') % (document_stats['page_count__avg'] or 0),
-        ])
+    today = datetime.date.today()
+    this_year = datetime.date(year=today.year, month=1, day=1)
 
-        return results
+    return {
+        'series': {
+            'Versions': map(lambda x: {x[0].month: x[1]}, qss.time_series(start=this_year, end=today, interval='months'))
+        }
+    }
 
 
-class DocumentUsageStatistics(Statistic):
-    def get_results(self):
-        results = []
+def new_document_pages_per_month():
+    qss = qsstats.QuerySetStats(DocumentPage.objects.all(), 'document_version__document__date_added')
 
-        total_db_documents = Document.objects.only('pk',).count()
+    today = datetime.date.today()
+    this_year = datetime.date(year=today.year, month=1, day=1)
 
-        results.extend([
-            _('Documents in database: %d') % total_db_documents,
-        ])
+    return {
+        'series': {
+            'Pages': map(lambda x: {x[0].month: x[1]}, qss.time_series(start=this_year, end=today, interval='months'))
+        }
+    }
 
-        try:
-            total_storage_documents, storage_used_space = storage_count()
-            results.append(_('Documents in storage: %d') %
-                           total_storage_documents)
-            results.append(_('Space used in storage: %(base_2)s (base 2), %(base_10)s (base 10), %(bytes)d bytes') % {
-                'base_2': pretty_size(storage_used_space),
-                'base_10': pretty_size_10(storage_used_space),
-                'bytes': storage_used_space
-            })
-        except NotImplementedError:
-            pass
 
-        results.extend([
-            _('Document pages in database: %d') % DocumentPage.objects.only('pk',).count(),
-        ])
+def total_document_per_month():
+    qss = qsstats.QuerySetStats(Document.objects.all(), 'date_added')
+    this_year = datetime.date.today().year
 
-        return results
+    result = []
+
+    for month in range(1, datetime.date.today().month + 1):
+        next_month = month + 1
+
+        if next_month == 12:
+            next_month = 1
+            year = this_year + 1
+        else:
+            next_month = month + 1
+            year = this_year
+
+        result.append({month: qss.until(datetime.date(year, next_month, 1))})
+
+    return {
+        'series': {
+            'Documents': result
+        }
+    }
+
+
+def total_document_version_per_month():
+    qss = qsstats.QuerySetStats(DocumentVersion.objects.all(), 'document__date_added')
+    this_year = datetime.date.today().year
+
+    result = []
+
+    for month in range(1, datetime.date.today().month + 1):
+        next_month = month + 1
+
+        if next_month == 12:
+            next_month = 1
+            year = this_year + 1
+        else:
+            next_month = month + 1
+            year = this_year
+
+        result.append({month: qss.until(datetime.date(year, next_month, 1))})
+
+    return {
+        'series': {
+            'Versions': result
+        }
+    }
+
+
+def total_document_page_per_month():
+    qss = qsstats.QuerySetStats(DocumentPage.objects.all(), 'document_version__document__date_added')
+    this_year = datetime.date.today().year
+
+    result = []
+
+    for month in range(1, datetime.date.today().month + 1):
+        next_month = month + 1
+
+        if next_month == 12:
+            next_month = 1
+            year = this_year + 1
+        else:
+            next_month = month + 1
+            year = this_year
+
+        result.append({month: qss.until(datetime.date(year, next_month, 1))})
+
+    return {
+        'series': {
+            'Pages': result
+        }
+    }

@@ -6,196 +6,216 @@
 # Translators:
 # Carlo Zanatto <>, 2012
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
-# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2012
+# Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
 # Roberto Rosario, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
-"PO-Revision-Date: 2015-05-15 23:05+0000\n"
+"POT-Creation-Date: 2015-09-24 16:26-0400\n"
+"PO-Revision-Date: 2015-09-24 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/projects/p/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: __init__.py:46
-msgid "Created"
-msgstr ""
-
-#: __init__.py:47 links.py:19 models.py:14
-msgid "Documents"
-msgstr ""
-
-#: forms.py:38 models.py:26
-msgid "Folder"
-msgstr "Cartella"
-
-#: links.py:14 links.py:22 links.py:25 models.py:27 permissions.py:7
-#: views.py:39
+#: apps.py:33 links.py:15 links.py:43 models.py:51 permissions.py:7
+#: views.py:53
 msgid "Folders"
 msgstr "Cartelle"
 
-#: links.py:15 views.py:61
-msgid "Create folder"
+#: apps.py:61
+msgid "Created"
 msgstr ""
 
-#: links.py:16
-msgid "Edit"
-msgstr ""
-
-#: links.py:17
-msgid "Delete"
-msgstr ""
-
-#: links.py:18
-msgid "Remove from folder"
-msgstr ""
-
-#: links.py:20
-msgid "Add to a folder"
-msgstr ""
-
-#: links.py:21
-msgid "Add to folder"
-msgstr ""
-
-#: links.py:24
-msgid "ACLs"
-msgstr "ACL"
-
-#: models.py:11
-msgid "Title"
-msgstr ""
-
-#: models.py:12
+#: apps.py:63 models.py:21
 msgid "User"
 msgstr ""
 
-#: models.py:13
+#: apps.py:65 links.py:46 models.py:26
+msgid "Documents"
+msgstr ""
+
+#: forms.py:34 models.py:50
+msgid "Folder"
+msgstr "Cartella"
+
+#: links.py:19
+msgid "Add to a folder"
+msgstr ""
+
+#: links.py:23
+msgid "Add to folder"
+msgstr ""
+
+#: links.py:26 views.py:90
+msgid "Create folder"
+msgstr ""
+
+#: links.py:31
+msgid "Delete"
+msgstr ""
+
+#: links.py:35
+msgid "Remove from folder"
+msgstr ""
+
+#: links.py:39
+msgid "Edit"
+msgstr ""
+
+#: models.py:19
+msgid "Label"
+msgstr ""
+
+#: models.py:23
 msgid "Datetime created"
 msgstr ""
 
-#: permissions.py:9
-msgid "Create new folders"
-msgstr "Creare nuove cartelle"
+#: models.py:57
+msgid "Document folder"
+msgstr ""
+
+#: models.py:58
+msgid "Document folders"
+msgstr ""
 
 #: permissions.py:10
-msgid "Edit new folders"
-msgstr "Modifica nuove cartelle"
+msgid "Create folders"
+msgstr ""
 
-#: permissions.py:11
-msgid "Delete new folders"
-msgstr "Eliminare nuove cartelle"
+#: permissions.py:13
+msgid "Edit folders"
+msgstr ""
 
-#: permissions.py:12
+#: permissions.py:16
+#| msgid "Delete new folders"
+msgid "Delete folders"
+msgstr ""
+
+#: permissions.py:19
 msgid "Remove documents from folders"
 msgstr "Rimuovere i documenti da cartelle"
 
-#: permissions.py:13
-msgid "View existing folders"
-msgstr "Visualizza cartelle esistenti"
+#: permissions.py:22
+#| msgid "Edit new folders"
+msgid "View folders"
+msgstr ""
 
-#: permissions.py:14
-msgid "Add documents to existing folders"
-msgstr "Aggiungere documenti a cartelle esistenti"
+#: permissions.py:27
+msgid "Add documents to folders"
+msgstr ""
 
-#: views.py:53
-msgid "Folder created successfully"
-msgstr "Cartella creata con successo"
+#: serializers.py:61
+msgid "Primary key of the document to be added."
+msgstr ""
 
-#: views.py:56
-#, python-format
-msgid "A folder named: %s, already exists."
-msgstr "Il nome cartella: %s, già esiste."
-
-#: views.py:79
-msgid "Folder edited successfully"
-msgstr "Cartella modificata con successo"
-
-#: views.py:82
-#, python-format
-msgid "Error editing folder; %s"
-msgstr "Errore modificando la cartella; %s"
-
-#: views.py:87
+#: views.py:43
 #, python-format
 msgid "Edit folder: %s"
 msgstr ""
 
-#: views.py:109
+#: views.py:83
+#, python-format
+msgid "A folder named: %s, already exists."
+msgstr "Il nome cartella: %s, già esiste."
+
+#: views.py:112
 #, python-format
 msgid "Folder: %s deleted successfully."
 msgstr "Cartella : %s cancellata con successo."
 
-#: views.py:111
+#: views.py:114
 #, python-format
 msgid "Folder: %(folder)s delete error: %(error)s"
 msgstr "Cartella: %(folder)s errore di cancellazione: %(error)s"
 
-#: views.py:121
+#: views.py:124
 #, python-format
-msgid "Are you sure you with to delete the folder: %s?"
-msgstr "Sei sicuro di voler cancellare la cartella: %s?"
+#| msgid "Delete new folders"
+msgid "Delete the folder: %s?"
+msgstr ""
 
-#: views.py:144
+#: views.py:151
 #, python-format
 msgid "Documents in folder: %s"
 msgstr ""
 
-#: views.py:157
+#: views.py:164
 msgid "Must provide at least one document."
 msgstr "Bisogna fornire almeno un documento."
 
-#: views.py:176
+#: views.py:186
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Documento: %(document)s aggiunto alla cartella: %(folder)s successfully."
 
-#: views.py:179
+#: views.py:189
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
 msgstr "Documento: %(document)s è già nella cartella: %(folder)s."
 
-#: views.py:196
+#: views.py:206
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
 msgstr[0] ""
 msgstr[1] ""
 
-#: views.py:216
+#: views.py:237
 #, python-format
 msgid "Folders containing document: %s"
 msgstr ""
 
-#: views.py:242
+#: views.py:251
 msgid "Must provide at least one folder document."
 msgstr "Devi almeno indicare una cartella documenti."
 
-#: views.py:260
+#: views.py:269
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Documento: %s cancellato con successo."
 
-#: views.py:262
+#: views.py:271
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Documento: %(document)s errore di cancellazione: %(error)s"
 
-#: views.py:272
+#: views.py:281
 #, python-format
-msgid ""
-"Are you sure you wish to remove the selected document from the folder: "
-"%(folder)s?"
-msgid_plural ""
-"Are you sure you wish to remove the selected documents from the folder: "
-"%(folder)s?"
+msgid "Remove the selected document from the folder: %(folder)s?"
+msgid_plural "Remove the selected documents from the folder: %(folder)s?"
 msgstr[0] ""
 msgstr[1] ""
+
+#~ msgid "Create new folders"
+#~ msgstr "Create new folders"
+
+#~ msgid "View existing folders"
+#~ msgstr "View existing folders"
+
+#~ msgid "Add documents to existing folders"
+#~ msgstr "Add documents to existing folders"
+
+#~ msgid "ACLs"
+#~ msgstr "ACLs"
+
+#~ msgid "Title"
+#~ msgstr "title"
+
+#~ msgid "Folder created successfully"
+#~ msgstr "Folder created successfully"
+
+#~ msgid "Folder edited successfully"
+#~ msgstr "Folder edited successfully"
+
+#~ msgid "Error editing folder; %s"
+#~ msgstr "Error editing folder; %s"
+
+#~ msgid "Are you sure you with to delete the folder: %s?"
+#~ msgstr "Are you sure you with to delete the folder: %s?"
 
 #~ msgid "Add document to a folder"
 #~ msgstr "Add document to a folder"

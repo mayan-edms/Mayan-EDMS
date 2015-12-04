@@ -2,14 +2,25 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace, Permission
+from permissions import PermissionNamespace
 
-document_indexing_namespace = PermissionNamespace('document_indexing', _('Indexing'))
+namespace = PermissionNamespace('document_indexing', _('Indexing'))
 
-PERMISSION_DOCUMENT_INDEXING_SETUP = Permission.objects.register(document_indexing_namespace, 'document_index_setup', _('Configure document indexes'))
-PERMISSION_DOCUMENT_INDEXING_CREATE = Permission.objects.register(document_indexing_namespace, 'document_index_create', _('Create new document indexes'))
-PERMISSION_DOCUMENT_INDEXING_EDIT = Permission.objects.register(document_indexing_namespace, 'document_index_edit', _('Edit document indexes'))
-PERMISSION_DOCUMENT_INDEXING_DELETE = Permission.objects.register(document_indexing_namespace, 'document_index_delete', _('Delete document indexes'))
-
-PERMISSION_DOCUMENT_INDEXING_VIEW = Permission.objects.register(document_indexing_namespace, 'document_index_view', _('View document indexes'))
-PERMISSION_DOCUMENT_INDEXING_REBUILD_INDEXES = Permission.objects.register(document_indexing_namespace, 'document_rebuild_indexes', _('Rebuild document indexes'))
+permission_document_indexing_setup = namespace.add_permission(
+    name='document_index_setup', label=_('Configure document indexes')
+)
+permission_document_indexing_create = namespace.add_permission(
+    name='document_index_create', label=_('Create new document indexes')
+)
+permission_document_indexing_edit = namespace.add_permission(
+    name='document_index_edit', label=_('Edit document indexes')
+)
+permission_document_indexing_delete = namespace.add_permission(
+    name='document_index_delete', label=_('Delete document indexes')
+)
+permission_document_indexing_view = namespace.add_permission(
+    name='document_index_view', label=_('View document indexes')
+)
+permission_document_indexing_rebuild_indexes = namespace.add_permission(
+    name='document_rebuild_indexes', label=_('Rebuild document indexes')
+)

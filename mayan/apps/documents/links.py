@@ -2,98 +2,263 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from acls.permissions import ACLS_VIEW_ACL
-from events.permissions import PERMISSION_EVENTS_VIEW
+from converter.permissions import permission_transformation_delete
+from navigation import Link
 
 from .permissions import (
-    PERMISSION_DOCUMENT_PROPERTIES_EDIT, PERMISSION_DOCUMENT_VIEW,
-    PERMISSION_DOCUMENT_DELETE, PERMISSION_DOCUMENT_DOWNLOAD,
-    PERMISSION_DOCUMENT_TRANSFORM, PERMISSION_DOCUMENT_TOOLS,
-    PERMISSION_DOCUMENT_EDIT, PERMISSION_DOCUMENT_VERSION_REVERT,
-    PERMISSION_DOCUMENT_TYPE_EDIT, PERMISSION_DOCUMENT_TYPE_DELETE,
-    PERMISSION_DOCUMENT_TYPE_CREATE, PERMISSION_DOCUMENT_TYPE_VIEW
+    permission_document_delete, permission_document_download,
+    permission_document_properties_edit, permission_document_print,
+    permission_document_restore, permission_document_tools,
+    permission_document_version_revert, permission_document_view,
+    permission_document_trash, permission_document_type_create,
+    permission_document_type_delete, permission_document_type_edit,
+    permission_document_type_view, permission_empty_trash
 )
-from .settings import ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
+from .settings import setting_zoom_max_level, setting_zoom_min_level
 
-# Document page links expressions
+
+def is_not_current_version(context):
+    return context['object'].document.latest_version.timestamp != context['object'].timestamp
 
 
 def is_first_page(context):
-    return context['page'].page_number <= 1
+    return context['resolved_object'].page_number <= 1
 
 
 def is_last_page(context):
-    return context['page'].page_number >= context['page'].document_version.pages.count()
-
-
-def is_min_zoom(context):
-    return context['zoom'] <= ZOOM_MIN_LEVEL
+    return context['resolved_object'].page_number >= context['resolved_object'].document_version.pages.count()
 
 
 def is_max_zoom(context):
-    return context['zoom'] >= ZOOM_MAX_LEVEL
+    return context['zoom'] >= setting_zoom_max_level.value
 
 
-def is_current_version(context):
-    return context['object'].document.latest_version.timestamp == context['object'].timestamp
+def is_min_zoom(context):
+    return context['zoom'] <= setting_zoom_min_level.value
 
 
-document_list = {'text': _('All documents'), 'view': 'documents:document_list', 'famfam': 'page', 'icon': 'main/icons/page.png'}
-document_list_recent = {'text': _('Recent documents'), 'view': 'documents:document_list_recent', 'famfam': 'page', 'icon': 'main/icons/page.png'}
-document_preview = {'text': _('Preview'), 'view': 'documents:document_preview', 'args': 'object.id', 'famfam': 'page', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_content = {'text': _('Content'), 'view': 'documents:document_content', 'args': 'object.id', 'famfam': 'page_white_text', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_properties = {'text': _('Properties'), 'view': 'documents:document_properties', 'args': 'object.id', 'famfam': 'page_gear', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_delete = {'text': _('Delete'), 'view': 'documents:document_delete', 'args': 'object.id', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}
-document_multiple_delete = {'text': _('Delete'), 'view': 'documents:document_multiple_delete', 'famfam': 'page_delete', 'permissions': [PERMISSION_DOCUMENT_DELETE]}
-document_edit = {'text': _('Edit properties'), 'view': 'documents:document_edit', 'args': 'object.id', 'famfam': 'page_edit', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
-document_document_type_edit = {'text': _('Change type'), 'view': 'documents:document_document_type_edit', 'args': 'object.id', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
-document_multiple_document_type_edit = {'text': _('Change type'), 'view': 'documents:document_multiple_document_type_edit', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_PROPERTIES_EDIT]}
-document_download = {'text': _('Download'), 'view': 'documents:document_download', 'args': 'object.id', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
-document_multiple_download = {'text': _('Download'), 'view': 'documents:document_multiple_download', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
-document_version_download = {'text': _('Download'), 'view': 'documents:document_version_download', 'args': 'object.pk', 'famfam': 'page_save', 'permissions': [PERMISSION_DOCUMENT_DOWNLOAD]}
-document_update_page_count = {'text': _('Reset page count'), 'view': 'documents:document_update_page_count', 'args': 'object.pk', 'famfam': 'page_white_csharp', 'permissions': [PERMISSION_DOCUMENT_TOOLS]}
-document_multiple_update_page_count = {'text': _('Reset page count'), 'view': 'documents:document_multiple_update_page_count', 'famfam': 'page_white_csharp', 'permissions': [PERMISSION_DOCUMENT_TOOLS]}
-document_clear_transformations = {'text': _('Clear transformations'), 'view': 'documents:document_clear_transformations', 'args': 'object.id', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
-document_multiple_clear_transformations = {'text': _('Clear transformations'), 'view': 'documents:document_multiple_clear_transformations', 'famfam': 'page_paintbrush', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
-document_print = {'text': _('Print'), 'view': 'documents:document_print', 'args': 'object.id', 'famfam': 'printer', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_events_view = {'text': _('Events'), 'view': 'events:events_for_object', 'args': ['"documents"', '"document"', 'object.id'], 'famfam': 'book_go', 'permissions': [PERMISSION_EVENTS_VIEW]}
-document_acl_list = {'text': _('ACLs'), 'view': 'documents:document_acl_list', 'args': 'object.pk', 'famfam': 'lock', 'permissions': [ACLS_VIEW_ACL]}
+# Facet
+link_document_preview = Link(
+    permissions=(permission_document_view,), text=_('Preview'),
+    view='documents:document_preview', args='object.id'
+)
+link_document_properties = Link(
+    permissions=(permission_document_view,), text=_('Properties'),
+    view='documents:document_properties', args='object.id'
+)
+link_document_version_list = Link(
+    permissions=(permission_document_view,), text=_('Versions'),
+    view='documents:document_version_list', args='object.pk'
+)
+link_document_pages = Link(
+    permissions=(permission_document_view,), text=_('Pages'),
+    view='documents:document_pages', args='resolved_object.pk'
+)
 
+# Actions
+link_document_clear_transformations = Link(
+    permissions=(permission_transformation_delete,),
+    text=_('Clear transformations'),
+    view='documents:document_clear_transformations', args='object.id'
+)
+link_document_delete = Link(
+    permissions=(permission_document_delete,), tags='dangerous',
+    text=_('Delete'), view='documents:document_delete', args='object.id'
+)
+link_document_trash = Link(
+    permissions=(permission_document_trash,), tags='dangerous',
+    text=_('Move to trash'), view='documents:document_trash', args='object.id'
+)
+link_document_edit = Link(
+    permissions=(permission_document_properties_edit,),
+    text=_('Edit properties'), view='documents:document_edit',
+    args='object.id'
+)
+link_document_document_type_edit = Link(
+    permissions=(permission_document_properties_edit,), text=_('Change type'),
+    view='documents:document_document_type_edit', args='object.id'
+)
+link_document_download = Link(
+    permissions=(permission_document_download,), text=_('Download'),
+    view='documents:document_download', args='object.id'
+)
+link_document_print = Link(
+    permissions=(permission_document_print,), text=_('Print'),
+    view='documents:document_print', args='object.id'
+)
+link_document_update_page_count = Link(
+    permissions=(permission_document_tools,), text=_('Recalculate page count'),
+    view='documents:document_update_page_count', args='object.pk'
+)
+link_document_restore = Link(
+    permissions=(permission_document_restore,), text=_('Restore'),
+    view='documents:document_restore', args='object.pk'
+)
+link_document_multiple_clear_transformations = Link(
+    permissions=(permission_transformation_delete,),
+    text=_('Clear transformations'),
+    view='documents:document_multiple_clear_transformations'
+)
+link_document_multiple_trash = Link(
+    tags='dangerous', text=_('Move to trash'),
+    view='documents:document_multiple_trash'
+)
+link_document_multiple_delete = Link(
+    tags='dangerous', text=_('Delete'),
+    view='documents:document_multiple_delete'
+)
+link_document_multiple_document_type_edit = Link(
+    text=_('Change type'),
+    view='documents:document_multiple_document_type_edit'
+)
+link_document_multiple_download = Link(
+    text=_('Download'), view='documents:document_multiple_download'
+)
+link_document_multiple_update_page_count = Link(
+    text=_('Recalculate page count'),
+    view='documents:document_multiple_update_page_count'
+)
+link_document_multiple_restore = Link(
+    text=_('Restore'), view='documents:document_multiple_restore'
+)
+link_document_version_download = Link(
+    args='object.pk', permissions=(permission_document_download,),
+    text=_('Download'), view='documents:document_version_download'
+)
+
+# Views
+link_document_list = Link(
+    icon='fa fa-file', text=_('All documents'), view='documents:document_list'
+)
+link_document_list_recent = Link(
+    icon='fa fa-clock-o', text=_('Recent documents'),
+    view='documents:document_list_recent'
+)
+link_document_list_deleted = Link(
+    icon='fa fa-trash', text=_('Trash'),
+    view='documents:document_list_deleted'
+)
 
 # Tools
-document_clear_image_cache = {'text': _('Clear the document image cache'), 'view': 'documents:document_clear_image_cache', 'famfam': 'camera_delete', 'permissions': [PERMISSION_DOCUMENT_TOOLS], 'description': _('Clear the graphics representations used to speed up the documents\' display and interactive transformations results.')}
+link_clear_image_cache = Link(
+    icon='fa fa-file-image-o',
+    description=_(
+        'Clear the graphics representations used to speed up the documents\' '
+        'display and interactive transformations results.'
+    ),
+    permissions=(permission_document_tools,), text=_('Clear document cache'),
+    view='documents:document_clear_image_cache'
+)
+link_trash_can_empty = Link(
+    permissions=(permission_empty_trash,), text=_('Empty trash'),
+    view='documents:trash_can_empty'
+)
 
 # Document pages
-document_page_transformation_list = {'text': _('Page transformations'), 'class': 'no-parent-history', 'view': 'documents:document_page_transformation_list', 'args': 'page.pk', 'famfam': 'pencil_go', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
-document_page_transformation_create = {'text': _('Create new transformation'), 'class': 'no-parent-history', 'view': 'documents:document_page_transformation_create', 'args': 'page.pk', 'famfam': 'pencil_add', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
-document_page_transformation_edit = {'text': _('Edit'), 'class': 'no-parent-history', 'view': 'documents:document_page_transformation_edit', 'args': 'transformation.pk', 'famfam': 'pencil_go', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
-document_page_transformation_delete = {'text': _('Delete'), 'class': 'no-parent-history', 'view': 'documents:document_page_transformation_delete', 'args': 'transformation.pk', 'famfam': 'pencil_delete', 'permissions': [PERMISSION_DOCUMENT_TRANSFORM]}
-
-document_page_view = {'text': _('Page image'), 'class': 'no-parent-history', 'view': 'documents:document_page_view', 'args': 'page.pk', 'famfam': 'page_white_picture', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_page_text = {'text': _('Page text'), 'class': 'no-parent-history', 'view': 'documents:document_page_text', 'args': 'page.pk', 'famfam': 'page_white_text', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_page_edit = {'text': _('Edit page text'), 'class': 'no-parent-history', 'view': 'documents:document_page_edit', 'args': 'page.pk', 'famfam': 'page_white_edit', 'permissions': [PERMISSION_DOCUMENT_EDIT]}
-document_page_navigation_next = {'text': _('Next page'), 'class': 'no-parent-history', 'view': 'documents:document_page_navigation_next', 'args': 'page.pk', 'famfam': 'resultset_next', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_last_page, 'keep_query': True}
-document_page_navigation_previous = {'text': _('Previous page'), 'class': 'no-parent-history', 'view': 'documents:document_page_navigation_previous', 'args': 'page.pk', 'famfam': 'resultset_previous', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_first_page, 'keep_query': True}
-document_page_navigation_first = {'text': _('First page'), 'class': 'no-parent-history', 'view': 'documents:document_page_navigation_first', 'args': 'page.pk', 'famfam': 'resultset_first', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_first_page, 'keep_query': True}
-document_page_navigation_last = {'text': _('Last page'), 'class': 'no-parent-history', 'view': 'documents:document_page_navigation_last', 'args': 'page.pk', 'famfam': 'resultset_last', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_last_page, 'keep_query': True}
-document_page_zoom_in = {'text': _('Zoom in'), 'class': 'no-parent-history', 'view': 'documents:document_page_zoom_in', 'args': 'page.pk', 'famfam': 'zoom_in', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_max_zoom}
-document_page_zoom_out = {'text': _('Zoom out'), 'class': 'no-parent-history', 'view': 'documents:document_page_zoom_out', 'args': 'page.pk', 'famfam': 'zoom_out', 'permissions': [PERMISSION_DOCUMENT_VIEW], 'conditional_disable': is_min_zoom}
-document_page_rotate_right = {'text': _('Rotate right'), 'class': 'no-parent-history', 'view': 'documents:document_page_rotate_right', 'args': 'page.pk', 'famfam': 'arrow_turn_right', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_page_rotate_left = {'text': _('Rotate left'), 'class': 'no-parent-history', 'view': 'documents:document_page_rotate_left', 'args': 'page.pk', 'famfam': 'arrow_turn_left', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_page_view_reset = {'text': _('Reset view'), 'class': 'no-parent-history', 'view': 'documents:document_page_view_reset', 'args': 'page.pk', 'famfam': 'page_white', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
+link_document_page_navigation_first = Link(
+    conditional_disable=is_first_page, icon='fa fa-step-backward',
+    keep_query=True, permissions=(permission_document_view,),
+    text=_('First page'), view='documents:document_page_navigation_first',
+    args='resolved_object.pk'
+)
+link_document_page_navigation_last = Link(
+    conditional_disable=is_last_page, icon='fa fa-step-forward',
+    keep_query=True, text=_('Last page'),
+    permissions=(permission_document_view,),
+    view='documents:document_page_navigation_last', args='resolved_object.pk'
+)
+link_document_page_navigation_previous = Link(
+    conditional_disable=is_first_page, icon='fa fa-arrow-left',
+    keep_query=True, permissions=(permission_document_view,),
+    text=_('Previous page'),
+    view='documents:document_page_navigation_previous',
+    args='resolved_object.pk'
+)
+link_document_page_navigation_next = Link(
+    conditional_disable=is_last_page, icon='fa fa-arrow-right',
+    keep_query=True, text=_('Next page'),
+    permissions=(permission_document_view,),
+    view='documents:document_page_navigation_next', args='resolved_object.pk'
+)
+link_document_page_return = Link(
+    icon='fa fa-file', permissions=(permission_document_view,),
+    text=_('Document'), view='documents:document_preview',
+    args='resolved_object.document.pk'
+)
+link_document_page_rotate_left = Link(
+    icon='fa fa-rotate-left', permissions=(permission_document_view,),
+    text=_('Rotate left'), view='documents:document_page_rotate_left',
+    args='resolved_object.pk'
+)
+link_document_page_rotate_right = Link(
+    icon='fa fa-rotate-right', permissions=(permission_document_view,),
+    text=_('Rotate right'), view='documents:document_page_rotate_right',
+    args='resolved_object.pk'
+)
+link_document_page_view = Link(
+    permissions=(permission_document_view,), text=_('Page image'),
+    view='documents:document_page_view', args='resolved_object.pk'
+)
+link_document_page_view_reset = Link(
+    permissions=(permission_document_view,), text=_('Reset view'),
+    view='documents:document_page_view_reset', args='resolved_object.pk'
+)
+link_document_page_zoom_in = Link(
+    conditional_disable=is_max_zoom, icon='fa fa-search-plus',
+    permissions=(permission_document_view,), text=_('Zoom in'),
+    view='documents:document_page_zoom_in', args='resolved_object.pk'
+)
+link_document_page_zoom_out = Link(
+    conditional_disable=is_min_zoom, icon='fa fa-search-minus',
+    permissions=(permission_document_view,), text=_('Zoom out'),
+    view='documents:document_page_zoom_out', args='resolved_object.pk'
+)
 
 # Document versions
-document_version_list = {'text': _('Versions'), 'view': 'documents:document_version_list', 'args': 'object.pk', 'famfam': 'page_world', 'permissions': [PERMISSION_DOCUMENT_VIEW]}
-document_version_revert = {'text': _('Revert'), 'view': 'documents:document_version_revert', 'args': 'object.pk', 'famfam': 'page_refresh', 'permissions': [PERMISSION_DOCUMENT_VERSION_REVERT], 'conditional_disable': is_current_version}
+link_document_version_revert = Link(
+    condition=is_not_current_version,
+    permissions=(permission_document_version_revert,), tags='dangerous',
+    text=_('Revert'), view='documents:document_version_revert',
+    args='object.pk'
+)
 
 # Document type related links
-document_type_list = {'text': _('Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
-document_type_setup = {'text': _('Document types'), 'view': 'documents:document_type_list', 'famfam': 'layout', 'icon': 'main/icons/layout.png', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
-document_type_edit = {'text': _('Edit'), 'view': 'documents:document_type_edit', 'args': 'document_type.id', 'famfam': 'layout_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-document_type_delete = {'text': _('Delete'), 'view': 'documents:document_type_delete', 'args': 'document_type.id', 'famfam': 'layout_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_DELETE]}
-document_type_create = {'text': _('Create document type'), 'view': 'documents:document_type_create', 'famfam': 'layout_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_CREATE]}
-
-document_type_filename_list = {'text': _('Filenames'), 'view': 'documents:document_type_filename_list', 'args': 'document_type.id', 'famfam': 'database', 'permissions': [PERMISSION_DOCUMENT_TYPE_VIEW]}
-document_type_filename_create = {'text': _('Add filename to document type'), 'view': 'documents:document_type_filename_create', 'args': 'document_type.id', 'famfam': 'database_add', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-document_type_filename_edit = {'text': _('Edit'), 'view': 'documents:document_type_filename_edit', 'args': 'filename.id', 'famfam': 'database_edit', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
-document_type_filename_delete = {'text': _('Delete'), 'view': 'documents:document_type_filename_delete', 'args': 'filename.id', 'famfam': 'database_delete', 'permissions': [PERMISSION_DOCUMENT_TYPE_EDIT]}
+link_document_type_create = Link(
+    permissions=(permission_document_type_create,),
+    text=_('Create document type'), view='documents:document_type_create'
+)
+link_document_type_delete = Link(
+    permissions=(permission_document_type_delete,), tags='dangerous',
+    text=_('Delete'), view='documents:document_type_delete',
+    args='resolved_object.id'
+)
+link_document_type_edit = Link(
+    permissions=(permission_document_type_edit,), text=_('Edit'),
+    view='documents:document_type_edit', args='resolved_object.id'
+)
+link_document_type_filename_create = Link(
+    permissions=(permission_document_type_edit,),
+    text=_('Add quick label to document type'),
+    view='documents:document_type_filename_create', args='document_type.id'
+)
+link_document_type_filename_delete = Link(
+    permissions=(permission_document_type_edit,), tags='dangerous',
+    text=_('Delete'), view='documents:document_type_filename_delete',
+    args='resolved_object.id'
+)
+link_document_type_filename_edit = Link(
+    permissions=(permission_document_type_edit,), text=_('Edit'),
+    view='documents:document_type_filename_edit', args='resolved_object.id'
+)
+link_document_type_filename_list = Link(
+    permissions=(permission_document_type_view,), text=_('Quick labels'),
+    view='documents:document_type_filename_list', args='resolved_object.id'
+)
+link_document_type_list = Link(
+    permissions=(permission_document_type_view,), text=_('Document types'),
+    view='documents:document_type_list'
+)
+link_document_type_setup = Link(
+    icon='fa fa-file', permissions=(permission_document_type_view,),
+    text=_('Document types'), view='documents:document_type_list'
+)

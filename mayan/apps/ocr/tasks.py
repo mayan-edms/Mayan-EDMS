@@ -5,20 +5,22 @@ import sys
 import traceback
 
 from django.conf import settings
+from django.db import OperationalError
 
 from documents.models import DocumentVersion
 from lock_manager import Lock, LockError
 from mayan.celery import app
 
-from .api import do_document_ocr
-from .literals import LOCK_EXPIRE
+from .classes import TextExtractor
+from .literals import DO_OCR_RETRY_DELAY, LOCK_EXPIRE
 from .models import DocumentVersionOCRError
+from .signals import post_document_version_ocr
 
 logger = logging.getLogger(__name__)
 
 
-@app.task(ignore_result=True)
-def task_do_ocr(document_version_pk):
+@app.task(bind=True, default_retry_delay=DO_OCR_RETRY_DELAY, ignore_result=True)
+def task_do_ocr(self, document_version_pk):
     lock_id = 'task_do_ocr_doc_version-%d' % document_version_pk
     try:
         logger.debug('trying to acquire lock: %s', lock_id)
@@ -28,13 +30,27 @@ def task_do_ocr(document_version_pk):
         logger.debug('acquired lock: %s', lock_id)
         document_version = None
         try:
-            logger.info('Starting document OCR for document version: %d', document_version_pk)
             document_version = DocumentVersion.objects.get(pk=document_version_pk)
-            do_document_ocr(document_version)
+            logger.info(
+                'Starting document OCR for document version: %s',
+                document_version
+            )
+            TextExtractor.process_document_version(document_version)
+        except OperationalError as exception:
+            logger.warning(
+                'OCR error for document version: %d; %s. Retrying.',
+                document_version_pk, exception
+            )
+            raise self.retry(exc=exception)
         except Exception as exception:
-            logger.error('OCR error for document version: %d; %s', document_version_pk, exception)
+            logger.error(
+                'OCR error for document version: %d; %s', document_version_pk,
+                exception
+            )
             if document_version:
-                entry, created = DocumentVersionOCRError.objects.get_or_create(document_version=document_version)
+                entry, created = DocumentVersionOCRError.objects.get_or_create(
+                    document_version=document_version
+                )
 
                 if settings.DEBUG:
                     result = []
@@ -47,15 +63,22 @@ def task_do_ocr(document_version_pk):
 
                 entry.save()
         else:
-            logger.info('OCR for document: %d ended', document_version_pk)
+            logger.info(
+                'OCR complete for document version: %s', document_version
+            )
             try:
-                entry = DocumentVersionOCRError.objects.get(document_version=document_version)
+                entry = DocumentVersionOCRError.objects.get(
+                    document_version=document_version
+                )
             except DocumentVersionOCRError.DoesNotExist:
                 pass
             else:
                 entry.delete()
+
+            post_document_version_ocr.send(
+                sender=self, instance=document_version
+            )
         finally:
             lock.release()
     except LockError:
         logger.debug('unable to obtain lock: %s' % lock_id)
-        pass

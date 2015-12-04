@@ -2,11 +2,19 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from permissions.models import PermissionNamespace, Permission
+from permissions import PermissionNamespace
 
-linking_namespace = PermissionNamespace('linking', _('Smart links'))
+namespace = PermissionNamespace('linking', _('Smart links'))
 
-PERMISSION_SMART_LINK_VIEW = Permission.objects.register(linking_namespace, 'smart_link_view', _('View existing smart links'))
-PERMISSION_SMART_LINK_CREATE = Permission.objects.register(linking_namespace, 'smart_link_create', _('Create new smart links'))
-PERMISSION_SMART_LINK_DELETE = Permission.objects.register(linking_namespace, 'smart_link_delete', _('Delete smart links'))
-PERMISSION_SMART_LINK_EDIT = Permission.objects.register(linking_namespace, 'smart_link_edit', _('Edit smart links'))
+permission_smart_link_view = namespace.add_permission(
+    name='smart_link_view', label=_('View existing smart links')
+)
+permission_smart_link_create = namespace.add_permission(
+    name='smart_link_create', label=_('Create new smart links')
+)
+permission_smart_link_delete = namespace.add_permission(
+    name='smart_link_delete', label=_('Delete smart links')
+)
+permission_smart_link_edit = namespace.add_permission(
+    name='smart_link_edit', label=_('Edit smart links')
+)

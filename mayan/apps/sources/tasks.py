@@ -2,12 +2,16 @@ import logging
 
 from django.contrib.auth.models import User
 from django.core.files import File
+from django.db import OperationalError
+from django.utils.translation import ugettext_lazy as _
 
 from mayan.celery import app
 
+from common.compressed_files import CompressedFile, NotACompressedFile
 from common.models import SharedUploadedFile
 from documents.models import DocumentType
 
+from .literals import DEFAULT_SOURCE_TASK_RETRY_DELAY
 from .models import Source
 
 logger = logging.getLogger(__name__)
@@ -17,31 +21,137 @@ logger = logging.getLogger(__name__)
 def task_check_interval_source(source_id):
     source = Source.objects.get_subclass(pk=source_id)
     if source.enabled:
-        source.check_source()
+        try:
+            source.check_source()
+        except Exception as exception:
+            logger.error('Error processing source: %s; %s', source, exception)
+            source.logs.create(
+                message=_('Error processing source: %s') % exception
+            )
+        else:
+            source.logs.all().delete()
 
 
-@app.task(ignore_result=True)
-def task_source_upload_document(label, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, language=None, metadata_dict_list=None, user_id=None):
-    shared_uploaded_file = SharedUploadedFile.objects.get(pk=shared_uploaded_file_id)
-    source = Source.objects.get_subclass(pk=source_id)
-    document_type = DocumentType.objects.get(pk=document_type_id)
+@app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
+def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, metadata_dict_list=None, user_id=None):
+    try:
+        document_type = DocumentType.objects.get(pk=document_type_id)
+        source = Source.objects.get_subclass(pk=source_id)
+        shared_upload = SharedUploadedFile.objects.get(
+            pk=shared_uploaded_file_id
+        )
 
-    if user_id:
-        user = User.objects.get(pk=user_id)
+        if user_id:
+            user = User.objects.get(pk=user_id)
+        else:
+            user = None
+
+        with shared_upload.open() as file_object:
+            source.upload_document(
+                file_object=file_object, document_type=document_type,
+                description=description, label=label, language=language,
+                metadata_dict_list=metadata_dict_list, user=user
+            )
+
+    except OperationalError as exception:
+        logger.warning(
+            'Operational exception while trying to create new document "%s" '
+            'from source id %d; %s. Retying.',
+            label or shared_upload.filename, source_id, exception
+        )
+        raise self.retry(exc=exception)
     else:
-        user = None
+        try:
+            shared_upload.delete()
+        except OperationalError as exception:
+            logger.warning(
+                'Operational error during attempt to delete shared upload '
+                'file: %s; %s. Retrying.', shared_upload, exception
+            )
 
-    with File(file=shared_uploaded_file.file) as file_object:
-        source.upload_document(description=description, document_type=document_type, expand=expand, file_object=file_object, label=label, language=language, metadata_dict_list=metadata_dict_list, user=user)
 
-    shared_uploaded_file.delete()
+@app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
+def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, label=None, language=None, metadata_dict_list=None, skip_list=None, user_id=None):
+    try:
+        document_type = DocumentType.objects.get(pk=document_type_id)
+        shared_upload = SharedUploadedFile.objects.get(
+            pk=shared_uploaded_file_id
+        )
 
-    # TODO: Report/record how was file uploaded
-    #    if result['is_compressed'] is None:
-    #        messages.success(request, _('File uploaded successfully.'))
+        if not label:
+            label = shared_upload.filename
 
-    #    if result['is_compressed'] is True:
-    #        messages.success(request, _('File uncompressed successfully and uploaded as individual files.'))
+    except OperationalError as exception:
+        logger.warning(
+            'Operational error during attempt to load data to handle source '
+            'upload: %s. Retrying.', exception
+        )
+        raise self.retry(exc=exception)
 
-    #    if result['is_compressed'] is False:
-    #        messages.warning(request, _('File was not a compressed file, uploaded as it was.'))
+    kwargs = {
+        'description': description, 'document_type_id': document_type.pk,
+        'label': label, 'language': language,
+        'metadata_dict_list': metadata_dict_list,
+        'source_id': source_id, 'user_id': user_id
+    }
+
+    if not skip_list:
+        skip_list = []
+
+    with shared_upload.open() as file_object:
+        if expand:
+            try:
+                compressed_file = CompressedFile(file_object)
+                for compressed_file_child in compressed_file.children():
+                    # TODO: find way to uniquely identify child files
+                    # Use filename in the mean time.
+                    if unicode(compressed_file_child) not in skip_list:
+                        kwargs.update({'label': unicode(compressed_file_child)})
+
+                        try:
+                            child_shared_uploaded_file = SharedUploadedFile.objects.create(
+                                file=File(compressed_file_child)
+                            )
+                        except OperationalError as exception:
+                            logger.warning(
+                                'Operational error while preparing to upload '
+                                'child document: %s. Rescheduling.', exception
+                            )
+
+                            task_source_handle_upload.delay(
+                                document_type_id=document_type_id,
+                                shared_uploaded_file_id=shared_uploaded_file_id,
+                                source_id=source_id, description=description,
+                                expand=expand, label=label,
+                                language=language,
+                                metadata_dict_list=metadata_dict_list,
+                                skip_list=skip_list, user_id=user_id
+                            )
+                            return
+                        else:
+                            skip_list.append(unicode(compressed_file_child))
+                            task_upload_document.delay(
+                                shared_uploaded_file_id=child_shared_uploaded_file.pk,
+                                **kwargs
+                            )
+                        finally:
+                            compressed_file_child.close()
+
+                    compressed_file_child.close()
+                try:
+                    shared_upload.delete()
+                except OperationalError as exception:
+                    logger.warning(
+                        'Operational error during attempt to delete shared '
+                        'upload file: %s; %s. Retrying.', shared_upload,
+                        exception
+                    )
+            except NotACompressedFile:
+                logging.debug('Exception: NotACompressedFile')
+                task_upload_document.delay(
+                    shared_uploaded_file_id=shared_upload.pk, **kwargs
+                )
+        else:
+            task_upload_document.delay(
+                shared_uploaded_file_id=shared_upload.pk, **kwargs
+            )

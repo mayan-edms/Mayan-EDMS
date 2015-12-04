@@ -6,174 +6,166 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
-from documents.models import Document, DocumentVersion
-from permissions.models import Permission
+from acls.models import AccessControlList
+from common.generics import (
+    ConfirmView, FormView, SingleObjectEditView, SingleObjectListView
+)
+from common.mixins import MultipleInstanceActionMixin
+from documents.models import Document, DocumentType
+from permissions import Permission
 
-from .api import clean_pages
+from .forms import DocumentContentForm, DocumentTypeSelectForm
 from .models import DocumentVersionOCRError
 from .permissions import (
-    PERMISSION_OCR_CLEAN_ALL_PAGES, PERMISSION_OCR_DOCUMENT,
-    PERMISSION_OCR_DOCUMENT_DELETE
+    permission_ocr_content_view, permission_ocr_document,
+    permission_document_type_ocr_setup
 )
 
 
-def document_submit(request, pk):
-    document = get_object_or_404(Document, pk=pk)
+class DocumentAllSubmitView(ConfirmView):
+    extra_context = {'title': _('Submit all documents for OCR?')}
+
+    def get_post_action_redirect(self):
+        return reverse('common:tools_list')
+
+    def view_action(self):
+        count = 0
+        for document in Document.objects.all():
+            document.submit_for_ocr()
+            count += 1
+
+        messages.success(
+            self.request, _('%d documents added to the OCR queue.') % count
+        )
+
+
+class DocumentSubmitView(ConfirmView):
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Submit "%s" to the OCR queue?') % self.get_object()
+        }
+
+    def get_object(self):
+        return Document.objects.get(pk=self.kwargs['pk'])
+
+    def object_action(self, instance):
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_ocr_document,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_ocr_document, self.request.user, instance
+            )
+
+        instance.submit_for_ocr()
+
+    def view_action(self):
+        instance = self.get_object()
+
+        self.object_action(instance=instance)
+
+        messages.success(
+            self.request,
+            _('Document: %(document)s was added to the OCR queue.') % {
+                'document': instance
+            }
+        )
+
+
+class DocumentSubmitManyView(MultipleInstanceActionMixin, DocumentSubmitView):
+    model = Document
+    success_message = '%(count)d document submitted to the OCR queue.'
+    success_message_plural = '%(count)d documents submitted to the OCR queue.'
+
+    def get_extra_context(self):
+        # Override the base class method
+        return {
+            'title': _('Submit the selected documents to the OCR queue?')
+        }
+
+
+class DocumentTypeSubmitView(FormView):
+    form_class = DocumentTypeSelectForm
+    extra_context = {
+        'title': _('Submit all documents of a type for OCR')
+    }
+
+    def get_post_action_redirect(self):
+        return reverse('common:tools_list')
+
+    def form_valid(self, form):
+        count = 0
+        print form.cleaned_data
+        for document in form.cleaned_data['document_type'].documents.all():
+            document.submit_for_ocr()
+            count += 1
+
+        messages.success(
+            self.request, _(
+                '%(count)d documents of type "%(document_type)s" added to the '
+                'OCR queue.'
+            ) % {
+                'count': count,
+                'document_type': form.cleaned_data['document_type']
+            }
+        )
+
+        return HttpResponseRedirect(self.get_success_url())
+
+
+class DocumentTypeSettingsEditView(SingleObjectEditView):
+    fields = ('auto_ocr',)
+    view_permission = permission_document_type_ocr_setup
+
+    def get_object(self, queryset=None):
+        return get_object_or_404(
+            DocumentType, pk=self.kwargs['pk']
+        ).ocr_settings
+
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Edit OCR settings for document type: %s'
+            ) % self.get_object().document_type
+        }
+
+
+def document_content(request, document_id):
+    document = get_object_or_404(Document, pk=document_id)
 
     try:
-        Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
+        Permission.check_permissions(
+            request.user, (permission_ocr_content_view,)
+        )
     except PermissionDenied:
-        AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document)
+        AccessControlList.objects.check_access(
+            permission_ocr_content_view, request.user, document
+        )
 
-    document.submit_for_ocr()
-    messages.success(request, _('Document: %(document)s was added to the OCR queue.') % {
-        'document': document}
-    )
+    document.add_as_recent_document_for_user(request.user)
 
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
+    content_form = DocumentContentForm(document=document)
 
-
-def document_submit_multiple(request):
-    for item_id in request.GET.get('id_list', '').split(','):
-        document_submit(request, item_id)
-
-    return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
-
-
-def document_all_ocr_cleanup(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_CLEAN_ALL_PAGES])
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-
-    if request.method != 'POST':
-        return render_to_response('main/generic_confirm.html', {
-            'previous': previous,
-            'next': next,
-            'title': _('Are you sure you wish to clean up all the pages content?'),
-            'message': _('On large databases this operation may take some time to execute.'),
-        }, context_instance=RequestContext(request))
-    else:
-        try:
-            # TODO: turn this into a Celery task
-            clean_pages()
-            messages.success(request, _('Document pages content clean up complete.'))
-        except Exception as exception:
-            messages.error(request, _('Document pages content clean up error: %s') % exception)
-
-        return HttpResponseRedirect(next)
+    return render_to_response('appearance/generic_form.html', {
+        'document': document,
+        'form': content_form,
+        'hide_labels': True,
+        'object': document,
+        'read_only': True,
+        'title': _('OCR result for document: %s') % document,
+    }, context_instance=RequestContext(request))
 
 
-def entry_list(request):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
-
-    context = {
-        'object_list': DocumentVersionOCRError.objects.all(),
-        'title': _('OCR errors'),
+class EntryListView(SingleObjectListView):
+    extra_context = {
         'hide_object': True,
+        'title': _('OCR errors'),
     }
+    view_permission = permission_ocr_document
 
-    return render_to_response('main/generic_list.html', context,
-                              context_instance=RequestContext(request))
-
-
-def entry_delete(request, pk=None, pk_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT_DELETE])
-
-    if pk:
-        entries = [get_object_or_404(DocumentVersionOCRError, pk=pk)]
-    elif pk_list:
-        entries = [get_object_or_404(DocumentVersionOCRError, pk=pk) for pk in pk_list.split(',')]
-    else:
-        messages.error(request, _('Make at least one selection.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    if request.method == 'POST':
-        for entry in entries:
-            try:
-                entry.delete()
-                messages.success(request, _('Entry: %(entry)s deleted successfully.') % {
-                    'entry': entry})
-
-            except Exception as exception:
-                messages.error(request, _('Error entry: %(entry)s; %(error)s') % {
-                    'entry': entry, 'error': exception})
-        return HttpResponseRedirect(next)
-
-    context = {
-        'next': next,
-        'previous': previous,
-        'delete_view': True,
-    }
-
-    if len(entries) == 1:
-        context['object'] = entries[0]
-
-    context['title'] = ungettext(
-        'Are you sure you wish to delete the selected entry?',
-        'Are you sure you wish to delete the selected entries?',
-        len(entries)
-    )
-
-    return render_to_response('main/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
-
-
-def entry_delete_multiple(request):
-    return entry_delete(request, pk_list=request.GET.get('id_list', ''))
-
-
-def entry_re_queue(request, pk=None, pk_list=None):
-    Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
-
-    if pk:
-        entries = [get_object_or_404(DocumentVersionOCRError, pk=pk)]
-    elif pk_list:
-        entries = [get_object_or_404(DocumentVersionOCRError, pk=pk) for pk in pk_list.split(',')]
-    else:
-        messages.error(request, _('Make at least one selection.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse('main:home')))
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', None)))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', None)))
-
-    if request.method == 'POST':
-        for entry in entries:
-            try:
-                entry.document_version.submit_for_ocr()
-                messages.success(
-                    request,
-                    _('Entry: %(entry)s was re-queued for OCR.') % {
-                        'entry': entry
-                    }
-                )
-            except DocumentVersion.DoesNotExist:
-                messages.error(request, _('Document version id#: %d, no longer exists.') % entry.document_version_id)
-        return HttpResponseRedirect(next)
-
-    context = {
-        'next': next,
-        'previous': previous,
-    }
-
-    if len(entries) == 1:
-        context['object'] = entries[0]
-
-    context['title'] = ungettext(
-        'Are you sure you wish to re-queue the selected entry?',
-        'Are you sure you wish to re-queue the selected entries?',
-        len(entries)
-    )
-
-    return render_to_response('main/generic_confirm.html', context,
-                              context_instance=RequestContext(request))
-
-
-def entry_re_queue_multiple(request):
-    return entry_re_queue(request, pk_list=request.GET.get('id_list', []))
+    def get_queryset(self):
+        return DocumentVersionOCRError.objects.all()

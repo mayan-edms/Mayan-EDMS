@@ -1,0 +1,105 @@
+{% extends 'appearance/base.html' %}
+
+{% load i18n %}
+{% load static %}
+
+{% load common_tags %}
+
+{% block title %}{% trans 'About' %}{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        @font-face {
+            font-family: 'mayan-edms';
+            src: url("{% static 'appearance/fonts/mayan-edms.ttf' %}") format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        [class^="icon-"], [class*=" icon-"] {
+            font-family: 'mayan-edms';
+            speak: none;
+            font-style: normal;
+            font-weight: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .icon-mayan-edms-logo:before {
+            content: "\e600";
+            font-size: 150%;
+        }
+
+        .mayan-edms-logo {
+            font-family: 'IM Fell English SC', serif;
+            font-size: 150%;
+            text-shadow: 5px 5px 1px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (min-width: 768px) {
+            .mayan-edms-logo {
+                font-size: 300%;
+            }
+        }
+
+        @media (min-width: 991px) {
+            .mayan-edms-logo {
+                font-size: 500%;
+            }
+        }
+    </style>
+{% endblock stylesheets %}
+
+{% block content %}
+    <h3>{% trans 'About' %}</h3>
+    <hr>
+
+    {% build as build_number %}
+    <div class="well">
+        <h3 class="text-center">{% project_name %} ({% trans 'Version' %} {% project_version %})</h3>
+        {% if build_number %}
+            <p class='text-center'>{% blocktrans with build_number as build_number %}Build number: {{ build_number }}{% endblocktrans %}</p>
+        {% endif %}
+        <p class="text-center">
+            {% project_description as project_description %}
+            {% trans project_description %}
+        </p>
+
+        <p class="text-center">
+            <i class="fa fa-link"></i><a href="{% project_website %}"> {% project_website %}</a>
+        </p>
+
+        <p class="text-center">
+            <i class="fa fa-book"></i> <a href="http://readthedocs.org/docs/mayan/en/latest/"> http://mayan.readthedocs.org/</a>
+        </p>
+
+        <p class="text-center">
+            <i class="fa fa-wrench"></i> <a href="https://github.com/mayan-edms/mayan-edms/"> https://github.com/mayan-edms/mayan-edms/</a>
+        </p>
+
+        <p class="text-center">
+            <i class="fa fa-bug"></i> <a href="https://github.com/mayan-edms/mayan-edms/issues"> https://github.com/mayan-edms/mayan-edms/issues</a>
+        </p>
+
+        <p class="text-center">
+            {% trans 'Released under the Apache 2.0 License' %}
+        </p>
+
+        <p class="text-center mayan-edms-logo">Mayan <span class="icon-mayan-edms-logo"></span> EDMS</p>
+    </div>
+{% endblock %}
+
+{% block footer %}
+    <div id="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    {% trans 'Copyright &copy; 2011-2015 Roberto Rosario.' %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

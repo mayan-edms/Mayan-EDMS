@@ -2,13 +2,25 @@ from __future__ import absolute_import, unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from .models import Permission, PermissionNamespace
+from . import PermissionNamespace
 
-permissions_namespace = PermissionNamespace('permissions', _('Permissions'))
+namespace = PermissionNamespace('permissions', _('Permissions'))
 
-PERMISSION_ROLE_VIEW = Permission.objects.register(permissions_namespace, 'role_view', _('View roles'))
-PERMISSION_ROLE_EDIT = Permission.objects.register(permissions_namespace, 'role_edit', _('Edit roles'))
-PERMISSION_ROLE_CREATE = Permission.objects.register(permissions_namespace, 'role_create', _('Create roles'))
-PERMISSION_ROLE_DELETE = Permission.objects.register(permissions_namespace, 'role_delete', _('Delete roles'))
-PERMISSION_PERMISSION_GRANT = Permission.objects.register(permissions_namespace, 'permission_grant', _('Grant permissions'))
-PERMISSION_PERMISSION_REVOKE = Permission.objects.register(permissions_namespace, 'permission_revoke', _('Revoke permissions'))
+permission_role_view = namespace.add_permission(
+    name='role_view', label=_('View roles')
+)
+permission_role_edit = namespace.add_permission(
+    name='role_edit', label=_('Edit roles')
+)
+permission_role_create = namespace.add_permission(
+    name='role_create', label=_('Create roles')
+)
+permission_role_delete = namespace.add_permission(
+    name='role_delete', label=_('Delete roles')
+)
+permission_permission_grant = namespace.add_permission(
+    name='permission_grant', label=_('Grant permissions')
+)
+permission_permission_revoke = namespace.add_permission(
+    name='permission_revoke', label=_('Revoke permissions')
+)

@@ -8,5 +8,7 @@ class AjaxRedirect(object):
     def process_response(self, request, response):
         if request.is_ajax():
             if type(response) == HttpResponseRedirect:
-                response.status_code = getattr(settings, 'AJAX_REDIRECT_CODE', 302)
+                response.status_code = getattr(
+                    settings, 'AJAX_REDIRECT_CODE', 302
+                )
         return response

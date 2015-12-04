@@ -2,9 +2,24 @@ from __future__ import unicode_literals
 
 from django.conf.urls import patterns, url
 
+from .views import (
+    NamespaceDetailView, NamespaceListView, StatisticDetailView,
+    StatisticQueueView
+)
+
 urlpatterns = patterns(
     'statistics.views',
-    url(r'^$', 'namespace_list', name='namespace_list'),
-    url(r'^namespace/(?P<namespace_id>\w+)/details/$', 'namespace_details', name='namespace_details'),
-    url(r'^(?P<statistic_id>\w+)/execute/$', 'execute', name='execute'),
+    url(r'^$', NamespaceListView.as_view(), name='namespace_list'),
+    url(
+        r'^namespace/(?P<slug>[\w-]+)/details/$',
+        NamespaceDetailView.as_view(), name='namespace_details'
+    ),
+    url(
+        r'^(?P<slug>[\w-]+)/view/$', StatisticDetailView.as_view(),
+        name='statistic_detail'
+    ),
+    url(
+        r'^(?P<slug>[\w-]+)/queue/$', StatisticQueueView.as_view(),
+        name='statistic_queue'
+    ),
 )

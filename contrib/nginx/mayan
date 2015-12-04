@@ -1,0 +1,22 @@
+server {
+    listen 80;
+    server_name localhost;
+
+    location / {
+        include uwsgi_params;
+        uwsgi_pass unix:/usr/share/mayan-edms/uwsgi.sock;
+
+        client_max_body_size 30M;  # Increse if your plan to upload bigger documents
+        proxy_read_timeout 30s;  # Increase if your document uploads take more than 30 seconds
+    }
+
+    location /static {
+        alias /usr/share/mayan-edms/mayan/media/static;
+        expires 1h;
+    }
+
+    location /favicon.ico {
+        alias /usr/share/mayan-edms/mayan/media/static/appearance/images/favicon.ico;
+        expires 1h;
+    }
+}

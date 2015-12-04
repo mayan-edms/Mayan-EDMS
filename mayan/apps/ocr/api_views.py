@@ -1,49 +1,97 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
-from django.shortcuts import get_object_or_404
-
 from rest_framework import generics, status
 from rest_framework.response import Response
-from rest_framework.settings import api_settings
 
-from acls.models import AccessEntry
-from documents.models import DocumentVersion
-from permissions.models import Permission
+from documents.models import Document, DocumentPage, DocumentVersion
 from rest_api.permissions import MayanPermission
 
-from .permissions import PERMISSION_OCR_DOCUMENT
-from .serializers import DocumentVersionOCRSerializer
+from .models import DocumentPageContent
+from .permissions import permission_ocr_content_view, permission_ocr_document
+from .serializers import DocumentPageContentSerializer
 
 
-class DocumentVersionOCRView(generics.GenericAPIView):
-    serializer_class = DocumentVersionOCRSerializer
-
+class APIDocumentOCRView(generics.GenericAPIView):
+    mayan_object_permissions = {
+        'POST': (permission_ocr_document,)
+    }
     permission_classes = (MayanPermission,)
+    queryset = Document.objects.all()
+
+    def get_serializer_class(self):
+        return None
 
     def post(self, request, *args, **kwargs):
-        """Submit document version for OCR."""
+        """
+        Submit a document for OCR.
+        ---
+        omit_serializer: true
+        parameters:
+            - name: pk
+              paramType: path
+              type: number
+        responseMessages:
+            - code: 202
+              message: Accepted
+        """
 
-        serializer = self.get_serializer(data=request.DATA, files=request.FILES)
+        self.get_object().submit_for_ocr()
+        return Response(status=status.HTTP_202_ACCEPTED)
 
-        if serializer.is_valid():
-            document_version = get_object_or_404(DocumentVersion, pk=serializer.data['document_version_id'])
 
-            try:
-                Permission.objects.check_permissions(request.user, [PERMISSION_OCR_DOCUMENT])
-            except PermissionDenied:
-                AccessEntry.objects.check_access(PERMISSION_OCR_DOCUMENT, request.user, document_version.document)
+class APIDocumentVersionOCRView(generics.GenericAPIView):
+    mayan_object_permissions = {
+        'POST': (permission_ocr_document,)
+    }
+    permission_classes = (MayanPermission,)
+    queryset = DocumentVersion.objects.all()
 
-            document_version.submit_for_ocr()
+    def get_serializer_class(self):
+        return None
 
-            headers = self.get_success_headers(serializer.data)
-            return Response(serializer.data, status=status.HTTP_202_ACCEPTED,
-                            headers=headers)
+    def post(self, request, *args, **kwargs):
+        """
+        Submit a document version for OCR.
+        ---
+        omit_serializer: true
+        parameters:
+            - name: pk
+              paramType: path
+              type: number
+        responseMessages:
+            - code: 202
+              message: Accepted
+        """
 
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        self.get_object().submit_for_ocr()
+        return Response(status=status.HTTP_202_ACCEPTED)
 
-    def get_success_headers(self, data):
+
+class APIDocumentPageContentView(generics.RetrieveAPIView):
+    """
+    Returns the OCR content of the selected document page.
+    ---
+    GET:
+        parameters:
+            - name: pk
+              paramType: path
+              type: number
+    """
+
+    mayan_object_permissions = {
+        'GET': (permission_ocr_content_view,),
+    }
+    permission_classes = (MayanPermission,)
+    serializer_class = DocumentPageContentSerializer
+    queryset = DocumentPage.objects.all()
+
+    def retrieve(self, request, *args, **kwargs):
+        instance = self.get_object()
+
         try:
-            return {'Location': data[api_settings.URL_FIELD_NAME]}
-        except (TypeError, KeyError):
-            return {}
+            ocr_content = instance.ocr_content
+        except DocumentPageContent.DoesNotExist:
+            ocr_content = DocumentPageContent.objects.none()
+
+        serializer = self.get_serializer(ocr_content)
+        return Response(serializer.data)

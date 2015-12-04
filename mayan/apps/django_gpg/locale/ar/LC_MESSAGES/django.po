@@ -9,18 +9,55 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:00-0400\n"
-"PO-Revision-Date: 2015-01-27 20:01+0000\n"
+"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"PO-Revision-Date: 2015-08-24 04:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/projects/p/mayan-edms/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: ar\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: api.py:94
+#: api.py:100
 msgid "Unknown"
+msgstr ""
+
+#: apps.py:21
+msgid "Django GPG"
+msgstr ""
+
+#: apps.py:54 apps.py:61
+msgid "ID"
+msgstr "ID"
+
+#: apps.py:56
+msgid "Owner"
+msgstr "Owner"
+
+#: apps.py:64
+msgid "Type"
+msgstr ""
+
+#: apps.py:66
+msgid "Creation date"
+msgstr ""
+
+#: apps.py:72
+msgid "Expiration date"
+msgstr ""
+
+#: apps.py:73
+msgid "No expiration"
+msgstr ""
+
+#: apps.py:75
+msgid "Length"
+msgstr ""
+
+#: apps.py:77
+#| msgid "Identifies"
+msgid "Identities"
 msgstr ""
 
 #: forms.py:9
@@ -31,27 +68,27 @@ msgstr "Term"
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Name, e-mail, key ID or key fingerprint to look for."
 
-#: links.py:10 views.py:68
+#: links.py:14 views.py:81
 msgid "Private keys"
 msgstr ""
 
-#: links.py:11 views.py:71
+#: links.py:18 views.py:76
 msgid "Public keys"
 msgstr ""
 
-#: links.py:12
+#: links.py:21
 msgid "Delete"
 msgstr ""
 
-#: links.py:13 permissions.py:11
+#: links.py:26 permissions.py:16
 msgid "Query keyservers"
 msgstr "Query keyservers"
 
-#: links.py:14
+#: links.py:30
 msgid "Import"
 msgstr ""
 
-#: links.py:15 permissions.py:7
+#: links.py:35 permissions.py:7
 msgid "Key management"
 msgstr "Key management"
 
@@ -87,129 +124,119 @@ msgstr "Document not signed or invalid signature."
 msgid "Signature error."
 msgstr "Signature error."
 
-#: literals.py:44
+#: literals.py:45
 msgid "Document is signed but no public key is available for verification."
 msgstr "Document is signed but no public key is available for verification."
 
-#: literals.py:47
+#: literals.py:50
 msgid "Document is signed, and signature is good."
 msgstr "Document is signed, and signature is good."
 
-#: literals.py:50
+#: literals.py:53
 msgid "Document is signed with a valid signature."
 msgstr "Document is signed with a valid signature."
 
-#: permissions.py:9
+#: permissions.py:10
 msgid "View keys"
 msgstr "View keys"
 
-#: permissions.py:10
+#: permissions.py:13
 msgid "Delete keys"
 msgstr "Delete keys"
 
-#: permissions.py:12
+#: permissions.py:19
 msgid "Import keys from keyservers"
 msgstr "Import keys from keyservers"
 
-#: settings.py:14
+#: settings.py:10
+#| msgid "Signature error."
+msgid "Signatures"
+msgstr ""
+
+#: settings.py:13
 msgid "List of keyservers to be queried for unknown keys."
 msgstr "List of keyservers to be queried for unknown keys."
 
-#: settings.py:15
+#: settings.py:19
 msgid "Home directory used to store keys as well as configuration files."
 msgstr "Home directory used to store keys as well as configuration files."
 
-#: settings.py:16
+#: settings.py:25
 msgid "Path to the GPG binary."
 msgstr ""
 
-#: views.py:40
+#: views.py:38
 #, python-format
-msgid "Key: %s, imported successfully."
-msgstr "Key: %s, imported successfully."
+#| msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgid "Unable to import key: %(key_id)s; %(error)s"
+msgstr ""
 
-#: views.py:45
+#: views.py:48
 #, python-format
-msgid "Unable to import key id: %(key_id)s; %(error)s"
-msgstr "Unable to import key id: %(key_id)s; %(error)s"
+msgid "Successfully received key: %(key_id)s"
+msgstr ""
 
-#: views.py:54
+#: views.py:57
+#, python-format
+#| msgid "Import key"
+msgid "Import key ID: %s?"
+msgstr ""
+
+#: views.py:59
 msgid "Import key"
 msgstr "Import key"
 
-#: views.py:55
-#, python-format
-msgid "Are you sure you wish to import key id: %s?"
-msgstr "Are you sure you wish to import key id: %s?"
-
-#: views.py:79
-msgid "Key ID"
-msgstr "Key ID"
-
-#: views.py:83
-msgid "Owner"
-msgstr "Owner"
-
-#: views.py:103
+#: views.py:100
 #, python-format
 msgid "Key: %s, deleted successfully."
 msgstr "Key: %s, deleted successfully."
 
-#: views.py:110
+#: views.py:107
 msgid "Delete key"
 msgstr "Delete key"
 
-#: views.py:112
+#: views.py:110
 #, python-format
+#| msgid ""
+#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
+#| " of a public/private pair the private key will be deleted well."
 msgid ""
-"Are you sure you wish to delete key: %s?  If you try to delete a public key "
-"that is part of a public/private pair the private key will be deleted as "
-"well."
-msgstr "Are you sure you wish to delete key: %s?  If you try to delete a public key that is part of a public/private pair the private key will be deleted as well."
+"Delete key %s? If you delete a public key that is part of a public/private "
+"pair the private key will be deleted as well."
+msgstr ""
 
-#: views.py:129
+#: views.py:134
+msgid "Search"
+msgstr ""
+
+#: views.py:136
 msgid "Query key server"
 msgstr "Query key server"
 
-#: views.py:142
-msgid "results"
-msgstr "results"
-
-#: views.py:147
-msgid "ID"
-msgstr "ID"
-
-#: views.py:151
-msgid "Type"
+#: views.py:146
+msgid "Key query results"
 msgstr ""
 
-#: views.py:155
-msgid "Creation date"
-msgstr ""
+#~ msgid "Key ID"
+#~ msgstr "Key ID"
 
-#: views.py:159
-msgid "Disabled"
-msgstr ""
+#~ msgid "results"
+#~ msgstr "results"
 
-#: views.py:163
-msgid "Expiration date"
-msgstr ""
+#~ msgid "Key: %s, imported successfully."
+#~ msgstr "Key: %s, imported successfully."
 
-#: views.py:167
-msgid "Expired"
-msgstr ""
+#~ msgid "Are you sure you wish to import key id: %s?"
+#~ msgstr "Are you sure you wish to import key id: %s?"
 
-#: views.py:171
-msgid "Length"
-msgstr ""
+#~ msgid "Disabled"
+#~ msgstr "disabled"
 
-#: views.py:175
-msgid "Revoked"
-msgstr ""
+#~ msgid "Expired"
+#~ msgstr "expired"
 
-#: views.py:180
-msgid "Identifies"
-msgstr "Identifies"
+#~ msgid "Revoked"
+#~ msgstr "revoked"
 
 #~ msgid "private keys"
 #~ msgstr "private keys"

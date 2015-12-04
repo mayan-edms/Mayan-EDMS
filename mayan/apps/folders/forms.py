@@ -6,19 +6,13 @@ from django import forms
 from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
-from acls.models import AccessEntry
-from permissions.models import Permission
+from acls.models import AccessControlList
+from permissions import Permission
 
 from .models import Folder
-from .permissions import PERMISSION_FOLDER_VIEW
+from .permissions import permission_folder_view
 
 logger = logging.getLogger(__name__)
-
-
-class FolderForm(forms.ModelForm):
-    class Meta:
-        model = Folder
-        fields = ('title',)
 
 
 class FolderListForm(forms.Form):
@@ -29,10 +23,13 @@ class FolderListForm(forms.Form):
 
         queryset = Folder.objects.all()
         try:
-            Permission.objects.check_permissions(user, [PERMISSION_FOLDER_VIEW])
+            Permission.check_permissions(user, (permission_folder_view,))
         except PermissionDenied:
-            queryset = AccessEntry.objects.filter_objects_by_access(PERMISSION_FOLDER_VIEW, user, queryset)
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_folder_view, user, queryset
+            )
 
         self.fields['folder'] = forms.ModelChoiceField(
             queryset=queryset,
-            label=_('Folder'))
+            label=_('Folder')
+        )

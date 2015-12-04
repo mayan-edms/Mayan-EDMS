@@ -3,15 +3,11 @@ from __future__ import unicode_literals
 from django.shortcuts import get_object_or_404
 
 from converter.exceptions import UnkownConvertError, UnknownFileFormat
-from converter.literals import (
-    DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
-)
+from converter.models import Transformation
 from rest_framework import generics
 from rest_framework.response import Response
 
-from documents.settings import (
-    DISPLAY_SIZE, ZOOM_MAX_LEVEL, ZOOM_MIN_LEVEL
-)
+from documents.settings import setting_display_size
 
 from .models import StagingFolderSource
 from .serializers import (
@@ -27,8 +23,15 @@ class APIStagingSourceFileView(generics.GenericAPIView):
     serializer_class = StagingFolderFileSerializer
 
     def get(self, request, staging_folder_pk, encoded_filename):
-        staging_folder = get_object_or_404(StagingFolderSource, pk=staging_folder_pk)
-        return Response(StagingFolderFileSerializer(staging_folder.get_file(encoded_filename=encoded_filename), context={'request': request}).data)
+        staging_folder = get_object_or_404(
+            StagingFolderSource, pk=staging_folder_pk
+        )
+        return Response(
+            StagingFolderFileSerializer(
+                staging_folder.get_file(encoded_filename=encoded_filename),
+                context={'request': request}
+            ).data
+        )
 
 
 class APIStagingSourceListView(generics.ListAPIView):
@@ -59,29 +62,36 @@ class APIStagingSourceFileImageView(generics.GenericAPIView):
     serializer_class = StagingSourceFileImageSerializer
 
     def get(self, request, staging_folder_pk, encoded_filename):
-        staging_folder = get_object_or_404(StagingFolderSource, pk=staging_folder_pk)
-        staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
+        staging_folder = get_object_or_404(
+            StagingFolderSource, pk=staging_folder_pk
+        )
+        staging_file = staging_folder.get_file(
+            encoded_filename=encoded_filename
+        )
 
-        size = request.GET.get('size', DISPLAY_SIZE)
-
-        page = int(request.GET.get('page', DEFAULT_PAGE_NUMBER))
-
-        zoom = int(request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
-
-        if zoom < ZOOM_MIN_LEVEL:
-            zoom = ZOOM_MIN_LEVEL
-
-        if zoom > ZOOM_MAX_LEVEL:
-            zoom = ZOOM_MAX_LEVEL
-
-        rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
+        size = request.GET.get('size', setting_display_size.value)
 
         try:
             return Response({
                 'status': 'success',
-                'data': staging_file.get_image(size=size, page=page, zoom=zoom, rotation=rotation, as_base64=True)
+                'data': staging_file.get_image(
+                    as_base64=True, size=size,
+                    transformations=Transformation.objects.get_for_model(
+                        staging_folder, as_classes=True
+                    )
+                )
             })
         except UnknownFileFormat as exception:
-            return Response({'status': 'error', 'detail': 'unknown_file_format', 'message': unicode(exception)})
+            return Response(
+                {
+                    'status': 'error', 'detail': 'unknown_file_format',
+                    'message': unicode(exception)
+                }
+            )
         except UnkownConvertError as exception:
-            return Response({'status': 'error', 'detail': 'converter_error', 'message': unicode(exception)})
+            return Response(
+                {
+                    'status': 'error', 'detail': 'converter_error',
+                    'message': unicode(exception)
+                }
+            )

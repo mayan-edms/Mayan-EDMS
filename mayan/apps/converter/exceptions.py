@@ -15,13 +15,6 @@ class UnknownFileFormat(ConvertError):
     pass
 
 
-class IdentifyError(ConvertError):
-    """
-    Raised by the graphcismagick and imagemagics identify program
-    """
-    pass
-
-
 class UnkownConvertError(ConvertError):
     """
     Raised when an error is found but there is no disernible way to
@@ -34,5 +27,9 @@ class OfficeConversionError(ConvertError):
     pass
 
 
-class OfficeBackendError(OfficeConversionError):
+class InvalidOfficeFormat(ConvertError):
+    pass
+
+
+class PageCountError(ConvertError):
     pass

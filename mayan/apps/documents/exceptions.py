@@ -1,9 +1,15 @@
 from __future__ import unicode_literals
 
 
-class NewDocumentVersionNotAllowed(Exception):
+class DocumentException(Exception):
+    """
+    Base documents warning
+    """
+    pass
+
+
+class NewDocumentVersionNotAllowed(DocumentException):
     """
     Uploading new versions for this document is not allowed
-    Current reasons:  Document is in checked out state
     """
     pass

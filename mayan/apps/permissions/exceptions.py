@@ -1,5 +1,9 @@
-from django.core.exceptions import PermissionDenied as DjangoPermissionDenied
+from __future__ import unicode_literals
 
 
-class PermissionDenied(DjangoPermissionDenied):
+class PermissionError(Exception):
+    pass
+
+
+class InvalidNamespace(PermissionError):
     pass

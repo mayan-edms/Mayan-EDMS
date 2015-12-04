@@ -1,67 +1,43 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
+import tempfile
+
 from django.utils.translation import ugettext_lazy as _
 
-from smart_settings.api import register_setting
+from smart_settings import Namespace
 
-TEMPORARY_DIRECTORY = register_setting(
-    namespace='common',
-    module='common.settings',
-    name='TEMPORARY_DIRECTORY',
-    global_name='COMMON_TEMPORARY_DIRECTORY',
-    default='/tmp',
-    description=_('Temporary directory used site wide to store thumbnails, previews and temporary files.  If none is specified, one will be created using tempfile.mkdtemp()'),
-    exists=True
+namespace = Namespace(name='common', label=_('Common'))
+setting_temporary_directory = namespace.add_setting(
+    global_name='COMMON_TEMPORARY_DIRECTORY', default=tempfile.gettempdir(),
+    help_text=_(
+        'Temporary directory used site wide to store thumbnails, previews '
+        'and temporary files.  If none is specified, one will be created '
+        'using tempfile.mkdtemp().'
+    ),
+    is_path=True
 )
-
-register_setting(
-    namespace='common',
-    module='common.settings',
-    name='AUTO_CREATE_ADMIN',
-    global_name='COMMON_AUTO_CREATE_ADMIN',
-    default=True,
-)
-
-register_setting(
-    namespace='common',
-    module='common.settings',
-    name='AUTO_ADMIN_USERNAME',
-    global_name='COMMON_AUTO_ADMIN_USERNAME',
-    default='admin',
-)
-
-register_setting(
-    namespace='common',
-    module='common.settings',
-    name='AUTO_ADMIN_PASSWORD',
-    global_name='COMMON_AUTO_ADMIN_PASSWORD',
-    default=User.objects.make_random_password(),
-)
-
-register_setting(
-    namespace='common',
-    module='common.settings',
-    name='LOGIN_METHOD',
-    global_name='COMMON_LOGIN_METHOD',
-    default='username',
-    description=_('Controls the mechanism used to authenticated user.  Options are: username, email'),
-)
-
-register_setting(
-    namespace='common',
-    module='common.settings',
-    name='ALLOW_ANONYMOUS_ACCESS',
-    global_name='COMMON_ALLOW_ANONYMOUS_ACCESS',
-    default=False,
-    description=_('Allow non authenticated users, access to all views'),
-)
-
-register_setting(
-    namespace='common',
-    module='common.settings',
-    name='SHARED_STORAGE',
+setting_shared_storage = namespace.add_setting(
     global_name='COMMON_SHARED_STORAGE',
     default='storage.backends.filebasedstorage.FileBasedStorage',
-    description=_('A storage backend that all workers can use to share files.'),
+    help_text=_('A storage backend that all workers can use to share files.')
+)
+setting_paginate_by = namespace.add_setting(
+    global_name='COMMON_PAGINATE_BY',
+    default=40,
+    help_text=_(
+        'An integer specifying how many objects should be displayed per page.'
+    )
+)
+setting_auto_logging = namespace.add_setting(
+    global_name='COMMON_AUTO_LOGGING',
+    default=True,
+    help_text=_('Automatically enable logging to all apps.')
+)
+settings_db_sync_task_delay = namespace.add_setting(
+    global_name='COMMON_DB_SYNC_TASK_DELAY',
+    default=2,
+    help_text=_(
+        'Time to delay background tasks that depend on a database commit to '
+        'propagate.'
+    )
 )

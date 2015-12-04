@@ -7,7 +7,7 @@ settings_local.py
 /celerybeat-schedule
 document_storage/
 /misc/mayan.geany
-image_cache/
+mayan/media/document_cache/
 build/
 _build/
 gpg_home/
@@ -22,3 +22,7 @@ static_collected/
 *egg-info*
 mayan/settings/local.py
 .vagrant
+.tox/
+coverage.xml
+.coverage.tox*
+htmlcov/

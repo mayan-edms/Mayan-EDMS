@@ -1,3 +1,15 @@
+from __future__ import unicode_literals
+
+import json
+
+from celery.schedules import crontab
+from djcelery.models import PeriodicTask
+
+from mayan.celery import app
+
+from .models import StatisticResult
+
+
 class StatisticNamespace(object):
     _registry = {}
 
@@ -6,25 +18,22 @@ class StatisticNamespace(object):
         return cls._registry.values()
 
     @classmethod
-    def get(cls, name):
-        return cls._registry[name]
+    def get(cls, slug):
+        return cls._registry[slug]
 
-    def __init__(self, name, label):
-        self.name = name
+    def __init__(self, slug, label):
+        self.slug = slug
         self.label = label
         self._statistics = []
-        self.__class__._registry[name] = self
+        self.__class__._registry[slug] = self
 
     def __unicode__(self):
         return unicode(self.label)
 
-    def add_statistic(self, statistic):
-        self._statistics.append(statistic)
+    def add_statistic(self, *args, **kwargs):
+        statistic = Statistic(*args, **kwargs)
         statistic.namespace = self
-
-    @property
-    def id(self):
-        return self.name
+        self._statistics.append(statistic)
 
     @property
     def statistics(self):
@@ -34,25 +43,150 @@ class StatisticNamespace(object):
 class Statistic(object):
     _registry = {}
 
+    @staticmethod
+    def purge_schedules():
+        queryset = PeriodicTask.objects.filter(name__startswith='statistics.').exclude(name__in=Statistic.get_task_names())
+
+        for periodic_task in queryset:
+            crontab_instance = periodic_task.crontab
+            periodic_task.delete()
+
+            if crontab_instance and not crontab_instance.periodictask_set.all():
+                # Only delete the interval if nobody else is using it
+                crontab_instance.delete()
+
+        StatisticResult.objects.filter(
+            slug__in=queryset.values_list('name', flat=True)
+        ).delete()
+
     @classmethod
     def get_all(cls):
         return cls._registry.values()
 
     @classmethod
-    def get(cls, name):
-        return cls._registry[name]
+    def get(cls, slug):
+        return cls._registry[slug]
 
-    def __init__(self, name, label):
-        self.name = name
+    @classmethod
+    def get_task_names(cls):
+        return [task.get_task_name() for task in cls.get_all()]
+
+    def __init__(self, slug, label, func, renderer, minute='*', hour='*', day_of_week='*', day_of_month='*', month_of_year='*'):
+        self.slug = slug
         self.label = label
-        self.__class__._registry[name] = self
+        self.func = func
+        self.renderer = renderer
+
+        self.schedule = crontab(
+            minute=minute, hour=hour, day_of_week=day_of_week,
+            day_of_month=day_of_month, month_of_year=month_of_year,
+        )
+
+        app.conf.CELERYBEAT_SCHEDULE.update(
+            {
+                self.get_task_name(): {
+                    'task': 'statistics.tasks.task_execute_statistic',
+                    'schedule': self.schedule,
+                    'args': (self.slug,)
+                },
+            }
+        )
+
+        app.conf.CELERY_ROUTES.update(
+            {
+                self.get_task_name(): {
+                    'queue': 'statistics'
+                },
+            }
+        )
+
+        self.__class__._registry[slug] = self
 
     def __unicode__(self):
         return unicode(self.label)
 
-    def get_results(self, *args, **kwargs):
-        return NotImplementedError
+    def execute(self):
+        self.store_results(results=self.func())
 
-    @property
-    def id(self):
-        return self.name
+    def get_task_name(self):
+        return 'statistics.task_execute_statistic_{}'.format(self.slug)
+
+    def store_results(self, results):
+        StatisticResult.objects.filter(slug=self.slug).delete()
+
+        statistic_result, created = StatisticResult.objects.get_or_create(slug=self.slug)
+        statistic_result.store_data(data=results)
+
+    def get_results(self):
+        try:
+            return StatisticResult.objects.get(slug=self.slug).get_data()
+        except StatisticResult.DoesNotExist:
+            return {'series': {}}
+
+    def get_chart_data(self):
+        return self.renderer(data=self.get_results()).get_chart_data()
+
+
+class ChartRenderer(object):
+    def __init__(self, data):
+        self.data = data
+
+    def get_chart_data(self):
+        raise NotImplementedError
+
+
+class CharJSLine(ChartRenderer):
+    template_name = 'statistics/backends/chartjs/line.html'
+
+    dataset_palette = (
+        {
+            'fillColor': "rgba(220,220,220,0.2)",
+            'strokeColor': "rgba(220,220,220,1)",
+            'pointColor': "rgba(220,220,220,1)",
+            'pointStrokeColor': "#fff",
+            'pointHighlightFill': "#fff",
+            'pointHighlightStroke': "rgba(220,220,220,1)",
+        },
+        {
+            'fillColor': "rgba(151,187,205,0.2)",
+            'strokeColor': "rgba(151,187,205,1)",
+            'pointColor': "rgba(151,187,205,1)",
+            'pointStrokeColor': "#fff",
+            'pointHighlightFill': "#fff",
+            'pointHighlightStroke': "rgba(151,187,205,1)",
+        },
+    )
+
+    def get_chart_data(self):
+        labels = []
+        datasets = []
+
+        for count, serie in enumerate(self.data['series'].items()):
+            series_name, series_data = serie
+            dataset_labels = []
+            dataset_values = []
+
+            for data_point in series_data:
+                dataset_labels.extend(data_point.keys())
+                dataset_values.extend(data_point.values())
+
+            labels = dataset_labels
+            dataset = {
+                'label': series_name,
+                'data': dataset_values,
+            }
+            dataset.update(
+                CharJSLine.dataset_palette[
+                    count % len(CharJSLine.dataset_palette)
+                ]
+            )
+
+            datasets.append(dataset)
+
+        data = {
+            'labels': labels,
+            'datasets': datasets,
+
+        }
+
+        return json.dumps(data)

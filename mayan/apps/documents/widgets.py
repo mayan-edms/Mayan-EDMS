@@ -9,11 +9,9 @@ from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext
 from django.utils.translation import ugettext_lazy as _
 
-from converter.literals import (
-    DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
-)
+from converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 
-from .settings import DISPLAY_SIZE, THUMBNAIL_SIZE
+from .settings import setting_display_size, setting_thumbnail_size
 
 
 class DocumentPageImageWidget(forms.widgets.Widget):
@@ -23,8 +21,14 @@ class DocumentPageImageWidget(forms.widgets.Widget):
         rotation = final_attrs.get('rotation', 0)
         if value:
             output = []
-            output.append('<div class="full-height scrollable mayan-page-wrapper-interactive" data-height-difference=230>')
-            output.append(document_html_widget(value.document, page=value.page_number, zoom=zoom, rotation=rotation, image_class='lazy-load-interactive', nolazyload=False, size=DISPLAY_SIZE))
+            output.append(
+                '<div class="full-height scrollable '
+                'mayan-page-wrapper-interactive" data-height-difference=230>'
+            )
+            output.append(document_html_widget(
+                value, zoom=zoom, rotation=rotation, image_class='lazy-load',
+                nolazyload=False, size=setting_display_size.value)
+            )
             output.append('</div>')
             return mark_safe(''.join(output))
         else:
@@ -37,7 +41,10 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
     """
     def render(self, name, value, attrs=None):
         output = []
-        output.append('<div id="carousel-container" class="full-height scrollable" data-height-difference=360>')
+        output.append(
+            '<div id="carousel-container" class="full-height scrollable" '
+            'data-height-difference=200>'
+        )
 
         try:
             document_pages = value.pages.all()
@@ -46,25 +53,27 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
             document_pages = []
             total_pages = 0
 
-        # Reuse expensive values
-        latest_version_pk = value.latest_version.pk
-
         for page in document_pages:
             output.append('<div class="carousel-item">')
             output.append(
                 document_html_widget(
-                    page.document,
+                    page,
                     click_view='documents:document_page_view',
                     click_view_arguments=[page.pk],
-                    page=page.page_number,
-                    fancybox_class='fancybox-iframe',
+                    fancybox_class='',
                     image_class='lazy-load-carousel',
-                    size=DISPLAY_SIZE,
-                    version=latest_version_pk,
+                    size=setting_display_size.value,
                     post_load_class='lazy-load-carousel-loaded',
                 )
             )
-            output.append('<div class="carousel-item-page-number">%s</div>' % ugettext('Page %(page_number)d of %(total_pages)d') % {'page_number': page.page_number, 'total_pages': total_pages})
+            output.append(
+                '<div class="carousel-item-page-number">%s</div>' % ugettext(
+                    'Page %(page_number)d of %(total_pages)d'
+                ) % {
+                    'page_number': page.page_number,
+                    'total_pages': total_pages
+                }
+            )
             output.append('</div>')
 
         output.append('</div>')
@@ -73,29 +82,33 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
 
 
 def document_thumbnail(document, **kwargs):
-    return document_html_widget(document, click_view='documents:document_display', **kwargs)
+    return document_html_widget(
+        document.latest_version.pages.first(),
+        click_view='documents:document_display', **kwargs
+    )
 
 
 def document_link(document):
-    return mark_safe('<a href="%s">%s</a>' % (document.get_absolute_url(), document))
+    return mark_safe('<a href="%s">%s</a>' % (
+        document.get_absolute_url(), document)
+    )
 
 
-def document_html_widget(document, click_view=None, click_view_arguments=None, page=DEFAULT_PAGE_NUMBER, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', version=None, image_class='lazy-load', title=None, size=THUMBNAIL_SIZE, nolazyload=False, post_load_class=None):
+def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None, disable_title_link=False):
     result = []
 
     alt_text = _('Document page image')
 
-    if not version:
-        try:
-            version = document.latest_version.pk
-        except AttributeError:
-            version = None
+    if not document_page:
+        return mark_safe(
+            '<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-question fa-stack-1x text-danger"></i></span>'
+        )
+
+    document = document_page.document
 
     query_dict = {
-        'page': page,
         'zoom': zoom,
         'rotation': rotation,
-        'version': version,
         'size': size,
     }
 
@@ -106,22 +119,59 @@ def document_html_widget(document, click_view=None, click_view_arguments=None, p
 
     query_string = urlencode(query_dict)
 
-    preview_view = '%s?%s' % (reverse('document-image', args=[document.pk]), query_string)
+    preview_view = '%s?%s' % (
+        reverse('rest_api:documentpage-image', args=(document_page.pk,)),
+        query_string
+    )
 
-    result.append('<div class="tc" id="document-%d-%d">' % (document.pk, page if page else 1))
+    result.append(
+        '<div class="tc" id="document-%d-%d">' % (
+            document.pk, document_page.page_number if document_page.page_number else 1
+        )
+    )
 
     if title:
-        title_template = 'title="%s"' % strip_tags(title)
+        if not disable_title_link:
+            preview_click_link = document.get_absolute_url()
+            title_template = 'data-caption="<a class=\'a-caption\' href=\'{url}\'>{title}</a>"'.format(
+                title=strip_tags(title), url=preview_click_link or '#'
+            )
+        else:
+            title_template = 'data-caption="{title}"'.format(
+                title=strip_tags(title),
+            )
     else:
         title_template = ''
 
     if click_view:
-        result.append('<a %s class="%s" href="%s" %s>' % (gallery_template, fancybox_class, '%s?%s' % (reverse(click_view, args=click_view_arguments or [document.pk]), query_string), title_template))
+        result.append(
+            '<a {gallery_template} class="{fancybox_class}" '
+            'href="{image_data}" {title_template}>'.format(
+                gallery_template=gallery_template,
+                fancybox_class=fancybox_class,
+                image_data='%s?%s' % (
+                    reverse(
+                        click_view, args=click_view_arguments or [document.pk]
+                    ), query_string
+                ),
+                title_template=title_template
+            )
+        )
 
     if nolazyload:
-        result.append('<img class="img-nolazyload" src="%s" alt="%s" />' % (preview_view, alt_text))
+        result.append(
+            '<img class="img-nolazyload" src="%s" alt="%s" />' % (
+                preview_view, alt_text
+            )
+        )
     else:
-        result.append('<img class="thin_border %s" data-src="%s" data-post-load-class="%s" src="%s" alt="%s" />' % (image_class, preview_view, post_load_class, static('main/icons/hourglass.png'), alt_text))
+        result.append(
+            '<img class="thin_border %s" data-src="%s" '
+            'data-post-load-class="%s" src="%s" alt="%s" />' % (
+                image_class, preview_view, post_load_class,
+                static('appearance/images/loading.png'), alt_text
+            )
+        )
 
     if click_view:
         result.append('</a>')

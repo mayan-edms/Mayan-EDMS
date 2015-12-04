@@ -9,19 +9,24 @@ try:
 except ImportError:
     from StringIO import StringIO
 
-from hkp import KeyServer
 import gnupg
 
 from django.utils.translation import ugettext_lazy as _
 
-from .exceptions import (
-    GPGException, GPGVerificationError, GPGSigningError, GPGDecryptionError,
-    KeyDeleteError, KeyGenerationError, KeyFetchingError, KeyDoesNotExist,
-    KeyImportError
-)
+from .exceptions import *  # NOQA
 from .literals import KEY_TYPES
 
 logger = logging.getLogger(__name__)
+
+
+class KeyStub(object):
+    def __init__(self, raw):
+        self.key_id = raw['keyid']
+        self.key_type = raw['type']
+        self.date = raw['date']
+        self.expires = raw['expires']
+        self.length = raw['length']
+        self.uids = raw['uids']
 
 
 class Key(object):
@@ -91,7 +96,9 @@ class Key(object):
         return ', '.join(self.uids)
 
     def __str__(self):
-        return '%s "%s" (%s)' % (self.key_id, self.user_ids, KEY_TYPES.get(self.type, _('Unknown')))
+        return '%s "%s" (%s)' % (
+            self.key_id, self.user_ids, KEY_TYPES.get(self.type, _('Unknown'))
+        )
 
     def __unicode__(self):
         return unicode(self.__str__())
@@ -128,9 +135,13 @@ class GPG(object):
         try:
             self.gpg = gnupg.GPG(**kwargs)
         except OSError as exception:
-            raise GPGException('ERROR: GPG initialization error; Make sure the GPG binary is properly installed; %s' % exception)
+            raise GPGException(
+                'ERROR: GPG initialization error; Make sure the GPG binary is properly installed; %s' % exception
+            )
         except Exception as exception:
-            raise GPGException('ERROR: GPG initialization error; %s' % exception)
+            raise GPGException(
+                'ERROR: GPG initialization error; %s' % exception
+            )
 
     def verify_file(self, file_input, detached_signature=None, fetch_key=False):
         """
@@ -150,7 +161,9 @@ class GPG(object):
             signature_file = StringIO()
             signature_file.write(detached_signature.read())
             signature_file.seek(0)
-            verify = self.gpg.verify_file(signature_file, data_filename=filename)
+            verify = self.gpg.verify_file(
+                signature_file, data_filename=filename
+            )
             signature_file.close()
         else:
             verify = self.gpg.verify_file(input_descriptor)
@@ -164,7 +177,9 @@ class GPG(object):
             if fetch_key:
                 try:
                     self.receive_key(verify.key_id)
-                    return self.verify_file(input_descriptor, detached_signature, fetch_key=False)
+                    return self.verify_file(
+                        input_descriptor, detached_signature, fetch_key=False
+                    )
                 except KeyFetchingError:
                     return verify
             else:
@@ -254,7 +269,9 @@ class GPG(object):
         return Key.get(self, key.fingerprint)
 
     def delete_key(self, key):
-        status = self.gpg.delete_keys(key.fingerprint, key.type == 'sec').status
+        status = self.gpg.delete_keys(
+            key.fingerprint, key.type == 'sec'
+        ).status
         if status == 'Must delete secret key first':
             self.delete_key(Key.get(self, key.fingerprint, secret=True))
             self.delete_key(key)
@@ -265,21 +282,17 @@ class GPG(object):
         for keyserver in self.keyservers:
             import_result = self.gpg.recv_keys(keyserver, key_id)
             if import_result:
-                return Key.get(self, import_result.fingerprints[0], secret=False)
+                return Key.get(
+                    self, import_result.fingerprints[0], secret=False
+                )
 
         raise KeyFetchingError
 
     def query(self, term):
         results = {}
         for keyserver in self.keyservers:
-            url = 'http://%s' % keyserver
-            server = KeyServer(url)
-            try:
-                key_list = server.search(term)
-                for key in key_list:
-                    results[key.keyid] = key
-            except:
-                pass
+            for key_data in self.gpg.search_keys(query=term, keyserver=keyserver):
+                results[key_data['keyid']] = KeyStub(raw=key_data)
 
         return results.values()
 

@@ -8,63 +8,63 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-05-15 19:01-0400\n"
-"PO-Revision-Date: 2015-05-09 12:30+0000\n"
-"Last-Translator: Mehdi Amani <MehdiAmani@toorintan.com>\n"
-"Language-Team: Persian (http://www.transifex.com/projects/p/mayan-edms/language/fa/)\n"
+"POT-Creation-Date: 2015-09-24 16:26-0400\n"
+"PO-Revision-Date: 2015-08-20 22:07+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: classes.py:17
-#, python-brace-format
-msgid "Unknown or obsolete event type: {0}"
-msgstr ""
-
-#: links.py:5 permissions.py:7 views.py:76
+#: apps.py:18 links.py:27 links.py:30 permissions.py:7 views.py:38
 msgid "Events"
 msgstr "رویداد"
 
-#: models.py:18
-msgid "Name"
-msgstr ""
+#: apps.py:55
+msgid "Timestamp"
+msgstr "علامت زمان"
 
-#: models.py:24
+#: apps.py:57
+msgid "Actor"
+msgstr "فعال"
+
+#: apps.py:59
+msgid "Verb"
+msgstr "فعل"
+
+#: classes.py:17
+#, python-brace-format
+msgid "Unknown or obsolete event type: {0}"
+msgstr "نوع رخداد ناشناخته :{0}"
+
+#: models.py:13
+msgid "Name"
+msgstr "نام"
+
+#: models.py:20
 msgid "Event type"
 msgstr "نوع رویداد"
 
-#: models.py:25
+#: models.py:21
 msgid "Event types"
-msgstr ""
+msgstr "انواع رخدادها"
 
-#: models.py:30
-msgid "Timestamp"
-msgstr ""
-
-#: models.py:34
-msgid "Actor"
-msgstr ""
-
-#: models.py:38
-msgid "Verb"
-msgstr ""
-
-#: permissions.py:8
+#: permissions.py:9
 msgid "Access the events of an object"
-msgstr ""
+msgstr "دسترسی به رخدادهای یک شی"
 
-#: views.py:42
+#: views.py:31 views.py:90
+msgid "Target"
+msgstr "هدف"
+
+#: views.py:75
 #, python-format
 msgid "Events for: %s"
-msgstr ""
+msgstr "رخدادها برای :  %s"
 
-#: views.py:59
+#: views.py:98
 #, python-format
 msgid "Events of type: %s"
-msgstr ""
-
-#: views.py:83
-msgid "Target"
-msgstr ""
+msgstr "نوع رخداد ها:  %s"

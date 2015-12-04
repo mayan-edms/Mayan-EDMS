@@ -33,7 +33,12 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "_ext"))
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
 #extensions = ['sphinx.ext.autodoc', 'sphinx.ext.viewcode']
 #extensions = ["djangodocs", "sphinx.ext.intersphinx"]
-extensions = ['djangodocs']
+extensions = ['djangodocs', 'sphinxcontrib.blockdiag']
+
+blockdiag_antialias = True
+blockdiag_html_image_format = "SVG"
+blockdiag_latex_image_format = "PDF"
+blockdiag_tex_image_format = "PDF"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -229,20 +234,19 @@ man_pages = [
 import alabaster
 
 html_theme_path = [alabaster.get_path()]
-extensions = ['alabaster']
+extensions.append('alabaster')
 html_theme = 'alabaster'
 html_sidebars = {
     '**': [
-        'about.html', 'navigation.html', 'searchbox.html', 'donate.html',
+        'about.html', 'donate.html', 'navigation.html', 'searchbox.html',
     ]
 }
 html_theme_options = {
-    'description': 'Free Open Source Electronic Document Management System',
-    'github_user': 'mayan-edms',
-    'github_repo': 'mayan-edms',
-    'travis_button': True,
+    'description': mayan.__description__,
+    'github_button': False,
+    'travis_button': False,
     'gratipay_user': 'rosarior',
-    'github_banner': True,
+    'github_banner': False,
 }
 
 html_logo = '_static/logo_pyramid_only.png'

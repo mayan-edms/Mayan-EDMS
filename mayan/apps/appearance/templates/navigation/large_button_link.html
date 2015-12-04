@@ -1,0 +1,6 @@
+<div class="{% if div_class %}{{ div_class }}{% else %}col-xs-12 col-sm-6 col-md-4 col-lg-3{% endif %}">
+    <a class="btn btn-default btn-lg btn-block {% if 'new_window' in link.tags %}new_window{% endif %}" href="{{ link.url }}">
+        <i class="{{ link.icon }} fa-2x"></i><br>
+        {{ link.text }}
+    </a>
+</div>

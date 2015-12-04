@@ -2,26 +2,71 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
+from navigation import Link
+
 from .permissions import (
-    PERMISSION_GROUP_CREATE, PERMISSION_GROUP_DELETE, PERMISSION_GROUP_EDIT,
-    PERMISSION_GROUP_VIEW, PERMISSION_USER_CREATE, PERMISSION_USER_DELETE,
-    PERMISSION_USER_EDIT, PERMISSION_USER_VIEW
+    permission_group_create, permission_group_delete, permission_group_edit,
+    permission_group_view, permission_user_create, permission_user_delete,
+    permission_user_edit, permission_user_view
 )
 
-user_list = {'text': _('Users'), 'view': 'user_management:user_list', 'famfam': 'user', 'permissions': [PERMISSION_USER_VIEW]}
-user_setup = {'text': _('Users'), 'view': 'user_management:user_list', 'famfam': 'user', 'icon': 'main/icons/user.png', 'permissions': [PERMISSION_USER_VIEW]}
-user_edit = {'text': _('Edit'), 'view': 'user_management:user_edit', 'args': 'object.id', 'famfam': 'user_edit', 'permissions': [PERMISSION_USER_EDIT]}
-user_add = {'text': _('Create new user'), 'view': 'user_management:user_add', 'famfam': 'user_add', 'permissions': [PERMISSION_USER_CREATE]}
-user_delete = {'text': _('Delete'), 'view': 'user_management:user_delete', 'args': 'object.id', 'famfam': 'user_delete', 'permissions': [PERMISSION_USER_DELETE]}
-user_multiple_delete = {'text': _('Delete'), 'view': 'user_management:user_multiple_delete', 'famfam': 'user_delete', 'permissions': [PERMISSION_USER_DELETE]}
-user_set_password = {'text': _('Reset password'), 'view': 'user_management:user_set_password', 'args': 'object.id', 'famfam': 'lock_edit', 'permissions': [PERMISSION_USER_EDIT]}
-user_multiple_set_password = {'text': _('Reset password'), 'view': 'user_management:user_multiple_set_password', 'famfam': 'lock_edit', 'permissions': [PERMISSION_USER_EDIT]}
-user_groups = {'text': _('Groups'), 'view': 'user_management:user_groups', 'args': 'object.id', 'famfam': 'group_link', 'permissions': [PERMISSION_USER_EDIT]}
-
-group_list = {'text': _('Groups'), 'view': 'user_management:group_list', 'famfam': 'group', 'permissions': [PERMISSION_GROUP_VIEW]}
-group_setup = {'text': _('Groups'), 'view': 'user_management:group_list', 'famfam': 'group', 'icon': 'main/icons/group.png', 'permissions': [PERMISSION_GROUP_VIEW]}
-group_edit = {'text': _('Edit'), 'view': 'user_management:group_edit', 'args': 'object.id', 'famfam': 'group_edit', 'permissions': [PERMISSION_GROUP_EDIT]}
-group_add = {'text': _('Create new group'), 'view': 'user_management:group_add', 'famfam': 'group_add', 'permissions': [PERMISSION_GROUP_CREATE]}
-group_delete = {'text': _('Delete'), 'view': 'user_management:group_delete', 'args': 'object.id', 'famfam': 'group_delete', 'permissions': [PERMISSION_GROUP_DELETE]}
-group_multiple_delete = {'text': _('Delete'), 'view': 'user_management:group_multiple_delete', 'famfam': 'group_delete', 'permissions': [PERMISSION_GROUP_DELETE]}
-group_members = {'text': _('Members'), 'view': 'user_management:group_members', 'args': 'object.id', 'famfam': 'group_link', 'permissions': [PERMISSION_GROUP_EDIT]}
+link_group_add = Link(
+    permissions=(permission_group_create,), text=_('Create new group'),
+    view='user_management:group_add'
+)
+link_group_delete = Link(
+    permissions=(permission_group_delete,), tags='dangerous', text=_('Delete'),
+    view='user_management:group_delete', args='object.id'
+)
+link_group_edit = Link(
+    permissions=(permission_group_edit,), text=_('Edit'),
+    view='user_management:group_edit', args='object.id'
+)
+link_group_list = Link(
+    permissions=(permission_group_view,), text=_('Groups'),
+    view='user_management:group_list'
+)
+link_group_members = Link(
+    permissions=(permission_group_edit,), text=_('Members'),
+    view='user_management:group_members', args='object.id'
+)
+link_group_setup = Link(
+    icon='fa fa-group', permissions=(permission_group_view,), text=_('Groups'),
+    view='user_management:group_list'
+)
+link_user_add = Link(
+    permissions=(permission_user_create,), text=_('Create new user'),
+    view='user_management:user_add'
+)
+link_user_delete = Link(
+    permissions=(permission_user_delete,), tags='dangerous', text=_('Delete'),
+    view='user_management:user_delete', args='object.id'
+)
+link_user_edit = Link(
+    permissions=(permission_user_edit,), text=_('Edit'),
+    view='user_management:user_edit', args='object.id'
+)
+link_user_groups = Link(
+    permissions=(permission_user_edit,), text=_('Groups'),
+    view='user_management:user_groups', args='object.id'
+)
+link_user_list = Link(
+    permissions=(permission_user_view,), text=_('Users'),
+    view='user_management:user_list'
+)
+link_user_multiple_delete = Link(
+    permissions=(permission_user_delete,), tags='dangerous', text=_('Delete'),
+    view='user_management:user_multiple_delete'
+)
+link_user_multiple_set_password = Link(
+    permissions=(permission_user_edit,), text=_('Reset password'),
+    view='user_management:user_multiple_set_password'
+)
+link_user_set_password = Link(
+    permissions=(permission_user_edit,), text=_('Reset password'),
+    view='user_management:user_set_password', args='object.id'
+)
+link_user_setup = Link(
+    icon='fa fa-user', permissions=(permission_user_view,), text=_('Users'),
+    view='user_management:user_list'
+)

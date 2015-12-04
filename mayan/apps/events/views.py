@@ -1,88 +1,100 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.contrib.contenttypes.models import ContentType
 from django.core.exceptions import PermissionDenied
-from django.db.models.loading import get_model
 from django.http import Http404
-from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from actstream.models import Action, any_stream
 
-from acls.models import AccessEntry
+from acls.models import AccessControlList
 from common.utils import encapsulate
-from permissions.models import Permission
+from common.views import SingleObjectListView
+from permissions import Permission
 
 from .classes import Event
-from .permissions import PERMISSION_EVENTS_VIEW
+from .permissions import permission_events_view
 from .widgets import event_object_link
 
 
-def events_list(request, app_label=None, module_name=None, object_id=None, verb=None):
-    extra_columns = []
+class EventListView(SingleObjectListView):
+    view_permission = permission_events_view
 
-    context = {
-        'extra_columns': extra_columns,
-        'hide_object': True,
-    }
+    def get_queryset(self):
+        return Action.objects.all()
 
-    if app_label and module_name and object_id:
-        model = get_model(app_label, module_name)
-        if not model:
-            raise Http404
-        content_object = get_object_or_404(model, pk=object_id)
-
-        try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_EVENTS_VIEW])
-        except PermissionDenied:
-            AccessEntry.objects.check_access(PERMISSION_EVENTS_VIEW, request.user, content_object)
-
-        context.update({
-            'object_list': any_stream(content_object),
-            'title': _('Events for: %s') % content_object,
-            'object': content_object
-        })
-    elif verb:
-        pre_object_list = Action.objects.filter(verb=verb)
-
-        try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_EVENTS_VIEW])
-        except PermissionDenied:
-            # If user doesn't have global permission, get a list of document
-            # for which he/she does hace access use it to filter the
-            # provided object_list
-            object_list = AccessEntry.objects.filter_objects_by_access(PERMISSION_EVENTS_VIEW, request.user, pre_object_list, related='content_object')
-        else:
-            object_list = pre_object_list
-
-        context.update({
-            'title': _('Events of type: %s') % Event.get_label(verb),
-            'object_list': object_list
-        })
-    else:
-        pre_object_list = Action.objects.all()
-
-        try:
-            Permission.objects.check_permissions(request.user, [PERMISSION_EVENTS_VIEW])
-        except PermissionDenied:
-            # If user doesn't have global permission, get a list of document
-            # for which he/she does hace access use it to filter the
-            # provided object_list
-            object_list = AccessEntry.objects.filter_objects_by_access(PERMISSION_EVENTS_VIEW, request.user, pre_object_list, related='content_object')
-        else:
-            object_list = pre_object_list
-
-        context.update({
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {
+                    'name': _('Target'),
+                    'attribute': encapsulate(
+                        lambda entry: event_object_link(entry)
+                    )
+                },
+            ),
+            'hide_object': True,
             'title': _('Events'),
-            'object_list': object_list
-        })
+        }
 
-    if not (app_label and module_name and object_id):
-        extra_columns.append(
-            {
-                'name': _('Target'),
-                'attribute': encapsulate(lambda entry: event_object_link(entry))
-            }
+
+class ObjectEventListView(EventListView):
+    view_permissions = None
+
+    def dispatch(self, request, *args, **kwargs):
+        self.content_type = get_object_or_404(
+            ContentType, app_label=self.kwargs['app_label'],
+            model=self.kwargs['model']
         )
-    return render_to_response('main/generic_list.html', context,
-                              context_instance=RequestContext(request))
+
+        try:
+            self.content_object = self.content_type.get_object_for_this_type(
+                pk=self.kwargs['object_id']
+            )
+        except self.content_type.model_class().DoesNotExist:
+            raise Http404
+
+        try:
+            Permission.check_permissions(
+                request.user, permissions=(permission_events_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_events_view, request.user, self.content_object
+            )
+
+        return super(
+            ObjectEventListView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'object': self.content_object,
+            'title': _('Events for: %s') % self.content_object,
+        }
+
+    def get_queryset(self):
+        return any_stream(self.content_object)
+
+
+class VerbEventListView(SingleObjectListView):
+    def get_queryset(self):
+        return Action.objects.filter(verb=self.kwargs['verb'])
+
+    def get_extra_context(self):
+        return {
+            'extra_columns': (
+                {
+                    'name': _('Target'),
+                    'attribute': encapsulate(
+                        lambda entry: event_object_link(entry)
+                    )
+                },
+            ),
+            'hide_object': True,
+            'title': _(
+                'Events of type: %s'
+            ) % Event.get_label(self.kwargs['verb']),
+        }
