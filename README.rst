@@ -61,19 +61,19 @@ Contribute
 .. _Mailing list (via Google Groups): http://groups.google.com/group/mayan-edms
 .. _Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0.txt
 .. _`the repository`: http://github.com/mayan-edms/mayan-edms
-.. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/development/docs/topics/contributors.rst
+.. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/master/docs/topics/contributors.rst
 
-.. |Build Status| image:: https://gitlab.com/ci/projects/6169/status.png?ref=development
-   :target: https://gitlab.com/ci/projects/6169?ref=development
-.. |Logo| image:: https://github.com/mayan-edms/mayan-edms/raw/development/docs/_static/mayan_logo.png
-.. |Animation| image:: https://github.com/mayan-edms/mayan-edms/raw/development/docs/_static/overview.gif
+.. |Build Status| image:: https://gitlab.com/ci/projects/6169/status.png?ref=master
+   :target: https://gitlab.com/ci/projects/6169?ref=master
+.. |Logo| image:: https://github.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
+.. |Animation| image:: https://github.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif
 .. |Installs badge| image:: http://img.shields.io/pypi/dm/mayan-edms.svg?style=flat
    :target: https://crate.io/packages/mayan-edms/
 .. |PyPI badge| image:: http://img.shields.io/pypi/v/mayan-edms.svg?style=flat
    :target: http://badge.fury.io/py/mayan-edms
 .. |License badge| image:: http://img.shields.io/badge/license-Apache%202.0-green.svg?style=flat
 .. |Analytics| image:: https://ga-beacon.appspot.com/UA-52965619-2/mayan-edms/readme?pixel
-.. |Coverage badge| image:: https://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=development
-   :target: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=development
+.. |Coverage badge| image:: https://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=master
+   :target: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=master
 
 |Analytics|
