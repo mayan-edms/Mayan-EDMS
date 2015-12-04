@@ -48,7 +48,7 @@ Contribute
 ----------
 
 - Check for open issues or open a fresh issue to start a discussion around a feature idea or a bug.
-- Fork `the repository`_ on GitHub to start making your changes to the **development** branch (or branch off of it).
+- Fork `the repository`_ on GitLab to start making your changes to the **development** branch (or branch off of it).
 - Write a test which shows that the bug was fixed or that the feature works as expected.
 - Add yourself to the `contributors file`_.
 - Send a merge request.
@@ -60,13 +60,13 @@ Contribute
 .. _Translations: https://www.transifex.com/projects/p/mayan-edms/
 .. _Mailing list (via Google Groups): http://groups.google.com/group/mayan-edms
 .. _Apache 2.0 License: https://www.apache.org/licenses/LICENSE-2.0.txt
-.. _`the repository`: http://github.com/mayan-edms/mayan-edms
-.. _`contributors file`: https://github.com/mayan-edms/mayan-edms/blob/master/docs/topics/contributors.rst
+.. _`the repository`: http://gitlab.com/mayan-edms/mayan-edms
+.. _`contributors file`: https://gitlab.com/mayan-edms/mayan-edms/blob/master/docs/topics/contributors.rst
 
 .. |Build Status| image:: https://gitlab.com/ci/projects/6169/status.png?ref=master
    :target: https://gitlab.com/ci/projects/6169?ref=master
-.. |Logo| image:: https://github.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
-.. |Animation| image:: https://github.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif
+.. |Logo| image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
+.. |Animation| image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif
 .. |Installs badge| image:: http://img.shields.io/pypi/dm/mayan-edms.svg?style=flat
    :target: https://crate.io/packages/mayan-edms/
 .. |PyPI badge| image:: http://img.shields.io/pypi/v/mayan-edms.svg?style=flat
