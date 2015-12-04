@@ -2,6 +2,9 @@
 Deploying
 =========
 
+OS "bare metal"
+===============
+
 Like other Django based projects **Mayan EDMS** can be deployed in a wide variety
 of ways. The method provided below is only a bare minimum example.
 These instructions are independent of the instructions mentioned in the
@@ -164,3 +167,25 @@ Restart the services::
 
     /etc/init.d/nginx restart
     /etc/init.d/supervisor restart
+
+Docker
+======
+
+Deploy the Mayan EDMS Docker image::
+
+    docker run --name postgres -e POSTGRES_DB=mayan -e POSTGRES_USER=mayan -e POSTGRES_PASSWORD=mysecretpassword -v /var/lib/postgresql/data -d postgres
+    docker run --name redis -d redis
+    docker run --name mayan-edms -p 80:80 --link postgres:postgres --link redis:redis -e POSTGRES_DB=mayan -e POSTGRES_USER=mayan -e POSTGRES_PASSWORD=mysecretpassword -v /usr/local/lib/python2.7/dist-packages/mayan/media -d mayanedms/monolithic
+
+After the **Mayan EDMS** container finishes initializing (about 5 minutes), it will
+be available by browsing to http://127.0.0.1
+
+Docker Compose
+==============
+
+Launch the entire stack using::
+
+    docker-compose -f docker-compose.yaml up -d
+
+After the **Mayan EDMS** container finishes initializing (about 5 minutes), it will
+be available by browsing to http://127.0.0.1
