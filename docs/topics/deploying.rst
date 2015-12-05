@@ -171,6 +171,14 @@ Restart the services::
 Docker
 ======
 
+Clone the repository with::
+
+    git clone https://gitlab.com/mayan-edms/mayan-edms.git
+
+Change to the directory of the cloned repository::
+
+    cd /usr/share
+
 Deploy the Mayan EDMS Docker image::
 
     docker run --name postgres -e POSTGRES_DB=mayan -e POSTGRES_USER=mayan -e POSTGRES_PASSWORD=mysecretpassword -v /var/lib/postgresql/data -d postgres
@@ -178,14 +186,28 @@ Deploy the Mayan EDMS Docker image::
     docker run --name mayan-edms -p 80:80 --link postgres:postgres --link redis:redis -e POSTGRES_DB=mayan -e POSTGRES_USER=mayan -e POSTGRES_PASSWORD=mysecretpassword -v /usr/local/lib/python2.7/dist-packages/mayan/media -d mayanedms/monolithic
 
 After the **Mayan EDMS** container finishes initializing (about 5 minutes), it will
-be available by browsing to http://127.0.0.1
+be available by browsing to http://127.0.0.1. You can inspect the initialization
+with::
+
+    docker logs mayan-edms
+
 
 Docker Compose
 ==============
+Clone the repository with::
 
-Launch the entire stack using::
+    git clone https://gitlab.com/mayan-edms/mayan-edms.git
 
-    docker-compose -f docker-compose.yaml up -d
+Change to the directory of the cloned repository::
+
+    cd /usr/share
+
+Launch the entire stack (Postgres, Redis, and Mayan EDMS) using::
+
+    docker-compose -f docker-compose.yml up -d
 
 After the **Mayan EDMS** container finishes initializing (about 5 minutes), it will
-be available by browsing to http://127.0.0.1
+be available by browsing to http://127.0.0.1. You can inspect the initialization
+with::
+
+    docker logs mayanedms_mayan-edms_1
