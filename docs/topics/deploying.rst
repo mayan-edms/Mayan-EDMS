@@ -208,6 +208,12 @@ with::
 Docker Compose
 ==============
 
+Create a file named ``environment`` with the following content::
+
+    POSTGRES_DB=mayan
+    POSTGRES_PASSWORD=mayanpassword
+    POSTGRES_USER=mayan
+
 Create a file named ``docker-compose.yml`` with the content::
 
     postgres:
@@ -234,7 +240,7 @@ Create a file named ``docker-compose.yml`` with the content::
 
 Launch the entire stack (Postgres, Redis, and Mayan EDMS) using::
 
-    docker-compose -f docker-compose.yml up -d
+    docker-compose -f docker-compose.yml -p mayanedms up -d
 
 After the **Mayan EDMS** container finishes initializing (about 5 minutes), it will
 be available by browsing to http://127.0.0.1. You can inspect the initialization
