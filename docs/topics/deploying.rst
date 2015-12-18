@@ -88,7 +88,28 @@ Disable the default NGINX site::
 
     rm /etc/nginx/sites-enabled/default
 
-Create the NGINX site file for Mayan EDMS, ``/etc/nginx/site-available/mayan``::
+Create a ``uwsgi.ini`` file with the following contents::
+
+    [uwsgi]
+    chdir = /usr/share/mayan-edms/lib/python2.7/site-packages/mayan
+    chmod-socket = 664
+    chown-socket = www-data:www-data
+    env = DJANGO_SETTINGS_MODULE=mayan.settings.production
+    gid = root
+    logto = /var/log/uwsgi/%n.log
+    pythonpath = /usr/share/mayan-edms/lib/python2.7/site-packages
+    master = True
+    max-requests = 5000
+    socket = /usr/share/mayan-edms/uwsgi.sock
+    uid = root
+    vacuum = True
+    wsgi-file = /usr/share/mayan-edms/lib/python2.7/site-packages/mayan/wsgi.py
+
+Create the directory for the uWSGI log files::
+
+    mkdir /var/log/uwsgi
+
+Create the NGINX site file for **Mayan EDMS**, ``/etc/nginx/sites-available/mayan``::
 
     server {
         listen 80;
@@ -113,7 +134,7 @@ Create the NGINX site file for Mayan EDMS, ``/etc/nginx/site-available/mayan``::
         }
     }
 
-Enable the NGINX site for Mayan EDMS::
+Enable the NGINX site for **Mayan EDMS**::
 
     ln -s /etc/nginx/sites-available/mayan /etc/nginx/sites-enabled/
 
@@ -171,15 +192,7 @@ Restart the services::
 Docker
 ======
 
-Clone the repository with::
-
-    git clone https://gitlab.com/mayan-edms/mayan-edms.git
-
-Change to the directory of the cloned repository::
-
-    cd /usr/share
-
-Deploy the Mayan EDMS Docker image::
+Deploy the Docker image stack::
 
     docker run --name postgres -e POSTGRES_DB=mayan -e POSTGRES_USER=mayan -e POSTGRES_PASSWORD=mysecretpassword -v /var/lib/postgresql/data -d postgres
     docker run --name redis -d redis
@@ -194,13 +207,30 @@ with::
 
 Docker Compose
 ==============
-Clone the repository with::
 
-    git clone https://gitlab.com/mayan-edms/mayan-edms.git
+Create a file named ``docker-compose.yml`` with the content::
 
-Change to the directory of the cloned repository::
+    postgres:
+        env_file:
+            - ./environment
+        image: postgres
+        volumes:
+            - /var/lib/postgresql/data
 
-    cd /usr/share
+    redis:
+        image: redis
+
+    mayan-edms:
+        env_file:
+            - ./environment
+        image: mayanedms/monolithic
+        links:
+            - postgres
+            - redis
+        ports:
+            - "80:80"
+        volumes:
+            - /usr/local/lib/python2.7/dist-packages/mayan/media
 
 Launch the entire stack (Postgres, Redis, and Mayan EDMS) using::
 
