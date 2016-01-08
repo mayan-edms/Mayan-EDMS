@@ -23,7 +23,7 @@ Install all system dependencies::
     libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv \
     tesseract-ocr unpaper poppler-utils -y
 
-Change the directory to where the project will be deployed::
+Change to the directory where the project will be deployed::
 
     cd /usr/share
 
@@ -31,11 +31,11 @@ Create the Python virtual environment for the installation::
 
     virtualenv mayan-edms
 
-Activate virtual env::
+Activate the virtualenv::
 
     source mayan-edms/bin/activate
 
-Install Mayan EDMS::
+Install Mayan EDMS from PyPI::
 
     pip install mayan-edms
 
@@ -43,12 +43,12 @@ Install the Python client for PostgreSQL, Redis, and uWSGI::
 
     pip install psycopg2 redis uwsgi
 
-Create the database for installation::
+Create the database for the installation::
 
     sudo -u postgres createuser -P mayan  (provide password)
     sudo -u postgres createdb -O mayan mayan
 
-Create the directories for the logs::
+Create the directory for the log files::
 
     mkdir /var/log/mayan
 
@@ -56,7 +56,7 @@ Change the current directory to be the one of the installation::
 
     cd mayan-edms
 
-Make a convenience symlink::
+Make a convenience symbolic link::
 
     ln -s lib/python2.7/site-packages/mayan .
 
@@ -64,7 +64,7 @@ Create an initial settings file::
 
     mayan-edms.py createsettings
 
-Update the ``mayan/settings/local.py`` file::
+Append the following to the ``mayan/settings/local.py`` file, paying attention to replace the ``PASSWORD`` value::
 
     DATABASES = {
         'default': {
@@ -95,13 +95,13 @@ Create a ``uwsgi.ini`` file with the following contents::
     chmod-socket = 664
     chown-socket = www-data:www-data
     env = DJANGO_SETTINGS_MODULE=mayan.settings.production
-    gid = root
+    gid = www-data
     logto = /var/log/uwsgi/%n.log
     pythonpath = /usr/share/mayan-edms/lib/python2.7/site-packages
     master = True
     max-requests = 5000
     socket = /usr/share/mayan-edms/uwsgi.sock
-    uid = root
+    uid = www-data
     vacuum = True
     wsgi-file = /usr/share/mayan-edms/lib/python2.7/site-packages/mayan/wsgi.py
 
