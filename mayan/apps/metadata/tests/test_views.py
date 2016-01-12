@@ -1,10 +1,13 @@
 from __future__ import unicode_literals
 
+from django.core.files.base import File
 from documents.models import DocumentType
 from documents.permissions import (
     permission_document_properties_edit, permission_document_view
 )
-from documents.tests.literals import TEST_DOCUMENT_TYPE_2
+from documents.tests.literals import (
+    TEST_DOCUMENT_TYPE_2, TEST_SMALL_DOCUMENT_PATH
+)
 from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests.literals import (
     TEST_USER_USERNAME, TEST_USER_PASSWORD
@@ -77,7 +80,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
 
     def test_metadata_edit_after_document_type_change(self):
         # Gitlab issue #204
-        # Problems to add required metadata after changin the document type
+        # Problems to add required metadata after changing the document type
 
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
@@ -206,3 +209,65 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.assertContains(response, 'Success', status_code=200)
 
         self.assertEqual(len(self.document.metadata.all()), 0)
+
+    def test_multiple_document_metadata_edit(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_document_view.stored_permission
+        )
+
+        self.role.permissions.add(
+            permission_metadata_document_add.stored_permission
+        )
+        self.role.permissions.add(
+            permission_metadata_document_edit.stored_permission
+        )
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document_2 = self.document_type.new_document(
+                file_object=File(file_object)
+        )
+
+        self.document.metadata.create(metadata_type=self.metadata_type)
+        document_2.metadata.create(metadata_type=self.metadata_type)
+
+        response = self.get(
+            'metadata:metadata_multiple_edit', data={
+                'id_list': '{},{}'.format(self.document.pk, document_2.pk)
+            }
+        )
+
+        self.assertContains(response, 'Edit', status_code=200)
+
+    def test_multiple_document_metadata_add(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_document_view.stored_permission
+        )
+
+        self.role.permissions.add(
+            permission_metadata_document_add.stored_permission
+        )
+        self.role.permissions.add(
+            permission_metadata_document_edit.stored_permission
+        )
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            document_2 = self.document_type.new_document(
+                file_object=File(file_object)
+        )
+
+        response = self.post(
+            'metadata:metadata_multiple_add', data={
+                'id_list': '{},{}'.format(self.document.pk, document_2.pk),
+                'metadata_type': self.metadata_type.pk
+            }, follow=True
+        )
+
+        self.assertContains(response, 'Edit', status_code=200)

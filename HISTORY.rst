@@ -1,6 +1,7 @@
 2.0.1 (2016-01-xx)
 ==================
 - Fix GitLab issue #243, "System allows a user to skip entering values for a required metadata field while uploading a new document"
+- Fix GitLab issue #245, "Add multiple metadata not possible"
 
 2.0 (2015-12-04)
 ================

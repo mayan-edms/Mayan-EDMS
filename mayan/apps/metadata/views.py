@@ -93,21 +93,21 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         )
     )
 
-    metadata = {}
+    metadata_dict = {}
     initial = []
 
     for document in documents:
         document.add_as_recent_document_for_user(request.user)
 
-        for item in document.metadata.all():
-            value = item.value
-            if item.metadata_type in metadata:
-                if value not in metadata[item.metadata_type]:
-                    metadata[item.metadata_type].append(value)
-            else:
-                metadata[item.metadata_type] = [value] if value else []
+        for document_metadata in document.metadata.all():
+            metadata_dict.setdefault(document_metadata.metadata_type, set())
 
-    for key, value in metadata.items():
+            if document_metadata.value:
+                metadata_dict[
+                    document_metadata.metadata_type
+                ].add(document_metadata.value)
+
+    for key, value in metadata_dict.items():
         initial.append({
             'document_type': document.document_type,
             'metadata_type': key,
@@ -293,7 +293,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
             elif documents.count() > 1:
                 return HttpResponseRedirect('%s?%s' % (
                     reverse('metadata:metadata_multiple_edit'),
-                    urlencode({'id_list': document_id_list, 'next': next}))
+                    urlencode({'id_list': ','.join(document_id_list), 'next': next}))
                 )
 
     else:
