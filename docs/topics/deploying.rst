@@ -247,3 +247,12 @@ be available by browsing to http://127.0.0.1. You can inspect the initialization
 with::
 
     docker logs mayanedms_mayan-edms_1
+
+Vagrant
+=======
+Make sure you have Vagrant and a provider properly installed as per
+https://docs.vagrantup.com/v2/installation/index.html
+And execute::
+
+    vagrant up production
+

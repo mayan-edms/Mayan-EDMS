@@ -254,7 +254,7 @@ Start and provision a machine using:
 
 .. code-block:: bash
 
-    vagrant up
+    vagrant up development
 
 To launch a standalone development server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

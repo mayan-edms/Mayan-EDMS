@@ -24,6 +24,18 @@ Fix multiple document metadata editing
 Fixed a bug that made it impossible to edit multiple documents' metadata values
 if one of the documents had no previous value for it's metadata.
 
+Updated Vagrant file
+--------------------
+The included Vagrant file now provide 2 boxes: development and production.
+Selection which kind of box to provision is as easy as executing::
+
+    vagrant up development
+
+or
+
+    vagrant up production
+
+
 Other changes
 -------------
 * None
