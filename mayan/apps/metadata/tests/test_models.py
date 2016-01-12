@@ -126,3 +126,28 @@ class MetadataTestCase(TestCase):
         self.assertEqual(
             self.document.metadata_value_of.test, TEST_PARSED_VALID_DATE
         )
+
+    def test_required_metadata(self):
+        self.document_type.metadata.all().delete()
+
+        self.assertFalse(
+            self.metadata_type.get_required_for(self.document_type)
+        )
+
+        self.document_type.metadata.create(
+            metadata_type=self.metadata_type, required=False
+        )
+
+        self.assertFalse(
+            self.metadata_type.get_required_for(self.document_type)
+        )
+
+        self.document_type.metadata.all().delete()
+
+        self.document_type.metadata.create(
+            metadata_type=self.metadata_type, required=True
+        )
+
+        self.assertTrue(
+            self.metadata_type.get_required_for(self.document_type)
+        )

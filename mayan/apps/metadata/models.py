@@ -110,7 +110,9 @@ class MetadataType(models.Model):
         return MetadataType.comma_splitter(template.render(context=context))
 
     def get_required_for(self, document_type):
-        return self in document_type.metadata.filter(required=True)
+        return document_type.metadata.filter(
+            required=True, metadata_type=self
+        ).exists()
 
     def validate_value(self, document_type, value):
         # Check default
