@@ -3,6 +3,7 @@
 - Fix GitLab issue #243, "System allows a user to skip entering values for a required metadata field while uploading a new document"
 - Fix GitLab issue #245, "Add multiple metadata not possible"
 - Updated Vagrantfile to provision a production box too.
+- Testing settings now import from settings/local.py first.
 
 2.0 (2015-12-04)
 ================
