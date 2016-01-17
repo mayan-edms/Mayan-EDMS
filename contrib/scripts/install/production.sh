@@ -7,7 +7,7 @@ DB_USERNAME=mayan
 DB_PASSWORD=test123
 # ==== END CONFIG ====
 
-cat << EOF | sudo tee -a /etc/motd.tail
+cat << EOF | tee -a /etc/motd.tail
 **********************************
 
 Mayan EDMS Vagrant Production Box
@@ -16,8 +16,8 @@ Mayan EDMS Vagrant Production Box
 EOF
 
 echo -e "\n -> Running apt-get update & upgrade \n"
-sudo apt-get -qq update
-sudo apt-get -y upgrade
+apt-get -qq update
+apt-get -y upgrade
 
 echo -e "\n -> Installing core binaries \n"
 apt-get install nginx supervisor redis-server postgresql libpq-dev libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
