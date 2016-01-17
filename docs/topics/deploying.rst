@@ -252,7 +252,7 @@ Vagrant
 =======
 Make sure you have Vagrant and a provider properly installed as per
 https://docs.vagrantup.com/v2/installation/index.html
-And execute::
+Clone the repository and execute::
 
     vagrant up production
 
