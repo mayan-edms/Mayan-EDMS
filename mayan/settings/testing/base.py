@@ -1,6 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
-from .. import *  # NOQA
+from ..base import *  # NOQA
 
 INSTALLED_APPS += ('test_without_migrations',)
 TEMPLATE_LOADERS = (
