@@ -1,14 +1,11 @@
 from __future__ import unicode_literals
 
-import io
 import logging
 
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_sidebar
-from django_gpg.exceptions import GPGDecryptionError
-from django_gpg.runtime import gpg
 from documents.models import Document, DocumentVersion
 
 from .hooks import document_pre_open_hook, document_version_post_save_hook
@@ -33,8 +30,6 @@ class DocumentSignaturesApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentSignaturesApp, self).ready()
-
-        DocumentVersionSignature = self.get_model('DocumentVersionSignature')
 
         DocumentVersion.register_post_save_hook(
             1, document_version_post_save_hook

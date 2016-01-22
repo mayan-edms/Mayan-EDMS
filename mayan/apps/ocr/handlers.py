@@ -4,7 +4,6 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-from .models import DocumentTypeSettings
 from .settings import setting_auto_ocr
 
 
@@ -16,6 +15,8 @@ def post_version_upload_ocr(sender, instance, **kwargs):
 
 
 def initialize_new_ocr_settings(sender, instance, **kwargs):
+    DocumentTypeSettings = sender.get_model('DocumentTypeSettings')
+
     if kwargs['created']:
         DocumentTypeSettings.objects.create(
             document_type=instance, auto_ocr=setting_auto_ocr.value

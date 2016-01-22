@@ -33,16 +33,19 @@ from .permissions import permission_ocr_document, permission_ocr_content_view
 from .settings import (
     setting_pdftotext_path, setting_tesseract_path
 )
-from .tasks import task_do_ocr
 
 logger = logging.getLogger(__name__)
 
 
 def document_ocr_submit(self):
+    from .tasks import task_do_ocr
+
     task_do_ocr.apply_async(args=(self.latest_version.pk,))
 
 
 def document_version_ocr_submit(self):
+    from .tasks import task_do_ocr
+
     task_do_ocr.apply_async(
         kwargs={'document_version_pk': self.pk},
         countdown=settings_db_sync_task_delay.value

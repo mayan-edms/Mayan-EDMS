@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import logging
 
-from .models import DocumentMetadata
 from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 
 logger = logging.getLogger(__name__)
@@ -36,6 +35,8 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
     # Delete existing document metadata
     for metadata in instance.metadata.all():
         metadata.delete(enforce_required=False)
+
+    DocumentMetadata = sender.get_model('DocumentMetadata')
 
     # Add new document type metadata types to document
     for document_type_metadata_type in instance.document_type.metadata.filter(required=True):

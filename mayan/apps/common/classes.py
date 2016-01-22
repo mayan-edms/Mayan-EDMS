@@ -4,7 +4,6 @@ from django.core.exceptions import PermissionDenied
 from django.db import models
 from django.utils.translation import ugettext
 
-from acls.models import AccessControlList
 from permissions import Permission
 
 
@@ -126,6 +125,8 @@ class Filter(object):
         return unicode(self.label)
 
     def get_queryset(self, user):
+        from acls.models import AccessControlList
+
         queryset = self.model.objects.all()
         for kwargs in self.filter_kwargs:
             queryset = queryset.filter(**kwargs)
