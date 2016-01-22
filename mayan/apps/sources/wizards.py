@@ -1,11 +1,12 @@
 from __future__ import unicode_literals
 
 from django.contrib import messages
-from django.contrib.formtools.wizard.views import SessionWizardView
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
+
+from formtools.wizard.views import SessionWizardView
 
 from common.mixins import ViewPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
