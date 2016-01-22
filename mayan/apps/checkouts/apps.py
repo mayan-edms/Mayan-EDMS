@@ -17,7 +17,6 @@ from .links import (
     link_checkout_list
 )
 from .literals import CHECK_EXPIRED_CHECK_OUTS_INTERVAL
-from .models import DocumentCheckout
 from .permissions import (
     permission_document_checkin, permission_document_checkin_override,
     permission_document_checkout
@@ -35,6 +34,8 @@ class CheckoutsApp(MayanAppConfig):
         super(CheckoutsApp, self).ready()
 
         APIEndPoint(app=self, version_string='1')
+
+        DocumentCheckout = self.get_model('DocumentCheckout')
 
         Document.add_to_class(
             'check_in',

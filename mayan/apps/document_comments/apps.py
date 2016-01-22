@@ -10,7 +10,6 @@ from navigation import SourceColumn
 from .links import (
     link_comment_add, link_comment_delete, link_comments_for_document
 )
-from .models import Comment
 from .permissions import (
     permission_comment_create, permission_comment_delete,
     permission_comment_view
@@ -25,6 +24,8 @@ class DocumentCommentsApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentCommentsApp, self).ready()
+
+        Comment = self.get_model('Comment')
 
         ModelPermission.register(
             model=Document, permissions=(

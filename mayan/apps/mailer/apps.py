@@ -14,7 +14,6 @@ from .links import (
     link_document_mailing_error_log, link_send_document_link,
     link_send_document
 )
-from .models import LogEntry
 from .permissions import (
     permission_mailing_link, permission_mailing_send_document
 )
@@ -26,6 +25,8 @@ class MailerApp(MayanAppConfig):
 
     def ready(self):
         super(MailerApp, self).ready()
+
+        LogEntry = self.get_model('LogEntry')
 
         SourceColumn(
             source=LogEntry, label=_('Date and time'), attribute='datetime'

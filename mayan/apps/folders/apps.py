@@ -20,7 +20,6 @@ from .links import (
     link_folder_delete, link_folder_document_multiple_remove,
     link_folder_edit, link_folder_view
 )
-from .models import DocumentFolder, Folder
 from .permissions import (
     permission_folder_add_document, permission_folder_delete,
     permission_folder_edit, permission_folder_remove_document,
@@ -35,6 +34,9 @@ class FoldersApp(MayanAppConfig):
 
     def ready(self):
         super(FoldersApp, self).ready()
+
+        DocumentFolder = self.get_model('DocumentFolder')
+        Folder = self.get_model('Folder')
 
         APIEndPoint(app=self, version_string='1')
 

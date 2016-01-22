@@ -20,7 +20,6 @@ from .links import (
     link_tag_delete, link_tag_document_list, link_tag_edit, link_tag_list,
     link_tag_multiple_delete, link_tag_tagged_item_list
 )
-from .models import DocumentTag, Tag
 from .permissions import (
     permission_tag_attach, permission_tag_delete, permission_tag_edit,
     permission_tag_remove, permission_tag_view
@@ -35,6 +34,9 @@ class TagsApp(MayanAppConfig):
 
     def ready(self):
         super(TagsApp, self).ready()
+
+        DocumentTag = self.get_model('DocumentTag')
+        Tag = self.get_model('Tag')
 
         APIEndPoint(app=self, version_string='1')
 

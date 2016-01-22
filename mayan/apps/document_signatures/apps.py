@@ -11,48 +11,17 @@ from django_gpg.exceptions import GPGDecryptionError
 from django_gpg.runtime import gpg
 from documents.models import Document, DocumentVersion
 
+from .hooks import document_pre_open_hook, document_version_post_save_hook
 from .links import (
     link_document_signature_delete, link_document_signature_download,
     link_document_signature_upload, link_document_verify
 )
-from .models import DocumentVersionSignature
 from .permissions import (
     permission_document_verify, permission_signature_delete,
     permission_signature_download, permission_signature_upload
 )
 
 logger = logging.getLogger(__name__)
-
-
-def document_pre_open_hook(descriptor, instance):
-    if DocumentVersionSignature.objects.has_embedded_signature(document_version=instance):
-        # If it has an embedded signature, decrypt
-        try:
-            result = gpg.decrypt_file(descriptor, close_descriptor=False)
-            # gpg return a string, turn it into a file like object
-        except GPGDecryptionError:
-            # At least return the original raw content
-            descriptor.seek(0)
-            return descriptor
-        else:
-            descriptor.close()
-            return io.BytesIO(result.data)
-    else:
-        return descriptor
-
-
-def document_version_post_save_hook(instance):
-    logger.debug('instance: %s', instance)
-
-    try:
-        document_signature = DocumentVersionSignature.objects.get(
-            document_version=instance
-        )
-    except DocumentVersionSignature.DoesNotExist:
-        document_signature = DocumentVersionSignature.objects.create(
-            document_version=instance
-        )
-        document_signature.check_for_embedded_signature()
 
 
 class DocumentSignaturesApp(MayanAppConfig):
@@ -64,6 +33,8 @@ class DocumentSignaturesApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentSignaturesApp, self).ready()
+
+        DocumentVersionSignature = self.get_model('DocumentVersionSignature')
 
         DocumentVersion.register_post_save_hook(
             1, document_version_post_save_hook

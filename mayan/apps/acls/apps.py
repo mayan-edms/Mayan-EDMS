@@ -6,7 +6,6 @@ from common import MayanAppConfig, menu_object, menu_sidebar
 from navigation import SourceColumn
 
 from .links import link_acl_new, link_acl_delete, link_acl_permissions
-from .models import AccessControlList
 
 
 class ACLsApp(MayanAppConfig):
@@ -16,6 +15,8 @@ class ACLsApp(MayanAppConfig):
 
     def ready(self):
         super(ACLsApp, self).ready()
+
+        AccessControlList = self.get_model('AccessControlList')
 
         SourceColumn(
             source=AccessControlList, label=_('Permissions'),

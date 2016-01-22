@@ -30,10 +30,6 @@ from .links import (
     link_template_node_create, link_template_node_delete,
     link_template_node_edit
 )
-from .models import (
-    DocumentIndexInstanceNode, Index, IndexInstance, IndexInstanceNode,
-    IndexTemplateNode
-)
 from .widgets import get_breadcrumbs, index_instance_item_link, node_level
 
 
@@ -46,6 +42,12 @@ class DocumentIndexingApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentIndexingApp, self).ready()
+
+        DocumentIndexInstanceNode = self.get_model('DocumentIndexInstanceNode')
+        Index = self.get_model('Index')
+        IndexInstance = self.get_model('IndexInstance')
+        IndexInstanceNode = self.get_model('IndexInstanceNode')
+        IndexTemplateNode = self.get_model('IndexTemplateNode')
 
         APIEndPoint(app=self, version_string='1')
 

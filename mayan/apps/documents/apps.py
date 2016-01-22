@@ -60,10 +60,6 @@ from .literals import (
     CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
     DELETE_STALE_STUBS_INTERVAL
 )
-from .models import (
-    DeletedDocument, Document, DocumentPage, DocumentType,
-    DocumentTypeFilename, DocumentVersion
-)
 from .permissions import (
     permission_document_delete, permission_document_download,
     permission_document_edit, permission_document_new_version,
@@ -89,6 +85,13 @@ class DocumentsApp(MayanAppConfig):
         super(DocumentsApp, self).ready()
 
         APIEndPoint(app=self, version_string='1')
+
+        DeletedDocument = self.get_model('DeletedDocument')
+        Document = self.get_model('Document')
+        DocumentPage = self.get_model('DocumentPage')
+        DocumentType = self.get_model('DocumentType')
+        DocumentTypeFilename = self.get_model('DocumentTypeFilename')
+        DocumentVersion = self.get_model('DocumentVersion')
 
         MissingItem(
             label=_('Create a document type'),

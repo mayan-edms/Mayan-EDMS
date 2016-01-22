@@ -21,7 +21,6 @@ from .links import (
     link_smart_link_instance_view, link_smart_link_instances_for_document,
     link_smart_link_list, link_smart_link_setup
 )
-from .models import ResolvedSmartLink, SmartLink, SmartLinkCondition
 from .permissions import (
     permission_smart_link_delete, permission_smart_link_edit,
     permission_smart_link_view
@@ -34,6 +33,10 @@ class LinkingApp(MayanAppConfig):
 
     def ready(self):
         super(LinkingApp, self).ready()
+
+        ResolvedSmartLink = self.get_model('ResolvedSmartLink')
+        SmartLink = self.get_model('SmartLink')
+        SmartLinkCondition = self.get_model('SmartLinkCondition')
 
         ModelPermission.register(
             model=SmartLink, permissions=(

@@ -37,7 +37,6 @@ from .links import (
     link_setup_metadata_type_create, link_setup_metadata_type_delete,
     link_setup_metadata_type_edit, link_setup_metadata_type_list,
 )
-from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
 from .permissions import (
     permission_metadata_document_add, permission_metadata_document_edit,
     permission_metadata_document_remove, permission_metadata_document_view
@@ -54,6 +53,10 @@ class MetadataApp(MayanAppConfig):
 
     def ready(self):
         super(MetadataApp, self).ready()
+
+        DocumentMetadata = self.get_model('DocumentMetadata')
+        DocumentTypeMetadataType = self.get_model('DocumentTypeMetadataType')
+        MetadataType = self.get_model('MetadataType')
 
         APIEndPoint(app=self, version_string='1')
 

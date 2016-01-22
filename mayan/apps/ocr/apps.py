@@ -29,7 +29,6 @@ from .links import (
     link_document_submit_multiple, link_document_type_ocr_settings,
     link_document_type_submit, link_entry_list
 )
-from .models import DocumentVersionOCRError
 from .permissions import permission_ocr_document, permission_ocr_content_view
 from .settings import (
     setting_pdftotext_path, setting_tesseract_path
@@ -57,6 +56,8 @@ class OCRApp(MayanAppConfig):
 
     def ready(self):
         super(OCRApp, self).ready()
+
+        DocumentVersionOCRError = self.get_model('DocumentVersionOCRError')
 
         APIEndPoint(app=self, version_string='1')
 

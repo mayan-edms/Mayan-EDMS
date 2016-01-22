@@ -30,10 +30,6 @@ from .links import (
     link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
     link_upload_version
 )
-from .models import (
-    POP3Email, IMAPEmail, Source, SourceLog, StagingFolderSource,
-    WatchFolderSource, WebFormSource
-)
 from .widgets import staging_file_thumbnail
 
 
@@ -44,6 +40,14 @@ class SourcesApp(MayanAppConfig):
 
     def ready(self):
         super(SourcesApp, self).ready()
+
+        POP3Email = self.get_model('POP3Email')
+        IMAPEmail = self.get_model('IMAPEmail')
+        Source = self.get_model('Source')
+        SourceLog = self.get_model('SourceLog')
+        StagingFolderSource = self.get_model('StagingFolderSource')
+        WatchFolderSource = self.get_model('WatchFolderSource')
+        WebFormSource = self.get_model('WebFormSource')
 
         APIEndPoint(app=self, version_string='1')
 

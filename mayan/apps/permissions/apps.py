@@ -9,7 +9,6 @@ from common.signals import perform_upgrade
 from rest_api.classes import APIEndPoint
 
 from .handlers import purge_permissions
-from .models import Role
 from .links import (
     link_permission_grant, link_permission_revoke, link_role_create,
     link_role_delete, link_role_edit, link_role_list, link_role_members,
@@ -24,6 +23,8 @@ class PermissionsApp(MayanAppConfig):
 
     def ready(self):
         super(PermissionsApp, self).ready()
+
+        Role = self.get_model('Role')
 
         APIEndPoint(app=self, version_string='1')
 
