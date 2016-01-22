@@ -24,9 +24,7 @@ class DocumentCheckout(models.Model):
     """
     Model to store the state and information of a document checkout
     """
-    document = models.ForeignKey(
-        Document, unique=True, verbose_name=_('Document')
-    )
+    document = models.OneToOneField(Document, verbose_name=_('Document'))
     checkout_datetime = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Check out date and time')
     )
