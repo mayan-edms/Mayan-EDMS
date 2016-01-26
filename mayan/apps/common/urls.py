@@ -57,6 +57,8 @@ urlpatterns += patterns(
     ),
     (
         r'^favicon\.ico$',
-        RedirectView.as_view(url=static('appearance/images/favicon.ico'))
+        RedirectView.as_view(
+            permanent=True, url=static('appearance/images/favicon.ico')
+        )
     ),
 )

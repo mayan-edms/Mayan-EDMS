@@ -2,9 +2,11 @@ from __future__ import unicode_literals
 
 import logging
 
-logger = logging.getLogger(__name__)
+from django.db.models import get_model
 
 from .settings import setting_auto_ocr
+
+logger = logging.getLogger(__name__)
 
 
 def post_version_upload_ocr(sender, instance, **kwargs):
@@ -15,7 +17,7 @@ def post_version_upload_ocr(sender, instance, **kwargs):
 
 
 def initialize_new_ocr_settings(sender, instance, **kwargs):
-    DocumentTypeSettings = sender.get_model('DocumentTypeSettings')
+    DocumentTypeSettings = get_model('ocr', 'DocumentTypeSettings')
 
     if kwargs['created']:
         DocumentTypeSettings.objects.create(

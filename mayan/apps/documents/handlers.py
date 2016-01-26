@@ -1,10 +1,11 @@
 from __future__ import unicode_literals
 
+from django.db.models import get_model
 from django.utils.translation import ugettext_lazy as _
 
 
 def create_default_document_type(sender, **kwargs):
-    DocumentType = sender.get_model('DocumentType')
+    DocumentType = get_model('documents', 'DocumentType')
 
     if not DocumentType.objects.count():
         DocumentType.objects.create(label=_('Default'))

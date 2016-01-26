@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.db.models import Max
@@ -25,7 +25,7 @@ class Transformation(models.Model):
 
     content_type = models.ForeignKey(ContentType)
     object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey('content_type', 'object_id')
+    content_object = GenericForeignKey('content_type', 'object_id')
 
     order = models.PositiveIntegerField(
         blank=True, db_index=True, default=0, help_text=_(

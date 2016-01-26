@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.contrib.contenttypes import generic
+from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -26,7 +26,7 @@ class AccessControlList(models.Model):
         related_name='object_content_type'
     )
     object_id = models.PositiveIntegerField()
-    content_object = generic.GenericForeignKey(
+    content_object = GenericForeignKey(
         ct_field='content_type',
         fk_field='object_id',
     )
