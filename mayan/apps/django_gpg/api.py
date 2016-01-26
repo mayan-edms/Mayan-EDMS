@@ -252,7 +252,7 @@ class GPG(object):
         if close_descriptor:
             input_descriptor.close()
 
-        if not result.status:
+        if not result.status or result.status == 'no data was provided':
             raise GPGDecryptionError('Unable to decrypt file')
 
         return result
