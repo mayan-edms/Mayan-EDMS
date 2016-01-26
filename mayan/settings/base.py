@@ -239,14 +239,12 @@ LOGIN_EXEMPT_URLS = (
 )
 # ---------- Django REST framework -----------
 REST_FRAMEWORK = {
-    'PAGINATE_BY': 10,
-    'PAGINATE_BY_PARAM': 'page_size',
-    'MAX_PAGINATE_BY': 100,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    )
+    ),
+    'PAGE_SIZE': 10,
 }
 # --------- Pagination --------
 PAGINATION_SETTINGS = {
