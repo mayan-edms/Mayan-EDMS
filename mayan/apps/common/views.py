@@ -170,10 +170,10 @@ class SetupListView(TemplateView):
 
     def get_context_data(self, **kwargs):
         data = super(SetupListView, self).get_context_data(**kwargs)
+        context = RequestContext(self.request)
+        context['request'] = self.request
         data.update({
-            'resolved_links': menu_setup.resolve(
-                context=RequestContext(self.request)
-            ),
+            'resolved_links': menu_setup.resolve(context=context),
             'title': _('Setup items'),
         })
         return data
@@ -183,7 +183,10 @@ class ToolsListView(SimpleView):
     template_name = 'appearance/generic_list_horizontal.html'
 
     def get_menu_links(self):
-        return menu_tools.resolve(context=RequestContext(self.request))
+        context = RequestContext(self.request)
+        context['request'] = self.request
+
+        return menu_tools.resolve(context=context)
 
     def get_extra_context(self):
         return {
