@@ -101,7 +101,7 @@ class OCRApp(MayanAppConfig):
         )
 
         document_search.add_model_field(
-            field='versions__pages__ocr_content__content', label=_('Content')
+            field='versions__pages__ocr_content__content', label=_('OCR')
         )
 
         menu_facet.bind_links(
