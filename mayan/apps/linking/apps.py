@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -10,7 +11,6 @@ from common import (
     menu_sidebar
 )
 from common.widgets import two_state_template
-from documents.models import Document
 from navigation import SourceColumn
 
 from .links import (
@@ -33,6 +33,10 @@ class LinkingApp(MayanAppConfig):
 
     def ready(self):
         super(LinkingApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
 
         ResolvedSmartLink = self.get_model('ResolvedSmartLink')
         SmartLink = self.get_model('SmartLink')

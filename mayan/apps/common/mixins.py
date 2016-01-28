@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
@@ -7,7 +8,6 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.utils.translation import ungettext
 
-from acls.models import AccessControlList
 from permissions import Permission
 
 __all__ = (
@@ -85,6 +85,10 @@ class ObjectListPermissionFilterMixin(object):
     object_permission = None
 
     def get_queryset(self):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
         queryset = super(ObjectListPermissionFilterMixin, self).get_queryset()
 
         if self.object_permission:
@@ -113,6 +117,10 @@ class ObjectPermissionCheckMixin(object):
         return self.get_object()
 
     def dispatch(self, request, *args, **kwargs):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
         if self.object_permission:
             try:
                 Permission.check_permissions(

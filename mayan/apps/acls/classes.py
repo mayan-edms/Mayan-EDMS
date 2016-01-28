@@ -2,7 +2,7 @@ from __future__ import unicode_literals, absolute_import
 
 import logging
 
-from permissions.models import StoredPermission
+from django.apps import apps
 
 logger = logging.getLogger(__name__)
 
@@ -20,6 +20,10 @@ class ModelPermission(object):
 
     @classmethod
     def get_for_instance(cls, instance):
+        StoredPermission = apps.get_model(
+            app_label='permissions', model_name='StoredPermission'
+        )
+
         try:
             permissions = cls._registry[type(instance)]
         except KeyError:

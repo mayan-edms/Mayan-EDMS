@@ -1,10 +1,10 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from navigation import Link
 
-from .models import DocumentVersionSignature
 from .permissions import (
     permission_document_verify, permission_signature_delete,
     permission_signature_download, permission_signature_upload,
@@ -12,6 +12,10 @@ from .permissions import (
 
 
 def can_upload_detached_signature(context):
+    DocumentVersionSignature = apps.get_model(
+        app_label='document_signatures', model_name='DocumentVersionSignature'
+    )
+
     return not DocumentVersionSignature.objects.has_detached_signature(
         context['object'].latest_version
     ) and not DocumentVersionSignature.objects.has_embedded_signature(
@@ -20,6 +24,10 @@ def can_upload_detached_signature(context):
 
 
 def can_delete_detached_signature(context):
+    DocumentVersionSignature = apps.get_model(
+        app_label='document_signatures', model_name='DocumentVersionSignature'
+    )
+
     return DocumentVersionSignature.objects.has_detached_signature(
         context['object'].latest_version
     )

@@ -1,8 +1,8 @@
 from __future__ import unicode_literals
 
-import logging
+from django.apps import apps
 
-from django.db.models import get_model
+import logging
 
 from .tasks import task_add_required_metadata_type, task_remove_metadata_type
 
@@ -38,7 +38,9 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
     for metadata in instance.metadata.all():
         metadata.delete(enforce_required=False)
 
-    DocumentMetadata = get_model('metadata', 'DocumentMetadata')
+    DocumentMetadata = apps.get_model(
+        app_label='metadata', model_name='DocumentMetadata'
+    )
 
     # Add new document type metadata types to document
     for document_type_metadata_type in instance.document_type.metadata.filter(required=True):

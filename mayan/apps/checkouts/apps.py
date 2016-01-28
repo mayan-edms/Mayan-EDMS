@@ -4,11 +4,11 @@ from datetime import timedelta
 
 from kombu import Exchange, Queue
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
-from documents.models import Document
 from mayan.celery import app
 from rest_api.classes import APIEndPoint
 
@@ -34,6 +34,10 @@ class CheckoutsApp(MayanAppConfig):
         super(CheckoutsApp, self).ready()
 
         APIEndPoint(app=self, version_string='1')
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
 
         DocumentCheckout = self.get_model('DocumentCheckout')
 

@@ -5,6 +5,7 @@ import logging
 from kombu import Exchange, Queue
 import sh
 
+from django.apps import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,7 +15,6 @@ from common import (
     menu_tools
 )
 from common.settings import settings_db_sync_task_delay
-from documents.models import Document, DocumentType, DocumentVersion
 from documents.search import document_search
 from documents.signals import post_version_upload
 from documents.widgets import document_link
@@ -59,6 +59,18 @@ class OCRApp(MayanAppConfig):
 
     def ready(self):
         super(OCRApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        DocumentType = apps.get_model(
+            app_label='documents', model_name='DocumentType'
+        )
+
+        DocumentVersion = apps.get_model(
+            app_label='documents', model_name='DocumentVersion'
+        )
 
         DocumentVersionOCRError = self.get_model('DocumentVersionOCRError')
 

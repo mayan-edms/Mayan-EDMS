@@ -2,17 +2,22 @@ from __future__ import unicode_literals
 
 import logging
 
+from django.apps import apps
+
 from lock_manager import Lock, LockError
 from mayan.celery import app
 
 from .literals import CHECKOUT_EXPIRATION_LOCK_EXPIRE
-from .models import DocumentCheckout
 
 logger = logging.getLogger(__name__)
 
 
 @app.task(ignore_result=True)
 def task_check_expired_check_outs():
+    DocumentCheckout = apps.get_model(
+        app_label='checkouts', model_name='DocumentCheckout'
+    )
+
     logger.debug('executing...')
     lock_id = 'task_expired_check_outs'
     try:

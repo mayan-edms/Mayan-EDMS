@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from kombu import Exchange, Queue
 
+from django.apps import apps
 from django.db.models.signals import post_save, post_delete
 from django.utils.translation import ugettext_lazy as _
 
@@ -11,10 +12,8 @@ from common import (
 )
 from common.classes import Package
 from common.widgets import two_state_template
-from documents.models import Document
 from documents.signals import post_document_created
 from mayan.celery import app
-from metadata.models import DocumentMetadata
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
@@ -42,6 +41,14 @@ class DocumentIndexingApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentIndexingApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        DocumentMetadata = apps.get_model(
+            app_label='metadata', model_name='DocumentMetadata'
+        )
 
         DocumentIndexInstanceNode = self.get_model('DocumentIndexInstanceNode')
         Index = self.get_model('Index')

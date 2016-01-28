@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 import io
 import logging
 
+from django.apps import apps
 from django_gpg.exceptions import GPGDecryptionError
 from django_gpg.runtime import gpg
 
@@ -10,7 +11,11 @@ logger = logging.getLogger(__name__)
 
 
 def document_pre_open_hook(descriptor, instance):
-    from .models import DocumentVersionSignature
+    logger.debug('instance: %s', instance)
+
+    DocumentVersionSignature = apps.get_model(
+        app_label='document_signatures', model_name='DocumentVersionSignature'
+    )
 
     if DocumentVersionSignature.objects.has_embedded_signature(document_version=instance):
         # If it has an embedded signature, decrypt
@@ -30,7 +35,10 @@ def document_pre_open_hook(descriptor, instance):
 
 def document_version_post_save_hook(instance):
     logger.debug('instance: %s', instance)
-    from .models import DocumentVersionSignature
+
+    DocumentVersionSignature = apps.get_model(
+        app_label='document_signatures', model_name='DocumentVersionSignature'
+    )
 
     try:
         document_signature = DocumentVersionSignature.objects.get(

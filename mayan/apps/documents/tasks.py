@@ -2,34 +2,44 @@ from __future__ import unicode_literals
 
 import logging
 
+from django.apps import apps
 from django.contrib.auth.models import User
 from django.db import OperationalError
 
 from mayan.celery import app
 
-from common.models import SharedUploadedFile
-
 from .literals import (
     UPDATE_PAGE_COUNT_RETRY_DELAY, UPLOAD_NEW_VERSION_RETRY_DELAY,
     NEW_DOCUMENT_RETRY_DELAY
 )
-from .models import Document, DocumentPage, DocumentType, DocumentVersion
 
 logger = logging.getLogger(__name__)
 
 
 @app.task(ignore_result=True)
 def task_check_delete_periods():
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
     DocumentType.objects.check_delete_periods()
 
 
 @app.task(ignore_result=True)
 def task_check_trash_periods():
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
     DocumentType.objects.check_trash_periods()
 
 
 @app.task(ignore_result=True)
 def task_clear_image_cache():
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+
     logger.info('Starting document cache invalidation')
     Document.objects.invalidate_cache()
     logger.info('Finished document cache invalidation')
@@ -37,6 +47,10 @@ def task_clear_image_cache():
 
 @app.task(ignore_result=True)
 def task_delete_stubs():
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+
     logger.info('Executing')
     Document.objects.delete_stubs()
     logger.info('Finshed')
@@ -44,12 +58,20 @@ def task_delete_stubs():
 
 @app.task(compression='zlib')
 def task_get_document_page_image(document_page_id, *args, **kwargs):
+    DocumentPage = apps.get_model(
+        app_label='documents', model_name='DocumentPage'
+    )
+
     document_page = DocumentPage.objects.get(pk=document_page_id)
     return document_page.get_image(*args, **kwargs)
 
 
 @app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)
 def task_update_page_count(self, version_id):
+    DocumentVersion = apps.get_model(
+        app_label='documents', model_name='DocumentVersion'
+    )
+
     document_version = DocumentVersion.objects.get(pk=version_id)
     try:
         document_version.update_page_count()
@@ -64,6 +86,14 @@ def task_update_page_count(self, version_id):
 
 @app.task(bind=True, default_retry_delay=NEW_DOCUMENT_RETRY_DELAY, ignore_result=True)
 def task_upload_new_document(self, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, user_id=None):
+    SharedUploadedFile = apps.get_model(
+        app_label='common', model_name='SharedUploadedFile'
+    )
+
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
     try:
         document_type = DocumentType.objects.get(pk=document_type_id)
         shared_file = SharedUploadedFile.objects.get(
@@ -106,6 +136,14 @@ def task_upload_new_document(self, document_type_id, shared_uploaded_file_id, de
 
 @app.task(bind=True, default_retry_delay=UPLOAD_NEW_VERSION_RETRY_DELAY, ignore_result=True)
 def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id, comment=None):
+    SharedUploadedFile = apps.get_model(
+        app_label='common', model_name='SharedUploadedFile'
+    )
+
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+
     try:
         document = Document.objects.get(pk=document_id)
         shared_file = SharedUploadedFile.objects.get(

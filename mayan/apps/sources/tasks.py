@@ -1,5 +1,6 @@
 import logging
 
+from django.apps import apps
 from django.contrib.auth.models import User
 from django.core.files import File
 from django.db import OperationalError
@@ -8,17 +9,18 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.celery import app
 
 from common.compressed_files import CompressedFile, NotACompressedFile
-from common.models import SharedUploadedFile
-from documents.models import DocumentType
 
 from .literals import DEFAULT_SOURCE_TASK_RETRY_DELAY
-from .models import Source
 
 logger = logging.getLogger(__name__)
 
 
 @app.task(ignore_result=True)
 def task_check_interval_source(source_id):
+    Source = apps.get_model(
+        app_label='sources', model_name='Source'
+    )
+
     source = Source.objects.get_subclass(pk=source_id)
     if source.enabled:
         try:
@@ -34,6 +36,18 @@ def task_check_interval_source(source_id):
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
 def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, metadata_dict_list=None, user_id=None):
+    SharedUploadedFile = apps.get_model(
+        app_label='common', model_name='SharedUploadedFile'
+    )
+
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
+    Source = apps.get_model(
+        app_label='sources', model_name='Source'
+    )
+
     try:
         document_type = DocumentType.objects.get(pk=document_type_id)
         source = Source.objects.get_subclass(pk=source_id)
@@ -72,6 +86,14 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
 def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, label=None, language=None, metadata_dict_list=None, skip_list=None, user_id=None):
+    SharedUploadedFile = apps.get_model(
+        app_label='common', model_name='SharedUploadedFile'
+    )
+
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
     try:
         document_type = DocumentType.objects.get(pk=document_type_id)
         shared_upload = SharedUploadedFile.objects.get(

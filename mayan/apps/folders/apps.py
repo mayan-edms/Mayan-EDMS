@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -9,7 +10,6 @@ from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_sidebar, menu_multi_item
 )
-from documents.models import Document
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
@@ -34,6 +34,10 @@ class FoldersApp(MayanAppConfig):
 
     def ready(self):
         super(FoldersApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
 
         DocumentFolder = self.get_model('DocumentFolder')
         Folder = self.get_model('Folder')

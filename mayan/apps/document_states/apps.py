@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
@@ -8,7 +9,6 @@ from common import (
     menu_sidebar
 )
 from common.widgets import two_state_template
-from documents.models import Document
 from navigation import SourceColumn
 
 from .handlers import launch_workflow
@@ -32,6 +32,10 @@ class DocumentStatesApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentStatesApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
 
         Workflow = self.get_model('Workflow')
         WorkflowInstance = self.get_model('WorkflowInstance')

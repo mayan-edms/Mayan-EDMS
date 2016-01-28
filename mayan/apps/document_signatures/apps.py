@@ -2,11 +2,11 @@ from __future__ import unicode_literals
 
 import logging
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_sidebar
-from documents.models import Document, DocumentVersion
 
 from .hooks import document_pre_open_hook, document_version_post_save_hook
 from .links import (
@@ -30,6 +30,14 @@ class DocumentSignaturesApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentSignaturesApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        DocumentVersion = apps.get_model(
+            app_label='documents', model_name='DocumentVersion'
+        )
 
         DocumentVersion.register_post_save_hook(
             1, document_version_post_save_hook

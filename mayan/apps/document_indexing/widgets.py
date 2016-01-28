@@ -1,10 +1,9 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext
-
-from .models import IndexInstanceNode
 
 
 def get_instance_link(index_instance_node, text=None, simple=False):
@@ -64,6 +63,10 @@ def get_breadcrumbs(index_instance_node, simple=False, single_link=False, includ
 
 
 def index_instance_item_link(index_instance_item):
+    IndexInstanceNode = apps.get_model(
+        app_label='document_indexing', model_name='IndexInstanceNode'
+    )
+
     if isinstance(index_instance_item, IndexInstanceNode):
         if index_instance_item.index_template_node.link_documents:
             icon_template = '<i class="fa fa-folder"></i>'

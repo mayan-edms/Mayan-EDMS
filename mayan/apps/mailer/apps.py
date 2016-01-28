@@ -2,11 +2,11 @@ from __future__ import unicode_literals
 
 from kombu import Exchange, Queue
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_object, menu_tools
-from documents.models import Document
 from mayan.celery import app
 from navigation import SourceColumn
 
@@ -25,6 +25,10 @@ class MailerApp(MayanAppConfig):
 
     def ready(self):
         super(MailerApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
 
         LogEntry = self.get_model('LogEntry')
 

@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -9,7 +10,6 @@ from common import (
     MayanAppConfig, menu_facet, menu_secondary, menu_object, menu_main,
     menu_multi_item, menu_sidebar
 )
-from documents.models import Document
 from documents.search import document_search
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
@@ -34,6 +34,10 @@ class TagsApp(MayanAppConfig):
 
     def ready(self):
         super(TagsApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
 
         DocumentTag = self.get_model('DocumentTag')
         Tag = self.get_model('Tag')

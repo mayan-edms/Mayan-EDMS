@@ -1,12 +1,15 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.conf import settings
 from django.utils import timezone, translation
 
-from .models import UserLocaleProfile
-
 
 def user_locale_profile_session_config(sender, request, user, **kwargs):
+    UserLocaleProfile = apps.get_model(
+        app_label='common', model_name='UserLocaleProfile'
+    )
+
     user_locale_profile, created = UserLocaleProfile.objects.get_or_create(
         user=user
     )
@@ -34,5 +37,9 @@ def user_locale_profile_session_config(sender, request, user, **kwargs):
 
 
 def user_locale_profile_create(sender, instance, created, **kwargs):
+    UserLocaleProfile = apps.get_model(
+        app_label='common', model_name='UserLocaleProfile'
+    )
+
     if created:
         UserLocaleProfile.objects.create(user=instance)

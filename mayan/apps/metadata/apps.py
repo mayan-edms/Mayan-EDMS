@@ -4,6 +4,7 @@ import logging
 
 from kombu import Exchange, Queue
 
+from django.apps import apps
 from django.db.models.signals import post_delete, post_save
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,7 +15,6 @@ from common import (
 )
 from common.classes import ModelAttribute, Filter
 from common.widgets import two_state_template
-from documents.models import Document, DocumentType
 from documents.search import document_search
 from documents.signals import post_document_type_change
 from documents.permissions import permission_document_view
@@ -53,6 +53,14 @@ class MetadataApp(MayanAppConfig):
 
     def ready(self):
         super(MetadataApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        DocumentType = apps.get_model(
+            app_label='documents', model_name='DocumentType'
+        )
 
         DocumentMetadata = self.get_model('DocumentMetadata')
         DocumentTypeMetadataType = self.get_model('DocumentTypeMetadataType')
