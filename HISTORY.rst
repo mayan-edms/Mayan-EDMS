@@ -1,3 +1,9 @@
+2.1 (2016-XX)
+- Upgrade to use Django 1.8.8. Issue #246.
+- Upgrade requirements.
+- Remove remaining references to Django's User model. Issue #225
+- Rename 'Content' search box to 'OCR'.
+
 2.0.1 (2016-01-22)
 ==================
 - Fix GitLab issue #243, "System allows a user to skip entering values for a required metadata field while uploading a new document"
