@@ -144,6 +144,10 @@ def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id,
         app_label='documents', model_name='Document'
     )
 
+    DocumentVersion = apps.get_model(
+        app_label='documents', model_name='DocumentVersion'
+    )
+
     try:
         document = Document.objects.get(pk=document_id)
         shared_file = SharedUploadedFile.objects.get(
