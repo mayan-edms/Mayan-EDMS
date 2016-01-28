@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.files.base import File
 from django.test import TestCase
 
@@ -24,7 +24,7 @@ class FolderTestCase(TestCase):
                 file_object=File(file_object)
             )
 
-        self.user = User.objects.create_superuser(
+        self.user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )

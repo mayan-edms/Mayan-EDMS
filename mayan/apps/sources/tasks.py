@@ -1,7 +1,7 @@
 import logging
 
 from django.apps import apps
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.files import File
 from django.db import OperationalError
 from django.utils.translation import ugettext_lazy as _
@@ -56,7 +56,7 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
         )
 
         if user_id:
-            user = User.objects.get(pk=user_id)
+            user = get_user_model().objects.get(pk=user_id)
         else:
             user = None
 

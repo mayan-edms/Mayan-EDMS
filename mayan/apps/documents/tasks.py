@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import logging
 
 from django.apps import apps
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db import OperationalError
 
 from mayan.celery import app
@@ -100,7 +100,7 @@ def task_upload_new_document(self, document_type_id, shared_uploaded_file_id, de
             pk=shared_uploaded_file_id
         )
         if user_id:
-            user = User.objects.get(pk=user_id)
+            user = get_user_model().objects.get(pk=user_id)
         else:
             user = None
 
@@ -150,7 +150,7 @@ def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id,
             pk=shared_uploaded_file_id
         )
         if user_id:
-            user = User.objects.get(pk=user_id)
+            user = get_user_model().objects.get(pk=user_id)
         else:
             user = None
 

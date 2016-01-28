@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase, override_settings
@@ -31,7 +31,7 @@ class UploadDocumentTestCase(TestCase):
             label=TEST_DOCUMENT_TYPE
         )
 
-        self.admin_user = User.objects.create_superuser(
+        self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )

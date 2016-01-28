@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import Group, User
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 
 from rest_framework import generics
 
@@ -83,7 +84,7 @@ class APIUserListView(generics.ListCreateAPIView):
     mayan_object_permissions = {'GET': (permission_user_view,)}
     mayan_view_permissions = {'POST': (permission_user_create,)}
     permission_classes = (MayanPermission,)
-    queryset = User.objects.all()
+    queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
 
     def get(self, *args, **kwargs):
@@ -108,7 +109,7 @@ class APIUserView(generics.RetrieveUpdateDestroyAPIView):
         'DELETE': (permission_user_delete,)
     }
     permission_classes = (MayanPermission,)
-    queryset = User.objects.all()
+    queryset = get_user_model().objects.all()
     serializer_class = UserSerializer
 
     def delete(self, *args, **kwargs):

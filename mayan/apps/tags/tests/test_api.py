@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test import override_settings
@@ -27,7 +27,7 @@ class TagAPITestCase(APITestCase):
     """
 
     def setUp(self):
-        self.admin_user = User.objects.create_superuser(
+        self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
