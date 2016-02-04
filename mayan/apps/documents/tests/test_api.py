@@ -38,7 +38,9 @@ class DocumentTypeAPITestCase(APITestCase):
             password=TEST_ADMIN_PASSWORD
         )
 
-        self.client.force_authenticate(user=self.admin_user)
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
 
     def tearDown(self):
         self.admin_user.delete()
@@ -101,7 +103,9 @@ class DocumentAPITestCase(APITestCase):
             password=TEST_ADMIN_PASSWORD
         )
 
-        self.client.force_authenticate(user=self.admin_user)
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
 
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
@@ -113,17 +117,17 @@ class DocumentAPITestCase(APITestCase):
 
     def test_document_upload(self):
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            document_response = self.client.post(
+            response = self.client.post(
                 reverse('rest_api:document-list'), {
                     'document_type': self.document_type.pk,
                     'file': file_descriptor
                 }
             )
 
-        document_data = loads(document_response.content)
+        document_data = loads(response.content)
 
         self.assertEqual(
-            document_response.status_code, status.HTTP_201_CREATED
+            response.status_code, status.HTTP_201_CREATED
         )
         self.assertEqual(Document.objects.count(), 1)
 

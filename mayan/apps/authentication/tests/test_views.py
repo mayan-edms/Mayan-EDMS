@@ -29,7 +29,8 @@ class UserLoginTestCase(TestCase):
     def test_normal_behaviour(self):
         response = self.client.get(reverse('documents:document_list'))
         self.assertRedirects(
-            response, 'http://testserver/authentication/login/'
+            response,
+            'http://testserver/authentication/login/?next=/documents/list/'
         )
 
     @override_settings(AUTHENTICATION_LOGIN_METHOD='username')
@@ -63,7 +64,8 @@ class UserLoginTestCase(TestCase):
     def test_username_login_via_views(self):
         response = self.client.get(reverse('documents:document_list'))
         self.assertRedirects(
-            response, 'http://testserver/authentication/login/'
+            response,
+            'http://testserver/authentication/login/?next=/documents/list/'
         )
 
         response = self.client.post(
@@ -81,7 +83,8 @@ class UserLoginTestCase(TestCase):
         with self.settings(AUTHENTICATION_BACKENDS=(TEST_EMAIL_AUTHENTICATION_BACKEND,)):
             response = self.client.get(reverse('documents:document_list'))
             self.assertRedirects(
-                response, 'http://testserver/authentication/login/'
+                response,
+                'http://testserver/authentication/login/?next=/documents/list/'
             )
 
             response = self.client.post(

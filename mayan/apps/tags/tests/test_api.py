@@ -32,7 +32,9 @@ class TagAPITestCase(APITestCase):
             password=TEST_ADMIN_PASSWORD
         )
 
-        self.client.force_authenticate(user=self.admin_user)
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
 
     def tearDown(self):
         self.admin_user.delete()
