@@ -3,6 +3,7 @@
 - Upgrade requirements.
 - Remove remaining references to Django's User model. Issue #225
 - Rename 'Content' search box to 'OCR'.
+- Remove included login required middleware using django-stronghold instead (http://mikegrouchy.com/django-stronghold/).
 
 2.0.1 (2016-01-22)
 ==================

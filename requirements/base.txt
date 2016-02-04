@@ -17,6 +17,7 @@ django-model-utils==2.4
 django-mptt==0.8.0
 django-qsstats-magic==0.7.2
 django-rest-swagger==0.3.4
+django-stronghold==0.2.7
 django-suit==0.2.16
 django-widget-tweaks==1.4.1
 djangorestframework==3.3.2

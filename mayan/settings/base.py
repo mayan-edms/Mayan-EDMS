@@ -62,6 +62,7 @@ INSTALLED_APPS = (
     'rest_framework',
     'rest_framework.authtoken',
     'solo',
+    'stronghold',
     'widget_tweaks',
     # Base generic
     'acls',
@@ -111,7 +112,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'common.middleware.timezone.TimezoneMiddleware',
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
-    'authentication.middleware.login_required_middleware.LoginRequiredMiddleware',
+    'stronghold.middleware.LoginRequiredMiddleware',
     'common.middleware.ajax_redirect.AjaxRedirect',
 )
 
@@ -215,28 +216,6 @@ COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 LOGIN_URL = 'authentication:login_view'
 LOGIN_REDIRECT_URL = 'common:home'
 INTERNAL_IPS = ('127.0.0.1',)
-# -------- LoginRequiredMiddleware ----------
-LOGIN_EXEMPT_URLS = (
-    r'^favicon\.ico$',
-    r'^about\.html$',
-    r'^legal/',  # allow the entire /legal/* subsection
-    r'^%s-static/' % PROJECT_NAME,
-
-    r'^accounts/register/$',
-    r'^accounts/register/complete/$',
-    r'^accounts/register/closed/$',
-
-    r'^accounts/activate/complete/',
-    r'^accounts/activate/(?P<activation_key>\w+)/$',
-
-    r'^authentication/password/reset/$',
-    r'^authentication/password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
-    r'^authentication/password/reset/complete/$',
-    r'^authentication/password/reset/done/$',
-
-    r'^api/',
-    r'^docs/',
-)
 # ---------- Django REST framework -----------
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (

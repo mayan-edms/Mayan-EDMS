@@ -8,10 +8,13 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import redirect
 from django.utils.translation import ugettext_lazy as _
 
+from stronghold.decorators import public
+
 from .forms import EmailAuthenticationForm
 from .settings import setting_login_method
 
 
+@public
 def login_view(request):
     """
     Control how the use is to be authenticated, options are 'email' and
