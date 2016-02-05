@@ -63,6 +63,12 @@
                     <div class="radio">
                         {% render_field field %}
                     </div>
+                {% elif field|widget_type == 'checkboxselectmultiple' %}
+                    {% for option in field %}
+                        <div class="checkbox">
+                            {{ option.render }}
+                        </div>
+                    {% endfor %}
                 {% else %}
                     {% render_field field class+="form-control" %}
                 {% endif %}

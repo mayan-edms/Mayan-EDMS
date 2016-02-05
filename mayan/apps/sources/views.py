@@ -264,6 +264,7 @@ class UploadInteractiveView(UploadBaseView):
             metadata_dict_list=decode_metadata_from_url(self.request.GET),
             shared_uploaded_file_id=shared_uploaded_file.pk,
             source_id=self.source.pk,
+            tag_ids=self.request.GET.getlist('tags'),
             user_id=user_id,
         ))
         messages.success(

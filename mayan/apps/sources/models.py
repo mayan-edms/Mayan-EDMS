@@ -28,6 +28,7 @@ from documents.models import Document, DocumentType
 from documents.settings import setting_language
 from metadata.api import save_metadata_list, set_bulk_metadata
 from metadata.models import MetadataType
+from tags.models import Tag
 
 from .classes import Attachment, SourceUploadedFile, StagingFile
 from .literals import (
@@ -59,7 +60,7 @@ class Source(models.Model):
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
-    def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, user=None):
+    def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
         try:
             with transaction.atomic():
                 document = Document.objects.create(
@@ -87,6 +88,10 @@ class Source(models.Model):
                         document=document,
                         metadata_dictionary=metadata_dictionary
                     )
+
+                if tag_ids:
+                    for tag in Tag.objects.filter(pk__in=tag_ids):
+                        tag.documents.add(document)
 
         except Exception as exception:
             logger.critical(
