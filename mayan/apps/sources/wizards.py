@@ -59,6 +59,7 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
 
             for document_type_metadata_type in self.get_cleaned_data_for_step('0')['document_type'].metadata.all():
                 initial.append({
+                    'disable_update_column': True,
                     'document_type': self.get_cleaned_data_for_step('0')['document_type'],
                     'metadata_type': document_type_metadata_type.metadata_type,
                 })
