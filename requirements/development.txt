@@ -11,3 +11,5 @@ ipython==4.0.0
 transifex-client==0.10
 
 wheel==0.26.0
+
+-r testing-base.txt
