@@ -69,11 +69,11 @@ class OCRAPITestCase(APITestCase):
 
         self.assertTrue('Mayan EDMS Documentation' in content)
 
-    def test_get_document_version_content(self):
+    def test_get_document_version_page_content(self):
         response = self.client.get(
             reverse(
                 'rest_api:document-page-content-view',
-                args=(self.document.latest_version.pk,)
+                args=(self.document.latest_version.pages.first().pk,)
             ),
         )
 
