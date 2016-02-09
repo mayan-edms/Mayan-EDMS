@@ -16,17 +16,15 @@ class MetadataForm(forms.Form):
         widget=forms.TextInput(attrs={'readonly': 'readonly'})
     )
     value = forms.CharField(label=_('Value'), required=False)
+    update = forms.BooleanField(
+        initial=True, label=_('Update'), required=False
+    )
 
     def __init__(self, *args, **kwargs):
-        self.disable_update_column = kwargs.pop('disable_update_column', False)
         super(MetadataForm, self).__init__(*args, **kwargs)
 
         # Set form fields initial values
         if 'initial' in kwargs:
-            if not kwargs['initial'].get('disable_update_column', False):
-                self.fields['update'] = forms.BooleanField(
-                    initial=True, label=_('Update'), required=False
-                )
             self.metadata_type = kwargs['initial']['metadata_type']
             self.document_type = kwargs['initial']['document_type']
             required_string = ''
