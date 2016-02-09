@@ -1,3 +1,9 @@
+2.0.2 (2016-02-09)
+==================
+- Install testing dependencies when installing development dependencies.
+- Fix GitLab issue #250 "Empty optional lookup metadata trigger validation error". Thanks to LeVon Smoker for the find and for the proposed fix.
+- Close GitLab issue #251 "Add method to disable metadata edit form "update" checkbox when not needed". This is used now to disable the metadata update column in the new document upload wizard.
+
 2.0.1 (2016-01-22)
 ==================
 - Fix GitLab issue #243, "System allows a user to skip entering values for a required metadata field while uploading a new document"
