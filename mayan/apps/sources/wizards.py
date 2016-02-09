@@ -87,8 +87,9 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
 
         try:
             for identifier, metadata in enumerate(self.get_cleaned_data_for_step('1')):
-                query_dict['metadata%s_id' % identifier] = metadata['id']
-                query_dict['metadata%s_value' % identifier] = metadata['value']
+                if metadata.get('update'):
+                    query_dict['metadata%s_id' % identifier] = metadata['id']
+                    query_dict['metadata%s_value' % identifier] = metadata['value']
         except TypeError:
             pass
 
