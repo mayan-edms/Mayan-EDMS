@@ -85,8 +85,8 @@ class DocumentTestCase(TestCase):
 
     def test_auto_trashing(self):
         """
-        Test document type trashing policies. Documents are moved to the trash,
-        x amount of time after being uploaded
+        Test document type trashing policies. Documents are moved to the
+        trash, x amount of time after being uploaded
         """
 
         self.document_type.trash_time_period = 1
@@ -94,7 +94,9 @@ class DocumentTestCase(TestCase):
         self.document_type.trash_time_unit = 'seconds'
         self.document_type.save()
 
-        time.sleep(1)
+        # Needed by MySQL as milliseconds value is not store in timestamp
+        # field
+        time.sleep(2)
 
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(DeletedDocument.objects.count(), 0)
@@ -123,6 +125,8 @@ class DocumentTestCase(TestCase):
         self.assertEqual(Document.objects.count(), 0)
         self.assertEqual(DeletedDocument.objects.count(), 1)
 
+        # Needed by MySQL as milliseconds value is not store in timestamp
+        # field
         time.sleep(2)
 
         DocumentType.objects.check_delete_periods()
@@ -216,8 +220,9 @@ class DocumentVersionTestCase(TestCase):
     def test_revert_version(self):
         self.assertEqual(self.document.versions.count(), 1)
 
-        # Needed by MySQL as milliseconds value is not store in timestamp field
-        time.sleep(1)
+        # Needed by MySQL as milliseconds value is not store in timestamp
+        # field
+        time.sleep(2)
 
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document.new_version(
