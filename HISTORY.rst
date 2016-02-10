@@ -2,7 +2,10 @@
 ==================
 - Install testing dependencies when installing development dependencies.
 - Fix GitLab issue #250 "Empty optional lookup metadata trigger validation error". Thanks to LeVon Smoker for the find and for the proposed fix.
-- Close GitLab issue #251 "Add method to disable metadata edit form "update" checkbox when not needed". This is used now to disable the metadata update column in the new document upload wizard.
+- Fix OCR API test for document version page OCR content.
+- Move metadata form value validation to .clean() and update field data may not be available yet when validatng the value field. Only validate form value if form has a metadata type associated.
+- Only extract validation error messages from ValidationError exception instances.
+- Don't store empty metadata value if the update checkbox is not checked.
 
 2.0.1 (2016-01-22)
 ==================
