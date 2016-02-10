@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
+from django.core.exceptions import PermissionDenied, ValidationError
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
@@ -127,20 +127,24 @@ def metadata_edit(request, document_id=None, document_id_list=None):
                         except Exception as exception:
                             errors.append(exception)
 
-                if errors:
-                    for error in errors:
-                        if settings.DEBUG:
-                            raise
+                for error in errors:
+                    if settings.DEBUG:
+                        raise
+                    else:
+                        if isinstance(error, ValidationError):
+                            exception_message = ', '.join(error.messages)
                         else:
-                            messages.error(
-                                request, _(
-                                    'Error editing metadata for document: '
-                                    '%(document)s; %(exception)s.'
-                                ) % {
-                                    'document': document,
-                                    'exception': ', '.join(exception.messages)
-                                }
-                            )
+                            exception_message = unicode(error)
+
+                        messages.error(
+                            request, _(
+                                'Error editing metadata for document: '
+                                '%(document)s; %(exception)s.'
+                            ) % {
+                                'document': document,
+                                'exception': exception_message
+                            }
+                        )
                 else:
                     messages.success(
                         request,
