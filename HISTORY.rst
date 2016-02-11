@@ -6,7 +6,6 @@
 - Move metadata form value validation to .clean() and update field data may not be available yet when validatng the value field. Only validate form value if form has a metadata type associated.
 - Only extract validation error messages from ValidationError exception instances.
 - Don't store empty metadata value if the update checkbox is not checked.
-- Add 2 second delay to document version tests to workaround MySQL not storing the millisecond part of the document version's timestamp.
 
 2.0.1 (2016-01-22)
 ==================
