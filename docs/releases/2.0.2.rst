@@ -21,6 +21,10 @@ Fix empty optional lookup metadata fields behavior
 An edge case was fixed that caused validation to be executed for empty metadata
 fields that had a value lookup list.
 
+Remove Docker files
+-------------------
+Included Docker and Docker Compose files were removed since the Mayan EDMS Docker
+(https://gitlab.com/mayan-edms/mayan-edms-docker) repository is stable.
 
 Other changes
 -------------

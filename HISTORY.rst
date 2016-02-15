@@ -8,6 +8,7 @@
 - Don't store empty metadata value if the update checkbox is not checked.
 - Add 2 second delay to document version tests to workaround MySQL limitation.
 - Strip HTML tags from the browser title.
+- Remove Docker and Docker Compose files.
 
 2.0.1 (2016-01-22)
 ==================
