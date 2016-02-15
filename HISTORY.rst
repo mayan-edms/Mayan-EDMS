@@ -1,12 +1,13 @@
 2.0.2 (2016-02-09)
 ==================
 - Install testing dependencies when installing development dependencies.
-- Fix GitLab issue #250 "Empty optional lookup metadata trigger validation error". Thanks to LeVon Smoker for the find and for the proposed fix.
-- Fix OCR API test for document version page OCR content.
-- Move metadata form value validation to .clean() and update field data may not be available yet when validatng the value field. Only validate form value if form has a metadata type associated.
+- Fix GitLab issue #250 "Empty optional lookup metadata trigger validation error".
+- Fix OCR API test.
+- Move metadata form value validation to .clean() method.
 - Only extract validation error messages from ValidationError exception instances.
 - Don't store empty metadata value if the update checkbox is not checked.
-- Add 2 second delay to document version tests to workaround MySQL not storing the millisecond part of the document version's timestamp.
+- Add 2 second delay to document version tests to workaround MySQL limitation.
+- Strip HTML tags from the browser title.
 
 2.0.1 (2016-01-22)
 ==================
