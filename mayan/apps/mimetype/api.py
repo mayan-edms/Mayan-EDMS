@@ -22,4 +22,13 @@ def get_mimetype(file_object, mimetype_only=False):
         file_mime_encoding = mime_encoding.from_buffer(file_object.read())
         file_object.seek(0)
 
+    # Special case for PCL files
+    if file_mimetype in ('application/octet-stream', 'text/plain'):
+        signature = file_object.read(2)
+        file_object.seek(0)
+        # Two-Character Escape Sequences ASCII 48-126
+        # Parameterized Escape Sequences ASCII 33-47
+        if signature[0] == b'\x1b' and ord(signature[1]) >= 33 and ord(signature[1]) <= 126:
+            file_mimetype = 'application/x-pcl'
+
     return file_mimetype, file_mime_encoding

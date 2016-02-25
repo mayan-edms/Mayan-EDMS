@@ -20,7 +20,7 @@ from common.utils import fs_cleanup
 
 from ..classes import ConverterBase
 from ..exceptions import PageCountError
-from ..settings import setting_pdftoppm_path
+from ..settings import setting_gpcl_path, setting_pdftoppm_path
 
 try:
     pdftoppm = sh.Command(setting_pdftoppm_path.value)
@@ -28,6 +28,13 @@ except sh.CommandNotFound:
     pdftoppm = None
 else:
     pdftoppm = pdftoppm.bake('-png')
+
+try:
+    gpcl = sh.Command(setting_gpcl_path.value)
+except sh.CommandNotFound:
+    gpcl = None
+else:
+    gpcl = gpcl.bake('-dNOPAUSE', '-dSAFER', '-dBATCH', '-sOutputFile=-')
 
 Image.init()
 logger = logging.getLogger(__name__)
@@ -48,6 +55,26 @@ class Python(ConverterBase):
     def convert(self, *args, **kwargs):
         super(Python, self).convert(*args, **kwargs)
 
+        if self.mime_type == 'application/x-pcl' and gpcl:
+            new_file_object, input_filepath = tempfile.mkstemp()
+            self.file_object.seek(0)
+            os.write(new_file_object, self.file_object.read())
+            self.file_object.seek(0)
+            os.close(new_file_object)
+
+            image_buffer = io.BytesIO()
+            try:
+                gpcl(
+                    '-r300', '-sDEVICE=jpeg',
+                    '-dFirstPage={}'.format(self.page_number + 1),
+                    '-dLastPage={}'.format(self.page_number + 1),
+                    input_filepath, _out=image_buffer
+                )
+                image_buffer.seek(0)
+                return Image.open(image_buffer)
+            finally:
+                fs_cleanup(input_filepath)
+
         if self.mime_type == 'application/pdf' and pdftoppm:
 
             new_file_object, input_filepath = tempfile.mkstemp()
@@ -61,7 +88,7 @@ class Python(ConverterBase):
             try:
                 pdftoppm(
                     input_filepath, f=self.page_number + 1,
-                    l=self.page_number + 1, _out=image_buffer
+                    l=self.page_number + 1, _out=image_buffer,
                 )
                 image_buffer.seek(0)
                 return Image.open(image_buffer)
@@ -72,6 +99,25 @@ class Python(ConverterBase):
         super(Python, self).get_page_count()
 
         page_count = 1
+
+        if self.mime_type == 'application/x-pcl' and gpcl:
+            new_file_object, input_filepath = tempfile.mkstemp()
+            self.file_object.seek(0)
+            os.write(new_file_object, self.file_object.read())
+            self.file_object.seek(0)
+
+            os.close(new_file_object)
+
+            file_buffer = io.BytesIO()
+            try:
+                gpcl(
+                    '-sDEVICE=pdfwrite', input_filepath, _out=file_buffer
+                )
+                file_buffer.seek(0)
+                self.file_object = file_buffer
+                self.mime_type = 'application/pdf'
+            finally:
+                fs_cleanup(input_filepath)
 
         if self.mime_type == 'application/pdf' or self.soffice_file:
             # If file is a PDF open it with slate to determine the page count

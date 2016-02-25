@@ -19,3 +19,7 @@ setting_pdftoppm_path = namespace.add_setting(
     default='/usr/bin/pdftoppm', global_name='CONVERTER_PDFTOPPM_PATH',
     help_text=_('Path to the Popple program pdftoppm.'), is_path=True
 )
+setting_gpcl_path = namespace.add_setting(
+    default='/usr/bin/gpcl', global_name='CONVERTER_GPCL_PATH',
+    help_text=_('Path to the Ghostscript program gpcl.'), is_path=True
+)
