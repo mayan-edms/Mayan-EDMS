@@ -65,13 +65,18 @@ class Python(ConverterBase):
             image_buffer = io.BytesIO()
             try:
                 gpcl(
-                    '-r300', '-sDEVICE=jpeg',
+                    '-r300', '-sDEVICE=png16m',
                     '-dFirstPage={}'.format(self.page_number + 1),
                     '-dLastPage={}'.format(self.page_number + 1),
                     input_filepath, _out=image_buffer
                 )
                 image_buffer.seek(0)
-                return Image.open(image_buffer)
+                try:
+                    return Image.open(image_buffer)
+                except IOError:
+                    # Special case for empty pages at the end of PCL
+                    # documents
+                    return Image.new(mode='1', size=(100,100), color=1)
             finally:
                 fs_cleanup(input_filepath)
 
