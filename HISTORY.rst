@@ -1,9 +1,24 @@
 2.1 (2016-XX)
+=============
 - Upgrade to use Django 1.8.8. Issue #246.
 - Upgrade requirements.
 - Remove remaining references to Django's User model. Issue #225
 - Rename 'Content' search box to 'OCR'.
 - Remove included login required middleware using django-stronghold instead (http://mikegrouchy.com/django-stronghold/).
+
+
+2.0.2 (2016-02-09)
+==================
+- Install testing dependencies when installing development dependencies.
+- Fix GitLab issue #250 "Empty optional lookup metadata trigger validation error".
+- Fix OCR API test.
+- Move metadata form value validation to .clean() method.
+- Only extract validation error messages from ValidationError exception instances.
+- Don't store empty metadata value if the update checkbox is not checked.
+- Add 2 second delay to document version tests to workaround MySQL limitation.
+- Strip HTML tags from the browser title.
+- Remove Docker and Docker Compose files.
+
 
 2.0.1 (2016-01-22)
 ==================
@@ -11,9 +26,9 @@
 - Fix GitLab issue #245, "Add multiple metadata not possible"
 - Updated Vagrantfile to provision a production box too.
 
+
 2.0 (2015-12-04)
 ================
-
 - New source homepage: https://gitlab.com/mayan-edms/mayan-edms
 - Update to Django 1.7
 - New Bootstrap Frontend UI
@@ -85,7 +100,6 @@
 
 1.1 (2015-02-10)
 ================
-
 - Uses Celery for background tasks
 - Removal of the splash screen
 - Adds a home view with common function buttons
@@ -111,7 +125,6 @@
 
 1.0 (2014-08-27)
 ================
-
 - New home @ https://github.com/mayan-edms/mayan-edms
 - Updated to use Django 1.6
 - Translation updates

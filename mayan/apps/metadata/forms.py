@@ -79,10 +79,14 @@ class MetadataForm(forms.Form):
                         attrs={'readonly': 'readonly'}
                     )
 
-    def clean_value(self):
-        return self.metadata_type.validate_value(
-            document_type=self.document_type, value=self.cleaned_data['value']
-        )
+    def clean(self):
+        if self.cleaned_data.get('update') and hasattr(self, 'metadata_type'):
+            self.cleaned_data['value'] = self.metadata_type.validate_value(
+                document_type=self.document_type,
+                value=self.cleaned_data.get('value')
+            )
+
+        return self.cleaned_data
 
 
 MetadataFormSet = formset_factory(MetadataForm, extra=0)

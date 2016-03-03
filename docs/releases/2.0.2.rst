@@ -1,0 +1,94 @@
+===============================
+Mayan EDMS v2.0.2 release notes
+===============================
+
+Released: February 15, 2016
+
+Welcome to Mayan EDMS v2.0.2
+
+What's new
+==========
+
+Fine tune "Update" checkbox from the metadata entry form
+--------------------------------------------------------
+Previously the update checkbox was ignored during the metadata step of the
+document upload wizard with the wizard always creating a metadata entry for the
+new document even if the entry was left blank. The checkbox now controls whether
+or not the wizard will store try to create the metadata entry.
+
+Fix empty optional lookup metadata fields behavior
+--------------------------------------------------
+An edge case was fixed that caused validation to be executed for empty metadata
+fields that had a value lookup list.
+
+Remove Docker files
+-------------------
+Included Docker and Docker Compose files were removed since the Mayan EDMS Docker
+(https://gitlab.com/mayan-edms/mayan-edms-docker) repository is stable.
+
+Other changes
+-------------
+- Only extract validation error messages from ValidationError exception instances.
+- Add 2 second delay to document version tests to workaround MySQL not storing
+  the millisecond part of the document version's timestamp.
+- Install testing dependencies when installing development dependencies.
+- Fix OCR API test for document version page OCR content.
+- Move metadata form value validation to .clean() method.
+- Add HTML tags stripping to the browser title generation template.
+
+Removals
+--------
+* None
+
+Upgrading from a previous version
+---------------------------------
+
+Using PIP
+~~~~~~~~~
+
+Type in the console::
+
+    $ pip install -U mayan-edms
+
+the requirements will also be updated automatically.
+
+Using Git
+~~~~~~~~~
+
+If you installed Mayan EDMS by cloning the Git repository issue the commands::
+
+    $ git reset --hard HEAD
+    $ git pull
+
+otherwise download the compressed archived and uncompress it overriding the
+existing installation.
+
+Next upgrade/add the new requirements::
+
+    $ pip install --upgrade -r requirements.txt
+
+Common steps
+~~~~~~~~~~~~
+
+Migrate existing database schema with::
+
+    $ mayan-edms.py performupgrade
+
+Add new static media::
+
+    $ mayan-edms.py collectstatic --noinput
+
+The upgrade procedure is now complete.
+
+
+Backward incompatible changes
+=============================
+
+* None
+
+Bugs fixed or issues closed
+===========================
+
+* `GitLab issue #250 <https://gitlab.com/mayan-edms/mayan-edms/issues/250>`_   Empty optional lookup metadata trigger validation error.
+
+.. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -126,7 +126,7 @@ class MetadataType(models.Model):
 
         if self.lookup:
             lookup_options = self.get_lookup_values()
-            if value not in lookup_options:
+            if value and value not in lookup_options:
                 raise ValidationError(
                     _('Value is not one of the provided options.')
                 )

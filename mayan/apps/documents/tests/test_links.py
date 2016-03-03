@@ -2,6 +2,8 @@
 
 from __future__ import unicode_literals
 
+import time
+
 from django.core.files import File
 from django.core.urlresolvers import reverse
 
@@ -37,6 +39,10 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         self.assertEqual(resolved_link, None)
 
     def test_document_version_revert_link_with_permission(self):
+        # Needed by MySQL as milliseconds value is not store in timestamp
+        # field
+        time.sleep(2)
+
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document.new_version(file_object=File(file_object))
 

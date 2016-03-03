@@ -63,8 +63,9 @@ class MetadataTestCase(TestCase):
             self.document.metadata_value_of.test, TEST_DEFAULT_VALUE
         )
 
-    def test_lookup(self):
+    def test_lookup_with_incorrect_value(self):
         self.metadata_type.lookup = TEST_LOOKUP_TEMPLATE
+        self.metadata_type.save()
 
         document_metadata = DocumentMetadata(
             document=self.document, metadata_type=self.metadata_type,
@@ -76,14 +77,37 @@ class MetadataTestCase(TestCase):
             document_metadata.full_clean()
             document_metadata.save()
 
-        # Should not return error
-        document_metadata.value = TEST_CORRECT_LOOKUP_VALUE
+    def test_lookup_with_correct_value(self):
+        self.metadata_type.lookup = TEST_LOOKUP_TEMPLATE
+        self.metadata_type.save()
+
+        document_metadata = DocumentMetadata(
+            document=self.document, metadata_type=self.metadata_type,
+            value=TEST_CORRECT_LOOKUP_VALUE
+        )
+
         document_metadata.full_clean()
         document_metadata.save()
 
         self.assertEqual(
             self.document.metadata_value_of.test, TEST_CORRECT_LOOKUP_VALUE
         )
+
+    def test_empty_optional_lookup(self):
+        """
+        Checks for GitLab issue #250
+        Empty optional lookup metadata trigger validation error
+        """
+
+        self.metadata_type.lookup = TEST_LOOKUP_TEMPLATE
+        self.metadata_type.save()
+
+        document_metadata = DocumentMetadata(
+            document=self.document, metadata_type=self.metadata_type
+        )
+
+        document_metadata.full_clean()
+        document_metadata.save()
 
     def test_validation(self):
         self.metadata_type.validation = TEST_DATE_VALIDATOR
