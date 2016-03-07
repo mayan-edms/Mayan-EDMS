@@ -106,6 +106,7 @@ MIDDLEWARE_CLASSES = (
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
+    'organizations.middleware.CurrentOrganizationMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
@@ -114,7 +115,6 @@ MIDDLEWARE_CLASSES = (
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'authentication.middleware.login_required_middleware.LoginRequiredMiddleware',
     'common.middleware.ajax_redirect.AjaxRedirect',
-    'organizations.middleware.CurrentOrganizationMiddleware',
 )
 
 ROOT_URLCONF = 'mayan.urls'
@@ -292,4 +292,6 @@ ORGANIZATION_ID = 1
 AUTH_USER_MODEL = 'user_management.MayanUser'
 # ------- Authentication -------
 AUTHENTICATION_BACKENDS = ('authentication.auth.model_auth_backend.UsernameModelBackend',)
+# ------- Session ---------
+SESSION_COOKIE_NAME = 'organization-1'
 
