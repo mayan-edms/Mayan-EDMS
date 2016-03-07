@@ -33,9 +33,11 @@ logger = logging.getLogger(__name__)
 class TagCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create tag')}
     fields = ('label', 'color')
-    model = Tag
     post_action_redirect = reverse_lazy('tags:tag_list')
     view_permission = permission_tag_create
+
+    def get_queryset(self):
+        return Tag.on_organization.all()
 
 
 def tag_attach(request, document_id=None, document_id_list=None):
@@ -144,17 +146,18 @@ class TagListView(SingleObjectListView):
         return super(TagListView, self).get_queryset()
 
     def get_tag_queryset(self):
-        return Tag.objects.all()
+        return Tag.on_organization.all()
 
 
 def tag_delete(request, tag_id=None, tag_id_list=None):
     post_action_redirect = None
+    queryset = Tag.on_organization.all()
 
     if tag_id:
-        queryset = Tag.objects.filter(pk=tag_id)
+        queryset = organization.filter(pk=tag_id)
         post_action_redirect = reverse('tags:tag_list')
     elif tag_id_list:
-        queryset = Tag.objects.filter(pk__in=tag_id_list)
+        queryset = organization.filter(pk__in=tag_id_list)
 
     if not queryset:
         messages.error(request, _('Must provide at least one tag.'))
@@ -221,7 +224,6 @@ def tag_multiple_delete(request):
 
 class TagEditView(SingleObjectEditView):
     fields = ('label', 'color')
-    model = Tag
     object_permission = permission_tag_edit
     post_action_redirect = reverse_lazy('tags:tag_list')
 
@@ -231,10 +233,13 @@ class TagEditView(SingleObjectEditView):
             'title': _('Edit tag: %s') % self.get_object(),
         }
 
+    def get_queryset(self):
+        return Tag.on_organization.all()
+
 
 class TagTaggedItemListView(DocumentListView):
     def get_tag(self):
-        return get_object_or_404(Tag, pk=self.kwargs['pk'])
+        return get_object_or_404(Tag.on_organization, pk=self.kwargs['pk'])
 
     def get_document_queryset(self):
         return self.get_tag().documents.all()
@@ -309,17 +314,20 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
     }
 
     template = 'appearance/generic_confirm.html'
+
+    queryset = Tag.on_organization.all()
+
     if tag_id:
-        tags = Tag.objects.filter(pk=tag_id)
+        tags = queryset.filter(pk=tag_id)
     elif tag_id_list:
-        tags = Tag.objects.filter(pk__in=tag_id_list)
+        tags = queryset.filter(pk__in=tag_id_list)
     else:
         template = 'appearance/generic_form.html'
 
         if request.method == 'POST':
             form = TagListForm(request.POST, user=request.user)
             if form.is_valid():
-                tags = Tag.objects.filter(pk=form.cleaned_data['tag'].pk)
+                tags = Tag.on_organization.filter(pk=form.cleaned_data['tag'].pk)
         else:
             if not tag_id and not tag_id_list:
                 form = TagListForm(user=request.user)

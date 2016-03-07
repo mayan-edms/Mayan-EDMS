@@ -73,6 +73,7 @@ INSTALLED_APPS = (
     'lock_manager',
     'mimetype',
     'navigation',
+    'organizations',
     'permissions',
     'smart_settings',
     'user_management',
@@ -113,6 +114,7 @@ MIDDLEWARE_CLASSES = (
     'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'authentication.middleware.login_required_middleware.LoginRequiredMiddleware',
     'common.middleware.ajax_redirect.AjaxRedirect',
+    'organizations.middleware.CurrentOrganizationMiddleware',
 )
 
 ROOT_URLCONF = 'mayan.urls'
@@ -284,3 +286,5 @@ SWAGGER_SETTINGS = {
 # ------ Timezone --------
 TIMEZONE_COOKIE_NAME = 'django_timezone'
 TIMEZONE_SESSION_KEY = 'django_timezone'
+# ------ Organization -------
+ORGANIZATION_ID = 1

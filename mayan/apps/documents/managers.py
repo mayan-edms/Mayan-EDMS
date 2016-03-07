@@ -4,6 +4,7 @@ from datetime import timedelta
 import logging
 
 from django.apps import apps
+from django.conf import settings
 from django.db import models
 from django.utils.timezone import now
 
@@ -132,7 +133,8 @@ class RecentDocumentManager(models.Manager):
 
         if user.is_authenticated():
             return document_model.objects.filter(
-                recentdocument__user=user
+                recentdocument__user=user,
+                document_type__organization__id=settings.ORGANIZATION_ID
             ).order_by('-recentdocument__datetime_accessed')
         else:
             return document_model.objects.none()

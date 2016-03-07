@@ -10,6 +10,9 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
+from organizations.models import Organization
+from organizations.managers import CurrentOrganizationManager
+from organizations.shortcuts import get_current_organization
 from permissions import Permission
 
 from .managers import FolderManager
@@ -17,6 +20,9 @@ from .managers import FolderManager
 
 @python_2_unicode_compatible
 class Folder(models.Model):
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
+    )
     label = models.CharField(
         db_index=True, max_length=128, verbose_name=_('Label')
     )
@@ -29,6 +35,7 @@ class Folder(models.Model):
     )
 
     objects = FolderManager()
+    on_organization = CurrentOrganizationManager()
 
     def __str__(self):
         return self.label

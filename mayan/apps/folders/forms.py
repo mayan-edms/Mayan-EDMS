@@ -21,7 +21,7 @@ class FolderListForm(forms.Form):
         logger.debug('user: %s', user)
         super(FolderListForm, self).__init__(*args, **kwargs)
 
-        queryset = Folder.objects.all()
+        queryset = Folder.on_organization.all()
         try:
             Permission.check_permissions(user, (permission_folder_view,))
         except PermissionDenied:

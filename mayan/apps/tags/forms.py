@@ -21,7 +21,7 @@ class TagListForm(forms.Form):
         logger.debug('user: %s', user)
         super(TagListForm, self).__init__(*args, **kwargs)
 
-        queryset = Tag.objects.all()
+        queryset = Tag.on_organization.all()
         try:
             Permission.check_permissions(user, (permission_tag_view,))
         except PermissionDenied:

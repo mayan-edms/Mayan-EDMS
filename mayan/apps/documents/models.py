@@ -24,6 +24,9 @@ from converter.exceptions import InvalidOfficeFormat, PageCountError
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from converter.models import Transformation
 from mimetype.api import get_mimetype
+from organizations.models import Organization
+from organizations.managers import CurrentOrganizationManager
+from organizations.shortcuts import get_current_organization
 from permissions import Permission
 
 from .events import (
@@ -62,6 +65,9 @@ class DocumentType(models.Model):
     Define document types or classes to which a specific set of
     properties can be attached
     """
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
+    )
     label = models.CharField(
         max_length=32, unique=True, verbose_name=_('Label')
     )
@@ -87,6 +93,7 @@ class DocumentType(models.Model):
     )
 
     objects = DocumentTypeManager()
+    on_organization = CurrentOrganizationManager()
 
     def __str__(self):
         return self.label

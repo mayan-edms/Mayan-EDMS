@@ -104,7 +104,7 @@ class DocumentTypeSelectForm(forms.Form):
     as form #1 in the document creation wizard
     """
     document_type = forms.ModelChoiceField(
-        queryset=DocumentType.objects.all(), label=_('Document type')
+        queryset=DocumentType.on_organization.all(), label=_('Document type')
     )
 
 

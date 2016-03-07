@@ -33,7 +33,6 @@ logger = logging.getLogger(__name__)
 
 class FolderEditView(SingleObjectEditView):
     fields = ('label',)
-    model = Folder
     object_permission = permission_folder_edit
     post_action_redirect = reverse_lazy('folders:folder_list')
 
@@ -42,6 +41,9 @@ class FolderEditView(SingleObjectEditView):
             'object': self.get_object(),
             'title': _('Edit folder: %s') % self.get_object(),
         }
+
+    def get_document_queryset(self):
+        return Folder.on_organization.all()
 
 
 class FolderListView(SingleObjectListView):
@@ -54,7 +56,7 @@ class FolderListView(SingleObjectListView):
         }
 
     def get_folder_queryset(self):
-        return Folder.objects.all()
+        return Folder.on_organization.all()
 
     def get_queryset(self):
         self.queryset = self.get_folder_queryset()
@@ -63,7 +65,6 @@ class FolderListView(SingleObjectListView):
 
 class FolderCreateView(SingleObjectCreateView):
     fields = ('label',)
-    model = Folder
     view_permission = permission_folder_create
 
     def form_valid(self, form):
@@ -90,9 +91,12 @@ class FolderCreateView(SingleObjectCreateView):
             'title': _('Create folder'),
         }
 
+    def get_queryset(self):
+        return Folder.on_organization.all()
+
 
 def folder_delete(request, folder_id):
-    folder = get_object_or_404(Folder, pk=folder_id)
+    folder = get_object_or_404(Folder.on_organization, pk=folder_id)
 
     try:
         Permission.check_permissions(request.user, (permission_folder_delete,))
@@ -142,7 +146,7 @@ class FolderDetailView(DocumentListView):
         }
 
     def get_folder(self):
-        folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
+        folder = get_object_or_404(Folder.on_organization, pk=self.kwargs['pk'])
 
         try:
             Permission.check_permissions(
@@ -267,7 +271,7 @@ class DocumentFolderListView(FolderListView):
 def folder_document_remove(request, folder_id, document_id=None, document_id_list=None):
     post_action_redirect = None
 
-    folder = get_object_or_404(Folder, pk=folder_id)
+    folder = get_object_or_404(Folder.on_organization, pk=folder_id)
 
     if document_id:
         queryset = Document.objects.filter(pk=document_id)
