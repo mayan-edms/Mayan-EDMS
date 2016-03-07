@@ -45,6 +45,27 @@ class FolderViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Folder.objects.first().label, TEST_FOLDER_LABEL)
         self.assertEqual(Folder.objects.first().user, self.user)
 
+    def test_folder_create_duplicate_view_with_permission(self):
+        folder = Folder.objects.create(
+            label=TEST_FOLDER_LABEL, user=self.user
+        )
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(
+            permission_folder_create.stored_permission
+        )
+
+        response = self.post(
+            'folders:folder_create', data={
+                'label': TEST_FOLDER_LABEL
+            }
+        )
+
+        self.assertContains(response, text='Error', status_code=200)
+        self.assertEqual(Folder.objects.count(), 1)
+        self.assertEqual(Folder.objects.first().pk, folder.pk)
+
     def test_folder_delete_view_no_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
