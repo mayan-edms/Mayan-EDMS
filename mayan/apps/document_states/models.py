@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import IntegrityError, models
 from django.utils.encoding import python_2_unicode_compatible
@@ -186,7 +186,7 @@ class WorkflowInstanceLogEntry(models.Model):
     transition = models.ForeignKey(
         WorkflowTransition, verbose_name=_('Transition')
     )
-    user = models.ForeignKey(User, verbose_name=_('User'))
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'))
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
     def __str__(self):

@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
@@ -26,7 +27,7 @@ class Folder(models.Model):
     label = models.CharField(
         db_index=True, max_length=128, verbose_name=_('Label')
     )
-    user = models.ForeignKey(User, verbose_name=_('User'))
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'))
     datetime_created = models.DateTimeField(
         auto_now_add=True, verbose_name=_('Datetime created')
     )

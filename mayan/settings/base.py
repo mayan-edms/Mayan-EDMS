@@ -288,3 +288,8 @@ TIMEZONE_COOKIE_NAME = 'django_timezone'
 TIMEZONE_SESSION_KEY = 'django_timezone'
 # ------ Organization -------
 ORGANIZATION_ID = 1
+# ------ User model --------
+AUTH_USER_MODEL = 'user_management.MayanUser'
+# ------- Authentication -------
+AUTHENTICATION_BACKENDS = ('authentication.auth.model_auth_backend.UsernameModelBackend',)
+

@@ -1,19 +1,17 @@
+from __future__ import unicode_literals
+
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.backends import ModelBackend
 
 
-class EmailAuthBackend(ModelBackend):
-    """
-    Email Authentication Backend
-
-    Allows a user to sign in using an email/password pair rather than
-    a username/password pair.
-    """
-
-    def authenticate(self, email=None, password=None):
+class UsernameModelBackend(ModelBackend):
+    def authenticate(self, username=None, password=None, **kwargs):
         UserModel = get_user_model()
+        if username is None:
+            username = kwargs.get(UserModel.USERNAME_FIELD)
         try:
-            user = UserModel.on_organization.get(email=email)
+            user = UserModel.on_organization.get(username=username)
             if user.check_password(password):
                 return user
         except UserModel.DoesNotExist:

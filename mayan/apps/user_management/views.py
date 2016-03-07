@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
@@ -86,7 +86,7 @@ class GroupMembersView(AssignRemoveView):
 
     def left_list(self):
         return AssignRemoveView.generate_choices(
-            User.objects.exclude(
+            get_user_model().objects.exclude(
                 groups=self.get_object()
             ).exclude(is_staff=True).exclude(is_superuser=True)
         )
@@ -131,7 +131,7 @@ class UserGroupsView(AssignRemoveView):
         }
 
     def get_object(self):
-        return get_object_or_404(User, pk=self.kwargs['pk'])
+        return get_object_or_404(get_user_model(), pk=self.kwargs['pk'])
 
     def left_list(self):
         return AssignRemoveView.generate_choices(
