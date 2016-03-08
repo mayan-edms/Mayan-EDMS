@@ -5,7 +5,9 @@
 - Remove remaining references to Django's User model. Issue #225
 - Rename 'Content' search box to 'OCR'.
 - Remove included login required middleware using django-stronghold instead (http://mikegrouchy.com/django-stronghold/).
-
+- Improve generation of success and error messages for class based views.
+- Remove ownership concept from folders.
+- Replace strip_spaces middleware with the spaceless template tag. Issue #255
 
 2.0.2 (2016-02-09)
 ==================
