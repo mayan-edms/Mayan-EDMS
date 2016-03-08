@@ -38,6 +38,7 @@ class MetadataForm(forms.Form):
                 required_string = ' (%s)' % _('Required')
             else:
                 self.fields['value'].required = False
+                self.fields['update'].initial = False
 
             self.fields['name'].initial = '%s%s' % (
                 (
