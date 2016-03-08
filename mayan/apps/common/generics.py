@@ -262,19 +262,6 @@ class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
 class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
     template_name = 'appearance/generic_form.html'
 
-    def form_invalid(self, form):
-        result = super(SingleObjectCreateView, self).form_invalid(form)
-
-        try:
-            messages.error(
-                self.request,
-                _('Error creating new %s.') % self.extra_context['object_name']
-            )
-        except KeyError:
-            messages.error(self.request, _('Error creating object.'))
-
-        return result
-
     def form_valid(self, form):
         # This overrides the original Django form_valid method
 
@@ -289,18 +276,26 @@ class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, Redire
         else:
             save_extra_data = {}
 
-        self.object.save(**save_extra_data)
-
         try:
+            self.object.save(**save_extra_data)
+        except Exception as exception:
+            context = self.get_context_data()
+
+            messages.error(
+                self.request,
+                _('%(object)s not created, error: %(error)s') % {
+                    'object': context.get('object_name', _('Object')),
+                    'error': exception
+                }
+            )
+        else:
+            context = self.get_context_data()
+
             messages.success(
                 self.request,
                 _(
                     '%s created successfully.'
-                ) % self.extra_context['object_name']
-            )
-        except KeyError:
-            messages.success(
-                self.request, _('New object created successfully.')
+                ) % context.get('object_name', _('Object'))
             )
 
         return HttpResponseRedirect(self.get_success_url())
@@ -315,32 +310,28 @@ class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, Obj
         return context
 
     def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data()
+
         try:
             result = super(SingleObjectDeleteView, self).delete(request, *args, **kwargs)
         except Exception as exception:
-            try:
-                messages.error(
-                    self.request,
-                    _('Error deleting %s.') % self.extra_context['object_name']
-                )
-            except KeyError:
-                messages.error(
-                    self.request, _('Error deleting object.')
-                )
+            messages.error(
+                self.request,
+                _('%(object)s not deleted, error: %(error)s.') % {
+                    'object': context.get('object_name', _('Object')),
+                    'error': exception
+                }
+            )
 
             raise exception
         else:
-            try:
-                messages.success(
-                    self.request,
-                    _(
-                        '%s deleted successfully.'
-                    ) % self.extra_context['object_name']
-                )
-            except KeyError:
-                messages.success(
-                    self.request, _('Object deleted successfully.')
-                )
+            messages.success(
+                self.request,
+                _(
+                    '%s deleted successfully.'
+                ) % context.get('object_name', _('Object'))
+            )
 
             return result
 
@@ -357,23 +348,6 @@ class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
 class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
     template_name = 'appearance/generic_form.html'
 
-    def form_invalid(self, form):
-        result = super(SingleObjectEditView, self).form_invalid(form)
-
-        try:
-            messages.error(
-                self.request,
-                _(
-                    'Error saving %s details.'
-                ) % self.extra_context['object_name']
-            )
-        except KeyError:
-            messages.error(
-                self.request, _('Error saving details.')
-            )
-
-        return result
-
     def form_valid(self, form):
         # This overrides the original Django form_valid method
 
@@ -388,18 +362,26 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
         else:
             save_extra_data = {}
 
-        self.object.save(**save_extra_data)
+        context = self.get_context_data()
 
         try:
+            self.object.save(**save_extra_data)
+        except Exception as exception:
+            messages.error(
+                self.request,
+                _('%(object)s not updated, error: %(error)s.') % {
+                    'object': context.get('object_name', _('Object')),
+                    'error': exception
+                }
+            )
+
+            raise exception
+        else:
             messages.success(
                 self.request,
                 _(
-                    '%s details saved successfully.'
-                ) % self.extra_context['object_name']
-            )
-        except KeyError:
-            messages.success(
-                self.request, _('Details saved successfully.')
+                    '%s updated successfully.'
+                ) % context.get('object_name', _('Object'))
             )
 
         return HttpResponseRedirect(self.get_success_url())
