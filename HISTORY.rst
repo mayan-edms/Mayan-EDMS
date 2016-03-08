@@ -11,6 +11,9 @@
 - Deselect the update checkbox for optional metadata by default.
 - Silence all Django 1.8 model import warnings.
 - Implement per document type document creation permission. Closes GitLab issue #232.
+- Add icons to the document face menu links.
+- Increase icon size by 10%.
+- Increase icon to text spacing to 3px.
 
 2.0.2 (2016-02-09)
 ==================

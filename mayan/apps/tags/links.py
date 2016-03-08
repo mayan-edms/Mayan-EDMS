@@ -37,7 +37,7 @@ link_tag_edit = Link(
     args='object.id'
 )
 link_tag_document_list = Link(
-    permissions=(permission_tag_view,), text=_('Tags'),
+    icon='fa fa-tag', permissions=(permission_tag_view,), text=_('Tags'),
     view='tags:document_tags', args='object.pk'
 )
 link_tag_list = Link(icon='fa fa-tag', text=_('Tags'), view='tags:tag_list')

@@ -18,6 +18,6 @@ link_comment_delete = Link(
     text=_('Delete'), view='comments:comment_delete', args='object.pk'
 )
 link_comments_for_document = Link(
-    permissions=(permission_comment_view,), text=_('Comments'),
-    view='comments:comments_for_document', args='object.pk'
+    icon='fa fa-comment', permissions=(permission_comment_view,),
+    text=_('Comments'), view='comments:comments_for_document', args='object.pk'
 )

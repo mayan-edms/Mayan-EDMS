@@ -18,8 +18,8 @@ def is_not_root_node(context):
 
 
 link_document_index_list = Link(
-    permissions=(permission_document_view,), text=_('Indexes'),
-    view='indexing:document_index_list', args='object.pk'
+    icon='fa fa-list-ul', permissions=(permission_document_view,),
+    text=_('Indexes'), view='indexing:document_index_list', args='object.pk'
 )
 link_index_list = Link(
     permissions=(permission_document_indexing_view,), text=_('Index list'),

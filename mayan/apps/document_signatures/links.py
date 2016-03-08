@@ -50,6 +50,6 @@ link_document_signature_upload = Link(
     view='signatures:document_signature_upload', args='object.pk'
 )
 link_document_verify = Link(
-    permissions=(permission_document_verify,), text=_('Signatures'),
-    view='signatures:document_verify', args='object.pk'
+    icon='fa fa-certificate', permissions=(permission_document_verify,),
+    text=_('Signatures'), view='signatures:document_verify', args='object.pk'
 )

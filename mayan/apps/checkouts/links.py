@@ -42,7 +42,7 @@ link_checkin_document = Link(
     args='object.pk'
 )
 link_checkout_info = Link(
-    permissions=(
+    icon='fa fa-shopping-cart', permissions=(
         permission_document_checkin, permission_document_checkin_override,
         permission_document_checkout
     ), text=_('Check in/out'), view='checkouts:checkout_info', args='object.pk'

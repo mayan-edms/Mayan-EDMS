@@ -39,20 +39,22 @@ def is_min_zoom(context):
 
 # Facet
 link_document_preview = Link(
-    permissions=(permission_document_view,), text=_('Preview'),
-    view='documents:document_preview', args='object.id'
+    icon='fa fa-eye', permissions=(permission_document_view,),
+    text=_('Preview'), view='documents:document_preview', args='object.id'
 )
 link_document_properties = Link(
-    permissions=(permission_document_view,), text=_('Properties'),
-    view='documents:document_properties', args='object.id'
+    icon='fa fa-info', permissions=(permission_document_view,),
+    text=_('Properties'), view='documents:document_properties',
+    args='object.id'
 )
 link_document_version_list = Link(
-    permissions=(permission_document_view,), text=_('Versions'),
-    view='documents:document_version_list', args='object.pk'
+    icon='fa fa-code-fork', permissions=(permission_document_view,),
+    text=_('Versions'), view='documents:document_version_list',
+    args='object.pk'
 )
 link_document_pages = Link(
-    permissions=(permission_document_view,), text=_('Pages'),
-    view='documents:document_pages', args='resolved_object.pk'
+    icon='fa fa-files-o', permissions=(permission_document_view,),
+    text=_('Pages'), view='documents:document_pages', args='resolved_object.pk'
 )
 
 # Actions

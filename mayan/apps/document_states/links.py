@@ -11,7 +11,8 @@ from .permissions import (
 )
 
 link_document_workflow_instance_list = Link(
-    permissions=(permission_workflow_view,), text=_('Workflows'),
+    icon='fa fa-sitemap', permissions=(permission_workflow_view,),
+    text=_('Workflows'),
     view='document_states:document_workflow_instance_list', args='object.pk'
 )
 link_setup_workflow_create = Link(
