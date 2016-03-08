@@ -1,15 +1,23 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
+
+import logging
 
 from django import forms
+from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
+from acls.models import AccessControlList
 from common.forms import DetailForm
+from permissions import Permission
 
 from .models import (
     Document, DocumentType, DocumentPage, DocumentTypeFilename
 )
 from .literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_CHOICES
+from .permissions import permission_document_create
 from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
+
+logger = logging.getLogger(__name__)
 
 
 # Document page forms
@@ -103,9 +111,24 @@ class DocumentTypeSelectForm(forms.Form):
     Form to select the document type of a document to be created, used
     as form #1 in the document creation wizard
     """
-    document_type = forms.ModelChoiceField(
-        queryset=DocumentType.objects.all(), label=_('Document type')
-    )
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        logger.debug('user: %s', user)
+        super(DocumentTypeSelectForm, self).__init__(*args, **kwargs)
+
+        queryset = DocumentType.objects.all()
+        try:
+            Permission.check_permissions(user, (permission_document_create,))
+        except PermissionDenied:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_document_create, user, queryset
+            )
+
+        self.fields['document_type'] = forms.ModelChoiceField(
+            queryset=queryset,
+            label=_('Document type')
+        )
 
 
 class DocumentTypeFilenameForm_create(forms.ModelForm):

@@ -23,8 +23,8 @@ def document_new_version_not_blocked(context):
 
 
 link_document_create_multiple = Link(
-    icon='fa fa-upload', permissions=(permission_document_create,),
-    text=_('New document'), view='sources:document_create_multiple'
+    icon='fa fa-upload', text=_('New document'),
+    view='sources:document_create_multiple'
 )
 link_document_create_siblings = Link(
     permissions=(permission_document_create,), text=_('Clone'),

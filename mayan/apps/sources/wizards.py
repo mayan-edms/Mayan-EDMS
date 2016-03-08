@@ -41,7 +41,6 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
         TagMultipleSelectionForm: _('Step 3 of 3: Select tags'),
     }
     template_name = 'appearance/generic_wizard.html'
-    view_permission = permission_document_create
 
     def dispatch(self, request, *args, **kwargs):
         if not InteractiveSource.objects.filter(enabled=True).exists():
@@ -89,6 +88,9 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
     def get_form_kwargs(self, step):
         # Tags form needs the user instance to determine which tags to
         # display
+        if step == STEP_DOCUMENT_TYPE:
+            return {'user': self.request.user}
+
         if step == STEP_TAGS:
             return {'user': self.request.user}
 

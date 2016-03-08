@@ -650,7 +650,7 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
     if request.method == 'POST':
-        form = DocumentTypeSelectForm(request.POST)
+        form = DocumentTypeSelectForm(request.POST, user=request.user)
         if form.is_valid():
 
             for instance in queryset:
@@ -666,7 +666,8 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
             return HttpResponseRedirect(next)
     else:
         form = DocumentTypeSelectForm(
-            initial={'document_type': queryset.first().document_type}
+            initial={'document_type': queryset.first().document_type},
+            user=request.user
         )
 
     context = {

@@ -2,12 +2,15 @@
 =============
 - Upgrade to use Django 1.8.8. Issue #246.
 - Upgrade requirements.
-- Remove remaining references to Django's User model. Issue #225
+- Remove remaining references to Django's User model. GitLab issue #225
 - Rename 'Content' search box to 'OCR'.
 - Remove included login required middleware using django-stronghold instead (http://mikegrouchy.com/django-stronghold/).
 - Improve generation of success and error messages for class based views.
 - Remove ownership concept from folders.
-- Replace strip_spaces middleware with the spaceless template tag. Issue #255
+- Replace strip_spaces middleware with the spaceless template tag. GitLab issue #255
+- Deselect the update checkbox for optional metadata by default.
+- Silence all Django 1.8 model import warnings.
+- Implement per document type document creation permission. Closes GitLab issue #232.
 
 2.0.2 (2016-02-09)
 ==================

@@ -61,11 +61,11 @@ from .literals import (
     DELETE_STALE_STUBS_INTERVAL
 )
 from .permissions import (
-    permission_document_delete, permission_document_download,
-    permission_document_edit, permission_document_new_version,
-    permission_document_print, permission_document_properties_edit,
-    permission_document_trash, permission_document_version_revert,
-    permission_document_view
+    permission_document_create, permission_document_delete,
+    permission_document_download, permission_document_edit,
+    permission_document_new_version, permission_document_print,
+    permission_document_properties_edit, permission_document_trash,
+    permission_document_version_revert, permission_document_view
 )
 from .settings import setting_thumbnail_size
 from .statistics import (
@@ -124,6 +124,10 @@ class DocumentsApp(MayanAppConfig):
                 permission_transformation_delete,
                 permission_transformation_edit, permission_transformation_view,
             )
+        )
+
+        ModelPermission.register(
+            model=DocumentType, permissions=(permission_document_create,)
         )
 
         ModelPermission.register_proxy(

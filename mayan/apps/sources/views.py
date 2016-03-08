@@ -67,9 +67,18 @@ class SourceLogListView(SingleObjectListView):
 
 
 def document_create_siblings(request, document_id):
-    Permission.check_permissions(request.user, (permission_document_create,))
-
     document = get_object_or_404(Document, pk=document_id)
+
+    try:
+        Permission.check_permissions(
+            request.user, (permission_document_create,)
+        )
+    except PermissionDenied:
+        AccessControlList.objects.check_access(
+            permission_document_create, request.user,
+            document.document_type
+        )
+
     query_dict = {}
     for pk, metadata in enumerate(document.metadata.all()):
         query_dict['metadata%s_id' % pk] = metadata.metadata_type_id
@@ -205,16 +214,22 @@ class UploadInteractiveView(UploadBaseView):
     def dispatch(self, request, *args, **kwargs):
         self.subtemplates_list = []
 
-        Permission.check_permissions(
-            request.user, (permission_document_create,)
-        )
-
         self.document_type = get_object_or_404(
             DocumentType,
             pk=self.request.GET.get(
                 'document_type_id', self.request.POST.get('document_type_id')
             )
         )
+
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_create,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_create, request.user,
+                self.document_type
+            )
 
         self.tab_links = UploadBaseView.get_active_tab_links()
 
