@@ -18,16 +18,14 @@ class FolderSerializer(serializers.HyperlinkedModelSerializer):
         view_name='rest_api:folder-document-list'
     )
     documents_count = serializers.SerializerMethodField()
-    user = UserSerializer(read_only=True)
 
     class Meta:
         extra_kwargs = {
             'url': {'view_name': 'rest_api:folder-detail'},
-            'user': {'view_name': 'rest_api:user-detail'}
         }
         fields = (
             'datetime_created', 'documents', 'documents_count', 'id', 'label',
-            'url', 'user'
+            'url'
         )
         model = Folder
 
@@ -41,7 +39,6 @@ class NewFolderSerializer(serializers.Serializer):
     def create(self, validated_data):
         try:
             data = validated_data.copy()
-            data.update({'user': self.context['request'].user})
             return Folder.objects.create(**data)
         except Exception as exception:
             raise ValidationError(exception)

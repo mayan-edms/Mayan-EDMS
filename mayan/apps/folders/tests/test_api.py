@@ -42,12 +42,9 @@ class FolderAPITestCase(APITestCase):
 
         self.assertEqual(Folder.objects.count(), 1)
         self.assertEqual(folder.label, TEST_FOLDER_LABEL)
-        self.assertEqual(folder.user, self.admin_user)
 
     def test_folder_delete(self):
-        folder = Folder.objects.create(
-            label=TEST_FOLDER_LABEL, user=self.admin_user
-        )
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
         self.client.delete(
             reverse('rest_api:folder-detail', args=(folder.pk,))
@@ -56,9 +53,7 @@ class FolderAPITestCase(APITestCase):
         self.assertEqual(Folder.objects.count(), 0)
 
     def test_folder_edit(self):
-        folder = Folder.objects.create(
-            label=TEST_FOLDER_LABEL, user=self.admin_user
-        )
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
         self.client.put(
             reverse('rest_api:folder-detail', args=(folder.pk,)),
@@ -71,9 +66,7 @@ class FolderAPITestCase(APITestCase):
 
     @override_settings(OCR_AUTO_OCR=False)
     def test_folder_add_document(self):
-        folder = Folder.objects.create(
-            label=TEST_FOLDER_LABEL, user=self.admin_user
-        )
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
@@ -93,9 +86,7 @@ class FolderAPITestCase(APITestCase):
 
     @override_settings(OCR_AUTO_OCR=False)
     def test_folder_remove_document(self):
-        folder = Folder.objects.create(
-            label=TEST_FOLDER_LABEL, user=self.admin_user
-        )
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE

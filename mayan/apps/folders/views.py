@@ -13,7 +13,8 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.views import (
-    SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
+    SingleObjectListView
 )
 from documents.permissions import permission_document_view
 from documents.models import Document
@@ -40,11 +41,13 @@ class FolderEditView(SingleObjectEditView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
+            'object_name': _('Folder'),
             'title': _('Edit folder: %s') % self.get_object(),
         }
 
 
 class FolderListView(SingleObjectListView):
+    model = Folder
     object_permission = permission_folder_view
 
     def get_extra_context(self):
@@ -53,81 +56,30 @@ class FolderListView(SingleObjectListView):
             'title': _('Folders'),
         }
 
-    def get_folder_queryset(self):
-        return Folder.objects.all()
-
-    def get_queryset(self):
-        self.queryset = self.get_folder_queryset()
-        return super(FolderListView, self).get_queryset()
-
 
 class FolderCreateView(SingleObjectCreateView):
     fields = ('label',)
     model = Folder
     view_permission = permission_folder_create
 
-    def form_valid(self, form):
-        try:
-            Folder.objects.get(
-                label=form.cleaned_data['label'], user=self.request.user
-            )
-        except Folder.DoesNotExist:
-            instance = form.save(commit=False)
-            instance.user = self.request.user
-            instance.save()
-            return super(FolderCreateView, self).form_valid(form)
-        else:
-            messages.error(
-                self.request,
-                _(
-                    'A folder named: %s, already exists.'
-                ) % form.cleaned_data['label']
-            )
-            return super(FolderCreateView, self).form_invalid(form)
-
     def get_extra_context(self):
         return {
+            'object_name': _('Folder'),
             'title': _('Create folder'),
         }
 
 
-def folder_delete(request, folder_id):
-    folder = get_object_or_404(Folder, pk=folder_id)
+class FolderDeleteView(SingleObjectDeleteView):
+    model = Folder
+    object_permission = permission_folder_delete
+    post_action_redirect = reverse_lazy('folders:folder_list')
 
-    try:
-        Permission.check_permissions(request.user, (permission_folder_delete,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_folder_delete, request.user, folder
-        )
-
-    post_action_redirect = reverse('folders:folder_list')
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        try:
-            folder.delete()
-            messages.success(request, _('Folder: %s deleted successfully.') % folder)
-        except Exception as exception:
-            messages.error(request, _('Folder: %(folder)s delete error: %(error)s') % {
-                'folder': folder, 'error': exception})
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'previous': previous,
-        'next': next,
-        'object': folder,
-        'title': _('Delete the folder: %s?') % folder,
-    }
-
-    return render_to_response(
-        'appearance/generic_confirm.html', context,
-        context_instance=RequestContext(request)
-    )
+    def get_extra_context(self):
+        return {
+            'object_name': _('Folder'),
+            'object': self.get_object(),
+            'title': _('Delete the folder: %s?') % self.get_object(),
+        }
 
 
 class FolderDetailView(DocumentListView):
@@ -260,7 +212,7 @@ class DocumentFolderListView(FolderListView):
             'title': _('Folders containing document: %s') % self.document,
         }
 
-    def get_folder_queryset(self):
+    def get_queryset(self):
         return self.document.document_folders().all()
 
 

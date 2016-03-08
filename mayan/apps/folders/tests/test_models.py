@@ -12,6 +12,8 @@ from user_management.tests.literals import (
 
 from ..models import Folder
 
+from .literals import TEST_FOLDER_LABEL
+
 
 class FolderTestCase(TestCase):
     def setUp(self):
@@ -32,23 +34,21 @@ class FolderTestCase(TestCase):
     def tearDown(self):
         self.document_type.delete()
 
-    def test_creation_of_folder(self):
-        folder = Folder.objects.create(label='test', user=self.user)
+    def test_folder_creation(self):
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
         self.assertEqual(Folder.objects.all().count(), 1)
         self.assertEqual(list(Folder.objects.all()), [folder])
-        folder.delete()
 
     def test_addition_of_documents(self):
-        folder = Folder.objects.create(label='test', user=self.user)
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
         folder.documents.add(self.document)
 
         self.assertEqual(folder.documents.count(), 1)
         self.assertEqual(list(folder.documents.all()), [self.document])
-        folder.delete()
 
     def test_addition_and_deletion_of_documents(self):
-        folder = Folder.objects.create(label='test', user=self.user)
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
         folder.documents.add(self.document)
 
         self.assertEqual(folder.documents.count(), 1)
@@ -58,5 +58,3 @@ class FolderTestCase(TestCase):
 
         self.assertEqual(folder.documents.count(), 0)
         self.assertEqual(list(folder.documents.all()), [])
-
-        folder.delete()

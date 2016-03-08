@@ -67,7 +67,6 @@ class FoldersApp(MayanAppConfig):
         SourceColumn(
             source=Folder, label=_('Created'), attribute='datetime_created'
         )
-        SourceColumn(source=Folder, label=_('User'), attribute='user')
         SourceColumn(
             source=Folder, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(
