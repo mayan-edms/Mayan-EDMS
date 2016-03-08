@@ -111,7 +111,6 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'common.middleware.timezone.TimezoneMiddleware',
-    'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
     'stronghold.middleware.LoginRequiredMiddleware',
     'common.middleware.ajax_redirect.AjaxRedirect',
 )
