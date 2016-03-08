@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import User, Group
+from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy as _
 
 from actstream import registry
@@ -31,6 +31,8 @@ class UserManagementApp(MayanAppConfig):
     def ready(self):
         super(UserManagementApp, self).ready()
 
+        User = get_user_model()
+
         APIEndPoint(app=self, version_string='1')
 
         MetadataLookup(
@@ -39,7 +41,7 @@ class UserManagementApp(MayanAppConfig):
         )
         MetadataLookup(
             description=_('All the users.'), name='users',
-            value=get_user_model().objects.all()
+            value=User.objects.all()
         )
 
         SourceColumn(

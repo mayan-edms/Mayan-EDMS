@@ -5,7 +5,7 @@ import hashlib
 import logging
 import uuid
 
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.core.files import File
 from django.core.urlresolvers import reverse
@@ -799,7 +799,7 @@ class RecentDocument(models.Model):
     a given user
     """
     user = models.ForeignKey(
-        User, db_index=True, editable=False, verbose_name=_('User')
+        settings.AUTH_USER_MODEL, db_index=True, editable=False, verbose_name=_('User')
     )
     document = models.ForeignKey(
         Document, editable=False, verbose_name=_('Document')
@@ -815,7 +815,7 @@ class RecentDocument(models.Model):
 
     def natural_key(self):
         return self.document.natural_key() + self.user.natural_key()
-    natural_key.dependencies = ['documents.Document', 'auth.User']
+    natural_key.dependencies = ['documents.Document', settings.AUTH_USER_MODEL]
 
     class Meta:
         ordering = ('-datetime_accessed',)

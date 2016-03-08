@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import Group, User
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 
 from rest_framework import serializers
 
@@ -31,7 +32,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
             'is_active', 'is_superuser', 'last_login', 'last_name',
             'password', 'url', 'username',
         )
-        model = User
+        model = get_user_model()
         read_only_fields = ('last_login', 'date_joined')
         write_only_fields = ('password',)
 

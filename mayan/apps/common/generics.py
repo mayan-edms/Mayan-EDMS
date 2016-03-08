@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
@@ -43,10 +42,7 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
         results = []
         for choice in choices:
             ct = ContentType.objects.get_for_model(choice)
-            if isinstance(choice, User):
-                label = choice.get_full_name() if choice.get_full_name() else choice
-            else:
-                label = unicode(choice)
+            label = unicode(choice)
 
             results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
 

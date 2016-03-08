@@ -8,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
 from documents.serializers import DocumentSerializer
-from user_management.serializers import UserSerializer
 
 from .models import Folder
 

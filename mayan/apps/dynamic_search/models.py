@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import urllib
 import urlparse
 
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import (
@@ -20,7 +20,9 @@ class RecentSearch(models.Model):
     Keeps a list of the [n] most recent search keywords for a given user
     """
 
-    user = models.ForeignKey(User, editable=False, verbose_name=_('User'))
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, editable=False, verbose_name=_('User')
+    )
     query = models.TextField(editable=False, verbose_name=_('Query'))
     datetime_created = models.DateTimeField(
         auto_now=True, db_index=True, verbose_name=_('Datetime created')

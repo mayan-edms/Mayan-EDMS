@@ -50,6 +50,6 @@ class TagMultipleSelectionForm(forms.Form):
 
         self.fields['tags'] = forms.MultipleChoiceField(
             label=_('Tags'), choices=queryset.values_list('id', 'label'),
-            help_text=_('Tags to attach to the document.'),required=False,
+            help_text=_('Tags to attach to the document.'), required=False,
             widget=forms.CheckboxSelectMultiple
         )

@@ -4,6 +4,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
+from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
@@ -72,6 +73,18 @@ class GroupMembersView(AssignRemoveView):
     right_list_title = _('Members of groups')
     view_permission = permission_group_edit
 
+    @staticmethod
+    def generate_choices(choices):
+        results = []
+        for choice in choices:
+            ct = ContentType.objects.get_for_model(choice)
+            label = choice.get_full_name() if choice.get_full_name() else choice
+
+            results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
+
+        # Sort results by the label not the key value
+        return sorted(results, key=lambda x: x[1])
+
     def add(self, item):
         self.get_object().user_set.add(item)
 
@@ -85,14 +98,14 @@ class GroupMembersView(AssignRemoveView):
         return get_object_or_404(Group, pk=self.kwargs['pk'])
 
     def left_list(self):
-        return AssignRemoveView.generate_choices(
+        return GroupMembersView.generate_choices(
             get_user_model().objects.exclude(
                 groups=self.get_object()
             ).exclude(is_staff=True).exclude(is_superuser=True)
         )
 
     def right_list(self):
-        return AssignRemoveView.generate_choices(
+        return GroupMembersView.generate_choices(
             self.get_object().user_set.all()
         )
 

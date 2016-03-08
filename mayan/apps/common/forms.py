@@ -4,7 +4,7 @@ import os
 
 from django import forms
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
@@ -148,7 +148,7 @@ class UserForm(forms.ModelForm):
     """
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ('username', 'first_name', 'last_name', 'email')
 
 
@@ -158,7 +158,7 @@ class UserForm_view(DetailForm):
     """
 
     class Meta:
-        model = User
+        model = get_user_model()
         fields = (
             'username', 'first_name', 'last_name', 'email', 'is_staff',
             'is_superuser', 'last_login', 'date_joined', 'groups'
