@@ -67,10 +67,6 @@ urlpatterns = patterns(
         r'^create/from/local/multiple/$', DocumentCreateWizard.as_view(),
         name='document_create_multiple'
     ),
-    url(
-        r'^(?P<document_id>\d+)/create/siblings/$', 'document_create_siblings',
-        name='document_create_siblings'
-    ),
 )
 
 api_urls = patterns(

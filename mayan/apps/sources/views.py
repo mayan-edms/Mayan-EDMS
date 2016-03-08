@@ -66,30 +66,6 @@ class SourceLogListView(SingleObjectListView):
         }
 
 
-def document_create_siblings(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
-
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_create,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_create, request.user,
-            document.document_type
-        )
-
-    query_dict = {}
-    for pk, metadata in enumerate(document.metadata.all()):
-        query_dict['metadata%s_id' % pk] = metadata.metadata_type_id
-        query_dict['metadata%s_value' % pk] = metadata.value
-
-    query_dict['document_type_id'] = document.document_type_id
-
-    url = reverse('sources:upload_interactive')
-    return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
-
-
 class UploadBaseView(MultiFormView):
     template_name = 'appearance/generic_form.html'
     prefixes = {'source_form': 'source', 'document_form': 'document'}

@@ -26,10 +26,6 @@ link_document_create_multiple = Link(
     icon='fa fa-upload', text=_('New document'),
     view='sources:document_create_multiple'
 )
-link_document_create_siblings = Link(
-    permissions=(permission_document_create,), text=_('Clone'),
-    view='sources:document_create_siblings', args='object.id'
-)
 link_setup_sources = Link(
     icon='fa fa-upload', permissions=(permission_sources_setup_view,),
     text=_('Sources'), view='sources:setup_source_list'
