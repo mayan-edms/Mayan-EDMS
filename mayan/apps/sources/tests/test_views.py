@@ -5,7 +5,9 @@ from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase, override_settings
 
+from acls.models import AccessControlList
 from documents.models import Document, DocumentType, NewVersionBlock
+from documents.permissions import permission_document_create
 from documents.tests import (
     TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,
     TEST_DOCUMENT_TYPE
@@ -13,19 +15,99 @@ from documents.tests import (
 from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
+    TEST_USER_PASSWORD, TEST_USER_USERNAME
 )
-
 from ..links import link_upload_version
 from ..literals import SOURCE_CHOICE_WEB_FORM
 from ..models import WebFormSource
 
+TEST_SOURCE_LABEL = 'test'
+TEST_SOURCE_UNCOMPRESS = 'n'
+
+
+class DocumentUploadTestCase(GenericDocumentViewTestCase):
+    def setUp(self):
+        super(DocumentUploadTestCase, self).setUp()
+        self.source = WebFormSource.objects.create(
+            enabled=True, label=TEST_SOURCE_LABEL,
+            uncompress=TEST_SOURCE_UNCOMPRESS
+        )
+
+        self.document.delete()
+
+    def test_upload_wizard_without_permission(self):
+        logged_in = self.client.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            response = self.client.post(
+                reverse(
+                    'sources:upload_interactive', args=(self.source.pk,)
+                ), data={
+                    'source-file': file_object,
+                    'document_type_id': self.document_type.pk,
+                }
+            )
+
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(Document.objects.count(), 0)
+
+    def test_upload_wizard_with_permission(self):
+        logged_in = self.client.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_document_create.stored_permission
+        )
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            response = self.client.post(
+                reverse(
+                    'sources:upload_interactive', args=(self.source.pk,)
+                ), data={
+                    'source-file': file_object,
+                    'document_type_id': self.document_type.pk,
+                }, follow=True
+            )
+
+        self.assertTrue(b'queued' in response.content)
+        self.assertEqual(Document.objects.count(), 1)
+
+    def test_upload_wizard_with_document_type_access(self):
+        """
+        Test uploading of documents by granting the document create
+        permssion for the document type to the user
+        """
+
+        logged_in = self.client.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        # Create an access control entry giving the role the document
+        # create permission for the selected document type.
+        acl = AccessControlList.objects.create(
+            content_object=self.document_type, role=self.role
+        )
+        acl.permissions.add(permission_document_create.stored_permission)
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            response = self.client.post(
+                reverse(
+                    'sources:upload_interactive', args=(self.source.pk,)
+                ), data={
+                    'source-file': file_object,
+                    'document_type_id': self.document_type.pk,
+                }, follow=True
+            )
+
+        self.assertTrue(b'queued' in response.content)
+        self.assertEqual(Document.objects.count(), 1)
+
 
 @override_settings(OCR_AUTO_OCR=False)
-class UploadDocumentTestCase(TestCase):
-    """
-    Test creating documents
-    """
-
+class DocumentUploadIssueTestCase(TestCase):
     def setUp(self):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
@@ -39,47 +121,6 @@ class UploadDocumentTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
-
-    def test_upload_a_document(self):
-        # Login the admin user
-        logged_in = self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
-
-        # Create new webform source
-        self.client.post(
-            reverse(
-                'sources:setup_source_create', args=(SOURCE_CHOICE_WEB_FORM,)
-            ), {'label': 'test', 'uncompress': 'n', 'enabled': True}
-        )
-        self.assertEqual(WebFormSource.objects.count(), 1)
-
-        # Upload the test document
-        with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            self.client.post(
-                reverse('sources:upload_interactive'),
-                {
-                    'document-language': 'eng', 'source-file': file_descriptor,
-                    'document_type_id': self.document_type.pk,
-                    'label': 'mayan_11_1.pdf'
-                }
-            )
-        self.assertEqual(Document.objects.count(), 1)
-
-        self.document = Document.objects.all().first()
-        self.assertEqual(self.document.exists(), True)
-        self.assertEqual(self.document.size, 272213)
-
-        self.assertEqual(self.document.file_mimetype, 'application/pdf')
-        self.assertEqual(self.document.file_mime_encoding, 'binary')
-        self.assertEqual(self.document.label, 'mayan_11_1.pdf')
-        self.assertEqual(
-            self.document.checksum,
-            'c637ffab6b8bb026ed3784afdb07663fddc60099853fae2be93890852a69ecf3'
-        )
-        self.assertEqual(self.document.page_count, 47)
 
     def test_issue_25(self):
         # Login the admin user
