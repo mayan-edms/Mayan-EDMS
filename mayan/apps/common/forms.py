@@ -111,20 +111,20 @@ class FilterForm(forms.Form):
 
 
 class LicenseForm(FileDisplayForm):
-    FILENAME = 'LICENSE'
     DIRECTORY = ('mayan',)
+    FILENAME = 'LICENSE'
 
 
 class LocaleProfileForm(forms.ModelForm):
     class Meta:
-        model = UserLocaleProfile
         fields = ('language', 'timezone')
+        model = UserLocaleProfile
 
 
 class LocaleProfileForm_view(DetailForm):
     class Meta:
-        model = UserLocaleProfile
         fields = ('language', 'timezone')
+        model = UserLocaleProfile
 
 
 class PackagesLicensesForm(forms.Form):
@@ -148,8 +148,8 @@ class UserForm(forms.ModelForm):
     """
 
     class Meta:
-        model = get_user_model()
         fields = ('username', 'first_name', 'last_name', 'email')
+        model = get_user_model()
 
 
 class UserForm_view(DetailForm):
@@ -158,8 +158,8 @@ class UserForm_view(DetailForm):
     """
 
     class Meta:
-        model = get_user_model()
         fields = (
             'username', 'first_name', 'last_name', 'email', 'is_staff',
             'is_superuser', 'last_login', 'date_joined', 'groups'
         )
+        model = get_user_model()
