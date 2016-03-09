@@ -76,14 +76,15 @@ class DocumentType(models.Model):
         verbose_name=_('Trash time unit')
     )
     delete_time_period = models.PositiveIntegerField(
-        default=DEFAULT_DELETE_PERIOD, help_text=_(
+        blank=True, default=DEFAULT_DELETE_PERIOD, help_text=_(
             'Amount of time after which documents of this type in the trash '
             'will be deleted.'
-        ), verbose_name=_('Delete time period')
+        ), null=True, verbose_name=_('Delete time period')
     )
     delete_time_unit = models.CharField(
-        choices=TIME_DELTA_UNIT_CHOICES, default=DEFAULT_DELETE_TIME_UNIT,
-        max_length=8, verbose_name=_('Delete time unit')
+        blank=True, choices=TIME_DELTA_UNIT_CHOICES,
+        default=DEFAULT_DELETE_TIME_UNIT, max_length=8, null=True,
+        verbose_name=_('Delete time unit')
     )
 
     objects = DocumentTypeManager()

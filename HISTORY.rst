@@ -14,6 +14,7 @@
 - Add icons to the document face menu links.
 - Increase icon size by 10%.
 - Increase icon to text spacing to 3px.
+- Make document type delete time period optional.
 
 2.0.2 (2016-02-09)
 ==================
