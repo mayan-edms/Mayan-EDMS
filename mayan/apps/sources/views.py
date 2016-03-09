@@ -74,10 +74,10 @@ class UploadBaseView(MultiFormView):
     def get_tab_link_for_source(source, document=None):
         if document:
             view = 'sources:upload_version'
-            args = ['"{}"'.format(document.pk), '"{}"'.format(source.pk)]
+            args = ('"{}"'.format(document.pk), '"{}"'.format(source.pk),)
         else:
             view = 'sources:upload_interactive'
-            args = ['"{}"'.format(source.pk)]
+            args = ('"{}"'.format(source.pk),)
 
         return Link(
             text=source.label,
@@ -123,7 +123,7 @@ class UploadBaseView(MultiFormView):
                 enabled=True
             ).select_subclasses().first()
 
-        if InteractiveSource.objects.filter(enabled=True).count() == 0:
+        if not InteractiveSource.objects.filter(enabled=True).exists():
             messages.error(
                 request,
                 _(
