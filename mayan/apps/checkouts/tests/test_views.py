@@ -15,7 +15,7 @@ from user_management.tests import (
 from ..models import DocumentCheckout
 from ..permissions import (
     permission_document_checkin, permission_document_checkin_override,
-    permission_document_checkout
+    permission_document_checkout, permission_document_checkout_detail_view
 )
 
 
@@ -59,6 +59,9 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
         self.role.permissions.add(
             permission_document_checkin.stored_permission
         )
+        self.role.permissions.add(
+            permission_document_checkout_detail_view.stored_permission
+        )
 
         response = self.post(
             'checkouts:checkin_document', args=(self.document.pk,), follow=True
@@ -97,6 +100,9 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
         )
         self.role.permissions.add(
             permission_document_checkout.stored_permission
+        )
+        self.role.permissions.add(
+            permission_document_checkout_detail_view.stored_permission
         )
 
         response = self.post(
@@ -214,7 +220,9 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
         self.role.permissions.add(
             permission_document_checkin_override.stored_permission
         )
-
+        self.role.permissions.add(
+            permission_document_checkout_detail_view.stored_permission
+        )
         response = self.post(
             'checkouts:checkin_document', args=(self.document.pk,), follow=True
         )

@@ -19,12 +19,13 @@ from ..models import (
     DeletedDocument, Document, DocumentType, HASH_FUNCTION
 )
 from ..permissions import (
-    permission_document_delete, permission_document_download,
-    permission_document_properties_edit, permission_document_restore,
-    permission_document_tools, permission_document_trash,
-    permission_document_type_create, permission_document_type_delete,
-    permission_document_type_edit, permission_document_type_view,
-    permission_document_view, permission_empty_trash
+    permission_document_create, permission_document_delete,
+    permission_document_download, permission_document_properties_edit,
+    permission_document_restore, permission_document_tools,
+    permission_document_trash, permission_document_type_create,
+    permission_document_type_delete, permission_document_type_edit,
+    permission_document_type_view, permission_document_view,
+    permission_empty_trash
 )
 
 from .literals import (
@@ -247,6 +248,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.role.permissions.add(
             permission_document_properties_edit.stored_permission
         )
+        self.role.permissions.add(
+            permission_document_create.stored_permission
+        )
         response = self.post(
             'documents:document_document_type_edit',
             args=(self.document.pk,),
@@ -302,6 +306,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         self.role.permissions.add(
             permission_document_properties_edit.stored_permission
+        )
+        self.role.permissions.add(
+            permission_document_create.stored_permission
         )
 
         response = self.post(
