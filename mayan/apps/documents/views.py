@@ -289,6 +289,7 @@ class DocumentPageView(SimpleView):
 
 
 class DocumentPreviewView(SingleObjectDetailView):
+    form_class = DocumentPreviewForm
     model = Document
     object_permission = permission_document_view
 
@@ -301,7 +302,6 @@ class DocumentPreviewView(SingleObjectDetailView):
 
     def get_extra_context(self):
         return {
-            'form': DocumentPreviewForm(document=self.get_object()),
             'hide_labels': True,
             'object': self.get_object(),
             'title': _('Preview of document: %s') % self.get_object(),

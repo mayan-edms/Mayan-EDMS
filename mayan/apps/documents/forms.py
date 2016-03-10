@@ -47,7 +47,7 @@ class DocumentPageForm(DetailForm):
 
 class DocumentPreviewForm(forms.Form):
     def __init__(self, *args, **kwargs):
-        document = kwargs.pop('document', None)
+        document = kwargs.pop('instance', None)
         super(DocumentPreviewForm, self).__init__(*args, **kwargs)
         self.fields['preview'].initial = document
         try:
