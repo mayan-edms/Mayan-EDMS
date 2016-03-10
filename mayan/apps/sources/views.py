@@ -7,6 +7,7 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -168,6 +169,10 @@ class UploadBaseView(MultiFormView):
             subtemplates_list.append({
                 'name': 'appearance/generic_multiform_subtemplate.html',
                 'context': {
+                    'form_action': self.request.get_full_path(),
+                    'form_class': 'dropzone',
+                    'form_disable_submit': True,
+                    'form_id': 'html5upload',
                     'forms': context['forms'],
                     'is_multipart': True,
                     'title': _('Document properties'),

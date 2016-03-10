@@ -68,7 +68,11 @@ class StagingUploadForm(UploadBaseForm):
 
 
 class WebFormUploadForm(UploadBaseForm):
-    file = forms.FileField(label=_('File'))
+    file = forms.FileField(
+        label=_('File'), widget=forms.widgets.FileInput(
+            attrs={'class': 'hidden', 'hidden': True}
+        )
+    )
 
 
 class WebFormSetupForm(forms.ModelForm):
