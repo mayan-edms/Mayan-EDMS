@@ -166,7 +166,7 @@ LANGUAGES = (
     ('hr', _('Croatian')),
     ('id', _('Indonesian')),
     ('it', _('Italian')),
-    ('nl', _('Dutch (Nethherlands)')),
+    ('nl', _('Dutch (Netherlands)')),
     ('pl', _('Polish')),
     ('pt', _('Portuguese')),
     ('pt-br', _('Portuguese (Brazil)')),
