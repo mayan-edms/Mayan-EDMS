@@ -40,27 +40,27 @@ class ChoiceForm(forms.Form):
 
 
 class DetailForm(forms.ModelForm):
-    def __init__(self, extra_fields=None, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        self.extra_fields = kwargs.pop('extra_fields', ())
         super(DetailForm, self).__init__(*args, **kwargs)
-        if extra_fields:
-            for extra_field in extra_fields:
-                result = return_attrib(self.instance, extra_field['field'])
-                label = 'label' in extra_field and extra_field['label'] or None
-                # TODO: Add others result types <=> Field types
-                if isinstance(result, models.query.QuerySet):
-                    self.fields[extra_field['field']] = \
-                        forms.ModelMultipleChoiceField(
-                            queryset=result, label=label)
-                else:
-                    self.fields[extra_field['field']] = forms.CharField(
-                        label=extra_field['label'],
-                        initial=escape(
-                            return_attrib(
-                                self.instance,
-                                extra_field['field'], None
-                            )
-                        ),
-                        widget=PlainWidget)
+
+        for extra_field in self.extra_fields:
+            result = return_attrib(self.instance, extra_field['field'])
+            label = 'label' in extra_field and extra_field['label'] or None
+            # TODO: Add others result types <=> Field types
+            if isinstance(result, models.query.QuerySet):
+                self.fields[extra_field['field']] = \
+                    forms.ModelMultipleChoiceField(
+                        queryset=result, label=label)
+            else:
+                self.fields[extra_field['field']] = forms.CharField(
+                    label=extra_field['label'],
+                    initial=return_attrib(
+                        self.instance,
+                        extra_field['field'], None
+                    ),
+                    widget=extra_field.get('widget', PlainWidget)
+                )
 
         for field_name, field in self.fields.items():
             if isinstance(field.widget, forms.widgets.SelectMultiple):

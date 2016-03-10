@@ -8,7 +8,9 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     FormView as DjangoFormView, DetailView, TemplateView
 )
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.edit import (
+    CreateView, DeleteView, ModelFormMixin, UpdateView
+)
 from django.views.generic.list import ListView
 
 from pure_pagination.mixins import PaginationMixin
@@ -332,12 +334,12 @@ class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, Obj
             return result
 
 
-class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, DetailView):
+class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, ModelFormMixin, DetailView):
     template_name = 'appearance/generic_form.html'
 
     def get_context_data(self, **kwargs):
         context = super(SingleObjectDetailView, self).get_context_data(**kwargs)
-        context.update({'read_only': True})
+        context.update({'read_only': True, 'form': self.get_form()})
         return context
 
 

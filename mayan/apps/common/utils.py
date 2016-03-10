@@ -71,10 +71,6 @@ def get_descriptor(file_input, read=True):
         return file_input
 
 
-def render_date_object(date_time_object):
-    return force_text(formats.localize(date_time_object, use_l10n=True))
-
-
 def return_attrib(obj, attrib, arguments=None):
     try:
         if isinstance(attrib, types.FunctionType):

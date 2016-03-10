@@ -69,6 +69,8 @@
                             {{ option.render }}
                         </div>
                     {% endfor %}
+                {% elif field|widget_type == 'datetimeinput' %}
+                    {{ field.value }}
                 {% else %}
                     {% render_field field class+="form-control" %}
                 {% endif %}
