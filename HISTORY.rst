@@ -15,6 +15,8 @@
 - Increase icon size by 10%.
 - Increase icon to text spacing to 3px.
 - Make document type delete time period optional.
+- Fixed date locale handling in document properties, checkout and user detail views.
+- Add new permission: checkout details view.
 
 2.0.2 (2016-02-09)
 ==================
