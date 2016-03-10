@@ -19,7 +19,7 @@ from .links import (
 from .literals import CHECK_EXPIRED_CHECK_OUTS_INTERVAL
 from .permissions import (
     permission_document_checkin, permission_document_checkin_override,
-    permission_document_checkout
+    permission_document_checkout, permission_document_checkout_detail_view
 )
 from .tasks import task_check_expired_check_outs  # NOQA
 # This import is required so that celerybeat can find the task
@@ -69,6 +69,7 @@ class CheckoutsApp(MayanAppConfig):
                 permission_document_checkout,
                 permission_document_checkin,
                 permission_document_checkin_override,
+                permission_document_checkout_detail_view
             )
         )
 

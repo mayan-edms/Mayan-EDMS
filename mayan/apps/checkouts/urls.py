@@ -3,7 +3,10 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 
 from .api_views import APICheckedoutDocumentListView, APICheckedoutDocumentView
-from .views import CheckoutDocumentView, CheckoutListView, DocumentCheckinView
+from .views import (
+    CheckoutDocumentView, CheckoutDetailView, CheckoutListView,
+    DocumentCheckinView
+)
 
 urlpatterns = patterns(
     'checkouts.views',
@@ -17,7 +20,7 @@ urlpatterns = patterns(
         name='checkin_document'
     ),
     url(
-        r'^(?P<document_pk>\d+)/check/info/$', 'checkout_info',
+        r'^(?P<pk>\d+)/check/info/$', CheckoutDetailView.as_view(),
         name='checkout_info'
     ),
 )

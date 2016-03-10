@@ -22,7 +22,6 @@ from common.generics import (
     SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
-from common.utils import render_date_object
 from converter.literals import (
     DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 )
@@ -533,6 +532,7 @@ class DocumentVersionListView(SingleObjectListView):
 
 
 class DocumentView(SingleObjectDetailView):
+    form_class = DocumentPropertiesForm
     model = Document
     object_permission = permission_document_view
 
@@ -543,54 +543,10 @@ class DocumentView(SingleObjectDetailView):
 
     def get_extra_context(self):
         return {
-            'form': self.get_form(),
             'document': self.get_object(),
             'object': self.get_object(),
             'title': _('Properties for document: %s') % self.get_object(),
         }
-
-    def get_form(self):
-        document = self.get_object()
-
-        document_fields = [
-            {
-                'label': _('Date added'),
-                'field': lambda document: render_date_object(
-                    document.date_added
-                )
-            },
-            {'label': _('UUID'), 'field': 'uuid'},
-        ]
-        if document.latest_version:
-            document_fields.extend([
-                {
-                    'label': _('File mimetype'),
-                    'field': lambda x: document.file_mimetype or _('None')
-                },
-                {
-                    'label': _('File encoding'),
-                    'field': lambda x: document.file_mime_encoding or _(
-                        'None'
-                    )
-                },
-                {
-                    'label': _('File size'),
-                    'field': lambda document: filesizeformat(
-                        document.size
-                    ) if document.size else '-'
-                },
-                {'label': _('Exists in storage'), 'field': 'exists'},
-                {
-                    'label': _('File path in storage'),
-                    'field': 'latest_version.file'
-                },
-                {'label': _('Checksum'), 'field': 'checksum'},
-                {'label': _('Pages'), 'field': 'page_count'},
-            ])
-
-        return DocumentPropertiesForm(
-            instance=document, extra_fields=document_fields
-        )
 
 
 class EmptyTrashCanView(ConfirmView):

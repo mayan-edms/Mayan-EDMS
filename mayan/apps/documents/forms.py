@@ -4,6 +4,7 @@ import logging
 
 from django import forms
 from django.core.exceptions import PermissionDenied
+from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -101,6 +102,48 @@ class DocumentPropertiesForm(DetailForm):
     """
     Detail class form to display a document file based properties
     """
+    def __init__(self, *args, **kwargs):
+        document = kwargs['instance']
+
+        extra_fields = [
+            {
+                'label': _('Date added'),
+                'field': 'date_added',
+                'widget': forms.widgets.DateTimeInput
+            },
+            {'label': _('UUID'), 'field': 'uuid'},
+        ]
+
+        if document.latest_version:
+            extra_fields += (
+                {
+                    'label': _('File mimetype'),
+                    'field': lambda x: document.file_mimetype or _('None')
+                },
+                {
+                    'label': _('File encoding'),
+                    'field': lambda x: document.file_mime_encoding or _(
+                        'None'
+                    )
+                },
+                {
+                    'label': _('File size'),
+                    'field': lambda document: filesizeformat(
+                        document.size
+                    ) if document.size else '-'
+                },
+                {'label': _('Exists in storage'), 'field': 'exists'},
+                {
+                    'label': _('File path in storage'),
+                    'field': 'latest_version.file'
+                },
+                {'label': _('Checksum'), 'field': 'checksum'},
+                {'label': _('Pages'), 'field': 'page_count'},
+            )
+
+        kwargs['extra_fields'] = extra_fields
+        super(DocumentPropertiesForm, self).__init__(*args, **kwargs)
+
     class Meta:
         fields = ('document_type', 'description', 'language')
         model = Document
