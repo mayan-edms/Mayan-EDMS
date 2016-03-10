@@ -10,7 +10,6 @@ from formtools.wizard.views import SessionWizardView
 
 from common.mixins import ViewPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
-from documents.permissions import permission_document_create
 from metadata.forms import MetadataFormSet
 from tags.forms import TagMultipleSelectionForm
 

@@ -36,7 +36,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         self.document.delete()
 
     def test_upload_wizard_without_permission(self):
-        logged_in = self.client.login(
+        self.client.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
@@ -54,7 +54,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Document.objects.count(), 0)
 
     def test_upload_wizard_with_permission(self):
-        logged_in = self.client.login(
+        self.client.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
@@ -81,7 +81,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         permssion for the document type to the user
         """
 
-        logged_in = self.client.login(
+        self.client.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 

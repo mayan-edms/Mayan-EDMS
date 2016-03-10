@@ -229,7 +229,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document_2 = self.document_type.new_document(
                 file_object=File(file_object)
-        )
+            )
 
         self.document.metadata.create(metadata_type=self.metadata_type)
         document_2.metadata.create(metadata_type=self.metadata_type)
@@ -261,7 +261,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document_2 = self.document_type.new_document(
                 file_object=File(file_object)
-        )
+            )
 
         response = self.post(
             'metadata:metadata_multiple_add', data={

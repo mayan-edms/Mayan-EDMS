@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from kombu import Exchange, Queue
@@ -39,10 +38,6 @@ class SourcesApp(MayanAppConfig):
 
     def ready(self):
         super(SourcesApp, self).ready()
-
-        Document = apps.get_model(
-            app_label='documents', model_name='Document'
-        )
 
         POP3Email = self.get_model('POP3Email')
         IMAPEmail = self.get_model('IMAPEmail')
