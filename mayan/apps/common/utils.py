@@ -6,9 +6,7 @@ import tempfile
 import types
 
 from django.conf import settings
-from django.utils import formats
 from django.utils.datastructures import MultiValueDict
-from django.utils.encoding import force_text
 from django.utils.http import urlquote as django_urlquote
 from django.utils.http import urlencode as django_urlencode
 
