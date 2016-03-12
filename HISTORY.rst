@@ -17,6 +17,7 @@
 - Make document type delete time period optional.
 - Fixed date locale handling in document properties, checkout and user detail views.
 - Add new permission: checkout details view.
+- Add HTML5 upload widget. Issue #162.
 
 2.0.2 (2016-02-09)
 ==================
