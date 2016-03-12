@@ -173,11 +173,13 @@
 .dropzone, .dropzone * {
   box-sizing: border-box; }
 
+.dz-default {
+    border-style: dashed;
+}
+
 .dropzone {
   min-height: 150px;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  background: white;
-  padding: 20px 20px; }
+}
   .dropzone.dz-clickable {
     cursor: pointer; }
     .dropzone.dz-clickable * {
@@ -192,7 +194,7 @@
       opacity: 0.5; }
   .dropzone .dz-message {
     text-align: center;
-    margin: 2em 0; }
+    padding: 2em 0; }
   .dropzone .dz-preview {
     position: relative;
     display: inline-block;

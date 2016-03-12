@@ -114,13 +114,4 @@ jQuery(document).ready(function() {
         });
 
     }, 3000);
-
-    Dropzone.options.html5upload = {
-        paramName: 'source-file',
-        addRemoveLinks: true,
-        createImageThumbnails: false,
-        dictDefaultMessage: 'Drop files or click here to upload files',
-        dictCancelUpload: 'Cancel upload',
-        dictRemoveFile: 'Clear'
-    };
 });

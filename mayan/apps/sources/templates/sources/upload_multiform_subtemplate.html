@@ -1,0 +1,32 @@
+{% load static %}
+
+{% include 'appearance/generic_multiform_subtemplate.html' %}
+
+{% block stylesheets %}
+    <link href="{% static 'sources/packages/dropzone.css' %}" media="screen" rel="stylesheet" type="text/css" />
+{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript" src="{% static 'sources/packages/dropzone.js' %}"></script>
+
+    <script>
+        'use strict';
+
+        Dropzone.options.html5upload = {
+            paramName: 'source-file',
+            addRemoveLinks: true,
+            createImageThumbnails: false,
+            dictDefaultMessage: gettext('Drop files or click here to upload files'),
+            dictFallbackMessage: gettext('Your browser does not support drag\'n\'drop file uploads.'),
+            dictFallbackText: gettext('Please use the fallback form below to upload your files like in the olden days.'),
+            dictFileTooBig: gettext('File is too big ({{filesize}}MiB). Max filesize: {{maxFilesize}}MiB.'),
+            dictInvalidFileType: gettext('You can\'t upload files of this type.'),
+            dictResponseError: gettext('Server responded with {{statusCode}} code.'),
+            dictCancelUpload: gettext('Cancel upload'),
+            dictCancelUploadConfirmation: gettext('Are you sure you want to cancel this upload?'),
+            dictRemoveFile: gettext('Clear'),
+            dictMaxFilesExceeded: gettext('You can not upload any more files.'),
+            maxFilesize: 1024,
+        };
+    </script>
+{% endblock %}

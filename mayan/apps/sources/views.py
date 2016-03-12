@@ -167,7 +167,7 @@ class UploadBaseView(MultiFormView):
                 ]
         else:
             subtemplates_list.append({
-                'name': 'appearance/generic_multiform_subtemplate.html',
+                'name': 'sources/upload_multiform_subtemplate.html',
                 'context': {
                     'form_action': self.request.get_full_path(),
                     'form_class': 'dropzone',
