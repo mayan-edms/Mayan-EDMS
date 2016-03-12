@@ -29,7 +29,8 @@ from navigation import Link
 from permissions import Permission
 
 from .forms import (
-    NewDocumentForm, NewVersionForm
+    NewDocumentForm, NewVersionForm, WebFormUploadForm,
+    WebFormUploadFormHTML5
 )
 from .literals import (
     SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM,
@@ -169,10 +170,6 @@ class UploadBaseView(MultiFormView):
             subtemplates_list.append({
                 'name': 'sources/upload_multiform_subtemplate.html',
                 'context': {
-                    'form_action': self.request.get_full_path(),
-                    'form_class': 'dropzone',
-                    'form_disable_submit': True,
-                    'form_id': 'html5upload',
                     'forms': context['forms'],
                     'is_multipart': True,
                     'title': _('Document properties'),
@@ -190,7 +187,6 @@ class UploadBaseView(MultiFormView):
 
 
 class UploadInteractiveView(UploadBaseView):
-
     def dispatch(self, request, *args, **kwargs):
         self.subtemplates_list = []
 
@@ -291,9 +287,15 @@ class UploadInteractiveView(UploadBaseView):
         )
 
     def get_form_classes(self):
+        source_form_class = get_upload_form_class(self.source.source_type)
+
+        # Override source form class to enable the HTML5 file uploader
+        if source_form_class == WebFormUploadForm:
+            source_form_class = WebFormUploadFormHTML5
+
         return {
             'document_form': NewDocumentForm,
-            'source_form': get_upload_form_class(self.source.source_type)
+            'source_form': source_form_class
         }
 
     def get_context_data(self, **kwargs):
@@ -301,6 +303,15 @@ class UploadInteractiveView(UploadBaseView):
         context['title'] = _(
             'Upload a local document from source: %s'
         ) % self.source.label
+        if not isinstance(self.source, StagingFolderSource):
+            context['subtemplates_list'][0]['context'].update(
+                {
+                    'form_action': self.request.get_full_path(),
+                    'form_class': 'dropzone',
+                    'form_disable_submit': True,
+                    'form_id': 'html5upload',
+                }
+            )
         return context
 
 
