@@ -91,6 +91,7 @@ INSTALLED_APPS = (
     'mailer',
     'metadata',
     'mirroring',
+    'motd',
     'ocr',
     'rest_api',
     'sources',
