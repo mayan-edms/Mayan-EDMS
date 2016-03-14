@@ -112,13 +112,21 @@ Point your browser to http://127.0.0.1:8000. If everything was installed
 correctly you should see the login screen and panel showing a randomly generated
 admin password.
 
-Note: Background tasks and scheduled tasks will not run when using the test server.
+Background tasks and scheduled tasks will not run when using the test server.
 
+The ``runserver`` command is only meant for testing, do not use in a production
+server.
+
+Note that the default IP address, 127.0.0.1, is not accessible from other
+machines on your network. To make your test server viewable to other
+machines on the network, use its own IP address (e.g. 192.168.2.1) or 0.0.0.0 or :: (with IPv6 enabled).
+
+You can provide an IPv6 address surrounded by brackets (e.g. [200a::1]:8000). This will automatically enable IPv6 support.
 
 Production use
 ==============
 
-After making sure everything is running correctly, stop the `runserver` command.
+After making sure everything is running correctly, stop the ``runserver`` command.
 Deploy **Mayan EDMS** using the webserver of your preference. For more information
 on deployment instructions and examples, checkout Django's official documentation
 on the topic https://docs.djangoproject.com/en/1.7/howto/deployment/
