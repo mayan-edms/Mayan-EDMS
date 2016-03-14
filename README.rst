@@ -1,4 +1,4 @@
-|Build Status| |Coverage badge| |PyPI badge| |Installs badge| |License badge|
+|PyPI badge| |Build Status| |Coverage badge| |Installs badge| |License badge|
 
 |Logo|
 
@@ -18,10 +18,6 @@ Free Open Source Electronic Document Management System.
 `Mailing list (via Google Groups)`_
 
 |Animation|
-
-Support
--------
-Help support further improvements and development by donating at: https://www.patreon.com/siloraptor
 
 License
 -------
