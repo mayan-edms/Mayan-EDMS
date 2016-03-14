@@ -10,14 +10,24 @@ from .managers import MessageManager
 
 @python_2_unicode_compatible
 class Message(models.Model):
-    label = models.CharField(max_length=32, verbose_name=_('Label'))
-    message = models.TextField(verbose_name=_('Message'))
+    label = models.CharField(
+        max_length=32, help_text=_('Short description of this message.'),
+        verbose_name=_('Label')
+    )
+    message = models.TextField(
+        help_text=_('The actual message to be displayed.'),
+        verbose_name=_('Message')
+    )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
     start_datetime = models.DateTimeField(
-        blank=True, null=True, verbose_name=_('Start date time')
+        blank=True, help_text=_(
+            'Date and time after which this message will be displayed.'
+        ), null=True, verbose_name=_('Start date time')
     )
     end_datetime = models.DateTimeField(
-        blank=True, null=True, verbose_name=_('End date time')
+        blank=True, help_text=_(
+            'Date and time until when this message is to be displayed.'
+        ), null=True, verbose_name=_('End date time')
     )
 
     objects = MessageManager()

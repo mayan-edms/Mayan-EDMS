@@ -16,17 +16,17 @@ from common.views import (
     SingleObjectListView
 )
 
-from .models import MessageOfTheDay
+from .models import Message
 from .permissions import (
-    permission_message_create, permission_message_delete, permission_message_edit,
-    permission_message_view,
+    permission_message_create, permission_message_delete,
+    permission_message_edit, permission_message_view,
 )
 
 logger = logging.getLogger(__name__)
 
 
 class MessageCreateView(SingleObjectCreateView):
-    fields = ('label',)
+    fields = ('label', 'message', 'enabled', 'start_datetime', 'end_datetime')
     model = Message
     view_permission = permission_message_create
 
@@ -40,21 +40,22 @@ class MessageCreateView(SingleObjectCreateView):
 class MessageDeleteView(SingleObjectDeleteView):
     model = Message
     object_permission = permission_message_delete
-    post_action_redirect = reverse_lazy('messages:message_list')
+    post_action_redirect = reverse_lazy('motd:message_list')
 
     def get_extra_context(self):
         return {
-            'object_name': _('Message'),
+            'message': None,
             'object': self.get_object(),
+            'object_name': _('Message'),
             'title': _('Delete the message: %s?') % self.get_object(),
         }
 
 
 class MessageEditView(SingleObjectEditView):
-    fields = ('label',)
+    fields = ('label', 'message', 'enabled', 'start_datetime', 'end_datetime')
     model = Message
     object_permission = permission_message_edit
-    post_action_redirect = reverse_lazy('messages:message_list')
+    post_action_redirect = reverse_lazy('motd:message_list')
 
     def get_extra_context(self):
         return {
@@ -72,3 +73,4 @@ class MessageListView(SingleObjectListView):
         return {
             'hide_link': True,
             'title': _('Messages'),
+        }
