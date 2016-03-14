@@ -9,14 +9,12 @@ from django.contrib.auth.signals import user_logged_in
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
-from common import MayanAppConfig
+from common import MayanAppConfig, menu_object, menu_secondary, menu_tools
 
-#from .links import (
-#    link_about, link_current_user_details, link_current_user_edit,
-#    link_current_user_locale_profile_details,
-#    link_current_user_locale_profile_edit, link_filters, link_license,
-#    link_packages_licenses, link_setup, link_tools
-#)
+from .links import (
+    link_message_create, link_message_delete, link_message_edit,
+    link_message_list
+)
 
 logger = logging.getLogger(__name__)
 
@@ -28,3 +26,18 @@ class MOTDApp(MayanAppConfig):
 
     def ready(self):
         super(MOTDApp, self).ready()
+
+        Message = self.get_model('Message')
+
+        menu_object.bind_links(
+            links=(
+                link_message_edit, link_message_delete
+            ), sources=(Message,)
+        )
+        menu_secondary.bind_links(
+            links=(link_message_create,),
+            sources=(Message, 'motd:message_list', 'motd:message_create')
+        )
+        menu_tools.bind_links(
+            links=(link_message_list,)
+        )

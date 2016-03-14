@@ -2,9 +2,9 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import MessageOfTheDay
+from .models import Message
 
 
-@admin.register(MessageOfTheDay)
-class MessageOfTheDayAdmin(admin.ModelAdmin):
+@admin.register(Message)
+class MessageAdmin(admin.ModelAdmin):
     list_display = ('label', 'enabled', 'start_datetime', 'end_datetime')

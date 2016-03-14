@@ -3,7 +3,7 @@ from django.db.models import Q
 from django.utils import timezone
 
 
-class MessageOfTheDayManager(models.Manager):
+class MessageManager(models.Manager):
     def get_for_now(self):
         now = timezone.now()
         return self.filter(enabled=True).filter(
