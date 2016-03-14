@@ -34,9 +34,12 @@ class FolderAPITestCase(APITestCase):
         )
 
     def test_folder_create(self):
-        self.client.post(
+        response = self.client.post(
             reverse('rest_api:folder-list'), {'label': TEST_FOLDER_LABEL}
         )
+
+        self.assertEqual(response.data['id'], 1)
+        self.assertEqual(response.data['label'], TEST_FOLDER_LABEL)
 
         folder = Folder.objects.first()
 

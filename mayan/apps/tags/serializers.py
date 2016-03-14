@@ -33,6 +33,15 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
         return instance.documents.count()
 
 
+
+class NewTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = (
+            'color', 'label', 'id'
+        )
+        model = Tag
+
+
 class NewDocumentTagSerializer(serializers.Serializer):
     tag = serializers.IntegerField(
         help_text=_('Primary key of the tag to be added.')

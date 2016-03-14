@@ -32,15 +32,10 @@ class FolderSerializer(serializers.HyperlinkedModelSerializer):
         return obj.documents.count()
 
 
-class NewFolderSerializer(serializers.Serializer):
-    label = serializers.CharField()
-
-    def create(self, validated_data):
-        try:
-            data = validated_data.copy()
-            return Folder.objects.create(**data)
-        except Exception as exception:
-            raise ValidationError(exception)
+class NewFolderSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('label', 'id')
+        model = Folder
 
 
 class FolderDocumentSerializer(DocumentSerializer):

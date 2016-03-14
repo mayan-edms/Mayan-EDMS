@@ -40,11 +40,15 @@ class TagAPITestCase(APITestCase):
         self.admin_user.delete()
 
     def test_tag_create(self):
-        self.client.post(
+        response = self.client.post(
             reverse('rest_api:tag-list'), {
                 'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
             }
         )
+
+        self.assertEqual(response.data['id'], 1)
+        self.assertEqual(response.data['label'], TEST_TAG_LABEL)
+        self.assertEqual(response.data['color'], TEST_TAG_COLOR)
 
         tag = Tag.objects.first()
 
