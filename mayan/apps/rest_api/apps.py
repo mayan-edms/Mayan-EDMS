@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.conf import settings
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_tools
@@ -16,6 +17,8 @@ class RESTAPIApp(MayanAppConfig):
 
     def ready(self):
         super(RESTAPIApp, self).ready()
+
+        settings.STRONGHOLD_PUBLIC_URLS += (r'^/%s/.+$' % self.app_url,)
 
         APIEndPoint(app=self, name='rest', version_string='1')
 

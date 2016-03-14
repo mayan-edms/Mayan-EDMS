@@ -261,3 +261,5 @@ SWAGGER_SETTINGS = {
 # ------ Timezone --------
 TIMEZONE_COOKIE_NAME = 'django_timezone'
 TIMEZONE_SESSION_KEY = 'django_timezone'
+# ----- Stronghold -------
+STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$',)
