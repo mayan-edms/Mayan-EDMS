@@ -70,7 +70,11 @@
                         </div>
                     {% endfor %}
                 {% elif field|widget_type == 'datetimeinput' %}
-                    {{ field.value }}
+                    {% if read_only %}
+                        {{ field.value }}
+                    {% else %}
+                        {% render_field field class+="form-control" %}
+                    {% endif %}
                 {% else %}
                     {% render_field field class+="form-control" %}
                 {% endif %}
