@@ -100,18 +100,6 @@ def metadata_repr_as_list(metadata_list):
     return output
 
 
-def convert_dict_to_dict_list(dictionary):
-    result = []
-    for key, value in dictionary.items():
-        try:
-            metadata_type = MetadataType.objects.get(name=key)
-        except MetadataType.DoesNotExist:
-            raise ValueError('Unknown metadata type name')
-        result.append({'id': metadata_type.pk, 'value': value})
-
-    return result
-
-
 def set_bulk_metadata(document, metadata_dictionary):
     document_type = document.document_type
     document_type_metadata_types = [
