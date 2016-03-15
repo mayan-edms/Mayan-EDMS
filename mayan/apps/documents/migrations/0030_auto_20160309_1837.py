@@ -14,11 +14,21 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documenttype',
             name='delete_time_period',
-            field=models.PositiveIntegerField(default=30, help_text='Amount of time after which documents of this type in the trash will be deleted.', null=True, verbose_name='Delete time period', blank=True),
+            field=models.PositiveIntegerField(
+                default=30, help_text='Amount of time after which documents '
+                'of this type in the trash will be deleted.', null=True,
+                verbose_name='Delete time period', blank=True
+            ),
         ),
         migrations.AlterField(
             model_name='documenttype',
             name='delete_time_unit',
-            field=models.CharField(default='days', choices=[('days', 'Days'), ('hours', 'Hours'), ('minutes', 'Minutes')], max_length=8, blank=True, null=True, verbose_name='Delete time unit'),
+            field=models.CharField(
+                default='days', choices=[
+                    ('days', 'Days'), ('hours', 'Hours'),
+                    ('minutes', 'Minutes')
+                ], max_length=8, blank=True, null=True,
+                verbose_name='Delete time unit'
+            ),
         ),
     ]

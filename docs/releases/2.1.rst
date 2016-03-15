@@ -7,7 +7,7 @@ Released: April, 2016
 What's new
 ==========
 
-- Upgrade to use Django 1.8.8.
+- Upgrade to use Django 1.8.11.
 - Remove remaining references to Django's User model.
 - Remove included login required middleware using django-stronghold instead (http://mikegrouchy.com/django-stronghold/).
 - Improve generation of success and error messages for class based views.
@@ -17,8 +17,8 @@ What's new
 - Implement per document type document creation permission.
 - Make document type delete time period optional.
 - Fixed date locale handling in document properties, checkout and user detail views.
-- Add HTML5 upload widget. Issue #162.
-- Add Message of the Day app. Issue #222
+- Add HTML5 upload widget.
+- Add Message of the Day app.
 
 Other changes
 =============
@@ -30,7 +30,7 @@ Other changes
 - Add new permission: checkout details view.
 - Add HTML tags stripping to the browser title generation template.
 - Folder and Tag creation API calls now return the id of the created instances.
-
+- Update Document model's uuid field to use Django's native UUIDField class.
 
 Removals
 --------

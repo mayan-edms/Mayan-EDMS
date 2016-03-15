@@ -149,9 +149,7 @@ class Document(models.Model):
     Defines a single document with it's fields and properties
     """
 
-    uuid = models.CharField(
-        default=UUID_FUNCTION, editable=False, max_length=48
-    )
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     document_type = models.ForeignKey(
         DocumentType, related_name='documents',
         verbose_name=_('Document type')

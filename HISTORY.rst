@@ -18,6 +18,7 @@
 - Add new permission: checkout details view.
 - Add HTML5 upload widget. Issue #162.
 - Add Message of the Day app. Issue #222
+- Update Document model's uuid field to use Django's native UUIDField class.
 
 2.0.2 (2016-02-09)
 ==================
