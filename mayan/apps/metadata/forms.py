@@ -101,7 +101,11 @@ class AddMetadataForm(forms.Form):
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type')
         super(AddMetadataForm, self).__init__(*args, **kwargs)
-        self.fields['metadata_type'].queryset = document_type.metadata.all()
+        self.fields['metadata_type'].queryset = MetadataType.objects.filter(
+            pk__in=document_type.metadata.values_list(
+                'metadata_type', flat=True
+            )
+        )
 
 
 class MetadataTypeForm(forms.ModelForm):

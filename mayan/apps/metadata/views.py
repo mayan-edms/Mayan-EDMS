@@ -243,7 +243,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
                 try:
                     document_metadata, created = DocumentMetadata.objects.get_or_create(
                         document=document,
-                        metadata_type=metadata_type.metadata_type,
+                        metadata_type=metadata_type,
                         defaults={'value': ''}
                     )
                 except Exception as exception:
