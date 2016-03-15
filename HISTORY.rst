@@ -12,7 +12,6 @@
 - Silence all Django 1.8 model import warnings.
 - Implement per document type document creation permission. Closes GitLab issue #232.
 - Add icons to the document face menu links.
-- Increase icon size by 10%.
 - Increase icon to text spacing to 3px.
 - Make document type delete time period optional.
 - Fixed date locale handling in document properties, checkout and user detail views.
