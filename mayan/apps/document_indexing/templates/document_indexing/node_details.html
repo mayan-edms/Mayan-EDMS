@@ -1,0 +1,25 @@
+{% extends 'appearance/base.html' %}
+
+{% load i18n %}
+
+{% load navigation_tags %}
+
+{% block title %}{% include 'appearance/calculate_form_title.html' %}{% endblock %}
+
+{% block content %}
+    {% if title %}
+        <h3>{{ title }}</h3>
+        <hr>
+    {% endif %}
+
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-4">
+            {{ navigation }}
+        </div>
+
+        <div class="col-xs-12 col-sm-12 col-md-8">
+            {% include 'appearance/generic_list_subtemplate.html' %}
+        </div>
+    </div>
+
+{% endblock %}

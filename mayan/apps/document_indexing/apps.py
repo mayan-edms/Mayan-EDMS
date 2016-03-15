@@ -29,7 +29,7 @@ from .links import (
     link_template_node_create, link_template_node_delete,
     link_template_node_edit
 )
-from .widgets import get_breadcrumbs, index_instance_item_link, node_level
+from .widgets import get_instance_link, index_instance_item_link, node_level
 
 
 class DocumentIndexingApp(MayanAppConfig):
@@ -107,7 +107,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
         SourceColumn(
             source=IndexInstance, label=_('Items'),
-            func=lambda context: context['object'].get_items_count(
+            func=lambda context: context['object'].get_item_count(
                 user=context['request'].user
             )
         )
@@ -144,8 +144,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
         SourceColumn(
             source=DocumentIndexInstanceNode, label=_('Node'),
-            func=lambda context: get_breadcrumbs(
-                index_instance_node=context['object'], single_link=True,
+            func=lambda context: get_instance_link(
+                index_instance_node=context['object'],
             )
         )
         SourceColumn(

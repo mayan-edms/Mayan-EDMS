@@ -14,7 +14,9 @@ from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from permissions import Permission
 
-from .managers import IndexManager, IndexInstanceNodeManager
+from .managers import (
+    DocumentIndexInstanceNodeManager, IndexManager, IndexInstanceNodeManager
+)
 
 
 @python_2_unicode_compatible
@@ -88,7 +90,7 @@ class IndexInstance(Index):
         except IndexInstanceNode.DoesNotExist:
             return 0
 
-    def get_items_count(self, user):
+    def get_item_count(self, user):
         try:
             return self.instance_root.get_item_count(user=user)
         except IndexInstanceNode.DoesNotExist:
@@ -171,7 +173,7 @@ class IndexInstanceNode(MPTTModel):
         return self.get_children()
 
     def index(self):
-        return self.index_template_node.index
+        return IndexInstance.objects.get(pk=self.index_template_node.index.pk)
 
     def get_item_count(self, user):
         if self.index_template_node.link_documents:
@@ -188,14 +190,19 @@ class IndexInstanceNode(MPTTModel):
         else:
             return self.get_children().count()
 
+    def get_full_path(self):
+        result = []
+        for node in self.get_ancestors(include_self=True):
+            if node.is_root_node():
+                result.append(unicode(self.index()))
+            else:
+                result.append(unicode(node))
+
+        return ' / '.join(result)
+
     class Meta:
         verbose_name = _('Index node instance')
         verbose_name_plural = _('Indexes node instances')
-
-
-class DocumentIndexInstanceNodeManager(models.Manager):
-    def get_for(self, document):
-        return self.filter(documents=document)
 
 
 class DocumentIndexInstanceNode(IndexInstanceNode):

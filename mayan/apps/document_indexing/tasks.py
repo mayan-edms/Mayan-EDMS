@@ -100,7 +100,7 @@ def task_do_rebuild_all_indexes(self):
         app_label='lock_manager', model_name='Lock'
     )
 
-    if Lock.check_existing(name__startswith='document_indexing_task_update_index_document'):
+    if Lock.objects.check_existing(name__startswith='document_indexing_task_update_index_document'):
         # A document index update is happening, wait
         raise self.retry()
 

@@ -31,7 +31,7 @@ from .permissions import (
     permission_document_indexing_setup, permission_document_indexing_view
 )
 from .tasks import task_do_rebuild_all_indexes
-from .widgets import get_breadcrumbs
+from .widgets import node_tree
 
 
 # Setup views
@@ -236,7 +236,9 @@ class IndexListView(SingleObjectListView):
         }
 
 
-class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
+class IndexInstanceNodeView(DocumentListView):
+    template_name = 'document_indexing/node_details.html'
+
     def dispatch(self, request, *args, **kwargs):
         self.index_instance = get_object_or_404(
             IndexInstanceNode, pk=self.kwargs['pk']
@@ -280,11 +282,14 @@ class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
         context = {
             'hide_links': True,
             'object': self.index_instance,
-            'title': mark_safe(
-                _(
-                    'Contents for index: %s'
-                ) % get_breadcrumbs(self.index_instance)
-            )
+            'navigation': mark_safe(
+                _('Navigation: %s') % node_tree(
+                    node=self.index_instance, user=self.request.user
+                )
+            ),
+            'title': _(
+                'Contents for index: %s'
+            ) % self.index_instance.get_full_path(),
         }
 
         if self.index_instance and not self.index_instance.index_template_node.link_documents:
