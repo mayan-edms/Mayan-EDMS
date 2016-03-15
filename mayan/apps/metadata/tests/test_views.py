@@ -116,7 +116,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'metadata:metadata_edit', args=(self.document.pk,), data={
-                'form-0-id': document_metadata_2.pk,
+                'form-0-id': document_metadata_2.metadata_type.pk,
                 'form-0-update': True,
                 'form-0-value': TEST_DOCUMENT_METADATA_VALUE_2,
                 'form-TOTAL_FORMS': '1',
