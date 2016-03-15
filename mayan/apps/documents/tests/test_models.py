@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from datetime import timedelta
 import time
 
-from django.core.files import File
 from django.test import TestCase, override_settings
 
 from ..exceptions import NewDocumentVersionNotAllowed
@@ -25,7 +24,7 @@ class DocumentTestCase(TestCase):
 
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object), label='mayan_11_1.pdf'
+                file_object=file_object, label='mayan_11_1.pdf'
             )
 
     def tearDown(self):
@@ -48,11 +47,11 @@ class DocumentTestCase(TestCase):
 
     def test_version_creation(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file_object=File(file_object))
+            self.document.new_version(file_object=file_object)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document.new_version(
-                file_object=File(file_object), comment='test comment 1'
+                file_object=file_object, comment='test comment 1'
             )
 
         self.assertEqual(self.document.versions.count(), 3)
@@ -144,7 +143,7 @@ class OfficeDocumentTestCase(TestCase):
 
         with open(TEST_OFFICE_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
     def tearDown(self):
@@ -171,7 +170,7 @@ class MultiPageTiffTestCase(TestCase):
 
         with open(TEST_MULTI_PAGE_TIFF_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
     def tearDown(self):
@@ -196,7 +195,7 @@ class DocumentVersionTestCase(TestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
     def tearDown(self):
@@ -207,7 +206,7 @@ class DocumentVersionTestCase(TestCase):
 
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document.new_version(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
         self.assertEqual(self.document.versions.count(), 2)
@@ -226,7 +225,7 @@ class DocumentVersionTestCase(TestCase):
 
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document.new_version(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
         self.assertEqual(self.document.versions.count(), 2)
@@ -274,7 +273,7 @@ class NewVersionBlockTestCase(TestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
     def tearDown(self):
@@ -314,4 +313,4 @@ class NewVersionBlockTestCase(TestCase):
 
         with self.assertRaises(NewDocumentVersionNotAllowed):
             with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-                self.document.new_version(file_object=File(file_object))
+                self.document.new_version(file_object=file_object)

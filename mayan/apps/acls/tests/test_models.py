@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.exceptions import PermissionDenied
-from django.core.files import File
 from django.test import TestCase, override_settings
 
 from documents.models import Document, DocumentType
@@ -32,17 +31,17 @@ class PermissionTestCase(TestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document_1 = self.document_type_1.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document_2 = self.document_type_1.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document_3 = self.document_type_2.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
         self.user = get_user_model().objects.create(

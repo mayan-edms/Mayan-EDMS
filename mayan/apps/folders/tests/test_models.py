@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.core.files.base import File
 from django.test import TestCase
 
 from documents.models import DocumentType
@@ -23,7 +22,7 @@ class FolderTestCase(TestCase):
 
         with open(TEST_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
         self.user = get_user_model().objects.create_superuser(

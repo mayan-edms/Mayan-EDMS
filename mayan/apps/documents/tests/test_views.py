@@ -3,7 +3,6 @@
 from __future__ import unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
-from django.core.files import File
 from django.test import override_settings
 from django.utils.six import BytesIO
 
@@ -49,7 +48,7 @@ class GenericDocumentViewTestCase(GenericViewTestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object), label='mayan_11_1.pdf'
+                file_object=file_object, label='mayan_11_1.pdf'
             )
 
     def tearDown(self):

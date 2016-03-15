@@ -4,7 +4,6 @@ import datetime
 import time
 
 from django.contrib.auth import get_user_model
-from django.core.files import File
 from django.test import TestCase, override_settings
 from django.utils.timezone import now
 
@@ -35,7 +34,7 @@ class DocumentCheckoutTestCase(TestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
     def tearDown(self):
@@ -66,7 +65,7 @@ class DocumentCheckoutTestCase(TestCase):
 
         with self.assertRaises(NewDocumentVersionNotAllowed):
             with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-                self.document.new_version(file_object=File(file_object))
+                self.document.new_version(file_object=file_object)
 
     def test_checkin_in(self):
         expiration_datetime = now() + datetime.timedelta(days=1)

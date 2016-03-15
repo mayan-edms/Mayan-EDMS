@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
@@ -43,7 +42,7 @@ class DocumentStateViewTestCase(TestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
     def tearDown(self):

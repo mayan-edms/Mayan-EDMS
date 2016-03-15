@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.core.files.base import File
 from django.test import TestCase
 
 from documents.models import DocumentType
@@ -24,7 +23,7 @@ class DocumentSearchTestCase(TestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object), label='mayan_11_1.pdf'
+                file_object=file_object, label='mayan_11_1.pdf'
             )
 
     def tearDown(self):

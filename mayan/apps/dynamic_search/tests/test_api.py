@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from json import loads
 
 from django.contrib.auth import get_user_model
-from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
@@ -39,7 +38,7 @@ class SearchAPITestCase(APITestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         response = self.client.get(
