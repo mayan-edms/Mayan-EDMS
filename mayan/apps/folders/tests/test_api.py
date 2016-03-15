@@ -37,10 +37,10 @@ class FolderAPITestCase(APITestCase):
             reverse('rest_api:folder-list'), {'label': TEST_FOLDER_LABEL}
         )
 
-        self.assertEqual(response.data['id'], 1)
-        self.assertEqual(response.data['label'], TEST_FOLDER_LABEL)
-
         folder = Folder.objects.first()
+
+        self.assertEqual(response.data['id'], folder.pk)
+        self.assertEqual(response.data['label'], TEST_FOLDER_LABEL)
 
         self.assertEqual(Folder.objects.count(), 1)
         self.assertEqual(folder.label, TEST_FOLDER_LABEL)

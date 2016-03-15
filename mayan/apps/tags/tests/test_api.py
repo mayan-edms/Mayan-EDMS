@@ -45,11 +45,11 @@ class TagAPITestCase(APITestCase):
             }
         )
 
-        self.assertEqual(response.data['id'], 1)
+        tag = Tag.objects.first()
+
+        self.assertEqual(response.data['id'], tag.pk)
         self.assertEqual(response.data['label'], TEST_TAG_LABEL)
         self.assertEqual(response.data['color'], TEST_TAG_COLOR)
-
-        tag = Tag.objects.first()
 
         self.assertEqual(Tag.objects.count(), 1)
         self.assertEqual(tag.label, TEST_TAG_LABEL)
