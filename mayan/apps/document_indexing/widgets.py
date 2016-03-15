@@ -70,7 +70,7 @@ def node_tree(node, user):
             icon = 'fa fa-list-ul'
         else:
             element = ancestor
-            level = getattr(element, element._mptt_meta.level_attr)
+            level = element.get_level()
             if element.index_template_node.link_documents:
                 icon = 'fa fa-folder'
             else:
