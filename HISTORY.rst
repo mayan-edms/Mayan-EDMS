@@ -20,6 +20,7 @@
 - Add Message of the Day app. Issue #222
 - Update Document model's uuid field to use Django's native UUIDField class.
 - Add new split view index navigation
+- Newly uploaded documents appear in the Recent document list of the user.
 
 2.0.2 (2016-02-09)
 ==================

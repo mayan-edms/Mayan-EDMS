@@ -32,6 +32,7 @@ Other changes
 - Folder and Tag creation API calls now return the id of the created instances.
 - Update Document model's uuid field to use Django's native UUIDField class.
 - Add new split view index navigation
+- Newly uploaded documents appear in the Recent document list of the user.
 
 Removals
 --------

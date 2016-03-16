@@ -74,6 +74,9 @@ class Source(models.Model):
                     file_object=file_object, _user=user
                 )
 
+                if user:
+                    document.add_as_recent_document_for_user(user)
+
                 Transformation.objects.copy(
                     source=self, targets=document_version.pages.all()
                 )
