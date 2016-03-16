@@ -231,132 +231,116 @@ class SmartLinkConditionListView(SingleObjectListView):
         return self.get_smart_link().conditions.all()
 
 
-def smart_link_condition_create(request, smart_link_pk):
-    smart_link = get_object_or_404(SmartLink, pk=smart_link_pk)
+class SmartLinkConditionCreateView(SingleObjectCreateView):
+    form_class = SmartLinkConditionForm
+    object_name = _('SmartLink condition')
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_smart_link_edit,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            (permission_smart_link_edit,), request.user, smart_link
-        )
-
-    if request.method == 'POST':
-        form = SmartLinkConditionForm(data=request.POST)
-        if form.is_valid():
-            new_smart_link_condition = form.save(commit=False)
-            new_smart_link_condition.smart_link = smart_link
-            new_smart_link_condition.save()
-            messages.success(
-                request, _(
-                    'Smart link condition: "%s" created successfully.'
-                ) % new_smart_link_condition
-            )
-            return HttpResponseRedirect(
-                reverse(
-                    'linking:smart_link_condition_list', args=(smart_link.pk,)
-                )
-            )
-    else:
-        form = SmartLinkConditionForm()
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'title': _('Add new conditions to smart link: "%s"') % smart_link,
-        'object': smart_link,
-    }, context_instance=RequestContext(request))
-
-
-def smart_link_condition_edit(request, smart_link_condition_pk):
-    smart_link_condition = get_object_or_404(
-        SmartLinkCondition, pk=smart_link_condition_pk
-    )
-
-    try:
-        Permission.check_permissions(
-            request.user, (permission_smart_link_edit,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            (permission_smart_link_edit,), request.user,
-            smart_link_condition.smart_link
-        )
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        form = SmartLinkConditionForm(
-            request.POST, instance=smart_link_condition
-        )
-        if form.is_valid():
-            smart_link_condition = form.save()
-            messages.success(
-                request, _(
-                    'Smart link condition: "%s" edited successfully.'
-                ) % smart_link_condition
-            )
-            return HttpResponseRedirect(next)
-    else:
-        form = SmartLinkConditionForm(instance=smart_link_condition)
-
-    return render_to_response('appearance/generic_form.html', {
-        'condition': smart_link_condition,
-        'form': form,
-        'navigation_object_list': ('object', 'condition'),
-        'next': next,
-        'object': smart_link_condition.smart_link,
-        'previous': previous,
-        'title': _('Edit smart link condition'),
-    }, context_instance=RequestContext(request))
-
-
-def smart_link_condition_delete(request, smart_link_condition_pk):
-    smart_link_condition = get_object_or_404(
-        SmartLinkCondition, pk=smart_link_condition_pk
-    )
-
-    try:
-        Permission.check_permissions(
-            request.user, (permission_smart_link_edit,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            (permission_smart_link_edit,), request.user,
-            smart_link_condition.smart_link
-        )
-
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
+    def dispatch(self, request, *args, **kwargs):
         try:
-            smart_link_condition.delete()
-            messages.success(
-                request, _(
-                    'Smart link condition: "%s" deleted successfully.'
-                ) % smart_link_condition
+            Permission.check_permissions(
+                request.user, (permission_smart_link_edit,)
             )
-        except Exception as exception:
-            messages.error(
-                request, _(
-                    'Error deleting smart link condition: '
-                    '%(smart_link_condition)s; %(exception)s.'
-                ) % {
-                    'smart_link_condition': smart_link_condition,
-                    'exception': exception
-                }
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                (permission_smart_link_edit,), request.user,
+                self.get_smart_link()
             )
-        return HttpResponseRedirect(next)
+        return super(
+            SmartLinkConditionCreateView, self
+        ).dispatch(request, *args, **kwargs)
 
-    return render_to_response('appearance/generic_confirm.html', {
-        'condition': smart_link_condition,
-        'delete_view': True,
-        'navigation_object_list': ('object', 'condition'),
-        'next': next,
-        'object': smart_link_condition.smart_link,
-        'previous': previous,
-        'title': _('Delete smart link condition: "%s"?') % smart_link_condition,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'title': _(
+                'Add new conditions to smart link: "%s"'
+            ) % self.get_smart_link(),
+            'object': self.get_smart_link(),
+            'object_name': _('Smart link condition'),
+        }
+
+    def get_instance_extra_data(self):
+        return {'smart_link': self.get_smart_link()}
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'linking:smart_link_condition_list', args=(self.get_smart_link().pk,)
+        )
+
+    def get_smart_link(self):
+        return get_object_or_404(SmartLink, pk=self.kwargs['pk'])
+
+    def get_queryset(self):
+        return self.get_smart_link().conditions.all()
+
+
+class SmartLinkConditionEditView(SingleObjectEditView):
+    form_class = SmartLinkConditionForm
+    model = SmartLinkCondition
+
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_smart_link_edit,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                (permission_smart_link_edit,), request.user,
+                self.get_object().smart_link
+            )
+
+        return super(
+            SmartLinkConditionEditView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_extra_context(self):
+        return {
+            'condition': self.get_object(),
+            'navigation_object_list': ('object', 'condition'),
+            'object': self.get_object().smart_link,
+            'object_name': _('Smart link condition'),
+            'title': _('Edit smart link condition'),
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'linking:smart_link_condition_list', args=(
+                self.get_object().smart_link.pk,
+            )
+        )
+
+
+class SmartLinkConditionDeleteView(SingleObjectDeleteView):
+    model = SmartLinkCondition
+
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_smart_link_edit,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                (permission_smart_link_edit,), request.user,
+                self.get_object().smart_link
+            )
+
+        return super(
+            SmartLinkConditionDeleteView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_extra_context(self):
+        return {
+            'condition': self.get_object(),
+            'navigation_object_list': ('object', 'condition'),
+            'object': self.get_object().smart_link,
+            'object_name': _('Smart link condition'),
+            'title': _(
+                'Delete smart link condition: "%s"?'
+            ) % self.get_object(),
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'linking:smart_link_condition_list', args=(
+                self.get_object().smart_link.pk,
+            )
+        )
