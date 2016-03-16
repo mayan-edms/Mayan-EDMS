@@ -6,14 +6,15 @@ from .api_views import (
     APIDocumentOCRView, APIDocumentPageContentView, APIDocumentVersionOCRView
 )
 from .views import (
-    DocumentAllSubmitView, DocumentSubmitView, DocumentSubmitManyView,
-    DocumentTypeSettingsEditView, DocumentTypeSubmitView, EntryListView
+    DocumentAllSubmitView, DocumentOCRContent, DocumentSubmitView,
+    DocumentSubmitManyView, DocumentTypeSettingsEditView,
+    DocumentTypeSubmitView, EntryListView
 )
 
 urlpatterns = patterns(
-    'ocr.views',
+    '',
     url(
-        r'^(?P<document_id>\d+)/content/$', 'document_content',
+        r'^(?P<pk>\d+)/content/$', DocumentOCRContent.as_view(),
         name='document_content'
     ),
     url(
