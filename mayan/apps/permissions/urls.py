@@ -9,7 +9,7 @@ from .views import (
 )
 
 urlpatterns = patterns(
-    'permissions.views',
+    '',
     url(r'^role/list/$', RoleListView.as_view(), name='role_list'),
     url(r'^role/create/$', RoleCreateView.as_view(), name='role_create'),
     url(
