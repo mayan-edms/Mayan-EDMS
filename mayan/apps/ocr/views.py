@@ -136,8 +136,8 @@ class DocumentTypeSettingsEditView(SingleObjectEditView):
 
 
 class DocumentOCRContent(SingleObjectDetailView):
-    model = Document
     form_class = DocumentContentForm
+    model = Document
     object_permission = permission_ocr_content_view
 
     def dispatch(self, request, *args, **kwargs):
