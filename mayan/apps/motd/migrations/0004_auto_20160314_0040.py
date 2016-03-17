@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.db import migrations, models
+from django.db import migrations
 
 
 class Migration(migrations.Migration):
@@ -17,6 +17,9 @@ class Migration(migrations.Migration):
         ),
         migrations.AlterModelOptions(
             name='message',
-            options={'verbose_name': 'Message', 'verbose_name_plural': 'Messages'},
+            options={
+                'verbose_name': 'Message',
+                'verbose_name_plural': 'Messages'
+            },
         ),
     ]

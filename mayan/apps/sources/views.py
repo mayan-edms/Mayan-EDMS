@@ -7,7 +7,6 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
-from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList

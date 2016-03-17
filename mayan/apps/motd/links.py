@@ -5,8 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link
 
 from .permissions import (
-    permission_message_create, permission_message_delete, permission_message_edit,
-    permission_message_view
+    permission_message_create, permission_message_delete,
+    permission_message_edit,
 )
 
 link_message_create = Link(

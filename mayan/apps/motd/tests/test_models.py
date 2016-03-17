@@ -40,7 +40,7 @@ class MOTDTestCase(TestCase):
         self.assertEqual(queryset.exists(), False)
 
     def test_enable(self):
-        self.motd.enabled=False
+        self.motd.enabled = False
         self.motd.save()
 
         queryset = Message.objects.get_for_now()

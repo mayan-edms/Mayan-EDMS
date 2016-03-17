@@ -2,11 +2,6 @@ from __future__ import unicode_literals
 
 import logging
 
-from django import apps
-from django.conf import settings
-from django.conf.urls import include, url
-from django.contrib.auth.signals import user_logged_in
-from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_object, menu_secondary, menu_setup

@@ -33,7 +33,6 @@ class TagSerializer(serializers.HyperlinkedModelSerializer):
         return instance.documents.count()
 
 
-
 class NewTagSerializer(serializers.ModelSerializer):
     class Meta:
         fields = (

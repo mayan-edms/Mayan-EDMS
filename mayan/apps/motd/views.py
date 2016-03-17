@@ -2,14 +2,8 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.conf import settings
-from django.contrib import messages
-from django.core.exceptions import PermissionDenied
-from django.core.urlresolvers import reverse, reverse_lazy
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
-from django.utils.translation import ugettext_lazy as _, ungettext
+from django.core.urlresolvers import reverse_lazy
+from django.utils.translation import ugettext_lazy as _
 
 from common.views import (
     SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
@@ -19,7 +13,7 @@ from common.views import (
 from .models import Message
 from .permissions import (
     permission_message_create, permission_message_delete,
-    permission_message_edit, permission_message_view,
+    permission_message_edit, permission_message_view
 )
 
 logger = logging.getLogger(__name__)

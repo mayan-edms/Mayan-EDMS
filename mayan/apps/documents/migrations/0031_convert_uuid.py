@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 import uuid
 
-from django.db import migrations, models
+from django.db import migrations
 
 
 def convert_uuid_to_hex(apps, schema_editor):

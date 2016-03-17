@@ -78,6 +78,7 @@ class WebFormUploadFormHTML5(WebFormUploadForm):
         )
     )
 
+
 class WebFormSetupForm(forms.ModelForm):
     class Meta:
         fields = ('label', 'enabled', 'uncompress')
