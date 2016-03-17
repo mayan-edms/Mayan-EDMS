@@ -29,6 +29,7 @@ from .permissions import (
 
 class LinkingApp(MayanAppConfig):
     name = 'linking'
+    test = True
     verbose_name = _('Linking')
 
     def ready(self):
@@ -58,7 +59,8 @@ class LinkingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=SmartLink, label=_('Dynamic label'), attribute='dynamic_label'
+            source=SmartLink, label=_('Dynamic label'),
+            attribute='dynamic_label'
         )
         SourceColumn(
             source=SmartLink, label=_('Enabled'),
