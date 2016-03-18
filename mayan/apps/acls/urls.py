@@ -9,8 +9,8 @@ from .views import (
 urlpatterns = patterns(
     'acls.views',
     url(
-        r'^(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/new/$',
-        ACLCreateView.as_view(), name='acl_new'
+        r'^(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/create/$',
+        ACLCreateView.as_view(), name='acl_create'
     ),
     url(
         r'^(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/list/$',
