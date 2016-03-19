@@ -146,7 +146,8 @@ class ObjectPermissionCheckMixin(object):
             except PermissionDenied:
                 AccessControlList.objects.check_access(
                     self.object_permission, request.user,
-                    self.get_permission_object()
+                    self.get_permission_object(),
+                    related=getattr(self, 'object_permission_related', None)
                 )
 
         return super(
