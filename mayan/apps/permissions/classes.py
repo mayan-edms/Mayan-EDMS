@@ -26,7 +26,7 @@ class PermissionNamespace(object):
             raise InvalidNamespace(
                 'Invalid namespace name. This is probably an obsolete '
                 'permission namespace, execute the management command '
-                '"purge_permissions" and try again.'
+                '"purgepermissions" and try again.'
             )
 
     def __init__(self, name, label):
