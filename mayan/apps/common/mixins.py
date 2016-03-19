@@ -6,14 +6,15 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.utils.translation import ungettext
+from django.utils.translation import ungettext, ugettext_lazy as _
 
 from permissions import Permission
 
 __all__ = (
     'DeleteExtraDataMixin', 'ExtraContextMixin',
-    'ObjectListPermissionFilterMixin', 'ObjectPermissionCheckMixin',
-    'RedirectionMixin', 'ViewPermissionCheckMixin'
+    'ObjectListPermissionFilterMixin', 'ObjectNameMixin',
+    'ObjectPermissionCheckMixin', 'RedirectionMixin',
+    'ViewPermissionCheckMixin'
 )
 
 
@@ -108,6 +109,22 @@ class ObjectListPermissionFilterMixin(object):
                 return queryset
         else:
             return queryset
+
+
+class ObjectNameMixin(object):
+    def get_object_name(self, context=None):
+        if not context:
+            context = self.get_context_data()
+
+        object_name = context.get('object_name')
+
+        if not object_name:
+            try:
+                object_name = self.object._meta.verbose_name
+            except AttributeError:
+                object_name = _('Object')
+
+        return object_name
 
 
 class ObjectPermissionCheckMixin(object):

@@ -26,7 +26,6 @@ class MessageCreateView(SingleObjectCreateView):
 
     def get_extra_context(self):
         return {
-            'object_name': _('Message'),
             'title': _('Create message'),
         }
 
@@ -40,7 +39,6 @@ class MessageDeleteView(SingleObjectDeleteView):
         return {
             'message': None,
             'object': self.get_object(),
-            'object_name': _('Message'),
             'title': _('Delete the message: %s?') % self.get_object(),
         }
 
@@ -54,7 +52,6 @@ class MessageEditView(SingleObjectEditView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
-            'object_name': _('Message'),
             'title': _('Edit message: %s') % self.get_object(),
         }
 

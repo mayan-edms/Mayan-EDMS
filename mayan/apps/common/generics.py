@@ -257,7 +257,7 @@ class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
     pass
 
 
-class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
+class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
@@ -282,7 +282,7 @@ class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, Redire
             messages.error(
                 self.request,
                 _('%(object)s not created, error: %(error)s') % {
-                    'object': context.get('object_name', _('Object')),
+                    'object': self.get_object_name(),
                     'error': exception
                 }
             )
@@ -293,13 +293,13 @@ class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, Redire
                 self.request,
                 _(
                     '%s created successfully.'
-                ) % context.get('object_name', _('Object'))
+                ) % self.get_object_name()
             )
 
         return HttpResponseRedirect(self.get_success_url())
 
 
-class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
+class SingleObjectDeleteView(ObjectNameMixin, DeleteExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
     template_name = 'appearance/generic_confirm.html'
 
     def get_context_data(self, **kwargs):
@@ -310,6 +310,7 @@ class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, Obj
     def delete(self, request, *args, **kwargs):
         self.object = self.get_object()
         context = self.get_context_data()
+        object_name = self.get_object_name(context=context)
 
         try:
             result = super(SingleObjectDeleteView, self).delete(request, *args, **kwargs)
@@ -317,7 +318,7 @@ class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, Obj
             messages.error(
                 self.request,
                 _('%(object)s not deleted, error: %(error)s.') % {
-                    'object': context.get('object_name', _('Object')),
+                    'object': object_name,
                     'error': exception
                 }
             )
@@ -328,7 +329,7 @@ class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, Obj
                 self.request,
                 _(
                     '%s deleted successfully.'
-                ) % context.get('object_name', _('Object'))
+                ) % object_name
             )
 
             return result
@@ -343,7 +344,7 @@ class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
         return context
 
 
-class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
+class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
     template_name = 'appearance/generic_form.html'
 
     def form_valid(self, form):
@@ -361,6 +362,7 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
             save_extra_data = {}
 
         context = self.get_context_data()
+        object_name = self.get_object_name(context=context)
 
         try:
             self.object.save(**save_extra_data)
@@ -368,7 +370,7 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
             messages.error(
                 self.request,
                 _('%(object)s not updated, error: %(error)s.') % {
-                    'object': context.get('object_name', _('Object')),
+                    'object': object_name,
                     'error': exception
                 }
             )
@@ -379,7 +381,7 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
                 self.request,
                 _(
                     '%s updated successfully.'
-                ) % context.get('object_name', _('Object'))
+                ) % object_name
             )
 
         return HttpResponseRedirect(self.get_success_url())

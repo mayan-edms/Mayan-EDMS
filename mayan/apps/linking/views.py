@@ -113,6 +113,7 @@ class SetupSmartLinkDocumentTypesView(AssignRemoveView):
         return get_object_or_404(SmartLink, pk=self.kwargs['pk'])
 
     def left_list(self):
+        # TODO: filter document type list by user ACL
         return AssignRemoveView.generate_choices(
             DocumentType.objects.exclude(
                 pk__in=self.get_object().document_types.all()
@@ -123,6 +124,7 @@ class SetupSmartLinkDocumentTypesView(AssignRemoveView):
         self.get_object().document_types.remove(item)
 
     def right_list(self):
+        # TODO: filter document type list by user ACL
         return AssignRemoveView.generate_choices(
             self.get_object().document_types.all()
         )
@@ -230,7 +232,6 @@ class SmartLinkConditionListView(SingleObjectListView):
 
 class SmartLinkConditionCreateView(SingleObjectCreateView):
     form_class = SmartLinkConditionForm
-    object_name = _('SmartLink condition')
 
     def dispatch(self, request, *args, **kwargs):
         try:
@@ -252,7 +253,6 @@ class SmartLinkConditionCreateView(SingleObjectCreateView):
                 'Add new conditions to smart link: "%s"'
             ) % self.get_smart_link(),
             'object': self.get_smart_link(),
-            'object_name': _('Smart link condition'),
         }
 
     def get_instance_extra_data(self):
@@ -296,7 +296,6 @@ class SmartLinkConditionEditView(SingleObjectEditView):
             'condition': self.get_object(),
             'navigation_object_list': ('object', 'condition'),
             'object': self.get_object().smart_link,
-            'object_name': _('Smart link condition'),
             'title': _('Edit smart link condition'),
         }
 
@@ -331,7 +330,6 @@ class SmartLinkConditionDeleteView(SingleObjectDeleteView):
             'condition': self.get_object(),
             'navigation_object_list': ('object', 'condition'),
             'object': self.get_object().smart_link,
-            'object_name': _('Smart link condition'),
             'title': _(
                 'Delete smart link condition: "%s"?'
             ) % self.get_object(),

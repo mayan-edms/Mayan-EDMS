@@ -39,7 +39,6 @@ class FolderCreateView(SingleObjectCreateView):
 
     def get_extra_context(self):
         return {
-            'object_name': _('Folder'),
             'title': _('Create folder'),
         }
 
@@ -52,7 +51,6 @@ class FolderDeleteView(SingleObjectDeleteView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
-            'object_name': _('Folder'),
             'title': _('Delete the folder: %s?') % self.get_object(),
         }
 
@@ -92,7 +90,6 @@ class FolderEditView(SingleObjectEditView):
     def get_extra_context(self):
         return {
             'object': self.get_object(),
-            'object_name': _('Folder'),
             'title': _('Edit folder: %s') % self.get_object(),
         }
 
