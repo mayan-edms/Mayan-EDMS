@@ -231,7 +231,7 @@ class Document(models.Model):
         ordering = ('-date_added',)
 
     def add_as_recent_document_for_user(self, user):
-        RecentDocument.objects.add_document_for_user(user, self)
+        return RecentDocument.objects.add_document_for_user(user, self)
 
     def exists(self):
         """
