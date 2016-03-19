@@ -25,7 +25,11 @@ class ModelPermission(object):
         )
 
         permissions = []
-        permissions.extend(cls._registry.get(type(instance)))
+
+        class_permissions = cls._registry.get(type(instance))
+
+        if class_permissions:
+            permissions.extend(class_permissions)
 
         proxy = cls._proxies.get(type(instance))
 
