@@ -49,10 +49,9 @@ def node_level(node):
     return mark_safe(
         ''.join(
             [
-                '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * (
-                    getattr(node, node._mptt_meta.level_attr) - 1
-                ), '' if node.is_root_node() else '<i class="fa fa-level-up fa-rotate-90"></i> ',
-                ugettext('Root') if node.is_root_node() else unicode(node)
+                '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;' * node.get_level(),
+                '' if node.is_root_node() else '<i class="fa fa-level-up fa-rotate-90"></i> ',
+                unicode(node)
             ]
         )
     )

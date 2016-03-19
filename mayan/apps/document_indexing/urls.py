@@ -11,11 +11,12 @@ from .views import (
     DocumentIndexNodeListView, IndexInstanceNodeView, IndexListView,
     RebuildIndexesConfirmView, SetupIndexDocumentTypesView,
     SetupIndexCreateView, SetupIndexDeleteView, SetupIndexEditView,
-    SetupIndexListView, SetupIndexTreeTemplateListView, TemplateNodeDeleteView
+    SetupIndexListView, SetupIndexTreeTemplateListView, TemplateNodeCreateView,
+    TemplateNodeDeleteView, TemplateNodeEditView
 )
 
 urlpatterns = patterns(
-    'document_indexing.views',
+    '',
     url(
         r'^setup/index/list/$', SetupIndexListView.as_view(),
         name='index_setup_list'
@@ -42,12 +43,12 @@ urlpatterns = patterns(
         name='index_setup_document_types'
     ),
     url(
-        r'^setup/template/node/(?P<parent_pk>\d+)/create/child/$',
-        'template_node_create', name='template_node_create'
+        r'^setup/template/node/(?P<pk>\d+)/create/child/$',
+        TemplateNodeCreateView.as_view(), name='template_node_create'
     ),
     url(
-        r'^setup/template/node/(?P<node_pk>\d+)/edit/$', 'template_node_edit',
-        name='template_node_edit'
+        r'^setup/template/node/(?P<pk>\d+)/edit/$',
+        TemplateNodeEditView.as_view(), name='template_node_edit'
     ),
     url(
         r'^setup/template/node/(?P<pk>\d+)/delete/$',

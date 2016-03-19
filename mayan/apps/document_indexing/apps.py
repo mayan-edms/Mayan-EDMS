@@ -6,6 +6,10 @@ from django.apps import apps
 from django.db.models.signals import post_save, post_delete
 from django.utils.translation import ugettext_lazy as _
 
+from acls import ModelPermission
+from acls.links import link_acl_list
+from acls.permissions import permission_acl_edit, permission_acl_view
+
 from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_setup, menu_tools
@@ -29,6 +33,11 @@ from .links import (
     link_template_node_create, link_template_node_delete,
     link_template_node_edit
 )
+from .permissions import (
+    permission_document_indexing_create, permission_document_indexing_delete,
+    permission_document_indexing_edit, permission_document_indexing_view,
+    permission_document_indexing_rebuild
+)
 from .widgets import get_instance_link, index_instance_item_link, node_level
 
 
@@ -51,12 +60,23 @@ class DocumentIndexingApp(MayanAppConfig):
         )
 
         DocumentIndexInstanceNode = self.get_model('DocumentIndexInstanceNode')
+
         Index = self.get_model('Index')
         IndexInstance = self.get_model('IndexInstance')
         IndexInstanceNode = self.get_model('IndexInstanceNode')
         IndexTemplateNode = self.get_model('IndexTemplateNode')
 
         APIEndPoint(app=self, version_string='1')
+
+        ModelPermission.register(
+            model=Index, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_document_indexing_create,
+                permission_document_indexing_delete,
+                permission_document_indexing_edit,
+                permission_document_indexing_view,
+            )
+        )
 
         Package(label='Django MPTT', license_text='''
 Django MPTT
@@ -179,7 +199,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
         menu_object.bind_links(
             links=(
                 link_index_setup_edit, link_index_setup_view,
-                link_index_setup_document_types, link_index_setup_delete
+                link_index_setup_document_types, link_acl_list,
+                link_index_setup_delete
             ), sources=(Index,)
         )
         menu_object.bind_links(

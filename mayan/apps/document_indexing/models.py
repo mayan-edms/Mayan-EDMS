@@ -136,7 +136,7 @@ class IndexTemplateNode(MPTTModel):
 
     def __str__(self):
         if self.is_root_node():
-            return ugettext('<%s Root>') % self.index
+            return ugettext('Root')
         else:
             return self.expression
 
