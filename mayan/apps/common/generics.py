@@ -292,8 +292,8 @@ class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraCon
             messages.success(
                 self.request,
                 _(
-                    '%s created successfully.'
-                ) % self.get_object_name()
+                    '%(object)s created successfully.'
+                ) % {'object': self.get_object_name()}
             )
 
         return HttpResponseRedirect(self.get_success_url())
@@ -328,8 +328,8 @@ class SingleObjectDeleteView(ObjectNameMixin, DeleteExtraDataMixin, ViewPermissi
             messages.success(
                 self.request,
                 _(
-                    '%s deleted successfully.'
-                ) % object_name
+                    '%(object)s deleted successfully.'
+                ) % {'object': object_name}
             )
 
             return result
@@ -380,8 +380,8 @@ class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPerm
             messages.success(
                 self.request,
                 _(
-                    '%s updated successfully.'
-                ) % object_name
+                    '%(object)s updated successfully.'
+                ) % {'object': object_name}
             )
 
         return HttpResponseRedirect(self.get_success_url())
