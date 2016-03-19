@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 
 from django.apps import apps
 from django.utils.html import mark_safe, escape
-from django.utils.translation import ugettext
 
 
 def get_instance_link(index_instance_node):

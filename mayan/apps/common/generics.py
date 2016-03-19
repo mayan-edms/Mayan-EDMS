@@ -282,7 +282,7 @@ class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraCon
             messages.error(
                 self.request,
                 _('%(object)s not created, error: %(error)s') % {
-                    'object': self.get_object_name(),
+                    'object': self.get_object_name(context=context),
                     'error': exception
                 }
             )
@@ -293,7 +293,7 @@ class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraCon
                 self.request,
                 _(
                     '%(object)s created successfully.'
-                ) % {'object': self.get_object_name()}
+                ) % {'object': self.get_object_name(context=context)}
             )
 
         return HttpResponseRedirect(self.get_success_url())

@@ -2,13 +2,11 @@ from __future__ import unicode_literals
 
 from django.utils.translation import ugettext_lazy as _
 
-from documents.permissions import permission_document_view
 from navigation import Link
 
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_edit,
     permission_document_indexing_delete, permission_document_indexing_rebuild,
-    permission_document_indexing_view
 )
 
 

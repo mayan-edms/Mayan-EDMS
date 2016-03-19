@@ -35,8 +35,7 @@ from .links import (
 )
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
-    permission_document_indexing_edit, permission_document_indexing_view,
-    permission_document_indexing_rebuild
+    permission_document_indexing_edit, permission_document_indexing_view
 )
 from .widgets import get_instance_link, index_instance_item_link, node_level
 

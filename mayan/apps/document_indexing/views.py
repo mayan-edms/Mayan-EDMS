@@ -3,9 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
@@ -146,6 +144,7 @@ class SetupIndexTreeTemplateListView(SingleObjectListView):
             'navigation_object_list': ('index',),
             'title': _('Tree template nodes for index: %s') % self.get_index(),
         }
+
 
 class TemplateNodeCreateView(SingleObjectCreateView):
     form_class = IndexTemplateNodeForm
