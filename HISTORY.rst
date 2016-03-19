@@ -21,6 +21,10 @@
 - Update Document model's uuid field to use Django's native UUIDField class.
 - Add new split view index navigation
 - Newly uploaded documents appear in the Recent document list of the user.
+- Document indexes now have ACL support.
+- Remove the document index setup permission.
+- Status messages now display the object class on which they operate not just the word "Object".
+- More tests added.
 
 2.0.2 (2016-02-09)
 ==================
