@@ -8,16 +8,16 @@ from .api_views import (
 )
 from .views import (
     SetupSourceCreateView, SetupSourceDeleteView, SetupSourceEditView,
-    SetupSourceListView, SourceLogListView, UploadInteractiveVersionView,
-    UploadInteractiveView
+    SetupSourceListView, SourceLogListView, StagingFileDeleteView,
+    UploadInteractiveVersionView, UploadInteractiveView
 )
 from .wizards import DocumentCreateWizard
 
 urlpatterns = patterns(
-    'sources.views',
+    '',
     url(
-        r'^staging_file/(?P<staging_folder_pk>\d+)/(?P<encoded_filename>.+)/delete/$',
-        'staging_file_delete', name='staging_file_delete'
+        r'^staging_file/(?P<pk>\d+)/(?P<encoded_filename>.+)/delete/$',
+        StagingFileDeleteView.as_view(), name='staging_file_delete'
     ),
 
     url(

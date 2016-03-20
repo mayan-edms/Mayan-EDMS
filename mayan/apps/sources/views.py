@@ -1,12 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -41,7 +39,8 @@ from .models import (
 )
 from .permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
-    permission_sources_setup_edit, permission_sources_setup_view
+    permission_sources_setup_edit, permission_sources_setup_view,
+    permission_staging_file_delete
 )
 from .tasks import task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
@@ -423,48 +422,27 @@ class UploadInteractiveVersionView(UploadBaseView):
         return context
 
 
-def staging_file_delete(request, staging_folder_pk, encoded_filename):
-    Permission.check_permissions(
-        request.user, (
-            permission_document_create, permission_document_new_version
+class StagingFileDeleteView(SingleObjectDeleteView):
+    object_permission = permission_staging_file_delete
+    object_permission_related = 'staging_folder'
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'object_name': _('Staging file'),
+            'source': self.get_source(),
+        }
+
+    def get_object(self):
+        source = self.get_source()
+        return source.get_file(
+            encoded_filename=self.kwargs['encoded_filename']
         )
-    )
-    staging_folder = get_object_or_404(
-        StagingFolderSource, pk=staging_folder_pk
-    )
 
-    staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
-    next = request.POST.get(
-        'next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-    )
-    previous = request.POST.get(
-        'previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-    )
-
-    if request.method == 'POST':
-        try:
-            staging_file.delete()
-            messages.success(request, _('Staging file delete successfully.'))
-        except Exception as exception:
-            messages.error(
-                request, _('Staging file delete error; %s.') % exception
-            )
-        return HttpResponseRedirect(next)
-
-    results = UploadBaseView.get_active_tab_links()
-
-    return render_to_response('appearance/generic_confirm.html', {
-        'source': staging_folder,
-        'delete_view': True,
-        'object': staging_file,
-        'next': next,
-        'previous': previous,
-        'extra_navigation_links': {
-            'form_header': {
-                'staging_file_delete': {'links': results['tab_links']}
-            }
-        },
-    }, context_instance=RequestContext(request))
+    def get_source(self):
+        return get_object_or_404(
+            StagingFolderSource, pk=self.kwargs['pk']
+        )
 
 
 # Setup views

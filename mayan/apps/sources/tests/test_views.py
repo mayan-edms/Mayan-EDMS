@@ -1,11 +1,16 @@
 from __future__ import unicode_literals
 
+import os
+import shutil
+import tempfile
+
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase, override_settings
 
 from acls.models import AccessControlList
+from common.tests.test_views import GenericViewTestCase
 from documents.models import Document, DocumentType, NewVersionBlock
 from documents.permissions import permission_document_create
 from documents.tests import (
@@ -19,10 +24,12 @@ from user_management.tests import (
 )
 from ..links import link_upload_version
 from ..literals import SOURCE_CHOICE_WEB_FORM
-from ..models import WebFormSource
+from ..models import StagingFolderSource, WebFormSource
+from ..permissions import permission_staging_file_delete
 
 TEST_SOURCE_LABEL = 'test'
-TEST_SOURCE_UNCOMPRESS = 'n'
+TEST_SOURCE_UNCOMPRESS_N = 'n'
+TEST_STAGING_PREVIEW_WIDTH = 640
 
 
 class DocumentUploadTestCase(GenericDocumentViewTestCase):
@@ -30,7 +37,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         super(DocumentUploadTestCase, self).setUp()
         self.source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,
-            uncompress=TEST_SOURCE_UNCOMPRESS
+            uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
 
         self.document.delete()
@@ -210,3 +217,71 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
         resolved_link = link_upload_version.resolve(context=response.context)
 
         self.assertEqual(resolved_link, None)
+
+
+class StagingFolderTestCase(GenericViewTestCase):
+    def setUp(self):
+        super(StagingFolderTestCase, self).setUp()
+        self.temporary_directory = tempfile.mkdtemp()
+        # TODO: remove temp directory after test
+        shutil.copy(TEST_SMALL_DOCUMENT_PATH, self.temporary_directory)
+
+        self.filename = os.path.basename(TEST_SMALL_DOCUMENT_PATH)
+
+    def tearDown(self):
+        super(StagingFolderTestCase, self).tearDown()
+        shutil.rmtree(self.temporary_directory)
+
+    def test_staging_folder_delete_no_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        staging_folder = StagingFolderSource.objects.create(
+            label=TEST_SOURCE_LABEL,
+            folder_path=self.temporary_directory,
+            preview_width=TEST_STAGING_PREVIEW_WIDTH,
+            uncompress=TEST_SOURCE_UNCOMPRESS_N,
+        )
+
+        self.assertEqual(len(list(staging_folder.get_files())), 1)
+
+        staging_file = list(staging_folder.get_files())[0]
+
+        response = self.post(
+            'sources:staging_file_delete', args=(
+                staging_folder.pk, staging_file.encoded_filename
+            ), follow=True
+        )
+
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(len(list(staging_folder.get_files())), 1)
+
+    def test_staging_folder_delete_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_staging_file_delete.stored_permission
+        )
+
+        staging_folder = StagingFolderSource.objects.create(
+            label=TEST_SOURCE_LABEL,
+            folder_path=self.temporary_directory,
+            preview_width=TEST_STAGING_PREVIEW_WIDTH,
+            uncompress=TEST_SOURCE_UNCOMPRESS_N,
+        )
+
+        self.assertEqual(len(list(staging_folder.get_files())), 1)
+
+        staging_file = list(staging_folder.get_files())[0]
+
+        response = self.post(
+            'sources:staging_file_delete', args=(
+                staging_folder.pk, staging_file.encoded_filename
+            ), follow=True
+        )
+
+        self.assertContains(response, 'deleted', status_code=200)
+        self.assertEqual(len(list(staging_folder.get_files())), 0)
