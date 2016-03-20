@@ -32,3 +32,5 @@ class StagingFileTestCase(TestCase):
         )
 
         self.assertEqual(filename, staging_file_2.filename)
+
+        shutil.rmtree(temporary_directory)
