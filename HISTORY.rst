@@ -25,6 +25,7 @@
 - Remove the document index setup permission.
 - Status messages now display the object class on which they operate not just the word "Object".
 - More tests added.
+- Handle unicode filenames in staging folders.
 
 2.0.2 (2016-02-09)
 ==================

@@ -50,10 +50,10 @@ class StagingFile(object):
             self.encoded_filename = str(encoded_filename)
             self.filename = base64.urlsafe_b64decode(
                 urllib.unquote_plus(self.encoded_filename)
-            )
+            ).decode('utf8')
         else:
             self.filename = filename
-            self.encoded_filename = base64.urlsafe_b64encode(filename)
+            self.encoded_filename = base64.urlsafe_b64encode(filename.encode('utf8'))
 
     def __unicode__(self):
         return unicode(self.filename)
