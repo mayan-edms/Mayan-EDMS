@@ -166,7 +166,7 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
         return data
 
 
-class ConfirmView(ObjectListPermissionFilterMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
+class ConfirmView(ObjectListPermissionFilterMixin, ObjectPermissionCheckMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
     template_name = 'appearance/generic_confirm.html'
 
     def post(self, request, *args, **kwargs):
