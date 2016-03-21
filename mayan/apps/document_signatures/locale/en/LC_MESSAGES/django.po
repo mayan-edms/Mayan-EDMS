@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"POT-Creation-Date: 2016-03-21 16:43-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:62 permissions.py:8 settings.py:7
+#: apps.py:29 permissions.py:8 settings.py:7
 msgid "Document signatures"
 msgstr "Document signatures"
 
@@ -26,22 +26,22 @@ msgstr "Document signatures"
 msgid "Signature file"
 msgstr "Signature file"
 
-#: links.py:31
+#: links.py:39
 #, fuzzy
 msgid "Delete signature"
 msgstr "download signature"
 
-#: links.py:35
+#: links.py:43
 #, fuzzy
 msgid "Download signature"
 msgstr "download signature"
 
-#: links.py:41
+#: links.py:49
 #, fuzzy
 msgid "Upload signature"
 msgstr "upload signature"
 
-#: links.py:45
+#: links.py:54
 #, fuzzy
 msgid "Signatures"
 msgstr "signatures"

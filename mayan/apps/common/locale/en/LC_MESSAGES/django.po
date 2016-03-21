@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"POT-Creation-Date: 2016-03-21 16:42-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:66 settings.py:9
+#: apps.py:70 settings.py:9
 msgid "Common"
 msgstr ""
 
@@ -26,11 +26,11 @@ msgstr ""
 msgid "Available attributes: "
 msgstr ""
 
-#: forms.py:27
+#: forms.py:26
 msgid "Selection"
 msgstr "Selection"
 
-#: forms.py:106
+#: forms.py:105
 msgid "Filter"
 msgstr ""
 
@@ -47,58 +47,34 @@ msgstr "Add"
 msgid "Remove"
 msgstr "Remove"
 
-#: generics.py:265
+#: generics.py:284
 #, python-format
-msgid "Error creating new %s."
+msgid "%(object)s not created, error: %(error)s"
 msgstr ""
 
-#: generics.py:268
-msgid "Error creating object."
-msgstr ""
-
-#: generics.py:292
+#: generics.py:295
 #, python-format
-msgid "%s created successfully."
+msgid "%(object)s created successfully."
 msgstr ""
 
-#: generics.py:297
-msgid "New object created successfully."
-msgstr ""
-
-#: generics.py:318
+#: generics.py:320
 #, python-format
-msgid "Error deleting %s."
-msgstr ""
-
-#: generics.py:322
-msgid "Error deleting object."
+msgid "%(object)s not deleted, error: %(error)s."
 msgstr ""
 
 #: generics.py:331
 #, python-format
-msgid "%s deleted successfully."
+msgid "%(object)s deleted successfully."
 msgstr ""
 
-#: generics.py:336
-msgid "Object deleted successfully."
-msgstr ""
-
-#: generics.py:363
+#: generics.py:372
 #, python-format
-msgid "Error saving %s details."
+msgid "%(object)s not updated, error: %(error)s."
 msgstr ""
 
-#: generics.py:368
-msgid "Error saving details."
-msgstr ""
-
-#: generics.py:393
+#: generics.py:383
 #, python-format
-msgid "%s details saved successfully."
-msgstr ""
-
-#: generics.py:398
-msgid "Details saved successfully."
+msgid "%(object)s updated successfully."
 msgstr ""
 
 #: links.py:9
@@ -140,20 +116,24 @@ msgstr ""
 msgid "Setup"
 msgstr ""
 
-#: links.py:41 views.py:191
+#: links.py:41 views.py:194
 msgid "Tools"
 msgstr ""
 
-#: literals.py:8
+#: literals.py:13
 msgid "Days"
 msgstr ""
 
-#: literals.py:9
+#: literals.py:14
 msgid "Hours"
 msgstr ""
 
-#: literals.py:10
+#: literals.py:15
 msgid "Minutes"
+msgstr ""
+
+#: mixins.py:125
+msgid "Object"
 msgstr ""
 
 #: models.py:23
@@ -228,7 +208,7 @@ msgid ""
 "Time to delay background tasks that depend on a database commit to propagate."
 msgstr ""
 
-#: views.py:36
+#: views.py:37
 #, fuzzy
 msgid "Current user details"
 msgstr "current user details"
@@ -269,11 +249,11 @@ msgstr "Page not found"
 msgid "Setup items"
 msgstr ""
 
-#: views.py:218
+#: views.py:221
 msgid "No action selected."
 msgstr "No action selected."
 
-#: views.py:226
+#: views.py:229
 msgid "Must select at least one item."
 msgstr "Must select at least one item."
 

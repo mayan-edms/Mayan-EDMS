@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
@@ -12,17 +12,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"POT-Creation-Date: 2016-03-21 16:42-0400\n"
 "PO-Revision-Date: 2015-09-24 20:35+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:66 settings.py:9
+#: apps.py:70 settings.py:9
 msgid "Common"
 msgstr ""
 
@@ -30,11 +32,11 @@ msgstr ""
 msgid "Available attributes: "
 msgstr "Dostępne atrybuty:"
 
-#: forms.py:27
+#: forms.py:26
 msgid "Selection"
 msgstr "Zaznaczenie"
 
-#: forms.py:106
+#: forms.py:105
 msgid "Filter"
 msgstr ""
 
@@ -51,59 +53,38 @@ msgstr "Dodaj"
 msgid "Remove"
 msgstr "Usuń"
 
-#: generics.py:265
+#: generics.py:284
 #, python-format
-msgid "Error creating new %s."
-msgstr "Błąd podczas tworzenia nowego : %s."
+msgid "%(object)s not created, error: %(error)s"
+msgstr ""
 
-#: generics.py:268
-msgid "Error creating object."
-msgstr "Błąd poczas tworzenia obiektu."
-
-#: generics.py:292
-#, python-format
-msgid "%s created successfully."
-msgstr "%s utworzono pomyślnie."
-
-#: generics.py:297
-msgid "New object created successfully."
+#: generics.py:295
+#, fuzzy, python-format
+#| msgid "New object created successfully."
+msgid "%(object)s created successfully."
 msgstr "Pomyślnie utworzono nowy obiekt."
 
-#: generics.py:318
+#: generics.py:320
 #, python-format
-msgid "Error deleting %s."
-msgstr "Błąd podczas usuwania %s."
-
-#: generics.py:322
-msgid "Error deleting object."
-msgstr "Błąd podczas usuwania obiektu."
+msgid "%(object)s not deleted, error: %(error)s."
+msgstr ""
 
 #: generics.py:331
-#, python-format
-msgid "%s deleted successfully."
-msgstr "%s usunięto pomyślnie."
-
-#: generics.py:336
-msgid "Object deleted successfully."
+#, fuzzy, python-format
+#| msgid "Object deleted successfully."
+msgid "%(object)s deleted successfully."
 msgstr "Pomyślnie usunuęto obiekt."
 
-#: generics.py:363
+#: generics.py:372
 #, python-format
-msgid "Error saving %s details."
-msgstr "Błąd podczas zapisu  %s."
+msgid "%(object)s not updated, error: %(error)s."
+msgstr ""
 
-#: generics.py:368
-msgid "Error saving details."
-msgstr "Błąd zapisu detali."
-
-#: generics.py:393
-#, python-format
-msgid "%s details saved successfully."
-msgstr "%s detale zapiane pomyślnie."
-
-#: generics.py:398
-msgid "Details saved successfully."
-msgstr "Detale zapsane pomyślnie."
+#: generics.py:383
+#, fuzzy, python-format
+#| msgid "Object deleted successfully."
+msgid "%(object)s updated successfully."
+msgstr "Pomyślnie usunuęto obiekt."
 
 #: links.py:9
 msgid "About"
@@ -141,20 +122,24 @@ msgstr ""
 msgid "Setup"
 msgstr ""
 
-#: links.py:41 views.py:191
+#: links.py:41 views.py:194
 msgid "Tools"
 msgstr ""
 
-#: literals.py:8
+#: literals.py:13
 msgid "Days"
 msgstr ""
 
-#: literals.py:9
+#: literals.py:14
 msgid "Hours"
 msgstr ""
 
-#: literals.py:10
+#: literals.py:15
 msgid "Minutes"
+msgstr ""
+
+#: mixins.py:125
+msgid "Object"
 msgstr ""
 
 #: models.py:23
@@ -198,18 +183,17 @@ msgid "User locale profiles"
 msgstr "Lokalne profile użytkownika"
 
 #: settings.py:13
-#| msgid ""
-#| "ary directory used site wide to store thumbnails, previews and porary es.  "
-#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using "
-"tempfile.mkdtemp()."
+"temporary files.  If none is specified, one will be created using tempfile."
+"mkdtemp()."
 msgstr ""
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
-msgstr "Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie plików."
+msgstr ""
+"Backend przechowywania umożliwiający wszystkim użytkownikom udostępnianie "
+"plików."
 
 #: settings.py:28
 msgid "An integer specifying how many objects should be displayed per page."
@@ -221,11 +205,10 @@ msgstr ""
 
 #: settings.py:40
 msgid ""
-"Time to delay background tasks that depend on a database commit to "
-"propagate."
+"Time to delay background tasks that depend on a database commit to propagate."
 msgstr ""
 
-#: views.py:36
+#: views.py:37
 msgid "Current user details"
 msgstr "Aktualne dane użytkownika"
 
@@ -242,7 +225,6 @@ msgid "Edit current user locale profile details"
 msgstr "Edytuj profil aktualnego użytkownika."
 
 #: views.py:113
-#| msgid "Selection"
 msgid "Filter selection"
 msgstr ""
 
@@ -252,7 +234,6 @@ msgid "Results for filter: %s"
 msgstr ""
 
 #: views.py:136
-#| msgid "Page not found"
 msgid "Filter not found"
 msgstr ""
 
@@ -260,17 +241,47 @@ msgstr ""
 msgid "Setup items"
 msgstr ""
 
-#: views.py:218
+#: views.py:221
 msgid "No action selected."
 msgstr "Nie wybrano żadnego działania"
 
-#: views.py:226
+#: views.py:229
 msgid "Must select at least one item."
 msgstr "Musisz wybrać co najmniej jeden element."
 
 #: widgets.py:50
 msgid "None"
 msgstr "Brak"
+
+#~ msgid "Error creating new %s."
+#~ msgstr "Błąd podczas tworzenia nowego : %s."
+
+#~ msgid "Error creating object."
+#~ msgstr "Błąd poczas tworzenia obiektu."
+
+#~ msgid "%s created successfully."
+#~ msgstr "%s utworzono pomyślnie."
+
+#~ msgid "Error deleting %s."
+#~ msgstr "Błąd podczas usuwania %s."
+
+#~ msgid "Error deleting object."
+#~ msgstr "Błąd podczas usuwania obiektu."
+
+#~ msgid "%s deleted successfully."
+#~ msgstr "%s usunięto pomyślnie."
+
+#~ msgid "Error saving %s details."
+#~ msgstr "Błąd podczas zapisu  %s."
+
+#~ msgid "Error saving details."
+#~ msgstr "Błąd zapisu detali."
+
+#~ msgid "%s details saved successfully."
+#~ msgstr "%s detale zapiane pomyślnie."
+
+#~ msgid "Details saved successfully."
+#~ msgstr "Detale zapsane pomyślnie."
 
 #~ msgid "Anonymous user"
 #~ msgstr "Anonymous user"
@@ -306,11 +317,11 @@ msgstr "Brak"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field "
+#~ "is case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields is "
-#~ "case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields "
+#~ "is case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -319,11 +330,11 @@ msgstr "Brak"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: username, "
-#~ "email"
+#~ "Controls the mechanism used to authenticated user.  Options are: "
+#~ "username, email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

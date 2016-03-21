@@ -1,23 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:24-0400\n"
+"POT-Creation-Date: 2016-03-21 16:41-0400\n"
 "PO-Revision-Date: 2015-08-27 05:24+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
-#: apps.py:12
+#: apps.py:11
 msgid "Appearance"
 msgstr ""
 
@@ -43,8 +45,8 @@ msgstr ""
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via "
-"e-mail and should be fixed shortly. Thanks for your patience."
+"There's been an error. It's been reported to the site administrators via e-"
+"mail and should be fixed shortly. Thanks for your patience."
 msgstr ""
 
 #: templates/500.html:14
@@ -74,39 +76,39 @@ msgstr ""
 msgid "Copyright &copy; 2011-2015 Roberto Rosario."
 msgstr ""
 
-#: templates/appearance/base.html:42
+#: templates/appearance/base.html:43
 msgid "Toggle navigation"
 msgstr ""
 
-#: templates/appearance/base.html:71
+#: templates/appearance/base.html:72
 msgid "Anonymous"
 msgstr ""
 
-#: templates/appearance/base.html:73
+#: templates/appearance/base.html:74
 msgid "User details"
 msgstr ""
 
-#: templates/appearance/base.html:86
+#: templates/appearance/base.html:87
 msgid "Success"
 msgstr ""
 
-#: templates/appearance/base.html:86
+#: templates/appearance/base.html:87
 msgid "Information"
 msgstr ""
 
-#: templates/appearance/base.html:86
+#: templates/appearance/base.html:87
 msgid "Warning"
 msgstr ""
 
-#: templates/appearance/base.html:86
+#: templates/appearance/base.html:87
 msgid "Error"
 msgstr ""
 
-#: templates/appearance/base.html:115
+#: templates/appearance/base.html:116
 msgid "Actions"
 msgstr ""
 
-#: templates/appearance/base.html:116
+#: templates/appearance/base.html:117
 msgid "Toggle Dropdown"
 msgstr ""
 
@@ -154,19 +156,24 @@ msgid "required"
 msgstr ""
 
 #: templates/appearance/generic_form_subtemplate.html:71
-#: templates/appearance/generic_multiform_subtemplate.html:64
+#: templates/appearance/generic_multiform_subtemplate.html:65
 msgid "Save"
 msgstr ""
 
 #: templates/appearance/generic_form_subtemplate.html:71
 #: templates/appearance/generic_list_subtemplate.html:31
-#: templates/appearance/generic_multiform_subtemplate.html:64
+#: templates/appearance/generic_multiform_subtemplate.html:65
 msgid "Submit"
 msgstr ""
 
 #: templates/appearance/generic_form_subtemplate.html:74
-#: templates/appearance/generic_multiform_subtemplate.html:67
+#: templates/appearance/generic_multiform_subtemplate.html:69
 msgid "Cancel"
+msgstr ""
+
+#: templates/appearance/generic_list_horizontal.html:20
+#: templates/appearance/generic_list_subtemplate.html:108
+msgid "No results"
 msgstr ""
 
 #: templates/appearance/generic_list_subtemplate.html:12
@@ -184,10 +191,6 @@ msgstr ""
 
 #: templates/appearance/generic_list_subtemplate.html:51
 msgid "Identifier"
-msgstr ""
-
-#: templates/appearance/generic_list_subtemplate.html:108
-msgid "No results"
 msgstr ""
 
 #: templates/appearance/home.html:8 templates/appearance/home.html.py:12
@@ -214,46 +217,46 @@ msgstr ""
 msgid "Advanced"
 msgstr ""
 
-#: templates/appearance/login.html:9
+#: templates/appearance/login.html:10
 msgid "Login"
 msgstr ""
 
-#: templates/appearance/login.html:20
+#: templates/appearance/login.html:21
 msgid "First time login"
 msgstr ""
 
-#: templates/appearance/login.html:23
+#: templates/appearance/login.html:24
 msgid ""
 "You have just finished installing <strong>Mayan EDMS</strong>, "
 "congratulations!"
 msgstr ""
 
-#: templates/appearance/login.html:24
-msgid "Login using the following credentials:"
-msgstr ""
-
 #: templates/appearance/login.html:25
-#, python-format
-msgid "Username: <strong>%(account)s</strong>"
+msgid "Login using the following credentials:"
 msgstr ""
 
 #: templates/appearance/login.html:26
 #, python-format
-msgid "Email: <strong>%(email)s</strong>"
+msgid "Username: <strong>%(account)s</strong>"
 msgstr ""
 
 #: templates/appearance/login.html:27
 #, python-format
-msgid "Password: <strong>%(password)s</strong>"
+msgid "Email: <strong>%(email)s</strong>"
 msgstr ""
 
 #: templates/appearance/login.html:28
+#, python-format
+msgid "Password: <strong>%(password)s</strong>"
+msgstr ""
+
+#: templates/appearance/login.html:29
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
 msgstr ""
 
-#: templates/appearance/login.html:37 templates/appearance/login.html.py:46
+#: templates/appearance/login.html:45 templates/appearance/login.html.py:54
 msgid "Sign in"
 msgstr ""
 

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
@@ -9,54 +9,54 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"POT-Creation-Date: 2016-03-21 16:42-0400\n"
 "PO-Revision-Date: 2015-08-24 04:02+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/it/)\n"
+"Language: it\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: api.py:100
 msgid "Unknown"
 msgstr "Sconosciuto"
 
-#: apps.py:21
+#: apps.py:22
 msgid "Django GPG"
 msgstr ""
 
-#: apps.py:54 apps.py:61
+#: apps.py:55 apps.py:62
 msgid "ID"
 msgstr "ID"
 
-#: apps.py:56
+#: apps.py:57
 msgid "Owner"
 msgstr "Proprietario"
 
-#: apps.py:64
+#: apps.py:65
 msgid "Type"
 msgstr "Tipo"
 
-#: apps.py:66
+#: apps.py:67
 msgid "Creation date"
 msgstr "Data di creazione"
 
-#: apps.py:72
+#: apps.py:73
 msgid "Expiration date"
 msgstr "Data scadenza"
 
-#: apps.py:73
+#: apps.py:74
 msgid "No expiration"
 msgstr ""
 
-#: apps.py:75
+#: apps.py:76
 msgid "Length"
 msgstr "Lunghezza"
 
-#: apps.py:77
-#| msgid "Identifies"
+#: apps.py:78
 msgid "Identities"
 msgstr ""
 
@@ -126,7 +126,9 @@ msgstr "Errore di firma"
 
 #: literals.py:45
 msgid "Document is signed but no public key is available for verification."
-msgstr "Il documento è stato firmato, ma la chiave pubblica non è disponibile per la verifica"
+msgstr ""
+"Il documento è stato firmato, ma la chiave pubblica non è disponibile per la "
+"verifica"
 
 #: literals.py:50
 msgid "Document is signed, and signature is good."
@@ -149,7 +151,6 @@ msgid "Import keys from keyservers"
 msgstr "Importa le chiavi dal server di chiavi"
 
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr ""
 
@@ -159,7 +160,9 @@ msgstr "Lista di server per chiavi che si possono interrogare."
 
 #: settings.py:19
 msgid "Home directory used to store keys as well as configuration files."
-msgstr "Home directory utilizzata per memorizzare le chiavi così come i file di configurazione."
+msgstr ""
+"Home directory utilizzata per memorizzare le chiavi così come i file di "
+"configurazione."
 
 #: settings.py:25
 msgid "Path to the GPG binary."
@@ -167,7 +170,6 @@ msgstr "Percorso per il programma GPG"
 
 #: views.py:38
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
@@ -178,7 +180,6 @@ msgstr ""
 
 #: views.py:57
 #, python-format
-#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr ""
 
@@ -197,9 +198,6 @@ msgstr "Cancella chiave"
 
 #: views.py:110
 #, python-format
-#| msgid ""
-#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
-#| " of a public/private pair the private key will be deleted well."
 msgid ""
 "Delete key %s? If you delete a public key that is part of a public/private "
 "pair the private key will be deleted as well."

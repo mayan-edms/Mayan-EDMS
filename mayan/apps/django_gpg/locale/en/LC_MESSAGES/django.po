@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"POT-Creation-Date: 2016-03-21 16:42-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -23,43 +23,43 @@ msgstr ""
 msgid "Unknown"
 msgstr "unknown"
 
-#: apps.py:21
+#: apps.py:22
 msgid "Django GPG"
 msgstr ""
 
-#: apps.py:54 apps.py:61
+#: apps.py:55 apps.py:62
 msgid "ID"
 msgstr "ID"
 
-#: apps.py:56
+#: apps.py:57
 msgid "Owner"
 msgstr "Owner"
 
-#: apps.py:64
+#: apps.py:65
 msgid "Type"
 msgstr ""
 
-#: apps.py:66
+#: apps.py:67
 #, fuzzy
 msgid "Creation date"
 msgstr "creation date"
 
-#: apps.py:72
+#: apps.py:73
 #, fuzzy
 msgid "Expiration date"
 msgstr "expiration date"
 
-#: apps.py:73
+#: apps.py:74
 #, fuzzy
 msgid "No expiration"
 msgstr "expiration date"
 
-#: apps.py:75
+#: apps.py:76
 #, fuzzy
 msgid "Length"
 msgstr "length"
 
-#: apps.py:77
+#: apps.py:78
 #, fuzzy
 #| msgid "Identifies"
 msgid "Identities"

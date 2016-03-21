@@ -1,24 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:24-0400\n"
+"POT-Creation-Date: 2016-03-21 16:42-0400\n"
 "PO-Revision-Date: 2015-08-19 06:41+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/hu/)\n"
+"Language: hu\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:33 links.py:22
+#: apps.py:31 links.py:30
 msgid "Checkouts"
 msgstr ""
 
@@ -38,25 +39,53 @@ msgstr ""
 msgid "Document forcefully checked in"
 msgstr ""
 
-#: exceptions.py:32 views.py:55
+#: exceptions.py:25 views.py:55
 msgid "Document already checked out."
 msgstr ""
 
-#: handlers.py:13
-#, python-format
-#| msgid "New versions allowed: %s"
-msgid "New versions not allowed for the checkedout document: %s"
+#: forms.py:28
+#, fuzzy
+#| msgid "document"
+msgid "Document status"
+msgstr "document"
+
+#: forms.py:37 models.py:37 views.py:85
+msgid "User"
 msgstr ""
 
-#: links.py:27
+#: forms.py:41
+#, fuzzy
+#| msgid "Checkout user"
+msgid "Check out time"
+msgstr "checkout user"
+
+#: forms.py:46
+#, fuzzy
+#| msgid "check out expiration date and time"
+msgid "Check out expiration"
+msgstr "check out expiration date and time"
+
+#: forms.py:51
+msgid "New versions allowed?"
+msgstr ""
+
+#: forms.py:52
+msgid "Yes"
+msgstr ""
+
+#: forms.py:52
+msgid "No"
+msgstr ""
+
+#: links.py:35
 msgid "Check out document"
 msgstr ""
 
-#: links.py:33
+#: links.py:41
 msgid "Check in document"
 msgstr ""
 
-#: links.py:40
+#: links.py:48
 msgid "Check in/out"
 msgstr ""
 
@@ -68,45 +97,39 @@ msgstr ""
 msgid "Checked in/available"
 msgstr ""
 
-#: models.py:28
+#: models.py:27
 msgid "Document"
 msgstr ""
 
-#: models.py:31
+#: models.py:29
 msgid "Check out date and time"
 msgstr ""
 
-#: models.py:35
+#: models.py:33
 msgid "Amount of time to hold the document checked out in minutes."
 msgstr ""
 
-#: models.py:37
+#: models.py:35
 msgid "Check out expiration date and time"
 msgstr ""
 
-#: models.py:39 views.py:85
-#| msgid "User: %s"
-msgid "User"
-msgstr ""
-
-#: models.py:43
+#: models.py:41
 msgid "Do not allow new version of this document to be uploaded."
 msgstr ""
 
-#: models.py:45
+#: models.py:43
 msgid "Block new version upload"
 msgstr ""
 
-#: models.py:59
-#| msgid "Check out expiration date and time"
+#: models.py:54
 msgid "Check out expiration date and time must be in the future."
 msgstr ""
 
-#: models.py:80 permissions.py:7
+#: models.py:87 permissions.py:7
 msgid "Document checkout"
 msgstr ""
 
-#: models.py:81
+#: models.py:88
 msgid "Document checkouts"
 msgstr ""
 
@@ -121,6 +144,12 @@ msgstr ""
 #: permissions.py:16
 msgid "Check out documents"
 msgstr ""
+
+#: permissions.py:19
+#, fuzzy
+#| msgid "Checkout user"
+msgid "Check out details view"
+msgstr "checkout user"
 
 #: views.py:59
 #, python-format
@@ -149,70 +178,33 @@ msgstr ""
 msgid "Checkout expiration"
 msgstr ""
 
-#: views.py:124
-#, python-format
-msgid "Document status: %s"
-msgstr ""
-
-#: views.py:130
-#, python-format
-msgid "User: %s"
-msgstr ""
-
-#: views.py:136
-#, python-format
-msgid "Check out time: %s"
-msgstr ""
-
-#: views.py:141
-#, python-format
-msgid "Check out expiration: %s"
-msgstr ""
-
-#: views.py:146
-#, python-format
-msgid "New versions allowed: %s"
-msgstr ""
-
-#: views.py:147
-msgid "Yes"
-msgstr ""
-
-#: views.py:147
-msgid "No"
-msgstr ""
-
-#: views.py:154
+#: views.py:118
 #, python-format
 msgid "Check out details for document: %s"
 msgstr ""
 
-#: views.py:170
+#: views.py:136
 #, python-format
-#| msgid ""
-#| "dn't originally checked out this document.  Are you sure you wish cefully "
-#| "check in document: %s?"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
 msgstr ""
 
-#: views.py:174
+#: views.py:140
 #, python-format
-#| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr ""
 
-#: views.py:210
+#: views.py:177
 msgid "Document has not been checked out."
 msgstr ""
 
-#: views.py:213
+#: views.py:182
 #, python-format
 msgid "Error trying to check in document; %s"
 msgstr ""
 
-#: views.py:217
+#: views.py:187
 #, python-format
 msgid "Document \"%s\" checked in successfully."
 msgstr ""
@@ -223,9 +215,6 @@ msgstr ""
 
 #~ msgid "Allow overriding check out restrictions"
 #~ msgstr "Allow overriding check out restrictions"
-
-#~ msgid "Checkout user"
-#~ msgstr "checkout user"
 
 #~ msgid "Are you sure you wish to check in document: %s?"
 #~ msgstr "Are you sure you wish to check in document: %s?"
@@ -252,11 +241,11 @@ msgstr ""
 #~ msgstr "Enter a valid time difference."
 
 #~ msgid ""
-#~ "Amount of time to hold the document in the checked out state in days, hours "
-#~ "and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, "
+#~ "hours and/or minutes."
 #~ msgstr ""
-#~ "Amount of time to hold the document in the checked out state in days, hours "
-#~ "and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, "
+#~ "hours and/or minutes."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."
@@ -269,12 +258,6 @@ msgstr ""
 
 #~ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" forcefully checked in by %(fullname)s."
-
-#~ msgid "document"
-#~ msgstr "document"
-
-#~ msgid "check out expiration date and time"
-#~ msgstr "check out expiration date and time"
 
 #~ msgid "document checkout"
 #~ msgstr "document checkout"

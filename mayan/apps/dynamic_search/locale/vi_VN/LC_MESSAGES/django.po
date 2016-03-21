@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Trung Phan Minh <navmobile@gmail.com>, 2013
@@ -9,29 +9,30 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:26-0400\n"
+"POT-Creation-Date: 2016-03-21 16:44-0400\n"
 "PO-Revision-Date: 2015-08-20 22:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
+"mayan-edms/language/vi_VN/)\n"
+"Language: vi_VN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:15
+#: apps.py:16
 msgid "Dynamic search"
 msgstr ""
 
-#: forms.py:20
+#: forms.py:21
 msgid "Search terms"
 msgstr ""
 
-#: links.py:7 settings.py:8 views.py:54 views.py:68
+#: links.py:7 settings.py:8 views.py:56 views.py:70
 msgid "Search"
 msgstr "Tìm kiếm"
 
-#: links.py:9 views.py:75
+#: links.py:9 views.py:77
 msgid "Advanced search"
 msgstr ""
 
@@ -39,27 +40,27 @@ msgstr ""
 msgid "Search again"
 msgstr ""
 
-#: models.py:23
+#: models.py:24
 msgid "User"
 msgstr ""
 
-#: models.py:24
+#: models.py:26
 msgid "Query"
 msgstr ""
 
-#: models.py:26
+#: models.py:28
 msgid "Datetime created"
 msgstr ""
 
-#: models.py:28
+#: models.py:30
 msgid "Hits"
 msgstr ""
 
-#: models.py:70
+#: models.py:74
 msgid "Recent search"
 msgstr ""
 
-#: models.py:71
+#: models.py:75
 msgid "Recent searches"
 msgstr ""
 
@@ -88,7 +89,8 @@ msgstr ""
 #~ msgid "Recent searches (maximum of %d)"
 #~ msgstr "recent searches (maximum of %d)"
 
-#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgid ""
+#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 #~ msgstr ""
 #~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 

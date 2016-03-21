@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Badea Gabriel <gcbadea@gmail.com>, 2013
@@ -9,60 +9,61 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"POT-Creation-Date: 2016-03-21 16:42-0400\n"
 "PO-Revision-Date: 2015-08-20 22:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-edms/language/ro_RO/)\n"
+"Language-Team: Romanian (Romania) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/ro_RO/)\n"
+"Language: ro_RO\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ro_RO\n"
-"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?2:1));\n"
+"Plural-Forms: nplurals=3; plural=(n==1?0:(((n%100>19)||((n%100==0)&&(n!=0)))?"
+"2:1));\n"
 
-#: apps.py:19 permissions.py:7 settings.py:7
+#: apps.py:18 permissions.py:7 settings.py:7
 msgid "Converter"
 msgstr ""
 
-#: apps.py:37 models.py:33
+#: apps.py:38 models.py:34
 msgid "Order"
 msgstr ""
 
-#: apps.py:39 models.py:62
+#: apps.py:40 models.py:64
 msgid "Transformation"
 msgstr ""
 
-#: apps.py:43 models.py:42
+#: apps.py:44 models.py:44
 msgid "Arguments"
 msgstr ""
 
-#: backends/python.py:86 backends/python.py:98
+#: backends/python.py:87 backends/python.py:101
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr ""
 
-#: classes.py:87
+#: classes.py:98
+msgid "Not an office file format."
+msgstr ""
+
+#: classes.py:121
 #, python-format
 msgid "LibreOffice not installed or not found at path: %s"
 msgstr ""
 
-#: classes.py:159
-#| msgid "suported file formats"
-msgid "Not an office file format."
-msgstr ""
-
-#: classes.py:252
+#: classes.py:254
 msgid "Resize"
 msgstr "Redimensionarea"
 
-#: classes.py:293
+#: classes.py:295
 msgid "Rotate"
 msgstr "Roti"
 
-#: classes.py:305
+#: classes.py:307
 msgid "Zoom"
 msgstr "Zoom"
 
-#: classes.py:322
+#: classes.py:324
 msgid "Crop"
 msgstr ""
 
@@ -78,7 +79,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: links.py:43 models.py:63
+#: links.py:43 models.py:65
 msgid "Transformations"
 msgstr ""
 
@@ -88,11 +89,11 @@ msgid ""
 "automatic order value will be assigned."
 msgstr ""
 
-#: models.py:37
+#: models.py:38
 msgid "Name"
 msgstr ""
 
-#: models.py:41
+#: models.py:42
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -111,7 +112,6 @@ msgid "Edit transformations"
 msgstr ""
 
 #: permissions.py:19
-#| msgid "Raw application information"
 msgid "View existing transformations"
 msgstr ""
 
@@ -136,17 +136,17 @@ msgstr ""
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr ""
 
-#: views.py:138
+#: views.py:139
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr ""
 
-#: views.py:190
+#: views.py:192
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr ""
 
-#: views.py:236
+#: views.py:238
 #, python-format
 msgid "Transformations for: %s"
 msgstr ""
@@ -188,14 +188,13 @@ msgstr ""
 #~ msgstr "File path to graphicsmagick's program."
 
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: "
-#~ "converter.backends.imagemagick.ImageMagick, "
-#~ "converter.backends.graphicsmagick.GraphicsMagick and "
-#~ "converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: converter.backends."
+#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
+#~ "and converter.backends.python.Python"
 #~ msgstr ""
-#~ "Graphics conversion backend to use.  Options are: "
-#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
-#~ "converter.backends.python."
+#~ "Graphics conversion backend to use.  Options are: converter.backends."
+#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
+#~ "python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -508,9 +507,11 @@ msgstr ""
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -626,7 +627,8 @@ msgstr ""
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid ""
+#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

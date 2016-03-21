@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Trung Phan Minh <navmobile@gmail.com>, 2013
@@ -9,63 +9,60 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:27-0400\n"
+"POT-Creation-Date: 2016-03-21 16:47-0400\n"
 "PO-Revision-Date: 2015-09-24 05:15+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
+"mayan-edms/language/vi_VN/)\n"
+"Language: vi_VN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:56 apps.py:143 permissions.py:7 settings.py:7
+#: apps.py:58 apps.py:116 apps.py:154 links.py:14 permissions.py:7
+#: settings.py:7
 msgid "OCR"
 msgstr "OCR"
 
-#: apps.py:75
+#: apps.py:91
 msgid "Document"
 msgstr ""
 
-#: apps.py:79
+#: apps.py:95
 msgid "Added"
 msgstr ""
 
-#: apps.py:83 models.py:36
+#: apps.py:99 models.py:36
 msgid "Result"
 msgstr ""
 
-#: apps.py:100 links.py:13 models.py:56
-msgid "Content"
-msgstr ""
-
-#: apps.py:149 apps.py:154 apps.py:159
+#: apps.py:160 apps.py:165 apps.py:170
 msgid "pdftotext version"
 msgstr ""
 
-#: apps.py:149 apps.py:167
+#: apps.py:160 apps.py:178
 msgid "not found"
 msgstr ""
 
-#: apps.py:155 apps.py:173
+#: apps.py:166 apps.py:184
 msgid "error getting version"
 msgstr ""
 
-#: apps.py:167 apps.py:172 apps.py:177
+#: apps.py:178 apps.py:183 apps.py:188
 msgid "tesseract version"
 msgstr ""
 
-#: forms.py:39
+#: forms.py:40
 #, python-format
 msgid "Page %(page_number)d"
 msgstr ""
 
-#: forms.py:47
+#: forms.py:48
 msgid "Contents"
 msgstr ""
 
 #: links.py:17 links.py:25
-#| msgid "Submit documents for OCR"
 msgid "Submit for OCR"
 msgstr ""
 
@@ -77,16 +74,12 @@ msgstr ""
 msgid "Setup OCR"
 msgstr ""
 
-#: links.py:32 links.py:36
-msgid "Delete"
+#: links.py:33
+msgid "OCR documents per type"
 msgstr ""
 
-#: links.py:40 views.py:138
+#: links.py:37 views.py:161
 msgid "OCR errors"
-msgstr ""
-
-#: links.py:43 links.py:47
-msgid "Re-queue"
 msgstr ""
 
 #: models.py:16
@@ -125,21 +118,24 @@ msgstr ""
 msgid "Document page"
 msgstr ""
 
+#: models.py:56
+msgid "Content"
+msgstr ""
+
 #: models.py:62
 msgid "Document page content"
 msgstr ""
 
 #: models.py:63
-#| msgid "Document pages content clean up error: %s"
 msgid "Document pages contents"
 msgstr ""
 
-#: parsers.py:101
+#: parsers.py:103
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr ""
 
-#: parsers.py:127
+#: parsers.py:130
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr ""
@@ -148,27 +144,21 @@ msgstr ""
 msgid "Submit documents for OCR"
 msgstr ""
 
-#: permissions.py:13
-msgid "Delete documents from OCR queue"
-msgstr ""
-
-#: permissions.py:17
+#: permissions.py:14
 msgid "View the transcribed text from document"
 msgstr ""
 
-#: permissions.py:21
+#: permissions.py:18
 msgid "Change document type OCR settings"
 msgstr ""
 
 #: settings.py:10
-#| msgid "File path to unpaper program."
 msgid "File path to tesseract program."
 msgstr ""
 
 #: settings.py:15
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF "
-"files."
+"File path to poppler's pdftotext program used to extract text from PDF files."
 msgstr ""
 
 #: settings.py:22
@@ -179,78 +169,51 @@ msgstr ""
 msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
 
-#: views.py:29
-#| msgid "Submit documents for OCR"
+#: views.py:28
 msgid "Submit all documents for OCR?"
 msgstr ""
 
-#: views.py:41
+#: views.py:40
 #, python-format
 msgid "%d documents added to the OCR queue."
 msgstr ""
 
-#: views.py:49
+#: views.py:48
 #, python-format
 msgid "Submit \"%s\" to the OCR queue?"
 msgstr ""
 
-#: views.py:74
+#: views.py:73
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
 msgstr ""
 
-#: views.py:88
-#| msgid "Submit documents for OCR"
+#: views.py:87
 msgid "Submit the selected documents to the OCR queue?"
 msgstr ""
 
-#: views.py:104
+#: views.py:94
+#, fuzzy
+#| msgid "Submit the selected document for OCR?"
+msgid "Submit all documents of a type for OCR"
+msgstr "Submit documents for OCR"
+
+#: views.py:109
+#, fuzzy, python-format
+#| msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+msgid ""
+"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgstr "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+
+#: views.py:132
 #, python-format
 msgid "Edit OCR settings for document type: %s"
 msgstr ""
 
-#: views.py:131
+#: views.py:154
 #, python-format
-#| msgid "Queued documents: %d"
-msgid "Content of document: %s"
+msgid "OCR result for document: %s"
 msgstr ""
-
-#: views.py:160 views.py:221
-msgid "Make at least one selection."
-msgstr ""
-
-#: views.py:175
-#, python-format
-msgid "Entry: %(entry)s deleted successfully."
-msgstr ""
-
-#: views.py:182
-#, python-format
-msgid "Error entry: %(entry)s; %(error)s"
-msgstr ""
-
-#: views.py:198
-msgid "Delete the selected entry?"
-msgid_plural "Delete the selected entries?"
-msgstr[0] ""
-
-#: views.py:233
-#, python-format
-msgid "Entry: %(entry)s was re-queued for OCR."
-msgstr ""
-
-#: views.py:240
-#, python-format
-msgid "Document version id#: %d, no longer exists."
-msgstr ""
-
-#: views.py:254
-msgid "Re-queue the selected entry?"
-msgid_plural "Re-queue the selected entries?"
-msgstr[0] ""
-
-#~ msgid "Submit the selected document for OCR?"
-#~ msgstr "Submit documents for OCR"
 
 #~ msgid "Text from OCR"
 #~ msgstr "Text from OCR"
@@ -316,9 +279,6 @@ msgstr[0] ""
 #~ msgid "Document queues: %d"
 #~ msgstr "Document queues: %d"
 
-#~ msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-#~ msgstr "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-
 #~ msgid "Document: %s is already being processed and can't be re-queded."
 #~ msgstr "Document: %s is already being processed and can't be re-queded."
 
@@ -383,11 +343,11 @@ msgstr[0] ""
 #~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
-#~ "replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's "
+#~ "storage replication overhead."
 #~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
-#~ "replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's "
+#~ "storage replication overhead."
 
 #~ msgid "Maximum amount of concurrent document OCRs a node can perform."
 #~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
@@ -444,9 +404,11 @@ msgstr[0] ""
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
+#~ "\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
+#~ "\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

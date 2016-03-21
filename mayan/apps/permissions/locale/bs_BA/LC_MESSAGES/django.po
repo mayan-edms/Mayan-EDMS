@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # www.ping.ba <jomer@ping.ba>, 2013
@@ -9,17 +9,19 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:27-0400\n"
+"POT-Creation-Date: 2016-03-21 16:47-0400\n"
 "PO-Revision-Date: 2015-08-24 05:21+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/rosarior/mayan-edms/language/bs_BA/)\n"
+"Language-Team: Bosnian (Bosnia and Herzegovina) (http://www.transifex.com/"
+"rosarior/mayan-edms/language/bs_BA/)\n"
+"Language: bs_BA\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bs_BA\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:22 models.py:27 models.py:67 permissions.py:7
+#: apps.py:22 models.py:47 models.py:70 permissions.py:7
 msgid "Permissions"
 msgstr "Dozvole"
 
@@ -47,7 +49,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: links.py:35 models.py:76 views.py:134
+#: links.py:35 models.py:91 views.py:134
 msgid "Roles"
 msgstr ""
 
@@ -67,19 +69,19 @@ msgstr ""
 msgid "Name"
 msgstr ""
 
-#: models.py:26
+#: models.py:46
 msgid "Permission"
 msgstr ""
 
-#: models.py:64
+#: models.py:67
 msgid "Label"
 msgstr ""
 
-#: models.py:70
+#: models.py:73
 msgid "Groups"
 msgstr "Grupe"
 
-#: models.py:75
+#: models.py:90
 msgid "Role"
 msgstr ""
 
@@ -125,7 +127,6 @@ msgid "Available permissions"
 msgstr ""
 
 #: views.py:80
-#| msgid "Grant permissions"
 msgid "Granted permissions"
 msgstr ""
 
@@ -162,8 +163,10 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
 #~ msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
 
-#~ msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
-#~ msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgid ""
+#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgstr ""
+#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
 
 #~ msgid ""
 #~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
@@ -179,13 +182,17 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
 #~ msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
 
-#~ msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-#~ msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgid ""
+#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgstr ""
+#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 
 #~ msgid ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s "
+#~ "%(title_suffix)s?"
 #~ msgstr ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s "
+#~ "%(title_suffix)s?"
 
 #~ msgid "Users"
 #~ msgstr "Users"
