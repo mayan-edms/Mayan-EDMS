@@ -28,7 +28,8 @@ from ..permissions import (
 )
 
 from .literals import (
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE, TEST_DOCUMENT_TYPE_QUICK_LABEL,
+    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
 )
 
 
@@ -689,6 +690,42 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
             DocumentType.objects.get(pk=self.document_type.pk).label,
             TEST_DOCUMENT_TYPE_EDITED_LABEL
         )
+
+    def test_document_type_quick_label_create_no_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        response = self.post(
+            'documents:document_type_filename_create',
+            args=(self.document_type.pk,),
+            data={
+                'filename': TEST_DOCUMENT_TYPE_QUICK_LABEL,
+            }, follow=True
+        )
+
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(self.document_type.filenames.count(), 0)
+
+    def test_document_type_quick_label_create_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_document_type_edit.stored_permission
+        )
+
+        response = self.post(
+            'documents:document_type_filename_create',
+            args=(self.document_type.pk,),
+            data={
+                'filename': TEST_DOCUMENT_TYPE_QUICK_LABEL,
+            }, follow=True
+        )
+
+        self.assertContains(response, 'reated', status_code=200)
+        self.assertEqual(self.document_type.filenames.count(), 1)
 
 
 class DeletedDocumentTestCase(GenericDocumentViewTestCase):
