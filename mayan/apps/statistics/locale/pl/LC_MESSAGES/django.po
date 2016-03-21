@@ -1,98 +1,97 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:48-0400\n"
-"PO-Revision-Date: 2015-09-24 05:16+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"PO-Revision-Date: 2016-03-21 21:05+0000\n"
+"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:23 links.py:28 permissions.py:7
 msgid "Statistics"
-msgstr ""
+msgstr "Statystyki"
 
 #. Translators: Schedule here is a verb, the 'schedule' at which the
 #. statistic will be updated
 #: apps.py:42
 msgid "Schedule"
-msgstr ""
+msgstr "Harmonogram"
 
 #: links.py:11
 msgid "Queue"
-msgstr ""
+msgstr "Dodaj do kolejki"
 
 #: links.py:15
 msgid "View"
-msgstr ""
+msgstr "Pokaż statystykę"
 
 #: links.py:19
 msgid "Namespace details"
-msgstr ""
+msgstr "Szczegóły przestrzeni nazw"
 
 #: links.py:23
 msgid "Namespace list"
-msgstr ""
+msgstr "Lista przestrzeni nazw"
 
 #. Translators: 'Slug' refers to the URL valid ID of the statistic
 #. More info: https://docs.djangoproject.com/en/1.7/glossary/#term-slug
 #: models.py:14
 msgid "Slug"
-msgstr ""
+msgstr "Slug"
 
 #: models.py:16
 msgid "Date time"
-msgstr ""
+msgstr "Data godzina"
 
 #: models.py:18
 msgid "Data"
-msgstr ""
+msgstr "Dane"
 
 #: models.py:31
 msgid "Statistics result"
-msgstr ""
+msgstr "Wynik statystyk"
 
 #: models.py:32
 msgid "Statistics results"
-msgstr ""
+msgstr "Wyniki statystyk"
 
 #: permissions.py:10
 msgid "View statistics"
-msgstr ""
+msgstr "Przegląd statystyk"
 
 #: templates/statistics/backends/chartjs/line.html:19
 msgid "No data available yet"
-msgstr ""
+msgstr "Brak danych"
 
 #: views.py:19
 msgid "Statistics namespaces"
-msgstr ""
+msgstr "Przestrzenie nazw statystyk"
 
 #: views.py:35
 #, python-format
 msgid "Namespace details for: %s"
-msgstr ""
+msgstr "Szczegóły przestrzeni nazw: %s"
 
 #: views.py:55
 #, python-format
 msgid "Results for: %s"
-msgstr ""
+msgstr "Wyniki dla: %s"
 
 #: views.py:62 views.py:85
 #, python-format
 msgid "Statistic \"%s\" not found."
-msgstr ""
+msgstr "Nie znaleziono statystyki \"%s\"."
 
 #. Translators: This text is asking users if they want to queue
 #. (to send to the queue) a statistic for it to be update ahead
@@ -100,4 +99,4 @@ msgstr ""
 #: views.py:78
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
-msgstr ""
+msgstr "Dodać statystykę \"%s\" do kolejki w celu aktualizacji?"

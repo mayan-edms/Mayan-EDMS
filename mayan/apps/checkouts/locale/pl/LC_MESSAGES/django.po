@@ -1,221 +1,232 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:42-0400\n"
-"PO-Revision-Date: 2015-08-19 06:41+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"PO-Revision-Date: 2016-03-21 21:08+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:31 links.py:30
 msgid "Checkouts"
-msgstr ""
+msgstr "Blokady"
 
 #: events.py:9
 msgid "Document automatically checked in"
-msgstr ""
+msgstr "Dokument został automatycznie odblokowany"
 
 #: events.py:12
 msgid "Document checked in"
-msgstr ""
+msgstr "Dokument został odblokowany"
 
 #: events.py:15
 msgid "Document checked out"
-msgstr ""
+msgstr "Dokument został zablokowany"
 
 #: events.py:19
 msgid "Document forcefully checked in"
-msgstr ""
+msgstr "Wymuszono odblokowanie dokumentu"
 
 #: exceptions.py:25 views.py:55
 msgid "Document already checked out."
-msgstr ""
+msgstr "Dokument jest już zablokowany."
 
 #: forms.py:28
-#, fuzzy
-#| msgid "document"
 msgid "Document status"
-msgstr "document"
-
-#: forms.py:37 models.py:37 views.py:85
-msgid "User"
 msgstr ""
 
+#: forms.py:37 models.py:37 views.py:85
+#| msgid "User: %s"
+msgid "User"
+msgstr "Użytkownik"
+
 #: forms.py:41
-#, fuzzy
-#| msgid "Checkout user"
+#| msgid "Check out time: %s"
 msgid "Check out time"
-msgstr "checkout user"
+msgstr ""
 
 #: forms.py:46
-#, fuzzy
-#| msgid "check out expiration date and time"
 msgid "Check out expiration"
-msgstr "check out expiration date and time"
+msgstr ""
 
 #: forms.py:51
+#| msgid "New versions allowed: %s"
 msgid "New versions allowed?"
 msgstr ""
 
 #: forms.py:52
 msgid "Yes"
-msgstr ""
+msgstr "Tak"
 
 #: forms.py:52
 msgid "No"
-msgstr ""
+msgstr "Nie"
 
 #: links.py:35
 msgid "Check out document"
-msgstr ""
+msgstr "Zablokuj dokument"
 
 #: links.py:41
 msgid "Check in document"
-msgstr ""
+msgstr "Odblokuj dokument"
 
 #: links.py:48
 msgid "Check in/out"
-msgstr ""
+msgstr "Blokada"
 
 #: literals.py:12
 msgid "Checked out"
-msgstr ""
+msgstr "Zablokowany"
 
 #: literals.py:13
 msgid "Checked in/available"
-msgstr ""
+msgstr "Odblokowany/dostępny"
 
 #: models.py:27
 msgid "Document"
-msgstr ""
+msgstr "Dokument"
 
 #: models.py:29
 msgid "Check out date and time"
-msgstr ""
+msgstr "Data i czas blokady"
 
 #: models.py:33
 msgid "Amount of time to hold the document checked out in minutes."
-msgstr ""
+msgstr "Liczba dni, godzin lub minut w trakcie których dokument będzie zablokowany."
 
 #: models.py:35
 msgid "Check out expiration date and time"
-msgstr ""
+msgstr "Data i czas wygaśnięcia blokady"
 
 #: models.py:41
 msgid "Do not allow new version of this document to be uploaded."
-msgstr ""
+msgstr "Brak możliwości dodania nowej wersji dokumentu."
 
 #: models.py:43
 msgid "Block new version upload"
-msgstr ""
+msgstr "Blokuj załadowanie nowej wersji"
 
 #: models.py:54
+#| msgid "Check out expiration date and time"
 msgid "Check out expiration date and time must be in the future."
-msgstr ""
+msgstr "Wygaśnięcie blokady musi nastąpić w przyszłości."
 
 #: models.py:87 permissions.py:7
 msgid "Document checkout"
-msgstr ""
+msgstr "Blokada dokumentu"
 
 #: models.py:88
 msgid "Document checkouts"
-msgstr ""
+msgstr "Blokady dokumentu"
 
 #: permissions.py:10
 msgid "Check in documents"
-msgstr ""
+msgstr "Odblokuj dokumenty"
 
 #: permissions.py:13
 msgid "Forcefully check in documents"
-msgstr ""
+msgstr "Wymuś odblokowanie dokumentów"
 
 #: permissions.py:16
 msgid "Check out documents"
-msgstr ""
+msgstr "Zablokuj dokumenty"
 
 #: permissions.py:19
-#, fuzzy
-#| msgid "Checkout user"
 msgid "Check out details view"
-msgstr "checkout user"
+msgstr ""
 
 #: views.py:59
 #, python-format
 msgid "Error trying to check out document; %s"
-msgstr ""
+msgstr "Błąd podczas blokady dokumentu: %s"
 
 #: views.py:64
 #, python-format
 msgid "Document \"%s\" checked out successfully."
-msgstr ""
+msgstr "Dokument \"%s\" został pomyślnie zablokowany."
 
 #: views.py:72
 #, python-format
 msgid "Check out document: %s"
-msgstr ""
+msgstr "Zablokuj dokument: %s"
 
 #: views.py:81
 msgid "Documents checked out"
-msgstr ""
+msgstr "Dokumenty zablokowane"
 
 #: views.py:91
 msgid "Checkout time and date"
-msgstr ""
+msgstr "Rozpoczęcie blokady"
 
 #: views.py:97
 msgid "Checkout expiration"
-msgstr ""
+msgstr "Wygaśnięcie blokady"
 
 #: views.py:118
 #, python-format
 msgid "Check out details for document: %s"
-msgstr ""
+msgstr "Szczegóły blokady dokumentu: %s"
 
 #: views.py:136
 #, python-format
+#| msgid ""
+#| "dn't originally checked out this document.  Are you sure you wish cefully "
+#| "check in document: %s?"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr ""
+msgstr "Ten dokument nie został przez ciebie zablokowany. Czy wymusić odblokowanie dokumentu: %s?"
 
 #: views.py:140
 #, python-format
+#| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
-msgstr ""
+msgstr "Odblokować dokument: %s?"
 
 #: views.py:177
 msgid "Document has not been checked out."
-msgstr ""
+msgstr "Dokument nie został zablokowany."
 
 #: views.py:182
 #, python-format
 msgid "Error trying to check in document; %s"
-msgstr ""
+msgstr "Błąd podczas odblokowania dokumentu: %s"
 
 #: views.py:187
 #, python-format
 msgid "Document \"%s\" checked in successfully."
-msgstr ""
+msgstr "Dokument \"%s\" został pomyślnie odblokowany."
 
 #: widgets.py:23
 msgid "Period"
-msgstr ""
+msgstr "Okres"
+
+#~ msgid "New versions not allowed for the checkedout document: %s"
+#~ msgstr "New versions allowed: %s"
+
+#~ msgid "User: %s"
+#~ msgstr "User: %s"
+
+#~ msgid "Check out expiration: %s"
+#~ msgstr "Check out expiration: %s"
 
 #~ msgid "Allow overriding check out restrictions"
 #~ msgstr "Allow overriding check out restrictions"
+
+#~ msgid "Checkout user"
+#~ msgstr "checkout user"
 
 #~ msgid "Are you sure you wish to check in document: %s?"
 #~ msgstr "Are you sure you wish to check in document: %s?"
@@ -242,11 +253,11 @@ msgstr ""
 #~ msgstr "Enter a valid time difference."
 
 #~ msgid ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 #~ msgstr ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."
@@ -259,6 +270,12 @@ msgstr ""
 
 #~ msgid "Document \"%(document)s\" forcefully checked in by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" forcefully checked in by %(fullname)s."
+
+#~ msgid "document"
+#~ msgstr "document"
+
+#~ msgid "check out expiration date and time"
+#~ msgstr "check out expiration date and time"
 
 #~ msgid "document checkout"
 #~ msgstr "document checkout"

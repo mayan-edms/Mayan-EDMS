@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Renata Oliveira <renatabels@gmail.com>, 2011
@@ -11,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:45-0400\n"
-"PO-Revision-Date: 2015-09-24 05:15+0000\n"
+"POT-Creation-Date: 2016-03-21 16:44-0400\n"
+"PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 links.py:16 links.py:43 models.py:45 permissions.py:7
@@ -33,7 +32,7 @@ msgstr ""
 
 #: apps.py:71 links.py:46 models.py:26
 msgid "Documents"
-msgstr ""
+msgstr "Documentos"
 
 #: forms.py:34 models.py:44
 msgid "Folder"
@@ -53,7 +52,7 @@ msgstr ""
 
 #: links.py:31
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: links.py:35
 msgid "Remove from folder"
@@ -61,11 +60,11 @@ msgstr ""
 
 #: links.py:39
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: models.py:20
 msgid "Label"
-msgstr ""
+msgstr "Nome"
 
 #: models.py:23
 msgid "Datetime created"
@@ -88,6 +87,7 @@ msgid "Edit folders"
 msgstr ""
 
 #: permissions.py:16
+#| msgid "Delete new folders"
 msgid "Delete folders"
 msgstr ""
 
@@ -96,6 +96,7 @@ msgid "Remove documents from folders"
 msgstr "Remover documentos das pastas"
 
 #: permissions.py:22
+#| msgid "Edit new folders"
 msgid "View folders"
 msgstr ""
 
@@ -109,6 +110,7 @@ msgstr ""
 
 #: views.py:54
 #, python-format
+#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
 msgstr ""
 
@@ -129,7 +131,7 @@ msgstr ""
 
 #: views.py:141
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "Deve fornecer pelo menos um documento."
 
 #: views.py:175
 #, python-format
@@ -169,13 +171,13 @@ msgstr[0] ""
 msgstr[1] ""
 
 #~ msgid "A folder named: %s, already exists."
-#~ msgstr "Já existe uma pasta com o nome %s."
+#~ msgstr "A folder named: %s, already exists."
 
 #~ msgid "Folder: %s deleted successfully."
-#~ msgstr "Pasta: %s removida com sucesso."
+#~ msgstr "Folder: %s deleted successfully."
 
 #~ msgid "Folder: %(folder)s delete error: %(error)s"
-#~ msgstr "Pasta: %(folder)s erro ao eliminar: %(error)s "
+#~ msgstr "Folder: %(folder)s delete error: %(error)s"
 
 #~ msgid "Create new folders"
 #~ msgstr "Create new folders"
@@ -214,11 +216,11 @@ msgstr[1] ""
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -251,12 +253,12 @@ msgstr[1] ""
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

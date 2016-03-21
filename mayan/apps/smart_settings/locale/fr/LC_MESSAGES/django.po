@@ -1,33 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:47-0400\n"
-"PO-Revision-Date: 2015-08-27 05:24+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"PO-Revision-Date: 2016-03-21 21:02+0000\n"
+"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:18 permissions.py:7
 msgid "Smart settings"
-msgstr ""
+msgstr "Paramètres intelligents"
 
 #: apps.py:26
 msgid "Setting count"
-msgstr ""
+msgstr "Nombre de paramètres"
 
 #: apps.py:30
 msgid "Name"
@@ -39,11 +39,11 @@ msgstr "Valeur"
 
 #: apps.py:37
 msgid "Found in path"
-msgstr ""
+msgstr "Trouvé dans le chemin"
 
 #: apps.py:40
 msgid "n/a"
-msgstr ""
+msgstr "n/a"
 
 #: links.py:11 links.py:14
 msgid "Settings"
@@ -51,21 +51,21 @@ msgstr "Paramètres"
 
 #: permissions.py:10
 msgid "View settings"
-msgstr ""
+msgstr "Afficher les paramètres"
 
 #: views.py:15
 msgid "Setting namespaces"
-msgstr ""
+msgstr "Espaces de noms des paramètres"
 
 #: views.py:29
 #, python-format
 msgid "Settings in namespace: %s"
-msgstr ""
+msgstr "Paramètres dans l'espace de noms : %s"
 
 #: views.py:37
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr ""
+msgstr "Espace de nom : %s non trouvé"
 
 #~ msgid "Default"
 #~ msgstr "default"

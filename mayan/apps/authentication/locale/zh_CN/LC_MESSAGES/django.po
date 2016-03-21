@@ -1,21 +1,20 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:42-0400\n"
+"POT-Creation-Date: 2016-03-21 16:41-0400\n"
 "PO-Revision-Date: 2015-08-20 19:09+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
-"language/zh_CN/)\n"
-"Language: zh_CN\n"
+"Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/language/zh_CN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:17 settings.py:7
@@ -24,25 +23,25 @@ msgstr ""
 
 #: forms.py:17
 msgid "Email"
-msgstr ""
+msgstr "电子邮件"
 
 #: forms.py:20
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: forms.py:24
 msgid ""
 "Please enter a correct email and password. Note that the password field is "
 "case-sensitive."
-msgstr ""
+msgstr "请输入正确的邮箱或者密码。注意！密码是大小写敏感的。"
 
 #: forms.py:26
 msgid "This account is inactive."
-msgstr ""
+msgstr "此账号未激活"
 
 #: links.py:13
 msgid "Logout"
-msgstr ""
+msgstr "退出"
 
 #: links.py:16
 msgid "Change password"
@@ -56,8 +55,8 @@ msgstr ""
 
 #: views.py:39
 msgid "Current user password change"
-msgstr ""
+msgstr "当前用户密码修改"
 
 #: views.py:55
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "你的密码已经修改成功"

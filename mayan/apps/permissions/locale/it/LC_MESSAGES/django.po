@@ -1,23 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Giovanni Tricarico <gtricarico92@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:47-0400\n"
-"PO-Revision-Date: 2015-08-24 05:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"PO-Revision-Date: 2016-03-21 21:03+0000\n"
+"Last-Translator: Giovanni Tricarico <gtricarico92@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:22 models.py:47 models.py:70 permissions.py:7
@@ -38,43 +38,43 @@ msgstr "Revoca"
 
 #: links.py:22
 msgid "Create new role"
-msgstr ""
+msgstr "Crea nuovo ruolo "
 
 #: links.py:26
 msgid "Delete"
-msgstr ""
+msgstr "Cancella "
 
 #: links.py:30
 msgid "Edit"
-msgstr ""
+msgstr "Modifica "
 
 #: links.py:35 models.py:91 views.py:134
 msgid "Roles"
-msgstr ""
+msgstr "Ruoli "
 
 #: links.py:38
 msgid "Members"
-msgstr ""
+msgstr "Membri "
 
 #: links.py:43
 msgid "Role permissions"
-msgstr ""
+msgstr "Autorizzazioni ruolo "
 
 #: models.py:18
 msgid "Namespace"
-msgstr ""
+msgstr "Namespace"
 
 #: models.py:19
 msgid "Name"
-msgstr ""
+msgstr "Nome "
 
 #: models.py:46
 msgid "Permission"
-msgstr ""
+msgstr "Autorizzazione "
 
 #: models.py:67
 msgid "Label"
-msgstr ""
+msgstr "Etichetta "
 
 #: models.py:73
 msgid "Groups"
@@ -82,7 +82,7 @@ msgstr "Gruppi"
 
 #: models.py:90
 msgid "Role"
-msgstr ""
+msgstr "Ruolo"
 
 #: permissions.py:10
 msgid "View roles"
@@ -110,29 +110,30 @@ msgstr "Revoca le autorizzazioni"
 
 #: views.py:45
 msgid "Available groups"
-msgstr ""
+msgstr "Gruppi disponibili "
 
 #: views.py:46
 msgid "Role groups"
-msgstr ""
+msgstr "Gruppi di ruoli "
 
 #: views.py:56
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "Gruppi del ruolo: %s"
 
 #: views.py:79
 msgid "Available permissions"
-msgstr ""
+msgstr "Autorizzazioni disponibili "
 
 #: views.py:80
+#| msgid "Grant permissions"
 msgid "Granted permissions"
-msgstr ""
+msgstr "Autorizzazioni concesse  "
 
 #: views.py:93
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
+msgstr "Autorizzazioni per ruolo: %s"
 
 #~ msgid "Permission holder"
 #~ msgstr "permission holder"
@@ -162,10 +163,8 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
 #~ msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
 
-#~ msgid ""
-#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
-#~ msgstr ""
-#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
 
 #~ msgid ""
 #~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
@@ -181,17 +180,13 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
 #~ msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
 
-#~ msgid ""
-#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-#~ msgstr ""
-#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 
 #~ msgid ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s "
-#~ "%(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 #~ msgstr ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s "
-#~ "%(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 
 #~ msgid "Users"
 #~ msgstr "Users"

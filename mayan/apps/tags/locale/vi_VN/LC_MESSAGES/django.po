@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Trung Phan Minh <navmobile@gmail.com>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:48-0400\n"
-"PO-Revision-Date: 2015-08-27 05:25+0000\n"
+"PO-Revision-Date: 2016-03-21 21:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
-"mayan-edms/language/vi_VN/)\n"
-"Language: vi_VN\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:33 apps.py:73 apps.py:90 forms.py:34 forms.py:52 links.py:40
@@ -31,13 +30,11 @@ msgstr ""
 
 #: apps.py:84 models.py:24
 msgid "Documents"
-msgstr ""
+msgstr "Tài liệu"
 
 #: forms.py:53
-#, fuzzy
-#| msgid "Attach tag to document: %s."
 msgid "Tags to attach to the document."
-msgstr "Attach tag to document: %s."
+msgstr ""
 
 #: links.py:14
 msgid "Remove tag"
@@ -61,7 +58,7 @@ msgstr ""
 
 #: links.py:36
 msgid "Edit"
-msgstr ""
+msgstr "Sửa"
 
 #: models.py:20
 msgid "Label"
@@ -188,16 +185,22 @@ msgstr "Xóa tag từ các tài liệu: %s"
 
 #: views.py:344
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
 msgstr ""
 
 #: views.py:351
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
 msgstr ""
 
 #: views.py:360
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
 msgstr ""
 
@@ -266,6 +269,9 @@ msgstr "Tag \"%(tag)s\" đã được xóa thành công từ tài liệu \"%(doc
 
 #~ msgid "Document created"
 #~ msgstr "document"
+
+#~ msgid "Attach tag to document: %s."
+#~ msgstr "Attach tag to document: %s."
 
 #~ msgid "Attach tag to documents: %s."
 #~ msgstr "Attach tag to documents: %s."

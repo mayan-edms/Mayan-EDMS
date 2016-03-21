@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -14,14 +14,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:48-0400\n"
-"PO-Revision-Date: 2015-09-24 05:16+0000\n"
+"PO-Revision-Date: 2016-03-21 21:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:29 permissions.py:7
@@ -131,14 +130,13 @@ msgstr "Gruppe %s bearbeiten"
 
 #: views.py:66
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "Gruppe %s löschen?"
 
 #: views.py:72
-#, fuzzy
-#| msgid "Available groups"
 msgid "Available users"
-msgstr "Verfügbare Gruppen"
+msgstr ""
 
 #: views.py:73
 msgid "Members of groups"
@@ -180,9 +178,7 @@ msgstr "Es muss mindestens ein Benutzer angegeben werden"
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie die "
-"Administratoren-Oberfläche dafür."
+msgstr "Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie die Administratoren-Oberfläche dafür."
 
 #: views.py:237
 #, python-format
@@ -196,11 +192,13 @@ msgstr "Fehler beim Löschen des Benutzers \"%(user)s\": %(error)s"
 
 #: views.py:255
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete the user: %s?"
 msgstr "Benutzer %s löschen?"
 
 #: views.py:257
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete the users: %s?"
 msgstr "Die Benutzer %s löschen?"
 
@@ -212,9 +210,7 @@ msgstr "Passwörter stimmen nicht überein, bitte noch einmal versuchen"
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie die "
-"Administratoren-Oberfläche dafür."
+msgstr "Super User und Staff Benutzer löschen ist nicht erlaubt, benutzen Sie die Administratoren-Oberfläche dafür."
 
 #: views.py:319
 #, python-format
@@ -224,9 +220,7 @@ msgstr "Passwort erfolgreich zurückgesetzt für Benutzer %s"
 #: views.py:325
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Fehler beim Zurücksetzen des Passworts für den Benutzer  \"%(user)s\": "
-"%(error)s"
+msgstr "Fehler beim Zurücksetzen des Passworts für den Benutzer  \"%(user)s\": %(error)s"
 
 #: views.py:342
 #, python-format

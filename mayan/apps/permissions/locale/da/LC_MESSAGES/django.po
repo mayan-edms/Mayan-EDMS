@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
@@ -9,14 +9,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:47-0400\n"
-"PO-Revision-Date: 2015-08-24 05:21+0000\n"
+"PO-Revision-Date: 2016-03-21 21:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"da/)\n"
-"Language: da\n"
+"Language-Team: Danish (http://www.transifex.com/rosarior/mayan-edms/language/da/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: da\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:22 models.py:47 models.py:70 permissions.py:7
@@ -65,7 +64,7 @@ msgstr ""
 
 #: models.py:19
 msgid "Name"
-msgstr ""
+msgstr "Navn"
 
 #: models.py:46
 msgid "Permission"
@@ -125,6 +124,7 @@ msgid "Available permissions"
 msgstr ""
 
 #: views.py:80
+#| msgid "Grant permissions"
 msgid "Granted permissions"
 msgstr ""
 
@@ -161,10 +161,8 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
 #~ msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
 
-#~ msgid ""
-#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
-#~ msgstr ""
-#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
 
 #~ msgid ""
 #~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
@@ -180,17 +178,13 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
 #~ msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
 
-#~ msgid ""
-#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-#~ msgstr ""
-#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 
 #~ msgid ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s "
-#~ "%(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 #~ msgstr ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s "
-#~ "%(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
 
 #~ msgid "Users"
 #~ msgstr "Users"

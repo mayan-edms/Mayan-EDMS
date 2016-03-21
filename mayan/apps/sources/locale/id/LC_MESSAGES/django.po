@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Sehat <sehat75@yahoo.com>, 2013
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:47-0400\n"
-"PO-Revision-Date: 2015-09-24 05:16+0000\n"
+"PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/id/)\n"
-"Language: id\n"
+"Language-Team: Indonesian (http://www.transifex.com/rosarior/mayan-edms/language/id/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: id\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:37 links.py:31 models.py:145 views.py:521
@@ -25,6 +24,7 @@ msgid "Sources"
 msgstr ""
 
 #: apps.py:53
+#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 
 #: apps.py:81 models.py:606
 msgid "Date time"
-msgstr ""
+msgstr "tanggal waktu"
 
 #: apps.py:86 models.py:609
 msgid "Message"
@@ -53,7 +53,7 @@ msgstr ""
 
 #: forms.py:29
 msgid "Comment"
-msgstr ""
+msgstr "Komentar"
 
 #: forms.py:44
 msgid "Expand compressed files"
@@ -61,9 +61,7 @@ msgstr "Kembangkan berkas-berkas terkompresi"
 
 #: forms.py:46
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Unggah berkas terkompresi yang mengandung berkas-berkas sebagai dokumen-"
-"dokumen individual"
+msgstr "Unggah berkas terkompresi yang mengandung berkas-berkas sebagai dokumen-dokumen individual"
 
 #: forms.py:67 views.py:432
 msgid "Staging file"
@@ -71,7 +69,7 @@ msgstr ""
 
 #: forms.py:71 forms.py:76
 msgid "File"
-msgstr ""
+msgstr "File"
 
 #: handlers.py:14
 msgid "Default"
@@ -249,7 +247,7 @@ msgstr ""
 
 #: models.py:275
 msgid "Document type"
-msgstr ""
+msgstr "Jenis dokumen"
 
 #: models.py:279
 msgid "Whether to expand or not, compressed archives."
@@ -287,7 +285,7 @@ msgstr ""
 
 #: models.py:341
 msgid "Password"
-msgstr ""
+msgstr "Password"
 
 #: models.py:345
 msgid ""
@@ -307,10 +305,9 @@ msgid ""
 msgstr ""
 
 #: models.py:356
-#, fuzzy
 #| msgid "Current metadata"
 msgid "Subject metadata type"
-msgstr "Current metadata"
+msgstr ""
 
 #: models.py:360
 msgid ""
@@ -319,10 +316,8 @@ msgid ""
 msgstr ""
 
 #: models.py:363
-#, fuzzy
-#| msgid "Clone metadata"
 msgid "From metadata type"
-msgstr "Current metadata"
+msgstr ""
 
 #: models.py:367
 msgid "Store the body of the email as a text document."
@@ -408,13 +403,12 @@ msgid "View existing document sources"
 msgstr "Lihat sumber-sumber dokumen yang telah ada"
 
 #: permissions.py:21
-#, fuzzy
-#| msgid "Server staging folder"
 msgid "Delete staging files"
-msgstr "server staging folder"
+msgstr ""
 
 #: tasks.py:31
 #, python-format
+#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
@@ -429,11 +423,12 @@ msgstr ""
 
 #: views.py:129 wizards.py:49
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 
 #: views.py:155 views.py:173
+#| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
@@ -456,7 +451,8 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
 #: views.py:381
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:419
@@ -471,6 +467,7 @@ msgstr "Membuat sumber baru dengan jenis: %s"
 
 #: views.py:480
 #, python-format
+#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -501,11 +498,17 @@ msgstr ""
 
 #: wizards.py:66
 msgid "Next step"
-msgstr ""
+msgstr "Langkah selanjutnya"
 
 #: wizards.py:68
 msgid "Document upload wizard"
 msgstr ""
+
+#~ msgid "Staging file delete successfully."
+#~ msgstr "Staging file delete successfully."
+
+#~ msgid "Staging file delete error; %s."
+#~ msgstr "Staging file delete error; %s."
 
 #~ msgid "Transformations"
 #~ msgstr "transformations"
@@ -583,11 +586,9 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"
@@ -600,6 +601,9 @@ msgstr ""
 
 #~ msgid "Upload sources"
 #~ msgstr "Upload sources"
+
+#~ msgid "Server staging folder"
+#~ msgstr "server staging folder"
 
 #~ msgid "Server watch folder"
 #~ msgstr "server watch folder"

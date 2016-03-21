@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:46-0400\n"
-"PO-Revision-Date: 2015-09-24 05:15+0000\n"
+"PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:58 apps.py:116 apps.py:154 links.py:14 permissions.py:7
@@ -43,7 +42,7 @@ msgstr ""
 
 #: apps.py:160 apps.py:178
 msgid "not found"
-msgstr ""
+msgstr "не е намерен"
 
 #: apps.py:166 apps.py:184
 msgid "error getting version"
@@ -51,7 +50,7 @@ msgstr ""
 
 #: apps.py:178 apps.py:183 apps.py:188
 msgid "tesseract version"
-msgstr ""
+msgstr "tesseract версия"
 
 #: forms.py:40
 #, python-format
@@ -60,9 +59,10 @@ msgstr ""
 
 #: forms.py:48
 msgid "Contents"
-msgstr ""
+msgstr "Съдържание"
 
 #: links.py:17 links.py:25
+#| msgid "Submit documents for OCR"
 msgid "Submit for OCR"
 msgstr ""
 
@@ -84,7 +84,7 @@ msgstr ""
 
 #: models.py:16
 msgid "Document type"
-msgstr ""
+msgstr "Вид на документа"
 
 #: models.py:20
 msgid "Automatically queue newly created documents for OCR."
@@ -120,13 +120,14 @@ msgstr ""
 
 #: models.py:56
 msgid "Content"
-msgstr ""
+msgstr "Съдържание"
 
 #: models.py:62
 msgid "Document page content"
 msgstr ""
 
 #: models.py:63
+#| msgid "Document pages content clean up error: %s"
 msgid "Document pages contents"
 msgstr ""
 
@@ -153,12 +154,14 @@ msgid "Change document type OCR settings"
 msgstr ""
 
 #: settings.py:10
+#| msgid "File path to unpaper program."
 msgid "File path to tesseract program."
 msgstr ""
 
 #: settings.py:15
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
 msgstr ""
 
 #: settings.py:22
@@ -170,6 +173,7 @@ msgid "Set new document types to perform OCR automatically by default."
 msgstr ""
 
 #: views.py:28
+#| msgid "Submit documents for OCR"
 msgid "Submit all documents for OCR?"
 msgstr ""
 
@@ -189,21 +193,19 @@ msgid "Document: %(document)s was added to the OCR queue."
 msgstr ""
 
 #: views.py:87
+#| msgid "Submit documents for OCR"
 msgid "Submit the selected documents to the OCR queue?"
 msgstr ""
 
 #: views.py:94
-#, fuzzy
 #| msgid "Submit documents for OCR"
 msgid "Submit all documents of a type for OCR"
-msgstr "Подаване на документи за OCR"
+msgstr ""
 
 #: views.py:109
-#, fuzzy, python-format
-#| msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
-msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
-msgstr "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+#, python-format
+msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgstr ""
 
 #: views.py:132
 #, python-format
@@ -212,11 +214,43 @@ msgstr ""
 
 #: views.py:154
 #, python-format
+#| msgid "Queued documents: %d"
 msgid "OCR result for document: %s"
 msgstr ""
 
+#~ msgid "Delete"
+#~ msgstr "delete"
+
+#~ msgid "Re-queue"
+#~ msgstr "re-queue"
+
 #~ msgid "Delete documents from OCR queue"
-#~ msgstr "Изтриване на документи от OCR опашката"
+#~ msgstr "Delete documents from OCR queue"
+
+#~ msgid "Make at least one selection."
+#~ msgstr "Must provide at least one queue document."
+
+#~ msgid "Entry: %(entry)s deleted successfully."
+#~ msgstr "Queue document: %(document)s deleted successfully."
+
+#~ msgid "Error entry: %(entry)s; %(error)s"
+#~ msgstr "Error deleting document: %(document)s; %(error)s"
+
+#~ msgid "Delete the selected entry?"
+#~ msgid_plural "Delete the selected entries?"
+#~ msgstr[0] "c3d93a17e46abf97b0d29fdf9a0bf689_pl_0"
+#~ msgstr[1] "c3d93a17e46abf97b0d29fdf9a0bf689_pl_1"
+
+#~ msgid "Entry: %(entry)s was re-queued for OCR."
+#~ msgstr "Document: %(document)s is already queued."
+
+#~ msgid "Document version id#: %d, no longer exists."
+#~ msgstr "Document id#: %d, no longer exists."
+
+#~ msgid "Re-queue the selected entry?"
+#~ msgid_plural "Re-queue the selected entries?"
+#~ msgstr[0] "3d821f1679e8cdd3b5844ba5a01a969b_pl_0"
+#~ msgstr[1] "3d821f1679e8cdd3b5844ba5a01a969b_pl_1"
 
 #~ msgid "Submit the selected document for OCR?"
 #~ msgstr "Submit documents for OCR"
@@ -285,6 +319,9 @@ msgstr ""
 #~ msgid "Document queues: %d"
 #~ msgstr "Document queues: %d"
 
+#~ msgid "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+#~ msgstr "Document: %(document)s was re-queued to the OCR queue: %(queue)s"
+
 #~ msgid "Document: %s is already being processed and can't be re-queded."
 #~ msgstr "Document: %s is already being processed and can't be re-queded."
 
@@ -349,11 +386,11 @@ msgstr ""
 #~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 #~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 
 #~ msgid "Maximum amount of concurrent document OCRs a node can perform."
 #~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
@@ -410,11 +447,9 @@ msgstr ""
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

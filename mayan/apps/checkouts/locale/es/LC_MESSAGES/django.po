@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Roberto Rosario, 2015
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:42-0400\n"
-"PO-Revision-Date: 2015-08-24 19:19+0000\n"
+"PO-Revision-Date: 2016-03-21 21:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31 links.py:30
@@ -45,32 +44,27 @@ msgid "Document already checked out."
 msgstr "El documento ya está reservado."
 
 #: forms.py:28
-#, fuzzy
-#| msgid "Document status: %s"
 msgid "Document status"
-msgstr "Estado de documento: %s"
+msgstr ""
 
 #: forms.py:37 models.py:37 views.py:85
+#| msgid "User: %s"
 msgid "User"
 msgstr "Usuario"
 
 #: forms.py:41
-#, fuzzy
 #| msgid "Check out time: %s"
 msgid "Check out time"
-msgstr "Tiempo de la reserva: %s"
+msgstr ""
 
 #: forms.py:46
-#, fuzzy
-#| msgid "Checkout expiration"
 msgid "Check out expiration"
-msgstr "Expiración de la reservación"
+msgstr ""
 
 #: forms.py:51
-#, fuzzy
 #| msgid "New versions allowed: %s"
 msgid "New versions allowed?"
-msgstr "Nuevas versiones permitidas: %s"
+msgstr ""
 
 #: forms.py:52
 msgid "Yes"
@@ -125,6 +119,7 @@ msgid "Block new version upload"
 msgstr "Restringir la subida de nuevas versiones"
 
 #: models.py:54
+#| msgid "Check out expiration date and time"
 msgid "Check out expiration date and time must be in the future."
 msgstr "Fecha y hora de la expiración de la reserva deben ser en el futuro."
 
@@ -149,10 +144,8 @@ msgid "Check out documents"
 msgstr "Reservar documentos"
 
 #: permissions.py:19
-#, fuzzy
-#| msgid "Check out date and time"
 msgid "Check out details view"
-msgstr "Fecha y hora de la reservación"
+msgstr ""
 
 #: views.py:59
 #, python-format
@@ -188,15 +181,17 @@ msgstr "Detalles de la reserva para el documento: %s"
 
 #: views.py:136
 #, python-format
+#| msgid ""
+#| "dn't originally checked out this document.  Are you sure you wish cefully "
+#| "check in document: %s?"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr ""
-"Usted no reservó inicialmente este documento. ¿Devolver forzosamente el "
-"documento: %s?"
+msgstr "Usted no reservó inicialmente este documento. ¿Devolver forzosamente el documento: %s?"
 
 #: views.py:140
 #, python-format
+#| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr "¿Devolver el documento: %s?"
 
@@ -218,15 +213,14 @@ msgstr "Documento \"%s\" devuelto con éxito."
 msgid "Period"
 msgstr "Periodo"
 
-#~| msgid "New versions allowed: %s"
 #~ msgid "New versions not allowed for the checkedout document: %s"
-#~ msgstr "No está permitido subir nuevas versiones del documento: %s"
+#~ msgstr "New versions allowed: %s"
 
 #~ msgid "User: %s"
-#~ msgstr "Usuario: %s"
+#~ msgstr "User: %s"
 
 #~ msgid "Check out expiration: %s"
-#~ msgstr "Expiración de la reserva: %s"
+#~ msgstr "Check out expiration: %s"
 
 #~ msgid "Allow overriding check out restrictions"
 #~ msgstr "Allow overriding check out restrictions"
@@ -259,11 +253,11 @@ msgstr "Periodo"
 #~ msgstr "Enter a valid time difference."
 
 #~ msgid ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 #~ msgstr ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."

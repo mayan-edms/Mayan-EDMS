@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Lucas Weel <ljj.weel@gmail.com>, 2012
@@ -10,21 +10,21 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:47-0400\n"
-"PO-Revision-Date: 2015-09-24 05:16+0000\n"
+"PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:37 links.py:31 models.py:145 views.py:521
 msgid "Sources"
-msgstr ""
+msgstr "Bronnen"
 
 #: apps.py:53
+#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
@@ -45,7 +45,7 @@ msgstr ""
 
 #: apps.py:81 models.py:606
 msgid "Date time"
-msgstr ""
+msgstr "Datum en tijd"
 
 #: apps.py:86 models.py:609
 msgid "Message"
@@ -53,7 +53,7 @@ msgstr ""
 
 #: forms.py:29
 msgid "Comment"
-msgstr ""
+msgstr "Commentaar"
 
 #: forms.py:44
 msgid "Expand compressed files"
@@ -61,8 +61,7 @@ msgstr "Uitpakken gecomprimeerde bestanden"
 
 #: forms.py:46
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Upload een gecomprimeerd archief van bestanden als individuele documenten"
+msgstr "Upload een gecomprimeerd archief van bestanden als individuele documenten"
 
 #: forms.py:67 views.py:432
 msgid "Staging file"
@@ -74,7 +73,7 @@ msgstr "Bestand"
 
 #: handlers.py:14
 msgid "Default"
-msgstr ""
+msgstr "Verstekwaarde"
 
 #: links.py:26
 msgid "New document"
@@ -102,11 +101,11 @@ msgstr ""
 
 #: links.py:60 links.py:74
 msgid "Delete"
-msgstr ""
+msgstr "Verwijder"
 
 #: links.py:64
 msgid "Edit"
-msgstr ""
+msgstr "bewerken"
 
 #: links.py:68
 msgid "Document sources"
@@ -146,11 +145,11 @@ msgstr ""
 
 #: literals.py:30
 msgid "POP3 email"
-msgstr ""
+msgstr "POP3 e-mail"
 
 #: literals.py:31 models.py:570 models.py:571
 msgid "IMAP email"
-msgstr ""
+msgstr "IMAP e-mail"
 
 #: models.py:48
 msgid "Label"
@@ -158,7 +157,7 @@ msgstr ""
 
 #: models.py:49 views.py:514
 msgid "Enabled"
-msgstr ""
+msgstr "Ingeschakeld"
 
 #: models.py:144 models.py:603
 msgid "Source"
@@ -215,9 +214,7 @@ msgstr ""
 #: models.py:207
 #, python-format
 msgid "Unable get list of staging files: %s"
-msgstr ""
-"Het is niet mogelijk om een lijst met tijdelijke bestanden aan te maken. "
-"Foutmelding: %s"
+msgstr "Het is niet mogelijk om een lijst met tijdelijke bestanden aan te maken. Foutmelding: %s"
 
 #: models.py:228
 #, python-format
@@ -246,15 +243,15 @@ msgstr ""
 
 #: models.py:273
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
+msgstr "Wijs een documentsoort toe voor documenten die worden geüpload van deze bron."
 
 #: models.py:275
 msgid "Document type"
-msgstr ""
+msgstr "Documentsoort"
 
 #: models.py:279
 msgid "Whether to expand or not, compressed archives."
-msgstr ""
+msgstr "Al of niet uitpakken van gecomprimeerde archieven."
 
 #: models.py:329
 msgid "Interval source"
@@ -270,7 +267,7 @@ msgstr ""
 
 #: models.py:335
 msgid "SSL"
-msgstr ""
+msgstr "SSL"
 
 #: models.py:337
 msgid ""
@@ -288,7 +285,7 @@ msgstr ""
 
 #: models.py:341
 msgid "Password"
-msgstr ""
+msgstr "Wachtwoord"
 
 #: models.py:345
 msgid ""
@@ -308,10 +305,9 @@ msgid ""
 msgstr ""
 
 #: models.py:356
-#, fuzzy
 #| msgid "Current metadata"
 msgid "Subject metadata type"
-msgstr "Current metadata"
+msgstr ""
 
 #: models.py:360
 msgid ""
@@ -320,10 +316,8 @@ msgid ""
 msgstr ""
 
 #: models.py:363
-#, fuzzy
-#| msgid "Clone metadata"
 msgid "From metadata type"
-msgstr "Current metadata"
+msgstr ""
 
 #: models.py:367
 msgid "Store the body of the email as a text document."
@@ -350,7 +344,7 @@ msgstr ""
 #: models.py:441
 #, python-format
 msgid "attachment-%i"
-msgstr ""
+msgstr "attachment-%i"
 
 #: models.py:480
 msgid "Email source"
@@ -366,7 +360,7 @@ msgstr ""
 
 #: models.py:525 models.py:526
 msgid "POP email"
-msgstr ""
+msgstr "POP e-mail"
 
 #: models.py:534
 msgid "IMAP Mailbox from which to check for messages."
@@ -409,13 +403,12 @@ msgid "View existing document sources"
 msgstr "Bekijk bestaande documentbronnen"
 
 #: permissions.py:21
-#, fuzzy
-#| msgid "Staging file"
 msgid "Delete staging files"
-msgstr "Tijdelijk bestand"
+msgstr ""
 
 #: tasks.py:31
 #, python-format
+#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
@@ -430,11 +423,12 @@ msgstr ""
 
 #: views.py:129 wizards.py:49
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
 msgstr ""
 
 #: views.py:155 views.py:173
+#| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
@@ -457,7 +451,8 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
 #: views.py:381
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:419
@@ -472,6 +467,7 @@ msgstr "Aanmaken van nieuw documentbron van type: %s"
 
 #: views.py:480
 #, python-format
+#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -502,17 +498,17 @@ msgstr ""
 
 #: wizards.py:66
 msgid "Next step"
-msgstr ""
+msgstr "Volgende stap"
 
 #: wizards.py:68
 msgid "Document upload wizard"
 msgstr ""
 
 #~ msgid "Staging file delete successfully."
-#~ msgstr "Tijdelijk bestand succesvol verwijderd."
+#~ msgstr "Staging file delete successfully."
 
 #~ msgid "Staging file delete error; %s."
-#~ msgstr "Fout bij het verwijderen van tijdelijk bestand. Foutmelding: %s."
+#~ msgstr "Staging file delete error; %s."
 
 #~ msgid "Transformations"
 #~ msgstr "transformations"
@@ -590,11 +586,9 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -12,14 +12,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:45-0400\n"
-"PO-Revision-Date: 2015-08-27 05:24+0000\n"
+"PO-Revision-Date: 2016-03-21 21:10+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33
@@ -28,7 +27,7 @@ msgstr ""
 
 #: apps.py:55 models.py:18
 msgid "Label"
-msgstr ""
+msgstr "Nome"
 
 #: apps.py:62 models.py:25
 msgid "Dynamic label"
@@ -48,11 +47,11 @@ msgstr ""
 
 #: links.py:19 links.py:36
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: links.py:23 links.py:43
 msgid "Edit"
-msgstr ""
+msgstr "Editar"
 
 #: links.py:27
 msgid "Conditions"
@@ -68,7 +67,7 @@ msgstr ""
 
 #: links.py:47
 msgid "Documents"
-msgstr ""
+msgstr "Documentos"
 
 #: links.py:54 links.py:58 links.py:63 models.py:89 permissions.py:7
 #: views.py:139
@@ -146,8 +145,8 @@ msgstr "contido em expressão regular (insensível a minúsculas/maiúsculas)"
 #: models.py:21 models.py:114
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
 msgstr ""
 
 #: models.py:43
@@ -223,8 +222,7 @@ msgstr ""
 
 #: views.py:81
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
 msgstr ""
 
 #: views.py:97
@@ -252,6 +250,7 @@ msgstr "Editar Ligação inteligente: %s"
 
 #: views.py:210
 #, python-format
+#| msgid "Delete smart links"
 msgid "Delete smart link: %s"
 msgstr ""
 
@@ -271,17 +270,24 @@ msgstr "Editar condição de ligação inteligente"
 
 #: views.py:334
 #, python-format
+#| msgid "Edit smart link condition"
 msgid "Delete smart link condition: \"%s\"?"
 msgstr ""
 
 #~ msgid "Smart link condition: \"%s\" created successfully."
-#~ msgstr "Condição da ligação inteligente: \"%s\" criada com sucesso."
+#~ msgstr "Smart link condition: \"%s\" created successfully."
 
 #~ msgid "Smart link condition: \"%s\" edited successfully."
-#~ msgstr "Condição de ligação inteligente: \"%s\" editada com sucesso."
+#~ msgstr "Smart link condition: \"%s\" edited successfully."
 
 #~ msgid "Smart link condition: \"%s\" deleted successfully."
-#~ msgstr "Condição de ligação inteligente: \"%s\" excluída com sucesso."
+#~ msgstr "Smart link condition: \"%s\" deleted successfully."
+
+#~ msgid ""
+#~ "Error deleting smart link condition: %(smart_link_condition)s; "
+#~ "%(exception)s."
+#~ msgstr ""
+#~ "Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
 
 #~ msgid "Smart link: %s deleted successfully."
 #~ msgstr "Smart link: %s deleted successfully."
@@ -372,14 +378,14 @@ msgstr ""
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

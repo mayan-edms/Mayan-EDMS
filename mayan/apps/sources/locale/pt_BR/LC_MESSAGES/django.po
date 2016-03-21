@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Emerson Soares <on.emersonsoares@gmail.com>, 2011
@@ -11,14 +11,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:47-0400\n"
-"PO-Revision-Date: 2015-09-24 05:16+0000\n"
+"PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:37 links.py:31 models.py:145 views.py:521
@@ -26,6 +25,7 @@ msgid "Sources"
 msgstr "Fontes"
 
 #: apps.py:53
+#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
@@ -38,7 +38,7 @@ msgstr ""
 
 #: apps.py:65
 msgid "Created"
-msgstr ""
+msgstr "Criando"
 
 #: apps.py:71
 msgid "Thumbnail"
@@ -46,7 +46,7 @@ msgstr "miniatura"
 
 #: apps.py:81 models.py:606
 msgid "Date time"
-msgstr ""
+msgstr "hora, data"
 
 #: apps.py:86 models.py:609
 msgid "Message"
@@ -62,8 +62,7 @@ msgstr "Expandir arquivos compactados"
 
 #: forms.py:46
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr ""
-"Upload de um arquivo compactado contendo arquivos como documentos individuais"
+msgstr "Upload de um arquivo compactado contendo arquivos como documentos individuais"
 
 #: forms.py:67 views.py:432
 msgid "Staging file"
@@ -75,23 +74,19 @@ msgstr "Arquivo"
 
 #: handlers.py:14
 msgid "Default"
-msgstr ""
+msgstr "Padrão"
 
 #: links.py:26
 msgid "New document"
 msgstr ""
 
 #: links.py:35
-#, fuzzy
-#| msgid "IMAP email"
 msgid "Add new IMAP email"
-msgstr "E-mail IMAP"
+msgstr "Adicionar um novo email IMAP"
 
 #: links.py:40
-#, fuzzy
-#| msgid "POP3 email"
 msgid "Add new POP3 email"
-msgstr "E-mail POP3"
+msgstr "Adicionar um novo email POP3"
 
 #: links.py:45
 msgid "Add new staging folder"
@@ -159,7 +154,7 @@ msgstr "E-mail IMAP"
 
 #: models.py:48
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: models.py:49 views.py:514
 msgid "Enabled"
@@ -249,8 +244,7 @@ msgstr "intervalo"
 
 #: models.py:273
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-"Atribuir um tipo de documento para documentos enviados a partir desta fonte."
+msgstr "Atribuir um tipo de documento para documentos enviados a partir desta fonte."
 
 #: models.py:275
 msgid "Document type"
@@ -280,9 +274,7 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr ""
-"Escolhas típicas : 110 para POP3, 995 para  POP3 sobre SSL, 143 para IMAP, "
-"993 para IMAP sobre SSL."
+msgstr "Escolhas típicas : 110 para POP3, 995 para  POP3 sobre SSL, 143 para IMAP, 993 para IMAP sobre SSL."
 
 #: models.py:338
 msgid "Port"
@@ -314,10 +306,9 @@ msgid ""
 msgstr ""
 
 #: models.py:356
-#, fuzzy
 #| msgid "Current metadata"
 msgid "Subject metadata type"
-msgstr "Current metadata"
+msgstr ""
 
 #: models.py:360
 msgid ""
@@ -326,10 +317,8 @@ msgid ""
 msgstr ""
 
 #: models.py:363
-#, fuzzy
-#| msgid "Clone metadata"
 msgid "From metadata type"
-msgstr "Current metadata"
+msgstr ""
 
 #: models.py:367
 msgid "Store the body of the email as a text document."
@@ -392,7 +381,7 @@ msgstr ""
 
 #: models.py:616
 msgid "Log entries"
-msgstr ""
+msgstr "As entradas de log"
 
 #: permissions.py:7
 msgid "Sources setup"
@@ -415,13 +404,12 @@ msgid "View existing document sources"
 msgstr "Ver fontes de documentos existentes"
 
 #: permissions.py:21
-#, fuzzy
-#| msgid "Staging file"
 msgid "Delete staging files"
-msgstr "Preparação de arquivo"
+msgstr ""
 
 #: tasks.py:31
 #, python-format
+#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
@@ -436,13 +424,12 @@ msgstr ""
 
 #: views.py:129 wizards.py:49
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
-"Nenhuma fonte interativa de documentos fora definida ou nenhum foi ativada. "
-"Criar uma antes de prosseguir."
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Nenhuma fonte interativa de documentos fora definida ou nenhum foi ativada. Criar uma antes de prosseguir."
 
 #: views.py:155 views.py:173
+#| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
@@ -465,10 +452,9 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
 #: views.py:381
-msgid "New document version queued for uploaded and will be available shortly."
-msgstr ""
-"Nova versão do documento na fila para carregados e estará disponível em "
-"breve."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
+msgstr "Nova versão do documento na fila para carregados e estará disponível em breve."
 
 #: views.py:419
 #, python-format
@@ -482,6 +468,7 @@ msgstr "Criar nova fonte do tipo: %s"
 
 #: views.py:480
 #, python-format
+#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -499,22 +486,16 @@ msgid "Staging file page image"
 msgstr "Imagem da página do arquivo temporário"
 
 #: wizards.py:38
-#, fuzzy
-#| msgid "Step 1 of 2: Select document type"
 msgid "Step 1 of 3: Select document type"
-msgstr "Passo 1 de 2: Selecionar o Tipo de documento"
+msgstr ""
 
 #: wizards.py:39
-#, fuzzy
-#| msgid "Step 2 of 2: Enter document metadata"
 msgid "Step 2 of 3: Enter document metadata"
-msgstr "Passo 2 de 2: Digite metadados de documentos"
+msgstr ""
 
 #: wizards.py:40
-#, fuzzy
-#| msgid "Step 1 of 2: Select document type"
 msgid "Step 3 of 3: Select tags"
-msgstr "Passo 1 de 2: Selecionar o Tipo de documento"
+msgstr ""
 
 #: wizards.py:66
 msgid "Next step"
@@ -523,9 +504,6 @@ msgstr "Próximo passo"
 #: wizards.py:68
 msgid "Document upload wizard"
 msgstr ""
-
-#~ msgid "Clone"
-#~ msgstr "Clone"
 
 #~ msgid "Staging file delete successfully."
 #~ msgstr "Staging file delete successfully."
@@ -609,11 +587,9 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

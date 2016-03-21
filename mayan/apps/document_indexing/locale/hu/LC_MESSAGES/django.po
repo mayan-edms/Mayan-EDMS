@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
@@ -9,25 +9,25 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:43-0400\n"
-"PO-Revision-Date: 2015-08-27 05:24+0000\n"
+"PO-Revision-Date: 2016-03-21 21:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/hu/)\n"
-"Language: hu\n"
+"Language-Team: Hungarian (http://www.transifex.com/rosarior/mayan-edms/language/hu/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: hu\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
 msgid "None"
-msgstr ""
+msgstr "Semmi"
 
 #: admin.py:26 apps.py:134 links.py:48 models.py:41
 msgid "Document types"
 msgstr ""
 
 #: apps.py:48
+#| msgid "document indexes"
 msgid "Document indexing"
 msgstr ""
 
@@ -100,11 +100,13 @@ msgid ""
 msgstr ""
 
 #: models.py:29
+#| msgid "Internal name used to reference this index."
 msgid "This values will be used by other apps to reference this index."
 msgstr ""
 
 #: models.py:35
-msgid "Causes this index to be visible and updated when document data changes."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
 msgstr ""
 
 #: models.py:82 models.py:109
@@ -135,8 +137,8 @@ msgstr ""
 
 #: models.py:131
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
 msgstr ""
 
 #: models.py:134
@@ -165,7 +167,7 @@ msgstr ""
 
 #: models.py:159
 msgid "Documents"
-msgstr ""
+msgstr "dokumentumok"
 
 #: models.py:204
 msgid "Index node instance"
@@ -209,6 +211,7 @@ msgstr ""
 
 #: views.py:51
 #, python-format
+#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
 msgstr ""
 
@@ -246,10 +249,9 @@ msgid "Delete the index template node: %s?"
 msgstr ""
 
 #: views.py:218
-#, fuzzy, python-format
-#| msgid "Are you sure you with to delete the index template node: %s?"
+#, python-format
 msgid "Edit the index template node: %s?"
-msgstr "Are you sure you with to delete the index template node: %s?"
+msgstr ""
 
 #: views.py:286
 #, python-format
@@ -268,7 +270,7 @@ msgstr ""
 
 #: views.py:341
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
+msgstr "A nagy adatbázisok esetében a művelet sokáig is tarthat."
 
 #: views.py:342
 msgid "Rebuild all indexes?"
@@ -277,6 +279,18 @@ msgstr ""
 #: views.py:351
 msgid "Index rebuild queued successfully."
 msgstr ""
+
+#~ msgid "Index list"
+#~ msgstr "index list"
+
+#~ msgid "Configure document indexes"
+#~ msgstr "Configure document indexes"
+
+#~ msgid "Index template node created successfully."
+#~ msgstr "Index template node created successfully."
+
+#~ msgid "Index template node edited successfully"
+#~ msgstr "Index template node edited successfully"
 
 #~ msgid "Node: %s deleted successfully."
 #~ msgstr "Node: %s deleted successfully."
@@ -314,6 +328,9 @@ msgstr ""
 #~ msgid "Document types not in index: %s"
 #~ msgstr "document types not in index: %s"
 
+#~ msgid "Are you sure you with to delete the index template node: %s?"
+#~ msgstr "Are you sure you with to delete the index template node: %s?"
+
 #~ msgid "Are you sure you wish to rebuild all indexes?"
 #~ msgstr "Are you sure you wish to rebuild all indexes?"
 
@@ -324,11 +341,9 @@ msgstr ""
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -365,11 +380,11 @@ msgstr ""
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

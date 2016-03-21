@@ -1,37 +1,36 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:45-0400\n"
-"PO-Revision-Date: 2015-08-27 05:24+0000\n"
+"PO-Revision-Date: 2016-03-21 21:10+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:33
 msgid "Linking"
-msgstr ""
+msgstr "Łącza"
 
 #: apps.py:55 models.py:18
 msgid "Label"
-msgstr ""
+msgstr "Etykieta"
 
 #: apps.py:62 models.py:25
 msgid "Dynamic label"
-msgstr ""
+msgstr "Dynamiczna etykieta"
 
 #: apps.py:66 apps.py:71 models.py:27 models.py:124
 msgid "Enabled"
@@ -39,15 +38,15 @@ msgstr "Włączony"
 
 #: forms.py:35 models.py:109
 msgid "Foreign document attribute"
-msgstr ""
+msgstr "Atrybut obcego dokumentu"
 
 #: links.py:14
 msgid "Create condition"
-msgstr ""
+msgstr "Utwórz warunek"
 
 #: links.py:19 links.py:36
 msgid "Delete"
-msgstr "Usunąć"
+msgstr "Usuń"
 
 #: links.py:23 links.py:43
 msgid "Edit"
@@ -59,11 +58,11 @@ msgstr "Warunki"
 
 #: links.py:32 views.py:183
 msgid "Create new smart link"
-msgstr ""
+msgstr "Utwórz nowe łącze"
 
 #: links.py:39 models.py:29
 msgid "Document types"
-msgstr "Typy dokumentu"
+msgstr "Typy dokumentów"
 
 #: links.py:47
 msgid "Documents"
@@ -72,7 +71,7 @@ msgstr "Dokumenty"
 #: links.py:54 links.py:58 links.py:63 models.py:89 permissions.py:7
 #: views.py:139
 msgid "Smart links"
-msgstr ""
+msgstr "Łącza"
 
 #: literals.py:9
 msgid "and"
@@ -84,11 +83,11 @@ msgstr "lub"
 
 #: literals.py:14
 msgid "is equal to"
-msgstr "jest równy"
+msgstr "równa się"
 
 #: literals.py:15
 msgid "is equal to (case insensitive)"
-msgstr "jest równa (wielkość liter ma znaczenie)"
+msgstr "równa się (wielkość liter ma znaczenie)"
 
 #: literals.py:16
 msgid "contains"
@@ -100,87 +99,87 @@ msgstr "zawiera (wielkość liter ma znaczenie)"
 
 #: literals.py:18
 msgid "is in"
-msgstr "jest"
+msgstr "jest w"
 
 #: literals.py:19
 msgid "is greater than"
-msgstr "jest większa niż"
+msgstr "jest większe niż"
 
 #: literals.py:20
 msgid "is greater than or equal to"
-msgstr "jest większa lub równa"
+msgstr "jest większe niż lub równe"
 
 #: literals.py:21
 msgid "is less than"
-msgstr "jest mniejsza niż"
+msgstr "jest mniejsze niż"
 
 #: literals.py:22
 msgid "is less than or equal to"
-msgstr "jest mniejsza lub równa"
+msgstr "jest mniejsze niż lub równe"
 
 #: literals.py:23
 msgid "starts with"
-msgstr "zaczyna się"
+msgstr "zaczyna się od"
 
 #: literals.py:24
 msgid "starts with (case insensitive)"
-msgstr "rozpoczyna się (wielkość liter ma znaczenie)"
+msgstr "zaczyna się od (wielkość liter ma znaczenie)"
 
 #: literals.py:25
 msgid "ends with"
-msgstr "kończy"
+msgstr "kończy się na"
 
 #: literals.py:26
 msgid "ends with (case insensitive)"
-msgstr "kończy (wielkość liter ma znaczenie)"
+msgstr "kończy się na (wielkość liter ma znaczenie)"
 
 #: literals.py:27
 msgid "is in regular expression"
-msgstr ""
+msgstr "jest w wyrażeniu regularnym"
 
 #: literals.py:28
 msgid "is in regular expression (case insensitive)"
-msgstr ""
+msgstr "jest w wyrażeniu regularnym (wielkość liter ma znaczenie)"
 
 #: models.py:21 models.py:114
 msgid ""
 "Enter a template to render. Use Django's default templating language "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The "
-"{{ document }} context variable is available."
-msgstr ""
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). The {{ "
+"document }} context variable is available."
+msgstr "Podaj szablon do wyrenderowania. Użyj domyślnego języka szablonów Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). Zmienna kontekstowa {{ document }} jest dostępna."
 
 #: models.py:43
 #, python-format
 msgid "Error generating dynamic label; %s"
-msgstr ""
+msgstr "Błąd podczas generowania dynamicznej etykiety: %s"
 
 #: models.py:52
 msgid "This smart link is not allowed for the selected document's type."
-msgstr ""
+msgstr "To łącze nie jest dostępne dla wybranego typu dokumentu."
 
 #: models.py:88 models.py:100
 msgid "Smart link"
-msgstr ""
+msgstr "Łącze"
 
 #: models.py:104
 msgid "The inclusion is ignored for the first item."
-msgstr ""
+msgstr "To wliczenie jest ignorowane dla pierwszego elementu."
 
 #: models.py:108
 msgid "This represents the metadata of all other documents."
-msgstr ""
+msgstr "To odpowiada meta danym wszystkich pozostałych dokumentów."
 
 #: models.py:118
 msgid "Expression"
-msgstr ""
+msgstr "Wyrażenie"
 
 #: models.py:121
 msgid "Inverts the logic of the operator."
-msgstr ""
+msgstr "Odwraca logikę operatora."
 
 #: models.py:122
 msgid "Negated"
-msgstr ""
+msgstr "Zanegowany"
 
 #: models.py:129
 msgid "not"
@@ -188,90 +187,106 @@ msgstr "nie"
 
 #: models.py:134
 msgid "Link condition"
-msgstr ""
+msgstr "Warunek łącza"
 
 #: models.py:135
 msgid "Link conditions"
-msgstr ""
+msgstr "Warunki łącza"
 
 #: permissions.py:10
 msgid "View existing smart links"
-msgstr ""
+msgstr "Przeglądaj istniejące łącza"
 
 #: permissions.py:13
 msgid "Create new smart links"
-msgstr ""
+msgstr "Utwórz nowe łącza"
 
 #: permissions.py:16
 msgid "Delete smart links"
-msgstr ""
+msgstr "Usuń łącza"
 
 #: permissions.py:19
 msgid "Edit smart links"
-msgstr ""
+msgstr "Edytuj łącza"
 
 #: views.py:70
 #, python-format
 msgid "Smart link query error: %s"
-msgstr ""
+msgstr "Błąd zapytania o łącze: %s"
 
 #: views.py:78
 #, python-format
 msgid "Documents in smart link: %s"
-msgstr ""
+msgstr "Dokumenty w łączu: %s"
 
 #: views.py:81
 #, python-format
-msgid ""
-"Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
-msgstr ""
+msgid "Documents in smart link \"%(smart_link)s\" as related to \"%(document)s\""
+msgstr "Dokumenty w łączu \"%(smart_link)s\" powiązane z \"%(document)s\""
 
 #: views.py:97
 msgid "Available document types"
-msgstr ""
+msgstr "Dostępne typy dokumentów"
 
 #: views.py:99
 msgid "Document types enabled"
-msgstr ""
+msgstr "Typy dokumentów z udostępnionym łączem"
 
 #: views.py:108
 #, python-format
 msgid "Document type for which to enable smart link: %s"
-msgstr ""
+msgstr "Typy dokumentów, dla których zostanie udostępnione łącze: %s"
 
 #: views.py:173
 #, python-format
 msgid "Smart links for document: %s"
-msgstr ""
+msgstr "Łącza dla dokumentu: %s"
 
 #: views.py:198
 #, python-format
 msgid "Edit smart link: %s"
-msgstr ""
+msgstr "Edytuj łącze: %s"
 
 #: views.py:210
 #, python-format
+#| msgid "Delete smart links"
 msgid "Delete smart link: %s"
-msgstr ""
+msgstr "Usuń łącze: %s"
 
 #: views.py:222
 #, python-format
 msgid "Conditions for smart link: %s"
-msgstr ""
+msgstr "Warunki łącza: %s"
 
 #: views.py:253
 #, python-format
 msgid "Add new conditions to smart link: \"%s\""
-msgstr ""
+msgstr "Dodaj nowe warunki do łącza: \"%s\""
 
 #: views.py:299
 msgid "Edit smart link condition"
-msgstr ""
+msgstr "Edycja warunku łącza"
 
 #: views.py:334
 #, python-format
+#| msgid "Edit smart link condition"
 msgid "Delete smart link condition: \"%s\"?"
-msgstr ""
+msgstr "Usunąć warunek łącza: \"%s\"?"
+
+#~ msgid "Smart link condition: \"%s\" created successfully."
+#~ msgstr "Smart link condition: \"%s\" created successfully."
+
+#~ msgid "Smart link condition: \"%s\" edited successfully."
+#~ msgstr "Smart link condition: \"%s\" edited successfully."
+
+#~ msgid "Smart link condition: \"%s\" deleted successfully."
+#~ msgstr "Smart link condition: \"%s\" deleted successfully."
+
+#~ msgid ""
+#~ "Error deleting smart link condition: %(smart_link_condition)s; "
+#~ "%(exception)s."
+#~ msgstr ""
+#~ "Error deleting smart link condition: %(smart_link_condition)s; %(error)s."
 
 #~ msgid "Smart link: %s deleted successfully."
 #~ msgstr "Smart link: %s deleted successfully."
@@ -362,14 +377,14 @@ msgstr ""
 #~ msgstr "What are smart links?"
 
 #~ msgid ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."
 #~ msgstr ""
-#~ "Smart links are a set of conditional statements that are used to query "
-#~ "the database using the current document the user is accessing as the data "
-#~ "source, the results of these queries are a list of documents that relate "
-#~ "in some manner to the document being displayed and allow users the "
-#~ "ability to jump to and from linked documents very easily."
+#~ "Smart links are a set of conditional statements that are used to query the "
+#~ "database using the current document the user is accessing as the data "
+#~ "source, the results of these queries are a list of documents that relate in "
+#~ "some manner to the document being displayed and allow users the ability to "
+#~ "jump to and from linked documents very easily."

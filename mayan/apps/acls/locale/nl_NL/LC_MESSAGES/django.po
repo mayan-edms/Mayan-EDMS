@@ -1,103 +1,106 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:41-0400\n"
-"PO-Revision-Date: 2015-09-24 05:15+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"PO-Revision-Date: 2016-03-21 21:03+0000\n"
+"Last-Translator: Justin Albstbstmeijer <justin@albstmeijer.nl>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:14 links.py:30
 msgid "ACLs"
-msgstr ""
+msgstr "Authorisatielijsten"
 
 #: apps.py:22 links.py:38 models.py:36
 msgid "Permissions"
-msgstr ""
+msgstr "Permissies"
 
 #: apps.py:26 models.py:38
+#| msgid "Roles"
 msgid "Role"
-msgstr ""
+msgstr "Gebruikersrol"
 
 #: links.py:26
 msgid "Delete"
-msgstr ""
+msgstr "Verwijder"
 
 #: links.py:34
+#| msgid "View ACLs"
 msgid "New ACL"
-msgstr ""
+msgstr "Nieuwe authorisatielijst"
 
 #: managers.py:84
 msgid "Insufficient access."
-msgstr ""
+msgstr "Permissie is ontoereikend"
 
 #: models.py:44
 msgid "Access entry"
-msgstr ""
+msgstr "Authorisatie invoer"
 
 #: models.py:45
 msgid "Access entries"
-msgstr ""
+msgstr "Authorisaties invoer"
 
 #: models.py:60
 msgid "None"
-msgstr ""
+msgstr "Geen"
 
 #: permissions.py:7
 msgid "Access control lists"
-msgstr ""
+msgstr "Authorisatielijsten"
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr ""
+msgstr "Bewerk authorisatielijsten"
 
 #: permissions.py:13
 msgid "View ACLs"
-msgstr ""
+msgstr "Bekijk authorisatielijsten"
 
 #: views.py:78
 #, python-format
 msgid "New access control lists for: %s"
-msgstr ""
+msgstr "Nieuwe authorisatielijsten voor: %s"
 
 #: views.py:109
 #, python-format
+#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
-msgstr ""
+msgstr "Verwijder authorisatielijst: %s"
 
 #: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
-msgstr ""
+msgstr "Authorisatielijsten voor: %s"
 
 #: views.py:162
 msgid "Available permissions"
-msgstr ""
+msgstr "Beschikbare permissies"
 
 #: views.py:163
 msgid "Granted permissions"
-msgstr ""
+msgstr "Toegekende permissies"
 
 #: views.py:222
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
-msgstr ""
+msgstr "Rol \"%(role)s\" permissies voor \"%(object)s\""
 
 #: views.py:242
 msgid "Disabled permissions are inherited from a parent object."
-msgstr ""
+msgstr "Uitgeschakelde permissies zijn  geërfd van een parent object."
 
 #~ msgid "New holder"
 #~ msgstr "New holder"
@@ -193,10 +196,8 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr ""
-#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"

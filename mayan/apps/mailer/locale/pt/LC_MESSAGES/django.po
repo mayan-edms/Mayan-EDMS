@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 msgid ""
 msgstr ""
@@ -10,12 +10,11 @@ msgstr ""
 "POT-Creation-Date: 2016-03-21 16:45-0400\n"
 "PO-Revision-Date: 2015-08-20 19:16+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
-"language/pt/)\n"
-"Language: pt\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:24
@@ -32,23 +31,23 @@ msgstr ""
 
 #: forms.py:29
 msgid "Email address"
-msgstr ""
+msgstr "Endereço de correio eletrónico"
 
 #: forms.py:30
 msgid "Subject"
-msgstr ""
+msgstr "Assunto"
 
 #: forms.py:32
 msgid "Body"
-msgstr ""
+msgstr "Corpo"
 
 #: links.py:13
 msgid "Email document"
-msgstr ""
+msgstr "Documento de correio eletrónico"
 
 #: links.py:17
 msgid "Email link"
-msgstr ""
+msgstr "Hiperçigação de correio eletrónico"
 
 #: links.py:22 views.py:31
 msgid "Document mailing error log"
@@ -90,11 +89,11 @@ msgstr ""
 
 #: permissions.py:10
 msgid "Send document link via email"
-msgstr ""
+msgstr "Enviar hiperligação de documento através de mensagem"
 
 #: permissions.py:13
 msgid "Send document via email"
-msgstr ""
+msgstr "Enviar documento através de mensagem"
 
 #: permissions.py:16
 msgid "View document mailing error log"
@@ -102,11 +101,11 @@ msgstr ""
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"
-msgstr ""
+msgstr "Hiperligação para o documento: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
+msgstr "Modelo para a linha do assunto do formulário de mensagem da hiperligação de documento."
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
@@ -114,7 +113,7 @@ msgstr ""
 
 #: settings.py:24
 msgid "Document: {{ document }}"
-msgstr ""
+msgstr "Document: {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
@@ -126,7 +125,7 @@ msgstr ""
 
 #: views.py:56
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "Deve fornecer pelo menos um documento."
 
 #: views.py:105
 msgid "Successfully queued for delivery via email."
@@ -134,7 +133,7 @@ msgstr ""
 
 #: views.py:114
 msgid "Send"
-msgstr ""
+msgstr "Enviar"
 
 #: views.py:120
 #, python-format

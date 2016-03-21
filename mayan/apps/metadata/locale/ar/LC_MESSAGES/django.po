@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -9,17 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:45-0400\n"
-"PO-Revision-Date: 2015-08-27 05:24+0000\n"
+"POT-Creation-Date: 2016-03-21 16:46-0400\n"
+"PO-Revision-Date: 2016-03-21 21:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
-"ar/)\n"
-"Language: ar\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
-"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Language: ar\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:52 apps.py:142 links.py:39 permissions.py:7 settings.py:10
 msgid "Metadata"
@@ -69,7 +67,7 @@ msgstr "نوع البيانات الوصفية"
 
 #: apps.py:176
 msgid "Metadata value"
-msgstr ""
+msgstr "قيمة البيانات الوصفية"
 
 #: classes.py:21
 #, python-format
@@ -78,7 +76,7 @@ msgstr "'metadata' object has no attribute '%s'"
 
 #: forms.py:12
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
 #: forms.py:15 models.py:45
 msgid "Name"
@@ -99,6 +97,7 @@ msgid "Default value error: %s"
 msgstr ""
 
 #: forms.py:116
+#| msgid " Available models: %s"
 msgid " Available template context variables: "
 msgstr ""
 
@@ -136,13 +135,14 @@ msgstr ""
 
 #: links.py:59
 msgid "Edit"
-msgstr ""
+msgstr "تحرير"
 
 #: links.py:64 models.py:92 views.py:561
 msgid "Metadata types"
 msgstr "أنواع البيانات الوصفية"
 
 #: models.py:42
+#| msgid "Do not use python reserved words, or spaces."
 msgid ""
 "Name used by other apps to reference this value. Do not use python reserved "
 "words, or spaces."
@@ -160,13 +160,13 @@ msgstr ""
 
 #: models.py:55
 msgid "Default"
-msgstr ""
+msgstr "Default"
 
 #: models.py:60
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language (https://docs.djangoproject.com/en/1.7/"
-"ref/templates/builtins/)."
+"Django's default templating language "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)."
 msgstr ""
 
 #: models.py:65
@@ -185,7 +185,8 @@ msgstr ""
 
 #: models.py:76
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr ""
 
 #: models.py:78
@@ -222,7 +223,7 @@ msgstr ""
 
 #: models.py:203
 msgid "Document type"
-msgstr ""
+msgstr "نوع الوثيقة"
 
 #: models.py:215
 msgid "Document type metadata type options"
@@ -238,11 +239,11 @@ msgstr "قم بتعديل البيانات الوصفية لوثيقة"
 
 #: permissions.py:12
 msgid "Add metadata to a document"
-msgstr ""
+msgstr "إضافة بيانات وصفية إلى وثيقة"
 
 #: permissions.py:15
 msgid "Remove metadata from a document"
-msgstr ""
+msgstr "إزالة بيانات وصفية من وثيقة"
 
 #: permissions.py:18
 msgid "View metadata from a document"
@@ -324,14 +325,15 @@ msgstr ""
 #: views.py:272
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
-msgstr ""
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
+msgstr "تم اضافة نوع البيانات الوصفية %(metadata_type)s بنجاح للوثيقة %(document)s ."
 
 #: views.py:282
 #, python-format
 msgid ""
 "Metadata type: %(metadata_type)s already present in document %(document)s."
-msgstr ""
+msgstr "نوع البيانات الوصفية %(metadata_type)s موجود مسبقا للوثيقة %(document)s ."
 
 #: views.py:313
 msgid "Add metadata types to document"
@@ -378,6 +380,7 @@ msgstr ""
 
 #: views.py:529
 #, python-format
+#| msgid "Delete metadata types"
 msgid "Delete the metadata type: %s?"
 msgstr ""
 
@@ -391,6 +394,7 @@ msgid "Internal name"
 msgstr ""
 
 #: views.py:568
+#| msgid "View metadata types"
 msgid "Available metadata types"
 msgstr ""
 
@@ -580,47 +584,47 @@ msgstr ""
 #~ msgstr "What are metadata sets?"
 
 #~ msgid ""
-#~ "A metadata set is a group of one or more metadata types.  Metadata sets "
-#~ "are useful when creating new documents; selecing a metadata set "
-#~ "automatically attaches it's member metadata types to said document."
+#~ "A metadata set is a group of one or more metadata types.  Metadata sets are "
+#~ "useful when creating new documents; selecing a metadata set automatically "
+#~ "attaches it's member metadata types to said document."
 #~ msgstr ""
-#~ "A metadata set is a group of one or more metadata types.  Metadata sets "
-#~ "are useful when creating new documents; selecing a metadata set "
-#~ "automatically attaches it's member metadata types to said document."
+#~ "A metadata set is a group of one or more metadata types.  Metadata sets are "
+#~ "useful when creating new documents; selecing a metadata set automatically "
+#~ "attaches it's member metadata types to said document."
 
 #~ msgid "What are metadata types?"
 #~ msgstr "What are metadata types?"
 
 #~ msgid ""
-#~ "A metadata type defines the characteristics of a value of some kind that "
-#~ "can be attached to a document.  Examples of metadata types are: a client "
-#~ "name, a date, or a project to which several documents belong.  A metadata "
-#~ "type's name is the internal identifier with which it can be referenced to "
-#~ "by other modules such as the indexing module, the title is the value that "
-#~ "is shown to the users, the default value is the value an instance of this "
-#~ "metadata type will have initially, and the lookup value turns an instance "
-#~ "of a metadata of this type into a choice list which options are the "
-#~ "result of the lookup's code execution."
+#~ "A metadata type defines the characteristics of a value of some kind that can"
+#~ " be attached to a document.  Examples of metadata types are: a client name, "
+#~ "a date, or a project to which several documents belong.  A metadata type's "
+#~ "name is the internal identifier with which it can be referenced to by other "
+#~ "modules such as the indexing module, the title is the value that is shown to"
+#~ " the users, the default value is the value an instance of this metadata type"
+#~ " will have initially, and the lookup value turns an instance of a metadata "
+#~ "of this type into a choice list which options are the result of the lookup's"
+#~ " code execution."
 #~ msgstr ""
-#~ "A metadata type defines the characteristics of a value of some kind that "
-#~ "can be attached to a document.  Examples of metadata types are: a client "
-#~ "name, a date, or a project to which several documents belong.  A metadata "
-#~ "type's name is the internal identifier with which it can be referenced to "
-#~ "by other modules such as the indexing module, the title is the value that "
-#~ "is shown to the users, the default value is the value an instance of this "
-#~ "metadata type will have initially, and the lookup value turns an instance "
-#~ "of a metadata of this type into a choice list which options are the "
-#~ "result of the lookup's code execution."
+#~ "A metadata type defines the characteristics of a value of some kind that can"
+#~ " be attached to a document.  Examples of metadata types are: a client name, "
+#~ "a date, or a project to which several documents belong.  A metadata type's "
+#~ "name is the internal identifier with which it can be referenced to by other "
+#~ "modules such as the indexing module, the title is the value that is shown to"
+#~ " the users, the default value is the value an instance of this metadata type"
+#~ " will have initially, and the lookup value turns an instance of a metadata "
+#~ "of this type into a choice list which options are the result of the lookup's"
+#~ " code execution."
 
 #~ msgid " Available functions: %s"
 #~ msgstr " Available functions: %s"
 
 #~ msgid ""
-#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user "
-#~ "in User.objects.all()].%s"
+#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
+#~ "User.objects.all()].%s"
 #~ msgstr ""
-#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user "
-#~ "in User.objects.all()].%s"
+#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
+#~ "User.objects.all()].%s"
 
 #~ msgid "Error deleting document indexes; %s"
 #~ msgstr "Error deleting document indexes; %s"

@@ -1,33 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
+# jmcainzos <jmcainzos@vodafone.es>, 2015
 # Lory977 <helga.carrero@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:42-0400\n"
-"PO-Revision-Date: 2015-09-24 20:44+0000\n"
+"PO-Revision-Date: 2016-03-21 21:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:70 settings.py:9
 msgid "Common"
-msgstr ""
+msgstr "Común"
 
 #: classes.py:53
 msgid "Available attributes: "
-msgstr "Atributos disponibles"
+msgstr "Atributos disponibles:"
 
 #: forms.py:26
 msgid "Selection"
@@ -35,12 +35,12 @@ msgstr "Selección"
 
 #: forms.py:105
 msgid "Filter"
-msgstr ""
+msgstr "Filtro"
 
 #: generics.py:123
 #, python-format
 msgid "Unable to transfer selection: %s."
-msgstr ""
+msgstr "No se ha podido transferir la selección: %s."
 
 #: generics.py:147
 msgid "Add"
@@ -56,10 +56,9 @@ msgid "%(object)s not created, error: %(error)s"
 msgstr ""
 
 #: generics.py:295
-#, fuzzy, python-format
-#| msgid "New object created successfully."
+#, python-format
 msgid "%(object)s created successfully."
-msgstr "Nuevo objeto creado con éxito."
+msgstr ""
 
 #: generics.py:320
 #, python-format
@@ -67,10 +66,9 @@ msgid "%(object)s not deleted, error: %(error)s."
 msgstr ""
 
 #: generics.py:331
-#, fuzzy, python-format
-#| msgid "Object deleted successfully."
+#, python-format
 msgid "%(object)s deleted successfully."
-msgstr "Objeto borrado con éxito."
+msgstr ""
 
 #: generics.py:372
 #, python-format
@@ -78,10 +76,9 @@ msgid "%(object)s not updated, error: %(error)s."
 msgstr ""
 
 #: generics.py:383
-#, fuzzy, python-format
-#| msgid "Object deleted successfully."
+#, python-format
 msgid "%(object)s updated successfully."
-msgstr "Objeto borrado con éxito."
+msgstr ""
 
 #: links.py:9
 msgid "About"
@@ -105,7 +102,7 @@ msgstr "Editar perfil de localización"
 
 #: links.py:27
 msgid "Data filters"
-msgstr ""
+msgstr "Filtros de datos"
 
 #: links.py:31 views.py:150
 msgid "License"
@@ -113,35 +110,35 @@ msgstr "Licencia"
 
 #: links.py:34 views.py:164
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Licencias de otros paquetes"
 
 #: links.py:38
 msgid "Setup"
-msgstr ""
+msgstr "Configuración"
 
 #: links.py:41 views.py:194
 msgid "Tools"
-msgstr ""
+msgstr "Herramientas"
 
 #: literals.py:13
 msgid "Days"
-msgstr ""
+msgstr "Días"
 
 #: literals.py:14
 msgid "Hours"
-msgstr ""
+msgstr "Horas"
 
 #: literals.py:15
 msgid "Minutes"
-msgstr ""
+msgstr "Minutos"
 
 #: mixins.py:125
 msgid "Object"
-msgstr ""
+msgstr "Objeto"
 
 #: models.py:23
 msgid "File"
-msgstr "Carpeta"
+msgstr "Archivo"
 
 #: models.py:25
 msgid "Filename"
@@ -153,11 +150,11 @@ msgstr "Fecha y hora"
 
 #: models.py:31
 msgid "Shared uploaded file"
-msgstr "Compartir archivo cargado"
+msgstr "Archivo cargado compartido"
 
 #: models.py:32
 msgid "Shared uploaded files"
-msgstr "Compartir archivos cargados"
+msgstr "Archivos cargados compartidos"
 
 #: models.py:53
 msgid "User"
@@ -173,24 +170,25 @@ msgstr "Lenguaje"
 
 #: models.py:67
 msgid "User locale profile"
-msgstr "Perfil de usuario local"
+msgstr "Perfil de localización de usuario"
 
 #: models.py:68
 msgid "User locale profiles"
-msgstr "Perfil de usuario local"
+msgstr "Perfiles de localización de usuario"
 
 #: settings.py:13
+#| msgid ""
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()."
-msgstr ""
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()."
+msgstr "El directorio temporaro es el utilizado por todo el proyecto para almacenar miniaturas, previsualizaciones y los archivos temporales. Si no se especifica ninguno, se creará utilizando tempfile.mkdtemp ()."
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Un soporte de almacenamiento que todos los trabajadores puedan utilizar para "
-"compartir archivos."
+msgstr "Un soporte de almacenamiento que todos los 'workers' puedan utilizar para compartir archivos."
 
 #: settings.py:28
 msgid "An integer specifying how many objects should be displayed per page."
@@ -202,12 +200,13 @@ msgstr ""
 
 #: settings.py:40
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 
 #: views.py:37
 msgid "Current user details"
-msgstr "detalles del usuario corriente"
+msgstr "Detalles del usuario actual"
 
 #: views.py:42
 msgid "Edit current user details"
@@ -215,13 +214,14 @@ msgstr "Editar los detalles del usuario actual"
 
 #: views.py:62
 msgid "Current user locale profile details"
-msgstr "Detalles de perfil del localización del usuario actual"
+msgstr "Detalles del perfil de localización del usuario actual"
 
 #: views.py:69
 msgid "Edit current user locale profile details"
 msgstr "Editar los detalles del perfil del usuario local"
 
 #: views.py:113
+#| msgid "Selection"
 msgid "Filter selection"
 msgstr ""
 
@@ -231,12 +231,13 @@ msgid "Results for filter: %s"
 msgstr ""
 
 #: views.py:136
+#| msgid "Page not found"
 msgid "Filter not found"
-msgstr ""
+msgstr "Filtro no encontrado"
 
 #: views.py:177
 msgid "Setup items"
-msgstr ""
+msgstr "Elementos de configuración"
 
 #: views.py:221
 msgid "No action selected."
@@ -249,36 +250,6 @@ msgstr "Debe seleccionar al menos un artículo."
 #: widgets.py:50
 msgid "None"
 msgstr "Ninguno"
-
-#~ msgid "Error creating new %s."
-#~ msgstr "Error al crear nuevo %s."
-
-#~ msgid "Error creating object."
-#~ msgstr "Error al crear objeto."
-
-#~ msgid "%s created successfully."
-#~ msgstr "%s creado con éxito."
-
-#~ msgid "Error deleting %s."
-#~ msgstr "Error al borrar %s."
-
-#~ msgid "Error deleting object."
-#~ msgstr "Error al borrar objeto."
-
-#~ msgid "%s deleted successfully."
-#~ msgstr "%s borrado con éxito."
-
-#~ msgid "Error saving %s details."
-#~ msgstr "Error al salvar los detalles %s."
-
-#~ msgid "Error saving details."
-#~ msgstr "Error al salvar los detalles."
-
-#~ msgid "%s details saved successfully."
-#~ msgstr "Los detalles %s se han guardado con éxito."
-
-#~ msgid "Details saved successfully."
-#~ msgstr "Detalles guardados con éxito."
 
 #~ msgid "Anonymous user"
 #~ msgstr "Anonymous user"
@@ -314,11 +285,11 @@ msgstr "Ninguno"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -327,11 +298,11 @@ msgstr "Ninguno"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

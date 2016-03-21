@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # woei <root@ipaddr.nl>, 2014
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:42-0400\n"
-"PO-Revision-Date: 2015-09-24 20:34+0000\n"
+"PO-Revision-Date: 2016-03-21 21:08+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:70 settings.py:9
@@ -55,10 +54,9 @@ msgid "%(object)s not created, error: %(error)s"
 msgstr ""
 
 #: generics.py:295
-#, fuzzy, python-format
-#| msgid "New object created successfully."
+#, python-format
 msgid "%(object)s created successfully."
-msgstr "Nieuw object succesvol aangemaakt."
+msgstr ""
 
 #: generics.py:320
 #, python-format
@@ -66,10 +64,9 @@ msgid "%(object)s not deleted, error: %(error)s."
 msgstr ""
 
 #: generics.py:331
-#, fuzzy, python-format
-#| msgid "Object deleted successfully."
+#, python-format
 msgid "%(object)s deleted successfully."
-msgstr "Object succesvol verwijderd."
+msgstr ""
 
 #: generics.py:372
 #, python-format
@@ -77,18 +74,17 @@ msgid "%(object)s not updated, error: %(error)s."
 msgstr ""
 
 #: generics.py:383
-#, fuzzy, python-format
-#| msgid "Object deleted successfully."
+#, python-format
 msgid "%(object)s updated successfully."
-msgstr "Object succesvol verwijderd."
+msgstr ""
 
 #: links.py:9
 msgid "About"
-msgstr ""
+msgstr "Informatie"
 
 #: links.py:12
 msgid "User details"
-msgstr ""
+msgstr "gebruiker gegevens"
 
 #: links.py:16
 msgid "Edit details"
@@ -140,15 +136,15 @@ msgstr ""
 
 #: models.py:23
 msgid "File"
-msgstr ""
+msgstr "Bestand"
 
 #: models.py:25
 msgid "Filename"
-msgstr ""
+msgstr "Bestandsnaam"
 
 #: models.py:27
 msgid "Date time"
-msgstr ""
+msgstr "Datum en tijd"
 
 #: models.py:31
 msgid "Shared uploaded file"
@@ -160,7 +156,7 @@ msgstr ""
 
 #: models.py:53
 msgid "User"
-msgstr ""
+msgstr "Gebruiker"
 
 #: models.py:57
 msgid "Timezone"
@@ -179,10 +175,13 @@ msgid "User locale profiles"
 msgstr ""
 
 #: settings.py:13
+#| msgid ""
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()."
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()."
 msgstr ""
 
 #: settings.py:22
@@ -199,7 +198,8 @@ msgstr ""
 
 #: settings.py:40
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 
 #: views.py:37
@@ -219,6 +219,7 @@ msgid "Edit current user locale profile details"
 msgstr ""
 
 #: views.py:113
+#| msgid "Selection"
 msgid "Filter selection"
 msgstr ""
 
@@ -228,6 +229,7 @@ msgid "Results for filter: %s"
 msgstr ""
 
 #: views.py:136
+#| msgid "Page not found"
 msgid "Filter not found"
 msgstr ""
 
@@ -246,36 +248,6 @@ msgstr "Selecteer minimaal een item."
 #: widgets.py:50
 msgid "None"
 msgstr "Geen"
-
-#~ msgid "Error creating new %s."
-#~ msgstr "Error bij maken nieuwe %s."
-
-#~ msgid "Error creating object."
-#~ msgstr "Error bij het maken van object."
-
-#~ msgid "%s created successfully."
-#~ msgstr "%s succesvol aangemaakt."
-
-#~ msgid "Error deleting %s."
-#~ msgstr "Error bij verwijderen %s."
-
-#~ msgid "Error deleting object."
-#~ msgstr "Error bij het verwijderen van object."
-
-#~ msgid "%s deleted successfully."
-#~ msgstr "%s succesvol verwijderd."
-
-#~ msgid "Error saving %s details."
-#~ msgstr "Error bij opslaan van %s gegevens."
-
-#~ msgid "Error saving details."
-#~ msgstr "Error bij opslaan gegevens."
-
-#~ msgid "%s details saved successfully."
-#~ msgstr "%s gegevens succesvol opgeslagen."
-
-#~ msgid "Details saved successfully."
-#~ msgstr "Gegevens succesvol opgeslagen."
 
 #~ msgid "Anonymous user"
 #~ msgstr "Anonymous user"
@@ -311,11 +283,11 @@ msgstr "Geen"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -324,11 +296,11 @@ msgstr "Geen"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

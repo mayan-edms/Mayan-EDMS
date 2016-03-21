@@ -1,133 +1,134 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-03-21 16:48-0400\n"
-"PO-Revision-Date: 2015-09-24 05:16+0000\n"
+"PO-Revision-Date: 2016-03-21 21:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:29 permissions.py:7
 msgid "User management"
-msgstr ""
+msgstr "Gebruikersbeheer"
 
 #: apps.py:39
 msgid "All the groups."
-msgstr ""
+msgstr "Alle groepen."
 
 #: apps.py:43
 msgid "All the users."
-msgstr ""
+msgstr "Alle gebruikers."
 
 #: apps.py:48 links.py:30
 msgid "Members"
-msgstr ""
+msgstr "Leden"
 
 #: apps.py:52
 msgid "Full name"
-msgstr ""
+msgstr "Volledige naam"
 
 #: apps.py:55
 msgid "Email"
-msgstr ""
+msgstr "Email"
 
 #: apps.py:58
 msgid "Active"
-msgstr ""
+msgstr "Actief"
 
 #: apps.py:64
 msgid "Has usable password?"
-msgstr ""
+msgstr "Heeft bruikbaar wachtwoord?"
 
 #: forms.py:16
 msgid "New password"
-msgstr ""
+msgstr "Nieuw wachtwoord"
 
 #: forms.py:19
 msgid "Confirm password"
-msgstr ""
+msgstr "Bevestig wachtwoord"
 
 #: links.py:14 views.py:29
 msgid "Create new group"
-msgstr ""
+msgstr " Maak nieuwe groep aan"
 
 #: links.py:18 links.py:42 links.py:58
 msgid "Delete"
-msgstr ""
+msgstr "Verwijder"
 
 #: links.py:22 links.py:46
 msgid "Edit"
-msgstr ""
+msgstr "Bewerken"
 
 #: links.py:26 links.py:34 links.py:50 views.py:52
 msgid "Groups"
-msgstr ""
+msgstr "Groepen"
 
 #: links.py:38 views.py:197
 msgid "Create new user"
-msgstr ""
+msgstr "Maak nieuwe gebruiker aan"
 
 #: links.py:54 links.py:70 views.py:169
 msgid "Users"
-msgstr ""
+msgstr "Gebruikers"
 
 #: links.py:62 links.py:66
 msgid "Reset password"
-msgstr ""
+msgstr "Verander wachtwoord"
 
 #: permissions.py:10
 msgid "Create new groups"
-msgstr ""
+msgstr "Maak nieuwe groepen aan"
 
 #: permissions.py:13
 msgid "Delete existing groups"
-msgstr ""
+msgstr "Verwijder bestaande groepen"
 
 #: permissions.py:16
 msgid "Edit existing groups"
-msgstr ""
+msgstr "Bewerk bestaande groepen"
 
 #: permissions.py:19
 msgid "View existing groups"
-msgstr ""
+msgstr "Bekijk bestaande groepen"
 
 #: permissions.py:22
 msgid "Create new users"
-msgstr ""
+msgstr "Maak nieuwe gebruikers aan"
 
 #: permissions.py:25
 msgid "Delete existing users"
-msgstr ""
+msgstr "Verwijder bestaande gebruikers"
 
 #: permissions.py:28
 msgid "Edit existing users"
-msgstr ""
+msgstr "Bewerk bestaande gebruikers"
 
 #: permissions.py:31
 msgid "View existing users"
-msgstr ""
+msgstr "Bekijk bestaande gebruikers"
 
 #: views.py:45
 #, python-format
 msgid "Edit group: %s"
-msgstr ""
+msgstr "Bewerk groep: %s"
 
 #: views.py:66
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
-msgstr ""
+msgstr "Verwijder de groep:  %s?"
 
 #: views.py:72
 msgid "Available users"
@@ -135,95 +136,97 @@ msgstr ""
 
 #: views.py:73
 msgid "Members of groups"
-msgstr ""
+msgstr "Leden van de groepen"
 
 #: views.py:94
 #, python-format
 msgid "Members of group: %s"
-msgstr ""
+msgstr "Leden van de groep: %s"
 
 #: views.py:127
 #, python-format
 msgid "Edit user: %s"
-msgstr ""
+msgstr "Bewerk gebruiker: %s"
 
 #: views.py:133
 msgid "Available groups"
-msgstr ""
+msgstr "Beschikbare groepen"
 
 #: views.py:134
 msgid "Groups joined"
-msgstr ""
+msgstr "Lid van groepen"
 
 #: views.py:143
 #, python-format
 msgid "Groups of user: %s"
-msgstr ""
+msgstr "Groepen van gebruiker: %s"
 
 #: views.py:188
 #, python-format
 msgid "User \"%s\" created successfully."
-msgstr ""
+msgstr "Gebuiker \"%s\" is succesvol aangemaakt."
 
 #: views.py:213 views.py:284
 msgid "Must provide at least one user."
-msgstr ""
+msgstr "U dient minimaal één gebruiker in te voeren."
 
 #: views.py:230
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
+msgstr "Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
 
 #: views.py:237
 #, python-format
 msgid "User \"%s\" deleted successfully."
-msgstr ""
+msgstr "Gebruiker \"%s\" succesvol verwijderd."
 
 #: views.py:241
 #, python-format
 msgid "Error deleting user \"%(user)s\": %(error)s"
-msgstr ""
+msgstr "Fout tijdens het verwijderen van gebruiker \"%(user)s\": %(error)s"
 
 #: views.py:255
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete the user: %s?"
-msgstr ""
+msgstr "Verwijder de gebruiker: %s?"
 
 #: views.py:257
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete the users: %s?"
-msgstr ""
+msgstr "Verwijder de gebruikers: %s?"
 
 #: views.py:300
 msgid "Passwords do not match, try again."
-msgstr ""
+msgstr "Wachtwoord is niet het zelfde, probeer het opnieuw."
 
 #: views.py:309
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
+msgstr "Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
 
 #: views.py:319
 #, python-format
 msgid "Successfull password reset for user: %s."
-msgstr ""
+msgstr "Succesvol wachtwoord aangepast voor gebruiker: %s"
 
 #: views.py:325
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
+msgstr "Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": %(error)s"
 
 #: views.py:342
 #, python-format
 msgid "Reseting password for user: %s"
-msgstr ""
+msgstr "Wachtwoord aanpassen voor gebruiker: %s"
 
 #: views.py:344
 #, python-format
 msgid "Reseting password for users: %s"
-msgstr ""
+msgstr "Wachtwoord aanpassen voor gebruikers: %s"
 
 #~ msgid ""
 #~ "Super user and staff user editing is not allowed, use the admin interface "
