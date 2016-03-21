@@ -444,9 +444,23 @@ class DocumentTypeEditView(SingleObjectEditView):
         }
 
 
-class DocumentTypeFilenameListView(SingleObjectListView):
-    model = DocumentType
-    view_permission = permission_document_type_view
+class DocumentTypeFilenameCreateView(SingleObjectCreateView):
+    form_class = DocumentTypeFilenameForm_create
+
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_type_edit,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_type_edit, request.user,
+                self.get_document_type()
+            )
+
+        return super(DocumentTypeFilenameCreateView, self).dispatch(
+            request, *args, **kwargs
+        )
 
     def get_document_type(self):
         return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
@@ -454,15 +468,14 @@ class DocumentTypeFilenameListView(SingleObjectListView):
     def get_extra_context(self):
         return {
             'document_type': self.get_document_type(),
-            'hide_link': True,
             'navigation_object_list': ('document_type',),
             'title': _(
-                'Quick labels for document type: %s'
+                'Create quick label for document type: %s'
             ) % self.get_document_type(),
         }
 
-    def get_queryset(self):
-        return self.get_document_type().filenames.all()
+    def get_instance_extra_data(self):
+        return {'document_type': self.get_document_type()}
 
 
 class DocumentTypeFilenameEditView(SingleObjectEditView):
@@ -516,6 +529,27 @@ class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
             'documents:document_type_filename_list',
             args=(self.get_object().document_type.pk,)
         )
+
+
+class DocumentTypeFilenameListView(SingleObjectListView):
+    model = DocumentType
+    view_permission = permission_document_type_view
+
+    def get_document_type(self):
+        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        return {
+            'document_type': self.get_document_type(),
+            'hide_link': True,
+            'navigation_object_list': ('document_type',),
+            'title': _(
+                'Quick labels for document type: %s'
+            ) % self.get_document_type(),
+        }
+
+    def get_queryset(self):
+        return self.get_document_type().filenames.all()
 
 
 class DocumentVersionListView(SingleObjectListView):
@@ -1187,35 +1221,4 @@ def document_print(request, document_id):
         'next': next,
         'title': _('Print: %s') % document,
         'submit_label': _('Submit'),
-    }, context_instance=RequestContext(request))
-
-
-def document_type_filename_create(request, document_type_id):
-    Permission.check_permissions(request.user, (permission_document_type_edit,))
-
-    document_type = get_object_or_404(DocumentType, pk=document_type_id)
-
-    if request.method == 'POST':
-        form = DocumentTypeFilenameForm_create(request.POST)
-        if form.is_valid():
-            try:
-                document_type_filename = DocumentTypeFilename(
-                    document_type=document_type,
-                    filename=form.cleaned_data['filename'],
-                    enabled=True
-                )
-                document_type_filename.save()
-                messages.success(request, _('Document type quick label created successfully'))
-                return HttpResponseRedirect(reverse('documents:document_type_filename_list', args=(document_type_id,)))
-            except Exception as exception:
-                messages.error(request, _('Error creating document type quick label; %(error)s') % {
-                    'error': exception})
-    else:
-        form = DocumentTypeFilenameForm_create()
-
-    return render_to_response('appearance/generic_form.html', {
-        'document_type': document_type,
-        'form': form,
-        'navigation_object_list': ('document_type',),
-        'title': _('Create quick label for document type: %s') % document_type,
     }, context_instance=RequestContext(request))
