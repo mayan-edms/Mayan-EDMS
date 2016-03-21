@@ -729,7 +729,7 @@ def get_document_image(request, document_id, size=setting_preview_size.value):
 
     task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version))
     data = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
-    return HttpResponse(base64.b64decode(data[data.find('base64,') + 6:]), content_type='image')
+    return HttpResponse(base64.b64decode(data.partition('base64,')[2]), content_type='image')
 
 
 def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):
