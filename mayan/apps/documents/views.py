@@ -13,6 +13,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
+from django.views.generic import RedirectView
 
 from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
@@ -286,6 +287,10 @@ class DocumentPageView(SimpleView):
 
     def get_object(self):
         return get_object_or_404(DocumentPage, pk=self.kwargs['pk'])
+
+
+class DocumentPageViewResetView(RedirectView):
+    pattern_name = 'documents:document_page_view'
 
 
 class DocumentPreviewView(SingleObjectDetailView):
@@ -969,10 +974,6 @@ def document_multiple_clear_transformations(request):
             'id_list', request.POST.get('id_list', '')
         ).split(',')
     )
-
-
-def document_page_view_reset(request, document_page_id):
-    return HttpResponseRedirect(reverse('documents:document_page_view', args=(document_page_id,)))
 
 
 def document_page_navigation_next(request, document_page_id):

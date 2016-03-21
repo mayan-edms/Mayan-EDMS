@@ -16,13 +16,14 @@ from .settings import setting_print_size, setting_display_size
 from .views import (
     DeletedDocumentDeleteView, DeletedDocumentDeleteManyView,
     DeletedDocumentListView, DocumentEditView, DocumentListView,
-    DocumentPageView, DocumentPageListView, DocumentPreviewView,
-    DocumentRestoreView, DocumentRestoreManyView, DocumentTrashView,
-    DocumentTrashManyView, DocumentTypeCreateView, DocumentTypeDeleteView,
-    DocumentTypeDocumentListView, DocumentTypeFilenameDeleteView,
-    DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
-    DocumentTypeListView, DocumentTypeEditView, DocumentVersionListView,
-    DocumentView, EmptyTrashCanView, RecentDocumentListView
+    DocumentPageView, DocumentPageListView, DocumentPageViewResetView,
+    DocumentPreviewView, DocumentRestoreView, DocumentRestoreManyView,
+    DocumentTrashView, DocumentTrashManyView, DocumentTypeCreateView,
+    DocumentTypeDeleteView, DocumentTypeDocumentListView,
+    DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
+    DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
+    DocumentVersionListView, DocumentView, EmptyTrashCanView,
+    RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -190,8 +191,8 @@ urlpatterns = patterns(
         'document_page_rotate_left', name='document_page_rotate_left'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/reset/$',
-        'document_page_view_reset', name='document_page_view_reset'
+        r'^page/(?P<pk>\d+)/reset/$', DocumentPageViewResetView.as_view(),
+        name='document_page_view_reset'
     ),
 
     # Admin views
