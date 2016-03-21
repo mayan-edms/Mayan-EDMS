@@ -23,7 +23,8 @@ from .views import (
     DocumentTypeDocumentListView, DocumentTypeFilenameDeleteView,
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView, DocumentTypeEditView, DocumentVersionListView,
-    DocumentView, EmptyTrashCanView, RecentDocumentListView
+    DocumentVersionRevertView, DocumentView, EmptyTrashCanView,
+    RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -130,8 +131,8 @@ urlpatterns = patterns(
         'document_download', name='document_version_download'
     ),
     url(
-        r'^document/version/(?P<document_version_pk>\d+)/revert/$',
-        'document_version_revert', name='document_version_revert'
+        r'^document/version/(?P<pk>\d+)/revert/$',
+        DocumentVersionRevertView.as_view(), name='document_version_revert'
     ),
 
     url(

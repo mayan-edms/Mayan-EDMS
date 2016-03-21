@@ -23,8 +23,8 @@ from ..permissions import (
     permission_document_restore, permission_document_tools,
     permission_document_trash, permission_document_type_create,
     permission_document_type_delete, permission_document_type_edit,
-    permission_document_type_view, permission_document_view,
-    permission_empty_trash
+    permission_document_type_view, permission_document_version_revert,
+    permission_document_view, permission_empty_trash
 )
 
 from .literals import (
@@ -505,9 +505,50 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
         response = self.post('documents:trash_can_empty', follow=True)
 
-        self.assertContains(response, text='emptied successfully', status_code=200)
+        self.assertContains(
+            response, text='emptied successfully', status_code=200
+        )
         self.assertEqual(DeletedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
+
+    def test_document_version_revert_no_permission(self):
+        first_version = self.document.latest_version
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document.new_version(
+                file_object=file_object
+            )
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        response = self.post(
+            'documents:document_version_revert', args=(first_version.pk,)
+        )
+
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(self.document.versions.count(), 2)
+
+    def test_document_version_revert_with_permission(self):
+        first_version = self.document.latest_version
+
+        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
+            self.document.new_version(
+                file_object=file_object
+            )
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(
+            permission_document_version_revert.stored_permission
+        )
+
+        response = self.post(
+            'documents:document_version_revert', args=(first_version.pk,),
+            follow=True
+        )
+
+        self.assertContains(response, 'reverted', status_code=200)
+        self.assertEqual(self.document.versions.count(), 1)
 
 
 class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):

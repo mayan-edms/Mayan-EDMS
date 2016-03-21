@@ -548,6 +548,35 @@ class DocumentVersionListView(SingleObjectListView):
         return self.get_document().versions.order_by('-timestamp')
 
 
+class DocumentVersionRevertView(ConfirmView):
+    object_permission = permission_document_version_revert
+    object_permission_related = 'document'
+
+    def get_extra_context(self):
+        return {
+            'message': _(
+                'All later version after this one will be deleted too.'
+            ),
+            'object': self.get_object().document,
+            'title': _('Revert to this version?'),
+        }
+
+    def get_object(self):
+        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+
+    def view_action(self):
+        try:
+            self.get_object().revert(_user=self.request.user)
+            messages.success(
+                self.request, _('Document version reverted successfully')
+            )
+        except Exception as exception:
+            messages.error(
+                self.request,
+                _('Error reverting document version; %s') % exception
+            )
+
+
 class DocumentView(SingleObjectDetailView):
     form_class = DocumentPropertiesForm
     model = Document
@@ -1189,31 +1218,4 @@ def document_type_filename_create(request, document_type_id):
         'form': form,
         'navigation_object_list': ('document_type',),
         'title': _('Create quick label for document type: %s') % document_type,
-    }, context_instance=RequestContext(request))
-
-
-def document_version_revert(request, document_version_pk):
-    document_version = get_object_or_404(DocumentVersion, pk=document_version_pk)
-
-    try:
-        Permission.check_permissions(request.user, (permission_document_version_revert,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_version_revert, request.user, document_version.document)
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        try:
-            document_version.revert(_user=request.user)
-            messages.success(request, _('Document version reverted successfully'))
-        except Exception as exception:
-            messages.error(request, _('Error reverting document version; %s') % exception)
-
-        return HttpResponseRedirect(previous)
-
-    return render_to_response('appearance/generic_confirm.html', {
-        'previous': previous,
-        'object': document_version.document,
-        'title': _('Revert to this version?'),
-        'message': _('All later version after this one will be deleted too.'),
     }, context_instance=RequestContext(request))
