@@ -753,15 +753,7 @@ class DocumentPage(models.Model):
                 transformation=TransformationZoom(percent=zoom_level)
             )
 
-        page_image = converter.get_page()
-
-        if as_base64:
-            # TODO: don't prepend 'data:%s;base64,%s' part
-            return 'data:%s;base64,%s' % (
-                'image/png', base64.b64encode(page_image.getvalue())
-            )
-        else:
-            return page_image
+        return converter.get_page(as_base64=as_base64)
 
     def invalidate_cache(self):
         cache_storage_backend.delete(self.cache_filename)

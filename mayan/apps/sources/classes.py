@@ -85,13 +85,7 @@ class StagingFile(object):
         for transformation in transformations:
             converter.transform(transformation=transformation)
 
-        image_data = converter.get_page()
-
-        if as_base64:
-            base64_data = base64.b64encode(image_data.read())
-            return 'data:%s;base64,%s' % ('image/png', base64_data)
-        else:
-            return image_data
+        return converter.get_page(as_base64=as_base64)
 
     def delete(self):
         os.unlink(self.get_full_path())

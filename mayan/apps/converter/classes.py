@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import base64
 import logging
 import os
 import tempfile
@@ -168,7 +169,7 @@ class ConverterBase(object):
 
         fs_cleanup(input_filepath)
 
-    def get_page(self, output_format=DEFAULT_FILE_FORMAT):
+    def get_page(self, output_format=DEFAULT_FILE_FORMAT, as_base64=False):
         if not self.image:
             self.seek(0)
 
@@ -183,9 +184,13 @@ class ConverterBase(object):
                     new_mode = 'RGBA'
 
         self.image.convert(new_mode).save(image_buffer, format=output_format)
-        image_buffer.seek(0)
 
-        return image_buffer
+        if as_base64:
+            return 'data:{};base64,{}'.format(Image.MIME[output_format], base64.b64encode(image_buffer.getvalue()))
+        else:
+            image_buffer.seek(0)
+
+            return image_buffer
 
     def convert(self, page_number=DEFAULT_PAGE_NUMBER):
         self.page_number = page_number
