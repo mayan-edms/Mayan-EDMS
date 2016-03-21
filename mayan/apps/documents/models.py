@@ -629,8 +629,8 @@ class DocumentTypeFilename(models.Model):
     class Meta:
         ordering = ('filename',)
         unique_together = ('document_type', 'filename')
-        verbose_name = _('Quick rename template')
-        verbose_name_plural = _('Quick rename templates')
+        verbose_name = _('Quick label')
+        verbose_name_plural = _('Quick labels')
 
     def __str__(self):
         return self.filename
