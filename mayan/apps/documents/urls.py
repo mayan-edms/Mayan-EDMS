@@ -14,16 +14,16 @@ from .api_views import (
 )
 from .settings import setting_print_size, setting_display_size
 from .views import (
-    DeletedDocumentDeleteView, DeletedDocumentDeleteManyView,
-    DeletedDocumentListView, DocumentEditView, DocumentListView,
-    DocumentPageView, DocumentPageListView, DocumentPageViewResetView,
-    DocumentPreviewView, DocumentRestoreView, DocumentRestoreManyView,
-    DocumentTrashView, DocumentTrashManyView, DocumentTypeCreateView,
-    DocumentTypeDeleteView, DocumentTypeDocumentListView,
-    DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
-    DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
-    DocumentVersionListView, DocumentView, EmptyTrashCanView,
-    RecentDocumentListView
+    ClearImageCacheView, DeletedDocumentDeleteView,
+    DeletedDocumentDeleteManyView, DeletedDocumentListView, DocumentEditView,
+    DocumentListView, DocumentPageView, DocumentPageListView,
+    DocumentPageViewResetView, DocumentPreviewView, DocumentRestoreView,
+    DocumentRestoreManyView, DocumentTrashView, DocumentTrashManyView,
+    DocumentTypeCreateView, DocumentTypeDeleteView,
+    DocumentTypeDocumentListView, DocumentTypeFilenameDeleteView,
+    DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
+    DocumentTypeListView, DocumentTypeEditView, DocumentVersionListView,
+    DocumentView, EmptyTrashCanView, RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -145,7 +145,7 @@ urlpatterns = patterns(
         name='document_multiple_clear_transformations'
     ),
     url(
-        r'^cache/clear/$', 'document_clear_image_cache',
+        r'^cache/clear/$', ClearImageCacheView.as_view(),
         name='document_clear_image_cache'
     ),
     url(

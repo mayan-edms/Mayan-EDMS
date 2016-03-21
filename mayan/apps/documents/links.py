@@ -147,8 +147,8 @@ link_clear_image_cache = Link(
     description=_(
         'Clear the graphics representations used to speed up the documents\' '
         'display and interactive transformations results.'
-    ),
-    permissions=(permission_document_tools,), text=_('Clear document cache'),
+    ), permissions=(permission_document_tools,),
+    text=_('Clear document image cache'),
     view='documents:document_clear_image_cache'
 )
 link_trash_can_empty = Link(

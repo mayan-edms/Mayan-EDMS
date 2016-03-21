@@ -62,6 +62,19 @@ from .utils import parse_range
 logger = logging.getLogger(__name__)
 
 
+class ClearImageCacheView(ConfirmView):
+    extra_context = {
+        'title': _('Clear the document image cache?')
+    }
+    view_permission = permission_document_tools
+
+    def view_action(self):
+        task_clear_image_cache.apply_async()
+        messages.success(
+            self.request, _('Document cache clearing queued successfully.')
+        )
+
+
 class DocumentListView(SingleObjectListView):
     extra_context = {
         'hide_links': True,
@@ -1176,23 +1189,6 @@ def document_type_filename_create(request, document_type_id):
         'form': form,
         'navigation_object_list': ('document_type',),
         'title': _('Create quick label for document type: %s') % document_type,
-    }, context_instance=RequestContext(request))
-
-
-def document_clear_image_cache(request):
-    Permission.check_permissions(request.user, (permission_document_tools,))
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        task_clear_image_cache.apply_async()
-        messages.success(request, _('Document cache clearing queued successfully.'))
-
-        return HttpResponseRedirect(previous)
-
-    return render_to_response('appearance/generic_confirm.html', {
-        'previous': previous,
-        'title': _('Clear the document cache?'),
     }, context_instance=RequestContext(request))
 
 
