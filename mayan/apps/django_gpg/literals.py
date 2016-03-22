@@ -7,6 +7,14 @@ KEY_TYPES = {
     'sec': _('Secret'),
 }
 
+KEY_TYPE_PUBLIC = 'pub'
+KEY_TYPE_SECRET = 'sec'
+
+KEY_TYPE_CHOICES = (
+    (KEY_TYPE_PUBLIC, _('Public')),
+    (KEY_TYPE_SECRET, _('Secret')),
+)
+
 KEY_CLASS_RSA = 'RSA'
 KEY_CLASS_DSA = 'DSA'
 KEY_CLASS_ELG = 'ELG-E'

@@ -39,3 +39,15 @@ class KeyDoesNotExist(GPGException):
 
 class KeyImportError(GPGException):
     pass
+
+
+class NeedPassphrase(GPGException):
+    """
+    Passphrase is needed but none was provided
+    """
+
+
+class PassphraseError(GPGException):
+    """
+    Passphrase provided is incorrect
+    """
