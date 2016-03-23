@@ -77,3 +77,4 @@ TEST_SIGNED_FILE = os.path.join(
     settings.BASE_DIR, 'mayan', 'apps', 'django_gpg', 'tests', 'contrib',
     'test_files', 'test_file.txt.gpg'
 )
+TEST_SIGNED_FILE_CONTENT = 'test_file.txt\n'

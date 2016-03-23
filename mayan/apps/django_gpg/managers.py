@@ -10,7 +10,7 @@ import gnupg
 from django.db import models
 
 from .classes import KeyStub, SignatureVerification
-from .exceptions import KeyDoesNotExist, KeyFetchingError
+from .exceptions import DecryptionError, KeyDoesNotExist, KeyFetchingError
 from .literals import KEY_TYPE_PUBLIC, KEY_TYPE_SECRET
 from .settings import setting_gpg_path, setting_keyserver
 
@@ -18,6 +18,26 @@ logger = logging.getLogger(__name__)
 
 
 class KeyManager(models.Manager):
+    def decrypt_file(self, file_object):
+        temporary_directory = tempfile.mkdtemp()
+
+        os.chmod(temporary_directory, 0x1C0)
+
+        gpg = gnupg.GPG(
+            gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
+        )
+
+        decrypt_result = gpg.decrypt_file(file=file_object)
+
+        shutil.rmtree(temporary_directory)
+
+        logger.debug('decrypt_result.__dict__: %s', decrypt_result.__dict__)
+
+        if not decrypt_result.status or decrypt_result.status == 'no data was provided':
+            raise DecryptionError('Unable to decrypt file')
+
+        return str(decrypt_result)
+
     def receive_key(self, key_id):
         temporary_directory = tempfile.mkdtemp()
 

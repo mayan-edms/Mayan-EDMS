@@ -9,7 +9,7 @@ class GPGException(Exception):
     pass
 
 
-class GPGVerificationError(GPGException):
+class VerificationError(GPGException):
     pass
 
 
@@ -17,7 +17,7 @@ class GPGSigningError(GPGException):
     pass
 
 
-class GPGDecryptionError(GPGException):
+class DecryptionError(GPGException):
     pass
 
 
