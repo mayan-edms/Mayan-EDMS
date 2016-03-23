@@ -10,6 +10,7 @@ import gnupg
 from django.db import models
 
 from .classes import KeyStub
+from .exceptions import KeyFetchingError
 from .literals import KEY_TYPE_PUBLIC, KEY_TYPE_SECRET
 from .settings import setting_gpg_path, setting_keyserver
 
@@ -28,11 +29,15 @@ class KeyManager(models.Manager):
 
         import_results = gpg.recv_keys(setting_keyserver.value, key_id)
 
-        key_data = gpg.export_keys(import_results.fingerprints[0])
+        if not import_results.count:
+            shutil.rmtree(temporary_directory)
+            raise KeyFetchingError('No key found')
+        else:
+            key_data = gpg.export_keys(import_results.fingerprints[0])
 
-        shutil.rmtree(temporary_directory)
+            shutil.rmtree(temporary_directory)
 
-        return self.create(key_data=key_data)
+            return self.create(key_data=key_data)
 
     def search(self, query):
         temporary_directory = tempfile.mkdtemp()

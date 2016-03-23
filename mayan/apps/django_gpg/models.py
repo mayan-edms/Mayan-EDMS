@@ -44,9 +44,6 @@ def gpg_command(function):
 @python_2_unicode_compatible
 class Key(models.Model):
     key_data = models.TextField(verbose_name=_('Key data'))
-    key_id = models.CharField(
-        editable=False, max_length=16, unique=True, verbose_name=_('Key ID')
-    )
     creation_date = models.DateField(
         editable=False, verbose_name=_('Creation date')
     )
@@ -103,7 +100,6 @@ class Key(models.Model):
 
         shutil.rmtree(temporary_directory)
 
-        self.key_id = key_info['keyid']
         self.algorithm = key_info['algo']
         self.creation_date = date.fromtimestamp(int(key_info['date']))
         if key_info['expires']:
@@ -147,3 +143,7 @@ class Key(models.Model):
                 raise NeedPassphrase
 
         return file_sign_results
+
+    @property
+    def key_id(self):
+        return self.fingerprint[-8:]

@@ -70,10 +70,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         SourceColumn(source=Key, label=_('Key ID'), attribute='key_id')
         SourceColumn(source=Key, label=_('User ID'), attribute='user_id')
 
-        SourceColumn(
-            source=KeyStub, label=_('ID'),
-            func=lambda context: '...{0}'.format(context['object'].key_id[-16:])
-        )
+        SourceColumn(source=KeyStub, label=_('Key ID'), attribute='key_id')
         SourceColumn(source=KeyStub, label=_('Type'), attribute='key_type')
         SourceColumn(
             source=KeyStub, label=_('Creation date'),

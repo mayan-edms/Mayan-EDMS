@@ -29,9 +29,9 @@ class KeyDetailForm(DetailForm):
                 'widget': forms.widgets.DateInput
             },
             {'label': _('Fingerprint'), 'field': 'fingerprint'},
-            {'label': _('length'), 'field': 'length'},
-            {'label': _('algorithm'), 'field': 'algorithm'},
-            {'label': _('key_type'), 'field': 'key_type'},
+            {'label': _('Length'), 'field': 'length'},
+            {'label': _('Algorithm'), 'field': 'algorithm'},
+            {'label': _('Type'), 'field': lambda x: instance.get_key_type_display()},
         )
 
         kwargs['extra_fields'] = extra_fields

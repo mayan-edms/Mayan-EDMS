@@ -30,7 +30,9 @@ class KeyGenerationError(GPGException):
 
 
 class KeyFetchingError(GPGException):
-    pass
+    """
+    Unable to receive key or key not found
+    """
 
 
 class KeyDoesNotExist(GPGException):
