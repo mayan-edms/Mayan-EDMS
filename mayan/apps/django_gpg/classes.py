@@ -36,3 +36,7 @@ class SignatureVerification(object):
         self.fingerprint = raw['fingerprint']
         self.signature_id = raw['signature_id']
         self.trust_level = raw['trust_level']
+
+    @property
+    def key_id(self):
+        return self.fingerprint[-8:]
