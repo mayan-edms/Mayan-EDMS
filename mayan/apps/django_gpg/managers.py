@@ -10,7 +10,7 @@ import gnupg
 from django.db import models
 
 from .classes import KeyStub
-from .exceptions import KeyFetchingError
+from .exceptions import KeyDoesNotExist, KeyFetchingError
 from .literals import KEY_TYPE_PUBLIC, KEY_TYPE_SECRET
 from .settings import setting_gpg_path, setting_keyserver
 
@@ -62,3 +62,27 @@ class KeyManager(models.Manager):
 
     def private_keys(self):
         return self.filter(key_type=KEY_TYPE_SECRET)
+
+    def verify_file(self, file_object, signature_file=None):
+        temporary_directory = tempfile.mkdtemp()
+
+        gpg = gnupg.GPG(
+            gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
+        )
+
+        verify_result = gpg.verify_file(file=file_object)
+
+        if 'no public key' in verify_result.status:
+            # File is signed but we need the key for full verification
+            try:
+                key = self.get(fingerprint__endswith=verify_result.key_id)
+            except self.model.DoesNotExist:
+                raise KeyDoesNotExist('Signature key is not found in keyring')
+            else:
+                gpg.import_keys(key_data=key.key_data)
+                file_object.seek(0)
+                verify_result = gpg.verify_file(file=file_object)
+
+        shutil.rmtree(temporary_directory)
+
+        return verify_result

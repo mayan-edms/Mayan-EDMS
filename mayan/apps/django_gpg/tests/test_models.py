@@ -2,11 +2,12 @@ from __future__ import unicode_literals
 
 from django.test import TestCase
 
+from ..exceptions import KeyDoesNotExist
 from ..models import Key
 
 from .literals import (
     TEST_KEY_DATA, TEST_KEY_FINGERPRINT, TEST_SEARCH_FINGERPRINT,
-    TEST_SEARCH_UID
+    TEST_SEARCH_UID, TEST_SIGNED_FILE
 )
 
 
@@ -31,3 +32,17 @@ class KeyTestCase(TestCase):
 
         self.assertEqual(Key.objects.all().count(), 1)
         self.assertEqual(Key.objects.first().fingerprint, TEST_SEARCH_FINGERPRINT)
+
+    def test_embedded_verification_no_key(self):
+        with open(TEST_SIGNED_FILE) as signed_file:
+            with self.assertRaises(KeyDoesNotExist):
+                Key.objects.verify_file(signed_file)
+
+    def test_embedded_verification_with_key(self):
+        Key.objects.create(key_data=TEST_KEY_DATA)
+
+        with open(TEST_SIGNED_FILE) as signed_file:
+            result = Key.objects.verify_file(signed_file)
+
+        self.assertTrue(result)
+        self.assertEqual(result.fingerprint, TEST_KEY_FINGERPRINT)

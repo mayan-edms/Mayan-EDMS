@@ -1,11 +1,8 @@
 from __future__ import unicode_literals
 
-TEST_GPG_HOME = '/tmp/test_gpg_home'
-TEST_KEY_FINGERPRINT = '6A24574E0A35004CDDFD22704125E9C571F378AC'
-TEST_KEYSERVERS = ['pool.sks-keyservers.net']
+import os
 
-TEST_SEARCH_UID = 'Roberto Rosario'
-TEST_SEARCH_FINGERPRINT = '607138F1AECC5A5CA31CB7715F3F7F75D210724D'
+from django.conf import settings
 
 TEST_KEY_DATA = '''-----BEGIN PGP PRIVATE KEY BLOCK-----
 Version: GnuPG v1
@@ -69,3 +66,14 @@ h4oCbUV5JHhOyB+89Y1w8haFU9LrgOER2kXff1xU6wMfLdcO5ApV/sRJcNdYL7Cg
 
 TEST_KEY_ID = '4125E9C571F378AC'
 TEST_KEY_FINGERPRINT = '6A24574E0A35004CDDFD22704125E9C571F378AC'
+TEST_KEY_PASSPHRASE = 'testpassphrase'
+
+TEST_KEYSERVERS = ['pool.sks-keyservers.net']
+
+TEST_SEARCH_UID = 'Roberto Rosario'
+TEST_SEARCH_FINGERPRINT = '607138F1AECC5A5CA31CB7715F3F7F75D210724D'
+
+TEST_SIGNED_FILE = os.path.join(
+    settings.BASE_DIR, 'mayan', 'apps', 'django_gpg', 'tests', 'contrib',
+    'test_files', 'test_file.txt.gpg'
+)
