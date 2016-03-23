@@ -9,7 +9,7 @@ import gnupg
 
 from django.db import models
 
-from .classes import KeyStub
+from .classes import KeyStub, SignatureVerification
 from .exceptions import KeyDoesNotExist, KeyFetchingError
 from .literals import KEY_TYPE_PUBLIC, KEY_TYPE_SECRET
 from .settings import setting_gpg_path, setting_keyserver
@@ -63,20 +63,36 @@ class KeyManager(models.Manager):
     def private_keys(self):
         return self.filter(key_type=KEY_TYPE_SECRET)
 
-    def verify_file(self, file_object, signature_file=None):
+    def verify_file(self, file_object, signature_file=None, key_fingerprint=None, all_keys=False):
         temporary_directory = tempfile.mkdtemp()
 
         gpg = gnupg.GPG(
             gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
         )
 
+        # Preload keys
+        if all_keys:
+            for key in Key.objects.all():
+                gpg.import_keys(key_data=key.key_data)
+        elif key_fingerprint:
+            try:
+                key = self.get(fingerprint=key_fingerprint)
+            except self.model.DoesNotExist:
+                shutil.rmtree(temporary_directory)
+                raise KeyDoesNotExist('Specified key for verification not found in keyring')
+            else:
+                gpg.import_keys(key_data=key.key_data)
+
         verify_result = gpg.verify_file(file=file_object)
 
-        if 'no public key' in verify_result.status:
+        logger.debug('verify_result.status: %s', verify_result.status)
+
+        if 'no public key' in verify_result.status and not key_fingerprint and not all_keys:
             # File is signed but we need the key for full verification
             try:
                 key = self.get(fingerprint__endswith=verify_result.key_id)
             except self.model.DoesNotExist:
+                shutil.rmtree(temporary_directory)
                 raise KeyDoesNotExist('Signature key is not found in keyring')
             else:
                 gpg.import_keys(key_data=key.key_data)
@@ -85,4 +101,4 @@ class KeyManager(models.Manager):
 
         shutil.rmtree(temporary_directory)
 
-        return verify_result
+        return SignatureVerification(verify_result.__dict__)

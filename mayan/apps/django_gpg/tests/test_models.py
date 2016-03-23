@@ -46,3 +46,19 @@ class KeyTestCase(TestCase):
 
         self.assertTrue(result)
         self.assertEqual(result.fingerprint, TEST_KEY_FINGERPRINT)
+
+    def test_embedded_verification_with_correct_fingerprint(self):
+        Key.objects.create(key_data=TEST_KEY_DATA)
+
+        with open(TEST_SIGNED_FILE) as signed_file:
+            result = Key.objects.verify_file(signed_file, key_fingerprint=TEST_KEY_FINGERPRINT)
+
+        self.assertTrue(result)
+        self.assertEqual(result.fingerprint, TEST_KEY_FINGERPRINT)
+
+    def test_embedded_verification_with_incorrect_fingerprint(self):
+        Key.objects.create(key_data=TEST_KEY_DATA)
+
+        with open(TEST_SIGNED_FILE) as signed_file:
+            with self.assertRaises(KeyDoesNotExist):
+                Key.objects.verify_file(signed_file, key_fingerprint='999')

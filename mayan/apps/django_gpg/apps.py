@@ -73,19 +73,16 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         SourceColumn(source=KeyStub, label=_('Key ID'), attribute='key_id')
         SourceColumn(source=KeyStub, label=_('Type'), attribute='key_type')
         SourceColumn(
-            source=KeyStub, label=_('Creation date'),
-            func=lambda context: datetime.fromtimestamp(
-                int(context['object'].date)
-            )
+            source=KeyStub, label=_('Creation date'), attribute='date'
         )
         SourceColumn(
             source=KeyStub, label=_('Expiration date'),
-            func=lambda context: datetime.fromtimestamp(int(context['object'].expires)) if context['object'].expires else _('No expiration')
+            func=lambda context: context['object'].expires or _('No expiration')
         )
         SourceColumn(source=KeyStub, label=_('Length'), attribute='length')
         SourceColumn(
             source=KeyStub, label=_('User ID'),
-            func=lambda context: ', '.join(context['object'].uids)
+            func=lambda context: ', '.join(context['object'].user_id)
         )
 
         menu_object.bind_links(links=(link_key_detail,), sources=(Key,))
