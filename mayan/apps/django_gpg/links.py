@@ -10,18 +10,21 @@ from .permissions import (
 )
 
 link_private_keys = Link(
-    icon='fa fa-key', permissions=(permission_key_view,),
-    text=_('Private keys'), view='django_gpg:key_private_list'
+    permissions=(permission_key_view,), text=_('Private keys'),
+    view='django_gpg:key_private_list'
 )
 link_public_keys = Link(
-    icon='fa fa-key', permissions=(permission_key_view,),
-    text=_('Public keys'), view='django_gpg:key_public_list'
+    permissions=(permission_key_view,), text=_('Public keys'),
+    view='django_gpg:key_public_list'
 )
 link_key_delete = Link(
     permissions=(permission_key_delete,), tags='dangerous', text=_('Delete'),
-    view='django_gpg:key_delete', args=('object.fingerprint', 'object.type',)
+    view='django_gpg:key_delete', args=('resolved_object.pk',)
 )
-
+link_key_detail = Link(
+    permissions=(permission_key_view,), text=_('Details'),
+    view='django_gpg:key_detail', args=('resolved_object.pk',)
+)
 link_key_query = Link(
     permissions=(permission_keyserver_query,), text=_('Query keyservers'),
     view='django_gpg:key_query'

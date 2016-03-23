@@ -9,18 +9,20 @@ import tempfile
 import gnupg
 
 from django.core.exceptions import ValidationError
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from .literals import KEY_TYPE_CHOICES, KEY_TYPE_SECRET
 from .exceptions import NeedPassphrase, PassphraseError
-from .settings import setting_gpg_path, setting_keyserver
+from .literals import (
+    ERROR_MSG_NEED_PASSPHRASE, ERROR_MSG_BAD_PASSPHRASE,
+    ERROR_MSG_GOOD_PASSPHRASE, KEY_TYPE_CHOICES, KEY_TYPE_SECRET,
+    OUTPUT_MESSAGE_CONTAINS_PRIVATE_KEY
+)
+from .managers import KeyManager
+from .settings import setting_gpg_path
 
-ERROR_MSG_NEED_PASSPHRASE = 'NEED_PASSPHRASE'
-ERROR_MSG_BAD_PASSPHRASE = 'BAD_PASSPHRASE'
-ERROR_MSG_GOOD_PASSPHRASE = 'GOOD_PASSPHRASE'
-OUTPUT_MESSAGE_CONTAINS_PRIVATE_KEY = 'Contains private key'
 logger = logging.getLogger(__name__)
 
 
@@ -37,45 +39,6 @@ def gpg_command(function):
     shutil.rmtree(temporary_directory)
 
     return result
-
-
-class KeyManager(models.Manager):
-    def receive_key(self, key_id):
-        temporary_directory = tempfile.mkdtemp()
-
-        os.chmod(temporary_directory, 0x1C0)
-
-        gpg = gnupg.GPG(
-            gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
-        )
-
-        import_results = gpg.recv_keys(setting_keyserver.value, key_id)
-
-        key_data = gpg.export_keys(import_results.fingerprints[0])
-
-        shutil.rmtree(temporary_directory)
-
-        return self.create(data=key_data)
-
-    def search(self, query):
-        temporary_directory = tempfile.mkdtemp()
-
-        gpg = gnupg.GPG(
-            gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
-        )
-
-        result = gpg.search_keys(
-            query=query, keyserver=setting_keyserver.value
-        )
-        shutil.rmtree(temporary_directory)
-
-        return result
-
-    def public_keys(self):
-        return self.filter(key_type='pub')
-
-    def private_keys(self):
-        return self.filter(key_type='')
 
 
 @python_2_unicode_compatible
@@ -121,6 +84,9 @@ class Key(models.Model):
 
         if not import_results.count:
             raise ValidationError('Invalid key data')
+
+    def get_absolute_url(self):
+        return reverse('django_gpg:key_detail', args=(self.pk,))
 
     def save(self, *args, **kwargs):
         temporary_directory = tempfile.mkdtemp()

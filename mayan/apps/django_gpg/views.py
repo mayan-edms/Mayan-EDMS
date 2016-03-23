@@ -2,117 +2,77 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.conf import settings
 from django.contrib import messages
-from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
-from django.shortcuts import redirect, render_to_response
-from django.template import RequestContext
+from django.core.urlresolvers import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
-from common.generics import SimpleView, SingleObjectListView
-from permissions import Permission
+from common.generics import (
+    ConfirmView, SimpleView, SingleObjectDeleteView, SingleObjectDetailView,
+    SingleObjectListView
+)
 
-from .api import Key
-from .forms import KeySearchForm
+from .forms import KeyDetailForm, KeySearchForm
+from .models import Key
 from .permissions import (
     permission_key_delete, permission_key_receive, permission_key_view,
     permission_keyserver_query
 )
-from .runtime import gpg
 
 logger = logging.getLogger(__name__)
 
 
-def key_receive(request, key_id):
-    Permission.check_permissions(request.user, (permission_key_receive,))
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        try:
-            gpg.receive_key(key_id=key_id)
-        except Exception as exception:
-            messages.error(
-                request,
-                _('Unable to import key: %(key_id)s; %(error)s') %
-                {
-                    'key_id': key_id,
-                    'error': exception,
-                }
-            )
-            return HttpResponseRedirect(previous)
-        else:
-            messages.success(
-                request,
-                _('Successfully received key: %(key_id)s') %
-                {
-                    'key_id': key_id,
-                }
-            )
-
-            return redirect('django_gpg:key_public_list')
-
-    return render_to_response('appearance/generic_confirm.html', {
-        'message': _('Import key ID: %s?') % key_id,
-        'previous': previous,
-        'title': _('Import key'),
-    }, context_instance=RequestContext(request))
-
-
-class PublicKeyListView(SingleObjectListView):
-    view_permission = permission_key_view
+class KeyDeleteView(SingleObjectDeleteView):
+    model = Key
+    object_permission = permission_key_delete
 
     def get_extra_context(self):
         return {
-            'hide_object': True,
-            'title': self.get_title()
+            'title': _('Delete key'),
+            'message': _(
+                'Delete key %s? If you delete a public key that is part of a '
+                'public/private pair the private key will be deleted as well.'
+            ) % self.get_object(),
         }
 
-    def get_queryset(self):
-        return Key.get_all(gpg)
 
-    def get_title(self):
-        return _('Public keys')
+class KeyDetailView(SingleObjectDetailView):
+    form_class = KeyDetailForm
+    model = Key
+    object_permission = permission_key_view
 
-
-class PrivateKeyListView(PublicKeyListView):
-    def get_title(self):
-        return _('Private keys')
-
-    def get_queryset(self):
-        return Key.get_all(gpg, secret=True)
+    def get_extra_context(self):
+        return {
+            'title': _('Details for key: %s') % self.get_object(),
+        }
 
 
-def key_delete(request, fingerprint, key_type):
-    Permission.check_permissions(request.user, (permission_key_delete,))
+class KeyReceive(ConfirmView):
+    post_action_redirect = reverse_lazy('django_gpg:key_public_list')
+    view_permission = permission_key_receive
 
-    secret = key_type == 'sec'
-    key = Key.get(gpg, fingerprint, secret=secret)
+    def get_extra_context(self):
+        return {
+            'message': _('Import key ID: %s?') % self.kwargs['key_id'],
+            'title': _('Import key'),
+        }
 
-    post_action_redirect = redirect('django_gpg:key_public_list')
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
+    def view_action(self):
         try:
-            gpg.delete_key(key)
-            messages.success(request, _('Key: %s, deleted successfully.') % fingerprint)
-            return HttpResponseRedirect(next)
+            Key.objects.receive_key(key_id=self.kwargs['key_id'])
         except Exception as exception:
-            messages.error(request, exception)
-            return HttpResponseRedirect(previous)
-
-    return render_to_response('appearance/generic_confirm.html', {
-        'title': _('Delete key'),
-        'delete_view': True,
-        'message': _(
-            'Delete key %s? If you delete a public key that is part of a '
-            'public/private pair the private key will be deleted as well.'
-        ) % key,
-        'next': next,
-        'previous': previous,
-    }, context_instance=RequestContext(request))
+            messages.error(
+                self.request,
+                _('Unable to import key: %(key_id)s; %(error)s') % {
+                    'key_id': self.kwargs['key_id'],
+                    'error': exception,
+                }
+            )
+        else:
+            messages.success(
+                self.request, _('Successfully received key: %(key_id)s') % {
+                    'key_id': self.kwargs['key_id'],
+                }
+            )
 
 
 class KeyQueryView(SimpleView):
@@ -149,6 +109,28 @@ class KeyQueryResultView(SingleObjectListView):
     def get_queryset(self):
         term = self.request.GET.get('term')
         if term:
-            return gpg.query(term)
+            return Key.objects.search(query=term)
         else:
             return ()
+
+
+class PublicKeyListView(SingleObjectListView):
+    object_permission = permission_key_view
+    queryset = Key.objects.public_keys()
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'title': _('Public keys')
+        }
+
+
+class PrivateKeyListView(SingleObjectListView):
+    object_permission = permission_key_view
+    queryset = Key.objects.private_keys()
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'title': _('Private keys')
+        }

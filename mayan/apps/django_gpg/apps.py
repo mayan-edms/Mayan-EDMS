@@ -1,18 +1,24 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 from datetime import datetime
 
 from django.utils.translation import ugettext_lazy as _
 
-from common import MayanAppConfig, menu_object, menu_setup, menu_sidebar
+from acls import ModelPermission
+from acls.links import link_acl_list
+from acls.permissions import permission_acl_edit, permission_acl_view
+from common import (
+    MayanAppConfig, menu_facet, menu_object, menu_setup, menu_sidebar
+)
 from common.classes import Package
 from navigation import SourceColumn
 
-from .api import Key, KeyStub
+from .classes import KeyStub
 from .links import (
-    link_key_delete, link_key_query, link_key_receive, link_key_setup,
-    link_public_keys
+    link_key_delete, link_key_detail, link_key_query, link_key_receive,
+    link_key_setup, link_private_keys, link_public_keys
 )
+from .permissions import permission_key_delete, permission_key_view
 
 
 class DjangoGPGApp(MayanAppConfig):
@@ -23,6 +29,15 @@ class DjangoGPGApp(MayanAppConfig):
 
     def ready(self):
         super(DjangoGPGApp, self).ready()
+
+        Key = self.get_model('Key')
+
+        ModelPermission.register(
+            model=Key, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_key_delete, permission_key_view
+            )
+        )
 
         Package(label='python-gnupg', license_text='''
 Copyright (c) 2008-2014 by Vinay Sajip.
@@ -52,11 +67,8 @@ OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF
 ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         ''')
 
-        SourceColumn(source=Key, label=_('ID'), attribute='key_id')
-        SourceColumn(
-            source=Key, label=_('Owner'),
-            func=lambda context: ', '.join(context['object'].uids)
-        )
+        SourceColumn(source=Key, label=_('Key ID'), attribute='key_id')
+        SourceColumn(source=Key, label=_('User ID'), attribute='user_id')
 
         SourceColumn(
             source=KeyStub, label=_('ID'),
@@ -75,17 +87,30 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         )
         SourceColumn(source=KeyStub, label=_('Length'), attribute='length')
         SourceColumn(
-            source=KeyStub, label=_('Identities'),
+            source=KeyStub, label=_('User ID'),
             func=lambda context: ', '.join(context['object'].uids)
         )
 
-        menu_object.bind_links(links=(link_key_delete,), sources=(Key,))
+        menu_object.bind_links(links=(link_key_detail,), sources=(Key,))
         menu_object.bind_links(links=(link_key_receive,), sources=(KeyStub,))
+
+        menu_object.bind_links(
+            links=(link_acl_list, link_key_delete,), sources=(Key,)
+        )
         menu_setup.bind_links(links=(link_key_setup,))
-        menu_sidebar.bind_links(
-            links=(link_public_keys, link_key_query),
+        menu_facet.bind_links(
+            links=(link_private_keys, link_public_keys),
             sources=(
-                'django_gpg:key_delete', 'django_gpg:key_public_list',
-                'django_gpg:key_query', 'django_gpg:key_query_results',
+                'django_gpg:key_public_list', 'django_gpg:key_private_list',
+                'django_gpg:key_query', 'django_gpg:key_query_results', Key,
+                KeyStub
+            )
+        )
+        menu_sidebar.bind_links(
+            links=(link_key_query,),
+            sources=(
+                'django_gpg:key_public_list', 'django_gpg:key_private_list',
+                'django_gpg:key_query', 'django_gpg:key_query_results', Key,
+                KeyStub
             )
         )

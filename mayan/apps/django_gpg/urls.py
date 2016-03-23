@@ -3,14 +3,17 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 
 from .views import (
-    KeyQueryView, KeyQueryResultView, PrivateKeyListView, PublicKeyListView
+    KeyDeleteView, KeyDetailView, KeyQueryView, KeyQueryResultView, KeyReceive,
+    PrivateKeyListView, PublicKeyListView
 )
 
 urlpatterns = patterns(
     'django_gpg.views',
     url(
-        r'^delete/(?P<fingerprint>.+)/(?P<key_type>\w+)/$', 'key_delete',
-        name='key_delete'
+        r'^(?P<pk>\d+)/$', KeyDetailView.as_view(), name='key_detail'
+    ),
+    url(
+        r'^delete/(?P<pk>\d+)/$', KeyDeleteView.as_view(), name='key_delete'
     ),
     url(
         r'^list/private/$', PrivateKeyListView.as_view(),
@@ -24,5 +27,7 @@ urlpatterns = patterns(
         r'^query/results/$', KeyQueryResultView.as_view(),
         name='key_query_results'
     ),
-    url(r'^receive/(?P<key_id>.+)/$', 'key_receive', name='key_receive'),
+    url(
+        r'^receive/(?P<key_id>.+)/$', KeyReceive.as_view(), name='key_receive'
+    ),
 )

@@ -24,7 +24,3 @@ setting_keyserver = namespace.add_setting(
     global_name='SIGNATURES_KEYSERVER', default='pool.sks-keyservers.net',
     help_text=_('Keyserver used to query for keys.')
 )
-setting_keyservers = namespace.add_setting(
-    global_name='SIGNATURES_KEYSERVERS', default=['pool.sks-keyservers.net'],
-    help_text=_('List of keyservers to be queried for unknown keys.')
-)
