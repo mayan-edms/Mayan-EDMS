@@ -6,7 +6,8 @@ import uuid
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
-from django_gpg.runtime import gpg
+from django_gpg.exceptions import DecryptionError
+from django_gpg.models import Key
 from documents.models import DocumentVersion
 
 from .managers import DocumentVersionSignatureManager
@@ -40,9 +41,13 @@ class DocumentVersionSignature(models.Model):
         logger.debug('checking for embedded signature')
 
         with self.document_version.open(raw=True) as file_object:
-            self.has_embedded_signature = gpg.has_embedded_signature(
-                file_object
-            )
+            try:
+                Key.objects.decrypt_file(file_object=file_object)
+            except DecryptionError:
+                self.has_embedded_signature = False
+            else:
+                self.has_embedded_signature = True
+
             self.save()
 
     def delete_detached_signature_file(self):

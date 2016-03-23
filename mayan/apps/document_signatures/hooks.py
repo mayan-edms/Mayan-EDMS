@@ -4,33 +4,37 @@ import io
 import logging
 
 from django.apps import apps
-from django_gpg.exceptions import GPGDecryptionError
-from django_gpg.runtime import gpg
+from django_gpg.exceptions import DecryptionError
 
 logger = logging.getLogger(__name__)
 
 
-def document_pre_open_hook(descriptor, instance):
+def document_pre_open_hook(file_object, instance):
     logger.debug('instance: %s', instance)
 
     DocumentVersionSignature = apps.get_model(
         app_label='document_signatures', model_name='DocumentVersionSignature'
     )
 
+    Key = apps.get_model(
+        app_label='django_gpg', model_name='Key'
+    )
+
     if DocumentVersionSignature.objects.has_embedded_signature(document_version=instance):
         # If it has an embedded signature, decrypt
         try:
-            result = gpg.decrypt_file(descriptor, close_descriptor=False)
+            result = Key.objects.decrypt_file(file_object=file_object)
             # gpg return a string, turn it into a file like object
-        except GPGDecryptionError:
+        except DecryptionError:
             # At least return the original raw content
-            descriptor.seek(0)
-            return descriptor
+            file_object.seek(0)
+            return file_object
         else:
-            descriptor.close()
-            return io.BytesIO(result.data)
+            file_object.close()
+            return io.BytesIO(result)
+            #return result
     else:
-        return descriptor
+        return file_object
 
 
 def document_version_post_save_hook(instance):

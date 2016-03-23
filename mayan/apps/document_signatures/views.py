@@ -10,7 +10,7 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-from django.template.defaultfilters import force_escape
+from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -70,11 +70,9 @@ def document_verify(request, document_pk):
             [
                 _('Signature ID: %s') % signature.signature_id,
                 _('Signature type: %s') % signature_type,
-                _('Key ID: %s') % signature.key_id,
-                _('Timestamp: %s') % datetime.fromtimestamp(
-                    int(signature.sig_timestamp)
-                ),
-                _('Signee: %s') % force_escape(getattr(signature, 'username', '')),
+                _('Key fingerprint: %s') % signature.fingerprint,
+                _('Timestamp: %s') % signature.date,
+                _('Signee: %s') % escape(signature.user_id),
             ]
         )
 

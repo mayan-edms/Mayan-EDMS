@@ -4,8 +4,8 @@ import logging
 
 from django.db import models
 
-from django_gpg.exceptions import GPGVerificationError
-from django_gpg.runtime import gpg
+from django_gpg.exceptions import VerificationError
+from django_gpg.models import Key
 
 logger = logging.getLogger(__name__)
 
@@ -84,8 +84,8 @@ class DocumentVersionSignatureManager(models.Manager):
             args = (document_version_descriptor,)
 
         try:
-            return gpg.verify_file(*args, fetch_key=False)
-        except GPGVerificationError:
+            return Key.objects.verify_file(*args)
+        except VerificationError:
             return None
         finally:
             document_version_descriptor.close()
