@@ -69,7 +69,7 @@
                             {{ option.render }}
                         </div>
                     {% endfor %}
-                {% elif field|widget_type == 'datetimeinput' %}
+                {% elif field|widget_type == 'datetimeinput' or field|widget_type == 'dateinput' %}
                     {% if read_only %}
                         {{ field.value }}
                     {% else %}
