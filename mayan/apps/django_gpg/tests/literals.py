@@ -4,6 +4,16 @@ import os
 
 from django.conf import settings
 
+TEST_DETACHED_SIGNATURE = os.path.join(
+    settings.BASE_DIR, 'mayan', 'apps', 'django_gpg', 'tests', 'contrib',
+    'test_files', 'test_file.txt.asc'
+)
+
+TEST_FILE = os.path.join(
+    settings.BASE_DIR, 'mayan', 'apps', 'django_gpg', 'tests', 'contrib',
+    'test_files', 'test_file.txt'
+)
+
 TEST_KEY_DATA = '''-----BEGIN PGP PRIVATE KEY BLOCK-----
 Version: GnuPG v1
 
