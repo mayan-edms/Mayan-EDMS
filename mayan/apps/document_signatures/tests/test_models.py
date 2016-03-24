@@ -7,10 +7,9 @@ from django.conf import settings
 from django.core.files.base import File
 from django.test import TestCase, override_settings
 
+from django_gpg.models import Key
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
-from django_gpg.literals import SIGNATURE_STATE_VALID
-from django_gpg.runtime import gpg
 
 from ..models import DocumentVersionSignature
 
@@ -39,7 +38,7 @@ class DocumentTestCase(TestCase):
             )
 
         with open(TEST_KEY_FILE) as file_object:
-            gpg.import_key(file_object.read())
+            Key.objects.create(key_data=file_object.read())
 
     def tearDown(self):
         self.document_type.delete()
@@ -60,7 +59,7 @@ class DocumentTestCase(TestCase):
         # Artifical delay since MySQL doesn't store microsecond data in
         # timestamps. Version timestamp is used to determine which version
         # is the latest.
-        time.sleep(1)
+        time.sleep(2)
 
         self.assertEqual(
             DocumentVersionSignature.objects.has_detached_signature(

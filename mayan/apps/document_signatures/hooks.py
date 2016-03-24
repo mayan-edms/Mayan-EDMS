@@ -32,7 +32,6 @@ def document_pre_open_hook(file_object, instance):
         else:
             file_object.close()
             return io.BytesIO(result)
-            #return result
     else:
         return file_object
 
