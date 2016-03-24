@@ -112,7 +112,7 @@ class KeyManager(models.Manager):
                 shutil.rmtree(temporary_directory)
                 raise KeyDoesNotExist('Specified key for verification not found in keyring')
             else:
-                gpg.import_keys(key_data=key.key_data)
+                result = gpg.import_keys(key_data=key.key_data)
 
         if signature_file:
             # Save the original data and invert the argument order
@@ -124,11 +124,12 @@ class KeyManager(models.Manager):
             signature_file_buffer = io.BytesIO()
             signature_file_buffer.write(signature_file.read())
             signature_file_buffer.seek(0)
+            signature_file.seek(0)
             verify_result = gpg.verify_file(
                 file=signature_file_buffer, data_filename=temporary_filename
             )
             signature_file_buffer.close()
-            # TODO: delete file
+            os.unlink(temporary_filename)
         else:
             verify_result = gpg.verify_file(file=file_object)
 
@@ -136,19 +137,10 @@ class KeyManager(models.Manager):
 
         if verify_result:
             shutil.rmtree(temporary_directory)
-            SignatureVerification(verify_result.__dict__)
-        elif verify_result.status == 'no public key' and not (key_fingerprint or all_keys):
-            # File is signed but we need the key for full verification
-            #try:
-            #    key = self.get(fingerprint__endswith=verify_result.key_id)
-            #except self.model.DoesNotExist:
-            #    shutil.rmtree(temporary_directory)
-            #    raise KeyDoesNotExist('Signature key is not found in keyring')
-            #else:
-            #    gpg.import_keys(key_data=key.key_data)
+            return SignatureVerification(verify_result.__dict__)
+        elif verify_result.status == 'no public key' and not (key_fingerprint or all_keys or key_id):
             file_object.seek(0)
-            return self.verify_file(file_object=file_object, signature_file=signature_file, key_id=verify_result.key_id, key_fingerprint=key_fingerprint, all_keys=all_keys)
-            #    verify_result = gpg.verify_file(file=file_object)
+            return self.verify_file(file_object=file_object, signature_file=signature_file, key_id=verify_result.key_id)
         else:
             shutil.rmtree(temporary_directory)
             raise VerificationError('File not signed')

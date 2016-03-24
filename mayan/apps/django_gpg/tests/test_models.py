@@ -47,7 +47,7 @@ class KeyTestCase(TestCase):
         with open(TEST_SIGNED_FILE) as signed_file:
             result = Key.objects.verify_file(signed_file)
 
-        self.assertTrue(result)
+        self.assertTrue(result.valid)
         self.assertEqual(result.fingerprint, TEST_KEY_FINGERPRINT)
 
     def test_embedded_verification_with_correct_fingerprint(self):
@@ -56,7 +56,7 @@ class KeyTestCase(TestCase):
         with open(TEST_SIGNED_FILE) as signed_file:
             result = Key.objects.verify_file(signed_file, key_fingerprint=TEST_KEY_FINGERPRINT)
 
-        self.assertTrue(result)
+        self.assertTrue(result.valid)
         self.assertEqual(result.fingerprint, TEST_KEY_FINGERPRINT)
 
     def test_embedded_verification_with_incorrect_fingerprint(self):
@@ -87,7 +87,7 @@ class KeyTestCase(TestCase):
     def test_detached_verification_no_key(self):
         with open(TEST_DETACHED_SIGNATURE) as signature_file:
             with open(TEST_FILE) as test_file:
-                with self.assertRaises(VerificationError):
+                with self.assertRaises(KeyDoesNotExist):
                     Key.objects.verify_file(file_object=test_file, signature_file=signature_file)
 
     def test_detached_verification_with_key(self):
