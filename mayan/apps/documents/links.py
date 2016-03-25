@@ -18,7 +18,7 @@ from .settings import setting_zoom_max_level, setting_zoom_min_level
 
 
 def is_not_current_version(context):
-    return context['object'].document.latest_version.timestamp != context['object'].timestamp
+    return context['resolved_object'].document.latest_version.timestamp != context['resolved_object'].timestamp
 
 
 def is_first_page(context):
@@ -40,12 +40,12 @@ def is_min_zoom(context):
 # Facet
 link_document_preview = Link(
     icon='fa fa-eye', permissions=(permission_document_view,),
-    text=_('Preview'), view='documents:document_preview', args='object.id'
+    text=_('Preview'), view='documents:document_preview', args='resolved_object.id'
 )
 link_document_properties = Link(
     icon='fa fa-info', permissions=(permission_document_view,),
     text=_('Properties'), view='documents:document_properties',
-    args='object.id'
+    args='resolved_object.id'
 )
 link_document_version_list = Link(
     icon='fa fa-code-fork', permissions=(permission_document_view,),
@@ -61,32 +61,32 @@ link_document_pages = Link(
 link_document_clear_transformations = Link(
     permissions=(permission_transformation_delete,),
     text=_('Clear transformations'),
-    view='documents:document_clear_transformations', args='object.id'
+    view='documents:document_clear_transformations', args='resolved_object.id'
 )
 link_document_delete = Link(
     permissions=(permission_document_delete,), tags='dangerous',
-    text=_('Delete'), view='documents:document_delete', args='object.id'
+    text=_('Delete'), view='documents:document_delete', args='resolved_object.id'
 )
 link_document_trash = Link(
     permissions=(permission_document_trash,), tags='dangerous',
-    text=_('Move to trash'), view='documents:document_trash', args='object.id'
+    text=_('Move to trash'), view='documents:document_trash', args='resolved_object.id'
 )
 link_document_edit = Link(
     permissions=(permission_document_properties_edit,),
     text=_('Edit properties'), view='documents:document_edit',
-    args='object.id'
+    args='resolved_object.id'
 )
 link_document_document_type_edit = Link(
     permissions=(permission_document_properties_edit,), text=_('Change type'),
-    view='documents:document_document_type_edit', args='object.id'
+    view='documents:document_document_type_edit', args='resolved_object.id'
 )
 link_document_download = Link(
     permissions=(permission_document_download,), text=_('Download'),
-    view='documents:document_download', args='object.id'
+    view='documents:document_download', args='resolved_object.id'
 )
 link_document_print = Link(
     permissions=(permission_document_print,), text=_('Print'),
-    view='documents:document_print', args='object.id'
+    view='documents:document_print', args='resolved_object.id'
 )
 link_document_update_page_count = Link(
     permissions=(permission_document_tools,), text=_('Recalculate page count'),
@@ -125,7 +125,7 @@ link_document_multiple_restore = Link(
 )
 link_document_version_download = Link(
     args='object.pk', permissions=(permission_document_download,),
-    text=_('Download'), view='documents:document_version_download'
+    text=_('Download version'), view='documents:document_version_download'
 )
 
 # Views

@@ -322,10 +322,6 @@ class Document(models.Model):
             # Document has no version yet
             return 0
 
-    @property
-    def signature_state(self):
-        return self.latest_version.signature_state
-
 
 class DeletedDocument(Document):
     objects = TrashCanManager()

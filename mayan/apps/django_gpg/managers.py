@@ -39,7 +39,9 @@ class KeyManager(models.Manager):
         if not decrypt_result.status or decrypt_result.status == 'no data was provided':
             raise DecryptionError('Unable to decrypt file')
 
-        return str(decrypt_result)
+        file_object.close()
+
+        return io.BytesIO(str(decrypt_result))
 
     def receive_key(self, key_id):
         temporary_directory = tempfile.mkdtemp()
@@ -109,8 +111,9 @@ class KeyManager(models.Manager):
             try:
                 key = self.get(fingerprint__endswith=key_id)
             except self.model.DoesNotExist:
-                shutil.rmtree(temporary_directory)
-                raise KeyDoesNotExist('Specified key for verification not found in keyring')
+                pass
+                #shutil.rmtree(temporary_directory)
+                #raise KeyDoesNotExist('Specified key for verification not found in keyring')
             else:
                 result = gpg.import_keys(key_data=key.key_data)
 
@@ -135,12 +138,17 @@ class KeyManager(models.Manager):
 
         logger.debug('verify_result.status: %s', verify_result.status)
 
+        shutil.rmtree(temporary_directory)
+
         if verify_result:
-            shutil.rmtree(temporary_directory)
+            # Signed and key present
             return SignatureVerification(verify_result.__dict__)
         elif verify_result.status == 'no public key' and not (key_fingerprint or all_keys or key_id):
+            # Signed but key not present, retry with key fetch
             file_object.seek(0)
             return self.verify_file(file_object=file_object, signature_file=signature_file, key_id=verify_result.key_id)
+        elif verify_result.key_id:
+            # Signed, retried and key still not found
+            return SignatureVerification(verify_result.__dict__)
         else:
-            shutil.rmtree(temporary_directory)
             raise VerificationError('File not signed')
