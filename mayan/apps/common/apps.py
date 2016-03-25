@@ -61,6 +61,8 @@ class MayanAppConfig(apps.AppConfig):
                 'App %s doesn\'t have URLs defined. Exception: %s', self.name,
                 exception
             )
+            if 'No module named urls' not in unicode(exception):
+                raise exception
 
 
 class CommonApp(MayanAppConfig):
