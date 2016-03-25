@@ -24,8 +24,9 @@ class SignatureVerification(object):
     def __init__(self, raw):
         self.user_id = raw['username']
         self.status = raw['status']
+        self.key_id = raw['key_id']
         self.pubkey_fingerprint = raw['pubkey_fingerprint']
-        self.date = date.fromtimestamp(int(raw['sig_timestamp']))
+        self.date = date.fromtimestamp(int(raw['timestamp']))
         if raw['expire_timestamp']:
             self.expires = date.fromtimestamp(int(raw['expire_timestamp']))
         else:
@@ -36,7 +37,3 @@ class SignatureVerification(object):
         self.fingerprint = raw['fingerprint']
         self.signature_id = raw['signature_id']
         self.trust_level = raw['trust_level']
-
-    @property
-    def key_id(self):
-        return self.fingerprint[-8:]
