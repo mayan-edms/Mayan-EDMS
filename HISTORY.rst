@@ -27,6 +27,7 @@
 - More tests added.
 - Handle unicode filenames in staging folders.
 - Add staging file deletion permission.
+- New document_signature_view permission.
 
 2.0.2 (2016-02-09)
 ==================

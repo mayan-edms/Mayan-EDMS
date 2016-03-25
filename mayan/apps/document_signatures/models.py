@@ -1,16 +1,21 @@
 from __future__ import unicode_literals
 
+from datetime import date
 import logging
 import uuid
 
+from django.core.urlresolvers import reverse
 from django.db import models
+from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from django_gpg.exceptions import DecryptionError
+from model_utils.managers import InheritanceManager
+
+from django_gpg.exceptions import DecryptionError, VerificationError
 from django_gpg.models import Key
 from documents.models import DocumentVersion
 
-from .managers import DocumentVersionSignatureManager
+from .managers import EmbeddedSignatureManager, DetachedSignatureManager
 from .runtime import storage_backend
 
 logger = logging.getLogger(__name__)
@@ -20,39 +25,71 @@ def upload_to(*args, **kwargs):
     return unicode(uuid.uuid4())
 
 
-class DocumentVersionSignature(models.Model):
-    """
-    Model that describes a document version signature properties
-    """
+@python_2_unicode_compatible
+class SignatureBaseModel(models.Model):
     document_version = models.ForeignKey(
-        DocumentVersion, editable=False, verbose_name=_('Document version')
+        DocumentVersion, editable=False, related_name='signatures',
+        verbose_name=_('Document version')
     )
-    signature_file = models.FileField(
-        blank=True, null=True, storage=storage_backend, upload_to=upload_to,
-        verbose_name=_('Signature file')
+    # Basic fields
+    date = models.DateField(
+        blank=True, editable=False, null=True, verbose_name=_('Date signed')
     )
-    has_embedded_signature = models.BooleanField(
-        default=False, verbose_name=_('Has embedded signature')
+    key_id = models.CharField(max_length=40, verbose_name=_('Key ID'))
+    # With proper key
+    signature_id = models.CharField(
+        blank=True, editable=False, null=True, max_length=64,
+        verbose_name=_('Signature ID')
+    )
+    public_key_fingerprint = models.CharField(
+        blank=True, editable=False, null=True, max_length=40, unique=True,
+        verbose_name=_('Public key fingerprint')
     )
 
-    objects = DocumentVersionSignatureManager()
-
-    def check_for_embedded_signature(self):
-        logger.debug('checking for embedded signature')
-
-        with self.document_version.open(raw=True) as file_object:
-            try:
-                Key.objects.decrypt_file(file_object=file_object)
-            except DecryptionError:
-                self.has_embedded_signature = False
-            else:
-                self.has_embedded_signature = True
-
-            self.save()
-
-    def delete_detached_signature_file(self):
-        self.signature_file.storage.delete(self.signature_file.name)
+    objects = InheritanceManager()
 
     class Meta:
         verbose_name = _('Document version signature')
         verbose_name_plural = _('Document version signatures')
+
+    def __str__(self):
+        return self.signature_id or '{} - {}'.format(self.date, self.key_id)
+
+    def get_absolute_url(self):
+        return reverse(
+            'document_signatures:document_version_signature_detail',
+            args=(self.pk,)
+        )
+
+    @property
+    def is_detached(self):
+        return hasattr(self, 'signature_file')
+
+    @property
+    def is_embedded(self):
+        return not hasattr(self, 'signature_file')
+
+
+class EmbeddedSignature(SignatureBaseModel):
+    objects = EmbeddedSignatureManager()
+
+    class Meta:
+        verbose_name = _('Document version embedded signature')
+        verbose_name_plural = _('Document version embedded signatures')
+
+
+class DetachedSignature(SignatureBaseModel):
+    signature_file = models.FileField(
+        blank=True, null=True, storage=storage_backend, upload_to=upload_to,
+        verbose_name=_('Signature file')
+    )
+
+    objects = DetachedSignatureManager()
+
+    class Meta:
+        verbose_name = _('Document version detached signature')
+        verbose_name_plural = _('Document version detached signatures')
+
+    def delete(self, *args, **kwargs):
+        self.signature_file.storage.delete(self.signature_file.name)
+        super(DetachedSignature, self).delete(*args, **kwargs)

@@ -4,73 +4,66 @@ import logging
 
 from django.db import models
 
-from django_gpg.exceptions import VerificationError
+from django_gpg.exceptions import DecryptionError, VerificationError
 from django_gpg.models import Key
 
 logger = logging.getLogger(__name__)
 
 
-class DocumentVersionSignatureManager(models.Manager):
-    def get_document_signature(self, document_version):
-        document_signature, created = self.model.objects.get_or_create(
-            document_version=document_version,
-        )
-
-        return document_signature
-
-    def add_detached_signature(self, document_version, detached_signature):
-        document_signature = self.get_document_signature(
-            document_version=document_version
-        )
-
-        if document_signature.has_embedded_signature:
-            raise Exception(
-                'Document version already has an embedded signature'
-            )
-        else:
-            if document_signature.signature_file:
-                logger.debug('Existing detached signature')
-                document_signature.delete_detached_signature_file()
-                document_signature.signature_file = None
-                document_signature.save()
-
-            document_signature.signature_file = detached_signature
-            document_signature.save()
-
-    def has_detached_signature(self, document_version):
-        try:
-            document_signature = self.get_document_signature(
-                document_version=document_version
-            )
-        except ValueError:
-            return False
-        else:
-            if document_signature.signature_file:
-                return True
+class DetachedSignatureManager(models.Manager):
+    def upload_signature(self, document_version, signature_file):
+        with document_version.open() as file_object:
+            try:
+                verify_result = Key.objects.verify_file(
+                    file_object=file_object, signature_file=signature_file
+                )
+            except VerificationError:
+                # Not signed
+                pass
             else:
-                return False
+                instance = self.create(
+                    document_version=document_version,
+                    date=verify_result.date,
+                    key_id=verify_result.key_id,
+                    signature_id=verify_result.signature_id,
+                    public_key_fingerprint=verify_result.pubkey_fingerprint,
+                )
 
-    def has_embedded_signature(self, document_version):
-        logger.debug('document_version: %s', document_version)
 
-        try:
-            document_signature = self.get_document_signature(
-                document_version=document_version
-            )
-        except ValueError:
-            return False
+class EmbeddedSignatureManager(models.Manager):
+    def check_signature(self, document_version):
+        logger.debug('checking for embedded signature')
+
+        with document_version.open() as file_object:
+            try:
+                verify_result = Key.objects.verify_file(file_object=file_object)
+            except VerificationError:
+                # Not signed
+                pass
+            else:
+                instance = self.create(
+                    document_version=document_version,
+                    date=verify_result.date,
+                    key_id=verify_result.key_id,
+                    signature_id=verify_result.signature_id,
+                    public_key_fingerprint=verify_result.pubkey_fingerprint,
+                )
+
+    def open_signed(self, file_object, document_version):
+        for signature in self.filter(document_version=document_version):
+            try:
+                return self.open_signed(
+                    file_object=Key.objects.decrypt_file(
+                        file_object=file_object
+                    ), document_version=document_version
+                )
+            except DecryptionError:
+                file_object.seek(0)
+                return file_object
         else:
-            return document_signature.has_embedded_signature
+            return file_object
 
-    def detached_signature(self, document_version):
-        document_signature = self.get_document_signature(
-            document_version=document_version
-        )
-
-        return document_signature.signature_file.storage.open(
-            document_signature.signature_file.name
-        )
-
+    """
     def verify_signature(self, document_version):
         document_version_descriptor = document_version.open(raw=True)
         detached_signature = None
@@ -91,14 +84,4 @@ class DocumentVersionSignatureManager(models.Manager):
             document_version_descriptor.close()
             if detached_signature:
                 detached_signature.close()
-
-    def clear_detached_signature(self, document_version):
-        document_signature = self.get_document_signature(
-            document_version=document_version
-        )
-        if not document_signature.signature_file:
-            raise Exception('document doesn\'t have a detached signature')
-
-        document_signature.delete_detached_signature_file()
-        document_signature.signature_file = None
-        document_signature.save()
+    """

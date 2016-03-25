@@ -4,14 +4,13 @@ import os
 import time
 
 from django.conf import settings
-from django.core.files.base import File
 from django.test import TestCase, override_settings
 
 from django_gpg.models import Key
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
-from ..models import DocumentVersionSignature
+from ..models import DetachedSignature, EmbeddedSignature
 
 TEST_SIGNED_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg'
@@ -23,6 +22,7 @@ TEST_KEY_FILE = os.path.join(
     settings.BASE_DIR, 'contrib', 'sample_documents',
     'key0x5F3F7F75D210724D.asc'
 )
+TEST_KEY_ID = '5F3F7F75D210724D'
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -32,28 +32,82 @@ class DocumentTestCase(TestCase):
             label=TEST_DOCUMENT_TYPE
         )
 
-        with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=File(file_object), label='mayan_11_1.pdf'
-            )
-
-        with open(TEST_KEY_FILE) as file_object:
-            Key.objects.create(key_data=file_object.read())
-
     def tearDown(self):
         self.document_type.delete()
 
-    def test_document_no_signature(self):
-        self.assertEqual(
-            DocumentVersionSignature.objects.has_detached_signature(
-                self.document.latest_version
-            ), False
-        )
-
-    def test_new_document_version_signed(self):
+    def test_embedded_signature(self):
         with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
-            self.document.new_version(
-                file_object=File(file_object), comment='test comment 1'
+            signed_document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        self.assertEqual(EmbeddedSignature.objects.count(), 1)
+
+        signature = EmbeddedSignature.objects.first()
+
+        self.assertEqual(
+            signature.document_version, signed_document.latest_version
+        )
+        self.assertEqual(signature.key_id, TEST_KEY_ID)
+
+    def test_embedded_signature_with_key(self):
+        with open(TEST_KEY_FILE) as file_object:
+            key = Key.objects.create(key_data=file_object.read())
+
+        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+            self.signed_document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        self.assertEqual(EmbeddedSignature.objects.count(), 1)
+
+        signature = EmbeddedSignature.objects.first()
+
+        self.assertEqual(
+            signature.document_version,
+            self.signed_document.latest_version
+        )
+        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.public_key_fingerprint, key.fingerprint)
+
+    def test_detached_signature(self):
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+            DetachedSignature.objects.upload_signature(
+                document_version=document.latest_version,
+                signature_file=file_object
+            )
+
+        self.assertEqual(DetachedSignature.objects.count(), 1)
+        self.assertEqual(
+            DetachedSignature.objects.first().document_version,
+            document.latest_version
+        )
+        self.assertEqual(DetachedSignature.objects.first().key_id, TEST_KEY_ID)
+
+    # TODO: test_verify_signature_after_new_key(self):
+
+    def test_document_no_signature(self):
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        self.assertEqual(EmbeddedSignature.objects.count(), 0)
+
+    def test_new_signed_version(self):
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+            signed_version = document.new_version(
+                file_object=file_object, comment='test comment 1'
             )
 
         # Artifical delay since MySQL doesn't store microsecond data in
@@ -61,40 +115,9 @@ class DocumentTestCase(TestCase):
         # is the latest.
         time.sleep(2)
 
-        self.assertEqual(
-            DocumentVersionSignature.objects.has_detached_signature(
-                self.document.latest_version
-            ), False
-        )
-        self.assertEqual(
-            DocumentVersionSignature.objects.verify_signature(
-                self.document.latest_version
-            ).status, SIGNATURE_STATE_VALID
-        )
+        self.assertEqual(EmbeddedSignature.objects.count(), 1)
 
-    def test_detached_signatures(self):
-        with open(TEST_DOCUMENT_PATH) as file_object:
-            self.document.new_version(
-                file_object=File(file_object), comment='test comment 2'
-            )
+        signature = EmbeddedSignature.objects.first()
 
-        # GPGVerificationError
-        self.assertEqual(DocumentVersionSignature.objects.verify_signature(
-            self.document.latest_version), None
-        )
-
-        with open(TEST_SIGNATURE_FILE_PATH, 'rb') as file_object:
-            DocumentVersionSignature.objects.add_detached_signature(
-                self.document.latest_version, File(file_object)
-            )
-
-        self.assertEqual(
-            DocumentVersionSignature.objects.has_detached_signature(
-                self.document.latest_version
-            ), True
-        )
-        self.assertEqual(
-            DocumentVersionSignature.objects.verify_signature(
-                self.document.latest_version
-            ).status, SIGNATURE_STATE_VALID
-        )
+        self.assertEqual(signature.document_version, signed_version)
+        self.assertEqual(signature.key_id, TEST_KEY_ID)

@@ -2,9 +2,9 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import DocumentVersionSignature
+#from .models import DocumentVersionSignature
 
-
+"""
 @admin.register(DocumentVersionSignature)
 class DocumentVersionSignatureAdmin(admin.ModelAdmin):
     def document(self, instance):
@@ -20,3 +20,4 @@ class DocumentVersionSignatureAdmin(admin.ModelAdmin):
     )
     list_display_links = ('document_version',)
     search_fields = ('document_version__document__label',)
+"""
