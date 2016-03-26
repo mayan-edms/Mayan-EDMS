@@ -18,7 +18,7 @@ from .settings import setting_zoom_max_level, setting_zoom_min_level
 
 
 def is_not_current_version(context):
-    return context['resolved_object'].document.latest_version.timestamp != context['resolved_object'].timestamp
+    return context['object'].document.latest_version.timestamp != context['object'].timestamp
 
 
 def is_first_page(context):
@@ -40,7 +40,8 @@ def is_min_zoom(context):
 # Facet
 link_document_preview = Link(
     icon='fa fa-eye', permissions=(permission_document_view,),
-    text=_('Preview'), view='documents:document_preview', args='resolved_object.id'
+    text=_('Preview'), view='documents:document_preview',
+    args='resolved_object.id'
 )
 link_document_properties = Link(
     icon='fa fa-info', permissions=(permission_document_view,),
@@ -50,7 +51,7 @@ link_document_properties = Link(
 link_document_version_list = Link(
     icon='fa fa-code-fork', permissions=(permission_document_view,),
     text=_('Versions'), view='documents:document_version_list',
-    args='object.pk'
+    args='resolved_object.pk'
 )
 link_document_pages = Link(
     icon='fa fa-files-o', permissions=(permission_document_view,),
@@ -65,11 +66,13 @@ link_document_clear_transformations = Link(
 )
 link_document_delete = Link(
     permissions=(permission_document_delete,), tags='dangerous',
-    text=_('Delete'), view='documents:document_delete', args='resolved_object.id'
+    text=_('Delete'), view='documents:document_delete',
+    args='resolved_object.id'
 )
 link_document_trash = Link(
     permissions=(permission_document_trash,), tags='dangerous',
-    text=_('Move to trash'), view='documents:document_trash', args='resolved_object.id'
+    text=_('Move to trash'), view='documents:document_trash',
+    args='resolved_object.id'
 )
 link_document_edit = Link(
     permissions=(permission_document_properties_edit,),
@@ -89,8 +92,9 @@ link_document_print = Link(
     view='documents:document_print', args='resolved_object.id'
 )
 link_document_update_page_count = Link(
-    permissions=(permission_document_tools,), text=_('Recalculate page count'),
-    view='documents:document_update_page_count', args='object.pk'
+    args='resolved_object.pk', permissions=(permission_document_tools,),
+    text=_('Recalculate page count'),
+    view='documents:document_update_page_count'
 )
 link_document_restore = Link(
     permissions=(permission_document_restore,), text=_('Restore'),
@@ -124,7 +128,7 @@ link_document_multiple_restore = Link(
     text=_('Restore'), view='documents:document_multiple_restore'
 )
 link_document_version_download = Link(
-    args='object.pk', permissions=(permission_document_download,),
+    args='resolved_object.pk', permissions=(permission_document_download,),
     text=_('Download version'), view='documents:document_version_download'
 )
 

@@ -9,8 +9,6 @@ from .permissions import (
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
-    permission_document_version_signature_verify,
-    permission_document_version_signature_view
 )
 
 
@@ -51,12 +49,7 @@ link_document_version_signature_download = Link(
 )
 link_document_version_signature_upload = Link(
     #permissions=(permission_document_version_signature_upload,),
-    text=_('Upload signature'), view='signatures:document_version_signature_upload',
-    args='resolved_object.pk'
-)
-link_document_version_signature_verify = Link(
-    icon='fa fa-certificate',
-    #permissions=(permission_document_version_signature_verify,),
-    text=_('Verify signatures'), view='signatures:document_verify',
+    text=_('Upload signature'),
+    view='signatures:document_version_signature_upload',
     args='resolved_object.pk'
 )

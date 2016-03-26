@@ -23,13 +23,11 @@ from .links import (
     link_document_version_signature_download,
     link_document_version_signature_list,
     link_document_version_signature_upload,
-    link_document_version_signature_verify
 )
 from .permissions import (
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
-    permission_document_version_signature_verify,
     permission_document_version_signature_view,
 )
 
@@ -75,7 +73,6 @@ class DocumentSignaturesApp(MayanAppConfig):
             model=Document, permissions=(
                 permission_document_version_signature_delete,
                 permission_document_version_signature_download,
-                permission_document_version_signature_verify,
                 permission_document_version_signature_view,
                 permission_document_version_signature_upload,
             )
@@ -143,7 +140,6 @@ class DocumentSignaturesApp(MayanAppConfig):
         menu_sidebar.bind_links(
             links=(
                 link_document_version_signature_upload,
-                link_document_version_signature_verify,
             ), sources=(DocumentVersion,)
         )
         post_delete.connect(

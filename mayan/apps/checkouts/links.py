@@ -45,5 +45,6 @@ link_checkout_info = Link(
     icon='fa fa-shopping-cart', permissions=(
         permission_document_checkin, permission_document_checkin_override,
         permission_document_checkout
-    ), text=_('Check in/out'), view='checkouts:checkout_info', args='object.pk'
+    ), text=_('Check in/out'), view='checkouts:checkout_info',
+    args='resolved_object.pk'
 )

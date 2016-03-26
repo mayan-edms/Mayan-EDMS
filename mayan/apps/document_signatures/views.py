@@ -26,7 +26,6 @@ from .forms import DetachedSignatureForm, DocumentVersionSignatureDetailForm
 from .models import DetachedSignature, SignatureBaseModel
 from .permissions import (
     permission_document_version_signature_view,
-    permission_document_version_signature_verify,
     permission_document_version_signature_upload,
     permission_document_version_signature_download,
     permission_document_version_signature_delete

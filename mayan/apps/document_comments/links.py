@@ -19,5 +19,6 @@ link_comment_delete = Link(
 )
 link_comments_for_document = Link(
     icon='fa fa-comment', permissions=(permission_comment_view,),
-    text=_('Comments'), view='comments:comments_for_document', args='object.pk'
+    text=_('Comments'), view='comments:comments_for_document',
+    args='resolved_object.pk'
 )

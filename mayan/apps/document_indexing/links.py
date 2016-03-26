@@ -16,7 +16,7 @@ def is_not_root_node(context):
 
 link_document_index_list = Link(
     icon='fa fa-list-ul', text=_('Indexes'),
-    view='indexing:document_index_list', args='object.pk'
+    view='indexing:document_index_list', args='resolved_object.pk'
 )
 link_index_main_menu = Link(
     icon='fa fa-list-ul', text=_('Indexes'), view='indexing:index_list'

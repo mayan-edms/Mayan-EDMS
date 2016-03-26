@@ -75,10 +75,9 @@ link_staging_file_delete = Link(
     args=('source.pk', 'object.encoded_filename',)
 )
 link_upload_version = Link(
-    condition=document_new_version_not_blocked,
+    args='resolved_object.pk', condition=document_new_version_not_blocked,
     permissions=(permission_document_new_version,),
     text=_('Upload new version'), view='sources:upload_version',
-    args='object.pk'
 )
 link_setup_source_logs = Link(
     text=_('Logs'), view='sources:setup_source_logs',

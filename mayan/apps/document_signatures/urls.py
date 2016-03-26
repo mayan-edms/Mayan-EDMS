@@ -25,10 +25,6 @@ urlpatterns = patterns(
         name='document_version_signature_list'
     ),
     url(
-        r'^documents/version/(?P<document_pk>\d+)/signature/verify/$',
-        'document_verify', name='document_version_signature_verify'
-    ),
-    url(
         r'^documents/version/(?P<pk>\d+)/signature/upload/$',
         'document_version_signature_upload',
         name='document_version_signature_upload'

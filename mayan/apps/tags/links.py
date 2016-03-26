@@ -38,7 +38,7 @@ link_tag_edit = Link(
 )
 link_tag_document_list = Link(
     icon='fa fa-tag', permissions=(permission_tag_view,), text=_('Tags'),
-    view='tags:document_tags', args='object.pk'
+    view='tags:document_tags', args='resolved_object.pk'
 )
 link_tag_list = Link(icon='fa fa-tag', text=_('Tags'), view='tags:tag_list')
 link_tag_multiple_delete = Link(

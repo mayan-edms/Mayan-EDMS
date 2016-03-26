@@ -36,7 +36,7 @@ link_metadata_remove = Link(
 )
 link_metadata_view = Link(
     icon='fa fa-pencil', permissions=(permission_metadata_document_view,),
-    text=_('Metadata'), view='metadata:metadata_view', args='object.pk'
+    text=_('Metadata'), view='metadata:metadata_view', args='resolved_object.pk'
 )
 link_setup_document_type_metadata = Link(
     permissions=(permission_document_type_edit,), text=_('Optional metadata'),

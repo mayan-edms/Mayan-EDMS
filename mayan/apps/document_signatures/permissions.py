@@ -12,10 +12,6 @@ permission_document_version_signature_view = namespace.add_permission(
     name='document_version_signature_view',
     label=_('View details of document signatures')
 )
-permission_document_version_signature_verify = namespace.add_permission(
-    name='document_version_signature_verify',
-    label=_('Verify document signatures')
-)
 permission_document_version_signature_delete = namespace.add_permission(
     name='document_version_signature_delete',
     label=_('Delete detached signatures')
