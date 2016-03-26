@@ -1,7 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from datetime import datetime
-
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission

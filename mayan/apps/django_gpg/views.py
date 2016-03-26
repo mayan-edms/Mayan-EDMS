@@ -28,9 +28,9 @@ class KeyDeleteView(SingleObjectDeleteView):
 
     def get_post_action_redirect(self):
         if self.get_object().key_type == KEY_TYPE_PUBLIC:
-            post_action_redirect = reverse_lazy('django_gpg:key_public_list')
+            return reverse_lazy('django_gpg:key_public_list')
         else:
-            post_action_redirect = reverse_lazy('django_gpg:key_private_list')
+            return reverse_lazy('django_gpg:key_private_list')
 
     def get_extra_context(self):
         return {

@@ -21,4 +21,3 @@ class EmbeddedSignatureAdmin(admin.ModelAdmin):
         'public_key_fingerprint'
     )
     list_display_links = ('document_version',)
-

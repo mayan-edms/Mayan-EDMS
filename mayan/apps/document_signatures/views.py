@@ -40,7 +40,7 @@ class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
 
     def get_extra_context(self):
         return {
-            'document':  self.get_object().document_version.document,
+            'document': self.get_object().document_version.document,
             'document_version': self.get_object().document_version,
             'navigation_object_list': ('document', 'document_version', 'signature'),
             'signature': self.get_object(),
@@ -103,62 +103,6 @@ class DocumentVersionSignatureListView(SingleObjectListView):
             return queryset
 
 
-def document_verify(request, document_pk):
-    document = get_object_or_404(Document, pk=document_pk)
-
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_verify,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_verify, request.user, document
-        )
-
-    document.add_as_recent_document_for_user(request.user)
-
-    try:
-        signature = DocumentVersionSignature.objects.verify_signature(
-            document.latest_version
-        )
-    except AttributeError:
-        signature_state = SIGNATURE_STATES.get(SIGNATURE_STATE_NONE)
-        signature = None
-    else:
-        signature_state = SIGNATURE_STATES.get(
-            getattr(signature, 'status', None)
-        )
-
-    paragraphs = [_('Signature status: %s') % signature_state['text']]
-
-    try:
-        if DocumentVersionSignature.objects.has_embedded_signature(document.latest_version):
-            signature_type = _('Embedded')
-        else:
-            signature_type = _('Detached')
-    except ValueError:
-        signature_type = _('None')
-
-    if signature:
-        paragraphs.extend(
-            [
-                _('Signature ID: %s') % signature.signature_id,
-                _('Signature type: %s') % signature_type,
-                _('Key fingerprint: %s') % signature.fingerprint,
-                _('Timestamp: %s') % signature.date,
-                _('Signee: %s') % escape(signature.user_id),
-            ]
-        )
-
-    return render_to_response('appearance/generic_template.html', {
-        'document': document,
-        'object': document,
-        'paragraphs': paragraphs,
-        'title': _('Signature properties for document: %s') % document,
-    }, context_instance=RequestContext(request))
-
-
-
 def document_version_signature_upload(request, pk):
     document_version = get_object_or_404(DocumentVersion, pk=pk)
 
@@ -181,7 +125,7 @@ def document_version_signature_upload(request, pk):
         form = DetachedSignatureForm(request.POST, request.FILES)
         if form.is_valid():
             try:
-                DetachedSignature.objects.upload_signature(
+                DetachedSignature.objects.create(
                     document_version=document_version,
                     signature_file=request.FILES['file']
                 )

@@ -1,6 +1,6 @@
 __all__ = (
-    'GPGException', 'GPGVerificationError', 'GPGSigningError',
-    'GPGDecryptionError', 'KeyDeleteError', 'KeyGenerationError',
+    'GPGException', 'VerificationError', 'SigningError',
+    'DecryptionError', 'KeyDeleteError', 'KeyGenerationError',
     'KeyFetchingError', 'KeyDoesNotExist', 'KeyImportError'
 )
 
@@ -13,7 +13,7 @@ class VerificationError(GPGException):
     pass
 
 
-class GPGSigningError(GPGException):
+class SigningError(GPGException):
     pass
 
 

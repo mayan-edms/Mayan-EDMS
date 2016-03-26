@@ -4,6 +4,7 @@ import os
 import time
 
 from django.conf import settings
+from django.core.files import File
 from django.test import TestCase, override_settings
 
 from django_gpg.models import Key
@@ -23,10 +24,11 @@ TEST_KEY_FILE = os.path.join(
     'key0x5F3F7F75D210724D.asc'
 )
 TEST_KEY_ID = '5F3F7F75D210724D'
+TEST_SIGNATURE_ID = 'XVkoGKw35yU1iq11dZPiv7uAY7k'
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentTestCase(TestCase):
+class DocumentSignaturesTestCase(TestCase):
     def setUp(self):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
@@ -35,7 +37,7 @@ class DocumentTestCase(TestCase):
     def tearDown(self):
         self.document_type.delete()
 
-    def test_embedded_signature(self):
+    def test_embedded_signature_no_key(self):
         with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
             signed_document = self.document_type.new_document(
                 file_object=file_object
@@ -49,6 +51,55 @@ class DocumentTestCase(TestCase):
             signature.document_version, signed_document.latest_version
         )
         self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.signature_id, None)
+
+    def test_embedded_signature_post_key_verify(self):
+        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+            signed_document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        self.assertEqual(EmbeddedSignature.objects.count(), 1)
+
+        signature = EmbeddedSignature.objects.first()
+
+        self.assertEqual(
+            signature.document_version, signed_document.latest_version
+        )
+        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.signature_id, None)
+
+        with open(TEST_KEY_FILE) as file_object:
+            key = Key.objects.create(key_data=file_object.read())
+
+        signature = EmbeddedSignature.objects.first()
+
+        self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
+
+    def test_embedded_signature_post_no_key_verify(self):
+        with open(TEST_KEY_FILE) as file_object:
+            key = Key.objects.create(key_data=file_object.read())
+
+        with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+            signed_document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        self.assertEqual(EmbeddedSignature.objects.count(), 1)
+
+        signature = EmbeddedSignature.objects.first()
+
+        self.assertEqual(
+            signature.document_version, signed_document.latest_version
+        )
+        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
+
+        key.delete()
+
+        signature = EmbeddedSignature.objects.first()
+
+        self.assertEqual(signature.signature_id, None)
 
     def test_embedded_signature_with_key(self):
         with open(TEST_KEY_FILE) as file_object:
@@ -69,27 +120,106 @@ class DocumentTestCase(TestCase):
         )
         self.assertEqual(signature.key_id, TEST_KEY_ID)
         self.assertEqual(signature.public_key_fingerprint, key.fingerprint)
+        self.assertEqual(signature.signature_id, TEST_SIGNATURE_ID)
 
-    def test_detached_signature(self):
+    def test_detached_signature_no_key(self):
         with open(TEST_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
                 file_object=file_object
             )
 
         with open(TEST_SIGNATURE_FILE_PATH) as file_object:
-            DetachedSignature.objects.upload_signature(
+            DetachedSignature.objects.create(
                 document_version=document.latest_version,
-                signature_file=file_object
+                signature_file=File(file_object)
             )
 
         self.assertEqual(DetachedSignature.objects.count(), 1)
-        self.assertEqual(
-            DetachedSignature.objects.first().document_version,
-            document.latest_version
-        )
-        self.assertEqual(DetachedSignature.objects.first().key_id, TEST_KEY_ID)
 
-    # TODO: test_verify_signature_after_new_key(self):
+        signature = DetachedSignature.objects.first()
+
+        self.assertEqual(signature.document_version, document.latest_version)
+        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.public_key_fingerprint, None)
+
+    def test_detached_signature_with_key(self):
+        with open(TEST_KEY_FILE) as file_object:
+            key = Key.objects.create(key_data=file_object.read())
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+            DetachedSignature.objects.create(
+                document_version=document.latest_version,
+                signature_file=File(file_object)
+            )
+
+        self.assertEqual(DetachedSignature.objects.count(), 1)
+
+        signature = DetachedSignature.objects.first()
+
+        self.assertEqual(signature.document_version, document.latest_version)
+        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.public_key_fingerprint, key.fingerprint)
+
+    def test_detached_signature_post_key_verify(self):
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+            DetachedSignature.objects.create(
+                document_version=document.latest_version,
+                signature_file=File(file_object)
+            )
+
+        self.assertEqual(DetachedSignature.objects.count(), 1)
+
+        signature = DetachedSignature.objects.first()
+
+        self.assertEqual(signature.document_version, document.latest_version)
+        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.public_key_fingerprint, None)
+
+        with open(TEST_KEY_FILE) as file_object:
+            key = Key.objects.create(key_data=file_object.read())
+
+        signature = DetachedSignature.objects.first()
+
+        self.assertEqual(signature.public_key_fingerprint, key.fingerprint)
+
+    def test_detached_signature_post_no_key_verify(self):
+        with open(TEST_KEY_FILE) as file_object:
+            key = Key.objects.create(key_data=file_object.read())
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+            DetachedSignature.objects.create(
+                document_version=document.latest_version,
+                signature_file=File(file_object)
+            )
+
+        self.assertEqual(DetachedSignature.objects.count(), 1)
+
+        signature = DetachedSignature.objects.first()
+
+        self.assertEqual(signature.document_version, document.latest_version)
+        self.assertEqual(signature.key_id, TEST_KEY_ID)
+        self.assertEqual(signature.public_key_fingerprint, key.fingerprint)
+
+        key.delete()
+
+        signature = DetachedSignature.objects.first()
+
+        self.assertEqual(signature.public_key_fingerprint, None)
 
     def test_document_no_signature(self):
         with open(TEST_DOCUMENT_PATH) as file_object:

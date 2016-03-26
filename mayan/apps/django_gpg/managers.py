@@ -33,7 +33,7 @@ class KeyManager(models.Manager):
         # Preload keys
         if all_keys:
             logger.debug('preloading all keys')
-            for key in Key.objects.all():
+            for key in self.all():
                 gpg.import_keys(key_data=key.key_data)
         elif key_fingerprint:
             logger.debug('preloading key fingerprint: %s', key_fingerprint)
@@ -129,7 +129,7 @@ class KeyManager(models.Manager):
         # Preload keys
         if all_keys:
             logger.debug('preloading all keys')
-            for key in Key.objects.all():
+            for key in self.all():
                 gpg.import_keys(key_data=key.key_data)
         elif key_fingerprint:
             logger.debug('preloading key fingerprint: %s', key_fingerprint)

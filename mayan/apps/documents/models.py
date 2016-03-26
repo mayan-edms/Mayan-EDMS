@@ -401,7 +401,9 @@ class DocumentVersion(models.Model):
                 super(DocumentVersion, self).save(*args, **kwargs)
 
                 for key in sorted(DocumentVersion._post_save_hooks):
-                    DocumentVersion._post_save_hooks[key](self)
+                    DocumentVersion._post_save_hooks[key](
+                        document_version=self
+                    )
 
                 if new_document_version:
                     # Only do this for new documents
@@ -499,7 +501,9 @@ class DocumentVersion(models.Model):
         else:
             result = self.file.storage.open(self.file.name)
             for key in sorted(DocumentVersion._pre_open_hooks):
-                result = DocumentVersion._pre_open_hooks[key](result, self)
+                result = DocumentVersion._pre_open_hooks[key](
+                    file_object=result, document_version=self
+                )
 
             return result
 

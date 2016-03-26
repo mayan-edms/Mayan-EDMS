@@ -15,7 +15,7 @@ from django_gpg.exceptions import DecryptionError, VerificationError
 from django_gpg.models import Key
 from documents.models import DocumentVersion
 
-from .managers import EmbeddedSignatureManager, DetachedSignatureManager
+from .managers import EmbeddedSignatureManager
 from .runtime import storage_backend
 
 logger = logging.getLogger(__name__)
@@ -42,7 +42,7 @@ class SignatureBaseModel(models.Model):
         verbose_name=_('Signature ID')
     )
     public_key_fingerprint = models.CharField(
-        blank=True, editable=False, null=True, max_length=40, unique=True,
+        blank=True, editable=False, null=True, max_length=40,
         verbose_name=_('Public key fingerprint')
     )
 
@@ -77,14 +77,36 @@ class EmbeddedSignature(SignatureBaseModel):
         verbose_name = _('Document version embedded signature')
         verbose_name_plural = _('Document version embedded signatures')
 
+    def save(self, *args, **kwargs):
+        logger.debug('checking for embedded signature')
+
+        if self.pk:
+            raw = True
+        else:
+            raw = False
+
+        with self.document_version.open(raw=raw) as file_object:
+            try:
+                verify_result = Key.objects.verify_file(file_object=file_object)
+            except VerificationError as exception:
+                # Not signed
+                logger.debug(
+                    'embedded signature verification error; %s', exception
+                )
+            else:
+                self.date = verify_result.date
+                self.key_id = verify_result.key_id
+                self.signature_id = verify_result.signature_id
+                self.public_key_fingerprint = verify_result.pubkey_fingerprint
+
+                super(EmbeddedSignature, self).save(*args, **kwargs)
+
 
 class DetachedSignature(SignatureBaseModel):
     signature_file = models.FileField(
         blank=True, null=True, storage=storage_backend, upload_to=upload_to,
         verbose_name=_('Signature file')
     )
-
-    objects = DetachedSignatureManager()
 
     class Meta:
         verbose_name = _('Document version detached signature')
@@ -93,3 +115,24 @@ class DetachedSignature(SignatureBaseModel):
     def delete(self, *args, **kwargs):
         self.signature_file.storage.delete(self.signature_file.name)
         super(DetachedSignature, self).delete(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        with self.document_version.open() as file_object:
+            try:
+                verify_result = Key.objects.verify_file(
+                    file_object=file_object, signature_file=self.signature_file
+                )
+            except VerificationError:
+                # Not signed
+                logger.debug(
+                    'detached signature verification error; %s', exception
+                )
+            else:
+                self.signature_file.seek(0)
+
+                self.date = verify_result.date
+                self.key_id = verify_result.key_id
+                self.signature_id = verify_result.signature_id
+                self.public_key_fingerprint = verify_result.pubkey_fingerprint
+
+        return super(DetachedSignature, self).save(*args, **kwargs)
