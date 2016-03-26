@@ -21,7 +21,7 @@ logger = logging.getLogger(__name__)
 
 
 class KeyManager(models.Manager):
-    def decrypt_file(self, file_object):
+    def decrypt_file(self, file_object, all_keys=False, key_fingerprint=None, key_id=None):
         temporary_directory = tempfile.mkdtemp()
 
         os.chmod(temporary_directory, 0x1C0)
@@ -29,6 +29,33 @@ class KeyManager(models.Manager):
         gpg = gnupg.GPG(
             gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
         )
+
+        # Preload keys
+        if all_keys:
+            logger.debug('preloading all keys')
+            for key in Key.objects.all():
+                gpg.import_keys(key_data=key.key_data)
+        elif key_fingerprint:
+            logger.debug('preloading key fingerprint: %s', key_fingerprint)
+            try:
+                key = self.get(fingerprint=key_fingerprint)
+            except self.model.DoesNotExist:
+                logger.debug('key fingerprint %s not found', key_fingerprint)
+                shutil.rmtree(temporary_directory)
+                raise KeyDoesNotExist(
+                    'Specified key for verification not found'
+                )
+            else:
+                gpg.import_keys(key_data=key.key_data)
+        elif key_id:
+            logger.debug('preloading key id: %s', key_id)
+            try:
+                key = self.get(fingerprint__endswith=key_id)
+            except self.model.DoesNotExist:
+                logger.debug('key id %s not found', key_id)
+            else:
+                gpg.import_keys(key_data=key.key_data)
+                logger.debug('key id %s impored', key_id)
 
         decrypt_result = gpg.decrypt_file(file=file_object)
 
@@ -67,6 +94,8 @@ class KeyManager(models.Manager):
     def search(self, query):
         temporary_directory = tempfile.mkdtemp()
 
+        os.chmod(temporary_directory, 0x1C0)
+
         gpg = gnupg.GPG(
             gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
         )
@@ -88,8 +117,10 @@ class KeyManager(models.Manager):
     def private_keys(self):
         return self.filter(key_type=KEY_TYPE_SECRET)
 
-    def verify_file(self, file_object, signature_file=None, key_id=None, key_fingerprint=None, all_keys=False):
+    def verify_file(self, file_object, signature_file=None, all_keys=False, key_fingerprint=None, key_id=None):
         temporary_directory = tempfile.mkdtemp()
+
+        os.chmod(temporary_directory, 0x1C0)
 
         gpg = gnupg.GPG(
             gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
@@ -97,25 +128,30 @@ class KeyManager(models.Manager):
 
         # Preload keys
         if all_keys:
+            logger.debug('preloading all keys')
             for key in Key.objects.all():
                 gpg.import_keys(key_data=key.key_data)
         elif key_fingerprint:
+            logger.debug('preloading key fingerprint: %s', key_fingerprint)
             try:
                 key = self.get(fingerprint=key_fingerprint)
             except self.model.DoesNotExist:
+                logger.debug('key fingerprint %s not found', key_fingerprint)
                 shutil.rmtree(temporary_directory)
-                raise KeyDoesNotExist('Specified key for verification not found in keyring')
+                raise KeyDoesNotExist(
+                    'Specified key for verification not found'
+                )
             else:
                 gpg.import_keys(key_data=key.key_data)
         elif key_id:
+            logger.debug('preloading key id: %s', key_id)
             try:
                 key = self.get(fingerprint__endswith=key_id)
             except self.model.DoesNotExist:
-                pass
-                #shutil.rmtree(temporary_directory)
-                #raise KeyDoesNotExist('Specified key for verification not found in keyring')
+                logger.debug('key id %s not found', key_id)
             else:
-                result = gpg.import_keys(key_data=key.key_data)
+                gpg.import_keys(key_data=key.key_data)
+                logger.debug('key id %s impored', key_id)
 
         if signature_file:
             # Save the original data and invert the argument order
@@ -142,13 +178,17 @@ class KeyManager(models.Manager):
 
         if verify_result:
             # Signed and key present
+            logger.debug('signed and key present')
             return SignatureVerification(verify_result.__dict__)
         elif verify_result.status == 'no public key' and not (key_fingerprint or all_keys or key_id):
             # Signed but key not present, retry with key fetch
+            logger.debug('no public key')
             file_object.seek(0)
             return self.verify_file(file_object=file_object, signature_file=signature_file, key_id=verify_result.key_id)
         elif verify_result.key_id:
             # Signed, retried and key still not found
+            logger.debug('signed, retried and key still not found')
             return SignatureVerification(verify_result.__dict__)
         else:
+            logger.debug('file not signed')
             raise VerificationError('File not signed')
