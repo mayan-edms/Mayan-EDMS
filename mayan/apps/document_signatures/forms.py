@@ -4,6 +4,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 from common.forms import DetailForm
+from django_gpg.models import Key
 
 from .models import SignatureBaseModel
 
@@ -17,10 +18,56 @@ class DetachedSignatureForm(forms.Form):
 class DocumentVersionSignatureDetailForm(DetailForm):
     def __init__(self, *args, **kwargs):
         extra_fields = (
-            {'label': _('Is embedded?'), 'field': 'is_embedded'},
-            {'label': _('Date'), 'field': 'date'},
-            {'label': _('Key ID'), 'field': 'key_id'},
+            {'label': _('Signature is embedded?'), 'field': 'is_embedded'},
+            {
+                'label': _('Signature date'), 'field': 'date',
+                'widget': forms.widgets.DateInput
+            },
+            {'label': _('Signature key ID'), 'field': 'key_id'},
+            {
+                'label': _('Signature key present?'),
+                'field': lambda x: x.public_key_fingerprint is not None
+            },
         )
+
+        if kwargs['instance'].public_key_fingerprint:
+            key = Key.objects.get(
+                fingerprint=kwargs['instance'].public_key_fingerprint
+            )
+
+            extra_fields += (
+                {'label': _('Signature ID'), 'field': 'signature_id'},
+                {
+                    'label': _('Key fingerprint'),
+                    'field': lambda x: key.fingerprint
+                },
+                {
+                    'label': _('Key creation date'),
+                    'field': lambda x: key.creation_date,
+                    'widget': forms.widgets.DateInput
+                },
+                {
+                    'label': _('Key expiration date'),
+                    'field': lambda x: key.expiration_date or _('None'),
+                    'widget': forms.widgets.DateInput
+                },
+                {
+                    'label': _('Key length'),
+                    'field': lambda x: key.length
+                },
+                {
+                    'label': _('Key algorithm'),
+                    'field': lambda x: key.algorithm
+                },
+                {
+                    'label': _('Key user ID'),
+                    'field': lambda x: key.user_id
+                },
+                {
+                    'label': _('Key type'),
+                    'field': lambda x: key.get_key_type_display()
+                },
+            )
 
         kwargs['extra_fields'] = extra_fields
         super(DocumentVersionSignatureDetailForm, self).__init__(*args, **kwargs)
@@ -28,24 +75,3 @@ class DocumentVersionSignatureDetailForm(DetailForm):
     class Meta:
         fields = ()
         model = SignatureBaseModel
-
-
-"""
-{
-    'label': _('User ID'),
-    'field': lambda x: escape(instance.user_id),
-},
-{
-    'label': _('Creation date'), 'field': 'creation_date',
-    'widget': forms.widgets.DateInput
-},
-{
-    'label': _('Expiration date'),
-    'field': lambda x: instance.expiration_date or _('None'),
-    'widget': forms.widgets.DateInput
-},
-{'label': _('Fingerprint'), 'field': 'fingerprint'},
-{'label': _('Length'), 'field': 'length'},
-{'label': _('Algorithm'), 'field': 'algorithm'},
-{'label': _('Type'), 'field': lambda x: instance.get_key_type_display()},
-"""
