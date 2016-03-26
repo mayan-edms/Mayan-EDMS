@@ -12,6 +12,7 @@ from common.generics import (
 )
 
 from .forms import KeyDetailForm, KeySearchForm
+from .literals import KEY_TYPE_PUBLIC
 from .models import Key
 from .permissions import (
     permission_key_delete, permission_key_receive, permission_key_view,
@@ -24,6 +25,12 @@ logger = logging.getLogger(__name__)
 class KeyDeleteView(SingleObjectDeleteView):
     model = Key
     object_permission = permission_key_delete
+
+    def get_post_action_redirect(self):
+        if self.get_object().key_type == KEY_TYPE_PUBLIC:
+            post_action_redirect = reverse_lazy('django_gpg:key_public_list')
+        else:
+            post_action_redirect = reverse_lazy('django_gpg:key_private_list')
 
     def get_extra_context(self):
         return {
