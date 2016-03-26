@@ -88,6 +88,8 @@ class Key(models.Model):
     def save(self, *args, **kwargs):
         temporary_directory = tempfile.mkdtemp()
 
+        os.chmod(temporary_directory, 0x1C0)
+
         gpg = gnupg.GPG(
             gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
         )
@@ -119,6 +121,8 @@ class Key(models.Model):
 
     def sign_file(self, file_object, passphrase=None, clearsign=True, detached=False, binary=False, output=None):
         temporary_directory = tempfile.mkdtemp()
+
+        os.chmod(temporary_directory, 0x1C0)
 
         gpg = gnupg.GPG(
             gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
