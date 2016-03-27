@@ -18,7 +18,7 @@ from .settings import setting_zoom_max_level, setting_zoom_min_level
 
 
 def is_not_current_version(context):
-    return context['object'].document.latest_version.timestamp != context['object'].timestamp
+    return context['resolved_object'].document.latest_version.timestamp != context['resolved_object'].timestamp
 
 
 def is_first_page(context):

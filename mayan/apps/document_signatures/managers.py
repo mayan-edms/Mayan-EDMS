@@ -4,7 +4,7 @@ import logging
 
 from django.db import models
 
-from django_gpg.exceptions import DecryptionError, VerificationError
+from django_gpg.exceptions import DecryptionError
 from django_gpg.models import Key
 
 logger = logging.getLogger(__name__)

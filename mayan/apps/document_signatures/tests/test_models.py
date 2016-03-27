@@ -1,9 +1,7 @@
 from __future__ import unicode_literals
 
-import os
 import time
 
-from django.conf import settings
 from django.core.files import File
 from django.test import TestCase, override_settings
 
@@ -13,18 +11,10 @@ from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
 from ..models import DetachedSignature, EmbeddedSignature
 
-TEST_SIGNED_DOCUMENT_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.gpg'
+from .literals import (
+    TEST_SIGNED_DOCUMENT_PATH, TEST_SIGNATURE_FILE_PATH, TEST_KEY_FILE,
+    TEST_KEY_ID, TEST_SIGNATURE_ID
 )
-TEST_SIGNATURE_FILE_PATH = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents', 'mayan_11_1.pdf.sig'
-)
-TEST_KEY_FILE = os.path.join(
-    settings.BASE_DIR, 'contrib', 'sample_documents',
-    'key0x5F3F7F75D210724D.asc'
-)
-TEST_KEY_ID = '5F3F7F75D210724D'
-TEST_SIGNATURE_ID = 'XVkoGKw35yU1iq11dZPiv7uAY7k'
 
 
 @override_settings(OCR_AUTO_OCR=False)
@@ -70,7 +60,7 @@ class DocumentSignaturesTestCase(TestCase):
         self.assertEqual(signature.signature_id, None)
 
         with open(TEST_KEY_FILE) as file_object:
-            key = Key.objects.create(key_data=file_object.read())
+            Key.objects.create(key_data=file_object.read())
 
         signature = EmbeddedSignature.objects.first()
 
@@ -223,7 +213,7 @@ class DocumentSignaturesTestCase(TestCase):
 
     def test_document_no_signature(self):
         with open(TEST_DOCUMENT_PATH) as file_object:
-            document = self.document_type.new_document(
+            self.document_type.new_document(
                 file_object=file_object
             )
 

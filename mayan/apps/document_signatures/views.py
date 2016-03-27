@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from datetime import datetime
 import logging
 
 from django.conf import settings
@@ -10,15 +9,13 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
 from django.template import RequestContext
-from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.generics import (
     SingleObjectDeleteView, SingleObjectDetailView, SingleObjectListView
 )
-from django_gpg.literals import SIGNATURE_STATE_NONE, SIGNATURE_STATES
-from documents.models import Document, DocumentVersion
+from documents.models import DocumentVersion
 from filetransfers.api import serve_file
 from permissions import Permission
 
@@ -55,6 +52,8 @@ class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
 
 class DocumentVersionSignatureDetailView(SingleObjectDetailView):
     form_class = DocumentVersionSignatureDetailForm
+    object_permission = permission_document_version_signature_view
+    object_permission_related = 'document_version.document'
 
     def get_extra_context(self):
         return {
@@ -73,6 +72,9 @@ class DocumentVersionSignatureDetailView(SingleObjectDetailView):
 
 
 class DocumentVersionSignatureListView(SingleObjectListView):
+    object_permission = permission_document_version_signature_view
+    object_permission_related = 'document_version.document'
+
     def get_document_version(self):
         return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
 
@@ -149,8 +151,8 @@ def document_version_signature_upload(request, pk):
     }, context_instance=RequestContext(request))
 
 
-def document_signature_download(request, document_pk):
-    document = get_object_or_404(Document, pk=document_pk)
+def document_signature_download(request, pk):
+    signature = get_object_or_404(DetachedSignature, pk=pk)
 
     try:
         Permission.check_permissions(
@@ -158,22 +160,13 @@ def document_signature_download(request, document_pk):
         )
     except PermissionDenied:
         AccessControlList.objects.check_access(
-            permission_document_version_signature_download, request.user, document
+            permission_document_version_signature_download, request.user,
+            signature.document_version.signature
         )
 
-    try:
-        if DocumentVersionSignature.objects.has_detached_signature(document.latest_version):
-            signature = DocumentVersionSignature.objects.detached_signature(
-                document.latest_version
-            )
-            return serve_file(
-                request,
-                signature,
-                save_as='"%s.sig"' % document.filename,
-                content_type='application/octet-stream'
-            )
-    except Exception as exception:
-        messages.error(request, exception)
-        return HttpResponseRedirect(request.META['HTTP_REFERER'])
-
-    return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    return serve_file(
+        request,
+        signature,
+        save_as='"%s.sig"' % signature.document_version.document,
+        content_type='application/octet-stream'
+    )

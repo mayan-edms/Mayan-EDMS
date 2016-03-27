@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from datetime import date
 import logging
 import uuid
 
@@ -11,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from model_utils.managers import InheritanceManager
 
-from django_gpg.exceptions import DecryptionError, VerificationError
+from django_gpg.exceptions import VerificationError
 from django_gpg.models import Key
 from documents.models import DocumentVersion
 
@@ -122,7 +121,7 @@ class DetachedSignature(SignatureBaseModel):
                 verify_result = Key.objects.verify_file(
                     file_object=file_object, signature_file=self.signature_file
                 )
-            except VerificationError:
+            except VerificationError as exception:
                 # Not signed
                 logger.debug(
                     'detached signature verification error; %s', exception

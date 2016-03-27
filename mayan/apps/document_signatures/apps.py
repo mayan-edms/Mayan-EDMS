@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import (
-    MayanAppConfig, menu_facet, menu_object, menu_secondary, menu_sidebar
+    MayanAppConfig, menu_object, menu_sidebar
 )
 from common.widgets import two_state_template
 from mayan.celery import app

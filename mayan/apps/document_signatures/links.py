@@ -44,7 +44,7 @@ link_document_version_signature_list = Link(
 link_document_version_signature_download = Link(
     condition=is_detached_signature,
     text=_('Download'),
-    view='signatures:document_signature_download', args='resolved_object.pk',
+    view='signatures:document_version_signature_download', args='resolved_object.pk',
     #permissions=(permission_document_version_signature_download,)
 )
 link_document_version_signature_upload = Link(
