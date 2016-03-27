@@ -75,6 +75,7 @@ INSTALLED_APPS = (
     'mimetype',
     'navigation',
     'permissions',
+    'server',
     'smart_settings',
     'user_management',
     # Mayan EDMS
