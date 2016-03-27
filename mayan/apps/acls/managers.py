@@ -8,6 +8,7 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext
 
+from common.utils import return_attrib
 from permissions.models import StoredPermission
 
 from .classes import ModelPermission
@@ -57,7 +58,7 @@ class AccessControlListManager(models.Manager):
             stored_permissions = [permissions.stored_permission]
 
         if related:
-            obj = getattr(obj, related)
+            obj = return_attrib(obj, related)
 
         try:
             parent_accessor = ModelPermission.get_inheritance(obj._meta.model)
