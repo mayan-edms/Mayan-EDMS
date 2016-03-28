@@ -60,6 +60,18 @@ class SignatureBaseModel(models.Model):
             args=(self.pk,)
         )
 
+    def get_key_id(self):
+        if self.public_key_fingerprint:
+            return self.public_key_fingerprint[-16:]
+        else:
+            return self.key_id
+
+    def get_signature_type_display(self):
+        if self.is_detached:
+            return _('Detached')
+        else:
+            return _('Embedded')
+
     @property
     def is_detached(self):
         return hasattr(self, 'signature_file')

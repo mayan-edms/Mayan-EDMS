@@ -82,31 +82,18 @@ class DocumentSignaturesApp(MayanAppConfig):
             source=SignatureBaseModel, label=_('Date'), attribute='date'
         )
         SourceColumn(
-            source=SignatureBaseModel, label=_('Key ID'), attribute='key_id'
+            source=SignatureBaseModel, label=_('Key ID'),
+            attribute='get_key_id'
         )
         SourceColumn(
             source=SignatureBaseModel, label=_('Signature ID'),
             func=lambda context: context['object'].signature_id or _('None')
         )
         SourceColumn(
-            source=SignatureBaseModel, label=_('Public key fingerprint'),
-            func=lambda context: context['object'].public_key_fingerprint or _('None')
-        )
-        SourceColumn(
             source=SignatureBaseModel, label=_('Is embedded?'),
-            func=lambda context: two_state_template(
-                SignatureBaseModel.objects.get_subclass(
-                    pk=context['object'].pk
-                ).is_embedded
-            )
-        )
-        SourceColumn(
-            source=SignatureBaseModel, label=_('Is detached?'),
-            func=lambda context: two_state_template(
-                SignatureBaseModel.objects.get_subclass(
-                    pk=context['object'].pk
-                ).is_detached
-            )
+            func=lambda context: SignatureBaseModel.objects.get_subclass(
+                pk=context['object'].pk
+            ).get_signature_type_display()
         )
 
         app.conf.CELERY_QUEUES.append(
