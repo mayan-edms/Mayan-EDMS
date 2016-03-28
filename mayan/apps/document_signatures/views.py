@@ -13,7 +13,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.generics import (
-    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectListView
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
+    SingleObjectListView
 )
 from documents.models import DocumentVersion
 from filetransfers.api import serve_file
@@ -104,51 +105,46 @@ class DocumentVersionSignatureListView(SingleObjectListView):
             return queryset
 
 
-def document_version_signature_upload(request, pk):
-    document_version = get_object_or_404(DocumentVersion, pk=pk)
+class DocumentVersionSignatureUploadView(SingleObjectCreateView):
+    fields = ('signature_file',)
+    model = DetachedSignature
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_version_signature_upload,)
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_version_signature_upload,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_version_signature_upload, request.user,
+                self.get_document_version()
+            )
+
+        return super(
+            DocumentVersionSignatureUploadView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document_version(self):
+        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        return {
+            'document': self.get_document_version().document,
+            'document_version': self.get_document_version(),
+            'navigation_object_list': ('document', 'document_version'),
+            'title': _(
+                'Upload detached signature for document version: %s'
+            ) % self.get_document_version(),
+        }
+
+    def get_instance_extra_data(self):
+        return {'document_version': self.get_document_version()}
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'signatures:document_version_signature_list',
+            args=(self.get_document_version().pk,)
         )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_version_signature_upload, request.user, document_version.document
-        )
-
-    document_version.document.add_as_recent_document_for_user(request.user)
-
-    post_action_redirect = None
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        form = DetachedSignatureForm(request.POST, request.FILES)
-        if form.is_valid():
-            try:
-                DetachedSignature.objects.create(
-                    document_version=document_version,
-                    signature_file=request.FILES['file']
-                )
-                messages.success(
-                    request, _('Detached signature uploaded successfully.')
-                )
-                return HttpResponseRedirect(next)
-            except Exception as exception:
-                messages.error(request, exception)
-                return HttpResponseRedirect(previous)
-    else:
-        form = DetachedSignatureForm()
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'next': next,
-        'document': document_version.document,
-        'document_version': document_version,
-        'navigation_object_list': ('document', 'document_version'),
-        'previous': previous,
-        'title': _('Upload detached signature for document version: %s') % document_version,
-    }, context_instance=RequestContext(request))
 
 
 def document_signature_download(request, pk):

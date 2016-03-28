@@ -128,3 +128,43 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(response, signature.signature_id, status_code=200)
+
+    def test_signature_upload_view_no_permission(self):
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+            response = self.post(
+                'signatures:document_version_signature_upload',
+                args=(document.latest_version.pk,),
+                data={'signature_file': file_object}
+            )
+
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(DetachedSignature.objects.count(), 0)
+
+    def test_signature_upload_view_with_permission(self):
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(
+            permission_document_version_signature_upload.stored_permission
+        )
+
+        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+            response = self.post(
+                'signatures:document_version_signature_upload',
+                args=(document.latest_version.pk,),
+                data={'signature_file': file_object}
+            )
+
+        self.assertEqual(response.status_code, 302)
+        self.assertEqual(DetachedSignature.objects.count(), 1)
