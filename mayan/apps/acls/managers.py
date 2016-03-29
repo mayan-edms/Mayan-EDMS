@@ -55,6 +55,7 @@ class AccessControlListManager(models.Manager):
                 permission.stored_permission for permission in permissions
             ]
         except TypeError:
+            # Not a list of permissions, just one
             stored_permissions = [permissions.stored_permission]
 
         if related:
