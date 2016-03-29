@@ -14,6 +14,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='signaturebasemodel',
             name='public_key_fingerprint',
-            field=models.CharField(verbose_name='Public key fingerprint', max_length=40, null=True, editable=False, blank=True),
+            field=models.CharField(
+                verbose_name='Public key fingerprint', max_length=40,
+                null=True, editable=False, blank=True
+            ),
         ),
     ]

@@ -87,8 +87,20 @@ class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
 
 
 class DocumentVersionSignatureListView(SingleObjectListView):
-    object_permission = permission_document_version_signature_view
-    object_permission_related = 'document_version.document'
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_version_signature_view,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_version_signature_view, request.user,
+                self.get_document_version()
+            )
+
+        return super(
+            DocumentVersionSignatureListView, self
+        ).dispatch(request, *args, **kwargs)
 
     def get_document_version(self):
         return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
@@ -105,21 +117,7 @@ class DocumentVersionSignatureListView(SingleObjectListView):
         }
 
     def get_queryset(self):
-        queryset = self.get_document_version().signatures.all()
-
-        try:
-            Permission.check_permissions(
-                self.request.user, (
-                    permission_document_version_signature_view,
-                )
-            )
-        except PermissionDenied:
-            return AccessControlList.objects.filter_by_access(
-                permission_document_version_signature_view, self.request.user,
-                queryset
-            )
-        else:
-            return queryset
+        return self.get_document_version().signatures.all()
 
 
 class DocumentVersionSignatureUploadView(SingleObjectCreateView):

@@ -14,26 +14,41 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='documentversionsignature',
             name='document_version',
-            field=models.ForeignKey(editable=False, to='documents.DocumentVersion', verbose_name='Document version'),
+            field=models.ForeignKey(
+                editable=False, to='documents.DocumentVersion',
+                verbose_name='Document version'
+            ),
         ),
         migrations.AlterField(
             model_name='signaturebasemodel',
             name='date',
-            field=models.DateField(verbose_name='Date signed', null=True, editable=False, blank=True),
+            field=models.DateField(
+                verbose_name='Date signed', null=True, editable=False,
+                blank=True
+            ),
         ),
         migrations.AlterField(
             model_name='signaturebasemodel',
             name='document_version',
-            field=models.ForeignKey(related_name='signatures', editable=False, to='documents.DocumentVersion', verbose_name='Document version'),
+            field=models.ForeignKey(
+                related_name='signatures', editable=False,
+                to='documents.DocumentVersion', verbose_name='Document version'
+            ),
         ),
         migrations.AlterField(
             model_name='signaturebasemodel',
             name='public_key_fingerprint',
-            field=models.CharField(null=True, editable=False, max_length=40, blank=True, unique=True, verbose_name='Public key fingerprint'),
+            field=models.CharField(
+                null=True, editable=False, max_length=40, blank=True,
+                unique=True, verbose_name='Public key fingerprint'
+            ),
         ),
         migrations.AlterField(
             model_name='signaturebasemodel',
             name='signature_id',
-            field=models.CharField(verbose_name='Signature ID', max_length=64, null=True, editable=False, blank=True),
+            field=models.CharField(
+                verbose_name='Signature ID', max_length=64, null=True,
+                editable=False, blank=True
+            ),
         ),
     ]

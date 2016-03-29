@@ -9,6 +9,7 @@ from .permissions import (
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
+    permission_document_version_signature_view
 )
 
 
@@ -23,33 +24,32 @@ def is_detached_signature(context):
 
 
 link_document_version_signature_delete = Link(
-    condition=is_detached_signature,
-    #permissions=(permission_document_version_signature_delete,),
-    tags='dangerous', text=_('Delete'),
-    view='signatures:document_version_signature_delete',
-    args='resolved_object.pk'
+    args='resolved_object.pk', condition=is_detached_signature,
+    permissions=(permission_document_version_signature_delete,),
+    permissions_related='document_version.document', tags='dangerous',
+    text=_('Delete'), view='signatures:document_version_signature_delete',
 )
 link_document_version_signature_details = Link(
-    #permissions=(permission_document_version_signature_view,),
-    text=_('Details'),
+    args='resolved_object.pk',
+    permissions=(permission_document_version_signature_view,),
+    permissions_related='document_version.document', text=_('Details'),
     view='signatures:document_version_signature_details',
-    args='resolved_object.pk'
 )
 link_document_version_signature_list = Link(
-    #permissions=(permission_document_version_signature_view,),
+    args='resolved_object.pk',
+    permissions=(permission_document_version_signature_view,),
     text=_('Signature list'),
     view='signatures:document_version_signature_list',
-    args='resolved_object.pk'
 )
 link_document_version_signature_download = Link(
-    condition=is_detached_signature,
-    text=_('Download'),
-    view='signatures:document_version_signature_download', args='resolved_object.pk',
-    #permissions=(permission_document_version_signature_download,)
+    args='resolved_object.pk', condition=is_detached_signature,
+    permissions=(permission_document_version_signature_download,),
+    permissions_related='document_version.document', text=_('Download'),
+    view='signatures:document_version_signature_download',
 )
 link_document_version_signature_upload = Link(
-    #permissions=(permission_document_version_signature_upload,),
+    args='resolved_object.pk',
+    permissions=(permission_document_version_signature_upload,),
     text=_('Upload signature'),
     view='signatures:document_version_signature_upload',
-    args='resolved_object.pk'
 )

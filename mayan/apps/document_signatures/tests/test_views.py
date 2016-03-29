@@ -19,10 +19,7 @@ from ..permissions import (
     permission_document_version_signature_upload,
 )
 
-from .literals import (
-    TEST_SIGNED_DOCUMENT_PATH, TEST_SIGNATURE_FILE_PATH, TEST_KEY_FILE,
-    TEST_KEY_ID, TEST_SIGNATURE_ID
-)
+from .literals import TEST_SIGNATURE_FILE_PATH, TEST_KEY_FILE
 
 
 class SignaturesViewTestCase(GenericDocumentViewTestCase):
