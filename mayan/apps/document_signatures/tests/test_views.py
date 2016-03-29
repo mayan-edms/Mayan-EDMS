@@ -217,3 +217,57 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         assert_download_response(
             self, response=response, content=signature.signature_file.read(),
         )
+
+    def test_signature_delete_view_no_permission(self):
+        with open(TEST_KEY_FILE) as file_object:
+            Key.objects.create(key_data=file_object.read())
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+            signature = DetachedSignature.objects.create(
+                document_version=document.latest_version,
+                signature_file=File(file_object)
+            )
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        response = self.post(
+            'signatures:document_version_signature_delete',
+            args=(signature.pk,)
+        )
+
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(DetachedSignature.objects.count(), 1)
+
+    def test_signature_delete_view_with_permission(self):
+        with open(TEST_KEY_FILE) as file_object:
+            Key.objects.create(key_data=file_object.read())
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+            signature = DetachedSignature.objects.create(
+                document_version=document.latest_version,
+                signature_file=File(file_object)
+            )
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(
+            permission_document_version_signature_delete.stored_permission
+        )
+
+        response = self.post(
+            'signatures:document_version_signature_delete',
+            args=(signature.pk,), follow=True
+        )
+
+        self.assertContains(response, 'deleted', status_code=200)
+        self.assertEqual(DetachedSignature.objects.count(), 0)

@@ -73,7 +73,7 @@ class DocumentVersionSignatureDetailView(SingleObjectDetailView):
         return SignatureBaseModel.objects.select_subclasses()
 
 
-class DocumentSignatureDownloadView(SingleObjectDownloadView):
+class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
     model = DetachedSignature
     object_permission = permission_document_version_signature_download
     object_permission_related = 'document_version.document'
@@ -81,7 +81,7 @@ class DocumentSignatureDownloadView(SingleObjectDownloadView):
     def get_file(self):
         signature = self.get_object()
 
-        return DocumentSignatureDownloadView.VirtualFile(
+        return DocumentVersionSignatureDownloadView.VirtualFile(
             signature.signature_file, name=unicode(signature)
         )
 
