@@ -8,11 +8,15 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     FormView as DjangoFormView, DetailView, TemplateView
 )
+from django.views.generic.base import ContextMixin
+from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import (
     CreateView, DeleteView, ModelFormMixin, UpdateView
 )
 from django.views.generic.list import ListView
 
+from django_downloadview import VirtualDownloadView
+from django_downloadview import VirtualFile
 from pure_pagination.mixins import PaginationMixin
 
 from .forms import ChoiceForm
@@ -342,6 +346,10 @@ class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixi
         context = super(SingleObjectDetailView, self).get_context_data(**kwargs)
         context.update({'read_only': True, 'form': self.get_form()})
         return context
+
+
+class SingleObjectDownloadView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, VirtualDownloadView, SingleObjectMixin):
+    VirtualFile = VirtualFile
 
 
 class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
