@@ -12,7 +12,6 @@ from acls import ModelPermission
 from common import (
     MayanAppConfig, menu_object, menu_sidebar
 )
-from common.widgets import two_state_template
 from mayan.celery import app
 from navigation import SourceColumn
 
@@ -55,8 +54,6 @@ class DocumentSignaturesApp(MayanAppConfig):
         Key = apps.get_model(
             app_label='django_gpg', model_name='Key'
         )
-
-        DetachedSignature = self.get_model('DetachedSignature')
 
         EmbeddedSignature = self.get_model('EmbeddedSignature')
 

@@ -4,11 +4,12 @@ from django.conf.urls import patterns, url
 
 from .views import (
     DocumentVersionSignatureDeleteView, DocumentVersionSignatureDetailView,
-    DocumentVersionSignatureListView, DocumentVersionSignatureUploadView
+    DocumentSignatureDownloadView, DocumentVersionSignatureListView,
+    DocumentVersionSignatureUploadView
 )
 
 urlpatterns = patterns(
-    'document_signatures.views',
+    '',
     url(
         r'^(?P<pk>\d+)/details/$',
         DocumentVersionSignatureDetailView.as_view(),
@@ -16,7 +17,7 @@ urlpatterns = patterns(
     ),
     url(
         r'^signature/(?P<pk>\d+)/download/$',
-        'document_signature_download',
+        DocumentSignatureDownloadView.as_view(),
         name='document_version_signature_download'
     ),
     url(

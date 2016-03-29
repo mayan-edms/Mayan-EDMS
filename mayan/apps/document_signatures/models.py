@@ -98,7 +98,9 @@ class EmbeddedSignature(SignatureBaseModel):
 
         with self.document_version.open(raw=raw) as file_object:
             try:
-                verify_result = Key.objects.verify_file(file_object=file_object)
+                verify_result = Key.objects.verify_file(
+                    file_object=file_object
+                )
             except VerificationError as exception:
                 # Not signed
                 logger.debug(
@@ -113,6 +115,7 @@ class EmbeddedSignature(SignatureBaseModel):
                 super(EmbeddedSignature, self).save(*args, **kwargs)
 
 
+@python_2_unicode_compatible
 class DetachedSignature(SignatureBaseModel):
     signature_file = models.FileField(
         blank=True, null=True, storage=storage_backend, upload_to=upload_to,
@@ -122,6 +125,9 @@ class DetachedSignature(SignatureBaseModel):
     class Meta:
         verbose_name = _('Document version detached signature')
         verbose_name_plural = _('Document version detached signatures')
+
+    def __str__(self):
+        return '{}-{}'.format(self.document_version, _('signature'))
 
     def delete(self, *args, **kwargs):
         self.signature_file.storage.delete(self.signature_file.name)

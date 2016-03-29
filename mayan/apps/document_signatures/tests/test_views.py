@@ -2,8 +2,9 @@ from __future__ import absolute_import, unicode_literals
 
 from django.core.files import File
 
+from django_downloadview.test import assert_download_response
+
 from django_gpg.models import Key
-from documents.permissions import permission_document_view
 from documents.tests.literals import TEST_DOCUMENT_PATH
 from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests import (
@@ -168,3 +169,51 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(response.status_code, 302)
         self.assertEqual(DetachedSignature.objects.count(), 1)
+
+    def test_signature_download_view_no_permission(self):
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+            signature = DetachedSignature.objects.create(
+                document_version=document.latest_version,
+                signature_file=File(file_object)
+            )
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        response = self.get(
+            'signatures:document_version_signature_download',
+            args=(signature.pk,),
+        )
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_signature_download_view_with_permission(self):
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        with open(TEST_SIGNATURE_FILE_PATH) as file_object:
+            signature = DetachedSignature.objects.create(
+                document_version=document.latest_version,
+                signature_file=File(file_object)
+            )
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(
+            permission_document_version_signature_download.stored_permission
+        )
+
+        response = self.get(
+            'signatures:document_version_signature_download',
+            args=(signature.pk,),
+        )
+
+        assert_download_response(
+            self, response=response, content=signature.signature_file.read(),
+        )

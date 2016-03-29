@@ -9,12 +9,6 @@ from django_gpg.models import Key
 from .models import SignatureBaseModel
 
 
-class DetachedSignatureForm(forms.Form):
-    file = forms.FileField(
-        label=_('Signature file'),
-    )
-
-
 class DocumentVersionSignatureDetailForm(DetailForm):
     def __init__(self, *args, **kwargs):
         extra_fields = (
@@ -70,7 +64,9 @@ class DocumentVersionSignatureDetailForm(DetailForm):
             )
 
         kwargs['extra_fields'] = extra_fields
-        super(DocumentVersionSignatureDetailForm, self).__init__(*args, **kwargs)
+        super(
+            DocumentVersionSignatureDetailForm, self
+        ).__init__(*args, **kwargs)
 
     class Meta:
         fields = ()
