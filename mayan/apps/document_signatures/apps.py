@@ -10,7 +10,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import (
-    MayanAppConfig, menu_object, menu_sidebar, menu_tools
+    MayanAppConfig, menu_facet, menu_object, menu_sidebar, menu_tools
 )
 from common.signals import post_upgrade
 from mayan.celery import app
@@ -22,6 +22,7 @@ from .handlers import (
 )
 from .links import (
     link_all_document_version_signature_verify,
+    link_document_signature_list,
     link_document_version_signature_delete,
     link_document_version_signature_details,
     link_document_version_signature_download,
@@ -121,6 +122,9 @@ class DocumentSignaturesApp(MayanAppConfig):
             }
         )
 
+        menu_facet.bind_links(
+            links=(link_document_signature_list,), sources=(Document,)
+        )
         menu_object.bind_links(
             links=(link_document_version_signature_list,),
             sources=(DocumentVersion,)

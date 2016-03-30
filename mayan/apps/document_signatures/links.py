@@ -30,6 +30,13 @@ link_all_document_version_signature_verify = Link(
     text=_('Verify all documents'),
     view='signatures:all_document_version_signature_verify',
 )
+link_document_signature_list = Link(
+    args='resolved_object.latest_version.pk',
+    icon='fa fa-certificate',
+    permissions=(permission_document_version_signature_view,),
+    text=_('Signatures'),
+    view='signatures:document_version_signature_list',
+)
 link_document_version_signature_delete = Link(
     args='resolved_object.pk', condition=is_detached_signature,
     permissions=(permission_document_version_signature_delete,),
@@ -45,7 +52,7 @@ link_document_version_signature_details = Link(
 link_document_version_signature_list = Link(
     args='resolved_object.pk',
     permissions=(permission_document_version_signature_view,),
-    text=_('Signature list'),
+    permissions_related='document', text=_('Signature list'),
     view='signatures:document_version_signature_list',
 )
 link_document_version_signature_download = Link(
