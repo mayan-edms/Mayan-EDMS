@@ -128,7 +128,7 @@ class Key(models.Model):
             gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
         )
 
-        import_results = gpg.import_keys(key_data=self.data)
+        import_results = gpg.import_keys(key_data=self.key_data)
 
         file_sign_results = gpg.sign_file(
             file=file_object, keyid=import_results.fingerprints[0],

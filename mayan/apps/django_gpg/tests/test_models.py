@@ -1,16 +1,20 @@
 from __future__ import unicode_literals
 
+import StringIO
 import tempfile
 
 from django.test import TestCase
 
-from ..exceptions import DecryptionError, KeyDoesNotExist, VerificationError
+from ..exceptions import (
+    DecryptionError, KeyDoesNotExist, NeedPassphrase, PassphraseError,
+    VerificationError
+)
 from ..models import Key
 
 from .literals import (
     TEST_DETACHED_SIGNATURE, TEST_FILE, TEST_KEY_DATA, TEST_KEY_FINGERPRINT,
-    TEST_SEARCH_FINGERPRINT, TEST_SEARCH_UID, TEST_SIGNED_FILE,
-    TEST_SIGNED_FILE_CONTENT
+    TEST_KEY_PASSPHRASE, TEST_SEARCH_FINGERPRINT, TEST_SEARCH_UID,
+    TEST_SIGNED_FILE, TEST_SIGNED_FILE_CONTENT
 )
 
 
@@ -116,5 +120,46 @@ class KeyTestCase(TestCase):
                     file_object=test_file, signature_file=signature_file
                 )
 
+        self.assertTrue(result)
+        self.assertEqual(result.fingerprint, TEST_KEY_FINGERPRINT)
+
+    def test_detached_signing_no_passphrase(self):
+        key = Key.objects.create(key_data=TEST_KEY_DATA)
+
+        with self.assertRaises(NeedPassphrase):
+            with open(TEST_FILE) as test_file:
+                detached_signature = key.sign_file(
+                    file_object=test_file, detached=True,
+                )
+
+    def test_detached_signing_bad_passphrase(self):
+        key = Key.objects.create(key_data=TEST_KEY_DATA)
+
+        with self.assertRaises(PassphraseError):
+            with open(TEST_FILE) as test_file:
+                detached_signature = key.sign_file(
+                    file_object=test_file, detached=True,
+                    passphrase='bad passphrase'
+                )
+
+    def test_detached_signing_with_passphrase(self):
+        key = Key.objects.create(key_data=TEST_KEY_DATA)
+
+        with open(TEST_FILE) as test_file:
+            detached_signature = key.sign_file(
+                file_object=test_file, detached=True,
+                passphrase=TEST_KEY_PASSPHRASE
+            )
+
+        signature_file = StringIO.StringIO()
+        signature_file.write(detached_signature)
+        signature_file.seek(0)
+
+        with open(TEST_FILE) as test_file:
+            result = Key.objects.verify_file(
+                file_object=test_file, signature_file=signature_file
+            )
+
+        signature_file.close()
         self.assertTrue(result)
         self.assertEqual(result.fingerprint, TEST_KEY_FINGERPRINT)
