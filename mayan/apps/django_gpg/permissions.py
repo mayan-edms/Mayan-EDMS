@@ -9,6 +9,9 @@ namespace = PermissionNamespace('django_gpg', _('Key management'))
 permission_key_delete = namespace.add_permission(
     name='key_delete', label=_('Delete keys')
 )
+permission_key_download = namespace.add_permission(
+    name='key_download', label=_('Download keys')
+)
 permission_key_receive = namespace.add_permission(
     name='key_receive', label=_('Import keys from keyservers')
 )

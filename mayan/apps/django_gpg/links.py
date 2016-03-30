@@ -5,8 +5,8 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link
 
 from .permissions import (
-    permission_key_delete, permission_key_receive, permission_key_view,
-    permission_keyserver_query
+    permission_key_delete, permission_key_download, permission_key_receive,
+    permission_key_view, permission_keyserver_query
 )
 
 link_private_keys = Link(
@@ -24,6 +24,10 @@ link_key_delete = Link(
 link_key_detail = Link(
     permissions=(permission_key_view,), text=_('Details'),
     view='django_gpg:key_detail', args=('resolved_object.pk',)
+)
+link_key_download = Link(
+    permissions=(permission_key_download,), text=_('Download'),
+    view='django_gpg:key_download', args=('resolved_object.pk',)
 )
 link_key_query = Link(
     permissions=(permission_keyserver_query,), text=_('Query keyservers'),

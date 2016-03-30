@@ -3,20 +3,21 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
+from django.core.files.base import ContentFile
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from common.generics import (
     ConfirmView, SimpleView, SingleObjectDeleteView, SingleObjectDetailView,
-    SingleObjectListView
+    SingleObjectDownloadView, SingleObjectListView
 )
 
 from .forms import KeyDetailForm, KeySearchForm
 from .literals import KEY_TYPE_PUBLIC
 from .models import Key
 from .permissions import (
-    permission_key_delete, permission_key_receive, permission_key_view,
-    permission_keyserver_query
+    permission_key_delete, permission_key_download, permission_key_receive,
+    permission_key_view, permission_keyserver_query
 )
 
 logger = logging.getLogger(__name__)
@@ -45,6 +46,16 @@ class KeyDetailView(SingleObjectDetailView):
         return {
             'title': _('Details for key: %s') % self.get_object(),
         }
+
+
+class KeyDownloadView(SingleObjectDownloadView):
+    model = Key
+    object_permission = permission_key_download
+
+    def get_file(self):
+        key = self.get_object()
+
+        return ContentFile(key.key_data, name=key.key_id)
 
 
 class KeyReceive(ConfirmView):

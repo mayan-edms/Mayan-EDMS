@@ -13,11 +13,12 @@ from navigation import SourceColumn
 
 from .classes import KeyStub
 from .links import (
-    link_key_delete, link_key_detail, link_key_query, link_key_receive,
-    link_key_setup, link_private_keys, link_public_keys
+    link_key_delete, link_key_detail, link_key_download, link_key_query,
+    link_key_receive, link_key_setup, link_private_keys, link_public_keys
 )
 from .permissions import (
-    permission_key_delete, permission_key_sign, permission_key_view
+    permission_key_delete, permission_key_download, permission_key_sign,
+    permission_key_view
 )
 
 
@@ -35,7 +36,8 @@ class DjangoGPGApp(MayanAppConfig):
         ModelPermission.register(
             model=Key, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_key_delete, permission_key_sign, permission_key_view
+                permission_key_delete, permission_key_download,
+                permission_key_sign, permission_key_view
             )
         )
 
@@ -89,7 +91,8 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
         menu_object.bind_links(links=(link_key_receive,), sources=(KeyStub,))
 
         menu_object.bind_links(
-            links=(link_acl_list, link_key_delete,), sources=(Key,)
+            links=(link_acl_list, link_key_delete, link_key_download,),
+            sources=(Key,)
         )
         menu_setup.bind_links(links=(link_key_setup,))
         menu_facet.bind_links(
