@@ -25,6 +25,7 @@ def is_detached_signature(context):
 
 
 link_all_document_version_signature_verify = Link(
+    icon='fa fa-certificate',
     permissions=(permission_document_version_signature_verify,),
     text=_('Verify all documents'),
     view='signatures:all_document_version_signature_verify',
