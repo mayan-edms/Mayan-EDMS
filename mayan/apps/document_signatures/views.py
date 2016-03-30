@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.shortcuts import get_object_or_404
@@ -9,8 +10,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.generics import (
-    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectDetailView,
-    SingleObjectDownloadView, SingleObjectListView
+    ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
 )
 from documents.models import DocumentVersion
 from permissions import Permission
@@ -18,11 +19,13 @@ from permissions import Permission
 from .forms import DocumentVersionSignatureDetailForm
 from .models import DetachedSignature, SignatureBaseModel
 from .permissions import (
-    permission_document_version_signature_view,
-    permission_document_version_signature_upload,
+    permission_document_version_signature_delete,
     permission_document_version_signature_download,
-    permission_document_version_signature_delete
+    permission_document_version_signature_upload,
+    permission_document_version_signature_verify,
+    permission_document_version_signature_view,
 )
+from .tasks import task_verify_missing_embedded_signature
 
 logger = logging.getLogger(__name__)
 
@@ -159,4 +162,22 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
         return reverse(
             'signatures:document_version_signature_list',
             args=(self.get_document_version().pk,)
+        )
+
+
+class AllDocumentSignatureVerifyView(ConfirmView):
+    extra_context = {
+        'message': _(
+            'On large databases this operation may take some time to execute.'
+        ), 'title': _('Verify all document for signatures?'),
+    }
+    view_permission = permission_document_version_signature_verify
+
+    def get_post_action_redirect(self):
+        return reverse('common:tools_list')
+
+    def view_action(self):
+        task_verify_missing_embedded_signature.delay()
+        messages.success(
+            self.request, _('Signature verification queued successfully.')
         )

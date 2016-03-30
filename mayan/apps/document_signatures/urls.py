@@ -3,9 +3,9 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 
 from .views import (
-    DocumentVersionSignatureDeleteView, DocumentVersionSignatureDetailView,
-    DocumentVersionSignatureDownloadView, DocumentVersionSignatureListView,
-    DocumentVersionSignatureUploadView
+    AllDocumentSignatureVerifyView, DocumentVersionSignatureDeleteView,
+    DocumentVersionSignatureDetailView, DocumentVersionSignatureDownloadView,
+    DocumentVersionSignatureListView, DocumentVersionSignatureUploadView
 )
 
 urlpatterns = patterns(
@@ -34,5 +34,10 @@ urlpatterns = patterns(
         r'^signature/(?P<pk>\d+)/delete/$',
         DocumentVersionSignatureDeleteView.as_view(),
         name='document_version_signature_delete'
+    ),
+    url(
+        r'^tools/all/document/version/signature/verify/$',
+        AllDocumentSignatureVerifyView.as_view(),
+        name='all_document_version_signature_verify'
     ),
 )

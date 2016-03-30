@@ -10,13 +10,18 @@ from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import (
-    MayanAppConfig, menu_object, menu_sidebar
+    MayanAppConfig, menu_object, menu_sidebar, menu_tools
 )
+from common.signals import post_upgrade
 from mayan.celery import app
 from navigation import SourceColumn
 
-from .handlers import unverify_signatures, verify_signatures
+from .handlers import (
+    unverify_key_signatures, verify_key_signatures,
+    verify_missing_embedded_signature
+)
 from .links import (
+    link_all_document_version_signature_verify,
     link_document_version_signature_delete,
     link_document_version_signature_details,
     link_document_version_signature_download,
@@ -101,11 +106,17 @@ class DocumentSignaturesApp(MayanAppConfig):
 
         app.conf.CELERY_ROUTES.update(
             {
-                'document_signatures.tasks.task_verify_signatures': {
+                'document_signatures.tasks.task_verify_key_signatures': {
                     'queue': 'signatures'
                 },
-                'document_signatures.tasks.task_unverify_signatures': {
+                'document_signatures.tasks.task_unverify_key_signatures': {
                     'queue': 'signatures'
+                },
+                'document_signatures.tasks.task_verify_document_version': {
+                    'queue': 'signatures'
+                },
+                'document_signatures.tasks.task_verify_missing_embedded_signature': {
+                    'queue': 'tools'
                 },
             }
         )
@@ -126,13 +137,21 @@ class DocumentSignaturesApp(MayanAppConfig):
                 link_document_version_signature_upload,
             ), sources=(DocumentVersion,)
         )
+        menu_tools.bind_links(
+            links=(link_all_document_version_signature_verify,)
+        )
+
         post_delete.connect(
-            unverify_signatures,
-            dispatch_uid='unverify_signatures',
+            unverify_key_signatures,
+            dispatch_uid='unverify_key_signatures',
             sender=Key
         )
+        post_upgrade.connect(
+            verify_missing_embedded_signature,
+            dispatch_uid='verify_missing_embedded_signature',
+        )
         post_save.connect(
-            verify_signatures,
-            dispatch_uid='verify_signatures',
+            verify_key_signatures,
+            dispatch_uid='verify_key_signatures',
             sender=Key
         )

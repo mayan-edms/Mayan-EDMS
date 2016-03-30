@@ -6,10 +6,11 @@ from django.core.files import File
 from django.test import TestCase, override_settings
 
 from django_gpg.models import Key
-from documents.models import DocumentType
+from documents.models import DocumentType, DocumentVersion
 from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
 from ..models import DetachedSignature, EmbeddedSignature
+from ..tasks import task_verify_missing_embedded_signature
 
 from .literals import (
     TEST_SIGNED_DOCUMENT_PATH, TEST_SIGNATURE_FILE_PATH, TEST_KEY_FILE,
@@ -241,3 +242,69 @@ class DocumentSignaturesTestCase(TestCase):
 
         self.assertEqual(signature.document_version, signed_version)
         self.assertEqual(signature.key_id, TEST_KEY_ID)
+
+
+@override_settings(OCR_AUTO_OCR=False)
+class EmbeddedSignaturesTestCase(TestCase):
+    def setUp(self):
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+    def tearDown(self):
+        self.document_type.delete()
+
+    def test_unsigned_document_version_method(self):
+        TEST_UNSIGNED_DOCUMENT_COUNT = 3
+        TEST_SIGNED_DOCUMENT_COUNT = 3
+
+        for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
+            with open(TEST_DOCUMENT_PATH) as file_object:
+                self.document_type.new_document(
+                    file_object=file_object
+                )
+
+        for count in range(TEST_SIGNED_DOCUMENT_COUNT):
+            with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+                self.document_type.new_document(
+                    file_object=file_object
+                )
+
+        self.assertEqual(
+            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            TEST_UNSIGNED_DOCUMENT_COUNT
+        )
+
+    def test_task_verify_missing_embedded_signature(self):
+        old_hooks = DocumentVersion._post_save_hooks
+
+        DocumentVersion._post_save_hooks = {}
+
+        TEST_UNSIGNED_DOCUMENT_COUNT = 4
+        TEST_SIGNED_DOCUMENT_COUNT = 2
+
+        for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
+            with open(TEST_DOCUMENT_PATH) as file_object:
+                self.document_type.new_document(
+                    file_object=file_object
+                )
+
+        for count in range(TEST_SIGNED_DOCUMENT_COUNT):
+            with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+                self.document_type.new_document(
+                    file_object=file_object
+                )
+
+        self.assertEqual(
+            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            TEST_UNSIGNED_DOCUMENT_COUNT + TEST_SIGNED_DOCUMENT_COUNT
+        )
+
+        DocumentVersion._post_save_hooks = old_hooks
+
+        task_verify_missing_embedded_signature.delay()
+
+        self.assertEqual(
+            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            TEST_UNSIGNED_DOCUMENT_COUNT
+        )

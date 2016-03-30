@@ -9,6 +9,7 @@ from .permissions import (
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
+    permission_document_version_signature_verify,
     permission_document_version_signature_view
 )
 
@@ -23,6 +24,11 @@ def is_detached_signature(context):
     ).is_detached
 
 
+link_all_document_version_signature_verify = Link(
+    permissions=(permission_document_version_signature_verify,),
+    text=_('Verify all documents'),
+    view='signatures:all_document_version_signature_verify',
+)
 link_document_version_signature_delete = Link(
     args='resolved_object.pk', condition=is_detached_signature,
     permissions=(permission_document_version_signature_delete,),

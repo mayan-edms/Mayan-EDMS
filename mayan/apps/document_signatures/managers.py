@@ -6,6 +6,7 @@ from django.db import models
 
 from django_gpg.exceptions import DecryptionError
 from django_gpg.models import Key
+from documents.models import DocumentVersion
 
 logger = logging.getLogger(__name__)
 
@@ -24,3 +25,8 @@ class EmbeddedSignatureManager(models.Manager):
                 return file_object
         else:
             return file_object
+
+    def unsigned_document_versions(self):
+        return DocumentVersion.objects.exclude(
+            pk__in=self.values('document_version')
+        )

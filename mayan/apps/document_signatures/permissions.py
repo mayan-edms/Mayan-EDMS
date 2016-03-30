@@ -20,6 +20,10 @@ permission_document_version_signature_upload = namespace.add_permission(
     name='document_version_signature_upload',
     label=_('Upload detached document signatures')
 )
+permission_document_version_signature_verify = namespace.add_permission(
+    name='document_version_signature_verify',
+    label=_('Verify document signatures')
+)
 permission_document_version_signature_view = namespace.add_permission(
     name='document_version_signature_view',
     label=_('View details of document signatures')

@@ -5,21 +5,29 @@ from django.core.files import File
 from django_downloadview.test import assert_download_response
 
 from django_gpg.models import Key
+from documents.models import Document, DocumentVersion
 from documents.tests.literals import TEST_DOCUMENT_PATH
 from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests import (
     TEST_USER_USERNAME, TEST_USER_PASSWORD
 )
 
-from ..models import DetachedSignature
+from ..models import DetachedSignature, EmbeddedSignature
 from ..permissions import (
     permission_document_version_signature_view,
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
+    permission_document_version_signature_verify,
+    permission_document_version_signature_view
 )
 
-from .literals import TEST_SIGNATURE_FILE_PATH, TEST_KEY_FILE
+from .literals import (
+    TEST_SIGNATURE_FILE_PATH, TEST_SIGNED_DOCUMENT_PATH, TEST_KEY_FILE
+)
+
+TEST_UNSIGNED_DOCUMENT_COUNT = 4
+TEST_SIGNED_DOCUMENT_COUNT = 2
 
 
 class SignaturesViewTestCase(GenericDocumentViewTestCase):
@@ -45,7 +53,7 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             args=(document.latest_version.pk,)
         )
 
-        self.assertContains(response, 'Total: 0', status_code=200)
+        self.assertEqual(response.status_code, 403)
 
     def test_signature_list_view_with_permission(self):
         with open(TEST_KEY_FILE) as file_object:
@@ -232,6 +240,10 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
+        self.role.permissions.add(
+            permission_document_version_signature_view.stored_permission
+        )
+
         response = self.post(
             'signatures:document_version_signature_delete',
             args=(signature.pk,)
@@ -260,6 +272,9 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
         self.role.permissions.add(
             permission_document_version_signature_delete.stored_permission
         )
+        self.role.permissions.add(
+            permission_document_version_signature_view.stored_permission
+        )
 
         response = self.post(
             'signatures:document_version_signature_delete',
@@ -268,3 +283,87 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
 
         self.assertContains(response, 'deleted', status_code=200)
         self.assertEqual(DetachedSignature.objects.count(), 0)
+
+    def test_missing_signature_verify_view_no_permission(self):
+        for document in self.document_type.documents.all():
+            document.delete(to_trash=False)
+
+        from documents.models import DocumentType
+
+        old_hooks = DocumentVersion._post_save_hooks
+        DocumentVersion._post_save_hooks = {}
+        for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
+            with open(TEST_DOCUMENT_PATH) as file_object:
+                self.document_type.new_document(
+                    file_object=file_object
+                )
+
+        for count in range(TEST_SIGNED_DOCUMENT_COUNT):
+            with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+                self.document_type.new_document(
+                    file_object=file_object
+                )
+
+        self.assertEqual(
+            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            TEST_UNSIGNED_DOCUMENT_COUNT + TEST_SIGNED_DOCUMENT_COUNT
+        )
+
+        DocumentVersion._post_save_hooks = old_hooks
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        response = self.post(
+            'signatures:all_document_version_signature_verify', follow=True
+        )
+
+        self.assertEqual(response.status_code, 403)
+
+        self.assertEqual(
+            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            TEST_UNSIGNED_DOCUMENT_COUNT + TEST_SIGNED_DOCUMENT_COUNT
+        )
+
+    def test_missing_signature_verify_view_with_permission(self):
+        for document in self.document_type.documents.all():
+            document.delete(to_trash=False)
+
+        from documents.models import DocumentType
+
+        old_hooks = DocumentVersion._post_save_hooks
+        DocumentVersion._post_save_hooks = {}
+        for count in range(TEST_UNSIGNED_DOCUMENT_COUNT):
+            with open(TEST_DOCUMENT_PATH) as file_object:
+                self.document_type.new_document(
+                    file_object=file_object
+                )
+
+        for count in range(TEST_SIGNED_DOCUMENT_COUNT):
+            with open(TEST_SIGNED_DOCUMENT_PATH) as file_object:
+                self.document_type.new_document(
+                    file_object=file_object
+                )
+
+        self.assertEqual(
+            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            TEST_UNSIGNED_DOCUMENT_COUNT + TEST_SIGNED_DOCUMENT_COUNT
+        )
+
+        DocumentVersion._post_save_hooks = old_hooks
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(
+            permission_document_version_signature_verify.stored_permission
+        )
+
+        response = self.post(
+            'signatures:all_document_version_signature_verify', follow=True
+        )
+
+        self.assertContains(response, 'queued', status_code=200)
+
+        self.assertEqual(
+            EmbeddedSignature.objects.unsigned_document_versions().count(),
+            TEST_UNSIGNED_DOCUMENT_COUNT
+        )
