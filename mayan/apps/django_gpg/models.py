@@ -43,7 +43,10 @@ def gpg_command(function):
 
 @python_2_unicode_compatible
 class Key(models.Model):
-    key_data = models.TextField(verbose_name=_('Key data'))
+    key_data = models.TextField(
+        help_text=_('ASCII armored version of the key.'),
+        verbose_name=_('Key data')
+    )
     creation_date = models.DateField(
         editable=False, verbose_name=_('Creation date')
     )
@@ -80,7 +83,10 @@ class Key(models.Model):
         import_results = gpg_command(function=import_key)
 
         if not import_results.count:
-            raise ValidationError('Invalid key data')
+            raise ValidationError(_('Invalid key data'))
+
+        if Key.objects.filter(fingerprint=import_results.fingerprints[0]).exists():
+            raise ValidationError(_('Key already exists.'))
 
     def get_absolute_url(self):
         return reverse('django_gpg:key_detail', args=(self.pk,))

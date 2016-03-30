@@ -128,7 +128,7 @@ class KeyTestCase(TestCase):
 
         with self.assertRaises(NeedPassphrase):
             with open(TEST_FILE) as test_file:
-                detached_signature = key.sign_file(
+                key.sign_file(
                     file_object=test_file, detached=True,
                 )
 
@@ -137,7 +137,7 @@ class KeyTestCase(TestCase):
 
         with self.assertRaises(PassphraseError):
             with open(TEST_FILE) as test_file:
-                detached_signature = key.sign_file(
+                key.sign_file(
                     file_object=test_file, detached=True,
                     passphrase='bad passphrase'
                 )

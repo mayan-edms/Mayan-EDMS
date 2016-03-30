@@ -14,7 +14,8 @@ from navigation import SourceColumn
 from .classes import KeyStub
 from .links import (
     link_key_delete, link_key_detail, link_key_download, link_key_query,
-    link_key_receive, link_key_setup, link_private_keys, link_public_keys
+    link_key_receive, link_key_setup, link_key_upload, link_private_keys,
+    link_public_keys
 )
 from .permissions import (
     permission_key_delete, permission_key_download, permission_key_sign,
@@ -104,7 +105,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
             )
         )
         menu_sidebar.bind_links(
-            links=(link_key_query,),
+            links=(link_key_query, link_key_upload),
             sources=(
                 'django_gpg:key_public_list', 'django_gpg:key_private_list',
                 'django_gpg:key_query', 'django_gpg:key_query_results', Key,

@@ -19,6 +19,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='key',
             name='key_type',
-            field=models.CharField(verbose_name='Type', max_length=3, editable=False, choices=[('pub', 'Public'), ('sec', 'Secret')]),
+            field=models.CharField(
+                verbose_name='Type', max_length=3, editable=False,
+                choices=[('pub', 'Public'), ('sec', 'Secret')]
+            ),
         ),
     ]

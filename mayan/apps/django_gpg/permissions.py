@@ -18,6 +18,9 @@ permission_key_receive = namespace.add_permission(
 permission_key_sign = namespace.add_permission(
     name='key_sign', label=_('Use keys to sign content')
 )
+permission_key_upload = namespace.add_permission(
+    name='key_upload', label=_('Upload keys')
+)
 permission_key_view = namespace.add_permission(
     name='key_view', label=_('View keys')
 )

@@ -8,8 +8,9 @@ from django.core.urlresolvers import reverse, reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from common.generics import (
-    ConfirmView, SimpleView, SingleObjectDeleteView, SingleObjectDetailView,
-    SingleObjectDownloadView, SingleObjectListView
+    ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView,
+    SimpleView
 )
 
 from .forms import KeyDetailForm, KeySearchForm
@@ -17,7 +18,7 @@ from .literals import KEY_TYPE_PUBLIC
 from .models import Key
 from .permissions import (
     permission_key_delete, permission_key_download, permission_key_receive,
-    permission_key_view, permission_keyserver_query
+    permission_key_upload, permission_key_view, permission_keyserver_query
 )
 
 logger = logging.getLogger(__name__)
@@ -124,6 +125,18 @@ class KeyQueryResultView(SingleObjectListView):
             return Key.objects.search(query=term)
         else:
             return ()
+
+
+class KeyUploadView(SingleObjectCreateView):
+    fields = ('key_data',)
+    model = Key
+    post_action_redirect = reverse_lazy('django_gpg:key_public_list')
+    view_permission = permission_key_upload
+
+    def get_extra_context(self):
+        return {
+            'title': _('Upload new key'),
+        }
 
 
 class PublicKeyListView(SingleObjectListView):

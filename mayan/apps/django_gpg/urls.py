@@ -4,7 +4,8 @@ from django.conf.urls import patterns, url
 
 from .views import (
     KeyDeleteView, KeyDetailView, KeyDownloadView, KeyQueryView,
-    KeyQueryResultView, KeyReceive, PrivateKeyListView, PublicKeyListView
+    KeyQueryResultView, KeyReceive, KeyUploadView, PrivateKeyListView,
+    PublicKeyListView
 )
 
 urlpatterns = patterns(
@@ -25,6 +26,9 @@ urlpatterns = patterns(
     ),
     url(
         r'^list/public/$', PublicKeyListView.as_view(), name='key_public_list'
+    ),
+    url(
+        r'^upload/$', KeyUploadView.as_view(), name='key_upload'
     ),
     url(r'^query/$', KeyQueryView.as_view(), name='key_query'),
     url(
