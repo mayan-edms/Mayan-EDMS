@@ -64,6 +64,12 @@ link_document_version_signature_download = Link(
 link_document_version_signature_upload = Link(
     args='resolved_object.pk',
     permissions=(permission_document_version_signature_upload,),
-    text=_('Upload signature'),
+    permissions_related='document', text=_('Upload signature'),
     view='signatures:document_version_signature_upload',
+)
+link_document_version_signature_detached_create = Link(
+    args='resolved_object.pk',
+    permissions=(permission_document_version_signature_upload,),
+    permissions_related='document', text=_('Sign detached'),
+    view='signatures:document_version_signature_detached_create',
 )

@@ -1,24 +1,33 @@
 from __future__ import absolute_import, unicode_literals
 
+import tempfile
 import logging
 
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
+from django.core.files import File
 from django.core.urlresolvers import reverse
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.generics import (
-    ConfirmView, SingleObjectCreateView, SingleObjectDeleteView,
+    ConfirmView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
 )
+from django_gpg.exceptions import NeedPassphrase, PassphraseError
+from django_gpg.permissions import permission_key_sign
 from documents.models import DocumentVersion
 from permissions import Permission
 
-from .forms import DocumentVersionSignatureDetailForm
+from .forms import (
+    DocumentVersionDetachedSignatureCreateForm,
+    DocumentVersionSignatureDetailForm
+)
 from .models import DetachedSignature, SignatureBaseModel
 from .permissions import (
+    permission_document_version_sign_detached,
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
@@ -28,6 +37,112 @@ from .permissions import (
 from .tasks import task_verify_missing_embedded_signature
 
 logger = logging.getLogger(__name__)
+
+
+class DocumentVersionDetachedSignatureCreateView(FormView):
+    form_class = DocumentVersionDetachedSignatureCreateForm
+
+    def form_valid(self, form):
+        key = form.cleaned_data['key']
+        passphrase = form.cleaned_data['passphrase'] or None
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_key_sign,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_key_sign, self.request.user, key
+            )
+
+        try:
+            with self.get_document_version().open() as file_object:
+                detached_signature = key.sign_file(
+                    file_object=file_object, detached=True,
+                    passphrase=passphrase
+                )
+        except NeedPassphrase:
+            messages.error(
+                self.request, _('Passphrase is needed to unlock this key.')
+            )
+            return HttpResponseRedirect(
+                reverse(
+                    'signatures:document_version_signature_detached_create',
+                    args=(self.get_document_version().pk,)
+                )
+            )
+        except PassphraseError:
+            messages.error(
+                self.request, _('Passphrase is incorrect.')
+            )
+            return HttpResponseRedirect(
+                reverse(
+                    'signatures:document_version_signature_detached_create',
+                    args=(self.get_document_version().pk,)
+                )
+            )
+        else:
+            temporary_file_object = tempfile.TemporaryFile()
+            temporary_file_object.write(detached_signature.data)
+            temporary_file_object.seek(0)
+
+            DetachedSignature.objects.create(
+                document_version=self.get_document_version(),
+                signature_file=File(temporary_file_object)
+            )
+
+            temporary_file_object.close()
+
+            messages.success(
+                self.request, _('Document version signed successfully.')
+            )
+
+        return super(
+            DocumentVersionDetachedSignatureCreateView, self
+        ).form_valid(form)
+
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_version_sign_detached,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_version_sign_detached, request.user,
+                self.get_document_version().document
+            )
+
+        return super(
+            DocumentVersionDetachedSignatureCreateView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document_version(self):
+        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        return {
+            'document': self.get_document_version().document,
+            'document_version': self.get_document_version(),
+            'navigation_object_list': ('document', 'document_version'),
+            'title': _(
+                'Sign document version "%s" with a detached signature?'
+            ) % self.get_document_version(),
+        }
+
+    def get_form_kwargs(self):
+        result = super(
+            DocumentVersionDetachedSignatureCreateView, self
+        ).get_form_kwargs()
+
+        result.update({'user': self.request.user})
+
+        return result
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'signatures:document_version_signature_list',
+            args=(self.get_document_version().pk,)
+        )
 
 
 class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):

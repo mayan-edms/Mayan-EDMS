@@ -14,7 +14,6 @@ from user_management.tests import (
 
 from ..models import DetachedSignature, EmbeddedSignature
 from ..permissions import (
-    permission_document_version_signature_view,
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
@@ -287,8 +286,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
     def test_missing_signature_verify_view_no_permission(self):
         for document in self.document_type.documents.all():
             document.delete(to_trash=False)
-
-        from documents.models import DocumentType
 
         old_hooks = DocumentVersion._post_save_hooks
         DocumentVersion._post_save_hooks = {}

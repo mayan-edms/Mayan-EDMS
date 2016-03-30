@@ -33,13 +33,7 @@ class KeyDeleteView(SingleObjectDeleteView):
             return reverse_lazy('django_gpg:key_private_list')
 
     def get_extra_context(self):
-        return {
-            'title': _('Delete key'),
-            'message': _(
-                'Delete key %s? If you delete a public key that is part of a '
-                'public/private pair the private key will be deleted as well.'
-            ) % self.get_object(),
-        }
+        return {'title': _('Delete key: %s') % self.get_object()}
 
 
 class KeyDetailView(SingleObjectDetailView):

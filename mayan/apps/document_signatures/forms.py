@@ -1,12 +1,50 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
+
+import logging
 
 from django import forms
+from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
+
+from acls.models import AccessControlList
+from permissions import Permission
 
 from common.forms import DetailForm
 from django_gpg.models import Key
+from django_gpg.permissions import permission_key_sign
 
 from .models import SignatureBaseModel
+
+logger = logging.getLogger(__name__)
+
+
+class DocumentVersionDetachedSignatureCreateForm(forms.Form):
+    key = forms.ModelChoiceField(
+        label=_('Key'), queryset=Key.objects.none()
+    )
+
+    passphrase = forms.CharField(
+        label=_('Passphrase'), required=False,
+        widget=forms.widgets.PasswordInput
+    )
+
+    def __init__(self, *args, **kwargs):
+        user = kwargs.pop('user', None)
+        logger.debug('user: %s', user)
+        super(
+            DocumentVersionDetachedSignatureCreateForm, self
+        ).__init__(*args, **kwargs)
+
+        queryset = Key.objects.private_keys()
+
+        try:
+            Permission.check_permissions(user, (permission_key_sign,))
+        except PermissionDenied:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_key_sign, user, queryset
+            )
+
+        self.fields['key'].queryset = queryset
 
 
 class DocumentVersionSignatureDetailForm(DetailForm):

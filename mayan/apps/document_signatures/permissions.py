@@ -8,6 +8,10 @@ namespace = PermissionNamespace(
     'document_signatures', _('Document signatures')
 )
 
+permission_document_version_sign_detached = namespace.add_permission(
+    name='document_version_sign_detached',
+    label=_('Sign documents with detached signatures')
+)
 permission_document_version_signature_delete = namespace.add_permission(
     name='document_version_signature_delete',
     label=_('Delete detached signatures')

@@ -24,12 +24,14 @@ from .links import (
     link_all_document_version_signature_verify,
     link_document_signature_list,
     link_document_version_signature_delete,
+    link_document_version_signature_detached_create,
     link_document_version_signature_details,
     link_document_version_signature_download,
     link_document_version_signature_list,
     link_document_version_signature_upload,
 )
 from .permissions import (
+    permission_document_version_sign_detached,
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
@@ -74,6 +76,7 @@ class DocumentSignaturesApp(MayanAppConfig):
 
         ModelPermission.register(
             model=Document, permissions=(
+                permission_document_version_sign_detached,
                 permission_document_version_signature_delete,
                 permission_document_version_signature_download,
                 permission_document_version_signature_view,
@@ -93,7 +96,7 @@ class DocumentSignaturesApp(MayanAppConfig):
             func=lambda context: context['object'].signature_id or _('None')
         )
         SourceColumn(
-            source=SignatureBaseModel, label=_('Is embedded?'),
+            source=SignatureBaseModel, label=_('Type'),
             func=lambda context: SignatureBaseModel.objects.get_subclass(
                 pk=context['object'].pk
             ).get_signature_type_display()
@@ -126,8 +129,10 @@ class DocumentSignaturesApp(MayanAppConfig):
             links=(link_document_signature_list,), sources=(Document,)
         )
         menu_object.bind_links(
-            links=(link_document_version_signature_list,),
-            sources=(DocumentVersion,)
+            links=(
+                link_document_version_signature_list,
+                link_document_version_signature_detached_create,
+            ), sources=(DocumentVersion,)
         )
         menu_object.bind_links(
             links=(

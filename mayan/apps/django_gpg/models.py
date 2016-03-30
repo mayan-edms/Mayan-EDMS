@@ -117,7 +117,7 @@ class Key(models.Model):
         super(Key, self).save(*args, **kwargs)
 
     def __str__(self):
-        return self.key_id
+        return '{} - {}'.format(self.key_id, self.user_id)
 
     def sign_file(self, file_object, passphrase=None, clearsign=True, detached=False, binary=False, output=None):
         temporary_directory = tempfile.mkdtemp()

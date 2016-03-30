@@ -130,7 +130,8 @@ class DetachedSignature(SignatureBaseModel):
         return '{}-{}'.format(self.document_version, _('signature'))
 
     def delete(self, *args, **kwargs):
-        self.signature_file.storage.delete(self.signature_file.name)
+        if self.signature_file.name:
+            self.signature_file.storage.delete(name=self.signature_file.name)
         super(DetachedSignature, self).delete(*args, **kwargs)
 
     def save(self, *args, **kwargs):
