@@ -12,6 +12,9 @@ permission_key_delete = namespace.add_permission(
 permission_key_receive = namespace.add_permission(
     name='key_receive', label=_('Import keys from keyservers')
 )
+permission_key_sign = namespace.add_permission(
+    name='key_sign', label=_('Use keys to sign content')
+)
 permission_key_view = namespace.add_permission(
     name='key_view', label=_('View keys')
 )

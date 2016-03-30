@@ -16,7 +16,9 @@ from .links import (
     link_key_delete, link_key_detail, link_key_query, link_key_receive,
     link_key_setup, link_private_keys, link_public_keys
 )
-from .permissions import permission_key_delete, permission_key_view
+from .permissions import (
+    permission_key_delete, permission_key_sign, permission_key_view
+)
 
 
 class DjangoGPGApp(MayanAppConfig):
@@ -33,7 +35,7 @@ class DjangoGPGApp(MayanAppConfig):
         ModelPermission.register(
             model=Key, permissions=(
                 permission_acl_edit, permission_acl_view,
-                permission_key_delete, permission_key_view
+                permission_key_delete, permission_key_sign, permission_key_view
             )
         )
 
