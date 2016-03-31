@@ -25,6 +25,7 @@ from .links import (
     link_document_signature_list,
     link_document_version_signature_delete,
     link_document_version_signature_detached_create,
+    link_document_version_signature_embedded_create,
     link_document_version_signature_details,
     link_document_version_signature_download,
     link_document_version_signature_list,
@@ -32,6 +33,7 @@ from .links import (
 )
 from .permissions import (
     permission_document_version_sign_detached,
+    permission_document_version_sign_embedded,
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
@@ -77,6 +79,7 @@ class DocumentSignaturesApp(MayanAppConfig):
         ModelPermission.register(
             model=Document, permissions=(
                 permission_document_version_sign_detached,
+                permission_document_version_sign_embedded,
                 permission_document_version_signature_delete,
                 permission_document_version_signature_download,
                 permission_document_version_signature_view,
@@ -132,6 +135,7 @@ class DocumentSignaturesApp(MayanAppConfig):
             links=(
                 link_document_version_signature_list,
                 link_document_version_signature_detached_create,
+                link_document_version_signature_embedded_create
             ), sources=(DocumentVersion,)
         )
         menu_object.bind_links(

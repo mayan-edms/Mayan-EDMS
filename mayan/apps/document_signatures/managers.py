@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 
 import logging
+import os
+import tempfile
 
 from django.db import models
 
@@ -30,3 +32,24 @@ class EmbeddedSignatureManager(models.Manager):
         return DocumentVersion.objects.exclude(
             pk__in=self.values('document_version')
         )
+
+    def sign_document_version(self, document_version, key, passphrase=None, user=None):
+        temporary_file_object, temporary_filename = tempfile.mkstemp()
+
+        try:
+            with document_version.open() as file_object:
+                signature_result = key.sign_file(
+                    binary=True, file_object=file_object,
+                    output=temporary_filename, passphrase=passphrase
+                )
+        except Exception:
+            raise
+        else:
+            with open(temporary_filename) as file_object:
+                new_version = document_version.document.new_version(
+                    file_object=file_object, _user=user
+                )
+        finally:
+            os.unlink(temporary_filename)
+
+        return new_version

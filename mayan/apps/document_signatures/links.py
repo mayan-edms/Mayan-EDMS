@@ -6,6 +6,8 @@ from django.utils.translation import ugettext_lazy as _
 from navigation import Link
 
 from .permissions import (
+    permission_document_version_sign_detached,
+    permission_document_version_sign_embedded,
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
@@ -69,7 +71,13 @@ link_document_version_signature_upload = Link(
 )
 link_document_version_signature_detached_create = Link(
     args='resolved_object.pk',
-    permissions=(permission_document_version_signature_upload,),
+    permissions=(permission_document_version_sign_detached,),
     permissions_related='document', text=_('Sign detached'),
     view='signatures:document_version_signature_detached_create',
+)
+link_document_version_signature_embedded_create = Link(
+    args='resolved_object.pk',
+    permissions=(permission_document_version_sign_embedded,),
+    permissions_related='document', text=_('Sign embedded'),
+    view='signatures:document_version_signature_embedded_create',
 )

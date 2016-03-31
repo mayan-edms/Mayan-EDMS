@@ -4,6 +4,7 @@ from django.conf.urls import patterns, url
 
 from .views import (
     AllDocumentSignatureVerifyView, DocumentVersionDetachedSignatureCreateView,
+    DocumentVersionEmbeddedSignatureCreateView,
     DocumentVersionSignatureDeleteView, DocumentVersionSignatureDetailView,
     DocumentVersionSignatureDownloadView, DocumentVersionSignatureListView,
     DocumentVersionSignatureUploadView
@@ -35,6 +36,11 @@ urlpatterns = patterns(
         r'^documents/version/(?P<pk>\d+)/signature/detached/create/$',
         DocumentVersionDetachedSignatureCreateView.as_view(),
         name='document_version_signature_detached_create'
+    ),
+    url(
+        r'^documents/version/(?P<pk>\d+)/signature/embedded/create/$',
+        DocumentVersionEmbeddedSignatureCreateView.as_view(),
+        name='document_version_signature_embedded_create'
     ),
     url(
         r'^signature/(?P<pk>\d+)/delete/$',

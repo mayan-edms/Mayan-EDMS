@@ -12,6 +12,10 @@ permission_document_version_sign_detached = namespace.add_permission(
     name='document_version_sign_detached',
     label=_('Sign documents with detached signatures')
 )
+permission_document_version_sign_embedded = namespace.add_permission(
+    name='document_version_sign_embedded',
+    label=_('Sign documents with embedded signatures')
+)
 permission_document_version_signature_delete = namespace.add_permission(
     name='document_version_signature_delete',
     label=_('Delete detached signatures')

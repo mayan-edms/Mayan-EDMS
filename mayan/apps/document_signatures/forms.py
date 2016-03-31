@@ -18,7 +18,7 @@ from .models import SignatureBaseModel
 logger = logging.getLogger(__name__)
 
 
-class DocumentVersionDetachedSignatureCreateForm(forms.Form):
+class DocumentVersionSignatureCreateForm(forms.Form):
     key = forms.ModelChoiceField(
         label=_('Key'), queryset=Key.objects.none()
     )
@@ -32,7 +32,7 @@ class DocumentVersionDetachedSignatureCreateForm(forms.Form):
         user = kwargs.pop('user', None)
         logger.debug('user: %s', user)
         super(
-            DocumentVersionDetachedSignatureCreateForm, self
+            DocumentVersionSignatureCreateForm, self
         ).__init__(*args, **kwargs)
 
         queryset = Key.objects.private_keys()

@@ -22,12 +22,13 @@ from documents.models import DocumentVersion
 from permissions import Permission
 
 from .forms import (
-    DocumentVersionDetachedSignatureCreateForm,
+    DocumentVersionSignatureCreateForm,
     DocumentVersionSignatureDetailForm
 )
 from .models import DetachedSignature, SignatureBaseModel
 from .permissions import (
     permission_document_version_sign_detached,
+    permission_document_version_sign_embedded,
     permission_document_version_signature_delete,
     permission_document_version_signature_download,
     permission_document_version_signature_upload,
@@ -40,7 +41,7 @@ logger = logging.getLogger(__name__)
 
 
 class DocumentVersionDetachedSignatureCreateView(FormView):
-    form_class = DocumentVersionDetachedSignatureCreateForm
+    form_class = DocumentVersionSignatureCreateForm
 
     def form_valid(self, form):
         key = form.cleaned_data['key']
@@ -125,7 +126,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
             'document_version': self.get_document_version(),
             'navigation_object_list': ('document', 'document_version'),
             'title': _(
-                'Sign document version "%s" with a detached signature?'
+                'Sign document version "%s" with a detached signature'
             ) % self.get_document_version(),
         }
 
@@ -143,6 +144,111 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
             'signatures:document_version_signature_list',
             args=(self.get_document_version().pk,)
         )
+
+
+class DocumentVersionEmbeddedSignatureCreateView(FormView):
+    form_class = DocumentVersionSignatureCreateForm
+
+    def form_valid(self, form):
+        key = form.cleaned_data['key']
+        passphrase = form.cleaned_data['passphrase'] or None
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_key_sign,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_key_sign, self.request.user, key
+            )
+
+        try:
+            with self.get_document_version().open() as file_object:
+                signature_result = key.sign_file(
+                    binary=True, file_object=file_object, passphrase=passphrase
+                )
+        except NeedPassphrase:
+            messages.error(
+                self.request, _('Passphrase is needed to unlock this key.')
+            )
+            return HttpResponseRedirect(
+                reverse(
+                    'signatures:document_version_signature_embedded_create',
+                    args=(self.get_document_version().pk,)
+                )
+            )
+        except PassphraseError:
+            messages.error(
+                self.request, _('Passphrase is incorrect.')
+            )
+            return HttpResponseRedirect(
+                reverse(
+                    'signatures:document_version_signature_embedded_create',
+                    args=(self.get_document_version().pk,)
+                )
+            )
+        else:
+            temporary_file_object = tempfile.TemporaryFile()
+            temporary_file_object.write(signature_result.data)
+            temporary_file_object.seek(0)
+
+            new_version = self.get_document_version().document.new_version(
+                file_object=temporary_file_object, _user=self.request.user
+            )
+
+            temporary_file_object.close()
+
+            messages.success(
+                self.request, _('Document version signed successfully.')
+            )
+
+            return HttpResponseRedirect(
+                reverse(
+                    'signatures:document_version_signature_list',
+                    args=(new_version.pk,)
+                )
+            )
+
+        return super(
+            DocumentVersionEmbeddedSignatureCreateView, self
+        ).form_valid(form)
+
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_version_sign_embedded,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_version_sign_embedded, request.user,
+                self.get_document_version().document
+            )
+
+        return super(
+            DocumentVersionEmbeddedSignatureCreateView, self
+        ).dispatch(request, *args, **kwargs)
+
+    def get_document_version(self):
+        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+
+    def get_extra_context(self):
+        return {
+            'document': self.get_document_version().document,
+            'document_version': self.get_document_version(),
+            'navigation_object_list': ('document', 'document_version'),
+            'title': _(
+                'Sign document version "%s" with a embedded signature'
+            ) % self.get_document_version(),
+        }
+
+    def get_form_kwargs(self):
+        result = super(
+            DocumentVersionEmbeddedSignatureCreateView, self
+        ).get_form_kwargs()
+
+        result.update({'user': self.request.user})
+
+        return result
 
 
 class DocumentVersionSignatureDeleteView(SingleObjectDeleteView):
