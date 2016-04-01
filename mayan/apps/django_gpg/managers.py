@@ -68,7 +68,7 @@ class KeyManager(models.Manager):
 
         file_object.close()
 
-        return io.BytesIO(str(decrypt_result))
+        return io.BytesIO(decrypt_result.data)
 
     def receive_key(self, key_id):
         temporary_directory = tempfile.mkdtemp()
