@@ -1,11 +1,13 @@
 from __future__ import unicode_literals
 
+import hashlib
 import time
 
 from django.core.files import File
 from django.test import TestCase, override_settings
 
 from django_gpg.models import Key
+from django_gpg.tests.literals import TEST_KEY_DATA, TEST_KEY_PASSPHRASE
 from documents.models import DocumentType, DocumentVersion
 from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 
@@ -308,3 +310,36 @@ class EmbeddedSignaturesTestCase(TestCase):
             EmbeddedSignature.objects.unsigned_document_versions().count(),
             TEST_UNSIGNED_DOCUMENT_COUNT
         )
+
+    def test_signing(self):
+        key = Key.objects.create(key_data=TEST_KEY_DATA)
+
+        with open(TEST_DOCUMENT_PATH) as file_object:
+            document = self.document_type.new_document(
+                file_object=file_object
+            )
+
+        with document.latest_version.open() as file_object:
+            file_object.seek(0, 2)
+            original_size = file_object.tell()
+            file_object.seek(0)
+            original_hash = hashlib.sha256(file_object.read()).hexdigest()
+
+        new_version = EmbeddedSignature.objects.sign_document_version(
+            document_version=document.latest_version, key=key,
+            passphrase=TEST_KEY_PASSPHRASE
+        )
+
+        self.assertEqual(EmbeddedSignature.objects.count(), 1)
+
+        with new_version.open() as file_object:
+            document_content_hash = hashlib.sha256(file_object.read()).hexdigest()
+
+        with new_version.open() as file_object:
+            file_object.seek(0, 2)
+            new_size = file_object.tell()
+            file_object.seek(0)
+            new_hash = hashlib.sha256(file_object.read()).hexdigest()
+
+        self.assertEqual(original_size, new_size)
+        self.assertEqual(origianl_hash, new_hash)
