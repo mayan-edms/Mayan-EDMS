@@ -342,4 +342,4 @@ class EmbeddedSignaturesTestCase(TestCase):
             new_hash = hashlib.sha256(file_object.read()).hexdigest()
 
         self.assertEqual(original_size, new_size)
-        self.assertEqual(origianl_hash, new_hash)
+        self.assertEqual(original_hash, new_hash)

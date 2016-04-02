@@ -125,7 +125,14 @@ class Key(models.Model):
     def __str__(self):
         return '{} - {}'.format(self.key_id, self.user_id)
 
-    def sign_file(self, file_object, passphrase=None, clearsign=True, detached=False, binary=False, output=None):
+    def sign_file(self, file_object, passphrase=None, clearsign=False, detached=False, binary=False, output=None):
+        # WARNING: using clearsign=True and subsequent decryption corrupts the
+        # file. Appears to be a problem in python-gnupg or gpg itself.
+        # https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=55647
+        # "The problems differ from run to run and file to
+        # file, and appear to be due to random data being inserted in the
+        # output data stream."
+
         temporary_directory = tempfile.mkdtemp()
 
         os.chmod(temporary_directory, 0x1C0)
