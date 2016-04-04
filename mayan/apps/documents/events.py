@@ -9,7 +9,7 @@ event_document_create = Event(
 )
 event_document_download = Event(
     name='documents_document_download',
-    label=_('Document download')
+    label=_('Document downloaded')
 )
 event_document_properties_edit = Event(
     name='documents_document_edit', label=_('Document properties edited')
