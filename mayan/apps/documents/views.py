@@ -30,6 +30,7 @@ from converter.permissions import permission_transformation_delete
 from filetransfers.api import serve_file
 from permissions import Permission
 
+from .events import event_document_download, event_document_view
 from .forms import (
     DocumentDownloadForm, DocumentForm, DocumentPageForm, DocumentPreviewForm,
     DocumentPropertiesForm, DocumentTypeSelectForm,
@@ -316,6 +317,10 @@ class DocumentPreviewView(SingleObjectDetailView):
             DocumentPreviewView, self
         ).dispatch(request, *args, **kwargs)
         self.get_object().add_as_recent_document_for_user(request.user)
+        event_document_view.commit(
+            actor=request.user, target=self.get_object()
+        )
+
         return result
 
     def get_extra_context(self):
@@ -841,6 +846,10 @@ def document_download(request, document_id=None, document_id_list=None, document
                             arcname=document_version.document.label
                         )
                         descriptor.close()
+                        event_document_download.commit(
+                            actor=request.user,
+                            target=document_version.document
+                        )
 
                     compressed_file.close()
 
@@ -865,6 +874,9 @@ def document_download(request, document_id=None, document_id_list=None, document
                     # Test permissions and trigger exception
                     fd = queryset.first().open()
                     fd.close()
+                    event_document_download.commit(
+                        actor=request.user, target=queryset.first().document
+                    )
                     return serve_file(
                         request,
                         queryset.first().file,
