@@ -81,8 +81,7 @@ class AccessControlListManager(models.Manager):
 
                 user_roles.append(role)
 
-        # TODO: possible .exists() optimization
-        if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles):
+        if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles).exists():
             raise PermissionDenied(ugettext('Insufficient access.'))
 
     def filter_by_access(self, permission, user, queryset):
