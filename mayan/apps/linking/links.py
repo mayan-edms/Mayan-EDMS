@@ -52,7 +52,7 @@ link_smart_link_instance_view = Link(
 link_smart_link_instances_for_document = Link(
     icon='fa fa-link', permissions=(permission_document_view,),
     text=_('Smart links'), view='linking:smart_link_instances_for_document',
-    args='object.pk'
+    args='resolved_object.pk'
 )
 link_smart_link_list = Link(
     permissions=(permission_smart_link_create,), text=_('Smart links'),

@@ -127,7 +127,7 @@ class DocumentType(models.Model):
             with transaction.atomic():
                 document = self.documents.create(
                     description=description or '',
-                    label=label or unicode(file_object),
+                    label=label or file_object.name,
                     language=language or setting_language.value
                 )
                 document.save(_user=_user)
@@ -138,7 +138,7 @@ class DocumentType(models.Model):
             logger.critical(
                 'Unexpected exception while trying to create new document '
                 '"%s" from document type "%s"; %s',
-                label or unicode(file_object), self, exception
+                label or file_object.name, self, exception
             )
             raise
 
@@ -322,10 +322,6 @@ class Document(models.Model):
             # Document has no version yet
             return 0
 
-    @property
-    def signature_state(self):
-        return self.latest_version.signature_state
-
 
 class DeletedDocument(Document):
     objects = TrashCanManager()
@@ -405,7 +401,9 @@ class DocumentVersion(models.Model):
                 super(DocumentVersion, self).save(*args, **kwargs)
 
                 for key in sorted(DocumentVersion._post_save_hooks):
-                    DocumentVersion._post_save_hooks[key](self)
+                    DocumentVersion._post_save_hooks[key](
+                        document_version=self
+                    )
 
                 if new_document_version:
                     # Only do this for new documents
@@ -503,7 +501,9 @@ class DocumentVersion(models.Model):
         else:
             result = self.file.storage.open(self.file.name)
             for key in sorted(DocumentVersion._pre_open_hooks):
-                result = DocumentVersion._pre_open_hooks[key](result, self)
+                result = DocumentVersion._pre_open_hooks[key](
+                    file_object=result, document_version=self
+                )
 
             return result
 

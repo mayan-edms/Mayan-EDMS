@@ -8,6 +8,7 @@ from django.db import models
 from django.db.models import Q
 from django.utils.translation import ugettext
 
+from common.utils import return_attrib
 from permissions.models import StoredPermission
 
 from .classes import ModelPermission
@@ -54,10 +55,11 @@ class AccessControlListManager(models.Manager):
                 permission.stored_permission for permission in permissions
             ]
         except TypeError:
+            # Not a list of permissions, just one
             stored_permissions = [permissions.stored_permission]
 
         if related:
-            obj = getattr(obj, related)
+            obj = return_attrib(obj, related)
 
         try:
             parent_accessor = ModelPermission.get_inheritance(obj._meta.model)
@@ -79,8 +81,7 @@ class AccessControlListManager(models.Manager):
 
                 user_roles.append(role)
 
-        # TODO: possible .exists() optimization
-        if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles):
+        if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles).exists():
             raise PermissionDenied(ugettext('Insufficient access.'))
 
     def filter_by_access(self, permission, user, queryset):

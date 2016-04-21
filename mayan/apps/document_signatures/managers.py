@@ -1,104 +1,55 @@
 from __future__ import unicode_literals
 
 import logging
+import os
+import tempfile
 
 from django.db import models
 
-from django_gpg.exceptions import GPGVerificationError
-from django_gpg.runtime import gpg
+from django_gpg.exceptions import DecryptionError
+from django_gpg.models import Key
+from documents.models import DocumentVersion
 
 logger = logging.getLogger(__name__)
 
 
-class DocumentVersionSignatureManager(models.Manager):
-    def get_document_signature(self, document_version):
-        document_signature, created = self.model.objects.get_or_create(
-            document_version=document_version,
+class EmbeddedSignatureManager(models.Manager):
+    def open_signed(self, file_object, document_version):
+        for signature in self.filter(document_version=document_version):
+            try:
+                return self.open_signed(
+                    file_object=Key.objects.decrypt_file(
+                        file_object=file_object
+                    ), document_version=document_version
+                )
+            except DecryptionError:
+                file_object.seek(0)
+                return file_object
+        else:
+            return file_object
+
+    def unsigned_document_versions(self):
+        return DocumentVersion.objects.exclude(
+            pk__in=self.values('document_version')
         )
 
-        return document_signature
-
-    def add_detached_signature(self, document_version, detached_signature):
-        document_signature = self.get_document_signature(
-            document_version=document_version
-        )
-
-        if document_signature.has_embedded_signature:
-            raise Exception(
-                'Document version already has an embedded signature'
-            )
-        else:
-            if document_signature.signature_file:
-                logger.debug('Existing detached signature')
-                document_signature.delete_detached_signature_file()
-                document_signature.signature_file = None
-                document_signature.save()
-
-            document_signature.signature_file = detached_signature
-            document_signature.save()
-
-    def has_detached_signature(self, document_version):
-        try:
-            document_signature = self.get_document_signature(
-                document_version=document_version
-            )
-        except ValueError:
-            return False
-        else:
-            if document_signature.signature_file:
-                return True
-            else:
-                return False
-
-    def has_embedded_signature(self, document_version):
-        logger.debug('document_version: %s', document_version)
+    def sign_document_version(self, document_version, key, passphrase=None, user=None):
+        temporary_file_object, temporary_filename = tempfile.mkstemp()
 
         try:
-            document_signature = self.get_document_signature(
-                document_version=document_version
-            )
-        except ValueError:
-            return False
+            with document_version.open() as file_object:
+                signature_result = key.sign_file(
+                    binary=True, file_object=file_object,
+                    output=temporary_filename, passphrase=passphrase
+                )
+        except Exception:
+            raise
         else:
-            return document_signature.has_embedded_signature
-
-    def detached_signature(self, document_version):
-        document_signature = self.get_document_signature(
-            document_version=document_version
-        )
-
-        return document_signature.signature_file.storage.open(
-            document_signature.signature_file.name
-        )
-
-    def verify_signature(self, document_version):
-        document_version_descriptor = document_version.open(raw=True)
-        detached_signature = None
-        if self.has_detached_signature(document_version=document_version):
-            logger.debug('has detached signature')
-            detached_signature = self.detached_signature(
-                document_version=document_version
-            )
-            args = (document_version_descriptor, detached_signature)
-        else:
-            args = (document_version_descriptor,)
-
-        try:
-            return gpg.verify_file(*args, fetch_key=False)
-        except GPGVerificationError:
-            return None
+            with open(temporary_filename) as file_object:
+                new_version = document_version.document.new_version(
+                    file_object=file_object, _user=user
+                )
         finally:
-            document_version_descriptor.close()
-            if detached_signature:
-                detached_signature.close()
+            os.unlink(temporary_filename)
 
-    def clear_detached_signature(self, document_version):
-        document_signature = self.get_document_signature(
-            document_version=document_version
-        )
-        if not document_signature.signature_file:
-            raise Exception('document doesn\'t have a detached signature')
-
-        document_signature.delete_detached_signature_file()
-        document_signature.signature_file = None
-        document_signature.save()
+        return new_version

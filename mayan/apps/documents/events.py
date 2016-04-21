@@ -7,6 +7,10 @@ from events.classes import Event
 event_document_create = Event(
     name='documents_document_create', label=_('Document created')
 )
+event_document_download = Event(
+    name='documents_document_download',
+    label=_('Document downloaded')
+)
 event_document_properties_edit = Event(
     name='documents_document_edit', label=_('Document properties edited')
 )
@@ -19,4 +23,8 @@ event_document_new_version = Event(
 event_document_version_revert = Event(
     name='documents_document_version_revert',
     label=_('Document version reverted')
+)
+event_document_view = Event(
+    name='documents_document_view',
+    label=_('Document viewed')
 )

@@ -202,7 +202,7 @@ class Link(object):
     def __init__(self, text, view, args=None, condition=None,
                  conditional_disable=None, description=None, icon=None,
                  keep_query=False, kwargs=None, permissions=None,
-                 remove_from_query=None, tags=None):
+                 permissions_related=None, remove_from_query=None, tags=None):
 
         self.args = args or []
         self.condition = condition
@@ -245,7 +245,8 @@ class Link(object):
                 if resolved_object:
                     try:
                         AccessControlList.objects.check_access(
-                            self.permissions, request.user, resolved_object
+                            self.permissions, request.user, resolved_object,
+                            related=getattr(self, 'permissions_related', None)
                         )
                     except PermissionDenied:
                         return None

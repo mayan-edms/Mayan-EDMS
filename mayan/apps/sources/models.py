@@ -65,7 +65,7 @@ class Source(models.Model):
             with transaction.atomic():
                 document = Document.objects.create(
                     description=description or '', document_type=document_type,
-                    label=label or unicode(file_object),
+                    label=label or file_object.name,
                     language=language or setting_language.value
                 )
                 document.save(_user=user)
@@ -100,7 +100,7 @@ class Source(models.Model):
             logger.critical(
                 'Unexpected exception while trying to create new document '
                 '"%s" from source "%s"; %s',
-                label or unicode(file_object), self, exception
+                label or file_object.name, self, exception
             )
             raise
 

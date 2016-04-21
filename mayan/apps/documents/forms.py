@@ -169,8 +169,8 @@ class DocumentTypeSelectForm(forms.Form):
             )
 
         self.fields['document_type'] = forms.ModelChoiceField(
-            queryset=queryset,
-            label=_('Document type')
+            empty_label=None, label=_('Document type'), queryset=queryset,
+            required=True, widget=forms.widgets.Select(attrs={'size': 10})
         )
 
 
