@@ -35,3 +35,4 @@ python-magic==0.4.10
 pytz==2015.4
 
 sh==1.11
+tornado==4.3

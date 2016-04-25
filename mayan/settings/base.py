@@ -71,11 +71,11 @@ INSTALLED_APPS = (
     'converter',
     'django_gpg',
     'dynamic_search',
+    'kaze',
     'lock_manager',
     'mimetype',
     'navigation',
     'permissions',
-    'server',
     'smart_settings',
     'user_management',
     # Mayan EDMS

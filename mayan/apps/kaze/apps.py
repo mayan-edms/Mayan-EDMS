@@ -5,9 +5,9 @@ from django.utils.translation import ugettext_lazy as _
 from common import MayanAppConfig
 
 
-class ServerApp(MayanAppConfig):
-    name = 'server'
-    verbose_name = _('Server')
+class KazeApp(MayanAppConfig):
+    name = 'kaze'
+    verbose_name = _('Kaze')
 
     def ready(self):
-        super(ServerApp, self).ready()
+        super(KazeApp, self).ready()
