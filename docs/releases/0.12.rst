@@ -6,12 +6,12 @@ Mayan EDMS v0.12 release notes
 
 Welcome to Mayan EDMS v0.12!
 
-This release commemorates **Mayan EDMS** first aniversary!
+This release commemorates Mayan EDMS first aniversary!
 
 Overview
 ========
 
-Aside from new features, the focus of this release of **Mayan EDMS** also
+Aside from new features, the focus of this release of Mayan EDMS also
 been about improving the code and documentation quality standard
 even further.  The permission system has been completely overhauled to make
 it entire class based.  The other big change is the addition of object
@@ -61,7 +61,7 @@ Anonymous user support
 ~~~~~~~~~~~~~~~~~~~~~~
 Anonymous user support is a two tier function, first is the addition of
 the `COMMON_ALLOW_ANONYMOUS_ACCESS` configuration option that
-allows non authenticated user to browse all the pages of a **Mayan EDMS** installation.
+allows non authenticated user to browse all the pages of a Mayan EDMS installation.
 The second part of this support is the ability to assign permissions
 or individual access to objects to anonymous users.
 
@@ -89,7 +89,7 @@ the download of several documents in a single compressed file.
 Customizable GPG home directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Addition of the `SIGNATURES_GPG_HOME` configuration option to let
-administrators set **Mayan EDMS**'s GPG instance home directory, used to
+administrators set Mayan EDMS's GPG instance home directory, used to
 store keyrings and other GPG configuration files.
 
 Out of process bulk uploading
@@ -114,7 +114,7 @@ stage to beta stage.  Index configuration menus are now available on the
 be populated with document links depending on their metadata and properties.
 These populated trees can also be mirrored on the physical filesystem and shared
 using Samba or another filesharing server giving users a structured view
-of the documents contained within **Mayan EDMS** from the ``Indexes`` tab
+of the documents contained within Mayan EDMS from the ``Indexes`` tab
 or from a mirrored index shared via the network.  A new configuration option
 has been added, `DOCUMENT_INDEXING_FILESYSTEM_SERVING`, which maps
 the index internal name with the physical directory where such index will be
@@ -127,7 +127,7 @@ Included in this version is a small feedback application, found under the
 help determine the priority of the next planned features on the pipeline,
 or even help add new features if enough requests are received.  All questions
 are optional but answering as many as possible will help greatly understand
-the need of the **Mayan EDMS** user base.
+the need of the Mayan EDMS user base.
 
 Staging file previews
 ~~~~~~~~~~~~~~~~~~~~~

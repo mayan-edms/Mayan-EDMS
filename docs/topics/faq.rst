@@ -7,7 +7,7 @@ Frequently asked questions and solutions
 **Q: PostgreSQL vs. MySQL**
 
 Since Django abstracts database operations from a functional point of view
-**Mayan EDMS** will behave exactly the same either way.  The only concern
+Mayan EDMS will behave exactly the same either way.  The only concern
 would be that MySQL doesn't support transactions for schema modifying
 commands. The only moment this could cause problems is when running
 South migrations during upgrades, if a migration fails the database

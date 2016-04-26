@@ -13,7 +13,7 @@ What's new in Mayan EDMS v2.0
 Update to Django 1.7
 --------------------
 The biggest change of this release comes in the form of support for Django 1.7.
-**Mayan EDMS** makes use of several new features of Django 1.7 like: migrations,
+Mayan EDMS makes use of several new features of Django 1.7 like: migrations,
 app config and transaction handling. The version of Django supported in this
 version is 1.7.10. With the move to Django 1.7, support for South migrations
 and Python 2.6 is removed. The switch to Django 1.7's app config means that
@@ -30,7 +30,7 @@ Theming and re-branding
 ----------------------
 All the presentation logic and markup has been moved into it's own app, the
 'appearance' app. All modifications required to customize the entire look of
-the **Mayan EDMS** can now be done in a single app. Very little markup remains
+the Mayan EDMS can now be done in a single app. Very little markup remains
 in the other apps, and it's usually because of necessity, namely the widgets.py
 modules.
 
@@ -194,11 +194,11 @@ Failure tolerance
 -----------------
 Previous versions made use of transactions to prevent data loss in the event of
 an unexpected error. This release improves on that approach by also reacting
-to infrastructure failures. **Mayan EDMS** can now recover without any or
+to infrastructure failures. Mayan EDMS can now recover without any or
 minimal data loss from critical events such as loss of connectivity to the
 database manager. This changes allow installation of using database managers
 that do not provide guaranteed concurrency such as SQLite, to scale to thousand
-of documents. While this configuration is still not recommended, **Mayan EDMS**
+of documents. While this configuration is still not recommended, Mayan EDMS
 will now work and scale much better in environments where parts of the
 infrastructure cannot be changed (such as the database manager).
 
@@ -219,7 +219,7 @@ new scheme.
 Default document type and default document source
 -------------------------------------------------
 After installation a default document type and document source are created,
-this means that users can start uploading documents as soon as **Mayan EDMS**
+this means that users can start uploading documents as soon as Mayan EDMS
 is installed without having to do any configuration setting changes. The
 default document type and default document source are both called 'Default'.
 

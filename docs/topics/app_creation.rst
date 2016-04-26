@@ -2,7 +2,7 @@
 App creation
 ============
 
-**Mayan EDMS** apps are essentially Django app with some extra code to register
+Mayan EDMS apps are essentially Django app with some extra code to register
 navigation, permissions and other relationships.
 
 
@@ -21,7 +21,7 @@ App modules
 
 - api_views.py
 
-  REST API views go here. **Mayan EDMS** uses Django REST Framework API view
+  REST API views go here. Mayan EDMS uses Django REST Framework API view
   classes.
 
 - apps.py
@@ -135,7 +135,7 @@ Views
 =====
 
 The module common.generics provides custom generic class based views to be used.
-The basic views used to create, edit, view and delete objects in **Mayan EDMS**
+The basic views used to create, edit, view and delete objects in Mayan EDMS
 are: SingleObjectCreateView, SingleObjectDetailView, SingleObjectEditView,
 and SingleObjectListView
 

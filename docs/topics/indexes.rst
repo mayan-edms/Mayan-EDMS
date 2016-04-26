@@ -17,7 +17,7 @@ Example:
 - Metadata type: ``Product year``, associated as a required metadata for the document type ``Product sheet``.
 
 - Index: ``Product sheets per year``, and associated to the document type ``Product sheet``.
-- Index slug: ``product-sheets-per-year``. Slugs are internal unique identifiers that can be used by other **Mayan EDMS** modules to reference each index.
+- Index slug: ``product-sheets-per-year``. Slugs are internal unique identifiers that can be used by other Mayan EDMS modules to reference each index.
 - Index tree template as follows:
 
 .. blockdiag::

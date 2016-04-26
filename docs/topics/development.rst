@@ -3,7 +3,7 @@
 Development
 ===========
 
-**Mayan EDMS** is under active development, and contributions are welcome.
+Mayan EDMS is under active development, and contributions are welcome.
 
 If you have a feature request, suggestion or bug report, please open a new
 issue on the `GitLab issue tracker`_. To submit patches, please send a pull
@@ -16,8 +16,8 @@ request on GitLab_. Make sure to add yourself to the :ref:`contributors` file.
 Project philosophies
 --------------------
 
-How to think about **Mayan EDMS** when doing changes or adding new features,
-why things are the way they are in **Mayan EDMS**.
+How to think about Mayan EDMS when doing changes or adding new features,
+why things are the way they are in Mayan EDMS.
 
 - Functionality must be as market/sector independent as possible, code for the
   95% of use cases.
@@ -125,7 +125,7 @@ Correct:
 
 Dependencies
 ~~~~~~~~~~~~
-**Mayan EDMS** apps follow a hierarchical model of dependency. Apps import from
+Mayan EDMS apps follow a hierarchical model of dependency. Apps import from
 their parents or siblings, never from their children. Think plugins. A parent
 app must never assume anything about a possible existing child app. The
 documents app and the Document model are the basic entities they must never
@@ -136,7 +136,7 @@ Variables
 ~~~~~~~~~
 Naming of variables should follow a Major to Minor convention, usually
 including the purpose of the variable as the first piece of the name, using
-underscores as spaces. camelCase is not used in **Mayan EDMS**.
+underscores as spaces. camelCase is not used in Mayan EDMS.
 
 Examples:
 
@@ -171,7 +171,7 @@ Classes:
 
 Strings
 ~~~~~~~
-Quotation character used in **Mayan EDMS** for strings is the single quote.
+Quotation character used in Mayan EDMS for strings is the single quote.
 Double quote is used for multiple line comments or HTML markup.
 
 Migrations
@@ -199,7 +199,7 @@ as passed directly from the exception object.
 Source Control
 --------------
 
-**Mayan EDMS** source is controlled with Git_.
+Mayan EDMS source is controlled with Git_.
 
 The project is publicly accessible, hosted and can be cloned from **GitLab** using::
 
@@ -209,7 +209,7 @@ The project is publicly accessible, hosted and can be cloned from **GitLab** usi
 Git branch structure
 --------------------
 
-**Mayan EDMS** follows a simplified model layout based on Vincent Driessen's
+Mayan EDMS follows a simplified model layout based on Vincent Driessen's
 `Successful Git Branching Model`_ blog post.
 
 ``develop``
@@ -299,7 +299,7 @@ merged.
 Debugging
 ---------
 
-**Mayan EDMS** makes extensive use of Django's new `logging capabilities`_.
+Mayan EDMS makes extensive use of Django's new `logging capabilities`_.
 By default debug logging for all apps is turned on. If you wish to customize
 how logging is managed turn off automatic logging by setting
 `COMMON_AUTO_LOGGING` to ``False`` and add the following lines to your

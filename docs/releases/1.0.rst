@@ -118,7 +118,7 @@ to do document OCR using software or services other than Tesseract.
 
 OCR improvements
 ~~~~~~~~~~~~~~~~
-OCR queue state is now reset when reloading **Mayan EMDS**, avoiding the OCR queue
+OCR queue state is now reset when reloading Mayan EMDS, avoiding the OCR queue
 to remain locked. `unpaper` binary is now an optional pre OCR requirement, the OCR
 queue will now continue working is `unpaper` is not installed. Addition of post
 OCR processing support for French and German.
@@ -131,7 +131,7 @@ commercial products is now explicitly allowed.
 
 PyPI package
 ~~~~~~~~~~~~
-**Mayan EDMS** has been packaged and submitted to the PyPI_ Python Package Index
+Mayan EDMS has been packaged and submitted to the PyPI_ Python Package Index
 making it even easier to install and use.
 
 New REST API

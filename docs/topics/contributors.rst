@@ -8,7 +8,7 @@ Contributors
 How to contribute?
 ------------------
 
-You can help further the development of **Mayan EDMS** by testing, reporting
+You can help further the development of Mayan EDMS by testing, reporting
 bugs, submitting documentation or code patches.
 
 Lead developer

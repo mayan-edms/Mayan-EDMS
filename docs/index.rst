@@ -1,16 +1,16 @@
 Welcome to Mayan EDMS!
 ======================
 
-**Mayan EDMS** is a `Free Open Source`_ `Electronic Document Management System`_, coded in
+Mayan EDMS is a `Free Open Source`_ `Electronic Document Management System`_, coded in
 the Python language using the Django_ web application framework and released
 under the `Apache 2.0 License`_. It provides an electronic vault or repository for electronic documents.
 
-The easiest way to install and try **Mayan EDMS** is by using a Debian based Linux distribution
-and installing it from PyPI with the following commands:
+The easiest way to use Mayan EDMS is by using a Debian based Linux distribution
+and install it from PyPI with the following commands:
 
 .. code-block:: bash
 
-    sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
+    sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr poppler-utils -y
     virtualenv venv
     source venv/bin/activate
     pip install mayan-edms

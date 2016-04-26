@@ -2,19 +2,19 @@
 Release notes
 =============
 
-Release notes for the official **Mayan EDMS** releases. Each release note will tell you
+Release notes for the official Mayan EDMS releases. Each release note will tell you
 what's new in each version, and will also describe any backwards-incompatible
 changes made in that version.
 
-For those upgrading to a new version of **Mayan EDMS**, you will need to check
+For those upgrading to a new version of Mayan EDMS, you will need to check
 all the backwards-incompatible changes and deprecated features for
-each 'final' release from the one after your current **Mayan EDMS** version,
+each 'final' release from the one after your current Mayan EDMS version,
 up to and including the latest version.
 
 Final releases
 ==============
 
-Below are release notes through **Mayan EDMS** |version| and its minor releases. Newer
+Below are release notes through Mayan EDMS |version| and its minor releases. Newer
 versions of the documentation contain the release notes for any later releases.
 
 2.0 series

@@ -27,7 +27,7 @@ This project is open sourced under `Apache 2.0 License`_.
 Installation
 ------------
 
-To install **Mayan EDMS**, simply do:
+To install Mayan EDMS, simply do:
 
 .. code-block:: bash
 

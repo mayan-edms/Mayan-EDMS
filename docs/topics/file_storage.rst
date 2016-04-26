@@ -2,7 +2,7 @@
 File storage
 ============
 
-The files are stored and placed under **Mayan EDMS** "control" to avoid
+The files are stored and placed under Mayan EDMS "control" to avoid
 filename clashes each file gets renamed to its ``UUID`` (Universally Unique ID),
 without extension, and stored in a simple flat arrangement in a directory.
 
@@ -20,7 +20,7 @@ This doesn't stop access to the files but renaming, moving or updating
 directly them is not recommended because it would throw the database out
 of sync.
 
-Because **Mayan EDMS** components are as decoupled from each other as possible,
+Because Mayan EDMS components are as decoupled from each other as possible,
 storage in this case is decoupled and its behavior is controlled
 not by the project but by the ``Storage`` module class. All the other
 modules don't make any assumptions about how the actual document files are
