@@ -18,5 +18,6 @@ Introductions to all the key parts of **Mayan EDMS** you'll need to know:
    indexes
    smart_links
    tags
+   mailing
    file_storage
    screenshots
