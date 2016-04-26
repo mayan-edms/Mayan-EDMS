@@ -33,6 +33,7 @@ account.
     Concepts <topics/index>
     Development <topics/development>
     App creation <topics/app_creation>
+    Roadmap <topics/roadmap>
     Translations <topics/translations>
     Contributors <topics/contributors>
     Screenshots <topics/screenshots>

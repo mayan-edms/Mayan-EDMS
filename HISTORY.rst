@@ -31,6 +31,8 @@
 - Add support for signing documents.
 - Instead of multiple keyservers only one keyserver is now supported.
 - Replace document type selection widget with an opened selection list.
+- Add mailing documentation chapter.
+- Add roadmap documentation chapter.
 
 2.0.2 (2016-02-09)
 ==================
