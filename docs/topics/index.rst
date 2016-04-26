@@ -15,9 +15,11 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
    checkouts
    versioning
    signatures
+   ocr_backend
    indexes
    smart_links
    tags
    mailing
    file_storage
+   backups
    screenshots
