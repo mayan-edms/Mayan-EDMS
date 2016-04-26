@@ -1,4 +1,4 @@
-2.1 (2016-XX)
+2.1 (2016-04)
 =============
 - Upgrade to use Django 1.8.8. Issue #246.
 - Upgrade requirements.
@@ -31,6 +31,7 @@
 - Add support for signing documents.
 - Instead of multiple keyservers only one keyserver is now supported.
 - Replace document type selection widget with an opened selection list.
+- Add simple server using tornado.
 
 2.0.2 (2016-02-09)
 ==================

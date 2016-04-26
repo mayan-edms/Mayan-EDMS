@@ -34,5 +34,6 @@ python-gnupg==0.3.8
 python-magic==0.4.10
 pytz==2015.4
 
+redis==2.10.5
 sh==1.11
 tornado==4.3

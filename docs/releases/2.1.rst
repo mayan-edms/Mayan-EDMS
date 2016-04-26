@@ -102,6 +102,15 @@ screen. These messages can have an activation and an experiation date and
 time. These messages are useful for display company access policies,
 maintenance announcement, etc.
 
+New server app using tornado
+----------------------------
+This release includes a simple app that can serve Mayan EDMS using the tornado
+server. Using this app users can start using Mayan EDMS with minimal setup
+(just install Redis). By default the server will run on port 52723, but users
+can change the port with the --port option. For privileged port (ports
+below 1024) the command must be run as superadmin. This is an experimental
+feature, feedback and patches are appreciated.
+
 Document signing
 ----------------
 The biggest change for this release if the addition of document signing from

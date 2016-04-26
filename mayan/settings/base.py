@@ -57,6 +57,7 @@ INSTALLED_APPS = (
     'djcelery',
     'filetransfers',
     'formtools',
+    'kombu.transport.django',
     'mptt',
     'pure_pagination',
     'rest_framework',
