@@ -98,3 +98,4 @@ Roadmap
     - Add events for document signing app (uploaded detached signateure, signed document, deleted signature)
     - A configurable conversion process. Being able to invoke different binaries for file conversion, as opposed to the current libreoffice only solution.
     - A tool in the admin interface to mass (re)convert the files (basically the page count function, but then applied on all documents).
+    - Find solution so that documents in watched folders are not processed until they are ready. Use case scanning directly to scanned folders.
