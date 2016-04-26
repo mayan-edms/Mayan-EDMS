@@ -10,6 +10,7 @@ Roadmap
   - Add support for state recipients.
   - Add workflow document inbox notification.
   - Replace indexing and smart linking template language (use Jinja2 instead of Django's).
+  - Display/find documents by their current workflow state.
 
 - Goals for version 3.0:
 
