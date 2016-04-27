@@ -20,6 +20,7 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
    smart_links
    tags
    mailing
+   settings
    file_storage
    backups
    screenshots
