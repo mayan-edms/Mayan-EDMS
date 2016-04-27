@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 msgid ""
@@ -9,16 +9,14 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-27 14:11-0400\n"
-"PO-Revision-Date: 2015-08-20 19:10+0000\n"
+"PO-Revision-Date: 2016-04-27 18:23+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/sl_SI/)\n"
-"Language: sl_SI\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
-"%100==4 ? 2 : 3);\n"
+"Language: sl_SI\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
 
 #: apps.py:51 permissions.py:8 settings.py:7
 msgid "Document signatures"
@@ -29,14 +27,14 @@ msgid "Date"
 msgstr ""
 
 #: apps.py:94 models.py:37
+#| msgid "Key ID: %s"
 msgid "Key ID"
 msgstr ""
 
 #: apps.py:98 forms.py:71 models.py:41
-#, fuzzy
-#| msgid "signature file"
+#| msgid "Signature ID: %s"
 msgid "Signature ID"
-msgstr "signature file"
+msgstr ""
 
 #: apps.py:99 forms.py:83
 msgid "None"
@@ -55,24 +53,22 @@ msgid "Passphrase"
 msgstr ""
 
 #: forms.py:53
-#, fuzzy
-#| msgid "signature file"
+#| msgid "Signature file"
 msgid "Signature is embedded?"
-msgstr "signature file"
+msgstr ""
 
 #: forms.py:55
-#, fuzzy
-#| msgid "signature file"
+#| msgid "Signature file"
 msgid "Signature date"
-msgstr "signature file"
+msgstr ""
 
 #: forms.py:58
-#, fuzzy
-#| msgid "signature file"
+#| msgid "Signature ID: %s"
 msgid "Signature key ID"
-msgstr "signature file"
+msgstr ""
 
 #: forms.py:60
+#| msgid "Signature type: %s"
 msgid "Signature key present?"
 msgstr ""
 
@@ -105,6 +101,7 @@ msgid "Key type"
 msgstr ""
 
 #: links.py:32
+#| msgid "Verify document signatures"
 msgid "Verify all documents"
 msgstr ""
 
@@ -118,17 +115,15 @@ msgstr ""
 
 #: links.py:51
 msgid "Details"
-msgstr ""
+msgstr "Podrobnosti"
 
 #: links.py:57
-#, fuzzy
-#| msgid "signature file"
 msgid "Signature list"
-msgstr "signature file"
+msgstr ""
 
 #: links.py:63
 msgid "Download"
-msgstr ""
+msgstr "Prenos"
 
 #: links.py:69
 msgid "Upload signature"
@@ -191,10 +186,8 @@ msgid "Document version detached signatures"
 msgstr ""
 
 #: models.py:130
-#, fuzzy
-#| msgid "signature file"
 msgid "signature"
-msgstr "signature file"
+msgstr ""
 
 #: permissions.py:13
 msgid "Sign documents with detached signatures"
@@ -209,10 +202,12 @@ msgid "Delete detached signatures"
 msgstr ""
 
 #: permissions.py:25
+#| msgid "Download detached signatures"
 msgid "Download detached document signatures"
 msgstr ""
 
 #: permissions.py:29
+#| msgid "Upload detached signatures"
 msgid "Upload detached document signatures"
 msgstr ""
 
@@ -221,6 +216,7 @@ msgid "Verify document signatures"
 msgstr ""
 
 #: permissions.py:37
+#| msgid "Verify document signatures"
 msgid "View details of document signatures"
 msgstr ""
 
@@ -253,6 +249,7 @@ msgstr ""
 
 #: views.py:292
 #, python-format
+#| msgid "Document signatures"
 msgid "Details for signature: %s"
 msgstr ""
 
@@ -268,9 +265,10 @@ msgstr ""
 
 #: views.py:392
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
+msgstr "Če je baza velika lahko operacija zahteva nekaj več časa da se izvrši."
 
 #: views.py:393
+#| msgid "Verify document signatures"
 msgid "Verify all document for signatures?"
 msgstr ""
 
@@ -278,5 +276,26 @@ msgstr ""
 msgid "Signature verification queued successfully."
 msgstr ""
 
+#~ msgid "Signature status: %s"
+#~ msgstr "Signature type: %s"
+
+#~ msgid "Timestamp: %s"
+#~ msgstr "Timestamp: %s"
+
+#~ msgid "Signee: %s"
+#~ msgstr "Signee: %s"
+
+#~ msgid "Detached signature uploaded successfully."
+#~ msgstr "Detached signature uploaded successfully."
+
+#~ msgid "Error while deleting the detached signature; %s"
+#~ msgstr "Download detached signatures"
+
+#~ msgid "Delete the detached signature from document: %s?"
+#~ msgstr "Upload detached signature for: %s"
+
 #~ msgid "Signature status: %(widget)s %(text)s"
 #~ msgstr "Signature status: %(widget)s %(text)s"
+
+#~ msgid "signature file"
+#~ msgstr "signature file"

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pavlin Koldamov <pkoldamov@gmail.com>, 2012
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-27 14:10-0400\n"
-"PO-Revision-Date: 2016-03-21 21:10+0000\n"
+"PO-Revision-Date: 2016-04-27 18:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/bg/)\n"
-"Language: bg\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30
@@ -26,7 +25,7 @@ msgstr ""
 
 #: apps.py:73 apps.py:76 forms.py:17
 msgid "Key ID"
-msgstr "Key ID"
+msgstr "Ключ ID"
 
 #: apps.py:74 apps.py:87 forms.py:19 models.py:67
 msgid "User ID"
@@ -54,7 +53,7 @@ msgstr ""
 
 #: forms.py:28
 msgid "None"
-msgstr ""
+msgstr "Няма"
 
 #: forms.py:31 models.py:59
 msgid "Fingerprint"
@@ -78,11 +77,11 @@ msgstr ""
 
 #: links.py:17
 msgid "Details"
-msgstr ""
+msgstr "Детайли"
 
 #: links.py:21
 msgid "Download"
-msgstr ""
+msgstr "Сваляне"
 
 #: links.py:25 permissions.py:28
 msgid "Query keyservers"
@@ -97,10 +96,9 @@ msgid "Key management"
 msgstr "Управление на ключове"
 
 #: links.py:37
-#, fuzzy
 #| msgid "Import key"
 msgid "Upload key"
-msgstr "Внасяне на ключ"
+msgstr ""
 
 #: links.py:41 views.py:160
 msgid "Private keys"
@@ -163,10 +161,9 @@ msgid "Key data"
 msgstr ""
 
 #: models.py:76
-#, fuzzy
 #| msgid "Key ID"
 msgid "Key"
-msgstr "Key ID"
+msgstr ""
 
 #: models.py:77
 msgid "Keys"
@@ -197,16 +194,16 @@ msgid "Use keys to sign content"
 msgstr ""
 
 #: permissions.py:22
-#, fuzzy
 #| msgid "public keys"
 msgid "Upload keys"
-msgstr "public keys"
+msgstr ""
 
 #: permissions.py:25
 msgid "View keys"
 msgstr "Виж ключове"
 
 #: settings.py:10
+#| msgid "Signature error."
 msgid "Signatures"
 msgstr "Подписи"
 
@@ -219,16 +216,15 @@ msgid "Path to the GPG binary."
 msgstr ""
 
 #: settings.py:25
-#, fuzzy
 #| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
-msgstr "Списък на сървъри за ключове, за запитвания по неизвестни ключове."
+msgstr ""
 
 #: views.py:38
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete keys"
 msgid "Delete key: %s"
-msgstr "Изтриване на ключове"
+msgstr ""
 
 #: views.py:48
 #, python-format
@@ -237,6 +233,7 @@ msgstr ""
 
 #: views.py:68
 #, python-format
+#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr ""
 
@@ -246,6 +243,7 @@ msgstr "Внасяне на ключ"
 
 #: views.py:78
 #, python-format
+#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
@@ -271,19 +269,30 @@ msgid "Upload new key"
 msgstr ""
 
 #~ msgid "Unknown"
-#~ msgstr "Неизвестен"
+#~ msgstr "unknown"
 
 #~ msgid "ID"
 #~ msgstr "ID"
 
 #~ msgid "Owner"
-#~ msgstr "Собственик"
+#~ msgstr "Owner"
+
+#~ msgid "Identities"
+#~ msgstr "Identifies"
 
 #~ msgid "Key: %s, deleted successfully."
-#~ msgstr "Ключ: %s, е изтрит успешно."
+#~ msgstr "Key: %s, deleted successfully."
 
 #~ msgid "Delete key"
-#~ msgstr "Изтриване на ключ"
+#~ msgstr "Delete key"
+
+#~ msgid ""
+#~ "Delete key %s? If you delete a public key that is part of a public/private "
+#~ "pair the private key will be deleted as well."
+#~ msgstr ""
+#~ "Are you sure you wish to delete key: %s?  If you try to delete a public key "
+#~ "that is part of a public/private pair the private key will be deleted as "
+#~ "well."
 
 #~ msgid "results"
 #~ msgstr "results"

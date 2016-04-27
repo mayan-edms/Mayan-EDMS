@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
@@ -10,14 +10,13 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-27 14:10-0400\n"
-"PO-Revision-Date: 2016-03-21 21:10+0000\n"
+"PO-Revision-Date: 2016-04-27 18:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30
@@ -26,7 +25,7 @@ msgstr ""
 
 #: apps.py:73 apps.py:76 forms.py:17
 msgid "Key ID"
-msgstr "Key ID"
+msgstr "chiave ID"
 
 #: apps.py:74 apps.py:87 forms.py:19 models.py:67
 msgid "User ID"
@@ -54,7 +53,7 @@ msgstr "Lunghezza"
 
 #: forms.py:28
 msgid "None"
-msgstr ""
+msgstr "Nessuna "
 
 #: forms.py:31 models.py:59
 msgid "Fingerprint"
@@ -78,11 +77,11 @@ msgstr "Cancellare"
 
 #: links.py:17
 msgid "Details"
-msgstr ""
+msgstr "Dettagli"
 
 #: links.py:21
 msgid "Download"
-msgstr ""
+msgstr "Scarica"
 
 #: links.py:25 permissions.py:28
 msgid "Query keyservers"
@@ -97,10 +96,9 @@ msgid "Key management"
 msgstr "Gestione delle chiavi"
 
 #: links.py:37
-#, fuzzy
 #| msgid "Import key"
 msgid "Upload key"
-msgstr "Importa chiave"
+msgstr ""
 
 #: links.py:41 views.py:160
 msgid "Private keys"
@@ -144,9 +142,7 @@ msgstr "Errore di firma"
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
-"Il documento è stato firmato, ma la chiave pubblica non è disponibile per la "
-"verifica"
+msgstr "Il documento è stato firmato, ma la chiave pubblica non è disponibile per la verifica"
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -165,10 +161,9 @@ msgid "Key data"
 msgstr ""
 
 #: models.py:76
-#, fuzzy
 #| msgid "Key ID"
 msgid "Key"
-msgstr "Key ID"
+msgstr ""
 
 #: models.py:77
 msgid "Keys"
@@ -199,40 +194,37 @@ msgid "Use keys to sign content"
 msgstr ""
 
 #: permissions.py:22
-#, fuzzy
 #| msgid "public keys"
 msgid "Upload keys"
-msgstr "public keys"
+msgstr ""
 
 #: permissions.py:25
 msgid "View keys"
 msgstr "Vista delle chiavi"
 
 #: settings.py:10
+#| msgid "Signature error."
 msgid "Signatures"
 msgstr "Firme"
 
 #: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
-"Home directory utilizzata per memorizzare le chiavi così come i file di "
-"configurazione."
+msgstr "Home directory utilizzata per memorizzare le chiavi così come i file di configurazione."
 
 #: settings.py:21
 msgid "Path to the GPG binary."
 msgstr "Percorso per il programma GPG"
 
 #: settings.py:25
-#, fuzzy
 #| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
-msgstr "Lista di server per chiavi che si possono interrogare."
+msgstr ""
 
 #: views.py:38
-#, fuzzy, python-format
+#, python-format
 #| msgid "Delete keys"
 msgid "Delete key: %s"
-msgstr "Cancella chiavi"
+msgstr ""
 
 #: views.py:48
 #, python-format
@@ -241,6 +233,7 @@ msgstr ""
 
 #: views.py:68
 #, python-format
+#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr ""
 
@@ -250,6 +243,7 @@ msgstr "Importa chiave"
 
 #: views.py:78
 #, python-format
+#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
@@ -275,19 +269,30 @@ msgid "Upload new key"
 msgstr ""
 
 #~ msgid "Unknown"
-#~ msgstr "Sconosciuto"
+#~ msgstr "unknown"
 
 #~ msgid "ID"
 #~ msgstr "ID"
 
 #~ msgid "Owner"
-#~ msgstr "Proprietario"
+#~ msgstr "Owner"
+
+#~ msgid "Identities"
+#~ msgstr "Identifies"
 
 #~ msgid "Key: %s, deleted successfully."
-#~ msgstr "chiave: %s, cancellata con successo."
+#~ msgstr "Key: %s, deleted successfully."
 
 #~ msgid "Delete key"
-#~ msgstr "Cancella chiave"
+#~ msgstr "Delete key"
+
+#~ msgid ""
+#~ "Delete key %s? If you delete a public key that is part of a public/private "
+#~ "pair the private key will be deleted as well."
+#~ msgstr ""
+#~ "Are you sure you wish to delete key: %s?  If you try to delete a public key "
+#~ "that is part of a public/private pair the private key will be deleted as "
+#~ "well."
 
 #~ msgid "results"
 #~ msgstr "results"
