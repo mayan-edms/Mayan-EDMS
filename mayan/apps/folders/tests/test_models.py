@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth import get_user_model
 from django.test import TestCase
 
 from documents.models import DocumentType
@@ -24,11 +23,6 @@ class FolderTestCase(TestCase):
             self.document = self.document_type.new_document(
                 file_object=file_object
             )
-
-        self.user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
 
     def tearDown(self):
         self.document_type.delete()
