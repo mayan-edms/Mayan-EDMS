@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.test import TestCase
+from django.test import TestCase, override_settings
 
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
@@ -13,6 +13,7 @@ from ..models import Folder
 from .literals import TEST_FOLDER_LABEL
 
 
+@override_settings(OCR_AUTO_OCR=False)
 class FolderTestCase(TestCase):
     def setUp(self):
         self.document_type = DocumentType.objects.create(
