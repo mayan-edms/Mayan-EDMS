@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:44-0400\n"
+"POT-Creation-Date: 2016-04-27 14:12-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:33 links.py:16 links.py:43 models.py:45 permissions.py:7
+#: apps.py:33 links.py:16 links.py:44 models.py:45 permissions.py:7
 #: views.py:104
 msgid "Folders"
 msgstr "Folders"
@@ -28,7 +28,7 @@ msgstr "Folders"
 msgid "Created"
 msgstr "created"
 
-#: apps.py:71 links.py:46 models.py:26
+#: apps.py:71 links.py:47 models.py:26
 #, fuzzy
 msgid "Documents"
 msgstr "documents"
@@ -37,32 +37,32 @@ msgstr "documents"
 msgid "Folder"
 msgstr "Folder"
 
-#: links.py:19
+#: links.py:20
 #, fuzzy
 msgid "Add to a folder"
 msgstr "add to a folder"
 
-#: links.py:23
+#: links.py:24
 #, fuzzy
 msgid "Add to folder"
 msgstr "add to folder"
 
-#: links.py:26 views.py:42
+#: links.py:27 views.py:42
 #, fuzzy
 msgid "Create folder"
 msgstr "create folder"
 
-#: links.py:31
+#: links.py:32
 #, fuzzy
 msgid "Delete"
 msgstr "delete"
 
-#: links.py:35
+#: links.py:36
 #, fuzzy
 msgid "Remove from folder"
 msgstr "remove from folder"
 
-#: links.py:39
+#: links.py:40
 msgid "Edit"
 msgstr ""
 

@@ -1,22 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:42-0400\n"
+"POT-Creation-Date: 2016-04-27 14:10-0400\n"
 "PO-Revision-Date: 2016-03-21 21:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
+"Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/sl_SI/)\n"
+"Language: sl_SI\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: sl_SI\n"
-"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n%100==4 ? 2 : 3);\n"
+"Plural-Forms: nplurals=4; plural=(n%100==1 ? 0 : n%100==2 ? 1 : n%100==3 || n"
+"%100==4 ? 2 : 3);\n"
 
 #: apps.py:18 permissions.py:7 settings.py:7
 msgid "Converter"
@@ -40,7 +42,6 @@ msgid "Exception determining PDF page count; %s"
 msgstr ""
 
 #: classes.py:98
-#| msgid "suported file formats"
 msgid "Not an office file format."
 msgstr ""
 
@@ -110,7 +111,6 @@ msgid "Edit transformations"
 msgstr ""
 
 #: permissions.py:19
-#| msgid "Raw application information"
 msgid "View existing transformations"
 msgstr ""
 
@@ -187,14 +187,13 @@ msgstr ""
 #~ msgstr "File path to graphicsmagick's program."
 
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: "
-#~ "converter.backends.imagemagick.ImageMagick, "
-#~ "converter.backends.graphicsmagick.GraphicsMagick and "
-#~ "converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: converter.backends."
+#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
+#~ "and converter.backends.python.Python"
 #~ msgstr ""
-#~ "Graphics conversion backend to use.  Options are: "
-#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
-#~ "converter.backends.python."
+#~ "Graphics conversion backend to use.  Options are: converter.backends."
+#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
+#~ "python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -507,9 +506,11 @@ msgstr ""
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -625,7 +626,8 @@ msgstr ""
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid ""
+#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

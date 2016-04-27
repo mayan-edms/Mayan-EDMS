@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:42-0400\n"
+"POT-Creation-Date: 2016-04-27 14:10-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:70 settings.py:9
+#: apps.py:72 settings.py:9
 msgid "Common"
 msgstr ""
 
@@ -34,45 +34,45 @@ msgstr "Selection"
 msgid "Filter"
 msgstr ""
 
-#: generics.py:123
+#: generics.py:127
 #, fuzzy, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
-#: generics.py:147
+#: generics.py:151
 msgid "Add"
 msgstr "Add"
 
-#: generics.py:158
+#: generics.py:162
 msgid "Remove"
 msgstr "Remove"
 
-#: generics.py:284
+#: generics.py:288
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr ""
 
-#: generics.py:295
+#: generics.py:299
 #, python-format
 msgid "%(object)s created successfully."
 msgstr ""
 
-#: generics.py:320
+#: generics.py:324
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr ""
 
-#: generics.py:331
+#: generics.py:335
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr ""
 
-#: generics.py:372
+#: generics.py:380
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr ""
 
-#: generics.py:383
+#: generics.py:391
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr ""

@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2015
@@ -10,25 +10,26 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:45-0400\n"
+"POT-Creation-Date: 2016-04-27 14:13-0400\n"
 "PO-Revision-Date: 2016-03-21 21:07+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:24
+#: apps.py:25
 msgid "Mailer"
 msgstr ""
 
-#: apps.py:36
+#: apps.py:37
 msgid "Date and time"
 msgstr "Fecha y hora"
 
-#: apps.py:40 models.py:16
+#: apps.py:41 models.py:16
 msgid "Message"
 msgstr "Mensaje"
 
@@ -44,11 +45,11 @@ msgstr "Tema"
 msgid "Body"
 msgstr "Cuerpo"
 
-#: links.py:13
+#: links.py:14
 msgid "Email document"
 msgstr "Enviar documento"
 
-#: links.py:17
+#: links.py:18
 msgid "Email link"
 msgstr "Enviar enlace"
 
@@ -108,11 +109,15 @@ msgstr "Enlace para el documento: {{ documento }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr "Plantilla para la línea de asunto del correo electrónico para envío de enlace del documento."
+msgstr ""
+"Plantilla para la línea de asunto del correo electrónico para envío de "
+"enlace del documento."
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr "Plantilla para el cuerpo del correo electrónico de envío de enlace de documento."
+msgstr ""
+"Plantilla para el cuerpo del correo electrónico de envío de enlace de "
+"documento."
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -120,11 +125,15 @@ msgstr "Documento: {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
-msgstr "Plantilla para la línea de sujeto del correo electrónico de envio de documento."
+msgstr ""
+"Plantilla para la línea de sujeto del correo electrónico de envio de "
+"documento."
 
 #: settings.py:30
 msgid "Template for the document email form body line."
-msgstr "Plantilla para la línea de cuerpo del correo electrónico para envío de documento."
+msgstr ""
+"Plantilla para la línea de cuerpo del correo electrónico para envío de "
+"documento."
 
 #: views.py:56
 msgid "Must provide at least one document."
@@ -132,7 +141,9 @@ msgstr "Debe proveer al menos un documento"
 
 #: views.py:105
 msgid "Successfully queued for delivery via email."
-msgstr "Añadido de forma exitosa a la lista de espera para envío de correo electrónico"
+msgstr ""
+"Añadido de forma exitosa a la lista de espera para envío de correo "
+"electrónico"
 
 #: views.py:114
 msgid "Send"

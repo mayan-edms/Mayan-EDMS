@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:43-0400\n"
+"POT-Creation-Date: 2016-04-27 14:11-0400\n"
 "PO-Revision-Date: 2016-03-21 21:09+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31
@@ -50,7 +51,7 @@ msgstr "Datum und Zeit"
 msgid "Completion"
 msgstr "Fertigstellung"
 
-#: apps.py:86 forms.py:39 links.py:78 models.py:187
+#: apps.py:86 forms.py:39 links.py:79 models.py:187
 msgid "Transition"
 msgstr "Übergang"
 
@@ -70,43 +71,43 @@ msgstr "Herkunftsstatus"
 msgid "Destination state"
 msgstr "Zielstatus"
 
-#: links.py:15 links.py:37 models.py:59 views.py:185
+#: links.py:15 links.py:38 models.py:59 views.py:185
 msgid "Workflows"
 msgstr "Workflows"
 
-#: links.py:19
+#: links.py:20
 msgid "Create workflow"
 msgstr "Workflow erstellen"
 
-#: links.py:24 links.py:45 links.py:62
+#: links.py:25 links.py:46 links.py:63
 msgid "Delete"
 msgstr "Löschen"
 
-#: links.py:28 models.py:25
+#: links.py:29 models.py:25
 msgid "Document types"
 msgstr "Dokumententypen"
 
-#: links.py:32 links.py:49 links.py:66
+#: links.py:33 links.py:50 links.py:67
 msgid "Edit"
 msgstr "Bearbeiten"
 
-#: links.py:40
+#: links.py:41
 msgid "Create state"
 msgstr "Status erstellen"
 
-#: links.py:53
+#: links.py:54
 msgid "States"
 msgstr "Status"
 
-#: links.py:57
+#: links.py:58
 msgid "Create transition"
 msgstr "Übergang erstellen"
 
-#: links.py:70
+#: links.py:71
 msgid "Transitions"
 msgstr "Übergänge"
 
-#: links.py:74
+#: links.py:75
 msgid "Detail"
 msgstr "Detail"
 
@@ -122,7 +123,9 @@ msgstr "Workflow"
 msgid ""
 "Select if this will be the state with which you want the workflow to start "
 "in. Only one state can be the initial state."
-msgstr "Diesen Status markieren, wenn der Workflow damit starten soll. Nur ein Status kann initial sein."
+msgstr ""
+"Diesen Status markieren, wenn der Workflow damit starten soll. Nur ein "
+"Status kann initial sein."
 
 #: models.py:73
 msgid "Initial"
@@ -132,7 +135,9 @@ msgstr "Initial"
 msgid ""
 "Enter the percent of completion that this state represents in relation to "
 "the workflow. Use numbers without the percent sign."
-msgstr "Ermöglicht den Eintrag einer Zahl (ohne Prozentzeichen), die den Stand der Fertigstellung in Bezug auf den Workflow angibt."
+msgstr ""
+"Ermöglicht den Eintrag einer Zahl (ohne Prozentzeichen), die den Stand der "
+"Fertigstellung in Bezug auf den Workflow angibt."
 
 #: models.py:92
 msgid "Workflow state"

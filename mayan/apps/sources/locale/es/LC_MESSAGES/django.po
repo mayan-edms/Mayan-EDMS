@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -12,14 +12,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:47-0400\n"
+"POT-Creation-Date: 2016-04-27 14:15-0400\n"
 "PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
+"language/es/)\n"
+"Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:37 links.py:31 models.py:145 views.py:521
@@ -27,7 +28,6 @@ msgid "Sources"
 msgstr "Fuentes"
 
 #: apps.py:53
-#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr "Crear una nueva fuente de documentos"
 
@@ -36,7 +36,10 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Las fuentes de documentos son la manera en la que se almacenan nuevos documentos en Mayan EDMS. Crea por lo menos una fuente del tipo formulario web para poder cargar documentos desde un navegador."
+msgstr ""
+"Las fuentes de documentos son la manera en la que se almacenan nuevos "
+"documentos en Mayan EDMS. Crea por lo menos una fuente del tipo formulario "
+"web para poder cargar documentos desde un navegador."
 
 #: apps.py:65
 msgid "Created"
@@ -64,7 +67,8 @@ msgstr "Expandir archivos comprimidos"
 
 #: forms.py:46
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr "Subir los archivos de un archivo comprimido como documentos individuales"
+msgstr ""
+"Subir los archivos de un archivo comprimido como documentos individuales"
 
 #: forms.py:67 views.py:432
 msgid "Staging file"
@@ -118,7 +122,7 @@ msgstr "Fuentes de documentos"
 msgid "Upload new version"
 msgstr "Subir versión nueva"
 
-#: links.py:84
+#: links.py:83
 msgid "Logs"
 msgstr "Bitácoras"
 
@@ -246,7 +250,8 @@ msgstr "Intérvalo"
 
 #: models.py:273
 msgid "Assign a document type to documents uploaded from this source."
-msgstr "Asignar un tipo de documento a los documentos subidos desde esta fuente"
+msgstr ""
+"Asignar un tipo de documento a los documentos subidos desde esta fuente"
 
 #: models.py:275
 msgid "Document type"
@@ -276,7 +281,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Las opciones típicas son 110 para POP3, 995 para POP3 sobre SSL, 143 para IMAP, 993 para IMAP sobre SSL."
+msgstr ""
+"Las opciones típicas son 110 para POP3, 995 para POP3 sobre SSL, 143 para "
+"IMAP, 993 para IMAP sobre SSL."
 
 #: models.py:338
 msgid "Port"
@@ -308,7 +315,6 @@ msgid ""
 msgstr ""
 
 #: models.py:356
-#| msgid "Current metadata"
 msgid "Subject metadata type"
 msgstr ""
 
@@ -411,7 +417,6 @@ msgstr ""
 
 #: tasks.py:31
 #, python-format
-#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr "Error procesando fuente: %s"
 
@@ -426,12 +431,13 @@ msgstr "Entradas de bitácora para fuente: %s"
 
 #: views.py:129 wizards.py:49
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "No se han definido fuentes de documentos interactivos o no hay ninguna habilitada, cree una antes de continuar."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"No se han definido fuentes de documentos interactivos o no hay ninguna "
+"habilitada, cree una antes de continuar."
 
 #: views.py:155 views.py:173
-#| msgid "Document sources"
 msgid "Document properties"
 msgstr "Propiedades de documento"
 
@@ -454,9 +460,10 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
 #: views.py:381
-msgid ""
-"New document version queued for uploaded and will be available shortly."
-msgstr "Nueva versión del documento en cola para ser cargado,  estará disponible en breve."
+msgid "New document version queued for uploaded and will be available shortly."
+msgstr ""
+"Nueva versión del documento en cola para ser cargado,  estará disponible en "
+"breve."
 
 #: views.py:419
 #, python-format
@@ -470,7 +477,6 @@ msgstr "Crear nuevo tipo de fuente: %s"
 
 #: views.py:480
 #, python-format
-#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr "¿Eliminar la fuente: %s?"
 
@@ -589,9 +595,11 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

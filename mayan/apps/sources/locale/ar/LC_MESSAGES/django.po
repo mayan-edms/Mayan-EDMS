@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Mohammed ALDOUB <voulnet@gmail.com>, 2013
@@ -9,22 +9,23 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:47-0400\n"
+"POT-Creation-Date: 2016-04-27 14:15-0400\n"
 "PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/ar/)\n"
+"Language-Team: Arabic (http://www.transifex.com/rosarior/mayan-edms/language/"
+"ar/)\n"
+"Language: ar\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ar\n"
-"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
 
 #: apps.py:37 links.py:31 models.py:145 views.py:521
 msgid "Sources"
 msgstr ""
 
 #: apps.py:53
-#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr ""
 
@@ -115,7 +116,7 @@ msgstr "مصادر الوثائق"
 msgid "Upload new version"
 msgstr ""
 
-#: links.py:84
+#: links.py:83
 msgid "Logs"
 msgstr ""
 
@@ -305,7 +306,6 @@ msgid ""
 msgstr ""
 
 #: models.py:356
-#| msgid "Current metadata"
 msgid "Subject metadata type"
 msgstr ""
 
@@ -408,7 +408,6 @@ msgstr ""
 
 #: tasks.py:31
 #, python-format
-#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
@@ -423,12 +422,11 @@ msgstr ""
 
 #: views.py:129 wizards.py:49
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
 #: views.py:155 views.py:173
-#| msgid "Document sources"
 msgid "Document properties"
 msgstr ""
 
@@ -451,8 +449,7 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
 #: views.py:381
-msgid ""
-"New document version queued for uploaded and will be available shortly."
+msgid "New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:419
@@ -467,7 +464,6 @@ msgstr "انشاء مصدر جديد من النوع: %s"
 
 #: views.py:480
 #, python-format
-#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -586,9 +582,11 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

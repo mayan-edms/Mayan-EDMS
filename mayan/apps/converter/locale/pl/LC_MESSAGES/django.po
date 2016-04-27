@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2012,2015
@@ -10,15 +10,17 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:42-0400\n"
+"POT-Creation-Date: 2016-04-27 14:10-0400\n"
 "PO-Revision-Date: 2016-03-21 21:06+0000\n"
 "Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:18 permissions.py:7 settings.py:7
 msgid "Converter"
@@ -42,7 +44,6 @@ msgid "Exception determining PDF page count; %s"
 msgstr "Wyjątek określający liczbę stron PDF: %s"
 
 #: classes.py:98
-#| msgid "suported file formats"
 msgid "Not an office file format."
 msgstr "Format niezgodny z formatem plików LibreOffice."
 
@@ -87,7 +88,9 @@ msgstr "Transformacje"
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr "Kolejność wykonywania transformacji. Jeśli nie zostanie zmieniona, przyjmie wartość automatyczną."
+msgstr ""
+"Kolejność wykonywania transformacji. Jeśli nie zostanie zmieniona, przyjmie "
+"wartość automatyczną."
 
 #: models.py:38
 msgid "Name"
@@ -97,7 +100,9 @@ msgstr "Nazwa"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr "Wprowadź argumenty dla transformacji w postaci słownika YAML np.: {\"degrees\": 180}"
+msgstr ""
+"Wprowadź argumenty dla transformacji w postaci słownika YAML np.: {\"degrees"
+"\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
@@ -112,7 +117,6 @@ msgid "Edit transformations"
 msgstr "Edytuj transformacje"
 
 #: permissions.py:19
-#| msgid "Raw application information"
 msgid "View existing transformations"
 msgstr "Przeglądaj istniejące transformacje"
 
@@ -189,14 +193,13 @@ msgstr "Transformacje dla: %s"
 #~ msgstr "File path to graphicsmagick's program."
 
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: "
-#~ "converter.backends.imagemagick.ImageMagick, "
-#~ "converter.backends.graphicsmagick.GraphicsMagick and "
-#~ "converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: converter.backends."
+#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
+#~ "and converter.backends.python.Python"
 #~ msgstr ""
-#~ "Graphics conversion backend to use.  Options are: "
-#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
-#~ "converter.backends.python."
+#~ "Graphics conversion backend to use.  Options are: converter.backends."
+#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
+#~ "python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -509,9 +512,11 @@ msgstr "Transformacje dla: %s"
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
+#~ "1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -627,7 +632,8 @@ msgstr "Transformacje dla: %s"
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid ""
+#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

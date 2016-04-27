@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:41-0400\n"
+"POT-Creation-Date: 2016-04-27 14:09-0400\n"
 "PO-Revision-Date: 2016-03-21 21:03+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:14 links.py:30
@@ -28,7 +29,6 @@ msgid "Permissions"
 msgstr "Berechtigungen"
 
 #: apps.py:26 models.py:38
-#| msgid "Roles"
 msgid "Role"
 msgstr "Rolle"
 
@@ -37,11 +37,10 @@ msgid "Delete"
 msgstr "Löschen"
 
 #: links.py:34
-#| msgid "View ACLs"
 msgid "New ACL"
 msgstr "Neue Berechtigung"
 
-#: managers.py:84
+#: managers.py:85
 msgid "Insufficient access."
 msgstr "Fehlende Berechtigung"
 
@@ -76,7 +75,6 @@ msgstr "Neue Zugriffsberechtigung für %s"
 
 #: views.py:109
 #, python-format
-#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
 msgstr "ACL \"%s\" löschen"
 
@@ -100,7 +98,8 @@ msgstr "Berechtigungen von Rolle \"%(role)s\" für \"%(object)s\""
 
 #: views.py:242
 msgid "Disabled permissions are inherited from a parent object."
-msgstr "Deaktivierte Berechtigungen sind von einem übergeordneten Objekt vererbt."
+msgstr ""
+"Deaktivierte Berechtigungen sind von einem übergeordneten Objekt vererbt."
 
 #~ msgid "New holder"
 #~ msgstr "New holder"
@@ -196,8 +195,10 @@ msgstr "Deaktivierte Berechtigungen sind von einem übergeordneten Objekt vererb
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"

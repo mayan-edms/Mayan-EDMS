@@ -1,31 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:45-0400\n"
+"POT-Creation-Date: 2016-04-27 14:13-0400\n"
 "PO-Revision-Date: 2016-03-21 21:07+0000\n"
 "Last-Translator: Mathias Behrle <mathiasb@m9s.biz>\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:24
+#: apps.py:25
 msgid "Mailer"
 msgstr "Mailer"
 
-#: apps.py:36
+#: apps.py:37
 msgid "Date and time"
 msgstr "Zeit"
 
-#: apps.py:40 models.py:16
+#: apps.py:41 models.py:16
 msgid "Message"
 msgstr "Nachricht"
 
@@ -41,11 +42,11 @@ msgstr "Betreff"
 msgid "Body"
 msgstr "Nachrichtenteil"
 
-#: links.py:13
+#: links.py:14
 msgid "Email document"
 msgstr "Dokument als E-Mailanhang senden"
 
-#: links.py:17
+#: links.py:18
 msgid "Email link"
 msgstr "Link zum Dokument per E-Mail senden"
 
@@ -60,7 +61,11 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Anlagen: {{ document }}\n\n --------\n Diese E-Mail wurde gesendet mit %(project_title)s (%(project_website)s)"
+msgstr ""
+"Anlagen: {{ document }}\n"
+"\n"
+" --------\n"
+" Diese E-Mail wurde gesendet mit %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -69,7 +74,12 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr "Um dieses Dokument anzuzeigen klicken Sie bitte auf folgenden Link: {{ link }}\n\n--------\n Diese E-Mail wurde gesendet mit %(project_title)s (%(project_website)s)"
+msgstr ""
+"Um dieses Dokument anzuzeigen klicken Sie bitte auf folgenden Link: "
+"{{ link }}\n"
+"\n"
+"--------\n"
+" Diese E-Mail wurde gesendet mit %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
@@ -105,11 +115,14 @@ msgstr "Link für Dokument: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr "Vorlage für die Betreffzeile des Formulars für die Dokumentenlinkversendung"
+msgstr ""
+"Vorlage für die Betreffzeile des Formulars für die Dokumentenlinkversendung"
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr "Vorlage für den Nachrichtenteil des Formulars für die Dokumentenlinkversendung"
+msgstr ""
+"Vorlage für den Nachrichtenteil des Formulars für die "
+"Dokumentenlinkversendung"
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -117,11 +130,13 @@ msgstr "Dokument: {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
-msgstr "Vorlage für die Betreffzeile des Formulars für die Dokumentenversendung"
+msgstr ""
+"Vorlage für die Betreffzeile des Formulars für die Dokumentenversendung"
 
 #: settings.py:30
 msgid "Template for the document email form body line."
-msgstr "Vorlage für den Nachrichtenteil des Formulars für die Dokumentenversendung"
+msgstr ""
+"Vorlage für den Nachrichtenteil des Formulars für die Dokumentenversendung"
 
 #: views.py:56
 msgid "Must provide at least one document."

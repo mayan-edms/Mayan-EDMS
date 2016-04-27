@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
@@ -10,216 +10,285 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:42-0400\n"
+"POT-Creation-Date: 2016-04-27 14:10-0400\n"
 "PO-Revision-Date: 2016-03-21 21:10+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
-#: api.py:100
-msgid "Unknown"
-msgstr "Nieznany"
-
-#: apps.py:22
+#: apps.py:30
 msgid "Django GPG"
 msgstr ""
 
-#: apps.py:55 apps.py:62
-msgid "ID"
-msgstr "ID"
+#: apps.py:73 apps.py:76 forms.py:17
+msgid "Key ID"
+msgstr "Key ID"
 
-#: apps.py:57
-msgid "Owner"
-msgstr "Właściciel"
+#: apps.py:74 apps.py:87 forms.py:19 models.py:67
+msgid "User ID"
+msgstr ""
 
-#: apps.py:65
+#: apps.py:77 forms.py:34 models.py:70
 msgid "Type"
 msgstr "Typ"
 
-#: apps.py:67
+#: apps.py:79 forms.py:23 models.py:51
 msgid "Creation date"
 msgstr "Data utworzenia"
 
-#: apps.py:73
+#: apps.py:82 forms.py:27 models.py:55
 msgid "Expiration date"
 msgstr "Data wygaśnięcia"
 
-#: apps.py:74
+#: apps.py:83
 msgid "No expiration"
 msgstr ""
 
-#: apps.py:76
+#: apps.py:85 forms.py:32 models.py:62
 msgid "Length"
 msgstr "Długość"
 
-#: apps.py:78
-#| msgid "Identifies"
-msgid "Identities"
+#: forms.py:28
+msgid "None"
 msgstr ""
 
-#: forms.py:9
+#: forms.py:31 models.py:59
+msgid "Fingerprint"
+msgstr ""
+
+#: forms.py:33 models.py:65
+msgid "Algorithm"
+msgstr ""
+
+#: forms.py:47
 msgid "Term"
 msgstr "Term"
 
-#: forms.py:10
+#: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
 msgstr "Imię i nazwisko, e-mail, key ID lub key fingerprint kluc szukać."
 
-#: links.py:14 views.py:81
-msgid "Private keys"
-msgstr "Klucze prywatne"
-
-#: links.py:18 views.py:76
-msgid "Public keys"
-msgstr "Klucze publiczne"
-
-#: links.py:21
+#: links.py:13
 msgid "Delete"
 msgstr "Usunąć"
 
-#: links.py:26 permissions.py:16
+#: links.py:17
+msgid "Details"
+msgstr ""
+
+#: links.py:21
+msgid "Download"
+msgstr ""
+
+#: links.py:25 permissions.py:28
 msgid "Query keyservers"
 msgstr "Query keyservers"
 
-#: links.py:30
+#: links.py:29
 msgid "Import"
 msgstr "Import"
 
-#: links.py:35 permissions.py:7
+#: links.py:34 permissions.py:7
 msgid "Key management"
 msgstr "Zarządzanie kluczami"
 
-#: literals.py:6
+#: links.py:37
+#, fuzzy
+#| msgid "Import key"
+msgid "Upload key"
+msgstr "Importuj klucz"
+
+#: links.py:41 views.py:160
+msgid "Private keys"
+msgstr "Klucze prywatne"
+
+#: links.py:45 views.py:149
+msgid "Public keys"
+msgstr "Klucze publiczne"
+
+#: literals.py:6 literals.py:14
 msgid "Public"
 msgstr "Publiczny"
 
-#: literals.py:7
+#: literals.py:7 literals.py:15
 msgid "Secret"
 msgstr "Sekret"
 
-#: literals.py:15 literals.py:20
+#: literals.py:23 literals.py:28
 msgid "RSA"
 msgstr "RSA"
 
-#: literals.py:16
+#: literals.py:24
 msgid "DSA"
 msgstr "DSA"
 
-#: literals.py:21
+#: literals.py:29
 msgid "Elgamal"
 msgstr "Elgamal"
 
-#: literals.py:35
+#: literals.py:43
 msgid "Bad signature."
 msgstr "Zły podpis."
 
-#: literals.py:38
+#: literals.py:46
 msgid "Document not signed or invalid signature."
 msgstr "Dokumentu nie podpisany lub nieprawidłowy podpis."
 
-#: literals.py:41
+#: literals.py:49
 msgid "Signature error."
 msgstr "Błąd podpisu."
 
-#: literals.py:45
+#: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr "Dokument został podpisany, ale klucz publiczny nie  jest dostępny do weryfikacji."
+msgstr ""
+"Dokument został podpisany, ale klucz publiczny nie  jest dostępny do "
+"weryfikacji."
 
-#: literals.py:50
+#: literals.py:58
 msgid "Document is signed, and signature is good."
 msgstr "Dokument został podpisany, a podpis jest dobry."
 
-#: literals.py:53
+#: literals.py:61
 msgid "Document is signed with a valid signature."
 msgstr "Dokument podpisany za pomocą ważnego podpisu."
 
-#: permissions.py:10
-msgid "View keys"
-msgstr "View keys"
+#: models.py:47
+msgid "ASCII armored version of the key."
+msgstr ""
 
-#: permissions.py:13
+#: models.py:48
+msgid "Key data"
+msgstr ""
+
+#: models.py:76
+#, fuzzy
+#| msgid "Key ID"
+msgid "Key"
+msgstr "Key ID"
+
+#: models.py:77
+msgid "Keys"
+msgstr ""
+
+#: models.py:86
+msgid "Invalid key data"
+msgstr ""
+
+#: models.py:89
+msgid "Key already exists."
+msgstr ""
+
+#: permissions.py:10
 msgid "Delete keys"
 msgstr "Delete keys"
 
-#: permissions.py:19
+#: permissions.py:13
+msgid "Download keys"
+msgstr ""
+
+#: permissions.py:16
 msgid "Import keys from keyservers"
 msgstr "Import keys from keyservers"
 
+#: permissions.py:19
+msgid "Use keys to sign content"
+msgstr ""
+
+#: permissions.py:22
+#, fuzzy
+#| msgid "public keys"
+msgid "Upload keys"
+msgstr "public keys"
+
+#: permissions.py:25
+msgid "View keys"
+msgstr "View keys"
+
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr ""
 
-#: settings.py:13
-msgid "List of keyservers to be queried for unknown keys."
-msgstr "List of keyservers to be queried for unknown keys."
-
-#: settings.py:19
+#: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
-msgstr "Katalog domowy używany do przechowywania kluczy oraz plików konfiguracyjnych."
+msgstr ""
+"Katalog domowy używany do przechowywania kluczy oraz plików konfiguracyjnych."
 
-#: settings.py:25
+#: settings.py:21
 msgid "Path to the GPG binary."
 msgstr "Ścieżka do GPG binary."
 
+#: settings.py:25
+#, fuzzy
+#| msgid "List of keyservers to be queried for unknown keys."
+msgid "Keyserver used to query for keys."
+msgstr "List of keyservers to be queried for unknown keys."
+
 #: views.py:38
+#, fuzzy, python-format
+#| msgid "Delete keys"
+msgid "Delete key: %s"
+msgstr "Delete keys"
+
+#: views.py:48
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
+msgid "Details for key: %s"
+msgstr ""
+
+#: views.py:68
+#, python-format
+msgid "Import key ID: %s?"
+msgstr ""
+
+#: views.py:69
+msgid "Import key"
+msgstr "Importuj klucz"
+
+#: views.py:78
+#, python-format
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
-#: views.py:48
+#: views.py:85
 #, python-format
 msgid "Successfully received key: %(key_id)s"
 msgstr ""
 
-#: views.py:57
-#, python-format
-#| msgid "Import key"
-msgid "Import key ID: %s?"
-msgstr ""
-
-#: views.py:59
-msgid "Import key"
-msgstr "Importuj klucz"
-
-#: views.py:100
-#, python-format
-msgid "Key: %s, deleted successfully."
-msgstr "Klucz:%s, został usunięty."
-
 #: views.py:107
-msgid "Delete key"
-msgstr "Usuń klucz"
-
-#: views.py:110
-#, python-format
-#| msgid ""
-#| "u sure you wish to delete key: %s?  If you try to delete a public  that part"
-#| " of a public/private pair the private key will be deleted well."
-msgid ""
-"Delete key %s? If you delete a public key that is part of a public/private "
-"pair the private key will be deleted as well."
-msgstr ""
-
-#: views.py:134
 msgid "Search"
 msgstr "Szukaj"
 
-#: views.py:136
+#: views.py:109
 msgid "Query key server"
 msgstr "Query key server"
 
-#: views.py:146
+#: views.py:119
 msgid "Key query results"
 msgstr ""
 
-#~ msgid "Key ID"
-#~ msgstr "Key ID"
+#: views.py:138
+msgid "Upload new key"
+msgstr ""
+
+#~ msgid "Unknown"
+#~ msgstr "Nieznany"
+
+#~ msgid "ID"
+#~ msgstr "ID"
+
+#~ msgid "Owner"
+#~ msgstr "Właściciel"
+
+#~ msgid "Key: %s, deleted successfully."
+#~ msgstr "Klucz:%s, został usunięty."
+
+#~ msgid "Delete key"
+#~ msgstr "Usuń klucz"
 
 #~ msgid "results"
 #~ msgstr "results"
@@ -241,9 +310,6 @@ msgstr ""
 
 #~ msgid "private keys"
 #~ msgstr "private keys"
-
-#~ msgid "public keys"
-#~ msgstr "public keys"
 
 #~ msgid "type"
 #~ msgstr "type"

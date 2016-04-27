@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:45-0400\n"
+"POT-Creation-Date: 2016-04-27 14:13-0400\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: apps.py:24
+#: apps.py:25
 msgid "Mailer"
 msgstr ""
 
-#: apps.py:36
+#: apps.py:37
 msgid "Date and time"
 msgstr ""
 
-#: apps.py:40 models.py:16
+#: apps.py:41 models.py:16
 msgid "Message"
 msgstr ""
 
@@ -41,11 +41,11 @@ msgstr ""
 msgid "Body"
 msgstr ""
 
-#: links.py:13
+#: links.py:14
 msgid "Email document"
 msgstr ""
 
-#: links.py:17
+#: links.py:18
 msgid "Email link"
 msgstr ""
 

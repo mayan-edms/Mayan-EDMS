@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Justin Albstbstmeijer <justin@albstmeijer.nl>, 2016
@@ -9,14 +9,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:48-0400\n"
+"POT-Creation-Date: 2016-04-27 14:16-0400\n"
 "PO-Revision-Date: 2016-03-21 21:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:29 permissions.py:7
@@ -126,7 +127,6 @@ msgstr "Bewerk groep: %s"
 
 #: views.py:66
 #, python-format
-#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
 msgstr "Verwijder de groep:  %s?"
 
@@ -174,7 +174,9 @@ msgstr "U dient minimaal één gebruiker in te voeren."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr "Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
+msgstr ""
+"Super gebruiker en medewerker verwijderen is niet toegestaan, gebruik de "
+"admin gebruiker voor deze zaken."
 
 #: views.py:237
 #, python-format
@@ -188,13 +190,11 @@ msgstr "Fout tijdens het verwijderen van gebruiker \"%(user)s\": %(error)s"
 
 #: views.py:255
 #, python-format
-#| msgid "Delete existing users"
 msgid "Delete the user: %s?"
 msgstr "Verwijder de gebruiker: %s?"
 
 #: views.py:257
 #, python-format
-#| msgid "Delete existing users"
 msgid "Delete the users: %s?"
 msgstr "Verwijder de gebruikers: %s?"
 
@@ -206,7 +206,9 @@ msgstr "Wachtwoord is niet het zelfde, probeer het opnieuw."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr "Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, gebruik de admin gebruiker voor deze zaken."
+msgstr ""
+"Super gebruiker en medewerker wachtwoord aanpassen is niet toegestaan, "
+"gebruik de admin gebruiker voor deze zaken."
 
 #: views.py:319
 #, python-format
@@ -216,7 +218,9 @@ msgstr "Succesvol wachtwoord aangepast voor gebruiker: %s"
 #: views.py:325
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr "Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": %(error)s"
+msgstr ""
+"Fout tijdens het veranderen van het wachtwoord voor gebruiker \"%(user)s\": "
+"%(error)s"
 
 #: views.py:342
 #, python-format

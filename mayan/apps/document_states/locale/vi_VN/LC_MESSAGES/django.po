@@ -1,20 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:43-0400\n"
+"POT-Creation-Date: 2016-04-27 14:11-0400\n"
 "PO-Revision-Date: 2016-03-21 21:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
+"Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/"
+"mayan-edms/language/vi_VN/)\n"
+"Language: vi_VN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:31
@@ -49,7 +50,7 @@ msgstr ""
 msgid "Completion"
 msgstr ""
 
-#: apps.py:86 forms.py:39 links.py:78 models.py:187
+#: apps.py:86 forms.py:39 links.py:79 models.py:187
 msgid "Transition"
 msgstr ""
 
@@ -69,43 +70,43 @@ msgstr ""
 msgid "Destination state"
 msgstr ""
 
-#: links.py:15 links.py:37 models.py:59 views.py:185
+#: links.py:15 links.py:38 models.py:59 views.py:185
 msgid "Workflows"
 msgstr ""
 
-#: links.py:19
+#: links.py:20
 msgid "Create workflow"
 msgstr ""
 
-#: links.py:24 links.py:45 links.py:62
+#: links.py:25 links.py:46 links.py:63
 msgid "Delete"
 msgstr ""
 
-#: links.py:28 models.py:25
+#: links.py:29 models.py:25
 msgid "Document types"
 msgstr ""
 
-#: links.py:32 links.py:49 links.py:66
+#: links.py:33 links.py:50 links.py:67
 msgid "Edit"
 msgstr "Sửa"
 
-#: links.py:40
+#: links.py:41
 msgid "Create state"
 msgstr ""
 
-#: links.py:53
+#: links.py:54
 msgid "States"
 msgstr ""
 
-#: links.py:57
+#: links.py:58
 msgid "Create transition"
 msgstr ""
 
-#: links.py:70
+#: links.py:71
 msgid "Transitions"
 msgstr ""
 
-#: links.py:74
+#: links.py:75
 msgid "Detail"
 msgstr ""
 

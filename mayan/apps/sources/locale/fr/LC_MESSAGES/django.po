@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Christophe CHAUVET <christophe.chauvet@gmail.com>, 2015
@@ -10,14 +10,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-03-21 16:47-0400\n"
+"POT-Creation-Date: 2016-04-27 14:15-0400\n"
 "PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:37 links.py:31 models.py:145 views.py:521
@@ -25,7 +26,6 @@ msgid "Sources"
 msgstr "Sources"
 
 #: apps.py:53
-#| msgid "Create new document sources"
 msgid "Create a document source"
 msgstr "Créer un document source"
 
@@ -34,7 +34,10 @@ msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr "Les sources de document seront la façon pour lesquels les nouveaux documents seront suivis dans Mayan EDMS, créer par au moins un formulaire web pour téléverser le document depuis le navigateur"
+msgstr ""
+"Les sources de document seront la façon pour lesquels les nouveaux documents "
+"seront suivis dans Mayan EDMS, créer par au moins un formulaire web pour "
+"téléverser le document depuis le navigateur"
 
 #: apps.py:65
 msgid "Created"
@@ -62,7 +65,9 @@ msgstr "Décompresser les fichiers"
 
 #: forms.py:46
 msgid "Upload a compressed file's contained files as individual documents"
-msgstr "Importer le contenu d'un ensemble de fichiers compressés comme fichiers individuels"
+msgstr ""
+"Importer le contenu d'un ensemble de fichiers compressés comme fichiers "
+"individuels"
 
 #: forms.py:67 views.py:432
 msgid "Staging file"
@@ -116,7 +121,7 @@ msgstr "Sources du document"
 msgid "Upload new version"
 msgstr "Importer une nouvelle version"
 
-#: links.py:84
+#: links.py:83
 msgid "Logs"
 msgstr "Journaux évènement"
 
@@ -244,7 +249,8 @@ msgstr "Intervalle"
 
 #: models.py:273
 msgid "Assign a document type to documents uploaded from this source."
-msgstr "Assigner un type de document aux documents importés à partir de cette source."
+msgstr ""
+"Assigner un type de document aux documents importés à partir de cette source."
 
 #: models.py:275
 msgid "Document type"
@@ -274,7 +280,9 @@ msgstr "SSL"
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
-msgstr "Les choix typiques sont 110 pour le POP3, 995 pour le POP3 over SSL, 143 pour l'IMAP, 993 pour l'IMAP over SSL."
+msgstr ""
+"Les choix typiques sont 110 pour le POP3, 995 pour le POP3 over SSL, 143 "
+"pour l'IMAP, 993 pour l'IMAP over SSL."
 
 #: models.py:338
 msgid "Port"
@@ -293,7 +301,10 @@ msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
-msgstr "Le nom de la pièce jointe qui contiendra les noms des type de métadonnée et aux couple de valeur qui seront assignés au reste des documents téléversés. Noter que cette pièce jointe sera la première."
+msgstr ""
+"Le nom de la pièce jointe qui contiendra les noms des type de métadonnée et "
+"aux couple de valeur qui seront assignés au reste des documents téléversés. "
+"Noter que cette pièce jointe sera la première."
 
 #: models.py:349
 msgid "Metadata attachment name"
@@ -306,7 +317,6 @@ msgid ""
 msgstr ""
 
 #: models.py:356
-#| msgid "Current metadata"
 msgid "Subject metadata type"
 msgstr ""
 
@@ -409,7 +419,6 @@ msgstr ""
 
 #: tasks.py:31
 #, python-format
-#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr "Erreur lors du traitement de la source: %s"
 
@@ -424,12 +433,13 @@ msgstr "Entrée du journal pour la source: %s"
 
 #: views.py:129 wizards.py:49
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
-msgstr "Aucune source de document interactifs n'a été définie ou/ni activée, créer en une avant de continuer."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
+msgstr ""
+"Aucune source de document interactifs n'a été définie ou/ni activée, créer "
+"en une avant de continuer."
 
 #: views.py:155 views.py:173
-#| msgid "Document sources"
 msgid "Document properties"
 msgstr "Propriété du document"
 
@@ -439,7 +449,9 @@ msgstr "Fichiers dans l'index, en cours de modification"
 
 #: views.py:262
 msgid "New document queued for uploaded and will be available shortly."
-msgstr "Nouveau document ajouter dans la file d'attente pour transfert et disponible dans les plus bref délai."
+msgstr ""
+"Nouveau document ajouter dans la file d'attente pour transfert et disponible "
+"dans les plus bref délai."
 
 #: views.py:302
 #, python-format
@@ -452,9 +464,10 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
 #: views.py:381
-msgid ""
-"New document version queued for uploaded and will be available shortly."
-msgstr "Une nouvelle version du document mis en fille d'attente pour importation qui sera disponible dans les plus brefs délai."
+msgid "New document version queued for uploaded and will be available shortly."
+msgstr ""
+"Une nouvelle version du document mis en fille d'attente pour importation qui "
+"sera disponible dans les plus brefs délai."
 
 #: views.py:419
 #, python-format
@@ -468,7 +481,6 @@ msgstr "Créer une nouvelle source de type:%s"
 
 #: views.py:480
 #, python-format
-#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr "Supprimer la source: %s?"
 
@@ -587,9 +599,11 @@ msgstr "Assistant d'envoi de document"
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"
