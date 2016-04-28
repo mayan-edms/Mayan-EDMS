@@ -212,14 +212,23 @@ class IndexFS(Operations):
 class Command(management.BaseCommand):
     help = 'Mount an index as a FUSE filesystem.'
     usage_str = 'Usage: ./manage.py mountindex [index slug] [mount point]'
-    args = '[index slug] [mount point]'
+    #args = '[index slug] [mount point]'
+
+    def add_arguments(self, parser):
+        parser.add_argument('slug', nargs='?',
+            help='Index slug'
+        )
+
+        parser.add_argument('mount_point', nargs='?',
+            help='Mount point'
+        )
 
     def handle(self, *args, **options):
-        if len(args) != 2:
+        if not options.get('slug') or not options.get('mount_point'):
             print('Incorrect number of arguments')
             exit(1)
 
         FUSE(
-            operations=IndexFS(index_slug=args[0]), mountpoint=args[1],
-            nothreads=True, foreground=True
+            operations=IndexFS(index_slug=options['slug']),
+            mountpoint=options['mount_point'], nothreads=True, foreground=True
         )
