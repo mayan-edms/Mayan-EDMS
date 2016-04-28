@@ -3,6 +3,9 @@ from __future__ import unicode_literals
 import StringIO
 import tempfile
 
+import gnupg
+import mock
+
 from django.test import TestCase
 
 from ..exceptions import (
@@ -13,9 +16,28 @@ from ..models import Key
 
 from .literals import (
     TEST_DETACHED_SIGNATURE, TEST_FILE, TEST_KEY_DATA, TEST_KEY_FINGERPRINT,
-    TEST_KEY_PASSPHRASE, TEST_SEARCH_FINGERPRINT, TEST_SEARCH_UID,
-    TEST_SIGNED_FILE, TEST_SIGNED_FILE_CONTENT
+    TEST_KEY_PASSPHRASE, TEST_RECEIVE_KEY, TEST_SEARCH_FINGERPRINT,
+    TEST_SEARCH_UID, TEST_SIGNED_FILE, TEST_SIGNED_FILE_CONTENT
 )
+
+MOCK_SEARCH_KEYS_RESPONSE = [
+ {'algo': u'1',
+  'date': u'1311475606',
+  'expires': u'1643601600',
+  'keyid': u'607138F1AECC5A5CA31CB7715F3F7F75D210724D',
+  'length': u'2048',
+  'type': u'pub',
+  'uids': [u'Roberto Rosario <roberto.rosario.gonzalez@gmail.com>']},]
+
+
+def mock_recv_keys(self, keyserver, *keyids):
+    class ImportResult(object):
+        count = 1
+        fingerprints = [TEST_SEARCH_FINGERPRINT]
+
+    self.import_keys(TEST_RECEIVE_KEY)
+
+    return ImportResult()
 
 
 class KeyTestCase(TestCase):
@@ -25,7 +47,10 @@ class KeyTestCase(TestCase):
 
         self.assertEqual(key.fingerprint, TEST_KEY_FINGERPRINT)
 
-    def test_key_search(self):
+    @mock.patch.object(gnupg.GPG ,'search_keys', autospec=True)
+    def test_key_search(self, search_keys):
+        search_keys.return_value = MOCK_SEARCH_KEYS_RESPONSE
+
         search_results = Key.objects.search(query=TEST_SEARCH_UID)
 
         self.assertTrue(
@@ -34,7 +59,10 @@ class KeyTestCase(TestCase):
             ]
         )
 
-    def test_key_receive(self):
+    @mock.patch.object(gnupg.GPG ,'recv_keys', autospec=True)
+    def test_key_receive(self, recv_keys):
+        recv_keys.side_effect = mock_recv_keys
+
         Key.objects.receive_key(key_id=TEST_SEARCH_FINGERPRINT)
 
         self.assertEqual(Key.objects.all().count(), 1)
