@@ -211,8 +211,6 @@ class IndexFS(Operations):
 
 class Command(management.BaseCommand):
     help = 'Mount an index as a FUSE filesystem.'
-    usage_str = 'Usage: ./manage.py mountindex [index slug] [mount point]'
-    #args = '[index slug] [mount point]'
 
     def add_arguments(self, parser):
         parser.add_argument('slug', nargs='?',
@@ -225,7 +223,7 @@ class Command(management.BaseCommand):
 
     def handle(self, *args, **options):
         if not options.get('slug') or not options.get('mount_point'):
-            print('Incorrect number of arguments')
+            self.stderr.write(self.style.ERROR('Incorrect number of arguments'))
             exit(1)
 
         FUSE(
