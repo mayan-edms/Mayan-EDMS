@@ -21,13 +21,16 @@ from .literals import (
 )
 
 MOCK_SEARCH_KEYS_RESPONSE = [
- {'algo': u'1',
-  'date': u'1311475606',
-  'expires': u'1643601600',
-  'keyid': u'607138F1AECC5A5CA31CB7715F3F7F75D210724D',
-  'length': u'2048',
-  'type': u'pub',
-  'uids': [u'Roberto Rosario <roberto.rosario.gonzalez@gmail.com>']},]
+    {
+        'algo': u'1',
+        'date': u'1311475606',
+        'expires': u'1643601600',
+        'keyid': u'607138F1AECC5A5CA31CB7715F3F7F75D210724D',
+        'length': u'2048',
+        'type': u'pub',
+        'uids': [u'Roberto Rosario <roberto.rosario.gonzalez@gmail.com>']
+    }
+]
 
 
 def mock_recv_keys(self, keyserver, *keyids):
@@ -47,7 +50,7 @@ class KeyTestCase(TestCase):
 
         self.assertEqual(key.fingerprint, TEST_KEY_FINGERPRINT)
 
-    @mock.patch.object(gnupg.GPG ,'search_keys', autospec=True)
+    @mock.patch.object(gnupg.GPG, 'search_keys', autospec=True)
     def test_key_search(self, search_keys):
         search_keys.return_value = MOCK_SEARCH_KEYS_RESPONSE
 
@@ -59,7 +62,7 @@ class KeyTestCase(TestCase):
             ]
         )
 
-    @mock.patch.object(gnupg.GPG ,'recv_keys', autospec=True)
+    @mock.patch.object(gnupg.GPG, 'recv_keys', autospec=True)
     def test_key_receive(self, recv_keys):
         recv_keys.side_effect = mock_recv_keys
 

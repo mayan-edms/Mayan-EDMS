@@ -4,9 +4,6 @@ from django.test import TestCase, override_settings
 
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
-from user_management.tests.literals import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
-)
 
 from ..models import Folder
 

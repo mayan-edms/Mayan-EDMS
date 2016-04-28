@@ -7,10 +7,8 @@ from user_management.tests.literals import (
     TEST_USER_PASSWORD, TEST_USER_USERNAME
 )
 
-from ..models import LogEntry
 from ..permissions import (
-    permission_mailing_link, permission_mailing_send_document,
-    permission_view_error_log
+    permission_mailing_link, permission_mailing_send_document
 )
 
 TEST_EMAIL_ADDRESS = 'test@example.com'

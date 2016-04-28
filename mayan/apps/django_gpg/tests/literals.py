@@ -89,7 +89,7 @@ TEST_SIGNED_FILE = os.path.join(
 )
 TEST_SIGNED_FILE_CONTENT = 'test_file.txt\n'
 
-TEST_RECEIVE_KEY='''-----BEGIN PGP PUBLIC KEY BLOCK-----
+TEST_RECEIVE_KEY = '''-----BEGIN PGP PUBLIC KEY BLOCK-----
 Version: SKS 1.1.5
 Comment: Hostname: keyserver.deuxpi.ca
 

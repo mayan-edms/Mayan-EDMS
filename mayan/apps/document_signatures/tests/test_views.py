@@ -5,7 +5,7 @@ from django.core.files import File
 from django_downloadview.test import assert_download_response
 
 from django_gpg.models import Key
-from documents.models import Document, DocumentVersion
+from documents.models import DocumentVersion
 from documents.tests.literals import TEST_DOCUMENT_PATH
 from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests import (
@@ -324,8 +324,6 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
     def test_missing_signature_verify_view_with_permission(self):
         for document in self.document_type.documents.all():
             document.delete(to_trash=False)
-
-        from documents.models import DocumentType
 
         old_hooks = DocumentVersion._post_save_hooks
         DocumentVersion._post_save_hooks = {}

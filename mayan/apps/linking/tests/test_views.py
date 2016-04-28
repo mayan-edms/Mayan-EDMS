@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from documents.permissions import permission_document_view
 from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests import (
     TEST_USER_USERNAME, TEST_USER_PASSWORD
@@ -9,7 +8,7 @@ from user_management.tests import (
 from ..models import SmartLink
 from ..permissions import (
     permission_smart_link_create, permission_smart_link_delete,
-    permission_smart_link_edit, permission_smart_link_view
+    permission_smart_link_edit
 )
 
 TEST_SMART_LINK_LABEL = 'test label'

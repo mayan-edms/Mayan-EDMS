@@ -38,7 +38,7 @@ class EmbeddedSignatureManager(models.Manager):
 
         try:
             with document_version.open() as file_object:
-                signature_result = key.sign_file(
+                key.sign_file(
                     binary=True, file_object=file_object,
                     output=temporary_filename, passphrase=passphrase
                 )

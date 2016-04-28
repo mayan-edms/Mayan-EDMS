@@ -333,9 +333,6 @@ class EmbeddedSignaturesTestCase(TestCase):
         self.assertEqual(EmbeddedSignature.objects.count(), 1)
 
         with new_version.open() as file_object:
-            document_content_hash = hashlib.sha256(file_object.read()).hexdigest()
-
-        with new_version.open() as file_object:
             file_object.seek(0, 2)
             new_size = file_object.tell()
             file_object.seek(0)

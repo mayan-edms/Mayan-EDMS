@@ -250,11 +250,11 @@ CORS_ORIGIN_ALLOW_ALL = True
 SWAGGER_SETTINGS = {
     'api_version': '1',
     'info': {
-          'title': _('Mayan EDMS API Documentation'),
-          'description': _('Free Open Source Document Management System.'),
-          'contact': 'roberto.rosario@mayan-edms.com',
-          'license': 'Apache 2.0',
-          'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html'
+        'title': _('Mayan EDMS API Documentation'),
+        'description': _('Free Open Source Document Management System.'),
+        'contact': 'roberto.rosario@mayan-edms.com',
+        'license': 'Apache 2.0',
+        'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html'
     }
 
 }

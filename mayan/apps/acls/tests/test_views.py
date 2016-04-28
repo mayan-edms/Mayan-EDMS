@@ -8,7 +8,7 @@ from user_management.tests import (
 )
 
 from ..models import AccessControlList
-from ..permissions import permission_acl_edit, permission_acl_view
+from ..permissions import permission_acl_edit
 
 
 class AccessControlListViewTestCase(GenericDocumentViewTestCase):

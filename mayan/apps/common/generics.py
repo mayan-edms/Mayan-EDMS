@@ -8,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     FormView as DjangoFormView, DetailView, TemplateView
 )
-from django.views.generic.base import ContextMixin
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import (
     CreateView, DeleteView, ModelFormMixin, UpdateView
