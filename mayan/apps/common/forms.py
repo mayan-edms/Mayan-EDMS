@@ -158,7 +158,7 @@ class UserForm_view(DetailForm):
 
     class Meta:
         fields = (
-            'username', 'first_name', 'last_name', 'email', 'is_staff',
-            'is_superuser', 'last_login', 'date_joined', 'groups'
+            'username', 'first_name', 'last_name', 'email', 'last_login',
+            'date_joined', 'groups'
         )
         model = get_user_model()
