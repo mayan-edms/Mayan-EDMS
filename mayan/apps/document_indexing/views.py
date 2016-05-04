@@ -240,7 +240,7 @@ class IndexInstanceNodeView(DocumentListView):
     template_name = 'document_indexing/node_details.html'
 
     def dispatch(self, request, *args, **kwargs):
-        self.index_instance = get_object_or_404(
+        self.index_instance_node = get_object_or_404(
             IndexInstanceNode, pk=self.kwargs['pk']
         )
 
@@ -251,11 +251,11 @@ class IndexInstanceNodeView(DocumentListView):
         except PermissionDenied:
             AccessControlList.objects.check_access(
                 permission_document_indexing_view,
-                request.user, self.index_instance.index()
+                request.user, self.index_instance_node.index()
             )
 
-        if self.index_instance:
-            if self.index_instance.index_template_node.link_documents:
+        if self.index_instance_node:
+            if self.index_instance_node.index_template_node.link_documents:
                 return DocumentListView.dispatch(
                     self, request, *args, **kwargs
                 )
@@ -263,36 +263,36 @@ class IndexInstanceNodeView(DocumentListView):
         return SingleObjectListView.dispatch(self, request, *args, **kwargs)
 
     def get_queryset(self):
-        if self.index_instance:
-            if self.index_instance.index_template_node.link_documents:
+        if self.index_instance_node:
+            if self.index_instance_node.index_template_node.link_documents:
                 return DocumentListView.get_queryset(self)
             else:
                 self.object_permission = None
-                return self.index_instance.get_children().order_by('value')
+                return self.index_instance_node.get_children().order_by('value')
         else:
             self.object_permission = None
             return IndexInstanceNode.objects.none()
 
     def get_document_queryset(self):
-        if self.index_instance:
-            if self.index_instance.index_template_node.link_documents:
-                return self.index_instance.documents.all()
+        if self.index_instance_node:
+            if self.index_instance_node.index_template_node.link_documents:
+                return self.index_instance_node.documents.all()
 
     def get_extra_context(self):
         context = {
             'hide_links': True,
-            'object': self.index_instance,
+            'object': self.index_instance_node,
             'navigation': mark_safe(
                 _('Navigation: %s') % node_tree(
-                    node=self.index_instance, user=self.request.user
+                    node=self.index_instance_node, user=self.request.user
                 )
             ),
             'title': _(
                 'Contents for index: %s'
-            ) % self.index_instance.get_full_path(),
+            ) % self.index_instance_node.get_full_path(),
         }
 
-        if self.index_instance and not self.index_instance.index_template_node.link_documents:
+        if self.index_instance_node and not self.index_instance_node.index_template_node.link_documents:
             context.update({'hide_object': True})
 
         return context
