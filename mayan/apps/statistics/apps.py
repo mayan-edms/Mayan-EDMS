@@ -20,6 +20,7 @@ from .tasks import task_execute_statistic  # NOQA - Force registration of task
 
 class StatisticsApp(MayanAppConfig):
     name = 'statistics'
+    test = True
     verbose_name = _('Statistics')
 
     def ready(self):

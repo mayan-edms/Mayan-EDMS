@@ -5,7 +5,7 @@ from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 
 from common.generics import (
-    ConfirmView, SingleObjectDetailView, SingleObjectListView
+    ConfirmView, SimpleView, SingleObjectDetailView, SingleObjectListView
 )
 
 from .classes import Statistic, StatisticNamespace
@@ -42,7 +42,7 @@ class NamespaceDetailView(SingleObjectListView):
         return self.get_namespace().statistics
 
 
-class StatisticDetailView(SingleObjectDetailView):
+class StatisticDetailView(SimpleView):
     view_permission = permission_statistics_view
 
     def get_extra_context(self):
