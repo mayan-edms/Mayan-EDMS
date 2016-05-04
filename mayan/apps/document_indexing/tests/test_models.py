@@ -9,6 +9,11 @@ from metadata.models import MetadataType, DocumentTypeMetadataType
 
 from ..models import Index, IndexInstanceNode, IndexTemplateNode
 
+from .literals import (
+    TEST_INDEX_LABEL, TEST_INDEX_TEMPLATE_METADATA_EXPRESSION,
+    TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_NAME
+)
+
 
 @override_settings(OCR_AUTO_OCR=False)
 class IndexTestCase(TestCase):
@@ -23,37 +28,33 @@ class IndexTestCase(TestCase):
             )
 
     def tearDown(self):
-        for document_type in DocumentType.objects.all():
-            document_type.delete()
+        self.document_type.delete()
 
     def test_indexing(self):
-        metadata_type = MetadataType.objects.create(name='test', label='test')
+        metadata_type = MetadataType.objects.create(
+            name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
+        )
         DocumentTypeMetadataType.objects.create(
             document_type=self.document_type, metadata_type=metadata_type
         )
 
         # Create empty index
-        index = Index.objects.create(label='test')
-        self.assertQuerysetEqual(Index.objects.all(), [repr(index)])
+        index = Index.objects.create(label=TEST_INDEX_LABEL)
 
         # Add our document type to the new index
         index.document_types.add(self.document_type)
-        self.assertQuerysetEqual(index.document_types.all(), [repr(self.document_type)])
 
         # Create simple index template
         root = index.template_root
         index.node_templates.create(
-            parent=root, expression='{{ document.metadata_value_of.test }}',
+            parent=root, expression=TEST_INDEX_TEMPLATE_METADATA_EXPRESSION,
             link_documents=True
-        )
-        self.assertEqual(
-            list(
-                IndexTemplateNode.objects.values_list('expression', flat=True)
-            ), ['', '{{ document.metadata_value_of.test }}']
         )
 
         # Add document metadata value to trigger index node instance creation
-        self.document.metadata.create(metadata_type=metadata_type, value='0001')
+        self.document.metadata.create(
+            metadata_type=metadata_type, value='0001'
+        )
         self.assertEqual(
             list(
                 IndexInstanceNode.objects.values_list('value', flat=True)
@@ -67,7 +68,9 @@ class IndexTestCase(TestCase):
         )
 
         # Change document metadata value to trigger index node instance update
-        document_metadata = self.document.metadata.get(metadata_type=metadata_type)
+        document_metadata = self.document.metadata.get(
+            metadata_type=metadata_type
+        )
         document_metadata.value = '0002'
         document_metadata.save()
         self.assertEqual(
@@ -90,7 +93,8 @@ class IndexTestCase(TestCase):
             ), ['']
         )
 
-        # Add document metadata value again to trigger index node instance creation
+        # Add document metadata value again to trigger index node instance
+        # creation
         self.document.metadata.create(
             metadata_type=metadata_type, value='0003'
         )
