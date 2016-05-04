@@ -251,7 +251,7 @@ class IndexInstanceNodeView(DocumentListView):
         except PermissionDenied:
             AccessControlList.objects.check_access(
                 permission_document_indexing_view,
-                request.user, self.index_instance.index
+                request.user, self.index_instance.index()
             )
 
         if self.index_instance:
