@@ -26,8 +26,9 @@ class OrganizationManager(models.Manager):
         except AttributeError:
             raise ImproperlyConfigured(
                 "You're using the Django \"organizations framework\" without "
-                "having set the ORGANIZATION_ID setting. Create a site in "
-                "your database and set the SITE_ID setting to fix this error."
+                "having set the ORGANIZATION_ID setting. Create an "
+                "organization in your database and set the ORGANIZATION_ID "
+                "setting to fix this error."
             )
         try:
             current_organization = ORGANIZATION_CACHE[oid]
