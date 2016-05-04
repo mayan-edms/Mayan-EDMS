@@ -1,33 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
+# Manuela Silva <h_manuela_rodsilva@gmail.com>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:24-0400\n"
-"PO-Revision-Date: 2015-08-20 19:09+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/language/pt/)\n"
+"POT-Creation-Date: 2016-04-27 14:09-0400\n"
+"PO-Revision-Date: 2016-03-21 21:10+0000\n"
+"Last-Translator: Manuela Silva <h_manuela_rodsilva@gmail.com>\n"
+"Language-Team: Portuguese (http://www.transifex.com/rosarior/mayan-edms/"
+"language/pt/)\n"
+"Language: pt\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:16 settings.py:7
+#: apps.py:17 settings.py:7
 msgid "Authentication"
 msgstr ""
 
 #: forms.py:17
 msgid "Email"
-msgstr ""
+msgstr "Correio eletrónico"
 
 #: forms.py:20
 msgid "Password"
-msgstr ""
+msgstr "Senha"
 
 #: forms.py:24
 msgid ""
@@ -37,15 +39,15 @@ msgstr ""
 
 #: forms.py:26
 msgid "This account is inactive."
-msgstr ""
+msgstr "Esta conta está inativa."
 
 #: links.py:13
 msgid "Logout"
-msgstr ""
+msgstr "Sair"
 
 #: links.py:16
 msgid "Change password"
-msgstr ""
+msgstr "Alterar senha"
 
 #: settings.py:11
 msgid ""
@@ -53,10 +55,10 @@ msgid ""
 "email"
 msgstr ""
 
-#: views.py:36
+#: views.py:39
 msgid "Current user password change"
-msgstr ""
+msgstr "Alteração da senha do utilizador atual"
 
-#: views.py:52
+#: views.py:55
 msgid "Your password has been successfully changed."
-msgstr ""
+msgstr "A sua senha foi alterada com sucesso."

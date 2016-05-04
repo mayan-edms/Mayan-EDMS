@@ -147,7 +147,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             }, follow=True
         )
 
-        self.assertContains(response, text='saved', status_code=200)
+        self.assertContains(response, text='update', status_code=200)
         tag = Tag.objects.get(pk=self.tag.pk)
         self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
         self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)

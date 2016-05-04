@@ -50,10 +50,12 @@ class StagingFile(object):
             self.encoded_filename = str(encoded_filename)
             self.filename = base64.urlsafe_b64decode(
                 urllib.unquote_plus(self.encoded_filename)
-            )
+            ).decode('utf8')
         else:
             self.filename = filename
-            self.encoded_filename = base64.urlsafe_b64encode(filename)
+            self.encoded_filename = base64.urlsafe_b64encode(
+                filename.encode('utf8')
+            )
 
     def __unicode__(self):
         return unicode(self.filename)
@@ -83,13 +85,7 @@ class StagingFile(object):
         for transformation in transformations:
             converter.transform(transformation=transformation)
 
-        image_data = converter.get_page()
-
-        if as_base64:
-            base64_data = base64.b64encode(image_data.read())
-            return 'data:%s;base64,%s' % ('image/png', base64_data)
-        else:
-            return image_data
+        return converter.get_page(as_base64=as_base64)
 
     def delete(self):
         os.unlink(self.get_full_path())

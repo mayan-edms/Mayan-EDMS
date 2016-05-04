@@ -2,16 +2,20 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf import settings
 from django.contrib import messages
-from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic import (
     FormView as DjangoFormView, DetailView, TemplateView
 )
-from django.views.generic.edit import CreateView, DeleteView, UpdateView
+from django.views.generic.detail import SingleObjectMixin
+from django.views.generic.edit import (
+    CreateView, DeleteView, ModelFormMixin, UpdateView
+)
 from django.views.generic.list import ListView
 
+from django_downloadview import VirtualDownloadView
+from django_downloadview import VirtualFile
 from pure_pagination.mixins import PaginationMixin
 
 from .forms import ChoiceForm
@@ -43,10 +47,7 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
         results = []
         for choice in choices:
             ct = ContentType.objects.get_for_model(choice)
-            if isinstance(choice, User):
-                label = choice.get_full_name() if choice.get_full_name() else choice
-            else:
-                label = unicode(choice)
+            label = unicode(choice)
 
             results.append(('%s,%s' % (ct.model, choice.pk), '%s' % (label)))
 
@@ -168,7 +169,7 @@ class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermis
         return data
 
 
-class ConfirmView(ObjectListPermissionFilterMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
+class ConfirmView(ObjectListPermissionFilterMixin, ObjectPermissionCheckMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, TemplateView):
     template_name = 'appearance/generic_confirm.html'
 
     def post(self, request, *args, **kwargs):
@@ -259,21 +260,8 @@ class SimpleView(ViewPermissionCheckMixin, ExtraContextMixin, TemplateView):
     pass
 
 
-class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
+class SingleObjectCreateView(ObjectNameMixin, ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, CreateView):
     template_name = 'appearance/generic_form.html'
-
-    def form_invalid(self, form):
-        result = super(SingleObjectCreateView, self).form_invalid(form)
-
-        try:
-            messages.error(
-                self.request,
-                _('Error creating new %s.') % self.extra_context['object_name']
-            )
-        except KeyError:
-            messages.error(self.request, _('Error creating object.'))
-
-        return result
 
     def form_valid(self, form):
         # This overrides the original Django form_valid method
@@ -289,24 +277,32 @@ class SingleObjectCreateView(ViewPermissionCheckMixin, ExtraContextMixin, Redire
         else:
             save_extra_data = {}
 
-        self.object.save(**save_extra_data)
-
         try:
+            self.object.save(**save_extra_data)
+        except Exception as exception:
+            context = self.get_context_data()
+
+            messages.error(
+                self.request,
+                _('%(object)s not created, error: %(error)s') % {
+                    'object': self.get_object_name(context=context),
+                    'error': exception
+                }
+            )
+        else:
+            context = self.get_context_data()
+
             messages.success(
                 self.request,
                 _(
-                    '%s created successfully.'
-                ) % self.extra_context['object_name']
-            )
-        except KeyError:
-            messages.success(
-                self.request, _('New object created successfully.')
+                    '%(object)s created successfully.'
+                ) % {'object': self.get_object_name(context=context)}
             )
 
         return HttpResponseRedirect(self.get_success_url())
 
 
-class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
+class SingleObjectDeleteView(ObjectNameMixin, DeleteExtraDataMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DeleteView):
     template_name = 'appearance/generic_confirm.html'
 
     def get_context_data(self, **kwargs):
@@ -315,64 +311,48 @@ class SingleObjectDeleteView(DeleteExtraDataMixin, ViewPermissionCheckMixin, Obj
         return context
 
     def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        context = self.get_context_data()
+        object_name = self.get_object_name(context=context)
+
         try:
             result = super(SingleObjectDeleteView, self).delete(request, *args, **kwargs)
         except Exception as exception:
-            try:
-                messages.error(
-                    self.request,
-                    _('Error deleting %s.') % self.extra_context['object_name']
-                )
-            except KeyError:
-                messages.error(
-                    self.request, _('Error deleting object.')
-                )
+            messages.error(
+                self.request,
+                _('%(object)s not deleted, error: %(error)s.') % {
+                    'object': object_name,
+                    'error': exception
+                }
+            )
 
             raise exception
         else:
-            try:
-                messages.success(
-                    self.request,
-                    _(
-                        '%s deleted successfully.'
-                    ) % self.extra_context['object_name']
-                )
-            except KeyError:
-                messages.success(
-                    self.request, _('Object deleted successfully.')
-                )
+            messages.success(
+                self.request,
+                _(
+                    '%(object)s deleted successfully.'
+                ) % {'object': object_name}
+            )
 
             return result
 
 
-class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, DetailView):
+class SingleObjectDetailView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, ModelFormMixin, DetailView):
     template_name = 'appearance/generic_form.html'
 
     def get_context_data(self, **kwargs):
         context = super(SingleObjectDetailView, self).get_context_data(**kwargs)
-        context.update({'read_only': True})
+        context.update({'read_only': True, 'form': self.get_form()})
         return context
 
 
-class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
+class SingleObjectDownloadView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, VirtualDownloadView, SingleObjectMixin):
+    VirtualFile = VirtualFile
+
+
+class SingleObjectEditView(ObjectNameMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, UpdateView):
     template_name = 'appearance/generic_form.html'
-
-    def form_invalid(self, form):
-        result = super(SingleObjectEditView, self).form_invalid(form)
-
-        try:
-            messages.error(
-                self.request,
-                _(
-                    'Error saving %s details.'
-                ) % self.extra_context['object_name']
-            )
-        except KeyError:
-            messages.error(
-                self.request, _('Error saving details.')
-            )
-
-        return result
 
     def form_valid(self, form):
         # This overrides the original Django form_valid method
@@ -388,18 +368,27 @@ class SingleObjectEditView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin,
         else:
             save_extra_data = {}
 
-        self.object.save(**save_extra_data)
+        context = self.get_context_data()
+        object_name = self.get_object_name(context=context)
 
         try:
+            self.object.save(**save_extra_data)
+        except Exception as exception:
+            messages.error(
+                self.request,
+                _('%(object)s not updated, error: %(error)s.') % {
+                    'object': object_name,
+                    'error': exception
+                }
+            )
+
+            raise exception
+        else:
             messages.success(
                 self.request,
                 _(
-                    '%s details saved successfully.'
-                ) % self.extra_context['object_name']
-            )
-        except KeyError:
-            messages.success(
-                self.request, _('Details saved successfully.')
+                    '%(object)s updated successfully.'
+                ) % {'object': object_name}
             )
 
         return HttpResponseRedirect(self.get_success_url())

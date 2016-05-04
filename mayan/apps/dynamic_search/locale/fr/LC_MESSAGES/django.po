@@ -1,39 +1,40 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
-# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014-2015
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:26-0400\n"
-"PO-Revision-Date: 2015-08-20 22:09+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"POT-Creation-Date: 2016-04-27 14:12-0400\n"
+"PO-Revision-Date: 2016-03-21 21:02+0000\n"
+"Last-Translator: Christophe CHAUVET <christophe.chauvet@gmail.com>\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:15
+#: apps.py:16
 msgid "Dynamic search"
-msgstr ""
+msgstr "Recherche dynamique"
 
-#: forms.py:20
+#: forms.py:21
 msgid "Search terms"
 msgstr "Termes de recherche"
 
-#: links.py:7 settings.py:8 views.py:54 views.py:68
+#: links.py:7 settings.py:8 views.py:56 views.py:70
 msgid "Search"
 msgstr "Recherche"
 
-#: links.py:9 views.py:75
+#: links.py:9 views.py:77
 msgid "Advanced search"
 msgstr "Recherche avancée"
 
@@ -41,27 +42,27 @@ msgstr "Recherche avancée"
 msgid "Search again"
 msgstr "Rechercher à nouveau"
 
-#: models.py:23
+#: models.py:24
 msgid "User"
 msgstr "Utilisateur"
 
-#: models.py:24
+#: models.py:26
 msgid "Query"
 msgstr "Requête"
 
-#: models.py:26
+#: models.py:28
 msgid "Datetime created"
 msgstr "Date et heure de création"
 
-#: models.py:28
+#: models.py:30
 msgid "Hits"
 msgstr "Nombre de vues"
 
-#: models.py:70
+#: models.py:74
 msgid "Recent search"
 msgstr "Recherche récente"
 
-#: models.py:71
+#: models.py:75
 msgid "Recent searches"
 msgstr "Recherches récentes"
 
@@ -90,7 +91,8 @@ msgstr "Type"
 #~ msgid "Recent searches (maximum of %d)"
 #~ msgstr "recent searches (maximum of %d)"
 
-#~ msgid "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
+#~ msgid ""
+#~ "Results, (showing only %(shown_result_count)s out of %(result_count)s)"
 #~ msgstr ""
 #~ "results, (showing only %(shown_result_count)s out of %(result_count)s)"
 

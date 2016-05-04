@@ -43,7 +43,6 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.admindocs',
     'django.contrib.auth',
-    'django.contrib.comments',
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.sessions',
@@ -57,11 +56,13 @@ INSTALLED_APPS = (
     'corsheaders',
     'djcelery',
     'filetransfers',
+    'formtools',
     'mptt',
     'pure_pagination',
     'rest_framework',
     'rest_framework.authtoken',
     'solo',
+    'stronghold',
     'widget_tweaks',
     # Base generic
     'acls',
@@ -91,6 +92,7 @@ INSTALLED_APPS = (
     'mailer',
     'metadata',
     'mirroring',
+    'motd',
     'ocr',
     'rest_api',
     'sources',
@@ -112,8 +114,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'common.middleware.timezone.TimezoneMiddleware',
-    'common.middleware.strip_spaces_widdleware.SpacelessMiddleware',
-    'authentication.middleware.login_required_middleware.LoginRequiredMiddleware',
+    'stronghold.middleware.LoginRequiredMiddleware',
     'common.middleware.ajax_redirect.AjaxRedirect',
 )
 
@@ -168,7 +169,7 @@ LANGUAGES = (
     ('hr', _('Croatian')),
     ('id', _('Indonesian')),
     ('it', _('Italian')),
-    ('nl', _('Dutch (Nethherlands)')),
+    ('nl', _('Dutch (Netherlands)')),
     ('pl', _('Polish')),
     ('pt', _('Portuguese')),
     ('pt-br', _('Portuguese (Brazil)')),
@@ -217,38 +218,14 @@ COMPRESS_PARSER = 'compressor.parser.HtmlParser'
 LOGIN_URL = 'authentication:login_view'
 LOGIN_REDIRECT_URL = 'common:home'
 INTERNAL_IPS = ('127.0.0.1',)
-# -------- LoginRequiredMiddleware ----------
-LOGIN_EXEMPT_URLS = (
-    r'^favicon\.ico$',
-    r'^about\.html$',
-    r'^legal/',  # allow the entire /legal/* subsection
-    r'^%s-static/' % PROJECT_NAME,
-
-    r'^accounts/register/$',
-    r'^accounts/register/complete/$',
-    r'^accounts/register/closed/$',
-
-    r'^accounts/activate/complete/',
-    r'^accounts/activate/(?P<activation_key>\w+)/$',
-
-    r'^authentication/password/reset/$',
-    r'^authentication/password/reset/confirm/(?P<uidb36>[0-9A-Za-z]+)-(?P<token>.+)/$',
-    r'^authentication/password/reset/complete/$',
-    r'^authentication/password/reset/done/$',
-
-    r'^api/',
-    r'^docs/',
-)
 # ---------- Django REST framework -----------
 REST_FRAMEWORK = {
-    'PAGINATE_BY': 10,
-    'PAGINATE_BY_PARAM': 'page_size',
-    'MAX_PAGINATE_BY': 100,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.SessionAuthentication',
-    )
+    ),
+    'PAGE_SIZE': 10,
 }
 # --------- Pagination --------
 PAGINATION_SETTINGS = {
@@ -275,11 +252,11 @@ CORS_ORIGIN_ALLOW_ALL = True
 SWAGGER_SETTINGS = {
     'api_version': '1',
     'info': {
-          'title': _('Mayan EDMS API Documentation'),
-          'description': _('Free Open Source Document Management System.'),
-          'contact': 'roberto.rosario@mayan-edms.com',
-          'license': 'Apache 2.0',
-          'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html'
+        'title': _('Mayan EDMS API Documentation'),
+        'description': _('Free Open Source Document Management System.'),
+        'contact': 'roberto.rosario@mayan-edms.com',
+        'license': 'Apache 2.0',
+        'licenseUrl': 'http://www.apache.org/licenses/LICENSE-2.0.html'
     }
 
 }
@@ -294,4 +271,5 @@ AUTH_USER_MODEL = 'user_management.MayanUser'
 AUTHENTICATION_BACKENDS = ('authentication.auth.model_auth_backend.UsernameModelBackend',)
 # ------- Session ---------
 SESSION_COOKIE_NAME = 'organization-1'
-
+# ----- Stronghold -------
+STRONGHOLD_PUBLIC_URLS = (r'^/docs/.+$',)

@@ -13,7 +13,8 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.views import (
-    SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
+    SingleObjectCreateView, SingleObjectDeleteView, SingleObjectEditView,
+    SingleObjectListView
 )
 from documents.permissions import permission_document_view
 from documents.models import Document
@@ -31,40 +32,9 @@ from .permissions import (
 logger = logging.getLogger(__name__)
 
 
-class FolderEditView(SingleObjectEditView):
-    fields = ('label',)
-    object_permission = permission_folder_edit
-    post_action_redirect = reverse_lazy('folders:folder_list')
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Edit folder: %s') % self.get_object(),
-        }
-
-    def get_document_queryset(self):
-        return Folder.on_organization.all()
-
-
-class FolderListView(SingleObjectListView):
-    object_permission = permission_folder_view
-
-    def get_extra_context(self):
-        return {
-            'hide_link': True,
-            'title': _('Folders'),
-        }
-
-    def get_folder_queryset(self):
-        return Folder.on_organization.all()
-
-    def get_queryset(self):
-        self.queryset = self.get_folder_queryset()
-        return super(FolderListView, self).get_queryset()
-
-
 class FolderCreateView(SingleObjectCreateView):
     fields = ('label',)
+    post_action_redirect = reverse_lazy('folders:folder_list')
     view_permission = permission_folder_create
 
     def form_valid(self, form):
@@ -95,43 +65,19 @@ class FolderCreateView(SingleObjectCreateView):
         return Folder.on_organization.all()
 
 
-def folder_delete(request, folder_id):
-    folder = get_object_or_404(Folder.on_organization, pk=folder_id)
+class FolderDeleteView(SingleObjectDeleteView):
+    model = Folder
+    object_permission = permission_folder_delete
+    post_action_redirect = reverse_lazy('folders:folder_list')
 
-    try:
-        Permission.check_permissions(request.user, (permission_folder_delete,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_folder_delete, request.user, folder
-        )
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Delete the folder: %s?') % self.get_object(),
+        }
 
-    post_action_redirect = reverse('folders:folder_list')
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        try:
-            folder.delete()
-            messages.success(request, _('Folder: %s deleted successfully.') % folder)
-        except Exception as exception:
-            messages.error(request, _('Folder: %(folder)s delete error: %(error)s') % {
-                'folder': folder, 'error': exception})
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'previous': previous,
-        'next': next,
-        'object': folder,
-        'title': _('Delete the folder: %s?') % folder,
-    }
-
-    return render_to_response(
-        'appearance/generic_confirm.html', context,
-        context_instance=RequestContext(request)
-    )
+    def get_queryset(self):
+        return Folder.on_organization.all()
 
 
 class FolderDetailView(DocumentListView):
@@ -140,31 +86,83 @@ class FolderDetailView(DocumentListView):
 
     def get_extra_context(self):
         return {
-            'title': _('Documents in folder: %s') % self.get_folder(),
             'hide_links': True,
             'object': self.get_folder(),
+            'title': _('Documents in folder: %s') % self.get_folder(),
         }
 
     def get_folder(self):
         folder = get_object_or_404(Folder.on_organization, pk=self.kwargs['pk'])
 
+
+class FolderEditView(SingleObjectEditView):
+    fields = ('label',)
+    object_permission = permission_folder_edit
+    post_action_redirect = reverse_lazy('folders:folder_list')
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit folder: %s') % self.get_object(),
+        }
+
+    def get_queryset(self):
+        return Folder.on_organization.all()
+
+
+class FolderListView(SingleObjectListView):
+    model = Folder
+    object_permission = permission_folder_view
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'title': _('Folders'),
+        }
+
+    def get_folder_queryset(self):
+        return Folder.on_organization.all()
+
+    def get_queryset(self):
+        self.queryset = self.get_folder_queryset()
+        return super(FolderListView, self).get_queryset()
+
+
+class DocumentFolderListView(FolderListView):
+    def dispatch(self, request, *args, **kwargs):
+        self.document = get_object_or_404(
+            Document.on_organization, pk=self.kwargs['pk']
+        )
+
         try:
             Permission.check_permissions(
-                self.request.user, (permission_folder_view,)
+                request.user, (permission_document_view,)
             )
         except PermissionDenied:
             AccessControlList.objects.check_access(
-                permission_folder_view, self.request.user, folder
+                permission_document_view, request.user, self.document
             )
 
-        return folder
+        return super(DocumentFolderListView, self).dispatch(request, *args, **kwargs)
+
+    def get_extra_context(self):
+        return {
+            'hide_link': True,
+            'object': self.document,
+            'title': _('Folders containing document: %s') % self.document,
+        }
+
+    def get_queryset(self):
+        return self.document.document_folders().all()
 
 
 def folder_add_document(request, document_id=None, document_id_list=None):
+    queryset = Document.on_organization.all()
+
     if document_id:
-        queryset = Document.objects.filter(pk=document_id)
+        queryset = queryset.filter(pk=document_id)
     elif document_id_list:
-        queryset = Document.objects.filter(pk__in=document_id_list)
+        queryset = queryset.filter(pk__in=document_id_list)
 
     if not queryset:
         messages.error(request, _('Must provide at least one document.'))
@@ -240,32 +238,6 @@ def folder_add_document(request, document_id=None, document_id_list=None):
         'appearance/generic_form.html', context,
         context_instance=RequestContext(request)
     )
-
-
-class DocumentFolderListView(FolderListView):
-    def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
-
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, request.user, self.document
-            )
-
-        return super(DocumentFolderListView, self).dispatch(request, *args, **kwargs)
-
-    def get_extra_context(self):
-        return {
-            'hide_link': True,
-            'object': self.document,
-            'title': _('Folders containing document: %s') % self.document,
-        }
-
-    def get_folder_queryset(self):
-        return self.document.document_folders().all()
 
 
 def folder_document_remove(request, folder_id, document_id=None, document_id_list=None):

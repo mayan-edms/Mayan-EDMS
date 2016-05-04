@@ -2,7 +2,7 @@ from __future__ import unicode_literals, absolute_import
 
 import logging
 
-from permissions.models import StoredPermission
+from django.apps import apps
 
 logger = logging.getLogger(__name__)
 
@@ -20,15 +20,23 @@ class ModelPermission(object):
 
     @classmethod
     def get_for_instance(cls, instance):
-        try:
-            permissions = cls._registry[type(instance)]
-        except KeyError:
-            try:
-                permissions = cls._registry[cls._proxies[type(instance)]]
-            except KeyError:
-                permissions = ()
+        StoredPermission = apps.get_model(
+            app_label='permissions', model_name='StoredPermission'
+        )
 
-        pks = [permission.stored_permission.pk for permission in permissions]
+        permissions = []
+
+        class_permissions = cls._registry.get(type(instance))
+
+        if class_permissions:
+            permissions.extend(class_permissions)
+
+        proxy = cls._proxies.get(type(instance))
+
+        if proxy:
+            permissions.extend(cls._registry.get(proxy))
+
+        pks = [permission.stored_permission.pk for permission in set(permissions)]
         return StoredPermission.objects.filter(pk__in=pks)
 
     @classmethod

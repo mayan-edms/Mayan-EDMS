@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
@@ -8,14 +9,9 @@ from common import (
     menu_sidebar
 )
 from common.widgets import two_state_template
-from documents.models import Document
 from navigation import SourceColumn
 
 from .handlers import launch_workflow
-from .models import (
-    Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
-    WorkflowTransition
-)
 from .links import (
     link_document_workflow_instance_list, link_setup_workflow_document_types,
     link_setup_workflow_create, link_setup_workflow_delete,
@@ -36,6 +32,16 @@ class DocumentStatesApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentStatesApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        Workflow = self.get_model('Workflow')
+        WorkflowInstance = self.get_model('WorkflowInstance')
+        WorkflowInstanceLogEntry = self.get_model('WorkflowInstanceLogEntry')
+        WorkflowState = self.get_model('WorkflowState')
+        WorkflowTransition = self.get_model('WorkflowTransition')
 
         SourceColumn(
             source=Workflow, label=_('Initial state'),

@@ -5,6 +5,7 @@ import logging
 import urllib
 import urlparse
 
+from django.apps import apps
 from django.conf import settings
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import resolve, reverse
@@ -13,7 +14,6 @@ from django.template.defaulttags import URLNode
 from django.utils.encoding import smart_str, smart_unicode
 from django.utils.http import urlencode, urlquote
 
-from acls.models import AccessControlList
 from common.utils import return_attrib
 from permissions import Permission
 
@@ -202,7 +202,7 @@ class Link(object):
     def __init__(self, text, view, args=None, condition=None,
                  conditional_disable=None, description=None, icon=None,
                  keep_query=False, kwargs=None, permissions=None,
-                 remove_from_query=None, tags=None):
+                 permissions_related=None, remove_from_query=None, tags=None):
 
         self.args = args or []
         self.condition = condition
@@ -218,6 +218,10 @@ class Link(object):
         self.view = view
 
     def resolve(self, context, resolved_object=None):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
         request = Variable('request').resolve(context)
         current_path = request.META['PATH_INFO']
         current_view = resolve(current_path).view_name
@@ -241,7 +245,8 @@ class Link(object):
                 if resolved_object:
                     try:
                         AccessControlList.objects.check_access(
-                            self.permissions, request.user, resolved_object
+                            self.permissions, request.user, resolved_object,
+                            related=getattr(self, 'permissions_related', None)
                         )
                     except PermissionDenied:
                         return None

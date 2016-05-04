@@ -1,26 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
-# Christophe kryskool <christophe.chauvet@gmail.com>, 2014
+# Christophe CHAUVET <christophe.chauvet@gmail.com>, 2014
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:27-0400\n"
-"PO-Revision-Date: 2015-08-24 05:21+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"POT-Creation-Date: 2016-04-27 14:14-0400\n"
+"PO-Revision-Date: 2016-03-21 21:03+0000\n"
+"Last-Translator: Thierry Schott <DarkDare@users.noreply.github.com>\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:22 models.py:27 models.py:67 permissions.py:7
+#: apps.py:22 models.py:47 models.py:70 permissions.py:7
 msgid "Permissions"
 msgstr "Droits"
 
@@ -48,7 +50,7 @@ msgstr "Supprimer"
 msgid "Edit"
 msgstr "Modifier"
 
-#: links.py:35 models.py:76 views.py:134
+#: links.py:35 models.py:91 views.py:134
 msgid "Roles"
 msgstr "Rôles"
 
@@ -68,19 +70,19 @@ msgstr "Espace de nommage"
 msgid "Name"
 msgstr "Nom"
 
-#: models.py:26
+#: models.py:46
 msgid "Permission"
 msgstr "Autorisation"
 
-#: models.py:64
+#: models.py:67
 msgid "Label"
 msgstr "Étiquette"
 
-#: models.py:70
+#: models.py:73
 msgid "Groups"
 msgstr "Groupes"
 
-#: models.py:75
+#: models.py:90
 msgid "Role"
 msgstr "Rôle"
 
@@ -110,30 +112,29 @@ msgstr "Retirer des droits"
 
 #: views.py:45
 msgid "Available groups"
-msgstr ""
+msgstr "Groupes disponibles"
 
 #: views.py:46
 msgid "Role groups"
-msgstr ""
+msgstr "Rôles"
 
 #: views.py:56
 #, python-format
 msgid "Groups of role: %s"
-msgstr ""
+msgstr "Groupes ayant le rôle : %s"
 
 #: views.py:79
 msgid "Available permissions"
-msgstr ""
+msgstr "Permissions disponibles"
 
 #: views.py:80
-#| msgid "Grant permissions"
 msgid "Granted permissions"
-msgstr ""
+msgstr "Permissions accordées"
 
 #: views.py:93
 #, python-format
 msgid "Permissions for role: %s"
-msgstr ""
+msgstr "Permissions pour le rôle : %s"
 
 #~ msgid "Permission holder"
 #~ msgstr "permission holder"
@@ -163,8 +164,10 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" granted to: %(requester)s."
 #~ msgstr "Permission \"%(permission)s\" granted to: %(requester)s."
 
-#~ msgid "%(requester)s, already had the permission \"%(permission)s\" granted."
-#~ msgstr "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgid ""
+#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
+#~ msgstr ""
+#~ "%(requester)s, already had the permission \"%(permission)s\" granted."
 
 #~ msgid ""
 #~ "Are you sure you wish to grant the %(permissions_label)s %(title_suffix)s?"
@@ -180,13 +183,17 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" revoked from: %(requester)s."
 #~ msgstr "Permission \"%(permission)s\" revoked from: %(requester)s."
 
-#~ msgid "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
-#~ msgstr "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgid ""
+#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
+#~ msgstr ""
+#~ "%(requester)s, doesn't have the permission \"%(permission)s\" granted."
 
 #~ msgid ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s "
+#~ "%(title_suffix)s?"
 #~ msgstr ""
-#~ "Are you sure you wish to revoke the %(permissions_label)s %(title_suffix)s?"
+#~ "Are you sure you wish to revoke the %(permissions_label)s "
+#~ "%(title_suffix)s?"
 
 #~ msgid "Users"
 #~ msgstr "Users"

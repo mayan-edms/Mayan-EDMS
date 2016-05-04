@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -9,7 +10,6 @@ from common import (
     MayanAppConfig, menu_facet, menu_secondary, menu_object, menu_main,
     menu_multi_item, menu_sidebar
 )
-from documents.models import Document
 from documents.search import document_search
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
@@ -20,7 +20,6 @@ from .links import (
     link_tag_delete, link_tag_document_list, link_tag_edit, link_tag_list,
     link_tag_multiple_delete, link_tag_tagged_item_list
 )
-from .models import DocumentTag, Tag
 from .permissions import (
     permission_tag_attach, permission_tag_delete, permission_tag_edit,
     permission_tag_remove, permission_tag_view
@@ -35,6 +34,13 @@ class TagsApp(MayanAppConfig):
 
     def ready(self):
         super(TagsApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        DocumentTag = self.get_model('DocumentTag')
+        Tag = self.get_model('Tag')
 
         APIEndPoint(app=self, version_string='1')
 

@@ -2,21 +2,22 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
-from .models import DocumentVersionSignature
+from .models import DetachedSignature, EmbeddedSignature
 
 
-@admin.register(DocumentVersionSignature)
-class DocumentVersionSignatureAdmin(admin.ModelAdmin):
-    def document(self, instance):
-        return instance.document_version.document
-
-    def has_detached_signature(self, instance):
-        return True if instance.signature_file else False
-
-    has_detached_signature.boolean = True
+@admin.register(DetachedSignature)
+class DetachedSignatureAdmin(admin.ModelAdmin):
     list_display = (
-        'document', 'document_version', 'has_embedded_signature',
-        'has_detached_signature'
+        'document_version', 'date', 'key_id', 'signature_id',
+        'public_key_fingerprint', 'signature_file'
     )
     list_display_links = ('document_version',)
-    search_fields = ('document_version__document__label',)
+
+
+@admin.register(EmbeddedSignature)
+class EmbeddedSignatureAdmin(admin.ModelAdmin):
+    list_display = (
+        'document_version', 'date', 'key_id', 'signature_id',
+        'public_key_fingerprint'
+    )
+    list_display_links = ('document_version',)

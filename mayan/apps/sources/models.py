@@ -28,6 +28,7 @@ from documents.models import Document, DocumentType
 from documents.settings import setting_language
 from metadata.api import save_metadata_list, set_bulk_metadata
 from metadata.models import MetadataType
+from tags.models import Tag
 
 from .classes import Attachment, SourceUploadedFile, StagingFile
 from .literals import (
@@ -59,12 +60,12 @@ class Source(models.Model):
     def fullname(self):
         return ' '.join([self.class_fullname(), '"%s"' % self.label])
 
-    def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, user=None):
+    def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
         try:
             with transaction.atomic():
                 document = Document.objects.create(
                     description=description or '', document_type=document_type,
-                    label=label or unicode(file_object),
+                    label=label or file_object.name,
                     language=language or setting_language.value
                 )
                 document.save(_user=user)
@@ -72,6 +73,9 @@ class Source(models.Model):
                 document_version = document.new_version(
                     file_object=file_object, _user=user
                 )
+
+                if user:
+                    document.add_as_recent_document_for_user(user)
 
                 Transformation.objects.copy(
                     source=self, targets=document_version.pages.all()
@@ -88,11 +92,15 @@ class Source(models.Model):
                         metadata_dictionary=metadata_dictionary
                     )
 
+                if tag_ids:
+                    for tag in Tag.objects.filter(pk__in=tag_ids):
+                        tag.documents.add(document)
+
         except Exception as exception:
             logger.critical(
                 'Unexpected exception while trying to create new document '
                 '"%s" from source "%s"; %s',
-                label or unicode(file_object), self, exception
+                label or file_object.name, self, exception
             )
             raise
 

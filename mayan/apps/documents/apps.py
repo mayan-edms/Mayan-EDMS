@@ -60,14 +60,11 @@ from .literals import (
     CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
     DELETE_STALE_STUBS_INTERVAL
 )
-from .models import (
-    DeletedDocument, Document, DocumentPage, DocumentType,
-    DocumentTypeFilename, DocumentVersion
-)
 from .permissions import (
-    permission_document_delete, permission_document_download,
-    permission_document_edit, permission_document_new_version,
-    permission_document_print, permission_document_properties_edit,
+    permission_document_create, permission_document_delete,
+    permission_document_download, permission_document_edit,
+    permission_document_new_version, permission_document_print,
+    permission_document_properties_edit, permission_document_restore,
     permission_document_trash, permission_document_version_revert,
     permission_document_view
 )
@@ -89,6 +86,13 @@ class DocumentsApp(MayanAppConfig):
         super(DocumentsApp, self).ready()
 
         APIEndPoint(app=self, version_string='1')
+
+        DeletedDocument = self.get_model('DeletedDocument')
+        Document = self.get_model('Document')
+        DocumentPage = self.get_model('DocumentPage')
+        DocumentType = self.get_model('DocumentType')
+        DocumentTypeFilename = self.get_model('DocumentTypeFilename')
+        DocumentVersion = self.get_model('DocumentVersion')
 
         MissingItem(
             label=_('Create a document type'),
@@ -115,12 +119,16 @@ class DocumentsApp(MayanAppConfig):
                 permission_document_delete, permission_document_download,
                 permission_document_edit, permission_document_new_version,
                 permission_document_print, permission_document_properties_edit,
-                permission_document_trash, permission_document_version_revert,
-                permission_document_view, permission_events_view,
-                permission_transformation_create,
+                permission_document_restore, permission_document_trash,
+                permission_document_version_revert, permission_document_view,
+                permission_events_view, permission_transformation_create,
                 permission_transformation_delete,
                 permission_transformation_edit, permission_transformation_view,
             )
+        )
+
+        ModelPermission.register(
+            model=DocumentType, permissions=(permission_document_create,)
         )
 
         ModelPermission.register_proxy(

@@ -4,10 +4,10 @@ import datetime
 
 import qsstats
 
-from .models import Document, DocumentPage, DocumentVersion
-
 
 def new_documents_per_month():
+    from .models import Document
+
     qss = qsstats.QuerySetStats(Document.passthrough.all(), 'date_added')
 
     today = datetime.date.today()
@@ -21,6 +21,8 @@ def new_documents_per_month():
 
 
 def new_document_versions_per_month():
+    from .models import DocumentVersion
+
     qss = qsstats.QuerySetStats(DocumentVersion.objects.all(), 'document__date_added')
 
     today = datetime.date.today()
@@ -34,6 +36,8 @@ def new_document_versions_per_month():
 
 
 def new_document_pages_per_month():
+    from .models import DocumentPage
+
     qss = qsstats.QuerySetStats(DocumentPage.objects.all(), 'document_version__document__date_added')
 
     today = datetime.date.today()
@@ -47,6 +51,8 @@ def new_document_pages_per_month():
 
 
 def total_document_per_month():
+    from .models import Document
+
     qss = qsstats.QuerySetStats(Document.objects.all(), 'date_added')
     this_year = datetime.date.today().year
 
@@ -72,6 +78,8 @@ def total_document_per_month():
 
 
 def total_document_version_per_month():
+    from .models import DocumentVersion
+
     qss = qsstats.QuerySetStats(DocumentVersion.objects.all(), 'document__date_added')
     this_year = datetime.date.today().year
 
@@ -97,6 +105,8 @@ def total_document_version_per_month():
 
 
 def total_document_page_per_month():
+    from .models import DocumentPage
+
     qss = qsstats.QuerySetStats(DocumentPage.objects.all(), 'document_version__document__date_added')
     this_year = datetime.date.today().year
 

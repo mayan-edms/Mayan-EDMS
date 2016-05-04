@@ -1,192 +1,186 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # Pierre Lhoste <inactive+peterhost@transifex.com>, 2012
 # SadE54 <yannsuisini@gmail.com>, 2013
+# Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:26-0400\n"
-"PO-Revision-Date: 2015-09-24 05:15+0000\n"
+"POT-Creation-Date: 2016-04-27 14:12-0400\n"
+"PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
+"fr/)\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:33 links.py:15 links.py:43 models.py:51 permissions.py:7
-#: views.py:53
+#: apps.py:33 links.py:16 links.py:44 models.py:45 permissions.py:7
+#: views.py:104
 msgid "Folders"
 msgstr "Répertoires"
 
-#: apps.py:61
+#: apps.py:68
 msgid "Created"
 msgstr "Créé"
 
-#: apps.py:63 models.py:21
-msgid "User"
-msgstr "Utilisateur"
-
-#: apps.py:65 links.py:46 models.py:26
+#: apps.py:71 links.py:47 models.py:26
 msgid "Documents"
 msgstr "Documents"
 
-#: forms.py:34 models.py:50
+#: forms.py:34 models.py:44
 msgid "Folder"
 msgstr "Répertoire"
 
-#: links.py:19
+#: links.py:20
 msgid "Add to a folder"
 msgstr "Ajouter à un dossier"
 
-#: links.py:23
+#: links.py:24
 msgid "Add to folder"
 msgstr "Ajouter au dossier"
 
-#: links.py:26 views.py:90
+#: links.py:27 views.py:42
 msgid "Create folder"
 msgstr "Créer un dossier"
 
-#: links.py:31
+#: links.py:32
 msgid "Delete"
 msgstr "Supprimer"
 
-#: links.py:35
+#: links.py:36
 msgid "Remove from folder"
 msgstr "Supprimer du dossier"
 
-#: links.py:39
+#: links.py:40
 msgid "Edit"
 msgstr "Modifier"
 
-#: models.py:19
+#: models.py:20
 msgid "Label"
-msgstr ""
+msgstr "Libellé"
 
 #: models.py:23
 msgid "Datetime created"
 msgstr "Date et heure de création"
 
-#: models.py:57
+#: models.py:63
 msgid "Document folder"
-msgstr ""
+msgstr "Dossier du document"
 
-#: models.py:58
+#: models.py:64
 msgid "Document folders"
-msgstr ""
+msgstr "Dossiers"
 
 #: permissions.py:10
 msgid "Create folders"
-msgstr ""
+msgstr "Créer des dossiers"
 
 #: permissions.py:13
 msgid "Edit folders"
-msgstr ""
+msgstr "Modifier les dossiers"
 
 #: permissions.py:16
-#| msgid "Delete new folders"
 msgid "Delete folders"
-msgstr ""
+msgstr "Supprimer les dossiers"
 
 #: permissions.py:19
 msgid "Remove documents from folders"
 msgstr "Retirer des documents des répertoires"
 
 #: permissions.py:22
-#| msgid "Edit new folders"
 msgid "View folders"
-msgstr ""
+msgstr "Afficher les dossiers"
 
 #: permissions.py:27
 msgid "Add documents to folders"
-msgstr ""
+msgstr "Ajouter des documents aux dossiers"
 
-#: serializers.py:61
+#: serializers.py:58
 msgid "Primary key of the document to be added."
-msgstr ""
+msgstr "Clé primaire du document à ajouter."
 
-#: views.py:43
+#: views.py:54
 #, python-format
-msgid "Edit folder: %s"
-msgstr "Modifier le répertoire: %s"
-
-#: views.py:83
-#, python-format
-msgid "A folder named: %s, already exists."
-msgstr "Un répertoire portant le nom: %s existe déjà."
-
-#: views.py:112
-#, python-format
-msgid "Folder: %s deleted successfully."
-msgstr "Répertoire: %s supprimé avec succès."
-
-#: views.py:114
-#, python-format
-msgid "Folder: %(folder)s delete error: %(error)s"
-msgstr "Erreur: %(error)s lors de la suppression du répertoire: %(folder)s"
-
-#: views.py:124
-#, python-format
-#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
-msgstr ""
+msgstr "Supprimer les dossier : %s ?"
 
-#: views.py:151
+#: views.py:66
 #, python-format
 msgid "Documents in folder: %s"
 msgstr "Documents du dossier: %s"
 
-#: views.py:164
+#: views.py:93
+#, python-format
+msgid "Edit folder: %s"
+msgstr "Modifier le répertoire: %s"
+
+#: views.py:127
+#, python-format
+msgid "Folders containing document: %s"
+msgstr "Dossiers contenant le document: %s"
+
+#: views.py:141
 msgid "Must provide at least one document."
 msgstr "Il est nécessaire de fournir au moins un document."
 
-#: views.py:186
+#: views.py:175
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
 msgstr "Document: %(document)s ajouté avec succès au répertoire: %(folder)s."
 
-#: views.py:189
+#: views.py:184
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
-msgstr "Document: %(document)s est déjà présent dans le répertoire: %(folder)s."
+msgstr ""
+"Document: %(document)s est déjà présent dans le répertoire: %(folder)s."
 
-#: views.py:206
+#: views.py:205
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
 msgstr[0] "Ajouter un document au répertoire"
 msgstr[1] "Ajouter les documents au répertoire"
 
-#: views.py:237
-#, python-format
-msgid "Folders containing document: %s"
-msgstr "Dossiers contenant le document: %s"
-
-#: views.py:251
+#: views.py:227
 msgid "Must provide at least one folder document."
 msgstr "Vous devez fournir au moins un document pour le répertoire."
 
-#: views.py:269
+#: views.py:248
 #, python-format
 msgid "Document: %s removed successfully."
 msgstr "Document: %s supprimé avec succès."
 
-#: views.py:271
+#: views.py:254
 #, python-format
 msgid "Document: %(document)s delete error: %(error)s"
 msgstr "Document: %(document)s erreur de suppression: %(error)s"
 
-#: views.py:281
+#: views.py:267
 #, python-format
 msgid "Remove the selected document from the folder: %(folder)s?"
 msgid_plural "Remove the selected documents from the folder: %(folder)s?"
 msgstr[0] ""
+"Êtes vous certain de vouloir supprimer le document sélectionné du dossier "
+"%(folder)s ?"
 msgstr[1] ""
+"Êtes vous certain de vouloir supprimer les documents sélectionnés du dossier "
+"%(folder)s ?"
+
+#~ msgid "A folder named: %s, already exists."
+#~ msgstr "A folder named: %s, already exists."
+
+#~ msgid "Folder: %s deleted successfully."
+#~ msgstr "Folder: %s deleted successfully."
+
+#~ msgid "Folder: %(folder)s delete error: %(error)s"
+#~ msgstr "Folder: %(folder)s delete error: %(error)s"
 
 #~ msgid "Create new folders"
 #~ msgstr "Create new folders"
@@ -225,11 +219,11 @@ msgstr[1] ""
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
-#~ " \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the "
+#~ "folder \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
-#~ " \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the "
+#~ "folder \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -262,12 +256,12 @@ msgstr[1] ""
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to let "
-#~ "individual users create their own document organization methods.  Folders "
-#~ "created by one user and the documents contained by them don't affect any "
-#~ "other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to "
+#~ "let individual users create their own document organization methods.  "
+#~ "Folders created by one user and the documents contained by them don't "
+#~ "affect any other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to let "
-#~ "individual users create their own document organization methods.  Folders "
-#~ "created by one user and the documents contained by them don't affect any "
-#~ "other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to "
+#~ "let individual users create their own document organization methods.  "
+#~ "Folders created by one user and the documents contained by them don't "
+#~ "affect any other user folders or documents."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"POT-Creation-Date: 2016-04-27 14:10-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,51 +18,51 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:19 permissions.py:7 settings.py:7
+#: apps.py:18 permissions.py:7 settings.py:7
 msgid "Converter"
 msgstr ""
 
-#: apps.py:37 models.py:33
+#: apps.py:38 models.py:34
 msgid "Order"
 msgstr ""
 
-#: apps.py:39 models.py:62
+#: apps.py:40 models.py:64
 msgid "Transformation"
 msgstr ""
 
-#: apps.py:43 models.py:42
+#: apps.py:44 models.py:44
 msgid "Arguments"
 msgstr ""
 
-#: backends/python.py:86 backends/python.py:98
+#: backends/python.py:87 backends/python.py:101
 #, python-format
 msgid "Exception determining PDF page count; %s"
 msgstr ""
 
-#: classes.py:87
-#, python-format
-msgid "LibreOffice not installed or not found at path: %s"
-msgstr ""
-
-#: classes.py:159
+#: classes.py:98
 #, fuzzy
 #| msgid "suported file formats"
 msgid "Not an office file format."
 msgstr "suported file formats"
 
-#: classes.py:252
+#: classes.py:121
+#, python-format
+msgid "LibreOffice not installed or not found at path: %s"
+msgstr ""
+
+#: classes.py:254
 msgid "Resize"
 msgstr "Resize"
 
-#: classes.py:293
+#: classes.py:295
 msgid "Rotate"
 msgstr "Rotate"
 
-#: classes.py:305
+#: classes.py:307
 msgid "Zoom"
 msgstr "Zoom"
 
-#: classes.py:322
+#: classes.py:324
 msgid "Crop"
 msgstr ""
 
@@ -78,7 +78,7 @@ msgstr ""
 msgid "Edit"
 msgstr ""
 
-#: links.py:43 models.py:63
+#: links.py:43 models.py:65
 msgid "Transformations"
 msgstr ""
 
@@ -88,11 +88,11 @@ msgid ""
 "automatic order value will be assigned."
 msgstr ""
 
-#: models.py:37
+#: models.py:38
 msgid "Name"
 msgstr ""
 
-#: models.py:41
+#: models.py:42
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
@@ -138,17 +138,17 @@ msgstr ""
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
 msgstr ""
 
-#: views.py:138
+#: views.py:139
 #, python-format
 msgid "Create new transformation for: %s"
 msgstr ""
 
-#: views.py:190
+#: views.py:192
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
 msgstr ""
 
-#: views.py:236
+#: views.py:238
 #, python-format
 msgid "Transformations for: %s"
 msgstr ""

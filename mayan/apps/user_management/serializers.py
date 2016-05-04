@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import Group, User
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 
 from rest_framework import serializers
 
@@ -22,21 +23,39 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     groups = GroupSerializer(many=True)
 
+    password = serializers.CharField(
+        required=False, style={'input_type': 'password'}
+    )
+
     class Meta:
         extra_kwargs = {
             'url': {'view_name': 'rest_api:user-detail'}
         }
         fields = (
-            'first_name', 'date_joined', 'email', 'groups', 'id', 'is_staff',
-            'is_active', 'is_superuser', 'last_login', 'last_name',
-            'password', 'url', 'username',
+            'first_name', 'date_joined', 'email', 'groups', 'id', 'is_active',
+            'last_login', 'last_name', 'url', 'username', 'password'
         )
-        model = User
+        model = get_user_model()
         read_only_fields = ('last_login', 'date_joined')
         write_only_fields = ('password',)
 
-    def restore_object(self, attrs, instance=None):
-        user = super(UserSerializer, self).restore_object(attrs, instance)
-        if 'password' in attrs:
-            user.set_password(attrs['password'])
+    def create(self, validated_data):
+        groups = validated_data.pop('groups')
+        is_active = validated_data.pop('is_active')
+        user = get_user_model().objects.create_user(**validated_data)
+
         return user
+
+    def update(self, instance, validated_data):
+        groups = validated_data.pop('groups')
+
+        if 'password' in validated_data:
+            instance.set_password(validated_data['password'])
+            validated_data.pop('password')
+
+        for attr, value in validated_data.items():
+            setattr(instance, attr, value)
+
+        instance.save()
+
+        return instance

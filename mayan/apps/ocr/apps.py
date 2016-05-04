@@ -5,6 +5,7 @@ import logging
 from kombu import Exchange, Queue
 import sh
 
+from django.apps import apps
 from django.db.models.signals import post_save
 from django.utils.translation import ugettext_lazy as _
 
@@ -14,7 +15,6 @@ from common import (
     menu_tools
 )
 from common.settings import settings_db_sync_task_delay
-from documents.models import Document, DocumentType, DocumentVersion
 from documents.search import document_search
 from documents.signals import post_version_upload
 from documents.widgets import document_link
@@ -29,21 +29,23 @@ from .links import (
     link_document_submit_multiple, link_document_type_ocr_settings,
     link_document_type_submit, link_entry_list
 )
-from .models import DocumentVersionOCRError
 from .permissions import permission_ocr_document, permission_ocr_content_view
 from .settings import (
     setting_pdftotext_path, setting_tesseract_path
 )
-from .tasks import task_do_ocr
 
 logger = logging.getLogger(__name__)
 
 
 def document_ocr_submit(self):
+    from .tasks import task_do_ocr
+
     task_do_ocr.apply_async(args=(self.latest_version.pk,))
 
 
 def document_version_ocr_submit(self):
+    from .tasks import task_do_ocr
+
     task_do_ocr.apply_async(
         kwargs={'document_version_pk': self.pk},
         countdown=settings_db_sync_task_delay.value
@@ -57,6 +59,20 @@ class OCRApp(MayanAppConfig):
 
     def ready(self):
         super(OCRApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        DocumentType = apps.get_model(
+            app_label='documents', model_name='DocumentType'
+        )
+
+        DocumentVersion = apps.get_model(
+            app_label='documents', model_name='DocumentVersion'
+        )
+
+        DocumentVersionOCRError = self.get_model('DocumentVersionOCRError')
 
         APIEndPoint(app=self, version_string='1')
 
@@ -97,7 +113,7 @@ class OCRApp(MayanAppConfig):
         )
 
         document_search.add_model_field(
-            field='versions__pages__ocr_content__content', label=_('Content')
+            field='versions__pages__ocr_content__content', label=_('OCR')
         )
 
         menu_facet.bind_links(

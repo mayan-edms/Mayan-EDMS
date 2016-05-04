@@ -10,12 +10,12 @@ from .permissions import (
 )
 
 link_document_content = Link(
-    permissions=(permission_ocr_content_view,), text=_('OCR'),
-    view='ocr:document_content', args='resolved_object.id'
+    icon='fa fa-font', permissions=(permission_ocr_content_view,),
+    text=_('OCR'), view='ocr:document_content', args='resolved_object.id'
 )
 link_document_submit = Link(
-    permissions=(permission_ocr_document,), text=_('Submit for OCR'),
-    view='ocr:document_submit', args='object.id'
+    args='resolved_object.id', permissions=(permission_ocr_document,),
+    text=_('Submit for OCR'), view='ocr:document_submit'
 )
 link_document_submit_all = Link(
     icon='fa fa-font', permissions=(permission_ocr_document,),

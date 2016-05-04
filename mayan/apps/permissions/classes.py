@@ -2,11 +2,11 @@ from __future__ import unicode_literals
 
 import logging
 
+from django.apps import apps
 from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
 from .exceptions import InvalidNamespace
-from .models import StoredPermission
 
 logger = logging.getLogger(__name__)
 
@@ -26,7 +26,7 @@ class PermissionNamespace(object):
             raise InvalidNamespace(
                 'Invalid namespace name. This is probably an obsolete '
                 'permission namespace, execute the management command '
-                '"purge_permissions" and try again.'
+                '"purgepermissions" and try again.'
             )
 
     def __init__(self, name, label):
@@ -64,6 +64,10 @@ class Permission(object):
 
     @classmethod
     def get_for_holder(cls, holder):
+        StoredPermission = apps.get_model(
+            app_label='permissions', model_name='StoredPermission'
+        )
+
         return StoredPermission.get_for_holder(holder)
 
     @classmethod
@@ -100,6 +104,10 @@ class Permission(object):
 
     @property
     def stored_permission(self):
+        StoredPermission = apps.get_model(
+            app_label='permissions', model_name='StoredPermission'
+        )
+
         try:
             return self.__class__._stored_permissions_cache[self.uuid]
         except KeyError:

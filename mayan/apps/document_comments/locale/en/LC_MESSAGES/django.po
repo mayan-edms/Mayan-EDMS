@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:25-0400\n"
+"POT-Creation-Date: 2016-04-27 14:10-0400\n"
 "PO-Revision-Date: 2013-11-20 11:56+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,22 +18,22 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:24
+#: apps.py:23
 #, fuzzy
 #| msgid "Delete comments"
 msgid "Document comments"
 msgstr "Delete comments"
 
-#: apps.py:36
+#: apps.py:41
 msgid "Date"
 msgstr ""
 
-#: apps.py:38 models.py:27
+#: apps.py:43 models.py:27
 msgid "User"
 msgstr ""
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: apps.py:41 models.py:30 models.py:72 views.py:25
+#: apps.py:46 models.py:30 models.py:72 views.py:25
 #, fuzzy
 msgid "Comment"
 msgstr "Comments"
@@ -60,7 +60,7 @@ msgstr "add comment"
 msgid "Delete"
 msgstr "delete"
 
-#: links.py:21 models.py:73 permissions.py:7
+#: links.py:22 models.py:73 permissions.py:7
 msgid "Comments"
 msgstr "Comments"
 

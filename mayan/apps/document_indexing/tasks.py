@@ -2,22 +2,28 @@ from __future__ import unicode_literals
 
 import logging
 
+from django.apps import apps
 from django.db import OperationalError
 
 from mayan.celery import app
-from documents.models import Document
-from lock_manager import Lock, LockError
+from lock_manager import LockError
 
 from .literals import RETRY_DELAY
-from .models import IndexInstanceNode
 
 logger = logging.getLogger(__name__)
 
 
 @app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
 def task_delete_empty_index_nodes(self):
+    IndexInstanceNode = apps.get_model(
+        app_label='document_indexing', model_name='IndexInstanceNode'
+    )
+    Lock = apps.get_model(
+        app_label='lock_manager', model_name='Lock'
+    )
+
     try:
-        rebuild_lock = Lock.acquire_lock(
+        rebuild_lock = Lock.objects.acquire_lock(
             'document_indexing_task_do_rebuild_all_indexes'
         )
     except LockError as exception:
@@ -32,8 +38,20 @@ def task_delete_empty_index_nodes(self):
 
 @app.task(bind=True, default_retry_delay=RETRY_DELAY, max_retries=None, ignore_result=True)
 def task_index_document(self, document_id):
+    Document = apps.get_model(
+        app_label='documents', model_name='Document'
+    )
+
+    IndexInstanceNode = apps.get_model(
+        app_label='document_indexing', model_name='IndexInstanceNode'
+    )
+
+    Lock = apps.get_model(
+        app_label='lock_manager', model_name='Lock'
+    )
+
     try:
-        rebuild_lock = Lock.acquire_lock(
+        rebuild_lock = Lock.objects.acquire_lock(
             'document_indexing_task_do_rebuild_all_indexes'
         )
     except LockError as exception:
@@ -41,7 +59,7 @@ def task_index_document(self, document_id):
         raise self.retry(exc=exception)
     else:
         try:
-            lock = Lock.acquire_lock(
+            lock = Lock.objects.acquire_lock(
                 'document_indexing_task_update_index_document_%d' % document_id
             )
         except LockError as exception:
@@ -74,12 +92,20 @@ def task_index_document(self, document_id):
 
 @app.task(bind=True, default_retry_delay=RETRY_DELAY, ignore_result=True)
 def task_do_rebuild_all_indexes(self):
-    if Lock.check_existing(name__startswith='document_indexing_task_update_index_document'):
+    IndexInstanceNode = apps.get_model(
+        app_label='document_indexing', model_name='IndexInstanceNode'
+    )
+
+    Lock = apps.get_model(
+        app_label='lock_manager', model_name='Lock'
+    )
+
+    if Lock.objects.check_existing(name__startswith='document_indexing_task_update_index_document'):
         # A document index update is happening, wait
         raise self.retry()
 
     try:
-        lock = Lock.acquire_lock(
+        lock = Lock.objects.acquire_lock(
             'document_indexing_task_do_rebuild_all_indexes'
         )
     except LockError as exception:

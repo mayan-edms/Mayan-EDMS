@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.generic import RedirectView
+from django.views.i18n import javascript_catalog
 
 from .views import (
     AboutView, CurrentUserDetailsView, CurrentUserEditView,
@@ -52,11 +53,16 @@ urlpatterns = patterns(
 urlpatterns += patterns(
     '',
     url(
+        r'^favicon\.ico$', RedirectView.as_view(
+            permanent=True, url=static('appearance/images/favicon.ico')
+        )
+    ),
+    url(
+        r'^jsi18n/(?P<packages>\S+?)/$', javascript_catalog,
+        name='javascript_catalog'
+    ),
+    url(
         r'^set_language/$', 'django.views.i18n.set_language',
         name='set_language'
-    ),
-    (
-        r'^favicon\.ico$',
-        RedirectView.as_view(url=static('appearance/images/favicon.ico'))
     ),
 )

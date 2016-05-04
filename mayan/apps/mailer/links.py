@@ -10,12 +10,12 @@ from .permissions import (
 )
 
 link_send_document = Link(
-    permissions=(permission_mailing_send_document,), text=_('Email document'),
-    view='mailer:send_document', args='object.pk'
+    args='resolved_object.pk', permissions=(permission_mailing_send_document,),
+    text=_('Email document'), view='mailer:send_document'
 )
 link_send_document_link = Link(
-    permissions=(permission_mailing_link,), text=_('Email link'),
-    view='mailer:send_document_link', args='object.pk'
+    args='resolved_object.pk', permissions=(permission_mailing_link,),
+    text=_('Email link'), view='mailer:send_document_link'
 )
 link_document_mailing_error_log = Link(
     icon='fa fa-envelope', permissions=(permission_view_error_log,),

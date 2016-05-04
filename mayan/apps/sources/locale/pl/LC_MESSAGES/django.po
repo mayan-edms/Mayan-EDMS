@@ -1,125 +1,123 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 # mic <winterfall24@gmail.com>, 2012-2013
+# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:28-0400\n"
-"PO-Revision-Date: 2015-09-24 05:16+0000\n"
+"POT-Creation-Date: 2016-04-27 14:15-0400\n"
+"PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
+"pl/)\n"
+"Language: pl\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pl\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
+"|| n%100>=20) ? 1 : 2);\n"
 
-#: apps.py:42 links.py:30 models.py:133 views.py:523
+#: apps.py:37 links.py:31 models.py:145 views.py:521
 msgid "Sources"
 msgstr ""
 
-#: apps.py:50
-#| msgid "Create new document sources"
+#: apps.py:53
 msgid "Create a document source"
 msgstr ""
 
-#: apps.py:52
+#: apps.py:55
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
 msgstr ""
 
-#: apps.py:62
+#: apps.py:65
 msgid "Created"
-msgstr ""
+msgstr "Utworzony"
 
-#: apps.py:68
+#: apps.py:71
 msgid "Thumbnail"
-msgstr ""
+msgstr "Miniaturka"
 
-#: apps.py:78 models.py:510
+#: apps.py:81 models.py:606
 msgid "Date time"
-msgstr ""
+msgstr "Data godzina"
 
-#: apps.py:83 models.py:513
+#: apps.py:86 models.py:609
 msgid "Message"
 msgstr ""
 
 #: forms.py:29
 msgid "Comment"
-msgstr ""
+msgstr "Komentarz"
 
 #: forms.py:44
 msgid "Expand compressed files"
 msgstr ""
 
-#: forms.py:45
+#: forms.py:46
 msgid "Upload a compressed file's contained files as individual documents"
 msgstr ""
 
-#: forms.py:64
+#: forms.py:67 views.py:432
 msgid "Staging file"
 msgstr ""
 
-#: forms.py:68
+#: forms.py:71 forms.py:76
 msgid "File"
 msgstr "Plik"
 
-#: handlers.py:13
+#: handlers.py:14
 msgid "Default"
-msgstr ""
+msgstr "Domyślne"
 
-#: links.py:22
+#: links.py:26
 msgid "New document"
+msgstr "Nowy dokument"
+
+#: links.py:35
+msgid "Add new IMAP email"
 msgstr ""
 
-#: links.py:25
-msgid "Clone"
+#: links.py:40
+msgid "Add new POP3 email"
 msgstr ""
 
-#: links.py:34
-msgid "Add new imap email"
-msgstr ""
-
-#: links.py:39
-msgid "Add new pop3 email"
-msgstr ""
-
-#: links.py:44
+#: links.py:45
 msgid "Add new staging folder"
 msgstr ""
 
-#: links.py:49
+#: links.py:50
 msgid "Add new watch folder"
 msgstr ""
 
-#: links.py:54
+#: links.py:55
 msgid "Add new webform source"
 msgstr ""
 
-#: links.py:59 links.py:73
+#: links.py:60 links.py:74
 msgid "Delete"
-msgstr ""
+msgstr "Usuń"
 
-#: links.py:63
+#: links.py:64
 msgid "Edit"
-msgstr ""
+msgstr "Edytuj"
 
-#: links.py:67
+#: links.py:68
 msgid "Document sources"
 msgstr ""
 
-#: links.py:78
+#: links.py:80
 msgid "Upload new version"
 msgstr ""
 
-#: links.py:82
+#: links.py:83
 msgid "Logs"
 msgstr ""
 
@@ -135,15 +133,15 @@ msgstr "Nigdy"
 msgid "Ask user"
 msgstr "Pytaj użytkownika"
 
-#: literals.py:27 models.py:240
+#: literals.py:27 models.py:252
 msgid "Web form"
 msgstr ""
 
-#: literals.py:28 models.py:220
+#: literals.py:28 models.py:232
 msgid "Staging folder"
 msgstr ""
 
-#: literals.py:29 models.py:501
+#: literals.py:29 models.py:597
 msgid "Watch folder"
 msgstr ""
 
@@ -151,197 +149,239 @@ msgstr ""
 msgid "POP3 email"
 msgstr ""
 
-#: literals.py:31 models.py:474 models.py:475
+#: literals.py:31 models.py:570 models.py:571
 msgid "IMAP email"
 msgstr ""
 
-#: models.py:43
+#: models.py:48
 msgid "Label"
-msgstr ""
+msgstr "Etykieta"
 
-#: models.py:44 views.py:516
+#: models.py:49 views.py:514
 msgid "Enabled"
-msgstr ""
+msgstr "Włączone"
 
-#: models.py:132 models.py:507
+#: models.py:144 models.py:603
 msgid "Source"
 msgstr ""
 
-#: models.py:140
+#: models.py:152
 msgid "Interactive source"
 msgstr ""
 
-#: models.py:141
+#: models.py:153
 msgid "Interactive sources"
 msgstr ""
 
-#: models.py:149 models.py:482
+#: models.py:161 models.py:578
 msgid "Server side filesystem path."
 msgstr ""
 
-#: models.py:150 models.py:483
+#: models.py:162 models.py:579
 msgid "Folder path"
 msgstr ""
 
-#: models.py:153
+#: models.py:165
 msgid "Width value to be passed to the converter backend."
 msgstr ""
 
-#: models.py:154
+#: models.py:166
 msgid "Preview width"
 msgstr ""
 
-#: models.py:158
+#: models.py:170
 msgid "Height value to be passed to the converter backend."
 msgstr ""
 
-#: models.py:159
+#: models.py:171
 msgid "Preview height"
 msgstr ""
 
-#: models.py:163 models.py:231
+#: models.py:175 models.py:243
 msgid "Whether to expand or not compressed archives."
 msgstr ""
 
-#: models.py:164 models.py:232 models.py:268
+#: models.py:176 models.py:244 models.py:280
 msgid "Uncompress"
 msgstr ""
 
-#: models.py:169
+#: models.py:181
 msgid "Delete the file after is has been successfully uploaded."
 msgstr ""
 
-#: models.py:171
+#: models.py:183
 msgid "Delete after upload"
 msgstr ""
 
-#: models.py:195
+#: models.py:207
 #, python-format
 msgid "Unable get list of staging files: %s"
 msgstr ""
 
-#: models.py:216
+#: models.py:228
 #, python-format
 msgid "Error deleting staging file; %s"
 msgstr ""
 
-#: models.py:221
+#: models.py:233
 msgid "Staging folders"
 msgstr ""
 
-#: models.py:241
+#: models.py:253
 msgid "Web forms"
 msgstr ""
 
-#: models.py:248 models.py:249
+#: models.py:260 models.py:261
 msgid "Out of process"
 msgstr ""
 
-#: models.py:255
+#: models.py:267
 msgid "Interval in seconds between checks for new documents."
 msgstr ""
 
-#: models.py:256
+#: models.py:268
 msgid "Interval"
 msgstr ""
 
-#: models.py:261
+#: models.py:273
 msgid "Assign a document type to documents uploaded from this source."
 msgstr ""
 
-#: models.py:263
+#: models.py:275
 msgid "Document type"
-msgstr ""
+msgstr "Typ dokumentów"
 
-#: models.py:267
+#: models.py:279
 msgid "Whether to expand or not, compressed archives."
 msgstr ""
 
-#: models.py:317
+#: models.py:329
 msgid "Interval source"
 msgstr ""
 
-#: models.py:318
+#: models.py:330
 msgid "Interval sources"
 msgstr ""
 
-#: models.py:322
+#: models.py:334
 msgid "Host"
 msgstr ""
 
-#: models.py:323
+#: models.py:335
 msgid "SSL"
 msgstr ""
 
-#: models.py:325
+#: models.py:337
 msgid ""
 "Typical choices are 110 for POP3, 995 for POP3 over SSL, 143 for IMAP, 993 "
 "for IMAP over SSL."
 msgstr ""
 
-#: models.py:326
+#: models.py:338
 msgid "Port"
 msgstr ""
 
-#: models.py:328
+#: models.py:340
 msgid "Username"
 msgstr ""
 
-#: models.py:329
+#: models.py:341
 msgid "Password"
-msgstr ""
+msgstr "Hasło"
 
-#: models.py:333
+#: models.py:345
 msgid ""
 "Name of the attachment that will contains the metadata type names and value "
 "pairs to be assigned to the rest of the downloaded attachments. Note: This "
 "attachment has to be the first attachment."
 msgstr ""
 
-#: models.py:336
+#: models.py:349
 msgid "Metadata attachment name"
 msgstr ""
 
+#: models.py:353
+msgid ""
+"Select a metadata type valid for the document type selected in which to "
+"store the email's subject."
+msgstr ""
+
+#: models.py:356
+msgid "Subject metadata type"
+msgstr ""
+
 #: models.py:360
+msgid ""
+"Select a metadata type valid for the document type selected in which to "
+"store the email's \"from\" value."
+msgstr ""
+
+#: models.py:363
+msgid "From metadata type"
+msgstr ""
+
+#: models.py:367
+msgid "Store the body of the email as a text document."
+msgstr ""
+
+#: models.py:368
+msgid "Store email body"
+msgstr ""
+
+#: models.py:377
+#, python-format
+msgid ""
+"Subject metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+
+#: models.py:391
+#, python-format
+msgid ""
+"\"From\" metadata type \"%(metadata_type)s\" is not valid for the document "
+"type: %(document_type)s"
+msgstr ""
+
+#: models.py:441
 #, python-format
 msgid "attachment-%i"
 msgstr ""
 
-#: models.py:383
+#: models.py:480
 msgid "Email source"
 msgstr ""
 
-#: models.py:384
+#: models.py:481
 msgid "Email sources"
 msgstr ""
 
-#: models.py:391
+#: models.py:488
 msgid "Timeout"
 msgstr ""
 
-#: models.py:428 models.py:429
+#: models.py:525 models.py:526
 msgid "POP email"
 msgstr ""
 
-#: models.py:438
-msgid "Mail from which to check for messages with attached documents."
+#: models.py:534
+msgid "IMAP Mailbox from which to check for messages."
 msgstr ""
 
-#: models.py:439
+#: models.py:535
 msgid "Mailbox"
 msgstr ""
 
-#: models.py:502
+#: models.py:598
 msgid "Watch folders"
 msgstr ""
 
-#: models.py:519
+#: models.py:615
 msgid "Log entry"
 msgstr ""
 
-#: models.py:520
+#: models.py:616
 msgid "Log entries"
-msgstr ""
+msgstr "Wpisy rejestru logów"
 
 #: permissions.py:7
 msgid "Sources setup"
@@ -363,99 +403,109 @@ msgstr ""
 msgid "View existing document sources"
 msgstr ""
 
-#: tasks.py:29
+#: permissions.py:21
+msgid "Delete staging files"
+msgstr ""
+
+#: tasks.py:31
 #, python-format
-#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
 msgstr ""
 
-#: views.py:65
+#: templates/sources/upload_multiform_subtemplate.html:35
+msgid "Clear"
+msgstr ""
+
+#: views.py:64
 #, python-format
 msgid "Log entries for source: %s"
 msgstr ""
 
-#: views.py:145 wizards.py:37
+#: views.py:129 wizards.py:49
 msgid ""
-"No interactive document sources have been defined or none have been enabled,"
-" create one before proceeding."
+"No interactive document sources have been defined or none have been enabled, "
+"create one before proceeding."
 msgstr ""
 
-#: views.py:171 views.py:189
-#| msgid "Document sources"
+#: views.py:155 views.py:173
 msgid "Document properties"
 msgstr ""
 
-#: views.py:179
+#: views.py:163
 msgid "Files in staging path"
 msgstr ""
 
-#: views.py:272
+#: views.py:262
 msgid "New document queued for uploaded and will be available shortly."
 msgstr ""
 
-#: views.py:306
+#: views.py:302
 #, python-format
 msgid "Upload a local document from source: %s"
 msgstr ""
 
-#: views.py:362
-msgid ""
-"New document version queued for uploaded and will be available shortly."
+#: views.py:327
+#, python-format
+msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
-#: views.py:400
+#: views.py:381
+msgid "New document version queued for uploaded and will be available shortly."
+msgstr ""
+
+#: views.py:419
 #, python-format
 msgid "Upload a new version from source: %s"
 msgstr ""
 
-#: views.py:427
-msgid "Staging file delete successfully."
-msgstr ""
-
-#: views.py:430
-#, python-format
-msgid "Staging file delete error; %s."
-msgstr ""
-
-#: views.py:462
+#: views.py:460
 #, python-format
 msgid "Create new source of type: %s"
 msgstr "Utwórz nowe typ źródło:%s"
 
-#: views.py:482
+#: views.py:480
 #, python-format
-#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
-#: views.py:501
+#: views.py:499
 #, python-format
 msgid "Edit source: %s"
 msgstr ""
 
-#: views.py:512
+#: views.py:510
 msgid "Type"
-msgstr ""
+msgstr "Typ"
 
-#: widgets.py:25
+#: widgets.py:26
 msgid "Staging file page image"
 msgstr ""
 
-#: wizards.py:52
-msgid "Step 1 of 2: Select document type"
+#: wizards.py:38
+msgid "Step 1 of 3: Select document type"
 msgstr ""
 
-#: wizards.py:53
-msgid "Step 2 of 2: Enter document metadata"
+#: wizards.py:39
+msgid "Step 2 of 3: Enter document metadata"
 msgstr ""
 
-#: wizards.py:75
+#: wizards.py:40
+msgid "Step 3 of 3: Select tags"
+msgstr ""
+
+#: wizards.py:66
 msgid "Next step"
 msgstr ""
 
-#: wizards.py:77
+#: wizards.py:68
 msgid "Document upload wizard"
 msgstr ""
+
+#~ msgid "Staging file delete successfully."
+#~ msgstr "Staging file delete successfully."
+
+#~ msgid "Staging file delete error; %s."
+#~ msgstr "Staging file delete error; %s."
 
 #~ msgid "Transformations"
 #~ msgstr "transformations"
@@ -492,9 +542,6 @@ msgstr ""
 
 #~ msgid "None"
 #~ msgstr "None"
-
-#~ msgid "Current metadata"
-#~ msgstr "Current metadata"
 
 #~ msgid "No"
 #~ msgstr "None"
@@ -536,9 +583,11 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
+#~ "\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"
@@ -563,9 +612,6 @@ msgstr ""
 
 #~ msgid "Unhandled exception: %s"
 #~ msgstr "Unhandled exception: %s"
-
-#~ msgid "Clone metadata"
-#~ msgstr "Current metadata"
 
 #~ msgid "Whitelist"
 #~ msgstr "whitelist"

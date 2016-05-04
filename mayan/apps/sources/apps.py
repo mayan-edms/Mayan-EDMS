@@ -10,7 +10,6 @@ from common import (
 )
 from common.signals import post_initial_setup, post_upgrade
 from converter.links import link_transformation_list
-from documents.models import Document
 from documents.signals import post_version_upload
 from mayan.celery import app
 from navigation import SourceColumn
@@ -22,17 +21,12 @@ from .handlers import (
     initialize_periodic_tasks
 )
 from .links import (
-    link_document_create_multiple, link_document_create_siblings,
-    link_setup_sources, link_setup_source_create_imap_email,
-    link_setup_source_create_pop3_email,
+    link_document_create_multiple, link_setup_sources,
+    link_setup_source_create_imap_email, link_setup_source_create_pop3_email,
     link_setup_source_create_watch_folder, link_setup_source_create_webform,
     link_setup_source_create_staging_folder, link_setup_source_delete,
     link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
     link_upload_version
-)
-from .models import (
-    POP3Email, IMAPEmail, Source, SourceLog, StagingFolderSource,
-    WatchFolderSource, WebFormSource
 )
 from .widgets import staging_file_thumbnail
 
@@ -44,6 +38,14 @@ class SourcesApp(MayanAppConfig):
 
     def ready(self):
         super(SourcesApp, self).ready()
+
+        POP3Email = self.get_model('POP3Email')
+        IMAPEmail = self.get_model('IMAPEmail')
+        Source = self.get_model('Source')
+        SourceLog = self.get_model('SourceLog')
+        StagingFolderSource = self.get_model('StagingFolderSource')
+        WatchFolderSource = self.get_model('WatchFolderSource')
+        WebFormSource = self.get_model('WebFormSource')
 
         APIEndPoint(app=self, version_string='1')
 
@@ -112,9 +114,6 @@ class SourcesApp(MayanAppConfig):
         )
 
         menu_front_page.bind_links(links=(link_document_create_multiple,))
-        menu_object.bind_links(
-            links=(link_document_create_siblings,), sources=(Document,)
-        )
         menu_object.bind_links(
             links=(
                 link_setup_source_edit, link_setup_source_delete,

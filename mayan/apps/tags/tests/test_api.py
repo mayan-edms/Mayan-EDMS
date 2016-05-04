@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
-from django.core.files import File
+from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
@@ -27,24 +26,30 @@ class TagAPITestCase(APITestCase):
     """
 
     def setUp(self):
-        self.admin_user = User.objects.create_superuser(
+        self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
 
-        self.client.force_authenticate(user=self.admin_user)
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
 
     def tearDown(self):
         self.admin_user.delete()
 
     def test_tag_create(self):
-        self.client.post(
+        response = self.client.post(
             reverse('rest_api:tag-list'), {
                 'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
             }
         )
 
         tag = Tag.objects.first()
+
+        self.assertEqual(response.data['id'], tag.pk)
+        self.assertEqual(response.data['label'], TEST_TAG_LABEL)
+        self.assertEqual(response.data['color'], TEST_TAG_COLOR)
 
         self.assertEqual(Tag.objects.count(), 1)
         self.assertEqual(tag.label, TEST_TAG_LABEL)
@@ -83,7 +88,7 @@ class TagAPITestCase(APITestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         self.client.post(
@@ -103,7 +108,7 @@ class TagAPITestCase(APITestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         tag.documents.add(document)

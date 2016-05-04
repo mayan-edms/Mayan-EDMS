@@ -56,8 +56,13 @@ class MayanAppConfig(apps.AppConfig):
                     namespace=self.app_namespace or self.name
                 )
             ),
-        except ImportError:
-            logger.debug('App %s doesn\'t have URLs defined.', self.name)
+        except ImportError as exception:
+            logger.debug(
+                'App %s doesn\'t have URLs defined. Exception: %s', self.name,
+                exception
+            )
+            if 'No module named urls' not in unicode(exception):
+                raise exception
 
 
 class CommonApp(MayanAppConfig):

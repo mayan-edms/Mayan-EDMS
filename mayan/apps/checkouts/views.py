@@ -4,25 +4,25 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
 from documents.views import DocumentListView
 
 from acls.models import AccessControlList
-from common.generics import ConfirmView, SingleObjectCreateView
-from common.utils import encapsulate, render_date_object
+from common.generics import (
+    ConfirmView, SingleObjectCreateView, SingleObjectDetailView
+)
+from common.utils import encapsulate
 from permissions import Permission
 
 from .exceptions import DocumentAlreadyCheckedOut, DocumentNotCheckedOut
-from .forms import DocumentCheckoutForm
-from .literals import STATE_LABELS
+from .forms import DocumentCheckoutForm, DocumentCheckoutDefailForm
 from .models import DocumentCheckout
 from .permissions import (
     permission_document_checkin, permission_document_checkin_override,
-    permission_document_checkout
+    permission_document_checkout, permission_document_checkout_detail_view
 )
 
 
@@ -106,55 +106,21 @@ class CheckoutListView(DocumentListView):
         return DocumentCheckout.objects.checked_out_documents()
 
 
-def checkout_info(request, document_pk):
-    document = get_object_or_404(Document, pk=document_pk)
-    try:
-        Permission.check_permissions(
-            request.user, (
-                permission_document_checkout, permission_document_checkin
-            )
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            (permission_document_checkout, permission_document_checkin),
-            request.user, document
-        )
+class CheckoutDetailView(SingleObjectDetailView):
+    form_class = DocumentCheckoutDefailForm
+    model = Document
+    object_permission = permission_document_checkout_detail_view
 
-    paragraphs = [
-        _('Document status: %s') % STATE_LABELS[document.checkout_state()]
-    ]
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _(
+                'Check out details for document: %s'
+            ) % self.get_object()
+        }
 
-    if document.is_checked_out():
-        checkout_info = document.checkout_info()
-        paragraphs.append(
-            _('User: %s') % (
-                checkout_info.user.get_full_name() or checkout_info.user
-            )
-        )
-        paragraphs.append(
-            _(
-                'Check out time: %s'
-            ) % render_date_object(checkout_info.checkout_datetime)
-        )
-        paragraphs.append(
-            _(
-                'Check out expiration: %s'
-            ) % render_date_object(checkout_info.expiration_datetime)
-        )
-        paragraphs.append(
-            _(
-                'New versions allowed: %s'
-            ) % (_('Yes') if not checkout_info.block_new_version else _('No'))
-        )
-
-    return render_to_response(
-        'appearance/generic_template.html', {
-            'paragraphs': paragraphs,
-            'object': document,
-            'title': _('Check out details for document: %s') % document
-        },
-        context_instance=RequestContext(request)
-    )
+    def get_object(self):
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
 
 
 class DocumentCheckinView(ConfirmView):

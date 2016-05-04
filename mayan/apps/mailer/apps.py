@@ -2,11 +2,11 @@ from __future__ import unicode_literals
 
 from kombu import Exchange, Queue
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_object, menu_tools
-from documents.models import Document
 from mayan.celery import app
 from navigation import SourceColumn
 
@@ -14,7 +14,6 @@ from .links import (
     link_document_mailing_error_log, link_send_document_link,
     link_send_document
 )
-from .models import LogEntry
 from .permissions import (
     permission_mailing_link, permission_mailing_send_document
 )
@@ -22,10 +21,17 @@ from .permissions import (
 
 class MailerApp(MayanAppConfig):
     name = 'mailer'
+    test = True
     verbose_name = _('Mailer')
 
     def ready(self):
         super(MailerApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        LogEntry = self.get_model('LogEntry')
 
         SourceColumn(
             source=LogEntry, label=_('Date and time'), attribute='datetime'

@@ -1,51 +1,52 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:27-0400\n"
+"POT-Creation-Date: 2016-04-27 14:13-0400\n"
 "PO-Revision-Date: 2015-08-20 19:16+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/nl_NL/)\n"
+"Language: nl_NL\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25
 msgid "Mailer"
 msgstr ""
 
-#: apps.py:31
+#: apps.py:37
 msgid "Date and time"
 msgstr ""
 
-#: apps.py:35 models.py:16
+#: apps.py:41 models.py:16
 msgid "Message"
 msgstr ""
 
-#: forms.py:23
+#: forms.py:29
 msgid "Email address"
 msgstr ""
 
-#: forms.py:24
+#: forms.py:30
 msgid "Subject"
 msgstr ""
 
-#: forms.py:26
+#: forms.py:32
 msgid "Body"
 msgstr ""
 
-#: links.py:13
+#: links.py:14
 msgid "Email document"
 msgstr ""
 
-#: links.py:17
+#: links.py:18
 msgid "Email link"
 msgstr ""
 
@@ -53,7 +54,7 @@ msgstr ""
 msgid "Document mailing error log"
 msgstr ""
 
-#: literals.py:8
+#: literals.py:7
 #, python-format
 msgid ""
 "Attached to this email is the document: {{ document }}\n"
@@ -62,7 +63,7 @@ msgid ""
 " This email has been sent from %(project_title)s (%(project_website)s)"
 msgstr ""
 
-#: literals.py:17
+#: literals.py:13
 #, python-format
 msgid ""
 "To access this document click on the following link: {{ link }}\n"
@@ -73,7 +74,7 @@ msgstr ""
 
 #: models.py:13
 msgid "Date time"
-msgstr ""
+msgstr "Datum en tijd"
 
 #: models.py:22
 msgid "Log entry"
@@ -123,34 +124,34 @@ msgstr ""
 msgid "Template for the document email form body line."
 msgstr ""
 
-#: views.py:54
+#: views.py:56
 msgid "Must provide at least one document."
-msgstr ""
+msgstr "U dient minstens 1 document aan te geven."
 
-#: views.py:83
+#: views.py:105
 msgid "Successfully queued for delivery via email."
 msgstr ""
 
-#: views.py:91
+#: views.py:114
 msgid "Send"
 msgstr ""
 
-#: views.py:97
+#: views.py:120
 #, python-format
 msgid "Email document: %s"
 msgstr ""
 
-#: views.py:99
+#: views.py:122
 #, python-format
 msgid "Email link for document: %s"
 msgstr ""
 
-#: views.py:102
+#: views.py:125
 #, python-format
 msgid "Email documents: %s"
 msgstr ""
 
-#: views.py:104
+#: views.py:127
 #, python-format
 msgid "Email links for documents: %s"
 msgstr ""

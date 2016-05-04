@@ -4,11 +4,11 @@ from datetime import timedelta
 
 from kombu import Exchange, Queue
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
-from documents.models import Document
 from mayan.celery import app
 from rest_api.classes import APIEndPoint
 
@@ -17,10 +17,9 @@ from .links import (
     link_checkout_list
 )
 from .literals import CHECK_EXPIRED_CHECK_OUTS_INTERVAL
-from .models import DocumentCheckout
 from .permissions import (
     permission_document_checkin, permission_document_checkin_override,
-    permission_document_checkout
+    permission_document_checkout, permission_document_checkout_detail_view
 )
 from .tasks import task_check_expired_check_outs  # NOQA
 # This import is required so that celerybeat can find the task
@@ -35,6 +34,12 @@ class CheckoutsApp(MayanAppConfig):
         super(CheckoutsApp, self).ready()
 
         APIEndPoint(app=self, version_string='1')
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        DocumentCheckout = self.get_model('DocumentCheckout')
 
         Document.add_to_class(
             'check_in',
@@ -64,6 +69,7 @@ class CheckoutsApp(MayanAppConfig):
                 permission_document_checkout,
                 permission_document_checkin,
                 permission_document_checkin_override,
+                permission_document_checkout_detail_view
             )
         )
 

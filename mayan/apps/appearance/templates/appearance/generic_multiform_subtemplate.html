@@ -8,9 +8,9 @@
 
     <div class="well">
         {% if is_multipart %}
-            <form enctype="multipart/form-data" method="{{ submit_method|default:'post' }}" action="{{ form_action }}">
+            <form action="{{ form_action }}" class="{{ form_class|default:'' }}" enctype="multipart/form-data" id="{{ form_id|default:'' }}" method="{{ submit_method|default:'post' }}">
         {% else %}
-            <form method="{{ submit_method|default:'post' }}" action="{{ form_action }}">
+            <form action="{{ form_action }}" class="{{ form_class|default:'' }}" id="{{ form_id|default:'' }}" method="{{ submit_method|default:'post' }}">
         {% endif %}
 
         {% for form_name, form in forms.items %}
@@ -61,7 +61,9 @@
         {% if not read_only %}
 
             <div class="form-group">
-                <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit"><i class="fa fa-check"></i> {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}</button>
+                {% if not form_disable_submit %}
+                    <button class="btn btn-primary" name="{% if form.prefix %}{{ form.prefix }}-submit{% else %}submit{% endif %}" type="submit"><i class="fa fa-check"></i> {% if submit_label %}{{ submit_label }}{% else %}{% if object %}{% trans 'Save' %}{% else %}{% trans 'Submit' %}{% endif %}{% endif %}</button>
+                {% endif %}
                 {% if previous %}
                       &nbsp;<a class="btn btn-default" onclick='{% if previous %}window.location.replace("{{ previous }}");{% else %}history.go(-1);{% endif %}'>
                         <i class="fa fa-cross"></i> {% if cancel_label %}{{ cancel_label }}{% else %}{% trans 'Cancel' %}{% endif %}

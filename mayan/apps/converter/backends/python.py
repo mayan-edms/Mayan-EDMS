@@ -27,7 +27,7 @@ try:
 except sh.CommandNotFound:
     pdftoppm = None
 else:
-    pdftoppm = pdftoppm.bake('-png')
+    pdftoppm = pdftoppm.bake('-jpeg')
 
 Image.init()
 logger = logging.getLogger(__name__)

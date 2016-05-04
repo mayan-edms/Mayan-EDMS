@@ -40,9 +40,7 @@ def metadata_edit(request, document_id=None, document_id_list=None):
         if not documents:
             raise Document.DoesNotExist
     elif document_id_list:
-        documents = Document.objects.select_related('metadata').filter(
-            pk__in=document_id_list
-        )
+        documents = Document.objects.filter(pk__in=document_id_list)
 
     try:
         Permission.check_permissions(
@@ -245,7 +243,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
                 try:
                     document_metadata, created = DocumentMetadata.objects.get_or_create(
                         document=document,
-                        metadata_type=metadata_type.metadata_type,
+                        metadata_type=metadata_type,
                         defaults={'value': ''}
                     )
                 except Exception as exception:
@@ -337,9 +335,7 @@ def metadata_remove(request, document_id=None, document_id_list=None):
         if not documents:
             raise Document.DoesNotExist
     elif document_id_list:
-        documents = Document.objects.select_related('metadata').filter(
-            pk__in=document_id_list
-        )
+        documents = Document.objects.filter(pk__in=document_id_list)
 
     try:
         Permission.check_permissions(

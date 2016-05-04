@@ -46,6 +46,7 @@ TEST_DEU_DOCUMENT_PATH = os.path.join(
 TEST_DOCUMENT_PATH = os.path.join(
     settings.BASE_DIR, 'contrib', 'sample_documents', TEST_DOCUMENT_FILENAME
 )
+TEST_DOCUMENT_TYPE_QUICK_LABEL = 'test quick label'
 TEST_HYBRID_DOCUMENT_PATH = os.path.join(
     'contrib', 'sample_documents', TEST_HYBRID_DOCUMENT
 )

@@ -9,18 +9,16 @@ APP_LIST = (
     'converter', 'django_gpg', 'document_comments', 'document_indexing',
     'document_signatures', 'document_states', 'documents', 'dynamic_search',
     'events', 'folders', 'installation', 'linking', 'lock_manager', 'mailer',
-    'metadata', 'mirroring', 'navigation', 'ocr', 'permissions', 'rest_api',
-    'smart_settings', 'sources', 'statistics', 'storage', 'tags',
+    'metadata', 'mirroring', 'motd', 'navigation', 'ocr', 'permissions',
+    'rest_api', 'smart_settings', 'sources', 'statistics', 'storage', 'tags',
     'user_management'
 )
+
 LANGUAGE_LIST = (
     'ar', 'bg', 'bs_BA', 'da', 'de_DE', 'en', 'es', 'fa', 'fr', 'hu', 'id',
     'it', 'nl_NL', 'pl', 'pt', 'pt_BR', 'ro_RO', 'ru', 'sl_SI', 'vi_VN',
     'zh_CN',
 )
-
-# Inactive translations
-# 'de_CH', 'hr_HR', 'lv', 'nb', 'sq', 'tr_TR', 'zh_TW'
 
 makemessages = sh.Command('django-admin.py')
 makemessages = makemessages.bake('makemessages')

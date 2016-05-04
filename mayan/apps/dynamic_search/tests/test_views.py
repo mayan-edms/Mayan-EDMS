@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
-from django.core.files.base import File
+from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import TestCase
 from django.test.client import Client
@@ -20,7 +19,7 @@ class Issue46TestCase(TestCase):
     """
 
     def setUp(self):
-        self.admin_user = User.objects.create_superuser(
+        self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
@@ -42,7 +41,7 @@ class Issue46TestCase(TestCase):
         for i in range(self.document_count):
             with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
                 self.document_type.new_document(
-                    file_object=File(file_object),
+                    file_object=file_object,
                     label='test document',
                 )
 

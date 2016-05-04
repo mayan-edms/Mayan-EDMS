@@ -114,7 +114,8 @@ class TransformationCreateView(SingleObjectCreateView):
         try:
             instance.full_clean()
             instance.save()
-        except:
+        except Exception as exception:
+            logger.debug('Invalid form, exception: %s', exception)
             return super(TransformationCreateView, self).form_invalid(form)
         else:
             return super(TransformationCreateView, self).form_valid(form)
@@ -168,7 +169,8 @@ class TransformationEditView(SingleObjectEditView):
         try:
             instance.full_clean()
             instance.save()
-        except:
+        except Exception as exception:
+            logger.debug('Invalid form, exception: %s', exception)
             return super(TransformationEditView, self).form_invalid(form)
         else:
             return super(TransformationEditView, self).form_valid(form)

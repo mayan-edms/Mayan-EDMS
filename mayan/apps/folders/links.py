@@ -12,8 +12,9 @@ from .permissions import (
 )
 
 link_document_folder_list = Link(
-    permissions=(permission_document_view,), text=_('Folders'),
-    view='folders:document_folder_list', args='object.pk'
+    icon='fa fa-folder', permissions=(permission_document_view,),
+    text=_('Folders'), view='folders:document_folder_list',
+    args='resolved_object.pk'
 )
 link_folder_add_document = Link(
     permissions=(permission_folder_add_document,), text=_('Add to a folder'),

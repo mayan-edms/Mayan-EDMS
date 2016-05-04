@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:26-0400\n"
+"POT-Creation-Date: 2016-04-27 14:12-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,20 +18,20 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:15
+#: apps.py:16
 #, fuzzy
 msgid "Dynamic search"
 msgstr "advanced search"
 
-#: forms.py:20
+#: forms.py:21
 msgid "Search terms"
 msgstr "Search terms"
 
-#: links.py:7 settings.py:8 views.py:54 views.py:68
+#: links.py:7 settings.py:8 views.py:56 views.py:70
 msgid "Search"
 msgstr "Search"
 
-#: links.py:9 views.py:75
+#: links.py:9 views.py:77
 #, fuzzy
 msgid "Advanced search"
 msgstr "advanced search"
@@ -41,30 +41,30 @@ msgstr "advanced search"
 msgid "Search again"
 msgstr "search again"
 
-#: models.py:23
+#: models.py:24
 msgid "User"
 msgstr ""
 
-#: models.py:24
+#: models.py:26
 #, fuzzy
 msgid "Query"
 msgstr "query"
 
-#: models.py:26
+#: models.py:28
 #, fuzzy
 msgid "Datetime created"
 msgstr "datetime created"
 
-#: models.py:28
+#: models.py:30
 msgid "Hits"
 msgstr ""
 
-#: models.py:70
+#: models.py:74
 #, fuzzy
 msgid "Recent search"
 msgstr "recent search"
 
-#: models.py:71
+#: models.py:75
 #, fuzzy
 msgid "Recent searches"
 msgstr "recent searches"

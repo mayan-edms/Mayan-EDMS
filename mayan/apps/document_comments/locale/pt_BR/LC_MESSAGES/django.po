@@ -1,98 +1,95 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:25-0400\n"
-"PO-Revision-Date: 2015-08-24 04:02+0000\n"
+"POT-Creation-Date: 2016-04-27 14:11-0400\n"
+"PO-Revision-Date: 2016-03-21 21:09+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
+"edms/language/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:24
-#| msgid "Delete comments"
+#: apps.py:23
 msgid "Document comments"
 msgstr ""
 
-#: apps.py:36
+#: apps.py:41
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
-#: apps.py:38 models.py:27
+#: apps.py:43 models.py:27
 msgid "User"
-msgstr ""
+msgstr "Usuário"
 
 #. Translators: Comment here is a noun and refers to the actual text stored
-#: apps.py:41 models.py:30 models.py:72 views.py:25
+#: apps.py:46 models.py:30 models.py:72 views.py:25
 msgid "Comment"
-msgstr ""
+msgstr "Comentário"
 
 #: events.py:9
-#| msgid "Delete comments"
 msgid "Document comment created"
 msgstr ""
 
 #: events.py:13
-#| msgid "Delete comments"
 msgid "Document comment deleted"
 msgstr ""
 
 #: links.py:13
 msgid "Add comment"
-msgstr ""
+msgstr "Adicionar comentário"
 
 #: links.py:18
 msgid "Delete"
-msgstr ""
+msgstr "Excluir"
 
-#: links.py:21 models.py:73 permissions.py:7
+#: links.py:22 models.py:73 permissions.py:7
 msgid "Comments"
-msgstr ""
+msgstr "Comentários"
 
 #: models.py:23
 msgid "Document"
-msgstr ""
+msgstr "Documento"
 
 #: models.py:33
 msgid "Date time submitted"
-msgstr ""
+msgstr "Data e Hora Submetida"
 
 #: permissions.py:10
 msgid "Create new comments"
-msgstr ""
+msgstr "Criar novos comentários"
 
 #: permissions.py:13
 msgid "Delete comments"
-msgstr ""
+msgstr "Excluir comentários"
 
 #: permissions.py:16
 msgid "View comments"
-msgstr ""
+msgstr "Ver comentários"
 
 #: views.py:47
 #, python-format
 msgid "Add comment to document: %s"
-msgstr ""
+msgstr "Adicionar comentário ao documento: %s"
 
 #: views.py:90
 #, python-format
-#| msgid "Delete comments"
 msgid "Delete comment: %s?"
 msgstr ""
 
 #: views.py:122
 #, python-format
 msgid "Comments for document: %s"
-msgstr ""
+msgstr "Comentário para documento: %s"
 
 #~ msgid "Comment \"%s\" deleted successfully."
 #~ msgstr "Comment \"%s\" deleted successfully."

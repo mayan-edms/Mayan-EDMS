@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-import base64
 import hashlib
 import logging
 import uuid
@@ -82,14 +81,15 @@ class DocumentType(models.Model):
         verbose_name=_('Trash time unit')
     )
     delete_time_period = models.PositiveIntegerField(
-        default=DEFAULT_DELETE_PERIOD, help_text=_(
+        blank=True, default=DEFAULT_DELETE_PERIOD, help_text=_(
             'Amount of time after which documents of this type in the trash '
             'will be deleted.'
-        ), verbose_name=_('Delete time period')
+        ), null=True, verbose_name=_('Delete time period')
     )
     delete_time_unit = models.CharField(
-        choices=TIME_DELTA_UNIT_CHOICES, default=DEFAULT_DELETE_TIME_UNIT,
-        max_length=8, verbose_name=_('Delete time unit')
+        blank=True, choices=TIME_DELTA_UNIT_CHOICES,
+        default=DEFAULT_DELETE_TIME_UNIT, max_length=8, null=True,
+        verbose_name=_('Delete time unit')
     )
 
     objects = DocumentTypeManager()
@@ -133,7 +133,7 @@ class DocumentType(models.Model):
             with transaction.atomic():
                 document = self.documents.create(
                     description=description or '',
-                    label=label or unicode(file_object),
+                    label=label or file_object.name,
                     language=language or setting_language.value
                 )
                 document.save(_user=_user)
@@ -144,7 +144,7 @@ class DocumentType(models.Model):
             logger.critical(
                 'Unexpected exception while trying to create new document '
                 '"%s" from document type "%s"; %s',
-                label or unicode(file_object), self, exception
+                label or file_object.name, self, exception
             )
             raise
 
@@ -155,9 +155,7 @@ class Document(models.Model):
     Defines a single document with it's fields and properties
     """
 
-    uuid = models.CharField(
-        default=UUID_FUNCTION, editable=False, max_length=48
-    )
+    uuid = models.UUIDField(default=uuid.uuid4, editable=False)
     document_type = models.ForeignKey(
         DocumentType, related_name='documents',
         verbose_name=_('Document type')
@@ -239,7 +237,7 @@ class Document(models.Model):
         ordering = ('-date_added',)
 
     def add_as_recent_document_for_user(self, user):
-        RecentDocument.objects.add_document_for_user(user, self)
+        return RecentDocument.objects.add_document_for_user(user, self)
 
     def exists(self):
         """
@@ -330,10 +328,6 @@ class Document(models.Model):
             # Document has no version yet
             return 0
 
-    @property
-    def signature_state(self):
-        return self.latest_version.signature_state
-
 
 class DeletedDocument(Document):
     objects = TrashCanManager()
@@ -413,7 +407,9 @@ class DocumentVersion(models.Model):
                 super(DocumentVersion, self).save(*args, **kwargs)
 
                 for key in sorted(DocumentVersion._post_save_hooks):
-                    DocumentVersion._post_save_hooks[key](self)
+                    DocumentVersion._post_save_hooks[key](
+                        document_version=self
+                    )
 
                 if new_document_version:
                     # Only do this for new documents
@@ -511,7 +507,9 @@ class DocumentVersion(models.Model):
         else:
             result = self.file.storage.open(self.file.name)
             for key in sorted(DocumentVersion._pre_open_hooks):
-                result = DocumentVersion._pre_open_hooks[key](result, self)
+                result = DocumentVersion._pre_open_hooks[key](
+                    file_object=result, document_version=self
+                )
 
             return result
 
@@ -637,8 +635,8 @@ class DocumentTypeFilename(models.Model):
     class Meta:
         ordering = ('filename',)
         unique_together = ('document_type', 'filename')
-        verbose_name = _('Quick rename template')
-        verbose_name_plural = _('Quick rename templates')
+        verbose_name = _('Quick label')
+        verbose_name_plural = _('Quick labels')
 
     def __str__(self):
         return self.filename
@@ -761,15 +759,7 @@ class DocumentPage(models.Model):
                 transformation=TransformationZoom(percent=zoom_level)
             )
 
-        page_image = converter.get_page()
-
-        if as_base64:
-            # TODO: don't prepend 'data:%s;base64,%s' part
-            return 'data:%s;base64,%s' % (
-                'image/png', base64.b64encode(page_image.getvalue())
-            )
-        else:
-            return page_image
+        return converter.get_page(as_base64=as_base64)
 
     def invalidate_cache(self):
         cache_storage_backend.delete(self.cache_filename)
@@ -822,7 +812,7 @@ class RecentDocument(models.Model):
 
     def natural_key(self):
         return self.document.natural_key() + self.user.natural_key()
-    natural_key.dependencies = ['documents.Document', 'user_management.User']
+    natural_key.dependencies = ['documents.Document', settings.AUTH_USER_MODEL]
 
     class Meta:
         ordering = ('-datetime_accessed',)

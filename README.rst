@@ -1,4 +1,4 @@
-|Build Status| |Coverage badge| |PyPI badge| |Installs badge| |License badge|
+|PyPI badge| |Build Status| |Coverage badge| |Installs badge| |License badge|
 
 |Logo|
 
@@ -19,10 +19,6 @@ Free Open Source Electronic Document Management System.
 
 |Animation|
 
-Support
--------
-Help support further improvements and development by donating at: https://www.patreon.com/siloraptor
-
 License
 -------
 
@@ -31,7 +27,7 @@ This project is open sourced under `Apache 2.0 License`_.
 Installation
 ------------
 
-To install **Mayan EDMS**, simply do:
+To install Mayan EDMS, simply do:
 
 .. code-block:: bash
 

@@ -6,9 +6,7 @@ import tempfile
 import types
 
 from django.conf import settings
-from django.utils import formats
 from django.utils.datastructures import MultiValueDict
-from django.utils.encoding import force_text
 from django.utils.http import urlquote as django_urlquote
 from django.utils.http import urlencode as django_urlencode
 
@@ -69,10 +67,6 @@ def get_descriptor(file_input, read=True):
             return open(file_input, 'wb')
     else:
         return file_input
-
-
-def render_date_object(date_time_object):
-    return force_text(formats.localize(date_time_object, use_l10n=True))
 
 
 def return_attrib(obj, attrib, arguments=None):

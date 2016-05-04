@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -9,7 +10,6 @@ from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
     menu_sidebar, menu_multi_item
 )
-from documents.models import Document
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
@@ -20,7 +20,6 @@ from .links import (
     link_folder_delete, link_folder_document_multiple_remove,
     link_folder_edit, link_folder_view
 )
-from .models import DocumentFolder, Folder
 from .permissions import (
     permission_folder_add_document, permission_folder_delete,
     permission_folder_edit, permission_folder_remove_document,
@@ -35,6 +34,13 @@ class FoldersApp(MayanAppConfig):
 
     def ready(self):
         super(FoldersApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        DocumentFolder = self.get_model('DocumentFolder')
+        Folder = self.get_model('Folder')
 
         APIEndPoint(app=self, version_string='1')
 
@@ -61,7 +67,6 @@ class FoldersApp(MayanAppConfig):
         SourceColumn(
             source=Folder, label=_('Created'), attribute='datetime_created'
         )
-        SourceColumn(source=Folder, label=_('User'), attribute='user')
         SourceColumn(
             source=Folder, label=_('Documents'),
             func=lambda context: context['object'].get_document_count(

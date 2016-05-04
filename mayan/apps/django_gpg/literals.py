@@ -7,6 +7,14 @@ KEY_TYPES = {
     'sec': _('Secret'),
 }
 
+KEY_TYPE_PUBLIC = 'pub'
+KEY_TYPE_SECRET = 'sec'
+
+KEY_TYPE_CHOICES = (
+    (KEY_TYPE_PUBLIC, _('Public')),
+    (KEY_TYPE_SECRET, _('Secret')),
+)
+
 KEY_CLASS_RSA = 'RSA'
 KEY_CLASS_DSA = 'DSA'
 KEY_CLASS_ELG = 'ELG-E'
@@ -53,3 +61,8 @@ SIGNATURE_STATES = {
         'text': _('Document is signed with a valid signature.'),
     },
 }
+
+ERROR_MSG_NEED_PASSPHRASE = 'NEED_PASSPHRASE'
+ERROR_MSG_BAD_PASSPHRASE = 'BAD_PASSPHRASE'
+ERROR_MSG_GOOD_PASSPHRASE = 'GOOD_PASSPHRASE'
+OUTPUT_MESSAGE_CONTAINS_PRIVATE_KEY = 'Contains private key'

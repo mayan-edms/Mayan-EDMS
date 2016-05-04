@@ -1,6 +1,6 @@
 __all__ = (
-    'GPGException', 'GPGVerificationError', 'GPGSigningError',
-    'GPGDecryptionError', 'KeyDeleteError', 'KeyGenerationError',
+    'GPGException', 'VerificationError', 'SigningError',
+    'DecryptionError', 'KeyDeleteError', 'KeyGenerationError',
     'KeyFetchingError', 'KeyDoesNotExist', 'KeyImportError'
 )
 
@@ -9,15 +9,15 @@ class GPGException(Exception):
     pass
 
 
-class GPGVerificationError(GPGException):
+class VerificationError(GPGException):
     pass
 
 
-class GPGSigningError(GPGException):
+class SigningError(GPGException):
     pass
 
 
-class GPGDecryptionError(GPGException):
+class DecryptionError(GPGException):
     pass
 
 
@@ -30,7 +30,9 @@ class KeyGenerationError(GPGException):
 
 
 class KeyFetchingError(GPGException):
-    pass
+    """
+    Unable to receive key or key not found
+    """
 
 
 class KeyDoesNotExist(GPGException):
@@ -39,3 +41,15 @@ class KeyDoesNotExist(GPGException):
 
 class KeyImportError(GPGException):
     pass
+
+
+class NeedPassphrase(GPGException):
+    """
+    Passphrase is needed but none was provided
+    """
+
+
+class PassphraseError(GPGException):
+    """
+    Passphrase provided is incorrect
+    """

@@ -5,8 +5,7 @@ from django.utils.translation import ugettext_lazy as _
 from common import MayanAppConfig, menu_object, menu_sidebar
 from navigation import SourceColumn
 
-from .links import link_acl_new, link_acl_delete, link_acl_permissions
-from .models import AccessControlList
+from .links import link_acl_create, link_acl_delete, link_acl_permissions
 
 
 class ACLsApp(MayanAppConfig):
@@ -16,6 +15,8 @@ class ACLsApp(MayanAppConfig):
 
     def ready(self):
         super(ACLsApp, self).ready()
+
+        AccessControlList = self.get_model('AccessControlList')
 
         SourceColumn(
             source=AccessControlList, label=_('Permissions'),
@@ -30,5 +31,5 @@ class ACLsApp(MayanAppConfig):
             sources=(AccessControlList,)
         )
         menu_sidebar.bind_links(
-            links=(link_acl_new,), sources=('acls:acl_list',)
+            links=(link_acl_create,), sources=('acls:acl_list',)
         )

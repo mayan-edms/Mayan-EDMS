@@ -15,3 +15,6 @@ permission_document_checkin_override = namespace.add_permission(
 permission_document_checkout = namespace.add_permission(
     name='checkout_document', label=_('Check out documents')
 )
+permission_document_checkout_detail_view = namespace.add_permission(
+    name='checkout_detail_view', label=_('Check out details view')
+)

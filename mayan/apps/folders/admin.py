@@ -8,5 +8,4 @@ from .models import Folder
 @admin.register(Folder)
 class FolderAdmin(admin.ModelAdmin):
     filter_horizontal = ('documents',)
-    list_display = ('label', 'user', 'datetime_created')
-    list_filter = ('user',)
+    list_display = ('label', 'datetime_created')

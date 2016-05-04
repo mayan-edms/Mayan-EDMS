@@ -4,9 +4,8 @@ import os
 
 from django import forms
 from django.conf import settings
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.db import models
-from django.utils.html import escape
 from django.utils.translation import ugettext_lazy as _
 
 from .classes import Filter, Package
@@ -40,27 +39,27 @@ class ChoiceForm(forms.Form):
 
 
 class DetailForm(forms.ModelForm):
-    def __init__(self, extra_fields=None, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        self.extra_fields = kwargs.pop('extra_fields', ())
         super(DetailForm, self).__init__(*args, **kwargs)
-        if extra_fields:
-            for extra_field in extra_fields:
-                result = return_attrib(self.instance, extra_field['field'])
-                label = 'label' in extra_field and extra_field['label'] or None
-                # TODO: Add others result types <=> Field types
-                if isinstance(result, models.query.QuerySet):
-                    self.fields[extra_field['field']] = \
-                        forms.ModelMultipleChoiceField(
-                            queryset=result, label=label)
-                else:
-                    self.fields[extra_field['field']] = forms.CharField(
-                        label=extra_field['label'],
-                        initial=escape(
-                            return_attrib(
-                                self.instance,
-                                extra_field['field'], None
-                            )
-                        ),
-                        widget=PlainWidget)
+
+        for extra_field in self.extra_fields:
+            result = return_attrib(self.instance, extra_field['field'])
+            label = 'label' in extra_field and extra_field['label'] or None
+            # TODO: Add others result types <=> Field types
+            if isinstance(result, models.query.QuerySet):
+                self.fields[extra_field['field']] = \
+                    forms.ModelMultipleChoiceField(
+                        queryset=result, label=label)
+            else:
+                self.fields[extra_field['field']] = forms.CharField(
+                    label=extra_field['label'],
+                    initial=return_attrib(
+                        self.instance,
+                        extra_field['field'], None
+                    ),
+                    widget=extra_field.get('widget', PlainWidget)
+                )
 
         for field_name, field in self.fields.items():
             if isinstance(field.widget, forms.widgets.SelectMultiple):
@@ -111,20 +110,20 @@ class FilterForm(forms.Form):
 
 
 class LicenseForm(FileDisplayForm):
-    FILENAME = 'LICENSE'
     DIRECTORY = ('mayan',)
+    FILENAME = 'LICENSE'
 
 
 class LocaleProfileForm(forms.ModelForm):
     class Meta:
-        model = UserLocaleProfile
         fields = ('language', 'timezone')
+        model = UserLocaleProfile
 
 
 class LocaleProfileForm_view(DetailForm):
     class Meta:
-        model = UserLocaleProfile
         fields = ('language', 'timezone')
+        model = UserLocaleProfile
 
 
 class PackagesLicensesForm(forms.Form):
@@ -148,8 +147,8 @@ class UserForm(forms.ModelForm):
     """
 
     class Meta:
-        model = User
         fields = ('username', 'first_name', 'last_name', 'email')
+        model = get_user_model()
 
 
 class UserForm_view(DetailForm):
@@ -158,8 +157,8 @@ class UserForm_view(DetailForm):
     """
 
     class Meta:
-        model = User
         fields = (
-            'username', 'first_name', 'last_name', 'email', 'is_staff',
-            'is_superuser', 'last_login', 'date_joined', 'groups'
+            'username', 'first_name', 'last_name', 'email', 'last_login',
+            'date_joined', 'groups'
         )
+        model = get_user_model()

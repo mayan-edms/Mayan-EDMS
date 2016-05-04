@@ -21,7 +21,8 @@ from .permissions import (
     permission_tag_remove, permission_tag_view
 )
 from .serializers import (
-    DocumentTagSerializer, NewDocumentTagSerializer, TagSerializer
+    DocumentTagSerializer, NewDocumentTagSerializer, NewTagSerializer,
+    TagSerializer
 )
 
 
@@ -71,7 +72,12 @@ class APITagListView(generics.ListCreateAPIView):
     mayan_view_permissions = {'POST': (permission_tag_create,)}
     permission_classes = (MayanPermission,)
     queryset = Tag.objects.all()
-    serializer_class = TagSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return TagSerializer
+        elif self.request.method == 'POST':
+            return NewTagSerializer
 
     def get(self, *args, **kwargs):
         """

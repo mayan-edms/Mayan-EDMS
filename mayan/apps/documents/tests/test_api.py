@@ -6,8 +6,8 @@ import time
 
 from json import loads
 
-from django.contrib.auth.models import User
-from django.core.files import File
+from django.contrib.auth import get_user_model
+
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 from django.utils.six import BytesIO
@@ -32,12 +32,14 @@ class DocumentTypeAPITestCase(APITestCase):
     """
 
     def setUp(self):
-        self.admin_user = User.objects.create_superuser(
+        self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
 
-        self.client.force_authenticate(user=self.admin_user)
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
 
     def tearDown(self):
         self.admin_user.delete()
@@ -95,12 +97,14 @@ class DocumentAPITestCase(APITestCase):
     """
 
     def setUp(self):
-        self.admin_user = User.objects.create_superuser(
+        self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
 
-        self.client.force_authenticate(user=self.admin_user)
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
 
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
@@ -112,17 +116,17 @@ class DocumentAPITestCase(APITestCase):
 
     def test_document_upload(self):
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
-            document_response = self.client.post(
+            response = self.client.post(
                 reverse('rest_api:document-list'), {
                     'document_type': self.document_type.pk,
                     'file': file_descriptor
                 }
             )
 
-        document_data = loads(document_response.content)
+        document_data = loads(response.content)
 
         self.assertEqual(
-            document_response.status_code, status.HTTP_201_CREATED
+            response.status_code, status.HTTP_201_CREATED
         )
         self.assertEqual(Document.objects.count(), 1)
 
@@ -147,7 +151,7 @@ class DocumentAPITestCase(APITestCase):
     def test_document_move_to_trash(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         self.client.delete(
@@ -160,7 +164,7 @@ class DocumentAPITestCase(APITestCase):
     def test_deleted_document_delete_from_trash(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         document.delete()
@@ -177,7 +181,7 @@ class DocumentAPITestCase(APITestCase):
     def test_deleted_document_restore(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         document.delete()
@@ -192,7 +196,7 @@ class DocumentAPITestCase(APITestCase):
     def test_document_new_version_upload(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         # Artifical delay since MySQL doesn't store microsecond data in
@@ -225,14 +229,14 @@ class DocumentAPITestCase(APITestCase):
     def test_document_version_revert(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         # Needed by MySQL as milliseconds value is not store in timestamp field
         time.sleep(1)
 
         with open(TEST_DOCUMENT_PATH) as file_object:
-            document.new_version(file_object=File(file_object))
+            document.new_version(file_object=file_object)
 
         self.assertEqual(document.versions.count(), 2)
 
@@ -251,7 +255,7 @@ class DocumentAPITestCase(APITestCase):
     def test_document_download(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         response = self.client.get(
@@ -271,7 +275,7 @@ class DocumentAPITestCase(APITestCase):
     def test_document_version_download(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = self.document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         response = self.client.get(

@@ -66,7 +66,7 @@ class PermissionsViewsTestCase(TestCase):
             }, follow=True
         )
 
-        self.assertContains(response, 'saved', status_code=200)
+        self.assertContains(response, 'update', status_code=200)
 
         self.assertEqual(Role.objects.count(), 1)
         self.assertEqual(Role.objects.first().label, TEST_ROLE_LABEL_EDITED)

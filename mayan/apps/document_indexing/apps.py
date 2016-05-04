@@ -2,8 +2,13 @@ from __future__ import absolute_import, unicode_literals
 
 from kombu import Exchange, Queue
 
+from django.apps import apps
 from django.db.models.signals import post_save, post_delete
 from django.utils.translation import ugettext_lazy as _
+
+from acls import ModelPermission
+from acls.links import link_acl_list
+from acls.permissions import permission_acl_edit, permission_acl_view
 
 from common import (
     MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
@@ -11,10 +16,8 @@ from common import (
 )
 from common.classes import Package
 from common.widgets import two_state_template
-from documents.models import Document
 from documents.signals import post_document_created
 from mayan.celery import app
-from metadata.models import DocumentMetadata
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
@@ -30,11 +33,11 @@ from .links import (
     link_template_node_create, link_template_node_delete,
     link_template_node_edit
 )
-from .models import (
-    DocumentIndexInstanceNode, Index, IndexInstance, IndexInstanceNode,
-    IndexTemplateNode
+from .permissions import (
+    permission_document_indexing_create, permission_document_indexing_delete,
+    permission_document_indexing_edit, permission_document_indexing_view
 )
-from .widgets import get_breadcrumbs, index_instance_item_link, node_level
+from .widgets import get_instance_link, index_instance_item_link, node_level
 
 
 class DocumentIndexingApp(MayanAppConfig):
@@ -47,7 +50,32 @@ class DocumentIndexingApp(MayanAppConfig):
     def ready(self):
         super(DocumentIndexingApp, self).ready()
 
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        DocumentMetadata = apps.get_model(
+            app_label='metadata', model_name='DocumentMetadata'
+        )
+
+        DocumentIndexInstanceNode = self.get_model('DocumentIndexInstanceNode')
+
+        Index = self.get_model('Index')
+        IndexInstance = self.get_model('IndexInstance')
+        IndexInstanceNode = self.get_model('IndexInstanceNode')
+        IndexTemplateNode = self.get_model('IndexTemplateNode')
+
         APIEndPoint(app=self, version_string='1')
+
+        ModelPermission.register(
+            model=Index, permissions=(
+                permission_acl_edit, permission_acl_view,
+                permission_document_indexing_create,
+                permission_document_indexing_delete,
+                permission_document_indexing_edit,
+                permission_document_indexing_view,
+            )
+        )
 
         Package(label='Django MPTT', license_text='''
 Django MPTT
@@ -98,7 +126,7 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
         SourceColumn(
             source=IndexInstance, label=_('Items'),
-            func=lambda context: context['object'].get_items_count(
+            func=lambda context: context['object'].get_item_count(
                 user=context['request'].user
             )
         )
@@ -135,8 +163,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
 
         SourceColumn(
             source=DocumentIndexInstanceNode, label=_('Node'),
-            func=lambda context: get_breadcrumbs(
-                index_instance_node=context['object'], single_link=True,
+            func=lambda context: get_instance_link(
+                index_instance_node=context['object'],
             )
         )
         SourceColumn(
@@ -170,7 +198,8 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
         menu_object.bind_links(
             links=(
                 link_index_setup_edit, link_index_setup_view,
-                link_index_setup_document_types, link_index_setup_delete
+                link_index_setup_document_types, link_acl_list,
+                link_index_setup_delete
             ), sources=(Index,)
         )
         menu_object.bind_links(

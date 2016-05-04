@@ -1,16 +1,15 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_object, menu_sidebar
-from documents.models import Document
 from navigation import SourceColumn
 
 from .links import (
     link_comment_add, link_comment_delete, link_comments_for_document
 )
-from .models import Comment
 from .permissions import (
     permission_comment_create, permission_comment_delete,
     permission_comment_view
@@ -25,6 +24,12 @@ class DocumentCommentsApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentCommentsApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        Comment = self.get_model('Comment')
 
         ModelPermission.register(
             model=Document, permissions=(

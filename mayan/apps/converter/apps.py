@@ -11,7 +11,6 @@ from .links import (
     link_transformation_create, link_transformation_delete,
     link_transformation_edit
 )
-from .models import Transformation
 
 
 class ConverterApp(MayanAppConfig):
@@ -20,6 +19,8 @@ class ConverterApp(MayanAppConfig):
 
     def ready(self):
         super(ConverterApp, self).ready()
+
+        Transformation = self.get_model('Transformation')
 
         Package(label='Pillow', license_text='''
 The Python Imaging Library (PIL) is

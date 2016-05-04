@@ -50,7 +50,9 @@ class GenericViewTestCase(TestCase):
 
         def test_view(request):
             template = Template('{{ object }}')
-            context = Context({'object': test_object})
+            context = Context(
+                {'object': test_object, 'resolved_object': test_object}
+            )
             return HttpResponse(template.render(context=context))
 
         urlpatterns.insert(0, url(TEST_VIEW_URL, test_view, name=TEST_VIEW_NAME))

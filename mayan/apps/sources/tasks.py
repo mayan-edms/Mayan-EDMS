@@ -1,6 +1,7 @@
 import logging
 
-from django.contrib.auth.models import User
+from django.apps import apps
+from django.contrib.auth import get_user_model
 from django.core.files import File
 from django.db import OperationalError
 from django.utils.translation import ugettext_lazy as _
@@ -8,17 +9,18 @@ from django.utils.translation import ugettext_lazy as _
 from mayan.celery import app
 
 from common.compressed_files import CompressedFile, NotACompressedFile
-from common.models import SharedUploadedFile
-from documents.models import DocumentType
 
 from .literals import DEFAULT_SOURCE_TASK_RETRY_DELAY
-from .models import Source
 
 logger = logging.getLogger(__name__)
 
 
 @app.task(ignore_result=True)
 def task_check_interval_source(source_id):
+    Source = apps.get_model(
+        app_label='sources', model_name='Source'
+    )
+
     source = Source.objects.get_subclass(pk=source_id)
     if source.enabled:
         try:
@@ -33,7 +35,19 @@ def task_check_interval_source(source_id):
 
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
-def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, metadata_dict_list=None, user_id=None):
+def task_upload_document(self, source_id, document_type_id, shared_uploaded_file_id, description=None, label=None, language=None, metadata_dict_list=None, tag_ids=None, user_id=None):
+    SharedUploadedFile = apps.get_model(
+        app_label='common', model_name='SharedUploadedFile'
+    )
+
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
+    Source = apps.get_model(
+        app_label='sources', model_name='Source'
+    )
+
     try:
         document_type = DocumentType.objects.get(pk=document_type_id)
         source = Source.objects.get_subclass(pk=source_id)
@@ -42,7 +56,7 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
         )
 
         if user_id:
-            user = User.objects.get(pk=user_id)
+            user = get_user_model().objects.get(pk=user_id)
         else:
             user = None
 
@@ -50,7 +64,8 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
             source.upload_document(
                 file_object=file_object, document_type=document_type,
                 description=description, label=label, language=language,
-                metadata_dict_list=metadata_dict_list, user=user
+                metadata_dict_list=metadata_dict_list, user=user,
+                tag_ids=tag_ids
             )
 
     except OperationalError as exception:
@@ -71,7 +86,15 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
 
 
 @app.task(bind=True, default_retry_delay=DEFAULT_SOURCE_TASK_RETRY_DELAY, ignore_result=True)
-def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, label=None, language=None, metadata_dict_list=None, skip_list=None, user_id=None):
+def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, source_id, description=None, expand=False, label=None, language=None, metadata_dict_list=None, skip_list=None, tag_ids=None, user_id=None):
+    SharedUploadedFile = apps.get_model(
+        app_label='common', model_name='SharedUploadedFile'
+    )
+
+    DocumentType = apps.get_model(
+        app_label='documents', model_name='DocumentType'
+    )
+
     try:
         document_type = DocumentType.objects.get(pk=document_type_id)
         shared_upload = SharedUploadedFile.objects.get(
@@ -92,7 +115,7 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
         'description': description, 'document_type_id': document_type.pk,
         'label': label, 'language': language,
         'metadata_dict_list': metadata_dict_list,
-        'source_id': source_id, 'user_id': user_id
+        'source_id': source_id, 'tag_ids': tag_ids, 'user_id': user_id
     }
 
     if not skip_list:
@@ -125,7 +148,8 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
                                 expand=expand, label=label,
                                 language=language,
                                 metadata_dict_list=metadata_dict_list,
-                                skip_list=skip_list, user_id=user_id
+                                skip_list=skip_list, tag_ids=tag_ids,
+                                user_id=user_id
                             )
                             return
                         else:

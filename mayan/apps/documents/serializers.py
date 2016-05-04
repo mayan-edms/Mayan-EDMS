@@ -27,8 +27,6 @@ class DocumentPageImageSerializer(serializers.Serializer):
                 rotation=rotation, as_base64=True
             )
         )
-        # TODO: prepend 'data:%s;base64,%s' based on format specified in
-        # async call
         return task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
 
 

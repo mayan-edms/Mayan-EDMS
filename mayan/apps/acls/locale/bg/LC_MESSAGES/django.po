@@ -1,33 +1,33 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-09-24 16:24-0400\n"
-"PO-Revision-Date: 2015-09-24 05:15+0000\n"
+"POT-Creation-Date: 2016-04-27 14:09-0400\n"
+"PO-Revision-Date: 2016-03-21 21:03+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/language/bg/)\n"
+"Language-Team: Bulgarian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/bg/)\n"
+"Language: bg\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: bg\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:14 links.py:30
 msgid "ACLs"
-msgstr ""
+msgstr "ACLs"
 
-#: apps.py:20 links.py:38 models.py:36
+#: apps.py:22 links.py:38 models.py:36
 msgid "Permissions"
-msgstr ""
+msgstr "Разрешения"
 
-#: apps.py:24 models.py:38
-#| msgid "Roles"
+#: apps.py:26 models.py:38
 msgid "Role"
 msgstr ""
 
@@ -36,13 +36,12 @@ msgid "Delete"
 msgstr ""
 
 #: links.py:34
-#| msgid "View ACLs"
 msgid "New ACL"
 msgstr ""
 
-#: managers.py:72
+#: managers.py:85
 msgid "Insufficient access."
-msgstr ""
+msgstr "Недостатъчен достъп."
 
 #: models.py:44
 msgid "Access entry"
@@ -54,11 +53,11 @@ msgstr ""
 
 #: models.py:60
 msgid "None"
-msgstr ""
+msgstr "Няма"
 
 #: permissions.py:7
 msgid "Access control lists"
-msgstr ""
+msgstr "Контролни списъци за достъп"
 
 #: permissions.py:10
 msgid "Edit ACLs"
@@ -68,37 +67,36 @@ msgstr ""
 msgid "View ACLs"
 msgstr ""
 
-#: views.py:61
-#, python-format
-msgid "Access control lists for: %s"
-msgstr ""
-
-#: views.py:107
+#: views.py:78
 #, python-format
 msgid "New access control lists for: %s"
 msgstr ""
 
-#: views.py:132
+#: views.py:109
 #, python-format
-#| msgid "Default ACLs"
 msgid "Delete ACL: %s"
 msgstr ""
 
-#: views.py:147
+#: views.py:151
+#, python-format
+msgid "Access control lists for: %s"
+msgstr ""
+
+#: views.py:162
 msgid "Available permissions"
 msgstr ""
 
-#: views.py:148
+#: views.py:163
 msgid "Granted permissions"
 msgstr ""
 
-#: views.py:187
-msgid "Disabled permissions are inherited from a parent object."
-msgstr ""
-
-#: views.py:218
+#: views.py:222
 #, python-format
 msgid "Role \"%(role)s\" permission's for \"%(object)s\""
+msgstr ""
+
+#: views.py:242
+msgid "Disabled permissions are inherited from a parent object."
 msgstr ""
 
 #~ msgid "New holder"
@@ -195,8 +193,10 @@ msgstr ""
 #~ msgid "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 #~ msgstr "Permission \"%(permission)s\" revoked of %(actor)s for %(object)s."
 
-#~ msgid "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
-#~ msgstr "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgid ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
+#~ msgstr ""
+#~ "%(actor)s, didn't had the permission \"%(permission)s\" for %(object)s."
 
 #~ msgid "Add new holder for: %s"
 #~ msgstr "add new holder for: %s"

@@ -134,3 +134,7 @@ hr {
 .radio ul li {
     list-style-type:none;
 }
+
+a i {
+    padding-right: 3px;
+}

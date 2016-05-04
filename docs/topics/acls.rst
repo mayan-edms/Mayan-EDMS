@@ -2,7 +2,7 @@
 Access control lists
 ====================
 
-Besides the permissions system explained in :doc:`permissions`, **Mayan EDMS**
+Besides the permissions system explained in :doc:`permissions`, Mayan EDMS
 provides per object permission granting. This feature is used to grant a
 permission to a role, but this permission can only be executed for a limited
 number of objects (documents, folders, tags) instead of being effective

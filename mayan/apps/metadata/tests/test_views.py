@@ -116,7 +116,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'metadata:metadata_edit', args=(self.document.pk,), data={
-                'form-0-id': document_metadata_2.pk,
+                'form-0-id': document_metadata_2.metadata_type.pk,
                 'form-0-update': True,
                 'form-0-value': TEST_DOCUMENT_METADATA_VALUE_2,
                 'form-TOTAL_FORMS': '1',
@@ -229,7 +229,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document_2 = self.document_type.new_document(
                 file_object=File(file_object)
-        )
+            )
 
         self.document.metadata.create(metadata_type=self.metadata_type)
         document_2.metadata.create(metadata_type=self.metadata_type)
@@ -261,7 +261,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document_2 = self.document_type.new_document(
                 file_object=File(file_object)
-        )
+            )
 
         response = self.post(
             'metadata:metadata_multiple_add', data={

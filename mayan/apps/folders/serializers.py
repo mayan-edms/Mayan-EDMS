@@ -8,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document
 from documents.serializers import DocumentSerializer
-from user_management.serializers import UserSerializer
 
 from .models import Folder
 
@@ -18,16 +17,14 @@ class FolderSerializer(serializers.HyperlinkedModelSerializer):
         view_name='rest_api:folder-document-list'
     )
     documents_count = serializers.SerializerMethodField()
-    user = UserSerializer(read_only=True)
 
     class Meta:
         extra_kwargs = {
             'url': {'view_name': 'rest_api:folder-detail'},
-            'user': {'view_name': 'rest_api:user-detail'}
         }
         fields = (
             'datetime_created', 'documents', 'documents_count', 'id', 'label',
-            'url', 'user'
+            'url'
         )
         model = Folder
 
@@ -35,16 +32,10 @@ class FolderSerializer(serializers.HyperlinkedModelSerializer):
         return obj.documents.count()
 
 
-class NewFolderSerializer(serializers.Serializer):
-    label = serializers.CharField()
-
-    def create(self, validated_data):
-        try:
-            data = validated_data.copy()
-            data.update({'user': self.context['request'].user})
-            return Folder.objects.create(**data)
-        except Exception as exception:
-            raise ValidationError(exception)
+class NewFolderSerializer(serializers.ModelSerializer):
+    class Meta:
+        fields = ('label', 'id')
+        model = Folder
 
 
 class FolderDocumentSerializer(DocumentSerializer):

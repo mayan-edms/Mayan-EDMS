@@ -4,13 +4,13 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.generics import (
-    ConfirmView, FormView, SingleObjectEditView, SingleObjectListView
+    ConfirmView, FormView, SingleObjectDetailView, SingleObjectEditView,
+    SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
 from documents.models import Document, DocumentType
@@ -134,30 +134,25 @@ class DocumentTypeSettingsEditView(SingleObjectEditView):
         }
 
 
-def document_content(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
+class DocumentOCRContent(SingleObjectDetailView):
+    form_class = DocumentContentForm
+    model = Document
+    object_permission = permission_ocr_content_view
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_ocr_content_view,)
+    def dispatch(self, request, *args, **kwargs):
+        result = super(DocumentOCRContent, self).dispatch(
+            request, *args, **kwargs
         )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_ocr_content_view, request.user, document
-        )
+        self.get_object().add_as_recent_document_for_user(request.user)
+        return result
 
-    document.add_as_recent_document_for_user(request.user)
-
-    content_form = DocumentContentForm(document=document)
-
-    return render_to_response('appearance/generic_form.html', {
-        'document': document,
-        'form': content_form,
-        'hide_labels': True,
-        'object': document,
-        'read_only': True,
-        'title': _('OCR result for document: %s') % document,
-    }, context_instance=RequestContext(request))
+    def get_extra_context(self):
+        return {
+            'document': self.get_object(),
+            'hide_labels': True,
+            'object': self.get_object(),
+            'title': _('OCR result for document: %s') % self.get_object(),
+        }
 
 
 class EntryListView(SingleObjectListView):

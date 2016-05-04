@@ -7,8 +7,8 @@ from .api_views import (
     APIFolderDocumentView, APIFolderListView, APIFolderView
 )
 from .views import (
-    DocumentFolderListView, FolderCreateView, FolderDetailView, FolderEditView,
-    FolderListView
+    DocumentFolderListView, FolderCreateView, FolderDeleteView,
+    FolderDetailView, FolderEditView, FolderListView
 )
 
 urlpatterns = patterns(
@@ -17,7 +17,8 @@ urlpatterns = patterns(
     url(r'^create/$', FolderCreateView.as_view(), name='folder_create'),
     url(r'^(?P<pk>\d+)/edit/$', FolderEditView.as_view(), name='folder_edit'),
     url(
-        r'^(?P<folder_id>\d+)/delete/$', 'folder_delete', name='folder_delete'
+        r'^(?P<pk>\d+)/delete/$', FolderDeleteView.as_view(),
+        name='folder_delete'
     ),
     url(r'^(?P<pk>\d+)/$', FolderDetailView.as_view(), name='folder_view'),
     url(

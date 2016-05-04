@@ -35,7 +35,7 @@
         {% for field in form.visible_fields %}
             <div class="form-group {% if field.errors %}has-error{% endif %}">
                 {# We display the label then the field for all except checkboxes #}
-                {% if field|widget_type != 'checkboxinput' %}
+                {% if field|widget_type != 'checkboxinput' and not field.field.widget.attrs.hidden %}
                     {% if not hide_labels %}{{ field.label_tag }}{% if field.field.required and not read_only %} ({% trans 'required' %}){% endif %}{% endif %}
                 {% endif %}
 
@@ -63,6 +63,18 @@
                     <div class="radio">
                         {% render_field field %}
                     </div>
+                {% elif field|widget_type == 'checkboxselectmultiple' %}
+                    {% for option in field %}
+                        <div class="checkbox">
+                            {{ option.render }}
+                        </div>
+                    {% endfor %}
+                {% elif field|widget_type == 'datetimeinput' or field|widget_type == 'dateinput' %}
+                    {% if read_only %}
+                        {{ field.value }}
+                    {% else %}
+                        {% render_field field class+="form-control" %}
+                    {% endif %}
                 {% else %}
                     {% render_field field class+="form-control" %}
                 {% endif %}

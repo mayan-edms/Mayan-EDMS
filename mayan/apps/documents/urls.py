@@ -14,15 +14,17 @@ from .api_views import (
 )
 from .settings import setting_print_size, setting_display_size
 from .views import (
-    DeletedDocumentDeleteView, DeletedDocumentDeleteManyView,
-    DeletedDocumentListView, DocumentEditView, DocumentListView,
-    DocumentPageView, DocumentPageListView, DocumentPreviewView,
-    DocumentRestoreView, DocumentRestoreManyView, DocumentTrashView,
-    DocumentTrashManyView, DocumentTypeCreateView, DocumentTypeDeleteView,
-    DocumentTypeDocumentListView, DocumentTypeFilenameDeleteView,
-    DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
-    DocumentTypeListView, DocumentTypeEditView, DocumentVersionListView,
-    DocumentView, EmptyTrashCanView, RecentDocumentListView
+    ClearImageCacheView, DeletedDocumentDeleteView,
+    DeletedDocumentDeleteManyView, DeletedDocumentListView, DocumentEditView,
+    DocumentListView, DocumentPageView, DocumentPageListView,
+    DocumentPageViewResetView, DocumentPreviewView, DocumentRestoreView,
+    DocumentRestoreManyView, DocumentTrashView, DocumentTrashManyView,
+    DocumentTypeCreateView, DocumentTypeDeleteView,
+    DocumentTypeDocumentListView, DocumentTypeFilenameCreateView,
+    DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
+    DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
+    DocumentVersionListView, DocumentVersionRevertView, DocumentView,
+    EmptyTrashCanView, RecentDocumentListView
 )
 
 urlpatterns = patterns(
@@ -129,8 +131,8 @@ urlpatterns = patterns(
         'document_download', name='document_version_download'
     ),
     url(
-        r'^document/version/(?P<document_version_pk>\d+)/revert/$',
-        'document_version_revert', name='document_version_revert'
+        r'^document/version/(?P<pk>\d+)/revert/$',
+        DocumentVersionRevertView.as_view(), name='document_version_revert'
     ),
 
     url(
@@ -144,7 +146,7 @@ urlpatterns = patterns(
         name='document_multiple_clear_transformations'
     ),
     url(
-        r'^cache/clear/$', 'document_clear_image_cache',
+        r'^cache/clear/$', ClearImageCacheView.as_view(),
         name='document_clear_image_cache'
     ),
     url(
@@ -190,8 +192,8 @@ urlpatterns = patterns(
         'document_page_rotate_left', name='document_page_rotate_left'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/reset/$',
-        'document_page_view_reset', name='document_page_view_reset'
+        r'^page/(?P<pk>\d+)/reset/$', DocumentPageViewResetView.as_view(),
+        name='document_page_view_reset'
     ),
 
     # Admin views
@@ -232,8 +234,9 @@ urlpatterns = patterns(
         name='document_type_filename_delete'
     ),
     url(
-        r'^type/(?P<document_type_id>\d+)/filename/create/$',
-        'document_type_filename_create', name='document_type_filename_create'
+        r'^type/(?P<pk>\d+)/filename/create/$',
+        DocumentTypeFilenameCreateView.as_view(),
+        name='document_type_filename_create'
     ),
 )
 

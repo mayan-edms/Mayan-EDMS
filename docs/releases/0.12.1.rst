@@ -25,9 +25,9 @@ What's new in Mayan EDMS v0.12.1
 Fabric file (fabfile)
 ~~~~~~~~~~~~~~~~~~~~~
 A Fabric file is included to help users not very familiar with Ubuntu,
-Python and Django install **Mayan EDMS**, or for system administrators
+Python and Django install Mayan EDMS, or for system administrators
 looking to automate the install whether in local or remote systems.
-At the moment the fabfile will install **Mayan EDMS** in the same configurations
+At the moment the fabfile will install Mayan EDMS in the same configurations
 listed in this documentation, that is:  (Ubuntu/Debian/Fedora) + virtualenv + Apache + MySQL.
 Feel free to submit your configuration settings and files for different databases,
 webserver or Linux distribution.  More configurations will be added to
@@ -38,7 +38,7 @@ Documentation update
 The installation instructions were updated to include the installation of
 the libpng-dev and libjpeg-dev libraries as well as the installation of
 the poppler-utils package.  An additional step to help users test their
-new installation of **Mayan EDMS** was also added.
+new installation of Mayan EDMS was also added.
 
 Translations
 ~~~~~~~~~~~~

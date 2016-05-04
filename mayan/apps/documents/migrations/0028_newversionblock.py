@@ -14,8 +14,17 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='NewVersionBlock',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('document', models.ForeignKey(verbose_name='Document', to='documents.Document')),
+                (
+                    'id', models.AutoField(
+                        verbose_name='ID', serialize=False, auto_created=True,
+                        primary_key=True
+                    )
+                ),
+                (
+                    'document', models.ForeignKey(
+                        verbose_name='Document', to='documents.Document'
+                    )
+                ),
             ],
             options={
                 'verbose_name': 'New version block',

@@ -4,7 +4,6 @@ from __future__ import unicode_literals
 
 import time
 
-from django.core.files import File
 from django.core.urlresolvers import reverse
 
 from acls.models import AccessControlList
@@ -26,7 +25,7 @@ from .test_views import GenericDocumentViewTestCase
 class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_version_revert_link_no_permission(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file_object=File(file_object))
+            self.document.new_version(file_object=file_object)
 
         self.assertTrue(self.document.versions.count(), 2)
 
@@ -44,7 +43,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         time.sleep(2)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document.new_version(file_object=File(file_object))
+            self.document.new_version(file_object=file_object)
 
         self.assertTrue(self.document.versions.count(), 2)
 

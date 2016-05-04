@@ -3,9 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
-from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from django.utils.html import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
@@ -26,12 +24,11 @@ from .models import (
 )
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
-    permission_document_indexing_edit,
-    permission_document_indexing_rebuild_indexes,
-    permission_document_indexing_setup, permission_document_indexing_view
+    permission_document_indexing_edit, permission_document_indexing_rebuild,
+    permission_document_indexing_view
 )
 from .tasks import task_do_rebuild_all_indexes
-from .widgets import get_breadcrumbs
+from .widgets import node_tree
 
 
 # Setup views
@@ -43,34 +40,10 @@ class SetupIndexCreateView(SingleObjectCreateView):
     view_permission = permission_document_indexing_create
 
 
-class SetupIndexListView(SingleObjectListView):
-    model = Index
-    view_permission = permission_document_indexing_setup
-
-    def get_extra_context(self):
-        return {
-            'hide_object': True,
-            'title': _('Indexes'),
-        }
-
-
-class SetupIndexEditView(SingleObjectEditView):
-    fields = ('label', 'slug', 'enabled')
-    model = Index
-    post_action_redirect = reverse_lazy('indexing:index_setup_list')
-    view_permission = permission_document_indexing_edit
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Edit index: %s') % self.get_object(),
-        }
-
-
 class SetupIndexDeleteView(SingleObjectDeleteView):
     model = Index
     post_action_redirect = reverse_lazy('indexing:index_setup_list')
-    view_permission = permission_document_indexing_delete
+    object_permission = permission_document_indexing_delete
 
     def get_extra_context(self):
         return {
@@ -79,8 +52,82 @@ class SetupIndexDeleteView(SingleObjectDeleteView):
         }
 
 
+class SetupIndexEditView(SingleObjectEditView):
+    fields = ('label', 'slug', 'enabled')
+    model = Index
+    post_action_redirect = reverse_lazy('indexing:index_setup_list')
+    object_permission = permission_document_indexing_edit
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit index: %s') % self.get_object(),
+        }
+
+
+class SetupIndexListView(SingleObjectListView):
+    model = Index
+    object_permission = permission_document_indexing_view
+
+    def get_extra_context(self):
+        return {
+            'hide_object': True,
+            'title': _('Indexes'),
+        }
+
+
+class SetupIndexDocumentTypesView(AssignRemoveView):
+    decode_content_type = True
+    left_list_title = _('Available document types')
+    object_permission = permission_document_indexing_edit
+    right_list_title = _('Document types linked')
+
+    def add(self, item):
+        self.get_object().document_types.add(item)
+
+    def get_document_queryset(self):
+        queryset = DocumentType.objects.all()
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_view,)
+            )
+        except PermissionDenied:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_document_view, self.request.user, queryset
+            )
+
+        return queryset
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _(
+                'Document types linked to index: %s'
+            ) % self.get_object()
+        }
+
+    def get_object(self):
+        return get_object_or_404(Index, pk=self.kwargs['pk'])
+
+    def left_list(self):
+        return AssignRemoveView.generate_choices(
+            self.get_document_queryset().exclude(
+                id__in=self.get_object().document_types.all()
+            )
+        )
+
+    def remove(self, item):
+        self.get_object().document_types.remove(item)
+
+    def right_list(self):
+        return AssignRemoveView.generate_choices(
+            self.get_document_queryset() & self.get_object().document_types.all()
+        )
+
+
 class SetupIndexTreeTemplateListView(SingleObjectListView):
-    view_permission = permission_document_indexing_setup
+    object_permission = permission_document_indexing_edit
 
     def get_index(self):
         return get_object_or_404(Index, pk=self.kwargs['pk'])
@@ -99,115 +146,46 @@ class SetupIndexTreeTemplateListView(SingleObjectListView):
         }
 
 
-class SetupIndexDocumentTypesView(AssignRemoveView):
-    decode_content_type = True
-    object_permission = permission_document_indexing_edit
-    left_list_title = _('Available document types')
-    right_list_title = _('Document types linked')
+class TemplateNodeCreateView(SingleObjectCreateView):
+    form_class = IndexTemplateNodeForm
+    model = IndexTemplateNode
 
-    def add(self, item):
-        self.get_object().document_types.add(item)
-
-    def get_object(self):
-        return get_object_or_404(Index, pk=self.kwargs['pk'])
-
-    def left_list(self):
-        return AssignRemoveView.generate_choices(
-            DocumentType.objects.exclude(
-                pk__in=self.get_object().document_types.all()
+    def dispatch(self, request, *args, **kwargs):
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_indexing_edit,)
             )
-        )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_indexing_edit, request.user,
+                self.get_parent_node().index
+            )
 
-    def right_list(self):
-        return AssignRemoveView.generate_choices(
-            self.get_object().document_types.all()
-        )
-
-    def remove(self, item):
-        self.get_object().document_types.remove(item)
+        return super(
+            TemplateNodeCreateView, self
+        ).dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
         return {
-            'object': self.get_object(),
-            'title': _(
-                'Document types linked to index: %s'
-            ) % self.get_object()
+            'index': self.get_parent_node().index,
+            'navigation_object_list': ('index',),
+            'title': _('Create child node of: %s') % self.get_parent_node(),
         }
 
+    def get_initial(self):
+        parent_node = self.get_parent_node()
+        return {
+            'index': parent_node.index, 'parent': parent_node
+        }
 
-# Node views
-def template_node_create(request, parent_pk):
-    parent_node = get_object_or_404(IndexTemplateNode, pk=parent_pk)
-
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_indexing_edit,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_indexing_edit, request.user, parent_node.index
-        )
-
-    if request.method == 'POST':
-        form = IndexTemplateNodeForm(request.POST)
-        if form.is_valid():
-            node = form.save()
-            messages.success(
-                request, _('Index template node created successfully.')
-            )
-            return HttpResponseRedirect(
-                reverse('indexing:index_setup_view', args=(node.index.pk,))
-            )
-    else:
-        form = IndexTemplateNodeForm(
-            initial={'index': parent_node.index, 'parent': parent_node}
-        )
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'index': parent_node.index,
-        'navigation_object_list': ('index',),
-        'title': _('Create child node'),
-    }, context_instance=RequestContext(request))
-
-
-def template_node_edit(request, node_pk):
-    node = get_object_or_404(IndexTemplateNode, pk=node_pk)
-
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_indexing_edit,)
-        )
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_indexing_edit, request.user, node.index
-        )
-
-    if request.method == 'POST':
-        form = IndexTemplateNodeForm(request.POST, instance=node)
-        if form.is_valid():
-            form.save()
-            messages.success(
-                request, _('Index template node edited successfully')
-            )
-            return HttpResponseRedirect(
-                reverse('indexing:index_setup_view', args=(node.index.pk,))
-            )
-    else:
-        form = IndexTemplateNodeForm(instance=node)
-
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'index': node.index,
-        'navigation_object_list': ('index', 'node'),
-        'node': node,
-        'title': _('Edit index template node: %s') % node,
-    }, context_instance=RequestContext(request))
+    def get_parent_node(self):
+        return get_object_or_404(IndexTemplateNode, pk=self.kwargs['pk'])
 
 
 class TemplateNodeDeleteView(SingleObjectDeleteView):
     model = IndexTemplateNode
-    view_permission = permission_document_indexing_edit
+    object_permission = permission_document_indexing_edit
+    object_permission_related = 'index'
 
     def get_extra_context(self):
         return {
@@ -216,6 +194,28 @@ class TemplateNodeDeleteView(SingleObjectDeleteView):
             'node': self.get_object(),
             'title': _(
                 'Delete the index template node: %s?'
+            ) % self.get_object(),
+        }
+
+    def get_post_action_redirect(self):
+        return reverse(
+            'indexing:index_setup_view', args=(self.get_object().index.pk,)
+        )
+
+
+class TemplateNodeEditView(SingleObjectEditView):
+    form_class = IndexTemplateNodeForm
+    model = IndexTemplateNode
+    object_permission = permission_document_indexing_edit
+    object_permission_related = 'index'
+
+    def get_extra_context(self):
+        return {
+            'index': self.get_object().index,
+            'navigation_object_list': ('index', 'node'),
+            'node': self.get_object(),
+            'title': _(
+                'Edit the index template node: %s?'
             ) % self.get_object(),
         }
 
@@ -236,9 +236,11 @@ class IndexListView(SingleObjectListView):
         }
 
 
-class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
+class IndexInstanceNodeView(DocumentListView):
+    template_name = 'document_indexing/node_details.html'
+
     def dispatch(self, request, *args, **kwargs):
-        self.index_instance = get_object_or_404(
+        self.index_instance_node = get_object_or_404(
             IndexInstanceNode, pk=self.kwargs['pk']
         )
 
@@ -249,11 +251,11 @@ class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
         except PermissionDenied:
             AccessControlList.objects.check_access(
                 permission_document_indexing_view,
-                request.user, self.index_instance.index
+                request.user, self.index_instance_node.index()
             )
 
-        if self.index_instance:
-            if self.index_instance.index_template_node.link_documents:
+        if self.index_instance_node:
+            if self.index_instance_node.index_template_node.link_documents:
                 return DocumentListView.dispatch(
                     self, request, *args, **kwargs
                 )
@@ -261,33 +263,36 @@ class IndexInstanceNodeView(DocumentListView, SingleObjectListView):
         return SingleObjectListView.dispatch(self, request, *args, **kwargs)
 
     def get_queryset(self):
-        if self.index_instance:
-            if self.index_instance.index_template_node.link_documents:
+        if self.index_instance_node:
+            if self.index_instance_node.index_template_node.link_documents:
                 return DocumentListView.get_queryset(self)
             else:
                 self.object_permission = None
-                return self.index_instance.get_children().order_by('value')
+                return self.index_instance_node.get_children().order_by('value')
         else:
             self.object_permission = None
             return IndexInstanceNode.objects.none()
 
     def get_document_queryset(self):
-        if self.index_instance:
-            if self.index_instance.index_template_node.link_documents:
-                return self.index_instance.documents.all()
+        if self.index_instance_node:
+            if self.index_instance_node.index_template_node.link_documents:
+                return self.index_instance_node.documents.all()
 
     def get_extra_context(self):
         context = {
             'hide_links': True,
-            'object': self.index_instance,
-            'title': mark_safe(
-                _(
-                    'Contents for index: %s'
-                ) % get_breadcrumbs(self.index_instance)
-            )
+            'object': self.index_instance_node,
+            'navigation': mark_safe(
+                _('Navigation: %s') % node_tree(
+                    node=self.index_instance_node, user=self.request.user
+                )
+            ),
+            'title': _(
+                'Contents for index: %s'
+            ) % self.index_instance_node.get_full_path(),
         }
 
-        if self.index_instance and not self.index_instance.index_template_node.link_documents:
+        if self.index_instance_node and not self.index_instance_node.index_template_node.link_documents:
             context.update({'hide_object': True})
 
         return context
@@ -336,7 +341,7 @@ class RebuildIndexesConfirmView(ConfirmView):
         'message': _('On large databases this operation may take some time to execute.'),
         'title': _('Rebuild all indexes?'),
     }
-    view_permission = permission_document_indexing_rebuild_indexes
+    view_permission = permission_document_indexing_rebuild
 
     def get_post_action_redirect(self):
         return reverse('common:tools_list')

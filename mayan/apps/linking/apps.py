@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -10,7 +11,6 @@ from common import (
     menu_sidebar
 )
 from common.widgets import two_state_template
-from documents.models import Document
 from navigation import SourceColumn
 
 from .links import (
@@ -21,7 +21,6 @@ from .links import (
     link_smart_link_instance_view, link_smart_link_instances_for_document,
     link_smart_link_list, link_smart_link_setup
 )
-from .models import ResolvedSmartLink, SmartLink, SmartLinkCondition
 from .permissions import (
     permission_smart_link_delete, permission_smart_link_edit,
     permission_smart_link_view
@@ -30,10 +29,19 @@ from .permissions import (
 
 class LinkingApp(MayanAppConfig):
     name = 'linking'
+    test = True
     verbose_name = _('Linking')
 
     def ready(self):
         super(LinkingApp, self).ready()
+
+        Document = apps.get_model(
+            app_label='documents', model_name='Document'
+        )
+
+        ResolvedSmartLink = self.get_model('ResolvedSmartLink')
+        SmartLink = self.get_model('SmartLink')
+        SmartLinkCondition = self.get_model('SmartLinkCondition')
 
         ModelPermission.register(
             model=SmartLink, permissions=(
@@ -51,7 +59,8 @@ class LinkingApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=SmartLink, label=_('Dynamic label'), attribute='dynamic_label'
+            source=SmartLink, label=_('Dynamic label'),
+            attribute='dynamic_label'
         )
         SourceColumn(
             source=SmartLink, label=_('Enabled'),

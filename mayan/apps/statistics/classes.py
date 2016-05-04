@@ -7,8 +7,6 @@ from djcelery.models import PeriodicTask
 
 from mayan.celery import app
 
-from .models import StatisticResult
-
 
 class StatisticNamespace(object):
     _registry = {}
@@ -45,6 +43,8 @@ class Statistic(object):
 
     @staticmethod
     def purge_schedules():
+        from .models import StatisticResult
+
         queryset = PeriodicTask.objects.filter(name__startswith='statistics.').exclude(name__in=Statistic.get_task_names())
 
         for periodic_task in queryset:
@@ -112,12 +112,16 @@ class Statistic(object):
         return 'statistics.task_execute_statistic_{}'.format(self.slug)
 
     def store_results(self, results):
+        from .models import StatisticResult
+
         StatisticResult.objects.filter(slug=self.slug).delete()
 
         statistic_result, created = StatisticResult.objects.get_or_create(slug=self.slug)
         statistic_result.store_data(data=results)
 
     def get_results(self):
+        from .models import StatisticResult
+
         try:
             return StatisticResult.objects.get(slug=self.slug).get_data()
         except StatisticResult.DoesNotExist:

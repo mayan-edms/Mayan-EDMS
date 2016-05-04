@@ -18,7 +18,7 @@ class DocumentContentForm(forms.Form):
     single textarea widget
     """
     def __init__(self, *args, **kwargs):
-        self.document = kwargs.pop('document', None)
+        self.document = kwargs.pop('instance', None)
         super(DocumentContentForm, self).__init__(*args, **kwargs)
         content = []
         self.fields['contents'].initial = ''

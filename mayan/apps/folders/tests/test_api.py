@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
-from django.core.files import File
+from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
@@ -24,28 +23,30 @@ class FolderAPITestCase(APITestCase):
     """
 
     def setUp(self):
-        self.admin_user = User.objects.create_superuser(
+        self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
 
-        self.client.force_authenticate(user=self.admin_user)
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
 
     def test_folder_create(self):
-        self.client.post(
+        response = self.client.post(
             reverse('rest_api:folder-list'), {'label': TEST_FOLDER_LABEL}
         )
 
         folder = Folder.objects.first()
 
+        self.assertEqual(response.data['id'], folder.pk)
+        self.assertEqual(response.data['label'], TEST_FOLDER_LABEL)
+
         self.assertEqual(Folder.objects.count(), 1)
         self.assertEqual(folder.label, TEST_FOLDER_LABEL)
-        self.assertEqual(folder.user, self.admin_user)
 
     def test_folder_delete(self):
-        folder = Folder.objects.create(
-            label=TEST_FOLDER_LABEL, user=self.admin_user
-        )
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
         self.client.delete(
             reverse('rest_api:folder-detail', args=(folder.pk,))
@@ -54,9 +55,7 @@ class FolderAPITestCase(APITestCase):
         self.assertEqual(Folder.objects.count(), 0)
 
     def test_folder_edit(self):
-        folder = Folder.objects.create(
-            label=TEST_FOLDER_LABEL, user=self.admin_user
-        )
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
         self.client.put(
             reverse('rest_api:folder-detail', args=(folder.pk,)),
@@ -69,9 +68,7 @@ class FolderAPITestCase(APITestCase):
 
     @override_settings(OCR_AUTO_OCR=False)
     def test_folder_add_document(self):
-        folder = Folder.objects.create(
-            label=TEST_FOLDER_LABEL, user=self.admin_user
-        )
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
@@ -79,7 +76,7 @@ class FolderAPITestCase(APITestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         self.client.post(
@@ -91,9 +88,7 @@ class FolderAPITestCase(APITestCase):
 
     @override_settings(OCR_AUTO_OCR=False)
     def test_folder_remove_document(self):
-        folder = Folder.objects.create(
-            label=TEST_FOLDER_LABEL, user=self.admin_user
-        )
+        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
 
         document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
@@ -101,7 +96,7 @@ class FolderAPITestCase(APITestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document = document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
         folder.documents.add(document)

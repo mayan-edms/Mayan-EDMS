@@ -1,19 +1,20 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
-from django.utils.translation import ungettext
+from django.utils.translation import ungettext, ugettext_lazy as _
 
-from acls.models import AccessControlList
 from permissions import Permission
 
 __all__ = (
     'DeleteExtraDataMixin', 'ExtraContextMixin',
-    'ObjectListPermissionFilterMixin', 'ObjectPermissionCheckMixin',
-    'RedirectionMixin', 'ViewPermissionCheckMixin'
+    'ObjectListPermissionFilterMixin', 'ObjectNameMixin',
+    'ObjectPermissionCheckMixin', 'RedirectionMixin',
+    'ViewPermissionCheckMixin'
 )
 
 
@@ -85,6 +86,10 @@ class ObjectListPermissionFilterMixin(object):
     object_permission = None
 
     def get_queryset(self):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
         queryset = super(ObjectListPermissionFilterMixin, self).get_queryset()
 
         if self.object_permission:
@@ -106,6 +111,22 @@ class ObjectListPermissionFilterMixin(object):
             return queryset
 
 
+class ObjectNameMixin(object):
+    def get_object_name(self, context=None):
+        if not context:
+            context = self.get_context_data()
+
+        object_name = context.get('object_name')
+
+        if not object_name:
+            try:
+                object_name = self.object._meta.verbose_name
+            except AttributeError:
+                object_name = _('Object')
+
+        return object_name
+
+
 class ObjectPermissionCheckMixin(object):
     object_permission = None
 
@@ -113,6 +134,10 @@ class ObjectPermissionCheckMixin(object):
         return self.get_object()
 
     def dispatch(self, request, *args, **kwargs):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
         if self.object_permission:
             try:
                 Permission.check_permissions(
@@ -121,7 +146,8 @@ class ObjectPermissionCheckMixin(object):
             except PermissionDenied:
                 AccessControlList.objects.check_access(
                     self.object_permission, request.user,
-                    self.get_permission_object()
+                    self.get_permission_object(),
+                    related=getattr(self, 'object_permission_related', None)
                 )
 
         return super(

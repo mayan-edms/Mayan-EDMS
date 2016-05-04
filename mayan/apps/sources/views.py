@@ -1,13 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
-from django.utils.http import urlencode
+from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
@@ -29,7 +26,8 @@ from navigation import Link
 from permissions import Permission
 
 from .forms import (
-    NewDocumentForm, NewVersionForm
+    NewDocumentForm, NewVersionForm, WebFormUploadForm,
+    WebFormUploadFormHTML5
 )
 from .literals import (
     SOURCE_CHOICE_STAGING, SOURCE_CHOICE_WEB_FORM,
@@ -41,7 +39,8 @@ from .models import (
 )
 from .permissions import (
     permission_sources_setup_create, permission_sources_setup_delete,
-    permission_sources_setup_edit, permission_sources_setup_view
+    permission_sources_setup_edit, permission_sources_setup_view,
+    permission_staging_file_delete
 )
 from .tasks import task_source_handle_upload
 from .utils import get_class, get_form_class, get_upload_form_class
@@ -66,21 +65,6 @@ class SourceLogListView(SingleObjectListView):
         }
 
 
-def document_create_siblings(request, document_id):
-    Permission.check_permissions(request.user, (permission_document_create,))
-
-    document = get_object_or_404(Document, pk=document_id)
-    query_dict = {}
-    for pk, metadata in enumerate(document.metadata.all()):
-        query_dict['metadata%s_id' % pk] = metadata.metadata_type_id
-        query_dict['metadata%s_value' % pk] = metadata.value
-
-    query_dict['document_type_id'] = document.document_type_id
-
-    url = reverse('sources:upload_interactive')
-    return HttpResponseRedirect('%s?%s' % (url, urlencode(query_dict)))
-
-
 class UploadBaseView(MultiFormView):
     template_name = 'appearance/generic_form.html'
     prefixes = {'source_form': 'source', 'document_form': 'document'}
@@ -89,10 +73,10 @@ class UploadBaseView(MultiFormView):
     def get_tab_link_for_source(source, document=None):
         if document:
             view = 'sources:upload_version'
-            args = ['"{}"'.format(document.pk), '"{}"'.format(source.pk)]
+            args = ('"{}"'.format(document.pk), '"{}"'.format(source.pk),)
         else:
             view = 'sources:upload_interactive'
-            args = ['"{}"'.format(source.pk)]
+            args = ('"{}"'.format(source.pk),)
 
         return Link(
             text=source.label,
@@ -138,7 +122,7 @@ class UploadBaseView(MultiFormView):
                 enabled=True
             ).select_subclasses().first()
 
-        if InteractiveSource.objects.filter(enabled=True).count() == 0:
+        if not InteractiveSource.objects.filter(enabled=True).exists():
             messages.error(
                 request,
                 _(
@@ -182,7 +166,7 @@ class UploadBaseView(MultiFormView):
                 ]
         else:
             subtemplates_list.append({
-                'name': 'appearance/generic_multiform_subtemplate.html',
+                'name': 'sources/upload_multiform_subtemplate.html',
                 'context': {
                     'forms': context['forms'],
                     'is_multipart': True,
@@ -201,13 +185,8 @@ class UploadBaseView(MultiFormView):
 
 
 class UploadInteractiveView(UploadBaseView):
-
     def dispatch(self, request, *args, **kwargs):
         self.subtemplates_list = []
-
-        Permission.check_permissions(
-            request.user, (permission_document_create,)
-        )
 
         self.document_type = get_object_or_404(
             DocumentType,
@@ -215,6 +194,16 @@ class UploadInteractiveView(UploadBaseView):
                 'document_type_id', self.request.POST.get('document_type_id')
             )
         )
+
+        try:
+            Permission.check_permissions(
+                request.user, (permission_document_create,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_create, request.user,
+                self.document_type
+            )
 
         self.tab_links = UploadBaseView.get_active_tab_links()
 
@@ -264,6 +253,7 @@ class UploadInteractiveView(UploadBaseView):
             metadata_dict_list=decode_metadata_from_url(self.request.GET),
             shared_uploaded_file_id=shared_uploaded_file.pk,
             source_id=self.source.pk,
+            tag_ids=self.request.GET.getlist('tags'),
             user_id=user_id,
         ))
         messages.success(
@@ -295,9 +285,15 @@ class UploadInteractiveView(UploadBaseView):
         )
 
     def get_form_classes(self):
+        source_form_class = get_upload_form_class(self.source.source_type)
+
+        # Override source form class to enable the HTML5 file uploader
+        if source_form_class == WebFormUploadForm:
+            source_form_class = WebFormUploadFormHTML5
+
         return {
             'document_form': NewDocumentForm,
-            'source_form': get_upload_form_class(self.source.source_type)
+            'source_form': source_form_class
         }
 
     def get_context_data(self, **kwargs):
@@ -305,6 +301,15 @@ class UploadInteractiveView(UploadBaseView):
         context['title'] = _(
             'Upload a local document from source: %s'
         ) % self.source.label
+        if not isinstance(self.source, StagingFolderSource):
+            context['subtemplates_list'][0]['context'].update(
+                {
+                    'form_action': self.request.get_full_path(),
+                    'form_class': 'dropzone',
+                    'form_disable_submit': True,
+                    'form_id': 'html5upload',
+                }
+            )
         return context
 
 
@@ -417,48 +422,27 @@ class UploadInteractiveVersionView(UploadBaseView):
         return context
 
 
-def staging_file_delete(request, staging_folder_pk, encoded_filename):
-    Permission.check_permissions(
-        request.user, (
-            permission_document_create, permission_document_new_version
+class StagingFileDeleteView(SingleObjectDeleteView):
+    object_permission = permission_staging_file_delete
+    object_permission_related = 'staging_folder'
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'object_name': _('Staging file'),
+            'source': self.get_source(),
+        }
+
+    def get_object(self):
+        source = self.get_source()
+        return source.get_file(
+            encoded_filename=self.kwargs['encoded_filename']
         )
-    )
-    staging_folder = get_object_or_404(
-        StagingFolderSource, pk=staging_folder_pk
-    )
 
-    staging_file = staging_folder.get_file(encoded_filename=encoded_filename)
-    next = request.POST.get(
-        'next', request.GET.get('next', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-    )
-    previous = request.POST.get(
-        'previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-    )
-
-    if request.method == 'POST':
-        try:
-            staging_file.delete()
-            messages.success(request, _('Staging file delete successfully.'))
-        except Exception as exception:
-            messages.error(
-                request, _('Staging file delete error; %s.') % exception
-            )
-        return HttpResponseRedirect(next)
-
-    results = UploadBaseView.get_active_tab_links()
-
-    return render_to_response('appearance/generic_confirm.html', {
-        'source': staging_folder,
-        'delete_view': True,
-        'object': staging_file,
-        'next': next,
-        'previous': previous,
-        'extra_navigation_links': {
-            'form_header': {
-                'staging_file_delete': {'links': results['tab_links']}
-            }
-        },
-    }, context_instance=RequestContext(request))
+    def get_source(self):
+        return get_object_or_404(
+            StagingFolderSource, pk=self.kwargs['pk']
+        )
 
 
 # Setup views

@@ -11,6 +11,11 @@ from documents.models import Document
 logger = logging.getLogger(__name__)
 
 
+class DocumentIndexInstanceNodeManager(models.Manager):
+    def get_for(self, document):
+        return self.filter(documents=document)
+
+
 class IndexManager(models.Manager):
     def get_by_natural_key(self, name):
         return self.get(name=name)
