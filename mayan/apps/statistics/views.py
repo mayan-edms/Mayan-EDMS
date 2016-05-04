@@ -4,9 +4,7 @@ from django.core.urlresolvers import reverse
 from django.http import Http404
 from django.utils.translation import ugettext_lazy as _
 
-from common.generics import (
-    ConfirmView, SimpleView, SingleObjectDetailView, SingleObjectListView
-)
+from common.generics import ConfirmView, SimpleView, SingleObjectListView
 
 from .classes import Statistic, StatisticNamespace
 from .permissions import permission_statistics_view
@@ -75,7 +73,9 @@ class StatisticQueueView(ConfirmView):
             # Translators: This text is asking users if they want to queue
             # (to send to the queue) a statistic for it to be update ahead
             # of schedule
-            'title': _('Queue statistic "%s" to be updated?') % self.get_object(),
+            'title': _(
+                'Queue statistic "%s" to be updated?'
+            ) % self.get_object(),
         }
 
     def get_object(self):

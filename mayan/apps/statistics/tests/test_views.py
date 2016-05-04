@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth import get_user_model
-
 from common.tests.test_views import GenericViewTestCase
 
 from user_management.tests.literals import (

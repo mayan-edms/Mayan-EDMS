@@ -116,7 +116,9 @@ class Statistic(object):
 
         StatisticResult.objects.filter(slug=self.slug).delete()
 
-        statistic_result, created = StatisticResult.objects.get_or_create(slug=self.slug)
+        statistic_result, created = StatisticResult.objects.get_or_create(
+            slug=self.slug
+        )
         statistic_result.store_data(data=results)
 
     def get_results(self):
