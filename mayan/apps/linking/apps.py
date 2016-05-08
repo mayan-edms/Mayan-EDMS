@@ -54,7 +54,7 @@ class LinkingApp(MayanAppConfig):
         SourceColumn(
             source=ResolvedSmartLink, label=_('Label'),
             func=lambda context: context['object'].get_dynamic_label(
-                context['resolved_object']
+                context['document']
             )
         )
 
