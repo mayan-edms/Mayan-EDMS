@@ -20,6 +20,7 @@ from .tasks import task_execute_statistic  # NOQA - Force registration of task
 
 class StatisticsApp(MayanAppConfig):
     name = 'statistics'
+    test = True
     verbose_name = _('Statistics')
 
     def ready(self):
@@ -60,7 +61,9 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
             }
         )
 
-        menu_object.bind_links(links=(link_execute, link_view), sources=(Statistic,))
+        menu_object.bind_links(
+            links=(link_execute, link_view), sources=(Statistic,)
+        )
         menu_object.bind_links(
             links=(link_namespace_details,), sources=(StatisticNamespace,)
         )
