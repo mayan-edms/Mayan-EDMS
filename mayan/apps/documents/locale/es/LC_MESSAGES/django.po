@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-27 14:11-0400\n"
-"PO-Revision-Date: 2016-04-27 18:22+0000\n"
+"PO-Revision-Date: 2016-05-09 01:41+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -458,7 +458,7 @@ msgstr "Versión de documento"
 
 #: models.py:632
 msgid "Quick label"
-msgstr ""
+msgstr "Etiqueta rapida"
 
 #: models.py:650
 msgid "Page number"

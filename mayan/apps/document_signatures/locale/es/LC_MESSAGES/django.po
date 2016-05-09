@@ -7,13 +7,13 @@
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2012,2015
-# Roberto Rosario, 2015
+# Roberto Rosario, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-27 14:11-0400\n"
-"PO-Revision-Date: 2016-04-27 18:23+0000\n"
+"PO-Revision-Date: 2016-05-09 01:19+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Identificador de clave"
 #: apps.py:98 forms.py:71 models.py:41
 #| msgid "Signature ID: %s"
 msgid "Signature ID"
-msgstr ""
+msgstr "ID de firma"
 
 #: apps.py:99 forms.py:83
 msgid "None"
@@ -50,64 +50,64 @@ msgstr "Tipo"
 
 #: forms.py:23
 msgid "Key"
-msgstr ""
+msgstr "Llave"
 
 #: forms.py:27
 msgid "Passphrase"
-msgstr ""
+msgstr "Contraseña"
 
 #: forms.py:53
 #| msgid "Signature file"
 msgid "Signature is embedded?"
-msgstr ""
+msgstr "¿Firma integrada?"
 
 #: forms.py:55
 #| msgid "Signature file"
 msgid "Signature date"
-msgstr ""
+msgstr "Fecha de la firma"
 
 #: forms.py:58
 #| msgid "Signature ID: %s"
 msgid "Signature key ID"
-msgstr ""
+msgstr "ID de llave de firma"
 
 #: forms.py:60
 #| msgid "Signature type: %s"
 msgid "Signature key present?"
-msgstr ""
+msgstr "¿Llave de la firma presente?"
 
 #: forms.py:73
 msgid "Key fingerprint"
-msgstr ""
+msgstr "Huella de la llave"
 
 #: forms.py:77
 msgid "Key creation date"
-msgstr ""
+msgstr "Fecha de creación de la llave"
 
 #: forms.py:82
 msgid "Key expiration date"
-msgstr ""
+msgstr "Fecha de expiración de la llave"
 
 #: forms.py:87
 msgid "Key length"
-msgstr ""
+msgstr "Tamaño de la llave"
 
 #: forms.py:91
 msgid "Key algorithm"
-msgstr ""
+msgstr "Algoritmo de la llave"
 
 #: forms.py:95
 msgid "Key user ID"
-msgstr ""
+msgstr "ID de usuario de la llave"
 
 #: forms.py:99
 msgid "Key type"
-msgstr ""
+msgstr "Tipo de llave"
 
 #: links.py:32
 #| msgid "Verify document signatures"
 msgid "Verify all documents"
-msgstr ""
+msgstr "Verificar todos los documents"
 
 #: links.py:39
 msgid "Signatures"
@@ -123,7 +123,7 @@ msgstr "Detalles"
 
 #: links.py:57
 msgid "Signature list"
-msgstr ""
+msgstr "Lista de firmas"
 
 #: links.py:63
 msgid "Download"
@@ -135,11 +135,11 @@ msgstr "Subir firma"
 
 #: links.py:75
 msgid "Sign detached"
-msgstr ""
+msgstr "Firma aparte"
 
 #: links.py:81
 msgid "Sign embedded"
-msgstr ""
+msgstr "Firma integrada"
 
 #: models.py:31
 msgid "Document version"
@@ -147,11 +147,11 @@ msgstr "Versión de documento"
 
 #: models.py:35
 msgid "Date signed"
-msgstr ""
+msgstr "Fecha firmado"
 
 #: models.py:45
 msgid "Public key fingerprint"
-msgstr ""
+msgstr "Huella de llave publica"
 
 #: models.py:51
 msgid "Document version signature"
@@ -191,15 +191,15 @@ msgstr ""
 
 #: models.py:130
 msgid "signature"
-msgstr ""
+msgstr "firma"
 
 #: permissions.py:13
 msgid "Sign documents with detached signatures"
-msgstr ""
+msgstr "Firmar documentos con firma aparte"
 
 #: permissions.py:17
 msgid "Sign documents with embedded signatures"
-msgstr ""
+msgstr "Firmar documentos con firma integrada"
 
 #: permissions.py:21
 msgid "Delete detached signatures"
@@ -208,12 +208,12 @@ msgstr "Borrar firmas separadas"
 #: permissions.py:25
 #| msgid "Download detached signatures"
 msgid "Download detached document signatures"
-msgstr ""
+msgstr "Descargar firma aparte de documentos"
 
 #: permissions.py:29
 #| msgid "Upload detached signatures"
 msgid "Upload detached document signatures"
-msgstr ""
+msgstr "Subir firmas aparte de documentos"
 
 #: permissions.py:33
 msgid "Verify document signatures"
@@ -222,50 +222,50 @@ msgstr "Verificar firmas de documentos"
 #: permissions.py:37
 #| msgid "Verify document signatures"
 msgid "View details of document signatures"
-msgstr ""
+msgstr "Ver detalles de firma de documentos"
 
 #: views.py:67 views.py:172
 msgid "Passphrase is needed to unlock this key."
-msgstr ""
+msgstr "Se necesita contraseña para acceder a esta llave."
 
 #: views.py:77 views.py:182
 msgid "Passphrase is incorrect."
-msgstr ""
+msgstr "Contraseña incorrecta."
 
 #: views.py:98 views.py:202
 msgid "Document version signed successfully."
-msgstr ""
+msgstr "Versión de documento firmada con éxito."
 
 #: views.py:129
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
-msgstr ""
+msgstr "Firmar versión de documento \"%s\" con una firma aparte "
 
 #: views.py:240
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
-msgstr ""
+msgstr "Firmar versión de documento \"%s\" con una firma integrada"
 
 #: views.py:267
 #, python-format
 msgid "Delete detached signature: %s"
-msgstr ""
+msgstr "Borrar firma aparte: %s"
 
 #: views.py:292
 #, python-format
 #| msgid "Document signatures"
 msgid "Details for signature: %s"
-msgstr ""
+msgstr "Detalles para la firma: %s"
 
 #: views.py:339
 #, python-format
 msgid "Signatures for document version: %s"
-msgstr ""
+msgstr "Firmas para la versión de documento: %s"
 
 #: views.py:375
 #, python-format
 msgid "Upload detached signature for document version: %s"
-msgstr ""
+msgstr "Subir firma aparte para la versión de documento: %s"
 
 #: views.py:392
 msgid "On large databases this operation may take some time to execute."
@@ -274,11 +274,11 @@ msgstr "En bases de datos de gran tamaño esta operación puede tardar algún ti
 #: views.py:393
 #| msgid "Verify document signatures"
 msgid "Verify all document for signatures?"
-msgstr ""
+msgstr "¿Verificar todos los documentos para firmas?"
 
 #: views.py:403
 msgid "Signature verification queued successfully."
-msgstr ""
+msgstr "Verificación de firmas colocada en la cola."
 
 #~ msgid "Signature status: %s"
 #~ msgstr "Signature type: %s"

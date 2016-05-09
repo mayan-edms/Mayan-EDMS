@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
+# Roberto Rosario, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-27 14:11-0400\n"
-"PO-Revision-Date: 2016-03-21 21:09+0000\n"
+"PO-Revision-Date: 2016-05-09 01:48+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
@@ -30,6 +30,7 @@ msgid "Document types"
 msgstr "Tipos de documento"
 
 #: apps.py:48
+#| msgid "document indexes"
 msgid "Document indexing"
 msgstr ""
 
@@ -39,7 +40,7 @@ msgstr "Etiqueta"
 
 #: apps.py:121 models.py:30
 msgid "Slug"
-msgstr ""
+msgstr "Identificador"
 
 #: apps.py:123 apps.py:143 models.py:38 models.py:126
 msgid "Enabled"
@@ -99,19 +100,17 @@ msgstr "nuevo nodo secundario"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Error indexando documento: %(document)s; expresión: %(expression)s; "
-"%(exception)s"
+msgstr "Error indexando documento: %(document)s; expresión: %(expression)s; %(exception)s"
 
 #: models.py:29
+#| msgid "Internal name used to reference this index."
 msgid "This values will be used by other apps to reference this index."
 msgstr ""
 
 #: models.py:35
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Hace que este índice sea visible y actualizado cuando los datos de "
-"documentos cambien."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Hace que este índice sea visible y actualizado cuando los datos de documentos cambien."
 
 #: models.py:82 models.py:109
 msgid "Index"
@@ -137,17 +136,13 @@ msgstr "expresión de indexación"
 
 #: models.py:123
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Hace que este nodo sea visible y actualizado cuando los datos de los "
-"documentos son cambiados."
+msgstr "Hace que este nodo sea visible y actualizado cuando los datos de los documentos son cambiados."
 
 #: models.py:131
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Marque esta opción para que el nodo actúe como un contenedor de documentos y "
-"no como un padre para otros nodos secundarios."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Marque esta opción para que el nodo actúe como un contenedor de documentos y no como un padre para otros nodos secundarios."
 
 #: models.py:134
 msgid "Link documents"
@@ -219,8 +214,9 @@ msgstr "Generar índices de documentos"
 
 #: views.py:51
 #, python-format
+#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
-msgstr ""
+msgstr "¿Borrar el indice: %s?"
 
 #: views.py:64
 #, python-format
@@ -229,7 +225,7 @@ msgstr "Editar índice: %s"
 
 #: views.py:81
 msgid "Available document types"
-msgstr ""
+msgstr "Tipos de documentos disponibles"
 
 #: views.py:83
 msgid "Document types linked"
@@ -263,7 +259,7 @@ msgstr ""
 #: views.py:286
 #, python-format
 msgid "Navigation: %s"
-msgstr ""
+msgstr "Navegación: %s"
 
 #: views.py:291
 #, python-format
@@ -277,9 +273,7 @@ msgstr ""
 
 #: views.py:341
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"En bases de datos de gran tamaño esta operación puede tardar algún tiempo en "
-"ejecutarse."
+msgstr "En bases de datos de gran tamaño esta operación puede tardar algún tiempo en ejecutarse."
 
 #: views.py:342
 msgid "Rebuild all indexes?"
@@ -350,11 +344,9 @@ msgstr "Reconstrucción de Índices en espera de forma exitosa."
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -391,11 +383,11 @@ msgstr "Reconstrucción de Índices en espera de forma exitosa."
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"
