@@ -169,7 +169,8 @@ class Document(models.Model):
         verbose_name=_('Language')
     )
     in_trash = models.BooleanField(
-        default=False, editable=False, verbose_name=_('In trash?')
+        db_index=True, default=False, editable=False,
+        verbose_name=_('In trash?')
     )
     # TODO: set editable to False
     deleted_date_time = models.DateTimeField(
@@ -177,10 +178,11 @@ class Document(models.Model):
         verbose_name=_('Date and time trashed')
     )
     is_stub = models.BooleanField(
-        default=True, editable=False, help_text=_(
+        db_index=True, default=True, editable=False, help_text=_(
             'A document stub is a document with an entry on the database but '
             'no file uploaded. This could be an interrupted upload or a '
-            'deferred upload via the API.'), verbose_name=_('Is stub?')
+            'deferred upload via the API.'
+        ), verbose_name=_('Is stub?')
     )
 
     objects = DocumentManager()
