@@ -349,7 +349,10 @@ class SourceColumn(object):
                 try:
                     return cls._registry[source.__class__]
                 except KeyError:
-                    return ()
+                    try:
+                        return cls._registry[source._meta.parents.items()[0][0]]
+                    except IndexError:
+                        return ()
         except TypeError:
             # unhashable type: list
             return ()
