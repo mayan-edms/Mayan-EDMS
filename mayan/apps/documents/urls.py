@@ -243,16 +243,16 @@ urlpatterns = patterns(
 api_urls = patterns(
     '',
     url(
-        r'^deleted_documents/$', APIDeletedDocumentListView.as_view(),
-        name='deleteddocument-list'
+        r'^trashed_documents/$', APIDeletedDocumentListView.as_view(),
+        name='trasheddocument-list'
     ),
     url(
-        r'^deleted_documents/(?P<pk>[0-9]+)/$',
-        APIDeletedDocumentView.as_view(), name='deleteddocument-detail'
+        r'^trashed_documents/(?P<pk>[0-9]+)/$',
+        APIDeletedDocumentView.as_view(), name='trasheddocument-detail'
     ),
     url(
-        r'^deleted_documents/(?P<pk>[0-9]+)/restore/$',
-        APIDeletedDocumentRestoreView.as_view(), name='deleteddocument-restore'
+        r'^trashed_documents/(?P<pk>[0-9]+)/restore/$',
+        APIDeletedDocumentRestoreView.as_view(), name='trasheddocument-restore'
     ),
     url(r'^documents/$', APIDocumentListView.as_view(), name='document-list'),
     url(

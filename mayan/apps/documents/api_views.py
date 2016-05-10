@@ -39,7 +39,7 @@ logger = logging.getLogger(__name__)
 
 class APIDeletedDocumentListView(generics.ListAPIView):
     """
-    Returns a list of all the deleted documents.
+    Returns a list of all the trashed documents.
     """
 
     filter_backends = (MayanObjectPermissionsFilter,)
@@ -51,7 +51,7 @@ class APIDeletedDocumentListView(generics.ListAPIView):
 
 class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
     """
-    Returns the selected deleted document details.
+    Returns the selected trashed document details.
     """
 
     mayan_object_permissions = {
@@ -63,7 +63,7 @@ class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
 
     def delete(self, *args, **kwargs):
         """
-        Delete the selected document.
+        Delete the trashed document.
         """
 
         return super(APIDeletedDocumentView, self).delete(*args, **kwargs)
@@ -71,7 +71,7 @@ class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
 
 class APIDeletedDocumentRestoreView(generics.GenericAPIView):
     """
-    Restore a deleted document.
+    Restore a trashed document.
     """
 
     mayan_object_permissions = {
