@@ -75,11 +75,11 @@ urlpatterns = patterns(
 api_urls = patterns(
     '',
     url(
-        r'^metadatatypes/$', APIMetadataTypeListView.as_view(),
+        r'^metadata_types/$', APIMetadataTypeListView.as_view(),
         name='metadatatype-list'
     ),
     url(
-        r'^metadatatypes/(?P<pk>[0-9]+)/$', APIMetadataTypeView.as_view(),
+        r'^metadata_types/(?P<pk>[0-9]+)/$', APIMetadataTypeView.as_view(),
         name='metadatatype-detail'
     ),
     url(
@@ -87,16 +87,16 @@ api_urls = patterns(
         APIDocumentMetadataView.as_view(), name='documentmetadata-detail'
     ),
     url(
-        r'^document/(?P<document_pk>[0-9]+)/metadata/$',
+        r'^document/(?P<pk>\d+)/metadata/$',
         APIDocumentMetadataListView.as_view(), name='documentmetadata-list'
     ),
     url(
-        r'^document_type/(?P<document_type_pk>[0-9]+)/metadatatypes/optional/$',
+        r'^document_type/(?P<document_type_pk>[0-9]+)/metadata_types/optional/$',
         APIDocumentTypeMetadataTypeOptionalListView.as_view(),
         name='documenttypeoptionalmetadatatype-list'
     ),
     url(
-        r'^document_type/(?P<document_type_pk>[0-9]+)/metadatatypes/required/$',
+        r'^document_type/(?P<document_type_pk>[0-9]+)/metadata_types/required/$',
         APIDocumentTypeMetadataTypeRequiredListView.as_view(),
         name='documenttyperequiredmetadatatype-list'
     ),

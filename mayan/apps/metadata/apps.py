@@ -66,7 +66,7 @@ class MetadataApp(MayanAppConfig):
         DocumentTypeMetadataType = self.get_model('DocumentTypeMetadataType')
         MetadataType = self.get_model('MetadataType')
 
-        APIEndPoint(app=self, version_string='1')
+        APIEndPoint(app=self, version_string='2')
 
         Document.add_to_class(
             'metadata_value_of', DocumentMetadataHelper.constructor

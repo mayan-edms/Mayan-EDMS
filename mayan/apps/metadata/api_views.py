@@ -23,8 +23,9 @@ from .permissions import (
     permission_metadata_type_edit, permission_metadata_type_view
 )
 from .serializers import (
-    DocumentMetadataSerializer, DocumentTypeNewMetadataTypeSerializer,
-    MetadataTypeSerializer, DocumentTypeMetadataTypeSerializer
+    DocumentMetadataSerializer, DocumentNewMetadataSerializer,
+    DocumentTypeNewMetadataTypeSerializer, MetadataTypeSerializer,
+    DocumentTypeMetadataTypeSerializer
 )
 
 
@@ -89,15 +90,14 @@ class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
 
 class APIDocumentMetadataListView(generics.ListCreateAPIView):
     permission_classes = (MayanPermission,)
-    serializer_class = DocumentMetadataSerializer
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['document_pk'])
+        return get_object_or_404(Document, pk=self.kwargs['pk'])
 
     def get_queryset(self):
         document = self.get_document()
 
-        if self.request == 'GET':
+        if self.request.method == 'GET':
             # Make sure the use has the permission to see the metadata for
             # this document
             try:
@@ -111,7 +111,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
                 )
             else:
                 return document.metadata.all()
-        elif self.request == 'POST':
+        elif self.request.method == 'POST':
             # Make sure the use has the permission to add metadata to this
             # document
             try:
@@ -126,14 +126,21 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
             else:
                 return document.metadata.all()
 
-    def pre_save(self, serializer):
-        serializer.document = self.get_document()
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return DocumentMetadataSerializer
+        elif self.request.method == 'POST':
+            return DocumentNewMetadataSerializer
 
     def get(self, *args, **kwargs):
         """
         Returns a list of selected document's metadata types and values.
         """
         return super(APIDocumentMetadataListView, self).get(*args, **kwargs)
+
+    def perform_create(self, serializer):
+        serializer.document = self.get_document()
+        serializer.save()
 
     def post(self, *args, **kwargs):
         """

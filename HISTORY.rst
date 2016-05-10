@@ -33,6 +33,7 @@
 - Replace document type selection widget with an opened selection list.
 - Add mailing documentation chapter.
 - Add roadmap documentation chapter.
+- API updates.
 
 2.0.2 (2016-02-09)
 ==================
