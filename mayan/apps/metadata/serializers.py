@@ -38,6 +38,6 @@ class DocumentNewMetadataSerializer(serializers.Serializer):
 
 
 class DocumentTypeNewMetadataTypeSerializer(serializers.Serializer):
-    metadata_type = serializers.IntegerField(
+    metadata_type_pk = serializers.IntegerField(
         help_text=_('Primary key of the metadata type to be added.')
     )

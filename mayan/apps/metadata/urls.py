@@ -6,7 +6,7 @@ from .api_views import (
     APIDocumentMetadataListView, APIDocumentMetadataView,
     APIDocumentTypeMetadataTypeOptionalListView,
     APIDocumentTypeMetadataTypeRequiredListView,
-    APIDocumentTypeMetadataTypeRequiredView, APIMetadataTypeListView,
+    APIDocumentTypeMetadataTypeView, APIMetadataTypeListView,
     APIMetadataTypeView
 )
 from .views import (
@@ -93,16 +93,16 @@ api_urls = patterns(
     url(
         r'^document_type/(?P<document_type_pk>[0-9]+)/metadatatypes/optional/$',
         APIDocumentTypeMetadataTypeOptionalListView.as_view(),
-        name='documenttypemetadatatype-list'
+        name='documenttypeoptionalmetadatatype-list'
     ),
     url(
         r'^document_type/(?P<document_type_pk>[0-9]+)/metadatatypes/required/$',
         APIDocumentTypeMetadataTypeRequiredListView.as_view(),
-        name='documenttypemetadatatype-list'
+        name='documenttyperequiredmetadatatype-list'
     ),
     url(
-        r'^document_type/(?P<document_type_pk>[0-9]+)/metadatatypes/(?P<metadata_type_pk>[0-9]+)/$',
-        APIDocumentTypeMetadataTypeRequiredView.as_view(),
+        r'^document_type_metadata_type/(?P<pk>\d+)/$',
+        APIDocumentTypeMetadataTypeView.as_view(),
         name='documenttypemetadatatype-detail'
     ),
 )

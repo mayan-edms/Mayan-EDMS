@@ -15,7 +15,7 @@ from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
-from .models import DocumentMetadata, MetadataType
+from .models import DocumentMetadata, DocumentTypeMetadataType, MetadataType
 from .permissions import (
     permission_metadata_document_add, permission_metadata_document_remove,
     permission_metadata_document_edit, permission_metadata_document_view,
@@ -265,10 +265,15 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
             metadata_type = get_object_or_404(
                 MetadataType, pk=serializer.data['metadata_type_pk']
             )
-            document_type.metadata_type.add(
-                metadata_type, required=self.required_metadata
+            document_type_metadata_type = document_type.metadata.create(
+                metadata_type=metadata_type, required=self.required_metadata
             )
-            return Response(status=status.HTTP_201_CREATED)
+            return Response(
+                status=status.HTTP_201_CREATED,
+                data={
+                    'pk': document_type_metadata_type.pk
+                }
+            )
         else:
             return Response(status=status.HTTP_400_BAD_REQUEST)
 
@@ -291,18 +296,19 @@ class APIDocumentTypeMetadataTypeRequiredListView(APIDocumentTypeMetadataTypeOpt
         """
         return super(
             APIDocumentTypeMetadataTypeRequiredListView, self
-        ).get(*args, **kwargs)
+        ).post(request, *args, **kwargs)
 
 
-class APIDocumentTypeMetadataTypeRequiredView(views.APIView):
+class APIDocumentTypeMetadataTypeView(views.APIView):
     def delete(self, request, *args, **kwargs):
         """
         Remove a metadata type from a document type.
         """
 
-        document_type = get_object_or_404(
-            DocumentType, pk=self.kwargs['document_type_pk']
+        document_type_metadata_type = get_object_or_404(
+            DocumentTypeMetadataType, pk=self.kwargs['pk']
         )
+
         try:
             Permission.check_permissions(
                 self.request.user, (permission_document_type_edit,)
@@ -310,11 +316,8 @@ class APIDocumentTypeMetadataTypeRequiredView(views.APIView):
         except PermissionDenied:
             AccessControlList.objects.check_access(
                 permission_document_type_edit, self.request.user,
-                document_type
+                document_type_metadata_type.document_type
             )
 
-        metadata_type = get_object_or_404(
-            MetadataType, pk=self.kwargs['metadata_type_pk']
-        )
-        document_type.metadata_type.remove(metadata_type)
+        document_type_metadata_type.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

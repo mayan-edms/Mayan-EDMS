@@ -84,3 +84,98 @@ class MetadataTypeAPITestCase(APITestCase):
 
         self.assertEqual(metadata_type.label, TEST_METADATA_TYPE_LABEL_2)
         self.assertEqual(metadata_type.name, TEST_METADATA_TYPE_NAME_2)
+
+
+class DocumentTypeMetadataTypeAPITestCase(APITestCase):
+    def setUp(self):
+        self.admin_user = get_user_model().objects.create_superuser(
+            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
+            password=TEST_ADMIN_PASSWORD
+        )
+
+        self.client.login(
+            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
+        )
+
+        self.document_type = DocumentType.objects.create(
+            label=TEST_DOCUMENT_TYPE
+        )
+
+        self.metadata_type = MetadataType.objects.create(
+            label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
+        )
+
+    def tearDown(self):
+        self.admin_user.delete()
+        self.document_type.delete()
+
+    def test_document_type_metadata_type_optional_create(self):
+        response = self.client.post(
+            reverse(
+                'rest_api:documenttypeoptionalmetadatatype-list',
+                args=(self.document_type.pk,)
+            ), data={'metadata_type_pk': self.metadata_type.pk}
+        )
+
+        self.assertEqual(response.status_code, 201)
+
+        document_type_metadata_type = DocumentTypeMetadataType.objects.filter(document_type=self.document_type, required=False).first()
+
+        self.assertEqual(response.data['pk'], document_type_metadata_type.pk)
+
+        self.assertEqual(
+            document_type_metadata_type.metadata_type, self.metadata_type
+        )
+
+    def test_document_type_metadata_type_required_create(self):
+        response = self.client.post(
+            reverse(
+                'rest_api:documenttyperequiredmetadatatype-list',
+                args=(self.document_type.pk,)
+            ), data={'metadata_type_pk': self.metadata_type.pk}
+        )
+
+        self.assertEqual(response.status_code, 201)
+
+        document_type_metadata_type = DocumentTypeMetadataType.objects.filter(document_type=self.document_type, required=True).first()
+
+        self.assertEqual(response.data['pk'], document_type_metadata_type.pk)
+
+        self.assertEqual(
+            document_type_metadata_type.metadata_type, self.metadata_type
+        )
+
+
+    def test_document_type_metadata_type_required_create(self):
+        response = self.client.post(
+            reverse(
+                'rest_api:documenttyperequiredmetadatatype-list',
+                args=(self.document_type.pk,)
+            ), data={'metadata_type_pk': self.metadata_type.pk}
+        )
+
+        self.assertEqual(response.status_code, 201)
+
+        document_type_metadata_type = DocumentTypeMetadataType.objects.filter(document_type=self.document_type, required=True).first()
+
+        self.assertEqual(response.data['pk'], document_type_metadata_type.pk)
+
+        self.assertEqual(
+            document_type_metadata_type.metadata_type, self.metadata_type
+        )
+
+    def test_document_type_metadata_type_delete(self):
+        document_type_metadata_type = self.document_type.metadata.create(
+            metadata_type=self.metadata_type, required=True
+        )
+
+        response = self.client.delete(
+            reverse(
+                'rest_api:documenttypemetadatatype-detail',
+                args=(document_type_metadata_type.pk,)
+            ),
+        )
+
+        self.assertEqual(response.status_code, 204)
+
+        self.assertEqual(self.document_type.metadata.all().count(), 0)
