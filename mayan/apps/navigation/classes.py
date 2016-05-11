@@ -212,6 +212,7 @@ class Link(object):
         self.keep_query = keep_query
         self.kwargs = kwargs or {}
         self.permissions = permissions or []
+        self.permissions_related = permissions_related
         self.remove_from_query = remove_from_query or []
         self.tags = tags
         self.text = text
@@ -246,7 +247,7 @@ class Link(object):
                     try:
                         AccessControlList.objects.check_access(
                             self.permissions, request.user, resolved_object,
-                            related=getattr(self, 'permissions_related', None)
+                            related=self.permissions_related
                         )
                     except PermissionDenied:
                         return None
