@@ -136,6 +136,19 @@ class Menu(object):
                                 resolved_links.append(resolved_link)
                         # No need for further content object match testing
                         break
+                    else:
+                        # Second try for objects using .defer() or .only()
+                        if inspect.isclass(bound_source) and isinstance(resolved_navigation_object, bound_source):
+                            for link in links:
+                                resolved_link = link.resolve(
+                                    context=context,
+                                    resolved_object=resolved_navigation_object
+                                )
+                                if resolved_link:
+                                    resolved_links.append(resolved_link)
+                            # No need for further content object match testing
+                            break
+
                 except TypeError:
                     # When source is a dictionary
                     pass
