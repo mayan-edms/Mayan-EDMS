@@ -1,6 +1,7 @@
 from __future__ import unicode_literals
 
 from django import forms
+from django.core.exceptions import ValidationError
 from django.forms.formsets import formset_factory
 from django.utils.translation import string_concat, ugettext_lazy as _
 
@@ -81,6 +82,19 @@ class MetadataForm(forms.Form):
                     )
 
     def clean(self):
+        metadata_type = getattr(self, 'metadata_type', None)
+
+        if metadata_type:
+            required = self.metadata_type.get_required_for(
+                document_type=self.document_type
+            )
+            if required and not self.cleaned_data.get('update'):
+                raise ValidationError(
+                    _(
+                        '"%s" is required for this document type.'
+                    ) % self.metadata_type.label
+                )
+
         if self.cleaned_data.get('update') and hasattr(self, 'metadata_type'):
             self.cleaned_data['value'] = self.metadata_type.validate_value(
                 document_type=self.document_type,
