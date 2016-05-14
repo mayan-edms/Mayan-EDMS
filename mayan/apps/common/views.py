@@ -33,13 +33,13 @@ class CurrentUserDetailsView(SingleObjectDetailView):
 
     def get_extra_context(self, **kwargs):
         return {
-            'object': self.get_object(),
+            'object': None,
             'title': _('Current user details'),
         }
 
 
 class CurrentUserEditView(SingleObjectEditView):
-    extra_context = {'title': _('Edit current user details')}
+    extra_context = {'object': None, 'title': _('Edit current user details')}
     form_class = UserForm
     post_action_redirect = reverse_lazy('common:current_user_details')
 
