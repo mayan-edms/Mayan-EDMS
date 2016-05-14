@@ -1,6 +1,6 @@
-2.1 (2016-XX)
-=============
-- Upgrade to use Django 1.8.8. Issue #246.
+2.1 (2016-05-14)
+================
+- Upgrade to use Django 1.8.13. Issue #246.
 - Upgrade requirements.
 - Remove remaining references to Django's User model. GitLab issue #225
 - Rename 'Content' search box to 'OCR'.

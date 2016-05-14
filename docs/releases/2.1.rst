@@ -149,6 +149,13 @@ Other changes
 - Increase total test count to 311.
 - Increase test coverage to 77%.
 - Documentation improvements.
+- Handle unicode filenames in staging folders.
+- Add staging file deletion permission.
+- New document_signature_view permission.
+- Instead of multiple keyservers only one keyserver is now supported.
+- Replace document type selection widget with an opened selection list.
+- Add roadmap documentation chapter.
+
 
 Removals
 --------
