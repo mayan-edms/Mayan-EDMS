@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
+from documents.literals import DEFAULT_DOCUMENT_TYPE_LABEL
+
 from .tasks import task_delete_empty_index_nodes, task_index_document
 
 
@@ -14,23 +16,21 @@ def create_default_document_index(sender, **kwargs):
         app_label='document_indexing', model_name='Index'
     )
 
-    if not Index.objects.count():
-        index = Index.objects.create(
-            label=_('Creation date'), slug='creation_date'
-        )
-        for document_type in DocumentType.objects.all():
-            index.document_types.add(document_type)
+    index = Index.objects.create(
+        label=_('Creation date'), slug='creation_date'
+    )
+    for document_type in DocumentType.objects.all():
+        index.document_types.add(document_type)
 
-        root_template_node = index.template_root
-        node = root_template_node.get_children().create(
-            expression='{{ document.date_added|date:"Y" }}', index=index,
-            parent=root_template_node
-        )
-        node.get_children().create(
-            expression='{{ document.date_added|date:"m" }}',
-            index=index, link_documents=True, parent=node
-        )
-
+    root_template_node = index.template_root
+    node = root_template_node.get_children().create(
+        expression='{{ document.date_added|date:"Y" }}', index=index,
+        parent=root_template_node
+    )
+    node.get_children().create(
+        expression='{{ document.date_added|date:"m" }}',
+        index=index, link_documents=True, parent=node
+    )
 
 
 def document_created_index_update(sender, **kwargs):

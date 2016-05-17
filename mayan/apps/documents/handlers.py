@@ -3,6 +3,9 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
+from .literals import DEFAULT_DOCUMENT_TYPE_LABEL
+from .signals import post_initial_document_type
+
 
 def create_default_document_type(sender, **kwargs):
     DocumentType = apps.get_model(
@@ -10,4 +13,9 @@ def create_default_document_type(sender, **kwargs):
     )
 
     if not DocumentType.objects.count():
-        DocumentType.objects.create(label=_('Default'))
+        document_type = DocumentType.objects.create(
+            label=DEFAULT_DOCUMENT_TYPE_LABEL
+        )
+        post_initial_document_type.send(
+            sender=DocumentType, instance=document_type
+        )
