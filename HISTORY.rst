@@ -1,7 +1,7 @@
 2.1.1 (2016-05-17)
 ==================
 - Fix navigation issue that make it impossible to add new sources. GitLab issue #288.
-
+- The Tesseract OCR backend now reports if the requested language file is missing. GitLab issue #289.
 
 2.1 (2016-05-14)
 ================

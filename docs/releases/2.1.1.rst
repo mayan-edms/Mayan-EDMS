@@ -16,7 +16,10 @@ queryset generated using the .defer() or .only() Django filter optimization
 features to resolve to their parent class transparently. This optimization
 caused problems with the sources app which uses a
 
-
+Missing Tesseract language files
+--------------------------------
+The Tesseract OCR backend now reports if the tesseract language file is missing
+for the requested document's language.
 
 Removals
 --------
@@ -72,6 +75,7 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #288 <https://gitlab.com/mayan-edms/mayan-edms/issues/288>`_   Can't add sources in mayan-edms 2.1.
+* `GitLab issue #289 <https://gitlab.com/mayan-edms/mayan-edms/issues/289>`_   OCR fails with Exception.
 
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
