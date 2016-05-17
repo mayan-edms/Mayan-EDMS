@@ -4,7 +4,6 @@ from django.contrib.auth import get_user_model
 
 from django.core.urlresolvers import reverse
 
-from rest_framework import status
 from rest_framework.test import APITestCase
 
 from ..tests.literals import (
@@ -12,8 +11,8 @@ from ..tests.literals import (
 )
 
 from .literals import (
-    TEST_GROUP, TEST_USER_EMAIL, TEST_USER_PASSWORD, TEST_USER_PASSWORD_EDITED,
-    TEST_USER_USERNAME, TEST_USER_USERNAME_EDITED
+    TEST_USER_EMAIL, TEST_USER_PASSWORD, TEST_USER_USERNAME,
+    TEST_USER_USERNAME_EDITED
 )
 
 

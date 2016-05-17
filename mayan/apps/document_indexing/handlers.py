@@ -3,8 +3,6 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
 
-from documents.literals import DEFAULT_DOCUMENT_TYPE_LABEL
-
 from .tasks import task_delete_empty_index_nodes, task_index_document
 
 

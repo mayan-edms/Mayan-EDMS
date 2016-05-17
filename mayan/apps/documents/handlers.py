@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
-from django.utils.translation import ugettext_lazy as _
 
 from .literals import DEFAULT_DOCUMENT_TYPE_LABEL
 from .signals import post_initial_document_type

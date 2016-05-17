@@ -40,14 +40,14 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         write_only_fields = ('password',)
 
     def create(self, validated_data):
-        groups = validated_data.pop('groups')
-        is_active = validated_data.pop('is_active')
+        validated_data.pop('groups')
+        validated_data.pop('is_active')
         user = get_user_model().objects.create_user(**validated_data)
 
         return user
 
     def update(self, instance, validated_data):
-        groups = validated_data.pop('groups')
+        validated_data.pop('groups')
 
         if 'password' in validated_data:
             instance.set_password(validated_data['password'])

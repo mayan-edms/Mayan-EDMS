@@ -213,13 +213,9 @@ class Command(management.BaseCommand):
     help = 'Mount an index as a FUSE filesystem.'
 
     def add_arguments(self, parser):
-        parser.add_argument('slug', nargs='?',
-            help='Index slug'
-        )
+        parser.add_argument('slug', nargs='?', help='Index slug')
 
-        parser.add_argument('mount_point', nargs='?',
-            help='Mount point'
-        )
+        parser.add_argument('mount_point', nargs='?', help='Mount point')
 
     def handle(self, *args, **options):
         if not options.get('slug') or not options.get('mount_point'):

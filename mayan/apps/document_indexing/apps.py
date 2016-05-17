@@ -15,7 +15,6 @@ from common import (
     menu_setup, menu_tools
 )
 from common.classes import Package
-from common.signals import post_initial_setup
 from common.widgets import two_state_template
 from documents.signals import post_document_created, post_initial_document_type
 from mayan.celery import app

@@ -57,7 +57,3 @@ class Tesseract(OCRBackendBase):
             raise OCRError(error_message)
 
         return result
-
-
-
-
