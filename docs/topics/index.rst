@@ -17,6 +17,7 @@ Introductions to all the key parts of Mayan EDMS you'll need to know:
    signatures
    ocr_backend
    indexes
+   languages
    smart_links
    tags
    mailing
