@@ -21,6 +21,12 @@ Missing Tesseract language files
 The Tesseract OCR backend now reports if the tesseract language file is missing
 for the requested document's language.
 
+Other changes
+-------------
+
+- Ensure the automatic default index is created after the default document type.
+
+
 Removals
 --------
 * None

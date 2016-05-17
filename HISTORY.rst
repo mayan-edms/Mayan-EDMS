@@ -2,6 +2,7 @@
 ==================
 - Fix navigation issue that make it impossible to add new sources. GitLab issue #288.
 - The Tesseract OCR backend now reports if the requested language file is missing. GitLab issue #289.
+- Ensure the automatic default index is created after the default document type.
 
 2.1 (2016-05-14)
 ================
