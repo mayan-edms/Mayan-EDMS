@@ -6,12 +6,13 @@
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # Lory977 <helga.carrero@gmail.com>, 2015
+# Roberto Rosario, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-27 14:10-0400\n"
-"PO-Revision-Date: 2016-04-27 18:22+0000\n"
+"PO-Revision-Date: 2016-05-09 01:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -22,7 +23,7 @@ msgstr ""
 
 #: apps.py:30
 msgid "Django GPG"
-msgstr ""
+msgstr "Django GPG"
 
 #: apps.py:73 apps.py:76 forms.py:17
 msgid "Key ID"
@@ -30,7 +31,7 @@ msgstr "Identificador de clave"
 
 #: apps.py:74 apps.py:87 forms.py:19 models.py:67
 msgid "User ID"
-msgstr ""
+msgstr "ID de usuario"
 
 #: apps.py:77 forms.py:34 models.py:70
 msgid "Type"
@@ -46,7 +47,7 @@ msgstr "Fecha de expiración"
 
 #: apps.py:83
 msgid "No expiration"
-msgstr ""
+msgstr "No expira"
 
 #: apps.py:85 forms.py:32 models.py:62
 msgid "Length"
@@ -58,11 +59,11 @@ msgstr "Ninguno"
 
 #: forms.py:31 models.py:59
 msgid "Fingerprint"
-msgstr ""
+msgstr "Huella"
 
 #: forms.py:33 models.py:65
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritmo"
 
 #: forms.py:47
 msgid "Term"
@@ -99,7 +100,7 @@ msgstr "Gestión de claves"
 #: links.py:37
 #| msgid "Import key"
 msgid "Upload key"
-msgstr ""
+msgstr "Subir llave"
 
 #: links.py:41 views.py:160
 msgid "Private keys"
@@ -155,28 +156,28 @@ msgstr "El documento ha sido firmado y la firma ha sido validada."
 
 #: models.py:47
 msgid "ASCII armored version of the key."
-msgstr ""
+msgstr "Versión ASCII de la llave"
 
 #: models.py:48
 msgid "Key data"
-msgstr ""
+msgstr "Datos de llave"
 
 #: models.py:76
 #| msgid "Key ID"
 msgid "Key"
-msgstr ""
+msgstr "Llave"
 
 #: models.py:77
 msgid "Keys"
-msgstr ""
+msgstr "Llaves"
 
 #: models.py:86
 msgid "Invalid key data"
-msgstr ""
+msgstr "Datos de llave invalidos"
 
 #: models.py:89
 msgid "Key already exists."
-msgstr ""
+msgstr "Llave ya existe."
 
 #: permissions.py:10
 msgid "Delete keys"
@@ -184,7 +185,7 @@ msgstr "Borrar claves"
 
 #: permissions.py:13
 msgid "Download keys"
-msgstr ""
+msgstr "Descargar llaves"
 
 #: permissions.py:16
 msgid "Import keys from keyservers"
@@ -192,12 +193,12 @@ msgstr "Importar llaves del servidores de claves"
 
 #: permissions.py:19
 msgid "Use keys to sign content"
-msgstr ""
+msgstr "Usar llaves para firmar contenido"
 
 #: permissions.py:22
 #| msgid "public keys"
 msgid "Upload keys"
-msgstr ""
+msgstr "Subir llaves"
 
 #: permissions.py:25
 msgid "View keys"
@@ -219,24 +220,24 @@ msgstr "Ruta al binario GPG."
 #: settings.py:25
 #| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
-msgstr ""
+msgstr "Servidor usado para buscar llaves."
 
 #: views.py:38
 #, python-format
 #| msgid "Delete keys"
 msgid "Delete key: %s"
-msgstr ""
+msgstr "Borrar llave: %s"
 
 #: views.py:48
 #, python-format
 msgid "Details for key: %s"
-msgstr ""
+msgstr "Detalles para llave: %s"
 
 #: views.py:68
 #, python-format
 #| msgid "Import key"
 msgid "Import key ID: %s?"
-msgstr ""
+msgstr "¿Importar llave: %s?"
 
 #: views.py:69
 msgid "Import key"
@@ -246,12 +247,12 @@ msgstr "Importar clave"
 #, python-format
 #| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
-msgstr ""
+msgstr "No se pudo importar la llave: %(key_id)s; %(error)s "
 
 #: views.py:85
 #, python-format
 msgid "Successfully received key: %(key_id)s"
-msgstr ""
+msgstr "Llave: %(key_id)s, recibida con éxito"
 
 #: views.py:107
 msgid "Search"
@@ -263,11 +264,11 @@ msgstr "Consultar servidor de claves"
 
 #: views.py:119
 msgid "Key query results"
-msgstr ""
+msgstr "Resultado de búsqueda de llaves"
 
 #: views.py:138
 msgid "Upload new key"
-msgstr ""
+msgstr "Subir una nueva llave"
 
 #~ msgid "Unknown"
 #~ msgstr "unknown"

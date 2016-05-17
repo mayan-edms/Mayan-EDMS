@@ -85,7 +85,7 @@ class DocumentListView(SingleObjectListView):
     object_permission = permission_document_view
 
     def get_document_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID).defer('description', 'uuid', 'date_added', 'language', 'in_trash', 'deleted_date_time').all()
 
     def get_queryset(self):
         self.queryset = self.get_document_queryset().filter(is_stub=False)

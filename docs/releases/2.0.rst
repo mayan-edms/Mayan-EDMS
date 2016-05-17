@@ -27,7 +27,7 @@ update a lot of legacy HTML and CSS was removed, greatly simplifying the
 existing template and allowing the removal of some.
 
 Theming and re-branding
-----------------------
+-----------------------
 All the presentation logic and markup has been moved into it's own app, the
 'appearance' app. All modifications required to customize the entire look of
 the Mayan EDMS can now be done in a single app. Very little markup remains
@@ -98,7 +98,7 @@ app are no longer required. These are:
 * slate
 
 ACL system re-factor
--------------------
+--------------------
 The Access Control System has been greatly simplified and optimized. The
 logistics to grant and revoke permissions are now as follows: Only Roles can
 hold permissions, groups and user can no longer on their own be granted a
@@ -135,7 +135,7 @@ support. Administrators wanting to make a group of documents public are
 encouraged to create an user, group and role for that purpose.
 
 Metadata validators re-factor
-----------------------------
+-----------------------------
 The metadata validators have been split into: Validators and Parsers.
 Validators will just check that the input value conforms to certain
 specification, raising a validation error is not and blocking the user from
@@ -229,7 +229,7 @@ Support for allowing 3rd party apps to unbind links binded by the core apps
 was added to further improve re-branding and customization.
 
 Statistics re-factor
--------------------
+--------------------
 Statistics gathering and generation has been overhauled to allow for the
 creation of scheduled statistics. This allows statistics computation to be
 scheduled during low load times. A new management command was added to

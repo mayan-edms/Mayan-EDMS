@@ -1,5 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
+from documents.permissions import permission_document_view
 from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests import (
     TEST_USER_USERNAME, TEST_USER_PASSWORD
@@ -8,11 +9,13 @@ from user_management.tests import (
 from ..models import SmartLink
 from ..permissions import (
     permission_smart_link_create, permission_smart_link_delete,
-    permission_smart_link_edit
+    permission_smart_link_edit, permission_smart_link_view
 )
 
-TEST_SMART_LINK_LABEL = 'test label'
-TEST_SMART_LINK_EDITED_LABEL = 'test edited label'
+from .literals import (
+    TEST_SMART_LINK_DYNAMIC_LABEL, TEST_SMART_LINK_EDITED_LABEL,
+    TEST_SMART_LINK_LABEL
+)
 
 
 class SmartLinkViewTestCase(GenericDocumentViewTestCase):
@@ -105,3 +108,61 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         smart_link = SmartLink.objects.get(pk=smart_link.pk)
         self.assertContains(response, text='update', status_code=200)
         self.assertEqual(smart_link.label, TEST_SMART_LINK_EDITED_LABEL)
+
+    def setup_smart_links(self):
+        smart_link = SmartLink.objects.create(
+            label=TEST_SMART_LINK_LABEL,
+            dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
+        )
+        smart_link.document_types.add(self.document_type)
+
+        smart_link_2 = SmartLink.objects.create(
+            label=TEST_SMART_LINK_LABEL,
+            dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
+        )
+        smart_link_2.document_types.add(self.document_type)
+
+    def test_document_smart_link_list_view_no_permission(self):
+        self.setup_smart_links()
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(
+            permission_document_view.stored_permission
+        )
+
+        response = self.get(
+            'linking:smart_link_instances_for_document',
+            args=(self.document.pk,)
+        )
+        # Text must appear 2 times, only for the windows title and template
+        # heading. The two smart links are not shown.
+
+        self.assertContains(
+            response, text=self.document.label, count=2, status_code=200
+        )
+
+    def test_document_smart_link_list_view_with_permission(self):
+        self.setup_smart_links()
+
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(
+            permission_smart_link_view.stored_permission
+        )
+
+        self.role.permissions.add(
+            permission_document_view.stored_permission
+        )
+
+        response = self.get(
+            'linking:smart_link_instances_for_document',
+            args=(self.document.pk,)
+        )
+
+        # Text must appear 4 times: 2 for the windows title and template
+        # heading, plus 2 for the test.
+
+        self.assertContains(
+            response, text=self.document.label, count=4, status_code=200
+        )

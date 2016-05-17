@@ -1,6 +1,12 @@
-2.1 (2016-XX)
-=============
-- Upgrade to use Django 1.8.8. Issue #246.
+2.1.1 (2016-05-17)
+==================
+- Fix navigation issue that make it impossible to add new sources. GitLab issue #288.
+- The Tesseract OCR backend now reports if the requested language file is missing. GitLab issue #289.
+- Ensure the automatic default index is created after the default document type.
+
+2.1 (2016-05-14)
+================
+- Upgrade to use Django 1.8.13. Issue #246.
 - Upgrade requirements.
 - Remove remaining references to Django's User model. GitLab issue #225
 - Rename 'Content' search box to 'OCR'.
@@ -33,6 +39,8 @@
 - Replace document type selection widget with an opened selection list.
 - Add mailing documentation chapter.
 - Add roadmap documentation chapter.
+- API updates.
+
 
 2.0.2 (2016-02-09)
 ==================

@@ -16,14 +16,15 @@ from common import (
 )
 from common.classes import Package
 from common.widgets import two_state_template
-from documents.signals import post_document_created
+from documents.signals import post_document_created, post_initial_document_type
 from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .handlers import (
-    document_created_index_update, document_index_delete,
-    document_metadata_index_update, document_metadata_index_post_delete
+    document_created_index_update, create_default_document_index,
+    document_index_delete, document_metadata_index_update,
+    document_metadata_index_post_delete
 )
 from .links import (
     link_document_index_list, link_index_main_menu, link_index_setup,
@@ -52,6 +53,10 @@ class DocumentIndexingApp(MayanAppConfig):
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+
+        DocumentType = apps.get_model(
+            app_label='documents', model_name='DocumentType'
         )
 
         DocumentMetadata = apps.get_model(
@@ -231,6 +236,10 @@ OR IN CONNECTION WITH THE USE OR PERFORMANCE OF THIS SOFTWARE.
         post_document_created.connect(
             document_created_index_update,
             dispatch_uid='document_created_index_update', sender=Document
+        )
+        post_initial_document_type.connect(
+            create_default_document_index,
+            dispatch_uid='create_default_document_index', sender=DocumentType
         )
         post_save.connect(
             document_metadata_index_update,

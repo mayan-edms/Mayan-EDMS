@@ -1,29 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Lory977 <helga.carrero@gmail.com>, 2015
 # Roberto Rosario, 2015
-# Roberto Rosario, 2015
+# Roberto Rosario, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-27 14:13-0400\n"
-"PO-Revision-Date: 2016-03-21 21:07+0000\n"
+"PO-Revision-Date: 2016-05-09 01:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:25
 msgid "Mailer"
-msgstr ""
+msgstr "Correspondencia"
 
 #: apps.py:37
 msgid "Date and time"
@@ -55,7 +54,7 @@ msgstr "Enviar enlace"
 
 #: links.py:22 views.py:31
 msgid "Document mailing error log"
-msgstr ""
+msgstr "Biracora de errores de envío"
 
 #: literals.py:7
 #, python-format
@@ -64,7 +63,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Se adjunta a este correo electrónico es el documento: {{ document }}\n\n\n--------\nEste correo electrónico ha sido enviado desde %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -73,7 +72,7 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Para acceder a este documento, haga clic en el siguiente enlace: {{ link }}\n\n\n--------\nEste correo electrónico ha sido enviado desde %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
@@ -101,7 +100,7 @@ msgstr "Enviar documento por correo electrónico"
 
 #: permissions.py:16
 msgid "View document mailing error log"
-msgstr ""
+msgstr "Ver bitácora de errores de envío"
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"
@@ -109,15 +108,11 @@ msgstr "Enlace para el documento: {{ documento }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
-"Plantilla para la línea de asunto del correo electrónico para envío de "
-"enlace del documento."
+msgstr "Plantilla para la línea de asunto del correo electrónico para envío de enlace del documento."
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr ""
-"Plantilla para el cuerpo del correo electrónico de envío de enlace de "
-"documento."
+msgstr "Plantilla para el cuerpo del correo electrónico de envío de enlace de documento."
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -125,15 +120,11 @@ msgstr "Documento: {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
-msgstr ""
-"Plantilla para la línea de sujeto del correo electrónico de envio de "
-"documento."
+msgstr "Plantilla para la línea de sujeto del correo electrónico de envio de documento."
 
 #: settings.py:30
 msgid "Template for the document email form body line."
-msgstr ""
-"Plantilla para la línea de cuerpo del correo electrónico para envío de "
-"documento."
+msgstr "Plantilla para la línea de cuerpo del correo electrónico para envío de documento."
 
 #: views.py:56
 msgid "Must provide at least one document."
@@ -141,9 +132,7 @@ msgstr "Debe proveer al menos un documento"
 
 #: views.py:105
 msgid "Successfully queued for delivery via email."
-msgstr ""
-"Añadido de forma exitosa a la lista de espera para envío de correo "
-"electrónico"
+msgstr "Añadido de forma exitosa a la lista de espera para envío de correo electrónico"
 
 #: views.py:114
 msgid "Send"

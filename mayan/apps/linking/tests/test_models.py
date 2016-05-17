@@ -13,8 +13,7 @@ from user_management.tests.literals import (
 
 from ..models import SmartLink
 
-TEST_SMART_LINK_LABEL = 'test label'
-TEST_SMART_LINK_DYNAMIC_LABEL = '{{ document.label }}'
+from .literals import TEST_SMART_LINK_LABEL, TEST_SMART_LINK_DYNAMIC_LABEL
 
 
 @override_settings(OCR_AUTO_OCR=False)

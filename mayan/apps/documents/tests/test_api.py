@@ -173,7 +173,7 @@ class DocumentAPITestCase(APITestCase):
         self.assertEqual(Document.trash.count(), 1)
 
         self.client.delete(
-            reverse('rest_api:deleteddocument-detail', args=(document.pk,))
+            reverse('rest_api:trasheddocument-detail', args=(document.pk,))
         )
 
         self.assertEqual(Document.trash.count(), 0)
@@ -187,7 +187,7 @@ class DocumentAPITestCase(APITestCase):
         document.delete()
 
         self.client.post(
-            reverse('rest_api:deleteddocument-restore', args=(document.pk,))
+            reverse('rest_api:trasheddocument-restore', args=(document.pk,))
         )
 
         self.assertEqual(Document.trash.count(), 0)

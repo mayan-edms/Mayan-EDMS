@@ -25,9 +25,12 @@ from user_management.tests import (
 from ..links import link_upload_version
 from ..literals import SOURCE_CHOICE_WEB_FORM
 from ..models import StagingFolderSource, WebFormSource
-from ..permissions import permission_staging_file_delete
+from ..permissions import (
+    permission_sources_setup_create, permission_sources_setup_delete,
+    permission_sources_setup_view, permission_staging_file_delete
+)
 
-TEST_SOURCE_LABEL = 'test'
+TEST_SOURCE_LABEL = 'test source'
 TEST_SOURCE_UNCOMPRESS_N = 'n'
 TEST_STAGING_PREVIEW_WIDTH = 640
 
@@ -285,3 +288,125 @@ class StagingFolderTestCase(GenericViewTestCase):
 
         self.assertContains(response, 'deleted', status_code=200)
         self.assertEqual(len(list(staging_folder.get_files())), 0)
+
+
+class SourcesTestCase(GenericDocumentViewTestCase):
+    def create_web_source(self):
+        self.source = WebFormSource.objects.create(
+            enabled=True, label=TEST_SOURCE_LABEL,
+            uncompress=TEST_SOURCE_UNCOMPRESS_N
+        )
+
+    def test_source_list_view_with_permission(self):
+        self.create_web_source()
+
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_sources_setup_view.stored_permission
+        )
+
+        response = self.get(viewname='sources:setup_source_list')
+
+        self.assertContains(response, text=self.source.label, status_code=200)
+
+    def test_source_list_view_no_permission(self):
+        self.create_web_source()
+
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        response = self.get(viewname='sources:setup_source_list')
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_source_create_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_sources_setup_create.stored_permission
+        )
+        self.role.permissions.add(
+            permission_sources_setup_view.stored_permission
+        )
+
+        response = self.post(
+            args=(SOURCE_CHOICE_WEB_FORM,), follow=True,
+            viewname='sources:setup_source_create', data={
+                'enabled': True, 'label': TEST_SOURCE_LABEL,
+                'uncompress': TEST_SOURCE_UNCOMPRESS_N
+            }
+        )
+
+        webform_source = WebFormSource.objects.first()
+
+        self.assertEqual(webform_source.label, TEST_SOURCE_LABEL)
+        self.assertEqual(webform_source.uncompress, TEST_SOURCE_UNCOMPRESS_N)
+
+        self.assertEquals(response.status_code, 200)
+
+    def test_source_create_view_no_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_sources_setup_view.stored_permission
+        )
+
+        response = self.post(
+            args=(SOURCE_CHOICE_WEB_FORM,), follow=True,
+            viewname='sources:setup_source_create', data={
+                'enabled': True, 'label': TEST_SOURCE_LABEL,
+                'uncompress': TEST_SOURCE_UNCOMPRESS_N
+            }
+        )
+
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(WebFormSource.objects.count(), 0)
+
+    def test_source_delete_view_with_permission(self):
+        self.create_web_source()
+
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_sources_setup_delete.stored_permission
+        )
+        self.role.permissions.add(
+            permission_sources_setup_view.stored_permission
+        )
+
+        response = self.post(
+            args=(self.source.pk,), follow=True,
+            viewname='sources:setup_source_delete'
+        )
+
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(WebFormSource.objects.count(), 0)
+
+    def test_source_delete_view_no_permission(self):
+        self.create_web_source()
+
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_sources_setup_view.stored_permission
+        )
+
+        response = self.post(
+            args=(self.source.pk,), follow=True,
+            viewname='sources:setup_source_delete'
+        )
+
+        self.assertEqual(response.status_code, 403)
+        self.assertEqual(WebFormSource.objects.count(), 1)

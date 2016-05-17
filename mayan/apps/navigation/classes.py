@@ -136,6 +136,19 @@ class Menu(object):
                                 resolved_links.append(resolved_link)
                         # No need for further content object match testing
                         break
+                    else:
+                        # Second try for objects using .defer() or .only()
+                        if inspect.isclass(bound_source) and isinstance(resolved_navigation_object, bound_source):
+                            for link in links:
+                                resolved_link = link.resolve(
+                                    context=context,
+                                    resolved_object=resolved_navigation_object
+                                )
+                                if resolved_link:
+                                    resolved_links.append(resolved_link)
+                            # No need for further content object match testing
+                            break
+
                 except TypeError:
                     # When source is a dictionary
                     pass
@@ -212,6 +225,7 @@ class Link(object):
         self.keep_query = keep_query
         self.kwargs = kwargs or {}
         self.permissions = permissions or []
+        self.permissions_related = permissions_related
         self.remove_from_query = remove_from_query or []
         self.tags = tags
         self.text = text
@@ -246,7 +260,7 @@ class Link(object):
                     try:
                         AccessControlList.objects.check_access(
                             self.permissions, request.user, resolved_object,
-                            related=getattr(self, 'permissions_related', None)
+                            related=self.permissions_related
                         )
                     except PermissionDenied:
                         return None
@@ -349,7 +363,12 @@ class SourceColumn(object):
                 try:
                     return cls._registry[source.__class__]
                 except KeyError:
-                    return ()
+                    try:
+                        # Special case for queryset items produced from
+                        # .defer() or .only() optimizations
+                        return cls._registry[source._meta.parents.items()[0][0]]
+                    except (KeyError, IndexError):
+                        return ()
         except TypeError:
             # unhashable type: list
             return ()

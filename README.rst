@@ -59,8 +59,8 @@ Contribute
 .. _`the repository`: http://gitlab.com/mayan-edms/mayan-edms
 .. _`contributors file`: https://gitlab.com/mayan-edms/mayan-edms/blob/master/docs/topics/contributors.rst
 
-.. |Build Status| image:: https://gitlab.com/ci/projects/6169/status.png?ref=master
-   :target: https://gitlab.com/ci/projects/6169?ref=master
+.. |Build Status| image:: https://gitlab.com/mayan-edms/mayan-edms/badges/master/build.svg
+   :target: https://gitlab.com/mayan-edms/mayan-edms/commits/master
 .. |Logo| image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
 .. |Animation| image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif
 .. |Installs badge| image:: http://img.shields.io/pypi/dm/mayan-edms.svg?style=flat

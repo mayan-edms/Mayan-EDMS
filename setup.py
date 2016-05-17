@@ -56,13 +56,13 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-Django==1.8.11
+Django==1.8.13
 Pillow==3.1.0
 PyYAML==3.11
 celery==3.1.19
 cssmin==0.2.0
 django-activity-stream==0.6.0
-django-autoadmin==1.1.0
+django-autoadmin==1.1.1
 django-celery==3.1.17
 django-colorful==1.1.0
 django-compressor==2.0

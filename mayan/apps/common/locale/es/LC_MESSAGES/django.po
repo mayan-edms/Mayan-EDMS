@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
 # jmcainzos <jmcainzos@vodafone.es>, 2015
 # Lory977 <helga.carrero@gmail.com>, 2015
+# Roberto Rosario, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2016-04-27 14:10-0400\n"
-"PO-Revision-Date: 2016-03-21 21:08+0000\n"
+"PO-Revision-Date: 2016-05-09 01:42+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:72 settings.py:9
@@ -59,7 +59,7 @@ msgstr ""
 #: generics.py:299
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s creado con éxito."
 
 #: generics.py:324
 #, python-format
@@ -69,7 +69,7 @@ msgstr ""
 #: generics.py:335
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s borrado con éxito."
 
 #: generics.py:380
 #, python-format
@@ -79,7 +79,7 @@ msgstr ""
 #: generics.py:391
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s actualizado con éxito."
 
 #: links.py:9
 msgid "About"
@@ -178,20 +178,18 @@ msgid "User locale profiles"
 msgstr "Perfiles de localización de usuario"
 
 #: settings.py:13
+#| msgid ""
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()."
-msgstr ""
-"El directorio temporaro es el utilizado por todo el proyecto para almacenar "
-"miniaturas, previsualizaciones y los archivos temporales. Si no se "
-"especifica ninguno, se creará utilizando tempfile.mkdtemp ()."
+"temporary files.  If none is specified, one will be created using "
+"tempfile.mkdtemp()."
+msgstr "El directorio temporaro es el utilizado por todo el proyecto para almacenar miniaturas, previsualizaciones y los archivos temporales. Si no se especifica ninguno, se creará utilizando tempfile.mkdtemp ()."
 
 #: settings.py:22
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Un soporte de almacenamiento que todos los 'workers' puedan utilizar para "
-"compartir archivos."
+msgstr "Un soporte de almacenamiento que todos los 'workers' puedan utilizar para compartir archivos."
 
 #: settings.py:28
 msgid "An integer specifying how many objects should be displayed per page."
@@ -203,7 +201,8 @@ msgstr ""
 
 #: settings.py:40
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
 msgstr ""
 
 #: views.py:37
@@ -223,6 +222,7 @@ msgid "Edit current user locale profile details"
 msgstr "Editar los detalles del perfil del usuario local"
 
 #: views.py:113
+#| msgid "Selection"
 msgid "Filter selection"
 msgstr ""
 
@@ -232,6 +232,7 @@ msgid "Results for filter: %s"
 msgstr ""
 
 #: views.py:136
+#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Filtro no encontrado"
 
@@ -285,11 +286,11 @@ msgstr "Ninguno"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -298,11 +299,11 @@ msgstr "Ninguno"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

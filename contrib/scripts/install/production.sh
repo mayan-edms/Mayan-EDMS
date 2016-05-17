@@ -20,7 +20,7 @@ apt-get -qq update
 apt-get -y upgrade
 
 echo -e "\n -> Installing core binaries \n"
-apt-get install nginx supervisor redis-server postgresql libpq-dev libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr unpaper poppler-utils -y
+apt-get install nginx supervisor redis-server postgresql libpq-dev libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv tesseract-ocr poppler-utils -y
 
 echo -e "\n -> Setting up virtualenv \n"
 rm -f ${INSTALLATION_DIRECTORY}

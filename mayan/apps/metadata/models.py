@@ -121,7 +121,7 @@ class MetadataType(models.Model):
 
         if not value and self.get_required_for(document_type=document_type):
             raise ValidationError(
-                _('This metadata is required for this document type.')
+                _('"%s" is required for this document type.') % self.label
             )
 
         if self.lookup:
