@@ -1,3 +1,8 @@
+2.1.1 (2016-05-17)
+==================
+- Fix navigation issue that make it impossible to add new sources. GitLab issue #288.
+
+
 2.1 (2016-05-14)
 ================
 - Upgrade to use Django 1.8.13. Issue #246.
@@ -34,6 +39,7 @@
 - Add mailing documentation chapter.
 - Add roadmap documentation chapter.
 - API updates.
+
 
 2.0.2 (2016-02-09)
 ==================

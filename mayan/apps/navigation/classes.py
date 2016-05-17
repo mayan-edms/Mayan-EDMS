@@ -364,8 +364,10 @@ class SourceColumn(object):
                     return cls._registry[source.__class__]
                 except KeyError:
                     try:
+                        # Special case for queryset items produced from
+                        # .defer() or .only() optimizations
                         return cls._registry[source._meta.parents.items()[0][0]]
-                    except IndexError:
+                    except (KeyError, IndexError):
                         return ()
         except TypeError:
             # unhashable type: list
