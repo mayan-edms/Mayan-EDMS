@@ -8,8 +8,8 @@ import organizations.shortcuts
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('organizations', '0001_initial'),
-        ('documents', '0033_auto_20160325_0052'),
+        ('organizations', '0002_add_data_default_organization'),
+        ('documents', '0034_auto_20160509_2321'),
     ]
 
     operations = [
