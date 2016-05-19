@@ -1,6 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
+from operator import itemgetter
 
 from django import forms
 from django.core.exceptions import PermissionDenied
@@ -8,7 +9,7 @@ from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from common.forms import DetailForm
+from common.forms import DetailForm, ModelForm
 from permissions import Permission
 
 from .models import (
@@ -60,13 +61,14 @@ class DocumentPreviewForm(forms.Form):
     preview = forms.CharField(widget=DocumentPagesCarouselWidget())
 
 
-class DocumentForm(forms.ModelForm):
+class DocumentForm(ModelForm):
     """
     Form sub classes from DocumentForm used only when editing a document
     """
     class Meta:
-        model = Document
         fields = ('label', 'description', 'language')
+        model = Document
+        sorted_fields = {'language': itemgetter(1)}
 
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type', None)

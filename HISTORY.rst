@@ -1,3 +1,7 @@
+2.1.2 (2016-05-xx)
+==================
+- Sort document languages and user profile locale language lists. GitLab issue #292.
+
 2.1.1 (2016-05-17)
 ==================
 - Fix navigation issue that make it impossible to add new sources. GitLab issue #288.
