@@ -1,6 +1,8 @@
-2.1.2 (2016-05-xx)
+2.1.2 (2016-05-20)
 ==================
 - Sort document languages and user profile locale language lists. GitLab issue #292.
+- Fix metadata lookup for {{ users }} and {{ group }}. Fixes GitLab #290.
+- Add Makefile for common development tasks
 
 2.1.1 (2016-05-17)
 ==================
