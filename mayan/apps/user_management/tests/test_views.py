@@ -1,8 +1,17 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 
 from common.tests.test_views import GenericViewTestCase
+from documents.tests.test_views import GenericDocumentViewTestCase
+
+from metadata.models import MetadataType
+from metadata.permissions import permission_metadata_document_edit
+
+from metadata.tests.literals import (
+    TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_NAME,
+)
 
 from ..permissions import (
     permission_user_delete, permission_user_edit, permission_user_view
@@ -179,3 +188,58 @@ class UserManagementViewTestCase(GenericViewTestCase):
 
         self.assertContains(response, text='deleted', status_code=200)
         self.assertEqual(get_user_model().objects.count(), 2)
+
+
+class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
+    def setUp(self):
+        super(MetadataLookupIntegrationTestCase, self).setUp()
+
+        self.metadata_type = MetadataType.objects.create(
+            name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
+        )
+
+        self.document_type.metadata.create(metadata_type=self.metadata_type)
+
+    def test_user_list_lookup_render(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.metadata_type.lookup = '{{ users }}'
+        self.metadata_type.save()
+        self.document.metadata.create(metadata_type=self.metadata_type)
+        self.role.permissions.add(
+            permission_metadata_document_edit.stored_permission
+        )
+
+        response = self.get(
+            viewname='metadata:metadata_edit', args=(self.document.pk,)
+        )
+
+        self.assertContains(
+            response, text='<option value="{}">{}</option>'.format(
+                TEST_USER_USERNAME, TEST_USER_USERNAME
+            ), status_code=200
+        )
+
+    def test_group_list_lookup_render(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.metadata_type.lookup = '{{ groups }}'
+        self.metadata_type.save()
+        self.document.metadata.create(metadata_type=self.metadata_type)
+        self.role.permissions.add(
+            permission_metadata_document_edit.stored_permission
+        )
+
+        response = self.get(
+            viewname='metadata:metadata_edit', args=(self.document.pk,)
+        )
+
+        self.assertContains(
+            response, text='<option value="{}">{}</option>'.format(
+                Group.objects.first().name, Group.objects.first().name
+            ), status_code=200
+        )

@@ -29,7 +29,10 @@ class MetadataLookup(object):
     def get_as_context(cls):
         result = {}
         for entry in cls._registry:
-            result[entry.name] = entry.value
+            try:
+                result[entry.name] = entry.value()
+            except TypeError:
+                result[entry.name] = entry.value
 
         return result
 

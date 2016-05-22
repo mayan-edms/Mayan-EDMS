@@ -22,6 +22,14 @@ from .links import (
 )
 
 
+def get_groups():
+    return ','.join([group.name for group in Group.objects.all()])
+
+
+def get_users():
+    return ','.join([user.get_full_name() or user.username for user in get_user_model().objects.all()])
+
+
 class UserManagementApp(MayanAppConfig):
     app_url = 'accounts'
     name = 'user_management'
@@ -36,12 +44,12 @@ class UserManagementApp(MayanAppConfig):
         APIEndPoint(app=self, version_string='1')
 
         MetadataLookup(
-            description=_('All the groups.'), name='group',
-            value=Group.objects.all()
+            description=_('All the groups.'), name='groups',
+            value=get_groups
         )
         MetadataLookup(
             description=_('All the users.'), name='users',
-            value=User.objects.all()
+            value=get_users
         )
 
         SourceColumn(
