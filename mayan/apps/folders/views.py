@@ -90,7 +90,7 @@ class FolderDetailView(DocumentListView):
         }
 
     def get_folder(self):
-        folder = get_object_or_404(Folder.on_organization, pk=self.kwargs['pk'])
+        return get_object_or_404(Folder.on_organization, pk=self.kwargs['pk'])
 
 
 class FolderEditView(SingleObjectEditView):
@@ -129,7 +129,7 @@ class FolderListView(SingleObjectListView):
 class DocumentFolderListView(FolderListView):
     def dispatch(self, request, *args, **kwargs):
         self.document = get_object_or_404(
-            Document.on_organization, pk=self.kwargs['pk']
+            Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk']
         )
 
         try:
@@ -155,7 +155,7 @@ class DocumentFolderListView(FolderListView):
 
 
 def folder_add_document(request, document_id=None, document_id_list=None):
-    queryset = Document.on_organization.all()
+    queryset = Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
 
     if document_id:
         queryset = queryset.filter(pk=document_id)
