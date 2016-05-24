@@ -39,9 +39,7 @@ class FolderCreateView(SingleObjectCreateView):
 
     def form_valid(self, form):
         try:
-            Folder.objects.get(
-                label=form.cleaned_data['label'], user=self.request.user
-            )
+            Folder.objects.get(label=form.cleaned_data['label'])
         except Folder.DoesNotExist:
             instance = form.save(commit=False)
             instance.user = self.request.user
