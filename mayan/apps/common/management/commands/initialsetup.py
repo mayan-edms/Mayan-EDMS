@@ -12,4 +12,5 @@ class Command(management.BaseCommand):
         management.call_command('createsettings', interactive=False)
         management.call_command('migrate', interactive=False)
         management.call_command('createautoadmin', interactive=False)
+        management.call_command('createorganizationadmin', interactive=False)
         post_initial_setup.send(sender=self)
