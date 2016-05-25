@@ -1,8 +1,11 @@
 from __future__ import unicode_literals
 
+import logging
 import string
 import warnings
 
+from django.apps import apps
+from django.contrib.auth import get_user_model
 from django.core.exceptions import ImproperlyConfigured, ValidationError
 from django.db import models
 from django.db.models.signals import pre_save, pre_delete
@@ -10,7 +13,16 @@ from django.utils.deprecation import RemovedInDjango19Warning
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from permissions.classes import Permission
+
+from .settings import (
+    setting_organization_admin_group, setting_organization_admin_email,
+    setting_organization_admin_password, setting_organization_admin_role,
+    setting_organization_admin_username
+)
+
 ORGANIZATION_CACHE = {}
+logger = logging.getLogger(__name__)
 
 
 class OrganizationManager(models.Manager):
@@ -55,6 +67,64 @@ class Organization(models.Model):
 
     def __str__(self):
         return self.label
+
+    def create_admin(self, email=setting_organization_admin_email.value, password=setting_organization_admin_password.value, username=setting_organization_admin_username.value):
+        UserModel = get_user_model()
+
+        if password:
+            try:
+                # Let's try to see if it is a callable
+                password_value = password()
+            except TypeError:
+                password_value = password
+        else:
+            password_value = UserModel.objects.make_random_password()
+
+        try:
+            UserModel.objects.get(
+                **{UserModel.USERNAME_FIELD: username, 'organization': self}
+            )
+        except UserModel.DoesNotExist:
+            MayanGroup = apps.get_model('user_management', 'MayanGroup')
+            Role = apps.get_model('permissions', 'Role')
+
+            group, created = MayanGroup.objects.get_or_create(
+                name=setting_organization_admin_group.value, organization=self
+            )
+
+            role, created = Role.objects.get_or_create(
+                label=setting_organization_admin_role.value, organization=self
+            )
+
+            logger.info(
+                'Creating organization admin -- login: %s, email: %s, '
+                'password: %s', username, email, password_value
+            )
+
+            UserModel.objects.create(
+                **{
+                    'email': email,
+                    'organization': self,
+                    UserModel.USERNAME_FIELD: username
+                }
+            )
+
+            account = UserModel.on_organization.get(
+                **{UserModel.USERNAME_FIELD: username}
+            )
+            account.set_password(raw_password=password_value)
+            account.save()
+
+            role.organization_groups.add(group)
+            account.organization_groups.add(group)
+
+            for permission in Permission.all():
+                role.permissions.add(permission.stored_permission)
+        else:
+            logger.error(
+                'Organization admin user already exists. -- login: %s',
+                username
+            )
 
 
 def clear_organization_cache(sender, **kwargs):

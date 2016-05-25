@@ -1,0 +1,7 @@
+from __future__ import unicode_literals
+
+DEFAULT_ORGANIZATION_ADMIN_GROUP = 'Organization admins'
+DEFAULT_ORGANIZATION_ADMIN_EMAIL = 'oadmin@example.com'
+DEFAULT_ORGANIZATION_ADMIN_PASSWORD = None
+DEFAULT_ORGANIZATION_ADMIN_ROLE = 'Organization admins'
+DEFAULT_ORGANIZATION_ADMIN_USERNAME = 'oadmin'
