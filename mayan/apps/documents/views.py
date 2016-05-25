@@ -306,7 +306,7 @@ class DocumentPageView(SimpleView):
         }
 
     def get_object(self):
-        return get_object_or_404(DocumentPage.objects.filter(document__document_type__organization__pk=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(DocumentPage.objects.filter(document_version__document__document_type__organization__pk=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
 
 
 class DocumentPageViewResetView(RedirectView):
