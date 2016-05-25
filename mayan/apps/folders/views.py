@@ -109,7 +109,6 @@ class FolderEditView(SingleObjectEditView):
 
 
 class FolderListView(SingleObjectListView):
-    model = Folder
     object_permission = permission_folder_view
 
     def get_extra_context(self):

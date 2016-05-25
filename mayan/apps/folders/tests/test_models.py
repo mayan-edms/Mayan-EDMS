@@ -4,6 +4,7 @@ from django.test import TestCase, override_settings
 
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from organizations.utils import create_default_organization
 
 from ..models import Folder
 
@@ -13,7 +14,9 @@ from .literals import TEST_FOLDER_LABEL
 @override_settings(OCR_AUTO_OCR=False)
 class FolderTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        create_default_organization()
+
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -26,20 +29,20 @@ class FolderTestCase(TestCase):
         self.document_type.delete()
 
     def test_folder_creation(self):
-        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
+        folder = Folder.on_organization.create(label=TEST_FOLDER_LABEL)
 
-        self.assertEqual(Folder.objects.all().count(), 1)
+        self.assertEqual(Folder.on_organization.all().count(), 1)
         self.assertEqual(list(Folder.objects.all()), [folder])
 
     def test_addition_of_documents(self):
-        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
+        folder = Folder.on_organization.create(label=TEST_FOLDER_LABEL)
         folder.documents.add(self.document)
 
         self.assertEqual(folder.documents.count(), 1)
         self.assertEqual(list(folder.documents.all()), [self.document])
 
     def test_addition_and_deletion_of_documents(self):
-        folder = Folder.objects.create(label=TEST_FOLDER_LABEL)
+        folder = Folder.on_organization.create(label=TEST_FOLDER_LABEL)
         folder.documents.add(self.document)
 
         self.assertEqual(folder.documents.count(), 1)
