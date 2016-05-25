@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.test.client import Client
 from django.test import TestCase
 
+from organizations.utils import create_default_organization
 from user_management.tests import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
 )
@@ -16,7 +17,8 @@ from .literals import TEST_ROLE_LABEL, TEST_ROLE_LABEL_EDITED
 
 class PermissionsViewsTestCase(TestCase):
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
+        create_default_organization()
+        self.admin_user = get_user_model().on_organization.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
@@ -39,11 +41,11 @@ class PermissionsViewsTestCase(TestCase):
 
         self.assertContains(response, 'created', status_code=200)
 
-        self.assertEqual(Role.objects.count(), 1)
-        self.assertEqual(Role.objects.first().label, TEST_ROLE_LABEL)
+        self.assertEqual(Role.on_organization.count(), 1)
+        self.assertEqual(Role.on_organization.first().label, TEST_ROLE_LABEL)
 
     def test_role_delete_view(self):
-        role = Role.objects.create(label=TEST_ROLE_LABEL)
+        role = Role.on_organization.create(label=TEST_ROLE_LABEL)
 
         response = self.client.post(
             reverse(
@@ -53,10 +55,10 @@ class PermissionsViewsTestCase(TestCase):
 
         self.assertContains(response, 'deleted', status_code=200)
 
-        self.assertEqual(Role.objects.count(), 0)
+        self.assertEqual(Role.on_organization.count(), 0)
 
     def test_role_edit_view(self):
-        role = Role.objects.create(label=TEST_ROLE_LABEL)
+        role = Role.on_organization.create(label=TEST_ROLE_LABEL)
 
         response = self.client.post(
             reverse(
@@ -68,5 +70,7 @@ class PermissionsViewsTestCase(TestCase):
 
         self.assertContains(response, 'update', status_code=200)
 
-        self.assertEqual(Role.objects.count(), 1)
-        self.assertEqual(Role.objects.first().label, TEST_ROLE_LABEL_EDITED)
+        self.assertEqual(Role.on_organization.count(), 1)
+        self.assertEqual(
+            Role.on_organization.first().label, TEST_ROLE_LABEL_EDITED
+        )
