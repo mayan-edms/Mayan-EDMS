@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 
 from common.tests.test_views import GenericViewTestCase
 from documents.tests.test_views import GenericDocumentViewTestCase
@@ -13,6 +12,7 @@ from metadata.tests.literals import (
     TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_NAME,
 )
 
+from ..models import MayanGroup
 from ..permissions import (
     permission_user_delete, permission_user_edit, permission_user_view
 )
@@ -120,7 +120,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
         self.assertEqual(response.status_code, 200)
 
     def test_user_delete_view_no_permissions(self):
-        user = get_user_model().objects.create(
+        user = get_user_model().on_organization.create(
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
@@ -133,10 +133,10 @@ class UserManagementViewTestCase(GenericViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(get_user_model().objects.count(), 3)
+        self.assertEqual(get_user_model().on_organization.count(), 3)
 
     def test_user_delete_view_with_permissions(self):
-        user = get_user_model().objects.create(
+        user = get_user_model().on_organization.create(
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
@@ -150,10 +150,10 @@ class UserManagementViewTestCase(GenericViewTestCase):
         )
 
         self.assertContains(response, text='deleted', status_code=200)
-        self.assertEqual(get_user_model().objects.count(), 2)
+        self.assertEqual(get_user_model().on_organization.count(), 2)
 
     def test_user_multiple_delete_view_no_permissions(self):
-        user = get_user_model().objects.create(
+        user = get_user_model().on_organization.create(
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
@@ -168,10 +168,10 @@ class UserManagementViewTestCase(GenericViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(get_user_model().objects.count(), 3)
+        self.assertEqual(get_user_model().on_organization.count(), 3)
 
     def test_user_multiple_delete_view_with_permissions(self):
-        user = get_user_model().objects.create(
+        user = get_user_model().on_organization.create(
             username=TEST_USER_TO_DELETE_USERNAME
         )
 
@@ -187,7 +187,7 @@ class UserManagementViewTestCase(GenericViewTestCase):
         )
 
         self.assertContains(response, text='deleted', status_code=200)
-        self.assertEqual(get_user_model().objects.count(), 2)
+        self.assertEqual(get_user_model().on_organization.count(), 2)
 
 
 class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
@@ -240,6 +240,7 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
 
         self.assertContains(
             response, text='<option value="{}">{}</option>'.format(
-                Group.objects.first().name, Group.objects.first().name
+                MayanGroup.objects.first().name,
+                MayanGroup.objects.first().name
             ), status_code=200
         )
