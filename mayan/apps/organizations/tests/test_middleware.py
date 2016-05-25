@@ -9,41 +9,48 @@ from django.db import connections, router
 from django.http import HttpRequest
 from django.test import TestCase, modify_settings, override_settings
 
-from .management import create_default_organization
-from .middleware import CurrentOrganizationMiddleware
-from .models import Organization
-from .shortcuts import get_current_organization
+from ..middleware import CurrentOrganizationMiddleware
+from ..models import Organization
+from ..shortcuts import get_current_organization
+from ..utils import create_default_organization
+
+TEST_ORGANIZATION_LABEL = 'Test organization label'
 
 
 class OrganizationsFrameworkTests(TestCase):
 
     def setUp(self):
-        Organization(id=settings.ORGANIZATION_ID, domain="example.com", name="example.com").save()
+        Organization(
+            id=settings.ORGANIZATION_ID, label=TEST_ORGANIZATION_LABEL
+        ).save()
 
     def test_organization_manager(self):
-        # Make sure that get_current() does not return a deleted Organization object.
+        # Make sure that get_current() does not return a deleted Organization
+        # object.
         s = Organization.objects.get_current()
         self.assertTrue(isinstance(s, Organization))
         s.delete()
         self.assertRaises(ObjectDoesNotExist, Organization.objects.get_current)
 
     def test_organization_cache(self):
-        # After updating a Organization object (e.g. via the admin), we shouldn't return a
-        # bogus value from the ORGANIZATION_CACHE.
+        # After updating a Organization object (e.g. via the admin), we
+        # shouldn't return a bogus value from the ORGANIZATION_CACHE.
         organization = Organization.objects.get_current()
-        self.assertEqual("example.com", organization.name)
+        self.assertEqual(TEST_ORGANIZATION_LABEL, organization.label)
         s2 = Organization.objects.get(id=settings.ORGANIZATION_ID)
-        s2.name = "Example organization"
+        s2.label = 'Example organization'
         s2.save()
         organization = Organization.objects.get_current()
-        self.assertEqual("Example organization", organization.name)
+        self.assertEqual('Example organization', organization.label)
 
     def test_delete_all_organizations_clears_cache(self):
         # When all organization objects are deleted the cache should also
         # be cleared and get_current() should raise a DoesNotExist.
         self.assertIsInstance(Organization.objects.get_current(), Organization)
         Organization.objects.all().delete()
-        self.assertRaises(Organization.DoesNotExist, Organization.objects.get_current)
+        self.assertRaises(
+            Organization.DoesNotExist, Organization.objects.get_current
+        )
 
     @override_settings(ALLOWED_HOSTS=['example.com'])
     def test_get_current_organization(self):
@@ -53,30 +60,23 @@ class OrganizationsFrameworkTests(TestCase):
             "SERVER_NAME": "example.com",
             "SERVER_PORT": "80",
         }
-        organization = get_current_organization(request)
+        organization = get_current_organization()
         self.assertTrue(isinstance(organization, Organization))
         self.assertEqual(organization.id, settings.ORGANIZATION_ID)
 
-        # Test that an exception is raised if the organizations framework is installed
-        # but there is no matching Organization
+        # Test that an exception is raised if the organizations framework is
+        # installed but there is no matching Organization
         organization.delete()
-        self.assertRaises(ObjectDoesNotExist, get_current_organization, request)
+        self.assertRaises(
+            ObjectDoesNotExist, get_current_organization, request
+        )
 
-        # A RequestOrganization is returned if the organizations framework is not installed
+        # A RequestOrganization is returned if the organizations framework is
+        # not installed
         with self.modify_settings(INSTALLED_APPS={'remove': 'django.contrib.organizations'}):
             organization = get_current_organization(request)
             self.assertTrue(isinstance(organization, RequestOrganization))
             self.assertEqual(organization.name, "example.com")
-
-    def test_domain_name_with_whitespaces(self):
-        # Regression for #17320
-        # Domain names are not allowed contain whitespace characters
-        organization = Organization(name="test name", domain="test test")
-        self.assertRaises(ValidationError, organization.full_clean)
-        organization.domain = "test\ttest"
-        self.assertRaises(ValidationError, organization.full_clean)
-        organization.domain = "test\ntest"
-        self.assertRaises(ValidationError, organization.full_clean)
 
 
 class JustOtherRouter(object):
