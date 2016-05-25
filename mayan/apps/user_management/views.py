@@ -94,7 +94,7 @@ class GroupMembersView(AssignRemoveView):
         return sorted(results, key=lambda x: x[1])
 
     def add(self, item):
-        self.get_object().user_set.add(item)
+        self.get_object().users.add(item)
 
     def get_extra_context(self):
         return {
@@ -116,11 +116,11 @@ class GroupMembersView(AssignRemoveView):
 
     def right_list(self):
         return GroupMembersView.generate_choices(
-            self.get_object().user_set.all()
+            self.get_object().users.all()
         )
 
     def remove(self, item):
-        self.get_object().user_set.remove(item)
+        self.get_object().users.remove(item)
 
 
 class UserEditView(SingleObjectEditView):
@@ -145,7 +145,7 @@ class UserGroupsView(AssignRemoveView):
     view_permission = permission_user_edit
 
     def add(self, item):
-        item.user_set.add(self.get_object())
+        item.users.add(self.get_object())
 
     def get_extra_context(self):
         return {
@@ -167,7 +167,7 @@ class UserGroupsView(AssignRemoveView):
         )
 
     def remove(self, item):
-        item.user_set.remove(self.get_object())
+        item.users.remove(self.get_object())
 
 
 class UserListView(SingleObjectListView):

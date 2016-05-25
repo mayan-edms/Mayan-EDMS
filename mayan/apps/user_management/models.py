@@ -36,7 +36,7 @@ class MayanUser(AbstractUser):
         MayanGroup, blank=True, help_text=_(
             'The groups this user belongs to. A user will get all permissions '
             'granted to each of their groups.'
-        ), related_name='organization_user_set', related_query_name='user',
+        ), related_name='users', related_query_name='user',
         verbose_name=_('Groups')
     )
 

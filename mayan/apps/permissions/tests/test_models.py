@@ -9,7 +9,7 @@ from user_management.models import MayanGroup
 from user_management.tests import TEST_GROUP, TEST_USER_USERNAME
 
 from ..classes import Permission
-from ..models import Role
+from ..models import Role, StoredPermission
 from ..permissions import permission_role_view
 
 from .literals import TEST_ROLE_LABEL
@@ -32,7 +32,7 @@ class PermissionTestCase(TestCase):
             )
 
     def test_with_permissions(self):
-        self.group.user_set.add(self.user)
+        self.group.users.add(self.user)
         self.role.permissions.add(permission_role_view.stored_permission)
         self.role.organization_groups.add(self.group)
 

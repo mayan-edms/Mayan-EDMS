@@ -93,7 +93,7 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
 
         recent_entry = self.document.add_as_recent_document_for_user(self.user)
 
-        content_type = ContentType.on_organization.get_for_model(recent_entry)
+        content_type = ContentType.objects.get_for_model(recent_entry)
 
         view_arguments = {
             'app_label': content_type.app_label,

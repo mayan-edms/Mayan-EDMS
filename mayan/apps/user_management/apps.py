@@ -53,7 +53,7 @@ class UserManagementApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=Group, label=_('Members'), attribute='user_set.count'
+            source=Group, label=_('Members'), attribute='users.count'
         )
 
         SourceColumn(

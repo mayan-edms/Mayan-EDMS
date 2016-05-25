@@ -18,7 +18,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
         model = MayanGroup
 
     def get_users_count(self, instance):
-        return instance.user_set.count()
+        return instance.users.count()
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

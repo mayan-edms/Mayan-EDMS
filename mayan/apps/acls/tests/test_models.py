@@ -53,7 +53,7 @@ class PermissionTestCase(TestCase):
         self.group = MayanGroup.on_organization.create(name=TEST_GROUP)
         self.role = Role.on_organization.create(label=TEST_ROLE_LABEL)
 
-        self.group.user_set.add(self.user)
+        self.group.users.add(self.user)
         self.role.organization_groups.add(self.group)
 
         Permission.invalidate_cache()
