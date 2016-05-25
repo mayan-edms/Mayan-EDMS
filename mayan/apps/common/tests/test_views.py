@@ -2,15 +2,16 @@ from __future__ import absolute_import, unicode_literals
 
 from django.conf.urls import url
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 from django.core.urlresolvers import clear_url_caches, reverse
 from django.http import HttpResponse
 from django.template import Context, Template
 from django.test import TestCase
 
+from organizations.utils import create_default_organization
 from permissions import Permission
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
+from user_management.models import MayanGroup
 from user_management.tests import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_GROUP,
     TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
@@ -21,21 +22,22 @@ from .literals import TEST_VIEW_NAME, TEST_VIEW_URL
 
 class GenericViewTestCase(TestCase):
     def setUp(self):
+        create_default_organization()
         self.has_test_view = False
-        self.admin_user = get_user_model().objects.create_superuser(
+        self.admin_user = get_user_model().on_organization.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
 
-        self.user = get_user_model().objects.create_user(
+        self.user = get_user_model().on_organization.create_user(
             username=TEST_USER_USERNAME, email=TEST_USER_EMAIL,
             password=TEST_USER_PASSWORD
         )
 
-        self.group = Group.objects.create(name=TEST_GROUP)
-        self.role = Role.objects.create(label=TEST_ROLE_LABEL)
+        self.group = MayanGroup.on_organization.create(name=TEST_GROUP)
+        self.role = Role.on_organization.create(label=TEST_ROLE_LABEL)
         self.group.user_set.add(self.user)
-        self.role.groups.add(self.group)
+        self.role.organization_groups.add(self.group)
         Permission.invalidate_cache()
 
     def tearDown(self):
@@ -77,7 +79,7 @@ class GenericViewTestCase(TestCase):
     def login(self, username, password):
         logged_in = self.client.login(username=username, password=password)
 
-        user = get_user_model().objects.get(username=username)
+        user = get_user_model().on_organization.get(username=username)
 
         self.assertTrue(logged_in)
         self.assertTrue(user.is_authenticated())
