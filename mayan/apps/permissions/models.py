@@ -56,7 +56,7 @@ class StoredPermission(models.Model):
             return True
 
         # Request is one of the permission's holders?
-        for group in user.groups.all():
+        for group in user.organization_groups.all():
             for role in group.roles.all():
                 if self in role.permissions.all():
                     return True
