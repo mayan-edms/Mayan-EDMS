@@ -5,6 +5,7 @@ import string
 import warnings
 
 from django.apps import apps
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.exceptions import ImproperlyConfigured, ValidationError
 from django.db import models
@@ -32,12 +33,11 @@ class OrganizationManager(models.Manager):
         the project's settings. The ``Organization`` object is cached the first
         time it's retrieved from the database.
         """
-        from django.conf import settings
         try:
             oid = settings.ORGANIZATION_ID
         except AttributeError:
             raise ImproperlyConfigured(
-                "You're using the Django \"organizations framework\" without "
+                "You're using the \"organizations framework\" without "
                 "having set the ORGANIZATION_ID setting. Create an "
                 "organization in your database and set the ORGANIZATION_ID "
                 "setting to fix this error."
