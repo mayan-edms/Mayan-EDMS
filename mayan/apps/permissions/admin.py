@@ -13,7 +13,7 @@ class RoleAdmin(admin.ModelAdmin):
     def permissions_list(self, instance):
         return ','.join(instance.permissions.values_list('name', flat=True))
 
-    filter_horizontal = ('groups', 'permissions')
+    filter_horizontal = ('organization_groups', 'permissions')
     list_display = ('label', 'permissions_list', 'groups_list')
 
 

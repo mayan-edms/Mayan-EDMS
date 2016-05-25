@@ -2,11 +2,15 @@ from __future__ import unicode_literals
 
 import logging
 
-from django.contrib.auth.models import Group
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+
+from organizations.models import Organization
+from organizations.managers import CurrentOrganizationManager
+from organizations.shortcuts import get_current_organization
+from user_management.models import MayanGroup
 
 from .managers import RoleManager, StoredPermissionManager
 
@@ -69,11 +73,15 @@ class Role(models.Model):
     permissions = models.ManyToManyField(
         StoredPermission, related_name='roles', verbose_name=_('Permissions')
     )
-    groups = models.ManyToManyField(
-        Group, related_name='roles', verbose_name=_('Groups')
+    organization_groups = models.ManyToManyField(
+        MayanGroup, related_name='roles', verbose_name=_('Groups')
+    )
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
     )
 
     objects = RoleManager()
+    on_organization = CurrentOrganizationManager()
 
     def __str__(self):
         return self.label
