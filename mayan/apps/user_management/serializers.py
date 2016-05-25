@@ -1,7 +1,8 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
+
+from user_management.models import MayanGroup
 
 from rest_framework import serializers
 
@@ -14,7 +15,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
             'url': {'view_name': 'rest_api:group-detail'}
         }
         fields = ('id', 'name', 'url', 'users_count')
-        model = Group
+        model = MayanGroup
 
     def get_users_count(self, instance):
         return instance.user_set.count()
@@ -42,7 +43,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     def create(self, validated_data):
         validated_data.pop('groups')
         validated_data.pop('is_active')
-        user = get_user_model().objects.create_user(**validated_data)
+        user = get_user_model().on_organization.create_user(**validated_data)
 
         return user
 
