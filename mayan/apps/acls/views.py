@@ -26,7 +26,6 @@ logger = logging.getLogger(__name__)
 
 class ACLCreateView(SingleObjectCreateView):
     fields = ('role',)
-    model = AccessControlList
 
     def dispatch(self, request, *args, **kwargs):
         self.content_type = get_object_or_404(
@@ -52,14 +51,9 @@ class ACLCreateView(SingleObjectCreateView):
 
         return super(ACLCreateView, self).dispatch(request, *args, **kwargs)
 
-    def get_instance_extra_data(self):
-        return {
-            'content_object': self.content_object
-        }
-
     def form_valid(self, form):
         try:
-            acl = AccessControlList.objects.get(
+            acl = AccessControlList.on_organization.get(
                 content_type=self.content_type,
                 object_id=self.content_object.pk,
                 role=form.cleaned_data['role']
@@ -79,6 +73,14 @@ class ACLCreateView(SingleObjectCreateView):
             ) % self.content_object
         }
 
+    def get_instance_extra_data(self):
+        return {
+            'content_object': self.content_object
+        }
+
+    def get_queryset(self):
+        return AccessControlList.on_organization.all()
+
     def get_success_url(self):
         if self.object.pk:
             return reverse('acls:acl_permissions', args=(self.object.pk,))
@@ -87,8 +89,6 @@ class ACLCreateView(SingleObjectCreateView):
 
 
 class ACLDeleteView(SingleObjectDeleteView):
-    model = AccessControlList
-
     def dispatch(self, request, *args, **kwargs):
         acl = get_object_or_404(AccessControlList, pk=self.kwargs['pk'])
 
@@ -117,6 +117,9 @@ class ACLDeleteView(SingleObjectDeleteView):
                 instance.content_type.model, instance.object_id
             )
         )
+
+    def get_queryset(self):
+        return AccessControlList.on_organization.all()
 
 
 class ACLListView(SingleObjectListView):
@@ -152,7 +155,7 @@ class ACLListView(SingleObjectListView):
         }
 
     def get_queryset(self):
-        return AccessControlList.objects.filter(
+        return AccessControlList.on_organization.filter(
             content_type=self.content_type, object_id=self.content_object.pk
         )
 

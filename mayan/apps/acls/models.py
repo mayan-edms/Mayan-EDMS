@@ -8,6 +8,9 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
+from organizations.models import Organization
+from organizations.managers import CurrentOrganizationManager
+from organizations.shortcuts import get_current_organization
 from permissions.models import Role, StoredPermission
 
 from .managers import AccessControlListManager
@@ -30,6 +33,9 @@ class AccessControlList(models.Model):
         ct_field='content_type',
         fk_field='object_id',
     )
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
+    )
     # TODO: limit choices to the permissions valid for the content_object
     permissions = models.ManyToManyField(
         StoredPermission, blank=True, related_name='acls',
@@ -38,6 +44,7 @@ class AccessControlList(models.Model):
     role = models.ForeignKey(Role, related_name='acls', verbose_name=_('Role'))
 
     objects = AccessControlListManager()
+    on_organization = CurrentOrganizationManager()
 
     class Meta:
         unique_together = ('content_type', 'object_id', 'role')

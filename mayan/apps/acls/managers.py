@@ -74,14 +74,14 @@ class AccessControlListManager(models.Manager):
                 pass
 
         user_roles = []
-        for group in user.groups.all():
+        for group in user.organization_groups.all():
             for role in group.roles.all():
                 if set(stored_permissions).intersection(set(self.get_inherited_permissions(role=role, obj=obj))):
                     return True
 
                 user_roles.append(role)
 
-        if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles).exists():
+        if not self.model.on_organization.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles).exists():
             raise PermissionDenied(ugettext('Insufficient access.'))
 
     def filter_by_access(self, permission, user, queryset):
@@ -89,7 +89,7 @@ class AccessControlListManager(models.Manager):
             return queryset
 
         user_roles = []
-        for group in user.groups.all():
+        for group in user.organization_groups.all():
             for role in group.roles.all():
                 user_roles.append(role)
 

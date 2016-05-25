@@ -33,7 +33,7 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEquals(response.status_code, 403)
-        self.assertEqual(AccessControlList.objects.count(), 0)
+        self.assertEqual(AccessControlList.on_organization.count(), 0)
 
     def test_acl_create_view_with_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
@@ -49,7 +49,7 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(response, text='created', status_code=200)
-        self.assertEqual(AccessControlList.objects.count(), 1)
+        self.assertEqual(AccessControlList.on_organization.count(), 1)
 
     def test_acl_create_duplicate_view_with_permission(self):
         """
@@ -57,7 +57,7 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         Result: Should redirect to existing ACL for object + role combination
         """
 
-        acl = AccessControlList.objects.create(
+        acl = AccessControlList.on_organization.create(
             content_object=self.document, role=self.role
         )
 
@@ -76,8 +76,8 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         self.assertContains(
             response, text='vailable permissions', status_code=200
         )
-        self.assertEqual(AccessControlList.objects.count(), 1)
-        self.assertEqual(AccessControlList.objects.first().pk, acl.pk)
+        self.assertEqual(AccessControlList.on_organization.count(), 1)
+        self.assertEqual(AccessControlList.on_organization.first().pk, acl.pk)
 
     def test_orphan_acl_create_view_with_permission(self):
         """
@@ -93,7 +93,7 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
 
         recent_entry = self.document.add_as_recent_document_for_user(self.user)
 
-        content_type = ContentType.objects.get_for_model(recent_entry)
+        content_type = ContentType.on_organization.get_for_model(recent_entry)
 
         view_arguments = {
             'app_label': content_type.app_label,
@@ -108,4 +108,4 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertNotContains(response, text='optgroup', status_code=200)
-        self.assertEqual(AccessControlList.objects.count(), 1)
+        self.assertEqual(AccessControlList.on_organization.count(), 1)
