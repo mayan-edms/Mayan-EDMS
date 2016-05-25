@@ -20,16 +20,16 @@ variables:
 #  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
 #  tags:
 #    - mysql
-test:postgres:
-  script:
-  - pip install -r requirements/testing.txt
-  - pip install -q psycopg2
-  - coverage run manage.py runtests --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
-  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
-  tags:
-    - postgres
-test:sqlite:
-  script:
-  - pip install -r requirements/testing.txt
-  - coverage run manage.py runtests --settings=mayan.settings.testing.gitlab-ci --nomigrations
-  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
+#test:postgres:
+#  script:
+#  - pip install -r requirements/testing.txt
+#  - pip install -q psycopg2
+#  - coverage run manage.py runtests --settings=mayan.settings.testing.gitlab-ci.db_postgres --nomigrations
+#  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
+#  tags:
+#    - postgres
+#test:sqlite:
+#  script:
+#  - pip install -r requirements/testing.txt
+#  - coverage run manage.py runtests --settings=mayan.settings.testing.gitlab-ci --nomigrations
+#  - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
