@@ -1,6 +1,4 @@
-"""
-Creates the default Organization object.
-"""
+from __future__ import unicode_literals
 
 from django.apps import apps
 from django.core.management.color import no_style
@@ -9,6 +7,10 @@ from django.db.models import signals
 
 
 def create_default_organization(app_config, verbosity=2, interactive=True, using=DEFAULT_DB_ALIAS, **kwargs):
+    """
+    Creates the default Organization object.
+    """
+
     try:
         Organization = apps.get_model('organizations', 'Organization')
     except LookupError:
@@ -40,4 +42,6 @@ def create_default_organization(app_config, verbosity=2, interactive=True, using
         Organization.objects.clear_cache()
 
 
-signals.post_migrate.connect(create_default_organization, sender=apps.get_app_config('organizations'))
+signals.post_migrate.connect(
+    create_default_organization, sender=apps.get_app_config('organizations')
+)
