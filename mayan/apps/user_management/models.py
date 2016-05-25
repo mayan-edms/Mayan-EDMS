@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import AbstractUser, UserManager
+from django.contrib.auth.models import (
+    AbstractUser, Group, GroupManager, UserManager
+)
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
@@ -11,9 +13,25 @@ from organizations.managers import CurrentOrganizationManager
 from organizations.shortcuts import get_current_organization
 
 
+class MayanGroup(Group):
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
+    )
+    objects = GroupManager()
+    on_organization = CurrentOrganizationManager()
+
+
 class MayanUser(AbstractUser):
     organization = models.ForeignKey(
         Organization, default=get_current_organization
+    )
+
+    organization_groups = models.ManyToManyField(
+        MayanGroup, blank=True, help_text=_(
+            'The groups this user belongs to. A user will get all permissions '
+            'granted to each of their groups.'
+        ), related_name='organization_user_set', related_query_name='user',
+        verbose_name=_('Groups')
     )
 
     objects = UserManager()
