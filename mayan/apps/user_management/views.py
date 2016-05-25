@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
@@ -18,6 +17,7 @@ from common.views import (
 from permissions import Permission
 
 from .forms import PasswordForm, UserForm
+from .models import MayanGroup
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
@@ -28,14 +28,15 @@ from .permissions import (
 class GroupCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create new group')}
     fields = ('name',)
-    model = Group
     post_action_redirect = reverse_lazy('user_management:group_list')
     view_permission = permission_group_create
+
+    def get_queryset(self):
+        return MayanGroup.on_organization.all()
 
 
 class GroupEditView(SingleObjectEditView):
     fields = ('name',)
-    model = Group
     post_action_redirect = reverse_lazy('user_management:group_list')
     view_permission = permission_group_edit
 
@@ -45,18 +46,22 @@ class GroupEditView(SingleObjectEditView):
             'title': _('Edit group: %s') % self.get_object(),
         }
 
+    def get_queryset(self):
+        return MayanGroup.on_organization.all()
+
 
 class GroupListView(SingleObjectListView):
     extra_context = {
         'hide_link': True,
         'title': _('Groups'),
     }
-    model = Group
     view_permission = permission_group_view
+
+    def get_queryset(self):
+        return MayanGroup.on_organization.all()
 
 
 class GroupDeleteView(SingleObjectDeleteView):
-    model = Group
     post_action_redirect = reverse_lazy('user_management:group_list')
     view_permission = permission_group_delete
 
@@ -65,6 +70,9 @@ class GroupDeleteView(SingleObjectDeleteView):
             'object': self.get_object(),
             'title': _('Delete the group: %s?') % self.get_object(),
         }
+
+    def get_queryset(self):
+        return MayanGroup.on_organization.all()
 
 
 class GroupMembersView(AssignRemoveView):
@@ -95,11 +103,13 @@ class GroupMembersView(AssignRemoveView):
         }
 
     def get_object(self):
-        return get_object_or_404(Group, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            MayanGroup.on_organization, pk=self.kwargs['pk']
+        )
 
     def left_list(self):
         return GroupMembersView.generate_choices(
-            get_user_model().objects.exclude(
+            get_user_model().on_organization.exclude(
                 groups=self.get_object()
             ).exclude(is_staff=True).exclude(is_superuser=True)
         )
@@ -116,7 +126,7 @@ class GroupMembersView(AssignRemoveView):
 class UserEditView(SingleObjectEditView):
     fields = ('username', 'first_name', 'last_name', 'email', 'is_active',)
     post_action_redirect = reverse_lazy('user_management:user_list')
-    queryset = get_user_model().objects.filter(
+    queryset = get_user_model().on_organization.filter(
         is_superuser=False, is_staff=False
     )
     view_permission = permission_user_edit
@@ -148,12 +158,12 @@ class UserGroupsView(AssignRemoveView):
 
     def left_list(self):
         return AssignRemoveView.generate_choices(
-            Group.objects.exclude(user=self.get_object())
+            MayanGroup.on_organization.exclude(user=self.get_object())
         )
 
     def right_list(self):
         return AssignRemoveView.generate_choices(
-            Group.objects.filter(user=self.get_object())
+            MayanGroup.on_organization.filter(user=self.get_object())
         )
 
     def remove(self, item):
@@ -170,7 +180,7 @@ class UserListView(SingleObjectListView):
         }
 
     def get_queryset(self):
-        return get_user_model().objects.exclude(
+        return get_user_model().on_organization.exclude(
             is_superuser=True
         ).exclude(is_staff=True).order_by('last_name', 'first_name')
 
@@ -204,10 +214,10 @@ def user_delete(request, user_id=None, user_id_list=None):
     post_action_redirect = None
 
     if user_id:
-        users = get_user_model().objects.filter(pk=user_id)
+        users = get_user_model().on_organization.filter(pk=user_id)
         post_action_redirect = reverse('user_management:user_list')
     elif user_id_list:
-        users = get_user_model().objects.filter(pk__in=user_id_list)
+        users = get_user_model().on_organization.filter(pk__in=user_id_list)
 
     if not users:
         messages.error(request, _('Must provide at least one user.'))
@@ -275,10 +285,10 @@ def user_set_password(request, user_id=None, user_id_list=None):
     post_action_redirect = None
 
     if user_id:
-        users = get_user_model().objects.filter(pk=user_id)
+        users = get_user_model().on_organization.filter(pk=user_id)
         post_action_redirect = reverse('user_management:user_list')
     elif user_id_list:
-        users = get_user_model().objects.filter(pk__in=user_id_list)
+        users = get_user_model().on_organization.filter(pk__in=user_id_list)
 
     if not users:
         messages.error(request, _('Must provide at least one user.'))
