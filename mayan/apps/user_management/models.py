@@ -21,6 +21,12 @@ class MayanGroup(Group):
     on_organization = CurrentOrganizationManager()
 
 
+class OrganizationUserManagerHybridClass(CurrentOrganizationManager, UserManager):
+    """
+    Hybrid class to allow calling 'create_superuser' from 'on_organization'
+    """
+
+
 class MayanUser(AbstractUser):
     organization = models.ForeignKey(
         Organization, default=get_current_organization
@@ -35,4 +41,4 @@ class MayanUser(AbstractUser):
     )
 
     objects = UserManager()
-    on_organization = CurrentOrganizationManager()
+    on_organization = OrganizationUserManagerHybridClass()
