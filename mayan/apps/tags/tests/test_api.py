@@ -26,7 +26,7 @@ class TagAPITestCase(APITestCase):
     """
 
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
+        self.admin_user = get_user_model().on_organization.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
@@ -45,25 +45,29 @@ class TagAPITestCase(APITestCase):
             }
         )
 
-        tag = Tag.objects.first()
+        tag = Tag.on_organization.first()
 
         self.assertEqual(response.data['id'], tag.pk)
         self.assertEqual(response.data['label'], TEST_TAG_LABEL)
         self.assertEqual(response.data['color'], TEST_TAG_COLOR)
 
-        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(Tag.on_organization.count(), 1)
         self.assertEqual(tag.label, TEST_TAG_LABEL)
         self.assertEqual(tag.color, TEST_TAG_COLOR)
 
     def test_tag_delete(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = Tag.on_organization.create(
+            color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
+        )
 
         self.client.delete(reverse('rest_api:tag-detail', args=(tag.pk,)))
 
-        self.assertEqual(Tag.objects.count(), 0)
+        self.assertEqual(Tag.on_organization.count(), 0)
 
     def test_tag_edit(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = Tag.on_organization.create(
+            color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
+        )
 
         self.client.put(
             reverse('rest_api:tag-detail', args=(tag.pk,)),
@@ -73,16 +77,18 @@ class TagAPITestCase(APITestCase):
             }
         )
 
-        tag = Tag.objects.first()
+        tag = Tag.on_organization.first()
 
         self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
         self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)
 
     @override_settings(OCR_AUTO_OCR=False)
     def test_tag_add_document(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = Tag.on_organization.create(
+            color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
+        )
 
-        document_type = DocumentType.objects.create(
+        document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -100,9 +106,11 @@ class TagAPITestCase(APITestCase):
 
     @override_settings(OCR_AUTO_OCR=False)
     def test_tag_remove_document(self):
-        tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)
+        tag = Tag.on_organization.create(
+            color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
+        )
 
-        document_type = DocumentType.objects.create(
+        document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 

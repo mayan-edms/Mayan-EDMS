@@ -20,7 +20,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
     def setUp(self):
         super(TagViewTestCase, self).setUp()
 
-        self.tag = Tag.objects.create(
+        self.tag = Tag.on_organization.create(
             color=TEST_TAG_COLOR, label=TEST_TAG_LABEL
         )
 
@@ -33,7 +33,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         self.tag.delete()
-        self.assertEqual(Tag.objects.count(), 0)
+        self.assertEqual(Tag.on_organization.count(), 0)
 
         response = self.post(
             'tags:tag_create', data={
@@ -43,13 +43,13 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(Tag.objects.count(), 0)
+        self.assertEqual(Tag.on_organization.count(), 0)
 
     def test_tag_create_view_with_permissions(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         self.tag.delete()
-        self.assertEqual(Tag.objects.count(), 0)
+        self.assertEqual(Tag.on_organization.count(), 0)
 
         self.role.permissions.add(permission_tag_create.stored_permission)
 
@@ -62,27 +62,27 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         self.assertContains(response, text='created', status_code=200)
 
-        self.assertEqual(Tag.objects.count(), 1)
-        tag = Tag.objects.first()
+        self.assertEqual(Tag.on_organization.count(), 1)
+        tag = Tag.on_organization.first()
         self.assertEqual(tag.label, TEST_TAG_LABEL)
         self.assertEqual(tag.color, TEST_TAG_COLOR)
 
     def test_tag_delete_view_no_permissions(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(Tag.on_organization.count(), 1)
 
         response = self.post(
             'tags:tag_delete', args=(self.tag.pk,)
         )
 
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(Tag.on_organization.count(), 1)
 
     def test_tag_delete_view_with_permissions(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(Tag.on_organization.count(), 1)
 
         self.role.permissions.add(permission_tag_delete.stored_permission)
 
@@ -92,24 +92,24 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         self.assertContains(response, text='deleted', status_code=200)
 
-        self.assertEqual(Tag.objects.count(), 0)
+        self.assertEqual(Tag.on_organization.count(), 0)
 
     def test_tag_multiple_delete_view_no_permissions(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(Tag.on_organization.count(), 1)
 
         response = self.post(
             'tags:tag_multiple_delete', data={'id_list': self.tag.pk}
         )
 
         self.assertEqual(response.status_code, 302)
-        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(Tag.on_organization.count(), 1)
 
     def test_tag_multiple_delete_view_with_permissions(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        self.assertEqual(Tag.objects.count(), 1)
+        self.assertEqual(Tag.on_organization.count(), 1)
 
         self.role.permissions.add(permission_tag_delete.stored_permission)
 
@@ -120,7 +120,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         self.assertContains(response, text='deleted', status_code=200)
 
-        self.assertEqual(Tag.objects.count(), 0)
+        self.assertEqual(Tag.on_organization.count(), 0)
 
     def test_tag_edit_view_no_permissions(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
@@ -132,7 +132,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        tag = Tag.objects.get(pk=self.tag.pk)
+        tag = Tag.on_organization.get(pk=self.tag.pk)
         self.assertEqual(tag.label, TEST_TAG_LABEL)
         self.assertEqual(tag.color, TEST_TAG_COLOR)
 
@@ -148,7 +148,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(response, text='update', status_code=200)
-        tag = Tag.objects.get(pk=self.tag.pk)
+        tag = Tag.on_organization.get(pk=self.tag.pk)
         self.assertEqual(tag.label, TEST_TAG_LABEL_EDITED)
         self.assertEqual(tag.color, TEST_TAG_COLOR_EDITED)
 

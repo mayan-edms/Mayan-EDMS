@@ -154,10 +154,10 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
     queryset = Tag.on_organization.all()
 
     if tag_id:
-        queryset = organization.filter(pk=tag_id)
+        queryset = queryset.filter(pk=tag_id)
         post_action_redirect = reverse('tags:tag_list')
     elif tag_id_list:
-        queryset = organization.filter(pk__in=tag_id_list)
+        queryset = queryset.filter(pk__in=tag_id_list)
 
     if not queryset:
         messages.error(request, _('Must provide at least one tag.'))
