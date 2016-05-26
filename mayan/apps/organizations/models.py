@@ -109,8 +109,8 @@ class Organization(models.Model):
                 }
             )
 
-            account = UserModel.on_organization.get(
-                **{UserModel.USERNAME_FIELD: username}
+            account = UserModel.objects.get(
+                **{UserModel.USERNAME_FIELD: username, 'organization': self,}
             )
             account.set_password(raw_password=password_value)
             account.save()
@@ -120,6 +120,8 @@ class Organization(models.Model):
 
             for permission in Permission.all():
                 role.permissions.add(permission.stored_permission)
+
+            return account, password_value
         else:
             logger.error(
                 'Organization admin user already exists. -- login: %s',
