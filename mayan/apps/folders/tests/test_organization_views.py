@@ -16,7 +16,6 @@ class FolderOrganizationViewTestCase(OrganizationViewTestCase):
                     'label': TEST_FOLDER_LABEL
                 }
             )
-            self.assertEqual(response.status_code, 404)
             self.assertEqual(Folder.on_organization.count(), 1)
 
         with self.settings(ORGANIZATION_ID=self.organization_b.pk):
