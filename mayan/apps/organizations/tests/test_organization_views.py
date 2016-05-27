@@ -1,11 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
-from documents.tests.test_views import GenericDocumentViewTestCase
+from common.tests.test_views import GenericViewTestCase
 
 from ..models import Organization
 
 
-class OrganizationViewTestCase(GenericDocumentViewTestCase):
+class OrganizationViewTestCase(GenericViewTestCase):
     def setUp(self):
         super(OrganizationViewTestCase, self).setUp()
         # Create two organizations
