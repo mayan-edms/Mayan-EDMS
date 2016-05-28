@@ -85,7 +85,7 @@ class DocumentListView(SingleObjectListView):
     object_permission = permission_document_view
 
     def get_document_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID).defer('description', 'uuid', 'date_added', 'language', 'in_trash', 'deleted_date_time').all()
+        return Document.on_organization.defer('description', 'uuid', 'date_added', 'language', 'in_trash', 'deleted_date_time').all()
 
     def get_queryset(self):
         self.queryset = self.get_document_queryset().filter(is_stub=False)
@@ -177,7 +177,7 @@ class DocumentEditView(SingleObjectEditView):
         }
 
     def get_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return Document.on_organization.all()
 
     def get_post_action_redirect(self):
         return reverse(
@@ -251,7 +251,9 @@ class DocumentPageListView(SingleObjectListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            Document.on_organization, pk=self.kwargs['pk']
+        )
 
     def get_queryset(self):
         return self.get_document().pages.all()
@@ -336,7 +338,7 @@ class DocumentPreviewView(SingleObjectDetailView):
         }
 
     def get_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return Document.on_organization.all()
 
 
 class DocumentTrashView(ConfirmView):
@@ -347,7 +349,7 @@ class DocumentTrashView(ConfirmView):
         }
 
     def get_object(self):
-        return get_object_or_404(Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(Document.on_organization, pk=self.kwargs['pk'])
 
     def get_post_action_redirect(self):
         return reverse('documents:document_list_recent')
@@ -386,12 +388,14 @@ class DocumentTrashManyView(MultipleInstanceActionMixin, DocumentTrashView):
         }
 
     def get_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return Document.on_organization.all()
 
 
 class DocumentTypeDocumentListView(DocumentListView):
     def get_document_type(self):
-        return get_object_or_404(DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            DocumentType.on_organization, pk=self.kwargs['pk']
+        )
 
     def get_document_queryset(self):
         return self.get_document_type().documents.all()
@@ -414,7 +418,7 @@ class DocumentTypeListView(SingleObjectListView):
         }
 
     def get_queryset(self):
-        return DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID)
+        return DocumentType.on_organization.all()
 
 
 class DocumentTypeCreateView(SingleObjectCreateView):
@@ -431,7 +435,7 @@ class DocumentTypeCreateView(SingleObjectCreateView):
         }
 
     def get_queryset(self):
-        return DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID)
+        return DocumentType.on_organization.all()
 
 
 class DocumentTypeDeleteView(SingleObjectDeleteView):
@@ -446,7 +450,7 @@ class DocumentTypeDeleteView(SingleObjectDeleteView):
         }
 
     def get_queryset(self):
-        return DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID)
+        return DocumentType.on_organization.all()
 
 
 class DocumentTypeEditView(SingleObjectEditView):
@@ -464,7 +468,7 @@ class DocumentTypeEditView(SingleObjectEditView):
         }
 
     def get_queryset(self):
-        return DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID)
+        return DocumentType.on_organization.all()
 
 
 class DocumentTypeFilenameCreateView(SingleObjectCreateView):
@@ -486,7 +490,9 @@ class DocumentTypeFilenameCreateView(SingleObjectCreateView):
         )
 
     def get_document_type(self):
-        return get_object_or_404(DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            DocumentType.on_organization, pk=self.kwargs['pk']
+        )
 
     def get_extra_context(self):
         return {
@@ -597,7 +603,9 @@ class DocumentVersionListView(SingleObjectListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            Document.on_organization, pk=self.kwargs['pk']
+        )
 
     def get_extra_context(self):
         return {
@@ -610,6 +618,7 @@ class DocumentVersionListView(SingleObjectListView):
 
 
 class DocumentVersionRevertView(ConfirmView):
+    # TODO: organization filter
     object_permission = permission_document_version_revert
     object_permission_related = 'document'
 
@@ -655,10 +664,11 @@ class DocumentView(SingleObjectDetailView):
         }
 
     def get_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return Document.on_organization.all()
 
 
 class EmptyTrashCanView(ConfirmView):
+    # TODO: organization filter
     extra_context = {
         'title': _('Empty trash?')
     }
@@ -687,7 +697,7 @@ class RecentDocumentListView(DocumentListView):
 def document_document_type_edit(request, document_id=None, document_id_list=None):
     post_action_redirect = None
 
-    queryset = Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+    queryset = Document.on_organization.all()
 
     if document_id:
         queryset = queryset.filter(pk=document_id)
@@ -956,7 +966,7 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
     if document_id:
         documents = queryset.filter(pk=document_id)
     elif document_id_list:
-        documents = queryset.objects.filter(pk__in=document_id_list)
+        documents = queryset.filter(pk__in=document_id_list)
 
     if not documents:
         messages.error(request, _('At least one document must be selected.'))
