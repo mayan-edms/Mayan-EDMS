@@ -790,7 +790,7 @@ def get_document_image(request, document_id, size=setting_preview_size.value):
     # Special case. Allow all active and trashed documents but filter by
     # organization, to be able to produce thumbnails for all documents.
     document = get_object_or_404(
-        Document.filter(document_type__in=DocumentType.on_organization.all()),
+        Document.objects.filter(document_type__in=DocumentType.on_organization.all()),
         pk=document_id
     )
     try:
