@@ -34,7 +34,7 @@ class APITagView(generics.RetrieveUpdateDestroyAPIView):
         'PATCH': (permission_tag_edit,),
         'PUT': (permission_tag_edit,)
     }
-    queryset = Tag.objects.all()
+    queryset = Tag.on_organization.all()
     serializer_class = TagSerializer
 
     def delete(self, *args, **kwargs):
@@ -71,7 +71,7 @@ class APITagListView(generics.ListCreateAPIView):
     mayan_object_permissions = {'GET': (permission_tag_view,)}
     mayan_view_permissions = {'POST': (permission_tag_create,)}
     permission_classes = (MayanPermission,)
-    queryset = Tag.objects.all()
+    queryset = Tag.on_organization.all()
 
     def get_serializer_class(self):
         if self.request.method == 'GET':

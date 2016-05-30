@@ -48,7 +48,7 @@ class NewDocumentTagSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         try:
-            tag = Tag.objects.get(pk=validated_data['tag'])
+            tag = Tag.on_organization.get(pk=validated_data['tag'])
 
             try:
                 Permission.check_permissions(

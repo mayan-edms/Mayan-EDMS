@@ -8,6 +8,8 @@ from rest_framework.test import APITestCase
 
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from organizations.models import Organization
+from organizations.utils import create_default_organization
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -26,6 +28,7 @@ class TagAPITestCase(APITestCase):
     """
 
     def setUp(self):
+        create_default_organization()
         self.admin_user = get_user_model().on_organization.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -37,6 +40,7 @@ class TagAPITestCase(APITestCase):
 
     def tearDown(self):
         self.admin_user.delete()
+        Organization.objects.clear_cache()
 
     def test_tag_create(self):
         response = self.client.post(
