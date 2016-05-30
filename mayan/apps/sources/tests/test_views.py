@@ -18,6 +18,8 @@ from documents.tests import (
     TEST_DOCUMENT_TYPE
 )
 from documents.tests.test_views import GenericDocumentViewTestCase
+from organizations.models import Organization
+from organizations.utils import create_default_organization
 from user_management.tests import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
     TEST_USER_PASSWORD, TEST_USER_USERNAME
@@ -30,15 +32,15 @@ from ..permissions import (
     permission_sources_setup_view, permission_staging_file_delete
 )
 
-TEST_SOURCE_LABEL = 'test source'
-TEST_SOURCE_UNCOMPRESS_N = 'n'
-TEST_STAGING_PREVIEW_WIDTH = 640
+from .literals import (
+    TEST_SOURCE_LABEL, TEST_SOURCE_UNCOMPRESS_N, TEST_STAGING_PREVIEW_WIDTH
+)
 
 
 class DocumentUploadTestCase(GenericDocumentViewTestCase):
     def setUp(self):
         super(DocumentUploadTestCase, self).setUp()
-        self.source = WebFormSource.objects.create(
+        self.source = WebFormSource.on_organization.create(
             enabled=True, label=TEST_SOURCE_LABEL,
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
@@ -61,7 +63,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
             )
 
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 0)
 
     def test_upload_wizard_with_permission(self):
         self.client.login(
@@ -83,7 +85,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
             )
 
         self.assertTrue(b'queued' in response.content)
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 1)
 
     def test_upload_wizard_with_document_type_access(self):
         """
@@ -97,7 +99,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
         # Create an access control entry giving the role the document
         # create permission for the selected document type.
-        acl = AccessControlList.objects.create(
+        acl = AccessControlList.on_organization.create(
             content_object=self.document_type, role=self.role
         )
         acl.permissions.add(permission_document_create.stored_permission)
@@ -113,13 +115,14 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
             )
 
         self.assertTrue(b'queued' in response.content)
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 1)
 
 
 @override_settings(OCR_AUTO_OCR=False)
 class DocumentUploadIssueTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        create_default_organization()
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -131,6 +134,8 @@ class DocumentUploadIssueTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        Organization.objects.all().delete()
+        Organization.objects.clear_cache()
 
     def test_issue_25(self):
         # Login the admin user
@@ -146,7 +151,7 @@ class DocumentUploadIssueTestCase(TestCase):
                 'sources:setup_source_create', args=(SOURCE_CHOICE_WEB_FORM,)
             ), {'label': 'test', 'uncompress': 'n', 'enabled': True}
         )
-        self.assertEqual(WebFormSource.objects.count(), 1)
+        self.assertEqual(WebFormSource.on_organization.count(), 1)
 
         # Upload the test document
         with open(TEST_SMALL_DOCUMENT_PATH) as file_descriptor:
@@ -157,9 +162,9 @@ class DocumentUploadIssueTestCase(TestCase):
                     'document_type_id': self.document_type.pk
                 }
             )
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 1)
 
-        document = Document.objects.first()
+        document = Document.on_organization.first()
         # Test for issue 25 during creation
         # ** description fields was removed from upload from **
         self.assertEqual(document.description, '')
@@ -178,7 +183,7 @@ class DocumentUploadIssueTestCase(TestCase):
             }
         )
         # Fetch document again and test description
-        document = Document.objects.first()
+        document = Document.on_organization.first()
         self.assertEqual(document.description, TEST_DOCUMENT_DESCRIPTION)
 
 
@@ -240,7 +245,7 @@ class StagingFolderTestCase(GenericViewTestCase):
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        staging_folder = StagingFolderSource.objects.create(
+        staging_folder = StagingFolderSource.on_organization.create(
             label=TEST_SOURCE_LABEL,
             folder_path=self.temporary_directory,
             preview_width=TEST_STAGING_PREVIEW_WIDTH,
@@ -269,7 +274,7 @@ class StagingFolderTestCase(GenericViewTestCase):
             permission_staging_file_delete.stored_permission
         )
 
-        staging_folder = StagingFolderSource.objects.create(
+        staging_folder = StagingFolderSource.on_organization.create(
             label=TEST_SOURCE_LABEL,
             folder_path=self.temporary_directory,
             preview_width=TEST_STAGING_PREVIEW_WIDTH,
@@ -292,7 +297,7 @@ class StagingFolderTestCase(GenericViewTestCase):
 
 class SourcesTestCase(GenericDocumentViewTestCase):
     def create_web_source(self):
-        self.source = WebFormSource.objects.create(
+        self.source = WebFormSource.on_organization.create(
             enabled=True, label=TEST_SOURCE_LABEL,
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
@@ -343,7 +348,7 @@ class SourcesTestCase(GenericDocumentViewTestCase):
             }
         )
 
-        webform_source = WebFormSource.objects.first()
+        webform_source = WebFormSource.on_organization.first()
 
         self.assertEqual(webform_source.label, TEST_SOURCE_LABEL)
         self.assertEqual(webform_source.uncompress, TEST_SOURCE_UNCOMPRESS_N)
@@ -368,7 +373,7 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(WebFormSource.objects.count(), 0)
+        self.assertEqual(WebFormSource.on_organization.count(), 0)
 
     def test_source_delete_view_with_permission(self):
         self.create_web_source()
@@ -390,7 +395,7 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(response.status_code, 200)
-        self.assertEqual(WebFormSource.objects.count(), 0)
+        self.assertEqual(WebFormSource.on_organization.count(), 0)
 
     def test_source_delete_view_no_permission(self):
         self.create_web_source()
@@ -409,4 +414,4 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(WebFormSource.objects.count(), 1)
+        self.assertEqual(WebFormSource.on_organization.count(), 1)

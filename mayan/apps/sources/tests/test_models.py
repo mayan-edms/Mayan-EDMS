@@ -14,6 +14,8 @@ from documents.tests import (
     TEST_NON_ASCII_DOCUMENT_FILENAME, TEST_NON_ASCII_DOCUMENT_PATH,
     TEST_NON_ASCII_COMPRESSED_DOCUMENT_PATH
 )
+from organizations.models import Organization
+from organizations.utils import create_default_organization
 from user_management.tests import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -29,7 +31,8 @@ class UploadDocumentTestCase(TestCase):
     """
 
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        create_default_organization()
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -43,6 +46,9 @@ class UploadDocumentTestCase(TestCase):
         self.document_type.delete()
         self.admin_user.delete()
 
+        Organization.objects.all().delete()
+        Organization.objects.clear_cache()
+
     def test_issue_gh_163(self):
         """
         Non-ASCII chars in document name failing in upload via watch folder
@@ -52,15 +58,15 @@ class UploadDocumentTestCase(TestCase):
         temporary_directory = tempfile.mkdtemp()
         shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, temporary_directory)
 
-        watch_folder = WatchFolderSource.objects.create(
+        watch_folder = WatchFolderSource.on_organization.create(
             document_type=self.document_type, folder_path=temporary_directory,
             uncompress=SOURCE_UNCOMPRESS_CHOICE_Y
         )
         watch_folder.check_source()
 
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 1)
 
-        document = Document.objects.first()
+        document = Document.on_organization.first()
 
         self.assertEqual(document.exists(), True)
         self.assertEqual(document.size, 17436)
@@ -77,9 +83,9 @@ class UploadDocumentTestCase(TestCase):
         )
 
         watch_folder.check_source()
-        document = Document.objects.all()[1]
+        document = Document.on_organization.all()[1]
 
-        self.assertEqual(Document.objects.count(), 2)
+        self.assertEqual(Document.on_organization.count(), 2)
 
         self.assertEqual(document.exists(), True)
         self.assertEqual(document.size, 17436)
@@ -95,12 +101,16 @@ class UploadDocumentTestCase(TestCase):
 @override_settings(OCR_AUTO_OCR=False)
 class CompressedUploadsTestCase(TestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        create_default_organization()
+
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
     def tearDown(self):
         self.document_type.delete()
+        Organization.objects.all().delete()
+        Organization.objects.clear_cache()
 
     def test_upload_compressed_file(self):
         source = WebFormSource(
@@ -114,14 +124,14 @@ class CompressedUploadsTestCase(TestCase):
                 expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y)
             )
 
-        self.assertEqual(Document.objects.count(), 2)
+        self.assertEqual(Document.on_organization.count(), 2)
         self.assertTrue(
-            'first document.pdf' in Document.objects.values_list(
+            'first document.pdf' in Document.on_organization.values_list(
                 'label', flat=True
             )
         )
         self.assertTrue(
-            'second document.pdf' in Document.objects.values_list(
+            'second document.pdf' in Document.on_organization.values_list(
                 'label', flat=True
             )
         )

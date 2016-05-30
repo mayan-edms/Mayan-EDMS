@@ -9,8 +9,8 @@ from django.utils.translation import ugettext_lazy as _
 from documents.forms import DocumentForm
 
 from .models import (
-    IMAPEmail, POP3Email, StagingFolderSource, WebFormSource,
-    WatchFolderSource
+    IMAPEmail, POP3Email, StagingFolderSource, WatchFolderSource,
+    WebFormSource
 )
 
 logger = logging.getLogger(__name__)
@@ -80,6 +80,9 @@ class WebFormUploadFormHTML5(WebFormUploadForm):
 
 
 class WebFormSetupForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(WebFormSetupForm, self).__init__(*args, **kwargs)
+
     class Meta:
         fields = ('label', 'enabled', 'uncompress')
         model = WebFormSource
