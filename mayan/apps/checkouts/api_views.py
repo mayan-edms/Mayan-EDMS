@@ -66,7 +66,7 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
 
         if serializer.is_valid():
             document = get_object_or_404(
-                Document, pk=serializer.data['document']
+                Document.on_organization, pk=serializer.data['document']
             )
             try:
                 Permission.check_permissions(

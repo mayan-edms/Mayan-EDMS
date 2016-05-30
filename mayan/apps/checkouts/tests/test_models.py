@@ -12,6 +12,7 @@ from documents.models import DocumentType
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
+from organizations.tests.base import OrganizationTestCase
 from user_management.tests.literals import (
     TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD
 )
@@ -21,8 +22,9 @@ from ..models import DocumentCheckout
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentCheckoutTestCase(TestCase):
+class DocumentCheckoutTestCase(OrganizationTestCase):
     def setUp(self):
+        super(DocumentCheckoutTestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -39,6 +41,7 @@ class DocumentCheckoutTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentCheckoutTestCase, self).tearDown()
 
     def test_document_checkout(self):
         expiration_datetime = now() + datetime.timedelta(days=1)

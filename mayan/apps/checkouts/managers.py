@@ -25,14 +25,14 @@ class DocumentCheckoutManager(models.Manager):
         )
 
     def checked_out_documents(self):
-        return Document.objects.filter(
+        return Document.on_organization.filter(
             pk__in=self.model.objects.all().values_list(
                 'document__pk', flat=True
             )
         )
 
     def expired_check_outs(self):
-        expired_list = Document.objects.filter(
+        expired_list = Document.on_organization.filter(
             pk__in=self.model.objects.filter(
                 expiration_datetime__lte=now()
             ).values_list('document__pk', flat=True)
