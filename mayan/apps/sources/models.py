@@ -11,7 +11,6 @@ import poplib
 
 import yaml
 
-from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.core.files import File
 from django.core.files.base import ContentFile
@@ -19,7 +18,7 @@ from django.db import models, transaction
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from model_utils.managers import InheritanceManager, InheritanceQuerySet
+from model_utils.managers import InheritanceManager
 
 from common.compressed_files import CompressedFile, NotACompressedFile
 from converter.literals import DIMENSION_SEPARATOR
@@ -30,8 +29,8 @@ from documents.settings import setting_language
 from metadata.api import save_metadata_list, set_bulk_metadata
 from metadata.models import MetadataType
 from organizations.models import Organization
-from organizations.managers import CurrentOrganizationManager
 from organizations.shortcuts import get_current_organization
+from tags.models import Tag
 
 from .classes import Attachment, SourceUploadedFile, StagingFile
 from .literals import (
@@ -42,16 +41,9 @@ from .literals import (
     SOURCE_UNCOMPRESS_CHOICE_N, SOURCE_UNCOMPRESS_CHOICE_Y,
     SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3
 )
+from .managers import OrganizationSourceManager
 
 logger = logging.getLogger(__name__)
-
-
-class OrganizationSourceManager(InheritanceManager, CurrentOrganizationManager):
-    def get_queryset(self):
-        return InheritanceQuerySet(self.model).filter(
-            **{self._get_field_name() + '__id': settings.ORGANIZATION_ID}
-        )
-
 
 
 @python_2_unicode_compatible

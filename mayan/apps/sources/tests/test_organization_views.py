@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from organizations.tests.test_organization_views import OrganizationViewTestCase
 
 from ..models import WebFormSource
-from ..utils import get_class, get_form_class, get_upload_form_class
 
 from .literals import (
     TEST_SOURCE_LABEL, TEST_SOURCE_EDITED_LABEL, TEST_SOURCE_UNCOMPRESS_N

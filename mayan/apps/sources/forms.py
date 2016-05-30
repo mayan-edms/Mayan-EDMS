@@ -80,9 +80,6 @@ class WebFormUploadFormHTML5(WebFormUploadForm):
 
 
 class WebFormSetupForm(forms.ModelForm):
-    def __init__(self, *args, **kwargs):
-        super(WebFormSetupForm, self).__init__(*args, **kwargs)
-
     class Meta:
         fields = ('label', 'enabled', 'uncompress')
         model = WebFormSource
