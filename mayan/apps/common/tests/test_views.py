@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.template import Context, Template
 from django.test import TestCase
 
+from organizations.models import Organization
 from organizations.utils import create_default_organization
 from permissions import Permission
 from permissions.models import Role
@@ -46,6 +47,8 @@ class GenericViewTestCase(TestCase):
         self.client.logout()
         if self.has_test_view:
             urlpatterns.pop(0)
+        Organization.objects.all().delete()
+        Organization.objects.clear_cache()
 
     def add_test_view(self, test_object):
         from mayan.urls import urlpatterns
