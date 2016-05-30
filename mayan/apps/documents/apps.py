@@ -36,7 +36,7 @@ from .links import (
     link_clear_image_cache, link_document_clear_transformations,
     link_document_delete, link_document_document_type_edit,
     link_document_multiple_document_type_edit, link_document_download,
-    link_document_edit, link_document_list, link_document_list_deleted,
+    link_document_edit, link_document_list, link_document_list_trashed,
     link_document_list_recent, link_document_multiple_delete,
     link_document_multiple_trash, link_document_multiple_clear_transformations,
     link_document_multiple_download, link_document_multiple_restore,
@@ -87,12 +87,12 @@ class DocumentsApp(MayanAppConfig):
 
         APIEndPoint(app=self, version_string='1')
 
-        DeletedDocument = self.get_model('DeletedDocument')
         Document = self.get_model('Document')
         DocumentPage = self.get_model('DocumentPage')
         DocumentType = self.get_model('DocumentType')
         DocumentTypeFilename = self.get_model('DocumentTypeFilename')
         DocumentVersion = self.get_model('DocumentVersion')
+        TrashedDocument = self.get_model('TrashedDocument')
 
         MissingItem(
             label=_('Create a document type'),
@@ -172,20 +172,20 @@ class DocumentsApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=DeletedDocument, label=_('Thumbnail'),
+            source=TrashedDocument, label=_('Thumbnail'),
             func=lambda context: document_thumbnail(
                 context['object'],
-                gallery_name='documents:delete_document_list',
+                gallery_name='documents:trashed_document_list',
                 size=setting_thumbnail_size.value,
                 title=getattr(context['object'], 'label', None),
                 disable_title_link=True
             )
         )
         SourceColumn(
-            source=DeletedDocument, label=_('Type'), attribute='document_type'
+            source=TrashedDocument, label=_('Type'), attribute='document_type'
         )
         SourceColumn(
-            source=DeletedDocument, label=_('Date time trashed'),
+            source=TrashedDocument, label=_('Date time trashed'),
             attribute='deleted_date_time'
         )
 
@@ -268,7 +268,7 @@ class DocumentsApp(MayanAppConfig):
         menu_front_page.bind_links(
             links=(
                 link_document_list_recent, link_document_list,
-                link_document_list_deleted
+                link_document_list_trashed
             )
         )
         menu_setup.bind_links(links=(link_document_type_setup,))
@@ -304,7 +304,7 @@ class DocumentsApp(MayanAppConfig):
         menu_sidebar.bind_links(
             links=(link_trash_can_empty,),
             sources=(
-                'documents:document_list_deleted', 'documents:trash_can_empty'
+                'documents:document_list_trashed', 'documents:trash_can_empty'
             )
         )
 
@@ -319,7 +319,7 @@ class DocumentsApp(MayanAppConfig):
         )
         menu_object.bind_links(
             links=(link_document_restore, link_document_delete),
-            sources=(DeletedDocument,)
+            sources=(TrashedDocument,)
         )
 
         # Document facet links
@@ -354,7 +354,7 @@ class DocumentsApp(MayanAppConfig):
         menu_multi_item.bind_links(
             links=(
                 link_document_multiple_restore, link_document_multiple_delete
-            ), sources=(DeletedDocument,)
+            ), sources=(TrashedDocument,)
         )
 
         # Document pages
@@ -430,5 +430,5 @@ class DocumentsApp(MayanAppConfig):
             dispatch_uid='create_default_document_type'
         )
 
-        registry.register(DeletedDocument)
+        registry.register(TrashedDocument)
         registry.register(Document)

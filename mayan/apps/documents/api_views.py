@@ -27,7 +27,7 @@ from .permissions import (
     permission_document_type_edit, permission_document_type_view
 )
 from .serializers import (
-    DeletedDocumentSerializer, DocumentPageImageSerializer,
+    TrashedDocumentSerializer, DocumentPageImageSerializer,
     DocumentPageSerializer, DocumentSerializer,
     DocumentTypeSerializer, DocumentVersionSerializer,
     DocumentVersionRevertSerializer, NewDocumentSerializer,
@@ -37,7 +37,7 @@ from .serializers import (
 logger = logging.getLogger(__name__)
 
 
-class APIDeletedDocumentListView(generics.ListAPIView):
+class APITrashedDocumentListView(generics.ListAPIView):
     """
     Returns a list of all the trashed documents.
     """
@@ -46,10 +46,10 @@ class APIDeletedDocumentListView(generics.ListAPIView):
     mayan_object_permissions = {'GET': (permission_document_view,)}
     permission_classes = (MayanPermission,)
     queryset = Document.trash.all()
-    serializer_class = DeletedDocumentSerializer
+    serializer_class = TrashedDocumentSerializer
 
 
-class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
+class APITrashedDocumentView(generics.RetrieveDestroyAPIView):
     """
     Returns the selected trashed document details.
     """
@@ -59,17 +59,17 @@ class APIDeletedDocumentView(generics.RetrieveDestroyAPIView):
     }
     permission_classes = (MayanPermission,)
     queryset = Document.trash.all()
-    serializer_class = DeletedDocumentSerializer
+    serializer_class = TrashedDocumentSerializer
 
     def delete(self, *args, **kwargs):
         """
         Delete the trashed document.
         """
 
-        return super(APIDeletedDocumentView, self).delete(*args, **kwargs)
+        return super(APITrashedDocumentView, self).delete(*args, **kwargs)
 
 
-class APIDeletedDocumentRestoreView(generics.GenericAPIView):
+class APITrashedDocumentRestoreView(generics.GenericAPIView):
     """
     Restore a trashed document.
     """
@@ -80,7 +80,7 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
 
     permission_classes = (MayanPermission,)
     queryset = Document.trash.all()
-    serializer_class = DeletedDocumentSerializer
+    serializer_class = TrashedDocumentSerializer
 
     def post(self, *args, **kwargs):
         self.get_object().restore()

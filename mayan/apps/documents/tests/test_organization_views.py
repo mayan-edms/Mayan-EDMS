@@ -31,10 +31,10 @@ class DocumentOrganizationViewTestCase(OrganizationViewTestCase):
         if self.document_type.pk:
             self.document_type.delete()
 
-    def test_document_delete_view(self):
+    def test_document_to_trash_view(self):
         with self.settings(ORGANIZATION_ID=self.organization_b.pk):
             response = self.post(
-                'documents:document_delete', args=(self.document.pk,)
+                'documents:document_trash', args=(self.document.pk,)
             )
             self.assertEqual(response.status_code, 404)
 

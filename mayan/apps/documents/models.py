@@ -37,7 +37,8 @@ from .exceptions import NewDocumentVersionNotAllowed
 from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
     DocumentManager, DocumentTypeManager, NewVersionBlockManager,
-    PassthroughManager, RecentDocumentManager, TrashCanManager
+    OrganizationDocumentManager, OrganizationDocumentVersionManager,
+    RecentDocumentManager, TrashedDocumentManager
 )
 from .permissions import permission_document_view
 from .runtime import cache_storage_backend, storage_backend
@@ -99,7 +100,7 @@ class DocumentType(models.Model):
         return self.label
 
     def delete(self, *args, **kwargs):
-        for document in Document.passthrough.filter(document_type=self):
+        for document in Document.objects.filter(document_type=self):
             document.delete(to_trash=False)
 
         return super(DocumentType, self).delete(*args, **kwargs)
@@ -113,8 +114,8 @@ class DocumentType(models.Model):
         verbose_name_plural = _('Documents types')
 
     @property
-    def deleted_documents(self):
-        return DeletedDocument.objects.filter(document_type=self)
+    def trashed_documents(self):
+        return TrashedDocument.objects.filter(document_type=self)
 
     def get_document_count(self, user):
         queryset = self.documents
@@ -192,9 +193,14 @@ class Document(models.Model):
         ), verbose_name=_('Is stub?')
     )
 
+    # objects manager needs to go first otherwise
+    # objects becomes equal to ActiveDocumentManager(), which it shouldn't.
+    # The first manager becomes the default manager.
+    # https://docs.djangoproject.com/en/1.9/topics/db/managers/#default-managers
+
     objects = DocumentManager()
-    passthrough = PassthroughManager()
-    trash = TrashCanManager()
+    on_organization = OrganizationDocumentManager()
+    trash = TrashedDocumentManager()
 
     def __str__(self):
         return self.label or ugettext('Document stub, id: %d') % self.pk
@@ -331,8 +337,8 @@ class Document(models.Model):
             return 0
 
 
-class DeletedDocument(Document):
-    objects = TrashCanManager()
+class TrashedDocument(Document):
+    objects = TrashedDocumentManager()
 
     class Meta:
         proxy = True
@@ -378,6 +384,9 @@ class DocumentVersion(models.Model):
     checksum = models.TextField(
         blank=True, editable=False, null=True, verbose_name=_('Checksum')
     )
+
+    objects = models.Manager()
+    on_organization = OrganizationDocumentVersionManager()
 
     def __str__(self):
         return '{0} - {1}'.format(self.document, self.timestamp)

@@ -15,7 +15,7 @@ from user_management.tests.literals import (
 
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from ..models import (
-    DeletedDocument, Document, DocumentType, HASH_FUNCTION
+    Document, DocumentType, TrashedDocument, HASH_FUNCTION
 )
 from ..permissions import (
     permission_document_create, permission_document_delete,
@@ -482,20 +482,20 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
     def test_trash_can_empty_view_no_permissions(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
         self.document.delete()
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.objects.count(), 1)
 
         response = self.post('documents:trash_can_empty')
 
         self.assertEqual(response.status_code, 403)
 
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.objects.count(), 1)
 
     def test_trash_can_empty_view_with_permission(self):
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
         self.document.delete()
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.objects.count(), 1)
 
         self.role.permissions.add(
             permission_empty_trash.stored_permission
@@ -505,7 +505,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertContains(
             response, text='emptied successfully', status_code=200
         )
-        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(TrashedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
 
     def test_document_version_revert_no_permission(self):
@@ -724,7 +724,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(self.document_type.filenames.count(), 1)
 
 
-class DeletedDocumentTestCase(GenericDocumentViewTestCase):
+class TrashedDocumentTestCase(GenericDocumentViewTestCase):
     def test_document_restore_view_no_permission(self):
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
@@ -736,7 +736,7 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
             'documents:document_restore', args=(self.document.pk,)
         )
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.objects.count(), 1)
         self.assertEqual(Document.objects.count(), 0)
 
     def test_document_restore_view_with_permission(self):
@@ -753,7 +753,7 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
             follow=True
         )
         self.assertContains(response, text='restored', status_code=200)
-        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(TrashedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
 
     def test_document_trash_no_permissions(self):
@@ -766,7 +766,7 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(TrashedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 1)
 
     def test_document_trash_with_permissions(self):
@@ -784,7 +784,7 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(response, text='success', status_code=200)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.objects.count(), 1)
         self.assertEqual(Document.objects.count(), 0)
 
     def test_document_delete_no_permissions(self):
@@ -794,14 +794,14 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
 
         self.document.delete()
         self.assertEqual(Document.objects.count(), 0)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.objects.count(), 1)
 
         response = self.post(
             'documents:document_delete', args=(self.document.pk,),
         )
         self.assertEqual(response.status_code, 403)
         self.assertEqual(Document.objects.count(), 0)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.objects.count(), 1)
 
     def test_document_delete_with_permissions(self):
         self.login(
@@ -810,7 +810,7 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
 
         self.document.delete()
         self.assertEqual(Document.objects.count(), 0)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.objects.count(), 1)
 
         self.role.permissions.add(
             permission_document_delete.stored_permission
@@ -822,7 +822,7 @@ class DeletedDocumentTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(response, text='success', status_code=200)
-        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(TrashedDocument.objects.count(), 0)
         self.assertEqual(Document.objects.count(), 0)
 
     def test_deleted_document_list_view_no_permissions(self):
