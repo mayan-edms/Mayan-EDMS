@@ -55,7 +55,7 @@ class APIFolderListView(generics.ListCreateAPIView):
     mayan_object_permissions = {'GET': (permission_folder_view,)}
     mayan_view_permissions = {'POST': (permission_folder_create,)}
     permission_classes = (MayanPermission,)
-    queryset = Folder.objects.all()
+    queryset = Folder.on_organization.all()
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -85,7 +85,7 @@ class APIFolderView(generics.RetrieveUpdateDestroyAPIView):
         'DELETE': (permission_folder_delete,)
     }
     permission_classes = (MayanPermission,)
-    queryset = Folder.objects.all()
+    queryset = Folder.on_organization.all()
     serializer_class = FolderSerializer
 
     def delete(self, *args, **kwargs):

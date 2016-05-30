@@ -32,7 +32,7 @@ class FolderTestCase(TestCase):
         folder = Folder.on_organization.create(label=TEST_FOLDER_LABEL)
 
         self.assertEqual(Folder.on_organization.all().count(), 1)
-        self.assertEqual(list(Folder.objects.all()), [folder])
+        self.assertEqual(list(Folder.on_organization.all()), [folder])
 
     def test_addition_of_documents(self):
         folder = Folder.on_organization.create(label=TEST_FOLDER_LABEL)
