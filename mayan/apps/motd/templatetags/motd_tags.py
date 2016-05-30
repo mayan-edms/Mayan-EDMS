@@ -9,4 +9,4 @@ register = Library()
 
 @register.inclusion_tag('motd/messages.html')
 def motd():
-    return {'messages': Message.objects.get_for_now()}
+    return {'messages': Message.on_organization.get_for_now()}
