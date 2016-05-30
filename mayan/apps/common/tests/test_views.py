@@ -7,8 +7,7 @@ from django.http import HttpResponse
 from django.template import Context, Template
 from django.test import TestCase
 
-from organizations.models import Organization
-from organizations.utils import create_default_organization
+from organizations.tests.base import OrganizationTestCase
 from permissions import Permission
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
@@ -21,9 +20,9 @@ from user_management.tests import (
 from .literals import TEST_VIEW_NAME, TEST_VIEW_URL
 
 
-class GenericViewTestCase(TestCase):
+class GenericViewTestCase(OrganizationTestCase):
     def setUp(self):
-        create_default_organization()
+        super(GenericViewTestCase, self).setUp()
         self.has_test_view = False
         self.admin_user = get_user_model().on_organization.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
@@ -47,8 +46,8 @@ class GenericViewTestCase(TestCase):
         self.client.logout()
         if self.has_test_view:
             urlpatterns.pop(0)
-        Organization.objects.all().delete()
-        Organization.objects.clear_cache()
+
+        super(GenericViewTestCase, self).tearDown()
 
     def add_test_view(self, test_object):
         from mayan.urls import urlpatterns

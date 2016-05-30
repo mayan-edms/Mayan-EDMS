@@ -5,7 +5,7 @@ import time
 
 from django.test import TestCase, override_settings
 
-from organizations.utils import create_default_organization
+from organizations.tests.base import OrganizationTestCase
 
 from ..exceptions import NewDocumentVersionNotAllowed
 from ..literals import STUB_EXPIRATION_INTERVAL
@@ -18,9 +18,9 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentTestCase(TestCase):
+class DocumentTestCase(OrganizationTestCase):
     def setUp(self):
-        create_default_organization()
+        super(DocumentTestCase, self).setUp()
         self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -32,6 +32,7 @@ class DocumentTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE)
@@ -138,9 +139,10 @@ class DocumentTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class OfficeDocumentTestCase(TestCase):
+class OfficeDocumentTestCase(OrganizationTestCase):
     def setUp(self):
-        create_default_organization()
+        super(OfficeDocumentTestCase, self).setUp()
+
         self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -152,6 +154,7 @@ class OfficeDocumentTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(OfficeDocumentTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document.file_mimetype, 'application/msword')
@@ -166,9 +169,10 @@ class OfficeDocumentTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class MultiPageTiffTestCase(TestCase):
+class MultiPageTiffTestCase(OrganizationTestCase):
     def setUp(self):
-        create_default_organization()
+        super(MultiPageTiffTestCase, self).setUp()
+
         self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -180,6 +184,7 @@ class MultiPageTiffTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(MultiPageTiffTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document.file_mimetype, 'image/tiff')
@@ -192,9 +197,10 @@ class MultiPageTiffTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentVersionTestCase(TestCase):
+class DocumentVersionTestCase(OrganizationTestCase):
     def setUp(self):
-        create_default_organization()
+        super(DocumentVersionTestCase, self).setUp()
+
         self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -206,6 +212,7 @@ class DocumentVersionTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentVersionTestCase, self).tearDown()
 
     def test_add_new_version(self):
         self.assertEqual(self.document.versions.count(), 1)
@@ -242,15 +249,16 @@ class DocumentVersionTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentManagerTestCase(TestCase):
+class DocumentManagerTestCase(OrganizationTestCase):
     def setUp(self):
-        create_default_organization()
+        super(DocumentManagerTestCase, self).setUp()
         self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentManagerTestCase, self).tearDown()
 
     def test_document_stubs_deletion(self):
         document_stub = Document.on_organization.create(
@@ -272,9 +280,9 @@ class DocumentManagerTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class NewVersionBlockTestCase(TestCase):
+class NewVersionBlockTestCase(OrganizationTestCase):
     def setUp(self):
-        create_default_organization()
+        super(NewVersionBlockTestCase, self).setUp()
         self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -287,6 +295,7 @@ class NewVersionBlockTestCase(TestCase):
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
+        super(NewVersionBlockTestCase, self).tearDown()
 
     def test_blocking(self):
         NewVersionBlock.objects.block(document=self.document)
