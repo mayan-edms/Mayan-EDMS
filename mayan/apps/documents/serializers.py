@@ -130,7 +130,7 @@ class NewDocumentSerializer(serializers.ModelSerializer):
     file = serializers.FileField(write_only=True)
 
     def save(self, _user):
-        document = Document.objects.create(
+        document = Document.on_organization.create(
             description=self.validated_data.get('description', ''),
             document_type=self.validated_data['document_type'],
             label=self.validated_data.get(

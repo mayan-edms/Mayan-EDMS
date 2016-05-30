@@ -99,7 +99,7 @@ class DocumentsApp(MayanAppConfig):
             description=_(
                 'Every uploaded document must be assigned a document type, '
                 'it is the basic way Mayan EDMS categorizes documents.'
-            ), condition=lambda: not DocumentType.objects.exists(),
+            ), condition=lambda: not DocumentType.on_organization.exists(),
             view='documents:document_type_list'
         )
 

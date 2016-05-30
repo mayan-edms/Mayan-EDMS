@@ -39,7 +39,7 @@ from .literals import (
 class GenericDocumentViewTestCase(GenericViewTestCase):
     def setUp(self):
         super(GenericDocumentViewTestCase, self).setUp()
-        self.document_type = DocumentType.objects.create(
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -111,7 +111,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             self.document.document_type, self.document_type
         )
 
-        document_type = DocumentType.objects.create(
+        document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
@@ -124,7 +124,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            Document.objects.get(pk=self.document.pk).document_type,
+            Document.on_organization.get(pk=self.document.pk).document_type,
             self.document_type
         )
 
@@ -137,7 +137,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             self.document.document_type, self.document_type
         )
 
-        document_type = DocumentType.objects.create(
+        document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
@@ -156,7 +156,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertContains(response, text='success', status_code=200)
 
         self.assertEqual(
-            Document.objects.get(pk=self.document.pk).document_type,
+            Document.on_organization.get(pk=self.document.pk).document_type,
             document_type
         )
 
@@ -166,10 +166,10 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(
-            Document.objects.first().document_type, self.document_type
+            Document.on_organization.first().document_type, self.document_type
         )
 
-        document_type = DocumentType.objects.create(
+        document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
@@ -184,7 +184,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 302)
 
         self.assertEqual(
-            Document.objects.first().document_type, self.document_type
+            Document.on_organization.first().document_type, self.document_type
         )
 
     def test_document_multiple_document_type_change_view_with_permission(self):
@@ -193,10 +193,10 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(
-            Document.objects.first().document_type, self.document_type
+            Document.on_organization.first().document_type, self.document_type
         )
 
-        document_type = DocumentType.objects.create(
+        document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE_2_LABEL
         )
 
@@ -218,7 +218,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 200)
 
         self.assertEqual(
-            Document.objects.first().document_type, document_type
+            Document.on_organization.first().document_type, document_type
         )
 
     def test_document_download_user_view(self):
@@ -226,7 +226,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 1)
 
         response = self.post(
             'documents:document_download', args=(self.document.pk,)
@@ -258,7 +258,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 1)
 
         response = self.post(
             'documents:document_multiple_download',
@@ -292,7 +292,7 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 1)
 
         response = self.post(
             'documents:document_version_download', args=(
@@ -482,20 +482,20 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
     def test_trash_can_empty_view_no_permissions(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
         self.document.delete()
-        self.assertEqual(TrashedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
 
         response = self.post('documents:trash_can_empty')
 
         self.assertEqual(response.status_code, 403)
 
-        self.assertEqual(TrashedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
 
     def test_trash_can_empty_view_with_permission(self):
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
         self.document.delete()
-        self.assertEqual(TrashedDocument.objects.count(), 1)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
 
         self.role.permissions.add(
             permission_empty_trash.stored_permission
@@ -505,8 +505,8 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertContains(
             response, text='emptied successfully', status_code=200
         )
-        self.assertEqual(TrashedDocument.objects.count(), 0)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 0)
 
     def test_document_version_revert_no_permission(self):
         first_version = self.document.latest_version
@@ -556,7 +556,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
 
         self.document_type.delete()
 
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 0)
 
         response = self.post(
             'documents:document_type_create',
@@ -569,7 +569,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(response.status_code, 403)
 
-        self.assertEqual(DocumentType.objects.count(), 0)
+        self.assertEqual(DocumentType.on_organization.count(), 0)
 
     def test_document_type_create_view_with_permission(self):
         self.login(
@@ -578,7 +578,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
 
         self.document_type.delete()
 
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 0)
 
         self.role.permissions.add(
             permission_document_type_create.stored_permission
@@ -598,9 +598,9 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
 
         self.assertContains(response, text='successfully', status_code=200)
 
-        self.assertEqual(DocumentType.objects.count(), 1)
+        self.assertEqual(DocumentType.on_organization.count(), 1)
         self.assertEqual(
-            DocumentType.objects.first().label, TEST_DOCUMENT_TYPE
+            DocumentType.on_organization.first().label, TEST_DOCUMENT_TYPE
         )
 
     def test_document_type_delete_view_no_permission(self):
@@ -614,7 +614,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(DocumentType.objects.count(), 1)
+        self.assertEqual(DocumentType.on_organization.count(), 1)
 
     def test_document_type_delete_view_with_permission(self):
         self.login(
@@ -634,7 +634,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(response, 'successfully', status_code=200)
-        self.assertEqual(DocumentType.objects.count(), 0)
+        self.assertEqual(DocumentType.on_organization.count(), 0)
 
     def test_document_type_edit_view_no_permission(self):
         self.login(
@@ -654,7 +654,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 403)
 
         self.assertEqual(
-            DocumentType.objects.get(pk=self.document_type.pk).label,
+            DocumentType.on_organization.get(pk=self.document_type.pk).label,
             TEST_DOCUMENT_TYPE
         )
 
@@ -683,7 +683,7 @@ class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
         self.assertContains(response, 'successfully', status_code=200)
 
         self.assertEqual(
-            DocumentType.objects.get(pk=self.document_type.pk).label,
+            DocumentType.on_organization.get(pk=self.document_type.pk).label,
             TEST_DOCUMENT_TYPE_EDITED_LABEL
         )
 
@@ -730,21 +730,21 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
         self.document.delete()
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 0)
 
         response = self.post(
             'documents:document_restore', args=(self.document.pk,)
         )
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(TrashedDocument.objects.count(), 1)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 0)
 
     def test_document_restore_view_with_permission(self):
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
         self.document.delete()
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 0)
         self.role.permissions.add(
             permission_document_restore.stored_permission
         )
@@ -753,8 +753,8 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
             follow=True
         )
         self.assertContains(response, text='restored', status_code=200)
-        self.assertEqual(TrashedDocument.objects.count(), 0)
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(TrashedDocument.on_organization.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 1)
 
     def test_document_trash_no_permissions(self):
         self.login(
@@ -766,8 +766,8 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(TrashedDocument.objects.count(), 0)
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(TrashedDocument.on_organization.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 1)
 
     def test_document_trash_with_permissions(self):
         self.login(
@@ -784,8 +784,8 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(response, text='success', status_code=200)
-        self.assertEqual(TrashedDocument.objects.count(), 1)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 0)
 
     def test_document_delete_no_permissions(self):
         self.login(
@@ -793,15 +793,15 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
         )
 
         self.document.delete()
-        self.assertEqual(Document.objects.count(), 0)
-        self.assertEqual(TrashedDocument.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
 
         response = self.post(
             'documents:document_delete', args=(self.document.pk,),
         )
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(Document.objects.count(), 0)
-        self.assertEqual(TrashedDocument.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
 
     def test_document_delete_with_permissions(self):
         self.login(
@@ -809,8 +809,8 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
         )
 
         self.document.delete()
-        self.assertEqual(Document.objects.count(), 0)
-        self.assertEqual(TrashedDocument.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
 
         self.role.permissions.add(
             permission_document_delete.stored_permission
@@ -822,8 +822,8 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertContains(response, text='success', status_code=200)
-        self.assertEqual(TrashedDocument.objects.count(), 0)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 0)
 
     def test_deleted_document_list_view_no_permissions(self):
         self.document.delete()

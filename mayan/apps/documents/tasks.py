@@ -62,7 +62,7 @@ def task_get_document_page_image(document_page_id, *args, **kwargs):
         app_label='documents', model_name='DocumentPage'
     )
 
-    document_page = DocumentPage.objects.get(pk=document_page_id)
+    document_page = DocumentPage.on_organization.get(pk=document_page_id)
     return document_page.get_image(*args, **kwargs)
 
 
@@ -72,7 +72,7 @@ def task_update_page_count(self, version_id):
         app_label='documents', model_name='DocumentVersion'
     )
 
-    document_version = DocumentVersion.objects.get(pk=version_id)
+    document_version = DocumentVersion.on_organization.get(pk=version_id)
     try:
         document_version.update_page_count()
     except OperationalError as exception:
@@ -95,12 +95,12 @@ def task_upload_new_document(self, document_type_id, shared_uploaded_file_id, de
     )
 
     try:
-        document_type = DocumentType.objects.get(pk=document_type_id)
+        document_type = DocumentType.on_organization.get(pk=document_type_id)
         shared_file = SharedUploadedFile.objects.get(
             pk=shared_uploaded_file_id
         )
         if user_id:
-            user = get_user_model().objects.get(pk=user_id)
+            user = get_user_model().on_organization.get(pk=user_id)
         else:
             user = None
 
@@ -149,12 +149,12 @@ def task_upload_new_version(self, document_id, shared_uploaded_file_id, user_id,
     )
 
     try:
-        document = Document.objects.get(pk=document_id)
+        document = Document.on_organization.get(pk=document_id)
         shared_file = SharedUploadedFile.objects.get(
             pk=shared_uploaded_file_id
         )
         if user_id:
-            user = get_user_model().objects.get(pk=user_id)
+            user = get_user_model().on_organization.get(pk=user_id)
         else:
             user = None
 

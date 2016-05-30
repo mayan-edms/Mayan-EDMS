@@ -38,6 +38,8 @@ from .literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
 from .managers import (
     DocumentManager, DocumentTypeManager, NewVersionBlockManager,
     OrganizationDocumentManager, OrganizationDocumentVersionManager,
+    OrganizationTrashedDocumentManager,
+    OrganizationDocumentTypeFilenameManager, OrganizationDocumentPage,
     RecentDocumentManager, TrashedDocumentManager
 )
 from .permissions import permission_document_view
@@ -339,6 +341,7 @@ class Document(models.Model):
 
 class TrashedDocument(Document):
     objects = TrashedDocumentManager()
+    on_organization = OrganizationTrashedDocumentManager()
 
     class Meta:
         proxy = True
@@ -643,6 +646,9 @@ class DocumentTypeFilename(models.Model):
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
+    objects = models.Manager()
+    on_organization = OrganizationDocumentTypeFilenameManager()
+
     class Meta:
         ordering = ('filename',)
         unique_together = ('document_type', 'filename')
@@ -666,6 +672,9 @@ class DocumentPage(models.Model):
         db_index=True, default=1, editable=False,
         verbose_name=_('Page number')
     )
+
+    objects = models.Manager()
+    on_organization = OrganizationDocumentPage()
 
     def __str__(self):
         return _(

@@ -162,9 +162,11 @@ class DocumentRestoreManyView(MultipleInstanceActionMixin, DocumentRestoreView):
     extra_context = {
         'title': _('Restore the selected documents?')
     }
-    model = TrashedDocument
     success_message = '%(count)d document restored.'
     success_message_plural = '%(count)d documents restored.'
+
+    def get_queryset(self):
+        return TrashedDocument.on_organization.all()
 
 
 class DocumentPageListView(SingleObjectListView):
@@ -614,7 +616,7 @@ class EmptyTrashCanView(ConfirmView):
     view_permission = permission_empty_trash
 
     def view_action(self):
-        for deleted_document in TrashedDocument.objects.all():
+        for deleted_document in TrashedDocument.on_organization.all():
             deleted_document.delete()
 
         messages.success(self.request, _('Trash emptied successfully'))
@@ -649,7 +651,7 @@ class TrashedDocumentListView(DocumentListView):
                 permission_document_view, self.request.user, queryset
             )
 
-        return TrashedDocument.objects.filter(
+        return TrashedDocument.on_organization.filter(
             pk__in=queryset.values_list('pk', flat=True)
         )
 
@@ -660,8 +662,11 @@ class TrashedDocumentDeleteView(ConfirmView):
     }
 
     def object_action(self, instance):
+        # Special case, we need to check the original document for the delete
+        # permission. Don't use .on_organization manager as it filters
+        # trashed documents and we don't want that.
         source_document = get_object_or_404(
-            Document.on_organization, pk=instance.pk
+            Document, pk=instance.pk
         )
 
         try:
@@ -676,7 +681,9 @@ class TrashedDocumentDeleteView(ConfirmView):
         instance.delete()
 
     def view_action(self):
-        instance = get_object_or_404(TrashedDocument, pk=self.kwargs['pk'])
+        instance = get_object_or_404(
+            TrashedDocument.on_organization, pk=self.kwargs['pk']
+        )
         self.object_action(instance=instance)
         messages.success(
             self.request, _('Document: %(document)s deleted.') % {
@@ -689,9 +696,11 @@ class TrashedDocumentDeleteManyView(MultipleInstanceActionMixin, TrashedDocument
     extra_context = {
         'title': _('Delete the selected documents?')
     }
-    model = TrashedDocument
     success_message = '%(count)d document deleted.'
     success_message_plural = '%(count)d documents deleted.'
+
+    def get_queryset(self):
+        return TrashedDocument.on_organization.all()
 
 
 def document_document_type_edit(request, document_id=None, document_id_list=None):
@@ -847,11 +856,12 @@ def document_download(request, document_id=None, document_id_list=None, document
             )
         )
 
-    # TODO: check organization
     if document_version_pk:
-        queryset = DocumentVersion.objects.filter(pk=document_version_pk)
+        queryset = DocumentVersion.on_organization.filter(
+            pk=document_version_pk
+        )
     else:
-        queryset = DocumentVersion.objects.filter(
+        queryset = DocumentVersion.on_organization.filter(
             pk__in=[document.latest_version.pk for document in documents]
         )
 

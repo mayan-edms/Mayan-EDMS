@@ -103,7 +103,7 @@ class APIDocumentDownloadView(generics.RetrieveAPIView):
         'GET': (permission_document_download,)
     }
     permission_classes = (MayanPermission,)
-    queryset = Document.objects.all()
+    queryset = Document.on_organization.all()
 
     def get_serializer_class(self):
         return None
@@ -127,7 +127,7 @@ class APIDocumentListView(generics.ListCreateAPIView):
     mayan_object_permissions = {'GET': (permission_document_view,)}
     mayan_view_permissions = {'POST': (permission_document_create,)}
     permission_classes = (MayanPermission,)
-    queryset = Document.objects.all()
+    queryset = Document.on_organization.all()
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -162,7 +162,7 @@ class APIDocumentVersionDownloadView(generics.RetrieveAPIView):
         'GET': (permission_document_download,)
     }
     permission_classes = (MayanPermission,)
-    queryset = DocumentVersion.objects.all()
+    queryset = DocumentVersion.on_organization.all()
 
     def get_serializer_class(self):
         return None
@@ -189,7 +189,7 @@ class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
         'DELETE': (permission_document_trash,)
     }
     permission_classes = (MayanPermission,)
-    queryset = Document.objects.all()
+    queryset = Document.on_organization.all()
     serializer_class = DocumentSerializer
 
     def delete(self, *args, **kwargs):
@@ -233,7 +233,7 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
     }
     mayan_permission_attribute_check = 'document'
     permission_classes = (MayanPermission,)
-    queryset = DocumentPage.objects.all()
+    queryset = DocumentPage.on_organization.all()
     serializer_class = DocumentPageImageSerializer
 
 
@@ -249,7 +249,7 @@ class APIDocumentPageView(generics.RetrieveUpdateAPIView):
     }
     mayan_permission_attribute_check = 'document'
     permission_classes = (MayanPermission,)
-    queryset = DocumentPage.objects.all()
+    queryset = DocumentPage.on_organization.all()
     serializer_class = DocumentPageSerializer
 
     def get(self, *args, **kwargs):
@@ -279,7 +279,7 @@ class APIDocumentTypeListView(generics.ListCreateAPIView):
     mayan_object_permissions = {'GET': (permission_document_type_view,)}
     mayan_view_permissions = {'POST': (permission_document_type_create,)}
     permission_classes = (MayanPermission,)
-    queryset = DocumentType.objects.all()
+    queryset = DocumentType.on_organization.all()
     serializer_class = DocumentTypeSerializer
 
     def get(self, *args, **kwargs):
@@ -309,7 +309,7 @@ class APIDocumentTypeView(generics.RetrieveUpdateDestroyAPIView):
         'DELETE': (permission_document_type_delete,)
     }
     permission_classes = (MayanPermission,)
-    queryset = DocumentType.objects.all()
+    queryset = DocumentType.on_organization.all()
     serializer_class = DocumentTypeSerializer
 
     def delete(self, *args, **kwargs):
@@ -435,7 +435,7 @@ class APIDocumentVersionView(generics.RetrieveUpdateAPIView):
     }
     mayan_permission_attribute_check = 'document'
     permission_classes = (MayanPermission,)
-    queryset = DocumentVersion.objects.all()
+    queryset = DocumentVersion.on_organization.all()
     serializer_class = DocumentVersionSerializer
 
     def patch(self, *args, **kwargs):
@@ -463,7 +463,7 @@ class APIDocumentVersionRevertView(generics.GenericAPIView):
     }
     mayan_permission_attribute_check = 'document'
     permission_classes = (MayanPermission,)
-    queryset = DocumentVersion.objects.all()
+    queryset = DocumentVersion.on_organization.all()
     serializer_class = DocumentVersionRevertSerializer
 
     def post(self, *args, **kwargs):

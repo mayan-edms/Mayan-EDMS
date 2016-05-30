@@ -132,6 +132,28 @@ class OrganizationDocumentVersionManager(models.Manager):
         )
 
 
+class OrganizationDocumentTypeFilenameManager(models.Manager):
+    def get_queryset(self):
+        DocumentType = apps.get_model('documents', 'DocumentType')
+
+        return super(
+            OrganizationDocumentTypeFilenameManager, self
+        ).get_queryset().filter(
+            document_type__in=DocumentType.on_organization.all()
+        )
+
+
+class OrganizationDocumentPage(models.Manager):
+    def get_queryset(self):
+        DocumentType = apps.get_model('documents', 'DocumentType')
+
+        return super(
+            OrganizationDocumentPage, self
+        ).get_queryset().filter(
+            document_version__document__document_type__in=DocumentType.on_organization.all()
+        )
+
+
 class RecentDocumentManager(models.Manager):
     def add_document_for_user(self, user, document):
         if user.is_authenticated():
@@ -155,7 +177,7 @@ class RecentDocumentManager(models.Manager):
                 recentdocument__user=user,
             ).order_by('-recentdocument__datetime_accessed')
         else:
-            return document_model.objects.none()
+            return Document.objects.none()
 
 
 class TrashedDocumentManager(models.Manager):
@@ -164,6 +186,15 @@ class TrashedDocumentManager(models.Manager):
 
         return super(
             TrashedDocumentManager, self
+        ).get_queryset().filter(in_trash=True)
+
+
+class OrganizationTrashedDocumentManager(models.Manager):
+    def get_queryset(self):
+        DocumentType = apps.get_model('documents', 'DocumentType')
+
+        return super(
+            OrganizationTrashedDocumentManager, self
         ).get_queryset().filter(in_trash=True).filter(
             document_type__in=DocumentType.on_organization.all()
         )

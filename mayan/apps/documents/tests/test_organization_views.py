@@ -49,7 +49,7 @@ class DocumentOrganizationViewTestCase(OrganizationViewTestCase):
 
     def test_document_document_type_change_view(self):
         with self.settings(ORGANIZATION_ID=self.organization_b.pk):
-            document_type = DocumentType.objects.create(
+            document_type = DocumentType.on_organization.create(
                 label=TEST_DOCUMENT_TYPE_2_LABEL
             )
 

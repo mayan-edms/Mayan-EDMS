@@ -35,7 +35,7 @@ class DocumentTypeAPITestCase(APITestCase):
     def setUp(self):
         create_default_organization()
 
-        self.admin_user = get_user_model().create_superuser(
+        self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
@@ -58,7 +58,8 @@ class DocumentTypeAPITestCase(APITestCase):
 
         self.assertEqual(DocumentType.on_organization.all().count(), 1)
         self.assertEqual(
-            DocumentType.objects.all().first().label, TEST_DOCUMENT_TYPE
+            DocumentType.on_organization.all().first().label,
+            TEST_DOCUMENT_TYPE
         )
 
     def test_document_type_edit_via_put(self):
