@@ -99,7 +99,6 @@ class DocumentTypeSubmitView(FormView):
 
     def form_valid(self, form):
         count = 0
-        print form.cleaned_data
         for document in form.cleaned_data['document_type'].documents.all():
             document.submit_for_ocr()
             count += 1
