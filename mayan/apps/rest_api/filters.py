@@ -10,16 +10,16 @@ from permissions import Permission
 
 class MayanObjectPermissionsFilter(BaseFilterBackend):
     def filter_queryset(self, request, queryset, view):
-        required_permission = getattr(
+        required_permissions = getattr(
             view, 'mayan_object_permissions', {}
         ).get(request.method, None)
 
-        if required_permission:
+        if required_permissions:
             try:
-                Permission.check_permissions(request.user, required_permission)
+                Permission.check_permissions(request.user, required_permissions)
             except PermissionDenied:
                 return AccessControlList.objects.filter_by_access(
-                    required_permission[0], request.user, queryset
+                    required_permissions[0], request.user, queryset
                 )
             else:
                 return queryset

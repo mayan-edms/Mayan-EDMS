@@ -1,6 +1,4 @@
-from __future__ import absolute_import
-
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 from django.core.exceptions import PermissionDenied
 
@@ -27,24 +25,24 @@ class MayanPermission(BasePermission):
             return True
 
     def has_object_permission(self, request, view, obj):
-        required_permission = getattr(
+        required_permissions = getattr(
             view, 'mayan_object_permissions', {}
         ).get(request.method, None)
 
-        if required_permission:
+        if required_permissions:
             try:
-                Permission.check_permissions(request.user, required_permission)
+                Permission.check_permissions(request.user, required_permissions)
             except PermissionDenied:
                 try:
                     if hasattr(view, 'mayan_permission_attribute_check'):
                         AccessControlList.objects.check_access(
-                            permissions=required_permission,
+                            permissions=required_permissions,
                             user=request.user, obj=obj,
                             related=view.mayan_permission_attribute_check
                         )
                     else:
                         AccessControlList.objects.check_access(
-                            required_permission, request.user, obj
+                            required_permissions, request.user, obj
                         )
                 except PermissionDenied:
                     return False
