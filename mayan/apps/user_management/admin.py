@@ -1,17 +1,20 @@
-from django import forms
-from django.contrib import admin
-from django.contrib.auth.models import Group
-from django.contrib.auth.admin import UserAdmin
-from django.contrib.auth.forms import ReadOnlyPasswordHashField
+from __future__ import unicode_literals
 
-from user_management.models import MayanUser
+from django.contrib import admin
+from django.contrib.auth.admin import UserAdmin, GroupAdmin
+from django.utils.translation import ugettext_lazy as _
+
+from organizations.admin import OrganizationAdminMixin
+
+from .models import MayanGroup, MayanUser
 
 
 @admin.register(MayanUser)
-class MayanUserAdmin(UserAdmin):
-    list_display = ('organization',) + UserAdmin.list_display
+class MayanUserAdmin(OrganizationAdminMixin, UserAdmin):
     list_display_links = ('username',)
-    list_filter = UserAdmin.list_filter + ('organization',)
-    ordering = ('organization',) + UserAdmin.ordering
-    fieldsets = UserAdmin.fieldsets
-    fieldsets[1][1]['fields'] = ('organization',) + fieldsets[1][1]['fields']
+
+
+@admin.register(MayanGroup)
+class MayanGroupAdmin(OrganizationAdminMixin, GroupAdmin):
+    list_display = ('name',)
+    list_display_links = ('name',)
