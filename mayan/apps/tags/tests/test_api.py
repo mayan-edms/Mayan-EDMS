@@ -4,12 +4,9 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
-from rest_framework.test import APITestCase
-
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
-from organizations.models import Organization
-from organizations.utils import create_default_organization
+from rest_api.tests.base import GenericAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -22,25 +19,10 @@ from .literals import (
 )
 
 
-class TagAPITestCase(APITestCase):
+class TagAPITestCase(GenericAPITestCase):
     """
     Test the tag API endpoints
     """
-
-    def setUp(self):
-        create_default_organization()
-        self.admin_user = get_user_model().on_organization.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
-        self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-
-    def tearDown(self):
-        self.admin_user.delete()
-        Organization.objects.clear_cache()
 
     def test_tag_create(self):
         response = self.client.post(
@@ -48,6 +30,8 @@ class TagAPITestCase(APITestCase):
                 'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
             }
         )
+
+        self.assertEqual(response.status_code, 201)
 
         tag = Tag.on_organization.first()
 

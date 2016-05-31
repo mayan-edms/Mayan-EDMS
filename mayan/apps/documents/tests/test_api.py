@@ -6,8 +6,6 @@ import time
 
 from json import loads
 
-from django.contrib.auth import get_user_model
-
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 from django.utils.six import BytesIO
@@ -15,37 +13,23 @@ from django.utils.six import BytesIO
 from rest_framework import status
 from rest_framework.test import APITestCase
 
-from organizations.utils import create_default_organization
+from rest_api.tests.base import GenericAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
 
 from .literals import (
     TEST_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
-    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH,
+    TEST_DOCUMENT_TYPE_EDITED_LABEL, TEST_SMALL_DOCUMENT_CHECKSUM,
+    TEST_SMALL_DOCUMENT_PATH,
 )
 from ..models import Document, DocumentType, HASH_FUNCTION
 
 
-class DocumentTypeAPITestCase(APITestCase):
+class DocumentTypeAPITestCase(GenericAPITestCase):
     """
     Test the document type API endpoints
     """
-
-    def setUp(self):
-        create_default_organization()
-
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
-        self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-
-    def tearDown(self):
-        self.admin_user.delete()
 
     def test_document_type_create(self):
         self.assertEqual(DocumentType.on_organization.all().count(), 0)
@@ -67,26 +51,30 @@ class DocumentTypeAPITestCase(APITestCase):
             label=TEST_DOCUMENT_TYPE
         )
 
-        self.client.put(
+        response = self.client.put(
             reverse('rest_api:documenttype-detail', args=(document_type.pk,)),
-            {'label': TEST_DOCUMENT_TYPE + 'edited'}
+            {'label': TEST_DOCUMENT_TYPE_EDITED_LABEL}
         )
 
+        self.assertEqual(response.status_code, 200)
+
         document_type = DocumentType.on_organization.get(pk=document_type.pk)
-        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE + 'edited')
+        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE_EDITED_LABEL)
 
     def test_document_type_edit_via_patch(self):
         document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
-        self.client.patch(
+        response = self.client.patch(
             reverse('rest_api:documenttype-detail', args=(document_type.pk,)),
-            {'label': TEST_DOCUMENT_TYPE + 'edited'}
+            {'label': TEST_DOCUMENT_TYPE_EDITED_LABEL}
         )
+        self.assertEqual(response.status_code, 200)
 
         document_type = DocumentType.on_organization.get(pk=document_type.pk)
-        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE + 'edited')
+        self.assertEqual(document_type.label, TEST_DOCUMENT_TYPE_EDITED_LABEL)
+        document_type.delete()
 
     def test_document_type_delete(self):
         document_type = DocumentType.on_organization.create(
@@ -101,28 +89,20 @@ class DocumentTypeAPITestCase(APITestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentAPITestCase(APITestCase):
+class DocumentAPITestCase(GenericAPITestCase):
     """
     Test document API endpoints
     """
 
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
-        self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-
+        super(DocumentAPITestCase, self).setUp()
         self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
     def tearDown(self):
-        self.admin_user.delete()
         self.document_type.delete()
+        super(DocumentAPITestCase, self).tearDown()
 
     def test_document_upload(self):
         with open(TEST_DOCUMENT_PATH) as file_descriptor:
