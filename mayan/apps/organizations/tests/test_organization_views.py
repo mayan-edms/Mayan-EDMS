@@ -17,7 +17,7 @@ class OrganizationViewTestCase(GenericViewTestCase):
         )
 
         # Create an organization admin for organization B
-        username, password = self.organization_b.create_admin()
+        user, password = self.organization_b.create_admin()
         with self.settings(ORGANIZATION_ID=self.organization_b.pk):
             # Login organization admin for organization B
-            self.login(username=username, password=password)
+            self.login(username=user.username, password=password)
