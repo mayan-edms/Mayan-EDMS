@@ -1,13 +1,13 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 
 from rest_framework import generics
 
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
+from .models import MayanGroup
 from .permissions import (
     permission_group_create, permission_group_delete, permission_group_edit,
     permission_group_view, permission_user_create, permission_user_delete,
@@ -21,7 +21,7 @@ class APIGroupListView(generics.ListCreateAPIView):
     mayan_object_permissions = {'GET': (permission_group_view,)}
     mayan_view_permissions = {'POST': (permission_group_create,)}
     permission_classes = (MayanPermission,)
-    queryset = Group.objects.all()
+    queryset = MayanGroup.on_organization.all()
     serializer_class = GroupSerializer
 
     def get(self, *args, **kwargs):
@@ -47,7 +47,7 @@ class APIGroupView(generics.RetrieveUpdateDestroyAPIView):
         'DELETE': (permission_group_delete,)
     }
     permission_classes = (MayanPermission,)
-    queryset = Group.objects.all()
+    queryset = MayanGroup.on_organization.all()
     serializer_class = GroupSerializer
 
     def delete(self, *args, **kwargs):
@@ -84,7 +84,7 @@ class APIUserListView(generics.ListCreateAPIView):
     mayan_object_permissions = {'GET': (permission_user_view,)}
     mayan_view_permissions = {'POST': (permission_user_create,)}
     permission_classes = (MayanPermission,)
-    queryset = get_user_model().objects.all()
+    queryset = get_user_model().on_organization.all()
     serializer_class = UserSerializer
 
     def get(self, *args, **kwargs):
@@ -109,7 +109,7 @@ class APIUserView(generics.RetrieveUpdateDestroyAPIView):
         'DELETE': (permission_user_delete,)
     }
     permission_classes = (MayanPermission,)
-    queryset = get_user_model().objects.all()
+    queryset = get_user_model().on_organization.all()
     serializer_class = UserSerializer
 
     def delete(self, *args, **kwargs):
