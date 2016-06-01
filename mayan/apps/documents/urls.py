@@ -35,7 +35,7 @@ urlpatterns = patterns(
     ),
     url(
         r'^list/deleted/$', TrashedDocumentListView.as_view(),
-        name='document_list_deleted'
+        name='document_list_trashed'
     ),
 
     url(
