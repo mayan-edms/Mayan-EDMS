@@ -18,7 +18,7 @@ class Command(management.BaseCommand):
     def handle(self, *args, **options):
         path = os.path.join(settings.BASE_DIR, 'mayan', 'settings', 'local.py')
         if os.path.exists(path):
-            print 'Existing file at: {0}. Backup, remove this file and try again.'.format(path)
+            self.stdout.write(self.style.NOTICE('Existing settings file at: {0}. Backup, remove this file, and try again.'.format(path)))
         else:
             with open(path, 'w+') as file_object:
                 file_object.write('\n'.join([
