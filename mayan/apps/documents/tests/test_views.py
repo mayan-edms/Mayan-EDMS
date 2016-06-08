@@ -832,7 +832,7 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        response = self.get('documents:document_list_deleted')
+        response = self.get('documents:document_list_trashed')
 
         self.assertNotContains(response, self.document.label, status_code=200)
 
@@ -846,6 +846,6 @@ class TrashedDocumentTestCase(GenericDocumentViewTestCase):
         self.role.permissions.add(
             permission_document_view.stored_permission
         )
-        response = self.get('documents:document_list_deleted')
+        response = self.get('documents:document_list_trashed')
 
         self.assertContains(response, self.document.label, status_code=200)

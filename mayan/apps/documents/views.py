@@ -608,7 +608,7 @@ class DocumentView(SingleObjectDetailView):
 
 class EmptyTrashCanView(ConfirmView):
     action_cancel_redirect = post_action_redirect = reverse_lazy(
-        'documents:document_list_deleted'
+        'documents:document_list_trashed'
     )
     extra_context = {
         'title': _('Empty trash?')

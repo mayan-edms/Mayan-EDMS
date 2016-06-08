@@ -4,16 +4,13 @@ from __future__ import unicode_literals
 
 import time
 
-from json import loads
-
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 from django.utils.six import BytesIO
 
 from rest_framework import status
-from rest_framework.test import APITestCase
 
-from rest_api.tests.base import GenericAPITestCase
+from rest_api.tests import GenericAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -113,7 +110,7 @@ class DocumentAPITestCase(GenericAPITestCase):
                 }
             )
 
-        document_data = loads(response.content)
+        document_data = response.data
 
         self.assertEqual(
             response.status_code, status.HTTP_201_CREATED
