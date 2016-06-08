@@ -2,6 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
+from django.apps import apps
 from django.db import models
 from django.utils.timezone import now
 
@@ -26,14 +27,14 @@ class DocumentCheckoutManager(models.Manager):
 
     def checked_out_documents(self):
         return Document.on_organization.filter(
-            pk__in=self.model.objects.all().values_list(
+            pk__in=self.all().values_list(
                 'document__pk', flat=True
             )
         )
 
     def expired_check_outs(self):
         expired_list = Document.on_organization.filter(
-            pk__in=self.model.objects.filter(
+            pk__in=self.filter(
                 expiration_datetime__lte=now()
             ).values_list('document__pk', flat=True)
         )
@@ -45,14 +46,14 @@ class DocumentCheckoutManager(models.Manager):
             document.check_in()
 
     def is_document_checked_out(self, document):
-        if self.model.objects.filter(document=document):
+        if self.model.on_organization.filter(document=document):
             return True
         else:
             return False
 
     def check_in_document(self, document, user=None):
         try:
-            document_checkout = self.model.objects.get(document=document)
+            document_checkout = self.get(document=document)
         except self.model.DoesNotExist:
             raise DocumentNotCheckedOut
         else:
@@ -70,7 +71,7 @@ class DocumentCheckoutManager(models.Manager):
 
     def document_checkout_info(self, document):
         try:
-            return self.model.objects.get(document=document)
+            return self.get(document=document)
         except self.model.DoesNotExist:
             raise DocumentNotCheckedOut
 
@@ -87,3 +88,14 @@ class DocumentCheckoutManager(models.Manager):
             return True
         else:
             return not checkout_info.block_new_version
+
+
+class OrganizationDocumentCheckoutManager(DocumentCheckoutManager):
+    def get_queryset(self):
+        Document = apps.get_model('documents', 'Document')
+
+        return super(
+            OrganizationDocumentCheckoutManager, self
+        ).get_queryset().filter(
+            document__in=Document.on_organization.all()
+        )

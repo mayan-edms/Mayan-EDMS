@@ -103,7 +103,7 @@ class CheckoutListView(DocumentListView):
     }
 
     def get_document_queryset(self):
-        return DocumentCheckout.objects.checked_out_documents()
+        return DocumentCheckout.on_organization.checked_out_documents()
 
 
 class CheckoutDetailView(SingleObjectDetailView):

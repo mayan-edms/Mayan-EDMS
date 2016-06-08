@@ -31,7 +31,7 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
             return DocumentCheckoutSerializer
 
     def get_queryset(self):
-        documents = DocumentCheckout.objects.checked_out_documents()
+        documents = DocumentCheckout.on_organization.checked_out_documents()
 
         try:
             Permission.check_permissions(
@@ -44,7 +44,7 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
         else:
             filtered_documents = documents
 
-        return DocumentCheckout.objects.filter(
+        return DocumentCheckout.on_organization.filter(
             document__pk__in=filtered_documents.values_list('pk', flat=True)
         )
 
@@ -80,7 +80,7 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
             timezone = pytz.utc
 
             try:
-                DocumentCheckout.objects.create(
+                DocumentCheckout.on_organization.create(
                     document=document,
                     expiration_datetime=timezone.localize(
                         serializer.data['expiration_datetime']
@@ -104,7 +104,7 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
 
     def get_queryset(self):
         if self.request.method == 'GET':
-            documents = DocumentCheckout.objects.checked_out_documents()
+            documents = DocumentCheckout.on_organization.checked_out_documents()
 
             try:
                 Permission.check_permissions(
@@ -117,13 +117,13 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
             else:
                 filtered_documents = documents
 
-            return DocumentCheckout.objects.filter(
+            return DocumentCheckout.on_organization.filter(
                 document__pk__in=filtered_documents.values_list(
                     'pk', flat=True
                 )
             )
         elif self.request.method == 'DELETE':
-            return DocumentCheckout.objects.all()
+            return DocumentCheckout.on_organization.all()
 
     def get(self, request, *args, **kwargs):
         """
