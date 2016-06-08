@@ -35,7 +35,9 @@ def task_do_ocr(self, document_version_pk):
         logger.debug('acquired lock: %s', lock_id)
         document_version = None
         try:
-            document_version = DocumentVersion.objects.get(pk=document_version_pk)
+            document_version = DocumentVersion.on_organization.get(
+                pk=document_version_pk
+            )
             logger.info(
                 'Starting document OCR for document version: %s',
                 document_version
@@ -53,7 +55,7 @@ def task_do_ocr(self, document_version_pk):
                 exception
             )
             if document_version:
-                entry, created = DocumentVersionOCRError.objects.get_or_create(
+                entry, created = DocumentVersionOCRError.on_organization.get_or_create(
                     document_version=document_version
                 )
 
@@ -72,7 +74,7 @@ def task_do_ocr(self, document_version_pk):
                 'OCR complete for document version: %s', document_version
             )
             try:
-                entry = DocumentVersionOCRError.objects.get(
+                entry = DocumentVersionOCRError.on_organization.get(
                     document_version=document_version
                 )
             except DocumentVersionOCRError.DoesNotExist:

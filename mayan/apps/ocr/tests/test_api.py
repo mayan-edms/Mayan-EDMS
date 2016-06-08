@@ -1,36 +1,23 @@
 from __future__ import unicode_literals
 
-import json
-
-from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 
 from rest_framework import status
-from rest_framework.test import APITestCase
 
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
-from user_management.tests import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
-)
+from rest_api.tests import GenericAPITestCase
 
 
-class OCRAPITestCase(APITestCase):
+class OCRAPITestCase(GenericAPITestCase):
     """
     Test the OCR app API endpoints
     """
 
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
+        super(OCRAPITestCase, self).setUp()
 
-        self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-
-        self.document_type = DocumentType.objects.create(
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -41,6 +28,7 @@ class OCRAPITestCase(APITestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(OCRAPITestCase, self).tearDown()
 
     def test_submit_document(self):
         response = self.client.post(
@@ -81,5 +69,5 @@ class OCRAPITestCase(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_200_OK)
 
         self.assertTrue(
-            'Mayan EDMS Documentation' in json.loads(response.content)['content']
+            'Mayan EDMS Documentation' in response.data['content']
         )

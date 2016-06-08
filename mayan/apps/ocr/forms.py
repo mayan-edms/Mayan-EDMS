@@ -57,5 +57,5 @@ class DocumentContentForm(forms.Form):
 
 class DocumentTypeSelectForm(forms.Form):
     document_type = forms.ModelChoiceField(
-        queryset=DocumentType.objects.all(), label=('Document type')
+        queryset=DocumentType.on_organization.all(), label=('Document type')
     )

@@ -92,7 +92,7 @@ class Parser(object):
         file_object = document_page.document_version.get_intermidiate_file()
 
         try:
-            document_page_content, created = DocumentPageContent.objects.get_or_create(
+            document_page_content, created = DocumentPageContent.on_organization.get_or_create(
                 document_page=document_page
             )
             document_page_content.content = self.execute(

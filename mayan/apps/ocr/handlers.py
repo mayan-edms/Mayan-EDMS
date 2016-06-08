@@ -20,6 +20,6 @@ def initialize_new_ocr_settings(sender, instance, **kwargs):
     DocumentTypeSettings = get_model('ocr', 'DocumentTypeSettings')
 
     if kwargs['created']:
-        DocumentTypeSettings.objects.create(
+        DocumentTypeSettings.on_organization.create(
             document_type=instance, auto_ocr=setting_auto_ocr.value
         )

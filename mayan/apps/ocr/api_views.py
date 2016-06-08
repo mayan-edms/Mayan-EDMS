@@ -16,7 +16,7 @@ class APIDocumentOCRView(generics.GenericAPIView):
         'POST': (permission_ocr_document,)
     }
     permission_classes = (MayanPermission,)
-    queryset = Document.objects.all()
+    queryset = Document.on_organization.all()
 
     def get_serializer_class(self):
         return None
@@ -44,7 +44,7 @@ class APIDocumentVersionOCRView(generics.GenericAPIView):
         'POST': (permission_ocr_document,)
     }
     permission_classes = (MayanPermission,)
-    queryset = DocumentVersion.objects.all()
+    queryset = DocumentVersion.on_organization.all()
 
     def get_serializer_class(self):
         return None
@@ -83,7 +83,7 @@ class APIDocumentPageContentView(generics.RetrieveAPIView):
     }
     permission_classes = (MayanPermission,)
     serializer_class = DocumentPageContentSerializer
-    queryset = DocumentPage.objects.all()
+    queryset = DocumentPage.on_organization.all()
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()

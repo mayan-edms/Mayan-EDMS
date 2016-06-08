@@ -32,7 +32,7 @@ class DocumentAllSubmitView(ConfirmView):
 
     def view_action(self):
         count = 0
-        for document in Document.objects.all():
+        for document in Document.on_organization.all():
             document.submit_for_ocr()
             count += 1
 
@@ -49,7 +49,7 @@ class DocumentSubmitView(ConfirmView):
         }
 
     def get_object(self):
-        return Document.objects.get(pk=self.kwargs['pk'])
+        return get_object_or_404(Document.on_organization, pk=self.kwargs['pk'])
 
     def object_action(self, instance):
         try:
@@ -77,7 +77,6 @@ class DocumentSubmitView(ConfirmView):
 
 
 class DocumentSubmitManyView(MultipleInstanceActionMixin, DocumentSubmitView):
-    model = Document
     success_message = '%(count)d document submitted to the OCR queue.'
     success_message_plural = '%(count)d documents submitted to the OCR queue.'
 
@@ -86,6 +85,9 @@ class DocumentSubmitManyView(MultipleInstanceActionMixin, DocumentSubmitView):
         return {
             'title': _('Submit the selected documents to the OCR queue?')
         }
+
+    def get_queryset(self):
+        return Document.on_organization.all()
 
 
 class DocumentTypeSubmitView(FormView):
@@ -122,7 +124,7 @@ class DocumentTypeSettingsEditView(SingleObjectEditView):
 
     def get_object(self, queryset=None):
         return get_object_or_404(
-            DocumentType, pk=self.kwargs['pk']
+            DocumentType.on_organization, pk=self.kwargs['pk']
         ).ocr_settings
 
     def get_extra_context(self):
@@ -135,7 +137,6 @@ class DocumentTypeSettingsEditView(SingleObjectEditView):
 
 class DocumentOCRContent(SingleObjectDetailView):
     form_class = DocumentContentForm
-    model = Document
     object_permission = permission_ocr_content_view
 
     def dispatch(self, request, *args, **kwargs):
@@ -153,6 +154,9 @@ class DocumentOCRContent(SingleObjectDetailView):
             'title': _('OCR result for document: %s') % self.get_object(),
         }
 
+    def get_queryset(self):
+        return Document.on_organization.all()
+
 
 class EntryListView(SingleObjectListView):
     extra_context = {
@@ -162,4 +166,4 @@ class EntryListView(SingleObjectListView):
     view_permission = permission_ocr_document
 
     def get_queryset(self):
-        return DocumentVersionOCRError.objects.all()
+        return DocumentVersionOCRError.on_organization.all()

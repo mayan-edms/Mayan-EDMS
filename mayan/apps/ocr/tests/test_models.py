@@ -2,30 +2,31 @@
 
 from __future__ import unicode_literals
 
-from django.core.files.base import File
-from django.test import TestCase
-
 from documents.models import DocumentType
 from documents.settings import setting_language_choices
 from documents.tests import (
     TEST_DEU_DOCUMENT_PATH, TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
+from organizations.tests import OrganizationTestCase
 
 
-class DocumentOCRTestCase(TestCase):
+class DocumentOCRTestCase(OrganizationTestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        super(DocumentOCRTestCase, self).setUp()
+
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object),
+                file_object=file_object,
             )
 
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
+        super(DocumentOCRTestCase, self).tearDown()
 
     def test_ocr_language_backends_end(self):
         content = self.document.pages.first().ocr_content.content
@@ -33,9 +34,11 @@ class DocumentOCRTestCase(TestCase):
         self.assertTrue('Mayan EDMS Documentation' in content)
 
 
-class GermanOCRSupportTestCase(TestCase):
+class GermanOCRSupportTestCase(OrganizationTestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        super(GermanOCRSupportTestCase, self).setUp()
+
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -49,11 +52,12 @@ class GermanOCRSupportTestCase(TestCase):
 
         with open(TEST_DEU_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object), language=language_code
+                file_object=file_object, language=language_code
             )
 
     def tearDown(self):
         self.document_type.delete()
+        super(GermanOCRSupportTestCase, self).tearDown()
 
     def test_ocr_language_backends_end(self):
         content = self.document.pages.first().ocr_content.content
