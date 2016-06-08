@@ -30,6 +30,6 @@ class OrganizationDocumentTypeMetadataTypeManager(models.Manager):
         return super(
             OrganizationDocumentTypeMetadataTypeManager, self
         ).get_queryset().filter(
-            document_type__in=DocumentType.objects.all(),
+            document_type__in=DocumentType.on_organization.all(),
             metadata_type__in=MetadataType.on_organization.all()
         )
