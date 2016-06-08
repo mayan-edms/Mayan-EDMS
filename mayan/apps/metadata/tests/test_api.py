@@ -4,10 +4,9 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
-from rest_framework.test import APITestCase
-
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from rest_api.tests import GenericAPITestCase
 from user_management.tests.literals import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
 )
@@ -23,19 +22,12 @@ TEST_METADATA_VALUE = 'test value'
 TEST_METADATA_VALUE_EDITED = 'test value edited'
 
 
-class MetadataTypeAPITestCase(APITestCase):
+class MetadataTypeAPITestCase(GenericAPITestCase):
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-
-        self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
+        super(MetadataTypeAPITestCase, self).setUp()
 
     def tearDown(self):
-        self.admin_user.delete()
+        super(MetadataTypeAPITestCase, self).tearDown()
 
     def test_metadata_type_create(self):
         response = self.client.post(
@@ -45,7 +37,7 @@ class MetadataTypeAPITestCase(APITestCase):
             }
         )
 
-        metadata_type = MetadataType.objects.first()
+        metadata_type = MetadataType.on_organization.first()
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(response.data['id'], metadata_type.pk)
@@ -56,7 +48,7 @@ class MetadataTypeAPITestCase(APITestCase):
         self.assertEqual(metadata_type.name, TEST_METADATA_TYPE_NAME)
 
     def test_metadata_type_delete(self):
-        metadata_type = MetadataType.objects.create(
+        metadata_type = MetadataType.on_organization.create(
             label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
         )
 
@@ -66,10 +58,10 @@ class MetadataTypeAPITestCase(APITestCase):
 
         self.assertEqual(response.status_code, 204)
 
-        self.assertEqual(MetadataType.objects.count(), 0)
+        self.assertEqual(MetadataType.on_organization.count(), 0)
 
     def test_metadata_type_edit(self):
-        metadata_type = MetadataType.objects.create(
+        metadata_type = MetadataType.on_organization.create(
             label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
         )
 
@@ -89,28 +81,21 @@ class MetadataTypeAPITestCase(APITestCase):
         self.assertEqual(metadata_type.name, TEST_METADATA_TYPE_NAME_2)
 
 
-class DocumentTypeMetadataTypeAPITestCase(APITestCase):
+class DocumentTypeMetadataTypeAPITestCase(GenericAPITestCase):
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
+        super(DocumentTypeMetadataTypeAPITestCase, self).setUp()
 
-        self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-
-        self.document_type = DocumentType.objects.create(
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
-        self.metadata_type = MetadataType.objects.create(
+        self.metadata_type = MetadataType.on_organization.create(
             label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
         )
 
     def tearDown(self):
-        self.admin_user.delete()
         self.document_type.delete()
+        super(DocumentTypeMetadataTypeAPITestCase, self).tearDown()
 
     def test_document_type_metadata_type_optional_create(self):
         response = self.client.post(
@@ -122,7 +107,7 @@ class DocumentTypeMetadataTypeAPITestCase(APITestCase):
 
         self.assertEqual(response.status_code, 201)
 
-        document_type_metadata_type = DocumentTypeMetadataType.objects.filter(
+        document_type_metadata_type = DocumentTypeMetadataType.on_organization.filter(
             document_type=self.document_type, required=False
         ).first()
 
@@ -142,7 +127,7 @@ class DocumentTypeMetadataTypeAPITestCase(APITestCase):
 
         self.assertEqual(response.status_code, 201)
 
-        document_type_metadata_type = DocumentTypeMetadataType.objects.filter(
+        document_type_metadata_type = DocumentTypeMetadataType.on_organization.filter(
             document_type=self.document_type, required=True
         ).first()
 
@@ -169,23 +154,16 @@ class DocumentTypeMetadataTypeAPITestCase(APITestCase):
         self.assertEqual(self.document_type.metadata.all().count(), 0)
 
 
-class DocumentMetadataAPITestCase(APITestCase):
+class DocumentMetadataAPITestCase(GenericAPITestCase):
     @override_settings(OCR_AUTO_OCR=False)
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
+        super(DocumentMetadataAPITestCase, self).setUp()
 
-        self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-
-        self.document_type = DocumentType.objects.create(
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
-        self.metadata_type = MetadataType.objects.create(
+        self.metadata_type = MetadataType.on_organization.create(
             label=TEST_METADATA_TYPE_LABEL, name=TEST_METADATA_TYPE_NAME
         )
 
@@ -199,8 +177,8 @@ class DocumentMetadataAPITestCase(APITestCase):
             )
 
     def tearDown(self):
-        self.admin_user.delete()
         self.document_type.delete()
+        super(DocumentMetadataAPITestCase, self).tearDown()
 
     def test_document_metadata_create(self):
         response = self.client.post(
@@ -213,7 +191,7 @@ class DocumentMetadataAPITestCase(APITestCase):
             }
         )
 
-        document_metadata = DocumentMetadata.objects.get(
+        document_metadata = DocumentMetadata.on_organization.get(
             document=self.document
         )
 

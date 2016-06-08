@@ -30,7 +30,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
     def setUp(self):
         super(DocumentMetadataTestCase, self).setUp()
 
-        self.metadata_type = MetadataType.objects.create(
+        self.metadata_type = MetadataType.on_organization.create(
             name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
         )
 
@@ -94,11 +94,11 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
             permission_metadata_document_edit.stored_permission
         )
 
-        document_type_2 = DocumentType.objects.create(
+        document_type_2 = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE_2
         )
 
-        metadata_type_2 = MetadataType.objects.create(
+        metadata_type_2 = MetadataType.on_organization.create(
             name=TEST_METADATA_TYPE_NAME_2, label=TEST_METADATA_TYPE_LABEL_2
         )
 

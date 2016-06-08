@@ -6,6 +6,7 @@ from django.test import TestCase, override_settings
 
 from documents.models import DocumentType
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
+from organizations.tests import OrganizationTestCase
 
 from ..models import MetadataType, DocumentMetadata
 
@@ -18,13 +19,14 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class MetadataTestCase(TestCase):
+class MetadataTestCase(OrganizationTestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        super(MetadataTestCase, self).setUp()
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
-        self.metadata_type = MetadataType.objects.create(
+        self.metadata_type = MetadataType.on_organization.create(
             name=TEST_METADATA_TYPE_NAME, label=TEST_METADATA_TYPE_LABEL
         )
 
@@ -37,6 +39,7 @@ class MetadataTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(MetadataTestCase, self).tearDown()
 
     def test_no_default(self):
         document_metadata = DocumentMetadata(

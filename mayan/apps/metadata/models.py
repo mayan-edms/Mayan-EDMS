@@ -10,9 +10,15 @@ from django.utils.module_loading import import_string
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
+from organizations.models import Organization
+from organizations.managers import CurrentOrganizationManager
+from organizations.shortcuts import get_current_organization
 
 from .classes import MetadataLookup
-from .managers import MetadataTypeManager
+from .managers import (
+    MetadataTypeManager, OrganizationDocumentMetadataManager,
+    OrganizationDocumentTypeMetadataTypeManager
+)
 from .settings import setting_available_parsers, setting_available_validators
 
 
@@ -35,7 +41,9 @@ class MetadataType(models.Model):
     """
     Define a type of metadata
     """
-
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
+    )
     name = models.CharField(
         max_length=48,
         help_text=_(
@@ -79,17 +87,18 @@ class MetadataType(models.Model):
     )
 
     objects = MetadataTypeManager()
+    on_organization = CurrentOrganizationManager()
+
+    class Meta:
+        ordering = ('label',)
+        verbose_name = _('Metadata type')
+        verbose_name_plural = _('Metadata types')
 
     def __str__(self):
         return self.label
 
     def natural_key(self):
         return (self.name,)
-
-    class Meta:
-        ordering = ('label',)
-        verbose_name = _('Metadata type')
-        verbose_name_plural = _('Metadata types')
 
     @staticmethod
     def comma_splitter(string):
@@ -158,6 +167,14 @@ class DocumentMetadata(models.Model):
         verbose_name=_('Value')
     )
 
+    objects = models.Manager()
+    on_organization = OrganizationDocumentMetadataManager()
+
+    class Meta:
+        unique_together = ('document', 'metadata_type')
+        verbose_name = _('Document metadata')
+        verbose_name_plural = _('Document metadata')
+
     def __str__(self):
         return unicode(self.metadata_type)
 
@@ -184,11 +201,6 @@ class DocumentMetadata(models.Model):
             document_type=self.document.document_type, value=self.value
         )
 
-    class Meta:
-        unique_together = ('document', 'metadata_type')
-        verbose_name = _('Document metadata')
-        verbose_name_plural = _('Document metadata')
-
     @property
     def is_required(self):
         return self.metadata_type.get_required_for(
@@ -207,10 +219,13 @@ class DocumentTypeMetadataType(models.Model):
     )
     required = models.BooleanField(default=False, verbose_name=_('Required'))
 
-    def __str__(self):
-        return unicode(self.metadata_type)
+    objects = models.Manager()
+    on_organization = OrganizationDocumentTypeMetadataTypeManager()
 
     class Meta:
         unique_together = ('document_type', 'metadata_type')
         verbose_name = _('Document type metadata type options')
         verbose_name_plural = _('Document type metadata types options')
+
+    def __str__(self):
+        return unicode(self.metadata_type)

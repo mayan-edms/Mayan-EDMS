@@ -36,11 +36,11 @@ from .permissions import (
 
 def metadata_edit(request, document_id=None, document_id_list=None):
     if document_id:
-        documents = Document.objects.filter(pk=document_id)
+        documents = Document.on_organization.filter(pk=document_id)
         if not documents:
             raise Document.DoesNotExist
     elif document_id_list:
-        documents = Document.objects.filter(pk__in=document_id_list)
+        documents = Document.on_organization.filter(pk__in=document_id_list)
 
     try:
         Permission.check_permissions(
@@ -186,11 +186,11 @@ def metadata_multiple_edit(request):
 
 def metadata_add(request, document_id=None, document_id_list=None):
     if document_id:
-        documents = Document.objects.filter(pk=document_id)
+        documents = Document.on_organization.filter(pk=document_id)
         if not documents:
             raise Document.DoesNotExist
     elif document_id_list:
-        documents = Document.objects.select_related('document_type').filter(pk__in=document_id_list)
+        documents = Document.on_organization.select_related('document_type').filter(pk__in=document_id_list)
         if len(set([document.document_type.pk for document in documents])) > 1:
             messages.error(
                 request, _('Only select documents of the same type.')
@@ -241,7 +241,7 @@ def metadata_add(request, document_id=None, document_id_list=None):
             metadata_type = form.cleaned_data['metadata_type']
             for document in documents:
                 try:
-                    document_metadata, created = DocumentMetadata.objects.get_or_create(
+                    document_metadata, created = DocumentMetadata.on_organization.get_or_create(
                         document=document,
                         metadata_type=metadata_type,
                         defaults={'value': ''}
@@ -331,11 +331,11 @@ def metadata_multiple_add(request):
 
 def metadata_remove(request, document_id=None, document_id_list=None):
     if document_id:
-        documents = Document.objects.filter(pk=document_id)
+        documents = Document.on_organization.filter(pk=document_id)
         if not documents:
             raise Document.DoesNotExist
     elif document_id_list:
-        documents = Document.objects.filter(pk__in=document_id_list)
+        documents = Document.on_organization.filter(pk__in=document_id_list)
 
     try:
         Permission.check_permissions(
@@ -416,10 +416,10 @@ def metadata_remove(request, document_id=None, document_id_list=None):
                 for form in formset.forms:
                     if form.cleaned_data['update']:
                         metadata_type = get_object_or_404(
-                            MetadataType, pk=form.cleaned_data['id']
+                            MetadataType.on_organization, pk=form.cleaned_data['id']
                         )
                         try:
-                            document_metadata = DocumentMetadata.objects.get(
+                            document_metadata = DocumentMetadata.on_organization.get(
                                 document=document, metadata_type=metadata_type
                             )
                             document_metadata.delete()
@@ -494,7 +494,7 @@ class DocumentMetadataListView(SingleObjectListView):
         )
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(Document.on_organization, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         document = self.get_document()
@@ -512,13 +512,14 @@ class DocumentMetadataListView(SingleObjectListView):
 class MetadataTypeCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create metadata type')}
     form_class = MetadataTypeForm
-    model = MetadataType
     post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
     view_permission = permission_metadata_type_create
 
+    def get_queryset(self):
+        return MetadataType.on_organization.all()
+
 
 class MetadataTypeDeleteView(SingleObjectDeleteView):
-    model = MetadataType
     post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
     view_permission = permission_metadata_type_delete
 
@@ -529,10 +530,12 @@ class MetadataTypeDeleteView(SingleObjectDeleteView):
             'title': _('Delete the metadata type: %s?') % self.get_object(),
         }
 
+    def get_queryset(self):
+        return MetadataType.on_organization.all()
+
 
 class MetadataTypeEditView(SingleObjectEditView):
     form_class = MetadataTypeForm
-    model = MetadataType
     post_action_redirect = reverse_lazy('metadata:setup_metadata_type_list')
     view_permission = permission_metadata_type_edit
 
@@ -542,12 +545,12 @@ class MetadataTypeEditView(SingleObjectEditView):
             'title': _('Edit metadata type: %s') % self.get_object(),
         }
 
+    def get_queryset(self):
+        return MetadataType.on_organization.all()
+
 
 class MetadataTypeListView(SingleObjectListView):
     view_permission = permission_metadata_type_view
-
-    def get_queryset(self):
-        return MetadataType.objects.all()
 
     def get_extra_context(self):
         return {
@@ -561,6 +564,9 @@ class MetadataTypeListView(SingleObjectListView):
             'title': _('Metadata types'),
         }
 
+    def get_queryset(self):
+        return MetadataType.on_organization.all()
+
 
 class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
     decode_content_type = True
@@ -572,12 +578,12 @@ class SetupDocumentTypeMetadataOptionalView(AssignRemoveView):
         self.get_object().metadata.create(metadata_type=item, required=False)
 
     def get_object(self):
-        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+        return get_object_or_404(DocumentType.on_organization, pk=self.kwargs['pk'])
 
     def left_list(self):
         return AssignRemoveView.generate_choices(
-            set(MetadataType.objects.all()) - set(
-                MetadataType.objects.filter(
+            set(MetadataType.on_organization.all()) - set(
+                MetadataType.on_organization.filter(
                     id__in=self.get_object().metadata.values_list(
                         'metadata_type', flat=True
                     )

@@ -44,7 +44,7 @@ def post_post_document_type_change_metadata(sender, instance, **kwargs):
 
     # Add new document type metadata types to document
     for document_type_metadata_type in instance.document_type.metadata.filter(required=True):
-        DocumentMetadata.objects.create(
+        DocumentMetadata.on_organization.create(
             document=instance,
             metadata_type=document_type_metadata_type.metadata_type,
             value=None
