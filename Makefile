@@ -52,10 +52,10 @@ clean-pyc:
 # Testing
 
 test:
-	./manage.py test $(MODULE) --settings=mayan.settings.testing --nomigrations
+	python -Wall ./manage.py test $(MODULE) --settings=mayan.settings.testing --nomigrations
 
 test-all:
-	./manage.py runtests --settings=mayan.settings.testing --nomigrations
+	python -Wall ./manage.py runtests --settings=mayan.settings.testing --nomigrations
 
 
 # Documentation
