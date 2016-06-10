@@ -9,14 +9,23 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
+from organizations.models import Organization
+from organizations.shortcuts import get_current_organization
 
-from .managers import WorkflowManager
+from .managers import (
+    OrganizationWorkflowManager, OrganizationWorkflowStateManager,
+    OrganizationWorkflowTransitionManager, OrganizationWorkflowInstanceManager,
+    OrganizationWorkflowInstanceLogEntryManager, WorkflowManager
+)
 
 logger = logging.getLogger(__name__)
 
 
 @python_2_unicode_compatible
 class Workflow(models.Model):
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
+    )
     label = models.CharField(
         max_length=255, unique=True, verbose_name=_('Label')
     )
@@ -26,12 +35,19 @@ class Workflow(models.Model):
     )
 
     objects = WorkflowManager()
+    on_organization = OrganizationWorkflowManager()
+
+    class Meta:
+        verbose_name = _('Workflow')
+        verbose_name_plural = _('Workflows')
 
     def __str__(self):
         return self.label
 
     def get_document_types_not_in_workflow(self):
-        return DocumentType.objects.exclude(pk__in=self.document_types.all())
+        return DocumentType.on_organization.exclude(
+            pk__in=self.document_types.all()
+        )
 
     def get_initial_state(self):
         try:
@@ -54,10 +70,6 @@ class Workflow(models.Model):
                 'Workflow %s launched for document %s', self, document
             )
 
-    class Meta:
-        verbose_name = _('Workflow')
-        verbose_name_plural = _('Workflows')
-
 
 @python_2_unicode_compatible
 class WorkflowState(models.Model):
@@ -79,6 +91,14 @@ class WorkflowState(models.Model):
         ), verbose_name=_('Completion')
     )
 
+    objects = models.Manager()
+    on_organization = OrganizationWorkflowStateManager()
+
+    class Meta:
+        unique_together = ('workflow', 'label')
+        verbose_name = _('Workflow state')
+        verbose_name_plural = _('Workflow states')
+
     def __str__(self):
         return self.label
 
@@ -86,11 +106,6 @@ class WorkflowState(models.Model):
         if self.initial:
             self.workflow.states.all().update(initial=False)
         return super(WorkflowState, self).save(*args, **kwargs)
-
-    class Meta:
-        unique_together = ('workflow', 'label')
-        verbose_name = _('Workflow state')
-        verbose_name_plural = _('Workflow states')
 
 
 @python_2_unicode_compatible
@@ -109,8 +124,8 @@ class WorkflowTransition(models.Model):
         verbose_name=_('Destination state')
     )
 
-    def __str__(self):
-        return self.label
+    objects = models.Manager()
+    on_organization = OrganizationWorkflowTransitionManager()
 
     class Meta:
         unique_together = (
@@ -118,6 +133,9 @@ class WorkflowTransition(models.Model):
         )
         verbose_name = _('Workflow transition')
         verbose_name_plural = _('Workflow transitions')
+
+    def __str__(self):
+        return self.label
 
 
 @python_2_unicode_compatible
@@ -128,6 +146,14 @@ class WorkflowInstance(models.Model):
     document = models.ForeignKey(
         Document, related_name='workflows', verbose_name=_('Document')
     )
+
+    objects = models.Manager()
+    on_organization = OrganizationWorkflowInstanceManager()
+
+    class Meta:
+        unique_together = ('document', 'workflow')
+        verbose_name = _('Workflow instance')
+        verbose_name_plural = _('Workflow instances')
 
     def __str__(self):
         return unicode(self.workflow)
@@ -168,11 +194,6 @@ class WorkflowInstance(models.Model):
     def get_transition_choices(self):
         return self.get_current_state().origin_transitions.all()
 
-    class Meta:
-        unique_together = ('document', 'workflow')
-        verbose_name = _('Workflow instance')
-        verbose_name_plural = _('Workflow instances')
-
 
 @python_2_unicode_compatible
 class WorkflowInstanceLogEntry(models.Model):
@@ -189,9 +210,12 @@ class WorkflowInstanceLogEntry(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('User'))
     comment = models.TextField(blank=True, verbose_name=_('Comment'))
 
-    def __str__(self):
-        return unicode(self.transition)
+    objects = models.Manager()
+    on_organization = OrganizationWorkflowInstanceLogEntryManager()
 
     class Meta:
         verbose_name = _('Workflow instance log entry')
         verbose_name_plural = _('Workflow instance log entries')
+
+    def __str__(self):
+        return unicode(self.transition)
