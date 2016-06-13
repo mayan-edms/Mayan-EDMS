@@ -5,9 +5,11 @@ import time
 
 from django.test import TestCase, override_settings
 
+from organizations.tests.base import OrganizationTestCase
+
 from ..exceptions import NewDocumentVersionNotAllowed
 from ..literals import STUB_EXPIRATION_INTERVAL
-from ..models import DeletedDocument, Document, DocumentType, NewVersionBlock
+from ..models import Document, DocumentType, NewVersionBlock, TrashedDocument
 
 from .literals import (
     TEST_DOCUMENT_TYPE, TEST_DOCUMENT_PATH, TEST_MULTI_PAGE_TIFF_PATH,
@@ -16,9 +18,10 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentTestCase(TestCase):
+class DocumentTestCase(OrganizationTestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        super(DocumentTestCase, self).setUp()
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -29,6 +32,7 @@ class DocumentTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE)
@@ -57,30 +61,30 @@ class DocumentTestCase(TestCase):
         self.assertEqual(self.document.versions.count(), 3)
 
     def test_restoring_documents(self):
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 1)
 
         # Trash the document
         self.document.delete()
-        self.assertEqual(DeletedDocument.objects.count(), 1)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 0)
 
         # Restore the document
         self.document.restore()
-        self.assertEqual(DeletedDocument.objects.count(), 0)
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(TrashedDocument.on_organization.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 1)
 
     def test_trashing_documents(self):
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 1)
 
         # Trash the document
         self.document.delete()
-        self.assertEqual(DeletedDocument.objects.count(), 1)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 0)
 
         # Delete the document
         self.document.delete()
-        self.assertEqual(DeletedDocument.objects.count(), 0)
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 0)
 
     def test_auto_trashing(self):
         """
@@ -97,13 +101,13 @@ class DocumentTestCase(TestCase):
         # field
         time.sleep(2)
 
-        self.assertEqual(Document.objects.count(), 1)
-        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 1)
+        self.assertEqual(TrashedDocument.on_organization.count(), 0)
 
         DocumentType.objects.check_trash_periods()
 
-        self.assertEqual(Document.objects.count(), 0)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
 
     def test_auto_delete(self):
         """
@@ -116,13 +120,13 @@ class DocumentTestCase(TestCase):
         self.document_type.delete_time_unit = 'seconds'
         self.document_type.save()
 
-        self.assertEqual(Document.objects.count(), 1)
-        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 1)
+        self.assertEqual(TrashedDocument.on_organization.count(), 0)
 
         self.document.delete()
 
-        self.assertEqual(Document.objects.count(), 0)
-        self.assertEqual(DeletedDocument.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 1)
 
         # Needed by MySQL as milliseconds value is not store in timestamp
         # field
@@ -130,14 +134,16 @@ class DocumentTestCase(TestCase):
 
         DocumentType.objects.check_delete_periods()
 
-        self.assertEqual(Document.objects.count(), 0)
-        self.assertEqual(DeletedDocument.objects.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 0)
+        self.assertEqual(TrashedDocument.on_organization.count(), 0)
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class OfficeDocumentTestCase(TestCase):
+class OfficeDocumentTestCase(OrganizationTestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        super(OfficeDocumentTestCase, self).setUp()
+
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -148,6 +154,7 @@ class OfficeDocumentTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(OfficeDocumentTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document.file_mimetype, 'application/msword')
@@ -162,9 +169,11 @@ class OfficeDocumentTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class MultiPageTiffTestCase(TestCase):
+class MultiPageTiffTestCase(OrganizationTestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        super(MultiPageTiffTestCase, self).setUp()
+
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -175,6 +184,7 @@ class MultiPageTiffTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(MultiPageTiffTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document.file_mimetype, 'image/tiff')
@@ -187,9 +197,11 @@ class MultiPageTiffTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentVersionTestCase(TestCase):
+class DocumentVersionTestCase(OrganizationTestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        super(DocumentVersionTestCase, self).setUp()
+
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -200,6 +212,7 @@ class DocumentVersionTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentVersionTestCase, self).tearDown()
 
     def test_add_new_version(self):
         self.assertEqual(self.document.versions.count(), 1)
@@ -236,23 +249,25 @@ class DocumentVersionTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentManagerTestCase(TestCase):
+class DocumentManagerTestCase(OrganizationTestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        super(DocumentManagerTestCase, self).setUp()
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentManagerTestCase, self).tearDown()
 
     def test_document_stubs_deletion(self):
-        document_stub = Document.objects.create(
+        document_stub = Document.on_organization.create(
             document_type=self.document_type
         )
 
         Document.objects.delete_stubs()
 
-        self.assertEqual(Document.objects.count(), 1)
+        self.assertEqual(Document.on_organization.count(), 1)
 
         document_stub.date_added = document_stub.date_added - timedelta(
             seconds=STUB_EXPIRATION_INTERVAL + 1
@@ -261,13 +276,14 @@ class DocumentManagerTestCase(TestCase):
 
         Document.objects.delete_stubs()
 
-        self.assertEqual(Document.objects.count(), 0)
+        self.assertEqual(Document.on_organization.count(), 0)
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class NewVersionBlockTestCase(TestCase):
+class NewVersionBlockTestCase(OrganizationTestCase):
     def setUp(self):
-        self.document_type = DocumentType.objects.create(
+        super(NewVersionBlockTestCase, self).setUp()
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -279,6 +295,7 @@ class NewVersionBlockTestCase(TestCase):
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
+        super(NewVersionBlockTestCase, self).tearDown()
 
     def test_blocking(self):
         NewVersionBlock.objects.block(document=self.document)

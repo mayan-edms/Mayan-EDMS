@@ -1,11 +1,11 @@
 from __future__ import absolute_import, unicode_literals
 
-from documents.tests.test_views import GenericDocumentViewTestCase
+from common.tests.test_views import GenericViewTestCase
 
 from ..models import Organization
 
 
-class OrganizationViewTestCase(GenericDocumentViewTestCase):
+class OrganizationViewTestCase(GenericViewTestCase):
     def setUp(self):
         super(OrganizationViewTestCase, self).setUp()
         # Create two organizations
@@ -17,7 +17,7 @@ class OrganizationViewTestCase(GenericDocumentViewTestCase):
         )
 
         # Create an organization admin for organization B
-        username, password = self.organization_b.create_admin()
+        user, password = self.organization_b.create_admin()
         with self.settings(ORGANIZATION_ID=self.organization_b.pk):
             # Login organization admin for organization B
-            self.login(username=username, password=password)
+            self.login(username=user.username, password=password)

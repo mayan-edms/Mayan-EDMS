@@ -103,32 +103,6 @@ class NewDocumentVersionSerializer(serializers.Serializer):
         )
 
 
-class DeletedDocumentSerializer(serializers.HyperlinkedModelSerializer):
-    document_type_label = serializers.SerializerMethodField()
-    restore = serializers.HyperlinkedIdentityField(
-        view_name='rest_api:deleteddocument-restore'
-    )
-
-    def get_document_type_label(self, instance):
-        return instance.document_type.label
-
-    class Meta:
-        extra_kwargs = {
-            'document_type': {'view_name': 'rest_api:documenttype-detail'},
-            'url': {'view_name': 'rest_api:deleteddocument-detail'}
-        }
-        fields = (
-            'date_added', 'deleted_date_time', 'description', 'document_type',
-            'document_type_label', 'id', 'label', 'language', 'restore',
-            'url', 'uuid',
-        )
-        model = Document
-        read_only_fields = (
-            'deleted_date_time', 'description', 'document_type', 'label',
-            'language'
-        )
-
-
 class DocumentSerializer(serializers.HyperlinkedModelSerializer):
     document_type_label = serializers.SerializerMethodField()
     latest_version = DocumentVersionSerializer(many=False, read_only=True)
@@ -156,7 +130,7 @@ class NewDocumentSerializer(serializers.ModelSerializer):
     file = serializers.FileField(write_only=True)
 
     def save(self, _user):
-        document = Document.objects.create(
+        document = Document.on_organization.create(
             description=self.validated_data.get('description', ''),
             document_type=self.validated_data['document_type'],
             label=self.validated_data.get(
@@ -191,3 +165,29 @@ class RecentDocumentSerializer(serializers.ModelSerializer):
     class Meta:
         fields = ('document', 'datetime_accessed')
         model = RecentDocument
+
+
+class TrashedDocumentSerializer(serializers.HyperlinkedModelSerializer):
+    document_type_label = serializers.SerializerMethodField()
+    restore = serializers.HyperlinkedIdentityField(
+        view_name='rest_api:deleteddocument-restore'
+    )
+
+    def get_document_type_label(self, instance):
+        return instance.document_type.label
+
+    class Meta:
+        extra_kwargs = {
+            'document_type': {'view_name': 'rest_api:documenttype-detail'},
+            'url': {'view_name': 'rest_api:deleteddocument-detail'}
+        }
+        fields = (
+            'date_added', 'deleted_date_time', 'description', 'document_type',
+            'document_type_label', 'id', 'label', 'language', 'restore',
+            'url', 'uuid',
+        )
+        model = Document
+        read_only_fields = (
+            'deleted_date_time', 'description', 'document_type', 'label',
+            'language'
+        )

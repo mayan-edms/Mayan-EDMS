@@ -21,7 +21,6 @@ logger = logging.getLogger(__name__)
 
 class MessageCreateView(SingleObjectCreateView):
     fields = ('label', 'message', 'enabled', 'start_datetime', 'end_datetime')
-    model = Message
     view_permission = permission_message_create
 
     def get_extra_context(self):
@@ -29,9 +28,11 @@ class MessageCreateView(SingleObjectCreateView):
             'title': _('Create message'),
         }
 
+    def get_queryset(self):
+        return Message.on_organization.all()
+
 
 class MessageDeleteView(SingleObjectDeleteView):
-    model = Message
     object_permission = permission_message_delete
     post_action_redirect = reverse_lazy('motd:message_list')
 
@@ -42,10 +43,12 @@ class MessageDeleteView(SingleObjectDeleteView):
             'title': _('Delete the message: %s?') % self.get_object(),
         }
 
+    def get_queryset(self):
+        return Message.on_organization.all()
+
 
 class MessageEditView(SingleObjectEditView):
     fields = ('label', 'message', 'enabled', 'start_datetime', 'end_datetime')
-    model = Message
     object_permission = permission_message_edit
     post_action_redirect = reverse_lazy('motd:message_list')
 
@@ -55,9 +58,11 @@ class MessageEditView(SingleObjectEditView):
             'title': _('Edit message: %s') % self.get_object(),
         }
 
+    def get_queryset(self):
+        return Message.on_organization.all()
+
 
 class MessageListView(SingleObjectListView):
-    model = Message
     object_permission = permission_message_view
 
     def get_extra_context(self):
@@ -65,3 +70,6 @@ class MessageListView(SingleObjectListView):
             'hide_link': True,
             'title': _('Messages'),
         }
+
+    def get_queryset(self):
+        return Message.on_organization.all()

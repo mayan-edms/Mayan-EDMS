@@ -22,6 +22,7 @@ class TagOrganizationViewTestCase(OrganizationViewTestCase):
                     'label': TEST_TAG_LABEL, 'color': TEST_TAG_COLOR
                 }
             )
+            self.assertNotContains(response, text='danger', status_code=302)
             self.assertEqual(Tag.on_organization.count(), 1)
 
         with self.settings(ORGANIZATION_ID=self.organization_b.pk):

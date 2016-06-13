@@ -23,6 +23,7 @@ from documents.permissions import (
 from documents.tasks import task_upload_new_version
 from metadata.api import decode_metadata_from_url
 from navigation import Link
+from organizations.models import Organization
 from permissions import Permission
 
 from .forms import (
@@ -49,20 +50,20 @@ from .utils import get_class, get_form_class, get_upload_form_class
 class SourceLogListView(SingleObjectListView):
     view_permission = permission_sources_setup_view
 
-    def get_source(self):
-        return get_object_or_404(
-            Source.objects.select_subclasses(), pk=self.kwargs['pk']
-        )
-
-    def get_queryset(self):
-        return self.get_source().logs.all()
-
     def get_extra_context(self):
         return {
             'hide_object': True,
             'object': self.get_source(),
             'title': _('Log entries for source: %s') % self.get_source(),
         }
+
+    def get_queryset(self):
+        return self.get_source().logs.all()
+
+    def get_source(self):
+        return get_object_or_404(
+            Source.on_organization.select_subclasses(), pk=self.kwargs['pk']
+        )
 
 
 class UploadBaseView(MultiFormView):
@@ -91,13 +92,13 @@ class UploadBaseView(MultiFormView):
     def get_active_tab_links(document=None):
         tab_links = []
 
-        web_forms = WebFormSource.objects.filter(enabled=True)
+        web_forms = WebFormSource.on_organization.filter(enabled=True)
         for web_form in web_forms:
             tab_links.append(
                 UploadBaseView.get_tab_link_for_source(web_form, document)
             )
 
-        staging_folders = StagingFolderSource.objects.filter(enabled=True)
+        staging_folders = StagingFolderSource.on_organization.filter(enabled=True)
         for staging_folder in staging_folders:
             tab_links.append(
                 UploadBaseView.get_tab_link_for_source(
@@ -114,15 +115,15 @@ class UploadBaseView(MultiFormView):
     def dispatch(self, request, *args, **kwargs):
         if 'source_id' in kwargs:
             self.source = get_object_or_404(
-                Source.objects.filter(enabled=True).select_subclasses(),
+                Source.on_organization.filter(enabled=True).select_subclasses(),
                 pk=kwargs['source_id']
             )
         else:
-            self.source = InteractiveSource.objects.filter(
+            self.source = InteractiveSource.on_organization.filter(
                 enabled=True
             ).select_subclasses().first()
 
-        if not InteractiveSource.objects.filter(enabled=True).exists():
+        if not InteractiveSource.on_organization.filter(enabled=True).exists():
             messages.error(
                 request,
                 _(
@@ -450,9 +451,6 @@ class SetupSourceCreateView(SingleObjectCreateView):
     post_action_redirect = reverse_lazy('sources:setup_source_list')
     view_permission = permission_sources_setup_create
 
-    def get_form_class(self):
-        return get_form_class(self.kwargs['source_type'])
-
     def get_extra_context(self):
         return {
             'object': self.kwargs['source_type'],
@@ -461,18 +459,16 @@ class SetupSourceCreateView(SingleObjectCreateView):
             ) % get_class(self.kwargs['source_type']).class_fullname(),
         }
 
+    def get_form_class(self):
+        return get_form_class(self.kwargs['source_type'])
+
+    def get_instance_extra_data(self):
+        return {'organization': Organization.objects.get_current()}
+
 
 class SetupSourceDeleteView(SingleObjectDeleteView):
     post_action_redirect = reverse_lazy('sources:setup_source_list')
     view_permission = permission_sources_setup_delete
-
-    def get_object(self):
-        return get_object_or_404(
-            Source.objects.select_subclasses(), pk=self.kwargs['pk']
-        )
-
-    def get_form_class(self):
-        return get_form_class(self.get_object().source_type)
 
     def get_extra_context(self):
         return {
@@ -480,18 +476,18 @@ class SetupSourceDeleteView(SingleObjectDeleteView):
             'title': _('Delete the source: %s?') % self.get_object(),
         }
 
+    def get_form_class(self):
+        return get_form_class(self.get_object().source_type)
+
+    def get_object(self):
+        return get_object_or_404(
+            Source.on_organization.select_subclasses(), pk=self.kwargs['pk']
+        )
+
 
 class SetupSourceEditView(SingleObjectEditView):
     post_action_redirect = reverse_lazy('sources:setup_source_list')
     view_permission = permission_sources_setup_edit
-
-    def get_object(self):
-        return get_object_or_404(
-            Source.objects.select_subclasses(), pk=self.kwargs['pk']
-        )
-
-    def get_form_class(self):
-        return get_form_class(self.get_object().source_type)
 
     def get_extra_context(self):
         return {
@@ -499,10 +495,18 @@ class SetupSourceEditView(SingleObjectEditView):
             'title': _('Edit source: %s') % self.get_object(),
         }
 
+    def get_form_class(self):
+        return get_form_class(self.get_object().source_type)
+
+    def get_object(self):
+        return get_object_or_404(
+            Source.on_organization.select_subclasses(), pk=self.kwargs['pk']
+        )
+
 
 class SetupSourceListView(SingleObjectListView):
+    queryset = Source.on_organization.select_subclasses()
     view_permission = permission_sources_setup_view
-    queryset = Source.objects.select_subclasses()
 
     extra_context = {
         'extra_columns': (

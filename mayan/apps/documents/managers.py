@@ -23,9 +23,9 @@ class DocumentManager(models.Manager):
         return self.get(uuid=uuid)
 
     def get_queryset(self):
-        return TrashCanQuerySet(
+        return TrashedDocumentQuerySet(
             self.model, using=self._db
-        ).filter(in_trash=False)
+        )
 
     def invalidate_cache(self):
         for document in self.model.objects.all():
@@ -50,7 +50,7 @@ class DocumentTypeManager(models.Manager):
                     'Document type: %s, has a deletion period delta of: %s',
                     document_type, delta
                 )
-                for document in document_type.deleted_documents.filter(deleted_date_time__lt=now() - delta):
+                for document in document_type.trashed_documents.filter(deleted_date_time__lt=now() - delta):
                     logger.info(
                         'Document "%s" with id: %d, trashed on: %s, exceded '
                         'delete period', document, document.pk,
@@ -110,8 +110,48 @@ class NewVersionBlockManager(models.Manager):
         return self.filter(document=document).exists()
 
 
-class PassthroughManager(models.Manager):
-    pass
+class OrganizationDocumentManager(models.Manager):
+    def get_queryset(self):
+        DocumentType = apps.get_model('documents', 'DocumentType')
+
+        return TrashedDocumentQuerySet(
+            self.model, using=self._db
+        ).filter(in_trash=False).filter(
+            document_type__in=DocumentType.on_organization.all()
+        )
+
+
+class OrganizationDocumentVersionManager(models.Manager):
+    def get_queryset(self):
+        DocumentType = apps.get_model('documents', 'DocumentType')
+
+        return super(
+            OrganizationDocumentVersionManager, self
+        ).get_queryset().filter(
+            document__document_type__in=DocumentType.on_organization.all()
+        )
+
+
+class OrganizationDocumentTypeFilenameManager(models.Manager):
+    def get_queryset(self):
+        DocumentType = apps.get_model('documents', 'DocumentType')
+
+        return super(
+            OrganizationDocumentTypeFilenameManager, self
+        ).get_queryset().filter(
+            document_type__in=DocumentType.on_organization.all()
+        )
+
+
+class OrganizationDocumentPage(models.Manager):
+    def get_queryset(self):
+        DocumentType = apps.get_model('documents', 'DocumentType')
+
+        return super(
+            OrganizationDocumentPage, self
+        ).get_queryset().filter(
+            document_version__document__document_type__in=DocumentType.on_organization.all()
+        )
 
 
 class RecentDocumentManager(models.Manager):
@@ -130,25 +170,37 @@ class RecentDocumentManager(models.Manager):
         return new_recent
 
     def get_for_user(self, user):
-        document_model = apps.get_model('documents', 'document')
+        Document = apps.get_model('documents', 'Document')
 
         if user.is_authenticated():
-            return document_model.objects.filter(
+            return Document.objects.filter(
                 recentdocument__user=user,
-                document_type__organization__id=settings.ORGANIZATION_ID
             ).order_by('-recentdocument__datetime_accessed')
         else:
-            return document_model.objects.none()
+            return Document.objects.none()
 
 
-class TrashCanManager(models.Manager):
+class TrashedDocumentManager(models.Manager):
     def get_queryset(self):
+        DocumentType = apps.get_model('documents', 'DocumentType')
+
         return super(
-            TrashCanManager, self
+            TrashedDocumentManager, self
         ).get_queryset().filter(in_trash=True)
 
 
-class TrashCanQuerySet(models.QuerySet):
+class OrganizationTrashedDocumentManager(models.Manager):
+    def get_queryset(self):
+        DocumentType = apps.get_model('documents', 'DocumentType')
+
+        return super(
+            OrganizationTrashedDocumentManager, self
+        ).get_queryset().filter(in_trash=True).filter(
+            document_type__in=DocumentType.on_organization.all()
+        )
+
+
+class TrashedDocumentQuerySet(models.QuerySet):
     def delete(self, to_trash=True):
         for instance in self:
             instance.delete(to_trash=to_trash)

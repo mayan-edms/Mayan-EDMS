@@ -43,23 +43,23 @@ class CheckoutsApp(MayanAppConfig):
 
         Document.add_to_class(
             'check_in',
-            lambda document, user=None: DocumentCheckout.objects.check_in_document(document, user)
+            lambda document, user=None: DocumentCheckout.on_organization.check_in_document(document, user)
         )
         Document.add_to_class(
             'checkout_info',
-            lambda document: DocumentCheckout.objects.document_checkout_info(
+            lambda document: DocumentCheckout.on_organization.document_checkout_info(
                 document
             )
         )
         Document.add_to_class(
             'checkout_state',
-            lambda document: DocumentCheckout.objects.document_checkout_state(
+            lambda document: DocumentCheckout.on_organization.document_checkout_state(
                 document
             )
         )
         Document.add_to_class(
             'is_checked_out',
-            lambda document: DocumentCheckout.objects.is_document_checked_out(
+            lambda document: DocumentCheckout.on_organization.is_document_checked_out(
                 document
             )
         )

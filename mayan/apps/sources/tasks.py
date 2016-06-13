@@ -21,7 +21,7 @@ def task_check_interval_source(source_id):
         app_label='sources', model_name='Source'
     )
 
-    source = Source.objects.get_subclass(pk=source_id)
+    source = Source.on_organization.get_subclass(pk=source_id)
     if source.enabled:
         try:
             source.check_source()
@@ -49,14 +49,14 @@ def task_upload_document(self, source_id, document_type_id, shared_uploaded_file
     )
 
     try:
-        document_type = DocumentType.objects.get(pk=document_type_id)
-        source = Source.objects.get_subclass(pk=source_id)
+        document_type = DocumentType.on_organization.get(pk=document_type_id)
+        source = Source.on_organization.get_subclass(pk=source_id)
         shared_upload = SharedUploadedFile.objects.get(
             pk=shared_uploaded_file_id
         )
 
         if user_id:
-            user = get_user_model().objects.get(pk=user_id)
+            user = get_user_model().on_organization.get(pk=user_id)
         else:
             user = None
 
@@ -96,7 +96,7 @@ def task_source_handle_upload(self, document_type_id, shared_uploaded_file_id, s
     )
 
     try:
-        document_type = DocumentType.objects.get(pk=document_type_id)
+        document_type = DocumentType.on_organization.get(pk=document_type_id)
         shared_upload = SharedUploadedFile.objects.get(
             pk=shared_uploaded_file_id
         )

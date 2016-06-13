@@ -30,7 +30,7 @@ class CheckoutDocumentView(SingleObjectCreateView):
     form_class = DocumentCheckoutForm
 
     def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
+        self.document = get_object_or_404(Document.on_organization, pk=self.kwargs['pk'])
 
         try:
             Permission.check_permissions(
@@ -103,12 +103,11 @@ class CheckoutListView(DocumentListView):
     }
 
     def get_document_queryset(self):
-        return DocumentCheckout.objects.checked_out_documents()
+        return DocumentCheckout.on_organization.checked_out_documents()
 
 
 class CheckoutDetailView(SingleObjectDetailView):
     form_class = DocumentCheckoutDefailForm
-    model = Document
     object_permission = permission_document_checkout_detail_view
 
     def get_extra_context(self):
@@ -120,7 +119,7 @@ class CheckoutDetailView(SingleObjectDetailView):
         }
 
     def get_object(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(Document.on_organization, pk=self.kwargs['pk'])
 
 
 class DocumentCheckinView(ConfirmView):
@@ -142,7 +141,7 @@ class DocumentCheckinView(ConfirmView):
         return context
 
     def get_object(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(Document.on_organization, pk=self.kwargs['pk'])
 
     def get_post_action_redirect(self):
         return reverse('checkouts:checkout_info', args=(self.get_object().pk,))

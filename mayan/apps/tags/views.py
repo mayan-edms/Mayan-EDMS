@@ -42,10 +42,10 @@ class TagCreateView(SingleObjectCreateView):
 
 def tag_attach(request, document_id=None, document_id_list=None):
     if document_id:
-        queryset = Document.objects.filter(pk=document_id)
+        queryset = Document.on_organization.filter(pk=document_id)
         post_action_redirect = reverse('tags:tag_list')
     elif document_id_list:
-        queryset = Document.objects.filter(pk__in=document_id_list)
+        queryset = Document.on_organization.filter(pk__in=document_id_list)
 
     try:
         Permission.check_permissions(request.user, (permission_tag_attach,))
@@ -282,9 +282,9 @@ class DocumentTagListView(TagListView):
 
 def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, tag_id_list=None):
     if document_id:
-        documents = Document.objects.filter(pk=document_id)
+        documents = Document.on_organization.filter(pk=document_id)
     elif document_id_list:
-        documents = Document.objects.filter(pk__in=document_id_list)
+        documents = Document.on_organization.filter(pk__in=document_id_list)
 
     if not documents:
         messages.error(

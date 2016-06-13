@@ -39,7 +39,7 @@ class FolderCreateView(SingleObjectCreateView):
 
     def form_valid(self, form):
         try:
-            Folder.objects.get(label=form.cleaned_data['label'])
+            Folder.on_organization.get(label=form.cleaned_data['label'])
         except Folder.DoesNotExist:
             instance = form.save(commit=False)
             instance.user = self.request.user
@@ -128,7 +128,7 @@ class FolderListView(SingleObjectListView):
 class DocumentFolderListView(FolderListView):
     def dispatch(self, request, *args, **kwargs):
         self.document = get_object_or_404(
-            Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk']
+            Document.on_organization, pk=self.kwargs['pk']
         )
 
         try:
@@ -154,7 +154,7 @@ class DocumentFolderListView(FolderListView):
 
 
 def folder_add_document(request, document_id=None, document_id_list=None):
-    queryset = Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+    queryset = Document.on_organization.all()
 
     if document_id:
         queryset = queryset.filter(pk=document_id)
@@ -243,9 +243,9 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
     folder = get_object_or_404(Folder.on_organization, pk=folder_id)
 
     if document_id:
-        queryset = Document.objects.filter(pk=document_id)
+        queryset = Document.on_organization.filter(pk=document_id)
     elif document_id_list:
-        queryset = Document.objects.filter(pk__in=document_id_list)
+        queryset = Document.on_organization.filter(pk__in=document_id_list)
 
     if not queryset:
         messages.error(request, _('Must provide at least one folder document.'))

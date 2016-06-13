@@ -11,7 +11,7 @@ def create_default_document_type(sender, **kwargs):
         app_label='documents', model_name='DocumentType'
     )
 
-    if not DocumentType.objects.count():
+    if not DocumentType.on_organization.count():
         document_type = DocumentType.objects.create(
             label=DEFAULT_DOCUMENT_TYPE_LABEL
         )

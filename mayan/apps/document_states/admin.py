@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
+from organizations.admin import OrganizationAdminMixin
+
 from .models import (
     Workflow, WorkflowInstance, WorkflowInstanceLogEntry, WorkflowState,
     WorkflowTransition
@@ -22,7 +24,7 @@ class WorkflowTransitionInline(admin.TabularInline):
 
 
 @admin.register(Workflow)
-class WorkflowAdmin(admin.ModelAdmin):
+class WorkflowAdmin(OrganizationAdminMixin, admin.ModelAdmin):
     def document_types_list(self, instance):
         return ','.join(
             instance.document_types.values_list('label', flat=True)

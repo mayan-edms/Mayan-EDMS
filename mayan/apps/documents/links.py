@@ -140,9 +140,9 @@ link_document_list_recent = Link(
     icon='fa fa-clock-o', text=_('Recent documents'),
     view='documents:document_list_recent'
 )
-link_document_list_deleted = Link(
+link_document_list_trashed = Link(
     icon='fa fa-trash', text=_('Trash'),
-    view='documents:document_list_deleted'
+    view='documents:document_list_trashed'
 )
 
 # Tools

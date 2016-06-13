@@ -4,11 +4,17 @@ from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
-from .managers import MessageManager
+from organizations.models import Organization
+from organizations.shortcuts import get_current_organization
+
+from .managers import MessageManager, OrganizationMessageManager
 
 
 @python_2_unicode_compatible
 class Message(models.Model):
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
+    )
     label = models.CharField(
         max_length=32, help_text=_('Short description of this message.'),
         verbose_name=_('Label')
@@ -30,6 +36,7 @@ class Message(models.Model):
     )
 
     objects = MessageManager()
+    on_organization = OrganizationMessageManager()
 
     class Meta:
         verbose_name = _('Message')

@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 from django.contrib import admin
 
 from .models import (
-    DeletedDocument, Document, DocumentPage, DocumentType,
-    DocumentTypeFilename, DocumentVersion, RecentDocument
+    Document, DocumentPage, DocumentType, DocumentTypeFilename,
+    DocumentVersion, RecentDocument, TrashedDocument
 )
 
 
@@ -27,14 +27,6 @@ class DocumentVersionInline(admin.StackedInline):
     extra = 1
     classes = ('collapse-open',)
     allow_add = True
-
-
-@admin.register(DeletedDocument)
-class DeletedDocumentAdmin(admin.ModelAdmin):
-    date_hierarchy = 'deleted_date_time'
-    list_filter = ('document_type',)
-    list_display = ('uuid', 'label', 'document_type', 'deleted_date_time')
-    readonly_fields = ('uuid', 'document_type')
 
 
 @admin.register(Document)
@@ -62,3 +54,11 @@ class RecentDocumentAdmin(admin.ModelAdmin):
     list_display_links = ('document', 'datetime_accessed')
     list_filter = ('user',)
     readonly_fields = ('user', 'document', 'datetime_accessed')
+
+
+@admin.register(TrashedDocument)
+class TrashedDocumentAdmin(admin.ModelAdmin):
+    date_hierarchy = 'deleted_date_time'
+    list_filter = ('document_type',)
+    list_display = ('uuid', 'label', 'document_type', 'deleted_date_time')
+    readonly_fields = ('uuid', 'document_type')

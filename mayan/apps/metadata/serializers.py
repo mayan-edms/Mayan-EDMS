@@ -47,7 +47,7 @@ class DocumentNewMetadataSerializer(serializers.Serializer):
     )
 
     def create(self, validated_data):
-        metadata_type = MetadataType.objects.get(
+        metadata_type = MetadataType.on_organization.get(
             pk=validated_data['metadata_type_pk']
         )
         instance = self.document.metadata.create(

@@ -49,7 +49,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
 
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        acl = AccessControlList.objects.create(
+        acl = AccessControlList.on_organization.create(
             content_object=self.document, role=self.role
         )
         acl.permissions.add(
@@ -81,7 +81,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
     def test_document_version_download_link_with_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        acl = AccessControlList.objects.create(
+        acl = AccessControlList.on_organization.create(
             content_object=self.document, role=self.role
         )
         acl.permissions.add(permission_document_download.stored_permission)

@@ -31,7 +31,7 @@ from .serializers import (
 
 class APIMetadataTypeListView(generics.ListCreateAPIView):
     serializer_class = MetadataTypeSerializer
-    queryset = MetadataType.objects.all()
+    queryset = MetadataType.on_organization.all()
 
     permission_classes = (MayanPermission,)
     filter_backends = (MayanObjectPermissionsFilter,)
@@ -53,7 +53,7 @@ class APIMetadataTypeListView(generics.ListCreateAPIView):
 
 class APIMetadataTypeView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = MetadataTypeSerializer
-    queryset = MetadataType.objects.all()
+    queryset = MetadataType.on_organization.all()
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
@@ -92,7 +92,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
     permission_classes = (MayanPermission,)
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(Document.on_organization, pk=self.kwargs['pk'])
 
     def get_queryset(self):
         document = self.get_document()
@@ -151,7 +151,7 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
 
 class APIDocumentMetadataView(generics.RetrieveUpdateDestroyAPIView):
     serializer_class = DocumentMetadataSerializer
-    queryset = DocumentMetadata.objects.all()
+    queryset = DocumentMetadata.on_organization.all()
 
     permission_classes = (MayanPermission,)
     mayan_object_permissions = {
@@ -220,7 +220,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         document_type = get_object_or_404(
-            DocumentType, pk=self.kwargs['document_type_pk']
+            DocumentType.on_organization, pk=self.kwargs['document_type_pk']
         )
         try:
             Permission.check_permissions(
@@ -253,7 +253,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
         Add an optional metadata type to a document type.
         """
         document_type = get_object_or_404(
-            DocumentType, pk=self.kwargs['document_type_pk']
+            DocumentType.on_organization, pk=self.kwargs['document_type_pk']
         )
 
         try:
@@ -270,7 +270,7 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
 
         if serializer.is_valid():
             metadata_type = get_object_or_404(
-                MetadataType, pk=serializer.data['metadata_type_pk']
+                MetadataType.on_organization, pk=serializer.data['metadata_type_pk']
             )
             document_type_metadata_type = document_type.metadata.create(
                 metadata_type=metadata_type, required=self.required_metadata
@@ -313,7 +313,7 @@ class APIDocumentTypeMetadataTypeView(views.APIView):
         """
 
         document_type_metadata_type = get_object_or_404(
-            DocumentTypeMetadataType, pk=self.kwargs['pk']
+            DocumentTypeMetadataType.on_organization, pk=self.kwargs['pk']
         )
 
         try:

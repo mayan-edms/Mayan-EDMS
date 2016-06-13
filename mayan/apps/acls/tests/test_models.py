@@ -7,7 +7,7 @@ from django.test import TestCase, override_settings
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
-from organizations.utils import create_default_organization
+from organizations.tests.base import OrganizationTestCase
 from permissions.classes import Permission
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
@@ -20,9 +20,9 @@ TEST_DOCUMENT_TYPE_2 = 'test document type 2'
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class PermissionTestCase(TestCase):
+class PermissionTestCase(OrganizationTestCase):
     def setUp(self):
-        create_default_organization()
+        super(PermissionTestCase, self).setUp()
 
         self.document_type_1 = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
@@ -61,6 +61,8 @@ class PermissionTestCase(TestCase):
     def tearDown(self):
         for document_type in DocumentType.on_organization.all():
             document_type.delete()
+
+        super(PermissionTestCase, self).tearDown()
 
     def test_check_access_without_permissions(self):
         with self.assertRaises(PermissionDenied):

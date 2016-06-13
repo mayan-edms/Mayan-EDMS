@@ -27,7 +27,7 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
 
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.on_organization.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.user, block_new_version=True
         )
@@ -49,7 +49,7 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
 
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.on_organization.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.user, block_new_version=True
         )
@@ -72,7 +72,7 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
         self.assertFalse(self.document.is_checked_out())
 
         self.assertFalse(
-            DocumentCheckout.objects.is_document_checked_out(
+            DocumentCheckout.on_organization.is_document_checked_out(
                 document=self.document
             )
         )
@@ -134,7 +134,7 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
 
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.on_organization.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
@@ -169,7 +169,7 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
 
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.on_organization.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
@@ -200,7 +200,7 @@ class DocumentCheckoutViewTestCase(GenericDocumentViewTestCase):
     def test_forcefull_check_in_document_view_with_permission(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.on_organization.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )

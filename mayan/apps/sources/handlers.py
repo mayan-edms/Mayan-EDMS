@@ -9,8 +9,8 @@ from .literals import SOURCE_UNCOMPRESS_CHOICE_ASK
 def create_default_document_source(sender, **kwargs):
     WebFormSource = get_model('sources', 'WebFormSource')
 
-    if not WebFormSource.objects.count():
-        WebFormSource.objects.create(
+    if not WebFormSource.on_organization.count():
+        WebFormSource.on_organization.create(
             label=_('Default'), uncompress=SOURCE_UNCOMPRESS_CHOICE_ASK
         )
 
@@ -32,11 +32,11 @@ def initialize_periodic_tasks(sender, **kwargs):
     IMAPEmail = get_model('sources', 'IMAPEmail')
     WatchFolderSource = get_model('sources', 'WatchFolderSource')
 
-    for source in POP3Email.objects.filter(enabled=True):
+    for source in POP3Email.on_organization.filter(enabled=True):
         source.save()
 
-    for source in IMAPEmail.objects.filter(enabled=True):
+    for source in IMAPEmail.on_organization.filter(enabled=True):
         source.save()
 
-    for source in WatchFolderSource.objects.filter(enabled=True):
+    for source in WatchFolderSource.on_organization.filter(enabled=True):
         source.save()

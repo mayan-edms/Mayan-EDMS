@@ -1,4 +1,4 @@
-from __future__ import unicode_literals
+from __future__ import absolute_import, unicode_literals
 
 import logging
 import string
@@ -118,8 +118,12 @@ class Organization(models.Model):
             role.organization_groups.add(group)
             account.organization_groups.add(group)
 
+            Permission.invalidate_cache()
+
             for permission in Permission.all():
                 role.permissions.add(permission.stored_permission)
+
+            Organization.objects.clear_cache()
 
             return account, password_value
         else:

@@ -1,5 +1,7 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
+from django.contrib import admin
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy as _
@@ -23,11 +25,12 @@ from .links import (
 
 
 def get_groups():
-    return ','.join([group.name for group in Group.objects.all()])
+    MayanGroup = apps.get_model('user_management', 'MayanGroup')
+    return ','.join([group.name for group in MayanGroup.on_organization.all()])
 
 
 def get_users():
-    return ','.join([user.get_full_name() or user.username for user in get_user_model().objects.all()])
+    return ','.join([user.get_full_name() or user.username for user in get_user_model().on_organization.all()])
 
 
 class UserManagementApp(MayanAppConfig):
@@ -38,6 +41,7 @@ class UserManagementApp(MayanAppConfig):
 
     def ready(self):
         super(UserManagementApp, self).ready()
+        MayanGroup = self.get_model('MayanGroup')
 
         User = get_user_model()
 
@@ -53,7 +57,7 @@ class UserManagementApp(MayanAppConfig):
         )
 
         SourceColumn(
-            source=Group, label=_('Members'), attribute='users.count'
+            source=MayanGroup, label=_('Members'), attribute='users.count'
         )
 
         SourceColumn(
@@ -75,13 +79,15 @@ class UserManagementApp(MayanAppConfig):
             )
         )
 
+        admin.site.unregister(Group)
+
         menu_multi_item.bind_links(
             links=(link_user_multiple_set_password, link_user_multiple_delete),
             sources=('user_management:user_list',)
         )
         menu_object.bind_links(
             links=(link_group_edit, link_group_members, link_group_delete),
-            sources=(Group,)
+            sources=(MayanGroup,)
         )
         menu_object.bind_links(
             links=(
@@ -106,5 +112,5 @@ class UserManagementApp(MayanAppConfig):
         )
         menu_setup.bind_links(links=(link_user_setup, link_group_setup))
 
-        registry.register(Group)
+        registry.register(MayanGroup)
         registry.register(User)

@@ -49,7 +49,7 @@ def save_metadata(metadata_dict, document, create=False):
     """
     if create:
         # Use matched metadata now to create document metadata
-        document_metadata, created = DocumentMetadata.objects.get_or_create(
+        document_metadata, created = DocumentMetadata.on_organization.get_or_create(
             document=document,
             metadata_type=get_object_or_404(
                 MetadataType,
@@ -57,7 +57,7 @@ def save_metadata(metadata_dict, document, create=False):
         )
     else:
         try:
-            document_metadata = DocumentMetadata.objects.get(
+            document_metadata = DocumentMetadata.on_organization.get(
                 document=document,
                 metadata_type=get_object_or_404(
                     MetadataType,
@@ -92,7 +92,7 @@ def metadata_repr_as_list(metadata_list):
     output = []
     for metadata_dict in metadata_list:
         try:
-            output.append('%s - %s' % (MetadataType.objects.get(
+            output.append('%s - %s' % (MetadataType.on_organization.get(
                 pk=metadata_dict['id']), metadata_dict.get('value', '')))
         except:
             pass
@@ -107,9 +107,9 @@ def set_bulk_metadata(document, metadata_dictionary):
     ]
 
     for metadata_type_name, value in metadata_dictionary.items():
-        metadata_type = MetadataType.objects.get(name=metadata_type_name)
+        metadata_type = MetadataType.on_organization.get(name=metadata_type_name)
 
         if metadata_type in document_type_metadata_types:
-            DocumentMetadata.objects.get_or_create(
+            DocumentMetadata.on_organization.get_or_create(
                 document=document, metadata_type=metadata_type, value=value
             )

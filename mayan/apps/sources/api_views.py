@@ -40,7 +40,7 @@ class APIStagingSourceListView(generics.ListAPIView):
     """
 
     serializer_class = StagingFolderSerializer
-    queryset = StagingFolderSource.objects.all()
+    queryset = StagingFolderSource.on_organization.all()
 
 
 class APIStagingSourceView(generics.RetrieveAPIView):
@@ -48,7 +48,7 @@ class APIStagingSourceView(generics.RetrieveAPIView):
     Details of the selected staging folders and the files it contains.
     """
     serializer_class = StagingFolderSerializer
-    queryset = StagingFolderSource.objects.all()
+    queryset = StagingFolderSource.on_organization.all()
 
 
 class APIStagingSourceFileImageView(generics.GenericAPIView):

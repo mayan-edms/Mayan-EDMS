@@ -5,7 +5,7 @@ from django.test import TestCase, override_settings
 
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
-from organizations.utils import create_default_organization
+from organizations.tests.base import OrganizationTestCase
 
 from ..models import Tag
 
@@ -13,9 +13,9 @@ from .literals import TEST_TAG_COLOR, TEST_TAG_LABEL
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class TagTestCase(TestCase):
+class TagTestCase(OrganizationTestCase):
     def setUp(self):
-        create_default_organization()
+        super(TagTestCase, self).setUp()
         self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -28,6 +28,7 @@ class TagTestCase(TestCase):
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
+        super(TagTestCase, self).tearDown()
 
     def runTest(self):
         tag = Tag.on_organization.create(

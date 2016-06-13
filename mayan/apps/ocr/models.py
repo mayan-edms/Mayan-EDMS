@@ -6,6 +6,12 @@ from django.utils.translation import ugettext_lazy as _
 
 from documents.models import DocumentPage, DocumentType, DocumentVersion
 
+from .managers import (
+    OrganizationDocumentTypeSettingsManager,
+    OrganizationDocumentVersionOCRErrorManager,
+    OrganizationDocumentPageContentManager
+)
+
 
 class DocumentTypeSettings(models.Model):
     """
@@ -19,6 +25,9 @@ class DocumentTypeSettings(models.Model):
         default=True,
         verbose_name=_('Automatically queue newly created documents for OCR.')
     )
+
+    objects = models.Manager()
+    on_organization = OrganizationDocumentTypeSettingsManager()
 
     class Meta:
         verbose_name = _('Document type settings')
@@ -35,13 +44,16 @@ class DocumentVersionOCRError(models.Model):
     )
     result = models.TextField(blank=True, null=True, verbose_name=_('Result'))
 
-    def __str__(self):
-        return unicode(self.document_version)
+    objects = models.Manager()
+    on_organization = OrganizationDocumentVersionOCRErrorManager()
 
     class Meta:
         ordering = ('datetime_submitted',)
         verbose_name = _('Document Version OCR Error')
         verbose_name_plural = _('Document Version OCR Errors')
+
+    def __str__(self):
+        return unicode(self.document_version)
 
 
 @python_2_unicode_compatible
@@ -55,9 +67,12 @@ class DocumentPageContent(models.Model):
     )
     content = models.TextField(blank=True, verbose_name=_('Content'))
 
-    def __str__(self):
-        return unicode(self.document_page)
+    objects = models.Manager()
+    on_organization = OrganizationDocumentPageContentManager()
 
     class Meta:
         verbose_name = _('Document page content')
         verbose_name_plural = _('Document pages contents')
+
+    def __str__(self):
+        return unicode(self.document_page)

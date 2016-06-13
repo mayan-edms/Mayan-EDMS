@@ -42,3 +42,5 @@ def create_default_organization(verbosity=2, interactive=True, using=DEFAULT_DB_
                     cursor.execute(command)
 
         Organization.objects.clear_cache()
+
+        return Organization.objects.get(pk=1)

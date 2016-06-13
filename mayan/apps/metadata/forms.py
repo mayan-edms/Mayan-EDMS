@@ -109,13 +109,13 @@ MetadataFormSet = formset_factory(MetadataForm, extra=0)
 
 class AddMetadataForm(forms.Form):
     metadata_type = forms.ModelChoiceField(
-        queryset=MetadataType.objects.all(), label=_('Metadata type')
+        queryset=MetadataType.on_organization.all(), label=_('Metadata type')
     )
 
     def __init__(self, *args, **kwargs):
         document_type = kwargs.pop('document_type')
         super(AddMetadataForm, self).__init__(*args, **kwargs)
-        self.fields['metadata_type'].queryset = MetadataType.objects.filter(
+        self.fields['metadata_type'].queryset = MetadataType.on_organization.filter(
             pk__in=document_type.metadata.values_list(
                 'metadata_type', flat=True
             )

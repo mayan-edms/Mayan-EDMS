@@ -28,6 +28,8 @@ from documents.models import Document, DocumentType
 from documents.settings import setting_language
 from metadata.api import save_metadata_list, set_bulk_metadata
 from metadata.models import MetadataType
+from organizations.models import Organization
+from organizations.shortcuts import get_current_organization
 from tags.models import Tag
 
 from .classes import Attachment, SourceUploadedFile, StagingFile
@@ -39,16 +41,21 @@ from .literals import (
     SOURCE_UNCOMPRESS_CHOICE_N, SOURCE_UNCOMPRESS_CHOICE_Y,
     SOURCE_CHOICE_EMAIL_IMAP, SOURCE_CHOICE_EMAIL_POP3
 )
+from .managers import OrganizationSourceManager
 
 logger = logging.getLogger(__name__)
 
 
 @python_2_unicode_compatible
 class Source(models.Model):
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
+    )
     label = models.CharField(max_length=64, verbose_name=_('Label'))
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
 
     objects = InheritanceManager()
+    on_organization = OrganizationSourceManager()
 
     @classmethod
     def class_fullname(cls):
@@ -63,7 +70,7 @@ class Source(models.Model):
     def upload_document(self, file_object, document_type, description=None, label=None, language=None, metadata_dict_list=None, metadata_dictionary=None, tag_ids=None, user=None):
         try:
             with transaction.atomic():
-                document = Document.objects.create(
+                document = Document.on_organization.create(
                     description=description or '', document_type=document_type,
                     label=label or file_object.name,
                     language=language or setting_language.value
@@ -93,7 +100,7 @@ class Source(models.Model):
                     )
 
                 if tag_ids:
-                    for tag in Tag.objects.filter(pk__in=tag_ids):
+                    for tag in Tag.on_organization.filter(pk__in=tag_ids):
                         tag.documents.add(document)
 
         except Exception as exception:
@@ -147,6 +154,7 @@ class Source(models.Model):
 
 class InteractiveSource(Source):
     objects = InheritanceManager()
+    on_organization = OrganizationSourceManager()
 
     class Meta:
         verbose_name = _('Interactive source')
@@ -182,6 +190,9 @@ class StagingFolderSource(InteractiveSource):
         ),
         verbose_name=_('Delete after upload')
     )
+
+    objects = InheritanceManager()
+    on_organization = OrganizationSourceManager()
 
     def get_preview_size(self):
         dimensions = []
@@ -248,6 +259,12 @@ class WebFormSource(InteractiveSource):
     def get_upload_file_object(self, form_data):
         return SourceUploadedFile(source=self, file=form_data['file'])
 
+    # Custom model managers are not inherited is base class is not abstract.
+    # This will change in Django 1.10
+    # https://docs.djangoproject.com/en/1.8/topics/db/managers/#custom-managers-and-model-inheritance
+    objects = InheritanceManager()
+    on_organization = OrganizationSourceManager()
+
     class Meta:
         verbose_name = _('Web form')
         verbose_name_plural = _('Web forms')
@@ -255,6 +272,11 @@ class WebFormSource(InteractiveSource):
 
 class OutOfProcessSource(Source):
     is_interactive = False
+
+    # Custom model managers are not inherited is base class is not abstract.
+    # This will change in Django 1.10
+    # https://docs.djangoproject.com/en/1.8/topics/db/managers/#custom-managers-and-model-inheritance
+    on_organization = OrganizationSourceManager()
 
     class Meta:
         verbose_name = _('Out of process')
@@ -279,6 +301,12 @@ class IntervalBaseModel(OutOfProcessSource):
         help_text=_('Whether to expand or not, compressed archives.'),
         max_length=1, verbose_name=_('Uncompress')
     )
+
+    # Custom model managers are not inherited is base class is not abstract.
+    # This will change in Django 1.10
+    # https://docs.djangoproject.com/en/1.8/topics/db/managers/#custom-managers-and-model-inheritance
+    objects = InheritanceManager()
+    on_organization = OrganizationSourceManager()
 
     def _get_periodic_task_name(self, pk=None):
         return 'check_interval_source-%i' % (pk or self.pk)
@@ -367,6 +395,12 @@ class EmailBaseModel(IntervalBaseModel):
             'Store the body of the email as a text document.'
         ), verbose_name=_('Store email body')
     )
+
+    # Custom model managers are not inherited is base class is not abstract.
+    # This will change in Django 1.10
+    # https://docs.djangoproject.com/en/1.8/topics/db/managers/#custom-managers-and-model-inheritance
+    objects = InheritanceManager()
+    on_organization = OrganizationSourceManager()
 
     def clean(self):
         if self.subject_metadata_type:
@@ -488,6 +522,12 @@ class POP3Email(EmailBaseModel):
         default=DEFAULT_POP3_TIMEOUT, verbose_name=_('Timeout')
     )
 
+    # Custom model managers are not inherited is base class is not abstract.
+    # This will change in Django 1.10
+    # https://docs.djangoproject.com/en/1.8/topics/db/managers/#custom-managers-and-model-inheritance
+    objects = InheritanceManager()
+    on_organization = OrganizationSourceManager()
+
     def check_source(self):
         logger.debug('Starting POP3 email fetch')
         logger.debug('host: %s', self.host)
@@ -535,6 +575,12 @@ class IMAPEmail(EmailBaseModel):
         max_length=64, verbose_name=_('Mailbox')
     )
 
+    # Custom model managers are not inherited is base class is not abstract.
+    # This will change in Django 1.10
+    # https://docs.djangoproject.com/en/1.8/topics/db/managers/#custom-managers-and-model-inheritance
+    objects = InheritanceManager()
+    on_organization = OrganizationSourceManager()
+
     # http://www.doughellmann.com/PyMOTW/imaplib/
     def check_source(self):
         logger.debug('Starting IMAP email fetch')
@@ -578,6 +624,12 @@ class WatchFolderSource(IntervalBaseModel):
         help_text=_('Server side filesystem path.'), max_length=255,
         verbose_name=_('Folder path')
     )
+
+    # Custom model managers are not inherited is base class is not abstract.
+    # This will change in Django 1.10
+    # https://docs.djangoproject.com/en/1.8/topics/db/managers/#custom-managers-and-model-inheritance
+    objects = InheritanceManager()
+    on_organization = OrganizationSourceManager()
 
     def check_source(self):
         # Force self.folder_path to unicode to avoid os.listdir returning

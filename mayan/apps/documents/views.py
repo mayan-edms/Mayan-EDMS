@@ -38,8 +38,8 @@ from .forms import (
 )
 from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT, PAGE_RANGE_RANGE
 from .models import (
-    DeletedDocument, Document, DocumentType, DocumentPage,
-    DocumentTypeFilename, DocumentVersion, RecentDocument
+    Document, DocumentType, DocumentPage, DocumentTypeFilename,
+    DocumentVersion, RecentDocument, TrashedDocument
 )
 from .permissions import (
     permission_document_delete, permission_document_download,
@@ -81,82 +81,17 @@ class DocumentListView(SingleObjectListView):
         'hide_links': True,
         'title': _('All documents'),
     }
-
     object_permission = permission_document_view
 
     def get_document_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID).defer('description', 'uuid', 'date_added', 'language', 'in_trash', 'deleted_date_time').all()
+        return Document.on_organization.defer(
+            'description', 'uuid', 'date_added', 'language', 'in_trash',
+            'deleted_date_time'
+        ).all()
 
     def get_queryset(self):
         self.queryset = self.get_document_queryset().filter(is_stub=False)
         return super(DocumentListView, self).get_queryset()
-
-
-class DeletedDocumentListView(DocumentListView):
-    object_permission = None
-
-    extra_context = {
-        'hide_link': True,
-        'title': _('Documents in trash'),
-    }
-
-    def get_document_queryset(self):
-        queryset = Document.trash.filter(document_type__organization__id=settings.ORGANIZATION_ID)
-
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_view, self.request.user, queryset
-            )
-
-        return DeletedDocument.objects.filter(
-            pk__in=queryset.values_list('pk', flat=True)
-        )
-
-
-class DeletedDocumentDeleteView(ConfirmView):
-    extra_context = {
-        'title': _('Delete the selected document?')
-    }
-
-    def object_action(self, instance):
-        source_document = get_object_or_404(
-            Document.passthrough.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=instance.pk
-        )
-
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_delete,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_delete, self.request.user, source_document
-            )
-
-        instance.delete()
-
-    def view_action(self):
-        instance = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
-        self.object_action(instance=instance)
-        messages.success(
-            self.request, _('Document: %(document)s deleted.') % {
-                'document': instance
-            }
-        )
-
-
-class DeletedDocumentDeleteManyView(MultipleInstanceActionMixin, DeletedDocumentDeleteView):
-    extra_context = {
-        'title': _('Delete the selected documents?')
-    }
-    success_message = '%(count)d document deleted.'
-    success_message_plural = '%(count)d documents deleted.'
-
-    def get_queryset(self):
-        return DeletedDocument.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
 
 
 class DocumentEditView(SingleObjectEditView):
@@ -176,13 +111,13 @@ class DocumentEditView(SingleObjectEditView):
             'title': _('Edit properties of document: %s') % self.get_object(),
         }
 
-    def get_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
-
     def get_post_action_redirect(self):
         return reverse(
             'documents:document_properties', args=(self.get_object().pk,)
         )
+
+    def get_queryset(self):
+        return Document.on_organization.all()
 
     def get_save_extra_data(self):
         return {
@@ -197,7 +132,7 @@ class DocumentRestoreView(ConfirmView):
 
     def object_action(self, instance):
         source_document = get_object_or_404(
-            Document.passthrough.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=instance.pk
+            Document, pk=instance.pk
         )
 
         try:
@@ -212,7 +147,7 @@ class DocumentRestoreView(ConfirmView):
         instance.restore()
 
     def view_action(self):
-        instance = get_object_or_404(DeletedDocument, pk=self.kwargs['pk'])
+        instance = get_object_or_404(TrashedDocument, pk=self.kwargs['pk'])
 
         self.object_action(instance=instance)
 
@@ -231,7 +166,7 @@ class DocumentRestoreManyView(MultipleInstanceActionMixin, DocumentRestoreView):
     success_message_plural = '%(count)d documents restored.'
 
     def get_queryset(self):
-        return DeletedDocument.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return TrashedDocument.on_organization.all()
 
 
 class DocumentPageListView(SingleObjectListView):
@@ -251,7 +186,9 @@ class DocumentPageListView(SingleObjectListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            Document.on_organization, pk=self.kwargs['pk']
+        )
 
     def get_queryset(self):
         return self.get_document().pages.all()
@@ -306,7 +243,9 @@ class DocumentPageView(SimpleView):
         }
 
     def get_object(self):
-        return get_object_or_404(DocumentPage.objects.filter(document_version__document__document_type__organization__pk=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            DocumentPage.on_organization, pk=self.kwargs['pk']
+        )
 
 
 class DocumentPageViewResetView(RedirectView):
@@ -336,7 +275,7 @@ class DocumentPreviewView(SingleObjectDetailView):
         }
 
     def get_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return Document.on_organization.all()
 
 
 class DocumentTrashView(ConfirmView):
@@ -347,7 +286,7 @@ class DocumentTrashView(ConfirmView):
         }
 
     def get_object(self):
-        return get_object_or_404(Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(Document.on_organization, pk=self.kwargs['pk'])
 
     def get_post_action_redirect(self):
         return reverse('documents:document_list_recent')
@@ -386,12 +325,14 @@ class DocumentTrashManyView(MultipleInstanceActionMixin, DocumentTrashView):
         }
 
     def get_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return Document.on_organization.all()
 
 
 class DocumentTypeDocumentListView(DocumentListView):
     def get_document_type(self):
-        return get_object_or_404(DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            DocumentType.on_organization, pk=self.kwargs['pk']
+        )
 
     def get_document_queryset(self):
         return self.get_document_type().documents.all()
@@ -414,7 +355,7 @@ class DocumentTypeListView(SingleObjectListView):
         }
 
     def get_queryset(self):
-        return DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID)
+        return DocumentType.on_organization.all()
 
 
 class DocumentTypeCreateView(SingleObjectCreateView):
@@ -431,7 +372,7 @@ class DocumentTypeCreateView(SingleObjectCreateView):
         }
 
     def get_queryset(self):
-        return DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID)
+        return DocumentType.on_organization.all()
 
 
 class DocumentTypeDeleteView(SingleObjectDeleteView):
@@ -446,7 +387,7 @@ class DocumentTypeDeleteView(SingleObjectDeleteView):
         }
 
     def get_queryset(self):
-        return DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID)
+        return DocumentType.on_organization.all()
 
 
 class DocumentTypeEditView(SingleObjectEditView):
@@ -464,7 +405,7 @@ class DocumentTypeEditView(SingleObjectEditView):
         }
 
     def get_queryset(self):
-        return DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID)
+        return DocumentType.on_organization.all()
 
 
 class DocumentTypeFilenameCreateView(SingleObjectCreateView):
@@ -486,7 +427,9 @@ class DocumentTypeFilenameCreateView(SingleObjectCreateView):
         )
 
     def get_document_type(self):
-        return get_object_or_404(DocumentType.objects.filter(organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            DocumentType.on_organization, pk=self.kwargs['pk']
+        )
 
     def get_extra_context(self):
         return {
@@ -528,7 +471,7 @@ class DocumentTypeFilenameEditView(SingleObjectEditView):
         )
 
     def get_queryset(self):
-        return DocumentTypeFilename.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return DocumentTypeFilename.on_organization.all()
 
 
 class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
@@ -555,15 +498,16 @@ class DocumentTypeFilenameDeleteView(SingleObjectDeleteView):
         )
 
     def get_queryset(self):
-        return DocumentTypeFilename.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return DocumentTypeFilename.on_organization.all()
 
 
 class DocumentTypeFilenameListView(SingleObjectListView):
-    model = DocumentType
     view_permission = permission_document_type_view
 
     def get_document_type(self):
-        return get_object_or_404(DocumentType, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            DocumentType.on_organization, pk=self.kwargs['pk']
+        )
 
     def get_extra_context(self):
         return {
@@ -597,7 +541,9 @@ class DocumentVersionListView(SingleObjectListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=self.kwargs['pk'])
+        return get_object_or_404(
+            Document.on_organization, pk=self.kwargs['pk']
+        )
 
     def get_extra_context(self):
         return {
@@ -623,7 +569,9 @@ class DocumentVersionRevertView(ConfirmView):
         }
 
     def get_object(self):
-        return get_object_or_404(DocumentVersion, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            DocumentVersion.on_organization, pk=self.kwargs['pk']
+        )
 
     def view_action(self):
         try:
@@ -655,20 +603,20 @@ class DocumentView(SingleObjectDetailView):
         }
 
     def get_queryset(self):
-        return Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+        return Document.on_organization.all()
 
 
 class EmptyTrashCanView(ConfirmView):
+    action_cancel_redirect = post_action_redirect = reverse_lazy(
+        'documents:document_list_trashed'
+    )
     extra_context = {
         'title': _('Empty trash?')
     }
     view_permission = permission_empty_trash
-    action_cancel_redirect = post_action_redirect = reverse_lazy(
-        'documents:document_list_deleted'
-    )
 
     def view_action(self):
-        for deleted_document in DeletedDocument.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID):
+        for deleted_document in TrashedDocument.on_organization.all():
             deleted_document.delete()
 
         messages.success(self.request, _('Trash emptied successfully'))
@@ -684,10 +632,81 @@ class RecentDocumentListView(DocumentListView):
         return RecentDocument.objects.get_for_user(self.request.user)
 
 
+class TrashedDocumentListView(DocumentListView):
+    extra_context = {
+        'hide_link': True,
+        'title': _('Documents in trash'),
+    }
+    object_permission = None
+
+    def get_document_queryset(self):
+        queryset = Document.trash.all()
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_view,)
+            )
+        except PermissionDenied:
+            queryset = AccessControlList.objects.filter_by_access(
+                permission_document_view, self.request.user, queryset
+            )
+
+        return TrashedDocument.on_organization.filter(
+            pk__in=queryset.values_list('pk', flat=True)
+        )
+
+
+class TrashedDocumentDeleteView(ConfirmView):
+    extra_context = {
+        'title': _('Delete the selected document?')
+    }
+
+    def object_action(self, instance):
+        # Special case, we need to check the original document for the delete
+        # permission. Don't use .on_organization manager as it filters
+        # trashed documents and we don't want that.
+        source_document = get_object_or_404(
+            Document, pk=instance.pk
+        )
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_delete,)
+            )
+        except PermissionDenied:
+            AccessControlList.objects.check_access(
+                permission_document_delete, self.request.user, source_document
+            )
+
+        instance.delete()
+
+    def view_action(self):
+        instance = get_object_or_404(
+            TrashedDocument.on_organization, pk=self.kwargs['pk']
+        )
+        self.object_action(instance=instance)
+        messages.success(
+            self.request, _('Document: %(document)s deleted.') % {
+                'document': instance
+            }
+        )
+
+
+class TrashedDocumentDeleteManyView(MultipleInstanceActionMixin, TrashedDocumentDeleteView):
+    extra_context = {
+        'title': _('Delete the selected documents?')
+    }
+    success_message = '%(count)d document deleted.'
+    success_message_plural = '%(count)d documents deleted.'
+
+    def get_queryset(self):
+        return TrashedDocument.on_organization.all()
+
+
 def document_document_type_edit(request, document_id=None, document_id_list=None):
     post_action_redirect = None
 
-    queryset = Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+    queryset = Document.on_organization.all()
 
     if document_id:
         queryset = queryset.filter(pk=document_id)
@@ -768,7 +787,12 @@ def document_multiple_document_type_edit(request):
 
 # TODO: Get rid of this view and convert widget to use API and base64 only images
 def get_document_image(request, document_id, size=setting_preview_size.value):
-    document = get_object_or_404(Document.passthrough.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=document_id)
+    # Special case. Allow all active and trashed documents but filter by
+    # organization, to be able to produce thumbnails for all documents.
+    document = get_object_or_404(
+        Document.objects.filter(document_type__in=DocumentType.on_organization.all()),
+        pk=document_id
+    )
     try:
         Permission.check_permissions(request.user, (permission_document_view,))
     except PermissionDenied:
@@ -800,7 +824,7 @@ def get_document_image(request, document_id, size=setting_preview_size.value):
 def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
-    queryset = Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+    queryset = Document.on_organization.all()
 
     if document_id:
         documents = queryset.filter(pk=document_id)
@@ -832,11 +856,12 @@ def document_download(request, document_id=None, document_id_list=None, document
             )
         )
 
-    # TODO: check organization
     if document_version_pk:
-        queryset = DocumentVersion.objects.filter(pk=document_version_pk)
+        queryset = DocumentVersion.on_organization.filter(
+            pk=document_version_pk
+        )
     else:
-        queryset = DocumentVersion.objects.filter(
+        queryset = DocumentVersion.on_organization.filter(
             pk__in=[document.latest_version.pk for document in documents]
         )
 
@@ -951,12 +976,12 @@ def document_multiple_download(request):
 
 
 def document_update_page_count(request, document_id=None, document_id_list=None):
-    queryset = Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+    queryset = Document.on_organization.all()
 
     if document_id:
         documents = queryset.filter(pk=document_id)
     elif document_id_list:
-        documents = queryset.objects.filter(pk__in=document_id_list)
+        documents = queryset.filter(pk__in=document_id_list)
 
     if not documents:
         messages.error(request, _('At least one document must be selected.'))
@@ -1016,7 +1041,7 @@ def document_multiple_update_page_count(request):
 
 
 def document_clear_transformations(request, document_id=None, document_id_list=None):
-    queryset = Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID)
+    queryset = Document.on_organization.all()
 
     if document_id:
         documents = queryset.filter(pk=document_id)
@@ -1098,7 +1123,7 @@ def document_multiple_clear_transformations(request):
 
 
 def document_page_navigation_next(request, document_page_id):
-    document_page = get_object_or_404(DocumentPage.objects.filter(document__document_type__organization__id=settings.ORGANIZATION_ID), pk=document_page_id)
+    document_page = get_object_or_404(DocumentPage.on_organization, pk=document_page_id)
 
     try:
         Permission.check_permissions(request.user, (permission_document_view,))
@@ -1116,7 +1141,7 @@ def document_page_navigation_next(request, document_page_id):
 
 
 def document_page_navigation_previous(request, document_page_id):
-    document_page = get_object_or_404(DocumentPage.objects.filter(document__document_type__organization__id=settings.ORGANIZATION_ID), pk=document_page_id)
+    document_page = get_object_or_404(DocumentPage.on_organization, pk=document_page_id)
 
     try:
         Permission.check_permissions(request.user, (permission_document_view,))
@@ -1134,7 +1159,7 @@ def document_page_navigation_previous(request, document_page_id):
 
 
 def document_page_navigation_first(request, document_page_id):
-    document_page = get_object_or_404(DocumentPage.objects.filter(document__document_type__organization__id=settings.ORGANIZATION_ID), pk=document_page_id)
+    document_page = get_object_or_404(DocumentPage.on_organization, pk=document_page_id)
     document_page = get_object_or_404(document_page.siblings, page_number=1)
 
     try:
@@ -1148,7 +1173,7 @@ def document_page_navigation_first(request, document_page_id):
 
 
 def document_page_navigation_last(request, document_page_id):
-    document_page = get_object_or_404(DocumentPage.objects.filter(document__document_type__organization__id=settings.ORGANIZATION_ID), pk=document_page_id)
+    document_page = get_object_or_404(DocumentPage.on_organization, pk=document_page_id)
     document_page = get_object_or_404(document_page.siblings, page_number=document_page.siblings.count())
 
     try:
@@ -1162,7 +1187,7 @@ def document_page_navigation_last(request, document_page_id):
 
 
 def transform_page(request, document_page_id, zoom_function=None, rotation_function=None):
-    document_page = get_object_or_404(DocumentPage.objects.filter(document__document_type__organization__id=settings.ORGANIZATION_ID), pk=document_page_id)
+    document_page = get_object_or_404(DocumentPage.on_organization, pk=document_page_id)
 
     try:
         Permission.check_permissions(request.user, (permission_document_view,))
@@ -1225,7 +1250,7 @@ def document_page_rotate_left(request, document_page_id):
 
 
 def document_print(request, document_id):
-    document = get_object_or_404(Document.objects.filter(document_type__organization__id=settings.ORGANIZATION_ID), pk=document_id)
+    document = get_object_or_404(Document.on_organization, pk=document_id)
 
     try:
         Permission.check_permissions(request.user, (permission_document_print,))

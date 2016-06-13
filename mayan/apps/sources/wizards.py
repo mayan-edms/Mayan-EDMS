@@ -42,7 +42,7 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
     template_name = 'appearance/generic_wizard.html'
 
     def dispatch(self, request, *args, **kwargs):
-        if not InteractiveSource.objects.filter(enabled=True).exists():
+        if not InteractiveSource.on_organization.filter(enabled=True).exists():
             messages.error(
                 request,
                 _(

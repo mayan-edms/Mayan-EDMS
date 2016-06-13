@@ -60,7 +60,7 @@ class OCRBackendBase(object):
             image = document_page.get_image()
 
             try:
-                document_page_content, created = DocumentPageContent.objects.get_or_create(
+                document_page_content, created = DocumentPageContent.on_organization.get_or_create(
                     document_page=document_page
                 )
                 document_page_content.content = self.execute(

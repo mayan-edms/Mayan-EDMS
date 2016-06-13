@@ -56,7 +56,7 @@ class SourcesApp(MayanAppConfig):
                 'feed to Mayan EDMS, create at least a web form source to '
                 'be able to upload documents from a browser.'
             ),
-            condition=lambda: not Source.objects.exists(),
+            condition=lambda: not Source.on_organization.exists(),
             view='sources:setup_source_list'
         )
 

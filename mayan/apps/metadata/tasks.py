@@ -15,7 +15,7 @@ def task_remove_metadata_type(document_type_id, metadata_type_id):
         app_label='metadata', model_name='DocumentMetadata'
     )
 
-    DocumentMetadata.objects.filter(
+    DocumentMetadata.on_organization.filter(
         document__document_type__id=document_type_id,
         metadata_type__id=metadata_type_id
     ).delete()
@@ -31,7 +31,7 @@ def task_add_required_metadata_type(document_type_id, metadata_type_id):
         app_label='metadata', model_name='MetadataType'
     )
 
-    metadata_type = MetadataType.objects.get(pk=metadata_type_id)
+    metadata_type = MetadataType.on_organization.get(pk=metadata_type_id)
 
-    for document in DocumentType.objects.get(pk=document_type_id).documents.all():
+    for document in DocumentType.on_organization.get(pk=document_type_id).documents.all():
         document.metadata.create(metadata_type=metadata_type)

@@ -12,6 +12,7 @@ from documents.models import DocumentType
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 )
+from organizations.tests.base import OrganizationTestCase
 from user_management.tests.literals import (
     TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD
 )
@@ -21,14 +22,15 @@ from ..models import DocumentCheckout
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentCheckoutTestCase(TestCase):
+class DocumentCheckoutTestCase(OrganizationTestCase):
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
+        super(DocumentCheckoutTestCase, self).setUp()
+        self.admin_user = get_user_model().on_organization.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
 
-        self.document_type = DocumentType.objects.create(
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -39,18 +41,19 @@ class DocumentCheckoutTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentCheckoutTestCase, self).tearDown()
 
     def test_document_checkout(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.on_organization.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
 
         self.assertTrue(self.document.is_checked_out())
         self.assertTrue(
-            DocumentCheckout.objects.is_document_checked_out(
+            DocumentCheckout.on_organization.is_document_checked_out(
                 document=self.document
             )
         )
@@ -58,7 +61,7 @@ class DocumentCheckoutTestCase(TestCase):
     def test_version_creation_blocking(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.on_organization.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
@@ -70,7 +73,7 @@ class DocumentCheckoutTestCase(TestCase):
     def test_checkin_in(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.on_organization.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
@@ -79,7 +82,7 @@ class DocumentCheckoutTestCase(TestCase):
 
         self.assertFalse(self.document.is_checked_out())
         self.assertFalse(
-            DocumentCheckout.objects.is_document_checked_out(
+            DocumentCheckout.on_organization.is_document_checked_out(
                 document=self.document
             )
         )
@@ -87,13 +90,13 @@ class DocumentCheckoutTestCase(TestCase):
     def test_double_checkout(self):
         expiration_datetime = now() + datetime.timedelta(days=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.on_organization.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
 
         with self.assertRaises(DocumentAlreadyCheckedOut):
-            DocumentCheckout.objects.checkout_document(
+            DocumentCheckout.on_organization.checkout_document(
                 document=self.document,
                 expiration_datetime=expiration_datetime, user=self.admin_user,
                 block_new_version=True
@@ -106,13 +109,13 @@ class DocumentCheckoutTestCase(TestCase):
     def test_auto_checkin(self):
         expiration_datetime = now() + datetime.timedelta(seconds=1)
 
-        DocumentCheckout.objects.checkout_document(
+        DocumentCheckout.on_organization.checkout_document(
             document=self.document, expiration_datetime=expiration_datetime,
             user=self.admin_user, block_new_version=True
         )
 
         time.sleep(2)
 
-        DocumentCheckout.objects.check_in_expired_check_outs()
+        DocumentCheckout.on_organization.check_in_expired_check_outs()
 
         self.assertFalse(self.document.is_checked_out())

@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 
 from .api_views import (
-    APIDeletedDocumentListView, APIDeletedDocumentRestoreView,
-    APIDeletedDocumentView, APIDocumentDownloadView, APIDocumentView,
+    APITrashedDocumentListView, APITrashedDocumentRestoreView,
+    APITrashedDocumentView, APIDocumentDownloadView, APIDocumentView,
     APIDocumentListView, APIDocumentVersionDownloadView,
     APIDocumentPageImageView, APIDocumentPageView,
     APIDocumentTypeDocumentListView, APIDocumentTypeListView,
@@ -14,17 +14,16 @@ from .api_views import (
 )
 from .settings import setting_print_size, setting_display_size
 from .views import (
-    ClearImageCacheView, DeletedDocumentDeleteView,
-    DeletedDocumentDeleteManyView, DeletedDocumentListView, DocumentEditView,
-    DocumentListView, DocumentPageView, DocumentPageListView,
-    DocumentPageViewResetView, DocumentPreviewView, DocumentRestoreView,
-    DocumentRestoreManyView, DocumentTrashView, DocumentTrashManyView,
-    DocumentTypeCreateView, DocumentTypeDeleteView,
+    ClearImageCacheView, DocumentEditView, DocumentListView, DocumentPageView,
+    DocumentPageListView, DocumentPageViewResetView, DocumentPreviewView,
+    DocumentRestoreView, DocumentRestoreManyView, DocumentTrashView,
+    DocumentTrashManyView, DocumentTypeCreateView, DocumentTypeDeleteView,
     DocumentTypeDocumentListView, DocumentTypeFilenameCreateView,
     DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
     DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentView,
-    EmptyTrashCanView, RecentDocumentListView
+    EmptyTrashCanView, RecentDocumentListView, TrashedDocumentDeleteView,
+    TrashedDocumentDeleteManyView, TrashedDocumentListView
 )
 
 urlpatterns = patterns(
@@ -35,8 +34,8 @@ urlpatterns = patterns(
         name='document_list_recent'
     ),
     url(
-        r'^list/deleted/$', DeletedDocumentListView.as_view(),
-        name='document_list_deleted'
+        r'^list/deleted/$', TrashedDocumentListView.as_view(),
+        name='document_list_trashed'
     ),
 
     url(
@@ -56,11 +55,11 @@ urlpatterns = patterns(
         name='document_multiple_restore'
     ),
     url(
-        r'^(?P<pk>\d+)/delete/$', DeletedDocumentDeleteView.as_view(),
+        r'^(?P<pk>\d+)/delete/$', TrashedDocumentDeleteView.as_view(),
         name='document_delete'
     ),
     url(
-        r'^multiple/delete/$', DeletedDocumentDeleteManyView.as_view(),
+        r'^multiple/delete/$', TrashedDocumentDeleteManyView.as_view(),
         name='document_multiple_delete'
     ),
     url(
@@ -242,18 +241,6 @@ urlpatterns = patterns(
 
 api_urls = patterns(
     '',
-    url(
-        r'^trashed_documents/$', APIDeletedDocumentListView.as_view(),
-        name='trasheddocument-list'
-    ),
-    url(
-        r'^trashed_documents/(?P<pk>[0-9]+)/$',
-        APIDeletedDocumentView.as_view(), name='trasheddocument-detail'
-    ),
-    url(
-        r'^trashed_documents/(?P<pk>[0-9]+)/restore/$',
-        APIDeletedDocumentRestoreView.as_view(), name='trasheddocument-restore'
-    ),
     url(r'^documents/$', APIDocumentListView.as_view(), name='document-list'),
     url(
         r'^documents/recent/$', APIRecentDocumentListView.as_view(),
@@ -303,5 +290,17 @@ api_urls = patterns(
     url(
         r'^document_types/$', APIDocumentTypeListView.as_view(),
         name='documenttype-list'
+    ),
+    url(
+        r'^trashed_documents/$', APITrashedDocumentListView.as_view(),
+        name='trasheddocument-list'
+    ),
+    url(
+        r'^trashed_documents/(?P<pk>[0-9]+)/$',
+        APITrashedDocumentView.as_view(), name='trasheddocument-detail'
+    ),
+    url(
+        r'^trashed_documents/(?P<pk>[0-9]+)/restore/$',
+        APITrashedDocumentRestoreView.as_view(), name='trasheddocument-restore'
     ),
 )

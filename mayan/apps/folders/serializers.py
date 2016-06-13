@@ -60,7 +60,9 @@ class NewFolderDocumentSerializer(serializers.Serializer):
 
     def create(self, validated_data):
         try:
-            document = Document.objects.get(pk=validated_data['document'])
+            document = Document.on_organization.get(
+                pk=validated_data['document']
+            )
             validated_data['folder'].documents.add(document)
         except Exception as exception:
             raise ValidationError(exception)

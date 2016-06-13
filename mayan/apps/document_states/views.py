@@ -47,7 +47,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document(self):
-        return get_object_or_404(Document, pk=self.kwargs['pk'])
+        return get_object_or_404(Document.on_organization, pk=self.kwargs['pk'])
 
     def get_extra_context(self):
         return {
@@ -64,7 +64,7 @@ class DocumentWorkflowInstanceListView(SingleObjectListView):
 
 class WorkflowDocumentListView(DocumentListView):
     def dispatch(self, request, *args, **kwargs):
-        self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
+        self.workflow = get_object_or_404(Workflow.on_organization, pk=self.kwargs['pk'])
 
         try:
             Permission.check_permissions(
@@ -80,7 +80,7 @@ class WorkflowDocumentListView(DocumentListView):
         ).dispatch(request, *args, **kwargs)
 
     def get_document_queryset(self):
-        return Document.objects.filter(
+        return Document.on_organization.filter(
             document_type__in=self.workflow.document_types.all()
         )
 
@@ -123,7 +123,7 @@ class WorkflowInstanceDetailView(SingleObjectListView):
         return self.get_workflow_instance().log_entries.order_by('-datetime')
 
     def get_workflow_instance(self):
-        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
+        return get_object_or_404(WorkflowInstance.on_organization, pk=self.kwargs['pk'])
 
 
 class WorkflowInstanceTransitionView(FormView):
@@ -175,7 +175,7 @@ class WorkflowInstanceTransitionView(FormView):
         return self.get_workflow_instance().get_absolute_url()
 
     def get_workflow_instance(self):
-        return get_object_or_404(WorkflowInstance, pk=self.kwargs['pk'])
+        return get_object_or_404(WorkflowInstance.on_organization, pk=self.kwargs['pk'])
 
 
 # Setup
@@ -185,28 +185,36 @@ class SetupWorkflowListView(SingleObjectListView):
         'title': _('Workflows'),
         'hide_link': True,
     }
-    model = Workflow
     view_permission = permission_workflow_view
+
+    def get_queryset(self):
+        return Workflow.on_organization.all()
 
 
 class SetupWorkflowCreateView(SingleObjectCreateView):
     form_class = WorkflowForm
-    model = Workflow
     view_permission = permission_workflow_create
     post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
+
+    def get_queryset(self):
+        return Workflow.on_organization.all()
 
 
 class SetupWorkflowEditView(SingleObjectEditView):
     form_class = WorkflowForm
-    model = Workflow
     view_permission = permission_workflow_edit
     post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
 
+    def get_queryset(self):
+        return Workflow.on_organization.all()
+
 
 class SetupWorkflowDeleteView(SingleObjectDeleteView):
-    model = Workflow
     view_permission = permission_workflow_delete
     post_action_redirect = reverse_lazy('document_states:setup_workflow_list')
+
+    def get_queryset(self):
+        return Workflow.on_organization.all()
 
 
 class SetupWorkflowDocumentTypesView(AssignRemoveView):
@@ -229,7 +237,7 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
         }
 
     def get_object(self):
-        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
+        return get_object_or_404(Workflow.on_organization, pk=self.kwargs['pk'])
 
     def left_list(self):
         return AssignRemoveView.generate_choices(
@@ -273,7 +281,7 @@ class SetupWorkflowStateListView(SingleObjectListView):
         return self.get_workflow().states.all()
 
     def get_workflow(self):
-        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
+        return get_object_or_404(Workflow.on_organization, pk=self.kwargs['pk'])
 
 
 class SetupWorkflowStateCreateView(SingleObjectCreateView):
@@ -289,7 +297,7 @@ class SetupWorkflowStateCreateView(SingleObjectCreateView):
         }
 
     def get_workflow(self):
-        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
+        return get_object_or_404(Workflow.on_organization, pk=self.kwargs['pk'])
 
     def get_queryset(self):
         return self.get_workflow().states.all()
@@ -350,7 +358,7 @@ class SetupWorkflowTransitionListView(SingleObjectListView):
     view_permission = permission_workflow_view
 
     def get_workflow(self):
-        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
+        return get_object_or_404(Workflow.on_organization, pk=self.kwargs['pk'])
 
     def get_queryset(self):
         return self.get_workflow().transitions.all()
@@ -385,7 +393,7 @@ class SetupWorkflowTransitionCreateView(SingleObjectCreateView):
         return kwargs
 
     def get_workflow(self):
-        return get_object_or_404(Workflow, pk=self.kwargs['pk'])
+        return get_object_or_404(Workflow.on_organization, pk=self.kwargs['pk'])
 
     def get_queryset(self):
         return self.get_workflow().transitions.all()

@@ -14,7 +14,9 @@ from documents.models import Document, NewVersionBlock
 
 from .events import event_document_check_out
 from .exceptions import DocumentAlreadyCheckedOut
-from .managers import DocumentCheckoutManager
+from .managers import (
+    DocumentCheckoutManager, OrganizationDocumentCheckoutManager
+)
 
 logger = logging.getLogger(__name__)
 
@@ -44,6 +46,11 @@ class DocumentCheckout(models.Model):
     )
 
     objects = DocumentCheckoutManager()
+    on_organization = OrganizationDocumentCheckoutManager()
+
+    class Meta:
+        verbose_name = _('Document checkout')
+        verbose_name_plural = _('Document checkouts')
 
     def __str__(self):
         return unicode(self.document)
@@ -82,7 +89,3 @@ class DocumentCheckout(models.Model):
             )
 
         return result
-
-    class Meta:
-        verbose_name = _('Document checkout')
-        verbose_name_plural = _('Document checkouts')

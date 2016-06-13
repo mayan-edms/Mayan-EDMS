@@ -5,20 +5,27 @@ from datetime import timedelta
 from django.test import TestCase
 from django.utils import timezone
 
+from organizations.models import Organization
+from organizations.utils import create_default_organization
+
 from ..models import Message
 
-TEST_LABEL = 'test label'
-TEST_MESSAGE = 'test message'
+from .literals import TEST_MESSAGE_LABEL, TEST_MESSAGE_TEXT
 
 
 class MOTDTestCase(TestCase):
     def setUp(self):
-        self.motd = Message.objects.create(
-            label=TEST_LABEL, message=TEST_MESSAGE
+        create_default_organization()
+        self.motd = Message.on_organization.create(
+            label=TEST_MESSAGE_LABEL, message=TEST_MESSAGE_TEXT
         )
 
+    def tearDown(self):
+        Organization.objects.all().delete()
+        Organization.objects.clear_cache()
+
     def test_basic(self):
-        queryset = Message.objects.get_for_now()
+        queryset = Message.on_organization.get_for_now()
 
         self.assertEqual(queryset.exists(), True)
 
@@ -26,7 +33,7 @@ class MOTDTestCase(TestCase):
         self.motd.start_datetime = timezone.now() - timedelta(days=1)
         self.motd.save()
 
-        queryset = Message.objects.get_for_now()
+        queryset = Message.on_organization.get_for_now()
 
         self.assertEqual(queryset.first(), self.motd)
 
@@ -35,7 +42,7 @@ class MOTDTestCase(TestCase):
         self.motd.end_datetime = timezone.now() - timedelta(days=1)
         self.motd.save()
 
-        queryset = Message.objects.get_for_now()
+        queryset = Message.on_organization.get_for_now()
 
         self.assertEqual(queryset.exists(), False)
 
@@ -43,6 +50,6 @@ class MOTDTestCase(TestCase):
         self.motd.enabled = False
         self.motd.save()
 
-        queryset = Message.objects.get_for_now()
+        queryset = Message.on_organization.get_for_now()
 
         self.assertEqual(queryset.exists(), False)
