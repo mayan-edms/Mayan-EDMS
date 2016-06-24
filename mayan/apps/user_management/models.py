@@ -18,6 +18,10 @@ class MayanGroup(Group):
     objects = GroupManager()
     on_organization = CurrentOrganizationManager()
 
+    class Meta:
+        verbose_name = _('Group')
+        verbose_name_plural = _('Groups')
+
 
 class OrganizationUserManagerHybridClass(CurrentOrganizationManager, UserManager):
     """
@@ -27,7 +31,7 @@ class OrganizationUserManagerHybridClass(CurrentOrganizationManager, UserManager
 
 class MayanUser(AbstractUser):
     organization = models.ForeignKey(
-        Organization, default=get_current_organization
+        Organization, blank=True, default=get_current_organization, null=True
     )
 
     organization_groups = models.ManyToManyField(
