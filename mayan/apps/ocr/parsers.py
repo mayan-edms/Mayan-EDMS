@@ -12,7 +12,7 @@ import subprocess
 from django.utils.translation import ugettext_lazy as _
 
 from common.settings import setting_temporary_directory
-from common.utils import copyfile, mkstemp
+from common.utils import copyfile, fs_cleanup, mkstemp
 
 from .exceptions import ParserError, NoMIMETypeMatch
 from .models import DocumentPageContent
@@ -155,10 +155,12 @@ class PopplerParser(Parser):
         return_code = proc.wait()
         if return_code != 0:
             logger.error(proc.stderr.readline())
+            fs_cleanup(temp_filepath)
 
             raise ParserError
 
         output = proc.stdout.read()
+        fs_cleanup(temp_filepath)
 
         if output == b'\x0c':
             logger.debug('Parser didn\'t return any output')
