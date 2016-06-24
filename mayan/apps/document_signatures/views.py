@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-import tempfile
 import logging
 
 from django.contrib import messages
@@ -16,6 +15,7 @@ from common.generics import (
     ConfirmView, FormView, SingleObjectCreateView, SingleObjectDeleteView,
     SingleObjectDetailView, SingleObjectDownloadView, SingleObjectListView
 )
+from common.utils import TemporaryFile
 from django_gpg.exceptions import NeedPassphrase, PassphraseError
 from django_gpg.permissions import permission_key_sign
 from documents.models import DocumentVersion
@@ -83,7 +83,7 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
                 )
             )
         else:
-            temporary_file_object = tempfile.TemporaryFile()
+            temporary_file_object = TemporaryFile()
             temporary_file_object.write(detached_signature.data)
             temporary_file_object.seek(0)
 
@@ -188,7 +188,7 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
                 )
             )
         else:
-            temporary_file_object = tempfile.TemporaryFile()
+            temporary_file_object = TemporaryFile()
             temporary_file_object.write(signature_result.data)
             temporary_file_object.seek(0)
 

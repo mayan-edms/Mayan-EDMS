@@ -1,3 +1,11 @@
+2.1.3 (2016-XX-XX)
+- Add help message when initialsetup migration phase fails. Relates to GitLab issue #296.
+- Start using self.setdout instead of print as per documentation.
+- Fix GitLab issue #295, "When editing a user the top bar jumps to the name of the user".
+- Normalize handling of temporary file and directory creation.
+- Fix GitLab issue #309, "Temp files quickly filling-up my /tmp (1GB tmpfs)".
+- Explicitly check for residual temporary files in tests.
+
 2.1.2 (2016-05-20)
 ==================
 - Sort document languages and user profile locale language lists. GitLab issue #292.

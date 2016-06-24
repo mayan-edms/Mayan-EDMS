@@ -11,8 +11,7 @@ setting_temporary_directory = namespace.add_setting(
     global_name='COMMON_TEMPORARY_DIRECTORY', default=tempfile.gettempdir(),
     help_text=_(
         'Temporary directory used site wide to store thumbnails, previews '
-        'and temporary files.  If none is specified, one will be created '
-        'using tempfile.mkdtemp().'
+        'and temporary files.'
     ),
     is_path=True
 )

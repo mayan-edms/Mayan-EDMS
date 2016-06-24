@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import io
 import logging
 import os
-import tempfile
 
 try:
     from cStringIO import StringIO
@@ -16,7 +15,7 @@ import sh
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.utils import fs_cleanup
+from common.utils import fs_cleanup, mkstemp
 
 from ..classes import ConverterBase
 from ..exceptions import PageCountError
@@ -50,7 +49,7 @@ class Python(ConverterBase):
 
         if self.mime_type == 'application/pdf' and pdftoppm:
 
-            new_file_object, input_filepath = tempfile.mkstemp()
+            new_file_object, input_filepath = mkstemp()
             self.file_object.seek(0)
             os.write(new_file_object, self.file_object.read())
             self.file_object.seek(0)

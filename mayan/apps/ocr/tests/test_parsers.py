@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 from django.test import override_settings
 
+from common.settings import setting_temporary_directory
 from documents.models import DocumentType
 from documents.tests import (
     TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE, TEST_HYBRID_DOCUMENT_PATH
@@ -16,7 +17,6 @@ from ..parsers import PDFMinerParser, PopplerParser
 class ParserTestCase(OrganizationTestCase):
     def setUp(self):
         super(ParserTestCase, self).setUp()
-
         self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )

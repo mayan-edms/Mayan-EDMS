@@ -1,13 +1,13 @@
 from __future__ import unicode_literals
 
 import shutil
-import tempfile
 
 from django.contrib.auth import get_user_model
 from django.core.files.base import File
 from django.test import TestCase, override_settings
 from django.test.client import Client
 
+from common.utils import mkdtemp
 from documents.models import Document, DocumentType
 from documents.tests import (
     TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
@@ -55,7 +55,7 @@ class UploadDocumentTestCase(TestCase):
         gh-issue #163 https://github.com/mayan-edms/mayan-edms/issues/163
         """
 
-        temporary_directory = tempfile.mkdtemp()
+        temporary_directory = mkdtemp()
         shutil.copy(TEST_NON_ASCII_DOCUMENT_PATH, temporary_directory)
 
         watch_folder = WatchFolderSource.on_organization.create(

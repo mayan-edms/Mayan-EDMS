@@ -1,5 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
+import os
+
 from django.conf.urls import url
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import clear_url_caches, reverse
@@ -17,12 +19,16 @@ from user_management.tests import (
     TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
 )
 
+from ..settings import setting_temporary_directory
+
 from .literals import TEST_VIEW_NAME, TEST_VIEW_URL
 
 
 class GenericViewTestCase(OrganizationTestCase):
     def setUp(self):
         super(GenericViewTestCase, self).setUp()
+        self.temp_items = len(os.listdir(setting_temporary_directory.value))
+
         self.has_test_view = False
         self.admin_user = get_user_model().on_organization.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
@@ -46,6 +52,10 @@ class GenericViewTestCase(OrganizationTestCase):
         self.client.logout()
         if self.has_test_view:
             urlpatterns.pop(0)
+
+        self.assertEqual(
+            self.temp_items, len(os.listdir(setting_temporary_directory.value))
+        )
 
         super(GenericViewTestCase, self).tearDown()
 

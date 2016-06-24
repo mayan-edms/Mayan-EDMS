@@ -1,12 +1,13 @@
 from __future__ import unicode_literals
 
 import StringIO
-import tempfile
 
 import gnupg
 import mock
 
 from django.test import TestCase
+
+from common.utils import TemporaryFile
 
 from ..exceptions import (
     DecryptionError, KeyDoesNotExist, NeedPassphrase, PassphraseError,
@@ -74,7 +75,7 @@ class KeyTestCase(TestCase):
         )
 
     def test_cleartext_file_verification(self):
-        cleartext_file = tempfile.TemporaryFile()
+        cleartext_file = TemporaryFile()
         cleartext_file.write('test')
         cleartext_file.seek(0)
 
@@ -124,7 +125,7 @@ class KeyTestCase(TestCase):
         self.assertEqual(result.read(), TEST_SIGNED_FILE_CONTENT)
 
     def test_cleartext_file_decryption(self):
-        cleartext_file = tempfile.TemporaryFile()
+        cleartext_file = TemporaryFile()
         cleartext_file.write('test')
         cleartext_file.seek(0)
 
