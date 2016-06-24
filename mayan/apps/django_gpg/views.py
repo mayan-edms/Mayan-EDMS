@@ -25,7 +25,6 @@ logger = logging.getLogger(__name__)
 
 
 class KeyDeleteView(SingleObjectDeleteView):
-    model = Key
     object_permission = permission_key_delete
 
     def get_post_action_redirect(self):
@@ -37,10 +36,12 @@ class KeyDeleteView(SingleObjectDeleteView):
     def get_extra_context(self):
         return {'title': _('Delete key: %s') % self.get_object()}
 
+    def get_queryset(self):
+        return Key.on_organization.all()
+
 
 class KeyDetailView(SingleObjectDetailView):
     form_class = KeyDetailForm
-    model = Key
     object_permission = permission_key_view
 
     def get_extra_context(self):
@@ -48,15 +49,20 @@ class KeyDetailView(SingleObjectDetailView):
             'title': _('Details for key: %s') % self.get_object(),
         }
 
+    def get_queryset(self):
+        return Key.on_organization.all()
+
 
 class KeyDownloadView(SingleObjectDownloadView):
-    model = Key
     object_permission = permission_key_download
 
     def get_file(self):
         key = self.get_object()
 
         return ContentFile(key.key_data, name=key.key_id)
+
+    def get_queryset(self):
+        return Key.on_organization.all()
 
 
 class KeyReceive(ConfirmView):
@@ -71,7 +77,7 @@ class KeyReceive(ConfirmView):
 
     def view_action(self):
         try:
-            Key.objects.receive_key(key_id=self.kwargs['key_id'])
+            Key.on_organization.receive_key(key_id=self.kwargs['key_id'])
         except Exception as exception:
             messages.error(
                 self.request,
@@ -122,14 +128,13 @@ class KeyQueryResultView(SingleObjectListView):
     def get_queryset(self):
         term = self.request.GET.get('term')
         if term:
-            return Key.objects.search(query=term)
+            return Key.on_organization.search(query=term)
         else:
             return ()
 
 
 class KeyUploadView(SingleObjectCreateView):
     fields = ('key_data',)
-    model = Key
     post_action_redirect = reverse_lazy('django_gpg:key_public_list')
     view_permission = permission_key_upload
 
@@ -138,10 +143,12 @@ class KeyUploadView(SingleObjectCreateView):
             'title': _('Upload new key'),
         }
 
+    def get_queryset(self):
+        return Key.on_organization.all()
+
 
 class PublicKeyListView(SingleObjectListView):
     object_permission = permission_key_view
-    queryset = Key.objects.public_keys()
 
     def get_extra_context(self):
         return {
@@ -149,13 +156,18 @@ class PublicKeyListView(SingleObjectListView):
             'title': _('Public keys')
         }
 
+    def get_queryset(self):
+        return Key.on_organization.public_keys()
+
 
 class PrivateKeyListView(SingleObjectListView):
     object_permission = permission_key_view
-    queryset = Key.objects.private_keys()
 
     def get_extra_context(self):
         return {
             'hide_object': True,
             'title': _('Private keys')
         }
+
+    def get_queryset(self):
+        return Key.on_organization.private_keys()

@@ -5,9 +5,8 @@ import StringIO
 import gnupg
 import mock
 
-from django.test import TestCase
-
 from common.utils import TemporaryFile
+from organizations.tests import OrganizationTestCase
 
 from ..exceptions import (
     DecryptionError, KeyDoesNotExist, NeedPassphrase, PassphraseError,
@@ -44,7 +43,7 @@ def mock_recv_keys(self, keyserver, *keyids):
     return ImportResult()
 
 
-class KeyTestCase(TestCase):
+class KeyTestCase(OrganizationTestCase):
     def test_key_instance_creation(self):
         # Creating a Key instance is analogous to importing a key
         key = Key.objects.create(key_data=TEST_KEY_DATA)

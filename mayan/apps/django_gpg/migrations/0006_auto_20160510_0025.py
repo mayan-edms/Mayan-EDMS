@@ -14,6 +14,9 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='key',
             name='key_data',
-            field=models.TextField(help_text='ASCII armored version of the key.', verbose_name='Key data'),
+            field=models.TextField(
+                help_text='ASCII armored version of the key.',
+                verbose_name='Key data'
+            ),
         ),
     ]

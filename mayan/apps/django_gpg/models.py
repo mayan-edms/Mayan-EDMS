@@ -14,6 +14,8 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from common.utils import mkdtemp
+from organizations.models import Organization
+from organizations.shortcuts import get_current_organization
 
 from .exceptions import NeedPassphrase, PassphraseError
 from .literals import (
@@ -21,7 +23,7 @@ from .literals import (
     ERROR_MSG_GOOD_PASSPHRASE, KEY_TYPE_CHOICES, KEY_TYPE_SECRET,
     OUTPUT_MESSAGE_CONTAINS_PRIVATE_KEY
 )
-from .managers import KeyManager
+from .managers import KeyManager, OrganizationKeyManager
 from .settings import setting_gpg_path
 
 logger = logging.getLogger(__name__)
@@ -44,6 +46,9 @@ def gpg_command(function):
 
 @python_2_unicode_compatible
 class Key(models.Model):
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
+    )
     key_data = models.TextField(
         help_text=_('ASCII armored version of the key.'),
         verbose_name=_('Key data')
@@ -72,10 +77,14 @@ class Key(models.Model):
     )
 
     objects = KeyManager()
+    on_organization = OrganizationKeyManager()
 
     class Meta:
         verbose_name = _('Key')
         verbose_name_plural = _('Keys')
+
+    def __str__(self):
+        return '{} - {}'.format(self.key_id, self.user_id)
 
     def clean(self):
         def import_key(gpg):
@@ -86,7 +95,7 @@ class Key(models.Model):
         if not import_results.count:
             raise ValidationError(_('Invalid key data'))
 
-        if Key.objects.filter(fingerprint=import_results.fingerprints[0]).exists():
+        if Key.on_organization.filter(fingerprint=import_results.fingerprints[0]).exists():
             raise ValidationError(_('Key already exists.'))
 
     def get_absolute_url(self):
@@ -122,9 +131,6 @@ class Key(models.Model):
             self.key_type = key_info['type']
 
         super(Key, self).save(*args, **kwargs)
-
-    def __str__(self):
-        return '{} - {}'.format(self.key_id, self.user_id)
 
     def sign_file(self, file_object, passphrase=None, clearsign=False, detached=False, binary=False, output=None):
         # WARNING: using clearsign=True and subsequent decryption corrupts the

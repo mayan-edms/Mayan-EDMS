@@ -10,6 +10,7 @@ import gnupg
 from django.db import models
 
 from common.utils import mkdtemp, mkstemp
+from organizations.managers import CurrentOrganizationManager
 
 from .classes import KeyStub, SignatureVerification
 from .exceptions import (
@@ -193,3 +194,7 @@ class KeyManager(models.Manager):
         else:
             logger.debug('file not signed')
             raise VerificationError('File not signed')
+
+
+class OrganizationKeyManager(KeyManager, CurrentOrganizationManager):
+    pass

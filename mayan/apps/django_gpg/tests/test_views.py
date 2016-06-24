@@ -3,9 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django_downloadview.test import assert_download_response
 
 from common.tests.test_views import GenericViewTestCase
-from user_management.tests import (
-    TEST_USER_USERNAME, TEST_USER_PASSWORD
-)
+from user_management.tests import TEST_USER_USERNAME, TEST_USER_PASSWORD
 
 from ..models import Key
 from ..permissions import permission_key_download, permission_key_upload
