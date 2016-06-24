@@ -10,7 +10,7 @@ from django.test import TestCase, override_settings
 
 from acls.models import AccessControlList
 from common.tests.test_views import GenericViewTestCase
-from common.utils import mkdtemp
+from common.utils import fs_cleanup, mkdtemp
 from documents.models import Document, DocumentType, NewVersionBlock
 from documents.permissions import permission_document_create
 from documents.tests import (
@@ -226,14 +226,13 @@ class StagingFolderTestCase(GenericViewTestCase):
     def setUp(self):
         super(StagingFolderTestCase, self).setUp()
         self.temporary_directory = mkdtemp()
-        # TODO: remove temp directory after test
         shutil.copy(TEST_SMALL_DOCUMENT_PATH, self.temporary_directory)
 
         self.filename = os.path.basename(TEST_SMALL_DOCUMENT_PATH)
 
     def tearDown(self):
+        fs_cleanup(self.temporary_directory)
         super(StagingFolderTestCase, self).tearDown()
-        shutil.rmtree(self.temporary_directory)
 
     def test_staging_folder_delete_no_permission(self):
         self.login(

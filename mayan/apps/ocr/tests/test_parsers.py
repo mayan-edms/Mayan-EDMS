@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-import os
-
 from django.core.files.base import File
 from django.test import TestCase, override_settings
 
@@ -46,17 +44,6 @@ class ParserTestCase(TestCase):
 
         self.assertTrue(
             'Mayan EDMS Documentation' in self.document.pages.first().ocr_content.content
-        )
-
-    def test_poppler_parser_cleanup(self):
-        temp_items = len(os.listdir(setting_temporary_directory.value))
-
-        parser = PopplerParser()
-
-        parser.process_document_version(self.document.latest_version)
-
-        self.assertEqual(
-            temp_items, len(os.listdir(setting_temporary_directory.value))
         )
 
 

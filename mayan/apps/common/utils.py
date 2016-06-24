@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import logging
 import os
+import shutil
 import tempfile
 import types
 
@@ -51,10 +52,13 @@ def fs_cleanup(filename, suppress_exceptions=True):
     try:
         os.remove(filename)
     except OSError:
-        if suppress_exceptions:
-            pass
-        else:
-            raise
+        try:
+            shutil.rmtree(filename)
+        except OSError:
+            if suppress_exceptions:
+                pass
+            else:
+                raise
 
 
 def get_descriptor(file_input, read=True):
