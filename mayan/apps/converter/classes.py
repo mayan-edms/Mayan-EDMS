@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import base64
 import logging
 import os
-import tempfile
 
 try:
     from cStringIO import StringIO
@@ -16,7 +15,7 @@ import sh
 from django.utils.translation import string_concat, ugettext_lazy as _
 
 from common.settings import setting_temporary_directory
-from common.utils import fs_cleanup
+from common.utils import fs_cleanup, mkstemp
 from mimetype.api import get_mimetype
 
 from .exceptions import InvalidOfficeFormat, OfficeConversionError
@@ -122,7 +121,7 @@ class ConverterBase(object):
                 ) % setting_libreoffice_path.value
             )
 
-        new_file_object, input_filepath = tempfile.mkstemp()
+        new_file_object, input_filepath = mkstemp()
         self.file_object.seek(0)
         os.write(new_file_object, self.file_object.read())
         self.file_object.seek(0)

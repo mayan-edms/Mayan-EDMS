@@ -10,6 +10,8 @@ from django.utils.datastructures import MultiValueDict
 from django.utils.http import urlquote as django_urlquote
 from django.utils.http import urlencode as django_urlencode
 
+from .settings import setting_temporary_directory
+
 logger = logging.getLogger(__name__)
 
 
@@ -67,6 +69,21 @@ def get_descriptor(file_input, read=True):
             return open(file_input, 'wb')
     else:
         return file_input
+
+
+def TemporaryFile(*args, **kwargs):
+    kwargs.update({'dir': setting_temporary_directory.value})
+    return tempfile.TemporaryFile(*args, **kwargs)
+
+
+def mkdtemp(*args, **kwargs):
+    kwargs.update({'dir': setting_temporary_directory.value})
+    return tempfile.mkdtemp(*args, **kwargs)
+
+
+def mkstemp(*args, **kwargs):
+    kwargs.update({'dir': setting_temporary_directory.value})
+    return tempfile.mkstemp(*args, **kwargs)
 
 
 def return_attrib(obj, attrib, arguments=None):

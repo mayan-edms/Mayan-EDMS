@@ -4,11 +4,12 @@ import io
 import logging
 import os
 import shutil
-import tempfile
 
 import gnupg
 
 from django.db import models
+
+from common.utils import mkdtemp, mkstemp
 
 from .classes import KeyStub, SignatureVerification
 from .exceptions import (
@@ -22,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 class KeyManager(models.Manager):
     def decrypt_file(self, file_object, all_keys=False, key_fingerprint=None, key_id=None):
-        temporary_directory = tempfile.mkdtemp()
+        temporary_directory = mkdtemp()
 
         os.chmod(temporary_directory, 0x1C0)
 
@@ -71,7 +72,7 @@ class KeyManager(models.Manager):
         return io.BytesIO(decrypt_result.data)
 
     def receive_key(self, key_id):
-        temporary_directory = tempfile.mkdtemp()
+        temporary_directory = mkdtemp()
 
         os.chmod(temporary_directory, 0x1C0)
 
@@ -92,7 +93,7 @@ class KeyManager(models.Manager):
             return self.create(key_data=key_data)
 
     def search(self, query):
-        temporary_directory = tempfile.mkdtemp()
+        temporary_directory = mkdtemp()
 
         os.chmod(temporary_directory, 0x1C0)
 
@@ -118,7 +119,7 @@ class KeyManager(models.Manager):
         return self.filter(key_type=KEY_TYPE_SECRET)
 
     def verify_file(self, file_object, signature_file=None, all_keys=False, key_fingerprint=None, key_id=None):
-        temporary_directory = tempfile.mkdtemp()
+        temporary_directory = mkdtemp()
 
         os.chmod(temporary_directory, 0x1C0)
 
@@ -156,7 +157,7 @@ class KeyManager(models.Manager):
         if signature_file:
             # Save the original data and invert the argument order
             # Signature first, file second
-            temporary_file_object, temporary_filename = tempfile.mkstemp()
+            temporary_file_object, temporary_filename = mkstemp()
             os.write(temporary_file_object, file_object.read())
             os.close(temporary_file_object)
 

@@ -8,12 +8,11 @@ from pdfminer.pdfpage import PDFPage
 from pdfminer.converter import TextConverter
 from pdfminer.layout import LAParams
 import subprocess
-import tempfile
 
 from django.utils.translation import ugettext_lazy as _
 
 from common.settings import setting_temporary_directory
-from common.utils import copyfile
+from common.utils import copyfile, mkstemp
 
 from .exceptions import ParserError, NoMIMETypeMatch
 from .models import DocumentPageContent
@@ -137,9 +136,7 @@ class PopplerParser(Parser):
     def execute(self, file_object, page_number):
         logger.debug('Parsing PDF page: %d', page_number)
 
-        destination_descriptor, temp_filepath = tempfile.mkstemp(
-            dir=setting_temporary_directory.value
-        )
+        destination_descriptor, temp_filepath = mkstemp()
         copyfile(file_object, temp_filepath)
 
         command = []
@@ -158,6 +155,7 @@ class PopplerParser(Parser):
         return_code = proc.wait()
         if return_code != 0:
             logger.error(proc.stderr.readline())
+
             raise ParserError
 
         output = proc.stdout.read()

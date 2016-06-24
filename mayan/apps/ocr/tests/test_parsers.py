@@ -1,8 +1,11 @@
 from __future__ import unicode_literals
 
+import os
+
 from django.core.files.base import File
 from django.test import TestCase, override_settings
 
+from common.settings import setting_temporary_directory
 from documents.models import DocumentType
 from documents.tests import (
     TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE, TEST_HYBRID_DOCUMENT_PATH
@@ -15,7 +18,6 @@ from ..parsers import PDFMinerParser, PopplerParser
 @override_settings(OCR_AUTO_OCR=False)
 class ParserTestCase(TestCase):
     def setUp(self):
-
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -44,6 +46,17 @@ class ParserTestCase(TestCase):
 
         self.assertTrue(
             'Mayan EDMS Documentation' in self.document.pages.first().ocr_content.content
+        )
+
+    def test_poppler_parser_cleanup(self):
+        temp_items = len(os.listdir(setting_temporary_directory.value))
+
+        parser = PopplerParser()
+
+        parser.process_document_version(self.document.latest_version)
+
+        self.assertEqual(
+            temp_items, len(os.listdir(setting_temporary_directory.value))
         )
 
 

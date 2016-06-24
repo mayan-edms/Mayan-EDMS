@@ -4,7 +4,6 @@ from datetime import date
 import logging
 import os
 import shutil
-import tempfile
 
 import gnupg
 
@@ -13,6 +12,8 @@ from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
+
+from common.utils import mkdtemp
 
 from .exceptions import NeedPassphrase, PassphraseError
 from .literals import (
@@ -27,7 +28,7 @@ logger = logging.getLogger(__name__)
 
 
 def gpg_command(function):
-    temporary_directory = tempfile.mkdtemp()
+    temporary_directory = mkdtemp()
     os.chmod(temporary_directory, 0x1C0)
 
     gpg = gnupg.GPG(
@@ -92,7 +93,7 @@ class Key(models.Model):
         return reverse('django_gpg:key_detail', args=(self.pk,))
 
     def save(self, *args, **kwargs):
-        temporary_directory = tempfile.mkdtemp()
+        temporary_directory = mkdtemp()
 
         os.chmod(temporary_directory, 0x1C0)
 
@@ -133,7 +134,7 @@ class Key(models.Model):
         # file, and appear to be due to random data being inserted in the
         # output data stream."
 
-        temporary_directory = tempfile.mkdtemp()
+        temporary_directory = mkdtemp()
 
         os.chmod(temporary_directory, 0x1C0)
 

@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import os
 import shutil
-import tempfile
 
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
@@ -11,6 +10,7 @@ from django.test import TestCase, override_settings
 
 from acls.models import AccessControlList
 from common.tests.test_views import GenericViewTestCase
+from common.utils import mkdtemp
 from documents.models import Document, DocumentType, NewVersionBlock
 from documents.permissions import permission_document_create
 from documents.tests import (
@@ -225,7 +225,7 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
 class StagingFolderTestCase(GenericViewTestCase):
     def setUp(self):
         super(StagingFolderTestCase, self).setUp()
-        self.temporary_directory = tempfile.mkdtemp()
+        self.temporary_directory = mkdtemp()
         # TODO: remove temp directory after test
         shutil.copy(TEST_SMALL_DOCUMENT_PATH, self.temporary_directory)
 
