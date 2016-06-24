@@ -15,6 +15,12 @@ class UsernameModelBackend(ModelBackend):
             if user.check_password(password):
                 return user
         except UserModel.DoesNotExist:
-            # Run the default password hasher once to reduce the timing
-            # difference between an existing and a non-existing user (#20760).
-            UserModel().set_password(password)
+            # Check for superadmins, they can login from any organization.
+            try:
+                user = UserModel.objects.filter(is_superuser=True).get(username=username)
+                if user.check_password(password):
+                    return user
+            except UserModel.DoesNotExist:
+                # Run the default password hasher once to reduce the timing
+                # difference between an existing and a non-existing user (#20760).
+                UserModel().set_password(password)
