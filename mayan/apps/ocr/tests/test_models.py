@@ -3,8 +3,8 @@
 from __future__ import unicode_literals
 
 from django.core.files.base import File
-from django.test import TestCase
 
+from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.settings import setting_language_choices
 from documents.tests import (
@@ -12,8 +12,10 @@ from documents.tests import (
 )
 
 
-class DocumentOCRTestCase(TestCase):
+class DocumentOCRTestCase(BaseTestCase):
     def setUp(self):
+        super(DocumentOCRTestCase, self).setUp()
+
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -26,6 +28,7 @@ class DocumentOCRTestCase(TestCase):
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
+        super(DocumentOCRTestCase, self).tearDown()
 
     def test_ocr_language_backends_end(self):
         content = self.document.pages.first().ocr_content.content
@@ -33,8 +36,10 @@ class DocumentOCRTestCase(TestCase):
         self.assertTrue('Mayan EDMS Documentation' in content)
 
 
-class GermanOCRSupportTestCase(TestCase):
+class GermanOCRSupportTestCase(BaseTestCase):
     def setUp(self):
+        super(GermanOCRSupportTestCase, self).setUp()
+
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -54,6 +59,7 @@ class GermanOCRSupportTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(GermanOCRSupportTestCase, self).tearDown()
 
     def test_ocr_language_backends_end(self):
         content = self.document.pages.first().ocr_content.content

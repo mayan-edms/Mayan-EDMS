@@ -1,7 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-import os
-
 from django.conf.urls import url
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
@@ -18,15 +16,13 @@ from user_management.tests import (
     TEST_USER_EMAIL, TEST_USER_USERNAME, TEST_USER_PASSWORD
 )
 
-from ..settings import setting_temporary_directory
-
+from .base import BaseTestCase
 from .literals import TEST_VIEW_NAME, TEST_VIEW_URL
 
 
-class GenericViewTestCase(TestCase):
+class GenericViewTestCase(BaseTestCase):
     def setUp(self):
-        self.temp_items = len(os.listdir(setting_temporary_directory.value))
-
+        super(GenericViewTestCase, self).setUp()
         self.has_test_view = False
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
@@ -50,10 +46,7 @@ class GenericViewTestCase(TestCase):
         self.client.logout()
         if self.has_test_view:
             urlpatterns.pop(0)
-
-        self.assertEqual(
-            self.temp_items, len(os.listdir(setting_temporary_directory.value))
-        )
+        super(GenericViewTestCase, self).tearDown()
 
     def add_test_view(self, test_object):
         from mayan.urls import urlpatterns

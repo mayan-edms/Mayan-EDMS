@@ -1,9 +1,12 @@
 from __future__ import unicode_literals
 
+import psutil
+
 from django.core.files.base import File
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
 from common.settings import setting_temporary_directory
+from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.tests import (
     TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE, TEST_HYBRID_DOCUMENT_PATH
@@ -14,8 +17,9 @@ from ..parsers import PDFMinerParser, PopplerParser
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class ParserTestCase(TestCase):
+class ParserTestCase(BaseTestCase):
     def setUp(self):
+        super(ParserTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -27,6 +31,7 @@ class ParserTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(ParserTestCase, self).tearDown()
 
     def test_pdfminer_parser(self):
         parser = PDFMinerParser()
@@ -48,7 +53,7 @@ class ParserTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class TextExtractorTestCase(TestCase):
+class TextExtractorTestCase(BaseTestCase):
     def setUp(self):
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE

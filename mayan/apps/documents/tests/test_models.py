@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from datetime import timedelta
 import time
 
+from common.tests import BaseTestCase
 from django.test import TestCase, override_settings
 
 from ..exceptions import NewDocumentVersionNotAllowed
@@ -16,8 +17,10 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentTestCase(TestCase):
+class DocumentTestCase(BaseTestCase):
     def setUp(self):
+        super(DocumentTestCase, self).setUp()
+
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -29,6 +32,7 @@ class DocumentTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document_type.label, TEST_DOCUMENT_TYPE)
@@ -135,8 +139,10 @@ class DocumentTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class OfficeDocumentTestCase(TestCase):
+class OfficeDocumentTestCase(BaseTestCase):
     def setUp(self):
+        super(OfficeDocumentTestCase, self).setUp()
+
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -148,6 +154,7 @@ class OfficeDocumentTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(OfficeDocumentTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document.file_mimetype, 'application/msword')
@@ -162,8 +169,9 @@ class OfficeDocumentTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class MultiPageTiffTestCase(TestCase):
+class MultiPageTiffTestCase(BaseTestCase):
     def setUp(self):
+        super(MultiPageTiffTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -175,6 +183,7 @@ class MultiPageTiffTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(MultiPageTiffTestCase, self).tearDown()
 
     def test_document_creation(self):
         self.assertEqual(self.document.file_mimetype, 'image/tiff')
@@ -187,8 +196,9 @@ class MultiPageTiffTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentVersionTestCase(TestCase):
+class DocumentVersionTestCase(BaseTestCase):
     def setUp(self):
+        super(DocumentVersionTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -200,6 +210,7 @@ class DocumentVersionTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentVersionTestCase, self).setUp()
 
     def test_add_new_version(self):
         self.assertEqual(self.document.versions.count(), 1)
@@ -236,14 +247,16 @@ class DocumentVersionTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentManagerTestCase(TestCase):
+class DocumentManagerTestCase(BaseTestCase):
     def setUp(self):
+        super(DocumentManagerTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentManagerTestCase, self).tearDown()
 
     def test_document_stubs_deletion(self):
         document_stub = Document.objects.create(
@@ -265,8 +278,10 @@ class DocumentManagerTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class NewVersionBlockTestCase(TestCase):
+class NewVersionBlockTestCase(BaseTestCase):
     def setUp(self):
+        super(NewVersionBlockTestCase, self).setUp()
+
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -279,6 +294,7 @@ class NewVersionBlockTestCase(TestCase):
     def tearDown(self):
         self.document.delete()
         self.document_type.delete()
+        super(NewVersionBlockTestCase, self).tearDown()
 
     def test_blocking(self):
         NewVersionBlock.objects.block(document=self.document)
