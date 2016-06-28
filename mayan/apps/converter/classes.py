@@ -167,6 +167,7 @@ class ConverterBase(object):
                 yield data
 
         fs_cleanup(input_filepath)
+        fs_cleanup(converted_output)
 
     def get_page(self, output_format=DEFAULT_FILE_FORMAT, as_base64=False):
         if not self.image:
