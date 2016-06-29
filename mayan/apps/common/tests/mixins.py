@@ -25,20 +25,27 @@ class TempfileCheckMixin(object):
         super(TempfileCheckMixin, self).tearDown()
 
 
-class FileDescriptorCheckMixin(object):
+class OpenFileCheckMixin(object):
     def _get_descriptor_count(self):
         process = psutil.Process()
         return process.num_fds()
 
+    def _get_open_files(self):
+        process = psutil.Process()
+        return process.open_files()
+
     def setUp(self):
-        super(FileDescriptorCheckMixin, self).setUp()
-        self._descriptor_count = self._get_descriptor_count()
+        super(OpenFileCheckMixin, self).setUp()
+        self._open_files = self._get_open_files()
 
     def tearDown(self):
-        self.assertEqual(
-            self._descriptor_count, self._get_descriptor_count(),
-            msg='File descriptor leak. The number of file descriptors at '
-            'the start and at the end of the test are not the same.'
-        )
-        super(FileDescriptorCheckMixin, self).tearDown()
+        if not getattr(self, '_skip_file_descriptor_test', False):
+            for new_open_file in self._get_open_files():
+                self.assertFalse(new_open_file not in self._open_files,
+                    msg='File descriptor leak. The number of file descriptors '
+                    'at the start and at the end of the test are not the same.'
+                )
 
+            self._skip_file_descriptor_test = False
+
+        super(OpenFileCheckMixin, self).tearDown()

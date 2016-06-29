@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 
 from actstream.models import Action
 
+from common.tests import skip_file_descriptor_check
 from user_management.tests.literals import (
     TEST_USER_PASSWORD, TEST_USER_USERNAME
 )
@@ -38,7 +39,10 @@ class DocumentEventsTestCase(GenericDocumentViewTestCase):
         self.assertEqual(response.status_code, 302)
         self.assertEqual(list(Action.objects.any(obj=self.document)), [])
 
+    @skip_file_descriptor_check
     def test_document_download_event_with_permissions(self):
+        # TODO: Skip this test's file descriptor check until it gets migrate
+        # SingleObjectDownloadView CBV
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
