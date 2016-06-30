@@ -1,12 +1,12 @@
 from __future__ import unicode_literals
 
-from django.test import TestCase
+from common.tests import BaseTestCase
 
 from ..models import Organization
 from ..utils import create_default_organization
 
 
-class OrganizationTestCase(TestCase):
+class OrganizationTestCase(BaseTestCase):
     def setUp(self):
         create_default_organization()
 

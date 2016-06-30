@@ -45,10 +45,13 @@ def encapsulate(function):
     return lambda: function
 
 
-def fs_cleanup(filename, suppress_exceptions=True):
+def fs_cleanup(filename, file_descriptor=None, suppress_exceptions=True):
     """
     Tries to remove the given filename. Ignores non-existent files
     """
+    if file_descriptor:
+        os.close(file_descriptor)
+
     try:
         os.remove(filename)
     except OSError:

@@ -2,6 +2,8 @@
 
 from __future__ import unicode_literals
 
+from django.core.files.base import File
+
 from documents.models import DocumentType
 from documents.settings import setting_language_choices
 from documents.tests import (

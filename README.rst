@@ -1,4 +1,4 @@
-|PyPI badge| |Build Status| |Coverage badge| |Installs badge| |License badge|
+|PyPI badge| |Build Status| |Coverage badge| |License badge|
 
 |Logo|
 
@@ -63,8 +63,6 @@ Contribute
    :target: https://gitlab.com/mayan-edms/mayan-edms/commits/master
 .. |Logo| image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/mayan_logo.png
 .. |Animation| image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif
-.. |Installs badge| image:: http://img.shields.io/pypi/dm/mayan-edms.svg?style=flat
-   :target: https://crate.io/packages/mayan-edms/
 .. |PyPI badge| image:: http://img.shields.io/pypi/v/mayan-edms.svg?style=flat
    :target: http://badge.fury.io/py/mayan-edms
 .. |License badge| image:: http://img.shields.io/badge/license-Apache%202.0-green.svg?style=flat

@@ -3,6 +3,7 @@ from __future__ import unicode_literals
 from datetime import timedelta
 import time
 
+from common.tests import BaseTestCase
 from django.test import TestCase, override_settings
 
 from organizations.tests.base import OrganizationTestCase

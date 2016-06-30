@@ -218,9 +218,10 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             args=(signature.pk,),
         )
 
-        assert_download_response(
-            self, response=response, content=signature.signature_file.read(),
-        )
+        with signature.signature_file as file_object:
+            assert_download_response(
+                self, response=response, content=file_object.read(),
+            )
 
     def test_signature_delete_view_no_permission(self):
         with open(TEST_KEY_FILE) as file_object:

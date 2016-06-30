@@ -155,12 +155,12 @@ class PopplerParser(Parser):
         return_code = proc.wait()
         if return_code != 0:
             logger.error(proc.stderr.readline())
-            fs_cleanup(temp_filepath)
+            fs_cleanup(temp_filepath, file_descriptor=destination_descriptor)
 
             raise ParserError
 
         output = proc.stdout.read()
-        fs_cleanup(temp_filepath)
+        fs_cleanup(temp_filepath, file_descriptor=destination_descriptor)
 
         if output == b'\x0c':
             logger.debug('Parser didn\'t return any output')
