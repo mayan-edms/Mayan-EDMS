@@ -1,4 +1,10 @@
+2.1.4 (2016-XX-XX)
+==================
+- Add missing link to the 2.1.3 release notes in the index file.
+- Improve TempfileCheckMixin.
+
 2.1.3 (2016-06-29)
+==================
 - Add help message when initialsetup migration phase fails. Relates to GitLab issue #296.
 - Start using self.setdout instead of print as per documentation.
 - Fix GitLab issue #295, "When editing a user the top bar jumps to the name of the user".
