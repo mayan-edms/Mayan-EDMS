@@ -1,39 +1,26 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
-from django.test import TestCase
-from django.test.client import Client
 
+from common.tests.test_views import GenericViewTestCase
 from documents.models import DocumentType
 from documents.search import document_search
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
-from user_management.tests import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
-)
 
 
-class Issue46TestCase(TestCase):
+class Issue46TestCase(GenericViewTestCase):
     """
     Functional tests to make sure issue 46 is fixed
     """
 
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-        self.client = Client()
-        # Login the admin user
-        logged_in = self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
+        super(Issue46TestCase, self).setUp()
+
+        self.login_superuser()
 
         self.document_count = 4
 
-        self.document_type = DocumentType.objects.create(
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -46,8 +33,10 @@ class Issue46TestCase(TestCase):
                 )
 
     def tearDown(self):
-        for document_type in DocumentType.objects.all():
+        for document_type in DocumentType.on_organization.all():
             document_type.delete()
+
+        super(Issue46TestCase, self).tearDown()
 
     def test_advanced_search_past_first_page(self):
         # Make sure all documents are returned by the search

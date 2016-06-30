@@ -12,7 +12,6 @@ from django.utils.module_loading import import_string
 from acls.models import AccessControlList
 from permissions import Permission
 
-from .models import RecentSearch
 from .settings import setting_limit
 
 logger = logging.getLogger(__name__)
@@ -148,7 +147,7 @@ class SearchModel(object):
                 for query in field_query_list:
                     logger.debug('query: %s', query)
                     term_query_result_set = set(
-                        model.objects.filter(query).values_list(
+                        model.on_organization.filter(query).values_list(
                             data['return_value'], flat=True
                         )
                     )
@@ -183,7 +182,7 @@ class SearchModel(object):
             datetime.datetime.now() - start_time
         ).split(':')[2]
 
-        queryset = self.model.objects.filter(
+        queryset = self.model.on_organization.filter(
             pk__in=list(result_set)[:setting_limit.value]
         )
 
@@ -194,10 +193,6 @@ class SearchModel(object):
                 queryset = AccessControlList.objects.filter_by_access(
                     self.permission, user, queryset
                 )
-
-        RecentSearch.objects.add_query_for_user(
-            user, query_string, len(result_set)
-        )
 
         return queryset, result_set, elapsed_time
 

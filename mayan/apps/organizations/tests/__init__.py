@@ -1,1 +1,1 @@
-from .base import OrganizationTestCase  #NOQA
+from .base import OrganizationTestCase  # NOQA

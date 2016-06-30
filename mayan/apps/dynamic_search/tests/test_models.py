@@ -1,23 +1,25 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.test import TestCase
 
 from documents.models import DocumentType
 from documents.search import document_search
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
+from organizations.tests import OrganizationTestCase
 from user_management.tests import (
     TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
 )
 
 
-class DocumentSearchTestCase(TestCase):
+class DocumentSearchTestCase(OrganizationTestCase):
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
+        super(DocumentSearchTestCase, self).setUp()
+
+        self.admin_user = get_user_model().on_organization.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
-        self.document_type = DocumentType.objects.create(
+        self.document_type = DocumentType.on_organization.create(
             label=TEST_DOCUMENT_TYPE
         )
 
@@ -28,6 +30,7 @@ class DocumentSearchTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentSearchTestCase, self).tearDown()
 
     def test_simple_search_after_related_name_change(self):
         """

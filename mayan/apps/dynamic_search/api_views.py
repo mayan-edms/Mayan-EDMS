@@ -6,29 +6,6 @@ from rest_framework.exceptions import ParseError
 from rest_api.filters import MayanObjectPermissionsFilter
 
 from .classes import SearchModel
-from .filters import RecentSearchUserFilter
-from .models import RecentSearch
-from .serializers import RecentSearchSerializer
-
-
-class APIRecentSearchListView(generics.ListAPIView):
-    """
-    Returns a list of all the recent searches for the logged user.
-    """
-
-    filter_backends = (RecentSearchUserFilter,)
-    queryset = RecentSearch.objects.all()
-    serializer_class = RecentSearchSerializer
-
-
-class APIRecentSearchView(generics.RetrieveAPIView):
-    """
-    Returns the selected recent search details.
-    """
-
-    filter_backends = (RecentSearchUserFilter,)
-    queryset = RecentSearch.objects.all()
-    serializer_class = RecentSearchSerializer
 
 
 class APISearchView(generics.ListAPIView):

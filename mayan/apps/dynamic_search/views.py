@@ -1,11 +1,8 @@
 from __future__ import unicode_literals
 
 import logging
-import urlparse
 
-from django.conf import settings
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 
 from common.generics import SimpleView, SingleObjectListView
@@ -82,12 +79,3 @@ class AdvancedSearchView(SearchView):
         return AdvancedSearchForm(
             data=self.request.GET, search_model=document_search
         )
-
-
-def search_again(request):
-    query = urlparse.urlparse(
-        request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
-    ).query
-    return HttpResponseRedirect(
-        '{}?{}'.format(reverse('search:search_advanced'), query)
-    )

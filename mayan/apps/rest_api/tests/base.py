@@ -24,7 +24,6 @@ class GenericAPITestCase(APITestCase):
                 username=self.admin_user.username, password=password
             )
 
-
     def tearDown(self):
         super(GenericAPITestCase, self).tearDown()
         self.admin_user.delete()

@@ -95,6 +95,12 @@ class GenericViewTestCase(OrganizationTestCase):
             data=data, follow=follow
         )
 
+    def login_user(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+    def login_superuser(self):
+        self.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
+
 
 class CommonViewTestCase(GenericViewTestCase):
     def test_about_view(self):
