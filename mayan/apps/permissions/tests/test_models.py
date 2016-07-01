@@ -9,7 +9,7 @@ from user_management.models import MayanGroup
 from user_management.tests import TEST_GROUP, TEST_USER_USERNAME
 
 from ..classes import Permission
-from ..models import Role, StoredPermission
+from ..models import Role
 from ..permissions import permission_role_view
 
 from .literals import TEST_ROLE_LABEL

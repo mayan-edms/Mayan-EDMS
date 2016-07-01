@@ -3,7 +3,7 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
-from django.test import TestCase, override_settings
+from django.test import override_settings
 from django.test.client import Client
 
 from organizations.tests.base import OrganizationTestCase

@@ -4,7 +4,7 @@ from django.test import TestCase
 
 from ..models import Organization
 
-from .literals import TEST_ORGANIZATION_LABEL, TEST_ORGANIZATION_EDITED_LABEL
+from .literals import TEST_ORGANIZATION_LABEL
 
 
 class OrganizationModelTestCase(TestCase):

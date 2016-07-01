@@ -1,1 +1,1 @@
-from .base import GenericAPITestCase  #NOQA
+from .base import GenericAPITestCase  # NOQA

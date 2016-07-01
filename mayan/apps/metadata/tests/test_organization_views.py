@@ -5,9 +5,8 @@ from organizations.tests.test_organization_views import OrganizationViewTestCase
 from ..models import MetadataType
 
 from .literals import (
-    TEST_DOCUMENT_METADATA_VALUE_2, TEST_METADATA_TYPE_LABEL,
-    TEST_METADATA_TYPE_LABEL_2, TEST_METADATA_TYPE_NAME,
-    TEST_METADATA_TYPE_NAME_2
+    TEST_METADATA_TYPE_LABEL, TEST_METADATA_TYPE_LABEL_2,
+    TEST_METADATA_TYPE_NAME,
 )
 
 

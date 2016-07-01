@@ -2,12 +2,10 @@ from __future__ import unicode_literals
 
 from organizations.tests.test_organization_views import OrganizationViewTestCase
 
-from ..models import Document,DocumentType
+from ..models import DocumentType
 
 from .literals import (
-    TEST_DOCUMENT_TYPE, TEST_DOCUMENT_TYPE_2_LABEL,
-    TEST_DOCUMENT_TYPE_QUICK_LABEL, TEST_SMALL_DOCUMENT_CHECKSUM,
-    TEST_SMALL_DOCUMENT_PATH
+    TEST_DOCUMENT_TYPE, TEST_DOCUMENT_TYPE_2_LABEL, TEST_SMALL_DOCUMENT_PATH
 )
 
 

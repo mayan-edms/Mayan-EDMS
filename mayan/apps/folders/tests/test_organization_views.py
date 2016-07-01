@@ -11,7 +11,7 @@ class FolderOrganizationViewTestCase(OrganizationViewTestCase):
     def test_folder_create_view(self):
         # Create a folder for organization A
         with self.settings(ORGANIZATION_ID=self.organization_a.pk):
-            response = self.post(
+            self.post(
                 'folders:folder_create', data={
                     'label': TEST_FOLDER_LABEL
                 }

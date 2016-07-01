@@ -12,9 +12,15 @@ class Command(management.BaseCommand):
     def handle(self, *args, **options):
         management.call_command('createsettings', interactive=False)
         try:
-            result = management.call_command('migrate', interactive=False)
-        except OperationalError as exception:
-            self.stderr.write(self.style.NOTICE('Unable to migrate the database. The initialsetup command is to be used only on new installations. To upgrade existing installations use the performupgrade command.'))
+            management.call_command('migrate', interactive=False)
+        except OperationalError:
+            self.stderr.write(
+                self.style.NOTICE(
+                    'Unable to migrate the database. The initialsetup command '
+                    'is to be used only on new installations. To upgrade '
+                    'existing installations use the performupgrade command.'
+                )
+            )
             raise
         management.call_command('createautoadmin', interactive=False)
         management.call_command('createorganizationadmin', interactive=False)

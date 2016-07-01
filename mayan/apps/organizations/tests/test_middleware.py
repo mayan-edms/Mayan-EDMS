@@ -4,7 +4,7 @@ import unittest
 
 from django.apps import apps
 from django.conf import settings
-from django.core.exceptions import ObjectDoesNotExist, ValidationError
+from django.core.exceptions import ObjectDoesNotExist
 from django.db import connections, router
 from django.http import HttpRequest
 from django.test import TestCase, modify_settings, override_settings

@@ -2,7 +2,7 @@ from __future__ import absolute_import, unicode_literals
 
 from django.contrib.auth import get_user_model
 from django.core.exceptions import PermissionDenied
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view

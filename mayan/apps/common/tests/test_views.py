@@ -5,7 +5,6 @@ from django.contrib.auth import get_user_model
 from django.core.urlresolvers import clear_url_caches, reverse
 from django.http import HttpResponse
 from django.template import Context, Template
-from django.test import TestCase
 
 from organizations.tests.base import OrganizationTestCase
 from permissions import Permission

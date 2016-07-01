@@ -1,13 +1,8 @@
 from __future__ import unicode_literals
 
-import os
-
-from django.conf import settings
 from django.core import management
-from django.utils.crypto import get_random_string
 
 from ...models import Organization
-
 
 
 class Command(management.BaseCommand):

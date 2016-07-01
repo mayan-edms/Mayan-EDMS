@@ -11,9 +11,6 @@ from django.utils.six import BytesIO
 from rest_framework import status
 
 from rest_api.tests import GenericAPITestCase
-from user_management.tests.literals import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
-)
 
 from .literals import (
     TEST_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,

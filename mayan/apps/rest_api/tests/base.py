@@ -1,8 +1,5 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth import get_user_model
-from django.test import override_settings
-
 from rest_framework.test import APITestCase
 
 from organizations.models import Organization

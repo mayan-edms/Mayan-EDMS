@@ -367,7 +367,6 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertContains(response, text='queued', status_code=200)
         self.assertEqual(self.document.pages.count(), page_count)
 
-
     def test_document_multiple_update_page_count_view_no_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 

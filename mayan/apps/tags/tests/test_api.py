@@ -1,15 +1,11 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
 from rest_api.tests.base import GenericAPITestCase
-from user_management.tests.literals import (
-    TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME
-)
 
 from ..models import Tag
 

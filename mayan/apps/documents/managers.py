@@ -4,7 +4,6 @@ from datetime import timedelta
 import logging
 
 from django.apps import apps
-from django.conf import settings
 from django.db import models
 from django.utils.timezone import now
 
@@ -182,8 +181,6 @@ class RecentDocumentManager(models.Manager):
 
 class TrashedDocumentManager(models.Manager):
     def get_queryset(self):
-        DocumentType = apps.get_model('documents', 'DocumentType')
-
         return super(
             TrashedDocumentManager, self
         ).get_queryset().filter(in_trash=True)

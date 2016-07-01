@@ -1,16 +1,13 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-import string
-import warnings
 
 from django.apps import apps
 from django.conf import settings
 from django.contrib.auth import get_user_model
-from django.core.exceptions import ImproperlyConfigured, ValidationError
+from django.core.exceptions import ImproperlyConfigured
 from django.db import models
 from django.db.models.signals import pre_save, pre_delete
-from django.utils.deprecation import RemovedInDjango19Warning
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
@@ -110,7 +107,7 @@ class Organization(models.Model):
             )
 
             account = UserModel.objects.get(
-                **{UserModel.USERNAME_FIELD: username, 'organization': self,}
+                **{UserModel.USERNAME_FIELD: username, 'organization': self}
             )
             account.set_password(raw_password=password_value)
             account.save()

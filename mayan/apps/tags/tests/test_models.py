@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.core.files.base import File
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH

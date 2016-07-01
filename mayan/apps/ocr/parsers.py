@@ -11,7 +11,6 @@ import subprocess
 
 from django.utils.translation import ugettext_lazy as _
 
-from common.settings import setting_temporary_directory
 from common.utils import copyfile, fs_cleanup, mkstemp
 
 from .exceptions import ParserError, NoMIMETypeMatch

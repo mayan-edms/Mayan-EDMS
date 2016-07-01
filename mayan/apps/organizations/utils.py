@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.apps import apps
 from django.core.management.color import no_style
 from django.db import DEFAULT_DB_ALIAS, connections, router
-from django.db.models import signals
 
 from .literals import DEFAULT_ORGANIZATION_LABEL
 
@@ -28,12 +27,14 @@ def create_default_organization(verbosity=2, interactive=True, using=DEFAULT_DB_
         # the next id will be 1, so we coerce it. See #15573 and #16353. This
         # can also crop up outside of tests - see #15346.
         if verbosity >= 2:
-            print("Creating default Organization object")
+            print('Creating default Organization object')
         Organization(pk=1, label=DEFAULT_ORGANIZATION_LABEL).save(using=using)
 
         # We set an explicit pk instead of relying on auto-incrementation,
         # so we need to reset the database sequence. See #17415.
-        sequence_sql = connections[using].ops.sequence_reset_sql(no_style(), [Organization])
+        sequence_sql = connections[using].ops.sequence_reset_sql(
+            no_style(), [Organization]
+        )
         if sequence_sql:
             if verbosity >= 2:
                 print('Resetting sequence')

@@ -4,5 +4,5 @@ from django.apps import apps
 
 
 def get_current_organization():
-    from .models import Organization
+    Organization = apps.get_model('organizations', 'Organizations')
     return Organization.objects.get_current().pk

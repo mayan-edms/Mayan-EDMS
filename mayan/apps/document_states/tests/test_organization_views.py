@@ -6,12 +6,7 @@ from organizations.tests.test_organization_views import OrganizationViewTestCase
 
 from ..models import Workflow
 
-from .literals import (
-    TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED,
-    TEST_WORKFLOW_INITIAL_STATE_LABEL, TEST_WORKFLOW_INITIAL_STATE_COMPLETION,
-    TEST_WORKFLOW_STATE_LABEL, TEST_WORKFLOW_STATE_COMPLETION,
-    TEST_WORKFLOW_TRANSITION_LABEL
-)
+from .literals import TEST_WORKFLOW_LABEL, TEST_WORKFLOW_LABEL_EDITED
 
 
 @override_settings(OCR_AUTO_OCR=False)
