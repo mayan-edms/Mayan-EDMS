@@ -31,10 +31,10 @@ logger = logging.getLogger(__name__)
 class ResolvedSmartLinkView(DocumentListView):
     def dispatch(self, request, *args, **kwargs):
         self.document = get_object_or_404(
-            Document, pk=self.kwargs['document_pk']
+            Document.on_organization, pk=self.kwargs['document_pk']
         )
         self.smart_link = get_object_or_404(
-            SmartLink, pk=self.kwargs['smart_link_pk']
+            SmartLink.on_organization, pk=self.kwargs['smart_link_pk']
         )
 
         try:
@@ -63,7 +63,7 @@ class ResolvedSmartLinkView(DocumentListView):
         try:
             queryset = self.smart_link.get_linked_document_for(self.document)
         except Exception as exception:
-            queryset = Document.objects.none()
+            queryset = Document.on_organization.none()
 
             if self.request.user.is_staff or self.request.user.is_superuser:
                 messages.error(
@@ -110,12 +110,14 @@ class SetupSmartLinkDocumentTypesView(AssignRemoveView):
         }
 
     def get_object(self):
-        return get_object_or_404(SmartLink, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            SmartLink.on_organization, pk=self.kwargs['pk']
+        )
 
     def left_list(self):
         # TODO: filter document type list by user ACL
         return AssignRemoveView.generate_choices(
-            DocumentType.objects.exclude(
+            DocumentType.on_organization.exclude(
                 pk__in=self.get_object().document_types.all()
             )
         )
@@ -144,12 +146,14 @@ class SmartLinkListView(SingleObjectListView):
         return super(SmartLinkListView, self).get_queryset()
 
     def get_smart_link_queryset(self):
-        return SmartLink.objects.all()
+        return SmartLink.on_organization.all()
 
 
 class DocumentSmartLinkListView(SmartLinkListView):
     def dispatch(self, request, *args, **kwargs):
-        self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
+        self.document = get_object_or_404(
+            Document.on_organization, pk=self.kwargs['pk']
+        )
 
         try:
             Permission.check_permissions(
@@ -174,7 +178,7 @@ class DocumentSmartLinkListView(SmartLinkListView):
         }
 
     def get_smart_link_queryset(self):
-        return ResolvedSmartLink.objects.filter(
+        return ResolvedSmartLink.on_organization.filter(
             document_types=self.document.document_type, enabled=True
         )
 
@@ -188,7 +192,6 @@ class SmartLinkCreateView(SingleObjectCreateView):
 
 class SmartLinkEditView(SingleObjectEditView):
     form_class = SmartLinkForm
-    model = SmartLink
     post_action_redirect = reverse_lazy('linking:smart_link_list')
     view_permission = permission_smart_link_edit
 
@@ -198,9 +201,11 @@ class SmartLinkEditView(SingleObjectEditView):
             'title': _('Edit smart link: %s') % self.get_object()
         }
 
+    def get_queryset(self):
+        return SmartLink.on_organization.all()
+
 
 class SmartLinkDeleteView(SingleObjectDeleteView):
-    model = SmartLink
     post_action_redirect = reverse_lazy('linking:smart_link_list')
     view_permission = permission_smart_link_delete
 
@@ -209,6 +214,9 @@ class SmartLinkDeleteView(SingleObjectDeleteView):
             'object': self.get_object(),
             'title': _('Delete smart link: %s') % self.get_object()
         }
+
+    def get_queryset(self):
+        return SmartLink.on_organization.all()
 
 
 class SmartLinkConditionListView(SingleObjectListView):
@@ -227,7 +235,9 @@ class SmartLinkConditionListView(SingleObjectListView):
         return self.get_smart_link().conditions.all()
 
     def get_smart_link(self):
-        return get_object_or_404(SmartLink, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            SmartLink.on_organization, pk=self.kwargs['pk']
+        )
 
 
 class SmartLinkConditionCreateView(SingleObjectCreateView):
@@ -269,12 +279,13 @@ class SmartLinkConditionCreateView(SingleObjectCreateView):
         return self.get_smart_link().conditions.all()
 
     def get_smart_link(self):
-        return get_object_or_404(SmartLink, pk=self.kwargs['pk'])
+        return get_object_or_404(
+            SmartLink.on_organization, pk=self.kwargs['pk']
+        )
 
 
 class SmartLinkConditionEditView(SingleObjectEditView):
     form_class = SmartLinkConditionForm
-    model = SmartLinkCondition
 
     def dispatch(self, request, *args, **kwargs):
         try:
@@ -306,10 +317,11 @@ class SmartLinkConditionEditView(SingleObjectEditView):
             )
         )
 
+    def get_queryset(self):
+        return SmartLinkCondition.on_organization.all()
+
 
 class SmartLinkConditionDeleteView(SingleObjectDeleteView):
-    model = SmartLinkCondition
-
     def dispatch(self, request, *args, **kwargs):
         try:
             Permission.check_permissions(
@@ -341,3 +353,6 @@ class SmartLinkConditionDeleteView(SingleObjectDeleteView):
                 self.get_object().smart_link.pk,
             )
         )
+
+    def get_queryset(self):
+        return SmartLinkCondition.on_organization.all()

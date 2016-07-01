@@ -2,6 +2,8 @@ from __future__ import unicode_literals
 
 from django.contrib import admin
 
+from organizations.admin import OrganizationAdminMixin
+
 from .models import SmartLink, SmartLinkCondition
 
 
@@ -13,7 +15,7 @@ class SmartLinkConditionInline(admin.StackedInline):
 
 
 @admin.register(SmartLink)
-class SmartLinkAdmin(admin.ModelAdmin):
+class SmartLinkAdmin(OrganizationAdminMixin, admin.ModelAdmin):
     def document_type_list(self, instance):
         return ','.join(
             instance.document_types.values_list('label', flat=True)

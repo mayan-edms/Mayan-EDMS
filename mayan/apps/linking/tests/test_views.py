@@ -29,7 +29,7 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
         )
 
         self.assertEquals(response.status_code, 403)
-        self.assertEqual(SmartLink.objects.count(), 0)
+        self.assertEqual(SmartLink.on_organization.count(), 0)
 
     def test_smart_link_create_view_with_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
@@ -44,21 +44,23 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
             }, follow=True
         )
         self.assertContains(response, text='created', status_code=200)
-        self.assertEqual(SmartLink.objects.count(), 1)
+        self.assertEqual(SmartLink.on_organization.count(), 1)
         self.assertEqual(
-            SmartLink.objects.first().label, TEST_SMART_LINK_LABEL
+            SmartLink.on_organization.first().label, TEST_SMART_LINK_LABEL
         )
 
     def test_smart_link_delete_view_no_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        smart_link = SmartLink.objects.create(label=TEST_SMART_LINK_LABEL)
+        smart_link = SmartLink.on_organization.create(
+            label=TEST_SMART_LINK_LABEL
+        )
 
         response = self.post(
             'linking:smart_link_delete', args=(smart_link.pk,)
         )
         self.assertEqual(response.status_code, 403)
-        self.assertEqual(SmartLink.objects.count(), 1)
+        self.assertEqual(SmartLink.on_organization.count(), 1)
 
     def test_smart_link_delete_view_with_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
@@ -67,19 +69,23 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
             permission_smart_link_delete.stored_permission
         )
 
-        smart_link = SmartLink.objects.create(label=TEST_SMART_LINK_LABEL)
+        smart_link = SmartLink.on_organization.create(
+            label=TEST_SMART_LINK_LABEL
+        )
 
         response = self.post(
             'linking:smart_link_delete', args=(smart_link.pk,), follow=True
         )
 
         self.assertContains(response, text='deleted', status_code=200)
-        self.assertEqual(SmartLink.objects.count(), 0)
+        self.assertEqual(SmartLink.on_organization.count(), 0)
 
     def test_smart_link_edit_view_no_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        smart_link = SmartLink.objects.create(label=TEST_SMART_LINK_LABEL)
+        smart_link = SmartLink.on_organization.create(
+            label=TEST_SMART_LINK_LABEL
+        )
 
         response = self.post(
             'linking:smart_link_edit', args=(smart_link.pk,), data={
@@ -87,7 +93,7 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
             }
         )
         self.assertEqual(response.status_code, 403)
-        smart_link = SmartLink.objects.get(pk=smart_link.pk)
+        smart_link = SmartLink.on_organization.get(pk=smart_link.pk)
         self.assertEqual(smart_link.label, TEST_SMART_LINK_LABEL)
 
     def test_smart_link_edit_view_with_permission(self):
@@ -97,7 +103,9 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
             permission_smart_link_edit.stored_permission
         )
 
-        smart_link = SmartLink.objects.create(label=TEST_SMART_LINK_LABEL)
+        smart_link = SmartLink.on_organization.create(
+            label=TEST_SMART_LINK_LABEL
+        )
 
         response = self.post(
             'linking:smart_link_edit', args=(smart_link.pk,), data={
@@ -105,18 +113,18 @@ class SmartLinkViewTestCase(GenericDocumentViewTestCase):
             }, follow=True
         )
 
-        smart_link = SmartLink.objects.get(pk=smart_link.pk)
+        smart_link = SmartLink.on_organization.get(pk=smart_link.pk)
         self.assertContains(response, text='update', status_code=200)
         self.assertEqual(smart_link.label, TEST_SMART_LINK_EDITED_LABEL)
 
     def setup_smart_links(self):
-        smart_link = SmartLink.objects.create(
+        smart_link = SmartLink.on_organization.create(
             label=TEST_SMART_LINK_LABEL,
             dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
         )
         smart_link.document_types.add(self.document_type)
 
-        smart_link_2 = SmartLink.objects.create(
+        smart_link_2 = SmartLink.on_organization.create(
             label=TEST_SMART_LINK_LABEL,
             dynamic_label=TEST_SMART_LINK_DYNAMIC_LABEL
         )

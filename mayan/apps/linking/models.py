@@ -7,14 +7,21 @@ from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
 
 from documents.models import Document, DocumentType
+from organizations.models import Organization
+from organizations.managers import CurrentOrganizationManager
+from organizations.shortcuts import get_current_organization
 
 from .literals import (
     INCLUSION_AND, INCLUSION_CHOICES, INCLUSION_OR, OPERATOR_CHOICES
 )
+from .managers import OrganizationSmartLinkConditionManager
 
 
 @python_2_unicode_compatible
 class SmartLink(models.Model):
+    organization = models.ForeignKey(
+        Organization, default=get_current_organization
+    )
     label = models.CharField(max_length=96, verbose_name=_('Label'))
     dynamic_label = models.CharField(
         blank=True, max_length=96, help_text=_(
@@ -28,6 +35,9 @@ class SmartLink(models.Model):
     document_types = models.ManyToManyField(
         DocumentType, verbose_name=_('Document types')
     )
+
+    objects = models.Manager()
+    on_organization = CurrentOrganizationManager()
 
     def __str__(self):
         return self.label
@@ -75,9 +85,9 @@ class SmartLink(models.Model):
                 smart_link_query |= condition_query
 
         if smart_link_query:
-            return Document.objects.filter(smart_link_query)
+            return Document.on_organization.filter(smart_link_query)
         else:
-            return Document.objects.none()
+            return Document.on_organization.none()
 
     def resolve_for(self, document):
         return ResolvedSmartLink(
@@ -122,6 +132,9 @@ class SmartLinkCondition(models.Model):
         verbose_name=_('Negated')
     )
     enabled = models.BooleanField(default=True, verbose_name=_('Enabled'))
+
+    objects = models.Manager()
+    on_organization = OrganizationSmartLinkConditionManager()
 
     def __str__(self):
         return '%s foreign %s %s %s %s' % (
