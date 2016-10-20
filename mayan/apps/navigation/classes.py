@@ -367,7 +367,7 @@ class SourceColumn(object):
                         # Special case for queryset items produced from
                         # .defer() or .only() optimizations
                         return cls._registry[source._meta.parents.items()[0][0]]
-                    except (KeyError, IndexError):
+                    except (AttributeError, KeyError, IndexError):
                         return ()
         except TypeError:
             # unhashable type: list

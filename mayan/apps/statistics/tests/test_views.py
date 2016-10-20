@@ -34,3 +34,20 @@ class StatisticsViewTestCase(GenericViewTestCase):
         )
 
         self.assertEqual(response.status_code, 200)
+
+
+    def test_statistic_namespace_list_view_no_permissions(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        response = self.get('statistics:namespace_list')
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_statistic_namespace_list_view_with_permissions(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(permission_statistics_view.stored_permission)
+
+        response = self.get('statistics:namespace_list')
+
+        self.assertEqual(response.status_code, 200)
