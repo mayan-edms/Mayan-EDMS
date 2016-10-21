@@ -121,13 +121,13 @@ class ACLDeleteView(SingleObjectDeleteView):
 
 class ACLListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
-        self.content_type = get_object_or_404(
+        self.object_content_type = get_object_or_404(
             ContentType, app_label=self.kwargs['app_label'],
             model=self.kwargs['model']
         )
 
         try:
-            self.content_object = self.content_type.get_object_for_this_type(
+            self.content_object = self.object_content_type.get_object_for_this_type(
                 pk=self.kwargs['object_id']
             )
         except self.content_type.model_class().DoesNotExist:
@@ -153,7 +153,7 @@ class ACLListView(SingleObjectListView):
 
     def get_queryset(self):
         return AccessControlList.objects.filter(
-            content_type=self.content_type, object_id=self.content_object.pk
+            content_type=self.object_content_type, object_id=self.content_object.pk
         )
 
 
