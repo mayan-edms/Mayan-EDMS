@@ -8,7 +8,7 @@ from user_management.tests import (
 )
 
 from ..models import AccessControlList
-from ..permissions import permission_acl_edit
+from ..permissions import permission_acl_edit, permission_acl_view
 
 
 class AccessControlListViewTestCase(GenericDocumentViewTestCase):
@@ -109,3 +109,60 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
 
         self.assertNotContains(response, text='optgroup', status_code=200)
         self.assertEqual(AccessControlList.objects.count(), 1)
+
+    def test_acl_list_view_no_permission(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        document = self.document.add_as_recent_document_for_user(
+            self.user
+        ).document
+
+        acl = AccessControlList.objects.create(
+            content_object=document, role=self.role
+        )
+        acl.permissions.add(permission_acl_edit.stored_permission)
+
+        content_type = ContentType.objects.get_for_model(document)
+
+        view_arguments = {
+            'app_label': content_type.app_label,
+            'model': content_type.model,
+            'object_id': document.pk
+        }
+
+        response = self.get(
+            viewname='acls:acl_list', kwargs=view_arguments
+        )
+
+        self.assertNotContains(response, text=document.label, status_code=403)
+        self.assertNotContains(response, text='otal: 1', status_code=403)
+
+    def test_acl_list_view_with_permission(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(
+            permission_acl_view.stored_permission
+        )
+
+        document = self.document.add_as_recent_document_for_user(
+            self.user
+        ).document
+
+        acl = AccessControlList.objects.create(
+            content_object=document, role=self.role
+        )
+        acl.permissions.add(permission_acl_view.stored_permission)
+
+        content_type = ContentType.objects.get_for_model(document)
+
+        view_arguments = {
+            'app_label': content_type.app_label,
+            'model': content_type.model,
+            'object_id': document.pk
+        }
+
+        response = self.get(
+            viewname='acls:acl_list', kwargs=view_arguments
+        )
+        self.assertContains(response, text=document.label, status_code=200)
+        self.assertContains(response, text='otal: 1', status_code=200)
