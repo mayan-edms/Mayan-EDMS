@@ -43,16 +43,16 @@ class ObjectEventListView(EventListView):
     view_permissions = None
 
     def dispatch(self, request, *args, **kwargs):
-        self.content_type = get_object_or_404(
+        self.object_content_type = get_object_or_404(
             ContentType, app_label=self.kwargs['app_label'],
             model=self.kwargs['model']
         )
 
         try:
-            self.content_object = self.content_type.get_object_for_this_type(
+            self.content_object = self.object_content_type.get_object_for_this_type(
                 pk=self.kwargs['object_id']
             )
-        except self.content_type.model_class().DoesNotExist:
+        except self.object_content_type.model_class().DoesNotExist:
             raise Http404
 
         try:
