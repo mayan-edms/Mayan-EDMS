@@ -11,7 +11,8 @@ This is a bug-fix release and all users are encouraged to upgrade.
 
 Other changes
 -------------
-- Fix statistics namespace list display
+- Fix statistics namespace list display view
+- Fix events list display view
 - Update to Django 1.8.15
 
 Removals
@@ -67,6 +68,7 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
+* `GitLab issue #311 <https://gitlab.com/mayan-edms/mayan-edms/issues/311>` acl page return ContentType:Document
 * `GitLab issue #316 <https://gitlab.com/mayan-edms/mayan-edms/issues/316>` Error when trying to access the statistics
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
