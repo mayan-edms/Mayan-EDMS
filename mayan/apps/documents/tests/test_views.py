@@ -247,6 +247,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             permission_document_download.stored_permission
         )
 
+        # Set the expected_content_type for common.tests.mixins.ContentTypeCheckMixin
+        self.expected_content_type = self.document.file_mimetype
+
         response = self.post(
             'documents:document_download', args=(self.document.pk,)
         )
@@ -283,6 +286,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.role.permissions.add(
             permission_document_download.stored_permission
         )
+
+        # Set the expected_content_type for common.tests.mixins.ContentTypeCheckMixin
+        self.expected_content_type = self.document.file_mimetype
 
         response = self.post(
             'documents:document_multiple_download',
@@ -322,6 +328,9 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.role.permissions.add(
             permission_document_download.stored_permission
         )
+
+        # Set the expected_content_type for common.tests.mixins.ContentTypeCheckMixin
+        self.expected_content_type = self.document.file_mimetype
 
         response = self.post(
             'documents:document_version_download', args=(
