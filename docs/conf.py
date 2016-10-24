@@ -38,7 +38,6 @@ extensions = ['djangodocs', 'sphinxcontrib.blockdiag']
 blockdiag_antialias = True
 blockdiag_html_image_format = "SVG"
 blockdiag_latex_image_format = "PDF"
-blockdiag_tex_image_format = "PDF"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
