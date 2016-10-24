@@ -32,6 +32,8 @@ class KeyViewTestCase(GenericViewTestCase):
 
         self.role.permissions.add(permission_key_download.stored_permission)
 
+        self.expected_content_type = 'application/octet-stream; charset=utf-8'
+
         response = self.get(
             viewname='django_gpg:key_download', args=(key.pk,)
         )

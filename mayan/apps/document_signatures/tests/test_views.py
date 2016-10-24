@@ -213,6 +213,8 @@ class SignaturesViewTestCase(GenericDocumentViewTestCase):
             permission_document_version_signature_download.stored_permission
         )
 
+        self.expected_content_type = 'application/octet-stream; charset=utf-8'
+
         response = self.get(
             'signatures:document_version_signature_download',
             args=(signature.pk,),
