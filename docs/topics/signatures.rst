@@ -21,4 +21,6 @@ keys no longer needed can also be deleted from this menu.
 
 Only `GNU Privacy Guard`_ signatures are support at the moment.
 
+Only version 1 of `GNU Privacy Guard`_ is supported for now.
+
 .. _`GNU Privacy Guard`: www.gnupg.org/
