@@ -68,7 +68,8 @@ Backward incompatible changes
 Bugs fixed or issues closed
 ===========================
 
-* `GitLab issue #311 <https://gitlab.com/mayan-edms/mayan-edms/issues/311>` acl page return ContentType:Document
-* `GitLab issue #316 <https://gitlab.com/mayan-edms/mayan-edms/issues/316>` Error when trying to access the statistics
+* `GitLab issue #311 <https://gitlab.com/mayan-edms/mayan-edms/issues/311>`_ acl page return ContentType:Document
+* `GitLab issue #316 <https://gitlab.com/mayan-edms/mayan-edms/issues/316>`_ Error when trying to access the statistics
+* `GitLab issue #324 <https://gitlab.com/mayan-edms/mayan-edms/issues/324>`_ Document signature tests fail in Ubuntu 16.10
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
