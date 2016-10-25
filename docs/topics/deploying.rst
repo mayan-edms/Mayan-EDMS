@@ -2,15 +2,17 @@
 Deploying
 =========
 
-OS "bare metal"
-===============
+Below are some ways to deploye and use Mayan EDMS. Do use more than one method.
+
+OS "bare metal" method
+======================
 
 Like other Django based projects Mayan EDMS can be deployed in a wide variety
 of ways. The method provided below is only a bare minimum example.
 These instructions are independent of the instructions mentioned in the
 :doc:`installation` chapter but assume you have already made a test install to
 test the compatibility of your operating system. These instruction are for
-Ubuntu 15.04.
+Ubuntu 16.10.
 
 Switch to superuser::
 
@@ -20,8 +22,8 @@ Install all system dependencies::
 
     apt-get install nginx supervisor redis-server postgresql \
     libpq-dev libjpeg-dev libmagic1 libpng-dev libreoffice \
-    libtiff-dev gcc ghostscript gpgv python-dev python-virtualenv \
-    tesseract-ocr unpaper poppler-utils -y
+    libtiff-dev gcc ghostscript gnupg1 python-dev python-virtualenv \
+    tesseract-ocr poppler-utils -y
 
 Change to the directory where the project will be deployed::
 
@@ -79,6 +81,7 @@ Append the following to the ``mayan/settings/local.py`` file, paying attention t
 
     BROKER_URL = 'redis://127.0.0.1:6379/0'
     CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+    SIGNATURES_GPG_PATH = '/usr/bin/gpg1'
 
 Migrate the database or initialize the project::
 
@@ -189,8 +192,8 @@ Restart the services::
     /etc/init.d/nginx restart
     /etc/init.d/supervisor restart
 
-Docker
-======
+Docker method
+=============
 
 Deploy the Docker image stack::
 
@@ -205,8 +208,8 @@ with::
     docker logs mayan-edms
 
 
-Docker Compose
-==============
+Docker Compose method
+=====================
 
 Create a file named ``environment`` with the following content::
 
@@ -248,8 +251,8 @@ with::
 
     docker logs mayanedms_mayan-edms_1
 
-Vagrant
-=======
+Vagrant method
+==============
 Make sure you have Vagrant and a provider properly installed as per
 https://docs.vagrantup.com/v2/installation/index.html
 Clone the repository and execute::

@@ -7,6 +7,30 @@ import psutil
 from ..settings import setting_temporary_directory
 
 
+class ContentTypeCheckMixin(object):
+    expected_content_type = 'text/html; charset=utf-8'
+
+    def _pre_setup(self):
+        super(ContentTypeCheckMixin, self)._pre_setup()
+        test_instance = self
+
+        class CustomClient(self.client_class):
+            def request(self, *args, **kwargs):
+                response = super(CustomClient, self).request(*args, **kwargs)
+
+                content_type = response._headers['content-type'][1]
+                test_instance.assertEqual(
+                    content_type, test_instance.expected_content_type,
+                    msg='Unexpected response content type: {}, expected: {}.'.format(
+                        content_type, test_instance.expected_content_type
+                    )
+                )
+
+                return response
+
+        self.client = CustomClient()
+
+
 class TempfileCheckMixin(object):
     def _get_temporary_entries(self):
         return os.listdir(setting_temporary_directory.value)

@@ -52,6 +52,9 @@ class DocumentEventsTestCase(GenericDocumentViewTestCase):
         self.role.permissions.add(
             permission_document_download.stored_permission
         )
+
+        self.expected_content_type = 'image/png'
+
         self.post(
             'documents:document_download', args=(self.document.pk,),
         )

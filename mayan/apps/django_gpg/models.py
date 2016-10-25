@@ -2,18 +2,12 @@ from __future__ import absolute_import, unicode_literals
 
 from datetime import date
 import logging
-import os
-import shutil
-
-import gnupg
 
 from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
-
-from common.utils import mkdtemp
 
 from .exceptions import NeedPassphrase, PassphraseError
 from .literals import (
@@ -22,24 +16,9 @@ from .literals import (
     OUTPUT_MESSAGE_CONTAINS_PRIVATE_KEY
 )
 from .managers import KeyManager
-from .settings import setting_gpg_path
+from .runtime import gpg_backend
 
 logger = logging.getLogger(__name__)
-
-
-def gpg_command(function):
-    temporary_directory = mkdtemp()
-    os.chmod(temporary_directory, 0x1C0)
-
-    gpg = gnupg.GPG(
-        gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
-    )
-
-    result = function(gpg=gpg)
-
-    shutil.rmtree(temporary_directory)
-
-    return result
 
 
 @python_2_unicode_compatible
@@ -78,10 +57,7 @@ class Key(models.Model):
         verbose_name_plural = _('Keys')
 
     def clean(self):
-        def import_key(gpg):
-            return gpg.import_keys(key_data=self.key_data)
-
-        import_results = gpg_command(function=import_key)
+        import_results = gpg_backend.import_key(key_data=self.key_data)
 
         if not import_results.count:
             raise ValidationError(_('Invalid key data'))
@@ -93,21 +69,10 @@ class Key(models.Model):
         return reverse('django_gpg:key_detail', args=(self.pk,))
 
     def save(self, *args, **kwargs):
-        temporary_directory = mkdtemp()
-
-        os.chmod(temporary_directory, 0x1C0)
-
-        gpg = gnupg.GPG(
-            gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
+        import_results, key_info = gpg_backend.import_and_list_keys(
+            key_data=self.key_data
         )
-
-        import_results = gpg.import_keys(key_data=self.key_data)
-
-        key_info = gpg.list_keys(keys=import_results.fingerprints[0])[0]
-
         logger.debug('key_info: %s', key_info)
-
-        shutil.rmtree(temporary_directory)
 
         self.algorithm = key_info['algo']
         self.creation_date = date.fromtimestamp(int(key_info['date']))
@@ -134,23 +99,11 @@ class Key(models.Model):
         # file, and appear to be due to random data being inserted in the
         # output data stream."
 
-        temporary_directory = mkdtemp()
-
-        os.chmod(temporary_directory, 0x1C0)
-
-        gpg = gnupg.GPG(
-            gnupghome=temporary_directory, gpgbinary=setting_gpg_path.value
-        )
-
-        import_results = gpg.import_keys(key_data=self.key_data)
-
-        file_sign_results = gpg.sign_file(
-            file=file_object, keyid=import_results.fingerprints[0],
-            passphrase=passphrase, clearsign=clearsign, detach=detached,
+        file_sign_results = gpg_backend.sign_file(
+            file_object=file_object, key_data=self.key_data,
+            passphrase=passphrase, clearsign=clearsign, detached=detached,
             binary=binary, output=output
         )
-
-        shutil.rmtree(temporary_directory)
 
         logger.debug('file_sign_results.stderr: %s', file_sign_results.stderr)
 

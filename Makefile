@@ -32,6 +32,7 @@ help:
 	@echo "release - Package (sdist and wheel) and upload a release."
 
 	@echo "runserver - Run the development server."
+	@echo "shell_plus - Run the shell_plus command."
 
 
 # Cleaning
@@ -111,3 +112,8 @@ wheel: clean
 runserver:
 	$(BROWSER) http://127.0.0.1:8000
 	./manage.py runserver
+
+shell_plus:
+	./manage.py shell_plus --settings=mayan.settings.development
+
+
