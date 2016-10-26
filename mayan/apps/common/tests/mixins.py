@@ -36,7 +36,7 @@ class TempfileCheckMixin(object):
     # Ignore the jvmstat instrumentation file
     ignore_globs = ('hsperfdata_*',)
 
-    def _get_temporary_entries_count(self):
+    def _get_temporary_entries(self):
         ignored_result = []
 
         # Expand globs by joining the temporary directory and then flattening
@@ -51,22 +51,23 @@ class TempfileCheckMixin(object):
         # Remove the path and leave only the expanded filename
         ignored_result = map(lambda x: os.path.split(x)[-1], ignored_result)
 
-        return len(
-            set(
-                os.listdir(setting_temporary_directory.value)
-            ) - set(ignored_result)
-        )
+        return set(
+            os.listdir(setting_temporary_directory.value)
+        ) - set(ignored_result)
 
     def setUp(self):
         super(TempfileCheckMixin, self).setUp()
-        self._temporary_items = self._get_temporary_entries_count()
+        self._temporary_items = self._get_temporary_entries()
 
     def tearDown(self):
+        final_temporary_items = self._get_temporary_entries()
         self.assertEqual(
-            self._temporary_items, self._get_temporary_entries_count(),
-            msg='Orphan temporary file. The number of temporary file and '
+            self._temporary_items, final_temporary_items,
+            msg='Orphan temporary file. The number of temporary files and/or '
             'directories at the start and at the end of the test are not the '
-            'same.'
+            'same. Orphan entries: {}'.format(
+                ','.join(final_temporary_items-self._temporary_items)
+            )
         )
         super(TempfileCheckMixin, self).tearDown()
 
