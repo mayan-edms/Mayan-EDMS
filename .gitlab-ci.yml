@@ -8,7 +8,7 @@ before_script:
   - update-locale LANG=en_US.UTF-8
   - export LC_ALL=en_US.UTF-8
   - apt-get update -qq
-  - apt-get install -qq python-dev python-pip gcc gnupg1 tesseract-ocr tesseract-ocr-deu ghostscript libjpeg-dev libpng-dev libtiff-dev poppler-utils libreoffice
+  - apt-get install -qq curl python-dev python-pip gcc gnupg1 tesseract-ocr tesseract-ocr-deu ghostscript libjpeg-dev libpng-dev libtiff-dev poppler-utils libreoffice
 variables:
   POSTGRES_DB: "mayan_edms"
   POSTGRES_PASSWORD: "postgres"
