@@ -20,7 +20,7 @@ test:mysql:
   - pip install -r requirements/testing.txt
   - pip install mysql-python
   - apt-get install -qq mysql-client
-  - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "ALTER DATABASE $MYSQL_DATABASE CHARACTER SET utf8 COLLATE utf8_unicode_ci;"
+  - mysql -h"$MYSQL_PORT_3306_TCP_ADDR" -P"$MYSQL_PORT_3306_TCP_PORT" -uroot -p"$MYSQL_ENV_MYSQL_ROOT_PASSWORD" -e "set global character_set_server=utf8mb4;"
   - coverage run manage.py runtests --settings=mayan.settings.testing.gitlab-ci.db_mysql --nomigrations
   - bash <(curl https://raw.githubusercontent.com/codecov/codecov-bash/master/codecov) -t $CODECOV_TOKEN
   tags:
