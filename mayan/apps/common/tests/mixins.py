@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import glob
 import os
 
 import psutil
@@ -32,22 +33,42 @@ class ContentTypeCheckMixin(object):
 
 
 class TempfileCheckMixin(object):
+    # Ignore the jvmstat instrumentation and GitLab's CI .config files
+    ignore_globs = ('hsperfdata_*', '.config')
+
     def _get_temporary_entries(self):
-        return os.listdir(setting_temporary_directory.value)
+        ignored_result = []
+
+        # Expand globs by joining the temporary directory and then flattening
+        # the list of lists into a single list
+        for item in self.ignore_globs:
+            ignored_result.extend(
+                glob.glob(
+                    os.path.join(setting_temporary_directory.value, item)
+                )
+            )
+
+        # Remove the path and leave only the expanded filename
+        ignored_result = map(lambda x: os.path.split(x)[-1], ignored_result)
+
+        return set(
+            os.listdir(setting_temporary_directory.value)
+        ) - set(ignored_result)
 
     def setUp(self):
         super(TempfileCheckMixin, self).setUp()
-        self._temporary_entries = self._get_temporary_entries()
+        self._temporary_items = self._get_temporary_entries()
 
     def tearDown(self):
-        for temporary_entry in self._get_temporary_entries():
-            self.assertFalse(
-                temporary_entry not in self._temporary_entries,
-                msg='Orphan temporary file. The number of temporary file and '
-                'directories at the start and at the end of the test are not the '
-                'same.'
+        final_temporary_items = self._get_temporary_entries()
+        self.assertEqual(
+            self._temporary_items, final_temporary_items,
+            msg='Orphan temporary file. The number of temporary files and/or '
+            'directories at the start and at the end of the test are not the '
+            'same. Orphan entries: {}'.format(
+                ','.join(final_temporary_items-self._temporary_items)
             )
-
+        )
         super(TempfileCheckMixin, self).tearDown()
 
 
