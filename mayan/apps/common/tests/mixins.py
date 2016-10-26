@@ -1,5 +1,6 @@
 from __future__ import unicode_literals
 
+import glob
 import os
 
 import psutil
@@ -32,8 +33,29 @@ class ContentTypeCheckMixin(object):
 
 
 class TempfileCheckMixin(object):
+    # Ignore the jvmstat instrumentation file
+    ignore_globs = ('hsperfdata_*',)
+
     def _get_temporary_entries_count(self):
-        return len(os.listdir(setting_temporary_directory.value))
+        ignored_result = []
+
+        # Expand globs by joining the temporary directory and then flattening
+        # the list of lists into a single list
+        for item in self.ignore_globs:
+            ignored_result.extend(
+                glob.glob(
+                    os.path.join(setting_temporary_directory.value, item)
+                )
+            )
+
+        # Remove the path and leave only the expanded filename
+        ignored_result = map(lambda x: os.path.split(x)[-1], ignored_result)
+
+        return len(
+            set(
+                os.listdir(setting_temporary_directory.value)
+            ) - set(ignored_result)
+        )
 
     def setUp(self):
         super(TempfileCheckMixin, self).setUp()
