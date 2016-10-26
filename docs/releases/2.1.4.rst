@@ -13,7 +13,13 @@ Other changes
 -------------
 - Fix statistics namespace list display view
 - Fix events list display view
-- Update to Django 1.8.15
+- Update required Django version to 1.8.15
+- Update required python-gnupg version to 0.3.9
+- Improved orphaned temporary files test mixin
+- Re-enable and improve GitLab CI MySQL testing
+- Improved GPG handling
+- New GPG backend system
+- Minor documentation updates
 
 Removals
 --------
