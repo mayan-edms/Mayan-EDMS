@@ -11,6 +11,8 @@ What's new
 Other changes
 -------------
 - Remove the installation app
+- Add support for page search
+- Remove recent searches feature
 
 Removals
 --------
