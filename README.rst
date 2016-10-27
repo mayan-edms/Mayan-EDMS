@@ -34,8 +34,8 @@ To install Mayan EDMS, simply do:
     $ virtualenv venv
     $ source venv/bin/activate
     $ pip install mayan-edms
-    $ mayan-edms.py initialsetup
-    $ mayan-edms.py runserver
+    (venv) $ mayan-edms.py initialsetup
+    (venv) $ mayan-edms.py runserver
 
 Point your browser to 127.0.0.1:8000 and use the automatically created admin
 account.
