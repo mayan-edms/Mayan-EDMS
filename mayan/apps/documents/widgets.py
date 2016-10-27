@@ -83,7 +83,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
 
 def document_thumbnail(document, **kwargs):
     return document_html_widget(
-        document.latest_version.pages.first(),
+        document_page=document.latest_version.pages.first(),
         click_view='documents:document_display', **kwargs
     )
 
@@ -94,7 +94,7 @@ def document_link(document):
     )
 
 
-def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None, disable_title_link=False):
+def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None, disable_title_link=False, preview_click_view=None):
     result = []
 
     alt_text = _('Document page image')
@@ -110,6 +110,7 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
         'zoom': zoom,
         'rotation': rotation,
         'size': size,
+        'page': document_page.page_number
     }
 
     if gallery_name:
@@ -132,7 +133,13 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
 
     if title:
         if not disable_title_link:
-            preview_click_link = document.get_absolute_url()
+            if not preview_click_view:
+                preview_click_link = document.get_absolute_url()
+            else:
+                preview_click_link = reverse(
+                    preview_click_view, args=(document_page.pk,)
+                )
+
             title_template = 'data-caption="<a class=\'a-caption\' href=\'{url}\'>{title}</a>"'.format(
                 title=strip_tags(title), url=preview_click_link or '#'
             )

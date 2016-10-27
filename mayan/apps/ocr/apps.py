@@ -15,7 +15,7 @@ from common import (
     menu_tools
 )
 from common.settings import settings_db_sync_task_delay
-from documents.search import document_search
+from documents.search import document_search, document_page_search
 from documents.signals import post_version_upload
 from documents.widgets import document_link
 from mayan.celery import app
@@ -113,6 +113,10 @@ class OCRApp(MayanAppConfig):
 
         document_search.add_model_field(
             field='versions__pages__ocr_content__content', label=_('OCR')
+        )
+
+        document_page_search.add_model_field(
+            field='ocr_content__content', label=_('OCR')
         )
 
         menu_facet.bind_links(

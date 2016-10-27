@@ -774,6 +774,14 @@ class DocumentPage(models.Model):
         return '{}-{}'.format(self.document_version.uuid, self.pk)
 
 
+class DocumentPageResult(DocumentPage):
+    class Meta:
+        ordering = ('document_version__document', 'page_number')
+        proxy = True
+        verbose_name = _('Document page')
+        verbose_name_plural = _('Document pages')
+
+
 class NewVersionBlock(models.Model):
     document = models.ForeignKey(Document, verbose_name=_('Document'))
 

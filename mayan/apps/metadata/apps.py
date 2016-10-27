@@ -15,7 +15,7 @@ from common import (
 )
 from common.classes import ModelAttribute, Filter
 from common.widgets import two_state_template
-from documents.search import document_search
+from documents.search import document_page_search, document_search
 from documents.signals import post_document_type_change
 from documents.permissions import permission_document_view
 from mayan.celery import app
@@ -56,6 +56,9 @@ class MetadataApp(MayanAppConfig):
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+        DocumentPageResult = apps.get_model(
+            app_label='documents', model_name='DocumentPageResult'
         )
 
         DocumentType = apps.get_model(
@@ -144,6 +147,13 @@ class MetadataApp(MayanAppConfig):
         )
 
         SourceColumn(
+            source=DocumentPageResult, label=_('Metadata'),
+            func=lambda context: get_metadata_string(
+                context['object'].document
+            )
+        )
+
+        SourceColumn(
             source=DocumentMetadata, label=_('Value'),
             attribute='value'
         )
@@ -174,6 +184,15 @@ class MetadataApp(MayanAppConfig):
         )
         document_search.add_model_field(
             field='metadata__value', label=_('Metadata value')
+        )
+
+        document_page_search.add_model_field(
+            field='document_version__document__metadata__metadata_type__name',
+            label=_('Metadata type')
+        )
+        document_page_search.add_model_field(
+            field='document_version__document__metadata__value',
+            label=_('Metadata value')
         )
 
         menu_facet.bind_links(links=(link_metadata_view,), sources=(Document,))

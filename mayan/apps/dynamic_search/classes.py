@@ -33,23 +33,55 @@ class SearchModel(object):
         self.app_label = app_label
         self.model_name = model_name
         self.search_fields = []
-        self.model = None  # Lazy
-        self.label = label
+        self._model = None  # Lazy
+        self._label = label
         self.serializer_string = serializer_string
         self.permission = permission
         self.__class__.registry[self.get_full_name()] = self
 
-    def get_full_name(self):
-        return '%s.%s' % (self.app_label, self.model_name)
+    @property
+    def model(self):
+        if not self._model:
+            self._model = apps.get_model(self.app_label, self.model_name)
+        return self._model
+
+    @property
+    def label(self):
+        if not self._label:
+            self._label = self.model._meta.verbose_name
+        return self._label
+
+    def add_model_field(self, *args, **kwargs):
+        """
+        Add a search field that directly belongs to the parent SearchModel
+        """
+        search_field = SearchField(self, *args, **kwargs)
+        self.search_fields.append(search_field)
+
+    def assemble_query(self, terms, search_fields):
+        """
+        Returns a query, that is a combination of Q objects. That combination
+        aims to search keywords within a model by testing the given search
+        fields.
+        """
+        queries = []
+        for term in terms:
+            or_query = None
+            for field in search_fields:
+                q = Q(**{'%s__%s' % (field, 'icontains'): term})
+                if or_query is None:
+                    or_query = q
+                else:
+                    or_query = or_query | q
+
+            queries.append(or_query)
+        return queries
 
     def get_all_search_fields(self):
         return self.search_fields
 
-    def get_search_field(self, full_name):
-        try:
-            return self.search_fields[full_name]
-        except KeyError:
-            raise KeyError('No search field named: %s' % full_name)
+    def get_full_name(self):
+        return '%s.%s' % (self.app_label, self.model_name)
 
     def get_fields_simple_list(self):
         """
@@ -61,12 +93,11 @@ class SearchModel(object):
 
         return result
 
-    def add_model_field(self, *args, **kwargs):
-        """
-        Add a search field that directly belongs to the parent SearchModel
-        """
-        search_field = SearchField(self, *args, **kwargs)
-        self.search_fields.append(search_field)
+    def get_search_field(self, full_name):
+        try:
+            return self.search_fields[full_name]
+        except KeyError:
+            raise KeyError('No search field named: %s' % full_name)
 
     def normalize_query(self, query_string,
                         findterms=re.compile(r'"([^"]+)"|(\S+)').findall,
@@ -88,11 +119,6 @@ class SearchModel(object):
         result_set = set()
         search_dict = {}
 
-        if not self.model:
-            self.model = apps.get_model(self.app_label, self.model_name)
-            if not self.label:
-                self.label = self.model._meta.verbose_name
-
         if 'q' in query_string:
             # Simple search
             for search_field in self.get_all_search_fields():
@@ -110,7 +136,6 @@ class SearchModel(object):
                     }
                 )
         else:
-
             for search_field in self.get_all_search_fields():
                 if search_field.field in query_string and query_string[search_field.field]:
                     search_dict.setdefault(search_field.get_model(), {
@@ -183,6 +208,8 @@ class SearchModel(object):
             datetime.datetime.now() - start_time
         ).split(':')[2]
 
+        logger.debug('elapsed_time: %s', elapsed_time)
+
         queryset = self.model.objects.filter(
             pk__in=list(result_set)[:setting_limit.value]
         )
@@ -200,25 +227,6 @@ class SearchModel(object):
         )
 
         return queryset, result_set, elapsed_time
-
-    def assemble_query(self, terms, search_fields):
-        """
-        Returns a query, that is a combination of Q objects. That combination
-        aims to search keywords within a model by testing the given search
-        fields.
-        """
-        queries = []
-        for term in terms:
-            or_query = None
-            for field in search_fields:
-                q = Q(**{'%s__%s' % (field, 'icontains'): term})
-                if or_query is None:
-                    or_query = q
-                else:
-                    or_query = or_query | q
-
-            queries.append(or_query)
-        return queries
 
 
 # SearchField classes

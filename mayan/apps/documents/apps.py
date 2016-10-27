@@ -68,13 +68,14 @@ from .permissions import (
     permission_document_trash, permission_document_version_revert,
     permission_document_view
 )
+from .search import document_search, document_page_search
 from .settings import setting_thumbnail_size
 from .statistics import (
     new_documents_per_month, new_document_pages_per_month,
     new_document_versions_per_month, total_document_per_month,
     total_document_page_per_month, total_document_version_per_month
 )
-from .widgets import document_thumbnail
+from .widgets import document_html_widget, document_thumbnail
 
 
 class DocumentsApp(MayanAppConfig):
@@ -90,6 +91,7 @@ class DocumentsApp(MayanAppConfig):
         DeletedDocument = self.get_model('DeletedDocument')
         Document = self.get_model('Document')
         DocumentPage = self.get_model('DocumentPage')
+        DocumentPageResult = self.get_model('DocumentPageResult')
         DocumentType = self.get_model('DocumentType')
         DocumentTypeFilename = self.get_model('DocumentTypeFilename')
         DocumentVersion = self.get_model('DocumentVersion')
@@ -157,6 +159,36 @@ class DocumentsApp(MayanAppConfig):
         )
         SourceColumn(
             source=Document, label=_('Type'), attribute='document_type'
+        )
+
+        SourceColumn(
+            source=DocumentPage, label=_('Thumbnail'),
+            func=lambda context: document_html_widget(
+                document_page=context['object'],
+                click_view='documents:document_display',
+                click_view_arguments=(context['object'].document.pk,),
+                gallery_name='documents:document_page_list',
+                preview_click_view='documents:document_page_view',
+                size=setting_thumbnail_size.value,
+                title=unicode(context['object']),
+            )
+        )
+
+        SourceColumn(
+            source=DocumentPageResult, label=_('Thumbnail'),
+            func=lambda context: document_html_widget(
+                document_page=context['object'],
+                click_view='documents:document_display',
+                click_view_arguments=(context['object'].document.pk,),
+                gallery_name='documents:document_page_list',
+                preview_click_view='documents:document_page_view',
+                size=setting_thumbnail_size.value,
+                title=unicode(context['object']),
+            )
+        )
+        SourceColumn(
+            source=DocumentPageResult, label=_('Type'),
+            attribute='document_version.document.document_type'
         )
 
         SourceColumn(

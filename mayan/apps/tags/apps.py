@@ -10,7 +10,7 @@ from common import (
     MayanAppConfig, menu_facet, menu_secondary, menu_object, menu_main,
     menu_multi_item, menu_sidebar
 )
-from documents.search import document_search
+from documents.search import document_page_search, document_search
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
@@ -37,6 +37,10 @@ class TagsApp(MayanAppConfig):
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+
+        DocumentPageResult = apps.get_model(
+            app_label='documents', model_name='DocumentPageResult'
         )
 
         DocumentTag = self.get_model('DocumentTag')
@@ -77,6 +81,14 @@ class TagsApp(MayanAppConfig):
         )
 
         SourceColumn(
+            source=DocumentPageResult, label=_('Tags'),
+            func=lambda context: widget_document_tags(
+                document=context['object'].document,
+                user=context['request'].user
+            )
+        )
+
+        SourceColumn(
             source=Tag, label=_('Preview'),
             func=lambda context: widget_single_tag(context['object'])
         )
@@ -87,6 +99,9 @@ class TagsApp(MayanAppConfig):
             )
         )
 
+        document_page_search.add_model_field(
+            field='document_version__document__tags__label', label=_('Tags')
+        )
         document_search.add_model_field(field='tags__label', label=_('Tags'))
 
         menu_facet.bind_links(
