@@ -50,48 +50,6 @@
         </div>
     </div>
 
-{% comment %}
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="well center-block">
-                <form action="{% url 'search:results' search_model='documents.Document' %}" method="get" role="search">
-                    <div class="input-group">
-                        <input class="form-control" name="q" placeholder="{% trans 'Space separated terms' %}" type="text" value="{{ search_terms|default:'' }}">
-                        <span class="input-group-btn">
-                            <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
-                            <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.Document' %}">{% trans 'Advanced' %}</a>
-                        </span>
-                    </div>
-                </form>
-                {% if search_terms %}
-                    {% include 'appearance/generic_list_subtemplate.html' %}
-                {% endif %}
-            </div>
-        </div>
-    </div>
-{% endcomment %}
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel panel-default center-block">
-                <div class="panel-heading">{% trans 'Search documents' %}</div>
-                <div class="panel-body">
-                    <form action="{% url 'search:results' search_model='documents.Document' %}" method="get" role="search">
-                        <div class="input-group">
-                            <input class="form-control" name="q" placeholder="{% trans 'Space separated terms' %}" type="text" value="{{ search_terms|default:'' }}">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
-                                <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.Document' %}">{% trans 'Advanced' %}</a>
-                            </span>
-                        </div>
-                    </form>
-                    {% if search_terms %}
-                        {% include 'appearance/generic_list_subtemplate.html' %}
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-    </div>
-
     <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-default center-block">
@@ -106,11 +64,28 @@
                             </span>
                         </div>
                     </form>
-                    {% if search_terms %}
-                        {% include 'appearance/generic_list_subtemplate.html' %}
-                    {% endif %}
                 </div>
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel panel-default center-block">
+                <div class="panel-heading">{% trans 'Search documents' %}</div>
+                <div class="panel-body">
+                    <form action="{% url 'search:results' search_model='documents.Document' %}" method="get" role="search">
+                        <div class="input-group">
+                            <input class="form-control" name="q" placeholder="{% trans 'Space separated terms' %}" type="text" value="{{ search_terms|default:'' }}">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
+                                <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.Document' %}">{% trans 'Advanced' %}</a>
+                            </span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
 {% endblock %}
