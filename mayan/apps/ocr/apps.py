@@ -18,7 +18,6 @@ from common.settings import settings_db_sync_task_delay
 from documents.search import document_search
 from documents.signals import post_version_upload
 from documents.widgets import document_link
-from installation import PropertyNamespace
 from mayan.celery import app
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
@@ -150,41 +149,3 @@ class OCRApp(MayanAppConfig):
             post_version_upload_ocr, dispatch_uid='post_version_upload_ocr',
             sender=DocumentVersion
         )
-
-        namespace = PropertyNamespace('ocr', _('OCR'))
-
-        try:
-            pdftotext = sh.Command(setting_pdftotext_path.value)
-        except sh.CommandNotFound:
-            namespace.add_property(
-                'pdftotext', _('pdftotext version'), _('not found'),
-                report=True
-            )
-        except Exception:
-            namespace.add_property(
-                'pdftotext', _('pdftotext version'),
-                _('error getting version'), report=True
-            )
-        else:
-            namespace.add_property(
-                'pdftotext', _('pdftotext version'), pdftotext('-v').stderr,
-                report=True
-            )
-
-        try:
-            tesseract = sh.Command(setting_tesseract_path.value)
-        except sh.CommandNotFound:
-            namespace.add_property(
-                'tesseract', _('tesseract version'), _('not found'),
-                report=True
-            )
-        except Exception:
-            namespace.add_property(
-                'tesseract', _('tesseract version'),
-                _('error getting version'), report=True
-            )
-        else:
-            namespace.add_property(
-                'tesseract', _('tesseract version'), tesseract('-v').stderr,
-                report=True
-            )
