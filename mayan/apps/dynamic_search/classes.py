@@ -12,7 +12,6 @@ from django.utils.module_loading import import_string
 from acls.models import AccessControlList
 from permissions import Permission
 
-from .models import RecentSearch
 from .settings import setting_limit
 
 logger = logging.getLogger(__name__)
@@ -221,10 +220,6 @@ class SearchModel(object):
                 queryset = AccessControlList.objects.filter_by_access(
                     self.permission, user, queryset
                 )
-
-        RecentSearch.objects.add_query_for_user(
-            user, query_string, len(result_set)
-        )
 
         return queryset, result_set, elapsed_time
 
