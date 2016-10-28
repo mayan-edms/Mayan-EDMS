@@ -1,4 +1,4 @@
-|PyPI badge| |Build Status| |Coverage badge| |License badge|
+|PyPI badge| |Build Status| |Coverage badge| |Documentation| |License badge|
 
 |Logo|
 
@@ -60,5 +60,7 @@ account.
 .. |Analytics| image:: https://ga-beacon.appspot.com/UA-52965619-2/mayan-edms/readme?pixel
 .. |Coverage badge| image:: https://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=master
    :target: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=master
+.. |Documentation| image:: https://readthedocs.org/projects/mayan/badge/?version=latest
+   :target: http://mayan.readthedocs.io/en/latest
 
 |Analytics|
