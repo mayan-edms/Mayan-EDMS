@@ -1,7 +1,16 @@
-2.1.4 (2016-XX-XX)
+2.1.4 (2016-10-28)
 ==================
 - Add missing link to the 2.1.3 release notes in the index file.
 - Improve TempfileCheckMixin.
+- Fix statistics namespace list display view.
+- Fix events list display view.
+- Update required Django version to 1.8.15.
+- Update required python-gnupg version to 0.3.9.
+- Improved orphaned temporary files test mixin.
+- Re-enable and improve GitLab CI MySQL testing.
+- Improved GPG handling.
+- New GPG backend system.
+- Minor documentation updates.
 
 2.1.3 (2016-06-29)
 ==================
