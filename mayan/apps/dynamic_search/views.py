@@ -1,17 +1,13 @@
 from __future__ import unicode_literals
 
 import logging
-import urlparse
 
-from django.conf import settings
 from django.core.urlresolvers import reverse
-from django.http import Http404, HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 
 from common.generics import SimpleView, SingleObjectListView
 
-from .classes import SearchModel
 from .forms import SearchForm, AdvancedSearchForm
 from .mixins import SearchModelMixin
 from .settings import setting_limit
@@ -38,9 +34,9 @@ class ResultsView(SearchModelMixin, SingleObjectListView):
             # the template with the extra_context
 
             if self.request.GET.get('_match_all', 'off') == 'on':
-                global_and_search=True
+                global_and_search = True
             else:
-                global_and_search=False
+                global_and_search = False
 
             queryset, ids, timedelta = self.search_model.search(
                 query_string=self.request.GET, user=self.request.user,

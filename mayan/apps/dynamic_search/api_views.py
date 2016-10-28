@@ -1,13 +1,10 @@
 from __future__ import unicode_literals
 
-from django.http import Http404, HttpResponseRedirect
-
 from rest_framework import generics
 from rest_framework.exceptions import ParseError
 
 from rest_api.filters import MayanObjectPermissionsFilter
 
-from .classes import SearchModel
 from .mixins import SearchModelMixin
 
 
@@ -28,7 +25,6 @@ class APISearchView(SearchModelMixin, generics.ListAPIView):
               type: string
               description: Term that will be used for the search.
     """
-
 
     filter_backends = (MayanObjectPermissionsFilter,)
 
@@ -85,9 +81,9 @@ class APIAdvancedSearchView(SearchModelMixin, generics.ListAPIView):
             }
 
         if self.request.GET.get('_match_all', 'off') == 'on':
-            global_and_search=True
+            global_and_search = True
         else:
-            global_and_search=False
+            global_and_search = False
 
         try:
             queryset, ids, timedelta = self.search_model.search(
