@@ -6,8 +6,8 @@ Development
 Mayan EDMS is under active development, and contributions are welcome.
 
 If you have a feature request, suggestion or bug report, please open a new
-issue on the `GitLab issue tracker`_. To submit patches, please send a pull
-request on GitLab_. Make sure to add yourself to the :ref:`contributors` file.
+issue on the `GitLab issue tracker`_. To submit patches, please send a merge
+request on GitLab_.
 
 .. _GitLab: https://gitlab.com/mayan-edms/mayan-edms/
 .. _`GitLab issue tracker`: https://gitlab.com/mayan-edms/mayan-edms/issues
