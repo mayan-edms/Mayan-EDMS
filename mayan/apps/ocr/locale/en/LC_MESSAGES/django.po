@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:14-0400\n"
+"POT-Creation-Date: 2016-10-28 03:21-0400\n"
 "PO-Revision-Date: 2012-06-17 22:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -146,12 +146,12 @@ msgstr "clean up pages content"
 msgid "Document pages contents"
 msgstr "Document pages content clean up error: %s"
 
-#: parsers.py:103
+#: parsers.py:102
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr ""
 
-#: parsers.py:130
+#: parsers.py:129
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr ""

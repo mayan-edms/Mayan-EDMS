@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Franck Boucher <boucher.fk@gmail.com>, 2016
@@ -13,15 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:10-0400\n"
-"PO-Revision-Date: 2016-03-21 21:08+0000\n"
+"POT-Creation-Date: 2016-10-28 03:18-0400\n"
+"PO-Revision-Date: 2016-10-28 07:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
-"fr/)\n"
-"Language: fr\n"
+"Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:72 settings.py:9
@@ -32,56 +31,56 @@ msgstr "Commun"
 msgid "Available attributes: "
 msgstr "Options disponibles"
 
-#: forms.py:26
+#: forms.py:27
 msgid "Selection"
 msgstr "Sélection"
 
-#: forms.py:105
+#: forms.py:106
 msgid "Filter"
 msgstr "Filtre"
 
-#: generics.py:127
+#: generics.py:126
 #, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Impossible de transférer la sélection: %s."
 
-#: generics.py:151
+#: generics.py:150
 msgid "Add"
 msgstr "Ajouter"
 
-#: generics.py:162
+#: generics.py:161
 msgid "Remove"
 msgstr "Supprimer"
 
-#: generics.py:288
+#: generics.py:287
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
-msgstr ""
+msgstr "%(object)s n'a pas été créé, erreur: %(error)s"
 
-#: generics.py:299
+#: generics.py:298
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s, creation réussi."
 
-#: generics.py:324
+#: generics.py:323
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
-msgstr ""
+msgstr "%(object)s non supprimé, erreur: %(error)s."
 
-#: generics.py:335
+#: generics.py:334
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s, suppression réussie."
 
-#: generics.py:380
+#: generics.py:379
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
-msgstr ""
+msgstr "%(object)s n'a pas été mis à jour, erreur: %(error)s."
 
-#: generics.py:391
+#: generics.py:390
 #, python-format
 msgid "%(object)s updated successfully."
-msgstr ""
+msgstr "%(object)s, mise à jour réussie."
 
 #: links.py:9
 msgid "About"
@@ -180,36 +179,31 @@ msgid "User locale profiles"
 msgstr "Paramètres régionaux des profils utilisateur"
 
 #: settings.py:13
+#| msgid ""
+#| "ary directory used site wide to store thumbnails, previews and porary es.  "
+#| "If none is specified, one will be created using pfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()."
+"temporary files."
 msgstr ""
-"Répertoire temporaire utilisé pour stocker les miniatures, les aperçus et "
-"les fichiers temporaires. Si aucun n'est indiqué, celui-ci sera crée à "
-"l'aide de la fonction tempfile.mdktemp()"
 
-#: settings.py:22
+#: settings.py:21
 msgid "A storage backend that all workers can use to share files."
-msgstr ""
-"Un espace de stockage que tous les agents pourront utiliser pour partager "
-"des fichiers."
+msgstr "Un espace de stockage que tous les agents pourront utiliser pour partager des fichiers."
 
-#: settings.py:28
+#: settings.py:27
 msgid "An integer specifying how many objects should be displayed per page."
-msgstr ""
-"Valeur entière indiquant combien d'objets sont affichés sur chaque page."
+msgstr "Valeur entière indiquant combien d'objets sont affichés sur chaque page."
 
-#: settings.py:34
+#: settings.py:33
 msgid "Automatically enable logging to all apps."
 msgstr "Activation automatique de la trace pour toutes les applications."
 
-#: settings.py:40
+#: settings.py:39
 msgid ""
-"Time to delay background tasks that depend on a database commit to propagate."
-msgstr ""
-"Durée pendant laquelle les tâches d'arrière plan sont différées pour les "
-"tâches dépendant d'une mise à jour de la base de données."
+"Time to delay background tasks that depend on a database commit to "
+"propagate."
+msgstr "Durée pendant laquelle les tâches d'arrière plan sont différées pour les tâches dépendant d'une mise à jour de la base de données."
 
 #: views.py:37
 msgid "Current user details"
@@ -228,6 +222,7 @@ msgid "Edit current user locale profile details"
 msgstr "Éditer le détail des paramètres régionaux de l'utilisateur actuel"
 
 #: views.py:113
+#| msgid "Selection"
 msgid "Filter selection"
 msgstr "Sélection du filtre"
 
@@ -237,6 +232,7 @@ msgid "Results for filter: %s"
 msgstr "Résultats pour le filtre : %s"
 
 #: views.py:136
+#| msgid "Page not found"
 msgid "Filter not found"
 msgstr "Filtre non trouvé"
 
@@ -290,11 +286,11 @@ msgstr "Aucun"
 #~ msgstr "Email"
 
 #~ msgid ""
-#~ "Please enter a correct email and password. Note that the password field "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password field is "
+#~ "case-sensitive."
 #~ msgstr ""
-#~ "Please enter a correct email and password. Note that the password fields "
-#~ "is case-sensitive."
+#~ "Please enter a correct email and password. Note that the password fields is "
+#~ "case-sensitive."
 
 #~ msgid "This account is inactive."
 #~ msgstr "This account is inactive."
@@ -303,11 +299,11 @@ msgstr "Aucun"
 #~ msgstr "change password"
 
 #~ msgid ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 #~ msgstr ""
-#~ "Controls the mechanism used to authenticated user.  Options are: "
-#~ "username, email"
+#~ "Controls the mechanism used to authenticated user.  Options are: username, "
+#~ "email"
 
 #~ msgid "Allow non authenticated users, access to all views"
 #~ msgstr "Allow non authenticated users, access to all views"

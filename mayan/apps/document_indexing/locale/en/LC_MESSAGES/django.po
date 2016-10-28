@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:11-0400\n"
+"POT-Creation-Date: 2016-10-28 03:19-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -22,48 +22,53 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: admin.py:26 apps.py:134 links.py:48 models.py:41
+#: admin.py:26 apps.py:139 links.py:48 models.py:41
 #, fuzzy
 msgid "Document types"
 msgstr "document types"
 
-#: apps.py:48
+#: apps.py:49
 #, fuzzy
 #| msgid "document indexes"
 msgid "Document indexing"
 msgstr "document indexes"
 
-#: apps.py:120 models.py:25
+#: apps.py:125 models.py:25
 msgid "Label"
 msgstr ""
 
-#: apps.py:121 models.py:30
+#: apps.py:126 models.py:30
 msgid "Slug"
 msgstr ""
 
-#: apps.py:123 apps.py:143 models.py:38 models.py:126
+#: apps.py:128 apps.py:148 models.py:38 models.py:126
 #, fuzzy
 msgid "Enabled"
 msgstr "enabled"
 
-#: apps.py:128 apps.py:158 apps.py:171
+#: apps.py:133 apps.py:163 apps.py:176
 #, fuzzy
 msgid "Items"
 msgstr "items"
 
-#: apps.py:139
+#: apps.py:144
 #, fuzzy
 msgid "Level"
 msgstr "level"
 
-#: apps.py:147
+#: apps.py:152
 #, fuzzy
 msgid "Has document links?"
 msgstr "has document links?"
 
-#: apps.py:154 apps.py:165
+#: apps.py:159 apps.py:170
 msgid "Node"
 msgstr ""
+
+#: handlers.py:18
+#, fuzzy
+msgid "Creation date"
+msgstr "create index"
 
 #: links.py:18 links.py:22 links.py:25 links.py:28 models.py:83 views.py:75
 #: views.py:235

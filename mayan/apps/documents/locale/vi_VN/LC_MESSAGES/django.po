@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:11-0400\n"
-"PO-Revision-Date: 2016-04-27 18:22+0000\n"
+"POT-Creation-Date: 2016-10-28 03:19-0400\n"
+"PO-Revision-Date: 2016-10-28 07:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Vietnamese (Viet Nam) (http://www.transifex.com/rosarior/mayan-edms/language/vi_VN/)\n"
 "MIME-Version: 1.0\n"
@@ -18,85 +18,85 @@ msgstr ""
 "Language: vi_VN\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:82 apps.py:162 apps.py:383 models.py:230 permissions.py:7
+#: apps.py:83 apps.py:163 apps.py:384 models.py:231 permissions.py:7
 #: settings.py:17
 msgid "Documents"
 msgstr "Tài liệu"
 
-#: apps.py:97
+#: apps.py:98
 msgid "Create a document type"
 msgstr ""
 
-#: apps.py:99
+#: apps.py:100
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr ""
 
-#: apps.py:106 models.py:66 models.py:159 models.py:625 search.py:20
+#: apps.py:107 models.py:65 models.py:158 models.py:626 search.py:20
 msgid "Label"
 msgstr ""
 
-#: apps.py:111
+#: apps.py:112
 msgid "The MIME type of any of the versions of a document"
 msgstr ""
 
-#: apps.py:112 apps.py:196 search.py:18 views.py:829
+#: apps.py:113 apps.py:197 search.py:18 views.py:829
 msgid "MIME type"
 msgstr "MIME type"
 
-#: apps.py:150 apps.py:174
+#: apps.py:151 apps.py:175
 msgid "Thumbnail"
 msgstr ""
 
-#: apps.py:158 apps.py:184
+#: apps.py:159 apps.py:185
 msgid "Type"
 msgstr ""
 
-#: apps.py:169 models.py:627
+#: apps.py:170 models.py:628
 msgid "Enabled"
 msgstr ""
 
-#: apps.py:187
+#: apps.py:188
 msgid "Date time trashed"
 msgstr ""
 
-#: apps.py:192
+#: apps.py:193
 msgid "Time and date"
 msgstr ""
 
-#: apps.py:200 views.py:830
+#: apps.py:201 views.py:830
 msgid "Encoding"
 msgstr ""
 
-#: apps.py:204 models.py:356
+#: apps.py:205 models.py:357
 msgid "Comment"
 msgstr "Chú thích"
 
-#: apps.py:386
+#: apps.py:387
 #| msgid "New document filename"
 msgid "New documents per month"
 msgstr ""
 
-#: apps.py:393
+#: apps.py:394
 #| msgid "Document version reverted successfully"
 msgid "New document versions per month"
 msgstr ""
 
-#: apps.py:400
+#: apps.py:401
 #| msgid "View document types"
 msgid "New document pages per month"
 msgstr ""
 
-#: apps.py:407
+#: apps.py:408
 msgid "Total documents at each month"
 msgstr ""
 
-#: apps.py:414
+#: apps.py:415
 msgid "Total document versions at each month"
 msgstr ""
 
-#: apps.py:421
+#: apps.py:422
 msgid "Total document pages at each month"
 msgstr ""
 
@@ -130,68 +130,68 @@ msgstr ""
 msgid "Document viewed"
 msgstr ""
 
-#: forms.py:41 links.py:205
+#: forms.py:42 links.py:205
 msgid "Page image"
 msgstr ""
 
-#: forms.py:55 forms.py:58
+#: forms.py:56 forms.py:59
 #, python-format
 msgid "Document pages (%d)"
 msgstr ""
 
-#: forms.py:88
+#: forms.py:90
 msgid "Quick document rename"
 msgstr "Sửa nhanh tên tài liệu"
 
-#: forms.py:110
+#: forms.py:112
 msgid "Date added"
 msgstr "Ngày thêm vào"
 
-#: forms.py:114
+#: forms.py:116
 msgid "UUID"
 msgstr ""
 
-#: forms.py:120
+#: forms.py:122
 msgid "File mimetype"
 msgstr "Kiểu file"
 
-#: forms.py:121 forms.py:126
+#: forms.py:123 forms.py:128
 msgid "None"
 msgstr "None"
 
-#: forms.py:124
+#: forms.py:126
 msgid "File encoding"
 msgstr ""
 
-#: forms.py:130
+#: forms.py:132
 msgid "File size"
 msgstr "Kích thước file"
 
-#: forms.py:135
+#: forms.py:137
 msgid "Exists in storage"
 msgstr ""
 
-#: forms.py:137
+#: forms.py:139
 msgid "File path in storage"
 msgstr ""
 
-#: forms.py:140 models.py:371
+#: forms.py:142 models.py:372
 msgid "Checksum"
 msgstr ""
 
-#: forms.py:141 links.py:58
+#: forms.py:143 links.py:58
 msgid "Pages"
 msgstr "Trang"
 
-#: forms.py:172 models.py:106 models.py:155 models.py:622 search.py:15
+#: forms.py:174 models.py:105 models.py:154 models.py:623 search.py:15
 msgid "Document type"
 msgstr "Kiểu tài liệu"
 
-#: forms.py:188
+#: forms.py:190
 msgid "Compress"
 msgstr "Nén"
 
-#: forms.py:190
+#: forms.py:192
 #| msgid ""
 #| "ad the document in the original format or in a compressed manner.  s ion is "
 #| "selectable only when downloading one document, for tiple uments, the bundle "
@@ -202,23 +202,19 @@ msgid ""
 "documents, the bundle will always be downloads as a compressed file."
 msgstr ""
 
-#: forms.py:197
+#: forms.py:199
 msgid "Compressed filename"
 msgstr ""
 
-#: forms.py:200
+#: forms.py:202
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
 msgstr ""
 
-#: forms.py:217 literals.py:23
+#: forms.py:219 literals.py:24
 msgid "Page range"
 msgstr "Dãy trang"
-
-#: handlers.py:13
-msgid "Default"
-msgstr "Mặc định"
 
 #: links.py:43
 msgid "Preview"
@@ -276,7 +272,7 @@ msgstr ""
 msgid "All documents"
 msgstr ""
 
-#: links.py:140 models.py:814 views.py:656
+#: links.py:140 models.py:815 views.py:656
 msgid "Recent documents"
 msgstr ""
 
@@ -315,7 +311,7 @@ msgstr ""
 msgid "Next page"
 msgstr ""
 
-#: links.py:191 models.py:229 models.py:350 models.py:777 models.py:796
+#: links.py:191 models.py:230 models.py:351 models.py:778 models.py:797
 #: views.py:827
 msgid "Document"
 msgstr ""
@@ -356,7 +352,7 @@ msgstr "Sửa"
 msgid "Add quick label to document type"
 msgstr ""
 
-#: links.py:260 models.py:633
+#: links.py:260 models.py:634
 msgid "Quick labels"
 msgstr ""
 
@@ -364,57 +360,61 @@ msgstr ""
 msgid "Document types"
 msgstr ""
 
-#: literals.py:23
+#: literals.py:14
+msgid "Default"
+msgstr "Mặc định"
+
+#: literals.py:24
 msgid "All pages"
 msgstr ""
 
-#: models.py:70
+#: models.py:69
 msgid ""
 "Amount of time after which documents of this type will be moved to the "
 "trash."
 msgstr ""
 
-#: models.py:72
+#: models.py:71
 msgid "Trash time period"
 msgstr ""
 
-#: models.py:76
+#: models.py:75
 msgid "Trash time unit"
 msgstr ""
 
-#: models.py:80
+#: models.py:79
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
 msgstr ""
 
-#: models.py:82
+#: models.py:81
 #| msgid "Delete document types"
 msgid "Delete time period"
 msgstr ""
 
-#: models.py:87
+#: models.py:86
 #| msgid "Delete documents"
 msgid "Delete time unit"
 msgstr ""
 
-#: models.py:107
+#: models.py:106
 msgid "Documents types"
 msgstr ""
 
-#: models.py:159
+#: models.py:158
 msgid "The name of the document"
 msgstr ""
 
-#: models.py:162 search.py:21
+#: models.py:161 search.py:21
 msgid "Description"
 msgstr "Mô tả"
 
-#: models.py:165
+#: models.py:164
 msgid "Added"
 msgstr ""
 
-#: models.py:170
+#: models.py:169
 msgid "Language"
 msgstr ""
 
@@ -433,68 +433,68 @@ msgid ""
 "API."
 msgstr ""
 
-#: models.py:184
+#: models.py:185
 msgid "Is stub?"
 msgstr ""
 
-#: models.py:192
+#: models.py:193
 #, python-format
 #| msgid "Document types: %d"
 msgid "Document stub, id: %d"
 msgstr ""
 
-#: models.py:353
+#: models.py:354
 msgid "Timestamp"
 msgstr ""
 
-#: models.py:362
+#: models.py:363
 msgid "File"
 msgstr "File"
 
-#: models.py:444 models.py:445 models.py:646
+#: models.py:445 models.py:446 models.py:647
 msgid "Document version"
 msgstr ""
 
-#: models.py:632
+#: models.py:633
 msgid "Quick label"
 msgstr ""
 
-#: models.py:650
+#: models.py:651
 msgid "Page number"
 msgstr ""
 
-#: models.py:655
+#: models.py:656
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Trang %(page_num)d ngoài phạm vi của %(total_pages)d của %(document)s"
 
-#: models.py:671
+#: models.py:672
 msgid "Document page"
 msgstr ""
 
-#: models.py:672
+#: models.py:673
 msgid "Document pages"
-msgstr ""
-
-#: models.py:782
-#| msgid "Version update"
-msgid "New version block"
 msgstr ""
 
 #: models.py:783
 #| msgid "Version update"
+msgid "New version block"
+msgstr ""
+
+#: models.py:784
+#| msgid "Version update"
 msgid "New version blocks"
 msgstr ""
 
-#: models.py:793
+#: models.py:794
 msgid "User"
 msgstr "Người dùng"
 
-#: models.py:799
+#: models.py:800
 msgid "Accessed"
 msgstr ""
 
-#: models.py:813
+#: models.py:814
 msgid "Recent document"
 msgstr ""
 
@@ -534,7 +534,7 @@ msgstr ""
 
 #: permissions.py:34
 #| msgid "Delete documents"
-msgid "Restore deleted document"
+msgid "Restore trashed document"
 msgstr ""
 
 #: permissions.py:37

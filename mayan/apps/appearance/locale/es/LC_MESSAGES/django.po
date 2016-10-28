@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:09-0400\n"
-"PO-Revision-Date: 2016-05-09 01:48+0000\n"
+"POT-Creation-Date: 2016-10-28 03:18-0400\n"
+"PO-Revision-Date: 2016-10-28 07:41+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -46,7 +46,7 @@ msgstr "Error de servidor"
 msgid ""
 "There's been an error. It's been reported to the site administrators via "
 "e-mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
+msgstr "Ha habido un error. Se ha informado a los administradores del sitio vía e-mail y debería corregirse en breve. Gracias por su paciencia."
 
 #: templates/500.html:14
 msgid ""
@@ -109,7 +109,7 @@ msgstr "Acciones"
 
 #: templates/appearance/base.html:117
 msgid "Toggle Dropdown"
-msgstr ""
+msgstr "Alternar desplegable"
 
 #: templates/appearance/calculate_form_title.html:7
 #, python-format
@@ -170,7 +170,7 @@ msgstr "Enviar"
 msgid "Cancel"
 msgstr "Cancelar"
 
-#: templates/appearance/generic_list_horizontal.html:20
+#: templates/appearance/generic_list_horizontal.html:21
 #: templates/appearance/generic_list_subtemplate.html:108
 msgid "No results"
 msgstr "Ningún resultado"

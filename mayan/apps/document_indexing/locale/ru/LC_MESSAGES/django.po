@@ -1,65 +1,68 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:11-0400\n"
-"PO-Revision-Date: 2016-03-21 21:09+0000\n"
+"POT-Creation-Date: 2016-10-28 03:19-0400\n"
+"PO-Revision-Date: 2016-10-28 07:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: admin.py:24
 msgid "None"
 msgstr "Ни один"
 
-#: admin.py:26 apps.py:134 links.py:48 models.py:41
+#: admin.py:26 apps.py:139 links.py:48 models.py:41
 msgid "Document types"
-msgstr ""
+msgstr "Типы документов"
 
-#: apps.py:48
+#: apps.py:49
+#| msgid "document indexes"
 msgid "Document indexing"
-msgstr ""
+msgstr "Индексирование документа"
 
-#: apps.py:120 models.py:25
+#: apps.py:125 models.py:25
 msgid "Label"
-msgstr ""
+msgstr "Надпись"
 
-#: apps.py:121 models.py:30
+#: apps.py:126 models.py:30
 msgid "Slug"
 msgstr ""
 
-#: apps.py:123 apps.py:143 models.py:38 models.py:126
+#: apps.py:128 apps.py:148 models.py:38 models.py:126
 msgid "Enabled"
 msgstr "Доступно"
 
-#: apps.py:128 apps.py:158 apps.py:171
+#: apps.py:133 apps.py:163 apps.py:176
 msgid "Items"
-msgstr ""
+msgstr "Элементы"
 
-#: apps.py:139
+#: apps.py:144
 msgid "Level"
-msgstr ""
+msgstr "Уровень"
 
-#: apps.py:147
+#: apps.py:152
 msgid "Has document links?"
 msgstr ""
 
-#: apps.py:154 apps.py:165
+#: apps.py:159 apps.py:170
 msgid "Node"
-msgstr ""
+msgstr "Узел"
+
+#: handlers.py:18
+msgid "Creation date"
+msgstr "Дата создания"
 
 #: links.py:18 links.py:22 links.py:25 links.py:28 models.py:83 views.py:75
 #: views.py:235
@@ -68,7 +71,7 @@ msgstr "Индексы"
 
 #: links.py:31 views.py:36
 msgid "Create index"
-msgstr ""
+msgstr "Создать индекс"
 
 #: links.py:35 links.py:64
 msgid "Edit"
@@ -76,7 +79,7 @@ msgstr "Редактировать"
 
 #: links.py:40 links.py:68
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: links.py:44
 msgid "Tree template"
@@ -88,11 +91,11 @@ msgstr "Удаляет и создается с нуля, все индексы 
 
 #: links.py:57
 msgid "Rebuild indexes"
-msgstr ""
+msgstr "Восстановление индексов"
 
 #: links.py:60
 msgid "New child node"
-msgstr ""
+msgstr "Новый дочерний узел"
 
 #: managers.py:56
 #, python-format
@@ -102,17 +105,18 @@ msgid ""
 msgstr ""
 
 #: models.py:29
+#| msgid "Internal name used to reference this index."
 msgid "This values will be used by other apps to reference this index."
 msgstr ""
 
 #: models.py:35
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Этот индекс должен быть видимым и обновляться при изменении данных документа."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Этот индекс должен быть видимым и обновляться при изменении данных документа."
 
 #: models.py:82 models.py:109
 msgid "Index"
-msgstr ""
+msgstr "Индекс"
 
 #: models.py:101
 msgid "Index instance"
@@ -120,7 +124,7 @@ msgstr "index instance"
 
 #: models.py:102
 msgid "Index instances"
-msgstr ""
+msgstr "Экземпляры индекса"
 
 #: models.py:114
 msgid ""
@@ -134,15 +138,13 @@ msgstr ""
 
 #: models.py:123
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Этот узел должен быть видимым и обновляются при изменении данных документа."
+msgstr "Этот узел должен быть видимым и обновляются при изменении данных документа."
 
 #: models.py:131
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Этот узел будет контейнером для документов и не будет иметь дочерних узлов."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Этот узел будет контейнером для документов и не будет иметь дочерних узлов."
 
 #: models.py:134
 msgid "Link documents"
@@ -150,7 +152,7 @@ msgstr ""
 
 #: models.py:139
 msgid "Root"
-msgstr ""
+msgstr "Корень"
 
 #: models.py:144
 msgid "Index node template"
@@ -214,21 +216,22 @@ msgstr "Восстановление индексов документа"
 
 #: views.py:51
 #, python-format
+#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
-msgstr ""
+msgstr "Удалить индекс: %s?"
 
 #: views.py:64
 #, python-format
 msgid "Edit index: %s"
-msgstr ""
+msgstr "Редактировать индекс: %s"
 
 #: views.py:81
 msgid "Available document types"
-msgstr ""
+msgstr "Доступные типы документов"
 
 #: views.py:83
 msgid "Document types linked"
-msgstr ""
+msgstr "Типы документов связаны"
 
 #: views.py:106
 #, python-format
@@ -258,7 +261,7 @@ msgstr ""
 #: views.py:286
 #, python-format
 msgid "Navigation: %s"
-msgstr ""
+msgstr "Навигация: %s"
 
 #: views.py:291
 #, python-format
@@ -272,17 +275,15 @@ msgstr ""
 
 #: views.py:341
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"В больших базах данных эта операция может занять некоторое время для "
-"выполнения."
+msgstr "В больших базах данных эта операция может занять некоторое время для выполнения."
 
 #: views.py:342
 msgid "Rebuild all indexes?"
-msgstr ""
+msgstr "Восстановить все индексы?"
 
 #: views.py:351
 msgid "Index rebuild queued successfully."
-msgstr ""
+msgstr "Восстановление индекса успешно отправлено в очередь."
 
 #~ msgid "Index list"
 #~ msgstr "index list"
@@ -345,11 +346,9 @@ msgstr ""
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -386,11 +385,11 @@ msgstr ""
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"

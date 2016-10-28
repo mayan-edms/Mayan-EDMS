@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:10-0400\n"
+"POT-Creation-Date: 2016-10-28 03:18-0400\n"
 "PO-Revision-Date: 2012-12-12 06:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -26,53 +26,53 @@ msgstr ""
 msgid "Available attributes: "
 msgstr ""
 
-#: forms.py:26
+#: forms.py:27
 msgid "Selection"
 msgstr "Selection"
 
-#: forms.py:105
+#: forms.py:106
 msgid "Filter"
 msgstr ""
 
-#: generics.py:127
+#: generics.py:126
 #, fuzzy, python-format
 msgid "Unable to transfer selection: %s."
 msgstr "Unable to add %(selection)s to %(right_list_title)s."
 
-#: generics.py:151
+#: generics.py:150
 msgid "Add"
 msgstr "Add"
 
-#: generics.py:162
+#: generics.py:161
 msgid "Remove"
 msgstr "Remove"
 
-#: generics.py:288
+#: generics.py:287
 #, python-format
 msgid "%(object)s not created, error: %(error)s"
 msgstr ""
 
-#: generics.py:299
+#: generics.py:298
 #, python-format
 msgid "%(object)s created successfully."
 msgstr ""
 
-#: generics.py:324
+#: generics.py:323
 #, python-format
 msgid "%(object)s not deleted, error: %(error)s."
 msgstr ""
 
-#: generics.py:335
+#: generics.py:334
 #, python-format
 msgid "%(object)s deleted successfully."
 msgstr ""
 
-#: generics.py:380
+#: generics.py:379
 #, python-format
 msgid "%(object)s not updated, error: %(error)s."
 msgstr ""
 
-#: generics.py:391
+#: generics.py:390
 #, python-format
 msgid "%(object)s updated successfully."
 msgstr ""
@@ -184,26 +184,25 @@ msgstr ""
 #| "tempfile.mkdtemp()"
 msgid ""
 "Temporary directory used site wide to store thumbnails, previews and "
-"temporary files.  If none is specified, one will be created using tempfile."
-"mkdtemp()."
+"temporary files."
 msgstr ""
 "Temporary directory used site wide to store thumbnails, previews and "
 "temporary files.  If none is specified, one will be created using tempfile."
 "mkdtemp()"
 
-#: settings.py:22
+#: settings.py:21
 msgid "A storage backend that all workers can use to share files."
 msgstr ""
 
-#: settings.py:28
+#: settings.py:27
 msgid "An integer specifying how many objects should be displayed per page."
 msgstr ""
 
-#: settings.py:34
+#: settings.py:33
 msgid "Automatically enable logging to all apps."
 msgstr ""
 
-#: settings.py:40
+#: settings.py:39
 msgid ""
 "Time to delay background tasks that depend on a database commit to propagate."
 msgstr ""

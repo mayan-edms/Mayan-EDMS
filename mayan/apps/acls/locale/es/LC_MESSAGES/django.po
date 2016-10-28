@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:09-0400\n"
-"PO-Revision-Date: 2016-05-09 01:48+0000\n"
+"POT-Creation-Date: 2016-10-28 03:17-0400\n"
+"PO-Revision-Date: 2016-10-28 07:38+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -21,11 +21,11 @@ msgstr ""
 "Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:14 links.py:30
+#: apps.py:14 links.py:31
 msgid "ACLs"
 msgstr "LCAs"
 
-#: apps.py:22 links.py:38 models.py:36
+#: apps.py:22 links.py:40 models.py:36
 msgid "Permissions"
 msgstr "Permisos"
 
@@ -34,11 +34,11 @@ msgstr "Permisos"
 msgid "Role"
 msgstr "Rol"
 
-#: links.py:26
+#: links.py:27
 msgid "Delete"
 msgstr "Borrar"
 
-#: links.py:34
+#: links.py:35
 #| msgid "View ACLs"
 msgid "New ACL"
 msgstr "Nueva LCA"
@@ -55,7 +55,13 @@ msgstr "Entrada de acceso"
 msgid "Access entries"
 msgstr "Entradas de acceso"
 
-#: models.py:60
+#: models.py:48
+#, python-format
+#| msgid "mission \"%(permission)s\" granted to %(actor)s for %(object)s."
+msgid "Permissions \"%(permissions)s\" to role \"%(role)s\" for \"%(object)s\""
+msgstr "Permisos \"%(permissions)s\" para el rol \"%(role)s\" para \"%(object)s\""
+
+#: models.py:64
 msgid "None"
 msgstr "Ninguno"
 
@@ -175,9 +181,6 @@ msgstr "Los permisos inactivos se heredan de un objeto precedente."
 
 #~ msgid "Are you sure you wish to grant the permissions %(title_suffix)s?"
 #~ msgstr "Are you sure you wish to grant the permissions %(title_suffix)s?"
-
-#~ msgid "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
-#~ msgstr "Permission \"%(permission)s\" granted to %(actor)s for %(object)s."
 
 #~ msgid ""
 #~ "%(actor)s, already had the permission \"%(permission)s\" granted for "

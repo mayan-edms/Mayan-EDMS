@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 # Translators:
 # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:10-0400\n"
+"POT-Creation-Date: 2016-10-28 03:18-0400\n"
 "PO-Revision-Date: 2016-04-27 18:22+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/language/fa/)\n"
+"Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
+"language/fa/)\n"
+"Language: fa\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fa\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: apps.py:30
@@ -26,19 +27,19 @@ msgstr ""
 msgid "Key ID"
 msgstr "شناسه کلید"
 
-#: apps.py:74 apps.py:87 forms.py:19 models.py:67
+#: apps.py:74 apps.py:87 forms.py:19 models.py:47
 msgid "User ID"
 msgstr ""
 
-#: apps.py:77 forms.py:34 models.py:70
+#: apps.py:77 forms.py:34 models.py:50
 msgid "Type"
 msgstr "نوع"
 
-#: apps.py:79 forms.py:23 models.py:51
+#: apps.py:79 forms.py:23 models.py:31
 msgid "Creation date"
 msgstr "تاریخ ایجاد"
 
-#: apps.py:82 forms.py:27 models.py:55
+#: apps.py:82 forms.py:27 models.py:35
 msgid "Expiration date"
 msgstr "تاریخ انقضا"
 
@@ -46,7 +47,7 @@ msgstr "تاریخ انقضا"
 msgid "No expiration"
 msgstr ""
 
-#: apps.py:85 forms.py:32 models.py:62
+#: apps.py:85 forms.py:32 models.py:42
 msgid "Length"
 msgstr "طول"
 
@@ -54,11 +55,11 @@ msgstr "طول"
 msgid "None"
 msgstr "هیچکدام."
 
-#: forms.py:31 models.py:59
+#: forms.py:31 models.py:39
 msgid "Fingerprint"
 msgstr ""
 
-#: forms.py:33 models.py:65
+#: forms.py:33 models.py:45
 msgid "Algorithm"
 msgstr ""
 
@@ -95,7 +96,6 @@ msgid "Key management"
 msgstr "مدیریت کلید"
 
 #: links.py:37
-#| msgid "Import key"
 msgid "Upload key"
 msgstr ""
 
@@ -151,28 +151,27 @@ msgstr "سند امضا شده است و امضا مورد تایید میباش
 msgid "Document is signed with a valid signature."
 msgstr "سند با امضای مورد تایید امضا شده است."
 
-#: models.py:47
+#: models.py:27
 msgid "ASCII armored version of the key."
 msgstr ""
 
-#: models.py:48
+#: models.py:28
 msgid "Key data"
 msgstr ""
 
-#: models.py:76
-#| msgid "Key ID"
+#: models.py:56
 msgid "Key"
 msgstr ""
 
-#: models.py:77
+#: models.py:57
 msgid "Keys"
 msgstr ""
 
-#: models.py:86
+#: models.py:63
 msgid "Invalid key data"
 msgstr ""
 
-#: models.py:89
+#: models.py:66
 msgid "Key already exists."
 msgstr ""
 
@@ -193,7 +192,6 @@ msgid "Use keys to sign content"
 msgstr ""
 
 #: permissions.py:22
-#| msgid "public keys"
 msgid "Upload keys"
 msgstr ""
 
@@ -202,7 +200,6 @@ msgid "View keys"
 msgstr "دیدن کلیدها"
 
 #: settings.py:10
-#| msgid "Signature error."
 msgid "Signatures"
 msgstr "امضاها"
 
@@ -215,13 +212,11 @@ msgid "Path to the GPG binary."
 msgstr "محل کتایخانه باینری GPG"
 
 #: settings.py:25
-#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr ""
 
 #: views.py:38
 #, python-format
-#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr ""
 
@@ -232,7 +227,6 @@ msgstr ""
 
 #: views.py:68
 #, python-format
-#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr ""
 
@@ -242,7 +236,6 @@ msgstr "وارد کردن کلید"
 
 #: views.py:78
 #, python-format
-#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
@@ -286,12 +279,12 @@ msgstr ""
 #~ msgstr "Delete key"
 
 #~ msgid ""
-#~ "Delete key %s? If you delete a public key that is part of a public/private "
-#~ "pair the private key will be deleted as well."
+#~ "Delete key %s? If you delete a public key that is part of a public/"
+#~ "private pair the private key will be deleted as well."
 #~ msgstr ""
-#~ "Are you sure you wish to delete key: %s?  If you try to delete a public key "
-#~ "that is part of a public/private pair the private key will be deleted as "
-#~ "well."
+#~ "Are you sure you wish to delete key: %s?  If you try to delete a public "
+#~ "key that is part of a public/private pair the private key will be deleted "
+#~ "as well."
 
 #~ msgid "results"
 #~ msgstr "results"

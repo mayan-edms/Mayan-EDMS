@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Bruno CAPELETO <bruno.capeleto@abcreseau.com>, 2016
 # Thierry Schott <DarkDare@users.noreply.github.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:11-0400\n"
-"PO-Revision-Date: 2016-04-27 18:22+0000\n"
+"POT-Creation-Date: 2016-10-28 03:19-0400\n"
+"PO-Revision-Date: 2016-10-28 07:33+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/fr/)\n"
 "MIME-Version: 1.0\n"
@@ -19,85 +20,85 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
-#: apps.py:82 apps.py:162 apps.py:383 models.py:230 permissions.py:7
+#: apps.py:83 apps.py:163 apps.py:384 models.py:231 permissions.py:7
 #: settings.py:17
 msgid "Documents"
 msgstr "Documents"
 
-#: apps.py:97
+#: apps.py:98
 msgid "Create a document type"
 msgstr "Créer un type de document"
 
-#: apps.py:99
+#: apps.py:100
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr "Chaque document téléchargé doit être associé à un type de document, cela permet à Mayan EDMS de catégoriser les documents."
 
-#: apps.py:106 models.py:66 models.py:159 models.py:625 search.py:20
+#: apps.py:107 models.py:65 models.py:158 models.py:626 search.py:20
 msgid "Label"
 msgstr "Libellé"
 
-#: apps.py:111
+#: apps.py:112
 msgid "The MIME type of any of the versions of a document"
 msgstr "Type MIME d'une version quelconque d'un document"
 
-#: apps.py:112 apps.py:196 search.py:18 views.py:829
+#: apps.py:113 apps.py:197 search.py:18 views.py:829
 msgid "MIME type"
 msgstr "Type MIME"
 
-#: apps.py:150 apps.py:174
+#: apps.py:151 apps.py:175
 msgid "Thumbnail"
 msgstr "Vignette"
 
-#: apps.py:158 apps.py:184
+#: apps.py:159 apps.py:185
 msgid "Type"
 msgstr "Type"
 
-#: apps.py:169 models.py:627
+#: apps.py:170 models.py:628
 msgid "Enabled"
 msgstr "Activé"
 
-#: apps.py:187
+#: apps.py:188
 msgid "Date time trashed"
 msgstr "Date et heure d'envoi à la corbeille"
 
-#: apps.py:192
+#: apps.py:193
 msgid "Time and date"
 msgstr "Heure et date"
 
-#: apps.py:200 views.py:830
+#: apps.py:201 views.py:830
 msgid "Encoding"
 msgstr "Encodage"
 
-#: apps.py:204 models.py:356
+#: apps.py:205 models.py:357
 msgid "Comment"
 msgstr "Commentaire"
 
-#: apps.py:386
+#: apps.py:387
 #| msgid "New document filename"
 msgid "New documents per month"
 msgstr "Nouveaux documents par mois"
 
-#: apps.py:393
+#: apps.py:394
 #| msgid "Document version reverted successfully"
 msgid "New document versions per month"
 msgstr "Nouvelles versions de document par mois"
 
-#: apps.py:400
+#: apps.py:401
 #| msgid "View document types"
 msgid "New document pages per month"
 msgstr "Nouvelles pages de document par mois"
 
-#: apps.py:407
+#: apps.py:408
 msgid "Total documents at each month"
 msgstr "Nombre total de documents chaque mois"
 
-#: apps.py:414
+#: apps.py:415
 msgid "Total document versions at each month"
 msgstr "Nombre total de versions de documents chaque mois"
 
-#: apps.py:421
+#: apps.py:422
 msgid "Total document pages at each month"
 msgstr "Nombre total de pages de documents chaque mois"
 
@@ -107,7 +108,7 @@ msgstr "Document créé"
 
 #: events.py:12
 msgid "Document downloaded"
-msgstr ""
+msgstr "Document téléchargé"
 
 #: events.py:15
 msgid "Document properties edited"
@@ -129,70 +130,70 @@ msgstr "Retour à la version précédente du document"
 
 #: events.py:29
 msgid "Document viewed"
-msgstr ""
+msgstr "Document consulté"
 
-#: forms.py:41 links.py:205
+#: forms.py:42 links.py:205
 msgid "Page image"
 msgstr "Image de la page"
 
-#: forms.py:55 forms.py:58
+#: forms.py:56 forms.py:59
 #, python-format
 msgid "Document pages (%d)"
 msgstr "Pages (%d) du document"
 
-#: forms.py:88
+#: forms.py:90
 msgid "Quick document rename"
 msgstr "Renommage rapide du document"
 
-#: forms.py:110
+#: forms.py:112
 msgid "Date added"
 msgstr "Date d'ajout"
 
-#: forms.py:114
+#: forms.py:116
 msgid "UUID"
 msgstr "UUID"
 
-#: forms.py:120
+#: forms.py:122
 msgid "File mimetype"
 msgstr "Type MIME du fichier"
 
-#: forms.py:121 forms.py:126
+#: forms.py:123 forms.py:128
 msgid "None"
 msgstr "Aucun"
 
-#: forms.py:124
+#: forms.py:126
 msgid "File encoding"
 msgstr "Encodage du fichier"
 
-#: forms.py:130
+#: forms.py:132
 msgid "File size"
 msgstr "Taille du fichier"
 
-#: forms.py:135
+#: forms.py:137
 msgid "Exists in storage"
 msgstr "Présent dans le stockage local"
 
-#: forms.py:137
+#: forms.py:139
 msgid "File path in storage"
 msgstr "Chemin du fichier dans le stockage local"
 
-#: forms.py:140 models.py:371
+#: forms.py:142 models.py:372
 msgid "Checksum"
 msgstr "Somme de contrôle"
 
-#: forms.py:141 links.py:58
+#: forms.py:143 links.py:58
 msgid "Pages"
 msgstr "Pages"
 
-#: forms.py:172 models.py:106 models.py:155 models.py:622 search.py:15
+#: forms.py:174 models.py:105 models.py:154 models.py:623 search.py:15
 msgid "Document type"
 msgstr "Type de document"
 
-#: forms.py:188
+#: forms.py:190
 msgid "Compress"
 msgstr "Compresser"
 
-#: forms.py:190
+#: forms.py:192
 #| msgid ""
 #| "ad the document in the original format or in a compressed manner.  s ion is "
 #| "selectable only when downloading one document, for tiple uments, the bundle "
@@ -203,23 +204,19 @@ msgid ""
 "documents, the bundle will always be downloads as a compressed file."
 msgstr "Télécharger le document dans son format original ou sous forme d'archive compressée.  Cette option est uniquement disponible lors du téléchargement d'un document, lors du téléchargement d'un groupe de documents, ce dernier sera toujours téléchargé en tant qu'archive compressée."
 
-#: forms.py:197
+#: forms.py:199
 msgid "Compressed filename"
 msgstr "Nom du fichier compressé"
 
-#: forms.py:200
+#: forms.py:202
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
 msgstr "Le nom de fichier du fichier compressé qui contiendra les documents à importer, si l'option précédente est sélectionnée."
 
-#: forms.py:217 literals.py:23
+#: forms.py:219 literals.py:24
 msgid "Page range"
 msgstr "Ensemble de pages"
-
-#: handlers.py:13
-msgid "Default"
-msgstr "Défaut"
 
 #: links.py:43
 msgid "Preview"
@@ -235,7 +232,7 @@ msgstr "Versions"
 
 #: links.py:64 links.py:105
 msgid "Clear transformations"
-msgstr "Réinitialiser les transformations"
+msgstr "Effacer les transformations"
 
 #: links.py:69 links.py:113 links.py:238 links.py:252
 msgid "Delete"
@@ -271,13 +268,13 @@ msgstr "Restaurer"
 
 #: links.py:132
 msgid "Download version"
-msgstr ""
+msgstr "Télécharger cette version"
 
 #: links.py:137 views.py:82
 msgid "All documents"
 msgstr "Tous les documents"
 
-#: links.py:140 models.py:814 views.py:656
+#: links.py:140 models.py:815 views.py:656
 msgid "Recent documents"
 msgstr "Documents récents"
 
@@ -316,7 +313,7 @@ msgstr "Page précédente"
 msgid "Next page"
 msgstr "Page suivante"
 
-#: links.py:191 models.py:229 models.py:350 models.py:777 models.py:796
+#: links.py:191 models.py:230 models.py:351 models.py:778 models.py:797
 #: views.py:827
 msgid "Document"
 msgstr "Document"
@@ -357,7 +354,7 @@ msgstr "Modifier"
 msgid "Add quick label to document type"
 msgstr "Ajouter une étiquette rapide au document"
 
-#: links.py:260 models.py:633
+#: links.py:260 models.py:634
 msgid "Quick labels"
 msgstr "Etiquettes rapides"
 
@@ -365,57 +362,61 @@ msgstr "Etiquettes rapides"
 msgid "Document types"
 msgstr "Types de documents"
 
-#: literals.py:23
+#: literals.py:14
+msgid "Default"
+msgstr "Défaut"
+
+#: literals.py:24
 msgid "All pages"
 msgstr "Toutes les pages"
 
-#: models.py:70
+#: models.py:69
 msgid ""
 "Amount of time after which documents of this type will be moved to the "
 "trash."
 msgstr "Temps après lequel les documents de ce type seront déplacés vers la corbeille."
 
-#: models.py:72
+#: models.py:71
 msgid "Trash time period"
 msgstr "Temps avant déplacement vers la corbeille"
 
-#: models.py:76
+#: models.py:75
 msgid "Trash time unit"
 msgstr "Unité de temps du déplacement vers la corbeille"
 
-#: models.py:80
+#: models.py:79
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
 msgstr "Temps après lequel les documents de ce type présents dans la corbeille seront supprimés."
 
-#: models.py:82
+#: models.py:81
 #| msgid "Delete document types"
 msgid "Delete time period"
 msgstr "Temps avant suppression"
 
-#: models.py:87
+#: models.py:86
 #| msgid "Delete documents"
 msgid "Delete time unit"
 msgstr "Unité de temps avant suppression"
 
-#: models.py:107
+#: models.py:106
 msgid "Documents types"
 msgstr "Types de documents"
 
-#: models.py:159
+#: models.py:158
 msgid "The name of the document"
 msgstr "Le nom du document"
 
-#: models.py:162 search.py:21
+#: models.py:161 search.py:21
 msgid "Description"
 msgstr "Description"
 
-#: models.py:165
+#: models.py:164
 msgid "Added"
 msgstr "Ajouté"
 
-#: models.py:170
+#: models.py:169
 msgid "Language"
 msgstr "Langue"
 
@@ -434,68 +435,68 @@ msgid ""
 "API."
 msgstr "Un document parcellaire est un document avec une entrée en base de données mais aucun fichier téléchargé. Cela peut correspondre à un téléchargement interrompu ou à un téléchargement retardé par l'API."
 
-#: models.py:184
+#: models.py:185
 msgid "Is stub?"
 msgstr "Parcellaire ?"
 
-#: models.py:192
+#: models.py:193
 #, python-format
 #| msgid "Document types: %d"
 msgid "Document stub, id: %d"
 msgstr "Parcelle de document, id : %d"
 
-#: models.py:353
+#: models.py:354
 msgid "Timestamp"
 msgstr "Horodatage"
 
-#: models.py:362
+#: models.py:363
 msgid "File"
 msgstr "Fichier"
 
-#: models.py:444 models.py:445 models.py:646
+#: models.py:445 models.py:446 models.py:647
 msgid "Document version"
 msgstr "Version du document"
 
-#: models.py:632
+#: models.py:633
 msgid "Quick label"
 msgstr "Renommage rapide"
 
-#: models.py:650
+#: models.py:651
 msgid "Page number"
 msgstr "Numéro de page"
 
-#: models.py:655
+#: models.py:656
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Page %(page_num)d sur %(total_pages)d de %(document)s"
 
-#: models.py:671
+#: models.py:672
 msgid "Document page"
 msgstr "Page du document"
 
-#: models.py:672
+#: models.py:673
 msgid "Document pages"
 msgstr "Pages du document"
 
-#: models.py:782
-#| msgid "Version update"
-msgid "New version block"
-msgstr ""
-
 #: models.py:783
 #| msgid "Version update"
-msgid "New version blocks"
-msgstr ""
+msgid "New version block"
+msgstr "Bloc de la nouvelle version"
 
-#: models.py:793
+#: models.py:784
+#| msgid "Version update"
+msgid "New version blocks"
+msgstr "Blocs de la nouvelle version"
+
+#: models.py:794
 msgid "User"
 msgstr "Utilisateur"
 
-#: models.py:799
+#: models.py:800
 msgid "Accessed"
 msgstr "Consulté"
 
-#: models.py:813
+#: models.py:814
 msgid "Recent document"
 msgstr "Document récent"
 
@@ -535,8 +536,8 @@ msgstr "Imprimer les documents"
 
 #: permissions.py:34
 #| msgid "Delete documents"
-msgid "Restore deleted document"
-msgstr "Rétablir le document supprimé"
+msgid "Restore trashed document"
+msgstr ""
 
 #: permissions.py:37
 msgid "Execute document modifying tools"

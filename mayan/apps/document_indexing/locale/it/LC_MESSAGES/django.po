@@ -1,66 +1,71 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Carlo Zanatto <>, 2012
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:11-0400\n"
-"PO-Revision-Date: 2016-03-21 21:09+0000\n"
+"POT-Creation-Date: 2016-10-28 03:19-0400\n"
+"PO-Revision-Date: 2016-10-28 07:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: admin.py:24
 msgid "None"
-msgstr "Nessuna "
+msgstr "Nessuno"
 
-#: admin.py:26 apps.py:134 links.py:48 models.py:41
+#: admin.py:26 apps.py:139 links.py:48 models.py:41
 msgid "Document types"
 msgstr "Tipi di documento"
 
-#: apps.py:48
+#: apps.py:49
+#| msgid "document indexes"
 msgid "Document indexing"
-msgstr ""
+msgstr "Indicizzazione documento"
 
-#: apps.py:120 models.py:25
+#: apps.py:125 models.py:25
 msgid "Label"
 msgstr "etichetta"
 
-#: apps.py:121 models.py:30
+#: apps.py:126 models.py:30
 msgid "Slug"
-msgstr "lumaca "
+msgstr "Slug"
 
-#: apps.py:123 apps.py:143 models.py:38 models.py:126
+#: apps.py:128 apps.py:148 models.py:38 models.py:126
 msgid "Enabled"
 msgstr "Abilitato"
 
-#: apps.py:128 apps.py:158 apps.py:171
+#: apps.py:133 apps.py:163 apps.py:176
 msgid "Items"
 msgstr "Articoli"
 
-#: apps.py:139
+#: apps.py:144
 msgid "Level"
 msgstr "Livello"
 
-#: apps.py:147
+#: apps.py:152
 msgid "Has document links?"
 msgstr "Il documento ha un collegamento?"
 
-#: apps.py:154 apps.py:165
+#: apps.py:159 apps.py:170
 msgid "Node"
 msgstr "Nodo"
+
+#: handlers.py:18
+msgid "Creation date"
+msgstr "Data di creazione"
 
 #: links.py:18 links.py:22 links.py:25 links.py:28 models.py:83 views.py:75
 #: views.py:235
@@ -100,19 +105,17 @@ msgstr "Novo nodo figlio"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr ""
-"Errore nell'ndicizzazione del documento: %(document)s; espressione: "
-"%(expression)s; %(exception)s"
+msgstr "Errore nell'ndicizzazione del documento: %(document)s; espressione: %(expression)s; %(exception)s"
 
 #: models.py:29
+#| msgid "Internal name used to reference this index."
 msgid "This values will be used by other apps to reference this index."
-msgstr ""
+msgstr "Questo valore è utilizzato dalle altre apps per riferirsi a questo indice."
 
 #: models.py:35
-msgid "Causes this index to be visible and updated when document data changes."
-msgstr ""
-"Fa sì che questo indice possa essere visibile e aggiornato quando i dati del "
-"documento cambiano."
+msgid ""
+"Causes this index to be visible and updated when document data changes."
+msgstr "Fa sì che questo indice possa essere visibile e aggiornato quando i dati del documento cambiano."
 
 #: models.py:82 models.py:109
 msgid "Index"
@@ -124,13 +127,13 @@ msgstr "index instance"
 
 #: models.py:102
 msgid "Index instances"
-msgstr ""
+msgstr "Instanze indice"
 
 #: models.py:114
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
+msgstr "Inserisci il template da renderizzare. Usa il linguaggio di template di Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:118
 msgid "Indexing expression"
@@ -138,17 +141,13 @@ msgstr "Espressione di indicizzazione"
 
 #: models.py:123
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr ""
-"Fa sì che questo nodo possa essere visibili e aggiornato quando i dati del "
-"documento cambiano."
+msgstr "Fa sì che questo nodo possa essere visibili e aggiornato quando i dati del documento cambiano."
 
 #: models.py:131
 msgid ""
-"Check this option to have this node act as a container for documents and not "
-"as a parent for further nodes."
-msgstr ""
-"Selezionare questa opzione per questo specifico nodo quale contenitore per i "
-"documenti e non come un genitore per ulteriori nodi."
+"Check this option to have this node act as a container for documents and not"
+" as a parent for further nodes."
+msgstr "Selezionare questa opzione per questo specifico nodo quale contenitore per i documenti e non come un genitore per ulteriori nodi."
 
 #: models.py:134
 msgid "Link documents"
@@ -188,11 +187,11 @@ msgstr "Istanze nodo indici"
 
 #: models.py:213
 msgid "Document index node instance"
-msgstr ""
+msgstr "Istanza del nodo indice del documento"
 
 #: models.py:214
 msgid "Document indexes node instances"
-msgstr ""
+msgstr "Istanze dei nodi indice del documento"
 
 #: permissions.py:7
 msgid "Indexing"
@@ -220,8 +219,9 @@ msgstr "Ricostruisci indici documento"
 
 #: views.py:51
 #, python-format
+#| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
-msgstr ""
+msgstr "Cancellare l'indice: %s?"
 
 #: views.py:64
 #, python-format
@@ -230,16 +230,16 @@ msgstr "Modifica indice: %s"
 
 #: views.py:81
 msgid "Available document types"
-msgstr ""
+msgstr "Tipi di documento disponibili"
 
 #: views.py:83
 msgid "Document types linked"
-msgstr ""
+msgstr "Tipi di documento collegati"
 
 #: views.py:106
 #, python-format
 msgid "Document types linked to index: %s"
-msgstr ""
+msgstr "Tipi di documento collegati all'indice: %s"
 
 #: views.py:145
 #, python-format
@@ -249,22 +249,22 @@ msgstr "Template principale per i nodi dell'indice: %s"
 #: views.py:172
 #, python-format
 msgid "Create child node of: %s"
-msgstr ""
+msgstr "Crea un nodo figlio di: %s"
 
 #: views.py:196
 #, python-format
 msgid "Delete the index template node: %s?"
-msgstr ""
+msgstr "Cancellare il template del nodo indice: %s?"
 
 #: views.py:218
 #, python-format
 msgid "Edit the index template node: %s?"
-msgstr ""
+msgstr "Modificare il template del nodo indice: %s?"
 
 #: views.py:286
 #, python-format
 msgid "Navigation: %s"
-msgstr ""
+msgstr "Navigazione: %s"
 
 #: views.py:291
 #, python-format
@@ -274,17 +274,15 @@ msgstr "Contenuti per l'indice: %s"
 #: views.py:331
 #, python-format
 msgid "Indexes nodes containing document: %s"
-msgstr ""
+msgstr "Indici contenuti nel documento: %s"
 
 #: views.py:341
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Per un database di grosse dimensioni l'operazione protrebbe aver bisogno di "
-"tempo."
+msgstr "Per un database di grosse dimensioni l'operazione protrebbe aver bisogno di tempo."
 
 #: views.py:342
 msgid "Rebuild all indexes?"
-msgstr ""
+msgstr "Ricostruire tutti gli indici?"
 
 #: views.py:351
 msgid "Index rebuild queued successfully."
@@ -351,11 +349,9 @@ msgstr "Ricostruzione dell'indice messo in coda."
 #~ msgstr "Maximum suffix (%s) count reached."
 
 #~ msgid ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 #~ msgstr ""
-#~ "Error in document indexing update expression: %(expression)s; "
-#~ "%(exception)s"
+#~ "Error in document indexing update expression: %(expression)s; %(exception)s"
 
 #~ msgid "Unable to delete document indexing node; %s"
 #~ msgstr "Unable to delete document indexing node; %s"
@@ -392,11 +388,11 @@ msgstr "Ricostruzione dell'indice messo in coda."
 #~ msgstr "documents rename count"
 
 #~ msgid ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 #~ msgstr ""
-#~ "A dictionary that maps the index name and where on the filesystem that "
-#~ "index will be mirrored."
+#~ "A dictionary that maps the index name and where on the filesystem that index"
+#~ " will be mirrored."
 
 #~ msgid "Index rebuild error: %s"
 #~ msgstr "Index rebuild error: %s"
