@@ -1,3 +1,9 @@
+2.2 (2016-XX-XX)
+================
+- Remove the installation app
+- Add support for document page search
+- Remove recent searches feature
+
 2.1.4 (2016-XX-XX)
 ==================
 - Add missing link to the 2.1.3 release notes in the index file.
