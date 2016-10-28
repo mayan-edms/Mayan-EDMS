@@ -5,7 +5,7 @@ import urlparse
 
 from django.conf import settings
 from django.core.urlresolvers import reverse
-from django.http import HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect
 from django.utils.translation import ugettext_lazy as _
 from django.views.generic.base import RedirectView
 
@@ -13,12 +13,13 @@ from common.generics import SimpleView, SingleObjectListView
 
 from .classes import SearchModel
 from .forms import SearchForm, AdvancedSearchForm
+from .mixins import SearchModelMixin
 from .settings import setting_limit
 
 logger = logging.getLogger(__name__)
 
 
-class ResultsView(SingleObjectListView):
+class ResultsView(SearchModelMixin, SingleObjectListView):
     def get_extra_context(self):
         context = {
             'hide_links': True,
@@ -48,11 +49,8 @@ class ResultsView(SingleObjectListView):
 
             return queryset
 
-    def get_search_model(self):
-        return SearchModel.get(self.kwargs['search_model'])
 
-
-class SearchView(SimpleView):
+class SearchView(SearchModelMixin, SimpleView):
     template_name = 'appearance/generic_form.html'
     title = _('Search')
 
@@ -60,7 +58,9 @@ class SearchView(SimpleView):
         self.search_model = self.get_search_model()
         return {
             'form': self.get_form(),
-            'form_action': reverse('search:results', args=(self.search_model.get_full_name(),)),
+            'form_action': reverse(
+                'search:results', args=(self.search_model.get_full_name(),)
+            ),
             'search_model': self.search_model,
             'submit_icon': 'fa fa-search',
             'submit_label': _('Search'),
@@ -74,9 +74,6 @@ class SearchView(SimpleView):
             return SearchForm(initial={'q': query_string})
         else:
             return SearchForm()
-
-    def get_search_model(self):
-        return SearchModel.get(self.kwargs['search_model'])
 
 
 class AdvancedSearchView(SearchView):

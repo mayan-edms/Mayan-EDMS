@@ -8,6 +8,7 @@ from django.apps import apps
 from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.utils.module_loading import import_string
+from django.utils.translation import ugettext as _
 
 from acls.models import AccessControlList
 from permissions import Permission
@@ -22,11 +23,22 @@ class SearchModel(object):
 
     @classmethod
     def get(cls, full_name):
-        result = cls.registry[full_name]
+        try:
+            result = cls.registry[full_name]
+        except KeyError:
+            raise KeyError(_('No search model matching the query'))
         if not hasattr(result, 'serializer'):
             result.serializer = import_string(result.serializer_string)
 
         return result
+
+    @classmethod
+    def as_choices(cls):
+        return cls.registry
+
+    @classmethod
+    def all(cls):
+        return cls.registry.values()
 
     def __init__(self, app_label, model_name, serializer_string, label=None, permission=None):
         self.app_label = app_label
