@@ -56,7 +56,7 @@ def find_packages(directory):
     return packages
 
 install_requires = """
-Django==1.8.13
+Django==1.8.15
 Pillow==3.1.0
 PyYAML==3.11
 celery==3.1.19
@@ -85,7 +85,7 @@ pdfminer==20140328
 pycountry==1.19
 pytesseract==0.1.6
 python-dateutil==2.4.2
-python-gnupg==0.3.8
+python-gnupg==0.3.9
 python-magic==0.4.10
 pytz==2015.4
 sh==1.11
