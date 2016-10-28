@@ -33,7 +33,7 @@ To install Mayan EDMS, simply do:
 
     $ virtualenv venv
     $ source venv/bin/activate
-    $ pip install mayan-edms
+    (venv) $ pip install mayan-edms
     (venv) $ mayan-edms.py initialsetup
     (venv) $ mayan-edms.py runserver
 

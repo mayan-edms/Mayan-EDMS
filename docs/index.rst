@@ -10,12 +10,12 @@ and install it from PyPI with the following commands:
 
 .. code-block:: bash
 
-    sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gnupg1 python-dev python-virtualenv tesseract-ocr poppler-utils -y
-    virtualenv venv
-    source venv/bin/activate
-    pip install mayan-edms
-    mayan-edms.py initialsetup
-    mayan-edms.py runserver
+    $ sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gnupg1 python-dev python-virtualenv tesseract-ocr poppler-utils -y
+    $ virtualenv venv
+    $ source venv/bin/activate
+    (venv) pip install mayan-edms
+    (venv) mayan-edms.py initialsetup
+    (venv) mayan-edms.py runserver
 
 Point your browser to 127.0.0.1:8000 and use the automatically created admin
 account.
