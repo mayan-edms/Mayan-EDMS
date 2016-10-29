@@ -1,4 +1,4 @@
-|PyPI badge| |Build Status| |Coverage badge| |License badge|
+|PyPI badge| |Build Status| |Coverage badge| |Documentation| |License badge|
 
 |Logo|
 
@@ -33,7 +33,7 @@ To install Mayan EDMS, simply do:
 
     $ virtualenv venv
     $ source venv/bin/activate
-    $ pip install mayan-edms
+    (venv) $ pip install mayan-edms
     (venv) $ mayan-edms.py initialsetup
     (venv) $ mayan-edms.py runserver
 
@@ -60,5 +60,7 @@ account.
 .. |Analytics| image:: https://ga-beacon.appspot.com/UA-52965619-2/mayan-edms/readme?pixel
 .. |Coverage badge| image:: https://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=master
    :target: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=master
+.. |Documentation| image:: https://readthedocs.org/projects/mayan/badge/?version=latest
+   :target: http://mayan.readthedocs.io/en/latest
 
 |Analytics|

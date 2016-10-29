@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:09-0400\n"
+"POT-Creation-Date: 2016-10-28 03:18-0400\n"
 "PO-Revision-Date: 2016-03-21 21:06+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Persian (http://www.transifex.com/rosarior/mayan-edms/"
@@ -170,7 +170,7 @@ msgstr "ارسال"
 msgid "Cancel"
 msgstr "لغو"
 
-#: templates/appearance/generic_list_horizontal.html:20
+#: templates/appearance/generic_list_horizontal.html:21
 #: templates/appearance/generic_list_subtemplate.html:108
 msgid "No results"
 msgstr "بی جواب و یا بی جواب"

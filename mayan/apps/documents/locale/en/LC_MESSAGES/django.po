@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:11-0400\n"
+"POT-Creation-Date: 2016-10-28 03:19-0400\n"
 "PO-Revision-Date: 2013-11-20 11:36+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: English (http://www.transifex.com/projects/p/mayan-edms/"
@@ -18,94 +18,94 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:82 apps.py:162 apps.py:383 models.py:230 permissions.py:7
+#: apps.py:83 apps.py:163 apps.py:384 models.py:231 permissions.py:7
 #: settings.py:17
 msgid "Documents"
 msgstr "Documents"
 
-#: apps.py:97
+#: apps.py:98
 #, fuzzy
 msgid "Create a document type"
 msgstr "Create document types"
 
-#: apps.py:99
+#: apps.py:100
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
 msgstr ""
 
-#: apps.py:106 models.py:66 models.py:159 models.py:625 search.py:20
+#: apps.py:107 models.py:65 models.py:158 models.py:626 search.py:20
 msgid "Label"
 msgstr ""
 
-#: apps.py:111
+#: apps.py:112
 msgid "The MIME type of any of the versions of a document"
 msgstr ""
 
-#: apps.py:112 apps.py:196 search.py:18 views.py:829
+#: apps.py:113 apps.py:197 search.py:18 views.py:829
 msgid "MIME type"
 msgstr "MIME type"
 
-#: apps.py:150 apps.py:174
+#: apps.py:151 apps.py:175
 #, fuzzy
 msgid "Thumbnail"
 msgstr "thumbnail"
 
-#: apps.py:158 apps.py:184
+#: apps.py:159 apps.py:185
 msgid "Type"
 msgstr ""
 
-#: apps.py:169 models.py:627
+#: apps.py:170 models.py:628
 #, fuzzy
 msgid "Enabled"
 msgstr "enabled"
 
-#: apps.py:187
+#: apps.py:188
 #, fuzzy
 msgid "Date time trashed"
 msgstr "Date added"
 
-#: apps.py:192
+#: apps.py:193
 #, fuzzy
 msgid "Time and date"
 msgstr "time and date"
 
-#: apps.py:200 views.py:830
+#: apps.py:201 views.py:830
 #, fuzzy
 msgid "Encoding"
 msgstr "encoding"
 
-#: apps.py:204 models.py:356
+#: apps.py:205 models.py:357
 msgid "Comment"
 msgstr "Comment"
 
-#: apps.py:386
+#: apps.py:387
 #, fuzzy
 #| msgid "New document filename"
 msgid "New documents per month"
 msgstr "New document filename"
 
-#: apps.py:393
+#: apps.py:394
 #, fuzzy
 #| msgid "Document version reverted successfully"
 msgid "New document versions per month"
 msgstr "Document version reverted successfully"
 
-#: apps.py:400
+#: apps.py:401
 #, fuzzy
 #| msgid "View document types"
 msgid "New document pages per month"
 msgstr "View document types"
 
-#: apps.py:407
+#: apps.py:408
 msgid "Total documents at each month"
 msgstr ""
 
-#: apps.py:414
+#: apps.py:415
 msgid "Total document versions at each month"
 msgstr ""
 
-#: apps.py:421
+#: apps.py:422
 msgid "Total document pages at each month"
 msgstr ""
 
@@ -146,69 +146,69 @@ msgstr "Document version reverted successfully"
 msgid "Document viewed"
 msgstr "Document edited"
 
-#: forms.py:41 links.py:205
+#: forms.py:42 links.py:205
 msgid "Page image"
 msgstr "Page image"
 
-#: forms.py:55 forms.py:58
+#: forms.py:56 forms.py:59
 #, fuzzy, python-format
 msgid "Document pages (%d)"
 msgstr "Document pages (%s)"
 
-#: forms.py:88
+#: forms.py:90
 msgid "Quick document rename"
 msgstr "Quick document rename"
 
-#: forms.py:110
+#: forms.py:112
 msgid "Date added"
 msgstr "Date added"
 
-#: forms.py:114
+#: forms.py:116
 msgid "UUID"
 msgstr "UUID"
 
-#: forms.py:120
+#: forms.py:122
 msgid "File mimetype"
 msgstr "File mimetype"
 
-#: forms.py:121 forms.py:126
+#: forms.py:123 forms.py:128
 msgid "None"
 msgstr "None"
 
-#: forms.py:124
+#: forms.py:126
 #, fuzzy
 msgid "File encoding"
 msgstr "File mime encoding"
 
-#: forms.py:130
+#: forms.py:132
 msgid "File size"
 msgstr "File size"
 
-#: forms.py:135
+#: forms.py:137
 msgid "Exists in storage"
 msgstr "Exists in storage"
 
-#: forms.py:137
+#: forms.py:139
 msgid "File path in storage"
 msgstr "File path in storage"
 
-#: forms.py:140 models.py:371
+#: forms.py:142 models.py:372
 msgid "Checksum"
 msgstr "Checksum"
 
-#: forms.py:141 links.py:58
+#: forms.py:143 links.py:58
 msgid "Pages"
 msgstr "Pages"
 
-#: forms.py:172 models.py:106 models.py:155 models.py:622 search.py:15
+#: forms.py:174 models.py:105 models.py:154 models.py:623 search.py:15
 msgid "Document type"
 msgstr "Document type"
 
-#: forms.py:188
+#: forms.py:190
 msgid "Compress"
 msgstr "Compress"
 
-#: forms.py:190
+#: forms.py:192
 #, fuzzy
 #| msgid ""
 #| "Download the document in the original format or in a compressed manner.  "
@@ -224,11 +224,11 @@ msgstr ""
 "This option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
 
-#: forms.py:197
+#: forms.py:199
 msgid "Compressed filename"
 msgstr "Compressed filename"
 
-#: forms.py:200
+#: forms.py:202
 msgid ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
@@ -236,13 +236,9 @@ msgstr ""
 "The filename of the compressed file that will contain the documents to be "
 "downloaded, if the previous option is selected."
 
-#: forms.py:217 literals.py:23
+#: forms.py:219 literals.py:24
 msgid "Page range"
 msgstr "Page range"
-
-#: handlers.py:13
-msgid "Default"
-msgstr ""
 
 #: links.py:43
 #, fuzzy
@@ -310,7 +306,7 @@ msgstr "document version"
 msgid "All documents"
 msgstr "all documents"
 
-#: links.py:140 models.py:814 views.py:656
+#: links.py:140 models.py:815 views.py:656
 #, fuzzy
 msgid "Recent documents"
 msgstr "recent documents"
@@ -357,7 +353,7 @@ msgstr "previous page"
 msgid "Next page"
 msgstr "next page"
 
-#: links.py:191 models.py:229 models.py:350 models.py:777 models.py:796
+#: links.py:191 models.py:230 models.py:351 models.py:778 models.py:797
 #: views.py:827
 #, fuzzy
 msgid "Document"
@@ -407,7 +403,7 @@ msgstr ""
 msgid "Add quick label to document type"
 msgstr "add filename to document type"
 
-#: links.py:260 models.py:633
+#: links.py:260 models.py:634
 msgid "Quick labels"
 msgstr ""
 
@@ -416,63 +412,67 @@ msgstr ""
 msgid "Document types"
 msgstr "Document type"
 
-#: literals.py:23
+#: literals.py:14
+msgid "Default"
+msgstr ""
+
+#: literals.py:24
 msgid "All pages"
 msgstr ""
 
-#: models.py:70
+#: models.py:69
 #, fuzzy
 msgid ""
 "Amount of time after which documents of this type will be moved to the trash."
 msgstr "All later version after this one will be deleted too."
 
-#: models.py:72
+#: models.py:71
 msgid "Trash time period"
 msgstr ""
 
-#: models.py:76
+#: models.py:75
 msgid "Trash time unit"
 msgstr ""
 
-#: models.py:80
+#: models.py:79
 #, fuzzy
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
 msgstr "All later version after this one will be deleted too."
 
-#: models.py:82
+#: models.py:81
 #, fuzzy
 #| msgid "Delete document types"
 msgid "Delete time period"
 msgstr "Delete document types"
 
-#: models.py:87
+#: models.py:86
 #, fuzzy
 #| msgid "Delete documents"
 msgid "Delete time unit"
 msgstr "Delete documents"
 
-#: models.py:107
+#: models.py:106
 #, fuzzy
 msgid "Documents types"
 msgstr "documents types"
 
-#: models.py:159
+#: models.py:158
 #, fuzzy
 msgid "The name of the document"
 msgstr "Create documents"
 
-#: models.py:162 search.py:21
+#: models.py:161 search.py:21
 msgid "Description"
 msgstr "Description"
 
-#: models.py:165
+#: models.py:164
 #, fuzzy
 msgid "Added"
 msgstr "added"
 
-#: models.py:170
+#: models.py:169
 msgid "Language"
 msgstr ""
 
@@ -492,77 +492,77 @@ msgid ""
 "API."
 msgstr ""
 
-#: models.py:184
+#: models.py:185
 msgid "Is stub?"
 msgstr ""
 
-#: models.py:192
+#: models.py:193
 #, fuzzy, python-format
 #| msgid "Document types: %d"
 msgid "Document stub, id: %d"
 msgstr "Document types: %d"
 
-#: models.py:353
+#: models.py:354
 #, fuzzy
 msgid "Timestamp"
 msgstr "timestamp"
 
-#: models.py:362
+#: models.py:363
 #, fuzzy
 msgid "File"
 msgstr "Filename"
 
-#: models.py:444 models.py:445 models.py:646
+#: models.py:445 models.py:446 models.py:647
 #, fuzzy
 msgid "Document version"
 msgstr "document version"
 
-#: models.py:632
+#: models.py:633
 msgid "Quick label"
 msgstr ""
 
-#: models.py:650
+#: models.py:651
 #, fuzzy
 msgid "Page number"
 msgstr "page number"
 
-#: models.py:655
+#: models.py:656
 #, python-format
 msgid "Page %(page_num)d out of %(total_pages)d of %(document)s"
 msgstr "Page %(page_num)d out of %(total_pages)d of %(document)s"
 
-#: models.py:671
+#: models.py:672
 #, fuzzy
 msgid "Document page"
 msgstr "document page"
 
-#: models.py:672
+#: models.py:673
 #, fuzzy
 msgid "Document pages"
 msgstr "document pages"
 
-#: models.py:782
+#: models.py:783
 #, fuzzy
 #| msgid "Version update"
 msgid "New version block"
 msgstr "Version update"
 
-#: models.py:783
+#: models.py:784
 #, fuzzy
 #| msgid "Version update"
 msgid "New version blocks"
 msgstr "Version update"
 
-#: models.py:793
+#: models.py:794
 msgid "User"
 msgstr ""
 
-#: models.py:799
+#: models.py:800
 #, fuzzy
 msgid "Accessed"
 msgstr "accessed"
 
-#: models.py:813
+#: models.py:814
 #, fuzzy
 msgid "Recent document"
 msgstr "recent document"
@@ -606,7 +606,7 @@ msgstr "Edit documents"
 #: permissions.py:34
 #, fuzzy
 #| msgid "Delete documents"
-msgid "Restore deleted document"
+msgid "Restore trashed document"
 msgstr "Delete documents"
 
 #: permissions.py:37

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:16-0400\n"
+"POT-Creation-Date: 2016-10-28 03:22-0400\n"
 "PO-Revision-Date: 2016-03-21 21:05+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Chinese (China) (http://www.transifex.com/rosarior/mayan-edms/"
@@ -19,13 +19,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps.py:23 links.py:28 permissions.py:7
+#: apps.py:24 links.py:28 permissions.py:7
 msgid "Statistics"
 msgstr "统计"
 
 #. Translators: Schedule here is a verb, the 'schedule' at which the
 #. statistic will be updated
-#: apps.py:42
+#: apps.py:43
 msgid "Schedule"
 msgstr ""
 
@@ -75,29 +75,26 @@ msgstr ""
 msgid "No data available yet"
 msgstr ""
 
-#: views.py:19
+#: views.py:17
 msgid "Statistics namespaces"
 msgstr ""
 
-#: views.py:35
+#: views.py:33
 #, python-format
 msgid "Namespace details for: %s"
 msgstr ""
 
-#: views.py:55
+#: views.py:53
 #, python-format
 msgid "Results for: %s"
 msgstr ""
 
-#: views.py:62 views.py:85
+#: views.py:60 views.py:85
 #, python-format
 msgid "Statistic \"%s\" not found."
 msgstr ""
 
-#. Translators: This text is asking users if they want to queue
-#. (to send to the queue) a statistic for it to be update ahead
-#. of schedule
-#: views.py:78
+#: views.py:77
 #, python-format
 msgid "Queue statistic \"%s\" to be updated?"
 msgstr ""

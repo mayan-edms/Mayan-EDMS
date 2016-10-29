@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
 # mic <winterfall24@gmail.com>, 2012
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:13-0400\n"
-"PO-Revision-Date: 2016-03-21 21:03+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2016-10-28 03:21-0400\n"
+"PO-Revision-Date: 2016-10-28 07:35+0000\n"
+"Last-Translator: Roberto Rosario\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:52 apps.py:142 links.py:39 permissions.py:7 settings.py:10
 msgid "Metadata"
@@ -39,9 +38,7 @@ msgstr "Dokumenty, w których brak jest opcjonalnych metadanych"
 msgid ""
 "Queryset containing a MetadataType instance reference and a value for that "
 "metadata type"
-msgstr ""
-"Queryset zawierający referencję do instancji MetadataType i wartość dla tego "
-"typu metadanych"
+msgstr "Queryset zawierający referencję do instancji MetadataType i wartość dla tego typu metadanych"
 
 #: apps.py:118
 msgid "Metadata type name"
@@ -59,15 +56,15 @@ msgstr "Wartość metadanych"
 msgid "Return the value of a specific document metadata"
 msgstr ""
 
-#: apps.py:147 forms.py:18 models.py:158
+#: apps.py:147 forms.py:19 models.py:158
 msgid "Value"
 msgstr "Wartość"
 
-#: apps.py:151 forms.py:38 models.py:208
+#: apps.py:151 forms.py:39 models.py:208
 msgid "Required"
 msgstr "Wymagane"
 
-#: apps.py:173 forms.py:98 models.py:91 models.py:206
+#: apps.py:173 forms.py:112 models.py:91 models.py:206
 msgid "Metadata type"
 msgstr "Typ metadanych"
 
@@ -80,33 +77,39 @@ msgstr "Wartość metadanych"
 msgid "'metadata' object has no attribute '%s'"
 msgstr "objekt 'metadata' nie posiada atrybutu '%s'"
 
-#: forms.py:12
+#: forms.py:13
 msgid "ID"
 msgstr "ID"
 
-#: forms.py:15 models.py:45
+#: forms.py:16 models.py:45
 msgid "Name"
 msgstr "Nazwa"
 
-#: forms.py:20
+#: forms.py:21
 msgid "Update"
 msgstr "Aktualizacja"
 
-#: forms.py:64
+#: forms.py:65
 #, python-format
 msgid "Lookup value error: %s"
 msgstr ""
 
-#: forms.py:77
+#: forms.py:78
 #, python-format
 msgid "Default value error: %s"
 msgstr "Błąd dotyczący domyślnej wartości: %s"
 
-#: forms.py:116
+#: forms.py:94 models.py:124
+#, python-format
+msgid "\"%s\" is required for this document type."
+msgstr ""
+
+#: forms.py:130
+#| msgid " Available models: %s"
 msgid " Available template context variables: "
 msgstr "Dostępne zmienne kontekstowe szablonu:"
 
-#: forms.py:127
+#: forms.py:141
 msgid "Remove"
 msgstr "Usuń"
 
@@ -147,6 +150,7 @@ msgid "Metadata types"
 msgstr "Typy metadanych"
 
 #: models.py:42
+#| msgid "Do not use python reserved words, or spaces."
 msgid ""
 "Name used by other apps to reference this value. Do not use python reserved "
 "words, or spaces."
@@ -160,9 +164,7 @@ msgstr "Etykieta"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
-"Podaj szablon do wyrenderowania. Użyj domyślnego języka szablonów Django "
-"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
+msgstr "Podaj szablon do wyrenderowania. Użyj domyślnego języka szablonów Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
 
 #: models.py:55
 msgid "Default"
@@ -171,12 +173,9 @@ msgstr "Domyślny"
 #: models.py:60
 msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
-"Django's default templating language (https://docs.djangoproject.com/en/1.7/"
-"ref/templates/builtins/)."
-msgstr ""
-"Podaj szablon do wyrenderowania. Wynikiem szablonu musi być łańcuch "
-"rozdzielony przecinkami. Użyj domyślnego języka szablonów Django (https://"
-"docs.djangoproject.com/en/1.7/ref/templates/builtins/)."
+"Django's default templating language "
+"(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)."
+msgstr "Podaj szablon do wyrenderowania. Wynikiem szablonu musi być łańcuch rozdzielony przecinkami. Użyj domyślnego języka szablonów Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)."
 
 #: models.py:65
 msgid "Lookup"
@@ -186,9 +185,7 @@ msgstr "Wyszukanie"
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr ""
-"Walidator odrzuci dane jeśli podana wartość nie będzie zgodna z oczekiwanym "
-"formatem."
+msgstr "Walidator odrzuci dane jeśli podana wartość nie będzie zgodna z oczekiwanym formatem."
 
 #: models.py:72
 msgid "Validator"
@@ -196,16 +193,13 @@ msgstr "Walidator"
 
 #: models.py:76
 msgid ""
-"The parser will reformat the value entered to conform to the expected format."
+"The parser will reformat the value entered to conform to the expected "
+"format."
 msgstr "Parser zmieni format podanej wartości na format oczekiwany."
 
 #: models.py:78
 msgid "Parser"
 msgstr "Parser"
-
-#: models.py:124
-msgid "This metadata is required for this document type."
-msgstr "Ta metadana jest wymagana dla tego typu dokumentu."
 
 #: models.py:131
 msgid "Value is not one of the provided options."
@@ -233,7 +227,7 @@ msgstr "Metadane dokumentów"
 
 #: models.py:203
 msgid "Document type"
-msgstr "Typ dokumentów"
+msgstr "Typ dokumentu"
 
 #: models.py:215
 msgid "Document type metadata type options"
@@ -279,11 +273,15 @@ msgstr "Usuń typy metadanych"
 msgid "View metadata types"
 msgstr "Przeglądaj typy metadanych"
 
-#: serializers.py:32 serializers.py:42
+#: serializers.py:33 serializers.py:61
 msgid "Primary key of the metadata type to be added."
 msgstr ""
 
-#: serializers.py:36
+#: serializers.py:40
+msgid "Primary key of the document metadata type."
+msgstr ""
+
+#: serializers.py:46
 msgid "Value of the corresponding metadata type instance."
 msgstr ""
 
@@ -305,8 +303,7 @@ msgstr[2] "Wybrane dokumenty nie mają żadnych metadanych."
 #: views.py:139
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr ""
-"Błąd podczas edycji metadanych dla dokumentu: %(document)s; %(exception)s."
+msgstr "Błąd podczas edycji metadanych dla dokumentu: %(document)s; %(exception)s."
 
 #: views.py:150
 #, python-format
@@ -330,7 +327,8 @@ msgstr ""
 #: views.py:272
 #, python-format
 msgid ""
-"Metadata type: %(metadata_type)s successfully added to document %(document)s."
+"Metadata type: %(metadata_type)s successfully added to document "
+"%(document)s."
 msgstr ""
 
 #: views.py:282
@@ -370,7 +368,7 @@ msgstr[2] ""
 #: views.py:504
 #, python-format
 msgid "Metadata for document: %s"
-msgstr ""
+msgstr "Metadane dokumentu: %s"
 
 #: views.py:513
 msgid "Create metadata type"
@@ -378,6 +376,7 @@ msgstr ""
 
 #: views.py:529
 #, python-format
+#| msgid "Delete metadata types"
 msgid "Delete the metadata type: %s?"
 msgstr ""
 
@@ -391,6 +390,7 @@ msgid "Internal name"
 msgstr ""
 
 #: views.py:568
+#| msgid "View metadata types"
 msgid "Available metadata types"
 msgstr ""
 
@@ -571,47 +571,47 @@ msgstr ""
 #~ msgstr "What are metadata sets?"
 
 #~ msgid ""
-#~ "A metadata set is a group of one or more metadata types.  Metadata sets "
-#~ "are useful when creating new documents; selecing a metadata set "
-#~ "automatically attaches it's member metadata types to said document."
+#~ "A metadata set is a group of one or more metadata types.  Metadata sets are "
+#~ "useful when creating new documents; selecing a metadata set automatically "
+#~ "attaches it's member metadata types to said document."
 #~ msgstr ""
-#~ "A metadata set is a group of one or more metadata types.  Metadata sets "
-#~ "are useful when creating new documents; selecing a metadata set "
-#~ "automatically attaches it's member metadata types to said document."
+#~ "A metadata set is a group of one or more metadata types.  Metadata sets are "
+#~ "useful when creating new documents; selecing a metadata set automatically "
+#~ "attaches it's member metadata types to said document."
 
 #~ msgid "What are metadata types?"
 #~ msgstr "What are metadata types?"
 
 #~ msgid ""
-#~ "A metadata type defines the characteristics of a value of some kind that "
-#~ "can be attached to a document.  Examples of metadata types are: a client "
-#~ "name, a date, or a project to which several documents belong.  A metadata "
-#~ "type's name is the internal identifier with which it can be referenced to "
-#~ "by other modules such as the indexing module, the title is the value that "
-#~ "is shown to the users, the default value is the value an instance of this "
-#~ "metadata type will have initially, and the lookup value turns an instance "
-#~ "of a metadata of this type into a choice list which options are the "
-#~ "result of the lookup's code execution."
+#~ "A metadata type defines the characteristics of a value of some kind that can"
+#~ " be attached to a document.  Examples of metadata types are: a client name, "
+#~ "a date, or a project to which several documents belong.  A metadata type's "
+#~ "name is the internal identifier with which it can be referenced to by other "
+#~ "modules such as the indexing module, the title is the value that is shown to"
+#~ " the users, the default value is the value an instance of this metadata type"
+#~ " will have initially, and the lookup value turns an instance of a metadata "
+#~ "of this type into a choice list which options are the result of the lookup's"
+#~ " code execution."
 #~ msgstr ""
-#~ "A metadata type defines the characteristics of a value of some kind that "
-#~ "can be attached to a document.  Examples of metadata types are: a client "
-#~ "name, a date, or a project to which several documents belong.  A metadata "
-#~ "type's name is the internal identifier with which it can be referenced to "
-#~ "by other modules such as the indexing module, the title is the value that "
-#~ "is shown to the users, the default value is the value an instance of this "
-#~ "metadata type will have initially, and the lookup value turns an instance "
-#~ "of a metadata of this type into a choice list which options are the "
-#~ "result of the lookup's code execution."
+#~ "A metadata type defines the characteristics of a value of some kind that can"
+#~ " be attached to a document.  Examples of metadata types are: a client name, "
+#~ "a date, or a project to which several documents belong.  A metadata type's "
+#~ "name is the internal identifier with which it can be referenced to by other "
+#~ "modules such as the indexing module, the title is the value that is shown to"
+#~ " the users, the default value is the value an instance of this metadata type"
+#~ " will have initially, and the lookup value turns an instance of a metadata "
+#~ "of this type into a choice list which options are the result of the lookup's"
+#~ " code execution."
 
 #~ msgid " Available functions: %s"
 #~ msgstr " Available functions: %s"
 
 #~ msgid ""
-#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user "
-#~ "in User.objects.all()].%s"
+#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
+#~ "User.objects.all()].%s"
 #~ msgstr ""
-#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user "
-#~ "in User.objects.all()].%s"
+#~ "Enter a string to be evaluated.  Example: [user.get_full_name() for user in "
+#~ "User.objects.all()].%s"
 
 #~ msgid "Error deleting document indexes; %s"
 #~ msgstr "Error deleting document indexes; %s"

@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:11-0400\n"
-"PO-Revision-Date: 2016-05-09 01:48+0000\n"
+"POT-Creation-Date: 2016-10-28 03:19-0400\n"
+"PO-Revision-Date: 2016-10-28 07:34+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -25,42 +25,46 @@ msgstr ""
 msgid "None"
 msgstr "Ninguno"
 
-#: admin.py:26 apps.py:134 links.py:48 models.py:41
+#: admin.py:26 apps.py:139 links.py:48 models.py:41
 msgid "Document types"
 msgstr "Tipos de documento"
 
-#: apps.py:48
+#: apps.py:49
 #| msgid "document indexes"
 msgid "Document indexing"
-msgstr ""
+msgstr "Indexación de documentos"
 
-#: apps.py:120 models.py:25
+#: apps.py:125 models.py:25
 msgid "Label"
 msgstr "Etiqueta"
 
-#: apps.py:121 models.py:30
+#: apps.py:126 models.py:30
 msgid "Slug"
 msgstr "Identificador"
 
-#: apps.py:123 apps.py:143 models.py:38 models.py:126
+#: apps.py:128 apps.py:148 models.py:38 models.py:126
 msgid "Enabled"
 msgstr "Habilitado"
 
-#: apps.py:128 apps.py:158 apps.py:171
+#: apps.py:133 apps.py:163 apps.py:176
 msgid "Items"
 msgstr "Elementos"
 
-#: apps.py:139
+#: apps.py:144
 msgid "Level"
 msgstr "Nível"
 
-#: apps.py:147
+#: apps.py:152
 msgid "Has document links?"
 msgstr "El documento tiene enlaces?"
 
-#: apps.py:154 apps.py:165
+#: apps.py:159 apps.py:170
 msgid "Node"
 msgstr "Nodo"
+
+#: handlers.py:18
+msgid "Creation date"
+msgstr "Fecha de creación"
 
 #: links.py:18 links.py:22 links.py:25 links.py:28 models.py:83 views.py:75
 #: views.py:235
@@ -105,7 +109,7 @@ msgstr "Error indexando documento: %(document)s; expresión: %(expression)s; %(e
 #: models.py:29
 #| msgid "Internal name used to reference this index."
 msgid "This values will be used by other apps to reference this index."
-msgstr ""
+msgstr "Estos valores serán utilizados por otras aplicaciones para hacer referencia a este índice."
 
 #: models.py:35
 msgid ""
@@ -122,7 +126,7 @@ msgstr "index instance"
 
 #: models.py:102
 msgid "Index instances"
-msgstr ""
+msgstr "Instancias de índices"
 
 #: models.py:114
 msgid ""
@@ -229,12 +233,12 @@ msgstr "Tipos de documentos disponibles"
 
 #: views.py:83
 msgid "Document types linked"
-msgstr ""
+msgstr "Tipos de documentos enlazados "
 
 #: views.py:106
 #, python-format
 msgid "Document types linked to index: %s"
-msgstr ""
+msgstr "Tipos de documentos enlazados al índice: %s"
 
 #: views.py:145
 #, python-format
@@ -244,7 +248,7 @@ msgstr "nodos de la plantilla del árbol del índice: %s"
 #: views.py:172
 #, python-format
 msgid "Create child node of: %s"
-msgstr ""
+msgstr "Crear nodo hijo de: %s"
 
 #: views.py:196
 #, python-format
@@ -277,7 +281,7 @@ msgstr "En bases de datos de gran tamaño esta operación puede tardar algún ti
 
 #: views.py:342
 msgid "Rebuild all indexes?"
-msgstr ""
+msgstr "¿Reconstruir todos los índices?"
 
 #: views.py:351
 msgid "Index rebuild queued successfully."

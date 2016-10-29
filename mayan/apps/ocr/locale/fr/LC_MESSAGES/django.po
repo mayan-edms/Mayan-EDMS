@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:14-0400\n"
+"POT-Creation-Date: 2016-10-28 03:21-0400\n"
 "PO-Revision-Date: 2016-03-21 21:11+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: French (http://www.transifex.com/rosarior/mayan-edms/language/"
@@ -133,12 +133,12 @@ msgstr "Contenu de la page du document"
 msgid "Document pages contents"
 msgstr "Contenu des pages du document"
 
-#: parsers.py:103
+#: parsers.py:102
 #, python-format
 msgid "Exception parsing page; %s"
 msgstr "Exception lors de l'analyse de la page : %s"
 
-#: parsers.py:130
+#: parsers.py:129
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
 msgstr "Impossible de trouver l'exécutable pdftotext dans : %s"

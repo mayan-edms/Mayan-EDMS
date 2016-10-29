@@ -13,7 +13,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-04-27 14:16-0400\n"
+"POT-Creation-Date: 2016-10-28 03:23-0400\n"
 "PO-Revision-Date: 2016-03-21 21:12+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
@@ -24,35 +24,35 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: apps.py:29 permissions.py:7
+#: apps.py:37 permissions.py:7
 msgid "User management"
 msgstr "Benutzerverwaltung"
 
-#: apps.py:39
+#: apps.py:47
 msgid "All the groups."
 msgstr "Alle Gruppen."
 
-#: apps.py:43
+#: apps.py:51
 msgid "All the users."
 msgstr "Alle Benutzer"
 
-#: apps.py:48 links.py:30
+#: apps.py:56 links.py:30
 msgid "Members"
 msgstr "Mitglieder"
 
-#: apps.py:52
+#: apps.py:60
 msgid "Full name"
 msgstr "Kompletter Name"
 
-#: apps.py:55
+#: apps.py:63
 msgid "Email"
 msgstr "E-Mail"
 
-#: apps.py:58
+#: apps.py:66
 msgid "Active"
 msgstr "Aktiv"
 
-#: apps.py:64
+#: apps.py:72
 msgid "Has usable password?"
 msgstr "Verwendbares Passwort"
 
