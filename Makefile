@@ -34,6 +34,8 @@ help:
 	@echo "runserver - Run the development server."
 	@echo "shell_plus - Run the shell_plus command."
 
+	@echo "safety_check - Run a package safety check."
+
 
 # Cleaning
 
@@ -116,4 +118,9 @@ runserver:
 shell_plus:
 	./manage.py shell_plus --settings=mayan.settings.development
 
+
+# Security
+
+safety_check:
+	safety check
 
