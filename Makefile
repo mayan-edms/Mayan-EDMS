@@ -32,6 +32,7 @@ help:
 	@echo "release - Package (sdist and wheel) and upload a release."
 
 	@echo "runserver - Run the development server."
+	@echo "runserver_plus - Run the Django extension's development server."
 	@echo "shell_plus - Run the shell_plus command."
 
 	@echo "safety_check - Run a package safety check."
@@ -114,6 +115,10 @@ wheel: clean
 runserver:
 	$(BROWSER) http://127.0.0.1:8000
 	./manage.py runserver
+
+runserver_plus:
+	$(BROWSER) http://127.0.0.1:8000
+	./manage.py runserver_plus --settings=mayan.settings.development
 
 shell_plus:
 	./manage.py shell_plus --settings=mayan.settings.development
