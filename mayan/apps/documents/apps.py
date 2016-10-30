@@ -6,8 +6,6 @@ from kombu import Exchange, Queue
 
 from django.utils.translation import ugettext_lazy as _
 
-from actstream import registry
-
 from acls import ModelPermission
 from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
@@ -85,6 +83,7 @@ class DocumentsApp(MayanAppConfig):
 
     def ready(self):
         super(DocumentsApp, self).ready()
+        from actstream import registry
 
         APIEndPoint(app=self, version_string='1')
 

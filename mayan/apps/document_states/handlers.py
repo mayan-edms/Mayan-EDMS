@@ -1,10 +1,12 @@
 from __future__ import unicode_literals
 
-from django.db.models import get_model
+from django.apps import apps
 
 
 def launch_workflow(sender, instance, created, **kwargs):
-    Workflow = get_model('document_states', 'Workflow')
+    Workflow = apps.get_model(
+        app_label='document_states', model_name='Workflow'
+    )
 
     if created:
         Workflow.objects.launch_for(instance)

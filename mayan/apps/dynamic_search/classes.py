@@ -10,7 +10,6 @@ from django.db.models import Q
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
-from acls.models import AccessControlList
 from permissions import Permission
 
 from .settings import setting_limit
@@ -125,6 +124,10 @@ class SearchModel(object):
         ]
 
     def search(self, query_string, user, global_and_search=False):
+        AccessControlList = apps.get_model(
+            app_label='acls', model_name='AccessControlList'
+        )
+
         elapsed_time = 0
         start_time = datetime.datetime.now()
         result_set = set()

@@ -1,10 +1,10 @@
 from __future__ import absolute_import, unicode_literals
 
+from django.apps import apps
 from django.core.exceptions import PermissionDenied
 from django.utils.html import escape
 from django.utils.safestring import mark_safe
 
-from acls.models import AccessControlList
 from permissions import Permission
 
 from .permissions import permission_tag_view
@@ -14,6 +14,10 @@ def widget_document_tags(document, user):
     """
     A tag widget that displays the tags for the given document
     """
+    AccessControlList = apps.get_model(
+        app_label='acls', model_name='AccessControlList'
+    )
+
     tags_template = []
 
     tags = document.attached_tags().all()

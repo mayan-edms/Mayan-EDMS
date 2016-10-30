@@ -1,8 +1,7 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.utils.translation import ugettext_lazy as _
-
-from actstream.models import Action
 
 from common import MayanAppConfig, menu_tools
 from common.classes import Package
@@ -20,6 +19,7 @@ class EventsApp(MayanAppConfig):
 
     def ready(self):
         super(EventsApp, self).ready()
+        Action = apps.get_model(app_label='actstream', model_name='Action')
 
         Package(label='django-activity-stream', license_text='''
 Copyright (c) 2010-2015, Justin Quick

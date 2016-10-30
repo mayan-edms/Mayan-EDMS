@@ -2,8 +2,9 @@ from __future__ import unicode_literals
 
 import json
 
+from django.apps import apps
+
 from celery.schedules import crontab
-from djcelery.models import PeriodicTask
 
 from mayan.celery import app
 
@@ -43,7 +44,12 @@ class Statistic(object):
 
     @staticmethod
     def purge_schedules():
-        from .models import StatisticResult
+        PeriodicTask = apps.get_model(
+            app_label='djcelery', model_name='PeriodicTask'
+        )
+        StatisticResult = apps.get_model(
+            app_label='statistics', model_name='StatisticResult'
+        )
 
         queryset = PeriodicTask.objects.filter(name__startswith='statistics.').exclude(name__in=Statistic.get_task_names())
 

@@ -1,10 +1,8 @@
 from __future__ import unicode_literals
 
+from django.apps import apps
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group
 from django.utils.translation import ugettext_lazy as _
-
-from actstream import registry
 
 from common import menu_multi_item, menu_object, menu_secondary, menu_setup
 from common.apps import MayanAppConfig
@@ -23,6 +21,7 @@ from .links import (
 
 
 def get_groups():
+    Group = apps.get_model(app_label='auth', model_name='Group')
     return ','.join([group.name for group in Group.objects.all()])
 
 
@@ -38,7 +37,9 @@ class UserManagementApp(MayanAppConfig):
 
     def ready(self):
         super(UserManagementApp, self).ready()
+        from actstream import registry
 
+        Group = apps.get_model(app_label='auth', model_name='Group')
         User = get_user_model()
 
         APIEndPoint(app=self, version_string='1')
