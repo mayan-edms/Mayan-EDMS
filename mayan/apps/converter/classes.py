@@ -255,33 +255,19 @@ class TransformationResize(BaseTransformation):
 
     def execute_on(self, *args, **kwargs):
         super(TransformationResize, self).execute_on(*args, **kwargs)
-        fit = False
 
         width = int(self.width)
-        height = int(self.height or 1.0 * width * self.aspect)
+        height = int(self.height or 1.0 * width / self.aspect)
 
         factor = 1
         while self.image.size[0] / factor > 2 * width and self.image.size[1] * 2 / factor > 2 * height:
             factor *= 2
+
         if factor > 1:
             self.image.thumbnail(
                 (self.image.size[0] / factor, self.image.size[1] / factor),
                 Image.NEAREST
             )
-
-        # calculate the cropping box and get the cropped part
-        if fit:
-            x1 = y1 = 0
-            x2, y2 = self.image.size
-            wRatio = 1.0 * x2 / width
-            hRatio = 1.0 * y2 / height
-            if hRatio > wRatio:
-                y1 = y2 / 2 - height * wRatio / 2
-                y2 = y2 / 2 + height * wRatio / 2
-            else:
-                x1 = x2 / 2 - width * hRatio / 2
-                x2 = x2 / 2 + width * hRatio / 2
-            self.image = self.image.crop((x1, y1, x2, y2))
 
         # Resize the image with best quality algorithm ANTI-ALIAS
         self.image.thumbnail((width, height), Image.ANTIALIAS)
