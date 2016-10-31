@@ -14,6 +14,8 @@ Other changes
 - Add support for page search
 - Remove recent searches feature
 - Remove dependency on the django-filetransfer library
+- Fix height calculation in resize transformation
+- Improve upgrade instructions
 
 Removals
 --------
@@ -22,8 +24,8 @@ Removals
 Upgrading from a previous version
 ---------------------------------
 
-Using PIP
-~~~~~~~~~
+If installed via PIP
+~~~~~~~~~~~~~~~~~~~~
 
 Type in the console::
 
@@ -31,8 +33,8 @@ Type in the console::
 
 the requirements will also be updated automatically.
 
-Using Git
-~~~~~~~~~
+If installed using Git
+~~~~~~~~~~~~~~~~~~~~~~
 
 If you installed Mayan EDMS by cloning the Git repository issue the commands::
 
@@ -42,13 +44,16 @@ If you installed Mayan EDMS by cloning the Git repository issue the commands::
 otherwise download the compressed archived and uncompress it overriding the
 existing installation.
 
-Next upgrade/add the new requirements::
+Manually upgrade/add the new requirements::
 
-    $ pip uninstall -y django-filetransfers
     $ pip install --upgrade -r requirements.txt
 
 Common steps
 ~~~~~~~~~~~~
+
+Remove deprecated requirements::
+
+    $ pip uninstall -y -r removals.txt 2> /dev/null
 
 Migrate existing database schema with::
 
@@ -70,5 +75,6 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #311 <https://gitlab.com/mayan-edms/mayan-edms/issues/311>`_ acl page return ContentType:Document
+* `GitLab issue #319 <https://gitlab.com/mayan-edms/mayan-edms/issues/319>`_ TransformationResize issue with very "long" image
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/

@@ -4,6 +4,8 @@
 - Add support for document page search
 - Remove recent searches feature
 - Remove dependency on the django-filetransfer library
+- Fix height calculation in resize transformation
+- Improve upgrade instructions
 
 2.1.4 (2016-10-28)
 ==================
