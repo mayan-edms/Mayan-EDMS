@@ -13,7 +13,9 @@ from .permissions import (
 
 def get_kwargs_factory(variable_name):
     def get_kwargs(context):
-        ContentType = apps.get_model(app_label='django', model_name='ContentType')
+        ContentType = apps.get_model(
+            app_label='contenttypes', model_name='ContentType'
+        )
 
         content_type = ContentType.objects.get_for_model(
             context[variable_name]

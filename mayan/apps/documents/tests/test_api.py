@@ -7,11 +7,11 @@ import time
 from json import loads
 
 from django.contrib.auth import get_user_model
-
 from django.core.urlresolvers import reverse
 from django.test import override_settings
 from django.utils.six import BytesIO
 
+from django_downloadview import assert_download_response
 from rest_framework import status
 from rest_framework.test import APITestCase
 
@@ -21,7 +21,7 @@ from user_management.tests.literals import (
 
 from .literals import (
     TEST_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
-    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH,
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH,
 )
 from ..models import Document, DocumentType, HASH_FUNCTION
 
@@ -263,14 +263,13 @@ class DocumentAPITestCase(APITestCase):
                 'rest_api:document-download', args=(document.pk,)
             )
         )
-        buf = BytesIO()
-        buf.write(response.content)
 
-        self.assertEqual(
-            HASH_FUNCTION(buf.getvalue()), TEST_SMALL_DOCUMENT_CHECKSUM
-        )
-
-        del(buf)
+        with document.open() as file_object:
+            assert_download_response(
+                self, response, content=file_object.read(),
+                basename=TEST_SMALL_DOCUMENT_FILENAME,
+                mime_type='{}; charset=utf-8'.format(document.file_mimetype)
+            )
 
     def test_document_version_download(self):
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
@@ -278,20 +277,22 @@ class DocumentAPITestCase(APITestCase):
                 file_object=file_object,
             )
 
+        latest_version = document.latest_version
         response = self.client.get(
             reverse(
                 'rest_api:documentversion-download',
-                args=(document.latest_version.pk,)
+                args=(latest_version.pk,)
             )
         )
-        buf = BytesIO()
-        buf.write(response.content)
 
-        self.assertEqual(
-            HASH_FUNCTION(buf.getvalue()), TEST_SMALL_DOCUMENT_CHECKSUM
-        )
-
-        del(buf)
+        with latest_version.open() as file_object:
+            assert_download_response(
+                self, response, content=file_object.read(),
+                basename='{} - {}'.format(
+                    TEST_SMALL_DOCUMENT_FILENAME,
+                    latest_version.timestamp
+                ), mime_type='application/octet-stream; charset=utf-8'
+            )
 
     # TODO: def test_document_set_document_type(self):
     #    pass

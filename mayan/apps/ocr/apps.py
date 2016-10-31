@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 import logging
 
 from kombu import Exchange, Queue
-import sh
 
 from django.apps import apps
 from django.db.models.signals import post_save
@@ -29,9 +28,6 @@ from .links import (
     link_document_type_submit, link_entry_list
 )
 from .permissions import permission_ocr_document, permission_ocr_content_view
-from .settings import (
-    setting_pdftotext_path, setting_tesseract_path
-)
 
 logger = logging.getLogger(__name__)
 

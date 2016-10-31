@@ -14,8 +14,7 @@ from django.views.generic.edit import (
 )
 from django.views.generic.list import ListView
 
-from django_downloadview import VirtualDownloadView
-from django_downloadview import VirtualFile
+from django_downloadview import VirtualDownloadView, VirtualFile
 from pure_pagination.mixins import PaginationMixin
 
 from .forms import ChoiceForm

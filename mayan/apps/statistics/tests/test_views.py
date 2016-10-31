@@ -35,7 +35,6 @@ class StatisticsViewTestCase(GenericViewTestCase):
 
         self.assertEqual(response.status_code, 200)
 
-
     def test_statistic_namespace_list_view_no_permissions(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 

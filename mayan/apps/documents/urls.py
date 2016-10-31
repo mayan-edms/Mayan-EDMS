@@ -15,7 +15,8 @@ from .api_views import (
 from .settings import setting_print_size, setting_display_size
 from .views import (
     ClearImageCacheView, DeletedDocumentDeleteView,
-    DeletedDocumentDeleteManyView, DeletedDocumentListView, DocumentEditView,
+    DeletedDocumentDeleteManyView, DeletedDocumentListView,
+    DocumentDownloadFormView, DocumentDownloadView, DocumentEditView,
     DocumentListView, DocumentPageView, DocumentPageListView,
     DocumentPageViewResetView, DocumentPreviewView, DocumentRestoreView,
     DocumentRestoreManyView, DocumentTrashView, DocumentTrashManyView,
@@ -23,6 +24,7 @@ from .views import (
     DocumentTypeDocumentListView, DocumentTypeFilenameCreateView,
     DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
     DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
+    DocumentVersionDownloadFormView, DocumentVersionDownloadView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentView,
     EmptyTrashCanView, RecentDocumentListView
 )
@@ -107,13 +109,20 @@ urlpatterns = patterns(
             'size': setting_print_size.value
         }, 'document_display_print'
     ),
-
     url(
-        r'^(?P<document_id>\d+)/download/$', 'document_download',
+        r'^(?P<pk>\d+)/download/form/$',
+        DocumentDownloadFormView.as_view(), name='document_download_form'
+    ),
+    url(
+        r'^(?P<pk>\d+)/download/$', DocumentDownloadView.as_view(),
         name='document_download'
     ),
     url(
-        r'^multiple/download/$', 'document_multiple_download',
+        r'^multiple/download/form/$', DocumentDownloadFormView.as_view(),
+        name='document_multiple_download_form'
+    ),
+    url(
+        r'^multiple/download/$', DocumentDownloadView.as_view(),
         name='document_multiple_download'
     ),
     url(
@@ -127,8 +136,13 @@ urlpatterns = patterns(
         name='document_version_list'
     ),
     url(
-        r'^document/version/(?P<document_version_pk>\d+)/download/$',
-        'document_download', name='document_version_download'
+        r'^document/version/(?P<pk>\d+)/download/form/$',
+        DocumentVersionDownloadFormView.as_view(),
+        name='document_version_download_form'
+    ),
+    url(
+        r'^document/version/(?P<pk>\d+)/download/$',
+        DocumentVersionDownloadView.as_view(), name='document_version_download'
     ),
     url(
         r'^document/version/(?P<pk>\d+)/revert/$',

@@ -23,7 +23,9 @@
 
             <form action="{% url 'common:multi_object_action_view' %}" class="pure-form" method="get">
                 {% if object_list %}
-                    {% get_multi_item_links_form object_list %}
+                    {% if not hide_multi_item_actions %}
+                        {% get_multi_item_links_form object_list %}
+                    {% endif %}
                     {% if multi_item_actions %}
                         <fieldset>
                             {{ multi_item_form }}

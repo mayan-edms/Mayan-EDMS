@@ -46,9 +46,12 @@ from .signals import (
     post_document_created, post_document_type_change, post_version_upload
 )
 
-# document image cache name hash function
-HASH_FUNCTION = lambda x: hashlib.sha256(x).hexdigest()
 logger = logging.getLogger(__name__)
+
+
+# document image cache name hash function
+def HASH_FUNCTION(data):
+    return hashlib.sha256(data).hexdigest()
 
 
 def UUID_FUNCTION(*args, **kwargs):

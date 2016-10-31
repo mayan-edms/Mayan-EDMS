@@ -11,7 +11,6 @@ django-colorful==1.2
 django-compressor==2.1
 django-cors-headers==1.2.2
 django-downloadview==1.9
-django-filetransfers==0.1.0
 django-formtools==1.0
 django-pure-pagination==0.3.0
 django-model-utils==2.6

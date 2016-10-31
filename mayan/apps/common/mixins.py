@@ -159,12 +159,6 @@ class RedirectionMixin(object):
     post_action_redirect = None
     action_cancel_redirect = None
 
-    def get_post_action_redirect(self):
-        return self.post_action_redirect
-
-    def get_action_cancel_redirect(self):
-        return self.action_cancel_redirect
-
     def dispatch(self, request, *args, **kwargs):
         post_action_redirect = self.get_post_action_redirect()
         action_cancel_redirect = self.get_action_cancel_redirect()
@@ -188,6 +182,9 @@ class RedirectionMixin(object):
             RedirectionMixin, self
         ).dispatch(request, *args, **kwargs)
 
+    def get_action_cancel_redirect(self):
+        return self.action_cancel_redirect
+
     def get_context_data(self, **kwargs):
         context = super(RedirectionMixin, self).get_context_data(**kwargs)
         context.update(
@@ -198,6 +195,9 @@ class RedirectionMixin(object):
         )
 
         return context
+
+    def get_post_action_redirect(self):
+        return self.post_action_redirect
 
     def get_success_url(self):
         return self.next_url or self.previous_url

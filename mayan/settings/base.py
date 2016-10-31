@@ -55,7 +55,6 @@ INSTALLED_APPS = (
     'compressor',
     'corsheaders',
     'djcelery',
-    'filetransfers',
     'formtools',
     'mptt',
     'pure_pagination',

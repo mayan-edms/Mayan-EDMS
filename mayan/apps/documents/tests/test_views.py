@@ -4,9 +4,9 @@ from __future__ import unicode_literals
 
 from django.contrib.contenttypes.models import ContentType
 from django.test import override_settings
-from django.utils.six import BytesIO
 
-from common.tests import skip_file_descriptor_check
+from django_downloadview import assert_download_response
+
 from common.tests.test_views import GenericViewTestCase
 from converter.models import Transformation
 from converter.permissions import permission_transformation_delete
@@ -15,9 +15,7 @@ from user_management.tests.literals import (
 )
 
 from ..literals import DEFAULT_DELETE_PERIOD, DEFAULT_DELETE_TIME_UNIT
-from ..models import (
-    DeletedDocument, Document, DocumentType, HASH_FUNCTION
-)
+from ..models import DeletedDocument, Document, DocumentType
 from ..permissions import (
     permission_document_create, permission_document_delete,
     permission_document_download, permission_document_properties_edit,
@@ -30,7 +28,7 @@ from ..permissions import (
 
 from .literals import (
     TEST_DOCUMENT_TYPE, TEST_DOCUMENT_TYPE_QUICK_LABEL,
-    TEST_SMALL_DOCUMENT_CHECKSUM, TEST_SMALL_DOCUMENT_PATH
+    TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH
 )
 
 
@@ -226,113 +224,113 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
             Document.objects.first().document_type, document_type
         )
 
-    @skip_file_descriptor_check
-    def test_document_download_user_view(self):
-        # TODO: Skip this test's file descriptor check until it gets migrate
-        # SingleObjectDownloadView CBV
-
+    def test_document_download_view_no_permission(self):
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        self.assertEqual(Document.objects.count(), 1)
-
-        response = self.post(
+        response = self.get(
             'documents:document_download', args=(self.document.pk,)
         )
 
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 403)
+
+    def test_document_download_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
 
         self.role.permissions.add(
             permission_document_download.stored_permission
         )
 
-        # Set the expected_content_type for common.tests.mixins.ContentTypeCheckMixin
-        self.expected_content_type = self.document.file_mimetype
+        # Set the expected_content_type for
+        # common.tests.mixins.ContentTypeCheckMixin
+        self.expected_content_type = '{}; charset=utf-8'.format(
+            self.document.file_mimetype
+        )
 
-        response = self.post(
+        response = self.get(
             'documents:document_download', args=(self.document.pk,)
         )
 
         self.assertEqual(response.status_code, 200)
 
-        buf = BytesIO()
-        buf.write(response.content)
+        with self.document.open() as file_object:
+            assert_download_response(
+                self, response, content=file_object.read(),
+                basename=TEST_SMALL_DOCUMENT_FILENAME,
+                mime_type=self.document.file_mimetype
+            )
 
-        self.assertEqual(
-            HASH_FUNCTION(buf.getvalue()), TEST_SMALL_DOCUMENT_CHECKSUM
-        )
-
-        del(buf)
-
-    @skip_file_descriptor_check
-    def test_document_multiple_download_user_view(self):
-        # TODO: Skip this test's file descriptor check until it gets migrate
-        # SingleObjectDownloadView CBV
-
+    def test_document_multiple_download_view_no_permission(self):
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        self.assertEqual(Document.objects.count(), 1)
-
-        response = self.post(
+        response = self.get(
             'documents:document_multiple_download',
             data={'id_list': self.document.pk}
         )
 
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 403)
+
+    def test_document_multiple_download_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
 
         self.role.permissions.add(
             permission_document_download.stored_permission
         )
 
-        # Set the expected_content_type for common.tests.mixins.ContentTypeCheckMixin
-        self.expected_content_type = self.document.file_mimetype
+        # Set the expected_content_type for
+        # common.tests.mixins.ContentTypeCheckMixin
+        self.expected_content_type = '{}; charset=utf-8'.format(
+            self.document.file_mimetype
+        )
 
-        response = self.post(
+        response = self.get(
             'documents:document_multiple_download',
             data={'id_list': self.document.pk}
         )
 
         self.assertEqual(response.status_code, 200)
 
-        buf = BytesIO()
-        buf.write(response.content)
+        with self.document.open() as file_object:
+            assert_download_response(
+                self, response, content=file_object.read(),
+                basename=TEST_SMALL_DOCUMENT_FILENAME,
+                mime_type=self.document.file_mimetype
+            )
 
-        self.assertEqual(
-            HASH_FUNCTION(buf.getvalue()), TEST_SMALL_DOCUMENT_CHECKSUM
-        )
-
-        del(buf)
-
-    @skip_file_descriptor_check
-    def test_document_version_download_user_view(self):
-        # TODO: Skip this test's file descriptor check until it gets migrate
-        # SingleObjectDownloadView CBV
-
+    def test_document_version_download_view_no_permission(self):
         self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
         )
 
-        self.assertEqual(Document.objects.count(), 1)
-
-        response = self.post(
+        response = self.get(
             'documents:document_version_download', args=(
                 self.document.latest_version.pk,
             )
         )
 
-        self.assertEqual(response.status_code, 302)
+        self.assertEqual(response.status_code, 403)
+
+    def test_document_version_download_view_with_permission(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
 
         self.role.permissions.add(
             permission_document_download.stored_permission
         )
 
-        # Set the expected_content_type for common.tests.mixins.ContentTypeCheckMixin
-        self.expected_content_type = self.document.file_mimetype
+        # Set the expected_content_type for
+        # common.tests.mixins.ContentTypeCheckMixin
+        self.expected_content_type = 'application/octet-stream; charset=utf-8'
 
-        response = self.post(
+        response = self.get(
             'documents:document_version_download', args=(
                 self.document.latest_version.pk,
             )
@@ -340,14 +338,14 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(response.status_code, 200)
 
-        buf = BytesIO()
-        buf.write(response.content)
-
-        self.assertEqual(
-            HASH_FUNCTION(buf.getvalue()), TEST_SMALL_DOCUMENT_CHECKSUM
-        )
-
-        del(buf)
+        with self.document.open() as file_object:
+            assert_download_response(
+                self, response, content=file_object.read(),
+                basename='{} - {}'.format(
+                    TEST_SMALL_DOCUMENT_FILENAME,
+                    self.document.latest_version.timestamp
+                ), mime_type='application/octet-stream; charset=utf-8'
+            )
 
     def test_document_update_page_count_view_no_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
@@ -379,7 +377,6 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         )
         self.assertContains(response, text='queued', status_code=200)
         self.assertEqual(self.document.pages.count(), page_count)
-
 
     def test_document_multiple_update_page_count_view_no_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)

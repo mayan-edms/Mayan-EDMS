@@ -94,7 +94,7 @@ class DocumentsLinksTestCase(GenericDocumentViewTestCase):
         self.assertEqual(
             resolved_link.url,
             reverse(
-                'documents:document_version_download',
+                'documents:document_version_download_form',
                 args=(self.document.latest_version.pk,)
             )
         )

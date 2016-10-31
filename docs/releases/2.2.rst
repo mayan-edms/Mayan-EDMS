@@ -13,6 +13,7 @@ Other changes
 - Remove the installation app
 - Add support for page search
 - Remove recent searches feature
+- Remove dependency on the django-filetransfer library
 
 Removals
 --------
@@ -43,6 +44,7 @@ existing installation.
 
 Next upgrade/add the new requirements::
 
+    $ pip uninstall -y django-filetransfers
     $ pip install --upgrade -r requirements.txt
 
 Common steps

@@ -5,7 +5,6 @@ import logging
 from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
-from filetransfers.api import serve_file
 from rest_framework import generics, status
 from rest_framework.response import Response
 
@@ -87,7 +86,16 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
         return Response(status=status.HTTP_200_OK)
 
 
-class APIDocumentDownloadView(generics.RetrieveAPIView):
+##############
+from django_downloadview import VirtualDownloadView
+from django_downloadview import VirtualFile
+from django_downloadview import DownloadMixin
+
+#class SingleObjectDownloadView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, VirtualDownloadView, SingleObjectMixin):
+#    VirtualFile = VirtualFile
+
+
+class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
     """
     Download the latest version of a document.
     ---
@@ -105,17 +113,15 @@ class APIDocumentDownloadView(generics.RetrieveAPIView):
     permission_classes = (MayanPermission,)
     queryset = Document.objects.all()
 
+    def get_file(self):
+        instance = self.get_object()
+        return VirtualFile(instance.latest_version.file, name=instance.label)
+
     def get_serializer_class(self):
         return None
 
     def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
-        return serve_file(
-            request,
-            instance.latest_version.file,
-            save_as='"%s"' % instance.label,
-            content_type=instance.latest_version.mimetype if instance.latest_version.mimetype else 'application/octet-stream'
-        )
+        return self.render_to_response()
 
 
 class APIDocumentListView(generics.ListCreateAPIView):
@@ -146,7 +152,7 @@ class APIDocumentListView(generics.ListCreateAPIView):
         return super(APIDocumentListView, self).post(*args, **kwargs)
 
 
-class APIDocumentVersionDownloadView(generics.RetrieveAPIView):
+class APIDocumentVersionDownloadView(DownloadMixin, generics.RetrieveAPIView):
     """
     Download a document version.
     ---
@@ -164,17 +170,15 @@ class APIDocumentVersionDownloadView(generics.RetrieveAPIView):
     permission_classes = (MayanPermission,)
     queryset = DocumentVersion.objects.all()
 
+    def get_file(self):
+        instance = self.get_object()
+        return VirtualFile(instance.file, name=unicode(instance))
+
     def get_serializer_class(self):
         return None
 
     def retrieve(self, request, *args, **kwargs):
-        instance = self.get_object()
-        return serve_file(
-            request,
-            instance.file,
-            save_as='"%s"' % instance.document.label,
-            content_type=instance.mimetype if instance.mimetype else 'application/octet-stream'
-        )
+        return self.render_to_response()
 
 
 class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):

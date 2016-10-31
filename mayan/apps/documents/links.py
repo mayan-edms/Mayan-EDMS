@@ -85,7 +85,7 @@ link_document_document_type_edit = Link(
 )
 link_document_download = Link(
     permissions=(permission_document_download,), text=_('Download'),
-    view='documents:document_download', args='resolved_object.id'
+    view='documents:document_download_form', args='resolved_object.id'
 )
 link_document_print = Link(
     permissions=(permission_document_print,), text=_('Print'),
@@ -118,7 +118,7 @@ link_document_multiple_document_type_edit = Link(
     view='documents:document_multiple_document_type_edit'
 )
 link_document_multiple_download = Link(
-    text=_('Download'), view='documents:document_multiple_download'
+    text=_('Download'), view='documents:document_multiple_download_form'
 )
 link_document_multiple_update_page_count = Link(
     text=_('Recalculate page count'),
@@ -129,7 +129,7 @@ link_document_multiple_restore = Link(
 )
 link_document_version_download = Link(
     args='resolved_object.pk', permissions=(permission_document_download,),
-    text=_('Download version'), view='documents:document_version_download'
+    text=_('Download version'), view='documents:document_version_download_form'
 )
 
 # Views

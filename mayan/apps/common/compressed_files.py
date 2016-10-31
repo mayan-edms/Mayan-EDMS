@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 import zipfile
 
 try:
-    import zlib
+    import zlib  # NOQA
     COMPRESSION = zipfile.ZIP_DEFLATED
 except:
     COMPRESSION = zipfile.ZIP_STORED

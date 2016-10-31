@@ -3,6 +3,7 @@
 - Remove the installation app
 - Add support for document page search
 - Remove recent searches feature
+- Remove dependency on the django-filetransfer library
 
 2.1.4 (2016-10-28)
 ==================

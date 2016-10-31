@@ -4,7 +4,7 @@ from datetime import timedelta
 import time
 
 from common.tests import BaseTestCase
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
 from ..exceptions import NewDocumentVersionNotAllowed
 from ..literals import STUB_EXPIRATION_INTERVAL

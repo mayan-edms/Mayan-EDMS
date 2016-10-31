@@ -66,7 +66,8 @@ from .permissions import (
     permission_document_trash, permission_document_version_revert,
     permission_document_view
 )
-from .search import document_search, document_page_search
+# Just import to initialize the search models
+from .search import document_search, document_page_search  # NOQA
 from .settings import setting_thumbnail_size
 from .statistics import (
     new_documents_per_month, new_document_pages_per_month,

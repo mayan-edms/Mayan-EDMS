@@ -18,8 +18,9 @@ from django.views.generic import RedirectView
 from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
 from common.generics import (
-    ConfirmView, SimpleView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectDetailView, SingleObjectEditView, SingleObjectListView
+    ConfirmView, FormView, SimpleView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectDetailView, SingleObjectDownloadView,
+    SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
 from converter.literals import (
@@ -27,7 +28,6 @@ from converter.literals import (
 )
 from converter.models import Transformation
 from converter.permissions import permission_transformation_delete
-from filetransfers.api import serve_file
 from permissions import Permission
 
 from .events import event_document_download, event_document_view
@@ -36,7 +36,9 @@ from .forms import (
     DocumentPropertiesForm, DocumentTypeSelectForm,
     DocumentTypeFilenameForm_create, PrintForm
 )
-from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT, PAGE_RANGE_RANGE
+from .literals import (
+    DOCUMENT_IMAGE_TASK_TIMEOUT, PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
+)
 from .models import (
     DeletedDocument, Document, DocumentType, DocumentPage,
     DocumentTypeFilename, DocumentVersion, RecentDocument
@@ -771,154 +773,209 @@ def get_document_image(request, document_id, size=setting_preview_size.value):
     return HttpResponse(base64.b64decode(data.partition('base64,')[2]), content_type='image')
 
 
-def document_download(request, document_id=None, document_id_list=None, document_version_pk=None):
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+class DocumentDownloadFormView(FormView):
+    form_class = DocumentDownloadForm
+    model = Document
+    multiple_download_view = 'documents:document_multiple_download'
+    single_download_view = 'documents:document_download'
 
-    if document_id:
-        documents = Document.objects.filter(pk=document_id)
-    elif document_id_list:
-        documents = Document.objects.filter(pk__in=document_id_list)
-    elif document_version_pk:
-        documents = Document.objects.filter(
-            pk=get_object_or_404(
-                DocumentVersion, pk=document_version_pk
-            ).document.pk
+    def get_document_queryset(self):
+        id_list = self.request.GET.get(
+            'id_list', self.request.POST.get('id_list', '')
         )
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_download,)
-        )
-    except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission_document_download, request.user, documents
-        )
+        if not id_list:
+            id_list = self.kwargs['pk']
 
-    if not documents:
-        messages.error(
-            request, _('Must provide at least one document or version.')
-        )
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
-            )
-        )
+        return self.model.objects.filter(
+            pk__in=id_list.split(',')
+        ).filter(is_stub=False)
 
-    if document_version_pk:
-        queryset = DocumentVersion.objects.filter(pk=document_version_pk)
-    else:
-        queryset = DocumentVersion.objects.filter(
-            pk__in=[document.latest_version.pk for document in documents]
-        )
-
-    subtemplates_list = []
-    subtemplates_list.append(
-        {
-            'name': 'appearance/generic_list_subtemplate.html',
-            'context': {
-                'title': _('Documents to be downloaded'),
-                'object_list': queryset,
-                'hide_link': True,
-                'hide_object': True,
-                'hide_links': True,
-                'scrollable_content': True,
-                'scrollable_content_height': '200px',
-                'extra_columns': (
-                    {'name': _('Document'), 'attribute': 'document'},
-                    {'name': _('Date and time'), 'attribute': 'timestamp'},
-                    {'name': _('MIME type'), 'attribute': 'mimetype'},
-                    {'name': _('Encoding'), 'attribute': 'encoding'},
-                ),
+    def get_extra_context(self):
+        subtemplates_list = [
+            {
+                'name': 'appearance/generic_list_subtemplate.html',
+                'context': {
+                    'object_list': self.queryset,
+                    'hide_link': True,
+                    'hide_links': True,
+                    'hide_multi_item_actions': True,
+                }
             }
+        ]
+
+        context = {
+            'submit_label': _('Download'),
+            'subtemplates_list': subtemplates_list,
+            'title': _('Download documents'),
         }
-    )
 
-    if request.method == 'POST':
-        form = DocumentDownloadForm(request.POST, queryset=queryset)
-        if form.is_valid():
-            if form.cleaned_data['compressed'] or queryset.count() > 1:
-                try:
-                    compressed_file = CompressedFile()
-                    for document_version in queryset:
-                        descriptor = document_version.open()
-                        compressed_file.add_file(
-                            descriptor,
-                            arcname=document_version.document.label
-                        )
-                        descriptor.close()
-                        event_document_download.commit(
-                            actor=request.user,
-                            target=document_version.document
-                        )
+        if self.queryset.count() == 1:
+            context['object'] = self.queryset.first()
 
-                    compressed_file.close()
+        return context
 
-                    return serve_file(
-                        request,
-                        compressed_file.as_file(
-                            form.cleaned_data['zip_filename']
-                        ),
-                        save_as='"%s"' % form.cleaned_data['zip_filename'],
-                        content_type='application/zip'
-                    )
-                except Exception as exception:
-                    if settings.DEBUG:
-                        raise
-                    else:
-                        messages.error(request, exception)
-                        return HttpResponseRedirect(
-                            request.META['HTTP_REFERER']
-                        )
+    def get_form_kwargs(self):
+        kwargs = super(DocumentDownloadFormView, self).get_form_kwargs()
+        self.queryset = self.get_queryset()
+        kwargs.update({'queryset': self.queryset})
+        return kwargs
+
+    def form_valid(self, form):
+        querystring = urlencode(
+            {
+                'compressed': form.cleaned_data['compressed'],
+                'zip_filename': form.cleaned_data['zip_filename'],
+                'id_list': ','.join(
+                    map(str, self.queryset.values_list('pk', flat=True))
+                )
+            }, doseq=True
+        )
+
+        if self.queryset.count() > 1:
+            url = reverse(self.multiple_download_view)
+        else:
+            url = reverse(
+                self.single_download_view, args=(self.queryset.first().pk,)
+            )
+
+        return HttpResponseRedirect('{}?{}'.format(url, querystring))
+
+    def get_post_action_redirect(self):
+        return self.post_action_redirect
+
+    def get_queryset(self):
+        queryset = self.get_document_queryset()
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_download,)
+            )
+        except PermissionDenied:
+            return AccessControlList.objects.filter_by_access(
+                permission_document_download, self.request.user, queryset
+            )
+        else:
+            return queryset
+
+
+class DocumentDownloadView(SingleObjectDownloadView):
+    model = Document
+    # Set to None to disable the .get_object call
+    object_permission = None
+
+    @staticmethod
+    def commit_event(item, request):
+        if isinstance(item, Document):
+            event_document_download.commit(
+                actor=request.user,
+                target=item
+            )
+        else:
+            # TODO: Improve by adding a document version download event
+            event_document_download.commit(
+                actor=request.user,
+                target=item.document
+            )
+
+    @staticmethod
+    def get_item_file(item):
+        if isinstance(item, Document):
+            return item.open()
+        else:
+            return item.file
+
+    @staticmethod
+    def get_item_label(item):
+        if isinstance(item, Document):
+            return item.label
+        else:
+            return unicode(item)
+
+    def get_document_queryset(self):
+        id_list = self.request.GET.get(
+            'id_list', self.request.POST.get('id_list', '')
+        )
+
+        if not id_list:
+            id_list = self.kwargs['pk']
+
+        queryset = self.model.objects.filter(pk__in=id_list.split(','))
+
+        try:
+            Permission.check_permissions(
+                self.request.user, (permission_document_download,)
+            )
+        except PermissionDenied:
+            return AccessControlList.objects.filter_by_access(
+                permission_document_download, self.request.user, queryset
+            )
+        else:
+            return queryset
+
+    def get_file(self):
+        queryset = self.get_document_queryset()
+        zip_filename = self.request.GET.get(
+            'zip_filename', DEFAULT_ZIP_FILENAME
+        )
+
+        if self.request.GET.get('compressed') == 'True' or queryset.count() > 1:
+            compressed_file = CompressedFile()
+            for item in queryset:
+                descriptor = item.open()
+                compressed_file.add_file(
+                    descriptor,
+                    arcname=DocumentDownloadView.get_item_label(item=item)
+                )
+                descriptor.close()
+                DocumentDownloadView.commit_event(
+                    item=item, request=self.request
+                )
+
+            compressed_file.close()
+
+            return DocumentDownloadView.VirtualFile(
+                compressed_file.as_file(zip_filename),
+                name=zip_filename
+            )
+        else:
+            item = queryset.first()
+            if item:
+                DocumentDownloadView.commit_event(
+                    item=item, request=self.request
+                )
             else:
-                try:
-                    # Test permissions and trigger exception
-                    fd = queryset.first().open()
-                    fd.close()
-                    event_document_download.commit(
-                        actor=request.user, target=queryset.first().document
-                    )
-                    return serve_file(
-                        request,
-                        queryset.first().file,
-                        save_as='"%s"' % queryset.first().document.label,
-                        content_type=queryset.first().mimetype if queryset.first().mimetype else 'application/octet-stream'
-                    )
-                except Exception as exception:
-                    if settings.DEBUG:
-                        raise
-                    else:
-                        messages.error(request, exception)
-                        return HttpResponseRedirect(
-                            request.META['HTTP_REFERER']
-                        )
+                raise PermissionDenied
 
-    else:
-        form = DocumentDownloadForm(queryset=queryset)
-
-    context = {
-        'form': form,
-        'previous': previous,
-        'submit_label': _('Download'),
-        'subtemplates_list': subtemplates_list,
-        'title': _('Download documents'),
-    }
-
-    if queryset.count() == 1:
-        context['object'] = queryset.first().document
-
-    return render_to_response(
-        'appearance/generic_form.html',
-        context,
-        context_instance=RequestContext(request)
-    )
+            return DocumentDownloadView.VirtualFile(
+                DocumentDownloadView.get_item_file(item=item),
+                name=DocumentDownloadView.get_item_label(
+                    item=item
+                )
+            )
 
 
-def document_multiple_download(request):
-    return document_download(
-        request, document_id_list=request.GET.get(
-            'id_list', request.POST.get('id_list', '')
-        ).split(',')
-    )
+class DocumentVersionDownloadFormView(DocumentDownloadFormView):
+    model = DocumentVersion
+    multiple_download_view = None
+    single_download_view = 'documents:document_version_download'
+
+    def get_document_queryset(self):
+        id_list = self.request.GET.get(
+            'id_list', self.request.POST.get('id_list', '')
+        )
+
+        if not id_list:
+            id_list = self.kwargs['pk']
+
+        return self.model.objects.filter(
+            pk__in=id_list.split(',')
+        )
+
+
+class DocumentVersionDownloadView(DocumentDownloadView):
+    model = DocumentVersion
+    object_permission = permission_document_download
 
 
 def document_update_page_count(request, document_id=None, document_id_list=None):
