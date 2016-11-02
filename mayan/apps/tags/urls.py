@@ -8,7 +8,7 @@ from .api_views import (
 )
 from .views import (
     DocumentTagListView, TagCreateView, TagEditView, TagListView,
-    TagTaggedItemListView, tag_attach, tag_multiple_attach,
+    TagTaggedItemListView, tag_attach, tag_delete, tag_multiple_attach,
     tag_multiple_delete, multiple_documents_selection_tag_remove,
     single_document_multiple_tag_remove
 )
@@ -17,7 +17,7 @@ urlpatterns = patterns(
     '',
     url(r'^list/$', TagListView.as_view(), name='tag_list'),
     url(r'^create/$', TagCreateView.as_view(), name='tag_create'),
-    url(r'^(?P<tag_id>\d+)/delete/$', 'tag_delete', name='tag_delete'),
+    url(r'^(?P<tag_id>\d+)/delete/$', tag_delete, name='tag_delete'),
     url(r'^(?P<pk>\d+)/edit/$', TagEditView.as_view(), name='tag_edit'),
     url(
         r'^(?P<pk>\d+)/documents/$', TagTaggedItemListView.as_view(),
