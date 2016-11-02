@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.sites.models import Site
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -14,7 +13,6 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessControlList
 from common.generics import SingleObjectListView
 from documents.models import Document
-from permissions import Permission
 
 from .forms import DocumentMailForm
 from .models import LogEntry
@@ -45,12 +43,9 @@ def send_document_link(request, document_id=None, document_id_list=None, as_atta
     else:
         permission = permission_mailing_link
 
-    try:
-        Permission.check_permissions(request.user, (permission,))
-    except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission, request.user, documents
-        )
+    documents = AccessControlList.objects.filter_by_access(
+        permission, request.user, queryset=documents
+    )
 
     if not documents:
         messages.error(request, _('Must provide at least one document.'))

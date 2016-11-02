@@ -93,20 +93,9 @@ class ObjectListPermissionFilterMixin(object):
         queryset = super(ObjectListPermissionFilterMixin, self).get_queryset()
 
         if self.object_permission:
-            try:
-                # Check to see if the user has the permissions globally
-                Permission.check_permissions(
-                    self.request.user, (self.object_permission,)
-                )
-            except PermissionDenied:
-                # No global permission, filter ther queryset per object +
-                # permission
-                return AccessControlList.objects.filter_by_access(
-                    self.object_permission, self.request.user, queryset
-                )
-            else:
-                # Has the permission globally, return all results
-                return queryset
+            return AccessControlList.objects.filter_by_access(
+                self.object_permission, self.request.user, queryset=queryset
+            )
         else:
             return queryset
 

@@ -4,13 +4,11 @@ import logging
 from operator import itemgetter
 
 from django import forms
-from django.core.exceptions import PermissionDenied
 from django.template.defaultfilters import filesizeformat
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
 from common.forms import DetailForm, ModelForm
-from permissions import Permission
 
 from .models import (
     Document, DocumentType, DocumentPage, DocumentTypeFilename
@@ -162,13 +160,10 @@ class DocumentTypeSelectForm(forms.Form):
         logger.debug('user: %s', user)
         super(DocumentTypeSelectForm, self).__init__(*args, **kwargs)
 
-        queryset = DocumentType.objects.all()
-        try:
-            Permission.check_permissions(user, (permission_document_create,))
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_create, user, queryset
-            )
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_document_create, user,
+            queryset=DocumentType.objects.all()
+        )
 
         self.fields['document_type'] = forms.ModelChoiceField(
             empty_label=None, label=_('Document type'), queryset=queryset,

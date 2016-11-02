@@ -48,7 +48,7 @@ def get_source_columns(source):
             # Is iterable?
             source = source[0]
         except TypeError:
-            # It is not
+            # It is not an iterable
             pass
         except IndexError:
             # It a list and it's empty

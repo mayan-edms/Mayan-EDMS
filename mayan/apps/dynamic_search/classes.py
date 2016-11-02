@@ -5,12 +5,10 @@ import logging
 import re
 
 from django.apps import apps
-from django.core.exceptions import PermissionDenied
 from django.db.models import Q
 from django.utils.module_loading import import_string
 from django.utils.translation import ugettext as _
 
-from permissions import Permission
 
 from .settings import setting_limit
 
@@ -229,12 +227,9 @@ class SearchModel(object):
         )
 
         if self.permission:
-            try:
-                Permission.check_permissions(user, [self.permission])
-            except PermissionDenied:
-                queryset = AccessControlList.objects.filter_by_access(
-                    self.permission, user, queryset
-                )
+            queryset = AccessControlList.objects.filter_by_access(
+                self.permission, user, queryset
+            )
 
         return queryset, result_set, elapsed_time
 

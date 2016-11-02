@@ -95,19 +95,9 @@ class DeletedDocumentListView(DocumentListView):
     }
 
     def get_document_queryset(self):
-        queryset = Document.trash.all()
-
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_view, self.request.user, queryset
-            )
-
-        return DeletedDocument.objects.filter(
-            pk__in=queryset.values_list('pk', flat=True)
+        return AccessControlList.objects.filter_by_access(
+            permission_document_view, self.request.user,
+            queryset=DeletedDocument.trash.all()
         )
 
 
@@ -663,14 +653,9 @@ def document_document_type_edit(request, document_id=None, document_id_list=None
     elif document_id_list:
         queryset = Document.objects.filter(pk__in=document_id_list)
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_properties_edit,)
-        )
-    except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(
-            permission_document_properties_edit, request.user, queryset
-        )
+    queryset = AccessControlList.objects.filter_by_access(
+        permission_document_properties_edit, request.user, queryset=queryset
+    )
 
     if not queryset:
         if document_id:
@@ -806,18 +791,10 @@ class DocumentDownloadFormView(FormView):
         return self.post_action_redirect
 
     def get_queryset(self):
-        queryset = self.get_document_queryset()
-
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_download,)
-            )
-        except PermissionDenied:
-            return AccessControlList.objects.filter_by_access(
-                permission_document_download, self.request.user, queryset
-            )
-        else:
-            return queryset
+        return AccessControlList.objects.filter_by_access(
+            permission_document_download, self.request.user,
+            queryset=self.get_document_queryset()
+        )
 
 
 class DocumentDownloadView(SingleObjectDownloadView):
@@ -863,16 +840,9 @@ class DocumentDownloadView(SingleObjectDownloadView):
 
         queryset = self.model.objects.filter(pk__in=id_list.split(','))
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_download,)
-            )
-        except PermissionDenied:
-            return AccessControlList.objects.filter_by_access(
-                permission_document_download, self.request.user, queryset
-            )
-        else:
-            return queryset
+        return AccessControlList.objects.filter_by_access(
+            permission_document_download, self.request.user, queryset
+        )
 
     def get_file(self):
         queryset = self.get_document_queryset()
@@ -949,14 +919,9 @@ def document_update_page_count(request, document_id=None, document_id_list=None)
         messages.error(request, _('At least one document must be selected.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_document_tools,)
-        )
-    except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission_document_tools, request.user, documents
-        )
+    documents = AccessControlList.objects.filter_by_access(
+        permission_document_tools, request.user, queryset=documents
+    )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
 
@@ -1018,14 +983,9 @@ def document_clear_transformations(request, document_id=None, document_id_list=N
             )
         )
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_transformation_delete,)
-        )
-    except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission_transformation_delete, request.user, documents
-        )
+    documents = AccessControlList.objects.filter_by_access(
+        permission_transformation_delete, request.user, queryset=documents
+    )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
     next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))

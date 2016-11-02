@@ -78,13 +78,6 @@ class TransformationTestCase(TestCase):
             percent=TRANSFORMATION_ZOOM_PERCENT
         )
 
-        #self.assertEqual(
-        #    #transformation_rotate ^ transformation_resize ^ transformation_zoom,
-        #    transformation_rotate ^ transformation_resize ^ transformation_zoom,
-        #    #transformation_resize ^ transformation_zoom,
-        #    TRANSFORMATION_COMBINED_CACHE_HASH
-        #)
-
         self.assertEqual(
             BaseTransformation.combine(
                 (transformation_rotate, transformation_resize, transformation_zoom)

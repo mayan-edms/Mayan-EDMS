@@ -45,12 +45,9 @@ def tag_attach(request, document_id=None, document_id_list=None):
     elif document_id_list:
         queryset = Document.objects.filter(pk__in=document_id_list)
 
-    try:
-        Permission.check_permissions(request.user, (permission_tag_attach,))
-    except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(
-            permission_tag_attach, request.user, queryset
-        )
+    queryset = AccessControlList.objects.filter_by_access(
+        permission_tag_attach, request.user, queryset=queryset
+    )
 
     if not queryset:
         if document_id:
@@ -164,12 +161,9 @@ def tag_delete(request, tag_id=None, tag_id_list=None):
             )
         )
 
-    try:
-        Permission.check_permissions(request.user, (permission_tag_delete,))
-    except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(
-            permission_tag_delete, request.user, queryset
-        )
+    queryset = AccessControlList.objects.filter_by_access(
+        permission_tag_delete, request.user, queryset=queryset
+    )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
@@ -291,12 +285,9 @@ def tag_remove(request, document_id=None, document_id_list=None, tag_id=None, ta
             )
         )
 
-    try:
-        Permission.check_permissions(request.user, (permission_tag_remove,))
-    except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission_tag_remove, request.user, documents
-        )
+    documents = AccessControlList.objects.filter_by_access(
+        permission_tag_remove, request.user, documents
+    )
 
     post_action_redirect = None
 

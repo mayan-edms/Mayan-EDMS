@@ -86,18 +86,10 @@ class SetupIndexDocumentTypesView(AssignRemoveView):
         self.get_object().document_types.add(item)
 
     def get_document_queryset(self):
-        queryset = DocumentType.objects.all()
-
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_view, self.request.user, queryset
-            )
-
-        return queryset
+        return AccessControlList.objects.filter_by_access(
+            permission_document_view, self.request.user,
+            queryset=DocumentType.objects.all()
+        )
 
     def get_extra_context(self):
         return {

@@ -2,7 +2,6 @@ from __future__ import unicode_literals
 
 import base64
 import logging
-from operator import xor
 import os
 
 try:

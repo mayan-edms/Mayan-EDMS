@@ -1,11 +1,8 @@
 from __future__ import unicode_literals
 
 from django.apps import apps
-from django.core.exceptions import PermissionDenied
 from django.db import models
 from django.utils.translation import ugettext
-
-from permissions import Permission
 
 
 class ModelAttribute(object):
@@ -137,20 +134,9 @@ class Filter(object):
         queryset = queryset.distinct()
 
         if self.object_permission:
-            try:
-                # Check to see if the user has the permissions globally
-                Permission.check_permissions(
-                    user, (self.object_permission,)
-                )
-            except PermissionDenied:
-                # No global permission, filter ther queryset per object +
-                # permission
-                return AccessControlList.objects.filter_by_access(
-                    self.object_permission, user, queryset
-                )
-            else:
-                # Has the permission globally, return all results
-                return queryset
+            return AccessControlList.objects.filter_by_access(
+                self.object_permission, user, queryset=queryset
+            )
         else:
             return queryset
 

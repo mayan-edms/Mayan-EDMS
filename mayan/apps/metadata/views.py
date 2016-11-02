@@ -42,14 +42,9 @@ def metadata_edit(request, document_id=None, document_id_list=None):
     elif document_id_list:
         documents = Document.objects.filter(pk__in=document_id_list)
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_metadata_document_edit,)
-        )
-    except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission_metadata_document_edit, request.user, documents
-        )
+    documents = AccessControlList.objects.filter_by_access(
+        permission_metadata_document_edit, request.user, queryset=documents
+    )
 
     if not documents:
         if document_id:
@@ -201,14 +196,9 @@ def metadata_add(request, document_id=None, document_id_list=None):
                 )
             )
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_metadata_document_add,)
-        )
-    except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission_metadata_document_add, request.user, documents
-        )
+    documents = AccessControlList.objects.filter_by_access(
+        permission_metadata_document_add, request.user, queryset=documents
+    )
 
     if not documents:
         if document_id:
@@ -337,14 +327,9 @@ def metadata_remove(request, document_id=None, document_id_list=None):
     elif document_id_list:
         documents = Document.objects.filter(pk__in=document_id_list)
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_metadata_document_remove,)
-        )
-    except PermissionDenied:
-        documents = AccessControlList.objects.filter_by_access(
-            permission_metadata_document_remove, request.user, documents
-        )
+    documents = AccessControlList.objects.filter_by_access(
+        permission_metadata_document_remove, request.user, queryset=documents
+    )
 
     if not documents:
         if document_id:

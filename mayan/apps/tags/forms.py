@@ -3,11 +3,9 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django import forms
-from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
-from permissions import Permission
 
 from .models import Tag
 from .permissions import permission_tag_view
@@ -21,17 +19,13 @@ class TagListForm(forms.Form):
         logger.debug('user: %s', user)
         super(TagListForm, self).__init__(*args, **kwargs)
 
-        queryset = Tag.objects.all()
-        try:
-            Permission.check_permissions(user, (permission_tag_view,))
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_tag_view, user, queryset
-            )
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_tag_view, user, queryset=Tag.objects.all()
+        )
 
         self.fields['tag'] = forms.ModelChoiceField(
-            queryset=queryset,
-            label=_('Tags'))
+            queryset=queryset, label=_('Tags')
+        )
 
 
 class TagMultipleSelectionForm(forms.Form):
@@ -40,13 +34,9 @@ class TagMultipleSelectionForm(forms.Form):
         logger.debug('user: %s', user)
         super(TagMultipleSelectionForm, self).__init__(*args, **kwargs)
 
-        queryset = Tag.objects.all()
-        try:
-            Permission.check_permissions(user, (permission_tag_view,))
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_tag_view, user, queryset
-            )
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_tag_view, user, queryset=Tag.objects.all()
+        )
 
         self.fields['tags'] = forms.MultipleChoiceField(
             label=_('Tags'), choices=queryset.values_list('id', 'label'),

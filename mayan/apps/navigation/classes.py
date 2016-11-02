@@ -358,9 +358,11 @@ class SourceColumn(object):
             return cls._registry[source]
         except KeyError:
             try:
+                # Try it as a queryset
                 return cls._registry[source.model]
             except AttributeError:
                 try:
+                    # It seems to be an instance, try its class
                     return cls._registry[source.__class__]
                 except KeyError:
                     try:

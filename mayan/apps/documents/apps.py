@@ -154,8 +154,9 @@ class DocumentsApp(MayanAppConfig):
             func=lambda context: document_html_widget(
                 document_page=context['object'].latest_version.pages.first(),
                 click_view='rest_api:documentpage-image',
-                click_view_arguments_lazy=lambda: (context['object'].latest_version.pages.first().pk,),
-                click_view_querydict={'size': setting_display_size.value},
+                click_view_arguments_lazy=lambda: (
+                    context['object'].latest_version.pages.first().pk,
+                ), click_view_querydict={'size': setting_display_size.value},
                 gallery_name='documents:document_list',
                 size=setting_thumbnail_size.value,
                 title=getattr(context['object'], 'label', None),
@@ -212,8 +213,9 @@ class DocumentsApp(MayanAppConfig):
             func=lambda context: document_html_widget(
                 document_page=context['object'].latest_version.pages.first(),
                 click_view='rest_api:documentpage-image',
-                click_view_arguments_lazy=lambda: (context['object'].latest_version.pages.first().pk,),
-                click_view_querydict={'size': setting_display_size.value},
+                click_view_arguments_lazy=lambda: (
+                    context['object'].latest_version.pages.first().pk,
+                ), click_view_querydict={'size': setting_display_size.value},
                 gallery_name='documents:delete_document_list',
                 size=setting_thumbnail_size.value,
                 title=getattr(context['object'], 'label', None),

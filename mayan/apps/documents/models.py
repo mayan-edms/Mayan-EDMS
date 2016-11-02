@@ -5,7 +5,6 @@ import logging
 import uuid
 
 from django.conf import settings
-from django.core.exceptions import PermissionDenied
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.db import models, transaction
@@ -23,7 +22,6 @@ from converter.exceptions import InvalidOfficeFormat, PageCountError
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
 from converter.models import Transformation
 from mimetype.api import get_mimetype
-from permissions import Permission
 
 from .events import (
     event_document_create, event_document_new_version,
@@ -113,14 +111,9 @@ class DocumentType(models.Model):
         return DeletedDocument.objects.filter(document_type=self)
 
     def get_document_count(self, user):
-        queryset = self.documents
-
-        try:
-            Permission.check_permissions(user, (permission_document_view,))
-        except PermissionDenied:
-            queryset = AccessControlList.objects.filter_by_access(
-                permission_document_view, user, queryset
-            )
+        queryset = AccessControlList.objects.filter_by_access(
+            permission_document_view, user, queryset=self.documents
+        )
 
         return queryset.count()
 

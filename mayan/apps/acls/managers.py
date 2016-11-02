@@ -9,6 +9,7 @@ from django.db.models import Q
 from django.utils.translation import ugettext
 
 from common.utils import return_attrib
+from permissions import Permission
 from permissions.models import StoredPermission
 
 from .classes import ModelPermission
@@ -88,41 +89,52 @@ class AccessControlListManager(models.Manager):
         if user.is_superuser or user.is_staff:
             return queryset
 
-        user_roles = []
-        for group in user.groups.all():
-            for role in group.roles.all():
-                user_roles.append(role)
-
         try:
-            parent_accessor = ModelPermission.get_inheritance(queryset.model)
-        except KeyError:
-            parent_acl_query = Q()
-        else:
-            instance = queryset.first()
-            if instance:
-                parent_object = getattr(instance, parent_accessor)
-                parent_content_type = ContentType.objects.get_for_model(
-                    parent_object
+            Permission.check_permissions(
+                requester=user, permissions=(permission,)
+            )
+        except PermissionDenied:
+            user_roles = []
+            for group in user.groups.all():
+                for role in group.roles.all():
+                    user_roles.append(role)
+
+            try:
+                parent_accessor = ModelPermission.get_inheritance(
+                    model=queryset.model
                 )
-                parent_queryset = self.filter(
-                    content_type=parent_content_type, role__in=user_roles,
-                    permissions=permission.stored_permission
-                )
-                parent_acl_query = Q(
-                    **{
-                        '{}__pk__in'.format(
-                            parent_accessor
-                        ): parent_queryset.values_list('object_id', flat=True)
-                    }
-                )
-            else:
+            except KeyError:
                 parent_acl_query = Q()
+            else:
+                instance = queryset.first()
+                if instance:
+                    parent_object = getattr(instance, parent_accessor)
+                    parent_content_type = ContentType.objects.get_for_model(
+                        parent_object
+                    )
+                    parent_queryset = self.filter(
+                        content_type=parent_content_type, role__in=user_roles,
+                        permissions=permission.stored_permission
+                    )
+                    parent_acl_query = Q(
+                        **{
+                            '{}__pk__in'.format(
+                                parent_accessor
+                            ): parent_queryset.values_list(
+                                'object_id', flat=True
+                            )
+                        }
+                    )
+                else:
+                    parent_acl_query = Q()
 
-        # Directly granted access
-        content_type = ContentType.objects.get_for_model(queryset.model)
-        acl_query = Q(pk__in=self.filter(
-            content_type=content_type, role__in=user_roles,
-            permissions=permission.stored_permission
-        ).values_list('object_id', flat=True))
+            # Directly granted access
+            content_type = ContentType.objects.get_for_model(queryset.model)
+            acl_query = Q(pk__in=self.filter(
+                content_type=content_type, role__in=user_roles,
+                permissions=permission.stored_permission
+            ).values_list('object_id', flat=True))
 
-        return queryset.filter(parent_acl_query | acl_query)
+            return queryset.filter(parent_acl_query | acl_query)
+        else:
+            return queryset

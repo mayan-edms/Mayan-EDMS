@@ -89,8 +89,6 @@ class PermissionTestCase(TestCase):
             self.fail('PermissionDenied exception was not expected.')
 
     def test_filtering_with_permissions(self):
-        self.role.permissions.add(permission_document_view.stored_permission)
-
         acl = AccessControlList.objects.create(
             content_object=self.document_1, role=self.role
         )
@@ -137,8 +135,6 @@ class PermissionTestCase(TestCase):
             self.fail('PermissionDenied exception was not expected.')
 
     def test_filtering_with_inherited_permissions(self):
-        self.role.permissions.add(permission_document_view.stored_permission)
-
         acl = AccessControlList.objects.create(
             content_object=self.document_type_1, role=self.role
         )
@@ -148,6 +144,10 @@ class PermissionTestCase(TestCase):
             permission=permission_document_view, user=self.user,
             queryset=Document.objects.all()
         )
+
+        # Since document_1 and document_2 are of document_type_1
+        # they are the only ones that should be returned
+
         self.assertTrue(self.document_1 in result)
         self.assertTrue(self.document_2 in result)
         self.assertTrue(self.document_3 not in result)

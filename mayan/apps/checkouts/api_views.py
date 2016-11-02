@@ -31,18 +31,10 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
             return DocumentCheckoutSerializer
 
     def get_queryset(self):
-        documents = DocumentCheckout.objects.checked_out_documents()
-
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            filtered_documents = AccessControlList.objects.filter_by_access(
-                (permission_document_view,), self.request.user, documents
-            )
-        else:
-            filtered_documents = documents
+        filtered_documents = AccessControlList.objects.filter_by_access(
+            (permission_document_view,), self.request.user,
+            queryset=DocumentCheckout.objects.checked_out_documents()
+        )
 
         return DocumentCheckout.objects.filter(
             document__pk__in=filtered_documents.values_list('pk', flat=True)
@@ -104,18 +96,10 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
 
     def get_queryset(self):
         if self.request.method == 'GET':
-            documents = DocumentCheckout.objects.checked_out_documents()
-
-            try:
-                Permission.check_permissions(
-                    self.request.user, (permission_document_view,)
-                )
-            except PermissionDenied:
-                filtered_documents = AccessControlList.objects.filter_by_access(
-                    (permission_document_view,), self.request.user, documents
-                )
-            else:
-                filtered_documents = documents
+            filtered_documents = AccessControlList.objects.filter_by_access(
+                (permission_document_view,), self.request.user,
+                queryset=DocumentCheckout.objects.checked_out_documents()
+            )
 
             return DocumentCheckout.objects.filter(
                 document__pk__in=filtered_documents.values_list(

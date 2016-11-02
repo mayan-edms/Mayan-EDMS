@@ -147,18 +147,10 @@ class APIFolderDocumentListView(generics.ListCreateAPIView):
     def get_queryset(self):
         folder = self.get_folder()
 
-        documents = folder.documents.all()
-
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            documents = AccessControlList.objects.filter_by_access(
-                permission_document_view, self.request.user, documents
-            )
-
-        return documents
+        return AccessControlList.objects.filter_by_access(
+            permission_document_view, self.request.user,
+            queryset=folder.documents.all()
+        )
 
     def perform_create(self, serializer):
         serializer.save(folder=self.get_folder())

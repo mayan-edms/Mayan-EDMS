@@ -145,14 +145,9 @@ def folder_add_document(request, document_id=None, document_id_list=None):
             )
         )
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_folder_add_document,)
-        )
-    except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(
-            permission_folder_add_document, request.user, queryset
-        )
+    queryset = AccessControlList.objects.filter_by_access(
+        permission_folder_add_document, request.user, queryset=queryset
+    )
 
     post_action_redirect = None
     if document_id:
@@ -227,14 +222,9 @@ def folder_document_remove(request, folder_id, document_id=None, document_id_lis
         messages.error(request, _('Must provide at least one folder document.'))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
 
-    try:
-        Permission.check_permissions(
-            request.user, (permission_folder_remove_document,)
-        )
-    except PermissionDenied:
-        queryset = AccessControlList.objects.filter_by_access(
-            permission_folder_remove_document, request.user, queryset
-        )
+    queryset = AccessControlList.objects.filter_by_access(
+        permission_folder_remove_document, request.user, queryset=queryset
+    )
 
     previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
     next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
