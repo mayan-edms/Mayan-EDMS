@@ -5,6 +5,7 @@ import logging
 from django.utils.module_loading import import_string
 
 from converter import converter_class
+from documents.runtime import cache_storage_backend
 
 from .exceptions import NoMIMETypeMatch, ParserError
 from .models import DocumentPageContent
@@ -52,28 +53,27 @@ class OCRBackendBase(object):
             self.process_document_page(document_page=document_page)
 
     def process_document_page(self, document_page):
-            logger.info(
-                'Processing page: %d of document version: %s',
-                document_page.page_number, document_page.document_version
+        logger.info(
+            'Processing page: %d of document version: %s',
+            document_page.page_number, document_page.document_version
+        )
+
+        cache_filename = document_page.generate_image()
+
+        with cache_storage_backend.open(cache_filename) as file_object:
+            document_page_content, created = DocumentPageContent.objects.get_or_create(
+                document_page=document_page
             )
-
-            image = document_page.get_image()
-
-            try:
-                document_page_content, created = DocumentPageContent.objects.get_or_create(
-                    document_page=document_page
-                )
-                document_page_content.content = self.execute(
-                    file_object=image, language=document_page.document.language
-                )
-                document_page_content.save()
-            finally:
-                image.close()
-
-            logger.info(
-                'Finished processing page: %d of document version: %s',
-                document_page.page_number, document_page.document_version
+            document_page_content.content = self.execute(
+                file_object=file_object,
+                language=document_page.document.language
             )
+            document_page_content.save()
+
+        logger.info(
+            'Finished processing page: %d of document version: %s',
+            document_page.page_number, document_page.document_version
+        )
 
     def execute(self, file_object, language=None, transformations=None):
         self.language = language

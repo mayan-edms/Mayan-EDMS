@@ -68,5 +68,5 @@ class GermanOCRSupportTestCase(BaseTestCase):
             'Repository für elektronische Dokumente.' in content
         )
         self.assertTrue(
-            'Es bietet einen elektronischen Tresor oder' in content
+            'Es bietet einen' in content
         )
