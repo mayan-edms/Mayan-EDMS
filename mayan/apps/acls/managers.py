@@ -52,38 +52,43 @@ class AccessControlListManager(models.Manager):
             return True
 
         try:
-            stored_permissions = [
-                permission.stored_permission for permission in permissions
-            ]
-        except TypeError:
-            # Not a list of permissions, just one
-            stored_permissions = [permissions.stored_permission]
-
-        if related:
-            obj = return_attrib(obj, related)
-
-        try:
-            parent_accessor = ModelPermission.get_inheritance(obj._meta.model)
-        except KeyError:
-            pass
-        else:
+            return Permission.check_permissions(
+                requester=user, permissions=permissions
+            )
+        except PermissionDenied:
             try:
-                return self.check_access(
-                    permissions, user, getattr(obj, parent_accessor)
-                )
-            except PermissionDenied:
+                stored_permissions = [
+                    permission.stored_permission for permission in permissions
+                ]
+            except TypeError:
+                # Not a list of permissions, just one
+                stored_permissions = (permissions.stored_permission,)
+
+            if related:
+                obj = return_attrib(obj, related)
+
+            try:
+                parent_accessor = ModelPermission.get_inheritance(obj._meta.model)
+            except KeyError:
                 pass
+            else:
+                try:
+                    return self.check_access(
+                        permissions, user, getattr(obj, parent_accessor)
+                    )
+                except PermissionDenied:
+                    pass
 
-        user_roles = []
-        for group in user.groups.all():
-            for role in group.roles.all():
-                if set(stored_permissions).intersection(set(self.get_inherited_permissions(role=role, obj=obj))):
-                    return True
+            user_roles = []
+            for group in user.groups.all():
+                for role in group.roles.all():
+                    if set(stored_permissions).intersection(set(self.get_inherited_permissions(role=role, obj=obj))):
+                        return True
 
-                user_roles.append(role)
+                    user_roles.append(role)
 
-        if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles).exists():
-            raise PermissionDenied(ugettext('Insufficient access.'))
+            if not self.filter(content_type=ContentType.objects.get_for_model(obj), object_id=obj.pk, permissions__in=stored_permissions, role__in=user_roles).exists():
+                raise PermissionDenied(ugettext('Insufficient access.'))
 
     def filter_by_access(self, permission, user, queryset):
         if user.is_superuser or user.is_staff:

@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
 from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
@@ -8,7 +7,6 @@ from rest_framework.exceptions import ValidationError
 from rest_framework.reverse import reverse
 
 from acls.models import AccessControlList
-from permissions import Permission
 
 from .models import Tag
 from .permissions import permission_tag_attach
@@ -50,14 +48,10 @@ class NewDocumentTagSerializer(serializers.Serializer):
         try:
             tag = Tag.objects.get(pk=validated_data['tag'])
 
-            try:
-                Permission.check_permissions(
-                    self.context['request'].user, (permission_tag_attach,)
-                )
-            except PermissionDenied:
-                AccessControlList.objects.check_access(
-                    permission_tag_attach, self.context['request'], tag
-                )
+            AccessControlList.objects.check_access(
+                permissions=permission_tag_attach,
+                user=self.context['request'].user, obj=tag
+            )
 
             tag.documents.add(validated_data['document'])
         except Exception as exception:

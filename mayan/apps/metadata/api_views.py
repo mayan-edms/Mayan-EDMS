@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics, status, views
@@ -11,7 +10,6 @@ from documents.models import Document, DocumentType
 from documents.permissions import (
     permission_document_type_view, permission_document_type_edit
 )
-from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -100,31 +98,21 @@ class APIDocumentMetadataListView(generics.ListCreateAPIView):
         if self.request.method == 'GET':
             # Make sure the use has the permission to see the metadata for
             # this document
-            try:
-                Permission.check_permissions(
-                    self.request.user, (permission_metadata_document_view,)
-                )
-            except PermissionDenied:
-                AccessControlList.objects.check_access(
-                    permission_metadata_document_view, self.request.user,
-                    document
-                )
-            else:
-                return document.metadata.all()
+            AccessControlList.objects.check_access(
+                permissions=permission_metadata_document_view,
+                user=self.request.user, obj=document
+            )
+
+            return document.metadata.all()
         elif self.request.method == 'POST':
             # Make sure the use has the permission to add metadata to this
             # document
-            try:
-                Permission.check_permissions(
-                    self.request.user, (permission_metadata_document_add,)
-                )
-            except PermissionDenied:
-                AccessControlList.objects.check_access(
-                    permission_metadata_document_add, self.request.user,
-                    document
-                )
-            else:
-                return document.metadata.all()
+            AccessControlList.objects.check_access(
+                permissions=permission_metadata_document_add,
+                user=self.request.user, obj=document
+            )
+
+            return document.metadata.all()
 
     def get_serializer_class(self):
         if self.request.method == 'GET':
@@ -222,15 +210,10 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
         document_type = get_object_or_404(
             DocumentType, pk=self.kwargs['document_type_pk']
         )
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_type_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_type_view, self.request.user,
-                document_type
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_type_view, user=self.request.user,
+            obj=document_type
+        )
 
         return document_type.metadata.filter(required=self.required_metadata)
 
@@ -256,15 +239,10 @@ class APIDocumentTypeMetadataTypeOptionalListView(generics.ListCreateAPIView):
             DocumentType, pk=self.kwargs['document_type_pk']
         )
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_type_edit,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_type_edit, self.request.user,
-                document_type
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_type_edit, user=self.request.user,
+            obj=document_type
+        )
 
         serializer = self.get_serializer(data=self.request.POST)
 
@@ -316,15 +294,10 @@ class APIDocumentTypeMetadataTypeView(views.APIView):
             DocumentTypeMetadataType, pk=self.kwargs['pk']
         )
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_type_edit,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_type_edit, self.request.user,
-                document_type_metadata_type.document_type
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_type_edit, user=self.request.user,
+            obj=document_type_metadata_type.document_type
+        )
 
         document_type_metadata_type.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

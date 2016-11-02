@@ -4,7 +4,6 @@ import logging
 
 from django.conf import settings
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render_to_response
@@ -19,7 +18,6 @@ from common.views import (
 from documents.permissions import permission_document_view
 from documents.models import Document
 from documents.views import DocumentListView
-from permissions import Permission
 
 from .forms import FolderListForm
 from .models import Folder
@@ -69,14 +67,10 @@ class FolderDetailView(DocumentListView):
     def get_folder(self):
         folder = get_object_or_404(Folder, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_folder_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_folder_view, self.request.user, folder
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_folder_view, user=self.request.user,
+            obj=folder
+        )
 
         return folder
 
@@ -109,16 +103,14 @@ class DocumentFolderListView(FolderListView):
     def dispatch(self, request, *args, **kwargs):
         self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, request.user, self.document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=request.user,
+            obj=self.document
+        )
 
-        return super(DocumentFolderListView, self).dispatch(request, *args, **kwargs)
+        return super(DocumentFolderListView, self).dispatch(
+            request, *args, **kwargs
+        )
 
     def get_extra_context(self):
         return {

@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.core.exceptions import PermissionDenied
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
@@ -11,7 +10,6 @@ from rest_framework import generics, status
 from rest_framework.response import Response
 
 from acls.models import AccessControlList
-from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -379,15 +377,10 @@ class APIDocumentTypeDocumentListView(generics.ListAPIView):
 
     def get_queryset(self):
         document_type = get_object_or_404(DocumentType, pk=self.kwargs['pk'])
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_type_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_type_view, self.request.user,
-                document_type
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_type_view, user=self.request.user,
+            obj=document_type
+        )
 
         return document_type.documents.all()
 

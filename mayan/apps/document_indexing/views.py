@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.shortcuts import get_object_or_404
 from django.utils.html import mark_safe
@@ -15,7 +14,6 @@ from common.views import (
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from documents.views import DocumentListView
-from permissions import Permission
 
 from .forms import IndexTemplateNodeForm
 from .models import (
@@ -143,15 +141,10 @@ class TemplateNodeCreateView(SingleObjectCreateView):
     model = IndexTemplateNode
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_indexing_edit,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_indexing_edit, request.user,
-                self.get_parent_node().index
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_indexing_edit, user=request.user,
+            obj=self.get_parent_node().index
+        )
 
         return super(
             TemplateNodeCreateView, self
@@ -236,15 +229,10 @@ class IndexInstanceNodeView(DocumentListView):
             IndexInstanceNode, pk=self.kwargs['pk']
         )
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_indexing_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_indexing_view,
-                request.user, self.index_instance_node.index()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_indexing_view,
+            user=request.user, obj=self.index_instance_node.index()
+        )
 
         if self.index_instance_node:
             if self.index_instance_node.index_template_node.link_documents:
@@ -299,14 +287,10 @@ class DocumentIndexNodeListView(SingleObjectListView):
     object_permission_related = 'index'
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, request.user, self.get_document()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=request.user,
+            obj=self.get_document()
+        )
 
         return super(
             DocumentIndexNodeListView, self

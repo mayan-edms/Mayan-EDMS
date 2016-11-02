@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.db.utils import IntegrityError
 from django.http import HttpResponseRedirect
@@ -16,7 +15,6 @@ from common.views import (
 )
 from documents.models import Document
 from documents.views import DocumentListView
-from permissions import Permission
 
 from .forms import (
     WorkflowForm, WorkflowInstanceTransitionForm, WorkflowStateForm,
@@ -32,15 +30,10 @@ from .permissions import (
 
 class DocumentWorkflowInstanceListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_workflow_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_workflow_view, request.user,
-                self.get_document()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_view, user=request.user,
+            obj=self.get_document()
+        )
 
         return super(
             DocumentWorkflowInstanceListView, self
@@ -66,14 +59,10 @@ class WorkflowDocumentListView(DocumentListView):
     def dispatch(self, request, *args, **kwargs):
         self.workflow = get_object_or_404(Workflow, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_workflow_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_workflow_view, request.user, self.workflow
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_view, user=request.user,
+            obj=self.workflow
+        )
 
         return super(
             WorkflowDocumentListView, self
@@ -94,15 +83,10 @@ class WorkflowDocumentListView(DocumentListView):
 
 class WorkflowInstanceDetailView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_workflow_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_workflow_view, request.user,
-                self.get_workflow_instance().document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_view, users=request.user,
+            obj=self.get_workflow_instance().document
+        )
 
         return super(
             WorkflowInstanceDetailView, self
@@ -131,15 +115,10 @@ class WorkflowInstanceTransitionView(FormView):
     template_name = 'appearance/generic_form.html'
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_workflow_transition,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_workflow_transition, request.user,
-                self.get_workflow_instance().document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_transition, user=request.user,
+            obj=self.get_workflow_instance().document
+        )
 
         return super(
             WorkflowInstanceTransitionView, self
@@ -249,14 +228,10 @@ class SetupWorkflowDocumentTypesView(AssignRemoveView):
 
 class SetupWorkflowStateListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_workflow_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_workflow_view, request.user, self.get_workflow()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_workflow_view, user=request.user,
+            obj=self.get_workflow()
+        )
 
         return super(
             SetupWorkflowStateListView, self

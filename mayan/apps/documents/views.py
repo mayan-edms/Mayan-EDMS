@@ -25,7 +25,6 @@ from common.mixins import MultipleInstanceActionMixin
 from converter.literals import DEFAULT_ZOOM_LEVEL
 from converter.models import Transformation
 from converter.permissions import permission_transformation_delete
-from permissions import Permission
 
 from .events import event_document_download, event_document_view
 from .forms import (
@@ -111,14 +110,10 @@ class DeletedDocumentDeleteView(ConfirmView):
             Document.passthrough, pk=instance.pk
         )
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_delete,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_delete, self.request.user, source_document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_delete, user=self.request.user,
+            obj=source_document
+        )
 
         instance.delete()
 
@@ -180,14 +175,10 @@ class DocumentRestoreView(ConfirmView):
             Document.passthrough, pk=instance.pk
         )
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_restore,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_restore, self.request.user, source_document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_restore, user=self.request.user,
+            obj=source_document
+        )
 
         instance.restore()
 
@@ -214,15 +205,10 @@ class DocumentRestoreManyView(MultipleInstanceActionMixin, DocumentRestoreView):
 
 class DocumentPageListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, self.request.user,
-                self.get_document()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=self.get_document()
+        )
 
         return super(
             DocumentPageListView, self
@@ -245,15 +231,11 @@ class DocumentPageView(SimpleView):
     template_name = 'appearance/generic_form.html'
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, request.user,
-                self.get_object().document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=request.user,
+            obj=self.get_object().document
+        )
+
         return super(
             DocumentPageView, self
         ).dispatch(request, *args, **kwargs)
@@ -329,14 +311,10 @@ class DocumentTrashView(ConfirmView):
         return reverse('documents:document_list_recent')
 
     def object_action(self, instance):
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_trash,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_trash, self.request.user, instance
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_trash, user=self.request.user,
+            obj=instance
+        )
 
         instance.delete()
 
@@ -437,15 +415,10 @@ class DocumentTypeFilenameCreateView(SingleObjectCreateView):
     form_class = DocumentTypeFilenameForm_create
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_type_edit,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_type_edit, request.user,
-                self.get_document_type()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_type_edit, user=request.user,
+            obj=self.get_document_type()
+        )
 
         return super(DocumentTypeFilenameCreateView, self).dispatch(
             request, *args, **kwargs
@@ -543,14 +516,10 @@ class DocumentTypeFilenameListView(SingleObjectListView):
 
 class DocumentVersionListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, request.user, self.get_document()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=request.user,
+            obj=self.get_document()
+        )
 
         self.get_document().add_as_recent_document_for_user(request.user)
 
@@ -1045,10 +1014,10 @@ def document_multiple_clear_transformations(request):
 def document_page_navigation_next(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
+    AccessControlList.objects.check_access(
+        permissions=permission_document_view, user=request.user,
+        obj=document_page.document
+    )
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -1063,10 +1032,10 @@ def document_page_navigation_next(request, document_page_id):
 def document_page_navigation_previous(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
+    AccessControlList.objects.check_access(
+        permissions=permission_document_view, user=request.user,
+        obj=document_page.document
+    )
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -1082,10 +1051,10 @@ def document_page_navigation_first(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     document_page = get_object_or_404(document_page.siblings, page_number=1)
 
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
+    AccessControlList.objects.check_access(
+        permissions=permission_document_view, user=request.user,
+        obj=document_page.document
+    )
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -1096,10 +1065,10 @@ def document_page_navigation_last(request, document_page_id):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
     document_page = get_object_or_404(document_page.siblings, page_number=document_page.siblings.count())
 
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
+    AccessControlList.objects.check_access(
+        permissions=permission_document_view, user=request.user,
+        obj=document_page.document
+    )
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -1109,10 +1078,10 @@ def document_page_navigation_last(request, document_page_id):
 def transform_page(request, document_page_id, zoom_function=None, rotation_function=None):
     document_page = get_object_or_404(DocumentPage, pk=document_page_id)
 
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_view, request.user, document_page.document)
+    AccessControlList.objects.check_access(
+        permissions=permission_document_view, user=request.user,
+        obj=document_page.document
+    )
 
     view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
 
@@ -1172,10 +1141,9 @@ def document_page_rotate_left(request, document_page_id):
 def document_print(request, document_id):
     document = get_object_or_404(Document, pk=document_id)
 
-    try:
-        Permission.check_permissions(request.user, (permission_document_print,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(permission_document_print, request.user, document)
+    AccessControlList.objects.check_access(
+        permissions=permission_document_print, user=request.user, obj=document
+    )
 
     document.add_as_recent_document_for_user(request.user)
 

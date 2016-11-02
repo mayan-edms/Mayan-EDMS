@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
@@ -11,7 +10,6 @@ from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
 from documents.serializers import DocumentSerializer
-from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -105,14 +103,10 @@ class APITagDocumentListView(generics.ListAPIView):
 
     def get_queryset(self):
         tag = get_object_or_404(Tag, pk=self.kwargs['pk'])
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_tag_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_tag_view, self.request.user, tag
-            )
+
+        AccessControlList.objects.check_access(
+            permissions=permission_tag_view, user=self.request.user, obj=tag
+        )
 
         return tag.documents.all()
 
@@ -130,14 +124,11 @@ class APIDocumentTagListView(generics.ListCreateAPIView):
 
     def get_queryset(self):
         document = self.get_document()
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, self.request.user, document
-            )
+
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=document
+        )
 
         return document.attached_tags().all()
 
@@ -198,14 +189,10 @@ class APIDocumentTagView(generics.RetrieveDestroyAPIView):
     def get_document(self):
         document = get_object_or_404(Document, pk=self.kwargs['document_pk'])
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, self.request.user, document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=self.request.user,
+            obj=document
+        )
         return document
 
     def get_queryset(self):

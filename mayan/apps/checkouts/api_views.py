@@ -2,7 +2,6 @@ from __future__ import absolute_import, unicode_literals
 
 import pytz
 
-from django.core.exceptions import PermissionDenied
 from django.shortcuts import get_object_or_404
 
 from rest_framework import generics, status
@@ -11,7 +10,6 @@ from rest_framework.response import Response
 from acls.models import AccessControlList
 from documents.models import Document
 from documents.permissions import permission_document_view
-from permissions import Permission
 
 from .models import DocumentCheckout
 from .permissions import (
@@ -60,14 +58,10 @@ class APICheckedoutDocumentListView(generics.ListCreateAPIView):
             document = get_object_or_404(
                 Document, pk=serializer.data['document']
             )
-            try:
-                Permission.check_permissions(
-                    request.user, (permission_document_checkout,)
-                )
-            except PermissionDenied:
-                AccessControlList.objects.check_access(
-                    permission_document_checkout, request.user, document
-                )
+            AccessControlList.objects.check_access(
+                permissions=permission_document_checkout, user=request.user,
+                obj=document
+            )
 
             timezone = pytz.utc
 
@@ -126,24 +120,15 @@ class APICheckedoutDocumentView(generics.RetrieveDestroyAPIView):
         document = self.get_object().document
 
         if document.checkout_info().user == request.user:
-            try:
-                Permission.check_permissions(
-                    request.user, (permission_document_checkin,)
-                )
-            except PermissionDenied:
-                AccessControlList.objects.check_access(
-                    permission_document_checkin, request.user, document
-                )
+            AccessControlList.objects.check_access(
+                permissions=permission_document_checkin, user=request.user,
+                obj=document
+            )
         else:
-            try:
-                Permission.check_permissions(
-                    request.user, (permission_document_checkin_override,)
-                )
-            except PermissionDenied:
-                AccessControlList.objects.check_access(
-                    permission_document_checkin_override, request.user,
-                    document
-                )
+            AccessControlList.objects.check_access(
+                permissions=permission_document_checkin_override,
+                user=request.user, obj=document
+            )
 
         return super(
             APICheckedoutDocumentView, self

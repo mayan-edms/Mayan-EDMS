@@ -18,7 +18,6 @@ from common.views import (
 from documents.models import Document
 from documents.views import DocumentListView
 from documents.permissions import permission_document_view
-from permissions import Permission
 
 from .forms import TagListForm
 from .models import Tag
@@ -245,18 +244,14 @@ class DocumentTagListView(TagListView):
     def dispatch(self, request, *args, **kwargs):
         self.document = get_object_or_404(Document, pk=self.kwargs['pk'])
 
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_view, request.user, self.document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=request.user,
+            obj=self.document
+        )
 
-        return super(
-            DocumentTagListView, self
-        ).dispatch(request, *args, **kwargs)
+        return super(DocumentTagListView, self).dispatch(
+            request, *args, **kwargs
+        )
 
     def get_extra_context(self):
         return {

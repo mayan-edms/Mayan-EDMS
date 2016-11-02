@@ -15,7 +15,6 @@ from django.utils.encoding import smart_str, smart_unicode
 from django.utils.http import urlencode, urlquote
 
 from common.utils import return_attrib
-from permissions import Permission
 
 logger = logging.getLogger(__name__)
 
@@ -250,22 +249,16 @@ class Link(object):
         # If this link has a required permission check that the user have it
         # too
         if self.permissions:
-            try:
-                Permission.check_permissions(request.user, self.permissions)
-            except PermissionDenied:
-                # If the user doesn't have the permission, and we are passed
-                # an instance, check to see if the user has at least ACL
-                # access to the instance.
-                if resolved_object:
-                    try:
-                        AccessControlList.objects.check_access(
-                            self.permissions, request.user, resolved_object,
-                            related=self.permissions_related
-                        )
-                    except PermissionDenied:
-                        return None
-                else:
+            if resolved_object:
+                try:
+                    AccessControlList.objects.check_access(
+                        permissions=self.permissions, user=request.user,
+                        obj=resolved_object, related=self.permissions_related
+                    )
+                except PermissionDenied:
                     return None
+            else:
+                return None
 
         # Check to see if link has conditional display function and only
         # display it if the result of the conditional display function is

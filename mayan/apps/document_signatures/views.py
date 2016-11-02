@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
 from django.core.files import File
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
@@ -19,7 +18,6 @@ from common.utils import TemporaryFile
 from django_gpg.exceptions import NeedPassphrase, PassphraseError
 from django_gpg.permissions import permission_key_sign
 from documents.models import DocumentVersion
-from permissions import Permission
 
 from .forms import (
     DocumentVersionSignatureCreateForm,
@@ -47,14 +45,9 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         key = form.cleaned_data['key']
         passphrase = form.cleaned_data['passphrase'] or None
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_key_sign,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_key_sign, self.request.user, key
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_key_sign, user=self.request.user, obj=key
+        )
 
         try:
             with self.get_document_version().open() as file_object:
@@ -103,15 +96,10 @@ class DocumentVersionDetachedSignatureCreateView(FormView):
         ).form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_version_sign_detached,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_version_sign_detached, request.user,
-                self.get_document_version().document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_version_sign_detached,
+            user=request.user, obj=self.get_document_version().document
+        )
 
         return super(
             DocumentVersionDetachedSignatureCreateView, self
@@ -153,14 +141,9 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         key = form.cleaned_data['key']
         passphrase = form.cleaned_data['passphrase'] or None
 
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_key_sign,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_key_sign, self.request.user, key
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_key_sign, user=self.request.user, obj=key
+        )
 
         try:
             with self.get_document_version().open() as file_object:
@@ -214,15 +197,10 @@ class DocumentVersionEmbeddedSignatureCreateView(FormView):
         ).form_valid(form)
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_version_sign_embedded,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_version_sign_embedded, request.user,
-                self.get_document_version().document
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_version_sign_embedded,
+            user=request.user, obj=self.get_document_version().document
+        )
 
         return super(
             DocumentVersionEmbeddedSignatureCreateView, self
@@ -312,15 +290,10 @@ class DocumentVersionSignatureDownloadView(SingleObjectDownloadView):
 
 class DocumentVersionSignatureListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_version_signature_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_version_signature_view, request.user,
-                self.get_document_version()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_version_signature_view,
+            user=request.user, obj=self.get_document_version()
+        )
 
         return super(
             DocumentVersionSignatureListView, self
@@ -349,15 +322,10 @@ class DocumentVersionSignatureUploadView(SingleObjectCreateView):
     model = DetachedSignature
 
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                request.user, (permission_document_version_signature_upload,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_document_version_signature_upload, request.user,
-                self.get_document_version()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_version_signature_upload,
+            user=request.user, obj=self.get_document_version()
+        )
 
         return super(
             DocumentVersionSignatureUploadView, self

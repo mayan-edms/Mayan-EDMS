@@ -19,7 +19,6 @@ from documents.models import Document, DocumentType
 from documents.permissions import (
     permission_document_type_edit
 )
-from permissions import Permission
 
 from .api import save_metadata_list
 from .forms import (
@@ -464,15 +463,10 @@ def metadata_multiple_remove(request):
 
 class DocumentMetadataListView(SingleObjectListView):
     def dispatch(self, request, *args, **kwargs):
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_metadata_document_view,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_metadata_document_view, self.request.user,
-                self.get_document()
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_metadata_document_view,
+            user=self.request.user, obj=self.get_document()
+        )
 
         return super(DocumentMetadataListView, self).dispatch(
             request, *args, **kwargs

@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
@@ -14,7 +13,6 @@ from common.generics import (
 )
 from common.mixins import MultipleInstanceActionMixin
 from documents.models import Document, DocumentType
-from permissions import Permission
 
 from .forms import DocumentContentForm, DocumentTypeSelectForm
 from .models import DocumentVersionOCRError
@@ -52,14 +50,10 @@ class DocumentSubmitView(ConfirmView):
         return Document.objects.get(pk=self.kwargs['pk'])
 
     def object_action(self, instance):
-        try:
-            Permission.check_permissions(
-                self.request.user, (permission_ocr_document,)
-            )
-        except PermissionDenied:
-            AccessControlList.objects.check_access(
-                permission_ocr_document, self.request.user, instance
-            )
+        AccessControlList.objects.check_access(
+            permissions=permission_ocr_document, user=self.request.user,
+            obj=instance
+        )
 
         instance.submit_for_ocr()
 
