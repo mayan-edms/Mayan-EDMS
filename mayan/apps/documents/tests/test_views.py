@@ -571,6 +571,38 @@ class DocumentsViewsTestCase(GenericDocumentViewTestCase):
         self.assertContains(response, 'reverted', status_code=200)
         self.assertEqual(self.document.versions.count(), 1)
 
+    def test_document_page_view_no_permissions(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        response = self.get(
+            'documents:document_page_view', args=(
+                self.document.pages.first().pk,
+            )
+        )
+
+        self.assertEqual(response.status_code, 403)
+
+    def test_document_page_view_with_permissions(self):
+        self.login(
+            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
+        )
+
+        self.role.permissions.add(
+            permission_document_view.stored_permission
+        )
+        response = self.get(
+            'documents:document_page_view', args=(
+                self.document.pages.first().pk,
+            ),
+            follow=True
+        )
+
+        self.assertContains(
+            response, unicode(self.document.pages.first()), status_code=200
+        )
+
 
 class DocumentTypeViewsTestCase(GenericDocumentViewTestCase):
     def test_document_type_create_view_no_permission(self):

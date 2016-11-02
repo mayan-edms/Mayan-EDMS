@@ -16,10 +16,11 @@ from .views import (
     ClearImageCacheView, DeletedDocumentDeleteView,
     DeletedDocumentDeleteManyView, DeletedDocumentListView,
     DocumentDownloadFormView, DocumentDownloadView, DocumentEditView,
-    DocumentListView, DocumentPageView, DocumentPageListView,
-    DocumentPageViewResetView, DocumentPreviewView, DocumentRestoreView,
-    DocumentRestoreManyView, DocumentTrashView, DocumentTrashManyView,
-    DocumentTypeCreateView, DocumentTypeDeleteView,
+    DocumentListView, DocumentPageListView, DocumentPageRotateLeftView,
+    DocumentPageRotateRightView, DocumentPageView, DocumentPageViewResetView,
+    DocumentPageZoomInView, DocumentPageZoomOutView, DocumentPreviewView,
+    DocumentRestoreView, DocumentRestoreManyView, DocumentTrashView,
+    DocumentTrashManyView, DocumentTypeCreateView, DocumentTypeDeleteView,
     DocumentTypeDocumentListView, DocumentTypeFilenameCreateView,
     DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
     DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
@@ -30,9 +31,7 @@ from .views import (
     document_multiple_document_type_edit, document_multiple_update_page_count,
     document_page_navigation_first, document_page_navigation_last,
     document_page_navigation_next, document_page_navigation_previous,
-    document_page_rotate_left, document_page_rotate_right,
-    document_page_zoom_in, document_page_zoom_out, document_print,
-    document_update_page_count
+    document_print, document_update_page_count
 )
 
 
@@ -184,20 +183,21 @@ urlpatterns = patterns(
         document_page_navigation_last, name='document_page_navigation_last'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/zoom/in/$',
-        document_page_zoom_in, name='document_page_zoom_in'
+        r'^page/(?P<pk>\d+)/zoom/in/$',
+        DocumentPageZoomInView.as_view(), name='document_page_zoom_in'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/zoom/out/$',
-        document_page_zoom_out, name='document_page_zoom_out'
+        r'^page/(?P<pk>\d+)/zoom/out/$',
+        DocumentPageZoomOutView.as_view(), name='document_page_zoom_out'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/rotate/right/$',
-        document_page_rotate_right, name='document_page_rotate_right'
+        r'^page/(?P<pk>\d+)/rotate/left/$',
+        DocumentPageRotateLeftView.as_view(), name='document_page_rotate_left'
     ),
     url(
-        r'^page/(?P<document_page_id>\d+)/rotate/left/$',
-        document_page_rotate_left, name='document_page_rotate_left'
+        r'^page/(?P<pk>\d+)/rotate/right/$',
+        DocumentPageRotateRightView.as_view(),
+        name='document_page_rotate_right'
     ),
     url(
         r'^page/(?P<pk>\d+)/reset/$', DocumentPageViewResetView.as_view(),

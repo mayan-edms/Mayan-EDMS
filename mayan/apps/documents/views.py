@@ -22,7 +22,7 @@ from common.generics import (
     SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
-from converter.literals import DEFAULT_ZOOM_LEVEL
+from converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 from converter.models import Transformation
 from converter.permissions import permission_transformation_delete
 
@@ -241,8 +241,9 @@ class DocumentPageView(SimpleView):
         ).dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
-        zoom = self.request.GET.get('zoom')
-        rotation = self.request.GET.get('rotation')
+        zoom = int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
+        rotation = int(self.request.GET.get('rotation', DEFAULT_ROTATION))
+
         document_page_form = DocumentPageForm(
             instance=self.get_object(), zoom=zoom, rotation=rotation
         )
@@ -250,7 +251,7 @@ class DocumentPageView(SimpleView):
         base_title = _('Image of: %s') % self.get_object()
 
         if zoom != DEFAULT_ZOOM_LEVEL:
-            zoom_text = '(%d%%)' % zoom
+            zoom_text = '({}%)'.format(zoom)
         else:
             zoom_text = ''
 
@@ -260,7 +261,7 @@ class DocumentPageView(SimpleView):
             'navigation_object_list': ('page',),
             'page': self.get_object(),
             'rotation': rotation,
-            'title': ' '.join([base_title, zoom_text]),
+            'title': ' '.join((base_title, zoom_text,)),
             'read_only': True,
             'zoom': zoom,
         }
@@ -1075,67 +1076,69 @@ def document_page_navigation_last(request, document_page_id):
     return HttpResponseRedirect('{0}?{1}'.format(reverse(view, args=(document_page.pk,)), request.GET.urlencode()))
 
 
-def transform_page(request, document_page_id, zoom_function=None, rotation_function=None):
-    document_page = get_object_or_404(DocumentPage, pk=document_page_id)
+class DocumentPageInteractiveTransformation(RedirectView):
+    def dispatch(self, request, *args, **kwargs):
+        object = self.get_object()
 
-    AccessControlList.objects.check_access(
-        permissions=permission_document_view, user=request.user,
-        obj=document_page.document
-    )
+        AccessControlList.objects.check_access(
+            permissions=permission_document_view, user=request.user,
+            obj=object
+        )
 
-    view = resolve(urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).path).view_name
+        return super(DocumentPageInteractiveTransformation, self).dispatch(
+            request, *args, **kwargs
+        )
 
-    # Get the query string from the referer url
-    query = urlparse.urlparse(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))).query
-    # Parse the query string and get the zoom value
-    # parse_qs return a dictionary whose values are lists
-    zoom = int(urlparse.parse_qs(query).get('zoom', ['100'])[0])
-    rotation = int(urlparse.parse_qs(query).get('rotation', ['0'])[0])
+    def get_object(self):
+        return get_object_or_404(DocumentPage, pk=self.kwargs['pk'])
 
-    if zoom_function:
-        zoom = zoom_function(zoom)
+    def get_redirect_url(self, *args, **kwargs):
+        url = reverse(
+            'documents:document_page_view', args=(self.kwargs['pk'],)
+        )
 
-    if rotation_function:
-        rotation = rotation_function(rotation)
+        query_dict = {
+            'rotation': int(self.request.GET.get('rotation', DEFAULT_ROTATION)),
+            'zoom': int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
+        }
 
-    return HttpResponseRedirect(
-        '?'.join([
-            reverse(view, args=(document_page.pk,)),
-            urlencode({'zoom': zoom, 'rotation': rotation})
-        ])
-    )
+        self.transformation_function(query_dict)
 
-
-def document_page_zoom_in(request, document_page_id):
-    return transform_page(
-        request,
-        document_page_id,
-        zoom_function=lambda x: setting_zoom_max_level.value if x + setting_zoom_percent_step.value > setting_zoom_max_level.value else x + setting_zoom_percent_step.value
-    )
+        return '{}?{}'.format(url, urlencode(query_dict))
 
 
-def document_page_zoom_out(request, document_page_id):
-    return transform_page(
-        request,
-        document_page_id,
-        zoom_function=lambda x: setting_zoom_min_level.value if x - setting_zoom_percent_step.value < setting_zoom_min_level.value else x - setting_zoom_percent_step.value
-    )
+class DocumentPageZoomInView(DocumentPageInteractiveTransformation):
+    def transformation_function(self, query_dict):
+        zoom = query_dict['zoom'] + setting_zoom_percent_step.value
+
+        if zoom > setting_zoom_max_level.value:
+            zoom = setting_zoom_max_level.value
+
+        query_dict['zoom'] = zoom
 
 
-def document_page_rotate_right(request, document_page_id):
-    return transform_page(
-        request,
-        document_page_id,
-        rotation_function=lambda x: (x + setting_rotation_step.value) % 360
-    )
+class DocumentPageZoomOutView(DocumentPageInteractiveTransformation):
+    def transformation_function(self, query_dict):
+        zoom = query_dict['zoom'] - setting_zoom_percent_step.value
+
+        if zoom < setting_zoom_min_level.value:
+            zoom = setting_zoom_min_level.value
+
+        query_dict['zoom'] = zoom
 
 
-def document_page_rotate_left(request, document_page_id):
-    return transform_page(
-        request,
-        document_page_id,
-        rotation_function=lambda x: (x - setting_rotation_step.value) % 360
-    )
+class DocumentPageRotateLeftView(DocumentPageInteractiveTransformation):
+    def transformation_function(self, query_dict):
+        query_dict['rotation'] = (
+            query_dict['rotation'] - setting_rotation_step.value
+        ) % 360
+
+
+class DocumentPageRotateRightView(DocumentPageInteractiveTransformation):
+    def transformation_function(self, query_dict):
+        query_dict['rotation'] = (
+            query_dict['rotation'] + setting_rotation_step.value
+        ) % 360
 
 
 def document_print(request, document_id):

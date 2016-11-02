@@ -194,12 +194,12 @@ link_document_page_return = Link(
 link_document_page_rotate_left = Link(
     icon='fa fa-rotate-left', permissions=(permission_document_view,),
     text=_('Rotate left'), view='documents:document_page_rotate_left',
-    args='resolved_object.pk'
+    args='resolved_object.pk', keep_query=True
 )
 link_document_page_rotate_right = Link(
     icon='fa fa-rotate-right', permissions=(permission_document_view,),
     text=_('Rotate right'), view='documents:document_page_rotate_right',
-    args='resolved_object.pk'
+    args='resolved_object.pk', keep_query=True
 )
 link_document_page_view = Link(
     permissions=(permission_document_view,), text=_('Page image'),
@@ -212,12 +212,14 @@ link_document_page_view_reset = Link(
 link_document_page_zoom_in = Link(
     conditional_disable=is_max_zoom, icon='fa fa-search-plus',
     permissions=(permission_document_view,), text=_('Zoom in'),
-    view='documents:document_page_zoom_in', args='resolved_object.pk'
+    view='documents:document_page_zoom_in', args='resolved_object.pk',
+    keep_query=True
 )
 link_document_page_zoom_out = Link(
     conditional_disable=is_min_zoom, icon='fa fa-search-minus',
     permissions=(permission_document_view,), text=_('Zoom out'),
-    view='documents:document_page_zoom_out', args='resolved_object.pk'
+    view='documents:document_page_zoom_out', args='resolved_object.pk',
+    keep_query=True
 )
 
 # Document versions
