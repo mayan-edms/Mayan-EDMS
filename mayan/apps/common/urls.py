@@ -3,23 +3,27 @@ from __future__ import unicode_literals
 from django.conf.urls import patterns, url
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.generic import RedirectView
-from django.views.i18n import javascript_catalog
+from django.views.i18n import javascript_catalog, set_language
 
 from .views import (
     AboutView, CurrentUserDetailsView, CurrentUserEditView,
     CurrentUserLocaleProfileDetailsView, CurrentUserLocaleProfileEditView,
     FilterResultListView, FilterSelectView, HomeView, LicenseView,
-    PackagesLicensesView, SetupListView, ToolsListView
+    PackagesLicensesView, SetupListView, ToolsListView,
+    multi_object_action_view
 )
 
 urlpatterns = patterns(
-    'common.views',
+    '',
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^about/$', AboutView.as_view(), name='about_view'),
     url(r'^license/$', LicenseView.as_view(), name='license_view'),
-    url(r'^packages/licenses/$', PackagesLicensesView.as_view(), name='packages_licenses_view'),
     url(
-        r'^object/multiple/action/$', 'multi_object_action_view',
+        r'^packages/licenses/$', PackagesLicensesView.as_view(),
+        name='packages_licenses_view'
+    ),
+    url(
+        r'^object/multiple/action/$', multi_object_action_view,
         name='multi_object_action_view'
     ),
     url(r'^setup/$', SetupListView.as_view(), name='setup_list'),
@@ -62,7 +66,6 @@ urlpatterns += patterns(
         name='javascript_catalog'
     ),
     url(
-        r'^set_language/$', 'django.views.i18n.set_language',
-        name='set_language'
+        r'^set_language/$', set_language, name='set_language'
     ),
 )

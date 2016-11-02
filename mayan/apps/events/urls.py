@@ -5,7 +5,7 @@ from django.conf.urls import patterns, url
 from .views import EventListView, ObjectEventListView, VerbEventListView
 
 urlpatterns = patterns(
-    'events.views',
+    '',
     url(r'^all/$', EventListView.as_view(), name='events_list'),
     url(
         r'^for/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/$',

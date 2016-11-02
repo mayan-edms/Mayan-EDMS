@@ -9,7 +9,7 @@ from .views import (
 )
 
 urlpatterns = patterns(
-    'django_gpg.views',
+    '',
     url(
         r'^(?P<pk>\d+)/$', KeyDetailView.as_view(), name='key_detail'
     ),

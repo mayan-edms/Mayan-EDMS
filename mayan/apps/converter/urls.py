@@ -8,7 +8,7 @@ from .views import (
 )
 
 urlpatterns = patterns(
-    'converter.views',
+    '',
     url(
         r'^create_for/(?P<app_label>[-\w]+)/(?P<model>[-\w]+)/(?P<object_id>\d+)/$',
         TransformationCreateView.as_view(), name='transformation_create'

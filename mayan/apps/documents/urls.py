@@ -25,11 +25,19 @@ from .views import (
     DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentView,
-    EmptyTrashCanView, RecentDocumentListView
+    EmptyTrashCanView, RecentDocumentListView, document_clear_transformations,
+    document_document_type_edit, document_multiple_clear_transformations,
+    document_multiple_document_type_edit, document_multiple_update_page_count,
+    document_page_navigation_first, document_page_navigation_last,
+    document_page_navigation_next, document_page_navigation_previous,
+    document_page_rotate_left, document_page_rotate_right,
+    document_page_zoom_in, document_page_zoom_out, document_print,
+    document_update_page_count
 )
 
+
 urlpatterns = patterns(
-    'documents.views',
+    '',
     url(r'^list/$', DocumentListView.as_view(), name='document_list'),
     url(
         r'^list/recent/$', RecentDocumentListView.as_view(),
@@ -65,11 +73,11 @@ urlpatterns = patterns(
         name='document_multiple_delete'
     ),
     url(
-        r'^(?P<document_id>\d+)/type/$', 'document_document_type_edit',
+        r'^(?P<document_id>\d+)/type/$', document_document_type_edit,
         name='document_document_type_edit'
     ),
     url(
-        r'^multiple/type/$', 'document_multiple_document_type_edit',
+        r'^multiple/type/$', document_multiple_document_type_edit,
         name='document_multiple_document_type_edit'
     ),
     url(
@@ -85,16 +93,15 @@ urlpatterns = patterns(
         name='document_edit'
     ),
     url(
-        r'^(?P<document_id>\d+)/print/$', 'document_print',
+        r'^(?P<document_id>\d+)/print/$', document_print,
         name='document_print'
     ),
     url(
         r'^(?P<document_id>\d+)/reset_page_count/$',
-        'document_update_page_count', name='document_update_page_count'
+        document_update_page_count, name='document_update_page_count'
     ),
     url(
-        r'^multiple/reset_page_count/$',
-        'document_multiple_update_page_count',
+        r'^multiple/reset_page_count/$', document_multiple_update_page_count,
         name='document_multiple_update_page_count'
     ),
     url(
@@ -115,8 +122,7 @@ urlpatterns = patterns(
     ),
     url(
         r'^(?P<document_id>\d+)/clear_transformations/$',
-        'document_clear_transformations',
-        name='document_clear_transformations'
+        document_clear_transformations, name='document_clear_transformations'
     ),
 
     url(
@@ -144,7 +150,7 @@ urlpatterns = patterns(
 
     url(
         r'^multiple/clear_transformations/$',
-        'document_multiple_clear_transformations',
+        document_multiple_clear_transformations,
         name='document_multiple_clear_transformations'
     ),
     url(
@@ -162,36 +168,36 @@ urlpatterns = patterns(
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/navigation/next/$',
-        'document_page_navigation_next', name='document_page_navigation_next'
+        document_page_navigation_next, name='document_page_navigation_next'
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/navigation/previous/$',
-        'document_page_navigation_previous',
+        document_page_navigation_previous,
         name='document_page_navigation_previous'
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/navigation/first/$',
-        'document_page_navigation_first', name='document_page_navigation_first'
+        document_page_navigation_first, name='document_page_navigation_first'
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/navigation/last/$',
-        'document_page_navigation_last', name='document_page_navigation_last'
+        document_page_navigation_last, name='document_page_navigation_last'
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/zoom/in/$',
-        'document_page_zoom_in', name='document_page_zoom_in'
+        document_page_zoom_in, name='document_page_zoom_in'
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/zoom/out/$',
-        'document_page_zoom_out', name='document_page_zoom_out'
+        document_page_zoom_out, name='document_page_zoom_out'
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/rotate/right/$',
-        'document_page_rotate_right', name='document_page_rotate_right'
+        document_page_rotate_right, name='document_page_rotate_right'
     ),
     url(
         r'^page/(?P<document_page_id>\d+)/rotate/left/$',
-        'document_page_rotate_left', name='document_page_rotate_left'
+        document_page_rotate_left, name='document_page_rotate_left'
     ),
     url(
         r'^page/(?P<pk>\d+)/reset/$', DocumentPageViewResetView.as_view(),

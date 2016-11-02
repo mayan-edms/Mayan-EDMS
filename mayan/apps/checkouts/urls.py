@@ -9,7 +9,7 @@ from .views import (
 )
 
 urlpatterns = patterns(
-    'checkouts.views',
+    '',
     url(r'^list/$', CheckoutListView.as_view(), name='checkout_list'),
     url(
         r'^(?P<pk>\d+)/check/out/$', CheckoutDocumentView.as_view(),

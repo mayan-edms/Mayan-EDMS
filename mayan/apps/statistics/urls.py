@@ -8,7 +8,7 @@ from .views import (
 )
 
 urlpatterns = patterns(
-    'statistics.views',
+    '',
     url(r'^$', NamespaceListView.as_view(), name='namespace_list'),
     url(
         r'^namespace/(?P<slug>[\w-]+)/details/$',

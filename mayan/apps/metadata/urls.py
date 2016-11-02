@@ -13,33 +13,35 @@ from .views import (
     DocumentMetadataListView, MetadataTypeCreateView, MetadataTypeDeleteView,
     MetadataTypeEditView, MetadataTypeListView,
     SetupDocumentTypeMetadataOptionalView,
-    SetupDocumentTypeMetadataRequiredView
+    SetupDocumentTypeMetadataRequiredView, metadata_add, metadata_edit,
+    metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove,
+    metadata_remove
 )
 
 urlpatterns = patterns(
-    'metadata.views',
+    '',
     url(
-        r'^(?P<document_id>\d+)/edit/$', 'metadata_edit', name='metadata_edit'
+        r'^(?P<document_id>\d+)/edit/$', metadata_edit, name='metadata_edit'
     ),
     url(
         r'^(?P<pk>\d+)/view/$', DocumentMetadataListView.as_view(),
         name='metadata_view'
     ),
     url(
-        r'^multiple/edit/$', 'metadata_multiple_edit',
+        r'^multiple/edit/$', metadata_multiple_edit,
         name='metadata_multiple_edit'
     ),
-    url(r'^(?P<document_id>\d+)/add/$', 'metadata_add', name='metadata_add'),
+    url(r'^(?P<document_id>\d+)/add/$', metadata_add, name='metadata_add'),
     url(
-        r'^multiple/add/$', 'metadata_multiple_add',
+        r'^multiple/add/$', metadata_multiple_add,
         name='metadata_multiple_add'
     ),
     url(
-        r'^(?P<document_id>\d+)/remove/$', 'metadata_remove',
+        r'^(?P<document_id>\d+)/remove/$', metadata_remove,
         name='metadata_remove'
     ),
     url(
-        r'^multiple/remove/$', 'metadata_multiple_remove',
+        r'^multiple/remove/$', metadata_multiple_remove,
         name='metadata_multiple_remove'
     ),
 

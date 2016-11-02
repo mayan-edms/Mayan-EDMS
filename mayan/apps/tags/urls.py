@@ -8,11 +8,13 @@ from .api_views import (
 )
 from .views import (
     DocumentTagListView, TagCreateView, TagEditView, TagListView,
-    TagTaggedItemListView
+    TagTaggedItemListView, tag_attach, tag_multiple_attach,
+    tag_multiple_delete, multiple_documents_selection_tag_remove,
+    single_document_multiple_tag_remove
 )
 
 urlpatterns = patterns(
-    'tags.views',
+    '',
     url(r'^list/$', TagListView.as_view(), name='tag_list'),
     url(r'^create/$', TagCreateView.as_view(), name='tag_create'),
     url(r'^(?P<tag_id>\d+)/delete/$', 'tag_delete', name='tag_delete'),
@@ -22,27 +24,26 @@ urlpatterns = patterns(
         name='tag_tagged_item_list'
     ),
     url(
-        r'^multiple/delete/$', 'tag_multiple_delete',
-        name='tag_multiple_delete'
+        r'^multiple/delete/$', tag_multiple_delete, name='tag_multiple_delete'
     ),
 
     url(
         r'^multiple/remove/document/(?P<document_id>\d+)/$',
-        'single_document_multiple_tag_remove',
+        single_document_multiple_tag_remove,
         name='single_document_multiple_tag_remove'
     ),
     url(
         r'^multiple/remove/document/multiple/$',
-        'multiple_documents_selection_tag_remove',
+        multiple_documents_selection_tag_remove,
         name='multiple_documents_selection_tag_remove'
     ),
 
     url(
-        r'^selection/attach/document/(?P<document_id>\d+)/$', 'tag_attach',
+        r'^selection/attach/document/(?P<document_id>\d+)/$', tag_attach,
         name='tag_attach'
     ),
     url(
-        r'^selection/attach/document/multiple/$', 'tag_multiple_attach',
+        r'^selection/attach/document/multiple/$', tag_multiple_attach,
         name='multiple_documents_tag_attach'
     ),
 

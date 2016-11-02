@@ -8,7 +8,7 @@ from .views import (
 )
 
 urlpatterns = patterns(
-    'dynamic_search.views',
+    '',
     url(r'^(?P<search_model>[\.\w]+)/$', SearchView.as_view(), name='search'),
     url(
         r'^advanced/(?P<search_model>[\.\w]+)/$', AdvancedSearchView.as_view(),
