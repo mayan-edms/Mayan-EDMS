@@ -82,8 +82,12 @@ body {
     overflow-x: scroll; height: 500px;
 }
 
+#carousel-container img {
+    width: 100%;
+}
+
 .carousel-item {
-    margin: 5px 10px 10px 10px
+    margin: 5px 10px 10px 10px;
 }
 
 .carousel-item-page-number {

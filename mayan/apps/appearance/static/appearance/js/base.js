@@ -16,8 +16,8 @@ function set_image_noninteractive(image) {
     container.html(html);
 }
 
-function load_document_image(image) {
-    $.get( image.attr('data-src'), function(result) {
+function loadDocumentImage(image) {
+    $.get(image.attr('data-src'), function(result) {
         image.attr('src', result.data);
         image.addClass(image.attr('data-post-load-class'));
     })
@@ -76,20 +76,11 @@ jQuery(document).ready(function() {
         e.preventDefault();
     })
 
-   $('img.lazy-load').lazyload({
-        appear: function(elements_left, settings) {
-            load_document_image($(this));
-        },
-    });
+   $('img.lazy-load').lazyload();
 
     $('img.lazy-load-carousel').lazyload({
         threshold : 400,
         container: $("#carousel-container"),
-        appear: function(elements_left, settings) {
-            var $this = $(this);
-            $this.removeClass('lazy-load-carousel');
-            load_document_image($this);
-        },
     });
 
     $('th input:checkbox').click(function(e) {

@@ -56,14 +56,15 @@ def task_delete_stubs():
     logger.info('Finshed')
 
 
-@app.task(compression='zlib')
-def task_get_document_page_image(document_page_id, *args, **kwargs):
+@app.task()
+def task_generate_document_page_image(document_page_id, *args, **kwargs):
     DocumentPage = apps.get_model(
         app_label='documents', model_name='DocumentPage'
     )
 
     document_page = DocumentPage.objects.get(pk=document_page_id)
-    return document_page.get_image(*args, **kwargs)
+
+    return document_page.generate_image(*args, **kwargs)
 
 
 @app.task(bind=True, default_retry_delay=UPDATE_PAGE_COUNT_RETRY_DELAY, ignore_result=True)

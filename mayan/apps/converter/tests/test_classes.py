@@ -1,0 +1,92 @@
+from __future__ import unicode_literals
+
+from django.test import TestCase
+
+from ..classes import (
+    BaseTransformation, TransformationResize, TransformationRotate,
+    TransformationZoom
+)
+
+TRANSFORMATION_RESIZE_WIDTH = 123
+TRANSFORMATION_RESIZE_HEIGHT = 528
+TRANSFORMATION_RESIZE_CACHE_HASH = '2cbabd3aaafdaf8f'
+TRANSFORMATION_RESIZE_WIDTH_2 = 124
+TRANSFORMATION_RESIZE_HEIGHT_2 = 529
+TRANSFORMATION_RESIZE_CACHE_HASH_2 = '2cbabd3aaafdaf89'
+TRANSFORMATION_ROTATE_DEGRESS = 34
+TRANSFORMATION_ROTATE_CACHE_HASH = '2f9d036e13aacb48'
+TRANSFORMATION_COMBINED_CACHE_HASH = '44a3b262e18b5d5d'
+TRANSFORMATION_ZOOM_PERCENT = 49
+TRANSFORMATION_ZOOM_CACHE_HASH = '47840c3658dc399a'
+
+
+class TransformationTestCase(TestCase):
+    def test_resize_cache_hashing(self):
+        # Test if the hash is being generated correctly
+        transformation = TransformationResize(
+            width=TRANSFORMATION_RESIZE_WIDTH,
+            height=TRANSFORMATION_RESIZE_HEIGHT
+        )
+
+        self.assertEqual(
+            transformation.cache_hash(), TRANSFORMATION_RESIZE_CACHE_HASH
+        )
+
+        # Test if the hash is being alternated correctly
+        transformation = TransformationResize(
+            width=TRANSFORMATION_RESIZE_WIDTH_2,
+            height=TRANSFORMATION_RESIZE_HEIGHT_2
+        )
+
+        self.assertEqual(
+            transformation.cache_hash(), TRANSFORMATION_RESIZE_CACHE_HASH_2
+        )
+
+    def test_rotate_cache_hashing(self):
+        # Test if the hash is being generated correctly
+        transformation = TransformationRotate(
+            degrees=TRANSFORMATION_ROTATE_DEGRESS
+        )
+
+        self.assertEqual(
+            transformation.cache_hash(), TRANSFORMATION_ROTATE_CACHE_HASH
+        )
+
+    def test_rotate_zoom_hashing(self):
+        # Test if the hash is being generated correctly
+        transformation = TransformationZoom(
+            percent=TRANSFORMATION_ZOOM_PERCENT
+        )
+
+        self.assertEqual(
+            transformation.cache_hash(), TRANSFORMATION_ZOOM_CACHE_HASH
+        )
+
+    def test_cache_hash_combining(self):
+        # Test magic method and hash combining
+
+        transformation_resize = TransformationResize(
+            width=TRANSFORMATION_RESIZE_WIDTH,
+            height=TRANSFORMATION_RESIZE_HEIGHT
+        )
+
+        transformation_rotate = TransformationRotate(
+            degrees=TRANSFORMATION_ROTATE_DEGRESS
+        )
+
+        transformation_zoom = TransformationZoom(
+            percent=TRANSFORMATION_ZOOM_PERCENT
+        )
+
+        #self.assertEqual(
+        #    #transformation_rotate ^ transformation_resize ^ transformation_zoom,
+        #    transformation_rotate ^ transformation_resize ^ transformation_zoom,
+        #    #transformation_resize ^ transformation_zoom,
+        #    TRANSFORMATION_COMBINED_CACHE_HASH
+        #)
+
+        self.assertEqual(
+            BaseTransformation.combine(
+                (transformation_rotate, transformation_resize, transformation_zoom)
+            ), TRANSFORMATION_COMBINED_CACHE_HASH
+        )

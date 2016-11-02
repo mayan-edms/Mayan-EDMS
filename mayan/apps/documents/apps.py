@@ -68,13 +68,13 @@ from .permissions import (
 )
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
-from .settings import setting_thumbnail_size
+from .settings import setting_display_size, setting_thumbnail_size
 from .statistics import (
     new_documents_per_month, new_document_pages_per_month,
     new_document_versions_per_month, total_document_per_month,
     total_document_page_per_month, total_document_version_per_month
 )
-from .widgets import document_html_widget, document_thumbnail
+from .widgets import document_html_widget
 
 
 class DocumentsApp(MayanAppConfig):
@@ -151,8 +151,12 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=Document, label=_('Thumbnail'),
-            func=lambda context: document_thumbnail(
-                context['object'], gallery_name='documents:document_list',
+            func=lambda context: document_html_widget(
+                document_page=context['object'].latest_version.pages.first(),
+                click_view='rest_api:documentpage-image',
+                click_view_arguments_lazy=lambda: (context['object'].latest_version.pages.first().pk,),
+                click_view_querydict={'size': setting_display_size.value},
+                gallery_name='documents:document_list',
                 size=setting_thumbnail_size.value,
                 title=getattr(context['object'], 'label', None),
             )
@@ -165,8 +169,8 @@ class DocumentsApp(MayanAppConfig):
             source=DocumentPage, label=_('Thumbnail'),
             func=lambda context: document_html_widget(
                 document_page=context['object'],
-                click_view='documents:document_display',
-                click_view_arguments=(context['object'].document.pk,),
+                click_view='rest_api:documentpage-image',
+                click_view_arguments=(context['object'].pk,),
                 gallery_name='documents:document_page_list',
                 preview_click_view='documents:document_page_view',
                 size=setting_thumbnail_size.value,
@@ -178,8 +182,8 @@ class DocumentsApp(MayanAppConfig):
             source=DocumentPageResult, label=_('Thumbnail'),
             func=lambda context: document_html_widget(
                 document_page=context['object'],
-                click_view='documents:document_display',
-                click_view_arguments=(context['object'].document.pk,),
+                click_view='rest_api:documentpage-image',
+                click_view_arguments=(context['object'].pk,),
                 gallery_name='documents:document_page_list',
                 preview_click_view='documents:document_page_view',
                 size=setting_thumbnail_size.value,
@@ -205,8 +209,11 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=DeletedDocument, label=_('Thumbnail'),
-            func=lambda context: document_thumbnail(
-                context['object'],
+            func=lambda context: document_html_widget(
+                document_page=context['object'].latest_version.pages.first(),
+                click_view='rest_api:documentpage-image',
+                click_view_arguments_lazy=lambda: (context['object'].latest_version.pages.first().pk,),
+                click_view_querydict={'size': setting_display_size.value},
                 gallery_name='documents:delete_document_list',
                 size=setting_thumbnail_size.value,
                 title=getattr(context['object'], 'label', None),
@@ -285,7 +292,7 @@ class DocumentsApp(MayanAppConfig):
                 'documents.tasks.task_clear_image_cache': {
                     'queue': 'tools'
                 },
-                'documents.tasks.task_get_document_page_image': {
+                'documents.tasks.task_generate_document_page_image': {
                     'queue': 'converter'
                 },
                 'documents.tasks.task_update_page_count': {

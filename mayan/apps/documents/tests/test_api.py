@@ -9,7 +9,6 @@ from json import loads
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test import override_settings
-from django.utils.six import BytesIO
 
 from django_downloadview import assert_download_response
 from rest_framework import status
@@ -23,7 +22,7 @@ from .literals import (
     TEST_DOCUMENT_FILENAME, TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
     TEST_SMALL_DOCUMENT_FILENAME, TEST_SMALL_DOCUMENT_PATH,
 )
-from ..models import Document, DocumentType, HASH_FUNCTION
+from ..models import Document, DocumentType
 
 
 class DocumentTypeAPITestCase(APITestCase):

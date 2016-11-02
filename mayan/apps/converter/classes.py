@@ -2,6 +2,7 @@ from __future__ import unicode_literals
 
 import base64
 import logging
+from operator import xor
 import os
 
 try:
@@ -221,6 +222,26 @@ class BaseTransformation(object):
 
     _registry = {}
 
+    @staticmethod
+    def encode_hash(decoded_value):
+        return hex(abs(decoded_value))[2:]
+
+    @staticmethod
+    def decode_hash(encoded_value):
+        return int(encoded_value, 16)
+
+    @staticmethod
+    def combine(transformations):
+        result = None
+
+        for transformation in transformations:
+            if not result:
+                result = BaseTransformation.decode_hash(transformation.cache_hash())
+            else:
+                result ^= BaseTransformation.decode_hash(transformation.cache_hash())
+
+        return BaseTransformation.encode_hash(result)
+
     @classmethod
     def register(cls, transformation):
         cls._registry[transformation.name] = transformation
@@ -240,8 +261,17 @@ class BaseTransformation(object):
         return string_concat(cls.label, ': ', ', '.join(cls.arguments))
 
     def __init__(self, **kwargs):
+        self.kwargs = {}
         for argument_name in self.arguments:
             setattr(self, argument_name, kwargs.get(argument_name))
+            self.kwargs[argument_name] = kwargs.get(argument_name)
+
+    def cache_hash(self):
+        result = unicode.__hash__(self.name)
+        for key, value in self.kwargs.items():
+            result ^= unicode.__hash__(key) ^ str.__hash__(str(value))
+
+        return BaseTransformation.encode_hash(result)
 
     def execute_on(self, image):
         self.image = image

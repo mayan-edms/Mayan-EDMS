@@ -29,8 +29,8 @@ class DocumentPageForm(DetailForm):
         model = DocumentPage
 
     def __init__(self, *args, **kwargs):
-        zoom = kwargs.pop('zoom', 100)
-        rotation = kwargs.pop('rotation', 0)
+        zoom = kwargs.pop('zoom', None)
+        rotation = kwargs.pop('rotation', None)
         super(DocumentPageForm, self).__init__(*args, **kwargs)
         self.fields['page_image'].initial = self.instance
         self.fields['page_image'].widget.attrs.update({

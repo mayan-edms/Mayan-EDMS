@@ -15,6 +15,7 @@ from .links import (
 
 class ConverterApp(MayanAppConfig):
     name = 'converter'
+    test = True
     verbose_name = _('Converter')
 
     def ready(self):

@@ -4,6 +4,9 @@
 
 {% block content_plain %}
     {% for page in pages %}
-        <img src="{% url 'documents:document_display_print' object.id %}?page={{ page.page_number }}" />
+        <img src="{% url 'rest_api:documentpage-image' page.id %}" />
     {% endfor %}
 {% endblock %}
+
+
+setting_print_size.value

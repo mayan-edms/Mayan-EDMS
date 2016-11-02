@@ -16,6 +16,7 @@ Other changes
 - Remove dependency on the django-filetransfer library
 - Fix height calculation in resize transformation
 - Improve upgrade instructions
+- New image caching pipeline
 
 Removals
 --------

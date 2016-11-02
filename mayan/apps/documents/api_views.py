@@ -3,8 +3,10 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.core.exceptions import PermissionDenied
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 
+from django_downloadview import DownloadMixin, VirtualFile
 from rest_framework import generics, status
 from rest_framework.response import Response
 
@@ -13,6 +15,7 @@ from permissions import Permission
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
+from .literals import DOCUMENT_IMAGE_TASK_TIMEOUT
 from .models import (
     Document, DocumentPage, DocumentType, DocumentVersion, RecentDocument
 )
@@ -25,13 +28,14 @@ from .permissions import (
     permission_document_type_create, permission_document_type_delete,
     permission_document_type_edit, permission_document_type_view
 )
+from .runtime import cache_storage_backend
 from .serializers import (
-    DeletedDocumentSerializer, DocumentPageImageSerializer,
-    DocumentPageSerializer, DocumentSerializer,
+    DeletedDocumentSerializer, DocumentPageSerializer, DocumentSerializer,
     DocumentTypeSerializer, DocumentVersionSerializer,
     DocumentVersionRevertSerializer, NewDocumentSerializer,
     NewDocumentVersionSerializer, RecentDocumentSerializer
 )
+from .tasks import task_generate_document_page_image
 
 logger = logging.getLogger(__name__)
 
@@ -84,15 +88,6 @@ class APIDeletedDocumentRestoreView(generics.GenericAPIView):
     def post(self, *args, **kwargs):
         self.get_object().restore()
         return Response(status=status.HTTP_200_OK)
-
-
-##############
-from django_downloadview import VirtualDownloadView
-from django_downloadview import VirtualFile
-from django_downloadview import DownloadMixin
-
-#class SingleObjectDownloadView(ViewPermissionCheckMixin, ObjectPermissionCheckMixin, VirtualDownloadView, SingleObjectMixin):
-#    VirtualFile = VirtualFile
 
 
 class APIDocumentDownloadView(DownloadMixin, generics.RetrieveAPIView):
@@ -228,8 +223,18 @@ class APIDocumentView(generics.RetrieveUpdateDestroyAPIView):
 class APIDocumentPageImageView(generics.RetrieveAPIView):
     """
     Returns an image representation of the selected document.
-    size -- 'x' seprated width and height of the desired image representation.
-    zoom -- Zoom level of the image to be generated, numeric value only.
+    ---
+    GET:
+        omit_serializer: true
+        parameters:
+            - name: size
+              description: 'x' seprated width and height of the desired image representation.
+              paramType: query
+              type: number
+            - name: zoom
+              description: Zoom level of the image to be generated, numeric value only.
+              paramType: query
+              type: number
     """
 
     mayan_object_permissions = {
@@ -238,7 +243,25 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
     mayan_permission_attribute_check = 'document'
     permission_classes = (MayanPermission,)
     queryset = DocumentPage.objects.all()
-    serializer_class = DocumentPageImageSerializer
+
+    def get_serializer_class(self):
+        return None
+
+    def retrieve(self, request, *args, **kwargs):
+        size = request.GET.get('size')
+        zoom = request.GET.get('zoom')
+        rotation = request.GET.get('rotation')
+
+        task = task_generate_document_page_image.apply_async(
+            kwargs=dict(
+                document_page_id=self.kwargs['pk'], size=size, zoom=zoom,
+                rotation=rotation
+            )
+        )
+
+        cache_filename = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
+        with cache_storage_backend.open(cache_filename) as file_object:
+            return HttpResponse(file_object.read(), content_type='image')
 
 
 class APIDocumentPageView(generics.RetrieveUpdateAPIView):

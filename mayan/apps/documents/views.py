@@ -1,6 +1,5 @@
 from __future__ import absolute_import, unicode_literals
 
-import base64
 import logging
 import urlparse
 
@@ -8,7 +7,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import resolve, reverse, reverse_lazy
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.http import urlencode
@@ -23,9 +22,7 @@ from common.generics import (
     SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
-from converter.literals import (
-    DEFAULT_PAGE_NUMBER, DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
-)
+from converter.literals import DEFAULT_ZOOM_LEVEL
 from converter.models import Transformation
 from converter.permissions import permission_transformation_delete
 from permissions import Permission
@@ -36,9 +33,7 @@ from .forms import (
     DocumentPropertiesForm, DocumentTypeSelectForm,
     DocumentTypeFilenameForm_create, PrintForm
 )
-from .literals import (
-    DOCUMENT_IMAGE_TASK_TIMEOUT, PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
-)
+from .literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
 from .models import (
     DeletedDocument, Document, DocumentType, DocumentPage,
     DocumentTypeFilename, DocumentVersion, RecentDocument
@@ -53,13 +48,10 @@ from .permissions import (
     permission_document_view, permission_empty_trash
 )
 from .settings import (
-    setting_preview_size, setting_rotation_step, setting_zoom_percent_step,
+    setting_print_size, setting_rotation_step, setting_zoom_percent_step,
     setting_zoom_max_level, setting_zoom_min_level
 )
-from .tasks import (
-    task_clear_image_cache, task_get_document_page_image,
-    task_update_page_count
-)
+from .tasks import task_clear_image_cache, task_update_page_count
 from .utils import parse_range
 
 logger = logging.getLogger(__name__)
@@ -277,8 +269,8 @@ class DocumentPageView(SimpleView):
         ).dispatch(request, *args, **kwargs)
 
     def get_extra_context(self):
-        zoom = int(self.request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
-        rotation = int(self.request.GET.get('rotation', DEFAULT_ROTATION))
+        zoom = self.request.GET.get('zoom')
+        rotation = self.request.GET.get('rotation')
         document_page_form = DocumentPageForm(
             instance=self.get_object(), zoom=zoom, rotation=rotation
         )
@@ -740,37 +732,6 @@ def document_multiple_document_type_edit(request):
             'id_list', request.POST.get('id_list', '')
         ).split(',')
     )
-
-
-# TODO: Get rid of this view and convert widget to use API and base64 only images
-def get_document_image(request, document_id, size=setting_preview_size.value):
-    document = get_object_or_404(Document.passthrough, pk=document_id)
-    try:
-        Permission.check_permissions(request.user, (permission_document_view,))
-    except PermissionDenied:
-        AccessControlList.objects.check_access(
-            permission_document_view, request.user, document
-        )
-
-    page = int(request.GET.get('page', DEFAULT_PAGE_NUMBER))
-
-    zoom = int(request.GET.get('zoom', DEFAULT_ZOOM_LEVEL))
-
-    version = int(request.GET.get('version', document.latest_version.pk))
-
-    if zoom < setting_zoom_min_level.value:
-        zoom = setting_zoom_min_level.value
-
-    if zoom > setting_zoom_max_level.value:
-        zoom = setting_zoom_max_level.value
-
-    rotation = int(request.GET.get('rotation', DEFAULT_ROTATION)) % 360
-
-    document_page = document.pages.get(page_number=page)
-
-    task = task_get_document_page_image.apply_async(kwargs=dict(document_page_id=document_page.pk, size=size, zoom=zoom, rotation=rotation, as_base64=True, version=version))
-    data = task.get(timeout=DOCUMENT_IMAGE_TASK_TIMEOUT)
-    return HttpResponse(base64.b64decode(data.partition('base64,')[2]), content_type='image')
 
 
 class DocumentDownloadFormView(FormView):
@@ -1279,6 +1240,7 @@ def document_print(request, document_id):
                 'appearance_type': 'plain',
                 'object': document,
                 'pages': pages,
+                'size': setting_print_size.value,
                 'title': _('Print: %s') % document,
             }, context_instance=RequestContext(request))
     else:

@@ -6,8 +6,7 @@ from django.core.urlresolvers import reverse
 from django.utils.html import strip_tags
 from django.utils.http import urlencode
 from django.utils.safestring import mark_safe
-from django.utils.translation import ugettext
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ugettext, ugettext_lazy as _
 
 from converter.literals import DEFAULT_ROTATION, DEFAULT_ZOOM_LEVEL
 
@@ -17,8 +16,8 @@ from .settings import setting_display_size, setting_thumbnail_size
 class DocumentPageImageWidget(forms.widgets.Widget):
     def render(self, name, value, attrs=None):
         final_attrs = self.build_attrs(attrs)
-        zoom = final_attrs.get('zoom', 100)
-        rotation = final_attrs.get('rotation', 0)
+        zoom = final_attrs.get('zoom')
+        rotation = final_attrs.get('rotation')
         if value:
             output = []
             output.append(
@@ -46,20 +45,16 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
             'data-height-difference=200>'
         )
 
-        try:
-            document_pages = value.pages.all()
-            total_pages = value.pages.count()
-        except AttributeError:
-            document_pages = []
-            total_pages = 0
+        document_pages = value.pages.all()
+        total_pages = value.pages.count()
 
-        for page in document_pages:
+        for document_page in document_pages:
             output.append('<div class="carousel-item">')
             output.append(
                 document_html_widget(
-                    page,
+                    document_page=document_page,
                     click_view='documents:document_page_view',
-                    click_view_arguments=[page.pk],
+                    click_view_arguments=(document_page.pk,),
                     fancybox_class='',
                     image_class='lazy-load-carousel',
                     size=setting_display_size.value,
@@ -70,22 +65,18 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                 '<div class="carousel-item-page-number">%s</div>' % ugettext(
                     'Page %(page_number)d of %(total_pages)d'
                 ) % {
-                    'page_number': page.page_number,
+                    'page_number': document_page.page_number,
                     'total_pages': total_pages
                 }
             )
             output.append('</div>')
 
+        if not total_pages:
+            output.append('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>')
+
         output.append('</div>')
 
         return mark_safe(''.join(output))
-
-
-def document_thumbnail(document, **kwargs):
-    return document_html_widget(
-        document_page=document.latest_version.pages.first(),
-        click_view='documents:document_display', **kwargs
-    )
 
 
 def document_link(document):
@@ -94,7 +85,7 @@ def document_link(document):
     )
 
 
-def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None, disable_title_link=False, preview_click_view=None):
+def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None, disable_title_link=False, preview_click_view=None, click_view_querydict=None, click_view_arguments_lazy=None):
     result = []
 
     alt_text = _('Document page image')
@@ -151,6 +142,9 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
         title_template = ''
 
     if click_view:
+        if click_view_arguments_lazy:
+            click_view_arguments = click_view_arguments_lazy()
+
         result.append(
             '<a {gallery_template} class="{fancybox_class}" '
             'href="{image_data}" {title_template}>'.format(
@@ -158,8 +152,8 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
                 fancybox_class=fancybox_class,
                 image_data='%s?%s' % (
                     reverse(
-                        click_view, args=click_view_arguments or [document.pk]
-                    ), query_string
+                        click_view, args=click_view_arguments
+                    ), urlencode(click_view_querydict or {})
                 ),
                 title_template=title_template
             )
@@ -173,8 +167,8 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
         )
     else:
         result.append(
-            '<img class="thin_border %s" data-src="%s" '
-            'data-post-load-class="%s" src="%s" alt="%s" />' % (
+            '<img class="thin_border {}" data-original="{}" '
+            'data-post-load-class="{}" src="{}" alt="{}" />'.format(
                 image_class, preview_view, post_load_class,
                 static('appearance/images/loading.png'), alt_text
             )

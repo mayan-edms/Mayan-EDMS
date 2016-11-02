@@ -12,7 +12,6 @@ from .api_views import (
     APIDocumentVersionRevertView, APIDocumentVersionView,
     APIRecentDocumentListView
 )
-from .settings import setting_print_size, setting_display_size
 from .views import (
     ClearImageCacheView, DeletedDocumentDeleteView,
     DeletedDocumentDeleteManyView, DeletedDocumentListView,
@@ -97,17 +96,6 @@ urlpatterns = patterns(
         r'^multiple/reset_page_count/$',
         'document_multiple_update_page_count',
         name='document_multiple_update_page_count'
-    ),
-
-    url(
-        r'^(?P<document_id>\d+)/display/$', 'get_document_image', {
-            'size': setting_display_size.value
-        }, 'document_display'
-    ),
-    url(
-        r'^(?P<document_id>\d+)/display/print/$', 'get_document_image', {
-            'size': setting_print_size.value
-        }, 'document_display_print'
     ),
     url(
         r'^(?P<pk>\d+)/download/form/$',

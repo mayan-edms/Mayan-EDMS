@@ -16,8 +16,8 @@ from django.utils.translation import ugettext, ugettext_lazy as _
 from acls.models import AccessControlList
 from common.literals import TIME_DELTA_UNIT_CHOICES
 from converter import (
-    converter_class, TransformationResize, TransformationRotate,
-    TransformationZoom
+    converter_class, BaseTransformation, TransformationResize,
+    TransformationRotate, TransformationZoom
 )
 from converter.exceptions import InvalidOfficeFormat, PageCountError
 from converter.literals import DEFAULT_ZOOM_LEVEL, DEFAULT_ROTATION
@@ -683,15 +683,15 @@ class DocumentPage(models.Model):
     def document(self):
         return self.document_version.document
 
-    def get_image(self, *args, **kwargs):
-        as_base64 = kwargs.pop('as_base64', False)
-        transformations = kwargs.pop('transformations', [])
-        size = kwargs.pop('size', setting_display_size.value)
+    def generate_image(self, *args, **kwargs):
+        # Convert arguments into transformations
+        transformations = kwargs.get('transformations', [])
+        size = kwargs.get('size', setting_display_size.value)
         rotation = int(
-            kwargs.pop('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
-        )
+            kwargs.get('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
+        ) % 360
         zoom_level = int(
-            kwargs.pop('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL
+            kwargs.get('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL
         )
 
         if zoom_level < setting_zoom_min_level.value:
@@ -700,8 +700,54 @@ class DocumentPage(models.Model):
         if zoom_level > setting_zoom_max_level.value:
             zoom_level = setting_zoom_max_level.value
 
-        rotation = rotation % 360
+        # Generate transformation hash
 
+        transformation_list = []
+
+        # Stored transformations first
+        for stored_transformation in Transformation.objects.get_for_model(self, as_classes=True):
+            transformation_list.append(stored_transformation)
+
+        # Interactive transformations second
+        for transformation in transformations:
+            transformation_list.append(transformation)
+
+        if rotation:
+            transformation_list.append(
+                TransformationRotate(degrees=rotation)
+            )
+
+        if size:
+            transformation_list.append(
+                TransformationResize(
+                    **dict(zip(('width', 'height'), (size.split('x'))))
+                )
+            )
+
+        if zoom_level:
+            transformation_list.append(TransformationZoom(percent=zoom_level))
+
+        cache_filename = '{}-{}'.format(
+            self.cache_filename, BaseTransformation.combine(transformation_list)
+        )
+
+        # Check is transformed image is available
+        logger.debug('transformations cache filename: %s', cache_filename)
+
+        if cache_storage_backend.exists(cache_filename):
+            logger.debug(
+                'transformations cache file "%s" found', cache_filename
+            )
+        else:
+            image = self.get_image(transformations=transformation_list)
+            with cache_storage_backend.open(cache_filename, 'wb+') as file_object:
+                file_object.write(image.getvalue())
+
+            self.cached_images.create(filename=cache_filename)
+
+        return cache_filename
+
+    def get_image(self, transformations=None):
         cache_filename = self.cache_filename
         logger.debug('Page cache filename: %s', cache_filename)
 
@@ -734,33 +780,15 @@ class DocumentPage(models.Model):
                 cache_storage_backend.delete(cache_filename)
                 raise
 
-        # Stored transformations
-        for stored_transformation in Transformation.objects.get_for_model(self, as_classes=True):
-            converter.transform(transformation=stored_transformation)
-
-        # Interactive transformations
         for transformation in transformations:
             converter.transform(transformation=transformation)
 
-        if rotation:
-            converter.transform(transformation=TransformationRotate(
-                degrees=rotation)
-            )
-
-        if size:
-            converter.transform(transformation=TransformationResize(
-                **dict(zip(('width', 'height'), (size.split('x')))))
-            )
-
-        if zoom_level:
-            converter.transform(
-                transformation=TransformationZoom(percent=zoom_level)
-            )
-
-        return converter.get_page(as_base64=as_base64)
+        return converter.get_page()
 
     def invalidate_cache(self):
         cache_storage_backend.delete(self.cache_filename)
+        for cached_image in self.cached_images.all():
+            cached_image.delete()
 
     @property
     def siblings(self):
@@ -775,6 +803,22 @@ class DocumentPage(models.Model):
         images
         """
         return '{}-{}'.format(self.document_version.uuid, self.pk)
+
+
+class DocumentPageCachedImage(models.Model):
+    document_page = models.ForeignKey(
+        DocumentPage, related_name='cached_images',
+        verbose_name=_('Document page')
+    )
+    filename = models.CharField(max_length=128, verbose_name=_('Filename'))
+
+    class Meta:
+        verbose_name = _('Document page cached image')
+        verbose_name_plural = _('Document page cached images')
+
+    def delete(self, *args, **kwargs):
+        cache_storage_backend.delete(self.filename)
+        return super(DocumentPageCachedImage, self).delete(*args, **kwargs)
 
 
 class DocumentPageResult(DocumentPage):
