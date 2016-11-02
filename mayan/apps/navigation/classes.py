@@ -15,6 +15,7 @@ from django.utils.encoding import smart_str, smart_unicode
 from django.utils.http import urlencode, urlquote
 
 from common.utils import return_attrib
+from permissions import Permission
 
 logger = logging.getLogger(__name__)
 
@@ -258,7 +259,12 @@ class Link(object):
                 except PermissionDenied:
                     return None
             else:
-                return None
+                try:
+                    Permission.check_permissions(
+                        requester=request.user, permissions=self.permissions
+                    )
+                except PermissionDenied:
+                    return None
 
         # Check to see if link has conditional display function and only
         # display it if the result of the conditional display function is
