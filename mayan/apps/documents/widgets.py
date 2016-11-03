@@ -98,8 +98,8 @@ def document_html_widget(document_page, click_view=None, click_view_arguments=No
     document = document_page.document
 
     query_dict = {
-        'zoom': zoom,
-        'rotation': rotation,
+        'zoom': zoom or DEFAULT_ZOOM_LEVEL,
+        'rotation': rotation or DEFAULT_ROTATION,
         'size': size,
         'page': document_page.page_number
     }

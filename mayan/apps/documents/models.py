@@ -680,12 +680,10 @@ class DocumentPage(models.Model):
         # Convert arguments into transformations
         transformations = kwargs.get('transformations', [])
         size = kwargs.get('size', setting_display_size.value)
-        rotation = int(
-            kwargs.get('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
-        ) % 360
-        zoom_level = int(
-            kwargs.get('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL
-        )
+
+        rotation = kwargs.get('rotation', DEFAULT_ROTATION)
+
+        zoom_level = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL)
 
         if zoom_level < setting_zoom_min_level.value:
             zoom_level = setting_zoom_min_level.value

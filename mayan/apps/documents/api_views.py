@@ -247,8 +247,8 @@ class APIDocumentPageImageView(generics.RetrieveAPIView):
 
     def retrieve(self, request, *args, **kwargs):
         size = request.GET.get('size')
-        zoom = request.GET.get('zoom')
-        rotation = request.GET.get('rotation')
+        zoom = int(request.GET.get('zoom'))
+        rotation = int(request.GET.get('rotation'))
 
         task = task_generate_document_page_image.apply_async(
             kwargs=dict(
