@@ -34,7 +34,7 @@ class ContentTypeCheckMixin(object):
 
 class TempfileCheckMixin(object):
     # Ignore the jvmstat instrumentation and GitLab's CI .config files
-    ignore_globs = ('hsperfdata_*', '.config')
+    ignore_globs = ('hsperfdata_*', '.config', '.cache')
 
     def _get_temporary_entries(self):
         ignored_result = []
