@@ -88,7 +88,37 @@ class Menu(object):
                 links=links, position=position, source=sources
             )
 
+    def get_resolved_navigation_object_list(self, context, source):
+        resolved_navigation_object_list = []
+
+        if source:
+            resolved_navigation_object_list = [source]
+        else:
+            navigation_object_list = context.get(
+                'navigation_object_list', ('object',)
+            )
+
+            logger.debug('navigation_object_list: %s', navigation_object_list)
+
+            # Multiple objects
+            for navigation_object in navigation_object_list:
+                try:
+                    resolved_navigation_object_list.append(
+                        Variable(navigation_object).resolve(context)
+                    )
+                except VariableDoesNotExist:
+                    pass
+
+        logger.debug(
+            'resolved_navigation_object_list: %s',
+            resolved_navigation_object_list
+        )
+
+        return resolved_navigation_object_list
+
     def resolve(self, context, source=None):
+        result = []
+
         try:
             request = Variable('request').resolve(context)
         except VariableDoesNotExist:
@@ -101,44 +131,18 @@ class Menu(object):
 
         # Get sources: view name, view objects
         current_view = resolve(current_path).view_name
-        resolved_navigation_object_list = []
 
-        result = []
-
-        if source:
-            resolved_navigation_object_list = [source]
-        else:
-            navigation_object_list = context.get(
-                'navigation_object_list', ('object',)
-            )
-
-            # Multiple objects
-            for navigation_object in navigation_object_list:
-                try:
-                    resolved_navigation_object_list.append(
-                        Variable(navigation_object).resolve(context)
-                    )
-                except VariableDoesNotExist:
-                    pass
+        resolved_navigation_object_list = self.get_resolved_navigation_object_list(
+            context=context, source=source
+        )
 
         for resolved_navigation_object in resolved_navigation_object_list:
             resolved_links = []
 
             for bound_source, links in self.bound_links.iteritems():
                 try:
-                    if inspect.isclass(bound_source) and type(resolved_navigation_object) == bound_source:
-                        for link in links:
-                            resolved_link = link.resolve(
-                                context=context,
-                                resolved_object=resolved_navigation_object
-                            )
-                            if resolved_link:
-                                resolved_links.append(resolved_link)
-                        # No need for further content object match testing
-                        break
-                    else:
-                        # Second try for objects using .defer() or .only()
-                        if inspect.isclass(bound_source) and isinstance(resolved_navigation_object, bound_source):
+                    if inspect.isclass(bound_source):
+                        if type(resolved_navigation_object) == bound_source:
                             for link in links:
                                 resolved_link = link.resolve(
                                     context=context,
@@ -148,7 +152,17 @@ class Menu(object):
                                     resolved_links.append(resolved_link)
                             # No need for further content object match testing
                             break
-
+                        elif resolved_navigation_object.get_deferred_fields() and isinstance(resolved_navigation_object, bound_source):
+                        # Second try for objects using .defer() or .only()
+                            for link in links:
+                                resolved_link = link.resolve(
+                                    context=context,
+                                    resolved_object=resolved_navigation_object
+                                )
+                                if resolved_link:
+                                    resolved_links.append(resolved_link)
+                            # No need for further content object match testing
+                            break
                 except TypeError:
                     # When source is a dictionary
                     pass
