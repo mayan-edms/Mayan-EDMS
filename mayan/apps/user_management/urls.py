@@ -9,7 +9,7 @@ from .api_views import (
 from .views import (
     GroupCreateView, GroupDeleteView, GroupEditView, GroupListView,
     GroupMembersView, UserEditView, UserGroupsView, UserListView,
-    user_delete, user_multiple_delete, user_multiple_set_password,
+    user_add, user_delete, user_multiple_delete, user_multiple_set_password,
     user_set_password
 )
 
@@ -31,7 +31,7 @@ urlpatterns = patterns(
     ),
 
     url(r'^user/list/$', UserListView.as_view(), name='user_list'),
-    url(r'^user/add/$', 'user_add', name='user_add'),
+    url(r'^user/add/$', user_add, name='user_add'),
     url(r'^user/(?P<pk>\d+)/edit/$', UserEditView.as_view(), name='user_edit'),
     url(r'^user/(?P<user_id>\d+)/delete/$', user_delete, name='user_delete'),
     url(
