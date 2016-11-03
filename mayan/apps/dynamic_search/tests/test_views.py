@@ -59,7 +59,9 @@ class Issue46TestCase(TestCase):
         with self.settings(COMMON_PAGINATE_BY=2):
             # Funcitonal test for the first page of advanced results
             response = self.client.get(
-                reverse('search:results'), {'label': 'test'}
+                reverse(
+                    'search:results', args=(document_search.get_full_name(),)
+                ), {'label': 'test'}
             )
 
             self.assertContains(
@@ -69,7 +71,9 @@ class Issue46TestCase(TestCase):
 
             # Functional test for the second page of advanced results
             response = self.client.get(
-                reverse('search:results'), {'label': 'test', 'page': 2}
+                reverse(
+                    'search:results', args=(document_search.get_full_name(),)
+                ), {'label': 'test', 'page': 2}
             )
             self.assertContains(
                 response, 'Total (3 - 4 out of 4) (Page 2 of 2)',
