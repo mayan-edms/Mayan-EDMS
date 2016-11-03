@@ -72,7 +72,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
             output.append('</div>')
 
         if not total_pages:
-            output.append('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>')
+            output.append('<p>No pages to display</p>')
 
         output.append('</div>')
 
