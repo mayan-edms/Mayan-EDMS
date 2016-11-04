@@ -29,8 +29,8 @@ from converter.permissions import permission_transformation_delete
 from .events import event_document_download, event_document_view
 from .forms import (
     DocumentDownloadForm, DocumentForm, DocumentPageForm, DocumentPreviewForm,
-    DocumentPropertiesForm, DocumentTypeSelectForm,
-    DocumentTypeFilenameForm_create, PrintForm
+    DocumentPrintForm, DocumentPropertiesForm, DocumentTypeSelectForm,
+    DocumentTypeFilenameForm_create
 )
 from .literals import PAGE_RANGE_RANGE, DEFAULT_ZIP_FILENAME
 from .models import (
@@ -1141,46 +1141,61 @@ class DocumentPageRotateRightView(DocumentPageInteractiveTransformation):
         ) % 360
 
 
-def document_print(request, document_id):
-    document = get_object_or_404(Document, pk=document_id)
+class DocumentPrint(FormView):
+    form_class = DocumentPrintForm
 
-    AccessControlList.objects.check_access(
-        permissions=permission_document_print, user=request.user, obj=document
-    )
+    def form_valid(self, form):
+        instance = self.get_object()
 
-    document.add_as_recent_document_for_user(request.user)
+        if form.cleaned_data['page_group'] == PAGE_RANGE_RANGE:
+            page_range = form.cleaned_data['page_range']
 
-    post_redirect = None
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or document.get_absolute_url())))
-
-    if request.method == 'POST':
-        form = PrintForm(request.POST)
-        if form.is_valid():
-            if form.cleaned_data['page_group'] == PAGE_RANGE_RANGE:
-                page_range = form.cleaned_data['page_range']
-
-                if page_range:
-                    page_range = parse_range(page_range)
-                    pages = document.pages.filter(page_number__in=page_range)
-                else:
-                    pages = document.pages.all()
+            if page_range:
+                page_range = parse_range(page_range)
+                pages = instance.pages.filter(page_number__in=page_range)
             else:
-                pages = document.pages.all()
+                pages = instance.pages.all()
+        else:
+            pages = instance.pages.all()
 
-            return render_to_response('documents/document_print.html', {
+        context = self.get_context_data()
+
+        context.update(
+            {
                 'appearance_type': 'plain',
-                'object': document,
                 'pages': pages,
                 'size': setting_print_size.value,
-                'title': _('Print: %s') % document,
-            }, context_instance=RequestContext(request))
-    else:
-        form = PrintForm()
+            }
+        )
 
-    return render_to_response('appearance/generic_form.html', {
-        'form': form,
-        'object': document,
-        'next': next,
-        'title': _('Print: %s') % document,
-        'submit_label': _('Submit'),
-    }, context_instance=RequestContext(request))
+        return self.render_to_response(context=context)
+
+    def get_extra_context(self):
+        instance = self.get_object()
+
+        context = {
+            'object': instance,
+            'submit_method': 'POST',
+            'submit_label': _('Submit'),
+            'title': _('Print: %s') % instance,
+        }
+
+        return context
+
+    def get_object(self):
+        instance = get_object_or_404(Document, pk=self.kwargs['pk'])
+
+        AccessControlList.objects.check_access(
+            permissions=permission_document_print, user=self.request.user,
+            obj=instance
+        )
+
+        instance.add_as_recent_document_for_user(self.request.user)
+
+        return instance
+
+    def get_template_names(self):
+        if self.request.method == 'POST':
+            return ['documents/document_print.html']
+        else:
+            return [self.template_name]

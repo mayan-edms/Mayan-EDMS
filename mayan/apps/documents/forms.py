@@ -13,7 +13,7 @@ from common.forms import DetailForm, ModelForm
 from .models import (
     Document, DocumentType, DocumentPage, DocumentTypeFilename
 )
-from .literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_CHOICES
+from .literals import DEFAULT_ZIP_FILENAME, PAGE_RANGE_ALL, PAGE_RANGE_CHOICES
 from .permissions import permission_document_create
 from .widgets import DocumentPagesCarouselWidget, DocumentPageImageWidget
 
@@ -207,8 +207,9 @@ class DocumentDownloadForm(forms.Form):
             self.fields['compressed'].widget.attrs.update({'disabled': True})
 
 
-class PrintForm(forms.Form):
+class DocumentPrintForm(forms.Form):
     page_group = forms.ChoiceField(
-        widget=forms.RadioSelect, choices=PAGE_RANGE_CHOICES
+        choices=PAGE_RANGE_CHOICES, initial=PAGE_RANGE_ALL,
+        widget=forms.RadioSelect
     )
     page_range = forms.CharField(label=_('Page range'), required=False)

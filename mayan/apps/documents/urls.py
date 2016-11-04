@@ -19,11 +19,12 @@ from .views import (
     DocumentListView, DocumentPageListView, DocumentPageRotateLeftView,
     DocumentPageRotateRightView, DocumentPageView, DocumentPageViewResetView,
     DocumentPageZoomInView, DocumentPageZoomOutView, DocumentPreviewView,
-    DocumentRestoreView, DocumentRestoreManyView, DocumentTrashView,
-    DocumentTrashManyView, DocumentTypeCreateView, DocumentTypeDeleteView,
-    DocumentTypeDocumentListView, DocumentTypeFilenameCreateView,
-    DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
-    DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
+    DocumentPrint, DocumentRestoreView, DocumentRestoreManyView,
+    DocumentTrashView, DocumentTrashManyView, DocumentTypeCreateView,
+    DocumentTypeDeleteView, DocumentTypeDocumentListView,
+    DocumentTypeFilenameCreateView, DocumentTypeFilenameDeleteView,
+    DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
+    DocumentTypeListView, DocumentTypeEditView,
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentView,
     EmptyTrashCanView, RecentDocumentListView, document_clear_transformations,
@@ -31,7 +32,7 @@ from .views import (
     document_multiple_document_type_edit, document_multiple_update_page_count,
     document_page_navigation_first, document_page_navigation_last,
     document_page_navigation_next, document_page_navigation_previous,
-    document_print, document_update_page_count
+    document_update_page_count
 )
 
 
@@ -92,7 +93,7 @@ urlpatterns = patterns(
         name='document_edit'
     ),
     url(
-        r'^(?P<document_id>\d+)/print/$', document_print,
+        r'^(?P<pk>\d+)/print/$', DocumentPrint.as_view(),
         name='document_print'
     ),
     url(
