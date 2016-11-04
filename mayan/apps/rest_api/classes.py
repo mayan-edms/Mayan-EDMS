@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import include, patterns, url
+from django.conf.urls import include, url
 from django.conf import settings
 from django.utils.module_loading import import_string
 
@@ -46,7 +46,6 @@ class APIEndPoint(object):
     def register_urls(self, urlpatterns):
         from .urls import urlpatterns as app_urls
 
-        app_urls += patterns(
-            '',
+        app_urls += [
             url(r'^%s/' % (self.name or self.app.name), include(urlpatterns)),
-        )
+        ]

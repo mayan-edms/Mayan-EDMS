@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import APICheckedoutDocumentListView, APICheckedoutDocumentView
 from .views import (
@@ -8,8 +8,7 @@ from .views import (
     DocumentCheckinView
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^list/$', CheckoutListView.as_view(), name='checkout_list'),
     url(
         r'^(?P<pk>\d+)/check/out/$', CheckoutDocumentView.as_view(),
@@ -23,10 +22,9 @@ urlpatterns = patterns(
         r'^(?P<pk>\d+)/check/info/$', CheckoutDetailView.as_view(),
         name='checkout_info'
     ),
-)
+]
 
-api_urls = patterns(
-    '',
+api_urls = [
     url(
         r'^documents/$', APICheckedoutDocumentListView.as_view(),
         name='checkout-document-list'
@@ -35,4 +33,4 @@ api_urls = patterns(
         r'^documents/(?P<pk>[0-9]+)/$', APICheckedoutDocumentView.as_view(),
         name='checkedout-document-view'
     ),
-)
+]

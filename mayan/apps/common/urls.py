@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.views.generic import RedirectView
 from django.views.i18n import javascript_catalog, set_language
@@ -13,8 +13,7 @@ from .views import (
     multi_object_action_view
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^about/$', AboutView.as_view(), name='about_view'),
     url(r'^license/$', LicenseView.as_view(), name='license_view'),
@@ -52,10 +51,9 @@ urlpatterns = patterns(
         r'^filter/(?P<slug>[\w-]+)/results/$', FilterResultListView.as_view(),
         name='filter_results'
     ),
-)
+]
 
-urlpatterns += patterns(
-    '',
+urlpatterns += [
     url(
         r'^favicon\.ico$', RedirectView.as_view(
             permanent=True, url=static('appearance/images/favicon.ico')
@@ -68,4 +66,4 @@ urlpatterns += patterns(
     url(
         r'^set_language/$', set_language, name='set_language'
     ),
-)
+]

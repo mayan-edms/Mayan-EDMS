@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import (
     APICurrentUserView, APIGroupListView, APIGroupView, APIUserListView,
@@ -13,8 +13,7 @@ from .views import (
     user_set_password
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^group/list/$', GroupListView.as_view(), name='group_list'),
     url(r'^group/add/$', GroupCreateView.as_view(), name='group_add'),
     url(
@@ -50,10 +49,9 @@ urlpatterns = patterns(
         r'^user/(?P<pk>\d+)/groups/$', UserGroupsView.as_view(),
         name='user_groups'
     ),
-)
+]
 
-api_urls = patterns(
-    '',
+api_urls = [
     url(r'^groups/$', APIGroupListView.as_view(), name='group-list'),
     url(
         r'^groups/(?P<pk>[0-9]+)/$', APIGroupView.as_view(),
@@ -64,4 +62,4 @@ api_urls = patterns(
     url(
         r'^users/current/$', APICurrentUserView.as_view(), name='user-current'
     ),
-)
+]

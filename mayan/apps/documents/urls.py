@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import (
     APIDeletedDocumentListView, APIDeletedDocumentRestoreView,
@@ -36,8 +36,7 @@ from .views import (
 )
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^list/$', DocumentListView.as_view(), name='document_list'),
     url(
         r'^list/recent/$', RecentDocumentListView.as_view(),
@@ -247,10 +246,9 @@ urlpatterns = patterns(
         DocumentTypeFilenameCreateView.as_view(),
         name='document_type_filename_create'
     ),
-)
+]
 
-api_urls = patterns(
-    '',
+api_urls = [
     url(
         r'^trashed_documents/$', APIDeletedDocumentListView.as_view(),
         name='trasheddocument-list'
@@ -313,4 +311,4 @@ api_urls = patterns(
         r'^document_types/$', APIDocumentTypeListView.as_view(),
         name='documenttype-list'
     ),
-)
+]

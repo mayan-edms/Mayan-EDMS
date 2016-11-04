@@ -1,7 +1,7 @@
 from __future__ import unicode_literals
 
 from django.conf import settings
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from django.contrib.auth.views import (
     logout, password_reset, password_reset_confirm, password_reset_complete,
     password_reset_done
@@ -10,8 +10,7 @@ from django.contrib.auth.views import (
 from .views import login_view, password_change_done, password_change_view
 
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^login/$', login_view, name='login_view'),
     url(
         r'^password/change/done/$', password_change_done,
@@ -21,10 +20,9 @@ urlpatterns = patterns(
         r'^password/change/$', password_change_view,
         name='password_change_view'
     ),
-)
+]
 
-urlpatterns += patterns(
-    '',
+urlpatterns += [
     url(
         r'^logout/$', logout, {'next_page': settings.LOGIN_REDIRECT_URL},
         name='logout_view'
@@ -53,4 +51,4 @@ urlpatterns += patterns(
         password_reset_done, {
             'template_name': 'appearance/password_reset_done.html'
         }, name='password_reset_done_view'),
-)
+]

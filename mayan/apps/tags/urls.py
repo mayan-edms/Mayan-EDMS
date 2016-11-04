@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import (
     APIDocumentTagView, APIDocumentTagListView, APITagDocumentListView,
@@ -13,8 +13,7 @@ from .views import (
     single_document_multiple_tag_remove
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^list/$', TagListView.as_view(), name='tag_list'),
     url(r'^create/$', TagCreateView.as_view(), name='tag_create'),
     url(r'^(?P<tag_id>\d+)/delete/$', tag_delete, name='tag_delete'),
@@ -51,10 +50,9 @@ urlpatterns = patterns(
         r'^document/(?P<pk>\d+)/tags/$', DocumentTagListView.as_view(),
         name='document_tags'
     ),
-)
+]
 
-api_urls = patterns(
-    '',
+api_urls = [
     url(
         r'^tags/(?P<pk>[0-9]+)/documents/$', APITagDocumentListView.as_view(),
         name='tag-document-list'
@@ -69,4 +67,4 @@ api_urls = patterns(
         r'^document/(?P<document_pk>[0-9]+)/tags/(?P<pk>[0-9]+)/$',
         APIDocumentTagView.as_view(), name='document-tag'
     ),
-)
+]

@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .views import (
     KeyDeleteView, KeyDetailView, KeyDownloadView, KeyQueryView,
@@ -8,8 +8,7 @@ from .views import (
     PublicKeyListView
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^(?P<pk>\d+)/$', KeyDetailView.as_view(), name='key_detail'
     ),
@@ -38,4 +37,4 @@ urlpatterns = patterns(
     url(
         r'^receive/(?P<key_id>.+)/$', KeyReceive.as_view(), name='key_receive'
     ),
-)
+]

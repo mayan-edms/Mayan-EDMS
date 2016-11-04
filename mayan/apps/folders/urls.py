@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import (
     APIDocumentFolderListView, APIFolderDocumentListView,
@@ -12,8 +12,7 @@ from .views import (
     folder_add_multiple_documents, folder_document_multiple_remove
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^list/$', FolderListView.as_view(), name='folder_list'),
     url(r'^create/$', FolderCreateView.as_view(), name='folder_create'),
     url(r'^(?P<pk>\d+)/edit/$', FolderEditView.as_view(), name='folder_edit'),
@@ -40,10 +39,9 @@ urlpatterns = patterns(
         r'^document/(?P<pk>\d+)/folder/list/$',
         DocumentFolderListView.as_view(), name='document_folder_list'
     ),
-)
+]
 
-api_urls = patterns(
-    '',
+api_urls = [
     url(
         r'^folders/(?P<folder_pk>[0-9]+)/documents/(?P<pk>[0-9]+)/$',
         APIFolderDocumentView.as_view(), name='folder-document'
@@ -61,4 +59,4 @@ api_urls = patterns(
         r'^document/(?P<pk>[0-9]+)/folders/$',
         APIDocumentFolderListView.as_view(), name='document-folder-list'
     ),
-)
+]

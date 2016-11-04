@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import (
     APIDocumentMetadataListView, APIDocumentMetadataView,
@@ -18,8 +18,7 @@ from .views import (
     metadata_remove
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^(?P<document_id>\d+)/edit/$', metadata_edit, name='metadata_edit'
     ),
@@ -72,10 +71,9 @@ urlpatterns = patterns(
         SetupDocumentTypeMetadataRequiredView.as_view(),
         name='setup_document_type_metadata_required'
     ),
-)
+]
 
-api_urls = patterns(
-    '',
+api_urls = [
     url(
         r'^metadata_types/$', APIMetadataTypeListView.as_view(),
         name='metadatatype-list'
@@ -107,4 +105,4 @@ api_urls = patterns(
         APIDocumentTypeMetadataTypeView.as_view(),
         name='documenttypemetadatatype-detail'
     ),
-)
+]

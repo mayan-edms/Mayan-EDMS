@@ -1,11 +1,10 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .views import LogEntryListView, send_document_link
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(
         r'^(?P<document_id>\d+)/send/link/$', send_document_link,
         name='send_document_link'
@@ -17,4 +16,4 @@ urlpatterns = patterns(
     url(
         r'^log/$', LogEntryListView.as_view(), name='error_log'
     ),
-)
+]

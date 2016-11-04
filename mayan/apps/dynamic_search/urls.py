@@ -1,14 +1,13 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .api_views import APIAdvancedSearchView, APISearchView
 from .views import (
     AdvancedSearchView, ResultsView, SearchAgainView, SearchView
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^(?P<search_model>[\.\w]+)/$', SearchView.as_view(), name='search'),
     url(
         r'^advanced/(?P<search_model>[\.\w]+)/$', AdvancedSearchView.as_view(),
@@ -22,10 +21,9 @@ urlpatterns = patterns(
         r'^results/(?P<search_model>[\.\w]+)/$', ResultsView.as_view(),
         name='results'
     ),
-)
+]
 
-api_urls = patterns(
-    '',
+api_urls = [
     url(
         r'^search/(?P<search_model>[\.\w]+)/$', APISearchView.as_view(),
         name='search-view'
@@ -34,4 +32,4 @@ api_urls = patterns(
         r'^advanced/(?P<search_model>[\.\w]+)/$', APIAdvancedSearchView.as_view(),
         name='advanced-search-view'
     ),
-)
+]

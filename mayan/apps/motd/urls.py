@@ -1,13 +1,12 @@
 from __future__ import unicode_literals
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 
 from .views import (
     MessageCreateView, MessageDeleteView, MessageEditView, MessageListView
 )
 
-urlpatterns = patterns(
-    '',
+urlpatterns = [
     url(r'^list/$', MessageListView.as_view(), name='message_list'),
     url(r'^create/$', MessageCreateView.as_view(), name='message_create'),
     url(
@@ -17,4 +16,4 @@ urlpatterns = patterns(
         r'^(?P<pk>\d+)/delete/$', MessageDeleteView.as_view(),
         name='message_delete'
     ),
-)
+]
