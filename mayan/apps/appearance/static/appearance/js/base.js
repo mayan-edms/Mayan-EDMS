@@ -19,7 +19,6 @@ function set_image_noninteractive(image) {
 function loadDocumentImage(image) {
     $.get(image.attr('data-src'), function(result) {
         image.attr('src', result.data);
-        image.addClass(image.attr('data-post-load-class'));
     })
     .fail(function() {
         image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
@@ -32,6 +31,16 @@ function dismissAlert(element) {
 }
 
 jQuery(document).ready(function() {
+    $('.lazy-load').on('load', function() {
+        $(this).siblings('.spinner').remove();
+        $(this).removeClass('lazy-load');
+    });
+
+    $('.lazy-load-carousel').on('load', function() {
+        $(this).siblings('.spinner').remove();
+        $(this).removeClass('lazy-load-carousel');
+    });
+
     resizeFullHeight();
 
     $(window).resize(function() {
@@ -76,11 +85,18 @@ jQuery(document).ready(function() {
         e.preventDefault();
     })
 
-   $('img.lazy-load').lazyload();
+   $('img.lazy-load').lazyload({
+        appear: function(elements_left, settings) {
+            loadDocumentImage($(this));
+        },
+    });
 
     $('img.lazy-load-carousel').lazyload({
-        threshold : 400,
+        appear: function(elements_left, settings) {
+            loadDocumentImage($(this));
+        },
         container: $("#carousel-container"),
+        threshold: 400
     });
 
     $('th input:checkbox').click(function(e) {

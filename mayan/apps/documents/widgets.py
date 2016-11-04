@@ -58,7 +58,6 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
                     fancybox_class='',
                     image_class='lazy-load-carousel',
                     size=setting_display_size.value,
-                    post_load_class='lazy-load-carousel-loaded',
                 )
             )
             output.append(
@@ -85,14 +84,14 @@ def document_link(document):
     )
 
 
-def document_page_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None, disable_title_link=False, preview_click_view=None, click_view_querydict=None, click_view_arguments_lazy=None):
+def document_page_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, disable_title_link=False, preview_click_view=None, click_view_querydict=None, click_view_arguments_lazy=None):
     result = []
 
     alt_text = _('Document page image')
 
     if not document_page:
         return mark_safe(
-            '<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-question fa-stack-1x text-danger"></i></span>'
+            '<div class="tc"><span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-question fa-stack-1x text-danger"></i></span></div>'
         )
 
     document = document_page.document
@@ -167,10 +166,11 @@ def document_page_html_widget(document_page, click_view=None, click_view_argumen
         )
     else:
         result.append(
+            '<i class="spinner fa fa-spinner fa-pulse fa-3x fa-fw"></i> '
             '<img class="thin_border {}" data-original="{}" '
-            'data-post-load-class="{}" src="{}" alt="{}" />'.format(
-                image_class, preview_view, post_load_class,
-                static('appearance/images/loading.png'), alt_text
+            'src="{}" alt="{}" />'.format(
+                image_class, preview_view,
+                '', alt_text
             )
         )
 

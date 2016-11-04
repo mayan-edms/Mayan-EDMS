@@ -682,7 +682,6 @@ class DocumentPage(models.Model):
 
         # Set sensible defaults if the argument is not specified or if the
         # argument is None
-
         size = kwargs.get('size', setting_display_size.value) or setting_display_size.value
         rotation = kwargs.get('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
         zoom_level = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL

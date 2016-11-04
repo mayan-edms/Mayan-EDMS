@@ -70,10 +70,6 @@ body {
     border: 1px solid black;
 }
 
-.lazy-load-carousel-loaded {
-    width: 100%;
-}
-
 .mayan-page-wrapper-interactive {
     overflow: auto;
 }
@@ -91,6 +87,27 @@ body {
 }
 
 .carousel-item-page-number {
+    text-align: center;
+}
+
+img.lazy-load {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+}
+
+img.lazy-load-carousel {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+}
+
+.tc {
+    margin: auto;
+    text-align: center;
+}
+
+.tc a {
     text-align: center;
 }
 
