@@ -152,7 +152,7 @@ class Menu(object):
                                     resolved_links.append(resolved_link)
                             # No need for further content object match testing
                             break
-                        elif resolved_navigation_object.get_deferred_fields() and isinstance(resolved_navigation_object, bound_source):
+                        elif hasattr(resolved_navigation_object, 'get_deferred_fields') and resolved_navigation_object.get_deferred_fields() and isinstance(resolved_navigation_object, bound_source):
                         # Second try for objects using .defer() or .only()
                             for link in links:
                                 resolved_link = link.resolve(
