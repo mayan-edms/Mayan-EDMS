@@ -679,11 +679,13 @@ class DocumentPage(models.Model):
     def generate_image(self, *args, **kwargs):
         # Convert arguments into transformations
         transformations = kwargs.get('transformations', [])
-        size = kwargs.get('size', setting_display_size.value)
 
-        rotation = kwargs.get('rotation', DEFAULT_ROTATION)
+        # Set sensible defaults if the argument is not specified or if the
+        # argument is None
 
-        zoom_level = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL)
+        size = kwargs.get('size', setting_display_size.value) or setting_display_size.value
+        rotation = kwargs.get('rotation', DEFAULT_ROTATION) or DEFAULT_ROTATION
+        zoom_level = kwargs.get('zoom', DEFAULT_ZOOM_LEVEL) or DEFAULT_ZOOM_LEVEL
 
         if zoom_level < setting_zoom_min_level.value:
             zoom_level = setting_zoom_min_level.value
