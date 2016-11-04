@@ -24,7 +24,7 @@ class DocumentPageImageWidget(forms.widgets.Widget):
                 '<div class="full-height scrollable '
                 'mayan-page-wrapper-interactive" data-height-difference=230>'
             )
-            output.append(document_html_widget(
+            output.append(document_page_html_widget(
                 value, zoom=zoom, rotation=rotation, image_class='lazy-load',
                 nolazyload=False, size=setting_display_size.value)
             )
@@ -51,7 +51,7 @@ class DocumentPagesCarouselWidget(forms.widgets.Widget):
         for document_page in document_pages:
             output.append('<div class="carousel-item">')
             output.append(
-                document_html_widget(
+                document_page_html_widget(
                     document_page=document_page,
                     click_view='documents:document_page_view',
                     click_view_arguments=(document_page.pk,),
@@ -85,7 +85,7 @@ def document_link(document):
     )
 
 
-def document_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None, disable_title_link=False, preview_click_view=None, click_view_querydict=None, click_view_arguments_lazy=None):
+def document_page_html_widget(document_page, click_view=None, click_view_arguments=None, zoom=DEFAULT_ZOOM_LEVEL, rotation=DEFAULT_ROTATION, gallery_name=None, fancybox_class='fancybox', image_class='lazy-load', title=None, size=setting_thumbnail_size.value, nolazyload=False, post_load_class=None, disable_title_link=False, preview_click_view=None, click_view_querydict=None, click_view_arguments_lazy=None):
     result = []
 
     alt_text = _('Document page image')

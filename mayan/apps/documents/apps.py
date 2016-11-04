@@ -74,7 +74,7 @@ from .statistics import (
     new_document_versions_per_month, total_document_per_month,
     total_document_page_per_month, total_document_version_per_month
 )
-from .widgets import document_html_widget
+from .widgets import document_page_html_widget
 
 
 class DocumentsApp(MayanAppConfig):
@@ -151,7 +151,7 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=Document, label=_('Thumbnail'),
-            func=lambda context: document_html_widget(
+            func=lambda context: document_page_html_widget(
                 document_page=context['object'].latest_version.pages.first(),
                 click_view='rest_api:documentpage-image',
                 click_view_arguments_lazy=lambda: (
@@ -168,7 +168,7 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=DocumentPage, label=_('Thumbnail'),
-            func=lambda context: document_html_widget(
+            func=lambda context: document_page_html_widget(
                 document_page=context['object'],
                 click_view='rest_api:documentpage-image',
                 click_view_arguments=(context['object'].pk,),
@@ -181,7 +181,7 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=DocumentPageResult, label=_('Thumbnail'),
-            func=lambda context: document_html_widget(
+            func=lambda context: document_page_html_widget(
                 document_page=context['object'],
                 click_view='rest_api:documentpage-image',
                 click_view_arguments=(context['object'].pk,),
@@ -210,7 +210,7 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=DeletedDocument, label=_('Thumbnail'),
-            func=lambda context: document_html_widget(
+            func=lambda context: document_page_html_widget(
                 document_page=context['object'].latest_version.pages.first(),
                 click_view='rest_api:documentpage-image',
                 click_view_arguments_lazy=lambda: (
