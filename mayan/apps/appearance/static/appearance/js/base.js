@@ -1,34 +1,37 @@
 'use strict';
 
-function resizeFullHeight() {
+var resizeFullHeight = function () {
     $('.full-height').height($(window).height() - $('.full-height').data('height-difference'));
-}
+};
 
-function set_image_noninteractive(image) {
+var set_image_noninteractive = function (image) {
     // Remove border to indicate non interactive image
     image.removeClass('thin_border');
-    container = image.parent().parent();
+    var container = image.parent().parent();
     // Save img HTML
-    html = image.parent().html();
+    var html = image.parent().html();
     // Remove anchor
     image.parent().remove();
     // Place again img
     container.html(html);
-}
+};
 
-function loadDocumentImage(image) {
-    $.get(image.attr('data-src'), function(result) {
-        image.attr('src', result.data);
-    })
-    .fail(function() {
-        image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
-        set_image_noninteractive(image);
-    })
-}
-
-function dismissAlert(element) {
+var dismissAlert = function (element) {
     element.addClass('fadeOutUp').fadeOut('slow');
-}
+};
+
+var onImageError = function (image) {
+    image.parent().parent().html('<span class="fa-stack fa-lg"><i class="fa fa-file-o fa-stack-2x"></i><i class="fa fa-times fa-stack-1x text-danger"></i></span>');
+    set_image_noninteractive(image);
+};
+
+var loadImage = function (image) {
+    image.error(function(event) {
+        onImageError(image);
+    });
+
+    image.attr('src', image.attr('data-url'));
+};
 
 jQuery(document).ready(function() {
     $('.lazy-load').on('load', function() {
@@ -87,13 +90,13 @@ jQuery(document).ready(function() {
 
    $('img.lazy-load').lazyload({
         appear: function(elements_left, settings) {
-            loadDocumentImage($(this));
+            loadImage($(this));
         },
     });
 
     $('img.lazy-load-carousel').lazyload({
         appear: function(elements_left, settings) {
-            loadDocumentImage($(this));
+            loadImage($(this));
         },
         container: $("#carousel-container"),
         threshold: 400

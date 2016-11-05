@@ -167,7 +167,7 @@ def document_page_html_widget(document_page, click_view=None, click_view_argumen
     else:
         result.append(
             '<i class="spinner fa fa-spinner fa-pulse fa-3x fa-fw"></i> '
-            '<img class="thin_border {}" data-original="{}" '
+            '<img class="thin_border {}" data-url="{}" '
             'src="{}" alt="{}" />'.format(
                 image_class, preview_view,
                 '', alt_text
