@@ -324,6 +324,9 @@ class TransformationZoom(BaseTransformation):
     def execute_on(self, *args, **kwargs):
         super(TransformationZoom, self).execute_on(*args, **kwargs)
 
+        if self.percent == 100:
+            return self.image
+
         decimal_value = float(self.percent) / 100
         return self.image.resize(
             (
