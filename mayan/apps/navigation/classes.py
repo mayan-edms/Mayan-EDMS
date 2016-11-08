@@ -126,19 +126,19 @@ class Menu(object):
 
             for bound_source, links in self.bound_links.iteritems():
                 try:
-                    if inspect.isclass(bound_source) and type(resolved_navigation_object) == bound_source:
-                        for link in links:
-                            resolved_link = link.resolve(
-                                context=context,
-                                resolved_object=resolved_navigation_object
-                            )
-                            if resolved_link:
-                                resolved_links.append(resolved_link)
-                        # No need for further content object match testing
-                        break
-                    else:
+                    if inspect.isclass(bound_source):
+                        if type(resolved_navigation_object) == bound_source:
+                            for link in links:
+                                resolved_link = link.resolve(
+                                    context=context,
+                                    resolved_object=resolved_navigation_object
+                                )
+                                if resolved_link:
+                                    resolved_links.append(resolved_link)
+                            # No need for further content object match testing
+                            break
+                        elif hasattr(resolved_navigation_object, 'get_deferred_fields') and resolved_navigation_object.get_deferred_fields() and isinstance(resolved_navigation_object, bound_source):
                         # Second try for objects using .defer() or .only()
-                        if inspect.isclass(bound_source) and isinstance(resolved_navigation_object, bound_source):
                             for link in links:
                                 resolved_link = link.resolve(
                                     context=context,

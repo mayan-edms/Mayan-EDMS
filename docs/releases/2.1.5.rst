@@ -19,6 +19,7 @@ Other changes
     - https://pillow.readthedocs.io/en/3.4.x/releasenotes/3.1.2.html
 
 - Backport zoom performance improvement (GitLab #334).
+- Backport trash can navigation link resolution fix (GitLab #331).
 
 
 Removals
@@ -75,6 +76,7 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #319 <https://gitlab.com/mayan-edms/mayan-edms/issues/319>`_ TransformationResize issue with very "long" image
+* `GitLab issue #331 <https://gitlab.com/mayan-edms/mayan-edms/issues/331>`_ Trash List View: Items actions should be limited
 * `GitLab issue #334 <https://gitlab.com/mayan-edms/mayan-edms/issues/334>`_ Perfomance improvment: prevent unnecessary image.resize in TransformationZoom
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
