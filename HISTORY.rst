@@ -1,4 +1,4 @@
-2.1.5 (2016-xx-xx)
+2.1.5 (2016-11-xx)
 ==================
 - Backport resize transformation math operation fix (GitLab #319).
 - Update Pillow to 3.1.2 (Security fix).
@@ -6,6 +6,7 @@
 - Backport trash can navigation link resolution fix (GitLab #331).
 - Improve documentation regarding the use of GPG version 1 (GitLab #333).
 - Fix ACL create view HTML response type. (GitLab #335).
+- Expland staging folder and watch folder explanation.
 
 2.1.4 (2016-10-28)
 ==================

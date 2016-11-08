@@ -2,7 +2,7 @@
 Mayan EDMS v2.1.5 release notes
 ===============================
 
-Released: XX, 2016
+Released: November XX, 2016
 
 What's new
 ==========
@@ -22,6 +22,7 @@ Other changes
 - Backport trash can navigation link resolution fix (GitLab #331).
 - Improve documentation regarding the use of GPG version 1 (GitLab #333).
 - Fix ACL create view HTML response type. (GitLab #335).
+- Expland staging folder and watch folder explanation.
 
 Removals
 --------
