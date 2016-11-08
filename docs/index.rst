@@ -10,7 +10,9 @@ and install it from PyPI with the following commands:
 
 .. code-block:: bash
 
-    $ sudo apt-get install libjpeg-dev libmagic1 libpng-dev libreoffice libtiff-dev gcc ghostscript gnupg1 python-dev python-virtualenv tesseract-ocr poppler-utils -y
+    $ sudo apt-get install libjpeg-dev libmagic1 libpng-dev \
+    libreoffice libtiff-dev gcc ghostscript gnupg python-dev \
+    python-virtualenv tesseract-ocr poppler-utils -y
     $ virtualenv venv
     $ source venv/bin/activate
     (venv) pip install mayan-edms

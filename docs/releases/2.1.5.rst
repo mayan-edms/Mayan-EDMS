@@ -20,7 +20,7 @@ Other changes
 
 - Backport zoom performance improvement (GitLab #334).
 - Backport trash can navigation link resolution fix (GitLab #331).
-
+- Improve documentation regarding the use of GPG version 1 (GitLab #333).
 
 Removals
 --------
@@ -77,6 +77,7 @@ Bugs fixed or issues closed
 
 * `GitLab issue #319 <https://gitlab.com/mayan-edms/mayan-edms/issues/319>`_ TransformationResize issue with very "long" image
 * `GitLab issue #331 <https://gitlab.com/mayan-edms/mayan-edms/issues/331>`_ Trash List View: Items actions should be limited
+* `GitLab issue #333 <https://gitlab.com/mayan-edms/mayan-edms/issues/333>`_ "Unable to run gpg - it may not be available."
 * `GitLab issue #334 <https://gitlab.com/mayan-edms/mayan-edms/issues/334>`_ Perfomance improvment: prevent unnecessary image.resize in TransformationZoom
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
