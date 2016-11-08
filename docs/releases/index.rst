@@ -23,6 +23,7 @@ versions of the documentation contain the release notes for any later releases.
    :maxdepth: 1
 
    2.2
+   2.1.5
    2.1.4
    2.1.3
    2.1.2

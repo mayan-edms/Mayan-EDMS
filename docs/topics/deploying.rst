@@ -22,8 +22,12 @@ Install all system dependencies::
 
     apt-get install nginx supervisor redis-server postgresql \
     libpq-dev libjpeg-dev libmagic1 libpng-dev libreoffice \
-    libtiff-dev gcc ghostscript gnupg1 python-dev python-virtualenv \
+    libtiff-dev gcc ghostscript gnupg python-dev python-virtualenv \
     tesseract-ocr poppler-utils -y
+
+If using Ubuntu 16.10 also install GPG version 1 (as GPG version 2 is the new default for this distribution and not yet supported by Mayan EDMS) ::
+
+    apt-get install gnupg1 -y
 
 Change to the directory where the project will be deployed::
 
@@ -81,6 +85,9 @@ Append the following to the ``mayan/settings/local.py`` file, paying attention t
 
     BROKER_URL = 'redis://127.0.0.1:6379/0'
     CELERY_RESULT_BACKEND = 'redis://127.0.0.1:6379/0'
+
+If using Ubuntu 16.10, also add this line to the ``mayan/settings/local.py`` file::
+
     SIGNATURES_GPG_PATH = '/usr/bin/gpg1'
 
 Migrate the database or initialize the project::

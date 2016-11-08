@@ -7,6 +7,14 @@
 - Fix height calculation in resize transformation
 - Improve upgrade instructions
 
+2.1.5 (2016-xx-xx)
+==================
+- Backport resize transformation math operation fix (GitLab #319).
+- Update Pillow to 3.1.2 (Security fix).
+- Backport zoom transformation performance improvement (GitLab #334).
+- Backport trash can navigation link resolution fix (GitLab #331).
+- Improve documentation regarding the use of GPG version 1 (GitLab #333).
+
 2.1.4 (2016-10-28)
 ==================
 - Add missing link to the 2.1.3 release notes in the index file.
