@@ -57,7 +57,7 @@ def find_packages(directory):
 
 install_requires = """
 Django==1.8.15
-Pillow==3.1.0
+Pillow==3.1.2
 PyYAML==3.11
 celery==3.1.19
 cssmin==0.2.0

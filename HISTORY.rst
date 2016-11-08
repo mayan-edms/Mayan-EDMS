@@ -1,6 +1,7 @@
 2.1.5 (2016-xx-xx)
 ==================
 - Backport resize transformation math operation fix (GitLab #319).
+- Update Pillow to 3.1.2 (Security fix).
 
 2.1.4 (2016-10-28)
 ==================
