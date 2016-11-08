@@ -5,6 +5,7 @@
 - Backport zoom transformation performance improvement (GitLab #334).
 - Backport trash can navigation link resolution fix (GitLab #331).
 - Improve documentation regarding the use of GPG version 1 (GitLab #333).
+- Fix ACL create view HTML response type. (GitLab #335).
 
 2.1.4 (2016-10-28)
 ==================
