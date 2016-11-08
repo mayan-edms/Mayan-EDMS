@@ -258,7 +258,7 @@ class TransformationResize(BaseTransformation):
         fit = False
 
         width = int(self.width)
-        height = int(self.height or 1.0 * width * self.aspect)
+        height = int(self.height or 1.0 * width / self.aspect)
 
         factor = 1
         while self.image.size[0] / factor > 2 * width and self.image.size[1] * 2 / factor > 2 * height:

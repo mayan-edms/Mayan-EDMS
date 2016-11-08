@@ -1,3 +1,7 @@
+2.1.5 (2016-xx-xx)
+==================
+- Backport resize transformation math operation fix (GitLab #319).
+
 2.1.4 (2016-10-28)
 ==================
 - Add missing link to the 2.1.3 release notes in the index file.
