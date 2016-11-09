@@ -28,16 +28,16 @@ class ACLCreateView(SingleObjectCreateView):
     model = AccessControlList
 
     def dispatch(self, request, *args, **kwargs):
-        self.content_type = get_object_or_404(
+        self.object_content_type = get_object_or_404(
             ContentType, app_label=self.kwargs['app_label'],
             model=self.kwargs['model']
         )
 
         try:
-            self.content_object = self.content_type.get_object_for_this_type(
+            self.content_object = self.object_content_type.get_object_for_this_type(
                 pk=self.kwargs['object_id']
             )
-        except self.content_type.model_class().DoesNotExist:
+        except self.object_content_type.model_class().DoesNotExist:
             raise Http404
 
         AccessControlList.objects.check_access(
@@ -55,7 +55,7 @@ class ACLCreateView(SingleObjectCreateView):
     def form_valid(self, form):
         try:
             acl = AccessControlList.objects.get(
-                content_type=self.content_type,
+                content_type=self.object_content_type,
                 object_id=self.content_object.pk,
                 role=form.cleaned_data['role']
             )
@@ -121,7 +121,7 @@ class ACLListView(SingleObjectListView):
             self.content_object = self.object_content_type.get_object_for_this_type(
                 pk=self.kwargs['object_id']
             )
-        except self.content_type.model_class().DoesNotExist:
+        except self.object_content_type.model_class().DoesNotExist:
             raise Http404
 
         AccessControlList.objects.check_access(

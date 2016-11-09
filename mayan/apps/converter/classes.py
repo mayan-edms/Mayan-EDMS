@@ -311,6 +311,12 @@ class TransformationRotate(BaseTransformation):
 
     def execute_on(self, *args, **kwargs):
         super(TransformationRotate, self).execute_on(*args, **kwargs)
+
+        self.degrees %= 360
+
+        if self.degress == 0:
+            return self.image
+
         return self.image.rotate(
             360 - self.degrees, resample=Image.BICUBIC, expand=True
         )

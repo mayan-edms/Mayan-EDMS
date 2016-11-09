@@ -1,12 +1,5 @@
 .PHONY: clean-pyc clean-build
 
-define BROWSER_PYSCRIPT
-import sys, webbrowser
-webbrowser.open(sys.argv[1])
-endef
-export BROWSER_PYSCRIPT
-BROWSER := python -c "$$BROWSER_PYSCRIPT"
-
 
 help:
 	@echo
@@ -65,7 +58,6 @@ test-all:
 # Documentation
 
 docs_serve:
-	$(BROWSER) http://127.0.0.1:8000
 	cd docs;make livehtml
 
 
@@ -113,7 +105,6 @@ wheel: clean
 # Dev server
 
 runserver:
-	$(BROWSER) http://127.0.0.1:8000
 	./manage.py runserver
 
 runserver_plus:

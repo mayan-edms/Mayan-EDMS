@@ -26,7 +26,7 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
     def test_acl_create_view_no_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
-        response = self.post(
+        response = self.get(
             viewname='acls:acl_create', kwargs=self.view_arguments, data={
                 'role': self.role.pk
             }
@@ -36,6 +36,35 @@ class AccessControlListViewTestCase(GenericDocumentViewTestCase):
         self.assertEqual(AccessControlList.objects.count(), 0)
 
     def test_acl_create_view_with_permission(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        self.role.permissions.add(
+            permission_acl_edit.stored_permission
+        )
+
+        response = self.get(
+            viewname='acls:acl_create', kwargs=self.view_arguments, data={
+                'role': self.role.pk
+            }, follow=True
+        )
+
+        self.assertContains(
+            response, text=self.document.label, status_code=200
+        )
+
+    def test_acl_create_view_post_no_permission(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
+
+        response = self.post(
+            viewname='acls:acl_create', kwargs=self.view_arguments, data={
+                'role': self.role.pk
+            }
+        )
+
+        self.assertEquals(response.status_code, 403)
+        self.assertEqual(AccessControlList.objects.count(), 0)
+
+    def test_acl_create_view_with_post_permission(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
         self.role.permissions.add(
