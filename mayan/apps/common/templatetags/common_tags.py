@@ -10,6 +10,7 @@ from django.template.loader import get_template
 
 import mayan
 
+from ..classes import DashboardWidget
 from ..utils import return_attrib
 
 register = Library()
@@ -20,6 +21,11 @@ try:
 except sh.CommandNotFound:
     BUILD = None
     DATE = None
+
+
+@register.assignment_tag
+def get_dashboard_widgets():
+    return DashboardWidget.get_all()
 
 
 @register.filter

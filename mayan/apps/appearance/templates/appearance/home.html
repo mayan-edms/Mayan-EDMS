@@ -3,6 +3,7 @@
 {% load i18n %}
 {% load static %}
 
+{% load common_tags %}
 {% load navigation_tags %}
 
 {% block title %}{% trans 'Home' %}{% endblock %}
@@ -53,30 +54,21 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="panel panel-default center-block">
-                <div class="panel-heading">{% trans 'Search pages' %}</div>
+                <div class="panel-heading">{% trans 'Search' %}</div>
                 <div class="panel-body">
                     <form action="{% url 'search:results' search_model='documents.DocumentPageResult' %}" method="get" role="search">
                         <div class="input-group">
-                            <input class="form-control" name="q" placeholder="{% trans 'Space separated terms' %}" type="text" value="{{ search_terms|default:'' }}">
+                            <input class="form-control" name="q" placeholder="{% trans 'Search pages' %}" type="text" value="{{ search_terms|default:'' }}">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
                                 <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.DocumentPageResult' %}">{% trans 'Advanced' %}</a>
                             </span>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel panel-default center-block">
-                <div class="panel-heading">{% trans 'Search documents' %}</div>
-                <div class="panel-body">
+                    <br/>
                     <form action="{% url 'search:results' search_model='documents.Document' %}" method="get" role="search">
                         <div class="input-group">
-                            <input class="form-control" name="q" placeholder="{% trans 'Space separated terms' %}" type="text" value="{{ search_terms|default:'' }}">
+                            <input class="form-control" name="q" placeholder="{% trans 'Search documents' %}" type="text" value="{{ search_terms|default:'' }}">
                             <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
                                 <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.Document' %}">{% trans 'Advanced' %}</a>
@@ -86,6 +78,13 @@
                 </div>
             </div>
         </div>
+    </div>
+
+    {% get_dashboard_widgets as dashboard_widgets %}
+    <div class="row">
+        {% for widget in dashboard_widgets %}
+            {% include 'appearance/dashboard_widget.html' %}
+        {% endfor %}
     </div>
 
 {% endblock %}

@@ -5,6 +5,24 @@ from django.db import models
 from django.utils.translation import ugettext
 
 
+class DashboardWidget(object):
+    _registry = []
+
+    @classmethod
+    def get_all(cls):
+        return cls._registry
+
+    def __init__(self, label, func=None, icon=None, link=None, queryset=None, statistic_slug=None):
+        self.label = label
+        self.icon = icon
+        self.link = link
+        self.queryset = queryset
+        self.func = func
+        self.statistic_slug = statistic_slug
+
+        self.__class__._registry.append(self)
+
+
 class ModelAttribute(object):
     __registry = {}
 
