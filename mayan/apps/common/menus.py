@@ -5,7 +5,7 @@ from navigation import Menu
 __all__ = (
     'menu_facet', 'menu_front_page', 'menu_object', 'menu_main',
     'menu_multi_item', 'menu_secondary', 'menu_setup', 'menu_sidebar',
-    'menu_tools'
+    'menu_tools', 'menu_user'
 )
 
 menu_facet = Menu(name='object facet')
@@ -17,3 +17,4 @@ menu_secondary = Menu(name='secondary menu')
 menu_setup = Menu(name='setup menu')
 menu_sidebar = Menu(name='sidebar menu')
 menu_tools = Menu(name='tools menu')
+menu_user = Menu(name='user menu')

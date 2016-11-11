@@ -153,7 +153,7 @@ class Menu(object):
                             # No need for further content object match testing
                             break
                         elif hasattr(resolved_navigation_object, 'get_deferred_fields') and resolved_navigation_object.get_deferred_fields() and isinstance(resolved_navigation_object, bound_source):
-                        # Second try for objects using .defer() or .only()
+                            # Second try for objects using .defer() or .only()
                             for link in links:
                                 resolved_link = link.resolve(
                                     context=context,
@@ -360,6 +360,21 @@ class Link(object):
             )
 
         return resolved_link
+
+
+class Separator(Link):
+    def __init__(self, text=None, view=None, args=None, condition=None,
+                 conditional_disable=None, description=None, icon=None,
+                 keep_query=False, kwargs=None, permissions=None,
+                 permissions_related=None, remove_from_query=None, tags=None):
+        self.icon = None
+        self.text = None
+        self.view = None
+
+    def resolve(self, context, resolved_object=None):
+        result = ResolvedLink(current_view=None, link=self)
+        result.separator = True
+        return result
 
 
 class SourceColumn(object):

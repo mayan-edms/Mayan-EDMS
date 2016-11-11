@@ -17,6 +17,7 @@ Other changes
 - Fix height calculation in resize transformation
 - Improve upgrade instructions
 - New image caching pipeline
+- New drop down user menu
 
 Removals
 --------

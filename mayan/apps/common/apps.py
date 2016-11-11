@@ -27,7 +27,7 @@ from .links import (
     link_packages_licenses, link_setup, link_tools
 )
 from .literals import DELETE_STALE_UPLOADS_INTERVAL
-from .menus import menu_facet, menu_main, menu_secondary, menu_tools
+from .menus import menu_facet, menu_main, menu_tools, menu_user
 from .settings import setting_auto_logging
 from .tasks import task_delete_stale_uploads  # NOQA - Force task registration
 
@@ -1013,20 +1013,15 @@ THE SOFTWARE.
                 },
             }
         )
-
-        menu_facet.bind_links(
+        from navigation.classes import Separator
+        menu_user.bind_links(
             links=(
-                link_current_user_details,
-                link_current_user_locale_profile_details, link_tools,
-                link_setup
-            ), sources=(
-                'common:current_user_details', 'common:current_user_edit',
-                'common:current_user_locale_profile_details',
-                'common:current_user_locale_profile_edit',
-                'authentication:password_change_view', 'common:setup_list',
-                'common:tools_list'
+                link_current_user_details, link_current_user_edit,
+                link_current_user_locale_profile_edit, link_tools, link_setup,
+                Separator()
             )
         )
+
         menu_facet.bind_links(
             links=(link_about, link_license, link_packages_licenses),
             sources=(
@@ -1035,18 +1030,6 @@ THE SOFTWARE.
             )
         )
         menu_main.bind_links(links=(link_about,), position=99)
-        menu_secondary.bind_links(
-            links=(
-                link_current_user_edit, link_current_user_locale_profile_edit
-            ),
-            sources=(
-                'common:current_user_details', 'common:current_user_edit',
-                'common:current_user_locale_profile_details',
-                'common:current_user_locale_profile_edit',
-                'authentication:password_change_view', 'common:setup_list',
-                'common:tools_list'
-            )
-        )
 
         menu_tools.bind_links(
             links=(link_filters,)
