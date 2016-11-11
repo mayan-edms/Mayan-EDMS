@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 
 from django import forms
-from django.contrib.staticfiles.templatetags.staticfiles import static
 from django.core.urlresolvers import reverse
 from django.utils.html import strip_tags
 from django.utils.http import urlencode

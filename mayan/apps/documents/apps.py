@@ -11,7 +11,7 @@ from acls import ModelPermission
 from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
-    MayanAppConfig, MissingItem, menu_facet, menu_front_page, menu_object,
+    MayanAppConfig, MissingItem, menu_facet, menu_main, menu_object,
     menu_secondary, menu_setup, menu_sidebar, menu_multi_item, menu_tools
 )
 from common.classes import DashboardWidget, ModelAttribute
@@ -59,6 +59,7 @@ from .literals import (
     CHECK_DELETE_PERIOD_INTERVAL, CHECK_TRASH_PERIOD_INTERVAL,
     DELETE_STALE_STUBS_INTERVAL
 )
+from .menus import menu_documents
 from .permissions import (
     permission_document_create, permission_document_delete,
     permission_document_download, permission_document_edit,
@@ -343,12 +344,15 @@ class DocumentsApp(MayanAppConfig):
             }
         )
 
-        menu_front_page.bind_links(
+        menu_documents.bind_links(
             links=(
                 link_document_list_recent, link_document_list,
                 link_document_list_deleted
             )
         )
+
+        menu_main.bind_links(links=(menu_documents,), position=0)
+
         menu_setup.bind_links(links=(link_document_type_setup,))
         menu_tools.bind_links(links=(link_clear_image_cache,))
 

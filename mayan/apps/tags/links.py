@@ -25,8 +25,8 @@ link_tag_attach = Link(
     view='tags:tag_attach', args='object.pk'
 )
 link_tag_create = Link(
-    permissions=(permission_tag_create,), text=_('Create new tag'),
-    view='tags:tag_create'
+    icon='fa fa-plus', permissions=(permission_tag_create,),
+    text=_('Create new tag'), view='tags:tag_create'
 )
 link_tag_delete = Link(
     permissions=(permission_tag_delete,), tags='dangerous', text=_('Delete'),
@@ -40,7 +40,7 @@ link_tag_document_list = Link(
     icon='fa fa-tag', permissions=(permission_tag_view,), text=_('Tags'),
     view='tags:document_tags', args='resolved_object.pk'
 )
-link_tag_list = Link(icon='fa fa-tag', text=_('Tags'), view='tags:tag_list')
+link_tag_list = Link(icon='fa fa-tag', text=_('All'), view='tags:tag_list')
 link_tag_multiple_delete = Link(
     permissions=(permission_tag_delete,), text=_('Delete'),
     view='tags:tag_multiple_delete'

@@ -7,8 +7,8 @@ from acls import ModelPermission
 from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
-    MayanAppConfig, menu_facet, menu_main, menu_object, menu_secondary,
-    menu_sidebar, menu_multi_item
+    MayanAppConfig, menu_facet, menu_main, menu_object, menu_sidebar,
+    menu_multi_item
 )
 from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
@@ -20,6 +20,7 @@ from .links import (
     link_folder_delete, link_folder_document_multiple_remove,
     link_folder_edit, link_folder_view
 )
+from .menus import menu_folders
 from .permissions import (
     permission_folder_add_document, permission_folder_delete,
     permission_folder_edit, permission_folder_remove_document,
@@ -77,7 +78,14 @@ class FoldersApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_document_folder_list,), sources=(Document,)
         )
-        menu_main.bind_links(links=(link_folder_list,))
+
+        menu_folders.bind_links(
+            links=(
+                link_folder_list, link_folder_create
+            )
+        )
+
+        menu_main.bind_links(links=(menu_folders,), position=98)
         menu_multi_item.bind_links(
             links=(link_folder_add_multiple_documents,), sources=(Document,)
         )
@@ -95,10 +103,6 @@ class FoldersApp(MayanAppConfig):
                 link_folder_view, link_folder_edit, link_acl_list,
                 link_folder_delete
             ), sources=(Folder,)
-        )
-        menu_secondary.bind_links(
-            links=(link_folder_list, link_folder_create),
-            sources=(Folder, 'folders:folder_list', 'folders:folder_create')
         )
         menu_sidebar.bind_links(
             links=(link_folder_add_document,),

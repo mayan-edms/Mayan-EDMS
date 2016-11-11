@@ -141,7 +141,7 @@ link_document_list_recent = Link(
     view='documents:document_list_recent'
 )
 link_document_list_deleted = Link(
-    icon='fa fa-trash', text=_('Trash'),
+    icon='fa fa-trash', text=_('Trash can'),
     view='documents:document_list_deleted'
 )
 

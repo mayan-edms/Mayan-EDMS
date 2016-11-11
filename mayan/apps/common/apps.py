@@ -22,7 +22,6 @@ from .handlers import (
 )
 from .links import (
     link_about, link_current_user_details, link_current_user_edit,
-    link_current_user_locale_profile_details,
     link_current_user_locale_profile_edit, link_filters, link_license,
     link_packages_licenses, link_setup, link_tools
 )

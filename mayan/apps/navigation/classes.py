@@ -55,11 +55,13 @@ class Menu(object):
     def get(cls, name):
         return cls._registry[name]
 
-    def __init__(self, name):
+    def __init__(self, name, icon=None, label=None):
         if name in self.__class__._registry:
             raise Exception('A menu with this name already exists')
 
+        self.icon = icon
         self.name = name
+        self.label = label
         self.bound_links = {}
         self.unbound_links = {}
         self.link_positions = {}
@@ -184,7 +186,11 @@ class Menu(object):
 
         # Main menu links
         for link in self.bound_links.get(None, []):
-            resolved_link = link.resolve(context)
+            if isinstance(link, Menu):
+                resolved_link = link
+            else:
+                resolved_link = link.resolve(context)
+
             if resolved_link:
                 resolved_links.append(resolved_link)
 
@@ -197,12 +203,16 @@ class Menu(object):
             unbound_links.extend(self.unbound_links.get(current_view, ()))
 
             for resolved_link in result[0]:
-                if resolved_link.link in unbound_links:
-                    result[0].remove(resolved_link)
+                try:
+                    if resolved_link.link in unbound_links:
+                        result[0].remove(resolved_link)
+                except AttributeError:
+                    # It's a menu, ignore
+                    pass
 
             # Sort links by position value passed during bind
             result[0] = sorted(
-                result[0], key=lambda item: self.link_positions.get(item.link)
+                result[0], key=lambda item: self.link_positions.get(item.link) if isinstance(item, ResolvedLink) else self.link_positions.get(item)
             )
 
         return result
@@ -363,15 +373,12 @@ class Link(object):
 
 
 class Separator(Link):
-    def __init__(self, text=None, view=None, args=None, condition=None,
-                 conditional_disable=None, description=None, icon=None,
-                 keep_query=False, kwargs=None, permissions=None,
-                 permissions_related=None, remove_from_query=None, tags=None):
+    def __init__(self, *args, **kwargs):
         self.icon = None
         self.text = None
         self.view = None
 
-    def resolve(self, context, resolved_object=None):
+    def resolve(self, *args, **kwargs):
         result = ResolvedLink(current_view=None, link=self)
         result.separator = True
         return result

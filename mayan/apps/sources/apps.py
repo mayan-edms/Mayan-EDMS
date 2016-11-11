@@ -5,11 +5,12 @@ from django.utils.translation import ugettext_lazy as _
 from kombu import Exchange, Queue
 
 from common import (
-    MayanAppConfig, MissingItem, menu_front_page, menu_object, menu_secondary,
-    menu_sidebar, menu_setup
+    MayanAppConfig, MissingItem, menu_object, menu_secondary, menu_sidebar,
+    menu_setup
 )
 from common.signals import post_initial_setup, post_upgrade
 from converter.links import link_transformation_list
+from documents.menus import menu_documents
 from documents.signals import post_version_upload
 from mayan.celery import app
 from navigation import SourceColumn
@@ -112,8 +113,8 @@ class SourcesApp(MayanAppConfig):
                 },
             }
         )
+        menu_documents.bind_links(links=(link_document_create_multiple,))
 
-        menu_front_page.bind_links(links=(link_document_create_multiple,))
         menu_object.bind_links(
             links=(
                 link_setup_source_edit, link_setup_source_delete,

@@ -24,8 +24,8 @@ link_folder_add_multiple_documents = Link(
     text=_('Add to folder'), view='folders:folder_add_multiple_documents'
 )
 link_folder_create = Link(
-    permissions=(permission_folder_create,), text=_('Create folder'),
-    view='folders:folder_create'
+    icon='fa fa-plus', permissions=(permission_folder_create,),
+    text=_('Create folder'), view='folders:folder_create'
 )
 link_folder_delete = Link(
     permissions=(permission_folder_delete,), tags='dangerous',
@@ -41,7 +41,7 @@ link_folder_edit = Link(
     view='folders:folder_edit', args='object.pk'
 )
 link_folder_list = Link(
-    icon='fa fa-folder', text=_('Folders'), view='folders:folder_list'
+    icon='fa fa-folder', text=_('All'), view='folders:folder_list'
 )
 link_folder_view = Link(
     permissions=(permission_folder_view,), text=_('Documents'),

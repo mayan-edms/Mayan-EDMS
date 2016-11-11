@@ -6,11 +6,11 @@
 {% load common_tags %}
 {% load navigation_tags %}
 
-{% block title %}{% trans 'Home' %}{% endblock %}
+{% block title %}{% trans 'Dashboard' %}{% endblock %}
 
 {% block content %}
     <h3>
-        {% trans 'Home' %}
+        {% trans 'Dashboard' %}
     </h3>
     <hr>
 
@@ -35,47 +35,31 @@
                     </div>
                 </div>
             {% endif %}
-
-            <div class="well center-block">
-                <div class="row">
-                    {% get_menu_links 'front page menu' as resolved_links %}
-                    {% with 'navigation/large_button_link.html' as link_template %}
-                    {% with 'col-xs-12 col-sm-6 col-md-4 col-lg-3' as div_class %}
-                        {% for object_navigation_links in resolved_links %}
-                            {% include 'navigation/generic_navigation.html' %}
-                        {% endfor %}
-                    {% endwith %}
-                    {% endwith %}
-                </div>
-            </div>
         </div>
     </div>
 
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="panel panel-default center-block">
-                <div class="panel-heading">{% trans 'Search' %}</div>
-                <div class="panel-body">
-                    <form action="{% url 'search:results' search_model='documents.DocumentPageResult' %}" method="get" role="search">
-                        <div class="input-group">
-                            <input class="form-control" name="q" placeholder="{% trans 'Search pages' %}" type="text" value="{{ search_terms|default:'' }}">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
-                                <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.DocumentPageResult' %}">{% trans 'Advanced' %}</a>
-                            </span>
-                        </div>
-                    </form>
-                    <br/>
-                    <form action="{% url 'search:results' search_model='documents.Document' %}" method="get" role="search">
-                        <div class="input-group">
-                            <input class="form-control" name="q" placeholder="{% trans 'Search documents' %}" type="text" value="{{ search_terms|default:'' }}">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
-                                <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.Document' %}">{% trans 'Advanced' %}</a>
-                            </span>
-                        </div>
-                    </form>
-                </div>
+    <div class="well center-block">
+        <div class="row">
+            <div class="col-xs-12">
+                <form action="{% url 'search:results' search_model='documents.DocumentPageResult' %}" method="get" role="search">
+                    <div class="input-group">
+                        <input class="form-control" name="q" placeholder="{% trans 'Search pages' %}" type="text" value="{{ search_terms|default:'' }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
+                            <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.DocumentPageResult' %}">{% trans 'Advanced' %}</a>
+                        </span>
+                    </div>
+                </form>
+                <br/>
+                <form action="{% url 'search:results' search_model='documents.Document' %}" method="get" role="search">
+                    <div class="input-group">
+                        <input class="form-control" name="q" placeholder="{% trans 'Search documents' %}" type="text" value="{{ search_terms|default:'' }}">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="submit">{% trans 'Search' %}</button>
+                            <a class="btn btn-primary" href="{% url 'search:search_advanced' search_model='documents.Document' %}">{% trans 'Advanced' %}</a>
+                        </span>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

@@ -7,8 +7,8 @@ from acls import ModelPermission
 from acls.links import link_acl_list
 from acls.permissions import permission_acl_edit, permission_acl_view
 from common import (
-    MayanAppConfig, menu_facet, menu_secondary, menu_object, menu_main,
-    menu_multi_item, menu_sidebar
+    MayanAppConfig, menu_facet, menu_object, menu_main, menu_multi_item,
+    menu_sidebar
 )
 from documents.search import document_page_search, document_search
 from navigation import SourceColumn
@@ -20,6 +20,7 @@ from .links import (
     link_tag_delete, link_tag_document_list, link_tag_edit, link_tag_list,
     link_tag_multiple_delete, link_tag_tagged_item_list
 )
+from .menus import menu_tags
 from .permissions import (
     permission_tag_attach, permission_tag_delete, permission_tag_edit,
     permission_tag_remove, permission_tag_view
@@ -107,7 +108,15 @@ class TagsApp(MayanAppConfig):
         menu_facet.bind_links(
             links=(link_tag_document_list,), sources=(Document,)
         )
-        menu_main.bind_links(links=(link_tag_list,))
+
+        menu_tags.bind_links(
+            links=(
+                link_tag_list, link_tag_create
+            )
+        )
+
+        menu_main.bind_links(links=(menu_tags,), position=98)
+
         menu_multi_item.bind_links(
             links=(
                 link_multiple_documents_attach_tag,
@@ -128,10 +137,6 @@ class TagsApp(MayanAppConfig):
                 link_tag_delete
             ),
             sources=(Tag,)
-        )
-        menu_secondary.bind_links(
-            links=(link_tag_list, link_tag_create),
-            sources=(Tag, 'tags:tag_list', 'tags:tag_create')
         )
         menu_sidebar.bind_links(
             links=(link_tag_attach,),

@@ -3,13 +3,11 @@ from __future__ import unicode_literals
 from navigation import Menu
 
 __all__ = (
-    'menu_facet', 'menu_front_page', 'menu_object', 'menu_main',
-    'menu_multi_item', 'menu_secondary', 'menu_setup', 'menu_sidebar',
-    'menu_tools', 'menu_user'
+    'menu_facet', 'menu_object', 'menu_main', 'menu_multi_item',
+    'menu_secondary', 'menu_setup', 'menu_sidebar', 'menu_tools', 'menu_user'
 )
 
 menu_facet = Menu(name='object facet')
-menu_front_page = Menu(name='front page menu')
 menu_object = Menu(name='object menu')
 menu_main = Menu(name='main menu')
 menu_multi_item = Menu(name='multi item menu')

@@ -82,3 +82,8 @@ def build():
             return ''
     else:
         return ''
+
+
+@register.filter
+def get_type(value):
+    return unicode(type(value))
