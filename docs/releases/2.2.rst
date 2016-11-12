@@ -17,7 +17,10 @@ Other changes
 - Fix height calculation in resize transformation
 - Improve upgrade instructions
 - New image caching pipeline
-- New drop down user menu
+- New drop down menus for the documents, folders and tags app as well as for
+the user links
+- Dashboard
+- Moved licenses to their own module in every app
 
 Removals
 --------
