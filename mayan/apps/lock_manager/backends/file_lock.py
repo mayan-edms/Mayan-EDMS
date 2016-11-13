@@ -1,9 +1,9 @@
 from __future__ import unicode_literals
 
-import cPickle as pickle
-import datetime
 import logging
+import json
 import threading
+import time
 import uuid
 
 from django.core.files import locks
@@ -28,7 +28,7 @@ class FileLock(object):
     def _get_lock_dictionary(self):
         if self.timeout:
             result = {
-                'expiration': datetime.datetime.now() + datetime.timedelta(seconds=self.timeout),
+                'expiration': time.time() + self.timeout,
                 'uuid': self.uuid
             }
         else:
@@ -48,14 +48,16 @@ class FileLock(object):
         with open(temporary_file, 'r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
 
-            try:
-                file_locks = pickle.loads(file_object.read())
-            except EOFError:
+            data = file_object.read()
+
+            if data:
+                file_locks = json.loads(data)
+            else:
                 file_locks = {}
 
             if name in file_locks:
                 # Someone already got this lock, check to see if it is expired
-                if file_locks[name]['expiration'] and datetime.datetime.now() > file_locks[name]['expiration']:
+                if file_locks[name]['expiration'] and time.time() > file_locks[name]['expiration']:
                     # It expires and has expired, we re-acquired it
                     file_locks[name] = self._get_lock_dictionary()
                 else:
@@ -65,7 +67,8 @@ class FileLock(object):
                 file_locks[name] = self._get_lock_dictionary()
 
             file_object.seek(0)
-            file_object.write(pickle.dumps(file_locks))
+            file_object.truncate()
+            file_object.write(json.dumps(file_locks))
             lock.release()
 
     def release(self):
@@ -73,7 +76,7 @@ class FileLock(object):
         with open(temporary_file, 'r+') as file_object:
             locks.lock(f=file_object, flags=locks.LOCK_EX)
             try:
-                file_locks = pickle.loads(file_object.read())
+                file_locks = json.loads(file_object.read())
             except EOFError:
                 file_locks = {}
 
@@ -88,5 +91,6 @@ class FileLock(object):
                 pass
 
             file_object.seek(0)
-            file_object.write(pickle.dumps(file_locks))
+            file_object.truncate()
+            file_object.write(json.dumps(file_locks))
             lock.release()
