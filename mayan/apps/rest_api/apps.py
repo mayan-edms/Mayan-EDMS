@@ -7,7 +7,7 @@ from common import MayanAppConfig, menu_tools
 
 from .classes import APIEndPoint
 from .links import link_api, link_api_documentation
-from .packages import *  # NOQA
+from .licenses import *  # NOQA
 
 
 class RESTAPIApp(MayanAppConfig):

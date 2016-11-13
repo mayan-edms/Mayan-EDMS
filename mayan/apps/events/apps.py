@@ -8,7 +8,7 @@ from common import MayanAppConfig, menu_tools
 from navigation import SourceColumn
 
 from .links import link_events_list
-from .packages import *  # NOQA
+from .licenses import *  # NOQA
 from .widgets import event_type_link
 
 

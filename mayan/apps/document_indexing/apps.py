@@ -33,7 +33,7 @@ from .links import (
     link_template_node_create, link_template_node_delete,
     link_template_node_edit
 )
-from .packages import *  # NOQA
+from .licenses import *  # NOQA
 from .permissions import (
     permission_document_indexing_create, permission_document_indexing_delete,
     permission_document_indexing_edit, permission_document_indexing_view

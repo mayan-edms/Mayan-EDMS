@@ -16,7 +16,7 @@ from .links import (
     link_key_receive, link_key_setup, link_key_upload, link_private_keys,
     link_public_keys
 )
-from .packages import *  # NOQA
+from .licenses import *  # NOQA
 from .permissions import (
     permission_key_delete, permission_key_download, permission_key_sign,
     permission_key_view

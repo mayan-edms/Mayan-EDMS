@@ -4,7 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig
 
-from .packages import *  # NOQA
+from .licenses import *  # NOQA
 
 
 class AppearanceApp(MayanAppConfig):

@@ -10,7 +10,7 @@ from .links import (
     link_transformation_create, link_transformation_delete,
     link_transformation_edit
 )
-from .packages import *  # NOQA
+from .licenses import *  # NOQA
 
 
 class ConverterApp(MayanAppConfig):
