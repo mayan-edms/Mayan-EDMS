@@ -46,7 +46,7 @@ class CheckoutsApp(MayanAppConfig):
         DashboardWidget(
             icon='fa fa-shopping-cart',
             queryset=DocumentCheckout.objects.all(),
-            label=_('Checkout documents'),
+            label=_('Checkedout documents'),
             link=reverse_lazy('checkouts:checkout_list')
         )
 
