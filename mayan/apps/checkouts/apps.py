@@ -5,10 +5,12 @@ from datetime import timedelta
 from kombu import Exchange, Queue
 
 from django.apps import apps
+from django.core.urlresolvers import reverse_lazy
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
 from common import MayanAppConfig, menu_facet, menu_main, menu_sidebar
+from common.classes import DashboardWidget
 from mayan.celery import app
 from rest_api.classes import APIEndPoint
 
@@ -40,6 +42,13 @@ class CheckoutsApp(MayanAppConfig):
         )
 
         DocumentCheckout = self.get_model('DocumentCheckout')
+
+        DashboardWidget(
+            icon='fa fa-shopping-cart',
+            queryset=DocumentCheckout.objects.all(),
+            label=_('Checkout documents'),
+            link=reverse_lazy('checkouts:checkout_list')
+        )
 
         Document.add_to_class(
             'check_in',
