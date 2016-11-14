@@ -15,12 +15,20 @@ class Command(management.BaseCommand):
             default=False,
             help='Don\'t use migrations when creating the test database.'
         ),
+        make_option(
+            '--reverse', action='store_true', dest='reverse',
+            default=False,
+            help='Reverses test cases order.'
+        ),
     )
 
     def handle(self, *args, **options):
         kwargs = {}
         if options.get('nomigrations'):
             kwargs['nomigrations'] = True
+
+        if options.get('reverse'):
+            kwargs['reverse'] = True
 
         test_apps = [app.name for app in apps.apps.get_app_configs() if getattr(app, 'test', False)]
 
