@@ -21,6 +21,7 @@ Other changes
 the user links
 - Dashboard
 - Moved licenses to their own module in every app
+- Update project to work with Django 1.9.11
 
 Removals
 --------

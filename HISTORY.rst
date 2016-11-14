@@ -6,6 +6,12 @@
 - Remove dependency on the django-filetransfer library
 - Fix height calculation in resize transformation
 - Improve upgrade instructions
+- New image caching pipeline
+- New drop down menus for the documents, folders and tags app as well as for
+the user links
+- New Dashboard view
+- Moved licenses to their own module in every app
+- Update project to work with Django 1.9.11
 
 2.1.5 (2016-11-08)
 ==================

@@ -10,7 +10,7 @@ from django.views.generic import (
 )
 from django.views.generic.detail import SingleObjectMixin
 from django.views.generic.edit import (
-    CreateView, DeleteView, ModelFormMixin, UpdateView
+    CreateView, DeleteView, FormMixin, ModelFormMixin, UpdateView
 )
 from django.views.generic.list import ListView
 
@@ -206,6 +206,16 @@ class MultiFormView(DjangoFormView):
         else:
             form = klass(**form_kwargs)
         return form
+
+    def get_context_data(self, **kwargs):
+        """
+        Insert the form into the context dict.
+        """
+        if 'forms' not in kwargs:
+            kwargs['forms'] = self.get_forms(
+                form_classes=self.get_form_classes()
+            )
+        return super(FormMixin, self).get_context_data(**kwargs)
 
     def get_forms(self, form_classes):
         return dict(
