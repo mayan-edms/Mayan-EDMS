@@ -68,7 +68,13 @@ class AccessControlListManager(models.Manager):
                 obj = return_attrib(obj, related)
 
             try:
-                parent_accessor = ModelPermission.get_inheritance(obj._meta.model)
+                parent_accessor = ModelPermission.get_inheritance(
+                    model=obj._meta.model
+                )
+            except AttributeError:
+                # AttributeError means non model objects: ie Statistics
+                # These can't have ACLS so we raise PermissionDenied
+                raise PermissionDenied
             except KeyError:
                 pass
             else:
