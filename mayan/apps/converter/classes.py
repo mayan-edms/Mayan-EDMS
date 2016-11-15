@@ -299,7 +299,7 @@ class TransformationRotate(BaseTransformation):
 
         self.degrees %= 360
 
-        if self.degress == 0:
+        if self.degrees == 0:
             return self.image
 
         return self.image.rotate(
