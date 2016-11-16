@@ -233,11 +233,11 @@ class BaseTransformation(object):
     def combine(transformations):
         result = None
 
-        for transformation in transformations:
+        for index, transformation in enumerate(transformations):
             if not result:
-                result = BaseTransformation.decode_hash(transformation.cache_hash())
+                result = hash((BaseTransformation.decode_hash(transformation.cache_hash()), index))
             else:
-                result ^= BaseTransformation.decode_hash(transformation.cache_hash())
+                result ^= hash((BaseTransformation.decode_hash(transformation.cache_hash()), index))
 
         return BaseTransformation.encode_hash(result)
 
@@ -267,8 +267,8 @@ class BaseTransformation(object):
 
     def cache_hash(self):
         result = unicode.__hash__(self.name)
-        for key, value in self.kwargs.items():
-            result ^= unicode.__hash__(key) ^ str.__hash__(str(value))
+        for index, (key, value) in enumerate(self.kwargs.items()):
+            result ^= hash((key, index)) ^ hash((value, index))
 
         return BaseTransformation.encode_hash(result)
 
@@ -314,7 +314,7 @@ class TransformationRotate(BaseTransformation):
 
         self.degrees %= 360
 
-        if self.degress == 0:
+        if self.degrees == 0:
             return self.image
 
         return self.image.rotate(

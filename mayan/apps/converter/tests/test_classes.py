@@ -21,6 +21,24 @@ TRANSFORMATION_ZOOM_CACHE_HASH = '47840c3658dc399a'
 
 
 class TransformationTestCase(TestCase):
+    def test_cache_uniqness(self):
+        transformation_1 = TransformationResize(width=640, height=640)
+
+        transformation_2 = TransformationResize(width=800, height=800)
+
+        self.assertNotEqual(
+            transformation_1.cache_hash(), transformation_2.cache_hash()
+        )
+
+    def test_cache_combining_uniqness(self):
+        transformation_1 = TransformationZoom(percent=100)
+        transformation_2 = TransformationResize(width=800, height=800)
+
+        self.assertNotEqual(
+            BaseTransformation.combine((transformation_1, transformation_2)),
+            BaseTransformation.combine((transformation_2, transformation_1)),
+        )
+
     def test_resize_cache_hashing(self):
         # Test if the hash is being generated correctly
         transformation = TransformationResize(
