@@ -102,15 +102,6 @@ img.lazy-load-carousel {
     height: 0px;
 }
 
-.tc {
-    margin: auto;
-    text-align: center;
-}
-
-.tc a {
-    text-align: center;
-}
-
 .img-nolazyload {
     border: 1px solid black;
 }
@@ -125,6 +116,10 @@ img.lazy-load-carousel {
 
 .fancybox-nav span {
     visibility: visible;
+}
+
+.instance-image-widget {
+    text-align: center;
 }
 
 hr {
@@ -146,10 +141,6 @@ hr {
 
 .btn-block {
     text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
-}
-
-.a-caption {
-    color: white;
 }
 
 .radio ul li {

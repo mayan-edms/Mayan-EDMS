@@ -70,14 +70,13 @@ from .permissions import (
 )
 # Just import to initialize the search models
 from .search import document_search, document_page_search  # NOQA
-from .settings import setting_display_size, setting_thumbnail_size
 from .statistics import (
     new_documents_per_month, new_document_pages_per_month,
     new_document_pages_this_month, new_documents_this_month,
     new_document_versions_per_month, total_document_per_month,
     total_document_page_per_month, total_document_version_per_month
 )
-from .widgets import document_page_html_widget
+from .widgets import DocumentThumbnailWidget, DocumentPageThumbnailWidget
 
 
 class DocumentsApp(MayanAppConfig):
@@ -187,17 +186,14 @@ class DocumentsApp(MayanAppConfig):
             model=DocumentPage, related='document',
         )
 
+        # Document and document page thumbnail widget
+        document_thumbnail_widget = DocumentThumbnailWidget()
+        document_page_thumbnail_widget = DocumentPageThumbnailWidget()
+
         SourceColumn(
             source=Document, label=_('Thumbnail'),
-            func=lambda context: document_page_html_widget(
-                document_page=context['object'].latest_version.pages.first(),
-                click_view='rest_api:documentpage-image',
-                click_view_arguments_lazy=lambda: (
-                    context['object'].latest_version.pages.first().pk,
-                ), click_view_querydict={'size': setting_display_size.value},
-                gallery_name='documents:document_list',
-                size=setting_thumbnail_size.value,
-                title=getattr(context['object'], 'label', None),
+            func=lambda context: document_thumbnail_widget.render(
+                instance=context['object']
             )
         )
         SourceColumn(
@@ -206,29 +202,18 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=DocumentPage, label=_('Thumbnail'),
-            func=lambda context: document_page_html_widget(
-                document_page=context['object'],
-                click_view='rest_api:documentpage-image',
-                click_view_arguments=(context['object'].pk,),
-                gallery_name='documents:document_page_list',
-                preview_click_view='documents:document_page_view',
-                size=setting_thumbnail_size.value,
-                title=unicode(context['object']),
+            func=lambda context: document_page_thumbnail_widget.render(
+                instance=context['object']
             )
         )
 
         SourceColumn(
             source=DocumentPageResult, label=_('Thumbnail'),
-            func=lambda context: document_page_html_widget(
-                document_page=context['object'],
-                click_view='rest_api:documentpage-image',
-                click_view_arguments=(context['object'].pk,),
-                gallery_name='documents:document_page_list',
-                preview_click_view='documents:document_page_view',
-                size=setting_thumbnail_size.value,
-                title=unicode(context['object']),
+            func=lambda context: document_page_thumbnail_widget.render(
+                instance=context['object']
             )
         )
+
         SourceColumn(
             source=DocumentPageResult, label=_('Type'),
             attribute='document_version.document.document_type'
@@ -248,18 +233,11 @@ class DocumentsApp(MayanAppConfig):
 
         SourceColumn(
             source=DeletedDocument, label=_('Thumbnail'),
-            func=lambda context: document_page_html_widget(
-                document_page=context['object'].latest_version.pages.first(),
-                click_view='rest_api:documentpage-image',
-                click_view_arguments_lazy=lambda: (
-                    context['object'].latest_version.pages.first().pk,
-                ), click_view_querydict={'size': setting_display_size.value},
-                gallery_name='documents:delete_document_list',
-                size=setting_thumbnail_size.value,
-                title=getattr(context['object'], 'label', None),
-                disable_title_link=True
+            func=lambda context: document_thumbnail_widget.render(
+                instance=context['object']
             )
         )
+
         SourceColumn(
             source=DeletedDocument, label=_('Type'), attribute='document_type'
         )

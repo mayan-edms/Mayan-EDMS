@@ -15,12 +15,11 @@ LANGUAGE_CHOICES = [
 ]
 
 namespace = Namespace(name='documents', label=_('Documents'))
-setting_storage_backend = namespace.add_setting(
-    global_name='DOCUMENTS_STORAGE_BACKEND',
-    default='storage.backends.filebasedstorage.FileBasedStorage'
+setting_display_size = namespace.add_setting(
+    global_name='DOCUMENTS_DISPLAY_SIZE', default='3600'
 )
 setting_preview_size = namespace.add_setting(
-    global_name='DOCUMENTS_PREVIEW_SIZE', default='640x480'
+    global_name='DOCUMENTS_PREVIEW_SIZE', default='800'
 )
 setting_print_size = namespace.add_setting(
     global_name='DOCUMENTS_PRINT_SIZE', default='3600'
@@ -28,15 +27,16 @@ setting_print_size = namespace.add_setting(
 setting_thumbnail_size = namespace.add_setting(
     global_name='DOCUMENTS_THUMBNAIL_SIZE', default='50x50'
 )
-setting_display_size = namespace.add_setting(
-    global_name='DOCUMENTS_DISPLAY_SIZE', default='3600'
-)
 setting_recent_count = namespace.add_setting(
     global_name='DOCUMENTS_RECENT_COUNT', default=40,
     help_text=_(
         'Maximum number of recent (created, edited, viewed) documents to '
         'remember per user.'
     )
+)
+setting_storage_backend = namespace.add_setting(
+    global_name='DOCUMENTS_STORAGE_BACKEND',
+    default='storage.backends.filebasedstorage.FileBasedStorage'
 )
 setting_zoom_percent_step = namespace.add_setting(
     global_name='DOCUMENTS_ZOOM_PERCENT_STEP', default=25,

@@ -29,7 +29,7 @@ from .links import (
     link_setup_source_edit, link_setup_source_logs, link_staging_file_delete,
     link_upload_version
 )
-from .widgets import staging_file_thumbnail
+from .widgets import StagingFileThumbnailWidget
 
 
 class SourcesApp(MayanAppConfig):
@@ -67,13 +67,12 @@ class SourcesApp(MayanAppConfig):
             func=lambda context: context['object'].get_date_time_created()
         )
 
+        html_widget = StagingFileThumbnailWidget()
         SourceColumn(
             source=StagingFile,
             label=_('Thumbnail'),
-            func=lambda context: staging_file_thumbnail(
-                context['object'],
-                gallery_name='sources:staging_list',
-                title=context['object'].filename, size='100'
+            func=lambda context: html_widget.render(
+                instance=context['object'],
             )
         )
 

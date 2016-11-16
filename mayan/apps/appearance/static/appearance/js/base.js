@@ -65,29 +65,6 @@ jQuery(document).ready(function() {
         autoResize  : true,
     });
 
-    $('a.fancybox-staging').click(function(e) {
-        var $this = $(this);
-
-            $.get($this.attr('href'), function( result ) {
-                if (result.status == 'success') {
-                    $.fancybox.open([
-                        {
-                            href : result.data,
-                            title : $this.attr('title'),
-                            openEffect  : 'elastic',
-                            closeEffect : 'elastic',
-                            prevEffect  : 'none',
-                            nextEffect  : 'none',
-                            titleShow   : true,
-                            type        : 'image',
-                            autoResize  : true,
-                        },
-                    ]);
-                }
-            })
-        e.preventDefault();
-    })
-
    $('img.lazy-load').lazyload({
         appear: function(elements_left, settings) {
             loadImage($(this));
