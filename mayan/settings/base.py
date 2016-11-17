@@ -15,6 +15,8 @@ import sys
 
 from django.utils.translation import ugettext_lazy as _
 
+import mayan
+
 _file_path = os.path.abspath(os.path.dirname(__file__)).split('/')
 
 BASE_DIR = '/'.join(_file_path[0:-2])
@@ -147,9 +149,10 @@ STATIC_URL = '/static/'
 # ------------ Custom settings section ----------
 
 TEMPLATE_DEBUG = True
-PROJECT_TITLE = 'Mayan EDMS'
-PROJECT_NAME = 'mayan'
+PROJECT_TITLE = mayan.__title__
 PROJECT_WEBSITE = 'http://www.mayan-edms.com'
+PROJECT_COPYRIGHT = mayan.__copyright__
+PROJECT_LICENSE = mayan.__license__
 
 LANGUAGES = (
     ('ar', _('Arabic')),
