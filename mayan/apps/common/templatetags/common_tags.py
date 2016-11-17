@@ -23,6 +23,7 @@ except sh.CommandNotFound:
     DATE = None
 
 
+@register.assignment_tag
 def get_collections():
     return Collection.get_all()
 
