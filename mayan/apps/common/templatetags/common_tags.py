@@ -45,9 +45,19 @@ def object_property(value, arg):
     return return_attrib(value, arg)
 
 
+@register.simple_tag
+def project_copyright():
+    return settings.PROJECT_COPYRIGHT
+
+
 @register.assignment_tag
 def project_description():
     return getattr(settings, 'PROJECT_DESCRIPTION', mayan.__description__)
+
+
+@register.simple_tag
+def project_license():
+    return settings.PROJECT_LICENSE
 
 
 @register.simple_tag
