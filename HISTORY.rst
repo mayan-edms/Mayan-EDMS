@@ -1,6 +1,7 @@
-2.1.6 (2016-11-22)
+2.1.6 (2016-11-23)
 =================
 - Fix variable name typo in the rotation transformation class.
+- Update translations
 
 2.1.5 (2016-11-08)
 ==================

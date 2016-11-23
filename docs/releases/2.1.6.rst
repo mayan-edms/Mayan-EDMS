@@ -2,7 +2,7 @@
 Mayan EDMS v2.1.6 release notes
 ===============================
 
-Released: November 22, 2016
+Released: November 23, 2016
 
 What's new
 ==========
@@ -13,6 +13,7 @@ Changes
 -------------
 
 - Fix variable name typo in the rotation transformation class.
+- Update translations
 
 Removals
 --------
