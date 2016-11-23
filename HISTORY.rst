@@ -1,3 +1,7 @@
+2.1.6 (2016-11-22)
+=================
+- Fix variable name typo in the rotation transformation class.
+
 2.1.5 (2016-11-08)
 ==================
 - Backport resize transformation math operation fix (GitLab #319).
