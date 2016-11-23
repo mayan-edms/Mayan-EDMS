@@ -1,4 +1,4 @@
-|PyPI badge| |Build Status| |Coverage badge| |Documentation| |License badge|
+|PyPI badge| |Build Status| |Coverage badge| |Documentation| |License badge| |Python version|
 
 |Logo|
 
@@ -41,8 +41,6 @@ Point your browser to 127.0.0.1:8000 and use the automatically created admin
 account.
 
 
-
-
 .. _Website: http://www.mayan-edms.com
 .. _Video demostration: http://bit.ly/pADNXv
 .. _Documentation: http://readthedocs.org/docs/mayan/en/latest/
@@ -56,11 +54,12 @@ account.
 .. |Animation| image:: https://gitlab.com/mayan-edms/mayan-edms/raw/master/docs/_static/overview.gif
 .. |PyPI badge| image:: http://img.shields.io/pypi/v/mayan-edms.svg?style=flat
    :target: http://badge.fury.io/py/mayan-edms
-.. |License badge| image:: http://img.shields.io/badge/license-Apache%202.0-green.svg?style=flat
+.. |License badge| image:: https://img.shields.io/pypi/l/mayan-edms.svg?style=flat
 .. |Analytics| image:: https://ga-beacon.appspot.com/UA-52965619-2/mayan-edms/readme?pixel
 .. |Coverage badge| image:: https://codecov.io/gitlab/mayan-edms/mayan-edms/coverage.svg?branch=master
    :target: https://codecov.io/gitlab/mayan-edms/mayan-edms?branch=master
 .. |Documentation| image:: https://readthedocs.org/projects/mayan/badge/?version=latest
    :target: http://mayan.readthedocs.io/en/latest
+.. |Python version| images:: https://img.shields.io/pypi/pyversions/mayan-edms.svg
 
 |Analytics|
