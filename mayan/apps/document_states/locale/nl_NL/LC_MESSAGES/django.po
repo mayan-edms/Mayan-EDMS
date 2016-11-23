@@ -1,30 +1,30 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:19-0400\n"
-"PO-Revision-Date: 2016-03-21 21:09+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"PO-Revision-Date: 2016-10-28 12:43+0000\n"
+"Last-Translator: Evelijn Saaltink <evelijnsaaltink@gmail.com>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31
 msgid "Document states"
-msgstr ""
+msgstr "Documentstaten"
 
 #: apps.py:47
 msgid "Initial state"
-msgstr ""
+msgstr "Initiële staat"
 
 #: apps.py:48 apps.py:58 apps.py:68 apps.py:74
 msgid "None"
@@ -32,7 +32,7 @@ msgstr "Geen"
 
 #: apps.py:52
 msgid "Current state"
-msgstr ""
+msgstr "Huidige staat"
 
 #: apps.py:56 apps.py:83 models.py:189
 msgid "User"
@@ -40,19 +40,19 @@ msgstr "Gebruiker"
 
 #: apps.py:62
 msgid "Last transition"
-msgstr ""
+msgstr "Laatste transitie"
 
 #: apps.py:66 apps.py:79
 msgid "Date and time"
-msgstr ""
+msgstr "Datum en tijd"
 
 #: apps.py:72 apps.py:99 models.py:79
 msgid "Completion"
-msgstr ""
+msgstr "Voltooiing"
 
 #: apps.py:86 forms.py:39 links.py:79 models.py:187
 msgid "Transition"
-msgstr ""
+msgstr "Transitie"
 
 #: apps.py:90 forms.py:41 models.py:190
 msgid "Comment"
@@ -64,11 +64,11 @@ msgstr ""
 
 #: apps.py:103 models.py:105
 msgid "Origin state"
-msgstr ""
+msgstr "Originele staat"
 
 #: apps.py:107 models.py:109
 msgid "Destination state"
-msgstr ""
+msgstr "Bestemmingsstaat"
 
 #: links.py:15 links.py:38 models.py:59 views.py:185
 msgid "Workflows"
@@ -84,7 +84,7 @@ msgstr "Verwijder"
 
 #: links.py:29 models.py:25
 msgid "Document types"
-msgstr ""
+msgstr "Documentsoorten"
 
 #: links.py:33 links.py:50 links.py:67
 msgid "Edit"
@@ -92,31 +92,31 @@ msgstr "bewerken"
 
 #: links.py:41
 msgid "Create state"
-msgstr ""
+msgstr "Maak staat aan"
 
 #: links.py:54
 msgid "States"
-msgstr ""
+msgstr "Staten"
 
 #: links.py:58
 msgid "Create transition"
-msgstr ""
+msgstr "Transitie aanmaken"
 
 #: links.py:71
 msgid "Transitions"
-msgstr ""
+msgstr "Transities"
 
 #: links.py:75
 msgid "Detail"
-msgstr ""
+msgstr "Detai"
 
 #: models.py:21 models.py:67 models.py:101
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: models.py:58 models.py:65 models.py:99 models.py:126
 msgid "Workflow"
-msgstr ""
+msgstr "Workflow"
 
 #: models.py:71
 msgid ""
@@ -126,7 +126,7 @@ msgstr ""
 
 #: models.py:73
 msgid "Initial"
-msgstr ""
+msgstr "Initieel"
 
 #: models.py:77
 msgid ""
@@ -136,19 +136,19 @@ msgstr ""
 
 #: models.py:92
 msgid "Workflow state"
-msgstr ""
+msgstr "Workflowstaat"
 
 #: models.py:93
 msgid "Workflow states"
-msgstr ""
+msgstr "Workflowstaten"
 
 #: models.py:119
 msgid "Workflow transition"
-msgstr ""
+msgstr "Workflowtransitie"
 
 #: models.py:120
 msgid "Workflow transitions"
-msgstr ""
+msgstr "Workflowtransities"
 
 #: models.py:129
 msgid "Document"
@@ -156,15 +156,15 @@ msgstr "Document"
 
 #: models.py:173 models.py:181
 msgid "Workflow instance"
-msgstr ""
+msgstr "Workflowinstantie"
 
 #: models.py:174
 msgid "Workflow instances"
-msgstr ""
+msgstr "Workflowinstanties"
 
 #: models.py:184
 msgid "Datetime"
-msgstr ""
+msgstr "Datumtijd"
 
 #: models.py:196
 msgid "Workflow instance log entry"
@@ -176,23 +176,23 @@ msgstr ""
 
 #: permissions.py:7
 msgid "Document workflows"
-msgstr ""
+msgstr "Documentworkflows"
 
 #: permissions.py:10
 msgid "Create workflows"
-msgstr ""
+msgstr "Workflows aanmaken"
 
 #: permissions.py:13
 msgid "Delete workflows"
-msgstr ""
+msgstr "Workflows verwijderen"
 
 #: permissions.py:16
 msgid "Edit workflows"
-msgstr ""
+msgstr "Workflows verwijderen"
 
 #: permissions.py:19
 msgid "View workflows"
-msgstr ""
+msgstr "Workflows bekijken"
 
 #: permissions.py:26
 msgid "Transition workflows"
@@ -201,17 +201,17 @@ msgstr ""
 #: views.py:57
 #, python-format
 msgid "Workflows for document: %s"
-msgstr ""
+msgstr "Workflows voor document: %s"
 
 #: views.py:91
 #, python-format
 msgid "Documents with the workflow: %s"
-msgstr ""
+msgstr "Documenten met de workflow: %s"
 
 #: views.py:116
 #, python-format
 msgid "Detail of workflow: %(workflow)s"
-msgstr ""
+msgstr "Detail van workflow: %(workflow)s"
 
 #: views.py:162
 msgid "Submit"
@@ -224,7 +224,7 @@ msgstr ""
 
 #: views.py:215
 msgid "Available document types"
-msgstr ""
+msgstr "Beschikbare documentsoorten"
 
 #: views.py:216
 msgid "Document types assigned this workflow"

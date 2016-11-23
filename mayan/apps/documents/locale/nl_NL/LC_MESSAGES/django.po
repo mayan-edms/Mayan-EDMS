@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:19-0400\n"
-"PO-Revision-Date: 2016-10-28 07:33+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"PO-Revision-Date: 2016-11-09 15:56+0000\n"
+"Last-Translator: Evelijn Saaltink <evelijnsaaltink@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr "Documenten"
 
 #: apps.py:98
 msgid "Create a document type"
-msgstr ""
+msgstr "Een documentsoort aanmaken"
 
 #: apps.py:100
 msgid ""
@@ -35,7 +36,7 @@ msgstr ""
 
 #: apps.py:107 models.py:65 models.py:158 models.py:626 search.py:20
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: apps.py:112
 msgid "The MIME type of any of the versions of a document"
@@ -47,11 +48,11 @@ msgstr "MIME type"
 
 #: apps.py:151 apps.py:175
 msgid "Thumbnail"
-msgstr ""
+msgstr "Thumbnail"
 
 #: apps.py:159 apps.py:185
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: apps.py:170 models.py:628
 msgid "Enabled"
@@ -63,7 +64,7 @@ msgstr ""
 
 #: apps.py:193
 msgid "Time and date"
-msgstr ""
+msgstr "Tijd en datum"
 
 #: apps.py:201 views.py:830
 msgid "Encoding"
@@ -76,17 +77,17 @@ msgstr "Commentaar"
 #: apps.py:387
 #| msgid "New document filename"
 msgid "New documents per month"
-msgstr ""
+msgstr "Nieuwe documenten per maand"
 
 #: apps.py:394
 #| msgid "Document version reverted successfully"
 msgid "New document versions per month"
-msgstr ""
+msgstr "Nieuwe documentversies per maand"
 
 #: apps.py:401
 #| msgid "View document types"
 msgid "New document pages per month"
-msgstr ""
+msgstr "Nieuwe documentpagina's per maand"
 
 #: apps.py:408
 msgid "Total documents at each month"
@@ -102,29 +103,29 @@ msgstr ""
 
 #: events.py:8
 msgid "Document created"
-msgstr ""
+msgstr "Document aangemaakt"
 
 #: events.py:12
 msgid "Document downloaded"
-msgstr ""
+msgstr "Document gedownload"
 
 #: events.py:15
 msgid "Document properties edited"
-msgstr ""
+msgstr "Documenteigenschappen bewerkt"
 
 #: events.py:18
 msgid "Document type changed"
-msgstr ""
+msgstr "Documentsoort veranderd"
 
 #: events.py:21
 #| msgid "Version update"
 msgid "New version uploaded"
-msgstr ""
+msgstr "Nieuwe versie geüpload"
 
 #: events.py:25
 #| msgid "Document version reverted successfully"
 msgid "Document version reverted"
-msgstr ""
+msgstr "Documentversie teruggedraaid"
 
 #: events.py:29
 msgid "Document viewed"
@@ -137,7 +138,7 @@ msgstr "Pagina afbeelding"
 #: forms.py:56 forms.py:59
 #, python-format
 msgid "Document pages (%d)"
-msgstr ""
+msgstr "Documentpagina's (%d)"
 
 #: forms.py:90
 msgid "Quick document rename"
@@ -161,7 +162,7 @@ msgstr "Geen"
 
 #: forms.py:126
 msgid "File encoding"
-msgstr ""
+msgstr "Bestand encoderen"
 
 #: forms.py:132
 msgid "File size"
@@ -218,11 +219,11 @@ msgstr "Pagina bereik"
 
 #: links.py:43
 msgid "Preview"
-msgstr ""
+msgstr "Preview"
 
 #: links.py:48
 msgid "Properties"
-msgstr ""
+msgstr "Eigenschappe"
 
 #: links.py:53
 msgid "Versions"
@@ -242,11 +243,11 @@ msgstr ""
 
 #: links.py:79
 msgid "Edit properties"
-msgstr ""
+msgstr "Bewerk eigenschappen"
 
 #: links.py:83 links.py:117
 msgid "Change type"
-msgstr ""
+msgstr "Verander soort"
 
 #: links.py:87 links.py:121 views.py:901
 msgid "Download"
@@ -254,7 +255,7 @@ msgstr "Download"
 
 #: links.py:91
 msgid "Print"
-msgstr ""
+msgstr "Printe"
 
 #: links.py:96 links.py:124
 msgid "Recalculate page count"
@@ -270,11 +271,11 @@ msgstr ""
 
 #: links.py:137 views.py:82
 msgid "All documents"
-msgstr ""
+msgstr "Alle documenten"
 
 #: links.py:140 models.py:815 views.py:656
 msgid "Recent documents"
-msgstr ""
+msgstr "Recente documenten"
 
 #: links.py:144
 msgid "Trash"
@@ -358,7 +359,7 @@ msgstr ""
 
 #: links.py:264 links.py:269 views.py:404
 msgid "Document types"
-msgstr ""
+msgstr "Documentsoorten"
 
 #: literals.py:14
 msgid "Default"
@@ -412,11 +413,11 @@ msgstr "Omschrijving"
 
 #: models.py:164
 msgid "Added"
-msgstr ""
+msgstr "Toegevoegd"
 
 #: models.py:169
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 #: models.py:173
 msgid "In trash?"
@@ -445,7 +446,7 @@ msgstr ""
 
 #: models.py:354
 msgid "Timestamp"
-msgstr ""
+msgstr "Timestamp"
 
 #: models.py:363
 msgid "File"
@@ -453,7 +454,7 @@ msgstr "Bestand"
 
 #: models.py:445 models.py:446 models.py:647
 msgid "Document version"
-msgstr ""
+msgstr "Documentversie"
 
 #: models.py:633
 msgid "Quick label"
@@ -470,7 +471,7 @@ msgstr "Pagina %(page_num)d van %(total_pages)d in %(document)s "
 
 #: models.py:672
 msgid "Document page"
-msgstr ""
+msgstr "Documentpagina"
 
 #: models.py:673
 msgid "Document pages"
@@ -688,7 +689,7 @@ msgstr ""
 
 #: views.py:430
 msgid "All documents of this type will be deleted too."
-msgstr ""
+msgstr "Alle documenten van dit type zullen ook worden verwijderd."
 
 #: views.py:432
 #, python-format
@@ -699,7 +700,7 @@ msgstr ""
 #: views.py:448
 #, python-format
 msgid "Edit document type: %s"
-msgstr ""
+msgstr "Bewerk documenttype: %s"
 
 #: views.py:478
 #, python-format
@@ -725,11 +726,11 @@ msgstr ""
 #: views.py:583
 #, python-format
 msgid "Versions of document: %s"
-msgstr ""
+msgstr "Versies van document: %s"
 
 #: views.py:597
 msgid "All later version after this one will be deleted too."
-msgstr "Alle recentere versies na deze zullen ook worden verwijdert."
+msgstr "Alle recentere versies na deze zullen ook worden verwijderd."
 
 #: views.py:600
 #| msgid "Revert documents to a previous version"
@@ -748,16 +749,16 @@ msgstr "Fout bij het terugvoeren van de documentversie. Foutmelding: %s"
 #: views.py:633
 #, python-format
 msgid "Properties for document: %s"
-msgstr ""
+msgstr "Eigenschappen voor document: %s"
 
 #: views.py:639
 msgid "Empty trash?"
-msgstr ""
+msgstr "Prullenbak legen?"
 
 #: views.py:650
 #| msgid "Document deleted successfully."
 msgid "Trash emptied successfully"
-msgstr ""
+msgstr "Prullenbak succesvol geleegd"
 
 #: views.py:685 views.py:996
 msgid "Must provide at least one document."
@@ -766,7 +767,7 @@ msgstr "U dient minstens 1 document aan te geven."
 #: views.py:704
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
-msgstr ""
+msgstr "Documenttype voor \"%s\" succesvol veranderd."
 
 #: views.py:716 views.py:1235
 msgid "Submit"
@@ -775,8 +776,8 @@ msgstr "Verstuur"
 #: views.py:720
 msgid "Change the type of the selected document."
 msgid_plural "Change the type of the selected documents."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Verander het type van het geselecteerde document."
+msgstr[1] "Verander het type van de geselecteerde documenten."
 
 #: views.py:799
 #| msgid "Must provide at least one document."
@@ -785,11 +786,11 @@ msgstr ""
 
 #: views.py:819
 msgid "Documents to be downloaded"
-msgstr ""
+msgstr "Documenten om te downloaden"
 
 #: views.py:828
 msgid "Date and time"
-msgstr ""
+msgstr "Datum en tijd"
 
 #: views.py:931
 msgid "At least one document must be selected."
@@ -821,7 +822,7 @@ msgstr "Fout bij verwijderen van de pagina transformaties voor document: %(docum
 msgid ""
 "All the page transformations for document: %s, have been deleted "
 "successfully."
-msgstr "Al de pagina transformaties voor document: %s, zijn succesvol verwijdert."
+msgstr "Alle paginatransformaties voor document: %s, zijn succesvol verwijderd."
 
 #: views.py:1044
 msgid "Clear all the page transformations for the selected document?"
@@ -840,12 +841,12 @@ msgstr "U bent al op de eerste pagina in dit document"
 #: views.py:1225 views.py:1234
 #, python-format
 msgid "Print: %s"
-msgstr ""
+msgstr "Afdrukken: %s"
 
 #: widgets.py:71
 #, python-format
 msgid "Page %(page_number)d of %(total_pages)d"
-msgstr ""
+msgstr "Pagina %(page_number)d van %(total_pages)d"
 
 #: widgets.py:100
 msgid "Document page image"

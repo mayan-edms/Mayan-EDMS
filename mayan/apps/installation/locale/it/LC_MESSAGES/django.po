@@ -1,31 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:20-0400\n"
-"PO-Revision-Date: 2015-08-20 19:11+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"PO-Revision-Date: 2016-09-24 09:39+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:16 permissions.py:7
 msgid "Installation"
-msgstr ""
+msgstr "Installazione"
 
 #: apps.py:22 apps.py:29
 msgid "Label"
-msgstr "etichetta"
+msgstr "Etichetta"
 
 #: apps.py:25
 msgid "Items"
@@ -37,15 +37,15 @@ msgstr "Valore"
 
 #: apps.py:41
 msgid "VirtualEnv"
-msgstr ""
+msgstr "VirtualEnv"
 
 #: apps.py:46
 msgid "pip not found."
-msgstr ""
+msgstr "pip non trovato."
 
 #: links.py:12
 msgid "Installation details"
-msgstr ""
+msgstr "Dettagli installazione"
 
 #: links.py:15
 msgid "Details"
@@ -53,16 +53,16 @@ msgstr "Dettagli"
 
 #: links.py:20 views.py:13
 msgid "Installation property namespaces"
-msgstr ""
+msgstr "Namespace proprietà di installazione"
 
 #: permissions.py:10
 msgid "View installation environment details"
-msgstr ""
+msgstr "Vedi dettagli installazione ambiente"
 
 #: views.py:27
 #, python-format
 msgid "Installation namespace details for: %s"
-msgstr ""
+msgstr "Dettagli installazione spazio dei nomi per: %s"
 
 #~ msgid "LSB OS"
 #~ msgstr "LSB OS"

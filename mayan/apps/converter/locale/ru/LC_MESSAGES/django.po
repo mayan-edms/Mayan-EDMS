@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:18-0400\n"
-"PO-Revision-Date: 2016-03-21 21:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"PO-Revision-Date: 2016-07-19 20:00+0000\n"
+"Last-Translator: lilo.panic\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:18 permissions.py:7 settings.py:7
 msgid "Converter"
@@ -27,29 +25,30 @@ msgstr "Конвертер"
 
 #: apps.py:38 models.py:34
 msgid "Order"
-msgstr ""
+msgstr "Порядок"
 
 #: apps.py:40 models.py:64
 msgid "Transformation"
-msgstr ""
+msgstr "Преобразование"
 
 #: apps.py:44 models.py:44
 msgid "Arguments"
-msgstr ""
+msgstr "Аргументы"
 
 #: backends/python.py:86 backends/python.py:100
 #, python-format
 msgid "Exception determining PDF page count; %s"
-msgstr ""
+msgstr "Ошибка при определении числа страниц PDF; %s"
 
 #: classes.py:97
+#| msgid "suported file formats"
 msgid "Not an office file format."
-msgstr ""
+msgstr "Не является файлом офисного формата."
 
 #: classes.py:120
 #, python-format
 msgid "LibreOffice not installed or not found at path: %s"
-msgstr ""
+msgstr "LibreOffice не установлен, или не найден по пути: %s"
 
 #: classes.py:254
 msgid "Resize"
@@ -59,21 +58,21 @@ msgstr "Изменение размера"
 msgid "Rotate"
 msgstr "Вращать"
 
-#: classes.py:307
+#: classes.py:313
 msgid "Zoom"
 msgstr "Увеличить"
 
-#: classes.py:324
+#: classes.py:333
 msgid "Crop"
-msgstr ""
+msgstr "Кадрировать"
 
 #: links.py:31
 msgid "Create new transformation"
-msgstr ""
+msgstr "Создать новое преобразование"
 
 #: links.py:35
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: links.py:39
 msgid "Edit"
@@ -81,13 +80,13 @@ msgstr "Редактировать"
 
 #: links.py:43 models.py:65
 msgid "Transformations"
-msgstr ""
+msgstr "Преобразования"
 
 #: models.py:32
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
+msgstr "Порядок выполнения преобразований. Если оставить неизменным, будет установлен флаг автоматического выставления порядка."
 
 #: models.py:38
 msgid "Name"
@@ -97,27 +96,28 @@ msgstr "Имя"
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
+msgstr "Введите аргументы для преобразования в формате YAML-словаря, например: {\"degrees\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
-msgstr ""
+msgstr "Создать новые преобразования"
 
 #: permissions.py:13
 msgid "Delete transformations"
-msgstr ""
+msgstr "Удалить преобразования"
 
 #: permissions.py:16
 msgid "Edit transformations"
-msgstr ""
+msgstr "Изменить преобразования"
 
 #: permissions.py:19
+#| msgid "Raw application information"
 msgid "View existing transformations"
-msgstr ""
+msgstr "Просмотр существующих преобразований"
 
 #: settings.py:10
 msgid "Graphics conversion backend to use."
-msgstr ""
+msgstr "Бекенд, который будет использован для графических преобразований."
 
 #: settings.py:16
 msgid "Path to the libreoffice program."
@@ -125,31 +125,31 @@ msgstr "Путь к программе LibreOffice."
 
 #: settings.py:20
 msgid "Path to the Popple program pdftoppm."
-msgstr ""
+msgstr "Путь до программы Popple pdftoppm."
 
 #: validators.py:22
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Введите допустимое YAML-значение."
 
 #: views.py:71
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
+msgstr "Удалить преобразование \"%(transformation)s\" для: %(content_object)s?"
 
 #: views.py:139
 #, python-format
 msgid "Create new transformation for: %s"
-msgstr ""
+msgstr "Создать новое преобразование для: %s"
 
 #: views.py:192
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
+msgstr "Изменить преобразование \"%(transformation)s\" for: %(content_object)sjavascript:;"
 
 #: views.py:238
 #, python-format
 msgid "Transformations for: %s"
-msgstr ""
+msgstr "Преобразования для: %s"
 
 #~ msgid "Resize."
 #~ msgstr "Resize."
@@ -188,13 +188,14 @@ msgstr ""
 #~ msgstr "File path to graphicsmagick's program."
 
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-#~ "and converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick.ImageMagick, "
+#~ "converter.backends.graphicsmagick.GraphicsMagick and "
+#~ "converter.backends.python.Python"
 #~ msgstr ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
-#~ "python."
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
+#~ "converter.backends.python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -507,11 +508,9 @@ msgstr ""
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -627,8 +626,7 @@ msgstr ""
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

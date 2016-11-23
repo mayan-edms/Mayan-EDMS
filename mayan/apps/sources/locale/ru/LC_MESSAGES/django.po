@@ -1,48 +1,47 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:22-0400\n"
-"PO-Revision-Date: 2016-03-21 21:11+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2016-11-23 02:56-0400\n"
+"PO-Revision-Date: 2016-11-02 04:15+0000\n"
+"Last-Translator: lilo.panic\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:37 links.py:31 models.py:145 views.py:521
 msgid "Sources"
 msgstr "Источники"
 
 #: apps.py:53
+#| msgid "Create new document sources"
 msgid "Create a document source"
-msgstr ""
+msgstr "Создать источник документов"
 
 #: apps.py:55
 msgid ""
 "Document sources are the way in which new documents are feed to Mayan EDMS, "
 "create at least a web form source to be able to upload documents from a "
 "browser."
-msgstr ""
+msgstr "Источники документов - это способы получения Mayan EDMS новых документов. Как минимум, чтобы можно было загружать документы из браузера, создайте веб-форму."
 
 #: apps.py:65
 msgid "Created"
-msgstr ""
+msgstr "Создано"
 
 #: apps.py:71
 msgid "Thumbnail"
-msgstr ""
+msgstr "Миниатюра"
 
 #: apps.py:81 models.py:606
 msgid "Date time"
@@ -50,7 +49,7 @@ msgstr "Дата и время"
 
 #: apps.py:86 models.py:609
 msgid "Message"
-msgstr ""
+msgstr "Сообщение"
 
 #: forms.py:29
 msgid "Comment"
@@ -78,7 +77,7 @@ msgstr "Умолчание"
 
 #: links.py:26
 msgid "New document"
-msgstr ""
+msgstr "Новый документ"
 
 #: links.py:35
 msgid "Add new IMAP email"
@@ -102,7 +101,7 @@ msgstr ""
 
 #: links.py:60 links.py:74
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: links.py:64
 msgid "Edit"
@@ -114,11 +113,11 @@ msgstr "Источники документов"
 
 #: links.py:80
 msgid "Upload new version"
-msgstr ""
+msgstr "Загрузить новую версию"
 
 #: links.py:83
 msgid "Logs"
-msgstr ""
+msgstr "Журналы"
 
 #: literals.py:10 literals.py:15
 msgid "Always"
@@ -134,15 +133,15 @@ msgstr "Спросить пользователя"
 
 #: literals.py:27 models.py:252
 msgid "Web form"
-msgstr ""
+msgstr "Веб-форма"
 
 #: literals.py:28 models.py:232
 msgid "Staging folder"
-msgstr ""
+msgstr "Промежуточная папка"
 
 #: literals.py:29 models.py:597
 msgid "Watch folder"
-msgstr ""
+msgstr "Наблюдаемая папка"
 
 #: literals.py:30
 msgid "POP3 email"
@@ -154,7 +153,7 @@ msgstr "почтовый ящик IMAP"
 
 #: models.py:48
 msgid "Label"
-msgstr ""
+msgstr "Надпись"
 
 #: models.py:49 views.py:514
 msgid "Enabled"
@@ -162,15 +161,15 @@ msgstr "Доступно"
 
 #: models.py:144 models.py:603
 msgid "Source"
-msgstr ""
+msgstr "Источник"
 
 #: models.py:152
 msgid "Interactive source"
-msgstr ""
+msgstr "Интерактивный источник"
 
 #: models.py:153
 msgid "Interactive sources"
-msgstr ""
+msgstr "Интерактивные источники"
 
 #: models.py:161 models.py:578
 msgid "Server side filesystem path."
@@ -178,7 +177,7 @@ msgstr "Путь на сервере"
 
 #: models.py:162 models.py:579
 msgid "Folder path"
-msgstr ""
+msgstr "Путь к папке"
 
 #: models.py:165
 msgid "Width value to be passed to the converter backend."
@@ -186,7 +185,7 @@ msgstr "Ширина после обработки."
 
 #: models.py:166
 msgid "Preview width"
-msgstr ""
+msgstr "Ширина предпросмотра"
 
 #: models.py:170
 msgid "Height value to be passed to the converter backend."
@@ -194,7 +193,7 @@ msgstr "Высота после обработки."
 
 #: models.py:171
 msgid "Preview height"
-msgstr ""
+msgstr "Высота предпросмотра"
 
 #: models.py:175 models.py:243
 msgid "Whether to expand or not compressed archives."
@@ -202,7 +201,7 @@ msgstr "Независимо от того распакованы или нет 
 
 #: models.py:176 models.py:244 models.py:280
 msgid "Uncompress"
-msgstr ""
+msgstr "Распаковать"
 
 #: models.py:181
 msgid "Delete the file after is has been successfully uploaded."
@@ -210,7 +209,7 @@ msgstr "Удалить файл после загрузки."
 
 #: models.py:183
 msgid "Delete after upload"
-msgstr ""
+msgstr "Удалить после загрузки"
 
 #: models.py:207
 #, python-format
@@ -220,15 +219,15 @@ msgstr "Не удалось получить список промежуточн
 #: models.py:228
 #, python-format
 msgid "Error deleting staging file; %s"
-msgstr ""
+msgstr "Ошибка удаления промежуточного файла; %s"
 
 #: models.py:233
 msgid "Staging folders"
-msgstr ""
+msgstr "Промежуточные папки"
 
 #: models.py:253
 msgid "Web forms"
-msgstr ""
+msgstr "Веб-формы"
 
 #: models.py:260 models.py:261
 msgid "Out of process"
@@ -236,16 +235,15 @@ msgstr ""
 
 #: models.py:267
 msgid "Interval in seconds between checks for new documents."
-msgstr ""
+msgstr "Временной интервал проверки на наличие новых документов."
 
 #: models.py:268
 msgid "Interval"
-msgstr ""
+msgstr "Интервал"
 
 #: models.py:273
 msgid "Assign a document type to documents uploaded from this source."
-msgstr ""
-"Назначить тип документов для документов, загружаемых из этого источника."
+msgstr "Назначить тип документов для документов, загружаемых из этого источника."
 
 #: models.py:275
 msgid "Document type"
@@ -265,7 +263,7 @@ msgstr ""
 
 #: models.py:334
 msgid "Host"
-msgstr ""
+msgstr "Хост"
 
 #: models.py:335
 msgid "SSL"
@@ -279,15 +277,15 @@ msgstr ""
 
 #: models.py:338
 msgid "Port"
-msgstr ""
+msgstr "Порт"
 
 #: models.py:340
 msgid "Username"
-msgstr ""
+msgstr "Имя пользователя"
 
 #: models.py:341
 msgid "Password"
-msgstr ""
+msgstr "Пароль"
 
 #: models.py:345
 msgid ""
@@ -307,6 +305,7 @@ msgid ""
 msgstr ""
 
 #: models.py:356
+#| msgid "Current metadata"
 msgid "Subject metadata type"
 msgstr ""
 
@@ -357,7 +356,7 @@ msgstr ""
 
 #: models.py:488
 msgid "Timeout"
-msgstr ""
+msgstr "Таймаут"
 
 #: models.py:525 models.py:526
 msgid "POP email"
@@ -365,7 +364,7 @@ msgstr "POP email"
 
 #: models.py:534
 msgid "IMAP Mailbox from which to check for messages."
-msgstr ""
+msgstr "IMAP ящик в котором проверять сообщения."
 
 #: models.py:535
 msgid "Mailbox"
@@ -377,11 +376,11 @@ msgstr ""
 
 #: models.py:615
 msgid "Log entry"
-msgstr ""
+msgstr "Запись журнала"
 
 #: models.py:616
 msgid "Log entries"
-msgstr ""
+msgstr "Записи журнала"
 
 #: permissions.py:7
 msgid "Sources setup"
@@ -409,27 +408,29 @@ msgstr ""
 
 #: tasks.py:31
 #, python-format
+#| msgid "Error creating source; %s"
 msgid "Error processing source: %s"
-msgstr ""
+msgstr "Ошибка обработки источника: %s"
 
 #: templates/sources/upload_multiform_subtemplate.html:35
 msgid "Clear"
-msgstr ""
+msgstr "Очистить"
 
 #: views.py:64
 #, python-format
 msgid "Log entries for source: %s"
-msgstr ""
+msgstr "Записи журнала для источника: %s"
 
 #: views.py:129 wizards.py:49
 msgid ""
-"No interactive document sources have been defined or none have been enabled, "
-"create one before proceeding."
-msgstr ""
+"No interactive document sources have been defined or none have been enabled,"
+" create one before proceeding."
+msgstr "Интерактивные источники документов не были определены или включены, создайте один для продолжения."
 
 #: views.py:155 views.py:173
+#| msgid "Document sources"
 msgid "Document properties"
-msgstr ""
+msgstr "Свойства документа"
 
 #: views.py:163
 msgid "Files in staging path"
@@ -450,13 +451,14 @@ msgid "Document \"%s\" is blocked from uploading new versions."
 msgstr ""
 
 #: views.py:381
-msgid "New document version queued for uploaded and will be available shortly."
+msgid ""
+"New document version queued for uploaded and will be available shortly."
 msgstr ""
 
 #: views.py:419
 #, python-format
 msgid "Upload a new version from source: %s"
-msgstr ""
+msgstr "Загрузка новой версии из источника %s"
 
 #: views.py:460
 #, python-format
@@ -465,6 +467,7 @@ msgstr "Создать новый источник типа: %s"
 
 #: views.py:480
 #, python-format
+#| msgid "Delete document sources"
 msgid "Delete the source: %s?"
 msgstr ""
 
@@ -475,7 +478,7 @@ msgstr ""
 
 #: views.py:510
 msgid "Type"
-msgstr ""
+msgstr "Тип"
 
 #: widgets.py:26
 msgid "Staging file page image"
@@ -483,15 +486,15 @@ msgstr ""
 
 #: wizards.py:38
 msgid "Step 1 of 3: Select document type"
-msgstr ""
+msgstr "Шаг 1 из 3: Выбор типа документа"
 
 #: wizards.py:39
 msgid "Step 2 of 3: Enter document metadata"
-msgstr ""
+msgstr "Шаг 2 из 3: Заполните метаданные документа"
 
 #: wizards.py:40
 msgid "Step 3 of 3: Select tags"
-msgstr ""
+msgstr "Шаг 3 из 3%: выберите метки"
 
 #: wizards.py:66
 msgid "Next step"
@@ -499,7 +502,7 @@ msgstr "Далее"
 
 #: wizards.py:68
 msgid "Document upload wizard"
-msgstr ""
+msgstr "Мастер загрузки документов"
 
 #~ msgid "Staging file delete successfully."
 #~ msgstr "Staging file delete successfully."
@@ -583,11 +586,9 @@ msgstr ""
 #~ msgstr "Error deleting source transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete source transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete source transformation \"%(transformation)s\""
 
 #~ msgid "Source transformation created successfully"
 #~ msgstr "Source transformation created successfully"

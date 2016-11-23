@@ -1,35 +1,35 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
+# Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:21-0400\n"
-"PO-Revision-Date: 2016-03-21 21:07+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2016-11-23 02:55-0400\n"
+"PO-Revision-Date: 2016-11-17 22:45+0000\n"
+"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:25
 msgid "Mailer"
-msgstr ""
+msgstr "Envio de emails"
 
 #: apps.py:37
 msgid "Date and time"
-msgstr "data e hora"
+msgstr "Data e hora"
 
 #: apps.py:41 models.py:16
 msgid "Message"
-msgstr ""
+msgstr "Mensagem"
 
 #: forms.py:29
 msgid "Email address"
@@ -45,15 +45,15 @@ msgstr "Corpo"
 
 #: links.py:14
 msgid "Email document"
-msgstr "Email documento"
+msgstr "Documento do e-mail"
 
 #: links.py:18
 msgid "Email link"
-msgstr "Email de ligação"
+msgstr "Ligação do e-mail"
 
 #: links.py:22 views.py:31
 msgid "Document mailing error log"
-msgstr ""
+msgstr "Registro de erro de envio"
 
 #: literals.py:7
 #, python-format
@@ -62,7 +62,7 @@ msgid ""
 "\n"
 " --------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Se anexa a este documento de e-mail: {{ document }}\n--------\nEste e-mail foi enviado por %(project_title)s (%(project_website)s)"
 
 #: literals.py:13
 #, python-format
@@ -71,15 +71,15 @@ msgid ""
 "\n"
 "--------\n"
 " This email has been sent from %(project_title)s (%(project_website)s)"
-msgstr ""
+msgstr "Para acessar este documento clique na ligação a seguir: {{ link }}\n--------\nEste email foi enviado por %(project_title)s (%(project_website)s)"
 
 #: models.py:13
 msgid "Date time"
-msgstr "hora, data"
+msgstr "Data e hora"
 
 #: models.py:22
 msgid "Log entry"
-msgstr ""
+msgstr "Entrada de registro"
 
 #: models.py:23
 msgid "Log entries"
@@ -87,7 +87,7 @@ msgstr "As entradas de log"
 
 #: permissions.py:7 settings.py:11
 msgid "Mailing"
-msgstr "Mailing"
+msgstr "Envio de e-mails"
 
 #: permissions.py:10
 msgid "Send document link via email"
@@ -99,7 +99,7 @@ msgstr "Enviar documento por  e-mail"
 
 #: permissions.py:16
 msgid "View document mailing error log"
-msgstr ""
+msgstr "Visualizar registro de erros de envio de e-mails"
 
 #: settings.py:14
 msgid "Link for document: {{ document }}"
@@ -107,12 +107,11 @@ msgstr "Link para o documento: {{ document }}"
 
 #: settings.py:15
 msgid "Template for the document link email form subject line."
-msgstr ""
-"Template para a linha de formulário electrónico Assunto link do documento."
+msgstr "Modelo para a linha de assunto do e-mail para envio do link do documento."
 
 #: settings.py:20
 msgid "Template for the document link email form body line."
-msgstr "Modelo para o documento, linha de corpo formulário de e-mail."
+msgstr "Modelo para a linha do corpo do formulário do e-mail para envio do link do documento"
 
 #: settings.py:24
 msgid "Document: {{ document }}"
@@ -120,19 +119,19 @@ msgstr "Documento: {{ document }}"
 
 #: settings.py:25
 msgid "Template for the document email form subject line."
-msgstr "Modelo para o documento, linha de assuntos e-mail."
+msgstr "Modelo para a linha de assunto do e-mail de envio de documento."
 
 #: settings.py:30
 msgid "Template for the document email form body line."
-msgstr "Modelo para o documento, linha de corpo formulário de e-mail."
+msgstr "Modelo para a linha de corpo do e-mail para envio de documento."
 
 #: views.py:56
 msgid "Must provide at least one document."
-msgstr "Deve fornecer, pelo menos, um documento."
+msgstr "Deve fornecer pelo menos um documento."
 
 #: views.py:105
 msgid "Successfully queued for delivery via email."
-msgstr "Sucesso da Fila para a entrega via e-mail."
+msgstr "Agregado com êxito à lista de espera para envio de e-mail."
 
 #: views.py:114
 msgid "Send"
@@ -146,7 +145,7 @@ msgstr "E-mail de documentos: %s"
 #: views.py:122
 #, python-format
 msgid "Email link for document: %s"
-msgstr "link de E-mail  para  documento: %s "
+msgstr "link de e-mail  para  documento: %s "
 
 #: views.py:125
 #, python-format
@@ -156,4 +155,4 @@ msgstr "E-mail de documentos: %s"
 #: views.py:127
 #, python-format
 msgid "Email links for documents: %s"
-msgstr "link de E-mail  para  documento: %s "
+msgstr "link de e-mail  para  documento: %s "

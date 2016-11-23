@@ -4,13 +4,14 @@
 # 
 # Translators:
 # Translators:
+# Aline Freitas <aline@alinefreitas.com.br>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:19-0400\n"
-"PO-Revision-Date: 2016-10-28 07:33+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"PO-Revision-Date: 2016-11-17 23:07+0000\n"
+"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,13 +26,13 @@ msgstr "Documento"
 
 #: apps.py:98
 msgid "Create a document type"
-msgstr ""
+msgstr "Criar tipo de documento"
 
 #: apps.py:100
 msgid ""
 "Every uploaded document must be assigned a document type, it is the basic "
 "way Mayan EDMS categorizes documents."
-msgstr ""
+msgstr "Cada documento carregado deve ser atribuído um tipo de documento, é a forma básica que o Mayan EDMS categoriza os documentos."
 
 #: apps.py:107 models.py:65 models.py:158 models.py:626 search.py:20
 msgid "Label"
@@ -39,7 +40,7 @@ msgstr "Label"
 
 #: apps.py:112
 msgid "The MIME type of any of the versions of a document"
-msgstr ""
+msgstr "O tipo MIME de qualquer uma das versões de um documento"
 
 #: apps.py:113 apps.py:197 search.py:18 views.py:829
 msgid "MIME type"
@@ -59,7 +60,7 @@ msgstr "habilitado"
 
 #: apps.py:188
 msgid "Date time trashed"
-msgstr ""
+msgstr "Data e hora do envio para a lixeira"
 
 #: apps.py:193
 msgid "Time and date"
@@ -76,29 +77,29 @@ msgstr "Comentário"
 #: apps.py:387
 #| msgid "New document filename"
 msgid "New documents per month"
-msgstr ""
+msgstr "Novos documentos por mês"
 
 #: apps.py:394
 #| msgid "Document version reverted successfully"
 msgid "New document versions per month"
-msgstr ""
+msgstr "Novas versões de documentos por mês"
 
 #: apps.py:401
 #| msgid "View document types"
 msgid "New document pages per month"
-msgstr ""
+msgstr "Novas páginas de documentos por mês"
 
 #: apps.py:408
 msgid "Total documents at each month"
-msgstr ""
+msgstr "Total de documentos por mês"
 
 #: apps.py:415
 msgid "Total document versions at each month"
-msgstr ""
+msgstr "Total de versões de documentos por mês"
 
 #: apps.py:422
 msgid "Total document pages at each month"
-msgstr ""
+msgstr "Total de páginas de documentos por mês"
 
 #: events.py:8
 msgid "Document created"
@@ -106,7 +107,7 @@ msgstr "Documento criado "
 
 #: events.py:12
 msgid "Document downloaded"
-msgstr ""
+msgstr "Documento baixado"
 
 #: events.py:15
 msgid "Document properties edited"
@@ -119,16 +120,16 @@ msgstr "Tipo de Documento mudado"
 #: events.py:21
 #| msgid "Version update"
 msgid "New version uploaded"
-msgstr ""
+msgstr "Nova versão carregada"
 
 #: events.py:25
 #| msgid "Document version reverted successfully"
 msgid "Document version reverted"
-msgstr ""
+msgstr "Versão de documento revertida"
 
 #: events.py:29
 msgid "Document viewed"
-msgstr ""
+msgstr "Documento visualizado"
 
 #: forms.py:42 links.py:205
 msgid "Page image"
@@ -200,7 +201,7 @@ msgid ""
 "Download the document in the original format or in a compressed manner. This"
 " option is selectable only when downloading one document, for multiple "
 "documents, the bundle will always be downloads as a compressed file."
-msgstr ""
+msgstr "Faça o download do documento no formato original ou de forma comprimida. Esta opção só pode ser selecionada quando o download de um documento, para vários documentos. O pacote sempre será baixado como um arquivo compactado."
 
 #: forms.py:199
 msgid "Compressed filename"
@@ -238,7 +239,7 @@ msgstr "Excluir"
 
 #: links.py:74 links.py:109
 msgid "Move to trash"
-msgstr ""
+msgstr "Mover para a lixeira"
 
 #: links.py:79
 msgid "Edit properties"
@@ -258,15 +259,15 @@ msgstr "Imprimir"
 
 #: links.py:96 links.py:124
 msgid "Recalculate page count"
-msgstr ""
+msgstr "Recalcular a contagem de páginas"
 
 #: links.py:100 links.py:128
 msgid "Restore"
-msgstr ""
+msgstr "Restaurar"
 
 #: links.py:132
 msgid "Download version"
-msgstr ""
+msgstr "Baixar a versão"
 
 #: links.py:137 views.py:82
 msgid "All documents"
@@ -278,7 +279,7 @@ msgstr "Documentos recentes"
 
 #: links.py:144
 msgid "Trash"
-msgstr ""
+msgstr "Lixeira"
 
 #: links.py:152
 msgid ""
@@ -289,11 +290,11 @@ msgstr "Desmarque as representações gráficas utilizadas para acelerar a exibi
 #: links.py:155
 #| msgid "Clear the document image cache"
 msgid "Clear document image cache"
-msgstr ""
+msgstr "Apagar o cache de imagens de documentos"
 
 #: links.py:159 permissions.py:47
 msgid "Empty trash"
-msgstr ""
+msgstr "Esvaziar a lixeira"
 
 #: links.py:167
 msgid "First page"
@@ -350,11 +351,11 @@ msgstr "Editar"
 
 #: links.py:247
 msgid "Add quick label to document type"
-msgstr ""
+msgstr "Adicionar etiqueta rápida ao tipo de documento"
 
 #: links.py:260 models.py:634
 msgid "Quick labels"
-msgstr ""
+msgstr "Etiquetas rápidas"
 
 #: links.py:264 links.py:269 views.py:404
 msgid "Document types"
@@ -366,37 +367,37 @@ msgstr "Padrão"
 
 #: literals.py:24
 msgid "All pages"
-msgstr ""
+msgstr "Todas as páginas"
 
 #: models.py:69
 msgid ""
 "Amount of time after which documents of this type will be moved to the "
 "trash."
-msgstr ""
+msgstr "Quantidade de tempo após a qual se enviará documentos deste tipo para a lixeira."
 
 #: models.py:71
 msgid "Trash time period"
-msgstr ""
+msgstr "Período de tempo de envio para a lixeira"
 
 #: models.py:75
 msgid "Trash time unit"
-msgstr ""
+msgstr "Unidade de tempo de envio para a lixeira"
 
 #: models.py:79
 msgid ""
 "Amount of time after which documents of this type in the trash will be "
 "deleted."
-msgstr ""
+msgstr "Quantidade de tempo após a qual documentos deste tipo serão eliminados."
 
 #: models.py:81
 #| msgid "Delete document types"
 msgid "Delete time period"
-msgstr ""
+msgstr "Período de tempo de eliminação"
 
 #: models.py:86
 #| msgid "Delete documents"
 msgid "Delete time unit"
-msgstr ""
+msgstr "Unidade de tempo de eliminação"
 
 #: models.py:106
 msgid "Documents types"
@@ -420,28 +421,28 @@ msgstr "Lingua"
 
 #: models.py:173
 msgid "In trash?"
-msgstr ""
+msgstr "Na lixeira?"
 
 #: models.py:178
 msgid "Date and time trashed"
-msgstr ""
+msgstr "Data e hora de envio à lixeira"
 
 #: models.py:182
 msgid ""
 "A document stub is a document with an entry on the database but no file "
 "uploaded. This could be an interrupted upload or a deferred upload via the "
 "API."
-msgstr ""
+msgstr "Um rascunho de documento é um documento com uma entrada no banco de dados, mas nenhum arquivo carregado. Isso pode ser um envio interrompido ou um envio diferido por meio da API."
 
 #: models.py:185
 msgid "Is stub?"
-msgstr ""
+msgstr "É um rascunho?"
 
 #: models.py:193
 #, python-format
 #| msgid "Document types: %d"
 msgid "Document stub, id: %d"
-msgstr ""
+msgstr "Documento rascunho, id: %d"
 
 #: models.py:354
 msgid "Timestamp"
@@ -457,7 +458,7 @@ msgstr "Versão do Documento"
 
 #: models.py:633
 msgid "Quick label"
-msgstr ""
+msgstr "Etiqueta rápida"
 
 #: models.py:651
 msgid "Page number"
@@ -479,12 +480,12 @@ msgstr "páginas do documento"
 #: models.py:783
 #| msgid "Version update"
 msgid "New version block"
-msgstr ""
+msgstr "Bloqueio de nova versão"
 
 #: models.py:784
 #| msgid "Version update"
 msgid "New version blocks"
-msgstr ""
+msgstr "Bloqueios de nova versão"
 
 #: models.py:794
 msgid "User"
@@ -509,7 +510,7 @@ msgstr "Excluir documentos"
 #: permissions.py:16
 #| msgid "Transform documents"
 msgid "Trash documents"
-msgstr ""
+msgstr "Mover documentos para a lixeira"
 
 #: permissions.py:19 views.py:903
 msgid "Download documents"
@@ -530,12 +531,12 @@ msgstr "Editar propriedades de documento"
 #: permissions.py:31
 #| msgid "Edit documents"
 msgid "Print documents"
-msgstr ""
+msgstr "Imprimir documentos"
 
 #: permissions.py:34
 #| msgid "Delete documents"
 msgid "Restore trashed document"
-msgstr ""
+msgstr "Restaurar documento da lixeira"
 
 #: permissions.py:37
 msgid "Execute document modifying tools"
@@ -606,30 +607,30 @@ msgstr "Lista de idiomas de documentos suportados."
 #: views.py:68
 #| msgid "Clear the document image cache"
 msgid "Clear the document image cache?"
-msgstr ""
+msgstr "Apagar do cache a imagem do documento?"
 
 #: views.py:75
 msgid "Document cache clearing queued successfully."
-msgstr ""
+msgstr "Cache do documento apagado com sucesso."
 
 #: views.py:100
 #| msgid "Documents in storage: %d"
 msgid "Documents in trash"
-msgstr ""
+msgstr "Documentos na lixeira"
 
 #: views.py:122
 msgid "Delete the selected document?"
-msgstr ""
+msgstr "Remover o documento selecionado?"
 
 #: views.py:145
 #, python-format
 #| msgid "Document \"%(document)s\" deleted by %(fullname)s."
 msgid "Document: %(document)s deleted."
-msgstr ""
+msgstr "Documento: %(document)s removido."
 
 #: views.py:153
 msgid "Delete the selected documents?"
-msgstr ""
+msgstr "Remover os documentos selecionados?"
 
 #: views.py:175
 #, python-format
@@ -638,27 +639,27 @@ msgstr "Editar propriedades de documento: %s"
 
 #: views.py:191
 msgid "Restore the selected document?"
-msgstr ""
+msgstr "Restaurar os documentos selecionados?"
 
 #: views.py:216
 #, python-format
 #| msgid "Document: %(document)s delete error: %(error)s"
 msgid "Document: %(document)s restored."
-msgstr ""
+msgstr "Documentq: %(document)s restaurado."
 
 #: views.py:224
 msgid "Restore the selected documents?"
-msgstr ""
+msgstr "Restaurar os documentos selecionados?"
 
 #: views.py:256
 #, python-format
 msgid "Pages for document: %s"
-msgstr ""
+msgstr "Páginas por documento: %s"
 
 #: views.py:284
 #, python-format
 msgid "Image of: %s"
-msgstr ""
+msgstr "Imagem de: %s"
 
 #: views.py:330
 #, python-format
@@ -668,23 +669,23 @@ msgstr "Pré-visualização do documento:%s "
 #: views.py:338
 #, python-format
 msgid "Move \"%s\" to the trash?"
-msgstr ""
+msgstr "Mover \"%s\" para a lixeira?"
 
 #: views.py:365
 #, python-format
 #| msgid "Document deleted successfully."
 msgid "Document: %(document)s moved to trash successfully."
-msgstr ""
+msgstr "Documento: %(document)s movido para a lixeira com sucesso."
 
 #: views.py:378
 msgid "Move the selected documents to the trash?"
-msgstr ""
+msgstr "Mover os documentos selecionados para a lixeira?"
 
 #: views.py:393
 #, python-format
 #| msgid "documents of type \"%s\""
 msgid "Documents of type: %s"
-msgstr ""
+msgstr "Documentos do tipo: %s"
 
 #: views.py:430
 msgid "All documents of this type will be deleted too."
@@ -694,7 +695,7 @@ msgstr "Todos os documentos deste tipo serão excluídos também."
 #, python-format
 #| msgid "Delete document types"
 msgid "Delete the document type: %s?"
-msgstr ""
+msgstr "Remove o documento do tipo: %s?"
 
 #: views.py:448
 #, python-format
@@ -704,23 +705,23 @@ msgstr "Editar o tipo de documento: %s"
 #: views.py:478
 #, python-format
 msgid "Create quick label for document type: %s"
-msgstr ""
+msgstr "Criar uma etiqueta rápida para o documento tipo: %s"
 
 #: views.py:499
 #, python-format
 msgid "Edit quick label \"%(filename)s\" from document type \"%(document_type)s\""
-msgstr ""
+msgstr "Editar etiqueta rápida \"%(filename)s\" para documento do tipo \"%(document_type)s\""
 
 #: views.py:524
 #, python-format
 msgid ""
 "Delete the quick label: %(label)s, from document type \"%(document_type)s\"?"
-msgstr ""
+msgstr "Apagar a etiqueta rápida: %(label)s, do documento tipo \"%(document_type)s\"?"
 
 #: views.py:552
 #, python-format
 msgid "Quick labels for document type: %s"
-msgstr ""
+msgstr "Etiquetas rápidas para documento do tipo: %s"
 
 #: views.py:583
 #, python-format
@@ -734,7 +735,7 @@ msgstr "Tudo versão posterior após este será excluído também."
 #: views.py:600
 #| msgid "Revert documents to a previous version"
 msgid "Revert to this version?"
-msgstr ""
+msgstr "Reverter para esta versão?"
 
 #: views.py:610
 msgid "Document version reverted successfully"
@@ -752,12 +753,12 @@ msgstr "Pré-visualização do documento:%s"
 
 #: views.py:639
 msgid "Empty trash?"
-msgstr ""
+msgstr "Esvaziar a lixeira?"
 
 #: views.py:650
 #| msgid "Document deleted successfully."
 msgid "Trash emptied successfully"
-msgstr ""
+msgstr "Lixeira esvaziada com sucesso"
 
 #: views.py:685 views.py:996
 msgid "Must provide at least one document."
@@ -766,7 +767,7 @@ msgstr "Deve fornecer, pelo menos, um documento."
 #: views.py:704
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
-msgstr ""
+msgstr "Tipo de documento para \"%s\" alterado com sucesso."
 
 #: views.py:716 views.py:1235
 msgid "Submit"
@@ -775,13 +776,13 @@ msgstr "Submeter"
 #: views.py:720
 msgid "Change the type of the selected document."
 msgid_plural "Change the type of the selected documents."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Alterar o tipo do documento selecionado."
+msgstr[1] "Alterar o tipo dos documentos selecionados."
 
 #: views.py:799
 #| msgid "Must provide at least one document."
 msgid "Must provide at least one document or version."
-msgstr ""
+msgstr "Deve fornecer ao menos um documento ou versão."
 
 #: views.py:819
 msgid "Documents to be downloaded"
@@ -793,21 +794,21 @@ msgstr "data e hora"
 
 #: views.py:931
 msgid "At least one document must be selected."
-msgstr ""
+msgstr "Ao menos um documento precisa ser selecionado."
 
 #: views.py:954
 msgid "Document queued for page count recalculation."
-msgstr ""
+msgstr "Documento em fila para recalcular quantidade de páginas."
 
 #: views.py:955
 msgid "Documents queued for page count recalculation."
-msgstr ""
+msgstr "Documentos em fila para recalcular contagem de páginas."
 
 #: views.py:964
 msgid "Recalculate the page count of the selected document?"
 msgid_plural "Recalculate the page count of the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Recalcular a contagem de páginas do documento selecionado?"
+msgstr[1] "Recalcular a contagem de páginas dos documentos selecionados?"
 
 #: views.py:1023
 #, python-format
@@ -826,8 +827,8 @@ msgstr "Todas as transformações de página para o documento: %s, foram excluí
 #: views.py:1044
 msgid "Clear all the page transformations for the selected document?"
 msgid_plural "Clear all the page transformations for the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Limpar todas as transformações de páginas para o documento selecionado?"
+msgstr[1] "Limpar todas as transformações de páginas para os documentos selecionados?"
 
 #: views.py:1078
 msgid "There are no more pages in this document"
@@ -840,12 +841,12 @@ msgstr "Você já está na primeira página deste documento"
 #: views.py:1225 views.py:1234
 #, python-format
 msgid "Print: %s"
-msgstr ""
+msgstr "Imprimir: %s"
 
 #: widgets.py:71
 #, python-format
 msgid "Page %(page_number)d of %(total_pages)d"
-msgstr ""
+msgstr "Página  %(page_number)d de %(total_pages)d"
 
 #: widgets.py:100
 msgid "Document page image"

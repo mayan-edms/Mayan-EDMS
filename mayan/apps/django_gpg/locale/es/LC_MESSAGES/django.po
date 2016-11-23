@@ -1,7 +1,7 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # jmcainzos <jmcainzos@vodafone.es>, 2014
@@ -11,15 +11,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:18-0400\n"
+"POT-Creation-Date: 2016-11-23 02:53-0400\n"
 "PO-Revision-Date: 2016-05-09 01:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
-"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/"
-"language/es/)\n"
-"Language: es\n"
+"Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: es\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30
@@ -72,9 +71,7 @@ msgstr "Término"
 
 #: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
-msgstr ""
-"Nombre, dirección de correo electrónico, identificador de clave o huella "
-"digital de clave a buscar."
+msgstr "Nombre, dirección de correo electrónico, identificador de clave o huella digital de clave a buscar."
 
 #: links.py:13
 msgid "Delete"
@@ -101,6 +98,7 @@ msgid "Key management"
 msgstr "Gestión de claves"
 
 #: links.py:37
+#| msgid "Import key"
 msgid "Upload key"
 msgstr "Subir llave"
 
@@ -146,9 +144,7 @@ msgstr "Error de firma."
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
-msgstr ""
-"El documento ha sido firmado pero no hay clave pública disponible para "
-"verificación."
+msgstr "El documento ha sido firmado pero no hay clave pública disponible para verificación."
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
@@ -167,6 +163,7 @@ msgid "Key data"
 msgstr "Datos de llave"
 
 #: models.py:56
+#| msgid "Key ID"
 msgid "Key"
 msgstr "Llave"
 
@@ -199,6 +196,7 @@ msgid "Use keys to sign content"
 msgstr "Usar llaves para firmar contenido"
 
 #: permissions.py:22
+#| msgid "public keys"
 msgid "Upload keys"
 msgstr "Subir llaves"
 
@@ -207,25 +205,26 @@ msgid "View keys"
 msgstr "Ver claves"
 
 #: settings.py:10
+#| msgid "Signature error."
 msgid "Signatures"
 msgstr "Firma"
 
 #: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
-msgstr ""
-"Directorio de inicio utilizado para almacenar las claves, así como los "
-"archivos de configuración."
+msgstr "Directorio de inicio utilizado para almacenar las claves, así como los archivos de configuración."
 
 #: settings.py:21
 msgid "Path to the GPG binary."
 msgstr "Ruta al binario GPG."
 
 #: settings.py:25
+#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr "Servidor usado para buscar llaves."
 
 #: views.py:38
 #, python-format
+#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr "Borrar llave: %s"
 
@@ -236,6 +235,7 @@ msgstr "Detalles para llave: %s"
 
 #: views.py:68
 #, python-format
+#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr "¿Importar llave: %s?"
 
@@ -245,6 +245,7 @@ msgstr "Importar clave"
 
 #: views.py:78
 #, python-format
+#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr "No se pudo importar la llave: %(key_id)s; %(error)s "
 
@@ -288,12 +289,12 @@ msgstr "Subir una nueva llave"
 #~ msgstr "Delete key"
 
 #~ msgid ""
-#~ "Delete key %s? If you delete a public key that is part of a public/"
-#~ "private pair the private key will be deleted as well."
+#~ "Delete key %s? If you delete a public key that is part of a public/private "
+#~ "pair the private key will be deleted as well."
 #~ msgstr ""
-#~ "Are you sure you wish to delete key: %s?  If you try to delete a public "
-#~ "key that is part of a public/private pair the private key will be deleted "
-#~ "as well."
+#~ "Are you sure you wish to delete key: %s?  If you try to delete a public key "
+#~ "that is part of a public/private pair the private key will be deleted as "
+#~ "well."
 
 #~ msgid "results"
 #~ msgstr "results"

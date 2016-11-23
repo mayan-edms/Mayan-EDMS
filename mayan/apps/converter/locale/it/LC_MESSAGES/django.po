@@ -1,28 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011,2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:18-0400\n"
-"PO-Revision-Date: 2016-03-21 21:06+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"PO-Revision-Date: 2016-09-24 10:31+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:18 permissions.py:7 settings.py:7
 msgid "Converter"
-msgstr ""
+msgstr "Convertitore"
 
 #: apps.py:38 models.py:34
 msgid "Order"
@@ -39,16 +39,17 @@ msgstr "Argomenti"
 #: backends/python.py:86 backends/python.py:100
 #, python-format
 msgid "Exception determining PDF page count; %s"
-msgstr ""
+msgstr "Eccezione che determina il conteggio pagine PDF: %s"
 
 #: classes.py:97
+#| msgid "suported file formats"
 msgid "Not an office file format."
-msgstr ""
+msgstr "Non è un formato di file office"
 
 #: classes.py:120
 #, python-format
 msgid "LibreOffice not installed or not found at path: %s"
-msgstr ""
+msgstr "LibreOffice non installato o non trovato nel percorso: %s"
 
 #: classes.py:254
 msgid "Resize"
@@ -58,13 +59,13 @@ msgstr "Ridimensiona"
 msgid "Rotate"
 msgstr "Ruotare"
 
-#: classes.py:307
+#: classes.py:313
 msgid "Zoom"
 msgstr "Zoom"
 
-#: classes.py:324
+#: classes.py:333
 msgid "Crop"
-msgstr ""
+msgstr "Taglia"
 
 #: links.py:31
 msgid "Create new transformation"
@@ -80,13 +81,13 @@ msgstr "Modifica"
 
 #: links.py:43 models.py:65
 msgid "Transformations"
-msgstr ""
+msgstr "Trasformazioni"
 
 #: models.py:32
 msgid ""
 "Order in which the transformations will be executed. If left unchanged, an "
 "automatic order value will be assigned."
-msgstr ""
+msgstr "Ordine delle trasformazioni da eseguire. Se resta invariato verrà assegnato l'ordine automatico."
 
 #: models.py:38
 msgid "Name"
@@ -96,27 +97,28 @@ msgstr "Nome "
 msgid ""
 "Enter the arguments for the transformation as a YAML dictionary. ie: "
 "{\"degrees\": 180}"
-msgstr ""
+msgstr "Scrivi gli argomenti per la trasformazione come dizionario YAML. es: {\"degrees\": 180}"
 
 #: permissions.py:10
 msgid "Create new transformations"
-msgstr ""
+msgstr "Crea una nuove trasformazioni"
 
 #: permissions.py:13
 msgid "Delete transformations"
-msgstr ""
+msgstr "Cancella le trasformazioni"
 
 #: permissions.py:16
 msgid "Edit transformations"
-msgstr ""
+msgstr "Modifica le trasformazioni"
 
 #: permissions.py:19
+#| msgid "Raw application information"
 msgid "View existing transformations"
-msgstr ""
+msgstr "Visualizza le trasformazioni esistenti"
 
 #: settings.py:10
 msgid "Graphics conversion backend to use."
-msgstr ""
+msgstr "Conversioni grafiche di backend da utilizzare."
 
 #: settings.py:16
 msgid "Path to the libreoffice program."
@@ -128,22 +130,22 @@ msgstr "Percorso per il programma Popple"
 
 #: validators.py:22
 msgid "Enter a valid YAML value."
-msgstr ""
+msgstr "Inserisci un valore YAML valido."
 
 #: views.py:71
 #, python-format
 msgid "Delete transformation \"%(transformation)s\" for: %(content_object)s?"
-msgstr ""
+msgstr "Cancellare le trasformazioni \"%(transformation)s\" per: %(content_object)s?"
 
 #: views.py:139
 #, python-format
 msgid "Create new transformation for: %s"
-msgstr ""
+msgstr "Crea una nuove trasformazioni per: %s"
 
 #: views.py:192
 #, python-format
 msgid "Edit transformation \"%(transformation)s\" for: %(content_object)s"
-msgstr ""
+msgstr "Modifica le trasformazioni \"%(transformation)s\" per: %(content_object)s"
 
 #: views.py:238
 #, python-format
@@ -187,13 +189,14 @@ msgstr "Trasformazione per: %s"
 #~ msgstr "File path to graphicsmagick's program."
 
 #~ msgid ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick.ImageMagick, converter.backends.graphicsmagick.GraphicsMagick "
-#~ "and converter.backends.python.Python"
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick.ImageMagick, "
+#~ "converter.backends.graphicsmagick.GraphicsMagick and "
+#~ "converter.backends.python.Python"
 #~ msgstr ""
-#~ "Graphics conversion backend to use.  Options are: converter.backends."
-#~ "imagemagick, converter.backends.graphicsmagick and converter.backends."
-#~ "python."
+#~ "Graphics conversion backend to use.  Options are: "
+#~ "converter.backends.imagemagick, converter.backends.graphicsmagick and "
+#~ "converter.backends.python."
 
 #~ msgid "Help"
 #~ msgstr "Help"
@@ -506,11 +509,9 @@ msgstr "Trasformazione per: %s"
 #~ msgstr "Magick Image File Format"
 
 #~ msgid ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
-#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib "
-#~ "1.2.3.3,1.2.3.4)"
+#~ "Multiple-image Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 
 #~ msgid "Raw Bi-level bitmap in least-significant-byte first order"
 #~ msgstr "Raw Bi-level bitmap in least-significant-byte first order"
@@ -626,8 +627,7 @@ msgstr "Trasformazione per: %s"
 #~ msgid "Joint Photographic Experts Group JFIF format (62)"
 #~ msgstr "Joint Photographic Experts Group JFIF format (62)"
 
-#~ msgid ""
-#~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
+#~ msgid "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 #~ msgstr ""
 #~ "Portable Network Graphics (libpng 1.2.42,1.2.44, zlib 1.2.3.3,1.2.3.4)"
 

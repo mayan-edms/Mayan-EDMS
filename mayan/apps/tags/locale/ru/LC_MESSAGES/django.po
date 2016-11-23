@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:23-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2016-11-23 02:57-0400\n"
+"PO-Revision-Date: 2016-11-02 04:15+0000\n"
+"Last-Translator: lilo.panic\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:33 apps.py:73 apps.py:90 forms.py:34 forms.py:52 links.py:40
 #: links.py:43 models.py:35 permissions.py:7 views.py:139
@@ -28,7 +26,7 @@ msgstr "Метки"
 
 #: apps.py:68 apps.py:80
 msgid "Preview"
-msgstr ""
+msgstr "Предварительный просмотр"
 
 #: apps.py:84 models.py:24
 msgid "Documents"
@@ -36,27 +34,27 @@ msgstr "Документы"
 
 #: forms.py:53
 msgid "Tags to attach to the document."
-msgstr ""
+msgstr "Метки, прикрепляемые к документу."
 
 #: links.py:14
 msgid "Remove tag"
-msgstr ""
+msgstr "Снять метку"
 
 #: links.py:17 links.py:24
 msgid "Attach tag"
-msgstr ""
+msgstr "Прикрепить метку"
 
 #: links.py:20
 msgid "Remove tags"
-msgstr ""
+msgstr "Снять метки"
 
 #: links.py:28
 msgid "Create new tag"
-msgstr ""
+msgstr "Создать новую метку"
 
 #: links.py:32 links.py:45
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: links.py:36
 msgid "Edit"
@@ -64,7 +62,7 @@ msgstr "Редактировать"
 
 #: models.py:20
 msgid "Label"
-msgstr ""
+msgstr "Надпись"
 
 #: models.py:22
 msgid "Color"
@@ -72,15 +70,15 @@ msgstr "Цвет"
 
 #: models.py:34
 msgid "Tag"
-msgstr ""
+msgstr "Метка"
 
 #: models.py:53
 msgid "Document tag"
-msgstr ""
+msgstr "Метка документа"
 
 #: models.py:54
 msgid "Document tags"
-msgstr ""
+msgstr "Метки документов"
 
 #: permissions.py:10
 msgid "Create new tags"
@@ -108,11 +106,11 @@ msgstr "Удаление тегов из документов"
 
 #: serializers.py:46
 msgid "Primary key of the tag to be added."
-msgstr ""
+msgstr "Первичный ключ добавляемой метки."
 
 #: views.py:34
 msgid "Create tag"
-msgstr ""
+msgstr "Создать метку"
 
 #: views.py:59
 msgid "Must provide at least one document."
@@ -131,10 +129,10 @@ msgstr "Метка \"%(tag)s\" присвоена \"%(document)s\"."
 #: views.py:110
 msgid "Attach tag to document"
 msgid_plural "Attach tag to documents"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Прикрепить метку к документам"
+msgstr[1] "Прикрепить метки к документам"
+msgstr[2] "Прикрепить метки к документам"
+msgstr[3] "Прикрепить метки к документам"
 
 #: views.py:160
 msgid "Must provide at least one tag."
@@ -157,25 +155,25 @@ msgstr "Будет удален из всех документов."
 #: views.py:199
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
+msgstr[0] "Удалить выбранную метку?"
+msgstr[1] "Удалить выбранные метки?"
+msgstr[2] "Удалить выбранные метки?"
+msgstr[3] "Удалить выбранные метки?"
 
 #: views.py:231
 #, python-format
 msgid "Edit tag: %s"
-msgstr ""
+msgstr "Редактировать метку %s"
 
 #: views.py:244
 #, python-format
 msgid "Documents with the tag: %s"
-msgstr ""
+msgstr "Документы с меткой: %s"
 
 #: views.py:271
 #, python-format
 msgid "Tags for document: %s"
-msgstr ""
+msgstr "Метки документа: %s"
 
 #: views.py:286
 msgid "Must provide at least one tagged document."
@@ -193,23 +191,29 @@ msgstr "Снять метку с документов %s."
 
 #: views.py:344
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
-msgstr ""
+msgstr "Снять метку \"%(tag)s\" с документа %(document)s?"
 
 #: views.py:351
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
-msgstr ""
+msgstr "Снять метку \"%(tag)s\" с документов %(documents)s?"
 
 #: views.py:360
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
-msgstr ""
+msgstr "Снять метки \"%(tags)s\" с документа %(document)s?"
 
 #: views.py:367
 #, python-format
 msgid "Remove the tags %(tags)s from the documents: %(documents)s?"
-msgstr ""
+msgstr "Снять метки \"%(tags)s\" с документов %(documents)s?"
 
 #: views.py:379
 #, python-format

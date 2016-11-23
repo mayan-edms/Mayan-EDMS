@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:17-0400\n"
-"PO-Revision-Date: 2016-10-28 07:32+0000\n"
+"POT-Creation-Date: 2016-11-23 02:52-0400\n"
+"PO-Revision-Date: 2016-11-17 08:58+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
@@ -20,11 +20,11 @@ msgstr ""
 
 #: apps.py:14 links.py:31
 msgid "ACLs"
-msgstr ""
+msgstr "Pravice"
 
 #: apps.py:22 links.py:40 models.py:36
 msgid "Permissions"
-msgstr ""
+msgstr "Pravice"
 
 #: apps.py:26 models.py:38
 #| msgid "Roles"
@@ -42,15 +42,15 @@ msgstr ""
 
 #: managers.py:85
 msgid "Insufficient access."
-msgstr ""
+msgstr "Nezadosten dostop"
 
 #: models.py:44
 msgid "Access entry"
-msgstr ""
+msgstr "Vstopna točka"
 
 #: models.py:45
 msgid "Access entries"
-msgstr ""
+msgstr "Vstopne točke"
 
 #: models.py:48
 #, python-format
@@ -64,15 +64,15 @@ msgstr "Brez"
 
 #: permissions.py:7
 msgid "Access control lists"
-msgstr ""
+msgstr "Seznami za nadzor dostopa"
 
 #: permissions.py:10
 msgid "Edit ACLs"
-msgstr ""
+msgstr "Uredi dostopne pravice"
 
 #: permissions.py:13
 msgid "View ACLs"
-msgstr ""
+msgstr "Preglej dostopne pravice"
 
 #: views.py:78
 #, python-format
@@ -88,7 +88,7 @@ msgstr ""
 #: views.py:151
 #, python-format
 msgid "Access control lists for: %s"
-msgstr ""
+msgstr "Dostopne pravice za %s"
 
 #: views.py:162
 msgid "Available permissions"
