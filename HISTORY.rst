@@ -12,6 +12,7 @@ the user links
 - New Dashboard view
 - Moved licenses to their own module in every app
 - Update project to work with Django 1.9.11
+- Tags are alphabetically ordered by label (GitLab #342).
 
 2.1.5 (2016-11-08)
 ==================

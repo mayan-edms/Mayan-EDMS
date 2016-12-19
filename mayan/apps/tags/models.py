@@ -29,6 +29,7 @@ class Tag(models.Model):
         return reverse('tags:tag_tagged_item_list', args=(str(self.pk),))
 
     class Meta:
+        ordering = ('label',)
         verbose_name = _('Tag')
         verbose_name_plural = _('Tags')
 

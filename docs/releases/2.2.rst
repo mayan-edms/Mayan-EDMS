@@ -22,6 +22,7 @@ the user links
 - Dashboard
 - Moved licenses to their own module in every app
 - Update project to work with Django 1.9.11
+- Tags are alphabetically ordered by label
 
 Removals
 --------
@@ -82,5 +83,6 @@ Bugs fixed or issues closed
 
 * `GitLab issue #311 <https://gitlab.com/mayan-edms/mayan-edms/issues/311>`_ acl page return ContentType:Document
 * `GitLab issue #319 <https://gitlab.com/mayan-edms/mayan-edms/issues/319>`_ TransformationResize issue with very "long" image
+* `GitLab issue #342 <https://gitlab.com/mayan-edms/mayan-edms/issues/342>`_ Tags should be of unordered / unsorted data type
 
 .. _PyPI: https://pypi.python.org/pypi/mayan-edms/
