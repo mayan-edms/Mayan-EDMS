@@ -1,6 +1,6 @@
 2.2 (2016-XX-XX)
 ================
-- Remove the installation app
+- Remove the installation app (GitLab #301).
 - Add support for document page search
 - Remove recent searches feature
 - Remove dependency on the django-filetransfer library
