@@ -1,27 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Berny <berny@bernhard-marx.de>, 2015
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
 # tetjarediske <tetja.rediske@googlemail.com>, 2012
-# Tobias Paepke <tobias.paepke@paepke.net>, 2014
+# Tobias Paepke <tobias.paepke@paepke.net>, 2014,2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:19-0400\n"
-"PO-Revision-Date: 2016-04-27 18:23+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"PO-Revision-Date: 2016-05-20 22:09+0000\n"
+"Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:51 permissions.py:8 settings.py:7
@@ -33,12 +32,14 @@ msgid "Date"
 msgstr "Datum"
 
 #: apps.py:94 models.py:37
+#| msgid "Key ID: %s"
 msgid "Key ID"
 msgstr "Schlüssel-ID"
 
 #: apps.py:98 forms.py:71 models.py:41
+#| msgid "Signature ID: %s"
 msgid "Signature ID"
-msgstr ""
+msgstr "Unterschrifts-ID"
 
 #: apps.py:99 forms.py:83
 msgid "None"
@@ -50,59 +51,64 @@ msgstr "Typ"
 
 #: forms.py:23
 msgid "Key"
-msgstr ""
+msgstr "Schlüssel"
 
 #: forms.py:27
 msgid "Passphrase"
-msgstr ""
+msgstr "Passphrase"
 
 #: forms.py:53
+#| msgid "Signature file"
 msgid "Signature is embedded?"
-msgstr ""
+msgstr "Eingebettete Unterschrift?"
 
 #: forms.py:55
+#| msgid "Signature file"
 msgid "Signature date"
-msgstr ""
+msgstr "Datum der Unterschrift"
 
 #: forms.py:58
+#| msgid "Signature ID: %s"
 msgid "Signature key ID"
-msgstr ""
+msgstr "Unterschrifts-Schlüssel-ID"
 
 #: forms.py:60
+#| msgid "Signature type: %s"
 msgid "Signature key present?"
-msgstr ""
+msgstr "Unterschrifts-Schlüssel vorhanden?"
 
 #: forms.py:73
 msgid "Key fingerprint"
-msgstr ""
+msgstr "Schlüssel-Fingerabdruck"
 
 #: forms.py:77
 msgid "Key creation date"
-msgstr ""
+msgstr "Erstellungsdatum des Schlüssels"
 
 #: forms.py:82
 msgid "Key expiration date"
-msgstr ""
+msgstr "Ablaufdatum des Schlüssels"
 
 #: forms.py:87
 msgid "Key length"
-msgstr ""
+msgstr "Schlüssellänge"
 
 #: forms.py:91
 msgid "Key algorithm"
-msgstr ""
+msgstr "Schlüssel-Verfahren"
 
 #: forms.py:95
 msgid "Key user ID"
-msgstr ""
+msgstr "Schlüssel-Benutzer-ID"
 
 #: forms.py:99
 msgid "Key type"
-msgstr ""
+msgstr "Schlüssel-Typ"
 
 #: links.py:32
+#| msgid "Verify document signatures"
 msgid "Verify all documents"
-msgstr ""
+msgstr "Alle Dokumente überprüfen"
 
 #: links.py:39
 msgid "Signatures"
@@ -118,7 +124,7 @@ msgstr "Details"
 
 #: links.py:57
 msgid "Signature list"
-msgstr ""
+msgstr "Unterschriften-Liste"
 
 #: links.py:63
 msgid "Download"
@@ -130,11 +136,11 @@ msgstr "Unterschrift hochladen"
 
 #: links.py:75
 msgid "Sign detached"
-msgstr ""
+msgstr "Unterschrift seperat"
 
 #: links.py:81
 msgid "Sign embedded"
-msgstr ""
+msgstr "Unterschrift eingebettet"
 
 #: models.py:31
 msgid "Document version"
@@ -142,11 +148,11 @@ msgstr "Dokumentenversion"
 
 #: models.py:35
 msgid "Date signed"
-msgstr ""
+msgstr "Datum der Signierung"
 
 #: models.py:45
 msgid "Public key fingerprint"
-msgstr ""
+msgstr "Fingerabdruck des öffentlichen Schlüssels"
 
 #: models.py:51
 msgid "Document version signature"
@@ -166,11 +172,11 @@ msgstr "Eingebettet"
 
 #: models.py:88
 msgid "Document version embedded signature"
-msgstr ""
+msgstr "Dokumentenversion der eingebetteten Unterschrift"
 
 #: models.py:89
 msgid "Document version embedded signatures"
-msgstr ""
+msgstr "Dokumentenversion der eingebetteten Unterschriften"
 
 #: models.py:122
 msgid "Signature file"
@@ -178,98 +184,102 @@ msgstr "Unterschriftsdatei"
 
 #: models.py:126
 msgid "Document version detached signature"
-msgstr ""
+msgstr "Dokumentenversion der seperaten Unterschrift"
 
 #: models.py:127
 msgid "Document version detached signatures"
-msgstr ""
+msgstr "Dokumentenversion der seperaten Unterschriften"
 
 #: models.py:130
 msgid "signature"
-msgstr ""
+msgstr "Unterschrift"
 
 #: permissions.py:13
 msgid "Sign documents with detached signatures"
-msgstr ""
+msgstr "Dokument signieren mit seperaten Unterschriften"
 
 #: permissions.py:17
 msgid "Sign documents with embedded signatures"
-msgstr ""
+msgstr "Dokument signieren mit eingebetteten Unterschriften"
 
 #: permissions.py:21
 msgid "Delete detached signatures"
 msgstr "Separate Unterschriften löschen"
 
 #: permissions.py:25
+#| msgid "Download detached signatures"
 msgid "Download detached document signatures"
-msgstr ""
+msgstr "Separate Unterschriften der Dokumente herunterladen"
 
 #: permissions.py:29
+#| msgid "Upload detached signatures"
 msgid "Upload detached document signatures"
-msgstr ""
+msgstr "Separate Unterschriften der Dokumente hochladen"
 
 #: permissions.py:33
 msgid "Verify document signatures"
 msgstr "Dokumentenunterschriften überprüfen"
 
 #: permissions.py:37
+#| msgid "Verify document signatures"
 msgid "View details of document signatures"
-msgstr ""
+msgstr "Details der Unterschriften des Dokuments"
 
 #: views.py:67 views.py:172
 msgid "Passphrase is needed to unlock this key."
-msgstr ""
+msgstr "Passphrase wird benötigt um den Schlüssel zu entsperren"
 
 #: views.py:77 views.py:182
 msgid "Passphrase is incorrect."
-msgstr ""
+msgstr "Passphrase ist ungültig"
 
 #: views.py:98 views.py:202
 msgid "Document version signed successfully."
-msgstr ""
+msgstr "Dokumentenversion wurde erfolgreich signiert."
 
 #: views.py:129
 #, python-format
 msgid "Sign document version \"%s\" with a detached signature"
-msgstr ""
+msgstr "Dokumentenversion \"%s\" mit seperater Unterschrift signieren"
 
 #: views.py:240
 #, python-format
 msgid "Sign document version \"%s\" with a embedded signature"
-msgstr ""
+msgstr "Dokumentenversion \"%s\" mit eingebetteter Unterschrift signieren"
 
 #: views.py:267
 #, python-format
 msgid "Delete detached signature: %s"
-msgstr ""
+msgstr "Separate Unterschrift löschen: %s"
 
 #: views.py:292
 #, python-format
+#| msgid "Document signatures"
 msgid "Details for signature: %s"
-msgstr ""
+msgstr "Details für Signatur: %s"
 
 #: views.py:339
 #, python-format
 msgid "Signatures for document version: %s"
-msgstr ""
+msgstr "Unterschriften für Dokumentenversion: %s"
 
 #: views.py:375
 #, python-format
 msgid "Upload detached signature for document version: %s"
-msgstr ""
+msgstr "Seperate Unterschrift für Dokumentenversion hochladen: %s"
 
 #: views.py:392
 msgid "On large databases this operation may take some time to execute."
-msgstr ""
-"Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
+msgstr "Bei großen Datenbanken kann dieser Vorgang einige Zeit in Anspruch nehmen."
 
 #: views.py:393
+#| msgid "Verify document signatures"
 msgid "Verify all document for signatures?"
-msgstr ""
+msgstr "Alle Unterschriften der Dokumente überprüfen?"
 
 #: views.py:403
 msgid "Signature verification queued successfully."
-msgstr ""
+msgstr "Überprüfung der Unterschriften erfolgreich eingereiht."
 
 #~ msgid "Signature status: %s"
 #~ msgstr "Signature type: %s"

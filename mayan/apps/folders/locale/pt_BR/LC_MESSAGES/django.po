@@ -1,9 +1,10 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Emerson Soares <on.emersonsoares@gmail.com>, 2012
 # Renata Oliveira <renatabels@gmail.com>, 2011
 # Roberto Rosario, 2012
@@ -12,15 +13,14 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:20-0400\n"
-"PO-Revision-Date: 2016-03-21 21:11+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"PO-Revision-Date: 2016-11-17 23:07+0000\n"
+"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
+"Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
 #: apps.py:33 links.py:16 links.py:44 models.py:45 permissions.py:7
@@ -30,7 +30,7 @@ msgstr "Pastas"
 
 #: apps.py:68
 msgid "Created"
-msgstr "Criando"
+msgstr "Criada"
 
 #: apps.py:71 links.py:47 models.py:26
 msgid "Documents"
@@ -66,52 +66,55 @@ msgstr "Editar"
 
 #: models.py:20
 msgid "Label"
-msgstr "Label"
+msgstr "Etiqueta"
 
 #: models.py:23
 msgid "Datetime created"
-msgstr "Hora e data criada"
+msgstr "Data e hora de criação"
 
 #: models.py:63
 msgid "Document folder"
-msgstr ""
+msgstr "Pasta de documento"
 
 #: models.py:64
 msgid "Document folders"
-msgstr ""
+msgstr "Pastas de documentos"
 
 #: permissions.py:10
 msgid "Create folders"
-msgstr ""
+msgstr "Criar pastas"
 
 #: permissions.py:13
 msgid "Edit folders"
-msgstr ""
+msgstr "Editar pastas"
 
 #: permissions.py:16
+#| msgid "Delete new folders"
 msgid "Delete folders"
-msgstr ""
+msgstr "Apagar pastas"
 
 #: permissions.py:19
 msgid "Remove documents from folders"
 msgstr "Remover documentos das pastas"
 
 #: permissions.py:22
+#| msgid "Edit new folders"
 msgid "View folders"
-msgstr ""
+msgstr "Visualizar pastas"
 
 #: permissions.py:27
 msgid "Add documents to folders"
-msgstr ""
+msgstr "Adicionar documentos para pastas"
 
 #: serializers.py:58
 msgid "Primary key of the document to be added."
-msgstr ""
+msgstr "Chave primária do documento a ser adicionado."
 
 #: views.py:54
 #, python-format
+#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
-msgstr ""
+msgstr "Apagar a pasta: %s?"
 
 #: views.py:66
 #, python-format
@@ -145,8 +148,8 @@ msgstr "Documento: %(document)s  já está na pasta: %(folder)s ."
 #: views.py:205
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Adicionar documento para pasta"
+msgstr[1] "Adicionar documentos para pasta"
 
 #: views.py:227
 msgid "Must provide at least one folder document."
@@ -166,8 +169,8 @@ msgstr "Documento: %(document)s erro ao deletar: %(error)s "
 #, python-format
 msgid "Remove the selected document from the folder: %(folder)s?"
 msgid_plural "Remove the selected documents from the folder: %(folder)s?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Remove o documento selecionado da pasta: %(folder)s?"
+msgstr[1] "Remove os documentos selecionados da pasta: %(folder)s?"
 
 #~ msgid "A folder named: %s, already exists."
 #~ msgstr "A folder named: %s, already exists."
@@ -215,11 +218,11 @@ msgstr[1] ""
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -252,12 +255,12 @@ msgstr[1] ""
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

@@ -7,14 +7,14 @@
 # Berny <berny@bernhard-marx.de>, 2015
 # Mathias Behrle <mbehrle@m9s.biz>, 2014
 # Stefan Lodders <sl@suchreflex.de>, 2012
-# Tobias Paepke <tobias.paepke@paepke.net>, 2014
+# Tobias Paepke <tobias.paepke@paepke.net>, 2014,2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:21-0400\n"
-"PO-Revision-Date: 2016-10-28 07:35+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2016-11-23 02:55-0400\n"
+"PO-Revision-Date: 2016-10-31 19:03+0000\n"
+"Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
 "Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -102,7 +102,7 @@ msgstr "Fehler für Standardwert: %s"
 #: forms.py:94 models.py:124
 #, python-format
 msgid "\"%s\" is required for this document type."
-msgstr ""
+msgstr "\"%s\" wird für diesen Dokumententyp benötigt."
 
 #: forms.py:130
 #| msgid " Available models: %s"
@@ -279,7 +279,7 @@ msgstr "Primärschlüssel des hinzuzufügenden Metadatentyps"
 
 #: serializers.py:40
 msgid "Primary key of the document metadata type."
-msgstr ""
+msgstr "Primärschlüssel des Metadatendokumententyps."
 
 #: serializers.py:46
 msgid "Value of the corresponding metadata type instance."

@@ -1,23 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
-# Berny <berny@bernhard-marx.de>, 2015
+# Berny <berny@bernhard-marx.de>, 2015-2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:18-0400\n"
-"PO-Revision-Date: 2016-03-21 21:08+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/de_DE/)\n"
-"Language: de_DE\n"
+"POT-Creation-Date: 2016-11-23 02:52-0400\n"
+"PO-Revision-Date: 2016-05-20 21:40+0000\n"
+"Last-Translator: Tobias Paepke <tobias.paepke@paepke.net>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/rosarior/mayan-edms/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31 links.py:30
@@ -46,23 +45,26 @@ msgstr "Dokument bereits ausgebucht"
 
 #: forms.py:28
 msgid "Document status"
-msgstr ""
+msgstr "Dokumentenstatus"
 
 #: forms.py:37 models.py:37 views.py:85
+#| msgid "User: %s"
 msgid "User"
 msgstr "Benutzer"
 
 #: forms.py:41
+#| msgid "Check out time: %s"
 msgid "Check out time"
-msgstr ""
+msgstr "Ausbuchungszeit"
 
 #: forms.py:46
 msgid "Check out expiration"
-msgstr ""
+msgstr "Ausbuchungsende"
 
 #: forms.py:51
+#| msgid "New versions allowed: %s"
 msgid "New versions allowed?"
-msgstr ""
+msgstr "Neue Versionen erlaubt?"
 
 #: forms.py:52
 msgid "Yes"
@@ -117,6 +119,7 @@ msgid "Block new version upload"
 msgstr "Hochladen neuer Versionen sperren"
 
 #: models.py:54
+#| msgid "Check out expiration date and time"
 msgid "Check out expiration date and time must be in the future."
 msgstr "Ausbuchungsende muss in der Zukunft liegen."
 
@@ -142,7 +145,7 @@ msgstr "Dokumente ausbuchen"
 
 #: permissions.py:19
 msgid "Check out details view"
-msgstr ""
+msgstr "Ansicht der Ausbuchungsdetails"
 
 #: views.py:59
 #, python-format
@@ -178,15 +181,17 @@ msgstr "Ausbuchungsdetails für Dokument %s"
 
 #: views.py:136
 #, python-format
+#| msgid ""
+#| "dn't originally checked out this document.  Are you sure you wish cefully "
+#| "check in document: %s?"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr ""
-"Sie haben dieses Dokument ursprünglich nicht ausgebucht. Soll Dokument %s "
-"trotzdem zwingend eingebucht werden?"
+msgstr "Sie haben dieses Dokument ursprünglich nicht ausgebucht. Soll Dokument %s trotzdem zwingend eingebucht werden?"
 
 #: views.py:140
 #, python-format
+#| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
 msgstr "Dokument %s einbuchen?"
 
@@ -248,11 +253,11 @@ msgstr "Einheit"
 #~ msgstr "Enter a valid time difference."
 
 #~ msgid ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 #~ msgstr ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."

@@ -15,6 +15,11 @@ the user links
 - Tags are alphabetically ordered by label (GitLab #342).
 - Stop loading theme fonts from the web (Gitlab #343).
 
+2.1.6 (2016-11-23)
+=================
+- Fix variable name typo in the rotation transformation class.
+- Update translations
+
 2.1.5 (2016-11-08)
 ==================
 - Backport resize transformation math operation fix (GitLab #319).

@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:18-0400\n"
-"PO-Revision-Date: 2016-03-21 21:08+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2016-11-23 02:52-0400\n"
+"PO-Revision-Date: 2016-09-24 10:31+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:31 links.py:30
@@ -45,23 +45,26 @@ msgstr "Documento già uscito"
 
 #: forms.py:28
 msgid "Document status"
-msgstr ""
+msgstr "Stato documento"
 
 #: forms.py:37 models.py:37 views.py:85
+#| msgid "User: %s"
 msgid "User"
 msgstr "Utente"
 
 #: forms.py:41
+#| msgid "Check out time: %s"
 msgid "Check out time"
-msgstr ""
+msgstr "Tempo di uscita"
 
 #: forms.py:46
 msgid "Check out expiration"
-msgstr ""
+msgstr "Scadenza dell'uscita"
 
 #: forms.py:51
+#| msgid "New versions allowed: %s"
 msgid "New versions allowed?"
-msgstr ""
+msgstr "Accetta nuove versioni"
 
 #: forms.py:52
 msgid "Yes"
@@ -85,7 +88,7 @@ msgstr "Check in / out"
 
 #: literals.py:12
 msgid "Checked out"
-msgstr "Checked-out"
+msgstr "Uscito"
 
 #: literals.py:13
 msgid "Checked in/available"
@@ -116,8 +119,9 @@ msgid "Block new version upload"
 msgstr "Blocca la nuova versione in caricamento"
 
 #: models.py:54
+#| msgid "Check out expiration date and time"
 msgid "Check out expiration date and time must be in the future."
-msgstr ""
+msgstr "La data e ora di uscita deve essere nel futuro."
 
 #: models.py:87 permissions.py:7
 msgid "Document checkout"
@@ -141,7 +145,7 @@ msgstr "Check out dei documenti"
 
 #: permissions.py:19
 msgid "Check out details view"
-msgstr ""
+msgstr "Visualizzazione in dettaglio dell'uscita"
 
 #: views.py:59
 #, python-format
@@ -177,15 +181,19 @@ msgstr "Dettaglio del check out per il documento: %s"
 
 #: views.py:136
 #, python-format
+#| msgid ""
+#| "dn't originally checked out this document.  Are you sure you wish cefully "
+#| "check in document: %s?"
 msgid ""
 "You didn't originally checked out this document. Forcefully check in the "
 "document: %s?"
-msgstr ""
+msgstr "Non hai originariamente fatto il checkout di questo documento. Forzare nel documento: %s?"
 
 #: views.py:140
 #, python-format
+#| msgid "Check out document: %s"
 msgid "Check in the document: %s?"
-msgstr ""
+msgstr "Accetti il documento: %s?"
 
 #: views.py:177
 msgid "Document has not been checked out."
@@ -203,7 +211,7 @@ msgstr "Il documento \"%s\" è entrato con successo"
 
 #: widgets.py:23
 msgid "Period"
-msgstr ""
+msgstr "Periodo"
 
 #~ msgid "New versions not allowed for the checkedout document: %s"
 #~ msgstr "New versions allowed: %s"
@@ -245,11 +253,11 @@ msgstr ""
 #~ msgstr "Enter a valid time difference."
 
 #~ msgid ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 #~ msgstr ""
-#~ "Amount of time to hold the document in the checked out state in days, "
-#~ "hours and/or minutes."
+#~ "Amount of time to hold the document in the checked out state in days, hours "
+#~ "and/or minutes."
 
 #~ msgid "Document \"%(document)s\" checked out by %(fullname)s."
 #~ msgstr "Document \"%(document)s\" checked out by %(fullname)s."

@@ -1,33 +1,31 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:22-0400\n"
-"PO-Revision-Date: 2016-03-21 21:02+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2016-11-23 02:56-0400\n"
+"PO-Revision-Date: 2016-07-19 20:00+0000\n"
+"Last-Translator: lilo.panic\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:18 permissions.py:7
 msgid "Smart settings"
-msgstr ""
+msgstr "Гибкие настройки"
 
 #: apps.py:26
 msgid "Setting count"
-msgstr ""
+msgstr "Количество настроек"
 
 #: apps.py:30
 msgid "Name"
@@ -39,33 +37,33 @@ msgstr "Значение"
 
 #: apps.py:37
 msgid "Found in path"
-msgstr ""
+msgstr "Найдено в пути"
 
 #: apps.py:40
 msgid "n/a"
-msgstr ""
+msgstr "не задано"
 
 #: links.py:11 links.py:14
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
 
 #: permissions.py:10
 msgid "View settings"
-msgstr ""
+msgstr "Просмотр настроек"
 
 #: views.py:15
 msgid "Setting namespaces"
-msgstr ""
+msgstr "Пространство имён параметра"
 
 #: views.py:29
 #, python-format
 msgid "Settings in namespace: %s"
-msgstr ""
+msgstr "Параметры в пространстве имён: %s"
 
 #: views.py:37
 #, python-format
 msgid "Namespace: %s, not found"
-msgstr ""
+msgstr "Пространство имён: %s, не найдено"
 
 #~ msgid "Default"
 #~ msgstr "default"

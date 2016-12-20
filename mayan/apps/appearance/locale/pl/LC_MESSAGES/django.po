@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
-# Wojciech Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
+# Wojtek Warczakowski <w.warczakowski@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:18-0400\n"
+"POT-Creation-Date: 2016-11-23 02:52-0400\n"
 "PO-Revision-Date: 2016-03-21 21:06+0000\n"
-"Last-Translator: Wojciech Warczakowski <w.warczakowski@gmail.com>\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"Last-Translator: Wojtek Warczakowski <w.warczakowski@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:11
 msgid "Appearance"
@@ -47,19 +45,15 @@ msgstr "Błąd serwera"
 
 #: templates/500.html:11
 msgid ""
-"There's been an error. It's been reported to the site administrators via e-"
-"mail and should be fixed shortly. Thanks for your patience."
-msgstr ""
-"Wystąpił błąd. Wiadomość o tym została przekazana do administratorów i "
-"wkrótce problem zostanie rozwiązany. Dziękujemy za cierpliwość."
+"There's been an error. It's been reported to the site administrators via "
+"e-mail and should be fixed shortly. Thanks for your patience."
+msgstr "Wystąpił błąd. Wiadomość o tym została przekazana do administratorów i wkrótce problem zostanie rozwiązany. Dziękujemy za cierpliwość."
 
 #: templates/500.html:14
 msgid ""
 "If you need assistance, you may reference this error via the following "
 "identifier:"
-msgstr ""
-"Jeśli potrzebujesz pomocy, możesz odwołać się do tego błędu poprzez "
-"następujący identyfikator:"
+msgstr "Jeśli potrzebujesz pomocy, możesz odwołać się do tego błędu poprzez następujący identyfikator:"
 
 #: templates/appearance/about.html:8 templates/appearance/about.html.py:57
 msgid "About"
@@ -187,9 +181,7 @@ msgstr "Brak wyników"
 msgid ""
 "Total (%(start)s - %(end)s out of %(total)s) (Page %(page_number)s of "
 "%(total_pages)s)"
-msgstr ""
-"Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z "
-"%(total_pages)s)"
+msgstr "Razem (%(start)s - %(end)s z %(total)s) (Strona %(page_number)s z %(total_pages)s)"
 
 #: templates/appearance/generic_list_subtemplate.html:14
 #: templates/appearance/generic_list_subtemplate.html:17
@@ -262,9 +254,7 @@ msgstr "Hasło: <strong>%(password)s</strong>"
 msgid ""
 "Be sure to change the password to increase security and to disable this "
 "message."
-msgstr ""
-"Aby poprawić bezpieczeństwo i usunąć ten komunikat, nie zapomnij zmienić "
-"hasła."
+msgstr "Aby poprawić bezpieczeństwo i usunąć ten komunikat, nie zapomnij zmienić hasła."
 
 #: templates/appearance/login.html:45 templates/appearance/login.html.py:54
 msgid "Sign in"

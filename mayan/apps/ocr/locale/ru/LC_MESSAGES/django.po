@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:21-0400\n"
-"PO-Revision-Date: 2016-03-21 21:11+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2016-11-23 02:56-0400\n"
+"PO-Revision-Date: 2016-07-13 21:33+0000\n"
+"Last-Translator: lilo.panic\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:58 apps.py:116 apps.py:154 links.py:14 permissions.py:7
 #: settings.py:7
@@ -28,15 +26,15 @@ msgstr "Распознавание текста"
 
 #: apps.py:91
 msgid "Document"
-msgstr ""
+msgstr "Документ"
 
 #: apps.py:95
 msgid "Added"
-msgstr ""
+msgstr "Добавлено"
 
 #: apps.py:99 models.py:36
 msgid "Result"
-msgstr ""
+msgstr "Результат"
 
 #: apps.py:160 apps.py:165 apps.py:170
 msgid "pdftotext version"
@@ -57,31 +55,32 @@ msgstr "tesseract version"
 #: forms.py:40
 #, python-format
 msgid "Page %(page_number)d"
-msgstr ""
+msgstr "Страница %(page_number)d"
 
 #: forms.py:48
 msgid "Contents"
 msgstr "Содержание"
 
 #: links.py:18 links.py:25
+#| msgid "Submit documents for OCR"
 msgid "Submit for OCR"
-msgstr ""
+msgstr "Отправить на распознавание"
 
 #: links.py:22
 msgid "OCR all documents"
-msgstr ""
+msgstr "Распознать все документы"
 
 #: links.py:28
 msgid "Setup OCR"
-msgstr ""
+msgstr "Настройки распознавания"
 
 #: links.py:33
 msgid "OCR documents per type"
-msgstr ""
+msgstr "Распознавание документов с определенным типом"
 
 #: links.py:37 views.py:161
 msgid "OCR errors"
-msgstr ""
+msgstr "Ошибки распознавания"
 
 #: models.py:16
 msgid "Document type"
@@ -93,31 +92,31 @@ msgstr "Automatically queue newly created documents for OCR."
 
 #: models.py:24
 msgid "Document type settings"
-msgstr ""
+msgstr "Настройки типа документа"
 
 #: models.py:25
 msgid "Document types settings"
-msgstr ""
+msgstr "Настройки типов документа"
 
 #: models.py:31
 msgid "Document version"
-msgstr ""
+msgstr "Версия документа"
 
 #: models.py:34
 msgid "Date time submitted"
-msgstr ""
+msgstr "Дата и время отправления"
 
 #: models.py:43
 msgid "Document Version OCR Error"
-msgstr ""
+msgstr "Ошибка распознавания для версии документа"
 
 #: models.py:44
 msgid "Document Version OCR Errors"
-msgstr ""
+msgstr "Ошибки распознавания для версий документов"
 
 #: models.py:54
 msgid "Document page"
-msgstr ""
+msgstr "Страница документа"
 
 #: models.py:56
 msgid "Content"
@@ -125,21 +124,22 @@ msgstr "Содержимое"
 
 #: models.py:62
 msgid "Document page content"
-msgstr ""
+msgstr "Содержимое страницы документа"
 
 #: models.py:63
+#| msgid "Document pages content clean up error: %s"
 msgid "Document pages contents"
-msgstr ""
+msgstr "Содержимое страниц документа"
 
 #: parsers.py:102
 #, python-format
 msgid "Exception parsing page; %s"
-msgstr ""
+msgstr "Ошибка при чтении страницы; %s"
 
 #: parsers.py:129
 #, python-format
 msgid "Cannot find pdftotext executable at: %s"
-msgstr ""
+msgstr "Не удаётся найти исполняемый файл pdftotext: %s"
 
 #: permissions.py:10
 msgid "Submit documents for OCR"
@@ -147,73 +147,76 @@ msgstr "Отправить документы для распознавания 
 
 #: permissions.py:14
 msgid "View the transcribed text from document"
-msgstr ""
+msgstr "Просмотр распознанного текста документа"
 
 #: permissions.py:18
 msgid "Change document type OCR settings"
-msgstr ""
+msgstr "Изменить настройки распознавания документа"
 
 #: settings.py:10
+#| msgid "File path to unpaper program."
 msgid "File path to tesseract program."
-msgstr ""
+msgstr "Путь до программы tesseract."
 
 #: settings.py:15
 msgid ""
-"File path to poppler's pdftotext program used to extract text from PDF files."
-msgstr ""
-"Путь к файлу программы pdftotext Poppler, используемой для извлечения текста "
-"из PDF файлов."
+"File path to poppler's pdftotext program used to extract text from PDF "
+"files."
+msgstr "Путь к файлу программы pdftotext Poppler, используемой для извлечения текста из PDF файлов."
 
 #: settings.py:22
 msgid "Full path to the backend to be used to do OCR."
-msgstr ""
+msgstr "Полный путь до бекенда, выполняющего OCR."
 
 #: settings.py:27
 msgid "Set new document types to perform OCR automatically by default."
-msgstr ""
+msgstr "Задать новые типы документов для которых распознавание будет запускаться по умолчанию. "
 
 #: views.py:28
+#| msgid "Submit documents for OCR"
 msgid "Submit all documents for OCR?"
-msgstr ""
+msgstr "Отправить все документы на распознавание?"
 
 #: views.py:40
 #, python-format
 msgid "%d documents added to the OCR queue."
-msgstr ""
+msgstr "%d документов помещено в очередь распознавания."
 
 #: views.py:48
 #, python-format
 msgid "Submit \"%s\" to the OCR queue?"
-msgstr ""
+msgstr "Отправить \"%s\" в очередь распознавания?"
 
 #: views.py:73
 #, python-format
 msgid "Document: %(document)s was added to the OCR queue."
-msgstr ""
+msgstr "Документ: %(document)s добавлен в очередь распознавания."
 
 #: views.py:87
+#| msgid "Submit documents for OCR"
 msgid "Submit the selected documents to the OCR queue?"
-msgstr ""
+msgstr "Отправить выделенные документы в очедерь распознавания?"
 
 #: views.py:94
+#| msgid "Submit documents for OCR"
 msgid "Submit all documents of a type for OCR"
-msgstr ""
+msgstr "Отправить все документы определённого типа на распознавание"
 
 #: views.py:109
 #, python-format
-msgid ""
-"%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
-msgstr ""
+msgid "%(count)d documents of type \"%(document_type)s\" added to the OCR queue."
+msgstr "%(count)d документов с типом \"%(document_type)s\" помещены в очередь распознавания."
 
 #: views.py:132
 #, python-format
 msgid "Edit OCR settings for document type: %s"
-msgstr ""
+msgstr "Редактировать настройки распознавания для типа документов: %s"
 
 #: views.py:154
 #, python-format
+#| msgid "Queued documents: %d"
 msgid "OCR result for document: %s"
-msgstr ""
+msgstr "Результат распозанвания для документа: %s"
 
 #~ msgid "Delete"
 #~ msgstr "delete"
@@ -387,11 +390,11 @@ msgstr ""
 #~ msgstr "Are you sure you wish to activate document queue: %s"
 
 #~ msgid ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 #~ msgstr ""
-#~ "Amount of seconds to delay OCR of documents to allow for the node's "
-#~ "storage replication overhead."
+#~ "Amount of seconds to delay OCR of documents to allow for the node's storage "
+#~ "replication overhead."
 
 #~ msgid "Maximum amount of concurrent document OCRs a node can perform."
 #~ msgstr "Maximum amount of concurrent document OCRs a node can perform."
@@ -448,11 +451,9 @@ msgstr ""
 #~ msgstr "Error deleting queue transformation; %(error)s"
 
 #~ msgid ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 #~ msgstr ""
-#~ "Are you sure you wish to delete queue transformation \"%(transformation)s"
-#~ "\""
+#~ "Are you sure you wish to delete queue transformation \"%(transformation)s\""
 
 #~ msgid "Queue transformation created successfully"
 #~ msgstr "Queue transformation created successfully"

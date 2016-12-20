@@ -1,22 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:23-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"POT-Creation-Date: 2016-11-23 02:57-0400\n"
+"PO-Revision-Date: 2016-11-09 15:49+0000\n"
+"Last-Translator: Evelijn Saaltink <evelijnsaaltink@gmail.com>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 apps.py:73 apps.py:90 forms.py:34 forms.py:52 links.py:40
@@ -26,7 +26,7 @@ msgstr "Labels"
 
 #: apps.py:68 apps.py:80
 msgid "Preview"
-msgstr ""
+msgstr "Preview"
 
 #: apps.py:84 models.py:24
 msgid "Documents"
@@ -38,19 +38,19 @@ msgstr ""
 
 #: links.py:14
 msgid "Remove tag"
-msgstr ""
+msgstr "Label verwijderen"
 
 #: links.py:17 links.py:24
 msgid "Attach tag"
-msgstr ""
+msgstr "Voeg label bij"
 
 #: links.py:20
 msgid "Remove tags"
-msgstr ""
+msgstr "Labels verwijderen"
 
 #: links.py:28
 msgid "Create new tag"
-msgstr ""
+msgstr "Maak een nieuw label aan"
 
 #: links.py:32 links.py:45
 msgid "Delete"
@@ -62,7 +62,7 @@ msgstr "bewerken"
 
 #: models.py:20
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: models.py:22
 msgid "Color"
@@ -70,15 +70,15 @@ msgstr "Kleur"
 
 #: models.py:34
 msgid "Tag"
-msgstr ""
+msgstr "Label"
 
 #: models.py:53
 msgid "Document tag"
-msgstr ""
+msgstr "Documentlabel"
 
 #: models.py:54
 msgid "Document tags"
-msgstr ""
+msgstr "Documentlabels"
 
 #: permissions.py:10
 msgid "Create new tags"
@@ -110,7 +110,7 @@ msgstr ""
 
 #: views.py:34
 msgid "Create tag"
-msgstr ""
+msgstr "maak label aan"
 
 #: views.py:59
 msgid "Must provide at least one document."
@@ -144,8 +144,7 @@ msgstr "Label \"%s\" verwijderd."
 #: views.py:186
 #, python-format
 msgid "Error deleting tag \"%(tag)s\": %(error)s"
-msgstr ""
-"Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
+msgstr "Fout bij het verwijderen van label: \"%(tag)s\". Foutmelding: %(error)s"
 
 #: views.py:196
 msgid "Will be removed from all documents."
@@ -154,13 +153,13 @@ msgstr "Zal van alle documenten worden verwijderd."
 #: views.py:199
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Geselecteerd label verwijderen?"
+msgstr[1] "Geselecteerde labels verwijderen?"
 
 #: views.py:231
 #, python-format
 msgid "Edit tag: %s"
-msgstr ""
+msgstr "Bewerk label: %s"
 
 #: views.py:244
 #, python-format
@@ -188,16 +187,22 @@ msgstr "Verwijder label van documenten: %s"
 
 #: views.py:344
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
 msgstr ""
 
 #: views.py:351
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
 msgstr ""
 
 #: views.py:360
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
 msgstr ""
 
@@ -214,7 +219,7 @@ msgstr "Document \"%(document)s\" is niet gelabeld als: \"%(tag)s\""
 #: views.py:388
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr "Label: \"%(tag)s\" is verwijdert van document \"%(document)s\"."
+msgstr "Label: \"%(tag)s\" is verwijderd van document \"%(document)s\"."
 
 #~ msgid "remove tags"
 #~ msgstr "remove tags"

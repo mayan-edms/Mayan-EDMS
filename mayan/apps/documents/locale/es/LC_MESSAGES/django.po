@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:19-0400\n"
-"PO-Revision-Date: 2016-10-28 07:55+0000\n"
+"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"PO-Revision-Date: 2016-11-23 06:45+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -480,12 +480,12 @@ msgstr "Páginas de documento"
 #: models.py:783
 #| msgid "Version update"
 msgid "New version block"
-msgstr ""
+msgstr "Bloquear nueva version"
 
 #: models.py:784
 #| msgid "Version update"
 msgid "New version blocks"
-msgstr ""
+msgstr "Bloquear nuevas versiones"
 
 #: models.py:794
 msgid "User"
@@ -735,7 +735,7 @@ msgstr "También se borrarán todas las versiones más recientes a esta."
 #: views.py:600
 #| msgid "Revert documents to a previous version"
 msgid "Revert to this version?"
-msgstr ""
+msgstr "¿Revertir a esta versión?"
 
 #: views.py:610
 msgid "Document version reverted successfully"
@@ -767,7 +767,7 @@ msgstr "Debe proveer al menos un documento"
 #: views.py:704
 #, python-format
 msgid "Document type for \"%s\" changed successfully."
-msgstr ""
+msgstr "Tipo de documento para \"%s\" cambiado con éxito."
 
 #: views.py:716 views.py:1235
 msgid "Submit"
@@ -782,7 +782,7 @@ msgstr[1] "Cambiar el tipo de los documentos seleccionados."
 #: views.py:799
 #| msgid "Must provide at least one document."
 msgid "Must provide at least one document or version."
-msgstr ""
+msgstr "Debe proveer al menos una versión de documento."
 
 #: views.py:819
 msgid "Documents to be downloaded"
@@ -794,7 +794,7 @@ msgstr "Fecha y hora"
 
 #: views.py:931
 msgid "At least one document must be selected."
-msgstr ""
+msgstr "Al menos un documento debe ser seleccionado."
 
 #: views.py:954
 msgid "Document queued for page count recalculation."
@@ -827,8 +827,8 @@ msgstr "Todas las transformaciones de la página del documento: %s, se han elimi
 #: views.py:1044
 msgid "Clear all the page transformations for the selected document?"
 msgid_plural "Clear all the page transformations for the selected documents?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "¿Borrar todas las transformaciones para el documento seleccionado?"
+msgstr[1] "¿Borrar todas las transformaciones para los documentos seleccionados?"
 
 #: views.py:1078
 msgid "There are no more pages in this document"
