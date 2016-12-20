@@ -13,6 +13,7 @@ the user links
 - Moved licenses to their own module in every app
 - Update project to work with Django 1.9.11
 - Tags are alphabetically ordered by label (GitLab #342).
+- Stop loading theme fonts from the web (Gitlab #343).
 
 2.1.5 (2016-11-08)
 ==================
