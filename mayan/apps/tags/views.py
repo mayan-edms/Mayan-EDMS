@@ -3,7 +3,6 @@ from __future__ import absolute_import, unicode_literals
 import logging
 
 from django.contrib import messages
-from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.conf import settings
 from django.http import HttpResponseRedirect
@@ -13,13 +12,14 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.views import (
-    SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
+    ActionView, SingleObjectCreateView, SingleObjectEditView,
+    SingleObjectListView
 )
 from documents.models import Document
 from documents.views import DocumentListView
 from documents.permissions import permission_document_view
 
-from .forms import TagListForm
+from .forms import TagMultipleSelectionForm, TagListForm
 from .models import Tag
 from .permissions import (
     permission_tag_attach, permission_tag_create, permission_tag_delete,
@@ -29,101 +29,75 @@ from .permissions import (
 logger = logging.getLogger(__name__)
 
 
+class TagAttachActionView(ActionView):
+    form_class = TagMultipleSelectionForm
+    model = Document
+    object_permission = permission_tag_attach
+    success_message = 'Tag attach request performed on %(count)d document'
+    success_message_plural = 'Tag attach request performed on %(count)d documents'
+
+    def get_extra_context(self):
+        queryset = self.get_queryset()
+
+        result = {
+            'submit_label': _('Attach'),
+            'title': ungettext(
+                'Attach tag to document',
+                'Attach tag to documents',
+                queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _('Attach tag to document: %s') % queryset.first()
+                }
+            )
+
+        return result
+
+    def get_form_extra_kwargs(self):
+        return {'user': self.request.user}
+
+    def object_action(self, form, instance):
+        attached_tags = instance.attached_tags()
+
+        for tag in form.cleaned_data['tags']:
+            AccessControlList.objects.check_access(
+                obj=tag, permissions=permission_tag_view,
+                user=self.request.user
+            )
+
+            if tag in attached_tags:
+                messages.warning(
+                    self.request, _(
+                        'Document "%(document)s" is already tagged as '
+                        '"%(tag)s"'
+                    ) % {
+                        'document': instance, 'tag': tag
+                    }
+                )
+            else:
+                tag.documents.add(instance)
+                messages.success(
+                    self.request,
+                    _(
+                        'Tag "%(tag)s" attached successfully to document '
+                        '"%(document)s".'
+                    ) % {
+                        'document': instance, 'tag': tag
+                    }
+                )
+
+
 class TagCreateView(SingleObjectCreateView):
     extra_context = {'title': _('Create tag')}
     fields = ('label', 'color')
     model = Tag
     post_action_redirect = reverse_lazy('tags:tag_list')
     view_permission = permission_tag_create
-
-
-def tag_attach(request, document_id=None, document_id_list=None):
-    if document_id:
-        queryset = Document.objects.filter(pk=document_id)
-        post_action_redirect = reverse('tags:tag_list')
-    elif document_id_list:
-        queryset = Document.objects.filter(pk__in=document_id_list)
-
-    queryset = AccessControlList.objects.filter_by_access(
-        permission_tag_attach, request.user, queryset=queryset
-    )
-
-    if not queryset:
-        if document_id:
-            raise PermissionDenied
-        else:
-            messages.error(request, _('Must provide at least one document.'))
-            return HttpResponseRedirect(
-                request.META.get(
-                    'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
-                )
-            )
-
-    post_action_redirect = None
-    previous = request.POST.get(
-        'previous', request.GET.get(
-            'previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
-        )
-    )
-    next = request.POST.get(
-        'next', request.GET.get(
-            'next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
-        )
-    )
-
-    if request.method == 'POST':
-        form = TagListForm(request.POST, user=request.user)
-        if form.is_valid():
-            tag = form.cleaned_data['tag']
-            for document in queryset:
-                if tag in document.attached_tags().all():
-                    messages.warning(
-                        request, _(
-                            'Document "%(document)s" is already tagged as "%(tag)s"'
-                        ) % {
-                            'document': document, 'tag': tag
-                        }
-                    )
-                else:
-                    tag.documents.add(document)
-                    messages.success(
-                        request,
-                        _(
-                            'Tag "%(tag)s" attached successfully to document "%(document)s".'
-                        ) % {
-                            'document': document, 'tag': tag
-                        }
-                    )
-            return HttpResponseRedirect(next)
-    else:
-        form = TagListForm(user=request.user)
-
-    context = {
-        'form': form,
-        'previous': previous,
-        'next': next,
-        'title': ungettext(
-            'Attach tag to document',
-            'Attach tag to documents',
-            queryset.count()
-        )
-    }
-
-    if queryset.count() == 1:
-        context['object'] = queryset.first()
-
-    return render_to_response(
-        'appearance/generic_form.html', context,
-        context_instance=RequestContext(request)
-    )
-
-
-def tag_multiple_attach(request):
-    return tag_attach(
-        request, document_id_list=request.GET.get(
-            'id_list', request.POST.get('id_list', '')
-        ).split(',')
-    )
 
 
 class TagListView(SingleObjectListView):

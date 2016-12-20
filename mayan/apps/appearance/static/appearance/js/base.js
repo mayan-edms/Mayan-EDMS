@@ -33,6 +33,24 @@ var loadImage = function (image) {
     image.attr('src', image.attr('data-url'));
 };
 
+
+var tagSelectionTemplate = function (tag, container) {
+  var $tag = $(
+    '<span class="label label-tag" style="background: ' + tag.element.style.color + ';"> ' + tag.text + '</span>'
+  );
+  container[0].style.background = tag.element.style.color;
+  return $tag;
+};
+
+
+var tagResultTemplate = function (tag) {
+  if (!tag.element) { return ''; }
+  var $tag = $(
+    '<span class="label label-tag" style="background: ' + tag.element.style.color + ';"> ' + tag.text + '</span>'
+  );
+  return $tag;
+};
+
 jQuery(document).ready(function() {
     $('.lazy-load').on('load', function() {
         $(this).siblings('.spinner').remove();
@@ -101,4 +119,9 @@ jQuery(document).ready(function() {
         });
 
     }, 3000);
+
+    $('.select2').select2({
+        templateSelection: tagSelectionTemplate,
+        templateResult: tagResultTemplate
+    });
 });

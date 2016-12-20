@@ -14,14 +14,14 @@ link_multiple_documents_tag_remove = Link(
     text=_('Remove tag'), view='tags:multiple_documents_selection_tag_remove'
 )
 link_multiple_documents_attach_tag = Link(
-    text=_('Attach tag'), view='tags:multiple_documents_tag_attach'
+    text=_('Attach tags'), view='tags:multiple_documents_tag_attach'
 )
 link_single_document_multiple_tag_remove = Link(
     permissions=(permission_tag_remove,), text=_('Remove tags'),
     view='tags:single_document_multiple_tag_remove', args='object.id'
 )
 link_tag_attach = Link(
-    permissions=(permission_tag_attach,), text=_('Attach tag'),
+    permissions=(permission_tag_attach,), text=_('Attach tags'),
     view='tags:tag_attach', args='object.pk'
 )
 link_tag_create = Link(

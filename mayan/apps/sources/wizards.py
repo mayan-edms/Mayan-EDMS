@@ -112,7 +112,8 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
             pass
 
         try:
-            query_dict['tags'] = self.get_cleaned_data_for_step(STEP_TAGS)['tags']
+            query_dict['tags'] = ([unicode(tag.pk) for tag in self.get_cleaned_data_for_step(STEP_TAGS)['tags']])
+
         except AttributeError:
             pass
 

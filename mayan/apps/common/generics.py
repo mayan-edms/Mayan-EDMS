@@ -3,8 +3,9 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.contenttypes.models import ContentType
+from django.core.exceptions import PermissionDenied
 from django.http import HttpResponseRedirect
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import ungettext, ugettext_lazy as _
 from django.views.generic import (
     FormView as DjangoFormView, DetailView, TemplateView
 )
@@ -17,16 +18,121 @@ from django.views.generic.list import ListView
 from django_downloadview import VirtualDownloadView, VirtualFile
 from pure_pagination.mixins import PaginationMixin
 
+from acls.models import AccessControlList
+
 from .forms import ChoiceForm
 from .mixins import *  # NOQA
 from .settings import setting_paginate_by
 
 __all__ = (
-    'AssignRemoveView', 'ConfirmView', 'FormView', 'MultiFormView',
-    'SingleObjectCreateView', 'SingleObjectDeleteView',
+    'ActionView', 'AssignRemoveView', 'ConfirmView', 'FormView',
+    'MultiFormView', 'SingleObjectCreateView', 'SingleObjectDeleteView',
     'SingleObjectDetailView', 'SingleObjectEditView', 'SingleObjectListView',
     'SimpleView',
 )
+
+
+class ActionView(ViewPermissionCheckMixin, ExtraContextMixin, RedirectionMixin, DjangoFormView):
+    """
+    This view will present a form and upon receiving a POST request will
+    perform an action on an object or queryset
+    """
+
+    queryset = None
+    model = None
+    pk_url_kwarg = 'pk'
+    object_permission = None
+    slug_url_kwarg = 'slug'
+    success_message = 'Operation performed on %(count)d object'
+    success_message_plural = 'Operation performed on %(count)d objects'
+    template_name = 'appearance/generic_form.html'
+
+    def form_valid(self, form):
+        self.view_action(form=form)
+        return super(ActionView, self).form_valid(form=form)
+
+    def get_form_extra_kwargs(self):
+        return {}
+
+    def get_form_kwargs(self):
+        result = super(ActionView, self).get_form_kwargs()
+        result.update(self.get_form_extra_kwargs())
+        return result
+
+    def get_pk_list(self):
+        result = self.request.GET.get(
+            'id_list', self.request.POST.get('id_list')
+        )
+
+        if result:
+            return result.split(',')
+        else:
+            return None
+
+    def get_queryset(self):
+        if self.queryset is not None:
+            queryset = self.queryset
+            if isinstance(queryset, QuerySet):
+                queryset = queryset.all()
+        elif self.model is not None:
+            queryset = self.model._default_manager.all()
+
+        pk = self.kwargs.get(self.pk_url_kwarg)
+        slug = self.kwargs.get(self.slug_url_kwarg)
+        pk_list = self.get_pk_list()
+
+        if pk is not None:
+            queryset = queryset.filter(pk=pk)
+
+        # Next, try looking up by slug.
+        if slug is not None and (pk is None or self.query_pk_and_slug):
+            slug_field = self.get_slug_field()
+            queryset = queryset.filter(**{slug_field: slug})
+
+        if pk_list is not None:
+            queryset = queryset.filter(pk__in=self.get_pk_list())
+
+        if pk is None and slug is None and pk_list is None:
+            raise AttributeError(
+                'Generic detail view %s must be called with '
+                'either an object pk, a slug or an id list.'
+                % self.__class__.__name__
+            )
+
+        if self.object_permission:
+            return AccessControlList.objects.filter_by_access(
+                self.object_permission, self.request.user, queryset=queryset
+            )
+        else:
+            return queryset
+
+    def get_success_message(self, count):
+        return ungettext(
+            self.success_message,
+            self.success_message_plural,
+            count
+        ) % {
+            'count': count,
+        }
+
+    def object_action(self, form, instance):
+        pass
+
+    def view_action(self, form):
+        count = 0
+
+        for instance in self.get_queryset():
+            try:
+                self.object_action(form=form, instance=instance)
+            except PermissionDenied:
+                pass
+            else:
+                count += 1
+
+        messages.success(
+            self.request,
+            self.get_success_message(count=count)
+        )
 
 
 class AssignRemoveView(ExtraContextMixin, ViewPermissionCheckMixin, ObjectPermissionCheckMixin, TemplateView):

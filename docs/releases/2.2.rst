@@ -2,7 +2,7 @@
 Mayan EDMS v2.2 release notes
 =============================
 
-Released: XX, 2016
+Released: XX, 2017
 
 What's new
 ==========
@@ -24,6 +24,7 @@ the user links
 - Update project to work with Django 1.9.11
 - Tags are alphabetically ordered by label
 - Stop loading theme fonts from the web
+- Add support for attaching multiple tags to single or multiple documents.
 
 Removals
 --------
@@ -83,6 +84,7 @@ Bugs fixed or issues closed
 ===========================
 
 * `GitLab issue #301 <https://gitlab.com/mayan-edms/mayan-edms/issues/301>`_ Remove the installation app
+* `GitLab issue #307 <https://gitlab.com/mayan-edms/mayan-edms/issues/307>`_ Enter multiple Tags at once
 * `GitLab issue #311 <https://gitlab.com/mayan-edms/mayan-edms/issues/311>`_ acl page return ContentType:Document
 * `GitLab issue #319 <https://gitlab.com/mayan-edms/mayan-edms/issues/319>`_ TransformationResize issue with very "long" image
 * `GitLab issue #342 <https://gitlab.com/mayan-edms/mayan-edms/issues/342>`_ Tags should be of unordered / unsorted data type

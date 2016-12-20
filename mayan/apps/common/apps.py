@@ -59,6 +59,10 @@ class MayanAppConfig(apps.AppConfig):
                 exception
             )
             if 'No module named urls' not in unicode(exception):
+                logger.error(
+                    'Import time error when running AppConfig.ready(). Check '
+                    'apps.py, urls.py, views.py, etc.'
+                )
                 raise exception
 
 

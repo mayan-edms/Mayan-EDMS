@@ -9,6 +9,7 @@ from acls.models import AccessControlList
 
 from .models import Tag
 from .permissions import permission_tag_view
+from .widgets import TagFormWidget
 
 logger = logging.getLogger(__name__)
 
@@ -38,8 +39,8 @@ class TagMultipleSelectionForm(forms.Form):
             permission_tag_view, user, queryset=Tag.objects.all()
         )
 
-        self.fields['tags'] = forms.MultipleChoiceField(
-            label=_('Tags'), choices=queryset.values_list('id', 'label'),
-            help_text=_('Tags to attach to the document.'), required=False,
-            widget=forms.CheckboxSelectMultiple
+        self.fields['tags'] = forms.ModelMultipleChoiceField(
+            label=_('Tags'), help_text=_('Tags to attach to the document.'),
+            queryset=queryset, required=False,
+            widget=TagFormWidget(attrs={'class': 'select2'}, queryset=queryset)
         )

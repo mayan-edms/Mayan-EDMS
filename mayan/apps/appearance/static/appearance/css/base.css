@@ -159,3 +159,7 @@ a i {
 .panel-dashboard-widget .panel-heading i {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 }
+
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    padding-bottom: 1px;
+}

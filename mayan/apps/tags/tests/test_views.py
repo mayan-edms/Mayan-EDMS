@@ -182,7 +182,9 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             }
         )
 
-        self.assertEqual(response.status_code, 403)
+        # Redirect to previous URL and show warning message about having to
+        # select at least one object.
+        self.assertEqual(response.status_code, 302)
         self.assertEqual(self.document.tags.count(), 0)
 
     def test_document_attach_tag_view_with_permission(self):
@@ -197,7 +199,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'tags:tag_attach', args=(self.document.pk,), data={
-                'tag': self.tag.pk,
+                'tags': self.tag.pk,
                 'user': self.user.pk
             }, follow=True
         )
@@ -216,7 +218,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'tags:multiple_documents_tag_attach', data={
-                'id_list': self.document.pk, 'tag': self.tag.pk,
+                'id_list': self.document.pk, 'tags': self.tag.pk,
                 'user': self.user.pk
             }
         )
@@ -237,7 +239,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
 
         response = self.post(
             'tags:multiple_documents_tag_attach', data={
-                'id_list': self.document.pk, 'tag': self.tag.pk,
+                'id_list': self.document.pk, 'tags': self.tag.pk,
                 'user': self.user.pk
             }, follow=True
         )
