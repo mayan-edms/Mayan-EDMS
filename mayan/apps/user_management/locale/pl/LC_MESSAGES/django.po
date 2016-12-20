@@ -1,26 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Annunnaky <doublemiu@gmail.com>, 2015
+# Daniel Winiarski <daniel.winiarski.dw@gmail.com>, 2016
 # mic <winterfall24@gmail.com>, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:23-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/"
-"pl/)\n"
-"Language: pl\n"
+"POT-Creation-Date: 2016-11-23 02:57-0400\n"
+"PO-Revision-Date: 2016-08-04 09:31+0000\n"
+"Last-Translator: Daniel Winiarski <daniel.winiarski.dw@gmail.com>\n"
+"Language-Team: Polish (http://www.transifex.com/rosarior/mayan-edms/language/pl/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
+"Language: pl\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
 
 #: apps.py:37 permissions.py:7
 msgid "User management"
@@ -28,11 +27,11 @@ msgstr "Zarządzanie użytkownikami"
 
 #: apps.py:47
 msgid "All the groups."
-msgstr ""
+msgstr "Wszystkie grupy."
 
 #: apps.py:51
 msgid "All the users."
-msgstr ""
+msgstr "Wszyscy użytkownicy."
 
 #: apps.py:56 links.py:30
 msgid "Members"
@@ -64,7 +63,7 @@ msgstr "Potwierdź hasło"
 
 #: links.py:14 views.py:29
 msgid "Create new group"
-msgstr "utwórz nową grupę"
+msgstr "Utwórz nową grupę"
 
 #: links.py:18 links.py:42 links.py:58
 msgid "Delete"
@@ -129,16 +128,17 @@ msgstr "Edycja grupy: %s"
 
 #: views.py:66
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
-msgstr ""
+msgstr "Usunąć grupę: %s?"
 
 #: views.py:72
 msgid "Available users"
-msgstr ""
+msgstr "Dostępni użytkownicy"
 
 #: views.py:73
 msgid "Members of groups"
-msgstr ""
+msgstr "Członkowie grup"
 
 #: views.py:94
 #, python-format
@@ -152,7 +152,7 @@ msgstr "Edytuj użytkownika: %s"
 
 #: views.py:133
 msgid "Available groups"
-msgstr ""
+msgstr "Dostępne grupy"
 
 #: views.py:134
 msgid "Groups joined"
@@ -176,9 +176,7 @@ msgstr "Musi podać co najmniej jednego użytkownika."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Super user oraz staff user usuwanie nie jest możliwa , należy użyć "
-"interfejsu administratora w takich przypadkach."
+msgstr "Super user oraz staff user usuwanie nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:237
 #, python-format
@@ -192,13 +190,15 @@ msgstr "Błąd podczas usuwania użytkownika \" %(user)s \": %(error)s "
 
 #: views.py:255
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete the user: %s?"
-msgstr ""
+msgstr "Usunąć użytkownika: %s?"
 
 #: views.py:257
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete the users: %s?"
-msgstr ""
+msgstr "Usunąć użytkowników: %s?"
 
 #: views.py:300
 msgid "Passwords do not match, try again."
@@ -208,9 +208,7 @@ msgstr "Hasła nie pasują, spróbuj ponownie."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu "
-"administratora w takich przypadkach."
+msgstr "Super user oraz staff user reset nie jest możliwa , należy użyć interfejsu administratora w takich przypadkach."
 
 #: views.py:319
 #, python-format

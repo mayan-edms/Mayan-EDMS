@@ -11,8 +11,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:19-0400\n"
-"PO-Revision-Date: 2016-10-28 07:34+0000\n"
+"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"PO-Revision-Date: 2016-11-23 06:46+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -132,7 +132,7 @@ msgstr "Instancias de índices"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
+msgstr "Introduzca una plantilla para generar. Use el lenguaje de plantillas de Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). "
 
 #: models.py:118
 msgid "Indexing expression"
@@ -253,12 +253,12 @@ msgstr "Crear nodo hijo de: %s"
 #: views.py:196
 #, python-format
 msgid "Delete the index template node: %s?"
-msgstr ""
+msgstr "¿Borrar el nodo de plantilla de indice: %s?"
 
 #: views.py:218
 #, python-format
 msgid "Edit the index template node: %s?"
-msgstr ""
+msgstr "¿Editar el nodo de plantilla de indice: %s?"
 
 #: views.py:286
 #, python-format
@@ -273,7 +273,7 @@ msgstr "contenido del indice: %s"
 #: views.py:331
 #, python-format
 msgid "Indexes nodes containing document: %s"
-msgstr ""
+msgstr "Nodos de indices que contienen el documento: %s"
 
 #: views.py:341
 msgid "On large databases this operation may take some time to execute."

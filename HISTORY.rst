@@ -12,6 +12,13 @@ the user links
 - New Dashboard view
 - Moved licenses to their own module in every app
 - Update project to work with Django 1.9.11
+- Tags are alphabetically ordered by label (GitLab #342).
+- Stop loading theme fonts from the web (Gitlab #343).
+
+2.1.6 (2016-11-23)
+=================
+- Fix variable name typo in the rotation transformation class.
+- Update translations
 
 2.1.5 (2016-11-08)
 ==================

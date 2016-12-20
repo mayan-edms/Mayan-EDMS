@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:19-0400\n"
-"PO-Revision-Date: 2016-10-28 07:33+0000\n"
+"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"PO-Revision-Date: 2016-11-17 08:59+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Slovenian (Slovenia) (http://www.transifex.com/rosarior/mayan-edms/language/sl_SI/)\n"
 "MIME-Version: 1.0\n"
@@ -35,7 +35,7 @@ msgstr ""
 
 #: apps.py:107 models.py:65 models.py:158 models.py:626 search.py:20
 msgid "Label"
-msgstr ""
+msgstr "Oznaka"
 
 #: apps.py:112
 msgid "The MIME type of any of the versions of a document"

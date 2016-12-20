@@ -1,25 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# lilo.panic, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:23-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/ru/)\n"
-"Language: ru\n"
+"POT-Creation-Date: 2016-11-23 02:57-0400\n"
+"PO-Revision-Date: 2016-07-14 10:52+0000\n"
+"Last-Translator: lilo.panic\n"
+"Language-Team: Russian (http://www.transifex.com/rosarior/mayan-edms/language/ru/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
-"%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n"
-"%100>=11 && n%100<=14)? 2 : 3);\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=4; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<12 || n%100>14) ? 1 : n%10==0 || (n%10>=5 && n%10<=9) || (n%100>=11 && n%100<=14)? 2 : 3);\n"
 
 #: apps.py:37 permissions.py:7
 msgid "User management"
@@ -27,19 +25,19 @@ msgstr "Управление пользователями"
 
 #: apps.py:47
 msgid "All the groups."
-msgstr ""
+msgstr "Все группы"
 
 #: apps.py:51
 msgid "All the users."
-msgstr ""
+msgstr "Все пользователи."
 
 #: apps.py:56 links.py:30
 msgid "Members"
-msgstr ""
+msgstr "Участники"
 
 #: apps.py:60
 msgid "Full name"
-msgstr ""
+msgstr "Полное имя"
 
 #: apps.py:63
 msgid "Email"
@@ -47,11 +45,11 @@ msgstr "Email"
 
 #: apps.py:66
 msgid "Active"
-msgstr ""
+msgstr "Активен"
 
 #: apps.py:72
 msgid "Has usable password?"
-msgstr ""
+msgstr "Есть действующий пароль?"
 
 #: forms.py:16
 msgid "New password"
@@ -63,11 +61,11 @@ msgstr "Подтвердите пароль"
 
 #: links.py:14 views.py:29
 msgid "Create new group"
-msgstr ""
+msgstr "Создать новую группу"
 
 #: links.py:18 links.py:42 links.py:58
 msgid "Delete"
-msgstr ""
+msgstr "Удалить"
 
 #: links.py:22 links.py:46
 msgid "Edit"
@@ -79,7 +77,7 @@ msgstr "Группы"
 
 #: links.py:38 views.py:197
 msgid "Create new user"
-msgstr ""
+msgstr "Создать нового пользователя"
 
 #: links.py:54 links.py:70 views.py:169
 msgid "Users"
@@ -87,7 +85,7 @@ msgstr "Пользователи"
 
 #: links.py:62 links.py:66
 msgid "Reset password"
-msgstr ""
+msgstr "Сбросить пароль"
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -124,43 +122,44 @@ msgstr "Просмотр существующих пользователей"
 #: views.py:45
 #, python-format
 msgid "Edit group: %s"
-msgstr ""
+msgstr "Редактировать группу: %s"
 
 #: views.py:66
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
-msgstr ""
+msgstr "Удалить группу: %s?"
 
 #: views.py:72
 msgid "Available users"
-msgstr ""
+msgstr "Доступные пользователи"
 
 #: views.py:73
 msgid "Members of groups"
-msgstr ""
+msgstr "Участники групп"
 
 #: views.py:94
 #, python-format
 msgid "Members of group: %s"
-msgstr ""
+msgstr "Член групп: %s"
 
 #: views.py:127
 #, python-format
 msgid "Edit user: %s"
-msgstr ""
+msgstr "Редактировать пользователя: %s."
 
 #: views.py:133
 msgid "Available groups"
-msgstr ""
+msgstr "Доступные группы"
 
 #: views.py:134
 msgid "Groups joined"
-msgstr ""
+msgstr "Участник групп"
 
 #: views.py:143
 #, python-format
 msgid "Groups of user: %s"
-msgstr ""
+msgstr "Группы пользователя: %s"
 
 #: views.py:188
 #, python-format
@@ -175,9 +174,7 @@ msgstr "Должен быть хотя бы один пользователь."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Удаление суперпользователя и  персонала не допускается, используйте "
-"интерфейс администратора для этих случаев."
+msgstr "Удаление суперпользователя и  персонала не допускается, используйте интерфейс администратора для этих случаев."
 
 #: views.py:237
 #, python-format
@@ -191,13 +188,15 @@ msgstr "Ошибка при удалении пользователя \"%(user)s
 
 #: views.py:255
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete the user: %s?"
-msgstr ""
+msgstr "Удалить пользователя: %s?"
 
 #: views.py:257
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete the users: %s?"
-msgstr ""
+msgstr "Удалить пользователей: %s?"
 
 #: views.py:300
 msgid "Passwords do not match, try again."
@@ -207,9 +206,7 @@ msgstr "Пароли не совпадают, попробуйте еще раз
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Сброс паролей суперпользователя и персонала не допускается, используйте "
-"интерфейс администратора для этих случаев."
+msgstr "Сброс паролей суперпользователя и персонала не допускается, используйте интерфейс администратора для этих случаев."
 
 #: views.py:319
 #, python-format

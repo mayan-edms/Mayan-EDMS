@@ -12,8 +12,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:21-0400\n"
-"PO-Revision-Date: 2016-10-28 07:35+0000\n"
+"POT-Creation-Date: 2016-11-23 02:55-0400\n"
+"PO-Revision-Date: 2016-11-23 06:39+0000\n"
 "Last-Translator: Roberto Rosario\n"
 "Language-Team: Spanish (http://www.transifex.com/rosarior/mayan-edms/language/es/)\n"
 "MIME-Version: 1.0\n"
@@ -32,7 +32,7 @@ msgstr "Documentos que sin metadatos requeridos"
 
 #: apps.py:93
 msgid "Documents missing optional metadata"
-msgstr ""
+msgstr "Documentos sin metadatos opcionales"
 
 #: apps.py:112
 msgid ""
@@ -92,22 +92,22 @@ msgstr "Actualizar"
 #: forms.py:65
 #, python-format
 msgid "Lookup value error: %s"
-msgstr ""
+msgstr "Error en valor de búsqueda: %s"
 
 #: forms.py:78
 #, python-format
 msgid "Default value error: %s"
-msgstr ""
+msgstr "Error en valor por defecto: %s"
 
 #: forms.py:94 models.py:124
 #, python-format
 msgid "\"%s\" is required for this document type."
-msgstr ""
+msgstr "\"%s\" es requerido para este tipo de documento."
 
 #: forms.py:130
 #| msgid " Available models: %s"
 msgid " Available template context variables: "
-msgstr ""
+msgstr "Variables de contexto de plantilla disponibles:"
 
 #: forms.py:141
 msgid "Remove"
@@ -154,7 +154,7 @@ msgstr "Tipos de metadatos"
 msgid ""
 "Name used by other apps to reference this value. Do not use python reserved "
 "words, or spaces."
-msgstr ""
+msgstr "Nombre usado por otros módulos para hacer referencia a este valor. No utilize palabras reservadas de Python o espacios."
 
 #: models.py:47
 msgid "Label"
@@ -164,7 +164,7 @@ msgstr "Etiqueta"
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
+msgstr "Introduzca una plantilla para generar. Use el lenguaje de plantillas de Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). "
 
 #: models.py:55
 msgid "Default"
@@ -175,7 +175,7 @@ msgid ""
 "Enter a template to render. Must result in a comma delimited string. Use "
 "Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)."
-msgstr ""
+msgstr "Introduzca una plantilla para generar. Debe resultar en una cadena de texto delimitada por comas. Use el lenguaje de plantillas de Django (https://docs.djangoproject.com/en/1.7/ref/templates/builtins/). "
 
 #: models.py:65
 msgid "Lookup"
@@ -185,7 +185,7 @@ msgstr "Lista de opciones"
 msgid ""
 "The validator will reject data entry if the value entered does not conform "
 "to the expected format."
-msgstr ""
+msgstr "El validador rechazará la entrada de datos si el valor introducido no se ajusta al formato esperado."
 
 #: models.py:72
 msgid "Validator"
@@ -195,11 +195,11 @@ msgstr "Validador"
 msgid ""
 "The parser will reformat the value entered to conform to the expected "
 "format."
-msgstr ""
+msgstr "El analizador volverá a formatear el valor introducido para ajustarse al formato esperado."
 
 #: models.py:78
 msgid "Parser"
-msgstr ""
+msgstr "Analizador"
 
 #: models.py:131
 msgid "Value is not one of the provided options."
@@ -279,7 +279,7 @@ msgstr "Llave principal del tipo de meta datos a ser agregada."
 
 #: serializers.py:40
 msgid "Primary key of the document metadata type."
-msgstr ""
+msgstr "Llave primaria del tipo de metadato del documento."
 
 #: serializers.py:46
 msgid "Value of the corresponding metadata type instance."
@@ -302,7 +302,7 @@ msgstr[1] "Los documentos seleccionados no tienen metadatos."
 #: views.py:139
 #, python-format
 msgid "Error editing metadata for document: %(document)s; %(exception)s."
-msgstr ""
+msgstr "Error editando metadato para el documento %(document)s; %(exception)s."
 
 #: views.py:150
 #, python-format

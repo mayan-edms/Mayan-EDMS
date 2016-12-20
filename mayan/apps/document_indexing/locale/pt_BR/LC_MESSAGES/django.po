@@ -4,15 +4,16 @@
 # 
 # Translators:
 # Translators:
+# Aline Freitas <aline@alinefreitas.com.br>, 2016
 # Renata Oliveira <renatabels@gmail.com>, 2011
 # Rogerio Falcone <rogerio@falconeit.com.br>, 2015
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:19-0400\n"
-"PO-Revision-Date: 2016-10-28 07:34+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"PO-Revision-Date: 2016-11-17 23:07+0000\n"
+"Last-Translator: Aline Freitas <aline@alinefreitas.com.br>\n"
 "Language-Team: Portuguese (Brazil) (http://www.transifex.com/rosarior/mayan-edms/language/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -31,23 +32,23 @@ msgstr "Tipos de Documentos"
 #: apps.py:49
 #| msgid "document indexes"
 msgid "Document indexing"
-msgstr ""
+msgstr "Indexação de documentos"
 
 #: apps.py:125 models.py:25
 msgid "Label"
-msgstr "Label"
+msgstr "Etiqueta"
 
 #: apps.py:126 models.py:30
 msgid "Slug"
-msgstr "Slug"
+msgstr "Identificador"
 
 #: apps.py:128 apps.py:148 models.py:38 models.py:126
 msgid "Enabled"
-msgstr "habilitado"
+msgstr "Habilitado"
 
 #: apps.py:133 apps.py:163 apps.py:176
 msgid "Items"
-msgstr "itens"
+msgstr "Itens"
 
 #: apps.py:144
 msgid "Level"
@@ -63,16 +64,16 @@ msgstr "Nó"
 
 #: handlers.py:18
 msgid "Creation date"
-msgstr "data de criação"
+msgstr "Data de criação"
 
 #: links.py:18 links.py:22 links.py:25 links.py:28 models.py:83 views.py:75
 #: views.py:235
 msgid "Indexes"
-msgstr "Indices"
+msgstr "Índices"
 
 #: links.py:31 views.py:36
 msgid "Create index"
-msgstr "Criar Index"
+msgstr "Criar índice"
 
 #: links.py:35 links.py:64
 msgid "Edit"
@@ -84,7 +85,7 @@ msgstr "Excluir"
 
 #: links.py:44
 msgid "Tree template"
-msgstr "Template Árvore"
+msgstr "Árvore de modelo"
 
 #: links.py:54
 msgid "Deletes and creates from scratch all the document indexes."
@@ -103,35 +104,35 @@ msgstr "Novo node filho"
 msgid ""
 "Error indexing document: %(document)s; expression: %(expression)s; "
 "%(exception)s"
-msgstr "Error indexing document: %(document)s; expression: %(expression)s; %(exception)s"
+msgstr "Erro indexando documento: %(document)s; expressão: %(expression)s; %(exception)s"
 
 #: models.py:29
 #| msgid "Internal name used to reference this index."
 msgid "This values will be used by other apps to reference this index."
-msgstr ""
+msgstr "Estes valores serão utilizados por outras aplicações para fazer referência a este índice."
 
 #: models.py:35
 msgid ""
 "Causes this index to be visible and updated when document data changes."
-msgstr "Faz com que este índice seja visível, e atualizado quando alterações de dados de documentos."
+msgstr "Faz com que este índice seja visível e atualizado quando dados de documentos forem alterados."
 
 #: models.py:82 models.py:109
 msgid "Index"
-msgstr "Indice"
+msgstr "Índice"
 
 #: models.py:101
 msgid "Index instance"
-msgstr "index instance"
+msgstr "Instância de índice"
 
 #: models.py:102
 msgid "Index instances"
-msgstr ""
+msgstr "Instâncias de índice"
 
 #: models.py:114
 msgid ""
 "Enter a template to render. Use Django's default templating language "
 "(https://docs.djangoproject.com/en/1.7/ref/templates/builtins/)"
-msgstr ""
+msgstr "Insira um modelo para renderizar. Use a linguagem de modelo padrão do Django (https://docs.djangoproject.com/pt-br/1.10/ref/templates/builtins/)"
 
 #: models.py:118
 msgid "Indexing expression"
@@ -139,13 +140,13 @@ msgstr "Indexando expressão"
 
 #: models.py:123
 msgid "Causes this node to be visible and updated when document data changes."
-msgstr "Faz com que este nó para ser quando alterações de dados do documento visível e atualizado."
+msgstr "Faz com que este nó seja visível e atualizado quando dados do documento forem alterados."
 
 #: models.py:131
 msgid ""
 "Check this option to have this node act as a container for documents and not"
 " as a parent for further nodes."
-msgstr "Marque esta opção para que este nó ato como um contêiner para documentos e não como um pai para mais nós."
+msgstr "Marque esta opção para que este nó atue como um recipiente para documentos e não como um pai para outros nós secundários."
 
 #: models.py:134
 msgid "Link documents"
@@ -157,15 +158,15 @@ msgstr "Raiz"
 
 #: models.py:144
 msgid "Index node template"
-msgstr "Índice Template de nó"
+msgstr "Índice de modelo de nó"
 
 #: models.py:145
 msgid "Indexes node template"
-msgstr "Indices Template de Nó"
+msgstr "Indices de modelo de nó"
 
 #: models.py:153
 msgid "Index template node"
-msgstr "Indice Template de nó"
+msgstr "Indice de modelo de índice"
 
 #: models.py:156
 msgid "Value"
@@ -177,7 +178,7 @@ msgstr "Documento"
 
 #: models.py:204
 msgid "Index node instance"
-msgstr "Índice instância de nó"
+msgstr "Índice de instância de nó"
 
 #: models.py:205
 msgid "Indexes node instances"
@@ -185,11 +186,11 @@ msgstr "Índices instâncias de nó "
 
 #: models.py:213
 msgid "Document index node instance"
-msgstr ""
+msgstr "Instâncias do nó do índice de documentos"
 
 #: models.py:214
 msgid "Document indexes node instances"
-msgstr ""
+msgstr "Instâncias de nós de lindice de instâncias"
 
 #: permissions.py:7
 msgid "Indexing"
@@ -197,7 +198,7 @@ msgstr "Indexando"
 
 #: permissions.py:10
 msgid "Create new document indexes"
-msgstr "riar novo documento indexado"
+msgstr "Criar novo documento indexado"
 
 #: permissions.py:13
 msgid "Edit document indexes"
@@ -205,7 +206,7 @@ msgstr "Editar documento indexado"
 
 #: permissions.py:16
 msgid "Delete document indexes"
-msgstr "Excluir documento indexeado"
+msgstr "Excluir documento indexado"
 
 #: permissions.py:19
 msgid "View document indexes"
@@ -219,7 +220,7 @@ msgstr "Reconstruir índices de documento"
 #, python-format
 #| msgid "Delete document indexes"
 msgid "Delete the index: %s?"
-msgstr ""
+msgstr "Apagar o índice: %s?"
 
 #: views.py:64
 #, python-format
@@ -228,41 +229,41 @@ msgstr "Editar Indice: %s"
 
 #: views.py:81
 msgid "Available document types"
-msgstr ""
+msgstr "Tipos de documentos disponíveis"
 
 #: views.py:83
 msgid "Document types linked"
-msgstr ""
+msgstr "Tipos de documentos vinculados"
 
 #: views.py:106
 #, python-format
 msgid "Document types linked to index: %s"
-msgstr ""
+msgstr "Tipos de documentos vinculados ao índice: %s"
 
 #: views.py:145
 #, python-format
 msgid "Tree template nodes for index: %s"
-msgstr "Árvore nó modelo para  o índice: %s"
+msgstr "Nós de modelo da árvore do índice: %s"
 
 #: views.py:172
 #, python-format
 msgid "Create child node of: %s"
-msgstr ""
+msgstr "Criar nó filho de: %s"
 
 #: views.py:196
 #, python-format
 msgid "Delete the index template node: %s?"
-msgstr ""
+msgstr "Excluir o nó de modelo de índice: %s?"
 
 #: views.py:218
 #, python-format
 msgid "Edit the index template node: %s?"
-msgstr ""
+msgstr "Editar o nó de modelo de índice: %s?"
 
 #: views.py:286
 #, python-format
 msgid "Navigation: %s"
-msgstr ""
+msgstr "Navegação: %s"
 
 #: views.py:291
 #, python-format
@@ -272,7 +273,7 @@ msgstr "Conteúdo para Indice? %s"
 #: views.py:331
 #, python-format
 msgid "Indexes nodes containing document: %s"
-msgstr ""
+msgstr "Indexar nós contendo documento: %s"
 
 #: views.py:341
 msgid "On large databases this operation may take some time to execute."
@@ -280,11 +281,11 @@ msgstr "Em grandes bases de dados esta operação pode levar algum tempo para ex
 
 #: views.py:342
 msgid "Rebuild all indexes?"
-msgstr ""
+msgstr "Reconstruir todos os índices?"
 
 #: views.py:351
 msgid "Index rebuild queued successfully."
-msgstr "Sucesso do Rebuild da fila de indice."
+msgstr "Índices em fila reconstruídos com sucesso."
 
 #~ msgid "Index list"
 #~ msgstr "index list"

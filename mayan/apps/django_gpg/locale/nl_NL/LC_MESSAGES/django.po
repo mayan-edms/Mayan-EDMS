@@ -1,55 +1,55 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:19-0400\n"
-"PO-Revision-Date: 2016-04-27 18:22+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"PO-Revision-Date: 2016-11-09 16:40+0000\n"
+"Last-Translator: Evelijn Saaltink <evelijnsaaltink@gmail.com>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:30
 msgid "Django GPG"
-msgstr ""
+msgstr "Django GPG"
 
 #: apps.py:73 apps.py:76 forms.py:17
 msgid "Key ID"
-msgstr ""
+msgstr "Sleutel-ID"
 
 #: apps.py:74 apps.py:87 forms.py:19 models.py:47
 msgid "User ID"
-msgstr ""
+msgstr "Gebruikers-ID"
 
 #: apps.py:77 forms.py:34 models.py:50
 msgid "Type"
-msgstr ""
+msgstr "Type"
 
 #: apps.py:79 forms.py:23 models.py:31
 msgid "Creation date"
-msgstr ""
+msgstr "Aanmaakdatum"
 
 #: apps.py:82 forms.py:27 models.py:35
 msgid "Expiration date"
-msgstr ""
+msgstr "Verloopdatu"
 
 #: apps.py:83
 msgid "No expiration"
-msgstr ""
+msgstr "Geen verloop"
 
 #: apps.py:85 forms.py:32 models.py:42
 msgid "Length"
-msgstr ""
+msgstr "Lengte"
 
 #: forms.py:28
 msgid "None"
@@ -57,15 +57,15 @@ msgstr "Geen"
 
 #: forms.py:31 models.py:39
 msgid "Fingerprint"
-msgstr ""
+msgstr "Vingerafdru"
 
 #: forms.py:33 models.py:45
 msgid "Algorithm"
-msgstr ""
+msgstr "Algoritme"
 
 #: forms.py:47
 msgid "Term"
-msgstr ""
+msgstr "Voorwaarde"
 
 #: forms.py:48
 msgid "Name, e-mail, key ID or key fingerprint to look for."
@@ -89,39 +89,40 @@ msgstr ""
 
 #: links.py:29
 msgid "Import"
-msgstr ""
+msgstr "Importeren"
 
 #: links.py:34 permissions.py:7
 msgid "Key management"
-msgstr ""
+msgstr "Sleutelbeheer"
 
 #: links.py:37
+#| msgid "Import key"
 msgid "Upload key"
-msgstr ""
+msgstr "Upload sleutel"
 
 #: links.py:41 views.py:160
 msgid "Private keys"
-msgstr ""
+msgstr "Privésleutels"
 
 #: links.py:45 views.py:149
 msgid "Public keys"
-msgstr ""
+msgstr "Openbare sleutels"
 
 #: literals.py:6 literals.py:14
 msgid "Public"
-msgstr ""
+msgstr "Openbaar"
 
 #: literals.py:7 literals.py:15
 msgid "Secret"
-msgstr ""
+msgstr "Geheim"
 
 #: literals.py:23 literals.py:28
 msgid "RSA"
-msgstr ""
+msgstr "RSA"
 
 #: literals.py:24
 msgid "DSA"
-msgstr ""
+msgstr "DSA"
 
 #: literals.py:29
 msgid "Elgamal"
@@ -133,11 +134,11 @@ msgstr ""
 
 #: literals.py:46
 msgid "Document not signed or invalid signature."
-msgstr ""
+msgstr "Document niet getekend of ongeldige handtekening."
 
 #: literals.py:49
 msgid "Signature error."
-msgstr ""
+msgstr "Handtekeningfout"
 
 #: literals.py:53
 msgid "Document is signed but no public key is available for verification."
@@ -145,11 +146,11 @@ msgstr ""
 
 #: literals.py:58
 msgid "Document is signed, and signature is good."
-msgstr ""
+msgstr "Document is getekend, en handtekening is goed."
 
 #: literals.py:61
 msgid "Document is signed with a valid signature."
-msgstr ""
+msgstr "Document is getekend met een geldige handtekening."
 
 #: models.py:27
 msgid "ASCII armored version of the key."
@@ -160,28 +161,29 @@ msgid "Key data"
 msgstr ""
 
 #: models.py:56
+#| msgid "Key ID"
 msgid "Key"
-msgstr ""
+msgstr "Sleutel"
 
 #: models.py:57
 msgid "Keys"
-msgstr ""
+msgstr "Sleutels"
 
 #: models.py:63
 msgid "Invalid key data"
-msgstr ""
+msgstr "Ongeldige sleutelgegevens"
 
 #: models.py:66
 msgid "Key already exists."
-msgstr ""
+msgstr "Sleutel bestaat al."
 
 #: permissions.py:10
 msgid "Delete keys"
-msgstr ""
+msgstr "Verwijder sleutels"
 
 #: permissions.py:13
 msgid "Download keys"
-msgstr ""
+msgstr "Download sleutels"
 
 #: permissions.py:16
 msgid "Import keys from keyservers"
@@ -192,16 +194,18 @@ msgid "Use keys to sign content"
 msgstr ""
 
 #: permissions.py:22
+#| msgid "public keys"
 msgid "Upload keys"
 msgstr ""
 
 #: permissions.py:25
 msgid "View keys"
-msgstr ""
+msgstr "Bekijk sleutels"
 
 #: settings.py:10
+#| msgid "Signature error."
 msgid "Signatures"
-msgstr ""
+msgstr "Handtekeningen"
 
 #: settings.py:15
 msgid "Home directory used to store keys as well as configuration files."
@@ -212,11 +216,13 @@ msgid "Path to the GPG binary."
 msgstr ""
 
 #: settings.py:25
+#| msgid "List of keyservers to be queried for unknown keys."
 msgid "Keyserver used to query for keys."
 msgstr ""
 
 #: views.py:38
 #, python-format
+#| msgid "Delete keys"
 msgid "Delete key: %s"
 msgstr ""
 
@@ -227,15 +233,17 @@ msgstr ""
 
 #: views.py:68
 #, python-format
+#| msgid "Import key"
 msgid "Import key ID: %s?"
 msgstr ""
 
 #: views.py:69
 msgid "Import key"
-msgstr ""
+msgstr "Importeer sleutel"
 
 #: views.py:78
 #, python-format
+#| msgid "Unable to import key id: %(key_id)s; %(error)s"
 msgid "Unable to import key: %(key_id)s; %(error)s"
 msgstr ""
 
@@ -279,12 +287,12 @@ msgstr ""
 #~ msgstr "Delete key"
 
 #~ msgid ""
-#~ "Delete key %s? If you delete a public key that is part of a public/"
-#~ "private pair the private key will be deleted as well."
+#~ "Delete key %s? If you delete a public key that is part of a public/private "
+#~ "pair the private key will be deleted as well."
 #~ msgstr ""
-#~ "Are you sure you wish to delete key: %s?  If you try to delete a public "
-#~ "key that is part of a public/private pair the private key will be deleted "
-#~ "as well."
+#~ "Are you sure you wish to delete key: %s?  If you try to delete a public key "
+#~ "that is part of a public/private pair the private key will be deleted as "
+#~ "well."
 
 #~ msgid "results"
 #~ msgstr "results"

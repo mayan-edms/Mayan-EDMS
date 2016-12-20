@@ -1,32 +1,32 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:20-0400\n"
-"PO-Revision-Date: 2016-03-21 21:11+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-"
-"edms/language/nl_NL/)\n"
-"Language: nl_NL\n"
+"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"PO-Revision-Date: 2016-11-01 09:04+0000\n"
+"Last-Translator: Evelijn Saaltink <evelijnsaaltink@gmail.com>\n"
+"Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 links.py:16 links.py:44 models.py:45 permissions.py:7
 #: views.py:104
 msgid "Folders"
-msgstr ""
+msgstr "Mappen"
 
 #: apps.py:68
 msgid "Created"
-msgstr ""
+msgstr "Aangemaakt"
 
 #: apps.py:71 links.py:47 models.py:26
 msgid "Documents"
@@ -38,15 +38,15 @@ msgstr "Map"
 
 #: links.py:20
 msgid "Add to a folder"
-msgstr ""
+msgstr "Voeg toe aan een map"
 
 #: links.py:24
 msgid "Add to folder"
-msgstr ""
+msgstr "Voeg toe aan map"
 
 #: links.py:27 views.py:42
 msgid "Create folder"
-msgstr ""
+msgstr "Maak map"
 
 #: links.py:32
 msgid "Delete"
@@ -54,7 +54,7 @@ msgstr "Verwijder"
 
 #: links.py:36
 msgid "Remove from folder"
-msgstr ""
+msgstr "Verwijder uit map"
 
 #: links.py:40
 msgid "Edit"
@@ -62,43 +62,45 @@ msgstr "bewerken"
 
 #: models.py:20
 msgid "Label"
-msgstr ""
+msgstr "Label"
 
 #: models.py:23
 msgid "Datetime created"
-msgstr ""
+msgstr "Datumtijd aangemaakt"
 
 #: models.py:63
 msgid "Document folder"
-msgstr ""
+msgstr "Documentmap"
 
 #: models.py:64
 msgid "Document folders"
-msgstr ""
+msgstr "Documentmappen"
 
 #: permissions.py:10
 msgid "Create folders"
-msgstr ""
+msgstr "Maak mappen aan"
 
 #: permissions.py:13
 msgid "Edit folders"
-msgstr ""
+msgstr "Bewerk mappen"
 
 #: permissions.py:16
+#| msgid "Delete new folders"
 msgid "Delete folders"
-msgstr ""
+msgstr "Verwijder mappe"
 
 #: permissions.py:19
 msgid "Remove documents from folders"
-msgstr ""
+msgstr "Verwijder documenten van mappen"
 
 #: permissions.py:22
+#| msgid "Edit new folders"
 msgid "View folders"
-msgstr ""
+msgstr "Bekijk mappen"
 
 #: permissions.py:27
 msgid "Add documents to folders"
-msgstr ""
+msgstr "Voeg documenten toe aan mappe"
 
 #: serializers.py:58
 msgid "Primary key of the document to be added."
@@ -106,23 +108,24 @@ msgstr ""
 
 #: views.py:54
 #, python-format
+#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
-msgstr ""
+msgstr "Verwijder de map: %s?"
 
 #: views.py:66
 #, python-format
 msgid "Documents in folder: %s"
-msgstr ""
+msgstr "Documenten in map: %s"
 
 #: views.py:93
 #, python-format
 msgid "Edit folder: %s"
-msgstr ""
+msgstr "Bewerk map: %s"
 
 #: views.py:127
 #, python-format
 msgid "Folders containing document: %s"
-msgstr ""
+msgstr "Mappen die document %s bevatten"
 
 #: views.py:141
 msgid "Must provide at least one document."
@@ -131,27 +134,27 @@ msgstr "U dient minstens 1 document aan te geven."
 #: views.py:175
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
-msgstr ""
+msgstr "Document: %(document)s succesvol toegevoegd aan map: %(folder)s."
 
 #: views.py:184
 #, python-format
 msgid "Document: %(document)s is already in folder: %(folder)s."
-msgstr ""
+msgstr "Document: %(document)s bestaat al in map: %(folder)s."
 
 #: views.py:205
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Voeg document toe aan map"
+msgstr[1] "Voeg documenten toe aan map"
 
 #: views.py:227
 msgid "Must provide at least one folder document."
-msgstr ""
+msgstr "U dient tenminste één mapdocument op te geven."
 
 #: views.py:248
 #, python-format
 msgid "Document: %s removed successfully."
-msgstr ""
+msgstr "Document: %s succesvol verwijderd."
 
 #: views.py:254
 #, python-format
@@ -211,11 +214,11 @@ msgstr[1] ""
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -248,12 +251,12 @@ msgstr[1] ""
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."

@@ -1,24 +1,24 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011
 # Roberto Rosario, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:23-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2016-11-23 02:57-0400\n"
+"PO-Revision-Date: 2016-09-24 11:31+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:37 permissions.py:7
@@ -27,11 +27,11 @@ msgstr "Gestione utenti"
 
 #: apps.py:47
 msgid "All the groups."
-msgstr ""
+msgstr "Tutti i gruppi"
 
 #: apps.py:51
 msgid "All the users."
-msgstr ""
+msgstr "Tutti gli utenti"
 
 #: apps.py:56 links.py:30
 msgid "Members"
@@ -39,7 +39,7 @@ msgstr "Membri "
 
 #: apps.py:60
 msgid "Full name"
-msgstr ""
+msgstr "Nome completo"
 
 #: apps.py:63
 msgid "Email"
@@ -47,11 +47,11 @@ msgstr "Email"
 
 #: apps.py:66
 msgid "Active"
-msgstr ""
+msgstr "Attivo"
 
 #: apps.py:72
 msgid "Has usable password?"
-msgstr ""
+msgstr "La password è utilizzabile?"
 
 #: forms.py:16
 msgid "New password"
@@ -63,7 +63,7 @@ msgstr "Conferma password"
 
 #: links.py:14 views.py:29
 msgid "Create new group"
-msgstr ""
+msgstr "Crea nuovo gruppo"
 
 #: links.py:18 links.py:42 links.py:58
 msgid "Delete"
@@ -79,7 +79,7 @@ msgstr "Gruppi"
 
 #: links.py:38 views.py:197
 msgid "Create new user"
-msgstr ""
+msgstr "Crea nuovo utente"
 
 #: links.py:54 links.py:70 views.py:169
 msgid "Users"
@@ -87,7 +87,7 @@ msgstr "Utenti"
 
 #: links.py:62 links.py:66
 msgid "Reset password"
-msgstr ""
+msgstr "Reset della password"
 
 #: permissions.py:10
 msgid "Create new groups"
@@ -124,30 +124,31 @@ msgstr "Visualizza utenti"
 #: views.py:45
 #, python-format
 msgid "Edit group: %s"
-msgstr ""
+msgstr "Modifica gruppo: %s"
 
 #: views.py:66
 #, python-format
+#| msgid "Delete existing groups"
 msgid "Delete the group: %s?"
-msgstr ""
+msgstr "Cancellare il gruppo: %s?"
 
 #: views.py:72
 msgid "Available users"
-msgstr ""
+msgstr "Utenti disponibili"
 
 #: views.py:73
 msgid "Members of groups"
-msgstr ""
+msgstr "Membri dei gruppi"
 
 #: views.py:94
 #, python-format
 msgid "Members of group: %s"
-msgstr ""
+msgstr "Membri del gruppo: %s"
 
 #: views.py:127
 #, python-format
 msgid "Edit user: %s"
-msgstr ""
+msgstr "Modifica utente: %s"
 
 #: views.py:133
 msgid "Available groups"
@@ -155,12 +156,12 @@ msgstr "Gruppi disponibili "
 
 #: views.py:134
 msgid "Groups joined"
-msgstr ""
+msgstr "Gruppi aggiunti"
 
 #: views.py:143
 #, python-format
 msgid "Groups of user: %s"
-msgstr ""
+msgstr "Gruppi per l'utente: %s"
 
 #: views.py:188
 #, python-format
@@ -175,9 +176,7 @@ msgstr "Devi fornire almeno un utente."
 msgid ""
 "Super user and staff user deleting is not allowed, use the admin interface "
 "for these cases."
-msgstr ""
-"Al super utente e utente non è consentito la cancellazione del personale, "
-"utilizzare l'interfaccia di amministrazione per questi casi."
+msgstr "Al super utente e utente non è consentito la cancellazione del personale, utilizzare l'interfaccia di amministrazione per questi casi."
 
 #: views.py:237
 #, python-format
@@ -191,13 +190,15 @@ msgstr "Errore nella cancellazione dell'utente \"%(user)s\": %(error)s"
 
 #: views.py:255
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete the user: %s?"
-msgstr ""
+msgstr "Cancellare l'utente: %s?"
 
 #: views.py:257
 #, python-format
+#| msgid "Delete existing users"
 msgid "Delete the users: %s?"
-msgstr ""
+msgstr "Cancellare gli utenti: %s?"
 
 #: views.py:300
 msgid "Passwords do not match, try again."
@@ -207,9 +208,7 @@ msgstr "La password non corrisponde, riprova."
 msgid ""
 "Super user and staff user password reseting is not allowed, use the admin "
 "interface for these cases."
-msgstr ""
-"Al super utente e utente non è consentito di reimpostare la password "
-"personale, utilizzare l'interfaccia di amministrazione per questi casi."
+msgstr "Al super utente e utente non è consentito di reimpostare la password personale, utilizzare l'interfaccia di amministrazione per questi casi."
 
 #: views.py:319
 #, python-format
@@ -219,9 +218,7 @@ msgstr "Password reimpostata per l'utente: %s."
 #: views.py:325
 #, python-format
 msgid "Error reseting password for user \"%(user)s\": %(error)s"
-msgstr ""
-"Errore per il reimpostamento della password per l'utente \"%(user)s\": "
-"%(error)s"
+msgstr "Errore per il reimpostamento della password per l'utente \"%(user)s\": %(error)s"
 
 #: views.py:342
 #, python-format

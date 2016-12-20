@@ -1,25 +1,25 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2016
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
 # Roberto Rosario, 2011
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:23-0400\n"
-"PO-Revision-Date: 2016-03-21 21:12+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2016-11-23 02:57-0400\n"
+"PO-Revision-Date: 2016-09-24 10:31+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 apps.py:73 apps.py:90 forms.py:34 forms.py:52 links.py:40
@@ -37,7 +37,7 @@ msgstr "Documenti"
 
 #: forms.py:53
 msgid "Tags to attach to the document."
-msgstr ""
+msgstr "Tag da attaccare al documento."
 
 #: links.py:14
 msgid "Remove tag"
@@ -65,7 +65,7 @@ msgstr "Modifica"
 
 #: models.py:20
 msgid "Label"
-msgstr "etichetta"
+msgstr "Etichetta"
 
 #: models.py:22
 msgid "Color"
@@ -127,15 +127,13 @@ msgstr "Il documento \"%(document)s\" è stato già etichettato come \"%(tag)s\"
 #: views.py:96
 #, python-format
 msgid "Tag \"%(tag)s\" attached successfully to document \"%(document)s\"."
-msgstr ""
-"L'etichetta \"%(tag)s\" è stata allegata con successo al documento "
-"\"%(document)s\""
+msgstr "L'etichetta \"%(tag)s\" è stata allegata con successo al documento \"%(document)s\""
 
 #: views.py:110
 msgid "Attach tag to document"
 msgid_plural "Attach tag to documents"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aggiungi tag al documento"
+msgstr[1] "Aggiungi tag ai documenti"
 
 #: views.py:160
 msgid "Must provide at least one tag."
@@ -158,8 +156,8 @@ msgstr "Sarà rimossa da tutti i documenti"
 #: views.py:199
 msgid "Delete the selected tag?"
 msgid_plural "Delete the selected tags?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Cancellare il tag selezionato?"
+msgstr[1] "Cancellare i tag selezionati?"
 
 #: views.py:231
 #, python-format
@@ -192,16 +190,22 @@ msgstr "Rimuovi l'etichetta dai documenti: %s"
 
 #: views.py:344
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the document: ment)s?"
 msgid "Remove the tag \"%(tag)s\" from the document: %(document)s?"
 msgstr "Rimuovere l'etichetta \"%(tag)s\" dal documento %(document)s?"
 
 #: views.py:351
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tag \"%(tag)s\" from the documents: ments)s?"
 msgid "Remove the tag \"%(tag)s\" from the documents: %(documents)s?"
 msgstr "Rimuovere l'etichetta \"%(tag)s\" dai documenti: %(documents)s?"
 
 #: views.py:360
 #, python-format
+#| msgid ""
+#| "u sure you wish to remove the tags: %(tags)s from the document: ment)s?"
 msgid "Remove the tags: %(tags)s from the document: %(document)s?"
 msgstr "Rimuovere le etichette: %(tags)s dal documento: %(document)s?"
 
@@ -218,8 +222,7 @@ msgstr "Il documento \"%(document)s\" non è stato etichettato come \"%(tag)s\""
 #: views.py:388
 #, python-format
 msgid "Tag \"%(tag)s\" removed successfully from document \"%(document)s\"."
-msgstr ""
-"Etichetta \"%(tag)s\" rimossa con successo dal documento \"%(document)s\"."
+msgstr "Etichetta \"%(tag)s\" rimossa con successo dal documento \"%(document)s\"."
 
 #~ msgid "remove tags"
 #~ msgstr "remove tags"

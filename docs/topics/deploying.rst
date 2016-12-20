@@ -196,8 +196,9 @@ Make the installation directory readable and writable by the webserver user::
 
 Restart the services::
 
-    /etc/init.d/nginx restart
-    /etc/init.d/supervisor restart
+    systemctl enable supervisor
+    systemctl restart supervisor
+    systemctl restart nginx
 
 Docker method
 =============

@@ -1,27 +1,28 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:19-0400\n"
-"PO-Revision-Date: 2016-03-21 21:09+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2016-11-23 02:53-0400\n"
+"PO-Revision-Date: 2016-09-24 09:51+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:23
+#| msgid "Delete comments"
 msgid "Document comments"
-msgstr ""
+msgstr "Commenti documento"
 
 #: apps.py:41
 msgid "Date"
@@ -37,12 +38,14 @@ msgid "Comment"
 msgstr "Commento"
 
 #: events.py:9
+#| msgid "Delete comments"
 msgid "Document comment created"
-msgstr ""
+msgstr "Commento documento creato"
 
 #: events.py:13
+#| msgid "Delete comments"
 msgid "Document comment deleted"
-msgstr ""
+msgstr "Commento documento cancellato"
 
 #: links.py:13
 msgid "Add comment"
@@ -62,7 +65,7 @@ msgstr "Documento"
 
 #: models.py:33
 msgid "Date time submitted"
-msgstr ""
+msgstr "Data e ora di invio"
 
 #: permissions.py:10
 msgid "Create new comments"
@@ -83,8 +86,9 @@ msgstr "Aggiungi un comento al documento: %s"
 
 #: views.py:90
 #, python-format
+#| msgid "Delete comments"
 msgid "Delete comment: %s?"
-msgstr ""
+msgstr "Cancellare il commento: %s?"
 
 #: views.py:122
 #, python-format

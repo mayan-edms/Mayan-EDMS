@@ -4,14 +4,15 @@
 # 
 # Translators:
 # Translators:
+# Evelijn Saaltink <evelijnsaaltink@gmail.com>, 2016
 # woei <root@ipaddr.nl>, 2014
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:18-0400\n"
-"PO-Revision-Date: 2016-10-28 07:33+0000\n"
-"Last-Translator: Roberto Rosario\n"
+"POT-Creation-Date: 2016-11-23 02:52-0400\n"
+"PO-Revision-Date: 2016-11-09 15:54+0000\n"
+"Last-Translator: Evelijn Saaltink <evelijnsaaltink@gmail.com>\n"
 "Language-Team: Dutch (Netherlands) (http://www.transifex.com/rosarior/mayan-edms/language/nl_NL/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -25,7 +26,7 @@ msgstr ""
 
 #: classes.py:53
 msgid "Available attributes: "
-msgstr ""
+msgstr "Beschikbare eigenschappen:"
 
 #: forms.py:27
 msgid "Selection"
@@ -33,7 +34,7 @@ msgstr "Selectie"
 
 #: forms.py:106
 msgid "Filter"
-msgstr ""
+msgstr "Filter"
 
 #: generics.py:126
 #, python-format
@@ -56,7 +57,7 @@ msgstr ""
 #: generics.py:298
 #, python-format
 msgid "%(object)s created successfully."
-msgstr ""
+msgstr "%(object)s succesvol aangemaakt."
 
 #: generics.py:323
 #, python-format
@@ -66,7 +67,7 @@ msgstr ""
 #: generics.py:334
 #, python-format
 msgid "%(object)s deleted successfully."
-msgstr ""
+msgstr "%(object)s succesbol verwijderd."
 
 #: generics.py:379
 #, python-format
@@ -88,15 +89,15 @@ msgstr "gebruiker gegevens"
 
 #: links.py:16
 msgid "Edit details"
-msgstr ""
+msgstr "Bewerk details"
 
 #: links.py:19
 msgid "Locale profile"
-msgstr ""
+msgstr "Lokaal profiel"
 
 #: links.py:23
 msgid "Edit locale profile"
-msgstr ""
+msgstr "bewerk lokaal profiel"
 
 #: links.py:27
 msgid "Data filters"
@@ -108,31 +109,31 @@ msgstr "Licentie"
 
 #: links.py:34 views.py:164
 msgid "Other packages licenses"
-msgstr ""
+msgstr "Andere pakketlicensies"
 
 #: links.py:38
 msgid "Setup"
-msgstr ""
+msgstr "Setu"
 
 #: links.py:41 views.py:194
 msgid "Tools"
-msgstr ""
+msgstr "Gereedschappen"
 
 #: literals.py:13
 msgid "Days"
-msgstr ""
+msgstr "Dagen"
 
 #: literals.py:14
 msgid "Hours"
-msgstr ""
+msgstr "Uren"
 
 #: literals.py:15
 msgid "Minutes"
-msgstr ""
+msgstr "Minuten"
 
 #: mixins.py:125
 msgid "Object"
-msgstr ""
+msgstr "Object"
 
 #: models.py:23
 msgid "File"
@@ -148,11 +149,11 @@ msgstr "Datum en tijd"
 
 #: models.py:31
 msgid "Shared uploaded file"
-msgstr ""
+msgstr "Deel geüpload document"
 
 #: models.py:32
 msgid "Shared uploaded files"
-msgstr ""
+msgstr "Deel geüploade bestanden"
 
 #: models.py:53
 msgid "User"
@@ -160,11 +161,11 @@ msgstr "Gebruiker"
 
 #: models.py:57
 msgid "Timezone"
-msgstr ""
+msgstr "Tijdzone"
 
 #: models.py:60
 msgid "Language"
-msgstr ""
+msgstr "Taal"
 
 #: models.py:67
 msgid "User locale profile"
@@ -203,11 +204,11 @@ msgstr ""
 
 #: views.py:37
 msgid "Current user details"
-msgstr ""
+msgstr "Gegevens van huidige gebruiker"
 
 #: views.py:42
 msgid "Edit current user details"
-msgstr ""
+msgstr "Bewerk gegevens van huidige gebruiker"
 
 #: views.py:62
 msgid "Current user locale profile details"

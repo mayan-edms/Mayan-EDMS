@@ -95,8 +95,6 @@ with open('README.rst') as f:
     readme = f.read()
 with open('HISTORY.rst') as f:
     history = f.read()
-with open('LICENSE') as f:
-    license = f.read()
 
 setup(
     author='Roberto Rosario',
@@ -120,7 +118,7 @@ setup(
     description='Free Open Source Electronic Document Management System',
     include_package_data=True,
     install_requires=install_requires,
-    license=license,
+    license='Apache 2.0',
     long_description=readme + '\n\n' + history,
     name=PACKAGE_NAME,
     packages=find_packages(PACKAGE_DIR),

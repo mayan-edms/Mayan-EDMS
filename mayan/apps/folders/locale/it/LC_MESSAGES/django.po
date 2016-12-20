@@ -1,26 +1,26 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
+# 
 # Translators:
 # Translators:
 # Carlo Zanatto <>, 2012
 # Giovanni Tricarico <gtricarico92@gmail.com>, 2014
+# Marco Camplese <marco.camplese.mc@gmail.com>, 2016
 # Pierpaolo Baldan <pierpaolo.baldan@gmail.com>, 2011-2012
 # Roberto Rosario, 2012
 msgid ""
 msgstr ""
 "Project-Id-Version: Mayan EDMS\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-28 03:20-0400\n"
-"PO-Revision-Date: 2016-03-21 21:11+0000\n"
-"Last-Translator: Roberto Rosario\n"
-"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/"
-"language/it/)\n"
-"Language: it\n"
+"POT-Creation-Date: 2016-11-23 02:54-0400\n"
+"PO-Revision-Date: 2016-09-24 10:31+0000\n"
+"Last-Translator: Marco Camplese <marco.camplese.mc@gmail.com>\n"
+"Language-Team: Italian (http://www.transifex.com/rosarior/mayan-edms/language/it/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: it\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: apps.py:33 links.py:16 links.py:44 models.py:45 permissions.py:7
@@ -30,7 +30,7 @@ msgstr "Cartelle"
 
 #: apps.py:68
 msgid "Created"
-msgstr ""
+msgstr "Creato"
 
 #: apps.py:71 links.py:47 models.py:26
 msgid "Documents"
@@ -42,15 +42,15 @@ msgstr "Cartella"
 
 #: links.py:20
 msgid "Add to a folder"
-msgstr ""
+msgstr "Aggiungi ad una cartella"
 
 #: links.py:24
 msgid "Add to folder"
-msgstr ""
+msgstr "Aggiungi alla cartella"
 
 #: links.py:27 views.py:42
 msgid "Create folder"
-msgstr ""
+msgstr "Crea cartella"
 
 #: links.py:32
 msgid "Delete"
@@ -58,7 +58,7 @@ msgstr "Cancella"
 
 #: links.py:36
 msgid "Remove from folder"
-msgstr ""
+msgstr "Rimuovi dalla cartella"
 
 #: links.py:40
 msgid "Edit"
@@ -66,67 +66,70 @@ msgstr "Modifica"
 
 #: models.py:20
 msgid "Label"
-msgstr "etichetta"
+msgstr "Etichetta"
 
 #: models.py:23
 msgid "Datetime created"
-msgstr ""
+msgstr "Data e ora di creazione"
 
 #: models.py:63
 msgid "Document folder"
-msgstr ""
+msgstr "Cartella documento"
 
 #: models.py:64
 msgid "Document folders"
-msgstr ""
+msgstr "Cartella documenti"
 
 #: permissions.py:10
 msgid "Create folders"
-msgstr ""
+msgstr "Crea cartelle"
 
 #: permissions.py:13
 msgid "Edit folders"
-msgstr ""
+msgstr "Modifica cartelle"
 
 #: permissions.py:16
+#| msgid "Delete new folders"
 msgid "Delete folders"
-msgstr ""
+msgstr "Cancella cartelle"
 
 #: permissions.py:19
 msgid "Remove documents from folders"
 msgstr "Rimuovere i documenti da cartelle"
 
 #: permissions.py:22
+#| msgid "Edit new folders"
 msgid "View folders"
-msgstr ""
+msgstr "Vedi cartelle"
 
 #: permissions.py:27
 msgid "Add documents to folders"
-msgstr ""
+msgstr "Aggiungi i documenti alle cartelle"
 
 #: serializers.py:58
 msgid "Primary key of the document to be added."
-msgstr ""
+msgstr "Chiave primaria del documento da aggiungere"
 
 #: views.py:54
 #, python-format
+#| msgid "Delete new folders"
 msgid "Delete the folder: %s?"
-msgstr ""
+msgstr "Cancellare la cartella: %s?"
 
 #: views.py:66
 #, python-format
 msgid "Documents in folder: %s"
-msgstr ""
+msgstr "Documenti nella cartella: %s?"
 
 #: views.py:93
 #, python-format
 msgid "Edit folder: %s"
-msgstr ""
+msgstr "Modifica cartella: %s"
 
 #: views.py:127
 #, python-format
 msgid "Folders containing document: %s"
-msgstr ""
+msgstr "Cartelle che contengono il documento: %s"
 
 #: views.py:141
 msgid "Must provide at least one document."
@@ -135,8 +138,7 @@ msgstr "Bisogna fornire almeno un documento."
 #: views.py:175
 #, python-format
 msgid "Document: %(document)s added to folder: %(folder)s successfully."
-msgstr ""
-"Documento: %(document)s aggiunto alla cartella: %(folder)s successfully."
+msgstr "Documento: %(document)s aggiunto alla cartella: %(folder)s successfully."
 
 #: views.py:184
 #, python-format
@@ -146,8 +148,8 @@ msgstr "Documento: %(document)s è già nella cartella: %(folder)s."
 #: views.py:205
 msgid "Add document to folder"
 msgid_plural "Add documents to folder"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Aggiungi documento alla cartella"
+msgstr[1] "Aggiungi documenti alla cartella"
 
 #: views.py:227
 msgid "Must provide at least one folder document."
@@ -167,8 +169,8 @@ msgstr "Documento: %(document)s errore di cancellazione: %(error)s"
 #, python-format
 msgid "Remove the selected document from the folder: %(folder)s?"
 msgid_plural "Remove the selected documents from the folder: %(folder)s?"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "Rimuovere il documento selezionato dalla cartella: %(folder)s?"
+msgstr[1] "Rimuovere i documenti selezionati dalla cartella: %(folder)s?"
 
 #~ msgid "A folder named: %s, already exists."
 #~ msgstr "A folder named: %s, already exists."
@@ -216,11 +218,11 @@ msgstr[1] ""
 #~ msgstr "Add documents: %s to folder."
 
 #~ msgid ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 #~ msgstr ""
-#~ "Are you sure you wish to remove the documents: %(documents)s from the "
-#~ "folder \"%(folder)s\"?"
+#~ "Are you sure you wish to remove the documents: %(documents)s from the folder"
+#~ " \"%(folder)s\"?"
 
 #~ msgid "Document"
 #~ msgstr "document"
@@ -253,12 +255,12 @@ msgstr[1] ""
 #~ msgstr "What are folders?"
 
 #~ msgid ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
 #~ msgstr ""
-#~ "These folders can also be described as user folders.  They are a way to "
-#~ "let individual users create their own document organization methods.  "
-#~ "Folders created by one user and the documents contained by them don't "
-#~ "affect any other user folders or documents."
+#~ "These folders can also be described as user folders.  They are a way to let "
+#~ "individual users create their own document organization methods.  Folders "
+#~ "created by one user and the documents contained by them don't affect any "
+#~ "other user folders or documents."
