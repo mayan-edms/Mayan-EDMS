@@ -25,6 +25,7 @@ the user links
 - Tags are alphabetically ordered by label
 - Stop loading theme fonts from the web
 - Add support for attaching multiple tags to single or multiple documents.
+- Refactor the workflow for removing tags from single and multiple documents.
 
 Removals
 --------

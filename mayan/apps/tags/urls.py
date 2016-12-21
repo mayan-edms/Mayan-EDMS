@@ -8,9 +8,8 @@ from .api_views import (
 )
 from .views import (
     DocumentTagListView, TagAttachActionView, TagCreateView,
-    TagDeleteActionView, TagEditView, TagListView, TagTaggedItemListView,
-    multiple_documents_selection_tag_remove,
-    single_document_multiple_tag_remove
+    TagDeleteActionView, TagEditView, TagListView, TagRemoveActionView,
+    TagTaggedItemListView
 )
 
 urlpatterns = [
@@ -31,13 +30,13 @@ urlpatterns = [
     ),
 
     url(
-        r'^multiple/remove/document/(?P<document_id>\d+)/$',
-        single_document_multiple_tag_remove,
+        r'^multiple/remove/document/(?P<pk>\d+)/$',
+        TagRemoveActionView.as_view(),
         name='single_document_multiple_tag_remove'
     ),
     url(
         r'^multiple/remove/document/multiple/$',
-        multiple_documents_selection_tag_remove,
+        TagRemoveActionView.as_view(),
         name='multiple_documents_selection_tag_remove'
     ),
 

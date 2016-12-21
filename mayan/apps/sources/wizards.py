@@ -91,7 +91,10 @@ class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
             return {'user': self.request.user}
 
         if step == STEP_TAGS:
-            return {'user': self.request.user}
+            return {
+                'help_text': _('Tags to be attached.'),
+                'user': self.request.user
+            }
 
         return {}
 

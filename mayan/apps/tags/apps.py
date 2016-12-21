@@ -127,10 +127,6 @@ class TagsApp(MayanAppConfig):
         menu_multi_item.bind_links(
             links=(link_tag_multiple_delete,), sources=(Tag,)
         )
-        menu_multi_item.bind_links(
-            links=(link_single_document_multiple_tag_remove,),
-            sources=(DocumentTag,)
-        )
         menu_object.bind_links(
             links=(
                 link_tag_tagged_item_list, link_tag_edit, link_acl_list,
@@ -139,7 +135,7 @@ class TagsApp(MayanAppConfig):
             sources=(Tag,)
         )
         menu_sidebar.bind_links(
-            links=(link_tag_attach,),
+            links=(link_tag_attach, link_single_document_multiple_tag_remove),
             sources=(
                 'tags:document_tags', 'tags:tag_remove',
                 'tags:tag_multiple_remove', 'tags:tag_attach'

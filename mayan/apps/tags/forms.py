@@ -14,33 +14,21 @@ from .widgets import TagFormWidget
 logger = logging.getLogger(__name__)
 
 
-class TagListForm(forms.Form):
-    def __init__(self, *args, **kwargs):
-        user = kwargs.pop('user', None)
-        logger.debug('user: %s', user)
-        super(TagListForm, self).__init__(*args, **kwargs)
-
-        queryset = AccessControlList.objects.filter_by_access(
-            permission_tag_view, user, queryset=Tag.objects.all()
-        )
-
-        self.fields['tag'] = forms.ModelChoiceField(
-            queryset=queryset, label=_('Tags')
-        )
-
-
 class TagMultipleSelectionForm(forms.Form):
     def __init__(self, *args, **kwargs):
+        help_text = kwargs.pop('help_text', None)
+        queryset = kwargs.pop('queryset', Tag.objects.all())
         user = kwargs.pop('user', None)
+
         logger.debug('user: %s', user)
         super(TagMultipleSelectionForm, self).__init__(*args, **kwargs)
 
         queryset = AccessControlList.objects.filter_by_access(
-            permission_tag_view, user, queryset=Tag.objects.all()
+            permission_tag_view, user, queryset=queryset
         )
 
         self.fields['tags'] = forms.ModelMultipleChoiceField(
-            label=_('Tags'), help_text=_('Tags to attach to the document.'),
+            label=_('Tags'), help_text=help_text,
             queryset=queryset, required=False,
             widget=TagFormWidget(attrs={'class': 'select2'}, queryset=queryset)
         )
