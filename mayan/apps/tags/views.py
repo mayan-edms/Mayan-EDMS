@@ -12,8 +12,8 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 
 from acls.models import AccessControlList
 from common.views import (
-    ActionView, SingleObjectCreateView, SingleObjectEditView,
-    SingleObjectListView
+    MultipleObjectFormActionView, MultipleObjectConfirmActionView,
+    SingleObjectCreateView, SingleObjectEditView, SingleObjectListView
 )
 from documents.models import Document
 from documents.views import DocumentListView
@@ -29,12 +29,14 @@ from .permissions import (
 logger = logging.getLogger(__name__)
 
 
-class TagAttachActionView(ActionView):
+class TagAttachActionView(MultipleObjectFormActionView):
     form_class = TagMultipleSelectionForm
     model = Document
     object_permission = permission_tag_attach
-    success_message = 'Tag attach request performed on %(count)d document'
-    success_message_plural = 'Tag attach request performed on %(count)d documents'
+    success_message = _('Tag attach request performed on %(count)d document')
+    success_message_plural = _(
+        'Tag attach request performed on %(count)d documents'
+    )
 
     def get_extra_context(self):
         queryset = self.get_queryset()
@@ -100,6 +102,66 @@ class TagCreateView(SingleObjectCreateView):
     view_permission = permission_tag_create
 
 
+class TagDeleteActionView(MultipleObjectConfirmActionView):
+    model = Tag
+    post_action_redirect = reverse_lazy('tags:tag_list')
+    object_permission = permission_tag_delete
+    success_message = _('Tag delete request performed on %(count)d tag')
+    success_message_plural = _(
+        'Tag delete request performed on %(count)d tags'
+    )
+
+    def get_extra_context(self):
+        queryset = self.get_queryset()
+
+        result = {
+            'message': _('Will be removed from all documents.'),
+            'submit_icon': _('fa fa-times'),
+            'submit_label': _('Delete'),
+            'title': ungettext(
+                'Delete the selected tag?',
+                'Delete the selected tags?',
+                queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _('Delete tag: %s') % queryset.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, instance, form=None):
+        try:
+            instance.delete()
+            messages.success(
+                self.request, _('Tag "%s" deleted successfully.') % instance
+            )
+        except Exception as exception:
+            messages.error(
+                self.request, _('Error deleting tag "%(tag)s": %(error)s') % {
+                    'tag': instance, 'error': exception
+                }
+            )
+
+
+class TagEditView(SingleObjectEditView):
+    fields = ('label', 'color')
+    model = Tag
+    object_permission = permission_tag_edit
+    post_action_redirect = reverse_lazy('tags:tag_list')
+
+    def get_extra_context(self):
+        return {
+            'object': self.get_object(),
+            'title': _('Edit tag: %s') % self.get_object(),
+        }
+
+
 class TagListView(SingleObjectListView):
     object_permission = permission_tag_view
 
@@ -115,88 +177,6 @@ class TagListView(SingleObjectListView):
 
     def get_tag_queryset(self):
         return Tag.objects.all()
-
-
-def tag_delete(request, tag_id=None, tag_id_list=None):
-    post_action_redirect = None
-
-    if tag_id:
-        queryset = Tag.objects.filter(pk=tag_id)
-        post_action_redirect = reverse('tags:tag_list')
-    elif tag_id_list:
-        queryset = Tag.objects.filter(pk__in=tag_id_list)
-
-    if not queryset:
-        messages.error(request, _('Must provide at least one tag.'))
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
-            )
-        )
-
-    queryset = AccessControlList.objects.filter_by_access(
-        permission_tag_delete, request.user, queryset=queryset
-    )
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        for tag in queryset:
-            try:
-                tag.delete()
-                messages.success(
-                    request, _('Tag "%s" deleted successfully.') % tag
-                )
-            except Exception as exception:
-                messages.error(
-                    request, _('Error deleting tag "%(tag)s": %(error)s') % {
-                        'tag': tag, 'error': exception
-                    }
-                )
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'previous': previous,
-        'message': _('Will be removed from all documents.'),
-        'next': next,
-        'title': ungettext(
-            'Delete the selected tag?',
-            'Delete the selected tags?',
-            queryset.count()
-        )
-    }
-
-    if queryset.count() == 1:
-        context['object'] = queryset.first()
-
-    return render_to_response(
-        'appearance/generic_confirm.html', context,
-        context_instance=RequestContext(request)
-    )
-
-
-def tag_multiple_delete(request):
-    return tag_delete(
-        request, tag_id_list=request.GET.get(
-            'id_list', request.POST.get('id_list', '')
-        ).split(',')
-    )
-
-
-class TagEditView(SingleObjectEditView):
-    fields = ('label', 'color')
-    model = Tag
-    object_permission = permission_tag_edit
-    post_action_redirect = reverse_lazy('tags:tag_list')
-
-    def get_extra_context(self):
-        return {
-            'object': self.get_object(),
-            'title': _('Edit tag: %s') % self.get_object(),
-        }
 
 
 class TagTaggedItemListView(DocumentListView):
