@@ -260,7 +260,8 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         response = self.post(
             'tags:single_document_multiple_tag_remove',
             args=(self.document.pk,), data={
-                'id_list': self.tag.pk,
+                'id_list': self.document.pk,
+                'tags': self.tag.pk,
             }
         )
 
@@ -279,7 +280,8 @@ class TagViewTestCase(GenericDocumentViewTestCase):
         response = self.post(
             'tags:single_document_multiple_tag_remove',
             args=(self.document.pk,), data={
-                'id_list': self.tag.pk,
+                'id_list': self.document.pk,
+                'tags': self.tag.pk,
             }, follow=True
         )
 
@@ -297,7 +299,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             'tags:multiple_documents_selection_tag_remove',
             data={
                 'id_list': self.document.pk,
-                'tag': self.tag.pk,
+                'tags': self.tag.pk,
             }
         )
 
@@ -317,7 +319,7 @@ class TagViewTestCase(GenericDocumentViewTestCase):
             'tags:multiple_documents_selection_tag_remove',
             data={
                 'id_list': self.document.pk,
-                'tag': self.tag.pk,
+                'tags': self.tag.pk,
             }, follow=True
         )
 
