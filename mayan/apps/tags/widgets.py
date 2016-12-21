@@ -43,16 +43,18 @@ def widget_document_tags(document, user):
         app_label='acls', model_name='AccessControlList'
     )
 
-    tags_template = []
+    result = ['<div class="tag-container">']
 
     tags = AccessControlList.objects.filter_by_access(
         permission_tag_view, user, queryset=document.attached_tags().all()
     )
 
     for tag in tags:
-        tags_template.append(widget_single_tag(tag))
+        result.append(widget_single_tag(tag))
 
-    return mark_safe(''.join(tags_template))
+    result.append('</div>')
+
+    return mark_safe(''.join(result))
 
 
 def widget_single_tag(tag):

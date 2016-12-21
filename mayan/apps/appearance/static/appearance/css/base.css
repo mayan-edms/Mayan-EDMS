@@ -163,3 +163,7 @@ a i {
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
     padding-bottom: 1px;
 }
+
+.tag-container .label {
+    margin-right: 2px;
+}
