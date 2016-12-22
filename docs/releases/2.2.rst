@@ -26,7 +26,11 @@ the user links
 - Stop loading theme fonts from the web
 - Add support for attaching multiple tags to single or multiple documents.
 - Refactor the workflow for removing tags from single and multiple documents.
-- Move new version creation blocking from the documents app to the checkouts app
+- Move new version creation blocking from the documents app to the checkouts app.
+- Sample documents moved to distribution to allow running all tests in production.
+- DEBUG now defaults to False.
+- Production settings don't override the DEBUG variable. DEBUG can be set to True
+on production install to debug errors live.
 
 Removals
 --------
