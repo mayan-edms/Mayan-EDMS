@@ -16,7 +16,7 @@ class Command(management.BaseCommand):
         return get_random_string(50, chars)
 
     def handle(self, *args, **options):
-        path = os.path.join(settings.BASE_DIR, 'mayan', 'settings', 'local.py')
+        path = os.path.join(settings.BASE_DIR, 'settings', 'local.py')
         if os.path.exists(path):
             self.stdout.write(self.style.NOTICE('Existing settings file at: {0}. Backup, remove this file, and try again.'.format(path)))
         else:

@@ -111,7 +111,7 @@ class FilterForm(forms.Form):
 
 
 class LicenseForm(FileDisplayForm):
-    DIRECTORY = ('mayan',)
+    DIRECTORY = ()
     FILENAME = 'LICENSE'
 
 

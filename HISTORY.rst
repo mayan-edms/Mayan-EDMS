@@ -11,7 +11,7 @@
 the user links
 - New Dashboard view
 - Moved licenses to their own module in every app
-- Update project to work with Django 1.9.11
+- Update project to work with Django 1.10.4.
 - Tags are alphabetically ordered by label (GitLab #342).
 - Stop loading theme fonts from the web (GitLab #343).
 - Add support for attaching multiple tags (GitLab #307).
