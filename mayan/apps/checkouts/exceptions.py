@@ -23,3 +23,10 @@ class DocumentAlreadyCheckedOut(DocumentCheckoutError):
     """
     def __unicode__(self):
         return ugettext('Document already checked out.')
+
+
+class NewDocumentVersionNotAllowed(DocumentCheckoutError):
+    """
+    Uploading new versions for this document is not allowed
+    """
+    pass

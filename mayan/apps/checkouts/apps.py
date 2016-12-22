@@ -6,6 +6,7 @@ from kombu import Exchange, Queue
 
 from django.apps import apps
 from django.core.urlresolvers import reverse_lazy
+from django.db.models.signals import pre_save
 from django.utils.translation import ugettext_lazy as _
 
 from acls import ModelPermission
@@ -14,6 +15,7 @@ from common.classes import DashboardWidget
 from mayan.celery import app
 from rest_api.classes import APIEndPoint
 
+from .handlers import check_new_version_creation
 from .links import (
     link_checkin_document, link_checkout_document, link_checkout_info,
     link_checkout_list
@@ -39,6 +41,9 @@ class CheckoutsApp(MayanAppConfig):
 
         Document = apps.get_model(
             app_label='documents', model_name='Document'
+        )
+        DocumentVersion = apps.get_model(
+            app_label='documents', model_name='DocumentVersion'
         )
 
         DocumentCheckout = self.get_model('DocumentCheckout')
@@ -116,4 +121,10 @@ class CheckoutsApp(MayanAppConfig):
                 'checkouts:checkout_info', 'checkouts:checkout_document',
                 'checkouts:checkin_document'
             )
+        )
+
+        pre_save.connect(
+            check_new_version_creation,
+            dispatch_uid='check_new_version_creation',
+            sender=DocumentVersion
         )

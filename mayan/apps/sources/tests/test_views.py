@@ -9,9 +9,10 @@ from django.test.client import Client
 from django.test import TestCase, override_settings
 
 from acls.models import AccessControlList
+from checkouts.models import NewVersionBlock
 from common.tests.test_views import GenericViewTestCase
 from common.utils import fs_cleanup, mkdtemp
-from documents.models import Document, DocumentType, NewVersionBlock
+from documents.models import Document, DocumentType
 from documents.permissions import permission_document_create
 from documents.tests import (
     TEST_DOCUMENT_PATH, TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_DESCRIPTION,

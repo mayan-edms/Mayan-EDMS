@@ -20,7 +20,7 @@ from .permissions import (
 
 def document_new_version_not_blocked(context):
     NewVersionBlock = apps.get_model(
-        app_label='documents', model_name='NewVersionBlock'
+        app_label='checkouts', model_name='NewVersionBlock'
     )
 
     return not NewVersionBlock.objects.is_blocked(context['object'])

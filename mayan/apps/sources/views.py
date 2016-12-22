@@ -7,6 +7,7 @@ from django.shortcuts import get_object_or_404
 from django.utils.translation import ugettext_lazy as _
 
 from acls.models import AccessControlList
+from checkouts.models import NewVersionBlock
 from common import menu_facet
 from common.models import SharedUploadedFile
 from common.utils import encapsulate
@@ -15,7 +16,7 @@ from common.views import (
     SingleObjectEditView, SingleObjectListView
 )
 from common.widgets import two_state_template
-from documents.models import DocumentType, Document, NewVersionBlock
+from documents.models import DocumentType, Document
 from documents.permissions import (
     permission_document_create, permission_document_new_version
 )
