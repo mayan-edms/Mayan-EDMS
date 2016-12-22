@@ -9,18 +9,17 @@ from django.core import management
 class Command(management.BaseCommand):
     help = 'Run all configured tests for the project.'
 
-    option_list = management.BaseCommand.option_list + (
-        make_option(
+    def add_arguments(self, parser):
+        parser.add_argument(
             '--nomigrations', action='store_true', dest='nomigrations',
             default=False,
             help='Don\'t use migrations when creating the test database.'
-        ),
-        make_option(
-            '--reverse', action='store_true', dest='reverse',
-            default=False,
+        )
+
+        parser.add_argument(
+            '--reverse', action='store_true', dest='reverse', default=False,
             help='Reverses test cases order.'
-        ),
-    )
+        )
 
     def handle(self, *args, **options):
         kwargs = {}
