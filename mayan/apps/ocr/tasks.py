@@ -4,7 +4,6 @@ import logging
 import sys
 import traceback
 
-from django.apps import apps
 from django.conf import settings
 from django.db import OperationalError
 
