@@ -5,12 +5,12 @@ import os
 from django.conf import settings
 
 TEST_DETACHED_SIGNATURE = os.path.join(
-    settings.BASE_DIR, 'mayan', 'apps', 'django_gpg', 'tests', 'contrib',
+    settings.BASE_DIR, 'apps', 'django_gpg', 'tests', 'contrib',
     'test_files', 'test_file.txt.asc'
 )
 
 TEST_FILE = os.path.join(
-    settings.BASE_DIR, 'mayan', 'apps', 'django_gpg', 'tests', 'contrib',
+    settings.BASE_DIR, 'apps', 'django_gpg', 'tests', 'contrib',
     'test_files', 'test_file.txt'
 )
 
@@ -84,7 +84,7 @@ TEST_SEARCH_UID = 'Roberto Rosario'
 TEST_SEARCH_FINGERPRINT = '607138F1AECC5A5CA31CB7715F3F7F75D210724D'
 
 TEST_SIGNED_FILE = os.path.join(
-    settings.BASE_DIR, 'mayan', 'apps', 'django_gpg', 'tests', 'contrib',
+    settings.BASE_DIR, 'apps', 'django_gpg', 'tests', 'contrib',
     'test_files', 'test_file.txt.gpg'
 )
 TEST_SIGNED_FILE_CONTENT = 'test_file.txt\n'
