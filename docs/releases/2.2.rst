@@ -32,6 +32,7 @@ the user links
 - Production settings don't override the DEBUG variable. DEBUG can be set to True
 on production install to debug errors live.
 - Refactor add document to folder view to allow adding a documents to multiple folders at the same time.
+- Refactor the remove document from folder view to allow removing documents from multiple folders at the same time.
 
 Removals
 --------

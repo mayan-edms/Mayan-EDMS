@@ -123,7 +123,7 @@ class DocumentFolderListView(FolderListView):
         return self.document.document_folders().all()
 
 
-class FolderAddDocumentView(MultipleObjectFormActionView):
+class DocumentAddToFolderView(MultipleObjectFormActionView):
     form_class = FolderListForm
     model = Document
     success_message = _(
@@ -160,7 +160,9 @@ class FolderAddDocumentView(MultipleObjectFormActionView):
     def get_form_extra_kwargs(self):
         queryset = self.get_queryset()
         result = {
-            'help_text': _('Folders to which the selected documents will be added.'),
+            'help_text': _(
+                'Folders to which the selected documents will be added.'
+            ),
             'permission': permission_folder_add_document,
             'user': self.request.user
         }
@@ -206,70 +208,83 @@ class FolderAddDocumentView(MultipleObjectFormActionView):
                 )
 
 
-def folder_document_remove(request, folder_id, document_id=None, document_id_list=None):
-    post_action_redirect = None
-
-    folder = get_object_or_404(Folder, pk=folder_id)
-
-    if document_id:
-        queryset = Document.objects.filter(pk=document_id)
-    elif document_id_list:
-        queryset = Document.objects.filter(pk__in=document_id_list)
-
-    if not queryset:
-        messages.error(request, _('Must provide at least one folder document.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-
-    queryset = AccessControlList.objects.filter_by_access(
-        permission_folder_remove_document, request.user, queryset=queryset
+class DocumentRemoveFromFolderView(MultipleObjectFormActionView):
+    form_class = FolderListForm
+    model = Document
+    success_message = _(
+        'Remove from folder request performed on %(count)d document'
+    )
+    success_message_plural = _(
+        'Remove from folder request performed on %(count)d documents'
     )
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    def get_extra_context(self):
+        queryset = self.get_queryset()
 
-    if request.method == 'POST':
-        for folder_document in queryset:
-            try:
-                folder.documents.remove(folder_document)
-                messages.success(
-                    request, _(
-                        'Document: %s removed successfully.'
-                    ) % folder_document
-                )
-            except Exception as exception:
-                messages.error(
-                    request, _(
-                        'Document: %(document)s delete error: %(error)s'
+        result = {
+            'submit_label': _('Remove'),
+            'title': ungettext(
+                'Remove document from folders',
+                'Remove documents from folders',
+                queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _(
+                        'Remove document "%s" to folders'
+                    ) % queryset.first()
+                }
+            )
+
+        return result
+
+    def get_form_extra_kwargs(self):
+        queryset = self.get_queryset()
+        result = {
+            'help_text': _(
+                'Folders from which the selected documents will be removed.'
+            ),
+            'permission': permission_folder_remove_document,
+            'user': self.request.user
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'queryset': queryset.first().folders.all()
+                }
+            )
+
+        return result
+
+    def object_action(self, form, instance):
+        folder_membership = instance.folders.all()
+
+        for folder in form.cleaned_data['folders']:
+            AccessControlList.objects.check_access(
+                obj=folder, permissions=permission_folder_remove_document,
+                user=self.request.user
+            )
+
+            if folder not in folder_membership:
+                messages.warning(
+                    self.request, _(
+                        'Document: %(document)s is not in folder: %(folder)s.'
                     ) % {
-                        'document': folder_document, 'error': exception
+                        'document': instance, 'folder': folder
                     }
                 )
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'next': next,
-        'object': folder,
-        'previous': previous,
-        'title': ungettext(
-            'Remove the selected document from the folder: %(folder)s?',
-            'Remove the selected documents from the folder: %(folder)s?',
-            queryset.count()
-        ) % {'folder': folder}
-    }
-
-    if queryset.count() == 1:
-        context['object'] = queryset.first()
-
-    return render_to_response(
-        'appearance/generic_confirm.html', context,
-        context_instance=RequestContext(request)
-    )
-
-
-def folder_document_multiple_remove(request, folder_id):
-    return folder_document_remove(
-        request, folder_id, document_id_list=request.GET.get(
-            'id_list', request.POST.get('id_list', '')
-        ).split(',')
-    )
+            else:
+                folder.documents.remove(instance)
+                messages.success(
+                    self.request, _(
+                        'Document: %(document)s removed from folder: '
+                        '%(folder)s.'
+                    ) % {
+                        'document': instance, 'folder': folder
+                    }
+                )

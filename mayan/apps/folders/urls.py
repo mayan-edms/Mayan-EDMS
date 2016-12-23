@@ -7,9 +7,9 @@ from .api_views import (
     APIFolderDocumentView, APIFolderListView, APIFolderView
 )
 from .views import (
-    DocumentFolderListView, FolderAddDocumentView, FolderCreateView,
-    FolderDeleteView, FolderDetailView, FolderEditView, FolderListView,
-    folder_document_multiple_remove
+    DocumentAddToFolderView, DocumentFolderListView,
+    DocumentRemoveFromFolderView, FolderCreateView, FolderDeleteView,
+    FolderDetailView, FolderEditView, FolderListView,
 )
 
 urlpatterns = [
@@ -21,19 +21,23 @@ urlpatterns = [
         name='folder_delete'
     ),
     url(r'^(?P<pk>\d+)/$', FolderDetailView.as_view(), name='folder_view'),
-    url(
-        r'^(?P<folder_id>\d+)/remove/document/multiple/$',
-        folder_document_multiple_remove,
-        name='folder_document_multiple_remove'
-    ),
 
     url(
         r'^document/(?P<pk>\d+)/folder/add/$',
-        FolderAddDocumentView.as_view(), name='folder_add_document'
+        DocumentAddToFolderView.as_view(), name='folder_add_document'
     ),
     url(
-        r'^document/multiple/folder/add/$', FolderAddDocumentView.as_view(),
+        r'^document/multiple/folder/add/$', DocumentAddToFolderView.as_view(),
         name='folder_add_multiple_documents'
+    ),
+    url(
+        r'^document/(?P<pk>\d+)/folder/remove/$',
+        DocumentRemoveFromFolderView.as_view(), name='document_folder_remove'
+    ),
+    url(
+        r'^document/multiple/folder/remove/$',
+        DocumentRemoveFromFolderView.as_view(),
+        name='multiple_document_folder_remove'
     ),
     url(
         r'^document/(?P<pk>\d+)/folder/list/$',

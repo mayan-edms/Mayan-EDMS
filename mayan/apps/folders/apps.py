@@ -14,11 +14,10 @@ from navigation import SourceColumn
 from rest_api.classes import APIEndPoint
 
 from .links import (
-    link_folder_list,
-    link_document_folder_list, link_folder_add_document,
-    link_folder_add_multiple_documents, link_folder_create,
-    link_folder_delete, link_folder_document_multiple_remove,
-    link_folder_edit, link_folder_view
+    link_folder_list, link_document_folder_list, link_document_folder_remove,
+    link_folder_add_document, link_folder_add_multiple_documents,
+    link_folder_create, link_folder_delete,
+    link_folder_edit, link_folder_view, link_multiple_document_folder_remove
 )
 from .menus import menu_folders
 from .permissions import (
@@ -87,11 +86,10 @@ class FoldersApp(MayanAppConfig):
 
         menu_main.bind_links(links=(menu_folders,), position=98)
         menu_multi_item.bind_links(
-            links=(link_folder_add_multiple_documents,), sources=(Document,)
-        )
-        menu_multi_item.bind_links(
-            links=(link_folder_document_multiple_remove,),
-            sources=('folders:folder_view',)
+            links=(
+                link_folder_add_multiple_documents,
+                link_multiple_document_folder_remove
+            ), sources=(Document,)
         )
         menu_object.bind_links(
             links=(
@@ -105,8 +103,9 @@ class FoldersApp(MayanAppConfig):
             ), sources=(Folder,)
         )
         menu_sidebar.bind_links(
-            links=(link_folder_add_document,),
+            links=(link_folder_add_document, link_document_folder_remove),
             sources=(
-                'folders:document_folder_list', 'folders:folder_add_document'
+                'folders:document_folder_list', 'folders:folder_add_document',
+                'folders:document_folder_remove'
             )
         )
