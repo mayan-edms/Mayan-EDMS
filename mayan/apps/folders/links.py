@@ -19,8 +19,9 @@ link_document_folder_list = Link(
     args='resolved_object.pk'
 )
 link_document_folder_remove = Link(
-    args='resolved_object.pk', text=_('Remove from folders'),
-    view='folders:document_folder_remove'
+    args='resolved_object.pk',
+    permissions=(permission_folder_remove_document,),
+    text=_('Remove from folders'), view='folders:document_folder_remove'
 )
 link_folder_add_document = Link(
     permissions=(permission_folder_add_document,), text=_('Add to a folders'),

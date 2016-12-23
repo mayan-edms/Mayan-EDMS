@@ -147,7 +147,6 @@ class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
         return result
 
     def get_form_extra_kwargs(self):
-        queryset = self.get_queryset()
         result = {
             'user': self.request.user
         }

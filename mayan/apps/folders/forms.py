@@ -8,7 +8,6 @@ from django.utils.translation import ugettext_lazy as _
 from acls.models import AccessControlList
 
 from .models import Folder
-from .permissions import permission_folder_view
 
 logger = logging.getLogger(__name__)
 
