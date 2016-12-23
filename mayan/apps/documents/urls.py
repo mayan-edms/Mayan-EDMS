@@ -26,13 +26,13 @@ from .views import (
     DocumentTypeFilenameCreateView, DocumentTypeFilenameDeleteView,
     DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
     DocumentTypeListView, DocumentTypeEditView,
-    DocumentVersionDownloadFormView, DocumentVersionDownloadView,
-    DocumentVersionListView, DocumentVersionRevertView, DocumentView,
-    EmptyTrashCanView, RecentDocumentListView, document_clear_transformations,
-    document_multiple_clear_transformations,
-    document_multiple_update_page_count, document_page_navigation_first,
+    DocumentUpdatePageCountView, DocumentVersionDownloadFormView,
+    DocumentVersionDownloadView, DocumentVersionListView,
+    DocumentVersionRevertView, DocumentView, EmptyTrashCanView,
+    RecentDocumentListView, document_clear_transformations,
+    document_multiple_clear_transformations, document_page_navigation_first,
     document_page_navigation_last, document_page_navigation_next,
-    document_page_navigation_previous, document_update_page_count
+    document_page_navigation_previous
 )
 
 
@@ -96,11 +96,13 @@ urlpatterns = [
         name='document_print'
     ),
     url(
-        r'^(?P<document_id>\d+)/reset_page_count/$',
-        document_update_page_count, name='document_update_page_count'
+        r'^(?P<pk>\d+)/reset_page_count/$',
+        DocumentUpdatePageCountView.as_view(),
+        name='document_update_page_count'
     ),
     url(
-        r'^multiple/reset_page_count/$', document_multiple_update_page_count,
+        r'^multiple/reset_page_count/$',
+        DocumentUpdatePageCountView.as_view(),
         name='document_multiple_update_page_count'
     ),
     url(

@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
-from django.shortcuts import render, render_to_response, get_object_or_404
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -15,9 +15,9 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
 from common.generics import (
-    ConfirmView, FormView, MultipleObjectFormActionView,
-    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
-    SingleObjectListView
+    ConfirmView, FormView, MultipleObjectConfirmActionView,
+    MultipleObjectFormActionView, SingleObjectDetailView,
+    SingleObjectDownloadView, SingleObjectEditView, SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
 from converter.models import Transformation
@@ -511,62 +511,43 @@ class DocumentDownloadView(SingleObjectDownloadView):
             )
 
 
-def document_update_page_count(request, document_id=None, document_id_list=None):
-    if document_id:
-        documents = Document.objects.filter(pk=document_id)
-    elif document_id_list:
-        documents = Document.objects.filter(pk__in=document_id_list)
-
-    if not documents:
-        messages.error(request, _('At least one document must be selected.'))
-        return HttpResponseRedirect(request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)))
-
-    documents = AccessControlList.objects.filter_by_access(
-        permission_document_tools, request.user, queryset=documents
+class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):
+    model = Document
+    object_permission = permission_document_tools
+    success_message = _(
+        '%(count)d document queued for page count recalculation'
+    )
+    success_message_plural = _(
+        '%(count)d documents queued for page count recalculation'
     )
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+    def get_extra_context(self):
+        queryset = self.get_queryset()
 
-    if request.method == 'POST':
-        for document in documents:
-            task_update_page_count.apply_async(
-                kwargs={'version_id': document.latest_version.pk}
+        result = {
+            'title': ungettext(
+                'Recalculate the page count of the selected document?',
+                'Recalculate the page count of the selected documents?',
+                queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _(
+                        'Recalculate the page count of the document: %s?'
+                    ) % queryset.first()
+                }
             )
 
-        messages.success(
-            request,
-            ungettext(
-                _('Document queued for page count recalculation.'),
-                _('Documents queued for page count recalculation.'),
-                documents.count()
-            )
+        return result
+
+    def object_action(self, form, instance):
+        task_update_page_count.apply_async(
+            kwargs={'version_id': instance.latest_version.pk}
         )
-        return HttpResponseRedirect(previous)
-
-    context = {
-        'previous': previous,
-        'title': ungettext(
-            'Recalculate the page count of the selected document?',
-            'Recalculate the page count of the selected documents?',
-            documents.count()
-        )
-    }
-
-    if documents.count() == 1:
-        context['object'] = documents.first()
-
-    return render_to_response(
-        'appearance/generic_confirm.html', context,
-        context_instance=RequestContext(request)
-    )
-
-
-def document_multiple_update_page_count(request):
-    return document_update_page_count(
-        request, document_id_list=request.GET.get(
-            'id_list', request.POST.get('id_list', '')
-        ).split(',')
-    )
 
 
 def document_clear_transformations(request, document_id=None, document_id_list=None):
