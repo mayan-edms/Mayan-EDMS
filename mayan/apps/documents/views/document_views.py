@@ -7,7 +7,7 @@ from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
+from django.shortcuts import render, render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
@@ -15,8 +15,9 @@ from django.utils.translation import ugettext_lazy as _, ungettext
 from acls.models import AccessControlList
 from common.compressed_files import CompressedFile
 from common.generics import (
-    ConfirmView, FormView, SingleObjectDetailView, SingleObjectDownloadView,
-    SingleObjectEditView, SingleObjectListView
+    ConfirmView, FormView, MultipleObjectFormActionView,
+    SingleObjectDetailView, SingleObjectDownloadView, SingleObjectEditView,
+    SingleObjectListView
 )
 from common.mixins import MultipleInstanceActionMixin
 from converter.models import Transformation
@@ -108,6 +109,61 @@ class DeletedDocumentDeleteManyView(MultipleInstanceActionMixin, DeletedDocument
     model = DeletedDocument
     success_message = '%(count)d document deleted.'
     success_message_plural = '%(count)d documents deleted.'
+
+
+class DocumentDocumentTypeEditView(MultipleObjectFormActionView):
+    form_class = DocumentTypeSelectForm
+    model = Document
+    object_permission = permission_document_properties_edit
+    success_message = _(
+        'Document type change request performed on %(count)d document'
+    )
+    success_message_plural = _(
+        'Document type change request performed on %(count)d documents'
+    )
+
+    def get_extra_context(self):
+        queryset = self.get_queryset()
+
+        result = {
+            'submit_label': _('Change'),
+            'title': ungettext(
+                'Change the type of the selected document',
+                'Change the type of the selected documents',
+                queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _(
+                        'Change the type of the document: %s'
+                    ) % queryset.first()
+                }
+            )
+
+        return result
+
+    def get_form_extra_kwargs(self):
+        queryset = self.get_queryset()
+        result = {
+            'user': self.request.user
+        }
+
+        return result
+
+    def object_action(self, form, instance):
+        instance.set_document_type(
+            form.cleaned_data['document_type'], _user=self.request.user
+        )
+
+        messages.success(
+            self.request, _(
+                'Document type for "%s" changed successfully.'
+            ) % instance
+        )
 
 
 class DocumentEditView(SingleObjectEditView):
@@ -287,81 +343,6 @@ class RecentDocumentListView(DocumentListView):
 
     def get_document_queryset(self):
         return RecentDocument.objects.get_for_user(self.request.user)
-
-
-def document_document_type_edit(request, document_id=None, document_id_list=None):
-    post_action_redirect = None
-
-    if document_id:
-        queryset = Document.objects.filter(pk=document_id)
-        post_action_redirect = reverse('documents:document_list_recent')
-    elif document_id_list:
-        queryset = Document.objects.filter(pk__in=document_id_list)
-
-    queryset = AccessControlList.objects.filter_by_access(
-        permission_document_properties_edit, request.user, queryset=queryset
-    )
-
-    if not queryset:
-        if document_id:
-            raise PermissionDenied
-        else:
-            messages.error(request, _('Must provide at least one document.'))
-            return HttpResponseRedirect(
-                request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))
-            )
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        form = DocumentTypeSelectForm(request.POST, user=request.user)
-        if form.is_valid():
-
-            for instance in queryset:
-                instance.set_document_type(
-                    form.cleaned_data['document_type'], _user=request.user
-                )
-
-                messages.success(
-                    request, _(
-                        'Document type for "%s" changed successfully.'
-                    ) % instance
-                )
-            return HttpResponseRedirect(next)
-    else:
-        form = DocumentTypeSelectForm(
-            initial={'document_type': queryset.first().document_type},
-            user=request.user
-        )
-
-    context = {
-        'form': form,
-        'submit_label': _('Submit'),
-        'previous': previous,
-        'next': next,
-        'title': ungettext(
-            'Change the type of the selected document.',
-            'Change the type of the selected documents.',
-            queryset.count()
-        )
-    }
-
-    if queryset.count() == 1:
-        context['object'] = queryset.first()
-
-    return render_to_response(
-        'appearance/generic_form.html', context,
-        context_instance=RequestContext(request)
-    )
-
-
-def document_multiple_document_type_edit(request):
-    return document_document_type_edit(
-        request, document_id_list=request.GET.get(
-            'id_list', request.POST.get('id_list', '')
-        ).split(',')
-    )
 
 
 class DocumentDownloadFormView(FormView):

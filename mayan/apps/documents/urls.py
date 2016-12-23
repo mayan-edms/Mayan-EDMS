@@ -15,8 +15,9 @@ from .api_views import (
 from .views import (
     ClearImageCacheView, DeletedDocumentDeleteView,
     DeletedDocumentDeleteManyView, DeletedDocumentListView,
-    DocumentDownloadFormView, DocumentDownloadView, DocumentEditView,
-    DocumentListView, DocumentPageListView, DocumentPageRotateLeftView,
+    DocumentDocumentTypeEditView, DocumentDownloadFormView,
+    DocumentDownloadView, DocumentEditView, DocumentListView,
+    DocumentPageListView, DocumentPageRotateLeftView,
     DocumentPageRotateRightView, DocumentPageView, DocumentPageViewResetView,
     DocumentPageZoomInView, DocumentPageZoomOutView, DocumentPreviewView,
     DocumentPrint, DocumentRestoreView, DocumentRestoreManyView,
@@ -28,11 +29,10 @@ from .views import (
     DocumentVersionDownloadFormView, DocumentVersionDownloadView,
     DocumentVersionListView, DocumentVersionRevertView, DocumentView,
     EmptyTrashCanView, RecentDocumentListView, document_clear_transformations,
-    document_document_type_edit, document_multiple_clear_transformations,
-    document_multiple_document_type_edit, document_multiple_update_page_count,
-    document_page_navigation_first, document_page_navigation_last,
-    document_page_navigation_next, document_page_navigation_previous,
-    document_update_page_count
+    document_multiple_clear_transformations,
+    document_multiple_update_page_count, document_page_navigation_first,
+    document_page_navigation_last, document_page_navigation_next,
+    document_page_navigation_previous, document_update_page_count
 )
 
 
@@ -72,11 +72,11 @@ urlpatterns = [
         name='document_multiple_delete'
     ),
     url(
-        r'^(?P<document_id>\d+)/type/$', document_document_type_edit,
+        r'^(?P<pk>\d+)/type/$', DocumentDocumentTypeEditView.as_view(),
         name='document_document_type_edit'
     ),
     url(
-        r'^multiple/type/$', document_multiple_document_type_edit,
+        r'^multiple/type/$', DocumentDocumentTypeEditView.as_view(),
         name='document_multiple_document_type_edit'
     ),
     url(
