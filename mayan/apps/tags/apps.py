@@ -137,7 +137,7 @@ class TagsApp(MayanAppConfig):
         menu_sidebar.bind_links(
             links=(link_tag_attach, link_single_document_multiple_tag_remove),
             sources=(
-                'tags:document_tags', 'tags:tag_remove',
-                'tags:tag_multiple_remove', 'tags:tag_attach'
+                'tags:tag_attach', 'tags:document_tags',
+                'tags:single_document_multiple_tag_remove'
             )
         )
