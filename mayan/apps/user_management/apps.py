@@ -26,7 +26,12 @@ def get_groups():
 
 
 def get_users():
-    return ','.join([user.get_full_name() or user.username for user in get_user_model().objects.all()])
+    return ','.join(
+        [
+            user.get_full_name() or user.username
+            for user in get_user_model().objects.all()
+        ]
+    )
 
 
 class UserManagementApp(MayanAppConfig):

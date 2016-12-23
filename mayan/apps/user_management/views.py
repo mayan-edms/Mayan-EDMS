@@ -1,21 +1,19 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.contenttypes.models import ContentType
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
-from django.shortcuts import get_object_or_404, render_to_response
-from django.template import RequestContext
-from django.utils.translation import ugettext_lazy as _
+from django.shortcuts import get_object_or_404
+from django.utils.translation import ungettext, ugettext_lazy as _
 
 from common.views import (
-    AssignRemoveView, SingleObjectCreateView, SingleObjectDeleteView,
-    SingleObjectEditView, SingleObjectListView
+    AssignRemoveView, MultipleObjectConfirmActionView,
+    MultipleObjectFormActionView, SingleObjectCreateView,
+    SingleObjectDeleteView, SingleObjectEditView, SingleObjectListView
 )
-from permissions import Permission
 
 from .forms import PasswordForm, UserForm
 from .permissions import (
@@ -113,6 +111,79 @@ class GroupMembersView(AssignRemoveView):
         self.get_object().user_set.remove(item)
 
 
+class UserCreateView(SingleObjectCreateView):
+    extra_context = {
+        'title': _('Create new user'),
+    }
+    form_class = UserForm
+    view_permission = permission_user_create
+
+    def form_valid(self, form):
+        user = form.save(commit=False)
+        user.set_unusable_password()
+        user.save()
+        messages.success(
+            self.request, _('User "%s" created successfully.') % user
+        )
+        return HttpResponseRedirect(
+            reverse('user_management:user_set_password', args=(user.pk,))
+        )
+
+
+class UserDeleteView(MultipleObjectConfirmActionView):
+    model = get_user_model()
+    success_message = _('User delete request performed on %(count)d user')
+    success_message_plural = _(
+        'User delete request performed on %(count)d users'
+    )
+    view_permission = permission_user_delete
+
+    def get_extra_context(self):
+        queryset = self.get_queryset()
+
+        result = {
+            'title': ungettext(
+                'Delete user',
+                'Delete users',
+                queryset.count()
+            )
+        }
+
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _('Delete user: %s') % queryset.first()
+                }
+            )
+
+        return result
+
+    def object_action(self, form, instance):
+        try:
+            if instance.is_superuser or instance.is_staff:
+                messages.error(
+                    self.request,
+                    _(
+                        'Super user and staff user deleting is not '
+                        'allowed, use the admin interface for these cases.'
+                    )
+                )
+            else:
+                instance.delete()
+                messages.success(
+                    self.request, _(
+                        'User "%s" deleted successfully.'
+                    ) % instance
+                )
+        except Exception as exception:
+            messages.error(
+                self.request, _(
+                    'Error deleting user "%(user)s": %(error)s'
+                ) % {'user': instance, 'error': exception}
+            )
+
+
 class UserEditView(SingleObjectEditView):
     fields = ('username', 'first_name', 'last_name', 'email', 'is_active',)
     post_action_redirect = reverse_lazy('user_management:user_list')
@@ -175,183 +246,61 @@ class UserListView(SingleObjectListView):
         ).exclude(is_staff=True).order_by('last_name', 'first_name')
 
 
-def user_add(request):
-    Permission.check_permissions(request.user, (permission_user_create,))
-
-    if request.method == 'POST':
-        form = UserForm(request.POST)
-        if form.is_valid():
-            user = form.save(commit=False)
-            user.set_unusable_password()
-            user.save()
-            messages.success(
-                request, _('User "%s" created successfully.') % user
-            )
-            return HttpResponseRedirect(
-                reverse('user_management:user_set_password', args=(user.pk,))
-            )
-    else:
-        form = UserForm()
-
-    return render_to_response('appearance/generic_form.html', {
-        'title': _('Create new user'),
-        'form': form,
-    }, context_instance=RequestContext(request))
-
-
-def user_delete(request, user_id=None, user_id_list=None):
-    Permission.check_permissions(request.user, (permission_user_delete,))
-    post_action_redirect = None
-
-    if user_id:
-        users = get_user_model().objects.filter(pk=user_id)
-        post_action_redirect = reverse('user_management:user_list')
-    elif user_id_list:
-        users = get_user_model().objects.filter(pk__in=user_id_list)
-
-    if not users:
-        messages.error(request, _('Must provide at least one user.'))
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
-            )
-        )
-
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
-
-    if request.method == 'POST':
-        for user in users:
-            try:
-                if user.is_superuser or user.is_staff:
-                    messages.error(
-                        request,
-                        _(
-                            'Super user and staff user deleting is not '
-                            'allowed, use the admin interface for these cases.'
-                        )
-                    )
-                else:
-                    user.delete()
-                    messages.success(
-                        request, _('User "%s" deleted successfully.') % user
-                    )
-            except Exception as exception:
-                messages.error(
-                    request, _('Error deleting user "%(user)s": %(error)s') % {
-                        'user': user, 'error': exception
-                    }
-                )
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'previous': previous,
-        'next': next,
-    }
-    if users.count() == 1:
-        context['object'] = users.first()
-        context['title'] = _('Delete the user: %s?') % ', '.join([unicode(d) for d in users])
-    elif len(users) > 1:
-        context['title'] = _('Delete the users: %s?') % ', '.join([unicode(d) for d in users])
-
-    return render_to_response(
-        'appearance/generic_confirm.html', context,
-        context_instance=RequestContext(request)
+class UserSetPasswordView(MultipleObjectFormActionView):
+    form_class = PasswordForm
+    model = get_user_model()
+    success_message = _('Password change request performed on %(count)d user')
+    success_message_plural = _(
+        'Password change request performed on %(count)d users'
     )
+    view_permission = permission_user_edit
 
+    def get_extra_context(self):
+        queryset = self.get_queryset()
 
-def user_multiple_delete(request):
-    return user_delete(
-        request, user_id_list=request.GET.get(
-            'id_list', request.POST.get('id_list', '')
-        ).split(',')
-    )
-
-
-def user_set_password(request, user_id=None, user_id_list=None):
-    Permission.check_permissions(request.user, (permission_user_edit,))
-    post_action_redirect = None
-
-    if user_id:
-        users = get_user_model().objects.filter(pk=user_id)
-        post_action_redirect = reverse('user_management:user_list')
-    elif user_id_list:
-        users = get_user_model().objects.filter(pk__in=user_id_list)
-
-    if not users:
-        messages.error(request, _('Must provide at least one user.'))
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+        result = {
+            'submit_label': _('Submit'),
+            'title': ungettext(
+                'Change user password',
+                'Change users passwords',
+                queryset.count()
             )
-        )
+        }
 
-    next = request.POST.get('next', request.GET.get('next', post_action_redirect if post_action_redirect else request.META.get('HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL))))
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _('Change password for user: %s') % queryset.first()
+                }
+            )
 
-    if request.method == 'POST':
-        form = PasswordForm(request.POST)
-        if form.is_valid():
-            password_1 = form.cleaned_data['new_password_1']
-            password_2 = form.cleaned_data['new_password_2']
-            if password_1 != password_2:
+        return result
+
+    def object_action(self, form, instance):
+        try:
+            if instance.is_superuser or instance.is_staff:
                 messages.error(
-                    request, _('Passwords do not match, try again.')
+                    self.request,
+                    _(
+                        'Super user and staff user password '
+                        'reseting is not allowed, use the admin '
+                        'interface for these cases.'
+                    )
                 )
             else:
-                for user in users:
-                    try:
-                        if user.is_superuser or user.is_staff:
-                            messages.error(
-                                request,
-                                _(
-                                    'Super user and staff user password '
-                                    'reseting is not allowed, use the admin '
-                                    'interface for these cases.'
-                                )
-                            )
-                        else:
-                            user.set_password(password_1)
-                            user.save()
-                            messages.success(
-                                request, _(
-                                    'Successfull password reset for user: %s.'
-                                ) % user
-                            )
-                    except Exception as exception:
-                        messages.error(
-                            request, _(
-                                'Error reseting password for user "%(user)s": %(error)s'
-                            ) % {
-                                'user': user, 'error': exception
-                            }
-                        )
-
-                return HttpResponseRedirect(next)
-    else:
-        form = PasswordForm()
-
-    context = {
-        'next': next,
-        'form': form,
-    }
-
-    if users.count() == 1:
-        context['object'] = users.first()
-        context['title'] = _('Reseting password for user: %s') % ', '.join([unicode(d) for d in users])
-    elif len(users) > 1:
-        context['title'] = _('Reseting password for users: %s') % ', '.join([unicode(d) for d in users])
-
-    return render_to_response(
-        'appearance/generic_form.html', context,
-        context_instance=RequestContext(request)
-    )
-
-
-def user_multiple_set_password(request):
-    return user_set_password(
-        request, user_id_list=request.GET.get(
-            'id_list', request.POST.get('id_list', '')
-        ).split(',')
-    )
+                instance.set_password(form.cleaned_data['new_password_1'])
+                instance.save()
+                messages.success(
+                    self.request, _(
+                        'Successfull password reset for user: %s.'
+                    ) % instance
+                )
+        except Exception as exception:
+            messages.error(
+                self.request, _(
+                    'Error reseting password for user "%(user)s": %(error)s'
+                ) % {
+                    'user': instance, 'error': exception
+                }
+            )

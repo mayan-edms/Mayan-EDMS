@@ -8,9 +8,8 @@ from .api_views import (
 )
 from .views import (
     GroupCreateView, GroupDeleteView, GroupEditView, GroupListView,
-    GroupMembersView, UserEditView, UserGroupsView, UserListView,
-    user_add, user_delete, user_multiple_delete, user_multiple_set_password,
-    user_set_password
+    GroupMembersView, UserCreateView, UserDeleteView, UserEditView,
+    UserGroupsView, UserListView, UserSetPasswordView
 )
 
 urlpatterns = [
@@ -30,19 +29,22 @@ urlpatterns = [
     ),
 
     url(r'^user/list/$', UserListView.as_view(), name='user_list'),
-    url(r'^user/add/$', user_add, name='user_add'),
+    url(r'^user/add/$', UserCreateView.as_view(), name='user_add'),
     url(r'^user/(?P<pk>\d+)/edit/$', UserEditView.as_view(), name='user_edit'),
-    url(r'^user/(?P<user_id>\d+)/delete/$', user_delete, name='user_delete'),
     url(
-        r'^user/multiple/delete/$', user_multiple_delete,
+        r'^user/(?P<pk>\d+)/delete/$', UserDeleteView.as_view(),
+        name='user_delete'
+    ),
+    url(
+        r'^user/multiple/delete/$', UserDeleteView.as_view(),
         name='user_multiple_delete'
     ),
     url(
-        r'^user/(?P<user_id>\d+)/set_password/$', user_set_password,
+        r'^user/(?P<pk>\d+)/set_password/$', UserSetPasswordView.as_view(),
         name='user_set_password'
     ),
     url(
-        r'^user/multiple/set_password/$', user_multiple_set_password,
+        r'^user/multiple/set_password/$', UserSetPasswordView.as_view(),
         name='user_multiple_set_password'
     ),
     url(
