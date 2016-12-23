@@ -21,16 +21,15 @@ from .views import (
     DocumentPageRotateRightView, DocumentPageView, DocumentPageViewResetView,
     DocumentPageZoomInView, DocumentPageZoomOutView, DocumentPreviewView,
     DocumentPrint, DocumentRestoreView, DocumentRestoreManyView,
-    DocumentTrashView, DocumentTrashManyView, DocumentTypeCreateView,
-    DocumentTypeDeleteView, DocumentTypeDocumentListView,
-    DocumentTypeFilenameCreateView, DocumentTypeFilenameDeleteView,
-    DocumentTypeFilenameEditView, DocumentTypeFilenameListView,
-    DocumentTypeListView, DocumentTypeEditView,
+    DocumentTransformationsClearView, DocumentTrashView, DocumentTrashManyView,
+    DocumentTypeCreateView, DocumentTypeDeleteView,
+    DocumentTypeDocumentListView, DocumentTypeFilenameCreateView,
+    DocumentTypeFilenameDeleteView, DocumentTypeFilenameEditView,
+    DocumentTypeFilenameListView, DocumentTypeListView, DocumentTypeEditView,
     DocumentUpdatePageCountView, DocumentVersionDownloadFormView,
     DocumentVersionDownloadView, DocumentVersionListView,
     DocumentVersionRevertView, DocumentView, EmptyTrashCanView,
-    RecentDocumentListView, document_clear_transformations,
-    document_multiple_clear_transformations, document_page_navigation_first,
+    RecentDocumentListView, document_page_navigation_first,
     document_page_navigation_last, document_page_navigation_next,
     document_page_navigation_previous
 )
@@ -122,8 +121,9 @@ urlpatterns = [
         name='document_multiple_download'
     ),
     url(
-        r'^(?P<document_id>\d+)/clear_transformations/$',
-        document_clear_transformations, name='document_clear_transformations'
+        r'^(?P<pk>\d+)/clear_transformations/$',
+        DocumentTransformationsClearView.as_view(),
+        name='document_clear_transformations'
     ),
 
     url(
@@ -151,7 +151,7 @@ urlpatterns = [
 
     url(
         r'^multiple/clear_transformations/$',
-        document_multiple_clear_transformations,
+        DocumentTransformationsClearView.as_view(),
         name='document_multiple_clear_transformations'
     ),
     url(

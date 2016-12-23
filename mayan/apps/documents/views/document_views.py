@@ -2,13 +2,11 @@ from __future__ import absolute_import, unicode_literals
 
 import logging
 
-from django.conf import settings
 from django.contrib import messages
 from django.core.exceptions import PermissionDenied
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.shortcuts import get_object_or_404
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
@@ -550,79 +548,53 @@ class DocumentUpdatePageCountView(MultipleObjectConfirmActionView):
         )
 
 
-def document_clear_transformations(request, document_id=None, document_id_list=None):
-    if document_id:
-        documents = Document.objects.filter(pk=document_id)
-        post_redirect = documents[0].get_absolute_url()
-    elif document_id_list:
-        documents = Document.objects.filter(pk__in=document_id_list)
-        post_redirect = None
+class DocumentTransformationsClearView(MultipleObjectConfirmActionView):
+    model = Document
+    object_permission = permission_transformation_delete
+    success_message = _(
+        'Transformation clear request processed for %(count)d document'
+    )
+    success_message_plural = _(
+        'Transformation clear request processed for %(count)d documents'
+    )
 
-    if not documents:
-        messages.error(request, _('Must provide at least one document.'))
-        return HttpResponseRedirect(
-            request.META.get(
-                'HTTP_REFERER', reverse(settings.LOGIN_REDIRECT_URL)
+    def get_extra_context(self):
+        queryset = self.get_queryset()
+
+        result = {
+            'title': ungettext(
+                'Clear all the page transformations for the selected document?',
+                'Clear all the page transformations for the selected document?',
+                queryset.count()
             )
-        )
+        }
 
-    documents = AccessControlList.objects.filter_by_access(
-        permission_transformation_delete, request.user, queryset=documents
-    )
+        if queryset.count() == 1:
+            result.update(
+                {
+                    'object': queryset.first(),
+                    'title': _(
+                        'Clear all the page transformations for the '
+                        'document: %s?'
+                    ) % queryset.first()
+                }
+            )
 
-    previous = request.POST.get('previous', request.GET.get('previous', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
-    next = request.POST.get('next', request.GET.get('next', request.META.get('HTTP_REFERER', post_redirect or reverse('documents:document_list'))))
+        return result
 
-    if request.method == 'POST':
-        for document in documents:
-            try:
-                for page in document.pages.all():
-                    Transformation.objects.get_for_model(page).delete()
-            except Exception as exception:
-                messages.error(
-                    request, _(
-                        'Error deleting the page transformations for '
-                        'document: %(document)s; %(error)s.'
-                    ) % {
-                        'document': document, 'error': exception
-                    }
-                )
-            else:
-                messages.success(
-                    request, _(
-                        'All the page transformations for document: %s, '
-                        'have been deleted successfully.'
-                    ) % document
-                )
-
-        return HttpResponseRedirect(next)
-
-    context = {
-        'delete_view': True,
-        'next': next,
-        'previous': previous,
-        'title': ungettext(
-            'Clear all the page transformations for the selected document?',
-            'Clear all the page transformations for the selected documents?',
-            documents.count()
-        )
-    }
-
-    if documents.count() == 1:
-        context['object'] = documents.first()
-
-    return render_to_response(
-        'appearance/generic_confirm.html', context,
-        context_instance=RequestContext(request)
-    )
-
-
-def document_multiple_clear_transformations(request):
-    return document_clear_transformations(
-        request, document_id_list=request.GET.get(
-            'id_list', request.POST.get('id_list', '')
-        ).split(',')
-    )
+    def object_action(self, form, instance):
+        try:
+            for page in instance.pages.all():
+                Transformation.objects.get_for_model(page).delete()
+        except Exception as exception:
+            messages.error(
+                self.request, _(
+                    'Error deleting the page transformations for '
+                    'document: %(document)s; %(error)s.'
+                ) % {
+                    'document': instance, 'error': exception
+                }
+            )
 
 
 class DocumentPrint(FormView):
