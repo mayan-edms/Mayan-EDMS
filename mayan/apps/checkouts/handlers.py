@@ -14,5 +14,6 @@ def check_new_version_creation(sender, instance, **kwargs):
         app_label='checkouts', model_name='NewVersionBlock'
     )
 
-    if NewVersionBlock.objects.is_blocked(instance.document):
+    if NewVersionBlock.objects.is_blocked(instance.document) and not instance.pk:
+        # Block only new versions (no pk), not existing version being updated.
         raise NewDocumentVersionNotAllowed
