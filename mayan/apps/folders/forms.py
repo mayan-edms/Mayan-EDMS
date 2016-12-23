@@ -15,14 +15,20 @@ logger = logging.getLogger(__name__)
 
 class FolderListForm(forms.Form):
     def __init__(self, *args, **kwargs):
+        help_text = kwargs.pop('help_text', None)
+        permission = kwargs.pop('permission', None)
+        queryset = kwargs.pop('queryset', Folder.objects.all())
         user = kwargs.pop('user', None)
+
         logger.debug('user: %s', user)
         super(FolderListForm, self).__init__(*args, **kwargs)
 
         queryset = AccessControlList.objects.filter_by_access(
-            permission_folder_view, user, queryset=Folder.objects.all()
+            permission, user, queryset=queryset
         )
 
-        self.fields['folder'] = forms.ModelChoiceField(
-            queryset=queryset, label=_('Folder')
+        self.fields['folders'] = forms.ModelMultipleChoiceField(
+            label=_('Folders'), help_text=help_text,
+            queryset=queryset, required=False,
+            widget=forms.SelectMultiple(attrs={'class': 'select2'})
         )

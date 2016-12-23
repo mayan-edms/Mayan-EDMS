@@ -30,5 +30,7 @@ class TagMultipleSelectionForm(forms.Form):
         self.fields['tags'] = forms.ModelMultipleChoiceField(
             label=_('Tags'), help_text=help_text,
             queryset=queryset, required=False,
-            widget=TagFormWidget(attrs={'class': 'select2'}, queryset=queryset)
+            widget=TagFormWidget(
+                attrs={'class': 'select2-tags'}, queryset=queryset
+            )
         )

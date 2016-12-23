@@ -7,9 +7,9 @@ from .api_views import (
     APIFolderDocumentView, APIFolderListView, APIFolderView
 )
 from .views import (
-    DocumentFolderListView, FolderCreateView, FolderDeleteView,
-    FolderDetailView, FolderEditView, FolderListView, folder_add_document,
-    folder_add_multiple_documents, folder_document_multiple_remove
+    DocumentFolderListView, FolderAddDocumentView, FolderCreateView,
+    FolderDeleteView, FolderDetailView, FolderEditView, FolderListView,
+    folder_document_multiple_remove
 )
 
 urlpatterns = [
@@ -28,11 +28,11 @@ urlpatterns = [
     ),
 
     url(
-        r'^document/(?P<document_id>\d+)/folder/add/$',
-        folder_add_document, name='folder_add_document'
+        r'^document/(?P<pk>\d+)/folder/add/$',
+        FolderAddDocumentView.as_view(), name='folder_add_document'
     ),
     url(
-        r'^document/multiple/folder/add/$', folder_add_multiple_documents,
+        r'^document/multiple/folder/add/$', FolderAddDocumentView.as_view(),
         name='folder_add_multiple_documents'
     ),
     url(

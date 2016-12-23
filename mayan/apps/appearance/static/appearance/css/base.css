@@ -160,7 +160,7 @@ a i {
     text-shadow: 1px 1px 1px rgba(0,0,0,0.3);
 }
 
-.select2-container--default .select2-selection--multiple .select2-selection__choice {
+.select2-container--default .select2-selection--multiple .select2-selection__choice .label {
     padding-bottom: 1px;
 }
 
