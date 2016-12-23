@@ -17,6 +17,12 @@ link_send_document_link = Link(
     args='resolved_object.pk', permissions=(permission_mailing_link,),
     text=_('Email link'), view='mailer:send_document_link'
 )
+link_send_multiple_document = Link(
+    text=_('Email document'), view='mailer:send_multiple_document'
+)
+link_send_multiple_document_link = Link(
+    text=_('Email link'), view='mailer:send_multiple_document_link'
+)
 link_document_mailing_error_log = Link(
     icon='fa fa-envelope', permissions=(permission_view_error_log,),
     text=_('Document mailing error log'), view='mailer:error_log',
