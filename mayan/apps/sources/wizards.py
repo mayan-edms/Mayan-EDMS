@@ -10,7 +10,7 @@ from formtools.wizard.views import SessionWizardView
 
 from common.mixins import ViewPermissionCheckMixin
 from documents.forms import DocumentTypeSelectForm
-from metadata.forms import MetadataFormSet
+from metadata.forms import DocumentMetadataFormSet
 from tags.forms import TagMultipleSelectionForm
 
 from .literals import STEP_DOCUMENT_TYPE, STEP_METADATA, STEP_TAGS
@@ -33,10 +33,13 @@ def has_metadata_types(wizard):
 class DocumentCreateWizard(ViewPermissionCheckMixin, SessionWizardView):
     condition_dict = {STEP_METADATA: has_metadata_types}
     extra_context = {}
-    form_list = (DocumentTypeSelectForm, MetadataFormSet, TagMultipleSelectionForm)
+    form_list = (
+        DocumentTypeSelectForm, DocumentMetadataFormSet,
+        TagMultipleSelectionForm
+    )
     form_titles = {
         DocumentTypeSelectForm: _('Step 1 of 3: Select document type'),
-        MetadataFormSet: _('Step 2 of 3: Enter document metadata'),
+        DocumentMetadataFormSet: _('Step 2 of 3: Enter document metadata'),
         TagMultipleSelectionForm: _('Step 3 of 3: Select tags'),
     }
     template_name = 'appearance/generic_wizard.html'

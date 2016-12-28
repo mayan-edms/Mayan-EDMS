@@ -67,6 +67,9 @@ class ExtraContextMixin(object):
 
 
 class MultipleInstanceActionMixin(object):
+    # TODO: Deprecated, replace views using this with
+    # MultipleObjectFormActionView or MultipleObjectConfirmActionView
+
     model = None
     success_message = _('Operation performed on %(count)d object')
     success_message_plural = _('Operation performed on %(count)d objects')
@@ -188,7 +191,7 @@ class ObjectActionMixin(object):
         pass
 
     def view_action(self, form=None):
-        count = 0
+        self.action_count = 0
 
         for instance in self.get_queryset():
             try:
@@ -196,11 +199,11 @@ class ObjectActionMixin(object):
             except PermissionDenied:
                 pass
             else:
-                count += 1
+                self.action_count += 1
 
         messages.success(
             self.request,
-            self.get_success_message(count=count)
+            self.get_success_message(count=self.action_count)
         )
 
 

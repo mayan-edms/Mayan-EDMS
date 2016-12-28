@@ -10,37 +10,40 @@ from .api_views import (
     APIMetadataTypeView
 )
 from .views import (
-    DocumentMetadataListView, MetadataTypeCreateView, MetadataTypeDeleteView,
-    MetadataTypeEditView, MetadataTypeListView,
-    SetupDocumentTypeMetadataOptionalView,
-    SetupDocumentTypeMetadataRequiredView, metadata_add, metadata_edit,
-    metadata_multiple_add, metadata_multiple_edit, metadata_multiple_remove,
-    metadata_remove
+    DocumentMetadataAddView, DocumentMetadataEditView,
+    DocumentMetadataListView, DocumentMetadataRemoveView,
+    MetadataTypeCreateView, MetadataTypeDeleteView, MetadataTypeEditView,
+    MetadataTypeListView, SetupDocumentTypeMetadataOptionalView,
+    SetupDocumentTypeMetadataRequiredView
 )
 
 urlpatterns = [
     url(
-        r'^(?P<document_id>\d+)/edit/$', metadata_edit, name='metadata_edit'
+        r'^(?P<pk>\d+)/edit/$', DocumentMetadataEditView.as_view(),
+        name='metadata_edit'
+    ),
+    url(
+        r'^multiple/edit/$', DocumentMetadataEditView.as_view(),
+        name='metadata_multiple_edit'
     ),
     url(
         r'^(?P<pk>\d+)/view/$', DocumentMetadataListView.as_view(),
         name='metadata_view'
     ),
     url(
-        r'^multiple/edit/$', metadata_multiple_edit,
-        name='metadata_multiple_edit'
+        r'^(?P<pk>\d+)/add/$', DocumentMetadataAddView.as_view(),
+        name='metadata_add'
     ),
-    url(r'^(?P<document_id>\d+)/add/$', metadata_add, name='metadata_add'),
     url(
-        r'^multiple/add/$', metadata_multiple_add,
+        r'^multiple/add/$', DocumentMetadataAddView.as_view(),
         name='metadata_multiple_add'
     ),
     url(
-        r'^(?P<document_id>\d+)/remove/$', metadata_remove,
+        r'^(?P<pk>\d+)/remove/$', DocumentMetadataRemoveView.as_view(),
         name='metadata_remove'
     ),
     url(
-        r'^multiple/remove/$', metadata_multiple_remove,
+        r'^multiple/remove/$', DocumentMetadataRemoveView.as_view(),
         name='metadata_multiple_remove'
     ),
 
