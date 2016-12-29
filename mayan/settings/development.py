@@ -3,13 +3,12 @@ from __future__ import absolute_import, unicode_literals
 from . import *  # NOQA
 
 DEBUG = True
-TEMPLATE_DEBUG = DEBUG
 
 ALLOWED_HOSTS = ['*']
 
-TEMPLATE_LOADERS = (
+TEMPLATES[0]['OPTIONS']['loaders'] = (
     'django.template.loaders.filesystem.Loader',
-    'django.template.loaders.app_directories.Loader'
+    'django.template.loaders.app_directories.Loader',
 )
 
 INSTALLED_APPS += (
