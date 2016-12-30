@@ -35,10 +35,15 @@ on production install to debug errors live.
 - Refactor the remove document from folder view to allow removing documents from multiple folders at the same time.
 - Refactor the document mailing views and add support for sending multiple documents via email at the same time.
 - Refactor the document metadata views and add support for adding multiple metadata types to a document at the same time.
+- Addition of a new OCR backend using PyOCR. This backend tries first to do OCR
+using libtesseract. If libtesseract is not available the backend fallsback to
+calling the Tesseract executable.
 
 Removals
 --------
-* None
+- Removal of the OCR_TESSERACT_PATH configuration setting.
+- Removal of the Tesseract OCR backend. Replaced with a PyOCR backend.
+- Remove usage of pytesseract Python library.
 
 Upgrading from a previous version
 ---------------------------------
