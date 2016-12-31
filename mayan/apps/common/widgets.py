@@ -1,7 +1,5 @@
 from __future__ import unicode_literals
 
-import os
-
 from django import forms
 from django.forms.utils import flatatt
 from django.utils.encoding import force_unicode, force_text

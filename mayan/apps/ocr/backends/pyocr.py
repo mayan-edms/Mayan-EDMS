@@ -31,7 +31,7 @@ class PyOCR(OCRBackendBase):
         logger.debug('Will use tool \'%s\'', self.tool.get_name())
 
         self.languages = self.tool.get_available_languages()
-        logger.debug('Available languages: %s',  ', '.join(self.languages))
+        logger.debug('Available languages: %s', ', '.join(self.languages))
 
     def execute(self, *args, **kwargs):
         """

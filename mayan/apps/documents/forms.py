@@ -1,7 +1,6 @@
 from __future__ import absolute_import, unicode_literals
 
 import logging
-from operator import itemgetter
 
 from django import forms
 from django.template.defaultfilters import filesizeformat

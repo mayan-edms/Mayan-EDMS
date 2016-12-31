@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from operator import itemgetter
 import os
 
 from django import forms

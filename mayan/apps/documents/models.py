@@ -36,8 +36,8 @@ from .managers import (
 from .permissions import permission_document_view
 from .runtime import cache_storage_backend, storage_backend
 from .settings import (
-    setting_display_size, setting_language, setting_language_choices,
-    setting_zoom_max_level, setting_zoom_min_level
+    setting_display_size, setting_language, setting_zoom_max_level,
+    setting_zoom_min_level
 )
 from .signals import (
     post_document_created, post_document_type_change, post_version_upload
