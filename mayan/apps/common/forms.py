@@ -115,44 +115,22 @@ class LicenseForm(FileDisplayForm):
     FILENAME = 'LICENSE'
 
 
-class ModelForm(forms.ModelForm):
-    """
-    ModelForm subclass that supports field choices sorting
-
-    class Meta:
-        # Dictionary of field names and the key used to sort the field
-        sorted_fields = None
-
-    # Example:
-    # sorted_fields = {'language': operator.itemgetter(1))}
-    """
-
-    def __init__(self, *args, **kwargs):
-        super(ModelForm, self).__init__(*args, **kwargs)
-
-        for field, key in getattr(self.Meta, 'sorted_fields', {}).items():
-            # Would be the cleaner "opts.sorted_fields" if these were addressed
-            # https://code.djangoproject.com/ticket/5793
-            # of a get_options_class for Forms/ModelForms
-            # https://code.djangoproject.com/ticket/18540
-            choices = self.fields[field].choices
-
-            if not self.fields[field].required:
-                # Remove empty choice before sorting
-                empty_choice = choices.pop(0)
-
-            self.fields[field].choices = sorted(choices, key=key)
-
-            if not self.fields[field].required:
-                # Add empty choice after sorting
-                self.fields[field].choices.insert(0, empty_choice)
-
-
-class LocaleProfileForm(ModelForm):
+class LocaleProfileForm(forms.ModelForm):
     class Meta:
         fields = ('language', 'timezone')
         model = UserLocaleProfile
-        sorted_fields = {'language': itemgetter(1)}
+        widgets = {
+            'language': forms.Select(
+                attrs={
+                    'class': 'select2'
+                }
+            ),
+            'timezone': forms.Select(
+                attrs={
+                    'class': 'select2'
+                }
+            )
+        }
 
 
 class LocaleProfileForm_view(DetailForm):

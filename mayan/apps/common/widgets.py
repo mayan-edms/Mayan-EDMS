@@ -129,13 +129,6 @@ class TextAreaDiv(forms.widgets.Widget):
         return mark_safe(result)
 
 
-def exists_widget(path):
-    try:
-        return two_state_template(os.path.exists(path))
-    except Exception as exception:
-        return exception
-
-
 def two_state_template(state, ok_icon='fa fa-check', fail_icon='fa fa-times'):
     if state:
         return mark_safe('<i class="text-success {}"></i>'.format(ok_icon))
