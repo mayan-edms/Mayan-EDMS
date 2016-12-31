@@ -3,7 +3,6 @@ from __future__ import unicode_literals
 from django.utils.translation import ugettext_lazy as _
 
 from common import MayanAppConfig, menu_setup, menu_object
-from common.widgets import exists_widget
 from navigation import SourceColumn
 
 from .classes import Namespace, Setting
@@ -32,12 +31,6 @@ class SmartSettingsApp(MayanAppConfig):
         )
         SourceColumn(
             source=Setting, label=_('Value'), attribute='serialized_value'
-        )
-        SourceColumn(
-            source=Setting, label=_('Found in path'),
-            func=lambda context: exists_widget(
-                context['object'].value
-            ) if context['object'].is_path else _('n/a')
         )
 
         menu_object.bind_links(

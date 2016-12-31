@@ -69,8 +69,8 @@ class Setting(object):
         self.global_name = global_name
         self.default = default
         self.help_text = help_text
-        self.is_path = is_path
-        self.yaml = None
+        self.raw_value = getattr(settings, self.global_name, self.default)
+        self.yaml = Setting.serialize_value(self.raw_value)
         namespace.settings.append(self)
 
     def __unicode__(self):
@@ -78,16 +78,14 @@ class Setting(object):
 
     @property
     def serialized_value(self):
-        self.yaml = Setting.serialize_value(
-            getattr(settings, self.global_name, self.default)
-        )
-
         return self.yaml
 
     @property
     def value(self):
-        return Setting.deserialize_value(self.serialized_value)
+        return self.raw_value
 
     @value.setter
     def value(self, value):
+        # value is in YAML format
         self.yaml = value
+        self.raw_value = Setting.deserialize_value(value)
