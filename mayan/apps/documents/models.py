@@ -159,8 +159,7 @@ class Document(models.Model):
         auto_now_add=True, db_index=True, verbose_name=_('Added')
     )
     language = models.CharField(
-        blank=True, choices=setting_language_choices.value,
-        default=setting_language.value, max_length=8,
+        blank=True, default=setting_language.value, max_length=8,
         verbose_name=_('Language')
     )
     in_trash = models.BooleanField(

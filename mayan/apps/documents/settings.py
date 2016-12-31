@@ -6,10 +6,6 @@ from django.utils.translation import ugettext_lazy as _
 
 from smart_settings import Namespace
 
-# TODO: Findout method to make languages names' translatable.
-# YAML fails to serialize ugettext_lazy and ugettext is not allowed at this
-# level
-
 LANGUAGE_CHOICES = [
     (i.iso639_3_code, i.name) for i in list(pycountry.languages)
 ]

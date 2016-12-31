@@ -38,6 +38,7 @@ on production install to debug errors live.
 - Addition of a new OCR backend using PyOCR. This backend tries first to do OCR
 using libtesseract. If libtesseract is not available the backend fallsback to
 calling the Tesseract executable.
+- Language list moved from document model to document form.
 
 Removals
 --------
@@ -103,6 +104,7 @@ Bugs fixed or issues closed
 * `GitLab issue #307 <https://gitlab.com/mayan-edms/mayan-edms/issues/307>`_ Enter multiple Tags at once
 * `GitLab issue #311 <https://gitlab.com/mayan-edms/mayan-edms/issues/311>`_ acl page return ContentType:Document
 * `GitLab issue #319 <https://gitlab.com/mayan-edms/mayan-edms/issues/319>`_ TransformationResize issue with very "long" image
+* `GitLab issue #328 <https://gitlab.com/mayan-edms/mayan-edms/issues/328>`_ Upgrade Warning/Error during performupgrade (v2.1.3 to v2.1.4)
 * `GitLab issue #342 <https://gitlab.com/mayan-edms/mayan-edms/issues/342>`_ Tags should be of unordered / unsorted data type
 * `GitLab issue #343 <https://gitlab.com/mayan-edms/mayan-edms/issues/343>`_ Bootstrap's dependency on fonts.googleapis.com causes Mayan EDMS web interface load slowly if public internet is unreachable
 
