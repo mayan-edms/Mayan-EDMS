@@ -78,7 +78,7 @@ Common steps
 
 Remove deprecated requirements::
 
-    $ pip uninstall -y -r removals.txt 2> /dev/null
+    $ pip uninstall -y -r removals.txt
 
 Migrate existing database schema with::
 
