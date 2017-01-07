@@ -92,6 +92,9 @@ class GenericViewTestCase(BaseTestCase):
     def login_user(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
+    def logout(self):
+        self.client.logout()
+
     def post(self, viewname, *args, **kwargs):
         data = kwargs.pop('data', {})
         follow = kwargs.pop('follow', False)
