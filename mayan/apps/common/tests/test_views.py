@@ -76,6 +76,11 @@ class GenericViewTestCase(BaseTestCase):
             data=data, follow=follow
         )
 
+    def grant(self, permission):
+        self.role.permissions.add(
+            permission.stored_permission
+        )
+
     def login(self, username, password):
         logged_in = self.client.login(username=username, password=password)
 
@@ -83,6 +88,9 @@ class GenericViewTestCase(BaseTestCase):
 
         self.assertTrue(logged_in)
         self.assertTrue(user.is_authenticated())
+
+    def login_user(self):
+        self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
     def post(self, viewname, *args, **kwargs):
         data = kwargs.pop('data', {})
