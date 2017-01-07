@@ -1,12 +1,7 @@
 from __future__ import absolute_import, unicode_literals
 
-from django.test import override_settings
-
 from documents.permissions import permission_document_view
 from documents.tests.test_views import GenericDocumentViewTestCase
-from user_management.tests import (
-    TEST_USER_USERNAME, TEST_USER_PASSWORD
-)
 
 from ..models import Folder
 from ..permissions import (
@@ -17,7 +12,6 @@ from ..permissions import (
 from .literals import TEST_FOLDER_LABEL, TEST_FOLDER_EDITED_LABEL
 
 
-@override_settings(OCR_AUTO_OCR=False)
 class FolderViewTestCase(GenericDocumentViewTestCase):
     def setUp(self):
         super(FolderViewTestCase, self).setUp()
