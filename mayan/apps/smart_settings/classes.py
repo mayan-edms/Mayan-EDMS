@@ -69,8 +69,7 @@ class Setting(object):
         self.global_name = global_name
         self.default = default
         self.help_text = help_text
-        self.raw_value = getattr(settings, self.global_name, self.default)
-        self.yaml = Setting.serialize_value(self.raw_value)
+        self.loaded = False
         namespace.settings.append(self)
 
     def __unicode__(self):
@@ -82,6 +81,11 @@ class Setting(object):
 
     @property
     def value(self):
+        if not self.loaded:
+            self.raw_value = getattr(settings, self.global_name, self.default)
+            self.yaml = Setting.serialize_value(self.raw_value)
+            self.loaded = True
+
         return self.raw_value
 
     @value.setter
