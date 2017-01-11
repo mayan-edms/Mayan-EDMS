@@ -4,7 +4,7 @@ from django.conf.urls import patterns, url
 
 from .api_views import (
     APICurrentUserView, APIGroupListView, APIGroupView, APIUserListView,
-    APIUserView
+    APIUserView, APIUserGroupMap
 )
 from .views import (
     GroupCreateView, GroupDeleteView, GroupEditView, GroupListView,
@@ -62,4 +62,6 @@ api_urls = patterns(
     url(
         r'^users/current/$', APICurrentUserView.as_view(), name='user-current'
     ),
+    url(r'^users/(?P<pk>[0-9]+)/groups/$',APIUserGroupMap.as_view(),
+                                        name='users-group-map'),
 )
