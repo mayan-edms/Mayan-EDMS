@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.core.files.base import File
 from django.core.exceptions import ValidationError
 from django.test import override_settings
 
@@ -34,7 +33,7 @@ class MetadataTestCase(BaseTestCase):
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             self.document = self.document_type.new_document(
-                file_object=File(file_object)
+                file_object=file_object
             )
 
     def tearDown(self):

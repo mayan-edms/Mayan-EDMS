@@ -1,6 +1,5 @@
 from __future__ import unicode_literals
 
-from django.core.urlresolvers import reverse
 from django.test import override_settings
 
 from common.tests.test_views import GenericViewTestCase
@@ -47,10 +46,9 @@ class Issue46TestCase(GenericViewTestCase):
 
         with self.settings(COMMON_PAGINATE_BY=2):
             # Funcitonal test for the first page of advanced results
-            response = self.client.get(
-                reverse(
-                    'search:results', args=(document_search.get_full_name(),)
-                ), {'label': 'test'}
+            response = self.get(
+                'search:results', args=(document_search.get_full_name(),),
+                data={'label': 'test'}
             )
 
             self.assertContains(
@@ -59,10 +57,9 @@ class Issue46TestCase(GenericViewTestCase):
             )
 
             # Functional test for the second page of advanced results
-            response = self.client.get(
-                reverse(
-                    'search:results', args=(document_search.get_full_name(),)
-                ), {'label': 'test', 'page': 2}
+            response = self.get(
+                'search:results', args=(document_search.get_full_name(),),
+                data={'label': 'test', 'page': 2}
             )
             self.assertContains(
                 response, 'Total (3 - 4 out of 4) (Page 2 of 2)',

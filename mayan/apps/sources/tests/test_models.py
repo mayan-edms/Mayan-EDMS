@@ -3,9 +3,7 @@ from __future__ import unicode_literals
 import shutil
 
 from django.contrib.auth import get_user_model
-from django.core.files.base import File
 from django.test import override_settings
-from django.test.client import Client
 
 from common.utils import mkdtemp
 from common.tests import BaseTestCase
@@ -39,7 +37,6 @@ class UploadDocumentTestCase(BaseTestCase):
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
         )
-        self.client = Client()
 
     def tearDown(self):
         self.document_type.delete()
@@ -115,7 +112,7 @@ class CompressedUploadsTestCase(BaseTestCase):
         with open(TEST_COMPRESSED_DOCUMENT_PATH) as file_object:
             source.handle_upload(
                 document_type=self.document_type,
-                file_object=File(file_object),
+                file_object=file_object,
                 expand=(source.uncompress == SOURCE_UNCOMPRESS_CHOICE_Y)
             )
 

@@ -1,12 +1,6 @@
 from __future__ import unicode_literals
 
-from django.core.urlresolvers import reverse
-
 from common.tests.test_views import GenericViewTestCase
-from documents.models import DocumentType
-from documents.tests.literals import (
-    TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
-)
 
 from ..models import Workflow, WorkflowState, WorkflowTransition
 
@@ -23,24 +17,10 @@ class DocumentStateViewTestCase(GenericViewTestCase):
 
         self.login_admin_user()
 
-        self.document_type = DocumentType.objects.create(
-            label=TEST_DOCUMENT_TYPE
-        )
-
-        with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
-            self.document = self.document_type.new_document(
-                file_object=file_object
-            )
-
-    def tearDown(self):
-        self.document_type.delete()
-        super(DocumentStateViewTestCase, self).tearDown()
-
     def test_creating_workflow(self):
-        response = self.client.post(
-            reverse(
-                'document_states:setup_workflow_create'
-            ), data={
+        response = self.post(
+            'document_states:setup_workflow_create',
+            data={
                 'label': TEST_WORKFLOW_LABEL,
             }, follow=True
         )
@@ -56,10 +36,9 @@ class DocumentStateViewTestCase(GenericViewTestCase):
         self.assertEquals(Workflow.objects.count(), 1)
         self.assertEquals(Workflow.objects.all()[0].label, TEST_WORKFLOW_LABEL)
 
-        response = self.client.post(
-            reverse(
-                'document_states:setup_workflow_delete', args=(workflow.pk,)
-            ), follow=True
+        response = self.post(
+            'document_states:setup_workflow_delete', args=(workflow.pk,),
+            follow=True
         )
 
         self.assertEquals(response.status_code, 200)
@@ -69,11 +48,10 @@ class DocumentStateViewTestCase(GenericViewTestCase):
     def test_create_workflow_state(self):
         workflow = Workflow.objects.create(label=TEST_WORKFLOW_LABEL)
 
-        response = self.client.post(
-            reverse(
-                'document_states:setup_workflow_state_create',
-                args=(workflow.pk,)
-            ), data={
+        response = self.post(
+            'document_states:setup_workflow_state_create',
+            args=(workflow.pk,),
+            data={
                 'label': TEST_WORKFLOW_STATE_LABEL,
                 'completion': TEST_WORKFLOW_STATE_COMPLETION,
             }, follow=True
@@ -97,11 +75,9 @@ class DocumentStateViewTestCase(GenericViewTestCase):
             completion=TEST_WORKFLOW_STATE_COMPLETION
         )
 
-        response = self.client.post(
-            reverse(
-                'document_states:setup_workflow_state_delete',
-                args=(workflow_state.pk,)
-            ), follow=True
+        response = self.post(
+            'document_states:setup_workflow_state_delete',
+            args=(workflow_state.pk,), follow=True
         )
 
         self.assertEquals(response.status_code, 200)
@@ -120,11 +96,9 @@ class DocumentStateViewTestCase(GenericViewTestCase):
             completion=TEST_WORKFLOW_STATE_COMPLETION
         )
 
-        response = self.client.post(
-            reverse(
-                'document_states:setup_workflow_transition_create',
-                args=(workflow.pk,)
-            ), data={
+        response = self.post(
+            'document_states:setup_workflow_transition_create',
+            args=(workflow.pk,), data={
                 'label': TEST_WORKFLOW_TRANSITION_LABEL,
                 'origin_state': workflow_initial_state.pk,
                 'destination_state': workflow_state.pk,
@@ -165,11 +139,9 @@ class DocumentStateViewTestCase(GenericViewTestCase):
 
         self.assertEquals(WorkflowTransition.objects.count(), 1)
 
-        response = self.client.post(
-            reverse(
-                'document_states:setup_workflow_transition_delete',
-                args=(workflow_transition.pk,)
-            ), follow=True
+        response = self.post(
+            'document_states:setup_workflow_transition_delete',
+            args=(workflow_transition.pk,), follow=True
         )
 
         self.assertEquals(response.status_code, 200)
