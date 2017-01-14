@@ -195,6 +195,7 @@ class PDFMinerParser(Parser):
 
             return string_buffer.getvalue()
 
+
 Parser.register(
     mimetypes=('application/pdf',),
     parser_classes=(PopplerParser, PDFMinerParser)
