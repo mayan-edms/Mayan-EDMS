@@ -1,8 +1,9 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.test import TestCase
+from django.test import override_settings
 
+from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.search import document_search
 from documents.tests import TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
@@ -11,8 +12,10 @@ from user_management.tests import (
 )
 
 
-class DocumentSearchTestCase(TestCase):
+@override_settings(OCR_AUTO_OCR=False)
+class DocumentSearchTestCase(BaseTestCase):
     def setUp(self):
+        super(DocumentSearchTestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -28,6 +31,7 @@ class DocumentSearchTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentSearchTestCase, self).tearDown()
 
     def test_simple_search_after_related_name_change(self):
         """

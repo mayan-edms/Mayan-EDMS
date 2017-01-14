@@ -1,16 +1,11 @@
 from __future__ import unicode_literals
 
-from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
-from django.test.client import Client
-from django.test import TestCase
 
+from common.tests.test_views import GenericViewTestCase
 from documents.models import DocumentType
 from documents.tests.literals import (
     TEST_DOCUMENT_TYPE, TEST_SMALL_DOCUMENT_PATH
-)
-from user_management.tests import (
-    TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME, TEST_ADMIN_EMAIL
 )
 
 from ..models import Workflow, WorkflowState, WorkflowTransition
@@ -22,19 +17,11 @@ from .literals import (
 )
 
 
-class DocumentStateViewTestCase(TestCase):
+class DocumentStateViewTestCase(GenericViewTestCase):
     def setUp(self):
-        self.admin_user = get_user_model().objects.create_superuser(
-            username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
-            password=TEST_ADMIN_PASSWORD
-        )
-        self.client = Client()
-        # Login the admin user
-        logged_in = self.client.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
-        self.assertTrue(logged_in)
-        self.assertTrue(self.admin_user.is_authenticated())
+        super(DocumentStateViewTestCase, self).setUp()
+
+        self.login_admin_user()
 
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
@@ -47,6 +34,7 @@ class DocumentStateViewTestCase(TestCase):
 
     def tearDown(self):
         self.document_type.delete()
+        super(DocumentStateViewTestCase, self).tearDown()
 
     def test_creating_workflow(self):
         response = self.client.post(

@@ -15,7 +15,7 @@ from .literals import TEST_TAG_COLOR, TEST_TAG_LABEL
 @override_settings(OCR_AUTO_OCR=False)
 class TagTestCase(BaseTestCase):
     def setUp(self):
-        super(TagTestCase).setUp()
+        super(TagTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -26,9 +26,9 @@ class TagTestCase(BaseTestCase):
             )
 
     def tearDown(self):
-        super(TagTestCase).tearDown()
         self.document.delete()
         self.document_type.delete()
+        super(TagTestCase, self).tearDown()
 
     def runTest(self):
         tag = Tag.objects.create(color=TEST_TAG_COLOR, label=TEST_TAG_LABEL)

@@ -22,7 +22,6 @@ from documents.tests import (
 from documents.tests.test_views import GenericDocumentViewTestCase
 from user_management.tests import (
     TEST_ADMIN_EMAIL, TEST_ADMIN_PASSWORD, TEST_ADMIN_USERNAME,
-    TEST_USER_PASSWORD, TEST_USER_USERNAME
 )
 from ..links import link_upload_version
 from ..literals import SOURCE_CHOICE_WEB_FORM
@@ -48,9 +47,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         self.document.delete()
 
     def test_upload_wizard_without_permission(self):
-        self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         with open(TEST_DOCUMENT_PATH) as file_object:
             response = self.client.post(
@@ -66,13 +63,9 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         self.assertEqual(Document.objects.count(), 0)
 
     def test_upload_wizard_with_permission(self):
-        self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_create.stored_permission
-        )
+        self.grant(permission_document_create)
 
         with open(TEST_DOCUMENT_PATH) as file_object:
             response = self.client.post(
@@ -93,9 +86,7 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
         permssion for the document type to the user
         """
 
-        self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         # Create an access control entry giving the role the document
         # create permission for the selected document type.
@@ -133,8 +124,8 @@ class DocumentUploadIssueTestCase(BaseTestCase):
         self.client = Client()
 
     def tearDown(self):
-        super(DocumentUploadIssueTestCase, self).tearDown()
         self.document_type.delete()
+        super(DocumentUploadIssueTestCase, self).tearDown()
 
     def test_issue_25(self):
         # Login the admin user
@@ -198,9 +189,7 @@ class NewDocumentVersionViewTestCase(GenericDocumentViewTestCase):
             - Upload version view should reject request
         """
 
-        self.login(
-            username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD
-        )
+        self.login_admin_user()
 
         NewVersionBlock.objects.block(self.document)
 
@@ -239,9 +228,7 @@ class StagingFolderTestCase(GenericViewTestCase):
         super(StagingFolderTestCase, self).tearDown()
 
     def test_staging_folder_delete_no_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         staging_folder = StagingFolderSource.objects.create(
             label=TEST_SOURCE_LABEL,
@@ -264,13 +251,9 @@ class StagingFolderTestCase(GenericViewTestCase):
         self.assertEqual(len(list(staging_folder.get_files())), 1)
 
     def test_staging_folder_delete_with_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_staging_file_delete.stored_permission
-        )
+        self.grant(permission_staging_file_delete)
 
         staging_folder = StagingFolderSource.objects.create(
             label=TEST_SOURCE_LABEL,
@@ -294,49 +277,37 @@ class StagingFolderTestCase(GenericViewTestCase):
 
 
 class SourcesTestCase(GenericDocumentViewTestCase):
-    def create_web_source(self):
+    def _create_web_source(self):
         self.source = WebFormSource.objects.create(
             enabled=True, label=TEST_SOURCE_LABEL,
             uncompress=TEST_SOURCE_UNCOMPRESS_N
         )
 
     def test_source_list_view_with_permission(self):
-        self.create_web_source()
+        self._create_web_source()
 
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_sources_setup_view.stored_permission
-        )
+        self.grant(permission_sources_setup_view)
 
         response = self.get(viewname='sources:setup_source_list')
 
         self.assertContains(response, text=self.source.label, status_code=200)
 
     def test_source_list_view_no_permission(self):
-        self.create_web_source()
+        self._create_web_source()
 
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         response = self.get(viewname='sources:setup_source_list')
 
         self.assertEqual(response.status_code, 403)
 
     def test_source_create_view_with_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_sources_setup_create.stored_permission
-        )
-        self.role.permissions.add(
-            permission_sources_setup_view.stored_permission
-        )
+        self.grant(permission_sources_setup_create)
+        self.grant(permission_sources_setup_view)
 
         response = self.post(
             args=(SOURCE_CHOICE_WEB_FORM,), follow=True,
@@ -354,13 +325,9 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         self.assertEquals(response.status_code, 200)
 
     def test_source_create_view_no_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_sources_setup_view.stored_permission
-        )
+        self.grant(permission_sources_setup_view)
 
         response = self.post(
             args=(SOURCE_CHOICE_WEB_FORM,), follow=True,
@@ -374,18 +341,12 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         self.assertEqual(WebFormSource.objects.count(), 0)
 
     def test_source_delete_view_with_permission(self):
-        self.create_web_source()
+        self._create_web_source()
 
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_sources_setup_delete.stored_permission
-        )
-        self.role.permissions.add(
-            permission_sources_setup_view.stored_permission
-        )
+        self.grant(permission_sources_setup_delete)
+        self.grant(permission_sources_setup_view)
 
         response = self.post(
             args=(self.source.pk,), follow=True,
@@ -396,15 +357,11 @@ class SourcesTestCase(GenericDocumentViewTestCase):
         self.assertEqual(WebFormSource.objects.count(), 0)
 
     def test_source_delete_view_no_permission(self):
-        self.create_web_source()
+        self._create_web_source()
 
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_sources_setup_view.stored_permission
-        )
+        self.grant(permission_sources_setup_view)
 
         response = self.post(
             args=(self.source.pk,), follow=True,

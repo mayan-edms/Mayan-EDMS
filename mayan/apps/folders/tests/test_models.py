@@ -14,7 +14,7 @@ from .literals import TEST_FOLDER_LABEL
 @override_settings(OCR_AUTO_OCR=False)
 class FolderTestCase(BaseTestCase):
     def setUp(self):
-        super(FolderTestCase).setUp()
+        super(FolderTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -25,9 +25,8 @@ class FolderTestCase(BaseTestCase):
             )
 
     def tearDown(self):
-        super(FolderTestCase).tearDown()
-
         self.document_type.delete()
+        super(FolderTestCase, self).tearDown()
 
     def test_folder_creation(self):
         folder = Folder.objects.create(label=TEST_FOLDER_LABEL)

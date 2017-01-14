@@ -14,6 +14,7 @@ class SmartSettingsApp(MayanAppConfig):
     app_namespace = 'settings'
     app_url = 'settings'
     name = 'smart_settings'
+    test = True
     verbose_name = _('Smart settings')
 
     def ready(self):

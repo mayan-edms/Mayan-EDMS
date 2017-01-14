@@ -9,9 +9,6 @@ from documents.tests.literals import (
     TEST_DOCUMENT_TYPE_2, TEST_SMALL_DOCUMENT_PATH
 )
 from documents.tests.test_views import GenericDocumentViewTestCase
-from user_management.tests.literals import (
-    TEST_USER_USERNAME, TEST_USER_PASSWORD
-)
 
 from ..models import MetadataType
 from ..permissions import (
@@ -37,37 +34,26 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.document_type.metadata.create(metadata_type=self.metadata_type)
 
     def test_metadata_add_view_no_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_view.stored_permission
-        )
+        self.grant(permission_document_view)
 
         response = self.post(
             'metadata:metadata_add', args=(self.document.pk,),
             data={'metadata_type': self.metadata_type.pk}
         )
-        self.assertEqual(response.status_code, 403)
+        self.assertNotContains(
+            response, text=self.metadata_type.label, status_code=200
+        )
 
         self.assertEqual(len(self.document.metadata.all()), 0)
 
     def test_metadata_add_view_with_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_view.stored_permission
-        )
-
-        self.role.permissions.add(
-            permission_metadata_document_add.stored_permission
-        )
-        self.role.permissions.add(
-            permission_metadata_document_edit.stored_permission
-        )
+        self.grant(permission_document_view)
+        self.grant(permission_metadata_document_add)
+        self.grant(permission_metadata_document_edit)
 
         response = self.post(
             'metadata:metadata_add', args=(self.document.pk,),
@@ -82,17 +68,10 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         # Gitlab issue #204
         # Problems to add required metadata after changing the document type
 
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_properties_edit.stored_permission
-        )
-
-        self.role.permissions.add(
-            permission_metadata_document_edit.stored_permission
-        )
+        self.grant(permission_document_properties_edit)
+        self.grant(permission_metadata_document_edit)
 
         document_type_2 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE_2
@@ -133,9 +112,7 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         )
 
     def test_metadata_remove_view_no_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         document_metadata = self.document.metadata.create(
             metadata_type=self.metadata_type, value=''
@@ -143,16 +120,16 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(len(self.document.metadata.all()), 1)
 
-        self.role.permissions.add(
-            permission_document_view.stored_permission
-        )
+        self.grant(permission_document_view)
 
         # Test display of metadata removal form
         response = self.get(
             'metadata:metadata_remove', args=(self.document.pk,),
         )
 
-        self.assertEqual(response.status_code, 403)
+        self.assertNotContains(
+            response, text=self.metadata_type.label, status_code=200
+        )
 
         # Test post to metadata removal view
         response = self.post(
@@ -165,14 +142,12 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
             }, follow=True
         )
 
-        self.assertEqual(response.status_code, 403)
+        self.assertEqual(response.status_code, 200)
 
         self.assertEqual(len(self.document.metadata.all()), 1)
 
     def test_metadata_remove_view_with_permission(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
         document_metadata = self.document.metadata.create(
             metadata_type=self.metadata_type, value=''
@@ -180,17 +155,16 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
 
         self.assertEqual(len(self.document.metadata.all()), 1)
 
-        self.role.permissions.add(
-            permission_document_view.stored_permission
-        )
-
-        self.role.permissions.add(
-            permission_metadata_document_remove.stored_permission
-        )
+        self.grant(permission_document_view)
+        self.grant(permission_metadata_document_remove)
 
         # Test display of metadata removal form
         response = self.get(
             'metadata:metadata_remove', args=(self.document.pk,),
+        )
+
+        self.assertContains(
+            response, text=self.metadata_type.label, status_code=200
         )
 
         self.assertContains(response, 'emove', status_code=200)
@@ -211,20 +185,11 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.assertEqual(len(self.document.metadata.all()), 0)
 
     def test_multiple_document_metadata_edit(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_view.stored_permission
-        )
-
-        self.role.permissions.add(
-            permission_metadata_document_add.stored_permission
-        )
-        self.role.permissions.add(
-            permission_metadata_document_edit.stored_permission
-        )
+        self.grant(permission_document_view)
+        self.grant(permission_metadata_document_add)
+        self.grant(permission_metadata_document_edit)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document_2 = self.document_type.new_document(
@@ -243,20 +208,11 @@ class DocumentMetadataTestCase(GenericDocumentViewTestCase):
         self.assertContains(response, 'Edit', status_code=200)
 
     def test_multiple_document_metadata_add(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
-        self.role.permissions.add(
-            permission_document_view.stored_permission
-        )
-
-        self.role.permissions.add(
-            permission_metadata_document_add.stored_permission
-        )
-        self.role.permissions.add(
-            permission_metadata_document_edit.stored_permission
-        )
+        self.grant(permission_document_view)
+        self.grant(permission_metadata_document_add)
+        self.grant(permission_metadata_document_edit)
 
         with open(TEST_SMALL_DOCUMENT_PATH) as file_object:
             document_2 = self.document_type.new_document(

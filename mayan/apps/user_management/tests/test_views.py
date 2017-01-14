@@ -17,9 +17,7 @@ from ..permissions import (
     permission_user_delete, permission_user_edit, permission_user_view
 )
 
-from .literals import (
-    TEST_USER_PASSWORD, TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME
-)
+from .literals import TEST_USER_PASSWORD_EDITED, TEST_USER_USERNAME
 
 TEST_USER_TO_DELETE_USERNAME = 'user_to_delete'
 
@@ -43,10 +41,12 @@ class UserManagementViewTestCase(GenericViewTestCase):
 
         self.assertEqual(response.status_code, 403)
 
-        self.client.logout()
-        self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
-        )
+        self.logout()
+
+        with self.assertRaises(AssertionError):
+            self.login(
+                username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
+            )
 
         response = self.get('common:current_user_details')
 
@@ -60,8 +60,8 @@ class UserManagementViewTestCase(GenericViewTestCase):
 
         self.assertEqual(response.status_code, 302)
 
-        self.client.logout()
-        self.client.login(
+        self.logout()
+        self.login(
             username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
         )
         response = self.get('common:current_user_details')
@@ -72,8 +72,8 @@ class UserManagementViewTestCase(GenericViewTestCase):
         return self.post(
             'user_management:user_multiple_set_password', data={
                 'id_list': self.user.pk,
-                'new_password_1': TEST_USER_PASSWORD_EDITED,
-                'new_password_2': TEST_USER_PASSWORD_EDITED
+                'new_password_1': password,
+                'new_password_2': password
             }, follow=True
         )
 
@@ -87,9 +87,11 @@ class UserManagementViewTestCase(GenericViewTestCase):
         self.assertEqual(response.status_code, 403)
 
         self.logout()
-        self.client.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
-        )
+
+        with self.assertRaises(AssertionError):
+            self.login(
+                username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD_EDITED
+            )
 
         response = self.get('common:current_user_details')
 

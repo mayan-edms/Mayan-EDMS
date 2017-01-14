@@ -21,7 +21,7 @@ from .literals import (
 @override_settings(OCR_AUTO_OCR=False)
 class MetadataTestCase(BaseTestCase):
     def setUp(self):
-        super(MetadataTestCase).setUp()
+        super(MetadataTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -38,9 +38,8 @@ class MetadataTestCase(BaseTestCase):
             )
 
     def tearDown(self):
-        super(MetadataTestCase).tearDown()
-
         self.document_type.delete()
+        super(MetadataTestCase, self).tearDown()
 
     def test_no_default(self):
         document_metadata = DocumentMetadata(

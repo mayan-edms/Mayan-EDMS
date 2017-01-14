@@ -26,7 +26,7 @@ from ..models import DocumentCheckout, NewVersionBlock
 @override_settings(OCR_AUTO_OCR=False)
 class DocumentCheckoutTestCase(BaseTestCase):
     def setUp(self):
-        super(DocumentCheckoutTestCase).setUp()
+        super(DocumentCheckoutTestCase, self).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -42,8 +42,8 @@ class DocumentCheckoutTestCase(BaseTestCase):
             )
 
     def tearDown(self):
-        super(DocumentCheckoutTestCase).tearDown()
         self.document_type.delete()
+        super(DocumentCheckoutTestCase, self).tearDown()
 
     def test_document_checkout(self):
         expiration_datetime = now() + datetime.timedelta(days=1)

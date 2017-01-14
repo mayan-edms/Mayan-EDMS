@@ -19,7 +19,7 @@ from .literals import (
 @override_settings(OCR_AUTO_OCR=False)
 class IndexTestCase(BaseTestCase):
     def setUp(self):
-        super(IndexTestCase).setUp()
+        super(IndexTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -30,8 +30,8 @@ class IndexTestCase(BaseTestCase):
             )
 
     def tearDown(self):
-        super(IndexTestCase).tearDown()
         self.document_type.delete()
+        super(IndexTestCase, self).tearDown()
 
     def test_indexing(self):
         metadata_type = MetadataType.objects.create(

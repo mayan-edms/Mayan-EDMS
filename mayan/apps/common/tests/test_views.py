@@ -92,6 +92,9 @@ class GenericViewTestCase(BaseTestCase):
     def login_user(self):
         self.login(username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD)
 
+    def login_admin_user(self):
+        self.login(username=TEST_ADMIN_USERNAME, password=TEST_ADMIN_PASSWORD)
+
     def logout(self):
         self.client.logout()
 

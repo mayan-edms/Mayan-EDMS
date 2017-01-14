@@ -30,7 +30,7 @@ class UploadDocumentTestCase(BaseTestCase):
     """
 
     def setUp(self):
-        super(UploadDocumentTestCase).setUp()
+        super(UploadDocumentTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -42,10 +42,9 @@ class UploadDocumentTestCase(BaseTestCase):
         self.client = Client()
 
     def tearDown(self):
-        super(UploadDocumentTestCase).tearDown()
-
         self.document_type.delete()
         self.admin_user.delete()
+        super(UploadDocumentTestCase, self).tearDown()
 
     def test_issue_gh_163(self):
         """
@@ -97,14 +96,16 @@ class UploadDocumentTestCase(BaseTestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class CompressedUploadsTestCase(TestCase):
+class CompressedUploadsTestCase(BaseTestCase):
     def setUp(self):
+        super(CompressedUploadsTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
 
     def tearDown(self):
         self.document_type.delete()
+        super(CompressedUploadsTestCase, self).tearDown()
 
     def test_upload_compressed_file(self):
         source = WebFormSource(

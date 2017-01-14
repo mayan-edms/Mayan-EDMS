@@ -9,7 +9,6 @@ from common.tests import BaseTestCase
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
-from permissions.classes import Permission
 from permissions.models import Role
 from permissions.tests.literals import TEST_ROLE_LABEL
 from user_management.tests.literals import TEST_USER_USERNAME, TEST_GROUP
@@ -22,7 +21,7 @@ TEST_DOCUMENT_TYPE_2 = 'test document type 2'
 @override_settings(OCR_AUTO_OCR=False)
 class PermissionTestCase(BaseTestCase):
     def setUp(self):
-        super(PermissionTestCase).setUp()
+        super(PermissionTestCase, self).setUp()
         self.document_type_1 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -56,10 +55,9 @@ class PermissionTestCase(BaseTestCase):
         self.role.groups.add(self.group)
 
     def tearDown(self):
-        super(PermissionTestCase).tearDown()
-
         for document_type in DocumentType.objects.all():
             document_type.delete()
+        super(PermissionTestCase, self).tearDown()
 
     def test_check_access_without_permissions(self):
         with self.assertRaises(PermissionDenied):
