@@ -92,7 +92,7 @@ def render_subtemplate(context, template_name, template_context):
 def build():
     if BUILD:
         try:
-            return '{} {}'.format(BUILD(), DATE().decode())
+            return '{} {}'.format(BUILD(), DATE())
         except sh.ErrorReturnCode_128:
             return ''
     else:
