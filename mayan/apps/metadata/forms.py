@@ -117,12 +117,16 @@ class DocumentAddMetadataForm(forms.Form):
     )
 
     def __init__(self, *args, **kwargs):
-        document_type = kwargs.pop('document_type')
-        queryset = kwargs.pop(
-            'queryset', MetadataType.objects.get_for_document_type(
-                document_type=document_type
+        document_type = kwargs.pop('document_type', None)
+
+        if document_type:
+            queryset = kwargs.pop(
+                'queryset', MetadataType.objects.get_for_document_type(
+                    document_type=document_type
+                )
             )
-        )
+        else:
+            queryset = MetadataType.objects.none()
 
         super(DocumentAddMetadataForm, self).__init__(*args, **kwargs)
 

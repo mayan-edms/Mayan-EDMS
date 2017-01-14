@@ -6,6 +6,7 @@ from django.core.exceptions import ValidationError
 from django.core.urlresolvers import reverse, reverse_lazy
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
+from django.utils.encoding import force_text
 from django.utils.http import urlencode
 from django.utils.translation import ugettext_lazy as _, ungettext
 
@@ -74,7 +75,10 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
                     urlencode(
                         {
                             'id_list': ','.join(
-                                queryset.value_list('pk', flat=True)
+                                map(
+                                    force_text,
+                                    queryset.values_list('pk', flat=True)
+                                )
                             )
                         }
                     )
@@ -110,9 +114,15 @@ class DocumentMetadataAddView(MultipleObjectFormActionView):
 
     def get_form_extra_kwargs(self):
         queryset = self.get_queryset()
-        result = {
-            'document_type': queryset.first().document_type,
-        }
+
+        result = {}
+
+        if queryset.count():
+            result.update(
+                {
+                    'document_type': queryset.first().document_type,
+                }
+            )
 
         if queryset.count() == 1:
             result.update(
