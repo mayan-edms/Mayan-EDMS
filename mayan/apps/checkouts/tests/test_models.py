@@ -4,7 +4,7 @@ import datetime
 import time
 
 from django.contrib.auth import get_user_model
-from django.test import TestCase, override_settings
+from django.test import override_settings
 from django.utils.timezone import now
 
 from common.tests import BaseTestCase
@@ -24,8 +24,9 @@ from ..models import DocumentCheckout, NewVersionBlock
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentCheckoutTestCase(TestCase):
+class DocumentCheckoutTestCase(BaseTestCase):
     def setUp(self):
+        super(DocumentCheckoutTestCase).setUp()
         self.admin_user = get_user_model().objects.create_superuser(
             username=TEST_ADMIN_USERNAME, email=TEST_ADMIN_EMAIL,
             password=TEST_ADMIN_PASSWORD
@@ -41,6 +42,7 @@ class DocumentCheckoutTestCase(TestCase):
             )
 
     def tearDown(self):
+        super(DocumentCheckoutTestCase).tearDown()
         self.document_type.delete()
 
     def test_document_checkout(self):

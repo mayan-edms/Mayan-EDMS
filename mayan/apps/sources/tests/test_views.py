@@ -6,10 +6,11 @@ import shutil
 from django.contrib.auth import get_user_model
 from django.core.urlresolvers import reverse
 from django.test.client import Client
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
 from acls.models import AccessControlList
 from checkouts.models import NewVersionBlock
+from common.tests import BaseTestCase
 from common.tests.test_views import GenericViewTestCase
 from common.utils import fs_cleanup, mkdtemp
 from documents.models import Document, DocumentType
@@ -118,8 +119,9 @@ class DocumentUploadTestCase(GenericDocumentViewTestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentUploadIssueTestCase(TestCase):
+class DocumentUploadIssueTestCase(BaseTestCase):
     def setUp(self):
+        super(DocumentUploadIssueTestCase, self).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -131,6 +133,7 @@ class DocumentUploadIssueTestCase(TestCase):
         self.client = Client()
 
     def tearDown(self):
+        super(DocumentUploadIssueTestCase, self).tearDown()
         self.document_type.delete()
 
     def test_issue_25(self):

@@ -186,11 +186,9 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
 
         self.document_type.metadata.create(metadata_type=self.metadata_type)
 
-    def test_user_list_lookup_render(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
+        self.login_user()
 
+    def test_user_list_lookup_render(self):
         self.metadata_type.lookup = '{{ users }}'
         self.metadata_type.save()
         self.document.metadata.create(metadata_type=self.metadata_type)
@@ -209,10 +207,6 @@ class MetadataLookupIntegrationTestCase(GenericDocumentViewTestCase):
         )
 
     def test_group_list_lookup_render(self):
-        self.login(
-            username=TEST_USER_USERNAME, password=TEST_USER_PASSWORD
-        )
-
         self.metadata_type.lookup = '{{ groups }}'
         self.metadata_type.save()
         self.document.metadata.create(metadata_type=self.metadata_type)

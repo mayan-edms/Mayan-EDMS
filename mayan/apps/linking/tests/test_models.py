@@ -3,8 +3,9 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
+from common.tests import BaseTestCase
 from documents.models import DocumentType
 from documents.tests import TEST_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
 from user_management.tests.literals import (
@@ -17,8 +18,9 @@ from .literals import TEST_SMART_LINK_LABEL, TEST_SMART_LINK_DYNAMIC_LABEL
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class SmartLinkTestCase(TestCase):
+class SmartLinkTestCase(BaseTestCase):
     def setUp(self):
+        super(SmartLinkTestCase).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -34,6 +36,8 @@ class SmartLinkTestCase(TestCase):
         )
 
     def tearDown(self):
+        super(SmartLinkTestCase).tearDown()
+
         self.document_type.delete()
 
     def test_dynamic_label(self):

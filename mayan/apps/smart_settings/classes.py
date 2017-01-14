@@ -16,14 +16,6 @@ logger = logging.getLogger(__name__)
 class Namespace(object):
     _registry = {}
 
-    @classmethod
-    def get_all(cls):
-        return cls._registry.values()
-
-    @classmethod
-    def get(cls, name):
-        return cls._registry[name]
-
     @staticmethod
     def initialize():
         for app in apps.get_app_configs():
@@ -35,6 +27,19 @@ class Namespace(object):
                 logger.debug(
                     'Imported settings.py file for app %s', app.name
                 )
+
+    @classmethod
+    def get_all(cls):
+        return cls._registry.values()
+
+    @classmethod
+    def get(cls, name):
+        return cls._registry[name]
+
+    @classmethod
+    def invalidate_cache_all(cls):
+        for namespace in cls.get_all():
+            namespace.invalidate_cache()
 
     def __unicode__(self):
         return unicode(self.label)
@@ -52,18 +57,22 @@ class Namespace(object):
     def add_setting(self, **kwargs):
         return Setting(namespace=self, **kwargs)
 
+    def invalidate_cache(self):
+        for setting in self.settings:
+            setting.invalidate_cache()
+
 
 class Setting(object):
+    @staticmethod
+    def deserialize_value(value):
+        return yaml.safe_load(value)
+
     @staticmethod
     def serialize_value(value):
         if isinstance(value, Promise):
             value = force_text(value)
 
         return yaml.safe_dump(value, allow_unicode=True)
-
-    @staticmethod
-    def deserialize_value(value):
-        return yaml.safe_load(value)
 
     def __init__(self, namespace, global_name, default, help_text=None, is_path=False):
         self.global_name = global_name
@@ -74,6 +83,9 @@ class Setting(object):
 
     def __unicode__(self):
         return unicode(self.global_name)
+
+    def invalidate_cache(self):
+        self.loaded = False
 
     @property
     def serialized_value(self):

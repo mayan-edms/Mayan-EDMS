@@ -4,10 +4,11 @@ import shutil
 
 from django.contrib.auth import get_user_model
 from django.core.files.base import File
-from django.test import TestCase, override_settings
+from django.test import override_settings
 from django.test.client import Client
 
 from common.utils import mkdtemp
+from common.tests import BaseTestCase
 from documents.models import Document, DocumentType
 from documents.tests import (
     TEST_COMPRESSED_DOCUMENT_PATH, TEST_DOCUMENT_TYPE,
@@ -23,12 +24,13 @@ from ..models import WatchFolderSource, WebFormSource
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class UploadDocumentTestCase(TestCase):
+class UploadDocumentTestCase(BaseTestCase):
     """
     Test creating documents
     """
 
     def setUp(self):
+        super(UploadDocumentTestCase).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -40,6 +42,8 @@ class UploadDocumentTestCase(TestCase):
         self.client = Client()
 
     def tearDown(self):
+        super(UploadDocumentTestCase).tearDown()
+
         self.document_type.delete()
         self.admin_user.delete()
 

@@ -4,8 +4,9 @@ import hashlib
 import time
 
 from django.core.files import File
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
+from common.tests import BaseTestCase
 from django_gpg.models import Key
 from django_gpg.tests.literals import TEST_KEY_DATA, TEST_KEY_PASSPHRASE
 from documents.models import DocumentType, DocumentVersion
@@ -21,13 +22,15 @@ from .literals import (
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class DocumentSignaturesTestCase(TestCase):
+class DocumentSignaturesTestCase(BaseTestCase):
     def setUp(self):
+        super(DocumentSignaturesTestCase).setUp()
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
 
     def tearDown(self):
+        super(DocumentSignaturesTestCase).tearDown()
         self.document_type.delete()
 
     def test_embedded_signature_no_key(self):
@@ -247,13 +250,17 @@ class DocumentSignaturesTestCase(TestCase):
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class EmbeddedSignaturesTestCase(TestCase):
+class EmbeddedSignaturesTestCase(BaseTestCase):
     def setUp(self):
+        super(EmbeddedSignaturesTestCase).setUp()
+
         self.document_type = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
 
     def tearDown(self):
+        super(EmbeddedSignaturesTestCase).tearDown()
+
         self.document_type.delete()
 
     def test_unsigned_document_version_method(self):

@@ -3,8 +3,9 @@ from __future__ import absolute_import, unicode_literals
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.core.exceptions import PermissionDenied
-from django.test import TestCase, override_settings
+from django.test import override_settings
 
+from common.tests import BaseTestCase
 from documents.models import Document, DocumentType
 from documents.permissions import permission_document_view
 from documents.tests import TEST_SMALL_DOCUMENT_PATH, TEST_DOCUMENT_TYPE
@@ -19,8 +20,9 @@ TEST_DOCUMENT_TYPE_2 = 'test document type 2'
 
 
 @override_settings(OCR_AUTO_OCR=False)
-class PermissionTestCase(TestCase):
+class PermissionTestCase(BaseTestCase):
     def setUp(self):
+        super(PermissionTestCase).setUp()
         self.document_type_1 = DocumentType.objects.create(
             label=TEST_DOCUMENT_TYPE
         )
@@ -53,9 +55,9 @@ class PermissionTestCase(TestCase):
         self.group.user_set.add(self.user)
         self.role.groups.add(self.group)
 
-        Permission.invalidate_cache()
-
     def tearDown(self):
+        super(PermissionTestCase).tearDown()
+
         for document_type in DocumentType.objects.all():
             document_type.delete()
 
