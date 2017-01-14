@@ -277,6 +277,14 @@ class UserSetPasswordView(MultipleObjectFormActionView):
 
         return result
 
+    def get_form_extra_kwargs(self):
+        queryset = self.get_queryset()
+        result = {}
+        if queryset:
+            result['user'] = queryset.first()
+
+        return result
+
     def object_action(self, form, instance):
         try:
             if instance.is_superuser or instance.is_staff:

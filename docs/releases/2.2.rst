@@ -39,6 +39,7 @@ on production install to debug errors live.
 using libtesseract. If libtesseract is not available the backend fallsback to
 calling the Tesseract executable.
 - Language list moved from document model to document form.
+- Enable password validation for the user password change view, user password change API endpoint, current user view and current user API endpoint.
 
 Removals
 --------
