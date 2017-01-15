@@ -1,4 +1,3 @@
-
 from __future__ import absolute_import
 
 import ldap
@@ -8,7 +7,7 @@ from .base import *
 from django.conf import settings
 from django.contrib.auth import get_user_model
 
-SECRET_KEY = '_kxl#@(0wzgh$9_1p%9sbiu4*+v&t8n=*e4@6bm@$l#e+qs5e0'
+SECRET_KEY = '<your secret key>'
 
 # makes sure this works in Active Directory
 ldap.set_option(ldap.OPT_REFERRALS, 0)
@@ -17,7 +16,7 @@ ldap.set_option(ldap.OPT_REFERRALS, 0)
 AUTH_LDAP_ALWAYS_UPDATE_USER = True
 
 LDAP_USER_AUTO_CREATION = "False"
-LDAP_URL = "ldap://10.1.1.212:389/"
+LDAP_URL = "ldap://<your ldap server IP>:389/"
 LDAP_BASE_DN = "dc=paramatrix,dc=co,dc=in"
 LDAP_ADDITIONAL_USER_DN = "dc=people"
 LDAP_ADMIN_DN = ""
