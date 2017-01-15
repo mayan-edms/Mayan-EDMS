@@ -1,20 +1,87 @@
 from __future__ import unicode_literals
 
-from rest_framework import generics
-from rest_framework.views import APIView
-from rest_framework.response import Response
+from django.shortcuts import get_object_or_404
 
+from rest_framework import generics
+
+from acls.models import AccessControlList
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
-from rest_framework import authentication, permissions
-from django.contrib.auth.models import Group, User
+from user_management.permissions import permission_group_view
+from user_management.serializers import GroupSerializer
 
-from .models import Role, StoredPermission
+from .classes import Permission
+from .models import Role
 from .permissions import (
     permission_role_create, permission_role_delete, permission_role_edit,
     permission_role_view
 )
-from .serializers import RoleSerializer
+from .serializers import (
+    PermissionSerializer, RoleNewGroupListSerializer,
+    RoleNewPermissionSerializer, RoleSerializer,
+)
+
+
+class APIPermissionList(generics.ListAPIView):
+    serializer_class = PermissionSerializer
+    queryset = Permission.all()
+
+    def get(self, *args, **kwargs):
+        """
+        Returns a list of all the available permissions.
+        """
+
+        return super(APIPermissionList, self).get(*args, **kwargs)
+
+
+class APIRoleGroupList(generics.ListCreateAPIView):
+    """
+    Returns a list of all the groups that belong to selected role.
+    """
+
+    mayan_object_permissions = {
+        'GET': (permission_role_view,),
+        'POST': (permission_role_edit,)
+    }
+    permission_classes = (MayanPermission,)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return GroupSerializer
+        elif self.request.method == 'POST':
+            return RoleNewGroupListSerializer
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'role': self.get_role(),
+            'view': self
+        }
+
+    def get_queryset(self):
+        role = self.get_role()
+
+        return AccessControlList.objects.filter_by_access(
+            permission_group_view, self.request.user,
+            queryset=role.groups.all()
+        )
+
+    def get_role(self):
+        return get_object_or_404(Role, pk=self.kwargs['pk'])
+
+    def perform_create(self, serializer):
+        serializer.save(role=self.get_role())
+
+    def post(self, request, *args, **kwargs):
+        """
+        Add a list of groups to the selected role.
+        """
+
+        return super(APIRoleGroupList, self).post(request, *args, **kwargs)
 
 
 class APIRoleListView(generics.ListCreateAPIView):
@@ -39,6 +106,54 @@ class APIRoleListView(generics.ListCreateAPIView):
         """
 
         return super(APIRoleListView, self).post(*args, **kwargs)
+
+
+class APIRolePermissionList(generics.ListCreateAPIView):
+    """
+    Returns a list of all the permissions of a role.
+    """
+
+    mayan_object_permissions = {
+        'GET': (permission_role_view,),
+        'POST': (permission_role_edit,)
+    }
+    permission_classes = (MayanPermission,)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return PermissionSerializer
+        elif self.request.method == 'POST':
+            return RoleNewPermissionSerializer
+
+    def get_serializer_context(self):
+        """
+        Extra context provided to the serializer class.
+        """
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'role': self.get_role(),
+            'view': self
+        }
+
+    def get_queryset(self):
+        return [
+            permission.volatile_permission for permission in self.get_role().permissions.all()
+        ]
+
+    def get_role(self):
+        return get_object_or_404(Role, pk=self.kwargs['pk'])
+
+    def perform_create(self, serializer):
+        serializer.save(role=self.get_role())
+
+    def post(self, request, *args, **kwargs):
+        """
+        Add a list of permissions to a role.
+        """
+        return super(APIRolePermissionList, self).post(
+            request, *args, **kwargs
+        )
 
 
 class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
@@ -80,150 +195,3 @@ class APIRoleView(generics.RetrieveUpdateDestroyAPIView):
         """
 
         return super(APIRoleView, self).put(*args, **kwargs)
-    
-class APIMapRolePerms(APIView):
-    
-    """
-    class based view to map Roles with permissions using APIView.
-    """
-    authentication_classes = (authentication.TokenAuthentication,)
-    permission_classes = (permissions.IsAdminUser,)
-    
-    def post(self, request, pk, format=None):
-        """
-        View to map roles with permissions
-    
-        **Arguments:**
-            - request: Http request object.
-            - pk:primary key of Role
-
-        **Returns:** Role label with permission for respective role.
-
-        **Raises:** Nothing.
-
-        This methods handles http POST request.
-
-        This method map role with permissions.
-    
-        * Requires token authentication.\n
-        * Only admin users are able to access this view.
-
-        """
-        mapped_permission_ids=[]
-        role = Role.objects.get(pk=pk)
-        perms_ids = request.POST["permissions"].split(',')
-        for perms_id in perms_ids:
-            stored_perm = StoredPermission.objects.get(pk=perms_id)
-            role.permissions.add(stored_perm)
-            mapped_permission_ids.append(perms_id)
-        result={"id":role.id, "label":role.label, "permission": mapped_permission_ids}
-        return Response({'data':result})
-
-class APIMapRoleGroups(APIView):
-    """
-     class based view to map Roles with Groups using APIView.
-    """
-    authentication_classes = (authentication.TokenAuthentication,)
-    permission_classes = (permissions.IsAdminUser,)
-    serializer_class = RoleSerializer
-    
-
-    def post(self, request, pk, format=None):
-        """
-        View to map roles with group
-    
-        **Arguments:**
-            - request: Http request object.
-            - pk:primary key of Role
-
-        **Returns:** Role label and mapped group with respective role.
-
-        **Raises:** Nothing.
-
-        This methods handles http POST request.
-
-        This method map role with groups.
-    
-        * Requires token authentication.\n
-        * Only admin users are able to access this view.
-
-        """
-        mapped_group_ids = []
-        role = Role.objects.get(pk=pk)
-        group_ids = request.POST["group_ids"].split(',')
-        for group_id in group_ids:
-            group = Group.objects.get(pk=group_id)
-            role.groups.add(group)
-        mapped_group_ids = role.groups.all().values_list('id', flat=True)
-        result={"id":role.id, "label":role.label, "groups": mapped_group_ids}
-        return Response({"data": result})
-
-class APIDeleteRoleGroups(APIView):
-    """
-     class based view to delete Roles with Groups using APIView.
-    """
-    authentication_classes = (authentication.TokenAuthentication,)
-    serializer_class = RoleSerializer
-    mayan_object_permissions = {'DELETE': (permission_role_delete,)}
-    
-
-    def delete(self, request, role_pk, group_pk, format=None):
-        """
-        View to map roles with group
-    
-        **Arguments:**
-            - request: Http request object.
-            - pk:primary key of Role
-
-        **Returns:** Role label and mapped group with respective role.
-
-        **Raises:** Nothing.
-
-        This methods handles http POST request.
-
-        This method map role with groups.
-    
-        * Requires token authentication.\n
-        * Only admin users are able to access this view.
-
-        """
-	mapped_group_ids = []
-	role = Role.objects.get(pk=role_pk)
-	group = Group.objects.get(pk=group_pk)
-	role.groups.remove(group)
-	mapped_group_ids = role.groups.all().values_list('id', flat=True)
-	result={"id":role.id, "label":role.label, "groups": mapped_group_ids}
-	return Response({"data": result})
-
-
-class APIGetPermission(APIView):
-    """
-    class based view to retrive all permissions.
-    """
-    authentication_classes = (authentication.TokenAuthentication,)
-    permission_classes = (permissions.IsAdminUser,)
-    
-    def get(self, request,format=None):
-        """
-        View to retrive all permissions.
-    
-        **Arguments:**
-            - request: Http request object.
-
-        **Returns:** All Id and Name of permissions.
-
-        **Raises:** Nothing.
-
-        This methods handles http GET request.
-
-        This method is to retrive all permission.
-    
-        * Requires token authentication.\n
-        * Only admin users are able to access this view.
-
-        """
-        perms = []
-        queryset = StoredPermission.objects.all()
-        for q in queryset:
-            perms.append({'id': q.id, 'name': q.name})
-        return Response({'data':perms})

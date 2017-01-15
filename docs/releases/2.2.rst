@@ -40,6 +40,12 @@ using libtesseract. If libtesseract is not available the backend fallsback to
 calling the Tesseract executable.
 - Language list moved from document model to document form.
 - Enable password validation for the user password change view, user password change API endpoint, current user view and current user API endpoint.
+- New API endpoints (initial work by @lokeshmanmode):
+
+  - API endpoint to change an user's groups subscription.
+  - API endpoint that list all available permissions types.
+  - API endpoint to view or change a role's groups.
+  - API endpoint to view or change a role's permissions.
 
 Removals
 --------

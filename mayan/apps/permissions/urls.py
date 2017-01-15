@@ -2,8 +2,10 @@ from __future__ import unicode_literals
 
 from django.conf.urls import url
 
-from .api_views import APIRoleListView, APIRoleView, APIMapRolePerms,\
-                        APIMapRoleGroups, APIGetPermission, APIDeleteRoleGroups
+from .api_views import (
+    APIPermissionList, APIRoleGroupList, APIRoleListView,
+    APIRolePermissionList, APIRoleView,
+)
 from .views import (
     RoleCreateView, RoleDeleteView, RoleEditView, RoleListView,
     SetupRoleMembersView, SetupRolePermissionsView
@@ -30,12 +32,14 @@ urlpatterns = [
 api_urls = [
     url(r'^roles/$', APIRoleListView.as_view(), name='role-list'),
     url(r'^roles/(?P<pk>[0-9]+)/$', APIRoleView.as_view(), name='role-detail'),
-    url(r'^roles/(?P<pk>[0-9]+)/permissions/$', APIMapRolePerms.as_view(),
-                                        name='role-permissions-map'),
-    url(r'^roles/(?P<pk>[0-9]+)/groups/$', APIMapRoleGroups.as_view(),
-                                        name='map-role-groups'),
-    url(r'^roles/(?P<role_pk>[0-9]+)/groups/(?P<group_pk>[0-9]+)/$', APIDeleteRoleGroups.as_view(),
-                                        name='delete-role-groups'),
-    url(r'^$', APIGetPermission.as_view(),
-                                        name='role-permissions'),
+    url(
+        r'^roles/(?P<pk>[0-9]+)/permissions/$',
+        APIRolePermissionList.as_view(),
+        name='role-permissions-list'
+    ),
+    url(
+        r'^roles/(?P<pk>[0-9]+)/groups/$', APIRoleGroupList.as_view(),
+        name='role-group-list'
+    ),
+    url(r'^$', APIPermissionList.as_view(), name='permission-list'),
 ]
