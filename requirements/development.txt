@@ -1,14 +1,16 @@
 # requirements/development.txt
 -r common.txt
-Werkzeug==0.11.11
+Werkzeug==0.11.15
 
 django-debug-toolbar==1.6
-django-extensions==1.7.4
+django-extensions==1.7.5
 django-rosetta==0.7.12
+
+flake8==3.2.1
 
 ipython==5.1.0
 
-safety==0.3.0
+safety==0.5.1
 
 transifex-client==0.12.2
 

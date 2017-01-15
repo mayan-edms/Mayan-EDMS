@@ -1,4 +1,4 @@
-Pillow==3.4.2
+Pillow==4.0.0
 PyYAML==3.12
 
 celery==3.1.24
@@ -11,14 +11,14 @@ django-colorful==1.2
 django-compressor==2.1
 django-cors-headers==1.2.2
 django-downloadview==1.9
-django-formtools==1.0
+django-formtools==2.0
 django-pure-pagination==0.3.0
-django-model-utils==2.6
-django-mptt==0.8.6
+django-model-utils==2.6.1
+django-mptt==0.8.7
 django-qsstats-magic==0.7.2
 django-rest-swagger==0.3.10
 django-stronghold==0.2.8
-django-suit==0.2.21
+django-suit==0.2.23
 django-widget-tweaks==1.4.1
 djangorestframework==3.3.2
 djangorestframework-recursive==0.1.1
@@ -27,10 +27,10 @@ fusepy==2.0.4
 
 pdfminer==20140328
 pycountry==1.20
-pyocr==0.4.4
+pyocr==0.4.5
 python-dateutil==2.5.3
 python-gnupg==0.3.9
 python-magic==0.4.12
 pytz==2016.7
 
-sh==1.11
+sh==1.12.9

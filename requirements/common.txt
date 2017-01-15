@@ -1,2 +1,2 @@
 -r base.txt
-Django==1.10.4
+Django==1.10.5
