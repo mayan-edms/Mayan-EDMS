@@ -1,12 +1,12 @@
 from __future__ import unicode_literals
 
 from django.contrib.auth import get_user_model
-from django.contrib.auth.models import Group, User
+from django.contrib.auth.models import Group
+from django.shortcuts import get_object_or_404
 
 from rest_framework import generics
-from rest_framework.response import Response
-from rest_framework.views import APIView
 
+from acls.models import AccessControlList
 from rest_api.filters import MayanObjectPermissionsFilter
 from rest_api.permissions import MayanPermission
 
@@ -15,8 +15,44 @@ from .permissions import (
     permission_group_view, permission_user_create, permission_user_delete,
     permission_user_edit, permission_user_view
 )
-from .serializers import GroupSerializer, UserSerializer
-from rest_framework import authentication, permissions
+from .serializers import (
+    GroupSerializer, UserSerializer, UserGroupListSerializer
+)
+
+
+class APICurrentUserView(generics.RetrieveUpdateDestroyAPIView):
+    serializer_class = UserSerializer
+
+    def get_object(self):
+        return self.request.user
+
+    def delete(self, *args, **kwargs):
+        """
+        Delete the current user.
+        """
+
+        return super(APICurrentUserView, self).delete(*args, **kwargs)
+
+    def get(self, *args, **kwargs):
+        """
+        Return the details of the current user.
+        """
+
+        return super(APICurrentUserView, self).get(*args, **kwargs)
+
+    def patch(self, *args, **kwargs):
+        """
+        Partially edit the current user.
+        """
+
+        return super(APICurrentUserView, self).patch(*args, **kwargs)
+
+    def put(self, *args, **kwargs):
+        """
+        Edit the current user.
+        """
+
+        return super(APICurrentUserView, self).put(*args, **kwargs)
 
 
 class APIGroupListView(generics.ListCreateAPIView):
@@ -144,74 +180,50 @@ class APIUserView(generics.RetrieveUpdateDestroyAPIView):
         return super(APIUserView, self).put(*args, **kwargs)
 
 
-class APICurrentUserView(generics.RetrieveUpdateDestroyAPIView):
-    serializer_class = UserSerializer
-
-    def get_object(self):
-        return self.request.user
-
-    def delete(self, *args, **kwargs):
-        """
-        Delete the current user.
-        """
-
-        return super(APICurrentUserView, self).delete(*args, **kwargs)
-
-    def get(self, *args, **kwargs):
-        """
-        Return the details of the current user.
-        """
-
-        return super(APICurrentUserView, self).get(*args, **kwargs)
-
-    def patch(self, *args, **kwargs):
-        """
-        Partially edit the current user.
-        """
-
-        return super(APICurrentUserView, self).patch(*args, **kwargs)
-
-    def put(self, *args, **kwargs):
-        """
-        Edit the current user.
-        """
-
-        return super(APICurrentUserView, self).put(*args, **kwargs)
-    
-class APIUserGroupMap(APIView):
+class APIUserGroupList(generics.ListCreateAPIView):
     """
-    View to map user with groups
-    
-    
-    **Arguments:**
-        - request: Http request object.
-        - pk:primary key of User
-
-    **Returns:** User Details
-
-    **Raises:** Nothing.
-
-    This methods handles http POST request.
-
-    This method map users with group.
-    
-
-    * Requires token authentication.\n
-    * Only admin users are able to access this view.
+    Returns a list of all the groups to which an user belongs.
     """
-    authentication_classes = (authentication.TokenAuthentication,)
-    permission_classes = (permissions.IsAdminUser,)
-    
-    def post(self, request,pk,format=None):
+
+    mayan_object_permissions = {
+        'GET': (permission_user_view,),
+        'POST': (permission_user_edit,)
+    }
+    permission_classes = (MayanPermission,)
+
+    def get_serializer_class(self):
+        if self.request.method == 'GET':
+            return GroupSerializer
+        elif self.request.method == 'POST':
+            return UserGroupListSerializer
+
+    def get_serializer_context(self):
         """
-        Maps user with groups
+        Extra context provided to the serializer class.
         """
-        groups = request.POST['group_ids'].split(',')
-        userObj = User.objects.get(pk=pk)
-        for group in groups:
-            groupObj = Group.objects.get(pk=group)
-            groupObj.user_set.add(userObj)
-        mapped_group_ids = userObj.groups.all().values_list('id', flat=True)
-        result = { "id":userObj.id,"groups":mapped_group_ids,"username":userObj.username,
-              "fname":userObj.first_name,"lname":userObj.last_name }
-        return Response({ 'data':result })
+        return {
+            'format': self.format_kwarg,
+            'request': self.request,
+            'user': self.get_user(),
+            'view': self
+        }
+
+    def get_queryset(self):
+        user = self.get_user()
+
+        return AccessControlList.objects.filter_by_access(
+            permission_group_view, self.request.user,
+            queryset=user.groups.all()
+        )
+
+    def get_user(self):
+        return get_object_or_404(get_user_model(), pk=self.kwargs['pk'])
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.get_user())
+
+    def post(self, request, *args, **kwargs):
+        """
+        Add a user to a list of groups.
+        """
+        return super(APIUserGroupList, self).post(request, *args, **kwargs)

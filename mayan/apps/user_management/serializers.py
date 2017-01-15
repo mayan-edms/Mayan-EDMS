@@ -3,8 +3,10 @@ from __future__ import unicode_literals
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import Group
 from django.contrib.auth.password_validation import validate_password
+from django.utils.translation import ugettext_lazy as _
 
 from rest_framework import serializers
+from rest_framework.exceptions import ValidationError
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
@@ -19,6 +21,27 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
 
     def get_users_count(self, instance):
         return instance.user_set.count()
+
+
+class UserGroupListSerializer(serializers.Serializer):
+    group_pk_list = serializers.CharField(
+        help_text=_(
+            'Comma separated list of group primary keys to assign this '
+            'user to.'
+        )
+    )
+
+    def create(self, validated_data):
+        validated_data['user'].groups.clear()
+        try:
+            pk_list = validated_data['group_pk_list'].split(',')
+
+            for group in Group.objects.filter(pk__in=pk_list):
+                validated_data['user'].groups.add(group)
+        except Exception as exception:
+            raise ValidationError(exception)
+
+        return {'group_pk_list': validated_data['group_pk_list']}
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):

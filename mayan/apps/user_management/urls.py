@@ -3,8 +3,8 @@ from __future__ import unicode_literals
 from django.conf.urls import url
 
 from .api_views import (
-    APICurrentUserView, APIGroupListView, APIGroupView, APIUserListView,
-    APIUserView, APIUserGroupMap
+    APICurrentUserView, APIGroupListView, APIGroupView, APIUserGroupList,
+    APIUserListView, APIUserView
 )
 from .views import (
     GroupCreateView, GroupDeleteView, GroupEditView, GroupListView,
@@ -64,6 +64,8 @@ api_urls = [
     url(
         r'^users/current/$', APICurrentUserView.as_view(), name='user-current'
     ),
-    url(r'^users/(?P<pk>[0-9]+)/groups/$',APIUserGroupMap.as_view(),
-                                        name='users-group-map'),
+    url(
+        r'^users/(?P<pk>[0-9]+)/groups/$', APIUserGroupList.as_view(),
+        name='users-group-list'
+    ),
 ]
